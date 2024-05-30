@@ -32,6 +32,7 @@ public class LLVMVisitor extends SysYParserBaseVisitor<LLVMValueRef> {
     //考虑到我们的语言中仅存在int一个基本类型，可以通过下面的语句为LLVM的int型重命名方便以后使用
     private final LLVMTypeRef i32Type = LLVMInt32Type();
     private final LLVMTypeRef voidType = LLVMVoidType();
+    private final LLVMTypeRef floatType = LLVMFloatType();
 
     private final LLVMValueRef zero = LLVMConstInt(i32Type, 0, 0);
 
