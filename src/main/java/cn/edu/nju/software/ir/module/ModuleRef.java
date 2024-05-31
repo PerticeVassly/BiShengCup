@@ -1,4 +1,112 @@
 package main.java.cn.edu.nju.software.ir.module;
 
+import main.java.cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import main.java.cn.edu.nju.software.ir.type.FunctionType;
+import main.java.cn.edu.nju.software.ir.value.*;
+
+import java.util.ArrayList;
+
 public class ModuleRef {
+    private final String moduleId;
+    private final ArrayList<GlobalVar> globalVars;
+    private final ArrayList<FunctionValue> functions;
+    private int globalCnt;
+    private final ArrayList<String> usedNameList;
+
+    private final static String TAB = "  ";
+
+    public ModuleRef(String moduleName) {
+        this.moduleId = moduleName;
+        globalVars = new ArrayList<>();
+        functions = new ArrayList<>();
+        globalCnt = 0;
+        usedNameList = new ArrayList<>();
+    }
+
+    public void addFunction(FunctionValue function) {
+        functions.add(function);
+        globalCnt++;
+    }
+
+    public void addGlobalVar(GlobalVar globalVar) {
+        globalVars.add(globalVar);
+    }
+
+    public void initGlobalVar(ValueRef globalVar, ValueRef initVal) {
+        if (!(globalVar instanceof GlobalVar)) {
+            System.err.println("Initial target should be global variable.");
+            return;
+        }
+        if (!(initVal instanceof ConstValue)) {
+            System.err.println("Initial value should be a const number");
+            return;
+        }
+        if (!globalVars.contains(globalVar)) {
+            System.err.println("Global variable has not been declared.");
+            return;
+        }
+        ((GlobalVar) globalVar).initial(initVal);
+    }
+
+    private String generateGlobalVarIr(GlobalVar gv) {
+        String ir = "@" + gv.getName() + " = global " + gv.getType().toString() + " ";
+        if (gv.getInitVal() instanceof ConstValue) {
+            ir += ((ConstValue) gv.getInitVal()).getValue();
+        } else {
+            System.err.println("Global variable has not been initialized.");
+            return null;
+        }
+        return ir;
+    }
+
+    public void dumpToFile(String fileName) {
+        // TODO
+    }
+
+    public void dumpToConsole() {
+        System.out.println("; ModuleId = '" + moduleId + "'");
+        System.out.println("source_filename = '" + moduleId + "'");
+        System.out.println(); // an empty line
+        // declare global var
+        for (GlobalVar gv : globalVars) {
+            String ir = generateGlobalVarIr(gv);
+            if (ir != null) {
+                System.out.println(ir);
+            } else {
+                return;
+            }
+        }
+        System.out.println(); // an empty line after declare all global variables
+        for (FunctionValue fv : functions) {
+            FunctionType ft = ((FunctionType) fv.getType());
+
+            System.out.print("define " + ft.getReturnType() + " @" + fv.getName());
+            System.out.print("(");
+            for (int i = 0; i < ft.getFParametersCount(); i++) {
+                LocalVar fParam = fv.getParam(i);
+                System.out.print(fParam.getType() + " %");
+                System.out.print(fParam.getName());
+                if (i < ft.getFParametersCount() - 1) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.print(")");
+
+            System.out.println(" {"); // start a function block
+            for (int i = 0; i < fv.getBlockNum(); i++) {
+                // output each basic block
+                BasicBlockRef block = fv.getBasicBlockRef(i);
+                System.out.println(block.getName() + ":");
+                for (int j = 0; j < block.getIrNum(); j++) {
+                    // output each ir in the basic block
+                    System.out.println(TAB + block.getIr(j));
+                }
+                // when output a whole block, start a new line
+                System.out.println();
+            }
+            // when all basic blocks in the function finish output, a function ends
+            System.out.println("}");
+            System.out.println();
+        }
+    }
 }

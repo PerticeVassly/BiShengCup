@@ -5,8 +5,8 @@ import main.java.cn.edu.nju.software.ir.builder.BuilderRef;
 import main.java.cn.edu.nju.software.ir.module.ModuleRef;
 import main.java.cn.edu.nju.software.ir.type.FunctionType;
 import main.java.cn.edu.nju.software.ir.type.TypeRef;
-import main.java.cn.edu.nju.software.ir.value.BoolValue;
 import main.java.cn.edu.nju.software.ir.value.FunctionValue;
+import main.java.cn.edu.nju.software.ir.value.GlobalVar;
 import main.java.cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public interface IrGenerator {
     // TODO
     // declare global variable related operations
     public ValueRef addGlobal(ModuleRef module, TypeRef type, String name);
-    public ValueRef setInitValue(ValueRef globalVar, ValueRef initValue);
+    public ValueRef setInitValue(GlobalVar globalVar, ValueRef initValue);
 
     // function declare
     public ValueRef addFunction(ModuleRef module, FunctionType ft, String funcName);
@@ -26,8 +26,10 @@ public interface IrGenerator {
     public ValueRef buildLoad(BuilderRef builder, ValueRef memory, String lValName);
 
     // bool operations
-    public BoolValue buildIcmp(BuilderRef builder, int kind, ValueRef operand1, ValueRef operand2, String lValName);
-    public BoolValue buildXor(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
+    public ValueRef buildIcmp(BuilderRef builder, int kind, ValueRef operand1, ValueRef operand2, String lValName);
+    public ValueRef buildXor(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
+    public ValueRef buildAnd(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
+    public ValueRef buildOr(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
 
     // bit extend
     public ValueRef buildZExtend(BuilderRef builder, ValueRef operand, TypeRef type, String lValName); // zero extend, unsigned int value extension
@@ -46,7 +48,7 @@ public interface IrGenerator {
 
     // branch operations
     public ValueRef buildBranch(BuilderRef builder, BasicBlockRef targetBlock);
-    public ValueRef buildCondBranch(BuilderRef builder, BoolValue cond, BasicBlockRef ifTrue, BasicBlockRef ifFalse);
+    public ValueRef buildCondBranch(BuilderRef builder, ValueRef cond, BasicBlockRef ifTrue, BasicBlockRef ifFalse);
 
     // ir appended
     public ValueRef positionBuilderAtEnd(BuilderRef builder, BasicBlockRef block);
