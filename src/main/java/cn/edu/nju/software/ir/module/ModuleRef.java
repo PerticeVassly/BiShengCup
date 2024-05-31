@@ -106,7 +106,9 @@ public class ModuleRef {
                     System.out.println(TAB + block.getIr(j));
                 }
                 // when output a whole block, start a new line
-                System.out.println();
+                if (i < fv.getBlockNum() - 1) {
+                    System.out.println();
+                }
             }
             // when all basic blocks in the function finish output, a function ends
             System.out.println("}");

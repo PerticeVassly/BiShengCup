@@ -6,7 +6,7 @@ target/
 /output/
 !output/.gitkeep
 
-production
+/production
 src/test
 
 ### IntelliJ IDEA ###
