@@ -8,8 +8,8 @@ import main.java.cn.edu.nju.software.ir.value.ValueRef;
 import java.util.ArrayList;
 
 public class BasicBlockRef {
-    private final static ArrayList<String> usedNameList = new ArrayList<>(){{add("");}};
-    private final static ArrayList<Integer> usedFreqList = new ArrayList<>(){{add(0);}};
+    private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
+    private final static ArrayList<Integer> usedFreqList = new ArrayList<Integer>(){{add(0);}};
     private final String name;
     private final ArrayList<String> irs;
     private int irNum;

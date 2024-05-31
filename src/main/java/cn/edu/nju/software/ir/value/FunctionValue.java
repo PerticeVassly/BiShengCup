@@ -11,8 +11,8 @@ import java.util.ArrayList;
 public class FunctionValue extends ValueRef {
     private final ArrayList<LocalVar> params;
     private int paramsNum;
-    private final ArrayList<String> paramsUsedNames = new ArrayList<>(){{add("");}};
-    private final ArrayList<Integer> paramsUsedNamesFreq= new ArrayList<>(){{add(0);}};
+    private final ArrayList<String> paramsUsedNames = new ArrayList<String>(){{add("");}};
+    private final ArrayList<Integer> paramsUsedNamesFreq= new ArrayList<Integer>(){{add(0);}};
     private final ArrayList<BasicBlockRef> blocks;
     private int blockNum;
 

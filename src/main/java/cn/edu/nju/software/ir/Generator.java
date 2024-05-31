@@ -10,10 +10,10 @@ import java.util.ArrayList;
 
 public class Generator implements IrGenerator {
     // singleton mode
-    private Generator gen = null;
+    private static Generator gen = null;
     private Generator() {}
 
-    public Generator getInstance() {
+    public static Generator getInstance() {
         if (gen == null) {
             gen = new Generator();
         }
@@ -137,9 +137,9 @@ public class Generator implements IrGenerator {
         return fv;
     }
     @Override
-    public ValueRef buildAllocate(BuilderRef builder, TypeRef type, String name) {
+    public LocalVar buildAllocate(BuilderRef builder, TypeRef type, String name) {
         LocalVar localVar = builder.createLocalVar(type, name);
-        String ir = LOCAL + localVar.getName() + ASSIGN + ALLOC + DELIMITER + ALIGN + type.getWidth();
+        String ir = LOCAL + localVar.getName() + ASSIGN + ALLOC + type.toString() + DELIMITER + ALIGN + type.getWidth();
         builder.put(ir);
         return localVar;
     }
@@ -165,7 +165,7 @@ public class Generator implements IrGenerator {
     public LocalVar buildLoad(BuilderRef builder, ValueRef memory, String lValName) {
         LocalVar lVal = builder.createLocalVar(memory.getType(), lValName);
         String ir = LOCAL + lVal.getName() + ASSIGN + LOAD + lVal.getType().toString() + DELIMITER +
-                memory.getType().toString() + POINTER + " " + (global(memory) ? GLOBAL : LOCAL) + DELIMITER +
+                memory.getType().toString() + POINTER + " " + (global(memory) ? GLOBAL : LOCAL) + memory.getName() + DELIMITER +
                 ALIGN + lVal.getType().getWidth();
         builder.put(ir);
         return lVal;
@@ -295,5 +295,16 @@ public class Generator implements IrGenerator {
     public ValueRef positionBuilderAtEnd(BuilderRef builder, BasicBlockRef block) {
         builder.positionAtEnd(block);
         return null;
+    }
+
+    @Override
+    public ConstValue ConstInt(IntType type, int value) {
+        return new ConstValue(type, value);
+    }
+    @Override
+    public BasicBlockRef appendBasicBlock(FunctionValue function, String blockName) {
+        BasicBlockRef block = new BasicBlockRef(function, blockName);
+        function.appendBasicBlock(block);
+        return block;
     }
 }

@@ -30,7 +30,8 @@ public class Main {
                 case "-O0":
                     optimized = false;
                     break;
-                case "-O1", "-O2":
+                case "-O1":
+                    case "-O2":
                     optimized = true;
                     break;
                 case "--emit-llvm":

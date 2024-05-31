@@ -4,7 +4,9 @@ import main.java.cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import main.java.cn.edu.nju.software.ir.builder.BuilderRef;
 import main.java.cn.edu.nju.software.ir.module.ModuleRef;
 import main.java.cn.edu.nju.software.ir.type.FunctionType;
+import main.java.cn.edu.nju.software.ir.type.IntType;
 import main.java.cn.edu.nju.software.ir.type.TypeRef;
+import main.java.cn.edu.nju.software.ir.value.ConstValue;
 import main.java.cn.edu.nju.software.ir.value.FunctionValue;
 import main.java.cn.edu.nju.software.ir.value.GlobalVar;
 import main.java.cn.edu.nju.software.ir.value.ValueRef;
@@ -12,7 +14,6 @@ import main.java.cn.edu.nju.software.ir.value.ValueRef;
 import java.util.ArrayList;
 
 public interface IrGenerator {
-    // TODO
     // declare global variable related operations
     public ValueRef addGlobal(ModuleRef module, TypeRef type, String name);
     public ValueRef setInitValue(GlobalVar globalVar, ValueRef initValue);
@@ -52,4 +53,7 @@ public interface IrGenerator {
 
     // ir appended
     public ValueRef positionBuilderAtEnd(BuilderRef builder, BasicBlockRef block);
+
+    public ConstValue ConstInt(IntType type, int value);
+    public BasicBlockRef appendBasicBlock(FunctionValue function, String blockName);
 }

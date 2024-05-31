@@ -1,29 +1,29 @@
 package main.java.cn.edu.nju.software.frontend.llvm;
 
-import org.bytedeco.llvm.LLVM.LLVMValueRef;
+import main.java.cn.edu.nju.software.ir.value.ValueRef;
 import main.java.cn.edu.nju.software.frontend.util.SymbolTable;
 
 import java.util.ArrayList;
 
 public class LLVMStack {
-    private final ArrayList<SymbolTable<LLVMValueRef>> stack = new ArrayList<>();
+    private final ArrayList<SymbolTable<ValueRef>> stack = new ArrayList<>();
     public int size() {
         return stack.size();
     }
-    public void push(SymbolTable<LLVMValueRef> scope) {
+    public void push(SymbolTable<ValueRef> scope) {
         stack.add(scope);
     }
-    public SymbolTable<LLVMValueRef> peek() {
+    public SymbolTable<ValueRef> peek() {
         return stack.get(size() - 1);
     }
-    public SymbolTable<LLVMValueRef> pop() {
-        SymbolTable<LLVMValueRef> ret = peek();
+    public SymbolTable<ValueRef> pop() {
+        SymbolTable<ValueRef> ret = peek();
         stack.remove(size() - 1);
         return ret;
     }
-    public LLVMValueRef find(String name) {
+    public ValueRef find(String name) {
         for (int i = size() - 1; i >= 0; i--) {
-            SymbolTable<LLVMValueRef> cur = stack.get(i);
+            SymbolTable<ValueRef> cur = stack.get(i);
             if (cur.find(name) != null) {
                 return cur.find(name);
             }

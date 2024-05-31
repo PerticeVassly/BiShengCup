@@ -10,7 +10,7 @@ public class ModuleRef {
     private final String moduleId;
     private final ArrayList<GlobalVar> globalVars;
     private final ArrayList<FunctionValue> functions;
-    private int globalCnt;
+    private int globalVarNum;
     private final ArrayList<String> usedNameList;
 
     private final static String TAB = "  ";
@@ -19,16 +19,16 @@ public class ModuleRef {
         this.moduleId = moduleName;
         globalVars = new ArrayList<>();
         functions = new ArrayList<>();
-        globalCnt = 0;
+        globalVarNum = 0;
         usedNameList = new ArrayList<>();
     }
 
     public void addFunction(FunctionValue function) {
         functions.add(function);
-        globalCnt++;
     }
 
     public void addGlobalVar(GlobalVar globalVar) {
+        globalVarNum++;
         globalVars.add(globalVar);
     }
 
@@ -76,7 +76,11 @@ public class ModuleRef {
                 return;
             }
         }
-        System.out.println(); // an empty line after declare all global variables
+
+        if (globalVarNum > 0) {
+            System.out.println(); // an empty line after declare all global variables
+        }
+
         for (FunctionValue fv : functions) {
             FunctionType ft = ((FunctionType) fv.getType());
 
