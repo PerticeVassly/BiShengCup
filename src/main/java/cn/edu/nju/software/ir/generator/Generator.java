@@ -277,7 +277,7 @@ public class Generator implements IrGenerator {
     public ValueRef buildBranch(BuilderRef builder, BasicBlockRef targetBlock) {
         String ir = BR + LABEL +  LOCAL + targetBlock.getName();
         builder.put(ir);
-        builder.setPredForTargetBlock(targetBlock);
+        builder.addPredForTargetBlock(targetBlock);
         return null;
     }
     @Override
@@ -290,8 +290,8 @@ public class Generator implements IrGenerator {
                 LABEL + LOCAL + ifTrue.getName() + DELIMITER +  // br i1 %cond, label %ifTrue,
                 LABEL + LOCAL + ifFalse.getName(); // br i1 %cond, label %ifTrue, label %ifFalse
         builder.put(ir);
-        builder.setPredForTargetBlock(ifTrue);
-        builder.setPredForTargetBlock(ifFalse);
+        builder.addPredForTargetBlock(ifTrue);
+        builder.addPredForTargetBlock(ifFalse);
         return null;
     }
     @Override

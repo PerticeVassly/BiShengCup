@@ -18,16 +18,18 @@ public class Optimizer {
             for (int j = 0; j < fv.getBlockNum(); j++) {
                 BasicBlockRef block = fv.getBlock(j); // function's j-th block
                 if (IsAUselessBlock(block)) { // if it is a useless block
-                    BasicBlockRef pred = block.getPred(); // get its pred block
-                    // prepare to replace the jump target label in its pred block
-                    int index = indexOfIrWithLabel(pred, block.getName());
-                    if (index == -1) {
-                        continue; // reasonably impossible to be -1, but for safety I judge it
+                    for (int k = 0; k < block.getPredNum(); k++){
+                        BasicBlockRef pred = block.getPred(k); // get its pred block
+                        // prepare to replace the jump target label in its pred block
+                        int index = indexOfIrWithLabel(pred, block.getName());
+                        if (index == -1) {
+                            continue; // reasonably impossible to be -1, but for safety I judge it
+                        }
+                        String newLabel = block.getIr(0).substring(10); // the index just after %
+                        String oldLabel = block.getName();
+                        replaceBrLabel(pred, index, oldLabel, newLabel);
+                        simplifyBrIrs(pred, index, pred.getIr(index)); // do possible simplification
                     }
-                    String newLabel = block.getIr(0).substring(10); // the index just after %
-                    String oldLabel = block.getName();
-                    replaceBrLabel(pred, index, oldLabel, newLabel);
-                    simplifyBrIrs(pred, index, pred.getIr(index)); // do possible simplification
                     fv.dropBlock(block);
                     j--;
                 }

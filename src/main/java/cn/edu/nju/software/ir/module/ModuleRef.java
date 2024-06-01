@@ -82,13 +82,36 @@ public class ModuleRef {
 
     public void dumpToFile(String fileName) {
         // TODO
+//        if (fileName == null) {
+//            System.err.println("File name is null.");
+//            return;
+//        }
+//        // if file do not exist, create it else clear it's content
+//        if (!new java.io.File(fileName).exists()) {
+//            try {
+//                new java.io.File(fileName).createNewFile();
+//            } catch (java.io.IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        PrintStream consoleStream = System.out;
+//        try (PrintStream ps = new PrintStream(new FileOutputStream(fileName))) {
+//            System.setOut(ps);
+//            dumpToConsole();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } finally {
+//            System.setOut(consoleStream);
+//        }
+
     }
 
     public void dumpToConsole() {
         Optimizer optimizer = new Optimizer(this);
         optimizer.optimize();
         System.out.println("; ModuleId = '" + moduleId + "'");
-        System.out.println("source_filename = '" + moduleId + "'");
+        System.out.println("source_filename = \"" + moduleId + "\"");
         System.out.println(); // an empty line
         // declare global var
         for (GlobalVar gv : globalVars) {
@@ -132,7 +155,13 @@ public class ModuleRef {
                     for (int k = 0; k < blockNameAreaLength - block.getName().length() + 20; k++) {
                         System.out.print(" ");
                     }
-                    System.out.print("; pred = " + block.getPred().getName());
+                    System.out.print("; pred = ");
+                    for (int k = 0; k < block.getPredNum(); k++) {
+                        System.out.print("%" + block.getPred(k).getName());
+                        if (k < block.getPredNum() - 1) {
+                            System.out.print(", ");
+                        }
+                    }
                 }
                 System.out.println();
                 for (int j = 0; j < block.getIrNum(); j++) {
