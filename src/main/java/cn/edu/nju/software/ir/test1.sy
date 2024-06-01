@@ -13,5 +13,7 @@ int main() {
     } else {
         b = a;
     }
+    if (a==b);
+    else;
     return f(a, c);
 }

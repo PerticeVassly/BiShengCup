@@ -14,6 +14,7 @@ public class BasicBlockRef {
     private final ArrayList<String> irs;
     private int irNum;
     private final FunctionValue function;
+    private BasicBlockRef pred;
 
     public BasicBlockRef(FunctionValue fv, String name) {
         this.function = fv;
@@ -28,11 +29,28 @@ public class BasicBlockRef {
         }
         irs = new ArrayList<>();
         irNum = 0;
+        pred = null;
+    }
+
+    public void setPred(BasicBlockRef block) {
+        pred = block;
+    }
+
+    public boolean hasPred() {
+        return pred != null;
+    }
+
+    public BasicBlockRef getPred() {
+        return pred;
     }
 
     public void put(String ir) {
         irNum++;
         irs.add(ir);
+    }
+
+    public void renewIr(int index, String ir) {
+        irs.set(index, ir);
     }
 
     public String getName() {

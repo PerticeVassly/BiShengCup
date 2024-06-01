@@ -1,6 +1,7 @@
 package cn.edu.nju.software.ir.module;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.opt.Optimizer;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.value.*;
 
@@ -37,6 +38,14 @@ public class ModuleRef {
 
     public void addFunction(FunctionValue function) {
         functions.add(function);
+    }
+
+    public FunctionValue getFunction(int index) {
+        return functions.get(index);
+    }
+
+    public int getFunctionNum() {
+        return functions.size();
     }
 
     public void addGlobalVar(GlobalVar globalVar) {
@@ -76,6 +85,8 @@ public class ModuleRef {
     }
 
     public void dumpToConsole() {
+        Optimizer optimizer = new Optimizer(this);
+        optimizer.optimize();
         System.out.println("; ModuleId = '" + moduleId + "'");
         System.out.println("source_filename = '" + moduleId + "'");
         System.out.println(); // an empty line
@@ -94,6 +105,7 @@ public class ModuleRef {
         }
 
         for (FunctionValue fv : functions) {
+            int blockNameAreaLength = fv.getLengthOfLongestBlockName();
             if (libNameList.contains(fv.getName())) {
                 continue;
             }
@@ -115,7 +127,14 @@ public class ModuleRef {
             for (int i = 0; i < fv.getBlockNum(); i++) {
                 // output each basic block
                 BasicBlockRef block = fv.getBasicBlockRef(i);
-                System.out.println(block.getName() + ":");
+                System.out.print(block.getName() + ":");
+                if (block.hasPred()) {
+                    for (int k = 0; k < blockNameAreaLength - block.getName().length() + 20; k++) {
+                        System.out.print(" ");
+                    }
+                    System.out.print("; pred = " + block.getPred().getName());
+                }
+                System.out.println();
                 for (int j = 0; j < block.getIrNum(); j++) {
                     // output each ir in the basic block
                     System.out.println(TAB + block.getIr(j));
