@@ -1,8 +1,8 @@
-package main.java.cn.edu.nju.software.ir.module;
+package cn.edu.nju.software.ir.module;
 
-import main.java.cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import main.java.cn.edu.nju.software.ir.type.FunctionType;
-import main.java.cn.edu.nju.software.ir.value.*;
+import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.value.*;
 
 import java.util.ArrayList;
 

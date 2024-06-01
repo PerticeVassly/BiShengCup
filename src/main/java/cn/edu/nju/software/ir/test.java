@@ -1,9 +1,9 @@
-package main.java.cn.edu.nju.software.ir;
+package cn.edu.nju.software.ir;
 
-import main.java.cn.edu.nju.software.frontend.lexer.LexerErrorListener;
-import main.java.cn.edu.nju.software.frontend.lexer.SysYLexer;
-import main.java.cn.edu.nju.software.frontend.parser.*;
-import main.java.cn.edu.nju.software.frontend.semantic.SysYSemanticVisitor;
+import cn.edu.nju.software.frontend.lexer.LexerErrorListener;
+import cn.edu.nju.software.frontend.lexer.SysYLexer;
+import cn.edu.nju.software.frontend.parser.*;
+import cn.edu.nju.software.frontend.semantic.SysYSemanticVisitor;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;

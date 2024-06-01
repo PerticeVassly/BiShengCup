@@ -1,4 +1,4 @@
-package main.java.cn.edu.nju.software.frontend.util;
+package cn.edu.nju.software.frontend.util;
 
 public class Symbol<T> {
     private final String name;

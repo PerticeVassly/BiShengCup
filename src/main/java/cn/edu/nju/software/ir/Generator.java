@@ -1,10 +1,10 @@
-package main.java.cn.edu.nju.software.ir;
+package cn.edu.nju.software.ir;
 
-import main.java.cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import main.java.cn.edu.nju.software.ir.builder.BuilderRef;
-import main.java.cn.edu.nju.software.ir.module.ModuleRef;
-import main.java.cn.edu.nju.software.ir.type.*;
-import main.java.cn.edu.nju.software.ir.value.*;
+import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.builder.BuilderRef;
+import cn.edu.nju.software.ir.module.ModuleRef;
+import cn.edu.nju.software.ir.type.*;
+import cn.edu.nju.software.ir.value.*;
 
 import java.util.ArrayList;
 
@@ -56,10 +56,10 @@ public class Generator implements IrGenerator {
     // several icmp types
     public final static int IntNE = 0; // !=
     public final static int IntEQ = 1; // ==
-    public final static int IntGT = 2; // >
-    public final static int IntLT = 3; // <
-    public final static int IntGE = 4; // >=
-    public final static int IntLE = 5; // <=
+    public final static int IntSGT = 2; // >
+    public final static int IntSLT = 3; // <
+    public final static int IntSGE = 4; // >=
+    public final static int IntSLE = 5; // <=
 
     private final static String[] icmpType = {
             NE, EQ, SGT, SLT, SGE, SLE
@@ -119,7 +119,7 @@ public class Generator implements IrGenerator {
         return lVal;
     }
 
-    @Override
+//    @Override
     public GlobalVar addGlobal(ModuleRef module, TypeRef type, String name) {
         GlobalVar globalVar = new GlobalVar(type, name);
         module.addGlobalVar(globalVar);

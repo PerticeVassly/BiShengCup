@@ -1,4 +1,4 @@
-package main.java.cn.edu.nju.software.frontend.lexer;
+package cn.edu.nju.software.frontend.lexer;
 
 import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.RecognitionException;

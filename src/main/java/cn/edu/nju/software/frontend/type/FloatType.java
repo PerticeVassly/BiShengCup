@@ -1,4 +1,4 @@
-package main.java.cn.edu.nju.software.frontend.type;
+package cn.edu.nju.software.frontend.type;
 public class FloatType extends NumberType{
     public FloatType() {
         setConst(false);

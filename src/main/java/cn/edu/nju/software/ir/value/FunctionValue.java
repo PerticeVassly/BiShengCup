@@ -1,10 +1,10 @@
-package main.java.cn.edu.nju.software.ir.value;
+package cn.edu.nju.software.ir.value;
 
-import main.java.cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import main.java.cn.edu.nju.software.ir.type.FloatType;
-import main.java.cn.edu.nju.software.ir.type.FunctionType;
-import main.java.cn.edu.nju.software.ir.type.IntType;
-import main.java.cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.type.FloatType;
+import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.TypeRef;
 
 import java.util.ArrayList;
 

@@ -1,8 +1,8 @@
-package main.java.cn.edu.nju.software.ir.builder;
+package cn.edu.nju.software.ir.builder;
 
-import main.java.cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import main.java.cn.edu.nju.software.ir.type.TypeRef;
-import main.java.cn.edu.nju.software.ir.value.LocalVar;
+import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.value.LocalVar;
 
 public class BuilderRef {
     private BasicBlockRef currentBlock;

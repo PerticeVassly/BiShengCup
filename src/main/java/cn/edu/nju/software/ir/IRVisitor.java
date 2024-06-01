@@ -1,16 +1,17 @@
-package main.java.cn.edu.nju.software.ir;
+package cn.edu.nju.software.ir;
 
-import main.java.cn.edu.nju.software.frontend.llvm.LLVMStack;
-import main.java.cn.edu.nju.software.frontend.parser.*;
-import main.java.cn.edu.nju.software.frontend.util.*;
-import main.java.cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import main.java.cn.edu.nju.software.ir.builder.BuilderRef;
-import main.java.cn.edu.nju.software.ir.module.ModuleRef;
-import main.java.cn.edu.nju.software.ir.type.FunctionType;
-import main.java.cn.edu.nju.software.ir.type.IntType;
-import main.java.cn.edu.nju.software.ir.type.TypeRef;
-import main.java.cn.edu.nju.software.ir.type.VoidType;
-import main.java.cn.edu.nju.software.ir.value.*;
+import cn.edu.nju.software.frontend.llvm.LLVMStack;
+import cn.edu.nju.software.frontend.parser.*;
+import cn.edu.nju.software.frontend.util.*;
+import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.builder.BuilderRef;
+import cn.edu.nju.software.ir.module.ModuleRef;
+import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.type.VoidType;
+import cn.edu.nju.software.ir.value.*;
+import static cn.edu.nju.software.ir.Generator.*;
 
 
 import java.util.ArrayList;
@@ -76,7 +77,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     private ValueRef normalizeCond(ValueRef cond) {
         TypeRef type = cond.getType();
         if (type instanceof IntType) {
-            return gen.buildIcmp(builder, Generator.IntNE, cond, zero, "cond_normalize_");
+            return gen.buildIcmp(builder, IntNE, cond, zero, "cond_normalize_");
         }
         return cond;
     }
@@ -211,7 +212,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             } else {
                 // not a constant
                 if (op.equals("!")) {
-                    val = gen.buildIcmp(builder, Generator.IntNE, zero, val, "tmp_");
+                    val = gen.buildIcmp(builder, IntNE, zero, val, "tmp_");
                     val = gen.buildXor(builder, val, one, "tmp_");
                     val = gen.buildZExtend(builder, val, i32Type, "tmp_");
                     return val;
@@ -371,66 +372,66 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return visitChildren(ctx);
         }
     }
-//    @Override
-//    public ValueRef visitCond(SysYParser.CondContext ctx) {
-//        if (ctx.L_PAREN() != null) {
-//            return visitCond(ctx.cond(0));
-//        } else if (ctx.exp() != null) {
-//            return visitExp(ctx.exp());
-//        } else {
-//            if (ctx.AND() == null && ctx.OR() == null) {
-//                ValueRef c1 = visitCond(ctx.cond(0)), c2 = visitCond(ctx.cond(1));
-//                c1 = LLVMBuildZExt(builder, c1, i32Type, "cond_tmp_");
-//                c2 = LLVMBuildZExt(builder, c2, i32Type, "cond_tmp_");
-//                ValueRef tmp;
-//                if (ctx.EQ() != null) {
-//                    tmp = LLVMBuildICmp(builder, LLVMIntEQ, c1, c2, "cond_eq_tmp_");
-//                } else if (ctx.NEQ() != null) {
-//                    tmp = LLVMBuildICmp(builder, LLVMIntNE, c1, c2, "cond_neq_tmp_");
-//                } else if (ctx.GT() != null) {
-//                    tmp = LLVMBuildICmp(builder, LLVMIntSGT, c1, c2, "cond_gt_tmp_");
-//                } else if (ctx.LT() != null) {
-//                    tmp = LLVMBuildICmp(builder, LLVMIntSLT, c1, c2, "cond_lt_tmp_");
-//                } else if (ctx.GE() != null) {
-//                    tmp = LLVMBuildICmp(builder, LLVMIntSGE, c1, c2, "cond_ge_tmp_");
-//                } else {
-//                    // LE() != null
-//                    tmp = LLVMBuildICmp(builder, LLVMIntSLE, c1, c2, "cond_le_tmp_");
-//                }
-//                tmp = LLVMBuildZExt(builder, tmp, i32Type, "cond_tmp_");
-//                return LLVMBuildICmp(builder, LLVMIntNE, tmp, zero, "cond_");
-//            } else {
-//                // && || need translating to br, to implement circuit computing
-//                SysYParser.CondContext tmp = deleteParen(ctx.cond(0));
-//                BasicBlockRef secondCondBlock = LLVMAppendBasicBlock(currentFunction, "secondCond_");
-//                BasicBlockRef tmpT = True, tmpF = False;
-//                if (tmp.AND() != null || tmp.OR() != null) {
-//                    if (ctx.AND() != null) {
-//                        True = secondCondBlock;
-//                    } else {
-//                        False = secondCondBlock;
-//                    }
-//                }
-//                ValueRef firstCond = visitCond(tmp);
-//                True = tmpT;
-//                False = tmpF;
-//                if (tmp.AND() == null && tmp.OR() == null) {
-//                    firstCond = normalizeCond(firstCond);
-//                    if (ctx.AND() != null) {
-//                        LLVMBuildCondBr(builder, firstCond, secondCondBlock, False);
-//                    } else {
-//                        LLVMBuildCondBr(builder, firstCond, True, secondCondBlock);
-//                    }
-//                }
-//                LLVMPositionBuilderAtEnd(builder, secondCondBlock);
-//                // if curScopeo second, then true is true
-//                ValueRef secondCond = visitCond(deleteParen(ctx.cond(1)));
-//                secondCond = normalizeCond(secondCond);
-//                LLVMBuildCondBr(builder, secondCond, True, False);
-//                return zero; // return value is useless
-//            }
-//        }
-//    }
+    @Override
+    public ValueRef visitCond(SysYParser.CondContext ctx) {
+        if (ctx.L_PAREN() != null) {
+            return visitCond(ctx.cond(0));
+        } else if (ctx.exp() != null) {
+            return visitExp(ctx.exp());
+        } else {
+            if (ctx.AND() == null && ctx.OR() == null) {
+                ValueRef c1 = visitCond(ctx.cond(0)), c2 = visitCond(ctx.cond(1));
+                c1 = gen.buildZExtend(builder, c1, i32Type, "cond_tmp_");
+                c2 = gen.buildZExtend(builder, c2, i32Type, "cond_tmp_");
+                ValueRef tmp;
+                if (ctx.EQ() != null) {
+                    tmp = gen.buildIcmp(builder, IntEQ, c1, c2, "cond_eq_tmp_");
+                } else if (ctx.NEQ() != null) {
+                    tmp = gen.buildIcmp(builder, IntNE, c1, c2, "cond_neq_tmp_");
+                } else if (ctx.GT() != null) {
+                    tmp = gen.buildIcmp(builder, IntSGT, c1, c2, "cond_gt_tmp_");
+                } else if (ctx.LT() != null) {
+                    tmp = gen.buildIcmp(builder, IntSLT, c1, c2, "cond_lt_tmp_");
+                } else if (ctx.GE() != null) {
+                    tmp = gen.buildIcmp(builder, IntSGE, c1, c2, "cond_ge_tmp_");
+                } else {
+                    // LE() != null
+                    tmp = gen.buildIcmp(builder, IntSLE, c1, c2, "cond_le_tmp_");
+                }
+                tmp = gen.buildZExtend(builder, tmp, i32Type, "cond_tmp_");
+                return gen.buildIcmp(builder, IntNE, tmp, zero, "cond_");
+            } else {
+                // && || need translating to br, to implement circuit computing
+                SysYParser.CondContext tmp = deleteParen(ctx.cond(0));
+                BasicBlockRef secondCondBlock = gen.appendBasicBlock(currentFunction, "secondCond_");
+                BasicBlockRef tmpT = True, tmpF = False;
+                if (tmp.AND() != null || tmp.OR() != null) {
+                    if (ctx.AND() != null) {
+                        True = secondCondBlock;
+                    } else {
+                        False = secondCondBlock;
+                    }
+                }
+                ValueRef firstCond = visitCond(tmp);
+                True = tmpT;
+                False = tmpF;
+                if (tmp.AND() == null && tmp.OR() == null) {
+                    firstCond = normalizeCond(firstCond);
+                    if (ctx.AND() != null) {
+                        gen.buildCondBranch(builder, firstCond, secondCondBlock, False);
+                    } else {
+                        gen.buildCondBranch(builder, firstCond, True, secondCondBlock);
+                    }
+                }
+                gen.positionBuilderAtEnd(builder, secondCondBlock);
+                // if curScopeo second, then true is true
+                ValueRef secondCond = visitCond(deleteParen(ctx.cond(1)));
+                secondCond = normalizeCond(secondCond);
+                gen.buildCondBranch(builder, secondCond, True, False);
+                return zero; // return value is useless
+            }
+        }
+    }
     @Override
     public ValueRef visitVarDef(SysYParser.VarDefContext ctx) {
         if (global()) {

@@ -1,7 +1,7 @@
-package main.java.cn.edu.nju.software.frontend.llvm;
+package cn.edu.nju.software.frontend.llvm;
 
-import main.java.cn.edu.nju.software.ir.value.ValueRef;
-import main.java.cn.edu.nju.software.frontend.util.SymbolTable;
+import cn.edu.nju.software.ir.value.ValueRef;
+import cn.edu.nju.software.frontend.util.SymbolTable;
 
 import java.util.ArrayList;
 
