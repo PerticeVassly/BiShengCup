@@ -1,7 +1,5 @@
 package cn.edu.nju.software.ir.value;
 
-
-
 import cn.edu.nju.software.ir.type.TypeRef;
 
 import java.util.ArrayList;

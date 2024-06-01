@@ -3,10 +3,8 @@ package cn.edu.nju.software.frontend.semantic;
 import cn.edu.nju.software.frontend.parser.SysYParser;
 import cn.edu.nju.software.frontend.parser.SysYParserBaseVisitor;
 import cn.edu.nju.software.frontend.type.*;
-import cn.edu.nju.software.frontend.util.ErrorType;
-import cn.edu.nju.software.frontend.util.JudgeList;
-import cn.edu.nju.software.frontend.util.Symbol;
-import cn.edu.nju.software.frontend.util.SymbolTable;
+import cn.edu.nju.software.frontend.util.*;
+
 
 import java.util.ArrayList;
 import java.util.Stack;

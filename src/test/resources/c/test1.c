@@ -1,4 +1,4 @@
-int b;
+int b = 10;
 
 int f(int p1, int p2) {
     return p1 + p2;
@@ -7,10 +7,5 @@ int f(int p1, int p2) {
 int main() {
     int a = b;
     int c = a;
-    if (a == b || b == c) {
-        a = c;
-    } else {
-        b = a;
-    }
     return f(a, c);
 }

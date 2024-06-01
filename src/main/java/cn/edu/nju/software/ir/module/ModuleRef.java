@@ -1,11 +1,11 @@
 package cn.edu.nju.software.ir.module;
 
-
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.value.*;
 
 import java.util.ArrayList;
+import java.io.*;
 
 public class ModuleRef {
     private final String moduleId;
@@ -60,8 +60,30 @@ public class ModuleRef {
         return ir;
     }
 
+    /* implement by sunyiqiu 2024-6-1 */
     public void dumpToFile(String fileName) {
-        // TODO
+        if (fileName == null) {
+            System.err.println("File name is null.");
+            return;
+        }
+        // if file do not exist, create it else clear it's content
+        if (!new java.io.File(fileName).exists()) {
+            try {
+                new java.io.File(fileName).createNewFile();
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        PrintStream consoleStream = System.out;
+        try (PrintStream ps = new PrintStream(new FileOutputStream(fileName))) {
+            System.setOut(ps);
+            dumpToConsole();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            System.setOut(consoleStream);
+        }
     }
 
     public void dumpToConsole() {

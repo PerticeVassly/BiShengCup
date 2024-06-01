@@ -1,7 +1,19 @@
 package cn.edu.nju.software;
 
+import cn.edu.nju.software.frontend.lexer.LexerErrorListener;
+import cn.edu.nju.software.frontend.lexer.SysYLexer;
+import cn.edu.nju.software.frontend.parser.ParserErrorListener;
+import cn.edu.nju.software.frontend.parser.SysYParser;
+import cn.edu.nju.software.frontend.semantic.SysYSemanticVisitor;
+import cn.edu.nju.software.ir.IRVisitor;
+import cn.edu.nju.software.ir.module.ModuleRef;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.bytedeco.llvm.LLVM.LLVMModuleRef;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Main {
@@ -17,6 +29,51 @@ public class Main {
         parseArgs(args);
         assert input != null && output != null;
 
+        CharStream inputStream;
+        try {
+            inputStream = CharStreams.fromFileName(input);
+        } catch (IOException e) {
+            return;
+        }
+
+        // lexer
+        SysYLexer sysYLexer = new SysYLexer(inputStream), lexer;
+        LexerErrorListener lexerErrorListener = new LexerErrorListener();
+        sysYLexer.removeErrorListeners();
+        sysYLexer.addErrorListener(lexerErrorListener);
+        sysYLexer.getAllTokens();
+        if (!lexerErrorListener.noLexerError()) {
+            return;
+        }
+
+        // parser
+        lexer = new SysYLexer(inputStream);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        SysYParser sysYParser = new SysYParser(tokens);
+        ParserErrorListener parserErrorListener = new ParserErrorListener();
+        sysYParser.removeErrorListeners();
+        sysYParser.addErrorListener(parserErrorListener);
+        ParseTree tree = sysYParser.program();
+        if (!parserErrorListener.noParseError()) {
+            return;
+        }
+
+        // semantic
+        SysYSemanticVisitor semanticVisitor = new SysYSemanticVisitor();
+        semanticVisitor.visit(tree);
+        if (!semanticVisitor.noSemanticError()) {
+            return;
+        }
+
+        // generate llvm ir
+        IRVisitor irVisitor = new IRVisitor();
+        irVisitor.visit(tree);
+
+        ModuleRef module = irVisitor.getModule();
+        if (emitLLVM) {
+            module.dumpToFile(output);
+        }
+        // todo: emit assembly
     }
 
     private static void parseArgs(String... args) {

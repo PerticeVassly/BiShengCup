@@ -3,6 +3,7 @@ package cn.edu.nju.software.ir.basicblock;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
+import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
 
