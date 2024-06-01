@@ -1,4 +1,4 @@
-package cn.edu.nju.software.ir;
+package cn.edu.nju.software.ir.generator;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;

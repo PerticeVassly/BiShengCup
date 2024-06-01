@@ -1,4 +1,4 @@
-package cn.edu.nju.software.ir;
+package cn.edu.nju.software.ir.generator;
 
 import cn.edu.nju.software.frontend.llvm.LLVMStack;
 import cn.edu.nju.software.frontend.parser.*;
@@ -6,12 +6,9 @@ import cn.edu.nju.software.frontend.util.*;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
-import cn.edu.nju.software.ir.type.FunctionType;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.type.TypeRef;
-import cn.edu.nju.software.ir.type.VoidType;
+import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.*;
-import static cn.edu.nju.software.ir.Generator.*;
+import static cn.edu.nju.software.ir.generator.Generator.*;
 
 
 import java.util.ArrayList;
@@ -35,6 +32,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     //考虑到我们的语言中仅存在int一个基本类型，可以通过下面的语句为LLVM的int型重命名方便以后使用
     private final IntType i32Type = new IntType();
     private final VoidType voidType = new VoidType();
+    private final FloatType floatType = new FloatType();
 
     private final ValueRef zero = gen.ConstInt(i32Type, 0);
 
@@ -87,11 +85,37 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         }
         return ctx;
     }
+    private void initGlobal() {
+        // runtime library
+        // make sure curScope point to the global
+        if (global()) {
+            FunctionType ft = new FunctionType(i32Type, new ArrayList<>(), 0);
+            curScope.put(new Symbol<>("getint", gen.addFunction(module, ft, "getint")));
+            curScope.put(new Symbol<>("getch", gen.addFunction(module, ft, "getch")));
+
+            ft = new FunctionType(floatType, new ArrayList<>(), 0);
+            curScope.put(new Symbol<>("getfloat", gen.addFunction(module, ft, "getfloat")));
+
+//            ft = new FunctionType(i32Type, new ArrayList<TypeRef>(){{}}, 1); // TODO array type
+
+            ft = new FunctionType(voidType, new ArrayList<TypeRef>(){{add(i32Type);}}, 1);
+            curScope.put(new Symbol<>("putint", gen.addFunction(module, ft, "putint")));
+            curScope.put(new Symbol<>("putch", gen.addFunction(module, ft, "putch")));
+
+            ft = new FunctionType(voidType, new ArrayList<TypeRef>(){{add(floatType);}}, 1);
+            curScope.put(new Symbol<>("putfloat", gen.addFunction(module, ft, "putfloat")));
+
+            ft = new FunctionType(voidType, new ArrayList<>(), 0);
+            curScope.put(new Symbol<>("starttime", gen.addFunction(module, ft, "starttime")));
+            curScope.put(new Symbol<>("stoptime", gen.addFunction(module, ft, "stoptime")));
+        }
+    }
     @Override
     public ValueRef visitProgram(SysYParser.ProgramContext ctx) {
         functionDef = false;
         scope.push(new SymbolTable<>());
         curScope = scope.peek();
+        initGlobal();
         return visitChildren(ctx);
     }
     @Override

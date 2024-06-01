@@ -11,7 +11,7 @@ public class ModuleRef {
     private final ArrayList<GlobalVar> globalVars;
     private final ArrayList<FunctionValue> functions;
     private int globalVarNum;
-    private final ArrayList<String> usedNameList;
+    private final ArrayList<String> libNameList = new ArrayList<>();
 
     private final static String TAB = "  ";
 
@@ -20,7 +20,19 @@ public class ModuleRef {
         globalVars = new ArrayList<>();
         functions = new ArrayList<>();
         globalVarNum = 0;
-        usedNameList = new ArrayList<>();
+        libNameList.add("getint");
+        libNameList.add("getch");
+        libNameList.add("getfloat");
+        libNameList.add("getarray");
+        libNameList.add("getfarray");
+        libNameList.add("putint");
+        libNameList.add("putch");
+        libNameList.add("putfloat");
+        libNameList.add("putarray");
+        libNameList.add("putfarray");
+        libNameList.add("putf");
+        libNameList.add("starttime");
+        libNameList.add("stoptime");
     }
 
     public void addFunction(FunctionValue function) {
@@ -82,6 +94,9 @@ public class ModuleRef {
         }
 
         for (FunctionValue fv : functions) {
+            if (libNameList.contains(fv.getName())) {
+                continue;
+            }
             FunctionType ft = ((FunctionType) fv.getType());
 
             System.out.print("define " + ft.getReturnType() + " @" + fv.getName());
