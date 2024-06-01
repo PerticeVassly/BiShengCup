@@ -4,7 +4,94 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="Framework Perf" />
+    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="merge">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/lexer/LexerErrorListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/lexer/SysYLexer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/llvm/LLVMStack.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/ParserErrorListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$BTypeContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$BlockContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$BlockItemContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$CompUnitContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$CondContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ConstDeclContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ConstDefContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ConstExpContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ConstInitValContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$DeclContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ElseStmtContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ExpContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncDefContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncFParamContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncFParamsContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncNameContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncRParamsContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncTypeContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncUseContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$IfStmtContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$InitValContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$LValContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$NumberContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ParamContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ProgramContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$StmtContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$UnaryOpContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$VarDeclContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$VarDefContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$WhileStmtContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParserBaseListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParserBaseVisitor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParserListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParserVisitor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/semantic/SysYSemanticVisitor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/ArrayType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/FloatType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/FuncType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/IntType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/NullType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/NumberType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/Type.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/VoidType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/util/ErrorType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/util/JudgeList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/util/LineAndType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/util/Symbol.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/util/SymbolTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/Generator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/IRVisitor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/IrGenerator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/basicblock/BasicBlockRef$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/basicblock/BasicBlockRef$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/basicblock/BasicBlockRef.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/builder/BuilderRef.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/module/ModuleRef.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/test.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/type/BoolType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/type/FloatType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/type/FunctionType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/type/IntType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/type/TypeRef.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/type/VoidType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/ConstValue.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/FunctionValue$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/FunctionValue$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/FunctionValue.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/GlobalVar$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/GlobalVar$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/GlobalVar.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/LocalVar.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/ValueRef.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/test/compiler/cn/edu/nju/software/IRTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/compiler/Compiler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/compiler/Compiler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/compiler/cn/edu/nju/software/TestParseTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/compiler/cn/edu/nju/software/TestParseTree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/module/ModuleRef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/module/ModuleRef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cn/edu/nju/software/TestParseTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cn/edu/nju/software/TestParseTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/ll/add.ll" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,25 +112,25 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitLabMergeRequestFiltersHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPENED",
-    "assignee": {
-      "type": "org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue",
-      "username": "T202410284203580",
-      "fullname": "BanGDream!It&#39;sMySYSY"
+  <component name="GitLabMergeRequestFiltersHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPENED&quot;,
+    &quot;assignee&quot;: {
+      &quot;type&quot;: &quot;org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue&quot;,
+      &quot;username&quot;: &quot;T202410284203580&quot;,
+      &quot;fullname&quot;: &quot;BanGDream!It&amp;#39;sMySYSY&quot;
     }
   }
-}]]></component>
-  <component name="GitLabMergeRequestsSettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "first": "https://gitlab.eduxiji.net/T202410284203580/compilers.git",
-    "second": "3a6f9efa-2c2a-4c9a-ae3c-57450bd56874"
+}</component>
+  <component name="GitLabMergeRequestsSettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;first&quot;: &quot;https://gitlab.eduxiji.net/T202410284203580/compilers.git&quot;,
+    &quot;second&quot;: &quot;3a6f9efa-2c2a-4c9a-ae3c-57450bd56874&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2h9IFoqxhOzvgLoMFwAj8y6twlQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -52,13 +139,20 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.IRgenTest.executor": "Run",
+    "Application.test.executor": "Run",
+    "JUnit.IRTest.executor": "Run",
+    "JUnit.IRTest.testIR.executor": "Run",
+    "JUnit.IRTest.testTR.executor": "Run",
+    "JUnit.TestParseTree.executor": "Run",
     "JUnit.TestParseTree.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "sunyiqiu",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/codes/SECI-codes/compilers",
+    "last_opened_file_path": "/home/sunyiqiu/workspace/dev/compiler/compiler/src/test/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -67,11 +161,101 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "build.tools",
+    "settings.editor.selected.configurable": "editing.templates",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources/sy" />
+      <recent name="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.edu.nju.software" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.IRTest">
+    <configuration name="IRTest" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.IRTest" />
+      <module name="compiler" />
+      <option name="PROGRAM_PARAMETERS" value="sy/test1.sy" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/test/resources" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.nju.software.ir.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IRTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.nju.software.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.IRTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IRTest.testIR" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.nju.software.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.IRTest" />
+      <option name="METHOD_NAME" value="testIR" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IRTest.testTR" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.nju.software.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.IRTest" />
+      <option name="METHOD_NAME" value="testTR" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestParseTree" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.nju.software.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.TestParseTree" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestParseTree.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="compiler" />
       <extension name="coverage">
@@ -88,8 +272,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test" type="JUnit" factoryName="JUnit">
+      <module name="compiler" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.IRTest" />
+      <item itemvalue="JUnit.test" />
+      <item itemvalue="JUnit.IRTest" />
+      <item itemvalue="JUnit.IRTest.testIR" />
+      <item itemvalue="JUnit.IRTest.testTR" />
+      <item itemvalue="JUnit.TestParseTree" />
+      <item itemvalue="JUnit.TestParseTree.test" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IRTest" />
+        <item itemvalue="JUnit.IRTest.testIR" />
+        <item itemvalue="JUnit.IRTest.testTR" />
+        <item itemvalue="JUnit.TestParseTree" />
         <item itemvalue="JUnit.TestParseTree.test" />
       </list>
     </recent_temporary>
@@ -111,6 +318,9 @@
       <option name="presentableId" value="Default" />
       <updated>1716999766838</updated>
       <workItem from="1716999768267" duration="12001000" />
+      <workItem from="1717228215622" duration="1099000" />
+      <workItem from="1717229829706" duration="53000" />
+      <workItem from="1717230161186" duration="7723000" />
     </task>
     <task id="LOCAL-00001" summary="Framework">
       <option name="closed" value="true" />
@@ -128,7 +338,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717063204467</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="merge">
+      <option name="closed" value="true" />
+      <created>1717168691103</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717168691103</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +378,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Framework" />
     <MESSAGE value="Framework Perf" />
-    <option name="LAST_COMMIT_MESSAGE" value="Framework Perf" />
+    <MESSAGE value="merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge" />
   </component>
 </project>

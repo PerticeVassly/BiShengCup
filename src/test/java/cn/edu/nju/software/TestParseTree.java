@@ -1,5 +1,5 @@
-package test.java.cn.edu.nju.software;
-import main.java.cn.edu.nju.software.Main;
+package cn.edu.nju.software;
+import cn.edu.nju.software.Main;
 
 import org.junit.Test;
 
