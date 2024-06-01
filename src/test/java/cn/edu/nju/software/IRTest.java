@@ -1,57 +1,65 @@
 package cn.edu.nju.software;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import static org.junit.Assert.*;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-@RunWith(Parameterized.class)
+import cn.edu.nju.software.util.StringSource;
+import cn.edu.nju.software.util.StringSourceExtension;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.Assert.assertEquals;
+
+@ExtendWith(StringSourceExtension.class)
 public class IRTest {
     private static final String PREFIX_SY = "src/test/resources/sy/";
     private static final String PREFIX_LL = "src/test/resources/ll/";
     private static final String PREFIX_LL_REF = "src/test/resources/std/";
     private static final String PREFIX_C = "src/test/resources/c/";
-    private String fileName;
 
-    public IRTest(String fileName) {
-        this.fileName = fileName;
-    }
+    private static final String[] para = {"add", "test1"};
 
-    @Test
-    public void testFrontEnd() {
+    @ParameterizedTest
+    @ValueSource(strings = {"add"})
+    @ValueSource(strings = {"test1"})
+    void testFrontEnd(String name) {
         //iterate all the files in the directory of sy and generate ir in the directory of ll in the same name
-        genIR(fileName);
-        genStdIR(fileName);
-        assertEquals(runStdIR(fileName), runIR(fileName));
+        genIR(name);
+        genStdIR(name);
+        assertEquals(runStdIR(name), runIR(name));
     }
 
+//    @ValueSource(strings = para)
+//    void testAll(String... names) {
+//        //iterate all the files in the directory of sy and generate ir in the directory of ll in the same name
+////        genIR(name);
+////        genStdIR(name);
+////        assertEquals(runStdIR(name), runIR(name));
+//    }
     /**
-     *
-     * @return parameters for {@link #IR}
+     * @return file names of dir PREFIX_SY
      */
-    @Parameterized.Parameters(name = "{index}: Test with {0}")
-    public static Collection<String[]> parameters() {
-        Collection<String[]> filesForTesting = new ArrayList<>();
+    public static Collection<String> parameters() {
         File dir = new File(PREFIX_SY);
         File[] files = dir.listFiles();
-        if (files != null) {
-            for (File file : files) {
-                if (file.isFile()) {
-                    filesForTesting.add(new String[]{file.getName().substring(0, file.getName().lastIndexOf('.'))});
-                }
-            }
-        }
-        return filesForTesting;
+        assert files != null;
+        return Arrays.stream(files)
+                .map(f -> {
+                    Optional<String> str = Arrays.stream(f.getName().split("\\.")).findFirst();
+                    assert str.isPresent();
+                    return str.get();
+                })
+                .collect(Collectors.toSet());
     }
 
-
-    public  int runIR(String fileName){
+    public int runIR(String fileName){
         int exitCodeActual = 0;
         ProcessBuilder builderActual = new ProcessBuilder("lli", PREFIX_LL + fileName + ".ll");
         try {
