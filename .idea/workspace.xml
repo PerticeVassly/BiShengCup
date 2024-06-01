@@ -5,92 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="merge">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/lexer/LexerErrorListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/lexer/SysYLexer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/llvm/LLVMStack.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/ParserErrorListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$BTypeContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$BlockContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$BlockItemContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$CompUnitContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$CondContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ConstDeclContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ConstDefContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ConstExpContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ConstInitValContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$DeclContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ElseStmtContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ExpContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncDefContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncFParamContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncFParamsContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncNameContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncRParamsContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncTypeContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$FuncUseContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$IfStmtContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$InitValContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$LValContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$NumberContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ParamContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$ProgramContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$StmtContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$UnaryOpContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$VarDeclContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$VarDefContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser$WhileStmtContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParser.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParserBaseListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParserBaseVisitor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParserListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/parser/SysYParserVisitor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/semantic/SysYSemanticVisitor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/ArrayType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/FloatType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/FuncType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/IntType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/NullType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/NumberType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/Type.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/type/VoidType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/util/ErrorType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/util/JudgeList.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/util/LineAndType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/util/Symbol.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/frontend/util/SymbolTable.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/Generator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/IRVisitor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/IrGenerator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/basicblock/BasicBlockRef$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/basicblock/BasicBlockRef$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/basicblock/BasicBlockRef.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/builder/BuilderRef.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/module/ModuleRef.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/test.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/type/BoolType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/type/FloatType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/type/FunctionType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/type/IntType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/type/TypeRef.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/type/VoidType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/ConstValue.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/FunctionValue$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/FunctionValue$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/FunctionValue.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/GlobalVar$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/GlobalVar$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/GlobalVar.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/LocalVar.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/ir/value/ValueRef.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/test/compiler/cn/edu/nju/software/IRTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/compiler/Compiler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/compiler/Compiler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/compiler/cn/edu/nju/software/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/compiler/cn/edu/nju/software/TestParseTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/compiler/cn/edu/nju/software/TestParseTree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/module/ModuleRef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/module/ModuleRef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cn/edu/nju/software/TestParseTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cn/edu/nju/software/TestParseTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/ll/add.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/sy/add.sy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/sy/add.sy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,6 +55,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.IRTest.executor": "Run",
     "Application.IRgenTest.executor": "Run",
     "Application.test.executor": "Run",
     "JUnit.IRTest.executor": "Run",
@@ -177,7 +94,7 @@
       <recent name="cn.edu.nju.software" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IRTest">
+  <component name="RunManager" selected="JUnit.IRTest.testIR">
     <configuration name="IRTest" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.IRTest" />
       <module name="compiler" />
@@ -293,8 +210,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.IRTest" />
         <item itemvalue="JUnit.IRTest.testIR" />
+        <item itemvalue="JUnit.IRTest" />
         <item itemvalue="JUnit.IRTest.testTR" />
         <item itemvalue="JUnit.TestParseTree" />
         <item itemvalue="JUnit.TestParseTree.test" />
@@ -320,7 +237,7 @@
       <workItem from="1716999768267" duration="12001000" />
       <workItem from="1717228215622" duration="1099000" />
       <workItem from="1717229829706" duration="53000" />
-      <workItem from="1717230161186" duration="7723000" />
+      <workItem from="1717230161186" duration="8722000" />
     </task>
     <task id="LOCAL-00001" summary="Framework">
       <option name="closed" value="true" />
