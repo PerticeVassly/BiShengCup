@@ -1,5 +1,10 @@
+//include<sylib.h>
 int main() {
-    int a = 1;
-    int b = 2;
-    int c = a + b;
+    int n;
+    n = getInt();
+    float d[3] = {1.0, 2.0, 3.0};
+    float a = 0.1; float b = a + 1;
+    //float e = d[0];
+    //return e;
+    return b;
 }

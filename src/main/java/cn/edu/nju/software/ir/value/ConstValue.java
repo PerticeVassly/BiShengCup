@@ -1,7 +1,7 @@
-package main.java.cn.edu.nju.software.ir.value;
+package cn.edu.nju.software.ir.value;
 
-import main.java.cn.edu.nju.software.ir.type.FloatType;
-import main.java.cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.FloatType;
+import cn.edu.nju.software.ir.type.IntType;
 
 public class ConstValue extends ValueRef {
     private final Object value;

@@ -1,9 +1,8 @@
-package main.java.cn.edu.nju.software.ir.basicblock;
+package cn.edu.nju.software.ir.basicblock;
 
-import main.java.cn.edu.nju.software.ir.type.TypeRef;
-import main.java.cn.edu.nju.software.ir.value.FunctionValue;
-import main.java.cn.edu.nju.software.ir.value.LocalVar;
-import main.java.cn.edu.nju.software.ir.value.ValueRef;
+import cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.ir.value.LocalVar;
 
 import java.util.ArrayList;
 

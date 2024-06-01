@@ -1,15 +1,15 @@
-package main.java.cn.edu.nju.software.ir;
+package cn.edu.nju.software.ir;
 
-import main.java.cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import main.java.cn.edu.nju.software.ir.builder.BuilderRef;
-import main.java.cn.edu.nju.software.ir.module.ModuleRef;
-import main.java.cn.edu.nju.software.ir.type.FunctionType;
-import main.java.cn.edu.nju.software.ir.type.IntType;
-import main.java.cn.edu.nju.software.ir.type.TypeRef;
-import main.java.cn.edu.nju.software.ir.value.ConstValue;
-import main.java.cn.edu.nju.software.ir.value.FunctionValue;
-import main.java.cn.edu.nju.software.ir.value.GlobalVar;
-import main.java.cn.edu.nju.software.ir.value.ValueRef;
+import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.builder.BuilderRef;
+import cn.edu.nju.software.ir.module.ModuleRef;
+import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.value.ConstValue;
+import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.ir.value.GlobalVar;
+import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
 

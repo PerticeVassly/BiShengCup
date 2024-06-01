@@ -1,4 +1,4 @@
-package main.java.cn.edu.nju.software;
+package cn.edu.nju.software;
 
 import org.bytedeco.llvm.LLVM.LLVMModuleRef;
 

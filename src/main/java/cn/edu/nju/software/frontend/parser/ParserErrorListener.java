@@ -1,4 +1,4 @@
-package main.java.cn.edu.nju.software.frontend.parser;
+package cn.edu.nju.software.frontend.parser;
 
 import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.RecognitionException;

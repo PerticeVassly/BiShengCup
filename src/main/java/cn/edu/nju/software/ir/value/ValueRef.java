@@ -1,6 +1,6 @@
-package main.java.cn.edu.nju.software.ir.value;
+package cn.edu.nju.software.ir.value;
 
-import main.java.cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.type.TypeRef;
 
 public class ValueRef {
     protected String name;

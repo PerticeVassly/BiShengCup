@@ -1,4 +1,4 @@
-package main.java.cn.edu.nju.software.frontend.util;
+package cn.edu.nju.software.frontend.util;
 
 public class ErrorType {
     public static int VAR_NOT_DECL = 1;

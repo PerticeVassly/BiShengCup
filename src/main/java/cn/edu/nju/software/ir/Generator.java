@@ -1,10 +1,10 @@
-package main.java.cn.edu.nju.software.ir;
+package cn.edu.nju.software.ir;
 
-import main.java.cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import main.java.cn.edu.nju.software.ir.builder.BuilderRef;
-import main.java.cn.edu.nju.software.ir.module.ModuleRef;
-import main.java.cn.edu.nju.software.ir.type.*;
-import main.java.cn.edu.nju.software.ir.value.*;
+import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.builder.BuilderRef;
+import cn.edu.nju.software.ir.module.ModuleRef;
+import cn.edu.nju.software.ir.type.*;
+import cn.edu.nju.software.ir.value.*;
 
 import java.util.ArrayList;
 

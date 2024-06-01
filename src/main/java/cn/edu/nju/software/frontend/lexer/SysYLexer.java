@@ -1,5 +1,5 @@
 // Generated from src/lexer/SysYLexer.g4 by ANTLR 4.9.1
-package main.java.cn.edu.nju.software.frontend.lexer;
+package cn.edu.nju.software.frontend.lexer;
 
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.ATN;

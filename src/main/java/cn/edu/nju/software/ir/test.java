@@ -1,19 +1,19 @@
-package main.java.cn.edu.nju.software.ir;
+package cn.edu.nju.software.ir;
 
-import main.java.cn.edu.nju.software.frontend.lexer.LexerErrorListener;
-import main.java.cn.edu.nju.software.frontend.lexer.SysYLexer;
-import main.java.cn.edu.nju.software.frontend.parser.*;
-import main.java.cn.edu.nju.software.frontend.semantic.SysYSemanticVisitor;
+import cn.edu.nju.software.frontend.lexer.LexerErrorListener;
+import cn.edu.nju.software.frontend.lexer.SysYLexer;
+import cn.edu.nju.software.frontend.parser.ParserErrorListener;
+import cn.edu.nju.software.frontend.parser.SysYParser;
+import cn.edu.nju.software.frontend.semantic.SysYSemanticVisitor;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.bytedeco.javacpp.BytePointer;
 
 import java.io.IOException;
 
 public class test {
-    public static void main(String[] argv) throws IOException {
+    public static void main(String... argv) throws IOException {
         if (argv.length != 1) {
             System.err.println("argv error");
             return;

@@ -1,10 +1,12 @@
-package main.java.cn.edu.nju.software.frontend.semantic;
+package cn.edu.nju.software.frontend.semantic;
 
-import main.java.cn.edu.nju.software.frontend.parser.SysYParser;
-import main.java.cn.edu.nju.software.frontend.parser.SysYParserBaseVisitor;
-import main.java.cn.edu.nju.software.frontend.type.*;
-import main.java.cn.edu.nju.software.frontend.util.*;
-
+import cn.edu.nju.software.frontend.parser.SysYParser;
+import cn.edu.nju.software.frontend.parser.SysYParserBaseVisitor;
+import cn.edu.nju.software.frontend.type.*;
+import cn.edu.nju.software.frontend.util.ErrorType;
+import cn.edu.nju.software.frontend.util.JudgeList;
+import cn.edu.nju.software.frontend.util.Symbol;
+import cn.edu.nju.software.frontend.util.SymbolTable;
 
 import java.util.ArrayList;
 import java.util.Stack;

@@ -1,17 +1,18 @@
-package main.java.cn.edu.nju.software.ir;
+package cn.edu.nju.software.ir;
 
-import main.java.cn.edu.nju.software.frontend.llvm.LLVMStack;
-import main.java.cn.edu.nju.software.frontend.parser.*;
-import main.java.cn.edu.nju.software.frontend.util.*;
-import main.java.cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import main.java.cn.edu.nju.software.ir.builder.BuilderRef;
-import main.java.cn.edu.nju.software.ir.module.ModuleRef;
-import main.java.cn.edu.nju.software.ir.type.FunctionType;
-import main.java.cn.edu.nju.software.ir.type.IntType;
-import main.java.cn.edu.nju.software.ir.type.TypeRef;
-import main.java.cn.edu.nju.software.ir.type.VoidType;
-import main.java.cn.edu.nju.software.ir.value.*;
-
+import cn.edu.nju.software.frontend.llvm.LLVMStack;
+import cn.edu.nju.software.frontend.parser.SysYParser;
+import cn.edu.nju.software.frontend.parser.SysYParserBaseVisitor;
+import cn.edu.nju.software.frontend.util.Symbol;
+import cn.edu.nju.software.frontend.util.SymbolTable;
+import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.builder.BuilderRef;
+import cn.edu.nju.software.ir.module.ModuleRef;
+import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.type.VoidType;
+import cn.edu.nju.software.ir.value.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
