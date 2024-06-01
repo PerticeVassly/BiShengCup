@@ -1,72 +1,0 @@
-
-™
-java:S1104"XMake VAR_NOT_DECL a static final constant or non-public and provide accessors if needed.(®Ùº³ûÿÿÿÿJ$122d3d10-04f4-4794-a7d5-a58784720a4e
-š
-java:S1104"YMake FUNC_NOT_DECL a static final constant or non-public and provide accessors if needed.(Õí¯âÿÿÿÿÿJ$a7bfb6b9-da48-4590-98f7-dc8836612d37
-’
-java:S1104"VMake VAR_RE_DEF a static final constant or non-public and provide accessors if needed.(€×û¡J$de711081-7331-40fb-babc-a4760ced8801
-˜
-java:S1104"WMake FUNC_RE_DEF a static final constant or non-public and provide accessors if needed.(ğ˜®´şÿÿÿÿJ$c553ca7f-300e-45a3-a57e-1750efd625d1
-˜
-java:S1104"\Make ASSIGN_NOT_MATCH a static final constant or non-public and provide accessors if needed.(Õ•íÒJ$71517219-12e2-4052-b76b-69c9c3996f8b
-™
-java:S1104	"XMake OP_NOT_MATCH a static final constant or non-public and provide accessors if needed.(©•—ĞûÿÿÿÿJ$fd2c0323-49f2-4a6e-a383-11a32d61e4ef
-”
-java:S1104
-"YMake RET_NOT_MATCH a static final constant or non-public and provide accessors if needed.(Ì±IJ$b69e598a-eabc-4d9a-aa85-7dbf18c46f95
-›
-java:S1104"_Make FUNC_PARAMS_INVALID a static final constant or non-public and provide accessors if needed.(¾ƒ¡ôJ$25ebf591-6a13-4321-9b0b-4ed22adc4785
-‘
-java:S1104"UMake NOT_ARRAY a static final constant or non-public and provide accessors if needed.(¦¿ÊŞJ$825a4a81-04d3-4468-9f80-d86521806cf1
-“
-java:S1104"WMake CALL_OF_VAR a static final constant or non-public and provide accessors if needed.(Ş«ßJ$55626a90-4790-4c04-abf4-d817199ed090
-—
-java:S1104"[Make ASSIGN_FOR_FUNC a static final constant or non-public and provide accessors if needed.(ÊÎ£»J$b587ec99-72c3-4203-a719-77ae7e003b7c
-s
-java:S1444"2Make this "public static VAR_NOT_DECL" field final(®Ùº³ûÿÿÿÿJ$f1aca7e7-31b0-48cb-a6a3-0606e40bdb64
-t
-java:S1444"3Make this "public static FUNC_NOT_DECL" field final(Õí¯âÿÿÿÿÿJ$cb125620-3930-4c83-8040-e1e88301c694
-l
-java:S1444"0Make this "public static VAR_RE_DEF" field final(€×û¡J$74d9d8a8-0d34-4d22-a0bb-2ef405ece487
-r
-java:S1444"1Make this "public static FUNC_RE_DEF" field final(ğ˜®´şÿÿÿÿJ$a9e1834c-34f5-461a-b35b-a8e5e0023c6f
-r
-java:S1444"6Make this "public static ASSIGN_NOT_MATCH" field final(Õ•íÒJ$9e137f31-f646-4e4f-9058-d30ffe32926e
-s
-java:S1444	"2Make this "public static OP_NOT_MATCH" field final(©•—ĞûÿÿÿÿJ$a0a298bd-e69e-40bc-b661-17449167882c
-n
-java:S1444
-"3Make this "public static RET_NOT_MATCH" field final(Ì±IJ$930663df-4c93-4fde-b687-dbe0ed24409a
-u
-java:S1444"9Make this "public static FUNC_PARAMS_INVALID" field final(¾ƒ¡ôJ$57c769d8-2237-419d-8e17-af72520c9ecf
-k
-java:S1444"/Make this "public static NOT_ARRAY" field final(¦¿ÊŞJ$3156b5cf-7b7a-49fe-abbd-60065f4340d8
-m
-java:S1444"1Make this "public static CALL_OF_VAR" field final(Ş«ßJ$a5cf5644-bdf6-4204-8553-a924a8b2be44
-q
-java:S1444"5Make this "public static ASSIGN_FOR_FUNC" field final(ÊÎ£»J$71b8404d-41d7-4fbc-829f-ba85e3af17fb
-˜
-java:S3008"WRename this field "VAR_NOT_DECL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®Ùº³ûÿÿÿÿJ$334cfa8d-773f-43ac-95a2-689058fd478a
-™
-java:S3008"XRename this field "FUNC_NOT_DECL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õí¯âÿÿÿÿÿJ$15cbbe11-ff75-498c-9c7c-e18ab9c72b12
-‘
-java:S3008"URename this field "VAR_RE_DEF" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€×û¡J$18890fea-e5b1-4701-8aac-0309cb24438d
-—
-java:S3008"VRename this field "FUNC_RE_DEF" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ˜®´şÿÿÿÿJ$c244053a-16e0-477e-9939-679a781b800f
-—
-java:S3008"[Rename this field "ASSIGN_NOT_MATCH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ•íÒJ$f5afde2f-0330-4dd2-92f3-82de6d4466fb
-˜
-java:S3008	"WRename this field "OP_NOT_MATCH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©•—ĞûÿÿÿÿJ$2b467f8b-6896-4310-a4d0-1d39b917d2fe
-“
-java:S3008
-"XRename this field "RET_NOT_MATCH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì±IJ$ae203002-dfa1-4abb-b46b-f104cf6ced35
-š
-java:S3008"^Rename this field "FUNC_PARAMS_INVALID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾ƒ¡ôJ$4f05fde0-73e5-43e0-a79e-d40c63361c59
-
-java:S3008"TRename this field "NOT_ARRAY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦¿ÊŞJ$2a177f37-0497-403e-b4e7-9944c6be77fa
-’
-java:S3008"VRename this field "CALL_OF_VAR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş«ßJ$76c4139b-7f95-482c-bece-7777c27260b4
-–
-java:S3008"ZRename this field "ASSIGN_FOR_FUNC" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊÎ£»J$85978262-446c-4571-965b-1cbc756afe1c
-{
-java:S1118":Add a private constructor to hide the implicit public one.(ÉÀÎÄøÿÿÿÿJ$53c42ba3-d5cf-4798-8a12-6044d2a0effc
