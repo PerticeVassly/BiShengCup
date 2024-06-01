@@ -5,61 +5,61 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import cn.edu.nju.software.util.StringSource;
-import cn.edu.nju.software.util.StringSourceExtension;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@ExtendWith(StringSourceExtension.class)
-public class IRTest {
+public class TestFrontEnd {
     private static final String PREFIX_SY = "src/test/resources/sy/";
     private static final String PREFIX_LL = "src/test/resources/ll/";
     private static final String PREFIX_LL_REF = "src/test/resources/std/";
     private static final String PREFIX_C = "src/test/resources/c/";
 
-    private static final String[] para = {"add", "test1"};
-
+    /**
+     * test files given by {@link StringSource}
+     * @param name the pure input file name without extension suffix
+     */
     @ParameterizedTest
-    @ValueSource(strings = {"add"})
-    @ValueSource(strings = {"test1"})
+    @StringSource("add")
+    @StringSource("test1")
     void testFrontEnd(String name) {
-        //iterate all the files in the directory of sy and generate ir in the directory of ll in the same name
         genIR(name);
-        genStdIR(name);
-        assertEquals(runStdIR(name), runIR(name));
+        genIRRef(name);
+        assertEquals(runIRRef(name), runIR(name));
     }
 
-//    @ValueSource(strings = para)
-//    void testAll(String... names) {
-//        //iterate all the files in the directory of sy and generate ir in the directory of ll in the same name
-////        genIR(name);
-////        genStdIR(name);
-////        assertEquals(runStdIR(name), runIR(name));
-//    }
+    /**
+     * test all the files in the dir PREFIX_SY
+     * @param name the pure input file name without extension suffix
+     */
+    @ParameterizedTest
+    @MethodSource("parameters")
+    void testAll(String name) {
+        genIR(name);
+        genIRRef(name);
+        assertEquals(runIRRef(name), runIR(name));
+    }
+
     /**
      * @return file names of dir PREFIX_SY
      */
-    public static Collection<String> parameters() {
+    private static Stream<String> parameters() {
         File dir = new File(PREFIX_SY);
         File[] files = dir.listFiles();
         assert files != null;
-        return Arrays.stream(files)
-                .map(f -> {
-                    Optional<String> str = Arrays.stream(f.getName().split("\\.")).findFirst();
-                    assert str.isPresent();
-                    return str.get();
-                })
-                .collect(Collectors.toSet());
+        return Arrays.stream(files).map(f -> {
+            Optional<String> str = Arrays.stream(f.getName().split("\\.")).findFirst();
+            assert str.isPresent();
+            return str.get();
+        });
     }
 
-    public int runIR(String fileName){
+    private int runIR(String fileName){
         int exitCodeActual = 0;
         ProcessBuilder builderActual = new ProcessBuilder("lli", PREFIX_LL + fileName + ".ll");
         try {
@@ -88,8 +88,7 @@ public class IRTest {
         return exitCodeActual;
     }
 
-    public int runStdIR(String fileName) {
-
+    private int runIRRef(String fileName) {
         int exitCodeExpected = 0;
         ProcessBuilder builderExpected = new ProcessBuilder("lli", PREFIX_LL_REF + fileName + ".ll");
         try{
@@ -102,9 +101,16 @@ public class IRTest {
         return exitCodeExpected;
     }
 
-    public void genStdIR(String fileName){
-        //copy .sy into .c
-        ProcessBuilder builder1 = new ProcessBuilder("cp", PREFIX_SY + fileName + ".sy", PREFIX_C + fileName + ".c");
+    private void genIR(String name) {
+        // sy/a.sy -> ll/a.ll
+        String inputPath = PREFIX_SY + name + ".sy";
+        String outputPath = PREFIX_LL + name + ".ll";
+        Main.main(inputPath, "-o", outputPath, "--emit-llvm", "-O0");
+    }
+
+    private void genIRRef(String name){
+        // .sy -> .c
+        ProcessBuilder builder1 = new ProcessBuilder("cp", PREFIX_SY + name + ".sy", PREFIX_C + name + ".c");
         try {
             Process process = builder1.start();
             process.waitFor();
@@ -112,8 +118,8 @@ public class IRTest {
             e.printStackTrace();
         }
 
-        String source = PREFIX_C + fileName + ".c";
-        String dest = PREFIX_LL_REF + fileName + ".ll";
+        String source = PREFIX_C + name + ".c";
+        String dest = PREFIX_LL_REF + name + ".ll";
         ProcessBuilder builder2 = new ProcessBuilder("clang", "-S", "-emit-llvm", source, "-o",dest);
         try {
             Process process = builder2.start();
@@ -123,10 +129,4 @@ public class IRTest {
         }
     }
 
-    public void genIR(String name) {
-        // sy/a.sy -> ll/a.ll
-        String inputPath = PREFIX_SY + name + ".sy";
-        String outputPath = PREFIX_LL + name + ".ll";
-        Main.main(inputPath, "-o", outputPath, "--emit-llvm", "-O0");
-    }
 }
