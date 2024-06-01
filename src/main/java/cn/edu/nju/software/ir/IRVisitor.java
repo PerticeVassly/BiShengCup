@@ -58,6 +58,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         return scope.size() == 1;
     }
 
+    public ModuleRef getModule() {
+        return module;
+    }
+
     public void dumpModuleToConsole() {
         module.dumpToConsole();
     }
