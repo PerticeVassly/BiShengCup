@@ -36,7 +36,6 @@ target/
 /nbdist/
 /.nb-gradle/
 build/
-pom.xml
 
 ### VS Code ###
 .vscode/
