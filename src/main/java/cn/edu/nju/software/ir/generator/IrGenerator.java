@@ -3,6 +3,7 @@ package cn.edu.nju.software.ir.generator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
+import cn.edu.nju.software.ir.type.BoolType;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.TypeRef;
@@ -55,5 +56,8 @@ import java.util.ArrayList;
      ValueRef positionBuilderAtEnd(BuilderRef builder, BasicBlockRef block);
 
      ConstValue ConstInt(IntType type, int value);
+
+     ConstValue ConstBool(BoolType type, boolean value);
+
      BasicBlockRef appendBasicBlock(FunctionValue function, String blockName);
 }

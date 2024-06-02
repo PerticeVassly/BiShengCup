@@ -275,7 +275,7 @@ public class Generator implements IrGenerator {
     }
     @Override
     public ValueRef buildBranch(BuilderRef builder, BasicBlockRef targetBlock) {
-        String ir = BR + LABEL +  LOCAL + targetBlock.getName();
+        String ir = BR + LABEL + LOCAL + targetBlock.getName();
         builder.put(ir);
         builder.addPredForTargetBlock(targetBlock);
         return null;
@@ -286,8 +286,13 @@ public class Generator implements IrGenerator {
         if (!(condTy instanceof BoolType)) {
             System.err.println("Type of cond must be BoolType.");
         }
-        String ir = BR + condTy.toString() + " " + LOCAL + cond.getName() + DELIMITER + // br i1 %cond,
-                LABEL + LOCAL + ifTrue.getName() + DELIMITER +  // br i1 %cond, label %ifTrue,
+        String ir = BR + condTy.toString() + " ";
+        if (!(cond instanceof ConstValue)){
+            ir += LOCAL + cond.getName() + DELIMITER;// br i1 %cond,
+        } else {
+            ir += ((ConstValue) cond).getValue() + DELIMITER;
+        }
+        ir += LABEL + LOCAL + ifTrue.getName() + DELIMITER +  // br i1 %cond, label %ifTrue,
                 LABEL + LOCAL + ifFalse.getName(); // br i1 %cond, label %ifTrue, label %ifFalse
         builder.put(ir);
         builder.addPredForTargetBlock(ifTrue);
@@ -302,6 +307,10 @@ public class Generator implements IrGenerator {
 
     @Override
     public ConstValue ConstInt(IntType type, int value) {
+        return new ConstValue(type, value);
+    }
+    @Override
+    public ConstValue ConstBool(BoolType type, boolean value) {
         return new ConstValue(type, value);
     }
     @Override

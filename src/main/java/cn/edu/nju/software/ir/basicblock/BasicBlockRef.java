@@ -14,7 +14,7 @@ public class BasicBlockRef {
     private final ArrayList<String> irs;
     private int irNum;
     private final FunctionValue function;
-    private ArrayList<BasicBlockRef> pred;
+    private final ArrayList<BasicBlockRef> pred;
     private int predNum;
 
     public BasicBlockRef(FunctionValue fv, String name) {

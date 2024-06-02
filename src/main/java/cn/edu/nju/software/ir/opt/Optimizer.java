@@ -18,6 +18,12 @@ public class Optimizer {
             for (int j = 0; j < fv.getBlockNum(); j++) {
                 BasicBlockRef block = fv.getBlock(j); // function's j-th block
                 if (IsAUselessBlock(block)) { // if it is a useless block
+                    if (!block.hasPred()) {
+                        // block is inaccessible, delete it directly
+                        fv.dropBlock(block);
+                        j--;
+                        continue;
+                    }
                     for (int k = 0; k < block.getPredNum(); k++){
                         BasicBlockRef pred = block.getPred(k); // get its pred block
                         // prepare to replace the jump target label in its pred block
@@ -53,7 +59,8 @@ public class Optimizer {
     }
 
     private boolean IsAUselessBlock(BasicBlockRef block) {
-        return block.getIrNum() == 0 || block.getIr(0).startsWith("br");
+        return (block.getIrNum() == 0 && !block.hasPred()) || // an empty block and inaccessible
+                (block.getIr(0).startsWith("br") && numberOfLabels(block.getIr(0)) == 1); // a block with only an unconditional jump
     }
 
     /**
