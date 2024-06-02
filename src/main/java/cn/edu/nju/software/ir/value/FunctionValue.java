@@ -7,6 +7,7 @@ import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.TypeRef;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class FunctionValue extends ValueRef {
     private final ArrayList<LocalVar> params;
@@ -80,5 +81,13 @@ public class FunctionValue extends ValueRef {
 
     public LocalVar getParam(int index) {
         return params.get(index);
+    }
+
+    /**
+     * This method should be call only if entering a new module
+     */
+    public static void clearDeclNames() {
+        Stream.of(funcDeclUsedNames, funcDeclUsedNamesFreq)
+                .forEach(ArrayList::clear);
     }
 }

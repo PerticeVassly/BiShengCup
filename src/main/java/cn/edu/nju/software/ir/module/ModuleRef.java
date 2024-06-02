@@ -22,6 +22,8 @@ public class ModuleRef {
         functions = new ArrayList<>();
         globalVarNum = 0;
         usedNameList = new ArrayList<>();
+        // multi-module support:
+        FunctionValue.clearDeclNames();
     }
 
     public void addFunction(FunctionValue function) {
@@ -88,7 +90,7 @@ public class ModuleRef {
 
     public void dumpToConsole() {
         System.out.println("; ModuleId = '" + moduleId + "'");
-        System.out.println("source_filename = '" + moduleId + "'");
+        System.out.println("source_filename = \"" + moduleId + "\"");
         System.out.println(); // an empty line
         // declare global var
         for (GlobalVar gv : globalVars) {

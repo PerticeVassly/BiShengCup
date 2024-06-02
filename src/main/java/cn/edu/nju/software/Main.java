@@ -24,8 +24,12 @@ public class Main {
     private static boolean emitLLVM = false;
     private static boolean emitAssembly = false;
 
-
     public static void main(String... args) {
+        new Thread(() -> execute(args))
+                .start();
+    }
+
+    private static void execute(String... args) {
         parseArgs(args);
         assert input != null && output != null;
 
@@ -37,18 +41,13 @@ public class Main {
         }
 
         // lexer
-        SysYLexer sysYLexer = new SysYLexer(inputStream), lexer;
+        SysYLexer sysYLexer = new SysYLexer(inputStream);
         LexerErrorListener lexerErrorListener = new LexerErrorListener();
         sysYLexer.removeErrorListeners();
         sysYLexer.addErrorListener(lexerErrorListener);
-        sysYLexer.getAllTokens();
-        if (!lexerErrorListener.noLexerError()) {
-            return;
-        }
 
         // parser
-        lexer = new SysYLexer(inputStream);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        CommonTokenStream tokens = new CommonTokenStream(sysYLexer);
         SysYParser sysYParser = new SysYParser(tokens);
         ParserErrorListener parserErrorListener = new ParserErrorListener();
         sysYParser.removeErrorListeners();
@@ -88,7 +87,7 @@ public class Main {
                     optimized = false;
                     break;
                 case "-O1":
-                    case "-O2":
+                case "-O2":
                     optimized = true;
                     break;
                 case "--emit-llvm":

@@ -27,6 +27,7 @@ public class TestFrontEnd {
     @ParameterizedTest
     @StringSource("add")
     @StringSource("test1")
+    @StringSource("merge-sort")
     void testFrontEnd(String name) throws IOException, InterruptedException{
         genIR(name);
         genIRRef(name);
@@ -39,7 +40,7 @@ public class TestFrontEnd {
      */
     @ParameterizedTest
     @MethodSource("parameters")
-    void testAll(String name) throws IOException, InterruptedException{
+    void testAll(String name) throws IOException, InterruptedException {
         genIR(name);
         genIRRef(name);
         assertEquals(runIRRef(name), runIR(name));
@@ -96,6 +97,7 @@ public class TestFrontEnd {
         // sy/a.sy -> ll/a.ll
         String inputPath = PREFIX_SY + name + ".sy";
         String outputPath = PREFIX_LL + name + ".ll";
+
         Main.main(inputPath, "-o", outputPath, "--emit-llvm", "-O0");
     }
 
