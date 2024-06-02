@@ -1,8 +1,8 @@
 ; ModuleId = 'module'
-source_filename = "module"
+source_filename = 'module'
 
 define i32 @main() {
-mainEntry:
+mainEntry2:
   ret i32 100
 }
 

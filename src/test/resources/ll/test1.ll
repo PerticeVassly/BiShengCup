@@ -1,10 +1,10 @@
 ; ModuleId = 'module'
-source_filename = "module"
+source_filename = 'module'
 
-@b = global i32 10
+@b1 = global i32 10
 
 define i32 @f(i32 %0, i32 %1) {
-fEntry:
+fEntry1:
   %p1 = alloca i32, align 4
   store i32 %0, i32* %p1, align 4
   %p2 = alloca i32, align 4
@@ -16,9 +16,9 @@ fEntry:
 }
 
 define i32 @main() {
-mainEntry1:
+mainEntry3:
   %a = alloca i32, align 4
-  %b = load i32, i32* @b, align 4
+  %b = load i32, i32* @b1, align 4
   store i32 %b, i32* %a, align 4
   %c = alloca i32, align 4
   %a1 = load i32, i32* %a, align 4
