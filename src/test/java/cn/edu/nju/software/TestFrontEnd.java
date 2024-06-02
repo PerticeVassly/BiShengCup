@@ -52,8 +52,8 @@ public class TestFrontEnd {
         String llPath = PREFIX_LL + name + ".ll";
         String llRefPath = PREFIX_LL_REF + name + ".ll";
 
-        result res = runIR(syPath, llPath);
-        result resRef = runIRRef(syPath, llRefPath);
+        RunIRResult res = runIR(syPath, llPath);
+        RunIRResult resRef = runIRRef(syPath, llRefPath);
 
         assertTrue(res.success() && resRef.success());
         assertEquals(resRef.exitCode(), res.exitCode());
@@ -74,20 +74,20 @@ public class TestFrontEnd {
         });
     }
 
-    private static result runIR(String input, String output) throws IOException, InterruptedException {
+    private static RunIRResult runIR(String input, String output) throws IOException, InterruptedException {
         genIR(input, output);
         cmdExecutor.exec("lli", output);
         if(cmdExecutor.hasError()){
             System.out.println("Error:");
             System.out.println(cmdExecutor.getErrorInfo());
         }
-        return new result(cmdExecutor.getExitCode(), !cmdExecutor.hasError(), cmdExecutor.getOutputInfo());
+        return new RunIRResult(cmdExecutor.getExitCode(), !cmdExecutor.hasError(), cmdExecutor.getOutputInfo());
     }
 
-    private static result runIRRef(String input, String output) throws InterruptedException, IOException {
+    private static RunIRResult runIRRef(String input, String output) throws InterruptedException, IOException {
         genIRRef(input, output);
         cmdExecutor.exec("lli", output);
-        return new result(cmdExecutor.getExitCode(), !cmdExecutor.hasError(), cmdExecutor.getOutputInfo());
+        return new RunIRResult(cmdExecutor.getExitCode(), !cmdExecutor.hasError(), cmdExecutor.getOutputInfo());
     }
 
     private static void genIR(String input, String output) {
