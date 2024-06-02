@@ -5,6 +5,9 @@ import cn.edu.nju.software.ir.opt.Optimizer;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.value.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class ModuleRef {
@@ -20,6 +23,7 @@ public class ModuleRef {
         this.moduleId = moduleName;
         globalVars = new ArrayList<>();
         functions = new ArrayList<>();
+        FunctionValue.clearDeclNames();
         globalVarNum = 0;
         libNameList.add("getint");
         libNameList.add("getch");
@@ -82,28 +86,28 @@ public class ModuleRef {
 
     public void dumpToFile(String fileName) {
         // TODO
-//        if (fileName == null) {
-//            System.err.println("File name is null.");
-//            return;
-//        }
-//        // if file do not exist, create it else clear it's content
-//        if (!new java.io.File(fileName).exists()) {
-//            try {
-//                new java.io.File(fileName).createNewFile();
-//            } catch (java.io.IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        PrintStream consoleStream = System.out;
-//        try (PrintStream ps = new PrintStream(new FileOutputStream(fileName))) {
-//            System.setOut(ps);
-//            dumpToConsole();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } finally {
-//            System.setOut(consoleStream);
-//        }
+        if (fileName == null) {
+            System.err.println("File name is null.");
+            return;
+        }
+        // if file do not exist, create it else clear it's content
+        if (!new java.io.File(fileName).exists()) {
+            try {
+                new java.io.File(fileName).createNewFile();
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        PrintStream consoleStream = System.out;
+        try (PrintStream ps = new PrintStream(new FileOutputStream(fileName))) {
+            System.setOut(ps);
+            dumpToConsole();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            System.setOut(consoleStream);
+        }
 
     }
 

@@ -5,13 +5,12 @@ import cn.edu.nju.software.frontend.lexer.SysYLexer;
 import cn.edu.nju.software.frontend.parser.ParserErrorListener;
 import cn.edu.nju.software.frontend.parser.SysYParser;
 import cn.edu.nju.software.frontend.semantic.SysYSemanticVisitor;
-import cn.edu.nju.software.ir.IRVisitor;
+import cn.edu.nju.software.ir.generator.IRVisitor;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.bytedeco.llvm.LLVM.LLVMModuleRef;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -25,8 +24,12 @@ public class Main {
     private static boolean emitAssembly = false;
 
     public static void main(String... args) {
-        new Thread(() -> execute(args))
-                .start();
+        Thread t = new Thread(() -> execute(args));
+        t.start();
+        try {
+            t.join();
+        } catch (Exception ignored) {}
+
     }
 
     private static void execute(String... args) {

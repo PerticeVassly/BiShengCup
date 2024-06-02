@@ -286,10 +286,14 @@ define dso_local i32 @main() #0 {
   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 16 %5, i8* align 16 bitcast ([6 x i32]* @__const.main.arr to i8*), i64 24, i1 false)
   store i32 6, i32* %3, align 4
   %6 = getelementptr inbounds [6 x i32], [6 x i32]* %2, i64 0, i64 0
-  %7 = load i32, i32* %6, align 16
-  store i32 %7, i32* %4, align 4
-  %8 = load i32, i32* %4, align 4
-  ret i32 %8
+  %7 = load i32, i32* %3, align 4
+  %8 = sub nsw i32 %7, 1
+  call void @mergeSort(i32* noundef %6, i32 noundef 0, i32 noundef %8)
+  %9 = getelementptr inbounds [6 x i32], [6 x i32]* %2, i64 0, i64 0
+  %10 = load i32, i32* %9, align 16
+  store i32 %10, i32* %4, align 4
+  %11 = load i32, i32* %4, align 4
+  ret i32 %11
 }
 
 ; Function Attrs: argmemonly nofree nounwind willreturn

@@ -9,6 +9,8 @@ import java.util.stream.Stream;
 import cn.edu.nju.software.util.CmdExecutor;
 
 import cn.edu.nju.software.util.StringSource;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -19,10 +21,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TestFrontEnd {
     private static final String PREFIX_SY = "src/test/resources/sy/";
     private static final String PREFIX_LL = "src/test/resources/ll/";
-    private static final String PREFIX_LL_REF = "src/test/resources/std/";
+    private static final String PREFIX_LL_REF = "src/test/resources/ll_ref/";
     private static final String PREFIX_C = "src/test/resources/c/";
 
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
+
+    @BeforeEach
+    void clean() throws IOException, InterruptedException {
+        cmdExecutor.exec("rm", PREFIX_LL + "*.ll");
+        cmdExecutor.exec("rm", PREFIX_LL_REF + "*.ll");
+    }
 
     /**
      * test files given by {@link StringSource}
@@ -31,6 +39,7 @@ public class TestFrontEnd {
     @ParameterizedTest
     @StringSource("add")
     @StringSource("test1")
+    @StringSource("prime")
     @StringSource("floattest1")
     @StringSource("merge-sort")
     void testFrontEnd(String name) throws IOException, InterruptedException{
@@ -76,6 +85,7 @@ public class TestFrontEnd {
 
     private static RunIRResult runIR(String input, String output) throws IOException, InterruptedException {
         genIR(input, output);
+        // wait
         cmdExecutor.exec("lli", output);
         if(cmdExecutor.hasError()){
             System.out.println("Error:");
@@ -95,7 +105,8 @@ public class TestFrontEnd {
     }
 
     private static void genIRRef(String input, String output) throws IOException, InterruptedException {
-        String cInput = input.replace(".sy", ".c");
+        String cInput = input.replace(".sy", ".c")
+                .replace("resources/sy", "resources/c");
         cmdExecutor.exec("cp", input, cInput);
         cmdExecutor.exec("clang", "-S", "-emit-llvm", cInput, "-o", output);
     }

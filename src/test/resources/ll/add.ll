@@ -2,7 +2,7 @@
 source_filename = "module"
 
 define i32 @main() {
-mainEntry1:
+mainEntry:
   ret i32 100
 }
 

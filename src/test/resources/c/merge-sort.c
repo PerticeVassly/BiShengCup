@@ -54,7 +54,7 @@ void mergeSort(int arr[], int left, int right) {
 int main() {
     int arr[6] = {12, 11, 13, 5, 6, 7};
     int arr_size = 6;
-    // mergeSort(arr, 0, arr_size - 1);
+    mergeSort(arr, 0, arr_size - 1);
     int first = arr[0];
     return first;
 }

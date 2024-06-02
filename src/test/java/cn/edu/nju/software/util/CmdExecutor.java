@@ -3,6 +3,7 @@ package cn.edu.nju.software.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class CmdExecutor {
     private int exitCode;
@@ -10,8 +11,8 @@ public class CmdExecutor {
     private String errorInfo;
     private Boolean hasError = false;
 
-    public void exec(String command, String... params) throws IOException, InterruptedException {
-        ProcessBuilder pb = new ProcessBuilder(command, String.join(" ", params));
+    public void exec(String... terms) throws IOException, InterruptedException {
+        ProcessBuilder pb = new ProcessBuilder(terms);
         Process process = pb.start();
         exitCode = process.waitFor();
         output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + "\n");

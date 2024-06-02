@@ -56,6 +56,10 @@ public class FunctionValue extends ValueRef {
         return blockNum;
     }
 
+    public BasicBlockRef getBlock(int index) {
+        return blocks.get(index);
+    }
+
     public BasicBlockRef getBasicBlockRef(int index) {
         return blocks.get(index);
     }
@@ -81,6 +85,21 @@ public class FunctionValue extends ValueRef {
 
     public LocalVar getParam(int index) {
         return params.get(index);
+    }
+
+    public int getLengthOfLongestBlockName() {
+        int len = 0;
+        for (BasicBlockRef b : blocks) {
+            if (b.getName().length() > len) {
+                len = b.getName().length();
+            }
+        }
+        return len;
+    }
+
+    public void dropBlock(BasicBlockRef basicBlockRef) {
+        blocks.remove(basicBlockRef);
+        blockNum--;
     }
 
     /**
