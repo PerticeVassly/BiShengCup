@@ -24,56 +24,9 @@ public class Main {
     private static boolean emitLLVM = false;
     private static boolean emitAssembly = false;
 
-
     public static void main(String... args) {
-        parseArgs(args);
-        assert input != null && output != null;
-
-        CharStream inputStream;
-        try {
-            inputStream = CharStreams.fromFileName(input);
-        } catch (IOException e) {
-            return;
-        }
-
-        // lexer
-        SysYLexer sysYLexer = new SysYLexer(inputStream), lexer;
-        LexerErrorListener lexerErrorListener = new LexerErrorListener();
-        sysYLexer.removeErrorListeners();
-        sysYLexer.addErrorListener(lexerErrorListener);
-        sysYLexer.getAllTokens();
-        if (!lexerErrorListener.noLexerError()) {
-            return;
-        }
-
-        // parser
-        lexer = new SysYLexer(inputStream);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        SysYParser sysYParser = new SysYParser(tokens);
-        ParserErrorListener parserErrorListener = new ParserErrorListener();
-        sysYParser.removeErrorListeners();
-        sysYParser.addErrorListener(parserErrorListener);
-        ParseTree tree = sysYParser.program();
-        if (!parserErrorListener.noParseError()) {
-            return;
-        }
-
-        // semantic
-        SysYSemanticVisitor semanticVisitor = new SysYSemanticVisitor();
-        semanticVisitor.visit(tree);
-        if (!semanticVisitor.noSemanticError()) {
-            return;
-        }
-
-        // generate llvm ir
-        IRVisitor irVisitor = new IRVisitor();
-        irVisitor.visit(tree);
-
-        ModuleRef module = irVisitor.getModule();
-        if (emitLLVM) {
-            module.dumpToFile(output);
-        }
-        // todo: emit assembly
+        new Thread(() -> execute(args))
+                .start();
     }
 
     private static void parseArgs(String... args) {
@@ -104,5 +57,51 @@ public class Main {
                     }
             }
         });
+    }
+
+    private static void execute(String... args) {
+        parseArgs(args);
+        assert input != null && output != null;
+
+        CharStream inputStream;
+        try {
+            inputStream = CharStreams.fromFileName(input);
+        } catch (IOException e) {
+            return;
+        }
+
+        // lexer
+        SysYLexer sysYLexer = new SysYLexer(inputStream);
+        LexerErrorListener lexerErrorListener = new LexerErrorListener();
+        sysYLexer.removeErrorListeners();
+        sysYLexer.addErrorListener(lexerErrorListener);
+
+        // parser
+        CommonTokenStream tokens = new CommonTokenStream(sysYLexer);
+        SysYParser sysYParser = new SysYParser(tokens);
+        ParserErrorListener parserErrorListener = new ParserErrorListener();
+        sysYParser.removeErrorListeners();
+        sysYParser.addErrorListener(parserErrorListener);
+        ParseTree tree = sysYParser.program();
+        if (!parserErrorListener.noParseError()) {
+            return;
+        }
+
+        // semantic
+        SysYSemanticVisitor semanticVisitor = new SysYSemanticVisitor();
+        semanticVisitor.visit(tree);
+        if (!semanticVisitor.noSemanticError()) {
+            return;
+        }
+
+        // generate llvm ir
+        IRVisitor irVisitor = new IRVisitor();
+        irVisitor.visit(tree);
+
+        ModuleRef module = irVisitor.getModule();
+        if (emitLLVM) {
+            module.dumpToFile(output);
+        }
+        // todo: emit assembly
     }
 }

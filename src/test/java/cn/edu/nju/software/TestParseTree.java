@@ -1,7 +1,6 @@
 package cn.edu.nju.software;
-import cn.edu.nju.software.Main;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class TestParseTree {
     private static final String PREFIX_SY = "src/test/resources/sy";
