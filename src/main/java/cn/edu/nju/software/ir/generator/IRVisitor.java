@@ -1,4 +1,4 @@
-package cn.edu.nju.software.ir;
+package cn.edu.nju.software.ir.generator;
 
 import cn.edu.nju.software.frontend.llvm.LLVMStack;
 import cn.edu.nju.software.frontend.parser.*;
@@ -6,12 +6,9 @@ import cn.edu.nju.software.frontend.util.*;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
-import cn.edu.nju.software.ir.type.FunctionType;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.type.TypeRef;
-import cn.edu.nju.software.ir.type.VoidType;
+import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.*;
-import static cn.edu.nju.software.ir.Generator.*;
+import static cn.edu.nju.software.ir.generator.Generator.*;
 
 
 import java.util.ArrayList;
@@ -34,7 +31,9 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 
     //考虑到我们的语言中仅存在int一个基本类型，可以通过下面的语句为LLVM的int型重命名方便以后使用
     private final IntType i32Type = new IntType();
+    private final BoolType i1Type = new BoolType();
     private final VoidType voidType = new VoidType();
+    private final FloatType floatType = new FloatType();
 
     private final ValueRef zero = gen.ConstInt(i32Type, 0);
 
@@ -91,11 +90,37 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         }
         return ctx;
     }
+    private void initGlobal() {
+        // runtime library
+        // make sure curScope point to the global
+        if (global()) {
+            FunctionType ft = new FunctionType(i32Type, new ArrayList<>(), 0);
+            curScope.put(new Symbol<>("getint", gen.addFunction(module, ft, "getint")));
+            curScope.put(new Symbol<>("getch", gen.addFunction(module, ft, "getch")));
+
+            ft = new FunctionType(floatType, new ArrayList<>(), 0);
+            curScope.put(new Symbol<>("getfloat", gen.addFunction(module, ft, "getfloat")));
+
+//            ft = new FunctionType(i32Type, new ArrayList<TypeRef>(){{}}, 1); // TODO array type
+
+            ft = new FunctionType(voidType, new ArrayList<TypeRef>(){{add(i32Type);}}, 1);
+            curScope.put(new Symbol<>("putint", gen.addFunction(module, ft, "putint")));
+            curScope.put(new Symbol<>("putch", gen.addFunction(module, ft, "putch")));
+
+            ft = new FunctionType(voidType, new ArrayList<TypeRef>(){{add(floatType);}}, 1);
+            curScope.put(new Symbol<>("putfloat", gen.addFunction(module, ft, "putfloat")));
+
+            ft = new FunctionType(voidType, new ArrayList<>(), 0);
+            curScope.put(new Symbol<>("starttime", gen.addFunction(module, ft, "starttime")));
+            curScope.put(new Symbol<>("stoptime", gen.addFunction(module, ft, "stoptime")));
+        }
+    }
     @Override
     public ValueRef visitProgram(SysYParser.ProgramContext ctx) {
         functionDef = false;
         scope.push(new SymbolTable<>());
         curScope = scope.peek();
+        initGlobal();
         return visitChildren(ctx);
     }
     @Override
@@ -155,7 +180,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         }
         haveReturn = false;
         ValueRef ret = visitBlock(ctx.block());
-        if (!haveReturn) {
+        if (!haveReturn && retType instanceof VoidType) {
             // void function and haven't return
             gen.buildReturnVoid(builder);
             haveReturn = true;
@@ -317,7 +342,9 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             }
             // while body part appends on whileBody block
             gen.positionBuilderAtEnd(builder, whileBody);
+            boolean t = haveReturn;
             ValueRef ret = visitStmt(ctx.whileStmt().stmt());
+            haveReturn = t;
             // while body ends, jmp whileCond
             gen.buildBranch(builder, whileCond);
             // while part finished, other irs append on next block
@@ -362,13 +389,21 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             }
             // the ifTrue block runs the ifStmt irs
             gen.positionBuilderAtEnd(builder, ifTrue);
+            boolean t = haveReturn;
             ValueRef ret = visitStmt(ctx.ifStmt().stmt());
-            gen.buildBranch(builder, next);
+            if (!haveReturn) {
+                gen.buildBranch(builder, next);
+            }
+            haveReturn = t;
             // discuss the "else", exist or not
             if (ctx.ELSE() != null) {
                 gen.positionBuilderAtEnd(builder, ifFalse);
+                t = haveReturn;
                 ret = visitStmt(ctx.elseStmt().stmt());
-                gen.buildBranch(builder, next);
+                if (!haveReturn){
+                    gen.buildBranch(builder, next);
+                }
+                haveReturn = t;
             }
             gen.positionBuilderAtEnd(builder, next);
             return ret;
@@ -385,20 +420,36 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else {
             if (ctx.AND() == null && ctx.OR() == null) {
                 ValueRef c1 = visitCond(ctx.cond(0)), c2 = visitCond(ctx.cond(1));
-                c1 = gen.buildZExtend(builder, c1, i32Type, "cond_tmp_");
-                c2 = gen.buildZExtend(builder, c2, i32Type, "cond_tmp_");
+                if (c1.getType() instanceof BoolType) {
+                    c1 = gen.buildZExtend(builder, c1, i32Type, "cond_tmp_");
+                }
+                if (c2.getType() instanceof BoolType){
+                    c2 = gen.buildZExtend(builder, c2, i32Type, "cond_tmp_");
+                }
                 ValueRef tmp;
                 if (ctx.EQ() != null) {
+                    // TODO int and float? e.g. 1 == 1.0
+                    if (c1 instanceof ConstValue && c2 instanceof ConstValue) {
+                        return gen.ConstBool(i1Type, ((ConstValue) c1).getValue().equals(((ConstValue) c2).getValue()));
+                    }
                     tmp = gen.buildIcmp(builder, IntEQ, c1, c2, "cond_eq_tmp_");
                 } else if (ctx.NEQ() != null) {
+                    // TODO
+                    if (c1 instanceof ConstValue && c2 instanceof ConstValue) {
+                        return gen.ConstBool(i1Type, !((ConstValue) c1).getValue().equals(((ConstValue) c2).getValue()));
+                    }
                     tmp = gen.buildIcmp(builder, IntNE, c1, c2, "cond_neq_tmp_");
                 } else if (ctx.GT() != null) {
+                    // TODO
                     tmp = gen.buildIcmp(builder, IntSGT, c1, c2, "cond_gt_tmp_");
                 } else if (ctx.LT() != null) {
+                    // TODO
                     tmp = gen.buildIcmp(builder, IntSLT, c1, c2, "cond_lt_tmp_");
                 } else if (ctx.GE() != null) {
+                    // TODO
                     tmp = gen.buildIcmp(builder, IntSGE, c1, c2, "cond_ge_tmp_");
                 } else {
+                    // TODO
                     // LE() != null
                     tmp = gen.buildIcmp(builder, IntSLE, c1, c2, "cond_le_tmp_");
                 }

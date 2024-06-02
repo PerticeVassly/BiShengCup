@@ -26,6 +26,48 @@ public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
         return !error;
     }
 
+    private void initGlobal() {
+        // implement runtime library
+        IntType intType = new IntType();
+        FloatType floatType = new FloatType();
+        VoidType voidType = new VoidType();
+        ArrayType intArray = new ArrayType(intType), floatArray = new ArrayType(floatType);
+        FuncType funcType = new FuncType(intType, new ArrayList<>());
+
+        updateCurScope(funcType, "getint");
+
+        updateCurScope(funcType, "getch");
+
+        funcType = new FuncType(floatType, new ArrayList<>());
+        updateCurScope(funcType, "getfloat");
+
+        funcType = new FuncType(intType, new ArrayList<Type>(){{add(intArray);}});
+        updateCurScope(funcType, "getarray");
+
+        funcType = new FuncType(intType, new ArrayList<Type>(){{add(floatArray);}});
+        updateCurScope(funcType, "getfarray");
+
+        funcType = new FuncType(voidType, new ArrayList<Type>(){{add(intType);}});
+        updateCurScope(funcType, "putint");
+
+        updateCurScope(funcType, "putch");
+
+        funcType = new FuncType(voidType, new ArrayList<Type>(){{add(floatType);}});
+        updateCurScope(funcType, "putfloat");
+
+        funcType = new FuncType(voidType, new ArrayList<Type>(){{add(intType);add(intArray);}});
+        updateCurScope(funcType, "putarray");
+
+        funcType = new FuncType(voidType, new ArrayList<Type>(){{add(intType);add(floatArray);}});
+        updateCurScope(funcType, "putfarray");
+
+//        funcType = new FuncType(voidType, new ArrayList<>()); // TODO putf(<format str>, ...) ?
+
+        funcType = new FuncType(voidType, new ArrayList<>());
+        updateCurScope(funcType, "starttime");
+
+        updateCurScope(funcType, "stoptime");
+    }
     private void updateCurScope() {
         // update current scope to the top one
         if (!scope.empty())
@@ -73,6 +115,7 @@ public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
         SymbolTable<Type> global = new SymbolTable<>();
         scope.push(global);
         updateCurScope();
+        initGlobal();
         visitChildren(ctx);
         if (!scope.empty()){
             scope.pop();

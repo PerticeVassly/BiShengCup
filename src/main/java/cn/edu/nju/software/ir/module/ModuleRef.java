@@ -1,18 +1,18 @@
 package cn.edu.nju.software.ir.module;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.opt.Optimizer;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.value.*;
 
 import java.util.ArrayList;
-import java.io.*;
 
 public class ModuleRef {
     private final String moduleId;
     private final ArrayList<GlobalVar> globalVars;
     private final ArrayList<FunctionValue> functions;
     private int globalVarNum;
-    private final ArrayList<String> usedNameList;
+    private final ArrayList<String> libNameList = new ArrayList<>();
 
     private final static String TAB = "  ";
 
@@ -21,13 +21,31 @@ public class ModuleRef {
         globalVars = new ArrayList<>();
         functions = new ArrayList<>();
         globalVarNum = 0;
-        usedNameList = new ArrayList<>();
-        // multi-module support:
-        FunctionValue.clearDeclNames();
+        libNameList.add("getint");
+        libNameList.add("getch");
+        libNameList.add("getfloat");
+        libNameList.add("getarray");
+        libNameList.add("getfarray");
+        libNameList.add("putint");
+        libNameList.add("putch");
+        libNameList.add("putfloat");
+        libNameList.add("putarray");
+        libNameList.add("putfarray");
+        libNameList.add("putf");
+        libNameList.add("starttime");
+        libNameList.add("stoptime");
     }
 
     public void addFunction(FunctionValue function) {
         functions.add(function);
+    }
+
+    public FunctionValue getFunction(int index) {
+        return functions.get(index);
+    }
+
+    public int getFunctionNum() {
+        return functions.size();
     }
 
     public void addGlobalVar(GlobalVar globalVar) {
@@ -62,33 +80,36 @@ public class ModuleRef {
         return ir;
     }
 
-    /* implement by sunyiqiu 2024-6-1 */
     public void dumpToFile(String fileName) {
-        if (fileName == null) {
-            System.err.println("File name is null.");
-            return;
-        }
-        // if file do not exist, create it else clear it's content
-        if (!new java.io.File(fileName).exists()) {
-            try {
-                new java.io.File(fileName).createNewFile();
-            } catch (java.io.IOException e) {
-                e.printStackTrace();
-            }
-        }
+        // TODO
+//        if (fileName == null) {
+//            System.err.println("File name is null.");
+//            return;
+//        }
+//        // if file do not exist, create it else clear it's content
+//        if (!new java.io.File(fileName).exists()) {
+//            try {
+//                new java.io.File(fileName).createNewFile();
+//            } catch (java.io.IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        PrintStream consoleStream = System.out;
+//        try (PrintStream ps = new PrintStream(new FileOutputStream(fileName))) {
+//            System.setOut(ps);
+//            dumpToConsole();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } finally {
+//            System.setOut(consoleStream);
+//        }
 
-        PrintStream consoleStream = System.out;
-        try (PrintStream ps = new PrintStream(new FileOutputStream(fileName))) {
-            System.setOut(ps);
-            dumpToConsole();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            System.setOut(consoleStream);
-        }
     }
 
     public void dumpToConsole() {
+        Optimizer optimizer = new Optimizer(this);
+        optimizer.optimize();
         System.out.println("; ModuleId = '" + moduleId + "'");
         System.out.println("source_filename = \"" + moduleId + "\"");
         System.out.println(); // an empty line
@@ -107,6 +128,10 @@ public class ModuleRef {
         }
 
         for (FunctionValue fv : functions) {
+            int blockNameAreaLength = fv.getLengthOfLongestBlockName();
+            if (libNameList.contains(fv.getName())) {
+                continue;
+            }
             FunctionType ft = ((FunctionType) fv.getType());
 
             System.out.print("define " + ft.getReturnType() + " @" + fv.getName());
@@ -125,7 +150,20 @@ public class ModuleRef {
             for (int i = 0; i < fv.getBlockNum(); i++) {
                 // output each basic block
                 BasicBlockRef block = fv.getBasicBlockRef(i);
-                System.out.println(block.getName() + ":");
+                System.out.print(block.getName() + ":");
+                if (block.hasPred()) {
+                    for (int k = 0; k < blockNameAreaLength - block.getName().length() + 20; k++) {
+                        System.out.print(" ");
+                    }
+                    System.out.print("; pred = ");
+                    for (int k = 0; k < block.getPredNum(); k++) {
+                        System.out.print("%" + block.getPred(k).getName());
+                        if (k < block.getPredNum() - 1) {
+                            System.out.print(", ");
+                        }
+                    }
+                }
+                System.out.println();
                 for (int j = 0; j < block.getIrNum(); j++) {
                     // output each ir in the basic block
                     System.out.println(TAB + block.getIr(j));

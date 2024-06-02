@@ -19,6 +19,10 @@ public class BuilderRef {
         currentBlock = block;
     }
 
+    public void addPredForTargetBlock(BasicBlockRef target) {
+        target.addPred(currentBlock);
+    }
+
     public LocalVar createLocalVar(TypeRef type, String name) {
         return currentBlock.createLocalVar(type, name);
     }
