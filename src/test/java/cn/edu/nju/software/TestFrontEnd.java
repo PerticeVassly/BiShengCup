@@ -55,6 +55,7 @@ public class TestFrontEnd {
         assertTrue(res.success);
         assertTrue(resRef.success);
         assertEquals(resRef.exitCode, res.exitCode);
+        assertEquals(resRef.output, res.output);
     }
 
     /**
