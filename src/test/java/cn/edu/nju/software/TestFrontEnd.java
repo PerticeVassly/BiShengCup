@@ -12,10 +12,9 @@ import cn.edu.nju.software.util.StringSource;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import javax.xml.namespace.QName;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class TestFrontEnd {
     private static final String PREFIX_SY = "src/test/resources/sy/";
@@ -23,8 +22,8 @@ public class TestFrontEnd {
     private static final String PREFIX_LL_REF = "src/test/resources/std/";
     private static final String PREFIX_C = "src/test/resources/c/";
 
-    private record result(int exitCode, boolean success, String output) {
-    }
+    private static final CmdExecutor cmdExecutor = new CmdExecutor();
+
     /**
      * test files given by {@link StringSource}
      * @param name the pure input file name without extension suffix
@@ -33,8 +32,9 @@ public class TestFrontEnd {
     @StringSource("add")
     @StringSource("test1")
     @StringSource("floattest1")
+    @StringSource("merge-sort")
     void testFrontEnd(String name) throws IOException, InterruptedException{
-        testByName(name);
+        testFile(name);
     }
 
     /**
@@ -44,18 +44,20 @@ public class TestFrontEnd {
     @ParameterizedTest
     @MethodSource("parameters")
     void testAll(String name) throws IOException, InterruptedException {
-        testByName(name);
+        testFile(name);
     }
 
-    private void testByName(String name) throws IOException, InterruptedException {
-        genIR(name);
-        genIRRef(name);
-        result res = runIR(name);
-        result resRef = runIRRef(name);
-        assertTrue(res.success);
-        assertTrue(resRef.success);
-        assertEquals(resRef.exitCode, res.exitCode);
-        assertEquals(resRef.output, res.output);
+    private void testFile(String name) throws IOException, InterruptedException {
+        String syPath = PREFIX_SY + name + ".sy";
+        String llPath = PREFIX_LL + name + ".ll";
+        String llRefPath = PREFIX_LL_REF + name + ".ll";
+
+        result res = runIR(syPath, llPath);
+        result resRef = runIRRef(syPath, llRefPath);
+
+        assertTrue(res.success() && resRef.success());
+        assertEquals(resRef.exitCode(), res.exitCode());
+        assertEquals(resRef.output(), res.output());
     }
 
     /**
@@ -72,9 +74,9 @@ public class TestFrontEnd {
         });
     }
 
-    private result runIR(String fileName) throws IOException, InterruptedException {
-        CmdExecutor cmdExecutor = new CmdExecutor();
-        cmdExecutor.exec("lli", PREFIX_LL + fileName + ".ll");
+    private static result runIR(String input, String output) throws IOException, InterruptedException {
+        genIR(input, output);
+        cmdExecutor.exec("lli", output);
         if(cmdExecutor.hasError()){
             System.out.println("Error:");
             System.out.println(cmdExecutor.getErrorInfo());
@@ -82,28 +84,20 @@ public class TestFrontEnd {
         return new result(cmdExecutor.getExitCode(), !cmdExecutor.hasError(), cmdExecutor.getOutputInfo());
     }
 
-    private result runIRRef(String fileName) throws InterruptedException, IOException {
-        CmdExecutor cmdExecutor = new CmdExecutor();
-        cmdExecutor.exec("lli", PREFIX_LL_REF + fileName + ".ll");
+    private static result runIRRef(String input, String output) throws InterruptedException, IOException {
+        genIRRef(input, output);
+        cmdExecutor.exec("lli", output);
         return new result(cmdExecutor.getExitCode(), !cmdExecutor.hasError(), cmdExecutor.getOutputInfo());
     }
 
-    private void genIR(String name) {
-        // sy/a.sy -> ll/a.ll
-        String inputPath = PREFIX_SY + name + ".sy";
-        String outputPath = PREFIX_LL + name + ".ll";
-
-        Main.main(inputPath, "-o", outputPath, "--emit-llvm", "-O0");
+    private static void genIR(String input, String output) {
+        Main.main(input, "-o", output, "--emit-llvm", "-O0");
     }
 
-    private void genIRRef(String name) throws IOException, InterruptedException {
-        // .sy -> .c
-        CmdExecutor cmdExecutor = new CmdExecutor();
-        cmdExecutor.exec("cp", PREFIX_SY + name + ".sy", PREFIX_C + name + ".c");
-
-        String source = PREFIX_C + name + ".c";
-        String dest = PREFIX_LL_REF + name + ".ll";
-        cmdExecutor.exec("clang", "-S", "-emit-llvm", source, "-o", dest);
+    private static void genIRRef(String input, String output) throws IOException, InterruptedException {
+        String cInput = input.replace(".sy", ".c");
+        cmdExecutor.exec("cp", input, cInput);
+        cmdExecutor.exec("clang", "-S", "-emit-llvm", cInput, "-o", output);
     }
 
 }
