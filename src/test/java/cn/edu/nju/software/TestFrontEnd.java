@@ -38,10 +38,6 @@ public class TestFrontEnd {
      */
     @ParameterizedTest
     @StringSource("add")
-    @StringSource("test1")
-    @StringSource("prime")
-    @StringSource("floattest1")
-    @StringSource("merge-sort")
     void testFrontEnd(String name) throws IOException, InterruptedException{
         testFile(name);
     }

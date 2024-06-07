@@ -1,5 +1,6 @@
 package cn.edu.nju.software;
 
+import cn.edu.nju.software.backend.Handler;
 import cn.edu.nju.software.frontend.lexer.LexerErrorListener;
 import cn.edu.nju.software.frontend.lexer.SysYLexer;
 import cn.edu.nju.software.frontend.parser.ParserErrorListener;
@@ -75,7 +76,12 @@ public class Main {
         if (emitLLVM) {
             module.dumpToFile(output);
         }
-        // todo: emit assembly
+
+        if(emitAssembly){
+            Handler handler = new Handler(module);
+            handler.translate();
+            handler.getRISCVModuleModule().dumpToFile(output);
+        }
     }
 
     private static void parseArgs(String... args) {

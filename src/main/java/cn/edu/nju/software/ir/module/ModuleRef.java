@@ -48,6 +48,8 @@ public class ModuleRef {
         return functions.get(index);
     }
 
+    //todo() add getFunctions()
+
     public int getFunctionNum() {
         return functions.size();
     }
