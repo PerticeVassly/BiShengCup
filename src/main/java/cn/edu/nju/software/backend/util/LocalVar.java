@@ -1,12 +1,12 @@
-package cn.edu.nju.software.backend.type;
+package cn.edu.nju.software.backend.util;
 
 
-public class VarRecord {
+public class LocalVar {
     // base on the stack pointer that the var is spilled
 
     private String varName;
 
-    public VarRecord(String varName) {
+    public LocalVar(String varName) {
         this.varName = varName;
     }
 
@@ -27,7 +27,7 @@ public class VarRecord {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        VarRecord varRecord = (VarRecord) obj;
-        return varName.equals(varRecord.varName);
+        LocalVar localVariable = (LocalVar) obj;
+        return varName.equals(localVariable.varName);
     }
 }

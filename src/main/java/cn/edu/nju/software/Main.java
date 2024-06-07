@@ -79,7 +79,8 @@ public class Main {
 
         if(emitAssembly){
             Handler handler = new Handler(module);
-            handler.translate();
+            handler.codeGen();
+            handler.getAssemblyCode().dumpToConsole();
             handler.getRISCVModuleModule().dumpToFile(output);
         }
     }

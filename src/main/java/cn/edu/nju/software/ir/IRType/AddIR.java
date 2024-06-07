@@ -1,4 +1,4 @@
-package cn.edu.nju.software.backend.util;
+package cn.edu.nju.software.ir.IRType;
 
 public class AddIR extends AbstractIR {
     private String src1;

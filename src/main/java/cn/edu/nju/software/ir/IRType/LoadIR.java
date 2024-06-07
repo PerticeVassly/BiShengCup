@@ -1,12 +1,10 @@
-package cn.edu.nju.software.backend.util;
+package cn.edu.nju.software.ir.IRType;
 
-public class StoreIR extends AbstractIR {
-
+public class LoadIR extends AbstractIR {
     private String src;
-
     private String dest;
 
-    public StoreIR(String src, String dest) {
+    public LoadIR(String src, String dest) {
         this.src = src;
         this.dest = dest;
     }
@@ -18,6 +16,4 @@ public class StoreIR extends AbstractIR {
     public String getDest() {
         return dest;
     }
-
-
 }

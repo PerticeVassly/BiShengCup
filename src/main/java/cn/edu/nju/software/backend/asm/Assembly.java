@@ -1,4 +1,6 @@
 package cn.edu.nju.software.backend.asm;
 
-public class Assembly {
+
+public interface Assembly {
+    String toString();
 }

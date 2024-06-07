@@ -1,196 +1,134 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.backend.type.RISCVModuleRef;
-import cn.edu.nju.software.backend.type.VarRecord;
-
-import java.util.*;
+import cn.edu.nju.software.backend.util.*;
+import cn.edu.nju.software.backend.asm.Instruction;
+import cn.edu.nju.software.backend.asm.operand.ImmediateValue;
+import cn.edu.nju.software.backend.asm.operand.IndirectRegister;
+import cn.edu.nju.software.backend.asm.operand.Register;
 
 public class RegisterManager {
 
-    private RISCVModuleRef riscvModule;
 
-    //use index 0 - 31 to represent all the general-purpose registers
-    private final static String[] names = new String[32];
+    private AssemblyCode assemblyCode;
+
+    private RegisterTracker registerTracker;
 
     //record spill information
-    private ArrayList<VarRecord> varRecords;
-
-    //used for temp Registers
-    private ArrayList<Integer> freeRegs;
-    private ArrayList<Integer> usedRegs;
-    private ArrayList<Integer> lockedRegs;
+    private LocalVarStack localVarStack;
 
     // if the Integer is 32 it means the var has been spilled
-    private HashMap<Integer,String> varNameMap;
+    private ActiveVarTable activeVarTable;
 
     // if a reg is spilled, record the offset of the var in the stack
 
-    static {
-        names[0] = "zero";
-        names[1] = "ra";
-        names[2] = "sp";
-        names[3] = "gp";
-        names[4] = "tp";
-        names[5] = "t0";
-        names[6] = "t1";
-        names[7] = "t2";
-        names[8] = "s0";
-        names[9] = "s1";
-        names[10] = "a0";
-        names[11] = "a1";
-        names[12] = "a2";
-        names[13] = "a3";
-        names[14] = "a4";
-        names[15] = "a5";
-        names[16] = "a6";
-        names[17] = "a7";
-        names[18] = "s2";
-        names[19] = "s3";
-        names[20] = "s4";
-        names[21] = "s5";
-        names[22] = "s6";
-        names[23] = "s7";
-        names[24] = "s8";
-        names[25] = "s9";
-        names[26] = "s10";
-        names[27] = "s11";
-        names[28] = "t3";
-        names[29] = "t4";
-        names[30] = "t5";
-        names[31] = "t6";
 
-    }
-
-    public RegisterManager(RISCVModuleRef riscvModule) {
-        this.riscvModule = riscvModule;
+    public RegisterManager(AssemblyCode assemblyCode) {
+        this.assemblyCode = assemblyCode;
         //add all the temp registers into availableTempRegs
-        freeRegs = new ArrayList<>();
-        usedRegs = new ArrayList<>();
-        varRecords = new ArrayList<>();
-        lockedRegs = new ArrayList<>();
-        varNameMap = new HashMap<>();
-
-        freeRegs.add(5);
-        freeRegs.add(6);
-        freeRegs.add(7);
-        freeRegs.add(28);
-        freeRegs.add(29);
-        freeRegs.add(30);
-        freeRegs.add(31);
+        registerTracker = new RegisterTracker("t0","t1","t2","t3","t4");
+        localVarStack = new LocalVarStack();
+        activeVarTable = new ActiveVarTable();
     }
 
-    public int getRegToSpill(){
+    private int getRegToSpill(){
         int i = 0 ;
-        int regNO = freeRegs.get(i);
-        while(lockedRegs.contains(regNO)){
+        int regNO = registerTracker.getUsedRegNO(i);
+        while(registerTracker.checkIsLocked(regNO)){
             i++;
-            regNO = freeRegs.get(i);
+            regNO = registerTracker.getFreeRegNO(i);
         }
-
         return regNO;
     }
 
-    public boolean hasAllocated(String varName){
-        if(varRecords.isEmpty()){
+    private boolean hasAllocated(String varName){
+        if(localVarStack.isEmpty()){
             return false;
         }
-
-        for(VarRecord varRecord: varRecords){
-            if(varRecord.getVarName().equals(varName)){
-                return true;
-            }
-        }
-        return false;
+        return localVarStack.checkVar(varName);
     }
 
-    public int getOffset(String varName) {
-        for(int i = 0; i < varRecords.size(); i++){
-            if(varRecords.get(i).getVarName().equals(varName)){
-                return (varRecords.size() - i) * 4;
-            }
-        }
-        return -1;
-    }
+    /**
+     * get the offset of the var base on the sp
+     */
 
-
-    public int spill(){
+    private int spill(){
         int regNO_toSpill = getRegToSpill();
-        String varName_toSpill = varNameMap.get(regNO_toSpill);
+        String varName_toSpill = activeVarTable.getVarInReg(regNO_toSpill);
 
         if(hasAllocated(varName_toSpill)){
-            riscvModule.getRiscvText().append("\tsw " + getRegName(regNO_toSpill) + ", " + getOffset(varName_toSpill) + "(sp)\n");
+            Instruction spill = new Instruction("sw", new Register(regNO_toSpill), new IndirectRegister(regNO_toSpill, localVarStack.getOffset(varName_toSpill)));
+            assemblyCode.addText(spill);
         } else {
-            riscvModule.getRiscvText().append("\taddi sp, sp, -4\n");
-            riscvModule.getRiscvText().append("\tsw " + getRegName(regNO_toSpill) + ", 0(sp)\n");
-            VarRecord varRecord = new VarRecord(varNameMap.get(regNO_toSpill));
-            varRecords.add(varRecord);
+            Instruction addi = new Instruction("addi", new Register("sp"), new Register("sp"), new ImmediateValue(-4));
+            assemblyCode.addText(addi);
+            Instruction sw = new Instruction("sw", new Register(regNO_toSpill), new IndirectRegister("sp", 0));
+            assemblyCode.addText(sw);
+
+            localVarStack.push(new LocalVar(activeVarTable.getVarInReg(regNO_toSpill)));
         }
 
-        varNameMap.remove(regNO_toSpill);
-        usedRegs.remove(regNO_toSpill);
-        freeRegs.add(regNO_toSpill);
+        activeVarTable.kill(regNO_toSpill);
+        registerTracker.freeReg(regNO_toSpill);
         return regNO_toSpill;
     }
 
 
 
-    public String getRegName(int regNO){
-        return names[regNO];
-    }
 
     public String provideReg(){
-        int regNO = freeRegs.isEmpty() ? spill() : freeRegs.get(0);
-        return getRegName(regNO);
+        int regNO = registerTracker.hasFreeRegs() ? registerTracker.getFreeRegNO(0) : spill() ;
+        registerTracker.useReg(regNO);
+        return RiscvMachine.getRegName(regNO);
     }
 
 
     public String provideReg(String varName){
         /*
-        %a = %b + %c;
-        get a reg represent %a;
         case 1: a is a new var (get a free reg);
         case 2: a is a old var and not been spilled (get the reg that a used before);
         case 3: a is a old var and has been spilled (get a free reg and load the var from the stack and then return the reg);
-
         must ensure when a has been loaded then b do not broke the value in a;
          */
         //case3
         if(hasAllocated(varName)) {
-            int regNO = freeRegs.isEmpty() ? spill() : freeRegs.get(0);
+            int regNO = registerTracker.hasFreeRegs() ? registerTracker.getFreeRegNO(0) : spill();
 
-            riscvModule.getRiscvText().append("\tlw " + getRegName(regNO) + ", " + getOffset(varName) + "(sp)\n");
+            Instruction lw = new Instruction("lw", new Register(regNO), new IndirectRegister("sp", localVarStack.getOffset(varName)));
 
-            freeRegs.remove(0);
-            varNameMap.put(regNO, varName);
-            usedRegs.add(regNO);
-            return getRegName(regNO);
+            assemblyCode.addText(lw);
+
+            registerTracker.useReg(regNO);
+
+            activeVarTable.put(varName, regNO);
+            return RiscvMachine.getRegName(regNO);
         }
 
         //case 2
-        if(varNameMap.containsValue(varName)) {
+        if(activeVarTable.checkIsAlive(varName)){
             //case 2
             //get key of the varName
-            return getRegName(varNameMap.entrySet().stream().filter(entry -> entry.getValue().equals(varName)).findFirst().get().getKey());
+            return RiscvMachine.getRegName(activeVarTable.getRegforVar(varName));
         }
 
         //case 1
-        int regNO = freeRegs.isEmpty() ? spill() : freeRegs.get(0);
-        freeRegs.remove(regNO);
-        //update the varNameMap
-        varNameMap.put(regNO, varName);
-        //update the usedRegs
-        usedRegs.add(regNO);
-        return getRegName(regNO);
+        int regNO = registerTracker.hasFreeRegs() ? registerTracker.getFreeRegNO(0) : spill();
+        registerTracker.useReg(regNO);
+
+        activeVarTable.put(varName, regNO);
+
+        return RiscvMachine.getRegName(regNO);
     }
 
     public void lockReg(String regName){
-        int regNO = Arrays.asList(names).indexOf(regName);
-        lockedRegs.add(regNO);
+        registerTracker.lockReg(RiscvMachine.getRegNO(regName));
+    }
+
+    public void freeReg(String regName){
+        registerTracker.freeReg(RiscvMachine.getRegNO(regName));
     }
 
     public void unlockReg(String regName){
-        int regNO = Arrays.asList(names).indexOf(regName);
-        lockedRegs.remove(lockedRegs.indexOf(regNO));
+        registerTracker.lockReg(RiscvMachine.getRegNO(regName));
     }
 
 
