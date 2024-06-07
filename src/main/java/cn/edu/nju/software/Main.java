@@ -75,6 +75,7 @@ public class Main {
         if (emitLLVM) {
             module.dumpToFile(output);
         }
+        irVisitor.dumpModuleToConsole();
         // todo: emit assembly
     }
 

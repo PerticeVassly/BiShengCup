@@ -35,13 +35,8 @@ public class FunctionValue extends ValueRef {
         paramsNum = functionType.getFParametersCount();
         for (int i = 0; i < paramsNum; i++) {
             TypeRef typeRef = functionType.getFParameter(i);
-            if (typeRef instanceof IntType) {
-                params.add(new LocalVar(new IntType(), paramsUsedNamesFreq.get(0) + ""));
-                paramsUsedNamesFreq.set(0, paramsUsedNamesFreq.get(0) + 1);
-            } else if (typeRef instanceof FloatType) {
-                params.add(new LocalVar(new FloatType(), paramsUsedNamesFreq.get(0) + ""));
-                paramsUsedNamesFreq.set(0, paramsUsedNamesFreq.get(0) + 1);
-            }
+            params.add(new LocalVar(typeRef, paramsUsedNamesFreq.get(0) + ""));
+            paramsUsedNamesFreq.set(0, paramsUsedNamesFreq.get(0) + 1);
         }
         blocks = new ArrayList<>();
         blockNum = 0;

@@ -1,8 +1,10 @@
 package cn.edu.nju.software.ir.value;
 
+import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.TypeRef;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class GlobalVar extends ValueRef {
     private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
@@ -28,4 +30,10 @@ public class GlobalVar extends ValueRef {
     public ValueRef getInitVal() {
         return initVal;
     }
+
+    public static void clearNames() {
+        Stream.of(usedNameList, usedFreqList)
+                .forEach(ArrayList::clear);
+    }
+
 }

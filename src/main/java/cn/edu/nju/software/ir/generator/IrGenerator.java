@@ -3,14 +3,8 @@ package cn.edu.nju.software.ir.generator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
-import cn.edu.nju.software.ir.type.BoolType;
-import cn.edu.nju.software.ir.type.FunctionType;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.type.TypeRef;
-import cn.edu.nju.software.ir.value.ConstValue;
-import cn.edu.nju.software.ir.value.FunctionValue;
-import cn.edu.nju.software.ir.value.GlobalVar;
-import cn.edu.nju.software.ir.value.ValueRef;
+import cn.edu.nju.software.ir.type.*;
+import cn.edu.nju.software.ir.value.*;
 
 import java.util.ArrayList;
 
@@ -26,6 +20,7 @@ import java.util.ArrayList;
      ValueRef buildAllocate(BuilderRef builder, TypeRef type, String name);
      ValueRef buildStore(BuilderRef builder, ValueRef value, ValueRef lVal);
      ValueRef buildLoad(BuilderRef builder, ValueRef memory, String lValName);
+     ValueRef buildGEP(BuilderRef builder, ValueRef array, ValueRef[] indices, int dims, String name);
 
     // bool operations
      ValueRef buildIcmp(BuilderRef builder, int kind, ValueRef operand1, ValueRef operand2, String lValName);
@@ -56,8 +51,9 @@ import java.util.ArrayList;
      ValueRef positionBuilderAtEnd(BuilderRef builder, BasicBlockRef block);
 
      ConstValue ConstInt(IntType type, int value);
-
+//     ArrayValue ConstArray()
      ConstValue ConstBool(BoolType type, boolean value);
+     ConstValue ConstFloat(FloatType type, float value);
 
      BasicBlockRef appendBasicBlock(FunctionValue function, String blockName);
-}
+ }
