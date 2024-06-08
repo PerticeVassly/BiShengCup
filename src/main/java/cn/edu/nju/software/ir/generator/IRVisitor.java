@@ -350,16 +350,27 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             for (int i = 0; i < dim; i++) {
                 indices[i] = visitExp(ctx.exp(i));
             }
+//            System.err.println(dim);
+            if (lVal.getType() instanceof Pointer) {
+                lVal = gen.buildLoad(builder, lVal, "arr_");
+            }
             return gen.buildGEP(builder, lVal, indices, dim, "");
         }
     }
     @Override
     public ValueRef visitStmt(SysYParser.StmtContext ctx) {
+//        System.err.println(ctx.getText());
         if (ctx.RETURN() != null) {
             // return stmt
             haveReturn = true;
             if (ctx.exp() != null) {
                 ValueRef retVal = visitExp(ctx.exp());
+                TypeRef retTy = ((FunctionType)currentFunction.getType()).getReturnType();
+                if (retTy.equals(i32Type) && retVal.getType().equals(floatType)) {
+                    retVal = gen.buildFloatToInt(builder, retVal, "retVal_");
+                } else if (retTy.equals(floatType) && retVal.getType().equals(i32Type)) {
+                    retVal = gen.buildIntToFloat(builder, retVal, "retVal_");
+                }
                 gen.buildReturn(builder, retVal);
                 return retVal;
             }

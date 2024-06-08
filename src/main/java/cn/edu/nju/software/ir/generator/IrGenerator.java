@@ -9,6 +9,11 @@ import cn.edu.nju.software.ir.value.*;
 import java.util.ArrayList;
 
  interface IrGenerator {
+     IntType i32Type = new IntType();
+     FloatType floatType = new FloatType();
+     VoidType voidType = new VoidType();
+     BoolType i1Type = new BoolType();
+
     // declare global variable related operations
      ValueRef addGlobal(ModuleRef module, TypeRef type, String name);
      ValueRef setInitValue(GlobalVar globalVar, ValueRef initValue);
@@ -56,4 +61,8 @@ import java.util.ArrayList;
      ConstValue ConstFloat(FloatType type, float value);
 
      BasicBlockRef appendBasicBlock(FunctionValue function, String blockName);
+
+     ValueRef buildFloatToInt(BuilderRef builder, ValueRef floatVal, String name);
+
+     ValueRef buildIntToFloat(BuilderRef builder, ValueRef intVal, String name);
  }

@@ -3,6 +3,7 @@ package cn.edu.nju.software.ir.type;
 public class ArrayType extends TypeRef {
     private final TypeRef elementType;
     private final int elementSize;
+    public static final int UNKNOWN = -1;
     public ArrayType(TypeRef elementType, int elementSize) {
         this.elementType = elementType;
         this.elementSize = elementSize;
@@ -19,7 +20,11 @@ public class ArrayType extends TypeRef {
     }
 
     public String toString() {
-        return "[" + elementSize + " x " + elementType.toString() + "]";
+        if (elementSize != UNKNOWN){
+            return "[" + elementSize + " x " + elementType.toString() + "]";
+        } else {
+            return elementType.toString();
+        }
     }
 
     public int getDim() {

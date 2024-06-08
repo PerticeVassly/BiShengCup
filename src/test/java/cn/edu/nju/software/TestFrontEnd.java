@@ -65,6 +65,7 @@ public class TestFrontEnd {
         RunIRResult resRef = runIRRef(syPath, llRefPath);
 
         assertTrue(res.success() && resRef.success());
+        System.err.println(res.exitCode());
         assertEquals(resRef.exitCode(), res.exitCode());
         assertEquals(resRef.output(), res.output());
     }
