@@ -8,12 +8,12 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-public class AssemblyCode {
+public class AssemblyModule {
 
     private ArrayList<Assembly> text;
     private ArrayList<Assembly> data;
 
-    public AssemblyCode() {
+    public AssemblyModule() {
         text = new ArrayList<>();
         data = new ArrayList<>();
     }
