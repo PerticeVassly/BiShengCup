@@ -36,4 +36,8 @@ public class GlobalVar extends ValueRef {
                 .forEach(ArrayList::clear);
     }
 
+    @Override
+    public String toString() {
+        return "@" + name;
+    }
 }

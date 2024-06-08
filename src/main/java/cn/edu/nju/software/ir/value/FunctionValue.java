@@ -97,6 +97,11 @@ public class FunctionValue extends ValueRef {
         blockNum--;
     }
 
+    @Override
+    public String toString() {
+        return "@" + name;
+    }
+
     /**
      * This method should be call only if entering a new module
      */
