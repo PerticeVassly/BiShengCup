@@ -2,6 +2,7 @@ package cn.edu.nju.software.ir.module;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.opt.Optimizer;
+import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.value.*;
 
@@ -24,6 +25,7 @@ public class ModuleRef {
         globalVars = new ArrayList<>();
         functions = new ArrayList<>();
         FunctionValue.clearDeclNames();
+        GlobalVar.clearNames();
         globalVarNum = 0;
         libNameList.add("getint");
         libNameList.add("getch");
@@ -75,14 +77,54 @@ public class ModuleRef {
         ((GlobalVar) globalVar).initial(initVal);
     }
 
+    private String implementArrInitIr(ArrayType arrayType, ArrayValue arrayValue) {
+        String ir = "";
+        // todo
+        return ir;
+    }
+
     private String generateGlobalVarIr(GlobalVar gv) {
-        String ir = "@" + gv.getName() + " = global " + gv.getType().toString() + " ";
-        if (gv.getInitVal() instanceof ConstValue) {
-            ir += ((ConstValue) gv.getInitVal()).getValue();
+        String ir = "@" + gv.getName() + " = global ";
+        if (!(gv.getType() instanceof ArrayType)){
+            ir += gv.getType().toString() + " ";
+            if (gv.getInitVal() instanceof ConstValue) {
+                ir += ((ConstValue) gv.getInitVal()).getValue() + ", ";
+            } else {
+                System.err.println("Global variable has not been initialized.");
+                return null;
+            }
         } else {
-            System.err.println("Global variable has not been initialized.");
-            return null;
+            if (gv.getInitVal() instanceof ConstValue && ((ConstValue) gv.getInitVal()).getValue().equals(0)) {
+                ir += "zeroinitializer, ";
+            } else {
+                ir += gv.getInitVal().toString() + ", ";
+            }
+//            else if (gv.getInitVal() instanceof ArrayValue){
+//                // TODO initial value is an array
+//                ArrayValue init = (ArrayValue) gv.getInitVal();
+//                ArrayType type = (ArrayType) gv.getType();
+//                int size = type.getElementSize();
+//                for (int i = 0; i < size; i++) {
+//                    ir += "[";
+//                    ir += type.getElementType().toString() + " ";
+//                    if (init.getElement(i) != null && init.getElement(i).getType() instanceof ArrayType) {
+//                        // init.element is an array, then element type must be an array
+//                        ir += implementArrInitIr(((ArrayType)type.getElementType()), ((ArrayValue)init.getElement(i)));
+//                    } else {
+//                        if (init.getElement(i) == null || ((ConstValue)init.getElement(i)).getValue().equals(0)){
+//                            ir += "zeroinitializer";
+//                            if (i < size - 1) {
+//                                ir += ", ";
+//                            }
+//                        } else {
+//                            // TODO: the codes possibly have problems, refactor
+//                        }
+//                    }
+//                    ir += "], ";
+//                }
+//            }
         }
+        ir += "align " + gv.getType().getWidth();
         return ir;
     }
 
@@ -158,7 +200,7 @@ public class ModuleRef {
                 BasicBlockRef block = fv.getBasicBlockRef(i);
                 System.out.print(block.getName() + ":");
                 if (block.hasPred()) {
-                    for (int k = 0; k < blockNameAreaLength - block.getName().length() + 20; k++) {
+                    for (int k = 0; k < blockNameAreaLength - block.getName().length() + 40; k++) {
                         System.out.print(" ");
                     }
                     System.out.print("; pred = ");

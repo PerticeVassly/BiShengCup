@@ -8,6 +8,8 @@ import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.*;
+import org.antlr.v4.runtime.ParserRuleContext;
+
 import static cn.edu.nju.software.ir.generator.Generator.*;
 
 
@@ -76,6 +78,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else {
             return Integer.parseInt(number);
         }
+    }
+    private float string2Float(String number) {
+        // todo hex or octal?
+        return Float.parseFloat(number);
     }
     private ValueRef normalizeCond(ValueRef cond) {
         TypeRef type = cond.getType();
@@ -154,7 +160,25 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             args = ctx.funcFParams().funcFParam().size();
             argumentTypes = new ArrayList<>(args);
             for (int i = 0; i < args; i++) {
-                argumentTypes.add(i32Type);
+                TypeRef type;
+                if (ctx.funcFParams().funcFParam(i).bType().INT() != null) {
+                    type = i32Type;
+                } else {
+                    type = floatType;
+                }
+                if (ctx.funcFParams().funcFParam(i).L_BRACKT() != null && !ctx.funcFParams().funcFParam(i).L_BRACKT().isEmpty()){
+                    int ptrDim = ctx.funcFParams().funcFParam(i).exp().size();
+                    for (int j = ptrDim - 1; j >= 0; j--) {
+                        if (ctx.funcFParams().funcFParam(i).exp(j).number() != null) {
+                            int size = string2Int(ctx.funcFParams().funcFParam(i).exp(j).getText());
+                            type = new ArrayType(type, size);
+                        } else {
+                            // todo a variable be the array size, TBD(how to do)
+                        }
+                    }
+                    type = new Pointer(type);
+                }
+                argumentTypes.add(type);
             }
         }
         FunctionType ft = new FunctionType(retType, argumentTypes, args);
@@ -172,9 +196,9 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         if (ctx.funcFParams() != null) {
             for (int i = 0; i < args; i++) {
                 String fParam = ctx.funcFParams().funcFParam(i).IDENT().getText();
-                LocalVar pointer = gen.buildAllocate(builder, i32Type, fParam);
                 LocalVar param = function.getParam(i);
-                gen.buildStore(builder, param, pointer); // todo maybe opt
+                LocalVar pointer = gen.buildAllocate(builder, param.getType(), fParam);
+                gen.buildStore(builder, param, pointer);
                 curScope.put(new Symbol<>(fParam, pointer));
             }
         }
@@ -205,6 +229,9 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             ValueRef[] argv = new ValueRef[args];
             for (int i = 0; i < args; i++) {
                 argv[i] = visitParam(ctx.funcRParams().param(i));
+//                if (argv[i].getType() instanceof ArrayType) {
+//                    argv[i] = gen.buildGEP(builder, argv[i], new ValueRef[]{gen.ConstInt(i32Type, 0)}, 1, "");
+//                }
             }
             if (retType.equals(voidType)) {
                 funcName = "";
@@ -217,12 +244,20 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         return visitExp(ctx.exp());
     }
     @Override
+    public ValueRef visitNumber(SysYParser.NumberContext ctx) {
+        if (ctx.FLOAT_CONST() != null) {
+            return gen.ConstFloat(floatType, string2Float(ctx.FLOAT_CONST().getText()));
+        } else {
+            return gen.ConstInt(i32Type, string2Int(ctx.INTEGER_CONST().getText()));
+        }
+    }
+    @Override
     public ValueRef visitExp(SysYParser.ExpContext ctx) {
         if (ctx.L_PAREN() != null) {
             return visitExp(ctx.exp(0));
         } else if (ctx.number() != null) {
             // Integer const
-            return gen.ConstInt(i32Type, string2Int(ctx.number().getText()));
+            return visitNumber(ctx.number());
         } else if (ctx.unaryOp() != null) {
             // !, - , +
             String op = ctx.unaryOp().getText();
@@ -252,8 +287,12 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 }
             }
         } else if (ctx.lVal() != null) {
-            ValueRef lVal = scope.find(ctx.lVal().getText());
-            return gen.buildLoad(builder, lVal, ctx.lVal().getText());
+            ValueRef lVal = visitLVal(ctx.lVal());
+            if (!(lVal.getType() instanceof ArrayType)){
+                return gen.buildLoad(builder, lVal, ctx.lVal().IDENT().getText());
+            } else {
+                return gen.buildGEP(builder, lVal, new ValueRef[]{gen.ConstInt(i32Type, 0)}, 1, "");
+            }
         } else if (ctx.funcUse() != null) {
             // lab4 not exist
             // lab 5 new codes
@@ -301,18 +340,43 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         }
     }
     @Override
+    public ValueRef visitLVal(SysYParser.LValContext ctx) {
+        ValueRef lVal = scope.find(ctx.IDENT().getText()); // lVal is a pointer type in fact
+        if (ctx.exp() == null || ctx.exp().isEmpty()) {
+            return lVal;
+        } else {
+            int dim = ctx.exp().size();
+            ValueRef[] indices = new ValueRef[dim];
+            for (int i = 0; i < dim; i++) {
+                indices[i] = visitExp(ctx.exp(i));
+            }
+//            System.err.println(dim);
+            if (lVal.getType() instanceof Pointer) {
+                lVal = gen.buildLoad(builder, lVal, "arr_");
+            }
+            return gen.buildGEP(builder, lVal, indices, dim, "");
+        }
+    }
+    @Override
     public ValueRef visitStmt(SysYParser.StmtContext ctx) {
+//        System.err.println(ctx.getText());
         if (ctx.RETURN() != null) {
             // return stmt
             haveReturn = true;
             if (ctx.exp() != null) {
                 ValueRef retVal = visitExp(ctx.exp());
+                TypeRef retTy = ((FunctionType)currentFunction.getType()).getReturnType();
+                if (retTy.equals(i32Type) && retVal.getType().equals(floatType)) {
+                    retVal = gen.buildFloatToInt(builder, retVal, "retVal_");
+                } else if (retTy.equals(floatType) && retVal.getType().equals(i32Type)) {
+                    retVal = gen.buildIntToFloat(builder, retVal, "retVal_");
+                }
                 gen.buildReturn(builder, retVal);
                 return retVal;
             }
             return gen.buildReturnVoid(builder); // return; (no exp)
         } else if (ctx.ASSIGN() != null) {
-            ValueRef lVal = scope.find(ctx.lVal().getText());
+            ValueRef lVal = visitLVal(ctx.lVal());
             ValueRef exp = visitExp(ctx.exp());
             return gen.buildStore(builder, exp, lVal); // assign: lVal = exp;
         } else if (ctx.WHILE() != null) {
@@ -479,7 +543,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     }
                 }
                 gen.positionBuilderAtEnd(builder, secondCondBlock);
-                // if curScopeo second, then true is true
+                // if curScope second, then true is true
                 ValueRef secondCond = visitCond(deleteParen(ctx.cond(1)));
                 secondCond = normalizeCond(secondCond);
                 gen.buildCondBranch(builder, secondCond, True, False);
@@ -490,7 +554,28 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     @Override
     public ValueRef visitVarDef(SysYParser.VarDefContext ctx) {
         if (global()) {
-            GlobalVar globalVar = gen.addGlobal(module, i32Type, ctx.IDENT().getText());
+            SysYParser.VarDeclContext parent = (SysYParser.VarDeclContext) ctx.getParent();
+            GlobalVar globalVar;
+            TypeRef type;
+            if (parent.bType().INT() != null){
+                type = i32Type;
+            } else {
+                type = floatType;
+            }
+            if (ctx.L_BRACKT() == null || ctx.L_BRACKT().isEmpty()) {
+                globalVar = gen.addGlobal(module, type, ctx.IDENT().getText());
+            } else {
+                // array, array size is a compiling constant
+                int dim = ctx.constExp().size();
+                int size = string2Int(ctx.constExp(dim - 1).getText());
+                ArrayType arrayType = new ArrayType(type, size);
+                for (int i = dim - 2; i >= 0; i--) {
+                    size = string2Int(ctx.constExp(i).getText());
+                    arrayType = new ArrayType(arrayType, size);
+                }
+                globalVar = gen.addGlobal(module, arrayType, ctx.IDENT().getText());
+            }
+            // todo array initializer
             if (ctx.initVal() != null) {
                 ValueRef initVal = visitInitVal(ctx.initVal());
                 gen.setInitValue(globalVar, initVal);
@@ -500,7 +585,22 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             curScope.put(new Symbol<>(ctx.IDENT().getText(), globalVar));
             return globalVar;
         } else {
-            ValueRef localVar = gen.buildAllocate(builder, i32Type, ctx.IDENT().getText());
+            TypeRef type;
+            SysYParser.VarDeclContext parent = (SysYParser.VarDeclContext) ctx.getParent();
+            if (parent.bType().INT() != null) {
+                type = i32Type;
+            } else {
+                type = floatType;
+            }
+            if (ctx.L_BRACKT() != null && !ctx.L_BRACKT().isEmpty()) {
+                int dim = ctx.constExp().size();
+                for (int i = dim - 1; i >= 0; i--) {
+                    int size = string2Int(ctx.constExp(i).getText());
+                    type = new ArrayType(type, size);
+                }
+            }
+            ValueRef localVar = gen.buildAllocate(builder, type, ctx.IDENT().getText());
+            // todo array initializer
             if (ctx.initVal() != null) {
                 ValueRef initVal = visitInitVal(ctx.initVal());
                 gen.buildStore(builder, initVal, localVar); // store initVal to localVar
@@ -511,7 +611,39 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     }
     @Override
     public ValueRef visitInitVal(SysYParser.InitValContext ctx) {
-        return visitExp(ctx.exp());
+        if (ctx.exp() != null) {
+            return visitExp(ctx.exp());
+        } else {
+            // array initial
+            int initSize = ctx.initVal().size();
+            int depth = 0;
+            ParserRuleContext tmp = ctx;
+            while (tmp.getParent() instanceof SysYParser.InitValContext) {
+                depth++;
+                tmp = tmp.getParent();
+            }
+            SysYParser.VarDefContext parent = (SysYParser.VarDefContext) tmp.getParent(); // array ctx parent must have '{'
+            int realSize = string2Int(parent.constExp(depth).getText());
+            ArrayValue array = new ArrayValue(realSize);
+            ValueRef[] elements = new ValueRef[initSize];
+            for (int i = 0; i < initSize; i++) {
+                elements[i] = visitInitVal(ctx.initVal(i));
+            }
+            TypeRef elementType;
+            if (initSize > 0){
+                elementType = elements[0].getType();
+            } else {
+                SysYParser.VarDeclContext t = (SysYParser.VarDeclContext) parent.getParent();
+                if (t.bType().INT() != null) {
+                    elementType = i32Type;
+                } else {
+                    elementType = floatType;
+                }
+            }
+            ArrayType arrayType = new ArrayType(elementType, realSize);
+            array.update(arrayType, elementType, elements);
+            return array;
+        }
     }
     @Override
     public ValueRef visitConstDef(SysYParser.ConstDefContext ctx) {
@@ -538,7 +670,21 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     }
     @Override
     public ValueRef visitConstInitVal(SysYParser.ConstInitValContext ctx) {
-        return visitConstExp(ctx.constExp());
+        if (ctx.constExp() != null) {
+            return visitConstExp(ctx.constExp());
+        } else {
+            // array initial
+            int size = ctx.constInitVal().size();
+            ArrayValue array = new ArrayValue(size);
+            ValueRef[] elements = new ValueRef[size];
+            for (int i = 0; i < size; i++) {
+                elements[i] = visitConstInitVal(ctx.constInitVal(i));
+            }
+            TypeRef elementType = elements[0].getType();
+            ArrayType arrayType = new ArrayType(elementType, size);
+            array.update(arrayType, elementType, elements);
+            return array;
+        }
     }
     @Override
     public ValueRef visitConstExp(SysYParser.ConstExpContext ctx) {

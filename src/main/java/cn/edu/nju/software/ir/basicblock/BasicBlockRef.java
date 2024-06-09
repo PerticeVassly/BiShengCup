@@ -7,12 +7,15 @@ import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
 
-public class BasicBlockRef {
+public class BasicBlockRef extends ValueRef {
     private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
     private final static ArrayList<Integer> usedFreqList = new ArrayList<Integer>(){{add(0);}};
     private final String name;
-    private final ArrayList<String> irs;
+    private final ArrayList<String> irs; // TODO String -> Instruction
     private int irNum;
+    /**
+     * the function it belongs to
+     */
     private final FunctionValue function;
     private final ArrayList<BasicBlockRef> pred;
     private int predNum;
@@ -77,5 +80,10 @@ public class BasicBlockRef {
 
     public LocalVar createLocalVar(TypeRef type, String name) {
         return function.createLocalVar(type, name);
+    }
+
+    @Override
+    public String toString() {
+        return "%" + name;
     }
 }

@@ -356,6 +356,14 @@ public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
         return DEFAULT_RETTYPE;
     }
     @Override
+    public Type visitNumber(SysYParser.NumberContext ctx) {
+        if (ctx.FLOAT_CONST() != null) {
+            return new FloatType();
+        } else {
+            return new IntType();
+        }
+    }
+    @Override
     public Type visitExp(SysYParser.ExpContext ctx) {
         if (ctx == null)
             return DEFAULT_RETTYPE;
@@ -364,7 +372,7 @@ public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
         } else if (ctx.lVal() != null) {
             return visitLVal(ctx.lVal());
         } else if (ctx.number() != null) {
-            return new NumberType();
+            return visitNumber(ctx.number());
         } else if (ctx.funcUse() != null) {
             return visitFuncUse(ctx.funcUse());
         } else if (ctx.unaryOp() != null) {
