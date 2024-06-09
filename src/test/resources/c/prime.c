@@ -19,5 +19,5 @@ int main() {
 		}
 		m = m + 2;
 	}
-	return 0;
+	return prime;
 }
