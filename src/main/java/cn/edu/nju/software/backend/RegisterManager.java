@@ -7,25 +7,25 @@ import cn.edu.nju.software.backend.asm.operand.IndirectRegister;
 import cn.edu.nju.software.backend.asm.operand.Register;
 
 public class RegisterManager {
+    private final AssemblyModule assemblyModule;
 
+    private final RegisterTracker registerTracker;
 
-    private AssemblyCode assemblyCode;
-
-    private RegisterTracker registerTracker;
-
-    //record spill information
-    private LocalVarStack localVarStack;
+    /**
+     * record spill information
+     */
+    private final LocalVarStack localVarStack;
 
     // if the Integer is 32 it means the var has been spilled
-    private ActiveVarTable activeVarTable;
+    private final ActiveVarTable activeVarTable;
 
     // if a reg is spilled, record the offset of the var in the stack
 
-
-    public RegisterManager(AssemblyCode assemblyCode) {
-        this.assemblyCode = assemblyCode;
+    public RegisterManager(AssemblyModule assemblyModule) {
+        this.assemblyModule = assemblyModule;
         //add all the temp registers into availableTempRegs
-        registerTracker = new RegisterTracker("t0","t1","t2","t3","t4","t5","t6");
+        registerTracker = new RegisterTracker("t0","t1","t2","t3","t4");
+        // todo: use Var to abstract the infos below:
         localVarStack = new LocalVarStack();
         activeVarTable = new ActiveVarTable();
     }
@@ -57,12 +57,12 @@ public class RegisterManager {
 
         if(hasAllocated(varName_toSpill)){
             Instruction spill = new Instruction("sw", new Register(regNO_toSpill), new IndirectRegister(regNO_toSpill, localVarStack.getOffset(varName_toSpill)));
-            assemblyCode.addText(spill);
+            assemblyModule.addText(spill);
         } else {
             Instruction addi = new Instruction("addi", new Register("sp"), new Register("sp"), new ImmediateValue(-4));
-            assemblyCode.addText(addi);
+            assemblyModule.addText(addi);
             Instruction sw = new Instruction("sw", new Register(regNO_toSpill), new IndirectRegister("sp", 0));
-            assemblyCode.addText(sw);
+            assemblyModule.addText(sw);
 
             localVarStack.push(new LocalVar(activeVarTable.getVarInReg(regNO_toSpill)));
         }
@@ -95,7 +95,7 @@ public class RegisterManager {
 
             Instruction lw = new Instruction("lw", new Register(regNO), new IndirectRegister("sp", localVarStack.getOffset(varName)));
 
-            assemblyCode.addText(lw);
+            assemblyModule.addText(lw);
 
             registerTracker.useReg(regNO);
 

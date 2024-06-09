@@ -5,7 +5,7 @@ import cn.edu.nju.software.backend.asm.Instruction;
 import cn.edu.nju.software.backend.asm.Label;
 import cn.edu.nju.software.backend.asm.operand.ImmediateValue;
 import cn.edu.nju.software.backend.asm.operand.Register;
-import cn.edu.nju.software.backend.util.AssemblyCode;
+import cn.edu.nju.software.backend.util.AssemblyModule;
 import cn.edu.nju.software.ir.IRType.AbstractIR;
 import cn.edu.nju.software.ir.IRType.AddIR;
 import cn.edu.nju.software.ir.IRType.LoadIR;
@@ -19,34 +19,35 @@ public class Handler {
 
     private ModuleRef llvmModule;
 
-    private AssemblyCode assemblyCode;
+    private AssemblyModule assemblyModule;
 
     private RegisterManager registerManager;
 
+    @Deprecated
     private IRDecoder irDecoder;
 
-    public AssemblyCode getRISCVModuleModule() {
-        return assemblyCode;
+    public AssemblyModule getRISCVModuleModule() {
+        return assemblyModule;
     }
 
     public Handler(ModuleRef llvmModule) {
         this.llvmModule = llvmModule;
-        this.assemblyCode = new AssemblyCode();
-        this.registerManager = new RegisterManager(assemblyCode);
+        this.assemblyModule = new AssemblyModule();
+        this.registerManager = new RegisterManager(assemblyModule);
         this.irDecoder = new IRDecoder();
     }
 
-    public AssemblyCode getAssemblyCode() {
-        return assemblyCode;
+    public AssemblyModule getAssemblyModule() {
+        return assemblyModule;
     }
 
     public void codeGen(){
         for (int i = 0; i < llvmModule.getFunctionNum(); i++) {
             FunctionValue function = llvmModule.getFunction(i);
             if(function.getName().equals("main")){
-                assemblyCode.addText(new Directive(".globl","main"));
+                assemblyModule.addText(new Directive(".globl","main"));
             }
-            assemblyCode.addText(new Label(function.getName()));
+            assemblyModule.addText(new Label(function.getName()));
             handleFunction(function);
         }
     }
@@ -82,6 +83,7 @@ fEntry:
 }
 
  */
+    // todo: use visitor pattern
     public void handleInstruction(String ir) {
 
         //todo() delete after frontend refactor the ir from String to InstructionRef
@@ -115,7 +117,9 @@ fEntry:
 
     public void buildAsmStore(AbstractIR abIR){
         StoreIR storeIR = (StoreIR) abIR;
-        boolean isConst = !storeIR.getSrc().startsWith("%");
+        boolean isConst = !storeIR.getSrc()
+                // TODO: no String
+                .startsWith("%");
 
         String src_reg = "";
         String dest_reg = "";
@@ -123,7 +127,8 @@ fEntry:
             src_reg = registerManager.provideReg();
             registerManager.lockReg(src_reg);
             Instruction li = new Instruction("li", new Register(src_reg), new ImmediateValue(Integer.parseInt(storeIR.getSrc())));
-            assemblyCode.addText(li);
+            // TODO: addInstr
+            assemblyModule.addText(li);
         } else{
             src_reg = registerManager.provideReg(storeIR.getSrc());
             registerManager.lockReg(src_reg);
@@ -132,7 +137,7 @@ fEntry:
 
         Instruction mv = new Instruction("mv", new Register(dest_reg), new Register(src_reg));
 
-        assemblyCode.addText(mv);
+        assemblyModule.addText(mv);
 
         registerManager.unlockReg(src_reg);
         if(isConst){
@@ -144,6 +149,8 @@ fEntry:
         // here all the var is allocated in the stack
     }
 
+    @Deprecated
+    // -> visitor pattern
     public void buildAsmLoad(AbstractIR abIR){
         LoadIR loadIR = (LoadIR) abIR;
 
@@ -154,7 +161,7 @@ fEntry:
         String dest_reg = registerManager.provideReg(loadIR.getDest());
 
         Instruction mv = new Instruction("mv", new Register(dest_reg), new Register(src_reg));
-        assemblyCode.addText(mv);
+        assemblyModule.addText(mv);
 
         registerManager.unlockReg(src_reg);
     }
@@ -173,7 +180,7 @@ fEntry:
 
             Instruction li = new Instruction("li", new Register(src_reg1), new ImmediateValue(Integer.parseInt(addIR.getSrc1())));
 
-            assemblyCode.addText(li);
+            assemblyModule.addText(li);
         }
         else {
             src_reg1 = registerManager.provideReg(addIR.getSrc1());
@@ -185,7 +192,7 @@ fEntry:
             src_reg2 = registerManager.provideReg();
 
             Instruction li = new Instruction("li", new Register(src_reg2), new ImmediateValue(Integer.parseInt(addIR.getSrc2())));
-            assemblyCode.addText(li);
+            assemblyModule.addText(li);
         }
         else {
             src_reg2 = registerManager.provideReg(addIR.getSrc2());
@@ -194,7 +201,7 @@ fEntry:
 
         dest_reg = registerManager.provideReg(addIR.getDest());
         Instruction add = new Instruction("add", new Register(dest_reg), new Register(src_reg1), new Register(src_reg2));
-        assemblyCode.addText(add);
+        assemblyModule.addText(add);
 
         registerManager.unlockReg(src_reg1);
         registerManager.unlockReg(src_reg2);
@@ -211,6 +218,6 @@ fEntry:
     public void buildAsmRet(AbstractIR abIR){
         //here is just return the main
         Instruction ret = new Instruction("jr", new Register("ra"));
-        assemblyCode.addText(ret);
+        assemblyModule.addText(ret);
     }
 }

@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class RegisterTracker {
-    private ArrayList<Integer> trackedRegs = new ArrayList<>();
-    private ArrayList<Integer> usedRegs = new ArrayList<>();
-    private ArrayList<Integer> freeRegs = new ArrayList<>();
-    private ArrayList<Integer> lockedRegs = new ArrayList<>();
+    private final ArrayList<Integer> trackedRegs = new ArrayList<>();
+    private final ArrayList<Integer> usedRegs = new ArrayList<>();
+    private final ArrayList<Integer> freeRegs = new ArrayList<>();
+    private final ArrayList<Integer> lockedRegs = new ArrayList<>();
 
     public RegisterTracker(Integer... regsToTrack) {
         trackedRegs.addAll(List.of(regsToTrack));
