@@ -25,7 +25,7 @@ public class RegisterManager {
     public RegisterManager(AssemblyCode assemblyCode) {
         this.assemblyCode = assemblyCode;
         //add all the temp registers into availableTempRegs
-        registerTracker = new RegisterTracker("t0","t1","t2","t3","t4");
+        registerTracker = new RegisterTracker("t0","t1","t2","t3","t4","t5","t6");
         localVarStack = new LocalVarStack();
         activeVarTable = new ActiveVarTable();
     }

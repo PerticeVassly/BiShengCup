@@ -16,6 +16,8 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import java.io.IOException;
 import java.util.Arrays;
 
+import javax.management.RuntimeErrorException;
+
 public class Main {
     private static String input;
     private static String output;
@@ -35,7 +37,7 @@ public class Main {
 
     private static void execute(String... args) {
         parseArgs(args);
-        assert input != null && output != null;
+        if (input == null || output == null) throw new RuntimeException();
 
         CharStream inputStream;
         try {
