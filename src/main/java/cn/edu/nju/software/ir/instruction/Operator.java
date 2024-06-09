@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Operator {
     private final static String[] operators = new String[]{
             "add", "sub", "mul", "sdiv", "srem", "and", "or",
-            "fptosi", "sitofp", "br", "icmp", "xor", "zext",
+            "fptosi", "sitofp", "br", "icmp", "fcmp", "xor", "zext",
             "load", "store", "alloca", "getelementptr",
             "call", "ret", "fadd", "fsub", "fmul", "fdiv"
     };

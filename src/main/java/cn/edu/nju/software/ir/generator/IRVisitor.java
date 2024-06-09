@@ -11,6 +11,7 @@ import cn.edu.nju.software.ir.value.*;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import static cn.edu.nju.software.ir.generator.Generator.*;
+import static cn.edu.nju.software.ir.instruction.Operator.*;
 
 
 import java.util.ArrayList;
@@ -86,7 +87,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     private ValueRef normalizeCond(ValueRef cond) {
         TypeRef type = cond.getType();
         if (type instanceof IntType) {
-            return gen.buildIcmp(builder, IntNE, cond, zero, "cond_normalize_");
+            return gen.buildCmp(builder, CmpNE, cond, zero, "cond_normalize_");
         }
         return cond;
     }
@@ -276,7 +277,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             } else {
                 // not a constant
                 if (op.equals("!")) {
-                    val = gen.buildIcmp(builder, IntNE, zero, val, "tmp_");
+                    val = gen.buildCmp(builder, CmpNE, zero, val, "tmp_");
                     val = gen.buildXor(builder, val, one, "tmp_");
                     val = gen.buildZExtend(builder, val, i32Type, "tmp_");
                     return val;
@@ -288,7 +289,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             }
         } else if (ctx.lVal() != null) {
             ValueRef lVal = visitLVal(ctx.lVal());
-            if (!(lVal.getType() instanceof ArrayType)){
+            if (!(lVal.getType() instanceof Pointer)) {
+                System.err.println("variable should be a pointer.");
+            }
+            if (!(((Pointer)lVal.getType()).getBase() instanceof ArrayType)){
                 return gen.buildLoad(builder, lVal, ctx.lVal().IDENT().getText());
             } else {
                 return gen.buildGEP(builder, lVal, new ValueRef[]{gen.ConstInt(i32Type, 0)}, 1, "");
@@ -300,41 +304,87 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else {
             // +-*/%
             ValueRef val1 = visitExp(ctx.exp(0)), val2 = visitExp(ctx.exp(1));
-            if (ctx.PLUS() != null) {
-                if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
-                    int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
-                    return gen.ConstInt(i32Type, v1 + v2);
+            if (val1.getType().equals(i32Type) && val2.getType().equals(i32Type)) {
+                if (ctx.PLUS() != null) {
+                    if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
+                        int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
+                        return gen.ConstInt(i32Type, v1 + v2);
+                    } else {
+                        return gen.buildAdd(builder, val1, val2, "result_");
+                    }
+                } else if (ctx.MINUS() != null) {
+                    if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
+                        int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
+                        return gen.ConstInt(i32Type, v1 - v2);
+                    } else {
+                        return gen.buildSub(builder, val1, val2, "result_");
+                    }
+                } else if (ctx.MUL() != null) {
+                    if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
+                        int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
+                        return gen.ConstInt(i32Type, v1 * v2);
+                    } else {
+                        return gen.buildMul(builder, val1, val2, "result_");
+                    }
+                } else if (ctx.DIV() != null) {
+                    if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
+                        int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
+                        return gen.ConstInt(i32Type, v1 / v2);
+                    } else {
+                        return gen.buildDiv(builder, val1, val2, "result_");
+                    }
                 } else {
-                    return gen.buildAdd(builder, val1, val2, "result_");
-                }
-            } else if (ctx.MINUS() != null) {
-                if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
-                    int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
-                    return gen.ConstInt(i32Type, v1 - v2);
-                } else {
-                    return gen.buildSub(builder, val1, val2, "result_");
-                }
-            } else if (ctx.MUL() != null) {
-                if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
-                    int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
-                    return gen.ConstInt(i32Type, v1 * v2);
-                } else {
-                    return gen.buildMul(builder, val1, val2, "result_");
-                }
-            } else if (ctx.DIV() != null) {
-                if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
-                    int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
-                    return gen.ConstInt(i32Type, v1 / v2);
-                } else {
-                    return gen.buildDiv(builder, val1, val2, "result_");
+                    // mod
+                    if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
+                        int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
+                        return gen.ConstInt(i32Type, v1 % v2);
+                    } else {
+                        return gen.buildMod(builder, val1, val2, "result_");
+                    }
                 }
             } else {
-                // mod
-                if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
-                    int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
-                    return gen.ConstInt(i32Type, v1 % v2);
+                if (val1.getType().equals(i32Type)) {
+                    if (val1 instanceof ConstValue) {
+                        val1 = gen.ConstFloat(floatType, (float) ((ConstValue) val1).getValue());
+                    } else {
+                        val1 = gen.buildIntToFloat(builder, val1, "i2f_");
+                    }
+                }
+                if (val2.getType().equals(i32Type)) {
+                    if (val2 instanceof ConstValue) {
+                        val2 = gen.ConstFloat(floatType, (float) ((ConstValue) val2).getValue());
+                    } else {
+                        val2 = gen.buildIntToFloat(builder, val2, "i2f_");
+                    }
+                }
+                if (ctx.PLUS() != null) {
+                    if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
+                        float v1 = (Float) ((ConstValue) val1).getValue(), v2 = (Float) ((ConstValue) val2).getValue();
+                        return gen.ConstFloat(floatType, v1 + v2);
+                    } else {
+                        return gen.buildFAdd(builder, val1, val2, "result_");
+                    }
+                } else if (ctx.MINUS() != null) {
+                    if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
+                        float v1 = (Float) ((ConstValue) val1).getValue(), v2 = (Float) ((ConstValue) val2).getValue();
+                        return gen.ConstFloat(floatType, v1 - v2);
+                    } else {
+                        return gen.buildFSub(builder, val1, val2, "result_");
+                    }
+                } else if (ctx.MUL() != null) {
+                    if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
+                        float v1 = (Float) ((ConstValue) val1).getValue(), v2 = (Float) ((ConstValue) val2).getValue();
+                        return gen.ConstFloat(floatType, v1 * v2);
+                    } else {
+                        return gen.buildFMul(builder, val1, val2, "result_");
+                    }
                 } else {
-                    return gen.buildMod(builder, val1, val2, "result_");
+                    if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
+                        float v1 = (Float) ((ConstValue) val1).getValue(), v2 = (Float) ((ConstValue) val2).getValue();
+                        return gen.ConstFloat(floatType, v1 / v2);
+                    } else {
+                        return gen.buildFDiv(builder, val1, val2, "result_");
+                    }
                 }
             }
         }
@@ -351,7 +401,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 indices[i] = visitExp(ctx.exp(i));
             }
 //            System.err.println(dim);
-            if (lVal.getType() instanceof Pointer) {
+            if (((Pointer)lVal.getType()).getBase() instanceof Pointer) {
                 lVal = gen.buildLoad(builder, lVal, "arr_");
             }
             return gen.buildGEP(builder, lVal, indices, dim, "");
@@ -496,29 +546,29 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     if (c1 instanceof ConstValue && c2 instanceof ConstValue) {
                         return gen.ConstBool(i1Type, ((ConstValue) c1).getValue().equals(((ConstValue) c2).getValue()));
                     }
-                    tmp = gen.buildIcmp(builder, IntEQ, c1, c2, "cond_eq_tmp_");
+                    tmp = gen.buildCmp(builder, CmpEQ, c1, c2, "cond_eq_tmp_");
                 } else if (ctx.NEQ() != null) {
                     // TODO
                     if (c1 instanceof ConstValue && c2 instanceof ConstValue) {
                         return gen.ConstBool(i1Type, !((ConstValue) c1).getValue().equals(((ConstValue) c2).getValue()));
                     }
-                    tmp = gen.buildIcmp(builder, IntNE, c1, c2, "cond_neq_tmp_");
+                    tmp = gen.buildCmp(builder, CmpNE, c1, c2, "cond_neq_tmp_");
                 } else if (ctx.GT() != null) {
                     // TODO
-                    tmp = gen.buildIcmp(builder, IntSGT, c1, c2, "cond_gt_tmp_");
+                    tmp = gen.buildCmp(builder, CmpSGT, c1, c2, "cond_gt_tmp_");
                 } else if (ctx.LT() != null) {
                     // TODO
-                    tmp = gen.buildIcmp(builder, IntSLT, c1, c2, "cond_lt_tmp_");
+                    tmp = gen.buildCmp(builder, CmpSLT, c1, c2, "cond_lt_tmp_");
                 } else if (ctx.GE() != null) {
                     // TODO
-                    tmp = gen.buildIcmp(builder, IntSGE, c1, c2, "cond_ge_tmp_");
+                    tmp = gen.buildCmp(builder, CmpSGE, c1, c2, "cond_ge_tmp_");
                 } else {
                     // TODO
                     // LE() != null
-                    tmp = gen.buildIcmp(builder, IntSLE, c1, c2, "cond_le_tmp_");
+                    tmp = gen.buildCmp(builder, CmpSLE, c1, c2, "cond_le_tmp_");
                 }
                 tmp = gen.buildZExtend(builder, tmp, i32Type, "cond_tmp_");
-                return gen.buildIcmp(builder, IntNE, tmp, zero, "cond_");
+                return gen.buildCmp(builder, CmpNE, tmp, zero, "cond_");
             } else {
                 // && || need translating to br, to implement circuit computing
                 SysYParser.CondContext tmp = deleteParen(ctx.cond(0));

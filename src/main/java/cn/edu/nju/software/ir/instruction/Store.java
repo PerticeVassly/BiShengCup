@@ -1,6 +1,5 @@
 package cn.edu.nju.software.ir.instruction;
 
-import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 public class Store extends Instruction {
@@ -16,12 +15,7 @@ public class Store extends Instruction {
     }
     @Override
     public String toString() {
-        if (operands[0] instanceof ConstValue) {
-            return "store " + operands[0] + ", " + operands[1].getType() + " " + operands[1]
-                    + ", align 4";
-        } else {
-            return "store " + operands[0].getType() + " " + operands[0] + ", "
-                    + operands[1].getType() + " " + operands[1] + ", align " + operands[0].getType().getWidth();
-        }
+        return "store " + operands[0].getType() + " " + operands[0] + ", "
+                + operands[1].getType() + " " + operands[1] + ", align " + operands[0].getType().getWidth();
     }
 }

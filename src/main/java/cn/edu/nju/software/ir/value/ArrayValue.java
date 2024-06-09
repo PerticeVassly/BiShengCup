@@ -37,7 +37,11 @@ public class ArrayValue extends ValueRef {
         res.append("[");
         for (int i = 0; i < size; i++) {
             if (elements[i] != null) {
-                res.append(elements[i].toString());
+                if (!(elements[i] instanceof ConstValue)){
+                    res.append(elements[i].toString());
+                } else {
+                    res.append(elements[i].getType()).append(" ").append(elements[i].toString());
+                }
             } else {
                 res.append(elementType.toString()).append(" "); // element[i] is null, we need to actively declare its type
                 if (!(elementType instanceof ArrayType)) {

@@ -1,9 +1,10 @@
 package cn.edu.nju.software.ir.module;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import cn.edu.nju.software.ir.opt.Optimizer;
 import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.*;
 
 import java.io.FileNotFoundException;
@@ -83,8 +84,9 @@ public class ModuleRef {
 
     private String generateGlobalVarIr(GlobalVar gv) {
         String ir = "@" + gv.getName() + " = global ";
-        if (!(gv.getType() instanceof ArrayType)){
-            ir += gv.getType().toString() + " ";
+        Pointer tyPtr = (Pointer) gv.getType();
+        if (!(tyPtr.getBase() instanceof ArrayType)) {
+            ir += tyPtr.getBase().toString() + " ";
             if (gv.getInitVal() instanceof ConstValue) {
                 ir += ((ConstValue) gv.getInitVal()).getValue() + ", ";
             } else {
@@ -93,6 +95,7 @@ public class ModuleRef {
             }
         } else {
             if (gv.getInitVal() instanceof ConstValue && ((ConstValue) gv.getInitVal()).getValue().equals(0)) {
+                ir += tyPtr.getBase().toString() + " ";
                 ir += "zeroinitializer, ";
             } else {
                 ir += gv.getInitVal().toString() + ", ";
@@ -154,8 +157,8 @@ public class ModuleRef {
     }
 
     public void dumpToConsole() {
-        Optimizer optimizer = new Optimizer(this);
-        optimizer.optimize();
+//        Optimizer optimizer = new Optimizer(this);
+//        optimizer.optimize();
         System.out.println("; ModuleId = '" + moduleId + "'");
         System.out.println("source_filename = \"" + moduleId + "\"");
         System.out.println(); // an empty line

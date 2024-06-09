@@ -28,11 +28,11 @@ public class ConstValue extends ValueRef {
 
     public String toString() {
         if (type instanceof IntType){
-            return type + " " + value.toString();
+            return value.toString();
         } else {
             long floatBits = Double.doubleToRawLongBits((Float) value);
             String hex = Long.toHexString(floatBits);
-            return type + " 0x" + hex;
+            return "0x" + hex;
         }
     }
 }

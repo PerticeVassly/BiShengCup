@@ -2,12 +2,14 @@ package cn.edu.nju.software.ir.generator;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
+import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.*;
 
 import java.util.ArrayList;
 
+import static cn.edu.nju.software.ir.instruction.OpEnum.*;
 import static cn.edu.nju.software.ir.type.ArrayType.UNKNOWN;
 
 public class Generator implements IrGenerator {
@@ -22,57 +24,7 @@ public class Generator implements IrGenerator {
         return gen;
     }
 
-    // operations
-    private final static String FLOAT = "f";
-    private final static String ADD = "add ";
-    private final static String SUB = "sub ";
-    private final static String MUL = "mul ";
-    private final static String DIV = "sdiv ";
-    private final static String MOD = "srem ";
-    private final static String AND = "and ";
-    private final static String OR = "or ";
-    private final static String F2I = "fptosi ";
-    private final static String I2F = "sitofp ";
-    private final static String BR = "br ";
-    private final static String ICMP = "icmp ";
-    private final static String NE = "ne ";
-    private final static String EQ = "eq ";
-    private final static String SGT = "sgt "; // s means signed
-    private final static String SLT = "slt ";
-    private final static String SGE = "sge ";
-    private final static String SLE = "sle ";
-    private final static String XOR = "xor ";
-    private final static String ZEXT = "zext "; // unsigned extension
-    private final static String LOAD = "load ";
-    private final static String STORE = "store ";
-    private final static String ALLOC = "alloca ";
-    private final static String GEP = "getelementptr ";
-    private final static String ALIGN = "align ";
-    private final static String CALL = "call ";
-    private final static String RETURN = "ret ";
-
-    // tags...
-    private final static String LOCAL = "%";
-    private final static String GLOBAL = "@";
-    private final static String LABEL = "label ";
-    private final static String ASSIGN = " = ";
-    private final static String DELIMITER = ", ";
-
-    // several icmp types
-    public final static int IntNE = 0; // !=
-    public final static int IntEQ = 1; // ==
-    public final static int IntSGT = 2; // >
-    public final static int IntSLT = 3; // <
-    public final static int IntSGE = 4; // >=
-    public final static int IntSLE = 5; // <=
-
-    private final static String[] icmpType = {
-            NE, EQ, SGT, SLT, SGE, SLE
-    };
-
-    private boolean global(ValueRef valueRef) {
-        return valueRef instanceof GlobalVar;
-    }
+    public final ConstValue zero = ConstInt(i32Type, 0);
 
     private TypeRef typeTransfer(TypeRef ty1, TypeRef ty2) {
         if (ty1 instanceof FloatType || ty2 instanceof FloatType) {
@@ -81,55 +33,24 @@ public class Generator implements IrGenerator {
         return new IntType();
     }
 
-    private String implementIrWithTwoOperands(String ir, ValueRef operand1, ValueRef operand2) {
-        TypeRef op1ty = operand1.getType(), op2ty = operand2.getType();
-        ir += op1ty + " "; // now ir = [irOldPart] i32
-        if (operand1 instanceof ConstValue) {
-            ir += ((ConstValue) operand1).getValue() + DELIMITER; // ir = [irOldPart] i32 0,
-        } else {
-            if (global(operand1)) {
-                ir += GLOBAL + operand1.getName() + DELIMITER; // ir = [irOldPart] i32 @a,
-            } else {
-                ir += LOCAL + operand1.getName() + DELIMITER; // ir = [irOldPart] i32 %a,
-            }
-        }
-        if (!op1ty.equals(op2ty)) {
-            ir += op2ty + " "; // %0 = icmp ne i32 0, float
-        }
-        if (operand2 instanceof ConstValue) {
-            ir += ((ConstValue) operand2).getValue(); // ir = [irOldPart] i32 0, 0  || ir = [irOldPart] i32 0, float 0
-        } else {
-            if (global(operand2)) {
-                ir += GLOBAL + operand2.getName(); // ir = [irOldPart] i32 0, @a || ir = [irOldPart] i32 0, float @a
-            } else {
-                ir += LOCAL + operand2.getName(); // ir = [irOldPart] i32 0, %a || ir = [irOldPart] i32 0, float %a
-            }
-        }
-        return ir;
-    }
-
-    private LocalVar buildArithmeticIr(BuilderRef builder, String op, ValueRef operand1, ValueRef operand2, String lValName) {
+    private LocalVar buildArithmeticIr(BuilderRef builder, OpEnum op, ValueRef operand1, ValueRef operand2, String lValName) {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
-        if (lVal.getType() instanceof FloatType) {
-            op = FLOAT + op;
-        }
-        String ir = LOCAL + lVal.getName() + ASSIGN + op; // %tmp = op
-        ir = implementIrWithTwoOperands(ir, operand1, operand2);
+        Instruction ir = new Arithmetic(lVal, op, operand1, operand2);
         builder.put(ir);
         return lVal;
     }
 
-    private LocalVar buildLogicalIr(BuilderRef builder, String op, ValueRef operand1, ValueRef operand2, String lValName) {
+    private LocalVar buildLogicalIr(BuilderRef builder, OpEnum op, ValueRef operand1, ValueRef operand2, String lValName) {
         LocalVar lVal = builder.createLocalVar(new BoolType(), lValName);
-        String ir = LOCAL + lVal.getName() + ASSIGN + op;
-        ir = implementIrWithTwoOperands(ir, operand1, operand2);
+        Instruction ir = new Logic(lVal, op, operand1, operand2);
         builder.put(ir);
         return lVal;
     }
 
 //    @Override
     public GlobalVar addGlobal(ModuleRef module, TypeRef type, String name) {
-        GlobalVar globalVar = new GlobalVar(type, name);
+        Pointer typePtr = new Pointer(type);
+        GlobalVar globalVar = new GlobalVar(typePtr, name);
         module.addGlobalVar(globalVar);
         return globalVar;
     }
@@ -146,44 +67,31 @@ public class Generator implements IrGenerator {
     }
     @Override
     public LocalVar buildAllocate(BuilderRef builder, TypeRef type, String name) {
-        LocalVar localVar = builder.createLocalVar(type, name);
-        String ir = LOCAL + localVar.getName() + ASSIGN + ALLOC + type.toString() + DELIMITER + ALIGN + type.getWidth();
+        Pointer typePtr = new Pointer(type);
+        LocalVar localVar = builder.createLocalVar(typePtr, name);
+        Instruction ir = new Allocate(localVar);
         builder.put(ir);
         return localVar;
     }
     @Override
     public ValueRef buildStore(BuilderRef builder, ValueRef value, ValueRef lVal) {
-        String ir = STORE;
-        if (lVal instanceof ConstValue) {
-            System.err.println("Store target should be a variable.");
-            return null;
-        }
-        if (value instanceof ConstValue) {
-            ir += value.toString();
-        } else {
-            ir += value.getType().toString() + " " + LOCAL + value.getName();
-        }
-        Pointer lValPtr = new Pointer(lVal);
-        ir += DELIMITER +
-                lValPtr + " " + LOCAL + lVal.getName() + DELIMITER +
-                ALIGN + lVal.getType().getWidth();
+        Instruction ir = new Store(value, lVal);
         builder.put(ir);
         return lVal;
     }
     @Override
     public LocalVar buildLoad(BuilderRef builder, ValueRef memory, String lValName) {
         LocalVar lVal;
-        Pointer memoryPtr;
-        if (!(memory.getType() instanceof Pointer)){
-            lVal = builder.createLocalVar((memory.getType()), lValName);
+//        Pointer memoryPtr;
+        if (!(((Pointer)memory.getType()).getBase() instanceof Pointer)){
+            lVal = builder.createLocalVar(((Pointer)memory.getType()).getBase(), lValName);
         } else {
-            lVal = builder.createLocalVar(new ArrayType(((Pointer) memory.getType()).getBase(), UNKNOWN), lValName);
+            ArrayType arrayType = new ArrayType(((Pointer) ((Pointer) memory.getType()).getBase()).getBase(), UNKNOWN);
+            lVal = builder.createLocalVar(new Pointer(arrayType), lValName);
 //            memoryPtr = (Pointer) memory.getType();
         }
-        memoryPtr = new Pointer(memory); // though memory maybe array, still translated to pointer positively
-        String ir = LOCAL + lVal.getName() + ASSIGN + LOAD + memory.getType().toString() + DELIMITER +
-                memoryPtr + " " + (global(memory) ? GLOBAL : LOCAL) + memory.getName() + DELIMITER +
-                ALIGN + lVal.getType().getWidth();
+//        memoryPtr = new Pointer(memory); // though memory maybe array, still translated to pointer positively
+        Instruction ir = new Load(lVal, memory);
         builder.put(ir);
         return lVal;
     }
@@ -193,43 +101,45 @@ public class Generator implements IrGenerator {
              *  arr[1][2]; {1, 2}
              */ ValueRef[] indices, int dims, String name) {
         // TODO maybe finished?
-
-        String ir = "";
         ValueRef index;
-        TypeRef arrayTy = array.getType();
         for (int i = dims - 1; i >= 0; i--) {
+            Pointer arrayTyPtr = (Pointer) array.getType();
+            ArrayType arrayTy = (ArrayType) arrayTyPtr.getBase();
             index = indices[i];
             LocalVar tmpLocal;
             if (i > 0){
-                tmpLocal = builder.createLocalVar(((ArrayType) arrayTy).getElementType(), "");
+                tmpLocal = builder.createLocalVar(new Pointer(arrayTy.getElementType()), "");
             } else {
-                tmpLocal = builder.createLocalVar(((ArrayType) arrayTy).getElementType(), name);
-//                System.err.println("call gep");
+                tmpLocal = builder.createLocalVar(new Pointer(arrayTy.getElementType()), name);
             }
-            Pointer arrayPtr = new Pointer(array);
-            ir = LOCAL + tmpLocal.getName() + ASSIGN + GEP + arrayTy + DELIMITER +
-                    arrayPtr + " " + (global(array) ? GLOBAL : LOCAL) + array.getName() + DELIMITER +
-                    (((ArrayType)array.getType()).getElementSize() == UNKNOWN ? "" : ("i32 0" + DELIMITER ))
-                    + "i32 ";
-            if (index instanceof ConstValue) {
-                ir += ((ConstValue) index).getValue();
+            ValueRef[] operands;
+            if (arrayTy.getElementSize() != UNKNOWN) {
+                operands = new ValueRef[]{array, zero, index};
             } else {
-                ir += LOCAL + index.getName();
+                operands = new ValueRef[]{array, index};
             }
+            Instruction ir = new GEP(tmpLocal, arrayTyPtr, operands);
             builder.put(ir);
             if (i == 0) {
                 return tmpLocal; // last time tmpLocal is a pointer pointing to base type
             }
-            arrayTy = ((ArrayType) arrayTy).getElementType();
             array = tmpLocal;
         }
         return null;
     }
     @Override
-    public LocalVar buildIcmp(BuilderRef builder, int kind, ValueRef operand1, ValueRef operand2, String lValName) {
+    public LocalVar buildCmp(BuilderRef builder, int kind, ValueRef operand1, ValueRef operand2, String lValName) {
         LocalVar lVal = builder.createLocalVar(new BoolType(), lValName);
-        String ir = LOCAL + lVal.getName() + ASSIGN + ICMP + icmpType[kind];
-        ir = implementIrWithTwoOperands(ir, operand1, operand2);
+        TypeRef type = typeTransfer(operand1.getType(), operand2.getType());
+        if (type.equals(floatType)) {
+            if (operand1.getType().equals(i32Type)) {
+                operand1 = buildIntToFloat(builder, operand1, "");
+            }
+            if (operand2.getType().equals(i32Type)) {
+                operand2 = buildIntToFloat(builder, operand2, "");
+            }
+        }
+        Instruction ir = new Cmp(lVal, type.equals(floatType) ? FCMP : ICMP, kind, operand1, operand2);
         builder.put(ir);
         return lVal;
     }
@@ -251,8 +161,7 @@ public class Generator implements IrGenerator {
         if (operand instanceof ConstValue) {
             System.err.println("ZExtend target should be a variable.");
         }
-        String ir = LOCAL + lVal.getName() + ASSIGN + ZEXT + operand.getType().toString() + " "; // %tmp = zext i1
-        ir += (global(operand) ? GLOBAL : LOCAL) + operand.getName() + " to " + type.toString(); // %tmp = zext i1 %src to i32
+        Instruction ir = new ZExt(lVal, operand, type);
         builder.put(ir);
         return lVal;
     }
@@ -260,56 +169,26 @@ public class Generator implements IrGenerator {
     public ValueRef buildCall(BuilderRef builder, FunctionValue function, ArrayList<ValueRef> arguments, int argCount, String retValName) {
         FunctionType ft = ((FunctionType) function.getType());
         TypeRef retTy = ft.getReturnType();
-        StringBuilder ir = new StringBuilder();
+        Instruction ir;
         LocalVar retVal = null;
         if (!(retTy instanceof VoidType)) {
             retVal = builder.createLocalVar(retTy, retValName);
-            ir.append(LOCAL).append(retVal.getName()).append(ASSIGN); // %retVal =
+            ir = new Call(retVal, function, arguments);
+        } else {
+            ir = new Call(function, arguments);
         }
-        ir.append(CALL).append(retTy.toString()).append(" ").append(GLOBAL).append(function.getName()); // %retVal = call i32 @f
-        ir.append("("); // %retVal = call i32 @f(
-        for (int i = 0; i < argCount; i++) {
-            ValueRef param = arguments.get(i);
-            if (ft.getFParameter(i) instanceof Pointer) {
-                Pointer elePtr = new Pointer(param.getType());
-                ir.append(elePtr).append(" ");
-            } else {
-                ir.append(param.getType().toString()).append(" ");
-            } // %retVal = call i32 @f(i32
-            if (param instanceof ConstValue) {
-                ir.append(((ConstValue) param).getValue()); // %retVal = call i32 @f(i32 0
-            } else {
-                if (global(param)) {
-                    ir.append(GLOBAL).append(param.getName());
-                } else {
-                    ir.append(LOCAL).append(param.getName());
-                }
-            }
-            if (i < argCount - 1) {
-                ir.append(DELIMITER); // %retVal = call i32 @f(i32 0,
-            }
-        }
-        ir.append(")"); // %retVal = call i32 @f()
-        builder.put(ir.toString());
+        builder.put(ir);
         return retVal;
     }
     @Override
     public ValueRef buildReturnVoid(BuilderRef builder) {
-        builder.put("ret void");
+        Instruction ir = new RetVoid();
+        builder.put(ir);
         return null;
     }
     @Override
     public ValueRef buildReturn(BuilderRef builder, ValueRef retValue) {
-        String ir = RETURN + retValue.getType().toString() + " ";
-        if (retValue instanceof ConstValue) {
-            ir += ((ConstValue) retValue).getValue();
-        } else {
-            if (global(retValue)) {
-                ir += GLOBAL + retValue.getName();
-            } else {
-                ir += LOCAL + retValue.getName();
-            }
-        }
+        Instruction ir = new RetValue(retValue);
         builder.put(ir);
         return null;
     }
@@ -317,25 +196,49 @@ public class Generator implements IrGenerator {
     public LocalVar buildAdd(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
         return buildArithmeticIr(builder, ADD, operand1, operand2, lValName);
     }
+
+    @Override
+    public ValueRef buildFAdd(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+        return buildArithmeticIr(builder, FADD, operand1, operand2, lValName);
+    }
+
     @Override
     public LocalVar buildSub(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
         return buildArithmeticIr(builder, SUB, operand1, operand2, lValName);
     }
+
+    @Override
+    public ValueRef buildFSub(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+        return buildArithmeticIr(builder, FSUB, operand1, operand2, lValName);
+    }
+
     @Override
     public LocalVar buildMul(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
         return buildArithmeticIr(builder, MUL, operand1, operand2, lValName);
     }
+
+    @Override
+    public ValueRef buildFMul(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+        return buildArithmeticIr(builder, FMUL, operand1, operand2, lValName);
+    }
+
     @Override
     public LocalVar buildDiv(BuilderRef builder, ValueRef dividend, ValueRef divisor, String lValName) {
         return buildArithmeticIr(builder, DIV, dividend, divisor, lValName);
     }
+
+    @Override
+    public ValueRef buildFDiv(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+        return buildArithmeticIr(builder, FDIV, operand1, operand2, lValName);
+    }
+
     @Override
     public LocalVar buildMod(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
         return buildArithmeticIr(builder, MOD, operand1, operand2, lValName);
     }
     @Override
     public ValueRef buildBranch(BuilderRef builder, BasicBlockRef targetBlock) {
-        String ir = BR + LABEL + LOCAL + targetBlock.getName();
+        Instruction ir = new Br(targetBlock);
         builder.put(ir);
         builder.addPredForTargetBlock(targetBlock);
         return null;
@@ -346,14 +249,7 @@ public class Generator implements IrGenerator {
         if (!(condTy instanceof BoolType)) {
             System.err.println("Type of cond must be BoolType.");
         }
-        String ir = BR + condTy.toString() + " ";
-        if (!(cond instanceof ConstValue)){
-            ir += LOCAL + cond.getName() + DELIMITER;// br i1 %cond,
-        } else {
-            ir += ((ConstValue) cond).getValue() + DELIMITER;
-        }
-        ir += LABEL + LOCAL + ifTrue.getName() + DELIMITER +  // br i1 %cond, label %ifTrue,
-                LABEL + LOCAL + ifFalse.getName(); // br i1 %cond, label %ifTrue, label %ifFalse
+        Instruction ir = new CondBr(cond, ifTrue, ifFalse);
         builder.put(ir);
         builder.addPredForTargetBlock(ifTrue);
         builder.addPredForTargetBlock(ifFalse);
@@ -389,7 +285,7 @@ public class Generator implements IrGenerator {
             return ConstInt(i32Type, (int)((ConstValue) floatVal).getValue());
         }
         LocalVar localVar = builder.createLocalVar(i32Type, name);
-        String ir = LOCAL + localVar.getName() + ASSIGN + F2I + floatType + " " + LOCAL + floatVal.getName() + " to " + i32Type;
+        Instruction ir = new FloatToInt(localVar, floatVal);
         builder.put(ir);
         return localVar;
     }
@@ -398,8 +294,8 @@ public class Generator implements IrGenerator {
         if (intVal instanceof ConstValue) {
             return ConstFloat(floatType, (float)((ConstValue) intVal).getValue());
         }
-        LocalVar localVar = builder.createLocalVar(i32Type, name);
-        String ir = LOCAL + localVar.getName() + ASSIGN + I2F + i32Type + " " + LOCAL + intVal.getName() + " to " + floatType;
+        LocalVar localVar = builder.createLocalVar(floatType, name);
+        Instruction ir = new IntToFloat(localVar, intVal);
         builder.put(ir);
         return localVar;
     }

@@ -1,5 +1,6 @@
 package cn.edu.nju.software.ir.basicblock;
 
+import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
@@ -11,7 +12,7 @@ public class BasicBlockRef extends ValueRef {
     private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
     private final static ArrayList<Integer> usedFreqList = new ArrayList<Integer>(){{add(0);}};
     private final String name;
-    private final ArrayList<String> irs; // TODO String -> Instruction
+    private final ArrayList<Instruction> irs; // TODO String -> Instruction
     private int irNum;
     /**
      * the function it belongs to
@@ -54,12 +55,12 @@ public class BasicBlockRef extends ValueRef {
         return pred.get(index);
     }
 
-    public void put(String ir) {
+    public void put(Instruction ir) {
         irNum++;
         irs.add(ir);
     }
 
-    public void renewIr(int index, String ir) {
+    public void renewIr(int index, Instruction ir) {
         irs.set(index, ir);
     }
 
@@ -71,9 +72,9 @@ public class BasicBlockRef extends ValueRef {
         return irNum;
     }
 
-    public String getIr(int index) {
+    public Instruction getIr(int index) {
         if (index >= irNum || index < 0) {
-            return "";
+            return null;
         }
         return irs.get(index);
     }

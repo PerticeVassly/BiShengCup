@@ -42,6 +42,7 @@ public class TestFrontEnd {
     @StringSource("prime")
     @StringSource("floattest1")
     @StringSource("merge-sort")
+    @StringSource("matrix")
     void testFrontEnd(String name) throws IOException, InterruptedException{
         testFile(name);
     }

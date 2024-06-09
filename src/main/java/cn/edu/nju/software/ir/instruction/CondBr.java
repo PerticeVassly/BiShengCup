@@ -23,11 +23,7 @@ public class CondBr extends Instruction {
 
     @Override
     public String toString() {
-        if (operands[0] instanceof ConstValue) {
-            return "br " + operands[0] + ", label " + operands[1] + ", label " + operands[2];
-        } else {
-            return "br " + operands[0].getType() + " " + operands[0] +
-                    ", label " + operands[1] + ", label " + operands[2];
-        }
+        return "br " + operands[0].getType() + " " + operands[0] +
+                ", label " + operands[1] + ", label " + operands[2];
     }
 }
