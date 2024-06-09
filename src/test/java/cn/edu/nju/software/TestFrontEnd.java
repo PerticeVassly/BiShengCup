@@ -37,8 +37,11 @@ public class TestFrontEnd {
      * @param name the pure input file name without extension suffix
      */
     @ParameterizedTest
-//    @StringSource("add")
-//    @StringSource("prime")
+    @StringSource("add")
+    @StringSource("test1")
+    @StringSource("prime")
+    @StringSource("floattest1")
+    @StringSource("merge-sort")
     @StringSource("matrix-mul")
     void testFrontEnd(String name) throws IOException, InterruptedException{
         testFile(name);
