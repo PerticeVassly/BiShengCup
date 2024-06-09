@@ -43,6 +43,8 @@ public class TestFrontEnd {
     @StringSource("floattest1")
     @StringSource("merge-sort")
     @StringSource("matrix-mul")
+    @StringSource("recursion")
+    @StringSource("integration")
     void testFrontEnd(String name) throws IOException, InterruptedException{
         testFile(name);
     }
