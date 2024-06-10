@@ -316,5 +316,5 @@ int main() {
 		i = i + 1;
 		j = 0;
 	}
-	return c[0][0];
+	return c[57][98];
 }
