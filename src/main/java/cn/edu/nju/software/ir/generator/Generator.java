@@ -147,10 +147,10 @@ public class Generator implements IrGenerator {
         LocalVar lVal = builder.createLocalVar(new BoolType(), lValName);
         TypeRef type = typeTransfer(operand1.getType(), operand2.getType());
         if (type.equals(floatType)) {
-            if (operand1.getType().equals(i32Type)) {
+            if (operand1.getType().equals(i32Type) && !(operand1 instanceof ConstValue)) {
                 operand1 = buildIntToFloat(builder, operand1, "i2f_");
             }
-            if (operand2.getType().equals(i32Type)) {
+            if (operand2.getType().equals(i32Type) && !(operand2 instanceof ConstValue)) {
                 operand2 = buildIntToFloat(builder, operand2, "i2f_");
             }
         }
