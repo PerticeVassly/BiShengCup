@@ -69,4 +69,6 @@ import java.util.ArrayList;
      ValueRef buildFloatToInt(BuilderRef builder, ValueRef floatVal, String name);
 
      ValueRef buildIntToFloat(BuilderRef builder, ValueRef intVal, String name);
+
+     ValueRef dropBlock(BuilderRef builder, BasicBlockRef block);
  }

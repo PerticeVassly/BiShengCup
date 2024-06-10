@@ -75,6 +75,21 @@ public class Generator implements IrGenerator {
     }
     @Override
     public ValueRef buildStore(BuilderRef builder, ValueRef value, ValueRef lVal) {
+        if (!value.getType().equals(((Pointer)lVal.getType()).getBase())) {
+            if (((Pointer)lVal.getType()).getBase().equals(i32Type)) {
+                if (value instanceof ConstValue) {
+                    value = gen.ConstInt(i32Type, (int) (float)((ConstValue) value).getValue());
+                } else {
+                    value = gen.buildFloatToInt(builder, value, "f2i_");
+                }
+            } else {
+                if (value instanceof ConstValue) {
+                    value = gen.ConstFloat(floatType, (float) (int)((ConstValue) value).getValue());
+                } else {
+                    value = gen.buildIntToFloat(builder, value, "i2f_");
+                }
+            }
+        }
         Instruction ir = new Store(value, lVal);
         builder.put(ir);
         return lVal;
@@ -108,7 +123,7 @@ public class Generator implements IrGenerator {
             index = indices[i];
             LocalVar tmpLocal;
             if (i > 0){
-                tmpLocal = builder.createLocalVar(new Pointer(arrayTy.getElementType()), "");
+                tmpLocal = builder.createLocalVar(new Pointer(arrayTy.getElementType()), "ptr_");
             } else {
                 tmpLocal = builder.createLocalVar(new Pointer(arrayTy.getElementType()), name);
             }
@@ -133,13 +148,14 @@ public class Generator implements IrGenerator {
         TypeRef type = typeTransfer(operand1.getType(), operand2.getType());
         if (type.equals(floatType)) {
             if (operand1.getType().equals(i32Type)) {
-                operand1 = buildIntToFloat(builder, operand1, "");
+                operand1 = buildIntToFloat(builder, operand1, "i2f_");
             }
             if (operand2.getType().equals(i32Type)) {
-                operand2 = buildIntToFloat(builder, operand2, "");
+                operand2 = buildIntToFloat(builder, operand2, "i2f_");
             }
         }
-        Instruction ir = new Cmp(lVal, type.equals(floatType) ? FCMP : ICMP, kind, operand1, operand2);
+        Instruction ir = new Cmp(lVal, type.equals(floatType) ? FCMP : ICMP,
+                type.equals(floatType) ? kind + 6 : kind, operand1, operand2);
         builder.put(ir);
         return lVal;
     }
@@ -282,7 +298,7 @@ public class Generator implements IrGenerator {
     @Override
     public ValueRef buildFloatToInt(BuilderRef builder, ValueRef floatVal, String name) {
         if (floatVal instanceof ConstValue) {
-            return ConstInt(i32Type, (int)((ConstValue) floatVal).getValue());
+            return ConstInt(i32Type, (int)(float)((ConstValue) floatVal).getValue());
         }
         LocalVar localVar = builder.createLocalVar(i32Type, name);
         Instruction ir = new FloatToInt(localVar, floatVal);
@@ -292,11 +308,16 @@ public class Generator implements IrGenerator {
     @Override
     public ValueRef buildIntToFloat(BuilderRef builder, ValueRef intVal, String name) {
         if (intVal instanceof ConstValue) {
-            return ConstFloat(floatType, (float)((ConstValue) intVal).getValue());
+            return ConstFloat(floatType, (float) (int)((ConstValue) intVal).getValue());
         }
         LocalVar localVar = builder.createLocalVar(floatType, name);
         Instruction ir = new IntToFloat(localVar, intVal);
         builder.put(ir);
         return localVar;
+    }
+    @Override
+    public ValueRef dropBlock(BuilderRef builder, BasicBlockRef block) {
+        builder.dropBlock(block);
+        return block;
     }
 }

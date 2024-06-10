@@ -83,6 +83,10 @@ public class BasicBlockRef extends ValueRef {
         return function.createLocalVar(type, name);
     }
 
+    public void drop() {
+        function.dropBlock(this);
+    }
+
     @Override
     public String toString() {
         return "%" + name;

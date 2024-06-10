@@ -88,7 +88,7 @@ public class ModuleRef {
         if (!(tyPtr.getBase() instanceof ArrayType)) {
             ir += tyPtr.getBase().toString() + " ";
             if (gv.getInitVal() instanceof ConstValue) {
-                ir += ((ConstValue) gv.getInitVal()).getValue() + ", ";
+                ir += ((ConstValue) gv.getInitVal()) + ", ";
             } else {
                 System.err.println("Global variable has not been initialized.");
                 return null;

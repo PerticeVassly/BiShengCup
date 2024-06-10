@@ -20,6 +20,10 @@ public class BuilderRef {
         currentBlock = block;
     }
 
+    public void dropBlock(BasicBlockRef block) {
+        block.drop();
+    }
+
     public void addPredForTargetBlock(BasicBlockRef target) {
         target.addPred(currentBlock);
     }
