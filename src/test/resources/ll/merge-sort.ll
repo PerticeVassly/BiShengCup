@@ -1,7 +1,7 @@
 ; ModuleId = 'module'
 source_filename = "module"
 
-@arr = global [6 x i32] [i32 12, i32 11, i32 13, i32 5, i32 6, i32 7], align 16
+@arr = global [6 x i32] [i32 12, i32 11, i32 13, i32 5, i32 6, i32 7], align 4
 
 define void @merge(i32* %0, i32 %1, i32 %2, i32 %3) {
 mergeEntry:
@@ -40,14 +40,14 @@ whileCond_2:                                        ; pred = %mergeEntry, %while
 
 whileBody_2:                                        ; pred = %whileCond_2
   %i2 = load i32, i32* %i, align 4
-  %4 = getelementptr [100 x i32], [100 x i32]* %L, i32 0, i32 %i2
+  %L1 = getelementptr [100 x i32], [100 x i32]* %L, i32 0, i32 %i2
   %left2 = load i32, i32* %left, align 4
   %i3 = load i32, i32* %i, align 4
   %result_3 = add i32 %left2, %i3
-  %arr_ = load i32*, i32** %arr, align 16
-  %5 = getelementptr i32, i32* %arr_, i32 %result_3
-  %arr1 = load i32, i32* %5, align 4
-  store i32 %arr1, i32* %4, align 4
+  %arr_ = load i32*, i32** %arr, align 4
+  %arr1 = getelementptr i32, i32* %arr_, i32 %result_3
+  %arr2 = load i32, i32* %arr1, align 4
+  store i32 %arr2, i32* %L1, align 4
   %i4 = load i32, i32* %i, align 4
   %result_4 = add i32 %i4, 1
   store i32 %result_4, i32* %i, align 4
@@ -68,15 +68,15 @@ whileCond_3:                                        ; pred = %next_4, %whileBody
 
 whileBody_3:                                        ; pred = %whileCond_3
   %j2 = load i32, i32* %j, align 4
-  %6 = getelementptr [100 x i32], [100 x i32]* %R, i32 0, i32 %j2
+  %R1 = getelementptr [100 x i32], [100 x i32]* %R, i32 0, i32 %j2
   %mid3 = load i32, i32* %mid, align 4
   %result_5 = add i32 %mid3, 1
   %j3 = load i32, i32* %j, align 4
   %result_6 = add i32 %result_5, %j3
-  %arr_1 = load i32*, i32** %arr, align 16
-  %7 = getelementptr i32, i32* %arr_1, i32 %result_6
-  %arr2 = load i32, i32* %7, align 4
-  store i32 %arr2, i32* %6, align 4
+  %arr_1 = load i32*, i32** %arr, align 4
+  %arr3 = getelementptr i32, i32* %arr_1, i32 %result_6
+  %arr4 = load i32, i32* %arr3, align 4
+  store i32 %arr4, i32* %R1, align 4
   %j4 = load i32, i32* %j, align 4
   %result_7 = add i32 %j4, 1
   store i32 %result_7, i32* %j, align 4
@@ -96,19 +96,22 @@ whileCond_4:                                        ; pred = %next_5, %next_7
   %cond_lt_tmp_2 = icmp slt i32 %i5, %n12
   %cond_tmp_2 = zext i1 %cond_lt_tmp_2 to i32
   %cond_2 = icmp ne i32 %cond_tmp_2, 0
-  br i1 %cond_2, label %secondCond_, label %whileCond_5
+  br i1 %cond_2, label %secondCond_, label %next_6
 
 whileBody_4:                                        ; pred = %secondCond_
   %i6 = load i32, i32* %i, align 4
-  %8 = getelementptr [100 x i32], [100 x i32]* %L, i32 0, i32 %i6
-  %L1 = load i32, i32* %8, align 4
+  %L2 = getelementptr [100 x i32], [100 x i32]* %L, i32 0, i32 %i6
+  %L3 = load i32, i32* %L2, align 4
   %j6 = load i32, i32* %j, align 4
-  %9 = getelementptr [100 x i32], [100 x i32]* %R, i32 0, i32 %j6
-  %R1 = load i32, i32* %9, align 4
-  %cond_le_tmp_ = icmp sle i32 %L1, %R1
+  %R2 = getelementptr [100 x i32], [100 x i32]* %R, i32 0, i32 %j6
+  %R3 = load i32, i32* %R2, align 4
+  %cond_le_tmp_ = icmp sle i32 %L3, %R3
   %cond_tmp_4 = zext i1 %cond_le_tmp_ to i32
   %cond_4 = icmp ne i32 %cond_tmp_4, 0
   br i1 %cond_4, label %ifTrue_2, label %ifFalse_
+
+next_6:                                             ; pred = %whileCond_4, %secondCond_
+  br label %whileCond_5
 
 secondCond_:                                        ; pred = %whileCond_4
   %j5 = load i32, i32* %j, align 4
@@ -116,16 +119,16 @@ secondCond_:                                        ; pred = %whileCond_4
   %cond_lt_tmp_3 = icmp slt i32 %j5, %n22
   %cond_tmp_3 = zext i1 %cond_lt_tmp_3 to i32
   %cond_3 = icmp ne i32 %cond_tmp_3, 0
-  br i1 %cond_3, label %whileBody_4, label %whileCond_5
+  br i1 %cond_3, label %whileBody_4, label %next_6
 
 ifTrue_2:                                           ; pred = %whileBody_4
   %k1 = load i32, i32* %k, align 4
-  %arr_2 = load i32*, i32** %arr, align 16
-  %10 = getelementptr i32, i32* %arr_2, i32 %k1
+  %arr_2 = load i32*, i32** %arr, align 4
+  %arr5 = getelementptr i32, i32* %arr_2, i32 %k1
   %i7 = load i32, i32* %i, align 4
-  %11 = getelementptr [100 x i32], [100 x i32]* %L, i32 0, i32 %i7
-  %L2 = load i32, i32* %11, align 4
-  store i32 %L2, i32* %10, align 4
+  %L4 = getelementptr [100 x i32], [100 x i32]* %L, i32 0, i32 %i7
+  %L5 = load i32, i32* %L4, align 4
+  store i32 %L5, i32* %arr5, align 4
   %i8 = load i32, i32* %i, align 4
   %result_8 = add i32 %i8, 1
   store i32 %result_8, i32* %i, align 4
@@ -133,12 +136,12 @@ ifTrue_2:                                           ; pred = %whileBody_4
 
 ifFalse_:                                           ; pred = %whileBody_4
   %k2 = load i32, i32* %k, align 4
-  %arr_3 = load i32*, i32** %arr, align 16
-  %12 = getelementptr i32, i32* %arr_3, i32 %k2
+  %arr_3 = load i32*, i32** %arr, align 4
+  %arr6 = getelementptr i32, i32* %arr_3, i32 %k2
   %j7 = load i32, i32* %j, align 4
-  %13 = getelementptr [100 x i32], [100 x i32]* %R, i32 0, i32 %j7
-  %R2 = load i32, i32* %13, align 4
-  store i32 %R2, i32* %12, align 4
+  %R4 = getelementptr [100 x i32], [100 x i32]* %R, i32 0, i32 %j7
+  %R5 = load i32, i32* %R4, align 4
+  store i32 %R5, i32* %arr6, align 4
   %j8 = load i32, i32* %j, align 4
   %result_9 = add i32 %j8, 1
   store i32 %result_9, i32* %j, align 4
@@ -156,16 +159,16 @@ whileCond_5:                                        ; pred = %next_6, %whileBody
   %cond_lt_tmp_4 = icmp slt i32 %i9, %n13
   %cond_tmp_5 = zext i1 %cond_lt_tmp_4 to i32
   %cond_5 = icmp ne i32 %cond_tmp_5, 0
-  br i1 %cond_5, label %whileBody_5, label %whileCond_6
+  br i1 %cond_5, label %whileBody_5, label %next_8
 
 whileBody_5:                                        ; pred = %whileCond_5
   %k4 = load i32, i32* %k, align 4
-  %arr_4 = load i32*, i32** %arr, align 16
-  %14 = getelementptr i32, i32* %arr_4, i32 %k4
+  %arr_4 = load i32*, i32** %arr, align 4
+  %arr7 = getelementptr i32, i32* %arr_4, i32 %k4
   %i10 = load i32, i32* %i, align 4
-  %15 = getelementptr [100 x i32], [100 x i32]* %L, i32 0, i32 %i10
-  %L3 = load i32, i32* %15, align 4
-  store i32 %L3, i32* %14, align 4
+  %L6 = getelementptr [100 x i32], [100 x i32]* %L, i32 0, i32 %i10
+  %L7 = load i32, i32* %L6, align 4
+  store i32 %L7, i32* %arr7, align 4
   %i11 = load i32, i32* %i, align 4
   %result_11 = add i32 %i11, 1
   store i32 %result_11, i32* %i, align 4
@@ -173,6 +176,9 @@ whileBody_5:                                        ; pred = %whileCond_5
   %result_12 = add i32 %k5, 1
   store i32 %result_12, i32* %k, align 4
   br label %whileCond_5
+
+next_8:                                             ; pred = %whileCond_5
+  br label %whileCond_6
 
 whileCond_6:                                        ; pred = %next_8, %whileBody_6
   %j9 = load i32, i32* %j, align 4
@@ -184,12 +190,12 @@ whileCond_6:                                        ; pred = %next_8, %whileBody
 
 whileBody_6:                                        ; pred = %whileCond_6
   %k6 = load i32, i32* %k, align 4
-  %arr_5 = load i32*, i32** %arr, align 16
-  %16 = getelementptr i32, i32* %arr_5, i32 %k6
+  %arr_5 = load i32*, i32** %arr, align 4
+  %arr8 = getelementptr i32, i32* %arr_5, i32 %k6
   %j10 = load i32, i32* %j, align 4
-  %17 = getelementptr [100 x i32], [100 x i32]* %R, i32 0, i32 %j10
-  %R3 = load i32, i32* %17, align 4
-  store i32 %R3, i32* %16, align 4
+  %R6 = getelementptr [100 x i32], [100 x i32]* %R, i32 0, i32 %j10
+  %R7 = load i32, i32* %R6, align 4
+  store i32 %R7, i32* %arr8, align 4
   %j11 = load i32, i32* %j, align 4
   %result_13 = add i32 %j11, 1
   store i32 %result_13, i32* %j, align 4
@@ -226,16 +232,16 @@ ifTrue_3:                                              ; pred = %mergeSortEntry
   %result_1 = sdiv i32 %result_, 2
   %result_2 = add i32 %left2, %result_1
   store i32 %result_2, i32* %mid, align 4
-  %arr1 = load i32*, i32** %arr, align 16
+  %arr1 = load i32*, i32** %arr, align 4
   %left4 = load i32, i32* %left, align 4
   %mid1 = load i32, i32* %mid, align 4
   call void @mergeSort(i32* %arr1, i32 %left4, i32 %mid1)
-  %arr2 = load i32*, i32** %arr, align 16
+  %arr2 = load i32*, i32** %arr, align 4
   %mid2 = load i32, i32* %mid, align 4
   %result_3 = add i32 %mid2, 1
   %right3 = load i32, i32* %right, align 4
   call void @mergeSort(i32* %arr2, i32 %result_3, i32 %right3)
-  %arr3 = load i32*, i32** %arr, align 16
+  %arr3 = load i32*, i32** %arr, align 4
   %left5 = load i32, i32* %left, align 4
   %mid3 = load i32, i32* %mid, align 4
   %right4 = load i32, i32* %right, align 4
@@ -250,14 +256,14 @@ define i32 @main() {
 mainEntry4:
   %arr_size = alloca i32, align 4
   store i32 6, i32* %arr_size, align 4
-  %0 = getelementptr [6 x i32], [6 x i32]* @arr, i32 0, i32 0
+  %arr = getelementptr [6 x i32], [6 x i32]* @arr, i32 0, i32 0
   %arr_size1 = load i32, i32* %arr_size, align 4
   %result_ = sub i32 %arr_size1, 1
-  call void @mergeSort(i32* %0, i32 0, i32 %result_)
+  call void @mergeSort(i32* %arr, i32 0, i32 %result_)
   %first = alloca i32, align 4
-  %1 = getelementptr [6 x i32], [6 x i32]* @arr, i32 0, i32 0
-  %arr = load i32, i32* %1, align 4
-  store i32 %arr, i32* %first, align 4
+  %arr1 = getelementptr [6 x i32], [6 x i32]* @arr, i32 0, i32 0
+  %arr2 = load i32, i32* %arr1, align 4
+  store i32 %arr2, i32* %first, align 4
   %first1 = load i32, i32* %first, align 4
   ret i32 %first1
 }

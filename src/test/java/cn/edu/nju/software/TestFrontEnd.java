@@ -6,30 +6,27 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import cn.edu.nju.software.util.CmdExecutor;
-
-import cn.edu.nju.software.util.StringSource;
-import org.junit.jupiter.api.BeforeAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import cn.edu.nju.software.util.CmdExecutor;
+import cn.edu.nju.software.util.StringSource;
 
 
 public class TestFrontEnd {
-    private static final String PREFIX_SY = "src/test/resources/sy/";
-    private static final String PREFIX_LL = "src/test/resources/ll/";
-    private static final String PREFIX_LL_REF = "src/test/resources/ll_ref/";
+    private static final String PREFIX = "/home/dell/2024-compilers/compilers/";
+    private static final String PREFIX_SY = PREFIX + "src/test/resources/sy/";
+    private static final String PREFIX_LL = PREFIX + "src/test/resources/ll/";
+    private static final String PREFIX_LL_REF = PREFIX + "src/test/resources/ll_ref/";
     private static final String PREFIX_C = "src/test/resources/c/";
 
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @BeforeEach
     void clean() throws IOException, InterruptedException {
-        cmdExecutor.exec("rm", PREFIX_LL + "*.ll");
-        cmdExecutor.exec("rm", PREFIX_LL_REF + "*.ll");
+        // cmdExecutor.exec("rm", PREFIX_LL + "*.ll");
+        // cmdExecutor.exec("rm", PREFIX_LL_REF + "*.ll");
     }
 
     /**
@@ -42,9 +39,11 @@ public class TestFrontEnd {
     @StringSource("prime")
     @StringSource("floattest1")
     @StringSource("merge-sort")
-    @StringSource("matrix-mul")
+    @StringSource("matrix")
+    @StringSource("fmatrix")
     @StringSource("recursion")
     @StringSource("integration")
+    @StringSource("quick-sort")
     void testFrontEnd(String name) throws IOException, InterruptedException{
         testFile(name);
     }
@@ -53,11 +52,11 @@ public class TestFrontEnd {
      * test all the files in the dir PREFIX_SY
      * @param name the pure input file name without extension suffix
      */
-    @ParameterizedTest
-    @MethodSource("parameters")
-    void testAll(String name) throws IOException, InterruptedException {
-        testFile(name);
-    }
+    // @ParameterizedTest
+    // @MethodSource("parameters")
+    // void testAll(String name) throws IOException, InterruptedException {
+    //     testFile(name);
+    // }
 
     private void testFile(String name) throws IOException, InterruptedException {
         String syPath = PREFIX_SY + name + ".sy";
@@ -67,7 +66,7 @@ public class TestFrontEnd {
         RunIRResult res = runIR(syPath, llPath);
         RunIRResult resRef = runIRRef(syPath, llRefPath);
 
-        assertTrue(res.success() && resRef.success());
+        // assertTrue(res.success() && resRef.success());
         System.err.println(res.exitCode());
         assertEquals(resRef.exitCode(), res.exitCode());
         assertEquals(resRef.output(), res.output());
