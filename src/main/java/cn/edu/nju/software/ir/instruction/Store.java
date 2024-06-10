@@ -18,4 +18,9 @@ public class Store extends Instruction {
         return "store " + operands[0].getType() + " " + operands[0] + ", "
                 + operands[1].getType() + " " + operands[1] + ", align " + operands[0].getType().getWidth();
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

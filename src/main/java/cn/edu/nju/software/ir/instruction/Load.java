@@ -19,4 +19,9 @@ public class Load extends Instruction {
         return lVal + " = load " + lVal.getType() + ", " + operands[0].getType() + " " + operands[0]
                 + ", align " + lVal.getType().getWidth();
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

@@ -11,4 +11,9 @@ public class Logic extends Binary {
     public boolean isLogic() {
         return true;
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

@@ -56,4 +56,9 @@ public class Call extends Instruction {
         }
         return instr.append(")").toString();
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

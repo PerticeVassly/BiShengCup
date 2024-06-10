@@ -22,4 +22,9 @@ public class Allocate extends Instruction {
         TypeRef base = ((Pointer)lVal.getType()).getBase();
         return lVal + " = alloca " + base + ", align " + base.getWidth();
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

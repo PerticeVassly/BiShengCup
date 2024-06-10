@@ -68,4 +68,6 @@ public abstract class Instruction {
     public boolean isBr() {
         return false;
     }
+
+    public abstract void accept(InstructionVisitor visitor);
 }

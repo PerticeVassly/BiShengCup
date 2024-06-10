@@ -26,4 +26,9 @@ public class GEP extends Instruction {
         }
         return instr.toString();
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

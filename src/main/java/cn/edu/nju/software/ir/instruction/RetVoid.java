@@ -11,4 +11,9 @@ public class RetVoid extends Ret {
     public String toString() {
         return "ret void";
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }
