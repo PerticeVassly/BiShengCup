@@ -1,6 +1,6 @@
 package cn.edu.nju.software.backend.asm;
 
 
-public interface Assembly {
+public interface RiscElement {
     String toString();
 }

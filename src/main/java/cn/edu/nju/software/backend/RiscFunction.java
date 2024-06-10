@@ -9,6 +9,7 @@ public class RiscFunction {
     private final String name;
     private final FunctionValue function;
     private final RiscModule riscModule;
+
     private final RiscBasicBlock entryBlock;
     private final List<RiscBasicBlock> basicBlocks = new ArrayList<>();
 

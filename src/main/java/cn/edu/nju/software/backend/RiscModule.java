@@ -27,105 +27,26 @@ public class RiscModule {
 
     private ModuleRef llvmModule;
 
-    private AssemblyModule assemblyModule;
-// todo: -> these 2
-    private final List<RiscFunction> functions = new ArrayList<>();
+    private final List<RiscFunction> riscFunctions = new ArrayList<>();
 
-    private final List<GlobalVar> globalVars = new ArrayList<>();
-
-    private RegisterManager registerManager;
-
-    public AssemblyModule getAssemblyModule() {
-        return assemblyModule;
-    }
+    private final List<RiscGlobalVar> riscGlobalVars = new ArrayList<>();
 
     public RiscModule(ModuleRef llvmModule) {
         this.llvmModule = llvmModule;
-        this.assemblyModule = new AssemblyModule();
-        this.registerManager = new RegisterManager(assemblyModule);
         codeGen();
     }
 
     private void codeGen(){
         llvmModule.getGlobalVars().forEach(globalVar -> {
-            // todo: 1. handle global var here
+            riscGlobalVars.add(new RiscGlobalVar(globalVar));
         });
 
-        for (int i = 0; i < llvmModule.getFunctionNum(); i++) {
-            FunctionValue function = llvmModule.getFunction(i);
-            RiscFunction riscFunction = new RiscFunction(function, this);
-            if(function.getName().equals("main")){
-                assemblyModule.addText(new RiscDirective(".globl","main"));
-            }
-            assemblyModule.addText(new RiscLabel(function.getName()));
-            handleFunction(function);
-        }
+        llvmModule.getFunctions().forEach(function -> {
+            riscFunctions.add(new RiscFunction(function, this));
+        });
     }
 
-    private void handleFunction(FunctionValue function) {
-        //here for test only handle a function
-
-        for (int i = 0; i < function.getBlockNum(); i++) {
-            BasicBlockRef block = function.getBlock(i);
-            handleBlock(block);
-        }
-    }
-
-    private void handleBlock(BasicBlockRef block) {
-        int irNum = block.getIrNum();
-        //streamhandle
-        for (int i = 0; i < irNum; i++) {
-            Instruction ir = block.getIr(i);
-            handleInstruction(ir);
-        }
-    }
-
-/*
- *define i32 @f(i32 %0, i32 %1) {
-fEntry:
-  %p1 = alloca i32, align 4
-  store i32 %0, i32* %p1, align 4
-  %p2 = alloca i32, align 4
-  store i32 %1, i32* %p2, align 4
-  %p11 = load i32, i32* %p1, align 4
-  %p21 = load i32, i32* %p2, align 4
-  %result_ = add i32 %p11, %p21
-  ret i32 %result_
-}
-
- */
-    // todo: use visitor pattern
-    public void handleInstruction(Instruction instr) {
-        //todo() delete after frontend refactor the ir from String to InstructionRef
-        if (instr instanceof Ret) {
-            buildAsmRet();
-            return;
-        }
-
-        if(instr instanceof Store) {
-            buildAsmStore(instr);
-            return;
-        }
-
-        if(instr instanceof Allocate){
-            buildAsmAlloca(instr);
-            return;
-        }
-
-        if(instr instanceof Load){
-            buildAsmLoad(instr);
-            return;
-        }
-
-        if(instr instanceof Arithmetic arithmetic){
-            if (arithmetic.getOp().equals(OpEnum.ADD)) {
-                buildAsmAdd(instr);
-                return;
-            }
-        }
-    }
-
-
+    // 等待移植到visitor中去
     public void buildAsmStore(Instruction instr){
         Store store = (Store) instr;
         boolean isConst = store.getOperand(0) instanceof ConstValue;

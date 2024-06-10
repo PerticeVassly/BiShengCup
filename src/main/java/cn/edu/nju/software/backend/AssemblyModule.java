@@ -1,6 +1,6 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.backend.asm.Assembly;
+import cn.edu.nju.software.backend.asm.RiscElement;
 import cn.edu.nju.software.backend.asm.RiscInstruction;
 import cn.edu.nju.software.backend.asm.RiscLabel;
 
@@ -10,45 +10,45 @@ import java.util.ArrayList;
 
 public class AssemblyModule {
 
-    private ArrayList<Assembly> text;
-    private ArrayList<Assembly> data;
+    private ArrayList<RiscElement> text;
+    private ArrayList<RiscElement> data;
 
     public AssemblyModule() {
         text = new ArrayList<>();
         data = new ArrayList<>();
     }
 
-    public ArrayList<Assembly> getText() {
+    public ArrayList<RiscElement> getText() {
         return text;
     }
 
-    public ArrayList<Assembly> getData() {
+    public ArrayList<RiscElement> getData() {
         return data;
     }
 
-    public void addText(Assembly assembly) {
-        text.add(assembly);
+    public void addText(RiscElement riscElement) {
+        text.add(riscElement);
     }
 
-    public void addData(Assembly assembly) {
-        data.add(assembly);
+    public void addData(RiscElement riscElement) {
+        data.add(riscElement);
     }
 
     public void dumpToConsole() {
-        for(Assembly assembly : data) {
-            System.out.println(assembly.toString());
+        for(RiscElement riscElement : data) {
+            System.out.println(riscElement.toString());
         }
 
-        for(Assembly assembly : text) {
-            if(assembly instanceof RiscInstruction){
-                System.out.println("\t" + assembly.toString());
+        for(RiscElement riscElement : text) {
+            if(riscElement instanceof RiscInstruction){
+                System.out.println("\t" + riscElement.toString());
             }
-            else if(assembly instanceof RiscLabel){
-                System.out.println(assembly.toString());
+            else if(riscElement instanceof RiscLabel){
+                System.out.println(riscElement.toString());
                 System.out.println();
             }
             else {
-                System.out.println(assembly.toString());
+                System.out.println(riscElement.toString());
             }
         }
         System.out.println();
@@ -57,20 +57,20 @@ public class AssemblyModule {
     public void dumpToFile(String filename) {
         try {
             PrintStream out = new PrintStream(new FileOutputStream(filename));
-            for(Assembly assembly : data) {
-                out.println(assembly.toString());
+            for(RiscElement riscElement : data) {
+                out.println(riscElement.toString());
             }
 
-            for(Assembly assembly : text) {
-                if(assembly instanceof RiscInstruction){
-                    out.println("\t" + assembly.toString());
+            for(RiscElement riscElement : text) {
+                if(riscElement instanceof RiscInstruction){
+                    out.println("\t" + riscElement.toString());
                 }
-                else if(assembly instanceof RiscLabel) {
-                    out.println(assembly.toString());
+                else if(riscElement instanceof RiscLabel) {
+                    out.println(riscElement.toString());
                     out.println();
                 }
                 else {
-                    out.println(assembly.toString());
+                    out.println(riscElement.toString());
                 }
             }
 

@@ -1,6 +1,6 @@
 package cn.edu.nju.software.backend.asm;
 
-public class RiscDirective implements Assembly {
+public class RiscDirective implements RiscElement {
     private String directive;
 
     private String content;

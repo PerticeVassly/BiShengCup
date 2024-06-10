@@ -7,6 +7,7 @@ import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BasicBlockRef extends ValueRef {
     private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
@@ -77,6 +78,10 @@ public class BasicBlockRef extends ValueRef {
             return null;
         }
         return irs.get(index);
+    }
+
+    public List<Instruction> getIrs() {
+        return irs;
     }
 
     public LocalVar createLocalVar(TypeRef type, String name) {

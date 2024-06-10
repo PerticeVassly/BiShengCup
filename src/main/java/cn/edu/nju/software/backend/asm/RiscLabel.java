@@ -1,6 +1,6 @@
 package cn.edu.nju.software.backend.asm;
 
-public class RiscLabel implements Assembly {
+public class RiscLabel implements RiscElement {
     private String label;
 
     public RiscLabel(String label) {

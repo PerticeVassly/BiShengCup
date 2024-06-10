@@ -1,18 +1,34 @@
 package cn.edu.nju.software.backend;
 
+import cn.edu.nju.software.backend.asm.RiscElement;
+import cn.edu.nju.software.backend.asm.RiscInstruction;
 import cn.edu.nju.software.backend.asm.RiscLabel;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+
+import java.util.ArrayList;
 
 public class RiscBasicBlock {
     private final String name;
     private final BasicBlockRef basicBlock;
     private final RiscModule riscModule;
-    RiscLabel label;
+
+    private RiscLabel label;
+    private final ArrayList<RiscInstruction> riscInstructions = new ArrayList<>();
+
 
     public RiscBasicBlock(BasicBlockRef basicBlock, RiscModule riscModule) {
         this.name = basicBlock.getName();
         this.basicBlock = basicBlock;
         this.riscModule = riscModule;
         this.label = new RiscLabel(name);
+
+        convertLLVMBlockToRiscBlock();
+    }
+
+    private void convertLLVMBlockToRiscBlock() {
+        basicBlock.getIrs().forEach(inst -> {
+            // visit each instruction in the basic block
+            // add into the instructions list
+        });
     }
 }

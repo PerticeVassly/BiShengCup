@@ -5,7 +5,7 @@ import cn.edu.nju.software.backend.asm.operand.Operand;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RiscInstruction implements Assembly {
+public class RiscInstruction implements RiscElement {
     private String opCode;
     private ArrayList<Operand> operands;
 

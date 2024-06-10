@@ -55,6 +55,9 @@ public class ModuleRef {
     }
 
     //todo() add getFunctions()
+    public List<FunctionValue> getFunctions() {
+        return functions;
+    }
 
     public int getFunctionNum() {
         return functions.size();
