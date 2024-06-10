@@ -46,6 +46,7 @@ public class TestFrontEnd {
     @StringSource("fmatrix")
     @StringSource("recursion")
     @StringSource("quick-sort")
+    @StringSource("smallmatrix")
     void testFrontEnd(String name) throws IOException, InterruptedException{
         testFile(name);
     }

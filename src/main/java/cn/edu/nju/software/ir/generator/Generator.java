@@ -117,12 +117,12 @@ public class Generator implements IrGenerator {
              */ ValueRef[] indices, int dims, String name) {
         // TODO maybe finished?
         ValueRef index;
-        for (int i = dims - 1; i >= 0; i--) {
+        for (int i = 0; i < dims; i++) {
             Pointer arrayTyPtr = (Pointer) array.getType();
             ArrayType arrayTy = (ArrayType) arrayTyPtr.getBase();
             index = indices[i];
             LocalVar tmpLocal;
-            if (i > 0){
+            if (i < dims - 1){
                 tmpLocal = builder.createLocalVar(new Pointer(arrayTy.getElementType()), "ptr_");
             } else {
                 tmpLocal = builder.createLocalVar(new Pointer(arrayTy.getElementType()), name);
@@ -135,7 +135,7 @@ public class Generator implements IrGenerator {
             }
             Instruction ir = new GEP(tmpLocal, arrayTyPtr, operands);
             builder.put(ir);
-            if (i == 0) {
+            if (i == dims - 1) {
                 return tmpLocal; // last time tmpLocal is a pointer pointing to base type
             }
             array = tmpLocal;
