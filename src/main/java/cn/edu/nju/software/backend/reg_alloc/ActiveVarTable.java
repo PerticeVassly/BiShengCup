@@ -1,6 +1,6 @@
-package cn.edu.nju.software.backend.util;
+package cn.edu.nju.software.backend.reg_alloc;
 
-import cn.edu.nju.software.backend.RiscvMachine;
+import cn.edu.nju.software.backend.RiscSpecifications;
 
 import java.util.HashMap;
 
@@ -42,7 +42,7 @@ public class ActiveVarTable {
     }
 
     public String getVarInReg(String regName) {
-        int regNO = RiscvMachine.getRegNO(regName);
+        int regNO = RiscSpecifications.getRegNO(regName);
         return getVarInReg(regNO);
     }
 

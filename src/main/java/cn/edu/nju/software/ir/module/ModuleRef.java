@@ -11,6 +11,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class ModuleRef {
     private final String moduleId;
@@ -55,6 +58,10 @@ public class ModuleRef {
 
     public int getFunctionNum() {
         return functions.size();
+    }
+
+    public List<GlobalVar> getGlobalVars() {
+        return Collections.unmodifiableList(globalVars);
     }
 
     public void addGlobalVar(GlobalVar globalVar) {

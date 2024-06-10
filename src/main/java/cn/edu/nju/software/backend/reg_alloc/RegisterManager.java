@@ -1,7 +1,8 @@
-package cn.edu.nju.software.backend;
+package cn.edu.nju.software.backend.reg_alloc;
 
-import cn.edu.nju.software.backend.util.*;
-import cn.edu.nju.software.backend.asm.Instruction;
+import cn.edu.nju.software.backend.AssemblyModule;
+import cn.edu.nju.software.backend.RiscSpecifications;
+import cn.edu.nju.software.backend.asm.RiscInstruction;
 import cn.edu.nju.software.backend.asm.operand.ImmediateValue;
 import cn.edu.nju.software.backend.asm.operand.IndirectRegister;
 import cn.edu.nju.software.backend.asm.operand.Register;
@@ -56,12 +57,12 @@ public class RegisterManager {
         String varName_toSpill = activeVarTable.getVarInReg(regNO_toSpill);
 
         if(hasAllocated(varName_toSpill)){
-            Instruction spill = new Instruction("sw", new Register(regNO_toSpill), new IndirectRegister(regNO_toSpill, localVarStack.getOffset(varName_toSpill)));
+            RiscInstruction spill = new RiscInstruction("sw", new Register(regNO_toSpill), new IndirectRegister(regNO_toSpill, localVarStack.getOffset(varName_toSpill)));
             assemblyModule.addText(spill);
         } else {
-            Instruction addi = new Instruction("addi", new Register("sp"), new Register("sp"), new ImmediateValue(-4));
+            RiscInstruction addi = new RiscInstruction("addi", new Register("sp"), new Register("sp"), new ImmediateValue(-4));
             assemblyModule.addText(addi);
-            Instruction sw = new Instruction("sw", new Register(regNO_toSpill), new IndirectRegister("sp", 0));
+            RiscInstruction sw = new RiscInstruction("sw", new Register(regNO_toSpill), new IndirectRegister("sp", 0));
             assemblyModule.addText(sw);
 
             localVarStack.push(new LocalVar(activeVarTable.getVarInReg(regNO_toSpill)));
@@ -78,7 +79,7 @@ public class RegisterManager {
     public String provideReg(){
         int regNO = registerTracker.hasFreeRegs() ? registerTracker.getFreeRegNO(0) : spill() ;
         registerTracker.useReg(regNO);
-        return RiscvMachine.getRegName(regNO);
+        return RiscSpecifications.getRegName(regNO);
     }
 
 
@@ -93,21 +94,21 @@ public class RegisterManager {
         if(hasAllocated(varName)) {
             int regNO = registerTracker.hasFreeRegs() ? registerTracker.getFreeRegNO(0) : spill();
 
-            Instruction lw = new Instruction("lw", new Register(regNO), new IndirectRegister("sp", localVarStack.getOffset(varName)));
+            RiscInstruction lw = new RiscInstruction("lw", new Register(regNO), new IndirectRegister("sp", localVarStack.getOffset(varName)));
 
             assemblyModule.addText(lw);
 
             registerTracker.useReg(regNO);
 
             activeVarTable.put(varName, regNO);
-            return RiscvMachine.getRegName(regNO);
+            return RiscSpecifications.getRegName(regNO);
         }
 
         //case 2
         if(activeVarTable.checkIsAlive(varName)){
             //case 2
             //get key of the varName
-            return RiscvMachine.getRegName(activeVarTable.getRegforVar(varName));
+            return RiscSpecifications.getRegName(activeVarTable.getRegforVar(varName));
         }
 
         //case 1
@@ -116,19 +117,19 @@ public class RegisterManager {
 
         activeVarTable.put(varName, regNO);
 
-        return RiscvMachine.getRegName(regNO);
+        return RiscSpecifications.getRegName(regNO);
     }
 
     public void lockReg(String regName){
-        registerTracker.lockReg(RiscvMachine.getRegNO(regName));
+        registerTracker.lockReg(RiscSpecifications.getRegNO(regName));
     }
 
     public void freeReg(String regName){
-        registerTracker.freeReg(RiscvMachine.getRegNO(regName));
+        registerTracker.freeReg(RiscSpecifications.getRegNO(regName));
     }
 
     public void unlockReg(String regName){
-        registerTracker.lockReg(RiscvMachine.getRegNO(regName));
+        registerTracker.lockReg(RiscSpecifications.getRegNO(regName));
     }
 
 

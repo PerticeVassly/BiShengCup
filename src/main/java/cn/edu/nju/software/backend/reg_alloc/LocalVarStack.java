@@ -1,4 +1,4 @@
-package cn.edu.nju.software.backend.util;
+package cn.edu.nju.software.backend.reg_alloc;
 
 import java.util.Stack;
 

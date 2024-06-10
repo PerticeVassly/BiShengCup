@@ -8,7 +8,7 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import cn.edu.nju.software.backend.Handler;
+import cn.edu.nju.software.backend.RiscModule;
 import cn.edu.nju.software.frontend.lexer.LexerErrorListener;
 import cn.edu.nju.software.frontend.lexer.SysYLexer;
 import cn.edu.nju.software.frontend.parser.ParserErrorListener;
@@ -81,10 +81,9 @@ public class Main {
         }
 
         if(emitAssembly){
-            Handler handler = new Handler(module);
-            handler.codeGen();
-            handler.getAssemblyModule().dumpToConsole();
-            handler.getRISCVModuleModule().dumpToFile(output);
+            RiscModule riscModule = new RiscModule(module);
+            riscModule.getAssemblyModule().dumpToConsole();
+            riscModule.getAssemblyModule().dumpToFile(output);
         }
     }
 

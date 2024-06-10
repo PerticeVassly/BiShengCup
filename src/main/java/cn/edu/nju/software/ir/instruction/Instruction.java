@@ -21,6 +21,10 @@ public abstract class Instruction {
         return Operator.getOp(operator);
     }
 
+    public ValueRef getLVal() {
+        return lVal;
+    }
+
     public boolean isArithmetic() {
         return false;
     }

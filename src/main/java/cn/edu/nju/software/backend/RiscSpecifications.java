@@ -3,7 +3,7 @@ package cn.edu.nju.software.backend;
 /**
  * use to provide the basic information of the RiscvMachine
  */
-public class RiscvMachine {
+public class RiscSpecifications {
 
     private final static String[] names = new String[32];
 

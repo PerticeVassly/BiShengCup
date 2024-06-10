@@ -192,7 +192,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         // add function to LLVM.GOT
         curScope.put(new Symbol<>(ctx.funcName().getText(), function));
         // add basic block to function
-        BasicBlockRef block = gen.appendBasicBlock(function, ctx.funcName().getText() + "Entry");
+        BasicBlockRef block = gen.appendEntryBasicBlock(function, ctx.funcName().getText() + "Entry");
         gen.positionBuilderAtEnd(builder, block);
         functionDef = true;
         scope.push(new SymbolTable<>());

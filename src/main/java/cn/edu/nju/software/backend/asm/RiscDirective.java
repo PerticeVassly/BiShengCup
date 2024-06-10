@@ -1,11 +1,11 @@
 package cn.edu.nju.software.backend.asm;
 
-public class Directive implements Assembly {
+public class RiscDirective implements Assembly {
     private String directive;
 
     private String content;
 
-    public Directive(String directive, String content) {
+    public RiscDirective(String directive, String content) {
         this.directive = directive;
         this.content = content;
     }

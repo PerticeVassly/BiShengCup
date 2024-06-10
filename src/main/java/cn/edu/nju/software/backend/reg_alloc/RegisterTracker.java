@@ -1,6 +1,6 @@
-package cn.edu.nju.software.backend.util;
+package cn.edu.nju.software.backend.reg_alloc;
 
-import cn.edu.nju.software.backend.RiscvMachine;
+import cn.edu.nju.software.backend.RiscSpecifications;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class RegisterTracker {
     }
 
     public RegisterTracker(String... regToTrack){
-        Stream.of(regToTrack).map(RiscvMachine::getRegNO).forEach(trackedRegs::add);
+        Stream.of(regToTrack).map(RiscSpecifications::getRegNO).forEach(trackedRegs::add);
         freeRegs.addAll(trackedRegs);
     }
 

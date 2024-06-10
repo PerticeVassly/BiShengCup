@@ -295,6 +295,11 @@ public class Generator implements IrGenerator {
         function.appendBasicBlock(block);
         return block;
     }
+    public BasicBlockRef appendEntryBasicBlock(FunctionValue function, String blockName) {
+        BasicBlockRef block = new BasicBlockRef(function, blockName);
+        function.appendEntryBasicBlock(block);
+        return block;
+    }
     @Override
     public ValueRef buildFloatToInt(BuilderRef builder, ValueRef floatVal, String name) {
         if (floatVal instanceof ConstValue) {

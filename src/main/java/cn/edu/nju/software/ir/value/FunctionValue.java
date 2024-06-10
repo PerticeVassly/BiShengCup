@@ -7,6 +7,8 @@ import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.TypeRef;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class FunctionValue extends ValueRef {
@@ -15,6 +17,7 @@ public class FunctionValue extends ValueRef {
     private final ArrayList<String> paramsUsedNames = new ArrayList<String>(){{add("");}};
     private final ArrayList<Integer> paramsUsedNamesFreq= new ArrayList<Integer>(){{add(0);}};
     private final ArrayList<BasicBlockRef> blocks;
+    private BasicBlockRef entryBlock;
     private int blockNum;
 
     private final static ArrayList<String> funcDeclUsedNames = new ArrayList<>();
@@ -47,6 +50,12 @@ public class FunctionValue extends ValueRef {
         blockNum++;
     }
 
+    public void appendEntryBasicBlock(BasicBlockRef basicBlockRef) {
+        entryBlock = basicBlockRef;
+        blocks.add(basicBlockRef);
+        blockNum++;
+    }
+
     public int getBlockNum() {
         return blockNum;
     }
@@ -57,6 +66,14 @@ public class FunctionValue extends ValueRef {
 
     public BasicBlockRef getBasicBlockRef(int index) {
         return blocks.get(index);
+    }
+
+    public List<BasicBlockRef> getBasicBlockRefs() {
+        return Collections.unmodifiableList(blocks);
+    }
+
+    public BasicBlockRef getEntryBlock() {
+        return entryBlock;
     }
 
     public LocalVar createLocalVar(TypeRef type, String name) {

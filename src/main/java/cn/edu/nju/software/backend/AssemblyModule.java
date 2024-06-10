@@ -1,8 +1,8 @@
-package cn.edu.nju.software.backend.util;
+package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.backend.asm.Assembly;
-import cn.edu.nju.software.backend.asm.Instruction;
-import cn.edu.nju.software.backend.asm.Label;
+import cn.edu.nju.software.backend.asm.RiscInstruction;
+import cn.edu.nju.software.backend.asm.RiscLabel;
 
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -40,10 +40,10 @@ public class AssemblyModule {
         }
 
         for(Assembly assembly : text) {
-            if(assembly instanceof Instruction){
+            if(assembly instanceof RiscInstruction){
                 System.out.println("\t" + assembly.toString());
             }
-            else if(assembly instanceof Label){
+            else if(assembly instanceof RiscLabel){
                 System.out.println(assembly.toString());
                 System.out.println();
             }
@@ -62,10 +62,10 @@ public class AssemblyModule {
             }
 
             for(Assembly assembly : text) {
-                if(assembly instanceof Instruction){
+                if(assembly instanceof RiscInstruction){
                     out.println("\t" + assembly.toString());
                 }
-                else if(assembly instanceof Label) {
+                else if(assembly instanceof RiscLabel) {
                     out.println(assembly.toString());
                     out.println();
                 }

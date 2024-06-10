@@ -1,9 +1,9 @@
 package cn.edu.nju.software.backend.asm;
 
-public class Label implements Assembly {
+public class RiscLabel implements Assembly {
     private String label;
 
-    public Label(String label) {
+    public RiscLabel(String label) {
         this.label = label;
     }
 
