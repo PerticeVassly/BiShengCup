@@ -87,16 +87,20 @@ define dso_local i32 @main() #0 {
   %54 = load i32, i32* %3, align 4
   %55 = add nsw i32 %54, 1
   store i32 %55, i32* %3, align 4
+  store i32 0, i32* %4, align 4
   br label %9, !llvm.loop !8
 
 56:                                               ; preds = %9
   %57 = load i32, i32* %2, align 4
   %58 = add nsw i32 %57, 1
   store i32 %58, i32* %2, align 4
+  store i32 0, i32* %3, align 4
   br label %5, !llvm.loop !9
 
 59:                                               ; preds = %5
-  ret i32 0
+  %60 = load float, float* getelementptr inbounds ([100 x [100 x float]], [100 x [100 x float]]* @c, i64 0, i64 0, i64 0), align 16
+  %61 = fptosi float %60 to i32
+  ret i32 %61
 }
 
 ; Function Attrs: nofree nosync nounwind readnone speculatable willreturn

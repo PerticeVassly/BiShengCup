@@ -310,9 +310,11 @@ int main() {
 				c[i][j] = c[i][j] + a[i][k] * b[k][j];
 				k = k + 1;
 			}
-		j = j + 1;
-		}
-		i = i + 1;
-	}
-	return 0;
+		    j = j + 1;
+		    k = 0;
+    	}
+    	i = i + 1;
+    	j = 0;
+    }
+    return c[0][0];
 }
