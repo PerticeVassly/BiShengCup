@@ -48,13 +48,13 @@ float S(int n, int p, float low, float high, int times) {
 }
 
 int main() {
-    const int n = 20, p = 20;
+    const int n = 20, p = 2;
     int i = 0;
     while (i <= n) {
         arr[i] = i;
         i = i + 1;
     }
-    float a = -3.4, b = 5.7;
+    float a = -0.7, b = 0.3;
 
     int times = 0;
 
