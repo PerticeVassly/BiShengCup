@@ -661,6 +661,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     size = string2Int(ctx.constExp(i).getText());
                     arrayType = new ArrayType(arrayType, size);
                 }
+//                            System.err.println(arrayType);
                 globalVar = gen.addGlobal(module, arrayType, ctx.IDENT().getText());
             }
             // todo array initializer
@@ -718,14 +719,38 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 elements[i] = visitInitVal(ctx.initVal(i));
             }
             TypeRef elementType;
-            if (initSize > 0){
+//            SysYParser.VarDeclContext t = (SysYParser.VarDeclContext) parent.getParent();
+//            if (t.bType().INT() != null) {
+//                elementType = i32Type;
+//            } else {
+//                elementType = floatType;
+//            }
+            if (initSize > 0 && elements[0].getType() instanceof ArrayType) {
                 elementType = elements[0].getType();
             } else {
                 SysYParser.VarDeclContext t = (SysYParser.VarDeclContext) parent.getParent();
                 if (t.bType().INT() != null) {
                     elementType = i32Type;
+                    for (int i = 0; i < elements.length; i++) {
+                        if (elements[i].getType().equals(floatType)) {
+                            if (elements[i] instanceof ConstValue) {
+                                elements[i] = gen.ConstInt(i32Type, (int) (float)((ConstValue) elements[i]).getValue());
+                            } else {
+                                elements[i] = gen.buildFloatToInt(builder, elements[i], "f2i_");
+                            }
+                        }
+                    }
                 } else {
                     elementType = floatType;
+                    for (int i = 0; i < elements.length; i++) {
+                        if (elements[i].getType().equals(i32Type)) {
+                            if (elements[i] instanceof ConstValue) {
+                                elements[i] = gen.ConstFloat(floatType, (float) (int)((ConstValue) elements[i]).getValue());
+                            } else {
+                                elements[i] = gen.buildIntToFloat(builder, elements[i], "i2f_");
+                            }
+                        }
+                    }
                 }
             }
             ArrayType arrayType = new ArrayType(elementType, realSize);

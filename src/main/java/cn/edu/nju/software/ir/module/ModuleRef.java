@@ -97,12 +97,13 @@ public class ModuleRef {
         if (!(tyPtr.getBase() instanceof ArrayType)) {
             ir += tyPtr.getBase().toString() + " ";
             if (gv.getInitVal() instanceof ConstValue) {
-                ir += ((ConstValue) gv.getInitVal()) + ", ";
+                ir += gv.getInitVal() + ", ";
             } else {
                 System.err.println("Global variable has not been initialized.");
                 return null;
             }
         } else {
+//            System.err.println(tyPtr.getBase());
             if (gv.getInitVal() instanceof ConstValue && ((ConstValue) gv.getInitVal()).getValue().equals(0)) {
                 ir += tyPtr.getBase().toString() + " ";
                 ir += "zeroinitializer, ";
