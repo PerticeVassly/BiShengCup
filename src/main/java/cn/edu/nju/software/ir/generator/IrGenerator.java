@@ -28,7 +28,7 @@ import java.util.ArrayList;
      ValueRef buildGEP(BuilderRef builder, ValueRef array, ValueRef[] indices, int dims, String name);
 
     // bool operations
-     ValueRef buildIcmp(BuilderRef builder, int kind, ValueRef operand1, ValueRef operand2, String lValName);
+     ValueRef buildCmp(BuilderRef builder, int kind, ValueRef operand1, ValueRef operand2, String lValName);
      ValueRef buildXor(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
      ValueRef buildAnd(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
      ValueRef buildOr(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
@@ -43,9 +43,13 @@ import java.util.ArrayList;
 
     // arithmetic operations
      ValueRef buildAdd(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
+     ValueRef buildFAdd(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
      ValueRef buildSub(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
+     ValueRef buildFSub(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
      ValueRef buildMul(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
+     ValueRef buildFMul(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
      ValueRef buildDiv(BuilderRef builder, ValueRef dividend, ValueRef divisor, String lValName);
+     ValueRef buildFDiv(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
      ValueRef buildMod(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
 
     // branch operations
@@ -65,4 +69,6 @@ import java.util.ArrayList;
      ValueRef buildFloatToInt(BuilderRef builder, ValueRef floatVal, String name);
 
      ValueRef buildIntToFloat(BuilderRef builder, ValueRef intVal, String name);
+
+     ValueRef dropBlock(BuilderRef builder, BasicBlockRef block);
  }

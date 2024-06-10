@@ -8,15 +8,12 @@ import static cn.edu.nju.software.ir.instruction.OpEnum.RETURN;
 import static cn.edu.nju.software.ir.instruction.Operator.getOperator;
 
 public class Ret extends Instruction {
-    protected final TypeRef retType;
-    public Ret(VoidType retType) {
+    public Ret() {
         operator = getOperator(RETURN);
-        this.retType = retType;
     }
 
-    public Ret(TypeRef retType, ValueRef retVal) {
+    public Ret(ValueRef retVal) {
         operator = getOperator(RETURN);
-        this.retType = retType;
         operands = new ValueRef[]{retVal};
     }
 

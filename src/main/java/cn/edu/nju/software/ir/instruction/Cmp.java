@@ -21,16 +21,8 @@ public class Cmp extends Instruction {
     @Override
     public String toString() {
         String instr = lVal + " = " + operator + " " + type + " " + operands[0].getType() + " ";
-        if (operands[0] instanceof ConstValue) {
-            instr += ((ConstValue) operands[0]).getValue() + ", ";
-        } else {
-            instr += operands[0] + ", ";
-        }
-        if (operands[1] instanceof ConstValue) {
-            instr += ((ConstValue) operands[1]).getValue();
-        } else {
-            instr += operands[1];
-        }
+        instr += operands[0] + ", ";
+        instr += operands[1];
         return instr;
     }
 }

@@ -12,6 +12,7 @@ public enum OpEnum {
      I2F,
      BR,
      ICMP,
+     FCMP,
      XOR,
      ZEXT, // unsigned extension
      LOAD,

@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Operator {
     private final static String[] operators = new String[]{
             "add", "sub", "mul", "sdiv", "srem", "and", "or",
-            "fptosi", "sitofp", "br", "icmp", "xor", "zext",
+            "fptosi", "sitofp", "br", "icmp", "fcmp", "xor", "zext",
             "load", "store", "alloca", "getelementptr",
             "call", "ret", "fadd", "fsub", "fmul", "fdiv"
     };
@@ -18,7 +18,8 @@ public class Operator {
     public final static int CmpSLE = 5; // <=
 
     public final static String[] cmpType = new String[]{
-            "ne", "eq", "sgt", "slt", "sge", "sle"
+            "ne", "eq", "sgt", "slt", "sge", "sle",
+            "one", "oeq", "ogt", "olt", " oge", "ole"
     };
 
     protected static String getOperator(OpEnum index) {

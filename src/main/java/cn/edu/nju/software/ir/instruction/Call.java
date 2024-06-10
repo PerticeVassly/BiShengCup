@@ -42,17 +42,14 @@ public class Call extends Instruction {
         instr.append("call ").append(ft.getReturnType()).append(" ").append(function).append("(");
         for (int i = 0; i < realParams.size(); i++) {
             ValueRef param = realParams.get(i);
-            if (param instanceof ConstValue) {
-                instr.append(param);
-            } else {
-                if (ft.getFParameter(i) instanceof Pointer) {
-                    Pointer paramPtr = new Pointer(param);
-                    instr.append(paramPtr).append(" ");
-                } else {
-                    instr.append(param.getType()).append(" ");
-                }
-                instr.append(param);
-            }
+//            if (ft.getFParameter(i) instanceof Pointer) {
+//                Pointer paramPtr = new Pointer(param);
+//                instr.append(paramPtr).append(" ");
+//            } else {
+//                instr.append(param.getType()).append(" ");
+//            }
+            instr.append(ft.getFParameter(i)).append(" ");
+            instr.append(param);
             if (i < realParams.size() - 1) {
                 instr.append(", ");
             }
