@@ -6,16 +6,12 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import cn.edu.nju.software.util.CmdExecutor;
-
-import cn.edu.nju.software.util.StringSource;
-import org.junit.jupiter.api.BeforeAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import cn.edu.nju.software.util.CmdExecutor;
+import cn.edu.nju.software.util.StringSource;
 
 
 public class TestFrontEnd {
@@ -42,9 +38,11 @@ public class TestFrontEnd {
     @StringSource("prime")
     @StringSource("floattest1")
     @StringSource("merge-sort")
-    @StringSource("matrix-mul")
+    @StringSource("matrix")
+    @StringSource("fmatrix")
     @StringSource("recursion")
     @StringSource("integration")
+    @StringSource("quick-sort")
     void testFrontEnd(String name) throws IOException, InterruptedException{
         testFile(name);
     }
