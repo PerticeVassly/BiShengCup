@@ -25,4 +25,9 @@ public class Cmp extends Instruction {
         instr += operands[1];
         return instr;
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

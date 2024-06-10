@@ -21,4 +21,9 @@ public class Ret extends Instruction {
     public boolean isReturn() {
         return true;
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

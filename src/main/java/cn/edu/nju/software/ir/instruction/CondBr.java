@@ -26,4 +26,9 @@ public class CondBr extends Instruction {
         return "br " + operands[0].getType() + " " + operands[0] +
                 ", label " + operands[1] + ", label " + operands[2];
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

@@ -14,4 +14,9 @@ public class Arithmetic extends Binary {
     public boolean isArithmetic() {
         return true;
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

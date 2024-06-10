@@ -13,4 +13,9 @@ public class IntToFloat extends Instruction {
     public String toString() {
         return lVal + " = sitofp i32 " + operands[0] + " to float";
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

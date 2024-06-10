@@ -13,4 +13,9 @@ public class FloatToInt extends Instruction {
     public String toString() {
         return lVal + " = fptosi float " + operands[0] + " to i32";
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

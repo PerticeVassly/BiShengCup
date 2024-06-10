@@ -13,4 +13,9 @@ public class RetValue extends Ret {
     public String toString() {
         return "ret " + operands[0].getType() + " " + operands[0];
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

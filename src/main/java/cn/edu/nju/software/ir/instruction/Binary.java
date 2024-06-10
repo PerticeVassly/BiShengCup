@@ -18,4 +18,9 @@ public class Binary extends Instruction {
     public String toString() {
         return lVal + " = " + operator + " " + opType + " " + operands[0] + ", " + operands[1];
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }

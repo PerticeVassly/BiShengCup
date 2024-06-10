@@ -22,4 +22,9 @@ public class Br extends Instruction {
     public String toString() {
         return "br label " + operands[0];
     }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
+    }
 }
