@@ -1,7 +1,6 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.backend.asm.RiscElement;
-import cn.edu.nju.software.backend.asm.RiscInstruction;
+import cn.edu.nju.software.backend.asm.riscInstruction.RiscInstruction;
 import cn.edu.nju.software.backend.asm.RiscLabel;
 
 import java.io.FileOutputStream;

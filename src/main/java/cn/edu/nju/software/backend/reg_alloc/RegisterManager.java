@@ -1,14 +1,19 @@
 package cn.edu.nju.software.backend.reg_alloc;
 
 import cn.edu.nju.software.backend.AssemblyModule;
+import cn.edu.nju.software.backend.RiscBasicBlock;
 import cn.edu.nju.software.backend.RiscSpecifications;
-import cn.edu.nju.software.backend.asm.RiscInstruction;
+import cn.edu.nju.software.backend.asm.riscInstruction.RiscAddi;
+import cn.edu.nju.software.backend.asm.riscInstruction.RiscInstruction;
 import cn.edu.nju.software.backend.asm.operand.ImmediateValue;
 import cn.edu.nju.software.backend.asm.operand.IndirectRegister;
 import cn.edu.nju.software.backend.asm.operand.Register;
+import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.backend.asm.riscInstruction.RiscSw;
 
 public class RegisterManager {
-    private final AssemblyModule assemblyModule;
+
+    private RiscBasicBlock currentBlock;
 
     private final RegisterTracker registerTracker;
 
@@ -20,10 +25,11 @@ public class RegisterManager {
     // if the Integer is 32 it means the var has been spilled
     private final ActiveVarTable activeVarTable;
 
-    // if a reg is spilled, record the offset of the var in the stack
+    public void setCurrentBlock(RiscBasicBlock currentBlock) {
+        this.currentBlock = currentBlock;
+    }
 
-    public RegisterManager(AssemblyModule assemblyModule) {
-        this.assemblyModule = assemblyModule;
+    public RegisterManager() {
         //add all the temp registers into availableTempRegs
         registerTracker = new RegisterTracker("t0","t1","t2","t3","t4");
         // todo: use Var to abstract the infos below:
@@ -57,13 +63,13 @@ public class RegisterManager {
         String varName_toSpill = activeVarTable.getVarInReg(regNO_toSpill);
 
         if(hasAllocated(varName_toSpill)){
-            RiscInstruction spill = new RiscInstruction("sw", new Register(regNO_toSpill), new IndirectRegister(regNO_toSpill, localVarStack.getOffset(varName_toSpill)));
-            assemblyModule.addText(spill);
+            RiscInstruction spill = new RiscSw(new Register(regNO_toSpill), new IndirectRegister(regNO_toSpill, localVarStack.getOffset(varName_toSpill)));
+            currentBlock.addInstruction(spill);
         } else {
-            RiscInstruction addi = new RiscInstruction("addi", new Register("sp"), new Register("sp"), new ImmediateValue(-4));
-            assemblyModule.addText(addi);
-            RiscInstruction sw = new RiscInstruction("sw", new Register(regNO_toSpill), new IndirectRegister("sp", 0));
-            assemblyModule.addText(sw);
+            RiscInstruction addi = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-4));
+            currentBlock.addInstruction(addi);
+            RiscInstruction sw = new RiscSw( new Register(regNO_toSpill), new IndirectRegister("sp", 0));
+            currentBlock.addInstruction(sw);
 
             localVarStack.push(new LocalVar(activeVarTable.getVarInReg(regNO_toSpill)));
         }

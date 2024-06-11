@@ -1,6 +1,6 @@
 package cn.edu.nju.software.backend.asm;
 
-public class RiscLabel implements RiscElement {
+public class RiscLabel{
     private String label;
 
     public RiscLabel(String label) {
@@ -15,9 +15,7 @@ public class RiscLabel implements RiscElement {
         this.label = label;
     }
 
-
-    @Override
-    public String toString() {
+    public String emitCode() {
         return label + ":";
     }
 }
