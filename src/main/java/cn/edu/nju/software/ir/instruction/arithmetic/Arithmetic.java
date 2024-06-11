@@ -1,9 +1,9 @@
-package cn.edu.nju.software.ir.instruction;
+package cn.edu.nju.software.ir.instruction.arithmetic;
 
-import cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.instruction.Binary;
+import cn.edu.nju.software.ir.instruction.InstructionVisitor;
+import cn.edu.nju.software.ir.instruction.OpEnum;
 import cn.edu.nju.software.ir.value.ValueRef;
-
-import static cn.edu.nju.software.ir.instruction.Operator.getOperator;
 
 public class Arithmetic extends Binary {
     public Arithmetic(ValueRef lVal, OpEnum op, ValueRef operand1, ValueRef operand2) {

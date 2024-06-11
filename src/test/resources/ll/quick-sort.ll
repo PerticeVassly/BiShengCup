@@ -143,7 +143,7 @@ next_35:                                                ; pred = %quick_sortEntr
 }
 
 define i32 @main() {
-mainEntry7:
+mainEntry8:
   %n = alloca i32, align 4
   store i32 6, i32* %n, align 4
   %arr = getelementptr [6 x i32], [6 x i32]* @arr, i32 0, i32 0

@@ -74,5 +74,4 @@ public class RegisterTracker {
     public boolean hasUsedRegs(){
         return !usedRegs.isEmpty();
     }
-
 }

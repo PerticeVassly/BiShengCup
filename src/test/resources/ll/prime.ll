@@ -4,7 +4,7 @@ source_filename = "module"
 @ans = global [21 x i32] [i32 101, i32 103, i32 107, i32 109, i32 113, i32 127, i32 131, i32 137, i32 139, i32 149, i32 151, i32 157, i32 163, i32 167, i32 173, i32 179, i32 181, i32 191, i32 193, i32 197, i32 199], align 4
 
 define i32 @main() {
-mainEntry8:
+mainEntry9:
   %m = alloca i32, align 4
   %i = alloca i32, align 4
   %n = alloca i32, align 4
@@ -13,7 +13,7 @@ mainEntry8:
   store i32 101, i32* %m, align 4
   br label %whileCond_22
 
-whileCond_22:                                        ; pred = %mainEntry8, %next_39
+whileCond_22:                                        ; pred = %mainEntry9, %next_39
   %m1 = load i32, i32* %m, align 4
   %cond_le_tmp_ = icmp sle i32 %m1, 200
   %cond_tmp_ = zext i1 %cond_le_tmp_ to i32

@@ -6,7 +6,7 @@ source_filename = "module"
 @c = global [0 x [0 x i32]] zeroinitializer, align 4
 
 define i32 @main() {
-mainEntry6:
+mainEntry7:
   %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
   %j = alloca i32, align 4
@@ -17,7 +17,7 @@ mainEntry6:
   store i32 4, i32* %size, align 4
   br label %whileCond_18
 
-whileCond_18:                                        ; pred = %mainEntry6, %next_31
+whileCond_18:                                        ; pred = %mainEntry7, %next_31
   %i1 = load i32, i32* %i, align 4
   %size1 = load i32, i32* %size, align 4
   %cond_lt_tmp_ = icmp slt i32 %i1, %size1

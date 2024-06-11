@@ -7,4 +7,7 @@ public enum RiscOp {
     ADDI,
     LW,
     SW,
+    LI,
+    MV,
+    RET,
 }

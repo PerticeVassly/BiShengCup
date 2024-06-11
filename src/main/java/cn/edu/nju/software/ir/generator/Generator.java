@@ -3,6 +3,7 @@ package cn.edu.nju.software.ir.generator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.instruction.*;
+import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.*;
@@ -33,6 +34,7 @@ public class Generator implements IrGenerator {
         return new IntType();
     }
 
+    //这里改成各个指令对应一条
     private LocalVar buildArithmeticIr(BuilderRef builder, OpEnum op, ValueRef operand1, ValueRef operand2, String lValName) {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
         Instruction ir = new Arithmetic(lVal, op, operand1, operand2);
@@ -208,24 +210,44 @@ public class Generator implements IrGenerator {
         builder.put(ir);
         return null;
     }
+
+    //todo() here modify all related to arithmetic operations
     @Override
     public LocalVar buildAdd(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        return buildArithmeticIr(builder, ADD, operand1, operand2, lValName);
+        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
+        Instruction ir = new Add(lVal, ADD, operand1, operand2);
+        builder.put(ir);
+        //return
+        return lVal;
     }
 
     @Override
     public ValueRef buildFAdd(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        return buildArithmeticIr(builder, FADD, operand1, operand2, lValName);
+        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
+        Instruction ir = new FAdd(lVal, FADD, operand1, operand2);
+        builder.put(ir);
+        //return
+        return lVal;
+//        return buildArithmeticIr(builder, FADD, operand1, operand2, lValName);
     }
 
     @Override
     public LocalVar buildSub(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        return buildArithmeticIr(builder, SUB, operand1, operand2, lValName);
+        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
+        Instruction ir = new Sub(lVal, SUB, operand1, operand2);
+        builder.put(ir);
+        return lVal;
+//        return buildArithmeticIr(builder, SUB, operand1, operand2, lValName);
     }
 
     @Override
     public ValueRef buildFSub(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        return buildArithmeticIr(builder, FSUB, operand1, operand2, lValName);
+        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
+        Instruction ir = new FSub(lVal, FSUB, operand1, operand2);
+        builder.put(ir);
+        //return
+        return lVal;
+//        return buildArithmeticIr(builder, FSUB, operand1, operand2, lValName);
     }
 
     @Override

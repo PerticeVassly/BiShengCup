@@ -16,7 +16,7 @@ fEntry:
 }
 
 define i32 @main() {
-mainEntry4:
+mainEntry5:
   %a = alloca i32, align 4
   %b = load i32, i32* @b, align 4
   store i32 %b, i32* %a, align 4

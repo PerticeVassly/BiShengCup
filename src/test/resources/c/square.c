@@ -4,6 +4,5 @@ int square(int num) {
     return 5;
 }
 int main() {
-   int a = square(2) && square(2);
    return 0;
 }

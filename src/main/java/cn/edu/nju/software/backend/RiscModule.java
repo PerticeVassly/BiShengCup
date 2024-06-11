@@ -16,12 +16,15 @@ public class RiscModule {
 
     private final List<RiscGlobalVar> riscGlobalVars = new ArrayList<>();
 
-    private RegisterManager registerManager;
+    private final RegisterManager registerManager = new RegisterManager();
 
     public RiscModule(ModuleRef llvmModule) {
         this.llvmModule = llvmModule;
-        this.registerManager = new RegisterManager();
         codeGen();
+    }
+
+    public RegisterManager getRegisterManager() {
+        return registerManager;
     }
 
     private void codeGen(){

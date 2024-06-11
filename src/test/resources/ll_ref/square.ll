@@ -22,21 +22,7 @@ declare void @llvm.memset.p0i8.i64(i8* nocapture writeonly, i8, i64, i1 immarg) 
 ; Function Attrs: noinline nounwind optnone uwtable
 define dso_local i32 @main() #0 {
   %1 = alloca i32, align 4
-  %2 = alloca i32, align 4
   store i32 0, i32* %1, align 4
-  %3 = call i32 @square(i32 noundef 2)
-  %4 = icmp ne i32 %3, 0
-  br i1 %4, label %5, label %8
-
-5:                                                ; preds = %0
-  %6 = call i32 @square(i32 noundef 2)
-  %7 = icmp ne i32 %6, 0
-  br label %8
-
-8:                                                ; preds = %5, %0
-  %9 = phi i1 [ false, %0 ], [ %7, %5 ]
-  %10 = zext i1 %9 to i32
-  store i32 %10, i32* %2, align 4
   ret i32 0
 }
 

@@ -1,6 +1,5 @@
 package cn.edu.nju.software.backend.reg_alloc;
 
-import cn.edu.nju.software.backend.AssemblyModule;
 import cn.edu.nju.software.backend.RiscBasicBlock;
 import cn.edu.nju.software.backend.RiscSpecifications;
 import cn.edu.nju.software.backend.asm.riscInstruction.RiscAddi;
@@ -8,7 +7,7 @@ import cn.edu.nju.software.backend.asm.riscInstruction.RiscInstruction;
 import cn.edu.nju.software.backend.asm.operand.ImmediateValue;
 import cn.edu.nju.software.backend.asm.operand.IndirectRegister;
 import cn.edu.nju.software.backend.asm.operand.Register;
-import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.backend.asm.riscInstruction.RiscLw;
 import cn.edu.nju.software.backend.asm.riscInstruction.RiscSw;
 
 public class RegisterManager {
@@ -20,7 +19,7 @@ public class RegisterManager {
     /**
      * record spill information
      */
-    private final LocalVarStack localVarStack;
+    private final MemoryVarStack memoryVarStack;
 
     // if the Integer is 32 it means the var has been spilled
     private final ActiveVarTable activeVarTable;
@@ -33,7 +32,7 @@ public class RegisterManager {
         //add all the temp registers into availableTempRegs
         registerTracker = new RegisterTracker("t0","t1","t2","t3","t4");
         // todo: use Var to abstract the infos below:
-        localVarStack = new LocalVarStack();
+        memoryVarStack = new MemoryVarStack();
         activeVarTable = new ActiveVarTable();
     }
 
@@ -48,10 +47,10 @@ public class RegisterManager {
     }
 
     private boolean hasAllocated(String varName){
-        if(localVarStack.isEmpty()){
+        if(memoryVarStack.isEmpty()){
             return false;
         }
-        return localVarStack.checkVar(varName);
+        return memoryVarStack.checkVar(varName);
     }
 
     /**
@@ -63,7 +62,7 @@ public class RegisterManager {
         String varName_toSpill = activeVarTable.getVarInReg(regNO_toSpill);
 
         if(hasAllocated(varName_toSpill)){
-            RiscInstruction spill = new RiscSw(new Register(regNO_toSpill), new IndirectRegister(regNO_toSpill, localVarStack.getOffset(varName_toSpill)));
+            RiscInstruction spill = new RiscSw(new Register(regNO_toSpill), new IndirectRegister(regNO_toSpill, memoryVarStack.getOffset(varName_toSpill)));
             currentBlock.addInstruction(spill);
         } else {
             RiscInstruction addi = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-4));
@@ -71,7 +70,7 @@ public class RegisterManager {
             RiscInstruction sw = new RiscSw( new Register(regNO_toSpill), new IndirectRegister("sp", 0));
             currentBlock.addInstruction(sw);
 
-            localVarStack.push(new LocalVar(activeVarTable.getVarInReg(regNO_toSpill)));
+            memoryVarStack.push(new LocalVar(activeVarTable.getVarInReg(regNO_toSpill)));
         }
 
         activeVarTable.kill(regNO_toSpill);
@@ -100,9 +99,9 @@ public class RegisterManager {
         if(hasAllocated(varName)) {
             int regNO = registerTracker.hasFreeRegs() ? registerTracker.getFreeRegNO(0) : spill();
 
-            RiscInstruction lw = new RiscInstruction("lw", new Register(regNO), new IndirectRegister("sp", localVarStack.getOffset(varName)));
+            RiscInstruction lw = new RiscLw( new Register(regNO), new IndirectRegister("sp", memoryVarStack.getOffset(varName)));
 
-            assemblyModule.addText(lw);
+            currentBlock.addInstruction(lw);
 
             registerTracker.useReg(regNO);
 
@@ -137,6 +136,5 @@ public class RegisterManager {
     public void unlockReg(String regName){
         registerTracker.lockReg(RiscSpecifications.getRegNO(regName));
     }
-
 
 }

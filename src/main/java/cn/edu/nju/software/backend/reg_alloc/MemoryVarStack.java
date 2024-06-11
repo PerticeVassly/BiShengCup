@@ -2,10 +2,10 @@ package cn.edu.nju.software.backend.reg_alloc;
 
 import java.util.Stack;
 
-public class LocalVarStack {
+public class MemoryVarStack {
     private Stack<LocalVar> localVarStack;
 
-    public LocalVarStack() {
+    public MemoryVarStack() {
         localVarStack = new Stack<>();
     }
 
