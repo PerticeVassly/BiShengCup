@@ -14,17 +14,17 @@ powerEntry:
   store float 0x3ff0000000000000, float* %result, align 4
   %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
-  br label %whileCond_8
+  br label %whileCond_10
 
-whileCond_8:                                        ; pred = %powerEntry, %whileBody_8
+whileCond_10:                                        ; pred = %powerEntry, %whileBody_10
   %i1 = load i32, i32* %i, align 4
   %exponent1 = load i32, i32* %exponent, align 4
   %cond_lt_tmp_ = icmp slt i32 %i1, %exponent1
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_8, label %next_10
+  br i1 %cond_, label %whileBody_10, label %next_13
 
-whileBody_8:                                        ; pred = %whileCond_8
+whileBody_10:                                        ; pred = %whileCond_10
   %result1 = load float, float* %result, align 4
   %base1 = load float, float* %base, align 4
   %result_ = fmul float %result1, %base1
@@ -32,9 +32,9 @@ whileBody_8:                                        ; pred = %whileCond_8
   %i2 = load i32, i32* %i, align 4
   %result_1 = add i32 %i2, 1
   store i32 %result_1, i32* %i, align 4
-  br label %whileCond_8
+  br label %whileCond_10
 
-next_10:                                            ; pred = %whileCond_8
+next_13:                                             ; pred = %whileCond_10
   %result2 = load float, float* %result, align 4
   ret float %result2
 }
@@ -47,9 +47,9 @@ fabs_customEntry:
   %cond_lt_tmp_ = fcmp olt float %num1, 0x0
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_2, label %ifFalse_1
+  br i1 %cond_, label %ifTrue_3, label %ifFalse_1
 
-ifTrue_2:                                                ; pred = %fabs_customEntry
+ifTrue_3:                                                ; pred = %fabs_customEntry
   %num2 = load float, float* %num, align 4
   %tmp_ = fsub float 0x0, %num2
   ret float %tmp_
@@ -71,17 +71,17 @@ FxEntry:
   store float 0x0, float* %sum, align 4
   %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
-  br label %whileCond_9
+  br label %whileCond_11
 
-whileCond_9:                                        ; pred = %FxEntry, %whileBody_9
+whileCond_11:                                        ; pred = %FxEntry, %whileBody_11
   %i1 = load i32, i32* %i, align 4
   %n1 = load i32, i32* %n, align 4
   %cond_le_tmp_ = icmp sle i32 %i1, %n1
   %cond_tmp_ = zext i1 %cond_le_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_9, label %next_12
+  br i1 %cond_, label %whileBody_11, label %next_15
 
-whileBody_9:                                        ; pred = %whileCond_9
+whileBody_11:                                        ; pred = %whileCond_11
   %sum1 = load float, float* %sum, align 4
   %i2 = load i32, i32* %i, align 4
   %arr = getelementptr [21 x i32], [21 x i32]* @arr, i32 0, i32 %i2
@@ -96,9 +96,9 @@ whileBody_9:                                        ; pred = %whileCond_9
   %i4 = load i32, i32* %i, align 4
   %result_2 = add i32 %i4, 1
   store i32 %result_2, i32* %i, align 4
-  br label %whileCond_9
+  br label %whileCond_11
 
-next_12:                                            ; pred = %whileCond_9
+next_15:                                             ; pred = %whileCond_11
   %fx = alloca float, align 4
   %sum2 = load float, float* %sum, align 4
   %p1 = load i32, i32* %p, align 4
@@ -219,9 +219,9 @@ SEntry:
   %cond_le_tmp_ = fcmp ole float %fabs_custom, %result_30
   %cond_tmp_ = zext i1 %cond_le_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_3, label %ifFalse_2
+  br i1 %cond_, label %ifTrue_4, label %ifFalse_2
 
-ifTrue_3:                                         ; pred = %SEntry
+ifTrue_4:                                         ; pred = %SEntry
   %sum_l2 = load float, float* %sum_l, align 4
   %sum_r2 = load float, float* %sum_r, align 4
   %result_31 = fadd float %sum_l2, %sum_r2
@@ -257,17 +257,17 @@ mainEntry2:
   store i32 2, i32* %p, align 4
   %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
-  br label %whileCond_10
+  br label %whileCond_12
 
-whileCond_10:                                        ; pred = %mainEntry2, %whileBody_10
+whileCond_12:                                        ; pred = %mainEntry2, %whileBody_12
   %i1 = load i32, i32* %i, align 4
   %n1 = load i32, i32* %n, align 4
   %cond_le_tmp_ = icmp sle i32 %i1, %n1
   %cond_tmp_ = zext i1 %cond_le_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_10, label %next_14
+  br i1 %cond_, label %whileBody_12, label %next_17
 
-whileBody_10:                                        ; pred = %whileCond_10
+whileBody_12:                                        ; pred = %whileCond_12
   %i2 = load i32, i32* %i, align 4
   %arr = getelementptr [21 x i32], [21 x i32]* @arr, i32 0, i32 %i2
   %i3 = load i32, i32* %i, align 4
@@ -275,9 +275,9 @@ whileBody_10:                                        ; pred = %whileCond_10
   %i4 = load i32, i32* %i, align 4
   %result_ = add i32 %i4, 1
   store i32 %result_, i32* %i, align 4
-  br label %whileCond_10
+  br label %whileCond_12
 
-next_14:                                             ; pred = %whileCond_10
+next_17:                                             ; pred = %whileCond_12
   %a = alloca float, align 4
   store float 0xbfe6666660000000, float* %a, align 4
   %b = alloca float, align 4

@@ -99,8 +99,65 @@ define dso_local i32 @main() #0 {
   br label %5, !llvm.loop !9
 
 60:                                               ; preds = %5
-  %61 = load i32, i32* getelementptr inbounds ([100 x [100 x i32]], [100 x [100 x i32]]* @c, i64 0, i64 0, i64 0), align 16
-  ret i32 %61
+  store i32 0, i32* %2, align 4
+  store i32 0, i32* %3, align 4
+  br label %61
+
+61:                                               ; preds = %88, %60
+  %62 = load i32, i32* %2, align 4
+  %63 = icmp slt i32 %62, 100
+  br i1 %63, label %64, label %91
+
+64:                                               ; preds = %61
+  br label %65
+
+65:                                               ; preds = %85, %64
+  %66 = load i32, i32* %3, align 4
+  %67 = icmp slt i32 %66, 100
+  br i1 %67, label %68, label %88
+
+68:                                               ; preds = %65
+  %69 = load i32, i32* %2, align 4
+  %70 = sext i32 %69 to i64
+  %71 = getelementptr inbounds [100 x [100 x i32]], [100 x [100 x i32]]* @c, i64 0, i64 %70
+  %72 = load i32, i32* %3, align 4
+  %73 = sext i32 %72 to i64
+  %74 = getelementptr inbounds [100 x i32], [100 x i32]* %71, i64 0, i64 %73
+  %75 = load i32, i32* %74, align 4
+  %76 = load i32, i32* %2, align 4
+  %77 = sext i32 %76 to i64
+  %78 = getelementptr inbounds [100 x [100 x i32]], [100 x [100 x i32]]* @ans, i64 0, i64 %77
+  %79 = load i32, i32* %3, align 4
+  %80 = sext i32 %79 to i64
+  %81 = getelementptr inbounds [100 x i32], [100 x i32]* %78, i64 0, i64 %80
+  %82 = load i32, i32* %81, align 4
+  %83 = icmp ne i32 %75, %82
+  br i1 %83, label %84, label %85
+
+84:                                               ; preds = %68
+  store i32 255, i32* %1, align 4
+  br label %92
+
+85:                                               ; preds = %68
+  %86 = load i32, i32* %3, align 4
+  %87 = add nsw i32 %86, 1
+  store i32 %87, i32* %3, align 4
+  br label %65, !llvm.loop !10
+
+88:                                               ; preds = %65
+  %89 = load i32, i32* %2, align 4
+  %90 = add nsw i32 %89, 1
+  store i32 %90, i32* %2, align 4
+  store i32 0, i32* %3, align 4
+  br label %61, !llvm.loop !11
+
+91:                                               ; preds = %61
+  store i32 0, i32* %1, align 4
+  br label %92
+
+92:                                               ; preds = %91, %84
+  %93 = load i32, i32* %1, align 4
+  ret i32 %93
 }
 
 attributes #0 = { noinline nounwind optnone uwtable "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
@@ -118,3 +175,5 @@ attributes #0 = { noinline nounwind optnone uwtable "frame-pointer"="all" "min-l
 !7 = !{!"llvm.loop.mustprogress"}
 !8 = distinct !{!8, !7}
 !9 = distinct !{!9, !7}
+!10 = distinct !{!10, !7}
+!11 = distinct !{!11, !7}

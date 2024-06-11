@@ -317,12 +317,12 @@ int main() {
     	j = 0;
     }
 
-    // check:
+	// check:
 	i = 0;
 	j = 0;
 	while(i < 100) {
 		while (j < 100) {
-			if (c[i][j] != ans[i][j]) return 255; 
+			if (c[i][j] != ans[i][j]) return 255;
 			j = j + 1;
 		}
 		i = i + 1;

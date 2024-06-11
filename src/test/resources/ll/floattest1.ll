@@ -4,7 +4,7 @@ source_filename = "module"
 @b = global [3 x float] [float 0x3ff19999a0000000, float 0x40019999a0000000, float 0x400a666660000000], align 4
 
 define i32 @main() {
-mainEntry9:
+mainEntry10:
   %a = alloca float, align 4
   store float 0x3ff19999a0000000, float* %a, align 4
   %b = getelementptr [3 x float], [3 x float]* @b, i32 0, i32 0

@@ -27,10 +27,9 @@ whileBody_:                                         ; pred = %whileCond_
   br label %whileCond_1
 
 next_:                                              ; pred = %whileCond_
-  %ptr_5 = getelementptr [100 x [100 x i32]], [100 x [100 x i32]]* @c, i32 0, i32 0
-  %c4 = getelementptr [100 x i32], [100 x i32]* %ptr_5, i32 0, i32 0
-  %c5 = load i32, i32* %c4, align 4
-  ret i32 %c5
+  store i32 0, i32* %i, align 4
+  store i32 0, i32* %j, align 4
+  br label %whileCond_3
 
 whileCond_1:                                        ; pred = %whileBody_, %next_2
   %j1 = load i32, i32* %j, align 4
@@ -42,8 +41,8 @@ whileCond_1:                                        ; pred = %whileBody_, %next_
 whileBody_1:                                        ; pred = %whileCond_1
   %i2 = load i32, i32* %i, align 4
   %j2 = load i32, i32* %j, align 4
-  %ptr_ = getelementptr [100 x [100 x i32]], [100 x [100 x i32]]* @c, i32 0, i32 %j2
-  %c = getelementptr [100 x i32], [100 x i32]* %ptr_, i32 0, i32 %i2
+  %ptr_ = getelementptr [100 x [100 x i32]], [100 x [100 x i32]]* @c, i32 0, i32 %i2
+  %c = getelementptr [100 x i32], [100 x i32]* %ptr_, i32 0, i32 %j2
   store i32 0, i32* %c, align 4
   br label %whileCond_2
 
@@ -64,22 +63,22 @@ whileCond_2:                                        ; pred = %whileBody_1, %whil
 whileBody_2:                                        ; pred = %whileCond_2
   %i3 = load i32, i32* %i, align 4
   %j3 = load i32, i32* %j, align 4
-  %ptr_1 = getelementptr [100 x [100 x i32]], [100 x [100 x i32]]* @c, i32 0, i32 %j3
-  %c1 = getelementptr [100 x i32], [100 x i32]* %ptr_1, i32 0, i32 %i3
+  %ptr_1 = getelementptr [100 x [100 x i32]], [100 x [100 x i32]]* @c, i32 0, i32 %i3
+  %c1 = getelementptr [100 x i32], [100 x i32]* %ptr_1, i32 0, i32 %j3
   %i4 = load i32, i32* %i, align 4
   %j4 = load i32, i32* %j, align 4
-  %ptr_2 = getelementptr [100 x [100 x i32]], [100 x [100 x i32]]* @c, i32 0, i32 %j4
-  %c2 = getelementptr [100 x i32], [100 x i32]* %ptr_2, i32 0, i32 %i4
+  %ptr_2 = getelementptr [100 x [100 x i32]], [100 x [100 x i32]]* @c, i32 0, i32 %i4
+  %c2 = getelementptr [100 x i32], [100 x i32]* %ptr_2, i32 0, i32 %j4
   %c3 = load i32, i32* %c2, align 4
   %i5 = load i32, i32* %i, align 4
   %k2 = load i32, i32* %k, align 4
-  %ptr_3 = getelementptr [100 x [100 x i32]], [100 x [100 x i32]]* @a, i32 0, i32 %k2
-  %a = getelementptr [100 x i32], [100 x i32]* %ptr_3, i32 0, i32 %i5
+  %ptr_3 = getelementptr [100 x [100 x i32]], [100 x [100 x i32]]* @a, i32 0, i32 %i5
+  %a = getelementptr [100 x i32], [100 x i32]* %ptr_3, i32 0, i32 %k2
   %a1 = load i32, i32* %a, align 4
   %k3 = load i32, i32* %k, align 4
   %j5 = load i32, i32* %j, align 4
-  %ptr_4 = getelementptr [100 x [100 x i32]], [100 x [100 x i32]]* @b, i32 0, i32 %j5
-  %b = getelementptr [100 x i32], [100 x i32]* %ptr_4, i32 0, i32 %k3
+  %ptr_4 = getelementptr [100 x [100 x i32]], [100 x [100 x i32]]* @b, i32 0, i32 %k3
+  %b = getelementptr [100 x i32], [100 x i32]* %ptr_4, i32 0, i32 %j5
   %b1 = load i32, i32* %b, align 4
   %result_ = mul i32 %a1, %b1
   %result_1 = add i32 %c3, %result_
@@ -95,5 +94,57 @@ next_2:                                             ; pred = %whileCond_2
   store i32 %result_3, i32* %j, align 4
   store i32 0, i32* %k, align 4
   br label %whileCond_1
+
+whileCond_3:                                        ; pred = %next_, %next_4
+  %i7 = load i32, i32* %i, align 4
+  %cond_lt_tmp_3 = icmp slt i32 %i7, 100
+  %cond_tmp_3 = zext i1 %cond_lt_tmp_3 to i32
+  %cond_3 = icmp ne i32 %cond_tmp_3, 0
+  br i1 %cond_3, label %whileBody_3, label %next_3
+
+whileBody_3:                                        ; pred = %whileCond_3
+  br label %whileCond_4
+
+next_3:                                             ; pred = %whileCond_3
+  ret i32 0
+
+whileCond_4:                                        ; pred = %whileBody_3, %next_5
+  %j7 = load i32, i32* %j, align 4
+  %cond_lt_tmp_4 = icmp slt i32 %j7, 100
+  %cond_tmp_4 = zext i1 %cond_lt_tmp_4 to i32
+  %cond_4 = icmp ne i32 %cond_tmp_4, 0
+  br i1 %cond_4, label %whileBody_4, label %next_4
+
+whileBody_4:                                        ; pred = %whileCond_4
+  %i8 = load i32, i32* %i, align 4
+  %j8 = load i32, i32* %j, align 4
+  %ptr_5 = getelementptr [100 x [100 x i32]], [100 x [100 x i32]]* @c, i32 0, i32 %i8
+  %c4 = getelementptr [100 x i32], [100 x i32]* %ptr_5, i32 0, i32 %j8
+  %c5 = load i32, i32* %c4, align 4
+  %i9 = load i32, i32* %i, align 4
+  %j9 = load i32, i32* %j, align 4
+  %ptr_6 = getelementptr [100 x [100 x i32]], [100 x [100 x i32]]* @ans, i32 0, i32 %i9
+  %ans = getelementptr [100 x i32], [100 x i32]* %ptr_6, i32 0, i32 %j9
+  %ans1 = load i32, i32* %ans, align 4
+  %cond_neq_tmp_ = icmp ne i32 %c5, %ans1
+  %cond_tmp_5 = zext i1 %cond_neq_tmp_ to i32
+  %cond_5 = icmp ne i32 %cond_tmp_5, 0
+  br i1 %cond_5, label %ifTrue_, label %next_5
+
+next_4:                                             ; pred = %whileCond_4
+  %i10 = load i32, i32* %i, align 4
+  %result_6 = add i32 %i10, 1
+  store i32 %result_6, i32* %i, align 4
+  store i32 0, i32* %j, align 4
+  br label %whileCond_3
+
+ifTrue_:                                            ; pred = %whileBody_4
+  ret i32 255
+
+next_5:                                             ; pred = %whileBody_4
+  %j10 = load i32, i32* %j, align 4
+  %result_5 = add i32 %j10, 1
+  store i32 %result_5, i32* %j, align 4
+  br label %whileCond_4
 }
 
