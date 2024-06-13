@@ -6,23 +6,21 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import cn.edu.nju.software.util.CmdExecutor;
-
-import cn.edu.nju.software.util.StringSource;
-import org.junit.jupiter.api.BeforeAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import cn.edu.nju.software.util.CmdExecutor;
+import cn.edu.nju.software.util.StringSource;
 
 
 public class TestFrontEnd {
-    private static final String PREFIX_SY = "src/test/resources/sy/";
-    private static final String PREFIX_LL = "src/test/resources/ll/";
-    private static final String PREFIX_LL_REF = "src/test/resources/ll_ref/";
-    private static final String PREFIX_C = "src/test/resources/c/";
+    static final String PREFIX_SY = "src/test/resources/sy/";
+    static final String PREFIX_LL = "src/test/resources/ll/";
+    static final String PREFIX_LL_REF = "src/test/resources/ll_ref/";
+    static final String PREFIX_C = "src/test/resources/c/";
 
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
@@ -42,6 +40,12 @@ public class TestFrontEnd {
     @StringSource("prime")
     @StringSource("floattest1")
     @StringSource("merge-sort")
+    @StringSource("matrix")
+    @StringSource("fmatrix")
+    @StringSource("recursion")
+    @StringSource("integration")
+    @StringSource("quick-sort")
+    @StringSource("smallmatrix")
     void testFrontEnd(String name) throws IOException, InterruptedException{
         testFile(name);
     }
@@ -65,6 +69,7 @@ public class TestFrontEnd {
         RunIRResult resRef = runIRRef(syPath, llRefPath);
 
         assertTrue(res.success() && resRef.success());
+        System.err.println(res.exitCode());
         assertEquals(resRef.exitCode(), res.exitCode());
         assertEquals(resRef.output(), res.output());
     }

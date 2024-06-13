@@ -25,4 +25,14 @@ public class ConstValue extends ValueRef {
     public Object getValue() {
         return value;
     }
+
+    public String toString() {
+        if (type instanceof IntType){
+            return value.toString();
+        } else {
+            long floatBits = Double.doubleToRawLongBits((Float) value);
+            String hex = Long.toHexString(floatBits);
+            return "0x" + hex;
+        }
+    }
 }

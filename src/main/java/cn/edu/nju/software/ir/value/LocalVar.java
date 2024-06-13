@@ -6,4 +6,9 @@ public class LocalVar extends ValueRef {
     public LocalVar(TypeRef type, String name) {
         super(type, name);
     }
+
+    @Override
+    public String toString() {
+        return "%" + name;
+    }
 }

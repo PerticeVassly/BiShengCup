@@ -1,7 +1,7 @@
 void merge(int arr[], int left, int mid, int right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
-    int L[n1], R[n2];
+    int L[100], R[100];
 
     int i = 0;
     while (i < n1) {
@@ -50,9 +50,8 @@ void mergeSort(int arr[], int left, int right) {
         merge(arr, left, mid, right);
     }
 }
-
+int arr[6] = {12, 11, 13, 5, 6, 7};
 int main() {
-    int arr[6] = {12, 11, 13, 5, 6, 7};
     int arr_size = 6;
     mergeSort(arr, 0, arr_size - 1);
     int first = arr[0];

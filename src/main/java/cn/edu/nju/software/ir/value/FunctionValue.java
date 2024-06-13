@@ -7,6 +7,8 @@ import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.TypeRef;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class FunctionValue extends ValueRef {
@@ -15,6 +17,7 @@ public class FunctionValue extends ValueRef {
     private final ArrayList<String> paramsUsedNames = new ArrayList<String>(){{add("");}};
     private final ArrayList<Integer> paramsUsedNamesFreq= new ArrayList<Integer>(){{add(0);}};
     private final ArrayList<BasicBlockRef> blocks;
+    private BasicBlockRef entryBlock;
     private int blockNum;
 
     private final static ArrayList<String> funcDeclUsedNames = new ArrayList<>();
@@ -35,19 +38,20 @@ public class FunctionValue extends ValueRef {
         paramsNum = functionType.getFParametersCount();
         for (int i = 0; i < paramsNum; i++) {
             TypeRef typeRef = functionType.getFParameter(i);
-            if (typeRef instanceof IntType) {
-                params.add(new LocalVar(new IntType(), paramsUsedNamesFreq.get(0) + ""));
-                paramsUsedNamesFreq.set(0, paramsUsedNamesFreq.get(0) + 1);
-            } else if (typeRef instanceof FloatType) {
-                params.add(new LocalVar(new FloatType(), paramsUsedNamesFreq.get(0) + ""));
-                paramsUsedNamesFreq.set(0, paramsUsedNamesFreq.get(0) + 1);
-            }
+            params.add(new LocalVar(typeRef, paramsUsedNamesFreq.get(0) + ""));
+            paramsUsedNamesFreq.set(0, paramsUsedNamesFreq.get(0) + 1);
         }
         blocks = new ArrayList<>();
         blockNum = 0;
     }
 
     public void appendBasicBlock(BasicBlockRef basicBlockRef) {
+        blocks.add(basicBlockRef);
+        blockNum++;
+    }
+
+    public void appendEntryBasicBlock(BasicBlockRef basicBlockRef) {
+        entryBlock = basicBlockRef;
         blocks.add(basicBlockRef);
         blockNum++;
     }
@@ -62,6 +66,14 @@ public class FunctionValue extends ValueRef {
 
     public BasicBlockRef getBasicBlockRef(int index) {
         return blocks.get(index);
+    }
+
+    public List<BasicBlockRef> getBasicBlockRefs() {
+        return Collections.unmodifiableList(blocks);
+    }
+
+    public BasicBlockRef getEntryBlock() {
+        return entryBlock;
     }
 
     public LocalVar createLocalVar(TypeRef type, String name) {
@@ -100,6 +112,11 @@ public class FunctionValue extends ValueRef {
     public void dropBlock(BasicBlockRef basicBlockRef) {
         blocks.remove(basicBlockRef);
         blockNum--;
+    }
+
+    @Override
+    public String toString() {
+        return "@" + name;
     }
 
     /**

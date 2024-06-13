@@ -1,18 +1,23 @@
 package cn.edu.nju.software.ir.basicblock;
 
+import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class BasicBlockRef {
+public class BasicBlockRef extends ValueRef {
     private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
     private final static ArrayList<Integer> usedFreqList = new ArrayList<Integer>(){{add(0);}};
     private final String name;
-    private final ArrayList<String> irs;
+    private final ArrayList<Instruction> irs; // TODO String -> Instruction
     private int irNum;
+    /**
+     * the function it belongs to
+     */
     private final FunctionValue function;
     private final ArrayList<BasicBlockRef> pred;
     private int predNum;
@@ -51,12 +56,12 @@ public class BasicBlockRef {
         return pred.get(index);
     }
 
-    public void put(String ir) {
+    public void put(Instruction ir) {
         irNum++;
         irs.add(ir);
     }
 
-    public void renewIr(int index, String ir) {
+    public void renewIr(int index, Instruction ir) {
         irs.set(index, ir);
     }
 
@@ -68,14 +73,27 @@ public class BasicBlockRef {
         return irNum;
     }
 
-    public String getIr(int index) {
+    public Instruction getIr(int index) {
         if (index >= irNum || index < 0) {
-            return "";
+            return null;
         }
         return irs.get(index);
     }
 
+    public List<Instruction> getIrs() {
+        return irs;
+    }
+
     public LocalVar createLocalVar(TypeRef type, String name) {
         return function.createLocalVar(type, name);
+    }
+
+    public void drop() {
+        function.dropBlock(this);
+    }
+
+    @Override
+    public String toString() {
+        return "%" + name;
     }
 }

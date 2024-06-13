@@ -1,14 +1,19 @@
 package cn.edu.nju.software.ir.module;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import cn.edu.nju.software.ir.opt.Optimizer;
+import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class ModuleRef {
     private final String moduleId;
@@ -24,6 +29,7 @@ public class ModuleRef {
         globalVars = new ArrayList<>();
         functions = new ArrayList<>();
         FunctionValue.clearDeclNames();
+        GlobalVar.clearNames();
         globalVarNum = 0;
         libNameList.add("getint");
         libNameList.add("getch");
@@ -48,8 +54,17 @@ public class ModuleRef {
         return functions.get(index);
     }
 
+    //todo() add getFunctions()
+    public List<FunctionValue> getFunctions() {
+        return functions;
+    }
+
     public int getFunctionNum() {
         return functions.size();
+    }
+
+    public List<GlobalVar> getGlobalVars() {
+        return Collections.unmodifiableList(globalVars);
     }
 
     public void addGlobalVar(GlobalVar globalVar) {
@@ -73,14 +88,57 @@ public class ModuleRef {
         ((GlobalVar) globalVar).initial(initVal);
     }
 
+    private String implementArrInitIr(ArrayType arrayType, ArrayValue arrayValue) {
+        String ir = "";
+        // todo
+        return ir;
+    }
+
     private String generateGlobalVarIr(GlobalVar gv) {
-        String ir = "@" + gv.getName() + " = global " + gv.getType().toString() + " ";
-        if (gv.getInitVal() instanceof ConstValue) {
-            ir += ((ConstValue) gv.getInitVal()).getValue();
+        String ir = "@" + gv.getName() + " = global ";
+        Pointer tyPtr = (Pointer) gv.getType();
+        if (!(tyPtr.getBase() instanceof ArrayType)) {
+            ir += tyPtr.getBase().toString() + " ";
+            if (gv.getInitVal() instanceof ConstValue) {
+                ir += gv.getInitVal() + ", ";
+            } else {
+                System.err.println("Global variable has not been initialized.");
+                return null;
+            }
         } else {
-            System.err.println("Global variable has not been initialized.");
-            return null;
+//            System.err.println(tyPtr.getBase());
+            if (gv.getInitVal() instanceof ConstValue && ((ConstValue) gv.getInitVal()).getValue().equals(0)) {
+                ir += tyPtr.getBase().toString() + " ";
+                ir += "zeroinitializer, ";
+            } else {
+                ir += gv.getInitVal().toString() + ", ";
+            }
+//            else if (gv.getInitVal() instanceof ArrayValue){
+//                // TODO initial value is an array
+//                ArrayValue init = (ArrayValue) gv.getInitVal();
+//                ArrayType type = (ArrayType) gv.getType();
+//                int size = type.getElementSize();
+//                for (int i = 0; i < size; i++) {
+//                    ir += "[";
+//                    ir += type.getElementType().toString() + " ";
+//                    if (init.getElement(i) != null && init.getElement(i).getType() instanceof ArrayType) {
+//                        // init.element is an array, then element type must be an array
+//                        ir += implementArrInitIr(((ArrayType)type.getElementType()), ((ArrayValue)init.getElement(i)));
+//                    } else {
+//                        if (init.getElement(i) == null || ((ConstValue)init.getElement(i)).getValue().equals(0)){
+//                            ir += "zeroinitializer";
+//                            if (i < size - 1) {
+//                                ir += ", ";
+//                            }
+//                        } else {
+//                            // TODO: the codes possibly have problems, refactor
+//                        }
+//                    }
+//                    ir += "], ";
+//                }
+//            }
         }
+        ir += "align " + gv.getType().getWidth();
         return ir;
     }
 
@@ -112,8 +170,8 @@ public class ModuleRef {
     }
 
     public void dumpToConsole() {
-        Optimizer optimizer = new Optimizer(this);
-        optimizer.optimize();
+//        Optimizer optimizer = new Optimizer(this);
+//        optimizer.optimize();
         System.out.println("; ModuleId = '" + moduleId + "'");
         System.out.println("source_filename = \"" + moduleId + "\"");
         System.out.println(); // an empty line
@@ -156,7 +214,7 @@ public class ModuleRef {
                 BasicBlockRef block = fv.getBasicBlockRef(i);
                 System.out.print(block.getName() + ":");
                 if (block.hasPred()) {
-                    for (int k = 0; k < blockNameAreaLength - block.getName().length() + 20; k++) {
+                    for (int k = 0; k < blockNameAreaLength - block.getName().length() + 40; k++) {
                         System.out.print(" ");
                     }
                     System.out.print("; pred = ");
