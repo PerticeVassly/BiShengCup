@@ -1,14 +1,14 @@
-package cn.edu.nju.software.backend.reg_alloc;
+package cn.edu.nju.software.backend.registeralloc;
 
 import cn.edu.nju.software.backend.RiscBasicBlock;
 import cn.edu.nju.software.backend.RiscSpecifications;
-import cn.edu.nju.software.backend.asm.riscInstruction.RiscAddi;
-import cn.edu.nju.software.backend.asm.riscInstruction.RiscInstruction;
-import cn.edu.nju.software.backend.asm.operand.ImmediateValue;
-import cn.edu.nju.software.backend.asm.operand.IndirectRegister;
-import cn.edu.nju.software.backend.asm.operand.Register;
-import cn.edu.nju.software.backend.asm.riscInstruction.RiscLw;
-import cn.edu.nju.software.backend.asm.riscInstruction.RiscSw;
+import cn.edu.nju.software.backend.riscinstruction.RiscAddi;
+import cn.edu.nju.software.backend.riscinstruction.RiscInstruction;
+import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
+import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
+import cn.edu.nju.software.backend.riscinstruction.operand.Register;
+import cn.edu.nju.software.backend.riscinstruction.RiscLw;
+import cn.edu.nju.software.backend.riscinstruction.RiscSw;
 
 public class RegisterManager {
 
@@ -137,4 +137,13 @@ public class RegisterManager {
         registerTracker.lockReg(RiscSpecifications.getRegNO(regName));
     }
 
+    public void reset(){
+        registerTracker.reset();
+        memoryVarStack.reset();
+        activeVarTable.reset();
+    }
+
+    public MemoryVarStack getMemoryVarStack() {
+        return memoryVarStack;
+    }
 }

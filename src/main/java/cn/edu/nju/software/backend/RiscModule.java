@@ -1,7 +1,6 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.backend.asm.operand.Register;
-import cn.edu.nju.software.backend.reg_alloc.RegisterManager;
+import cn.edu.nju.software.backend.registeralloc.RegisterManager;
 import cn.edu.nju.software.ir.module.ModuleRef;
 
 import java.util.ArrayList;

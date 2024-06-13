@@ -1,5 +1,6 @@
-package cn.edu.nju.software.ir.instruction;
+package cn.edu.nju.software.ir.generator;
 
+import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.Add;
 import cn.edu.nju.software.ir.instruction.arithmetic.Alloc;
 import cn.edu.nju.software.ir.instruction.arithmetic.Arithmetic;

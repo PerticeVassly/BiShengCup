@@ -1,4 +1,4 @@
-package cn.edu.nju.software.backend.reg_alloc;
+package cn.edu.nju.software.backend.registeralloc;
 
 //todo() 暂时未使用这个类
 public class EnvironmentOfRiscFunction {

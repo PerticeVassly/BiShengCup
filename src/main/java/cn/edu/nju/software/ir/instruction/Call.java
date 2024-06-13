@@ -1,9 +1,8 @@
 package cn.edu.nju.software.ir.instruction;
 
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.type.FunctionType;
-import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.type.VoidType;
-import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
@@ -27,6 +26,15 @@ public class Call extends Instruction {
         this.function = function;
         this.realParams = realParams;
     }
+
+    public ArrayList<ValueRef> getRealParams() {
+        return realParams;
+    }
+
+    public FunctionValue getFunction() {
+        return function;
+    }
+
 
     @Override
     public boolean isCall() {

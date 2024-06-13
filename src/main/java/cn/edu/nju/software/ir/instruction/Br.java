@@ -1,6 +1,7 @@
 package cn.edu.nju.software.ir.instruction;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
 
 import static cn.edu.nju.software.ir.instruction.OpEnum.BR;
 import static cn.edu.nju.software.ir.instruction.Operator.getOperator;

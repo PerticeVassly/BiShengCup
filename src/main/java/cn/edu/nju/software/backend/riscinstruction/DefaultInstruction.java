@@ -1,21 +1,20 @@
-package cn.edu.nju.software.backend.asm.riscInstruction;
+package cn.edu.nju.software.backend.riscinstruction;
 
-import cn.edu.nju.software.backend.asm.operand.Operand;
-import com.ibm.icu.text.ArabicShaping;
+import cn.edu.nju.software.backend.riscinstruction.operand.Operand;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class DefaultInstruction implements RiscInstruction  {
-    RiscOp op;
+    RiscOpcode op;
     ArrayList<Operand> operands;
 
-    public DefaultInstruction(RiscOp op, Operand... operands) {
+    public DefaultInstruction(RiscOpcode op, Operand... operands) {
         this.op = op;
         this.operands = new ArrayList<>(List.of(operands));
     }
 
-    public RiscOp getOpCode() {
+    public RiscOpcode getOpCode() {
         return op;
     }
 

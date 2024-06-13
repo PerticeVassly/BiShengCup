@@ -17,11 +17,15 @@ public class RiscFunction {
         this.name = function.getName();
         this.function = function;
         this.riscModule = riscModule;
+
+        //一个function是一个全新的registerManager
+        riscModule.getRegisterManager().reset();
+
         if (function.getEntryBlock() == null) {
             entryBlock = null;
             return;
         }
-        entryBlock = new RiscBasicBlock(function.getEntryBlock(), riscModule);
+        entryBlock = new RiscBasicBlock(function.getEntryBlock(), riscModule, true);
         basicBlocks.add(entryBlock);
         function.getBasicBlockRefs().forEach(bb -> {
                 if (!bb.equals(function.getEntryBlock())) {
@@ -30,4 +34,6 @@ public class RiscFunction {
             }
         );
     }
+
+
 }
