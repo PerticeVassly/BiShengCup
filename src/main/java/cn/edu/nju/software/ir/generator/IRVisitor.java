@@ -321,6 +321,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             if (!(lVal.getType() instanceof Pointer)) {
                 System.err.println("variable should be a pointer.");
             }
+            //fix:这种情况是全局变量相互赋值需要特殊处理
+            if(lVal instanceof GlobalVar&&global()){
+                return ((GlobalVar) lVal).getInitVal();
+            }
             if (!(((Pointer) lVal.getType()).getBase() instanceof ArrayType)) {
                 return gen.buildLoad(builder, lVal, ctx.lVal().IDENT().getText());
             } else {
@@ -501,6 +505,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 //            loopStack.pop();
 //            loopStack.pop();
 //            return ret;
+            //TODO:采用了模块化的短路求值，冗余标签过多(不影响正确性)，后期优化需要针对优化
             BasicBlockRef begin = gen.appendBasicBlock(currentFunction, "begin");
             gen.buildBranch(builder, begin);
             gen.positionBuilderAtEnd(builder, begin);
@@ -825,6 +830,14 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             // todo array initializer
             if (ctx.initVal() != null) {
                 ValueRef initVal = visitInitVal(ctx.initVal());
+                //增加全局变量的隐式类型转换
+                if(!initVal.getType().equals(globalVar.getType())){
+                    if(initVal.getType() instanceof IntType){
+                        initVal=gen.buildIntToFloat(builder,initVal,initVal.getName());
+                    }else {
+                        initVal=gen.buildFloatToInt(builder,initVal,initVal.getName());
+                    }
+                }
                 gen.setInitValue(globalVar, initVal);
             } else {
                 gen.setInitValue(globalVar, zero);

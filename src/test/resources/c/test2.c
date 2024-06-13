@@ -1,6 +1,8 @@
+int a=-2.3;
+float b=a;
 int main(){
-    int a=0,b=1,c=2;
-    if(a&&b<c){
-       return 0;
-    }
+   while(a>b&&a<b){
+      return 1;
+   }
+   return 0;
 }
