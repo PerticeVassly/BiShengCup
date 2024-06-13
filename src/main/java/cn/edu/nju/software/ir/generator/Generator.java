@@ -184,16 +184,17 @@ public class Generator implements IrGenerator {
         return lVal;
     }
     @Override
-    public ValueRef buildCall(BuilderRef builder, FunctionValue function, ArrayList<ValueRef> arguments, int argCount, String retValName) {
+    public ValueRef buildCall(BuilderRef builder, FunctionValue function, ArrayList<ValueRef> arguments
+            , int argCount, String retValName, int lineNo) {
         FunctionType ft = ((FunctionType) function.getType());
         TypeRef retTy = ft.getReturnType();
         Instruction ir;
         LocalVar retVal = null;
         if (!(retTy instanceof VoidType)) {
             retVal = builder.createLocalVar(retTy, retValName);
-            ir = new Call(retVal, function, arguments);
+            ir = new Call(retVal, function, arguments, lineNo);
         } else {
-            ir = new Call(function, arguments);
+            ir = new Call(function, arguments, lineNo);
         }
         builder.put(ir);
         return retVal;

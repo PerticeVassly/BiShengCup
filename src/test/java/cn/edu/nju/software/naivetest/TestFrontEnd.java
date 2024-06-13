@@ -1,4 +1,4 @@
-package cn.edu.nju.software;
+package cn.edu.nju.software.naivetest;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +8,8 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import cn.edu.nju.software.Main;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;

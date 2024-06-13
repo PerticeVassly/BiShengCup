@@ -3,7 +3,6 @@ package cn.edu.nju.software.backend;
 import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
-import cn.edu.nju.software.backend.asm.riscinstruction.*;
 import cn.edu.nju.software.backend.asm.RiscLabel;
 import cn.edu.nju.software.backend.registeralloc.RegisterManager;
 import cn.edu.nju.software.backend.riscinstruction.*;
@@ -340,8 +339,8 @@ public class RiscBasicBlock implements InstructionVisitor {
         BasicBlockRef ifFalse = condBr.getFalseBlock();
 
         String cond_reg = registerManager.provideReg(cond.getName());
-        RiscInstruction riscBeqz = new RiscBeqz(new Register(cond_reg), ifFalse.getName());
-        riscInstructions.add(riscBeqz);
+//        RiscInstruction riscBeqz = new RiscBeqz(new Register(cond_reg), ifFalse.getName());
+//        riscInstructions.add(riscBeqz);
 
         RiscInstruction riscJ = new RiscJ(ifTrue.getName());
         riscInstructions.add(riscJ);

@@ -1,7 +1,7 @@
-package cn.edu.nju.software;
+package cn.edu.nju.software.naivetest;
 
+import cn.edu.nju.software.Main;
 import cn.edu.nju.software.util.StringSource;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 
 public class TestBackEnd {
