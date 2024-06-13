@@ -1,4 +1,4 @@
-package cn.edu.nju.software.backend.reg_alloc;
+package cn.edu.nju.software.backend.registeralloc;
 
 import cn.edu.nju.software.backend.RiscSpecifications;
 
@@ -44,6 +44,10 @@ public class ActiveVarTable {
     public String getVarInReg(String regName) {
         int regNO = RiscSpecifications.getRegNO(regName);
         return getVarInReg(regNO);
+    }
+
+    public void reset(){
+        aliveVarTable.clear();
     }
 
 }

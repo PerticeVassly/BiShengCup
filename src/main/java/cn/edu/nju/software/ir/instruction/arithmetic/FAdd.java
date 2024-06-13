@@ -1,6 +1,6 @@
 package cn.edu.nju.software.ir.instruction.arithmetic;
 
-import cn.edu.nju.software.ir.instruction.InstructionVisitor;
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.OpEnum;
 import cn.edu.nju.software.ir.value.ValueRef;
 
@@ -14,6 +14,5 @@ public class FAdd extends Arithmetic {
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
     }
-
 
 }

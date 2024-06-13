@@ -1,6 +1,6 @@
 package cn.edu.nju.software.ir.instruction;
 
-import cn.edu.nju.software.ir.value.ConstValue;
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import static cn.edu.nju.software.ir.instruction.Operator.*;

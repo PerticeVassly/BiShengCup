@@ -1,4 +1,4 @@
-package cn.edu.nju.software.backend.asm.operand;
+package cn.edu.nju.software.backend.riscinstruction.operand;
 
 import cn.edu.nju.software.backend.RiscSpecifications;
 

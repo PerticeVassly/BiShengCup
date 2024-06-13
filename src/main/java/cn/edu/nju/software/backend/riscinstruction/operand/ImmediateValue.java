@@ -1,4 +1,4 @@
-package cn.edu.nju.software.backend.asm.operand;
+package cn.edu.nju.software.backend.riscinstruction.operand;
 
 public class ImmediateValue implements Operand {
     int value;

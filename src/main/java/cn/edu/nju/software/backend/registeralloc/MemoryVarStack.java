@@ -1,4 +1,4 @@
-package cn.edu.nju.software.backend.reg_alloc;
+package cn.edu.nju.software.backend.registeralloc;
 
 import java.util.Stack;
 
@@ -35,5 +35,13 @@ public class MemoryVarStack {
 
     public void push(LocalVar localVar){
         localVarStack.push(localVar);
+    }
+
+    public void reset(){
+        localVarStack.clear();
+    }
+
+    public int getSize(){
+        return localVarStack.size();
     }
 }

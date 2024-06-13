@@ -1,6 +1,6 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.backend.asm.riscInstruction.RiscInstruction;
+import cn.edu.nju.software.backend.riscinstruction.RiscInstruction;
 
 public class RiscBuilder {
     RiscBasicBlock currentBlock;

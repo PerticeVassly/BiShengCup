@@ -1,11 +1,14 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.backend.asm.operand.ImmediateValue;
-import cn.edu.nju.software.backend.asm.operand.Register;
-import cn.edu.nju.software.backend.asm.riscInstruction.*;
+import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
+import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
+import cn.edu.nju.software.backend.riscinstruction.operand.Register;
+import cn.edu.nju.software.backend.asm.riscinstruction.*;
 import cn.edu.nju.software.backend.asm.RiscLabel;
-import cn.edu.nju.software.backend.reg_alloc.RegisterManager;
+import cn.edu.nju.software.backend.registeralloc.RegisterManager;
+import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.Add;
 import cn.edu.nju.software.ir.instruction.arithmetic.Alloc;
@@ -36,6 +39,22 @@ public class RiscBasicBlock implements InstructionVisitor {
         convertLLVMBlockToRiscBlock();
     }
 
+    public RiscBasicBlock(BasicBlockRef basicBlock, RiscModule riscModule, boolean isEntry) {
+        this.name = basicBlock.getName();
+        this.basicBlock = basicBlock;
+        this.riscModule = riscModule;
+        this.label = new RiscLabel(name);
+        this.registerManager = riscModule.getRegisterManager();
+
+        registerManager.setCurrentBlock(this);
+
+
+        if(isEntry){
+            functionInit();
+        }
+        convertLLVMBlockToRiscBlock();
+    }
+
     //todo() waiting to refactor
     //this function is called by RegisterManager
     public void addInstruction(RiscInstruction instruction){
@@ -47,6 +66,25 @@ public class RiscBasicBlock implements InstructionVisitor {
             basicBlock.getIr(i).accept(this);
         }
     }
+
+    private void functionInit(){
+        saveCalleeSavedRegs();
+    }
+
+    private void saveCalleeSavedRegs(){
+        //保存所有callee saved regs
+        //12个寄存器s0到s11
+        //todo() float part
+
+        String[] registers = {"s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"};
+        for (int i = 0; i < registers.length; i++) {
+            RiscInstruction riscSw = new RiscSw(new Register(registers[i]), new IndirectRegister("sp", - i * 4));
+            riscInstructions.add(riscSw);
+        }
+
+        RiscInstruction subSp = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-4 * registers.length));
+    }
+
 
 
 
@@ -180,6 +218,65 @@ public class RiscBasicBlock implements InstructionVisitor {
         }
     }
 
+    @Override
+    public void visit(Call call) {
+        saveCallerSavedRegs();
+
+        //prepare the parameters
+        //todo() 这里默认参数通过寄存器就可以实现完全传输，但是如果参数过多，需要考虑到栈的问题（没有实现）
+        ArrayList<ValueRef> realParams = call.getRealParams();
+        for (int i = 0; i < realParams.size(); i++) {
+            ValueRef param = realParams.get(i);
+            String param_reg = registerManager.provideReg(param.getName());
+            RiscInstruction riscMv = new RiscMv(new Register("a" + i), new Register(param_reg));
+            riscInstructions.add(riscMv);
+            //完成全部的参数传递之前将涉及到的寄存器全部锁住
+            registerManager.lockReg("a" + i);
+        }
+
+        //call the function
+        RiscInstruction riscCall = new RiscCall( call.getFunction().getName());
+        riscInstructions.add(riscCall);
+        //释放资源
+        for(int i = 0; i < realParams.size(); i++){
+            registerManager.unlockReg("a" + i);
+        }
+
+        //恢复调用之前的环境
+        restoreCallerSavedRegs();
+    }
+
+    public void saveCallerSavedRegs(){
+        //保存所有的caller saved regs
+        //共九个寄存器
+        //临时寄存器 t0 -> t6
+        //返回寄存器 a0 -> a1
+        //默认在栈的中加上这九个寄存器
+        //todo() float part
+        String[] registers = {"t0", "t1", "t2", "t3", "t4", "t5", "t6", "a0", "a1"};
+        for (int i = 0; i < registers.length; i++) {
+            RiscInstruction riscSw = new RiscSw(new Register(registers[i]), new IndirectRegister("sp", - i * 4));
+            riscInstructions.add(riscSw);
+        }
+        RiscInstruction subSp = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-4 * registers.length));
+        riscInstructions.add(subSp);
+        // 之后sp就是调用函数的栈底了
+    }
+
+    public void restoreCallerSavedRegs(){
+        //恢复所有的caller saved  regs
+        //共九个寄存器
+        //临时寄存器 t0 -> t6
+        //返回寄存器 a0 -> a1
+        //todo() float part
+        String[] registers = {"t0", "t1", "t2", "t3", "t4", "t5", "t6", "a0", "a1"};
+        for (int i = 0; i < registers.length; i++) {
+            RiscInstruction riscLw = new RiscLw(new Register(registers[i]), new IndirectRegister("sp", (i + 1) * 4));
+            riscInstructions.add(riscLw);
+        }
+        RiscInstruction addSp = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(4 * registers.length));
+    }
+
 
 
     @Override
@@ -207,17 +304,48 @@ public class RiscBasicBlock implements InstructionVisitor {
         }
 
 
+        //清除栈（sp归位）
+        RiscInstruction riscAddi = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(4 * registerManager.getMemoryVarStack().getSize()));
+
+        //恢复调用之前的环境
+        restoreCalleeSavedRegs();
+
         RiscInstruction riscRet = new RiscRet();
         riscInstructions.add(riscRet);
     }
 
-    private void restoreRegs(){
-        //回复所有应该由自己保存的寄存器(保存在内存栈的初始位置)
-        //s0 -> s11 fs0 -> fs11
+    private void restoreCalleeSavedRegs(){
+        //12个寄存器s0到s11
+        //todo() float part
+        String[] registers = {"s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"};
+        for (int i = 0; i < registers.length; i++) {
+            RiscInstruction riscLw = new RiscLw(new Register(registers[i]), new IndirectRegister("sp", (i + 1) * 4));
+            riscInstructions.add(riscLw);
+        }
+        RiscInstruction addSp = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(4 * registers.length));
+    }
+
+    @Override
+    public void visit(Br br){
+        RiscInstruction riscJ = new RiscJ(br.getTarget().getName());
+        riscInstructions.add(riscJ);
+    }
+
+    @Override
+    public void visit(CondBr condBr){
+
+        //todo() block的名字有可能冲突的 waiting to refactor
+        ValueRef cond = condBr.getOperand(0);
+        BasicBlockRef ifTrue = condBr.getTrueBlock();
+        BasicBlockRef ifFalse = condBr.getFalseBlock();
+
+        String cond_reg = registerManager.provideReg(cond.getName());
+        RiscInstruction riscBeqz = new RiscBeqz(new Register(cond_reg), ifFalse.getName());
+        riscInstructions.add(riscBeqz);
+
+        RiscInstruction riscJ = new RiscJ(ifTrue.getName());
+        riscInstructions.add(riscJ);
 
     }
 
-
-    //todo() 目前只有ret没有call
-    //todo() call时候变量的名字有可能重合, registerManager需要修改（目前是统一一个stack在模拟）
 }

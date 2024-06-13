@@ -1,10 +1,10 @@
-package cn.edu.nju.software.backend.asm.riscInstruction;
+package cn.edu.nju.software.backend.riscinstruction;
 
 
 public class RiscRet extends DefaultInstruction {
 
     public RiscRet() {
-        super(RiscOp.RET);
+        super(RiscOpcode.RET);
     }
 
     @Override

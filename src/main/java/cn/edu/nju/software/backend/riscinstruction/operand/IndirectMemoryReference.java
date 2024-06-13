@@ -1,12 +1,12 @@
-package cn.edu.nju.software.backend.asm.operand;
+package cn.edu.nju.software.backend.riscinstruction.operand;
 
-/*
- * 0x1000000
+/**
+ * [[0x10000]]
  */
-public class AbsoluteAddress {
+public class IndirectMemoryReference implements Operand {
     String address;
 
-    public AbsoluteAddress(String address) {
+    public IndirectMemoryReference(String address) {
         this.address = address;
     }
 
@@ -20,6 +20,7 @@ public class AbsoluteAddress {
 
     @Override
     public String toString() {
-        return address;
+        return "[" + address + "]";
     }
+
 }

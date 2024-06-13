@@ -1,4 +1,4 @@
-package cn.edu.nju.software.backend.reg_alloc;
+package cn.edu.nju.software.backend.registeralloc;
 
 import cn.edu.nju.software.backend.RiscSpecifications;
 
@@ -73,5 +73,11 @@ public class RegisterTracker {
 
     public boolean hasUsedRegs(){
         return !usedRegs.isEmpty();
+    }
+
+    public void reset(){
+        usedRegs.clear();
+        freeRegs.clear();
+        freeRegs.addAll(trackedRegs);
     }
 }
