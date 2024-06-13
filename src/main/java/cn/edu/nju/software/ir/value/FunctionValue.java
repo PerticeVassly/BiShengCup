@@ -43,7 +43,6 @@ public class FunctionValue extends ValueRef {
     }
 
     public void appendBasicBlock(BasicBlockRef basicBlockRef) {
-        //TODO:check if the name exists
         blocks.add(basicBlockRef);
         blockNum++;
     }

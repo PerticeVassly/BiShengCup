@@ -1,9 +1,6 @@
 int main(){
-    int a = 1;
-    while(1){
-        a = a + 1;
-        if(a == 100){
-            return a;
-        }
+    int a=0,b=1,c=2;
+    if(a&&b<c){
+       return 0;
     }
 }
