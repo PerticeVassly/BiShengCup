@@ -23,7 +23,7 @@ public class CmdExecutor {
         Process process = pb.start();
         OutputStream os = process.getOutputStream();
         try (FileInputStream fis = new FileInputStream(inputFile)) {
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[65536];
             int bytesRead;
             while ((bytesRead = fis.read(buffer)) != -1) {
                 os.write(buffer, 0, bytesRead);

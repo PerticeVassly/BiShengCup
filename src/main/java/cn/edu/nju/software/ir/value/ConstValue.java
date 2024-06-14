@@ -29,10 +29,14 @@ public class ConstValue extends ValueRef {
     public String toString() {
         if (type instanceof IntType){
             return value.toString();
-        } else {
+        } else if (type instanceof BoolType) {
+            return value.toString();
+        } else if (type instanceof FloatType) {
             long floatBits = Double.doubleToRawLongBits((Float) value);
             String hex = Long.toHexString(floatBits);
             return "0x" + hex;
+        } else {
+            throw new RuntimeException("Unexpected type");
         }
     }
 }

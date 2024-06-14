@@ -35,6 +35,8 @@ public class TestFrontEndIO {
     @ParameterizedTest
     @StringSource("79_var_name")
     @StringSource("90_many_locals")
+    @StringSource("64_calculator")
+    @StringSource("87_many_params")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
     }
