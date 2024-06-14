@@ -32,8 +32,8 @@ public class TestFrontEndIO {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("79_var_name")
     @StringSource("90_many_locals")
+    @StringSource("79_var_name")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
         testFile(name);
     }
