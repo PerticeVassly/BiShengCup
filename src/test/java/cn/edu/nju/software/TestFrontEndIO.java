@@ -26,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.fail;
  */
 public class TestFrontEndIO {
     private static final String DIR = "src/test/resources/2023/";
+    private static final String DIR_PART = "src/test/resources/2023part/";
     private static final String SYLIB = "src/test/resources/sylib.ll";
     private static final String LINKED = "src/test/resources/linked.ll";
 
@@ -35,29 +36,41 @@ public class TestFrontEndIO {
     @StringSource("79_var_name")
     @StringSource("90_many_locals")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
-        testFile(name);
+        testFile(DIR, name);
     }
 
     /**
-     * test all the files in the dir PREFIX_SY
+     * test all the files in DIR
      */
     @ParameterizedTest
-    @MethodSource("parameters")
+    @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
         if (name.equals("79_var_name") || name.equals("90_many_locals")) {
             fail();
         }
-        testFile(name);
+        testFile(DIR, name);
     }
 
-    void testFile(String name) throws IOException, InterruptedException {
-        String standardIn = DIR + name + ".in";
-        String code = DIR + name + ".sy";
-        String output = DIR + name + ".ll";
-        String standardOut = DIR + name + ".out";
+    /**
+     * test all the files in DIR_PART
+     */
+    @ParameterizedTest
+    @MethodSource("dirPart")
+    void testPart(String name) throws IOException, InterruptedException {
+        if (name.equals("79_var_name") || name.equals("90_many_locals")) {
+            fail();
+        }
+        testFile(DIR_PART, name);
+    }
+
+    void testFile(String dir, String name) throws IOException, InterruptedException {
+        String standardIn = dir + name + ".in";
+        String code = dir + name + ".sy";
+        String output = dir + name + ".ll";
+        String standardOut = dir + name + ".out";
         Main.main(code, "-o", output, "--emit-llvm", "-O0");
         cmdExecutor.exec("llvm-link", output, SYLIB, "-o", LINKED);
-        if (exist(DIR, name + ".in")) {
+        if (exist(dir, name + ".in")) {
             cmdExecutor.execRedirectInput(standardIn, "lli", LINKED);
         } else {
             cmdExecutor.exec("lli", LINKED);
@@ -76,11 +89,19 @@ public class TestFrontEndIO {
         return Arrays.stream(files).anyMatch(f -> f.getName().equals(fileName));
     }
 
+    private static Stream<String> dir() {
+        return parameters(DIR);
+    }
+
+    private static Stream<String> dirPart() {
+        return parameters(DIR);
+    }
+
     /**
      * @return file names of dir
      */
-    private static Stream<String> parameters() {
-        File dir = new File(DIR);
+    private static Stream<String> parameters(String directory) {
+        File dir = new File(directory);
         File[] files = dir.listFiles();
         assert files != null;
         return Arrays.stream(files)
