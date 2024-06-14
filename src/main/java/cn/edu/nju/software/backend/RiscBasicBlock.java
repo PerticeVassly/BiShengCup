@@ -1,15 +1,28 @@
 package cn.edu.nju.software.backend;
 
+import cn.edu.nju.software.backend.riscinstruction.RiscAdd;
+import cn.edu.nju.software.backend.riscinstruction.RiscAddi;
+import cn.edu.nju.software.backend.riscinstruction.RiscCall;
+import cn.edu.nju.software.backend.riscinstruction.RiscInstruction;
+import cn.edu.nju.software.backend.riscinstruction.RiscJ;
+import cn.edu.nju.software.backend.riscinstruction.RiscLi;
+import cn.edu.nju.software.backend.riscinstruction.RiscLw;
+import cn.edu.nju.software.backend.riscinstruction.RiscMv;
+import cn.edu.nju.software.backend.riscinstruction.RiscRet;
+import cn.edu.nju.software.backend.riscinstruction.RiscSw;
 import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
-import cn.edu.nju.software.backend.asm.riscinstruction.*;
 import cn.edu.nju.software.backend.asm.RiscLabel;
 import cn.edu.nju.software.backend.registeralloc.RegisterManager;
-import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
-import cn.edu.nju.software.ir.instruction.*;
+import cn.edu.nju.software.ir.instruction.Br;
+import cn.edu.nju.software.ir.instruction.Call;
+import cn.edu.nju.software.ir.instruction.CondBr;
+import cn.edu.nju.software.ir.instruction.Load;
+import cn.edu.nju.software.ir.instruction.Ret;
+import cn.edu.nju.software.ir.instruction.Store;
 import cn.edu.nju.software.ir.instruction.arithmetic.Add;
 import cn.edu.nju.software.ir.instruction.arithmetic.Alloc;
 import cn.edu.nju.software.ir.type.IntType;
@@ -340,8 +353,8 @@ public class RiscBasicBlock implements InstructionVisitor {
         BasicBlockRef ifFalse = condBr.getFalseBlock();
 
         String cond_reg = registerManager.provideReg(cond.getName());
-        RiscInstruction riscBeqz = new RiscBeqz(new Register(cond_reg), ifFalse.getName());
-        riscInstructions.add(riscBeqz);
+//        RiscInstruction riscBeqz = new RiscBeqz(new Register(cond_reg), ifFalse.getName());
+//        riscInstructions.add(riscBeqz);
 
         RiscInstruction riscJ = new RiscJ(ifTrue.getName());
         riscInstructions.add(riscJ);
