@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.fail;
  * runtime libs (sylib.ll) used
  * @time 2024/6/14 14:04
  */
-public class TestIO {
+public class TestFrontEndIO {
     private static final String DIR = "src/test/resources/2023/";
     private static final String SYLIB = "src/test/resources/sylib.ll";
     private static final String LINKED = "src/test/resources/linked.ll";
