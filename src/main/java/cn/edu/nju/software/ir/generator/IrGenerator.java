@@ -22,6 +22,7 @@ import java.util.ArrayList;
      ValueRef addFunction(ModuleRef module, FunctionType ft, String funcName);
 
     // local variable related operations, declare & assign & load its value from memory
+     ValueRef setInitValue(LocalVar localVar, ValueRef initValue);
      ValueRef buildAllocate(BuilderRef builder, TypeRef type, String name);
      ValueRef buildStore(BuilderRef builder, ValueRef value, ValueRef lVal);
      ValueRef buildLoad(BuilderRef builder, ValueRef memory, String lValName);
