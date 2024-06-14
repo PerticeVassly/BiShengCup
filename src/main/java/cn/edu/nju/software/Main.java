@@ -1,5 +1,14 @@
 package cn.edu.nju.software;
 
+import java.io.IOException;
+import java.util.Arrays;
+
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
+
+import cn.edu.nju.software.backend.RiscModule;
 import cn.edu.nju.software.frontend.lexer.LexerErrorListener;
 import cn.edu.nju.software.frontend.lexer.SysYLexer;
 import cn.edu.nju.software.frontend.parser.ParserErrorListener;
@@ -7,13 +16,6 @@ import cn.edu.nju.software.frontend.parser.SysYParser;
 import cn.edu.nju.software.frontend.semantic.SysYSemanticVisitor;
 import cn.edu.nju.software.ir.generator.IRVisitor;
 import cn.edu.nju.software.ir.module.ModuleRef;
-import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
-
-import java.io.IOException;
-import java.util.Arrays;
 
 public class Main {
     private static String input;
@@ -34,7 +36,9 @@ public class Main {
 
     private static void execute(String... args) {
         parseArgs(args);
-        assert input != null && output != null;
+        if (input == null || output == null) {
+            throw new RuntimeException("required input and output path");
+        }
 
         CharStream inputStream;
         try {
@@ -75,8 +79,12 @@ public class Main {
         if (emitLLVM) {
             module.dumpToFile(output);
         }
-        irVisitor.dumpModuleToConsole();
-        // todo: emit assembly
+
+//        if(emitAssembly){
+//            RiscModule riscModule = new RiscModule(module);
+//            riscModule.getAssemblyModule().dumpToConsole();
+//            riscModule.getAssemblyModule().dumpToFile(output);
+//        }
     }
 
     private static void parseArgs(String... args) {
@@ -90,8 +98,7 @@ public class Main {
                 case "-O0":
                     optimized = false;
                     break;
-                case "-O1":
-                case "-O2":
+                case "-O1", "-O2":
                     optimized = true;
                     break;
                 case "--emit-llvm":

@@ -1,5 +1,6 @@
 package cn.edu.nju.software.ir.instruction;
 
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.ValueRef;
 
@@ -17,5 +18,10 @@ public class Binary extends Instruction {
     @Override
     public String toString() {
         return lVal + " = " + operator + " " + opType + " " + operands[0] + ", " + operands[1];
+    }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
     }
 }

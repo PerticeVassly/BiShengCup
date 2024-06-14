@@ -1,5 +1,6 @@
 package cn.edu.nju.software.ir.instruction;
 
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 public class Store extends Instruction {
@@ -17,5 +18,10 @@ public class Store extends Instruction {
     public String toString() {
         return "store " + operands[0].getType() + " " + operands[0] + ", "
                 + operands[1].getType() + " " + operands[1] + ", align " + operands[0].getType().getWidth();
+    }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
     }
 }

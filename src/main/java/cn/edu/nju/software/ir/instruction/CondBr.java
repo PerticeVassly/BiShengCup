@@ -1,7 +1,7 @@
 package cn.edu.nju.software.ir.instruction;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import cn.edu.nju.software.ir.value.ConstValue;
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import static cn.edu.nju.software.ir.instruction.OpEnum.BR;
@@ -25,5 +25,10 @@ public class CondBr extends Instruction {
     public String toString() {
         return "br " + operands[0].getType() + " " + operands[0] +
                 ", label " + operands[1] + ", label " + operands[2];
+    }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
     }
 }

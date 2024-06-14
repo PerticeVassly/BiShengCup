@@ -1,5 +1,6 @@
 package cn.edu.nju.software.ir.instruction;
 
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 public abstract class Instruction {
@@ -19,6 +20,10 @@ public abstract class Instruction {
 
     public OpEnum getOp() {
         return Operator.getOp(operator);
+    }
+
+    public ValueRef getLVal() {
+        return lVal;
     }
 
     public boolean isArithmetic() {
@@ -64,4 +69,6 @@ public abstract class Instruction {
     public boolean isBr() {
         return false;
     }
+
+    public abstract void accept(InstructionVisitor visitor);
 }

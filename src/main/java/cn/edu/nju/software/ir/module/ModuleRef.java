@@ -11,6 +11,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class ModuleRef {
     private final String moduleId;
@@ -51,8 +55,17 @@ public class ModuleRef {
         return functions.get(index);
     }
 
+    //todo() add getFunctions()
+    public List<FunctionValue> getFunctions() {
+        return functions;
+    }
+
     public int getFunctionNum() {
         return functions.size();
+    }
+
+    public List<GlobalVar> getGlobalVars() {
+        return Collections.unmodifiableList(globalVars);
     }
 
     public void addGlobalVar(GlobalVar globalVar) {
@@ -163,6 +176,8 @@ public class ModuleRef {
         System.out.println("; ModuleId = '" + moduleId + "'");
         System.out.println("source_filename = \"" + moduleId + "\"");
         System.out.println(); // an empty line
+        // declare lib functions
+        dumpDeclares();
         // declare global var
         for (GlobalVar gv : globalVars) {
             String ir = generateGlobalVarIr(gv);
@@ -227,5 +242,23 @@ public class ModuleRef {
             System.out.println("}");
             System.out.println();
         }
+    }
+
+    private void  dumpDeclares() {
+        Stream.of("declare i32 @getint()",
+                "declare i32 @getch()",
+                "declare float @getfloat()",
+                "declare i32 @getarray(i32*)",
+                "declare i32 @getfarray(float*)",
+                "declare void @putint(i32)",
+                "declare void @putch(i32)",
+                "declare void @putfloat(float)",
+                "declare void @putarray(i32, i32*)",
+                "declare void @putfarray(i32, float*)",
+                "declare void @_sysy_starttime(i32)",
+                "declare void @_sysy_stoptime(i32)",
+                "declare void @memset(i32*, i32, i32)"  // system func, just declare and then u can use it.
+        ).forEach(System.out::println);
+        System.out.printf("%n%n");
     }
 }

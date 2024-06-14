@@ -205,7 +205,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         // add function to .GOT
         curScope.put(new Symbol<>(ctx.funcName().getText(), function));
         // add basic block to function
-        BasicBlockRef block = gen.appendBasicBlock(function, ctx.funcName().getText() + "Entry");
+        BasicBlockRef block = gen.appendEntryBasicBlock(function, ctx.funcName().getText() + "Entry");
         gen.positionBuilderAtEnd(builder, block);
         functionDef = true;
         scope.push(new SymbolTable<>());
@@ -234,6 +234,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 
     @Override
     public ValueRef visitFuncUse(SysYParser.FuncUseContext ctx) {
+        int lineNo = ctx.funcName().IDENT().getSymbol().getLine();
         String funcName = ctx.funcName().getText();
         FunctionValue callFunc = (FunctionValue) scope.find(funcName);
         TypeRef retType = ((FunctionType) callFunc.getType()).getReturnType();
@@ -241,7 +242,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             if (retType.equals(voidType)) {
                 funcName = "";
             }
-            return gen.buildCall(builder, callFunc, new ArrayList<>(), 0, funcName);
+            return gen.buildCall(builder, callFunc, new ArrayList<>(), 0, funcName, lineNo);
         } else {
             int args = ctx.funcRParams().param().size();
             ValueRef[] argv = new ValueRef[args];
@@ -254,7 +255,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             if (retType.equals(voidType)) {
                 funcName = "";
             }
-            return gen.buildCall(builder, callFunc, new ArrayList<>(Arrays.asList(argv)), args, funcName);
+            return gen.buildCall(builder, callFunc, new ArrayList<>(Arrays.asList(argv)), args, funcName, lineNo);
         }
     }
 

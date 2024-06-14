@@ -1,5 +1,6 @@
 package cn.edu.nju.software.ir.instruction;
 
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 public class Logic extends Binary {
@@ -10,5 +11,10 @@ public class Logic extends Binary {
     @Override
     public boolean isLogic() {
         return true;
+    }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
     }
 }

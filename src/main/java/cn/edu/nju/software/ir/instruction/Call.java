@@ -1,9 +1,8 @@
 package cn.edu.nju.software.ir.instruction;
 
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.type.FunctionType;
-import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.type.VoidType;
-import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
@@ -15,6 +14,8 @@ import static cn.edu.nju.software.ir.instruction.Operator.getOperator;
 public class Call extends Instruction {
     private final ArrayList<ValueRef> realParams;
     private final FunctionValue function;
+    private int lineNo = -1;
+
     public Call(FunctionValue function, ArrayList<ValueRef> realParams) {
         operator = getOperator(CALL);
         this.function = function;
@@ -28,6 +29,30 @@ public class Call extends Instruction {
         this.realParams = realParams;
     }
 
+    public Call(FunctionValue function, ArrayList<ValueRef> realParams, int lineNo) {
+        operator = getOperator(CALL);
+        this.function = function;
+        this.realParams = realParams;
+        this.lineNo = lineNo;
+    }
+
+    public Call(ValueRef lVal, FunctionValue function, ArrayList<ValueRef> realParams, int lineNo) {
+        this.lVal = lVal;
+        operator = getOperator(CALL);
+        this.function = function;
+        this.realParams = realParams;
+        this.lineNo = lineNo;
+    }
+
+    public ArrayList<ValueRef> getRealParams() {
+        return realParams;
+    }
+
+    public FunctionValue getFunction() {
+        return function;
+    }
+
+
     @Override
     public boolean isCall() {
         return true;
@@ -39,7 +64,17 @@ public class Call extends Instruction {
         if (!(ft.getReturnType() instanceof VoidType)) {
             instr.append(lVal).append(" = ");
         }
-        instr.append("call ").append(ft.getReturnType()).append(" ").append(function).append("(");
+        String funcStr = function.toString();
+
+        // macro substitution:
+        if (funcStr.equals("@starttime") || funcStr.equals("@stoptime")) {
+            funcStr = funcStr.replace("@", "@_sysy_");
+            instr.append("call ").append(ft.getReturnType()).append(" ").append(funcStr).append("(");
+            instr.append("i32 ").append(lineNo).append(")");
+            return instr.toString();
+        }
+
+        instr.append("call ").append(ft.getReturnType()).append(" ").append(funcStr).append("(");
         for (int i = 0; i < realParams.size(); i++) {
             ValueRef param = realParams.get(i);
 //            if (ft.getFParameter(i) instanceof Pointer) {
@@ -55,5 +90,10 @@ public class Call extends Instruction {
             }
         }
         return instr.append(")").toString();
+    }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
     }
 }

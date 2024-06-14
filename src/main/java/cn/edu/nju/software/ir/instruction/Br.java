@@ -1,6 +1,7 @@
 package cn.edu.nju.software.ir.instruction;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
 
 import static cn.edu.nju.software.ir.instruction.OpEnum.BR;
 import static cn.edu.nju.software.ir.instruction.Operator.getOperator;
@@ -21,5 +22,10 @@ public class Br extends Instruction {
     @Override
     public String toString() {
         return "br label " + operands[0];
+    }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
     }
 }

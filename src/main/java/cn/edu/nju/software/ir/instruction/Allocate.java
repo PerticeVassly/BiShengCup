@@ -1,5 +1,6 @@
 package cn.edu.nju.software.ir.instruction;
 
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.ValueRef;
@@ -21,5 +22,10 @@ public class Allocate extends Instruction {
     public String toString() {
         TypeRef base = ((Pointer)lVal.getType()).getBase();
         return lVal + " = alloca " + base + ", align " + base.getWidth();
+    }
+
+    @Override
+    public void accept(InstructionVisitor visitor) {
+        visitor.visit(this);
     }
 }
