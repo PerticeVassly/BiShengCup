@@ -4,6 +4,13 @@ target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16
 target triple = "x86_64-pc-linux-gnu"
 
 ; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @hahahahah(i32 noundef %0) #0 {
+  %2 = alloca i32, align 4
+  store i32 %0, i32* %2, align 4
+  ret i32 1
+}
+
+; Function Attrs: noinline nounwind optnone uwtable
 define dso_local i32 @main() #0 {
   %1 = alloca i32, align 4
   %2 = alloca i32, align 4
@@ -16,7 +23,8 @@ define dso_local i32 @main() #0 {
   %6 = load i32, i32* %3, align 4
   %7 = add nsw i32 %5, %6
   store i32 %7, i32* %4, align 4
-  ret i32 0
+  %8 = call i32 @hahahahah(i32 noundef 1)
+  ret i32 %8
 }
 
 attributes #0 = { noinline nounwind optnone uwtable "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }

@@ -30,7 +30,7 @@ public class RegisterManager {
 
     public RegisterManager() {
         //add all the temp registers into availableTempRegs
-        registerTracker = new RegisterTracker("t0","t1","t2","t3","t4");
+        registerTracker = new RegisterTracker("t0","t1","t2","t3","t4","t5","t6");
         // todo: use Var to abstract the infos below:
         memoryVarStack = new MemoryVarStack();
         activeVarTable = new ActiveVarTable();

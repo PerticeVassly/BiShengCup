@@ -21,6 +21,7 @@ public class RiscFunction {
         //一个function是一个全新的registerManager
         riscModule.getRegisterManager().reset();
 
+
         if (function.getEntryBlock() == null) {
             entryBlock = null;
             return;
@@ -33,6 +34,11 @@ public class RiscFunction {
                 }
             }
         );
+    }
+
+    public void dumpToConsole() {
+        System.out.println(name + ":");
+        basicBlocks.forEach(RiscBasicBlock::dumpToConsole);
     }
 
 

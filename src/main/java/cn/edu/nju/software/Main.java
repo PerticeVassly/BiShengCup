@@ -80,11 +80,11 @@ public class Main {
             module.dumpToFile(output);
         }
 
-//        if(emitAssembly){
-//            RiscModule riscModule = new RiscModule(module);
-//            riscModule.getAssemblyModule().dumpToConsole();
-//            riscModule.getAssemblyModule().dumpToFile(output);
-//        }
+        if(emitAssembly){
+            RiscModule riscModule = new RiscModule(module);
+            riscModule.dumpToConsole();
+            riscModule.dumpToFile(output);
+        }
     }
 
     private static void parseArgs(String... args) {

@@ -24,7 +24,8 @@ public abstract class DefaultInstruction implements RiscInstruction  {
 
     public String emitCode() {
         StringBuilder sb = new StringBuilder();
-        sb.append(op);
+        sb.append("\t");
+        sb.append(op.toString().toLowerCase());
         sb.append(" ");
         sb.append(String.join(", ", operands.stream().map(Operand::toString).toList()));
         return sb.toString();

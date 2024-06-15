@@ -1,15 +1,6 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.backend.riscinstruction.RiscAdd;
-import cn.edu.nju.software.backend.riscinstruction.RiscAddi;
-import cn.edu.nju.software.backend.riscinstruction.RiscCall;
-import cn.edu.nju.software.backend.riscinstruction.RiscInstruction;
-import cn.edu.nju.software.backend.riscinstruction.RiscJ;
-import cn.edu.nju.software.backend.riscinstruction.RiscLi;
-import cn.edu.nju.software.backend.riscinstruction.RiscLw;
-import cn.edu.nju.software.backend.riscinstruction.RiscMv;
-import cn.edu.nju.software.backend.riscinstruction.RiscRet;
-import cn.edu.nju.software.backend.riscinstruction.RiscSw;
+import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
@@ -17,18 +8,16 @@ import cn.edu.nju.software.backend.asm.RiscLabel;
 import cn.edu.nju.software.backend.registeralloc.RegisterManager;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
-import cn.edu.nju.software.ir.instruction.Br;
-import cn.edu.nju.software.ir.instruction.Call;
-import cn.edu.nju.software.ir.instruction.CondBr;
-import cn.edu.nju.software.ir.instruction.Load;
-import cn.edu.nju.software.ir.instruction.Ret;
-import cn.edu.nju.software.ir.instruction.Store;
+import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.Add;
 import cn.edu.nju.software.ir.instruction.arithmetic.Alloc;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class RiscBasicBlock implements InstructionVisitor {
@@ -61,7 +50,6 @@ public class RiscBasicBlock implements InstructionVisitor {
 
         registerManager.setCurrentBlock(this);
 
-
         if(isEntry){
             functionInit();
         }
@@ -71,13 +59,23 @@ public class RiscBasicBlock implements InstructionVisitor {
     //todo() waiting to refactor
     //this function is called by RegisterManager
     public void addInstruction(RiscInstruction instruction){
+        riscInstructions.add(instruction);
     }
+
+    public void dumpToConsole() {
+        System.out.println(name + ":");
+        for(RiscInstruction riscInstruction : riscInstructions){
+            System.out.println(riscInstruction.emitCode());
+        }
+    }
+
 
 
     private void convertLLVMBlockToRiscBlock() {
         for(int i = 0; i < basicBlock.getIrNum() ;i++){
             basicBlock.getIr(i).accept(this);
         }
+
     }
 
     private void functionInit(){
@@ -96,6 +94,8 @@ public class RiscBasicBlock implements InstructionVisitor {
         }
 
         RiscInstruction subSp = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-4 * registers.length));
+
+        riscInstructions.add(subSp);
     }
 
 
@@ -164,7 +164,7 @@ public class RiscBasicBlock implements InstructionVisitor {
         String src_reg = registerManager.provideReg(load.getOperand(0).getName());
         registerManager.lockReg(src_reg);
 
-        String dest_reg = registerManager.provideReg(load.getOperand(1).getName());
+        String dest_reg = registerManager.provideReg(load.getLVal().getName());
 
         //生成mv指令
         RiscInstruction riscMv = new RiscMv(new Register(dest_reg), new Register(src_reg));
@@ -240,6 +240,13 @@ public class RiscBasicBlock implements InstructionVisitor {
         ArrayList<ValueRef> realParams = call.getRealParams();
         for (int i = 0; i < realParams.size(); i++) {
             ValueRef param = realParams.get(i);
+            if(param instanceof ConstValue){
+                //如果是常数，需要生成li指令
+                //此时a0的值一定会被覆盖，所以不需要额外的寄存器mv到a
+                RiscInstruction riscLi = new RiscLi(new Register("a" + i), new ImmediateValue((Integer) ((ConstValue) param).getValue()));
+                riscInstructions.add(riscLi);
+                continue;
+            }
             String param_reg = registerManager.provideReg(param.getName());
             RiscInstruction riscMv = new RiscMv(new Register("a" + i), new Register(param_reg));
             riscInstructions.add(riscMv);
@@ -250,6 +257,16 @@ public class RiscBasicBlock implements InstructionVisitor {
         //call the function
         RiscInstruction riscCall = new RiscCall( call.getFunction().getName());
         riscInstructions.add(riscCall);
+
+
+        //赋值a0压栈
+        RiscInstruction riscSw = new RiscSw(new Register("a0"), new IndirectRegister("sp", -4));
+        //a1压栈
+        RiscInstruction riscSw1 = new RiscSw(new Register("a1"), new IndirectRegister("sp", -8));
+        //a0 a1 此时可以释放
+        riscInstructions.add(riscSw);
+        riscInstructions.add(riscSw1);
+
         //释放资源
         for(int i = 0; i < realParams.size(); i++){
             registerManager.unlockReg("a" + i);
@@ -257,6 +274,11 @@ public class RiscBasicBlock implements InstructionVisitor {
 
         //恢复调用之前的环境
         restoreCallerSavedRegs();
+
+        //赋值a0
+        String dest_reg = registerManager.provideReg(call.getLVal().getName());
+        RiscInstruction riscLw = new RiscLw(new Register(dest_reg), new IndirectRegister("sp", -40));
+        riscInstructions.add(riscLw);
     }
 
     public void saveCallerSavedRegs(){
@@ -288,14 +310,16 @@ public class RiscBasicBlock implements InstructionVisitor {
             riscInstructions.add(riscLw);
         }
         RiscInstruction addSp = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(4 * registers.length));
+
+        riscInstructions.add(addSp);
     }
 
 
 
     @Override
-    public void visit(Ret ret){
+    public void visit(RetValue retValue){
         //将要返回的值放入对应的寄存器
-        ValueRef retVal = ret.getOperand(0);
+        ValueRef retVal = retValue.getOperand(0);
 
         if(retVal.getType() instanceof IntType){
             if(retVal instanceof ConstValue){
@@ -319,6 +343,7 @@ public class RiscBasicBlock implements InstructionVisitor {
 
         //清除栈（sp归位）
         RiscInstruction riscAddi = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(4 * registerManager.getMemoryVarStack().getSize()));
+        riscInstructions.add(riscAddi);
 
         //恢复调用之前的环境
         restoreCalleeSavedRegs();
@@ -336,6 +361,8 @@ public class RiscBasicBlock implements InstructionVisitor {
             riscInstructions.add(riscLw);
         }
         RiscInstruction addSp = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(4 * registers.length));
+
+        riscInstructions.add(addSp);
     }
 
     @Override
