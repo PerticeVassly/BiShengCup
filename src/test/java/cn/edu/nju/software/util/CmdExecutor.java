@@ -37,7 +37,7 @@ public class CmdExecutor {
         hasError = !errorInfo.isEmpty();
     }
 
-        public String getErrorInfo() {
+    public String getErrorInfo() {
         return errorInfo;
     }
 

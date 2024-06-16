@@ -11,5 +11,5 @@ public enum RiscOpcode {
     MV,
     RET,
     J,
-    CALL,
+    CALL, COMMENT, ECALL, BEQZ, BLT, LABEL,
 }

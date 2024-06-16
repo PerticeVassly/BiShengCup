@@ -1,6 +1,5 @@
 package cn.edu.nju.software.backend.riscinstruction;
 
-import cn.edu.nju.software.backend.asm.RiscLabel;
 import cn.edu.nju.software.backend.riscinstruction.operand.RiscLabelAddress;
 
 public class RiscJ extends DefaultInstruction{

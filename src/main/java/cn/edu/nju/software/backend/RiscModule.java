@@ -39,11 +39,10 @@ public class RiscModule {
 
     public void dumpToConsole() {
         //补一个main
-        System.out.println(".section .data");
-        System.out.println(".globl main");
+        System.out.println(".data");
         riscGlobalVars.forEach(riscGlobalVar -> System.out.println(riscGlobalVar.emitCode()));
 
-        System.out.println(".section .text");
+        System.out.println(".text");
         riscFunctions.forEach(RiscFunction::dumpToConsole);
     }
 

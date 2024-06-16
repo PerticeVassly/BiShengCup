@@ -16,25 +16,42 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-define i32 @hahahahah(i32 %0) {
-hahahahahEntry:
+define i32 @g(i32 %0) {
+gEntry:
   %i = alloca i32, align 4
   store i32 %0, i32* %i, align 4
-  ret i32 1
+  %i1 = load i32, i32* %i, align 4
+  %result_ = add i32 %i1, 1
+  ret i32 %result_
+}
+
+define i32 @f(i32 %0) {
+fEntry:
+  %i = alloca i32, align 4
+  store i32 %0, i32* %i, align 4
+  %i1 = load i32, i32* %i, align 4
+  %g = call i32 @g(i32 %i1)
+  %result_ = add i32 %g, 1
+  ret i32 %result_
 }
 
 define i32 @main() {
 mainEntry:
   %a = alloca i32, align 4
   store i32 2, i32* %a, align 4
-  %b = alloca i32, align 4
-  store i32 3, i32* %b, align 4
-  %d = alloca i32, align 4
-  %a1 = load i32, i32* %a, align 4
-  %b1 = load i32, i32* %b, align 4
-  %result_ = add i32 %a1, %b1
-  store i32 %result_, i32* %d, align 4
-  %hahahahah = call i32 @hahahahah(i32 1)
-  ret i32 %hahahahah
+  %cond = icmp ne i32 1, 0
+  br i1 %cond, label %true, label %false
+
+true:                                             ; pred = %mainEntry
+  store i32 2, i32* %a, align 4
+  br label %end
+
+false:                                            ; pred = %mainEntry
+  store i32 3, i32* %a, align 4
+  br label %end
+
+end:                                              ; pred = %true, %false
+  %f = call i32 @f(i32 100)
+  ret i32 %f
 }
 

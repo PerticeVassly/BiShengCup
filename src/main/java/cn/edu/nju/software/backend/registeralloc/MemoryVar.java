@@ -1,12 +1,12 @@
 package cn.edu.nju.software.backend.registeralloc;
 
 
-public class LocalVar {
+public class MemoryVar {
     // base on the stack pointer that the var is spilled
 
     private String varName;
 
-    public LocalVar(String varName) {
+    public MemoryVar(String varName) {
         this.varName = varName;
     }
 
@@ -27,7 +27,7 @@ public class LocalVar {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        LocalVar localVariable = (LocalVar) obj;
+        MemoryVar localVariable = (MemoryVar) obj;
         return varName.equals(localVariable.varName);
     }
 }

@@ -3,7 +3,7 @@ package cn.edu.nju.software.backend.registeralloc;
 import java.util.Stack;
 
 public class MemoryVarStack {
-    private Stack<LocalVar> localVarStack;
+    private Stack<MemoryVar> localVarStack;
 
     public MemoryVarStack() {
         localVarStack = new Stack<>();
@@ -14,7 +14,7 @@ public class MemoryVarStack {
     }
 
     public boolean checkVar(String varName){
-        for(LocalVar localVar : localVarStack){
+        for(MemoryVar localVar : localVarStack){
             if(localVar.getVarName().equals(varName)){
                 return true;
             }
@@ -24,7 +24,7 @@ public class MemoryVarStack {
 
     public int getOffset(String varName){
         int offset = 0;
-        for(LocalVar localVar : localVarStack){
+        for(MemoryVar localVar : localVarStack){
             if(localVar.getVarName().equals(varName)){
                 return offset;
             }
@@ -33,7 +33,7 @@ public class MemoryVarStack {
         return -1;
     }
 
-    public void push(LocalVar localVar){
+    public void push(MemoryVar localVar){
         localVarStack.push(localVar);
     }
 

@@ -70,7 +70,7 @@ public class RegisterManager {
             RiscInstruction sw = new RiscSw( new Register(regNO_toSpill), new IndirectRegister("sp", 0));
             currentBlock.addInstruction(sw);
 
-            memoryVarStack.push(new LocalVar(activeVarTable.getVarInReg(regNO_toSpill)));
+            memoryVarStack.push(new MemoryVar(activeVarTable.getVarInReg(regNO_toSpill)));
         }
 
         activeVarTable.kill(regNO_toSpill);
@@ -145,5 +145,13 @@ public class RegisterManager {
 
     public MemoryVarStack getMemoryVarStack() {
         return memoryVarStack;
+    }
+
+    public void saveVarIntoStack(String varName){
+        if(hasAllocated(varName)){
+            int regNO = activeVarTable.getRegforVar(varName);
+            RiscInstruction sw = new RiscSw(new Register(regNO), new IndirectRegister("sp", memoryVarStack.getOffset(varName)));
+            currentBlock.addInstruction(sw);
+        }
     }
 }

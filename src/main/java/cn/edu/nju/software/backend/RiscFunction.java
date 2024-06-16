@@ -26,18 +26,25 @@ public class RiscFunction {
             entryBlock = null;
             return;
         }
-        entryBlock = new RiscBasicBlock(function.getEntryBlock(), riscModule, true);
+        entryBlock = new RiscBasicBlock(function.getEntryBlock(), riscModule,function, !function.getName().equals("main"));
         basicBlocks.add(entryBlock);
         function.getBasicBlockRefs().forEach(bb -> {
                 if (!bb.equals(function.getEntryBlock())) {
-                    basicBlocks.add(new RiscBasicBlock(bb, riscModule));
+                    basicBlocks.add(new RiscBasicBlock(bb, riscModule, this.function));
                 }
             }
         );
     }
 
     public void dumpToConsole() {
+        System.out.println(".type " + name + ", @function");
+        System.out.println(".globl " + name);
         System.out.println(name + ":");
+        System.out.println();
+        if(function.getName().equals("main")){
+//            System.out.println(".globl _start");
+//            System.out.println("_start:");
+        }
         basicBlocks.forEach(RiscBasicBlock::dumpToConsole);
     }
 
