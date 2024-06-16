@@ -295,6 +295,7 @@ public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
         visitBlock(ctx.block());
         return retType;
     }
+
     @Override
     public Type visitFuncFParams(SysYParser.FuncFParamsContext ctx) {
         if (ctx == null || ctx.funcFParam() == null)
@@ -304,6 +305,7 @@ public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
         }
         return DEFAULT_RETTYPE;
     }
+
     @Override
     public Type visitFuncFParam(SysYParser.FuncFParamContext ctx) {
         if (ctx == null)
@@ -317,7 +319,8 @@ public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
             // array
             int size = ctx.L_BRACKT().size(); // at least 1(and only)
             ArrayType arrayType = new ArrayType(new IntType());
-            for (int level = size - 2; level >= 1; level--) {
+            // bug fix: foo(int a[][5])
+            for (int level = size - 1; level >= 1; level--) {
                 arrayType = new ArrayType(arrayType);
             }
             paramsFTpList.add(arrayType);
