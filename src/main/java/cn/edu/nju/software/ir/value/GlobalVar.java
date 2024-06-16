@@ -38,6 +38,9 @@ public class GlobalVar extends ValueRef {
 
     @Override
     public String toString() {
+        if (name.length() > 31) {
+            return "@" + "long_global_var_" + name.substring(0, 31);
+        }
         return "@" + name;
     }
 }

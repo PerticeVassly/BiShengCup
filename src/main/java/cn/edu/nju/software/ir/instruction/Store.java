@@ -1,6 +1,7 @@
 package cn.edu.nju.software.ir.instruction;
 
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
+import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 public class Store extends Instruction {
@@ -16,8 +17,13 @@ public class Store extends Instruction {
     }
     @Override
     public String toString() {
-        return "store " + operands[0].getType() + " " + operands[0] + ", "
-                + operands[1].getType() + " " + operands[1] + ", align " + operands[0].getType().getWidth();
+        if (operands[0].getType() instanceof ArrayType) { // array value itself has Type Declaration
+            return "store " + operands[0] + ", "
+                    + operands[1].getType() + " " + operands[1] + ", align " + operands[0].getType().getWidth();
+        } else {
+            return "store " + operands[0].getType() + " " + operands[0] + ", "
+                    + operands[1].getType() + " " + operands[1] + ", align " + operands[0].getType().getWidth();
+        }
     }
 
     @Override

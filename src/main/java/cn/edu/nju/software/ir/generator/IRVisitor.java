@@ -185,12 +185,9 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 if (ctx.funcFParams().funcFParam(i).L_BRACKT() != null && !ctx.funcFParams().funcFParam(i).L_BRACKT().isEmpty()){
                     int ptrDim = ctx.funcFParams().funcFParam(i).exp().size();
                     for (int j = ptrDim - 1; j >= 0; j--) {
-                        if (ctx.funcFParams().funcFParam(i).exp(j).number() != null) {
-                            int size = string2Int(ctx.funcFParams().funcFParam(i).exp(j).getText());
-                            type = new ArrayType(type, size);
-                        } else {
-                            // todo a variable be the array size, TBD(how to do)
-                        }
+                        // todo a variable be the array size, TBD(how to do)
+                        int size = getConstValue(ctx.funcFParams().funcFParam(i).exp(j));
+                        type = new ArrayType(type, size);
                     }
                     type = new Pointer(type);
                 }

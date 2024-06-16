@@ -19,6 +19,9 @@ public class LocalVar extends ValueRef {
 
     @Override
     public String toString() {
+        if (name.length() > 31) {
+            return "%"  + "long_local_var_" + name.substring(name.length() - 31);
+        }
         return "%" + name;
     }
 }
