@@ -597,7 +597,9 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             gen.positionBuilderAtEnd(builder, trueLabel);
             visitStmt(ctx.ifStmt().stmt());
             BasicBlockRef end = gen.appendBasicBlock(currentFunction, "end");
-            gen.buildBranch(builder, end);
+            if(!haveReturn){
+                gen.buildBranch(builder, end);
+            }
             gen.positionBuilderAtEnd(builder, falseLabel);
             if (ctx.ELSE() != null) {
                 visitStmt(ctx.elseStmt().stmt());
@@ -610,7 +612,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         }
     }
 
-    //    @Override
+//        @Override
 //    public ValueRef visitCond(SysYParser.CondContext ctx) {
 //        if (ctx.L_PAREN() != null) {
 //            return visitCond(ctx.cond(0));
@@ -833,11 +835,11 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             if (ctx.initVal() != null) {
                 ValueRef initVal = visitInitVal(ctx.initVal());
                 //增加全局变量的隐式类型转换
-                if (!initVal.getType().equals(globalVar.getType())) {
-                    if (initVal.getType() instanceof IntType) {
-                        initVal = gen.buildIntToFloat(builder, initVal, initVal.getName());
-                    } else {
-                        initVal = gen.buildFloatToInt(builder, initVal, initVal.getName());
+                if((initVal.getType() instanceof IntType&&!(type instanceof IntType))||(initVal.getType() instanceof FloatType&&!(type instanceof FloatType))){
+                    if(initVal.getType() instanceof IntType){
+                        initVal=gen.buildIntToFloat(builder,initVal,initVal.getName());
+                    }else {
+                        initVal=gen.buildFloatToInt(builder,initVal,initVal.getName());
                     }
                 }
                 gen.setInitValue(globalVar, initVal);
@@ -862,6 +864,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     if(ctx.constExp(i).exp().number()!=null){
                         size=string2Int(ctx.constExp(i).getText());
                     }else {
+                        //TODO:can't recognize  const variable
                         ValueRef temp = scope.find(ctx.constExp(i).getText());
                         if(temp instanceof GlobalVar){
                             size=string2Int(((GlobalVar) temp).getInitVal().toString());

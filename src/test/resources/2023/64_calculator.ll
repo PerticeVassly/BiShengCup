@@ -20,8 +20,8 @@ declare void @memset(i32*, i32, i32)
 @intt = global i32 0, align 4
 @chas = global [10000 x i32] zeroinitializer, align 4
 @chat = global i32 0, align 4
-@i = global i32 0x0, align 4
-@ii = global i32 0x3ff0000000000000, align 4
+@i = global i32 0, align 4
+@ii = global i32 1, align 4
 @c = global i32 0, align 4
 @get = global [10000 x i32] zeroinitializer, align 4
 @get2 = global [10000 x i32] zeroinitializer, align 4
@@ -51,12 +51,11 @@ end16:                                               ; pred = %ifTrue1, %ifFalse
 
 true15:                                              ; pred = %end16
   ret i32 1
-  br label %end17
 
 false5:                                              ; pred = %end16
   br label %end17
 
-end17:                                               ; pred = %true15, %false5
+end17:                                               ; pred = %false5
   ret i32 0
 }
 
@@ -234,12 +233,11 @@ findEntry:
 
 true18:                                           ; pred = %findEntry
   ret i32 0
-  br label %end21
 
 false6:                                           ; pred = %findEntry
   br label %end21
 
-end21:                                            ; pred = %true18, %false6
+end21:                                            ; pred = %false6
   ret i32 1
 }
 
