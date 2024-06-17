@@ -30,24 +30,33 @@ define i32 @isdigit(i32 %0) {
 isdigitEntry:
   %x = alloca i32, align 4
   store i32 %0, i32* %x, align 4
-  %x$1 = load i32, i32* %x, align 4
-  %cond_ge_tmp_ = icmp sge i32 %x$1, 48
-  %cond_tmp_ = zext i1 %cond_ge_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %secondCond_1, label %next_15
+  %temp = alloca i1, align 1
+  %x1 = load i32, i32* %x, align 4
+  %cond = icmp sge i32 %x1, 48
+  br i1 %cond, label %ifTrue1, label %ifFalse1
 
-ifTrue_5:                                            ; pred = %secondCond_1
+ifTrue1:                                             ; pred = %isdigitEntry
+  %x2 = load i32, i32* %x, align 4
+  %cond1 = icmp sle i32 %x2, 57
+  store i1 %cond1, i1* %temp, align 1
+  br label %end16
+
+ifFalse1:                                            ; pred = %isdigitEntry
+  store i1 %cond, i1* %temp, align 1
+  br label %end16
+
+end16:                                               ; pred = %ifTrue1, %ifFalse1
+  %cond2 = load i1, i1* %temp, align 1
+  br i1 %cond2, label %true15, label %false5
+
+true15:                                              ; pred = %end16
   ret i32 1
 
-next_15:                                             ; pred = %isdigitEntry, %secondCond_1
-  ret i32 0
+false5:                                              ; pred = %end16
+  br label %end17
 
-secondCond_1:                                        ; pred = %isdigitEntry
-  %x$2 = load i32, i32* %x, align 4
-  %cond_le_tmp_ = icmp sle i32 %x$2, 57
-  %cond_tmp_$1 = zext i1 %cond_le_tmp_ to i32
-  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_5, label %next_15
+end17:                                               ; pred = %false5
+  ret i32 0
 }
 
 define i32 @power(i32 %0, i32 %1) {
@@ -58,28 +67,26 @@ powerEntry:
   store i32 %1, i32* %a, align 4
   %result = alloca i32, align 4
   store i32 1, i32* %result, align 4
-  br label %whileCond_10
+  br label %begin10
 
-whileCond_10:                                        ; pred = %powerEntry, %whileBody_10
-  %a$1 = load i32, i32* %a, align 4
-  %cond_neq_tmp_ = icmp ne i32 %a$1, 0
-  %cond_tmp_ = zext i1 %cond_neq_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_10, label %next_16
+begin10:                                           ; pred = %powerEntry, %true16
+  %a1 = load i32, i32* %a, align 4
+  %cond = icmp ne i32 %a1, 0
+  br i1 %cond, label %true16, label %end18
 
-whileBody_10:                                        ; pred = %whileCond_10
-  %result$1 = load i32, i32* %result, align 4
-  %b$1 = load i32, i32* %b, align 4
-  %result_ = mul i32 %result$1, %b$1
+true16:                                            ; pred = %begin10
+  %result1 = load i32, i32* %result, align 4
+  %b1 = load i32, i32* %b, align 4
+  %result_ = mul i32 %result1, %b1
   store i32 %result_, i32* %result, align 4
-  %a$2 = load i32, i32* %a, align 4
-  %result_$1 = sub i32 %a$2, 1
-  store i32 %result_$1, i32* %a, align 4
-  br label %whileCond_10
+  %a2 = load i32, i32* %a, align 4
+  %result_1 = sub i32 %a2, 1
+  store i32 %result_1, i32* %a, align 4
+  br label %begin10
 
-next_16:                                             ; pred = %whileCond_10
-  %result$2 = load i32, i32* %result, align 4
-  ret i32 %result$2
+end18:                                             ; pred = %begin10
+  %result2 = load i32, i32* %result, align 4
+  ret i32 %result2
 }
 
 define i32 @getstr(i32* %0) {
@@ -91,38 +98,44 @@ getstrEntry:
   store i32 %getch, i32* %x, align 4
   %length = alloca i32, align 4
   store i32 0, i32* %length, align 4
-  br label %whileCond_11
+  br label %begin11
 
-whileCond_11:                                        ; pred = %getstrEntry, %whileBody_11
-  %x$1 = load i32, i32* %x, align 4
-  %cond_neq_tmp_ = icmp ne i32 %x$1, 13
-  %cond_tmp_ = zext i1 %cond_neq_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %secondCond_2, label %next_17
+begin11:                                            ; pred = %getstrEntry, %true17
+  %temp = alloca i1, align 1
+  %x1 = load i32, i32* %x, align 4
+  %cond = icmp ne i32 %x1, 13
+  br i1 %cond, label %ifTrue2, label %ifFalse2
 
-whileBody_11:                                        ; pred = %secondCond_2
-  %length$1 = load i32, i32* %length, align 4
+ifTrue2:                                            ; pred = %begin11
+  %x2 = load i32, i32* %x, align 4
+  %cond1 = icmp ne i32 %x2, 10
+  store i1 %cond1, i1* %temp, align 1
+  br label %end19
+
+ifFalse2:                                           ; pred = %begin11
+  store i1 %cond, i1* %temp, align 1
+  br label %end19
+
+end19:                                              ; pred = %ifTrue2, %ifFalse2
+  %cond2 = load i1, i1* %temp, align 1
+  br i1 %cond2, label %true17, label %end20
+
+true17:                                             ; pred = %end19
+  %length1 = load i32, i32* %length, align 4
   %arr_ = load i32*, i32** %get, align 4
-  %get$1 = getelementptr i32, i32* %arr_, i32 %length$1
-  %x$3 = load i32, i32* %x, align 4
-  store i32 %x$3, i32* %get$1, align 4
-  %length$2 = load i32, i32* %length, align 4
-  %result_ = add i32 %length$2, 1
+  %get1 = getelementptr i32, i32* %arr_, i32 %length1
+  %x3 = load i32, i32* %x, align 4
+  store i32 %x3, i32* %get1, align 4
+  %length2 = load i32, i32* %length, align 4
+  %result_ = add i32 %length2, 1
   store i32 %result_, i32* %length, align 4
-  %getch$1 = call i32 @getch()
-  store i32 %getch$1, i32* %x, align 4
-  br label %whileCond_11
+  %getch1 = call i32 @getch()
+  store i32 %getch1, i32* %x, align 4
+  br label %begin11
 
-next_17:                                             ; pred = %whileCond_11, %secondCond_2
-  %length$3 = load i32, i32* %length, align 4
-  ret i32 %length$3
-
-secondCond_2:                                        ; pred = %whileCond_11
-  %x$2 = load i32, i32* %x, align 4
-  %cond_neq_tmp_$1 = icmp ne i32 %x$2, 10
-  %cond_tmp_$1 = zext i1 %cond_neq_tmp_$1 to i32
-  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %whileBody_11, label %next_17
+end20:                                              ; pred = %end19
+  %length3 = load i32, i32* %length, align 4
+  ret i32 %length3
 }
 
 define void @intpush(i32 %0) {
@@ -132,10 +145,10 @@ intpushEntry:
   %intt = load i32, i32* @intt, align 4
   %result_ = add i32 %intt, 1
   store i32 %result_, i32* @intt, align 4
-  %intt$1 = load i32, i32* @intt, align 4
-  %ints = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 %intt$1
-  %x$1 = load i32, i32* %x, align 4
-  store i32 %x$1, i32* %ints, align 4
+  %intt1 = load i32, i32* @intt, align 4
+  %ints = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 %intt1
+  %x1 = load i32, i32* %x, align 4
+  store i32 %x1, i32* %ints, align 4
   ret void
 }
 
@@ -146,10 +159,10 @@ chapushEntry:
   %chat = load i32, i32* @chat, align 4
   %result_ = add i32 %chat, 1
   store i32 %result_, i32* @chat, align 4
-  %chat$1 = load i32, i32* @chat, align 4
-  %chas = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$1
-  %x$1 = load i32, i32* %x, align 4
-  store i32 %x$1, i32* %chas, align 4
+  %chat1 = load i32, i32* @chat, align 4
+  %chas = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat1
+  %x1 = load i32, i32* %x, align 4
+  store i32 %x1, i32* %chas, align 4
   ret void
 }
 
@@ -158,11 +171,11 @@ intpopEntry:
   %intt = load i32, i32* @intt, align 4
   %result_ = sub i32 %intt, 1
   store i32 %result_, i32* @intt, align 4
-  %intt$1 = load i32, i32* @intt, align 4
-  %result_$1 = add i32 %intt$1, 1
-  %ints = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 %result_$1
-  %ints$1 = load i32, i32* %ints, align 4
-  ret i32 %ints$1
+  %intt1 = load i32, i32* @intt, align 4
+  %result_1 = add i32 %intt1, 1
+  %ints = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 %result_1
+  %ints1 = load i32, i32* %ints, align 4
+  ret i32 %ints1
 }
 
 define i32 @chapop() {
@@ -170,11 +183,11 @@ chapopEntry:
   %chat = load i32, i32* @chat, align 4
   %result_ = sub i32 %chat, 1
   store i32 %result_, i32* @chat, align 4
-  %chat$1 = load i32, i32* @chat, align 4
-  %result_$1 = add i32 %chat$1, 1
-  %chas = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %result_$1
-  %chas$1 = load i32, i32* %chas, align 4
-  ret i32 %chas$1
+  %chat1 = load i32, i32* @chat, align 4
+  %result_1 = add i32 %chat1, 1
+  %chas = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %result_1
+  %chas1 = load i32, i32* %chas, align 4
+  ret i32 %chas1
 }
 
 define void @intadd(i32 %0) {
@@ -183,19 +196,19 @@ intaddEntry:
   store i32 %0, i32* %x, align 4
   %intt = load i32, i32* @intt, align 4
   %ints = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 %intt
-  %intt$1 = load i32, i32* @intt, align 4
-  %ints$1 = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 %intt$1
-  %ints$2 = load i32, i32* %ints$1, align 4
-  %result_ = mul i32 %ints$2, 10
+  %intt1 = load i32, i32* @intt, align 4
+  %ints1 = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 %intt1
+  %ints2 = load i32, i32* %ints1, align 4
+  %result_ = mul i32 %ints2, 10
   store i32 %result_, i32* %ints, align 4
-  %intt$2 = load i32, i32* @intt, align 4
-  %ints$3 = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 %intt$2
-  %intt$3 = load i32, i32* @intt, align 4
-  %ints$4 = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 %intt$3
-  %ints$5 = load i32, i32* %ints$4, align 4
-  %x$1 = load i32, i32* %x, align 4
-  %result_$1 = add i32 %ints$5, %x$1
-  store i32 %result_$1, i32* %ints$3, align 4
+  %intt2 = load i32, i32* @intt, align 4
+  %ints3 = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 %intt2
+  %intt3 = load i32, i32* @intt, align 4
+  %ints4 = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 %intt3
+  %ints5 = load i32, i32* %ints4, align 4
+  %x1 = load i32, i32* %x, align 4
+  %result_1 = add i32 %ints5, %x1
+  store i32 %result_1, i32* %ints3, align 4
   ret void
 }
 
@@ -206,24 +219,25 @@ findEntry:
   %ii = load i32, i32* @ii, align 4
   %get2 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %ii
   store i32 32, i32* %get2, align 4
-  %ii$1 = load i32, i32* @ii, align 4
-  %result_ = add i32 %ii$1, 1
-  %get2$1 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %result_
+  %ii1 = load i32, i32* @ii, align 4
+  %result_ = add i32 %ii1, 1
+  %get21 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %result_
   %c = load i32, i32* @c, align 4
-  store i32 %c, i32* %get2$1, align 4
-  %ii$2 = load i32, i32* @ii, align 4
-  %result_$1 = add i32 %ii$2, 2
-  store i32 %result_$1, i32* @ii, align 4
+  store i32 %c, i32* %get21, align 4
+  %ii2 = load i32, i32* @ii, align 4
+  %result_1 = add i32 %ii2, 2
+  store i32 %result_1, i32* @ii, align 4
   %chat = load i32, i32* @chat, align 4
-  %cond_eq_tmp_ = icmp eq i32 %chat, 0
-  %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_6, label %next_18
+  %cond = icmp eq i32 %chat, 0
+  br i1 %cond, label %true18, label %false6
 
-ifTrue_6:                                         ; pred = %findEntry
+true18:                                           ; pred = %findEntry
   ret i32 0
 
-next_18:                                          ; pred = %findEntry
+false6:                                           ; pred = %findEntry
+  br label %end21
+
+end21:                                            ; pred = %false6
   ret i32 1
 }
 
@@ -235,753 +249,941 @@ mainEntry4:
   %get = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 0
   %getstr = call i32 @getstr(i32* %get)
   store i32 %getstr, i32* %lengets, align 4
-  br label %whileCond_12
+  br label %begin12
 
-whileCond_12:                                         ; pred = %mainEntry4, %next_20
+begin12:                                           ; pred = %mainEntry4, %end23
   %i = load i32, i32* @i, align 4
-  %lengets$1 = load i32, i32* %lengets, align 4
-  %cond_lt_tmp_ = icmp slt i32 %i, %lengets$1
-  %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_12, label %next_19
+  %lengets1 = load i32, i32* %lengets, align 4
+  %cond = icmp slt i32 %i, %lengets1
+  br i1 %cond, label %true19, label %end22
 
-whileBody_12:                                         ; pred = %whileCond_12
-  %i$1 = load i32, i32* @i, align 4
-  %get$1 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i$1
-  %get$2 = load i32, i32* %get$1, align 4
-  %isdigit = call i32 @isdigit(i32 %get$2)
-  %cond_eq_tmp_ = icmp eq i32 %isdigit, 1
-  %cond_tmp_$1 = zext i1 %cond_eq_tmp_ to i32
-  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_7, label %ifFalse_5
+true19:                                            ; pred = %begin12
+  %i1 = load i32, i32* @i, align 4
+  %get1 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i1
+  %get2 = load i32, i32* %get1, align 4
+  %isdigit = call i32 @isdigit(i32 %get2)
+  %cond1 = icmp eq i32 %isdigit, 1
+  br i1 %cond1, label %true20, label %false7
 
-next_19:                                              ; pred = %whileCond_12
-  br label %whileCond_19
+end22:                                             ; pred = %begin12
+  br label %begin19
 
-ifTrue_7:                                             ; pred = %whileBody_12
+true20:                                            ; pred = %true19
   %ii = load i32, i32* @ii, align 4
   %get2 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %ii
-  %i$2 = load i32, i32* @i, align 4
-  %get$3 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i$2
-  %get$4 = load i32, i32* %get$3, align 4
-  store i32 %get$4, i32* %get2, align 4
-  %ii$1 = load i32, i32* @ii, align 4
-  %result_ = add i32 %ii$1, 1
+  %i2 = load i32, i32* @i, align 4
+  %get3 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i2
+  %get4 = load i32, i32* %get3, align 4
+  store i32 %get4, i32* %get2, align 4
+  %ii1 = load i32, i32* @ii, align 4
+  %result_ = add i32 %ii1, 1
   store i32 %result_, i32* @ii, align 4
-  br label %next_20
+  br label %end23
 
-ifFalse_5:                                            ; pred = %whileBody_12
-  %i$3 = load i32, i32* @i, align 4
-  %get$5 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i$3
-  %get$6 = load i32, i32* %get$5, align 4
-  %cond_eq_tmp_$1 = icmp eq i32 %get$6, 40
-  %cond_tmp_$2 = zext i1 %cond_eq_tmp_$1 to i32
-  %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %ifTrue_8, label %next_21
+false7:                                            ; pred = %true19
+  %i3 = load i32, i32* @i, align 4
+  %get5 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i3
+  %get6 = load i32, i32* %get5, align 4
+  %cond2 = icmp eq i32 %get6, 40
+  br i1 %cond2, label %true21, label %false8
 
-next_20:                                              ; pred = %ifTrue_7, %next_37
-  %i$11 = load i32, i32* @i, align 4
-  %result_$4 = add i32 %i$11, 1
-  store i32 %result_$4, i32* @i, align 4
-  br label %whileCond_12
+end23:                                             ; pred = %true20, %end61
+  %i11 = load i32, i32* @i, align 4
+  %result_4 = add i32 %i11, 1
+  store i32 %result_4, i32* @i, align 4
+  br label %begin12
 
-ifTrue_8:                                             ; pred = %ifFalse_5
+true21:                                            ; pred = %false7
   call void @chapush(i32 40)
-  br label %next_21
+  br label %end24
 
-next_21:                                              ; pred = %ifFalse_5, %ifTrue_8
-  %i$4 = load i32, i32* @i, align 4
-  %get$7 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i$4
-  %get$8 = load i32, i32* %get$7, align 4
-  %cond_eq_tmp_$2 = icmp eq i32 %get$8, 94
-  %cond_tmp_$3 = zext i1 %cond_eq_tmp_$2 to i32
-  %cond_$3 = icmp ne i32 %cond_tmp_$3, 0
-  br i1 %cond_$3, label %ifTrue_9, label %next_22
+false8:                                            ; pred = %false7
+  br label %end24
 
-ifTrue_9:                                             ; pred = %next_21
+end24:                                             ; pred = %true21, %false8
+  %i4 = load i32, i32* @i, align 4
+  %get7 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i4
+  %get8 = load i32, i32* %get7, align 4
+  %cond3 = icmp eq i32 %get8, 94
+  br i1 %cond3, label %true22, label %false9
+
+true22:                                            ; pred = %end24
   call void @chapush(i32 94)
-  br label %next_22
+  br label %end25
 
-next_22:                                              ; pred = %next_21, %ifTrue_9
-  %i$5 = load i32, i32* @i, align 4
-  %get$9 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i$5
-  %get$10 = load i32, i32* %get$9, align 4
-  %cond_eq_tmp_$3 = icmp eq i32 %get$10, 41
-  %cond_tmp_$4 = zext i1 %cond_eq_tmp_$3 to i32
-  %cond_$4 = icmp ne i32 %cond_tmp_$4, 0
-  br i1 %cond_$4, label %ifTrue_10, label %next_23
+false9:                                            ; pred = %end24
+  br label %end25
 
-ifTrue_10:                                            ; pred = %next_22
+end25:                                             ; pred = %true22, %false9
+  %i5 = load i32, i32* @i, align 4
+  %get9 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i5
+  %get10 = load i32, i32* %get9, align 4
+  %cond4 = icmp eq i32 %get10, 41
+  br i1 %cond4, label %true23, label %false10
+
+true23:                                            ; pred = %end25
   %chapop = call i32 @chapop()
   store i32 %chapop, i32* @c, align 4
-  br label %whileCond_13
+  br label %begin13
 
-next_23:                                              ; pred = %next_22, %next_24
-  %i$6 = load i32, i32* @i, align 4
-  %get$11 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i$6
-  %get$12 = load i32, i32* %get$11, align 4
-  %cond_eq_tmp_$4 = icmp eq i32 %get$12, 43
-  %cond_tmp_$6 = zext i1 %cond_eq_tmp_$4 to i32
-  %cond_$6 = icmp ne i32 %cond_tmp_$6, 0
-  br i1 %cond_$6, label %ifTrue_11, label %next_25
+false10:                                           ; pred = %end25
+  br label %end27
 
-whileCond_13:                                         ; pred = %ifTrue_10, %whileBody_13
+begin13:                                           ; pred = %true23, %true24
   %c = load i32, i32* @c, align 4
-  %cond_neq_tmp_ = icmp ne i32 %c, 40
-  %cond_tmp_$5 = zext i1 %cond_neq_tmp_ to i32
-  %cond_$5 = icmp ne i32 %cond_tmp_$5, 0
-  br i1 %cond_$5, label %whileBody_13, label %next_24
+  %cond5 = icmp ne i32 %c, 40
+  br i1 %cond5, label %true24, label %end26
 
-whileBody_13:                                         ; pred = %whileCond_13
-  %ii$2 = load i32, i32* @ii, align 4
-  %get2$1 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %ii$2
-  store i32 32, i32* %get2$1, align 4
-  %ii$3 = load i32, i32* @ii, align 4
-  %result_$1 = add i32 %ii$3, 1
-  %get2$2 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %result_$1
-  %c$1 = load i32, i32* @c, align 4
-  store i32 %c$1, i32* %get2$2, align 4
-  %ii$4 = load i32, i32* @ii, align 4
-  %result_$2 = add i32 %ii$4, 2
-  store i32 %result_$2, i32* @ii, align 4
-  %chapop$1 = call i32 @chapop()
-  store i32 %chapop$1, i32* @c, align 4
-  br label %whileCond_13
+true24:                                            ; pred = %begin13
+  %ii2 = load i32, i32* @ii, align 4
+  %get21 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %ii2
+  store i32 32, i32* %get21, align 4
+  %ii3 = load i32, i32* @ii, align 4
+  %result_1 = add i32 %ii3, 1
+  %get22 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %result_1
+  %c1 = load i32, i32* @c, align 4
+  store i32 %c1, i32* %get22, align 4
+  %ii4 = load i32, i32* @ii, align 4
+  %result_2 = add i32 %ii4, 2
+  store i32 %result_2, i32* @ii, align 4
+  %chapop1 = call i32 @chapop()
+  store i32 %chapop1, i32* @c, align 4
+  br label %begin13
 
-next_24:                                              ; pred = %whileCond_13
-  br label %next_23
+end26:                                             ; pred = %begin13
+  br label %end27
 
-ifTrue_11:                                            ; pred = %next_23
-  br label %whileCond_14
+end27:                                             ; pred = %end26, %false10
+  %i6 = load i32, i32* @i, align 4
+  %get11 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i6
+  %get12 = load i32, i32* %get11, align 4
+  %cond6 = icmp eq i32 %get12, 43
+  br i1 %cond6, label %true25, label %false11
 
-next_25:                                              ; pred = %next_23, %next_26
-  %i$7 = load i32, i32* @i, align 4
-  %get$13 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i$7
-  %get$14 = load i32, i32* %get$13, align 4
-  %cond_eq_tmp_$12 = icmp eq i32 %get$14, 45
-  %cond_tmp_$14 = zext i1 %cond_eq_tmp_$12 to i32
-  %cond_$14 = icmp ne i32 %cond_tmp_$14, 0
-  br i1 %cond_$14, label %ifTrue_13, label %next_28
+true25:                                            ; pred = %end27
+  br label %begin14
 
-whileCond_14:                                         ; pred = %ifTrue_11, %next_27
+false11:                                           ; pred = %end27
+  br label %end35
+
+begin14:                                           ; pred = %true25, %end34
+  %temp = alloca i1, align 1
+  %temp1 = alloca i1, align 1
+  %temp2 = alloca i1, align 1
+  %temp3 = alloca i1, align 1
+  %temp4 = alloca i1, align 1
   %chat = load i32, i32* @chat, align 4
   %chas = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat
-  %chas$1 = load i32, i32* %chas, align 4
-  %cond_eq_tmp_$5 = icmp eq i32 %chas$1, 43
-  %cond_tmp_$7 = zext i1 %cond_eq_tmp_$5 to i32
-  %cond_$7 = icmp ne i32 %cond_tmp_$7, 0
-  br i1 %cond_$7, label %whileBody_14, label %secondCond_7
+  %chas1 = load i32, i32* %chas, align 4
+  %cond7 = icmp eq i32 %chas1, 43
+  br i1 %cond7, label %ifTrue7, label %ifFalse7
 
-whileBody_14:                                         ; pred = %whileCond_14, %secondCond_7, %secondCond_6, %secondCond_5, %secondCond_4, %secondCond_3
+ifFalse3:                                          ; pred = %end29
+  %chat5 = load i32, i32* @chat, align 4
+  %chas10 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat5
+  %chas11 = load i32, i32* %chas10, align 4
+  %cond16 = icmp eq i32 %chas11, 94
+  store i1 %cond16, i1* %temp, align 1
+  br label %end28
+
+ifTrue3:                                           ; pred = %end29
+  store i1 %cond15, i1* %temp, align 1
+  br label %end28
+
+end28:                                             ; pred = %ifFalse3, %ifTrue3
+  %cond17 = load i1, i1* %temp, align 1
+  br i1 %cond17, label %true26, label %end33
+
+ifFalse4:                                          ; pred = %end30
+  %chat4 = load i32, i32* @chat, align 4
+  %chas8 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat4
+  %chas9 = load i32, i32* %chas8, align 4
+  %cond14 = icmp eq i32 %chas9, 37
+  store i1 %cond14, i1* %temp1, align 1
+  br label %end29
+
+ifTrue4:                                           ; pred = %end30
+  store i1 %cond13, i1* %temp1, align 1
+  br label %end29
+
+end29:                                             ; pred = %ifFalse4, %ifTrue4
+  %cond15 = load i1, i1* %temp1, align 1
+  br i1 %cond15, label %ifTrue3, label %ifFalse3
+
+ifFalse5:                                          ; pred = %end31
+  %chat3 = load i32, i32* @chat, align 4
+  %chas6 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat3
+  %chas7 = load i32, i32* %chas6, align 4
+  %cond12 = icmp eq i32 %chas7, 47
+  store i1 %cond12, i1* %temp2, align 1
+  br label %end30
+
+ifTrue5:                                           ; pred = %end31
+  store i1 %cond11, i1* %temp2, align 1
+  br label %end30
+
+end30:                                             ; pred = %ifFalse5, %ifTrue5
+  %cond13 = load i1, i1* %temp2, align 1
+  br i1 %cond13, label %ifTrue4, label %ifFalse4
+
+ifFalse6:                                          ; pred = %end32
+  %chat2 = load i32, i32* @chat, align 4
+  %chas4 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat2
+  %chas5 = load i32, i32* %chas4, align 4
+  %cond10 = icmp eq i32 %chas5, 42
+  store i1 %cond10, i1* %temp3, align 1
+  br label %end31
+
+ifTrue6:                                           ; pred = %end32
+  store i1 %cond9, i1* %temp3, align 1
+  br label %end31
+
+end31:                                             ; pred = %ifFalse6, %ifTrue6
+  %cond11 = load i1, i1* %temp3, align 1
+  br i1 %cond11, label %ifTrue5, label %ifFalse5
+
+ifFalse7:                                          ; pred = %begin14
+  %chat1 = load i32, i32* @chat, align 4
+  %chas2 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat1
+  %chas3 = load i32, i32* %chas2, align 4
+  %cond8 = icmp eq i32 %chas3, 45
+  store i1 %cond8, i1* %temp4, align 1
+  br label %end32
+
+ifTrue7:                                           ; pred = %begin14
+  store i1 %cond7, i1* %temp4, align 1
+  br label %end32
+
+end32:                                             ; pred = %ifFalse7, %ifTrue7
+  %cond9 = load i1, i1* %temp4, align 1
+  br i1 %cond9, label %ifTrue6, label %ifFalse6
+
+true26:                                            ; pred = %end28
   %find = call i32 @find()
-  %cond_eq_tmp_$11 = icmp eq i32 %find, 0
-  %cond_tmp_$13 = zext i1 %cond_eq_tmp_$11 to i32
-  %cond_$13 = icmp ne i32 %cond_tmp_$13, 0
-  br i1 %cond_$13, label %ifTrue_12, label %next_27
+  %cond18 = icmp eq i32 %find, 0
+  br i1 %cond18, label %true27, label %false12
 
-next_26:                                              ; pred = %secondCond_3, %ifTrue_12
+end33:                                             ; pred = %end28, %true27
   call void @chapush(i32 43)
-  br label %next_25
+  br label %end35
 
-secondCond_3:                                         ; pred = %secondCond_4
-  %chat$5 = load i32, i32* @chat, align 4
-  %chas$10 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$5
-  %chas$11 = load i32, i32* %chas$10, align 4
-  %cond_eq_tmp_$10 = icmp eq i32 %chas$11, 94
-  %cond_tmp_$12 = zext i1 %cond_eq_tmp_$10 to i32
-  %cond_$12 = icmp ne i32 %cond_tmp_$12, 0
-  br i1 %cond_$12, label %whileBody_14, label %next_26
+true27:                                            ; pred = %true26
+  br label %end33
+  br label %end34
 
-secondCond_4:                                         ; pred = %secondCond_5
-  %chat$4 = load i32, i32* @chat, align 4
-  %chas$8 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$4
-  %chas$9 = load i32, i32* %chas$8, align 4
-  %cond_eq_tmp_$9 = icmp eq i32 %chas$9, 37
-  %cond_tmp_$11 = zext i1 %cond_eq_tmp_$9 to i32
-  %cond_$11 = icmp ne i32 %cond_tmp_$11, 0
-  br i1 %cond_$11, label %whileBody_14, label %secondCond_3
+false12:                                           ; pred = %true26
+  br label %end34
 
-secondCond_5:                                         ; pred = %secondCond_6
-  %chat$3 = load i32, i32* @chat, align 4
-  %chas$6 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$3
-  %chas$7 = load i32, i32* %chas$6, align 4
-  %cond_eq_tmp_$8 = icmp eq i32 %chas$7, 47
-  %cond_tmp_$10 = zext i1 %cond_eq_tmp_$8 to i32
-  %cond_$10 = icmp ne i32 %cond_tmp_$10, 0
-  br i1 %cond_$10, label %whileBody_14, label %secondCond_4
+end34:                                             ; pred = %true27, %false12
+  br label %begin14
 
-secondCond_6:                                         ; pred = %secondCond_7
-  %chat$2 = load i32, i32* @chat, align 4
-  %chas$4 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$2
-  %chas$5 = load i32, i32* %chas$4, align 4
-  %cond_eq_tmp_$7 = icmp eq i32 %chas$5, 42
-  %cond_tmp_$9 = zext i1 %cond_eq_tmp_$7 to i32
-  %cond_$9 = icmp ne i32 %cond_tmp_$9, 0
-  br i1 %cond_$9, label %whileBody_14, label %secondCond_5
+end35:                                             ; pred = %end33, %false11
+  %i7 = load i32, i32* @i, align 4
+  %get13 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i7
+  %get14 = load i32, i32* %get13, align 4
+  %cond19 = icmp eq i32 %get14, 45
+  br i1 %cond19, label %true28, label %false13
 
-secondCond_7:                                         ; pred = %whileCond_14
-  %chat$1 = load i32, i32* @chat, align 4
-  %chas$2 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$1
-  %chas$3 = load i32, i32* %chas$2, align 4
-  %cond_eq_tmp_$6 = icmp eq i32 %chas$3, 45
-  %cond_tmp_$8 = zext i1 %cond_eq_tmp_$6 to i32
-  %cond_$8 = icmp ne i32 %cond_tmp_$8, 0
-  br i1 %cond_$8, label %whileBody_14, label %secondCond_6
+true28:                                            ; pred = %end35
+  br label %begin15
 
-ifTrue_12:                                            ; pred = %whileBody_14
-  br label %next_26
-  br label %next_27
+false13:                                           ; pred = %end35
+  br label %end43
 
-next_27:                                              ; pred = %whileBody_14, %ifTrue_12
-  br label %whileCond_14
+begin15:                                           ; pred = %true28, %end42
+  %temp5 = alloca i1, align 1
+  %temp6 = alloca i1, align 1
+  %temp7 = alloca i1, align 1
+  %temp8 = alloca i1, align 1
+  %temp9 = alloca i1, align 1
+  %chat6 = load i32, i32* @chat, align 4
+  %chas12 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat6
+  %chas13 = load i32, i32* %chas12, align 4
+  %cond20 = icmp eq i32 %chas13, 43
+  br i1 %cond20, label %ifTrue12, label %ifFalse12
 
-ifTrue_13:                                            ; pred = %next_25
-  br label %whileCond_15
+ifFalse8:                                          ; pred = %end37
+  %chat11 = load i32, i32* @chat, align 4
+  %chas22 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat11
+  %chas23 = load i32, i32* %chas22, align 4
+  %cond29 = icmp eq i32 %chas23, 94
+  store i1 %cond29, i1* %temp5, align 1
+  br label %end36
 
-next_28:                                              ; pred = %next_25, %next_29
-  %i$8 = load i32, i32* @i, align 4
-  %get$15 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i$8
-  %get$16 = load i32, i32* %get$15, align 4
-  %cond_eq_tmp_$20 = icmp eq i32 %get$16, 42
-  %cond_tmp_$22 = zext i1 %cond_eq_tmp_$20 to i32
-  %cond_$22 = icmp ne i32 %cond_tmp_$22, 0
-  br i1 %cond_$22, label %ifTrue_15, label %next_31
+ifTrue8:                                           ; pred = %end37
+  store i1 %cond28, i1* %temp5, align 1
+  br label %end36
 
-whileCond_15:                                         ; pred = %ifTrue_13, %next_30
-  %chat$6 = load i32, i32* @chat, align 4
-  %chas$12 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$6
-  %chas$13 = load i32, i32* %chas$12, align 4
-  %cond_eq_tmp_$13 = icmp eq i32 %chas$13, 43
-  %cond_tmp_$15 = zext i1 %cond_eq_tmp_$13 to i32
-  %cond_$15 = icmp ne i32 %cond_tmp_$15, 0
-  br i1 %cond_$15, label %whileBody_15, label %secondCond_12
+end36:                                             ; pred = %ifFalse8, %ifTrue8
+  %cond30 = load i1, i1* %temp5, align 1
+  br i1 %cond30, label %true29, label %end41
 
-whileBody_15:                                         ; pred = %whileCond_15, %secondCond_12, %secondCond_11, %secondCond_10, %secondCond_9, %secondCond_8
-  %find$1 = call i32 @find()
-  %cond_eq_tmp_$19 = icmp eq i32 %find$1, 0
-  %cond_tmp_$21 = zext i1 %cond_eq_tmp_$19 to i32
-  %cond_$21 = icmp ne i32 %cond_tmp_$21, 0
-  br i1 %cond_$21, label %ifTrue_14, label %next_30
+ifFalse9:                                          ; pred = %end38
+  %chat10 = load i32, i32* @chat, align 4
+  %chas20 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat10
+  %chas21 = load i32, i32* %chas20, align 4
+  %cond27 = icmp eq i32 %chas21, 37
+  store i1 %cond27, i1* %temp6, align 1
+  br label %end37
 
-next_29:                                              ; pred = %secondCond_8, %ifTrue_14
+ifTrue9:                                           ; pred = %end38
+  store i1 %cond26, i1* %temp6, align 1
+  br label %end37
+
+end37:                                             ; pred = %ifFalse9, %ifTrue9
+  %cond28 = load i1, i1* %temp6, align 1
+  br i1 %cond28, label %ifTrue8, label %ifFalse8
+
+ifFalse10:                                         ; pred = %end39
+  %chat9 = load i32, i32* @chat, align 4
+  %chas18 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat9
+  %chas19 = load i32, i32* %chas18, align 4
+  %cond25 = icmp eq i32 %chas19, 47
+  store i1 %cond25, i1* %temp7, align 1
+  br label %end38
+
+ifTrue10:                                          ; pred = %end39
+  store i1 %cond24, i1* %temp7, align 1
+  br label %end38
+
+end38:                                             ; pred = %ifFalse10, %ifTrue10
+  %cond26 = load i1, i1* %temp7, align 1
+  br i1 %cond26, label %ifTrue9, label %ifFalse9
+
+ifFalse11:                                         ; pred = %end40
+  %chat8 = load i32, i32* @chat, align 4
+  %chas16 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat8
+  %chas17 = load i32, i32* %chas16, align 4
+  %cond23 = icmp eq i32 %chas17, 42
+  store i1 %cond23, i1* %temp8, align 1
+  br label %end39
+
+ifTrue11:                                          ; pred = %end40
+  store i1 %cond22, i1* %temp8, align 1
+  br label %end39
+
+end39:                                             ; pred = %ifFalse11, %ifTrue11
+  %cond24 = load i1, i1* %temp8, align 1
+  br i1 %cond24, label %ifTrue10, label %ifFalse10
+
+ifFalse12:                                         ; pred = %begin15
+  %chat7 = load i32, i32* @chat, align 4
+  %chas14 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat7
+  %chas15 = load i32, i32* %chas14, align 4
+  %cond21 = icmp eq i32 %chas15, 45
+  store i1 %cond21, i1* %temp9, align 1
+  br label %end40
+
+ifTrue12:                                          ; pred = %begin15
+  store i1 %cond20, i1* %temp9, align 1
+  br label %end40
+
+end40:                                             ; pred = %ifFalse12, %ifTrue12
+  %cond22 = load i1, i1* %temp9, align 1
+  br i1 %cond22, label %ifTrue11, label %ifFalse11
+
+true29:                                            ; pred = %end36
+  %find1 = call i32 @find()
+  %cond31 = icmp eq i32 %find1, 0
+  br i1 %cond31, label %true30, label %false14
+
+end41:                                             ; pred = %end36, %true30
   call void @chapush(i32 45)
-  br label %next_28
+  br label %end43
 
-secondCond_8:                                         ; pred = %secondCond_9
-  %chat$11 = load i32, i32* @chat, align 4
-  %chas$22 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$11
-  %chas$23 = load i32, i32* %chas$22, align 4
-  %cond_eq_tmp_$18 = icmp eq i32 %chas$23, 94
-  %cond_tmp_$20 = zext i1 %cond_eq_tmp_$18 to i32
-  %cond_$20 = icmp ne i32 %cond_tmp_$20, 0
-  br i1 %cond_$20, label %whileBody_15, label %next_29
+true30:                                            ; pred = %true29
+  br label %end41
+  br label %end42
 
-secondCond_9:                                         ; pred = %secondCond_10
-  %chat$10 = load i32, i32* @chat, align 4
-  %chas$20 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$10
-  %chas$21 = load i32, i32* %chas$20, align 4
-  %cond_eq_tmp_$17 = icmp eq i32 %chas$21, 37
-  %cond_tmp_$19 = zext i1 %cond_eq_tmp_$17 to i32
-  %cond_$19 = icmp ne i32 %cond_tmp_$19, 0
-  br i1 %cond_$19, label %whileBody_15, label %secondCond_8
+false14:                                           ; pred = %true29
+  br label %end42
 
-secondCond_10:                                        ; pred = %secondCond_11
-  %chat$9 = load i32, i32* @chat, align 4
-  %chas$18 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$9
-  %chas$19 = load i32, i32* %chas$18, align 4
-  %cond_eq_tmp_$16 = icmp eq i32 %chas$19, 47
-  %cond_tmp_$18 = zext i1 %cond_eq_tmp_$16 to i32
-  %cond_$18 = icmp ne i32 %cond_tmp_$18, 0
-  br i1 %cond_$18, label %whileBody_15, label %secondCond_9
+end42:                                             ; pred = %true30, %false14
+  br label %begin15
 
-secondCond_11:                                        ; pred = %secondCond_12
-  %chat$8 = load i32, i32* @chat, align 4
-  %chas$16 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$8
-  %chas$17 = load i32, i32* %chas$16, align 4
-  %cond_eq_tmp_$15 = icmp eq i32 %chas$17, 42
-  %cond_tmp_$17 = zext i1 %cond_eq_tmp_$15 to i32
-  %cond_$17 = icmp ne i32 %cond_tmp_$17, 0
-  br i1 %cond_$17, label %whileBody_15, label %secondCond_10
+end43:                                             ; pred = %end41, %false13
+  %i8 = load i32, i32* @i, align 4
+  %get15 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i8
+  %get16 = load i32, i32* %get15, align 4
+  %cond32 = icmp eq i32 %get16, 42
+  br i1 %cond32, label %true31, label %false15
 
-secondCond_12:                                        ; pred = %whileCond_15
-  %chat$7 = load i32, i32* @chat, align 4
-  %chas$14 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$7
-  %chas$15 = load i32, i32* %chas$14, align 4
-  %cond_eq_tmp_$14 = icmp eq i32 %chas$15, 45
-  %cond_tmp_$16 = zext i1 %cond_eq_tmp_$14 to i32
-  %cond_$16 = icmp ne i32 %cond_tmp_$16, 0
-  br i1 %cond_$16, label %whileBody_15, label %secondCond_11
+true31:                                            ; pred = %end43
+  br label %begin16
 
-ifTrue_14:                                            ; pred = %whileBody_15
-  br label %next_29
-  br label %next_30
+false15:                                           ; pred = %end43
+  br label %end49
 
-next_30:                                              ; pred = %whileBody_15, %ifTrue_14
-  br label %whileCond_15
+begin16:                                           ; pred = %true31, %end48
+  %temp10 = alloca i1, align 1
+  %temp11 = alloca i1, align 1
+  %temp12 = alloca i1, align 1
+  %chat12 = load i32, i32* @chat, align 4
+  %chas24 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat12
+  %chas25 = load i32, i32* %chas24, align 4
+  %cond33 = icmp eq i32 %chas25, 42
+  br i1 %cond33, label %ifTrue15, label %ifFalse15
 
-ifTrue_15:                                            ; pred = %next_28
-  br label %whileCond_16
+ifFalse13:                                         ; pred = %end45
+  %chat15 = load i32, i32* @chat, align 4
+  %chas30 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat15
+  %chas31 = load i32, i32* %chas30, align 4
+  %cond38 = icmp eq i32 %chas31, 94
+  store i1 %cond38, i1* %temp10, align 1
+  br label %end44
 
-next_31:                                              ; pred = %next_28, %next_32
-  %i$9 = load i32, i32* @i, align 4
-  %get$17 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i$9
-  %get$18 = load i32, i32* %get$17, align 4
-  %cond_eq_tmp_$26 = icmp eq i32 %get$18, 47
-  %cond_tmp_$28 = zext i1 %cond_eq_tmp_$26 to i32
-  %cond_$28 = icmp ne i32 %cond_tmp_$28, 0
-  br i1 %cond_$28, label %ifTrue_17, label %next_34
+ifTrue13:                                          ; pred = %end45
+  store i1 %cond37, i1* %temp10, align 1
+  br label %end44
 
-whileCond_16:                                         ; pred = %ifTrue_15, %next_33
-  %chat$12 = load i32, i32* @chat, align 4
-  %chas$24 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$12
-  %chas$25 = load i32, i32* %chas$24, align 4
-  %cond_eq_tmp_$21 = icmp eq i32 %chas$25, 42
-  %cond_tmp_$23 = zext i1 %cond_eq_tmp_$21 to i32
-  %cond_$23 = icmp ne i32 %cond_tmp_$23, 0
-  br i1 %cond_$23, label %whileBody_16, label %secondCond_15
+end44:                                             ; pred = %ifFalse13, %ifTrue13
+  %cond39 = load i1, i1* %temp10, align 1
+  br i1 %cond39, label %true32, label %end47
 
-whileBody_16:                                         ; pred = %whileCond_16, %secondCond_15, %secondCond_14, %secondCond_13
-  %find$2 = call i32 @find()
-  %cond_eq_tmp_$25 = icmp eq i32 %find$2, 0
-  %cond_tmp_$27 = zext i1 %cond_eq_tmp_$25 to i32
-  %cond_$27 = icmp ne i32 %cond_tmp_$27, 0
-  br i1 %cond_$27, label %ifTrue_16, label %next_33
+ifFalse14:                                         ; pred = %end46
+  %chat14 = load i32, i32* @chat, align 4
+  %chas28 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat14
+  %chas29 = load i32, i32* %chas28, align 4
+  %cond36 = icmp eq i32 %chas29, 37
+  store i1 %cond36, i1* %temp11, align 1
+  br label %end45
 
-next_32:                                              ; pred = %secondCond_13, %ifTrue_16
+ifTrue14:                                          ; pred = %end46
+  store i1 %cond35, i1* %temp11, align 1
+  br label %end45
+
+end45:                                             ; pred = %ifFalse14, %ifTrue14
+  %cond37 = load i1, i1* %temp11, align 1
+  br i1 %cond37, label %ifTrue13, label %ifFalse13
+
+ifFalse15:                                         ; pred = %begin16
+  %chat13 = load i32, i32* @chat, align 4
+  %chas26 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat13
+  %chas27 = load i32, i32* %chas26, align 4
+  %cond34 = icmp eq i32 %chas27, 47
+  store i1 %cond34, i1* %temp12, align 1
+  br label %end46
+
+ifTrue15:                                          ; pred = %begin16
+  store i1 %cond33, i1* %temp12, align 1
+  br label %end46
+
+end46:                                             ; pred = %ifFalse15, %ifTrue15
+  %cond35 = load i1, i1* %temp12, align 1
+  br i1 %cond35, label %ifTrue14, label %ifFalse14
+
+true32:                                            ; pred = %end44
+  %find2 = call i32 @find()
+  %cond40 = icmp eq i32 %find2, 0
+  br i1 %cond40, label %true33, label %false16
+
+end47:                                             ; pred = %end44, %true33
   call void @chapush(i32 42)
-  br label %next_31
+  br label %end49
 
-secondCond_13:                                        ; pred = %secondCond_14
-  %chat$15 = load i32, i32* @chat, align 4
-  %chas$30 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$15
-  %chas$31 = load i32, i32* %chas$30, align 4
-  %cond_eq_tmp_$24 = icmp eq i32 %chas$31, 94
-  %cond_tmp_$26 = zext i1 %cond_eq_tmp_$24 to i32
-  %cond_$26 = icmp ne i32 %cond_tmp_$26, 0
-  br i1 %cond_$26, label %whileBody_16, label %next_32
+true33:                                            ; pred = %true32
+  br label %end47
+  br label %end48
 
-secondCond_14:                                        ; pred = %secondCond_15
-  %chat$14 = load i32, i32* @chat, align 4
-  %chas$28 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$14
-  %chas$29 = load i32, i32* %chas$28, align 4
-  %cond_eq_tmp_$23 = icmp eq i32 %chas$29, 37
-  %cond_tmp_$25 = zext i1 %cond_eq_tmp_$23 to i32
-  %cond_$25 = icmp ne i32 %cond_tmp_$25, 0
-  br i1 %cond_$25, label %whileBody_16, label %secondCond_13
+false16:                                           ; pred = %true32
+  br label %end48
 
-secondCond_15:                                        ; pred = %whileCond_16
-  %chat$13 = load i32, i32* @chat, align 4
-  %chas$26 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$13
-  %chas$27 = load i32, i32* %chas$26, align 4
-  %cond_eq_tmp_$22 = icmp eq i32 %chas$27, 47
-  %cond_tmp_$24 = zext i1 %cond_eq_tmp_$22 to i32
-  %cond_$24 = icmp ne i32 %cond_tmp_$24, 0
-  br i1 %cond_$24, label %whileBody_16, label %secondCond_14
+end48:                                             ; pred = %true33, %false16
+  br label %begin16
 
-ifTrue_16:                                            ; pred = %whileBody_16
-  br label %next_32
-  br label %next_33
+end49:                                             ; pred = %end47, %false15
+  %i9 = load i32, i32* @i, align 4
+  %get17 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i9
+  %get18 = load i32, i32* %get17, align 4
+  %cond41 = icmp eq i32 %get18, 47
+  br i1 %cond41, label %true34, label %false17
 
-next_33:                                              ; pred = %whileBody_16, %ifTrue_16
-  br label %whileCond_16
+true34:                                            ; pred = %end49
+  br label %begin17
 
-ifTrue_17:                                            ; pred = %next_31
-  br label %whileCond_17
+false17:                                           ; pred = %end49
+  br label %end55
 
-next_34:                                              ; pred = %next_31, %next_35
-  %i$10 = load i32, i32* @i, align 4
-  %get$19 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i$10
-  %get$20 = load i32, i32* %get$19, align 4
-  %cond_eq_tmp_$32 = icmp eq i32 %get$20, 37
-  %cond_tmp_$34 = zext i1 %cond_eq_tmp_$32 to i32
-  %cond_$34 = icmp ne i32 %cond_tmp_$34, 0
-  br i1 %cond_$34, label %ifTrue_19, label %next_37
+begin17:                                           ; pred = %true34, %end54
+  %temp13 = alloca i1, align 1
+  %temp14 = alloca i1, align 1
+  %temp15 = alloca i1, align 1
+  %chat16 = load i32, i32* @chat, align 4
+  %chas32 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat16
+  %chas33 = load i32, i32* %chas32, align 4
+  %cond42 = icmp eq i32 %chas33, 42
+  br i1 %cond42, label %ifTrue18, label %ifFalse18
 
-whileCond_17:                                         ; pred = %ifTrue_17, %next_36
-  %chat$16 = load i32, i32* @chat, align 4
-  %chas$32 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$16
-  %chas$33 = load i32, i32* %chas$32, align 4
-  %cond_eq_tmp_$27 = icmp eq i32 %chas$33, 42
-  %cond_tmp_$29 = zext i1 %cond_eq_tmp_$27 to i32
-  %cond_$29 = icmp ne i32 %cond_tmp_$29, 0
-  br i1 %cond_$29, label %whileBody_17, label %secondCond_18
+ifFalse16:                                         ; pred = %end51
+  %chat19 = load i32, i32* @chat, align 4
+  %chas38 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat19
+  %chas39 = load i32, i32* %chas38, align 4
+  %cond47 = icmp eq i32 %chas39, 94
+  store i1 %cond47, i1* %temp13, align 1
+  br label %end50
 
-whileBody_17:                                         ; pred = %whileCond_17, %secondCond_18, %secondCond_17, %secondCond_16
-  %find$3 = call i32 @find()
-  %cond_eq_tmp_$31 = icmp eq i32 %find$3, 0
-  %cond_tmp_$33 = zext i1 %cond_eq_tmp_$31 to i32
-  %cond_$33 = icmp ne i32 %cond_tmp_$33, 0
-  br i1 %cond_$33, label %ifTrue_18, label %next_36
+ifTrue16:                                          ; pred = %end51
+  store i1 %cond46, i1* %temp13, align 1
+  br label %end50
 
-next_35:                                              ; pred = %secondCond_16, %ifTrue_18
+end50:                                             ; pred = %ifFalse16, %ifTrue16
+  %cond48 = load i1, i1* %temp13, align 1
+  br i1 %cond48, label %true35, label %end53
+
+ifFalse17:                                         ; pred = %end52
+  %chat18 = load i32, i32* @chat, align 4
+  %chas36 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat18
+  %chas37 = load i32, i32* %chas36, align 4
+  %cond45 = icmp eq i32 %chas37, 37
+  store i1 %cond45, i1* %temp14, align 1
+  br label %end51
+
+ifTrue17:                                          ; pred = %end52
+  store i1 %cond44, i1* %temp14, align 1
+  br label %end51
+
+end51:                                             ; pred = %ifFalse17, %ifTrue17
+  %cond46 = load i1, i1* %temp14, align 1
+  br i1 %cond46, label %ifTrue16, label %ifFalse16
+
+ifFalse18:                                         ; pred = %begin17
+  %chat17 = load i32, i32* @chat, align 4
+  %chas34 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat17
+  %chas35 = load i32, i32* %chas34, align 4
+  %cond43 = icmp eq i32 %chas35, 47
+  store i1 %cond43, i1* %temp15, align 1
+  br label %end52
+
+ifTrue18:                                          ; pred = %begin17
+  store i1 %cond42, i1* %temp15, align 1
+  br label %end52
+
+end52:                                             ; pred = %ifFalse18, %ifTrue18
+  %cond44 = load i1, i1* %temp15, align 1
+  br i1 %cond44, label %ifTrue17, label %ifFalse17
+
+true35:                                            ; pred = %end50
+  %find3 = call i32 @find()
+  %cond49 = icmp eq i32 %find3, 0
+  br i1 %cond49, label %true36, label %false18
+
+end53:                                             ; pred = %end50, %true36
   call void @chapush(i32 47)
-  br label %next_34
+  br label %end55
 
-secondCond_16:                                        ; pred = %secondCond_17
-  %chat$19 = load i32, i32* @chat, align 4
-  %chas$38 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$19
-  %chas$39 = load i32, i32* %chas$38, align 4
-  %cond_eq_tmp_$30 = icmp eq i32 %chas$39, 94
-  %cond_tmp_$32 = zext i1 %cond_eq_tmp_$30 to i32
-  %cond_$32 = icmp ne i32 %cond_tmp_$32, 0
-  br i1 %cond_$32, label %whileBody_17, label %next_35
+true36:                                            ; pred = %true35
+  br label %end53
+  br label %end54
 
-secondCond_17:                                        ; pred = %secondCond_18
-  %chat$18 = load i32, i32* @chat, align 4
-  %chas$36 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$18
-  %chas$37 = load i32, i32* %chas$36, align 4
-  %cond_eq_tmp_$29 = icmp eq i32 %chas$37, 37
-  %cond_tmp_$31 = zext i1 %cond_eq_tmp_$29 to i32
-  %cond_$31 = icmp ne i32 %cond_tmp_$31, 0
-  br i1 %cond_$31, label %whileBody_17, label %secondCond_16
+false18:                                           ; pred = %true35
+  br label %end54
 
-secondCond_18:                                        ; pred = %whileCond_17
-  %chat$17 = load i32, i32* @chat, align 4
-  %chas$34 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$17
-  %chas$35 = load i32, i32* %chas$34, align 4
-  %cond_eq_tmp_$28 = icmp eq i32 %chas$35, 47
-  %cond_tmp_$30 = zext i1 %cond_eq_tmp_$28 to i32
-  %cond_$30 = icmp ne i32 %cond_tmp_$30, 0
-  br i1 %cond_$30, label %whileBody_17, label %secondCond_17
+end54:                                             ; pred = %true36, %false18
+  br label %begin17
 
-ifTrue_18:                                            ; pred = %whileBody_17
-  br label %next_35
-  br label %next_36
+end55:                                             ; pred = %end53, %false17
+  %i10 = load i32, i32* @i, align 4
+  %get19 = getelementptr [10000 x i32], [10000 x i32]* @get, i32 0, i32 %i10
+  %get20 = load i32, i32* %get19, align 4
+  %cond50 = icmp eq i32 %get20, 37
+  br i1 %cond50, label %true37, label %false19
 
-next_36:                                              ; pred = %whileBody_17, %ifTrue_18
-  br label %whileCond_17
+true37:                                            ; pred = %end55
+  br label %begin18
 
-ifTrue_19:                                            ; pred = %next_34
-  br label %whileCond_18
+false19:                                           ; pred = %end55
+  br label %end61
 
-next_37:                                              ; pred = %next_34, %next_38
-  %ii$5 = load i32, i32* @ii, align 4
-  %get2$3 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %ii$5
-  store i32 32, i32* %get2$3, align 4
-  %ii$6 = load i32, i32* @ii, align 4
-  %result_$3 = add i32 %ii$6, 1
-  store i32 %result_$3, i32* @ii, align 4
-  br label %next_20
+begin18:                                           ; pred = %true37, %end60
+  %temp16 = alloca i1, align 1
+  %temp17 = alloca i1, align 1
+  %temp18 = alloca i1, align 1
+  %chat20 = load i32, i32* @chat, align 4
+  %chas40 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat20
+  %chas41 = load i32, i32* %chas40, align 4
+  %cond51 = icmp eq i32 %chas41, 42
+  br i1 %cond51, label %ifTrue21, label %ifFalse21
 
-whileCond_18:                                         ; pred = %ifTrue_19, %next_39
-  %chat$20 = load i32, i32* @chat, align 4
-  %chas$40 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$20
-  %chas$41 = load i32, i32* %chas$40, align 4
-  %cond_eq_tmp_$33 = icmp eq i32 %chas$41, 42
-  %cond_tmp_$35 = zext i1 %cond_eq_tmp_$33 to i32
-  %cond_$35 = icmp ne i32 %cond_tmp_$35, 0
-  br i1 %cond_$35, label %whileBody_18, label %secondCond_21
+ifFalse19:                                         ; pred = %end57
+  %chat23 = load i32, i32* @chat, align 4
+  %chas46 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat23
+  %chas47 = load i32, i32* %chas46, align 4
+  %cond56 = icmp eq i32 %chas47, 94
+  store i1 %cond56, i1* %temp16, align 1
+  br label %end56
 
-whileBody_18:                                         ; pred = %whileCond_18, %secondCond_21, %secondCond_20, %secondCond_19
-  %find$4 = call i32 @find()
-  %cond_eq_tmp_$37 = icmp eq i32 %find$4, 0
-  %cond_tmp_$39 = zext i1 %cond_eq_tmp_$37 to i32
-  %cond_$39 = icmp ne i32 %cond_tmp_$39, 0
-  br i1 %cond_$39, label %ifTrue_20, label %next_39
+ifTrue19:                                          ; pred = %end57
+  store i1 %cond55, i1* %temp16, align 1
+  br label %end56
 
-next_38:                                              ; pred = %secondCond_19, %ifTrue_20
+end56:                                             ; pred = %ifFalse19, %ifTrue19
+  %cond57 = load i1, i1* %temp16, align 1
+  br i1 %cond57, label %true38, label %end59
+
+ifFalse20:                                         ; pred = %end58
+  %chat22 = load i32, i32* @chat, align 4
+  %chas44 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat22
+  %chas45 = load i32, i32* %chas44, align 4
+  %cond54 = icmp eq i32 %chas45, 37
+  store i1 %cond54, i1* %temp17, align 1
+  br label %end57
+
+ifTrue20:                                          ; pred = %end58
+  store i1 %cond53, i1* %temp17, align 1
+  br label %end57
+
+end57:                                             ; pred = %ifFalse20, %ifTrue20
+  %cond55 = load i1, i1* %temp17, align 1
+  br i1 %cond55, label %ifTrue19, label %ifFalse19
+
+ifFalse21:                                         ; pred = %begin18
+  %chat21 = load i32, i32* @chat, align 4
+  %chas42 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat21
+  %chas43 = load i32, i32* %chas42, align 4
+  %cond52 = icmp eq i32 %chas43, 47
+  store i1 %cond52, i1* %temp18, align 1
+  br label %end58
+
+ifTrue21:                                          ; pred = %begin18
+  store i1 %cond51, i1* %temp18, align 1
+  br label %end58
+
+end58:                                             ; pred = %ifFalse21, %ifTrue21
+  %cond53 = load i1, i1* %temp18, align 1
+  br i1 %cond53, label %ifTrue20, label %ifFalse20
+
+true38:                                            ; pred = %end56
+  %find4 = call i32 @find()
+  %cond58 = icmp eq i32 %find4, 0
+  br i1 %cond58, label %true39, label %false20
+
+end59:                                             ; pred = %end56, %true39
   call void @chapush(i32 37)
-  br label %next_37
+  br label %end61
 
-secondCond_19:                                        ; pred = %secondCond_20
-  %chat$23 = load i32, i32* @chat, align 4
-  %chas$46 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$23
-  %chas$47 = load i32, i32* %chas$46, align 4
-  %cond_eq_tmp_$36 = icmp eq i32 %chas$47, 94
-  %cond_tmp_$38 = zext i1 %cond_eq_tmp_$36 to i32
-  %cond_$38 = icmp ne i32 %cond_tmp_$38, 0
-  br i1 %cond_$38, label %whileBody_18, label %next_38
+true39:                                            ; pred = %true38
+  br label %end59
+  br label %end60
 
-secondCond_20:                                        ; pred = %secondCond_21
-  %chat$22 = load i32, i32* @chat, align 4
-  %chas$44 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$22
-  %chas$45 = load i32, i32* %chas$44, align 4
-  %cond_eq_tmp_$35 = icmp eq i32 %chas$45, 37
-  %cond_tmp_$37 = zext i1 %cond_eq_tmp_$35 to i32
-  %cond_$37 = icmp ne i32 %cond_tmp_$37, 0
-  br i1 %cond_$37, label %whileBody_18, label %secondCond_19
+false20:                                           ; pred = %true38
+  br label %end60
 
-secondCond_21:                                        ; pred = %whileCond_18
-  %chat$21 = load i32, i32* @chat, align 4
-  %chas$42 = getelementptr [10000 x i32], [10000 x i32]* @chas, i32 0, i32 %chat$21
-  %chas$43 = load i32, i32* %chas$42, align 4
-  %cond_eq_tmp_$34 = icmp eq i32 %chas$43, 47
-  %cond_tmp_$36 = zext i1 %cond_eq_tmp_$34 to i32
-  %cond_$36 = icmp ne i32 %cond_tmp_$36, 0
-  br i1 %cond_$36, label %whileBody_18, label %secondCond_20
+end60:                                             ; pred = %true39, %false20
+  br label %begin18
 
-ifTrue_20:                                            ; pred = %whileBody_18
-  br label %next_38
-  br label %next_39
+end61:                                             ; pred = %end59, %false19
+  %ii5 = load i32, i32* @ii, align 4
+  %get23 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %ii5
+  store i32 32, i32* %get23, align 4
+  %ii6 = load i32, i32* @ii, align 4
+  %result_3 = add i32 %ii6, 1
+  store i32 %result_3, i32* @ii, align 4
+  br label %end23
 
-next_39:                                              ; pred = %whileBody_18, %ifTrue_20
-  br label %whileCond_18
+begin19:                                           ; pred = %end22, %true40
+  %chat24 = load i32, i32* @chat, align 4
+  %cond59 = icmp sgt i32 %chat24, 0
+  br i1 %cond59, label %true40, label %end62
 
-whileCond_19:                                         ; pred = %next_19, %whileBody_19
-  %chat$24 = load i32, i32* @chat, align 4
-  %cond_gt_tmp_ = icmp sgt i32 %chat$24, 0
-  %cond_tmp_$40 = zext i1 %cond_gt_tmp_ to i32
-  %cond_$40 = icmp ne i32 %cond_tmp_$40, 0
-  br i1 %cond_$40, label %whileBody_19, label %next_40
+true40:                                            ; pred = %begin19
+  %c2 = alloca i32, align 4
+  %chapop2 = call i32 @chapop()
+  store i32 %chapop2, i32* %c2, align 4
+  %ii7 = load i32, i32* @ii, align 4
+  %get24 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %ii7
+  store i32 32, i32* %get24, align 4
+  %ii8 = load i32, i32* @ii, align 4
+  %result_5 = add i32 %ii8, 1
+  %get25 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %result_5
+  %c3 = load i32, i32* %c2, align 4
+  store i32 %c3, i32* %get25, align 4
+  %ii9 = load i32, i32* @ii, align 4
+  %result_6 = add i32 %ii9, 2
+  store i32 %result_6, i32* @ii, align 4
+  br label %begin19
 
-whileBody_19:                                         ; pred = %whileCond_19
-  %c$2 = alloca i32, align 4
-  %chapop$2 = call i32 @chapop()
-  store i32 %chapop$2, i32* %c$2, align 4
-  %ii$7 = load i32, i32* @ii, align 4
-  %get2$4 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %ii$7
-  store i32 32, i32* %get2$4, align 4
-  %ii$8 = load i32, i32* @ii, align 4
-  %result_$5 = add i32 %ii$8, 1
-  %get2$5 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %result_$5
-  %c$3 = load i32, i32* %c$2, align 4
-  store i32 %c$3, i32* %get2$5, align 4
-  %ii$9 = load i32, i32* @ii, align 4
-  %result_$6 = add i32 %ii$9, 2
-  store i32 %result_$6, i32* @ii, align 4
-  br label %whileCond_19
-
-next_40:                                              ; pred = %whileCond_19
-  %ii$10 = load i32, i32* @ii, align 4
-  %get2$6 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %ii$10
-  store i32 64, i32* %get2$6, align 4
+end62:                                             ; pred = %begin19
+  %ii10 = load i32, i32* @ii, align 4
+  %get26 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %ii10
+  store i32 64, i32* %get26, align 4
   store i32 1, i32* @i, align 4
-  br label %whileCond_20
+  br label %begin20
 
-whileCond_20:                                         ; pred = %next_40, %next_42
-  %i$12 = load i32, i32* @i, align 4
-  %get2$7 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$12
-  %get2$8 = load i32, i32* %get2$7, align 4
-  %cond_neq_tmp_$1 = icmp ne i32 %get2$8, 64
-  %cond_tmp_$41 = zext i1 %cond_neq_tmp_$1 to i32
-  %cond_$41 = icmp ne i32 %cond_tmp_$41, 0
-  br i1 %cond_$41, label %whileBody_20, label %next_41
+begin20:                                           ; pred = %end62, %end75
+  %i12 = load i32, i32* @i, align 4
+  %get27 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i12
+  %get28 = load i32, i32* %get27, align 4
+  %cond60 = icmp ne i32 %get28, 64
+  br i1 %cond60, label %true41, label %end63
 
-whileBody_20:                                         ; pred = %whileCond_20
-  %i$13 = load i32, i32* @i, align 4
-  %get2$9 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$13
-  %get2$10 = load i32, i32* %get2$9, align 4
-  %cond_eq_tmp_$38 = icmp eq i32 %get2$10, 43
-  %cond_tmp_$42 = zext i1 %cond_eq_tmp_$38 to i32
-  %cond_$42 = icmp ne i32 %cond_tmp_$42, 0
-  br i1 %cond_$42, label %ifTrue_21, label %secondCond_26
+true41:                                            ; pred = %begin20
+  %temp19 = alloca i1, align 1
+  %temp20 = alloca i1, align 1
+  %temp21 = alloca i1, align 1
+  %temp22 = alloca i1, align 1
+  %temp23 = alloca i1, align 1
+  %i13 = load i32, i32* @i, align 4
+  %get29 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i13
+  %get210 = load i32, i32* %get29, align 4
+  %cond61 = icmp eq i32 %get210, 43
+  br i1 %cond61, label %ifTrue26, label %ifFalse26
 
-next_41:                                              ; pred = %whileCond_20
+end63:                                             ; pred = %begin20
   %ints = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 1
-  %ints$1 = load i32, i32* %ints, align 4
-  call void @putint(i32 %ints$1)
+  %ints1 = load i32, i32* %ints, align 4
+  call void @putint(i32 %ints1)
   ret i32 0
 
-ifTrue_21:                                            ; pred = %whileBody_20, %secondCond_26, %secondCond_25, %secondCond_24, %secondCond_23, %secondCond_22
+ifFalse22:                                         ; pred = %end65
+  %i18 = load i32, i32* @i, align 4
+  %get219 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i18
+  %get220 = load i32, i32* %get219, align 4
+  %cond70 = icmp eq i32 %get220, 94
+  store i1 %cond70, i1* %temp19, align 1
+  br label %end64
+
+ifTrue22:                                          ; pred = %end65
+  store i1 %cond69, i1* %temp19, align 1
+  br label %end64
+
+end64:                                             ; pred = %ifFalse22, %ifTrue22
+  %cond71 = load i1, i1* %temp19, align 1
+  br i1 %cond71, label %true42, label %false21
+
+ifFalse23:                                         ; pred = %end66
+  %i17 = load i32, i32* @i, align 4
+  %get217 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i17
+  %get218 = load i32, i32* %get217, align 4
+  %cond68 = icmp eq i32 %get218, 37
+  store i1 %cond68, i1* %temp20, align 1
+  br label %end65
+
+ifTrue23:                                          ; pred = %end66
+  store i1 %cond67, i1* %temp20, align 1
+  br label %end65
+
+end65:                                             ; pred = %ifFalse23, %ifTrue23
+  %cond69 = load i1, i1* %temp20, align 1
+  br i1 %cond69, label %ifTrue22, label %ifFalse22
+
+ifFalse24:                                         ; pred = %end67
+  %i16 = load i32, i32* @i, align 4
+  %get215 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i16
+  %get216 = load i32, i32* %get215, align 4
+  %cond66 = icmp eq i32 %get216, 47
+  store i1 %cond66, i1* %temp21, align 1
+  br label %end66
+
+ifTrue24:                                          ; pred = %end67
+  store i1 %cond65, i1* %temp21, align 1
+  br label %end66
+
+end66:                                             ; pred = %ifFalse24, %ifTrue24
+  %cond67 = load i1, i1* %temp21, align 1
+  br i1 %cond67, label %ifTrue23, label %ifFalse23
+
+ifFalse25:                                         ; pred = %end68
+  %i15 = load i32, i32* @i, align 4
+  %get213 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i15
+  %get214 = load i32, i32* %get213, align 4
+  %cond64 = icmp eq i32 %get214, 42
+  store i1 %cond64, i1* %temp22, align 1
+  br label %end67
+
+ifTrue25:                                          ; pred = %end68
+  store i1 %cond63, i1* %temp22, align 1
+  br label %end67
+
+end67:                                             ; pred = %ifFalse25, %ifTrue25
+  %cond65 = load i1, i1* %temp22, align 1
+  br i1 %cond65, label %ifTrue24, label %ifFalse24
+
+ifFalse26:                                         ; pred = %true41
+  %i14 = load i32, i32* @i, align 4
+  %get211 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i14
+  %get212 = load i32, i32* %get211, align 4
+  %cond62 = icmp eq i32 %get212, 45
+  store i1 %cond62, i1* %temp23, align 1
+  br label %end68
+
+ifTrue26:                                          ; pred = %true41
+  store i1 %cond61, i1* %temp23, align 1
+  br label %end68
+
+end68:                                             ; pred = %ifFalse26, %ifTrue26
+  %cond63 = load i1, i1* %temp23, align 1
+  br i1 %cond63, label %ifTrue25, label %ifFalse25
+
+true42:                                            ; pred = %end64
   %a = alloca i32, align 4
   %intpop = call i32 @intpop()
   store i32 %intpop, i32* %a, align 4
   %b = alloca i32, align 4
-  %intpop$1 = call i32 @intpop()
-  store i32 %intpop$1, i32* %b, align 4
-  %c$4 = alloca i32, align 4
-  %i$19 = load i32, i32* @i, align 4
-  %get2$21 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$19
-  %get2$22 = load i32, i32* %get2$21, align 4
-  %cond_eq_tmp_$44 = icmp eq i32 %get2$22, 43
-  %cond_tmp_$48 = zext i1 %cond_eq_tmp_$44 to i32
-  %cond_$48 = icmp ne i32 %cond_tmp_$48, 0
-  br i1 %cond_$48, label %ifTrue_22, label %next_43
+  %intpop1 = call i32 @intpop()
+  store i32 %intpop1, i32* %b, align 4
+  %c4 = alloca i32, align 4
+  %i19 = load i32, i32* @i, align 4
+  %get221 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i19
+  %get222 = load i32, i32* %get221, align 4
+  %cond72 = icmp eq i32 %get222, 43
+  br i1 %cond72, label %true43, label %false22
 
-ifFalse_6:                                            ; pred = %secondCond_22
-  %i$25 = load i32, i32* @i, align 4
-  %get2$33 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$25
-  %get2$34 = load i32, i32* %get2$33, align 4
-  %cond_neq_tmp_$2 = icmp ne i32 %get2$34, 32
-  %cond_tmp_$54 = zext i1 %cond_neq_tmp_$2 to i32
-  %cond_$54 = icmp ne i32 %cond_tmp_$54, 0
-  br i1 %cond_$54, label %ifTrue_28, label %next_49
+false21:                                           ; pred = %end64
+  %i25 = load i32, i32* @i, align 4
+  %get233 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i25
+  %get234 = load i32, i32* %get233, align 4
+  %cond78 = icmp ne i32 %get234, 32
+  br i1 %cond78, label %true49, label %false28
 
-next_42:                                              ; pred = %next_48, %next_49
-  %i$30 = load i32, i32* @i, align 4
-  %result_$19 = add i32 %i$30, 1
-  store i32 %result_$19, i32* @i, align 4
-  br label %whileCond_20
+true43:                                            ; pred = %true42
+  %a1 = load i32, i32* %a, align 4
+  %b1 = load i32, i32* %b, align 4
+  %result_7 = add i32 %a1, %b1
+  store i32 %result_7, i32* %c4, align 4
+  br label %end69
 
-secondCond_22:                                        ; pred = %secondCond_23
-  %i$18 = load i32, i32* @i, align 4
-  %get2$19 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$18
-  %get2$20 = load i32, i32* %get2$19, align 4
-  %cond_eq_tmp_$43 = icmp eq i32 %get2$20, 94
-  %cond_tmp_$47 = zext i1 %cond_eq_tmp_$43 to i32
-  %cond_$47 = icmp ne i32 %cond_tmp_$47, 0
-  br i1 %cond_$47, label %ifTrue_21, label %ifFalse_6
+false22:                                           ; pred = %true42
+  br label %end69
 
-secondCond_23:                                        ; pred = %secondCond_24
-  %i$17 = load i32, i32* @i, align 4
-  %get2$17 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$17
-  %get2$18 = load i32, i32* %get2$17, align 4
-  %cond_eq_tmp_$42 = icmp eq i32 %get2$18, 37
-  %cond_tmp_$46 = zext i1 %cond_eq_tmp_$42 to i32
-  %cond_$46 = icmp ne i32 %cond_tmp_$46, 0
-  br i1 %cond_$46, label %ifTrue_21, label %secondCond_22
+end69:                                             ; pred = %true43, %false22
+  %i20 = load i32, i32* @i, align 4
+  %get223 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i20
+  %get224 = load i32, i32* %get223, align 4
+  %cond73 = icmp eq i32 %get224, 45
+  br i1 %cond73, label %true44, label %false23
 
-secondCond_24:                                        ; pred = %secondCond_25
-  %i$16 = load i32, i32* @i, align 4
-  %get2$15 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$16
-  %get2$16 = load i32, i32* %get2$15, align 4
-  %cond_eq_tmp_$41 = icmp eq i32 %get2$16, 47
-  %cond_tmp_$45 = zext i1 %cond_eq_tmp_$41 to i32
-  %cond_$45 = icmp ne i32 %cond_tmp_$45, 0
-  br i1 %cond_$45, label %ifTrue_21, label %secondCond_23
+true44:                                            ; pred = %end69
+  %b2 = load i32, i32* %b, align 4
+  %a2 = load i32, i32* %a, align 4
+  %result_8 = sub i32 %b2, %a2
+  store i32 %result_8, i32* %c4, align 4
+  br label %end70
 
-secondCond_25:                                        ; pred = %secondCond_26
-  %i$15 = load i32, i32* @i, align 4
-  %get2$13 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$15
-  %get2$14 = load i32, i32* %get2$13, align 4
-  %cond_eq_tmp_$40 = icmp eq i32 %get2$14, 42
-  %cond_tmp_$44 = zext i1 %cond_eq_tmp_$40 to i32
-  %cond_$44 = icmp ne i32 %cond_tmp_$44, 0
-  br i1 %cond_$44, label %ifTrue_21, label %secondCond_24
+false23:                                           ; pred = %end69
+  br label %end70
 
-secondCond_26:                                        ; pred = %whileBody_20
-  %i$14 = load i32, i32* @i, align 4
-  %get2$11 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$14
-  %get2$12 = load i32, i32* %get2$11, align 4
-  %cond_eq_tmp_$39 = icmp eq i32 %get2$12, 45
-  %cond_tmp_$43 = zext i1 %cond_eq_tmp_$39 to i32
-  %cond_$43 = icmp ne i32 %cond_tmp_$43, 0
-  br i1 %cond_$43, label %ifTrue_21, label %secondCond_25
+end70:                                             ; pred = %true44, %false23
+  %i21 = load i32, i32* @i, align 4
+  %get225 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i21
+  %get226 = load i32, i32* %get225, align 4
+  %cond74 = icmp eq i32 %get226, 42
+  br i1 %cond74, label %true45, label %false24
 
-ifTrue_22:                                            ; pred = %ifTrue_21
-  %a$1 = load i32, i32* %a, align 4
-  %b$1 = load i32, i32* %b, align 4
-  %result_$7 = add i32 %a$1, %b$1
-  store i32 %result_$7, i32* %c$4, align 4
-  br label %next_43
+true45:                                            ; pred = %end70
+  %a3 = load i32, i32* %a, align 4
+  %b3 = load i32, i32* %b, align 4
+  %result_9 = mul i32 %a3, %b3
+  store i32 %result_9, i32* %c4, align 4
+  br label %end71
 
-next_43:                                              ; pred = %ifTrue_21, %ifTrue_22
-  %i$20 = load i32, i32* @i, align 4
-  %get2$23 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$20
-  %get2$24 = load i32, i32* %get2$23, align 4
-  %cond_eq_tmp_$45 = icmp eq i32 %get2$24, 45
-  %cond_tmp_$49 = zext i1 %cond_eq_tmp_$45 to i32
-  %cond_$49 = icmp ne i32 %cond_tmp_$49, 0
-  br i1 %cond_$49, label %ifTrue_23, label %next_44
+false24:                                           ; pred = %end70
+  br label %end71
 
-ifTrue_23:                                            ; pred = %next_43
-  %b$2 = load i32, i32* %b, align 4
-  %a$2 = load i32, i32* %a, align 4
-  %result_$8 = sub i32 %b$2, %a$2
-  store i32 %result_$8, i32* %c$4, align 4
-  br label %next_44
+end71:                                             ; pred = %true45, %false24
+  %i22 = load i32, i32* @i, align 4
+  %get227 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i22
+  %get228 = load i32, i32* %get227, align 4
+  %cond75 = icmp eq i32 %get228, 47
+  br i1 %cond75, label %true46, label %false25
 
-next_44:                                              ; pred = %next_43, %ifTrue_23
-  %i$21 = load i32, i32* @i, align 4
-  %get2$25 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$21
-  %get2$26 = load i32, i32* %get2$25, align 4
-  %cond_eq_tmp_$46 = icmp eq i32 %get2$26, 42
-  %cond_tmp_$50 = zext i1 %cond_eq_tmp_$46 to i32
-  %cond_$50 = icmp ne i32 %cond_tmp_$50, 0
-  br i1 %cond_$50, label %ifTrue_24, label %next_45
+true46:                                            ; pred = %end71
+  %b4 = load i32, i32* %b, align 4
+  %a4 = load i32, i32* %a, align 4
+  %result_10 = sdiv i32 %b4, %a4
+  store i32 %result_10, i32* %c4, align 4
+  br label %end72
 
-ifTrue_24:                                            ; pred = %next_44
-  %a$3 = load i32, i32* %a, align 4
-  %b$3 = load i32, i32* %b, align 4
-  %result_$9 = mul i32 %a$3, %b$3
-  store i32 %result_$9, i32* %c$4, align 4
-  br label %next_45
+false25:                                           ; pred = %end71
+  br label %end72
 
-next_45:                                              ; pred = %next_44, %ifTrue_24
-  %i$22 = load i32, i32* @i, align 4
-  %get2$27 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$22
-  %get2$28 = load i32, i32* %get2$27, align 4
-  %cond_eq_tmp_$47 = icmp eq i32 %get2$28, 47
-  %cond_tmp_$51 = zext i1 %cond_eq_tmp_$47 to i32
-  %cond_$51 = icmp ne i32 %cond_tmp_$51, 0
-  br i1 %cond_$51, label %ifTrue_25, label %next_46
+end72:                                             ; pred = %true46, %false25
+  %i23 = load i32, i32* @i, align 4
+  %get229 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i23
+  %get230 = load i32, i32* %get229, align 4
+  %cond76 = icmp eq i32 %get230, 37
+  br i1 %cond76, label %true47, label %false26
 
-ifTrue_25:                                            ; pred = %next_45
-  %b$4 = load i32, i32* %b, align 4
-  %a$4 = load i32, i32* %a, align 4
-  %result_$10 = sdiv i32 %b$4, %a$4
-  store i32 %result_$10, i32* %c$4, align 4
-  br label %next_46
+true47:                                            ; pred = %end72
+  %b5 = load i32, i32* %b, align 4
+  %a5 = load i32, i32* %a, align 4
+  %result_11 = srem i32 %b5, %a5
+  store i32 %result_11, i32* %c4, align 4
+  br label %end73
 
-next_46:                                              ; pred = %next_45, %ifTrue_25
-  %i$23 = load i32, i32* @i, align 4
-  %get2$29 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$23
-  %get2$30 = load i32, i32* %get2$29, align 4
-  %cond_eq_tmp_$48 = icmp eq i32 %get2$30, 37
-  %cond_tmp_$52 = zext i1 %cond_eq_tmp_$48 to i32
-  %cond_$52 = icmp ne i32 %cond_tmp_$52, 0
-  br i1 %cond_$52, label %ifTrue_26, label %next_47
+false26:                                           ; pred = %end72
+  br label %end73
 
-ifTrue_26:                                            ; pred = %next_46
-  %b$5 = load i32, i32* %b, align 4
-  %a$5 = load i32, i32* %a, align 4
-  %result_$11 = srem i32 %b$5, %a$5
-  store i32 %result_$11, i32* %c$4, align 4
-  br label %next_47
+end73:                                             ; pred = %true47, %false26
+  %i24 = load i32, i32* @i, align 4
+  %get231 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i24
+  %get232 = load i32, i32* %get231, align 4
+  %cond77 = icmp eq i32 %get232, 94
+  br i1 %cond77, label %true48, label %false27
 
-next_47:                                              ; pred = %next_46, %ifTrue_26
-  %i$24 = load i32, i32* @i, align 4
-  %get2$31 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$24
-  %get2$32 = load i32, i32* %get2$31, align 4
-  %cond_eq_tmp_$49 = icmp eq i32 %get2$32, 94
-  %cond_tmp_$53 = zext i1 %cond_eq_tmp_$49 to i32
-  %cond_$53 = icmp ne i32 %cond_tmp_$53, 0
-  br i1 %cond_$53, label %ifTrue_27, label %next_48
+true48:                                            ; pred = %end73
+  %b6 = load i32, i32* %b, align 4
+  %a6 = load i32, i32* %a, align 4
+  %power = call i32 @power(i32 %b6, i32 %a6)
+  store i32 %power, i32* %c4, align 4
+  br label %end74
 
-ifTrue_27:                                            ; pred = %next_47
-  %b$6 = load i32, i32* %b, align 4
-  %a$6 = load i32, i32* %a, align 4
-  %power = call i32 @power(i32 %b$6, i32 %a$6)
-  store i32 %power, i32* %c$4, align 4
-  br label %next_48
+false27:                                           ; pred = %end73
+  br label %end74
 
-next_48:                                              ; pred = %next_47, %ifTrue_27
-  %c$5 = load i32, i32* %c$4, align 4
-  call void @intpush(i32 %c$5)
-  br label %next_42
+end74:                                             ; pred = %true48, %false27
+  %c5 = load i32, i32* %c4, align 4
+  call void @intpush(i32 %c5)
+  br label %end75
 
-ifTrue_28:                                            ; pred = %ifFalse_6
-  %i$26 = load i32, i32* @i, align 4
-  %get2$35 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i$26
-  %get2$36 = load i32, i32* %get2$35, align 4
-  %result_$12 = sub i32 %get2$36, 48
-  call void @intpush(i32 %result_$12)
+end75:                                             ; pred = %end74, %end77
+  %i30 = load i32, i32* @i, align 4
+  %result_19 = add i32 %i30, 1
+  store i32 %result_19, i32* @i, align 4
+  br label %begin20
+
+true49:                                            ; pred = %false21
+  %i26 = load i32, i32* @i, align 4
+  %get235 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %i26
+  %get236 = load i32, i32* %get235, align 4
+  %result_12 = sub i32 %get236, 48
+  call void @intpush(i32 %result_12)
   store i32 1, i32* @ii, align 4
-  br label %whileCond_21
+  br label %begin21
 
-next_49:                                              ; pred = %ifFalse_6, %next_50
-  br label %next_42
+false28:                                           ; pred = %false21
+  br label %end77
 
-whileCond_21:                                         ; pred = %ifTrue_28, %whileBody_21
-  %i$27 = load i32, i32* @i, align 4
-  %ii$11 = load i32, i32* @ii, align 4
-  %result_$13 = add i32 %i$27, %ii$11
-  %get2$37 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %result_$13
-  %get2$38 = load i32, i32* %get2$37, align 4
-  %cond_neq_tmp_$3 = icmp ne i32 %get2$38, 32
-  %cond_tmp_$55 = zext i1 %cond_neq_tmp_$3 to i32
-  %cond_$55 = icmp ne i32 %cond_tmp_$55, 0
-  br i1 %cond_$55, label %whileBody_21, label %next_50
+begin21:                                           ; pred = %true49, %true50
+  %i27 = load i32, i32* @i, align 4
+  %ii11 = load i32, i32* @ii, align 4
+  %result_13 = add i32 %i27, %ii11
+  %get237 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %result_13
+  %get238 = load i32, i32* %get237, align 4
+  %cond79 = icmp ne i32 %get238, 32
+  br i1 %cond79, label %true50, label %end76
 
-whileBody_21:                                         ; pred = %whileCond_21
-  %i$28 = load i32, i32* @i, align 4
-  %ii$12 = load i32, i32* @ii, align 4
-  %result_$14 = add i32 %i$28, %ii$12
-  %get2$39 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %result_$14
-  %get2$40 = load i32, i32* %get2$39, align 4
-  %result_$15 = sub i32 %get2$40, 48
-  call void @intadd(i32 %result_$15)
-  %ii$13 = load i32, i32* @ii, align 4
-  %result_$16 = add i32 %ii$13, 1
-  store i32 %result_$16, i32* @ii, align 4
-  br label %whileCond_21
+true50:                                            ; pred = %begin21
+  %i28 = load i32, i32* @i, align 4
+  %ii12 = load i32, i32* @ii, align 4
+  %result_14 = add i32 %i28, %ii12
+  %get239 = getelementptr [10000 x i32], [10000 x i32]* @get2, i32 0, i32 %result_14
+  %get240 = load i32, i32* %get239, align 4
+  %result_15 = sub i32 %get240, 48
+  call void @intadd(i32 %result_15)
+  %ii13 = load i32, i32* @ii, align 4
+  %result_16 = add i32 %ii13, 1
+  store i32 %result_16, i32* @ii, align 4
+  br label %begin21
 
-next_50:                                              ; pred = %whileCond_21
-  %i$29 = load i32, i32* @i, align 4
-  %ii$14 = load i32, i32* @ii, align 4
-  %result_$17 = add i32 %i$29, %ii$14
-  %result_$18 = sub i32 %result_$17, 1
-  store i32 %result_$18, i32* @i, align 4
-  br label %next_49
+end76:                                             ; pred = %begin21
+  %i29 = load i32, i32* @i, align 4
+  %ii14 = load i32, i32* @ii, align 4
+  %result_17 = add i32 %i29, %ii14
+  %result_18 = sub i32 %result_17, 1
+  store i32 %result_18, i32* @i, align 4
+  br label %end77
+
+end77:                                             ; pred = %end76, %false28
+  br label %end75
 }
 

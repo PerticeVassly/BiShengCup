@@ -318,7 +318,11 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             if (!(lVal.getType() instanceof Pointer)) {
                 System.err.println("variable should be a pointer.");
             }
-            if (!(((Pointer)lVal.getType()).getBase() instanceof ArrayType)){
+            //fix:这种情况是全局变量相互赋值需要特殊处理
+            if (lVal instanceof GlobalVar && global()) {
+                return ((GlobalVar) lVal).getInitVal();
+            }
+            if (!(((Pointer) lVal.getType()).getBase() instanceof ArrayType)) {
                 return gen.buildLoad(builder, lVal, ctx.lVal().IDENT().getText());
             } else {
                 return gen.buildGEP(builder, lVal, new ValueRef[]{gen.ConstInt(i32Type, 0)}, 1,
