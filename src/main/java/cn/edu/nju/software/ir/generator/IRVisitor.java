@@ -311,6 +311,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             }
         } else if (ctx.lVal() != null) {
             ValueRef lVal = visitLVal(ctx.lVal());
+            //fix:全局变量相互赋值
+            if(lVal instanceof GlobalVar&&global()){
+                return ((GlobalVar) lVal).getInitVal();
+            }
             if (!(lVal.getType() instanceof Pointer)) {
                 System.err.println("variable should be a pointer.");
             }
