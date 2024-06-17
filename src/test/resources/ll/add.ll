@@ -25,14 +25,14 @@ mainEntry:
   %c = alloca i32, align 4
   store i32 4, i32* %c, align 4
   %temp = alloca i1, align 1
-  %a1 = load i32, i32* %a, align 4
-  %cond = icmp sgt i32 %a1, 1
+  %a$1 = load i32, i32* %a, align 4
+  %cond = icmp sgt i32 %a$1, 1
   br i1 %cond, label %ifTrue, label %ifFalse
 
 ifTrue:                                           ; pred = %mainEntry
-  %a2 = load i32, i32* %a, align 4
-  %cond1 = icmp slt i32 %a2, 5
-  store i1 %cond1, i1* %temp, align 1
+  %a$2 = load i32, i32* %a, align 4
+  %cond$1 = icmp slt i32 %a$2, 5
+  store i1 %cond$1, i1* %temp, align 1
   br label %end
 
 ifFalse:                                          ; pred = %mainEntry
@@ -40,8 +40,8 @@ ifFalse:                                          ; pred = %mainEntry
   br label %end
 
 end:                                              ; pred = %ifTrue, %ifFalse
-  %cond2 = load i1, i1* %temp, align 1
-  br i1 %cond2, label %true, label %false
+  %cond$2 = load i1, i1* %temp, align 1
+  br i1 %cond$2, label %true, label %false
 
 true:                                             ; pred = %end
   store i32 3, i32* %a, align 4

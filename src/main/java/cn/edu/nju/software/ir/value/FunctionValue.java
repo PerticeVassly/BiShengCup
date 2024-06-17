@@ -79,7 +79,7 @@ public class FunctionValue extends ValueRef {
     public LocalVar createLocalVar(TypeRef type, String name) {
         if (paramsUsedNames.contains(name)) {
             int index = paramsUsedNames.indexOf(name);
-            name += paramsUsedNamesFreq.get(index);
+            name += "$" + paramsUsedNamesFreq.get(index); // it's tricky, cuz SysY don't allow '$' in name
             paramsUsedNamesFreq.set(index, paramsUsedNamesFreq.get(index) + 1);
         } else {
             paramsUsedNames.add(name);

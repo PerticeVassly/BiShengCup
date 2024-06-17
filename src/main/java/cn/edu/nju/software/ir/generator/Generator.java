@@ -67,6 +67,13 @@ public class Generator implements IrGenerator {
         module.addFunction(fv);
         return fv;
     }
+
+    @Override
+    public LocalVar setInitValue(LocalVar localVar, ValueRef initValue) {
+        localVar.initial(initValue);
+        return localVar;
+    }
+
     @Override
     public LocalVar buildAllocate(BuilderRef builder, TypeRef type, String name) {
         Pointer typePtr = new Pointer(type);
