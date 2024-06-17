@@ -16,42 +16,41 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-define i32 @g(i32 %0) {
-gEntry:
-  %i = alloca i32, align 4
-  store i32 %0, i32* %i, align 4
-  %i1 = load i32, i32* %i, align 4
-  %result_ = add i32 %i1, 1
-  ret i32 %result_
-}
-
-define i32 @f(i32 %0) {
-fEntry:
-  %i = alloca i32, align 4
-  store i32 %0, i32* %i, align 4
-  %i1 = load i32, i32* %i, align 4
-  %g = call i32 @g(i32 %i1)
-  %result_ = add i32 %g, 1
-  ret i32 %result_
-}
-
 define i32 @main() {
 mainEntry:
   %a = alloca i32, align 4
   store i32 2, i32* %a, align 4
-  %cond = icmp ne i32 1, 0
-  br i1 %cond, label %true, label %false
+  %b = alloca i32, align 4
+  store i32 3, i32* %b, align 4
+  %c = alloca i32, align 4
+  store i32 4, i32* %c, align 4
+  %temp = alloca i1, align 1
+  %a1 = load i32, i32* %a, align 4
+  %cond = icmp sgt i32 %a1, 1
+  br i1 %cond, label %ifTrue, label %ifFalse
 
-true:                                             ; pred = %mainEntry
-  store i32 2, i32* %a, align 4
+ifTrue:                                           ; pred = %mainEntry
+  %a2 = load i32, i32* %a, align 4
+  %cond1 = icmp slt i32 %a2, 5
+  store i1 %cond1, i1* %temp, align 1
   br label %end
 
-false:                                            ; pred = %mainEntry
+ifFalse:                                          ; pred = %mainEntry
+  store i1 %cond, i1* %temp, align 1
+  br label %end
+
+end:                                              ; pred = %ifTrue, %ifFalse
+  %cond2 = load i1, i1* %temp, align 1
+  br i1 %cond2, label %true, label %false
+
+true:                                             ; pred = %end
   store i32 3, i32* %a, align 4
-  br label %end
+  br label %end1
 
-end:                                              ; pred = %true, %false
-  %f = call i32 @f(i32 100)
-  ret i32 %f
+false:                                            ; pred = %end
+  br label %end1
+
+end1:                                             ; pred = %true, %false
+  ret i32 0
 }
 

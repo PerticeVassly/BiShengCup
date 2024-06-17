@@ -1,18 +1,9 @@
-int g(int i){
-    return i + 1;
-}
-
-int f(int i){
-    return g(i) + 1;
-}
-
 int main() {
-    int a = 1 + 1;
-    if(1){
-        a = 2;
-    }
-    else{
+    int a = 2;
+    int b = 3;
+    int c = 4;
+    if( a > 1 && a < 5  ){
         a = 3;
     }
-    return f(100);
+    return 0;
 }
