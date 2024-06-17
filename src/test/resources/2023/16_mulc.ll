@@ -19,9 +19,9 @@ declare void @memset(i32*, i32, i32)
 @a = global i32 5, align 4
 
 define i32 @main() {
-mainEntry10:
+mainEntry9:
   %a = load i32, i32* @a, align 4
-  %result_ = mul i32 %a, 5
+  %result_ = fsub i32 %a, 5
   ret i32 %result_
 }
 

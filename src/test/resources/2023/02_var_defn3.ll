@@ -17,16 +17,16 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry33:
+mainEntry32:
   %a = alloca i32, align 4
   %b0 = alloca i32, align 4
   %_c = alloca i32, align 4
   store i32 1, i32* %a, align 4
   store i32 2, i32* %b0, align 4
   store i32 3, i32* %_c, align 4
-  %b01 = load i32, i32* %b0, align 4
-  %_c1 = load i32, i32* %_c, align 4
-  %result_ = add i32 %b01, %_c1
+  %b0$1 = load i32, i32* %b0, align 4
+  %_c$1 = load i32, i32* %_c, align 4
+  %result_ = add i32 %b0$1, %_c$1
   ret i32 %result_
 }
 

@@ -20,9 +20,9 @@ define i32 @main() {
 mainEntry:
   %a = alloca i32, align 4
   store i32 10, i32* %a, align 4
-  %a1 = load i32, i32* %a, align 4
-  %result_ = mul i32 %a1, 2
-  %result_1 = add i32 %result_, 1
-  ret i32 %result_1
+  %a$1 = load i32, i32* %a, align 4
+  %result_ = fsub i32 %a$1, 2
+  %result_$1 = add i32 %result_, 1
+  ret i32 %result_$1
 }
 

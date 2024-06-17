@@ -24,15 +24,15 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         module = new ModuleRef("module");
     }
 
-    private final Generator gen = getInstance();
+    private final Generator gen = Generator.getInstance();
 
     //创建module
     private final ModuleRef module;
 
-    //初始化IRBuilder，后续将使用这个builder去生成 IR
+    //初始化IRBuilder，后续将使用这个builder去生成LLVM IR
     private final BuilderRef builder = new BuilderRef();
 
-    //考虑到我们的语言中仅存在int一个基本类型，可以通过下面的语句为的int型重命名方便以后使用
+    //考虑到我们的语言中仅存在int一个基本类型，可以通过下面的语句为LLVM的int型重命名方便以后使用
     private final IntType i32Type = new IntType();
     private final BoolType i1Type = new BoolType();
     private final VoidType voidType = new VoidType();
@@ -68,11 +68,9 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     public void dumpModuleToConsole() {
         module.dumpToConsole();
     }
-
     public void dumpModuleToFile(String path) {
         module.dumpToFile(path);
     }
-
     private int string2Int(String number) {
         if (number.equals("0")) return 0;
         if (number.startsWith("0x") || number.startsWith("0X")) {
@@ -83,12 +81,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return Integer.parseInt(number);
         }
     }
-
     private float string2Float(String number) {
         // todo hex or octal?
         return Float.parseFloat(number);
     }
-
     private ValueRef normalizeCond(ValueRef cond) {
         TypeRef type = cond.getType();
         if (type instanceof IntType) {
@@ -96,14 +92,12 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         }
         return cond;
     }
-
     private SysYParser.CondContext deleteParen(SysYParser.CondContext ctx) {
         while (ctx.L_PAREN() != null) {
             ctx = ctx.cond(0);
         }
         return ctx;
     }
-
     private void initGlobal() {
         // runtime library
         // make sure curScope point to the global
@@ -117,15 +111,11 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 
 //            ft = new FunctionType(i32Type, new ArrayList<TypeRef>(){{}}, 1); // TODO array type
 
-            ft = new FunctionType(voidType, new ArrayList<TypeRef>() {{
-                add(i32Type);
-            }}, 1);
+            ft = new FunctionType(voidType, new ArrayList<TypeRef>(){{add(i32Type);}}, 1);
             curScope.put(new Symbol<>("putint", gen.addFunction(module, ft, "putint")));
             curScope.put(new Symbol<>("putch", gen.addFunction(module, ft, "putch")));
 
-            ft = new FunctionType(voidType, new ArrayList<TypeRef>() {{
-                add(floatType);
-            }}, 1);
+            ft = new FunctionType(voidType, new ArrayList<TypeRef>(){{add(floatType);}}, 1);
             curScope.put(new Symbol<>("putfloat", gen.addFunction(module, ft, "putfloat")));
 
             ft = new FunctionType(voidType, new ArrayList<>(), 0);
@@ -145,7 +135,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             curScope.put(new Symbol<>("putfarray", gen.addFunction(module, ft, "putfarray")));
         }
     }
-
     @Override
     public ValueRef visitProgram(SysYParser.ProgramContext ctx) {
         functionDef = false;
@@ -154,11 +143,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         initGlobal();
         return visitChildren(ctx);
     }
-
     @Override
     public ValueRef visitBlock(SysYParser.BlockContext ctx) {
         ValueRef ret;
-        if (!functionDef) {
+        if (!functionDef){
             scope.push(new SymbolTable<>());
             curScope = scope.peek();
             ret = visitChildren(ctx);
@@ -170,7 +158,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         }
         return ret;
     }
-
     @Override
     public ValueRef visitFuncDef(SysYParser.FuncDefContext ctx) {
         TypeRef retType;
@@ -195,7 +182,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 } else {
                     type = floatType;
                 }
-                if (ctx.funcFParams().funcFParam(i).L_BRACKT() != null && !ctx.funcFParams().funcFParam(i).L_BRACKT().isEmpty()) {
+                if (ctx.funcFParams().funcFParam(i).L_BRACKT() != null && !ctx.funcFParams().funcFParam(i).L_BRACKT().isEmpty()){
                     int ptrDim = ctx.funcFParams().funcFParam(i).exp().size();
                     for (int j = ptrDim - 1; j >= 0; j--) {
                         // todo a variable be the array size, TBD(how to do)
@@ -211,7 +198,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         // add function to module
         FunctionValue function = gen.addFunction(module, ft, ctx.funcName().getText());
         currentFunction = function;
-        // add function to .GOT
+        // add function to LLVM.GOT
         curScope.put(new Symbol<>(ctx.funcName().getText(), function));
         // add basic block to function
         BasicBlockRef block = gen.appendEntryBasicBlock(function, ctx.funcName().getText() + "Entry");
@@ -240,7 +227,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         curScope = scope.peek();
         return ret;
     }
-
     @Override
     public ValueRef visitFuncUse(SysYParser.FuncUseContext ctx) {
         int lineNo = ctx.funcName().IDENT().getSymbol().getLine();
@@ -267,12 +253,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return gen.buildCall(builder, callFunc, new ArrayList<>(Arrays.asList(argv)), args, funcName, lineNo);
         }
     }
-
     @Override
     public ValueRef visitParam(SysYParser.ParamContext ctx) {
         return visitExp(ctx.exp());
     }
-
     @Override
     public ValueRef visitNumber(SysYParser.NumberContext ctx) {
         if (ctx.FLOAT_CONST() != null) {
@@ -281,7 +265,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return gen.ConstInt(i32Type, string2Int(ctx.INTEGER_CONST().getText()));
         }
     }
-
     @Override
     public ValueRef visitExp(SysYParser.ExpContext ctx) {
         if (ctx.L_PAREN() != null) {
@@ -308,7 +291,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             } else {
                 // not a constant
                 if (op.equals("!")) {
-                    if (val.getType().equals(i32Type)) {
+                    if (val.getType().equals(i32Type)){
                         val = gen.buildCmp(builder, CmpNE, zero, val, "tmp_");
                     } else {
                         val = gen.buildCmp(builder, CmpNE, fZero, val, "tmp_");
@@ -319,7 +302,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 } else if (op.equals("+")) {
                     return val;
                 } else {
-                    if (val.getType().equals(i32Type)) {
+                    if (val.getType().equals(i32Type)){
                         return gen.buildSub(builder, zero, val, "tmp_"); // 0-val => -val
                     } else {
                         return gen.buildFSub(builder, fZero, val, "tmp_");
@@ -331,11 +314,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             if (!(lVal.getType() instanceof Pointer)) {
                 System.err.println("variable should be a pointer.");
             }
-            //fix:这种情况是全局变量相互赋值需要特殊处理
-            if(lVal instanceof GlobalVar&&global()){
-                return ((GlobalVar) lVal).getInitVal();
-            }
-            if (!(((Pointer) lVal.getType()).getBase() instanceof ArrayType)) {
+            if (!(((Pointer)lVal.getType()).getBase() instanceof ArrayType)){
                 return gen.buildLoad(builder, lVal, ctx.lVal().IDENT().getText());
             } else {
                 return gen.buildGEP(builder, lVal, new ValueRef[]{gen.ConstInt(i32Type, 0)}, 1,
@@ -391,14 +370,14 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             } else {
                 if (val1.getType().equals(i32Type)) {
                     if (val1 instanceof ConstValue) {
-                        val1 = gen.ConstFloat(floatType, (float) (int) ((ConstValue) val1).getValue());
+                        val1 = gen.ConstFloat(floatType, (float)(int) ((ConstValue) val1).getValue());
                     } else {
                         val1 = gen.buildIntToFloat(builder, val1, "i2f_");
                     }
                 }
                 if (val2.getType().equals(i32Type)) {
                     if (val2 instanceof ConstValue) {
-                        val2 = gen.ConstFloat(floatType, (float) (int) ((ConstValue) val2).getValue());
+                        val2 = gen.ConstFloat(floatType, (float)(int) ((ConstValue) val2).getValue());
                     } else {
                         val2 = gen.buildIntToFloat(builder, val2, "i2f_");
                     }
@@ -435,7 +414,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             }
         }
     }
-
     @Override
     public ValueRef visitLVal(SysYParser.LValContext ctx) {
         ValueRef lVal = scope.find(ctx.IDENT().getText()); // lVal is a pointer type in fact
@@ -448,13 +426,12 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 indices[i] = visitExp(ctx.exp(i));
             }
 //            System.err.println(dim);
-            if (((Pointer) lVal.getType()).getBase() instanceof Pointer) {
+            if (((Pointer)lVal.getType()).getBase() instanceof Pointer) {
                 lVal = gen.buildLoad(builder, lVal, "arr_");
             }
             return gen.buildGEP(builder, lVal, indices, dim, ctx.IDENT().getText());
         }
     }
-
     @Override
     public ValueRef visitStmt(SysYParser.StmtContext ctx) {
 //        System.err.println(ctx.getText());
@@ -463,7 +440,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             haveReturn = true;
             if (ctx.exp() != null) {
                 ValueRef retVal = visitExp(ctx.exp());
-                TypeRef retTy = ((FunctionType) currentFunction.getType()).getReturnType();
+                TypeRef retTy = ((FunctionType)currentFunction.getType()).getReturnType();
                 if (retTy.equals(i32Type) && retVal.getType().equals(floatType)) {
                     retVal = gen.buildFloatToInt(builder, retVal, "retVal_");
                 } else if (retTy.equals(floatType) && retVal.getType().equals(i32Type)) {
@@ -480,61 +457,41 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else if (ctx.WHILE() != null) {
             // loop
             // declare possible basic blocks
-//            BasicBlockRef whileCond = gen.appendBasicBlock(currentFunction, "whileCond_");
-//            BasicBlockRef whileBody = gen.appendBasicBlock(currentFunction, "whileBody_");
-//            BasicBlockRef next = gen.appendBasicBlock(currentFunction, "next_");
-//            True = whileBody;
-//            False = next;
-//            // while's exit push in stack, for break
-//            loopStack.push(next);
-//            // a loop push in stack
-//            loopStack.push(whileCond);
-//            // from current basic block jump into while condition
-//            gen.buildBranch(builder, whileCond);
-//            // following irs append on whileCond block
-//            gen.positionBuilderAtEnd(builder, whileCond);
-//            SysYParser.CondContext tmp = deleteParen(ctx.cond());
-//            if (tmp.AND() == null && tmp.OR() == null) {
-//                ValueRef cond = visitCond(tmp);
-//                // according to the condition decide jumping to where
-//                cond = normalizeCond(cond);
-//                gen.buildCondBranch(builder, cond, whileBody, next);
-//            } else {
-//                visitCond(tmp);
-//            }
-//            // while body part appends on whileBody block
-//            gen.positionBuilderAtEnd(builder, whileBody);
-//            boolean t = haveReturn;
-//            ValueRef ret = visitStmt(ctx.whileStmt().stmt());
-//            haveReturn = t;
-//            // while body ends, jmp whileCond
-//            gen.buildBranch(builder, whileCond);
-//            // while part finished, other irs append on next block
-//            gen.positionBuilderAtEnd(builder, next);
-//            // loop ends, stack pops
-//            loopStack.pop();
-//            loopStack.pop();
-//            return ret;
-            //TODO:采用了模块化的短路求值，冗余标签过多(不影响正确性)，后期优化需要针对优化
-            BasicBlockRef begin = gen.appendBasicBlock(currentFunction, "begin");
-            gen.buildBranch(builder, begin);
-            gen.positionBuilderAtEnd(builder, begin);
-            ValueRef cond = visitCond(ctx.cond());
-            if (!(cond.getType() instanceof BoolType)){
-                cond =gen.buildCmp( builder, CmpNE, cond, zero, "cond");
+            BasicBlockRef whileCond = gen.appendBasicBlock(currentFunction, "whileCond_");
+            BasicBlockRef whileBody = gen.appendBasicBlock(currentFunction, "whileBody_");
+            BasicBlockRef next = gen.appendBasicBlock(currentFunction, "next_");
+            True = whileBody;
+            False = next;
+            // while's exit push in stack, for break
+            loopStack.push(next);
+            // a loop push in stack
+            loopStack.push(whileCond);
+            // from current basic block jump into while condition
+            gen.buildBranch(builder, whileCond);
+            // following irs append on whileCond block
+            gen.positionBuilderAtEnd(builder, whileCond);
+            SysYParser.CondContext tmp = deleteParen(ctx.cond());
+            if (tmp.AND() == null && tmp.OR() == null) {
+                ValueRef cond = visitCond(tmp);
+                // according to the condition decide jumping to where
+                cond = normalizeCond(cond);
+                gen.buildCondBranch(builder, cond, whileBody, next);
+            } else {
+                visitCond(tmp);
             }
-            BasicBlockRef trueLabel = gen.appendBasicBlock(currentFunction, "true");
-            BasicBlockRef end = gen.appendBasicBlock(currentFunction, "end");
-            loopStack.push(end);
-            loopStack.push(begin);
-            gen.buildCondBranch(builder, cond, trueLabel, end);
-            gen.positionBuilderAtEnd(builder, trueLabel);
-            visitWhileStmt(ctx.whileStmt());
-            gen.buildBranch(builder, begin);
-            gen.positionBuilderAtEnd(builder, end);
+            // while body part appends on whileBody block
+            gen.positionBuilderAtEnd(builder, whileBody);
+            boolean t = haveReturn;
+            ValueRef ret = visitStmt(ctx.whileStmt().stmt());
+            haveReturn = t;
+            // while body ends, jmp whileCond
+            gen.buildBranch(builder, whileCond);
+            // while part finished, other irs append on next block
+            gen.positionBuilderAtEnd(builder, next);
+            // loop ends, stack pops
             loopStack.pop();
             loopStack.pop();
-            return null;
+            return ret;
         } else if (ctx.CONTINUE() != null) {
             return gen.buildBranch(builder, loopStack.peek());
         } else if (ctx.BREAK() != null) {
@@ -544,272 +501,152 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return gen.buildBranch(builder, br);
         } else if (ctx.IF() != null) {
             // create possible basic blocks
-//            BasicBlockRef ifTrue = gen.appendBasicBlock(currentFunction, "ifTrue_");
-//            BasicBlockRef ifFalse = null;
-//            True = ifTrue;
-//            if (ctx.ELSE() != null) {
-//                ifFalse = gen.appendBasicBlock(currentFunction, "ifFalse_");
-//                False = ifFalse;
-//            }
-//            BasicBlockRef next = gen.appendBasicBlock(currentFunction, "next_");
-//            if (ctx.ELSE() == null) {
-//                False = next;
-//            }
-//            // visit cond to compute the condition
-//            SysYParser.CondContext tmp = deleteParen(ctx.cond());
-//            if (tmp.AND() == null && tmp.OR() == null) {
-//                ValueRef cond = visitCond(tmp);
-//                // jump into different block according to the condition
-//                cond = normalizeCond(cond);
-//                if (ctx.ELSE() != null) {
-//                    gen.buildCondBranch(builder, cond, ifTrue, ifFalse);
-//                } else {
-//                    gen.buildCondBranch(builder, cond, ifTrue, next);
-//                }
-//            } else {
-//                visitCond(tmp);
-//            }
-//            // the ifTrue block runs the ifStmt irs
-//            gen.positionBuilderAtEnd(builder, ifTrue);
-//            boolean ifHaveRet = false, elseHaveRet = false;
-//            boolean t = haveReturn;
-//            ValueRef ret = visitStmt(ctx.ifStmt().stmt());
-//            if (!haveReturn) {
-//                gen.buildBranch(builder, next);
-//            }
-//            ifHaveRet = haveReturn;
-//            haveReturn = t;
-//            // discuss the "else", exist or not
-//            if (ctx.ELSE() != null) {
-//                gen.positionBuilderAtEnd(builder, ifFalse);
-////                t = haveReturn;
-//                ret = visitStmt(ctx.elseStmt().stmt());
-//                if (!haveReturn) {
-//                    gen.buildBranch(builder, next);
-//                }
-//                elseHaveRet = haveReturn;
-////                haveReturn = t;
-//            }
-//            if (!ifHaveRet || !elseHaveRet) {
-//                gen.positionBuilderAtEnd(builder, next);
-//            } else {
-//                gen.dropBlock(builder, next);
-//            }
-//            return ret;
-            ValueRef cond = visit(ctx.cond());
-            if (!(cond.getType() instanceof BoolType)) {
-                cond = gen.buildCmp(builder, CmpNE, cond, zero, "cond");
+            BasicBlockRef ifTrue = gen.appendBasicBlock(currentFunction, "ifTrue_");
+            BasicBlockRef ifFalse = null;
+            True = ifTrue;
+            if (ctx.ELSE() != null){
+                ifFalse = gen.appendBasicBlock(currentFunction, "ifFalse_");
+                False = ifFalse;
             }
-            BasicBlockRef trueLabel = gen.appendBasicBlock(currentFunction, "true");
-            BasicBlockRef falseLabel = gen.appendBasicBlock(currentFunction, "false");
-            gen.buildCondBranch(builder, cond, trueLabel, falseLabel);
-            gen.positionBuilderAtEnd(builder, trueLabel);
-            visitStmt(ctx.ifStmt().stmt());
-            BasicBlockRef end = gen.appendBasicBlock(currentFunction, "end");
-            gen.buildBranch(builder,end);
-            gen.positionBuilderAtEnd(builder, falseLabel);
+            BasicBlockRef next = gen.appendBasicBlock(currentFunction, "next_");
+            if (ctx.ELSE() == null) {
+                False = next;
+            }
+            // visit cond to compute the condition
+            SysYParser.CondContext tmp = deleteParen(ctx.cond());
+            if (tmp.AND() == null && tmp.OR() == null) {
+                ValueRef cond = visitCond(tmp);
+                // jump into different block according to the condition
+                cond = normalizeCond(cond);
+                if (ctx.ELSE() != null) {
+                    gen.buildCondBranch(builder, cond, ifTrue, ifFalse);
+                } else {
+                    gen.buildCondBranch(builder, cond, ifTrue, next);
+                }
+            } else {
+                visitCond(tmp);
+            }
+            // the ifTrue block runs the ifStmt irs
+            gen.positionBuilderAtEnd(builder, ifTrue);
+            boolean ifHaveRet = false, elseHaveRet = false;
+            boolean t = haveReturn;
+            ValueRef ret = visitStmt(ctx.ifStmt().stmt());
+            if (!haveReturn) {
+                gen.buildBranch(builder, next);
+            }
+            ifHaveRet = haveReturn;
+            haveReturn = t;
+            // discuss the "else", exist or not
             if (ctx.ELSE() != null) {
-                visitStmt(ctx.elseStmt().stmt());
+                gen.positionBuilderAtEnd(builder, ifFalse);
+//                t = haveReturn;
+                ret = visitStmt(ctx.elseStmt().stmt());
+                if (!haveReturn){
+                    gen.buildBranch(builder, next);
+                }
+                elseHaveRet = haveReturn;
+//                haveReturn = t;
             }
-            gen.buildBranch(builder, end);
-            gen.positionBuilderAtEnd(builder, end);
-            return null;
+            if (!ifHaveRet || !elseHaveRet) {
+                gen.positionBuilderAtEnd(builder, next);
+            } else {
+                gen.dropBlock(builder, next);
+            }
+            return ret;
         } else {
             return visitChildren(ctx);
         }
     }
-
-    //    @Override
-//    public ValueRef visitCond(SysYParser.CondContext ctx) {
-//        if (ctx.L_PAREN() != null) {
-//            return visitCond(ctx.cond(0));
-//        } else if (ctx.exp() != null) {
-//            return visitExp(ctx.exp());
-//        } else {
-//            if (ctx.AND() == null && ctx.OR() == null) {
-//                ValueRef c1 = visitCond(ctx.cond(0)), c2 = visitCond(ctx.cond(1));
-//                if (c1.getType() instanceof BoolType) {
-//                    if (c1 instanceof ConstValue) {
-//                        c1 = ((ConstValue) c1).getValue().equals(true) ? one : zero;
-//                    } else {
-//                        c1 = gen.buildZExtend(builder, c1, i32Type, "cond_tmp_");
-//                    }
-//                }
-//                if (c2.getType() instanceof BoolType){
-//                    if (c2 instanceof ConstValue) {
-//                        c2 = ((ConstValue) c2).getValue().equals(true) ? one : zero;
-//                    } else {
-//                        c2 = gen.buildZExtend(builder, c2, i32Type, "cond_tmp_");
-//                    }
-//                }
-//                if (c1.getType().equals(floatType) || c2.getType().equals(floatType)) {
-//                    if (c1.getType().equals(i32Type) && c1 instanceof ConstValue) {
-//                        c1 = gen.ConstFloat(floatType, (float) (int) ((ConstValue) c1).getValue());
-//                    }
-//                    if (c2.getType().equals(i32Type) && c2 instanceof ConstValue) {
-//                        c2 = gen.ConstFloat(floatType, (float) (int) ((ConstValue) c2).getValue());
-//                    }
-//                }
-//                ValueRef tmp;
-//                if (ctx.EQ() != null) {
-//                    // TODO int and float? e.g. 1 == 1.0
-//                    if (c1 instanceof ConstValue && c2 instanceof ConstValue) {
-//                        return gen.ConstBool(i1Type, ((ConstValue) c1).getValue().equals(((ConstValue) c2).getValue()));
-//                    }
-//                    tmp = gen.buildCmp(builder, CmpEQ, c1, c2, "cond_eq_tmp_");
-//                } else if (ctx.NEQ() != null) {
-//                    // TODO
-//                    if (c1 instanceof ConstValue && c2 instanceof ConstValue) {
-//                        return gen.ConstBool(i1Type, !((ConstValue) c1).getValue().equals(((ConstValue) c2).getValue()));
-//                    }
-//                    tmp = gen.buildCmp(builder, CmpNE, c1, c2, "cond_neq_tmp_");
-//                } else if (ctx.GT() != null) {
-//                    // TODO
-//                    tmp = gen.buildCmp(builder, CmpSGT, c1, c2, "cond_gt_tmp_");
-//                } else if (ctx.LT() != null) {
-//                    // TODO
-//                    tmp = gen.buildCmp(builder, CmpSLT, c1, c2, "cond_lt_tmp_");
-//                } else if (ctx.GE() != null) {
-//                    // TODO
-//                    tmp = gen.buildCmp(builder, CmpSGE, c1, c2, "cond_ge_tmp_");
-//                } else {
-//                    // TODO
-//                    // LE() != null
-//                    tmp = gen.buildCmp(builder, CmpSLE, c1, c2, "cond_le_tmp_");
-//                }
-//                tmp = gen.buildZExtend(builder, tmp, i32Type, "cond_tmp_");
-//                return gen.buildCmp(builder, CmpNE, tmp, zero, "cond_");
-//            } else {
-//                // && || need translating to br, to implement circuit computing
-//                SysYParser.CondContext tmp = deleteParen(ctx.cond(0));
-//                BasicBlockRef secondCondBlock = gen.appendBasicBlock(currentFunction, "secondCond_");
-//                BasicBlockRef tmpT = True, tmpF = False;
-//                if (tmp.AND() != null || tmp.OR() != null) {
-//                    if (ctx.AND() != null) {
-//                        True = secondCondBlock;
-//                    } else {
-//                        False = secondCondBlock;
-//                    }
-//                }
-//                ValueRef firstCond = visitCond(tmp);
-//                True = tmpT;
-//                False = tmpF;
-//                if (tmp.AND() == null && tmp.OR() == null) {
-//                    firstCond = normalizeCond(firstCond);
-//                    if (ctx.AND() != null) {
-//                        gen.buildCondBranch(builder, firstCond, secondCondBlock, False);
-//                    } else {
-//                        gen.buildCondBranch(builder, firstCond, True, secondCondBlock);
-//                    }
-//                }
-//                gen.positionBuilderAtEnd(builder, secondCondBlock);
-//                // if curScope second, then true is true
-//                ValueRef secondCond = visitCond(deleteParen(ctx.cond(1)));
-//                secondCond = normalizeCond(secondCond);
-//                gen.buildCondBranch(builder, secondCond, True, False);
-//                return zero; // return value is useless
-//            }
-//        }
-//    }
     @Override
     public ValueRef visitCond(SysYParser.CondContext ctx) {
-
-        if(ctx.L_PAREN()!=null){
+        if (ctx.L_PAREN() != null) {
             return visitCond(ctx.cond(0));
-        }
-        if (ctx.exp() != null) {
-            return visit(ctx.exp());
-        } else if (ctx.AND() != null) {
-            //temp用来存储短路求值时的结果
-            ValueRef temp = gen.buildAllocate(builder, i1Type, "temp");
-            BasicBlockRef trueLabel = gen.appendBasicBlock(currentFunction, "ifTrue");
-            BasicBlockRef falseLabel = gen.appendBasicBlock(currentFunction, "ifFalse");
-            BasicBlockRef endLabel = gen.appendBasicBlock(currentFunction, "end");
-            //将可能的数值转换为bool类型
-            ValueRef first=visitCond(ctx.cond(0));
-            if (!(first.getType() instanceof BoolType)) {
-                first = gen.buildCmp(builder, CmpNE, first, zero, "cond");
+        } else if (ctx.exp() != null) {
+            return visitExp(ctx.exp());
+        } else {
+            if (ctx.AND() == null && ctx.OR() == null) {
+                ValueRef c1 = visitCond(ctx.cond(0)), c2 = visitCond(ctx.cond(1));
+                if (c1.getType() instanceof BoolType) {
+                    if (c1 instanceof ConstValue) {
+                        c1 = ((ConstValue) c1).getValue().equals(true) ? one : zero;
+                    } else {
+                        c1 = gen.buildZExtend(builder, c1, i32Type, "cond_tmp_");
+                    }
+                }
+                if (c2.getType() instanceof BoolType){
+                    if (c2 instanceof ConstValue) {
+                        c2 = ((ConstValue) c2).getValue().equals(true) ? one : zero;
+                    } else {
+                        c2 = gen.buildZExtend(builder, c2, i32Type, "cond_tmp_");
+                    }
+                }
+                if (c1.getType().equals(floatType) || c2.getType().equals(floatType)) {
+                    if (c1.getType().equals(i32Type) && c1 instanceof ConstValue) {
+                        c1 = gen.ConstFloat(floatType, (float) (int) ((ConstValue) c1).getValue());
+                    }
+                    if (c2.getType().equals(i32Type) && c2 instanceof ConstValue) {
+                        c2 = gen.ConstFloat(floatType, (float) (int) ((ConstValue) c2).getValue());
+                    }
+                }
+                ValueRef tmp;
+                if (ctx.EQ() != null) {
+                    // TODO int and float? e.g. 1 == 1.0
+                    if (c1 instanceof ConstValue && c2 instanceof ConstValue) {
+                        return gen.ConstBool(i1Type, ((ConstValue) c1).getValue().equals(((ConstValue) c2).getValue()));
+                    }
+                    tmp = gen.buildCmp(builder, CmpEQ, c1, c2, "cond_eq_tmp_");
+                } else if (ctx.NEQ() != null) {
+                    // TODO
+                    if (c1 instanceof ConstValue && c2 instanceof ConstValue) {
+                        return gen.ConstBool(i1Type, !((ConstValue) c1).getValue().equals(((ConstValue) c2).getValue()));
+                    }
+                    tmp = gen.buildCmp(builder, CmpNE, c1, c2, "cond_neq_tmp_");
+                } else if (ctx.GT() != null) {
+                    // TODO
+                    tmp = gen.buildCmp(builder, CmpSGT, c1, c2, "cond_gt_tmp_");
+                } else if (ctx.LT() != null) {
+                    // TODO
+                    tmp = gen.buildCmp(builder, CmpSLT, c1, c2, "cond_lt_tmp_");
+                } else if (ctx.GE() != null) {
+                    // TODO
+                    tmp = gen.buildCmp(builder, CmpSGE, c1, c2, "cond_ge_tmp_");
+                } else {
+                    // TODO
+                    // LE() != null
+                    tmp = gen.buildCmp(builder, CmpSLE, c1, c2, "cond_le_tmp_");
+                }
+                tmp = gen.buildZExtend(builder, tmp, i32Type, "cond_tmp_");
+                return gen.buildCmp(builder, CmpNE, tmp, zero, "cond_");
+            } else {
+                // && || need translating to br, to implement circuit computing
+                SysYParser.CondContext tmp = deleteParen(ctx.cond(0));
+                BasicBlockRef secondCondBlock = gen.appendBasicBlock(currentFunction, "secondCond_");
+                BasicBlockRef tmpT = True, tmpF = False;
+                if (tmp.AND() != null || tmp.OR() != null) {
+                    if (ctx.AND() != null) {
+                        True = secondCondBlock;
+                    } else {
+                        False = secondCondBlock;
+                    }
+                }
+                ValueRef firstCond = visitCond(tmp);
+                True = tmpT;
+                False = tmpF;
+                if (tmp.AND() == null && tmp.OR() == null) {
+                    firstCond = normalizeCond(firstCond);
+                    if (ctx.AND() != null) {
+                        gen.buildCondBranch(builder, firstCond, secondCondBlock, False);
+                    } else {
+                        gen.buildCondBranch(builder, firstCond, True, secondCondBlock);
+                    }
+                }
+                gen.positionBuilderAtEnd(builder, secondCondBlock);
+                // if curScope second, then true is true
+                ValueRef secondCond = visitCond(deleteParen(ctx.cond(1)));
+                secondCond = normalizeCond(secondCond);
+                gen.buildCondBranch(builder, secondCond, True, False);
+                return zero; // return value is useless
             }
-           gen.buildCondBranch(builder, first, trueLabel, falseLabel);
-            gen.positionBuilderAtEnd(builder, trueLabel);
-            ValueRef second=visitCond(ctx.cond(1));
-            if (!(second.getType() instanceof BoolType)) {
-                second = gen.buildCmp(builder, CmpNE, second, zero, "cond");
-            }
-            gen.buildStore(builder, second, temp);
-            gen.buildBranch(builder, endLabel);
-            gen.positionBuilderAtEnd(builder, falseLabel);
-            gen.buildStore(builder, first, temp);
-            gen.buildBranch(builder,endLabel);
-            gen.positionBuilderAtEnd(builder, endLabel);
-            return gen.buildLoad(builder, temp, "cond");
-        } else if(ctx.OR() != null) {
-            ValueRef temp = gen.buildAllocate(builder, i1Type, "temp");
-            BasicBlockRef falseLabel = gen.appendBasicBlock(currentFunction, "ifFalse");
-            BasicBlockRef trueLabel = gen.appendBasicBlock(currentFunction, "ifTrue");
-            BasicBlockRef endLabel = gen.appendBasicBlock(currentFunction, "end");
-            ValueRef first=visitCond(ctx.cond(0));
-            if (!(first.getType() instanceof BoolType)) {
-                first = gen.buildCmp(builder, CmpNE, first, zero, "cond");
-            }
-            gen.buildCondBranch(builder, first, trueLabel, falseLabel);
-            gen.positionBuilderAtEnd(builder, falseLabel);
-            ValueRef second=visitCond(ctx.cond(1));
-            if (!(second.getType() instanceof BoolType)) {
-                second = gen.buildCmp(builder, CmpNE, second, zero, "cond");
-            }
-            gen.buildStore(builder, second, temp);
-            gen.buildBranch(builder, endLabel);
-            gen.positionBuilderAtEnd(builder, trueLabel);
-            gen.buildStore(builder, first, temp);
-            gen.buildBranch(builder,endLabel);
-            gen.positionBuilderAtEnd(builder, endLabel);
-            return gen.buildLoad(builder, temp, "cond");
-        }else if (ctx.LT() != null) {
-            ValueRef first=visitCond(ctx.cond(0));
-            ValueRef second=visitCond(ctx.cond(1));
-            judgeAndProcessType(first,second);
-            return gen.buildCmp(builder, CmpSLT, first,second, "cond");
-        } else if (ctx.GT() != null) {
-            ValueRef first=visitCond(ctx.cond(0));
-            ValueRef second=visitCond(ctx.cond(1));
-            judgeAndProcessType(first,second);
-            return gen.buildCmp(builder, CmpSGT, first, second, "cond");
-        } else if (ctx.LE() != null) {
-            ValueRef first=visitCond(ctx.cond(0));
-            ValueRef second=visitCond(ctx.cond(1));
-           judgeAndProcessType(first,second);
-            return gen.buildCmp(builder, CmpSLE, first, second, "cond");
-        } else if (ctx.GE() != null) {
-            ValueRef first=visitCond(ctx.cond(0));
-            ValueRef second=visitCond(ctx.cond(1));
-            judgeAndProcessType(first,second);
-            return gen.buildCmp(builder, CmpSGE, first, second, "cond");
-        } else if (ctx.EQ() != null) {
-            // TODO int and float? e.g. 1 == 1.0
-            ValueRef first=visitCond(ctx.cond(0));
-            ValueRef second=visitCond(ctx.cond(1));
-            judgeAndProcessType(first,second);
-            return gen.buildCmp(builder, CmpEQ, first, second, "cond");
-        } else if (ctx.NEQ() != null) {
-            ValueRef first=visitCond(ctx.cond(0));
-            ValueRef second=visitCond(ctx.cond(1));
-            judgeAndProcessType(first,second);
-            return gen.buildCmp(builder, CmpNE, first, second, "cond");
-        }
-        //到这里说明.g4文件内容与预期不符
-        return null;
-    }
-
-    private void judgeAndProcessType(ValueRef first,ValueRef second){
-        //主要是为了提取重复代码
-        //first和second按引用传递，修改可作用到其本身
-        //为了处理类似a>b>c的情况（此时a>b返回布尔值，将此布尔值扩展后再与c比较）
-        if(first.getType() instanceof BoolType){
-            first=gen.buildZExtend(builder, first, i32Type, "zext");
-        }
-        if(second.getType() instanceof BoolType){
-            second=gen.buildZExtend(builder, second, i32Type, "zext");
         }
     }
     @Override
@@ -818,7 +655,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             SysYParser.VarDeclContext parent = (SysYParser.VarDeclContext) ctx.getParent();
             GlobalVar globalVar;
             TypeRef type;
-            if (parent.bType().INT() != null) {
+            if (parent.bType().INT() != null){
                 type = i32Type;
             } else {
                 type = floatType;
@@ -841,14 +678,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             // todo array initializer
             if (ctx.initVal() != null) {
                 ValueRef initVal = visitInitVal(ctx.initVal());
-                //增加全局变量的隐式类型转换
-                if(!initVal.getType().equals(globalVar.getType())){
-                    if(initVal.getType() instanceof IntType){
-                        initVal=gen.buildIntToFloat(builder,initVal,initVal.getName());
-                    }else {
-                        initVal=gen.buildFloatToInt(builder,initVal,initVal.getName());
-                    }
-                }
                 gen.setInitValue(globalVar, initVal);
             } else {
                 gen.setInitValue(globalVar, zero);
@@ -887,7 +716,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return localVar;
         }
     }
-
     @Override
     public ValueRef visitInitVal(SysYParser.InitValContext ctx) {
         if (ctx.exp() != null) {
@@ -924,7 +752,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     for (int i = 0; i < elements.length; i++) {
                         if (elements[i].getType().equals(floatType)) {
                             if (elements[i] instanceof ConstValue) {
-                                elements[i] = gen.ConstInt(i32Type, (int) (float) ((ConstValue) elements[i]).getValue());
+                                elements[i] = gen.ConstInt(i32Type, (int) (float)((ConstValue) elements[i]).getValue());
                             } else {
                                 elements[i] = gen.buildFloatToInt(builder, elements[i], "f2i_");
                             }
@@ -935,7 +763,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     for (int i = 0; i < elements.length; i++) {
                         if (elements[i].getType().equals(i32Type)) {
                             if (elements[i] instanceof ConstValue) {
-                                elements[i] = gen.ConstFloat(floatType, (float) (int) ((ConstValue) elements[i]).getValue());
+                                elements[i] = gen.ConstFloat(floatType, (float) (int)((ConstValue) elements[i]).getValue());
                             } else {
                                 elements[i] = gen.buildIntToFloat(builder, elements[i], "i2f_");
                             }
@@ -948,7 +776,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return array;
         }
     }
-
     @Override
     public ValueRef visitConstDef(SysYParser.ConstDefContext ctx) {
         // almost same as varDef
@@ -956,7 +783,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         if (global()) {
             GlobalVar globalVar;
             TypeRef type;
-            if (parent.bType().INT() != null) {
+            if (parent.bType().INT() != null){
                 type = i32Type;
             } else {
                 type = floatType;
@@ -1013,7 +840,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return localVar;
         }
     }
-
     @Override
     public ValueRef visitConstInitVal(SysYParser.ConstInitValContext ctx) {
         if (ctx.constExp() != null) {
@@ -1032,7 +858,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return array;
         }
     }
-
     @Override
     public ValueRef visitConstExp(SysYParser.ConstExpContext ctx) {
         return visitExp(ctx.exp());

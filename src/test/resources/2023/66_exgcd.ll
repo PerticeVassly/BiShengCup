@@ -26,87 +26,87 @@ exgcdEntry:
   store i32* %2, i32** %x, align 4
   %y = alloca i32*, align 4
   store i32* %3, i32** %y, align 4
-  %b1 = load i32, i32* %b, align 4
-  %cond_eq_tmp_ = icmp eq i32 %b1, 0
+  %b$1 = load i32, i32* %b, align 4
+  %cond_eq_tmp_ = icmp eq i32 %b$1, 0
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_, label %ifFalse_
+  br i1 %cond_, label %ifTrue_56, label %ifFalse_16
 
-ifTrue_:                                           ; pred = %exgcdEntry
+ifTrue_56:                                         ; pred = %exgcdEntry
   %arr_ = load i32*, i32** %x, align 4
-  %x1 = getelementptr i32, i32* %arr_, i32 0
-  store i32 1, i32* %x1, align 4
-  %arr_1 = load i32*, i32** %y, align 4
-  %y1 = getelementptr i32, i32* %arr_1, i32 0
-  store i32 0, i32* %y1, align 4
-  %a1 = load i32, i32* %a, align 4
-  ret i32 %a1
+  %x$1 = getelementptr i32, i32* %arr_, i32 0
+  store i32 1, i32* %x$1, align 4
+  %arr_$1 = load i32*, i32** %y, align 4
+  %y$1 = getelementptr i32, i32* %arr_$1, i32 0
+  store i32 0, i32* %y$1, align 4
+  %a$1 = load i32, i32* %a, align 4
+  ret i32 %a$1
 
-ifFalse_:                                          ; pred = %exgcdEntry
+ifFalse_16:                                        ; pred = %exgcdEntry
   %r = alloca i32, align 4
-  %b2 = load i32, i32* %b, align 4
-  %a2 = load i32, i32* %a, align 4
-  %b3 = load i32, i32* %b, align 4
-  %result_ = srem i32 %a2, %b3
-  %x2 = load i32*, i32** %x, align 4
-  %y2 = load i32*, i32** %y, align 4
-  %exgcd = call i32 @exgcd(i32 %b2, i32 %result_, i32* %x2, i32* %y2)
+  %b$2 = load i32, i32* %b, align 4
+  %a$2 = load i32, i32* %a, align 4
+  %b$3 = load i32, i32* %b, align 4
+  %result_ = fsub i32 %a$2, %b$3
+  %x$2 = load i32*, i32** %x, align 4
+  %y$2 = load i32*, i32** %y, align 4
+  %exgcd = call i32 @exgcd(i32 %b$2, i32 %result_, i32* %x$2, i32* %y$2)
   store i32 %exgcd, i32* %r, align 4
   %t = alloca i32, align 4
-  %arr_2 = load i32*, i32** %x, align 4
-  %x3 = getelementptr i32, i32* %arr_2, i32 0
-  %x4 = load i32, i32* %x3, align 4
-  store i32 %x4, i32* %t, align 4
-  %arr_3 = load i32*, i32** %x, align 4
-  %x5 = getelementptr i32, i32* %arr_3, i32 0
-  %arr_4 = load i32*, i32** %y, align 4
-  %y3 = getelementptr i32, i32* %arr_4, i32 0
-  %y4 = load i32, i32* %y3, align 4
-  store i32 %y4, i32* %x5, align 4
-  %arr_5 = load i32*, i32** %y, align 4
-  %y5 = getelementptr i32, i32* %arr_5, i32 0
-  %t1 = load i32, i32* %t, align 4
-  %a3 = load i32, i32* %a, align 4
-  %b4 = load i32, i32* %b, align 4
-  %result_1 = sdiv i32 %a3, %b4
-  %arr_6 = load i32*, i32** %y, align 4
-  %y6 = getelementptr i32, i32* %arr_6, i32 0
-  %y7 = load i32, i32* %y6, align 4
-  %result_2 = mul i32 %result_1, %y7
-  %result_3 = sub i32 %t1, %result_2
-  store i32 %result_3, i32* %y5, align 4
-  %r1 = load i32, i32* %r, align 4
-  ret i32 %r1
+  %arr_$2 = load i32*, i32** %x, align 4
+  %x$3 = getelementptr i32, i32* %arr_$2, i32 0
+  %x$4 = load i32, i32* %x$3, align 4
+  store i32 %x$4, i32* %t, align 4
+  %arr_$3 = load i32*, i32** %x, align 4
+  %x$5 = getelementptr i32, i32* %arr_$3, i32 0
+  %arr_$4 = load i32*, i32** %y, align 4
+  %y$3 = getelementptr i32, i32* %arr_$4, i32 0
+  %y$4 = load i32, i32* %y$3, align 4
+  store i32 %y$4, i32* %x$5, align 4
+  %arr_$5 = load i32*, i32** %y, align 4
+  %y$5 = getelementptr i32, i32* %arr_$5, i32 0
+  %t$1 = load i32, i32* %t, align 4
+  %a$3 = load i32, i32* %a, align 4
+  %b$4 = load i32, i32* %b, align 4
+  %result_$1 = sdiv i32 %a$3, %b$4
+  %arr_$6 = load i32*, i32** %y, align 4
+  %y$6 = getelementptr i32, i32* %arr_$6, i32 0
+  %y$7 = load i32, i32* %y$6, align 4
+  %result_$2 = fsub i32 %result_$1, %y$7
+  %result_$3 = sub i32 %t$1, %result_$2
+  store i32 %result_$3, i32* %y$5, align 4
+  %r$1 = load i32, i32* %r, align 4
+  ret i32 %r$1
 }
 
 define i32 @main() {
-mainEntry:
+mainEntry37:
   %a = alloca i32, align 4
   store i32 7, i32* %a, align 4
   %b = alloca i32, align 4
   store i32 15, i32* %b, align 4
   %x = alloca [1 x i32], align 16
-  store [1 x i32] [1 x i32] [i32 1], [1 x i32]* %x, align 16
+  store [1 x i32] [i32 1], [1 x i32]* %x, align 16
   %y = alloca [1 x i32], align 16
-  store [1 x i32] [1 x i32] [i32 1], [1 x i32]* %y, align 16
-  %a1 = load i32, i32* %a, align 4
-  %b1 = load i32, i32* %b, align 4
-  %x1 = getelementptr [1 x i32], [1 x i32]* %x, i32 0, i32 0
-  %y1 = getelementptr [1 x i32], [1 x i32]* %y, i32 0, i32 0
-  %exgcd = call i32 @exgcd(i32 %a1, i32 %b1, i32* %x1, i32* %y1)
-  %x2 = getelementptr [1 x i32], [1 x i32]* %x, i32 0, i32 0
-  %x3 = getelementptr [1 x i32], [1 x i32]* %x, i32 0, i32 0
-  %x4 = load i32, i32* %x3, align 4
-  %b2 = load i32, i32* %b, align 4
-  %result_ = srem i32 %x4, %b2
-  %b3 = load i32, i32* %b, align 4
-  %result_1 = add i32 %result_, %b3
-  %b4 = load i32, i32* %b, align 4
-  %result_2 = srem i32 %result_1, %b4
-  store i32 %result_2, i32* %x2, align 4
-  %x5 = getelementptr [1 x i32], [1 x i32]* %x, i32 0, i32 0
-  %x6 = load i32, i32* %x5, align 4
-  call void @putint(i32 %x6)
+  store [1 x i32] [i32 1], [1 x i32]* %y, align 16
+  %a$1 = load i32, i32* %a, align 4
+  %b$1 = load i32, i32* %b, align 4
+  %x$1 = getelementptr [1 x i32], [1 x i32]* %x, i32 0, i32 0
+  %y$1 = getelementptr [1 x i32], [1 x i32]* %y, i32 0, i32 0
+  %exgcd = call i32 @exgcd(i32 %a$1, i32 %b$1, i32* %x$1, i32* %y$1)
+  %x$2 = getelementptr [1 x i32], [1 x i32]* %x, i32 0, i32 0
+  %x$3 = getelementptr [1 x i32], [1 x i32]* %x, i32 0, i32 0
+  %x$4 = load i32, i32* %x$3, align 4
+  %b$2 = load i32, i32* %b, align 4
+  %result_ = fsub i32 %x$4, %b$2
+  %b$3 = load i32, i32* %b, align 4
+  %result_$1 = add i32 %result_, %b$3
+  %b$4 = load i32, i32* %b, align 4
+  %result_$2 = fsub i32 %result_$1, %b$4
+  store i32 %result_$2, i32* %x$2, align 4
+  %x$5 = getelementptr [1 x i32], [1 x i32]* %x, i32 0, i32 0
+  %x$6 = load i32, i32* %x$5, align 4
+  call void @putint(i32 %x$6)
   ret i32 0
 }
 

@@ -23,18 +23,18 @@ declare void @memset(i32*, i32, i32)
 @e = global i32 4, align 4
 
 define i32 @main() {
-mainEntry19:
+mainEntry18:
   %flag = alloca i32, align 4
   store i32 0, i32* %flag, align 4
   %a = load i32, i32* @a, align 4
   %b = load i32, i32* @b, align 4
-  %result_ = mul i32 %a, %b
+  %result_ = fsub i32 %a, %b
   %c = load i32, i32* @c, align 4
-  %result_1 = sdiv i32 %result_, %c
+  %result_$1 = sdiv i32 %result_, %c
   %e = load i32, i32* @e, align 4
   %d = load i32, i32* @d, align 4
-  %result_2 = add i32 %e, %d
-  %cond_eq_tmp_ = icmp eq i32 %result_1, %result_2
+  %result_$2 = add i32 %e, %d
+  %cond_eq_tmp_ = icmp eq i32 %result_$1, %result_$2
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
   br i1 %cond_, label %secondCond_32, label %secondCond_31
@@ -44,41 +44,41 @@ ifTrue_43:                                            ; pred = %secondCond_32, %
   br label %next_95
 
 next_95:                                              ; pred = %secondCond_31, %ifTrue_43
-  %flag1 = load i32, i32* %flag, align 4
-  call void @putint(i32 %flag1)
-  %flag2 = load i32, i32* %flag, align 4
-  ret i32 %flag2
+  %flag$1 = load i32, i32* %flag, align 4
+  call void @putint(i32 %flag$1)
+  %flag$2 = load i32, i32* %flag, align 4
+  ret i32 %flag$2
 
-secondCond_31:                                        ; pred = %mainEntry19, %secondCond_32
-  %a3 = load i32, i32* @a, align 4
-  %b2 = load i32, i32* @b, align 4
-  %c2 = load i32, i32* @c, align 4
-  %result_7 = mul i32 %b2, %c2
-  %result_8 = sub i32 %a3, %result_7
-  %d2 = load i32, i32* @d, align 4
-  %a4 = load i32, i32* @a, align 4
-  %c3 = load i32, i32* @c, align 4
-  %result_9 = sdiv i32 %a4, %c3
-  %result_10 = sub i32 %d2, %result_9
-  %cond_eq_tmp_1 = icmp eq i32 %result_8, %result_10
-  %cond_tmp_2 = zext i1 %cond_eq_tmp_1 to i32
-  %cond_2 = icmp ne i32 %cond_tmp_2, 0
-  br i1 %cond_2, label %ifTrue_43, label %next_95
+secondCond_31:                                        ; pred = %mainEntry18, %secondCond_32
+  %a$3 = load i32, i32* @a, align 4
+  %b$2 = load i32, i32* @b, align 4
+  %c$2 = load i32, i32* @c, align 4
+  %result_$7 = fsub i32 %b$2, %c$2
+  %result_$8 = sub i32 %a$3, %result_$7
+  %d$2 = load i32, i32* @d, align 4
+  %a$4 = load i32, i32* @a, align 4
+  %c$3 = load i32, i32* @c, align 4
+  %result_$9 = sdiv i32 %a$4, %c$3
+  %result_$10 = sub i32 %d$2, %result_$9
+  %cond_eq_tmp_$1 = icmp eq i32 %result_$8, %result_$10
+  %cond_tmp_$2 = zext i1 %cond_eq_tmp_$1 to i32
+  %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
+  br i1 %cond_$2, label %ifTrue_43, label %next_95
 
-secondCond_32:                                        ; pred = %mainEntry19
-  %a1 = load i32, i32* @a, align 4
-  %a2 = load i32, i32* @a, align 4
-  %b1 = load i32, i32* @b, align 4
-  %result_3 = add i32 %a2, %b1
-  %result_4 = mul i32 %a1, %result_3
-  %c1 = load i32, i32* @c, align 4
-  %result_5 = add i32 %result_4, %c1
-  %d1 = load i32, i32* @d, align 4
-  %e1 = load i32, i32* @e, align 4
-  %result_6 = add i32 %d1, %e1
-  %cond_le_tmp_ = icmp sle i32 %result_5, %result_6
-  %cond_tmp_1 = zext i1 %cond_le_tmp_ to i32
-  %cond_1 = icmp ne i32 %cond_tmp_1, 0
-  br i1 %cond_1, label %ifTrue_43, label %secondCond_31
+secondCond_32:                                        ; pred = %mainEntry18
+  %a$1 = load i32, i32* @a, align 4
+  %a$2 = load i32, i32* @a, align 4
+  %b$1 = load i32, i32* @b, align 4
+  %result_$3 = add i32 %a$2, %b$1
+  %result_$4 = fsub i32 %a$1, %result_$3
+  %c$1 = load i32, i32* @c, align 4
+  %result_$5 = add i32 %result_$4, %c$1
+  %d$1 = load i32, i32* @d, align 4
+  %e$1 = load i32, i32* @e, align 4
+  %result_$6 = add i32 %d$1, %e$1
+  %cond_le_tmp_ = icmp sle i32 %result_$5, %result_$6
+  %cond_tmp_$1 = zext i1 %cond_le_tmp_ to i32
+  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
+  br i1 %cond_$1, label %ifTrue_43, label %secondCond_31
 }
 

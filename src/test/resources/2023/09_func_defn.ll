@@ -22,21 +22,21 @@ define i32 @func(i32 %0) {
 funcEntry:
   %p = alloca i32, align 4
   store i32 %0, i32* %p, align 4
-  %p1 = load i32, i32* %p, align 4
-  %result_ = sub i32 %p1, 1
+  %p$1 = load i32, i32* %p, align 4
+  %result_ = sub i32 %p$1, 1
   store i32 %result_, i32* %p, align 4
-  %p2 = load i32, i32* %p, align 4
-  ret i32 %p2
+  %p$2 = load i32, i32* %p, align 4
+  ret i32 %p$2
 }
 
 define i32 @main() {
-mainEntry20:
+mainEntry19:
   %b = alloca i32, align 4
   store i32 10, i32* @a, align 4
   %a = load i32, i32* @a, align 4
   %func = call i32 @func(i32 %a)
   store i32 %func, i32* %b, align 4
-  %b1 = load i32, i32* %b, align 4
-  ret i32 %b1
+  %b$1 = load i32, i32* %b, align 4
+  ret i32 %b$1
 }
 

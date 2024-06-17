@@ -24,33 +24,24 @@ mainEntry:
   store i32 3, i32* %b, align 4
   %c = alloca i32, align 4
   store i32 4, i32* %c, align 4
-  %temp = alloca i1, align 1
   %a$1 = load i32, i32* %a, align 4
-  %cond = icmp sgt i32 %a$1, 1
-  br i1 %cond, label %ifTrue, label %ifFalse
+  %cond_gt_tmp_ = icmp sgt i32 %a$1, 1
+  %cond_tmp_ = zext i1 %cond_gt_tmp_ to i32
+  %cond_ = icmp ne i32 %cond_tmp_, 0
+  br i1 %cond_, label %secondCond_, label %next_
 
-ifTrue:                                           ; pred = %mainEntry
-  %a$2 = load i32, i32* %a, align 4
-  %cond$1 = icmp slt i32 %a$2, 5
-  store i1 %cond$1, i1* %temp, align 1
-  br label %end
-
-ifFalse:                                          ; pred = %mainEntry
-  store i1 %cond, i1* %temp, align 1
-  br label %end
-
-end:                                              ; pred = %ifTrue, %ifFalse
-  %cond$2 = load i1, i1* %temp, align 1
-  br i1 %cond$2, label %true, label %false
-
-true:                                             ; pred = %end
+ifTrue_:                                            ; pred = %secondCond_
   store i32 3, i32* %a, align 4
-  br label %end1
+  br label %next_
 
-false:                                            ; pred = %end
-  br label %end1
-
-end1:                                             ; pred = %true, %false
+next_:                                              ; pred = %mainEntry, %secondCond_, %ifTrue_
   ret i32 0
+
+secondCond_:                                        ; pred = %mainEntry
+  %a$2 = load i32, i32* %a, align 4
+  %cond_lt_tmp_ = icmp slt i32 %a$2, 5
+  %cond_tmp_$1 = zext i1 %cond_lt_tmp_ to i32
+  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
+  br i1 %cond_$1, label %ifTrue_, label %next_
 }
 
