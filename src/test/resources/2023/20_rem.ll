@@ -21,7 +21,7 @@ mainEntry17:
   %a = alloca i32, align 4
   store i32 10, i32* %a, align 4
   %a$1 = load i32, i32* %a, align 4
-  %result_ = fsub i32 %a$1, 3
+  %result_ = srem i32 %a$1, 3
   ret i32 %result_
 }
 

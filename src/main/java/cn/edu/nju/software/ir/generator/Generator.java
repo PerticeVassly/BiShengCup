@@ -35,12 +35,12 @@ public class Generator implements IrGenerator {
     }
 
     //这里改成各个指令对应一条
-//    private LocalVar buildArithmeticIr(BuilderRef builder, OpEnum op, ValueRef operand1, ValueRef operand2, String lValName) {
-//        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
-//        Instruction ir = new Arithmetic(lVal, op, operand1, operand2);
-//        builder.put(ir);
-//        return lVal;
-//    }
+    private LocalVar buildArithmeticIr(BuilderRef builder, OpEnum op, ValueRef operand1, ValueRef operand2, String lValName) {
+        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
+        Instruction ir = new Arithmetic(lVal, op, operand1, operand2);
+        builder.put(ir);
+        return lVal;
+    }
 
     private LocalVar buildLogicalIr(BuilderRef builder, OpEnum op, ValueRef operand1, ValueRef operand2, String lValName) {
         LocalVar lVal = builder.createLocalVar(new BoolType(), lValName);
@@ -253,55 +253,35 @@ public class Generator implements IrGenerator {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
         Instruction ir = new FSub(lVal, FSUB, operand1, operand2);
         builder.put(ir);
+        //return
         return lVal;
 //        return buildArithmeticIr(builder, FSUB, operand1, operand2, lValName);
     }
 
     @Override
     public LocalVar buildMul(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
-        Instruction ir = new FSub(lVal, MUL, operand1, operand2);
-        builder.put(ir);
-        return lVal;
-//        return buildArithmeticIr(builder, MUL, operand1, operand2, lValName);
+        return buildArithmeticIr(builder, MUL, operand1, operand2, lValName);
     }
 
     @Override
     public ValueRef buildFMul(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
-        Instruction ir = new FSub(lVal, FMUL, operand1, operand2);
-        builder.put(ir);
-        return lVal;
-//        return buildArithmeticIr(builder, FMUL, operand1, operand2, lValName);
+        return buildArithmeticIr(builder, FMUL, operand1, operand2, lValName);
     }
 
     @Override
     public LocalVar buildDiv(BuilderRef builder, ValueRef dividend, ValueRef divisor, String lValName) {
-        LocalVar lVal = builder.createLocalVar(typeTransfer(dividend.getType(), divisor.getType()), lValName);
-        Instruction ir = new Div(lVal, DIV,dividend, divisor);
-        builder.put(ir);
-        return lVal;
-//        return buildArithmeticIr(builder, DIV, dividend, divisor, lValName);
+        return buildArithmeticIr(builder, DIV, dividend, divisor, lValName);
     }
 
     @Override
     public ValueRef buildFDiv(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
-        Instruction ir = new FSub(lVal, FDIV, operand1, operand2);
-        builder.put(ir);
-        return lVal;
-//        return buildArithmeticIr(builder, FDIV, operand1, operand2, lValName);
+        return buildArithmeticIr(builder, FDIV, operand1, operand2, lValName);
     }
 
     @Override
     public LocalVar buildMod(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
-        Instruction ir = new FSub(lVal, MOD, operand1, operand2);
-        builder.put(ir);
-        return lVal;
-//        return buildArithmeticIr(builder, MOD, operand1, operand2, lValName);
+        return buildArithmeticIr(builder, MOD, operand1, operand2, lValName);
     }
-
     @Override
     public ValueRef buildBranch(BuilderRef builder, BasicBlockRef targetBlock) {
         Instruction ir = new Br(targetBlock);

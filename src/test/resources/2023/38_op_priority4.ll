@@ -39,7 +39,7 @@ mainEntry3:
   %a = load i32, i32* @a, align 4
   %b = load i32, i32* @b, align 4
   %c = load i32, i32* @c, align 4
-  %result_ = fsub i32 %b, %c
+  %result_ = mul i32 %b, %c
   %result_$1 = sub i32 %a, %result_
   %d = load i32, i32* @d, align 4
   %a$1 = load i32, i32* @a, align 4
@@ -76,7 +76,7 @@ secondCond_:                                         ; pred = %secondCond_1
 secondCond_1:                                        ; pred = %mainEntry3
   %a$2 = load i32, i32* @a, align 4
   %b$1 = load i32, i32* @b, align 4
-  %result_$4 = fsub i32 %a$2, %b$1
+  %result_$4 = mul i32 %a$2, %b$1
   %c$2 = load i32, i32* @c, align 4
   %result_$5 = sdiv i32 %result_$4, %c$2
   %e = load i32, i32* @e, align 4

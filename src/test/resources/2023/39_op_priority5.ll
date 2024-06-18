@@ -28,7 +28,7 @@ mainEntry18:
   store i32 0, i32* %flag, align 4
   %a = load i32, i32* @a, align 4
   %b = load i32, i32* @b, align 4
-  %result_ = fsub i32 %a, %b
+  %result_ = mul i32 %a, %b
   %c = load i32, i32* @c, align 4
   %result_$1 = sdiv i32 %result_, %c
   %e = load i32, i32* @e, align 4
@@ -53,7 +53,7 @@ secondCond_31:                                        ; pred = %mainEntry18, %se
   %a$3 = load i32, i32* @a, align 4
   %b$2 = load i32, i32* @b, align 4
   %c$2 = load i32, i32* @c, align 4
-  %result_$7 = fsub i32 %b$2, %c$2
+  %result_$7 = mul i32 %b$2, %c$2
   %result_$8 = sub i32 %a$3, %result_$7
   %d$2 = load i32, i32* @d, align 4
   %a$4 = load i32, i32* @a, align 4
@@ -70,7 +70,7 @@ secondCond_32:                                        ; pred = %mainEntry18
   %a$2 = load i32, i32* @a, align 4
   %b$1 = load i32, i32* @b, align 4
   %result_$3 = add i32 %a$2, %b$1
-  %result_$4 = fsub i32 %a$1, %result_$3
+  %result_$4 = mul i32 %a$1, %result_$3
   %c$1 = load i32, i32* @c, align 4
   %result_$5 = add i32 %result_$4, %c$1
   %d$1 = load i32, i32* @d, align 4

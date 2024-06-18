@@ -29,7 +29,7 @@ mainEntry13:
   %c$1 = load i32, i32* %c, align 4
   %a$1 = load i32, i32* %a, align 4
   %b$1 = load i32, i32* %b, align 4
-  %result_ = fsub i32 %a$1, %b$1
+  %result_ = mul i32 %a$1, %b$1
   %result_$1 = add i32 %c$1, %result_
   %d$1 = load i32, i32* %d, align 4
   %result_$2 = sub i32 %result_$1, %d$1

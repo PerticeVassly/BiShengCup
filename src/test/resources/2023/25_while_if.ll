@@ -24,86 +24,86 @@ get_oneEntry:
 }
 
 define i32 @deepWhileBr(i32 %0, i32 %1) {
-deepWhileBrEntry:
+deepWhileBrEntry1:
   %a = alloca i32, align 4
   store i32 %0, i32* %a, align 4
   %b = alloca i32, align 4
   store i32 %1, i32* %b, align 4
   %c = alloca i32, align 4
-  %a1 = load i32, i32* %a, align 4
-  %b1 = load i32, i32* %b, align 4
-  %result_ = add i32 %a1, %b1
+  %a$1 = load i32, i32* %a, align 4
+  %b$1 = load i32, i32* %b, align 4
+  %result_ = add i32 %a$1, %b$1
   store i32 %result_, i32* %c, align 4
-  br label %whileCond_202
+  br label %whileCond_207
 
-whileCond_202:                                           ; pred = %deepWhileBrEntry, %next_474
-  %c1 = load i32, i32* %c, align 4
-  %cond_lt_tmp_ = icmp slt i32 %c1, 75
+whileCond_207:                                            ; pred = %deepWhileBrEntry1, %next_498
+  %c$1 = load i32, i32* %c, align 4
+  %cond_lt_tmp_ = icmp slt i32 %c$1, 75
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_202, label %next_473
+  br i1 %cond_, label %whileBody_207, label %next_497
 
-whileBody_202:                                           ; pred = %whileCond_202
+whileBody_207:                                            ; pred = %whileCond_207
   %d = alloca i32, align 4
   store i32 42, i32* %d, align 4
-  %c2 = load i32, i32* %c, align 4
-  %cond_lt_tmp_1 = icmp slt i32 %c2, 100
-  %cond_tmp_1 = zext i1 %cond_lt_tmp_1 to i32
-  %cond_1 = icmp ne i32 %cond_tmp_1, 0
-  br i1 %cond_1, label %ifTrue_271, label %next_474
+  %c$2 = load i32, i32* %c, align 4
+  %cond_lt_tmp_$1 = icmp slt i32 %c$2, 100
+  %cond_tmp_$1 = zext i1 %cond_lt_tmp_$1 to i32
+  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
+  br i1 %cond_$1, label %ifTrue_290, label %next_498
 
-next_473:                                                ; pred = %whileCond_202
-  %c5 = load i32, i32* %c, align 4
-  ret i32 %c5
+next_497:                                                 ; pred = %whileCond_207
+  %c$5 = load i32, i32* %c, align 4
+  ret i32 %c$5
 
-ifTrue_271:                                              ; pred = %whileBody_202
-  %c3 = load i32, i32* %c, align 4
-  %d1 = load i32, i32* %d, align 4
-  %result_1 = add i32 %c3, %d1
-  store i32 %result_1, i32* %c, align 4
-  %c4 = load i32, i32* %c, align 4
-  %cond_gt_tmp_ = icmp sgt i32 %c4, 99
-  %cond_tmp_2 = zext i1 %cond_gt_tmp_ to i32
-  %cond_2 = icmp ne i32 %cond_tmp_2, 0
-  br i1 %cond_2, label %ifTrue_272, label %next_475
+ifTrue_290:                                               ; pred = %whileBody_207
+  %c$3 = load i32, i32* %c, align 4
+  %d$1 = load i32, i32* %d, align 4
+  %result_$1 = add i32 %c$3, %d$1
+  store i32 %result_$1, i32* %c, align 4
+  %c$4 = load i32, i32* %c, align 4
+  %cond_gt_tmp_ = icmp sgt i32 %c$4, 99
+  %cond_tmp_$2 = zext i1 %cond_gt_tmp_ to i32
+  %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
+  br i1 %cond_$2, label %ifTrue_291, label %next_499
 
-next_474:                                                ; pred = %whileBody_202, %next_475
-  br label %whileCond_202
+next_498:                                                 ; pred = %whileBody_207, %next_499
+  br label %whileCond_207
 
-ifTrue_272:                                              ; pred = %ifTrue_271
+ifTrue_291:                                               ; pred = %ifTrue_290
   %e = alloca i32, align 4
-  %d2 = load i32, i32* %d, align 4
-  %result_2 = mul i32 %d2, 2
-  store i32 %result_2, i32* %e, align 4
+  %d$2 = load i32, i32* %d, align 4
+  %result_$2 = mul i32 %d$2, 2
+  store i32 %result_$2, i32* %e, align 4
   %get_one = call i32 @get_one(i32 0)
   %cond_eq_tmp_ = icmp eq i32 %get_one, 1
-  %cond_tmp_3 = zext i1 %cond_eq_tmp_ to i32
-  %cond_3 = icmp ne i32 %cond_tmp_3, 0
-  br i1 %cond_3, label %ifTrue_273, label %next_476
+  %cond_tmp_$3 = zext i1 %cond_eq_tmp_ to i32
+  %cond_$3 = icmp ne i32 %cond_tmp_$3, 0
+  br i1 %cond_$3, label %ifTrue_292, label %next_500
 
-next_475:                                                ; pred = %ifTrue_271, %next_476
-  br label %next_474
+next_499:                                                 ; pred = %ifTrue_290, %next_500
+  br label %next_498
 
-ifTrue_273:                                              ; pred = %ifTrue_272
-  %e1 = load i32, i32* %e, align 4
-  %result_3 = mul i32 %e1, 2
-  store i32 %result_3, i32* %c, align 4
-  br label %next_476
+ifTrue_292:                                               ; pred = %ifTrue_291
+  %e$1 = load i32, i32* %e, align 4
+  %result_$3 = mul i32 %e$1, 2
+  store i32 %result_$3, i32* %c, align 4
+  br label %next_500
 
-next_476:                                                ; pred = %ifTrue_272, %ifTrue_273
-  br label %next_475
+next_500:                                                 ; pred = %ifTrue_291, %ifTrue_292
+  br label %next_499
 }
 
 define i32 @main() {
-mainEntry59:
+mainEntry62:
   %p = alloca i32, align 4
   store i32 2, i32* %p, align 4
-  %p1 = load i32, i32* %p, align 4
-  %p2 = load i32, i32* %p, align 4
-  %deepWhileBr = call i32 @deepWhileBr(i32 %p1, i32 %p2)
+  %p$1 = load i32, i32* %p, align 4
+  %p$2 = load i32, i32* %p, align 4
+  %deepWhileBr = call i32 @deepWhileBr(i32 %p$1, i32 %p$2)
   store i32 %deepWhileBr, i32* %p, align 4
-  %p3 = load i32, i32* %p, align 4
-  call void @putint(i32 %p3)
+  %p$3 = load i32, i32* %p, align 4
+  call void @putint(i32 %p$3)
   ret i32 0
 }
 

@@ -22,39 +22,39 @@ ififElseEntry:
   store i32 5, i32* %a, align 4
   %b = alloca i32, align 4
   store i32 10, i32* %b, align 4
-  %a1 = load i32, i32* %a, align 4
-  %cond_eq_tmp_ = icmp eq i32 %a1, 5
+  %a$1 = load i32, i32* %a, align 4
+  %cond_eq_tmp_ = icmp eq i32 %a$1, 5
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_250, label %next_438
+  br i1 %cond_, label %ifTrue_269, label %next_462
 
-ifTrue_250:                                           ; pred = %ififElseEntry
-  %b1 = load i32, i32* %b, align 4
-  %cond_eq_tmp_1 = icmp eq i32 %b1, 10
-  %cond_tmp_1 = zext i1 %cond_eq_tmp_1 to i32
-  %cond_1 = icmp ne i32 %cond_tmp_1, 0
-  br i1 %cond_1, label %ifTrue_251, label %ifFalse_102
+ifTrue_269:                                           ; pred = %ififElseEntry
+  %b$1 = load i32, i32* %b, align 4
+  %cond_eq_tmp_$1 = icmp eq i32 %b$1, 10
+  %cond_tmp_$1 = zext i1 %cond_eq_tmp_$1 to i32
+  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
+  br i1 %cond_$1, label %ifTrue_270, label %ifFalse_103
 
-next_438:                                             ; pred = %ififElseEntry, %next_439
-  %a3 = load i32, i32* %a, align 4
-  ret i32 %a3
+next_462:                                             ; pred = %ififElseEntry, %next_463
+  %a$3 = load i32, i32* %a, align 4
+  ret i32 %a$3
 
-ifTrue_251:                                           ; pred = %ifTrue_250
+ifTrue_270:                                           ; pred = %ifTrue_269
   store i32 25, i32* %a, align 4
-  br label %next_439
+  br label %next_463
 
-ifFalse_102:                                          ; pred = %ifTrue_250
-  %a2 = load i32, i32* %a, align 4
-  %result_ = add i32 %a2, 15
+ifFalse_103:                                          ; pred = %ifTrue_269
+  %a$2 = load i32, i32* %a, align 4
+  %result_ = add i32 %a$2, 15
   store i32 %result_, i32* %a, align 4
-  br label %next_439
+  br label %next_463
 
-next_439:                                             ; pred = %ifTrue_251, %ifFalse_102
-  br label %next_438
+next_463:                                             ; pred = %ifTrue_270, %ifFalse_103
+  br label %next_462
 }
 
 define i32 @main() {
-mainEntry48:
+mainEntry51:
   %ififElse = call i32 @ififElse()
   ret i32 %ififElse
 }

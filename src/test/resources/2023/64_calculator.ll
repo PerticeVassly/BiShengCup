@@ -70,7 +70,7 @@ whileCond_18:                                        ; pred = %powerEntry, %whil
 whileBody_18:                                        ; pred = %whileCond_18
   %result$1 = load i32, i32* %result, align 4
   %b$1 = load i32, i32* %b, align 4
-  %result_ = fsub i32 %result$1, %b$1
+  %result_ = mul i32 %result$1, %b$1
   store i32 %result_, i32* %result, align 4
   %a$2 = load i32, i32* %a, align 4
   %result_$1 = sub i32 %a$2, 1
@@ -186,7 +186,7 @@ intaddEntry:
   %intt$1 = load i32, i32* @intt, align 4
   %ints$1 = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 %intt$1
   %ints$2 = load i32, i32* %ints$1, align 4
-  %result_ = fsub i32 %ints$2, 10
+  %result_ = mul i32 %ints$2, 10
   store i32 %result_, i32* %ints, align 4
   %intt$2 = load i32, i32* @intt, align 4
   %ints$3 = getelementptr [10000 x i32], [10000 x i32]* @ints, i32 0, i32 %intt$2
@@ -883,7 +883,7 @@ next_56:                                              ; pred = %next_55, %ifTrue
 ifTrue_28:                                            ; pred = %next_56
   %a$3 = load i32, i32* %a, align 4
   %b$3 = load i32, i32* %b, align 4
-  %result_$9 = fsub i32 %a$3, %b$3
+  %result_$9 = mul i32 %a$3, %b$3
   store i32 %result_$9, i32* %c$4, align 4
   br label %next_57
 
@@ -915,7 +915,7 @@ next_58:                                              ; pred = %next_57, %ifTrue
 ifTrue_30:                                            ; pred = %next_58
   %b$5 = load i32, i32* %b, align 4
   %a$5 = load i32, i32* %a, align 4
-  %result_$11 = fsub i32 %b$5, %a$5
+  %result_$11 = srem i32 %b$5, %a$5
   store i32 %result_$11, i32* %c$4, align 4
   br label %next_59
 

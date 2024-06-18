@@ -47,7 +47,7 @@ ifFalse_16:                                        ; pred = %exgcdEntry
   %b$2 = load i32, i32* %b, align 4
   %a$2 = load i32, i32* %a, align 4
   %b$3 = load i32, i32* %b, align 4
-  %result_ = fsub i32 %a$2, %b$3
+  %result_ = srem i32 %a$2, %b$3
   %x$2 = load i32*, i32** %x, align 4
   %y$2 = load i32*, i32** %y, align 4
   %exgcd = call i32 @exgcd(i32 %b$2, i32 %result_, i32* %x$2, i32* %y$2)
@@ -72,7 +72,7 @@ ifFalse_16:                                        ; pred = %exgcdEntry
   %arr_$6 = load i32*, i32** %y, align 4
   %y$6 = getelementptr i32, i32* %arr_$6, i32 0
   %y$7 = load i32, i32* %y$6, align 4
-  %result_$2 = fsub i32 %result_$1, %y$7
+  %result_$2 = mul i32 %result_$1, %y$7
   %result_$3 = sub i32 %t$1, %result_$2
   store i32 %result_$3, i32* %y$5, align 4
   %r$1 = load i32, i32* %r, align 4
@@ -98,11 +98,11 @@ mainEntry37:
   %x$3 = getelementptr [1 x i32], [1 x i32]* %x, i32 0, i32 0
   %x$4 = load i32, i32* %x$3, align 4
   %b$2 = load i32, i32* %b, align 4
-  %result_ = fsub i32 %x$4, %b$2
+  %result_ = srem i32 %x$4, %b$2
   %b$3 = load i32, i32* %b, align 4
   %result_$1 = add i32 %result_, %b$3
   %b$4 = load i32, i32* %b, align 4
-  %result_$2 = fsub i32 %result_$1, %b$4
+  %result_$2 = srem i32 %result_$1, %b$4
   store i32 %result_$2, i32* %x$2, align 4
   %x$5 = getelementptr [1 x i32], [1 x i32]* %x, i32 0, i32 0
   %x$6 = load i32, i32* %x$5, align 4

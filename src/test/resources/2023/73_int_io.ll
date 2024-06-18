@@ -84,7 +84,7 @@ next_102:                                              ; pred = %whileCond_56, %
 
 ifTrue_46:                                             ; pred = %secondCond_34
   %sum$1 = load i32, i32* %sum, align 4
-  %result_$2 = fsub i32 %sum$1, 10
+  %result_$2 = mul i32 %sum$1, 10
   %c$6 = load i32, i32* %c, align 4
   %result_$3 = add i32 %result_$2, %c$6
   store i32 %result_$3, i32* %sum, align 4
@@ -125,7 +125,7 @@ whileBody_57:                                          ; pred = %whileCond_57
   %i$1 = load i32, i32* %i, align 4
   %b$1 = getelementptr [16 x i32], [16 x i32]* %b, i32 0, i32 %i$1
   %a$2 = load i32, i32* %a, align 4
-  %result_ = fsub i32 %a$2, 10
+  %result_ = srem i32 %a$2, 10
   %ascii_0 = load i32, i32* @ascii_0, align 4
   %result_$1 = add i32 %result_, %ascii_0
   store i32 %result_$1, i32* %b$1, align 4

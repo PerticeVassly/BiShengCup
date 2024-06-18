@@ -361,7 +361,7 @@ getMidEntry:
   store i32* %0, i32** %arr, align 4
   %mid = alloca i32, align 4
   %n = load i32, i32* @n, align 4
-  %result_ = fsub i32 %n, 2
+  %result_ = srem i32 %n, 2
   %cond_eq_tmp_ = icmp eq i32 %result_, 0
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
@@ -594,7 +594,7 @@ whileBody_41:                                        ; pred = %whileCond_41
   store i32 %result_, i32* %sum, align 4
   %i$3 = load i32, i32* %i, align 4
   %stride$1 = load i32, i32* %stride, align 4
-  %result_$1 = fsub i32 %i$3, %stride$1
+  %result_$1 = srem i32 %i$3, %stride$1
   %stride$2 = load i32, i32* %stride, align 4
   %result_$2 = sub i32 %stride$2, 1
   %cond_neq_tmp_ = icmp ne i32 %result_$1, %result_$2

@@ -29,7 +29,7 @@ mainEntry33:
   store i32 -2, i32* %d, align 4
   store i32 2, i32* %result, align 4
   %d$1 = load i32, i32* %d, align 4
-  %result_ = fsub i32 %d$1, 1
+  %result_ = mul i32 %d$1, 1
   %result_$1 = sdiv i32 %result_, 2
   %cond_lt_tmp_ = icmp slt i32 %result_$1, 0
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
@@ -43,7 +43,7 @@ ifTrue_49:                                            ; pred = %mainEntry33, %se
 
 next_115:                                             ; pred = %secondCond_35, %secondCond_36, %secondCond_36, %ifTrue_49
   %d$2 = load i32, i32* %d, align 4
-  %result_$5 = fsub i32 %d$2, 2
+  %result_$5 = srem i32 %d$2, 2
   %result_$6 = add i32 %result_$5, 67
   %cond_lt_tmp_$1 = icmp slt i32 %result_$6, 0
   %cond_tmp_$3 = zext i1 %cond_lt_tmp_$1 to i32
@@ -62,7 +62,7 @@ secondCond_35:                                        ; pred = %mainEntry33
 secondCond_36:                                        ; pred = %secondCond_35
   %c$1 = load i32, i32* %c, align 4
   %result_$3 = add i32 %c$1, 3
-  %result_$4 = fsub i32 %result_$3, 2
+  %result_$4 = srem i32 %result_$3, 2
   %cond_neq_tmp_$1 = icmp ne i32 %result_$4, 0
   %cond_tmp_$2 = zext i1 %cond_neq_tmp_$1 to i32
   %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
@@ -91,7 +91,7 @@ secondCond_37:                                        ; pred = %next_115
 secondCond_38:                                        ; pred = %secondCond_37
   %c$2 = load i32, i32* %c, align 4
   %result_$8 = add i32 %c$2, 2
-  %result_$9 = fsub i32 %result_$8, 2
+  %result_$9 = srem i32 %result_$8, 2
   %cond_neq_tmp_$3 = icmp ne i32 %result_$9, 0
   %cond_tmp_$5 = zext i1 %cond_neq_tmp_$3 to i32
   %cond_$5 = icmp ne i32 %cond_tmp_$5, 0

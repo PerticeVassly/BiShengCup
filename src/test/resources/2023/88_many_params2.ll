@@ -82,8 +82,8 @@ whileBody_63:                                        ; pred = %whileCond_63
   %arr_$2 = load i32*, i32** %g, align 4
   %g$1 = getelementptr i32, i32* %arr_$2, i32 %i$2
   %h$1 = load i32, i32* %h, align 4
-  %result_$1 = fsub i32 %h$1, 128875
-  %result_$2 = fsub i32 %result_$1, 3724
+  %result_$1 = mul i32 %h$1, 128875
+  %result_$2 = srem i32 %result_$1, 3724
   store i32 %result_$2, i32* %g$1, align 4
   %i$3 = load i32, i32* %i, align 4
   %result_$3 = add i32 %i$3, 1
@@ -158,7 +158,7 @@ mainEntry23:
   %b$14 = getelementptr [59 x i32], [59 x i32]* %ptr_$14, i32 0, i32 18
   %b$15 = load i32, i32* %b$14, align 4
   %func = call i32 @func(i32 %a$7, [59 x i32]* %b$5, i32 %a$9, i32* %a$11, i32 %b$7, i32 %b$9, i32* %b$11, i32 %b$13, i32 %b$15)
-  %result_ = fsub i32 %func, 3
+  %result_ = mul i32 %func, 3
   store i32 %result_, i32* %ret, align 4
   br label %whileCond_64
 

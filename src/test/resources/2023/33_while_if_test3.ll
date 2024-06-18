@@ -23,48 +23,73 @@ deepWhileBrEntry:
   %b = alloca i32, align 4
   store i32 %1, i32* %b, align 4
   %c = alloca i32, align 4
-  %a1 = load i32, i32* %a, align 4
-  %b1 = load i32, i32* %b, align 4
-  %result_ = add i32 %a1, %b1
+  %a$1 = load i32, i32* %a, align 4
+  %b$1 = load i32, i32* %b, align 4
+  %result_ = add i32 %a$1, %b$1
   store i32 %result_, i32* %c, align 4
-  br label %whileCond_
+  br label %whileCond_186
 
-whileCond_:                                              ; pred = %deepWhileBrEntry, %next_1
-  %c1 = load i32, i32* %c, align 4
-  %cond_lt_tmp_ = icmp slt i32 %c1, 75
+whileCond_186:                                           ; pred = %deepWhileBrEntry, %next_438
+  %c$1 = load i32, i32* %c, align 4
+  %cond_lt_tmp_ = icmp slt i32 %c$1, 75
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_, label %next_
+  br i1 %cond_, label %whileBody_186, label %next_437
 
-whileBody_:                                              ; pred = %whileCond_
+whileBody_186:                                           ; pred = %whileCond_186
   %d = alloca i32, align 4
   store i32 42, i32* %d, align 4
-  %c2 = load i32, i32* %c, align 4
-  %cond_lt_tmp_1 = icmp slt i32 %c2, 100
-  %cond_tmp_1 = zext i1 %cond_lt_tmp_1 to i32
-  %cond_1 = icmp ne i32 %cond_tmp_1, 0
-  br i1 %cond_1, label %ifTrue_, label %next_1
+  %c$2 = load i32, i32* %c, align 4
+  %cond_lt_tmp_$1 = icmp slt i32 %c$2, 100
+  %cond_tmp_$1 = zext i1 %cond_lt_tmp_$1 to i32
+  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
+  br i1 %cond_$1, label %ifTrue_251, label %next_438
 
-next_:                                                   ; pred = %whileCond_
-  %c5 = load i32, i32* %c, align 4
-  ret i32 %c5
+next_437:                                                ; pred = %whileCond_186
+  %c$5 = load i32, i32* %c, align 4
+  ret i32 %c$5
 
-ifTrue_:                                                 ; pred = %whileBody_
-  %c3 = load i32, i32* %c, align 4
-  %d1 = load i32, i32* %d, align 4
-  %result_1 = add i32 %c3, %d1
-  store i32 %result_1, i32* %c, align 4
-  %c4 = load i32, i32* %c, align 4
-  %cond_gt_tmp_ = icmp sgt i32 %c4, 99
-  %cond_tmp_2 = zext i1 %cond_gt_tmp_ to i32
-  %cond_2 = icmp ne i32 %cond_tmp_2, 0
-  br i1 %cond_2, label %ifTrue_1, label %next_2
+ifTrue_251:                                              ; pred = %whileBody_186
+  %c$3 = load i32, i32* %c, align 4
+  %d$1 = load i32, i32* %d, align 4
+  %result_$1 = add i32 %c$3, %d$1
+  store i32 %result_$1, i32* %c, align 4
+  %c$4 = load i32, i32* %c, align 4
+  %cond_gt_tmp_ = icmp sgt i32 %c$4, 99
+  %cond_tmp_$2 = zext i1 %cond_gt_tmp_ to i32
+  %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
+  br i1 %cond_$2, label %ifTrue_252, label %next_439
 
-next_1:                                                  ; pred = %whileBody_, %next_2
-  br label %whileCond_
+next_438:                                                ; pred = %whileBody_186, %next_439
+  br label %whileCond_186
 
-ifTrue_1:                                                ; pred = %ifTrue_
+ifTrue_252:                                              ; pred = %ifTrue_251
   %e = alloca i32, align 4
-  %d2 = load i32, i32* %d, align 4
-  %result_2 = mul i32 %d2, 2
-  store i32 %result_2, i32* %e, align 4
+  %d$2 = load i32, i32* %d, align 4
+  %result_$2 = mul i32 %d$2, 2
+  store i32 %result_$2, i32* %e, align 4
+  br i1 true, label %ifTrue_253, label %next_440
+
+next_439:                                                ; pred = %ifTrue_251, %next_440
+  br label %next_438
+
+ifTrue_253:                                              ; pred = %ifTrue_252
+  %e$1 = load i32, i32* %e, align 4
+  %result_$3 = mul i32 %e$1, 2
+  store i32 %result_$3, i32* %c, align 4
+  br label %next_440
+
+next_440:                                                ; pred = %ifTrue_252, %ifTrue_253
+  br label %next_439
+}
+
+define i32 @main() {
+mainEntry48:
+  %p = alloca i32, align 4
+  store i32 2, i32* %p, align 4
+  %p$1 = load i32, i32* %p, align 4
+  %p$2 = load i32, i32* %p, align 4
+  %deepWhileBr = call i32 @deepWhileBr(i32 %p$1, i32 %p$2)
+  ret i32 %deepWhileBr
+}
+

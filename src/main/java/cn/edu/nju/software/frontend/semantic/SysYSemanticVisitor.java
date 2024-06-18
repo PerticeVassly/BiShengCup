@@ -20,7 +20,7 @@ public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
     // tag whether the scope(block) is started by function, if true, the block won't start a new scope, only work once
     private boolean funcScope = false;
 
-   private final JudgeList judgeList = new JudgeList();
+    private final JudgeList judgeList = new JudgeList();
 
     public boolean noSemanticError() {
         return !error;
@@ -41,38 +41,24 @@ public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
         funcType = new FuncType(floatType, new ArrayList<>());
         updateCurScope(funcType, "getfloat");
 
-        funcType = new FuncType(intType, new ArrayList<>() {{
-            add(intArray);
-        }});
+        funcType = new FuncType(intType, new ArrayList<Type>(){{add(intArray);}});
         updateCurScope(funcType, "getarray");
 
-        funcType = new FuncType(intType, new ArrayList<>() {{
-            add(floatArray);
-        }});
+        funcType = new FuncType(intType, new ArrayList<Type>(){{add(floatArray);}});
         updateCurScope(funcType, "getfarray");
 
-        funcType = new FuncType(voidType, new ArrayList<>() {{
-            add(intType);
-        }});
+        funcType = new FuncType(voidType, new ArrayList<Type>(){{add(intType);}});
         updateCurScope(funcType, "putint");
 
         updateCurScope(funcType, "putch");
 
-        funcType = new FuncType(voidType, new ArrayList<>() {{
-            add(floatType);
-        }});
+        funcType = new FuncType(voidType, new ArrayList<Type>(){{add(floatType);}});
         updateCurScope(funcType, "putfloat");
 
-        funcType = new FuncType(voidType, new ArrayList<>() {{
-            add(intType);
-            add(intArray);
-        }});
+        funcType = new FuncType(voidType, new ArrayList<Type>(){{add(intType);add(intArray);}});
         updateCurScope(funcType, "putarray");
 
-        funcType = new FuncType(voidType, new ArrayList<>() {{
-            add(intType);
-            add(floatArray);
-        }});
+        funcType = new FuncType(voidType, new ArrayList<Type>(){{add(intType);add(floatArray);}});
         updateCurScope(funcType, "putfarray");
 
 //        funcType = new FuncType(voidType, new ArrayList<>()); // TODO putf(<format str>, ...) ?
@@ -366,7 +352,7 @@ public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
                 printError(ErrorType.OP_NOT_MATCH, ctx.getStart().getLine(), "condExp should be int value.");
             }
         } else if (ctx.LE() != null || ctx.LT() != null || ctx.GT() != null || ctx.GE() != null ||
-        ctx.OR() != null || ctx.AND() != null || ctx.EQ() != null || ctx.NEQ() != null){
+                ctx.OR() != null || ctx.AND() != null || ctx.EQ() != null || ctx.NEQ() != null){
             visitCond(ctx.cond(0));
             visitCond(ctx.cond(1));
         }
