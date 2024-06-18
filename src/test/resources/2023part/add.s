@@ -97,80 +97,77 @@ addEntry:
 .globl main
 main:
 
-mainEntry:
+mainEntry1:
 	li t0, 2
-	mv t1, t0
-	li t2, 3
-	mv t3, t2
-	li t4, 4
-	mv t5, t4
-	mv t6, t1
-	mv t0, t3
-	mv t2, t5
+	li t1, 3
+	li t2, 4
+	mv t3, t0
+	mv t4, t1
+	mv t5, t2
 	addi sp, sp, -4
+	mv a0, t4
+	mv a1, t5
+	# save caller saved regs
+	addi sp, sp, -40
+	sw t0, 0(sp)
+	sw t1, 4(sp)
+	sw t2, 8(sp)
+	sw t3, 12(sp)
+	sw t4, 16(sp)
+	sw t5, 20(sp)
+	sw t6, 24(sp)
+	sw a0, 28(sp)
+	sw a1, 32(sp)
+	sw ra, 36(sp)
+	call add
+	sw a0, 40(sp)
+	# restore caller saved regs
+	lw t0, 0(sp)
+	lw t1, 4(sp)
+	lw t2, 8(sp)
+	lw t3, 12(sp)
+	lw t4, 16(sp)
+	lw t5, 20(sp)
+	lw t6, 24(sp)
+	lw a0, 28(sp)
+	lw a1, 32(sp)
+	lw ra, 36(sp)
+	addi sp, sp, 40
+	# restore caller saved regs end
+	addi sp, sp, -4
+	mv a0, t3
+	lw t6, 4(sp)
+	mv a1, t6
+	# save caller saved regs
+	addi sp, sp, -40
+	sw t0, 0(sp)
+	sw t1, 4(sp)
+	sw t2, 8(sp)
+	sw t3, 12(sp)
+	sw t4, 16(sp)
+	sw t5, 20(sp)
+	sw t6, 24(sp)
+	sw a0, 28(sp)
+	sw a1, 32(sp)
+	sw ra, 36(sp)
+	call add
+	sw a0, 40(sp)
+	# restore caller saved regs
+	lw t0, 0(sp)
+	lw t1, 4(sp)
+	lw t2, 8(sp)
+	lw t3, 12(sp)
+	lw t4, 16(sp)
+	lw t5, 20(sp)
+	lw t6, 24(sp)
+	lw a0, 28(sp)
+	lw a1, 32(sp)
+	lw ra, 36(sp)
+	addi sp, sp, 40
+	# restore caller saved regs end
+	addi sp, sp, -4
+	sw t0, 0(sp)
+	lw t0, 4(sp)
 	mv a0, t0
-	mv a1, t2
-	# save caller saved regs
-	addi sp, sp, -40
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
-	call add
-	sw a0, 40(sp)
-	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
-	# restore caller saved regs end
-	addi sp, sp, -4
-	mv a0, t6
-	lw t4, 0(sp)
-	mv a1, t4
-	# save caller saved regs
-	addi sp, sp, -40
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
-	call add
-	sw a0, 40(sp)
-	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
-	# restore caller saved regs end
-	addi sp, sp, -4
-	sw t1, 0(sp)
-	lw t1, 4(sp)
-	mv a0, t1
 	addi sp, sp, 12
 	ret 

@@ -55,7 +55,6 @@ main:
 mainEntry4:
 	li t0, 15
 	mv t1, t0
-	mv t2, t1
-	mv a0, t2
+	mv a0, t1
 	addi sp, sp, 0
 	ret 

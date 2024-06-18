@@ -128,10 +128,10 @@ ifTrue_3:                                        ; pred = %next_2
   %d$4 = load i32, i32* %d, align 4
   %e$4 = load i32, i32* %e, align 4
   %dfs = call i32 @dfs(i32 %result_$5, i32 %b$4, i32 %c$4, i32 %d$4, i32 %e$4, i32 1)
-  %result_$6 = fsub i32 %result_$4, %dfs
+  %result_$6 = mul i32 %result_$4, %dfs
   %result_$7 = add i32 %ans$1, %result_$6
   %mod = load i32, i32* @mod, align 4
-  %result_$8 = fsub i32 %result_$7, %mod
+  %result_$8 = srem i32 %result_$7, %mod
   store i32 %result_$8, i32* %ans, align 4
   br label %next_3
 
@@ -154,10 +154,10 @@ ifTrue_4:                                        ; pred = %next_3
   %d$5 = load i32, i32* %d, align 4
   %e$5 = load i32, i32* %e, align 4
   %dfs$1 = call i32 @dfs(i32 %result_$10, i32 %result_$11, i32 %c$5, i32 %d$5, i32 %e$5, i32 2)
-  %result_$12 = fsub i32 %result_$9, %dfs$1
+  %result_$12 = mul i32 %result_$9, %dfs$1
   %result_$13 = add i32 %ans$2, %result_$12
   %mod$1 = load i32, i32* @mod, align 4
-  %result_$14 = fsub i32 %result_$13, %mod$1
+  %result_$14 = srem i32 %result_$13, %mod$1
   store i32 %result_$14, i32* %ans, align 4
   br label %next_4
 
@@ -180,10 +180,10 @@ ifTrue_5:                                        ; pred = %next_4
   %d$6 = load i32, i32* %d, align 4
   %e$6 = load i32, i32* %e, align 4
   %dfs$2 = call i32 @dfs(i32 %a$8, i32 %result_$16, i32 %result_$17, i32 %d$6, i32 %e$6, i32 3)
-  %result_$18 = fsub i32 %result_$15, %dfs$2
+  %result_$18 = mul i32 %result_$15, %dfs$2
   %result_$19 = add i32 %ans$3, %result_$18
   %mod$2 = load i32, i32* @mod, align 4
-  %result_$20 = fsub i32 %result_$19, %mod$2
+  %result_$20 = srem i32 %result_$19, %mod$2
   store i32 %result_$20, i32* %ans, align 4
   br label %next_5
 
@@ -206,10 +206,10 @@ ifTrue_6:                                        ; pred = %next_5
   %result_$23 = sub i32 %d$9, 1
   %e$7 = load i32, i32* %e, align 4
   %dfs$3 = call i32 @dfs(i32 %a$9, i32 %b$9, i32 %result_$22, i32 %result_$23, i32 %e$7, i32 4)
-  %result_$24 = fsub i32 %result_$21, %dfs$3
+  %result_$24 = mul i32 %result_$21, %dfs$3
   %result_$25 = add i32 %ans$4, %result_$24
   %mod$3 = load i32, i32* @mod, align 4
-  %result_$26 = fsub i32 %result_$25, %mod$3
+  %result_$26 = srem i32 %result_$25, %mod$3
   store i32 %result_$26, i32* %ans, align 4
   br label %next_6
 
@@ -229,10 +229,10 @@ ifTrue_7:                                        ; pred = %next_6
   %e$10 = load i32, i32* %e, align 4
   %result_$28 = sub i32 %e$10, 1
   %dfs$4 = call i32 @dfs(i32 %a$10, i32 %b$10, i32 %c$10, i32 %result_$27, i32 %result_$28, i32 5)
-  %result_$29 = fsub i32 %e$9, %dfs$4
+  %result_$29 = mul i32 %e$9, %dfs$4
   %result_$30 = add i32 %ans$5, %result_$29
   %mod$4 = load i32, i32* @mod, align 4
-  %result_$31 = fsub i32 %result_$30, %mod$4
+  %result_$31 = srem i32 %result_$30, %mod$4
   store i32 %result_$31, i32* %ans, align 4
   br label %next_7
 
@@ -251,7 +251,7 @@ next_7:                                          ; pred = %next_6, %ifTrue_7
   %dp$4 = getelementptr [7 x i32], [7 x i32]* %ptr_$14, i32 0, i32 %last$7
   %ans$6 = load i32, i32* %ans, align 4
   %mod$5 = load i32, i32* @mod, align 4
-  %result_$32 = fsub i32 %ans$6, %mod$5
+  %result_$32 = srem i32 %ans$6, %mod$5
   store i32 %result_$32, i32* %dp$4, align 4
   %a$12 = load i32, i32* %a, align 4
   %b$12 = load i32, i32* %b, align 4
@@ -270,7 +270,7 @@ next_7:                                          ; pred = %next_6, %ifTrue_7
 }
 
 define i32 @main() {
-mainEntry:
+mainEntry1:
   %n = alloca i32, align 4
   %getint = call i32 @getint()
   store i32 %getint, i32* %n, align 4
@@ -278,7 +278,7 @@ mainEntry:
   store i32 0, i32* %i, align 4
   br label %whileCond_
 
-whileCond_:                                         ; pred = %mainEntry, %next_9
+whileCond_:                                         ; pred = %mainEntry1, %next_9
   %i$1 = load i32, i32* %i, align 4
   %maxn = load i32, i32* @maxn, align 4
   %cond_lt_tmp_ = icmp slt i32 %i$1, %maxn

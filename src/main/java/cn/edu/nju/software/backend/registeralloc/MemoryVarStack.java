@@ -1,5 +1,6 @@
 package cn.edu.nju.software.backend.registeralloc;
 
+import java.awt.desktop.SystemEventListener;
 import java.util.Stack;
 
 public class MemoryVarStack {
@@ -23,14 +24,13 @@ public class MemoryVarStack {
     }
 
     public int getOffset(String varName){
-        int offset = 0;
-        for(MemoryVar localVar : localVarStack){
-            if(localVar.getVarName().equals(varName)){
-                return offset;
+        for(int i = 0 ;i < localVarStack.size(); i++){
+            if(localVarStack.get(i).getVarName().equals(varName)){
+                return (localVarStack.size() - 1 - i) * 4;
             }
-            offset += 4;
         }
-        return -1;
+
+        return 0;
     }
 
     public void push(MemoryVar localVar){

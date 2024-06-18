@@ -54,26 +54,22 @@ main:
 
 mainEntry15:
 	li t0, 10
-	mv t1, t0
-	li t2, 4
-	mv t3, t2
-	li t4, 2
-	mv t5, t4
-	li t6, 2
-	mv t0, t6
-	mv t2, t5
-	mv t4, t1
-	mv t6, t3
-	addi sp, sp, -4
-	sw t1, 0(sp)
-	addi sp, sp, -4
-	sw t3, 0(sp)
-	add t3, t2, t1
-	addi sp, sp, -4
-	sw t5, 0(sp)
+	li t1, 4
+	li t2, 2
+	li t3, 2
+	mv t4, t2
 	mv t5, t0
+	mv t6, t1
 	addi sp, sp, -4
 	sw t0, 0(sp)
-	mv a0, t0
+	addi sp, sp, -4
+	sw t1, 0(sp)
+	add t1, t4, t0
+	addi sp, sp, -4
+	sw t2, 0(sp)
+	mv t2, t3
+	addi sp, sp, -4
+	sw t3, 0(sp)
+	mv a0, t3
 	addi sp, sp, 16
 	ret 

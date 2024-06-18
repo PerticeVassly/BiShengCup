@@ -2,13 +2,10 @@ package cn.edu.nju.software.backend.registeralloc;
 
 import cn.edu.nju.software.backend.RiscBasicBlock;
 import cn.edu.nju.software.backend.RiscSpecifications;
-import cn.edu.nju.software.backend.riscinstruction.RiscAddi;
-import cn.edu.nju.software.backend.riscinstruction.RiscInstruction;
+import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
-import cn.edu.nju.software.backend.riscinstruction.RiscLw;
-import cn.edu.nju.software.backend.riscinstruction.RiscSw;
 
 public class RegisterManager {
 
@@ -63,6 +60,7 @@ public class RegisterManager {
 
         if(hasAllocated(varName_toSpill)){
             RiscInstruction spill = new RiscSw(new Register(regNO_toSpill), new IndirectRegister(regNO_toSpill, memoryVarStack.getOffset(varName_toSpill)));
+
             currentBlock.addInstruction(spill);
         } else {
             RiscInstruction addi = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-4));
@@ -79,13 +77,16 @@ public class RegisterManager {
     }
 
 
-
-
     public String provideReg(){
         int regNO = registerTracker.hasFreeRegs() ? registerTracker.getFreeRegNO(0) : spill() ;
         registerTracker.useReg(regNO);
         return RiscSpecifications.getRegName(regNO);
     }
+
+//    public String provideATempReg(){
+//        int regNO = registerTracker.hasFreeRegs() ? registerTracker.getFreeRegNO(0) : spill() ;
+//        return RiscSpecifications.getRegName(regNO);
+//    }
 
 
     public String provideReg(String varName){
@@ -100,6 +101,7 @@ public class RegisterManager {
             int regNO = registerTracker.hasFreeRegs() ? registerTracker.getFreeRegNO(0) : spill();
 
             RiscInstruction lw = new RiscLw( new Register(regNO), new IndirectRegister("sp", memoryVarStack.getOffset(varName)));
+            //TODO()
 
             currentBlock.addInstruction(lw);
 

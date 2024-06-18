@@ -55,9 +55,8 @@ main:
 mainEntry:
 	li t0, 10
 	mv t1, t0
-	mv t2, t1
-	li t4, 1
-	add t5, t3, t4
-	mv a0, t5
+	li t3, 1
+	add t4, t2, t3
+	mv a0, t4
 	addi sp, sp, 0
 	ret 

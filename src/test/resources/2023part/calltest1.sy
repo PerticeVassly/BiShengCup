@@ -1,0 +1,15 @@
+int g1(int i, int j){
+    return i + j;
+}
+
+
+int f1(int i, int j){
+    return g1(i, i) + g1(j, j);
+}
+
+int main(){
+    return g1(1, f1(1, 1));
+}
+
+//f1(1, 1) = 4
+//g1(1, 4) = 5

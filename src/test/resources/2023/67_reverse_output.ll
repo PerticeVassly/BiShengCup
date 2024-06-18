@@ -25,14 +25,14 @@ reverseEntry:
   %cond_le_tmp_ = icmp sle i32 %n$1, 1
   %cond_tmp_ = zext i1 %cond_le_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_275, label %ifFalse_108
+  br i1 %cond_, label %ifTrue_283, label %ifFalse_108
 
-ifTrue_275:                                          ; pred = %reverseEntry
+ifTrue_283:                                          ; pred = %reverseEntry
   %getint = call i32 @getint()
   store i32 %getint, i32* %next, align 4
   %next$1 = load i32, i32* %next, align 4
   call void @putint(i32 %next$1)
-  br label %next_471
+  br label %next_486
 
 ifFalse_108:                                         ; pred = %reverseEntry
   %getint$1 = call i32 @getint()
@@ -42,14 +42,14 @@ ifFalse_108:                                         ; pred = %reverseEntry
   call void @reverse(i32 %result_)
   %next$2 = load i32, i32* %next, align 4
   call void @putint(i32 %next$2)
-  br label %next_471
+  br label %next_486
 
-next_471:                                            ; pred = %ifTrue_275, %ifFalse_108
+next_486:                                            ; pred = %ifTrue_283, %ifFalse_108
   ret void
 }
 
 define i32 @main() {
-mainEntry54:
+mainEntry56:
   %i = alloca i32, align 4
   store i32 200, i32* %i, align 4
   %i$1 = load i32, i32* %i, align 4

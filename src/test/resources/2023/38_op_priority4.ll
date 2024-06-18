@@ -23,7 +23,7 @@ declare void @memset(i32*, i32, i32)
 @e = global i32 0, align 4
 
 define i32 @main() {
-mainEntry3:
+mainEntry5:
   %getint = call i32 @getint()
   store i32 %getint, i32* @a, align 4
   %getint$1 = call i32 @getint()
@@ -49,13 +49,13 @@ mainEntry3:
   %cond_neq_tmp_ = icmp ne i32 %result_$1, %result_$3
   %cond_tmp_ = zext i1 %cond_neq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_2, label %secondCond_1
+  br i1 %cond_, label %ifTrue_10, label %secondCond_1
 
-ifTrue_2:                                            ; pred = %mainEntry3, %secondCond_1, %secondCond_
+ifTrue_10:                                           ; pred = %mainEntry5, %secondCond_1, %secondCond_
   store i32 1, i32* %flag, align 4
-  br label %next_2
+  br label %next_17
 
-next_2:                                              ; pred = %secondCond_, %ifTrue_2
+next_17:                                             ; pred = %secondCond_, %ifTrue_10
   %flag$1 = load i32, i32* %flag, align 4
   ret i32 %flag$1
 
@@ -71,9 +71,9 @@ secondCond_:                                         ; pred = %secondCond_1
   %cond_eq_tmp_$1 = icmp eq i32 %result_$8, %result_$9
   %cond_tmp_$2 = zext i1 %cond_eq_tmp_$1 to i32
   %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %ifTrue_2, label %next_2
+  br i1 %cond_$2, label %ifTrue_10, label %next_17
 
-secondCond_1:                                        ; pred = %mainEntry3
+secondCond_1:                                        ; pred = %mainEntry5
   %a$2 = load i32, i32* @a, align 4
   %b$1 = load i32, i32* @b, align 4
   %result_$4 = mul i32 %a$2, %b$1
@@ -85,6 +85,6 @@ secondCond_1:                                        ; pred = %mainEntry3
   %cond_eq_tmp_ = icmp eq i32 %result_$5, %result_$6
   %cond_tmp_$1 = zext i1 %cond_eq_tmp_ to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_2, label %secondCond_
+  br i1 %cond_$1, label %ifTrue_10, label %secondCond_
 }
 

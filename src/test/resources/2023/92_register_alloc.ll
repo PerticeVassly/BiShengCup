@@ -590,7 +590,7 @@ funcEntry2:
 }
 
 define i32 @main() {
-mainEntry28:
+mainEntry30:
   %a = alloca i32, align 4
   %b = alloca i32, align 4
   %getint = call i32 @getint()

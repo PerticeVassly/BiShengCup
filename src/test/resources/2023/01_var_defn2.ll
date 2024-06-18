@@ -20,7 +20,7 @@ declare void @memset(i32*, i32, i32)
 @b = global i32 5, align 4
 
 define i32 @main() {
-mainEntry1:
+mainEntry3:
   %a = alloca i32, align 4
   store i32 5, i32* %a, align 4
   %a$1 = load i32, i32* %a, align 4

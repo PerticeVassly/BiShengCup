@@ -99,10 +99,9 @@ main:
 
 mainEntry21:
 	li t0, 10
-	mv t1, t0
-	mv t1, t1
+	mv t0, t0
 	addi sp, sp, -4
-	mv a0, t1
+	mv a0, t0
 	# save caller saved regs
 	addi sp, sp, -40
 	sw t0, 0(sp)
@@ -130,9 +129,9 @@ mainEntry21:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 	# restore caller saved regs end
-	lw t2, 0(sp)
-	mv t3, t2
-	mv t4, t3
-	mv a0, t4
+	lw t2, 4(sp)
+	mv t1, t2
+	mv t3, t1
+	mv a0, t3
 	addi sp, sp, 4
 	ret 

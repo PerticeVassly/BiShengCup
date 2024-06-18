@@ -1,6 +1,7 @@
 package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.backend.registeralloc.MemoryVar;
+import cn.edu.nju.software.backend.registeralloc.MemoryVarStack;
 import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
@@ -95,45 +96,28 @@ public class RiscBasicBlock implements InstructionVisitor {
         ValueRef src = store.getOperand(0);
         ValueRef dest = store.getOperand(1);
 
-        String src_reg = "";
-        String dest_reg = "";
 
+        String dest_reg = registerManager.provideReg(dest.getName());
         //获取src的寄存器
-        //如果要store的是一个常数，需要额外一条li指令, 否则直接mv
+        //如果要store的是一个常数，直接li指令
         if (src instanceof ConstValue) {
 
             if (src.getType() instanceof IntType) {
-                src_reg = registerManager.provideReg();
-                registerManager.lockReg(src_reg);
-                RiscInstruction riscLi = new RiscLi(new Register(src_reg), new ImmediateValue(
+                riscInstructions.add( new RiscLi(new Register(dest_reg), new ImmediateValue(
                         (Integer) ((ConstValue) src).getValue()
-                ));
-                riscInstructions.add(riscLi);
+                )));
             } else {
                 //todo() other constValueType
                 assert false;
             }
 
-        } //
-        else {
-            //
-            src_reg = registerManager.provideReg(src.getName());
         }
-        //防止在获取dest_reg的时候，这个寄存器被spill然后被分配给了dest_reg
-        registerManager.lockReg(src_reg);
-
-        //获取dest的寄存器
-        dest_reg = registerManager.provideReg(dest.getName());
-
-        //生成mv指令
-        RiscInstruction riscMv = new RiscMv(new Register(dest_reg), new Register(src_reg));
-        riscInstructions.add(riscMv);
+        else {
+            String src_reg = registerManager.provideReg(src.getName());
+            riscInstructions.add(new RiscMv(new Register(dest_reg), new Register(src_reg)));
+        }
 
         //通知registerManager解锁资源以及释放资源
-        registerManager.unlockReg(src_reg);
-        if (src instanceof ConstValue) {
-            registerManager.freeReg(src_reg);
-        }
     }
 
     @Override
@@ -144,16 +128,17 @@ public class RiscBasicBlock implements InstructionVisitor {
 
     @Override
     public void visit(Load load){
+        ValueRef src = load.getOperand(0);
+        ValueRef dest = load.getLVal();
 
         //获取src的寄存器
-        String src_reg = registerManager.provideReg(load.getOperand(0).getName());
+        String src_reg = registerManager.provideReg(src.getName());
         registerManager.lockReg(src_reg);
 
-        String dest_reg = registerManager.provideReg(load.getLVal().getName());
+        String dest_reg = registerManager.provideReg(dest.getName());
 
         //生成mv指令
-        RiscInstruction riscMv = new RiscMv(new Register(dest_reg), new Register(src_reg));
-        riscInstructions.add(riscMv);
+        riscInstructions.add(new RiscMv(new Register(dest_reg), new Register(src_reg)));
 
         //通知registerManager解锁资源
         registerManager.unlockReg(src_reg);
@@ -165,19 +150,14 @@ public class RiscBasicBlock implements InstructionVisitor {
         ValueRef op2 = add.getOperand(1);
         ValueRef dest = add.getLVal();
 
-        //分别对应add的两个操作数和一个结果
-        String src_reg1 = "";
-        String src_reg2 = "";
-        String dest_reg = "";
-
         //处理第一个操作数
+        String src_reg1 = "";
         boolean op1IsConst = op1 instanceof ConstValue;
         if(op1IsConst){
             //需要生成li指令
             src_reg1 = registerManager.provideReg();
-            RiscInstruction riscLiForOp1 = new RiscLi(new Register(src_reg1)
-                    , new ImmediateValue((Integer) ((ConstValue) op1).getValue()));
-            riscInstructions.add(riscLiForOp1);
+            riscInstructions.add( new RiscLi(new Register(src_reg1)
+                    , new ImmediateValue((Integer) ((ConstValue) op1).getValue())));
         }
         else {
             src_reg1 = registerManager.provideReg(op1.getName());
@@ -185,23 +165,22 @@ public class RiscBasicBlock implements InstructionVisitor {
         registerManager.lockReg(src_reg1);
 
         //处理第二个操作数
+        String src_reg2 = "";
         boolean op2isConst = op2 instanceof ConstValue;
         if(op2isConst){
             //需要生成li指令
             src_reg2 = registerManager.provideReg();
-            RiscInstruction riscLiForOp2 = new RiscLi(new Register(src_reg2)
-                    , new ImmediateValue((Integer) ((ConstValue) op2).getValue()));
-            riscInstructions.add(riscLiForOp2);
+            riscInstructions.add( new RiscLi(new Register(src_reg2)
+                    , new ImmediateValue((Integer) ((ConstValue) op2).getValue())));
         }
         else {
             src_reg2 = registerManager.provideReg(op2.getName());
         }
         registerManager.lockReg(src_reg2);
 
-        //生成
-        dest_reg = registerManager.provideReg(dest.getName());
-        RiscInstruction riscAdd = new RiscAdd(new Register(dest_reg), new Register(src_reg1), new Register(src_reg2));
-        riscInstructions.add(riscAdd);
+        //生成 add a1 a2 a3
+        String dest_reg = registerManager.provideReg(dest.getName());
+        riscInstructions.add(new RiscAdd(new Register(dest_reg), new Register(src_reg1), new Register(src_reg2)));
 
 
         registerManager.unlockReg(src_reg1);
@@ -309,6 +288,8 @@ public class RiscBasicBlock implements InstructionVisitor {
             }
             else{
                 String param_reg = registerManager.provideReg(param.getName());
+
+
                 riscInstructions.add( new RiscMv(new Register(argRegs[i]), new Register(param_reg)));
             }
             // lock the register in case of being spilled
@@ -330,6 +311,8 @@ public class RiscBasicBlock implements InstructionVisitor {
          * sp now points to empty
          */
         riscInstructions.add(new RiscSw(new Register("a0"), new IndirectRegister("sp", (RiscSpecifications.getCallerSavedRegs().length)* 4)));
+
+
 
         restoreCallerSavedRegs();
     }

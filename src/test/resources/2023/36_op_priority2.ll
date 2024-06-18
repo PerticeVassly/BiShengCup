@@ -17,7 +17,7 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry81:
+mainEntry83:
   %a = alloca i32, align 4
   %b = alloca i32, align 4
   %c = alloca i32, align 4

@@ -33,10 +33,11 @@ public class TestFrontEndIO {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("79_var_name")
-    @StringSource("90_many_locals")
-    @StringSource("64_calculator")
-    @StringSource("87_many_params")
+    @StringSource("50_short_circuit")
+//    @StringSource("79_var_name")
+//    @StringSource("90_many_locals")
+//    @StringSource("64_calculator")
+//    @StringSource("87_many_params")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
     }
@@ -47,7 +48,7 @@ public class TestFrontEndIO {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if ( name.contains("84") || name.contains("42") || name.contains("65")) {
+        if ( name.contains("84") ) {
             fail();
         }
         testFile(DIR, name);

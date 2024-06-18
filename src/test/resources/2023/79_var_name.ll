@@ -17,7 +17,7 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry82:
+mainEntry84:
   %long_local_var_QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz = alloca i32, align 4
   store i32 2, i32* %long_local_var_QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz, align 4
   %long_local_var_0534kbAnp5DQwnGiAuM5GMVdE0mAnMr = alloca i32, align 4
@@ -26,17 +26,17 @@ mainEntry82:
   store [20 x i32] [i32 1, i32 2, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0], [20 x i32]* %long_local_var_FCzdKgkQxe8BClbywbfbacJx86aWsSC, align 16
   %long_local_var_46RJsXBiXL5NTrpJL22F4zlc3o0KiSE = alloca i32, align 4
   store i32 0, i32* %long_local_var_46RJsXBiXL5NTrpJL22F4zlc3o0KiSE, align 4
-  br label %whileCond_247
+  br label %whileCond_254
 
-whileCond_247:                                        ; pred = %mainEntry82, %whileBody_247
+whileCond_254:                                        ; pred = %mainEntry84, %whileBody_254
   %long_local_var_iC8Blhf3J77ykaAhFYeWAp0W1TtVz$1 = load i32, i32* %long_local_var_QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz, align 4
   %long_local_var_34kbAnp5DQwnGiAuM5GMVdE0mAnMr$1 = load i32, i32* %long_local_var_0534kbAnp5DQwnGiAuM5GMVdE0mAnMr, align 4
   %cond_lt_tmp_ = icmp slt i32 %long_local_var_iC8Blhf3J77ykaAhFYeWAp0W1TtVz$1, %long_local_var_34kbAnp5DQwnGiAuM5GMVdE0mAnMr$1
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_247, label %next_572
+  br i1 %cond_, label %whileBody_254, label %next_587
 
-whileBody_247:                                        ; pred = %whileCond_247
+whileBody_254:                                        ; pred = %whileCond_254
   %long_local_var_iC8Blhf3J77ykaAhFYeWAp0W1TtVz$2 = load i32, i32* %long_local_var_QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz, align 4
   %long_local_var_zdKgkQxe8BClbywbfbacJx86aWsSC$1 = getelementptr [20 x i32], [20 x i32]* %long_local_var_FCzdKgkQxe8BClbywbfbacJx86aWsSC, i32 0, i32 %long_local_var_iC8Blhf3J77ykaAhFYeWAp0W1TtVz$2
   %long_local_var_iC8Blhf3J77ykaAhFYeWAp0W1TtVz$3 = load i32, i32* %long_local_var_QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz, align 4
@@ -67,9 +67,9 @@ whileBody_247:                                        ; pred = %whileCond_247
   %long_local_var_iC8Blhf3J77ykaAhFYeWAp0W1TtVz$8 = load i32, i32* %long_local_var_QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz, align 4
   %result_$5 = add i32 %long_local_var_iC8Blhf3J77ykaAhFYeWAp0W1TtVz$8, 1
   store i32 %result_$5, i32* %long_local_var_QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz, align 4
-  br label %whileCond_247
+  br label %whileCond_254
 
-next_572:                                             ; pred = %whileCond_247
+next_587:                                             ; pred = %whileCond_254
   %long_local_var_RJsXBiXL5NTrpJL22F4zlc3o0KiSE$2 = load i32, i32* %long_local_var_46RJsXBiXL5NTrpJL22F4zlc3o0KiSE, align 4
   ret i32 %long_local_var_RJsXBiXL5NTrpJL22F4zlc3o0KiSE$2
 }

@@ -28,9 +28,9 @@ func1Entry:
   %cond_eq_tmp_ = icmp eq i32 %z$1, 0
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_301, label %ifFalse_116
+  br i1 %cond_, label %ifTrue_309, label %ifFalse_116
 
-ifTrue_301:                                         ; pred = %func1Entry
+ifTrue_309:                                         ; pred = %func1Entry
   %x$1 = load i32, i32* %x, align 4
   %y$1 = load i32, i32* %y, align 4
   %result_ = mul i32 %x$1, %y$1
@@ -53,9 +53,9 @@ func2Entry:
   store i32 %1, i32* %y, align 4
   %y$1 = load i32, i32* %y, align 4
   %cond_normalize_ = icmp ne i32 %y$1, 0
-  br i1 %cond_normalize_, label %ifTrue_302, label %ifFalse_117
+  br i1 %cond_normalize_, label %ifTrue_310, label %ifFalse_117
 
-ifTrue_302:                                         ; pred = %func2Entry
+ifTrue_310:                                         ; pred = %func2Entry
   %x$1 = load i32, i32* %x, align 4
   %y$2 = load i32, i32* %y, align 4
   %result_ = srem i32 %x$1, %y$2
@@ -77,9 +77,9 @@ func3Entry:
   %cond_eq_tmp_ = icmp eq i32 %y$1, 0
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_303, label %ifFalse_118
+  br i1 %cond_, label %ifTrue_311, label %ifFalse_118
 
-ifTrue_303:                                         ; pred = %func3Entry
+ifTrue_311:                                         ; pred = %func3Entry
   %x$1 = load i32, i32* %x, align 4
   %result_ = add i32 %x$1, 1
   ret i32 %result_
@@ -102,9 +102,9 @@ func4Entry:
   store i32 %2, i32* %z, align 4
   %x$1 = load i32, i32* %x, align 4
   %cond_normalize_ = icmp ne i32 %x$1, 0
-  br i1 %cond_normalize_, label %ifTrue_304, label %ifFalse_119
+  br i1 %cond_normalize_, label %ifTrue_312, label %ifFalse_119
 
-ifTrue_304:                                         ; pred = %func4Entry
+ifTrue_312:                                         ; pred = %func4Entry
   %y$1 = load i32, i32* %y, align 4
   ret i32 %y$1
 
@@ -132,7 +132,7 @@ func6Entry:
   %cond_normalize_ = icmp ne i32 %x$1, 0
   br i1 %cond_normalize_, label %secondCond_122, label %ifFalse_120
 
-ifTrue_305:                                            ; pred = %secondCond_122
+ifTrue_313:                                            ; pred = %secondCond_122
   ret i32 1
 
 ifFalse_120:                                           ; pred = %func6Entry, %secondCond_122
@@ -141,7 +141,7 @@ ifFalse_120:                                           ; pred = %func6Entry, %se
 secondCond_122:                                        ; pred = %func6Entry
   %y$1 = load i32, i32* %y, align 4
   %cond_normalize_$1 = icmp ne i32 %y$1, 0
-  br i1 %cond_normalize_$1, label %ifTrue_305, label %ifFalse_120
+  br i1 %cond_normalize_$1, label %ifTrue_313, label %ifFalse_120
 }
 
 define i32 @func7(i32 %0) {
@@ -153,9 +153,9 @@ func7Entry:
   %tmp_$1 = xor i1 %tmp_, 1
   %tmp_$2 = zext i1 %tmp_$1 to i32
   %cond_normalize_ = icmp ne i32 %tmp_$2, 0
-  br i1 %cond_normalize_, label %ifTrue_306, label %ifFalse_121
+  br i1 %cond_normalize_, label %ifTrue_314, label %ifFalse_121
 
-ifTrue_306:                                         ; pred = %func7Entry
+ifTrue_314:                                         ; pred = %func7Entry
   ret i32 1
 
 ifFalse_121:                                        ; pred = %func7Entry
@@ -163,7 +163,7 @@ ifFalse_121:                                        ; pred = %func7Entry
 }
 
 define i32 @main() {
-mainEntry70:
+mainEntry72:
   %i1 = alloca i32, align 4
   %getint = call i32 @getint()
   store i32 %getint, i32* %i1, align 4
@@ -179,16 +179,16 @@ mainEntry70:
   %arr = alloca [10 x i32], align 16
   %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
-  br label %whileCond_223
+  br label %whileCond_230
 
-whileCond_223:                                        ; pred = %mainEntry70, %whileBody_223
+whileCond_230:                                        ; pred = %mainEntry72, %whileBody_230
   %i$1 = load i32, i32* %i, align 4
   %cond_lt_tmp_ = icmp slt i32 %i$1, 10
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_223, label %next_530
+  br i1 %cond_, label %whileBody_230, label %next_545
 
-whileBody_223:                                        ; pred = %whileCond_223
+whileBody_230:                                        ; pred = %whileCond_230
   %i$2 = load i32, i32* %i, align 4
   %arr$1 = getelementptr [10 x i32], [10 x i32]* %arr, i32 0, i32 %i$2
   %getint$4 = call i32 @getint()
@@ -196,9 +196,9 @@ whileBody_223:                                        ; pred = %whileCond_223
   %i$3 = load i32, i32* %i, align 4
   %result_ = add i32 %i$3, 1
   store i32 %result_, i32* %i, align 4
-  br label %whileCond_223
+  br label %whileCond_230
 
-next_530:                                             ; pred = %whileCond_223
+next_545:                                             ; pred = %whileCond_230
   %a = alloca i32, align 4
   %i1$1 = load i32, i32* %i1, align 4
   %func7 = call i32 @func7(i32 %i1$1)
