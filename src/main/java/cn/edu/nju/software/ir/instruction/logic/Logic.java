@@ -1,6 +1,8 @@
-package cn.edu.nju.software.ir.instruction;
+package cn.edu.nju.software.ir.instruction.logic;
 
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
+import cn.edu.nju.software.ir.instruction.Binary;
+import cn.edu.nju.software.ir.instruction.OpEnum;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 public class Logic extends Binary {
