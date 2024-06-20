@@ -1,15 +1,18 @@
 package cn.edu.nju.software.ir.value;
 
-import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.TypeRef;
 
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
-public class GlobalVar extends ValueRef {
+public class GlobalVar extends ValueRef implements Variable {
     private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
     private final static ArrayList<Integer> usedFreqList = new ArrayList<Integer>(){{add(0);}};
     private ValueRef initVal;
+    /**
+     * value is for constant propagation
+     */
+    private final Value value = Value.getUndef();
     public GlobalVar(TypeRef type, String name) {
         if (usedNameList.contains(name)) {
             int index = usedNameList.indexOf(name);
@@ -23,7 +26,7 @@ public class GlobalVar extends ValueRef {
         this.type = type;
     }
 
-    public void initial(ValueRef value) {
+    public void initialize(ValueRef value) {
         this.initVal = value;
     }
 
@@ -38,9 +41,34 @@ public class GlobalVar extends ValueRef {
 
     @Override
     public String toString() {
-        if (name.length() > 31) {
-            return "@" + "long_global_var_" + name.substring(0, 31);
-        }
         return "@" + name;
+    }
+
+    /**
+     * the following methods are for constant propagation:
+     */
+    @Override
+    public boolean isNAC() {
+        return value.isNAC();
+    }
+
+    @Override
+    public boolean isConstant() {
+        return value.isConstant();
+    }
+
+    @Override
+    public boolean isUndef() {
+        return value.isUndef();
+    }
+
+    @Override
+    public int getValue() {
+        return value.getValue();
+    }
+
+    @Override
+    public void mergeValue(Value value) {
+        this.value.merge(value);
     }
 }

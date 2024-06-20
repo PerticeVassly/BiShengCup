@@ -4,14 +4,12 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.type.Pointer;
-import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
@@ -86,7 +84,7 @@ public class ModuleRef {
             System.err.println("Global variable has not been declared.");
             return;
         }
-        ((GlobalVar) globalVar).initial(initVal);
+        ((GlobalVar) globalVar).initialize(initVal);
     }
 
     private String implementArrInitIr(ArrayType arrayType, ArrayValue arrayValue) {
@@ -215,6 +213,7 @@ public class ModuleRef {
             for (int i = 0; i < fv.getBlockNum(); i++) {
                 // output each basic block
                 BasicBlockRef block = fv.getBasicBlockRef(i);
+                if (!block.isReachable()) continue; // dead code elimination
                 System.out.print(block.getName() + ":");
                 if (block.hasPred()) {
                     for (int k = 0; k < blockNameAreaLength - block.getName().length() + 40; k++) {

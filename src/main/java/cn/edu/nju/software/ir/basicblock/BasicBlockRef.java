@@ -21,6 +21,7 @@ public class BasicBlockRef extends ValueRef {
     private final FunctionValue function;
     private final ArrayList<BasicBlockRef> pred;
     private int predNum;
+    private boolean reachable = true;
 
     public BasicBlockRef(FunctionValue fv, String name) {
         this.function = fv;
@@ -95,5 +96,13 @@ public class BasicBlockRef extends ValueRef {
     @Override
     public String toString() {
         return "%" + name;
+    }
+
+    public boolean isReachable() {
+        return reachable;
+    }
+
+    public void setReachable(boolean reachable) {
+        this.reachable = reachable;
     }
 }
