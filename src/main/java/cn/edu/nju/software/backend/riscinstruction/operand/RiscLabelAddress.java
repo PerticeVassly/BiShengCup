@@ -1,6 +1,6 @@
 package cn.edu.nju.software.backend.riscinstruction.operand;
 
-import cn.edu.nju.software.backend.riscinstruction.RiscLabel;
+import cn.edu.nju.software.backend.riscinstruction.util.RiscLabel;
 
 public class RiscLabelAddress implements Operand {
 

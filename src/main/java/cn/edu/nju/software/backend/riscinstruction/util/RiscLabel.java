@@ -1,4 +1,6 @@
-package cn.edu.nju.software.backend.riscinstruction;
+package cn.edu.nju.software.backend.riscinstruction.util;
+
+import cn.edu.nju.software.backend.riscinstruction.DefaultInstruction;
 
 public class RiscLabel extends DefaultInstruction {
     private String label;

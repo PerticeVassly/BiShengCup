@@ -54,10 +54,8 @@ main:
 
 mainEntry96:
 	li t0, 10
-	mv t1, t0
-	li t2, 5
-	mv t3, t2
-	mv t4, t3
-	mv a0, t4
+	li t1, 5
+	mv t2, t1
+	mv a0, t2
 	addi sp, sp, 0
 	ret 

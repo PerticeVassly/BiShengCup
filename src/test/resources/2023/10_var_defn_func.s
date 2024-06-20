@@ -119,9 +119,9 @@ mainEntry82:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 	# restore caller saved regs end
-	lw t0, 0(sp)
-	mv t1, t0
-	mv t2, t1
+	lw t1, 0(sp)
+	mv t0, t1
+	mv t2, t0
 	mv a0, t2
 	addi sp, sp, 4
 	ret 

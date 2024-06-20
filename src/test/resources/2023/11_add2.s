@@ -54,12 +54,10 @@ main:
 
 mainEntry90:
 	li t0, 10
-	mv t1, t0
-	li t2, -1
-	mv t3, t2
-	mv t4, t1
-	mv t5, t3
-	add t6, t4, t5
-	mv a0, t6
+	li t1, -1
+	mv t2, t0
+	mv t3, t1
+	add t4, t2, t3
+	mv a0, t4
 	addi sp, sp, 0
 	ret 

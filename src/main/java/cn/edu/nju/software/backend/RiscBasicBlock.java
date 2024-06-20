@@ -1,13 +1,15 @@
 package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.backend.registeralloc.MemoryVar;
-import cn.edu.nju.software.backend.registeralloc.MemoryVarStack;
 import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
-import cn.edu.nju.software.backend.riscinstruction.RiscLabel;
+import cn.edu.nju.software.backend.riscinstruction.pseudo.*;
+import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
+import cn.edu.nju.software.backend.riscinstruction.util.RiscLabel;
 import cn.edu.nju.software.backend.registeralloc.RegisterManager;
+import cn.edu.nju.software.backend.riscinstruction.operand.RiscSltu;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.*;
@@ -143,6 +145,7 @@ public class RiscBasicBlock implements InstructionVisitor {
         //通知registerManager解锁资源
         registerManager.unlockReg(src_reg);
     }
+
     @Override
     public void visit(Add add){
 
@@ -200,40 +203,113 @@ public class RiscBasicBlock implements InstructionVisitor {
         riscInstructions.add(riscJ);
     }
 
-    @Deprecated
     @Override
     public void visit(Cmp cmp){
         String destName = cmp.getLVal().getName();
         String opNameL = cmp.getOperand(0).getName();
         String opNameR = cmp.getOperand(1).getName();
 
+        //todo() switch case (wait to refactor)
         String dest_reg = registerManager.provideReg(destName);
         registerManager.lockReg(dest_reg);
 
-        String opL_reg = registerManager.provideReg(opNameL);
-        registerManager.lockReg(opL_reg);
 
-        String opR_reg = registerManager.provideReg(opNameR);
-        registerManager.lockReg(opR_reg);
+        String op1_reg = "";
+        if(cmp.getOperand(0) instanceof ConstValue){
+            // li
+            op1_reg = registerManager.provideReg();
+            riscInstructions.add(new RiscLi(new Register(op1_reg), new ImmediateValue((Integer) ((ConstValue) cmp.getOperand(0)).getValue())));
+        }
+        else {
+            // mv
+            op1_reg = registerManager.provideReg(opNameL);
+        }
+        registerManager.lockReg(op1_reg);
 
-        String temp_reg = registerManager.provideReg();
-        registerManager.lockReg(temp_reg);
 
-        riscInstructions.add(new RiscSub(new Register(temp_reg), new Register(opL_reg), new Register(opR_reg)));
+        String op2_reg = "" ;
+        if(cmp.getOperand(1) instanceof ConstValue){
+            // li
+            op2_reg = registerManager.provideReg();
+            riscInstructions.add(new RiscLi(new Register(op2_reg), new ImmediateValue((Integer) ((ConstValue) cmp.getOperand(1)).getValue())));
+        }
+        else {
+            // mv
+            op2_reg = registerManager.provideReg(opNameR);
+        }
+        registerManager.lockReg(op2_reg);
 
-        riscInstructions.add(new RiscBlt(new Register(dest_reg), new Register("zero")));
+        /*
+        "ne", "eq", "sgt", "slt", "sge", "sle",
+                "one", "oeq", "ogt", "olt", " oge", "ole"
+         */
+        String cmpType = cmp.getType();
+         switch (cmpType){
+             //not equal
+             case "ne":
+                 //use XOR to simulate if is zero
+                 //if same set 0, else set 1
+                 riscInstructions.add(new RiscXor(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 break;
+
+             case "eq":
+                 //use XOR to simulate if is zero
+                 riscInstructions.add(new RiscXor(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 riscInstructions.add(new RiscSeqz(new Register(dest_reg), new Register(dest_reg)));
+                 break;
+
+             case "sgt":
+                 // dest = rs1 - rs2 (dest > 0)
+                 riscInstructions.add(new RiscSub(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 // dest > 0 dest = 1
+                 riscInstructions.add(new RiscSgtz(new Register(dest_reg), new Register(dest_reg)));
+                 break;
+
+             case "slt":
+                 //slt
+                 riscInstructions.add(new RiscSltu(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 break;
+
+             case "sge":
+                 //rs1 < rs2 dest = 0
+                 riscInstructions.add(new RiscSlt(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 riscInstructions.add(new RiscSeqz(new Register(dest_reg), new Register(dest_reg)));
+                 break;
+
+             case "sle":
+                 //dest = rs1 - rs2 (dest <= 0)
+                 riscInstructions.add(new RiscSub(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 // if dest <= 0 then dest > 0 is false -> dest = 0
+                 riscInstructions.add(new RiscSgtz(new Register(dest_reg), new Register(dest_reg)));
+                 // reverse the result
+                 riscInstructions.add(new RiscSeqz(new Register(dest_reg), new Register(dest_reg)));
+                 break;
+
+             //todo() rest maybe float part
+         }
+
+         //free the resources
+        registerManager.unlockReg(dest_reg);
+        registerManager.unlockReg(op1_reg);
+        registerManager.unlockReg(op2_reg);
     }
 
     @Override
     public void visit(ZExt zExt){
         //todo() waiting to refactor
-        // 寄存器都是32bit的，暂时不操作
+        // 寄存器都是32bit的，暂时不操作,只是简单mv
+        String src_reg = registerManager.provideReg(zExt.getOperand(0).getName());
+        registerManager.lockReg(src_reg);
+        String dest_reg = registerManager.provideReg(zExt.getLVal().getName());
+
+        riscInstructions.add(new RiscMv(new Register(dest_reg), new Register(src_reg)));
+
+        registerManager.unlockReg(src_reg);
+        registerManager.unlockReg(dest_reg);
     }
 
     @Override
     public void visit(CondBr condBr){
-
-        //todo() block的名字有可能冲突的 waiting to refactor
         ValueRef cond = condBr.getOperand(0);
         BasicBlockRef ifTrue = condBr.getTrueBlock();
         BasicBlockRef ifFalse = condBr.getFalseBlock();
@@ -288,8 +364,6 @@ public class RiscBasicBlock implements InstructionVisitor {
             }
             else{
                 String param_reg = registerManager.provideReg(param.getName());
-
-
                 riscInstructions.add( new RiscMv(new Register(argRegs[i]), new Register(param_reg)));
             }
             // lock the register in case of being spilled
@@ -311,8 +385,6 @@ public class RiscBasicBlock implements InstructionVisitor {
          * sp now points to empty
          */
         riscInstructions.add(new RiscSw(new Register("a0"), new IndirectRegister("sp", (RiscSpecifications.getCallerSavedRegs().length)* 4)));
-
-
 
         restoreCallerSavedRegs();
     }

@@ -97,7 +97,7 @@ addEntry:
 .globl main
 main:
 
-mainEntry1:
+mainEntry2:
 	li t0, 2
 	li t1, 3
 	li t2, 4

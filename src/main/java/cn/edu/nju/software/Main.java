@@ -82,7 +82,6 @@ public class Main {
 
         if(emitAssembly){
             RiscModule riscModule = new RiscModule(module);
-            riscModule.dumpToConsole();
             riscModule.dumpToFile(output);
         }
     }

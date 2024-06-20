@@ -57,8 +57,7 @@ main:
 mainEntry46:
 	li t0, 2
 	mv t1, t0
-	mv t2, t1
-	mv t3, t3
-	mv a0, t4
+	mv t2, t2
+	mv a0, t3
 	addi sp, sp, 0
 	ret 

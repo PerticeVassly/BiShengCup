@@ -54,14 +54,11 @@ main:
 
 mainEntry34:
 	li t0, 1
-	mv t1, t0
-	li t2, 2
-	mv t3, t2
-	li t4, 3
-	mv t5, t4
-	mv t6, t3
-	mv t0, t5
-	add t2, t6, t0
-	mv a0, t2
+	li t1, 2
+	li t2, 3
+	mv t3, t1
+	mv t4, t2
+	add t5, t3, t4
+	mv a0, t5
 	addi sp, sp, 0
 	ret 

@@ -129,7 +129,7 @@ mainEntry21:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 	# restore caller saved regs end
-	lw t2, 4(sp)
+	lw t2, 0(sp)
 	mv t1, t2
 	mv t3, t1
 	mv a0, t3
