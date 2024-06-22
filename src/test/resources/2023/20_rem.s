@@ -53,8 +53,16 @@ putfarray:
 main:
 
 mainEntry19:
-	li t0, 10
-	mv t1, t0
-	mv a0, t2
-	addi sp, sp, 0
+	# alloc a
+
+	addi sp, sp, -4
+	# store a 
+
+	li a0, 10
+	sw a0, 0(sp)
+	# load a$1 a
+
+	lw a0, 0(sp)
+	mv a0, a1
+	addi sp, sp, 4
 	ret 

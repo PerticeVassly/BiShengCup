@@ -54,6 +54,7 @@ defn:
 
 defnEntry:
 	# save callee saved regs
+
 	addi sp, sp, -48
 	sw s0, 0(sp)
 	sw s1, 4(sp)
@@ -68,9 +69,12 @@ defnEntry:
 	sw s10, 40(sp)
 	sw s11, 44(sp)
 	# save callee saved regs end
+
 	li a0, 4
+	mv a0, a0
 	addi sp, sp, 0
 	# restore callee saved regs
+
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
@@ -85,14 +89,21 @@ defnEntry:
 	lw s11, 44(sp)
 	addi sp, sp, 48
 	# restore callee saved regs end
+
 	ret 
 .type main, @function
 .globl main
 main:
 
 mainEntry82:
+	# alloc a
+
 	addi sp, sp, -4
+	addi sp, sp, -4
+	# prepare params
+
 	# save caller saved regs
+
 	addi sp, sp, -40
 	sw t0, 0(sp)
 	sw t1, 4(sp)
@@ -107,6 +118,7 @@ mainEntry82:
 	call defn
 	sw a0, 40(sp)
 	# restore caller saved regs
+
 	lw t0, 0(sp)
 	lw t1, 4(sp)
 	lw t2, 8(sp)
@@ -119,9 +131,14 @@ mainEntry82:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 	# restore caller saved regs end
-	lw t1, 0(sp)
-	mv t0, t1
-	mv t2, t0
-	mv a0, t2
-	addi sp, sp, 4
+
+	# store a defn
+
+	lw a0, 0(sp)
+	sw a0, 4(sp)
+	# load a$1 a
+
+	lw a1, 4(sp)
+	mv a0, a1
+	addi sp, sp, 8
 	ret 

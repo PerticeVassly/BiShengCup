@@ -9,8 +9,10 @@ public enum RiscOpcode {
     SW,
     LI,
     MV,
+    DIV,
     RET,
     J,
     CALL, COMMENT, ECALL, BEQZ, BLT, LABEL, XOR,
-    SEQZ, SNEZ, SLT, SLTZ, SGTZ, AND, OR, SLTU
+    SEQZ, SNEZ, SLT, SLTZ, SGTZ, AND, OR, SLTU,
+    REM
 }

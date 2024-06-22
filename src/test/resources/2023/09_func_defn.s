@@ -56,6 +56,7 @@ func:
 
 funcEntry:
 	# save callee saved regs
+
 	addi sp, sp, -48
 	sw s0, 0(sp)
 	sw s1, 4(sp)
@@ -70,14 +71,28 @@ funcEntry:
 	sw s10, 40(sp)
 	sw s11, 44(sp)
 	# save callee saved regs end
-	mv t0, a0
-	mv t1, t0
-	mv t2, t1
-	mv t1, t3
-	mv t4, t1
-	mv a0, t4
-	addi sp, sp, 0
+
+	# alloc p
+
+	addi sp, sp, -4
+	# store p 0
+
+	sw a0, 0(sp)
+	# load p$1 p
+
+	lw a1, 0(sp)
+	li a2, 1
+	sub s0, a1, a2
+	# store p result_
+
+	sw s0, 0(sp)
+	# load p$2 p
+
+	lw a2, 0(sp)
+	mv a0, a2
+	addi sp, sp, 4
 	# restore callee saved regs
+
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
@@ -92,17 +107,30 @@ funcEntry:
 	lw s11, 44(sp)
 	addi sp, sp, 48
 	# restore callee saved regs end
+
 	ret 
 .type main, @function
 .globl main
 main:
 
 mainEntry21:
-	li t0, 10
-	mv t0, t0
+	# alloc b
+
 	addi sp, sp, -4
-	mv a0, t0
+	# store a 
+
+	li a0, 10
+	sw a0, 0(sp)
+	# load a a
+
+	lw a0, 0(sp)
+	lw a0, 0(sp)
+	addi sp, sp, -4
+	# prepare params
+
+	mv a0, a0
 	# save caller saved regs
+
 	addi sp, sp, -40
 	sw t0, 0(sp)
 	sw t1, 4(sp)
@@ -117,6 +145,7 @@ mainEntry21:
 	call func
 	sw a0, 40(sp)
 	# restore caller saved regs
+
 	lw t0, 0(sp)
 	lw t1, 4(sp)
 	lw t2, 8(sp)
@@ -129,9 +158,14 @@ mainEntry21:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 	# restore caller saved regs end
-	lw t2, 0(sp)
-	mv t1, t2
-	mv t3, t1
-	mv a0, t3
-	addi sp, sp, 4
+
+	# store b func
+
+	lw a1, 0(sp)
+	sw a1, 8(sp)
+	# load b$1 b
+
+	lw a2, 8(sp)
+	mv a0, a2
+	addi sp, sp, 12
 	ret 

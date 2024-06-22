@@ -1,6 +1,9 @@
 package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.backend.riscinstruction.*;
+import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscDiv;
+import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscMul;
+import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscRem;
 import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
@@ -12,7 +15,7 @@ import cn.edu.nju.software.backend.riscinstruction.operand.RiscSltu;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.*;
-import cn.edu.nju.software.ir.instruction.arithmetic.Add;
+import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.value.FunctionValue;
@@ -155,6 +158,74 @@ public class RiscBasicBlock implements InstructionVisitor {
     }
 
     @Override
+    public void visit(Sub sub){
+        ValueRef op1 = sub.getOperand(0);
+        ValueRef op2 = sub.getOperand(1);
+        ValueRef dest = sub.getLVal();
+
+        ArrayList<String> regNames = allocator.provideGRegs(new ArrayList<ValueRef>(){{add(op1);add(op2);add(dest);}});
+
+        String op1_reg = regNames.get(0);
+        String op2_reg = regNames.get(1);
+        String dest_reg = regNames.get(2);
+
+        riscInstructions.add(new RiscSub(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+
+        allocator.unlockAll();
+    }
+
+    @Override
+    public void visit(Mul mul){
+        ValueRef op1 = mul.getOperand(0);
+        ValueRef op2 = mul.getOperand(1);
+        ValueRef dest = mul.getLVal();
+
+        ArrayList<String> regNames = allocator.provideGRegs(new ArrayList<ValueRef>(){{add(op1);add(op2);add(dest);}});
+
+        String op1_reg = regNames.get(0);
+        String op2_reg = regNames.get(1);
+        String dest_reg = regNames.get(2);
+
+        riscInstructions.add(new RiscMul(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+
+        allocator.unlockAll();
+    }
+
+    @Override
+    public void visit(Mod mod){
+        ValueRef op1 = mod.getOperand(0);
+        ValueRef op2 = mod.getOperand(1);
+        ValueRef dest = mod.getLVal();
+
+        ArrayList<String> regNames = allocator.provideGRegs(new ArrayList<ValueRef>(){{add(op1);add(op2);add(dest);}});
+
+        String op1_reg = regNames.get(0);
+        String op2_reg = regNames.get(1);
+        String dest_reg = regNames.get(2);
+
+        riscInstructions.add(new RiscRem(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+
+        allocator.unlockAll();
+    }
+
+    @Override
+    public void visit(Div div){
+        ValueRef op1 = div.getOperand(0);
+        ValueRef op2 = div.getOperand(1);
+        ValueRef dest = div.getLVal();
+
+        ArrayList<String> regNames = allocator.provideGRegs(new ArrayList<ValueRef>(){{add(op1);add(op2);add(dest);}});
+
+        String op1_reg = regNames.get(0);
+        String op2_reg = regNames.get(1);
+        String dest_reg = regNames.get(2);
+
+        riscInstructions.add(new RiscDiv(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+
+        allocator.unlockAll();
+    }
+
+    @Override
     public void visit(Br br){
         riscInstructions.add( new RiscJ(br.getTarget().getName()));
     }
@@ -290,6 +361,16 @@ public class RiscBasicBlock implements InstructionVisitor {
 
         riscInstructions.add(new RiscMv(new Register("a0"), new Register(regNames.get(0))));
 
+        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(allocator.getStackSize())));
+
+        if(!functionValue.getName().equals("main")){
+            restoreCalleeSavedRegs();
+        }
+        riscInstructions.add(new RiscRet());
+    }
+
+    @Override
+    public void visit(RetVoid retVoid){
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(allocator.getStackSize())));
 
         if(!functionValue.getName().equals("main")){

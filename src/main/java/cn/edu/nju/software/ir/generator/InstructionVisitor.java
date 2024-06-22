@@ -1,8 +1,7 @@
 package cn.edu.nju.software.ir.generator;
 
 import cn.edu.nju.software.ir.instruction.*;
-import cn.edu.nju.software.ir.instruction.arithmetic.Add;
-import cn.edu.nju.software.ir.instruction.arithmetic.Arithmetic;
+import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
 
 public interface InstructionVisitor {
@@ -13,6 +12,12 @@ public interface InstructionVisitor {
     default void visit(Arithmetic arithmetic) {}
 
     default void visit(Binary binary) {}
+
+    void visit(Mul mul);
+
+    void visit(Mod mod);
+
+    void visit(Div div);
 
     default void visit(Br br) {}
 
@@ -28,12 +33,11 @@ public interface InstructionVisitor {
 
     default void visit(IntToFloat intToFloat) {}
 
+    default void visit(Sub sub) {}
 
     default void visit(Load load) {}
 
     default void visit(Logic logic) {}
-
-    default void visit(Ret ret) {}
 
     default void visit(RetValue retValue) {}
 

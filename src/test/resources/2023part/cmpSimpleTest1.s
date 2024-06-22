@@ -52,7 +52,7 @@ putfarray:
 .globl main
 main:
 
-mainEntry1:
+mainEntry2:
 	# alloc a
 	addi sp, sp, -4
 	# store a 
@@ -66,14 +66,14 @@ mainEntry1:
 	mv a1, a2
 	li s0, 0
 	xor s1, a1, s0
-	beqz s1, next_
-	j ifTrue_
-ifTrue_:
+	beqz s1, next_4
+	j ifTrue_4
+ifTrue_4:
 	# store a 
 	li s0, 2
 	sw s0, 0(sp)
-	j next_
-next_:
+	j next_4
+next_4:
 	# load a$2 a
 	lw s0, 0(sp)
 	mv a0, s0

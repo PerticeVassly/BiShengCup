@@ -103,7 +103,7 @@ addEntry:
 .globl main
 main:
 
-mainEntry3:
+mainEntry4:
 	# alloc a
 	addi sp, sp, -4
 	# store a 

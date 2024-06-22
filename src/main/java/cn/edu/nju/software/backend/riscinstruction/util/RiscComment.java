@@ -16,6 +16,6 @@ public class RiscComment extends DefaultInstruction {
 
     @Override
     public String emitCode() {
-        return "\t# " + comment;
+        return "\t# " + comment + System.lineSeparator();
     }
 }

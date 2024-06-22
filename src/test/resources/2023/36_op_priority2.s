@@ -53,21 +53,51 @@ putfarray:
 main:
 
 mainEntry83:
-	li t0, 10
-	li t1, 4
-	li t2, 2
-	li t3, 2
-	mv t4, t2
-	mv t5, t0
-	add t6, t4, t5
+	# alloc a
+
 	addi sp, sp, -4
-	sw t0, 0(sp)
-	mv t0, t1
+	# alloc b
+
 	addi sp, sp, -4
-	sw t1, 0(sp)
-	mv t1, t3
+	# alloc c
+
 	addi sp, sp, -4
-	sw t2, 0(sp)
-	mv a0, t2
-	addi sp, sp, 12
+	# alloc d
+
+	addi sp, sp, -4
+	# store a 
+
+	li a0, 10
+	sw a0, 12(sp)
+	# store b 
+
+	li a0, 4
+	sw a0, 8(sp)
+	# store c 
+
+	li a0, 2
+	sw a0, 4(sp)
+	# store d 
+
+	li a0, 2
+	sw a0, 0(sp)
+	# load c$1 c
+
+	lw a0, 4(sp)
+	# load a$1 a
+
+	lw a1, 12(sp)
+	add a2, a0, a1
+	# load b$1 b
+
+	lw s0, 8(sp)
+	# load d$1 d
+
+	lw s1, 0(sp)
+	sub s2, s0, s1
+	addi sp, sp, -4
+	sw a0, 0(sp)
+	mul a0, a2, s2
+	mv a0, a0
+	addi sp, sp, 20
 	ret 
