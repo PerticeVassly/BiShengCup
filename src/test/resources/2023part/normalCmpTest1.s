@@ -52,30 +52,60 @@ putfarray:
 .globl main
 main:
 
-mainEntry1:
+mainEntry:
 	# alloc a
 	addi sp, sp, -4
 	# store a 
 	li a0, 1
 	sw a0, 0(sp)
+	# alloc b
+	addi sp, sp, -4
+	# store b 
+	li a0, 2
+	sw a0, 0(sp)
+	# alloc c
+	addi sp, sp, -4
+	# store c 
+	li a0, 3
+	sw a0, 0(sp)
 	# load a$1 a
-	lw a0, 0(sp)
-	li a1, 1
-	xor a2, a0, a1
-	seqz a2, a2
-	mv a1, a2
-	li s0, 0
-	xor s1, a1, s0
-	beqz s1, next_
-	j ifTrue_
+	lw a0, 8(sp)
+	# load b$1 b
+	lw a1, 4(sp)
+	sltu a2, a0, a1
+	mv s0, a2
+	li s1, 0
+	xor s2, s0, s1
+	beqz s2, ifFalse_
+	j secondCond_
 ifTrue_:
-	# store a 
-	li s0, 2
-	sw s0, 0(sp)
-	j next_
-next_:
-	# load a$2 a
-	lw s0, 0(sp)
-	mv a0, s0
-	addi sp, sp, 4
+	li s1, 10
+	mv a0, s1
+	addi sp, sp, 12
 	ret 
+ifFalse_:
+	addi sp, sp, -4
+	sw a0, 0(sp)
+	li a0, 0
+	mv a0, a0
+	addi sp, sp, 16
+	ret 
+secondCond_:
+	# load b$2 b
+	addi sp, sp, -4
+	sw a1, 0(sp)
+	lw a1, 12(sp)
+	# load c$1 c
+	lw a0, 8(sp)
+	sltu s1, a1, a0
+	addi sp, sp, -4
+	sw a0, 0(sp)
+	mv a0, s1
+	addi sp, sp, -4
+	sw a1, 0(sp)
+	li a1, 0
+	addi sp, sp, -4
+	sw a2, 0(sp)
+	xor a2, a0, a1
+	beqz a2, ifFalse_
+	j ifTrue_

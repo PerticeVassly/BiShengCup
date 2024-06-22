@@ -2,7 +2,6 @@ package cn.edu.nju.software.ir.generator;
 
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.Add;
-import cn.edu.nju.software.ir.instruction.arithmetic.Alloc;
 import cn.edu.nju.software.ir.instruction.arithmetic.Arithmetic;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
 
@@ -29,7 +28,6 @@ public interface InstructionVisitor {
 
     default void visit(IntToFloat intToFloat) {}
 
-    void visit(Alloc alloc);
 
     default void visit(Load load) {}
 

@@ -68,15 +68,21 @@ g1Entry:
 	sw s10, 40(sp)
 	sw s11, 44(sp)
 	# save callee saved regs end
-	mv t0, a0
-	mv t1, a1
-	mv t2, t0
-	mv t3, t1
-	mv t4, t2
-	mv t5, t3
-	add t6, t4, t5
-	mv a0, t6
-	addi sp, sp, 0
+	# alloc i
+	addi sp, sp, -4
+	# store i 0
+	sw a0, 0(sp)
+	# alloc j
+	addi sp, sp, -4
+	# store j 1
+	sw a1, 0(sp)
+	# load i$1 i
+	lw a2, 4(sp)
+	# load j$1 j
+	lw s0, 0(sp)
+	add s1, a2, s0
+	mv a0, s1
+	addi sp, sp, 8
 	# restore callee saved regs
 	lw s0, 0(sp)
 	lw s1, 4(sp)
@@ -113,15 +119,22 @@ f1Entry:
 	sw s10, 40(sp)
 	sw s11, 44(sp)
 	# save callee saved regs end
-	mv t0, a0
-	mv t1, a1
-	mv t2, t0
-	mv t3, t1
-	mv t4, t2
-	mv t5, t2
+	# alloc i
 	addi sp, sp, -4
-	mv a0, t4
-	mv a1, t5
+	# store i 0
+	sw a0, 0(sp)
+	# alloc j
+	addi sp, sp, -4
+	# store j 1
+	sw a1, 0(sp)
+	# load i$1 i
+	lw a2, 4(sp)
+	# load i$2 i
+	lw s0, 4(sp)
+	addi sp, sp, -4
+	# prepare params
+	mv a0, a2
+	mv a1, s0
 	# save caller saved regs
 	addi sp, sp, -40
 	sw t0, 0(sp)
@@ -149,13 +162,14 @@ f1Entry:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 	# restore caller saved regs end
-	mv t6, t3
+	# load j$1 j
+	lw s1, 4(sp)
+	# load j$2 j
+	lw s2, 4(sp)
 	addi sp, sp, -4
-	sw t0, 0(sp)
-	mv t0, t3
-	addi sp, sp, -4
-	mv a0, t6
-	mv a1, t0
+	# prepare params
+	mv a0, s1
+	mv a1, s2
 	# save caller saved regs
 	addi sp, sp, -40
 	sw t0, 0(sp)
@@ -184,16 +198,16 @@ f1Entry:
 	addi sp, sp, 40
 	# restore caller saved regs end
 	addi sp, sp, -4
-	sw t1, 0(sp)
-	lw t1, 12(sp)
+	sw a0, 0(sp)
+	lw a0, 8(sp)
 	addi sp, sp, -4
-	sw t2, 0(sp)
-	lw t2, 8(sp)
+	sw a1, 0(sp)
+	lw a1, 8(sp)
 	addi sp, sp, -4
-	sw t3, 0(sp)
-	add t3, t1, t2
-	mv a0, t3
-	addi sp, sp, 24
+	sw a2, 0(sp)
+	add a2, a0, a1
+	mv a0, a2
+	addi sp, sp, 28
 	# restore callee saved regs
 	lw s0, 0(sp)
 	lw s1, 4(sp)
@@ -216,8 +230,11 @@ main:
 
 mainEntry:
 	addi sp, sp, -4
+	# prepare params
 	li a0, 1
+	mv a0, a0
 	li a1, 1
+	mv a1, a1
 	# save caller saved regs
 	addi sp, sp, -40
 	sw t0, 0(sp)
@@ -246,9 +263,11 @@ mainEntry:
 	addi sp, sp, 40
 	# restore caller saved regs end
 	addi sp, sp, -4
+	# prepare params
 	li a0, 1
-	lw t0, 4(sp)
-	mv a1, t0
+	mv a0, a0
+	lw a1, 4(sp)
+	mv a1, a1
 	# save caller saved regs
 	addi sp, sp, -40
 	sw t0, 0(sp)
@@ -276,7 +295,7 @@ mainEntry:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 	# restore caller saved regs end
-	lw t1, 0(sp)
-	mv a0, t1
+	lw a0, 0(sp)
+	mv a0, a0
 	addi sp, sp, 8
 	ret 

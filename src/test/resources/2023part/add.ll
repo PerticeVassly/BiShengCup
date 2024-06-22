@@ -29,18 +29,14 @@ addEntry:
 }
 
 define i32 @main() {
-mainEntry2:
+mainEntry3:
   %a = alloca i32, align 4
   store i32 2, i32* %a, align 4
   %b = alloca i32, align 4
   store i32 3, i32* %b, align 4
   %c = alloca i32, align 4
   store i32 4, i32* %c, align 4
-  %a$1 = load i32, i32* %a, align 4
-  %b$1 = load i32, i32* %b, align 4
-  %c$1 = load i32, i32* %c, align 4
-  %add = call i32 @add(i32 %b$1, i32 %c$1)
-  %add$1 = call i32 @add(i32 %a$1, i32 %add)
-  ret i32 %add$1
+  %add = call i32 @add(i32 1, i32 1)
+  ret i32 %add
 }
 

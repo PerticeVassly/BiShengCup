@@ -1,6 +1,6 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.backend.registeralloc.RegisterManager;
+import cn.edu.nju.software.backend.registeralloc.Allocator;
 import cn.edu.nju.software.ir.module.ModuleRef;
 
 import java.io.FileNotFoundException;
@@ -15,10 +15,10 @@ public class RiscModule {
     private ModuleRef llvmModule;
     private final List<RiscFunction> riscFunctions = new ArrayList<>();
     private final List<RiscGlobalVar> riscGlobalVars = new ArrayList<>();
-    private final RegisterManager registerManager = new RegisterManager();
+    private final Allocator allocator = new Allocator();
 
-    public RegisterManager getRegisterManager() {
-        return registerManager;
+    public Allocator getRegisterManager() {
+        return allocator;
     }
 
     public RiscModule(ModuleRef llvmModule) {
