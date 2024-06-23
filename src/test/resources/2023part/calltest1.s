@@ -53,6 +53,7 @@ putfarray:
 g1:
 
 g1Entry:
+
 	# save callee saved regs
 	addi sp, sp, -48
 	sw s0, 0(sp)
@@ -67,22 +68,30 @@ g1Entry:
 	sw s9, 36(sp)
 	sw s10, 40(sp)
 	sw s11, 44(sp)
+
 	# save callee saved regs end
+
 	# alloc i
 	addi sp, sp, -4
+
 	# store i 0
 	sw a0, 0(sp)
+
 	# alloc j
 	addi sp, sp, -4
+
 	# store j 1
 	sw a1, 0(sp)
+
 	# load i$1 i
 	lw a2, 4(sp)
+
 	# load j$1 j
 	lw s0, 0(sp)
 	add s1, a2, s0
 	mv a0, s1
 	addi sp, sp, 8
+
 	# restore callee saved regs
 	lw s0, 0(sp)
 	lw s1, 4(sp)
@@ -97,6 +106,7 @@ g1Entry:
 	lw s10, 40(sp)
 	lw s11, 44(sp)
 	addi sp, sp, 48
+
 	# restore callee saved regs end
 	ret 
 .type f1, @function
@@ -104,6 +114,7 @@ g1Entry:
 f1:
 
 f1Entry:
+
 	# save callee saved regs
 	addi sp, sp, -48
 	sw s0, 0(sp)
@@ -118,23 +129,32 @@ f1Entry:
 	sw s9, 36(sp)
 	sw s10, 40(sp)
 	sw s11, 44(sp)
+
 	# save callee saved regs end
+
 	# alloc i
 	addi sp, sp, -4
+
 	# store i 0
 	sw a0, 0(sp)
+
 	# alloc j
 	addi sp, sp, -4
+
 	# store j 1
 	sw a1, 0(sp)
+
 	# load i$1 i
 	lw a2, 4(sp)
+
 	# load i$2 i
 	lw s0, 4(sp)
 	addi sp, sp, -4
+
 	# prepare params
 	mv a0, a2
 	mv a1, s0
+
 	# save caller saved regs
 	addi sp, sp, -40
 	sw t0, 0(sp)
@@ -149,6 +169,7 @@ f1Entry:
 	sw ra, 36(sp)
 	call g1
 	sw a0, 40(sp)
+
 	# restore caller saved regs
 	lw t0, 0(sp)
 	lw t1, 4(sp)
@@ -161,15 +182,20 @@ f1Entry:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
 	# restore caller saved regs end
+
 	# load j$1 j
 	lw s1, 4(sp)
+
 	# load j$2 j
 	lw s2, 4(sp)
 	addi sp, sp, -4
+
 	# prepare params
 	mv a0, s1
 	mv a1, s2
+
 	# save caller saved regs
 	addi sp, sp, -40
 	sw t0, 0(sp)
@@ -184,6 +210,7 @@ f1Entry:
 	sw ra, 36(sp)
 	call g1
 	sw a0, 40(sp)
+
 	# restore caller saved regs
 	lw t0, 0(sp)
 	lw t1, 4(sp)
@@ -196,6 +223,7 @@ f1Entry:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
 	# restore caller saved regs end
 	addi sp, sp, -4
 	sw a0, 0(sp)
@@ -208,6 +236,7 @@ f1Entry:
 	add a2, a0, a1
 	mv a0, a2
 	addi sp, sp, 28
+
 	# restore callee saved regs
 	lw s0, 0(sp)
 	lw s1, 4(sp)
@@ -222,6 +251,7 @@ f1Entry:
 	lw s10, 40(sp)
 	lw s11, 44(sp)
 	addi sp, sp, 48
+
 	# restore callee saved regs end
 	ret 
 .type main, @function
@@ -230,11 +260,13 @@ main:
 
 mainEntry:
 	addi sp, sp, -4
+
 	# prepare params
 	li a0, 1
 	mv a0, a0
 	li a1, 1
 	mv a1, a1
+
 	# save caller saved regs
 	addi sp, sp, -40
 	sw t0, 0(sp)
@@ -249,6 +281,7 @@ mainEntry:
 	sw ra, 36(sp)
 	call f1
 	sw a0, 40(sp)
+
 	# restore caller saved regs
 	lw t0, 0(sp)
 	lw t1, 4(sp)
@@ -261,13 +294,16 @@ mainEntry:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
 	# restore caller saved regs end
 	addi sp, sp, -4
+
 	# prepare params
 	li a0, 1
 	mv a0, a0
 	lw a1, 4(sp)
 	mv a1, a1
+
 	# save caller saved regs
 	addi sp, sp, -40
 	sw t0, 0(sp)
@@ -282,6 +318,7 @@ mainEntry:
 	sw ra, 36(sp)
 	call g1
 	sw a0, 40(sp)
+
 	# restore caller saved regs
 	lw t0, 0(sp)
 	lw t1, 4(sp)
@@ -294,6 +331,7 @@ mainEntry:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
 	# restore caller saved regs end
 	lw a0, 0(sp)
 	mv a0, a0

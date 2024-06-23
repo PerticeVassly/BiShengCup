@@ -62,7 +62,7 @@ public class Allocator {
 
 
     //the caller should use the Reg immediately
-    private int getAnAvailableGReg(){
+    public int getAnAvailableGReg(){
         int regNO = registerTable.checkHasFreeReg() ? registerTable.getAFreeReg() : spill() ;
         return regNO;
     }

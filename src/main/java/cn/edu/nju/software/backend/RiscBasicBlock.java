@@ -4,14 +4,11 @@ import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscDiv;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscMul;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscRem;
-import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
-import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
-import cn.edu.nju.software.backend.riscinstruction.operand.Register;
+import cn.edu.nju.software.backend.riscinstruction.operand.*;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.*;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscLabel;
 import cn.edu.nju.software.backend.registeralloc.Allocator;
-import cn.edu.nju.software.backend.riscinstruction.operand.RiscSltu;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.*;
@@ -19,6 +16,7 @@ import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
@@ -104,10 +102,13 @@ public class RiscBasicBlock implements InstructionVisitor {
         ArrayList<String> regNames = allocator.provideGRegs(new ArrayList<ValueRef>(){{add(src);}});
         String src_reg = regNames.get(0);
 
-        allocator.allocateVarIntoMemory(dest.getName(), dest.getType().getWidth());
-
-
-        riscInstructions.add(new RiscSw(new Register(src_reg), new IndirectRegister("sp", allocator.getOffsetOfVar(dest.getName()))));
+        if(dest instanceof GlobalVar){
+            String temp_reg = RiscSpecifications.getRegName(allocator.getAnAvailableGReg());
+            riscInstructions.add(new RiscSymbolSw(new Register(src_reg), new RiscLabelAddress(new RiscLabel(dest.getName())), new Register(temp_reg)));
+        } else {
+            int offset = allocator.getOffsetOfVar(dest.getName());
+            riscInstructions.add(new RiscSw(new Register(src_reg), new IndirectRegister("sp", offset)));
+        }
 
         allocator.unlockAll();
     }
@@ -132,9 +133,16 @@ public class RiscBasicBlock implements InstructionVisitor {
         ArrayList<String> regNames = allocator.provideGRegs(new ArrayList<ValueRef>(){{add(dest);}});
 
         String dest_reg = regNames.get(0);
-        int offset = allocator.getOffsetOfVar(src.getName());
 
-        riscInstructions.add(new RiscLw(new Register(dest_reg), new IndirectRegister("sp", offset)));
+        //can be global var
+        if(src instanceof GlobalVar) {
+            riscInstructions.add(new RiscLw(new Register(dest_reg), new RiscLabelAddress(new RiscLabel(src.getName()))));
+
+        } else {
+            int offset = allocator.getOffsetOfVar(src.getName());
+            riscInstructions.add(new RiscLw(new Register(dest_reg), new IndirectRegister("sp", offset)));
+        }
+
 
         allocator.unlockAll();
     }

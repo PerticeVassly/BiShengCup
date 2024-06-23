@@ -63,6 +63,8 @@ mainEntry19:
 	# load a$1 a
 
 	lw a0, 0(sp)
-	mv a0, a1
+	li a1, 3
+	rem a2, a0, a1
+	mv a0, a2
 	addi sp, sp, 4
 	ret 

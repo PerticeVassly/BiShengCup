@@ -25,7 +25,8 @@ public interface InstructionVisitor {
 
     default void visit(Cmp cmp) {}
 
-    default void visit(CondBr condBr) {}
+    default void visit(CondBr condBr) {    //
+}
 
     default void visit(FloatToInt floatToInt) {}
 
@@ -47,6 +48,7 @@ public interface InstructionVisitor {
 
     default void visit(ZExt zExt) {}
 
-    //
-    void visit(Add add);
+    default void visit(Ret ret) {}
+
+    default void visit(Add add){}
 }
