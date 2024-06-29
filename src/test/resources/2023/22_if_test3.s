@@ -1,60 +1,13 @@
 .data
 .text
-.type getint, @function
-.globl getint
-getint:
-
-.type getch, @function
-.globl getch
-getch:
-
-.type getfloat, @function
-.globl getfloat
-getfloat:
-
-.type putint, @function
-.globl putint
-putint:
-
-.type putch, @function
-.globl putch
-putch:
-
-.type putfloat, @function
-.globl putfloat
-putfloat:
-
-.type starttime, @function
-.globl starttime
-starttime:
-
-.type stoptime, @function
-.globl stoptime
-stoptime:
-
-.type getarray, @function
-.globl getarray
-getarray:
-
-.type getfarray, @function
-.globl getfarray
-getfarray:
-
-.type putarray, @function
-.globl putarray
-putarray:
-
-.type putfarray, @function
-.globl putfarray
-putfarray:
-
 .type ififElse, @function
 .globl ififElse
 ififElse:
 
-ififElseEntry:
-	# save callee saved regs
 
+ififElseEntry:
+
+	# save callee saved regs
 	addi sp, sp, -48
 	sw s0, 0(sp)
 	sw s1, 4(sp)
@@ -68,24 +21,22 @@ ififElseEntry:
 	sw s9, 36(sp)
 	sw s10, 40(sp)
 	sw s11, 44(sp)
-	# save callee saved regs end
 
 	# alloc a
-
 	addi sp, sp, -4
-	# store a 
 
+	# store a 
 	li a0, 5
 	sw a0, 0(sp)
+
 	# alloc b
-
 	addi sp, sp, -4
-	# store b 
 
+	# store b 
 	li a0, 10
 	sw a0, 0(sp)
-	# load a$1 a
 
+	# load a$1 a
 	lw a0, 4(sp)
 	li a1, 5
 	xor a2, a0, a1
@@ -93,11 +44,12 @@ ififElseEntry:
 	mv a1, a2
 	li s0, 0
 	xor s1, a1, s0
-	beqz s1, next_477
-	j ifTrue_277
-ifTrue_277:
-	# load b$1 b
+	beqz s1, next_3
+	j ifTrue_3
 
+ifTrue_3:
+
+	# load b$1 b
 	lw s0, 0(sp)
 	li s2, 10
 	addi sp, sp, -4
@@ -111,16 +63,17 @@ ifTrue_277:
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	xor a1, s2, a0
-	beqz a1, ifFalse_103
-	j ifTrue_278
-next_477:
-	# load a$3 a
+	beqz a1, ifFalse_3
+	j ifTrue_4
 
+next_3:
+
+	# load a$3 a
 	lw a0, 16(sp)
 	mv a0, a0
 	addi sp, sp, 20
-	# restore callee saved regs
 
+	# restore callee saved regs
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
@@ -134,20 +87,20 @@ next_477:
 	lw s10, 40(sp)
 	lw s11, 44(sp)
 	addi sp, sp, 48
-	# restore callee saved regs end
-
 	ret 
-ifTrue_278:
-	# store a 
 
+ifTrue_4:
+
+	# store a 
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 25
 	sw a1, 20(sp)
-	j next_478
-ifFalse_103:
-	# load a$2 a
+	j next_4
 
+ifFalse_3:
+
+	# load a$2 a
 	lw a1, 20(sp)
 	addi sp, sp, -4
 	sw a0, 0(sp)
@@ -155,22 +108,24 @@ ifFalse_103:
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	add a2, a1, a0
-	# store a result_
 
+	# store a result_
 	sw a2, 28(sp)
-	j next_478
-next_478:
-	j next_477
+	j next_4
+
+next_4:
+	j next_3
 .type main, @function
 .globl main
 main:
 
-mainEntry53:
+
+mainEntry1:
 	addi sp, sp, -4
+
 	# prepare params
 
 	# save caller saved regs
-
 	addi sp, sp, -40
 	sw t0, 0(sp)
 	sw t1, 4(sp)
@@ -184,8 +139,8 @@ mainEntry53:
 	sw ra, 36(sp)
 	call ififElse
 	sw a0, 40(sp)
-	# restore caller saved regs
 
+	# restore caller saved regs
 	lw t0, 0(sp)
 	lw t1, 4(sp)
 	lw t2, 8(sp)
@@ -197,8 +152,6 @@ mainEntry53:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
-	# restore caller saved regs end
-
 	lw a0, 0(sp)
 	mv a0, a0
 	addi sp, sp, 4

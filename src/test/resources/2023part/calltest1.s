@@ -1,56 +1,9 @@
 .data
 .text
-.type getint, @function
-.globl getint
-getint:
-
-.type getch, @function
-.globl getch
-getch:
-
-.type getfloat, @function
-.globl getfloat
-getfloat:
-
-.type putint, @function
-.globl putint
-putint:
-
-.type putch, @function
-.globl putch
-putch:
-
-.type putfloat, @function
-.globl putfloat
-putfloat:
-
-.type starttime, @function
-.globl starttime
-starttime:
-
-.type stoptime, @function
-.globl stoptime
-stoptime:
-
-.type getarray, @function
-.globl getarray
-getarray:
-
-.type getfarray, @function
-.globl getfarray
-getfarray:
-
-.type putarray, @function
-.globl putarray
-putarray:
-
-.type putfarray, @function
-.globl putfarray
-putfarray:
-
 .type g1, @function
 .globl g1
 g1:
+
 
 g1Entry:
 
@@ -68,8 +21,6 @@ g1Entry:
 	sw s9, 36(sp)
 	sw s10, 40(sp)
 	sw s11, 44(sp)
-
-	# save callee saved regs end
 
 	# alloc i
 	addi sp, sp, -4
@@ -106,12 +57,11 @@ g1Entry:
 	lw s10, 40(sp)
 	lw s11, 44(sp)
 	addi sp, sp, 48
-
-	# restore callee saved regs end
 	ret 
 .type f1, @function
 .globl f1
 f1:
+
 
 f1Entry:
 
@@ -129,8 +79,6 @@ f1Entry:
 	sw s9, 36(sp)
 	sw s10, 40(sp)
 	sw s11, 44(sp)
-
-	# save callee saved regs end
 
 	# alloc i
 	addi sp, sp, -4
@@ -183,8 +131,6 @@ f1Entry:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 
-	# restore caller saved regs end
-
 	# load j$1 j
 	lw s1, 4(sp)
 
@@ -223,8 +169,6 @@ f1Entry:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
-
-	# restore caller saved regs end
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	lw a0, 8(sp)
@@ -251,12 +195,11 @@ f1Entry:
 	lw s10, 40(sp)
 	lw s11, 44(sp)
 	addi sp, sp, 48
-
-	# restore callee saved regs end
 	ret 
 .type main, @function
 .globl main
 main:
+
 
 mainEntry:
 	addi sp, sp, -4
@@ -294,8 +237,6 @@ mainEntry:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
-
-	# restore caller saved regs end
 	addi sp, sp, -4
 
 	# prepare params
@@ -331,8 +272,6 @@ mainEntry:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
-
-	# restore caller saved regs end
 	lw a0, 0(sp)
 	mv a0, a0
 	addi sp, sp, 8

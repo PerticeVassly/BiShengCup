@@ -21,14 +21,15 @@ public class TestRisc {
     private static final String DIR_PART = "src/test/resources/2023part/";
     private static final String SYLIB = "src/test/resources/sylib.ll";
     private static final String LINKED = "src/test/resources/linked.ll";
+    private static final String SYLIB_RISC = "src/test/resources/libriscv.o";
 
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("79_var_name")
-    @StringSource("90_many_locals")
-    @StringSource("64_calculator")
-    @StringSource("87_many_params")
+    @StringSource("21_if_test2")
+    @StringSource("22_if_test3")
+    @StringSource("23_if_test4")
+    @StringSource("24_if_test5")
     void testRisc(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
     }
@@ -64,7 +65,7 @@ public class TestRisc {
         String standardOut = dir + name + ".out";
         Main.main(code, "-o", output, "-S", "-O0");
 
-        cmdExecutor.exec("riscv64-unknown-elf-gcc", output, "-o", dir + name);
+        cmdExecutor.exec("riscv64-unknown-elf-gcc", output, "-o", dir + name, SYLIB_RISC);
         if (exist(dir, name + ".in")) {
             cmdExecutor.execRedirectInput(standardIn, "qemu-riscv64", "./" + dir + name);
         } else {

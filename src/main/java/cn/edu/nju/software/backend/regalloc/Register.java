@@ -1,4 +1,4 @@
-package cn.edu.nju.software.backend.registeralloc;
+package cn.edu.nju.software.backend.regalloc;
 
 import cn.edu.nju.software.backend.RiscSpecifications;
 

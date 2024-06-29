@@ -1,60 +1,13 @@
 .data
 .text
-.type getint, @function
-.globl getint
-getint:
-
-.type getch, @function
-.globl getch
-getch:
-
-.type getfloat, @function
-.globl getfloat
-getfloat:
-
-.type putint, @function
-.globl putint
-putint:
-
-.type putch, @function
-.globl putch
-putch:
-
-.type putfloat, @function
-.globl putfloat
-putfloat:
-
-.type starttime, @function
-.globl starttime
-starttime:
-
-.type stoptime, @function
-.globl stoptime
-stoptime:
-
-.type getarray, @function
-.globl getarray
-getarray:
-
-.type getfarray, @function
-.globl getfarray
-getfarray:
-
-.type putarray, @function
-.globl putarray
-putarray:
-
-.type putfarray, @function
-.globl putfarray
-putfarray:
-
 .type defn, @function
 .globl defn
 defn:
 
-defnEntry:
-	# save callee saved regs
 
+defnEntry:
+
+	# save callee saved regs
 	addi sp, sp, -48
 	sw s0, 0(sp)
 	sw s1, 4(sp)
@@ -68,13 +21,11 @@ defnEntry:
 	sw s9, 36(sp)
 	sw s10, 40(sp)
 	sw s11, 44(sp)
-	# save callee saved regs end
-
 	li a0, 4
 	mv a0, a0
 	addi sp, sp, 0
-	# restore callee saved regs
 
+	# restore callee saved regs
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
@@ -88,22 +39,21 @@ defnEntry:
 	lw s10, 40(sp)
 	lw s11, 44(sp)
 	addi sp, sp, 48
-	# restore callee saved regs end
-
 	ret 
 .type main, @function
 .globl main
 main:
 
-mainEntry82:
-	# alloc a
 
+mainEntry82:
+
+	# alloc a
 	addi sp, sp, -4
 	addi sp, sp, -4
+
 	# prepare params
 
 	# save caller saved regs
-
 	addi sp, sp, -40
 	sw t0, 0(sp)
 	sw t1, 4(sp)
@@ -117,8 +67,8 @@ mainEntry82:
 	sw ra, 36(sp)
 	call defn
 	sw a0, 40(sp)
-	# restore caller saved regs
 
+	# restore caller saved regs
 	lw t0, 0(sp)
 	lw t1, 4(sp)
 	lw t2, 8(sp)
@@ -130,14 +80,12 @@ mainEntry82:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
-	# restore caller saved regs end
 
 	# store a defn
-
 	lw a0, 0(sp)
 	sw a0, 4(sp)
-	# load a$1 a
 
+	# load a$1 a
 	lw a1, 4(sp)
 	mv a0, a1
 	addi sp, sp, 8

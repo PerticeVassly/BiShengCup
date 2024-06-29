@@ -8,7 +8,7 @@ import cn.edu.nju.software.backend.riscinstruction.operand.*;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.*;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscLabel;
-import cn.edu.nju.software.backend.registeralloc.Allocator;
+import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.*;
@@ -66,7 +66,7 @@ public class RiscBasicBlock implements InstructionVisitor {
     }
 
     public void dumpToConsole() {
-        System.out.println(name + ":");
+        System.out.println(System.lineSeparator() + name + ":");
         for(RiscInstruction riscInstruction : riscInstructions){
             System.out.println(riscInstruction.emitCode());
         }
@@ -391,7 +391,10 @@ public class RiscBasicBlock implements InstructionVisitor {
     public void visit(Call call) {
         //prepare return value
         riscInstructions.add( new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-4)));
-        allocator.allocateVarIntoMemory(call.getLVal().getName(), call.getLVal().getType().getWidth());
+        //if( call.getLVal() != null) 判断是不是有返回值
+        if(call.getLVal() != null){
+            allocator.allocateVarIntoMemory(call.getLVal().getName(), call.getLVal().getType().getWidth());
+        }
 
         //prepare the parameters
         String[] argRegs = RiscSpecifications.getArgRegs();
@@ -489,8 +492,6 @@ public class RiscBasicBlock implements InstructionVisitor {
          * addi sp, sp, 4 * 12
          */
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(4 * registers.length)));
-
-        riscInstructions.add(new RiscComment("restore caller saved regs end"));
     }
 
     /*
@@ -518,8 +519,6 @@ public class RiscBasicBlock implements InstructionVisitor {
             RiscInstruction riscSw = new RiscSw(new Register(calleeSavedRegs[i]), new IndirectRegister("sp", i * 4));
             riscInstructions.add(riscSw);
         }
-
-        riscInstructions.add(new RiscComment("save callee saved regs end"));
     }
 
     /*
@@ -546,7 +545,5 @@ public class RiscBasicBlock implements InstructionVisitor {
          * addi sp, sp, 4 * 12
          */
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(4 * calleeSavedRegs.length)));
-
-        riscInstructions.add(new RiscComment("restore callee saved regs end"));
     }
 }

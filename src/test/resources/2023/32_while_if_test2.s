@@ -1,60 +1,13 @@
 .data
 .text
-.type getint, @function
-.globl getint
-getint:
-
-.type getch, @function
-.globl getch
-getch:
-
-.type getfloat, @function
-.globl getfloat
-getfloat:
-
-.type putint, @function
-.globl putint
-putint:
-
-.type putch, @function
-.globl putch
-putch:
-
-.type putfloat, @function
-.globl putfloat
-putfloat:
-
-.type starttime, @function
-.globl starttime
-starttime:
-
-.type stoptime, @function
-.globl stoptime
-stoptime:
-
-.type getarray, @function
-.globl getarray
-getarray:
-
-.type getfarray, @function
-.globl getfarray
-getfarray:
-
-.type putarray, @function
-.globl putarray
-putarray:
-
-.type putfarray, @function
-.globl putfarray
-putfarray:
-
 .type ifWhile, @function
 .globl ifWhile
 ifWhile:
 
-ifWhileEntry:
-	# save callee saved regs
 
+ifWhileEntry:
+
+	# save callee saved regs
 	addi sp, sp, -48
 	sw s0, 0(sp)
 	sw s1, 4(sp)
@@ -68,24 +21,22 @@ ifWhileEntry:
 	sw s9, 36(sp)
 	sw s10, 40(sp)
 	sw s11, 44(sp)
-	# save callee saved regs end
 
 	# alloc a
-
 	addi sp, sp, -4
-	# store a 
 
+	# store a 
 	li a0, 0
 	sw a0, 0(sp)
+
 	# alloc b
-
 	addi sp, sp, -4
-	# store b 
 
+	# store b 
 	li a0, 3
 	sw a0, 0(sp)
-	# load a$1 a
 
+	# load a$1 a
 	lw a0, 4(sp)
 	li a1, 5
 	xor a2, a0, a1
@@ -95,18 +46,21 @@ ifWhileEntry:
 	xor s1, a1, s0
 	beqz s1, ifFalse_132
 	j ifTrue_330
+
 ifTrue_330:
 	j whileCond_251
+
 ifFalse_132:
 	j whileCond_252
-next_581:
-	# load b$5 b
 
+next_581:
+
+	# load b$5 b
 	lw s0, 0(sp)
 	mv a0, s0
 	addi sp, sp, 8
-	# restore callee saved regs
 
+	# restore callee saved regs
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
@@ -120,12 +74,11 @@ next_581:
 	lw s10, 40(sp)
 	lw s11, 44(sp)
 	addi sp, sp, 48
-	# restore callee saved regs end
-
 	ret 
-whileCond_251:
-	# load b$1 b
 
+whileCond_251:
+
+	# load b$1 b
 	lw s2, 0(sp)
 	addi sp, sp, -4
 	sw a0, 0(sp)
@@ -143,9 +96,10 @@ whileCond_251:
 	xor a2, a0, a1
 	beqz a2, next_582
 	j whileBody_251
-whileBody_251:
-	# load b$2 b
 
+whileBody_251:
+
+	# load b$2 b
 	lw a1, 16(sp)
 	addi sp, sp, -4
 	sw a0, 0(sp)
@@ -153,13 +107,14 @@ whileBody_251:
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	add a2, a1, a0
-	# store b result_
 
+	# store b result_
 	sw a2, 24(sp)
 	j whileCond_251
-next_582:
-	# load b$3 b
 
+next_582:
+
+	# load b$3 b
 	lw a0, 24(sp)
 	addi sp, sp, -4
 	sw a1, 0(sp)
@@ -167,13 +122,14 @@ next_582:
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	add a2, a0, a1
-	# store b result_$1
 
+	# store b result_$1
 	sw a2, 32(sp)
 	j next_581
-whileCond_252:
-	# load a$2 a
 
+whileCond_252:
+
+	# load a$2 a
 	lw a1, 36(sp)
 	addi sp, sp, -4
 	sw a0, 0(sp)
@@ -190,9 +146,10 @@ whileCond_252:
 	xor a2, a0, a1
 	beqz a2, next_583
 	j whileBody_252
-whileBody_252:
-	# load b$4 b
 
+whileBody_252:
+
+	# load b$4 b
 	lw a1, 48(sp)
 	addi sp, sp, -4
 	sw a0, 0(sp)
@@ -200,11 +157,11 @@ whileBody_252:
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	mul a2, a1, a0
+
 	# store b result_$2
-
 	sw a2, 56(sp)
-	# load a$3 a
 
+	# load a$3 a
 	lw a0, 60(sp)
 	addi sp, sp, -4
 	sw a1, 0(sp)
@@ -212,22 +169,24 @@ whileBody_252:
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	add a2, a0, a1
-	# store a result_$3
 
+	# store a result_$3
 	sw a2, 68(sp)
 	j whileCond_252
+
 next_583:
 	j next_581
 .type main, @function
 .globl main
 main:
 
+
 mainEntry80:
 	addi sp, sp, -4
+
 	# prepare params
 
 	# save caller saved regs
-
 	addi sp, sp, -40
 	sw t0, 0(sp)
 	sw t1, 4(sp)
@@ -241,8 +200,8 @@ mainEntry80:
 	sw ra, 36(sp)
 	call ifWhile
 	sw a0, 40(sp)
-	# restore caller saved regs
 
+	# restore caller saved regs
 	lw t0, 0(sp)
 	lw t1, 4(sp)
 	lw t2, 8(sp)
@@ -254,8 +213,6 @@ mainEntry80:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
-	# restore caller saved regs end
-
 	lw a0, 0(sp)
 	mv a0, a0
 	addi sp, sp, 4

@@ -1,6 +1,6 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.backend.registeralloc.Allocator;
+import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.ir.module.ModuleRef;
 
 import java.io.FileNotFoundException;

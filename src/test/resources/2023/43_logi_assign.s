@@ -1,67 +1,24 @@
 .data
 .globl a
+a:
+.word 0
 
 .globl b
+b:
+.word 0
 
 .text
-.type getint, @function
-.globl getint
-getint:
-
-.type getch, @function
-.globl getch
-getch:
-
-.type getfloat, @function
-.globl getfloat
-getfloat:
-
-.type putint, @function
-.globl putint
-putint:
-
-.type putch, @function
-.globl putch
-putch:
-
-.type putfloat, @function
-.globl putfloat
-putfloat:
-
-.type starttime, @function
-.globl starttime
-starttime:
-
-.type stoptime, @function
-.globl stoptime
-stoptime:
-
-.type getarray, @function
-.globl getarray
-getarray:
-
-.type getfarray, @function
-.globl getfarray
-getfarray:
-
-.type putarray, @function
-.globl putarray
-putarray:
-
-.type putfarray, @function
-.globl putfarray
-putfarray:
-
 .type main, @function
 .globl main
 main:
 
+
 mainEntry55:
 	addi sp, sp, -4
+
 	# prepare params
 
 	# save caller saved regs
-
 	addi sp, sp, -40
 	sw t0, 0(sp)
 	sw t1, 4(sp)
@@ -75,8 +32,8 @@ mainEntry55:
 	sw ra, 36(sp)
 	call getint
 	sw a0, 40(sp)
-	# restore caller saved regs
 
+	# restore caller saved regs
 	lw t0, 0(sp)
 	lw t1, 4(sp)
 	lw t2, 8(sp)
@@ -88,17 +45,15 @@ mainEntry55:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
-	# restore caller saved regs end
 
 	# store a getint
-
 	lw a0, 0(sp)
-	sw a0, 0(sp)
+	sw a0, a, a1
 	addi sp, sp, -4
+
 	# prepare params
 
 	# save caller saved regs
-
 	addi sp, sp, -40
 	sw t0, 0(sp)
 	sw t1, 4(sp)
@@ -112,8 +67,8 @@ mainEntry55:
 	sw ra, 36(sp)
 	call getint
 	sw a0, 40(sp)
-	# restore caller saved regs
 
+	# restore caller saved regs
 	lw t0, 0(sp)
 	lw t1, 4(sp)
 	lw t2, 8(sp)
@@ -125,61 +80,62 @@ mainEntry55:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
-	# restore caller saved regs end
 
 	# store b getint$1
-
 	lw a1, 0(sp)
-	sw a1, 0(sp)
+	sw a1, b, a2
+
 	# alloc c
-
 	addi sp, sp, -4
+
 	# load a a
+	lw a2, a
 
-	lw a2, 12(sp)
-	lw a2, 12(sp)
 	# load b b
-
-	lw s0, 4(sp)
-	lw s0, 4(sp)
+	lw s0, b
 	xor s1, a2, s0
 	seqz s1, s1
 	mv s2, s1
-	sw a0, 16(a0)
+	sw a0, 8(a0)
 	li a0, 0
-	sw a1, 8(a1)
+	sw a1, 4(a1)
 	xor a1, s2, a0
 	beqz a1, ifFalse_107
 	j secondCond_109
-ifTrue_282:
-	# store c 
 
+ifTrue_282:
+
+	# store c 
 	li a0, 1
 	sw a0, 0(sp)
 	j next_485
-ifFalse_107:
-	# store c 
 
+ifFalse_107:
+
+	# store c 
 	li a0, 0
 	sw a0, 0(sp)
 	j next_485
-next_485:
-	# load c$1 c
 
+next_485:
+
+	# load c$1 c
 	lw a0, 0(sp)
 	mv a0, a0
-	addi sp, sp, 20
+	addi sp, sp, 12
 	ret 
-secondCond_109:
-	# load a$1 a
 
+secondCond_109:
+
+	# load a$1 a
 	addi sp, sp, -4
 	sw a1, 0(sp)
-	lw a1, 16(sp)
+	lw a1, a
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 3
-	sw a2, 20(a2)
+	addi sp, sp, -4
+	sw a2, 0(sp)
 	xor a2, a1, a0
 	mv a0, a2
 	addi sp, sp, -4

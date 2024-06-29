@@ -1,7 +1,6 @@
-package cn.edu.nju.software.backend.registeralloc;
+package cn.edu.nju.software.backend.regalloc;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
 public class Memory {
 

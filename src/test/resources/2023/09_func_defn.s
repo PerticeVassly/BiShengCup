@@ -1,62 +1,17 @@
 .data
 .globl a
+a:
+.word 0
 
 .text
-.type getint, @function
-.globl getint
-getint:
-
-.type getch, @function
-.globl getch
-getch:
-
-.type getfloat, @function
-.globl getfloat
-getfloat:
-
-.type putint, @function
-.globl putint
-putint:
-
-.type putch, @function
-.globl putch
-putch:
-
-.type putfloat, @function
-.globl putfloat
-putfloat:
-
-.type starttime, @function
-.globl starttime
-starttime:
-
-.type stoptime, @function
-.globl stoptime
-stoptime:
-
-.type getarray, @function
-.globl getarray
-getarray:
-
-.type getfarray, @function
-.globl getfarray
-getfarray:
-
-.type putarray, @function
-.globl putarray
-putarray:
-
-.type putfarray, @function
-.globl putfarray
-putfarray:
-
 .type func, @function
 .globl func
 func:
 
-funcEntry:
-	# save callee saved regs
 
+funcEntry:
+
+	# save callee saved regs
 	addi sp, sp, -48
 	sw s0, 0(sp)
 	sw s1, 4(sp)
@@ -70,29 +25,27 @@ funcEntry:
 	sw s9, 36(sp)
 	sw s10, 40(sp)
 	sw s11, 44(sp)
-	# save callee saved regs end
 
 	# alloc p
-
 	addi sp, sp, -4
+
 	# store p 0
-
 	sw a0, 0(sp)
-	# load p$1 p
 
+	# load p$1 p
 	lw a1, 0(sp)
 	li a2, 1
 	sub s0, a1, a2
+
 	# store p result_
-
 	sw s0, 0(sp)
-	# load p$2 p
 
+	# load p$2 p
 	lw a2, 0(sp)
 	mv a0, a2
 	addi sp, sp, 4
-	# restore callee saved regs
 
+	# restore callee saved regs
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
@@ -106,31 +59,29 @@ funcEntry:
 	lw s10, 40(sp)
 	lw s11, 44(sp)
 	addi sp, sp, 48
-	# restore callee saved regs end
-
 	ret 
 .type main, @function
 .globl main
 main:
 
+
 mainEntry21:
+
 	# alloc b
-
 	addi sp, sp, -4
+
 	# store a 
-
 	li a0, 10
-	sw a0, 0(sp)
+	sw a0, a, a1
+
 	# load a a
-
-	lw a0, 0(sp)
-	lw a0, 0(sp)
+	lw a0, a
 	addi sp, sp, -4
+
 	# prepare params
-
 	mv a0, a0
-	# save caller saved regs
 
+	# save caller saved regs
 	addi sp, sp, -40
 	sw t0, 0(sp)
 	sw t1, 4(sp)
@@ -144,8 +95,8 @@ mainEntry21:
 	sw ra, 36(sp)
 	call func
 	sw a0, 40(sp)
-	# restore caller saved regs
 
+	# restore caller saved regs
 	lw t0, 0(sp)
 	lw t1, 4(sp)
 	lw t2, 8(sp)
@@ -157,15 +108,13 @@ mainEntry21:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
-	# restore caller saved regs end
 
 	# store b func
-
 	lw a1, 0(sp)
-	sw a1, 8(sp)
-	# load b$1 b
+	sw a1, 4(sp)
 
-	lw a2, 8(sp)
+	# load b$1 b
+	lw a2, 4(sp)
 	mv a0, a2
-	addi sp, sp, 12
+	addi sp, sp, 8
 	ret 

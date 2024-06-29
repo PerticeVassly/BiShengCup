@@ -1,60 +1,13 @@
 .data
 .text
-.type getint, @function
-.globl getint
-getint:
-
-.type getch, @function
-.globl getch
-getch:
-
-.type getfloat, @function
-.globl getfloat
-getfloat:
-
-.type putint, @function
-.globl putint
-putint:
-
-.type putch, @function
-.globl putch
-putch:
-
-.type putfloat, @function
-.globl putfloat
-putfloat:
-
-.type starttime, @function
-.globl starttime
-starttime:
-
-.type stoptime, @function
-.globl stoptime
-stoptime:
-
-.type getarray, @function
-.globl getarray
-getarray:
-
-.type getfarray, @function
-.globl getfarray
-getfarray:
-
-.type putarray, @function
-.globl putarray
-putarray:
-
-.type putfarray, @function
-.globl putfarray
-putfarray:
-
 .type if_if_Else, @function
 .globl if_if_Else
 if_if_Else:
 
-if_if_ElseEntry:
-	# save callee saved regs
 
+if_if_ElseEntry:
+
+	# save callee saved regs
 	addi sp, sp, -48
 	sw s0, 0(sp)
 	sw s1, 4(sp)
@@ -68,24 +21,22 @@ if_if_ElseEntry:
 	sw s9, 36(sp)
 	sw s10, 40(sp)
 	sw s11, 44(sp)
-	# save callee saved regs end
 
 	# alloc a
-
 	addi sp, sp, -4
-	# store a 
 
+	# store a 
 	li a0, 5
 	sw a0, 0(sp)
+
 	# alloc b
-
 	addi sp, sp, -4
-	# store b 
 
+	# store b 
 	li a0, 10
 	sw a0, 0(sp)
-	# load a$1 a
 
+	# load a$1 a
 	lw a0, 4(sp)
 	li a1, 5
 	xor a2, a0, a1
@@ -93,11 +44,12 @@ if_if_ElseEntry:
 	mv a1, a2
 	li s0, 0
 	xor s1, a1, s0
-	beqz s1, ifFalse_
-	j ifTrue_8
-ifTrue_8:
-	# load b$1 b
+	beqz s1, ifFalse_5
+	j ifTrue_7
 
+ifTrue_7:
+
+	# load b$1 b
 	lw s0, 0(sp)
 	li s2, 10
 	addi sp, sp, -4
@@ -111,11 +63,12 @@ ifTrue_8:
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	xor a1, s2, a0
-	beqz a1, next_16
-	j ifTrue_9
-ifFalse_:
-	# load a$2 a
+	beqz a1, next_8
+	j ifTrue_8
 
+ifFalse_5:
+
+	# load a$2 a
 	lw a0, 16(sp)
 	addi sp, sp, -4
 	sw a1, 0(sp)
@@ -123,18 +76,19 @@ ifFalse_:
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	add a2, a0, a1
+
 	# store a result_
-
 	sw a2, 24(sp)
-	j next_15
-next_15:
-	# load a$3 a
+	j next_7
 
+next_7:
+
+	# load a$3 a
 	lw a1, 24(sp)
 	mv a0, a1
 	addi sp, sp, 28
-	# restore callee saved regs
 
+	# restore callee saved regs
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
@@ -148,29 +102,30 @@ next_15:
 	lw s10, 40(sp)
 	lw s11, 44(sp)
 	addi sp, sp, 48
-	# restore callee saved regs end
-
 	ret 
-ifTrue_9:
-	# store a 
 
+ifTrue_8:
+
+	# store a 
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 25
 	sw a0, 28(sp)
-	j next_16
-next_16:
-	j next_15
+	j next_8
+
+next_8:
+	j next_7
 .type main, @function
 .globl main
 main:
 
-mainEntry2:
+
+mainEntry3:
 	addi sp, sp, -4
+
 	# prepare params
 
 	# save caller saved regs
-
 	addi sp, sp, -40
 	sw t0, 0(sp)
 	sw t1, 4(sp)
@@ -184,8 +139,8 @@ mainEntry2:
 	sw ra, 36(sp)
 	call if_if_Else
 	sw a0, 40(sp)
-	# restore caller saved regs
 
+	# restore caller saved regs
 	lw t0, 0(sp)
 	lw t1, 4(sp)
 	lw t2, 8(sp)
@@ -197,8 +152,6 @@ mainEntry2:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
-	# restore caller saved regs end
-
 	lw a0, 0(sp)
 	mv a0, a0
 	addi sp, sp, 4

@@ -1,56 +1,9 @@
 .data
 .text
-.type getint, @function
-.globl getint
-getint:
-
-.type getch, @function
-.globl getch
-getch:
-
-.type getfloat, @function
-.globl getfloat
-getfloat:
-
-.type putint, @function
-.globl putint
-putint:
-
-.type putch, @function
-.globl putch
-putch:
-
-.type putfloat, @function
-.globl putfloat
-putfloat:
-
-.type starttime, @function
-.globl starttime
-starttime:
-
-.type stoptime, @function
-.globl stoptime
-stoptime:
-
-.type getarray, @function
-.globl getarray
-getarray:
-
-.type getfarray, @function
-.globl getfarray
-getfarray:
-
-.type putarray, @function
-.globl putarray
-putarray:
-
-.type putfarray, @function
-.globl putfarray
-putfarray:
-
 .type main, @function
 .globl main
 main:
+
 
 mainEntry2:
 
@@ -86,6 +39,7 @@ mainEntry2:
 	xor s2, s0, s1
 	beqz s2, next_
 	j ifTrue_
+
 ifTrue_:
 
 	# load b$2 b
@@ -109,6 +63,7 @@ ifTrue_:
 	xor a2, a0, a1
 	beqz a2, next_1
 	j secondCond_1
+
 next_:
 
 	# load b$4 b
@@ -132,13 +87,16 @@ next_:
 	xor a2, a0, a1
 	beqz a2, next_2
 	j ifTrue_2
+
 ifTrue_1:
 	li a1, 10
 	mv a0, a1
 	addi sp, sp, 52
 	ret 
+
 next_1:
 	j next_
+
 secondCond_:
 
 	# load a$3 a
@@ -162,6 +120,7 @@ secondCond_:
 	xor a2, a0, a1
 	beqz a2, next_1
 	j ifTrue_1
+
 secondCond_1:
 
 	# load a$2 a
@@ -185,6 +144,7 @@ secondCond_1:
 	xor a2, a0, a1
 	beqz a2, next_1
 	j secondCond_
+
 ifTrue_2:
 
 	# load a$4 a
@@ -208,11 +168,13 @@ ifTrue_2:
 	xor a2, a0, a1
 	beqz a2, next_3
 	j ifTrue_3
+
 next_2:
 	li a1, 0
 	mv a0, a1
 	addi sp, sp, 112
 	ret 
+
 ifTrue_3:
 	addi sp, sp, -4
 	sw a0, 0(sp)
@@ -220,6 +182,7 @@ ifTrue_3:
 	mv a0, a0
 	addi sp, sp, 116
 	ret 
+
 next_3:
 	addi sp, sp, -4
 	sw s0, 0(sp)

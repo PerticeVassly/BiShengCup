@@ -37,6 +37,23 @@ public class RiscFunction {
     }
 
     public void dumpToConsole() {
+        if(name.equals("putint") ||
+                name.equals("putch") ||
+                name.equals("putfloat") ||
+                name.equals("putarray") ||
+                name.equals("putfarray") ||
+                name.equals("starttime") ||
+                name.equals("getint") ||
+                name.equals("getch") ||
+                name.equals("getfloat") ||
+                name.equals("stoptime") ||
+                name.equals("getarray") ||
+                name.equals("getfarray")
+        ){
+            return;
+        }
+
+
         System.out.println(".type " + name + ", @function");
         System.out.println(".globl " + name);
         System.out.println(name + ":");

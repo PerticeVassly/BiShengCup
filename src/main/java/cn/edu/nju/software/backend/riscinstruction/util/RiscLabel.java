@@ -15,6 +15,6 @@ public class RiscLabel extends DefaultInstruction {
     }
     @Override
     public String emitCode() {
-        return label + ":";
+        return System.lineSeparator() + label + ":";
     }
 }

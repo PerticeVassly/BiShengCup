@@ -13,11 +13,11 @@ public interface InstructionVisitor {
 
     default void visit(Binary binary) {}
 
-    void visit(Mul mul);
+    default void visit(Mul mul) {}
 
-    void visit(Mod mod);
+    default void visit(Mod mod) {}
 
-    void visit(Div div);
+    default void visit(Div div) {}
 
     default void visit(Br br) {}
 
@@ -25,8 +25,7 @@ public interface InstructionVisitor {
 
     default void visit(Cmp cmp) {}
 
-    default void visit(CondBr condBr) {    //
-}
+    default void visit(CondBr condBr) {}
 
     default void visit(FloatToInt floatToInt) {}
 

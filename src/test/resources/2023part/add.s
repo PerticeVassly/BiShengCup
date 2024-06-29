@@ -1,56 +1,9 @@
 .data
 .text
-.type getint, @function
-.globl getint
-getint:
-
-.type getch, @function
-.globl getch
-getch:
-
-.type getfloat, @function
-.globl getfloat
-getfloat:
-
-.type putint, @function
-.globl putint
-putint:
-
-.type putch, @function
-.globl putch
-putch:
-
-.type putfloat, @function
-.globl putfloat
-putfloat:
-
-.type starttime, @function
-.globl starttime
-starttime:
-
-.type stoptime, @function
-.globl stoptime
-stoptime:
-
-.type getarray, @function
-.globl getarray
-getarray:
-
-.type getfarray, @function
-.globl getfarray
-getfarray:
-
-.type putarray, @function
-.globl putarray
-putarray:
-
-.type putfarray, @function
-.globl putfarray
-putfarray:
-
 .type add, @function
 .globl add
 add:
+
 
 addEntry:
 
@@ -68,8 +21,6 @@ addEntry:
 	sw s9, 36(sp)
 	sw s10, 40(sp)
 	sw s11, 44(sp)
-
-	# save callee saved regs end
 
 	# alloc i
 	addi sp, sp, -4
@@ -106,12 +57,11 @@ addEntry:
 	lw s10, 40(sp)
 	lw s11, 44(sp)
 	addi sp, sp, 48
-
-	# restore callee saved regs end
 	ret 
 .type main, @function
 .globl main
 main:
+
 
 mainEntry5:
 
@@ -170,8 +120,6 @@ mainEntry5:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
-
-	# restore caller saved regs end
 	lw a0, 0(sp)
 	mv a0, a0
 	addi sp, sp, 16
