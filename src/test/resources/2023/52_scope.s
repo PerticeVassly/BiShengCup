@@ -12,19 +12,10 @@ func:
 funcEntry4:
 
 	# save callee saved regs
-	addi sp, sp, -48
+	addi sp, sp, -12
 	sw s0, 0(sp)
 	sw s1, 4(sp)
 	sw s2, 8(sp)
-	sw s3, 12(sp)
-	sw s4, 16(sp)
-	sw s5, 20(sp)
-	sw s6, 24(sp)
-	sw s7, 28(sp)
-	sw s8, 32(sp)
-	sw s9, 36(sp)
-	sw s10, 40(sp)
-	sw s11, 44(sp)
 
 	# alloc b
 	addi sp, sp, -4
@@ -47,13 +38,21 @@ funcEntry4:
 
 	# load b$1 b
 	lw a2, 4(sp)
+
+	# cmp a$2 b$1 cond_eq_tmp_
 	xor s0, a1, a2
 	seqz s0, s0
+
+	# zext s1 s0
 	mv s1, s0
+
+	# cmp cond_tmp_  cond_
 	li s2, 0
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	xor a0, s1, s2
+
+	# condBr cond_ ifTrue_315 ifFalse_122
 	beqz a0, ifFalse_122
 	j ifTrue_315
 
@@ -66,11 +65,15 @@ ifTrue_315:
 	li a0, 1
 	addi sp, sp, -4
 	sw a1, 0(sp)
+
+	# add result_ a$3 
 	add a1, s2, a0
 
 	# store a$1 result_
 	sw a1, 12(sp)
 	li a0, 1
+
+	# ret 
 	mv a0, a0
 	addi sp, sp, 20
 
@@ -78,22 +81,15 @@ ifTrue_315:
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
-	lw s3, 12(sp)
-	lw s4, 16(sp)
-	lw s5, 20(sp)
-	lw s6, 24(sp)
-	lw s7, 28(sp)
-	lw s8, 32(sp)
-	lw s9, 36(sp)
-	lw s10, 40(sp)
-	lw s11, 44(sp)
-	addi sp, sp, 48
+	addi sp, sp, 12
 	ret 
 
 ifFalse_122:
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 0
+
+	# ret 
 	mv a0, a1
 	addi sp, sp, 24
 
@@ -101,16 +97,7 @@ ifFalse_122:
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
-	lw s3, 12(sp)
-	lw s4, 16(sp)
-	lw s5, 20(sp)
-	lw s6, 24(sp)
-	lw s7, 28(sp)
-	lw s8, 32(sp)
-	lw s9, 36(sp)
-	lw s10, 40(sp)
-	lw s11, 44(sp)
-	addi sp, sp, 48
+	addi sp, sp, 12
 	ret 
 .type main, @function
 .globl main
@@ -132,17 +119,27 @@ mainEntry73:
 	# store i 
 	li a0, 0
 	sw a0, 0(sp)
+
+	# br whileCond_231
 	j whileCond_231
 
 whileCond_231:
 
 	# load i$1 i
 	lw a0, 0(sp)
+
+	# cmp i$1  cond_lt_tmp_
 	li a1, 100
 	sltu a2, a0, a1
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_  cond_
 	li s0, 0
 	xor s1, a1, s0
+
+	# condBr cond_ whileBody_231 next_547
 	beqz s1, next_547
 	j whileBody_231
 
@@ -163,6 +160,8 @@ whileBody_231:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call func
 	call func
 	sw a0, 40(sp)
 
@@ -178,19 +177,27 @@ whileBody_231:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
+	# cmp func  cond_eq_tmp_
 	lw s0, 0(sp)
 	li s2, 1
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	xor a0, s0, s2
 	seqz a0, a0
+
+	# zext s2 a0
 	mv s2, a0
+
+	# cmp cond_tmp_$1  cond_$1
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 0
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	xor a1, s2, a0
+
+	# condBr cond_$1 ifTrue_316 next_548
 	beqz a1, next_548
 	j ifTrue_316
 
@@ -198,19 +205,27 @@ next_547:
 
 	# load result$2 result
 	lw a0, 20(sp)
+
+	# cmp result$2  cond_lt_tmp_$1
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 100
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	sltu a2, a0, a1
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_$2  cond_$2
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a1, a0
+
+	# condBr cond_$2 ifTrue_317 ifFalse_123
 	beqz a2, ifFalse_123
 	j ifTrue_317
 
@@ -223,10 +238,14 @@ ifTrue_316:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_ result$1 
 	add a2, a0, a1
 
 	# store result result_
 	sw a2, 44(sp)
+
+	# br next_548
 	j next_548
 
 next_548:
@@ -238,10 +257,14 @@ next_548:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$1 i$2 
 	add a2, a1, a0
 
 	# store i result_$1
 	sw a2, 48(sp)
+
+	# br whileCond_231
 	j whileCond_231
 
 ifTrue_317:
@@ -263,6 +286,8 @@ ifTrue_317:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -278,6 +303,8 @@ ifTrue_317:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
+	# br next_549
 	j next_549
 
 ifFalse_123:
@@ -299,6 +326,8 @@ ifFalse_123:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -314,10 +343,14 @@ ifFalse_123:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
+	# br next_549
 	j next_549
 
 next_549:
 	li a0, 0
+
+	# ret 
 	mv a0, a0
 	addi sp, sp, 56
 	ret 

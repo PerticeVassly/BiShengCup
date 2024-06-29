@@ -8,19 +8,10 @@ reverse:
 reverseEntry:
 
 	# save callee saved regs
-	addi sp, sp, -48
+	addi sp, sp, -12
 	sw s0, 0(sp)
 	sw s1, 4(sp)
 	sw s2, 8(sp)
-	sw s3, 12(sp)
-	sw s4, 16(sp)
-	sw s5, 20(sp)
-	sw s6, 24(sp)
-	sw s7, 28(sp)
-	sw s8, 32(sp)
-	sw s9, 36(sp)
-	sw s10, 40(sp)
-	sw s11, 44(sp)
 
 	# alloc n
 	addi sp, sp, -4
@@ -33,13 +24,21 @@ reverseEntry:
 
 	# load n$1 n
 	lw a1, 4(sp)
+
+	# cmp n$1  cond_le_tmp_
 	li a2, 1
 	sub s0, a1, a2
 	sgtz s0, s0
 	seqz s0, s0
+
+	# zext a2 s0
 	mv a2, s0
+
+	# cmp cond_tmp_  cond_
 	li s1, 0
 	xor s2, a2, s1
+
+	# condBr cond_ ifTrue_283 ifFalse_108
 	beqz s2, ifFalse_108
 	j ifTrue_283
 
@@ -60,6 +59,8 @@ ifTrue_283:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call getint
 	call getint
 	sw a0, 40(sp)
 
@@ -101,6 +102,8 @@ ifTrue_283:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -116,6 +119,8 @@ ifTrue_283:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
+	# br next_486
 	j next_486
 
 ifFalse_108:
@@ -135,6 +140,8 @@ ifFalse_108:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call getint
 	call getint
 	sw a0, 40(sp)
 
@@ -165,6 +172,8 @@ ifFalse_108:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# sub result_ n$2 
 	sub a2, a0, a1
 	addi sp, sp, -4
 
@@ -183,6 +192,8 @@ ifFalse_108:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call reverse
 	call reverse
 	sw a0, 40(sp)
 
@@ -218,6 +229,8 @@ ifFalse_108:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -233,25 +246,20 @@ ifFalse_108:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
+	# br next_486
 	j next_486
 
 next_486:
+
+	# ret void
 	addi sp, sp, 32
 
 	# restore callee saved regs
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
-	lw s3, 12(sp)
-	lw s4, 16(sp)
-	lw s5, 20(sp)
-	lw s6, 24(sp)
-	lw s7, 28(sp)
-	lw s8, 32(sp)
-	lw s9, 36(sp)
-	lw s10, 40(sp)
-	lw s11, 44(sp)
-	addi sp, sp, 48
+	addi sp, sp, 12
 	ret 
 .type main, @function
 .globl main
@@ -286,6 +294,8 @@ mainEntry56:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call reverse
 	call reverse
 	sw a0, 40(sp)
 
@@ -302,6 +312,8 @@ mainEntry56:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 	li a1, 0
+
+	# ret 
 	mv a0, a1
 	addi sp, sp, 4
 	ret 

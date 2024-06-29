@@ -16,6 +16,8 @@ mainEntry27:
 
 	# load a$1 a
 	lw a0, 0(sp)
+
+	# ret a$1
 	mv a0, a0
 	addi sp, sp, 4
 	ret 

@@ -8,19 +8,10 @@ FourWhile:
 FourWhileEntry:
 
 	# save callee saved regs
-	addi sp, sp, -48
+	addi sp, sp, -12
 	sw s0, 0(sp)
 	sw s1, 4(sp)
 	sw s2, 8(sp)
-	sw s3, 12(sp)
-	sw s4, 16(sp)
-	sw s5, 20(sp)
-	sw s6, 24(sp)
-	sw s7, 28(sp)
-	sw s8, 32(sp)
-	sw s9, 36(sp)
-	sw s10, 40(sp)
-	sw s11, 44(sp)
 
 	# alloc a
 	addi sp, sp, -4
@@ -49,17 +40,27 @@ FourWhileEntry:
 	# store d 
 	li a0, 10
 	sw a0, 0(sp)
+
+	# br whileCond_10
 	j whileCond_10
 
 whileCond_10:
 
 	# load a$1 a
 	lw a0, 12(sp)
+
+	# cmp a$1  cond_lt_tmp_
 	li a1, 20
 	sltu a2, a0, a1
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_  cond_
 	li s0, 0
 	xor s1, a1, s0
+
+	# condBr cond_ whileBody_10 next_23
 	beqz s1, next_23
 	j whileBody_10
 
@@ -70,10 +71,14 @@ whileBody_10:
 	li s2, 3
 	addi sp, sp, -4
 	sw a0, 0(sp)
+
+	# add result_ a$2 
 	add a0, s0, s2
 
 	# store a result_
 	sw a0, 16(sp)
+
+	# br whileCond_11
 	j whileCond_11
 
 next_23:
@@ -98,8 +103,12 @@ next_23:
 	lw a1, 4(sp)
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$7 b$4 d$4
 	add a2, a0, a1
 	sw a0, 12(a0)
+
+	# add result_$8 a$3 result_$7
 	add a0, s2, a2
 
 	# load c$4 c
@@ -113,7 +122,11 @@ next_23:
 	lw a1, 0(sp)
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$9 result_$8 c$4
 	add a2, a0, a1
+
+	# ret result_$9
 	mv a0, a2
 	addi sp, sp, 52
 
@@ -121,16 +134,7 @@ next_23:
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
-	lw s3, 12(sp)
-	lw s4, 16(sp)
-	lw s5, 20(sp)
-	lw s6, 24(sp)
-	lw s7, 28(sp)
-	lw s8, 32(sp)
-	lw s9, 36(sp)
-	lw s10, 40(sp)
-	lw s11, 44(sp)
-	addi sp, sp, 48
+	addi sp, sp, 12
 	ret 
 
 whileCond_11:
@@ -138,18 +142,26 @@ whileCond_11:
 	# load b$1 b
 	sw a0, 8(a0)
 	lw a0, 44(sp)
+
+	# cmp b$1  cond_lt_tmp_$1
 	sw a1, 4(a1)
 	li a1, 10
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	sltu a2, a0, a1
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_$1  cond_$1
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a1, a0
+
+	# condBr cond_$1 whileBody_11 next_24
 	beqz a2, next_24
 	j whileBody_11
 
@@ -162,10 +174,14 @@ whileBody_11:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$1 b$2 
 	add a2, a0, a1
 
 	# store b result_$1
 	sw a2, 64(sp)
+
+	# br whileCond_12
 	j whileCond_12
 
 next_24:
@@ -177,16 +193,22 @@ next_24:
 	li a0, 2
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# sub result_$6 b$3 
 	sub a2, a1, a0
 
 	# store b result_$6
 	sw a2, 72(sp)
+
+	# br whileCond_10
 	j whileCond_10
 
 whileCond_12:
 
 	# load c$1 c
 	lw a0, 68(sp)
+
+	# cmp c$1  cond_eq_tmp_
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 7
@@ -194,13 +216,19 @@ whileCond_12:
 	sw a2, 0(sp)
 	xor a2, a0, a1
 	seqz a2, a2
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_$2  cond_$2
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a1, a0
+
+	# condBr cond_$2 whileBody_12 next_25
 	beqz a2, next_25
 	j whileBody_12
 
@@ -213,10 +241,14 @@ whileBody_12:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# sub result_$2 c$2 
 	sub a2, a0, a1
 
 	# store c result_$2
 	sw a2, 92(sp)
+
+	# br whileCond_13
 	j whileCond_13
 
 next_25:
@@ -228,29 +260,41 @@ next_25:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$5 c$3 
 	add a2, a1, a0
 
 	# store c result_$5
 	sw a2, 100(sp)
+
+	# br whileCond_11
 	j whileCond_11
 
 whileCond_13:
 
 	# load d$1 d
 	lw a0, 96(sp)
+
+	# cmp d$1  cond_lt_tmp_$2
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 20
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	sltu a2, a0, a1
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_$3  cond_$3
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a1, a0
+
+	# condBr cond_$3 whileBody_13 next_26
 	beqz a2, next_26
 	j whileBody_13
 
@@ -263,10 +307,14 @@ whileBody_13:
 	li a1, 3
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$3 d$2 
 	add a2, a0, a1
 
 	# store d result_$3
 	sw a2, 120(sp)
+
+	# br whileCond_13
 	j whileCond_13
 
 next_26:
@@ -278,10 +326,14 @@ next_26:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# sub result_$4 d$3 
 	sub a2, a1, a0
 
 	# store d result_$4
 	sw a2, 128(sp)
+
+	# br whileCond_12
 	j whileCond_12
 .type main, @function
 .globl main
@@ -305,6 +357,8 @@ mainEntry7:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call FourWhile
 	call FourWhile
 	sw a0, 40(sp)
 
@@ -321,6 +375,8 @@ mainEntry7:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 	lw a0, 0(sp)
+
+	# ret FourWhile
 	mv a0, a0
 	addi sp, sp, 4
 	ret 

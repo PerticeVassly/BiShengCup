@@ -65,7 +65,7 @@ public class TestRisc {
         String standardOut = dir + name + ".out";
         Main.main(code, "-o", output, "-S", "-O0");
 
-        cmdExecutor.exec("riscv64-unknown-elf-gcc", output, "-o", dir + name, SYLIB_RISC);
+        cmdExecutor.exec("riscv64-unknown-elf-gcc", output, "-g", "-o", dir + name, SYLIB_RISC);
         if (exist(dir, name + ".in")) {
             cmdExecutor.execRedirectInput(standardIn, "qemu-riscv64", "./" + dir + name);
         } else {

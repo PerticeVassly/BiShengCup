@@ -160,6 +160,7 @@ public class RiscBasicBlock implements InstructionVisitor {
         String op2_reg = regNames.get(1);
         String dest_reg = regNames.get(2);
 
+        riscInstructions.add(new RiscComment("add " + dest.getName() + " " + op1.getName() + " " + op2.getName()));
         riscInstructions.add(new RiscAdd(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
 
         allocator.unlockAll();
@@ -177,6 +178,8 @@ public class RiscBasicBlock implements InstructionVisitor {
         String op2_reg = regNames.get(1);
         String dest_reg = regNames.get(2);
 
+
+        riscInstructions.add(new RiscComment("sub " + dest.getName() + " " + op1.getName() + " " + op2.getName()));
         riscInstructions.add(new RiscSub(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
 
         allocator.unlockAll();
@@ -194,6 +197,8 @@ public class RiscBasicBlock implements InstructionVisitor {
         String op2_reg = regNames.get(1);
         String dest_reg = regNames.get(2);
 
+
+        riscInstructions.add(new RiscComment("mul " + dest.getName() + " " + op1.getName() + " " + op2.getName()));
         riscInstructions.add(new RiscMul(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
 
         allocator.unlockAll();
@@ -211,6 +216,7 @@ public class RiscBasicBlock implements InstructionVisitor {
         String op2_reg = regNames.get(1);
         String dest_reg = regNames.get(2);
 
+        riscInstructions.add(new RiscComment("mod " + dest.getName() + " " + op1.getName() + " " + op2.getName()));
         riscInstructions.add(new RiscRem(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
 
         allocator.unlockAll();
@@ -228,6 +234,7 @@ public class RiscBasicBlock implements InstructionVisitor {
         String op2_reg = regNames.get(1);
         String dest_reg = regNames.get(2);
 
+        riscInstructions.add(new RiscComment("div " + dest.getName() + " " + op1.getName() + " " + op2.getName()));
         riscInstructions.add(new RiscDiv(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
 
         allocator.unlockAll();
@@ -235,6 +242,7 @@ public class RiscBasicBlock implements InstructionVisitor {
 
     @Override
     public void visit(Br br){
+        riscInstructions.add(new RiscComment("br " + br.getTarget().getName()));
         riscInstructions.add( new RiscJ(br.getTarget().getName()));
     }
 
@@ -247,6 +255,7 @@ public class RiscBasicBlock implements InstructionVisitor {
         ArrayList<String> regNames = allocator.provideGRegs(new ArrayList<ValueRef>(){{add(cond);}});
         String cond_reg = regNames.get(0);
 
+        riscInstructions.add(new RiscComment("condBr " + cond.getName() + " " + ifTrue.getName() + " " + ifFalse.getName()));
         riscInstructions.add(new RiscBeqz(new Register(cond_reg),ifFalse.getName()));
         riscInstructions.add(new RiscJ(ifTrue.getName()));
     }
@@ -254,6 +263,7 @@ public class RiscBasicBlock implements InstructionVisitor {
     @Override
     public void visit(Cmp cmp){
 
+        riscInstructions.add(new RiscComment("cmp " + cmp.getOperand(0).getName() + " " + cmp.getOperand(1).getName() + " " + cmp.getLVal().getName()));
         ArrayList<String> regNames = allocator.provideGRegs(new ArrayList<ValueRef>(){{add(cmp.getOperand(0));add(cmp.getOperand(1));add(cmp.getLVal());}});
 
         String dest_reg = regNames.get(2);
@@ -332,12 +342,15 @@ public class RiscBasicBlock implements InstructionVisitor {
 
         switch (op){
             case AND:
+                riscInstructions.add(new RiscComment("and " + destName + " " + op1.getName() + " " + op2.getName()));
                 riscInstructions.add(new RiscAnd(new Register(destName), new Register(op1_reg), new Register(op2_reg)));
                 break;
             case OR:
+                riscInstructions.add(new RiscComment("or " + destName + " " + op1.getName() + " " + op2.getName()));
                 riscInstructions.add(new RiscOr(new Register(destName), new Register(op1_reg), new Register(op2_reg)));
                 break;
             case XOR:
+                riscInstructions.add(new RiscComment("xor " + destName + " " + op1.getName() + " " + op2.getName()));
                 riscInstructions.add(new RiscXor(new Register(destName), new Register(op1_reg), new Register(op2_reg)));
                 break;
             default:
@@ -355,6 +368,7 @@ public class RiscBasicBlock implements InstructionVisitor {
         String src_reg = regNames.get(0);
         String dest_reg = regNames.get(1);
 
+        riscInstructions.add(new RiscComment("zext " + dest_reg + " " + src_reg));
         riscInstructions.add(new RiscMv(new Register(dest_reg), new Register(src_reg)));
 
         allocator.unlockAll();
@@ -367,6 +381,7 @@ public class RiscBasicBlock implements InstructionVisitor {
 
         ArrayList<String> regNames = allocator.provideGRegs(new ArrayList<ValueRef>(){{add(retVal);}});
 
+        riscInstructions.add(new RiscComment("ret " + retVal.getName()));
         riscInstructions.add(new RiscMv(new Register("a0"), new Register(regNames.get(0))));
 
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(allocator.getStackSize())));
@@ -379,6 +394,7 @@ public class RiscBasicBlock implements InstructionVisitor {
 
     @Override
     public void visit(RetVoid retVoid){
+        riscInstructions.add(new RiscComment("ret void"));
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(allocator.getStackSize())));
 
         if(!functionValue.getName().equals("main")){
@@ -390,6 +406,7 @@ public class RiscBasicBlock implements InstructionVisitor {
     @Override
     public void visit(Call call) {
         //prepare return value
+
         riscInstructions.add( new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-4)));
         //if( call.getLVal() != null) 判断是不是有返回值
         if(call.getLVal() != null){
@@ -406,6 +423,7 @@ public class RiscBasicBlock implements InstructionVisitor {
 
         // call the function
         // push the space of return value
+        riscInstructions.add(new RiscComment("call " + call.getFunction().getName()));
         riscInstructions.add( new RiscCall( call.getFunction().getName()));
 
         /* save a0 as the return value

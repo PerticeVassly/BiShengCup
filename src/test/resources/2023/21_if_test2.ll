@@ -101,3 +101,10 @@ mainEntry71:
   ret i32 0
 }
 
+
+
+A
+
+B
+
+C

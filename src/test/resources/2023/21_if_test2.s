@@ -8,19 +8,10 @@ ifElseIf:
 ifElseIfEntry:
 
 	# save callee saved regs
-	addi sp, sp, -48
+	addi sp, sp, -12
 	sw s0, 0(sp)
 	sw s1, 4(sp)
 	sw s2, 8(sp)
-	sw s3, 12(sp)
-	sw s4, 16(sp)
-	sw s5, 20(sp)
-	sw s6, 24(sp)
-	sw s7, 28(sp)
-	sw s8, 32(sp)
-	sw s9, 36(sp)
-	sw s10, 40(sp)
-	sw s11, 44(sp)
 
 	# alloc a
 	addi sp, sp, -4
@@ -38,19 +29,29 @@ ifElseIfEntry:
 
 	# load a$1 a
 	lw a0, 4(sp)
+
+	# cmp a$1  cond_eq_tmp_
 	li a1, 6
 	xor a2, a0, a1
 	seqz a2, a2
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_  cond_
 	li s0, 0
 	xor s1, a1, s0
-	beqz s1, secondCond_
-	j ifTrue_
 
-ifTrue_:
+	# condBr cond_ ifTrue_306 secondCond_119
+	beqz s1, secondCond_119
+	j ifTrue_306
+
+ifTrue_306:
 
 	# load a$2 a
 	lw s0, 4(sp)
+
+	# ret a$2
 	mv a0, s0
 	addi sp, sp, 8
 
@@ -58,22 +59,15 @@ ifTrue_:
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
-	lw s3, 12(sp)
-	lw s4, 16(sp)
-	lw s5, 20(sp)
-	lw s6, 24(sp)
-	lw s7, 28(sp)
-	lw s8, 32(sp)
-	lw s9, 36(sp)
-	lw s10, 40(sp)
-	lw s11, 44(sp)
-	addi sp, sp, 48
+	addi sp, sp, 12
 	ret 
 
-ifFalse_:
+ifFalse_113:
 
 	# load b$2 b
 	lw s2, 0(sp)
+
+	# cmp b$2  cond_eq_tmp_$2
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 10
@@ -81,20 +75,28 @@ ifFalse_:
 	sw a1, 0(sp)
 	xor a1, s2, a0
 	seqz a1, a1
+
+	# zext a0 a1
 	mv a0, a1
+
+	# cmp cond_tmp_$2  cond_$2
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a0, a1
-	beqz a2, ifFalse_1
-	j secondCond_1
 
-next_:
+	# condBr cond_$2 secondCond_120 ifFalse_114
+	beqz a2, ifFalse_114
+	j secondCond_120
+
+next_536:
 
 	# load a$7 a
 	lw a1, 20(sp)
+
+	# ret a$7
 	mv a0, a1
 	addi sp, sp, 24
 
@@ -102,24 +104,17 @@ next_:
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
-	lw s3, 12(sp)
-	lw s4, 16(sp)
-	lw s5, 20(sp)
-	lw s6, 24(sp)
-	lw s7, 28(sp)
-	lw s8, 32(sp)
-	lw s9, 36(sp)
-	lw s10, 40(sp)
-	lw s11, 44(sp)
-	addi sp, sp, 48
+	addi sp, sp, 12
 	ret 
 
-secondCond_:
+secondCond_119:
 
 	# load b$1 b
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	lw a0, 20(sp)
+
+	# cmp b$1  cond_eq_tmp_$1
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 11
@@ -127,27 +122,37 @@ secondCond_:
 	sw a2, 0(sp)
 	xor a2, a0, a1
 	seqz a2, a2
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_$1  cond_$1
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a1, a0
-	beqz a2, ifFalse_
-	j ifTrue_
 
-ifTrue_1:
+	# condBr cond_$1 ifTrue_306 ifFalse_113
+	beqz a2, ifFalse_113
+	j ifTrue_306
+
+ifTrue_307:
 
 	# store a 
 	li a0, 25
 	sw a0, 40(sp)
-	j next_1
 
-ifFalse_1:
+	# br next_537
+	j next_537
+
+ifFalse_114:
 
 	# load b$3 b
 	lw a0, 36(sp)
+
+	# cmp b$3  cond_eq_tmp_$4
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 10
@@ -155,23 +160,33 @@ ifFalse_1:
 	sw a2, 0(sp)
 	xor a2, a0, a1
 	seqz a2, a2
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_$4  cond_$4
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a1, a0
-	beqz a2, ifFalse_2
-	j secondCond_2
 
-next_1:
-	j next_
+	# condBr cond_$4 secondCond_121 ifFalse_115
+	beqz a2, ifFalse_115
+	j secondCond_121
 
-secondCond_1:
+next_537:
+
+	# br next_536
+	j next_536
+
+secondCond_120:
 
 	# load a$3 a
 	lw a0, 56(sp)
+
+	# cmp a$3  cond_eq_tmp_$3
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 1
@@ -179,17 +194,23 @@ secondCond_1:
 	sw a2, 0(sp)
 	xor a2, a0, a1
 	seqz a2, a2
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_$3  cond_$3
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a1, a0
-	beqz a2, ifFalse_1
-	j ifTrue_1
 
-ifTrue_2:
+	# condBr cond_$3 ifTrue_307 ifFalse_114
+	beqz a2, ifFalse_114
+	j ifTrue_307
+
+ifTrue_308:
 
 	# load a$5 a
 	lw a0, 72(sp)
@@ -198,13 +219,17 @@ ifTrue_2:
 	li a1, 15
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_ a$5 
 	add a2, a0, a1
 
 	# store a result_
 	sw a2, 80(sp)
-	j next_2
 
-ifFalse_2:
+	# br next_538
+	j next_538
+
+ifFalse_115:
 
 	# load a$6 a
 	lw a1, 80(sp)
@@ -213,19 +238,27 @@ ifFalse_2:
 	li a0, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# sub tmp_  a$6
 	sub a2, a0, a1
 
 	# store a tmp_
 	sw a2, 88(sp)
-	j next_2
 
-next_2:
-	j next_1
+	# br next_538
+	j next_538
 
-secondCond_2:
+next_538:
+
+	# br next_537
+	j next_537
+
+secondCond_121:
 
 	# load a$4 a
 	lw a0, 88(sp)
+
+	# cmp a$4  cond_eq_tmp_$5
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, -5
@@ -233,21 +266,27 @@ secondCond_2:
 	sw a2, 0(sp)
 	xor a2, a0, a1
 	seqz a2, a2
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_$5  cond_$5
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a1, a0
-	beqz a2, ifFalse_2
-	j ifTrue_2
+
+	# condBr cond_$5 ifTrue_308 ifFalse_115
+	beqz a2, ifFalse_115
+	j ifTrue_308
 .type main, @function
 .globl main
 main:
 
 
-mainEntry:
+mainEntry71:
 	addi sp, sp, -4
 
 	# prepare params
@@ -264,6 +303,8 @@ mainEntry:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call ifElseIf
 	call ifElseIf
 	sw a0, 40(sp)
 
@@ -297,6 +338,8 @@ mainEntry:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -313,6 +356,8 @@ mainEntry:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 	li a1, 0
+
+	# ret 
 	mv a0, a1
 	addi sp, sp, 4
 	ret 

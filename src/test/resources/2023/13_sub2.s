@@ -23,7 +23,11 @@ mainEntry46:
 
 	# load a a
 	lw a1, a
+
+	# sub result_ b$1 a
 	sub a2, a0, a1
+
+	# ret result_
 	mv a0, a2
 	addi sp, sp, 4
 	ret 

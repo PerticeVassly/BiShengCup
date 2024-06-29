@@ -17,11 +17,19 @@ mainEntry31:
 
 	# load k k
 	lw a0, k
+
+	# cmp k  cond_lt_tmp_
 	li a1, 10000
 	sltu a2, a0, a1
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_  cond_
 	li s0, 0
 	xor s1, a1, s0
+
+	# condBr cond_ ifTrue_55 next_127
 	beqz s1, next_127
 	j ifTrue_55
 
@@ -32,6 +40,8 @@ ifTrue_55:
 	li s2, 1
 	addi sp, sp, -4
 	sw a0, 0(sp)
+
+	# add result_ k$1 
 	add a0, s0, s2
 
 	# store k result_
@@ -43,12 +53,16 @@ ifTrue_55:
 	# store k$2 
 	li s2, 112
 	sw s2, 0(sp)
+
+	# br whileCond_72
 	j whileCond_72
 
 next_127:
 
 	# load k$9 k
 	lw s2, k
+
+	# ret k$9
 	mv a0, s2
 	addi sp, sp, 8
 	ret 
@@ -59,6 +73,8 @@ whileCond_72:
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	lw a0, 4(sp)
+
+	# cmp k$3  cond_gt_tmp_
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 10
@@ -66,13 +82,19 @@ whileCond_72:
 	sw a2, 0(sp)
 	sub a2, a0, a1
 	sgtz a2, a2
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_$1  cond_$1
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a1, a0
+
+	# condBr cond_$1 whileBody_72 next_128
 	beqz a2, next_128
 	j whileBody_72
 
@@ -85,6 +107,8 @@ whileBody_72:
 	li a1, 88
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# sub result_$1 k$4 
 	sub a2, a0, a1
 
 	# store k$2 result_$1
@@ -92,19 +116,27 @@ whileBody_72:
 
 	# load k$5 k$2
 	lw a1, 28(sp)
+
+	# cmp k$5  cond_lt_tmp_$1
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 1000
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	sltu a2, a1, a0
+
+	# zext a0 a2
 	mv a0, a2
+
+	# cmp cond_tmp_$2  cond_$2
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a0, a1
+
+	# condBr cond_$2 ifTrue_56 next_129
 	beqz a2, next_129
 	j ifTrue_56
 
@@ -129,6 +161,8 @@ next_128:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -144,6 +178,8 @@ next_128:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
+	# br next_127
 	j next_127
 
 ifTrue_56:
@@ -183,6 +219,8 @@ ifTrue_56:
 	lw a1, 4(sp)
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# sub result_$2 k$6 g$1
 	sub a2, a0, a1
 
 	# store k$2 result_$2
@@ -210,17 +248,25 @@ ifTrue_56:
 	lw a1, 0(sp)
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$3 k$7 g$3
 	add a2, a0, a1
 
 	# load l$1 l
 	sw a0, 8(a0)
 	lw a0, 32(sp)
 	sw a1, 4(a1)
+
+	# add result_$4 result_$3 l$1
 	add a1, a2, a0
 
 	# store k$2 result_$4
 	sw a1, 88(sp)
+
+	# br next_129
 	j next_129
 
 next_129:
+
+	# br whileCond_72
 	j whileCond_72

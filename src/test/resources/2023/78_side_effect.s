@@ -16,19 +16,10 @@ inc_a:
 inc_aEntry:
 
 	# save callee saved regs
-	addi sp, sp, -48
+	addi sp, sp, -12
 	sw s0, 0(sp)
 	sw s1, 4(sp)
 	sw s2, 8(sp)
-	sw s3, 12(sp)
-	sw s4, 16(sp)
-	sw s5, 20(sp)
-	sw s6, 24(sp)
-	sw s7, 28(sp)
-	sw s8, 32(sp)
-	sw s9, 36(sp)
-	sw s10, 40(sp)
-	sw s11, 44(sp)
 
 	# alloc b
 	addi sp, sp, -4
@@ -42,6 +33,8 @@ inc_aEntry:
 	# load b$1 b
 	lw a1, 0(sp)
 	li a2, 1
+
+	# add result_ b$1 
 	add s0, a1, a2
 
 	# store b result_
@@ -55,6 +48,8 @@ inc_aEntry:
 
 	# load a$1 a
 	lw s1, a
+
+	# ret a$1
 	mv a0, s1
 	addi sp, sp, 4
 
@@ -62,16 +57,7 @@ inc_aEntry:
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
-	lw s3, 12(sp)
-	lw s4, 16(sp)
-	lw s5, 20(sp)
-	lw s6, 24(sp)
-	lw s7, 28(sp)
-	lw s8, 32(sp)
-	lw s9, 36(sp)
-	lw s10, 40(sp)
-	lw s11, 44(sp)
-	addi sp, sp, 48
+	addi sp, sp, 12
 	ret 
 .type main, @function
 .globl main
@@ -86,18 +72,28 @@ mainEntry81:
 	# store k 
 	li a0, 5
 	sw a0, 0(sp)
+
+	# br whileCond_253
 	j whileCond_253
 
 whileCond_253:
 
 	# load k$1 k
 	lw a0, 0(sp)
+
+	# cmp k$1  cond_ge_tmp_
 	li a1, 0
 	slt a2, a0, a1
 	seqz a2, a2
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_  cond_
 	li s0, 0
 	xor s1, a1, s0
+
+	# condBr cond_ whileBody_253 next_584
 	beqz s1, next_584
 	j whileBody_253
 
@@ -118,6 +114,8 @@ whileBody_253:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call inc_a
 	call inc_a
 	sw a0, 40(sp)
 
@@ -133,11 +131,15 @@ whileBody_253:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
+	# cmp inc_a  cond_normalize_
 	lw s0, 0(sp)
 	li s2, 0
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	xor a0, s0, s2
+
+	# condBr cond_normalize_ secondCond_125 next_585
 	beqz a0, next_585
 	j secondCond_125
 
@@ -162,6 +164,8 @@ next_584:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -197,6 +201,8 @@ next_584:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putch
 	call putch
 	sw a0, 40(sp)
 
@@ -232,6 +238,8 @@ next_584:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -267,6 +275,8 @@ next_584:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putch
 	call putch
 	sw a0, 40(sp)
 
@@ -285,6 +295,8 @@ next_584:
 
 	# load a$3 a
 	lw a0, a
+
+	# ret a$3
 	mv a0, a0
 	addi sp, sp, 20
 	ret 
@@ -312,6 +324,8 @@ ifTrue_331:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -347,6 +361,8 @@ ifTrue_331:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putch
 	call putch
 	sw a0, 40(sp)
 
@@ -382,6 +398,8 @@ ifTrue_331:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -417,6 +435,8 @@ ifTrue_331:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putch
 	call putch
 	sw a0, 40(sp)
 
@@ -432,6 +452,8 @@ ifTrue_331:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
+	# br next_585
 	j next_585
 
 next_585:
@@ -451,6 +473,8 @@ next_585:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call inc_a
 	call inc_a
 	sw a0, 40(sp)
 
@@ -466,6 +490,8 @@ next_585:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
+	# cmp inc_a$3  cond_lt_tmp_
 	lw a0, 0(sp)
 	addi sp, sp, -4
 	sw a1, 0(sp)
@@ -473,12 +499,18 @@ next_585:
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	sltu a2, a0, a1
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_$1  cond_$1
 	sw a0, 8(a0)
 	li a0, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a1, a0
+
+	# condBr cond_$1 ifTrue_332 secondCond_126
 	beqz a2, secondCond_126
 	j ifTrue_332
 
@@ -499,6 +531,8 @@ secondCond_124:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call inc_a
 	call inc_a
 	sw a0, 40(sp)
 
@@ -514,6 +548,8 @@ secondCond_124:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
+	# cmp inc_a$2  cond_normalize_$2
 	lw a0, 0(sp)
 	addi sp, sp, -4
 	sw a1, 0(sp)
@@ -521,6 +557,8 @@ secondCond_124:
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a0, a1
+
+	# condBr cond_normalize_$2 ifTrue_331 next_585
 	beqz a2, next_585
 	j ifTrue_331
 
@@ -541,6 +579,8 @@ secondCond_125:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call inc_a
 	call inc_a
 	sw a0, 40(sp)
 
@@ -556,12 +596,16 @@ secondCond_125:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
+	# cmp inc_a$1  cond_normalize_$1
 	lw a1, 0(sp)
 	sw a0, 12(a0)
 	li a0, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a1, a0
+
+	# condBr cond_normalize_$1 secondCond_124 next_585
 	beqz a2, next_585
 	j secondCond_124
 
@@ -586,6 +630,8 @@ ifTrue_332:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -621,6 +667,8 @@ ifTrue_332:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putch
 	call putch
 	sw a0, 40(sp)
 
@@ -643,10 +691,14 @@ ifTrue_332:
 	li a1, 2
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# mul result_$2 b$1 
 	mul a2, a0, a1
 
 	# store b result_$2
 	sw a2, b, a1
+
+	# br next_586
 	j next_586
 
 ifFalse_133:
@@ -666,6 +718,8 @@ ifFalse_133:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call inc_a
 	call inc_a
 	sw a0, 40(sp)
 
@@ -681,6 +735,8 @@ ifFalse_133:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
+	# br next_586
 	j next_586
 
 next_586:
@@ -692,10 +748,14 @@ next_586:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# sub result_$3 k$2 
 	sub a2, a1, a0
 
 	# store k result_$3
 	sw a2, 84(sp)
+
+	# br whileCond_253
 	j whileCond_253
 
 secondCond_126:
@@ -715,6 +775,8 @@ secondCond_126:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call inc_a
 	call inc_a
 	sw a0, 40(sp)
 
@@ -730,6 +792,8 @@ secondCond_126:
 	lw a1, 32(sp)
 	lw ra, 36(sp)
 	addi sp, sp, 40
+
+	# cmp inc_a$4  cond_normalize_$3
 	lw a0, 0(sp)
 	addi sp, sp, -4
 	sw a1, 0(sp)
@@ -737,6 +801,8 @@ secondCond_126:
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a0, a1
+
+	# condBr cond_normalize_$3 secondCond_127 ifFalse_133
 	beqz a2, ifFalse_133
 	j secondCond_127
 
@@ -757,6 +823,8 @@ secondCond_127:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call inc_a
 	call inc_a
 	sw a0, 40(sp)
 
@@ -788,6 +856,8 @@ secondCond_127:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call inc_a
 	call inc_a
 	sw a0, 40(sp)
 
@@ -808,22 +878,34 @@ secondCond_127:
 	lw a0, 0(sp)
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# sub result_ inc_a$5 inc_a$6
 	sub a2, a1, a0
 	sw a0, 4(a0)
 	li a0, 1
 	sw a1, 8(a1)
+
+	# add result_$1 result_ 
 	add a1, a2, a0
+
+	# cmp result_$1  cond_normalize_$4
 	li a0, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a1, a0
+
+	# condBr cond_normalize_$4 ifTrue_332 ifFalse_133
 	beqz a2, ifFalse_133
 	j ifTrue_332
+
+	# cmp   cond_normalize_$5
 	li a0, 0
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 0
 	sw s0, 112(s0)
 	xor s0, a0, a1
+
+	# condBr cond_normalize_$5 ifTrue_332 ifFalse_133
 	beqz s0, ifFalse_133
 	j ifTrue_332

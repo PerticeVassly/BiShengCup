@@ -26,7 +26,11 @@ mainEntry90:
 
 	# load b$1 b
 	lw a1, 0(sp)
+
+	# add result_ a$1 b$1
 	add a2, a0, a1
+
+	# ret result_
 	mv a0, a2
 	addi sp, sp, 8
 	ret 

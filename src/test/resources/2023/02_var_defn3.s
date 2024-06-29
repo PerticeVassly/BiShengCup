@@ -33,7 +33,11 @@ mainEntry34:
 
 	# load _c$1 _c
 	lw a1, 0(sp)
+
+	# add result_ b0$1 _c$1
 	add a2, a0, a1
+
+	# ret result_
 	mv a0, a2
 	addi sp, sp, 12
 	ret 

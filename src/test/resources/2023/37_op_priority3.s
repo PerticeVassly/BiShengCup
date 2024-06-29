@@ -24,13 +24,21 @@ mainEntry61:
 	# load a$1 a
 	lw a0, 4(sp)
 	li a1, -5
+
+	# sub result_ a$1 
 	sub a2, a0, a1
 
 	# load b$1 b
 	lw a1, 0(sp)
+
+	# add result_$1 result_ b$1
 	add s0, a2, a1
 	li s1, -5
+
+	# add result_$2 result_$1 
 	add s2, s0, s1
+
+	# ret result_$2
 	mv a0, s2
 	addi sp, sp, 8
 	ret 

@@ -23,6 +23,8 @@ mainEntry96:
 
 	# load b$1 b
 	lw a0, 0(sp)
+
+	# ret b$1
 	mv a0, a0
 	addi sp, sp, 8
 	ret 

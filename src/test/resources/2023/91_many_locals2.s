@@ -119,6 +119,8 @@ mainEntry58:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call getint
 	call getint
 	sw a0, 40(sp)
 
@@ -138,18 +140,28 @@ mainEntry58:
 	# store b getint
 	lw a0, 0(sp)
 	sw a0, 4(sp)
+
+	# br whileCond_206
 	j whileCond_206
 
 whileCond_206:
 
 	# load b$1 b
 	lw a1, 4(sp)
+
+	# cmp b$1  cond_eq_tmp_
 	li a2, 5
 	xor s0, a1, a2
 	seqz s0, s0
+
+	# zext a2 s0
 	mv a2, s0
+
+	# cmp cond_tmp_  cond_
 	li s1, 0
 	xor s2, a2, s1
+
+	# condBr cond_ whileBody_206 next_490
 	beqz s2, next_490
 	j whileBody_206
 
@@ -161,10 +173,14 @@ whileBody_206:
 	li a0, 1
 	addi sp, sp, -4
 	sw a1, 0(sp)
+
+	# add result_ b$2 
 	add a1, s1, a0
 
 	# store b result_
 	sw a1, 8(sp)
+
+	# br whileCond_206
 	j whileCond_206
 
 next_490:
@@ -180,6 +196,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$1 a0$1 
 	add a2, a0, a1
 
 	# store a1 result_$1
@@ -192,6 +210,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$2 a1$1 
 	add a2, a1, a0
 
 	# store a2 result_$2
@@ -204,6 +224,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$3 a2$1 
 	add a2, a0, a1
 
 	# store a3 result_$3
@@ -216,6 +238,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$4 a3$1 
 	add a2, a1, a0
 
 	# store a4 result_$4
@@ -228,6 +252,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$5 a4$1 
 	add a2, a0, a1
 
 	# store a5 result_$5
@@ -240,6 +266,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$6 a5$1 
 	add a2, a1, a0
 
 	# store a6 result_$6
@@ -252,6 +280,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$7 a6$1 
 	add a2, a0, a1
 
 	# store a7 result_$7
@@ -264,6 +294,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$8 a7$1 
 	add a2, a1, a0
 
 	# store a8 result_$8
@@ -276,6 +308,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$9 a8$1 
 	add a2, a0, a1
 
 	# store a9 result_$9
@@ -288,6 +322,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$10 a9$1 
 	add a2, a1, a0
 
 	# store a10 result_$10
@@ -300,6 +336,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$11 a10$1 
 	add a2, a0, a1
 
 	# store a11 result_$11
@@ -312,6 +350,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$12 a11$1 
 	add a2, a1, a0
 
 	# store a12 result_$12
@@ -324,6 +364,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$13 a12$1 
 	add a2, a0, a1
 
 	# store a13 result_$13
@@ -336,6 +378,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$14 a13$1 
 	add a2, a1, a0
 
 	# store a14 result_$14
@@ -348,6 +392,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$15 a14$1 
 	add a2, a0, a1
 
 	# store a15 result_$15
@@ -360,6 +406,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$16 a15$1 
 	add a2, a1, a0
 
 	# store a16 result_$16
@@ -372,6 +420,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$17 a16$1 
 	add a2, a0, a1
 
 	# store a17 result_$17
@@ -384,6 +434,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$18 a17$1 
 	add a2, a1, a0
 
 	# store a18 result_$18
@@ -396,6 +448,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$19 a18$1 
 	add a2, a0, a1
 
 	# store a19 result_$19
@@ -408,6 +462,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$20 a19$1 
 	add a2, a1, a0
 
 	# store a20 result_$20
@@ -420,6 +476,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$21 a20$1 
 	add a2, a0, a1
 
 	# store a21 result_$21
@@ -432,6 +490,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$22 a21$1 
 	add a2, a1, a0
 
 	# store a22 result_$22
@@ -444,6 +504,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$23 a22$1 
 	add a2, a0, a1
 
 	# store a23 result_$23
@@ -456,6 +518,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$24 a23$1 
 	add a2, a1, a0
 
 	# store a24 result_$24
@@ -468,6 +532,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$25 a24$1 
 	add a2, a0, a1
 
 	# store a25 result_$25
@@ -480,6 +546,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$26 a25$1 
 	add a2, a1, a0
 
 	# store a26 result_$26
@@ -492,6 +560,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$27 a26$1 
 	add a2, a0, a1
 
 	# store a27 result_$27
@@ -504,6 +574,8 @@ next_490:
 	li a0, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$28 a27$1 
 	add a2, a1, a0
 
 	# store a28 result_$28
@@ -516,6 +588,8 @@ next_490:
 	li a1, 1
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$29 a28$1 
 	add a2, a0, a1
 
 	# store a29 result_$29
@@ -543,6 +617,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -580,6 +656,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -617,6 +695,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -654,6 +734,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -691,6 +773,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -728,6 +812,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -765,6 +851,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -802,6 +890,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -839,6 +929,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -876,6 +968,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -913,6 +1007,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -950,6 +1046,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -987,6 +1085,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1024,6 +1124,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1061,6 +1163,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1098,6 +1202,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1135,6 +1241,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1172,6 +1280,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1209,6 +1319,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1246,6 +1358,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1283,6 +1397,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1320,6 +1436,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1357,6 +1475,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1394,6 +1514,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1431,6 +1553,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1468,6 +1592,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1505,6 +1631,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1542,6 +1670,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1579,6 +1709,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1616,6 +1748,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1660,6 +1794,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putch
 	call putch
 	sw a0, 40(sp)
 
@@ -1697,6 +1833,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -1734,6 +1872,8 @@ next_490:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putch
 	call putch
 	sw a0, 40(sp)
 
@@ -1754,6 +1894,8 @@ next_490:
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	lw a0, 400(sp)
+
+	# ret a25$3
 	mv a0, a0
 	addi sp, sp, 504
 	ret 

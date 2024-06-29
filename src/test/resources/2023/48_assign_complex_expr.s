@@ -41,8 +41,12 @@ mainEntry33:
 	# load d$1 d
 	lw a0, 4(sp)
 	li a1, 1
+
+	# mul result_ d$1 
 	mul a2, a0, a1
 	li a1, 2
+
+	# div result_$1 result_ 
 	div s0, a2, a1
 
 	# load a$1 a
@@ -50,9 +54,13 @@ mainEntry33:
 
 	# load b$1 b
 	lw s1, 12(sp)
+
+	# sub result_$2 a$1 b$1
 	sub s2, a1, s1
 	addi sp, sp, -4
 	sw a0, 0(sp)
+
+	# add result_$3 result_$1 result_$2
 	add a0, s0, s2
 
 	# load c$1 c
@@ -64,18 +72,26 @@ mainEntry33:
 	li a1, 3
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$4 c$1 
 	add a2, a0, a1
 	li a1, 0
 	addi sp, sp, -4
 	sw a0, 0(sp)
+
+	# sub tmp_  result_$4
 	sub a0, a1, a2
 	li a1, 2
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# mod result_$5 tmp_ 
 	rem a2, a0, a1
 	lw a1, 16(sp)
 	addi sp, sp, -4
 	sw a0, 0(sp)
+
+	# sub result_$6 result_$3 result_$5
 	sub a0, a1, a2
 
 	# store result result_$6
@@ -102,6 +118,8 @@ mainEntry33:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -126,10 +144,14 @@ mainEntry33:
 	li a1, 2
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# mod result_$7 d$2 
 	rem a2, a0, a1
 	li a1, 67
 	addi sp, sp, -4
 	sw a0, 0(sp)
+
+	# add result_$8 result_$7 
 	add a0, a2, a1
 
 	# load a$2 a
@@ -141,16 +163,22 @@ mainEntry33:
 	lw a0, 60(sp)
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# sub result_$9 a$2 b$2
 	sub a2, a1, a0
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 0
 	addi sp, sp, -4
 	sw a1, 0(sp)
+
+	# sub tmp_$1  result_$9
 	sub a1, a0, a2
 	lw a0, 12(sp)
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$10 result_$8 tmp_$1
 	add a2, a0, a1
 
 	# load c$2 c
@@ -161,18 +189,26 @@ mainEntry33:
 	li a1, 2
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$11 c$2 
 	add a2, a0, a1
 	li a1, 2
 	addi sp, sp, -4
 	sw a0, 0(sp)
+
+	# mod result_$12 result_$11 
 	rem a0, a2, a1
 	li a1, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# sub tmp_$2  result_$12
 	sub a2, a1, a0
 	lw a1, 8(sp)
 	addi sp, sp, -4
 	sw a0, 0(sp)
+
+	# sub result_$13 result_$10 tmp_$2
 	sub a0, a1, a2
 
 	# store result result_$13
@@ -186,6 +222,8 @@ mainEntry33:
 	li a1, 3
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_$14 result$2 
 	add a2, a0, a1
 
 	# store result result_$14
@@ -210,6 +248,8 @@ mainEntry33:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -228,6 +268,8 @@ mainEntry33:
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 0
+
+	# ret 
 	mv a0, a0
 	addi sp, sp, 116
 	ret 

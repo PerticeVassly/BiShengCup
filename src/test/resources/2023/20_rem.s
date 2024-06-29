@@ -17,7 +17,11 @@ mainEntry19:
 	# load a$1 a
 	lw a0, 0(sp)
 	li a1, 3
+
+	# mod result_ a$1 
 	rem a2, a0, a1
+
+	# ret result_
 	mv a0, a2
 	addi sp, sp, 4
 	ret 

@@ -30,6 +30,8 @@ mainEntry55:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call getint
 	call getint
 	sw a0, 40(sp)
 
@@ -65,6 +67,8 @@ mainEntry55:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call getint
 	call getint
 	sw a0, 40(sp)
 
@@ -93,13 +97,21 @@ mainEntry55:
 
 	# load b b
 	lw s0, b
+
+	# cmp a b cond_eq_tmp_
 	xor s1, a2, s0
 	seqz s1, s1
+
+	# zext s2 s1
 	mv s2, s1
+
+	# cmp cond_tmp_  cond_
 	sw a0, 8(a0)
 	li a0, 0
 	sw a1, 4(a1)
 	xor a1, s2, a0
+
+	# condBr cond_ secondCond_109 ifFalse_107
 	beqz a1, ifFalse_107
 	j secondCond_109
 
@@ -108,6 +120,8 @@ ifTrue_282:
 	# store c 
 	li a0, 1
 	sw a0, 0(sp)
+
+	# br next_485
 	j next_485
 
 ifFalse_107:
@@ -115,12 +129,16 @@ ifFalse_107:
 	# store c 
 	li a0, 0
 	sw a0, 0(sp)
+
+	# br next_485
 	j next_485
 
 next_485:
 
 	# load c$1 c
 	lw a0, 0(sp)
+
+	# ret c$1
 	mv a0, a0
 	addi sp, sp, 12
 	ret 
@@ -131,18 +149,26 @@ secondCond_109:
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	lw a1, a
+
+	# cmp a$1  cond_neq_tmp_
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 3
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a1, a0
+
+	# zext a0 a2
 	mv a0, a2
+
+	# cmp cond_tmp_$1  cond_$1
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 0
 	addi sp, sp, -4
 	sw a2, 0(sp)
 	xor a2, a0, a1
+
+	# condBr cond_$1 ifTrue_282 ifFalse_107
 	beqz a2, ifFalse_107
 	j ifTrue_282

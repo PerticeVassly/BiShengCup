@@ -9,9 +9,9 @@ public class RiscSpecifications {
 
     private final static String[] callerSavedRegs = new String[] {"t0", "t1", "t2", "t3", "t4", "t5", "t6", "a0", "a1", "ra"};
 
-    private final static String[] calleeSavedRegs = new String[] {"s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"};
+    private final static String[] calleeSavedRegs = new String[] {"s0", "s1", "s2"};
 
-    private final static String[] argRegs = new String[] {"a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7"};
+    private final static String[] argRegs = new String[] {"a0", "a1", "a2"};
 
     static {
         names[0] = "zero";

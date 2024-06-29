@@ -17,9 +17,15 @@ mainEntry:
 	# load a$1 a
 	lw a0, 0(sp)
 	li a1, 2
+
+	# mul result_ a$1 
 	mul a2, a0, a1
 	li a1, 1
+
+	# add result_$1 result_ 
 	add s0, a2, a1
+
+	# ret result_$1
 	mv a0, s0
 	addi sp, sp, 4
 	ret 

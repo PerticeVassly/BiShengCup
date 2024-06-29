@@ -17,6 +17,8 @@ mainEntry28:
 
 	# load b b
 	lw a0, b
+
+	# ret b
 	mv a0, a0
 	addi sp, sp, 0
 	ret 

@@ -8,19 +8,10 @@ if_ifElse_:
 if_ifElse_Entry:
 
 	# save callee saved regs
-	addi sp, sp, -48
+	addi sp, sp, -12
 	sw s0, 0(sp)
 	sw s1, 4(sp)
 	sw s2, 8(sp)
-	sw s3, 12(sp)
-	sw s4, 16(sp)
-	sw s5, 20(sp)
-	sw s6, 24(sp)
-	sw s7, 28(sp)
-	sw s8, 32(sp)
-	sw s9, 36(sp)
-	sw s10, 40(sp)
-	sw s11, 44(sp)
 
 	# alloc a
 	addi sp, sp, -4
@@ -38,38 +29,56 @@ if_ifElse_Entry:
 
 	# load a$1 a
 	lw a0, 4(sp)
+
+	# cmp a$1  cond_eq_tmp_
 	li a1, 5
 	xor a2, a0, a1
 	seqz a2, a2
+
+	# zext a1 a2
 	mv a1, a2
+
+	# cmp cond_tmp_  cond_
 	li s0, 0
 	xor s1, a1, s0
-	beqz s1, next_5
-	j ifTrue_5
 
-ifTrue_5:
+	# condBr cond_ ifTrue_333 next_587
+	beqz s1, next_587
+	j ifTrue_333
+
+ifTrue_333:
 
 	# load b$1 b
 	lw s0, 0(sp)
+
+	# cmp b$1  cond_eq_tmp_$1
 	li s2, 10
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	xor a0, s0, s2
 	seqz a0, a0
+
+	# zext s2 a0
 	mv s2, a0
+
+	# cmp cond_tmp_$1  cond_$1
 	addi sp, sp, -4
 	sw a0, 0(sp)
 	li a0, 0
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	xor a1, s2, a0
-	beqz a1, ifFalse_4
-	j ifTrue_6
 
-next_5:
+	# condBr cond_$1 ifTrue_334 ifFalse_134
+	beqz a1, ifFalse_134
+	j ifTrue_334
+
+next_587:
 
 	# load a$3 a
 	lw a0, 16(sp)
+
+	# ret a$3
 	mv a0, a0
 	addi sp, sp, 20
 
@@ -77,28 +86,21 @@ next_5:
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
-	lw s3, 12(sp)
-	lw s4, 16(sp)
-	lw s5, 20(sp)
-	lw s6, 24(sp)
-	lw s7, 28(sp)
-	lw s8, 32(sp)
-	lw s9, 36(sp)
-	lw s10, 40(sp)
-	lw s11, 44(sp)
-	addi sp, sp, 48
+	addi sp, sp, 12
 	ret 
 
-ifTrue_6:
+ifTrue_334:
 
 	# store a 
 	addi sp, sp, -4
 	sw a1, 0(sp)
 	li a1, 25
 	sw a1, 20(sp)
-	j next_6
 
-ifFalse_4:
+	# br next_588
+	j next_588
+
+ifFalse_134:
 
 	# load a$2 a
 	lw a1, 20(sp)
@@ -107,20 +109,26 @@ ifFalse_4:
 	li a0, 15
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_ a$2 
 	add a2, a1, a0
 
 	# store a result_
 	sw a2, 28(sp)
-	j next_6
 
-next_6:
-	j next_5
+	# br next_588
+	j next_588
+
+next_588:
+
+	# br next_587
+	j next_587
 .type main, @function
 .globl main
 main:
 
 
-mainEntry2:
+mainEntry84:
 	addi sp, sp, -4
 
 	# prepare params
@@ -137,6 +145,8 @@ mainEntry2:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call if_ifElse_
 	call if_ifElse_
 	sw a0, 40(sp)
 
@@ -153,6 +163,8 @@ mainEntry2:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 	lw a0, 0(sp)
+
+	# ret if_ifElse_
 	mv a0, a0
 	addi sp, sp, 4
 	ret 
