@@ -16,28 +16,19 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-/**
- * @author wzh
- * @description
- * test files in DIR with input and output
- * <br>
- * runtime libs (sylib.ll) used
- * @time 2024/6/14 14:04
- */
-public class TestFrontEndIO {
+public class BackEndTest {
     private static final String DIR = "src/test/resources/2023/";
     private static final String DIR_PART = "src/test/resources/2023part/";
-    private static final String SYLIB = "src/test/resources/sylib.ll";
-    private static final String LINKED = "src/test/resources/linked.ll";
+    private static final String SYLIB_RISC = "src/test/resources/libriscv.o";
 
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("79_var_name")
-    @StringSource("90_many_locals")
-    @StringSource("64_calculator")
-    @StringSource("87_many_params")
-    void testFrontEndIO(String name) throws IOException, InterruptedException {
+    @StringSource("21_if_test2")
+    @StringSource("22_if_test3")
+    @StringSource("23_if_test4")
+    @StringSource("24_if_test5")
+    void testRisc(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
     }
 
@@ -47,7 +38,7 @@ public class TestFrontEndIO {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if (name.equals("79_var_name") || name.equals("90_many_locals")) {
+        if (name.contains("78") || name.contains("28")) {
             fail();
         }
         testFile(DIR, name);
@@ -68,14 +59,15 @@ public class TestFrontEndIO {
     void testFile(String dir, String name) throws IOException, InterruptedException {
         String standardIn = dir + name + ".in";
         String code = dir + name + ".sy";
-        String output = dir + name + ".ll";
+        String output = dir + name + ".s";
         String standardOut = dir + name + ".out";
-        Main.main(code, "-o", output, "--emit-llvm", "-O0");
-        cmdExecutor.exec("llvm-link", output, SYLIB, "-o", LINKED);
+        Main.main(code, "-o", output, "-S", "-O0");
+
+        cmdExecutor.exec("riscv64-unknown-elf-gcc", output, "-g", "-o", dir + name, SYLIB_RISC);
         if (exist(dir, name + ".in")) {
-            cmdExecutor.execRedirectInput(standardIn, "lli", LINKED);
+            cmdExecutor.execRedirectInput(standardIn, "qemu-riscv64", "./" + dir + name);
         } else {
-            cmdExecutor.exec("lli", LINKED);
+            cmdExecutor.exec("qemu-riscv64", "./" + dir + name);
         }
         int retValue = cmdExecutor.getExitCode();
         String capturedOutput = cmdExecutor.getOutputInfo();

@@ -739,64 +739,88 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return localVar;
         }
     }
-    @Override
-    public ValueRef visitInitVal(SysYParser.InitValContext ctx) {
-        if (ctx.exp() != null) {
-            return visitExp(ctx.exp());
-        } else {
-            // array initial
-            int initSize = ctx.initVal().size();
-            int depth = 0;
-            ParserRuleContext tmp = ctx;
-            while (tmp.getParent() instanceof SysYParser.InitValContext) {
-                depth++;
-                tmp = tmp.getParent();
+    private ValueRef[] allElements;
+    int idx = 0;
+    private ValueRef arrayInitial(SysYParser.InitValContext ctx) {
+        // array initial
+        int initSize = ctx.initVal().size();
+        int depth = 0;
+        ParserRuleContext tmp = ctx;
+        if (!(ctx.getParent() instanceof SysYParser.InitValContext)) {
+            // start from varDef
+            SysYParser.VarDefContext def = (SysYParser.VarDefContext) ctx.getParent();
+            int dim = def.L_BRACKT().size();
+            int[] widths = new int[dim];        // from low to high
+            int totalNum = 1;
+            for (int i = dim - 1; i >= 0; i--) {
+                widths[i] = getIntConst(def.constExp(i));
+                totalNum *= widths[i];
             }
-            SysYParser.VarDefContext parent = (SysYParser.VarDefContext) tmp.getParent(); // array ctx parent must have '{'
-            int realSize = getIntConst(parent.constExp(depth));
-            ArrayValue array = new ArrayValue(realSize);
-            ValueRef[] elements = new ValueRef[initSize];
-            for (int i = 0; i < initSize; i++) {
-                elements[i] = visitInitVal(ctx.initVal(i));
-            }
-            TypeRef elementType;
+
+            allElements = new ValueRef[totalNum];
+
+        }
+
+        // not real depth
+
+        while (tmp.getParent() instanceof SysYParser.InitValContext) {
+            depth++; // it's actually not the real depth
+            tmp = tmp.getParent();
+        }
+        SysYParser.VarDefContext parent = (SysYParser.VarDefContext) tmp.getParent(); // array ctx parent must have '{'
+        int realSize = getIntConst(parent.constExp(depth));
+        ArrayValue array = new ArrayValue(realSize); // not true
+        ValueRef[] elements = new ValueRef[initSize];
+        for (int i = 0; i < initSize; i++) {
+            elements[i] = arrayInitial(ctx.initVal(i));
+            allElements[idx++] = elements[i];
+        }
+        TypeRef elementType;
 //            SysYParser.VarDeclContext t = (SysYParser.VarDeclContext) parent.getParent();
 //            if (t.bType().INT() != null) {
 //                elementType = i32Type;
 //            } else {
 //                elementType = floatType;
 //            }
-            if (initSize > 0 && elements[0].getType() instanceof ArrayType) {
-                elementType = elements[0].getType();
-            } else {
-                SysYParser.VarDeclContext t = (SysYParser.VarDeclContext) parent.getParent();
-                if (t.bType().INT() != null) {
-                    elementType = i32Type;
-                    for (int i = 0; i < elements.length; i++) {
-                        if (elements[i].getType().equals(floatType)) {
-                            if (elements[i] instanceof ConstValue) {
-                                elements[i] = gen.ConstInt(i32Type, (int) (float)((ConstValue) elements[i]).getValue());
-                            } else {
-                                elements[i] = gen.buildFloatToInt(builder, elements[i], "f2i_");
-                            }
+        if (initSize > 0 && elements[0].getType() instanceof ArrayType) {
+            elementType = elements[0].getType();
+        } else {
+            SysYParser.VarDeclContext t = (SysYParser.VarDeclContext) parent.getParent();
+            if (t.bType().INT() != null) {
+                elementType = i32Type;
+                for (int i = 0; i < elements.length; i++) {
+                    if (elements[i].getType().equals(floatType)) {
+                        if (elements[i] instanceof ConstValue) {
+                            elements[i] = gen.ConstInt(i32Type, (int) (float)((ConstValue) elements[i]).getValue());
+                        } else {
+                            elements[i] = gen.buildFloatToInt(builder, elements[i], "f2i_");
                         }
                     }
-                } else {
-                    elementType = floatType;
-                    for (int i = 0; i < elements.length; i++) {
-                        if (elements[i].getType().equals(i32Type)) {
-                            if (elements[i] instanceof ConstValue) {
-                                elements[i] = gen.ConstFloat(floatType, (float) (int)((ConstValue) elements[i]).getValue());
-                            } else {
-                                elements[i] = gen.buildIntToFloat(builder, elements[i], "i2f_");
-                            }
+                }
+            } else {
+                elementType = floatType;
+                for (int i = 0; i < elements.length; i++) {
+                    if (elements[i].getType().equals(i32Type)) {
+                        if (elements[i] instanceof ConstValue) {
+                            elements[i] = gen.ConstFloat(floatType, (float) (int)((ConstValue) elements[i]).getValue());
+                        } else {
+                            elements[i] = gen.buildIntToFloat(builder, elements[i], "i2f_");
                         }
                     }
                 }
             }
-            ArrayType arrayType = new ArrayType(elementType, realSize);
-            array.update(arrayType, elementType, elements);
-            return array;
+        }
+        ArrayType arrayType = new ArrayType(elementType, realSize);
+        array.update(arrayType, elementType, elements);
+        return array;
+    }
+
+    @Override
+    public ValueRef visitInitVal(SysYParser.InitValContext ctx) {
+        if (ctx.exp() != null) {
+            return visitExp(ctx.exp());
+        } else {
+            return arrayInitial(ctx);
         }
     }
     @Override
