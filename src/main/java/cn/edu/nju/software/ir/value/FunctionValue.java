@@ -76,6 +76,10 @@ public class FunctionValue extends ValueRef {
         return entryBlock;
     }
 
+    public ArrayList<LocalVar> getParams() {
+        return params;
+    }
+
     public LocalVar createLocalVar(TypeRef type, String name) {
         if (paramsUsedNames.contains(name)) {
             int index = paramsUsedNames.indexOf(name);

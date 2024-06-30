@@ -352,7 +352,7 @@ public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
                 printError(ErrorType.OP_NOT_MATCH, ctx.getStart().getLine(), "condExp should be int value.");
             }
         } else if (ctx.LE() != null || ctx.LT() != null || ctx.GT() != null || ctx.GE() != null ||
-        ctx.OR() != null || ctx.AND() != null || ctx.EQ() != null || ctx.NEQ() != null){
+                ctx.OR() != null || ctx.AND() != null || ctx.EQ() != null || ctx.NEQ() != null){
             visitCond(ctx.cond(0));
             visitCond(ctx.cond(1));
         }

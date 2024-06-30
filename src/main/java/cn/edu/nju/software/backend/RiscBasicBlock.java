@@ -1,78 +1,48 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.backend.riscinstruction.RiscAdd;
-import cn.edu.nju.software.backend.riscinstruction.RiscAddi;
-import cn.edu.nju.software.backend.riscinstruction.RiscCall;
-import cn.edu.nju.software.backend.riscinstruction.RiscInstruction;
-import cn.edu.nju.software.backend.riscinstruction.RiscJ;
-import cn.edu.nju.software.backend.riscinstruction.RiscLi;
-import cn.edu.nju.software.backend.riscinstruction.RiscLw;
-import cn.edu.nju.software.backend.riscinstruction.RiscMv;
-import cn.edu.nju.software.backend.riscinstruction.RiscRet;
-import cn.edu.nju.software.backend.riscinstruction.RiscSw;
-import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
-import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
-import cn.edu.nju.software.backend.riscinstruction.operand.Register;
-import cn.edu.nju.software.backend.asm.RiscLabel;
-import cn.edu.nju.software.backend.registeralloc.RegisterManager;
+import cn.edu.nju.software.backend.riscinstruction.*;
+import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscDiv;
+import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscMul;
+import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscRem;
+import cn.edu.nju.software.backend.riscinstruction.operand.*;
+import cn.edu.nju.software.backend.riscinstruction.pseudo.*;
+import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
+import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
-import cn.edu.nju.software.ir.instruction.Br;
-import cn.edu.nju.software.ir.instruction.Call;
-import cn.edu.nju.software.ir.instruction.CondBr;
-import cn.edu.nju.software.ir.instruction.Load;
-import cn.edu.nju.software.ir.instruction.Ret;
-import cn.edu.nju.software.ir.instruction.Store;
-import cn.edu.nju.software.ir.instruction.arithmetic.Add;
-import cn.edu.nju.software.ir.instruction.arithmetic.Alloc;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.value.ConstValue;
+import cn.edu.nju.software.ir.instruction.*;
+import cn.edu.nju.software.ir.instruction.arithmetic.*;
+import cn.edu.nju.software.ir.instruction.logic.Logic;
+import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
 
 public class RiscBasicBlock implements InstructionVisitor {
-    private final String name;
-    private final BasicBlockRef basicBlock;
-    private final RiscModule riscModule;
-    private final RegisterManager registerManager;
 
-    private RiscLabel label;
+    private final BasicBlockRef basicBlock;
+
+    private final Allocator allocator;
+
+    private final FunctionValue llvmFunctionValue;
+
     private final ArrayList<RiscInstruction> riscInstructions = new ArrayList<>();
 
+    public RiscBasicBlock(BasicBlockRef basicBlock, FunctionValue functionValue, Allocator allocator){
 
-    public RiscBasicBlock(BasicBlockRef basicBlock, RiscModule riscModule) {
-        this.name = basicBlock.getName();
         this.basicBlock = basicBlock;
-        this.riscModule = riscModule;
-        this.label = new RiscLabel(name);
-        this.registerManager = riscModule.getRegisterManager();
+        this.allocator = allocator;
+        this.llvmFunctionValue = functionValue;
+        allocator.setCurrentBlock(this);
 
-        registerManager.setCurrentBlock(this);
-        convertLLVMBlockToRiscBlock();
-    }
-
-    public RiscBasicBlock(BasicBlockRef basicBlock, RiscModule riscModule, boolean isEntry) {
-        this.name = basicBlock.getName();
-        this.basicBlock = basicBlock;
-        this.riscModule = riscModule;
-        this.label = new RiscLabel(name);
-        this.registerManager = riscModule.getRegisterManager();
-
-        registerManager.setCurrentBlock(this);
-
-
-        if(isEntry){
+        if(basicBlock.getPredNum() == 0){
             functionInit();
         }
+
         convertLLVMBlockToRiscBlock();
     }
-
-    //todo() waiting to refactor
-    //this function is called by RegisterManager
-    public void addInstruction(RiscInstruction instruction){
-    }
-
 
     private void convertLLVMBlockToRiscBlock() {
         for(int i = 0; i < basicBlock.getIrNum() ;i++){
@@ -81,99 +51,65 @@ public class RiscBasicBlock implements InstructionVisitor {
     }
 
     private void functionInit(){
-        saveCalleeSavedRegs();
-    }
-
-    private void saveCalleeSavedRegs(){
-        //保存所有callee saved regs
-        //12个寄存器s0到s11
-        //todo() float part
-
-        String[] registers = {"s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"};
-        for (int i = 0; i < registers.length; i++) {
-            RiscInstruction riscSw = new RiscSw(new Register(registers[i]), new IndirectRegister("sp", - i * 4));
-            riscInstructions.add(riscSw);
+        if(llvmFunctionValue.getName().equals("main")){
+            return;
         }
 
-        RiscInstruction subSp = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-4 * registers.length));
+        saveCalleeSavedRegs();
+
+        riscInstructions.add(new RiscComment("allocate space for local variables"));
+        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-allocator.getStackSize())));
+
+        //save the parameters
+        riscInstructions.add(new RiscComment("save the parameters"));
+        for(int i = 0; i < ((FunctionType) llvmFunctionValue.getType()).getFParametersCount(); i++){
+            riscInstructions.add(new RiscSw(new Register(RiscSpecifications.getArgRegs()[i]), allocator.getOperandOfPtr(String.valueOf(i))));
+        }
+
+
     }
 
 
-
-
-    //todo() 现在只考虑整数
-    //todo() 寄存器分配等待重构
-
-    //todo() waiting to refactor （ store 的值可能有很多种，现在只考虑整数）
     @Override
     public void visit(Store store) {
+
         ValueRef src = store.getOperand(0);
         ValueRef dest = store.getOperand(1);
 
-        String src_reg = "";
-        String dest_reg = "";
+        riscInstructions.add(new RiscComment("store " + dest.getName() + " " + ((src instanceof GlobalVar) ? "@" + src.getName() :  src.getName())));
 
-        //获取src的寄存器
-        //如果要store的是一个常数，需要额外一条li指令, 否则直接mv
-        if (src instanceof ConstValue) {
+        allocator.prepareVariable(src);
 
-            if (src.getType() instanceof IntType) {
-                src_reg = registerManager.provideReg();
-                registerManager.lockReg(src_reg);
-                RiscInstruction riscLi = new RiscLi(new Register(src_reg), new ImmediateValue(
-                        (Integer) ((ConstValue) src).getValue()
-                ));
-                riscInstructions.add(riscLi);
-            } else {
-                //todo() other constValueType
-                assert false;
-            }
+        Operand destOperand = allocator.getOperandOfPtr(dest);
 
-        } //
-        else {
-            //
-            src_reg = registerManager.provideReg(src.getName());
+        if(dest instanceof GlobalVar){
+            riscInstructions.add(new RiscSymbolSw(new Register("t1"), destOperand, new Register("t0")));
+        } else {
+            riscInstructions.add(new RiscSw(new Register("t1"), destOperand));
         }
-        //防止在获取dest_reg的时候，这个寄存器被spill然后被分配给了dest_reg
-        registerManager.lockReg(src_reg);
 
-        //获取dest的寄存器
-        dest_reg = registerManager.provideReg(dest.getName());
-
-        //生成mv指令
-        RiscInstruction riscMv = new RiscMv(new Register(dest_reg), new Register(src_reg));
-        riscInstructions.add(riscMv);
-
-        //通知registerManager解锁资源以及释放资源
-        registerManager.unlockReg(src_reg);
-        if (src instanceof ConstValue) {
-            registerManager.freeReg(src_reg);
-        }
     }
 
     @Override
-    public void visit(Alloc alloc){
-        //todo() 需要对Manager分配做一些修改
-        //todo() 目前是直接分配一个寄存器，但是只有这个寄存器被spill了才会到内存中去
+    public void visit(Allocate allocate){
+        //has allocated
     }
 
     @Override
     public void visit(Load load){
 
-        //获取src的寄存器
-        String src_reg = registerManager.provideReg(load.getOperand(0).getName());
-        registerManager.lockReg(src_reg);
+        ValueRef src = load.getOperand(0);
+        ValueRef lVal = load.getLVal();
 
-        String dest_reg = registerManager.provideReg(load.getOperand(1).getName());
+        riscInstructions.add(new RiscComment("load " + ((lVal instanceof GlobalVar)? "@" + lVal.getName() : lVal.getName()) + " " + src.getName()));
 
-        //生成mv指令
-        RiscInstruction riscMv = new RiscMv(new Register(dest_reg), new Register(src_reg));
-        riscInstructions.add(riscMv);
+        Operand srcOperand = allocator.getOperandOfPtr(src);
+        Operand destOperand = allocator.getOperandOfPtr(lVal);
 
-        //通知registerManager解锁资源
-        registerManager.unlockReg(src_reg);
+        riscInstructions.add(new RiscLw(new Register("t0"), srcOperand));
+        riscInstructions.add(new RiscSw(new Register("t0"), destOperand));
     }
-//
+
     @Override
     public void visit(Add add){
 
@@ -181,184 +117,342 @@ public class RiscBasicBlock implements InstructionVisitor {
         ValueRef op2 = add.getOperand(1);
         ValueRef dest = add.getLVal();
 
-        //分别对应add的两个操作数和一个结果
-        String src_reg1 = "";
-        String src_reg2 = "";
-        String dest_reg = "";
+        riscInstructions.add(new RiscComment("add " + dest.getName() + " " + op1.getName() + " " + op2.getName()));
 
-        //处理第一个操作数
-        boolean op1IsConst = op1 instanceof ConstValue;
-        if(op1IsConst){
-            //需要生成li指令
-            src_reg1 = registerManager.provideReg();
-            RiscInstruction riscLiForOp1 = new RiscLi(new Register(src_reg1)
-                    , new ImmediateValue((Integer) ((ConstValue) op1).getValue()));
-            riscInstructions.add(riscLiForOp1);
-        }
-        else {
-            src_reg1 = registerManager.provideReg(op1.getName());
-        }
-        registerManager.lockReg(src_reg1);
+        allocator.prepareVariable(op1,op2);
+        Operand destOperand = allocator.getOperandOfPtr(dest);
 
-        //处理第二个操作数
-        boolean op2isConst = op2 instanceof ConstValue;
-        if(op2isConst){
-            //需要生成li指令
-            src_reg2 = registerManager.provideReg();
-            RiscInstruction riscLiForOp2 = new RiscLi(new Register(src_reg2)
-                    , new ImmediateValue((Integer) ((ConstValue) op2).getValue()));
-            riscInstructions.add(riscLiForOp2);
-        }
-        else {
-            src_reg2 = registerManager.provideReg(op2.getName());
-        }
-        registerManager.lockReg(src_reg2);
+        riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscSw(new Register("t0"), destOperand));
 
-        //生成
-        dest_reg = registerManager.provideReg(dest.getName());
-        RiscInstruction riscAdd = new RiscAdd(new Register(dest_reg), new Register(src_reg1), new Register(src_reg2));
-        riscInstructions.add(riscAdd);
-
-
-        registerManager.unlockReg(src_reg1);
-        registerManager.unlockReg(src_reg2);
-        if(op1IsConst){
-            registerManager.freeReg(src_reg1);
-        }
-
-        if(op2isConst){
-            registerManager.freeReg(src_reg2);
-        }
     }
 
     @Override
-    public void visit(Call call) {
-        saveCallerSavedRegs();
+    public void visit(Sub sub){
+        ValueRef op1 = sub.getOperand(0);
+        ValueRef op2 = sub.getOperand(1);
+        ValueRef dest = sub.getLVal();
 
-        //prepare the parameters
-        //todo() 这里默认参数通过寄存器就可以实现完全传输，但是如果参数过多，需要考虑到栈的问题（没有实现）
-        ArrayList<ValueRef> realParams = call.getRealParams();
-        for (int i = 0; i < realParams.size(); i++) {
-            ValueRef param = realParams.get(i);
-            String param_reg = registerManager.provideReg(param.getName());
-            RiscInstruction riscMv = new RiscMv(new Register("a" + i), new Register(param_reg));
-            riscInstructions.add(riscMv);
-            //完成全部的参数传递之前将涉及到的寄存器全部锁住
-            registerManager.lockReg("a" + i);
-        }
+        riscInstructions.add(new RiscComment("sub " + dest.getName() + " " + op1.getName() + " " + op2.getName()));
 
-        //call the function
-        RiscInstruction riscCall = new RiscCall( call.getFunction().getName());
-        riscInstructions.add(riscCall);
-        //释放资源
-        for(int i = 0; i < realParams.size(); i++){
-            registerManager.unlockReg("a" + i);
-        }
+        allocator.prepareVariable(op1, op2);
+        Operand addressToSave = allocator.getOperandOfPtr(dest);
 
-        //恢复调用之前的环境
-        restoreCallerSavedRegs();
+        riscInstructions.add(new RiscSub(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscSw(new Register("t0"), addressToSave));
     }
-
-    public void saveCallerSavedRegs(){
-        //保存所有的caller saved regs
-        //共九个寄存器
-        //临时寄存器 t0 -> t6
-        //返回寄存器 a0 -> a1
-        //默认在栈的中加上这九个寄存器
-        //todo() float part
-        String[] registers = {"t0", "t1", "t2", "t3", "t4", "t5", "t6", "a0", "a1"};
-        for (int i = 0; i < registers.length; i++) {
-            RiscInstruction riscSw = new RiscSw(new Register(registers[i]), new IndirectRegister("sp", - i * 4));
-            riscInstructions.add(riscSw);
-        }
-        RiscInstruction subSp = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-4 * registers.length));
-        riscInstructions.add(subSp);
-        // 之后sp就是调用函数的栈底了
-    }
-
-    public void restoreCallerSavedRegs(){
-        //恢复所有的caller saved  regs
-        //共九个寄存器
-        //临时寄存器 t0 -> t6
-        //返回寄存器 a0 -> a1
-        //todo() float part
-        String[] registers = {"t0", "t1", "t2", "t3", "t4", "t5", "t6", "a0", "a1"};
-        for (int i = 0; i < registers.length; i++) {
-            RiscInstruction riscLw = new RiscLw(new Register(registers[i]), new IndirectRegister("sp", (i + 1) * 4));
-            riscInstructions.add(riscLw);
-        }
-        RiscInstruction addSp = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(4 * registers.length));
-    }
-
-
 
     @Override
-    public void visit(Ret ret){
-        //将要返回的值放入对应的寄存器
-        ValueRef retVal = ret.getOperand(0);
+    public void visit(Mul mul){
+        ValueRef op1 = mul.getOperand(0);
+        ValueRef op2 = mul.getOperand(1);
+        ValueRef dest = mul.getLVal();
 
-        if(retVal.getType() instanceof IntType){
-            if(retVal instanceof ConstValue){
-                //如果是常数，需要生成li指令
-                //此时a0的值一定会被覆盖，所以不需要额外的寄存器mv到a
-                RiscInstruction riscLi = new RiscLi(new Register("a0"), new ImmediateValue((Integer) ((ConstValue) retVal).getValue()));
-                riscInstructions.add(riscLi);
-            }
-            else {
-                //如果是变量，拿对应的寄存器然后mv 到 a0就行了
-                String ret_reg = registerManager.provideReg(retVal.getName());
-                RiscInstruction riscMv = new RiscMv(new Register("a0"), new Register(ret_reg));
-                riscInstructions.add(riscMv);
-            }
-        }
-        else {
-            //todo() other type
-            assert false;
-        }
+        riscInstructions.add(new RiscComment("mul " + dest.getName() + " " + op1.getName() + " " + op2.getName()));
 
+        allocator.prepareVariable(op1,op2);
+        Operand addressToSave = allocator.getOperandOfPtr(dest);
 
-        //清除栈（sp归位）
-        RiscInstruction riscAddi = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(4 * registerManager.getMemoryVarStack().getSize()));
-
-        //恢复调用之前的环境
-        restoreCalleeSavedRegs();
-
-        RiscInstruction riscRet = new RiscRet();
-        riscInstructions.add(riscRet);
+        riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscSw(new Register("t0"), addressToSave));
     }
 
-    private void restoreCalleeSavedRegs(){
-        //12个寄存器s0到s11
-        //todo() float part
-        String[] registers = {"s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11"};
-        for (int i = 0; i < registers.length; i++) {
-            RiscInstruction riscLw = new RiscLw(new Register(registers[i]), new IndirectRegister("sp", (i + 1) * 4));
-            riscInstructions.add(riscLw);
-        }
-        RiscInstruction addSp = new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(4 * registers.length));
+    @Override
+    public void visit(Mod mod){
+        ValueRef op1 = mod.getOperand(0);
+        ValueRef op2 = mod.getOperand(1);
+        ValueRef dest = mod.getLVal();
+
+        riscInstructions.add(new RiscComment("mod " + dest.getName() + " " + op1.getName() + " " + op2.getName()));
+        allocator.prepareVariable(op1,op2);
+        Operand addressToSave = allocator.getOperandOfPtr(dest);
+
+        riscInstructions.add(new RiscRem(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscSw(new Register("t0"), addressToSave));
+    }
+
+    @Override
+    public void visit(Div div){
+        ValueRef op1 = div.getOperand(0);
+        ValueRef op2 = div.getOperand(1);
+        ValueRef dest = div.getLVal();
+
+        riscInstructions.add(new RiscComment("div " + dest.getName() + " " + op1.getName() + " " + op2.getName()));
+        allocator.prepareVariable( op1,op2);
+        Operand addressToSave = allocator.getOperandOfPtr(dest);
+
+        riscInstructions.add(new RiscDiv(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscSw(new Register("t0"), addressToSave));
+
     }
 
     @Override
     public void visit(Br br){
-        RiscInstruction riscJ = new RiscJ(br.getTarget().getName());
-        riscInstructions.add(riscJ);
+        riscInstructions.add(new RiscComment("br " + br.getTarget().getName()));
+        riscInstructions.add( new RiscJ(br.getTarget().getName()));
     }
 
     @Override
     public void visit(CondBr condBr){
-
-        //todo() block的名字有可能冲突的 waiting to refactor
         ValueRef cond = condBr.getOperand(0);
         BasicBlockRef ifTrue = condBr.getTrueBlock();
         BasicBlockRef ifFalse = condBr.getFalseBlock();
 
-        String cond_reg = registerManager.provideReg(cond.getName());
-//        RiscInstruction riscBeqz = new RiscBeqz(new Register(cond_reg), ifFalse.getName());
-//        riscInstructions.add(riscBeqz);
+        riscInstructions.add(new RiscComment("condBr " + cond.getName() + " " + ifTrue.getName() + " " + ifFalse.getName()));
+        allocator.prepareVariable(cond);
 
-        RiscInstruction riscJ = new RiscJ(ifTrue.getName());
-        riscInstructions.add(riscJ);
+        riscInstructions.add(new RiscBeqz(new Register("t1"),ifFalse.getName()));
+        riscInstructions.add(new RiscJ(ifTrue.getName()));
+    }
 
+    @Override
+    public void visit(Cmp cmp){
+
+        ValueRef op1 = cmp.getOperand(0);
+        ValueRef op2 = cmp.getOperand(1);
+        ValueRef lVal = cmp.getLVal();
+
+        riscInstructions.add(new RiscComment("cmp " + cmp.getOperand(0).getName() + " " + cmp.getOperand(1).getName() + " " + cmp.getLVal().getName()));
+
+        allocator.prepareVariable(op1,op2);
+        Operand addressToSave = allocator.getOperandOfPtr(lVal);
+
+        String dest_reg = "t0";
+        String op1_reg = "t1";
+        String op2_reg = "t2";
+        /*
+        "ne", "eq", "sgt", "slt", "sge", "sle",
+                "one", "oeq", "ogt", "olt", " oge", "ole"
+         */
+        String cmpType = cmp.getType();
+         switch (cmpType){
+             //not equal
+             case "ne":
+                 //use XOR to simulate if is zero
+                 //if same set 0, else set 1
+                 riscInstructions.add(new RiscXor(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 break;
+
+             case "eq":
+                 //use XOR to simulate if is zero
+                 riscInstructions.add(new RiscXor(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 riscInstructions.add(new RiscSeqz(new Register(dest_reg), new Register(dest_reg)));
+                 break;
+
+             case "sgt":
+                 // dest = rs1 - rs2 (dest > 0)
+                 riscInstructions.add(new RiscSub(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 // dest > 0 dest = 1
+                 riscInstructions.add(new RiscSgtz(new Register(dest_reg), new Register(dest_reg)));
+                 break;
+
+             case "slt":
+                 //slt
+                 riscInstructions.add(new RiscSltu(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 break;
+
+             case "sge":
+                 //rs1 < rs2 dest = 0
+                 riscInstructions.add(new RiscSlt(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 riscInstructions.add(new RiscSeqz(new Register(dest_reg), new Register(dest_reg)));
+                 break;
+
+             case "sle":
+                 //dest = rs1 - rs2 (dest <= 0)
+                 riscInstructions.add(new RiscSub(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 // if dest <= 0 then dest > 0 is false -> dest = 0
+                 riscInstructions.add(new RiscSgtz(new Register(dest_reg), new Register(dest_reg)));
+                 // reverse the result
+                 riscInstructions.add(new RiscSeqz(new Register(dest_reg), new Register(dest_reg)));
+                 break;
+
+             //todo() rest maybe float part
+         }
+         riscInstructions.add(new RiscSw(new Register(dest_reg), addressToSave));
+    }
+
+    @Override
+    public void visit(Logic logic){
+        //and or xor
+        ValueRef lVal = logic.getLVal();
+        ValueRef op1 = logic.getOperand(0);
+        ValueRef op2 = logic.getOperand(1);
+
+        OpEnum op = logic.getOp();
+
+        allocator.prepareVariable(op1,op2);
+        Operand addressToSave = allocator.getOperandOfPtr(lVal);
+
+        String op1_reg = "t1";
+        String op2_reg = "t2";
+        String destName = "t0";
+
+        switch (op){
+            case AND:
+                riscInstructions.add(new RiscComment("and " + destName + " " + op1.getName() + " " + op2.getName()));
+                riscInstructions.add(new RiscAnd(new Register(destName), new Register(op1_reg), new Register(op2_reg)));
+                break;
+            case OR:
+                riscInstructions.add(new RiscComment("or " + destName + " " + op1.getName() + " " + op2.getName()));
+                riscInstructions.add(new RiscOr(new Register(destName), new Register(op1_reg), new Register(op2_reg)));
+                break;
+            case XOR:
+                riscInstructions.add(new RiscComment("xor " + destName + " " + op1.getName() + " " + op2.getName()));
+                riscInstructions.add(new RiscXor(new Register(destName), new Register(op1_reg), new Register(op2_reg)));
+                break;
+            default:
+                assert false;
+        }
+        riscInstructions.add(new RiscSw(new Register(destName), addressToSave));
+
+    }
+
+    @Override
+    public void visit(ZExt zExt){
+        ValueRef op = zExt.getOperand(0);
+        ValueRef lVal = zExt.getLVal();
+
+        allocator.prepareVariable(op);
+        Operand addressToSave = allocator.getOperandOfPtr(lVal);
+
+        riscInstructions.add(new RiscComment("zext " + lVal.getName() + " " + op.getName()));
+        riscInstructions.add(new RiscMv(new Register("t0"), new Register("t1")));
+        riscInstructions.add(new RiscSw(new Register("t0"), addressToSave));
+        ;
+
+    }
+
+
+    @Override
+    public void visit(RetValue retValue){
+        ValueRef retVal = retValue.getOperand(0);
+
+        riscInstructions.add(new RiscComment("ret " + retVal.getName()));
+        allocator.prepareVariable(retVal);
+
+        riscInstructions.add(new RiscMv(new Register("a0"), new Register("t1")));
+        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(allocator.getStackSize())));
+
+        if(!llvmFunctionValue.getName().equals("main")){
+            restoreCalleeSavedRegs();
+        }
+
+        riscInstructions.add(new RiscRet());
+    }
+
+    @Override
+    public void visit(RetVoid retVoid){
+
+        riscInstructions.add(new RiscComment("ret void"));
+        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(allocator.getStackSize())));
+
+        if(!llvmFunctionValue.getName().equals("main")){
+            restoreCalleeSavedRegs();
+        }
+
+        riscInstructions.add(new RiscRet());
+    }
+
+    @Override
+    public void visit(Call call) {
+
+        prepareParams(call);
+
+        saveCallerSavedRegs();
+
+        riscInstructions.add(new RiscComment("call " + call.getFunction().getName()));
+        riscInstructions.add( new RiscCall( call.getFunction().getName()));
+
+        restoreCallerSavedRegs();
+
+        if(call.getLVal() != null) {
+            Operand addressToSave = allocator.getOperandOfPtr(call.getLVal().getName());
+            riscInstructions.add(new RiscSw(new Register("a0"), addressToSave));
+        }
+
+    }
+
+    private void prepareParams(Call call){
+
+        riscInstructions.add(new RiscComment("prepare params"));
+        //prepare the parameters
+        String[] argRegs = RiscSpecifications.getArgRegs();
+        ArrayList<ValueRef> realParams = call.getRealParams();
+
+        for(int i = 0; i < realParams.size(); i++){
+            int finalI = i;
+            allocator.prepareVariable((realParams.get(finalI)));
+            riscInstructions.add(new RiscMv(new Register(argRegs[i]), new Register("t1")));
+        }
+
+    }
+
+    private void saveCallerSavedRegs(){
+
+        riscInstructions.add(new RiscComment("save caller saved regs"));
+
+        String[] callerSavedRegs = RiscSpecifications.getCallerSavedRegs();
+
+        riscInstructions.add( new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-4 * callerSavedRegs.length)));
+
+        for (int i = 0; i < callerSavedRegs.length; i++) {
+            riscInstructions.add( new RiscSw(new Register(callerSavedRegs[i]), new IndirectRegister("sp", i * 4)));
+        }
+    }
+
+    private void restoreCallerSavedRegs(){
+
+        riscInstructions.add(new RiscComment("restore caller saved regs"));
+
+        String [] registers = RiscSpecifications.getCallerSavedRegs();
+
+        for (int i = 0; i < registers.length; i++) {
+            RiscInstruction riscLw = new RiscLw(new Register(registers[i]), new IndirectRegister("sp", i * 4));
+            riscInstructions.add(riscLw);
+        }
+
+        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(4 * registers.length)));
+    }
+
+    private void saveCalleeSavedRegs(){
+        riscInstructions.add(new RiscComment("save callee saved regs"));
+
+        String[] calleeSavedRegs = RiscSpecifications.getCalleeSavedRegs();
+
+        riscInstructions.add( new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-4 * calleeSavedRegs.length)));
+
+        for (int i = 0; i < calleeSavedRegs.length; i++) {
+            RiscInstruction riscSw = new RiscSw(new Register(calleeSavedRegs[i]), new IndirectRegister("sp", i * 4));
+            riscInstructions.add(riscSw);
+        }
+    }
+
+    private void restoreCalleeSavedRegs(){
+
+        riscInstructions.add(new RiscComment("restore callee saved regs"));
+
+        String[] calleeSavedRegs = RiscSpecifications.getCalleeSavedRegs();
+
+        for (int i = 0; i < calleeSavedRegs.length; i++) {
+            riscInstructions.add( new RiscLw(new Register(calleeSavedRegs[i]), new IndirectRegister("sp", i * 4)));
+        }
+
+        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(4 * calleeSavedRegs.length)));
+    }
+
+    public void addInstruction(RiscInstruction instruction){
+        riscInstructions.add(instruction);
+    }
+
+    public void dumpToConsole() {
+
+        System.out.println(basicBlock.getName() + ":");
+
+        assert !riscInstructions.isEmpty();
+
+        for(RiscInstruction riscInstruction : riscInstructions){
+            System.out.println(riscInstruction.emitCode());
+        }
     }
 
 }

@@ -14,6 +14,10 @@ public class Cmp extends Instruction {
         operands = new ValueRef[]{operand1, operand2};
     }
 
+    public String getType() {
+        return type;
+    }
+
     @Override
     public boolean isCmp() {
         return true;

@@ -1,0 +1,10 @@
+int add(int i, int j){
+    return i + j;
+}
+
+int main(){
+    int a = 2;
+    int b = 3;
+    int c = 4;
+    return add(1,1);
+}
