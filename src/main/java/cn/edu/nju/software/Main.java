@@ -76,6 +76,11 @@ public class Main {
         irVisitor.visit(tree);
 
         ModuleRef module = irVisitor.getModule();
+        if(module == null){
+            assert false;
+        }
+
+
         if (emitLLVM) {
             module.dumpToFile(output);
         }

@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class TestRisc {
+public class TestBackEndIO {
     private static final String DIR = "src/test/resources/2023/";
     private static final String DIR_PART = "src/test/resources/2023part/";
     private static final String SYLIB = "src/test/resources/sylib.ll";
@@ -26,10 +26,11 @@ public class TestRisc {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("21_if_test2")
-    @StringSource("22_if_test3")
-    @StringSource("23_if_test4")
-    @StringSource("24_if_test5")
+//    @StringSource("21_if_test2")
+//    @StringSource("22_if_test3")
+//    @StringSource("23_if_test4")
+//    @StringSource("24_if_test5")
+        @StringSource("28_while_test3")
     void testRisc(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
     }
@@ -40,7 +41,7 @@ public class TestRisc {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if (name.equals("79_var_name") || name.equals("90_many_locals")) {
+        if (name.contains("58") || name.contains("71") || name.contains("78") || name.contains("84") || name.contains("68") || name.contains("64")) {
             fail();
         }
         testFile(DIR, name);

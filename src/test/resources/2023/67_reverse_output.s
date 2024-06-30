@@ -1,217 +1,185 @@
 .data
+.align 2
 .text
+.align 2
 .type reverse, @function
 .globl reverse
 reverse:
-
-
 reverseEntry:
 
 	# save callee saved regs
 	addi sp, sp, 0
 
-	# assign params to registers
-	mv t0, a0
-
 	# allocate space for local variables
-	addi sp, sp, -8
+	addi sp, sp, -46
+
+	# save the parameters
+	sw a0, 42(sp)
 
 	# store n 0
-	sw t0, 4(sp)
+
+	# fetch variables
+	lw t1, 42(sp)
+	sw t1, 38(sp)
 
 	# load n$1 n
-	lw t1, 4(sp)
+	lw t0, 38(sp)
+	sw t0, 30(sp)
 
 	# cmp n$1  cond_le_tmp_
-	li t2, 1
-	sub t3, t1, t2
-	sgtz t3, t3
-	seqz t3, t3
 
-	# zext t4 t3
-	mv t4, t3
+	# fetch variables
+	lw t1, 30(sp)
+	li t2, 1
+	sub t0, t1, t2
+	sgtz t0, t0
+	seqz t0, t0
+	sw t0, 29(sp)
+
+	# fetch variables
+	lw t1, 29(sp)
+
+	# zext cond_tmp_ cond_le_tmp_
+	mv t0, t1
+	sw t0, 25(sp)
 
 	# cmp cond_tmp_  cond_
-	li t5, 0
-	xor t6, t4, t5
 
-	# condBr cond_ ifTrue_283 ifFalse_108
-	beqz t6, ifFalse_108
-	j ifTrue_283
+	# fetch variables
+	lw t1, 25(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 24(sp)
 
-ifTrue_283:
+	# condBr cond_ ifTrue_257 ifFalse_106
+
+	# fetch variables
+	lw t1, 24(sp)
+	beqz t1, ifFalse_106
+	j ifTrue_257
+ifTrue_257:
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -32
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call getint
 	call getint
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	addi sp, sp, 32
-	mv t0, a0
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 20(sp)
 
 	# store next getint
-	sw t0, 0(sp)
+
+	# fetch variables
+	lw t1, 20(sp)
+	sw t1, 34(sp)
 
 	# load next$1 next
-	lw t1, 0(sp)
+	lw t0, 34(sp)
+	sw t0, 16(sp)
 
 	# prepare params
+
+	# fetch variables
+	lw t1, 16(sp)
 	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -32
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call putint
 	call putint
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	addi sp, sp, 32
+	lw ra, 0(sp)
+	addi sp, sp, 4
 
-	# br next_478
-	j next_478
-
-ifFalse_108:
+	# br next_445
+	j next_445
+ifFalse_106:
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -32
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call getint
 	call getint
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	addi sp, sp, 32
-	mv t2, a0
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 12(sp)
 
 	# store next getint$1
-	sw t2, 0(sp)
+
+	# fetch variables
+	lw t1, 12(sp)
+	sw t1, 34(sp)
 
 	# load n$2 n
-	lw t3, 4(sp)
-	li t4, 1
+	lw t0, 38(sp)
+	sw t0, 8(sp)
 
 	# sub result_ n$2 
-	sub t5, t3, t4
+
+	# fetch variables
+	lw t1, 8(sp)
+	li t2, 1
+	sub t0, t1, t2
+	sw t0, 4(sp)
 
 	# prepare params
-	mv a0, t5
+
+	# fetch variables
+	lw t1, 4(sp)
+	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -32
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call reverse
 	call reverse
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	addi sp, sp, 32
+	lw ra, 0(sp)
+	addi sp, sp, 4
 
 	# load next$2 next
-	lw t6, 0(sp)
+	lw t0, 34(sp)
+	sw t0, 0(sp)
 
 	# prepare params
-	mv a0, t6
+
+	# fetch variables
+	lw t1, 0(sp)
+	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -32
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call putint
 	call putint
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	addi sp, sp, 32
+	lw ra, 0(sp)
+	addi sp, sp, 4
 
-	# br next_478
-	j next_478
-
-next_478:
+	# br next_445
+	j next_445
+next_445:
 
 	# ret void
-	addi sp, sp, 8
+	addi sp, sp, 46
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -219,50 +187,39 @@ next_478:
 .type main, @function
 .globl main
 main:
-
-
-mainEntry56:
-
-	# allocate space for local variables
-	addi sp, sp, -4
+mainEntry54:
 
 	# store i 
-	li t0, 200
-	sw t0, 0(sp)
+
+	# fetch variables
+	li t1, 200
+	sw t1, 4(sp)
 
 	# load i$1 i
-	lw t1, 0(sp)
+	lw t0, 4(sp)
+	sw t0, 0(sp)
 
 	# prepare params
+
+	# fetch variables
+	lw t1, 0(sp)
 	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -32
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call reverse
 	call reverse
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	addi sp, sp, 32
-	li t2, 0
+	lw ra, 0(sp)
+	addi sp, sp, 4
 
 	# ret 
-	mv a0, t2
-	addi sp, sp, 4
+
+	# fetch variables
+	li t1, 0
+	mv a0, t1
+	addi sp, sp, 8
 	ret 

@@ -1,124 +1,94 @@
 package cn.edu.nju.software.backend.regalloc;
 
 import cn.edu.nju.software.backend.RiscBasicBlock;
-import cn.edu.nju.software.backend.RiscSpecifications;
 import cn.edu.nju.software.backend.riscinstruction.*;
-import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
-import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
+import cn.edu.nju.software.backend.riscinstruction.operand.*;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscLi;
+import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
+import cn.edu.nju.software.backend.riscinstruction.util.RiscLabel;
+import cn.edu.nju.software.ir.type.BoolType;
+import cn.edu.nju.software.ir.type.FloatType;
+import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.value.ConstValue;
+import cn.edu.nju.software.ir.value.GlobalVar;
+import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Allocator {
 
     private RiscBasicBlock currentBlock;
 
-    private final RegisterTable registerTable;
-
     private final Memory memory;
+
+    public Allocator() {
+        memory = new Memory();
+    }
 
     public void setCurrentBlock(RiscBasicBlock currentBlock) {
         this.currentBlock = currentBlock;
     }
 
-    private int count=0;
+    /* 将变量分配到寄存器中 */
+    /* 以t1,t2,t3,ft1,ft2,ft3的顺序分配 */
+    public void prepareVariable(ValueRef... values){
 
-    private String[] regTable={"t0","t1","t2"};
-    public Allocator() {
-        registerTable = new RegisterTable("t0","t1","t2");
-        memory = new Memory();
-    }
+        currentBlock.addInstruction(new RiscComment("fetch variables"));
 
-    private int getRegToSpill(){
-        if(registerTable.checkHasUsedAndUnlockedReg()){
-            return registerTable.getAUsedAndUnlockedReg();
-        }
-        assert false;
-        return -1;
-    }
-
-
-
-    //the caller should use the Reg immediately
-
-    //provide a register for the varName
-    public ArrayList<String> provideGRegs(List<ValueRef> values){
-        ArrayList<String> regResult = new ArrayList<>();
-
+        int i=1;
         for(ValueRef value : values){
-
             if(value instanceof ConstValue){
-                int regNO=RiscSpecifications.getRegNO(regTable[count]);
-                count=(count+1)%3;
-                currentBlock.addInstruction(new RiscLi(new Register(regNO), new ImmediateValue((Integer)((ConstValue) value).getValue())));
-                regResult.add(RiscSpecifications.getRegName(regNO));
-            } else {
-                assert value.getName() != null;
-                if(registerTable.checkHasVar(value.getName())){
-                    int regNO = registerTable.getRegOfVar(value.getName());
-
-                    regResult.add(RiscSpecifications.getRegName(regNO));
-
-                }else if(memory.checkHasAllocated(value.getName())){
-
-                    int regNO=RiscSpecifications.getRegNO(regTable[count]);
-                    count=(count+1)%3;
-
-                    currentBlock.addInstruction(new RiscLw( new Register(regNO), new IndirectRegister("sp", memory.getOffset(value.getName()))));
-
-                    registerTable.useReg(value.getName(), regNO);
-
-                    regResult.add(RiscSpecifications.getRegName(regNO));
-
+                if(value.getType() instanceof FloatType){
+                    currentBlock.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue((Float)((ConstValue) value).getValue())));
+                    currentBlock.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
+                }
+                else if(value.getType() instanceof IntType){
+                    currentBlock.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue((Integer)((ConstValue) value).getValue())));
                 } else {
-                    int regNO=RiscSpecifications.getRegNO(regTable[count]);
-                    count=(count+1)%3;
-
-                    registerTable.useReg(value.getName(), regNO);
-
-                    regResult.add(RiscSpecifications.getRegName(regNO));
+                    assert false;
+                }
+            } else {
+                if(value.getType() instanceof FloatType){
+                    currentBlock.addInstruction(new RiscLw(new Register("ft" + i), new IndirectRegister("sp", memory.getOffset(value.getName()))));
+                }
+                else if(value.getType() instanceof IntType){
+                    currentBlock.addInstruction(new RiscLw(new Register("t" + i), new IndirectRegister("sp", memory.getOffset(value.getName()))));
+                } else if(value.getType() instanceof BoolType){
+                    currentBlock.addInstruction(new RiscLw(new Register("t" + i), new IndirectRegister("sp", memory.getOffset(value.getName()))));
+                } else {
+                    assert false;
                 }
             }
+            i++;
         }
-
-        return regResult;
     }
 
-    public void lock(String regName){
-        registerTable.lockReg(RiscSpecifications.getRegNO(regName));
-    }
-
-    public void unlockAll(){
-        registerTable.unlockAll();
-    }
 
     public void reset(){
-        registerTable.reset();
         memory.reset();
     }
 
-    public int getOffsetOfVar(String varName){
-        return memory.getOffset(varName);
+    public Operand getOperandOfPtr(ValueRef variable){
+        if(variable instanceof GlobalVar){
+            return new RiscLabelAddress(new RiscLabel(variable.getName()));
+        }
+        else if(variable instanceof LocalVar){
+            return new IndirectRegister("sp", memory.getOffset(variable.getName()));
+        }
+        else {
+            assert false;
+            return null;
+        }
     }
 
-    public void allocateVarIntoMemory(String varName, int width){
-        if(varName == null){
-            assert false;
-        }
-        memory.allocate(new MemoryVar(varName, width));
+    /* 函数形参数%0 %2没有对应的ValueRef 用于检索，只能使用string*/
+    public Operand getOperandOfPtr(String varName){
+        return new IndirectRegister("sp", memory.getOffset(varName));
     }
 
-    // force to assign a register to a var
-    public void assignRegToVar(String varName, String regName){
-        if(varName == null || regName == null){
-            assert false;
-        }
-        registerTable.useReg(varName, RiscSpecifications.getRegNO(regName));
+    public void allocate(String varName, int width){
+        memory.allocate(varName, width);
     }
 
     public int getStackSize(){

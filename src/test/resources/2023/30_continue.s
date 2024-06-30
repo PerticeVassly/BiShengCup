@@ -1,118 +1,176 @@
 .data
+.align 2
 .text
+.align 2
 .type main, @function
 .globl main
 main:
-
-
-mainEntry12:
-
-	# allocate space for local variables
-	addi sp, sp, -8
+mainEntry11:
 
 	# store i 
-	li t0, 0
-	sw t0, 4(sp)
+
+	# fetch variables
+	li t1, 0
+	sw t1, 56(sp)
 
 	# store sum 
+
+	# fetch variables
 	li t1, 0
-	sw t1, 0(sp)
+	sw t1, 52(sp)
 
-	# br whileCond_19
-	j whileCond_19
-
-whileCond_19:
+	# br whileCond_16
+	j whileCond_16
+whileCond_16:
 
 	# load i$1 i
-	lw t2, 4(sp)
+	lw t0, 56(sp)
+	sw t0, 48(sp)
 
 	# cmp i$1  cond_lt_tmp_
-	li t3, 100
-	sltu t4, t2, t3
 
-	# zext t5 t4
-	mv t5, t4
+	# fetch variables
+	lw t1, 48(sp)
+	li t2, 100
+	sltu t0, t1, t2
+	sw t0, 47(sp)
+
+	# fetch variables
+	lw t1, 47(sp)
+
+	# zext cond_tmp_ cond_lt_tmp_
+	mv t0, t1
+	sw t0, 43(sp)
 
 	# cmp cond_tmp_  cond_
-	li t6, 0
-	xor t0, t5, t6
 
-	# condBr cond_ whileBody_19 next_35
-	beqz t0, next_35
-	j whileBody_19
+	# fetch variables
+	lw t1, 43(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 42(sp)
 
-whileBody_19:
+	# condBr cond_ whileBody_16 next_30
+
+	# fetch variables
+	lw t1, 42(sp)
+	beqz t1, next_30
+	j whileBody_16
+whileBody_16:
 
 	# load i$2 i
-	lw t1, 4(sp)
+	lw t0, 56(sp)
+	sw t0, 38(sp)
 
 	# cmp i$2  cond_eq_tmp_
-	li t2, 50
-	xor t3, t1, t2
-	seqz t3, t3
 
-	# zext t4 t3
-	mv t4, t3
+	# fetch variables
+	lw t1, 38(sp)
+	li t2, 50
+	xor t0, t1, t2
+	seqz t0, t0
+	sw t0, 37(sp)
+
+	# fetch variables
+	lw t1, 37(sp)
+
+	# zext cond_tmp_$1 cond_eq_tmp_
+	mv t0, t1
+	sw t0, 33(sp)
 
 	# cmp cond_tmp_$1  cond_$1
-	li t5, 0
-	xor t6, t4, t5
 
-	# condBr cond_$1 ifTrue_16 next_36
-	beqz t6, next_36
-	j ifTrue_16
+	# fetch variables
+	lw t1, 33(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 32(sp)
 
-next_35:
+	# condBr cond_$1 ifTrue_14 next_31
+
+	# fetch variables
+	lw t1, 32(sp)
+	beqz t1, next_31
+	j ifTrue_14
+next_30:
 
 	# load sum$2 sum
-	lw t0, 0(sp)
+	lw t0, 52(sp)
+	sw t0, 28(sp)
 
 	# ret sum$2
-	mv a0, t0
-	addi sp, sp, 8
-	ret 
 
-ifTrue_16:
+	# fetch variables
+	lw t1, 28(sp)
+	mv a0, t1
+	addi sp, sp, 60
+	ret 
+ifTrue_14:
 
 	# load i$3 i
-	lw t1, 4(sp)
-	li t2, 1
+	lw t0, 56(sp)
+	sw t0, 24(sp)
 
 	# add result_ i$3 
-	add t3, t1, t2
+
+	# fetch variables
+	lw t1, 24(sp)
+	li t2, 1
+	add t0, t1, t2
+	sw t0, 20(sp)
 
 	# store i result_
-	sw t3, 4(sp)
 
-	# br whileCond_19
-	j whileCond_19
+	# fetch variables
+	lw t1, 20(sp)
+	sw t1, 56(sp)
 
-	# br next_36
-	j next_36
+	# br whileCond_16
+	j whileCond_16
 
-next_36:
+	# br next_31
+	j next_31
+next_31:
 
 	# load sum$1 sum
-	lw t4, 0(sp)
+	lw t0, 52(sp)
+	sw t0, 16(sp)
 
 	# load i$4 i
-	lw t5, 4(sp)
+	lw t0, 56(sp)
+	sw t0, 12(sp)
 
 	# add result_$1 sum$1 i$4
-	add t6, t4, t5
+
+	# fetch variables
+	lw t1, 16(sp)
+	lw t2, 12(sp)
+	add t0, t1, t2
+	sw t0, 8(sp)
 
 	# store sum result_$1
-	sw t6, 0(sp)
+
+	# fetch variables
+	lw t1, 8(sp)
+	sw t1, 52(sp)
 
 	# load i$5 i
-	lw t0, 4(sp)
-	li t1, 1
+	lw t0, 56(sp)
+	sw t0, 4(sp)
 
 	# add result_$2 i$5 
-	add t2, t0, t1
+
+	# fetch variables
+	lw t1, 4(sp)
+	li t2, 1
+	add t0, t1, t2
+	sw t0, 0(sp)
 
 	# store i result_$2
-	sw t2, 4(sp)
 
-	# br whileCond_19
-	j whileCond_19
+	# fetch variables
+	lw t1, 0(sp)
+	sw t1, 56(sp)
+
+	# br whileCond_16
+	j whileCond_16

@@ -1,53 +1,72 @@
 .data
+.align 2
 .text
+.align 2
 .type main, @function
 .globl main
 main:
-
-
-mainEntry3:
-
-	# allocate space for local variables
-	addi sp, sp, -4
+mainEntry5:
 
 	# store a 
-	li t0, 1
-	sw t0, 0(sp)
+
+	# fetch variables
+	li t1, 1
+	sw t1, 14(sp)
 
 	# load a$1 a
-	lw t1, 0(sp)
+	lw t0, 14(sp)
+	sw t0, 10(sp)
 
 	# cmp a$1  cond_eq_tmp_
-	li t2, 1
-	xor t3, t1, t2
-	seqz t3, t3
 
-	# zext t4 t3
-	mv t4, t3
+	# fetch variables
+	lw t1, 10(sp)
+	li t2, 1
+	xor t0, t1, t2
+	seqz t0, t0
+	sw t0, 9(sp)
+
+	# fetch variables
+	lw t1, 9(sp)
+
+	# zext cond_tmp_ cond_eq_tmp_
+	mv t0, t1
+	sw t0, 5(sp)
 
 	# cmp cond_tmp_  cond_
-	li t5, 0
-	xor t6, t4, t5
 
-	# condBr cond_ ifTrue_4 next_4
-	beqz t6, next_4
-	j ifTrue_4
+	# fetch variables
+	lw t1, 5(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 4(sp)
 
-ifTrue_4:
+	# condBr cond_ ifTrue_6 next_6
+
+	# fetch variables
+	lw t1, 4(sp)
+	beqz t1, next_6
+	j ifTrue_6
+ifTrue_6:
 
 	# store a 
-	li t0, 2
-	sw t0, 0(sp)
 
-	# br next_4
-	j next_4
+	# fetch variables
+	li t1, 2
+	sw t1, 14(sp)
 
-next_4:
+	# br next_6
+	j next_6
+next_6:
 
 	# load a$2 a
-	lw t1, 0(sp)
+	lw t0, 14(sp)
+	sw t0, 0(sp)
 
 	# ret a$2
+
+	# fetch variables
+	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 4
+	addi sp, sp, 18
 	ret 

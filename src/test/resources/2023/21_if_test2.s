@@ -1,294 +1,380 @@
 .data
+.align 2
 .text
+.align 2
 .type ifElseIf, @function
 .globl ifElseIf
 ifElseIf:
-
-
 ifElseIfEntry:
 
 	# save callee saved regs
 	addi sp, sp, 0
 
-	# assign params to registers
-
 	# allocate space for local variables
-	addi sp, sp, -8
+	addi sp, sp, -92
+
+	# save the parameters
 
 	# store a 
-	li t0, 5
-	sw t0, 4(sp)
+
+	# fetch variables
+	li t1, 5
+	sw t1, 88(sp)
 
 	# store b 
+
+	# fetch variables
 	li t1, 10
-	sw t1, 0(sp)
+	sw t1, 84(sp)
 
 	# load a$1 a
-	lw t2, 4(sp)
+	lw t0, 88(sp)
+	sw t0, 80(sp)
 
 	# cmp a$1  cond_eq_tmp_
-	li t3, 6
-	xor t4, t2, t3
-	seqz t4, t4
 
-	# zext t5 t4
-	mv t5, t4
+	# fetch variables
+	lw t1, 80(sp)
+	li t2, 6
+	xor t0, t1, t2
+	seqz t0, t0
+	sw t0, 79(sp)
+
+	# fetch variables
+	lw t1, 79(sp)
+
+	# zext cond_tmp_ cond_eq_tmp_
+	mv t0, t1
+	sw t0, 75(sp)
 
 	# cmp cond_tmp_  cond_
-	li t6, 0
-	xor t0, t5, t6
 
-	# condBr cond_ ifTrue_306 secondCond_119
-	beqz t0, secondCond_119
-	j ifTrue_306
+	# fetch variables
+	lw t1, 75(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 74(sp)
 
-ifTrue_306:
+	# condBr cond_ ifTrue_280 secondCond_93
+
+	# fetch variables
+	lw t1, 74(sp)
+	beqz t1, secondCond_93
+	j ifTrue_280
+ifTrue_280:
 
 	# load a$2 a
-	lw t1, 4(sp)
+	lw t0, 88(sp)
+	sw t0, 70(sp)
 
 	# ret a$2
+
+	# fetch variables
+	lw t1, 70(sp)
 	mv a0, t1
-	addi sp, sp, 8
+	addi sp, sp, 92
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-
-ifFalse_113:
+ifFalse_111:
 
 	# load b$2 b
-	lw t2, 0(sp)
+	lw t0, 84(sp)
+	sw t0, 66(sp)
 
 	# cmp b$2  cond_eq_tmp_$2
-	li t3, 10
-	xor t4, t2, t3
-	seqz t4, t4
 
-	# zext t5 t4
-	mv t5, t4
+	# fetch variables
+	lw t1, 66(sp)
+	li t2, 10
+	xor t0, t1, t2
+	seqz t0, t0
+	sw t0, 65(sp)
+
+	# fetch variables
+	lw t1, 65(sp)
+
+	# zext cond_tmp_$2 cond_eq_tmp_$2
+	mv t0, t1
+	sw t0, 61(sp)
 
 	# cmp cond_tmp_$2  cond_$2
-	li t6, 0
-	xor t0, t5, t6
 
-	# condBr cond_$2 secondCond_120 ifFalse_114
-	beqz t0, ifFalse_114
-	j secondCond_120
+	# fetch variables
+	lw t1, 61(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 60(sp)
 
-next_528:
+	# condBr cond_$2 secondCond_94 ifFalse_112
+
+	# fetch variables
+	lw t1, 60(sp)
+	beqz t1, ifFalse_112
+	j secondCond_94
+next_495:
 
 	# load a$7 a
-	lw t1, 4(sp)
+	lw t0, 88(sp)
+	sw t0, 56(sp)
 
 	# ret a$7
+
+	# fetch variables
+	lw t1, 56(sp)
 	mv a0, t1
-	addi sp, sp, 8
+	addi sp, sp, 92
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-
-secondCond_119:
+secondCond_93:
 
 	# load b$1 b
-	lw t2, 0(sp)
+	lw t0, 84(sp)
+	sw t0, 52(sp)
 
 	# cmp b$1  cond_eq_tmp_$1
-	li t3, 11
-	xor t4, t2, t3
-	seqz t4, t4
 
-	# zext t5 t4
-	mv t5, t4
+	# fetch variables
+	lw t1, 52(sp)
+	li t2, 11
+	xor t0, t1, t2
+	seqz t0, t0
+	sw t0, 51(sp)
+
+	# fetch variables
+	lw t1, 51(sp)
+
+	# zext cond_tmp_$1 cond_eq_tmp_$1
+	mv t0, t1
+	sw t0, 47(sp)
 
 	# cmp cond_tmp_$1  cond_$1
-	li t6, 0
-	xor t0, t5, t6
 
-	# condBr cond_$1 ifTrue_306 ifFalse_113
-	beqz t0, ifFalse_113
-	j ifTrue_306
+	# fetch variables
+	lw t1, 47(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 46(sp)
 
-ifTrue_307:
+	# condBr cond_$1 ifTrue_280 ifFalse_111
+
+	# fetch variables
+	lw t1, 46(sp)
+	beqz t1, ifFalse_111
+	j ifTrue_280
+ifTrue_281:
 
 	# store a 
+
+	# fetch variables
 	li t1, 25
-	sw t1, 4(sp)
+	sw t1, 88(sp)
 
-	# br next_529
-	j next_529
-
-ifFalse_114:
+	# br next_496
+	j next_496
+ifFalse_112:
 
 	# load b$3 b
-	lw t2, 0(sp)
+	lw t0, 84(sp)
+	sw t0, 42(sp)
 
 	# cmp b$3  cond_eq_tmp_$4
-	li t3, 10
-	xor t4, t2, t3
-	seqz t4, t4
 
-	# zext t5 t4
-	mv t5, t4
+	# fetch variables
+	lw t1, 42(sp)
+	li t2, 10
+	xor t0, t1, t2
+	seqz t0, t0
+	sw t0, 41(sp)
+
+	# fetch variables
+	lw t1, 41(sp)
+
+	# zext cond_tmp_$4 cond_eq_tmp_$4
+	mv t0, t1
+	sw t0, 37(sp)
 
 	# cmp cond_tmp_$4  cond_$4
-	li t6, 0
-	xor t0, t5, t6
 
-	# condBr cond_$4 secondCond_121 ifFalse_115
-	beqz t0, ifFalse_115
-	j secondCond_121
+	# fetch variables
+	lw t1, 37(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 36(sp)
 
-next_529:
+	# condBr cond_$4 secondCond_95 ifFalse_113
 
-	# br next_528
-	j next_528
+	# fetch variables
+	lw t1, 36(sp)
+	beqz t1, ifFalse_113
+	j secondCond_95
+next_496:
 
-secondCond_120:
+	# br next_495
+	j next_495
+secondCond_94:
 
 	# load a$3 a
-	lw t1, 4(sp)
+	lw t0, 88(sp)
+	sw t0, 32(sp)
 
 	# cmp a$3  cond_eq_tmp_$3
-	li t2, 1
-	xor t3, t1, t2
-	seqz t3, t3
 
-	# zext t4 t3
-	mv t4, t3
+	# fetch variables
+	lw t1, 32(sp)
+	li t2, 1
+	xor t0, t1, t2
+	seqz t0, t0
+	sw t0, 31(sp)
+
+	# fetch variables
+	lw t1, 31(sp)
+
+	# zext cond_tmp_$3 cond_eq_tmp_$3
+	mv t0, t1
+	sw t0, 27(sp)
 
 	# cmp cond_tmp_$3  cond_$3
-	li t5, 0
-	xor t6, t4, t5
 
-	# condBr cond_$3 ifTrue_307 ifFalse_114
-	beqz t6, ifFalse_114
-	j ifTrue_307
+	# fetch variables
+	lw t1, 27(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 26(sp)
 
-ifTrue_308:
+	# condBr cond_$3 ifTrue_281 ifFalse_112
+
+	# fetch variables
+	lw t1, 26(sp)
+	beqz t1, ifFalse_112
+	j ifTrue_281
+ifTrue_282:
 
 	# load a$5 a
-	lw t0, 4(sp)
-	li t1, 15
+	lw t0, 88(sp)
+	sw t0, 22(sp)
 
 	# add result_ a$5 
-	add t2, t0, t1
+
+	# fetch variables
+	lw t1, 22(sp)
+	li t2, 15
+	add t0, t1, t2
+	sw t0, 18(sp)
 
 	# store a result_
-	sw t2, 4(sp)
 
-	# br next_530
-	j next_530
+	# fetch variables
+	lw t1, 18(sp)
+	sw t1, 88(sp)
 
-ifFalse_115:
+	# br next_497
+	j next_497
+ifFalse_113:
 
 	# load a$6 a
-	lw t3, 4(sp)
-	li t4, 0
+	lw t0, 88(sp)
+	sw t0, 14(sp)
 
 	# sub tmp_  a$6
-	sub t5, t4, t3
+
+	# fetch variables
+	li t1, 0
+	lw t2, 14(sp)
+	sub t0, t1, t2
+	sw t0, 10(sp)
 
 	# store a tmp_
-	sw t5, 4(sp)
 
-	# br next_530
-	j next_530
+	# fetch variables
+	lw t1, 10(sp)
+	sw t1, 88(sp)
 
-next_530:
+	# br next_497
+	j next_497
+next_497:
 
-	# br next_529
-	j next_529
-
-secondCond_121:
+	# br next_496
+	j next_496
+secondCond_95:
 
 	# load a$4 a
-	lw t6, 4(sp)
+	lw t0, 88(sp)
+	sw t0, 6(sp)
 
 	# cmp a$4  cond_eq_tmp_$5
-	li t0, -5
-	xor t1, t6, t0
-	seqz t1, t1
 
-	# zext t2 t1
-	mv t2, t1
+	# fetch variables
+	lw t1, 6(sp)
+	li t2, -5
+	xor t0, t1, t2
+	seqz t0, t0
+	sw t0, 5(sp)
+
+	# fetch variables
+	lw t1, 5(sp)
+
+	# zext cond_tmp_$5 cond_eq_tmp_$5
+	mv t0, t1
+	sw t0, 1(sp)
 
 	# cmp cond_tmp_$5  cond_$5
-	li t3, 0
-	xor t4, t2, t3
 
-	# condBr cond_$5 ifTrue_308 ifFalse_115
-	beqz t4, ifFalse_115
-	j ifTrue_308
+	# fetch variables
+	lw t1, 1(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 0(sp)
+
+	# condBr cond_$5 ifTrue_282 ifFalse_113
+
+	# fetch variables
+	lw t1, 0(sp)
+	beqz t1, ifFalse_113
+	j ifTrue_282
 .type main, @function
 .globl main
 main:
-
-
-mainEntry71:
-
-	# allocate space for local variables
-	addi sp, sp, 0
+mainEntry69:
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -32
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call ifElseIf
 	call ifElseIf
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	addi sp, sp, 32
-	mv t5, a0
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 0(sp)
 
 	# prepare params
-	mv a0, t5
+
+	# fetch variables
+	lw t1, 0(sp)
+	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -32
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call putint
 	call putint
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	addi sp, sp, 32
-	li t6, 0
+	lw ra, 0(sp)
+	addi sp, sp, 4
 
 	# ret 
-	mv a0, t6
-	addi sp, sp, 0
+
+	# fetch variables
+	li t1, 0
+	mv a0, t1
+	addi sp, sp, 4
 	ret 

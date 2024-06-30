@@ -1,108 +1,158 @@
 .data
+.align 2
 .text
+.align 2
 .type main, @function
 .globl main
 main:
-
-
-mainEntry63:
-
-	# allocate space for local variables
-	addi sp, sp, -8
+mainEntry61:
 
 	# store i 
-	li t0, 0
-	sw t0, 4(sp)
+
+	# fetch variables
+	li t1, 0
+	sw t1, 48(sp)
 
 	# store sum 
+
+	# fetch variables
 	li t1, 0
-	sw t1, 0(sp)
+	sw t1, 44(sp)
 
-	# br whileCond_205
-	j whileCond_205
-
-whileCond_205:
+	# br whileCond_198
+	j whileCond_198
+whileCond_198:
 
 	# load i$1 i
-	lw t2, 4(sp)
+	lw t0, 48(sp)
+	sw t0, 40(sp)
 
 	# cmp i$1  cond_lt_tmp_
-	li t3, 100
-	sltu t4, t2, t3
 
-	# zext t5 t4
-	mv t5, t4
+	# fetch variables
+	lw t1, 40(sp)
+	li t2, 100
+	sltu t0, t1, t2
+	sw t0, 39(sp)
+
+	# fetch variables
+	lw t1, 39(sp)
+
+	# zext cond_tmp_ cond_lt_tmp_
+	mv t0, t1
+	sw t0, 35(sp)
 
 	# cmp cond_tmp_  cond_
-	li t6, 0
-	xor t0, t5, t6
 
-	# condBr cond_ whileBody_205 next_502
-	beqz t0, next_502
-	j whileBody_205
+	# fetch variables
+	lw t1, 35(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 34(sp)
 
-whileBody_205:
+	# condBr cond_ whileBody_198 next_469
+
+	# fetch variables
+	lw t1, 34(sp)
+	beqz t1, next_469
+	j whileBody_198
+whileBody_198:
 
 	# load i$2 i
-	lw t1, 4(sp)
+	lw t0, 48(sp)
+	sw t0, 30(sp)
 
 	# cmp i$2  cond_eq_tmp_
-	li t2, 50
-	xor t3, t1, t2
-	seqz t3, t3
 
-	# zext t4 t3
-	mv t4, t3
+	# fetch variables
+	lw t1, 30(sp)
+	li t2, 50
+	xor t0, t1, t2
+	seqz t0, t0
+	sw t0, 29(sp)
+
+	# fetch variables
+	lw t1, 29(sp)
+
+	# zext cond_tmp_$1 cond_eq_tmp_
+	mv t0, t1
+	sw t0, 25(sp)
 
 	# cmp cond_tmp_$1  cond_$1
-	li t5, 0
-	xor t6, t4, t5
 
-	# condBr cond_$1 ifTrue_297 next_503
-	beqz t6, next_503
-	j ifTrue_297
+	# fetch variables
+	lw t1, 25(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 24(sp)
 
-next_502:
+	# condBr cond_$1 ifTrue_271 next_470
+
+	# fetch variables
+	lw t1, 24(sp)
+	beqz t1, next_470
+	j ifTrue_271
+next_469:
 
 	# load sum$2 sum
-	lw t0, 0(sp)
+	lw t0, 44(sp)
+	sw t0, 20(sp)
 
 	# ret sum$2
-	mv a0, t0
-	addi sp, sp, 8
+
+	# fetch variables
+	lw t1, 20(sp)
+	mv a0, t1
+	addi sp, sp, 52
 	ret 
+ifTrue_271:
 
-ifTrue_297:
+	# br next_469
+	j next_469
 
-	# br next_502
-	j next_502
-
-	# br next_503
-	j next_503
-
-next_503:
+	# br next_470
+	j next_470
+next_470:
 
 	# load sum$1 sum
-	lw t1, 0(sp)
+	lw t0, 44(sp)
+	sw t0, 16(sp)
 
 	# load i$3 i
-	lw t2, 4(sp)
+	lw t0, 48(sp)
+	sw t0, 12(sp)
 
 	# add result_ sum$1 i$3
-	add t3, t1, t2
+
+	# fetch variables
+	lw t1, 16(sp)
+	lw t2, 12(sp)
+	add t0, t1, t2
+	sw t0, 8(sp)
 
 	# store sum result_
-	sw t3, 0(sp)
+
+	# fetch variables
+	lw t1, 8(sp)
+	sw t1, 44(sp)
 
 	# load i$4 i
-	lw t4, 4(sp)
-	li t5, 1
+	lw t0, 48(sp)
+	sw t0, 4(sp)
 
 	# add result_$1 i$4 
-	add t6, t4, t5
+
+	# fetch variables
+	lw t1, 4(sp)
+	li t2, 1
+	add t0, t1, t2
+	sw t0, 0(sp)
 
 	# store i result_$1
-	sw t6, 4(sp)
 
-	# br whileCond_205
-	j whileCond_205
+	# fetch variables
+	lw t1, 0(sp)
+	sw t1, 48(sp)
+
+	# br whileCond_198
+	j whileCond_198

@@ -1,37 +1,50 @@
 .data
+.align 2
 .text
+.align 2
 .type main, @function
 .globl main
 main:
-
-
-mainEntry35:
-
-	# allocate space for local variables
-	addi sp, sp, -12
+mainEntry32:
 
 	# store a 
-	li t0, 1
-	sw t0, 8(sp)
+
+	# fetch variables
+	li t1, 1
+	sw t1, 20(sp)
 
 	# store b0 
+
+	# fetch variables
 	li t1, 2
-	sw t1, 4(sp)
+	sw t1, 16(sp)
 
 	# store _c 
-	li t2, 3
-	sw t2, 0(sp)
+
+	# fetch variables
+	li t1, 3
+	sw t1, 12(sp)
 
 	# load b0$1 b0
-	lw t3, 4(sp)
+	lw t0, 16(sp)
+	sw t0, 8(sp)
 
 	# load _c$1 _c
-	lw t4, 0(sp)
+	lw t0, 12(sp)
+	sw t0, 4(sp)
 
 	# add result_ b0$1 _c$1
-	add t5, t3, t4
+
+	# fetch variables
+	lw t1, 8(sp)
+	lw t2, 4(sp)
+	add t0, t1, t2
+	sw t0, 0(sp)
 
 	# ret result_
-	mv a0, t5
-	addi sp, sp, 12
+
+	# fetch variables
+	lw t1, 0(sp)
+	mv a0, t1
+	addi sp, sp, 24
 	ret 

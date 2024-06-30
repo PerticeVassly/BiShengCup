@@ -14,5 +14,5 @@ public enum RiscOpcode {
     J,
     CALL, COMMENT, ECALL, BEQZ, BLT, LABEL, XOR,
     SEQZ, SNEZ, SLT, SLTZ, SGTZ, AND, OR, SLTU,
-    REM
+    FLW, FSW, FMV_W_X, REM
 }

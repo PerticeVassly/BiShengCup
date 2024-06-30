@@ -1,27 +1,32 @@
 .data
+.align 2
 .text
+.align 2
 .type main, @function
 .globl main
 main:
-
-
-mainEntry96:
-
-	# allocate space for local variables
-	addi sp, sp, -8
+mainEntry92:
 
 	# store a 
-	li t0, 10
-	sw t0, 4(sp)
+
+	# fetch variables
+	li t1, 10
+	sw t1, 8(sp)
 
 	# store b 
+
+	# fetch variables
 	li t1, 5
-	sw t1, 0(sp)
+	sw t1, 4(sp)
 
 	# load b$1 b
-	lw t2, 0(sp)
+	lw t0, 4(sp)
+	sw t0, 0(sp)
 
 	# ret b$1
-	mv a0, t2
-	addi sp, sp, 8
+
+	# fetch variables
+	lw t1, 0(sp)
+	mv a0, t1
+	addi sp, sp, 12
 	ret 

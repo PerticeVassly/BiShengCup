@@ -1,209 +1,272 @@
 .data
+.align 2
 .text
+.align 2
 .type ifWhile, @function
 .globl ifWhile
 ifWhile:
-
-
 ifWhileEntry:
 
 	# save callee saved regs
 	addi sp, sp, 0
 
-	# assign params to registers
-
 	# allocate space for local variables
-	addi sp, sp, -8
+	addi sp, sp, -74
+
+	# save the parameters
 
 	# store a 
-	li t0, 0
-	sw t0, 4(sp)
+
+	# fetch variables
+	li t1, 0
+	sw t1, 70(sp)
 
 	# store b 
+
+	# fetch variables
 	li t1, 3
-	sw t1, 0(sp)
+	sw t1, 66(sp)
 
 	# load a$1 a
-	lw t2, 4(sp)
+	lw t0, 70(sp)
+	sw t0, 62(sp)
 
 	# cmp a$1  cond_eq_tmp_
-	li t3, 5
-	xor t4, t2, t3
-	seqz t4, t4
 
-	# zext t5 t4
-	mv t5, t4
+	# fetch variables
+	lw t1, 62(sp)
+	li t2, 5
+	xor t0, t1, t2
+	seqz t0, t0
+	sw t0, 61(sp)
+
+	# fetch variables
+	lw t1, 61(sp)
+
+	# zext cond_tmp_ cond_eq_tmp_
+	mv t0, t1
+	sw t0, 57(sp)
 
 	# cmp cond_tmp_  cond_
-	li t6, 0
-	xor t0, t5, t6
 
-	# condBr cond_ ifTrue_330 ifFalse_132
-	beqz t0, ifFalse_132
-	j ifTrue_330
+	# fetch variables
+	lw t1, 57(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 56(sp)
 
-ifTrue_330:
+	# condBr cond_ ifTrue_300 ifFalse_129
 
-	# br whileCond_243
-	j whileCond_243
+	# fetch variables
+	lw t1, 56(sp)
+	beqz t1, ifFalse_129
+	j ifTrue_300
+ifTrue_300:
 
-ifFalse_132:
+	# br whileCond_233
+	j whileCond_233
+ifFalse_129:
 
-	# br whileCond_244
-	j whileCond_244
-
-next_573:
+	# br whileCond_234
+	j whileCond_234
+next_533:
 
 	# load b$5 b
-	lw t1, 0(sp)
+	lw t0, 66(sp)
+	sw t0, 52(sp)
 
 	# ret b$5
+
+	# fetch variables
+	lw t1, 52(sp)
 	mv a0, t1
-	addi sp, sp, 8
+	addi sp, sp, 74
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-
-whileCond_243:
+whileCond_233:
 
 	# load b$1 b
-	lw t2, 0(sp)
+	lw t0, 66(sp)
+	sw t0, 48(sp)
 
 	# cmp b$1  cond_eq_tmp_$1
-	li t3, 2
-	xor t4, t2, t3
-	seqz t4, t4
 
-	# zext t5 t4
-	mv t5, t4
+	# fetch variables
+	lw t1, 48(sp)
+	li t2, 2
+	xor t0, t1, t2
+	seqz t0, t0
+	sw t0, 47(sp)
+
+	# fetch variables
+	lw t1, 47(sp)
+
+	# zext cond_tmp_$1 cond_eq_tmp_$1
+	mv t0, t1
+	sw t0, 43(sp)
 
 	# cmp cond_tmp_$1  cond_$1
-	li t6, 0
-	xor t0, t5, t6
 
-	# condBr cond_$1 whileBody_243 next_574
-	beqz t0, next_574
-	j whileBody_243
+	# fetch variables
+	lw t1, 43(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 42(sp)
 
-whileBody_243:
+	# condBr cond_$1 whileBody_233 next_534
+
+	# fetch variables
+	lw t1, 42(sp)
+	beqz t1, next_534
+	j whileBody_233
+whileBody_233:
 
 	# load b$2 b
-	lw t1, 0(sp)
-	li t2, 2
+	lw t0, 66(sp)
+	sw t0, 38(sp)
 
 	# add result_ b$2 
-	add t3, t1, t2
+
+	# fetch variables
+	lw t1, 38(sp)
+	li t2, 2
+	add t0, t1, t2
+	sw t0, 34(sp)
 
 	# store b result_
-	sw t3, 0(sp)
 
-	# br whileCond_243
-	j whileCond_243
+	# fetch variables
+	lw t1, 34(sp)
+	sw t1, 66(sp)
 
-next_574:
+	# br whileCond_233
+	j whileCond_233
+next_534:
 
 	# load b$3 b
-	lw t4, 0(sp)
-	li t5, 25
+	lw t0, 66(sp)
+	sw t0, 30(sp)
 
 	# add result_$1 b$3 
-	add t6, t4, t5
+
+	# fetch variables
+	lw t1, 30(sp)
+	li t2, 25
+	add t0, t1, t2
+	sw t0, 26(sp)
 
 	# store b result_$1
-	sw t6, 0(sp)
 
-	# br next_573
-	j next_573
+	# fetch variables
+	lw t1, 26(sp)
+	sw t1, 66(sp)
 
-whileCond_244:
+	# br next_533
+	j next_533
+whileCond_234:
 
 	# load a$2 a
-	lw t0, 4(sp)
+	lw t0, 70(sp)
+	sw t0, 22(sp)
 
 	# cmp a$2  cond_lt_tmp_
-	li t1, 5
-	sltu t2, t0, t1
 
-	# zext t3 t2
-	mv t3, t2
+	# fetch variables
+	lw t1, 22(sp)
+	li t2, 5
+	sltu t0, t1, t2
+	sw t0, 21(sp)
+
+	# fetch variables
+	lw t1, 21(sp)
+
+	# zext cond_tmp_$2 cond_lt_tmp_
+	mv t0, t1
+	sw t0, 17(sp)
 
 	# cmp cond_tmp_$2  cond_$2
-	li t4, 0
-	xor t5, t3, t4
 
-	# condBr cond_$2 whileBody_244 next_575
-	beqz t5, next_575
-	j whileBody_244
+	# fetch variables
+	lw t1, 17(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 16(sp)
 
-whileBody_244:
+	# condBr cond_$2 whileBody_234 next_535
+
+	# fetch variables
+	lw t1, 16(sp)
+	beqz t1, next_535
+	j whileBody_234
+whileBody_234:
 
 	# load b$4 b
-	lw t6, 0(sp)
-	li t0, 2
+	lw t0, 66(sp)
+	sw t0, 12(sp)
 
 	# mul result_$2 b$4 
-	mul t1, t6, t0
+
+	# fetch variables
+	lw t1, 12(sp)
+	li t2, 2
+	mul t0, t1, t2
+	sw t0, 8(sp)
 
 	# store b result_$2
-	sw t1, 0(sp)
+
+	# fetch variables
+	lw t1, 8(sp)
+	sw t1, 66(sp)
 
 	# load a$3 a
-	lw t2, 4(sp)
-	li t3, 1
+	lw t0, 70(sp)
+	sw t0, 4(sp)
 
 	# add result_$3 a$3 
-	add t4, t2, t3
+
+	# fetch variables
+	lw t1, 4(sp)
+	li t2, 1
+	add t0, t1, t2
+	sw t0, 0(sp)
 
 	# store a result_$3
-	sw t4, 4(sp)
 
-	# br whileCond_244
-	j whileCond_244
+	# fetch variables
+	lw t1, 0(sp)
+	sw t1, 70(sp)
 
-next_575:
+	# br whileCond_234
+	j whileCond_234
+next_535:
 
-	# br next_573
-	j next_573
+	# br next_533
+	j next_533
 .type main, @function
 .globl main
 main:
-
-
-mainEntry80:
-
-	# allocate space for local variables
-	addi sp, sp, 0
+mainEntry77:
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -32
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call ifWhile
 	call ifWhile
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	addi sp, sp, 32
-	mv t5, a0
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 0(sp)
 
 	# ret ifWhile
-	mv a0, t5
-	addi sp, sp, 0
+
+	# fetch variables
+	lw t1, 0(sp)
+	mv a0, t1
+	addi sp, sp, 4
 	ret 

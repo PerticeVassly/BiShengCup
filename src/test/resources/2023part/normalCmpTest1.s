@@ -1,81 +1,121 @@
 .data
+.align 2
 .text
+.align 2
 .type main, @function
 .globl main
 main:
-
-
-mainEntry4:
-
-	# allocate space for local variables
-	addi sp, sp, -12
+mainEntry6:
 
 	# store a 
-	li t0, 1
-	sw t0, 8(sp)
+
+	# fetch variables
+	li t1, 1
+	sw t1, 36(sp)
 
 	# store b 
+
+	# fetch variables
 	li t1, 2
-	sw t1, 4(sp)
+	sw t1, 32(sp)
 
 	# store c 
-	li t2, 3
-	sw t2, 0(sp)
+
+	# fetch variables
+	li t1, 3
+	sw t1, 28(sp)
 
 	# load a$1 a
-	lw t3, 8(sp)
+	lw t0, 36(sp)
+	sw t0, 24(sp)
 
 	# load b$1 b
-	lw t4, 4(sp)
+	lw t0, 32(sp)
+	sw t0, 20(sp)
 
 	# cmp a$1 b$1 cond_lt_tmp_
-	sltu t5, t3, t4
 
-	# zext t6 t5
-	mv t6, t5
+	# fetch variables
+	lw t1, 24(sp)
+	lw t2, 20(sp)
+	sltu t0, t1, t2
+	sw t0, 19(sp)
+
+	# fetch variables
+	lw t1, 19(sp)
+
+	# zext cond_tmp_ cond_lt_tmp_
+	mv t0, t1
+	sw t0, 15(sp)
 
 	# cmp cond_tmp_  cond_
-	li t0, 0
-	xor t1, t6, t0
+
+	# fetch variables
+	lw t1, 15(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 14(sp)
 
 	# condBr cond_ secondCond_2 ifFalse_
+
+	# fetch variables
+	lw t1, 14(sp)
 	beqz t1, ifFalse_
 	j secondCond_2
-
-ifTrue_5:
-	li t2, 10
+ifTrue_7:
 
 	# ret 
-	mv a0, t2
-	addi sp, sp, 12
-	ret 
 
+	# fetch variables
+	li t1, 10
+	mv a0, t1
+	addi sp, sp, 40
+	ret 
 ifFalse_:
-	li t3, 0
 
 	# ret 
-	mv a0, t3
-	addi sp, sp, 12
-	ret 
 
+	# fetch variables
+	li t1, 0
+	mv a0, t1
+	addi sp, sp, 40
+	ret 
 secondCond_2:
 
 	# load b$2 b
-	lw t4, 4(sp)
+	lw t0, 32(sp)
+	sw t0, 10(sp)
 
 	# load c$1 c
-	lw t5, 0(sp)
+	lw t0, 28(sp)
+	sw t0, 6(sp)
 
 	# cmp b$2 c$1 cond_lt_tmp_$1
-	sltu t6, t4, t5
 
-	# zext t0 t6
-	mv t0, t6
+	# fetch variables
+	lw t1, 10(sp)
+	lw t2, 6(sp)
+	sltu t0, t1, t2
+	sw t0, 5(sp)
+
+	# fetch variables
+	lw t1, 5(sp)
+
+	# zext cond_tmp_$1 cond_lt_tmp_$1
+	mv t0, t1
+	sw t0, 1(sp)
 
 	# cmp cond_tmp_$1  cond_$1
-	li t1, 0
-	xor t2, t0, t1
 
-	# condBr cond_$1 ifTrue_5 ifFalse_
-	beqz t2, ifFalse_
-	j ifTrue_5
+	# fetch variables
+	lw t1, 1(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 0(sp)
+
+	# condBr cond_$1 ifTrue_7 ifFalse_
+
+	# fetch variables
+	lw t1, 0(sp)
+	beqz t1, ifFalse_
+	j ifTrue_7

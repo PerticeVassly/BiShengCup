@@ -1,44 +1,58 @@
 .data
+.align 2
 .globl a
 a:
 .word 0
-
 .text
+.align 2
 .type func, @function
 .globl func
 func:
-
-
 funcEntry:
 
 	# save callee saved regs
 	addi sp, sp, 0
 
-	# assign params to registers
-	mv t0, a0
-
 	# allocate space for local variables
-	addi sp, sp, -4
+	addi sp, sp, -20
+
+	# save the parameters
+	sw a0, 16(sp)
 
 	# store p 0
-	sw t0, 0(sp)
+
+	# fetch variables
+	lw t1, 16(sp)
+	sw t1, 12(sp)
 
 	# load p$1 p
-	lw t1, 0(sp)
-	li t2, 1
+	lw t0, 12(sp)
+	sw t0, 8(sp)
 
 	# sub result_ p$1 
-	sub t3, t1, t2
+
+	# fetch variables
+	lw t1, 8(sp)
+	li t2, 1
+	sub t0, t1, t2
+	sw t0, 4(sp)
 
 	# store p result_
-	sw t3, 0(sp)
+
+	# fetch variables
+	lw t1, 4(sp)
+	sw t1, 12(sp)
 
 	# load p$2 p
-	lw t4, 0(sp)
+	lw t0, 12(sp)
+	sw t0, 0(sp)
 
 	# ret p$2
-	mv a0, t4
-	addi sp, sp, 4
+
+	# fetch variables
+	lw t1, 0(sp)
+	mv a0, t1
+	addi sp, sp, 20
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -46,56 +60,50 @@ funcEntry:
 .type main, @function
 .globl main
 main:
-
-
-mainEntry21:
-
-	# allocate space for local variables
-	addi sp, sp, -4
+mainEntry19:
 
 	# store a 
-	li t5, 10
-	sw t5, a, t3
+
+	# fetch variables
+	li t1, 10
+	sw t1, a, t0
 
 	# load a a
-	lw t6, a
+	lw t0, a
+	sw t0, 8(sp)
 
 	# prepare params
-	mv a0, t6
+
+	# fetch variables
+	lw t1, 8(sp)
+	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -32
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call func
 	call func
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	addi sp, sp, 32
-	mv t0, a0
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 4(sp)
 
 	# store b func
-	sw t0, 0(sp)
+
+	# fetch variables
+	lw t1, 4(sp)
+	sw t1, 12(sp)
 
 	# load b$1 b
-	lw t1, 0(sp)
+	lw t0, 12(sp)
+	sw t0, 0(sp)
 
 	# ret b$1
+
+	# fetch variables
+	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 4
+	addi sp, sp, 16
 	ret 

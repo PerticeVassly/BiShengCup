@@ -1,53 +1,67 @@
 .data
+.align 2
 .globl a
 a:
 .word 1
-
 .globl b
 b:
 .word 2
-
 .globl c
 c:
 .word 1
-
 .text
+.align 2
 .type main, @function
 .globl main
 main:
-
-
-mainEntry1:
-
-	# allocate space for local variables
-	addi sp, sp, -4
+mainEntry2:
 
 	# load a a
 	lw t0, a
+	sw t0, 20(sp)
 
 	# load b b
-	lw t1, b
+	lw t0, b
+	sw t0, 16(sp)
 
 	# add result_ a b
-	add t2, t0, t1
+
+	# fetch variables
+	lw t1, 20(sp)
+	lw t2, 16(sp)
+	add t0, t1, t2
+	sw t0, 12(sp)
 
 	# store c result_
-	sw t2, c, t3
+
+	# fetch variables
+	lw t1, 12(sp)
+	sw t1, c, t0
 
 	# store d 
-	li t3, 1
-	sw t3, 0(sp)
+
+	# fetch variables
+	li t1, 1
+	sw t1, 8(sp)
 
 	# load c c
-	lw t4, c
+	lw t0, c
+	sw t0, 4(sp)
 
 	# store d c
-	sw t4, 0(sp)
+
+	# fetch variables
+	lw t1, 4(sp)
+	sw t1, 8(sp)
 
 	# load c$1 c
-	lw t5, c
+	lw t0, c
+	sw t0, 0(sp)
 
 	# ret c$1
-	mv a0, t5
-	addi sp, sp, 4
+
+	# fetch variables
+	lw t1, 0(sp)
+	mv a0, t1
+	addi sp, sp, 24
 	ret 

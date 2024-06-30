@@ -1,219 +1,325 @@
 .data
+.align 2
 .globl a
 a:
 .word 1
-
 .globl b
 b:
 .word 0
-
 .globl c
 c:
 .word 1
-
 .globl d
 d:
 .word 2
-
 .globl e
 e:
 .word 4
-
 .text
+.align 2
 .type main, @function
 .globl main
 main:
-
-
-mainEntry20:
-
-	# allocate space for local variables
-	addi sp, sp, -4
+mainEntry18:
 
 	# store flag 
-	li t0, 0
-	sw t0, 0(sp)
+
+	# fetch variables
+	li t1, 0
+	sw t1, 138(sp)
 
 	# load a a
-	lw t1, a
+	lw t0, a
+	sw t0, 134(sp)
 
 	# load b b
-	lw t2, b
+	lw t0, b
+	sw t0, 130(sp)
 
 	# mul result_ a b
-	mul t3, t1, t2
+
+	# fetch variables
+	lw t1, 134(sp)
+	lw t2, 130(sp)
+	mul t0, t1, t2
+	sw t0, 126(sp)
 
 	# load c c
-	lw t4, c
+	lw t0, c
+	sw t0, 122(sp)
 
 	# div result_$1 result_ c
-	div t5, t3, t4
+
+	# fetch variables
+	lw t1, 126(sp)
+	lw t2, 122(sp)
+	div t0, t1, t2
+	sw t0, 118(sp)
 
 	# load e e
-	lw t6, e
+	lw t0, e
+	sw t0, 114(sp)
 
 	# load d d
 	lw t0, d
+	sw t0, 110(sp)
 
 	# add result_$2 e d
-	add t1, t6, t0
+
+	# fetch variables
+	lw t1, 114(sp)
+	lw t2, 110(sp)
+	add t0, t1, t2
+	sw t0, 106(sp)
 
 	# cmp result_$1 result_$2 cond_eq_tmp_
-	xor t2, t5, t1
-	seqz t2, t2
 
-	# zext t3 t2
-	mv t3, t2
+	# fetch variables
+	lw t1, 118(sp)
+	lw t2, 106(sp)
+	xor t0, t1, t2
+	seqz t0, t0
+	sw t0, 105(sp)
+
+	# fetch variables
+	lw t1, 105(sp)
+
+	# zext cond_tmp_ cond_eq_tmp_
+	mv t0, t1
+	sw t0, 101(sp)
 
 	# cmp cond_tmp_  cond_
-	li t4, 0
-	xor t5, t3, t4
 
-	# condBr cond_ secondCond_32 secondCond_31
-	beqz t5, secondCond_31
-	j secondCond_32
+	# fetch variables
+	lw t1, 101(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 100(sp)
 
-ifTrue_51:
+	# condBr cond_ secondCond_6 secondCond_5
+
+	# fetch variables
+	lw t1, 100(sp)
+	beqz t1, secondCond_5
+	j secondCond_6
+ifTrue_25:
 
 	# store flag 
-	li t6, 1
-	sw t6, 0(sp)
 
-	# br next_110
-	j next_110
+	# fetch variables
+	li t1, 1
+	sw t1, 138(sp)
 
-next_110:
+	# br next_69
+	j next_69
+next_69:
 
 	# load flag$1 flag
-	lw t0, 0(sp)
+	lw t0, 138(sp)
+	sw t0, 96(sp)
 
 	# prepare params
-	mv a0, t0
+
+	# fetch variables
+	lw t1, 96(sp)
+	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -32
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call putint
 	call putint
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	addi sp, sp, 32
+	lw ra, 0(sp)
+	addi sp, sp, 4
 
 	# load flag$2 flag
-	lw t1, 0(sp)
+	lw t0, 138(sp)
+	sw t0, 92(sp)
 
 	# ret flag$2
-	mv a0, t1
-	addi sp, sp, 4
-	ret 
 
-secondCond_31:
+	# fetch variables
+	lw t1, 92(sp)
+	mv a0, t1
+	addi sp, sp, 142
+	ret 
+secondCond_5:
 
 	# load a$3 a
-	lw t2, a
+	lw t0, a
+	sw t0, 88(sp)
 
 	# load b$2 b
-	lw t3, b
+	lw t0, b
+	sw t0, 84(sp)
 
 	# load c$2 c
-	lw t4, c
+	lw t0, c
+	sw t0, 80(sp)
 
 	# mul result_$7 b$2 c$2
-	mul t5, t3, t4
+
+	# fetch variables
+	lw t1, 84(sp)
+	lw t2, 80(sp)
+	mul t0, t1, t2
+	sw t0, 76(sp)
 
 	# sub result_$8 a$3 result_$7
-	sub t6, t2, t5
+
+	# fetch variables
+	lw t1, 88(sp)
+	lw t2, 76(sp)
+	sub t0, t1, t2
+	sw t0, 72(sp)
 
 	# load d$2 d
 	lw t0, d
+	sw t0, 68(sp)
 
 	# load a$4 a
-	lw t1, a
+	lw t0, a
+	sw t0, 64(sp)
 
 	# load c$3 c
-	lw t2, c
+	lw t0, c
+	sw t0, 60(sp)
 
 	# div result_$9 a$4 c$3
-	div t3, t1, t2
+
+	# fetch variables
+	lw t1, 64(sp)
+	lw t2, 60(sp)
+	div t0, t1, t2
+	sw t0, 56(sp)
 
 	# sub result_$10 d$2 result_$9
-	sub t4, t0, t3
+
+	# fetch variables
+	lw t1, 68(sp)
+	lw t2, 56(sp)
+	sub t0, t1, t2
+	sw t0, 52(sp)
 
 	# cmp result_$8 result_$10 cond_eq_tmp_$1
-	xor t5, t6, t4
-	seqz t5, t5
 
-	# zext t6 t5
-	mv t6, t5
+	# fetch variables
+	lw t1, 72(sp)
+	lw t2, 52(sp)
+	xor t0, t1, t2
+	seqz t0, t0
+	sw t0, 51(sp)
+
+	# fetch variables
+	lw t1, 51(sp)
+
+	# zext cond_tmp_$2 cond_eq_tmp_$1
+	mv t0, t1
+	sw t0, 47(sp)
 
 	# cmp cond_tmp_$2  cond_$2
-	li t0, 0
-	xor t1, t6, t0
 
-	# condBr cond_$2 ifTrue_51 next_110
-	beqz t1, next_110
-	j ifTrue_51
+	# fetch variables
+	lw t1, 47(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 46(sp)
 
-secondCond_32:
+	# condBr cond_$2 ifTrue_25 next_69
+
+	# fetch variables
+	lw t1, 46(sp)
+	beqz t1, next_69
+	j ifTrue_25
+secondCond_6:
 
 	# load a$1 a
-	lw t2, a
+	lw t0, a
+	sw t0, 42(sp)
 
 	# load a$2 a
-	lw t3, a
+	lw t0, a
+	sw t0, 38(sp)
 
 	# load b$1 b
-	lw t4, b
+	lw t0, b
+	sw t0, 34(sp)
 
 	# add result_$3 a$2 b$1
-	add t5, t3, t4
+
+	# fetch variables
+	lw t1, 38(sp)
+	lw t2, 34(sp)
+	add t0, t1, t2
+	sw t0, 30(sp)
 
 	# mul result_$4 a$1 result_$3
-	mul t6, t2, t5
+
+	# fetch variables
+	lw t1, 42(sp)
+	lw t2, 30(sp)
+	mul t0, t1, t2
+	sw t0, 26(sp)
 
 	# load c$1 c
 	lw t0, c
+	sw t0, 22(sp)
 
 	# add result_$5 result_$4 c$1
-	add t1, t6, t0
+
+	# fetch variables
+	lw t1, 26(sp)
+	lw t2, 22(sp)
+	add t0, t1, t2
+	sw t0, 18(sp)
 
 	# load d$1 d
-	lw t2, d
+	lw t0, d
+	sw t0, 14(sp)
 
 	# load e$1 e
-	lw t3, e
+	lw t0, e
+	sw t0, 10(sp)
 
 	# add result_$6 d$1 e$1
-	add t4, t2, t3
+
+	# fetch variables
+	lw t1, 14(sp)
+	lw t2, 10(sp)
+	add t0, t1, t2
+	sw t0, 6(sp)
 
 	# cmp result_$5 result_$6 cond_le_tmp_
-	sub t5, t1, t4
-	sgtz t5, t5
-	seqz t5, t5
 
-	# zext t6 t5
-	mv t6, t5
+	# fetch variables
+	lw t1, 18(sp)
+	lw t2, 6(sp)
+	sub t0, t1, t2
+	sgtz t0, t0
+	seqz t0, t0
+	sw t0, 5(sp)
+
+	# fetch variables
+	lw t1, 5(sp)
+
+	# zext cond_tmp_$1 cond_le_tmp_
+	mv t0, t1
+	sw t0, 1(sp)
 
 	# cmp cond_tmp_$1  cond_$1
-	li t0, 0
-	xor t1, t6, t0
 
-	# condBr cond_$1 ifTrue_51 secondCond_31
-	beqz t1, secondCond_31
-	j ifTrue_51
+	# fetch variables
+	lw t1, 1(sp)
+	li t2, 0
+	xor t0, t1, t2
+	sw t0, 0(sp)
+
+	# condBr cond_$1 ifTrue_25 secondCond_5
+
+	# fetch variables
+	lw t1, 0(sp)
+	beqz t1, secondCond_5
+	j ifTrue_25

@@ -1,12 +1,14 @@
 package cn.edu.nju.software.backend;
 
+import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
-import cn.edu.nju.software.ir.value.ValueRef;
 
 public class RiscGlobalVar {
+
     private final String name;
+
     private final GlobalVar globalVar;
 
     public RiscGlobalVar(GlobalVar globalVar) {
@@ -14,26 +16,36 @@ public class RiscGlobalVar {
         this.globalVar = globalVar;
     }
 
-    public String emitCode() {
-        StringBuilder ans = new StringBuilder();
-        //.globl xxx
-        ans.append(".globl ").append(name).append("\n");
+    //todo() 全局变量之间的相互赋值未处理
+    public void dumpToConsole() {
 
 
-        //todo() float
+        System.out.println(".globl " + name);
+
         if( globalVar.getInitVal() instanceof ConstValue){
 
-            String initValue = globalVar.getInitVal().toString();
-            ans.append(name + ":").append("\n").append(".word ").append(initValue).append("\n");
+            if(globalVar.getInitVal().getType() instanceof IntType) {
+                String initValue = globalVar.getInitVal().toString();
+                System.out.println(name + ":");
+                System.out.println(".word " + initValue);
+            }
+            else if(globalVar.getInitVal().getType() instanceof FloatType) {
+                String initValue = globalVar.getInitVal().toString();
+                System.out.println(name + ":");
+                System.out.println(".float " + initValue);
+            }
+            else {
+                assert false;
+            }
 
         } else if (globalVar.getInitVal() instanceof GlobalVar) {
 
             assert false;
 
         } else {
-            assert false;
-        }
 
-        return ans.toString();
+            assert false;
+
+        }
     }
 }
