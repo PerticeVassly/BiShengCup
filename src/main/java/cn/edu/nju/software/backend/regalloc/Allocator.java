@@ -26,8 +26,11 @@ public class Allocator {
         this.currentBlock = currentBlock;
     }
 
+    private int count=0;
+
+    private String[] regTable={"t0","t1","t2"};
     public Allocator() {
-        registerTable = new RegisterTable("a0","a1","a2","s0","s1","s2");
+        registerTable = new RegisterTable("t0","t1","t2");
         memory = new Memory();
     }
 
@@ -39,33 +42,9 @@ public class Allocator {
         return -1;
     }
 
-    private int spill(){
-        int regNO_toSpill = getRegToSpill();
-        String varName_toSpill = registerTable.getVarInReg(regNO_toSpill);
-        if(varName_toSpill == null){
-            assert false;
-        }
-
-        if(memory.checkHasAllocated(varName_toSpill)){
-            currentBlock.addInstruction( new RiscSw(new Register(regNO_toSpill), new IndirectRegister(regNO_toSpill, memory.getOffset(varName_toSpill))));
-        } else {
-            currentBlock.addInstruction(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-4)));
-
-            currentBlock.addInstruction(new RiscSw( new Register(regNO_toSpill), new IndirectRegister("sp", 0)));
-
-            memory.allocate(new MemoryVar(varName_toSpill));
-        }
-
-        registerTable.freeReg(regNO_toSpill);
-        return regNO_toSpill;
-    }
 
 
     //the caller should use the Reg immediately
-    public int getAnAvailableGReg(){
-        int regNO = registerTable.checkHasFreeReg() ? registerTable.getAFreeReg() : spill() ;
-        return regNO;
-    }
 
     //provide a register for the varName
     public ArrayList<String> provideGRegs(List<ValueRef> values){
@@ -74,43 +53,32 @@ public class Allocator {
         for(ValueRef value : values){
 
             if(value instanceof ConstValue){
-                int regNO = getAnAvailableGReg();
+                int regNO=RiscSpecifications.getRegNO(regTable[count]);
+                count=(count+1)%3;
                 currentBlock.addInstruction(new RiscLi(new Register(regNO), new ImmediateValue((Integer)((ConstValue) value).getValue())));
-
-                //todo()
-                registerTable.lockReg(regNO);
-
                 regResult.add(RiscSpecifications.getRegName(regNO));
             } else {
-
-                if(value.getName() == null){
-                    assert false;
-                }
-
+                assert value.getName() != null;
                 if(registerTable.checkHasVar(value.getName())){
                     int regNO = registerTable.getRegOfVar(value.getName());
-
-                    registerTable.lockReg(regNO);
-                    registerTable.useReg(value.getName(), regNO);
 
                     regResult.add(RiscSpecifications.getRegName(regNO));
 
                 }else if(memory.checkHasAllocated(value.getName())){
 
-                    int regNO = getAnAvailableGReg();
+                    int regNO=RiscSpecifications.getRegNO(regTable[count]);
+                    count=(count+1)%3;
 
                     currentBlock.addInstruction(new RiscLw( new Register(regNO), new IndirectRegister("sp", memory.getOffset(value.getName()))));
 
-                    registerTable.lockReg(regNO);
                     registerTable.useReg(value.getName(), regNO);
 
                     regResult.add(RiscSpecifications.getRegName(regNO));
 
                 } else {
-                    // it is not in the memory and registerTable now
-                    int regNO = getAnAvailableGReg();
+                    int regNO=RiscSpecifications.getRegNO(regTable[count]);
+                    count=(count+1)%3;
 
-                    registerTable.lockReg(regNO);
                     registerTable.useReg(value.getName(), regNO);
 
                     regResult.add(RiscSpecifications.getRegName(regNO));

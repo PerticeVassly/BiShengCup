@@ -8,19 +8,10 @@ g1:
 g1Entry:
 
 	# save callee saved regs
-	addi sp, sp, -48
+	addi sp, sp, -12
 	sw s0, 0(sp)
 	sw s1, 4(sp)
 	sw s2, 8(sp)
-	sw s3, 12(sp)
-	sw s4, 16(sp)
-	sw s5, 20(sp)
-	sw s6, 24(sp)
-	sw s7, 28(sp)
-	sw s8, 32(sp)
-	sw s9, 36(sp)
-	sw s10, 40(sp)
-	sw s11, 44(sp)
 
 	# alloc i
 	addi sp, sp, -4
@@ -39,7 +30,11 @@ g1Entry:
 
 	# load j$1 j
 	lw s0, 0(sp)
+
+	# add result_ i$1 j$1
 	add s1, a2, s0
+
+	# ret result_
 	mv a0, s1
 	addi sp, sp, 8
 
@@ -47,16 +42,7 @@ g1Entry:
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
-	lw s3, 12(sp)
-	lw s4, 16(sp)
-	lw s5, 20(sp)
-	lw s6, 24(sp)
-	lw s7, 28(sp)
-	lw s8, 32(sp)
-	lw s9, 36(sp)
-	lw s10, 40(sp)
-	lw s11, 44(sp)
-	addi sp, sp, 48
+	addi sp, sp, 12
 	ret 
 .type f1, @function
 .globl f1
@@ -66,19 +52,10 @@ f1:
 f1Entry:
 
 	# save callee saved regs
-	addi sp, sp, -48
+	addi sp, sp, -12
 	sw s0, 0(sp)
 	sw s1, 4(sp)
 	sw s2, 8(sp)
-	sw s3, 12(sp)
-	sw s4, 16(sp)
-	sw s5, 20(sp)
-	sw s6, 24(sp)
-	sw s7, 28(sp)
-	sw s8, 32(sp)
-	sw s9, 36(sp)
-	sw s10, 40(sp)
-	sw s11, 44(sp)
 
 	# alloc i
 	addi sp, sp, -4
@@ -115,6 +92,8 @@ f1Entry:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call g1
 	call g1
 	sw a0, 40(sp)
 
@@ -154,6 +133,8 @@ f1Entry:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call g1
 	call g1
 	sw a0, 40(sp)
 
@@ -177,7 +158,11 @@ f1Entry:
 	lw a1, 8(sp)
 	addi sp, sp, -4
 	sw a2, 0(sp)
+
+	# add result_ g1 g1$1
 	add a2, a0, a1
+
+	# ret result_
 	mv a0, a2
 	addi sp, sp, 28
 
@@ -185,23 +170,14 @@ f1Entry:
 	lw s0, 0(sp)
 	lw s1, 4(sp)
 	lw s2, 8(sp)
-	lw s3, 12(sp)
-	lw s4, 16(sp)
-	lw s5, 20(sp)
-	lw s6, 24(sp)
-	lw s7, 28(sp)
-	lw s8, 32(sp)
-	lw s9, 36(sp)
-	lw s10, 40(sp)
-	lw s11, 44(sp)
-	addi sp, sp, 48
+	addi sp, sp, 12
 	ret 
 .type main, @function
 .globl main
 main:
 
 
-mainEntry:
+mainEntry5:
 	addi sp, sp, -4
 
 	# prepare params
@@ -222,6 +198,8 @@ mainEntry:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call f1
 	call f1
 	sw a0, 40(sp)
 
@@ -257,6 +235,8 @@ mainEntry:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call g1
 	call g1
 	sw a0, 40(sp)
 
@@ -273,6 +253,8 @@ mainEntry:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 	lw a0, 0(sp)
+
+	# ret g1
 	mv a0, a0
 	addi sp, sp, 8
 	ret 

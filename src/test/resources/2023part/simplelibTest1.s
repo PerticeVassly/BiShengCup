@@ -5,7 +5,7 @@
 main:
 
 
-mainEntry6:
+mainEntry2:
 
 	# alloc a
 	addi sp, sp, -4
@@ -33,6 +33,8 @@ mainEntry6:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -66,6 +68,8 @@ mainEntry6:
 	sw a0, 28(sp)
 	sw a1, 32(sp)
 	sw ra, 36(sp)
+
+	# call putint
 	call putint
 	sw a0, 40(sp)
 
@@ -82,6 +86,8 @@ mainEntry6:
 	lw ra, 36(sp)
 	addi sp, sp, 40
 	li a1, 11
+
+	# ret 
 	mv a0, a1
 	addi sp, sp, 4
 	ret 
