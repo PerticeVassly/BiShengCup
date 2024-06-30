@@ -5,93 +5,77 @@
 main:
 
 
-mainEntry3:
+mainEntry4:
 
-	# alloc a
-	addi sp, sp, -4
+	# allocate space for local variables
+	addi sp, sp, -12
 
 	# store a 
-	li a0, 1
-	sw a0, 0(sp)
-
-	# alloc b
-	addi sp, sp, -4
+	li t0, 1
+	sw t0, 8(sp)
 
 	# store b 
-	li a0, 2
-	sw a0, 0(sp)
-
-	# alloc c
-	addi sp, sp, -4
+	li t1, 2
+	sw t1, 4(sp)
 
 	# store c 
-	li a0, 3
-	sw a0, 0(sp)
+	li t2, 3
+	sw t2, 0(sp)
 
 	# load a$1 a
-	lw a0, 8(sp)
+	lw t3, 8(sp)
 
 	# load b$1 b
-	lw a1, 4(sp)
+	lw t4, 4(sp)
 
 	# cmp a$1 b$1 cond_lt_tmp_
-	sltu a2, a0, a1
+	sltu t5, t3, t4
 
-	# zext s0 a2
-	mv s0, a2
+	# zext t6 t5
+	mv t6, t5
 
 	# cmp cond_tmp_  cond_
-	li s1, 0
-	xor s2, s0, s1
+	li t0, 0
+	xor t1, t6, t0
 
 	# condBr cond_ secondCond_2 ifFalse_
-	beqz s2, ifFalse_
+	beqz t1, ifFalse_
 	j secondCond_2
 
 ifTrue_5:
-	li s1, 10
+	li t2, 10
 
 	# ret 
-	mv a0, s1
+	mv a0, t2
 	addi sp, sp, 12
 	ret 
 
 ifFalse_:
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 0
+	li t3, 0
 
 	# ret 
-	mv a0, a0
-	addi sp, sp, 16
+	mv a0, t3
+	addi sp, sp, 12
 	ret 
 
 secondCond_2:
 
 	# load b$2 b
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	lw a1, 12(sp)
+	lw t4, 4(sp)
 
 	# load c$1 c
-	lw a0, 8(sp)
+	lw t5, 0(sp)
 
 	# cmp b$2 c$1 cond_lt_tmp_$1
-	sltu s1, a1, a0
-	addi sp, sp, -4
-	sw a0, 0(sp)
+	sltu t6, t4, t5
 
-	# zext a0 s1
-	mv a0, s1
+	# zext t0 t6
+	mv t0, t6
 
 	# cmp cond_tmp_$1  cond_$1
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
+	li t1, 0
+	xor t2, t0, t1
 
 	# condBr cond_$1 ifTrue_5 ifFalse_
-	beqz a2, ifFalse_
+	beqz t2, ifFalse_
 	j ifTrue_5

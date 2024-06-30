@@ -10,9 +10,12 @@ main:
 
 
 mainEntry87:
-	li a0, 0
+
+	# allocate space for local variables
+	addi sp, sp, 0
+	li t0, 0
 
 	# ret 
-	mv a0, a0
+	mv a0, t0
 	addi sp, sp, 0
 	ret 

@@ -5,109 +5,79 @@
 main:
 
 
-mainEntry33:
+mainEntry34:
 
-	# alloc a
-	addi sp, sp, -4
-
-	# alloc b
-	addi sp, sp, -4
-
-	# alloc c
-	addi sp, sp, -4
-
-	# alloc d
-	addi sp, sp, -4
-
-	# alloc result
-	addi sp, sp, -4
+	# allocate space for local variables
+	addi sp, sp, -20
 
 	# store a 
-	li a0, 5
-	sw a0, 16(sp)
+	li t0, 5
+	sw t0, 16(sp)
 
 	# store b 
-	li a0, 5
-	sw a0, 12(sp)
+	li t1, 5
+	sw t1, 12(sp)
 
 	# store c 
-	li a0, 1
-	sw a0, 8(sp)
+	li t2, 1
+	sw t2, 8(sp)
 
 	# store d 
-	li a0, -2
-	sw a0, 4(sp)
+	li t3, -2
+	sw t3, 4(sp)
 
 	# load d$1 d
-	lw a0, 4(sp)
-	li a1, 1
+	lw t4, 4(sp)
+	li t5, 1
 
 	# mul result_ d$1 
-	mul a2, a0, a1
-	li a1, 2
+	mul t6, t4, t5
+	li t0, 2
 
 	# div result_$1 result_ 
-	div s0, a2, a1
+	div t1, t6, t0
 
 	# load a$1 a
-	lw a1, 16(sp)
+	lw t2, 16(sp)
 
 	# load b$1 b
-	lw s1, 12(sp)
+	lw t3, 12(sp)
 
 	# sub result_$2 a$1 b$1
-	sub s2, a1, s1
-	addi sp, sp, -4
-	sw a0, 0(sp)
+	sub t4, t2, t3
 
 	# add result_$3 result_$1 result_$2
-	add a0, s0, s2
+	add t5, t1, t4
 
 	# load c$1 c
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 16(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 3
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t6, 8(sp)
+	li t0, 3
 
 	# add result_$4 c$1 
-	add a2, a0, a1
-	li a1, 0
-	addi sp, sp, -4
-	sw a0, 0(sp)
+	add t1, t6, t0
+	li t2, 0
 
 	# sub tmp_  result_$4
-	sub a0, a1, a2
-	li a1, 2
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	sub t3, t2, t1
+	li t4, 2
 
 	# mod result_$5 tmp_ 
-	rem a2, a0, a1
-	lw a1, 16(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
+	rem t5, t3, t4
 
 	# sub result_$6 result_$3 result_$5
-	sub a0, a1, a2
+	sub t0, t6, t5
 
 	# store result result_$6
-	sw a0, 28(sp)
+	sw t0, 0(sp)
 
 	# load result$1 result
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 32(sp)
-	addi sp, sp, -4
+	lw t1, 0(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -115,13 +85,10 @@ mainEntry33:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -131,113 +98,75 @@ mainEntry33:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load d$2 d
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 40(sp)
-	sw a1, 28(a1)
-	li a1, 2
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t2, 4(sp)
+	li t3, 2
 
 	# mod result_$7 d$2 
-	rem a2, a0, a1
-	li a1, 67
-	addi sp, sp, -4
-	sw a0, 0(sp)
+	rem t4, t2, t3
+	li t5, 67
 
 	# add result_$8 result_$7 
-	add a0, a2, a1
+	add t6, t4, t5
 
 	# load a$2 a
-	lw a1, 60(sp)
+	lw t0, 16(sp)
 
 	# load b$2 b
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 60(sp)
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t1, 12(sp)
 
 	# sub result_$9 a$2 b$2
-	sub a2, a1, a0
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 0
-	addi sp, sp, -4
-	sw a1, 0(sp)
+	sub t2, t0, t1
+	li t3, 0
 
 	# sub tmp_$1  result_$9
-	sub a1, a0, a2
-	lw a0, 12(sp)
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	sub t4, t3, t2
 
 	# add result_$10 result_$8 tmp_$1
-	add a2, a0, a1
+	add t5, t6, t4
 
 	# load c$2 c
-	sw a0, 16(a0)
-	lw a0, 72(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 2
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t6, 8(sp)
+	li t0, 2
 
 	# add result_$11 c$2 
-	add a2, a0, a1
-	li a1, 2
-	addi sp, sp, -4
-	sw a0, 0(sp)
+	add t1, t6, t0
+	li t2, 2
 
 	# mod result_$12 result_$11 
-	rem a0, a2, a1
-	li a1, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	rem t3, t1, t2
+	li t4, 0
 
 	# sub tmp_$2  result_$12
-	sub a2, a1, a0
-	lw a1, 8(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
+	sub t5, t4, t3
 
 	# sub result_$13 result_$10 tmp_$2
-	sub a0, a1, a2
+	sub t0, t6, t5
 
 	# store result result_$13
-	sw a0, 84(sp)
+	sw t0, 0(sp)
 
 	# load result$2 result
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 88(sp)
-	sw a1, 16(a1)
-	li a1, 3
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t1, 0(sp)
+	li t2, 3
 
 	# add result_$14 result$2 
-	add a2, a0, a1
+	add t3, t1, t2
 
 	# store result result_$14
-	sw a2, 92(sp)
+	sw t3, 0(sp)
 
 	# load result$3 result
-	lw a1, 92(sp)
-	addi sp, sp, -4
+	lw t4, 0(sp)
 
 	# prepare params
-	mv a0, a1
+	mv a0, t4
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -245,13 +174,10 @@ mainEntry33:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -261,15 +187,11 @@ mainEntry33:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 0
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	li t5, 0
 
 	# ret 
-	mv a0, a0
-	addi sp, sp, 116
+	mv a0, t5
+	addi sp, sp, 20
 	ret 

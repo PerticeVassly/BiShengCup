@@ -5,49 +5,49 @@
 main:
 
 
-mainEntry:
+mainEntry3:
 
-	# alloc a
+	# allocate space for local variables
 	addi sp, sp, -4
 
 	# store a 
-	li a0, 1
-	sw a0, 0(sp)
+	li t0, 1
+	sw t0, 0(sp)
 
 	# load a$1 a
-	lw a0, 0(sp)
+	lw t1, 0(sp)
 
 	# cmp a$1  cond_eq_tmp_
-	li a1, 1
-	xor a2, a0, a1
-	seqz a2, a2
+	li t2, 1
+	xor t3, t1, t2
+	seqz t3, t3
 
-	# zext a1 a2
-	mv a1, a2
+	# zext t4 t3
+	mv t4, t3
 
 	# cmp cond_tmp_  cond_
-	li s0, 0
-	xor s1, a1, s0
+	li t5, 0
+	xor t6, t4, t5
 
-	# condBr cond_ ifTrue_ next_
-	beqz s1, next_
-	j ifTrue_
+	# condBr cond_ ifTrue_4 next_4
+	beqz t6, next_4
+	j ifTrue_4
 
-ifTrue_:
+ifTrue_4:
 
 	# store a 
-	li s0, 2
-	sw s0, 0(sp)
+	li t0, 2
+	sw t0, 0(sp)
 
-	# br next_
-	j next_
+	# br next_4
+	j next_4
 
-next_:
+next_4:
 
 	# load a$2 a
-	lw s0, 0(sp)
+	lw t1, 0(sp)
 
 	# ret a$2
-	mv a0, s0
+	mv a0, t1
 	addi sp, sp, 4
 	ret 

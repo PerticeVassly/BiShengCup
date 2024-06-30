@@ -8,133 +8,116 @@ if_ifElse_:
 if_ifElse_Entry:
 
 	# save callee saved regs
-	addi sp, sp, -12
-	sw s0, 0(sp)
-	sw s1, 4(sp)
-	sw s2, 8(sp)
+	addi sp, sp, 0
 
-	# alloc a
-	addi sp, sp, -4
+	# assign params to registers
+
+	# allocate space for local variables
+	addi sp, sp, -8
 
 	# store a 
-	li a0, 5
-	sw a0, 0(sp)
-
-	# alloc b
-	addi sp, sp, -4
+	li t0, 5
+	sw t0, 4(sp)
 
 	# store b 
-	li a0, 10
-	sw a0, 0(sp)
+	li t1, 10
+	sw t1, 0(sp)
 
 	# load a$1 a
-	lw a0, 4(sp)
+	lw t2, 4(sp)
 
 	# cmp a$1  cond_eq_tmp_
-	li a1, 5
-	xor a2, a0, a1
-	seqz a2, a2
+	li t3, 5
+	xor t4, t2, t3
+	seqz t4, t4
 
-	# zext a1 a2
-	mv a1, a2
+	# zext t5 t4
+	mv t5, t4
 
 	# cmp cond_tmp_  cond_
-	li s0, 0
-	xor s1, a1, s0
+	li t6, 0
+	xor t0, t5, t6
 
-	# condBr cond_ ifTrue_333 next_587
-	beqz s1, next_587
-	j ifTrue_333
+	# condBr cond_ ifTrue_331 next_577
+	beqz t0, next_577
+	j ifTrue_331
 
-ifTrue_333:
+ifTrue_331:
 
 	# load b$1 b
-	lw s0, 0(sp)
+	lw t1, 0(sp)
 
 	# cmp b$1  cond_eq_tmp_$1
-	li s2, 10
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	xor a0, s0, s2
-	seqz a0, a0
+	li t2, 10
+	xor t3, t1, t2
+	seqz t3, t3
 
-	# zext s2 a0
-	mv s2, a0
+	# zext t4 t3
+	mv t4, t3
 
 	# cmp cond_tmp_$1  cond_$1
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 0
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	xor a1, s2, a0
+	li t5, 0
+	xor t6, t4, t5
 
-	# condBr cond_$1 ifTrue_334 ifFalse_134
-	beqz a1, ifFalse_134
-	j ifTrue_334
+	# condBr cond_$1 ifTrue_332 ifFalse_133
+	beqz t6, ifFalse_133
+	j ifTrue_332
 
-next_587:
+next_577:
 
 	# load a$3 a
-	lw a0, 16(sp)
+	lw t0, 4(sp)
 
 	# ret a$3
-	mv a0, a0
-	addi sp, sp, 20
+	mv a0, t0
+	addi sp, sp, 8
 
 	# restore callee saved regs
-	lw s0, 0(sp)
-	lw s1, 4(sp)
-	lw s2, 8(sp)
-	addi sp, sp, 12
+	addi sp, sp, 0
 	ret 
 
-ifTrue_334:
+ifTrue_332:
 
 	# store a 
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 25
-	sw a1, 20(sp)
+	li t1, 25
+	sw t1, 4(sp)
 
-	# br next_588
-	j next_588
+	# br next_578
+	j next_578
 
-ifFalse_134:
+ifFalse_133:
 
 	# load a$2 a
-	lw a1, 20(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 15
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t2, 4(sp)
+	li t3, 15
 
 	# add result_ a$2 
-	add a2, a1, a0
+	add t4, t2, t3
 
 	# store a result_
-	sw a2, 28(sp)
+	sw t4, 4(sp)
 
-	# br next_588
-	j next_588
+	# br next_578
+	j next_578
 
-next_588:
+next_578:
 
-	# br next_587
-	j next_587
+	# br next_577
+	j next_577
 .type main, @function
 .globl main
 main:
 
 
 mainEntry84:
-	addi sp, sp, -4
+
+	# allocate space for local variables
+	addi sp, sp, 0
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -142,13 +125,10 @@ mainEntry84:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call if_ifElse_
 	call if_ifElse_
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -158,13 +138,11 @@ mainEntry84:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
-	lw a0, 0(sp)
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	mv t5, a0
 
 	# ret if_ifElse_
-	mv a0, a0
-	addi sp, sp, 4
+	mv a0, t5
+	addi sp, sp, 0
 	ret 

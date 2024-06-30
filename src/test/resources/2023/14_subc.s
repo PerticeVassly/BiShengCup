@@ -5,23 +5,23 @@
 main:
 
 
-mainEntry32:
+mainEntry33:
 
-	# alloc a
+	# allocate space for local variables
 	addi sp, sp, -4
 
 	# store a 
-	li a0, 10
-	sw a0, 0(sp)
+	li t0, 10
+	sw t0, 0(sp)
 
 	# load a$1 a
-	lw a0, 0(sp)
-	li a1, 2
+	lw t1, 0(sp)
+	li t2, 2
 
 	# sub result_ a$1 
-	sub a2, a0, a1
+	sub t3, t1, t2
 
 	# ret result_
-	mv a0, a2
+	mv a0, t3
 	addi sp, sp, 4
 	ret 

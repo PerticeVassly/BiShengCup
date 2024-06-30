@@ -22,9 +22,16 @@ g1Entry:
   store i32 %0, i32* %i, align 4
   %j = alloca i32, align 4
   store i32 %1, i32* %j, align 4
-  %i$1 = load i32, i32* %i, align 4
+  %a = alloca i32, align 4
+  store i32 1, i32* %a, align 4
+  %b = alloca i32, align 4
+  store i32 2, i32* %b, align 4
+  %c = alloca i32, align 4
   %j$1 = load i32, i32* %j, align 4
-  %result_ = add i32 %i$1, %j$1
+  store i32 %j$1, i32* %c, align 4
+  %i$1 = load i32, i32* %i, align 4
+  %j$2 = load i32, i32* %j, align 4
+  %result_ = add i32 %i$1, %j$2
   ret i32 %result_
 }
 

@@ -5,246 +5,186 @@
 main:
 
 
-mainEntry1:
+mainEntry2:
 
-	# alloc a
-	addi sp, sp, -4
+	# allocate space for local variables
+	addi sp, sp, -12
 
 	# store a 
-	li a0, 1
-	sw a0, 0(sp)
-
-	# alloc b
-	addi sp, sp, -4
+	li t0, 1
+	sw t0, 8(sp)
 
 	# store b 
-	li a0, 2
-	sw a0, 0(sp)
-
-	# alloc c
-	addi sp, sp, -4
+	li t1, 2
+	sw t1, 4(sp)
 
 	# store c 
-	li a0, 3
-	sw a0, 0(sp)
+	li t2, 3
+	sw t2, 0(sp)
 
 	# load a$1 a
-	lw a0, 8(sp)
+	lw t3, 8(sp)
 
 	# load b$1 b
-	lw a1, 4(sp)
+	lw t4, 4(sp)
 
 	# cmp a$1 b$1 cond_lt_tmp_
-	sltu a2, a0, a1
+	sltu t5, t3, t4
 
-	# zext s0 a2
-	mv s0, a2
+	# zext t6 t5
+	mv t6, t5
 
 	# cmp cond_tmp_  cond_
-	li s1, 0
-	xor s2, s0, s1
+	li t0, 0
+	xor t1, t6, t0
 
-	# condBr cond_ ifTrue_1 next_1
-	beqz s2, next_1
-	j ifTrue_1
+	# condBr cond_ ifTrue_ next_
+	beqz t1, next_
+	j ifTrue_
 
-ifTrue_1:
+ifTrue_:
 
 	# load b$2 b
-	lw s1, 4(sp)
+	lw t2, 4(sp)
 
 	# load c$1 c
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 4(sp)
+	lw t3, 0(sp)
 
 	# cmp b$2 c$1 cond_lt_tmp_$1
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	sltu a1, s1, a0
-	addi sp, sp, -4
-	sw a0, 0(sp)
+	sltu t4, t2, t3
 
-	# zext a0 a1
-	mv a0, a1
+	# zext t5 t4
+	mv t5, t4
 
 	# cmp cond_tmp_$1  cond_$1
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
+	li t6, 0
+	xor t0, t5, t6
 
-	# condBr cond_$1 secondCond_1 next_2
-	beqz a2, next_2
+	# condBr cond_$1 secondCond_1 next_1
+	beqz t0, next_1
 	j secondCond_1
+
+next_:
+
+	# load b$4 b
+	lw t1, 4(sp)
+
+	# load c$3 c
+	lw t2, 0(sp)
+
+	# cmp b$4 c$3 cond_lt_tmp_$4
+	sltu t3, t1, t2
+
+	# zext t4 t3
+	mv t4, t3
+
+	# cmp cond_tmp_$4  cond_$4
+	li t5, 0
+	xor t6, t4, t5
+
+	# condBr cond_$4 ifTrue_2 next_2
+	beqz t6, next_2
+	j ifTrue_2
+
+ifTrue_1:
+	li t0, 10
+
+	# ret 
+	mv a0, t0
+	addi sp, sp, 12
+	ret 
 
 next_1:
 
-	# load b$4 b
-	lw a1, 24(sp)
-
-	# load c$3 c
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 24(sp)
-
-	# cmp b$4 c$3 cond_lt_tmp_$4
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	sltu a2, a1, a0
-	addi sp, sp, -4
-	sw a0, 0(sp)
-
-	# zext a0 a2
-	mv a0, a2
-
-	# cmp cond_tmp_$4  cond_$4
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
-
-	# condBr cond_$4 ifTrue_3 next_3
-	beqz a2, next_3
-	j ifTrue_3
-
-ifTrue_2:
-	li a1, 10
-
-	# ret 
-	mv a0, a1
-	addi sp, sp, 52
-	ret 
-
-next_2:
-
-	# br next_1
-	j next_1
+	# br next_
+	j next_
 
 secondCond_:
 
 	# load a$3 a
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 52(sp)
+	lw t1, 8(sp)
 
 	# load c$2 c
-	lw a1, 44(sp)
+	lw t2, 0(sp)
 
 	# cmp a$3 c$2 cond_lt_tmp_$3
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	sltu a2, a0, a1
-	addi sp, sp, -4
-	sw a0, 0(sp)
+	sltu t3, t1, t2
 
-	# zext a0 a2
-	mv a0, a2
+	# zext t4 t3
+	mv t4, t3
 
 	# cmp cond_tmp_$3  cond_$3
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
+	li t5, 0
+	xor t6, t4, t5
 
-	# condBr cond_$3 ifTrue_2 next_2
-	beqz a2, next_2
-	j ifTrue_2
+	# condBr cond_$3 ifTrue_1 next_1
+	beqz t6, next_1
+	j ifTrue_1
 
 secondCond_1:
 
 	# load a$2 a
-	lw a1, 68(sp)
+	lw t0, 8(sp)
 
 	# load b$3 b
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 68(sp)
+	lw t1, 4(sp)
 
 	# cmp a$2 b$3 cond_lt_tmp_$2
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	sltu a2, a1, a0
-	addi sp, sp, -4
-	sw a0, 0(sp)
+	sltu t2, t0, t1
 
-	# zext a0 a2
-	mv a0, a2
+	# zext t3 t2
+	mv t3, t2
 
 	# cmp cond_tmp_$2  cond_$2
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
+	li t4, 0
+	xor t5, t3, t4
 
-	# condBr cond_$2 secondCond_ next_2
-	beqz a2, next_2
+	# condBr cond_$2 secondCond_ next_1
+	beqz t5, next_1
 	j secondCond_
 
-ifTrue_3:
+ifTrue_2:
 
 	# load a$4 a
-	lw a1, 88(sp)
+	lw t6, 8(sp)
 
 	# load b$5 b
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 88(sp)
+	lw t0, 4(sp)
 
 	# cmp a$4 b$5 cond_lt_tmp_$5
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	sltu a2, a1, a0
-	addi sp, sp, -4
-	sw a0, 0(sp)
+	sltu t1, t6, t0
 
-	# zext a0 a2
-	mv a0, a2
+	# zext t2 t1
+	mv t2, t1
 
 	# cmp cond_tmp_$5  cond_$5
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
+	li t3, 0
+	xor t4, t2, t3
 
-	# condBr cond_$5 ifTrue_4 next_4
-	beqz a2, next_4
-	j ifTrue_4
+	# condBr cond_$5 ifTrue_3 next_3
+	beqz t4, next_3
+	j ifTrue_3
+
+next_2:
+	li t5, 0
+
+	# ret 
+	mv a0, t5
+	addi sp, sp, 12
+	ret 
+
+ifTrue_3:
+	li t6, 100
+
+	# ret 
+	mv a0, t6
+	addi sp, sp, 12
+	ret 
 
 next_3:
-	li a1, 0
+	li t0, 12
 
 	# ret 
-	mv a0, a1
-	addi sp, sp, 112
-	ret 
-
-ifTrue_4:
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 100
-
-	# ret 
-	mv a0, a0
-	addi sp, sp, 116
-	ret 
-
-next_4:
-	addi sp, sp, -4
-	sw s0, 0(sp)
-	li s0, 12
-
-	# ret 
-	mv a0, s0
-	addi sp, sp, 120
+	mv a0, t0
+	addi sp, sp, 12
 	ret 

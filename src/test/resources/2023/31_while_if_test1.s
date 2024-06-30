@@ -8,194 +8,165 @@ whileIf:
 whileIfEntry:
 
 	# save callee saved regs
-	addi sp, sp, -12
-	sw s0, 0(sp)
-	sw s1, 4(sp)
-	sw s2, 8(sp)
+	addi sp, sp, 0
 
-	# alloc a
-	addi sp, sp, -4
+	# assign params to registers
+
+	# allocate space for local variables
+	addi sp, sp, -8
 
 	# store a 
-	li a0, 0
-	sw a0, 0(sp)
-
-	# alloc b
-	addi sp, sp, -4
+	li t0, 0
+	sw t0, 4(sp)
 
 	# store b 
-	li a0, 0
-	sw a0, 0(sp)
+	li t1, 0
+	sw t1, 0(sp)
 
-	# br whileCond_238
-	j whileCond_238
+	# br whileCond_230
+	j whileCond_230
 
-whileCond_238:
+whileCond_230:
 
 	# load a$1 a
-	lw a0, 4(sp)
+	lw t2, 4(sp)
 
 	# cmp a$1  cond_lt_tmp_
-	li a1, 100
-	sltu a2, a0, a1
+	li t3, 100
+	sltu t4, t2, t3
 
-	# zext a1 a2
-	mv a1, a2
+	# zext t5 t4
+	mv t5, t4
 
 	# cmp cond_tmp_  cond_
-	li s0, 0
-	xor s1, a1, s0
+	li t6, 0
+	xor t0, t5, t6
 
-	# condBr cond_ whileBody_238 next_560
-	beqz s1, next_560
-	j whileBody_238
+	# condBr cond_ whileBody_230 next_552
+	beqz t0, next_552
+	j whileBody_230
 
-whileBody_238:
+whileBody_230:
 
 	# load a$2 a
-	lw s0, 4(sp)
+	lw t1, 4(sp)
 
 	# cmp a$2  cond_eq_tmp_
-	li s2, 5
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	xor a0, s0, s2
-	seqz a0, a0
+	li t2, 5
+	xor t3, t1, t2
+	seqz t3, t3
 
-	# zext s2 a0
-	mv s2, a0
+	# zext t4 t3
+	mv t4, t3
 
 	# cmp cond_tmp_$1  cond_$1
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 0
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	xor a1, s2, a0
+	li t5, 0
+	xor t6, t4, t5
 
 	# condBr cond_$1 ifTrue_322 ifFalse_128
-	beqz a1, ifFalse_128
+	beqz t6, ifFalse_128
 	j ifTrue_322
 
-next_560:
+next_552:
 
 	# load b$1 b
-	lw a0, 12(sp)
+	lw t0, 0(sp)
 
 	# ret b$1
-	mv a0, a0
-	addi sp, sp, 20
+	mv a0, t0
+	addi sp, sp, 8
 
 	# restore callee saved regs
-	lw s0, 0(sp)
-	lw s1, 4(sp)
-	lw s2, 8(sp)
-	addi sp, sp, 12
+	addi sp, sp, 0
 	ret 
 
 ifTrue_322:
 
 	# store b 
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 25
-	sw a1, 16(sp)
+	li t1, 25
+	sw t1, 0(sp)
 
-	# br next_561
-	j next_561
+	# br next_553
+	j next_553
 
 ifFalse_128:
 
 	# load a$3 a
-	lw a1, 20(sp)
+	lw t2, 4(sp)
 
 	# cmp a$3  cond_eq_tmp_$1
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 10
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a1, a0
-	seqz a2, a2
+	li t3, 10
+	xor t4, t2, t3
+	seqz t4, t4
 
-	# zext a0 a2
-	mv a0, a2
+	# zext t5 t4
+	mv t5, t4
 
 	# cmp cond_tmp_$2  cond_$2
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
+	li t6, 0
+	xor t0, t5, t6
 
 	# condBr cond_$2 ifTrue_323 ifFalse_129
-	beqz a2, ifFalse_129
+	beqz t0, ifFalse_129
 	j ifTrue_323
 
-next_561:
+next_553:
 
 	# load a$5 a
-	lw a1, 36(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t1, 4(sp)
+	li t2, 1
 
 	# add result_$1 a$5 
-	add a2, a1, a0
+	add t3, t1, t2
 
 	# store a result_$1
-	sw a2, 44(sp)
+	sw t3, 4(sp)
 
-	# br whileCond_238
-	j whileCond_238
+	# br whileCond_230
+	j whileCond_230
 
 ifTrue_323:
 
 	# store b 
-	li a0, 42
-	sw a0, 40(sp)
+	li t4, 42
+	sw t4, 0(sp)
 
-	# br next_562
-	j next_562
+	# br next_554
+	j next_554
 
 ifFalse_129:
 
 	# load a$4 a
-	lw a0, 44(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 2
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t5, 4(sp)
+	li t6, 2
 
 	# mul result_ a$4 
-	mul a2, a0, a1
+	mul t0, t5, t6
 
 	# store b result_
-	sw a2, 48(sp)
+	sw t0, 0(sp)
 
-	# br next_562
-	j next_562
+	# br next_554
+	j next_554
 
-next_562:
+next_554:
 
-	# br next_561
-	j next_561
+	# br next_553
+	j next_553
 .type main, @function
 .globl main
 main:
 
 
 mainEntry75:
-	addi sp, sp, -4
+
+	# allocate space for local variables
+	addi sp, sp, 0
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -203,13 +174,10 @@ mainEntry75:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call whileIf
 	call whileIf
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -219,13 +187,11 @@ mainEntry75:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
-	lw a0, 0(sp)
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	mv t1, a0
 
 	# ret whileIf
-	mv a0, a0
-	addi sp, sp, 4
+	mv a0, t1
+	addi sp, sp, 0
 	ret 

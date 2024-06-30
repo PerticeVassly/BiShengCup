@@ -11,104 +11,13 @@ main:
 
 mainEntry58:
 
-	# alloc a0
-	addi sp, sp, -4
-
-	# alloc a1
-	addi sp, sp, -4
-
-	# alloc a2
-	addi sp, sp, -4
-
-	# alloc a3
-	addi sp, sp, -4
-
-	# alloc a4
-	addi sp, sp, -4
-
-	# alloc a5
-	addi sp, sp, -4
-
-	# alloc a6
-	addi sp, sp, -4
-
-	# alloc a7
-	addi sp, sp, -4
-
-	# alloc a8
-	addi sp, sp, -4
-
-	# alloc a9
-	addi sp, sp, -4
-
-	# alloc a10
-	addi sp, sp, -4
-
-	# alloc a11
-	addi sp, sp, -4
-
-	# alloc a12
-	addi sp, sp, -4
-
-	# alloc a13
-	addi sp, sp, -4
-
-	# alloc a14
-	addi sp, sp, -4
-
-	# alloc a15
-	addi sp, sp, -4
-
-	# alloc a16
-	addi sp, sp, -4
-
-	# alloc a17
-	addi sp, sp, -4
-
-	# alloc a18
-	addi sp, sp, -4
-
-	# alloc a19
-	addi sp, sp, -4
-
-	# alloc a20
-	addi sp, sp, -4
-
-	# alloc a21
-	addi sp, sp, -4
-
-	# alloc a22
-	addi sp, sp, -4
-
-	# alloc a23
-	addi sp, sp, -4
-
-	# alloc a24
-	addi sp, sp, -4
-
-	# alloc a25
-	addi sp, sp, -4
-
-	# alloc a26
-	addi sp, sp, -4
-
-	# alloc a27
-	addi sp, sp, -4
-
-	# alloc a28
-	addi sp, sp, -4
-
-	# alloc a29
-	addi sp, sp, -4
-
-	# alloc b
-	addi sp, sp, -4
-	addi sp, sp, -4
+	# allocate space for local variables
+	addi sp, sp, -132
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -116,13 +25,10 @@ mainEntry58:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call getint
 	call getint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -132,481 +38,356 @@ mainEntry58:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	mv t0, a0
 
 	# store b getint
-	lw a0, 0(sp)
-	sw a0, 4(sp)
+	sw t0, 8(sp)
 
-	# br whileCond_206
-	j whileCond_206
+	# br whileCond_198
+	j whileCond_198
 
-whileCond_206:
+whileCond_198:
 
 	# load b$1 b
-	lw a1, 4(sp)
+	lw t1, 8(sp)
 
 	# cmp b$1  cond_eq_tmp_
-	li a2, 5
-	xor s0, a1, a2
-	seqz s0, s0
+	li t2, 5
+	xor t3, t1, t2
+	seqz t3, t3
 
-	# zext a2 s0
-	mv a2, s0
+	# zext t4 t3
+	mv t4, t3
 
 	# cmp cond_tmp_  cond_
-	li s1, 0
-	xor s2, a2, s1
+	li t5, 0
+	xor t6, t4, t5
 
-	# condBr cond_ whileBody_206 next_490
-	beqz s2, next_490
-	j whileBody_206
+	# condBr cond_ whileBody_198 next_482
+	beqz t6, next_482
+	j whileBody_198
 
-whileBody_206:
+whileBody_198:
 
 	# load b$2 b
-	lw s1, 4(sp)
-	sw a0, 0(a0)
-	li a0, 1
-	addi sp, sp, -4
-	sw a1, 0(sp)
+	lw t0, 8(sp)
+	li t1, 1
 
 	# add result_ b$2 
-	add a1, s1, a0
+	add t2, t0, t1
 
 	# store b result_
-	sw a1, 8(sp)
+	sw t2, 8(sp)
 
-	# br whileCond_206
-	j whileCond_206
+	# br whileCond_198
+	j whileCond_198
 
-next_490:
+next_482:
 
 	# store a0 
-	li a0, 0
-	sw a0, 128(sp)
+	li t3, 0
+	sw t3, 128(sp)
 
 	# load a0$1 a0
-	lw a0, 128(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t4, 128(sp)
+	li t5, 1
 
 	# add result_$1 a0$1 
-	add a2, a0, a1
+	add t6, t4, t5
 
 	# store a1 result_$1
-	sw a2, 132(sp)
+	sw t6, 124(sp)
 
 	# load a1$1 a1
-	lw a1, 132(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t0, 124(sp)
+	li t1, 1
 
 	# add result_$2 a1$1 
-	add a2, a1, a0
+	add t2, t0, t1
 
 	# store a2 result_$2
-	sw a2, 136(sp)
+	sw t2, 120(sp)
 
 	# load a2$1 a2
-	lw a0, 136(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t3, 120(sp)
+	li t4, 1
 
 	# add result_$3 a2$1 
-	add a2, a0, a1
+	add t5, t3, t4
 
 	# store a3 result_$3
-	sw a2, 140(sp)
+	sw t5, 116(sp)
 
 	# load a3$1 a3
-	lw a1, 140(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t6, 116(sp)
+	li t0, 1
 
 	# add result_$4 a3$1 
-	add a2, a1, a0
+	add t1, t6, t0
 
 	# store a4 result_$4
-	sw a2, 144(sp)
+	sw t1, 112(sp)
 
 	# load a4$1 a4
-	lw a0, 144(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t2, 112(sp)
+	li t3, 1
 
 	# add result_$5 a4$1 
-	add a2, a0, a1
+	add t4, t2, t3
 
 	# store a5 result_$5
-	sw a2, 148(sp)
+	sw t4, 108(sp)
 
 	# load a5$1 a5
-	lw a1, 148(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t5, 108(sp)
+	li t6, 1
 
 	# add result_$6 a5$1 
-	add a2, a1, a0
+	add t0, t5, t6
 
 	# store a6 result_$6
-	sw a2, 152(sp)
+	sw t0, 104(sp)
 
 	# load a6$1 a6
-	lw a0, 152(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t1, 104(sp)
+	li t2, 1
 
 	# add result_$7 a6$1 
-	add a2, a0, a1
+	add t3, t1, t2
 
 	# store a7 result_$7
-	sw a2, 156(sp)
+	sw t3, 100(sp)
 
 	# load a7$1 a7
-	lw a1, 156(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t4, 100(sp)
+	li t5, 1
 
 	# add result_$8 a7$1 
-	add a2, a1, a0
+	add t6, t4, t5
 
 	# store a8 result_$8
-	sw a2, 160(sp)
+	sw t6, 96(sp)
 
 	# load a8$1 a8
-	lw a0, 160(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t0, 96(sp)
+	li t1, 1
 
 	# add result_$9 a8$1 
-	add a2, a0, a1
+	add t2, t0, t1
 
 	# store a9 result_$9
-	sw a2, 164(sp)
+	sw t2, 92(sp)
 
 	# load a9$1 a9
-	lw a1, 164(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t3, 92(sp)
+	li t4, 1
 
 	# add result_$10 a9$1 
-	add a2, a1, a0
+	add t5, t3, t4
 
 	# store a10 result_$10
-	sw a2, 168(sp)
+	sw t5, 88(sp)
 
 	# load a10$1 a10
-	lw a0, 168(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t6, 88(sp)
+	li t0, 1
 
 	# add result_$11 a10$1 
-	add a2, a0, a1
+	add t1, t6, t0
 
 	# store a11 result_$11
-	sw a2, 172(sp)
+	sw t1, 84(sp)
 
 	# load a11$1 a11
-	lw a1, 172(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t2, 84(sp)
+	li t3, 1
 
 	# add result_$12 a11$1 
-	add a2, a1, a0
+	add t4, t2, t3
 
 	# store a12 result_$12
-	sw a2, 176(sp)
+	sw t4, 80(sp)
 
 	# load a12$1 a12
-	lw a0, 176(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t5, 80(sp)
+	li t6, 1
 
 	# add result_$13 a12$1 
-	add a2, a0, a1
+	add t0, t5, t6
 
 	# store a13 result_$13
-	sw a2, 180(sp)
+	sw t0, 76(sp)
 
 	# load a13$1 a13
-	lw a1, 180(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t1, 76(sp)
+	li t2, 1
 
 	# add result_$14 a13$1 
-	add a2, a1, a0
+	add t3, t1, t2
 
 	# store a14 result_$14
-	sw a2, 184(sp)
+	sw t3, 72(sp)
 
 	# load a14$1 a14
-	lw a0, 184(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t4, 72(sp)
+	li t5, 1
 
 	# add result_$15 a14$1 
-	add a2, a0, a1
+	add t6, t4, t5
 
 	# store a15 result_$15
-	sw a2, 188(sp)
+	sw t6, 68(sp)
 
 	# load a15$1 a15
-	lw a1, 188(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t0, 68(sp)
+	li t1, 1
 
 	# add result_$16 a15$1 
-	add a2, a1, a0
+	add t2, t0, t1
 
 	# store a16 result_$16
-	sw a2, 192(sp)
+	sw t2, 64(sp)
 
 	# load a16$1 a16
-	lw a0, 192(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t3, 64(sp)
+	li t4, 1
 
 	# add result_$17 a16$1 
-	add a2, a0, a1
+	add t5, t3, t4
 
 	# store a17 result_$17
-	sw a2, 196(sp)
+	sw t5, 60(sp)
 
 	# load a17$1 a17
-	lw a1, 196(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t6, 60(sp)
+	li t0, 1
 
 	# add result_$18 a17$1 
-	add a2, a1, a0
+	add t1, t6, t0
 
 	# store a18 result_$18
-	sw a2, 200(sp)
+	sw t1, 56(sp)
 
 	# load a18$1 a18
-	lw a0, 200(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t2, 56(sp)
+	li t3, 1
 
 	# add result_$19 a18$1 
-	add a2, a0, a1
+	add t4, t2, t3
 
 	# store a19 result_$19
-	sw a2, 204(sp)
+	sw t4, 52(sp)
 
 	# load a19$1 a19
-	lw a1, 204(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t5, 52(sp)
+	li t6, 1
 
 	# add result_$20 a19$1 
-	add a2, a1, a0
+	add t0, t5, t6
 
 	# store a20 result_$20
-	sw a2, 208(sp)
+	sw t0, 48(sp)
 
 	# load a20$1 a20
-	lw a0, 208(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t1, 48(sp)
+	li t2, 1
 
 	# add result_$21 a20$1 
-	add a2, a0, a1
+	add t3, t1, t2
 
 	# store a21 result_$21
-	sw a2, 212(sp)
+	sw t3, 44(sp)
 
 	# load a21$1 a21
-	lw a1, 212(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t4, 44(sp)
+	li t5, 1
 
 	# add result_$22 a21$1 
-	add a2, a1, a0
+	add t6, t4, t5
 
 	# store a22 result_$22
-	sw a2, 216(sp)
+	sw t6, 40(sp)
 
 	# load a22$1 a22
-	lw a0, 216(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t0, 40(sp)
+	li t1, 1
 
 	# add result_$23 a22$1 
-	add a2, a0, a1
+	add t2, t0, t1
 
 	# store a23 result_$23
-	sw a2, 220(sp)
+	sw t2, 36(sp)
 
 	# load a23$1 a23
-	lw a1, 220(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t3, 36(sp)
+	li t4, 1
 
 	# add result_$24 a23$1 
-	add a2, a1, a0
+	add t5, t3, t4
 
 	# store a24 result_$24
-	sw a2, 224(sp)
+	sw t5, 32(sp)
 
 	# load a24$1 a24
-	lw a0, 224(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t6, 32(sp)
+	li t0, 1
 
 	# add result_$25 a24$1 
-	add a2, a0, a1
+	add t1, t6, t0
 
 	# store a25 result_$25
-	sw a2, 228(sp)
+	sw t1, 28(sp)
 
 	# load a25$1 a25
-	lw a1, 228(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t2, 28(sp)
+	li t3, 1
 
 	# add result_$26 a25$1 
-	add a2, a1, a0
+	add t4, t2, t3
 
 	# store a26 result_$26
-	sw a2, 232(sp)
+	sw t4, 24(sp)
 
 	# load a26$1 a26
-	lw a0, 232(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t5, 24(sp)
+	li t6, 1
 
 	# add result_$27 a26$1 
-	add a2, a0, a1
+	add t0, t5, t6
 
 	# store a27 result_$27
-	sw a2, 236(sp)
+	sw t0, 20(sp)
 
 	# load a27$1 a27
-	lw a1, 236(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t1, 20(sp)
+	li t2, 1
 
 	# add result_$28 a27$1 
-	add a2, a1, a0
+	add t3, t1, t2
 
 	# store a28 result_$28
-	sw a2, 240(sp)
+	sw t3, 16(sp)
 
 	# load a28$1 a28
-	lw a0, 240(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t4, 16(sp)
+	li t5, 1
 
 	# add result_$29 a28$1 
-	add a2, a0, a1
+	add t6, t4, t5
 
 	# store a29 result_$29
-	sw a2, 244(sp)
-
-	# alloc t
-	addi sp, sp, -4
+	sw t6, 12(sp)
 
 	# load a0$2 a0
-	lw a1, 364(sp)
-	addi sp, sp, -4
+	lw t0, 128(sp)
 
 	# prepare params
-	mv a0, a1
+	mv a0, t0
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -614,13 +395,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -630,22 +408,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a1$2 a1
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t1, 124(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -653,13 +426,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -669,22 +439,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a2$2 a2
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t2, 120(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t2
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -692,13 +457,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -708,22 +470,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a3$2 a3
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t3, 116(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t3
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -731,13 +488,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -747,22 +501,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a4$2 a4
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t4, 112(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t4
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -770,13 +519,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -786,22 +532,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a5$2 a5
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t5, 108(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t5
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -809,13 +550,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -825,22 +563,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a6$2 a6
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t6, 104(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t6
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -848,13 +581,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -864,22 +594,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a7$2 a7
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t0, 100(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t0
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -887,13 +612,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -903,22 +625,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a8$2 a8
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t1, 96(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -926,13 +643,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -942,22 +656,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a9$2 a9
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t2, 92(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t2
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -965,13 +674,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -981,22 +687,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a10$2 a10
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t3, 88(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t3
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1004,13 +705,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1020,22 +718,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a11$2 a11
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t4, 84(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t4
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1043,13 +736,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1059,22 +749,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a12$2 a12
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t5, 80(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t5
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1082,13 +767,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1098,22 +780,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a13$2 a13
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t6, 76(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t6
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1121,13 +798,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1137,22 +811,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a14$2 a14
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t0, 72(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t0
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1160,13 +829,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1176,22 +842,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a15$2 a15
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t1, 68(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1199,13 +860,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1215,22 +873,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a16$2 a16
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t2, 64(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t2
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1238,13 +891,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1254,22 +904,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a17$2 a17
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t3, 60(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t3
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1277,13 +922,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1293,22 +935,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a18$2 a18
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t4, 56(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t4
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1316,13 +953,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1332,22 +966,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a19$2 a19
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t5, 52(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t5
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1355,13 +984,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1371,22 +997,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a20$2 a20
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t6, 48(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t6
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1394,13 +1015,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1410,22 +1028,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a21$2 a21
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t0, 44(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t0
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1433,13 +1046,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1449,22 +1059,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a22$2 a22
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t1, 40(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1472,13 +1077,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1488,22 +1090,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a23$2 a23
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t2, 36(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t2
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1511,13 +1108,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1527,22 +1121,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a24$2 a24
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t3, 32(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t3
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1550,13 +1139,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1566,22 +1152,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a25$2 a25
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t4, 28(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t4
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1589,13 +1170,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1605,22 +1183,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a26$2 a26
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t5, 24(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t5
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1628,13 +1201,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1644,22 +1214,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a27$2 a27
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t6, 20(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t6
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1667,13 +1232,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1683,22 +1245,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a28$2 a28
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t0, 16(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t0
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1706,13 +1263,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1722,22 +1276,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a29$1 a29
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 364(sp)
-	addi sp, sp, -4
+	lw t1, 12(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1745,13 +1294,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1761,29 +1307,21 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
-
-	# alloc newline
-	addi sp, sp, -4
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# store newline 
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 10
-	sw a0, 4(sp)
+	li t2, 10
+	sw t2, 0(sp)
 
 	# load newline$1 newline
-	lw a0, 4(sp)
-	addi sp, sp, -4
+	lw t3, 0(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t3
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1791,13 +1329,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putch
 	call putch
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1807,22 +1342,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load b$3 b
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 372(sp)
-	addi sp, sp, -4
+	lw t4, 8(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t4
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1830,13 +1360,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1846,22 +1373,17 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load newline$2 newline
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 12(sp)
-	addi sp, sp, -4
+	lw t5, 0(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t5
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -1869,13 +1391,10 @@ next_490:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putch
 	call putch
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -1885,17 +1404,13 @@ next_490:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# load a25$3 a25
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 400(sp)
+	lw t6, 28(sp)
 
 	# ret a25$3
-	mv a0, a0
-	addi sp, sp, 504
+	mv a0, t6
+	addi sp, sp, 132
 	ret 

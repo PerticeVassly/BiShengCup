@@ -7,123 +7,102 @@ main:
 
 mainEntry63:
 
-	# alloc i
-	addi sp, sp, -4
+	# allocate space for local variables
+	addi sp, sp, -8
 
 	# store i 
-	li a0, 0
-	sw a0, 0(sp)
-
-	# alloc sum
-	addi sp, sp, -4
+	li t0, 0
+	sw t0, 4(sp)
 
 	# store sum 
-	li a0, 0
-	sw a0, 0(sp)
+	li t1, 0
+	sw t1, 0(sp)
 
-	# br whileCond_213
-	j whileCond_213
+	# br whileCond_205
+	j whileCond_205
 
-whileCond_213:
+whileCond_205:
 
 	# load i$1 i
-	lw a0, 4(sp)
+	lw t2, 4(sp)
 
 	# cmp i$1  cond_lt_tmp_
-	li a1, 100
-	sltu a2, a0, a1
+	li t3, 100
+	sltu t4, t2, t3
 
-	# zext a1 a2
-	mv a1, a2
+	# zext t5 t4
+	mv t5, t4
 
 	# cmp cond_tmp_  cond_
-	li s0, 0
-	xor s1, a1, s0
+	li t6, 0
+	xor t0, t5, t6
 
-	# condBr cond_ whileBody_213 next_510
-	beqz s1, next_510
-	j whileBody_213
+	# condBr cond_ whileBody_205 next_502
+	beqz t0, next_502
+	j whileBody_205
 
-whileBody_213:
+whileBody_205:
 
 	# load i$2 i
-	lw s0, 4(sp)
+	lw t1, 4(sp)
 
 	# cmp i$2  cond_eq_tmp_
-	li s2, 50
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	xor a0, s0, s2
-	seqz a0, a0
+	li t2, 50
+	xor t3, t1, t2
+	seqz t3, t3
 
-	# zext s2 a0
-	mv s2, a0
+	# zext t4 t3
+	mv t4, t3
 
 	# cmp cond_tmp_$1  cond_$1
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 0
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	xor a1, s2, a0
+	li t5, 0
+	xor t6, t4, t5
 
-	# condBr cond_$1 ifTrue_297 next_511
-	beqz a1, next_511
+	# condBr cond_$1 ifTrue_297 next_503
+	beqz t6, next_503
 	j ifTrue_297
 
-next_510:
+next_502:
 
 	# load sum$2 sum
-	lw a0, 12(sp)
+	lw t0, 0(sp)
 
 	# ret sum$2
-	mv a0, a0
-	addi sp, sp, 20
+	mv a0, t0
+	addi sp, sp, 8
 	ret 
 
 ifTrue_297:
 
-	# br next_510
-	j next_510
+	# br next_502
+	j next_502
 
-	# br next_511
-	j next_511
+	# br next_503
+	j next_503
 
-next_511:
+next_503:
 
 	# load sum$1 sum
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	lw a1, 16(sp)
+	lw t1, 0(sp)
 
 	# load i$3 i
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 24(sp)
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t2, 4(sp)
 
 	# add result_ sum$1 i$3
-	add a2, a1, a0
+	add t3, t1, t2
 
 	# store sum result_
-	sw a2, 24(sp)
+	sw t3, 0(sp)
 
 	# load i$4 i
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 32(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t4, 4(sp)
+	li t5, 1
 
 	# add result_$1 i$4 
-	add a2, a0, a1
+	add t6, t4, t5
 
 	# store i result_$1
-	sw a2, 40(sp)
+	sw t6, 4(sp)
 
-	# br whileCond_213
-	j whileCond_213
+	# br whileCond_205
+	j whileCond_205

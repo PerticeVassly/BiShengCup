@@ -13,12 +13,15 @@ b:
 main:
 
 
-mainEntry28:
+mainEntry29:
+
+	# allocate space for local variables
+	addi sp, sp, 0
 
 	# load b b
-	lw a0, b
+	lw t0, b
 
 	# ret b
-	mv a0, a0
+	mv a0, t0
 	addi sp, sp, 0
 	ret 

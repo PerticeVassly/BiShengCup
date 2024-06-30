@@ -5,24 +5,23 @@
 main:
 
 
-mainEntry2:
+mainEntry6:
 
-	# alloc a
+	# allocate space for local variables
 	addi sp, sp, -4
 
 	# store a 
-	li a0, 1
-	sw a0, 0(sp)
+	li t0, 1
+	sw t0, 0(sp)
 
 	# load a$1 a
-	lw a0, 0(sp)
-	addi sp, sp, -4
+	lw t1, 0(sp)
 
 	# prepare params
-	mv a0, a0
+	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -30,13 +29,10 @@ mainEntry2:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -46,18 +42,15 @@ mainEntry2:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
-	addi sp, sp, -4
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# prepare params
-	li a1, 2
-	mv a0, a1
+	li t2, 2
+	mv a0, t2
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -65,13 +58,10 @@ mainEntry2:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -81,13 +71,11 @@ mainEntry2:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
-	li a1, 11
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	li t3, 11
 
 	# ret 
-	mv a0, a1
+	mv a0, t3
 	addi sp, sp, 4
 	ret 

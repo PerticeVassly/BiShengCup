@@ -26,12 +26,14 @@ main:
 
 
 mainEntry5:
+
+	# allocate space for local variables
 	addi sp, sp, -4
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -39,13 +41,10 @@ mainEntry5:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call getint
 	call getint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -55,20 +54,17 @@ mainEntry5:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	mv t0, a0
 
 	# store a getint
-	lw a0, 0(sp)
-	sw a0, a, a1
-	addi sp, sp, -4
+	sw t0, a, t3
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -76,13 +72,10 @@ mainEntry5:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call getint
 	call getint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -92,20 +85,17 @@ mainEntry5:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	mv t1, a0
 
 	# store b getint$1
-	lw a1, 0(sp)
-	sw a1, b, a2
-	addi sp, sp, -4
+	sw t1, b, t3
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -113,13 +103,10 @@ mainEntry5:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call getint
 	call getint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -129,20 +116,17 @@ mainEntry5:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	mv t2, a0
 
 	# store c getint$2
-	lw a2, 0(sp)
-	sw a2, c, s0
-	addi sp, sp, -4
+	sw t2, c, t3
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -150,13 +134,10 @@ mainEntry5:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call getint
 	call getint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -166,20 +147,17 @@ mainEntry5:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	mv t3, a0
 
 	# store d getint$3
-	lw s0, 0(sp)
-	sw s0, d, s1
-	addi sp, sp, -4
+	sw t3, d, t3
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -187,13 +165,10 @@ mainEntry5:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call getint
 	call getint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -203,106 +178,66 @@ mainEntry5:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	mv t4, a0
 
 	# store e getint$4
-	lw s1, 0(sp)
-	sw s1, e, s2
-
-	# alloc flag
-	addi sp, sp, -4
+	sw t4, e, t3
 
 	# store flag 
-	li s2, 0
-	sw s2, 0(sp)
+	li t5, 0
+	sw t5, 0(sp)
 
 	# load a a
-	lw s2, a
+	lw t6, a
 
 	# load b b
-	sw a0, 20(a0)
-	lw a0, b
+	lw t0, b
 
 	# load c c
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, c
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 4(sp)
-	sw a1, 24(a1)
-	lw a1, 0(sp)
-	sw a2, 20(a2)
+	lw t1, c
 
 	# mul result_ b c
-	mul a2, a0, a1
-	sw a0, 4(a0)
+	mul t2, t0, t1
 
 	# sub result_$1 a result_
-	sub a0, s2, a2
+	sub t3, t6, t2
 
 	# load d d
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, d
+	lw t4, d
 
 	# load a$1 a
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, a
+	lw t5, a
 
 	# load c$1 c
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, c
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 4(sp)
-	sw a1, 16(a1)
-	lw a1, 0(sp)
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t6, c
 
 	# div result_$2 a$1 c$1
-	div a2, a0, a1
-	sw a0, 8(a0)
-	lw a0, 12(sp)
-	sw a1, 4(a1)
+	div t0, t5, t6
 
 	# sub result_$3 d result_$2
-	sub a1, a0, a2
+	sub t1, t4, t0
 
 	# cmp result_$1 result_$3 cond_neq_tmp_
-	sw a0, 12(a0)
-	lw a0, 16(sp)
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
-	sw a0, 20(a0)
+	xor t2, t3, t1
 
-	# zext a0 a2
-	mv a0, a2
+	# zext t3 t2
+	mv t3, t2
 
 	# cmp cond_tmp_  cond_
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
+	li t4, 0
+	xor t5, t3, t4
 
 	# condBr cond_ ifTrue_10 secondCond_1
-	beqz a2, secondCond_1
+	beqz t5, secondCond_1
 	j ifTrue_10
 
 ifTrue_10:
 
 	# store flag 
-	li a1, 1
-	sw a1, 40(sp)
+	li t6, 1
+	sw t6, 0(sp)
 
 	# br next_17
 	j next_17
@@ -310,153 +245,91 @@ ifTrue_10:
 next_17:
 
 	# load flag$1 flag
-	lw a1, 40(sp)
+	lw t0, 0(sp)
 
 	# ret flag$1
-	mv a0, a1
-	addi sp, sp, 64
+	mv a0, t0
+	addi sp, sp, 4
 	ret 
 
 secondCond_:
 
 	# load a$3 a
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, a
+	lw t1, a
 
 	# load b$2 b
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, b
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 4(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	lw a1, 4(sp)
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t2, b
 
 	# add result_$7 a$3 b$2
-	add a2, a0, a1
+	add t3, t1, t2
 
 	# load c$3 c
-	sw a0, 12(a0)
-	lw a0, c
-	sw a1, 8(a1)
+	lw t4, c
 
 	# add result_$8 result_$7 c$3
-	add a1, a2, a0
+	add t5, t3, t4
 
 	# load d$2 d
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, d
+	lw t6, d
 
 	# load e$1 e
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, e
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 4(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	lw a1, 4(sp)
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t0, e
 
 	# add result_$9 d$2 e$1
-	add a2, a0, a1
+	add t1, t6, t0
 
 	# cmp result_$8 result_$9 cond_eq_tmp_$1
-	sw a0, 12(a0)
-	lw a0, 4(sp)
-	sw a1, 8(a1)
-	xor a1, a0, a2
-	seqz a1, a1
-	sw a0, 4(a0)
+	xor t2, t5, t1
+	seqz t2, t2
 
-	# zext a0 a1
-	mv a0, a1
+	# zext t3 t2
+	mv t3, t2
 
 	# cmp cond_tmp_$2  cond_$2
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
+	li t4, 0
+	xor t5, t3, t4
 
 	# condBr cond_$2 ifTrue_10 next_17
-	beqz a2, next_17
+	beqz t5, next_17
 	j ifTrue_10
 
 secondCond_1:
 
 	# load a$2 a
-	lw a1, a
+	lw t6, a
 
 	# load b$1 b
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, b
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t0, b
 
 	# mul result_$4 a$2 b$1
-	mul a2, a1, a0
+	mul t1, t6, t0
 
 	# load c$2 c
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, c
-	addi sp, sp, -4
-	sw a1, 0(sp)
+	lw t2, c
 
 	# div result_$5 result_$4 c$2
-	div a1, a2, a0
+	div t3, t1, t2
 
 	# load e e
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, e
+	lw t4, e
 
 	# load d$1 d
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, d
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 4(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	lw a1, 4(sp)
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t5, d
 
 	# add result_$6 e d$1
-	add a2, a0, a1
+	add t6, t4, t5
 
 	# cmp result_$5 result_$6 cond_eq_tmp_
-	sw a0, 12(a0)
-	lw a0, 4(sp)
-	sw a1, 8(a1)
-	xor a1, a0, a2
-	seqz a1, a1
-	sw a0, 4(a0)
+	xor t0, t3, t6
+	seqz t0, t0
 
-	# zext a0 a1
-	mv a0, a1
+	# zext t1 t0
+	mv t1, t0
 
 	# cmp cond_tmp_$1  cond_$1
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
+	li t2, 0
+	xor t3, t1, t2
 
 	# condBr cond_$1 ifTrue_10 secondCond_
-	beqz a2, secondCond_
+	beqz t3, secondCond_
 	j ifTrue_10

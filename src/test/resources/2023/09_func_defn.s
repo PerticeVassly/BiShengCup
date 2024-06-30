@@ -12,39 +12,36 @@ func:
 funcEntry:
 
 	# save callee saved regs
-	addi sp, sp, -12
-	sw s0, 0(sp)
-	sw s1, 4(sp)
-	sw s2, 8(sp)
+	addi sp, sp, 0
 
-	# alloc p
+	# assign params to registers
+	mv t0, a0
+
+	# allocate space for local variables
 	addi sp, sp, -4
 
 	# store p 0
-	sw a0, 0(sp)
+	sw t0, 0(sp)
 
 	# load p$1 p
-	lw a1, 0(sp)
-	li a2, 1
+	lw t1, 0(sp)
+	li t2, 1
 
 	# sub result_ p$1 
-	sub s0, a1, a2
+	sub t3, t1, t2
 
 	# store p result_
-	sw s0, 0(sp)
+	sw t3, 0(sp)
 
 	# load p$2 p
-	lw a2, 0(sp)
+	lw t4, 0(sp)
 
 	# ret p$2
-	mv a0, a2
+	mv a0, t4
 	addi sp, sp, 4
 
 	# restore callee saved regs
-	lw s0, 0(sp)
-	lw s1, 4(sp)
-	lw s2, 8(sp)
-	addi sp, sp, 12
+	addi sp, sp, 0
 	ret 
 .type main, @function
 .globl main
@@ -53,22 +50,21 @@ main:
 
 mainEntry21:
 
-	# alloc b
+	# allocate space for local variables
 	addi sp, sp, -4
 
 	# store a 
-	li a0, 10
-	sw a0, a, a1
+	li t5, 10
+	sw t5, a, t3
 
 	# load a a
-	lw a0, a
-	addi sp, sp, -4
+	lw t6, a
 
 	# prepare params
-	mv a0, a0
+	mv a0, t6
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -76,13 +72,10 @@ mainEntry21:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call func
 	call func
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -92,19 +85,17 @@ mainEntry21:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	mv t0, a0
 
 	# store b func
-	lw a1, 0(sp)
-	sw a1, 4(sp)
+	sw t0, 0(sp)
 
 	# load b$1 b
-	lw a2, 4(sp)
+	lw t1, 0(sp)
 
 	# ret b$1
-	mv a0, a2
-	addi sp, sp, 8
+	mv a0, t1
+	addi sp, sp, 4
 	ret 

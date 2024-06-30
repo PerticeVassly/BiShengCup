@@ -9,50 +9,48 @@ k:
 main:
 
 
-mainEntry31:
+mainEntry32:
+
+	# allocate space for local variables
+	addi sp, sp, -16
 
 	# store k 
-	li a0, 3389
-	sw a0, k, a1
+	li t0, 3389
+	sw t0, k, t3
 
 	# load k k
-	lw a0, k
+	lw t1, k
 
 	# cmp k  cond_lt_tmp_
-	li a1, 10000
-	sltu a2, a0, a1
+	li t2, 10000
+	sltu t3, t1, t2
 
-	# zext a1 a2
-	mv a1, a2
+	# zext t4 t3
+	mv t4, t3
 
 	# cmp cond_tmp_  cond_
-	li s0, 0
-	xor s1, a1, s0
+	li t5, 0
+	xor t6, t4, t5
 
 	# condBr cond_ ifTrue_55 next_127
-	beqz s1, next_127
+	beqz t6, next_127
 	j ifTrue_55
 
 ifTrue_55:
 
 	# load k$1 k
-	lw s0, k
-	li s2, 1
-	addi sp, sp, -4
-	sw a0, 0(sp)
+	lw t0, k
+	li t1, 1
 
 	# add result_ k$1 
-	add a0, s0, s2
+	add t2, t0, t1
 
 	# store k result_
-	sw a0, k, s2
-
-	# alloc k$2
-	addi sp, sp, -4
+	sw t2, k, t3
 
 	# store k$2 
-	li s2, 112
-	sw s2, 0(sp)
+	li t3, 112
+	sw t3, 12(sp)
 
 	# br whileCond_72
 	j whileCond_72
@@ -60,97 +58,74 @@ ifTrue_55:
 next_127:
 
 	# load k$9 k
-	lw s2, k
+	lw t4, k
 
 	# ret k$9
-	mv a0, s2
-	addi sp, sp, 8
+	mv a0, t4
+	addi sp, sp, 16
 	ret 
 
 whileCond_72:
 
 	# load k$3 k$2
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 4(sp)
+	lw t5, 12(sp)
 
 	# cmp k$3  cond_gt_tmp_
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 10
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	sub a2, a0, a1
-	sgtz a2, a2
+	li t6, 10
+	sub t0, t5, t6
+	sgtz t0, t0
 
-	# zext a1 a2
-	mv a1, a2
+	# zext t1 t0
+	mv t1, t0
 
 	# cmp cond_tmp_$1  cond_$1
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a1, a0
+	li t2, 0
+	xor t3, t1, t2
 
 	# condBr cond_$1 whileBody_72 next_128
-	beqz a2, next_128
+	beqz t3, next_128
 	j whileBody_72
 
 whileBody_72:
 
 	# load k$4 k$2
-	lw a0, 20(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 88
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t4, 12(sp)
+	li t5, 88
 
 	# sub result_$1 k$4 
-	sub a2, a0, a1
+	sub t6, t4, t5
 
 	# store k$2 result_$1
-	sw a2, 28(sp)
+	sw t6, 12(sp)
 
 	# load k$5 k$2
-	lw a1, 28(sp)
+	lw t0, 12(sp)
 
 	# cmp k$5  cond_lt_tmp_$1
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1000
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	sltu a2, a1, a0
+	li t1, 1000
+	sltu t2, t0, t1
 
-	# zext a0 a2
-	mv a0, a2
+	# zext t3 t2
+	mv t3, t2
 
 	# cmp cond_tmp_$2  cond_$2
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
+	li t4, 0
+	xor t5, t3, t4
 
 	# condBr cond_$2 ifTrue_56 next_129
-	beqz a2, next_129
+	beqz t5, next_129
 	j ifTrue_56
 
 next_128:
 
 	# load k$8 k$2
-	lw a1, 44(sp)
-	addi sp, sp, -4
+	lw t6, 12(sp)
 
 	# prepare params
-	mv a0, a1
+	mv a0, t6
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -158,13 +133,10 @@ next_128:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call putint
 	call putint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -174,94 +146,59 @@ next_128:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
 
 	# br next_127
 	j next_127
 
 ifTrue_56:
 
-	# alloc g
-	addi sp, sp, -4
-
 	# store g 
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 9
-	sw a0, 4(sp)
-
-	# alloc l
-	addi sp, sp, -4
+	li t0, 9
+	sw t0, 8(sp)
 
 	# store l 
-	li a0, 11
-	sw a0, 0(sp)
+	li t1, 11
+	sw t1, 4(sp)
 
 	# store g 
-	li a0, 10
-	sw a0, 8(sp)
+	li t2, 10
+	sw t2, 8(sp)
 
 	# load k$6 k$2
-	lw a0, 56(sp)
+	lw t3, 12(sp)
 
 	# load g$1 g
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 12(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 4(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	lw a1, 4(sp)
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t4, 8(sp)
 
 	# sub result_$2 k$6 g$1
-	sub a2, a0, a1
+	sub t5, t3, t4
 
 	# store k$2 result_$2
-	sw a2, 72(sp)
-
-	# alloc g$2
-	addi sp, sp, -4
+	sw t5, 12(sp)
 
 	# store g$2 
-	sw a0, 16(a0)
-	li a0, 11
-	sw a0, 0(sp)
+	li t6, 11
+	sw t6, 0(sp)
 
 	# load k$7 k$2
-	lw a0, 76(sp)
+	lw t0, 12(sp)
 
 	# load g$3 g$2
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 4(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 4(sp)
-	sw a1, 20(a1)
-	lw a1, 0(sp)
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t1, 0(sp)
 
 	# add result_$3 k$7 g$3
-	add a2, a0, a1
+	add t2, t0, t1
 
 	# load l$1 l
-	sw a0, 8(a0)
-	lw a0, 32(sp)
-	sw a1, 4(a1)
+	lw t3, 4(sp)
 
 	# add result_$4 result_$3 l$1
-	add a1, a2, a0
+	add t4, t2, t3
 
 	# store k$2 result_$4
-	sw a1, 88(sp)
+	sw t4, 12(sp)
 
 	# br next_129
 	j next_129

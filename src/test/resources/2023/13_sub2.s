@@ -11,23 +11,23 @@ main:
 
 mainEntry46:
 
-	# alloc b
+	# allocate space for local variables
 	addi sp, sp, -4
 
 	# store b 
-	li a0, 2
-	sw a0, 0(sp)
+	li t0, 2
+	sw t0, 0(sp)
 
 	# load b$1 b
-	lw a0, 0(sp)
+	lw t1, 0(sp)
 
 	# load a a
-	lw a1, a
+	lw t2, a
 
 	# sub result_ b$1 a
-	sub a2, a0, a1
+	sub t3, t1, t2
 
 	# ret result_
-	mv a0, a2
+	mv a0, t3
 	addi sp, sp, 4
 	ret 

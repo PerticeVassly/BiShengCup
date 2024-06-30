@@ -11,14 +11,17 @@ main:
 
 mainEntry70:
 
+	# allocate space for local variables
+	addi sp, sp, 0
+
 	# load a a
-	lw a0, a
-	li a1, 5
+	lw t0, a
+	li t1, 5
 
 	# div result_ a 
-	div a2, a0, a1
+	div t2, t0, t1
 
 	# ret result_
-	mv a0, a2
+	mv a0, t2
 	addi sp, sp, 0
 	ret 

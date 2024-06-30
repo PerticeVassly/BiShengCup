@@ -14,12 +14,14 @@ main:
 
 
 mainEntry55:
+
+	# allocate space for local variables
 	addi sp, sp, -4
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -27,13 +29,10 @@ mainEntry55:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call getint
 	call getint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -43,20 +42,17 @@ mainEntry55:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	mv t0, a0
 
 	# store a getint
-	lw a0, 0(sp)
-	sw a0, a, a1
-	addi sp, sp, -4
+	sw t0, a, t3
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -64,13 +60,10 @@ mainEntry55:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call getint
 	call getint
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -80,95 +73,78 @@ mainEntry55:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	mv t1, a0
 
 	# store b getint$1
-	lw a1, 0(sp)
-	sw a1, b, a2
-
-	# alloc c
-	addi sp, sp, -4
+	sw t1, b, t3
 
 	# load a a
-	lw a2, a
+	lw t2, a
 
 	# load b b
-	lw s0, b
+	lw t3, b
 
 	# cmp a b cond_eq_tmp_
-	xor s1, a2, s0
-	seqz s1, s1
+	xor t4, t2, t3
+	seqz t4, t4
 
-	# zext s2 s1
-	mv s2, s1
+	# zext t5 t4
+	mv t5, t4
 
 	# cmp cond_tmp_  cond_
-	sw a0, 8(a0)
-	li a0, 0
-	sw a1, 4(a1)
-	xor a1, s2, a0
+	li t6, 0
+	xor t0, t5, t6
 
 	# condBr cond_ secondCond_109 ifFalse_107
-	beqz a1, ifFalse_107
+	beqz t0, ifFalse_107
 	j secondCond_109
 
 ifTrue_282:
 
 	# store c 
-	li a0, 1
-	sw a0, 0(sp)
+	li t1, 1
+	sw t1, 0(sp)
 
-	# br next_485
-	j next_485
+	# br next_477
+	j next_477
 
 ifFalse_107:
 
 	# store c 
-	li a0, 0
-	sw a0, 0(sp)
+	li t2, 0
+	sw t2, 0(sp)
 
-	# br next_485
-	j next_485
+	# br next_477
+	j next_477
 
-next_485:
+next_477:
 
 	# load c$1 c
-	lw a0, 0(sp)
+	lw t3, 0(sp)
 
 	# ret c$1
-	mv a0, a0
-	addi sp, sp, 12
+	mv a0, t3
+	addi sp, sp, 4
 	ret 
 
 secondCond_109:
 
 	# load a$1 a
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	lw a1, a
+	lw t4, a
 
 	# cmp a$1  cond_neq_tmp_
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 3
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a1, a0
+	li t5, 3
+	xor t6, t4, t5
 
-	# zext a0 a2
-	mv a0, a2
+	# zext t0 t6
+	mv t0, t6
 
 	# cmp cond_tmp_$1  cond_$1
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
+	li t1, 0
+	xor t2, t0, t1
 
 	# condBr cond_$1 ifTrue_282 ifFalse_107
-	beqz a2, ifFalse_107
+	beqz t2, ifFalse_107
 	j ifTrue_282

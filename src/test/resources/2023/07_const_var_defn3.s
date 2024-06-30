@@ -7,24 +7,21 @@ main:
 
 mainEntry96:
 
-	# alloc a
-	addi sp, sp, -4
+	# allocate space for local variables
+	addi sp, sp, -8
 
 	# store a 
-	li a0, 10
-	sw a0, 0(sp)
-
-	# alloc b
-	addi sp, sp, -4
+	li t0, 10
+	sw t0, 4(sp)
 
 	# store b 
-	li a0, 5
-	sw a0, 0(sp)
+	li t1, 5
+	sw t1, 0(sp)
 
 	# load b$1 b
-	lw a0, 0(sp)
+	lw t2, 0(sp)
 
 	# ret b$1
-	mv a0, a0
+	mv a0, t2
 	addi sp, sp, 8
 	ret 

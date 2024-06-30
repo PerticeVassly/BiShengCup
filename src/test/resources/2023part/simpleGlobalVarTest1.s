@@ -17,37 +17,37 @@ c:
 main:
 
 
-mainEntry6:
+mainEntry1:
 
-	# load a a
-	lw a0, a
-
-	# load b b
-	lw a1, b
-
-	# add result_ a b
-	add a2, a0, a1
-
-	# store c result_
-	sw a2, c, s0
-
-	# alloc d
+	# allocate space for local variables
 	addi sp, sp, -4
 
+	# load a a
+	lw t0, a
+
+	# load b b
+	lw t1, b
+
+	# add result_ a b
+	add t2, t0, t1
+
+	# store c result_
+	sw t2, c, t3
+
 	# store d 
-	li s0, 1
-	sw s0, 0(sp)
+	li t3, 1
+	sw t3, 0(sp)
 
 	# load c c
-	lw s0, c
+	lw t4, c
 
 	# store d c
-	sw s0, 0(sp)
+	sw t4, 0(sp)
 
 	# load c$1 c
-	lw s1, c
+	lw t5, c
 
 	# ret c$1
-	mv a0, s1
+	mv a0, t5
 	addi sp, sp, 4
 	ret 

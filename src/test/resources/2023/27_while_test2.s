@@ -8,38 +8,28 @@ FourWhile:
 FourWhileEntry:
 
 	# save callee saved regs
-	addi sp, sp, -12
-	sw s0, 0(sp)
-	sw s1, 4(sp)
-	sw s2, 8(sp)
+	addi sp, sp, 0
 
-	# alloc a
-	addi sp, sp, -4
+	# assign params to registers
+
+	# allocate space for local variables
+	addi sp, sp, -16
 
 	# store a 
-	li a0, 5
-	sw a0, 0(sp)
-
-	# alloc b
-	addi sp, sp, -4
-
-	# alloc c
-	addi sp, sp, -4
+	li t0, 5
+	sw t0, 12(sp)
 
 	# store b 
-	li a0, 6
-	sw a0, 4(sp)
+	li t1, 6
+	sw t1, 8(sp)
 
 	# store c 
-	li a0, 7
-	sw a0, 0(sp)
-
-	# alloc d
-	addi sp, sp, -4
+	li t2, 7
+	sw t2, 4(sp)
 
 	# store d 
-	li a0, 10
-	sw a0, 0(sp)
+	li t3, 10
+	sw t3, 0(sp)
 
 	# br whileCond_10
 	j whileCond_10
@@ -47,36 +37,34 @@ FourWhileEntry:
 whileCond_10:
 
 	# load a$1 a
-	lw a0, 12(sp)
+	lw t4, 12(sp)
 
 	# cmp a$1  cond_lt_tmp_
-	li a1, 20
-	sltu a2, a0, a1
+	li t5, 20
+	sltu t6, t4, t5
 
-	# zext a1 a2
-	mv a1, a2
+	# zext t0 t6
+	mv t0, t6
 
 	# cmp cond_tmp_  cond_
-	li s0, 0
-	xor s1, a1, s0
+	li t1, 0
+	xor t2, t0, t1
 
 	# condBr cond_ whileBody_10 next_23
-	beqz s1, next_23
+	beqz t2, next_23
 	j whileBody_10
 
 whileBody_10:
 
 	# load a$2 a
-	lw s0, 12(sp)
-	li s2, 3
-	addi sp, sp, -4
-	sw a0, 0(sp)
+	lw t3, 12(sp)
+	li t4, 3
 
 	# add result_ a$2 
-	add a0, s0, s2
+	add t5, t3, t4
 
 	# store a result_
-	sw a0, 16(sp)
+	sw t5, 12(sp)
 
 	# br whileCond_11
 	j whileCond_11
@@ -84,102 +72,65 @@ whileBody_10:
 next_23:
 
 	# load a$3 a
-	lw s2, 16(sp)
+	lw t6, 12(sp)
 
 	# load b$4 b
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 16(sp)
+	lw t0, 8(sp)
 
 	# load d$4 d
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 12(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 4(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	lw a1, 4(sp)
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t1, 0(sp)
 
 	# add result_$7 b$4 d$4
-	add a2, a0, a1
-	sw a0, 12(a0)
+	add t2, t0, t1
 
 	# add result_$8 a$3 result_$7
-	add a0, s2, a2
+	add t3, t6, t2
 
 	# load c$4 c
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 32(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	lw a0, 4(sp)
-	sw a1, 16(a1)
-	lw a1, 0(sp)
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t4, 4(sp)
 
 	# add result_$9 result_$8 c$4
-	add a2, a0, a1
+	add t5, t3, t4
 
 	# ret result_$9
-	mv a0, a2
-	addi sp, sp, 52
+	mv a0, t5
+	addi sp, sp, 16
 
 	# restore callee saved regs
-	lw s0, 0(sp)
-	lw s1, 4(sp)
-	lw s2, 8(sp)
-	addi sp, sp, 12
+	addi sp, sp, 0
 	ret 
 
 whileCond_11:
 
 	# load b$1 b
-	sw a0, 8(a0)
-	lw a0, 44(sp)
+	lw t6, 8(sp)
 
 	# cmp b$1  cond_lt_tmp_$1
-	sw a1, 4(a1)
-	li a1, 10
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	sltu a2, a0, a1
+	li t0, 10
+	sltu t1, t6, t0
 
-	# zext a1 a2
-	mv a1, a2
+	# zext t2 t1
+	mv t2, t1
 
 	# cmp cond_tmp_$1  cond_$1
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a1, a0
+	li t3, 0
+	xor t4, t2, t3
 
 	# condBr cond_$1 whileBody_11 next_24
-	beqz a2, next_24
+	beqz t4, next_24
 	j whileBody_11
 
 whileBody_11:
 
 	# load b$2 b
-	lw a0, 56(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t5, 8(sp)
+	li t6, 1
 
 	# add result_$1 b$2 
-	add a2, a0, a1
+	add t0, t5, t6
 
 	# store b result_$1
-	sw a2, 64(sp)
+	sw t0, 8(sp)
 
 	# br whileCond_12
 	j whileCond_12
@@ -187,18 +138,14 @@ whileBody_11:
 next_24:
 
 	# load b$3 b
-	lw a1, 64(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 2
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t1, 8(sp)
+	li t2, 2
 
 	# sub result_$6 b$3 
-	sub a2, a1, a0
+	sub t3, t1, t2
 
 	# store b result_$6
-	sw a2, 72(sp)
+	sw t3, 8(sp)
 
 	# br whileCond_10
 	j whileCond_10
@@ -206,47 +153,35 @@ next_24:
 whileCond_12:
 
 	# load c$1 c
-	lw a0, 68(sp)
+	lw t4, 4(sp)
 
 	# cmp c$1  cond_eq_tmp_
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 7
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a0, a1
-	seqz a2, a2
+	li t5, 7
+	xor t6, t4, t5
+	seqz t6, t6
 
-	# zext a1 a2
-	mv a1, a2
+	# zext t0 t6
+	mv t0, t6
 
 	# cmp cond_tmp_$2  cond_$2
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a1, a0
+	li t1, 0
+	xor t2, t0, t1
 
 	# condBr cond_$2 whileBody_12 next_25
-	beqz a2, next_25
+	beqz t2, next_25
 	j whileBody_12
 
 whileBody_12:
 
 	# load c$2 c
-	lw a0, 84(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t3, 4(sp)
+	li t4, 1
 
 	# sub result_$2 c$2 
-	sub a2, a0, a1
+	sub t5, t3, t4
 
 	# store c result_$2
-	sw a2, 92(sp)
+	sw t5, 4(sp)
 
 	# br whileCond_13
 	j whileCond_13
@@ -254,18 +189,14 @@ whileBody_12:
 next_25:
 
 	# load c$3 c
-	lw a1, 92(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t6, 4(sp)
+	li t0, 1
 
 	# add result_$5 c$3 
-	add a2, a1, a0
+	add t1, t6, t0
 
 	# store c result_$5
-	sw a2, 100(sp)
+	sw t1, 4(sp)
 
 	# br whileCond_11
 	j whileCond_11
@@ -273,46 +204,34 @@ next_25:
 whileCond_13:
 
 	# load d$1 d
-	lw a0, 96(sp)
+	lw t2, 0(sp)
 
 	# cmp d$1  cond_lt_tmp_$2
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 20
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	sltu a2, a0, a1
+	li t3, 20
+	sltu t4, t2, t3
 
-	# zext a1 a2
-	mv a1, a2
+	# zext t5 t4
+	mv t5, t4
 
 	# cmp cond_tmp_$3  cond_$3
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 0
-	addi sp, sp, -4
-	sw a2, 0(sp)
-	xor a2, a1, a0
+	li t6, 0
+	xor t0, t5, t6
 
 	# condBr cond_$3 whileBody_13 next_26
-	beqz a2, next_26
+	beqz t0, next_26
 	j whileBody_13
 
 whileBody_13:
 
 	# load d$2 d
-	lw a0, 112(sp)
-	addi sp, sp, -4
-	sw a1, 0(sp)
-	li a1, 3
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t1, 0(sp)
+	li t2, 3
 
 	# add result_$3 d$2 
-	add a2, a0, a1
+	add t3, t1, t2
 
 	# store d result_$3
-	sw a2, 120(sp)
+	sw t3, 0(sp)
 
 	# br whileCond_13
 	j whileCond_13
@@ -320,18 +239,14 @@ whileBody_13:
 next_26:
 
 	# load d$3 d
-	lw a1, 120(sp)
-	addi sp, sp, -4
-	sw a0, 0(sp)
-	li a0, 1
-	addi sp, sp, -4
-	sw a2, 0(sp)
+	lw t4, 0(sp)
+	li t5, 1
 
 	# sub result_$4 d$3 
-	sub a2, a1, a0
+	sub t6, t4, t5
 
 	# store d result_$4
-	sw a2, 128(sp)
+	sw t6, 0(sp)
 
 	# br whileCond_12
 	j whileCond_12
@@ -341,12 +256,14 @@ main:
 
 
 mainEntry7:
-	addi sp, sp, -4
+
+	# allocate space for local variables
+	addi sp, sp, 0
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -40
+	addi sp, sp, -32
 	sw t0, 0(sp)
 	sw t1, 4(sp)
 	sw t2, 8(sp)
@@ -354,13 +271,10 @@ mainEntry7:
 	sw t4, 16(sp)
 	sw t5, 20(sp)
 	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
+	sw ra, 28(sp)
 
 	# call FourWhile
 	call FourWhile
-	sw a0, 40(sp)
 
 	# restore caller saved regs
 	lw t0, 0(sp)
@@ -370,13 +284,11 @@ mainEntry7:
 	lw t4, 16(sp)
 	lw t5, 20(sp)
 	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
-	lw a0, 0(sp)
+	lw ra, 28(sp)
+	addi sp, sp, 32
+	mv t0, a0
 
 	# ret FourWhile
-	mv a0, a0
-	addi sp, sp, 4
+	mv a0, t0
+	addi sp, sp, 0
 	ret 
