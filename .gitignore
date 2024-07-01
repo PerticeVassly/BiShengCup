@@ -4,7 +4,8 @@ target/
 !**/src/test/**/target/
 **/src/test/rescources/2023/*.ll
 **/src/test/rescources/2023/*.s
-
+**/src/test/rescources/2023part/*.ll
+**/src/test/rescources/2023part/*.s
 pom.xml
 /out
 /.idea
