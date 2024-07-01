@@ -41,7 +41,7 @@ public class ArrayType extends TypeRef {
 
     public int getTotSize() {
         if (!(elementType instanceof ArrayType)) {
-            return elementSize;
+            return elementSize*elementType.getWidth();
         } else {
             return ((ArrayType) elementType).getTotSize() * elementSize;
         }

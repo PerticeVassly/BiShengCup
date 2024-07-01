@@ -13,12 +13,18 @@ import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
+import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Stack;
 
 public class RiscBasicBlock implements InstructionVisitor {
 
@@ -185,6 +191,29 @@ public class RiscBasicBlock implements InstructionVisitor {
         riscInstructions.add(new RiscSw(new Register("t0"), addressToSave));
 
     }
+    @Override
+    public void visit(GEP gep) {
+        Pointer arrayPointer=gep.getArrayTypePtr();
+        assert gep.getNumberOfOperands()==3;
+        ValueRef op0=gep.getOperand(0);
+        ValueRef op1 = gep.getOperand(1);
+        ValueRef op2 = gep.getOperand(2);
+        ValueRef dest = gep.getLVal();
+        Operand destOperand = allocator.getOperandOfPtr(dest);
+        ValueRef secondSize=new ConstValue(new IntType(),((ArrayType)arrayPointer.getBase()).getTotSize()/((ArrayType)arrayPointer.getBase()).getElementSize());
+        ValueRef totalSize=new ConstValue(new IntType(),((ArrayType)arrayPointer.getBase()).getTotSize());
+        riscInstructions.add(new RiscComment("gep " + dest.getName() + " basePtr" + arrayPointer + " op1" + op1.getName()+ " op2" + op2.getName()));
+        //分别对应t1,t2,t3
+        allocator.prepareVariable(op0,totalSize,op1);
+        riscInstructions.add(new RiscMul(new Register("t0"), new Register("t2"), new Register("t3")));
+        riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t1"), new Register("t0")));
+        allocator.prepareVariable(op0,secondSize,op2);
+        riscInstructions.add(new RiscMul(new Register("t1"), new Register("t2"), new Register("t3")));
+        riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t1"), new Register("t0")));
+        riscInstructions.add(new RiscSw(new Register("t0"), destOperand));
+    }
+
+
 
     @Override
     public void visit(Br br){
