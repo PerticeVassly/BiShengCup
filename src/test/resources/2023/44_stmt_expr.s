@@ -14,13 +14,13 @@ main:
 mainEntry9:
 
 	# allocate space for local variables
-	addi sp, sp, -58
+	addi sp, sp, -64
 
 	# store i 
 
 	# fetch variables
 	li t1, 0
-	sw t1, 54(sp)
+	sw t1, 60(sp)
 
 	# store k 
 
@@ -33,42 +33,42 @@ mainEntry9:
 whileCond_15:
 
 	# load i$1 i
-	lw t0, 54(sp)
-	sw t0, 50(sp)
+	lw t0, 60(sp)
+	sw t0, 56(sp)
 
 	# load n n
 	lw t0, n
-	sw t0, 46(sp)
+	sw t0, 52(sp)
 
 	# sub result_ n 
 
 	# fetch variables
-	lw t1, 46(sp)
+	lw t1, 52(sp)
 	li t2, 1
 	sub t0, t1, t2
-	sw t0, 42(sp)
+	sw t0, 48(sp)
 
 	# cmp i$1 result_ cond_le_tmp_
 
 	# fetch variables
-	lw t1, 50(sp)
-	lw t2, 42(sp)
+	lw t1, 56(sp)
+	lw t2, 48(sp)
 	sub t0, t1, t2
 	sgtz t0, t0
 	seqz t0, t0
-	sw t0, 41(sp)
+	sw t0, 44(sp)
 
 	# fetch variables
-	lw t1, 41(sp)
+	lw t1, 44(sp)
 
 	# zext cond_tmp_ cond_le_tmp_
 	mv t0, t1
-	sw t0, 37(sp)
+	sw t0, 40(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 37(sp)
+	lw t1, 40(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
@@ -84,7 +84,7 @@ whileCond_15:
 whileBody_15:
 
 	# load i$2 i
-	lw t0, 54(sp)
+	lw t0, 60(sp)
 	sw t0, 32(sp)
 
 	# add result_$1 i$2 
@@ -99,7 +99,7 @@ whileBody_15:
 
 	# fetch variables
 	lw t1, 28(sp)
-	sw t1, 54(sp)
+	sw t1, 60(sp)
 
 	# load k k
 	lw t0, k
@@ -169,5 +169,5 @@ next_29:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 58
+	addi sp, sp, 64
 	ret 

@@ -8,58 +8,58 @@ func1:
 func1Entry:
 
 	# allocate space for local variables
-	addi sp, sp, -66
+	addi sp, sp, -72
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 62(sp)
-	sw a1, 58(sp)
-	sw a2, 54(sp)
+	sw a0, 68(sp)
+	sw a1, 64(sp)
+	sw a2, 60(sp)
 
 	# store x 0
 
 	# fetch variables
-	lw t1, 62(sp)
-	sw t1, 50(sp)
+	lw t1, 68(sp)
+	sw t1, 56(sp)
 
 	# store y 1
 
 	# fetch variables
-	lw t1, 58(sp)
-	sw t1, 46(sp)
+	lw t1, 64(sp)
+	sw t1, 52(sp)
 
 	# store z 2
 
 	# fetch variables
-	lw t1, 54(sp)
-	sw t1, 42(sp)
+	lw t1, 60(sp)
+	sw t1, 48(sp)
 
 	# load z$1 z
-	lw t0, 42(sp)
-	sw t0, 38(sp)
+	lw t0, 48(sp)
+	sw t0, 44(sp)
 
 	# cmp z$1  cond_eq_tmp_
 
 	# fetch variables
-	lw t1, 38(sp)
+	lw t1, 44(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
-	sw t0, 37(sp)
+	sw t0, 40(sp)
 
 	# fetch variables
-	lw t1, 37(sp)
+	lw t1, 40(sp)
 
 	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
-	sw t0, 33(sp)
+	sw t0, 36(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 33(sp)
+	lw t1, 36(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
@@ -75,11 +75,11 @@ func1Entry:
 ifTrue_283:
 
 	# load x$1 x
-	lw t0, 50(sp)
+	lw t0, 56(sp)
 	sw t0, 28(sp)
 
 	# load y$1 y
-	lw t0, 46(sp)
+	lw t0, 52(sp)
 	sw t0, 24(sp)
 
 	# mul result_ x$1 y$1
@@ -95,7 +95,7 @@ ifTrue_283:
 	# fetch variables
 	lw t1, 20(sp)
 	mv a0, t1
-	addi sp, sp, 66
+	addi sp, sp, 72
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -103,15 +103,15 @@ ifTrue_283:
 ifFalse_114:
 
 	# load x$2 x
-	lw t0, 50(sp)
+	lw t0, 56(sp)
 	sw t0, 16(sp)
 
 	# load y$2 y
-	lw t0, 46(sp)
+	lw t0, 52(sp)
 	sw t0, 12(sp)
 
 	# load z$2 z
-	lw t0, 42(sp)
+	lw t0, 48(sp)
 	sw t0, 8(sp)
 
 	# sub result_$1 y$2 z$2
@@ -153,7 +153,7 @@ ifFalse_114:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 66
+	addi sp, sp, 72
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -164,35 +164,35 @@ func2:
 func2Entry:
 
 	# allocate space for local variables
-	addi sp, sp, -41
+	addi sp, sp, -44
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 37(sp)
-	sw a1, 33(sp)
+	sw a0, 40(sp)
+	sw a1, 36(sp)
 
 	# store x 0
 
 	# fetch variables
-	lw t1, 37(sp)
-	sw t1, 29(sp)
+	lw t1, 40(sp)
+	sw t1, 32(sp)
 
 	# store y 1
 
 	# fetch variables
-	lw t1, 33(sp)
-	sw t1, 25(sp)
+	lw t1, 36(sp)
+	sw t1, 28(sp)
 
 	# load y$1 y
-	lw t0, 25(sp)
-	sw t0, 21(sp)
+	lw t0, 28(sp)
+	sw t0, 24(sp)
 
 	# cmp y$1  cond_normalize_
 
 	# fetch variables
-	lw t1, 21(sp)
+	lw t1, 24(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
@@ -208,11 +208,11 @@ func2Entry:
 ifTrue_284:
 
 	# load x$1 x
-	lw t0, 29(sp)
+	lw t0, 32(sp)
 	sw t0, 16(sp)
 
 	# load y$2 y
-	lw t0, 25(sp)
+	lw t0, 28(sp)
 	sw t0, 12(sp)
 
 	# mod result_ x$1 y$2
@@ -250,7 +250,7 @@ ifTrue_284:
 	# fetch variables
 	lw t1, 4(sp)
 	mv a0, t1
-	addi sp, sp, 41
+	addi sp, sp, 44
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -258,7 +258,7 @@ ifTrue_284:
 ifFalse_115:
 
 	# load x$2 x
-	lw t0, 29(sp)
+	lw t0, 32(sp)
 	sw t0, 0(sp)
 
 	# ret x$2
@@ -266,7 +266,7 @@ ifFalse_115:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 41
+	addi sp, sp, 44
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -277,51 +277,51 @@ func3:
 func3Entry:
 
 	# allocate space for local variables
-	addi sp, sp, -50
+	addi sp, sp, -56
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 46(sp)
-	sw a1, 42(sp)
+	sw a0, 52(sp)
+	sw a1, 48(sp)
 
 	# store x 0
 
 	# fetch variables
-	lw t1, 46(sp)
-	sw t1, 38(sp)
+	lw t1, 52(sp)
+	sw t1, 44(sp)
 
 	# store y 1
 
 	# fetch variables
-	lw t1, 42(sp)
-	sw t1, 34(sp)
+	lw t1, 48(sp)
+	sw t1, 40(sp)
 
 	# load y$1 y
-	lw t0, 34(sp)
-	sw t0, 30(sp)
+	lw t0, 40(sp)
+	sw t0, 36(sp)
 
 	# cmp y$1  cond_eq_tmp_
 
 	# fetch variables
-	lw t1, 30(sp)
+	lw t1, 36(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
-	sw t0, 29(sp)
+	sw t0, 32(sp)
 
 	# fetch variables
-	lw t1, 29(sp)
+	lw t1, 32(sp)
 
 	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
-	sw t0, 25(sp)
+	sw t0, 28(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 25(sp)
+	lw t1, 28(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
@@ -337,7 +337,7 @@ func3Entry:
 ifTrue_285:
 
 	# load x$1 x
-	lw t0, 38(sp)
+	lw t0, 44(sp)
 	sw t0, 20(sp)
 
 	# add result_ x$1 
@@ -353,7 +353,7 @@ ifTrue_285:
 	# fetch variables
 	lw t1, 16(sp)
 	mv a0, t1
-	addi sp, sp, 50
+	addi sp, sp, 56
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -361,11 +361,11 @@ ifTrue_285:
 ifFalse_116:
 
 	# load x$2 x
-	lw t0, 38(sp)
+	lw t0, 44(sp)
 	sw t0, 12(sp)
 
 	# load y$2 y
-	lw t0, 34(sp)
+	lw t0, 40(sp)
 	sw t0, 8(sp)
 
 	# add result_$1 x$2 y$2
@@ -403,7 +403,7 @@ ifFalse_116:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 50
+	addi sp, sp, 56
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -414,42 +414,42 @@ func4:
 func4Entry:
 
 	# allocate space for local variables
-	addi sp, sp, -37
+	addi sp, sp, -40
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 33(sp)
-	sw a1, 29(sp)
-	sw a2, 25(sp)
+	sw a0, 36(sp)
+	sw a1, 32(sp)
+	sw a2, 28(sp)
 
 	# store x 0
 
 	# fetch variables
-	lw t1, 33(sp)
-	sw t1, 21(sp)
+	lw t1, 36(sp)
+	sw t1, 24(sp)
 
 	# store y 1
 
 	# fetch variables
-	lw t1, 29(sp)
-	sw t1, 17(sp)
+	lw t1, 32(sp)
+	sw t1, 20(sp)
 
 	# store z 2
 
 	# fetch variables
-	lw t1, 25(sp)
-	sw t1, 13(sp)
+	lw t1, 28(sp)
+	sw t1, 16(sp)
 
 	# load x$1 x
-	lw t0, 21(sp)
-	sw t0, 9(sp)
+	lw t0, 24(sp)
+	sw t0, 12(sp)
 
 	# cmp x$1  cond_normalize_
 
 	# fetch variables
-	lw t1, 9(sp)
+	lw t1, 12(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
@@ -465,7 +465,7 @@ func4Entry:
 ifTrue_286:
 
 	# load y$1 y
-	lw t0, 17(sp)
+	lw t0, 20(sp)
 	sw t0, 4(sp)
 
 	# ret y$1
@@ -473,7 +473,7 @@ ifTrue_286:
 	# fetch variables
 	lw t1, 4(sp)
 	mv a0, t1
-	addi sp, sp, 37
+	addi sp, sp, 40
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -481,7 +481,7 @@ ifTrue_286:
 ifFalse_117:
 
 	# load z$1 z
-	lw t0, 13(sp)
+	lw t0, 16(sp)
 	sw t0, 0(sp)
 
 	# ret z$1
@@ -489,7 +489,7 @@ ifFalse_117:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 37
+	addi sp, sp, 40
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -542,45 +542,45 @@ func6:
 func6Entry:
 
 	# allocate space for local variables
-	addi sp, sp, -26
+	addi sp, sp, -32
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 22(sp)
-	sw a1, 18(sp)
+	sw a0, 28(sp)
+	sw a1, 24(sp)
 
 	# store x 0
 
 	# fetch variables
-	lw t1, 22(sp)
-	sw t1, 14(sp)
+	lw t1, 28(sp)
+	sw t1, 20(sp)
 
 	# store y 1
 
 	# fetch variables
-	lw t1, 18(sp)
-	sw t1, 10(sp)
+	lw t1, 24(sp)
+	sw t1, 16(sp)
 
 	# load x$1 x
-	lw t0, 14(sp)
-	sw t0, 6(sp)
+	lw t0, 20(sp)
+	sw t0, 12(sp)
 
 	# cmp x$1  cond_normalize_
 
 	# fetch variables
-	lw t1, 6(sp)
+	lw t1, 12(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sw t0, 5(sp)
+	sw t0, 8(sp)
 
 	# condBr cond_normalize_ secondCond_96 ifFalse_118
 
 	# fetch variables
-	lw t1, 5(sp)
+	lw t1, 8(sp)
 	beqz t1, ifFalse_118
 	j secondCond_96
 ifTrue_287:
@@ -590,7 +590,7 @@ ifTrue_287:
 	# fetch variables
 	li t1, 1
 	mv a0, t1
-	addi sp, sp, 26
+	addi sp, sp, 32
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -602,7 +602,7 @@ ifFalse_118:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 26
+	addi sp, sp, 32
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -610,13 +610,13 @@ ifFalse_118:
 secondCond_96:
 
 	# load y$1 y
-	lw t0, 10(sp)
-	sw t0, 1(sp)
+	lw t0, 16(sp)
+	sw t0, 4(sp)
 
 	# cmp y$1  cond_normalize_$1
 
 	# fetch variables
-	lw t1, 1(sp)
+	lw t1, 4(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
@@ -635,53 +635,53 @@ func7:
 func7Entry:
 
 	# allocate space for local variables
-	addi sp, sp, -19
+	addi sp, sp, -28
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 15(sp)
+	sw a0, 24(sp)
 
 	# store x 0
 
 	# fetch variables
-	lw t1, 15(sp)
-	sw t1, 11(sp)
+	lw t1, 24(sp)
+	sw t1, 20(sp)
 
 	# load x$1 x
-	lw t0, 11(sp)
-	sw t0, 7(sp)
+	lw t0, 20(sp)
+	sw t0, 16(sp)
 
 	# cmp  x$1 tmp_
 
 	# fetch variables
 	li t1, 0
-	lw t2, 7(sp)
+	lw t2, 16(sp)
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sw t0, 6(sp)
+	sw t0, 12(sp)
 
 	# fetch variables
-	lw t1, 6(sp)
+	lw t1, 12(sp)
 	li t2, 1
 
 	# xor t0 tmp_ 
 	xor t0, t1, t2
-	sw t0, 5(sp)
+	sw t0, 8(sp)
 
 	# fetch variables
-	lw t1, 5(sp)
+	lw t1, 8(sp)
 
 	# zext tmp_$2 tmp_$1
 	mv t0, t1
-	sw t0, 1(sp)
+	sw t0, 4(sp)
 
 	# cmp tmp_$2  cond_normalize_
 
 	# fetch variables
-	lw t1, 1(sp)
+	lw t1, 4(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
@@ -701,7 +701,7 @@ ifTrue_288:
 	# fetch variables
 	li t1, 1
 	mv a0, t1
-	addi sp, sp, 19
+	addi sp, sp, 28
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -713,7 +713,7 @@ ifFalse_119:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 19
+	addi sp, sp, 28
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -724,7 +724,7 @@ main:
 mainEntry70:
 
 	# allocate space for local variables
-	addi sp, sp, -410
+	addi sp, sp, -416
 
 	# prepare params
 
@@ -738,13 +738,13 @@ mainEntry70:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 402(sp)
+	sw a0, 408(sp)
 
 	# store i1 getint
 
 	# fetch variables
-	lw t1, 402(sp)
-	sw t1, 406(sp)
+	lw t1, 408(sp)
+	sw t1, 412(sp)
 
 	# prepare params
 
@@ -758,13 +758,13 @@ mainEntry70:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 394(sp)
+	sw a0, 400(sp)
 
 	# store i2 getint$1
 
 	# fetch variables
-	lw t1, 394(sp)
-	sw t1, 398(sp)
+	lw t1, 400(sp)
+	sw t1, 404(sp)
 
 	# prepare params
 
@@ -778,13 +778,13 @@ mainEntry70:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 386(sp)
+	sw a0, 392(sp)
 
 	# store i3 getint$2
 
 	# fetch variables
-	lw t1, 386(sp)
-	sw t1, 390(sp)
+	lw t1, 392(sp)
+	sw t1, 396(sp)
 
 	# prepare params
 
@@ -798,47 +798,47 @@ mainEntry70:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 378(sp)
+	sw a0, 384(sp)
 
 	# store i4 getint$3
 
 	# fetch variables
-	lw t1, 378(sp)
-	sw t1, 382(sp)
+	lw t1, 384(sp)
+	sw t1, 388(sp)
 
 	# store i 
 
 	# fetch variables
 	li t1, 0
-	sw t1, 370(sp)
+	sw t1, 376(sp)
 
 	# br whileCond_215
 	j whileCond_215
 whileCond_215:
 
 	# load i$1 i
-	lw t0, 370(sp)
-	sw t0, 366(sp)
+	lw t0, 376(sp)
+	sw t0, 372(sp)
 
 	# cmp i$1  cond_lt_tmp_
 
 	# fetch variables
-	lw t1, 366(sp)
+	lw t1, 372(sp)
 	li t2, 10
 	slt t0, t1, t2
-	sw t0, 365(sp)
+	sw t0, 368(sp)
 
 	# fetch variables
-	lw t1, 365(sp)
+	lw t1, 368(sp)
 
 	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
-	sw t0, 361(sp)
+	sw t0, 364(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 361(sp)
+	lw t1, 364(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
@@ -854,7 +854,7 @@ whileCond_215:
 whileBody_215:
 
 	# load i$2 i
-	lw t0, 370(sp)
+	lw t0, 376(sp)
 	sw t0, 356(sp)
 
 	# prepare params
@@ -878,7 +878,7 @@ whileBody_215:
 	sw t1, 352(sp)
 
 	# load i$3 i
-	lw t0, 370(sp)
+	lw t0, 376(sp)
 	sw t0, 344(sp)
 
 	# add result_ i$3 
@@ -893,14 +893,14 @@ whileBody_215:
 
 	# fetch variables
 	lw t1, 340(sp)
-	sw t1, 370(sp)
+	sw t1, 376(sp)
 
 	# br whileCond_215
 	j whileCond_215
 next_504:
 
 	# load i1$1 i1
-	lw t0, 406(sp)
+	lw t0, 412(sp)
 	sw t0, 332(sp)
 
 	# prepare params
@@ -922,7 +922,7 @@ next_504:
 	sw a0, 328(sp)
 
 	# load i2$1 i2
-	lw t0, 398(sp)
+	lw t0, 404(sp)
 	sw t0, 324(sp)
 
 	# prepare params
@@ -966,7 +966,7 @@ next_504:
 	sw a0, 316(sp)
 
 	# load i3$1 i3
-	lw t0, 390(sp)
+	lw t0, 396(sp)
 	sw t0, 312(sp)
 
 	# prepare params
@@ -992,7 +992,7 @@ next_504:
 	sw a0, 308(sp)
 
 	# load i4$1 i4
-	lw t0, 382(sp)
+	lw t0, 388(sp)
 	sw t0, 304(sp)
 
 	# prepare params
@@ -1284,7 +1284,7 @@ next_504:
 	sw a0, 176(sp)
 
 	# load i1$2 i1
-	lw t0, 406(sp)
+	lw t0, 412(sp)
 	sw t0, 172(sp)
 
 	# prepare params
@@ -1340,11 +1340,11 @@ next_504:
 	sw a0, 164(sp)
 
 	# load i2$2 i2
-	lw t0, 398(sp)
+	lw t0, 404(sp)
 	sw t0, 160(sp)
 
 	# load i3$2 i3
-	lw t0, 390(sp)
+	lw t0, 396(sp)
 	sw t0, 156(sp)
 
 	# prepare params
@@ -1366,7 +1366,7 @@ next_504:
 	sw a0, 152(sp)
 
 	# load i4$2 i4
-	lw t0, 382(sp)
+	lw t0, 388(sp)
 	sw t0, 148(sp)
 
 	# prepare params
@@ -1688,7 +1688,7 @@ next_504:
 	sw a0, 16(sp)
 
 	# load i1$3 i1
-	lw t0, 406(sp)
+	lw t0, 412(sp)
 	sw t0, 12(sp)
 
 	# prepare params
@@ -1754,5 +1754,5 @@ next_504:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 410
+	addi sp, sp, 416
 	ret 

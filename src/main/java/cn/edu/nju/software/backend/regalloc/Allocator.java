@@ -47,6 +47,8 @@ public class Allocator {
                 }
                 else if(value.getType() instanceof IntType){
                     currentBlock.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue((Integer)((ConstValue) value).getValue())));
+                } else  if(value.getType() instanceof BoolType){
+                    currentBlock.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue((Boolean)((ConstValue) value).getValue() ? 1 : 0)));
                 } else {
                     assert false;
                 }
@@ -85,7 +87,7 @@ public class Allocator {
     }
 
     public void allocate(String varName, int width){
-        memory.allocate(varName, width);
+        memory.allocate(varName, Math.max(width, 4));
     }
 
     public int getStackSize(){
