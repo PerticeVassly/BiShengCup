@@ -51,9 +51,9 @@ EightWhileEntry:
 	li t1, 10
 	sw t1, 260(sp)
 
-	# br whileCond_58
-	j whileCond_58
-whileCond_58:
+	# br whileCond_
+	j whileCond_
+whileCond_:
 
 	# load a$1 a
 	lw t0, 272(sp)
@@ -82,13 +82,13 @@ whileCond_58:
 	xor t0, t1, t2
 	sw t0, 250(sp)
 
-	# condBr cond_ whileBody_58 next_91
+	# condBr cond_ whileBody_ next_
 
 	# fetch variables
 	lw t1, 250(sp)
-	beqz t1, next_91
-	j whileBody_58
-whileBody_58:
+	beqz t1, next_
+	j whileBody_
+whileBody_:
 
 	# load a$2 a
 	lw t0, 272(sp)
@@ -108,9 +108,9 @@ whileBody_58:
 	lw t1, 242(sp)
 	sw t1, 272(sp)
 
-	# br whileCond_59
-	j whileCond_59
-next_91:
+	# br whileCond_1
+	j whileCond_1
+next_:
 
 	# load a$3 a
 	lw t0, 272(sp)
@@ -210,7 +210,7 @@ next_91:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_59:
+whileCond_1:
 
 	# load b$1 b
 	lw t0, 268(sp)
@@ -239,13 +239,13 @@ whileCond_59:
 	xor t0, t1, t2
 	sw t0, 172(sp)
 
-	# condBr cond_$1 whileBody_59 next_92
+	# condBr cond_$1 whileBody_1 next_1
 
 	# fetch variables
 	lw t1, 172(sp)
-	beqz t1, next_92
-	j whileBody_59
-whileBody_59:
+	beqz t1, next_1
+	j whileBody_1
+whileBody_1:
 
 	# load b$2 b
 	lw t0, 268(sp)
@@ -265,9 +265,9 @@ whileBody_59:
 	lw t1, 164(sp)
 	sw t1, 268(sp)
 
-	# br whileCond_60
-	j whileCond_60
-next_92:
+	# br whileCond_2
+	j whileCond_2
+next_1:
 
 	# load b$3 b
 	lw t0, 268(sp)
@@ -287,9 +287,9 @@ next_92:
 	lw t1, 156(sp)
 	sw t1, 268(sp)
 
-	# br whileCond_58
-	j whileCond_58
-whileCond_60:
+	# br whileCond_
+	j whileCond_
+whileCond_2:
 
 	# load c$1 c
 	lw t0, 264(sp)
@@ -319,13 +319,13 @@ whileCond_60:
 	xor t0, t1, t2
 	sw t0, 146(sp)
 
-	# condBr cond_$2 whileBody_60 next_93
+	# condBr cond_$2 whileBody_2 next_2
 
 	# fetch variables
 	lw t1, 146(sp)
-	beqz t1, next_93
-	j whileBody_60
-whileBody_60:
+	beqz t1, next_2
+	j whileBody_2
+whileBody_2:
 
 	# load c$2 c
 	lw t0, 264(sp)
@@ -345,9 +345,9 @@ whileBody_60:
 	lw t1, 138(sp)
 	sw t1, 264(sp)
 
-	# br whileCond_61
-	j whileCond_61
-next_93:
+	# br whileCond_3
+	j whileCond_3
+next_2:
 
 	# load c$3 c
 	lw t0, 264(sp)
@@ -367,9 +367,9 @@ next_93:
 	lw t1, 130(sp)
 	sw t1, 264(sp)
 
-	# br whileCond_59
-	j whileCond_59
-whileCond_61:
+	# br whileCond_1
+	j whileCond_1
+whileCond_3:
 
 	# load d$1 d
 	lw t0, 260(sp)
@@ -398,13 +398,13 @@ whileCond_61:
 	xor t0, t1, t2
 	sw t0, 120(sp)
 
-	# condBr cond_$3 whileBody_61 next_94
+	# condBr cond_$3 whileBody_3 next_3
 
 	# fetch variables
 	lw t1, 120(sp)
-	beqz t1, next_94
-	j whileBody_61
-whileBody_61:
+	beqz t1, next_3
+	j whileBody_3
+whileBody_3:
 
 	# load d$2 d
 	lw t0, 260(sp)
@@ -424,9 +424,9 @@ whileBody_61:
 	lw t1, 112(sp)
 	sw t1, 260(sp)
 
-	# br whileCond_62
-	j whileCond_62
-next_94:
+	# br whileCond_4
+	j whileCond_4
+next_3:
 
 	# load d$3 d
 	lw t0, 260(sp)
@@ -446,9 +446,9 @@ next_94:
 	lw t1, 104(sp)
 	sw t1, 260(sp)
 
-	# br whileCond_60
-	j whileCond_60
-whileCond_62:
+	# br whileCond_2
+	j whileCond_2
+whileCond_4:
 
 	# load e e
 	lw t0, e
@@ -478,13 +478,13 @@ whileCond_62:
 	xor t0, t1, t2
 	sw t0, 94(sp)
 
-	# condBr cond_$4 whileBody_62 next_95
+	# condBr cond_$4 whileBody_4 next_4
 
 	# fetch variables
 	lw t1, 94(sp)
-	beqz t1, next_95
-	j whileBody_62
-whileBody_62:
+	beqz t1, next_4
+	j whileBody_4
+whileBody_4:
 
 	# load e$1 e
 	lw t0, e
@@ -504,9 +504,9 @@ whileBody_62:
 	lw t1, 86(sp)
 	sw t1, e, t0
 
-	# br whileCond_63
-	j whileCond_63
-next_95:
+	# br whileCond_5
+	j whileCond_5
+next_4:
 
 	# load e$2 e
 	lw t0, e
@@ -526,9 +526,9 @@ next_95:
 	lw t1, 78(sp)
 	sw t1, e, t0
 
-	# br whileCond_61
-	j whileCond_61
-whileCond_63:
+	# br whileCond_3
+	j whileCond_3
+whileCond_5:
 
 	# load f f
 	lw t0, f
@@ -558,13 +558,13 @@ whileCond_63:
 	xor t0, t1, t2
 	sw t0, 68(sp)
 
-	# condBr cond_$5 whileBody_63 next_96
+	# condBr cond_$5 whileBody_5 next_5
 
 	# fetch variables
 	lw t1, 68(sp)
-	beqz t1, next_96
-	j whileBody_63
-whileBody_63:
+	beqz t1, next_5
+	j whileBody_5
+whileBody_5:
 
 	# load f$1 f
 	lw t0, f
@@ -584,9 +584,9 @@ whileBody_63:
 	lw t1, 60(sp)
 	sw t1, f, t0
 
-	# br whileCond_64
-	j whileCond_64
-next_96:
+	# br whileCond_6
+	j whileCond_6
+next_5:
 
 	# load f$2 f
 	lw t0, f
@@ -606,9 +606,9 @@ next_96:
 	lw t1, 52(sp)
 	sw t1, f, t0
 
-	# br whileCond_62
-	j whileCond_62
-whileCond_64:
+	# br whileCond_4
+	j whileCond_4
+whileCond_6:
 
 	# load g g
 	lw t0, g
@@ -637,13 +637,13 @@ whileCond_64:
 	xor t0, t1, t2
 	sw t0, 42(sp)
 
-	# condBr cond_$6 whileBody_64 next_97
+	# condBr cond_$6 whileBody_6 next_6
 
 	# fetch variables
 	lw t1, 42(sp)
-	beqz t1, next_97
-	j whileBody_64
-whileBody_64:
+	beqz t1, next_6
+	j whileBody_6
+whileBody_6:
 
 	# load g$1 g
 	lw t0, g
@@ -663,9 +663,9 @@ whileBody_64:
 	lw t1, 34(sp)
 	sw t1, g, t0
 
-	# br whileCond_65
-	j whileCond_65
-next_97:
+	# br whileCond_7
+	j whileCond_7
+next_6:
 
 	# load g$2 g
 	lw t0, g
@@ -685,9 +685,9 @@ next_97:
 	lw t1, 26(sp)
 	sw t1, g, t0
 
-	# br whileCond_63
-	j whileCond_63
-whileCond_65:
+	# br whileCond_5
+	j whileCond_5
+whileCond_7:
 
 	# load h h
 	lw t0, h
@@ -716,13 +716,13 @@ whileCond_65:
 	xor t0, t1, t2
 	sw t0, 16(sp)
 
-	# condBr cond_$7 whileBody_65 next_98
+	# condBr cond_$7 whileBody_7 next_7
 
 	# fetch variables
 	lw t1, 16(sp)
-	beqz t1, next_98
-	j whileBody_65
-whileBody_65:
+	beqz t1, next_7
+	j whileBody_7
+whileBody_7:
 
 	# load h$1 h
 	lw t0, h
@@ -742,9 +742,9 @@ whileBody_65:
 	lw t1, 8(sp)
 	sw t1, h, t0
 
-	# br whileCond_65
-	j whileCond_65
-next_98:
+	# br whileCond_7
+	j whileCond_7
+next_7:
 
 	# load h$2 h
 	lw t0, h
@@ -764,12 +764,12 @@ next_98:
 	lw t1, 0(sp)
 	sw t1, h, t0
 
-	# br whileCond_64
-	j whileCond_64
+	# br whileCond_6
+	j whileCond_6
 .type main, @function
 .globl main
 main:
-mainEntry35:
+mainEntry:
 
 	# store g 
 
