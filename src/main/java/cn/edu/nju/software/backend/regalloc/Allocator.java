@@ -2,6 +2,8 @@ package cn.edu.nju.software.backend.regalloc;
 
 import cn.edu.nju.software.backend.RiscBasicBlock;
 import cn.edu.nju.software.backend.riscinstruction.*;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlw;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvwx;
 import cn.edu.nju.software.backend.riscinstruction.operand.*;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscLi;
@@ -50,7 +52,7 @@ public class Allocator {
                 }
             } else {
                 if(value.getType() instanceof FloatType){
-                    currentBlock.addInstruction(new RiscLw(new Register("ft" + i), new IndirectRegister("sp", memory.getOffset(value.getName()))));
+                    currentBlock.addInstruction(new RiscFlw(new Register("ft" + i), new IndirectRegister("sp", memory.getOffset(value.getName()))));
                 }
                 else if(value.getType() instanceof IntType){
                     currentBlock.addInstruction(new RiscLw(new Register("t" + i), new IndirectRegister("sp", memory.getOffset(value.getName()))));
@@ -62,11 +64,6 @@ public class Allocator {
             }
             i++;
         }
-    }
-
-
-    public void reset(){
-        memory.reset();
     }
 
     public Operand getOperandOfPtr(ValueRef variable){

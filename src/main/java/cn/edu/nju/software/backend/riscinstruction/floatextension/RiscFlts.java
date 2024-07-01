@@ -1,5 +1,6 @@
-package cn.edu.nju.software.backend.riscinstruction;
+package cn.edu.nju.software.backend.riscinstruction.floatextension;
 
+import cn.edu.nju.software.backend.riscinstruction.DefaultInstruction;
 import cn.edu.nju.software.backend.riscinstruction.operand.Operand;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscOpcode;
 
