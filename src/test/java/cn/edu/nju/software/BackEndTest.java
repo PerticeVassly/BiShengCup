@@ -21,6 +21,9 @@ public class BackEndTest {
     private static final String DIR_PART = "src/test/resources/2023part/";
     private static final String SYLIB_RISC = "src/test/resources/libriscv.o";
 
+    private static final String EMULATOR = "spike";
+    private static final String EMU_ARGS = "../../Downloads/riscv-pk/build/pk";
+
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
@@ -38,7 +41,7 @@ public class BackEndTest {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if (name.contains("78") || name.contains("28")) {
+        if (name.contains("64") || name.contains("58") || name.contains("71")) {
             fail();
         }
         testFile(DIR, name);
@@ -65,15 +68,22 @@ public class BackEndTest {
 
         cmdExecutor.exec("riscv64-unknown-elf-gcc", output, "-g", "-o", dir + name, SYLIB_RISC);
         if (exist(dir, name + ".in")) {
-            cmdExecutor.execRedirectInput(standardIn, "qemu-riscv64", "./" + dir + name);
+            cmdExecutor.execRedirectInput(standardIn, EMULATOR, EMU_ARGS, "./" + dir + name);
         } else {
-            cmdExecutor.exec("qemu-riscv64", "./" + dir + name);
+            cmdExecutor.exec(EMULATOR, EMU_ARGS,"./" + dir + name);
         }
         int retValue = cmdExecutor.getExitCode();
-        String capturedOutput = cmdExecutor.getOutputInfo();
+        String capturedOutput = unwrap(cmdExecutor.getOutputInfo());
         capturedOutput = capturedOutput + retValue;
         String standardOutput = new String(Files.readAllBytes(Paths.get(standardOut)));
         assertEquals(standardOutput.trim(), capturedOutput.trim(), "Console output does not match the standard file.");
+    }
+
+    private String unwrap(String content) {
+        if (content.startsWith("TOTAL:")) {
+            return content.substring(content.indexOf('\n') + 1);
+        }
+        return content;
     }
 
     private boolean exist(String dirPath, String fileName) {
