@@ -7,10 +7,10 @@
 defn:
 defnEntry:
 
-	# save callee saved regs
+	# allocate space for local variables
 	addi sp, sp, 0
 
-	# allocate space for local variables
+	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
@@ -29,6 +29,9 @@ defnEntry:
 .globl main
 main:
 mainEntry78:
+
+	# allocate space for local variables
+	addi sp, sp, -12
 
 	# prepare params
 

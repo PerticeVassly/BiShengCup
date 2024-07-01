@@ -7,11 +7,11 @@
 fib:
 fibEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -56
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 52(sp)
@@ -199,7 +199,10 @@ next_5:
 .type main, @function
 .globl main
 main:
-mainEntry4:
+mainEntry5:
+
+	# allocate space for local variables
+	addi sp, sp, -8
 
 	# prepare params
 

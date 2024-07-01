@@ -5,7 +5,10 @@
 .type main, @function
 .globl main
 main:
-mainEntry6:
+mainEntry7:
+
+	# allocate space for local variables
+	addi sp, sp, -40
 
 	# store a 
 

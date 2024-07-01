@@ -34,7 +34,7 @@ public class ImmediateValue implements Operand {
     public String toString() {
         if(isFloat) {
             int bits = Float.floatToIntBits(fvalue);
-            return Integer.toBinaryString(bits);
+            return "0x"+Integer.toHexString(bits);
         }
         else {
             return String.valueOf(value);
