@@ -7,11 +7,11 @@
 func1:
 func1Entry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -66
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 62(sp)
@@ -62,6 +62,8 @@ func1Entry:
 	lw t1, 33(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 32(sp)
 
 	# condBr cond_ ifTrue_283 ifFalse_114
@@ -161,11 +163,11 @@ ifFalse_114:
 func2:
 func2Entry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -41
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 37(sp)
@@ -193,6 +195,8 @@ func2Entry:
 	lw t1, 21(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 20(sp)
 
 	# condBr cond_normalize_ ifTrue_284 ifFalse_115
@@ -272,11 +276,11 @@ ifFalse_115:
 func3:
 func3Entry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -50
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 46(sp)
@@ -320,6 +324,8 @@ func3Entry:
 	lw t1, 25(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 24(sp)
 
 	# condBr cond_ ifTrue_285 ifFalse_116
@@ -407,11 +413,11 @@ ifFalse_116:
 func4:
 func4Entry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -37
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 33(sp)
@@ -446,6 +452,8 @@ func4Entry:
 	lw t1, 9(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 8(sp)
 
 	# condBr cond_normalize_ ifTrue_286 ifFalse_117
@@ -491,11 +499,11 @@ ifFalse_117:
 func5:
 func5Entry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -16
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 12(sp)
@@ -533,11 +541,11 @@ func5Entry:
 func6:
 func6Entry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -26
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 22(sp)
@@ -565,6 +573,8 @@ func6Entry:
 	lw t1, 6(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 5(sp)
 
 	# condBr cond_normalize_ secondCond_96 ifFalse_118
@@ -609,6 +619,8 @@ secondCond_96:
 	lw t1, 1(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 0(sp)
 
 	# condBr cond_normalize_$1 ifTrue_287 ifFalse_118
@@ -622,11 +634,11 @@ secondCond_96:
 func7:
 func7Entry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -19
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 15(sp)
@@ -647,6 +659,8 @@ func7Entry:
 	li t1, 0
 	lw t2, 7(sp)
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 6(sp)
 
 	# fetch variables
@@ -670,6 +684,8 @@ func7Entry:
 	lw t1, 1(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 0(sp)
 
 	# condBr cond_normalize_ ifTrue_288 ifFalse_119
@@ -706,6 +722,9 @@ ifFalse_119:
 .globl main
 main:
 mainEntry70:
+
+	# allocate space for local variables
+	addi sp, sp, -410
 
 	# prepare params
 
@@ -822,6 +841,8 @@ whileCond_215:
 	lw t1, 361(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 360(sp)
 
 	# condBr cond_ whileBody_215 next_504

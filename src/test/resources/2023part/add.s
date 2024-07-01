@@ -7,11 +7,11 @@
 add:
 addEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -28
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 24(sp)
@@ -59,6 +59,9 @@ addEntry:
 .globl main
 main:
 mainEntry8:
+
+	# allocate space for local variables
+	addi sp, sp, -16
 
 	# store a 
 

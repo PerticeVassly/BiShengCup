@@ -7,11 +7,11 @@
 ifWhile:
 ifWhileEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -74
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 
@@ -53,6 +53,8 @@ ifWhileEntry:
 	lw t1, 57(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 56(sp)
 
 	# condBr cond_ ifTrue_300 ifFalse_129
@@ -113,6 +115,8 @@ whileCond_233:
 	lw t1, 43(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 42(sp)
 
 	# condBr cond_$1 whileBody_233 next_534
@@ -192,6 +196,8 @@ whileCond_234:
 	lw t1, 17(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 16(sp)
 
 	# condBr cond_$2 whileBody_234 next_535
@@ -248,6 +254,9 @@ next_535:
 .globl main
 main:
 mainEntry77:
+
+	# allocate space for local variables
+	addi sp, sp, -4
 
 	# prepare params
 

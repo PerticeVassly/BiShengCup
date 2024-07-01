@@ -34,11 +34,11 @@ w:
 Dijkstra:
 DijkstraEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -348
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 
@@ -83,6 +83,8 @@ whileCond_66:
 	lw t1, 327(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 326(sp)
 
 	# condBr cond_ whileBody_66 next_105
@@ -198,6 +200,8 @@ whileCond_67:
 	lw t1, 265(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 264(sp)
 
 	# condBr cond_$1 whileBody_67 next_106
@@ -273,6 +277,8 @@ whileCond_68:
 	lw t1, 235(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 234(sp)
 
 	# condBr cond_$2 whileBody_68 next_107
@@ -317,6 +323,8 @@ whileBody_68:
 	lw t1, 213(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 212(sp)
 
 	# condBr cond_$3 secondCond_18 next_108
@@ -427,6 +435,8 @@ secondCond_18:
 	lw t1, 159(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 158(sp)
 
 	# condBr cond_$4 ifTrue_39 next_108
@@ -468,6 +478,8 @@ whileCond_69:
 	lw t1, 145(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 144(sp)
 
 	# condBr cond_$5 whileBody_69 next_109
@@ -515,6 +527,8 @@ whileBody_69:
 	lw t1, 115(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 114(sp)
 
 	# condBr cond_$6 ifTrue_40 next_110
@@ -605,6 +619,8 @@ ifTrue_40:
 	lw t1, 53(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 52(sp)
 
 	# condBr cond_$7 ifTrue_41 next_111
@@ -685,6 +701,9 @@ next_111:
 .globl main
 main:
 mainEntry38:
+
+	# allocate space for local variables
+	addi sp, sp, -202
 
 	# prepare params
 
@@ -767,6 +786,8 @@ whileCond_70:
 	lw t1, 177(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 176(sp)
 
 	# condBr cond_ whileBody_70 next_112
@@ -828,6 +849,8 @@ whileCond_71:
 	lw t1, 159(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 158(sp)
 
 	# condBr cond_$1 whileBody_71 next_113
@@ -868,6 +891,8 @@ whileBody_71:
 	lw t1, 145(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 144(sp)
 
 	# condBr cond_$2 ifTrue_42 ifFalse_15
@@ -993,6 +1018,8 @@ whileCond_72:
 	lw t1, 79(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 78(sp)
 
 	# condBr cond_$3 whileBody_72 next_115
@@ -1147,6 +1174,8 @@ whileCond_73:
 	lw t1, 21(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 20(sp)
 
 	# condBr cond_$4 whileBody_73 next_116

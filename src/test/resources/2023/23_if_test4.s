@@ -7,11 +7,11 @@
 if_ifElse_:
 if_ifElse_Entry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -40
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 
@@ -53,6 +53,8 @@ if_ifElse_Entry:
 	lw t1, 23(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 22(sp)
 
 	# condBr cond_ ifTrue_301 next_537
@@ -89,6 +91,8 @@ ifTrue_301:
 	lw t1, 13(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 12(sp)
 
 	# condBr cond_$1 ifTrue_302 ifFalse_130
@@ -153,6 +157,9 @@ next_538:
 .globl main
 main:
 mainEntry81:
+
+	# allocate space for local variables
+	addi sp, sp, -4
 
 	# prepare params
 

@@ -10,11 +10,11 @@ N:
 long_array:
 long_arrayEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -536
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 532(sp)
@@ -64,6 +64,8 @@ whileCond_217:
 	lw t1, 499(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 498(sp)
 
 	# condBr cond_ whileBody_217 next_509
@@ -169,6 +171,8 @@ whileCond_218:
 	lw t1, 453(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 452(sp)
 
 	# condBr cond_$1 whileBody_218 next_510
@@ -282,6 +286,8 @@ whileCond_219:
 	lw t1, 391(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 390(sp)
 
 	# condBr cond_$2 whileBody_219 next_511
@@ -417,6 +423,8 @@ whileCond_220:
 	lw t1, 309(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 308(sp)
 
 	# condBr cond_$3 whileBody_220 next_512
@@ -452,6 +460,8 @@ whileBody_220:
 	lw t1, 299(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 298(sp)
 
 	# condBr cond_$4 ifTrue_292 ifFalse_122
@@ -562,6 +572,8 @@ ifFalse_122:
 	lw t1, 257(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 256(sp)
 
 	# condBr cond_$5 ifTrue_293 ifFalse_123
@@ -641,6 +653,8 @@ ifFalse_123:
 	lw t1, 227(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 226(sp)
 
 	# condBr cond_$7 ifTrue_294 ifFalse_124
@@ -684,6 +698,8 @@ whileCond_221:
 	lw t1, 213(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 212(sp)
 
 	# condBr cond_$6 whileBody_221 next_515
@@ -888,6 +904,8 @@ whileCond_222:
 	lw t1, 107(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 106(sp)
 
 	# condBr cond_$8 whileBody_222 next_517
@@ -924,6 +942,8 @@ whileBody_222:
 	lw t1, 97(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 96(sp)
 
 	# condBr cond_$9 ifTrue_295 ifFalse_125
@@ -1101,6 +1121,9 @@ next_518:
 .globl main
 main:
 mainEntry72:
+
+	# allocate space for local variables
+	addi sp, sp, -4
 
 	# prepare params
 

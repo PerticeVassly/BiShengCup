@@ -7,6 +7,9 @@
 main:
 mainEntry61:
 
+	# allocate space for local variables
+	addi sp, sp, -52
+
 	# store i 
 
 	# fetch variables
@@ -48,6 +51,8 @@ whileCond_198:
 	lw t1, 35(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 34(sp)
 
 	# condBr cond_ whileBody_198 next_469
@@ -84,6 +89,8 @@ whileBody_198:
 	lw t1, 25(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 24(sp)
 
 	# condBr cond_$1 ifTrue_271 next_470

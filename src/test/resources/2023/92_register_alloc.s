@@ -103,11 +103,11 @@ a32:
 func:
 funcEntry2:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -1844
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 1840(sp)
@@ -3131,6 +3131,9 @@ funcEntry2:
 .globl main
 main:
 mainEntry28:
+
+	# allocate space for local variables
+	addi sp, sp, -40
 
 	# prepare params
 

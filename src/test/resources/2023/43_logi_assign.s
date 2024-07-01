@@ -13,6 +13,9 @@ b:
 main:
 mainEntry53:
 
+	# allocate space for local variables
+	addi sp, sp, -40
+
 	# prepare params
 
 	# save caller saved regs
@@ -83,6 +86,8 @@ mainEntry53:
 	lw t1, 15(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 14(sp)
 
 	# condBr cond_ secondCond_83 ifFalse_105
@@ -136,6 +141,8 @@ secondCond_83:
 	lw t1, 6(sp)
 	li t2, 3
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 5(sp)
 
 	# fetch variables
@@ -151,6 +158,8 @@ secondCond_83:
 	lw t1, 1(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 0(sp)
 
 	# condBr cond_$1 ifTrue_256 ifFalse_105

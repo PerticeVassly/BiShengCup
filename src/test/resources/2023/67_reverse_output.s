@@ -7,11 +7,11 @@
 reverse:
 reverseEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -46
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 42(sp)
@@ -49,6 +49,8 @@ reverseEntry:
 	lw t1, 25(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 24(sp)
 
 	# condBr cond_ ifTrue_257 ifFalse_106
@@ -188,6 +190,9 @@ next_445:
 .globl main
 main:
 mainEntry54:
+
+	# allocate space for local variables
+	addi sp, sp, -8
 
 	# store i 
 

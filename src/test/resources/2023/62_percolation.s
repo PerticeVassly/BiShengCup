@@ -13,11 +13,11 @@ n:
 init:
 initEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -54
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 50(sp)
@@ -89,6 +89,8 @@ whileCond_164:
 	lw t1, 17(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 16(sp)
 
 	# condBr cond_ whileBody_164 next_376
@@ -142,11 +144,11 @@ next_376:
 findfa:
 findfaEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -70
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 66(sp)
@@ -191,6 +193,8 @@ findfaEntry:
 	lw t1, 41(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 40(sp)
 
 	# condBr cond_ ifTrue_212 ifFalse_96
@@ -276,11 +280,11 @@ ifFalse_96:
 mmerge:
 mmergeEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -66
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 62(sp)
@@ -368,6 +372,8 @@ mmergeEntry:
 	lw t1, 22(sp)
 	lw t2, 18(sp)
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 17(sp)
 
 	# fetch variables
@@ -383,6 +389,8 @@ mmergeEntry:
 	lw t1, 13(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 12(sp)
 
 	# condBr cond_ ifTrue_213 next_378
@@ -422,6 +430,9 @@ next_378:
 main:
 mainEntry40:
 
+	# allocate space for local variables
+	addi sp, sp, -471
+
 	# store t 
 
 	# fetch variables
@@ -442,6 +453,8 @@ whileCond_165:
 	lw t1, 451(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 450(sp)
 
 	# condBr cond_normalize_ whileBody_165 next_379
@@ -587,6 +600,8 @@ whileCond_166:
 	lw t1, 397(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 396(sp)
 
 	# condBr cond_ whileBody_166 next_380
@@ -647,6 +662,8 @@ whileBody_166:
 	li t1, 0
 	lw t2, 384(sp)
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 383(sp)
 
 	# fetch variables
@@ -670,6 +687,8 @@ whileBody_166:
 	lw t1, 378(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 377(sp)
 
 	# condBr cond_normalize_$1 ifTrue_214 next_381
@@ -690,6 +709,8 @@ next_380:
 	li t1, 0
 	lw t2, 373(sp)
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 372(sp)
 
 	# fetch variables
@@ -713,6 +734,8 @@ next_380:
 	lw t1, 367(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 366(sp)
 
 	# condBr cond_normalize_$2 ifTrue_222 next_389
@@ -805,6 +828,8 @@ ifTrue_214:
 	lw t1, 317(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 316(sp)
 
 	# condBr cond_$1 ifTrue_215 next_382
@@ -902,6 +927,8 @@ next_382:
 	lw t1, 287(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 286(sp)
 
 	# condBr cond_$2 ifTrue_216 next_383
@@ -988,6 +1015,8 @@ next_383:
 	lw t1, 253(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 252(sp)
 
 	# condBr cond_$3 secondCond_63 next_384
@@ -1065,6 +1094,8 @@ next_384:
 	lw t1, 231(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 230(sp)
 
 	# condBr cond_$5 secondCond_64 next_385
@@ -1097,6 +1128,8 @@ secondCond_63:
 	lw t1, 214(sp)
 	li t2, -1
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 213(sp)
 
 	# fetch variables
@@ -1112,6 +1145,8 @@ secondCond_63:
 	lw t1, 209(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 208(sp)
 
 	# condBr cond_$4 ifTrue_217 next_384
@@ -1192,6 +1227,8 @@ next_385:
 	lw t1, 183(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 182(sp)
 
 	# condBr cond_$7 secondCond_65 next_386
@@ -1224,6 +1261,8 @@ secondCond_64:
 	lw t1, 166(sp)
 	li t2, -1
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 165(sp)
 
 	# fetch variables
@@ -1239,6 +1278,8 @@ secondCond_64:
 	lw t1, 161(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 160(sp)
 
 	# condBr cond_$6 ifTrue_218 next_385
@@ -1320,6 +1361,8 @@ next_386:
 	lw t1, 135(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 134(sp)
 
 	# condBr cond_$9 secondCond_66 next_387
@@ -1356,6 +1399,8 @@ secondCond_65:
 	lw t1, 114(sp)
 	li t2, -1
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 113(sp)
 
 	# fetch variables
@@ -1371,6 +1416,8 @@ secondCond_65:
 	lw t1, 109(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 108(sp)
 
 	# condBr cond_$8 ifTrue_219 next_386
@@ -1436,6 +1483,8 @@ next_387:
 	lw t1, 84(sp)
 	li t2, -1
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 83(sp)
 
 	# fetch variables
@@ -1451,6 +1500,8 @@ next_387:
 	lw t1, 79(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 78(sp)
 
 	# condBr cond_$11 secondCond_68 next_388
@@ -1487,6 +1538,8 @@ secondCond_66:
 	lw t1, 58(sp)
 	li t2, -1
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 57(sp)
 
 	# fetch variables
@@ -1502,6 +1555,8 @@ secondCond_66:
 	lw t1, 53(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 52(sp)
 
 	# condBr cond_$10 ifTrue_220 next_387
@@ -1644,6 +1699,8 @@ secondCond_67:
 	lw t1, 19(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 18(sp)
 
 	# condBr cond_$13 ifTrue_221 next_388
@@ -1668,6 +1725,8 @@ secondCond_68:
 	lw t1, 6(sp)
 	li t2, -1
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 5(sp)
 
 	# fetch variables
@@ -1683,6 +1742,8 @@ secondCond_68:
 	lw t1, 1(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 0(sp)
 
 	# condBr cond_$12 secondCond_67 next_388

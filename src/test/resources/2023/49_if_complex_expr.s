@@ -7,6 +7,9 @@
 main:
 mainEntry33:
 
+	# allocate space for local variables
+	addi sp, sp, -138
+
 	# store a 
 
 	# fetch variables
@@ -78,6 +81,8 @@ mainEntry33:
 	lw t1, 101(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 100(sp)
 
 	# condBr cond_ ifTrue_31 secondCond_9
@@ -154,6 +159,8 @@ next_89:
 	lw t1, 79(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 78(sp)
 
 	# condBr cond_$3 ifTrue_32 secondCond_11
@@ -186,6 +193,8 @@ secondCond_9:
 	lw t1, 66(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 65(sp)
 
 	# fetch variables
@@ -201,6 +210,8 @@ secondCond_9:
 	lw t1, 61(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 60(sp)
 
 	# condBr cond_$1 secondCond_10 next_89
@@ -237,6 +248,8 @@ secondCond_10:
 	lw t1, 48(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 47(sp)
 
 	# fetch variables
@@ -252,6 +265,8 @@ secondCond_10:
 	lw t1, 43(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 42(sp)
 
 	# condBr cond_$2 ifTrue_31 next_89
@@ -267,6 +282,8 @@ secondCond_10:
 	li t1, 0
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 41(sp)
 
 	# condBr cond_normalize_ ifTrue_31 next_89
@@ -339,6 +356,8 @@ secondCond_11:
 	lw t1, 25(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 24(sp)
 
 	# fetch variables
@@ -354,6 +373,8 @@ secondCond_11:
 	lw t1, 20(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 19(sp)
 
 	# condBr cond_$4 secondCond_12 next_90
@@ -390,6 +411,8 @@ secondCond_12:
 	lw t1, 7(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 6(sp)
 
 	# fetch variables
@@ -405,6 +428,8 @@ secondCond_12:
 	lw t1, 2(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 1(sp)
 
 	# condBr cond_$5 ifTrue_32 next_90
@@ -420,6 +445,8 @@ secondCond_12:
 	li t1, 0
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 0(sp)
 
 	# condBr cond_normalize_$1 ifTrue_32 next_90

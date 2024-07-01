@@ -55,14 +55,16 @@ public class RiscBasicBlock implements InstructionVisitor {
     }
 
     private void functionInit(){
+
+        riscInstructions.add(new RiscComment("allocate space for local variables"));
+        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-allocator.getStackSize())));
+
         if(llvmFunctionValue.getName().equals("main")){
             return;
         }
 
         saveCalleeSavedRegs();
 
-        riscInstructions.add(new RiscComment("allocate space for local variables"));
-        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-allocator.getStackSize())));
 
         //save the parameters
         riscInstructions.add(new RiscComment("save the parameters"));
@@ -368,6 +370,8 @@ public class RiscBasicBlock implements InstructionVisitor {
                  //use XOR to simulate if is zero
                  //if same set 0, else set 1
                  riscInstructions.add(new RiscXor(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 riscInstructions.add(new RiscSeqz(new Register(dest_reg), new Register(dest_reg)));
+                 riscInstructions.add(new RiscSeqz(new Register(dest_reg), new Register(dest_reg)));
                  break;
 
              case "eq":

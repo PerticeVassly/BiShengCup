@@ -10,11 +10,11 @@ ascii_0:
 my_getint:
 my_getintEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -98
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 
@@ -34,6 +34,8 @@ whileCond_47:
 	li t1, 1
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 89(sp)
 
 	# condBr cond_normalize_ whileBody_47 next_74
@@ -101,6 +103,8 @@ whileBody_47:
 	lw t1, 68(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 67(sp)
 
 	# condBr cond_ ifTrue_27 secondCond_7
@@ -169,6 +173,8 @@ secondCond_7:
 	lw t1, 54(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 53(sp)
 
 	# condBr cond_$1 ifTrue_27 ifFalse_7
@@ -185,6 +191,8 @@ whileCond_48:
 	li t1, 1
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 52(sp)
 
 	# condBr cond_normalize_$1 whileBody_48 next_76
@@ -253,6 +261,8 @@ whileBody_48:
 	lw t1, 31(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 30(sp)
 
 	# condBr cond_$2 secondCond_8 ifFalse_8
@@ -351,6 +361,8 @@ secondCond_8:
 	lw t1, 1(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 0(sp)
 
 	# condBr cond_$3 ifTrue_28 ifFalse_8
@@ -364,11 +376,11 @@ secondCond_8:
 my_putint:
 my_putintEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -96
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 92(sp)
@@ -415,6 +427,8 @@ whileCond_49:
 	lw t1, 71(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 70(sp)
 
 	# condBr cond_ whileBody_49 next_78
@@ -529,6 +543,8 @@ whileCond_50:
 	lw t1, 21(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 20(sp)
 
 	# condBr cond_$1 whileBody_50 next_79
@@ -597,6 +613,9 @@ next_79:
 main:
 mainEntry21:
 
+	# allocate space for local variables
+	addi sp, sp, -38
+
 	# prepare params
 
 	# save caller saved regs
@@ -647,6 +666,8 @@ whileCond_51:
 	lw t1, 21(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 20(sp)
 
 	# condBr cond_ whileBody_51 next_80

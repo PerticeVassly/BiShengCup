@@ -7,11 +7,11 @@
 get_one:
 get_oneEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -8
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 4(sp)
@@ -37,11 +37,11 @@ get_oneEntry:
 deepWhileBr:
 deepWhileBrEntry1:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -112
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 108(sp)
@@ -110,6 +110,8 @@ whileCond_199:
 	lw t1, 71(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 70(sp)
 
 	# condBr cond_ whileBody_199 next_471
@@ -151,6 +153,8 @@ whileBody_199:
 	lw t1, 57(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 56(sp)
 
 	# condBr cond_$1 ifTrue_272 next_472
@@ -225,6 +229,8 @@ ifTrue_272:
 	lw t1, 31(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 30(sp)
 
 	# condBr cond_$2 ifTrue_273 next_473
@@ -297,6 +303,8 @@ ifTrue_273:
 	lw t1, 9(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 8(sp)
 
 	# condBr cond_$3 ifTrue_274 next_474
@@ -339,6 +347,9 @@ next_474:
 .globl main
 main:
 mainEntry62:
+
+	# allocate space for local variables
+	addi sp, sp, -20
 
 	# store p 
 

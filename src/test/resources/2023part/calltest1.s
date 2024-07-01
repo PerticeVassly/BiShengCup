@@ -7,11 +7,11 @@
 g1:
 g1Entry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -44
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 40(sp)
@@ -82,11 +82,11 @@ g1Entry:
 f1:
 f1Entry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -44
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 40(sp)
@@ -186,6 +186,9 @@ f1Entry:
 .globl main
 main:
 mainEntry:
+
+	# allocate space for local variables
+	addi sp, sp, -8
 
 	# prepare params
 

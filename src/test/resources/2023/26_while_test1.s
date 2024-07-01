@@ -7,11 +7,11 @@
 doubleWhile:
 doubleWhileEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -56
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 
@@ -56,6 +56,8 @@ whileCond_52:
 	lw t1, 39(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 38(sp)
 
 	# condBr cond_ whileBody_52 next_81
@@ -129,6 +131,8 @@ whileCond_53:
 	lw t1, 17(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 16(sp)
 
 	# condBr cond_$1 whileBody_53 next_82
@@ -185,6 +189,9 @@ next_82:
 .globl main
 main:
 mainEntry22:
+
+	# allocate space for local variables
+	addi sp, sp, -4
 
 	# prepare params
 

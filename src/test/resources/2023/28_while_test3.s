@@ -19,11 +19,11 @@ e:
 EightWhile:
 EightWhileEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -276
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 
@@ -80,6 +80,8 @@ whileCond_58:
 	lw t1, 251(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 250(sp)
 
 	# condBr cond_ whileBody_58 next_91
@@ -237,6 +239,8 @@ whileCond_59:
 	lw t1, 173(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 172(sp)
 
 	# condBr cond_$1 whileBody_59 next_92
@@ -317,6 +321,8 @@ whileCond_60:
 	lw t1, 147(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 146(sp)
 
 	# condBr cond_$2 whileBody_60 next_93
@@ -396,6 +402,8 @@ whileCond_61:
 	lw t1, 121(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 120(sp)
 
 	# condBr cond_$3 whileBody_61 next_94
@@ -476,6 +484,8 @@ whileCond_62:
 	lw t1, 95(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 94(sp)
 
 	# condBr cond_$4 whileBody_62 next_95
@@ -556,6 +566,8 @@ whileCond_63:
 	lw t1, 69(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 68(sp)
 
 	# condBr cond_$5 whileBody_63 next_96
@@ -635,6 +647,8 @@ whileCond_64:
 	lw t1, 43(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 42(sp)
 
 	# condBr cond_$6 whileBody_64 next_97
@@ -714,6 +728,8 @@ whileCond_65:
 	lw t1, 17(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 16(sp)
 
 	# condBr cond_$7 whileBody_65 next_98
@@ -770,6 +786,9 @@ next_98:
 .globl main
 main:
 mainEntry35:
+
+	# allocate space for local variables
+	addi sp, sp, -4
 
 	# store g 
 

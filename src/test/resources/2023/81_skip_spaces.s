@@ -7,6 +7,9 @@
 main:
 mainEntry47:
 
+	# allocate space for local variables
+	addi sp, sp, -78
+
 	# store i 
 
 	# fetch variables
@@ -43,6 +46,8 @@ whileCond_176:
 	lw t1, 62(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 61(sp)
 
 	# condBr cond_normalize_ whileBody_176 next_409
@@ -113,6 +118,8 @@ whileCond_177:
 	lw t1, 37(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 36(sp)
 
 	# condBr cond_normalize_$1 whileBody_177 next_410

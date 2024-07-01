@@ -25,11 +25,11 @@ line2:
 printans:
 printansEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -60
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 
@@ -92,6 +92,8 @@ whileCond_261:
 	lw t1, 35(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 34(sp)
 
 	# condBr cond_ whileBody_261 next_572
@@ -157,6 +159,8 @@ whileBody_261:
 	lw t1, 9(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 8(sp)
 
 	# condBr cond_$1 ifTrue_311 ifFalse_132
@@ -246,11 +250,11 @@ next_573:
 f:
 fEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -243
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 239(sp)
@@ -302,6 +306,8 @@ whileCond_262:
 	lw t1, 218(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 217(sp)
 
 	# condBr cond_ whileBody_262 next_574
@@ -326,6 +332,8 @@ whileBody_262:
 	lw t1, 205(sp)
 	li t2, 1
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 204(sp)
 
 	# fetch variables
@@ -341,6 +349,8 @@ whileBody_262:
 	lw t1, 200(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 199(sp)
 
 	# condBr cond_$1 secondCond_100 next_575
@@ -403,6 +413,8 @@ ifTrue_312:
 	lw t1, 174(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 173(sp)
 
 	# condBr cond_$3 ifTrue_313 next_576
@@ -473,6 +485,8 @@ secondCond_99:
 	li t1, 0
 	lw t2, 137(sp)
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 136(sp)
 
 	# fetch variables
@@ -496,6 +510,8 @@ secondCond_99:
 	lw t1, 131(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 130(sp)
 
 	# condBr cond_normalize_ ifTrue_312 next_575
@@ -548,6 +564,8 @@ secondCond_100:
 	lw t1, 105(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 104(sp)
 
 	# condBr cond_$2 secondCond_99 next_575
@@ -743,6 +761,9 @@ next_576:
 main:
 mainEntry88:
 
+	# allocate space for local variables
+	addi sp, sp, -34
+
 	# prepare params
 
 	# save caller saved regs
@@ -793,6 +814,8 @@ whileCond_263:
 	lw t1, 17(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 16(sp)
 
 	# condBr cond_ whileBody_263 next_577

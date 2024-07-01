@@ -10,11 +10,11 @@ g:
 func:
 funcEntry3:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -28
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 	sw a0, 24(sp)
@@ -87,6 +87,9 @@ funcEntry3:
 main:
 mainEntry36:
 
+	# allocate space for local variables
+	addi sp, sp, -112
+
 	# prepare params
 
 	# save caller saved regs
@@ -133,6 +136,8 @@ mainEntry36:
 	lw t1, 95(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 94(sp)
 
 	# condBr cond_ secondCond_13 ifFalse_9
@@ -209,6 +214,8 @@ next_99:
 	lw t1, 81(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 80(sp)
 
 	# condBr cond_$1 secondCond_14 ifFalse_10
@@ -247,6 +254,8 @@ secondCond_13:
 	lw t1, 72(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 71(sp)
 
 	# condBr cond_normalize_ ifTrue_33 ifFalse_9
@@ -324,6 +333,8 @@ next_100:
 	lw t1, 58(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 57(sp)
 
 	# condBr cond_$2 ifTrue_35 secondCond_15
@@ -362,6 +373,8 @@ secondCond_14:
 	lw t1, 49(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 48(sp)
 
 	# condBr cond_normalize_$1 ifTrue_34 ifFalse_10
@@ -439,6 +452,8 @@ next_101:
 	lw t1, 35(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 34(sp)
 
 	# condBr cond_$3 ifTrue_36 secondCond_16
@@ -477,6 +492,8 @@ secondCond_15:
 	lw t1, 26(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 25(sp)
 
 	# condBr cond_normalize_$2 ifTrue_35 ifFalse_11
@@ -531,6 +548,8 @@ next_102:
 	li t1, 0
 	lw t2, 21(sp)
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 20(sp)
 
 	# fetch variables
@@ -554,6 +573,8 @@ next_102:
 	lw t1, 15(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 14(sp)
 
 	# condBr cond_normalize_$4 secondCond_17 ifFalse_13
@@ -592,6 +613,8 @@ secondCond_16:
 	lw t1, 6(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 5(sp)
 
 	# condBr cond_normalize_$3 ifTrue_36 ifFalse_12
@@ -655,6 +678,8 @@ secondCond_17:
 	lw t1, 1(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 0(sp)
 
 	# condBr cond_normalize_$5 ifTrue_37 ifFalse_13

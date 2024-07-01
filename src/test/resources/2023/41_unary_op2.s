@@ -7,6 +7,9 @@
 main:
 mainEntry82:
 
+	# allocate space for local variables
+	addi sp, sp, -63
+
 	# store a 
 
 	# fetch variables
@@ -59,6 +62,8 @@ mainEntry82:
 	li t1, 0
 	lw t2, 35(sp)
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 34(sp)
 
 	# fetch variables
@@ -82,6 +87,8 @@ mainEntry82:
 	li t1, 0
 	lw t2, 29(sp)
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 28(sp)
 
 	# fetch variables
@@ -105,6 +112,8 @@ mainEntry82:
 	li t1, 0
 	lw t2, 23(sp)
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 22(sp)
 
 	# fetch variables
@@ -136,6 +145,8 @@ mainEntry82:
 	lw t1, 13(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 12(sp)
 
 	# condBr cond_normalize_ ifTrue_303 ifFalse_131

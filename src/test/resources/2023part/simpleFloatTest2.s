@@ -7,6 +7,9 @@
 main:
 mainEntry10:
 
+	# allocate space for local variables
+	addi sp, sp, -32
+
 	# store a 
 
 	# fetch variables

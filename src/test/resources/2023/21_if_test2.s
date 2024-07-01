@@ -7,11 +7,11 @@
 ifElseIf:
 ifElseIfEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -92
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 
@@ -53,6 +53,8 @@ ifElseIfEntry:
 	lw t1, 75(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 74(sp)
 
 	# condBr cond_ ifTrue_280 secondCond_93
@@ -105,6 +107,8 @@ ifFalse_111:
 	lw t1, 61(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 60(sp)
 
 	# condBr cond_$2 secondCond_94 ifFalse_112
@@ -157,6 +161,8 @@ secondCond_93:
 	lw t1, 47(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 46(sp)
 
 	# condBr cond_$1 ifTrue_280 ifFalse_111
@@ -203,6 +209,8 @@ ifFalse_112:
 	lw t1, 37(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 36(sp)
 
 	# condBr cond_$4 secondCond_95 ifFalse_113
@@ -243,6 +251,8 @@ secondCond_94:
 	lw t1, 27(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 26(sp)
 
 	# condBr cond_$3 ifTrue_281 ifFalse_112
@@ -327,6 +337,8 @@ secondCond_95:
 	lw t1, 1(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 0(sp)
 
 	# condBr cond_$5 ifTrue_282 ifFalse_113
@@ -339,6 +351,9 @@ secondCond_95:
 .globl main
 main:
 mainEntry69:
+
+	# allocate space for local variables
+	addi sp, sp, -4
 
 	# prepare params
 

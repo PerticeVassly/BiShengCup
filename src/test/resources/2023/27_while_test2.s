@@ -7,11 +7,11 @@
 FourWhile:
 FourWhileEntry:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -140
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 
@@ -68,6 +68,8 @@ whileCond_10:
 	lw t1, 115(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 114(sp)
 
 	# condBr cond_ whileBody_10 next_23
@@ -177,6 +179,8 @@ whileCond_11:
 	lw t1, 69(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 68(sp)
 
 	# condBr cond_$1 whileBody_11 next_24
@@ -257,6 +261,8 @@ whileCond_12:
 	lw t1, 43(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 42(sp)
 
 	# condBr cond_$2 whileBody_12 next_25
@@ -336,6 +342,8 @@ whileCond_13:
 	lw t1, 17(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 16(sp)
 
 	# condBr cond_$3 whileBody_13 next_26
@@ -392,6 +400,9 @@ next_26:
 .globl main
 main:
 mainEntry7:
+
+	# allocate space for local variables
+	addi sp, sp, -4
 
 	# prepare params
 

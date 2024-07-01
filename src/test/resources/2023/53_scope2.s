@@ -10,6 +10,9 @@ k:
 main:
 mainEntry29:
 
+	# allocate space for local variables
+	addi sp, sp, -102
+
 	# store k 
 
 	# fetch variables
@@ -41,6 +44,8 @@ mainEntry29:
 	lw t1, 93(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 92(sp)
 
 	# condBr cond_ ifTrue_29 next_86
@@ -118,6 +123,8 @@ whileCond_57:
 	lw t1, 67(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 66(sp)
 
 	# condBr cond_$1 whileBody_57 next_87
@@ -171,6 +178,8 @@ whileBody_57:
 	lw t1, 49(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 48(sp)
 
 	# condBr cond_$2 ifTrue_30 next_88

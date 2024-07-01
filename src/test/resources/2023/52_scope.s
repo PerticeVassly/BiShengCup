@@ -10,11 +10,11 @@ a:
 func:
 funcEntry4:
 
-	# save callee saved regs
-	addi sp, sp, 0
-
 	# allocate space for local variables
 	addi sp, sp, -34
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 
@@ -64,6 +64,8 @@ funcEntry4:
 	lw t1, 9(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 8(sp)
 
 	# condBr cond_ ifTrue_289 ifFalse_120
@@ -119,6 +121,9 @@ ifFalse_120:
 main:
 mainEntry71:
 
+	# allocate space for local variables
+	addi sp, sp, -54
+
 	# store result 
 
 	# fetch variables
@@ -160,6 +165,8 @@ whileCond_216:
 	lw t1, 37(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 36(sp)
 
 	# condBr cond_ whileBody_216 next_506
@@ -206,6 +213,8 @@ whileBody_216:
 	lw t1, 27(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 26(sp)
 
 	# condBr cond_$1 ifTrue_290 next_507
@@ -241,6 +250,8 @@ next_506:
 	lw t1, 17(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 16(sp)
 
 	# condBr cond_$2 ifTrue_291 ifFalse_121

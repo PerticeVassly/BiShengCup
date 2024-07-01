@@ -13,6 +13,9 @@ b:
 main:
 mainEntry26:
 
+	# allocate space for local variables
+	addi sp, sp, -4
+
 	# load b b
 	lw t0, b
 	sw t0, 0(sp)

@@ -10,6 +10,9 @@ n:
 main:
 mainEntry56:
 
+	# allocate space for local variables
+	addi sp, sp, -522
+
 	# prepare params
 
 	# save caller saved regs
@@ -60,6 +63,8 @@ whileCond_191:
 	lw t1, 385(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 384(sp)
 
 	# condBr cond_ whileBody_191 next_449

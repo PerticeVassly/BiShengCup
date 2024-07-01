@@ -22,6 +22,9 @@ e:
 main:
 mainEntry18:
 
+	# allocate space for local variables
+	addi sp, sp, -142
+
 	# store flag 
 
 	# fetch variables
@@ -94,6 +97,8 @@ mainEntry18:
 	lw t1, 101(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 100(sp)
 
 	# condBr cond_ secondCond_6 secondCond_5
@@ -226,6 +231,8 @@ secondCond_5:
 	lw t1, 47(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 46(sp)
 
 	# condBr cond_$2 ifTrue_25 next_69
@@ -315,6 +322,8 @@ secondCond_6:
 	lw t1, 1(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 0(sp)
 
 	# condBr cond_$1 ifTrue_25 secondCond_5

@@ -7,6 +7,9 @@
 main:
 mainEntry46:
 
+	# allocate space for local variables
+	addi sp, sp, -35
+
 	# store a 
 
 	# fetch variables
@@ -23,6 +26,8 @@ mainEntry46:
 	li t1, 0
 	lw t2, 27(sp)
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 26(sp)
 
 	# fetch variables
@@ -46,6 +51,8 @@ mainEntry46:
 	li t1, 0
 	lw t2, 21(sp)
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 20(sp)
 
 	# fetch variables
@@ -69,6 +76,8 @@ mainEntry46:
 	li t1, 0
 	lw t2, 15(sp)
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 14(sp)
 
 	# fetch variables
@@ -100,6 +109,8 @@ mainEntry46:
 	lw t1, 5(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 4(sp)
 
 	# condBr cond_normalize_ ifTrue_232 ifFalse_100
