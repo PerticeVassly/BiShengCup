@@ -64,7 +64,7 @@ whileCond_58:
 	# fetch variables
 	lw t1, 256(sp)
 	li t2, 20
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 255(sp)
 
 	# fetch variables
@@ -223,7 +223,7 @@ whileCond_59:
 	# fetch variables
 	lw t1, 178(sp)
 	li t2, 10
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 177(sp)
 
 	# fetch variables
@@ -386,7 +386,7 @@ whileCond_61:
 	# fetch variables
 	lw t1, 126(sp)
 	li t2, 20
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 125(sp)
 
 	# fetch variables
@@ -631,7 +631,7 @@ whileCond_64:
 	# fetch variables
 	lw t1, 48(sp)
 	li t2, 3
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 47(sp)
 
 	# fetch variables
@@ -712,7 +712,7 @@ whileCond_65:
 	# fetch variables
 	lw t1, 22(sp)
 	li t2, 10
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 21(sp)
 
 	# fetch variables

@@ -35,7 +35,7 @@ whileCond_198:
 	# fetch variables
 	lw t1, 40(sp)
 	li t2, 100
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 39(sp)
 
 	# fetch variables

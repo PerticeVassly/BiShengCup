@@ -35,7 +35,7 @@ whileCond_16:
 	# fetch variables
 	lw t1, 48(sp)
 	li t2, 100
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 47(sp)
 
 	# fetch variables

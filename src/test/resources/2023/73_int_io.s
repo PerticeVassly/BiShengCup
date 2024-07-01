@@ -87,7 +87,7 @@ whileBody_47:
 	# fetch variables
 	lw t1, 73(sp)
 	li t2, 0
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 72(sp)
 
 	# fetch variables

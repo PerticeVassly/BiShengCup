@@ -28,7 +28,7 @@ mainEntry29:
 	# fetch variables
 	lw t1, 98(sp)
 	li t2, 10000
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 97(sp)
 
 	# fetch variables
@@ -162,7 +162,7 @@ whileBody_57:
 	# fetch variables
 	lw t1, 54(sp)
 	li t2, 1000
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 53(sp)
 
 	# fetch variables

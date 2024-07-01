@@ -94,7 +94,7 @@ whileCond_199:
 	# fetch variables
 	lw t1, 76(sp)
 	li t2, 75
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 75(sp)
 
 	# fetch variables
@@ -137,7 +137,7 @@ whileBody_199:
 	# fetch variables
 	lw t1, 62(sp)
 	li t2, 100
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 61(sp)
 
 	# fetch variables

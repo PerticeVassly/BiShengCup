@@ -389,7 +389,7 @@ public class RiscBasicBlock implements InstructionVisitor {
 
              case "slt":
                  //slt
-                 riscInstructions.add(new RiscSltu(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
+                 riscInstructions.add(new RiscSlt(new Register(dest_reg), new Register(op1_reg), new Register(op2_reg)));
                  break;
 
              case "sge":

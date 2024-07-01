@@ -48,7 +48,7 @@ whileCond_217:
 	# fetch variables
 	lw t1, 508(sp)
 	lw t2, 504(sp)
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 503(sp)
 
 	# fetch variables
@@ -155,7 +155,7 @@ whileCond_218:
 	# fetch variables
 	lw t1, 462(sp)
 	lw t2, 458(sp)
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 457(sp)
 
 	# fetch variables
@@ -270,7 +270,7 @@ whileCond_219:
 	# fetch variables
 	lw t1, 400(sp)
 	lw t2, 396(sp)
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 395(sp)
 
 	# fetch variables
@@ -407,7 +407,7 @@ whileCond_220:
 	# fetch variables
 	lw t1, 318(sp)
 	lw t2, 314(sp)
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 313(sp)
 
 	# fetch variables
@@ -444,7 +444,7 @@ whileBody_220:
 	# fetch variables
 	lw t1, 304(sp)
 	li t2, 10
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 303(sp)
 
 	# fetch variables
@@ -556,7 +556,7 @@ ifFalse_122:
 	# fetch variables
 	lw t1, 262(sp)
 	li t2, 20
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 261(sp)
 
 	# fetch variables
@@ -637,7 +637,7 @@ ifFalse_123:
 	# fetch variables
 	lw t1, 232(sp)
 	li t2, 30
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 231(sp)
 
 	# fetch variables
@@ -682,7 +682,7 @@ whileCond_221:
 	# fetch variables
 	lw t1, 222(sp)
 	lw t2, 218(sp)
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 217(sp)
 
 	# fetch variables
@@ -888,7 +888,7 @@ whileCond_222:
 	# fetch variables
 	lw t1, 116(sp)
 	lw t2, 112(sp)
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 111(sp)
 
 	# fetch variables

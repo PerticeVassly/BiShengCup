@@ -65,7 +65,7 @@ mainEntry33:
 	# fetch variables
 	lw t1, 106(sp)
 	li t2, 0
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 105(sp)
 
 	# fetch variables
@@ -143,7 +143,7 @@ next_89:
 	# fetch variables
 	lw t1, 84(sp)
 	li t2, 0
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 83(sp)
 
 	# fetch variables

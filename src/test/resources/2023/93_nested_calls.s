@@ -825,7 +825,7 @@ whileCond_215:
 	# fetch variables
 	lw t1, 366(sp)
 	li t2, 10
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 365(sp)
 
 	# fetch variables

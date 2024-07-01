@@ -584,7 +584,7 @@ whileCond_166:
 	# fetch variables
 	lw t1, 406(sp)
 	lw t2, 402(sp)
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 401(sp)
 
 	# fetch variables
@@ -999,7 +999,7 @@ next_383:
 	# fetch variables
 	lw t1, 262(sp)
 	lw t2, 258(sp)
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 257(sp)
 
 	# fetch variables
@@ -1211,7 +1211,7 @@ next_385:
 	# fetch variables
 	lw t1, 192(sp)
 	lw t2, 188(sp)
-	sltu t0, t1, t2
+	slt t0, t1, t2
 	sw t0, 187(sp)
 
 	# fetch variables
