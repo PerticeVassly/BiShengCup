@@ -66,13 +66,13 @@ func1Entry:
 	seqz t0, t0
 	sw t0, 32(sp)
 
-	# condBr cond_ ifTrue_283 ifFalse_114
+	# condBr cond_ ifTrue_ ifFalse_
 
 	# fetch variables
 	lw t1, 32(sp)
-	beqz t1, ifFalse_114
-	j ifTrue_283
-ifTrue_283:
+	beqz t1, ifFalse_
+	j ifTrue_
+ifTrue_:
 
 	# load x$1 x
 	lw t0, 56(sp)
@@ -100,7 +100,7 @@ ifTrue_283:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_114:
+ifFalse_:
 
 	# load x$2 x
 	lw t0, 56(sp)
@@ -199,13 +199,13 @@ func2Entry:
 	seqz t0, t0
 	sw t0, 20(sp)
 
-	# condBr cond_normalize_ ifTrue_284 ifFalse_115
+	# condBr cond_normalize_ ifTrue_1 ifFalse_1
 
 	# fetch variables
 	lw t1, 20(sp)
-	beqz t1, ifFalse_115
-	j ifTrue_284
-ifTrue_284:
+	beqz t1, ifFalse_1
+	j ifTrue_1
+ifTrue_1:
 
 	# load x$1 x
 	lw t0, 32(sp)
@@ -255,7 +255,7 @@ ifTrue_284:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_115:
+ifFalse_1:
 
 	# load x$2 x
 	lw t0, 32(sp)
@@ -328,13 +328,13 @@ func3Entry:
 	seqz t0, t0
 	sw t0, 24(sp)
 
-	# condBr cond_ ifTrue_285 ifFalse_116
+	# condBr cond_ ifTrue_2 ifFalse_2
 
 	# fetch variables
 	lw t1, 24(sp)
-	beqz t1, ifFalse_116
-	j ifTrue_285
-ifTrue_285:
+	beqz t1, ifFalse_2
+	j ifTrue_2
+ifTrue_2:
 
 	# load x$1 x
 	lw t0, 44(sp)
@@ -358,7 +358,7 @@ ifTrue_285:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_116:
+ifFalse_2:
 
 	# load x$2 x
 	lw t0, 44(sp)
@@ -456,13 +456,13 @@ func4Entry:
 	seqz t0, t0
 	sw t0, 8(sp)
 
-	# condBr cond_normalize_ ifTrue_286 ifFalse_117
+	# condBr cond_normalize_ ifTrue_3 ifFalse_3
 
 	# fetch variables
 	lw t1, 8(sp)
-	beqz t1, ifFalse_117
-	j ifTrue_286
-ifTrue_286:
+	beqz t1, ifFalse_3
+	j ifTrue_3
+ifTrue_3:
 
 	# load y$1 y
 	lw t0, 20(sp)
@@ -478,7 +478,7 @@ ifTrue_286:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_117:
+ifFalse_3:
 
 	# load z$1 z
 	lw t0, 16(sp)
@@ -577,13 +577,13 @@ func6Entry:
 	seqz t0, t0
 	sw t0, 8(sp)
 
-	# condBr cond_normalize_ secondCond_96 ifFalse_118
+	# condBr cond_normalize_ secondCond_ ifFalse_4
 
 	# fetch variables
 	lw t1, 8(sp)
-	beqz t1, ifFalse_118
-	j secondCond_96
-ifTrue_287:
+	beqz t1, ifFalse_4
+	j secondCond_
+ifTrue_4:
 
 	# ret 
 
@@ -595,7 +595,7 @@ ifTrue_287:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_118:
+ifFalse_4:
 
 	# ret 
 
@@ -607,7 +607,7 @@ ifFalse_118:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-secondCond_96:
+secondCond_:
 
 	# load y$1 y
 	lw t0, 16(sp)
@@ -623,12 +623,12 @@ secondCond_96:
 	seqz t0, t0
 	sw t0, 0(sp)
 
-	# condBr cond_normalize_$1 ifTrue_287 ifFalse_118
+	# condBr cond_normalize_$1 ifTrue_4 ifFalse_4
 
 	# fetch variables
 	lw t1, 0(sp)
-	beqz t1, ifFalse_118
-	j ifTrue_287
+	beqz t1, ifFalse_4
+	j ifTrue_4
 .type func7, @function
 .globl func7
 func7:
@@ -688,13 +688,13 @@ func7Entry:
 	seqz t0, t0
 	sw t0, 0(sp)
 
-	# condBr cond_normalize_ ifTrue_288 ifFalse_119
+	# condBr cond_normalize_ ifTrue_5 ifFalse_5
 
 	# fetch variables
 	lw t1, 0(sp)
-	beqz t1, ifFalse_119
-	j ifTrue_288
-ifTrue_288:
+	beqz t1, ifFalse_5
+	j ifTrue_5
+ifTrue_5:
 
 	# ret 
 
@@ -706,7 +706,7 @@ ifTrue_288:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_119:
+ifFalse_5:
 
 	# ret 
 
@@ -721,7 +721,7 @@ ifFalse_119:
 .type main, @function
 .globl main
 main:
-mainEntry70:
+mainEntry:
 
 	# allocate space for local variables
 	addi sp, sp, -416
@@ -812,9 +812,9 @@ mainEntry70:
 	li t1, 0
 	sw t1, 376(sp)
 
-	# br whileCond_215
-	j whileCond_215
-whileCond_215:
+	# br whileCond_
+	j whileCond_
+whileCond_:
 
 	# load i$1 i
 	lw t0, 376(sp)
@@ -845,13 +845,13 @@ whileCond_215:
 	seqz t0, t0
 	sw t0, 360(sp)
 
-	# condBr cond_ whileBody_215 next_504
+	# condBr cond_ whileBody_ next_6
 
 	# fetch variables
 	lw t1, 360(sp)
-	beqz t1, next_504
-	j whileBody_215
-whileBody_215:
+	beqz t1, next_6
+	j whileBody_
+whileBody_:
 
 	# load i$2 i
 	lw t0, 376(sp)
@@ -895,9 +895,9 @@ whileBody_215:
 	lw t1, 340(sp)
 	sw t1, 376(sp)
 
-	# br whileCond_215
-	j whileCond_215
-next_504:
+	# br whileCond_
+	j whileCond_
+next_6:
 
 	# load i1$1 i1
 	lw t0, 412(sp)

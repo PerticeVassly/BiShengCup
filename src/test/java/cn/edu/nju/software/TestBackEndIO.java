@@ -26,11 +26,9 @@ public class TestBackEndIO {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-//    @StringSource("21_if_test2")
-//    @StringSource("22_if_test3")
-//    @StringSource("23_if_test4")
-//    @StringSource("24_if_test5")
-        @StringSource("40_unary_op")
+        @StringSource("93_nested_calls")
+    @StringSource("73_int_io")
+    @StringSource("89_many_globals")
     void testRisc(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
     }
