@@ -58,7 +58,7 @@ addEntry:
 .type main, @function
 .globl main
 main:
-mainEntry7:
+mainEntry8:
 
 	# store a 
 

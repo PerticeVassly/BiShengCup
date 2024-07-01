@@ -199,7 +199,7 @@ next_5:
 .type main, @function
 .globl main
 main:
-mainEntry4:
+mainEntry5:
 
 	# prepare params
 

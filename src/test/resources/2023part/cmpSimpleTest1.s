@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry5:
+mainEntry6:
 
 	# store a 
 

@@ -58,4 +58,5 @@ public interface InstructionVisitor {
     default void visit(Ret ret) {}
 
     default void visit(Add add){}
+
 }

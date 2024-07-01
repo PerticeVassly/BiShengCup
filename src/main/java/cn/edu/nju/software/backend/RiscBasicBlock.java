@@ -86,8 +86,6 @@ public class RiscBasicBlock implements InstructionVisitor {
                 assert false;
             }
         }
-
-
     }
 
 
@@ -286,6 +284,37 @@ public class RiscBasicBlock implements InstructionVisitor {
 
         riscInstructions.add(new RiscFdivs(new Register("ft0"), new Register("ft1"), new Register("ft2")));
         riscInstructions.add(new RiscFsw(new Register("ft0"), addressToSave));
+    }
+
+    @Override
+    public void visit(IntToFloat intToFloat){
+
+        ValueRef lVal = intToFloat.getLVal();
+        ValueRef initVal = intToFloat.getOperand(0);
+
+        riscInstructions.add(new RiscComment("intToFloat " + lVal.getName() + " " + initVal.getName()));
+
+        allocator.prepareVariable(initVal);
+        Operand addressToSave = allocator.getOperandOfPtr(lVal);
+
+        riscInstructions.add(new RiscFcvtsw(new Register("ft0"), new Register("t1")));
+        riscInstructions.add(new RiscFsw(new Register("ft0"), addressToSave));
+
+    }
+
+    @Override
+    public void visit(FloatToInt floatToInt){
+
+        ValueRef lVal = floatToInt.getLVal();
+        ValueRef initVal = floatToInt.getOperand(0);
+
+        riscInstructions.add(new RiscComment("floatToInt " + lVal.getName() + " " + initVal.getName()));
+
+        allocator.prepareVariable(initVal);
+        Operand addressToSave = allocator.getOperandOfPtr(lVal);
+
+        riscInstructions.add(new RiscFcvtws(new Register("t0"), new Register("ft1")));
+        riscInstructions.add(new RiscSw(new Register("t0"), addressToSave));
     }
 
     @Override
