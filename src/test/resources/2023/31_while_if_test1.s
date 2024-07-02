@@ -7,11 +7,11 @@
 whileIf:
 whileIfEntry:
 
+	# allocate space for local variables
+	addi sp, sp, -76
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# allocate space for local variables
-	addi sp, sp, -58
 
 	# save the parameters
 
@@ -19,99 +19,103 @@ whileIfEntry:
 
 	# fetch variables
 	li t1, 0
-	sw t1, 54(sp)
+	sw t1, 72(sp)
 
 	# store b 
 
 	# fetch variables
 	li t1, 0
-	sw t1, 50(sp)
+	sw t1, 68(sp)
 
 	# br whileCond_223
 	j whileCond_223
 whileCond_223:
 
 	# load a$1 a
-	lw t0, 54(sp)
-	sw t0, 46(sp)
+	lw t0, 72(sp)
+	sw t0, 64(sp)
 
 	# cmp a$1  cond_lt_tmp_
 
 	# fetch variables
-	lw t1, 46(sp)
+	lw t1, 64(sp)
 	li t2, 100
-	sltu t0, t1, t2
-	sw t0, 45(sp)
+	slt t0, t1, t2
+	sw t0, 60(sp)
 
 	# fetch variables
-	lw t1, 45(sp)
+	lw t1, 60(sp)
 
 	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
-	sw t0, 41(sp)
+	sw t0, 56(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 41(sp)
+	lw t1, 56(sp)
 	li t2, 0
 	xor t0, t1, t2
-	sw t0, 40(sp)
+	seqz t0, t0
+	seqz t0, t0
+	sw t0, 52(sp)
 
 	# condBr cond_ whileBody_223 next_519
 
 	# fetch variables
-	lw t1, 40(sp)
+	lw t1, 52(sp)
 	beqz t1, next_519
 	j whileBody_223
 whileBody_223:
 
 	# load a$2 a
-	lw t0, 54(sp)
-	sw t0, 36(sp)
+	lw t0, 72(sp)
+	sw t0, 48(sp)
 
 	# cmp a$2  cond_eq_tmp_
 
 	# fetch variables
-	lw t1, 36(sp)
+	lw t1, 48(sp)
 	li t2, 5
 	xor t0, t1, t2
 	seqz t0, t0
-	sw t0, 35(sp)
+	sw t0, 44(sp)
 
 	# fetch variables
-	lw t1, 35(sp)
+	lw t1, 44(sp)
 
 	# zext cond_tmp_$1 cond_eq_tmp_
 	mv t0, t1
-	sw t0, 31(sp)
+	sw t0, 40(sp)
 
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	lw t1, 31(sp)
+	lw t1, 40(sp)
 	li t2, 0
 	xor t0, t1, t2
-	sw t0, 30(sp)
+	seqz t0, t0
+	seqz t0, t0
+	sw t0, 36(sp)
 
 	# condBr cond_$1 ifTrue_296 ifFalse_126
 
 	# fetch variables
-	lw t1, 30(sp)
+	lw t1, 36(sp)
 	beqz t1, ifFalse_126
 	j ifTrue_296
 next_519:
 
 	# load b$1 b
-	lw t0, 50(sp)
-	sw t0, 26(sp)
+	lw t0, 68(sp)
+	sw t0, 32(sp)
 
 	# ret b$1
 
 	# fetch variables
-	lw t1, 26(sp)
+	lw t1, 32(sp)
 	mv a0, t1
-	addi sp, sp, 58
+	addi sp, sp, 76
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -122,38 +126,40 @@ ifTrue_296:
 
 	# fetch variables
 	li t1, 25
-	sw t1, 50(sp)
+	sw t1, 68(sp)
 
 	# br next_520
 	j next_520
 ifFalse_126:
 
 	# load a$3 a
-	lw t0, 54(sp)
-	sw t0, 22(sp)
+	lw t0, 72(sp)
+	sw t0, 28(sp)
 
 	# cmp a$3  cond_eq_tmp_$1
 
 	# fetch variables
-	lw t1, 22(sp)
+	lw t1, 28(sp)
 	li t2, 10
 	xor t0, t1, t2
 	seqz t0, t0
-	sw t0, 21(sp)
+	sw t0, 24(sp)
 
 	# fetch variables
-	lw t1, 21(sp)
+	lw t1, 24(sp)
 
 	# zext cond_tmp_$2 cond_eq_tmp_$1
 	mv t0, t1
-	sw t0, 17(sp)
+	sw t0, 20(sp)
 
 	# cmp cond_tmp_$2  cond_$2
 
 	# fetch variables
-	lw t1, 17(sp)
+	lw t1, 20(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 16(sp)
 
 	# condBr cond_$2 ifTrue_297 ifFalse_127
@@ -165,7 +171,7 @@ ifFalse_126:
 next_520:
 
 	# load a$5 a
-	lw t0, 54(sp)
+	lw t0, 72(sp)
 	sw t0, 12(sp)
 
 	# add result_$1 a$5 
@@ -180,7 +186,7 @@ next_520:
 
 	# fetch variables
 	lw t1, 8(sp)
-	sw t1, 54(sp)
+	sw t1, 72(sp)
 
 	# br whileCond_223
 	j whileCond_223
@@ -190,14 +196,14 @@ ifTrue_297:
 
 	# fetch variables
 	li t1, 42
-	sw t1, 50(sp)
+	sw t1, 68(sp)
 
 	# br next_521
 	j next_521
 ifFalse_127:
 
 	# load a$4 a
-	lw t0, 54(sp)
+	lw t0, 72(sp)
 	sw t0, 4(sp)
 
 	# mul result_ a$4 
@@ -212,7 +218,7 @@ ifFalse_127:
 
 	# fetch variables
 	lw t1, 0(sp)
-	sw t1, 50(sp)
+	sw t1, 68(sp)
 
 	# br next_521
 	j next_521
@@ -224,6 +230,9 @@ next_521:
 .globl main
 main:
 mainEntry73:
+
+	# allocate space for local variables
+	addi sp, sp, -4
 
 	# prepare params
 

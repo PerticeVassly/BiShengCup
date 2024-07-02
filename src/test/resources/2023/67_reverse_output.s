@@ -7,48 +7,50 @@
 reverse:
 reverseEntry:
 
+	# allocate space for local variables
+	addi sp, sp, -52
+
 	# save callee saved regs
 	addi sp, sp, 0
 
-	# allocate space for local variables
-	addi sp, sp, -46
-
 	# save the parameters
-	sw a0, 42(sp)
+	sw a0, 48(sp)
 
 	# store n 0
 
 	# fetch variables
-	lw t1, 42(sp)
-	sw t1, 38(sp)
+	lw t1, 48(sp)
+	sw t1, 44(sp)
 
 	# load n$1 n
-	lw t0, 38(sp)
-	sw t0, 30(sp)
+	lw t0, 44(sp)
+	sw t0, 36(sp)
 
 	# cmp n$1  cond_le_tmp_
 
 	# fetch variables
-	lw t1, 30(sp)
+	lw t1, 36(sp)
 	li t2, 1
 	sub t0, t1, t2
 	sgtz t0, t0
 	seqz t0, t0
-	sw t0, 29(sp)
+	sw t0, 32(sp)
 
 	# fetch variables
-	lw t1, 29(sp)
+	lw t1, 32(sp)
 
 	# zext cond_tmp_ cond_le_tmp_
 	mv t0, t1
-	sw t0, 25(sp)
+	sw t0, 28(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 25(sp)
+	lw t1, 28(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 24(sp)
 
 	# condBr cond_ ifTrue_257 ifFalse_106
@@ -77,10 +79,10 @@ ifTrue_257:
 
 	# fetch variables
 	lw t1, 20(sp)
-	sw t1, 34(sp)
+	sw t1, 40(sp)
 
 	# load next$1 next
-	lw t0, 34(sp)
+	lw t0, 40(sp)
 	sw t0, 16(sp)
 
 	# prepare params
@@ -122,10 +124,10 @@ ifFalse_106:
 
 	# fetch variables
 	lw t1, 12(sp)
-	sw t1, 34(sp)
+	sw t1, 40(sp)
 
 	# load n$2 n
-	lw t0, 38(sp)
+	lw t0, 44(sp)
 	sw t0, 8(sp)
 
 	# sub result_ n$2 
@@ -154,7 +156,7 @@ ifFalse_106:
 	addi sp, sp, 4
 
 	# load next$2 next
-	lw t0, 34(sp)
+	lw t0, 40(sp)
 	sw t0, 0(sp)
 
 	# prepare params
@@ -179,7 +181,7 @@ ifFalse_106:
 next_445:
 
 	# ret void
-	addi sp, sp, 46
+	addi sp, sp, 52
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -188,6 +190,9 @@ next_445:
 .globl main
 main:
 mainEntry54:
+
+	# allocate space for local variables
+	addi sp, sp, -8
 
 	# store i 
 

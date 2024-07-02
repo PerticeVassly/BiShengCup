@@ -16,6 +16,9 @@ c:
 main:
 mainEntry2:
 
+	# allocate space for local variables
+	addi sp, sp, -24
+
 	# load a a
 	lw t0, a
 	sw t0, 20(sp)

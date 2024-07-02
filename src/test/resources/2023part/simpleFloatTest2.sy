@@ -1,0 +1,13 @@
+int main(){
+    float a = 7.5;
+    int c = 8.5;
+
+    return c;
+
+    if(a == 7.5 && a > 5){
+        return 10;
+    }
+    else{
+        return 1;
+    }
+}

@@ -27,7 +27,7 @@ public class Operator {
     }
 
     protected static OpEnum getOp(String op) {
-        int index = Arrays.binarySearch(operators, op);
+        int index = Arrays.asList(operators).indexOf(op);
         for (OpEnum opEnum : OpEnum.values()) {
             if (opEnum.ordinal() == index) {
                 return opEnum;

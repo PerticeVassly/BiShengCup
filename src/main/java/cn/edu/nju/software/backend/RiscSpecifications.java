@@ -26,4 +26,8 @@ public class RiscSpecifications {
     public static String[] getArgRegs() {
         return argRegs;
     }
+
+    public static String[] getFArgRegs() {
+        return fArgRegs;
+    }
 }

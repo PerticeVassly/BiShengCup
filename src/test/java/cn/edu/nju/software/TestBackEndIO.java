@@ -30,7 +30,7 @@ public class TestBackEndIO {
 //    @StringSource("22_if_test3")
 //    @StringSource("23_if_test4")
 //    @StringSource("24_if_test5")
-        @StringSource("28_while_test3")
+        @StringSource("40_unary_op")
     void testRisc(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
     }

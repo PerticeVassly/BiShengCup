@@ -10,6 +10,9 @@ n:
 main:
 mainEntry56:
 
+	# allocate space for local variables
+	addi sp, sp, -528
+
 	# prepare params
 
 	# save caller saved regs
@@ -22,44 +25,46 @@ mainEntry56:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 394(sp)
+	sw a0, 400(sp)
 
 	# store b getint
 
 	# fetch variables
-	lw t1, 394(sp)
-	sw t1, 398(sp)
+	lw t1, 400(sp)
+	sw t1, 404(sp)
 
 	# br whileCond_191
 	j whileCond_191
 whileCond_191:
 
 	# load b$1 b
-	lw t0, 398(sp)
-	sw t0, 390(sp)
+	lw t0, 404(sp)
+	sw t0, 396(sp)
 
 	# cmp b$1  cond_eq_tmp_
 
 	# fetch variables
-	lw t1, 390(sp)
+	lw t1, 396(sp)
 	li t2, 5
 	xor t0, t1, t2
 	seqz t0, t0
-	sw t0, 389(sp)
+	sw t0, 392(sp)
 
 	# fetch variables
-	lw t1, 389(sp)
+	lw t1, 392(sp)
 
 	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
-	sw t0, 385(sp)
+	sw t0, 388(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 385(sp)
+	lw t1, 388(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 384(sp)
 
 	# condBr cond_ whileBody_191 next_449
@@ -71,7 +76,7 @@ whileCond_191:
 whileBody_191:
 
 	# load b$2 b
-	lw t0, 398(sp)
+	lw t0, 404(sp)
 	sw t0, 380(sp)
 
 	# add result_ b$2 
@@ -86,7 +91,7 @@ whileBody_191:
 
 	# fetch variables
 	lw t1, 376(sp)
-	sw t1, 398(sp)
+	sw t1, 404(sp)
 
 	# br whileCond_191
 	j whileCond_191
@@ -96,10 +101,10 @@ next_449:
 
 	# fetch variables
 	li t1, 0
-	sw t1, 518(sp)
+	sw t1, 524(sp)
 
 	# load a0$1 a0
-	lw t0, 518(sp)
+	lw t0, 524(sp)
 	sw t0, 372(sp)
 
 	# add result_$1 a0$1 
@@ -114,10 +119,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 368(sp)
-	sw t1, 514(sp)
+	sw t1, 520(sp)
 
 	# load a1$1 a1
-	lw t0, 514(sp)
+	lw t0, 520(sp)
 	sw t0, 364(sp)
 
 	# add result_$2 a1$1 
@@ -132,10 +137,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 360(sp)
-	sw t1, 510(sp)
+	sw t1, 516(sp)
 
 	# load a2$1 a2
-	lw t0, 510(sp)
+	lw t0, 516(sp)
 	sw t0, 356(sp)
 
 	# add result_$3 a2$1 
@@ -150,10 +155,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 352(sp)
-	sw t1, 506(sp)
+	sw t1, 512(sp)
 
 	# load a3$1 a3
-	lw t0, 506(sp)
+	lw t0, 512(sp)
 	sw t0, 348(sp)
 
 	# add result_$4 a3$1 
@@ -168,10 +173,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 344(sp)
-	sw t1, 502(sp)
+	sw t1, 508(sp)
 
 	# load a4$1 a4
-	lw t0, 502(sp)
+	lw t0, 508(sp)
 	sw t0, 340(sp)
 
 	# add result_$5 a4$1 
@@ -186,10 +191,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 336(sp)
-	sw t1, 498(sp)
+	sw t1, 504(sp)
 
 	# load a5$1 a5
-	lw t0, 498(sp)
+	lw t0, 504(sp)
 	sw t0, 332(sp)
 
 	# add result_$6 a5$1 
@@ -204,10 +209,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 328(sp)
-	sw t1, 494(sp)
+	sw t1, 500(sp)
 
 	# load a6$1 a6
-	lw t0, 494(sp)
+	lw t0, 500(sp)
 	sw t0, 324(sp)
 
 	# add result_$7 a6$1 
@@ -222,10 +227,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 320(sp)
-	sw t1, 490(sp)
+	sw t1, 496(sp)
 
 	# load a7$1 a7
-	lw t0, 490(sp)
+	lw t0, 496(sp)
 	sw t0, 316(sp)
 
 	# add result_$8 a7$1 
@@ -240,10 +245,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 312(sp)
-	sw t1, 486(sp)
+	sw t1, 492(sp)
 
 	# load a8$1 a8
-	lw t0, 486(sp)
+	lw t0, 492(sp)
 	sw t0, 308(sp)
 
 	# add result_$9 a8$1 
@@ -258,10 +263,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 304(sp)
-	sw t1, 482(sp)
+	sw t1, 488(sp)
 
 	# load a9$1 a9
-	lw t0, 482(sp)
+	lw t0, 488(sp)
 	sw t0, 300(sp)
 
 	# add result_$10 a9$1 
@@ -276,10 +281,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 296(sp)
-	sw t1, 478(sp)
+	sw t1, 484(sp)
 
 	# load a10$1 a10
-	lw t0, 478(sp)
+	lw t0, 484(sp)
 	sw t0, 292(sp)
 
 	# add result_$11 a10$1 
@@ -294,10 +299,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 288(sp)
-	sw t1, 474(sp)
+	sw t1, 480(sp)
 
 	# load a11$1 a11
-	lw t0, 474(sp)
+	lw t0, 480(sp)
 	sw t0, 284(sp)
 
 	# add result_$12 a11$1 
@@ -312,10 +317,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 280(sp)
-	sw t1, 470(sp)
+	sw t1, 476(sp)
 
 	# load a12$1 a12
-	lw t0, 470(sp)
+	lw t0, 476(sp)
 	sw t0, 276(sp)
 
 	# add result_$13 a12$1 
@@ -330,10 +335,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 272(sp)
-	sw t1, 466(sp)
+	sw t1, 472(sp)
 
 	# load a13$1 a13
-	lw t0, 466(sp)
+	lw t0, 472(sp)
 	sw t0, 268(sp)
 
 	# add result_$14 a13$1 
@@ -348,10 +353,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 264(sp)
-	sw t1, 462(sp)
+	sw t1, 468(sp)
 
 	# load a14$1 a14
-	lw t0, 462(sp)
+	lw t0, 468(sp)
 	sw t0, 260(sp)
 
 	# add result_$15 a14$1 
@@ -366,10 +371,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 256(sp)
-	sw t1, 458(sp)
+	sw t1, 464(sp)
 
 	# load a15$1 a15
-	lw t0, 458(sp)
+	lw t0, 464(sp)
 	sw t0, 252(sp)
 
 	# add result_$16 a15$1 
@@ -384,10 +389,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 248(sp)
-	sw t1, 454(sp)
+	sw t1, 460(sp)
 
 	# load a16$1 a16
-	lw t0, 454(sp)
+	lw t0, 460(sp)
 	sw t0, 244(sp)
 
 	# add result_$17 a16$1 
@@ -402,10 +407,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 240(sp)
-	sw t1, 450(sp)
+	sw t1, 456(sp)
 
 	# load a17$1 a17
-	lw t0, 450(sp)
+	lw t0, 456(sp)
 	sw t0, 236(sp)
 
 	# add result_$18 a17$1 
@@ -420,10 +425,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 232(sp)
-	sw t1, 446(sp)
+	sw t1, 452(sp)
 
 	# load a18$1 a18
-	lw t0, 446(sp)
+	lw t0, 452(sp)
 	sw t0, 228(sp)
 
 	# add result_$19 a18$1 
@@ -438,10 +443,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 224(sp)
-	sw t1, 442(sp)
+	sw t1, 448(sp)
 
 	# load a19$1 a19
-	lw t0, 442(sp)
+	lw t0, 448(sp)
 	sw t0, 220(sp)
 
 	# add result_$20 a19$1 
@@ -456,10 +461,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 216(sp)
-	sw t1, 438(sp)
+	sw t1, 444(sp)
 
 	# load a20$1 a20
-	lw t0, 438(sp)
+	lw t0, 444(sp)
 	sw t0, 212(sp)
 
 	# add result_$21 a20$1 
@@ -474,10 +479,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 208(sp)
-	sw t1, 434(sp)
+	sw t1, 440(sp)
 
 	# load a21$1 a21
-	lw t0, 434(sp)
+	lw t0, 440(sp)
 	sw t0, 204(sp)
 
 	# add result_$22 a21$1 
@@ -492,10 +497,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 200(sp)
-	sw t1, 430(sp)
+	sw t1, 436(sp)
 
 	# load a22$1 a22
-	lw t0, 430(sp)
+	lw t0, 436(sp)
 	sw t0, 196(sp)
 
 	# add result_$23 a22$1 
@@ -510,10 +515,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 192(sp)
-	sw t1, 426(sp)
+	sw t1, 432(sp)
 
 	# load a23$1 a23
-	lw t0, 426(sp)
+	lw t0, 432(sp)
 	sw t0, 188(sp)
 
 	# add result_$24 a23$1 
@@ -528,10 +533,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 184(sp)
-	sw t1, 422(sp)
+	sw t1, 428(sp)
 
 	# load a24$1 a24
-	lw t0, 422(sp)
+	lw t0, 428(sp)
 	sw t0, 180(sp)
 
 	# add result_$25 a24$1 
@@ -546,10 +551,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 176(sp)
-	sw t1, 418(sp)
+	sw t1, 424(sp)
 
 	# load a25$1 a25
-	lw t0, 418(sp)
+	lw t0, 424(sp)
 	sw t0, 172(sp)
 
 	# add result_$26 a25$1 
@@ -564,10 +569,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 168(sp)
-	sw t1, 414(sp)
+	sw t1, 420(sp)
 
 	# load a26$1 a26
-	lw t0, 414(sp)
+	lw t0, 420(sp)
 	sw t0, 164(sp)
 
 	# add result_$27 a26$1 
@@ -582,10 +587,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 160(sp)
-	sw t1, 410(sp)
+	sw t1, 416(sp)
 
 	# load a27$1 a27
-	lw t0, 410(sp)
+	lw t0, 416(sp)
 	sw t0, 156(sp)
 
 	# add result_$28 a27$1 
@@ -600,10 +605,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 152(sp)
-	sw t1, 406(sp)
+	sw t1, 412(sp)
 
 	# load a28$1 a28
-	lw t0, 406(sp)
+	lw t0, 412(sp)
 	sw t0, 148(sp)
 
 	# add result_$29 a28$1 
@@ -618,10 +623,10 @@ next_449:
 
 	# fetch variables
 	lw t1, 144(sp)
-	sw t1, 402(sp)
+	sw t1, 408(sp)
 
 	# load a0$2 a0
-	lw t0, 518(sp)
+	lw t0, 524(sp)
 	sw t0, 136(sp)
 
 	# prepare params
@@ -642,7 +647,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a1$2 a1
-	lw t0, 514(sp)
+	lw t0, 520(sp)
 	sw t0, 132(sp)
 
 	# prepare params
@@ -663,7 +668,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a2$2 a2
-	lw t0, 510(sp)
+	lw t0, 516(sp)
 	sw t0, 128(sp)
 
 	# prepare params
@@ -684,7 +689,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a3$2 a3
-	lw t0, 506(sp)
+	lw t0, 512(sp)
 	sw t0, 124(sp)
 
 	# prepare params
@@ -705,7 +710,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a4$2 a4
-	lw t0, 502(sp)
+	lw t0, 508(sp)
 	sw t0, 120(sp)
 
 	# prepare params
@@ -726,7 +731,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a5$2 a5
-	lw t0, 498(sp)
+	lw t0, 504(sp)
 	sw t0, 116(sp)
 
 	# prepare params
@@ -747,7 +752,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a6$2 a6
-	lw t0, 494(sp)
+	lw t0, 500(sp)
 	sw t0, 112(sp)
 
 	# prepare params
@@ -768,7 +773,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a7$2 a7
-	lw t0, 490(sp)
+	lw t0, 496(sp)
 	sw t0, 108(sp)
 
 	# prepare params
@@ -789,7 +794,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a8$2 a8
-	lw t0, 486(sp)
+	lw t0, 492(sp)
 	sw t0, 104(sp)
 
 	# prepare params
@@ -810,7 +815,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a9$2 a9
-	lw t0, 482(sp)
+	lw t0, 488(sp)
 	sw t0, 100(sp)
 
 	# prepare params
@@ -831,7 +836,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a10$2 a10
-	lw t0, 478(sp)
+	lw t0, 484(sp)
 	sw t0, 96(sp)
 
 	# prepare params
@@ -852,7 +857,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a11$2 a11
-	lw t0, 474(sp)
+	lw t0, 480(sp)
 	sw t0, 92(sp)
 
 	# prepare params
@@ -873,7 +878,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a12$2 a12
-	lw t0, 470(sp)
+	lw t0, 476(sp)
 	sw t0, 88(sp)
 
 	# prepare params
@@ -894,7 +899,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a13$2 a13
-	lw t0, 466(sp)
+	lw t0, 472(sp)
 	sw t0, 84(sp)
 
 	# prepare params
@@ -915,7 +920,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a14$2 a14
-	lw t0, 462(sp)
+	lw t0, 468(sp)
 	sw t0, 80(sp)
 
 	# prepare params
@@ -936,7 +941,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a15$2 a15
-	lw t0, 458(sp)
+	lw t0, 464(sp)
 	sw t0, 76(sp)
 
 	# prepare params
@@ -957,7 +962,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a16$2 a16
-	lw t0, 454(sp)
+	lw t0, 460(sp)
 	sw t0, 72(sp)
 
 	# prepare params
@@ -978,7 +983,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a17$2 a17
-	lw t0, 450(sp)
+	lw t0, 456(sp)
 	sw t0, 68(sp)
 
 	# prepare params
@@ -999,7 +1004,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a18$2 a18
-	lw t0, 446(sp)
+	lw t0, 452(sp)
 	sw t0, 64(sp)
 
 	# prepare params
@@ -1020,7 +1025,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a19$2 a19
-	lw t0, 442(sp)
+	lw t0, 448(sp)
 	sw t0, 60(sp)
 
 	# prepare params
@@ -1041,7 +1046,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a20$2 a20
-	lw t0, 438(sp)
+	lw t0, 444(sp)
 	sw t0, 56(sp)
 
 	# prepare params
@@ -1062,7 +1067,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a21$2 a21
-	lw t0, 434(sp)
+	lw t0, 440(sp)
 	sw t0, 52(sp)
 
 	# prepare params
@@ -1083,7 +1088,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a22$2 a22
-	lw t0, 430(sp)
+	lw t0, 436(sp)
 	sw t0, 48(sp)
 
 	# prepare params
@@ -1104,7 +1109,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a23$2 a23
-	lw t0, 426(sp)
+	lw t0, 432(sp)
 	sw t0, 44(sp)
 
 	# prepare params
@@ -1125,7 +1130,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a24$2 a24
-	lw t0, 422(sp)
+	lw t0, 428(sp)
 	sw t0, 40(sp)
 
 	# prepare params
@@ -1146,7 +1151,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a25$2 a25
-	lw t0, 418(sp)
+	lw t0, 424(sp)
 	sw t0, 36(sp)
 
 	# prepare params
@@ -1167,7 +1172,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a26$2 a26
-	lw t0, 414(sp)
+	lw t0, 420(sp)
 	sw t0, 32(sp)
 
 	# prepare params
@@ -1188,7 +1193,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a27$2 a27
-	lw t0, 410(sp)
+	lw t0, 416(sp)
 	sw t0, 28(sp)
 
 	# prepare params
@@ -1209,7 +1214,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a28$2 a28
-	lw t0, 406(sp)
+	lw t0, 412(sp)
 	sw t0, 24(sp)
 
 	# prepare params
@@ -1230,7 +1235,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a29$1 a29
-	lw t0, 402(sp)
+	lw t0, 408(sp)
 	sw t0, 20(sp)
 
 	# prepare params
@@ -1278,7 +1283,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load b$3 b
-	lw t0, 398(sp)
+	lw t0, 404(sp)
 	sw t0, 8(sp)
 
 	# prepare params
@@ -1320,7 +1325,7 @@ next_449:
 	addi sp, sp, 4
 
 	# load a25$3 a25
-	lw t0, 418(sp)
+	lw t0, 424(sp)
 	sw t0, 0(sp)
 
 	# ret a25$3
@@ -1328,5 +1333,5 @@ next_449:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 522
+	addi sp, sp, 528
 	ret 
