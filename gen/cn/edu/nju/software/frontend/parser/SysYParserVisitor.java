@@ -1,4 +1,4 @@
-// Generated from D:/compilers/src/main/java/cn/edu/nju/software/frontend/parser/SysYParser.g4 by ANTLR 4.13.1
+// Generated from //wsl.localhost/Ubuntu/home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/frontend/parser/SysYParser.g4 by ANTLR 4.13.1
 package cn.edu.nju.software.frontend.parser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
