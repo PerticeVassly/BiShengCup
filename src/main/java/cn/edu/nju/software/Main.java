@@ -3,6 +3,7 @@ package cn.edu.nju.software;
 import java.io.IOException;
 import java.util.Arrays;
 
+import cn.edu.nju.software.backend.RiscModule;
 import cn.edu.nju.software.frontend.pass.PassManager;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;

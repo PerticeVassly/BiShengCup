@@ -50,7 +50,7 @@ declare void @memset(i32*, i32, i32)
 @a32 = global i32 16, align 4
 
 define i32 @func(i32 %0, i32 %1) {
-funcEntry2:
+funcEntry3:
   %a = alloca i32, align 4
   store i32 %0, i32* %a, align 4
   %b = alloca i32, align 4
@@ -590,7 +590,7 @@ funcEntry2:
 }
 
 define i32 @main() {
-mainEntry30:
+mainEntry72:
   %a = alloca i32, align 4
   %b = alloca i32, align 4
   %getint = call i32 @getint()

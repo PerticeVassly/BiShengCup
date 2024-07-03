@@ -8,6 +8,9 @@
 main:
 mainEntry:
 
+	# allocate space for local variables
+	addi sp, sp, -8
+
 	# gep a basePtr[1 x i32]* op1 op2
 
 	# fetch variables

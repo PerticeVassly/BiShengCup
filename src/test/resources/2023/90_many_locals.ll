@@ -97,7 +97,7 @@ fooEntry:
 }
 
 define i32 @main() {
-mainEntry26:
+mainEntry21:
   %a = alloca i32, align 4
   store i32 3, i32* %a, align 4
   %b = alloca i32, align 4

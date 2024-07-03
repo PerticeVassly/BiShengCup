@@ -4,14 +4,20 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PassManager {
    private final ModuleRef module;
-   //TODO:add pass here
-   ModulePass[] modulePasses={};
-   FunctionPass[] functionPasses={};
-   BasicBlockPass[] basicBlockPasses={};
+   List<ModulePass> modulePasses;
+   List<FunctionPass>functionPasses;
+   List<BasicBlockPass> basicBlockPasses;
     public PassManager(ModuleRef module) {
         this.module = module;
+        modulePasses = new ArrayList<>();
+        functionPasses=new ArrayList<>();
+        basicBlockPasses=new ArrayList<>();
+        register();
     }
 
     public boolean runPass() {
@@ -26,6 +32,11 @@ public class PassManager {
         return changed;
     }
 
+    //TODO:add pass here
+    private void register(){
+        CFGBuildPass cfgBuildPass=new CFGBuildPass();
+        modulePasses.add(cfgBuildPass);
+    }
     public void setDbgFlag(){
         for (ModulePass modulePass:modulePasses){
             modulePass.setDbgFlag();

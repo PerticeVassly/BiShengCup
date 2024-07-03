@@ -48,7 +48,7 @@ public class TestFrontEndIO {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if ( name.contains("84") ) {
+        if ( name.contains("84")||name.contains("05") ) {
             fail();
         }
         testFile(DIR, name);

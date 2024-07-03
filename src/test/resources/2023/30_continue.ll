@@ -17,39 +17,39 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry12:
+mainEntry87:
   %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
   %sum = alloca i32, align 4
   store i32 0, i32* %sum, align 4
-  br label %whileCond_19
+  br label %whileCond_278
 
-whileCond_19:                                        ; pred = %mainEntry12, %ifTrue_16, %next_36
+whileCond_278:                                        ; pred = %mainEntry87, %ifTrue_341, %next_620
   %i$1 = load i32, i32* %i, align 4
   %cond_lt_tmp_ = icmp slt i32 %i$1, 100
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_19, label %next_35
+  br i1 %cond_, label %whileBody_278, label %next_619
 
-whileBody_19:                                        ; pred = %whileCond_19
+whileBody_278:                                        ; pred = %whileCond_278
   %i$2 = load i32, i32* %i, align 4
   %cond_eq_tmp_ = icmp eq i32 %i$2, 50
   %cond_tmp_$1 = zext i1 %cond_eq_tmp_ to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_16, label %next_36
+  br i1 %cond_$1, label %ifTrue_341, label %next_620
 
-next_35:                                             ; pred = %whileCond_19
+next_619:                                             ; pred = %whileCond_278
   %sum$2 = load i32, i32* %sum, align 4
   ret i32 %sum$2
 
-ifTrue_16:                                           ; pred = %whileBody_19
+ifTrue_341:                                           ; pred = %whileBody_278
   %i$3 = load i32, i32* %i, align 4
   %result_ = add i32 %i$3, 1
   store i32 %result_, i32* %i, align 4
-  br label %whileCond_19
-  br label %next_36
+  br label %whileCond_278
+  br label %next_620
 
-next_36:                                             ; pred = %whileBody_19, %ifTrue_16
+next_620:                                             ; pred = %whileBody_278, %ifTrue_341
   %sum$1 = load i32, i32* %sum, align 4
   %i$4 = load i32, i32* %i, align 4
   %result_$1 = add i32 %sum$1, %i$4
@@ -57,6 +57,6 @@ next_36:                                             ; pred = %whileBody_19, %if
   %i$5 = load i32, i32* %i, align 4
   %result_$2 = add i32 %i$5, 1
   store i32 %result_$2, i32* %i, align 4
-  br label %whileCond_19
+  br label %whileCond_278
 }
 
