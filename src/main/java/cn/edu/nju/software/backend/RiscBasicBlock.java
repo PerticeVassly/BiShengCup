@@ -19,16 +19,12 @@ import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.Pointer;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Stack;
 
 public class RiscBasicBlock implements InstructionVisitor {
 
