@@ -35,6 +35,14 @@ public class ArrayType extends TypeRef {
         }
     }
 
+    public int getSize(int dim) {
+        ArrayType tmp = this;
+        for (int i = 0; i < dim; i++) {
+            tmp = (ArrayType) tmp.elementType;
+        }
+        return tmp.getElementSize();
+    }
+
     public int getElementSize() {
         return elementSize;
     }

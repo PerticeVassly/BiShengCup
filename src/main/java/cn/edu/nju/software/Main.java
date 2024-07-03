@@ -74,6 +74,7 @@ public class Main {
         // generate llvm ir
         IRVisitor irVisitor = new IRVisitor();
         irVisitor.visit(tree);
+        irVisitor.dumpModuleToConsole();
 
         ModuleRef module = irVisitor.getModule();
         if (emitLLVM) {

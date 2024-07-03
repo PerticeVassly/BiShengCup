@@ -113,3 +113,17 @@
 //        return null;
 //    }
 //}
+package cn.edu.nju.software.ir.opt;
+
+import cn.edu.nju.software.ir.module.ModuleRef;
+
+public class Optimizer {
+    private final ModuleRef module;
+    public Optimizer(ModuleRef module) {
+        this.module = module;
+    }
+
+    public void rmKillExp() {
+
+    }
+}
