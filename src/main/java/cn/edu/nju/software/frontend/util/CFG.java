@@ -19,16 +19,12 @@ public class CFG {
     private int idCount=0;
     private int cnt=-1;
     private ArrayList<BasicBlockRef> roots=new ArrayList<>();
-    public CFG(){
-        for(int i=0;i<MAX_NUM_OF_BLOCK;i++){
-            adj[i]=new HashSet<>();
-        }
-    }
     public void addPoint(BasicBlockRef bb){
         assert idCount<MAX_NUM_OF_BLOCK;
         if (!block2id.containsKey(bb)) {
             block2id.put(bb,idCount);
             id2block.put(idCount,bb);
+            adj[idCount]=new HashSet<>();
             idCount++;
         }
     }
@@ -47,7 +43,11 @@ public class CFG {
 
     public boolean isInLoop(BasicBlockRef bb){
         int id=block2id.get(bb);
-        //TODO:自环
+        for (int i = 0; i < bb.getPredNum(); i++) {
+            if(bb.getPred(i)==bb){
+                return true;
+            }
+        }
         return size[scc[id]] != 1;
     }
 
@@ -55,10 +55,20 @@ public class CFG {
         return adj[block2id.get(bb)].stream().map(id2block::get).toList();
     }
     public ArrayList<BasicBlockRef> getAllLoop(){
-        return roots;
+        ArrayList<BasicBlockRef> loops=new ArrayList<>();
+        for (BasicBlockRef bb:roots){
+            if(isInLoop(bb)){
+                loops.add(bb);
+            }
+        }
+        return loops;
     }
     public void findLoop(){
-           tarjan(0);
+           for (int i=0;i<idCount;i++){
+               if (dfn[i]==0) {
+                   tarjan(i);
+               }
+           }
     }
 
     private void tarjan(int x){
@@ -66,6 +76,9 @@ public class CFG {
         stack.push(x);
         inStk[x]=true;
         for (Integer y : adj[x]) {
+            if(y==x){
+                continue;
+            }
             if(dfn[y]==0) {
                 tarjan(y);
                 low[x]=Math.min(low[x],low[y]);
@@ -73,7 +86,7 @@ public class CFG {
                 low[x]=Math.min(low[x],dfn[y]);
             }
         }
-        if(dfn[x]==dfn[x]){
+        if(dfn[x]==low[x]){
             int y;
             ++cnt;
             do{
