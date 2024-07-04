@@ -27,6 +27,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class FrontEndTest {
     private static final String DIR = "src/test/resources/2023/";
     private static final String DIR_PART = "src/test/resources/2023part/";
+    private static final String DIR_HIDDEN = "src/test/resources/2023hidden/";
     private static final String SYLIB = "src/test/resources/sylib_mac.ll";
     private static final String LINKED = "src/test/resources/linked.ll";
 
@@ -35,8 +36,8 @@ public class FrontEndTest {
     @ParameterizedTest
 //    @StringSource("87_many_params")
 //    @StringSource("88_many_params2")
-//    @StringSource("65_color")
-    @StringSource("54_hidden_var")
+    @StringSource("65_color")
+//    @StringSource("54_hidden_var")
 //    @StringSource("04_arr_defn3")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
@@ -48,10 +49,16 @@ public class FrontEndTest {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if (name.equals("54_hidden_var")) {
-            fail();
-        }
         testFile(DIR, name);
+    }
+
+    /**
+     * test all the files in DIR_HIDDEN
+     */
+    @ParameterizedTest
+    @MethodSource("dirHidden")
+    void testHidden(String name) throws IOException, InterruptedException {
+        testFile(DIR_HIDDEN, name);
     }
 
     /**
@@ -98,6 +105,10 @@ public class FrontEndTest {
 
     private static Stream<String> dirPart() {
         return parameters(DIR_PART);
+    }
+
+    private static Stream<String> dirHidden() {
+        return parameters(DIR_HIDDEN);
     }
 
     /**
