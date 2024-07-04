@@ -24,9 +24,9 @@ my_getintEntry:
 	li t1, 0
 	sw t1, 124(sp)
 
-	# br whileCond_1
-	j whileCond_1
-whileCond_1:
+	# br whileCond_47
+	j whileCond_47
+whileCond_47:
 
 	# cmp   cond_normalize_
 
@@ -38,13 +38,13 @@ whileCond_1:
 	seqz t0, t0
 	sw t0, 116(sp)
 
-	# condBr cond_normalize_ whileBody_1 next_7
+	# condBr cond_normalize_ whileBody_47 next_74
 
 	# fetch variables
 	lw t1, 116(sp)
-	beqz t1, next_7
-	j whileBody_1
-whileBody_1:
+	beqz t1, next_74
+	j whileBody_47
+whileBody_47:
 
 	# prepare params
 
@@ -107,13 +107,13 @@ whileBody_1:
 	seqz t0, t0
 	sw t0, 88(sp)
 
-	# condBr cond_ ifTrue_6 secondCond_1
+	# condBr cond_ ifTrue_27 secondCond_7
 
 	# fetch variables
 	lw t1, 88(sp)
-	beqz t1, secondCond_1
-	j ifTrue_6
-next_7:
+	beqz t1, secondCond_7
+	j ifTrue_27
+next_74:
 
 	# load c$3 c
 	lw t0, 120(sp)
@@ -125,27 +125,27 @@ next_7:
 	lw t1, 84(sp)
 	sw t1, 124(sp)
 
-	# br whileCond_2
-	j whileCond_2
-ifTrue_6:
+	# br whileCond_48
+	j whileCond_48
+ifTrue_27:
 
-	# br whileCond_1
-	j whileCond_1
+	# br whileCond_47
+	j whileCond_47
 
-	# br next_8
-	j next_8
-ifFalse_6:
+	# br next_75
+	j next_75
+ifFalse_7:
 
-	# br next_7
-	j next_7
+	# br next_74
+	j next_74
 
-	# br next_8
-	j next_8
-next_8:
+	# br next_75
+	j next_75
+next_75:
 
-	# br whileCond_1
-	j whileCond_1
-secondCond_1:
+	# br whileCond_47
+	j whileCond_47
+secondCond_7:
 
 	# load c$2 c
 	lw t0, 120(sp)
@@ -177,13 +177,13 @@ secondCond_1:
 	seqz t0, t0
 	sw t0, 68(sp)
 
-	# condBr cond_$1 ifTrue_6 ifFalse_6
+	# condBr cond_$1 ifTrue_27 ifFalse_7
 
 	# fetch variables
 	lw t1, 68(sp)
-	beqz t1, ifFalse_6
-	j ifTrue_6
-whileCond_2:
+	beqz t1, ifFalse_7
+	j ifTrue_27
+whileCond_48:
 
 	# cmp   cond_normalize_$1
 
@@ -195,13 +195,13 @@ whileCond_2:
 	seqz t0, t0
 	sw t0, 64(sp)
 
-	# condBr cond_normalize_$1 whileBody_2 next_9
+	# condBr cond_normalize_$1 whileBody_48 next_76
 
 	# fetch variables
 	lw t1, 64(sp)
-	beqz t1, next_9
-	j whileBody_2
-whileBody_2:
+	beqz t1, next_76
+	j whileBody_48
+whileBody_48:
 
 	# prepare params
 
@@ -265,13 +265,13 @@ whileBody_2:
 	seqz t0, t0
 	sw t0, 36(sp)
 
-	# condBr cond_$2 secondCond_2 ifFalse_7
+	# condBr cond_$2 secondCond_8 ifFalse_8
 
 	# fetch variables
 	lw t1, 36(sp)
-	beqz t1, ifFalse_7
-	j secondCond_2
-next_9:
+	beqz t1, ifFalse_8
+	j secondCond_8
+next_76:
 
 	# load sum$2 sum
 	lw t0, 124(sp)
@@ -287,7 +287,7 @@ next_9:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_7:
+ifTrue_28:
 
 	# load sum$1 sum
 	lw t0, 124(sp)
@@ -319,20 +319,20 @@ ifTrue_7:
 	lw t1, 16(sp)
 	sw t1, 124(sp)
 
-	# br next_10
-	j next_10
-ifFalse_7:
+	# br next_77
+	j next_77
+ifFalse_8:
 
-	# br next_9
-	j next_9
+	# br next_76
+	j next_76
 
-	# br next_10
-	j next_10
-next_10:
+	# br next_77
+	j next_77
+next_77:
 
-	# br whileCond_2
-	j whileCond_2
-secondCond_2:
+	# br whileCond_48
+	j whileCond_48
+secondCond_8:
 
 	# load c$5 c
 	lw t0, 120(sp)
@@ -365,12 +365,12 @@ secondCond_2:
 	seqz t0, t0
 	sw t0, 0(sp)
 
-	# condBr cond_$3 ifTrue_7 ifFalse_7
+	# condBr cond_$3 ifTrue_28 ifFalse_8
 
 	# fetch variables
 	lw t1, 0(sp)
-	beqz t1, ifFalse_7
-	j ifTrue_7
+	beqz t1, ifFalse_8
+	j ifTrue_28
 .type my_putint, @function
 .globl my_putint
 my_putint:
@@ -397,9 +397,9 @@ my_putintEntry:
 	li t1, 0
 	sw t1, 92(sp)
 
-	# br whileCond_3
-	j whileCond_3
-whileCond_3:
+	# br whileCond_49
+	j whileCond_49
+whileCond_49:
 
 	# load a$1 a
 	lw t0, 100(sp)
@@ -431,13 +431,13 @@ whileCond_3:
 	seqz t0, t0
 	sw t0, 76(sp)
 
-	# condBr cond_ whileBody_3 next_11
+	# condBr cond_ whileBody_49 next_78
 
 	# fetch variables
 	lw t1, 76(sp)
-	beqz t1, next_11
-	j whileBody_3
-whileBody_3:
+	beqz t1, next_78
+	j whileBody_49
+whileBody_49:
 
 	# load i$1 i
 	lw t0, 92(sp)
@@ -509,13 +509,13 @@ whileBody_3:
 	lw t1, 36(sp)
 	sw t1, 92(sp)
 
-	# br whileCond_3
-	j whileCond_3
-next_11:
+	# br whileCond_49
+	j whileCond_49
+next_78:
 
-	# br whileCond_4
-	j whileCond_4
-whileCond_4:
+	# br whileCond_50
+	j whileCond_50
+whileCond_50:
 
 	# load i$3 i
 	lw t0, 92(sp)
@@ -547,13 +547,13 @@ whileCond_4:
 	seqz t0, t0
 	sw t0, 20(sp)
 
-	# condBr cond_$1 whileBody_4 next_12
+	# condBr cond_$1 whileBody_50 next_79
 
 	# fetch variables
 	lw t1, 20(sp)
-	beqz t1, next_12
-	j whileBody_4
-whileBody_4:
+	beqz t1, next_79
+	j whileBody_50
+whileBody_50:
 
 	# load i$4 i
 	lw t0, 92(sp)
@@ -598,9 +598,9 @@ whileBody_4:
 	lw ra, 0(sp)
 	addi sp, sp, 4
 
-	# br whileCond_4
-	j whileCond_4
-next_12:
+	# br whileCond_50
+	j whileCond_50
+next_79:
 
 	# ret void
 	addi sp, sp, 108
@@ -611,7 +611,7 @@ next_12:
 .type main, @function
 .globl main
 main:
-mainEntry1:
+mainEntry21:
 
 	# allocate space for local variables
 	addi sp, sp, -44
@@ -636,9 +636,9 @@ mainEntry1:
 	lw t1, 36(sp)
 	sw t1, 40(sp)
 
-	# br whileCond_5
-	j whileCond_5
-whileCond_5:
+	# br whileCond_51
+	j whileCond_51
+whileCond_51:
 
 	# load n$1 n
 	lw t0, 40(sp)
@@ -670,13 +670,13 @@ whileCond_5:
 	seqz t0, t0
 	sw t0, 20(sp)
 
-	# condBr cond_ whileBody_5 next_13
+	# condBr cond_ whileBody_51 next_80
 
 	# fetch variables
 	lw t1, 20(sp)
-	beqz t1, next_13
-	j whileBody_5
-whileBody_5:
+	beqz t1, next_80
+	j whileBody_51
+whileBody_51:
 
 	# prepare params
 
@@ -754,9 +754,9 @@ whileBody_5:
 	lw t1, 0(sp)
 	sw t1, 40(sp)
 
-	# br whileCond_5
-	j whileCond_5
-next_13:
+	# br whileCond_51
+	j whileCond_51
+next_80:
 
 	# ret 
 

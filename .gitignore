@@ -6,6 +6,13 @@ target/
 **/src/test/rescources/2023/*.s
 **/src/test/rescources/2023part/*.ll
 **/src/test/rescources/2023part/*.s
+**/src/test/rescources/linked.ll
+**/src/test/rescources/libriscv.o
+
+
+
+
+
 pom.xml
 /out
 /.idea

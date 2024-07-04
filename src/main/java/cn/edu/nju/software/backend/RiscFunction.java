@@ -2,8 +2,12 @@ package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.instruction.Allocate;
 import cn.edu.nju.software.ir.instruction.Instruction;
+import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 
 import java.util.ArrayList;
@@ -40,7 +44,15 @@ public class RiscFunction {
         //为函数内部的局部变量分配内存
         for (BasicBlockRef bb : functionValue.getBasicBlockRefs()) {
             for(Instruction i : bb.getIrs()){
-                if(i.getLVal() != null){
+                if(i instanceof Allocate){
+                    TypeRef base =((Pointer) i.getLVal().getType()).getBase();
+                    //计算出这个数组需要的总的内存大小
+                    int size = ArrayType.getTotalSize((ArrayType)base);
+                    assert size == 40;
+                    allocator.allocate(i.getLVal().getName(), 4);
+                    allocator.allocate(i.getLVal().getName(), size);
+                }
+                else if(i.getLVal() != null){
                     allocator.allocate(i.getLVal().getName(), i.getLVal().getType().getWidth());
                 }
             }

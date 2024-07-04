@@ -17,16 +17,12 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry2:
-  %a = alloca float, align 4
-  store float 0x3ff0000000000000, float* %a, align 4
-  %b = alloca float, align 4
-  store float 0x4000000000000000, float* %b, align 4
-  %c = alloca float, align 4
-  %a$1 = load float, float* %a, align 4
-  %b$1 = load float, float* %b, align 4
-  %result_ = fadd float %a$1, %b$1
-  store float %result_, float* %c, align 4
-  ret i32 0
+mainEntry1:
+ %a  = alloca [2 x [5 x i32]], align 16
+  store [2 x [5 x i32]] [[5 x i32] [i32 1, i32 2, i32 3, i32 4, i32 5], [5 x i32] [i32 6, i32 7, i32 8, i32 9, i32 10]], [2 x [5 x i32]]* %a, align 16
+  %ptr_ = getelementptr [2 x [5 x i32]], [2 x [5 x i32]]* %a, i32 0, i32 1
+  %a$1 = getelementptr [5 x i32], [5 x i32]* %ptr_, i32 0, i32 3
+  %a$2 = load i32, i32* %a$1, align 4
+  ret i32 %a$2
 }
 

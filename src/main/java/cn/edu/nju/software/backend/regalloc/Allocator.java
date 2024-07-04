@@ -86,6 +86,10 @@ public class Allocator {
         return new IndirectRegister("sp", memory.getOffset(varName));
     }
 
+    public int getOffset(String varName){
+        return memory.getOffset(varName);
+    }
+
     public void allocate(String varName, int width){
         memory.allocate(varName, Math.max(width, 4));
     }

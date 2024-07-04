@@ -21,7 +21,7 @@ declare void @memset(i32*, i32, i32)
 @c = global i32 1, align 4
 
 define i32 @main() {
-mainEntry2:
+mainEntry3:
   %a = load i32, i32* @a, align 4
   %b = load i32, i32* @b, align 4
   %result_ = add i32 %a, %b

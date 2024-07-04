@@ -14,8 +14,8 @@ public class IndirectRegister implements Operand{
         this.offset = offset;
     }
 
-    public void setReg(String regName) {
-        this.regName = regName;
+    public void addOffset(int offset) {
+        this.offset += offset;
     }
 
     @Override

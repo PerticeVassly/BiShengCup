@@ -17,7 +17,7 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry3:
+mainEntry4:
   %a = alloca i32, align 4
   store i32 1, i32* %a, align 4
   %b = alloca i32, align 4
@@ -31,7 +31,7 @@ mainEntry3:
   %cond_ = icmp ne i32 %cond_tmp_, 0
   br i1 %cond_, label %ifTrue_, label %next_
 
-ifTrue_:                                             ; pred = %mainEntry3
+ifTrue_:                                             ; pred = %mainEntry4
   %b$2 = load i32, i32* %b, align 4
   %c$1 = load i32, i32* %c, align 4
   %cond_lt_tmp_$1 = icmp slt i32 %b$2, %c$1
@@ -39,7 +39,7 @@ ifTrue_:                                             ; pred = %mainEntry3
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
   br i1 %cond_$1, label %secondCond_1, label %next_1
 
-next_:                                               ; pred = %mainEntry3, %next_1
+next_:                                               ; pred = %mainEntry4, %next_1
   %b$4 = load i32, i32* %b, align 4
   %c$3 = load i32, i32* %c, align 4
   %cond_lt_tmp_$4 = icmp slt i32 %b$4, %c$3

@@ -4,6 +4,7 @@ import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.TypeRef;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ArrayValue extends ValueRef {
     private TypeRef elementType;
@@ -55,5 +56,17 @@ public class ArrayValue extends ValueRef {
             }
         }
         return res.append("]").toString();
+    }
+
+    public List<ValueRef>  getLinerList(){
+        List<ValueRef> res = new ArrayList<>();
+        for (ValueRef element : elements) {
+            if (element instanceof ArrayValue) {
+                res.addAll(((ArrayValue) element).getLinerList());
+            } else {
+                res.add(element);
+            }
+        }
+        return res;
     }
 }

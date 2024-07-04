@@ -14,15 +14,14 @@ import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
-import cn.edu.nju.software.ir.type.FloatType;
-import cn.edu.nju.software.ir.type.FunctionType;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.type.*;
+import cn.edu.nju.software.ir.value.ArrayValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RiscBasicBlock implements InstructionVisitor {
 
@@ -90,6 +89,32 @@ public class RiscBasicBlock implements InstructionVisitor {
         }
     }
 
+    @Override
+    public void visit(GEP gep){
+
+        ValueRef lVal = gep.getLVal();
+        ValueRef ptr = gep.getOperand(0);
+        ValueRef index = gep.getOperand(1);
+
+        riscInstructions.add(new RiscComment("gep " + lVal.getName() + " " + ptr.getName() + " " + index.getName()));
+
+        //找到这一层gep对应的数组在内存中的首地址
+        allocator.prepareVariable(index); //now index in t1;
+        int length =ArrayType.getTotalSize (((ArrayType) gep.getArrayTypePtr().getBase()).getElementType());
+        riscInstructions.add(new RiscLi(new Register("t2"), new ImmediateValue(length)));
+        //t1是index t2是子数组的长度
+
+        //t0是总的相对偏移量
+        riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t2")));
+
+        //基
+        int baseArrayOffset = allocator.getOffset(ptr.getName());
+        riscInstructions.add(new RiscAddi(new Register("t0"), new Register("t0"), new ImmediateValue(-baseArrayOffset)));
+
+        riscInstructions.add(new RiscSw(new Register("t0"), allocator.getOperandOfPtr(lVal)));
+
+
+    }
 
     @Override
     public void visit(Store store) {
@@ -99,16 +124,33 @@ public class RiscBasicBlock implements InstructionVisitor {
 
         riscInstructions.add(new RiscComment("store " + dest.getName() + " " + ((src instanceof GlobalVar) ? "@" + src.getName() :  src.getName())));
 
-        allocator.prepareVariable(src);
+        if(src instanceof ArrayValue){
+            List<ValueRef> linerList = ((ArrayValue) src).getLinerList();
 
-        Operand destOperand = allocator.getOperandOfPtr(dest);
-
-        if(dest instanceof GlobalVar){
-            riscInstructions.add(new RiscSymbolSw(new Register("t1"), destOperand, new Register("t0")));
-        } else {
-            riscInstructions.add(new RiscSw(new Register("t1"), destOperand));
+            for(int i = 0; i < linerList.size(); i++){
+                allocator.prepareVariable(linerList.get(i));
+                Operand destOperand = allocator.getOperandOfPtr(dest);
+                if(linerList.get(i).getType() instanceof IntType){
+                    ((IndirectRegister)destOperand).addOffset(i * 4);
+                    riscInstructions.add(new RiscFsw(new Register("ft1"), destOperand));
+                }
+                else{
+                    ((IndirectRegister)destOperand).addOffset(i * 4);
+                    riscInstructions.add(new RiscSw(new Register("t1"), destOperand));
+                }
+            }
         }
+        else {
+            allocator.prepareVariable(src);
 
+            Operand destOperand = allocator.getOperandOfPtr(dest);
+
+            if(dest instanceof GlobalVar){
+                riscInstructions.add(new RiscSymbolSw(new Register("t1"), destOperand, new Register("t0")));
+            } else {
+                riscInstructions.add(new RiscSw(new Register("t1"), destOperand));
+            }
+        }
     }
 
     @Override
