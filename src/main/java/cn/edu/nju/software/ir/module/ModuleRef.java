@@ -169,8 +169,6 @@ public class ModuleRef {
     }
 
     public void dumpToConsole() {
-//        Optimizer optimizer = new Optimizer(this);
-//        optimizer.optimize();
         System.out.println("; ModuleId = '" + moduleId + "'");
         System.out.println("source_filename = \"" + moduleId + "\"");
         System.out.println(); // an empty line
@@ -201,8 +199,8 @@ public class ModuleRef {
             System.out.print("(");
             for (int i = 0; i < ft.getFParametersCount(); i++) {
                 LocalVar fParam = fv.getParam(i);
-                System.out.print(fParam.getType() + " %");
-                System.out.print(fParam.getName());
+                System.out.print(fParam.getType() + " ");
+                System.out.print(fParam);
                 if (i < ft.getFParametersCount() - 1) {
                     System.out.print(", ");
                 }

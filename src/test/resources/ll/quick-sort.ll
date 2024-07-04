@@ -1,6 +1,21 @@
 ; ModuleId = 'module'
 source_filename = "module"
 
+declare i32 @getint()
+declare i32 @getch()
+declare float @getfloat()
+declare i32 @getarray(i32*)
+declare i32 @getfarray(float*)
+declare void @putint(i32)
+declare void @putch(i32)
+declare void @putfloat(float)
+declare void @putarray(i32, i32*)
+declare void @putfarray(i32, float*)
+declare void @_sysy_starttime(i32)
+declare void @_sysy_stoptime(i32)
+declare void @memset(i32*, i32, i32)
+
+
 @arr = global [6 x i32] [i32 10, i32 7, i32 8, i32 9, i32 1, i32 5], align 4
 
 define i32 @partition(i32* %0, i32 %1, i32 %2) {
@@ -12,96 +27,96 @@ partitionEntry:
   %high = alloca i32, align 4
   store i32 %2, i32* %high, align 4
   %pivot = alloca i32, align 4
-  %high1 = load i32, i32* %high, align 4
+  %high$1 = load i32, i32* %high, align 4
   %arr_ = load i32*, i32** %arr, align 4
-  %arr1 = getelementptr i32, i32* %arr_, i32 %high1
-  %arr2 = load i32, i32* %arr1, align 4
-  store i32 %arr2, i32* %pivot, align 4
+  %arr$1 = getelementptr i32, i32* %arr_, i32 %high$1
+  %arr$2 = load i32, i32* %arr$1, align 4
+  store i32 %arr$2, i32* %pivot, align 4
   %i = alloca i32, align 4
-  %low1 = load i32, i32* %low, align 4
-  %result_ = sub i32 %low1, 1
+  %low$1 = load i32, i32* %low, align 4
+  %result_ = sub i32 %low$1, 1
   store i32 %result_, i32* %i, align 4
   %j = alloca i32, align 4
-  %low2 = load i32, i32* %low, align 4
-  store i32 %low2, i32* %j, align 4
-  br label %whileCond_21
+  %low$2 = load i32, i32* %low, align 4
+  store i32 %low$2, i32* %j, align 4
+  br label %whileCond_20
 
-whileCond_21:                                          ; pred = %partitionEntry, %next_34
-  %j1 = load i32, i32* %j, align 4
-  %high2 = load i32, i32* %high, align 4
-  %result_1 = sub i32 %high2, 1
-  %cond_le_tmp_ = icmp sle i32 %j1, %result_1
+whileCond_20:                                          ; pred = %partitionEntry, %next_35
+  %j$1 = load i32, i32* %j, align 4
+  %high$2 = load i32, i32* %high, align 4
+  %result_$1 = sub i32 %high$2, 1
+  %cond_le_tmp_ = icmp sle i32 %j$1, %result_$1
   %cond_tmp_ = zext i1 %cond_le_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_21, label %next_33
+  br i1 %cond_, label %whileBody_20, label %next_34
 
-whileBody_21:                                          ; pred = %whileCond_21
-  %j2 = load i32, i32* %j, align 4
-  %arr_1 = load i32*, i32** %arr, align 4
-  %arr3 = getelementptr i32, i32* %arr_1, i32 %j2
-  %arr4 = load i32, i32* %arr3, align 4
-  %pivot1 = load i32, i32* %pivot, align 4
-  %cond_lt_tmp_ = icmp slt i32 %arr4, %pivot1
-  %cond_tmp_1 = zext i1 %cond_lt_tmp_ to i32
-  %cond_1 = icmp ne i32 %cond_tmp_1, 0
-  br i1 %cond_1, label %ifTrue_12, label %next_34
+whileBody_20:                                          ; pred = %whileCond_20
+  %j$2 = load i32, i32* %j, align 4
+  %arr_$1 = load i32*, i32** %arr, align 4
+  %arr$3 = getelementptr i32, i32* %arr_$1, i32 %j$2
+  %arr$4 = load i32, i32* %arr$3, align 4
+  %pivot$1 = load i32, i32* %pivot, align 4
+  %cond_lt_tmp_ = icmp slt i32 %arr$4, %pivot$1
+  %cond_tmp_$1 = zext i1 %cond_lt_tmp_ to i32
+  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
+  br i1 %cond_$1, label %ifTrue_14, label %next_35
 
-next_33:                                               ; pred = %whileCond_21
-  %t2 = alloca i32, align 4
-  %i4 = load i32, i32* %i, align 4
-  %result_4 = add i32 %i4, 1
-  %arr_6 = load i32*, i32** %arr, align 4
-  %arr11 = getelementptr i32, i32* %arr_6, i32 %result_4
-  %arr12 = load i32, i32* %arr11, align 4
-  store i32 %arr12, i32* %t2, align 4
-  %i5 = load i32, i32* %i, align 4
-  %result_5 = add i32 %i5, 1
-  %arr_7 = load i32*, i32** %arr, align 4
-  %arr13 = getelementptr i32, i32* %arr_7, i32 %result_5
-  %high3 = load i32, i32* %high, align 4
-  %arr_8 = load i32*, i32** %arr, align 4
-  %arr14 = getelementptr i32, i32* %arr_8, i32 %high3
-  %arr15 = load i32, i32* %arr14, align 4
-  store i32 %arr15, i32* %arr13, align 4
-  %high4 = load i32, i32* %high, align 4
-  %arr_9 = load i32*, i32** %arr, align 4
-  %arr16 = getelementptr i32, i32* %arr_9, i32 %high4
-  %t3 = load i32, i32* %t2, align 4
-  store i32 %t3, i32* %arr16, align 4
-  %i6 = load i32, i32* %i, align 4
-  %result_6 = add i32 %i6, 1
-  ret i32 %result_6
+next_34:                                               ; pred = %whileCond_20
+  %t$2 = alloca i32, align 4
+  %i$4 = load i32, i32* %i, align 4
+  %result_$4 = add i32 %i$4, 1
+  %arr_$6 = load i32*, i32** %arr, align 4
+  %arr$11 = getelementptr i32, i32* %arr_$6, i32 %result_$4
+  %arr$12 = load i32, i32* %arr$11, align 4
+  store i32 %arr$12, i32* %t$2, align 4
+  %i$5 = load i32, i32* %i, align 4
+  %result_$5 = add i32 %i$5, 1
+  %arr_$7 = load i32*, i32** %arr, align 4
+  %arr$13 = getelementptr i32, i32* %arr_$7, i32 %result_$5
+  %high$3 = load i32, i32* %high, align 4
+  %arr_$8 = load i32*, i32** %arr, align 4
+  %arr$14 = getelementptr i32, i32* %arr_$8, i32 %high$3
+  %arr$15 = load i32, i32* %arr$14, align 4
+  store i32 %arr$15, i32* %arr$13, align 4
+  %high$4 = load i32, i32* %high, align 4
+  %arr_$9 = load i32*, i32** %arr, align 4
+  %arr$16 = getelementptr i32, i32* %arr_$9, i32 %high$4
+  %t$3 = load i32, i32* %t$2, align 4
+  store i32 %t$3, i32* %arr$16, align 4
+  %i$6 = load i32, i32* %i, align 4
+  %result_$6 = add i32 %i$6, 1
+  ret i32 %result_$6
 
-ifTrue_12:                                             ; pred = %whileBody_21
-  %i1 = load i32, i32* %i, align 4
-  %result_2 = add i32 %i1, 1
-  store i32 %result_2, i32* %i, align 4
+ifTrue_14:                                             ; pred = %whileBody_20
+  %i$1 = load i32, i32* %i, align 4
+  %result_$2 = add i32 %i$1, 1
+  store i32 %result_$2, i32* %i, align 4
   %t = alloca i32, align 4
-  %i2 = load i32, i32* %i, align 4
-  %arr_2 = load i32*, i32** %arr, align 4
-  %arr5 = getelementptr i32, i32* %arr_2, i32 %i2
-  %arr6 = load i32, i32* %arr5, align 4
-  store i32 %arr6, i32* %t, align 4
-  %i3 = load i32, i32* %i, align 4
-  %arr_3 = load i32*, i32** %arr, align 4
-  %arr7 = getelementptr i32, i32* %arr_3, i32 %i3
-  %j3 = load i32, i32* %j, align 4
-  %arr_4 = load i32*, i32** %arr, align 4
-  %arr8 = getelementptr i32, i32* %arr_4, i32 %j3
-  %arr9 = load i32, i32* %arr8, align 4
-  store i32 %arr9, i32* %arr7, align 4
-  %j4 = load i32, i32* %j, align 4
-  %arr_5 = load i32*, i32** %arr, align 4
-  %arr10 = getelementptr i32, i32* %arr_5, i32 %j4
-  %t1 = load i32, i32* %t, align 4
-  store i32 %t1, i32* %arr10, align 4
-  br label %next_34
+  %i$2 = load i32, i32* %i, align 4
+  %arr_$2 = load i32*, i32** %arr, align 4
+  %arr$5 = getelementptr i32, i32* %arr_$2, i32 %i$2
+  %arr$6 = load i32, i32* %arr$5, align 4
+  store i32 %arr$6, i32* %t, align 4
+  %i$3 = load i32, i32* %i, align 4
+  %arr_$3 = load i32*, i32** %arr, align 4
+  %arr$7 = getelementptr i32, i32* %arr_$3, i32 %i$3
+  %j$3 = load i32, i32* %j, align 4
+  %arr_$4 = load i32*, i32** %arr, align 4
+  %arr$8 = getelementptr i32, i32* %arr_$4, i32 %j$3
+  %arr$9 = load i32, i32* %arr$8, align 4
+  store i32 %arr$9, i32* %arr$7, align 4
+  %j$4 = load i32, i32* %j, align 4
+  %arr_$5 = load i32*, i32** %arr, align 4
+  %arr$10 = getelementptr i32, i32* %arr_$5, i32 %j$4
+  %t$1 = load i32, i32* %t, align 4
+  store i32 %t$1, i32* %arr$10, align 4
+  br label %next_35
 
-next_34:                                               ; pred = %whileBody_21, %ifTrue_12
-  %j5 = load i32, i32* %j, align 4
-  %result_3 = add i32 %j5, 1
-  store i32 %result_3, i32* %j, align 4
-  br label %whileCond_21
+next_35:                                               ; pred = %whileBody_20, %ifTrue_14
+  %j$5 = load i32, i32* %j, align 4
+  %result_$3 = add i32 %j$5, 1
+  store i32 %result_$3, i32* %j, align 4
+  br label %whileCond_20
 }
 
 define void @quick_sort(i32* %0, i32 %1, i32 %2) {
@@ -112,33 +127,33 @@ quick_sortEntry:
   store i32 %1, i32* %low, align 4
   %high = alloca i32, align 4
   store i32 %2, i32* %high, align 4
-  %low1 = load i32, i32* %low, align 4
-  %high1 = load i32, i32* %high, align 4
-  %cond_lt_tmp_ = icmp slt i32 %low1, %high1
+  %low$1 = load i32, i32* %low, align 4
+  %high$1 = load i32, i32* %high, align 4
+  %cond_lt_tmp_ = icmp slt i32 %low$1, %high$1
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_13, label %next_35
+  br i1 %cond_, label %ifTrue_15, label %next_36
 
-ifTrue_13:                                              ; pred = %quick_sortEntry
+ifTrue_15:                                              ; pred = %quick_sortEntry
   %pi = alloca i32, align 4
-  %arr1 = load i32*, i32** %arr, align 4
-  %low2 = load i32, i32* %low, align 4
-  %high2 = load i32, i32* %high, align 4
-  %partition = call i32 @partition(i32* %arr1, i32 %low2, i32 %high2)
+  %arr$1 = load i32*, i32** %arr, align 4
+  %low$2 = load i32, i32* %low, align 4
+  %high$2 = load i32, i32* %high, align 4
+  %partition = call i32 @partition(i32* %arr$1, i32 %low$2, i32 %high$2)
   store i32 %partition, i32* %pi, align 4
-  %arr2 = load i32*, i32** %arr, align 4
-  %low3 = load i32, i32* %low, align 4
-  %pi1 = load i32, i32* %pi, align 4
-  %result_ = sub i32 %pi1, 1
-  call void @quick_sort(i32* %arr2, i32 %low3, i32 %result_)
-  %arr3 = load i32*, i32** %arr, align 4
-  %pi2 = load i32, i32* %pi, align 4
-  %result_1 = add i32 %pi2, 1
-  %high3 = load i32, i32* %high, align 4
-  call void @quick_sort(i32* %arr3, i32 %result_1, i32 %high3)
-  br label %next_35
+  %arr$2 = load i32*, i32** %arr, align 4
+  %low$3 = load i32, i32* %low, align 4
+  %pi$1 = load i32, i32* %pi, align 4
+  %result_ = sub i32 %pi$1, 1
+  call void @quick_sort(i32* %arr$2, i32 %low$3, i32 %result_)
+  %arr$3 = load i32*, i32** %arr, align 4
+  %pi$2 = load i32, i32* %pi, align 4
+  %result_$1 = add i32 %pi$2, 1
+  %high$3 = load i32, i32* %high, align 4
+  call void @quick_sort(i32* %arr$3, i32 %result_$1, i32 %high$3)
+  br label %next_36
 
-next_35:                                                ; pred = %quick_sortEntry, %ifTrue_13
+next_36:                                                ; pred = %quick_sortEntry, %ifTrue_15
   ret void
 }
 
@@ -147,11 +162,11 @@ mainEntry8:
   %n = alloca i32, align 4
   store i32 6, i32* %n, align 4
   %arr = getelementptr [6 x i32], [6 x i32]* @arr, i32 0, i32 0
-  %n1 = load i32, i32* %n, align 4
-  %result_ = sub i32 %n1, 1
+  %n$1 = load i32, i32* %n, align 4
+  %result_ = sub i32 %n$1, 1
   call void @quick_sort(i32* %arr, i32 0, i32 %result_)
-  %arr1 = getelementptr [6 x i32], [6 x i32]* @arr, i32 0, i32 4
-  %arr2 = load i32, i32* %arr1, align 4
-  ret i32 %arr2
+  %arr$1 = getelementptr [6 x i32], [6 x i32]* @arr, i32 0, i32 4
+  %arr$2 = load i32, i32* %arr$1, align 4
+  ret i32 %arr$2
 }
 

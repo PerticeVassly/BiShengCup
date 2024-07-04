@@ -669,223 +669,282 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     }
     @Override
     public ValueRef visitVarDef(SysYParser.VarDefContext ctx) {
-        if (global()) {
-            SysYParser.VarDeclContext parent = (SysYParser.VarDeclContext) ctx.getParent();
-            GlobalVar globalVar;
-            TypeRef type;
-            if (parent.bType().INT() != null){
-                type = i32Type;
+        SysYParser.VarDeclContext parent = (SysYParser.VarDeclContext) ctx.getParent();
+        GlobalVar globalVar = null;
+        LocalVar localVar = null;
+        TypeRef type;
+        if (parent.bType().INT() != null){
+            type = i32Type;
+        } else {
+            type = floatType;
+        }
+        if (ctx.constExp() == null || ctx.constExp().isEmpty()) {
+            // base var
+            if (global()) {
+                globalVar = gen.addGlobal(module, type, "gv");
             } else {
-                type = floatType;
+                localVar = gen.buildAllocate(builder, type, "lv");
             }
-            if (ctx.L_BRACKT() == null || ctx.L_BRACKT().isEmpty()) {
-                globalVar = gen.addGlobal(module, type, ctx.IDENT().getText());
-            } else {
-                // array, array size is a compiling constant
-                int dim = ctx.constExp().size();
-                int size = getIntConst(ctx.constExp(dim - 1));
-                ArrayType arrayType = new ArrayType(type, size);
-                for (int i = dim - 2; i >= 0; i--) {
-                    // todo: int a[N + 1]
-                    size = getIntConst(ctx.constExp(i));
-                    arrayType = new ArrayType(arrayType, size);
-                }
-//                            System.err.println(arrayType);
-                globalVar = gen.addGlobal(module, arrayType, ctx.IDENT().getText());
+        } else {
+            // array
+            arrayInit = new ArrayList<>();
+            curDim = 0;
+            int dim = ctx.constExp().size();
+            int size = getIntConst(ctx.constExp(dim - 1));
+            ArrayType arrayType = new ArrayType(type, size);
+            for (int i = dim - 2; i >= 0; i--) {
+                // todo: int a[N + 1]
+                size = getIntConst(ctx.constExp(i));
+                arrayType = new ArrayType(arrayType, size);
             }
-            // todo array initializer
-            if (ctx.initVal() != null) {
-                ValueRef initVal = visitInitVal(ctx.initVal());
-                if (initVal instanceof Variable var && ctx.initVal().exp() != null) {
-                    var.mergeValue(expValue(ctx.initVal().exp()));
-                }
-                gen.setInitValue(globalVar, initVal);
-                valuePropagate(globalVar, initVal);
+            elementDim = new ArrayList<>();
+            for (TypeRef tmp = arrayType; tmp instanceof ArrayType; tmp = ((ArrayType) tmp).getElementType()) {
+                elementDim.add(((ArrayType) tmp).getElementSize());
+            }
+            if (global()) {
+                globalVar = gen.addGlobal(module, arrayType, "gv");
             } else {
+                localVar = gen.buildAllocate(builder, arrayType, "lv");
+            }
+        }
+        // init
+        if (ctx.initVal() != null) {
+            // need to initialize
+            if (global()) {
+                // global variable
+                if (globalVar != null && !(((Pointer)(globalVar.getType())).getBase() instanceof ArrayType)) {
+                    // base type
+                    ValueRef init = visitInitVal(ctx.initVal());
+                    gen.setInitValue(globalVar, init);
+                    valuePropagate(globalVar, init);
+                } else if (globalVar != null) {
+                    // array
+                    arrayInit = new ArrayList<>();
+                    visitInitVal(ctx.initVal());
+                    ArrayType arrayType = (ArrayType) (((Pointer) globalVar.getType()).getBase());
+
+                    ptr = 0;
+                    ArrayValue av = getArrayValue(arrayType);
+                    gen.setInitValue(globalVar, av);
+                }
+            } else {
+                // local variable
+                if (localVar != null && !(((Pointer)(localVar.getType())).getBase() instanceof ArrayType)) {
+                    // base type
+                    ValueRef init = visitInitVal(ctx.initVal());
+                    gen.buildStore(builder, init, localVar);
+                    valuePropagate(localVar, init);
+                } else if (localVar != null) {
+                    // array
+                    arrayInit = new ArrayList<>();
+                    visitInitVal(ctx.initVal());
+                    /* initialize array for local variable
+                     * consider use GEP to get store target %p
+                     * store %init %p
+                     */
+                    int dims = elementDim.size();
+                    ValueRef[] indices = new ValueRef[dims];
+                    for (int i = 0; i < arrayInit.size(); i++) {
+                        ValueRef storeVal = arrayInit.get(i);
+                        int tmp = i;
+                        for (int j = dims - 1; j >= 0; j--) {
+                            indices[j] = gen.ConstInt(i32Type, tmp % elementDim.get(j));
+                            tmp /= elementDim.get(j);
+                        }
+                        ValueRef ptr = gen.buildGEP(builder, localVar, indices, dims, "inp");
+                        gen.buildStore(builder, storeVal, ptr);
+                    }
+                }
+            }
+        } else {
+            if (global() && globalVar != null){
                 gen.setInitValue(globalVar, zero);
                 valuePropagate(globalVar, zero);
             }
+        }
+        if (global()) {
             curScope.put(new Symbol<>(ctx.IDENT().getText(), globalVar));
-            return globalVar;
         } else {
-            TypeRef type;
-            SysYParser.VarDeclContext parent = (SysYParser.VarDeclContext) ctx.getParent();
-            if (parent.bType().INT() != null) {
-                type = i32Type;
-            } else {
-                type = floatType;
-            }
-            if (ctx.L_BRACKT() != null && !ctx.L_BRACKT().isEmpty()) {
-                int dim = ctx.constExp().size();
-                // todo: int a[N + 1]
-                int size = 0;
-                for (int i = dim - 1; i >= 0; i--) {
-                    size = getIntConst(ctx.constExp(i));
-                    type = new ArrayType(type, size);
-                }
-            }
-            LocalVar localVar = gen.buildAllocate(builder, type, ctx.IDENT().getText());
-            // todo array initializer
-            if (ctx.initVal() != null) {
-                ValueRef initVal = visitInitVal(ctx.initVal());
-                gen.buildStore(builder, initVal, localVar); // store initVal to localVar
-
-                if (initVal instanceof Variable var && ctx.initVal().exp() != null) {
-                    var.mergeValue(expValue(ctx.initVal().exp()));
-                }
-                valuePropagate(localVar, initVal);
-            }
             curScope.put(new Symbol<>(ctx.IDENT().getText(), localVar));
-            return localVar;
         }
+        return null;
     }
-    private ValueRef[] allElements;
-    int idx = 0;
-    private ValueRef arrayInitial(SysYParser.InitValContext ctx) {
-        // array initial
-        int initSize = ctx.initVal().size();
-        int depth = 0;
-        ParserRuleContext tmp = ctx;
-        if (!(ctx.getParent() instanceof SysYParser.InitValContext)) {
-            // start from varDef
-            SysYParser.VarDefContext def = (SysYParser.VarDefContext) ctx.getParent();
-            int dim = def.L_BRACKT().size();
-            int[] widths = new int[dim];        // from low to high
-            int totalNum = 1;
-            for (int i = dim - 1; i >= 0; i--) {
-                widths[i] = getIntConst(def.constExp(i));
-                totalNum *= widths[i];
+    private int ptr = 0;
+    private ArrayValue getArrayValue(ArrayType arrayType) {
+        int size = arrayType.getElementSize();
+        ArrayList<ValueRef> tmp = new ArrayList<>();
+        if (!(arrayType.getElementType() instanceof ArrayType)) {
+            for (int i = ptr; ptr < i + size; ptr++) {
+                tmp.add(arrayInit.get(ptr));
             }
-
-            allElements = new ValueRef[totalNum];
-
-        }
-
-        // not real depth
-
-        while (tmp.getParent() instanceof SysYParser.InitValContext) {
-            depth++; // it's actually not the real depth
-            tmp = tmp.getParent();
-        }
-        SysYParser.VarDefContext parent = (SysYParser.VarDefContext) tmp.getParent(); // array ctx parent must have '{'
-        int realSize = getIntConst(parent.constExp(depth));
-        ArrayValue array = new ArrayValue(realSize); // not true
-        ValueRef[] elements = new ValueRef[initSize];
-        for (int i = 0; i < initSize; i++) {
-            elements[i] = arrayInitial(ctx.initVal(i));
-            allElements[idx++] = elements[i];
-        }
-        TypeRef elementType;
-//            SysYParser.VarDeclContext t = (SysYParser.VarDeclContext) parent.getParent();
-//            if (t.bType().INT() != null) {
-//                elementType = i32Type;
-//            } else {
-//                elementType = floatType;
-//            }
-        if (initSize > 0 && elements[0].getType() instanceof ArrayType) {
-            elementType = elements[0].getType();
         } else {
-            SysYParser.VarDeclContext t = (SysYParser.VarDeclContext) parent.getParent();
-            if (t.bType().INT() != null) {
-                elementType = i32Type;
-                for (int i = 0; i < elements.length; i++) {
-                    if (elements[i].getType().equals(floatType)) {
-                        if (elements[i] instanceof ConstValue) {
-                            elements[i] = gen.ConstInt(i32Type, (int) (float)((ConstValue) elements[i]).getValue());
-                        } else {
-                            elements[i] = gen.buildFloatToInt(builder, elements[i], "f2i_");
-                        }
-                    }
-                }
-            } else {
-                elementType = floatType;
-                for (int i = 0; i < elements.length; i++) {
-                    if (elements[i].getType().equals(i32Type)) {
-                        if (elements[i] instanceof ConstValue) {
-                            elements[i] = gen.ConstFloat(floatType, (float) (int)((ConstValue) elements[i]).getValue());
-                        } else {
-                            elements[i] = gen.buildIntToFloat(builder, elements[i], "i2f_");
-                        }
-                    }
-                }
+            for (int i = 0; i < size; i++) {
+                tmp.add(getArrayValue((ArrayType) arrayType.getElementType()));
             }
         }
-        ArrayType arrayType = new ArrayType(elementType, realSize);
-        array.update(arrayType, elementType, elements);
-        return array;
+        return new ArrayValue(arrayType, tmp);
     }
 
+    private int curDim = 0;
+    private ArrayList<ValueRef> arrayInit = new ArrayList<>();
+    private ArrayList<Integer> elementDim = new ArrayList<>();
     @Override
     public ValueRef visitInitVal(SysYParser.InitValContext ctx) {
         if (ctx.exp() != null) {
             return visitExp(ctx.exp());
         } else {
-            return arrayInitial(ctx);
+            // array initial
+            int bottom = curDim; // no less than current dim
+            boolean begin = false;
+            int curCnt = 0, curMaxCnt = 0;
+            for (SysYParser.InitValContext initValCtx : ctx.initVal()) {
+                System.err.println(initValCtx.getText() + " " + curDim);
+                if (initValCtx.exp() != null) {
+                    if (!begin) {
+                        begin = true;
+                        // as long as no {}, the current dim is the lowest dim
+                        curDim = elementDim.size() - 1;
+                        curMaxCnt = elementDim.get(curDim);
+                        curCnt = 0;
+                    }
+                    arrayInit.add(visitInitVal(initValCtx));
+                } else {
+                    int tmp = curDim;
+                    curDim++;
+                    visitInitVal(initValCtx);
+                    curDim = tmp;
+                }
+                curCnt++;
+                if (curCnt >= curMaxCnt) {
+                    // a dim is full now, reset and proc
+                    begin = false; // reset
+                    curDim--;
+                    if (curDim <= bottom) {
+                        curDim = bottom;
+                    }
+                    curMaxCnt = elementDim.get(curDim); // same as 'curMaxCnt = ...' above
+//                    int bottomCnt = 1;
+//                    for (int i = curDim + 1; i < elementDim.size(); i++) {
+//                        bottomCnt *= elementDim.get(i);
+//                    }
+//                    curCnt = arrayInit.size() / bottomCnt; // todo : conprehence why
+                }
+            }
+
+            int tot = 1;
+            for (int i = bottom; i < elementDim.size(); i++) {
+                tot *= elementDim.get(i);
+            }
+            if (arrayInit.size() % tot != 0 || ctx.initVal().isEmpty()) {
+                for (int i = arrayInit.size() % tot; i < tot; i++) {
+                    arrayInit.add(zero); // fill the non-init location
+                }
+            }
+            return null;
         }
     }
     @Override
     public ValueRef visitConstDef(SysYParser.ConstDefContext ctx) {
         // almost same as varDef
         SysYParser.ConstDeclContext parent = (SysYParser.ConstDeclContext) ctx.getParent();
-        if (global()) {
-            GlobalVar globalVar;
-            TypeRef type;
-            if (parent.bType().INT() != null){
-                type = i32Type;
+        GlobalVar globalVar = null;
+        LocalVar localVar = null;
+        TypeRef type;
+        if (parent.bType().INT() != null){
+            type = i32Type;
+        } else {
+            type = floatType;
+        }
+        if (ctx.constExp() == null || ctx.constExp().isEmpty()) {
+            // base var
+            if (global()) {
+                globalVar = gen.addGlobal(module, type, "gv");
             } else {
-                type = floatType;
+                localVar = gen.buildAllocate(builder, type, "lv");
             }
-            if (ctx.L_BRACKT() == null || ctx.L_BRACKT().isEmpty()) {
-                globalVar = gen.addGlobal(module, type, ctx.IDENT().getText());
+        } else {
+            // array
+            arrayInit = new ArrayList<>();
+            curDim = 0;
+            int dim = ctx.constExp().size();
+            int size = getIntConst(ctx.constExp(dim - 1));
+            ArrayType arrayType = new ArrayType(type, size);
+            for (int i = dim - 2; i >= 0; i--) {
+                // todo: int a[N + 1]
+                size = getIntConst(ctx.constExp(i));
+                arrayType = new ArrayType(arrayType, size);
+            }
+            elementDim = new ArrayList<>();
+            for (TypeRef tmp = arrayType; tmp instanceof ArrayType; tmp = ((ArrayType) tmp).getElementType()) {
+                elementDim.add(((ArrayType) tmp).getElementSize());
+            }
+            if (global()) {
+                globalVar = gen.addGlobal(module, arrayType, "gv");
             } else {
-                // array, array size is a compiling constant
-                int dim = ctx.constExp().size();
-                int size = string2Int(ctx.constExp(dim - 1).getText());
-                ArrayType arrayType = new ArrayType(type, size);
-                for (int i = dim - 2; i >= 0; i--) {
-                    size = string2Int(ctx.constExp(i).getText());
-                    arrayType = new ArrayType(arrayType, size);
+                localVar = gen.buildAllocate(builder, arrayType, "lv");
+            }
+        }
+        // init
+        if (ctx.constInitVal() != null) {
+            // need to initialize
+            if (global()) {
+                // global variable
+                if (globalVar != null && !(((Pointer)(globalVar.getType())).getBase() instanceof ArrayType)) {
+                    // base type
+                    ValueRef init = visitConstInitVal(ctx.constInitVal());
+                    gen.setInitValue(globalVar, init);
+                    valuePropagate(globalVar, init);
+                } else if (globalVar != null) {
+                    // array
+                    arrayInit = new ArrayList<>();
+                    visitConstInitVal(ctx.constInitVal());
+                    ArrayType arrayType = (ArrayType) (((Pointer) globalVar.getType()).getBase());
+
+                    ptr = 0;
+                    ArrayValue av = getArrayValue(arrayType);
+                    gen.setInitValue(globalVar, av);
                 }
-                globalVar = gen.addGlobal(module, arrayType, ctx.IDENT().getText());
-            }
-            // todo array initializer
-            if (ctx.constInitVal() != null) {
-                ValueRef initVal = visitConstInitVal(ctx.constInitVal());
-                gen.setInitValue(globalVar, initVal);
-                valuePropagate(globalVar, initVal);
             } else {
+                // local variable
+                if (localVar != null && !(((Pointer)(localVar.getType())).getBase() instanceof ArrayType)) {
+                    // base type
+                    ValueRef init = visitConstInitVal(ctx.constInitVal());
+                    gen.buildStore(builder, init, localVar);
+                    valuePropagate(localVar, init);
+                } else if (localVar != null) {
+                    // array
+                    arrayInit = new ArrayList<>();
+                    visitConstInitVal(ctx.constInitVal());
+                    /* initialize array for local variable
+                     * consider use GEP to get store target %p
+                     * store %init %p
+                     */
+                    int dims = elementDim.size();
+                    ValueRef[] indices = new ValueRef[dims];
+                    for (int i = 0; i < arrayInit.size(); i++) {
+                        ValueRef storeVal = arrayInit.get(i);
+                        int tmp = i;
+                        for (int j = dims - 1; j >= 0; j--) {
+                            indices[j] = gen.ConstInt(i32Type, tmp % elementDim.get(j));
+                            tmp /= elementDim.get(j);
+                        }
+                        ValueRef ptr = gen.buildGEP(builder, localVar, indices, dims, "inp");
+                        gen.buildStore(builder, storeVal, ptr);
+                    }
+                }
+            }
+        } else {
+            if (global() && globalVar != null){
                 gen.setInitValue(globalVar, zero);
                 valuePropagate(globalVar, zero);
             }
-            curScope.put(new Symbol<>(ctx.IDENT().getText(), globalVar));
-            return globalVar;
-        } else {
-            TypeRef type;
-            if (parent.bType().INT() != null) {
-                type = i32Type;
-            } else {
-                type = floatType;
-            }
-            if (ctx.L_BRACKT() != null && !ctx.L_BRACKT().isEmpty()) {
-                int dim = ctx.constExp().size();
-                for (int i = dim - 1; i >= 0; i--) {
-                    // todo: int a[N + 1]
-                    int size = getIntConst(ctx.constExp(i));
-                    type = new ArrayType(type, size);
-                }
-            }
-            LocalVar localVar = gen.buildAllocate(builder, type, ctx.IDENT().getText());
-            // todo array initializer
-            if (ctx.constInitVal() != null) {
-                ValueRef initVal = visitConstInitVal(ctx.constInitVal());
-                gen.buildStore(builder, initVal, localVar); // store initVal to localVar
-
-                // for int arr[a]:
-                valuePropagate(localVar, initVal);
-            }
-            curScope.put(new Symbol<>(ctx.IDENT().getText(), localVar));
-            return localVar;
         }
+        if (global()) {
+            curScope.put(new Symbol<>(ctx.IDENT().getText(), globalVar));
+        } else {
+            curScope.put(new Symbol<>(ctx.IDENT().getText(), localVar));
+        }
+        return null;
     }
     @Override
     public ValueRef visitConstInitVal(SysYParser.ConstInitValContext ctx) {
@@ -893,16 +952,47 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return visitConstExp(ctx.constExp());
         } else {
             // array initial
-            int size = ctx.constInitVal().size();
-            ArrayValue array = new ArrayValue(size);
-            ValueRef[] elements = new ValueRef[size];
-            for (int i = 0; i < size; i++) {
-                elements[i] = visitConstInitVal(ctx.constInitVal(i));
+            int bottom = curDim; // no less than current dim
+            boolean begin = false;
+            int curCnt = 0, curMaxCnt = 0;
+            for (SysYParser.ConstInitValContext constInitValCtx : ctx.constInitVal()) {
+                if (constInitValCtx.constExp() != null) {
+                    if (!begin) {
+                        begin = true;
+                        curMaxCnt = elementDim.get(curDim);
+                        curCnt = 0;
+                        // as long as no {}, the current dim is the lowest dim
+                        curDim = elementDim.size() - 1;
+                    }
+                    arrayInit.add(visitConstInitVal(constInitValCtx));
+                } else {
+                    int tmp = curDim;
+                    curDim++;
+                    visitConstInitVal(constInitValCtx);
+                    curDim = tmp;
+                }
+                curCnt++;
+                if (curCnt >= curMaxCnt) {
+                    // a dim is full now, reset and proc
+                    begin = false; // reset
+                    curDim--;
+                    if (curDim <= bottom) {
+                        curDim = bottom;
+                    }
+                    curMaxCnt = elementDim.get(curDim); // same as 'curMaxCnt = ...' above
+                }
             }
-            TypeRef elementType = elements[0].getType();
-            ArrayType arrayType = new ArrayType(elementType, size);
-            array.update(arrayType, elementType, elements);
-            return array;
+
+            int tot = 1;
+            for (int i = bottom; i < elementDim.size(); i++) {
+                tot *= elementDim.get(i);
+            }
+            if (arrayInit.size() % tot != 0 || ctx.constInitVal().isEmpty()) {
+                for (int i = arrayInit.size() % tot; i < tot; i++) {
+                    arrayInit.add(zero); // fill the non-init location
+                }
+            }
+            return null;
         }
     }
     @Override

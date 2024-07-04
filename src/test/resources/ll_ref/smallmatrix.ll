@@ -5,7 +5,7 @@ target triple = "x86_64-pc-linux-gnu"
 
 @a = dso_local global [4 x [4 x i32]] [[4 x i32] [i32 3, i32 5, i32 9, i32 2], [4 x i32] [i32 3, i32 5, i32 6, i32 6], [4 x i32] [i32 1, i32 4, i32 9, i32 2], [4 x i32] [i32 7, i32 8, i32 1, i32 2]], align 16
 @b = dso_local global [4 x [4 x i32]] [[4 x i32] [i32 2, i32 2, i32 9, i32 0], [4 x i32] [i32 1, i32 2, i32 3, i32 4], [4 x i32] [i32 2, i32 8, i32 7, i32 1], [4 x i32] [i32 4, i32 2, i32 5, i32 5]], align 16
-@c = dso_local global [0 x [0 x i32]] zeroinitializer, align 4
+@c = common dso_local global [0 x [0 x i32]] zeroinitializer, align 4
 
 ; Function Attrs: noinline nounwind optnone uwtable
 define dso_local i32 @main() #0 {
@@ -81,37 +81,29 @@ define dso_local i32 @main() #0 {
   %50 = load i32, i32* %4, align 4
   %51 = add nsw i32 %50, 1
   store i32 %51, i32* %4, align 4
-  br label %16, !llvm.loop !6
+  br label %16
 
 52:                                               ; preds = %16
   %53 = load i32, i32* %3, align 4
   %54 = add nsw i32 %53, 1
   store i32 %54, i32* %3, align 4
-  br label %11, !llvm.loop !8
+  br label %11
 
 55:                                               ; preds = %11
   %56 = load i32, i32* %2, align 4
   %57 = add nsw i32 %56, 1
   store i32 %57, i32* %2, align 4
-  br label %6, !llvm.loop !9
+  br label %6
 
 58:                                               ; preds = %6
   %59 = load i32, i32* getelementptr inbounds ([0 x [0 x i32]], [0 x [0 x i32]]* @c, i64 0, i64 0, i64 0), align 4
   ret i32 %59
 }
 
-attributes #0 = { noinline nounwind optnone uwtable "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
 
-!llvm.module.flags = !{!0, !1, !2, !3, !4}
-!llvm.ident = !{!5}
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
 
 !0 = !{i32 1, !"wchar_size", i32 4}
-!1 = !{i32 7, !"PIC Level", i32 2}
-!2 = !{i32 7, !"PIE Level", i32 2}
-!3 = !{i32 7, !"uwtable", i32 1}
-!4 = !{i32 7, !"frame-pointer", i32 2}
-!5 = !{!"Ubuntu clang version 14.0.0-1ubuntu1.1"}
-!6 = distinct !{!6, !7}
-!7 = !{!"llvm.loop.mustprogress"}
-!8 = distinct !{!8, !7}
-!9 = distinct !{!9, !7}
+!1 = !{!"clang version 10.0.0-4ubuntu1 "}

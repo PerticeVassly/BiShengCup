@@ -6,7 +6,7 @@ target triple = "x86_64-pc-linux-gnu"
 @arr = dso_local global [6 x i32] [i32 12, i32 11, i32 13, i32 5, i32 6, i32 7], align 16
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local void @merge(i32* noundef %0, i32 noundef %1, i32 noundef %2, i32 noundef %3) #0 {
+define dso_local void @merge(i32* %0, i32 %1, i32 %2, i32 %3) #0 {
   %5 = alloca i32*, align 8
   %6 = alloca i32, align 4
   %7 = alloca i32, align 4
@@ -55,7 +55,7 @@ define dso_local void @merge(i32* noundef %0, i32 noundef %1, i32 noundef %2, i3
   %38 = load i32, i32* %13, align 4
   %39 = add nsw i32 %38, 1
   store i32 %39, i32* %13, align 4
-  br label %23, !llvm.loop !6
+  br label %23
 
 40:                                               ; preds = %23
   store i32 0, i32* %14, align 4
@@ -83,7 +83,7 @@ define dso_local void @merge(i32* noundef %0, i32 noundef %1, i32 noundef %2, i3
   %57 = load i32, i32* %14, align 4
   %58 = add nsw i32 %57, 1
   store i32 %58, i32* %14, align 4
-  br label %41, !llvm.loop !8
+  br label %41
 
 59:                                               ; preds = %41
   store i32 0, i32* %13, align 4
@@ -154,7 +154,7 @@ define dso_local void @merge(i32* noundef %0, i32 noundef %1, i32 noundef %2, i3
   %104 = load i32, i32* %15, align 4
   %105 = add nsw i32 %104, 1
   store i32 %105, i32* %15, align 4
-  br label %61, !llvm.loop !9
+  br label %61
 
 106:                                              ; preds = %69
   br label %107
@@ -181,7 +181,7 @@ define dso_local void @merge(i32* noundef %0, i32 noundef %1, i32 noundef %2, i3
   %122 = load i32, i32* %15, align 4
   %123 = add nsw i32 %122, 1
   store i32 %123, i32* %15, align 4
-  br label %107, !llvm.loop !10
+  br label %107
 
 124:                                              ; preds = %107
   br label %125
@@ -208,14 +208,14 @@ define dso_local void @merge(i32* noundef %0, i32 noundef %1, i32 noundef %2, i3
   %140 = load i32, i32* %15, align 4
   %141 = add nsw i32 %140, 1
   store i32 %141, i32* %15, align 4
-  br label %125, !llvm.loop !11
+  br label %125
 
 142:                                              ; preds = %125
   ret void
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local void @mergeSort(i32* noundef %0, i32 noundef %1, i32 noundef %2) #0 {
+define dso_local void @mergeSort(i32* %0, i32 %1, i32 %2) #0 {
   %4 = alloca i32*, align 8
   %5 = alloca i32, align 4
   %6 = alloca i32, align 4
@@ -239,17 +239,17 @@ define dso_local void @mergeSort(i32* noundef %0, i32 noundef %1, i32 noundef %2
   %18 = load i32*, i32** %4, align 8
   %19 = load i32, i32* %5, align 4
   %20 = load i32, i32* %7, align 4
-  call void @mergeSort(i32* noundef %18, i32 noundef %19, i32 noundef %20)
+  call void @mergeSort(i32* %18, i32 %19, i32 %20)
   %21 = load i32*, i32** %4, align 8
   %22 = load i32, i32* %7, align 4
   %23 = add nsw i32 %22, 1
   %24 = load i32, i32* %6, align 4
-  call void @mergeSort(i32* noundef %21, i32 noundef %23, i32 noundef %24)
+  call void @mergeSort(i32* %21, i32 %23, i32 %24)
   %25 = load i32*, i32** %4, align 8
   %26 = load i32, i32* %5, align 4
   %27 = load i32, i32* %7, align 4
   %28 = load i32, i32* %6, align 4
-  call void @merge(i32* noundef %25, i32 noundef %26, i32 noundef %27, i32 noundef %28)
+  call void @merge(i32* %25, i32 %26, i32 %27, i32 %28)
   br label %29
 
 29:                                               ; preds = %11, %3
@@ -265,27 +265,17 @@ define dso_local i32 @main() #0 {
   store i32 6, i32* %2, align 4
   %4 = load i32, i32* %2, align 4
   %5 = sub nsw i32 %4, 1
-  call void @mergeSort(i32* noundef getelementptr inbounds ([6 x i32], [6 x i32]* @arr, i64 0, i64 0), i32 noundef 0, i32 noundef %5)
+  call void @mergeSort(i32* getelementptr inbounds ([6 x i32], [6 x i32]* @arr, i64 0, i64 0), i32 0, i32 %5)
   %6 = load i32, i32* getelementptr inbounds ([6 x i32], [6 x i32]* @arr, i64 0, i64 0), align 16
   store i32 %6, i32* %3, align 4
   %7 = load i32, i32* %3, align 4
   ret i32 %7
 }
 
-attributes #0 = { noinline nounwind optnone uwtable "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
 
-!llvm.module.flags = !{!0, !1, !2, !3, !4}
-!llvm.ident = !{!5}
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
 
 !0 = !{i32 1, !"wchar_size", i32 4}
-!1 = !{i32 7, !"PIC Level", i32 2}
-!2 = !{i32 7, !"PIE Level", i32 2}
-!3 = !{i32 7, !"uwtable", i32 1}
-!4 = !{i32 7, !"frame-pointer", i32 2}
-!5 = !{!"Ubuntu clang version 14.0.0-1ubuntu1.1"}
-!6 = distinct !{!6, !7}
-!7 = !{!"llvm.loop.mustprogress"}
-!8 = distinct !{!8, !7}
-!9 = distinct !{!9, !7}
-!10 = distinct !{!10, !7}
-!11 = distinct !{!11, !7}
+!1 = !{!"clang version 10.0.0-4ubuntu1 "}
