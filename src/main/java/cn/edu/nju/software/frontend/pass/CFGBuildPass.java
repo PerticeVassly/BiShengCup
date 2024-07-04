@@ -18,6 +18,9 @@ public class CFGBuildPass implements ModulePass{
         for (FunctionValue functionValue:module.getFunctions()) {
              basicBlockCFG.put(functionValue, buildBasicBlockCFG(functionValue));
         }
+        if(dbgFlag){
+            printDbgInfo();
+        }
         return false;
     }
 
@@ -28,7 +31,9 @@ public class CFGBuildPass implements ModulePass{
 
     @Override
     public void printDbgInfo() {
-
+         for(FunctionValue functionValue:basicBlockCFG.keySet()){
+             createGraph(functionValue);
+         }
     }
 
     @Override
@@ -52,4 +57,13 @@ public class CFGBuildPass implements ModulePass{
         return cfg;
     }
 
+    private void createGraph(FunctionValue functionValue) {
+        CFG cfg=basicBlockCFG.get(functionValue);
+        if(!cfg.isEmpty()){
+            cfg.createWholeGraph(functionValue.getName());
+            for (BasicBlockRef basicBlockRef:cfg.getAllLoop()){
+                cfg.createLoopGraph(functionValue.getName()+basicBlockRef.getName(),basicBlockRef);
+            }
+        }
+    }
 }

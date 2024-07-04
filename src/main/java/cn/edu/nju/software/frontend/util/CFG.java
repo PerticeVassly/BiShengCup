@@ -3,7 +3,6 @@ package cn.edu.nju.software.frontend.util;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 
 import java.util.*;
-
 public class CFG {
     private final Integer MAX_NUM_OF_BLOCK=1000;
     private final Map<BasicBlockRef,Integer> block2id=new HashMap<>();
@@ -98,5 +97,48 @@ public class CFG {
             roots.add(id2block.get(x));
         }
     }
+    public boolean isEmpty(){
+        return idCount==0;
+    }
+    public void createWholeGraph(String fileName){
+        GraphViz gv=new GraphViz();
+        gv.addln(gv.start_graph());
+        for (int i=0;i<idCount;i++){
+            if (!adj[i].isEmpty()) {
+                for (Integer j : adj[i]) {
+                    gv.addln(i+" -> "+j+";");
+                }
+            }
+        }
+        gv.addln(gv.end_graph());
+        // png为输出格式，还可改为pdf，gif，jpg等
+        String type = "png";
+        gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), fileName+"."+ type );
+    }
+    public void createLoopGraph(String fileName,BasicBlockRef root){
+        GraphViz gv=new GraphViz();
+        gv.addln(gv.start_graph());
+        Stack<BasicBlockRef> help=new Stack<>();
+        help.add(root);
+        boolean[] vis=new boolean[idCount];
+        while (!help.empty()){
+            BasicBlockRef cur=help.pop();
+            vis[block2id.get(cur)]=true;
+            for (BasicBlockRef bb:getSuccessors(cur)){
+                if(isInSameLoop(cur,bb)){
+                    gv.addln(block2id.get(cur)+" -> "+block2id.get(bb)+";");
+                    if (!vis[block2id.get(bb)]) {
+                        help.add(bb);
+                    }
+
+                }
+            }
+        }
+        gv.addln(gv.end_graph());
+        // png为输出格式，还可改为pdf，gif，jpg等
+        String type = "png";
+        gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ),fileName+"."+ type );
+    }
+
 }
 

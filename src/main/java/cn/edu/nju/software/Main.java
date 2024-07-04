@@ -80,9 +80,9 @@ public class Main {
             assert false;
         }
         //TODO:runPass
-//        PassManager passManager=new PassManager(module);
-//        passManager.setDbgFlag();
-//        passManager.runPass();
+        PassManager passManager=new PassManager(module);
+        passManager.setDbgFlag();
+        passManager.runPass();
         if (emitLLVM) {
             module.dumpToFile(output);
         }
