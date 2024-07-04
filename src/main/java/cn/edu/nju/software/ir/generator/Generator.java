@@ -62,7 +62,7 @@ public class Generator implements IrGenerator {
     }
     @Override
     public GlobalVar setInitValue(GlobalVar globalVar, ValueRef initValue) {
-        globalVar.initial(initValue);
+        globalVar.initialize(initValue);
         return globalVar;
     }
     @Override
@@ -70,12 +70,6 @@ public class Generator implements IrGenerator {
         FunctionValue fv = new FunctionValue(ft, funcName);
         module.addFunction(fv);
         return fv;
-    }
-
-    @Override
-    public LocalVar setInitValue(LocalVar localVar, ValueRef initValue) {
-        localVar.initial(initValue);
-        return localVar;
     }
 
     @Override

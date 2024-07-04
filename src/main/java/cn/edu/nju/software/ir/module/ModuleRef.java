@@ -4,14 +4,12 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.type.Pointer;
-import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
@@ -86,7 +84,7 @@ public class ModuleRef {
             System.err.println("Global variable has not been declared.");
             return;
         }
-        ((GlobalVar) globalVar).initial(initVal);
+        ((GlobalVar) globalVar).initialize(initVal);
     }
 
     private String implementArrInitIr(ArrayType arrayType, ArrayValue arrayValue) {
@@ -171,8 +169,6 @@ public class ModuleRef {
     }
 
     public void dumpToConsole() {
-//        Optimizer optimizer = new Optimizer(this);
-//        optimizer.optimize();
         System.out.println("; ModuleId = '" + moduleId + "'");
         System.out.println("source_filename = \"" + moduleId + "\"");
         System.out.println(); // an empty line
@@ -203,8 +199,8 @@ public class ModuleRef {
             System.out.print("(");
             for (int i = 0; i < ft.getFParametersCount(); i++) {
                 LocalVar fParam = fv.getParam(i);
-                System.out.print(fParam.getType() + " %");
-                System.out.print(fParam.getName());
+                System.out.print(fParam.getType() + " ");
+                System.out.print(fParam);
                 if (i < ft.getFParametersCount() - 1) {
                     System.out.print(", ");
                 }
@@ -215,6 +211,7 @@ public class ModuleRef {
             for (int i = 0; i < fv.getBlockNum(); i++) {
                 // output each basic block
                 BasicBlockRef block = fv.getBasicBlockRef(i);
+                if (!block.isReachable()) continue; // dead code elimination
                 System.out.print(block.getName() + ":");
                 if (block.hasPred()) {
                     for (int k = 0; k < blockNameAreaLength - block.getName().length() + 40; k++) {

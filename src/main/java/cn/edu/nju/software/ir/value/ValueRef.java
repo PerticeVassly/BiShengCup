@@ -6,11 +6,22 @@ public class ValueRef {
     protected String name;
     protected TypeRef type;
 
+    /**
+     * only for differing long names ()
+     */
+    private static int longNamesCount = 0;
+
     public ValueRef() {
         type = new TypeRef();
         name = "";
     }
     public ValueRef(TypeRef type, String name) {
+        /**
+         * handle long name (todo: replace it with %1 %2 ...)
+         */
+        if (name.length() > 31) {
+            name = "long_name" + (++longNamesCount) + "$" + name.substring(name.length() - 31);
+        }
         this.name = name;
         this.type = type;
     }
