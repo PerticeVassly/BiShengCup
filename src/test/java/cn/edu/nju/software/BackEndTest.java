@@ -41,7 +41,8 @@ public class BackEndTest {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if (name.contains("64") || name.contains("58") || name.contains("71")) {
+        if (name.contains("64") || name.contains("58")
+                || name.contains("71") || name.contains("73") || name.contains("86")) {
             fail();
         }
         testFile(DIR, name);
@@ -80,10 +81,10 @@ public class BackEndTest {
     }
 
     private String unwrap(String content) {
-        if (content.startsWith("TOTAL:")) {
-            return content.substring(content.indexOf('\n') + 1);
-        }
-        return content;
+//        if (content.startsWith("TOTAL:")) {
+//            return content.substring(content.indexOf('\n') + 1);
+//        }
+        return content.replaceAll("TOTAL.*?us\\s","");
     }
 
     private boolean exist(String dirPath, String fileName) {
