@@ -34,8 +34,8 @@ public class PassManager {
 
     //TODO:add pass here
     private void register(){
-        CFGBuildPass cfgBuildPass=new CFGBuildPass();
-        modulePasses.add(cfgBuildPass);
+        modulePasses.add(CFGBuildPass.getInstance());
+        modulePasses.add(LoopBuildPass.getInstance());
     }
     public void setDbgFlag(){
         for (ModulePass modulePass:modulePasses){

@@ -18,35 +18,35 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @if_ifElse_() {
 if_ifElse_Entry:
-  %a = alloca i32, align 4
-  store i32 5, i32* %a, align 4
-  %b = alloca i32, align 4
-  store i32 10, i32* %b, align 4
-  %a$1 = load i32, i32* %a, align 4
-  %cond_eq_tmp_ = icmp eq i32 %a$1, 5
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 5, i32* %lv, align 4
+  store i32 10, i32* %lv$1, align 4
+  %a = load i32, i32* %lv, align 4
+  %cond_eq_tmp_ = icmp eq i32 %a, 5
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
   br i1 %cond_, label %ifTrue_276, label %next_481
 
 ifTrue_276:                                             ; pred = %if_ifElse_Entry
-  %b$1 = load i32, i32* %b, align 4
-  %cond_eq_tmp_$1 = icmp eq i32 %b$1, 10
+  %b = load i32, i32* %lv$1, align 4
+  %cond_eq_tmp_$1 = icmp eq i32 %b, 10
   %cond_tmp_$1 = zext i1 %cond_eq_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
   br i1 %cond_$1, label %ifTrue_277, label %ifFalse_121
 
 next_481:                                               ; pred = %if_ifElse_Entry, %next_482
-  %a$3 = load i32, i32* %a, align 4
-  ret i32 %a$3
+  %a$2 = load i32, i32* %lv, align 4
+  ret i32 %a$2
 
 ifTrue_277:                                             ; pred = %ifTrue_276
-  store i32 25, i32* %a, align 4
+  store i32 25, i32* %lv, align 4
   br label %next_482
 
 ifFalse_121:                                            ; pred = %ifTrue_276
-  %a$2 = load i32, i32* %a, align 4
-  %result_ = add i32 %a$2, 15
-  store i32 %result_, i32* %a, align 4
+  %a$1 = load i32, i32* %lv, align 4
+  %result_ = add i32 %a$1, 15
+  store i32 %result_, i32* %lv, align 4
   br label %next_482
 
 next_482:                                               ; pred = %ifTrue_277, %ifFalse_121
@@ -54,7 +54,7 @@ next_482:                                               ; pred = %ifTrue_277, %i
 }
 
 define i32 @main() {
-mainEntry50:
+mainEntry51:
   %if_ifElse_ = call i32 @if_ifElse_()
   ret i32 %if_ifElse_
 }

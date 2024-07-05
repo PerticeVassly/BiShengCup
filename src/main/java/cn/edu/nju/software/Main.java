@@ -80,8 +80,9 @@ public class Main {
         if(module == null){
             assert false;
         }
-        //TODO:runPass
+
         PassManager passManager=new PassManager(module);
+        //TODO:调试完成后删除这句
         passManager.setDbgFlag();
         passManager.runPass();
         if (emitLLVM) {

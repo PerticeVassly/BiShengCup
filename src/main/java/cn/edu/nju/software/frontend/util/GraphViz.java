@@ -1,7 +1,7 @@
 package cn.edu.nju.software.frontend.util;
 import java.io.*;
 import java.util.Properties;
-//copy from website,just for test!
+//TODO:mark these code as opensouces
     /**
      * <dl>
      * <dt>Purpose: GraphViz Java API

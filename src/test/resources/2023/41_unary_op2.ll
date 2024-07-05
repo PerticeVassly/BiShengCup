@@ -17,18 +17,18 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry49:
-  %a = alloca i32, align 4
-  %b = alloca i32, align 4
-  store i32 56, i32* %a, align 4
-  store i32 4, i32* %b, align 4
-  %a$1 = load i32, i32* %a, align 4
-  %result_ = sub i32 %a$1, -4
-  %b$1 = load i32, i32* %b, align 4
-  %result_$1 = add i32 %result_, %b$1
-  store i32 %result_$1, i32* %a, align 4
-  %a$2 = load i32, i32* %a, align 4
-  %tmp_ = icmp ne i32 0, %a$2
+mainEntry50:
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 56, i32* %lv, align 4
+  store i32 4, i32* %lv$1, align 4
+  %a = load i32, i32* %lv, align 4
+  %result_ = sub i32 %a, -4
+  %b = load i32, i32* %lv$1, align 4
+  %result_$1 = add i32 %result_, %b
+  store i32 %result_$1, i32* %lv, align 4
+  %a$1 = load i32, i32* %lv, align 4
+  %tmp_ = icmp ne i32 0, %a$1
   %tmp_$1 = xor i1 %tmp_, 1
   %tmp_$2 = zext i1 %tmp_$1 to i32
   %tmp_$3 = icmp ne i32 0, %tmp_$2
@@ -41,19 +41,19 @@ mainEntry49:
   %cond_normalize_ = icmp ne i32 %tmp_$9, 0
   br i1 %cond_normalize_, label %ifTrue_275, label %ifFalse_120
 
-ifTrue_275:                                         ; pred = %mainEntry49
-  store i32 -1, i32* %a, align 4
+ifTrue_275:                                         ; pred = %mainEntry50
+  store i32 -1, i32* %lv, align 4
   br label %next_480
 
-ifFalse_120:                                        ; pred = %mainEntry49
-  %b$2 = load i32, i32* %b, align 4
-  %result_$2 = add i32 0, %b$2
-  store i32 %result_$2, i32* %a, align 4
+ifFalse_120:                                        ; pred = %mainEntry50
+  %b$1 = load i32, i32* %lv$1, align 4
+  %result_$2 = add i32 0, %b$1
+  store i32 %result_$2, i32* %lv, align 4
   br label %next_480
 
 next_480:                                           ; pred = %ifTrue_275, %ifFalse_120
-  %a$3 = load i32, i32* %a, align 4
-  call void @putint(i32 %a$3)
+  %a$2 = load i32, i32* %lv, align 4
+  call void @putint(i32 %a$2)
   ret i32 0
 }
 

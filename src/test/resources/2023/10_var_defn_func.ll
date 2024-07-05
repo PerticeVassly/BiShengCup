@@ -23,10 +23,10 @@ defnEntry:
 
 define i32 @main() {
 mainEntry43:
-  %a = alloca i32, align 4
+  %lv = alloca i32, align 4
   %defn = call i32 @defn()
-  store i32 %defn, i32* %a, align 4
-  %a$1 = load i32, i32* %a, align 4
-  ret i32 %a$1
+  store i32 %defn, i32* %lv, align 4
+  %a = load i32, i32* %lv, align 4
+  ret i32 %a
 }
 

@@ -16,12 +16,12 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-@a = global i32 10, align 4
-@b = global i32 5, align 4
+@gv = global i32 10, align 4
+@gv1 = global i32 5, align 4
 
 define i32 @main() {
-mainEntry51:
-  %b = load i32, i32* @b, align 4
+mainEntry52:
+  %b = load i32, i32* @gv1, align 4
   ret i32 %b
 }
 

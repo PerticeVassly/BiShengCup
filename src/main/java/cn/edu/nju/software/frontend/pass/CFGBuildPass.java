@@ -9,10 +9,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CFGBuildPass implements ModulePass{
+    private static CFGBuildPass cfgBuildPass;
     private boolean dbgFlag=false;
-    private final Map<FunctionValue, CFG> basicBlockCFG=new HashMap<>();
+    private final Map<FunctionValue, CFG> basicBlockCFG;
     //TODO:函数调用图分析
-    private final Map<FunctionValue,CFG> functionCFG=new HashMap<>();
+    private final Map<FunctionValue,CFG> functionCFG;
+    private CFGBuildPass(){
+        basicBlockCFG=new HashMap<>();
+        functionCFG=new HashMap<>();
+    }
+
+    public static CFGBuildPass getInstance(){
+        if(cfgBuildPass==null){
+            cfgBuildPass=new CFGBuildPass();
+        }
+        return cfgBuildPass;
+    }
     @Override
     public boolean runOnModule(ModuleRef module) {
         for (FunctionValue functionValue:module.getFunctions()) {
@@ -53,7 +65,6 @@ public class CFGBuildPass implements ModulePass{
                 cfg.addEdge(basicBlockRef.getPred(i),basicBlockRef);
             }
         }
-        cfg.findLoop();
         return cfg;
     }
 
@@ -61,9 +72,6 @@ public class CFGBuildPass implements ModulePass{
         CFG cfg=basicBlockCFG.get(functionValue);
         if(!cfg.isEmpty()){
             cfg.createWholeGraph(functionValue.getName());
-            for (BasicBlockRef basicBlockRef:cfg.getAllLoop()){
-                cfg.createLoopGraph(functionValue.getName()+basicBlockRef.getName(),basicBlockRef);
-            }
         }
     }
 }
