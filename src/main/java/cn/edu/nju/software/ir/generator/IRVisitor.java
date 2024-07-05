@@ -693,7 +693,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             int size = getIntConst(ctx.constExp(dim - 1));
             ArrayType arrayType = new ArrayType(type, size);
             for (int i = dim - 2; i >= 0; i--) {
-                // todo: int a[N + 1]
                 size = getIntConst(ctx.constExp(i));
                 arrayType = new ArrayType(arrayType, size);
             }
@@ -798,7 +797,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             boolean begin = false;
             int curCnt = 0, curMaxCnt = 0;
             for (SysYParser.InitValContext initValCtx : ctx.initVal()) {
-                System.err.println(initValCtx.getText() + " " + curDim);
                 if (initValCtx.exp() != null) {
                     if (!begin) {
                         begin = true;
