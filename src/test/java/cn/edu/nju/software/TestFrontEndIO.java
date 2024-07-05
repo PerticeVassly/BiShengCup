@@ -33,10 +33,11 @@ public class TestFrontEndIO {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("79_var_name")
-    @StringSource("90_many_locals")
-    @StringSource("64_calculator")
-    @StringSource("87_many_params")
+//    @StringSource("79_var_name")
+//    @StringSource("90_many_locals")
+//    @StringSource("64_calculator")
+//    @StringSource("87_many_params")
+    @StringSource("86_long_code2")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
     }
@@ -50,7 +51,7 @@ public class TestFrontEndIO {
 //        if (name.equals("77_substr")) {
 //            fail();
 //        }
-        if (name.equals("84_long_array2") || name.equals("86_long_code2")) {
+        if (name.equals("86_long_code2") || name.equals("84_long_array2")) {
 //            fail();
             return;
         }

@@ -1,6 +1,8 @@
 package cn.edu.nju.software.ir.value;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.instruction.Allocate;
+import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.type.IntType;
@@ -116,6 +118,10 @@ public class FunctionValue extends ValueRef {
     public void dropBlock(BasicBlockRef basicBlockRef) {
         blocks.remove(basicBlockRef);
         blockNum--;
+    }
+
+    public void emitAlloc(Allocate inst) {
+        entryBlock.put(0, inst);
     }
 
     @Override
