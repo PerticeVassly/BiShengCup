@@ -17,7 +17,6 @@ import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
-
 public class Allocator {
 
     private RiscBasicBlock currentBlock;
@@ -68,7 +67,22 @@ public class Allocator {
         }
     }
 
-    public Operand getOperandOfPtr(ValueRef variable){
+    public Operand getValueAddressOfPtr(ValueRef variable){
+        if(variable instanceof GlobalVar){
+            currentBlock.addInstruction(new RiscLi(new Register("t2"), new RiscLabelAddress(new RiscLabel(variable.getName()))));
+            return new RiscLabelAddress(new RiscLabel(variable.getName()));
+        }
+        else if(variable instanceof LocalVar){
+            currentBlock.addInstruction(new RiscLd(new Register("t2"), new IndirectRegister("sp", memory.getOffset(variable.getName()))));
+            return new IndirectRegister("t2", 0);
+        }
+        else {
+            assert false;
+            return null;
+        }
+    }
+
+    public Operand getAddressOfPtr(ValueRef variable){
         if(variable instanceof GlobalVar){
             return new RiscLabelAddress(new RiscLabel(variable.getName()));
         }
@@ -82,7 +96,7 @@ public class Allocator {
     }
 
     /* 函数形参数%0 %2没有对应的ValueRef 用于检索，只能使用string*/
-    public Operand getOperandOfPtr(String varName){
+    public Operand getAddressOfPtr(String varName){
         return new IndirectRegister("sp", memory.getOffset(varName));
     }
 

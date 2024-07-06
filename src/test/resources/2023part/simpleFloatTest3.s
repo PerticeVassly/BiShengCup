@@ -5,20 +5,32 @@
 .type main, @function
 .globl main
 main:
-mainEntry4:
+mainEntry6:
 
 	# allocate space for local variables
-	addi sp, sp, -24
+	addi sp, sp, -40
+
+	# save the parameters
+
+	# allocate a
+	addi t0, sp, 28
+	sd t0, 32(sp)
 
 	# store a 
+	ld t2, 32(sp)
 
 	# fetch variables
 	li t1, 0x3fa66666
 	fmv.w.x ft1, t1
-	sw t1, 20(sp)
+	fsw ft1, 0(t2)
+
+	# allocate b
+	addi t0, sp, 16
+	sd t0, 20(sp)
 
 	# load a$1 a
-	flw ft0, 20(sp)
+	ld t2, 32(sp)
+	flw ft0, 0(t2)
 	fsw ft0, 12(sp)
 
 	# fadd result_  a$1
@@ -38,13 +50,15 @@ mainEntry4:
 	sw t0, 4(sp)
 
 	# store b f2i_
+	ld t2, 20(sp)
 
 	# fetch variables
 	lw t1, 4(sp)
-	sw t1, 16(sp)
+	sw t1, 0(t2)
 
 	# load b$1 b
-	lw t0, 16(sp)
+	ld t2, 20(sp)
+	lw t0, 0(t2)
 	sw t0, 0(sp)
 
 	# ret b$1
@@ -52,5 +66,5 @@ mainEntry4:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 24
+	addi sp, sp, 40
 	ret 

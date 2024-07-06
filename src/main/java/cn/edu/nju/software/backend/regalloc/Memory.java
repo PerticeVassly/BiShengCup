@@ -22,17 +22,19 @@ public class Memory {
     }
 
     public void allocate(String name, int width){
+        if(name == null){
+            endPos += width;
+            return; //说明是数组
+        }
 
         if(checkHasAllocated(name)){
             return;
         }
+
         endPos += width;
         memoryVars.put(name, endPos);
     }
 
-    public void reset(){
-        memoryVars.clear();
-    }
 
     public int getSize(){
         return endPos;

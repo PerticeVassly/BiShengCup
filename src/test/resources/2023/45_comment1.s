@@ -8,16 +8,24 @@ main:
 mainEntry25:
 
 	# allocate space for local variables
-	addi sp, sp, -8
+	addi sp, sp, -16
+
+	# save the parameters
+
+	# allocate a
+	addi t0, sp, 4
+	sd t0, 8(sp)
 
 	# store a 
+	ld t2, 8(sp)
 
 	# fetch variables
 	li t1, 5
-	sw t1, 4(sp)
+	sw t1, 0(t2)
 
 	# load a$1 a
-	lw t0, 4(sp)
+	ld t2, 8(sp)
+	lw t0, 0(t2)
 	sw t0, 0(sp)
 
 	# ret a$1
@@ -25,5 +33,5 @@ mainEntry25:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 8
+	addi sp, sp, 16
 	ret 

@@ -8,31 +8,42 @@ doubleWhile:
 doubleWhileEntry:
 
 	# allocate space for local variables
-	addi sp, sp, -68
+	addi sp, sp, -84
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
 
+	# allocate i
+	addi t0, sp, 72
+	sd t0, 76(sp)
+
 	# store i 
+	ld t2, 76(sp)
 
 	# fetch variables
 	li t1, 5
-	sw t1, 64(sp)
+	sw t1, 0(t2)
+
+	# allocate j
+	addi t0, sp, 60
+	sd t0, 64(sp)
 
 	# store j 
+	ld t2, 64(sp)
 
 	# fetch variables
 	li t1, 7
-	sw t1, 60(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_52
 	j whileCond_52
 whileCond_52:
 
 	# load i$1 i
-	lw t0, 64(sp)
+	ld t2, 76(sp)
+	lw t0, 0(t2)
 	sw t0, 56(sp)
 
 	# cmp i$1  cond_lt_tmp_
@@ -69,7 +80,8 @@ whileCond_52:
 whileBody_52:
 
 	# load i$2 i
-	lw t0, 64(sp)
+	ld t2, 76(sp)
+	lw t0, 0(t2)
 	sw t0, 40(sp)
 
 	# add result_ i$2 
@@ -81,17 +93,19 @@ whileBody_52:
 	sw t0, 36(sp)
 
 	# store i result_
+	ld t2, 76(sp)
 
 	# fetch variables
 	lw t1, 36(sp)
-	sw t1, 64(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_53
 	j whileCond_53
 next_81:
 
 	# load j$4 j
-	lw t0, 60(sp)
+	ld t2, 64(sp)
+	lw t0, 0(t2)
 	sw t0, 32(sp)
 
 	# ret j$4
@@ -99,7 +113,7 @@ next_81:
 	# fetch variables
 	lw t1, 32(sp)
 	mv a0, t1
-	addi sp, sp, 68
+	addi sp, sp, 84
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -107,7 +121,8 @@ next_81:
 whileCond_53:
 
 	# load j$1 j
-	lw t0, 60(sp)
+	ld t2, 64(sp)
+	lw t0, 0(t2)
 	sw t0, 28(sp)
 
 	# cmp j$1  cond_lt_tmp_$1
@@ -144,7 +159,8 @@ whileCond_53:
 whileBody_53:
 
 	# load j$2 j
-	lw t0, 60(sp)
+	ld t2, 64(sp)
+	lw t0, 0(t2)
 	sw t0, 12(sp)
 
 	# add result_$1 j$2 
@@ -156,17 +172,19 @@ whileBody_53:
 	sw t0, 8(sp)
 
 	# store j result_$1
+	ld t2, 64(sp)
 
 	# fetch variables
 	lw t1, 8(sp)
-	sw t1, 60(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_53
 	j whileCond_53
 next_82:
 
 	# load j$3 j
-	lw t0, 60(sp)
+	ld t2, 64(sp)
+	lw t0, 0(t2)
 	sw t0, 4(sp)
 
 	# sub result_$2 j$3 
@@ -178,10 +196,11 @@ next_82:
 	sw t0, 0(sp)
 
 	# store j result_$2
+	ld t2, 64(sp)
 
 	# fetch variables
 	lw t1, 0(sp)
-	sw t1, 60(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_52
 	j whileCond_52
@@ -192,6 +211,8 @@ mainEntry22:
 
 	# allocate space for local variables
 	addi sp, sp, -4
+
+	# save the parameters
 
 	# prepare params
 

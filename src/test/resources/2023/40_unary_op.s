@@ -8,16 +8,24 @@ main:
 mainEntry46:
 
 	# allocate space for local variables
-	addi sp, sp, -56
+	addi sp, sp, -64
+
+	# save the parameters
+
+	# allocate a
+	addi t0, sp, 52
+	sd t0, 56(sp)
 
 	# store a 
+	ld t2, 56(sp)
 
 	# fetch variables
 	li t1, 10
-	sw t1, 52(sp)
+	sw t1, 0(t2)
 
 	# load a$1 a
-	lw t0, 52(sp)
+	ld t2, 56(sp)
+	lw t0, 0(t2)
 	sw t0, 48(sp)
 
 	# cmp  a$1 tmp_
@@ -122,27 +130,30 @@ mainEntry46:
 ifTrue_232:
 
 	# store a 
+	ld t2, 56(sp)
 
 	# fetch variables
 	li t1, -1
-	sw t1, 52(sp)
+	sw t1, 0(t2)
 
 	# br next_408
 	j next_408
 ifFalse_100:
 
 	# store a 
+	ld t2, 56(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 52(sp)
+	sw t1, 0(t2)
 
 	# br next_408
 	j next_408
 next_408:
 
 	# load a$2 a
-	lw t0, 52(sp)
+	ld t2, 56(sp)
+	lw t0, 0(t2)
 	sw t0, 0(sp)
 
 	# ret a$2
@@ -150,5 +161,5 @@ next_408:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 56
+	addi sp, sp, 64
 	ret 

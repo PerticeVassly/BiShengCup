@@ -23,19 +23,28 @@ main:
 mainEntry18:
 
 	# allocate space for local variables
-	addi sp, sp, -160
+	addi sp, sp, -168
+
+	# save the parameters
+
+	# allocate flag
+	addi t0, sp, 156
+	sd t0, 160(sp)
 
 	# store flag 
+	ld t2, 160(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# load a a
+	li t2, a
 	lw t0, a
 	sw t0, 152(sp)
 
 	# load b b
+	li t2, b
 	lw t0, b
 	sw t0, 148(sp)
 
@@ -48,6 +57,7 @@ mainEntry18:
 	sw t0, 144(sp)
 
 	# load c c
+	li t2, c
 	lw t0, c
 	sw t0, 140(sp)
 
@@ -60,10 +70,12 @@ mainEntry18:
 	sw t0, 136(sp)
 
 	# load e e
+	li t2, e
 	lw t0, e
 	sw t0, 132(sp)
 
 	# load d d
+	li t2, d
 	lw t0, d
 	sw t0, 128(sp)
 
@@ -110,17 +122,19 @@ mainEntry18:
 ifTrue_25:
 
 	# store flag 
+	ld t2, 160(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# br next_69
 	j next_69
 next_69:
 
 	# load flag$1 flag
-	lw t0, 156(sp)
+	ld t2, 160(sp)
+	lw t0, 0(t2)
 	sw t0, 108(sp)
 
 	# prepare params
@@ -141,7 +155,8 @@ next_69:
 	addi sp, sp, 4
 
 	# load flag$2 flag
-	lw t0, 156(sp)
+	ld t2, 160(sp)
+	lw t0, 0(t2)
 	sw t0, 104(sp)
 
 	# ret flag$2
@@ -149,19 +164,22 @@ next_69:
 	# fetch variables
 	lw t1, 104(sp)
 	mv a0, t1
-	addi sp, sp, 160
+	addi sp, sp, 168
 	ret 
 secondCond_5:
 
 	# load a$3 a
+	li t2, a
 	lw t0, a
 	sw t0, 100(sp)
 
 	# load b$2 b
+	li t2, b
 	lw t0, b
 	sw t0, 96(sp)
 
 	# load c$2 c
+	li t2, c
 	lw t0, c
 	sw t0, 92(sp)
 
@@ -182,14 +200,17 @@ secondCond_5:
 	sw t0, 84(sp)
 
 	# load d$2 d
+	li t2, d
 	lw t0, d
 	sw t0, 80(sp)
 
 	# load a$4 a
+	li t2, a
 	lw t0, a
 	sw t0, 76(sp)
 
 	# load c$3 c
+	li t2, c
 	lw t0, c
 	sw t0, 72(sp)
 
@@ -244,14 +265,17 @@ secondCond_5:
 secondCond_6:
 
 	# load a$1 a
+	li t2, a
 	lw t0, a
 	sw t0, 48(sp)
 
 	# load a$2 a
+	li t2, a
 	lw t0, a
 	sw t0, 44(sp)
 
 	# load b$1 b
+	li t2, b
 	lw t0, b
 	sw t0, 40(sp)
 
@@ -272,6 +296,7 @@ secondCond_6:
 	sw t0, 32(sp)
 
 	# load c$1 c
+	li t2, c
 	lw t0, c
 	sw t0, 28(sp)
 
@@ -284,10 +309,12 @@ secondCond_6:
 	sw t0, 24(sp)
 
 	# load d$1 d
+	li t2, d
 	lw t0, d
 	sw t0, 20(sp)
 
 	# load e$1 e
+	li t2, e
 	lw t0, e
 	sw t0, 16(sp)
 

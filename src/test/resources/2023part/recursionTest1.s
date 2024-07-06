@@ -8,52 +8,60 @@ fib:
 fibEntry:
 
 	# allocate space for local variables
-	addi sp, sp, -56
+	addi sp, sp, -76
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 52(sp)
+	sw a0, 72(sp)
+
+	# allocate n
+	addi t0, sp, 60
+	sd t0, 64(sp)
 
 	# store n 0
+	ld t2, 64(sp)
 
 	# fetch variables
-	lw t1, 52(sp)
-	sw t1, 48(sp)
+	lw t1, 72(sp)
+	sw t1, 0(t2)
 
 	# load n$1 n
-	lw t0, 48(sp)
-	sw t0, 44(sp)
+	ld t2, 64(sp)
+	lw t0, 0(t2)
+	sw t0, 56(sp)
 
 	# cmp n$1  cond_eq_tmp_
 
 	# fetch variables
-	lw t1, 44(sp)
+	lw t1, 56(sp)
 	li t2, 1
 	xor t0, t1, t2
 	seqz t0, t0
-	sw t0, 43(sp)
+	sw t0, 52(sp)
 
 	# fetch variables
-	lw t1, 43(sp)
+	lw t1, 52(sp)
 
 	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
-	sw t0, 39(sp)
+	sw t0, 48(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 39(sp)
+	lw t1, 48(sp)
 	li t2, 0
 	xor t0, t1, t2
-	sw t0, 38(sp)
+	seqz t0, t0
+	seqz t0, t0
+	sw t0, 44(sp)
 
 	# condBr cond_ ifTrue_4 next_4
 
 	# fetch variables
-	lw t1, 38(sp)
+	lw t1, 44(sp)
 	beqz t1, next_4
 	j ifTrue_4
 ifTrue_4:
@@ -63,7 +71,7 @@ ifTrue_4:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 56
+	addi sp, sp, 76
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -71,31 +79,34 @@ ifTrue_4:
 next_4:
 
 	# load n$2 n
-	lw t0, 48(sp)
-	sw t0, 34(sp)
+	ld t2, 64(sp)
+	lw t0, 0(t2)
+	sw t0, 40(sp)
 
 	# cmp n$2  cond_eq_tmp_$1
 
 	# fetch variables
-	lw t1, 34(sp)
+	lw t1, 40(sp)
 	li t2, 2
 	xor t0, t1, t2
 	seqz t0, t0
-	sw t0, 33(sp)
+	sw t0, 36(sp)
 
 	# fetch variables
-	lw t1, 33(sp)
+	lw t1, 36(sp)
 
 	# zext cond_tmp_$1 cond_eq_tmp_$1
 	mv t0, t1
-	sw t0, 29(sp)
+	sw t0, 32(sp)
 
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	lw t1, 29(sp)
+	lw t1, 32(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 28(sp)
 
 	# condBr cond_$1 ifTrue_5 next_5
@@ -111,7 +122,7 @@ ifTrue_5:
 	# fetch variables
 	li t1, 1
 	mv a0, t1
-	addi sp, sp, 56
+	addi sp, sp, 76
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -119,7 +130,8 @@ ifTrue_5:
 next_5:
 
 	# load n$3 n
-	lw t0, 48(sp)
+	ld t2, 64(sp)
+	lw t0, 0(t2)
 	sw t0, 24(sp)
 
 	# sub result_ n$3 
@@ -149,7 +161,8 @@ next_5:
 	sw a0, 16(sp)
 
 	# load n$4 n
-	lw t0, 48(sp)
+	ld t2, 64(sp)
+	lw t0, 0(t2)
 	sw t0, 12(sp)
 
 	# sub result_$1 n$4 
@@ -191,7 +204,7 @@ next_5:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 56
+	addi sp, sp, 76
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -199,10 +212,16 @@ next_5:
 .type main, @function
 .globl main
 main:
-mainEntry5:
+mainEntry7:
 
 	# allocate space for local variables
-	addi sp, sp, -8
+	addi sp, sp, -16
+
+	# save the parameters
+
+	# allocate n
+	addi t0, sp, 4
+	sd t0, 8(sp)
 
 	# prepare params
 
@@ -227,5 +246,5 @@ mainEntry5:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 8
+	addi sp, sp, 16
 	ret 

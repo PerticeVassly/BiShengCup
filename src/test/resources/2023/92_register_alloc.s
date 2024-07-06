@@ -104,48 +104,209 @@ func:
 funcEntry2:
 
 	# allocate space for local variables
-	addi sp, sp, -1844
+	addi sp, sp, -2156
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 1840(sp)
-	sw a1, 1836(sp)
+	sw a0, 2152(sp)
+	sw a1, 2148(sp)
+
+	# allocate a
+	addi t0, sp, 2136
+	sd t0, 2140(sp)
 
 	# store a 0
+	ld t2, 2140(sp)
 
 	# fetch variables
-	lw t1, 1840(sp)
-	sw t1, 1832(sp)
+	lw t1, 2152(sp)
+	sw t1, 0(t2)
+
+	# allocate b
+	addi t0, sp, 2124
+	sd t0, 2128(sp)
 
 	# store b 1
+	ld t2, 2128(sp)
 
 	# fetch variables
-	lw t1, 1836(sp)
-	sw t1, 1828(sp)
+	lw t1, 2148(sp)
+	sw t1, 0(t2)
+
+	# allocate i
+	addi t0, sp, 2112
+	sd t0, 2116(sp)
 
 	# load a$1 a
-	lw t0, 1832(sp)
-	sw t0, 1820(sp)
+	ld t2, 2140(sp)
+	lw t0, 0(t2)
+	sw t0, 2108(sp)
 
 	# load b$1 b
-	lw t0, 1828(sp)
-	sw t0, 1816(sp)
+	ld t2, 2128(sp)
+	lw t0, 0(t2)
+	sw t0, 2104(sp)
 
 	# add result_ a$1 b$1
 
 	# fetch variables
-	lw t1, 1820(sp)
-	lw t2, 1816(sp)
+	lw t1, 2108(sp)
+	lw t2, 2104(sp)
 	add t0, t1, t2
-	sw t0, 1812(sp)
+	sw t0, 2100(sp)
 
 	# store i result_
+	ld t2, 2116(sp)
 
 	# fetch variables
-	lw t1, 1812(sp)
-	sw t1, 1824(sp)
+	lw t1, 2100(sp)
+	sw t1, 0(t2)
+
+	# allocate c1
+	addi t0, sp, 2088
+	sd t0, 2092(sp)
+
+	# allocate c2
+	addi t0, sp, 2076
+	sd t0, 2080(sp)
+
+	# allocate c3
+	addi t0, sp, 2064
+	sd t0, 2068(sp)
+
+	# allocate c4
+	addi t0, sp, 2052
+	sd t0, 2056(sp)
+
+	# allocate d1
+	addi t0, sp, 2040
+	sd t0, 2044(sp)
+
+	# allocate d2
+	addi t0, sp, 2028
+	sd t0, 2032(sp)
+
+	# allocate d3
+	addi t0, sp, 2016
+	sd t0, 2020(sp)
+
+	# allocate d4
+	addi t0, sp, 2004
+	sd t0, 2008(sp)
+
+	# allocate e1
+	addi t0, sp, 1992
+	sd t0, 1996(sp)
+
+	# allocate e2
+	addi t0, sp, 1980
+	sd t0, 1984(sp)
+
+	# allocate e3
+	addi t0, sp, 1968
+	sd t0, 1972(sp)
+
+	# allocate e4
+	addi t0, sp, 1956
+	sd t0, 1960(sp)
+
+	# allocate f1
+	addi t0, sp, 1944
+	sd t0, 1948(sp)
+
+	# allocate f2
+	addi t0, sp, 1932
+	sd t0, 1936(sp)
+
+	# allocate f3
+	addi t0, sp, 1920
+	sd t0, 1924(sp)
+
+	# allocate f4
+	addi t0, sp, 1908
+	sd t0, 1912(sp)
+
+	# allocate g1
+	addi t0, sp, 1896
+	sd t0, 1900(sp)
+
+	# allocate g2
+	addi t0, sp, 1884
+	sd t0, 1888(sp)
+
+	# allocate g3
+	addi t0, sp, 1872
+	sd t0, 1876(sp)
+
+	# allocate g4
+	addi t0, sp, 1860
+	sd t0, 1864(sp)
+
+	# allocate h1
+	addi t0, sp, 1848
+	sd t0, 1852(sp)
+
+	# allocate h2
+	addi t0, sp, 1836
+	sd t0, 1840(sp)
+
+	# allocate h3
+	addi t0, sp, 1824
+	sd t0, 1828(sp)
+
+	# allocate h4
+	addi t0, sp, 1812
+	sd t0, 1816(sp)
+
+	# allocate i1
+	addi t0, sp, 1800
+	sd t0, 1804(sp)
+
+	# allocate i2
+	addi t0, sp, 1788
+	sd t0, 1792(sp)
+
+	# allocate i3
+	addi t0, sp, 1776
+	sd t0, 1780(sp)
+
+	# allocate i4
+	addi t0, sp, 1764
+	sd t0, 1768(sp)
+
+	# allocate j1
+	addi t0, sp, 1752
+	sd t0, 1756(sp)
+
+	# allocate j2
+	addi t0, sp, 1740
+	sd t0, 1744(sp)
+
+	# allocate j3
+	addi t0, sp, 1728
+	sd t0, 1732(sp)
+
+	# allocate j4
+	addi t0, sp, 1716
+	sd t0, 1720(sp)
+
+	# allocate k1
+	addi t0, sp, 1704
+	sd t0, 1708(sp)
+
+	# allocate k2
+	addi t0, sp, 1692
+	sd t0, 1696(sp)
+
+	# allocate k3
+	addi t0, sp, 1680
+	sd t0, 1684(sp)
+
+	# allocate k4
+	addi t0, sp, 1668
+	sd t0, 1672(sp)
 
 	# prepare params
 
@@ -162,10 +323,11 @@ funcEntry2:
 	sw a0, 1664(sp)
 
 	# store c1 getint
+	ld t2, 2092(sp)
 
 	# fetch variables
 	lw t1, 1664(sp)
-	sw t1, 1808(sp)
+	sw t1, 0(t2)
 
 	# prepare params
 
@@ -182,10 +344,11 @@ funcEntry2:
 	sw a0, 1660(sp)
 
 	# store c2 getint$1
+	ld t2, 2080(sp)
 
 	# fetch variables
 	lw t1, 1660(sp)
-	sw t1, 1804(sp)
+	sw t1, 0(t2)
 
 	# prepare params
 
@@ -202,10 +365,11 @@ funcEntry2:
 	sw a0, 1656(sp)
 
 	# store c3 getint$2
+	ld t2, 2068(sp)
 
 	# fetch variables
 	lw t1, 1656(sp)
-	sw t1, 1800(sp)
+	sw t1, 0(t2)
 
 	# prepare params
 
@@ -222,13 +386,15 @@ funcEntry2:
 	sw a0, 1652(sp)
 
 	# store c4 getint$3
+	ld t2, 2056(sp)
 
 	# fetch variables
 	lw t1, 1652(sp)
-	sw t1, 1796(sp)
+	sw t1, 0(t2)
 
 	# load c1$1 c1
-	lw t0, 1808(sp)
+	ld t2, 2092(sp)
+	lw t0, 0(t2)
 	sw t0, 1648(sp)
 
 	# add result_$1  c1$1
@@ -240,6 +406,7 @@ funcEntry2:
 	sw t0, 1644(sp)
 
 	# load a1 a1
+	li t2, a1
 	lw t0, a1
 	sw t0, 1640(sp)
 
@@ -252,13 +419,15 @@ funcEntry2:
 	sw t0, 1636(sp)
 
 	# store d1 result_$2
+	ld t2, 2044(sp)
 
 	# fetch variables
 	lw t1, 1636(sp)
-	sw t1, 1792(sp)
+	sw t1, 0(t2)
 
 	# load c2$1 c2
-	lw t0, 1804(sp)
+	ld t2, 2080(sp)
+	lw t0, 0(t2)
 	sw t0, 1632(sp)
 
 	# add result_$3  c2$1
@@ -270,6 +439,7 @@ funcEntry2:
 	sw t0, 1628(sp)
 
 	# load a2 a2
+	li t2, a2
 	lw t0, a2
 	sw t0, 1624(sp)
 
@@ -282,13 +452,15 @@ funcEntry2:
 	sw t0, 1620(sp)
 
 	# store d2 result_$4
+	ld t2, 2032(sp)
 
 	# fetch variables
 	lw t1, 1620(sp)
-	sw t1, 1788(sp)
+	sw t1, 0(t2)
 
 	# load c3$1 c3
-	lw t0, 1800(sp)
+	ld t2, 2068(sp)
+	lw t0, 0(t2)
 	sw t0, 1616(sp)
 
 	# add result_$5  c3$1
@@ -300,6 +472,7 @@ funcEntry2:
 	sw t0, 1612(sp)
 
 	# load a3 a3
+	li t2, a3
 	lw t0, a3
 	sw t0, 1608(sp)
 
@@ -312,13 +485,15 @@ funcEntry2:
 	sw t0, 1604(sp)
 
 	# store d3 result_$6
+	ld t2, 2020(sp)
 
 	# fetch variables
 	lw t1, 1604(sp)
-	sw t1, 1784(sp)
+	sw t1, 0(t2)
 
 	# load c4$1 c4
-	lw t0, 1796(sp)
+	ld t2, 2056(sp)
+	lw t0, 0(t2)
 	sw t0, 1600(sp)
 
 	# add result_$7  c4$1
@@ -330,6 +505,7 @@ funcEntry2:
 	sw t0, 1596(sp)
 
 	# load a4 a4
+	li t2, a4
 	lw t0, a4
 	sw t0, 1592(sp)
 
@@ -342,13 +518,15 @@ funcEntry2:
 	sw t0, 1588(sp)
 
 	# store d4 result_$8
+	ld t2, 2008(sp)
 
 	# fetch variables
 	lw t1, 1588(sp)
-	sw t1, 1780(sp)
+	sw t1, 0(t2)
 
 	# load d1$1 d1
-	lw t0, 1792(sp)
+	ld t2, 2044(sp)
+	lw t0, 0(t2)
 	sw t0, 1584(sp)
 
 	# add result_$9  d1$1
@@ -360,6 +538,7 @@ funcEntry2:
 	sw t0, 1580(sp)
 
 	# load a5 a5
+	li t2, a5
 	lw t0, a5
 	sw t0, 1576(sp)
 
@@ -372,13 +551,15 @@ funcEntry2:
 	sw t0, 1572(sp)
 
 	# store e1 result_$10
+	ld t2, 1996(sp)
 
 	# fetch variables
 	lw t1, 1572(sp)
-	sw t1, 1776(sp)
+	sw t1, 0(t2)
 
 	# load d2$1 d2
-	lw t0, 1788(sp)
+	ld t2, 2032(sp)
+	lw t0, 0(t2)
 	sw t0, 1568(sp)
 
 	# add result_$11  d2$1
@@ -390,6 +571,7 @@ funcEntry2:
 	sw t0, 1564(sp)
 
 	# load a6 a6
+	li t2, a6
 	lw t0, a6
 	sw t0, 1560(sp)
 
@@ -402,13 +584,15 @@ funcEntry2:
 	sw t0, 1556(sp)
 
 	# store e2 result_$12
+	ld t2, 1984(sp)
 
 	# fetch variables
 	lw t1, 1556(sp)
-	sw t1, 1772(sp)
+	sw t1, 0(t2)
 
 	# load d3$1 d3
-	lw t0, 1784(sp)
+	ld t2, 2020(sp)
+	lw t0, 0(t2)
 	sw t0, 1552(sp)
 
 	# add result_$13  d3$1
@@ -420,6 +604,7 @@ funcEntry2:
 	sw t0, 1548(sp)
 
 	# load a7 a7
+	li t2, a7
 	lw t0, a7
 	sw t0, 1544(sp)
 
@@ -432,13 +617,15 @@ funcEntry2:
 	sw t0, 1540(sp)
 
 	# store e3 result_$14
+	ld t2, 1972(sp)
 
 	# fetch variables
 	lw t1, 1540(sp)
-	sw t1, 1768(sp)
+	sw t1, 0(t2)
 
 	# load d4$1 d4
-	lw t0, 1780(sp)
+	ld t2, 2008(sp)
+	lw t0, 0(t2)
 	sw t0, 1536(sp)
 
 	# add result_$15  d4$1
@@ -450,6 +637,7 @@ funcEntry2:
 	sw t0, 1532(sp)
 
 	# load a8 a8
+	li t2, a8
 	lw t0, a8
 	sw t0, 1528(sp)
 
@@ -462,13 +650,15 @@ funcEntry2:
 	sw t0, 1524(sp)
 
 	# store e4 result_$16
+	ld t2, 1960(sp)
 
 	# fetch variables
 	lw t1, 1524(sp)
-	sw t1, 1764(sp)
+	sw t1, 0(t2)
 
 	# load e1$1 e1
-	lw t0, 1776(sp)
+	ld t2, 1996(sp)
+	lw t0, 0(t2)
 	sw t0, 1520(sp)
 
 	# add result_$17  e1$1
@@ -480,6 +670,7 @@ funcEntry2:
 	sw t0, 1516(sp)
 
 	# load a9 a9
+	li t2, a9
 	lw t0, a9
 	sw t0, 1512(sp)
 
@@ -492,13 +683,15 @@ funcEntry2:
 	sw t0, 1508(sp)
 
 	# store f1 result_$18
+	ld t2, 1948(sp)
 
 	# fetch variables
 	lw t1, 1508(sp)
-	sw t1, 1760(sp)
+	sw t1, 0(t2)
 
 	# load e2$1 e2
-	lw t0, 1772(sp)
+	ld t2, 1984(sp)
+	lw t0, 0(t2)
 	sw t0, 1504(sp)
 
 	# add result_$19  e2$1
@@ -510,6 +703,7 @@ funcEntry2:
 	sw t0, 1500(sp)
 
 	# load a10 a10
+	li t2, a10
 	lw t0, a10
 	sw t0, 1496(sp)
 
@@ -522,13 +716,15 @@ funcEntry2:
 	sw t0, 1492(sp)
 
 	# store f2 result_$20
+	ld t2, 1936(sp)
 
 	# fetch variables
 	lw t1, 1492(sp)
-	sw t1, 1756(sp)
+	sw t1, 0(t2)
 
 	# load e3$1 e3
-	lw t0, 1768(sp)
+	ld t2, 1972(sp)
+	lw t0, 0(t2)
 	sw t0, 1488(sp)
 
 	# add result_$21  e3$1
@@ -540,6 +736,7 @@ funcEntry2:
 	sw t0, 1484(sp)
 
 	# load a11 a11
+	li t2, a11
 	lw t0, a11
 	sw t0, 1480(sp)
 
@@ -552,13 +749,15 @@ funcEntry2:
 	sw t0, 1476(sp)
 
 	# store f3 result_$22
+	ld t2, 1924(sp)
 
 	# fetch variables
 	lw t1, 1476(sp)
-	sw t1, 1752(sp)
+	sw t1, 0(t2)
 
 	# load e4$1 e4
-	lw t0, 1764(sp)
+	ld t2, 1960(sp)
+	lw t0, 0(t2)
 	sw t0, 1472(sp)
 
 	# add result_$23  e4$1
@@ -570,6 +769,7 @@ funcEntry2:
 	sw t0, 1468(sp)
 
 	# load a12 a12
+	li t2, a12
 	lw t0, a12
 	sw t0, 1464(sp)
 
@@ -582,13 +782,15 @@ funcEntry2:
 	sw t0, 1460(sp)
 
 	# store f4 result_$24
+	ld t2, 1912(sp)
 
 	# fetch variables
 	lw t1, 1460(sp)
-	sw t1, 1748(sp)
+	sw t1, 0(t2)
 
 	# load f1$1 f1
-	lw t0, 1760(sp)
+	ld t2, 1948(sp)
+	lw t0, 0(t2)
 	sw t0, 1456(sp)
 
 	# add result_$25  f1$1
@@ -600,6 +802,7 @@ funcEntry2:
 	sw t0, 1452(sp)
 
 	# load a13 a13
+	li t2, a13
 	lw t0, a13
 	sw t0, 1448(sp)
 
@@ -612,13 +815,15 @@ funcEntry2:
 	sw t0, 1444(sp)
 
 	# store g1 result_$26
+	ld t2, 1900(sp)
 
 	# fetch variables
 	lw t1, 1444(sp)
-	sw t1, 1744(sp)
+	sw t1, 0(t2)
 
 	# load f2$1 f2
-	lw t0, 1756(sp)
+	ld t2, 1936(sp)
+	lw t0, 0(t2)
 	sw t0, 1440(sp)
 
 	# add result_$27  f2$1
@@ -630,6 +835,7 @@ funcEntry2:
 	sw t0, 1436(sp)
 
 	# load a14 a14
+	li t2, a14
 	lw t0, a14
 	sw t0, 1432(sp)
 
@@ -642,13 +848,15 @@ funcEntry2:
 	sw t0, 1428(sp)
 
 	# store g2 result_$28
+	ld t2, 1888(sp)
 
 	# fetch variables
 	lw t1, 1428(sp)
-	sw t1, 1740(sp)
+	sw t1, 0(t2)
 
 	# load f3$1 f3
-	lw t0, 1752(sp)
+	ld t2, 1924(sp)
+	lw t0, 0(t2)
 	sw t0, 1424(sp)
 
 	# add result_$29  f3$1
@@ -660,6 +868,7 @@ funcEntry2:
 	sw t0, 1420(sp)
 
 	# load a15 a15
+	li t2, a15
 	lw t0, a15
 	sw t0, 1416(sp)
 
@@ -672,13 +881,15 @@ funcEntry2:
 	sw t0, 1412(sp)
 
 	# store g3 result_$30
+	ld t2, 1876(sp)
 
 	# fetch variables
 	lw t1, 1412(sp)
-	sw t1, 1736(sp)
+	sw t1, 0(t2)
 
 	# load f4$1 f4
-	lw t0, 1748(sp)
+	ld t2, 1912(sp)
+	lw t0, 0(t2)
 	sw t0, 1408(sp)
 
 	# add result_$31  f4$1
@@ -690,6 +901,7 @@ funcEntry2:
 	sw t0, 1404(sp)
 
 	# load a16 a16
+	li t2, a16
 	lw t0, a16
 	sw t0, 1400(sp)
 
@@ -702,13 +914,15 @@ funcEntry2:
 	sw t0, 1396(sp)
 
 	# store g4 result_$32
+	ld t2, 1864(sp)
 
 	# fetch variables
 	lw t1, 1396(sp)
-	sw t1, 1732(sp)
+	sw t1, 0(t2)
 
 	# load g1$1 g1
-	lw t0, 1744(sp)
+	ld t2, 1900(sp)
+	lw t0, 0(t2)
 	sw t0, 1392(sp)
 
 	# add result_$33  g1$1
@@ -720,6 +934,7 @@ funcEntry2:
 	sw t0, 1388(sp)
 
 	# load a17 a17
+	li t2, a17
 	lw t0, a17
 	sw t0, 1384(sp)
 
@@ -732,13 +947,15 @@ funcEntry2:
 	sw t0, 1380(sp)
 
 	# store h1 result_$34
+	ld t2, 1852(sp)
 
 	# fetch variables
 	lw t1, 1380(sp)
-	sw t1, 1728(sp)
+	sw t1, 0(t2)
 
 	# load g2$1 g2
-	lw t0, 1740(sp)
+	ld t2, 1888(sp)
+	lw t0, 0(t2)
 	sw t0, 1376(sp)
 
 	# add result_$35  g2$1
@@ -750,6 +967,7 @@ funcEntry2:
 	sw t0, 1372(sp)
 
 	# load a18 a18
+	li t2, a18
 	lw t0, a18
 	sw t0, 1368(sp)
 
@@ -762,13 +980,15 @@ funcEntry2:
 	sw t0, 1364(sp)
 
 	# store h2 result_$36
+	ld t2, 1840(sp)
 
 	# fetch variables
 	lw t1, 1364(sp)
-	sw t1, 1724(sp)
+	sw t1, 0(t2)
 
 	# load g3$1 g3
-	lw t0, 1736(sp)
+	ld t2, 1876(sp)
+	lw t0, 0(t2)
 	sw t0, 1360(sp)
 
 	# add result_$37  g3$1
@@ -780,6 +1000,7 @@ funcEntry2:
 	sw t0, 1356(sp)
 
 	# load a19 a19
+	li t2, a19
 	lw t0, a19
 	sw t0, 1352(sp)
 
@@ -792,13 +1013,15 @@ funcEntry2:
 	sw t0, 1348(sp)
 
 	# store h3 result_$38
+	ld t2, 1828(sp)
 
 	# fetch variables
 	lw t1, 1348(sp)
-	sw t1, 1720(sp)
+	sw t1, 0(t2)
 
 	# load g4$1 g4
-	lw t0, 1732(sp)
+	ld t2, 1864(sp)
+	lw t0, 0(t2)
 	sw t0, 1344(sp)
 
 	# add result_$39  g4$1
@@ -810,6 +1033,7 @@ funcEntry2:
 	sw t0, 1340(sp)
 
 	# load a20 a20
+	li t2, a20
 	lw t0, a20
 	sw t0, 1336(sp)
 
@@ -822,13 +1046,15 @@ funcEntry2:
 	sw t0, 1332(sp)
 
 	# store h4 result_$40
+	ld t2, 1816(sp)
 
 	# fetch variables
 	lw t1, 1332(sp)
-	sw t1, 1716(sp)
+	sw t1, 0(t2)
 
 	# load h1$1 h1
-	lw t0, 1728(sp)
+	ld t2, 1852(sp)
+	lw t0, 0(t2)
 	sw t0, 1328(sp)
 
 	# add result_$41  h1$1
@@ -840,6 +1066,7 @@ funcEntry2:
 	sw t0, 1324(sp)
 
 	# load a21 a21
+	li t2, a21
 	lw t0, a21
 	sw t0, 1320(sp)
 
@@ -852,13 +1079,15 @@ funcEntry2:
 	sw t0, 1316(sp)
 
 	# store i1 result_$42
+	ld t2, 1804(sp)
 
 	# fetch variables
 	lw t1, 1316(sp)
-	sw t1, 1712(sp)
+	sw t1, 0(t2)
 
 	# load h2$1 h2
-	lw t0, 1724(sp)
+	ld t2, 1840(sp)
+	lw t0, 0(t2)
 	sw t0, 1312(sp)
 
 	# add result_$43  h2$1
@@ -870,6 +1099,7 @@ funcEntry2:
 	sw t0, 1308(sp)
 
 	# load a22 a22
+	li t2, a22
 	lw t0, a22
 	sw t0, 1304(sp)
 
@@ -882,13 +1112,15 @@ funcEntry2:
 	sw t0, 1300(sp)
 
 	# store i2 result_$44
+	ld t2, 1792(sp)
 
 	# fetch variables
 	lw t1, 1300(sp)
-	sw t1, 1708(sp)
+	sw t1, 0(t2)
 
 	# load h3$1 h3
-	lw t0, 1720(sp)
+	ld t2, 1828(sp)
+	lw t0, 0(t2)
 	sw t0, 1296(sp)
 
 	# add result_$45  h3$1
@@ -900,6 +1132,7 @@ funcEntry2:
 	sw t0, 1292(sp)
 
 	# load a23 a23
+	li t2, a23
 	lw t0, a23
 	sw t0, 1288(sp)
 
@@ -912,13 +1145,15 @@ funcEntry2:
 	sw t0, 1284(sp)
 
 	# store i3 result_$46
+	ld t2, 1780(sp)
 
 	# fetch variables
 	lw t1, 1284(sp)
-	sw t1, 1704(sp)
+	sw t1, 0(t2)
 
 	# load h4$1 h4
-	lw t0, 1716(sp)
+	ld t2, 1816(sp)
+	lw t0, 0(t2)
 	sw t0, 1280(sp)
 
 	# add result_$47  h4$1
@@ -930,6 +1165,7 @@ funcEntry2:
 	sw t0, 1276(sp)
 
 	# load a24 a24
+	li t2, a24
 	lw t0, a24
 	sw t0, 1272(sp)
 
@@ -942,13 +1178,15 @@ funcEntry2:
 	sw t0, 1268(sp)
 
 	# store i4 result_$48
+	ld t2, 1768(sp)
 
 	# fetch variables
 	lw t1, 1268(sp)
-	sw t1, 1700(sp)
+	sw t1, 0(t2)
 
 	# load i1$1 i1
-	lw t0, 1712(sp)
+	ld t2, 1804(sp)
+	lw t0, 0(t2)
 	sw t0, 1264(sp)
 
 	# add result_$49  i1$1
@@ -960,6 +1198,7 @@ funcEntry2:
 	sw t0, 1260(sp)
 
 	# load a25 a25
+	li t2, a25
 	lw t0, a25
 	sw t0, 1256(sp)
 
@@ -972,13 +1211,15 @@ funcEntry2:
 	sw t0, 1252(sp)
 
 	# store j1 result_$50
+	ld t2, 1756(sp)
 
 	# fetch variables
 	lw t1, 1252(sp)
-	sw t1, 1696(sp)
+	sw t1, 0(t2)
 
 	# load i2$1 i2
-	lw t0, 1708(sp)
+	ld t2, 1792(sp)
+	lw t0, 0(t2)
 	sw t0, 1248(sp)
 
 	# add result_$51  i2$1
@@ -990,6 +1231,7 @@ funcEntry2:
 	sw t0, 1244(sp)
 
 	# load a26 a26
+	li t2, a26
 	lw t0, a26
 	sw t0, 1240(sp)
 
@@ -1002,13 +1244,15 @@ funcEntry2:
 	sw t0, 1236(sp)
 
 	# store j2 result_$52
+	ld t2, 1744(sp)
 
 	# fetch variables
 	lw t1, 1236(sp)
-	sw t1, 1692(sp)
+	sw t1, 0(t2)
 
 	# load i3$1 i3
-	lw t0, 1704(sp)
+	ld t2, 1780(sp)
+	lw t0, 0(t2)
 	sw t0, 1232(sp)
 
 	# add result_$53  i3$1
@@ -1020,6 +1264,7 @@ funcEntry2:
 	sw t0, 1228(sp)
 
 	# load a27 a27
+	li t2, a27
 	lw t0, a27
 	sw t0, 1224(sp)
 
@@ -1032,13 +1277,15 @@ funcEntry2:
 	sw t0, 1220(sp)
 
 	# store j3 result_$54
+	ld t2, 1732(sp)
 
 	# fetch variables
 	lw t1, 1220(sp)
-	sw t1, 1688(sp)
+	sw t1, 0(t2)
 
 	# load i4$1 i4
-	lw t0, 1700(sp)
+	ld t2, 1768(sp)
+	lw t0, 0(t2)
 	sw t0, 1216(sp)
 
 	# add result_$55  i4$1
@@ -1050,6 +1297,7 @@ funcEntry2:
 	sw t0, 1212(sp)
 
 	# load a28 a28
+	li t2, a28
 	lw t0, a28
 	sw t0, 1208(sp)
 
@@ -1062,13 +1310,15 @@ funcEntry2:
 	sw t0, 1204(sp)
 
 	# store j4 result_$56
+	ld t2, 1720(sp)
 
 	# fetch variables
 	lw t1, 1204(sp)
-	sw t1, 1684(sp)
+	sw t1, 0(t2)
 
 	# load j1$1 j1
-	lw t0, 1696(sp)
+	ld t2, 1756(sp)
+	lw t0, 0(t2)
 	sw t0, 1200(sp)
 
 	# add result_$57  j1$1
@@ -1080,6 +1330,7 @@ funcEntry2:
 	sw t0, 1196(sp)
 
 	# load a29 a29
+	li t2, a29
 	lw t0, a29
 	sw t0, 1192(sp)
 
@@ -1092,13 +1343,15 @@ funcEntry2:
 	sw t0, 1188(sp)
 
 	# store k1 result_$58
+	ld t2, 1708(sp)
 
 	# fetch variables
 	lw t1, 1188(sp)
-	sw t1, 1680(sp)
+	sw t1, 0(t2)
 
 	# load j2$1 j2
-	lw t0, 1692(sp)
+	ld t2, 1744(sp)
+	lw t0, 0(t2)
 	sw t0, 1184(sp)
 
 	# add result_$59  j2$1
@@ -1110,6 +1363,7 @@ funcEntry2:
 	sw t0, 1180(sp)
 
 	# load a30 a30
+	li t2, a30
 	lw t0, a30
 	sw t0, 1176(sp)
 
@@ -1122,13 +1376,15 @@ funcEntry2:
 	sw t0, 1172(sp)
 
 	# store k2 result_$60
+	ld t2, 1696(sp)
 
 	# fetch variables
 	lw t1, 1172(sp)
-	sw t1, 1676(sp)
+	sw t1, 0(t2)
 
 	# load j3$1 j3
-	lw t0, 1688(sp)
+	ld t2, 1732(sp)
+	lw t0, 0(t2)
 	sw t0, 1168(sp)
 
 	# add result_$61  j3$1
@@ -1140,6 +1396,7 @@ funcEntry2:
 	sw t0, 1164(sp)
 
 	# load a31 a31
+	li t2, a31
 	lw t0, a31
 	sw t0, 1160(sp)
 
@@ -1152,13 +1409,15 @@ funcEntry2:
 	sw t0, 1156(sp)
 
 	# store k3 result_$62
+	ld t2, 1684(sp)
 
 	# fetch variables
 	lw t1, 1156(sp)
-	sw t1, 1672(sp)
+	sw t1, 0(t2)
 
 	# load j4$1 j4
-	lw t0, 1684(sp)
+	ld t2, 1720(sp)
+	lw t0, 0(t2)
 	sw t0, 1152(sp)
 
 	# add result_$63  j4$1
@@ -1170,6 +1429,7 @@ funcEntry2:
 	sw t0, 1148(sp)
 
 	# load a32 a32
+	li t2, a32
 	lw t0, a32
 	sw t0, 1144(sp)
 
@@ -1182,17 +1442,20 @@ funcEntry2:
 	sw t0, 1140(sp)
 
 	# store k4 result_$64
+	ld t2, 1672(sp)
 
 	# fetch variables
 	lw t1, 1140(sp)
-	sw t1, 1668(sp)
+	sw t1, 0(t2)
 
 	# load a$2 a
-	lw t0, 1832(sp)
+	ld t2, 2140(sp)
+	lw t0, 0(t2)
 	sw t0, 1136(sp)
 
 	# load b$2 b
-	lw t0, 1828(sp)
+	ld t2, 2128(sp)
+	lw t0, 0(t2)
 	sw t0, 1132(sp)
 
 	# sub result_$65 a$2 b$2
@@ -1212,13 +1475,15 @@ funcEntry2:
 	sw t0, 1124(sp)
 
 	# store i result_$66
+	ld t2, 2116(sp)
 
 	# fetch variables
 	lw t1, 1124(sp)
-	sw t1, 1824(sp)
+	sw t1, 0(t2)
 
 	# load j1$2 j1
-	lw t0, 1696(sp)
+	ld t2, 1756(sp)
+	lw t0, 0(t2)
 	sw t0, 1120(sp)
 
 	# add result_$67  j1$2
@@ -1230,6 +1495,7 @@ funcEntry2:
 	sw t0, 1116(sp)
 
 	# load a29$1 a29
+	li t2, a29
 	lw t0, a29
 	sw t0, 1112(sp)
 
@@ -1242,13 +1508,15 @@ funcEntry2:
 	sw t0, 1108(sp)
 
 	# store k1 result_$68
+	ld t2, 1708(sp)
 
 	# fetch variables
 	lw t1, 1108(sp)
-	sw t1, 1680(sp)
+	sw t1, 0(t2)
 
 	# load j2$2 j2
-	lw t0, 1692(sp)
+	ld t2, 1744(sp)
+	lw t0, 0(t2)
 	sw t0, 1104(sp)
 
 	# add result_$69  j2$2
@@ -1260,6 +1528,7 @@ funcEntry2:
 	sw t0, 1100(sp)
 
 	# load a30$1 a30
+	li t2, a30
 	lw t0, a30
 	sw t0, 1096(sp)
 
@@ -1272,13 +1541,15 @@ funcEntry2:
 	sw t0, 1092(sp)
 
 	# store k2 result_$70
+	ld t2, 1696(sp)
 
 	# fetch variables
 	lw t1, 1092(sp)
-	sw t1, 1676(sp)
+	sw t1, 0(t2)
 
 	# load j3$2 j3
-	lw t0, 1688(sp)
+	ld t2, 1732(sp)
+	lw t0, 0(t2)
 	sw t0, 1088(sp)
 
 	# add result_$71  j3$2
@@ -1290,6 +1561,7 @@ funcEntry2:
 	sw t0, 1084(sp)
 
 	# load a31$1 a31
+	li t2, a31
 	lw t0, a31
 	sw t0, 1080(sp)
 
@@ -1302,13 +1574,15 @@ funcEntry2:
 	sw t0, 1076(sp)
 
 	# store k3 result_$72
+	ld t2, 1684(sp)
 
 	# fetch variables
 	lw t1, 1076(sp)
-	sw t1, 1672(sp)
+	sw t1, 0(t2)
 
 	# load j4$2 j4
-	lw t0, 1684(sp)
+	ld t2, 1720(sp)
+	lw t0, 0(t2)
 	sw t0, 1072(sp)
 
 	# add result_$73  j4$2
@@ -1320,6 +1594,7 @@ funcEntry2:
 	sw t0, 1068(sp)
 
 	# load a32$1 a32
+	li t2, a32
 	lw t0, a32
 	sw t0, 1064(sp)
 
@@ -1332,13 +1607,15 @@ funcEntry2:
 	sw t0, 1060(sp)
 
 	# store k4 result_$74
+	ld t2, 1672(sp)
 
 	# fetch variables
 	lw t1, 1060(sp)
-	sw t1, 1668(sp)
+	sw t1, 0(t2)
 
 	# load i1$2 i1
-	lw t0, 1712(sp)
+	ld t2, 1804(sp)
+	lw t0, 0(t2)
 	sw t0, 1056(sp)
 
 	# add result_$75  i1$2
@@ -1350,6 +1627,7 @@ funcEntry2:
 	sw t0, 1052(sp)
 
 	# load a25$1 a25
+	li t2, a25
 	lw t0, a25
 	sw t0, 1048(sp)
 
@@ -1362,13 +1640,15 @@ funcEntry2:
 	sw t0, 1044(sp)
 
 	# store j1 result_$76
+	ld t2, 1756(sp)
 
 	# fetch variables
 	lw t1, 1044(sp)
-	sw t1, 1696(sp)
+	sw t1, 0(t2)
 
 	# load i2$2 i2
-	lw t0, 1708(sp)
+	ld t2, 1792(sp)
+	lw t0, 0(t2)
 	sw t0, 1040(sp)
 
 	# add result_$77  i2$2
@@ -1380,6 +1660,7 @@ funcEntry2:
 	sw t0, 1036(sp)
 
 	# load a26$1 a26
+	li t2, a26
 	lw t0, a26
 	sw t0, 1032(sp)
 
@@ -1392,13 +1673,15 @@ funcEntry2:
 	sw t0, 1028(sp)
 
 	# store j2 result_$78
+	ld t2, 1744(sp)
 
 	# fetch variables
 	lw t1, 1028(sp)
-	sw t1, 1692(sp)
+	sw t1, 0(t2)
 
 	# load i3$2 i3
-	lw t0, 1704(sp)
+	ld t2, 1780(sp)
+	lw t0, 0(t2)
 	sw t0, 1024(sp)
 
 	# add result_$79  i3$2
@@ -1410,6 +1693,7 @@ funcEntry2:
 	sw t0, 1020(sp)
 
 	# load a27$1 a27
+	li t2, a27
 	lw t0, a27
 	sw t0, 1016(sp)
 
@@ -1422,13 +1706,15 @@ funcEntry2:
 	sw t0, 1012(sp)
 
 	# store j3 result_$80
+	ld t2, 1732(sp)
 
 	# fetch variables
 	lw t1, 1012(sp)
-	sw t1, 1688(sp)
+	sw t1, 0(t2)
 
 	# load i4$2 i4
-	lw t0, 1700(sp)
+	ld t2, 1768(sp)
+	lw t0, 0(t2)
 	sw t0, 1008(sp)
 
 	# add result_$81  i4$2
@@ -1440,6 +1726,7 @@ funcEntry2:
 	sw t0, 1004(sp)
 
 	# load a28$1 a28
+	li t2, a28
 	lw t0, a28
 	sw t0, 1000(sp)
 
@@ -1452,13 +1739,15 @@ funcEntry2:
 	sw t0, 996(sp)
 
 	# store j4 result_$82
+	ld t2, 1720(sp)
 
 	# fetch variables
 	lw t1, 996(sp)
-	sw t1, 1684(sp)
+	sw t1, 0(t2)
 
 	# load h1$2 h1
-	lw t0, 1728(sp)
+	ld t2, 1852(sp)
+	lw t0, 0(t2)
 	sw t0, 992(sp)
 
 	# add result_$83  h1$2
@@ -1470,6 +1759,7 @@ funcEntry2:
 	sw t0, 988(sp)
 
 	# load a21$1 a21
+	li t2, a21
 	lw t0, a21
 	sw t0, 984(sp)
 
@@ -1482,13 +1772,15 @@ funcEntry2:
 	sw t0, 980(sp)
 
 	# store i1 result_$84
+	ld t2, 1804(sp)
 
 	# fetch variables
 	lw t1, 980(sp)
-	sw t1, 1712(sp)
+	sw t1, 0(t2)
 
 	# load h2$2 h2
-	lw t0, 1724(sp)
+	ld t2, 1840(sp)
+	lw t0, 0(t2)
 	sw t0, 976(sp)
 
 	# add result_$85  h2$2
@@ -1500,6 +1792,7 @@ funcEntry2:
 	sw t0, 972(sp)
 
 	# load a22$1 a22
+	li t2, a22
 	lw t0, a22
 	sw t0, 968(sp)
 
@@ -1512,13 +1805,15 @@ funcEntry2:
 	sw t0, 964(sp)
 
 	# store i2 result_$86
+	ld t2, 1792(sp)
 
 	# fetch variables
 	lw t1, 964(sp)
-	sw t1, 1708(sp)
+	sw t1, 0(t2)
 
 	# load h3$2 h3
-	lw t0, 1720(sp)
+	ld t2, 1828(sp)
+	lw t0, 0(t2)
 	sw t0, 960(sp)
 
 	# add result_$87  h3$2
@@ -1530,6 +1825,7 @@ funcEntry2:
 	sw t0, 956(sp)
 
 	# load a23$1 a23
+	li t2, a23
 	lw t0, a23
 	sw t0, 952(sp)
 
@@ -1542,13 +1838,15 @@ funcEntry2:
 	sw t0, 948(sp)
 
 	# store i3 result_$88
+	ld t2, 1780(sp)
 
 	# fetch variables
 	lw t1, 948(sp)
-	sw t1, 1704(sp)
+	sw t1, 0(t2)
 
 	# load h4$2 h4
-	lw t0, 1716(sp)
+	ld t2, 1816(sp)
+	lw t0, 0(t2)
 	sw t0, 944(sp)
 
 	# add result_$89  h4$2
@@ -1560,6 +1858,7 @@ funcEntry2:
 	sw t0, 940(sp)
 
 	# load a24$1 a24
+	li t2, a24
 	lw t0, a24
 	sw t0, 936(sp)
 
@@ -1572,13 +1871,15 @@ funcEntry2:
 	sw t0, 932(sp)
 
 	# store i4 result_$90
+	ld t2, 1768(sp)
 
 	# fetch variables
 	lw t1, 932(sp)
-	sw t1, 1700(sp)
+	sw t1, 0(t2)
 
 	# load g1$2 g1
-	lw t0, 1744(sp)
+	ld t2, 1900(sp)
+	lw t0, 0(t2)
 	sw t0, 928(sp)
 
 	# add result_$91  g1$2
@@ -1590,6 +1891,7 @@ funcEntry2:
 	sw t0, 924(sp)
 
 	# load a17$1 a17
+	li t2, a17
 	lw t0, a17
 	sw t0, 920(sp)
 
@@ -1602,13 +1904,15 @@ funcEntry2:
 	sw t0, 916(sp)
 
 	# store h1 result_$92
+	ld t2, 1852(sp)
 
 	# fetch variables
 	lw t1, 916(sp)
-	sw t1, 1728(sp)
+	sw t1, 0(t2)
 
 	# load g2$2 g2
-	lw t0, 1740(sp)
+	ld t2, 1888(sp)
+	lw t0, 0(t2)
 	sw t0, 912(sp)
 
 	# add result_$93  g2$2
@@ -1620,6 +1924,7 @@ funcEntry2:
 	sw t0, 908(sp)
 
 	# load a18$1 a18
+	li t2, a18
 	lw t0, a18
 	sw t0, 904(sp)
 
@@ -1632,13 +1937,15 @@ funcEntry2:
 	sw t0, 900(sp)
 
 	# store h2 result_$94
+	ld t2, 1840(sp)
 
 	# fetch variables
 	lw t1, 900(sp)
-	sw t1, 1724(sp)
+	sw t1, 0(t2)
 
 	# load g3$2 g3
-	lw t0, 1736(sp)
+	ld t2, 1876(sp)
+	lw t0, 0(t2)
 	sw t0, 896(sp)
 
 	# add result_$95  g3$2
@@ -1650,6 +1957,7 @@ funcEntry2:
 	sw t0, 892(sp)
 
 	# load a19$1 a19
+	li t2, a19
 	lw t0, a19
 	sw t0, 888(sp)
 
@@ -1662,13 +1970,15 @@ funcEntry2:
 	sw t0, 884(sp)
 
 	# store h3 result_$96
+	ld t2, 1828(sp)
 
 	# fetch variables
 	lw t1, 884(sp)
-	sw t1, 1720(sp)
+	sw t1, 0(t2)
 
 	# load g4$2 g4
-	lw t0, 1732(sp)
+	ld t2, 1864(sp)
+	lw t0, 0(t2)
 	sw t0, 880(sp)
 
 	# add result_$97  g4$2
@@ -1680,6 +1990,7 @@ funcEntry2:
 	sw t0, 876(sp)
 
 	# load a20$1 a20
+	li t2, a20
 	lw t0, a20
 	sw t0, 872(sp)
 
@@ -1692,13 +2003,15 @@ funcEntry2:
 	sw t0, 868(sp)
 
 	# store h4 result_$98
+	ld t2, 1816(sp)
 
 	# fetch variables
 	lw t1, 868(sp)
-	sw t1, 1716(sp)
+	sw t1, 0(t2)
 
 	# load f1$2 f1
-	lw t0, 1760(sp)
+	ld t2, 1948(sp)
+	lw t0, 0(t2)
 	sw t0, 864(sp)
 
 	# add result_$99  f1$2
@@ -1710,6 +2023,7 @@ funcEntry2:
 	sw t0, 860(sp)
 
 	# load a13$1 a13
+	li t2, a13
 	lw t0, a13
 	sw t0, 856(sp)
 
@@ -1722,13 +2036,15 @@ funcEntry2:
 	sw t0, 852(sp)
 
 	# store g1 result_$100
+	ld t2, 1900(sp)
 
 	# fetch variables
 	lw t1, 852(sp)
-	sw t1, 1744(sp)
+	sw t1, 0(t2)
 
 	# load f2$2 f2
-	lw t0, 1756(sp)
+	ld t2, 1936(sp)
+	lw t0, 0(t2)
 	sw t0, 848(sp)
 
 	# add result_$101  f2$2
@@ -1740,6 +2056,7 @@ funcEntry2:
 	sw t0, 844(sp)
 
 	# load a14$1 a14
+	li t2, a14
 	lw t0, a14
 	sw t0, 840(sp)
 
@@ -1752,13 +2069,15 @@ funcEntry2:
 	sw t0, 836(sp)
 
 	# store g2 result_$102
+	ld t2, 1888(sp)
 
 	# fetch variables
 	lw t1, 836(sp)
-	sw t1, 1740(sp)
+	sw t1, 0(t2)
 
 	# load f3$2 f3
-	lw t0, 1752(sp)
+	ld t2, 1924(sp)
+	lw t0, 0(t2)
 	sw t0, 832(sp)
 
 	# add result_$103  f3$2
@@ -1770,6 +2089,7 @@ funcEntry2:
 	sw t0, 828(sp)
 
 	# load a15$1 a15
+	li t2, a15
 	lw t0, a15
 	sw t0, 824(sp)
 
@@ -1782,13 +2102,15 @@ funcEntry2:
 	sw t0, 820(sp)
 
 	# store g3 result_$104
+	ld t2, 1876(sp)
 
 	# fetch variables
 	lw t1, 820(sp)
-	sw t1, 1736(sp)
+	sw t1, 0(t2)
 
 	# load f4$2 f4
-	lw t0, 1748(sp)
+	ld t2, 1912(sp)
+	lw t0, 0(t2)
 	sw t0, 816(sp)
 
 	# add result_$105  f4$2
@@ -1800,6 +2122,7 @@ funcEntry2:
 	sw t0, 812(sp)
 
 	# load a16$1 a16
+	li t2, a16
 	lw t0, a16
 	sw t0, 808(sp)
 
@@ -1812,13 +2135,15 @@ funcEntry2:
 	sw t0, 804(sp)
 
 	# store g4 result_$106
+	ld t2, 1864(sp)
 
 	# fetch variables
 	lw t1, 804(sp)
-	sw t1, 1732(sp)
+	sw t1, 0(t2)
 
 	# load e1$2 e1
-	lw t0, 1776(sp)
+	ld t2, 1996(sp)
+	lw t0, 0(t2)
 	sw t0, 800(sp)
 
 	# add result_$107  e1$2
@@ -1830,6 +2155,7 @@ funcEntry2:
 	sw t0, 796(sp)
 
 	# load a9$1 a9
+	li t2, a9
 	lw t0, a9
 	sw t0, 792(sp)
 
@@ -1842,13 +2168,15 @@ funcEntry2:
 	sw t0, 788(sp)
 
 	# store f1 result_$108
+	ld t2, 1948(sp)
 
 	# fetch variables
 	lw t1, 788(sp)
-	sw t1, 1760(sp)
+	sw t1, 0(t2)
 
 	# load e2$2 e2
-	lw t0, 1772(sp)
+	ld t2, 1984(sp)
+	lw t0, 0(t2)
 	sw t0, 784(sp)
 
 	# add result_$109  e2$2
@@ -1860,6 +2188,7 @@ funcEntry2:
 	sw t0, 780(sp)
 
 	# load a10$1 a10
+	li t2, a10
 	lw t0, a10
 	sw t0, 776(sp)
 
@@ -1872,13 +2201,15 @@ funcEntry2:
 	sw t0, 772(sp)
 
 	# store f2 result_$110
+	ld t2, 1936(sp)
 
 	# fetch variables
 	lw t1, 772(sp)
-	sw t1, 1756(sp)
+	sw t1, 0(t2)
 
 	# load e3$2 e3
-	lw t0, 1768(sp)
+	ld t2, 1972(sp)
+	lw t0, 0(t2)
 	sw t0, 768(sp)
 
 	# add result_$111  e3$2
@@ -1890,6 +2221,7 @@ funcEntry2:
 	sw t0, 764(sp)
 
 	# load a11$1 a11
+	li t2, a11
 	lw t0, a11
 	sw t0, 760(sp)
 
@@ -1902,13 +2234,15 @@ funcEntry2:
 	sw t0, 756(sp)
 
 	# store f3 result_$112
+	ld t2, 1924(sp)
 
 	# fetch variables
 	lw t1, 756(sp)
-	sw t1, 1752(sp)
+	sw t1, 0(t2)
 
 	# load e4$2 e4
-	lw t0, 1764(sp)
+	ld t2, 1960(sp)
+	lw t0, 0(t2)
 	sw t0, 752(sp)
 
 	# add result_$113  e4$2
@@ -1920,6 +2254,7 @@ funcEntry2:
 	sw t0, 748(sp)
 
 	# load a12$1 a12
+	li t2, a12
 	lw t0, a12
 	sw t0, 744(sp)
 
@@ -1932,13 +2267,15 @@ funcEntry2:
 	sw t0, 740(sp)
 
 	# store f4 result_$114
+	ld t2, 1912(sp)
 
 	# fetch variables
 	lw t1, 740(sp)
-	sw t1, 1748(sp)
+	sw t1, 0(t2)
 
 	# load d1$2 d1
-	lw t0, 1792(sp)
+	ld t2, 2044(sp)
+	lw t0, 0(t2)
 	sw t0, 736(sp)
 
 	# add result_$115  d1$2
@@ -1950,6 +2287,7 @@ funcEntry2:
 	sw t0, 732(sp)
 
 	# load a5$1 a5
+	li t2, a5
 	lw t0, a5
 	sw t0, 728(sp)
 
@@ -1962,13 +2300,15 @@ funcEntry2:
 	sw t0, 724(sp)
 
 	# store e1 result_$116
+	ld t2, 1996(sp)
 
 	# fetch variables
 	lw t1, 724(sp)
-	sw t1, 1776(sp)
+	sw t1, 0(t2)
 
 	# load d2$2 d2
-	lw t0, 1788(sp)
+	ld t2, 2032(sp)
+	lw t0, 0(t2)
 	sw t0, 720(sp)
 
 	# add result_$117  d2$2
@@ -1980,6 +2320,7 @@ funcEntry2:
 	sw t0, 716(sp)
 
 	# load a6$1 a6
+	li t2, a6
 	lw t0, a6
 	sw t0, 712(sp)
 
@@ -1992,13 +2333,15 @@ funcEntry2:
 	sw t0, 708(sp)
 
 	# store e2 result_$118
+	ld t2, 1984(sp)
 
 	# fetch variables
 	lw t1, 708(sp)
-	sw t1, 1772(sp)
+	sw t1, 0(t2)
 
 	# load d3$2 d3
-	lw t0, 1784(sp)
+	ld t2, 2020(sp)
+	lw t0, 0(t2)
 	sw t0, 704(sp)
 
 	# add result_$119  d3$2
@@ -2010,6 +2353,7 @@ funcEntry2:
 	sw t0, 700(sp)
 
 	# load a7$1 a7
+	li t2, a7
 	lw t0, a7
 	sw t0, 696(sp)
 
@@ -2022,13 +2366,15 @@ funcEntry2:
 	sw t0, 692(sp)
 
 	# store e3 result_$120
+	ld t2, 1972(sp)
 
 	# fetch variables
 	lw t1, 692(sp)
-	sw t1, 1768(sp)
+	sw t1, 0(t2)
 
 	# load d4$2 d4
-	lw t0, 1780(sp)
+	ld t2, 2008(sp)
+	lw t0, 0(t2)
 	sw t0, 688(sp)
 
 	# add result_$121  d4$2
@@ -2040,6 +2386,7 @@ funcEntry2:
 	sw t0, 684(sp)
 
 	# load a8$1 a8
+	li t2, a8
 	lw t0, a8
 	sw t0, 680(sp)
 
@@ -2052,13 +2399,15 @@ funcEntry2:
 	sw t0, 676(sp)
 
 	# store e4 result_$122
+	ld t2, 1960(sp)
 
 	# fetch variables
 	lw t1, 676(sp)
-	sw t1, 1764(sp)
+	sw t1, 0(t2)
 
 	# load c1$2 c1
-	lw t0, 1808(sp)
+	ld t2, 2092(sp)
+	lw t0, 0(t2)
 	sw t0, 672(sp)
 
 	# add result_$123  c1$2
@@ -2070,6 +2419,7 @@ funcEntry2:
 	sw t0, 668(sp)
 
 	# load a1$1 a1
+	li t2, a1
 	lw t0, a1
 	sw t0, 664(sp)
 
@@ -2082,13 +2432,15 @@ funcEntry2:
 	sw t0, 660(sp)
 
 	# store d1 result_$124
+	ld t2, 2044(sp)
 
 	# fetch variables
 	lw t1, 660(sp)
-	sw t1, 1792(sp)
+	sw t1, 0(t2)
 
 	# load c2$2 c2
-	lw t0, 1804(sp)
+	ld t2, 2080(sp)
+	lw t0, 0(t2)
 	sw t0, 656(sp)
 
 	# add result_$125  c2$2
@@ -2100,6 +2452,7 @@ funcEntry2:
 	sw t0, 652(sp)
 
 	# load a2$1 a2
+	li t2, a2
 	lw t0, a2
 	sw t0, 648(sp)
 
@@ -2112,13 +2465,15 @@ funcEntry2:
 	sw t0, 644(sp)
 
 	# store d2 result_$126
+	ld t2, 2032(sp)
 
 	# fetch variables
 	lw t1, 644(sp)
-	sw t1, 1788(sp)
+	sw t1, 0(t2)
 
 	# load c3$2 c3
-	lw t0, 1800(sp)
+	ld t2, 2068(sp)
+	lw t0, 0(t2)
 	sw t0, 640(sp)
 
 	# add result_$127  c3$2
@@ -2130,6 +2485,7 @@ funcEntry2:
 	sw t0, 636(sp)
 
 	# load a3$1 a3
+	li t2, a3
 	lw t0, a3
 	sw t0, 632(sp)
 
@@ -2142,13 +2498,15 @@ funcEntry2:
 	sw t0, 628(sp)
 
 	# store d3 result_$128
+	ld t2, 2020(sp)
 
 	# fetch variables
 	lw t1, 628(sp)
-	sw t1, 1784(sp)
+	sw t1, 0(t2)
 
 	# load c4$2 c4
-	lw t0, 1796(sp)
+	ld t2, 2056(sp)
+	lw t0, 0(t2)
 	sw t0, 624(sp)
 
 	# add result_$129  c4$2
@@ -2160,6 +2518,7 @@ funcEntry2:
 	sw t0, 620(sp)
 
 	# load a4$1 a4
+	li t2, a4
 	lw t0, a4
 	sw t0, 616(sp)
 
@@ -2172,13 +2531,15 @@ funcEntry2:
 	sw t0, 612(sp)
 
 	# store d4 result_$130
+	ld t2, 2008(sp)
 
 	# fetch variables
 	lw t1, 612(sp)
-	sw t1, 1780(sp)
+	sw t1, 0(t2)
 
 	# load c1$3 c1
-	lw t0, 1808(sp)
+	ld t2, 2092(sp)
+	lw t0, 0(t2)
 	sw t0, 608(sp)
 
 	# add result_$131  c1$3
@@ -2190,6 +2551,7 @@ funcEntry2:
 	sw t0, 604(sp)
 
 	# load a1$2 a1
+	li t2, a1
 	lw t0, a1
 	sw t0, 600(sp)
 
@@ -2202,13 +2564,15 @@ funcEntry2:
 	sw t0, 596(sp)
 
 	# store d1 result_$132
+	ld t2, 2044(sp)
 
 	# fetch variables
 	lw t1, 596(sp)
-	sw t1, 1792(sp)
+	sw t1, 0(t2)
 
 	# load c2$3 c2
-	lw t0, 1804(sp)
+	ld t2, 2080(sp)
+	lw t0, 0(t2)
 	sw t0, 592(sp)
 
 	# add result_$133  c2$3
@@ -2220,6 +2584,7 @@ funcEntry2:
 	sw t0, 588(sp)
 
 	# load a2$2 a2
+	li t2, a2
 	lw t0, a2
 	sw t0, 584(sp)
 
@@ -2232,13 +2597,15 @@ funcEntry2:
 	sw t0, 580(sp)
 
 	# store d2 result_$134
+	ld t2, 2032(sp)
 
 	# fetch variables
 	lw t1, 580(sp)
-	sw t1, 1788(sp)
+	sw t1, 0(t2)
 
 	# load c3$3 c3
-	lw t0, 1800(sp)
+	ld t2, 2068(sp)
+	lw t0, 0(t2)
 	sw t0, 576(sp)
 
 	# add result_$135  c3$3
@@ -2250,6 +2617,7 @@ funcEntry2:
 	sw t0, 572(sp)
 
 	# load a3$2 a3
+	li t2, a3
 	lw t0, a3
 	sw t0, 568(sp)
 
@@ -2262,13 +2630,15 @@ funcEntry2:
 	sw t0, 564(sp)
 
 	# store d3 result_$136
+	ld t2, 2020(sp)
 
 	# fetch variables
 	lw t1, 564(sp)
-	sw t1, 1784(sp)
+	sw t1, 0(t2)
 
 	# load c4$3 c4
-	lw t0, 1796(sp)
+	ld t2, 2056(sp)
+	lw t0, 0(t2)
 	sw t0, 560(sp)
 
 	# add result_$137  c4$3
@@ -2280,6 +2650,7 @@ funcEntry2:
 	sw t0, 556(sp)
 
 	# load a4$2 a4
+	li t2, a4
 	lw t0, a4
 	sw t0, 552(sp)
 
@@ -2292,17 +2663,20 @@ funcEntry2:
 	sw t0, 548(sp)
 
 	# store d4 result_$138
+	ld t2, 2008(sp)
 
 	# fetch variables
 	lw t1, 548(sp)
-	sw t1, 1780(sp)
+	sw t1, 0(t2)
 
 	# load i$1 i
-	lw t0, 1824(sp)
+	ld t2, 2116(sp)
+	lw t0, 0(t2)
 	sw t0, 544(sp)
 
 	# load c1$4 c1
-	lw t0, 1808(sp)
+	ld t2, 2092(sp)
+	lw t0, 0(t2)
 	sw t0, 540(sp)
 
 	# add result_$139 i$1 c1$4
@@ -2314,7 +2688,8 @@ funcEntry2:
 	sw t0, 536(sp)
 
 	# load c2$4 c2
-	lw t0, 1804(sp)
+	ld t2, 2080(sp)
+	lw t0, 0(t2)
 	sw t0, 532(sp)
 
 	# add result_$140 result_$139 c2$4
@@ -2326,7 +2701,8 @@ funcEntry2:
 	sw t0, 528(sp)
 
 	# load c3$4 c3
-	lw t0, 1800(sp)
+	ld t2, 2068(sp)
+	lw t0, 0(t2)
 	sw t0, 524(sp)
 
 	# add result_$141 result_$140 c3$4
@@ -2338,7 +2714,8 @@ funcEntry2:
 	sw t0, 520(sp)
 
 	# load c4$4 c4
-	lw t0, 1796(sp)
+	ld t2, 2056(sp)
+	lw t0, 0(t2)
 	sw t0, 516(sp)
 
 	# add result_$142 result_$141 c4$4
@@ -2350,7 +2727,8 @@ funcEntry2:
 	sw t0, 512(sp)
 
 	# load d1$3 d1
-	lw t0, 1792(sp)
+	ld t2, 2044(sp)
+	lw t0, 0(t2)
 	sw t0, 508(sp)
 
 	# sub result_$143 result_$142 d1$3
@@ -2362,7 +2740,8 @@ funcEntry2:
 	sw t0, 504(sp)
 
 	# load d2$3 d2
-	lw t0, 1788(sp)
+	ld t2, 2032(sp)
+	lw t0, 0(t2)
 	sw t0, 500(sp)
 
 	# sub result_$144 result_$143 d2$3
@@ -2374,7 +2753,8 @@ funcEntry2:
 	sw t0, 496(sp)
 
 	# load d3$3 d3
-	lw t0, 1784(sp)
+	ld t2, 2020(sp)
+	lw t0, 0(t2)
 	sw t0, 492(sp)
 
 	# sub result_$145 result_$144 d3$3
@@ -2386,7 +2766,8 @@ funcEntry2:
 	sw t0, 488(sp)
 
 	# load d4$3 d4
-	lw t0, 1780(sp)
+	ld t2, 2008(sp)
+	lw t0, 0(t2)
 	sw t0, 484(sp)
 
 	# sub result_$146 result_$145 d4$3
@@ -2398,7 +2779,8 @@ funcEntry2:
 	sw t0, 480(sp)
 
 	# load e1$3 e1
-	lw t0, 1776(sp)
+	ld t2, 1996(sp)
+	lw t0, 0(t2)
 	sw t0, 476(sp)
 
 	# add result_$147 result_$146 e1$3
@@ -2410,7 +2792,8 @@ funcEntry2:
 	sw t0, 472(sp)
 
 	# load e2$3 e2
-	lw t0, 1772(sp)
+	ld t2, 1984(sp)
+	lw t0, 0(t2)
 	sw t0, 468(sp)
 
 	# add result_$148 result_$147 e2$3
@@ -2422,7 +2805,8 @@ funcEntry2:
 	sw t0, 464(sp)
 
 	# load e3$3 e3
-	lw t0, 1768(sp)
+	ld t2, 1972(sp)
+	lw t0, 0(t2)
 	sw t0, 460(sp)
 
 	# add result_$149 result_$148 e3$3
@@ -2434,7 +2818,8 @@ funcEntry2:
 	sw t0, 456(sp)
 
 	# load e4$3 e4
-	lw t0, 1764(sp)
+	ld t2, 1960(sp)
+	lw t0, 0(t2)
 	sw t0, 452(sp)
 
 	# add result_$150 result_$149 e4$3
@@ -2446,7 +2831,8 @@ funcEntry2:
 	sw t0, 448(sp)
 
 	# load f1$3 f1
-	lw t0, 1760(sp)
+	ld t2, 1948(sp)
+	lw t0, 0(t2)
 	sw t0, 444(sp)
 
 	# sub result_$151 result_$150 f1$3
@@ -2458,7 +2844,8 @@ funcEntry2:
 	sw t0, 440(sp)
 
 	# load f2$3 f2
-	lw t0, 1756(sp)
+	ld t2, 1936(sp)
+	lw t0, 0(t2)
 	sw t0, 436(sp)
 
 	# sub result_$152 result_$151 f2$3
@@ -2470,7 +2857,8 @@ funcEntry2:
 	sw t0, 432(sp)
 
 	# load f3$3 f3
-	lw t0, 1752(sp)
+	ld t2, 1924(sp)
+	lw t0, 0(t2)
 	sw t0, 428(sp)
 
 	# sub result_$153 result_$152 f3$3
@@ -2482,7 +2870,8 @@ funcEntry2:
 	sw t0, 424(sp)
 
 	# load f4$3 f4
-	lw t0, 1748(sp)
+	ld t2, 1912(sp)
+	lw t0, 0(t2)
 	sw t0, 420(sp)
 
 	# sub result_$154 result_$153 f4$3
@@ -2494,7 +2883,8 @@ funcEntry2:
 	sw t0, 416(sp)
 
 	# load g1$3 g1
-	lw t0, 1744(sp)
+	ld t2, 1900(sp)
+	lw t0, 0(t2)
 	sw t0, 412(sp)
 
 	# add result_$155 result_$154 g1$3
@@ -2506,7 +2896,8 @@ funcEntry2:
 	sw t0, 408(sp)
 
 	# load g2$3 g2
-	lw t0, 1740(sp)
+	ld t2, 1888(sp)
+	lw t0, 0(t2)
 	sw t0, 404(sp)
 
 	# add result_$156 result_$155 g2$3
@@ -2518,7 +2909,8 @@ funcEntry2:
 	sw t0, 400(sp)
 
 	# load g3$3 g3
-	lw t0, 1736(sp)
+	ld t2, 1876(sp)
+	lw t0, 0(t2)
 	sw t0, 396(sp)
 
 	# add result_$157 result_$156 g3$3
@@ -2530,7 +2922,8 @@ funcEntry2:
 	sw t0, 392(sp)
 
 	# load g4$3 g4
-	lw t0, 1732(sp)
+	ld t2, 1864(sp)
+	lw t0, 0(t2)
 	sw t0, 388(sp)
 
 	# add result_$158 result_$157 g4$3
@@ -2542,7 +2935,8 @@ funcEntry2:
 	sw t0, 384(sp)
 
 	# load h1$3 h1
-	lw t0, 1728(sp)
+	ld t2, 1852(sp)
+	lw t0, 0(t2)
 	sw t0, 380(sp)
 
 	# sub result_$159 result_$158 h1$3
@@ -2554,7 +2948,8 @@ funcEntry2:
 	sw t0, 376(sp)
 
 	# load h2$3 h2
-	lw t0, 1724(sp)
+	ld t2, 1840(sp)
+	lw t0, 0(t2)
 	sw t0, 372(sp)
 
 	# sub result_$160 result_$159 h2$3
@@ -2566,7 +2961,8 @@ funcEntry2:
 	sw t0, 368(sp)
 
 	# load h3$3 h3
-	lw t0, 1720(sp)
+	ld t2, 1828(sp)
+	lw t0, 0(t2)
 	sw t0, 364(sp)
 
 	# sub result_$161 result_$160 h3$3
@@ -2578,7 +2974,8 @@ funcEntry2:
 	sw t0, 360(sp)
 
 	# load h4$3 h4
-	lw t0, 1716(sp)
+	ld t2, 1816(sp)
+	lw t0, 0(t2)
 	sw t0, 356(sp)
 
 	# sub result_$162 result_$161 h4$3
@@ -2590,7 +2987,8 @@ funcEntry2:
 	sw t0, 352(sp)
 
 	# load i1$3 i1
-	lw t0, 1712(sp)
+	ld t2, 1804(sp)
+	lw t0, 0(t2)
 	sw t0, 348(sp)
 
 	# add result_$163 result_$162 i1$3
@@ -2602,7 +3000,8 @@ funcEntry2:
 	sw t0, 344(sp)
 
 	# load i2$3 i2
-	lw t0, 1708(sp)
+	ld t2, 1792(sp)
+	lw t0, 0(t2)
 	sw t0, 340(sp)
 
 	# add result_$164 result_$163 i2$3
@@ -2614,7 +3013,8 @@ funcEntry2:
 	sw t0, 336(sp)
 
 	# load i3$3 i3
-	lw t0, 1704(sp)
+	ld t2, 1780(sp)
+	lw t0, 0(t2)
 	sw t0, 332(sp)
 
 	# add result_$165 result_$164 i3$3
@@ -2626,7 +3026,8 @@ funcEntry2:
 	sw t0, 328(sp)
 
 	# load i4$3 i4
-	lw t0, 1700(sp)
+	ld t2, 1768(sp)
+	lw t0, 0(t2)
 	sw t0, 324(sp)
 
 	# add result_$166 result_$165 i4$3
@@ -2638,7 +3039,8 @@ funcEntry2:
 	sw t0, 320(sp)
 
 	# load j1$3 j1
-	lw t0, 1696(sp)
+	ld t2, 1756(sp)
+	lw t0, 0(t2)
 	sw t0, 316(sp)
 
 	# sub result_$167 result_$166 j1$3
@@ -2650,7 +3052,8 @@ funcEntry2:
 	sw t0, 312(sp)
 
 	# load j2$3 j2
-	lw t0, 1692(sp)
+	ld t2, 1744(sp)
+	lw t0, 0(t2)
 	sw t0, 308(sp)
 
 	# sub result_$168 result_$167 j2$3
@@ -2662,7 +3065,8 @@ funcEntry2:
 	sw t0, 304(sp)
 
 	# load j3$3 j3
-	lw t0, 1688(sp)
+	ld t2, 1732(sp)
+	lw t0, 0(t2)
 	sw t0, 300(sp)
 
 	# sub result_$169 result_$168 j3$3
@@ -2674,7 +3078,8 @@ funcEntry2:
 	sw t0, 296(sp)
 
 	# load j4$3 j4
-	lw t0, 1684(sp)
+	ld t2, 1720(sp)
+	lw t0, 0(t2)
 	sw t0, 292(sp)
 
 	# sub result_$170 result_$169 j4$3
@@ -2686,7 +3091,8 @@ funcEntry2:
 	sw t0, 288(sp)
 
 	# load k1$1 k1
-	lw t0, 1680(sp)
+	ld t2, 1708(sp)
+	lw t0, 0(t2)
 	sw t0, 284(sp)
 
 	# add result_$171 result_$170 k1$1
@@ -2698,7 +3104,8 @@ funcEntry2:
 	sw t0, 280(sp)
 
 	# load k2$1 k2
-	lw t0, 1676(sp)
+	ld t2, 1696(sp)
+	lw t0, 0(t2)
 	sw t0, 276(sp)
 
 	# add result_$172 result_$171 k2$1
@@ -2710,7 +3117,8 @@ funcEntry2:
 	sw t0, 272(sp)
 
 	# load k3$1 k3
-	lw t0, 1672(sp)
+	ld t2, 1684(sp)
+	lw t0, 0(t2)
 	sw t0, 268(sp)
 
 	# add result_$173 result_$172 k3$1
@@ -2722,7 +3130,8 @@ funcEntry2:
 	sw t0, 264(sp)
 
 	# load k4$1 k4
-	lw t0, 1668(sp)
+	ld t2, 1672(sp)
+	lw t0, 0(t2)
 	sw t0, 260(sp)
 
 	# add result_$174 result_$173 k4$1
@@ -2734,6 +3143,7 @@ funcEntry2:
 	sw t0, 256(sp)
 
 	# load a1$3 a1
+	li t2, a1
 	lw t0, a1
 	sw t0, 252(sp)
 
@@ -2746,6 +3156,7 @@ funcEntry2:
 	sw t0, 248(sp)
 
 	# load a2$3 a2
+	li t2, a2
 	lw t0, a2
 	sw t0, 244(sp)
 
@@ -2758,6 +3169,7 @@ funcEntry2:
 	sw t0, 240(sp)
 
 	# load a3$3 a3
+	li t2, a3
 	lw t0, a3
 	sw t0, 236(sp)
 
@@ -2770,6 +3182,7 @@ funcEntry2:
 	sw t0, 232(sp)
 
 	# load a4$3 a4
+	li t2, a4
 	lw t0, a4
 	sw t0, 228(sp)
 
@@ -2782,6 +3195,7 @@ funcEntry2:
 	sw t0, 224(sp)
 
 	# load a5$2 a5
+	li t2, a5
 	lw t0, a5
 	sw t0, 220(sp)
 
@@ -2794,6 +3208,7 @@ funcEntry2:
 	sw t0, 216(sp)
 
 	# load a6$2 a6
+	li t2, a6
 	lw t0, a6
 	sw t0, 212(sp)
 
@@ -2806,6 +3221,7 @@ funcEntry2:
 	sw t0, 208(sp)
 
 	# load a7$2 a7
+	li t2, a7
 	lw t0, a7
 	sw t0, 204(sp)
 
@@ -2818,6 +3234,7 @@ funcEntry2:
 	sw t0, 200(sp)
 
 	# load a8$2 a8
+	li t2, a8
 	lw t0, a8
 	sw t0, 196(sp)
 
@@ -2830,6 +3247,7 @@ funcEntry2:
 	sw t0, 192(sp)
 
 	# load a9$2 a9
+	li t2, a9
 	lw t0, a9
 	sw t0, 188(sp)
 
@@ -2842,6 +3260,7 @@ funcEntry2:
 	sw t0, 184(sp)
 
 	# load a10$2 a10
+	li t2, a10
 	lw t0, a10
 	sw t0, 180(sp)
 
@@ -2854,6 +3273,7 @@ funcEntry2:
 	sw t0, 176(sp)
 
 	# load a11$2 a11
+	li t2, a11
 	lw t0, a11
 	sw t0, 172(sp)
 
@@ -2866,6 +3286,7 @@ funcEntry2:
 	sw t0, 168(sp)
 
 	# load a12$2 a12
+	li t2, a12
 	lw t0, a12
 	sw t0, 164(sp)
 
@@ -2878,6 +3299,7 @@ funcEntry2:
 	sw t0, 160(sp)
 
 	# load a13$2 a13
+	li t2, a13
 	lw t0, a13
 	sw t0, 156(sp)
 
@@ -2890,6 +3312,7 @@ funcEntry2:
 	sw t0, 152(sp)
 
 	# load a14$2 a14
+	li t2, a14
 	lw t0, a14
 	sw t0, 148(sp)
 
@@ -2902,6 +3325,7 @@ funcEntry2:
 	sw t0, 144(sp)
 
 	# load a15$2 a15
+	li t2, a15
 	lw t0, a15
 	sw t0, 140(sp)
 
@@ -2914,6 +3338,7 @@ funcEntry2:
 	sw t0, 136(sp)
 
 	# load a16$2 a16
+	li t2, a16
 	lw t0, a16
 	sw t0, 132(sp)
 
@@ -2926,6 +3351,7 @@ funcEntry2:
 	sw t0, 128(sp)
 
 	# load a17$2 a17
+	li t2, a17
 	lw t0, a17
 	sw t0, 124(sp)
 
@@ -2938,6 +3364,7 @@ funcEntry2:
 	sw t0, 120(sp)
 
 	# load a18$2 a18
+	li t2, a18
 	lw t0, a18
 	sw t0, 116(sp)
 
@@ -2950,6 +3377,7 @@ funcEntry2:
 	sw t0, 112(sp)
 
 	# load a19$2 a19
+	li t2, a19
 	lw t0, a19
 	sw t0, 108(sp)
 
@@ -2962,6 +3390,7 @@ funcEntry2:
 	sw t0, 104(sp)
 
 	# load a20$2 a20
+	li t2, a20
 	lw t0, a20
 	sw t0, 100(sp)
 
@@ -2974,6 +3403,7 @@ funcEntry2:
 	sw t0, 96(sp)
 
 	# load a21$2 a21
+	li t2, a21
 	lw t0, a21
 	sw t0, 92(sp)
 
@@ -2986,6 +3416,7 @@ funcEntry2:
 	sw t0, 88(sp)
 
 	# load a22$2 a22
+	li t2, a22
 	lw t0, a22
 	sw t0, 84(sp)
 
@@ -2998,6 +3429,7 @@ funcEntry2:
 	sw t0, 80(sp)
 
 	# load a23$2 a23
+	li t2, a23
 	lw t0, a23
 	sw t0, 76(sp)
 
@@ -3010,6 +3442,7 @@ funcEntry2:
 	sw t0, 72(sp)
 
 	# load a24$2 a24
+	li t2, a24
 	lw t0, a24
 	sw t0, 68(sp)
 
@@ -3022,6 +3455,7 @@ funcEntry2:
 	sw t0, 64(sp)
 
 	# load a25$2 a25
+	li t2, a25
 	lw t0, a25
 	sw t0, 60(sp)
 
@@ -3034,6 +3468,7 @@ funcEntry2:
 	sw t0, 56(sp)
 
 	# load a26$2 a26
+	li t2, a26
 	lw t0, a26
 	sw t0, 52(sp)
 
@@ -3046,6 +3481,7 @@ funcEntry2:
 	sw t0, 48(sp)
 
 	# load a27$2 a27
+	li t2, a27
 	lw t0, a27
 	sw t0, 44(sp)
 
@@ -3058,6 +3494,7 @@ funcEntry2:
 	sw t0, 40(sp)
 
 	# load a28$2 a28
+	li t2, a28
 	lw t0, a28
 	sw t0, 36(sp)
 
@@ -3070,6 +3507,7 @@ funcEntry2:
 	sw t0, 32(sp)
 
 	# load a29$2 a29
+	li t2, a29
 	lw t0, a29
 	sw t0, 28(sp)
 
@@ -3082,6 +3520,7 @@ funcEntry2:
 	sw t0, 24(sp)
 
 	# load a30$2 a30
+	li t2, a30
 	lw t0, a30
 	sw t0, 20(sp)
 
@@ -3094,6 +3533,7 @@ funcEntry2:
 	sw t0, 16(sp)
 
 	# load a31$2 a31
+	li t2, a31
 	lw t0, a31
 	sw t0, 12(sp)
 
@@ -3106,6 +3546,7 @@ funcEntry2:
 	sw t0, 8(sp)
 
 	# load a32$2 a32
+	li t2, a32
 	lw t0, a32
 	sw t0, 4(sp)
 
@@ -3122,7 +3563,7 @@ funcEntry2:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 1844
+	addi sp, sp, 2156
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -3133,7 +3574,17 @@ main:
 mainEntry28:
 
 	# allocate space for local variables
-	addi sp, sp, -40
+	addi sp, sp, -56
+
+	# save the parameters
+
+	# allocate a
+	addi t0, sp, 44
+	sd t0, 48(sp)
+
+	# allocate b
+	addi t0, sp, 32
+	sd t0, 36(sp)
 
 	# prepare params
 
@@ -3150,13 +3601,15 @@ mainEntry28:
 	sw a0, 28(sp)
 
 	# store a getint
+	ld t2, 48(sp)
 
 	# fetch variables
 	lw t1, 28(sp)
-	sw t1, 36(sp)
+	sw t1, 0(t2)
 
 	# load a$1 a
-	lw t0, 36(sp)
+	ld t2, 48(sp)
+	lw t0, 0(t2)
 	sw t0, 24(sp)
 
 	# add result_ a$1 
@@ -3168,17 +3621,20 @@ mainEntry28:
 	sw t0, 20(sp)
 
 	# store b result_
+	ld t2, 36(sp)
 
 	# fetch variables
 	lw t1, 20(sp)
-	sw t1, 32(sp)
+	sw t1, 0(t2)
 
 	# load a$2 a
-	lw t0, 36(sp)
+	ld t2, 48(sp)
+	lw t0, 0(t2)
 	sw t0, 16(sp)
 
 	# load b$1 b
-	lw t0, 32(sp)
+	ld t2, 36(sp)
+	lw t0, 0(t2)
 	sw t0, 12(sp)
 
 	# prepare params
@@ -3204,13 +3660,15 @@ mainEntry28:
 	sw a0, 8(sp)
 
 	# store a func
+	ld t2, 48(sp)
 
 	# fetch variables
 	lw t1, 8(sp)
-	sw t1, 36(sp)
+	sw t1, 0(t2)
 
 	# load a$3 a
-	lw t0, 36(sp)
+	ld t2, 48(sp)
+	lw t0, 0(t2)
 	sw t0, 4(sp)
 
 	# prepare params
@@ -3231,7 +3689,8 @@ mainEntry28:
 	addi sp, sp, 4
 
 	# load a$4 a
-	lw t0, 36(sp)
+	ld t2, 48(sp)
+	lw t0, 0(t2)
 	sw t0, 0(sp)
 
 	# ret a$4
@@ -3239,5 +3698,5 @@ mainEntry28:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 40
+	addi sp, sp, 56
 	ret 

@@ -5,43 +5,53 @@
 .type main, @function
 .globl main
 main:
-mainEntry6:
+mainEntry8:
 
 	# allocate space for local variables
-	addi sp, sp, -18
+	addi sp, sp, -32
+
+	# save the parameters
+
+	# allocate a
+	addi t0, sp, 20
+	sd t0, 24(sp)
 
 	# store a 
+	ld t2, 24(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 14(sp)
+	sw t1, 0(t2)
 
 	# load a$1 a
-	lw t0, 14(sp)
-	sw t0, 10(sp)
+	ld t2, 24(sp)
+	lw t0, 0(t2)
+	sw t0, 16(sp)
 
 	# cmp a$1  cond_eq_tmp_
 
 	# fetch variables
-	lw t1, 10(sp)
+	lw t1, 16(sp)
 	li t2, 1
 	xor t0, t1, t2
 	seqz t0, t0
-	sw t0, 9(sp)
+	sw t0, 12(sp)
 
 	# fetch variables
-	lw t1, 9(sp)
+	lw t1, 12(sp)
 
 	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
-	sw t0, 5(sp)
+	sw t0, 8(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 5(sp)
+	lw t1, 8(sp)
 	li t2, 0
 	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 	sw t0, 4(sp)
 
 	# condBr cond_ ifTrue_6 next_6
@@ -53,17 +63,19 @@ mainEntry6:
 ifTrue_6:
 
 	# store a 
+	ld t2, 24(sp)
 
 	# fetch variables
 	li t1, 2
-	sw t1, 14(sp)
+	sw t1, 0(t2)
 
 	# br next_6
 	j next_6
 next_6:
 
 	# load a$2 a
-	lw t0, 14(sp)
+	ld t2, 24(sp)
+	lw t0, 0(t2)
 	sw t0, 0(sp)
 
 	# ret a$2
@@ -71,5 +83,5 @@ next_6:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 18
+	addi sp, sp, 32
 	ret 

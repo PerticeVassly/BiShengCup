@@ -8,27 +8,38 @@ ifWhile:
 ifWhileEntry:
 
 	# allocate space for local variables
-	addi sp, sp, -92
+	addi sp, sp, -108
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
 
+	# allocate a
+	addi t0, sp, 96
+	sd t0, 100(sp)
+
 	# store a 
+	ld t2, 100(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 88(sp)
+	sw t1, 0(t2)
+
+	# allocate b
+	addi t0, sp, 84
+	sd t0, 88(sp)
 
 	# store b 
+	ld t2, 88(sp)
 
 	# fetch variables
 	li t1, 3
-	sw t1, 84(sp)
+	sw t1, 0(t2)
 
 	# load a$1 a
-	lw t0, 88(sp)
+	ld t2, 100(sp)
+	lw t0, 0(t2)
 	sw t0, 80(sp)
 
 	# cmp a$1  cond_eq_tmp_
@@ -74,7 +85,8 @@ ifFalse_129:
 next_533:
 
 	# load b$5 b
-	lw t0, 84(sp)
+	ld t2, 88(sp)
+	lw t0, 0(t2)
 	sw t0, 64(sp)
 
 	# ret b$5
@@ -82,7 +94,7 @@ next_533:
 	# fetch variables
 	lw t1, 64(sp)
 	mv a0, t1
-	addi sp, sp, 92
+	addi sp, sp, 108
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -90,7 +102,8 @@ next_533:
 whileCond_233:
 
 	# load b$1 b
-	lw t0, 84(sp)
+	ld t2, 88(sp)
+	lw t0, 0(t2)
 	sw t0, 60(sp)
 
 	# cmp b$1  cond_eq_tmp_$1
@@ -128,7 +141,8 @@ whileCond_233:
 whileBody_233:
 
 	# load b$2 b
-	lw t0, 84(sp)
+	ld t2, 88(sp)
+	lw t0, 0(t2)
 	sw t0, 44(sp)
 
 	# add result_ b$2 
@@ -140,17 +154,19 @@ whileBody_233:
 	sw t0, 40(sp)
 
 	# store b result_
+	ld t2, 88(sp)
 
 	# fetch variables
 	lw t1, 40(sp)
-	sw t1, 84(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_233
 	j whileCond_233
 next_534:
 
 	# load b$3 b
-	lw t0, 84(sp)
+	ld t2, 88(sp)
+	lw t0, 0(t2)
 	sw t0, 36(sp)
 
 	# add result_$1 b$3 
@@ -162,17 +178,19 @@ next_534:
 	sw t0, 32(sp)
 
 	# store b result_$1
+	ld t2, 88(sp)
 
 	# fetch variables
 	lw t1, 32(sp)
-	sw t1, 84(sp)
+	sw t1, 0(t2)
 
 	# br next_533
 	j next_533
 whileCond_234:
 
 	# load a$2 a
-	lw t0, 88(sp)
+	ld t2, 100(sp)
+	lw t0, 0(t2)
 	sw t0, 28(sp)
 
 	# cmp a$2  cond_lt_tmp_
@@ -209,7 +227,8 @@ whileCond_234:
 whileBody_234:
 
 	# load b$4 b
-	lw t0, 84(sp)
+	ld t2, 88(sp)
+	lw t0, 0(t2)
 	sw t0, 12(sp)
 
 	# mul result_$2 b$4 
@@ -221,13 +240,15 @@ whileBody_234:
 	sw t0, 8(sp)
 
 	# store b result_$2
+	ld t2, 88(sp)
 
 	# fetch variables
 	lw t1, 8(sp)
-	sw t1, 84(sp)
+	sw t1, 0(t2)
 
 	# load a$3 a
-	lw t0, 88(sp)
+	ld t2, 100(sp)
+	lw t0, 0(t2)
 	sw t0, 4(sp)
 
 	# add result_$3 a$3 
@@ -239,10 +260,11 @@ whileBody_234:
 	sw t0, 0(sp)
 
 	# store a result_$3
+	ld t2, 100(sp)
 
 	# fetch variables
 	lw t1, 0(sp)
-	sw t1, 88(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_234
 	j whileCond_234
@@ -257,6 +279,8 @@ mainEntry77:
 
 	# allocate space for local variables
 	addi sp, sp, -4
+
+	# save the parameters
 
 	# prepare params
 

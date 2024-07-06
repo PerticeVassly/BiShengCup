@@ -11,19 +11,28 @@ main:
 mainEntry44:
 
 	# allocate space for local variables
-	addi sp, sp, -16
+	addi sp, sp, -24
+
+	# save the parameters
+
+	# allocate b
+	addi t0, sp, 12
+	sd t0, 16(sp)
 
 	# store b 
+	ld t2, 16(sp)
 
 	# fetch variables
 	li t1, 2
-	sw t1, 12(sp)
+	sw t1, 0(t2)
 
 	# load b$1 b
-	lw t0, 12(sp)
+	ld t2, 16(sp)
+	lw t0, 0(t2)
 	sw t0, 8(sp)
 
 	# load a a
+	li t2, a
 	lw t0, a
 	sw t0, 4(sp)
 
@@ -40,5 +49,5 @@ mainEntry44:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 16
+	addi sp, sp, 24
 	ret 

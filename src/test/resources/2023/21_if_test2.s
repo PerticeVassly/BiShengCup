@@ -8,27 +8,38 @@ ifElseIf:
 ifElseIfEntry:
 
 	# allocate space for local variables
-	addi sp, sp, -128
+	addi sp, sp, -144
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
 
+	# allocate a
+	addi t0, sp, 132
+	sd t0, 136(sp)
+
 	# store a 
+	ld t2, 136(sp)
 
 	# fetch variables
 	li t1, 5
-	sw t1, 124(sp)
+	sw t1, 0(t2)
+
+	# allocate b
+	addi t0, sp, 120
+	sd t0, 124(sp)
 
 	# store b 
+	ld t2, 124(sp)
 
 	# fetch variables
 	li t1, 10
-	sw t1, 120(sp)
+	sw t1, 0(t2)
 
 	# load a$1 a
-	lw t0, 124(sp)
+	ld t2, 136(sp)
+	lw t0, 0(t2)
 	sw t0, 116(sp)
 
 	# cmp a$1  cond_eq_tmp_
@@ -66,7 +77,8 @@ ifElseIfEntry:
 ifTrue_280:
 
 	# load a$2 a
-	lw t0, 124(sp)
+	ld t2, 136(sp)
+	lw t0, 0(t2)
 	sw t0, 100(sp)
 
 	# ret a$2
@@ -74,7 +86,7 @@ ifTrue_280:
 	# fetch variables
 	lw t1, 100(sp)
 	mv a0, t1
-	addi sp, sp, 128
+	addi sp, sp, 144
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -82,7 +94,8 @@ ifTrue_280:
 ifFalse_111:
 
 	# load b$2 b
-	lw t0, 120(sp)
+	ld t2, 124(sp)
+	lw t0, 0(t2)
 	sw t0, 96(sp)
 
 	# cmp b$2  cond_eq_tmp_$2
@@ -120,7 +133,8 @@ ifFalse_111:
 next_495:
 
 	# load a$7 a
-	lw t0, 124(sp)
+	ld t2, 136(sp)
+	lw t0, 0(t2)
 	sw t0, 80(sp)
 
 	# ret a$7
@@ -128,7 +142,7 @@ next_495:
 	# fetch variables
 	lw t1, 80(sp)
 	mv a0, t1
-	addi sp, sp, 128
+	addi sp, sp, 144
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -136,7 +150,8 @@ next_495:
 secondCond_93:
 
 	# load b$1 b
-	lw t0, 120(sp)
+	ld t2, 124(sp)
+	lw t0, 0(t2)
 	sw t0, 76(sp)
 
 	# cmp b$1  cond_eq_tmp_$1
@@ -174,17 +189,19 @@ secondCond_93:
 ifTrue_281:
 
 	# store a 
+	ld t2, 136(sp)
 
 	# fetch variables
 	li t1, 25
-	sw t1, 124(sp)
+	sw t1, 0(t2)
 
 	# br next_496
 	j next_496
 ifFalse_112:
 
 	# load b$3 b
-	lw t0, 120(sp)
+	ld t2, 124(sp)
+	lw t0, 0(t2)
 	sw t0, 60(sp)
 
 	# cmp b$3  cond_eq_tmp_$4
@@ -226,7 +243,8 @@ next_496:
 secondCond_94:
 
 	# load a$3 a
-	lw t0, 124(sp)
+	ld t2, 136(sp)
+	lw t0, 0(t2)
 	sw t0, 44(sp)
 
 	# cmp a$3  cond_eq_tmp_$3
@@ -264,7 +282,8 @@ secondCond_94:
 ifTrue_282:
 
 	# load a$5 a
-	lw t0, 124(sp)
+	ld t2, 136(sp)
+	lw t0, 0(t2)
 	sw t0, 28(sp)
 
 	# add result_ a$5 
@@ -276,17 +295,19 @@ ifTrue_282:
 	sw t0, 24(sp)
 
 	# store a result_
+	ld t2, 136(sp)
 
 	# fetch variables
 	lw t1, 24(sp)
-	sw t1, 124(sp)
+	sw t1, 0(t2)
 
 	# br next_497
 	j next_497
 ifFalse_113:
 
 	# load a$6 a
-	lw t0, 124(sp)
+	ld t2, 136(sp)
+	lw t0, 0(t2)
 	sw t0, 20(sp)
 
 	# sub tmp_  a$6
@@ -298,10 +319,11 @@ ifFalse_113:
 	sw t0, 16(sp)
 
 	# store a tmp_
+	ld t2, 136(sp)
 
 	# fetch variables
 	lw t1, 16(sp)
-	sw t1, 124(sp)
+	sw t1, 0(t2)
 
 	# br next_497
 	j next_497
@@ -312,7 +334,8 @@ next_497:
 secondCond_95:
 
 	# load a$4 a
-	lw t0, 124(sp)
+	ld t2, 136(sp)
+	lw t0, 0(t2)
 	sw t0, 12(sp)
 
 	# cmp a$4  cond_eq_tmp_$5
@@ -354,6 +377,8 @@ mainEntry69:
 
 	# allocate space for local variables
 	addi sp, sp, -4
+
+	# save the parameters
 
 	# prepare params
 

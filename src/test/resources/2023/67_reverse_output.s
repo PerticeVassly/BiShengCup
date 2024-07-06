@@ -8,22 +8,32 @@ reverse:
 reverseEntry:
 
 	# allocate space for local variables
-	addi sp, sp, -52
+	addi sp, sp, -68
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 48(sp)
+	sw a0, 64(sp)
+
+	# allocate n
+	addi t0, sp, 52
+	sd t0, 56(sp)
 
 	# store n 0
+	ld t2, 56(sp)
 
 	# fetch variables
-	lw t1, 48(sp)
-	sw t1, 44(sp)
+	lw t1, 64(sp)
+	sw t1, 0(t2)
+
+	# allocate next
+	addi t0, sp, 40
+	sd t0, 44(sp)
 
 	# load n$1 n
-	lw t0, 44(sp)
+	ld t2, 56(sp)
+	lw t0, 0(t2)
 	sw t0, 36(sp)
 
 	# cmp n$1  cond_le_tmp_
@@ -76,13 +86,15 @@ ifTrue_257:
 	sw a0, 20(sp)
 
 	# store next getint
+	ld t2, 44(sp)
 
 	# fetch variables
 	lw t1, 20(sp)
-	sw t1, 40(sp)
+	sw t1, 0(t2)
 
 	# load next$1 next
-	lw t0, 40(sp)
+	ld t2, 44(sp)
+	lw t0, 0(t2)
 	sw t0, 16(sp)
 
 	# prepare params
@@ -121,13 +133,15 @@ ifFalse_106:
 	sw a0, 12(sp)
 
 	# store next getint$1
+	ld t2, 44(sp)
 
 	# fetch variables
 	lw t1, 12(sp)
-	sw t1, 40(sp)
+	sw t1, 0(t2)
 
 	# load n$2 n
-	lw t0, 44(sp)
+	ld t2, 56(sp)
+	lw t0, 0(t2)
 	sw t0, 8(sp)
 
 	# sub result_ n$2 
@@ -156,7 +170,8 @@ ifFalse_106:
 	addi sp, sp, 4
 
 	# load next$2 next
-	lw t0, 40(sp)
+	ld t2, 44(sp)
+	lw t0, 0(t2)
 	sw t0, 0(sp)
 
 	# prepare params
@@ -181,7 +196,7 @@ ifFalse_106:
 next_445:
 
 	# ret void
-	addi sp, sp, 52
+	addi sp, sp, 68
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -192,16 +207,24 @@ main:
 mainEntry54:
 
 	# allocate space for local variables
-	addi sp, sp, -8
+	addi sp, sp, -16
+
+	# save the parameters
+
+	# allocate i
+	addi t0, sp, 4
+	sd t0, 8(sp)
 
 	# store i 
+	ld t2, 8(sp)
 
 	# fetch variables
 	li t1, 200
-	sw t1, 4(sp)
+	sw t1, 0(t2)
 
 	# load i$1 i
-	lw t0, 4(sp)
+	ld t2, 8(sp)
+	lw t0, 0(t2)
 	sw t0, 0(sp)
 
 	# prepare params
@@ -226,5 +249,5 @@ mainEntry54:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 8
+	addi sp, sp, 16
 	ret 

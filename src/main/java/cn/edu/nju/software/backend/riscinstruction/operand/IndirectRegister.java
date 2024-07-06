@@ -1,7 +1,5 @@
 package cn.edu.nju.software.backend.riscinstruction.operand;
 
-import cn.edu.nju.software.backend.RiscSpecifications;
-
 /*
  * [sp] (sp = 0x1000000) -> [0x1000000]
  */

@@ -11,35 +11,48 @@ func:
 funcEntry4:
 
 	# allocate space for local variables
-	addi sp, sp, -40
+	addi sp, sp, -56
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
 
+	# allocate b
+	addi t0, sp, 44
+	sd t0, 48(sp)
+
 	# load a a
+	li t2, a
 	lw t0, a
-	sw t0, 32(sp)
+	sw t0, 40(sp)
 
 	# store b a
+	ld t2, 48(sp)
 
 	# fetch variables
-	lw t1, 32(sp)
-	sw t1, 36(sp)
+	lw t1, 40(sp)
+	sw t1, 0(t2)
+
+	# allocate a$1
+	addi t0, sp, 28
+	sd t0, 32(sp)
 
 	# store a$1 
+	ld t2, 32(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 28(sp)
+	sw t1, 0(t2)
 
 	# load a$2 a$1
-	lw t0, 28(sp)
+	ld t2, 32(sp)
+	lw t0, 0(t2)
 	sw t0, 24(sp)
 
 	# load b$1 b
-	lw t0, 36(sp)
+	ld t2, 48(sp)
+	lw t0, 0(t2)
 	sw t0, 20(sp)
 
 	# cmp a$2 b$1 cond_eq_tmp_
@@ -77,7 +90,8 @@ funcEntry4:
 ifTrue_289:
 
 	# load a$3 a$1
-	lw t0, 28(sp)
+	ld t2, 32(sp)
+	lw t0, 0(t2)
 	sw t0, 4(sp)
 
 	# add result_ a$3 
@@ -89,17 +103,18 @@ ifTrue_289:
 	sw t0, 0(sp)
 
 	# store a$1 result_
+	ld t2, 32(sp)
 
 	# fetch variables
 	lw t1, 0(sp)
-	sw t1, 28(sp)
+	sw t1, 0(t2)
 
 	# ret 
 
 	# fetch variables
 	li t1, 1
 	mv a0, t1
-	addi sp, sp, 40
+	addi sp, sp, 56
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -111,7 +126,7 @@ ifFalse_120:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 40
+	addi sp, sp, 56
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -122,26 +137,39 @@ main:
 mainEntry71:
 
 	# allocate space for local variables
-	addi sp, sp, -72
+	addi sp, sp, -88
+
+	# save the parameters
+
+	# allocate result
+	addi t0, sp, 76
+	sd t0, 80(sp)
 
 	# store result 
+	ld t2, 80(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 68(sp)
+	sw t1, 0(t2)
+
+	# allocate i
+	addi t0, sp, 64
+	sd t0, 68(sp)
 
 	# store i 
+	ld t2, 68(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 64(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_216
 	j whileCond_216
 whileCond_216:
 
 	# load i$1 i
-	lw t0, 64(sp)
+	ld t2, 68(sp)
+	lw t0, 0(t2)
 	sw t0, 60(sp)
 
 	# cmp i$1  cond_lt_tmp_
@@ -226,7 +254,8 @@ whileBody_216:
 next_506:
 
 	# load result$2 result
-	lw t0, 68(sp)
+	ld t2, 80(sp)
+	lw t0, 0(t2)
 	sw t0, 28(sp)
 
 	# cmp result$2  cond_lt_tmp_$1
@@ -263,7 +292,8 @@ next_506:
 ifTrue_290:
 
 	# load result$1 result
-	lw t0, 68(sp)
+	ld t2, 80(sp)
+	lw t0, 0(t2)
 	sw t0, 12(sp)
 
 	# add result_ result$1 
@@ -275,17 +305,19 @@ ifTrue_290:
 	sw t0, 8(sp)
 
 	# store result result_
+	ld t2, 80(sp)
 
 	# fetch variables
 	lw t1, 8(sp)
-	sw t1, 68(sp)
+	sw t1, 0(t2)
 
 	# br next_507
 	j next_507
 next_507:
 
 	# load i$2 i
-	lw t0, 64(sp)
+	ld t2, 68(sp)
+	lw t0, 0(t2)
 	sw t0, 4(sp)
 
 	# add result_$1 i$2 
@@ -297,10 +329,11 @@ next_507:
 	sw t0, 0(sp)
 
 	# store i result_$1
+	ld t2, 68(sp)
 
 	# fetch variables
 	lw t1, 0(sp)
-	sw t1, 64(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_216
 	j whileCond_216
@@ -353,5 +386,5 @@ next_508:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 72
+	addi sp, sp, 88
 	ret 

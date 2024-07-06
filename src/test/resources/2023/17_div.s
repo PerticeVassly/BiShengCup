@@ -8,26 +8,40 @@ main:
 mainEntry66:
 
 	# allocate space for local variables
-	addi sp, sp, -20
+	addi sp, sp, -36
+
+	# save the parameters
+
+	# allocate a
+	addi t0, sp, 24
+	sd t0, 28(sp)
+
+	# allocate b
+	addi t0, sp, 12
+	sd t0, 16(sp)
 
 	# store a 
+	ld t2, 28(sp)
 
 	# fetch variables
 	li t1, 10
-	sw t1, 16(sp)
+	sw t1, 0(t2)
 
 	# store b 
+	ld t2, 16(sp)
 
 	# fetch variables
 	li t1, 5
-	sw t1, 12(sp)
+	sw t1, 0(t2)
 
 	# load a$1 a
-	lw t0, 16(sp)
+	ld t2, 28(sp)
+	lw t0, 0(t2)
 	sw t0, 8(sp)
 
 	# load b$1 b
-	lw t0, 12(sp)
+	ld t2, 16(sp)
+	lw t0, 0(t2)
 	sw t0, 4(sp)
 
 	# div result_ a$1 b$1
@@ -43,5 +57,5 @@ mainEntry66:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 20
+	addi sp, sp, 36
 	ret 

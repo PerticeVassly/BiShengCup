@@ -14,15 +14,23 @@ main:
 mainEntry9:
 
 	# allocate space for local variables
-	addi sp, sp, -64
+	addi sp, sp, -72
+
+	# save the parameters
+
+	# allocate i
+	addi t0, sp, 60
+	sd t0, 64(sp)
 
 	# store i 
+	ld t2, 64(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 60(sp)
+	sw t1, 0(t2)
 
 	# store k 
+	li t2, k
 
 	# fetch variables
 	li t1, 1
@@ -33,10 +41,12 @@ mainEntry9:
 whileCond_15:
 
 	# load i$1 i
-	lw t0, 60(sp)
+	ld t2, 64(sp)
+	lw t0, 0(t2)
 	sw t0, 56(sp)
 
 	# load n n
+	li t2, n
 	lw t0, n
 	sw t0, 52(sp)
 
@@ -84,7 +94,8 @@ whileCond_15:
 whileBody_15:
 
 	# load i$2 i
-	lw t0, 60(sp)
+	ld t2, 64(sp)
+	lw t0, 0(t2)
 	sw t0, 32(sp)
 
 	# add result_$1 i$2 
@@ -96,12 +107,14 @@ whileBody_15:
 	sw t0, 28(sp)
 
 	# store i result_$1
+	ld t2, 64(sp)
 
 	# fetch variables
 	lw t1, 28(sp)
-	sw t1, 60(sp)
+	sw t1, 0(t2)
 
 	# load k k
+	li t2, k
 	lw t0, k
 	sw t0, 24(sp)
 
@@ -114,10 +127,12 @@ whileBody_15:
 	sw t0, 20(sp)
 
 	# load k$1 k
+	li t2, k
 	lw t0, k
 	sw t0, 16(sp)
 
 	# load k$2 k
+	li t2, k
 	lw t0, k
 	sw t0, 12(sp)
 
@@ -130,6 +145,7 @@ whileBody_15:
 	sw t0, 8(sp)
 
 	# store k result_$3
+	li t2, k
 
 	# fetch variables
 	lw t1, 8(sp)
@@ -140,6 +156,7 @@ whileBody_15:
 next_29:
 
 	# load k$3 k
+	li t2, k
 	lw t0, k
 	sw t0, 4(sp)
 
@@ -161,6 +178,7 @@ next_29:
 	addi sp, sp, 4
 
 	# load k$4 k
+	li t2, k
 	lw t0, k
 	sw t0, 0(sp)
 
@@ -169,5 +187,5 @@ next_29:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 64
+	addi sp, sp, 72
 	ret 

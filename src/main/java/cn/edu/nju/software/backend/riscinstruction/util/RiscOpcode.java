@@ -40,5 +40,5 @@ public enum RiscOpcode {
     FMV_X_W,
     REM,
     FCVT_S_W,
-    FCVT_W_S,
+    FCVT_W_S, LA, LD, SD,
 }

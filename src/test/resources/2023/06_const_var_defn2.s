@@ -16,7 +16,10 @@ mainEntry26:
 	# allocate space for local variables
 	addi sp, sp, -4
 
+	# save the parameters
+
 	# load b b
+	li t2, b
 	lw t0, b
 	sw t0, 0(sp)
 

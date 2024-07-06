@@ -8,33 +8,45 @@ add:
 addEntry:
 
 	# allocate space for local variables
-	addi sp, sp, -28
+	addi sp, sp, -44
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 24(sp)
-	sw a1, 20(sp)
+	sw a0, 40(sp)
+	sw a1, 36(sp)
+
+	# allocate i
+	addi t0, sp, 24
+	sd t0, 28(sp)
 
 	# store i 0
+	ld t2, 28(sp)
 
 	# fetch variables
-	lw t1, 24(sp)
-	sw t1, 16(sp)
+	lw t1, 40(sp)
+	sw t1, 0(t2)
+
+	# allocate j
+	addi t0, sp, 12
+	sd t0, 16(sp)
 
 	# store j 1
+	ld t2, 16(sp)
 
 	# fetch variables
-	lw t1, 20(sp)
-	sw t1, 12(sp)
+	lw t1, 36(sp)
+	sw t1, 0(t2)
 
 	# load i$1 i
-	lw t0, 16(sp)
+	ld t2, 28(sp)
+	lw t0, 0(t2)
 	sw t0, 8(sp)
 
 	# load j$1 j
-	lw t0, 12(sp)
+	ld t2, 16(sp)
+	lw t0, 0(t2)
 	sw t0, 4(sp)
 
 	# add result_ i$1 j$1
@@ -50,7 +62,7 @@ addEntry:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 28
+	addi sp, sp, 44
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -58,28 +70,45 @@ addEntry:
 .type main, @function
 .globl main
 main:
-mainEntry8:
+mainEntry10:
 
 	# allocate space for local variables
-	addi sp, sp, -16
+	addi sp, sp, -40
+
+	# save the parameters
+
+	# allocate a
+	addi t0, sp, 28
+	sd t0, 32(sp)
 
 	# store a 
+	ld t2, 32(sp)
 
 	# fetch variables
 	li t1, 2
-	sw t1, 12(sp)
+	sw t1, 0(t2)
+
+	# allocate b
+	addi t0, sp, 16
+	sd t0, 20(sp)
 
 	# store b 
+	ld t2, 20(sp)
 
 	# fetch variables
 	li t1, 3
-	sw t1, 8(sp)
+	sw t1, 0(t2)
+
+	# allocate c
+	addi t0, sp, 4
+	sd t0, 8(sp)
 
 	# store c 
+	ld t2, 8(sp)
 
 	# fetch variables
 	li t1, 4
-	sw t1, 4(sp)
+	sw t1, 0(t2)
 
 	# prepare params
 
@@ -108,5 +137,5 @@ mainEntry8:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 16
+	addi sp, sp, 40
 	ret 

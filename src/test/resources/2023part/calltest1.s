@@ -8,55 +8,83 @@ g1:
 g1Entry:
 
 	# allocate space for local variables
-	addi sp, sp, -44
+	addi sp, sp, -84
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 40(sp)
-	sw a1, 36(sp)
+	sw a0, 80(sp)
+	sw a1, 76(sp)
+
+	# allocate i
+	addi t0, sp, 64
+	sd t0, 68(sp)
 
 	# store i 0
+	ld t2, 68(sp)
 
 	# fetch variables
-	lw t1, 40(sp)
-	sw t1, 32(sp)
+	lw t1, 80(sp)
+	sw t1, 0(t2)
+
+	# allocate j
+	addi t0, sp, 52
+	sd t0, 56(sp)
 
 	# store j 1
+	ld t2, 56(sp)
 
 	# fetch variables
-	lw t1, 36(sp)
-	sw t1, 28(sp)
+	lw t1, 76(sp)
+	sw t1, 0(t2)
+
+	# allocate a
+	addi t0, sp, 40
+	sd t0, 44(sp)
 
 	# store a 
+	ld t2, 44(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 24(sp)
+	sw t1, 0(t2)
+
+	# allocate b
+	addi t0, sp, 28
+	sd t0, 32(sp)
 
 	# store b 
+	ld t2, 32(sp)
 
 	# fetch variables
 	li t1, 2
-	sw t1, 20(sp)
+	sw t1, 0(t2)
+
+	# allocate c
+	addi t0, sp, 16
+	sd t0, 20(sp)
 
 	# load j$1 j
-	lw t0, 28(sp)
+	ld t2, 56(sp)
+	lw t0, 0(t2)
 	sw t0, 12(sp)
 
 	# store c j$1
+	ld t2, 20(sp)
 
 	# fetch variables
 	lw t1, 12(sp)
-	sw t1, 16(sp)
+	sw t1, 0(t2)
 
 	# load i$1 i
-	lw t0, 32(sp)
+	ld t2, 68(sp)
+	lw t0, 0(t2)
 	sw t0, 8(sp)
 
 	# load j$2 j
-	lw t0, 28(sp)
+	ld t2, 56(sp)
+	lw t0, 0(t2)
 	sw t0, 4(sp)
 
 	# add result_ i$1 j$2
@@ -72,7 +100,7 @@ g1Entry:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 44
+	addi sp, sp, 84
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -83,33 +111,45 @@ f1:
 f1Entry:
 
 	# allocate space for local variables
-	addi sp, sp, -44
+	addi sp, sp, -60
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 40(sp)
-	sw a1, 36(sp)
+	sw a0, 56(sp)
+	sw a1, 52(sp)
+
+	# allocate i
+	addi t0, sp, 40
+	sd t0, 44(sp)
 
 	# store i 0
+	ld t2, 44(sp)
 
 	# fetch variables
-	lw t1, 40(sp)
-	sw t1, 32(sp)
+	lw t1, 56(sp)
+	sw t1, 0(t2)
+
+	# allocate j
+	addi t0, sp, 28
+	sd t0, 32(sp)
 
 	# store j 1
+	ld t2, 32(sp)
 
 	# fetch variables
-	lw t1, 36(sp)
-	sw t1, 28(sp)
+	lw t1, 52(sp)
+	sw t1, 0(t2)
 
 	# load i$1 i
-	lw t0, 32(sp)
+	ld t2, 44(sp)
+	lw t0, 0(t2)
 	sw t0, 24(sp)
 
 	# load i$2 i
-	lw t0, 32(sp)
+	ld t2, 44(sp)
+	lw t0, 0(t2)
 	sw t0, 20(sp)
 
 	# prepare params
@@ -135,11 +175,13 @@ f1Entry:
 	sw a0, 16(sp)
 
 	# load j$1 j
-	lw t0, 28(sp)
+	ld t2, 32(sp)
+	lw t0, 0(t2)
 	sw t0, 12(sp)
 
 	# load j$2 j
-	lw t0, 28(sp)
+	ld t2, 32(sp)
+	lw t0, 0(t2)
 	sw t0, 8(sp)
 
 	# prepare params
@@ -177,7 +219,7 @@ f1Entry:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 44
+	addi sp, sp, 60
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -189,6 +231,8 @@ mainEntry:
 
 	# allocate space for local variables
 	addi sp, sp, -8
+
+	# save the parameters
 
 	# prepare params
 

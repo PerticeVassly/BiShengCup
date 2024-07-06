@@ -8,22 +8,35 @@ main:
 mainEntry82:
 
 	# allocate space for local variables
-	addi sp, sp, -84
+	addi sp, sp, -100
+
+	# save the parameters
+
+	# allocate a
+	addi t0, sp, 88
+	sd t0, 92(sp)
+
+	# allocate b
+	addi t0, sp, 76
+	sd t0, 80(sp)
 
 	# store a 
+	ld t2, 92(sp)
 
 	# fetch variables
 	li t1, 56
-	sw t1, 80(sp)
+	sw t1, 0(t2)
 
 	# store b 
+	ld t2, 80(sp)
 
 	# fetch variables
 	li t1, 4
-	sw t1, 76(sp)
+	sw t1, 0(t2)
 
 	# load a$1 a
-	lw t0, 80(sp)
+	ld t2, 92(sp)
+	lw t0, 0(t2)
 	sw t0, 72(sp)
 
 	# sub result_ a$1 
@@ -35,7 +48,8 @@ mainEntry82:
 	sw t0, 68(sp)
 
 	# load b$1 b
-	lw t0, 76(sp)
+	ld t2, 80(sp)
+	lw t0, 0(t2)
 	sw t0, 64(sp)
 
 	# add result_$1 result_ b$1
@@ -47,13 +61,15 @@ mainEntry82:
 	sw t0, 60(sp)
 
 	# store a result_$1
+	ld t2, 92(sp)
 
 	# fetch variables
 	lw t1, 60(sp)
-	sw t1, 80(sp)
+	sw t1, 0(t2)
 
 	# load a$2 a
-	lw t0, 80(sp)
+	ld t2, 92(sp)
+	lw t0, 0(t2)
 	sw t0, 56(sp)
 
 	# cmp  a$2 tmp_
@@ -158,17 +174,19 @@ mainEntry82:
 ifTrue_303:
 
 	# store a 
+	ld t2, 92(sp)
 
 	# fetch variables
 	li t1, -1
-	sw t1, 80(sp)
+	sw t1, 0(t2)
 
 	# br next_539
 	j next_539
 ifFalse_131:
 
 	# load b$2 b
-	lw t0, 76(sp)
+	ld t2, 80(sp)
+	lw t0, 0(t2)
 	sw t0, 8(sp)
 
 	# add result_$2  b$2
@@ -180,17 +198,19 @@ ifFalse_131:
 	sw t0, 4(sp)
 
 	# store a result_$2
+	ld t2, 92(sp)
 
 	# fetch variables
 	lw t1, 4(sp)
-	sw t1, 80(sp)
+	sw t1, 0(t2)
 
 	# br next_539
 	j next_539
 next_539:
 
 	# load a$3 a
-	lw t0, 80(sp)
+	ld t2, 92(sp)
+	lw t0, 0(t2)
 	sw t0, 0(sp)
 
 	# prepare params
@@ -215,5 +235,5 @@ next_539:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 84
+	addi sp, sp, 100
 	ret 

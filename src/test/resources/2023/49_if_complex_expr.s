@@ -8,40 +8,68 @@ main:
 mainEntry33:
 
 	# allocate space for local variables
-	addi sp, sp, -180
+	addi sp, sp, -220
+
+	# save the parameters
+
+	# allocate a
+	addi t0, sp, 208
+	sd t0, 212(sp)
+
+	# allocate b
+	addi t0, sp, 196
+	sd t0, 200(sp)
+
+	# allocate c
+	addi t0, sp, 184
+	sd t0, 188(sp)
+
+	# allocate d
+	addi t0, sp, 172
+	sd t0, 176(sp)
+
+	# allocate result
+	addi t0, sp, 160
+	sd t0, 164(sp)
 
 	# store a 
+	ld t2, 212(sp)
 
 	# fetch variables
 	li t1, 5
-	sw t1, 176(sp)
+	sw t1, 0(t2)
 
 	# store b 
+	ld t2, 200(sp)
 
 	# fetch variables
 	li t1, 5
-	sw t1, 172(sp)
+	sw t1, 0(t2)
 
 	# store c 
+	ld t2, 188(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 168(sp)
+	sw t1, 0(t2)
 
 	# store d 
+	ld t2, 176(sp)
 
 	# fetch variables
 	li t1, -2
-	sw t1, 164(sp)
+	sw t1, 0(t2)
 
 	# store result 
+	ld t2, 164(sp)
 
 	# fetch variables
 	li t1, 2
-	sw t1, 160(sp)
+	sw t1, 0(t2)
 
 	# load d$1 d
-	lw t0, 164(sp)
+	ld t2, 176(sp)
+	lw t0, 0(t2)
 	sw t0, 156(sp)
 
 	# mul result_ d$1 
@@ -94,7 +122,8 @@ mainEntry33:
 ifTrue_31:
 
 	# load result$1 result
-	lw t0, 160(sp)
+	ld t2, 164(sp)
+	lw t0, 0(t2)
 	sw t0, 132(sp)
 
 	# prepare params
@@ -119,7 +148,8 @@ ifTrue_31:
 next_89:
 
 	# load d$2 d
-	lw t0, 164(sp)
+	ld t2, 176(sp)
+	lw t0, 0(t2)
 	sw t0, 128(sp)
 
 	# mod result_$5 d$2 
@@ -172,11 +202,13 @@ next_89:
 secondCond_9:
 
 	# load a$1 a
-	lw t0, 176(sp)
+	ld t2, 212(sp)
+	lw t0, 0(t2)
 	sw t0, 104(sp)
 
 	# load b$1 b
-	lw t0, 172(sp)
+	ld t2, 200(sp)
+	lw t0, 0(t2)
 	sw t0, 100(sp)
 
 	# sub result_$2 a$1 b$1
@@ -223,7 +255,8 @@ secondCond_9:
 secondCond_10:
 
 	# load c$1 c
-	lw t0, 168(sp)
+	ld t2, 188(sp)
+	lw t0, 0(t2)
 	sw t0, 80(sp)
 
 	# add result_$3 c$1 
@@ -295,13 +328,15 @@ secondCond_10:
 ifTrue_32:
 
 	# store result 
+	ld t2, 164(sp)
 
 	# fetch variables
 	li t1, 4
-	sw t1, 160(sp)
+	sw t1, 0(t2)
 
 	# load result$2 result
-	lw t0, 160(sp)
+	ld t2, 164(sp)
+	lw t0, 0(t2)
 	sw t0, 52(sp)
 
 	# prepare params
@@ -330,16 +365,18 @@ next_90:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 180
+	addi sp, sp, 220
 	ret 
 secondCond_11:
 
 	# load a$2 a
-	lw t0, 176(sp)
+	ld t2, 212(sp)
+	lw t0, 0(t2)
 	sw t0, 48(sp)
 
 	# load b$2 b
-	lw t0, 172(sp)
+	ld t2, 200(sp)
+	lw t0, 0(t2)
 	sw t0, 44(sp)
 
 	# sub result_$7 a$2 b$2
@@ -386,7 +423,8 @@ secondCond_11:
 secondCond_12:
 
 	# load c$2 c
-	lw t0, 168(sp)
+	ld t2, 188(sp)
+	lw t0, 0(t2)
 	sw t0, 24(sp)
 
 	# add result_$8 c$2 

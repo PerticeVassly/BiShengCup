@@ -11,26 +11,33 @@ func:
 funcEntry3:
 
 	# allocate space for local variables
-	addi sp, sp, -28
+	addi sp, sp, -36
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 24(sp)
+	sw a0, 32(sp)
+
+	# allocate n
+	addi t0, sp, 20
+	sd t0, 24(sp)
 
 	# store n 0
+	ld t2, 24(sp)
 
 	# fetch variables
-	lw t1, 24(sp)
-	sw t1, 20(sp)
+	lw t1, 32(sp)
+	sw t1, 0(t2)
 
 	# load g g
+	li t2, g
 	lw t0, g
 	sw t0, 16(sp)
 
 	# load n$1 n
-	lw t0, 20(sp)
+	ld t2, 24(sp)
+	lw t0, 0(t2)
 	sw t0, 12(sp)
 
 	# add result_ g n$1
@@ -42,12 +49,14 @@ funcEntry3:
 	sw t0, 8(sp)
 
 	# store g result_
+	li t2, g
 
 	# fetch variables
 	lw t1, 8(sp)
 	sw t1, g, t0
 
 	# load g$1 g
+	li t2, g
 	lw t0, g
 	sw t0, 4(sp)
 
@@ -69,6 +78,7 @@ funcEntry3:
 	addi sp, sp, 4
 
 	# load g$2 g
+	li t2, g
 	lw t0, g
 	sw t0, 0(sp)
 
@@ -77,7 +87,7 @@ funcEntry3:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 28
+	addi sp, sp, 36
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -88,7 +98,13 @@ main:
 mainEntry36:
 
 	# allocate space for local variables
-	addi sp, sp, -160
+	addi sp, sp, -168
+
+	# save the parameters
+
+	# allocate i
+	addi t0, sp, 156
+	sd t0, 160(sp)
 
 	# prepare params
 
@@ -105,13 +121,15 @@ mainEntry36:
 	sw a0, 152(sp)
 
 	# store i getint
+	ld t2, 160(sp)
 
 	# fetch variables
 	lw t1, 152(sp)
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# load i$1 i
-	lw t0, 156(sp)
+	ld t2, 160(sp)
+	lw t0, 0(t2)
 	sw t0, 148(sp)
 
 	# cmp i$1  cond_gt_tmp_
@@ -149,20 +167,22 @@ mainEntry36:
 ifTrue_33:
 
 	# store i 
+	ld t2, 160(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# br next_99
 	j next_99
 ifFalse_9:
 
 	# store i 
+	ld t2, 160(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# br next_99
 	j next_99
@@ -183,13 +203,15 @@ next_99:
 	sw a0, 132(sp)
 
 	# store i getint$1
+	ld t2, 160(sp)
 
 	# fetch variables
 	lw t1, 132(sp)
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# load i$3 i
-	lw t0, 156(sp)
+	ld t2, 160(sp)
+	lw t0, 0(t2)
 	sw t0, 128(sp)
 
 	# cmp i$3  cond_gt_tmp_$1
@@ -227,7 +249,8 @@ next_99:
 secondCond_13:
 
 	# load i$2 i
-	lw t0, 156(sp)
+	ld t2, 160(sp)
+	lw t0, 0(t2)
 	sw t0, 112(sp)
 
 	# prepare params
@@ -267,20 +290,22 @@ secondCond_13:
 ifTrue_34:
 
 	# store i 
+	ld t2, 160(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# br next_100
 	j next_100
 ifFalse_10:
 
 	# store i 
+	ld t2, 160(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# br next_100
 	j next_100
@@ -301,13 +326,15 @@ next_100:
 	sw a0, 100(sp)
 
 	# store i getint$2
+	ld t2, 160(sp)
 
 	# fetch variables
 	lw t1, 100(sp)
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# load i$5 i
-	lw t0, 156(sp)
+	ld t2, 160(sp)
+	lw t0, 0(t2)
 	sw t0, 96(sp)
 
 	# cmp i$5  cond_le_tmp_
@@ -346,7 +373,8 @@ next_100:
 secondCond_14:
 
 	# load i$4 i
-	lw t0, 156(sp)
+	ld t2, 160(sp)
+	lw t0, 0(t2)
 	sw t0, 80(sp)
 
 	# prepare params
@@ -386,20 +414,22 @@ secondCond_14:
 ifTrue_35:
 
 	# store i 
+	ld t2, 160(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# br next_101
 	j next_101
 ifFalse_11:
 
 	# store i 
+	ld t2, 160(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# br next_101
 	j next_101
@@ -420,13 +450,15 @@ next_101:
 	sw a0, 68(sp)
 
 	# store i getint$3
+	ld t2, 160(sp)
 
 	# fetch variables
 	lw t1, 68(sp)
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# load i$7 i
-	lw t0, 156(sp)
+	ld t2, 160(sp)
+	lw t0, 0(t2)
 	sw t0, 64(sp)
 
 	# cmp i$7  cond_le_tmp_$1
@@ -465,7 +497,8 @@ next_101:
 secondCond_15:
 
 	# load i$6 i
-	lw t0, 156(sp)
+	ld t2, 160(sp)
+	lw t0, 0(t2)
 	sw t0, 48(sp)
 
 	# prepare params
@@ -505,20 +538,22 @@ secondCond_15:
 ifTrue_36:
 
 	# store i 
+	ld t2, 160(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# br next_102
 	j next_102
 ifFalse_12:
 
 	# store i 
+	ld t2, 160(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# br next_102
 	j next_102
@@ -586,7 +621,8 @@ next_102:
 secondCond_16:
 
 	# load i$8 i
-	lw t0, 156(sp)
+	ld t2, 160(sp)
+	lw t0, 0(t2)
 	sw t0, 16(sp)
 
 	# prepare params
@@ -626,20 +662,22 @@ secondCond_16:
 ifTrue_37:
 
 	# store i 
+	ld t2, 160(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# br next_103
 	j next_103
 ifFalse_13:
 
 	# store i 
+	ld t2, 160(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 156(sp)
+	sw t1, 0(t2)
 
 	# br next_103
 	j next_103
@@ -650,7 +688,7 @@ next_103:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 160
+	addi sp, sp, 168
 	ret 
 secondCond_17:
 

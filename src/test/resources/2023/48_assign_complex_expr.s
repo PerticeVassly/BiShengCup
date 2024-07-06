@@ -8,34 +8,61 @@ main:
 mainEntry31:
 
 	# allocate space for local variables
-	addi sp, sp, -136
+	addi sp, sp, -176
+
+	# save the parameters
+
+	# allocate a
+	addi t0, sp, 164
+	sd t0, 168(sp)
+
+	# allocate b
+	addi t0, sp, 152
+	sd t0, 156(sp)
+
+	# allocate c
+	addi t0, sp, 140
+	sd t0, 144(sp)
+
+	# allocate d
+	addi t0, sp, 128
+	sd t0, 132(sp)
+
+	# allocate result
+	addi t0, sp, 116
+	sd t0, 120(sp)
 
 	# store a 
+	ld t2, 168(sp)
 
 	# fetch variables
 	li t1, 5
-	sw t1, 132(sp)
+	sw t1, 0(t2)
 
 	# store b 
+	ld t2, 156(sp)
 
 	# fetch variables
 	li t1, 5
-	sw t1, 128(sp)
+	sw t1, 0(t2)
 
 	# store c 
+	ld t2, 144(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 124(sp)
+	sw t1, 0(t2)
 
 	# store d 
+	ld t2, 132(sp)
 
 	# fetch variables
 	li t1, -2
-	sw t1, 120(sp)
+	sw t1, 0(t2)
 
 	# load d$1 d
-	lw t0, 120(sp)
+	ld t2, 132(sp)
+	lw t0, 0(t2)
 	sw t0, 112(sp)
 
 	# mul result_ d$1 
@@ -55,11 +82,13 @@ mainEntry31:
 	sw t0, 104(sp)
 
 	# load a$1 a
-	lw t0, 132(sp)
+	ld t2, 168(sp)
+	lw t0, 0(t2)
 	sw t0, 100(sp)
 
 	# load b$1 b
-	lw t0, 128(sp)
+	ld t2, 156(sp)
+	lw t0, 0(t2)
 	sw t0, 96(sp)
 
 	# sub result_$2 a$1 b$1
@@ -79,7 +108,8 @@ mainEntry31:
 	sw t0, 88(sp)
 
 	# load c$1 c
-	lw t0, 124(sp)
+	ld t2, 144(sp)
+	lw t0, 0(t2)
 	sw t0, 84(sp)
 
 	# add result_$4 c$1 
@@ -115,13 +145,15 @@ mainEntry31:
 	sw t0, 68(sp)
 
 	# store result result_$6
+	ld t2, 120(sp)
 
 	# fetch variables
 	lw t1, 68(sp)
-	sw t1, 116(sp)
+	sw t1, 0(t2)
 
 	# load result$1 result
-	lw t0, 116(sp)
+	ld t2, 120(sp)
+	lw t0, 0(t2)
 	sw t0, 64(sp)
 
 	# prepare params
@@ -142,7 +174,8 @@ mainEntry31:
 	addi sp, sp, 4
 
 	# load d$2 d
-	lw t0, 120(sp)
+	ld t2, 132(sp)
+	lw t0, 0(t2)
 	sw t0, 60(sp)
 
 	# mod result_$7 d$2 
@@ -162,11 +195,13 @@ mainEntry31:
 	sw t0, 52(sp)
 
 	# load a$2 a
-	lw t0, 132(sp)
+	ld t2, 168(sp)
+	lw t0, 0(t2)
 	sw t0, 48(sp)
 
 	# load b$2 b
-	lw t0, 128(sp)
+	ld t2, 156(sp)
+	lw t0, 0(t2)
 	sw t0, 44(sp)
 
 	# sub result_$9 a$2 b$2
@@ -194,7 +229,8 @@ mainEntry31:
 	sw t0, 32(sp)
 
 	# load c$2 c
-	lw t0, 124(sp)
+	ld t2, 144(sp)
+	lw t0, 0(t2)
 	sw t0, 28(sp)
 
 	# add result_$11 c$2 
@@ -230,13 +266,15 @@ mainEntry31:
 	sw t0, 12(sp)
 
 	# store result result_$13
+	ld t2, 120(sp)
 
 	# fetch variables
 	lw t1, 12(sp)
-	sw t1, 116(sp)
+	sw t1, 0(t2)
 
 	# load result$2 result
-	lw t0, 116(sp)
+	ld t2, 120(sp)
+	lw t0, 0(t2)
 	sw t0, 8(sp)
 
 	# add result_$14 result$2 
@@ -248,13 +286,15 @@ mainEntry31:
 	sw t0, 4(sp)
 
 	# store result result_$14
+	ld t2, 120(sp)
 
 	# fetch variables
 	lw t1, 4(sp)
-	sw t1, 116(sp)
+	sw t1, 0(t2)
 
 	# load result$3 result
-	lw t0, 116(sp)
+	ld t2, 120(sp)
+	lw t0, 0(t2)
 	sw t0, 0(sp)
 
 	# prepare params
@@ -279,5 +319,5 @@ mainEntry31:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 136
+	addi sp, sp, 176
 	ret 

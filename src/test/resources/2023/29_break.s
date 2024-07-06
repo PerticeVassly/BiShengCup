@@ -8,26 +8,39 @@ main:
 mainEntry61:
 
 	# allocate space for local variables
-	addi sp, sp, -64
+	addi sp, sp, -80
+
+	# save the parameters
+
+	# allocate i
+	addi t0, sp, 68
+	sd t0, 72(sp)
 
 	# store i 
+	ld t2, 72(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 60(sp)
+	sw t1, 0(t2)
+
+	# allocate sum
+	addi t0, sp, 56
+	sd t0, 60(sp)
 
 	# store sum 
+	ld t2, 60(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 56(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_198
 	j whileCond_198
 whileCond_198:
 
 	# load i$1 i
-	lw t0, 60(sp)
+	ld t2, 72(sp)
+	lw t0, 0(t2)
 	sw t0, 52(sp)
 
 	# cmp i$1  cond_lt_tmp_
@@ -64,7 +77,8 @@ whileCond_198:
 whileBody_198:
 
 	# load i$2 i
-	lw t0, 60(sp)
+	ld t2, 72(sp)
+	lw t0, 0(t2)
 	sw t0, 36(sp)
 
 	# cmp i$2  cond_eq_tmp_
@@ -102,7 +116,8 @@ whileBody_198:
 next_469:
 
 	# load sum$2 sum
-	lw t0, 56(sp)
+	ld t2, 60(sp)
+	lw t0, 0(t2)
 	sw t0, 20(sp)
 
 	# ret sum$2
@@ -110,7 +125,7 @@ next_469:
 	# fetch variables
 	lw t1, 20(sp)
 	mv a0, t1
-	addi sp, sp, 64
+	addi sp, sp, 80
 	ret 
 ifTrue_271:
 
@@ -122,11 +137,13 @@ ifTrue_271:
 next_470:
 
 	# load sum$1 sum
-	lw t0, 56(sp)
+	ld t2, 60(sp)
+	lw t0, 0(t2)
 	sw t0, 16(sp)
 
 	# load i$3 i
-	lw t0, 60(sp)
+	ld t2, 72(sp)
+	lw t0, 0(t2)
 	sw t0, 12(sp)
 
 	# add result_ sum$1 i$3
@@ -138,13 +155,15 @@ next_470:
 	sw t0, 8(sp)
 
 	# store sum result_
+	ld t2, 60(sp)
 
 	# fetch variables
 	lw t1, 8(sp)
-	sw t1, 56(sp)
+	sw t1, 0(t2)
 
 	# load i$4 i
-	lw t0, 60(sp)
+	ld t2, 72(sp)
+	lw t0, 0(t2)
 	sw t0, 4(sp)
 
 	# add result_$1 i$4 
@@ -156,10 +175,11 @@ next_470:
 	sw t0, 0(sp)
 
 	# store i result_$1
+	ld t2, 72(sp)
 
 	# fetch variables
 	lw t1, 0(sp)
-	sw t1, 60(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_198
 	j whileCond_198

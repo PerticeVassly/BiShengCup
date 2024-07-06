@@ -13,6 +13,8 @@ mainEntry83:
 	# allocate space for local variables
 	addi sp, sp, 0
 
+	# save the parameters
+
 	# ret 
 
 	# fetch variables

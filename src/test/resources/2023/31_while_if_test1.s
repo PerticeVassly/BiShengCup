@@ -8,31 +8,42 @@ whileIf:
 whileIfEntry:
 
 	# allocate space for local variables
-	addi sp, sp, -76
+	addi sp, sp, -92
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
 
+	# allocate a
+	addi t0, sp, 80
+	sd t0, 84(sp)
+
 	# store a 
+	ld t2, 84(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 72(sp)
+	sw t1, 0(t2)
+
+	# allocate b
+	addi t0, sp, 68
+	sd t0, 72(sp)
 
 	# store b 
+	ld t2, 72(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 68(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_223
 	j whileCond_223
 whileCond_223:
 
 	# load a$1 a
-	lw t0, 72(sp)
+	ld t2, 84(sp)
+	lw t0, 0(t2)
 	sw t0, 64(sp)
 
 	# cmp a$1  cond_lt_tmp_
@@ -69,7 +80,8 @@ whileCond_223:
 whileBody_223:
 
 	# load a$2 a
-	lw t0, 72(sp)
+	ld t2, 84(sp)
+	lw t0, 0(t2)
 	sw t0, 48(sp)
 
 	# cmp a$2  cond_eq_tmp_
@@ -107,7 +119,8 @@ whileBody_223:
 next_519:
 
 	# load b$1 b
-	lw t0, 68(sp)
+	ld t2, 72(sp)
+	lw t0, 0(t2)
 	sw t0, 32(sp)
 
 	# ret b$1
@@ -115,7 +128,7 @@ next_519:
 	# fetch variables
 	lw t1, 32(sp)
 	mv a0, t1
-	addi sp, sp, 76
+	addi sp, sp, 92
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -123,17 +136,19 @@ next_519:
 ifTrue_296:
 
 	# store b 
+	ld t2, 72(sp)
 
 	# fetch variables
 	li t1, 25
-	sw t1, 68(sp)
+	sw t1, 0(t2)
 
 	# br next_520
 	j next_520
 ifFalse_126:
 
 	# load a$3 a
-	lw t0, 72(sp)
+	ld t2, 84(sp)
+	lw t0, 0(t2)
 	sw t0, 28(sp)
 
 	# cmp a$3  cond_eq_tmp_$1
@@ -171,7 +186,8 @@ ifFalse_126:
 next_520:
 
 	# load a$5 a
-	lw t0, 72(sp)
+	ld t2, 84(sp)
+	lw t0, 0(t2)
 	sw t0, 12(sp)
 
 	# add result_$1 a$5 
@@ -183,27 +199,30 @@ next_520:
 	sw t0, 8(sp)
 
 	# store a result_$1
+	ld t2, 84(sp)
 
 	# fetch variables
 	lw t1, 8(sp)
-	sw t1, 72(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_223
 	j whileCond_223
 ifTrue_297:
 
 	# store b 
+	ld t2, 72(sp)
 
 	# fetch variables
 	li t1, 42
-	sw t1, 68(sp)
+	sw t1, 0(t2)
 
 	# br next_521
 	j next_521
 ifFalse_127:
 
 	# load a$4 a
-	lw t0, 72(sp)
+	ld t2, 84(sp)
+	lw t0, 0(t2)
 	sw t0, 4(sp)
 
 	# mul result_ a$4 
@@ -215,10 +234,11 @@ ifFalse_127:
 	sw t0, 0(sp)
 
 	# store b result_
+	ld t2, 72(sp)
 
 	# fetch variables
 	lw t1, 0(sp)
-	sw t1, 68(sp)
+	sw t1, 0(t2)
 
 	# br next_521
 	j next_521
@@ -233,6 +253,8 @@ mainEntry73:
 
 	# allocate space for local variables
 	addi sp, sp, -4
+
+	# save the parameters
 
 	# prepare params
 

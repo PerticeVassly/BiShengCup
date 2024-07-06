@@ -23,7 +23,51 @@ main:
 mainEntry5:
 
 	# allocate space for local variables
-	addi sp, sp, -168
+	addi sp, sp, -176
+
+	# save the parameters
+
+	# prepare params
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call getint
+	call getint
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 172(sp)
+
+	# store a getint
+	li t2, a
+
+	# fetch variables
+	lw t1, 172(sp)
+	sw t1, a, t0
+
+	# prepare params
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call getint
+	call getint
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 168(sp)
+
+	# store b getint$1
+	li t2, b
+
+	# fetch variables
+	lw t1, 168(sp)
+	sw t1, b, t0
 
 	# prepare params
 
@@ -39,11 +83,12 @@ mainEntry5:
 	addi sp, sp, 4
 	sw a0, 164(sp)
 
-	# store a getint
+	# store c getint$2
+	li t2, c
 
 	# fetch variables
 	lw t1, 164(sp)
-	sw t1, a, t0
+	sw t1, c, t0
 
 	# prepare params
 
@@ -59,11 +104,12 @@ mainEntry5:
 	addi sp, sp, 4
 	sw a0, 160(sp)
 
-	# store b getint$1
+	# store d getint$3
+	li t2, d
 
 	# fetch variables
 	lw t1, 160(sp)
-	sw t1, b, t0
+	sw t1, d, t0
 
 	# prepare params
 
@@ -79,67 +125,36 @@ mainEntry5:
 	addi sp, sp, 4
 	sw a0, 156(sp)
 
-	# store c getint$2
+	# store e getint$4
+	li t2, e
 
 	# fetch variables
 	lw t1, 156(sp)
-	sw t1, c, t0
-
-	# prepare params
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call getint
-	call getint
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 152(sp)
-
-	# store d getint$3
-
-	# fetch variables
-	lw t1, 152(sp)
-	sw t1, d, t0
-
-	# prepare params
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call getint
-	call getint
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 148(sp)
-
-	# store e getint$4
-
-	# fetch variables
-	lw t1, 148(sp)
 	sw t1, e, t0
 
+	# allocate flag
+	addi t0, sp, 144
+	sd t0, 148(sp)
+
 	# store flag 
+	ld t2, 148(sp)
 
 	# fetch variables
 	li t1, 0
-	sw t1, 144(sp)
+	sw t1, 0(t2)
 
 	# load a a
+	li t2, a
 	lw t0, a
 	sw t0, 140(sp)
 
 	# load b b
+	li t2, b
 	lw t0, b
 	sw t0, 136(sp)
 
 	# load c c
+	li t2, c
 	lw t0, c
 	sw t0, 132(sp)
 
@@ -160,14 +175,17 @@ mainEntry5:
 	sw t0, 124(sp)
 
 	# load d d
+	li t2, d
 	lw t0, d
 	sw t0, 120(sp)
 
 	# load a$1 a
+	li t2, a
 	lw t0, a
 	sw t0, 116(sp)
 
 	# load c$1 c
+	li t2, c
 	lw t0, c
 	sw t0, 112(sp)
 
@@ -223,17 +241,19 @@ mainEntry5:
 ifTrue_10:
 
 	# store flag 
+	ld t2, 148(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 144(sp)
+	sw t1, 0(t2)
 
 	# br next_17
 	j next_17
 next_17:
 
 	# load flag$1 flag
-	lw t0, 144(sp)
+	ld t2, 148(sp)
+	lw t0, 0(t2)
 	sw t0, 88(sp)
 
 	# ret flag$1
@@ -241,15 +261,17 @@ next_17:
 	# fetch variables
 	lw t1, 88(sp)
 	mv a0, t1
-	addi sp, sp, 168
+	addi sp, sp, 176
 	ret 
 secondCond_:
 
 	# load a$3 a
+	li t2, a
 	lw t0, a
 	sw t0, 84(sp)
 
 	# load b$2 b
+	li t2, b
 	lw t0, b
 	sw t0, 80(sp)
 
@@ -262,6 +284,7 @@ secondCond_:
 	sw t0, 76(sp)
 
 	# load c$3 c
+	li t2, c
 	lw t0, c
 	sw t0, 72(sp)
 
@@ -274,10 +297,12 @@ secondCond_:
 	sw t0, 68(sp)
 
 	# load d$2 d
+	li t2, d
 	lw t0, d
 	sw t0, 64(sp)
 
 	# load e$1 e
+	li t2, e
 	lw t0, e
 	sw t0, 60(sp)
 
@@ -324,10 +349,12 @@ secondCond_:
 secondCond_1:
 
 	# load a$2 a
+	li t2, a
 	lw t0, a
 	sw t0, 40(sp)
 
 	# load b$1 b
+	li t2, b
 	lw t0, b
 	sw t0, 36(sp)
 
@@ -340,6 +367,7 @@ secondCond_1:
 	sw t0, 32(sp)
 
 	# load c$2 c
+	li t2, c
 	lw t0, c
 	sw t0, 28(sp)
 
@@ -352,10 +380,12 @@ secondCond_1:
 	sw t0, 24(sp)
 
 	# load e e
+	li t2, e
 	lw t0, e
 	sw t0, 20(sp)
 
 	# load d$1 d
+	li t2, d
 	lw t0, d
 	sw t0, 16(sp)
 

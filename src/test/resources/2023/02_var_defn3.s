@@ -8,32 +8,51 @@ main:
 mainEntry32:
 
 	# allocate space for local variables
-	addi sp, sp, -24
+	addi sp, sp, -48
+
+	# save the parameters
+
+	# allocate a
+	addi t0, sp, 36
+	sd t0, 40(sp)
+
+	# allocate b0
+	addi t0, sp, 24
+	sd t0, 28(sp)
+
+	# allocate _c
+	addi t0, sp, 12
+	sd t0, 16(sp)
 
 	# store a 
+	ld t2, 40(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 20(sp)
+	sw t1, 0(t2)
 
 	# store b0 
+	ld t2, 28(sp)
 
 	# fetch variables
 	li t1, 2
-	sw t1, 16(sp)
+	sw t1, 0(t2)
 
 	# store _c 
+	ld t2, 16(sp)
 
 	# fetch variables
 	li t1, 3
-	sw t1, 12(sp)
+	sw t1, 0(t2)
 
 	# load b0$1 b0
-	lw t0, 16(sp)
+	ld t2, 28(sp)
+	lw t0, 0(t2)
 	sw t0, 8(sp)
 
 	# load _c$1 _c
-	lw t0, 12(sp)
+	ld t2, 16(sp)
+	lw t0, 0(t2)
 	sw t0, 4(sp)
 
 	# add result_ b0$1 _c$1
@@ -49,5 +68,5 @@ mainEntry32:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 24
+	addi sp, sp, 48
 	ret 
