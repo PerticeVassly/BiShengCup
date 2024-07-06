@@ -67,13 +67,13 @@ public class RiscBasicBlock implements InstructionVisitor {
 
         riscInstructions.add(new RiscComment("save the parameters"));
 
-        //todo() 这里只能处理三个参数
+        //todo() 这里只能处理6个参数
         FunctionType functionType = (FunctionType) llvmFunctionValue.getType();
         int fptr = 0;
         int ptr = 0;
         for (int i = 0; i < functionType.getFParametersCount(); i++) {
 
-            assert fptr < 3 && ptr < 3;
+            assert fptr <= 6 && ptr <= 6;
 
             if (functionType.getFParameter(i) instanceof FloatType) {
                 riscInstructions.add(new RiscFsw(new Register(RiscSpecifications.getFArgRegs()[fptr]), allocator.getAddressOfPtr(String.valueOf(i))));
