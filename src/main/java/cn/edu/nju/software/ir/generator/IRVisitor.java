@@ -86,7 +86,9 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     }
     private ValueRef normalizeCond(ValueRef cond) {
         TypeRef type = cond.getType();
-        if (type instanceof IntType) {
+        if (type instanceof FloatType) {
+            return gen.buildCmp(builder, CmpNE, cond, fZero, "cond_normalize_");
+        } else if (type instanceof IntType) {
             return gen.buildCmp(builder, CmpNE, cond, zero, "cond_normalize_");
         }
         return cond;
@@ -484,8 +486,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 boolean alwaysTrue = false;
                 ValueRef cond = visitCond(tmp);
                 if (cond instanceof ConstValue constValue) {
-                    int value = (Integer) constValue.getValue();
-                    alwaysTrue = value != 0;
+                    alwaysTrue = constValue.castToInt() != 0;
                 }
                 // according to the condition decide jumping to where
                 cond = normalizeCond(cond);
@@ -995,7 +996,14 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return expValue(ctx.exp(0));
         }
         if (ctx.number() != null) {
-            return Value.makeConstant(string2Int(ctx.number().INTEGER_CONST().getText()));
+            if (ctx.number().INTEGER_CONST() != null) {
+                return Value.makeConstant(string2Int(ctx.number().INTEGER_CONST().getText()));
+            } else if (ctx.number().FLOAT_CONST() != null) {
+                // viewing float as not a constant
+                return Value.getNAC();
+            } else {
+                assert false;
+            }
         }
         if (ctx.unaryOp() != null) {
             if (ctx.unaryOp().MINUS() != null) {
