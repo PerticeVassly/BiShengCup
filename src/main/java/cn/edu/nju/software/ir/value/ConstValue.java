@@ -22,6 +22,24 @@ public class ConstValue extends ValueRef {
         this.value = value;
     }
 
+    public ConstValue(IntType type, Integer value, String name) {
+        this.type = type;
+        this.value = value;
+        this.name = name;
+    }
+
+    public ConstValue(FloatType type, Float value, String name) {
+        this.type = type;
+        this.value = value;
+        this.name = name;
+    }
+
+    public ConstValue(BoolType type, Boolean value, String name) {
+        this.type = type;
+        this.value = value;
+        this.name = name;
+    }
+
     public Object getValue() {
         return value;
     }
