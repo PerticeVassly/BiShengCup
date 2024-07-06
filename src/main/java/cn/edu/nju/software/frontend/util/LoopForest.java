@@ -1,6 +1,5 @@
 package cn.edu.nju.software.frontend.util;
 
-import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +20,11 @@ public class LoopForest {
 
     public void createLoopForestGraph(String fileName){
         for(Loop loop : loops){
-             loop.createLoopGraph(fileName+"_"+loop.getRoot().getName());
+             loop.createLoopGraph(fileName+"_loop"+loop.getRoot().getName());
         }
+    }
+
+    public boolean isEmpty(){
+        return loops.isEmpty();
     }
 }

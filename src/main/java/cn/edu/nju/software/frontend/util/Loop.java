@@ -1,7 +1,7 @@
 package cn.edu.nju.software.frontend.util;
 
 import cn.edu.nju.software.frontend.pass.CFGBuildPass;
-import cn.edu.nju.software.frontend.pass.FunctionPass;
+
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 
