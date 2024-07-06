@@ -80,7 +80,7 @@ WS
    ;
 
 LINE_COMMENT
-   : '//' .*? '\n' -> skip
+   : '//' ~[\nEOF]* -> skip
    ;
 
 MULTILINE_COMMENT
