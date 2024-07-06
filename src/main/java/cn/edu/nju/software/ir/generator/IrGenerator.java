@@ -66,6 +66,12 @@ import java.util.ArrayList;
      ConstValue ConstBool(BoolType type, boolean value);
      ConstValue ConstFloat(FloatType type, float value);
 
+     ConstValue ConstInt(IntType type, int value, String name);
+
+     ConstValue ConstBool(BoolType type, boolean value, String name);
+
+     ConstValue ConstFloat(FloatType type, float value, String name);
+
      BasicBlockRef appendBasicBlock(FunctionValue function, String blockName);
 
      ValueRef buildFloatToInt(BuilderRef builder, ValueRef floatVal, String name);

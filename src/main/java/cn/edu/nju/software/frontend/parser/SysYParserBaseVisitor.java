@@ -1,4 +1,4 @@
-// Generated from src/parser/SysYParser.g4 by ANTLR 4.9.1
+// Generated from ./SysYParser.g4 by ANTLR 4.9.1
 package cn.edu.nju.software.frontend.parser;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 

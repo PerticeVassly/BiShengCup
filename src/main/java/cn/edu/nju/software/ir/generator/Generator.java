@@ -313,6 +313,20 @@ public class Generator implements IrGenerator {
     public ConstValue ConstFloat(FloatType type, float value) {
         return new ConstValue(type, value);
     }
+
+    @Override
+    public ConstValue ConstInt(IntType type, int value, String name) {
+        return new ConstValue(type, value, name);
+    }
+    @Override
+    public ConstValue ConstBool(BoolType type, boolean value, String name) {
+        return new ConstValue(type, value, name);
+    }
+    @Override
+    public ConstValue ConstFloat(FloatType type, float value, String name) {
+        return new ConstValue(type, value, name);
+    }
+
     @Override
     public BasicBlockRef appendBasicBlock(FunctionValue function, String blockName) {
         BasicBlockRef block = new BasicBlockRef(function, blockName);
