@@ -400,35 +400,35 @@ my_putint:
 my_putintEntry:
 
 	# allocate space for local variables
-	addi sp, sp, -192
+	addi sp, sp, -200
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 188(sp)
+	sw a0, 196(sp)
 
 	# allocate a
-	addi t0, sp, 176
-	sd t0, 180(sp)
+	addi t0, sp, 184
+	sd t0, 188(sp)
 
 	# store a 0
-	ld t2, 180(sp)
+	ld t2, 188(sp)
 
 	# fetch variables
-	lw t1, 188(sp)
+	lw t1, 196(sp)
 	sw t1, 0(t2)
 
 	# allocate b
-	addi t0, sp, 104
-	sd t0, 168(sp)
+	addi t0, sp, 112
+	sd t0, 176(sp)
 
 	# allocate i
-	addi t0, sp, 92
-	sd t0, 96(sp)
+	addi t0, sp, 100
+	sd t0, 104(sp)
 
 	# store i 
-	ld t2, 96(sp)
+	ld t2, 104(sp)
 
 	# fetch variables
 	li t1, 0
@@ -439,130 +439,130 @@ my_putintEntry:
 whileCond_49:
 
 	# load a$1 a
-	ld t2, 180(sp)
+	ld t2, 188(sp)
 	lw t0, 0(t2)
-	sw t0, 88(sp)
+	sw t0, 96(sp)
 
 	# cmp a$1  cond_gt_tmp_
 
 	# fetch variables
-	lw t1, 88(sp)
+	lw t1, 96(sp)
 	li t2, 0
 	sub t0, t1, t2
 	sgtz t0, t0
-	sw t0, 84(sp)
+	sw t0, 92(sp)
 
 	# fetch variables
-	lw t1, 84(sp)
+	lw t1, 92(sp)
 
 	# zext cond_tmp_ cond_gt_tmp_
 	mv t0, t1
-	sw t0, 80(sp)
+	sw t0, 88(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 80(sp)
+	lw t1, 88(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sw t0, 76(sp)
+	sw t0, 84(sp)
 
 	# condBr cond_ whileBody_49 next_78
 
 	# fetch variables
-	lw t1, 76(sp)
+	lw t1, 84(sp)
 	beqz t1, next_78
 	j whileBody_49
 whileBody_49:
 
 	# load i$1 i
-	ld t2, 96(sp)
+	ld t2, 104(sp)
 	lw t0, 0(t2)
-	sw t0, 72(sp)
+	sw t0, 80(sp)
 
-	# gep b$1  i$1
+	# gep b$1 i$1
 
 	# fetch variables
-	lw t1, 72(sp)
+	lw t1, 80(sp)
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 168(sp)
+	ld t1, 176(sp)
 	add t0, t1, t0
-	sd t0, 68(sp)
+	sd t0, 72(sp)
 
 	# load a$2 a
-	ld t2, 180(sp)
+	ld t2, 188(sp)
 	lw t0, 0(t2)
-	sw t0, 64(sp)
+	sw t0, 68(sp)
 
 	# mod result_ a$2 
 
 	# fetch variables
-	lw t1, 64(sp)
+	lw t1, 68(sp)
 	li t2, 10
 	rem t0, t1, t2
-	sw t0, 60(sp)
+	sw t0, 64(sp)
 
 	# load ascii_0 ascii_0
 	li t2, ascii_0
 	lw t0, ascii_0
-	sw t0, 56(sp)
+	sw t0, 60(sp)
 
 	# add result_$1 result_ ascii_0
 
 	# fetch variables
-	lw t1, 60(sp)
-	lw t2, 56(sp)
+	lw t1, 64(sp)
+	lw t2, 60(sp)
 	add t0, t1, t2
-	sw t0, 52(sp)
+	sw t0, 56(sp)
 
 	# store b$1 result_$1
-	ld t2, 68(sp)
+	ld t2, 72(sp)
 
 	# fetch variables
-	lw t1, 52(sp)
+	lw t1, 56(sp)
 	sw t1, 0(t2)
 
 	# load a$3 a
-	ld t2, 180(sp)
+	ld t2, 188(sp)
 	lw t0, 0(t2)
-	sw t0, 48(sp)
+	sw t0, 52(sp)
 
 	# div result_$2 a$3 
 
 	# fetch variables
-	lw t1, 48(sp)
+	lw t1, 52(sp)
 	li t2, 10
 	div t0, t1, t2
-	sw t0, 44(sp)
+	sw t0, 48(sp)
 
 	# store a result_$2
-	ld t2, 180(sp)
+	ld t2, 188(sp)
 
 	# fetch variables
-	lw t1, 44(sp)
+	lw t1, 48(sp)
 	sw t1, 0(t2)
 
 	# load i$2 i
-	ld t2, 96(sp)
+	ld t2, 104(sp)
 	lw t0, 0(t2)
-	sw t0, 40(sp)
+	sw t0, 44(sp)
 
 	# add result_$3 i$2 
 
 	# fetch variables
-	lw t1, 40(sp)
+	lw t1, 44(sp)
 	li t2, 1
 	add t0, t1, t2
-	sw t0, 36(sp)
+	sw t0, 40(sp)
 
 	# store i result_$3
-	ld t2, 96(sp)
+	ld t2, 104(sp)
 
 	# fetch variables
-	lw t1, 36(sp)
+	lw t1, 40(sp)
 	sw t1, 0(t2)
 
 	# br whileCond_49
@@ -574,76 +574,76 @@ next_78:
 whileCond_50:
 
 	# load i$3 i
-	ld t2, 96(sp)
+	ld t2, 104(sp)
 	lw t0, 0(t2)
-	sw t0, 32(sp)
+	sw t0, 36(sp)
 
 	# cmp i$3  cond_gt_tmp_$1
 
 	# fetch variables
-	lw t1, 32(sp)
+	lw t1, 36(sp)
 	li t2, 0
 	sub t0, t1, t2
 	sgtz t0, t0
-	sw t0, 28(sp)
+	sw t0, 32(sp)
 
 	# fetch variables
-	lw t1, 28(sp)
+	lw t1, 32(sp)
 
 	# zext cond_tmp_$1 cond_gt_tmp_$1
 	mv t0, t1
-	sw t0, 24(sp)
+	sw t0, 28(sp)
 
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	lw t1, 24(sp)
+	lw t1, 28(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sw t0, 20(sp)
+	sw t0, 24(sp)
 
 	# condBr cond_$1 whileBody_50 next_79
 
 	# fetch variables
-	lw t1, 20(sp)
+	lw t1, 24(sp)
 	beqz t1, next_79
 	j whileBody_50
 whileBody_50:
 
 	# load i$4 i
-	ld t2, 96(sp)
+	ld t2, 104(sp)
 	lw t0, 0(t2)
-	sw t0, 16(sp)
+	sw t0, 20(sp)
 
 	# sub result_$4 i$4 
 
 	# fetch variables
-	lw t1, 16(sp)
+	lw t1, 20(sp)
 	li t2, 1
 	sub t0, t1, t2
-	sw t0, 12(sp)
+	sw t0, 16(sp)
 
 	# store i result_$4
-	ld t2, 96(sp)
+	ld t2, 104(sp)
 
 	# fetch variables
-	lw t1, 12(sp)
+	lw t1, 16(sp)
 	sw t1, 0(t2)
 
 	# load i$5 i
-	ld t2, 96(sp)
+	ld t2, 104(sp)
 	lw t0, 0(t2)
-	sw t0, 8(sp)
+	sw t0, 12(sp)
 
-	# gep b$2  i$5
+	# gep b$2 i$5
 
 	# fetch variables
-	lw t1, 8(sp)
+	lw t1, 12(sp)
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 168(sp)
+	ld t1, 176(sp)
 	add t0, t1, t0
 	sd t0, 4(sp)
 
@@ -674,7 +674,7 @@ whileBody_50:
 next_79:
 
 	# ret void
-	addi sp, sp, 192
+	addi sp, sp, 200
 
 	# restore callee saved regs
 	addi sp, sp, 0

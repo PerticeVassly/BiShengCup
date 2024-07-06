@@ -73,13 +73,16 @@ public class RiscBasicBlock implements InstructionVisitor {
         int ptr = 0;
         for (int i = 0; i < functionType.getFParametersCount(); i++) {
 
-            assert fptr <= 6 && ptr <= 6;
+            assert fptr <= RiscSpecifications.getArgRegs().length && ptr <= RiscSpecifications.getFArgRegs().length;
 
             if (functionType.getFParameter(i) instanceof FloatType) {
                 riscInstructions.add(new RiscFsw(new Register(RiscSpecifications.getFArgRegs()[fptr]), allocator.getAddressOfPtr(String.valueOf(i))));
                 fptr++;
             } else if (functionType.getFParameter(i) instanceof IntType) {
                 riscInstructions.add(new RiscSw(new Register(RiscSpecifications.getArgRegs()[ptr]), allocator.getAddressOfPtr(String.valueOf(i))));
+                ptr++;
+            } else if (functionType.getFParameter(i) instanceof Pointer) {
+                riscInstructions.add(new RiscSd(new Register(RiscSpecifications.getArgRegs()[ptr]), allocator.getAddressOfPtr(String.valueOf(i))));
                 ptr++;
             } else {
                 assert false;
@@ -93,10 +96,16 @@ public class RiscBasicBlock implements InstructionVisitor {
         //eg: %ptr = getelementptr [2 x [5 x i32]], [2 x [5 x i32]]* %a, i32 0, i32 %b
         ValueRef lVal = gep.getLVal(); // %ptr
         ValueRef basePtr = gep.getOperand(0); // %a (pointer)
-        ValueRef baseOffset = gep.getOperand(1); // 0
-        ValueRef index = gep.getOperand(2); // index
+        ValueRef index;
+        if(gep.getNumberOfOperands() == 3){
+            index = gep.getOperand(2); // index
+        }
+        else {
+            index = gep.getOperand(1);
+        }
 
-        riscInstructions.add(new RiscComment("gep " + lVal.getName() + " " + baseOffset.getName() + " " + index.getName()));
+
+        riscInstructions.add(new RiscComment("gep " + lVal.getName() + " " +  index.getName()));
 
         //获取index的值,存在t1中
         allocator.prepareVariable(index);
@@ -192,6 +201,9 @@ public class RiscBasicBlock implements InstructionVisitor {
                     }
                 }
 
+            } else if(((Pointer) dest.getType()).getBase() instanceof Pointer){
+                riscInstructions.add(new RiscLd(new Register("t1"), allocator.getAddressOfPtr(src.getName())));
+                riscInstructions.add(new RiscSd(new Register("t1"), destOperand));
             } else {
                 assert false;
             }
@@ -214,8 +226,8 @@ public class RiscBasicBlock implements InstructionVisitor {
         else if(base instanceof FloatType){
             typeLen = 4;
         }
-        else {
-            assert false;
+        else if (base instanceof Pointer) {
+            typeLen = 8;
         }
         riscInstructions.add(new RiscAddi(new Register("t0"), new Register("sp"), new ImmediateValue(allocator.getOffset(allocate.getLVal().getName()) - typeLen)));
         riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddressOfPtr(allocate.getLVal().getName())));
@@ -238,6 +250,9 @@ public class RiscBasicBlock implements InstructionVisitor {
         } else if (((Pointer) src.getType()).getBase() instanceof FloatType) {
             riscInstructions.add(new RiscFlw(new Register("ft0"), srcOperand));
             riscInstructions.add(new RiscFsw(new Register("ft0"), destOperand));
+        } else if (((Pointer) src.getType()).getBase() instanceof Pointer){
+            riscInstructions.add(new RiscLd(new Register("t0"), srcOperand));
+            riscInstructions.add(new RiscSd(new Register("t0"), destOperand));
         } else {
             assert false;
         }
@@ -663,20 +678,24 @@ public class RiscBasicBlock implements InstructionVisitor {
         int ptr = 0;
         int fptr = 0;
         for (int i = 0; i < realParams.size(); i++) {
-            allocator.prepareVariable((realParams.get(i)));
             if (realParams.get(i).getType() instanceof FloatType) {
                 //todo() 暂时这样写因为不确定可不可以直接mv freg
+                allocator.prepareVariable((realParams.get(i)));
                 riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft1")));
                 riscInstructions.add(new RiscFmvwx(new Register(fArgRegs[fptr]), new Register("t0")));
                 fptr++;
             } else if (realParams.get(i).getType() instanceof IntType) {
-                riscInstructions.add(new RiscMv(new Register(argRegs[i]), new Register("t1")));
+                allocator.prepareVariable((realParams.get(i)));
+                riscInstructions.add(new RiscMv(new Register(argRegs[ptr]), new Register("t1")));
+                ptr++;
+            } else if(realParams.get(i).getType() instanceof Pointer){
+                Operand load = allocator.getAddressOfPtr(realParams.get(i));
+                riscInstructions.add(new RiscLd(new Register(argRegs[ptr]), load));
                 ptr++;
             } else {
                 assert false;
             }
         }
-
     }
 
     private void saveCallerSavedRegs() {

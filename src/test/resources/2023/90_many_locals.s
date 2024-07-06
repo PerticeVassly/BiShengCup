@@ -8,7 +8,7 @@ foo:
 fooEntry:
 
 	# allocate space for local variables
-	addi sp, sp, -436
+	addi sp, sp, -440
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -16,11 +16,11 @@ fooEntry:
 	# save the parameters
 
 	# allocate arr
-	addi t0, sp, 364
-	sd t0, 428(sp)
+	addi t0, sp, 368
+	sd t0, 432(sp)
 
 	# store arr 
-	ld t2, 428(sp)
+	ld t2, 432(sp)
 
 	# fetch variables
 	li t1, 0
@@ -87,425 +87,425 @@ fooEntry:
 	sw t1, 60(t2)
 
 	# allocate a
-	addi t0, sp, 352
-	sd t0, 356(sp)
+	addi t0, sp, 356
+	sd t0, 360(sp)
 
 	# store a 
-	ld t2, 356(sp)
+	ld t2, 360(sp)
 
 	# fetch variables
 	li t1, 3
 	sw t1, 0(t2)
 
 	# allocate b
-	addi t0, sp, 340
-	sd t0, 344(sp)
+	addi t0, sp, 344
+	sd t0, 348(sp)
 
 	# store b 
-	ld t2, 344(sp)
+	ld t2, 348(sp)
 
 	# fetch variables
 	li t1, 7
 	sw t1, 0(t2)
 
 	# allocate c
-	addi t0, sp, 328
-	sd t0, 332(sp)
+	addi t0, sp, 332
+	sd t0, 336(sp)
 
 	# store c 
-	ld t2, 332(sp)
+	ld t2, 336(sp)
 
 	# fetch variables
 	li t1, 5
 	sw t1, 0(t2)
 
 	# allocate d
-	addi t0, sp, 316
-	sd t0, 320(sp)
+	addi t0, sp, 320
+	sd t0, 324(sp)
 
 	# store d 
-	ld t2, 320(sp)
+	ld t2, 324(sp)
 
 	# fetch variables
 	li t1, 6
 	sw t1, 0(t2)
 
 	# allocate e
-	addi t0, sp, 304
-	sd t0, 308(sp)
+	addi t0, sp, 308
+	sd t0, 312(sp)
 
 	# store e 
-	ld t2, 308(sp)
+	ld t2, 312(sp)
 
 	# fetch variables
 	li t1, 1
 	sw t1, 0(t2)
 
 	# allocate f
-	addi t0, sp, 292
-	sd t0, 296(sp)
+	addi t0, sp, 296
+	sd t0, 300(sp)
 
 	# store f 
-	ld t2, 296(sp)
+	ld t2, 300(sp)
 
 	# fetch variables
 	li t1, 0
 	sw t1, 0(t2)
 
 	# allocate g
-	addi t0, sp, 280
-	sd t0, 284(sp)
+	addi t0, sp, 284
+	sd t0, 288(sp)
 
 	# store g 
-	ld t2, 284(sp)
+	ld t2, 288(sp)
 
 	# fetch variables
 	li t1, 3
 	sw t1, 0(t2)
 
 	# allocate h
-	addi t0, sp, 268
-	sd t0, 272(sp)
+	addi t0, sp, 272
+	sd t0, 276(sp)
 
 	# store h 
-	ld t2, 272(sp)
+	ld t2, 276(sp)
 
 	# fetch variables
 	li t1, 5
 	sw t1, 0(t2)
 
 	# allocate i
-	addi t0, sp, 256
-	sd t0, 260(sp)
+	addi t0, sp, 260
+	sd t0, 264(sp)
 
 	# store i 
-	ld t2, 260(sp)
+	ld t2, 264(sp)
 
 	# fetch variables
 	li t1, 4
 	sw t1, 0(t2)
 
 	# allocate j
-	addi t0, sp, 244
-	sd t0, 248(sp)
+	addi t0, sp, 248
+	sd t0, 252(sp)
 
 	# store j 
-	ld t2, 248(sp)
+	ld t2, 252(sp)
 
 	# fetch variables
 	li t1, 2
 	sw t1, 0(t2)
 
 	# allocate k
-	addi t0, sp, 232
-	sd t0, 236(sp)
+	addi t0, sp, 236
+	sd t0, 240(sp)
 
 	# store k 
-	ld t2, 236(sp)
+	ld t2, 240(sp)
 
 	# fetch variables
 	li t1, 7
 	sw t1, 0(t2)
 
 	# allocate l
-	addi t0, sp, 220
-	sd t0, 224(sp)
+	addi t0, sp, 224
+	sd t0, 228(sp)
 
 	# store l 
-	ld t2, 224(sp)
+	ld t2, 228(sp)
 
 	# fetch variables
 	li t1, 9
 	sw t1, 0(t2)
 
 	# allocate m
-	addi t0, sp, 208
-	sd t0, 212(sp)
+	addi t0, sp, 212
+	sd t0, 216(sp)
 
 	# store m 
-	ld t2, 212(sp)
+	ld t2, 216(sp)
 
 	# fetch variables
 	li t1, 8
 	sw t1, 0(t2)
 
 	# allocate n
-	addi t0, sp, 196
-	sd t0, 200(sp)
+	addi t0, sp, 200
+	sd t0, 204(sp)
 
 	# store n 
-	ld t2, 200(sp)
+	ld t2, 204(sp)
 
 	# fetch variables
 	li t1, 1
 	sw t1, 0(t2)
 
 	# allocate o
-	addi t0, sp, 184
-	sd t0, 188(sp)
+	addi t0, sp, 188
+	sd t0, 192(sp)
 
 	# store o 
-	ld t2, 188(sp)
+	ld t2, 192(sp)
 
 	# fetch variables
 	li t1, 4
 	sw t1, 0(t2)
 
 	# allocate p
-	addi t0, sp, 172
-	sd t0, 176(sp)
+	addi t0, sp, 176
+	sd t0, 180(sp)
 
 	# store p 
-	ld t2, 176(sp)
+	ld t2, 180(sp)
 
 	# fetch variables
 	li t1, 6
 	sw t1, 0(t2)
 
 	# allocate sum1
-	addi t0, sp, 160
-	sd t0, 164(sp)
+	addi t0, sp, 164
+	sd t0, 168(sp)
 
 	# load a$1 a
-	ld t2, 356(sp)
+	ld t2, 360(sp)
 	lw t0, 0(t2)
-	sw t0, 156(sp)
+	sw t0, 160(sp)
 
 	# load b$1 b
-	ld t2, 344(sp)
+	ld t2, 348(sp)
 	lw t0, 0(t2)
-	sw t0, 152(sp)
+	sw t0, 156(sp)
 
 	# add result_ a$1 b$1
 
 	# fetch variables
-	lw t1, 156(sp)
-	lw t2, 152(sp)
+	lw t1, 160(sp)
+	lw t2, 156(sp)
 	add t0, t1, t2
-	sw t0, 148(sp)
+	sw t0, 152(sp)
 
 	# load c$1 c
-	ld t2, 332(sp)
+	ld t2, 336(sp)
 	lw t0, 0(t2)
-	sw t0, 144(sp)
+	sw t0, 148(sp)
 
 	# add result_$1 result_ c$1
 
 	# fetch variables
-	lw t1, 148(sp)
-	lw t2, 144(sp)
+	lw t1, 152(sp)
+	lw t2, 148(sp)
 	add t0, t1, t2
-	sw t0, 140(sp)
+	sw t0, 144(sp)
 
 	# load d$1 d
-	ld t2, 320(sp)
+	ld t2, 324(sp)
 	lw t0, 0(t2)
-	sw t0, 136(sp)
+	sw t0, 140(sp)
 
 	# add result_$2 result_$1 d$1
 
 	# fetch variables
-	lw t1, 140(sp)
-	lw t2, 136(sp)
+	lw t1, 144(sp)
+	lw t2, 140(sp)
 	add t0, t1, t2
-	sw t0, 132(sp)
+	sw t0, 136(sp)
 
 	# load e$1 e
-	ld t2, 308(sp)
+	ld t2, 312(sp)
 	lw t0, 0(t2)
-	sw t0, 128(sp)
+	sw t0, 132(sp)
 
 	# add result_$3 result_$2 e$1
 
 	# fetch variables
-	lw t1, 132(sp)
-	lw t2, 128(sp)
+	lw t1, 136(sp)
+	lw t2, 132(sp)
 	add t0, t1, t2
-	sw t0, 124(sp)
+	sw t0, 128(sp)
 
 	# load f$1 f
-	ld t2, 296(sp)
+	ld t2, 300(sp)
 	lw t0, 0(t2)
-	sw t0, 120(sp)
+	sw t0, 124(sp)
 
 	# add result_$4 result_$3 f$1
 
 	# fetch variables
-	lw t1, 124(sp)
-	lw t2, 120(sp)
+	lw t1, 128(sp)
+	lw t2, 124(sp)
 	add t0, t1, t2
-	sw t0, 116(sp)
+	sw t0, 120(sp)
 
 	# load g$1 g
-	ld t2, 284(sp)
+	ld t2, 288(sp)
 	lw t0, 0(t2)
-	sw t0, 112(sp)
+	sw t0, 116(sp)
 
 	# add result_$5 result_$4 g$1
 
 	# fetch variables
-	lw t1, 116(sp)
-	lw t2, 112(sp)
+	lw t1, 120(sp)
+	lw t2, 116(sp)
 	add t0, t1, t2
-	sw t0, 108(sp)
+	sw t0, 112(sp)
 
 	# load h$1 h
-	ld t2, 272(sp)
+	ld t2, 276(sp)
 	lw t0, 0(t2)
-	sw t0, 104(sp)
+	sw t0, 108(sp)
 
 	# add result_$6 result_$5 h$1
 
 	# fetch variables
-	lw t1, 108(sp)
-	lw t2, 104(sp)
+	lw t1, 112(sp)
+	lw t2, 108(sp)
 	add t0, t1, t2
-	sw t0, 100(sp)
+	sw t0, 104(sp)
 
 	# store sum1 result_$6
-	ld t2, 164(sp)
+	ld t2, 168(sp)
 
 	# fetch variables
-	lw t1, 100(sp)
+	lw t1, 104(sp)
 	sw t1, 0(t2)
 
 	# allocate sum2
-	addi t0, sp, 88
-	sd t0, 92(sp)
+	addi t0, sp, 92
+	sd t0, 96(sp)
 
 	# load i$1 i
-	ld t2, 260(sp)
+	ld t2, 264(sp)
 	lw t0, 0(t2)
-	sw t0, 84(sp)
+	sw t0, 88(sp)
 
 	# load j$1 j
-	ld t2, 248(sp)
+	ld t2, 252(sp)
 	lw t0, 0(t2)
-	sw t0, 80(sp)
+	sw t0, 84(sp)
 
 	# add result_$7 i$1 j$1
 
 	# fetch variables
-	lw t1, 84(sp)
-	lw t2, 80(sp)
+	lw t1, 88(sp)
+	lw t2, 84(sp)
 	add t0, t1, t2
-	sw t0, 76(sp)
+	sw t0, 80(sp)
 
 	# load k$1 k
-	ld t2, 236(sp)
+	ld t2, 240(sp)
 	lw t0, 0(t2)
-	sw t0, 72(sp)
+	sw t0, 76(sp)
 
 	# add result_$8 result_$7 k$1
 
 	# fetch variables
-	lw t1, 76(sp)
-	lw t2, 72(sp)
+	lw t1, 80(sp)
+	lw t2, 76(sp)
 	add t0, t1, t2
-	sw t0, 68(sp)
+	sw t0, 72(sp)
 
 	# load l$1 l
-	ld t2, 224(sp)
+	ld t2, 228(sp)
 	lw t0, 0(t2)
-	sw t0, 64(sp)
+	sw t0, 68(sp)
 
 	# add result_$9 result_$8 l$1
 
 	# fetch variables
-	lw t1, 68(sp)
-	lw t2, 64(sp)
+	lw t1, 72(sp)
+	lw t2, 68(sp)
 	add t0, t1, t2
-	sw t0, 60(sp)
+	sw t0, 64(sp)
 
 	# load m$1 m
-	ld t2, 212(sp)
+	ld t2, 216(sp)
 	lw t0, 0(t2)
-	sw t0, 56(sp)
+	sw t0, 60(sp)
 
 	# add result_$10 result_$9 m$1
 
 	# fetch variables
-	lw t1, 60(sp)
-	lw t2, 56(sp)
+	lw t1, 64(sp)
+	lw t2, 60(sp)
 	add t0, t1, t2
-	sw t0, 52(sp)
+	sw t0, 56(sp)
 
 	# load n$1 n
-	ld t2, 200(sp)
+	ld t2, 204(sp)
 	lw t0, 0(t2)
-	sw t0, 48(sp)
+	sw t0, 52(sp)
 
 	# add result_$11 result_$10 n$1
 
 	# fetch variables
-	lw t1, 52(sp)
-	lw t2, 48(sp)
+	lw t1, 56(sp)
+	lw t2, 52(sp)
 	add t0, t1, t2
-	sw t0, 44(sp)
+	sw t0, 48(sp)
 
 	# load o$1 o
-	ld t2, 188(sp)
+	ld t2, 192(sp)
 	lw t0, 0(t2)
-	sw t0, 40(sp)
+	sw t0, 44(sp)
 
 	# add result_$12 result_$11 o$1
 
 	# fetch variables
-	lw t1, 44(sp)
-	lw t2, 40(sp)
+	lw t1, 48(sp)
+	lw t2, 44(sp)
 	add t0, t1, t2
-	sw t0, 36(sp)
+	sw t0, 40(sp)
 
 	# load p$1 p
-	ld t2, 176(sp)
+	ld t2, 180(sp)
 	lw t0, 0(t2)
-	sw t0, 32(sp)
+	sw t0, 36(sp)
 
 	# add result_$13 result_$12 p$1
 
 	# fetch variables
-	lw t1, 36(sp)
-	lw t2, 32(sp)
+	lw t1, 40(sp)
+	lw t2, 36(sp)
 	add t0, t1, t2
-	sw t0, 28(sp)
+	sw t0, 32(sp)
 
 	# store sum2 result_$13
-	ld t2, 92(sp)
+	ld t2, 96(sp)
 
 	# fetch variables
-	lw t1, 28(sp)
+	lw t1, 32(sp)
 	sw t1, 0(t2)
 
 	# load sum1$1 sum1
-	ld t2, 164(sp)
+	ld t2, 168(sp)
 	lw t0, 0(t2)
-	sw t0, 24(sp)
+	sw t0, 28(sp)
 
 	# load sum2$1 sum2
-	ld t2, 92(sp)
+	ld t2, 96(sp)
 	lw t0, 0(t2)
-	sw t0, 20(sp)
+	sw t0, 24(sp)
 
 	# add result_$14 sum1$1 sum2$1
 
 	# fetch variables
-	lw t1, 24(sp)
-	lw t2, 20(sp)
+	lw t1, 28(sp)
+	lw t2, 24(sp)
 	add t0, t1, t2
-	sw t0, 16(sp)
+	sw t0, 20(sp)
 
 	# load a$2 a
-	ld t2, 356(sp)
+	ld t2, 360(sp)
 	lw t0, 0(t2)
-	sw t0, 12(sp)
+	sw t0, 16(sp)
 
-	# gep arr$1  a$2
+	# gep arr$1 a$2
 
 	# fetch variables
-	lw t1, 12(sp)
+	lw t1, 16(sp)
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 428(sp)
+	ld t1, 432(sp)
 	add t0, t1, t0
 	sd t0, 8(sp)
 
@@ -517,7 +517,7 @@ fooEntry:
 	# add result_$15 result_$14 arr$2
 
 	# fetch variables
-	lw t1, 16(sp)
+	lw t1, 20(sp)
 	lw t2, 4(sp)
 	add t0, t1, t2
 	sw t0, 0(sp)
@@ -527,7 +527,7 @@ fooEntry:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 436
+	addi sp, sp, 440
 
 	# restore callee saved regs
 	addi sp, sp, 0

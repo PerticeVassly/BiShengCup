@@ -1,614 +1,852 @@
 .data
+.align 2
 .globl n
 n:
 .word 0
-
 .text
+.align 2
 .type bubblesort, @function
 .globl bubblesort
 bubblesort:
-
-
 bubblesortEntry1:
+
+	# allocate space for local variables
+	addi sp, sp, -296
 
 	# save callee saved regs
 	addi sp, sp, 0
-	sw a0, 186(sp)
 
-	# allocate space for local variables
-	addi sp, sp, -190
+	# save the parameters
+	sd a0, 288(sp)
+
+	# allocate arr
+	addi t0, sp, 272
+	sd t0, 280(sp)
 
 	# store arr 0
-	lw t1, 186(sp)
-	sw t1, 182(sp)
+	ld t2, 280(sp)
+	ld t1, 288(sp)
+	sd t1, 0(t2)
+
+	# allocate i
+	addi t0, sp, 260
+	sd t0, 264(sp)
+
+	# allocate j
+	addi t0, sp, 248
+	sd t0, 252(sp)
 
 	# store i 
+	ld t2, 264(sp)
+
+	# fetch variables
 	li t1, 0
-	sw t1, 178(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_44
 	j whileCond_44
-
 whileCond_44:
 
 	# load i$1 i
-	lw t1, 178(sp)
-	lw t0, 178(sp)
-	sw t0, 170(sp)
+	ld t2, 264(sp)
+	lw t0, 0(t2)
+	sw t0, 244(sp)
 
 	# load n n
-	lw t1, 166(sp)
+	li t2, n
 	lw t0, n
-	sw t0, 166(sp)
-	lw t1, 166(sp)
-	li t2, 1
+	sw t0, 240(sp)
 
 	# sub result_ n 
+
+	# fetch variables
+	lw t1, 240(sp)
+	li t2, 1
 	sub t0, t1, t2
-	sw t0, 162(sp)
+	sw t0, 236(sp)
 
 	# cmp i$1 result_ cond_lt_tmp_
-	lw t1, 170(sp)
-	lw t2, 162(sp)
-	lw t3, 161(sp)
-	sltu t0, t1, t2
-	sw t0, 161(sp)
-	lw t1, 161(sp)
 
-	# zext t0 t1
+	# fetch variables
+	lw t1, 244(sp)
+	lw t2, 236(sp)
+	slt t0, t1, t2
+	sw t0, 232(sp)
+
+	# fetch variables
+	lw t1, 232(sp)
+
+	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
-	sw t0, 157(sp)
+	sw t0, 228(sp)
 
 	# cmp cond_tmp_  cond_
-	lw t1, 157(sp)
+
+	# fetch variables
+	lw t1, 228(sp)
 	li t2, 0
-	lw t3, 156(sp)
 	xor t0, t1, t2
-	sw t0, 156(sp)
-	lw t1, 156(sp)
+	seqz t0, t0
+	seqz t0, t0
+	sw t0, 224(sp)
 
 	# condBr cond_ whileBody_44 next_70
+
+	# fetch variables
+	lw t1, 224(sp)
 	beqz t1, next_70
 	j whileBody_44
-
 whileBody_44:
 
 	# store j 
+	ld t2, 252(sp)
+
+	# fetch variables
 	li t1, 0
-	sw t1, 174(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_45
 	j whileCond_45
-
 next_70:
-	li t1, 0
 
 	# ret 
+
+	# fetch variables
+	li t1, 0
 	mv a0, t1
-	addi sp, sp, 190
+	addi sp, sp, 296
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-
 whileCond_45:
 
 	# load j$1 j
-	lw t1, 174(sp)
-	lw t0, 174(sp)
-	sw t0, 152(sp)
+	ld t2, 252(sp)
+	lw t0, 0(t2)
+	sw t0, 220(sp)
 
 	# load n$1 n
-	lw t1, 166(sp)
+	li t2, n
 	lw t0, n
-	sw t0, 148(sp)
+	sw t0, 216(sp)
 
 	# load i$2 i
-	lw t1, 178(sp)
-	lw t0, 178(sp)
-	sw t0, 144(sp)
-	lw t1, 148(sp)
-	lw t2, 144(sp)
+	ld t2, 264(sp)
+	lw t0, 0(t2)
+	sw t0, 212(sp)
 
 	# sub result_$1 n$1 i$2
+
+	# fetch variables
+	lw t1, 216(sp)
+	lw t2, 212(sp)
 	sub t0, t1, t2
-	sw t0, 140(sp)
-	lw t1, 140(sp)
-	li t2, 1
+	sw t0, 208(sp)
 
 	# sub result_$2 result_$1 
+
+	# fetch variables
+	lw t1, 208(sp)
+	li t2, 1
 	sub t0, t1, t2
-	sw t0, 136(sp)
+	sw t0, 204(sp)
 
 	# cmp j$1 result_$2 cond_lt_tmp_$1
-	lw t1, 152(sp)
-	lw t2, 136(sp)
-	lw t3, 135(sp)
-	sltu t0, t1, t2
-	sw t0, 135(sp)
-	lw t1, 135(sp)
 
-	# zext t0 t1
+	# fetch variables
+	lw t1, 220(sp)
+	lw t2, 204(sp)
+	slt t0, t1, t2
+	sw t0, 200(sp)
+
+	# fetch variables
+	lw t1, 200(sp)
+
+	# zext cond_tmp_$1 cond_lt_tmp_$1
 	mv t0, t1
-	sw t0, 131(sp)
+	sw t0, 196(sp)
 
 	# cmp cond_tmp_$1  cond_$1
-	lw t1, 131(sp)
+
+	# fetch variables
+	lw t1, 196(sp)
 	li t2, 0
-	lw t3, 130(sp)
 	xor t0, t1, t2
-	sw t0, 130(sp)
-	lw t1, 130(sp)
+	seqz t0, t0
+	seqz t0, t0
+	sw t0, 192(sp)
 
 	# condBr cond_$1 whileBody_45 next_71
+
+	# fetch variables
+	lw t1, 192(sp)
 	beqz t1, next_71
 	j whileBody_45
-
 whileBody_45:
 
 	# load j$2 j
-	lw t1, 174(sp)
-	lw t0, 174(sp)
-	sw t0, 126(sp)
+	ld t2, 252(sp)
+	lw t0, 0(t2)
+	sw t0, 188(sp)
 
 	# load arr_ arr
-	lw t1, 182(sp)
-	lw t0, 182(sp)
-	sw t0, 122(sp)
+	ld t2, 280(sp)
+	ld t0, 0(t2)
+	sd t0, 180(sp)
+
+	# gep arr$1 j$2
+
+	# fetch variables
+	lw t1, 188(sp)
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 180(sp)
+	add t0, t1, t0
+	sd t0, 172(sp)
 
 	# load arr$2 arr$1
-	lw t1, 118(sp)
-	lw t0, 118(sp)
-	sw t0, 114(sp)
+	ld t2, 172(sp)
+	lw t0, 0(t2)
+	sw t0, 168(sp)
 
 	# load j$3 j
-	lw t1, 174(sp)
-	lw t0, 174(sp)
-	sw t0, 110(sp)
-	lw t1, 110(sp)
-	li t2, 1
+	ld t2, 252(sp)
+	lw t0, 0(t2)
+	sw t0, 164(sp)
 
 	# add result_$3 j$3 
+
+	# fetch variables
+	lw t1, 164(sp)
+	li t2, 1
 	add t0, t1, t2
-	sw t0, 106(sp)
+	sw t0, 160(sp)
 
 	# load arr_$1 arr
-	lw t1, 182(sp)
-	lw t0, 182(sp)
-	sw t0, 102(sp)
+	ld t2, 280(sp)
+	ld t0, 0(t2)
+	sd t0, 152(sp)
+
+	# gep arr$3 result_$3
+
+	# fetch variables
+	lw t1, 160(sp)
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 152(sp)
+	add t0, t1, t0
+	sd t0, 144(sp)
 
 	# load arr$4 arr$3
-	lw t1, 98(sp)
-	lw t0, 98(sp)
-	sw t0, 94(sp)
+	ld t2, 144(sp)
+	lw t0, 0(t2)
+	sw t0, 140(sp)
 
 	# cmp arr$2 arr$4 cond_gt_tmp_
-	lw t1, 114(sp)
-	lw t2, 94(sp)
-	lw t3, 93(sp)
+
+	# fetch variables
+	lw t1, 168(sp)
+	lw t2, 140(sp)
 	sub t0, t1, t2
 	sgtz t0, t0
-	sw t0, 93(sp)
-	lw t1, 93(sp)
+	sw t0, 136(sp)
 
-	# zext t0 t1
+	# fetch variables
+	lw t1, 136(sp)
+
+	# zext cond_tmp_$2 cond_gt_tmp_
 	mv t0, t1
-	sw t0, 89(sp)
+	sw t0, 132(sp)
 
 	# cmp cond_tmp_$2  cond_$2
-	lw t1, 89(sp)
+
+	# fetch variables
+	lw t1, 132(sp)
 	li t2, 0
-	lw t3, 88(sp)
 	xor t0, t1, t2
-	sw t0, 88(sp)
-	lw t1, 88(sp)
+	seqz t0, t0
+	seqz t0, t0
+	sw t0, 128(sp)
 
 	# condBr cond_$2 ifTrue_26 next_72
+
+	# fetch variables
+	lw t1, 128(sp)
 	beqz t1, next_72
 	j ifTrue_26
-
 next_71:
 
 	# load i$3 i
-	lw t1, 178(sp)
-	lw t0, 178(sp)
-	sw t0, 84(sp)
-	lw t1, 84(sp)
-	li t2, 1
+	ld t2, 264(sp)
+	lw t0, 0(t2)
+	sw t0, 124(sp)
 
 	# add result_$7 i$3 
+
+	# fetch variables
+	lw t1, 124(sp)
+	li t2, 1
 	add t0, t1, t2
-	sw t0, 80(sp)
+	sw t0, 120(sp)
 
 	# store i result_$7
-	lw t1, 80(sp)
-	sw t1, 178(sp)
+	ld t2, 264(sp)
+
+	# fetch variables
+	lw t1, 120(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_44
 	j whileCond_44
-
 ifTrue_26:
 
+	# allocate tmp
+	addi t0, sp, 108
+	sd t0, 112(sp)
+
 	# load j$4 j
-	lw t1, 174(sp)
-	lw t0, 174(sp)
-	sw t0, 72(sp)
-	lw t1, 72(sp)
-	li t2, 1
+	ld t2, 252(sp)
+	lw t0, 0(t2)
+	sw t0, 104(sp)
 
 	# add result_$4 j$4 
+
+	# fetch variables
+	lw t1, 104(sp)
+	li t2, 1
 	add t0, t1, t2
-	sw t0, 68(sp)
+	sw t0, 100(sp)
 
 	# load arr_$2 arr
-	lw t1, 182(sp)
-	lw t0, 182(sp)
-	sw t0, 64(sp)
+	ld t2, 280(sp)
+	ld t0, 0(t2)
+	sd t0, 92(sp)
+
+	# gep arr$5 result_$4
+
+	# fetch variables
+	lw t1, 100(sp)
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 92(sp)
+	add t0, t1, t0
+	sd t0, 84(sp)
 
 	# load arr$6 arr$5
-	lw t1, 60(sp)
-	lw t0, 60(sp)
-	sw t0, 56(sp)
+	ld t2, 84(sp)
+	lw t0, 0(t2)
+	sw t0, 80(sp)
 
 	# store tmp arr$6
-	lw t1, 56(sp)
-	sw t1, 76(sp)
+	ld t2, 112(sp)
+
+	# fetch variables
+	lw t1, 80(sp)
+	sw t1, 0(t2)
 
 	# load j$5 j
-	lw t1, 174(sp)
-	lw t0, 174(sp)
-	sw t0, 52(sp)
-	lw t1, 52(sp)
-	li t2, 1
+	ld t2, 252(sp)
+	lw t0, 0(t2)
+	sw t0, 76(sp)
 
 	# add result_$5 j$5 
+
+	# fetch variables
+	lw t1, 76(sp)
+	li t2, 1
 	add t0, t1, t2
-	sw t0, 48(sp)
+	sw t0, 72(sp)
 
 	# load arr_$3 arr
-	lw t1, 182(sp)
-	lw t0, 182(sp)
-	sw t0, 44(sp)
+	ld t2, 280(sp)
+	ld t0, 0(t2)
+	sd t0, 64(sp)
+
+	# gep arr$7 result_$5
+
+	# fetch variables
+	lw t1, 72(sp)
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 64(sp)
+	add t0, t1, t0
+	sd t0, 56(sp)
 
 	# load j$6 j
-	lw t1, 174(sp)
-	lw t0, 174(sp)
-	sw t0, 36(sp)
+	ld t2, 252(sp)
+	lw t0, 0(t2)
+	sw t0, 52(sp)
 
 	# load arr_$4 arr
-	lw t1, 182(sp)
-	lw t0, 182(sp)
-	sw t0, 32(sp)
+	ld t2, 280(sp)
+	ld t0, 0(t2)
+	sd t0, 44(sp)
+
+	# gep arr$8 j$6
+
+	# fetch variables
+	lw t1, 52(sp)
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 44(sp)
+	add t0, t1, t0
+	sd t0, 36(sp)
 
 	# load arr$9 arr$8
-	lw t1, 28(sp)
-	lw t0, 28(sp)
-	sw t0, 24(sp)
+	ld t2, 36(sp)
+	lw t0, 0(t2)
+	sw t0, 32(sp)
 
 	# store arr$7 arr$9
-	lw t1, 24(sp)
-	sw t1, 40(sp)
+	ld t2, 56(sp)
+
+	# fetch variables
+	lw t1, 32(sp)
+	sw t1, 0(t2)
 
 	# load j$7 j
-	lw t1, 174(sp)
-	lw t0, 174(sp)
-	sw t0, 20(sp)
+	ld t2, 252(sp)
+	lw t0, 0(t2)
+	sw t0, 28(sp)
 
 	# load arr_$5 arr
-	lw t1, 182(sp)
-	lw t0, 182(sp)
-	sw t0, 16(sp)
+	ld t2, 280(sp)
+	ld t0, 0(t2)
+	sd t0, 20(sp)
+
+	# gep arr$10 j$7
+
+	# fetch variables
+	lw t1, 28(sp)
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 20(sp)
+	add t0, t1, t0
+	sd t0, 12(sp)
 
 	# load tmp$1 tmp
-	lw t1, 76(sp)
-	lw t0, 76(sp)
+	ld t2, 112(sp)
+	lw t0, 0(t2)
 	sw t0, 8(sp)
 
 	# store arr$10 tmp$1
+	ld t2, 12(sp)
+
+	# fetch variables
 	lw t1, 8(sp)
-	sw t1, 12(sp)
+	sw t1, 0(t2)
 
 	# br next_72
 	j next_72
-
 next_72:
 
 	# load j$8 j
-	lw t1, 174(sp)
-	lw t0, 174(sp)
+	ld t2, 252(sp)
+	lw t0, 0(t2)
 	sw t0, 4(sp)
-	lw t1, 4(sp)
-	li t2, 1
 
 	# add result_$6 j$8 
+
+	# fetch variables
+	lw t1, 4(sp)
+	li t2, 1
 	add t0, t1, t2
 	sw t0, 0(sp)
 
 	# store j result_$6
+	ld t2, 252(sp)
+
+	# fetch variables
 	lw t1, 0(sp)
-	sw t1, 174(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_45
 	j whileCond_45
 .type main, @function
 .globl main
 main:
-
-
 mainEntry20:
 
 	# allocate space for local variables
-	addi sp, sp, -102
+	addi sp, sp, -216
+
+	# save the parameters
 
 	# store n 
+	li t2, n
+
+	# fetch variables
 	li t1, 10
-	sw t1, n, s0
+	sw t1, n, t0
+
+	# allocate a
+	addi t0, sp, 168
+	sd t0, 208(sp)
+
+	# gep a$1 
+
+	# fetch variables
+	li t1, 0
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 208(sp)
+	add t0, t1, t0
+	sd t0, 160(sp)
 
 	# store a$1 
+	ld t2, 160(sp)
+
+	# fetch variables
 	li t1, 4
-	sw t1, 94(sp)
+	sw t1, 0(t2)
+
+	# gep a$2 
+
+	# fetch variables
+	li t1, 1
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 208(sp)
+	add t0, t1, t0
+	sd t0, 152(sp)
 
 	# store a$2 
+	ld t2, 152(sp)
+
+	# fetch variables
 	li t1, 3
-	sw t1, 90(sp)
+	sw t1, 0(t2)
+
+	# gep a$3 
+
+	# fetch variables
+	li t1, 2
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 208(sp)
+	add t0, t1, t0
+	sd t0, 144(sp)
 
 	# store a$3 
+	ld t2, 144(sp)
+
+	# fetch variables
 	li t1, 9
-	sw t1, 86(sp)
+	sw t1, 0(t2)
+
+	# gep a$4 
+
+	# fetch variables
+	li t1, 3
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 208(sp)
+	add t0, t1, t0
+	sd t0, 136(sp)
 
 	# store a$4 
+	ld t2, 136(sp)
+
+	# fetch variables
 	li t1, 2
-	sw t1, 82(sp)
+	sw t1, 0(t2)
+
+	# gep a$5 
+
+	# fetch variables
+	li t1, 4
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 208(sp)
+	add t0, t1, t0
+	sd t0, 128(sp)
 
 	# store a$5 
+	ld t2, 128(sp)
+
+	# fetch variables
 	li t1, 0
-	sw t1, 78(sp)
+	sw t1, 0(t2)
+
+	# gep a$6 
+
+	# fetch variables
+	li t1, 5
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 208(sp)
+	add t0, t1, t0
+	sd t0, 120(sp)
 
 	# store a$6 
+	ld t2, 120(sp)
+
+	# fetch variables
 	li t1, 1
-	sw t1, 74(sp)
+	sw t1, 0(t2)
+
+	# gep a$7 
+
+	# fetch variables
+	li t1, 6
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 208(sp)
+	add t0, t1, t0
+	sd t0, 112(sp)
 
 	# store a$7 
+	ld t2, 112(sp)
+
+	# fetch variables
 	li t1, 6
-	sw t1, 70(sp)
+	sw t1, 0(t2)
+
+	# gep a$8 
+
+	# fetch variables
+	li t1, 7
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 208(sp)
+	add t0, t1, t0
+	sd t0, 104(sp)
 
 	# store a$8 
+	ld t2, 104(sp)
+
+	# fetch variables
 	li t1, 5
-	sw t1, 66(sp)
+	sw t1, 0(t2)
+
+	# gep a$9 
+
+	# fetch variables
+	li t1, 8
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 208(sp)
+	add t0, t1, t0
+	sd t0, 96(sp)
 
 	# store a$9 
+	ld t2, 96(sp)
+
+	# fetch variables
 	li t1, 7
-	sw t1, 62(sp)
+	sw t1, 0(t2)
+
+	# gep a$10 
+
+	# fetch variables
+	li t1, 9
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 208(sp)
+	add t0, t1, t0
+	sd t0, 88(sp)
 
 	# store a$10 
+	ld t2, 88(sp)
+
+	# fetch variables
 	li t1, 8
-	sw t1, 58(sp)
+	sw t1, 0(t2)
+
+	# allocate i
+	addi t0, sp, 76
+	sd t0, 80(sp)
+
+	# gep a$11 
+
+	# fetch variables
+	li t1, 0
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 208(sp)
+	add t0, t1, t0
+	sd t0, 68(sp)
 
 	# prepare params
-	lw t1, 50(sp)
-	mv a0, t1
+	ld a0, 68(sp)
 
 	# save caller saved regs
-	addi sp, sp, -60
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
-	sw ft0, 32(sp)
-	sw ft1, 36(sp)
-	sw ft2, 40(sp)
-	sw ft3, 44(sp)
-	sw ft4, 48(sp)
-	sw ft5, 52(sp)
-	sw ft6, 56(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call bubblesort
 	call bubblesort
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	lw ft0, 32(sp)
-	lw ft1, 36(sp)
-	lw ft2, 40(sp)
-	lw ft3, 44(sp)
-	lw ft4, 48(sp)
-	lw ft5, 52(sp)
-	lw ft6, 56(sp)
-	addi sp, sp, 60
-	sw a0, 46(sp)
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 64(sp)
 
 	# store i bubblesort
-	lw t1, 46(sp)
-	sw t1, 54(sp)
+	ld t2, 80(sp)
+
+	# fetch variables
+	lw t1, 64(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_46
 	j whileCond_46
-
 whileCond_46:
 
 	# load i$1 i
-	lw t1, 54(sp)
-	lw t0, 54(sp)
-	sw t0, 42(sp)
+	ld t2, 80(sp)
+	lw t0, 0(t2)
+	sw t0, 60(sp)
 
 	# load n n
-	lw t1, 38(sp)
+	li t2, n
 	lw t0, n
-	sw t0, 38(sp)
+	sw t0, 56(sp)
 
 	# cmp i$1 n cond_lt_tmp_
-	lw t1, 42(sp)
-	lw t2, 38(sp)
-	lw t3, 37(sp)
-	sltu t0, t1, t2
-	sw t0, 37(sp)
-	lw t1, 37(sp)
 
-	# zext t0 t1
+	# fetch variables
+	lw t1, 60(sp)
+	lw t2, 56(sp)
+	slt t0, t1, t2
+	sw t0, 52(sp)
+
+	# fetch variables
+	lw t1, 52(sp)
+
+	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
-	sw t0, 33(sp)
+	sw t0, 48(sp)
 
 	# cmp cond_tmp_  cond_
-	lw t1, 33(sp)
+
+	# fetch variables
+	lw t1, 48(sp)
 	li t2, 0
-	lw t3, 32(sp)
 	xor t0, t1, t2
-	sw t0, 32(sp)
-	lw t1, 32(sp)
+	seqz t0, t0
+	seqz t0, t0
+	sw t0, 44(sp)
 
 	# condBr cond_ whileBody_46 next_73
+
+	# fetch variables
+	lw t1, 44(sp)
 	beqz t1, next_73
 	j whileBody_46
-
 whileBody_46:
 
+	# allocate tmp
+	addi t0, sp, 32
+	sd t0, 36(sp)
+
 	# load i$2 i
-	lw t1, 54(sp)
-	lw t0, 54(sp)
-	sw t0, 24(sp)
+	ld t2, 80(sp)
+	lw t0, 0(t2)
+	sw t0, 28(sp)
+
+	# gep a$12 i$2
+
+	# fetch variables
+	lw t1, 28(sp)
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 208(sp)
+	add t0, t1, t0
+	sd t0, 20(sp)
 
 	# load a$13 a$12
-	lw t1, 20(sp)
-	lw t0, 20(sp)
+	ld t2, 20(sp)
+	lw t0, 0(t2)
 	sw t0, 16(sp)
 
 	# store tmp a$13
+	ld t2, 36(sp)
+
+	# fetch variables
 	lw t1, 16(sp)
-	sw t1, 28(sp)
+	sw t1, 0(t2)
 
 	# load tmp$1 tmp
-	lw t1, 28(sp)
-	lw t0, 28(sp)
+	ld t2, 36(sp)
+	lw t0, 0(t2)
 	sw t0, 12(sp)
 
 	# prepare params
+
+	# fetch variables
 	lw t1, 12(sp)
 	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -60
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
-	sw ft0, 32(sp)
-	sw ft1, 36(sp)
-	sw ft2, 40(sp)
-	sw ft3, 44(sp)
-	sw ft4, 48(sp)
-	sw ft5, 52(sp)
-	sw ft6, 56(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call putint
 	call putint
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	lw ft0, 32(sp)
-	lw ft1, 36(sp)
-	lw ft2, 40(sp)
-	lw ft3, 44(sp)
-	lw ft4, 48(sp)
-	lw ft5, 52(sp)
-	lw ft6, 56(sp)
-	addi sp, sp, 60
+	lw ra, 0(sp)
+	addi sp, sp, 4
 
 	# store tmp 
+	ld t2, 36(sp)
+
+	# fetch variables
 	li t1, 10
-	sw t1, 28(sp)
+	sw t1, 0(t2)
 
 	# load tmp$2 tmp
-	lw t1, 28(sp)
-	lw t0, 28(sp)
+	ld t2, 36(sp)
+	lw t0, 0(t2)
 	sw t0, 8(sp)
 
 	# prepare params
+
+	# fetch variables
 	lw t1, 8(sp)
 	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -60
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw ra, 28(sp)
-	sw ft0, 32(sp)
-	sw ft1, 36(sp)
-	sw ft2, 40(sp)
-	sw ft3, 44(sp)
-	sw ft4, 48(sp)
-	sw ft5, 52(sp)
-	sw ft6, 56(sp)
+	addi sp, sp, -4
+	sw ra, 0(sp)
 
 	# call putch
 	call putch
 
 	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw ra, 28(sp)
-	lw ft0, 32(sp)
-	lw ft1, 36(sp)
-	lw ft2, 40(sp)
-	lw ft3, 44(sp)
-	lw ft4, 48(sp)
-	lw ft5, 52(sp)
-	lw ft6, 56(sp)
-	addi sp, sp, 60
+	lw ra, 0(sp)
+	addi sp, sp, 4
 
 	# load i$3 i
-	lw t1, 54(sp)
-	lw t0, 54(sp)
+	ld t2, 80(sp)
+	lw t0, 0(t2)
 	sw t0, 4(sp)
-	lw t1, 4(sp)
-	li t2, 1
 
 	# add result_ i$3 
+
+	# fetch variables
+	lw t1, 4(sp)
+	li t2, 1
 	add t0, t1, t2
 	sw t0, 0(sp)
 
 	# store i result_
+	ld t2, 80(sp)
+
+	# fetch variables
 	lw t1, 0(sp)
-	sw t1, 54(sp)
+	sw t1, 0(t2)
 
 	# br whileCond_46
 	j whileCond_46
-
 next_73:
-	li t1, 0
 
 	# ret 
+
+	# fetch variables
+	li t1, 0
 	mv a0, t1
-	addi sp, sp, 102
+	addi sp, sp, 216
 	ret 

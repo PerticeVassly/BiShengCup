@@ -815,13 +815,13 @@ main:
 mainEntry70:
 
 	# allocate space for local variables
-	addi sp, sp, -508
+	addi sp, sp, -592
 
 	# save the parameters
 
 	# allocate i1
-	addi t0, sp, 496
-	sd t0, 500(sp)
+	addi t0, sp, 580
+	sd t0, 584(sp)
 
 	# prepare params
 
@@ -835,18 +835,18 @@ mainEntry70:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 492(sp)
+	sw a0, 576(sp)
 
 	# store i1 getint
-	ld t2, 500(sp)
+	ld t2, 584(sp)
 
 	# fetch variables
-	lw t1, 492(sp)
+	lw t1, 576(sp)
 	sw t1, 0(t2)
 
 	# allocate i2
-	addi t0, sp, 480
-	sd t0, 484(sp)
+	addi t0, sp, 564
+	sd t0, 568(sp)
 
 	# prepare params
 
@@ -860,18 +860,18 @@ mainEntry70:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 476(sp)
+	sw a0, 560(sp)
 
 	# store i2 getint$1
-	ld t2, 484(sp)
+	ld t2, 568(sp)
 
 	# fetch variables
-	lw t1, 476(sp)
+	lw t1, 560(sp)
 	sw t1, 0(t2)
 
 	# allocate i3
-	addi t0, sp, 464
-	sd t0, 468(sp)
+	addi t0, sp, 548
+	sd t0, 552(sp)
 
 	# prepare params
 
@@ -885,18 +885,18 @@ mainEntry70:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 460(sp)
+	sw a0, 544(sp)
 
 	# store i3 getint$2
-	ld t2, 468(sp)
+	ld t2, 552(sp)
 
 	# fetch variables
-	lw t1, 460(sp)
+	lw t1, 544(sp)
 	sw t1, 0(t2)
 
 	# allocate i4
-	addi t0, sp, 448
-	sd t0, 452(sp)
+	addi t0, sp, 532
+	sd t0, 536(sp)
 
 	# prepare params
 
@@ -910,25 +910,25 @@ mainEntry70:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 444(sp)
+	sw a0, 528(sp)
 
 	# store i4 getint$3
-	ld t2, 452(sp)
+	ld t2, 536(sp)
 
 	# fetch variables
-	lw t1, 444(sp)
+	lw t1, 528(sp)
 	sw t1, 0(t2)
 
 	# allocate arr
-	addi t0, sp, 396
-	sd t0, 436(sp)
+	addi t0, sp, 480
+	sd t0, 520(sp)
 
 	# allocate i
-	addi t0, sp, 384
-	sd t0, 388(sp)
+	addi t0, sp, 468
+	sd t0, 472(sp)
 
 	# store i 
-	ld t2, 388(sp)
+	ld t2, 472(sp)
 
 	# fetch variables
 	li t1, 0
@@ -939,57 +939,57 @@ mainEntry70:
 whileCond_215:
 
 	# load i$1 i
-	ld t2, 388(sp)
+	ld t2, 472(sp)
 	lw t0, 0(t2)
-	sw t0, 380(sp)
+	sw t0, 464(sp)
 
 	# cmp i$1  cond_lt_tmp_
 
 	# fetch variables
-	lw t1, 380(sp)
+	lw t1, 464(sp)
 	li t2, 10
 	slt t0, t1, t2
-	sw t0, 376(sp)
+	sw t0, 460(sp)
 
 	# fetch variables
-	lw t1, 376(sp)
+	lw t1, 460(sp)
 
 	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
-	sw t0, 372(sp)
+	sw t0, 456(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 372(sp)
+	lw t1, 456(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sw t0, 368(sp)
+	sw t0, 452(sp)
 
 	# condBr cond_ whileBody_215 next_504
 
 	# fetch variables
-	lw t1, 368(sp)
+	lw t1, 452(sp)
 	beqz t1, next_504
 	j whileBody_215
 whileBody_215:
 
 	# load i$2 i
-	ld t2, 388(sp)
+	ld t2, 472(sp)
 	lw t0, 0(t2)
-	sw t0, 364(sp)
+	sw t0, 448(sp)
 
-	# gep arr$1  i$2
+	# gep arr$1 i$2
 
 	# fetch variables
-	lw t1, 364(sp)
+	lw t1, 448(sp)
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 360(sp)
+	sd t0, 440(sp)
 
 	# prepare params
 
@@ -1003,33 +1003,33 @@ whileBody_215:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 356(sp)
+	sw a0, 436(sp)
 
 	# store arr$1 getint$4
-	ld t2, 360(sp)
+	ld t2, 440(sp)
 
 	# fetch variables
-	lw t1, 356(sp)
+	lw t1, 436(sp)
 	sw t1, 0(t2)
 
 	# load i$3 i
-	ld t2, 388(sp)
+	ld t2, 472(sp)
 	lw t0, 0(t2)
-	sw t0, 352(sp)
+	sw t0, 432(sp)
 
 	# add result_ i$3 
 
 	# fetch variables
-	lw t1, 352(sp)
+	lw t1, 432(sp)
 	li t2, 1
 	add t0, t1, t2
-	sw t0, 348(sp)
+	sw t0, 428(sp)
 
 	# store i result_
-	ld t2, 388(sp)
+	ld t2, 472(sp)
 
 	# fetch variables
-	lw t1, 348(sp)
+	lw t1, 428(sp)
 	sw t1, 0(t2)
 
 	# br whileCond_215
@@ -1037,18 +1037,18 @@ whileBody_215:
 next_504:
 
 	# allocate a
-	addi t0, sp, 336
-	sd t0, 340(sp)
+	addi t0, sp, 416
+	sd t0, 420(sp)
 
 	# load i1$1 i1
-	ld t2, 500(sp)
+	ld t2, 584(sp)
 	lw t0, 0(t2)
-	sw t0, 332(sp)
+	sw t0, 412(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 332(sp)
+	lw t1, 412(sp)
 	mv a0, t1
 
 	# save caller saved regs
@@ -1061,10 +1061,200 @@ next_504:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 328(sp)
+	sw a0, 408(sp)
 
 	# load i2$1 i2
-	ld t2, 484(sp)
+	ld t2, 568(sp)
+	lw t0, 0(t2)
+	sw t0, 404(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 404(sp)
+	mv a0, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func5
+	call func5
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 400(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 408(sp)
+	mv a0, t1
+
+	# fetch variables
+	lw t1, 400(sp)
+	mv a1, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func6
+	call func6
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 396(sp)
+
+	# load i3$1 i3
+	ld t2, 552(sp)
+	lw t0, 0(t2)
+	sw t0, 392(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 396(sp)
+	mv a0, t1
+
+	# fetch variables
+	lw t1, 392(sp)
+	mv a1, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func2
+	call func2
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 388(sp)
+
+	# load i4$1 i4
+	ld t2, 536(sp)
+	lw t0, 0(t2)
+	sw t0, 384(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 388(sp)
+	mv a0, t1
+
+	# fetch variables
+	lw t1, 384(sp)
+	mv a1, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func3
+	call func3
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 380(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 380(sp)
+	mv a0, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func5
+	call func5
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 376(sp)
+
+	# gep arr$2 
+
+	# fetch variables
+	li t1, 0
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 520(sp)
+	add t0, t1, t0
+	sd t0, 368(sp)
+
+	# load arr$3 arr$2
+	ld t2, 368(sp)
+	lw t0, 0(t2)
+	sw t0, 364(sp)
+
+	# gep arr$4 
+
+	# fetch variables
+	li t1, 1
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 520(sp)
+	add t0, t1, t0
+	sd t0, 356(sp)
+
+	# load arr$5 arr$4
+	ld t2, 356(sp)
+	lw t0, 0(t2)
+	sw t0, 352(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 352(sp)
+	mv a0, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func5
+	call func5
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 348(sp)
+
+	# gep arr$6 
+
+	# fetch variables
+	li t1, 2
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 520(sp)
+	add t0, t1, t0
+	sd t0, 340(sp)
+
+	# load arr$7 arr$6
+	ld t2, 340(sp)
+	lw t0, 0(t2)
+	sw t0, 336(sp)
+
+	# gep arr$8 
+
+	# fetch variables
+	li t1, 3
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 520(sp)
+	add t0, t1, t0
+	sd t0, 328(sp)
+
+	# load arr$9 arr$8
+	ld t2, 328(sp)
 	lw t0, 0(t2)
 	sw t0, 324(sp)
 
@@ -1078,8 +1268,8 @@ next_504:
 	addi sp, sp, -4
 	sw ra, 0(sp)
 
-	# call func5
-	call func5
+	# call func7
+	call func7
 
 	# restore caller saved regs
 	lw ra, 0(sp)
@@ -1089,7 +1279,7 @@ next_504:
 	# prepare params
 
 	# fetch variables
-	lw t1, 328(sp)
+	lw t1, 336(sp)
 	mv a0, t1
 
 	# fetch variables
@@ -1108,230 +1298,40 @@ next_504:
 	addi sp, sp, 4
 	sw a0, 316(sp)
 
-	# load i3$1 i3
-	ld t2, 468(sp)
-	lw t0, 0(t2)
-	sw t0, 312(sp)
-
-	# prepare params
-
-	# fetch variables
-	lw t1, 316(sp)
-	mv a0, t1
-
-	# fetch variables
-	lw t1, 312(sp)
-	mv a1, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func2
-	call func2
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 308(sp)
-
-	# load i4$1 i4
-	ld t2, 452(sp)
-	lw t0, 0(t2)
-	sw t0, 304(sp)
-
-	# prepare params
-
-	# fetch variables
-	lw t1, 308(sp)
-	mv a0, t1
-
-	# fetch variables
-	lw t1, 304(sp)
-	mv a1, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func3
-	call func3
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 300(sp)
-
-	# prepare params
-
-	# fetch variables
-	lw t1, 300(sp)
-	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func5
-	call func5
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 296(sp)
-
-	# gep arr$2  
-
-	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
-	ld t1, 436(sp)
-	add t0, t1, t0
-	sd t0, 292(sp)
-
-	# load arr$3 arr$2
-	ld t2, 292(sp)
-	lw t0, 0(t2)
-	sw t0, 288(sp)
-
-	# gep arr$4  
-
-	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
-	ld t1, 436(sp)
-	add t0, t1, t0
-	sd t0, 284(sp)
-
-	# load arr$5 arr$4
-	ld t2, 284(sp)
-	lw t0, 0(t2)
-	sw t0, 280(sp)
-
-	# prepare params
-
-	# fetch variables
-	lw t1, 280(sp)
-	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func5
-	call func5
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 276(sp)
-
-	# gep arr$6  
-
-	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
-	ld t1, 436(sp)
-	add t0, t1, t0
-	sd t0, 272(sp)
-
-	# load arr$7 arr$6
-	ld t2, 272(sp)
-	lw t0, 0(t2)
-	sw t0, 268(sp)
-
-	# gep arr$8  
-
-	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
-	ld t1, 436(sp)
-	add t0, t1, t0
-	sd t0, 264(sp)
-
-	# load arr$9 arr$8
-	ld t2, 264(sp)
-	lw t0, 0(t2)
-	sw t0, 260(sp)
-
-	# prepare params
-
-	# fetch variables
-	lw t1, 260(sp)
-	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func7
-	call func7
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 256(sp)
-
-	# prepare params
-
-	# fetch variables
-	lw t1, 268(sp)
-	mv a0, t1
-
-	# fetch variables
-	lw t1, 256(sp)
-	mv a1, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func6
-	call func6
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 252(sp)
-
-	# gep arr$10  
+	# gep arr$10 
 
 	# fetch variables
 	li t1, 4
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 248(sp)
+	sd t0, 308(sp)
 
 	# load arr$11 arr$10
-	ld t2, 248(sp)
+	ld t2, 308(sp)
 	lw t0, 0(t2)
-	sw t0, 244(sp)
+	sw t0, 304(sp)
 
-	# gep arr$12  
+	# gep arr$12 
 
 	# fetch variables
 	li t1, 5
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 240(sp)
+	sd t0, 296(sp)
 
 	# load arr$13 arr$12
-	ld t2, 240(sp)
+	ld t2, 296(sp)
 	lw t0, 0(t2)
-	sw t0, 236(sp)
+	sw t0, 292(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 236(sp)
+	lw t1, 292(sp)
 	mv a0, t1
 
 	# save caller saved regs
@@ -1344,16 +1344,16 @@ next_504:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 232(sp)
+	sw a0, 288(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 244(sp)
+	lw t1, 304(sp)
 	mv a0, t1
 
 	# fetch variables
-	lw t1, 232(sp)
+	lw t1, 288(sp)
 	mv a1, t1
 
 	# save caller saved regs
@@ -1366,20 +1366,20 @@ next_504:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 228(sp)
+	sw a0, 284(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 276(sp)
+	lw t1, 348(sp)
 	mv a0, t1
 
 	# fetch variables
-	lw t1, 252(sp)
+	lw t1, 316(sp)
 	mv a1, t1
 
 	# fetch variables
-	lw t1, 228(sp)
+	lw t1, 284(sp)
 	mv a2, t1
 
 	# save caller saved regs
@@ -1392,31 +1392,31 @@ next_504:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 224(sp)
+	sw a0, 280(sp)
 
-	# gep arr$14  
+	# gep arr$14 
 
 	# fetch variables
 	li t1, 6
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 220(sp)
+	sd t0, 272(sp)
 
 	# load arr$15 arr$14
-	ld t2, 220(sp)
+	ld t2, 272(sp)
 	lw t0, 0(t2)
-	sw t0, 216(sp)
+	sw t0, 268(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 224(sp)
+	lw t1, 280(sp)
 	mv a0, t1
 
 	# fetch variables
-	lw t1, 216(sp)
+	lw t1, 268(sp)
 	mv a1, t1
 
 	# save caller saved regs
@@ -1429,31 +1429,31 @@ next_504:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 212(sp)
+	sw a0, 264(sp)
 
-	# gep arr$16  
+	# gep arr$16 
 
 	# fetch variables
 	li t1, 7
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 208(sp)
+	sd t0, 256(sp)
 
 	# load arr$17 arr$16
-	ld t2, 208(sp)
+	ld t2, 256(sp)
 	lw t0, 0(t2)
-	sw t0, 204(sp)
+	sw t0, 252(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 212(sp)
+	lw t1, 264(sp)
 	mv a0, t1
 
 	# fetch variables
-	lw t1, 204(sp)
+	lw t1, 252(sp)
 	mv a1, t1
 
 	# save caller saved regs
@@ -1466,42 +1466,42 @@ next_504:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 200(sp)
+	sw a0, 248(sp)
 
-	# gep arr$18  
+	# gep arr$18 
 
 	# fetch variables
 	li t1, 8
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 196(sp)
+	sd t0, 240(sp)
 
 	# load arr$19 arr$18
-	ld t2, 196(sp)
+	ld t2, 240(sp)
 	lw t0, 0(t2)
-	sw t0, 192(sp)
+	sw t0, 236(sp)
 
-	# gep arr$20  
+	# gep arr$20 
 
 	# fetch variables
 	li t1, 9
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 188(sp)
+	sd t0, 228(sp)
 
 	# load arr$21 arr$20
-	ld t2, 188(sp)
+	ld t2, 228(sp)
 	lw t0, 0(t2)
-	sw t0, 184(sp)
+	sw t0, 224(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 184(sp)
+	lw t1, 224(sp)
 	mv a0, t1
 
 	# save caller saved regs
@@ -1514,12 +1514,168 @@ next_504:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 180(sp)
+	sw a0, 220(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 236(sp)
+	mv a0, t1
+
+	# fetch variables
+	lw t1, 220(sp)
+	mv a1, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func3
+	call func3
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 216(sp)
+
+	# load i1$2 i1
+	ld t2, 584(sp)
+	lw t0, 0(t2)
+	sw t0, 212(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 248(sp)
+	mv a0, t1
+
+	# fetch variables
+	lw t1, 216(sp)
+	mv a1, t1
+
+	# fetch variables
+	lw t1, 212(sp)
+	mv a2, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func1
+	call func1
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 208(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 376(sp)
+	mv a0, t1
+
+	# fetch variables
+	lw t1, 364(sp)
+	mv a1, t1
+
+	# fetch variables
+	lw t1, 208(sp)
+	mv a2, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func4
+	call func4
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 204(sp)
+
+	# load i2$2 i2
+	ld t2, 568(sp)
+	lw t0, 0(t2)
+	sw t0, 200(sp)
+
+	# load i3$2 i3
+	ld t2, 552(sp)
+	lw t0, 0(t2)
+	sw t0, 196(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 196(sp)
+	mv a0, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func7
+	call func7
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 192(sp)
+
+	# load i4$2 i4
+	ld t2, 536(sp)
+	lw t0, 0(t2)
+	sw t0, 188(sp)
 
 	# prepare params
 
 	# fetch variables
 	lw t1, 192(sp)
+	mv a0, t1
+
+	# fetch variables
+	lw t1, 188(sp)
+	mv a1, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func3
+	call func3
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 184(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 200(sp)
+	mv a0, t1
+
+	# fetch variables
+	lw t1, 184(sp)
+	mv a1, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func2
+	call func2
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 180(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 204(sp)
 	mv a0, t1
 
 	# fetch variables
@@ -1538,204 +1694,48 @@ next_504:
 	addi sp, sp, 4
 	sw a0, 176(sp)
 
-	# load i1$2 i1
-	ld t2, 500(sp)
-	lw t0, 0(t2)
-	sw t0, 172(sp)
-
-	# prepare params
-
-	# fetch variables
-	lw t1, 200(sp)
-	mv a0, t1
-
-	# fetch variables
-	lw t1, 176(sp)
-	mv a1, t1
-
-	# fetch variables
-	lw t1, 172(sp)
-	mv a2, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func1
-	call func1
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 168(sp)
-
-	# prepare params
-
-	# fetch variables
-	lw t1, 296(sp)
-	mv a0, t1
-
-	# fetch variables
-	lw t1, 288(sp)
-	mv a1, t1
-
-	# fetch variables
-	lw t1, 168(sp)
-	mv a2, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func4
-	call func4
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 164(sp)
-
-	# load i2$2 i2
-	ld t2, 484(sp)
-	lw t0, 0(t2)
-	sw t0, 160(sp)
-
-	# load i3$2 i3
-	ld t2, 468(sp)
-	lw t0, 0(t2)
-	sw t0, 156(sp)
-
-	# prepare params
-
-	# fetch variables
-	lw t1, 156(sp)
-	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func7
-	call func7
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 152(sp)
-
-	# load i4$2 i4
-	ld t2, 452(sp)
-	lw t0, 0(t2)
-	sw t0, 148(sp)
-
-	# prepare params
-
-	# fetch variables
-	lw t1, 152(sp)
-	mv a0, t1
-
-	# fetch variables
-	lw t1, 148(sp)
-	mv a1, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func3
-	call func3
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 144(sp)
-
-	# prepare params
-
-	# fetch variables
-	lw t1, 160(sp)
-	mv a0, t1
-
-	# fetch variables
-	lw t1, 144(sp)
-	mv a1, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func2
-	call func2
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 140(sp)
-
-	# prepare params
-
-	# fetch variables
-	lw t1, 164(sp)
-	mv a0, t1
-
-	# fetch variables
-	lw t1, 140(sp)
-	mv a1, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func3
-	call func3
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 136(sp)
-
-	# gep arr$22  
+	# gep arr$22 
 
 	# fetch variables
 	li t1, 0
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 132(sp)
+	sd t0, 168(sp)
 
 	# load arr$23 arr$22
-	ld t2, 132(sp)
+	ld t2, 168(sp)
 	lw t0, 0(t2)
-	sw t0, 128(sp)
+	sw t0, 164(sp)
 
-	# gep arr$24  
+	# gep arr$24 
 
 	# fetch variables
 	li t1, 1
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 124(sp)
+	sd t0, 156(sp)
 
 	# load arr$25 arr$24
-	ld t2, 124(sp)
+	ld t2, 156(sp)
 	lw t0, 0(t2)
-	sw t0, 120(sp)
+	sw t0, 152(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 136(sp)
+	lw t1, 176(sp)
 	mv a0, t1
 
 	# fetch variables
-	lw t1, 128(sp)
+	lw t1, 164(sp)
 	mv a1, t1
 
 	# fetch variables
-	lw t1, 120(sp)
+	lw t1, 152(sp)
 	mv a2, t1
 
 	# save caller saved regs
@@ -1748,31 +1748,31 @@ next_504:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 116(sp)
+	sw a0, 148(sp)
 
-	# gep arr$26  
+	# gep arr$26 
 
 	# fetch variables
 	li t1, 2
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 112(sp)
+	sd t0, 140(sp)
 
 	# load arr$27 arr$26
-	ld t2, 112(sp)
+	ld t2, 140(sp)
 	lw t0, 0(t2)
-	sw t0, 108(sp)
+	sw t0, 136(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 116(sp)
+	lw t1, 148(sp)
 	mv a0, t1
 
 	# fetch variables
-	lw t1, 108(sp)
+	lw t1, 136(sp)
 	mv a1, t1
 
 	# save caller saved regs
@@ -1785,57 +1785,57 @@ next_504:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 104(sp)
+	sw a0, 132(sp)
 
-	# gep arr$28  
+	# gep arr$28 
 
 	# fetch variables
 	li t1, 3
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 100(sp)
+	sd t0, 124(sp)
 
 	# load arr$29 arr$28
-	ld t2, 100(sp)
+	ld t2, 124(sp)
 	lw t0, 0(t2)
-	sw t0, 96(sp)
+	sw t0, 120(sp)
 
-	# gep arr$30  
+	# gep arr$30 
 
 	# fetch variables
 	li t1, 4
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 92(sp)
+	sd t0, 112(sp)
 
 	# load arr$31 arr$30
-	ld t2, 92(sp)
+	ld t2, 112(sp)
 	lw t0, 0(t2)
-	sw t0, 88(sp)
+	sw t0, 108(sp)
 
-	# gep arr$32  
+	# gep arr$32 
 
 	# fetch variables
 	li t1, 5
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 84(sp)
+	sd t0, 100(sp)
 
 	# load arr$33 arr$32
-	ld t2, 84(sp)
+	ld t2, 100(sp)
 	lw t0, 0(t2)
-	sw t0, 80(sp)
+	sw t0, 96(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 80(sp)
+	lw t1, 96(sp)
 	mv a0, t1
 
 	# save caller saved regs
@@ -1848,7 +1848,62 @@ next_504:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 76(sp)
+	sw a0, 92(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 108(sp)
+	mv a0, t1
+
+	# fetch variables
+	lw t1, 92(sp)
+	mv a1, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func3
+	call func3
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 88(sp)
+
+	# gep arr$34 
+
+	# fetch variables
+	li t1, 6
+	li t2, 4
+	mul t0, t1, t2
+	ld t1, 520(sp)
+	add t0, t1, t0
+	sd t0, 80(sp)
+
+	# load arr$35 arr$34
+	ld t2, 80(sp)
+	lw t0, 0(t2)
+	sw t0, 76(sp)
+
+	# prepare params
+
+	# fetch variables
+	lw t1, 76(sp)
+	mv a0, t1
+
+	# save caller saved regs
+	addi sp, sp, -4
+	sw ra, 0(sp)
+
+	# call func5
+	call func5
+
+	# restore caller saved regs
+	lw ra, 0(sp)
+	addi sp, sp, 4
+	sw a0, 72(sp)
 
 	# prepare params
 
@@ -1857,62 +1912,7 @@ next_504:
 	mv a0, t1
 
 	# fetch variables
-	lw t1, 76(sp)
-	mv a1, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func3
-	call func3
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 72(sp)
-
-	# gep arr$34  
-
-	# fetch variables
-	li t1, 6
-	li t2, 4
-	mul t0, t1, t2
-	ld t1, 436(sp)
-	add t0, t1, t0
-	sd t0, 68(sp)
-
-	# load arr$35 arr$34
-	ld t2, 68(sp)
-	lw t0, 0(t2)
-	sw t0, 64(sp)
-
-	# prepare params
-
-	# fetch variables
-	lw t1, 64(sp)
-	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
-
-	# call func5
-	call func5
-
-	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 60(sp)
-
-	# prepare params
-
-	# fetch variables
 	lw t1, 72(sp)
-	mv a0, t1
-
-	# fetch variables
-	lw t1, 60(sp)
 	mv a1, t1
 
 	# save caller saved regs
@@ -1925,42 +1925,42 @@ next_504:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 56(sp)
+	sw a0, 68(sp)
 
-	# gep arr$36  
+	# gep arr$36 
 
 	# fetch variables
 	li t1, 7
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 52(sp)
+	sd t0, 60(sp)
 
 	# load arr$37 arr$36
-	ld t2, 52(sp)
+	ld t2, 60(sp)
 	lw t0, 0(t2)
-	sw t0, 48(sp)
+	sw t0, 56(sp)
 
-	# gep arr$38  
+	# gep arr$38 
 
 	# fetch variables
 	li t1, 8
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
-	sd t0, 44(sp)
+	sd t0, 48(sp)
 
 	# load arr$39 arr$38
-	ld t2, 44(sp)
+	ld t2, 48(sp)
 	lw t0, 0(t2)
-	sw t0, 40(sp)
+	sw t0, 44(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 40(sp)
+	lw t1, 44(sp)
 	mv a0, t1
 
 	# save caller saved regs
@@ -1973,20 +1973,20 @@ next_504:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 36(sp)
+	sw a0, 40(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 56(sp)
+	lw t1, 68(sp)
 	mv a0, t1
 
 	# fetch variables
-	lw t1, 48(sp)
+	lw t1, 56(sp)
 	mv a1, t1
 
 	# fetch variables
-	lw t1, 36(sp)
+	lw t1, 40(sp)
 	mv a2, t1
 
 	# save caller saved regs
@@ -1999,15 +1999,15 @@ next_504:
 	# restore caller saved regs
 	lw ra, 0(sp)
 	addi sp, sp, 4
-	sw a0, 32(sp)
+	sw a0, 36(sp)
 
-	# gep arr$40  
+	# gep arr$40 
 
 	# fetch variables
 	li t1, 9
 	li t2, 4
 	mul t0, t1, t2
-	ld t1, 436(sp)
+	ld t1, 520(sp)
 	add t0, t1, t0
 	sd t0, 28(sp)
 
@@ -2037,7 +2037,7 @@ next_504:
 	# prepare params
 
 	# fetch variables
-	lw t1, 32(sp)
+	lw t1, 36(sp)
 	mv a0, t1
 
 	# fetch variables
@@ -2057,7 +2057,7 @@ next_504:
 	sw a0, 16(sp)
 
 	# load i1$3 i1
-	ld t2, 500(sp)
+	ld t2, 584(sp)
 	lw t0, 0(t2)
 	sw t0, 12(sp)
 
@@ -2086,11 +2086,11 @@ next_504:
 	# prepare params
 
 	# fetch variables
-	lw t1, 104(sp)
+	lw t1, 132(sp)
 	mv a0, t1
 
 	# fetch variables
-	lw t1, 96(sp)
+	lw t1, 120(sp)
 	mv a1, t1
 
 	# fetch variables
@@ -2110,14 +2110,14 @@ next_504:
 	sw a0, 4(sp)
 
 	# store a func1$3
-	ld t2, 340(sp)
+	ld t2, 420(sp)
 
 	# fetch variables
 	lw t1, 4(sp)
 	sw t1, 0(t2)
 
 	# load a$1 a
-	ld t2, 340(sp)
+	ld t2, 420(sp)
 	lw t0, 0(t2)
 	sw t0, 0(sp)
 
@@ -2126,5 +2126,5 @@ next_504:
 	# fetch variables
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 508
+	addi sp, sp, 592
 	ret 

@@ -6,6 +6,7 @@ import cn.edu.nju.software.ir.instruction.Allocate;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.ir.value.LocalVar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,12 @@ public class RiscFunction {
     public void allocateSpaceForVariable() {
         //为将函数的形参 %0 %1 %2... 分配内存
         for (int i = 0; i < ((FunctionType) functionValue.getType()).getFParametersCount(); i++) {
-            allocator.allocate(String.valueOf(i), ((FunctionType) functionValue.getType()).getFParameter(i).getWidth());
+            TypeRef fparam =((FunctionType) functionValue.getType()).getFParameter(i);
+            if(fparam instanceof Pointer){
+                allocator.allocate(String.valueOf(i), 8);
+            } else {
+                allocator.allocate(String.valueOf(i), 4);
+            }
         }
 
         //为函数内部的局部变量分配内存
@@ -56,12 +62,16 @@ public class RiscFunction {
                     } else if (base instanceof IntType) {
                         allocator.allocate(i.getLVal().getName(), 8);
                         allocator.allocate(null, i.getLVal().getType().getWidth());
-                    } else {
-                        assert false;
+                    } else if(base instanceof Pointer){
+                        allocator.allocate(i.getLVal().getName(), 8);
+                        allocator.allocate(null, 8);
                     }
-
                 } else if (i.getLVal() != null) {
-                    allocator.allocate(i.getLVal().getName(), i.getLVal().getType().getWidth());
+                    if(i.getLVal().getType() instanceof Pointer){
+                        allocator.allocate(i.getLVal().getName(), 8);
+                    } else {
+                        allocator.allocate(i.getLVal().getName(), 4);
+                    }
                 }
             }
         }
