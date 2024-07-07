@@ -81,7 +81,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         }
     }
     private float string2Float(String number) {
-        // todo hex or octal?
         return Float.parseFloat(number);
     }
     private ValueRef normalizeCond(ValueRef cond) {
@@ -90,6 +89,8 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return gen.buildCmp(builder, CmpNE, cond, fZero, "cond_normalize_");
         } else if (type instanceof IntType) {
             return gen.buildCmp(builder, CmpNE, cond, zero, "cond_normalize_");
+        } else if (type instanceof FloatType) {
+            return gen.buildCmp(builder, CmpNE, cond, fZero, "cond_normalize_");
         }
         return cond;
     }
@@ -185,9 +186,15 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 }
                 if (ctx.funcFParams().funcFParam(i).L_BRACKT() != null && !ctx.funcFParams().funcFParam(i).L_BRACKT().isEmpty()){
                     int ptrDim = ctx.funcFParams().funcFParam(i).exp().size();
+                    TypeRef baseType = type;
                     for (int j = ptrDim - 1; j >= 0; j--) {
-                        // todo a variable be the array size, TBD(how to do)
-                        int size = getIntConst(ctx.funcFParams().funcFParam(i).exp(j));
+                        ValueRef vr = visitExp(ctx.funcFParams().funcFParam(i).exp(j));
+                        // if a variable as array's dim-size
+                        if (!(vr instanceof ConstValue)) {
+                            type = baseType;
+                            break;
+                        }
+                        int size = (int) ((ConstValue) vr).getValue();
                         type = new ArrayType(type, size);
                     }
                     type = new Pointer(type);
@@ -211,7 +218,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             for (int i = 0; i < args; i++) {
                 String fParam = ctx.funcFParams().funcFParam(i).IDENT().getText();
                 LocalVar param = function.getParam(i);
-                LocalVar pointer = gen.buildAllocate(builder, param.getType(), fParam);
+                LocalVar pointer = gen.buildAllocate(builder, param.getType(), "lv");
                 gen.buildStore(builder, param, pointer);
                 curScope.put(new Symbol<>(fParam, pointer));
             }
@@ -459,10 +466,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             ValueRef exp = visitExp(ctx.exp());
             // constant propagation
             if (lVal instanceof Variable variable) {
-                if (exp instanceof Variable expVar) {
-                    expVar.mergeValue(expValue(ctx.exp()));
-                }
-                valuePropagate(variable, exp);
+//                if (exp instanceof Variable expVar) {
+//                    expVar.mergeValue(expValue(ctx.exp()));
+//                }
+//                valuePropagate(variable, exp);
             }
             return gen.buildStore(builder, exp, lVal); // assign: lVal = exp;
         } else if (ctx.WHILE() != null) {
@@ -827,11 +834,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         curDim = bottom;
                     }
                     curMaxCnt = elementDim.get(curDim); // same as 'curMaxCnt = ...' above
-//                    int bottomCnt = 1;
-//                    for (int i = curDim + 1; i < elementDim.size(); i++) {
-//                        bottomCnt *= elementDim.get(i);
-//                    }
-//                    curCnt = arrayInit.size() / bottomCnt; // todo : conprehence why
                 }
             }
 
@@ -857,13 +859,65 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else {
             type = floatType;
         }
+        GlobalVar globalVar = null;
+        LocalVar localVar = null;
         if (ctx.constExp() == null || ctx.constExp().isEmpty()) {
             // base
             String varName = ctx.IDENT().getText();
             ConstValue cv = (ConstValue) visitConstInitVal(ctx.constInitVal());
             curScope.put(new Symbol<>(varName, cv));
         } else {
-            // array TODO
+            // array
+            curDim = 0;
+            arrayInit = new ArrayList<>();
+            int dim = ctx.constExp().size();
+            ConstValue cv = (ConstValue) visitConstExp(ctx.constExp(dim - 1));
+            int size = (int) cv.getValue();
+            ArrayType arrayType = new ArrayType(type, size);
+            for (int i = dim - 2; i >= 0; i--) {
+                cv = (ConstValue) visitConstExp(ctx.constExp(i));
+                size = (int) cv.getValue();
+                arrayType = new ArrayType(arrayType, size);
+            }
+            elementDim = new ArrayList<>();
+            for (TypeRef tmp = arrayType; tmp instanceof ArrayType; tmp = ((ArrayType) tmp).getElementType()) {
+                elementDim.add(((ArrayType) tmp).getElementSize());
+            }
+            if (global()) {
+                globalVar = gen.addGlobal(module, arrayType, "gv");
+            } else {
+                localVar = gen.buildAllocate(builder, arrayType, "lv");
+            }
+        }
+        // initialize
+        if (global()) {
+            if (globalVar != null && ((Pointer)(globalVar.getType())).getBase() instanceof ArrayType) {
+                visitConstInitVal(ctx.constInitVal());
+                ArrayType arrayType = (ArrayType) (((Pointer) globalVar.getType()).getBase());
+
+                ptr = 0;
+                ArrayValue av = getArrayValue(arrayType);
+                gen.setInitValue(globalVar, av);
+                curScope.put(new Symbol<>(ctx.IDENT().getText(), globalVar));
+            }
+        } else {
+            if (localVar != null && ((Pointer)(localVar.getType())).getBase() instanceof ArrayType) {
+                visitConstInitVal(ctx.constInitVal());
+
+                int dims = elementDim.size();
+                ValueRef[] indices = new ValueRef[dims];
+                for (int i = 0; i < arrayInit.size(); i++) {
+                    ValueRef storeVal = arrayInit.get(i);
+                    int tmp = i;
+                    for (int j = dims - 1; j >= 0; j--) {
+                        indices[j] = gen.ConstInt(i32Type, tmp % elementDim.get(j));
+                        tmp /= elementDim.get(j);
+                    }
+                    ValueRef ptr = gen.buildGEP(builder, localVar, indices, dims, "inp");
+                    gen.buildStore(builder, storeVal, ptr);
+                }
+                curScope.put(new Symbol<>(ctx.IDENT().getText(), localVar));
+            }
         }
         return null;
     }
@@ -925,45 +979,45 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 //        return getIntConst(constExp.exp());
 //    }
 
-    private int getIntConst(SysYParser.ExpContext exp) {
-        if (exp.number() != null) {
-            if (exp.number().INTEGER_CONST() != null) {
-                return string2Int(exp.number().INTEGER_CONST().getText());
-            }
-            throw new RuntimeException(exp + " can't be the size of array!");
-        } else if (exp.lVal() != null) {
-            ValueRef temp = scope.find(exp.getText());
-            if (temp instanceof GlobalVar globlVar) {
-                if (globlVar.isConstant()) {
-                    return globlVar.getValue();
-                }
-                throw new RuntimeException(globlVar + " can't be the size of array!");
-            } else if (temp instanceof ConstValue constValue) {
-                if (constValue.getValue() instanceof Integer integer) {
-                    return integer;
-                } else {
-                    throw new RuntimeException(constValue.getValue() + " can't be the size of array!");
-                }
-            } else if (temp instanceof LocalVar localVar) {
-                // todo: constant propagation?
-                if (localVar.isConstant()) {
-                    return localVar.getValue();
-                }
-                throw new RuntimeException(localVar + " can't be the size of array!");
-            }
-        } else if (!exp.exp().isEmpty()) {
-            if (exp.MUL() != null) return getIntConst(exp.exp(0)) * getIntConst(exp.exp(1));
-            else if (exp.DIV() != null) return getIntConst(exp.exp(0)) / getIntConst(exp.exp(1));
-            else if (exp.MOD() != null) return getIntConst(exp.exp(0)) % getIntConst(exp.exp(1));
-            else if (exp.PLUS() != null) return getIntConst(exp.exp(0)) + getIntConst(exp.exp(1));
-            else if (exp.MINUS() != null) return getIntConst(exp.exp(0)) - getIntConst(exp.exp(1));
-            else if (exp.unaryOp() != null) {
-                if (exp.unaryOp().MINUS() != null) return -getIntConst(exp.exp(0));
-                else return getIntConst(exp.exp(0));
-            }
-        }
-        throw new RuntimeException("func() can't be the size of array!");
-    }
+//    private int getIntConst(SysYParser.ExpContext exp) {
+//        if (exp.number() != null) {
+//            if (exp.number().INTEGER_CONST() != null) {
+//                return string2Int(exp.number().INTEGER_CONST().getText());
+//            }
+//            throw new RuntimeException(exp + " can't be the size of array!");
+//        } else if (exp.lVal() != null) {
+//            ValueRef temp = scope.find(exp.getText());
+//            if (temp instanceof GlobalVar globlVar) {
+//                if (globlVar.isConstant()) {
+//                    return globlVar.getValue();
+//                }
+//                throw new RuntimeException(globlVar + " can't be the size of array!");
+//            } else if (temp instanceof ConstValue constValue) {
+//                if (constValue.getValue() instanceof Integer integer) {
+//                    return integer;
+//                } else {
+//                    throw new RuntimeException(constValue.getValue() + " can't be the size of array!");
+//                }
+//            } else if (temp instanceof LocalVar localVar) {
+//                // todo: constant propagation?
+//                if (localVar.isConstant()) {
+//                    return localVar.getValue();
+//                }
+//                throw new RuntimeException(localVar + " can't be the size of array!");
+//            }
+//        } else if (!exp.exp().isEmpty()) {
+//            if (exp.MUL() != null) return getIntConst(exp.exp(0)) * getIntConst(exp.exp(1));
+//            else if (exp.DIV() != null) return getIntConst(exp.exp(0)) / getIntConst(exp.exp(1));
+//            else if (exp.MOD() != null) return getIntConst(exp.exp(0)) % getIntConst(exp.exp(1));
+//            else if (exp.PLUS() != null) return getIntConst(exp.exp(0)) + getIntConst(exp.exp(1));
+//            else if (exp.MINUS() != null) return getIntConst(exp.exp(0)) - getIntConst(exp.exp(1));
+//            else if (exp.unaryOp() != null) {
+//                if (exp.unaryOp().MINUS() != null) return -getIntConst(exp.exp(0));
+//                else return getIntConst(exp.exp(0));
+//            }
+//        }
+//        throw new RuntimeException("func() can't be the size of array!");
+//    }
 
     private static void valuePropagate(Variable lVariable, ValueRef value) {
         if (value instanceof ConstValue constValue) {
