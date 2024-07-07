@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry46:
+mainEntry48:
 
 	# reserve space
 	addi sp, sp, -120
@@ -18,10 +18,12 @@ mainEntry46:
 	# get address of local var:a
 	sd t0, 112(sp)
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 10
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 112(sp)
@@ -50,6 +52,8 @@ mainEntry46:
 	seqz t0, t0
 	sd t0, 88(sp)
 
+	# XOR tmp_$1 tmp_ 
+
 	# fetch variables
 	ld t1, 88(sp)
 	li t2, 1
@@ -60,12 +64,12 @@ mainEntry46:
 	xor t0, t1, t2
 	sd t0, 80(sp)
 
+	# zext tmp_$2 tmp_$1
+
 	# fetch variables
 	ld t1, 80(sp)
 
 	# get address of local var:tmp_$2
-
-	# zext tmp_$2 tmp_$1
 	mv t0, t1
 	sd t0, 72(sp)
 
@@ -81,6 +85,8 @@ mainEntry46:
 	seqz t0, t0
 	sd t0, 64(sp)
 
+	# XOR tmp_$4 tmp_$3 
+
 	# fetch variables
 	ld t1, 64(sp)
 	li t2, 1
@@ -91,12 +97,12 @@ mainEntry46:
 	xor t0, t1, t2
 	sd t0, 56(sp)
 
+	# zext tmp_$5 tmp_$4
+
 	# fetch variables
 	ld t1, 56(sp)
 
 	# get address of local var:tmp_$5
-
-	# zext tmp_$5 tmp_$4
 	mv t0, t1
 	sd t0, 48(sp)
 
@@ -112,6 +118,8 @@ mainEntry46:
 	seqz t0, t0
 	sd t0, 40(sp)
 
+	# XOR tmp_$7 tmp_$6 
+
 	# fetch variables
 	ld t1, 40(sp)
 	li t2, 1
@@ -122,12 +130,12 @@ mainEntry46:
 	xor t0, t1, t2
 	sd t0, 32(sp)
 
+	# zext tmp_$8 tmp_$7
+
 	# fetch variables
 	ld t1, 32(sp)
 
 	# get address of local var:tmp_$8
-
-	# zext tmp_$8 tmp_$7
 	mv t0, t1
 	sd t0, 24(sp)
 
@@ -153,41 +161,45 @@ mainEntry46:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_normalize_ ifTrue_232 ifFalse_100
+	# condBr cond_normalize_ ifTrue_234 ifFalse_100
 
 	# fetch variables
 	ld t1, 8(sp)
 	beqz t1, ifFalse_100
-	j ifTrue_232
-ifTrue_232:
+	j ifTrue_234
+ifTrue_234:
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, -1
 
+	# store a 
+
 	# get address of a points to
 	ld t3, 112(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_408
-	j next_408
+	# br next_413
+	j next_413
 ifFalse_100:
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 0
 
+	# store a 
+
 	# get address of a points to
 	ld t3, 112(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_408
-	j next_408
-next_408:
+	# br next_413
+	j next_413
+next_413:
 
 	# load a$2 a
 

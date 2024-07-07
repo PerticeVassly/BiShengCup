@@ -18,10 +18,12 @@ mainEntry:
 	# get address of local var:a
 	sd t0, 32(sp)
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 10
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 32(sp)

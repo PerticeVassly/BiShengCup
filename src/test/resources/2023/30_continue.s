@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry11:
+mainEntry12:
 
 	# reserve space
 	addi sp, sp, -160
@@ -18,10 +18,12 @@ mainEntry11:
 	# get address of local var:i
 	sd t0, 152(sp)
 
-	# store i 
+	# i 
 
 	# fetch variables
 	li t1, 0
+
+	# store i 
 
 	# get address of i points to
 	ld t3, 152(sp)
@@ -34,19 +36,21 @@ mainEntry11:
 	# get address of local var:sum
 	sd t0, 136(sp)
 
-	# store sum 
+	# sum 
 
 	# fetch variables
 	li t1, 0
+
+	# store sum 
 
 	# get address of sum points to
 	ld t3, 136(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_16
-	j whileCond_16
-whileCond_16:
+	# br whileCond_19
+	j whileCond_19
+whileCond_19:
 
 	# load i$1 i
 
@@ -68,12 +72,12 @@ whileCond_16:
 	slt t0, t1, t2
 	sd t0, 112(sp)
 
+	# zext cond_tmp_ cond_lt_tmp_
+
 	# fetch variables
 	ld t1, 112(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
 	sd t0, 104(sp)
 
@@ -89,13 +93,13 @@ whileCond_16:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_ whileBody_16 next_30
+	# condBr cond_ whileBody_19 next_35
 
 	# fetch variables
 	ld t1, 96(sp)
-	beqz t1, next_30
-	j whileBody_16
-whileBody_16:
+	beqz t1, next_35
+	j whileBody_19
+whileBody_19:
 
 	# load i$2 i
 
@@ -118,12 +122,12 @@ whileBody_16:
 	seqz t0, t0
 	sd t0, 80(sp)
 
+	# zext cond_tmp_$1 cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 80(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_eq_tmp_
 	mv t0, t1
 	sd t0, 72(sp)
 
@@ -139,13 +143,13 @@ whileBody_16:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$1 ifTrue_14 next_31
+	# condBr cond_$1 ifTrue_16 next_36
 
 	# fetch variables
 	ld t1, 64(sp)
-	beqz t1, next_31
-	j ifTrue_14
-next_30:
+	beqz t1, next_36
+	j ifTrue_16
+next_35:
 
 	# load sum$2 sum
 
@@ -164,7 +168,7 @@ next_30:
 	mv a0, t1
 	addi sp, sp, 160
 	ret 
-ifTrue_14:
+ifTrue_16:
 
 	# load i$3 i
 
@@ -186,22 +190,24 @@ ifTrue_14:
 	add t0, t1, t2
 	sd t0, 40(sp)
 
-	# store i result_
+	# i result_
 
 	# fetch variables
 	ld t1, 40(sp)
+
+	# store i result_
 
 	# get address of i points to
 	ld t3, 152(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_16
-	j whileCond_16
+	# br whileCond_19
+	j whileCond_19
 
-	# br next_31
-	j next_31
-next_31:
+	# br next_36
+	j next_36
+next_36:
 
 	# load sum$1 sum
 
@@ -233,10 +239,12 @@ next_31:
 	add t0, t1, t2
 	sd t0, 16(sp)
 
-	# store sum result_$1
+	# sum result_$1
 
 	# fetch variables
 	ld t1, 16(sp)
+
+	# store sum result_$1
 
 	# get address of sum points to
 	ld t3, 136(sp)
@@ -263,15 +271,17 @@ next_31:
 	add t0, t1, t2
 	sd t0, 0(sp)
 
-	# store i result_$2
+	# i result_$2
 
 	# fetch variables
 	ld t1, 0(sp)
+
+	# store i result_$2
 
 	# get address of i points to
 	ld t3, 152(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_16
-	j whileCond_16
+	# br whileCond_19
+	j whileCond_19

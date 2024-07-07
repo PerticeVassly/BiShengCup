@@ -11,7 +11,7 @@ b:
 .type main, @function
 .globl main
 main:
-mainEntry53:
+mainEntry55:
 
 	# reserve space
 	addi sp, sp, -112
@@ -34,10 +34,12 @@ mainEntry53:
 	# get address of local var:getint
 	sd a0, 104(sp)
 
-	# store a getint
+	# a @getint
 
 	# fetch variables
 	ld t1, 104(sp)
+
+	# store a getint
 
 	# get address of a points to
 	la t3, a
@@ -60,10 +62,12 @@ mainEntry53:
 	# get address of local var:getint$1
 	sd a0, 96(sp)
 
-	# store b getint$1
+	# b @getint$1
 
 	# fetch variables
 	ld t1, 96(sp)
+
+	# store b getint$1
 
 	# get address of b points to
 	la t3, b
@@ -107,12 +111,12 @@ mainEntry53:
 	seqz t0, t0
 	sd t0, 56(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 56(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 48(sp)
 
@@ -134,35 +138,39 @@ mainEntry53:
 	ld t1, 40(sp)
 	beqz t1, ifFalse_105
 	j secondCond_83
-ifTrue_256:
+ifTrue_258:
 
-	# store c 
+	# c 
 
 	# fetch variables
 	li t1, 1
 
+	# store c 
+
 	# get address of c points to
 	ld t3, 88(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_444
-	j next_444
+	# br next_449
+	j next_449
 ifFalse_105:
 
-	# store c 
+	# c 
 
 	# fetch variables
 	li t1, 0
 
+	# store c 
+
 	# get address of c points to
 	ld t3, 88(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_444
-	j next_444
-next_444:
+	# br next_449
+	j next_449
+next_449:
 
 	# load c$1 c
 
@@ -205,12 +213,12 @@ secondCond_83:
 	seqz t0, t0
 	sd t0, 16(sp)
 
+	# zext cond_tmp_$1 cond_neq_tmp_
+
 	# fetch variables
 	ld t1, 16(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_neq_tmp_
 	mv t0, t1
 	sd t0, 8(sp)
 
@@ -226,9 +234,9 @@ secondCond_83:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_256 ifFalse_105
+	# condBr cond_$1 ifTrue_258 ifFalse_105
 
 	# fetch variables
 	ld t1, 0(sp)
 	beqz t1, ifFalse_105
-	j ifTrue_256
+	j ifTrue_258

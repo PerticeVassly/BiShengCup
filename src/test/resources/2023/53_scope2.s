@@ -8,17 +8,19 @@ k:
 .type main, @function
 .globl main
 main:
-mainEntry29:
+mainEntry31:
 
 	# reserve space
 	addi sp, sp, -272
 
 	# save the parameters
 
-	# store k 
+	# k @
 
 	# fetch variables
 	li t1, 3389
+
+	# store k 
 
 	# get address of k points to
 	la t3, k
@@ -45,12 +47,12 @@ mainEntry29:
 	slt t0, t1, t2
 	sd t0, 256(sp)
 
+	# zext cond_tmp_ cond_lt_tmp_
+
 	# fetch variables
 	ld t1, 256(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
 	sd t0, 248(sp)
 
@@ -66,13 +68,13 @@ mainEntry29:
 	seqz t0, t0
 	sd t0, 240(sp)
 
-	# condBr cond_ ifTrue_29 next_86
+	# condBr cond_ ifTrue_31 next_91
 
 	# fetch variables
 	ld t1, 240(sp)
-	beqz t1, next_86
-	j ifTrue_29
-ifTrue_29:
+	beqz t1, next_91
+	j ifTrue_31
+ifTrue_31:
 
 	# load k$1 k
 
@@ -94,10 +96,12 @@ ifTrue_29:
 	add t0, t1, t2
 	sd t0, 224(sp)
 
-	# store k result_
+	# k @result_
 
 	# fetch variables
 	ld t1, 224(sp)
+
+	# store k result_
 
 	# get address of k points to
 	la t3, k
@@ -110,19 +114,21 @@ ifTrue_29:
 	# get address of local var:k$2
 	sd t0, 216(sp)
 
-	# store k$2 
+	# k$2 
 
 	# fetch variables
 	li t1, 112
+
+	# store k$2 
 
 	# get address of k$2 points to
 	ld t3, 216(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_57
-	j whileCond_57
-next_86:
+	# br whileCond_60
+	j whileCond_60
+next_91:
 
 	# load k$9 k
 
@@ -141,7 +147,7 @@ next_86:
 	mv a0, t1
 	addi sp, sp, 272
 	ret 
-whileCond_57:
+whileCond_60:
 
 	# load k$3 k$2
 
@@ -164,12 +170,12 @@ whileCond_57:
 	sgtz t0, t0
 	sd t0, 184(sp)
 
+	# zext cond_tmp_$1 cond_gt_tmp_
+
 	# fetch variables
 	ld t1, 184(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_gt_tmp_
 	mv t0, t1
 	sd t0, 176(sp)
 
@@ -185,13 +191,13 @@ whileCond_57:
 	seqz t0, t0
 	sd t0, 168(sp)
 
-	# condBr cond_$1 whileBody_57 next_87
+	# condBr cond_$1 whileBody_60 next_92
 
 	# fetch variables
 	ld t1, 168(sp)
-	beqz t1, next_87
-	j whileBody_57
-whileBody_57:
+	beqz t1, next_92
+	j whileBody_60
+whileBody_60:
 
 	# load k$4 k$2
 
@@ -213,10 +219,12 @@ whileBody_57:
 	sub t0, t1, t2
 	sd t0, 152(sp)
 
-	# store k$2 result_$1
+	# k$2 result_$1
 
 	# fetch variables
 	ld t1, 152(sp)
+
+	# store k$2 result_$1
 
 	# get address of k$2 points to
 	ld t3, 216(sp)
@@ -243,12 +251,12 @@ whileBody_57:
 	slt t0, t1, t2
 	sd t0, 136(sp)
 
+	# zext cond_tmp_$2 cond_lt_tmp_$1
+
 	# fetch variables
 	ld t1, 136(sp)
 
 	# get address of local var:cond_tmp_$2
-
-	# zext cond_tmp_$2 cond_lt_tmp_$1
 	mv t0, t1
 	sd t0, 128(sp)
 
@@ -264,13 +272,13 @@ whileBody_57:
 	seqz t0, t0
 	sd t0, 120(sp)
 
-	# condBr cond_$2 ifTrue_30 next_88
+	# condBr cond_$2 ifTrue_32 next_93
 
 	# fetch variables
 	ld t1, 120(sp)
-	beqz t1, next_88
-	j ifTrue_30
-next_87:
+	beqz t1, next_93
+	j ifTrue_32
+next_92:
 
 	# load k$8 k$2
 
@@ -299,9 +307,9 @@ next_87:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_86
-	j next_86
-ifTrue_30:
+	# br next_91
+	j next_91
+ifTrue_32:
 
 	# allocate g
 	addi t0, sp, 96
@@ -309,10 +317,12 @@ ifTrue_30:
 	# get address of local var:g
 	sd t0, 104(sp)
 
-	# store g 
+	# g 
 
 	# fetch variables
 	li t1, 9
+
+	# store g 
 
 	# get address of g points to
 	ld t3, 104(sp)
@@ -325,20 +335,24 @@ ifTrue_30:
 	# get address of local var:l
 	sd t0, 88(sp)
 
-	# store l 
+	# l 
 
 	# fetch variables
 	li t1, 11
+
+	# store l 
 
 	# get address of l points to
 	ld t3, 88(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# store g 
+	# g 
 
 	# fetch variables
 	li t1, 10
+
+	# store g 
 
 	# get address of g points to
 	ld t3, 104(sp)
@@ -375,10 +389,12 @@ ifTrue_30:
 	sub t0, t1, t2
 	sd t0, 56(sp)
 
-	# store k$2 result_$2
+	# k$2 result_$2
 
 	# fetch variables
 	ld t1, 56(sp)
+
+	# store k$2 result_$2
 
 	# get address of k$2 points to
 	ld t3, 216(sp)
@@ -391,10 +407,12 @@ ifTrue_30:
 	# get address of local var:g$2
 	sd t0, 48(sp)
 
-	# store g$2 
+	# g$2 
 
 	# fetch variables
 	li t1, 11
+
+	# store g$2 
 
 	# get address of g$2 points to
 	ld t3, 48(sp)
@@ -451,19 +469,21 @@ ifTrue_30:
 	add t0, t1, t2
 	sd t0, 0(sp)
 
-	# store k$2 result_$4
+	# k$2 result_$4
 
 	# fetch variables
 	ld t1, 0(sp)
+
+	# store k$2 result_$4
 
 	# get address of k$2 points to
 	ld t3, 216(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_88
-	j next_88
-next_88:
+	# br next_93
+	j next_93
+next_93:
 
-	# br whileCond_57
-	j whileCond_57
+	# br whileCond_60
+	j whileCond_60

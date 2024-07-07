@@ -23,10 +23,12 @@ if_if_ElseEntry:
 	# get address of local var:a
 	sd t0, 112(sp)
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 5
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 112(sp)
@@ -39,10 +41,12 @@ if_if_ElseEntry:
 	# get address of local var:b
 	sd t0, 96(sp)
 
-	# store b 
+	# b 
 
 	# fetch variables
 	li t1, 10
+
+	# store b 
 
 	# get address of b points to
 	ld t3, 96(sp)
@@ -70,12 +74,12 @@ if_if_ElseEntry:
 	seqz t0, t0
 	sd t0, 72(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 72(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 64(sp)
 
@@ -120,12 +124,12 @@ ifTrue_8:
 	seqz t0, t0
 	sd t0, 40(sp)
 
+	# zext cond_tmp_$1 cond_eq_tmp_$1
+
 	# fetch variables
 	ld t1, 40(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_eq_tmp_$1
 	mv t0, t1
 	sd t0, 32(sp)
 
@@ -169,10 +173,12 @@ ifFalse_:
 	add t0, t1, t2
 	sd t0, 8(sp)
 
-	# store a result_
+	# a result_
 
 	# fetch variables
 	ld t1, 8(sp)
+
+	# store a result_
 
 	# get address of a points to
 	ld t3, 112(sp)
@@ -205,10 +211,12 @@ next_15:
 	ret 
 ifTrue_9:
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 25
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 112(sp)

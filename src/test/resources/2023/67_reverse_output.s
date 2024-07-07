@@ -26,10 +26,12 @@ reverseEntry:
 	# get address of local var:n
 	sd t0, 104(sp)
 
-	# store n 0
+	# n 0
 
 	# fetch variables
 	ld t1, 112(sp)
+
+	# store n 0
 
 	# get address of n points to
 	ld t3, 104(sp)
@@ -64,12 +66,12 @@ reverseEntry:
 	seqz t0, t0
 	sd t0, 64(sp)
 
+	# zext cond_tmp_ cond_le_tmp_
+
 	# fetch variables
 	ld t1, 64(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_le_tmp_
 	mv t0, t1
 	sd t0, 56(sp)
 
@@ -85,13 +87,13 @@ reverseEntry:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ ifTrue_257 ifFalse_106
+	# condBr cond_ ifTrue_259 ifFalse_106
 
 	# fetch variables
 	ld t1, 48(sp)
 	beqz t1, ifFalse_106
-	j ifTrue_257
-ifTrue_257:
+	j ifTrue_259
+ifTrue_259:
 
 	# prepare params
 
@@ -109,10 +111,12 @@ ifTrue_257:
 	# get address of local var:getint
 	sd a0, 40(sp)
 
-	# store next getint
+	# next getint
 
 	# fetch variables
 	ld t1, 40(sp)
+
+	# store next getint
 
 	# get address of next points to
 	ld t3, 88(sp)
@@ -146,8 +150,8 @@ ifTrue_257:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_445
-	j next_445
+	# br next_450
+	j next_450
 ifFalse_106:
 
 	# prepare params
@@ -166,10 +170,12 @@ ifFalse_106:
 	# get address of local var:getint$1
 	sd a0, 24(sp)
 
-	# store next getint$1
+	# next getint$1
 
 	# fetch variables
 	ld t1, 24(sp)
+
+	# store next getint$1
 
 	# get address of next points to
 	ld t3, 88(sp)
@@ -240,9 +246,9 @@ ifFalse_106:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_445
-	j next_445
-next_445:
+	# br next_450
+	j next_450
+next_450:
 
 	# ret void
 	addi sp, sp, 120
@@ -253,7 +259,7 @@ next_445:
 .type main, @function
 .globl main
 main:
-mainEntry54:
+mainEntry56:
 
 	# reserve space
 	addi sp, sp, -24
@@ -266,10 +272,12 @@ mainEntry54:
 	# get address of local var:i
 	sd t0, 16(sp)
 
-	# store i 
+	# i 
 
 	# fetch variables
 	li t1, 200
+
+	# store i 
 
 	# get address of i points to
 	ld t3, 16(sp)

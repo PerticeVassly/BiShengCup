@@ -50,10 +50,12 @@ my_memsetEntry:
 	# get address of local var:arr
 	sd t0, 144(sp)
 
-	# store arr 0
+	# arr 0
 
 	# fetch variables
 	ld t1, 168(sp)
+
+	# store arr 0
 
 	# get address of arr points to
 	ld t3, 144(sp)
@@ -66,10 +68,12 @@ my_memsetEntry:
 	# get address of local var:val
 	sd t0, 128(sp)
 
-	# store val 1
+	# val 1
 
 	# fetch variables
 	ld t1, 160(sp)
+
+	# store val 1
 
 	# get address of val points to
 	ld t3, 128(sp)
@@ -82,10 +86,12 @@ my_memsetEntry:
 	# get address of local var:n
 	sd t0, 112(sp)
 
-	# store n 2
+	# n 2
 
 	# fetch variables
 	ld t1, 152(sp)
+
+	# store n 2
 
 	# get address of n points to
 	ld t3, 112(sp)
@@ -98,19 +104,21 @@ my_memsetEntry:
 	# get address of local var:i
 	sd t0, 96(sp)
 
-	# store i 
+	# i 
 
 	# fetch variables
 	li t1, 0
+
+	# store i 
 
 	# get address of i points to
 	ld t3, 96(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_264
-	j whileCond_264
-whileCond_264:
+	# br whileCond_271
+	j whileCond_271
+whileCond_271:
 
 	# load i$1 i
 
@@ -142,12 +150,12 @@ whileCond_264:
 	slt t0, t1, t2
 	sd t0, 64(sp)
 
+	# zext cond_tmp_ cond_lt_tmp_
+
 	# fetch variables
 	ld t1, 64(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
 	sd t0, 56(sp)
 
@@ -163,13 +171,13 @@ whileCond_264:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ whileBody_264 next_578
+	# condBr cond_ whileBody_271 next_598
 
 	# fetch variables
 	ld t1, 48(sp)
-	beqz t1, next_578
-	j whileBody_264
-whileBody_264:
+	beqz t1, next_598
+	j whileBody_271
+whileBody_271:
 
 	# load i$2 i
 
@@ -215,10 +223,12 @@ whileBody_264:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# store arr$1 val$1
+	# arr$1 val$1
 
 	# fetch variables
 	ld t1, 16(sp)
+
+	# store arr$1 val$1
 
 	# get address of arr$1 points to
 	ld t3, 24(sp)
@@ -245,19 +255,21 @@ whileBody_264:
 	add t0, t1, t2
 	sd t0, 0(sp)
 
-	# store i result_
+	# i result_
 
 	# fetch variables
 	ld t1, 0(sp)
+
+	# store i result_
 
 	# get address of i points to
 	ld t3, 96(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_264
-	j whileCond_264
-next_578:
+	# br whileCond_271
+	j whileCond_271
+next_598:
 
 	# ret void
 	addi sp, sp, 176
@@ -295,10 +307,12 @@ add_nodeEntry:
 	# get address of local var:u
 	sd t0, 496(sp)
 
-	# store u 0
+	# u 0
 
 	# fetch variables
 	ld t1, 520(sp)
+
+	# store u 0
 
 	# get address of u points to
 	ld t3, 496(sp)
@@ -311,10 +325,12 @@ add_nodeEntry:
 	# get address of local var:v
 	sd t0, 480(sp)
 
-	# store v 1
+	# v 1
 
 	# fetch variables
 	ld t1, 512(sp)
+
+	# store v 1
 
 	# get address of v points to
 	ld t3, 480(sp)
@@ -327,10 +343,12 @@ add_nodeEntry:
 	# get address of local var:c
 	sd t0, 464(sp)
 
-	# store c 2
+	# c 2
 
 	# fetch variables
 	ld t1, 504(sp)
+
+	# store c 2
 
 	# get address of c points to
 	ld t3, 464(sp)
@@ -419,10 +437,12 @@ add_nodeEntry:
 	ld t0, 0(t3)
 	sd t0, 400(sp)
 
-	# store to v$1
+	# to v$1
 
 	# fetch variables
 	ld t1, 400(sp)
+
+	# store to v$1
 
 	# get address of to points to
 	ld t3, 408(sp)
@@ -511,10 +531,12 @@ add_nodeEntry:
 	ld t0, 0(t3)
 	sd t0, 344(sp)
 
-	# store cap c$1
+	# cap c$1
 
 	# fetch variables
 	ld t1, 344(sp)
+
+	# store cap c$1
 
 	# get address of cap points to
 	ld t3, 352(sp)
@@ -627,10 +649,12 @@ add_nodeEntry:
 	ld t0, 0(t3)
 	sd t0, 272(sp)
 
-	# store rev size$7
+	# rev size$7
 
 	# fetch variables
 	ld t1, 272(sp)
+
+	# store rev size$7
 
 	# get address of rev points to
 	ld t3, 296(sp)
@@ -719,10 +743,12 @@ add_nodeEntry:
 	ld t0, 0(t3)
 	sd t0, 216(sp)
 
-	# store to$1 u$7
+	# to$1 u$7
 
 	# fetch variables
 	ld t1, 216(sp)
+
+	# store to$1 u$7
 
 	# get address of to$1 points to
 	ld t3, 224(sp)
@@ -801,10 +827,12 @@ add_nodeEntry:
 	# get address of cap$1 into 
 	sd t0, 168(sp)
 
-	# store cap$1 
+	# cap$1 
 
 	# fetch variables
 	li t1, 0
+
+	# store cap$1 
 
 	# get address of cap$1 points to
 	ld t3, 168(sp)
@@ -917,10 +945,12 @@ add_nodeEntry:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# store rev$1 size$15
+	# rev$1 size$15
 
 	# fetch variables
 	ld t1, 96(sp)
+
+	# store rev$1 size$15
 
 	# get address of rev$1 points to
 	ld t3, 120(sp)
@@ -995,10 +1025,12 @@ add_nodeEntry:
 	add t0, t1, t2
 	sd t0, 48(sp)
 
-	# store size$16 result_
+	# size$16 result_
 
 	# fetch variables
 	ld t1, 48(sp)
+
+	# store size$16 result_
 
 	# get address of size$16 points to
 	ld t3, 80(sp)
@@ -1073,10 +1105,12 @@ add_nodeEntry:
 	add t0, t1, t2
 	sd t0, 0(sp)
 
-	# store size$19 result_$1
+	# size$19 result_$1
 
 	# fetch variables
 	ld t1, 0(sp)
+
+	# store size$19 result_$1
 
 	# get address of size$19 points to
 	ld t3, 32(sp)
@@ -1119,10 +1153,12 @@ dfsEntry1:
 	# get address of local var:s
 	sd t0, 912(sp)
 
-	# store s 0
+	# s 0
 
 	# fetch variables
 	ld t1, 936(sp)
+
+	# store s 0
 
 	# get address of s points to
 	ld t3, 912(sp)
@@ -1135,10 +1171,12 @@ dfsEntry1:
 	# get address of local var:t
 	sd t0, 896(sp)
 
-	# store t 1
+	# t 1
 
 	# fetch variables
 	ld t1, 928(sp)
+
+	# store t 1
 
 	# get address of t points to
 	ld t3, 896(sp)
@@ -1151,10 +1189,12 @@ dfsEntry1:
 	# get address of local var:f
 	sd t0, 880(sp)
 
-	# store f 2
+	# f 2
 
 	# fetch variables
 	ld t1, 920(sp)
+
+	# store f 2
 
 	# get address of f points to
 	ld t3, 880(sp)
@@ -1192,12 +1232,12 @@ dfsEntry1:
 	seqz t0, t0
 	sd t0, 848(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 848(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 840(sp)
 
@@ -1213,13 +1253,13 @@ dfsEntry1:
 	seqz t0, t0
 	sd t0, 832(sp)
 
-	# condBr cond_ ifTrue_314 next_579
+	# condBr cond_ ifTrue_327 next_599
 
 	# fetch variables
 	ld t1, 832(sp)
-	beqz t1, next_579
-	j ifTrue_314
-ifTrue_314:
+	beqz t1, next_599
+	j ifTrue_327
+ifTrue_327:
 
 	# load f$1 f
 
@@ -1241,7 +1281,7 @@ ifTrue_314:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_579:
+next_599:
 
 	# load s$2 s
 
@@ -1267,10 +1307,12 @@ next_579:
 	# get address of used into 
 	sd t0, 808(sp)
 
-	# store used 
+	# used 
 
 	# fetch variables
 	li t1, 1
+
+	# store used 
 
 	# get address of used points to
 	ld t3, 808(sp)
@@ -1283,19 +1325,21 @@ next_579:
 	# get address of local var:i
 	sd t0, 800(sp)
 
-	# store i 
+	# i 
 
 	# fetch variables
 	li t1, 0
+
+	# store i 
 
 	# get address of i points to
 	ld t3, 800(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_265
-	j whileCond_265
-whileCond_265:
+	# br whileCond_272
+	j whileCond_272
+whileCond_272:
 
 	# load i$1 i
 
@@ -1351,12 +1395,12 @@ whileCond_265:
 	slt t0, t1, t2
 	sd t0, 752(sp)
 
+	# zext cond_tmp_$1 cond_lt_tmp_
+
 	# fetch variables
 	ld t1, 752(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_lt_tmp_
 	mv t0, t1
 	sd t0, 744(sp)
 
@@ -1372,13 +1416,13 @@ whileCond_265:
 	seqz t0, t0
 	sd t0, 736(sp)
 
-	# condBr cond_$1 whileBody_265 next_580
+	# condBr cond_$1 whileBody_272 next_600
 
 	# fetch variables
 	ld t1, 736(sp)
-	beqz t1, next_580
-	j whileBody_265
-whileBody_265:
+	beqz t1, next_600
+	j whileBody_272
+whileBody_272:
 
 	# load s$4 s
 
@@ -1474,13 +1518,13 @@ whileBody_265:
 	seqz t0, t0
 	sd t0, 672(sp)
 
-	# condBr cond_normalize_ ifTrue_315 next_581
+	# condBr cond_normalize_ ifTrue_328 next_601
 
 	# fetch variables
 	ld t1, 672(sp)
-	beqz t1, next_581
-	j ifTrue_315
-next_580:
+	beqz t1, next_601
+	j ifTrue_328
+next_600:
 
 	# ret 
 
@@ -1492,7 +1536,7 @@ next_580:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_315:
+ifTrue_328:
 
 	# load i$3 i
 
@@ -1514,22 +1558,24 @@ ifTrue_315:
 	add t0, t1, t2
 	sd t0, 656(sp)
 
-	# store i result_
+	# i result_
 
 	# fetch variables
 	ld t1, 656(sp)
+
+	# store i result_
 
 	# get address of i points to
 	ld t3, 800(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_265
-	j whileCond_265
+	# br whileCond_272
+	j whileCond_272
 
-	# br next_581
-	j next_581
-next_581:
+	# br next_601
+	j next_601
+next_601:
 
 	# load s$5 s
 
@@ -1601,12 +1647,12 @@ next_581:
 	seqz t0, t0
 	sd t0, 608(sp)
 
+	# zext cond_tmp_$2 cond_le_tmp_
+
 	# fetch variables
 	ld t1, 608(sp)
 
 	# get address of local var:cond_tmp_$2
-
-	# zext cond_tmp_$2 cond_le_tmp_
 	mv t0, t1
 	sd t0, 600(sp)
 
@@ -1622,13 +1668,13 @@ next_581:
 	seqz t0, t0
 	sd t0, 592(sp)
 
-	# condBr cond_$2 ifTrue_316 next_582
+	# condBr cond_$2 ifTrue_329 next_602
 
 	# fetch variables
 	ld t1, 592(sp)
-	beqz t1, next_582
-	j ifTrue_316
-ifTrue_316:
+	beqz t1, next_602
+	j ifTrue_329
+ifTrue_329:
 
 	# load i$5 i
 
@@ -1650,22 +1696,24 @@ ifTrue_316:
 	add t0, t1, t2
 	sd t0, 576(sp)
 
-	# store i result_$1
+	# i result_$1
 
 	# fetch variables
 	ld t1, 576(sp)
+
+	# store i result_$1
 
 	# get address of i points to
 	ld t3, 800(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_265
-	j whileCond_265
+	# br whileCond_272
+	j whileCond_272
 
-	# br next_582
-	j next_582
-next_582:
+	# br next_602
+	j next_602
+next_602:
 
 	# allocate min_f
 	addi t0, sp, 560
@@ -1751,12 +1799,12 @@ next_582:
 	slt t0, t1, t2
 	sd t0, 504(sp)
 
+	# zext cond_tmp_$3 cond_lt_tmp_$1
+
 	# fetch variables
 	ld t1, 504(sp)
 
 	# get address of local var:cond_tmp_$3
-
-	# zext cond_tmp_$3 cond_lt_tmp_$1
 	mv t0, t1
 	sd t0, 496(sp)
 
@@ -1772,13 +1820,13 @@ next_582:
 	seqz t0, t0
 	sd t0, 488(sp)
 
-	# condBr cond_$3 ifTrue_317 ifFalse_133
+	# condBr cond_$3 ifTrue_330 ifFalse_141
 
 	# fetch variables
 	ld t1, 488(sp)
-	beqz t1, ifFalse_133
-	j ifTrue_317
-ifTrue_317:
+	beqz t1, ifFalse_141
+	j ifTrue_330
+ifTrue_330:
 
 	# load f$3 f
 
@@ -1790,19 +1838,21 @@ ifTrue_317:
 	ld t0, 0(t3)
 	sd t0, 480(sp)
 
-	# store min_f f$3
+	# min_f f$3
 
 	# fetch variables
 	ld t1, 480(sp)
+
+	# store min_f f$3
 
 	# get address of min_f points to
 	ld t3, 568(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_583
-	j next_583
-ifFalse_133:
+	# br next_603
+	j next_603
+ifFalse_141:
 
 	# load s$7 s
 
@@ -1862,19 +1912,21 @@ ifFalse_133:
 	ld t0, 0(t3)
 	sd t0, 440(sp)
 
-	# store min_f cap$5
+	# min_f cap$5
 
 	# fetch variables
 	ld t1, 440(sp)
+
+	# store min_f cap$5
 
 	# get address of min_f points to
 	ld t3, 568(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_583
-	j next_583
-next_583:
+	# br next_603
+	j next_603
+next_603:
 
 	# allocate d
 	addi t0, sp, 424
@@ -1988,10 +2040,12 @@ next_583:
 	# get address of local var:dfs
 	sd a0, 360(sp)
 
-	# store d dfs
+	# d dfs
 
 	# fetch variables
 	ld t1, 360(sp)
+
+	# store d dfs
 
 	# get address of d points to
 	ld t3, 432(sp)
@@ -2019,12 +2073,12 @@ next_583:
 	sgtz t0, t0
 	sd t0, 344(sp)
 
+	# zext cond_tmp_$4 cond_gt_tmp_
+
 	# fetch variables
 	ld t1, 344(sp)
 
 	# get address of local var:cond_tmp_$4
-
-	# zext cond_tmp_$4 cond_gt_tmp_
 	mv t0, t1
 	sd t0, 336(sp)
 
@@ -2040,13 +2094,13 @@ next_583:
 	seqz t0, t0
 	sd t0, 328(sp)
 
-	# condBr cond_$4 ifTrue_318 next_584
+	# condBr cond_$4 ifTrue_331 next_604
 
 	# fetch variables
 	ld t1, 328(sp)
-	beqz t1, next_584
-	j ifTrue_318
-ifTrue_318:
+	beqz t1, next_604
+	j ifTrue_331
+ifTrue_331:
 
 	# load s$9 s
 
@@ -2174,10 +2228,12 @@ ifTrue_318:
 	sub t0, t1, t2
 	sd t0, 240(sp)
 
-	# store cap$6 result_$2
+	# cap$6 result_$2
 
 	# fetch variables
 	ld t1, 240(sp)
+
+	# store cap$6 result_$2
 
 	# get address of cap$6 points to
 	ld t3, 296(sp)
@@ -2502,10 +2558,12 @@ ifTrue_318:
 	add t0, t1, t2
 	sd t0, 24(sp)
 
-	# store cap$9 result_$3
+	# cap$9 result_$3
 
 	# fetch variables
 	ld t1, 24(sp)
+
+	# store cap$9 result_$3
 
 	# get address of cap$9 points to
 	ld t3, 144(sp)
@@ -2532,7 +2590,7 @@ ifTrue_318:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_584:
+next_604:
 
 	# load i$15 i
 
@@ -2554,18 +2612,20 @@ next_584:
 	add t0, t1, t2
 	sd t0, 0(sp)
 
-	# store i result_$4
+	# i result_$4
 
 	# fetch variables
 	ld t1, 0(sp)
+
+	# store i result_$4
 
 	# get address of i points to
 	ld t3, 800(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_265
-	j whileCond_265
+	# br whileCond_272
+	j whileCond_272
 .type max_flow, @function
 .globl max_flow
 max_flow:
@@ -2593,10 +2653,12 @@ max_flowEntry:
 	# get address of local var:s
 	sd t0, 168(sp)
 
-	# store s 0
+	# s 0
 
 	# fetch variables
 	ld t1, 184(sp)
+
+	# store s 0
 
 	# get address of s points to
 	ld t3, 168(sp)
@@ -2609,10 +2671,12 @@ max_flowEntry:
 	# get address of local var:t
 	sd t0, 152(sp)
 
-	# store t 1
+	# t 1
 
 	# fetch variables
 	ld t1, 176(sp)
+
+	# store t 1
 
 	# get address of t points to
 	ld t3, 152(sp)
@@ -2625,19 +2689,21 @@ max_flowEntry:
 	# get address of local var:flow
 	sd t0, 136(sp)
 
-	# store flow 
+	# flow 
 
 	# fetch variables
 	li t1, 0
+
+	# store flow 
 
 	# get address of flow points to
 	ld t3, 136(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_266
-	j whileCond_266
-whileCond_266:
+	# br whileCond_273
+	j whileCond_273
+whileCond_273:
 
 	# cmp   cond_normalize_
 
@@ -2651,13 +2717,13 @@ whileCond_266:
 	seqz t0, t0
 	sd t0, 120(sp)
 
-	# condBr cond_normalize_ whileBody_266 next_585
+	# condBr cond_normalize_ whileBody_273 next_605
 
 	# fetch variables
 	ld t1, 120(sp)
-	beqz t1, next_585
-	j whileBody_266
-whileBody_266:
+	beqz t1, next_605
+	j whileBody_273
+whileBody_273:
 
 	# gep used 
 
@@ -2761,10 +2827,12 @@ whileBody_266:
 	# get address of local var:dfs
 	sd a0, 64(sp)
 
-	# store f dfs
+	# f dfs
 
 	# fetch variables
 	ld t1, 64(sp)
+
+	# store f dfs
 
 	# get address of f points to
 	ld t3, 104(sp)
@@ -2792,12 +2860,12 @@ whileBody_266:
 	seqz t0, t0
 	sd t0, 48(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 48(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 40(sp)
 
@@ -2813,10 +2881,10 @@ whileBody_266:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_ ifTrue_319 next_586
+	# condBr cond_ ifTrue_332 next_606
 
 	# fetch variables
 	ld t1, 32(sp)
-	beqz t1, next_586
-	j ifTrue_319
-next_585:
+	beqz t1, next_606
+	j ifTrue_332
+next_605:

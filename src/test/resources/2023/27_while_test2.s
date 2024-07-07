@@ -23,10 +23,12 @@ FourWhileEntry:
 	# get address of local var:a
 	sd t0, 352(sp)
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 5
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 352(sp)
@@ -45,20 +47,24 @@ FourWhileEntry:
 	# get address of local var:c
 	sd t0, 320(sp)
 
-	# store b 
+	# b 
 
 	# fetch variables
 	li t1, 6
+
+	# store b 
 
 	# get address of b points to
 	ld t3, 336(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# store c 
+	# c 
 
 	# fetch variables
 	li t1, 7
+
+	# store c 
 
 	# get address of c points to
 	ld t3, 320(sp)
@@ -71,10 +77,12 @@ FourWhileEntry:
 	# get address of local var:d
 	sd t0, 304(sp)
 
-	# store d 
+	# d 
 
 	# fetch variables
 	li t1, 10
+
+	# store d 
 
 	# get address of d points to
 	ld t3, 304(sp)
@@ -105,12 +113,12 @@ whileCond_10:
 	slt t0, t1, t2
 	sd t0, 280(sp)
 
+	# zext cond_tmp_ cond_lt_tmp_
+
 	# fetch variables
 	ld t1, 280(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
 	sd t0, 272(sp)
 
@@ -154,10 +162,12 @@ whileBody_10:
 	add t0, t1, t2
 	sd t0, 248(sp)
 
-	# store a result_
+	# a result_
 
 	# fetch variables
 	ld t1, 248(sp)
+
+	# store a result_
 
 	# get address of a points to
 	ld t3, 352(sp)
@@ -270,12 +280,12 @@ whileCond_11:
 	slt t0, t1, t2
 	sd t0, 176(sp)
 
+	# zext cond_tmp_$1 cond_lt_tmp_$1
+
 	# fetch variables
 	ld t1, 176(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_lt_tmp_$1
 	mv t0, t1
 	sd t0, 168(sp)
 
@@ -319,10 +329,12 @@ whileBody_11:
 	add t0, t1, t2
 	sd t0, 144(sp)
 
-	# store b result_$1
+	# b result_$1
 
 	# fetch variables
 	ld t1, 144(sp)
+
+	# store b result_$1
 
 	# get address of b points to
 	ld t3, 336(sp)
@@ -353,10 +365,12 @@ next_24:
 	sub t0, t1, t2
 	sd t0, 128(sp)
 
-	# store b result_$6
+	# b result_$6
 
 	# fetch variables
 	ld t1, 128(sp)
+
+	# store b result_$6
 
 	# get address of b points to
 	ld t3, 336(sp)
@@ -388,12 +402,12 @@ whileCond_12:
 	seqz t0, t0
 	sd t0, 112(sp)
 
+	# zext cond_tmp_$2 cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 112(sp)
 
 	# get address of local var:cond_tmp_$2
-
-	# zext cond_tmp_$2 cond_eq_tmp_
 	mv t0, t1
 	sd t0, 104(sp)
 
@@ -437,10 +451,12 @@ whileBody_12:
 	sub t0, t1, t2
 	sd t0, 80(sp)
 
-	# store c result_$2
+	# c result_$2
 
 	# fetch variables
 	ld t1, 80(sp)
+
+	# store c result_$2
 
 	# get address of c points to
 	ld t3, 320(sp)
@@ -471,10 +487,12 @@ next_25:
 	add t0, t1, t2
 	sd t0, 64(sp)
 
-	# store c result_$5
+	# c result_$5
 
 	# fetch variables
 	ld t1, 64(sp)
+
+	# store c result_$5
 
 	# get address of c points to
 	ld t3, 320(sp)
@@ -505,12 +523,12 @@ whileCond_13:
 	slt t0, t1, t2
 	sd t0, 48(sp)
 
+	# zext cond_tmp_$3 cond_lt_tmp_$2
+
 	# fetch variables
 	ld t1, 48(sp)
 
 	# get address of local var:cond_tmp_$3
-
-	# zext cond_tmp_$3 cond_lt_tmp_$2
 	mv t0, t1
 	sd t0, 40(sp)
 
@@ -554,10 +572,12 @@ whileBody_13:
 	add t0, t1, t2
 	sd t0, 16(sp)
 
-	# store d result_$3
+	# d result_$3
 
 	# fetch variables
 	ld t1, 16(sp)
+
+	# store d result_$3
 
 	# get address of d points to
 	ld t3, 304(sp)
@@ -588,10 +608,12 @@ next_26:
 	sub t0, t1, t2
 	sd t0, 0(sp)
 
-	# store d result_$4
+	# d result_$4
 
 	# fetch variables
 	ld t1, 0(sp)
+
+	# store d result_$4
 
 	# get address of d points to
 	ld t3, 304(sp)

@@ -29,10 +29,12 @@ funcEntry:
 	# get address of local var:p
 	sd t0, 32(sp)
 
-	# store p 0
+	# p 0
 
 	# fetch variables
 	ld t1, 40(sp)
+
+	# store p 0
 
 	# get address of p points to
 	ld t3, 32(sp)
@@ -59,10 +61,12 @@ funcEntry:
 	sub t0, t1, t2
 	sd t0, 8(sp)
 
-	# store p result_
+	# p result_
 
 	# fetch variables
 	ld t1, 8(sp)
+
+	# store p result_
 
 	# get address of p points to
 	ld t3, 32(sp)
@@ -92,7 +96,7 @@ funcEntry:
 .type main, @function
 .globl main
 main:
-mainEntry19:
+mainEntry20:
 
 	# reserve space
 	addi sp, sp, -40
@@ -105,10 +109,12 @@ mainEntry19:
 	# get address of local var:b
 	sd t0, 32(sp)
 
-	# store a 
+	# a @
 
 	# fetch variables
 	li t1, 10
+
+	# store a 
 
 	# get address of a points to
 	la t3, a
@@ -145,10 +151,12 @@ mainEntry19:
 	# get address of local var:func
 	sd a0, 8(sp)
 
-	# store b func
+	# b func
 
 	# fetch variables
 	ld t1, 8(sp)
+
+	# store b func
 
 	# get address of b points to
 	ld t3, 32(sp)

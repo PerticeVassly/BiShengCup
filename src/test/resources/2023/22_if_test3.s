@@ -23,10 +23,12 @@ ififElseEntry:
 	# get address of local var:a
 	sd t0, 112(sp)
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 5
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 112(sp)
@@ -39,10 +41,12 @@ ififElseEntry:
 	# get address of local var:b
 	sd t0, 96(sp)
 
-	# store b 
+	# b 
 
 	# fetch variables
 	li t1, 10
+
+	# store b 
 
 	# get address of b points to
 	ld t3, 96(sp)
@@ -70,12 +74,12 @@ ififElseEntry:
 	seqz t0, t0
 	sd t0, 72(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 72(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 64(sp)
 
@@ -91,13 +95,13 @@ ififElseEntry:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ ifTrue_251 next_436
+	# condBr cond_ ifTrue_253 next_441
 
 	# fetch variables
 	ld t1, 56(sp)
-	beqz t1, next_436
-	j ifTrue_251
-ifTrue_251:
+	beqz t1, next_441
+	j ifTrue_253
+ifTrue_253:
 
 	# load b$1 b
 
@@ -120,12 +124,12 @@ ifTrue_251:
 	seqz t0, t0
 	sd t0, 40(sp)
 
+	# zext cond_tmp_$1 cond_eq_tmp_$1
+
 	# fetch variables
 	ld t1, 40(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_eq_tmp_$1
 	mv t0, t1
 	sd t0, 32(sp)
 
@@ -141,13 +145,13 @@ ifTrue_251:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_$1 ifTrue_252 ifFalse_101
+	# condBr cond_$1 ifTrue_254 ifFalse_101
 
 	# fetch variables
 	ld t1, 24(sp)
 	beqz t1, ifFalse_101
-	j ifTrue_252
-next_436:
+	j ifTrue_254
+next_441:
 
 	# load a$3 a
 
@@ -169,20 +173,22 @@ next_436:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_252:
+ifTrue_254:
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 25
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 112(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_437
-	j next_437
+	# br next_442
+	j next_442
 ifFalse_101:
 
 	# load a$2 a
@@ -205,26 +211,28 @@ ifFalse_101:
 	add t0, t1, t2
 	sd t0, 0(sp)
 
-	# store a result_
+	# a result_
 
 	# fetch variables
 	ld t1, 0(sp)
+
+	# store a result_
 
 	# get address of a points to
 	ld t3, 112(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_437
-	j next_437
-next_437:
+	# br next_442
+	j next_442
+next_442:
 
-	# br next_436
-	j next_436
+	# br next_441
+	j next_441
 .type main, @function
 .globl main
 main:
-mainEntry51:
+mainEntry53:
 
 	# reserve space
 	addi sp, sp, -8

@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry82:
+mainEntry85:
 
 	# reserve space
 	addi sp, sp, -184
@@ -24,20 +24,24 @@ mainEntry82:
 	# get address of local var:b
 	sd t0, 160(sp)
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 56
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 176(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# store b 
+	# b 
 
 	# fetch variables
 	li t1, 4
+
+	# store b 
 
 	# get address of b points to
 	ld t3, 160(sp)
@@ -84,10 +88,12 @@ mainEntry82:
 	add t0, t1, t2
 	sd t0, 120(sp)
 
-	# store a result_$1
+	# a result_$1
 
 	# fetch variables
 	ld t1, 120(sp)
+
+	# store a result_$1
 
 	# get address of a points to
 	ld t3, 176(sp)
@@ -116,6 +122,8 @@ mainEntry82:
 	seqz t0, t0
 	sd t0, 104(sp)
 
+	# XOR tmp_$1 tmp_ 
+
 	# fetch variables
 	ld t1, 104(sp)
 	li t2, 1
@@ -126,12 +134,12 @@ mainEntry82:
 	xor t0, t1, t2
 	sd t0, 96(sp)
 
+	# zext tmp_$2 tmp_$1
+
 	# fetch variables
 	ld t1, 96(sp)
 
 	# get address of local var:tmp_$2
-
-	# zext tmp_$2 tmp_$1
 	mv t0, t1
 	sd t0, 88(sp)
 
@@ -147,6 +155,8 @@ mainEntry82:
 	seqz t0, t0
 	sd t0, 80(sp)
 
+	# XOR tmp_$4 tmp_$3 
+
 	# fetch variables
 	ld t1, 80(sp)
 	li t2, 1
@@ -157,12 +167,12 @@ mainEntry82:
 	xor t0, t1, t2
 	sd t0, 72(sp)
 
+	# zext tmp_$5 tmp_$4
+
 	# fetch variables
 	ld t1, 72(sp)
 
 	# get address of local var:tmp_$5
-
-	# zext tmp_$5 tmp_$4
 	mv t0, t1
 	sd t0, 64(sp)
 
@@ -178,6 +188,8 @@ mainEntry82:
 	seqz t0, t0
 	sd t0, 56(sp)
 
+	# XOR tmp_$7 tmp_$6 
+
 	# fetch variables
 	ld t1, 56(sp)
 	li t2, 1
@@ -188,12 +200,12 @@ mainEntry82:
 	xor t0, t1, t2
 	sd t0, 48(sp)
 
+	# zext tmp_$8 tmp_$7
+
 	# fetch variables
 	ld t1, 48(sp)
 
 	# get address of local var:tmp_$8
-
-	# zext tmp_$8 tmp_$7
 	mv t0, t1
 	sd t0, 40(sp)
 
@@ -219,27 +231,29 @@ mainEntry82:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_normalize_ ifTrue_303 ifFalse_131
+	# condBr cond_normalize_ ifTrue_307 ifFalse_132
 
 	# fetch variables
 	ld t1, 24(sp)
-	beqz t1, ifFalse_131
-	j ifTrue_303
-ifTrue_303:
+	beqz t1, ifFalse_132
+	j ifTrue_307
+ifTrue_307:
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, -1
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 176(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_539
-	j next_539
-ifFalse_131:
+	# br next_547
+	j next_547
+ifFalse_132:
 
 	# load b$2 b
 
@@ -261,19 +275,21 @@ ifFalse_131:
 	add t0, t1, t2
 	sd t0, 8(sp)
 
-	# store a result_$2
+	# a result_$2
 
 	# fetch variables
 	ld t1, 8(sp)
+
+	# store a result_$2
 
 	# get address of a points to
 	ld t3, 176(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_539
-	j next_539
-next_539:
+	# br next_547
+	j next_547
+next_547:
 
 	# load a$3 a
 

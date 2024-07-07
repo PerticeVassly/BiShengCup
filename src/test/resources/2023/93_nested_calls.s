@@ -32,10 +32,12 @@ func1Entry:
 	# get address of local var:x
 	sd t0, 136(sp)
 
-	# store x 0
+	# x 0
 
 	# fetch variables
 	ld t1, 160(sp)
+
+	# store x 0
 
 	# get address of x points to
 	ld t3, 136(sp)
@@ -48,10 +50,12 @@ func1Entry:
 	# get address of local var:y
 	sd t0, 120(sp)
 
-	# store y 1
+	# y 1
 
 	# fetch variables
 	ld t1, 152(sp)
+
+	# store y 1
 
 	# get address of y points to
 	ld t3, 120(sp)
@@ -64,10 +68,12 @@ func1Entry:
 	# get address of local var:z
 	sd t0, 104(sp)
 
-	# store z 2
+	# z 2
 
 	# fetch variables
 	ld t1, 144(sp)
+
+	# store z 2
 
 	# get address of z points to
 	ld t3, 104(sp)
@@ -95,12 +101,12 @@ func1Entry:
 	seqz t0, t0
 	sd t0, 80(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 80(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 72(sp)
 
@@ -116,13 +122,13 @@ func1Entry:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_ ifTrue_283 ifFalse_114
+	# condBr cond_ ifTrue_285 ifFalse_114
 
 	# fetch variables
 	ld t1, 64(sp)
 	beqz t1, ifFalse_114
-	j ifTrue_283
-ifTrue_283:
+	j ifTrue_285
+ifTrue_285:
 
 	# load x$1 x
 
@@ -271,10 +277,12 @@ func2Entry:
 	# get address of local var:x
 	sd t0, 80(sp)
 
-	# store x 0
+	# x 0
 
 	# fetch variables
 	ld t1, 96(sp)
+
+	# store x 0
 
 	# get address of x points to
 	ld t3, 80(sp)
@@ -287,10 +295,12 @@ func2Entry:
 	# get address of local var:y
 	sd t0, 64(sp)
 
-	# store y 1
+	# y 1
 
 	# fetch variables
 	ld t1, 88(sp)
+
+	# store y 1
 
 	# get address of y points to
 	ld t3, 64(sp)
@@ -319,13 +329,13 @@ func2Entry:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_normalize_ ifTrue_284 ifFalse_115
+	# condBr cond_normalize_ ifTrue_286 ifFalse_115
 
 	# fetch variables
 	ld t1, 40(sp)
 	beqz t1, ifFalse_115
-	j ifTrue_284
-ifTrue_284:
+	j ifTrue_286
+ifTrue_286:
 
 	# load x$1 x
 
@@ -440,10 +450,12 @@ func3Entry:
 	# get address of local var:x
 	sd t0, 104(sp)
 
-	# store x 0
+	# x 0
 
 	# fetch variables
 	ld t1, 120(sp)
+
+	# store x 0
 
 	# get address of x points to
 	ld t3, 104(sp)
@@ -456,10 +468,12 @@ func3Entry:
 	# get address of local var:y
 	sd t0, 88(sp)
 
-	# store y 1
+	# y 1
 
 	# fetch variables
 	ld t1, 112(sp)
+
+	# store y 1
 
 	# get address of y points to
 	ld t3, 88(sp)
@@ -487,12 +501,12 @@ func3Entry:
 	seqz t0, t0
 	sd t0, 64(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 64(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 56(sp)
 
@@ -508,13 +522,13 @@ func3Entry:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ ifTrue_285 ifFalse_116
+	# condBr cond_ ifTrue_287 ifFalse_116
 
 	# fetch variables
 	ld t1, 48(sp)
 	beqz t1, ifFalse_116
-	j ifTrue_285
-ifTrue_285:
+	j ifTrue_287
+ifTrue_287:
 
 	# load x$1 x
 
@@ -642,10 +656,12 @@ func4Entry:
 	# get address of local var:x
 	sd t0, 72(sp)
 
-	# store x 0
+	# x 0
 
 	# fetch variables
 	ld t1, 96(sp)
+
+	# store x 0
 
 	# get address of x points to
 	ld t3, 72(sp)
@@ -658,10 +674,12 @@ func4Entry:
 	# get address of local var:y
 	sd t0, 56(sp)
 
-	# store y 1
+	# y 1
 
 	# fetch variables
 	ld t1, 88(sp)
+
+	# store y 1
 
 	# get address of y points to
 	ld t3, 56(sp)
@@ -674,10 +692,12 @@ func4Entry:
 	# get address of local var:z
 	sd t0, 40(sp)
 
-	# store z 2
+	# z 2
 
 	# fetch variables
 	ld t1, 80(sp)
+
+	# store z 2
 
 	# get address of z points to
 	ld t3, 40(sp)
@@ -706,13 +726,13 @@ func4Entry:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_normalize_ ifTrue_286 ifFalse_117
+	# condBr cond_normalize_ ifTrue_288 ifFalse_117
 
 	# fetch variables
 	ld t1, 16(sp)
 	beqz t1, ifFalse_117
-	j ifTrue_286
-ifTrue_286:
+	j ifTrue_288
+ifTrue_288:
 
 	# load y$1 y
 
@@ -780,10 +800,12 @@ func5Entry:
 	# get address of local var:x
 	sd t0, 24(sp)
 
-	# store x 0
+	# x 0
 
 	# fetch variables
 	ld t1, 32(sp)
+
+	# store x 0
 
 	# get address of x points to
 	ld t3, 24(sp)
@@ -847,10 +869,12 @@ func6Entry:
 	# get address of local var:x
 	sd t0, 56(sp)
 
-	# store x 0
+	# x 0
 
 	# fetch variables
 	ld t1, 72(sp)
+
+	# store x 0
 
 	# get address of x points to
 	ld t3, 56(sp)
@@ -863,10 +887,12 @@ func6Entry:
 	# get address of local var:y
 	sd t0, 40(sp)
 
-	# store y 1
+	# y 1
 
 	# fetch variables
 	ld t1, 64(sp)
+
+	# store y 1
 
 	# get address of y points to
 	ld t3, 40(sp)
@@ -901,7 +927,7 @@ func6Entry:
 	ld t1, 16(sp)
 	beqz t1, ifFalse_118
 	j secondCond_96
-ifTrue_287:
+ifTrue_289:
 
 	# ret 
 
@@ -949,12 +975,12 @@ secondCond_96:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_$1 ifTrue_287 ifFalse_118
+	# condBr cond_normalize_$1 ifTrue_289 ifFalse_118
 
 	# fetch variables
 	ld t1, 0(sp)
 	beqz t1, ifFalse_118
-	j ifTrue_287
+	j ifTrue_289
 .type func7, @function
 .globl func7
 func7:
@@ -979,10 +1005,12 @@ func7Entry:
 	# get address of local var:x
 	sd t0, 48(sp)
 
-	# store x 0
+	# x 0
 
 	# fetch variables
 	ld t1, 56(sp)
+
+	# store x 0
 
 	# get address of x points to
 	ld t3, 48(sp)
@@ -1011,6 +1039,8 @@ func7Entry:
 	seqz t0, t0
 	sd t0, 24(sp)
 
+	# XOR tmp_$1 tmp_ 
+
 	# fetch variables
 	ld t1, 24(sp)
 	li t2, 1
@@ -1021,12 +1051,12 @@ func7Entry:
 	xor t0, t1, t2
 	sd t0, 16(sp)
 
+	# zext tmp_$2 tmp_$1
+
 	# fetch variables
 	ld t1, 16(sp)
 
 	# get address of local var:tmp_$2
-
-	# zext tmp_$2 tmp_$1
 	mv t0, t1
 	sd t0, 8(sp)
 
@@ -1042,13 +1072,13 @@ func7Entry:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_ ifTrue_288 ifFalse_119
+	# condBr cond_normalize_ ifTrue_290 ifFalse_119
 
 	# fetch variables
 	ld t1, 0(sp)
 	beqz t1, ifFalse_119
-	j ifTrue_288
-ifTrue_288:
+	j ifTrue_290
+ifTrue_290:
 
 	# ret 
 
@@ -1075,7 +1105,7 @@ ifFalse_119:
 .type main, @function
 .globl main
 main:
-mainEntry70:
+mainEntry72:
 
 	# reserve space
 	addi sp, sp, -960
@@ -1104,10 +1134,12 @@ mainEntry70:
 	# get address of local var:getint
 	sd a0, 936(sp)
 
-	# store i1 getint
+	# i1 getint
 
 	# fetch variables
 	ld t1, 936(sp)
+
+	# store i1 getint
 
 	# get address of i1 points to
 	ld t3, 952(sp)
@@ -1136,10 +1168,12 @@ mainEntry70:
 	# get address of local var:getint$1
 	sd a0, 912(sp)
 
-	# store i2 getint$1
+	# i2 getint$1
 
 	# fetch variables
 	ld t1, 912(sp)
+
+	# store i2 getint$1
 
 	# get address of i2 points to
 	ld t3, 928(sp)
@@ -1168,10 +1202,12 @@ mainEntry70:
 	# get address of local var:getint$2
 	sd a0, 888(sp)
 
-	# store i3 getint$2
+	# i3 getint$2
 
 	# fetch variables
 	ld t1, 888(sp)
+
+	# store i3 getint$2
 
 	# get address of i3 points to
 	ld t3, 904(sp)
@@ -1200,10 +1236,12 @@ mainEntry70:
 	# get address of local var:getint$3
 	sd a0, 864(sp)
 
-	# store i4 getint$3
+	# i4 getint$3
 
 	# fetch variables
 	ld t1, 864(sp)
+
+	# store i4 getint$3
 
 	# get address of i4 points to
 	ld t3, 880(sp)
@@ -1222,19 +1260,21 @@ mainEntry70:
 	# get address of local var:i
 	sd t0, 768(sp)
 
-	# store i 
+	# i 
 
 	# fetch variables
 	li t1, 0
+
+	# store i 
 
 	# get address of i points to
 	ld t3, 768(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_215
-	j whileCond_215
-whileCond_215:
+	# br whileCond_218
+	j whileCond_218
+whileCond_218:
 
 	# load i$1 i
 
@@ -1256,12 +1296,12 @@ whileCond_215:
 	slt t0, t1, t2
 	sd t0, 744(sp)
 
+	# zext cond_tmp_ cond_lt_tmp_
+
 	# fetch variables
 	ld t1, 744(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
 	sd t0, 736(sp)
 
@@ -1277,13 +1317,13 @@ whileCond_215:
 	seqz t0, t0
 	sd t0, 728(sp)
 
-	# condBr cond_ whileBody_215 next_504
+	# condBr cond_ whileBody_218 next_509
 
 	# fetch variables
 	ld t1, 728(sp)
-	beqz t1, next_504
-	j whileBody_215
-whileBody_215:
+	beqz t1, next_509
+	j whileBody_218
+whileBody_218:
 
 	# load i$2 i
 
@@ -1325,10 +1365,12 @@ whileBody_215:
 	# get address of local var:getint$4
 	sd a0, 704(sp)
 
-	# store arr$1 getint$4
+	# arr$1 getint$4
 
 	# fetch variables
 	ld t1, 704(sp)
+
+	# store arr$1 getint$4
 
 	# get address of arr$1 points to
 	ld t3, 712(sp)
@@ -1355,19 +1397,21 @@ whileBody_215:
 	add t0, t1, t2
 	sd t0, 688(sp)
 
-	# store i result_
+	# i result_
 
 	# fetch variables
 	ld t1, 688(sp)
+
+	# store i result_
 
 	# get address of i points to
 	ld t3, 768(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_215
-	j whileCond_215
-next_504:
+	# br whileCond_218
+	j whileCond_218
+next_509:
 
 	# allocate a
 	addi t0, sp, 672
@@ -2737,10 +2781,12 @@ next_504:
 	# get address of local var:func1$3
 	sd a0, 8(sp)
 
-	# store a func1$3
+	# a func1$3
 
 	# fetch variables
 	ld t1, 8(sp)
+
+	# store a func1$3
 
 	# get address of a points to
 	ld t3, 680(sp)

@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry31:
+mainEntry33:
 
 	# reserve space
 	addi sp, sp, -312
@@ -42,40 +42,48 @@ mainEntry31:
 	# get address of local var:result
 	sd t0, 240(sp)
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 5
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 304(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# store b 
+	# b 
 
 	# fetch variables
 	li t1, 5
+
+	# store b 
 
 	# get address of b points to
 	ld t3, 288(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# store c 
+	# c 
 
 	# fetch variables
 	li t1, 1
+
+	# store c 
 
 	# get address of c points to
 	ld t3, 272(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# store d 
+	# d 
 
 	# fetch variables
 	li t1, -2
+
+	# store d 
 
 	# get address of d points to
 	ld t3, 256(sp)
@@ -202,10 +210,12 @@ mainEntry31:
 	sub t0, t1, t2
 	sd t0, 136(sp)
 
-	# store result result_$6
+	# result result_$6
 
 	# fetch variables
 	ld t1, 136(sp)
+
+	# store result result_$6
 
 	# get address of result points to
 	ld t3, 240(sp)
@@ -369,10 +379,12 @@ mainEntry31:
 	sub t0, t1, t2
 	sd t0, 24(sp)
 
-	# store result result_$13
+	# result result_$13
 
 	# fetch variables
 	ld t1, 24(sp)
+
+	# store result result_$13
 
 	# get address of result points to
 	ld t3, 240(sp)
@@ -399,10 +411,12 @@ mainEntry31:
 	add t0, t1, t2
 	sd t0, 8(sp)
 
-	# store result result_$14
+	# result result_$14
 
 	# fetch variables
 	ld t1, 8(sp)
+
+	# store result result_$14
 
 	# get address of result points to
 	ld t3, 240(sp)

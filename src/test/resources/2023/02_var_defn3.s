@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry32:
+mainEntry34:
 
 	# reserve space
 	addi sp, sp, -72
@@ -30,30 +30,36 @@ mainEntry32:
 	# get address of local var:_c
 	sd t0, 32(sp)
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 1
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 64(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# store b0 
+	# b0 
 
 	# fetch variables
 	li t1, 2
+
+	# store b0 
 
 	# get address of b0 points to
 	ld t3, 48(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# store _c 
+	# _c 
 
 	# fetch variables
 	li t1, 3
+
+	# store _c 
 
 	# get address of _c points to
 	ld t3, 32(sp)

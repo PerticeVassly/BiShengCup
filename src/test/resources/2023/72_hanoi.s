@@ -29,10 +29,12 @@ moveEntry:
 	# get address of local var:x
 	sd t0, 40(sp)
 
-	# store x 0
+	# x 0
 
 	# fetch variables
 	ld t1, 56(sp)
+
+	# store x 0
 
 	# get address of x points to
 	ld t3, 40(sp)
@@ -45,10 +47,12 @@ moveEntry:
 	# get address of local var:y
 	sd t0, 24(sp)
 
-	# store y 1
+	# y 1
 
 	# fetch variables
 	ld t1, 48(sp)
+
+	# store y 1
 
 	# get address of y points to
 	ld t3, 24(sp)
@@ -199,10 +203,12 @@ hanoiEntry:
 	# get address of local var:n
 	sd t0, 200(sp)
 
-	# store n 0
+	# n 0
 
 	# fetch variables
 	ld t1, 232(sp)
+
+	# store n 0
 
 	# get address of n points to
 	ld t3, 200(sp)
@@ -215,10 +221,12 @@ hanoiEntry:
 	# get address of local var:one
 	sd t0, 184(sp)
 
-	# store one 1
+	# one 1
 
 	# fetch variables
 	ld t1, 224(sp)
+
+	# store one 1
 
 	# get address of one points to
 	ld t3, 184(sp)
@@ -231,10 +239,12 @@ hanoiEntry:
 	# get address of local var:two
 	sd t0, 168(sp)
 
-	# store two 2
+	# two 2
 
 	# fetch variables
 	ld t1, 216(sp)
+
+	# store two 2
 
 	# get address of two points to
 	ld t3, 168(sp)
@@ -247,10 +257,12 @@ hanoiEntry:
 	# get address of local var:three
 	sd t0, 152(sp)
 
-	# store three 3
+	# three 3
 
 	# fetch variables
 	ld t1, 208(sp)
+
+	# store three 3
 
 	# get address of three points to
 	ld t3, 152(sp)
@@ -278,12 +290,12 @@ hanoiEntry:
 	seqz t0, t0
 	sd t0, 128(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 128(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 120(sp)
 
@@ -299,13 +311,13 @@ hanoiEntry:
 	seqz t0, t0
 	sd t0, 112(sp)
 
-	# condBr cond_ ifTrue_13 ifFalse_2
+	# condBr cond_ ifTrue_15 ifFalse_2
 
 	# fetch variables
 	ld t1, 112(sp)
 	beqz t1, ifFalse_2
-	j ifTrue_13
-ifTrue_13:
+	j ifTrue_15
+ifTrue_15:
 
 	# load one$1 one
 
@@ -348,8 +360,8 @@ ifTrue_13:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_27
-	j next_27
+	# br next_32
+	j next_32
 ifFalse_2:
 
 	# load n$2 n
@@ -551,9 +563,9 @@ ifFalse_2:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_27
-	j next_27
-next_27:
+	# br next_32
+	j next_32
+next_32:
 
 	# ret void
 	addi sp, sp, 240
@@ -564,7 +576,7 @@ next_27:
 .type main, @function
 .globl main
 main:
-mainEntry8:
+mainEntry9:
 
 	# reserve space
 	addi sp, sp, -80
@@ -593,19 +605,21 @@ mainEntry8:
 	# get address of local var:getint
 	sd a0, 56(sp)
 
-	# store n getint
+	# n getint
 
 	# fetch variables
 	ld t1, 56(sp)
+
+	# store n getint
 
 	# get address of n points to
 	ld t3, 72(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_14
-	j whileCond_14
-whileCond_14:
+	# br whileCond_17
+	j whileCond_17
+whileCond_17:
 
 	# load n$1 n
 
@@ -628,12 +642,12 @@ whileCond_14:
 	sgtz t0, t0
 	sd t0, 40(sp)
 
+	# zext cond_tmp_ cond_gt_tmp_
+
 	# fetch variables
 	ld t1, 40(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_gt_tmp_
 	mv t0, t1
 	sd t0, 32(sp)
 
@@ -649,13 +663,13 @@ whileCond_14:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_ whileBody_14 next_28
+	# condBr cond_ whileBody_17 next_33
 
 	# fetch variables
 	ld t1, 24(sp)
-	beqz t1, next_28
-	j whileBody_14
-whileBody_14:
+	beqz t1, next_33
+	j whileBody_17
+whileBody_17:
 
 	# prepare params
 
@@ -739,19 +753,21 @@ whileBody_14:
 	sub t0, t1, t2
 	sd t0, 0(sp)
 
-	# store n result_
+	# n result_
 
 	# fetch variables
 	ld t1, 0(sp)
+
+	# store n result_
 
 	# get address of n points to
 	ld t3, 72(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_14
-	j whileCond_14
-next_28:
+	# br whileCond_17
+	j whileCond_17
+next_33:
 
 	# ret 
 

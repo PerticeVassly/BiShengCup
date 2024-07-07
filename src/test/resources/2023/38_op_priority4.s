@@ -43,10 +43,12 @@ mainEntry5:
 	# get address of local var:getint
 	sd a0, 336(sp)
 
-	# store a getint
+	# a @getint
 
 	# fetch variables
 	ld t1, 336(sp)
+
+	# store a getint
 
 	# get address of a points to
 	la t3, a
@@ -69,10 +71,12 @@ mainEntry5:
 	# get address of local var:getint$1
 	sd a0, 328(sp)
 
-	# store b getint$1
+	# b @getint$1
 
 	# fetch variables
 	ld t1, 328(sp)
+
+	# store b getint$1
 
 	# get address of b points to
 	la t3, b
@@ -95,10 +99,12 @@ mainEntry5:
 	# get address of local var:getint$2
 	sd a0, 320(sp)
 
-	# store c getint$2
+	# c @getint$2
 
 	# fetch variables
 	ld t1, 320(sp)
+
+	# store c getint$2
 
 	# get address of c points to
 	la t3, c
@@ -121,10 +127,12 @@ mainEntry5:
 	# get address of local var:getint$3
 	sd a0, 312(sp)
 
-	# store d getint$3
+	# d @getint$3
 
 	# fetch variables
 	ld t1, 312(sp)
+
+	# store d getint$3
 
 	# get address of d points to
 	la t3, d
@@ -147,10 +155,12 @@ mainEntry5:
 	# get address of local var:getint$4
 	sd a0, 304(sp)
 
-	# store e getint$4
+	# e @getint$4
 
 	# fetch variables
 	ld t1, 304(sp)
+
+	# store e getint$4
 
 	# get address of e points to
 	la t3, e
@@ -163,10 +173,12 @@ mainEntry5:
 	# get address of local var:flag
 	sd t0, 296(sp)
 
-	# store flag 
+	# flag 
 
 	# fetch variables
 	li t1, 0
+
+	# store flag 
 
 	# get address of flag points to
 	ld t3, 296(sp)
@@ -285,12 +297,12 @@ mainEntry5:
 	seqz t0, t0
 	sd t0, 200(sp)
 
+	# zext cond_tmp_ cond_neq_tmp_
+
 	# fetch variables
 	ld t1, 200(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_neq_tmp_
 	mv t0, t1
 	sd t0, 192(sp)
 
@@ -314,10 +326,12 @@ mainEntry5:
 	j ifTrue_10
 ifTrue_10:
 
-	# store flag 
+	# flag 
 
 	# fetch variables
 	li t1, 1
+
+	# store flag 
 
 	# get address of flag points to
 	ld t3, 296(sp)
@@ -438,12 +452,12 @@ secondCond_:
 	seqz t0, t0
 	sd t0, 104(sp)
 
+	# zext cond_tmp_$2 cond_eq_tmp_$1
+
 	# fetch variables
 	ld t1, 104(sp)
 
 	# get address of local var:cond_tmp_$2
-
-	# zext cond_tmp_$2 cond_eq_tmp_$1
 	mv t0, t1
 	sd t0, 96(sp)
 
@@ -558,12 +572,12 @@ secondCond_1:
 	seqz t0, t0
 	sd t0, 16(sp)
 
+	# zext cond_tmp_$1 cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 16(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_eq_tmp_
 	mv t0, t1
 	sd t0, 8(sp)
 

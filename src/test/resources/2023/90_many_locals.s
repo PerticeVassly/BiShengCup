@@ -23,6 +23,8 @@ fooEntry:
 	# get address of local var:arr
 	sd t0, 712(sp)
 
+	# arr 
+
 	# store arr 
 
 	# fetch variables
@@ -159,10 +161,12 @@ fooEntry:
 	# get address of local var:a
 	sd t0, 576(sp)
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 3
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 576(sp)
@@ -175,10 +179,12 @@ fooEntry:
 	# get address of local var:b
 	sd t0, 560(sp)
 
-	# store b 
+	# b 
 
 	# fetch variables
 	li t1, 7
+
+	# store b 
 
 	# get address of b points to
 	ld t3, 560(sp)
@@ -191,10 +197,12 @@ fooEntry:
 	# get address of local var:c
 	sd t0, 544(sp)
 
-	# store c 
+	# c 
 
 	# fetch variables
 	li t1, 5
+
+	# store c 
 
 	# get address of c points to
 	ld t3, 544(sp)
@@ -207,10 +215,12 @@ fooEntry:
 	# get address of local var:d
 	sd t0, 528(sp)
 
-	# store d 
+	# d 
 
 	# fetch variables
 	li t1, 6
+
+	# store d 
 
 	# get address of d points to
 	ld t3, 528(sp)
@@ -223,10 +233,12 @@ fooEntry:
 	# get address of local var:e
 	sd t0, 512(sp)
 
-	# store e 
+	# e 
 
 	# fetch variables
 	li t1, 1
+
+	# store e 
 
 	# get address of e points to
 	ld t3, 512(sp)
@@ -239,10 +251,12 @@ fooEntry:
 	# get address of local var:f
 	sd t0, 496(sp)
 
-	# store f 
+	# f 
 
 	# fetch variables
 	li t1, 0
+
+	# store f 
 
 	# get address of f points to
 	ld t3, 496(sp)
@@ -255,10 +269,12 @@ fooEntry:
 	# get address of local var:g
 	sd t0, 480(sp)
 
-	# store g 
+	# g 
 
 	# fetch variables
 	li t1, 3
+
+	# store g 
 
 	# get address of g points to
 	ld t3, 480(sp)
@@ -271,10 +287,12 @@ fooEntry:
 	# get address of local var:h
 	sd t0, 464(sp)
 
-	# store h 
+	# h 
 
 	# fetch variables
 	li t1, 5
+
+	# store h 
 
 	# get address of h points to
 	ld t3, 464(sp)
@@ -287,10 +305,12 @@ fooEntry:
 	# get address of local var:i
 	sd t0, 448(sp)
 
-	# store i 
+	# i 
 
 	# fetch variables
 	li t1, 4
+
+	# store i 
 
 	# get address of i points to
 	ld t3, 448(sp)
@@ -303,10 +323,12 @@ fooEntry:
 	# get address of local var:j
 	sd t0, 432(sp)
 
-	# store j 
+	# j 
 
 	# fetch variables
 	li t1, 2
+
+	# store j 
 
 	# get address of j points to
 	ld t3, 432(sp)
@@ -319,10 +341,12 @@ fooEntry:
 	# get address of local var:k
 	sd t0, 416(sp)
 
-	# store k 
+	# k 
 
 	# fetch variables
 	li t1, 7
+
+	# store k 
 
 	# get address of k points to
 	ld t3, 416(sp)
@@ -335,10 +359,12 @@ fooEntry:
 	# get address of local var:l
 	sd t0, 400(sp)
 
-	# store l 
+	# l 
 
 	# fetch variables
 	li t1, 9
+
+	# store l 
 
 	# get address of l points to
 	ld t3, 400(sp)
@@ -351,10 +377,12 @@ fooEntry:
 	# get address of local var:m
 	sd t0, 384(sp)
 
-	# store m 
+	# m 
 
 	# fetch variables
 	li t1, 8
+
+	# store m 
 
 	# get address of m points to
 	ld t3, 384(sp)
@@ -367,10 +395,12 @@ fooEntry:
 	# get address of local var:n
 	sd t0, 368(sp)
 
-	# store n 
+	# n 
 
 	# fetch variables
 	li t1, 1
+
+	# store n 
 
 	# get address of n points to
 	ld t3, 368(sp)
@@ -383,10 +413,12 @@ fooEntry:
 	# get address of local var:o
 	sd t0, 352(sp)
 
-	# store o 
+	# o 
 
 	# fetch variables
 	li t1, 4
+
+	# store o 
 
 	# get address of o points to
 	ld t3, 352(sp)
@@ -399,10 +431,12 @@ fooEntry:
 	# get address of local var:p
 	sd t0, 336(sp)
 
-	# store p 
+	# p 
 
 	# fetch variables
 	li t1, 6
+
+	# store p 
 
 	# get address of p points to
 	ld t3, 336(sp)
@@ -565,10 +599,12 @@ fooEntry:
 	add t0, t1, t2
 	sd t0, 192(sp)
 
-	# store sum1 result_$6
+	# sum1 result_$6
 
 	# fetch variables
 	ld t1, 192(sp)
+
+	# store sum1 result_$6
 
 	# get address of sum1 points to
 	ld t3, 320(sp)
@@ -731,10 +767,12 @@ fooEntry:
 	add t0, t1, t2
 	sd t0, 56(sp)
 
-	# store sum2 result_$13
+	# sum2 result_$13
 
 	# fetch variables
 	ld t1, 56(sp)
+
+	# store sum2 result_$13
 
 	# get address of sum2 points to
 	ld t3, 184(sp)
@@ -828,7 +866,7 @@ fooEntry:
 .type main, @function
 .globl main
 main:
-mainEntry24:
+mainEntry26:
 
 	# reserve space
 	addi sp, sp, -968
@@ -841,10 +879,12 @@ mainEntry24:
 	# get address of local var:a
 	sd t0, 960(sp)
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 3
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 960(sp)
@@ -857,10 +897,12 @@ mainEntry24:
 	# get address of local var:b
 	sd t0, 944(sp)
 
-	# store b 
+	# b 
 
 	# fetch variables
 	li t1, 7
+
+	# store b 
 
 	# get address of b points to
 	ld t3, 944(sp)
@@ -873,10 +915,12 @@ mainEntry24:
 	# get address of local var:c
 	sd t0, 928(sp)
 
-	# store c 
+	# c 
 
 	# fetch variables
 	li t1, 5
+
+	# store c 
 
 	# get address of c points to
 	ld t3, 928(sp)
@@ -889,10 +933,12 @@ mainEntry24:
 	# get address of local var:d
 	sd t0, 912(sp)
 
-	# store d 
+	# d 
 
 	# fetch variables
 	li t1, 6
+
+	# store d 
 
 	# get address of d points to
 	ld t3, 912(sp)
@@ -905,10 +951,12 @@ mainEntry24:
 	# get address of local var:e
 	sd t0, 896(sp)
 
-	# store e 
+	# e 
 
 	# fetch variables
 	li t1, 1
+
+	# store e 
 
 	# get address of e points to
 	ld t3, 896(sp)
@@ -921,10 +969,12 @@ mainEntry24:
 	# get address of local var:f
 	sd t0, 880(sp)
 
-	# store f 
+	# f 
 
 	# fetch variables
 	li t1, 0
+
+	# store f 
 
 	# get address of f points to
 	ld t3, 880(sp)
@@ -937,10 +987,12 @@ mainEntry24:
 	# get address of local var:g
 	sd t0, 864(sp)
 
-	# store g 
+	# g 
 
 	# fetch variables
 	li t1, 3
+
+	# store g 
 
 	# get address of g points to
 	ld t3, 864(sp)
@@ -953,10 +1005,12 @@ mainEntry24:
 	# get address of local var:h
 	sd t0, 848(sp)
 
-	# store h 
+	# h 
 
 	# fetch variables
 	li t1, 5
+
+	# store h 
 
 	# get address of h points to
 	ld t3, 848(sp)
@@ -969,10 +1023,12 @@ mainEntry24:
 	# get address of local var:i
 	sd t0, 832(sp)
 
-	# store i 
+	# i 
 
 	# fetch variables
 	li t1, 4
+
+	# store i 
 
 	# get address of i points to
 	ld t3, 832(sp)
@@ -985,10 +1041,12 @@ mainEntry24:
 	# get address of local var:j
 	sd t0, 816(sp)
 
-	# store j 
+	# j 
 
 	# fetch variables
 	li t1, 2
+
+	# store j 
 
 	# get address of j points to
 	ld t3, 816(sp)
@@ -1001,10 +1059,12 @@ mainEntry24:
 	# get address of local var:k
 	sd t0, 800(sp)
 
-	# store k 
+	# k 
 
 	# fetch variables
 	li t1, 7
+
+	# store k 
 
 	# get address of k points to
 	ld t3, 800(sp)
@@ -1017,10 +1077,12 @@ mainEntry24:
 	# get address of local var:l
 	sd t0, 784(sp)
 
-	# store l 
+	# l 
 
 	# fetch variables
 	li t1, 9
+
+	# store l 
 
 	# get address of l points to
 	ld t3, 784(sp)
@@ -1033,10 +1095,12 @@ mainEntry24:
 	# get address of local var:m
 	sd t0, 768(sp)
 
-	# store m 
+	# m 
 
 	# fetch variables
 	li t1, 8
+
+	# store m 
 
 	# get address of m points to
 	ld t3, 768(sp)
@@ -1049,10 +1113,12 @@ mainEntry24:
 	# get address of local var:n
 	sd t0, 752(sp)
 
-	# store n 
+	# n 
 
 	# fetch variables
 	li t1, 1
+
+	# store n 
 
 	# get address of n points to
 	ld t3, 752(sp)
@@ -1065,10 +1131,12 @@ mainEntry24:
 	# get address of local var:o
 	sd t0, 736(sp)
 
-	# store o 
+	# o 
 
 	# fetch variables
 	li t1, 4
+
+	# store o 
 
 	# get address of o points to
 	ld t3, 736(sp)
@@ -1081,10 +1149,12 @@ mainEntry24:
 	# get address of local var:p
 	sd t0, 720(sp)
 
-	# store p 
+	# p 
 
 	# fetch variables
 	li t1, 6
+
+	# store p 
 
 	# get address of p points to
 	ld t3, 720(sp)
@@ -1247,10 +1317,12 @@ mainEntry24:
 	add t0, t1, t2
 	sd t0, 576(sp)
 
-	# store sum1 result_$6
+	# sum1 result_$6
 
 	# fetch variables
 	ld t1, 576(sp)
+
+	# store sum1 result_$6
 
 	# get address of sum1 points to
 	ld t3, 704(sp)
@@ -1413,10 +1485,12 @@ mainEntry24:
 	add t0, t1, t2
 	sd t0, 440(sp)
 
-	# store sum2 result_$13
+	# sum2 result_$13
 
 	# fetch variables
 	ld t1, 440(sp)
+
+	# store sum2 result_$13
 
 	# get address of sum2 points to
 	ld t3, 568(sp)
@@ -1459,10 +1533,12 @@ mainEntry24:
 	add t0, t1, t2
 	sd t0, 416(sp)
 
-	# store sum1 result_$14
+	# sum1 result_$14
 
 	# fetch variables
 	ld t1, 416(sp)
+
+	# store sum1 result_$14
 
 	# get address of sum1 points to
 	ld t3, 704(sp)
@@ -1475,10 +1551,12 @@ mainEntry24:
 	# get address of local var:q
 	sd t0, 408(sp)
 
-	# store q 
+	# q 
 
 	# fetch variables
 	li t1, 4
+
+	# store q 
 
 	# get address of q points to
 	ld t3, 408(sp)
@@ -1491,10 +1569,12 @@ mainEntry24:
 	# get address of local var:r
 	sd t0, 392(sp)
 
-	# store r 
+	# r 
 
 	# fetch variables
 	li t1, 7
+
+	# store r 
 
 	# get address of r points to
 	ld t3, 392(sp)
@@ -1507,10 +1587,12 @@ mainEntry24:
 	# get address of local var:s
 	sd t0, 376(sp)
 
-	# store s 
+	# s 
 
 	# fetch variables
 	li t1, 2
+
+	# store s 
 
 	# get address of s points to
 	ld t3, 376(sp)
@@ -1523,10 +1605,12 @@ mainEntry24:
 	# get address of local var:t
 	sd t0, 360(sp)
 
-	# store t 
+	# t 
 
 	# fetch variables
 	li t1, 5
+
+	# store t 
 
 	# get address of t points to
 	ld t3, 360(sp)
@@ -1539,10 +1623,12 @@ mainEntry24:
 	# get address of local var:u
 	sd t0, 344(sp)
 
-	# store u 
+	# u 
 
 	# fetch variables
 	li t1, 8
+
+	# store u 
 
 	# get address of u points to
 	ld t3, 344(sp)
@@ -1555,10 +1641,12 @@ mainEntry24:
 	# get address of local var:v
 	sd t0, 328(sp)
 
-	# store v 
+	# v 
 
 	# fetch variables
 	li t1, 0
+
+	# store v 
 
 	# get address of v points to
 	ld t3, 328(sp)
@@ -1571,10 +1659,12 @@ mainEntry24:
 	# get address of local var:w
 	sd t0, 312(sp)
 
-	# store w 
+	# w 
 
 	# fetch variables
 	li t1, 6
+
+	# store w 
 
 	# get address of w points to
 	ld t3, 312(sp)
@@ -1587,10 +1677,12 @@ mainEntry24:
 	# get address of local var:x
 	sd t0, 296(sp)
 
-	# store x 
+	# x 
 
 	# fetch variables
 	li t1, 3
+
+	# store x 
 
 	# get address of x points to
 	ld t3, 296(sp)
@@ -1633,10 +1725,12 @@ mainEntry24:
 	add t0, t1, t2
 	sd t0, 264(sp)
 
-	# store sum2 result_$15
+	# sum2 result_$15
 
 	# fetch variables
 	ld t1, 264(sp)
+
+	# store sum2 result_$15
 
 	# get address of sum2 points to
 	ld t3, 568(sp)
@@ -1653,10 +1747,12 @@ mainEntry24:
 	ld t0, 0(t3)
 	sd t0, 256(sp)
 
-	# store a i$2
+	# a i$2
 
 	# fetch variables
 	ld t1, 256(sp)
+
+	# store a i$2
 
 	# get address of a points to
 	ld t3, 960(sp)
@@ -1673,10 +1769,12 @@ mainEntry24:
 	ld t0, 0(t3)
 	sd t0, 248(sp)
 
-	# store b j$2
+	# b j$2
 
 	# fetch variables
 	ld t1, 248(sp)
+
+	# store b j$2
 
 	# get address of b points to
 	ld t3, 944(sp)
@@ -1693,10 +1791,12 @@ mainEntry24:
 	ld t0, 0(t3)
 	sd t0, 240(sp)
 
-	# store c k$2
+	# c k$2
 
 	# fetch variables
 	ld t1, 240(sp)
+
+	# store c k$2
 
 	# get address of c points to
 	ld t3, 928(sp)
@@ -1713,10 +1813,12 @@ mainEntry24:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# store d l$2
+	# d l$2
 
 	# fetch variables
 	ld t1, 232(sp)
+
+	# store d l$2
 
 	# get address of d points to
 	ld t3, 912(sp)
@@ -1733,10 +1835,12 @@ mainEntry24:
 	ld t0, 0(t3)
 	sd t0, 224(sp)
 
-	# store e m$2
+	# e m$2
 
 	# fetch variables
 	ld t1, 224(sp)
+
+	# store e m$2
 
 	# get address of e points to
 	ld t3, 896(sp)
@@ -1753,10 +1857,12 @@ mainEntry24:
 	ld t0, 0(t3)
 	sd t0, 216(sp)
 
-	# store f n$2
+	# f n$2
 
 	# fetch variables
 	ld t1, 216(sp)
+
+	# store f n$2
 
 	# get address of f points to
 	ld t3, 880(sp)
@@ -1773,10 +1879,12 @@ mainEntry24:
 	ld t0, 0(t3)
 	sd t0, 208(sp)
 
-	# store g o$2
+	# g o$2
 
 	# fetch variables
 	ld t1, 208(sp)
+
+	# store g o$2
 
 	# get address of g points to
 	ld t3, 864(sp)
@@ -1793,10 +1901,12 @@ mainEntry24:
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# store h p$2
+	# h p$2
 
 	# fetch variables
 	ld t1, 200(sp)
+
+	# store h p$2
 
 	# get address of h points to
 	ld t3, 848(sp)
@@ -1959,10 +2069,12 @@ mainEntry24:
 	add t0, t1, t2
 	sd t0, 64(sp)
 
-	# store sum3 result_$22
+	# sum3 result_$22
 
 	# fetch variables
 	ld t1, 64(sp)
+
+	# store sum3 result_$22
 
 	# get address of sum3 points to
 	ld t3, 192(sp)
@@ -2025,10 +2137,12 @@ mainEntry24:
 	add t0, t1, t2
 	sd t0, 8(sp)
 
-	# store sum result_$24
+	# sum result_$24
 
 	# fetch variables
 	ld t1, 8(sp)
+
+	# store sum result_$24
 
 	# get address of sum points to
 	ld t3, 56(sp)

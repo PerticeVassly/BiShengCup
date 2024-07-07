@@ -30,7 +30,7 @@ defnEntry:
 .type main, @function
 .globl main
 main:
-mainEntry78:
+mainEntry81:
 
 	# reserve space
 	addi sp, sp, -32
@@ -59,10 +59,12 @@ mainEntry78:
 	# get address of local var:defn
 	sd a0, 8(sp)
 
-	# store a defn
+	# a defn
 
 	# fetch variables
 	ld t1, 8(sp)
+
+	# store a defn
 
 	# get address of a points to
 	ld t3, 24(sp)

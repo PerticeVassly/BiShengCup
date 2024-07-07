@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry33:
+mainEntry35:
 
 	# reserve space
 	addi sp, sp, -400
@@ -42,50 +42,60 @@ mainEntry33:
 	# get address of local var:result
 	sd t0, 328(sp)
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 5
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 392(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# store b 
+	# b 
 
 	# fetch variables
 	li t1, 5
+
+	# store b 
 
 	# get address of b points to
 	ld t3, 376(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# store c 
+	# c 
 
 	# fetch variables
 	li t1, 1
+
+	# store c 
 
 	# get address of c points to
 	ld t3, 360(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# store d 
+	# d 
 
 	# fetch variables
 	li t1, -2
+
+	# store d 
 
 	# get address of d points to
 	ld t3, 344(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# store result 
+	# result 
 
 	# fetch variables
 	li t1, 2
+
+	# store result 
 
 	# get address of result points to
 	ld t3, 328(sp)
@@ -132,12 +142,12 @@ mainEntry33:
 	slt t0, t1, t2
 	sd t0, 288(sp)
 
+	# zext cond_tmp_ cond_lt_tmp_
+
 	# fetch variables
 	ld t1, 288(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
 	sd t0, 280(sp)
 
@@ -153,13 +163,13 @@ mainEntry33:
 	seqz t0, t0
 	sd t0, 272(sp)
 
-	# condBr cond_ ifTrue_31 secondCond_9
+	# condBr cond_ ifTrue_33 secondCond_9
 
 	# fetch variables
 	ld t1, 272(sp)
 	beqz t1, secondCond_9
-	j ifTrue_31
-ifTrue_31:
+	j ifTrue_33
+ifTrue_33:
 
 	# load result$1 result
 
@@ -188,9 +198,9 @@ ifTrue_31:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_89
-	j next_89
-next_89:
+	# br next_94
+	j next_94
+next_94:
 
 	# load d$2 d
 
@@ -232,12 +242,12 @@ next_89:
 	slt t0, t1, t2
 	sd t0, 232(sp)
 
+	# zext cond_tmp_$3 cond_lt_tmp_$1
+
 	# fetch variables
 	ld t1, 232(sp)
 
 	# get address of local var:cond_tmp_$3
-
-	# zext cond_tmp_$3 cond_lt_tmp_$1
 	mv t0, t1
 	sd t0, 224(sp)
 
@@ -253,12 +263,12 @@ next_89:
 	seqz t0, t0
 	sd t0, 216(sp)
 
-	# condBr cond_$3 ifTrue_32 secondCond_11
+	# condBr cond_$3 ifTrue_34 secondCond_11
 
 	# fetch variables
 	ld t1, 216(sp)
 	beqz t1, secondCond_11
-	j ifTrue_32
+	j ifTrue_34
 secondCond_9:
 
 	# load a$1 a
@@ -303,12 +313,12 @@ secondCond_9:
 	seqz t0, t0
 	sd t0, 184(sp)
 
+	# zext cond_tmp_$1 cond_neq_tmp_
+
 	# fetch variables
 	ld t1, 184(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_neq_tmp_
 	mv t0, t1
 	sd t0, 176(sp)
 
@@ -324,11 +334,11 @@ secondCond_9:
 	seqz t0, t0
 	sd t0, 168(sp)
 
-	# condBr cond_$1 secondCond_10 next_89
+	# condBr cond_$1 secondCond_10 next_94
 
 	# fetch variables
 	ld t1, 168(sp)
-	beqz t1, next_89
+	beqz t1, next_94
 	j secondCond_10
 secondCond_10:
 
@@ -374,12 +384,12 @@ secondCond_10:
 	seqz t0, t0
 	sd t0, 136(sp)
 
+	# zext cond_tmp_$2 cond_neq_tmp_$1
+
 	# fetch variables
 	ld t1, 136(sp)
 
 	# get address of local var:cond_tmp_$2
-
-	# zext cond_tmp_$2 cond_neq_tmp_$1
 	mv t0, t1
 	sd t0, 128(sp)
 
@@ -395,12 +405,12 @@ secondCond_10:
 	seqz t0, t0
 	sd t0, 120(sp)
 
-	# condBr cond_$2 ifTrue_31 next_89
+	# condBr cond_$2 ifTrue_33 next_94
 
 	# fetch variables
 	ld t1, 120(sp)
-	beqz t1, next_89
-	j ifTrue_31
+	beqz t1, next_94
+	j ifTrue_33
 
 	# cmp   cond_normalize_
 
@@ -414,18 +424,20 @@ secondCond_10:
 	seqz t0, t0
 	sd t0, 112(sp)
 
-	# condBr cond_normalize_ ifTrue_31 next_89
+	# condBr cond_normalize_ ifTrue_33 next_94
 
 	# fetch variables
 	ld t1, 112(sp)
-	beqz t1, next_89
-	j ifTrue_31
-ifTrue_32:
+	beqz t1, next_94
+	j ifTrue_33
+ifTrue_34:
 
-	# store result 
+	# result 
 
 	# fetch variables
 	li t1, 4
+
+	# store result 
 
 	# get address of result points to
 	ld t3, 328(sp)
@@ -459,9 +471,9 @@ ifTrue_32:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_90
-	j next_90
-next_90:
+	# br next_95
+	j next_95
+next_95:
 
 	# ret 
 
@@ -514,12 +526,12 @@ secondCond_11:
 	seqz t0, t0
 	sd t0, 72(sp)
 
+	# zext cond_tmp_$4 cond_neq_tmp_$2
+
 	# fetch variables
 	ld t1, 72(sp)
 
 	# get address of local var:cond_tmp_$4
-
-	# zext cond_tmp_$4 cond_neq_tmp_$2
 	mv t0, t1
 	sd t0, 64(sp)
 
@@ -535,11 +547,11 @@ secondCond_11:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_$4 secondCond_12 next_90
+	# condBr cond_$4 secondCond_12 next_95
 
 	# fetch variables
 	ld t1, 56(sp)
-	beqz t1, next_90
+	beqz t1, next_95
 	j secondCond_12
 secondCond_12:
 
@@ -585,12 +597,12 @@ secondCond_12:
 	seqz t0, t0
 	sd t0, 24(sp)
 
+	# zext cond_tmp_$5 cond_neq_tmp_$3
+
 	# fetch variables
 	ld t1, 24(sp)
 
 	# get address of local var:cond_tmp_$5
-
-	# zext cond_tmp_$5 cond_neq_tmp_$3
 	mv t0, t1
 	sd t0, 16(sp)
 
@@ -606,12 +618,12 @@ secondCond_12:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_$5 ifTrue_32 next_90
+	# condBr cond_$5 ifTrue_34 next_95
 
 	# fetch variables
 	ld t1, 8(sp)
-	beqz t1, next_90
-	j ifTrue_32
+	beqz t1, next_95
+	j ifTrue_34
 
 	# cmp   cond_normalize_$1
 
@@ -625,9 +637,9 @@ secondCond_12:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_$1 ifTrue_32 next_90
+	# condBr cond_normalize_$1 ifTrue_34 next_95
 
 	# fetch variables
 	ld t1, 0(sp)
-	beqz t1, next_90
-	j ifTrue_32
+	beqz t1, next_95
+	j ifTrue_34

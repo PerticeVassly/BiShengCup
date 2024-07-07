@@ -23,10 +23,12 @@ if_ifElse_Entry:
 	# get address of local var:a
 	sd t0, 112(sp)
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 5
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 112(sp)
@@ -39,10 +41,12 @@ if_ifElse_Entry:
 	# get address of local var:b
 	sd t0, 96(sp)
 
-	# store b 
+	# b 
 
 	# fetch variables
 	li t1, 10
+
+	# store b 
 
 	# get address of b points to
 	ld t3, 96(sp)
@@ -70,12 +74,12 @@ if_ifElse_Entry:
 	seqz t0, t0
 	sd t0, 72(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 72(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 64(sp)
 
@@ -91,13 +95,13 @@ if_ifElse_Entry:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ ifTrue_301 next_537
+	# condBr cond_ ifTrue_305 next_545
 
 	# fetch variables
 	ld t1, 56(sp)
-	beqz t1, next_537
-	j ifTrue_301
-ifTrue_301:
+	beqz t1, next_545
+	j ifTrue_305
+ifTrue_305:
 
 	# load b$1 b
 
@@ -120,12 +124,12 @@ ifTrue_301:
 	seqz t0, t0
 	sd t0, 40(sp)
 
+	# zext cond_tmp_$1 cond_eq_tmp_$1
+
 	# fetch variables
 	ld t1, 40(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_eq_tmp_$1
 	mv t0, t1
 	sd t0, 32(sp)
 
@@ -141,13 +145,13 @@ ifTrue_301:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_$1 ifTrue_302 ifFalse_130
+	# condBr cond_$1 ifTrue_306 ifFalse_131
 
 	# fetch variables
 	ld t1, 24(sp)
-	beqz t1, ifFalse_130
-	j ifTrue_302
-next_537:
+	beqz t1, ifFalse_131
+	j ifTrue_306
+next_545:
 
 	# load a$3 a
 
@@ -169,21 +173,23 @@ next_537:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_302:
+ifTrue_306:
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 25
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 112(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_538
-	j next_538
-ifFalse_130:
+	# br next_546
+	j next_546
+ifFalse_131:
 
 	# load a$2 a
 
@@ -205,26 +211,28 @@ ifFalse_130:
 	add t0, t1, t2
 	sd t0, 0(sp)
 
-	# store a result_
+	# a result_
 
 	# fetch variables
 	ld t1, 0(sp)
+
+	# store a result_
 
 	# get address of a points to
 	ld t3, 112(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_538
-	j next_538
-next_538:
+	# br next_546
+	j next_546
+next_546:
 
-	# br next_537
-	j next_537
+	# br next_545
+	j next_545
 .type main, @function
 .globl main
 main:
-mainEntry81:
+mainEntry84:
 
 	# reserve space
 	addi sp, sp, -8

@@ -8,7 +8,7 @@ n:
 .type main, @function
 .globl main
 main:
-mainEntry56:
+mainEntry58:
 
 	# reserve space
 	addi sp, sp, -1320
@@ -217,19 +217,21 @@ mainEntry56:
 	# get address of local var:getint
 	sd a0, 816(sp)
 
-	# store b getint
+	# b getint
 
 	# fetch variables
 	ld t1, 816(sp)
+
+	# store b getint
 
 	# get address of b points to
 	ld t3, 832(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_191
-	j whileCond_191
-whileCond_191:
+	# br whileCond_194
+	j whileCond_194
+whileCond_194:
 
 	# load b$1 b
 
@@ -252,12 +254,12 @@ whileCond_191:
 	seqz t0, t0
 	sd t0, 800(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 800(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 792(sp)
 
@@ -273,13 +275,13 @@ whileCond_191:
 	seqz t0, t0
 	sd t0, 784(sp)
 
-	# condBr cond_ whileBody_191 next_449
+	# condBr cond_ whileBody_194 next_454
 
 	# fetch variables
 	ld t1, 784(sp)
-	beqz t1, next_449
-	j whileBody_191
-whileBody_191:
+	beqz t1, next_454
+	j whileBody_194
+whileBody_194:
 
 	# load b$2 b
 
@@ -301,24 +303,28 @@ whileBody_191:
 	add t0, t1, t2
 	sd t0, 768(sp)
 
-	# store b result_
+	# b result_
 
 	# fetch variables
 	ld t1, 768(sp)
+
+	# store b result_
 
 	# get address of b points to
 	ld t3, 832(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_191
-	j whileCond_191
-next_449:
+	# br whileCond_194
+	j whileCond_194
+next_454:
 
-	# store a0 
+	# a0 
 
 	# fetch variables
 	li t1, 0
+
+	# store a0 
 
 	# get address of a0 points to
 	ld t3, 1312(sp)
@@ -345,10 +351,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 752(sp)
 
-	# store a1 result_$1
+	# a1 result_$1
 
 	# fetch variables
 	ld t1, 752(sp)
+
+	# store a1 result_$1
 
 	# get address of a1 points to
 	ld t3, 1296(sp)
@@ -375,10 +383,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 736(sp)
 
-	# store a2 result_$2
+	# a2 result_$2
 
 	# fetch variables
 	ld t1, 736(sp)
+
+	# store a2 result_$2
 
 	# get address of a2 points to
 	ld t3, 1280(sp)
@@ -405,10 +415,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 720(sp)
 
-	# store a3 result_$3
+	# a3 result_$3
 
 	# fetch variables
 	ld t1, 720(sp)
+
+	# store a3 result_$3
 
 	# get address of a3 points to
 	ld t3, 1264(sp)
@@ -435,10 +447,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 704(sp)
 
-	# store a4 result_$4
+	# a4 result_$4
 
 	# fetch variables
 	ld t1, 704(sp)
+
+	# store a4 result_$4
 
 	# get address of a4 points to
 	ld t3, 1248(sp)
@@ -465,10 +479,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 688(sp)
 
-	# store a5 result_$5
+	# a5 result_$5
 
 	# fetch variables
 	ld t1, 688(sp)
+
+	# store a5 result_$5
 
 	# get address of a5 points to
 	ld t3, 1232(sp)
@@ -495,10 +511,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 672(sp)
 
-	# store a6 result_$6
+	# a6 result_$6
 
 	# fetch variables
 	ld t1, 672(sp)
+
+	# store a6 result_$6
 
 	# get address of a6 points to
 	ld t3, 1216(sp)
@@ -525,10 +543,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 656(sp)
 
-	# store a7 result_$7
+	# a7 result_$7
 
 	# fetch variables
 	ld t1, 656(sp)
+
+	# store a7 result_$7
 
 	# get address of a7 points to
 	ld t3, 1200(sp)
@@ -555,10 +575,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 640(sp)
 
-	# store a8 result_$8
+	# a8 result_$8
 
 	# fetch variables
 	ld t1, 640(sp)
+
+	# store a8 result_$8
 
 	# get address of a8 points to
 	ld t3, 1184(sp)
@@ -585,10 +607,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 624(sp)
 
-	# store a9 result_$9
+	# a9 result_$9
 
 	# fetch variables
 	ld t1, 624(sp)
+
+	# store a9 result_$9
 
 	# get address of a9 points to
 	ld t3, 1168(sp)
@@ -615,10 +639,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 608(sp)
 
-	# store a10 result_$10
+	# a10 result_$10
 
 	# fetch variables
 	ld t1, 608(sp)
+
+	# store a10 result_$10
 
 	# get address of a10 points to
 	ld t3, 1152(sp)
@@ -645,10 +671,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 592(sp)
 
-	# store a11 result_$11
+	# a11 result_$11
 
 	# fetch variables
 	ld t1, 592(sp)
+
+	# store a11 result_$11
 
 	# get address of a11 points to
 	ld t3, 1136(sp)
@@ -675,10 +703,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 576(sp)
 
-	# store a12 result_$12
+	# a12 result_$12
 
 	# fetch variables
 	ld t1, 576(sp)
+
+	# store a12 result_$12
 
 	# get address of a12 points to
 	ld t3, 1120(sp)
@@ -705,10 +735,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 560(sp)
 
-	# store a13 result_$13
+	# a13 result_$13
 
 	# fetch variables
 	ld t1, 560(sp)
+
+	# store a13 result_$13
 
 	# get address of a13 points to
 	ld t3, 1104(sp)
@@ -735,10 +767,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 544(sp)
 
-	# store a14 result_$14
+	# a14 result_$14
 
 	# fetch variables
 	ld t1, 544(sp)
+
+	# store a14 result_$14
 
 	# get address of a14 points to
 	ld t3, 1088(sp)
@@ -765,10 +799,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 528(sp)
 
-	# store a15 result_$15
+	# a15 result_$15
 
 	# fetch variables
 	ld t1, 528(sp)
+
+	# store a15 result_$15
 
 	# get address of a15 points to
 	ld t3, 1072(sp)
@@ -795,10 +831,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 512(sp)
 
-	# store a16 result_$16
+	# a16 result_$16
 
 	# fetch variables
 	ld t1, 512(sp)
+
+	# store a16 result_$16
 
 	# get address of a16 points to
 	ld t3, 1056(sp)
@@ -825,10 +863,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 496(sp)
 
-	# store a17 result_$17
+	# a17 result_$17
 
 	# fetch variables
 	ld t1, 496(sp)
+
+	# store a17 result_$17
 
 	# get address of a17 points to
 	ld t3, 1040(sp)
@@ -855,10 +895,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 480(sp)
 
-	# store a18 result_$18
+	# a18 result_$18
 
 	# fetch variables
 	ld t1, 480(sp)
+
+	# store a18 result_$18
 
 	# get address of a18 points to
 	ld t3, 1024(sp)
@@ -885,10 +927,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 464(sp)
 
-	# store a19 result_$19
+	# a19 result_$19
 
 	# fetch variables
 	ld t1, 464(sp)
+
+	# store a19 result_$19
 
 	# get address of a19 points to
 	ld t3, 1008(sp)
@@ -915,10 +959,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 448(sp)
 
-	# store a20 result_$20
+	# a20 result_$20
 
 	# fetch variables
 	ld t1, 448(sp)
+
+	# store a20 result_$20
 
 	# get address of a20 points to
 	ld t3, 992(sp)
@@ -945,10 +991,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 432(sp)
 
-	# store a21 result_$21
+	# a21 result_$21
 
 	# fetch variables
 	ld t1, 432(sp)
+
+	# store a21 result_$21
 
 	# get address of a21 points to
 	ld t3, 976(sp)
@@ -975,10 +1023,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 416(sp)
 
-	# store a22 result_$22
+	# a22 result_$22
 
 	# fetch variables
 	ld t1, 416(sp)
+
+	# store a22 result_$22
 
 	# get address of a22 points to
 	ld t3, 960(sp)
@@ -1005,10 +1055,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 400(sp)
 
-	# store a23 result_$23
+	# a23 result_$23
 
 	# fetch variables
 	ld t1, 400(sp)
+
+	# store a23 result_$23
 
 	# get address of a23 points to
 	ld t3, 944(sp)
@@ -1035,10 +1087,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 384(sp)
 
-	# store a24 result_$24
+	# a24 result_$24
 
 	# fetch variables
 	ld t1, 384(sp)
+
+	# store a24 result_$24
 
 	# get address of a24 points to
 	ld t3, 928(sp)
@@ -1065,10 +1119,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 368(sp)
 
-	# store a25 result_$25
+	# a25 result_$25
 
 	# fetch variables
 	ld t1, 368(sp)
+
+	# store a25 result_$25
 
 	# get address of a25 points to
 	ld t3, 912(sp)
@@ -1095,10 +1151,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 352(sp)
 
-	# store a26 result_$26
+	# a26 result_$26
 
 	# fetch variables
 	ld t1, 352(sp)
+
+	# store a26 result_$26
 
 	# get address of a26 points to
 	ld t3, 896(sp)
@@ -1125,10 +1183,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 336(sp)
 
-	# store a27 result_$27
+	# a27 result_$27
 
 	# fetch variables
 	ld t1, 336(sp)
+
+	# store a27 result_$27
 
 	# get address of a27 points to
 	ld t3, 880(sp)
@@ -1155,10 +1215,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 320(sp)
 
-	# store a28 result_$28
+	# a28 result_$28
 
 	# fetch variables
 	ld t1, 320(sp)
+
+	# store a28 result_$28
 
 	# get address of a28 points to
 	ld t3, 864(sp)
@@ -1185,10 +1247,12 @@ next_449:
 	add t0, t1, t2
 	sd t0, 304(sp)
 
-	# store a29 result_$29
+	# a29 result_$29
 
 	# fetch variables
 	ld t1, 304(sp)
+
+	# store a29 result_$29
 
 	# get address of a29 points to
 	ld t3, 848(sp)
@@ -2017,10 +2081,12 @@ next_449:
 	# get address of local var:newline
 	sd t0, 40(sp)
 
-	# store newline 
+	# newline 
 
 	# fetch variables
 	li t1, 10
+
+	# store newline 
 
 	# get address of newline points to
 	ld t3, 40(sp)

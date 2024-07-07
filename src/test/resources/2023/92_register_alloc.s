@@ -125,10 +125,12 @@ funcEntry2:
 	# get address of local var:a
 	sd t0, 3976(sp)
 
-	# store a 0
+	# a 0
 
 	# fetch variables
 	ld t1, 3992(sp)
+
+	# store a 0
 
 	# get address of a points to
 	ld t3, 3976(sp)
@@ -141,10 +143,12 @@ funcEntry2:
 	# get address of local var:b
 	sd t0, 3960(sp)
 
-	# store b 1
+	# b 1
 
 	# fetch variables
 	ld t1, 3984(sp)
+
+	# store b 1
 
 	# get address of b points to
 	ld t3, 3960(sp)
@@ -187,10 +191,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 3912(sp)
 
-	# store i result_
+	# i result_
 
 	# fetch variables
 	ld t1, 3912(sp)
+
+	# store i result_
 
 	# get address of i points to
 	ld t3, 3944(sp)
@@ -429,10 +435,12 @@ funcEntry2:
 	# get address of local var:getint
 	sd a0, 3328(sp)
 
-	# store c1 getint
+	# c1 getint
 
 	# fetch variables
 	ld t1, 3328(sp)
+
+	# store c1 getint
 
 	# get address of c1 points to
 	ld t3, 3904(sp)
@@ -455,10 +463,12 @@ funcEntry2:
 	# get address of local var:getint$1
 	sd a0, 3320(sp)
 
-	# store c2 getint$1
+	# c2 getint$1
 
 	# fetch variables
 	ld t1, 3320(sp)
+
+	# store c2 getint$1
 
 	# get address of c2 points to
 	ld t3, 3888(sp)
@@ -481,10 +491,12 @@ funcEntry2:
 	# get address of local var:getint$2
 	sd a0, 3312(sp)
 
-	# store c3 getint$2
+	# c3 getint$2
 
 	# fetch variables
 	ld t1, 3312(sp)
+
+	# store c3 getint$2
 
 	# get address of c3 points to
 	ld t3, 3872(sp)
@@ -507,10 +519,12 @@ funcEntry2:
 	# get address of local var:getint$3
 	sd a0, 3304(sp)
 
-	# store c4 getint$3
+	# c4 getint$3
 
 	# fetch variables
 	ld t1, 3304(sp)
+
+	# store c4 getint$3
 
 	# get address of c4 points to
 	ld t3, 3856(sp)
@@ -557,10 +571,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 3272(sp)
 
-	# store d1 result_$2
+	# d1 result_$2
 
 	# fetch variables
 	ld t1, 3272(sp)
+
+	# store d1 result_$2
 
 	# get address of d1 points to
 	ld t3, 3840(sp)
@@ -607,10 +623,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 3240(sp)
 
-	# store d2 result_$4
+	# d2 result_$4
 
 	# fetch variables
 	ld t1, 3240(sp)
+
+	# store d2 result_$4
 
 	# get address of d2 points to
 	ld t3, 3824(sp)
@@ -657,10 +675,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 3208(sp)
 
-	# store d3 result_$6
+	# d3 result_$6
 
 	# fetch variables
 	ld t1, 3208(sp)
+
+	# store d3 result_$6
 
 	# get address of d3 points to
 	ld t3, 3808(sp)
@@ -707,10 +727,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 3176(sp)
 
-	# store d4 result_$8
+	# d4 result_$8
 
 	# fetch variables
 	ld t1, 3176(sp)
+
+	# store d4 result_$8
 
 	# get address of d4 points to
 	ld t3, 3792(sp)
@@ -757,10 +779,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 3144(sp)
 
-	# store e1 result_$10
+	# e1 result_$10
 
 	# fetch variables
 	ld t1, 3144(sp)
+
+	# store e1 result_$10
 
 	# get address of e1 points to
 	ld t3, 3776(sp)
@@ -807,10 +831,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 3112(sp)
 
-	# store e2 result_$12
+	# e2 result_$12
 
 	# fetch variables
 	ld t1, 3112(sp)
+
+	# store e2 result_$12
 
 	# get address of e2 points to
 	ld t3, 3760(sp)
@@ -857,10 +883,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 3080(sp)
 
-	# store e3 result_$14
+	# e3 result_$14
 
 	# fetch variables
 	ld t1, 3080(sp)
+
+	# store e3 result_$14
 
 	# get address of e3 points to
 	ld t3, 3744(sp)
@@ -907,10 +935,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 3048(sp)
 
-	# store e4 result_$16
+	# e4 result_$16
 
 	# fetch variables
 	ld t1, 3048(sp)
+
+	# store e4 result_$16
 
 	# get address of e4 points to
 	ld t3, 3728(sp)
@@ -957,10 +987,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 3016(sp)
 
-	# store f1 result_$18
+	# f1 result_$18
 
 	# fetch variables
 	ld t1, 3016(sp)
+
+	# store f1 result_$18
 
 	# get address of f1 points to
 	ld t3, 3712(sp)
@@ -1007,10 +1039,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2984(sp)
 
-	# store f2 result_$20
+	# f2 result_$20
 
 	# fetch variables
 	ld t1, 2984(sp)
+
+	# store f2 result_$20
 
 	# get address of f2 points to
 	ld t3, 3696(sp)
@@ -1057,10 +1091,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2952(sp)
 
-	# store f3 result_$22
+	# f3 result_$22
 
 	# fetch variables
 	ld t1, 2952(sp)
+
+	# store f3 result_$22
 
 	# get address of f3 points to
 	ld t3, 3680(sp)
@@ -1107,10 +1143,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2920(sp)
 
-	# store f4 result_$24
+	# f4 result_$24
 
 	# fetch variables
 	ld t1, 2920(sp)
+
+	# store f4 result_$24
 
 	# get address of f4 points to
 	ld t3, 3664(sp)
@@ -1157,10 +1195,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2888(sp)
 
-	# store g1 result_$26
+	# g1 result_$26
 
 	# fetch variables
 	ld t1, 2888(sp)
+
+	# store g1 result_$26
 
 	# get address of g1 points to
 	ld t3, 3648(sp)
@@ -1207,10 +1247,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2856(sp)
 
-	# store g2 result_$28
+	# g2 result_$28
 
 	# fetch variables
 	ld t1, 2856(sp)
+
+	# store g2 result_$28
 
 	# get address of g2 points to
 	ld t3, 3632(sp)
@@ -1257,10 +1299,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2824(sp)
 
-	# store g3 result_$30
+	# g3 result_$30
 
 	# fetch variables
 	ld t1, 2824(sp)
+
+	# store g3 result_$30
 
 	# get address of g3 points to
 	ld t3, 3616(sp)
@@ -1307,10 +1351,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2792(sp)
 
-	# store g4 result_$32
+	# g4 result_$32
 
 	# fetch variables
 	ld t1, 2792(sp)
+
+	# store g4 result_$32
 
 	# get address of g4 points to
 	ld t3, 3600(sp)
@@ -1357,10 +1403,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2760(sp)
 
-	# store h1 result_$34
+	# h1 result_$34
 
 	# fetch variables
 	ld t1, 2760(sp)
+
+	# store h1 result_$34
 
 	# get address of h1 points to
 	ld t3, 3584(sp)
@@ -1407,10 +1455,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2728(sp)
 
-	# store h2 result_$36
+	# h2 result_$36
 
 	# fetch variables
 	ld t1, 2728(sp)
+
+	# store h2 result_$36
 
 	# get address of h2 points to
 	ld t3, 3568(sp)
@@ -1457,10 +1507,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2696(sp)
 
-	# store h3 result_$38
+	# h3 result_$38
 
 	# fetch variables
 	ld t1, 2696(sp)
+
+	# store h3 result_$38
 
 	# get address of h3 points to
 	ld t3, 3552(sp)
@@ -1507,10 +1559,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2664(sp)
 
-	# store h4 result_$40
+	# h4 result_$40
 
 	# fetch variables
 	ld t1, 2664(sp)
+
+	# store h4 result_$40
 
 	# get address of h4 points to
 	ld t3, 3536(sp)
@@ -1557,10 +1611,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2632(sp)
 
-	# store i1 result_$42
+	# i1 result_$42
 
 	# fetch variables
 	ld t1, 2632(sp)
+
+	# store i1 result_$42
 
 	# get address of i1 points to
 	ld t3, 3520(sp)
@@ -1607,10 +1663,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2600(sp)
 
-	# store i2 result_$44
+	# i2 result_$44
 
 	# fetch variables
 	ld t1, 2600(sp)
+
+	# store i2 result_$44
 
 	# get address of i2 points to
 	ld t3, 3504(sp)
@@ -1657,10 +1715,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2568(sp)
 
-	# store i3 result_$46
+	# i3 result_$46
 
 	# fetch variables
 	ld t1, 2568(sp)
+
+	# store i3 result_$46
 
 	# get address of i3 points to
 	ld t3, 3488(sp)
@@ -1707,10 +1767,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2536(sp)
 
-	# store i4 result_$48
+	# i4 result_$48
 
 	# fetch variables
 	ld t1, 2536(sp)
+
+	# store i4 result_$48
 
 	# get address of i4 points to
 	ld t3, 3472(sp)
@@ -1757,10 +1819,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2504(sp)
 
-	# store j1 result_$50
+	# j1 result_$50
 
 	# fetch variables
 	ld t1, 2504(sp)
+
+	# store j1 result_$50
 
 	# get address of j1 points to
 	ld t3, 3456(sp)
@@ -1807,10 +1871,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2472(sp)
 
-	# store j2 result_$52
+	# j2 result_$52
 
 	# fetch variables
 	ld t1, 2472(sp)
+
+	# store j2 result_$52
 
 	# get address of j2 points to
 	ld t3, 3440(sp)
@@ -1857,10 +1923,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2440(sp)
 
-	# store j3 result_$54
+	# j3 result_$54
 
 	# fetch variables
 	ld t1, 2440(sp)
+
+	# store j3 result_$54
 
 	# get address of j3 points to
 	ld t3, 3424(sp)
@@ -1907,10 +1975,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2408(sp)
 
-	# store j4 result_$56
+	# j4 result_$56
 
 	# fetch variables
 	ld t1, 2408(sp)
+
+	# store j4 result_$56
 
 	# get address of j4 points to
 	ld t3, 3408(sp)
@@ -1957,10 +2027,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2376(sp)
 
-	# store k1 result_$58
+	# k1 result_$58
 
 	# fetch variables
 	ld t1, 2376(sp)
+
+	# store k1 result_$58
 
 	# get address of k1 points to
 	ld t3, 3392(sp)
@@ -2007,10 +2079,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2344(sp)
 
-	# store k2 result_$60
+	# k2 result_$60
 
 	# fetch variables
 	ld t1, 2344(sp)
+
+	# store k2 result_$60
 
 	# get address of k2 points to
 	ld t3, 3376(sp)
@@ -2057,10 +2131,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2312(sp)
 
-	# store k3 result_$62
+	# k3 result_$62
 
 	# fetch variables
 	ld t1, 2312(sp)
+
+	# store k3 result_$62
 
 	# get address of k3 points to
 	ld t3, 3360(sp)
@@ -2107,10 +2183,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2280(sp)
 
-	# store k4 result_$64
+	# k4 result_$64
 
 	# fetch variables
 	ld t1, 2280(sp)
+
+	# store k4 result_$64
 
 	# get address of k4 points to
 	ld t3, 3344(sp)
@@ -2157,10 +2235,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2248(sp)
 
-	# store i result_$66
+	# i result_$66
 
 	# fetch variables
 	ld t1, 2248(sp)
+
+	# store i result_$66
 
 	# get address of i points to
 	ld t3, 3944(sp)
@@ -2207,10 +2287,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2216(sp)
 
-	# store k1 result_$68
+	# k1 result_$68
 
 	# fetch variables
 	ld t1, 2216(sp)
+
+	# store k1 result_$68
 
 	# get address of k1 points to
 	ld t3, 3392(sp)
@@ -2257,10 +2339,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2184(sp)
 
-	# store k2 result_$70
+	# k2 result_$70
 
 	# fetch variables
 	ld t1, 2184(sp)
+
+	# store k2 result_$70
 
 	# get address of k2 points to
 	ld t3, 3376(sp)
@@ -2307,10 +2391,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2152(sp)
 
-	# store k3 result_$72
+	# k3 result_$72
 
 	# fetch variables
 	ld t1, 2152(sp)
+
+	# store k3 result_$72
 
 	# get address of k3 points to
 	ld t3, 3360(sp)
@@ -2357,10 +2443,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2120(sp)
 
-	# store k4 result_$74
+	# k4 result_$74
 
 	# fetch variables
 	ld t1, 2120(sp)
+
+	# store k4 result_$74
 
 	# get address of k4 points to
 	ld t3, 3344(sp)
@@ -2407,10 +2495,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2088(sp)
 
-	# store j1 result_$76
+	# j1 result_$76
 
 	# fetch variables
 	ld t1, 2088(sp)
+
+	# store j1 result_$76
 
 	# get address of j1 points to
 	ld t3, 3456(sp)
@@ -2457,10 +2547,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2056(sp)
 
-	# store j2 result_$78
+	# j2 result_$78
 
 	# fetch variables
 	ld t1, 2056(sp)
+
+	# store j2 result_$78
 
 	# get address of j2 points to
 	ld t3, 3440(sp)
@@ -2507,10 +2599,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 2024(sp)
 
-	# store j3 result_$80
+	# j3 result_$80
 
 	# fetch variables
 	ld t1, 2024(sp)
+
+	# store j3 result_$80
 
 	# get address of j3 points to
 	ld t3, 3424(sp)
@@ -2557,10 +2651,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1992(sp)
 
-	# store j4 result_$82
+	# j4 result_$82
 
 	# fetch variables
 	ld t1, 1992(sp)
+
+	# store j4 result_$82
 
 	# get address of j4 points to
 	ld t3, 3408(sp)
@@ -2607,10 +2703,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1960(sp)
 
-	# store i1 result_$84
+	# i1 result_$84
 
 	# fetch variables
 	ld t1, 1960(sp)
+
+	# store i1 result_$84
 
 	# get address of i1 points to
 	ld t3, 3520(sp)
@@ -2657,10 +2755,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1928(sp)
 
-	# store i2 result_$86
+	# i2 result_$86
 
 	# fetch variables
 	ld t1, 1928(sp)
+
+	# store i2 result_$86
 
 	# get address of i2 points to
 	ld t3, 3504(sp)
@@ -2707,10 +2807,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1896(sp)
 
-	# store i3 result_$88
+	# i3 result_$88
 
 	# fetch variables
 	ld t1, 1896(sp)
+
+	# store i3 result_$88
 
 	# get address of i3 points to
 	ld t3, 3488(sp)
@@ -2757,10 +2859,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1864(sp)
 
-	# store i4 result_$90
+	# i4 result_$90
 
 	# fetch variables
 	ld t1, 1864(sp)
+
+	# store i4 result_$90
 
 	# get address of i4 points to
 	ld t3, 3472(sp)
@@ -2807,10 +2911,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1832(sp)
 
-	# store h1 result_$92
+	# h1 result_$92
 
 	# fetch variables
 	ld t1, 1832(sp)
+
+	# store h1 result_$92
 
 	# get address of h1 points to
 	ld t3, 3584(sp)
@@ -2857,10 +2963,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1800(sp)
 
-	# store h2 result_$94
+	# h2 result_$94
 
 	# fetch variables
 	ld t1, 1800(sp)
+
+	# store h2 result_$94
 
 	# get address of h2 points to
 	ld t3, 3568(sp)
@@ -2907,10 +3015,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1768(sp)
 
-	# store h3 result_$96
+	# h3 result_$96
 
 	# fetch variables
 	ld t1, 1768(sp)
+
+	# store h3 result_$96
 
 	# get address of h3 points to
 	ld t3, 3552(sp)
@@ -2957,10 +3067,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1736(sp)
 
-	# store h4 result_$98
+	# h4 result_$98
 
 	# fetch variables
 	ld t1, 1736(sp)
+
+	# store h4 result_$98
 
 	# get address of h4 points to
 	ld t3, 3536(sp)
@@ -3007,10 +3119,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1704(sp)
 
-	# store g1 result_$100
+	# g1 result_$100
 
 	# fetch variables
 	ld t1, 1704(sp)
+
+	# store g1 result_$100
 
 	# get address of g1 points to
 	ld t3, 3648(sp)
@@ -3057,10 +3171,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1672(sp)
 
-	# store g2 result_$102
+	# g2 result_$102
 
 	# fetch variables
 	ld t1, 1672(sp)
+
+	# store g2 result_$102
 
 	# get address of g2 points to
 	ld t3, 3632(sp)
@@ -3107,10 +3223,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1640(sp)
 
-	# store g3 result_$104
+	# g3 result_$104
 
 	# fetch variables
 	ld t1, 1640(sp)
+
+	# store g3 result_$104
 
 	# get address of g3 points to
 	ld t3, 3616(sp)
@@ -3157,10 +3275,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1608(sp)
 
-	# store g4 result_$106
+	# g4 result_$106
 
 	# fetch variables
 	ld t1, 1608(sp)
+
+	# store g4 result_$106
 
 	# get address of g4 points to
 	ld t3, 3600(sp)
@@ -3207,10 +3327,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1576(sp)
 
-	# store f1 result_$108
+	# f1 result_$108
 
 	# fetch variables
 	ld t1, 1576(sp)
+
+	# store f1 result_$108
 
 	# get address of f1 points to
 	ld t3, 3712(sp)
@@ -3257,10 +3379,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1544(sp)
 
-	# store f2 result_$110
+	# f2 result_$110
 
 	# fetch variables
 	ld t1, 1544(sp)
+
+	# store f2 result_$110
 
 	# get address of f2 points to
 	ld t3, 3696(sp)
@@ -3307,10 +3431,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1512(sp)
 
-	# store f3 result_$112
+	# f3 result_$112
 
 	# fetch variables
 	ld t1, 1512(sp)
+
+	# store f3 result_$112
 
 	# get address of f3 points to
 	ld t3, 3680(sp)
@@ -3357,10 +3483,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1480(sp)
 
-	# store f4 result_$114
+	# f4 result_$114
 
 	# fetch variables
 	ld t1, 1480(sp)
+
+	# store f4 result_$114
 
 	# get address of f4 points to
 	ld t3, 3664(sp)
@@ -3407,10 +3535,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1448(sp)
 
-	# store e1 result_$116
+	# e1 result_$116
 
 	# fetch variables
 	ld t1, 1448(sp)
+
+	# store e1 result_$116
 
 	# get address of e1 points to
 	ld t3, 3776(sp)
@@ -3457,10 +3587,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1416(sp)
 
-	# store e2 result_$118
+	# e2 result_$118
 
 	# fetch variables
 	ld t1, 1416(sp)
+
+	# store e2 result_$118
 
 	# get address of e2 points to
 	ld t3, 3760(sp)
@@ -3507,10 +3639,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1384(sp)
 
-	# store e3 result_$120
+	# e3 result_$120
 
 	# fetch variables
 	ld t1, 1384(sp)
+
+	# store e3 result_$120
 
 	# get address of e3 points to
 	ld t3, 3744(sp)
@@ -3557,10 +3691,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1352(sp)
 
-	# store e4 result_$122
+	# e4 result_$122
 
 	# fetch variables
 	ld t1, 1352(sp)
+
+	# store e4 result_$122
 
 	# get address of e4 points to
 	ld t3, 3728(sp)
@@ -3607,10 +3743,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1320(sp)
 
-	# store d1 result_$124
+	# d1 result_$124
 
 	# fetch variables
 	ld t1, 1320(sp)
+
+	# store d1 result_$124
 
 	# get address of d1 points to
 	ld t3, 3840(sp)
@@ -3657,10 +3795,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1288(sp)
 
-	# store d2 result_$126
+	# d2 result_$126
 
 	# fetch variables
 	ld t1, 1288(sp)
+
+	# store d2 result_$126
 
 	# get address of d2 points to
 	ld t3, 3824(sp)
@@ -3707,10 +3847,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1256(sp)
 
-	# store d3 result_$128
+	# d3 result_$128
 
 	# fetch variables
 	ld t1, 1256(sp)
+
+	# store d3 result_$128
 
 	# get address of d3 points to
 	ld t3, 3808(sp)
@@ -3757,10 +3899,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1224(sp)
 
-	# store d4 result_$130
+	# d4 result_$130
 
 	# fetch variables
 	ld t1, 1224(sp)
+
+	# store d4 result_$130
 
 	# get address of d4 points to
 	ld t3, 3792(sp)
@@ -3807,10 +3951,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1192(sp)
 
-	# store d1 result_$132
+	# d1 result_$132
 
 	# fetch variables
 	ld t1, 1192(sp)
+
+	# store d1 result_$132
 
 	# get address of d1 points to
 	ld t3, 3840(sp)
@@ -3857,10 +4003,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1160(sp)
 
-	# store d2 result_$134
+	# d2 result_$134
 
 	# fetch variables
 	ld t1, 1160(sp)
+
+	# store d2 result_$134
 
 	# get address of d2 points to
 	ld t3, 3824(sp)
@@ -3907,10 +4055,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1128(sp)
 
-	# store d3 result_$136
+	# d3 result_$136
 
 	# fetch variables
 	ld t1, 1128(sp)
+
+	# store d3 result_$136
 
 	# get address of d3 points to
 	ld t3, 3808(sp)
@@ -3957,10 +4107,12 @@ funcEntry2:
 	add t0, t1, t2
 	sd t0, 1096(sp)
 
-	# store d4 result_$138
+	# d4 result_$138
 
 	# fetch variables
 	ld t1, 1096(sp)
+
+	# store d4 result_$138
 
 	# get address of d4 points to
 	ld t3, 3792(sp)
@@ -5350,7 +5502,7 @@ funcEntry2:
 .type main, @function
 .globl main
 main:
-mainEntry28:
+mainEntry30:
 
 	# reserve space
 	addi sp, sp, -96
@@ -5385,10 +5537,12 @@ mainEntry28:
 	# get address of local var:getint
 	sd a0, 56(sp)
 
-	# store a getint
+	# a getint
 
 	# fetch variables
 	ld t1, 56(sp)
+
+	# store a getint
 
 	# get address of a points to
 	ld t3, 88(sp)
@@ -5415,10 +5569,12 @@ mainEntry28:
 	add t0, t1, t2
 	sd t0, 40(sp)
 
-	# store b result_
+	# b result_
 
 	# fetch variables
 	ld t1, 40(sp)
+
+	# store b result_
 
 	# get address of b points to
 	ld t3, 72(sp)
@@ -5469,10 +5625,12 @@ mainEntry28:
 	# get address of local var:func
 	sd a0, 16(sp)
 
-	# store a func
+	# a func
 
 	# fetch variables
 	ld t1, 16(sp)
+
+	# store a func
 
 	# get address of a points to
 	ld t3, 88(sp)

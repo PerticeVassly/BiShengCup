@@ -29,10 +29,12 @@ bubblesortEntry1:
 	# get address of local var:arr
 	sd t0, 432(sp)
 
-	# store arr 0
+	# arr 0
 
 	# fetch variables
 	ld t1, 440(sp)
+
+	# store arr 0
 
 	# get address of arr points to
 	ld t3, 432(sp)
@@ -51,19 +53,21 @@ bubblesortEntry1:
 	# get address of local var:j
 	sd t0, 400(sp)
 
-	# store i 
+	# i 
 
 	# fetch variables
 	li t1, 0
+
+	# store i 
 
 	# get address of i points to
 	ld t3, 416(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_44
-	j whileCond_44
-whileCond_44:
+	# br whileCond_47
+	j whileCond_47
+whileCond_47:
 
 	# load i$1 i
 
@@ -105,12 +109,12 @@ whileCond_44:
 	slt t0, t1, t2
 	sd t0, 360(sp)
 
+	# zext cond_tmp_ cond_lt_tmp_
+
 	# fetch variables
 	ld t1, 360(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
 	sd t0, 352(sp)
 
@@ -126,27 +130,29 @@ whileCond_44:
 	seqz t0, t0
 	sd t0, 344(sp)
 
-	# condBr cond_ whileBody_44 next_70
+	# condBr cond_ whileBody_47 next_75
 
 	# fetch variables
 	ld t1, 344(sp)
-	beqz t1, next_70
-	j whileBody_44
-whileBody_44:
+	beqz t1, next_75
+	j whileBody_47
+whileBody_47:
 
-	# store j 
+	# j 
 
 	# fetch variables
 	li t1, 0
+
+	# store j 
 
 	# get address of j points to
 	ld t3, 400(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_45
-	j whileCond_45
-next_70:
+	# br whileCond_48
+	j whileCond_48
+next_75:
 
 	# ret 
 
@@ -158,7 +164,7 @@ next_70:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_45:
+whileCond_48:
 
 	# load j$1 j
 
@@ -220,12 +226,12 @@ whileCond_45:
 	slt t0, t1, t2
 	sd t0, 296(sp)
 
+	# zext cond_tmp_$1 cond_lt_tmp_$1
+
 	# fetch variables
 	ld t1, 296(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_lt_tmp_$1
 	mv t0, t1
 	sd t0, 288(sp)
 
@@ -241,13 +247,13 @@ whileCond_45:
 	seqz t0, t0
 	sd t0, 280(sp)
 
-	# condBr cond_$1 whileBody_45 next_71
+	# condBr cond_$1 whileBody_48 next_76
 
 	# fetch variables
 	ld t1, 280(sp)
-	beqz t1, next_71
-	j whileBody_45
-whileBody_45:
+	beqz t1, next_76
+	j whileBody_48
+whileBody_48:
 
 	# load j$2 j
 
@@ -358,12 +364,12 @@ whileBody_45:
 	sgtz t0, t0
 	sd t0, 200(sp)
 
+	# zext cond_tmp_$2 cond_gt_tmp_
+
 	# fetch variables
 	ld t1, 200(sp)
 
 	# get address of local var:cond_tmp_$2
-
-	# zext cond_tmp_$2 cond_gt_tmp_
 	mv t0, t1
 	sd t0, 192(sp)
 
@@ -379,13 +385,13 @@ whileBody_45:
 	seqz t0, t0
 	sd t0, 184(sp)
 
-	# condBr cond_$2 ifTrue_26 next_72
+	# condBr cond_$2 ifTrue_28 next_77
 
 	# fetch variables
 	ld t1, 184(sp)
-	beqz t1, next_72
-	j ifTrue_26
-next_71:
+	beqz t1, next_77
+	j ifTrue_28
+next_76:
 
 	# load i$3 i
 
@@ -407,19 +413,21 @@ next_71:
 	add t0, t1, t2
 	sd t0, 168(sp)
 
-	# store i result_$7
+	# i result_$7
 
 	# fetch variables
 	ld t1, 168(sp)
+
+	# store i result_$7
 
 	# get address of i points to
 	ld t3, 416(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_44
-	j whileCond_44
-ifTrue_26:
+	# br whileCond_47
+	j whileCond_47
+ifTrue_28:
 
 	# allocate tmp
 	addi t0, sp, 152
@@ -481,10 +489,12 @@ ifTrue_26:
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# store tmp arr$6
+	# tmp arr$6
 
 	# fetch variables
 	ld t1, 112(sp)
+
+	# store tmp arr$6
 
 	# get address of tmp points to
 	ld t3, 160(sp)
@@ -579,10 +589,12 @@ ifTrue_26:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# store arr$7 arr$9
+	# arr$7 arr$9
 
 	# fetch variables
 	ld t1, 48(sp)
+
+	# store arr$7 arr$9
 
 	# get address of arr$7 points to
 	ld t3, 80(sp)
@@ -633,19 +645,21 @@ ifTrue_26:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# store arr$10 tmp$1
+	# arr$10 tmp$1
 
 	# fetch variables
 	ld t1, 16(sp)
+
+	# store arr$10 tmp$1
 
 	# get address of arr$10 points to
 	ld t3, 24(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_72
-	j next_72
-next_72:
+	# br next_77
+	j next_77
+next_77:
 
 	# load j$8 j
 
@@ -667,32 +681,36 @@ next_72:
 	add t0, t1, t2
 	sd t0, 0(sp)
 
-	# store j result_$6
+	# j result_$6
 
 	# fetch variables
 	ld t1, 0(sp)
+
+	# store j result_$6
 
 	# get address of j points to
 	ld t3, 400(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_45
-	j whileCond_45
+	# br whileCond_48
+	j whileCond_48
 .type main, @function
 .globl main
 main:
-mainEntry20:
+mainEntry21:
 
 	# reserve space
 	addi sp, sp, -312
 
 	# save the parameters
 
-	# store n 
+	# n @
 
 	# fetch variables
 	li t1, 10
+
+	# store n 
 
 	# get address of n points to
 	la t3, n
@@ -719,10 +737,12 @@ mainEntry20:
 	# get address of a$1 into 
 	sd t0, 216(sp)
 
-	# store a$1 
+	# a$1 
 
 	# fetch variables
 	li t1, 4
+
+	# store a$1 
 
 	# get address of a$1 points to
 	ld t3, 216(sp)
@@ -743,10 +763,12 @@ mainEntry20:
 	# get address of a$2 into 
 	sd t0, 208(sp)
 
-	# store a$2 
+	# a$2 
 
 	# fetch variables
 	li t1, 3
+
+	# store a$2 
 
 	# get address of a$2 points to
 	ld t3, 208(sp)
@@ -767,10 +789,12 @@ mainEntry20:
 	# get address of a$3 into 
 	sd t0, 200(sp)
 
-	# store a$3 
+	# a$3 
 
 	# fetch variables
 	li t1, 9
+
+	# store a$3 
 
 	# get address of a$3 points to
 	ld t3, 200(sp)
@@ -791,10 +815,12 @@ mainEntry20:
 	# get address of a$4 into 
 	sd t0, 192(sp)
 
-	# store a$4 
+	# a$4 
 
 	# fetch variables
 	li t1, 2
+
+	# store a$4 
 
 	# get address of a$4 points to
 	ld t3, 192(sp)
@@ -815,10 +841,12 @@ mainEntry20:
 	# get address of a$5 into 
 	sd t0, 184(sp)
 
-	# store a$5 
+	# a$5 
 
 	# fetch variables
 	li t1, 0
+
+	# store a$5 
 
 	# get address of a$5 points to
 	ld t3, 184(sp)
@@ -839,10 +867,12 @@ mainEntry20:
 	# get address of a$6 into 
 	sd t0, 176(sp)
 
-	# store a$6 
+	# a$6 
 
 	# fetch variables
 	li t1, 1
+
+	# store a$6 
 
 	# get address of a$6 points to
 	ld t3, 176(sp)
@@ -863,10 +893,12 @@ mainEntry20:
 	# get address of a$7 into 
 	sd t0, 168(sp)
 
-	# store a$7 
+	# a$7 
 
 	# fetch variables
 	li t1, 6
+
+	# store a$7 
 
 	# get address of a$7 points to
 	ld t3, 168(sp)
@@ -887,10 +919,12 @@ mainEntry20:
 	# get address of a$8 into 
 	sd t0, 160(sp)
 
-	# store a$8 
+	# a$8 
 
 	# fetch variables
 	li t1, 5
+
+	# store a$8 
 
 	# get address of a$8 points to
 	ld t3, 160(sp)
@@ -911,10 +945,12 @@ mainEntry20:
 	# get address of a$9 into 
 	sd t0, 152(sp)
 
-	# store a$9 
+	# a$9 
 
 	# fetch variables
 	li t1, 7
+
+	# store a$9 
 
 	# get address of a$9 points to
 	ld t3, 152(sp)
@@ -935,10 +971,12 @@ mainEntry20:
 	# get address of a$10 into 
 	sd t0, 144(sp)
 
-	# store a$10 
+	# a$10 
 
 	# fetch variables
 	li t1, 8
+
+	# store a$10 
 
 	# get address of a$10 points to
 	ld t3, 144(sp)
@@ -984,19 +1022,21 @@ mainEntry20:
 	# get address of local var:bubblesort
 	sd a0, 112(sp)
 
-	# store i bubblesort
+	# i bubblesort
 
 	# fetch variables
 	ld t1, 112(sp)
+
+	# store i bubblesort
 
 	# get address of i points to
 	ld t3, 136(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_46
-	j whileCond_46
-whileCond_46:
+	# br whileCond_49
+	j whileCond_49
+whileCond_49:
 
 	# load i$1 i
 
@@ -1028,12 +1068,12 @@ whileCond_46:
 	slt t0, t1, t2
 	sd t0, 88(sp)
 
+	# zext cond_tmp_ cond_lt_tmp_
+
 	# fetch variables
 	ld t1, 88(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
 	sd t0, 80(sp)
 
@@ -1049,13 +1089,13 @@ whileCond_46:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_ whileBody_46 next_73
+	# condBr cond_ whileBody_49 next_78
 
 	# fetch variables
 	ld t1, 72(sp)
-	beqz t1, next_73
-	j whileBody_46
-whileBody_46:
+	beqz t1, next_78
+	j whileBody_49
+whileBody_49:
 
 	# allocate tmp
 	addi t0, sp, 56
@@ -1097,10 +1137,12 @@ whileBody_46:
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# store tmp a$13
+	# tmp a$13
 
 	# fetch variables
 	ld t1, 32(sp)
+
+	# store tmp a$13
 
 	# get address of tmp points to
 	ld t3, 64(sp)
@@ -1134,10 +1176,12 @@ whileBody_46:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# store tmp 
+	# tmp 
 
 	# fetch variables
 	li t1, 10
+
+	# store tmp 
 
 	# get address of tmp points to
 	ld t3, 64(sp)
@@ -1191,19 +1235,21 @@ whileBody_46:
 	add t0, t1, t2
 	sd t0, 0(sp)
 
-	# store i result_
+	# i result_
 
 	# fetch variables
 	ld t1, 0(sp)
+
+	# store i result_
 
 	# get address of i points to
 	ld t3, 136(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_46
-	j whileCond_46
-next_73:
+	# br whileCond_49
+	j whileCond_49
+next_78:
 
 	# ret 
 

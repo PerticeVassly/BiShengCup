@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry47:
+mainEntry49:
 
 	# reserve space
 	addi sp, sp, -984
@@ -24,10 +24,12 @@ mainEntry47:
 	# get address of local var:i
 	sd t0, 168(sp)
 
-	# store i 
+	# i 
 
 	# fetch variables
 	li t1, 0
+
+	# store i 
 
 	# get address of i points to
 	ld t3, 168(sp)
@@ -40,19 +42,21 @@ mainEntry47:
 	# get address of local var:sum
 	sd t0, 152(sp)
 
-	# store sum 
+	# sum 
 
 	# fetch variables
 	li t1, 0
+
+	# store sum 
 
 	# get address of sum points to
 	ld t3, 152(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_176
-	j whileCond_176
-whileCond_176:
+	# br whileCond_179
+	j whileCond_179
+whileCond_179:
 
 	# prepare params
 
@@ -82,13 +86,13 @@ whileCond_176:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_normalize_ whileBody_176 next_409
+	# condBr cond_normalize_ whileBody_179 next_414
 
 	# fetch variables
 	ld t1, 128(sp)
-	beqz t1, next_409
-	j whileBody_176
-whileBody_176:
+	beqz t1, next_414
+	j whileBody_179
+whileBody_179:
 
 	# load i$1 i
 
@@ -130,10 +134,12 @@ whileBody_176:
 	# get address of local var:getint$1
 	sd a0, 104(sp)
 
-	# store arr$1 getint$1
+	# arr$1 getint$1
 
 	# fetch variables
 	ld t1, 104(sp)
+
+	# store arr$1 getint$1
 
 	# get address of arr$1 points to
 	ld t3, 112(sp)
@@ -160,23 +166,25 @@ whileBody_176:
 	add t0, t1, t2
 	sd t0, 88(sp)
 
-	# store i result_
+	# i result_
 
 	# fetch variables
 	ld t1, 88(sp)
+
+	# store i result_
 
 	# get address of i points to
 	ld t3, 168(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_176
-	j whileCond_176
-next_409:
+	# br whileCond_179
+	j whileCond_179
+next_414:
 
-	# br whileCond_177
-	j whileCond_177
-whileCond_177:
+	# br whileCond_180
+	j whileCond_180
+whileCond_180:
 
 	# load i$3 i
 
@@ -200,13 +208,13 @@ whileCond_177:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_normalize_$1 whileBody_177 next_410
+	# condBr cond_normalize_$1 whileBody_180 next_415
 
 	# fetch variables
 	ld t1, 72(sp)
-	beqz t1, next_410
-	j whileBody_177
-whileBody_177:
+	beqz t1, next_415
+	j whileBody_180
+whileBody_180:
 
 	# load i$4 i
 
@@ -228,10 +236,12 @@ whileBody_177:
 	sub t0, t1, t2
 	sd t0, 56(sp)
 
-	# store i result_$1
+	# i result_$1
 
 	# fetch variables
 	ld t1, 56(sp)
+
+	# store i result_$1
 
 	# get address of i points to
 	ld t3, 168(sp)
@@ -292,19 +302,21 @@ whileBody_177:
 	add t0, t1, t2
 	sd t0, 16(sp)
 
-	# store sum result_$2
+	# sum result_$2
 
 	# fetch variables
 	ld t1, 16(sp)
+
+	# store sum result_$2
 
 	# get address of sum points to
 	ld t3, 152(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_177
-	j whileCond_177
-next_410:
+	# br whileCond_180
+	j whileCond_180
+next_415:
 
 	# load sum$2 sum
 

@@ -35,10 +35,12 @@ exgcdEntry:
 	# get address of local var:a
 	sd t0, 376(sp)
 
-	# store a 0
+	# a 0
 
 	# fetch variables
 	ld t1, 408(sp)
+
+	# store a 0
 
 	# get address of a points to
 	ld t3, 376(sp)
@@ -51,10 +53,12 @@ exgcdEntry:
 	# get address of local var:b
 	sd t0, 360(sp)
 
-	# store b 1
+	# b 1
 
 	# fetch variables
 	ld t1, 400(sp)
+
+	# store b 1
 
 	# get address of b points to
 	ld t3, 360(sp)
@@ -67,10 +71,12 @@ exgcdEntry:
 	# get address of local var:x
 	sd t0, 344(sp)
 
-	# store x 2
+	# x 2
 
 	# fetch variables
 	ld t1, 392(sp)
+
+	# store x 2
 
 	# get address of x points to
 	ld t3, 344(sp)
@@ -83,10 +89,12 @@ exgcdEntry:
 	# get address of local var:y
 	sd t0, 328(sp)
 
-	# store y 3
+	# y 3
 
 	# fetch variables
 	ld t1, 384(sp)
+
+	# store y 3
 
 	# get address of y points to
 	ld t3, 328(sp)
@@ -114,12 +122,12 @@ exgcdEntry:
 	seqz t0, t0
 	sd t0, 304(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 304(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 296(sp)
 
@@ -135,13 +143,13 @@ exgcdEntry:
 	seqz t0, t0
 	sd t0, 288(sp)
 
-	# condBr cond_ ifTrue_38 ifFalse_14
+	# condBr cond_ ifTrue_40 ifFalse_14
 
 	# fetch variables
 	ld t1, 288(sp)
 	beqz t1, ifFalse_14
-	j ifTrue_38
-ifTrue_38:
+	j ifTrue_40
+ifTrue_40:
 
 	# load arr_ x
 
@@ -167,10 +175,12 @@ ifTrue_38:
 	# get address of x$1 into 
 	sd t0, 272(sp)
 
-	# store x$1 
+	# x$1 
 
 	# fetch variables
 	li t1, 1
+
+	# store x$1 
 
 	# get address of x$1 points to
 	ld t3, 272(sp)
@@ -201,10 +211,12 @@ ifTrue_38:
 	# get address of y$1 into 
 	sd t0, 256(sp)
 
-	# store y$1 
+	# y$1 
 
 	# fetch variables
 	li t1, 0
+
+	# store y$1 
 
 	# get address of y$1 points to
 	ld t3, 256(sp)
@@ -329,10 +341,12 @@ ifFalse_14:
 	# get address of local var:exgcd
 	sd a0, 176(sp)
 
-	# store r exgcd
+	# r exgcd
 
 	# fetch variables
 	ld t1, 176(sp)
+
+	# store r exgcd
 
 	# get address of r points to
 	ld t3, 240(sp)
@@ -379,10 +393,12 @@ ifFalse_14:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# store t x$4
+	# t x$4
 
 	# fetch variables
 	ld t1, 136(sp)
+
+	# store t x$4
 
 	# get address of t points to
 	ld t3, 168(sp)
@@ -447,10 +463,12 @@ ifFalse_14:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# store x$5 y$4
+	# x$5 y$4
 
 	# fetch variables
 	ld t1, 96(sp)
+
+	# store x$5 y$4
 
 	# get address of x$5 points to
 	ld t3, 120(sp)
@@ -575,10 +593,12 @@ ifFalse_14:
 	sub t0, t1, t2
 	sd t0, 8(sp)
 
-	# store y$5 result_$3
+	# y$5 result_$3
 
 	# fetch variables
 	ld t1, 8(sp)
+
+	# store y$5 result_$3
 
 	# get address of y$5 points to
 	ld t3, 80(sp)
@@ -608,7 +628,7 @@ ifFalse_14:
 .type main, @function
 .globl main
 main:
-mainEntry37:
+mainEntry39:
 
 	# reserve space
 	addi sp, sp, -192
@@ -621,10 +641,12 @@ mainEntry37:
 	# get address of local var:a
 	sd t0, 184(sp)
 
-	# store a 
+	# a 
 
 	# fetch variables
 	li t1, 7
+
+	# store a 
 
 	# get address of a points to
 	ld t3, 184(sp)
@@ -637,10 +659,12 @@ mainEntry37:
 	# get address of local var:b
 	sd t0, 168(sp)
 
-	# store b 
+	# b 
 
 	# fetch variables
 	li t1, 15
+
+	# store b 
 
 	# get address of b points to
 	ld t3, 168(sp)
@@ -652,6 +676,8 @@ mainEntry37:
 
 	# get address of local var:x
 	sd t0, 152(sp)
+
+	# x 
 
 	# store x 
 
@@ -668,6 +694,8 @@ mainEntry37:
 
 	# get address of local var:y
 	sd t0, 136(sp)
+
+	# y 
 
 	# store y 
 
@@ -855,10 +883,12 @@ mainEntry37:
 	rem t0, t1, t2
 	sd t0, 16(sp)
 
-	# store x$2 result_$2
+	# x$2 result_$2
 
 	# fetch variables
 	ld t1, 16(sp)
+
+	# store x$2 result_$2
 
 	# get address of x$2 points to
 	ld t3, 80(sp)

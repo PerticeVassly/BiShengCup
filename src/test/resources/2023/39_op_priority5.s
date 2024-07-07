@@ -20,7 +20,7 @@ e:
 .type main, @function
 .globl main
 main:
-mainEntry18:
+mainEntry19:
 
 	# reserve space
 	addi sp, sp, -328
@@ -33,10 +33,12 @@ mainEntry18:
 	# get address of local var:flag
 	sd t0, 320(sp)
 
-	# store flag 
+	# flag 
 
 	# fetch variables
 	li t1, 0
+
+	# store flag 
 
 	# get address of flag points to
 	ld t3, 320(sp)
@@ -134,12 +136,12 @@ mainEntry18:
 	seqz t0, t0
 	sd t0, 240(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 240(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 232(sp)
 
@@ -161,21 +163,23 @@ mainEntry18:
 	ld t1, 224(sp)
 	beqz t1, secondCond_5
 	j secondCond_6
-ifTrue_25:
+ifTrue_27:
 
-	# store flag 
+	# flag 
 
 	# fetch variables
 	li t1, 1
+
+	# store flag 
 
 	# get address of flag points to
 	ld t3, 320(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_69
-	j next_69
-next_69:
+	# br next_74
+	j next_74
+next_74:
 
 	# load flag$1 flag
 
@@ -334,12 +338,12 @@ secondCond_5:
 	seqz t0, t0
 	sd t0, 120(sp)
 
+	# zext cond_tmp_$2 cond_eq_tmp_$1
+
 	# fetch variables
 	ld t1, 120(sp)
 
 	# get address of local var:cond_tmp_$2
-
-	# zext cond_tmp_$2 cond_eq_tmp_$1
 	mv t0, t1
 	sd t0, 112(sp)
 
@@ -355,12 +359,12 @@ secondCond_5:
 	seqz t0, t0
 	sd t0, 104(sp)
 
-	# condBr cond_$2 ifTrue_25 next_69
+	# condBr cond_$2 ifTrue_27 next_74
 
 	# fetch variables
 	ld t1, 104(sp)
-	beqz t1, next_69
-	j ifTrue_25
+	beqz t1, next_74
+	j ifTrue_27
 secondCond_6:
 
 	# load a$1 a
@@ -475,12 +479,12 @@ secondCond_6:
 	seqz t0, t0
 	sd t0, 16(sp)
 
+	# zext cond_tmp_$1 cond_le_tmp_
+
 	# fetch variables
 	ld t1, 16(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_le_tmp_
 	mv t0, t1
 	sd t0, 8(sp)
 
@@ -496,9 +500,9 @@ secondCond_6:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_25 secondCond_5
+	# condBr cond_$1 ifTrue_27 secondCond_5
 
 	# fetch variables
 	ld t1, 0(sp)
 	beqz t1, secondCond_5
-	j ifTrue_25
+	j ifTrue_27

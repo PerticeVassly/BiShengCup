@@ -26,10 +26,12 @@ get_oneEntry:
 	# get address of local var:a
 	sd t0, 8(sp)
 
-	# store a 0
+	# a 0
 
 	# fetch variables
 	ld t1, 16(sp)
+
+	# store a 0
 
 	# get address of a points to
 	ld t3, 8(sp)
@@ -73,10 +75,12 @@ deepWhileBrEntry1:
 	# get address of local var:a
 	sd t0, 288(sp)
 
-	# store a 0
+	# a 0
 
 	# fetch variables
 	ld t1, 304(sp)
+
+	# store a 0
 
 	# get address of a points to
 	ld t3, 288(sp)
@@ -89,10 +93,12 @@ deepWhileBrEntry1:
 	# get address of local var:b
 	sd t0, 272(sp)
 
-	# store b 1
+	# b 1
 
 	# fetch variables
 	ld t1, 296(sp)
+
+	# store b 1
 
 	# get address of b points to
 	ld t3, 272(sp)
@@ -135,19 +141,21 @@ deepWhileBrEntry1:
 	add t0, t1, t2
 	sd t0, 224(sp)
 
-	# store c result_
+	# c result_
 
 	# fetch variables
 	ld t1, 224(sp)
+
+	# store c result_
 
 	# get address of c points to
 	ld t3, 256(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_199
-	j whileCond_199
-whileCond_199:
+	# br whileCond_202
+	j whileCond_202
+whileCond_202:
 
 	# load c$1 c
 
@@ -169,12 +177,12 @@ whileCond_199:
 	slt t0, t1, t2
 	sd t0, 208(sp)
 
+	# zext cond_tmp_ cond_lt_tmp_
+
 	# fetch variables
 	ld t1, 208(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_lt_tmp_
 	mv t0, t1
 	sd t0, 200(sp)
 
@@ -190,13 +198,13 @@ whileCond_199:
 	seqz t0, t0
 	sd t0, 192(sp)
 
-	# condBr cond_ whileBody_199 next_471
+	# condBr cond_ whileBody_202 next_476
 
 	# fetch variables
 	ld t1, 192(sp)
-	beqz t1, next_471
-	j whileBody_199
-whileBody_199:
+	beqz t1, next_476
+	j whileBody_202
+whileBody_202:
 
 	# allocate d
 	addi t0, sp, 176
@@ -204,10 +212,12 @@ whileBody_199:
 	# get address of local var:d
 	sd t0, 184(sp)
 
-	# store d 
+	# d 
 
 	# fetch variables
 	li t1, 42
+
+	# store d 
 
 	# get address of d points to
 	ld t3, 184(sp)
@@ -234,12 +244,12 @@ whileBody_199:
 	slt t0, t1, t2
 	sd t0, 160(sp)
 
+	# zext cond_tmp_$1 cond_lt_tmp_$1
+
 	# fetch variables
 	ld t1, 160(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_lt_tmp_$1
 	mv t0, t1
 	sd t0, 152(sp)
 
@@ -255,13 +265,13 @@ whileBody_199:
 	seqz t0, t0
 	sd t0, 144(sp)
 
-	# condBr cond_$1 ifTrue_272 next_472
+	# condBr cond_$1 ifTrue_274 next_477
 
 	# fetch variables
 	ld t1, 144(sp)
-	beqz t1, next_472
-	j ifTrue_272
-next_471:
+	beqz t1, next_477
+	j ifTrue_274
+next_476:
 
 	# load c$5 c
 
@@ -283,7 +293,7 @@ next_471:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_272:
+ifTrue_274:
 
 	# load c$3 c
 
@@ -315,10 +325,12 @@ ifTrue_272:
 	add t0, t1, t2
 	sd t0, 112(sp)
 
-	# store c result_$1
+	# c result_$1
 
 	# fetch variables
 	ld t1, 112(sp)
+
+	# store c result_$1
 
 	# get address of c points to
 	ld t3, 256(sp)
@@ -346,12 +358,12 @@ ifTrue_272:
 	sgtz t0, t0
 	sd t0, 96(sp)
 
+	# zext cond_tmp_$2 cond_gt_tmp_
+
 	# fetch variables
 	ld t1, 96(sp)
 
 	# get address of local var:cond_tmp_$2
-
-	# zext cond_tmp_$2 cond_gt_tmp_
 	mv t0, t1
 	sd t0, 88(sp)
 
@@ -367,17 +379,17 @@ ifTrue_272:
 	seqz t0, t0
 	sd t0, 80(sp)
 
-	# condBr cond_$2 ifTrue_273 next_473
+	# condBr cond_$2 ifTrue_275 next_478
 
 	# fetch variables
 	ld t1, 80(sp)
-	beqz t1, next_473
-	j ifTrue_273
-next_472:
+	beqz t1, next_478
+	j ifTrue_275
+next_477:
 
-	# br whileCond_199
-	j whileCond_199
-ifTrue_273:
+	# br whileCond_202
+	j whileCond_202
+ifTrue_275:
 
 	# allocate e
 	addi t0, sp, 64
@@ -405,10 +417,12 @@ ifTrue_273:
 	mul t0, t1, t2
 	sd t0, 48(sp)
 
-	# store e result_$2
+	# e result_$2
 
 	# fetch variables
 	ld t1, 48(sp)
+
+	# store e result_$2
 
 	# get address of e points to
 	ld t3, 72(sp)
@@ -446,12 +460,12 @@ ifTrue_273:
 	seqz t0, t0
 	sd t0, 32(sp)
 
+	# zext cond_tmp_$3 cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 32(sp)
 
 	# get address of local var:cond_tmp_$3
-
-	# zext cond_tmp_$3 cond_eq_tmp_
 	mv t0, t1
 	sd t0, 24(sp)
 
@@ -467,17 +481,17 @@ ifTrue_273:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_$3 ifTrue_274 next_474
+	# condBr cond_$3 ifTrue_276 next_479
 
 	# fetch variables
 	ld t1, 16(sp)
-	beqz t1, next_474
-	j ifTrue_274
-next_473:
+	beqz t1, next_479
+	j ifTrue_276
+next_478:
 
-	# br next_472
-	j next_472
-ifTrue_274:
+	# br next_477
+	j next_477
+ifTrue_276:
 
 	# load e$1 e
 
@@ -499,26 +513,28 @@ ifTrue_274:
 	mul t0, t1, t2
 	sd t0, 0(sp)
 
-	# store c result_$3
+	# c result_$3
 
 	# fetch variables
 	ld t1, 0(sp)
+
+	# store c result_$3
 
 	# get address of c points to
 	ld t3, 256(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_474
-	j next_474
-next_474:
+	# br next_479
+	j next_479
+next_479:
 
-	# br next_473
-	j next_473
+	# br next_478
+	j next_478
 .type main, @function
 .globl main
 main:
-mainEntry62:
+mainEntry64:
 
 	# reserve space
 	addi sp, sp, -48
@@ -531,10 +547,12 @@ mainEntry62:
 	# get address of local var:p
 	sd t0, 40(sp)
 
-	# store p 
+	# p 
 
 	# fetch variables
 	li t1, 2
+
+	# store p 
 
 	# get address of p points to
 	ld t3, 40(sp)
@@ -585,10 +603,12 @@ mainEntry62:
 	# get address of local var:deepWhileBr
 	sd a0, 8(sp)
 
-	# store p deepWhileBr
+	# p deepWhileBr
 
 	# fetch variables
 	ld t1, 8(sp)
+
+	# store p deepWhileBr
 
 	# get address of p points to
 	ld t3, 40(sp)
