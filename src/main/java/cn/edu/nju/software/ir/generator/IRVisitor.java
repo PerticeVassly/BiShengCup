@@ -1,17 +1,34 @@
 package cn.edu.nju.software.ir.generator;
 
 import cn.edu.nju.software.frontend.llvm.LLVMStack;
-import cn.edu.nju.software.frontend.parser.*;
-import cn.edu.nju.software.frontend.util.*;
+import cn.edu.nju.software.frontend.parser.SysYParser;
+import cn.edu.nju.software.frontend.parser.SysYParserBaseVisitor;
+import cn.edu.nju.software.frontend.util.Symbol;
+import cn.edu.nju.software.frontend.util.SymbolTable;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
-import cn.edu.nju.software.ir.type.*;
-import cn.edu.nju.software.ir.value.*;
-import org.antlr.v4.runtime.ParserRuleContext;
+import cn.edu.nju.software.ir.type.ArrayType;
+import cn.edu.nju.software.ir.type.BoolType;
+import cn.edu.nju.software.ir.type.FloatType;
+import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.type.VoidType;
+import cn.edu.nju.software.ir.value.ArrayValue;
+import cn.edu.nju.software.ir.value.ConstValue;
+import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.ir.value.GlobalVar;
+import cn.edu.nju.software.ir.value.LocalVar;
+import cn.edu.nju.software.ir.value.ValueRef;
 
-import static cn.edu.nju.software.ir.instruction.Operator.*;
-
+import static cn.edu.nju.software.ir.instruction.Operator.CmpEQ;
+import static cn.edu.nju.software.ir.instruction.Operator.CmpNE;
+import static cn.edu.nju.software.ir.instruction.Operator.CmpSGE;
+import static cn.edu.nju.software.ir.instruction.Operator.CmpSGT;
+import static cn.edu.nju.software.ir.instruction.Operator.CmpSLE;
+import static cn.edu.nju.software.ir.instruction.Operator.CmpSLT;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -89,8 +106,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             return gen.buildCmp(builder, CmpNE, cond, fZero, "cond_normalize_");
         } else if (type instanceof IntType) {
             return gen.buildCmp(builder, CmpNE, cond, zero, "cond_normalize_");
-        } else if (type instanceof FloatType) {
-            return gen.buildCmp(builder, CmpNE, cond, fZero, "cond_normalize_");
         }
         return cond;
     }
@@ -464,13 +479,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else if (ctx.ASSIGN() != null) {
             ValueRef lVal = visitLVal(ctx.lVal());
             ValueRef exp = visitExp(ctx.exp());
-            // constant propagation
-            if (lVal instanceof Variable variable) {
-//                if (exp instanceof Variable expVar) {
-//                    expVar.mergeValue(expValue(ctx.exp()));
-//                }
-//                valuePropagate(variable, exp);
-            }
             return gen.buildStore(builder, exp, lVal); // assign: lVal = exp;
         } else if (ctx.WHILE() != null) {
             // loop
@@ -728,7 +736,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     // base type
                     ValueRef init = visitInitVal(ctx.initVal());
                     gen.setInitValue(globalVar, init);
-                    valuePropagate(globalVar, init);
                 } else if (globalVar != null) {
                     // array
                     arrayInit = new ArrayList<>();
@@ -745,7 +752,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     // base type
                     ValueRef init = visitInitVal(ctx.initVal());
                     gen.buildStore(builder, init, localVar);
-                    valuePropagate(localVar, init);
                 } else if (localVar != null) {
                     // array
                     arrayInit = new ArrayList<>();
@@ -771,7 +777,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else {
             if (global() && globalVar != null){
                 gen.setInitValue(globalVar, zero);
-                valuePropagate(globalVar, zero);
             }
         }
         if (global()) {
@@ -973,154 +978,5 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     @Override
     public ValueRef visitConstExp(SysYParser.ConstExpContext ctx) {
         return visitExp(ctx.exp());
-    }
-
-//    private int getIntConst(SysYParser.ConstExpContext constExp) {
-//        return getIntConst(constExp.exp());
-//    }
-
-//    private int getIntConst(SysYParser.ExpContext exp) {
-//        if (exp.number() != null) {
-//            if (exp.number().INTEGER_CONST() != null) {
-//                return string2Int(exp.number().INTEGER_CONST().getText());
-//            }
-//            throw new RuntimeException(exp + " can't be the size of array!");
-//        } else if (exp.lVal() != null) {
-//            ValueRef temp = scope.find(exp.getText());
-//            if (temp instanceof GlobalVar globlVar) {
-//                if (globlVar.isConstant()) {
-//                    return globlVar.getValue();
-//                }
-//                throw new RuntimeException(globlVar + " can't be the size of array!");
-//            } else if (temp instanceof ConstValue constValue) {
-//                if (constValue.getValue() instanceof Integer integer) {
-//                    return integer;
-//                } else {
-//                    throw new RuntimeException(constValue.getValue() + " can't be the size of array!");
-//                }
-//            } else if (temp instanceof LocalVar localVar) {
-//                // todo: constant propagation?
-//                if (localVar.isConstant()) {
-//                    return localVar.getValue();
-//                }
-//                throw new RuntimeException(localVar + " can't be the size of array!");
-//            }
-//        } else if (!exp.exp().isEmpty()) {
-//            if (exp.MUL() != null) return getIntConst(exp.exp(0)) * getIntConst(exp.exp(1));
-//            else if (exp.DIV() != null) return getIntConst(exp.exp(0)) / getIntConst(exp.exp(1));
-//            else if (exp.MOD() != null) return getIntConst(exp.exp(0)) % getIntConst(exp.exp(1));
-//            else if (exp.PLUS() != null) return getIntConst(exp.exp(0)) + getIntConst(exp.exp(1));
-//            else if (exp.MINUS() != null) return getIntConst(exp.exp(0)) - getIntConst(exp.exp(1));
-//            else if (exp.unaryOp() != null) {
-//                if (exp.unaryOp().MINUS() != null) return -getIntConst(exp.exp(0));
-//                else return getIntConst(exp.exp(0));
-//            }
-//        }
-//        throw new RuntimeException("func() can't be the size of array!");
-//    }
-
-    private static void valuePropagate(Variable lVariable, ValueRef value) {
-        if (value instanceof ConstValue constValue) {
-            if (constValue.getValue() instanceof Integer val) {
-                lVariable.mergeValue(Value.makeConstant(val));
-            }
-        }
-        if (value instanceof Variable rVariable) {
-            if (rVariable.isConstant()) {
-                lVariable.mergeValue(Value.makeConstant(rVariable.getValue()));
-            } else {
-                lVariable.mergeValue(Value.getNAC());
-            }
-        }
-    }
-
-    private Value expValue(SysYParser.ExpContext ctx) {
-        if (ctx.funcUse() != null) {
-            return Value.getNAC();
-        }
-        if (ctx.lVal() != null) {
-            if (!ctx.lVal().L_BRACKT().isEmpty()) {
-                return Value.getNAC();
-            }
-            // varName:
-            ValueRef valueRef = scope.find(ctx.lVal().getText());
-            return getConstantValue(valueRef);
-        }
-        if (ctx.L_PAREN() != null) {
-            return expValue(ctx.exp(0));
-        }
-        if (ctx.number() != null) {
-            if (ctx.number().INTEGER_CONST() != null) {
-                return Value.makeConstant(string2Int(ctx.number().INTEGER_CONST().getText()));
-            } else if (ctx.number().FLOAT_CONST() != null) {
-                // viewing float as not a constant
-                return Value.getNAC();
-            } else {
-                assert false;
-            }
-        }
-        if (ctx.unaryOp() != null) {
-            if (ctx.unaryOp().MINUS() != null) {
-                Value value = expValue(ctx.exp(0));
-                if (value.isConstant()) {
-                    return Value.makeConstant(-value.getValue());
-                }
-                return value;
-            } else if (ctx.unaryOp().NOT() != null) {
-                Value value = expValue(ctx.exp(0));
-                if (value.isConstant()) {
-                    return Value.makeConstant(value.getValue() == 0 ? 1 : 0);
-                }
-            }
-            return expValue(ctx.exp(0));
-        }
-        Value v1 = expValue(ctx.exp(0));
-        Value v2 = expValue(ctx.exp(1));
-        if (ctx.MUL() != null) {
-            if (v1.isConstant() && v2.isConstant()) {
-                return Value.makeConstant(v1.getValue() * v2.getValue());
-            }
-            return Value.getNAC();
-        }
-        if (ctx.DIV() != null) {
-            if (v1.isConstant() && v2.isConstant()) {
-                return Value.makeConstant(v1.getValue() / v2.getValue());
-            }
-            return Value.getNAC();
-        }
-        if (ctx.MOD() != null) {
-            if (v1.isConstant() && v2.isConstant()) {
-                return Value.makeConstant(v1.getValue() % v2.getValue());
-            }
-            return Value.getNAC();
-        }
-        if (ctx.PLUS() != null) {
-            if (v1.isConstant() && v2.isConstant()) {
-                return Value.makeConstant(v1.getValue() + v2.getValue());
-            }
-            return Value.getNAC();
-        }
-        if (ctx.MINUS() != null) {
-            if (v1.isConstant() && v2.isConstant()) {
-                return Value.makeConstant(v1.getValue() - v2.getValue());
-            }
-            return Value.getNAC();
-        }
-        throw new RuntimeException("unreachable");
-    }
-
-    /**
-     * This method should be used after ir generation, otherwise it'll be unsound!
-     */
-    private Value getConstantValue(ValueRef valueRef) {
-        if (valueRef instanceof ConstValue constValue) {
-            return Value.makeConstant((Integer) constValue.getValue());
-        }
-        if (valueRef instanceof Variable variable) {
-            if (variable.isNAC()) return Value.getNAC();
-            if (variable.isUndef()) return Value.getUndef();
-            return Value.makeConstant(variable.getValue());
-        }
-        throw new RuntimeException("not a value or variable!");
     }
 }

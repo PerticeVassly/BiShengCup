@@ -200,11 +200,28 @@ public class Generator implements IrGenerator {
         builder.put(ir);
         return lVal;
     }
+
     @Override
     public ValueRef buildCall(BuilderRef builder, FunctionValue function, ArrayList<ValueRef> arguments
             , int argCount, String retValName, int lineNo) {
         FunctionType ft = ((FunctionType) function.getType());
         TypeRef retTy = ft.getReturnType();
+
+        // implicit type conversion:
+        for (int i = 0; i < arguments.size(); i++) {
+            ValueRef argument = arguments.get(i);
+            if (!ft.getFParameter(i).equals(argument.getType())) {
+                if (ft.getFParameter(i) instanceof IntType && argument.getType() instanceof FloatType) {
+                    argument= gen.buildFloatToInt(builder, argument, "f2i_");
+                } else if (ft.getFParameter(i) instanceof FloatType && argument.getType() instanceof IntType) {
+                    argument= gen.buildIntToFloat(builder, argument, "i2f_");
+                } else {
+                    throw new RuntimeException(String.format("Can't cast %s to %s!", argument.getType(), ft.getFParameter(i)));
+                }
+                arguments.set(i, argument);
+            }
+        }
+
         Instruction ir;
         LocalVar retVal = null;
         if (!(retTy instanceof VoidType)) {
@@ -216,6 +233,7 @@ public class Generator implements IrGenerator {
         builder.put(ir);
         return retVal;
     }
+
     @Override
     public ValueRef buildReturnVoid(BuilderRef builder) {
         Instruction ir = new RetVoid();
