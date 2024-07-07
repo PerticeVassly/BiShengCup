@@ -36,8 +36,8 @@ public class TestFrontEndIO {
 //    @StringSource("79_var_name")
 //    @StringSource("90_many_locals")
 //    @StringSource("64_calculator")
-//    @StringSource("87_many_params")
-    @StringSource("86_long_code2")
+    @StringSource("95_float")
+    @StringSource("08_const_array_defn")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
     }
