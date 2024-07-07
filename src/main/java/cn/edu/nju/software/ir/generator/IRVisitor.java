@@ -870,6 +870,16 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             // base
             String varName = ctx.IDENT().getText();
             ConstValue cv = (ConstValue) visitConstInitVal(ctx.constInitVal());
+            // implicit type conversion
+            if (!cv.getType().equals(type)) {
+                if (cv.getType() instanceof FloatType && type.equals(i32Type)) {
+                    cv = new ConstValue(i32Type, cv.castToInt(), cv.getName());
+                } else if (cv.getType() instanceof IntType && type.equals(floatType)) {
+                    cv = new ConstValue(floatType, (float) (int)cv.getValue(), cv.getName());
+                } else {
+                    throw new RuntimeException(String.format("Can't cast %s to %s!", cv.getValue(), type));
+                }
+            }
             curScope.put(new Symbol<>(varName, cv));
         } else {
             // array
