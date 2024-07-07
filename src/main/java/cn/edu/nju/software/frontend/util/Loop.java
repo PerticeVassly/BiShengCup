@@ -64,5 +64,8 @@ public class Loop {
         // png为输出格式，还可改为pdf，gif，jpg等
         String type = "png";
         gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), fileName+"."+ type );
+        for (Loop subLoop : subLoops) {
+            subLoop.createLoopGraph(fileName+"_subloop_of"+subLoop.getRoot().getName());
+        }
     }
 }

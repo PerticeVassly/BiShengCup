@@ -17,6 +17,7 @@ public class Graph<T>{
             nodes.put(node, new HashSet<>());
         }
     }
+
     public void addEdge(T from, T to) {
         if(!nodes.containsKey(from)) {
             nodes.put(from, new HashSet<>());

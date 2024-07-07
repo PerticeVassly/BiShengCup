@@ -4,10 +4,10 @@ package cn.edu.nju.software.frontend.util;
 import java.util.HashSet;
 import java.util.Set;
 
-public class LoopForest {
+public class LoopSet {
     private final Set<Loop> loops;
 
-    public LoopForest() {
+    public LoopSet() {
         loops = new HashSet<>();
     }
     public void addLoop(Loop loop) {

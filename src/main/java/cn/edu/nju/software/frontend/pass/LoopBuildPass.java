@@ -2,7 +2,7 @@ package cn.edu.nju.software.frontend.pass;
 
 import cn.edu.nju.software.frontend.util.CFG;
 import cn.edu.nju.software.frontend.util.Loop;
-import cn.edu.nju.software.frontend.util.LoopForest;
+import cn.edu.nju.software.frontend.util.LoopSet;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
@@ -10,7 +10,7 @@ import cn.edu.nju.software.ir.value.FunctionValue;
 import java.util.*;
 
 public class LoopBuildPass implements ModulePass {
-    private final Map<FunctionValue, LoopForest> forestTable;
+    private final Map<FunctionValue, LoopSet> forestTable;
     private final CFGBuildPass cfgBuildPass;
     private static LoopBuildPass loopBuildPass;
     private boolean dbgFlag = false;
@@ -19,9 +19,9 @@ public class LoopBuildPass implements ModulePass {
     @Override
     public boolean runOnModule(ModuleRef module) {
         for (FunctionValue functionValue : module.getFunctions()) {
-            LoopForest loopForest=findLoops(functionValue);
-            if(!loopForest.isEmpty()){
-                forestTable.put(functionValue, loopForest);
+            LoopSet loopSet =findLoops(functionValue);
+            if(!loopSet.isEmpty()){
+                forestTable.put(functionValue, loopSet);
             }
         }
         if (dbgFlag) {
@@ -54,7 +54,7 @@ public class LoopBuildPass implements ModulePass {
         return loopBuildPass;
     }
 
-    public LoopForest getLoopForest(FunctionValue functionValue) {
+    public LoopSet getLoopForest(FunctionValue functionValue) {
         return forestTable.get(functionValue);
     }
 
@@ -64,7 +64,7 @@ public class LoopBuildPass implements ModulePass {
     }
 
 
-    private LoopForest findLoops(FunctionValue functionValue) {
+    private LoopSet findLoops(FunctionValue functionValue) {
         Map<BasicBlockRef, Integer> scc = new HashMap<>();
         Map<BasicBlockRef, Integer> size = new HashMap<>();
         Stack<BasicBlockRef> stack = new Stack<>();
@@ -83,8 +83,8 @@ public class LoopBuildPass implements ModulePass {
         return buildForest(functionValue, size, scc, roots);
     }
 
-    private LoopForest buildForest(FunctionValue functionValue, Map<BasicBlockRef, Integer> size, Map<BasicBlockRef, Integer> scc, ArrayList<BasicBlockRef> roots) {
-        LoopForest forest = new LoopForest();
+    private LoopSet buildForest(FunctionValue functionValue, Map<BasicBlockRef, Integer> size, Map<BasicBlockRef, Integer> scc, ArrayList<BasicBlockRef> roots) {
+        LoopSet forest = new LoopSet();
         CFG cfg = cfgBuildPass.getBasicBlockCFG(functionValue);
         for (BasicBlockRef root : roots) {
             if (size.get(root) == 1) {
@@ -156,25 +156,43 @@ public class LoopBuildPass implements ModulePass {
         }
         cnt=-1;
         tot=0;
-        tarjan(blockSet, loop.getRoot(), functionValue, scc, size, stack, inStk, dfn, low, roots);
+        //TODO:无法正确识别子循环
         CFG cfg = cfgBuildPass.getBasicBlockCFG(functionValue);
+        Stack<BasicBlockRef> help=new Stack<>();
+        help.add(loop.getRoot());
+        Set<BasicBlockRef> record=new HashSet<>();
+        while (!help.isEmpty()){
+            BasicBlockRef cur=help.pop();
+            if(record.contains(cur)){
+                continue;
+            }
+            record.add(cur);
+            for (BasicBlockRef bb : cfg.getSuccessors(cur)) {
+                if (blockSet.contains(bb)||dfn.containsKey(bb)) {
+                    continue;
+                }
+                tarjan(blockSet, bb, functionValue, scc, size, stack, inStk, dfn, low, roots);
+                help.push(bb);
+            }
+        }
         for (BasicBlockRef root : roots) {
             if (size.get(root) == 1) {
                 continue;
             }
             Loop subLoop = new Loop(root, loop, functionValue);
             buildLoopFromRoot(scc, cfg, root, subLoop);
+            addSubLoops(subLoop, functionValue);
             loop.addSubLoop(subLoop);
         }
 
     }
 
     private void buildLoopFromRoot(Map<BasicBlockRef, Integer> scc, CFG cfg, BasicBlockRef root, Loop subLoop) {
-        Stack<BasicBlockRef> help = new Stack<>();
+        Queue<BasicBlockRef> help = new LinkedList<>();
         Set<BasicBlockRef> record = new HashSet<>();
         help.add(root);
         while (!help.isEmpty()) {
-            BasicBlockRef cur = help.pop();
+            BasicBlockRef cur = help.poll();
             if (record.contains(cur)) {
                 continue;
             }
@@ -182,14 +200,14 @@ public class LoopBuildPass implements ModulePass {
             for (BasicBlockRef bb : cfg.getSuccessors(cur)) {
                 if (Objects.equals(scc.get(bb), scc.get(cur))) {
                     subLoop.addBasicBlock(bb);
-                    help.push(bb);
+                    help.add(bb);
                 }
             }
         }
     }
 
     private void createLoopForestGraph(FunctionValue functionValue) {
-        LoopForest loopForest = getLoopForest(functionValue);
-        loopForest.createLoopForestGraph(functionValue.getName() + "loopForest");
+        LoopSet loopSet = getLoopForest(functionValue);
+        loopSet.createLoopForestGraph(functionValue.getName() + "loopSet");
     }
 }
