@@ -2,21 +2,18 @@ package cn.edu.nju.software.backend.regalloc;
 
 import cn.edu.nju.software.backend.RiscBasicBlock;
 import cn.edu.nju.software.backend.riscinstruction.*;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlw;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvwx;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFld;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvdx;
 import cn.edu.nju.software.backend.riscinstruction.operand.*;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscLi;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscLabel;
-import cn.edu.nju.software.ir.type.BoolType;
-import cn.edu.nju.software.ir.type.FloatType;
-import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
-
 
 public class Allocator {
 
@@ -34,63 +31,138 @@ public class Allocator {
 
     /* 将变量分配到寄存器中 */
     /* 以t1,t2,t3,ft1,ft2,ft3的顺序分配 */
-    public void prepareVariable(ValueRef... values){
+    public void prepareVariable(ValueRef... values) {
 
         currentBlock.addInstruction(new RiscComment("fetch variables"));
 
-        int i=1;
-        for(ValueRef value : values){
-            if(value instanceof ConstValue){
-                if(value.getType() instanceof FloatType){
-                    currentBlock.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue((Float)((ConstValue) value).getValue())));
-                    currentBlock.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
-                }
-                else if(value.getType() instanceof IntType){
-                    currentBlock.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue((Integer)((ConstValue) value).getValue())));
-                } else  if(value.getType() instanceof BoolType){
-                    currentBlock.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue((Boolean)((ConstValue) value).getValue() ? 1 : 0)));
-                } else {
-                    assert false;
-                }
+        int i = 1;
+        for (ValueRef value : values) {
+            if (value instanceof ConstValue constValue) {
+                prepareAConst(constValue, i);
+            } else if(value instanceof LocalVar localVar){
+                prepareALocal(localVar, i);
+            } else if(value instanceof GlobalVar globalVar){
+                prepareAGlobal(globalVar, i);
             } else {
-                if(value.getType() instanceof FloatType){
-                    currentBlock.addInstruction(new RiscFlw(new Register("ft" + i), new IndirectRegister("sp", memory.getOffset(value.getName()))));
-                }
-                else if(value.getType() instanceof IntType){
-                    currentBlock.addInstruction(new RiscLw(new Register("t" + i), new IndirectRegister("sp", memory.getOffset(value.getName()))));
-                } else if(value.getType() instanceof BoolType){
-                    currentBlock.addInstruction(new RiscLw(new Register("t" + i), new IndirectRegister("sp", memory.getOffset(value.getName()))));
-                } else {
-                    assert false;
-                }
+                assert false;
             }
             i++;
         }
     }
 
-    public Operand getOperandOfPtr(ValueRef variable){
-        if(variable instanceof GlobalVar){
-            return new RiscLabelAddress(new RiscLabel(variable.getName()));
+    private void prepareAGlobal(GlobalVar globalVar,int i){
+        if (globalVar.getType() instanceof FloatType) {
+            currentBlock.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
+            currentBlock.addInstruction(new RiscFld(new Register("ft" + i), new IndirectRegister("t3", 0)));
+        } else if (globalVar.getType() instanceof IntType) {
+            currentBlock.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
+            currentBlock.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t3", 0)));
+        } else if (globalVar.getType() instanceof BoolType) {
+            currentBlock.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
+            currentBlock.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t3", 0)));
+        } else {
+            assert false;
         }
-        else if(variable instanceof LocalVar){
+    }
+
+    private void prepareALocal(LocalVar localVar, int i){
+        if (localVar.getType() instanceof FloatType) {
+            currentBlock.addInstruction(new RiscFld(new Register("ft" + i), new IndirectRegister("sp", memory.getOffset(localVar.getName()))));
+        } else if (localVar.getType() instanceof IntType) {
+            currentBlock.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("sp", memory.getOffset(localVar.getName()))));
+        } else if (localVar.getType() instanceof BoolType) {
+            currentBlock.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("sp", memory.getOffset(localVar.getName()))));
+        } else if(localVar.getType() instanceof Pointer){
+            currentBlock.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("sp", memory.getOffset(localVar.getName()))));
+        } else {
+            assert false;
+        }
+    }
+
+    private void prepareAConst(ConstValue constValue, int i){
+        if (constValue.getType() instanceof FloatType) {
+            currentBlock.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue((float) (constValue.getValue()))));
+            currentBlock.addInstruction(new RiscFmvdx(new Register("ft" + i), new Register("t" + i)));
+        } else if (constValue.getType() instanceof IntType) {
+            currentBlock.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue((int) (constValue.getValue()))));
+        } else if (constValue.getType() instanceof BoolType) {
+            currentBlock.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue(Boolean.TRUE.equals(constValue.getValue()) ? 1 : 0)));
+        } else {
+            assert false;
+        }
+    }
+
+    public Operand getAddrOfLocalVar(ValueRef variable) {
+        currentBlock.insertComment("get address of local var:" + variable.getName());
+        if (variable instanceof LocalVar) {
             return new IndirectRegister("sp", memory.getOffset(variable.getName()));
-        }
-        else {
+        } else {
             assert false;
             return null;
         }
     }
 
-    /* 函数形参数%0 %2没有对应的ValueRef 用于检索，只能使用string*/
-    public Operand getOperandOfPtr(String varName){
+    public Operand getAddrOfVarPtrPointsToWithOffset(ValueRef variable, int offset) {
+        currentBlock.insertComment("get address of " + variable.getName() + " points to");
+        if (variable instanceof GlobalVar) {
+            currentBlock.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(variable.getName()))));
+            currentBlock.addInstruction(new RiscAddi(new Register("t3"), new Register("t3"), new ImmediateValue(offset)));
+            return new IndirectRegister("t3", 0);
+        } else if (variable instanceof LocalVar) {
+            currentBlock.addInstruction(new RiscLd(new Register("t3"), new IndirectRegister("sp", memory.getOffset(variable.getName()))));
+            currentBlock.addInstruction(new RiscAddi(new Register("t3"), new Register("t3"), new ImmediateValue(offset)));
+            return new IndirectRegister("t3",0);
+        } else {
+            assert false;
+            return null;
+        }
+    }
+
+    public Operand getAddrOfVarWithOffsetIntoReg(ValueRef variable, String regName, int offset) {
+        currentBlock.insertComment("get address of " + variable.getName() + " into " + regName);
+        if (variable instanceof GlobalVar) {
+            return new RiscLabelAddress(new RiscLabel(variable.getName()));
+        } else if (variable instanceof LocalVar) {
+            currentBlock.addInstruction(new RiscAddi(new Register(regName), new Register("sp"), new ImmediateValue(memory.getOffset(variable.getName()))));
+            currentBlock.addInstruction(new RiscAddi(new Register(regName), new Register(regName), new ImmediateValue(offset)));
+            return new IndirectRegister(regName, 0);
+        } else {
+            assert false;
+            return null;
+        }
+    }
+
+    public Operand getAddrOfLocalVar(String varName) {
+        currentBlock.insertComment("get address of " + varName + " into ");
         return new IndirectRegister("sp", memory.getOffset(varName));
     }
 
-    public void allocate(String varName, int width){
-        memory.allocate(varName, Math.max(width, 4));
+    public int getOffset(String varName) {
+        return memory.getOffset(varName);
     }
 
-    public int getStackSize(){
+    public void allocate(String varName, int width) {
+        memory.allocate(varName, Math.max(width, 8));
+    }
+
+    public void allocate(int width) {
+        memory.allocate(Math.max(width, 8));
+    }
+
+    public int getStackSize() {
         return memory.getSize();
+    }
+
+    public int getSizeOfType(TypeRef type) {
+        if (type instanceof ArrayType) {
+            return ArrayType.getTotalSize(type);
+        } else if (type instanceof FloatType || type instanceof IntType || type instanceof BoolType) {
+            return 8;
+        } else if (type instanceof Pointer) {
+            return 8;
+        } else {
+            assert false;
+            return 0;
+        }
     }
 }

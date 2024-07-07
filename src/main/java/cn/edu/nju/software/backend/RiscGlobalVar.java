@@ -27,12 +27,12 @@ public class RiscGlobalVar {
             if(globalVar.getInitVal().getType() instanceof IntType) {
                 String initValue = globalVar.getInitVal().toString();
                 System.out.println(name + ":");
-                System.out.println(".word " + initValue);
+                System.out.println(".dword " + initValue);
             }
             else if(globalVar.getInitVal().getType() instanceof FloatType) {
                 String initValue = globalVar.getInitVal().toString();
                 System.out.println(name + ":");
-                System.out.println(".float " + initValue);
+                System.out.println(".double " + initValue);
             }
             else {
                 assert false;

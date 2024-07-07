@@ -22,17 +22,18 @@ public class Memory {
     }
 
     public void allocate(String name, int width){
-
         if(checkHasAllocated(name)){
             return;
         }
+
         endPos += width;
         memoryVars.put(name, endPos);
     }
 
-    public void reset(){
-        memoryVars.clear();
+    public void allocate(int width){
+        endPos += width;
     }
+
 
     public int getSize(){
         return endPos;
