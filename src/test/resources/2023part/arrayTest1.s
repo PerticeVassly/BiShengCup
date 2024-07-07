@@ -7,89 +7,63 @@
 main:
 mainEntry1:
 
-	# allocate space for local variables
-	addi sp, sp, -68
+	# reserve space
+	addi sp, sp, -40
 
 	# save the parameters
 
 	# allocate a
-	addi t0, sp, 28
-	sd t0, 60(sp)
+	addi t0, sp, 16
+
+	# get address of local var:a
+	sd t0, 32(sp)
 
 	# store a 
-	ld t2, 60(sp)
 
 	# fetch variables
-	li t1, 11
-	sw t1, 0(t2)
+	li t1, 3
+
+	# get address of a points to
+	ld t3, 32(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# fetch variables
-	li t1, 12
-	sw t1, 4(t2)
+	li t1, 4
 
-	# fetch variables
-	li t1, 13
-	sw t1, 8(t2)
-
-	# fetch variables
-	li t1, 14
-	sw t1, 12(t2)
-
-	# fetch variables
-	li t1, 13
-	sw t1, 16(t2)
-
-	# fetch variables
-	li t1, 14
-	sw t1, 20(t2)
-
-	# fetch variables
-	li t1, 15
-	sw t1, 24(t2)
-
-	# fetch variables
-	li t1, 16
-	sw t1, 28(t2)
-
-	# gep ptr_ 
-
-	# fetch variables
-	li t1, 1
-	li t2, 16
-	mul t0, t1, t2
-	ld t1, 60(sp)
-	add t0, t1, t0
-	sd t0, 20(sp)
-
-	# gep ptr_$1 
-
-	# fetch variables
-	li t1, 0
-	li t2, 8
-	mul t0, t1, t2
-	ld t1, 20(sp)
-	add t0, t1, t0
-	sd t0, 12(sp)
+	# get address of a points to
+	ld t3, 32(sp)
+	addi t3, t3, 8
+	sd t1, 0(t3)
 
 	# gep a$1 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
+	li t1, 1
+	li t2, 8
 	mul t0, t1, t2
-	ld t1, 12(sp)
+
+	# get address of a into 
+	ld t1, 32(sp)
 	add t0, t1, t0
-	sd t0, 4(sp)
+
+	# get address of a$1 into 
+	sd t0, 8(sp)
 
 	# load a$2 a$1
-	ld t2, 4(sp)
-	lw t0, 0(t2)
-	sw t0, 0(sp)
+
+	# get address of a$1 points to
+	ld t3, 8(sp)
+	addi t3, t3, 0
+
+	# get address of local var:a$2
+	ld t0, 0(t3)
+	sd t0, 0(sp)
 
 	# ret a$2
 
 	# fetch variables
-	lw t1, 0(sp)
+	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 68
+	addi sp, sp, 40
 	ret 

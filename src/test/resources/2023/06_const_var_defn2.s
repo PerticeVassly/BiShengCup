@@ -2,10 +2,10 @@
 .align 2
 .globl a
 a:
-.word 10
+.dword 10
 .globl b
 b:
-.word 5
+.dword 5
 .text
 .align 2
 .type main, @function
@@ -13,20 +13,25 @@ b:
 main:
 mainEntry26:
 
-	# allocate space for local variables
-	addi sp, sp, -4
+	# reserve space
+	addi sp, sp, -8
 
 	# save the parameters
 
 	# load b b
-	li t2, b
-	lw t0, b
-	sw t0, 0(sp)
+
+	# get address of b points to
+	la t3, b
+	addi t3, t3, 0
+
+	# get address of local var:b
+	ld t0, 0(t3)
+	sd t0, 0(sp)
 
 	# ret b
 
 	# fetch variables
-	lw t1, 0(sp)
+	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 4
+	addi sp, sp, 8
 	ret 

@@ -2,10 +2,10 @@
 .align 2
 .globl a
 a:
-.word 3
+.dword 3
 .globl b
 b:
-.word 5
+.dword 5
 .text
 .align 2
 .type main, @function
@@ -13,44 +13,61 @@ b:
 main:
 mainEntry3:
 
-	# allocate space for local variables
-	addi sp, sp, -24
+	# reserve space
+	addi sp, sp, -40
 
 	# save the parameters
 
 	# allocate a
-	addi t0, sp, 12
-	sd t0, 16(sp)
+	addi t0, sp, 24
+
+	# get address of local var:a
+	sd t0, 32(sp)
 
 	# store a 
-	ld t2, 16(sp)
 
 	# fetch variables
 	li t1, 5
-	sw t1, 0(t2)
+
+	# get address of a points to
+	ld t3, 32(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load a$1 a
-	ld t2, 16(sp)
-	lw t0, 0(t2)
-	sw t0, 8(sp)
+
+	# get address of a points to
+	ld t3, 32(sp)
+	addi t3, t3, 0
+
+	# get address of local var:a$1
+	ld t0, 0(t3)
+	sd t0, 16(sp)
 
 	# load b b
-	li t2, b
-	lw t0, b
-	sw t0, 4(sp)
+
+	# get address of b points to
+	la t3, b
+	addi t3, t3, 0
+
+	# get address of local var:b
+	ld t0, 0(t3)
+	sd t0, 8(sp)
 
 	# add result_ a$1 b
 
 	# fetch variables
-	lw t1, 8(sp)
-	lw t2, 4(sp)
+	ld t1, 16(sp)
+	ld t2, 8(sp)
+
+	# get address of local var:result_
 	add t0, t1, t2
-	sw t0, 0(sp)
+	sd t0, 0(sp)
 
 	# ret result_
 
 	# fetch variables
-	lw t1, 0(sp)
+	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 24
+	addi sp, sp, 40
 	ret 

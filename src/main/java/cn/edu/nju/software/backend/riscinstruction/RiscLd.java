@@ -4,7 +4,7 @@ import cn.edu.nju.software.backend.riscinstruction.util.RiscOpcode;
 
 public class RiscLd extends DefaultInstruction {
 
-    public RiscLd(Operand rd, Operand rs1) {
-        super(RiscOpcode.LD, rd, rs1);
+    public RiscLd(Operand d, Operand s) {
+        super(RiscOpcode.LD, d, s);
     }
 }

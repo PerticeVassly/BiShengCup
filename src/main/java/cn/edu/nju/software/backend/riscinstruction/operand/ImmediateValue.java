@@ -1,24 +1,24 @@
 package cn.edu.nju.software.backend.riscinstruction.operand;
 
 public class ImmediateValue implements Operand {
-    int value;
-    float fvalue;
-    boolean isFloat = false;
+    long value;
+    double fvalue;
+    boolean isdouble = false;
 
-    public ImmediateValue(int value) {
+    public ImmediateValue(long value) {
         this.value = value;
     }
 
-    public ImmediateValue(float fvalue) {
-        this.isFloat = true;
+    public ImmediateValue(double fvalue) {
+        this.isdouble = true;
         this.fvalue = fvalue;
     }
 
-    public int getValue() {
+    public long getValue() {
         return value;
     }
 
-    public float getFValue() {
+    public double getFValue() {
         return fvalue;
     }
 
@@ -26,15 +26,15 @@ public class ImmediateValue implements Operand {
         this.value = value;
     }
 
-    public void setFValue(float fvalue) {
+    public void setFValue(double fvalue) {
         this.fvalue = fvalue;
     }
 
     @Override
     public String toString() {
-        if(isFloat) {
-            int bits = Float.floatToIntBits(fvalue);
-            return "0x"+Integer.toHexString(bits);
+        if(isdouble) {
+            long bits = Double.doubleToRawLongBits(fvalue);
+            return "0x"+Long.toHexString(bits);
         }
         else {
             return String.valueOf(value);

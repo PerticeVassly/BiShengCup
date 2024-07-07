@@ -7,47 +7,61 @@
 main:
 mainEntry:
 
-	# allocate space for local variables
-	addi sp, sp, -24
+	# reserve space
+	addi sp, sp, -40
 
 	# save the parameters
 
 	# allocate a
-	addi t0, sp, 12
-	sd t0, 16(sp)
+	addi t0, sp, 24
+
+	# get address of local var:a
+	sd t0, 32(sp)
 
 	# store a 
-	ld t2, 16(sp)
 
 	# fetch variables
 	li t1, 10
-	sw t1, 0(t2)
+
+	# get address of a points to
+	ld t3, 32(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load a$1 a
-	ld t2, 16(sp)
-	lw t0, 0(t2)
-	sw t0, 8(sp)
+
+	# get address of a points to
+	ld t3, 32(sp)
+	addi t3, t3, 0
+
+	# get address of local var:a$1
+	ld t0, 0(t3)
+	sd t0, 16(sp)
 
 	# mul result_ a$1 
 
 	# fetch variables
-	lw t1, 8(sp)
+	ld t1, 16(sp)
 	li t2, 2
+
+	# get address of local var:result_
 	mul t0, t1, t2
-	sw t0, 4(sp)
+	sd t0, 8(sp)
 
 	# add result_$1 result_ 
 
 	# fetch variables
-	lw t1, 4(sp)
+	ld t1, 8(sp)
 	li t2, 1
+
+	# get address of local var:result_$1
 	add t0, t1, t2
-	sw t0, 0(sp)
+	sd t0, 0(sp)
 
 	# ret result_$1
 
 	# fetch variables
-	lw t1, 0(sp)
+	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 24
+	addi sp, sp, 40
 	ret 

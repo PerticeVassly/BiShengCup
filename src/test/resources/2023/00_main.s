@@ -7,7 +7,7 @@
 main:
 mainEntry89:
 
-	# allocate space for local variables
+	# reserve space
 	addi sp, sp, 0
 
 	# save the parameters

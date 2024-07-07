@@ -7,112 +7,168 @@
 f:
 fEntry:
 
-	# allocate space for local variables
-	addi sp, sp, -92
+	# reserve space
+	addi sp, sp, -152
+
+	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 88(sp)
-	sw a1, 84(sp)
-	sw a2, 80(sp)
-	sw a3, 76(sp)
+
+	# get address of 0 into 
+	sd a0, 144(sp)
+
+	# get address of 1 into 
+	sd a1, 136(sp)
+
+	# get address of 2 into 
+	sd a2, 128(sp)
+
+	# get address of 3 into 
+	sd a3, 120(sp)
 
 	# allocate a
-	addi t0, sp, 64
-	sd t0, 68(sp)
+	addi t0, sp, 104
+
+	# get address of local var:a
+	sd t0, 112(sp)
 
 	# store a 0
-	ld t2, 68(sp)
 
 	# fetch variables
-	lw t1, 88(sp)
-	sw t1, 0(t2)
+	ld t1, 144(sp)
+
+	# get address of a points to
+	ld t3, 112(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# allocate b
-	addi t0, sp, 52
-	sd t0, 56(sp)
+	addi t0, sp, 88
+
+	# get address of local var:b
+	sd t0, 96(sp)
 
 	# store b 1
-	ld t2, 56(sp)
 
 	# fetch variables
-	lw t1, 84(sp)
-	sw t1, 0(t2)
+	ld t1, 136(sp)
+
+	# get address of b points to
+	ld t3, 96(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# allocate c
-	addi t0, sp, 40
-	sd t0, 44(sp)
+	addi t0, sp, 72
+
+	# get address of local var:c
+	sd t0, 80(sp)
 
 	# store c 2
-	ld t2, 44(sp)
 
 	# fetch variables
-	lw t1, 80(sp)
-	sw t1, 0(t2)
+	ld t1, 128(sp)
+
+	# get address of c points to
+	ld t3, 80(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# allocate d
-	addi t0, sp, 28
-	sd t0, 32(sp)
+	addi t0, sp, 56
+
+	# get address of local var:d
+	sd t0, 64(sp)
 
 	# store d 3
-	ld t2, 32(sp)
 
 	# fetch variables
-	lw t1, 76(sp)
-	sw t1, 0(t2)
+	ld t1, 120(sp)
+
+	# get address of d points to
+	ld t3, 64(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load a$1 a
-	ld t2, 68(sp)
-	lw t0, 0(t2)
-	sw t0, 24(sp)
+
+	# get address of a points to
+	ld t3, 112(sp)
+	addi t3, t3, 0
+
+	# get address of local var:a$1
+	ld t0, 0(t3)
+	sd t0, 48(sp)
 
 	# load b$1 b
-	ld t2, 56(sp)
-	lw t0, 0(t2)
-	sw t0, 20(sp)
+
+	# get address of b points to
+	ld t3, 96(sp)
+	addi t3, t3, 0
+
+	# get address of local var:b$1
+	ld t0, 0(t3)
+	sd t0, 40(sp)
 
 	# add result_ a$1 b$1
 
 	# fetch variables
-	lw t1, 24(sp)
-	lw t2, 20(sp)
+	ld t1, 48(sp)
+	ld t2, 40(sp)
+
+	# get address of local var:result_
 	add t0, t1, t2
-	sw t0, 16(sp)
+	sd t0, 32(sp)
 
 	# load c$1 c
-	ld t2, 44(sp)
-	lw t0, 0(t2)
-	sw t0, 12(sp)
+
+	# get address of c points to
+	ld t3, 80(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c$1
+	ld t0, 0(t3)
+	sd t0, 24(sp)
 
 	# add result_$1 result_ c$1
 
 	# fetch variables
-	lw t1, 16(sp)
-	lw t2, 12(sp)
+	ld t1, 32(sp)
+	ld t2, 24(sp)
+
+	# get address of local var:result_$1
 	add t0, t1, t2
-	sw t0, 8(sp)
+	sd t0, 16(sp)
 
 	# load d$1 d
-	ld t2, 32(sp)
-	lw t0, 0(t2)
-	sw t0, 4(sp)
+
+	# get address of d points to
+	ld t3, 64(sp)
+	addi t3, t3, 0
+
+	# get address of local var:d$1
+	ld t0, 0(t3)
+	sd t0, 8(sp)
 
 	# add result_$2 result_$1 d$1
 
 	# fetch variables
-	lw t1, 8(sp)
-	lw t2, 4(sp)
+	ld t1, 16(sp)
+	ld t2, 8(sp)
+
+	# get address of local var:result_$2
 	add t0, t1, t2
-	sw t0, 0(sp)
+	sd t0, 0(sp)
 
 	# ret result_$2
 
 	# fetch variables
-	lw t1, 0(sp)
+	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 92
+	addi sp, sp, 152
 
 	# restore callee saved regs
 	addi sp, sp, 0

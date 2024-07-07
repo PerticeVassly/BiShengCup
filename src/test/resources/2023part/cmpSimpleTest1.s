@@ -7,81 +7,105 @@
 main:
 mainEntry8:
 
-	# allocate space for local variables
-	addi sp, sp, -32
+	# reserve space
+	addi sp, sp, -56
 
 	# save the parameters
 
 	# allocate a
-	addi t0, sp, 20
-	sd t0, 24(sp)
+	addi t0, sp, 40
+
+	# get address of local var:a
+	sd t0, 48(sp)
 
 	# store a 
-	ld t2, 24(sp)
 
 	# fetch variables
 	li t1, 1
-	sw t1, 0(t2)
+
+	# get address of a points to
+	ld t3, 48(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load a$1 a
-	ld t2, 24(sp)
-	lw t0, 0(t2)
-	sw t0, 16(sp)
+
+	# get address of a points to
+	ld t3, 48(sp)
+	addi t3, t3, 0
+
+	# get address of local var:a$1
+	ld t0, 0(t3)
+	sd t0, 32(sp)
 
 	# cmp a$1  cond_eq_tmp_
 
 	# fetch variables
-	lw t1, 16(sp)
+	ld t1, 32(sp)
 	li t2, 1
+
+	# get address of local var:cond_eq_tmp_
 	xor t0, t1, t2
 	seqz t0, t0
-	sw t0, 12(sp)
+	sd t0, 24(sp)
 
 	# fetch variables
-	lw t1, 12(sp)
+	ld t1, 24(sp)
+
+	# get address of local var:cond_tmp_
 
 	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
-	sw t0, 8(sp)
+	sd t0, 16(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 8(sp)
+	ld t1, 16(sp)
 	li t2, 0
+
+	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sw t0, 4(sp)
+	sd t0, 8(sp)
 
 	# condBr cond_ ifTrue_6 next_6
 
 	# fetch variables
-	lw t1, 4(sp)
+	ld t1, 8(sp)
 	beqz t1, next_6
 	j ifTrue_6
 ifTrue_6:
 
 	# store a 
-	ld t2, 24(sp)
 
 	# fetch variables
 	li t1, 2
-	sw t1, 0(t2)
+
+	# get address of a points to
+	ld t3, 48(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# br next_6
 	j next_6
 next_6:
 
 	# load a$2 a
-	ld t2, 24(sp)
-	lw t0, 0(t2)
-	sw t0, 0(sp)
+
+	# get address of a points to
+	ld t3, 48(sp)
+	addi t3, t3, 0
+
+	# get address of local var:a$2
+	ld t0, 0(t3)
+	sd t0, 0(sp)
 
 	# ret a$2
 
 	# fetch variables
-	lw t1, 0(sp)
+	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 32
+	addi sp, sp, 56
 	ret 
