@@ -7,55 +7,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArrayValue extends ValueRef {
-    private TypeRef elementType;
-    private final ValueRef[] elements;
-    private final int size;
-
-    public ArrayValue(int size) {
-        this.size = size;
-        elements = new ValueRef[size];
-    }
-
-    public void update(ArrayType selfType,TypeRef elementType, ValueRef[] elements) {
-        this.type = selfType;
-        this.elementType = elementType;
-        System.arraycopy(elements, 0, this.elements, 0, elements.length);
-    }
-
-    public ValueRef getElement(int index) {
-        return elements[index];
-    }
-    public int getSize() {
-        return size;
-    }
-    public TypeRef getElementType() {
-        return elementType;
+    private final List<ValueRef> values;
+    public ArrayValue(ArrayType arrayType, List<ValueRef> val) {
+        type = arrayType;
+        values = val;
     }
 
     public String toString() {
         StringBuilder res = new StringBuilder();
         res.append(type.toString()).append(" ");
+        // begin generate value
         res.append("[");
-        for (int i = 0; i < size; i++) {
-            if (elements[i] != null) {
-                if (!(elements[i] instanceof ConstValue)){
-                    res.append(elements[i].toString());
-                } else {
-                    res.append(elements[i].getType()).append(" ").append(elements[i].toString());
-                }
-            } else {
-                res.append(elementType.toString()).append(" "); // element[i] is null, we need to actively declare its type
-                if (!(elementType instanceof ArrayType)) {
-                    res.append(0);
-                } else {
-                    res.append("zeroinitializer");
+        ArrayType arrayType = (ArrayType) type;
+        if (!(arrayType.getElementType() instanceof ArrayType)) {
+            for (int i = 0; i < arrayType.getElementSize(); i++) {
+                ValueRef vr = values.get(i);
+                res.append(vr.getType().toString());
+                res.append(" ");
+                res.append(vr);
+                if (i != arrayType.getElementSize() - 1) {
+                    res.append(", ");
                 }
             }
-            if (i < size - 1) {
-                res.append(", ");
+        } else {
+            for (int i = 0; i < arrayType.getElementSize(); i++) {
+                res.append(values.get(i).toString());
+                if (i != arrayType.getElementSize() - 1) {
+                    res.append(", ");
+                }
             }
         }
-        return res.append("]").toString();
+        res.append("]");
+        return res.toString();
     }
 
     public List<ValueRef>  getLinerList(){

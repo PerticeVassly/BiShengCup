@@ -7,7 +7,7 @@ target triple = "x86_64-pc-linux-gnu"
 @PI = dso_local constant float 0x400921FA00000000, align 4
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local float @fibonacci(i32 noundef %0) #0 {
+define dso_local float @fibonacci(i32 %0) #0 {
   %2 = alloca float, align 4
   %3 = alloca i32, align 4
   store i32 %0, i32* %3, align 4
@@ -31,10 +31,10 @@ define dso_local float @fibonacci(i32 noundef %0) #0 {
 11:                                               ; preds = %7
   %12 = load i32, i32* %3, align 4
   %13 = sub nsw i32 %12, 1
-  %14 = call float @fibonacci(i32 noundef %13)
+  %14 = call float @fibonacci(i32 %13)
   %15 = load i32, i32* %3, align 4
   %16 = sub nsw i32 %15, 2
-  %17 = call float @fibonacci(i32 noundef %16)
+  %17 = call float @fibonacci(i32 %16)
   %18 = fadd float %14, %17
   store float %18, float* %2, align 4
   br label %19
@@ -45,7 +45,7 @@ define dso_local float @fibonacci(i32 noundef %0) #0 {
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local float @poly(float noundef %0, i32 noundef %1) #0 {
+define dso_local float @poly(float %0, i32 %1) #0 {
   %3 = alloca float, align 4
   %4 = alloca float, align 4
   %5 = alloca i32, align 4
@@ -103,7 +103,7 @@ define dso_local float @poly(float noundef %0, i32 noundef %1) #0 {
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local float @sumRecursive(i32 noundef %0, float noundef %1) #0 {
+define dso_local float @sumRecursive(i32 %0, float %1) #0 {
   %3 = alloca float, align 4
   %4 = alloca i32, align 4
   %5 = alloca float, align 4
@@ -115,18 +115,18 @@ define dso_local float @sumRecursive(i32 noundef %0, float noundef %1) #0 {
 
 8:                                                ; preds = %2
   %9 = load float, float* %5, align 4
-  %10 = call float @poly(float noundef %9, i32 noundef 0)
+  %10 = call float @poly(float %9, i32 0)
   store float %10, float* %3, align 4
   br label %20
 
 11:                                               ; preds = %2
   %12 = load float, float* %5, align 4
   %13 = load i32, i32* %4, align 4
-  %14 = call float @poly(float noundef %12, i32 noundef %13)
+  %14 = call float @poly(float %12, i32 %13)
   %15 = load i32, i32* %4, align 4
   %16 = sub nsw i32 %15, 1
   %17 = load float, float* %5, align 4
-  %18 = call float @sumRecursive(i32 noundef %16, float noundef %17)
+  %18 = call float @sumRecursive(i32 %16, float %17)
   %19 = fadd float %14, %18
   store float %19, float* %3, align 4
   br label %20
@@ -147,10 +147,10 @@ define dso_local i32 @main() #0 {
   store float 0x400921FA00000000, float* %2, align 4
   store i32 5, i32* %3, align 4
   %6 = load i32, i32* %3, align 4
-  %7 = call float @fibonacci(i32 noundef %6)
+  %7 = call float @fibonacci(i32 %6)
   store float %7, float* %4, align 4
   %8 = load float, float* %2, align 4
-  %9 = call float @sumRecursive(i32 noundef 3, float noundef %8)
+  %9 = call float @sumRecursive(i32 3, float %8)
   store float %9, float* %5, align 4
   %10 = load float, float* %4, align 4
   %11 = load float, float* %5, align 4
@@ -159,14 +159,10 @@ define dso_local i32 @main() #0 {
   ret i32 %13
 }
 
-attributes #0 = { noinline nounwind optnone uwtable "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
 
-!llvm.module.flags = !{!0, !1, !2, !3, !4}
-!llvm.ident = !{!5}
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
 
 !0 = !{i32 1, !"wchar_size", i32 4}
-!1 = !{i32 7, !"PIC Level", i32 2}
-!2 = !{i32 7, !"PIE Level", i32 2}
-!3 = !{i32 7, !"uwtable", i32 1}
-!4 = !{i32 7, !"frame-pointer", i32 2}
-!5 = !{!"Ubuntu clang version 14.0.0-1ubuntu1.1"}
+!1 = !{!"clang version 10.0.0-4ubuntu1 "}

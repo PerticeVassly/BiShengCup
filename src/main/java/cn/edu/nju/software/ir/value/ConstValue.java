@@ -22,9 +22,40 @@ public class ConstValue extends ValueRef {
         this.value = value;
     }
 
+    public ConstValue(IntType type, Integer value, String name) {
+        this.type = type;
+        this.value = value;
+        this.name = name;
+    }
+
+    public ConstValue(FloatType type, Float value, String name) {
+        this.type = type;
+        this.value = value;
+        this.name = name;
+    }
+
+    public ConstValue(BoolType type, Boolean value, String name) {
+        this.type = type;
+        this.value = value;
+        this.name = name;
+    }
+
     public Object getValue() {
         return value;
     }
+
+    public int castToInt() {
+        if (value instanceof Integer integer) {
+            return integer;
+        } else if (value instanceof Float floatVal) {
+            return (int)(float)floatVal;
+        } else if (value instanceof Boolean booleanVal) {
+            return booleanVal ? 1 : 0;
+        } else {
+            throw new RuntimeException("castToInt error");
+        }
+    }
+
 
     public String toString() {
         if (type instanceof IntType){

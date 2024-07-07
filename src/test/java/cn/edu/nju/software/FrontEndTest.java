@@ -21,23 +21,24 @@ import static org.junit.jupiter.api.Assertions.fail;
  * @description
  * test files in DIR with input and output
  * <br>
- * runtime libs (sylib.ll) used
+ * runtime libs (sylib_mac.ll) used
  * @time 2024/6/14 14:04
  */
-public class TestFrontEndIO {
+public class FrontEndTest {
     private static final String DIR = "src/test/resources/2023/";
     private static final String DIR_PART = "src/test/resources/2023part/";
-    private static final String SYLIB = "src/test/resources/sylib.ll";
+    private static final String DIR_HIDDEN = "src/test/resources/2023hidden/";
+    private static final String SYLIB = "src/test/resources/sylib_mac.ll";
     private static final String LINKED = "src/test/resources/linked.ll";
 
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("50_short_circuit")
-//    @StringSource("79_var_name")
-//    @StringSource("90_many_locals")
-//    @StringSource("64_calculator")
 //    @StringSource("87_many_params")
+//    @StringSource("88_many_params2")
+    @StringSource("65_color")
+//    @StringSource("54_hidden_var")
+//    @StringSource("04_arr_defn3")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
     }
@@ -48,10 +49,16 @@ public class TestFrontEndIO {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if ( name.contains("84") ) {
-            fail();
-        }
         testFile(DIR, name);
+    }
+
+    /**
+     * test all the files in DIR_HIDDEN
+     */
+    @ParameterizedTest
+    @MethodSource("dirHidden")
+    void testHidden(String name) throws IOException, InterruptedException {
+        testFile(DIR_HIDDEN, name);
     }
 
     /**
@@ -98,6 +105,10 @@ public class TestFrontEndIO {
 
     private static Stream<String> dirPart() {
         return parameters(DIR_PART);
+    }
+
+    private static Stream<String> dirHidden() {
+        return parameters(DIR_HIDDEN);
     }
 
     /**

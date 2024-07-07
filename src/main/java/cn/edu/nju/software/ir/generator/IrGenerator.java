@@ -22,7 +22,6 @@ import java.util.ArrayList;
      ValueRef addFunction(ModuleRef module, FunctionType ft, String funcName);
 
     // local variable related operations, declare & assign & load its value from memory
-     ValueRef setInitValue(LocalVar localVar, ValueRef initValue);
      ValueRef buildAllocate(BuilderRef builder, TypeRef type, String name);
      ValueRef buildStore(BuilderRef builder, ValueRef value, ValueRef lVal);
      ValueRef buildLoad(BuilderRef builder, ValueRef memory, String lValName);
@@ -66,6 +65,12 @@ import java.util.ArrayList;
 //     ArrayValue ConstArray()
      ConstValue ConstBool(BoolType type, boolean value);
      ConstValue ConstFloat(FloatType type, float value);
+
+     ConstValue ConstInt(IntType type, int value, String name);
+
+     ConstValue ConstBool(BoolType type, boolean value, String name);
+
+     ConstValue ConstFloat(FloatType type, float value, String name);
 
      BasicBlockRef appendBasicBlock(FunctionValue function, String blockName);
 

@@ -1,5 +1,6 @@
 package cn.edu.nju.software.ir.basicblock;
 
+import cn.edu.nju.software.ir.instruction.Allocate;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
@@ -21,6 +22,7 @@ public class BasicBlockRef extends ValueRef {
     private final FunctionValue function;
     private final ArrayList<BasicBlockRef> pred;
     private int predNum;
+    private boolean reachable = true;
 
     public BasicBlockRef(FunctionValue fv, String name) {
         this.function = fv;
@@ -57,8 +59,16 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public void put(Instruction ir) {
+        if (ir instanceof Allocate) {
+            function.emitAlloc((Allocate) ir);
+        } else {
+            irNum++;
+            irs.add(ir);
+        }
+    }
+    public void put(int index, Instruction ir) {
+        irs.add(index, ir);
         irNum++;
-        irs.add(ir);
     }
 
     public void renewIr(int index, Instruction ir) {
@@ -95,5 +105,13 @@ public class BasicBlockRef extends ValueRef {
     @Override
     public String toString() {
         return "%" + name;
+    }
+
+    public boolean isReachable() {
+        return reachable;
+    }
+
+    public void setReachable(boolean reachable) {
+        this.reachable = reachable;
     }
 }
