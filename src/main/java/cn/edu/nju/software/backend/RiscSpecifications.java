@@ -5,8 +5,6 @@ package cn.edu.nju.software.backend;
  */
 public record RiscSpecifications() {
 
-    private static final String[] names = new String[64];
-
     private static final String[] callerSavedRegs = new String[] {"ra"};
 
     private static final String[] calleeSavedRegs = new String[] {};

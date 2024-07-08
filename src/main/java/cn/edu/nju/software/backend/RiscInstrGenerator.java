@@ -41,7 +41,21 @@ import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscSgtz;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
-import cn.edu.nju.software.ir.instruction.*;
+import cn.edu.nju.software.ir.instruction.Allocate;
+import cn.edu.nju.software.ir.instruction.Br;
+import cn.edu.nju.software.ir.instruction.Call;
+import cn.edu.nju.software.ir.instruction.Cmp;
+import cn.edu.nju.software.ir.instruction.CondBr;
+import cn.edu.nju.software.ir.instruction.FloatToInt;
+import cn.edu.nju.software.ir.instruction.GEP;
+import cn.edu.nju.software.ir.instruction.Instruction;
+import cn.edu.nju.software.ir.instruction.IntToFloat;
+import cn.edu.nju.software.ir.instruction.Load;
+import cn.edu.nju.software.ir.instruction.OpEnum;
+import cn.edu.nju.software.ir.instruction.RetValue;
+import cn.edu.nju.software.ir.instruction.RetVoid;
+import cn.edu.nju.software.ir.instruction.Store;
+import cn.edu.nju.software.ir.instruction.ZExt;
 import cn.edu.nju.software.ir.instruction.arithmetic.Add;
 import cn.edu.nju.software.ir.instruction.arithmetic.Div;
 import cn.edu.nju.software.ir.instruction.arithmetic.FAdd;
@@ -62,20 +76,23 @@ import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 
 public class RiscInstrGenerator implements InstructionVisitor {
-    private final FunctionValue llvmFunctionValue;
-    private final Stream<Instruction> instructions;
-    private final List<RiscInstruction> riscInstructions = new ArrayList<>();
-    private final Allocator allocator;
 
-    RiscInstrGenerator(Stream<Instruction> instructions, FunctionValue llvmFunctionValue, Allocator allocator) {
+    private final FunctionValue llvmFunctionValue;
+
+    private final Stream<Instruction> instructions;
+
+    private final List<RiscInstruction> riscInstructions = new LinkedList<>();
+
+    private final Allocator allocator = Allocator.get();
+
+    RiscInstrGenerator(Stream<Instruction> instructions, FunctionValue llvmFunctionValue) {
         this.instructions = instructions;
         this.llvmFunctionValue = llvmFunctionValue;
-        this.allocator = allocator;
     }
 
     /**
@@ -105,18 +122,17 @@ public class RiscInstrGenerator implements InstructionVisitor {
         riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t2")));
 
         //获取basePtr的值，存在t1中
-        riscInstructions.add(new RiscLd(new Register("t1"), allocator.getAddrOfLocalVar(basePtr.getName())));
+        riscInstructions.add(new RiscLd(new Register("t1"), allocator.getAddrOfLocalVar(basePtr)));
 
         //计算最终的地址，存在t0中
         riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t1"), new Register("t0")));
 
         //存放到lVal中
-        riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal.getName())));
+        riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
     }
 
     @Override
     public void visit(Store store) {
-
         ValueRef src = store.getOperand(0);
         ValueRef dest = store.getOperand(1);
 
@@ -175,13 +191,12 @@ public class RiscInstrGenerator implements InstructionVisitor {
         } else{
             typeLen = 8;
         }
-        riscInstructions.add(new RiscAddi(new Register("t0"), new Register("sp"), new ImmediateValue(allocator.getOffset(allocate.getLVal().getName()) - typeLen)));
+        riscInstructions.add(new RiscAddi(new Register("t0"), new Register("sp"), new ImmediateValue(allocator.getOffset(allocate.getLVal()) - typeLen)));
         riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(allocate.getLVal())));
     }
 
     @Override
     public void visit(Load load) {
-
         ValueRef src = load.getOperand(0);
         ValueRef lVal = load.getLVal();
 
@@ -203,7 +218,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Add add) {
-
         ValueRef op1 = add.getOperand(0);
         ValueRef op2 = add.getOperand(1);
         ValueRef dest = add.getLVal();
@@ -220,7 +234,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(FAdd fAdd) {
-
         ValueRef op1 = fAdd.getOperand(0);
         ValueRef op2 = fAdd.getOperand(1);
         ValueRef dest = fAdd.getLVal();
@@ -237,7 +250,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Sub sub) {
-
         ValueRef op1 = sub.getOperand(0);
         ValueRef op2 = sub.getOperand(1);
         ValueRef dest = sub.getLVal();
@@ -253,7 +265,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(FSub fSub) {
-
         ValueRef op1 = fSub.getOperand(0);
         ValueRef op2 = fSub.getOperand(1);
         ValueRef dest = fSub.getLVal();
@@ -269,7 +280,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Mul mul) {
-
         ValueRef op1 = mul.getOperand(0);
         ValueRef op2 = mul.getOperand(1);
         ValueRef dest = mul.getLVal();
@@ -285,7 +295,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(FMul fmul) {
-
         ValueRef op1 = fmul.getOperand(0);
         ValueRef op2 = fmul.getOperand(1);
         ValueRef dest = fmul.getLVal();
@@ -302,7 +311,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Mod mod) {
-
         ValueRef op1 = mod.getOperand(0);
         ValueRef op2 = mod.getOperand(1);
         ValueRef dest = mod.getLVal();
@@ -318,7 +326,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Div div) {
-
         ValueRef op1 = div.getOperand(0);
         ValueRef op2 = div.getOperand(1);
         ValueRef dest = div.getLVal();
@@ -335,7 +342,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(FDiv fdiv) {
-
         ValueRef op1 = fdiv.getOperand(0);
         ValueRef op2 = fdiv.getOperand(1);
         ValueRef dest = fdiv.getLVal();
@@ -351,7 +357,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(IntToFloat intToFloat) {
-
         ValueRef lVal = intToFloat.getLVal();
         ValueRef initVal = intToFloat.getOperand(0);
 
@@ -367,7 +372,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(FloatToInt floatToInt) {
-
         ValueRef lVal = floatToInt.getLVal();
         ValueRef initVal = floatToInt.getOperand(0);
 
@@ -402,7 +406,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Cmp cmp) {
-
         ValueRef op1 = cmp.getOperand(0);
         ValueRef op2 = cmp.getOperand(1);
         ValueRef lVal = cmp.getLVal();
@@ -541,7 +544,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(ZExt zExt) {
-
         ValueRef op = zExt.getOperand(0);
         ValueRef lVal = zExt.getLVal();
 
@@ -558,7 +560,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(RetValue retValue) {
-
         ValueRef retVal = retValue.getOperand(0);
 
         insertComment("ret " + retVal.getName());
@@ -577,7 +578,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(RetVoid retVoid) {
-
         insertComment("ret void");
 
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(allocator.getStackSize())));
@@ -591,8 +591,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Call call) {
-
-
         prepareParams(call);
 
         saveCallerSavedRegs();
@@ -623,23 +621,23 @@ public class RiscInstrGenerator implements InstructionVisitor {
         String[] argRegs = RiscSpecifications.getArgRegs();
         String[] fArgRegs = RiscSpecifications.getFArgRegs();
 
-        ArrayList<ValueRef> realParams = call.getRealParams();
+        List<ValueRef> realParams = call.getRealParams();
 
         int ptr = 0;
         int fptr = 0;
-        for (int i = 0; i < realParams.size(); i++) {
-            if (realParams.get(i).getType() instanceof FloatType) {
+        for (ValueRef realParam : realParams) {
+            if (realParam.getType() instanceof FloatType) {
                 //todo() 暂时这样写因为不确定可不可以直接mv freg
-                allocator.prepareVariable((realParams.get(i)));
+                allocator.prepareVariable(realParam);
                 riscInstructions.add(new RiscFmvxd(new Register("t0"), new Register("ft1")));
                 riscInstructions.add(new RiscFmvdx(new Register(fArgRegs[fptr]), new Register("t0")));
                 fptr++;
-            } else if (realParams.get(i).getType() instanceof IntType) {
-                allocator.prepareVariable((realParams.get(i)));
+            } else if (realParam.getType() instanceof IntType) {
+                allocator.prepareVariable(realParam);
                 riscInstructions.add(new RiscMv(new Register(argRegs[ptr]), new Register("t1")));
                 ptr++;
-            } else if(realParams.get(i).getType() instanceof Pointer){
-                Operand load = allocator.getAddrOfLocalVar(realParams.get(i));
+            } else if (realParam.getType() instanceof Pointer) {
+                Operand load = allocator.getAddrOfLocalVar(realParam);
                 riscInstructions.add(new RiscLd(new Register(argRegs[ptr]), load));
                 ptr++;
             } else {
@@ -649,7 +647,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
     }
 
     private void saveCallerSavedRegs() {
-
         riscInstructions.add(new RiscComment("save caller saved regs"));
 
         String[] callerSavedRegs = RiscSpecifications.getCallerSavedRegs();
@@ -662,7 +659,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
     }
 
     private void restoreCallerSavedRegs() {
-
         riscInstructions.add(new RiscComment("restore caller saved regs"));
 
         String[] registers = RiscSpecifications.getCallerSavedRegs();
@@ -676,7 +672,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
     }
 
     private void restoreCalleeSavedRegs() {
-
         riscInstructions.add(new RiscComment("restore callee saved regs"));
 
         String[] calleeSavedRegs = RiscSpecifications.getCalleeSavedRegs();
@@ -695,6 +690,4 @@ public class RiscInstrGenerator implements InstructionVisitor {
     public void insertComment(String comment){
         riscInstructions.add(new RiscComment(comment));
     }
-
-
 }
