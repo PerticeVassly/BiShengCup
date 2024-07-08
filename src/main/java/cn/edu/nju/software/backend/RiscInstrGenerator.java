@@ -611,11 +611,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
                 assert false;
             }
         }
-
     }
 
     private void prepareParams(Call call) {
-
         riscInstructions.add(new RiscComment("prepare params"));
         //prepare the parameters
         String[] argRegs = RiscSpecifications.getArgRegs();
