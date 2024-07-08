@@ -726,17 +726,34 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 if (globalVar != null && !(((Pointer)(globalVar.getType())).getBase() instanceof ArrayType)) {
                     // base type
                     ValueRef init = visitInitVal(ctx.initVal());
+                    if (!type.equals(init.getType())) {
+                        // global variable's init must be compiling constant, so can directly use gen.build...
+                        if (type instanceof IntType) {
+                            init = gen.buildFloatToInt(builder, init, "f2i");
+                        } else {
+                            init = gen.buildIntToFloat(builder, init, "i2f");
+                        }
+                    }
                     gen.setInitValue(globalVar, init);
                     valuePropagate(globalVar, init);
                 } else if (globalVar != null) {
                     // array
                     arrayInit = new ArrayList<>();
-                    visitInitVal(ctx.initVal());
-                    ArrayType arrayType = (ArrayType) (((Pointer) globalVar.getType()).getBase());
 
-                    ptr = 0;
-                    ArrayValue av = getArrayValue(arrayType);
-                    gen.setInitValue(globalVar, av);
+                    // 特判{}
+                    if (ctx.initVal().getText().equals("{}")) {
+                        // {}
+                        gen.setInitValue(globalVar, zero);
+                    } else {
+                        // {...}
+                        visitInitVal(ctx.initVal());
+                        ArrayType arrayType = (ArrayType) (((Pointer) globalVar.getType()).getBase());
+
+                        ptr = 0;
+                        // 确保数组基类型正确
+                        ArrayValue av = getArrayValue(arrayType, type);
+                        gen.setInitValue(globalVar, av);
+                    }
                 }
             } else {
                 // local variable
@@ -781,16 +798,19 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         return null;
     }
     private int ptr = 0;
-    private ArrayValue getArrayValue(ArrayType arrayType) {
+    private ArrayValue getArrayValue(ArrayType arrayType, TypeRef baseType) {
         int size = arrayType.getElementSize();
         ArrayList<ValueRef> tmp = new ArrayList<>();
         if (!(arrayType.getElementType() instanceof ArrayType)) {
             for (int i = ptr; ptr < i + size; ptr++) {
-                tmp.add(arrayInit.get(ptr));
+                ValueRef t = arrayInit.get(ptr);
+                // 确保数组基类型正确
+                t.updateType(baseType);
+                tmp.add(t);
             }
         } else {
             for (int i = 0; i < size; i++) {
-                tmp.add(getArrayValue((ArrayType) arrayType.getElementType()));
+                tmp.add(getArrayValue((ArrayType) arrayType.getElementType(), baseType));
             }
         }
         return new ArrayValue(arrayType, tmp);
@@ -864,6 +884,14 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             // base
             String varName = ctx.IDENT().getText();
             ConstValue cv = (ConstValue) visitConstInitVal(ctx.constInitVal());
+            if (!type.equals(cv.getType())) {
+                // global variable's init must be compiling constant, so can directly use gen.build...
+                if (type instanceof IntType) {
+                    cv = (ConstValue) gen.buildFloatToInt(builder, cv, "f2i");
+                } else {
+                    cv = (ConstValue) gen.buildIntToFloat(builder, cv, "i2f");
+                }
+            }
             curScope.put(new Symbol<>(varName, cv));
         } else {
             // array
@@ -895,7 +923,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 ArrayType arrayType = (ArrayType) (((Pointer) globalVar.getType()).getBase());
 
                 ptr = 0;
-                ArrayValue av = getArrayValue(arrayType);
+                ArrayValue av = getArrayValue(arrayType, type);
                 gen.setInitValue(globalVar, av);
                 curScope.put(new Symbol<>(ctx.IDENT().getText(), globalVar));
             }
