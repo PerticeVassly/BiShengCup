@@ -1,6 +1,5 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.ir.module.ModuleRef;
 
 import java.io.FileNotFoundException;
@@ -14,13 +13,13 @@ import java.util.List;
 
 public class RiscModule {
 
-    private ModuleRef llvmModule;
+    private final ModuleRef llvmModule;
 
     private final List<RiscFunction> riscFunctions = new ArrayList<>();
 
     private final List<RiscGlobalVar> riscGlobalVars = new ArrayList<>();
 
-    private final static HashSet<String> libFuncs = new HashSet<>();
+    private static final HashSet<String> libFuncs = new HashSet<>();
 
     static {
         String[] funcs = new String[]{"putch", "putint", "putfloat", "putarray", "putfarray", "starttime", "getint", "getch", "getfloat", "stoptime", "getarray", "getfarray"};
@@ -29,19 +28,19 @@ public class RiscModule {
 
     public RiscModule(ModuleRef llvmModule) {
         this.llvmModule = llvmModule;
-        codeGen();
     }
 
-    private void codeGen(){
+    public void codeGen() {
         //一定由全局变量Main
-        llvmModule.getGlobalVars().forEach(globalVar -> {
-            riscGlobalVars.add(new RiscGlobalVar(globalVar));
-        });
+        llvmModule.getGlobalVars().forEach(globalVar ->
+                riscGlobalVars.add(new RiscGlobalVar(globalVar)));
 
-        llvmModule.getFunctions().forEach(function -> {
-            if(libFuncs.contains(function.getName())){ return;}
-            riscFunctions.add(new RiscFunction(function));
-        });
+        llvmModule.getFunctions().filter(f -> !libFuncs.contains(f.getName()))
+                .forEach(function -> {
+                    RiscFunction riscFunction = new RiscFunction(function);
+                    riscFunctions.add(riscFunction);
+                    riscFunction.codeGen();
+                });
     }
 
     public void dumpToConsole() {

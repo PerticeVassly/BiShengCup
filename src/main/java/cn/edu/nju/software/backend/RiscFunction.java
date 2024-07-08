@@ -19,9 +19,10 @@ public class RiscFunction {
     private final Allocator allocator = new Allocator();
 
     public RiscFunction(FunctionValue functionValue) {
-
         this.functionValue = functionValue;
+    }
 
+    public void codeGen() {
         allocateSpace();
         genRiscBasicBlocks();
     }
@@ -54,7 +55,7 @@ public class RiscFunction {
      */
     private void reserveSpaceForLocalVariables() {
         functionValue.getBasicBlockRefs().stream()
-                .flatMap(bb -> bb.getIrs().stream())
+                .flatMap(BasicBlockRef::getIrs)
                 .filter(i -> i.getLVal() != null)
                 .forEach(i -> {
                     reserveMemoryForType(i.getLVal().getName(), i.getLVal().getType());
@@ -76,7 +77,9 @@ public class RiscFunction {
 
     private void genRiscBasicBlocks() {
         for (BasicBlockRef bb : functionValue.getBasicBlockRefs()) {
-            riscBasicBlocks.add(new RiscBasicBlock(bb, functionValue, allocator));
+            RiscBasicBlock riscBasicBlock = new RiscBasicBlock(bb, functionValue, allocator);
+            riscBasicBlocks.add(riscBasicBlock);
+            riscBasicBlock.codeGen();
         }
     }
 
