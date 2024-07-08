@@ -1,58 +1,52 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.backend.riscinstruction.*;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.*;
-import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscDiv;
-import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscMul;
-import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscRem;
-import cn.edu.nju.software.backend.riscinstruction.operand.*;
-import cn.edu.nju.software.backend.riscinstruction.pseudo.*;
+import cn.edu.nju.software.backend.riscinstruction.RiscAddi;
+import cn.edu.nju.software.backend.riscinstruction.RiscInstruction;
+import cn.edu.nju.software.backend.riscinstruction.RiscSd;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsd;
+import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
+import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
+import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import cn.edu.nju.software.ir.generator.InstructionVisitor;
-import cn.edu.nju.software.ir.instruction.*;
-import cn.edu.nju.software.ir.instruction.arithmetic.*;
-import cn.edu.nju.software.ir.instruction.logic.Logic;
-import cn.edu.nju.software.ir.type.*;
-import cn.edu.nju.software.ir.value.ArrayValue;
+import cn.edu.nju.software.ir.type.FloatType;
+import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.value.FunctionValue;
-import cn.edu.nju.software.ir.value.GlobalVar;
-import cn.edu.nju.software.ir.value.ValueRef;
+import cn.edu.nju.software.ir.value.LocalVar;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class RiscBasicBlock {
 
-    private final BasicBlockRef basicBlock;
+    private final BasicBlockRef basicBlockRef;
 
-    private final Allocator allocator;
+    private final Allocator allocator = Allocator.get();
 
     private final FunctionValue llvmFunctionValue;
 
-    private final ArrayList<RiscInstruction> riscInstructions = new ArrayList<>();
+    private final List<RiscInstruction> riscInstructions = new LinkedList<>();
 
     private final RiscInstrGenerator generator;
 
-    public RiscBasicBlock(BasicBlockRef basicBlock, FunctionValue functionValue, Allocator allocator) {
-        this.basicBlock = basicBlock;
-        this.allocator = allocator;
+    public RiscBasicBlock(BasicBlockRef basicBlockRef, FunctionValue functionValue) {
+        this.basicBlockRef = basicBlockRef;
         this.llvmFunctionValue = functionValue;
-        this.generator = new RiscInstrGenerator(basicBlock.getIrs(), llvmFunctionValue, allocator);
+        this.generator = new RiscInstrGenerator(basicBlockRef.getIrs(), llvmFunctionValue);
     }
 
     public void codeGen() {
         allocator.setInstrGenerator(generator);
-        if (basicBlock.getPredNum() == 0 ){
+        if (basicBlockRef.getPredNum() == 0) {
             functionInit();
         }
         generator.genRiscInstructions().forEach(riscInstructions::add);
     }
 
     private void functionInit() {
-
         generator.insertComment("reserve space");
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-allocator.getStackSize())));
 
@@ -71,14 +65,13 @@ public class RiscBasicBlock {
         int fptr = 0;
         int ptr = 0;
         for (int i = 0; i < functionType.getFParametersCount(); i++) {
-
             assert fptr <= RiscSpecifications.getArgRegs().length && ptr <= RiscSpecifications.getFArgRegs().length;
 
             if (functionType.getFParameter(i) instanceof FloatType) {
-                riscInstructions.add(new RiscFsd(new Register(RiscSpecifications.getFArgRegs()[fptr]), allocator.getAddrOfLocalVar(String.valueOf(i))));
+                riscInstructions.add(new RiscFsd(new Register(RiscSpecifications.getFArgRegs()[fptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i + ""))));
                 fptr++;
             } else if (functionType.getFParameter(i) instanceof IntType || functionType.getFParameter(i) instanceof Pointer) {
-                riscInstructions.add(new RiscSd(new Register(RiscSpecifications.getArgRegs()[ptr]), allocator.getAddrOfLocalVar(String.valueOf(i))));
+                riscInstructions.add(new RiscSd(new Register(RiscSpecifications.getArgRegs()[ptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i + ""))));
                 ptr++;
             } else {
                 assert false;
@@ -91,7 +84,7 @@ public class RiscBasicBlock {
 
         String[] calleeSavedRegs = RiscSpecifications.getCalleeSavedRegs();
 
-        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8 * calleeSavedRegs.length)));
+        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L * calleeSavedRegs.length)));
 
         for (int i = 0; i < calleeSavedRegs.length; i++) {
             RiscInstruction riscSw = new RiscSd(new Register(calleeSavedRegs[i]), new IndirectRegister("sp", i * 8));
@@ -105,13 +98,12 @@ public class RiscBasicBlock {
 
     public void dumpToConsole() {
 
-        System.out.println(basicBlock.getName() + ":");
+        System.out.println(basicBlockRef.getName() + ":");
 
         assert !riscInstructions.isEmpty();
 
-        for (RiscInstruction riscInstruction : riscInstructions) {
-            System.out.println(riscInstruction.emitCode());
-        }
+        riscInstructions.forEach(
+                riscInstruction -> System.out.println(riscInstruction.emitCode())
+        );
     }
-
 }
