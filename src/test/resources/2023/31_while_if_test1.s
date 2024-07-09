@@ -53,9 +53,9 @@ whileIfEntry:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_207
-	j whileCond_207
-whileCond_207:
+	# br whileCond_117
+	j whileCond_117
+whileCond_117:
 
 	# load a lv
 
@@ -98,13 +98,13 @@ whileCond_207:
 	seqz t0, t0
 	sd t0, 104(sp)
 
-	# condBr cond_ whileBody_207 next_498
+	# condBr cond_ whileBody_117 next_239
 
 	# fetch variables
 	ld t1, 104(sp)
-	beqz t1, next_498
-	j whileBody_207
-whileBody_207:
+	beqz t1, next_239
+	j whileBody_117
+whileBody_117:
 
 	# load a$1 lv
 
@@ -148,13 +148,13 @@ whileBody_207:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$1 ifTrue_291 ifFalse_123
+	# condBr cond_$1 ifTrue_122 ifFalse_43
 
 	# fetch variables
 	ld t1, 72(sp)
-	beqz t1, ifFalse_123
-	j ifTrue_291
-next_498:
+	beqz t1, ifFalse_43
+	j ifTrue_122
+next_239:
 
 	# load b lv$1
 
@@ -176,7 +176,7 @@ next_498:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_291:
+ifTrue_122:
 
 	# lv$1 
 
@@ -190,9 +190,9 @@ ifTrue_291:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_499
-	j next_499
-ifFalse_123:
+	# br next_240
+	j next_240
+ifFalse_43:
 
 	# load a$2 lv
 
@@ -236,13 +236,13 @@ ifFalse_123:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 ifTrue_292 ifFalse_124
+	# condBr cond_$2 ifTrue_123 ifFalse_44
 
 	# fetch variables
 	ld t1, 32(sp)
-	beqz t1, ifFalse_124
-	j ifTrue_292
-next_499:
+	beqz t1, ifFalse_44
+	j ifTrue_123
+next_240:
 
 	# load a$4 lv
 
@@ -276,9 +276,9 @@ next_499:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_207
-	j whileCond_207
-ifTrue_292:
+	# br whileCond_117
+	j whileCond_117
+ifTrue_123:
 
 	# lv$1 
 
@@ -292,9 +292,9 @@ ifTrue_292:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_500
-	j next_500
-ifFalse_124:
+	# br next_241
+	j next_241
+ifFalse_44:
 
 	# load a$3 lv
 
@@ -328,16 +328,16 @@ ifFalse_124:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_500
-	j next_500
-next_500:
+	# br next_241
+	j next_241
+next_241:
 
-	# br next_499
-	j next_499
+	# br next_240
+	j next_240
 .type main, @function
 .globl main
 main:
-mainEntry72:
+mainEntry70:
 	addi sp, sp, -8
 
 	# reserve space

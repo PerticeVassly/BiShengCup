@@ -8,7 +8,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry84:
+mainEntry82:
 	addi sp, sp, 0
 
 	# reserve space

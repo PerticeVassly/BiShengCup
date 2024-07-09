@@ -133,7 +133,7 @@ funcEntry2:
 .type main, @function
 .globl main
 main:
-mainEntry37:
+mainEntry36:
 	addi sp, sp, -328
 
 	# reserve space

@@ -286,7 +286,7 @@ next_97:
 .type main, @function
 .globl main
 main:
-mainEntry25:
+mainEntry24:
 	addi sp, sp, -8
 
 	# reserve space

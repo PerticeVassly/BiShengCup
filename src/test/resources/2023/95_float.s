@@ -1443,8 +1443,9 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp
@@ -1470,8 +1471,9 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$1
@@ -1497,8 +1499,9 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$2
@@ -1524,8 +1527,9 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$3
@@ -1551,8 +1555,9 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$4
@@ -1578,8 +1583,9 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$5
@@ -1605,8 +1611,9 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$6
@@ -1632,8 +1639,9 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$7
@@ -1659,8 +1667,9 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$8
@@ -1686,8 +1695,9 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$9
@@ -1713,8 +1723,9 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr
@@ -1975,8 +1986,9 @@ whileBody_50:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$1
@@ -1999,8 +2011,9 @@ whileBody_50:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$2
@@ -2250,8 +2263,9 @@ next_88:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$2
-	ld t1, 552(sp)
+	# get value of local var:lv$2
+	ld t3, 552(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$4

@@ -615,8 +615,9 @@ whileBody_53:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 320(sp)
+	# get value of local var:lv$1
+	ld t3, 320(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:b
@@ -835,8 +836,9 @@ whileBody_54:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 320(sp)
+	# get value of local var:lv$1
+	ld t3, 320(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:b$1

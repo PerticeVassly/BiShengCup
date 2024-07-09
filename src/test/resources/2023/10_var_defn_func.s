@@ -30,7 +30,7 @@ defnEntry:
 .type main, @function
 .globl main
 main:
-mainEntry78:
+mainEntry76:
 	addi sp, sp, -32
 
 	# reserve space

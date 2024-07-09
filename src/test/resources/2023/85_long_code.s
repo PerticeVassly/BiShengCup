@@ -288,8 +288,9 @@ whileBody_26:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_
-	ld t1, 248(sp)
+	# get value of local var:arr_
+	ld t3, 248(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr
@@ -342,8 +343,9 @@ whileBody_26:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$1
-	ld t1, 208(sp)
+	# get value of local var:arr_$1
+	ld t3, 208(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$2
@@ -472,8 +474,9 @@ ifTrue_17:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$2
-	ld t1, 128(sp)
+	# get value of local var:arr_$2
+	ld t3, 128(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$4
@@ -538,8 +541,9 @@ ifTrue_17:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$3
-	ld t1, 88(sp)
+	# get value of local var:arr_$3
+	ld t3, 88(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$6
@@ -572,8 +576,9 @@ ifTrue_17:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$4
-	ld t1, 64(sp)
+	# get value of local var:arr_$4
+	ld t3, 64(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$7
@@ -628,8 +633,9 @@ ifTrue_17:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$5
-	ld t1, 32(sp)
+	# get value of local var:arr_$5
+	ld t3, 32(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$9
@@ -851,8 +857,9 @@ whileBody_27:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_
-	ld t1, 264(sp)
+	# get value of local var:arr_
+	ld t3, 264(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:a
@@ -1015,8 +1022,9 @@ whileBody_28:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$2
-	ld t1, 176(sp)
+	# get value of local var:arr_$2
+	ld t3, 176(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:a$4
@@ -1049,8 +1057,9 @@ whileBody_28:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$3
-	ld t1, 152(sp)
+	# get value of local var:arr_$3
+	ld t3, 152(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:a$5
@@ -1151,8 +1160,9 @@ next_46:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$4
-	ld t1, 96(sp)
+	# get value of local var:arr_$4
+	ld t3, 96(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:a$7
@@ -1253,8 +1263,9 @@ secondCond_2:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$1
-	ld t1, 40(sp)
+	# get value of local var:arr_$1
+	ld t3, 40(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:a$2
@@ -1539,8 +1550,9 @@ ifTrue_18:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_
-	ld t1, 656(sp)
+	# get value of local var:arr_
+	ld t3, 656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr
@@ -1674,8 +1686,9 @@ next_48:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$7
-	ld t1, 584(sp)
+	# get value of local var:arr_$7
+	ld t3, 584(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$12
@@ -2092,8 +2105,9 @@ secondCond_3:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$1
-	ld t1, 360(sp)
+	# get value of local var:arr_$1
+	ld t3, 360(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$2
@@ -2196,8 +2210,9 @@ ifTrue_19:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$2
-	ld t1, 288(sp)
+	# get value of local var:arr_$2
+	ld t3, 288(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$4
@@ -2230,8 +2245,9 @@ ifTrue_19:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$3
-	ld t1, 264(sp)
+	# get value of local var:arr_$3
+	ld t3, 264(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$5
@@ -2480,8 +2496,9 @@ secondCond_4:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$4
-	ld t1, 120(sp)
+	# get value of local var:arr_$4
+	ld t3, 120(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$7
@@ -2573,8 +2590,9 @@ ifTrue_20:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$5
-	ld t1, 56(sp)
+	# get value of local var:arr_$5
+	ld t3, 56(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$9
@@ -2607,8 +2625,9 @@ ifTrue_20:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$6
-	ld t1, 32(sp)
+	# get value of local var:arr_$6
+	ld t3, 32(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$10
@@ -2835,8 +2854,9 @@ ifTrue_21:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_
-	ld t1, 120(sp)
+	# get value of local var:arr_
+	ld t3, 120(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr
@@ -2889,8 +2909,9 @@ ifTrue_21:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$1
-	ld t1, 80(sp)
+	# get value of local var:arr_$1
+	ld t3, 80(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$2
@@ -2997,8 +3018,9 @@ ifFalse_3:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$2
-	ld t1, 16(sp)
+	# get value of local var:arr_$2
+	ld t3, 16(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$4
@@ -3172,8 +3194,9 @@ whileBody_32:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 8312(sp)
+	# get value of local var:lv$1
+	ld t3, 8312(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:count
@@ -3341,8 +3364,9 @@ whileBody_33:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_
-	ld t1, 176(sp)
+	# get value of local var:arr_
+	ld t3, 176(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr
@@ -3387,8 +3411,9 @@ whileBody_33:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 8312(sp)
+	# get value of local var:lv$1
+	ld t3, 8312(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:count$1
@@ -3411,8 +3436,9 @@ whileBody_33:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 8312(sp)
+	# get value of local var:lv$1
+	ld t3, 8312(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:count$2
@@ -3467,8 +3493,9 @@ whileBody_33:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 8312(sp)
+	# get value of local var:lv$1
+	ld t3, 8312(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:count$4
@@ -3573,8 +3600,9 @@ ifTrue_22:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 8312(sp)
+	# get value of local var:lv$1
+	ld t3, 8312(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:count$6
@@ -3830,8 +3858,9 @@ whileBody_34:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_
-	ld t1, 136(sp)
+	# get value of local var:arr_
+	ld t3, 136(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr
@@ -3886,8 +3915,9 @@ whileBody_34:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$1
-	ld t1, 104(sp)
+	# get value of local var:arr_$1
+	ld t3, 104(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$2
@@ -3920,8 +3950,9 @@ whileBody_34:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$2
-	ld t1, 80(sp)
+	# get value of local var:arr_$2
+	ld t3, 80(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$3
@@ -3976,8 +4007,9 @@ whileBody_34:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$3
-	ld t1, 48(sp)
+	# get value of local var:arr_$3
+	ld t3, 48(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$5
@@ -4248,8 +4280,9 @@ whileBody_35:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_
-	ld t1, 56(sp)
+	# get value of local var:arr_
+	ld t3, 56(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:target
@@ -4282,8 +4315,9 @@ whileBody_35:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$1
-	ld t1, 32(sp)
+	# get value of local var:arr_$1
+	ld t3, 32(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:src
@@ -4550,8 +4584,9 @@ whileBody_36:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_
-	ld t1, 160(sp)
+	# get value of local var:arr_
+	ld t3, 160(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr
@@ -4719,8 +4754,9 @@ ifTrue_23:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$1
-	ld t1, 56(sp)
+	# get value of local var:arr_$1
+	ld t3, 56(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$2
@@ -4769,8 +4805,9 @@ ifFalse_4:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$2
-	ld t1, 32(sp)
+	# get value of local var:arr_$2
+	ld t3, 32(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$3
@@ -5172,8 +5209,9 @@ ifTrue_24:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_
-	ld t1, 424(sp)
+	# get value of local var:arr_
+	ld t3, 424(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr
@@ -5338,8 +5376,9 @@ ifTrue_25:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$1
-	ld t1, 328(sp)
+	# get value of local var:arr_$1
+	ld t3, 328(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$2
@@ -5384,8 +5423,9 @@ ifTrue_25:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$2
-	ld t1, 304(sp)
+	# get value of local var:arr_$2
+	ld t3, 304(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$4
@@ -5474,8 +5514,9 @@ ifFalse_6:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$3
-	ld t1, 248(sp)
+	# get value of local var:arr_$3
+	ld t3, 248(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$5
@@ -5590,8 +5631,9 @@ ifFalse_6:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$4
-	ld t1, 168(sp)
+	# get value of local var:arr_$4
+	ld t3, 168(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$7
@@ -5676,8 +5718,9 @@ ifFalse_6:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$5
-	ld t1, 112(sp)
+	# get value of local var:arr_$5
+	ld t3, 112(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$9
@@ -5819,8 +5862,9 @@ whileBody_38:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:arr_$6
-	ld t1, 24(sp)
+	# get value of local var:arr_$6
+	ld t3, 24(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$10
@@ -5937,8 +5981,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr
@@ -5963,8 +6008,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$1
@@ -5989,8 +6035,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$2
@@ -6015,8 +6062,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$3
@@ -6041,8 +6089,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$4
@@ -6067,8 +6116,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$5
@@ -6093,8 +6143,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$6
@@ -6119,8 +6170,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$7
@@ -6145,8 +6197,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$8
@@ -6171,8 +6224,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$9
@@ -6197,8 +6251,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$10
@@ -6223,8 +6278,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$11
@@ -6249,8 +6305,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$12
@@ -6275,8 +6332,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$13
@@ -6301,8 +6359,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$14
@@ -6327,8 +6386,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$15
@@ -6353,8 +6413,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$16
@@ -6379,8 +6440,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$17
@@ -6405,8 +6467,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$18
@@ -6431,8 +6494,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$19
@@ -6457,8 +6521,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$20
@@ -6483,8 +6548,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$21
@@ -6509,8 +6575,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$22
@@ -6535,8 +6602,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$23
@@ -6561,8 +6629,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$24
@@ -6587,8 +6656,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$25
@@ -6613,8 +6683,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$26
@@ -6639,8 +6710,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$27
@@ -6665,8 +6737,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$28
@@ -6691,8 +6764,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$29
@@ -6717,8 +6791,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$30
@@ -6743,8 +6818,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$31
@@ -6769,8 +6845,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$32
@@ -6783,8 +6860,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result
@@ -6833,8 +6911,9 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$1
@@ -6954,8 +7033,9 @@ whileBody_39:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$2
@@ -7053,8 +7133,9 @@ next_65:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$4
@@ -7174,8 +7255,9 @@ whileBody_40:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$5
@@ -7273,8 +7355,9 @@ next_66:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$7
@@ -7346,8 +7429,9 @@ next_66:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$8
@@ -7419,8 +7503,9 @@ next_66:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$33
@@ -7433,8 +7518,9 @@ next_66:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$9
@@ -7483,8 +7569,9 @@ next_66:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$10
@@ -7604,8 +7691,9 @@ whileBody_41:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$11
@@ -7703,8 +7791,9 @@ next_67:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$34
@@ -7717,8 +7806,9 @@ next_67:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$13
@@ -7767,8 +7857,9 @@ next_67:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$14
@@ -7888,8 +7979,9 @@ whileBody_42:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$15
@@ -7987,8 +8079,9 @@ next_68:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$35
@@ -8001,8 +8094,9 @@ next_68:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$17
@@ -8075,8 +8169,9 @@ next_68:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$18
@@ -8212,8 +8307,9 @@ whileBody_43:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$19
@@ -8311,8 +8407,9 @@ next_69:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$36
@@ -8325,8 +8422,9 @@ next_69:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$21
@@ -8375,8 +8473,9 @@ next_69:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$22
@@ -8500,8 +8599,9 @@ whileBody_44:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$23
@@ -8599,8 +8699,9 @@ next_70:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 1392(sp)
+	# get value of local var:lv
+	ld t3, 1392(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$37
@@ -8613,8 +8714,9 @@ next_70:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$25
@@ -8663,8 +8765,9 @@ next_70:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$26
@@ -8788,8 +8891,9 @@ whileBody_45:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv$1
-	ld t1, 1656(sp)
+	# get value of local var:lv$1
+	ld t3, 1656(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$27

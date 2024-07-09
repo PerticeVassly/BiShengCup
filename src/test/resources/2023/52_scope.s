@@ -118,13 +118,13 @@ funcEntry3:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_ ifTrue_284 ifFalse_117
+	# condBr cond_ ifTrue_115 ifFalse_37
 
 	# fetch variables
 	ld t1, 16(sp)
-	beqz t1, ifFalse_117
-	j ifTrue_284
-ifTrue_284:
+	beqz t1, ifFalse_37
+	j ifTrue_115
+ifTrue_115:
 
 	# load a$2 lv$1
 
@@ -168,7 +168,7 @@ ifTrue_284:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_117:
+ifFalse_37:
 
 	# ret 
 
@@ -183,7 +183,7 @@ ifFalse_117:
 .type main, @function
 .globl main
 main:
-mainEntry70:
+mainEntry68:
 	addi sp, sp, -160
 
 	# reserve space
@@ -226,9 +226,9 @@ mainEntry70:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_200
-	j whileCond_200
-whileCond_200:
+	# br whileCond_110
+	j whileCond_110
+whileCond_110:
 
 	# load i lv$1
 
@@ -271,13 +271,13 @@ whileCond_200:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_ whileBody_200 next_485
+	# condBr cond_ whileBody_110 next_226
 
 	# fetch variables
 	ld t1, 96(sp)
-	beqz t1, next_485
-	j whileBody_200
-whileBody_200:
+	beqz t1, next_226
+	j whileBody_110
+whileBody_110:
 
 	# prepare params
 
@@ -327,13 +327,13 @@ whileBody_200:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$1 ifTrue_285 next_486
+	# condBr cond_$1 ifTrue_116 next_227
 
 	# fetch variables
 	ld t1, 64(sp)
-	beqz t1, next_486
-	j ifTrue_285
-next_485:
+	beqz t1, next_227
+	j ifTrue_116
+next_226:
 
 	# load result$1 lv
 
@@ -376,13 +376,13 @@ next_485:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 ifTrue_286 ifFalse_118
+	# condBr cond_$2 ifTrue_117 ifFalse_38
 
 	# fetch variables
 	ld t1, 32(sp)
-	beqz t1, ifFalse_118
-	j ifTrue_286
-ifTrue_285:
+	beqz t1, ifFalse_38
+	j ifTrue_117
+ifTrue_116:
 
 	# load result lv
 
@@ -416,9 +416,9 @@ ifTrue_285:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_486
-	j next_486
-next_486:
+	# br next_227
+	j next_227
+next_227:
 
 	# load i$1 lv$1
 
@@ -452,9 +452,9 @@ next_486:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_200
-	j whileCond_200
-ifTrue_286:
+	# br whileCond_110
+	j whileCond_110
+ifTrue_117:
 
 	# prepare params
 
@@ -473,9 +473,9 @@ ifTrue_286:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_487
-	j next_487
-ifFalse_118:
+	# br next_228
+	j next_228
+ifFalse_38:
 
 	# prepare params
 
@@ -494,9 +494,9 @@ ifFalse_118:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_487
-	j next_487
-next_487:
+	# br next_228
+	j next_228
+next_228:
 
 	# ret 
 

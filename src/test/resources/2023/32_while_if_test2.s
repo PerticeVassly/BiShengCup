@@ -95,21 +95,21 @@ ifWhileEntry:
 	seqz t0, t0
 	sd t0, 136(sp)
 
-	# condBr cond_ ifTrue_295 ifFalse_126
+	# condBr cond_ ifTrue_126 ifFalse_46
 
 	# fetch variables
 	ld t1, 136(sp)
-	beqz t1, ifFalse_126
-	j ifTrue_295
-ifTrue_295:
+	beqz t1, ifFalse_46
+	j ifTrue_126
+ifTrue_126:
 
-	# br whileCond_217
-	j whileCond_217
-ifFalse_126:
+	# br whileCond_127
+	j whileCond_127
+ifFalse_46:
 
-	# br whileCond_218
-	j whileCond_218
-next_512:
+	# br whileCond_128
+	j whileCond_128
+next_253:
 
 	# load b$4 lv$1
 
@@ -131,7 +131,7 @@ next_512:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_217:
+whileCond_127:
 
 	# load b lv$1
 
@@ -175,13 +175,13 @@ whileCond_217:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_$1 whileBody_217 next_513
+	# condBr cond_$1 whileBody_127 next_254
 
 	# fetch variables
 	ld t1, 96(sp)
-	beqz t1, next_513
-	j whileBody_217
-whileBody_217:
+	beqz t1, next_254
+	j whileBody_127
+whileBody_127:
 
 	# load b$1 lv$1
 
@@ -215,9 +215,9 @@ whileBody_217:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_217
-	j whileCond_217
-next_513:
+	# br whileCond_127
+	j whileCond_127
+next_254:
 
 	# load b$2 lv$1
 
@@ -251,9 +251,9 @@ next_513:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_512
-	j next_512
-whileCond_218:
+	# br next_253
+	j next_253
+whileCond_128:
 
 	# load a$1 lv
 
@@ -296,13 +296,13 @@ whileCond_218:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 whileBody_218 next_514
+	# condBr cond_$2 whileBody_128 next_255
 
 	# fetch variables
 	ld t1, 32(sp)
-	beqz t1, next_514
-	j whileBody_218
-whileBody_218:
+	beqz t1, next_255
+	j whileBody_128
+whileBody_128:
 
 	# load b$3 lv$1
 
@@ -368,16 +368,16 @@ whileBody_218:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_218
-	j whileCond_218
-next_514:
+	# br whileCond_128
+	j whileCond_128
+next_255:
 
-	# br next_512
-	j next_512
+	# br next_253
+	j next_253
 .type main, @function
 .globl main
 main:
-mainEntry76:
+mainEntry74:
 	addi sp, sp, -8
 
 	# reserve space

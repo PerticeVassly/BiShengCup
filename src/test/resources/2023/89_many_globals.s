@@ -2422,7 +2422,7 @@ testParam32Entry:
 .type main, @function
 .globl main
 main:
-mainEntry92:
+mainEntry90:
 	addi sp, sp, -496
 
 	# reserve space

@@ -128,7 +128,7 @@ inc_aEntry:
 .type main, @function
 .globl main
 main:
-mainEntry77:
+mainEntry75:
 	addi sp, sp, -280
 
 	# reserve space
@@ -153,9 +153,9 @@ mainEntry77:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_219
-	j whileCond_219
-whileCond_219:
+	# br whileCond_129
+	j whileCond_129
+whileCond_129:
 
 	# load k lv
 
@@ -199,13 +199,13 @@ whileCond_219:
 	seqz t0, t0
 	sd t0, 232(sp)
 
-	# condBr cond_ whileBody_219 next_515
+	# condBr cond_ whileBody_129 next_256
 
 	# fetch variables
 	ld t1, 232(sp)
-	beqz t1, next_515
-	j whileBody_219
-whileBody_219:
+	beqz t1, next_256
+	j whileBody_129
+whileBody_129:
 
 	# prepare params
 
@@ -235,13 +235,13 @@ whileBody_219:
 	seqz t0, t0
 	sd t0, 216(sp)
 
-	# condBr cond_normalize_ secondCond_95 next_516
+	# condBr cond_normalize_ secondCond_51 next_257
 
 	# fetch variables
 	ld t1, 216(sp)
-	beqz t1, next_516
-	j secondCond_95
-next_515:
+	beqz t1, next_257
+	j secondCond_51
+next_256:
 
 	# load a$2 gv
 
@@ -348,7 +348,7 @@ next_515:
 	mv a0, t1
 	addi sp, sp, 280
 	ret 
-ifTrue_296:
+ifTrue_127:
 
 	# load a gv
 
@@ -438,9 +438,9 @@ ifTrue_296:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_516
-	j next_516
-next_516:
+	# br next_257
+	j next_257
+next_257:
 
 	# prepare params
 
@@ -489,13 +489,13 @@ next_516:
 	seqz t0, t0
 	sd t0, 144(sp)
 
-	# condBr cond_$1 ifTrue_297 secondCond_96
+	# condBr cond_$1 ifTrue_128 secondCond_52
 
 	# fetch variables
 	ld t1, 144(sp)
-	beqz t1, secondCond_96
-	j ifTrue_297
-secondCond_94:
+	beqz t1, secondCond_52
+	j ifTrue_128
+secondCond_50:
 
 	# prepare params
 
@@ -525,13 +525,13 @@ secondCond_94:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_normalize_$2 ifTrue_296 next_516
+	# condBr cond_normalize_$2 ifTrue_127 next_257
 
 	# fetch variables
 	ld t1, 128(sp)
-	beqz t1, next_516
-	j ifTrue_296
-secondCond_95:
+	beqz t1, next_257
+	j ifTrue_127
+secondCond_51:
 
 	# prepare params
 
@@ -561,13 +561,13 @@ secondCond_95:
 	seqz t0, t0
 	sd t0, 112(sp)
 
-	# condBr cond_normalize_$1 secondCond_94 next_516
+	# condBr cond_normalize_$1 secondCond_50 next_257
 
 	# fetch variables
 	ld t1, 112(sp)
-	beqz t1, next_516
-	j secondCond_94
-ifTrue_297:
+	beqz t1, next_257
+	j secondCond_50
+ifTrue_128:
 
 	# load a$1 gv
 
@@ -645,9 +645,9 @@ ifTrue_297:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_517
-	j next_517
-ifFalse_127:
+	# br next_258
+	j next_258
+ifFalse_47:
 
 	# prepare params
 
@@ -665,9 +665,9 @@ ifFalse_127:
 	# get address of local var:inc_a$7
 	sd a0, 80(sp)
 
-	# br next_517
-	j next_517
-next_517:
+	# br next_258
+	j next_258
+next_258:
 
 	# load k$1 lv
 
@@ -701,9 +701,9 @@ next_517:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_219
-	j whileCond_219
-secondCond_96:
+	# br whileCond_129
+	j whileCond_129
+secondCond_52:
 
 	# prepare params
 
@@ -733,13 +733,13 @@ secondCond_96:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_normalize_$3 secondCond_97 ifFalse_127
+	# condBr cond_normalize_$3 secondCond_53 ifFalse_47
 
 	# fetch variables
 	ld t1, 48(sp)
-	beqz t1, ifFalse_127
-	j secondCond_97
-secondCond_97:
+	beqz t1, ifFalse_47
+	j secondCond_53
+secondCond_53:
 
 	# prepare params
 
@@ -805,12 +805,12 @@ secondCond_97:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_normalize_$4 ifTrue_297 ifFalse_127
+	# condBr cond_normalize_$4 ifTrue_128 ifFalse_47
 
 	# fetch variables
 	ld t1, 8(sp)
-	beqz t1, ifFalse_127
-	j ifTrue_297
+	beqz t1, ifFalse_47
+	j ifTrue_128
 
 	# cmp   cond_normalize_$5
 
@@ -824,9 +824,9 @@ secondCond_97:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_$5 ifTrue_297 ifFalse_127
+	# condBr cond_normalize_$5 ifTrue_128 ifFalse_47
 
 	# fetch variables
 	ld t1, 0(sp)
-	beqz t1, ifFalse_127
-	j ifTrue_297
+	beqz t1, ifFalse_47
+	j ifTrue_128
