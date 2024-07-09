@@ -6,39 +6,41 @@
 .globl main
 main:
 mainEntry8:
+	addi sp, sp, -56
 
 	# reserve space
-	addi sp, sp, -56
 
 	# save the parameters
 
-	# allocate a
+	# allocate lv
 	addi t0, sp, 40
 
-	# get address of local var:a
+	# get address of local var:lv
 	sd t0, 48(sp)
 
-	# store a 
+	# lv 
 
 	# fetch variables
 	li t1, 1
 
-	# get address of a points to
+	# store lv 
+
+	# get address of lv points to
 	ld t3, 48(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load a$1 a
+	# load a lv
 
-	# get address of a points to
+	# get address of lv points to
 	ld t3, 48(sp)
 	addi t3, t3, 0
 
-	# get address of local var:a$1
+	# get address of local var:a
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# cmp a$1  cond_eq_tmp_
+	# cmp a  cond_eq_tmp_
 
 	# fetch variables
 	ld t1, 32(sp)
@@ -49,12 +51,12 @@ mainEntry8:
 	seqz t0, t0
 	sd t0, 24(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 24(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 16(sp)
 
@@ -78,12 +80,14 @@ mainEntry8:
 	j ifTrue_6
 ifTrue_6:
 
-	# store a 
+	# lv 
 
 	# fetch variables
 	li t1, 2
 
-	# get address of a points to
+	# store lv 
+
+	# get address of lv points to
 	ld t3, 48(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
@@ -92,17 +96,17 @@ ifTrue_6:
 	j next_6
 next_6:
 
-	# load a$2 a
+	# load a$1 lv
 
-	# get address of a points to
+	# get address of lv points to
 	ld t3, 48(sp)
 	addi t3, t3, 0
 
-	# get address of local var:a$2
+	# get address of local var:a$1
 	ld t0, 0(t3)
 	sd t0, 0(sp)
 
-	# ret a$2
+	# ret a$1
 
 	# fetch variables
 	ld t1, 0(sp)

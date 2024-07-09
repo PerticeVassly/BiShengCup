@@ -6,56 +6,60 @@
 .globl main
 main:
 mainEntry13:
+	addi sp, sp, -104
 
 	# reserve space
-	addi sp, sp, -104
 
 	# save the parameters
 
-	# allocate a
+	# allocate lv$1
 	addi t0, sp, 88
 
-	# get address of local var:a
+	# get address of local var:lv$1
 	sd t0, 96(sp)
 
-	# store a 
+	# allocate lv
+	addi t0, sp, 72
+
+	# get address of local var:lv
+	sd t0, 80(sp)
+
+	# lv 
 
 	# fetch variables
 	li t1, 0x401e000000000000
 	fmv.d.x ft1, t1
 
-	# get address of a points to
-	ld t3, 96(sp)
+	# store lv 
+
+	# get address of lv points to
+	ld t3, 80(sp)
 	addi t3, t3, 0
 	fsd ft1, 0(t3)
 
-	# allocate c
-	addi t0, sp, 72
-
-	# get address of local var:c
-	sd t0, 80(sp)
-
-	# store c 
+	# lv$1 
 
 	# fetch variables
 	li t1, 8
 
-	# get address of c points to
-	ld t3, 80(sp)
+	# store lv$1 
+
+	# get address of lv$1 points to
+	ld t3, 96(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load c$1 c
+	# load c lv$1
 
-	# get address of c points to
-	ld t3, 80(sp)
+	# get address of lv$1 points to
+	ld t3, 96(sp)
 	addi t3, t3, 0
 
-	# get address of local var:c$1
+	# get address of local var:c
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# ret c$1
+	# ret c
 
 	# fetch variables
 	ld t1, 64(sp)
@@ -63,17 +67,17 @@ mainEntry13:
 	addi sp, sp, 104
 	ret 
 
-	# load a$1 a
+	# load a lv
 
-	# get address of a points to
-	ld t3, 96(sp)
+	# get address of lv points to
+	ld t3, 80(sp)
 	addi t3, t3, 0
 
-	# get address of local var:a$1
+	# get address of local var:a
 	ld t0, 0(t3)
 	fsd ft0, 56(sp)
 
-	# cmp a$1  cond_eq_tmp_
+	# cmp a  cond_eq_tmp_
 
 	# fetch variables
 	fld ft1, 56(sp)
@@ -84,12 +88,12 @@ mainEntry13:
 	feq.d t0, ft1, ft2
 	sd t0, 48(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 48(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 40(sp)
 
@@ -131,17 +135,17 @@ ifFalse_1:
 	ret 
 secondCond_3:
 
-	# load a$2 a
+	# load a$1 lv
 
-	# get address of a points to
-	ld t3, 96(sp)
+	# get address of lv points to
+	ld t3, 80(sp)
 	addi t3, t3, 0
 
-	# get address of local var:a$2
+	# get address of local var:a$1
 	ld t0, 0(t3)
 	fsd ft0, 24(sp)
 
-	# cmp a$2  cond_gt_tmp_
+	# cmp a$1  cond_gt_tmp_
 
 	# fetch variables
 	fld ft1, 24(sp)
@@ -153,12 +157,12 @@ secondCond_3:
 	seqz t0, t0
 	sd t0, 16(sp)
 
+	# zext cond_tmp_$1 cond_gt_tmp_
+
 	# fetch variables
 	ld t1, 16(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_gt_tmp_
 	mv t0, t1
 	sd t0, 8(sp)
 

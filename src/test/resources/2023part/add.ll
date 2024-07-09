@@ -18,24 +18,24 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @add(i32 %0, i32 %1) {
 addEntry:
-  %i = alloca i32, align 4
-  store i32 %0, i32* %i, align 4
-  %j = alloca i32, align 4
-  store i32 %1, i32* %j, align 4
-  %i$1 = load i32, i32* %i, align 4
-  %j$1 = load i32, i32* %j, align 4
-  %result_ = add i32 %i$1, %j$1
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  %i = load i32, i32* %lv, align 4
+  %j = load i32, i32* %lv$1, align 4
+  %result_ = add i32 %i, %j
   ret i32 %result_
 }
 
 define i32 @main() {
 mainEntry10:
-  %a = alloca i32, align 4
-  store i32 2, i32* %a, align 4
-  %b = alloca i32, align 4
-  store i32 3, i32* %b, align 4
-  %c = alloca i32, align 4
-  store i32 4, i32* %c, align 4
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 2, i32* %lv, align 4
+  store i32 3, i32* %lv$1, align 4
+  store i32 4, i32* %lv$2, align 4
   %add = call i32 @add(i32 1, i32 1)
   ret i32 %add
 }

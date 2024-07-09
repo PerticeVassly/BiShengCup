@@ -106,4 +106,5 @@ public class RiscBasicBlock {
                 riscInstruction -> System.out.println(riscInstruction.emitCode())
         );
     }
+
 }

@@ -101,7 +101,7 @@ gv31:
 .type func, @function
 .globl func
 func:
-funcEntry1:
+funcEntry:
 
 	# reserve space
 	addi sp, sp, -4000
@@ -5502,7 +5502,7 @@ funcEntry1:
 .type main, @function
 .globl main
 main:
-mainEntry30:
+mainEntry:
 
 	# reserve space
 	addi sp, sp, -96

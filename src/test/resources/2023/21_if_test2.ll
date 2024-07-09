@@ -18,93 +18,86 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @ifElseIf() {
 ifElseIfEntry:
-  %a = alloca i32, align 4
-  store i32 5, i32* %a, align 4
-  %b = alloca i32, align 4
-  store i32 10, i32* %b, align 4
-  %a$1 = load i32, i32* %a, align 4
-  %cond_eq_tmp_ = icmp eq i32 %a$1, 6
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 5, i32* %lv, align 4
+  store i32 10, i32* %lv$1, align 4
+  %a = load i32, i32* %lv, align 4
+  %cond_eq_tmp_ = icmp eq i32 %a, 6
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_306, label %secondCond_119
+  br i1 %cond_, label %ifTrue_315, label %secondCond_121
 
-ifTrue_306:                                            ; pred = %ifElseIfEntry, %secondCond_119
-  %a$2 = load i32, i32* %a, align 4
-  ret i32 %a$2
+ifTrue_315:                                            ; pred = %ifElseIfEntry, %secondCond_121
+  %a$1 = load i32, i32* %lv, align 4
+  ret i32 %a$1
 
-ifFalse_113:                                           ; pred = %secondCond_119
-  %b$2 = load i32, i32* %b, align 4
-  %cond_eq_tmp_$2 = icmp eq i32 %b$2, 10
+ifFalse_116:                                           ; pred = %secondCond_121
+  %b$1 = load i32, i32* %lv$1, align 4
+  %cond_eq_tmp_$2 = icmp eq i32 %b$1, 10
   %cond_tmp_$2 = zext i1 %cond_eq_tmp_$2 to i32
   %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %secondCond_120, label %ifFalse_114
+  br i1 %cond_$2, label %secondCond_122, label %ifFalse_117
 
-next_536:                                              ; pred = %next_537
-  %a$7 = load i32, i32* %a, align 4
-  ret i32 %a$7
+next_538:                                              ; pred = %next_539
+  %a$6 = load i32, i32* %lv, align 4
+  ret i32 %a$6
 
-secondCond_119:                                        ; pred = %ifElseIfEntry
-  %b$1 = load i32, i32* %b, align 4
-  %cond_eq_tmp_$1 = icmp eq i32 %b$1, 11
+secondCond_121:                                        ; pred = %ifElseIfEntry
+  %b = load i32, i32* %lv$1, align 4
+  %cond_eq_tmp_$1 = icmp eq i32 %b, 11
   %cond_tmp_$1 = zext i1 %cond_eq_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_306, label %ifFalse_113
+  br i1 %cond_$1, label %ifTrue_315, label %ifFalse_116
 
-ifTrue_307:                                            ; pred = %secondCond_120
-  store i32 25, i32* %a, align 4
-  br label %next_537
+ifTrue_316:                                            ; pred = %secondCond_122
+  store i32 25, i32* %lv, align 4
+  br label %next_539
 
-ifFalse_114:                                           ; pred = %ifFalse_113, %secondCond_120
-  %b$3 = load i32, i32* %b, align 4
-  %cond_eq_tmp_$4 = icmp eq i32 %b$3, 10
+ifFalse_117:                                           ; pred = %ifFalse_116, %secondCond_122
+  %b$2 = load i32, i32* %lv$1, align 4
+  %cond_eq_tmp_$4 = icmp eq i32 %b$2, 10
   %cond_tmp_$4 = zext i1 %cond_eq_tmp_$4 to i32
   %cond_$4 = icmp ne i32 %cond_tmp_$4, 0
-  br i1 %cond_$4, label %secondCond_121, label %ifFalse_115
+  br i1 %cond_$4, label %secondCond_123, label %ifFalse_118
 
-next_537:                                              ; pred = %ifTrue_307, %next_538
-  br label %next_536
+next_539:                                              ; pred = %ifTrue_316, %next_540
+  br label %next_538
 
-secondCond_120:                                        ; pred = %ifFalse_113
-  %a$3 = load i32, i32* %a, align 4
-  %cond_eq_tmp_$3 = icmp eq i32 %a$3, 1
+secondCond_122:                                        ; pred = %ifFalse_116
+  %a$2 = load i32, i32* %lv, align 4
+  %cond_eq_tmp_$3 = icmp eq i32 %a$2, 1
   %cond_tmp_$3 = zext i1 %cond_eq_tmp_$3 to i32
   %cond_$3 = icmp ne i32 %cond_tmp_$3, 0
-  br i1 %cond_$3, label %ifTrue_307, label %ifFalse_114
+  br i1 %cond_$3, label %ifTrue_316, label %ifFalse_117
 
-ifTrue_308:                                            ; pred = %secondCond_121
-  %a$5 = load i32, i32* %a, align 4
-  %result_ = add i32 %a$5, 15
-  store i32 %result_, i32* %a, align 4
-  br label %next_538
+ifTrue_317:                                            ; pred = %secondCond_123
+  %a$4 = load i32, i32* %lv, align 4
+  %result_ = add i32 %a$4, 15
+  store i32 %result_, i32* %lv, align 4
+  br label %next_540
 
-ifFalse_115:                                           ; pred = %ifFalse_114, %secondCond_121
-  %a$6 = load i32, i32* %a, align 4
-  %tmp_ = sub i32 0, %a$6
-  store i32 %tmp_, i32* %a, align 4
-  br label %next_538
+ifFalse_118:                                           ; pred = %ifFalse_117, %secondCond_123
+  %a$5 = load i32, i32* %lv, align 4
+  %tmp_ = sub i32 0, %a$5
+  store i32 %tmp_, i32* %lv, align 4
+  br label %next_540
 
-next_538:                                              ; pred = %ifTrue_308, %ifFalse_115
-  br label %next_537
+next_540:                                              ; pred = %ifTrue_317, %ifFalse_118
+  br label %next_539
 
-secondCond_121:                                        ; pred = %ifFalse_114
-  %a$4 = load i32, i32* %a, align 4
-  %cond_eq_tmp_$5 = icmp eq i32 %a$4, -5
+secondCond_123:                                        ; pred = %ifFalse_117
+  %a$3 = load i32, i32* %lv, align 4
+  %cond_eq_tmp_$5 = icmp eq i32 %a$3, -5
   %cond_tmp_$5 = zext i1 %cond_eq_tmp_$5 to i32
   %cond_$5 = icmp ne i32 %cond_tmp_$5, 0
-  br i1 %cond_$5, label %ifTrue_308, label %ifFalse_115
+  br i1 %cond_$5, label %ifTrue_317, label %ifFalse_118
 }
 
 define i32 @main() {
-mainEntry71:
+mainEntry73:
   %ifElseIf = call i32 @ifElseIf()
   call void @putint(i32 %ifElseIf)
   ret i32 0
 }
 
-
-
-A
-
-B
-
-C

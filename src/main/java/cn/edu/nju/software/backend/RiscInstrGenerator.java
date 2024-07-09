@@ -16,8 +16,8 @@ import cn.edu.nju.software.backend.riscinstruction.RiscSlt;
 import cn.edu.nju.software.backend.riscinstruction.RiscSub;
 import cn.edu.nju.software.backend.riscinstruction.RiscXor;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFaddd;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFcvtdw;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFcvtwd;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFcvtdl;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFcvtld;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFdivd;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFeqd;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFled;
@@ -365,7 +365,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         allocator.prepareVariable(initVal);
         Operand addressToSave = allocator.getAddrOfLocalVar(lVal);
 
-        riscInstructions.add(new RiscFcvtdw(new Register("ft0"), new Register("t1")));
+        riscInstructions.add(new RiscFcvtdl(new Register("ft0"), new Register("t1")));
         riscInstructions.add(new RiscFsd(new Register("ft0"), addressToSave));
 
     }
@@ -380,7 +380,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         allocator.prepareVariable(initVal);
         Operand addressToSave = allocator.getAddrOfLocalVar(lVal);
 
-        riscInstructions.add(new RiscFcvtwd(new Register("t0"), new Register("ft1")));
+        riscInstructions.add(new RiscFcvtld(new Register("t0"), new Register("ft1")));
         riscInstructions.add(new RiscSd(new Register("t0"), addressToSave));
     }
 

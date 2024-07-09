@@ -5,10 +5,10 @@
 .type main, @function
 .globl main
 main:
-mainEntry93:
+mainEntry90:
+	addi sp, sp, 0
 
 	# reserve space
-	addi sp, sp, 0
 
 	# save the parameters
 

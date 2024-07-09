@@ -18,15 +18,15 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry2:
-  %a = alloca float, align 4
-  store float 0x3ff0000000000000, float* %a, align 4
-  %b = alloca float, align 4
-  store float 0x4000000000000000, float* %b, align 4
-  %c = alloca float, align 4
-  %a$1 = load float, float* %a, align 4
-  %b$1 = load float, float* %b, align 4
-  %result_ = fadd float %a$1, %b$1
-  store float %result_, float* %c, align 4
+  %lv$2 = alloca float, align 4
+  %lv$1 = alloca float, align 4
+  %lv = alloca float, align 4
+  store float 0x3ff0000000000000, float* %lv, align 4
+  store float 0x4000000000000000, float* %lv$1, align 4
+  %a = load float, float* %lv, align 4
+  %b = load float, float* %lv$1, align 4
+  %result_ = fadd float %a, %b
+  store float %result_, float* %lv$2, align 4
   ret i32 0
 }
 

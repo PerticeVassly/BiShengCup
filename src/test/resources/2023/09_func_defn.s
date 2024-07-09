@@ -1,7 +1,7 @@
 .data
 .align 2
-.globl a
-a:
+.globl gv
+gv:
 .dword 0
 .text
 .align 2
@@ -23,35 +23,35 @@ funcEntry:
 	# get address of 0 into 
 	sd a0, 40(sp)
 
-	# allocate p
+	# allocate lv
 	addi t0, sp, 24
 
-	# get address of local var:p
+	# get address of local var:lv
 	sd t0, 32(sp)
 
-	# p 0
+	# lv 0
 
 	# fetch variables
 	ld t1, 40(sp)
 
-	# store p 0
+	# store lv 0
 
-	# get address of p points to
+	# get address of lv points to
 	ld t3, 32(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load p$1 p
+	# load p lv
 
-	# get address of p points to
+	# get address of lv points to
 	ld t3, 32(sp)
 	addi t3, t3, 0
 
-	# get address of local var:p$1
+	# get address of local var:p
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# sub result_ p$1 
+	# sub result_ p 
 
 	# fetch variables
 	ld t1, 16(sp)
@@ -61,29 +61,29 @@ funcEntry:
 	sub t0, t1, t2
 	sd t0, 8(sp)
 
-	# p result_
+	# lv result_
 
 	# fetch variables
 	ld t1, 8(sp)
 
-	# store p result_
+	# store lv result_
 
-	# get address of p points to
+	# get address of lv points to
 	ld t3, 32(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load p$2 p
+	# load p$1 lv
 
-	# get address of p points to
+	# get address of lv points to
 	ld t3, 32(sp)
 	addi t3, t3, 0
 
-	# get address of local var:p$2
+	# get address of local var:p$1
 	ld t0, 0(t3)
 	sd t0, 0(sp)
 
-	# ret p$2
+	# ret p$1
 
 	# fetch variables
 	ld t1, 0(sp)
@@ -103,28 +103,28 @@ mainEntry20:
 
 	# save the parameters
 
-	# allocate b
+	# allocate lv
 	addi t0, sp, 24
 
-	# get address of local var:b
+	# get address of local var:lv
 	sd t0, 32(sp)
 
-	# a @
+	# gv @
 
 	# fetch variables
 	li t1, 10
 
-	# store a 
+	# store gv 
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load a a
+	# load a gv
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 
 	# get address of local var:a
@@ -151,29 +151,29 @@ mainEntry20:
 	# get address of local var:func
 	sd a0, 8(sp)
 
-	# b func
+	# lv func
 
 	# fetch variables
 	ld t1, 8(sp)
 
-	# store b func
+	# store lv func
 
-	# get address of b points to
+	# get address of lv points to
 	ld t3, 32(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load b$1 b
+	# load b lv
 
-	# get address of b points to
+	# get address of lv points to
 	ld t3, 32(sp)
 	addi t3, t3, 0
 
-	# get address of local var:b$1
+	# get address of local var:b
 	ld t0, 0(t3)
 	sd t0, 0(sp)
 
-	# ret b$1
+	# ret b
 
 	# fetch variables
 	ld t1, 0(sp)

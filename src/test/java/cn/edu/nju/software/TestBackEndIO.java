@@ -26,7 +26,7 @@ public class TestBackEndIO {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("68_brainfk")
+    @StringSource("92_register_alloc")
     void testRisc(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
     }
@@ -37,7 +37,7 @@ public class TestBackEndIO {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if ( name.contains("71") || name.contains("64")) {
+        if ( name.contains("71") || name.contains("64") || name.contains("88") || name.contains("86") || name.contains("77") || name.contains("69")) {
             fail();
         }
         testFile(DIR, name);

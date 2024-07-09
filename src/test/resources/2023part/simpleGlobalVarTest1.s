@@ -1,13 +1,13 @@
 .data
 .align 2
-.globl a
-a:
+.globl gv
+gv:
 .dword 1
-.globl b
-b:
+.globl gv1
+gv1:
 .dword 2
-.globl c
-c:
+.globl gv2
+gv2:
 .dword 1
 .text
 .align 2
@@ -15,92 +15,98 @@ c:
 .globl main
 main:
 mainEntry3:
+	addi sp, sp, -56
 
 	# reserve space
-	addi sp, sp, -56
 
 	# save the parameters
 
-	# load a a
+	# allocate lv
+	addi t0, sp, 40
 
-	# get address of a points to
-	la t3, a
+	# get address of local var:lv
+	sd t0, 48(sp)
+
+	# load a gv
+
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 
 	# get address of local var:a
 	ld t0, 0(t3)
-	sd t0, 48(sp)
+	sd t0, 32(sp)
 
-	# load b b
+	# load b gv1
 
-	# get address of b points to
-	la t3, b
+	# get address of gv1 points to
+	la t3, gv1
 	addi t3, t3, 0
 
 	# get address of local var:b
 	ld t0, 0(t3)
-	sd t0, 40(sp)
+	sd t0, 24(sp)
 
 	# add result_ a b
 
 	# fetch variables
-	ld t1, 48(sp)
-	ld t2, 40(sp)
+	ld t1, 32(sp)
+	ld t2, 24(sp)
 
 	# get address of local var:result_
 	add t0, t1, t2
-	sd t0, 32(sp)
+	sd t0, 16(sp)
 
-	# store c result_
+	# gv2 @result_
 
 	# fetch variables
-	ld t1, 32(sp)
+	ld t1, 16(sp)
 
-	# get address of c points to
-	la t3, c
+	# store gv2 result_
+
+	# get address of gv2 points to
+	la t3, gv2
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# allocate d
-	addi t0, sp, 16
-
-	# get address of local var:d
-	sd t0, 24(sp)
-
-	# store d 
+	# lv 
 
 	# fetch variables
 	li t1, 1
 
-	# get address of d points to
-	ld t3, 24(sp)
+	# store lv 
+
+	# get address of lv points to
+	ld t3, 48(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load c c
+	# load c gv2
 
-	# get address of c points to
-	la t3, c
+	# get address of gv2 points to
+	la t3, gv2
 	addi t3, t3, 0
 
 	# get address of local var:c
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# store d c
+	# lv c
 
 	# fetch variables
 	ld t1, 8(sp)
 
-	# get address of d points to
-	ld t3, 24(sp)
+	# store lv c
+
+	# get address of lv points to
+	ld t3, 48(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load c$1 c
+	# load c$1 gv2
 
-	# get address of c points to
-	la t3, c
+	# get address of gv2 points to
+	la t3, gv2
 	addi t3, t3, 0
 
 	# get address of local var:c$1

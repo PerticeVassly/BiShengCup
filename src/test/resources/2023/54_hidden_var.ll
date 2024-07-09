@@ -20,10 +20,14 @@ declare void @memset(i32*, i32, i32)
 @gv1 = global [4 x i32] [i32 6, i32 7, i32 8, i32 9], align 4
 
 define i32 @main() {
-mainEntry62:
+mainEntry18:
+  %lv$5 = alloca [7 x [1 x [5 x i32]]], align 16
+  %lv$4 = alloca i32, align 4
+  %lv$3 = alloca [2 x [8 x i32]], align 16
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
   %lv = alloca i32, align 4
   store i32 1, i32* %lv, align 4
-  %lv$1 = alloca i32, align 4
   store i32 2, i32* %lv$1, align 4
   store i32 3, i32* %lv$1, align 4
   %a = load i32, i32* %lv$1, align 4
@@ -33,32 +37,30 @@ mainEntry62:
   %a$2 = load i32, i32* %lv, align 4
   call void @putint(i32 %a$2)
   call void @putch(i32 10)
-  br label %whileCond_141
+  br label %whileCond_58
 
-whileCond_141:                                        ; pred = %mainEntry62, %next_268
+whileCond_58:                                        ; pred = %mainEntry18, %next_109
   %a$3 = load i32, i32* %lv, align 4
   %cond_lt_tmp_ = icmp slt i32 %a$3, 5
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_141, label %next_267
+  br i1 %cond_, label %whileBody_58, label %next_108
 
-whileBody_141:                                        ; pred = %whileCond_141
-  %lv$2 = alloca i32, align 4
+whileBody_58:                                        ; pred = %whileCond_58
   store i32 0, i32* %lv$2, align 4
   %a$4 = load i32, i32* %lv$2, align 4
   %result_ = add i32 %a$4, 1
   store i32 %result_, i32* %lv$2, align 4
   %a$5 = load i32, i32* %lv$2, align 4
   %cond_normalize_ = icmp ne i32 %a$5, 0
-  br i1 %cond_normalize_, label %ifTrue_126, label %next_268
+  br i1 %cond_normalize_, label %ifTrue_50, label %next_109
 
-next_267:                                             ; pred = %whileCond_141, %ifTrue_126
+next_108:                                            ; pred = %whileCond_58, %ifTrue_50
   %a$6 = load i32, i32* %lv, align 4
   call void @putint(i32 %a$6)
   call void @putch(i32 10)
   %c = getelementptr [4 x i32], [4 x i32]* @gv1, i32 0, i32 2
   store i32 1, i32* %c, align 4
-  %lv$3 = alloca [2 x [8 x i32]], align 16
   %ptr_ = getelementptr [2 x [8 x i32]], [2 x [8 x i32]]* %lv$3, i32 0, i32 0
   %inp = getelementptr [8 x i32], [8 x i32]* %ptr_, i32 0, i32 0
   store i32 0, i32* %inp, align 4
@@ -107,22 +109,20 @@ next_267:                                             ; pred = %whileCond_141, %
   %ptr_$15 = getelementptr [2 x [8 x i32]], [2 x [8 x i32]]* %lv$3, i32 0, i32 1
   %inp$15 = getelementptr [8 x i32], [8 x i32]* %ptr_$15, i32 0, i32 7
   store i32 0, i32* %inp$15, align 4
-  %lv$4 = alloca i32, align 4
   store i32 2, i32* %lv$4, align 4
   %c$1 = getelementptr [4 x i32], [4 x i32]* @gv1, i32 0, i32 2
   %c$2 = load i32, i32* %c$1, align 4
   %cond_normalize_$1 = icmp ne i32 %c$2, 0
-  br i1 %cond_normalize_$1, label %ifTrue_127, label %next_269
+  br i1 %cond_normalize_$1, label %ifTrue_51, label %next_110
 
-ifTrue_126:                                           ; pred = %whileBody_141
-  br label %next_267
-  br label %next_268
+ifTrue_50:                                           ; pred = %whileBody_58
+  br label %next_108
+  br label %next_109
 
-next_268:                                             ; pred = %whileBody_141, %ifTrue_126
-  br label %whileCond_141
+next_109:                                            ; pred = %whileBody_58, %ifTrue_50
+  br label %whileCond_58
 
-ifTrue_127:                                           ; pred = %next_267
-  %lv$5 = alloca [7 x [1 x [5 x i32]]], align 16
+ifTrue_51:                                           ; pred = %next_108
   %ptr_$16 = getelementptr [7 x [1 x [5 x i32]]], [7 x [1 x [5 x i32]]]* %lv$5, i32 0, i32 0
   %ptr_$17 = getelementptr [1 x [5 x i32]], [1 x [5 x i32]]* %ptr_$16, i32 0, i32 0
   %inp$16 = getelementptr [5 x i32], [5 x i32]* %ptr_$17, i32 0, i32 0
@@ -281,9 +281,9 @@ ifTrue_127:                                           ; pred = %next_267
   %c$7 = getelementptr [5 x i32], [5 x i32]* %ptr_$91, i32 0, i32 2
   %c$8 = load i32, i32* %c$7, align 4
   call void @putint(i32 %c$8)
-  br label %next_269
+  br label %next_110
 
-next_269:                                             ; pred = %next_267, %ifTrue_127
+next_110:                                            ; pred = %next_108, %ifTrue_51
   call void @putch(i32 10)
   %b$3 = load i32, i32* @gv, align 4
   call void @putint(i32 %b$3)

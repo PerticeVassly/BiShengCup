@@ -6,73 +6,77 @@
 .globl main
 main:
 mainEntry2:
+	addi sp, sp, -72
 
 	# reserve space
-	addi sp, sp, -72
 
 	# save the parameters
 
-	# allocate a
+	# allocate lv$2
 	addi t0, sp, 56
 
-	# get address of local var:a
+	# get address of local var:lv$2
 	sd t0, 64(sp)
 
-	# store a 
+	# allocate lv$1
+	addi t0, sp, 40
+
+	# get address of local var:lv$1
+	sd t0, 48(sp)
+
+	# allocate lv
+	addi t0, sp, 24
+
+	# get address of local var:lv
+	sd t0, 32(sp)
+
+	# lv 
 
 	# fetch variables
 	li t1, 0x3ff0000000000000
 	fmv.d.x ft1, t1
 
-	# get address of a points to
-	ld t3, 64(sp)
+	# store lv 
+
+	# get address of lv points to
+	ld t3, 32(sp)
 	addi t3, t3, 0
 	fsd ft1, 0(t3)
 
-	# allocate b
-	addi t0, sp, 40
-
-	# get address of local var:b
-	sd t0, 48(sp)
-
-	# store b 
+	# lv$1 
 
 	# fetch variables
 	li t1, 0x4000000000000000
 	fmv.d.x ft1, t1
 
-	# get address of b points to
+	# store lv$1 
+
+	# get address of lv$1 points to
 	ld t3, 48(sp)
 	addi t3, t3, 0
 	fsd ft1, 0(t3)
 
-	# allocate c
-	addi t0, sp, 24
+	# load a lv
 
-	# get address of local var:c
-	sd t0, 32(sp)
-
-	# load a$1 a
-
-	# get address of a points to
-	ld t3, 64(sp)
+	# get address of lv points to
+	ld t3, 32(sp)
 	addi t3, t3, 0
 
-	# get address of local var:a$1
+	# get address of local var:a
 	ld t0, 0(t3)
 	fsd ft0, 16(sp)
 
-	# load b$1 b
+	# load b lv$1
 
-	# get address of b points to
+	# get address of lv$1 points to
 	ld t3, 48(sp)
 	addi t3, t3, 0
 
-	# get address of local var:b$1
+	# get address of local var:b
 	ld t0, 0(t3)
 	fsd ft0, 8(sp)
 
-	# fadd result_ a$1 b$1
+	# fadd result_ a b
 
 	# fetch variables
 	fld ft1, 16(sp)
@@ -82,13 +86,15 @@ mainEntry2:
 	fadd.d ft0, ft1, ft2
 	fsd ft0, 0(sp)
 
-	# store c result_
+	# lv$2 result_
 
 	# fetch variables
 	fld ft1, 0(sp)
 
-	# get address of c points to
-	ld t3, 32(sp)
+	# store lv$2 result_
+
+	# get address of lv$2 points to
+	ld t3, 64(sp)
 	addi t3, t3, 0
 	fsd ft1, 0(t3)
 

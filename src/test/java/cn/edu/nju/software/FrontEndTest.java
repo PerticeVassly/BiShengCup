@@ -27,7 +27,7 @@ public class FrontEndTest {
     private static final String DIR = "src/test/resources/2023/";
     private static final String DIR_PART = "src/test/resources/2023part/";
     private static final String DIR_HIDDEN = "src/test/resources/2023hidden/";
-    private static final String SYLIB = "src/test/resources/sylib_mac.ll";
+    private static final String SYLIB = "src/test/resources/sylib.ll";
     private static final String LINKED = "src/test/resources/linked.ll";
 
     private static final CmdExecutor cmdExecutor = new CmdExecutor();

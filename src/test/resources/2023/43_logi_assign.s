@@ -1,22 +1,28 @@
 .data
 .align 2
-.globl a
-a:
+.globl gv
+gv:
 .dword 0
-.globl b
-b:
+.globl gv1
+gv1:
 .dword 0
 .text
 .align 2
 .type main, @function
 .globl main
 main:
-mainEntry55:
-
-	# reserve space
+mainEntry53:
 	addi sp, sp, -112
 
+	# reserve space
+
 	# save the parameters
+
+	# allocate lv
+	addi t0, sp, 96
+
+	# get address of local var:lv
+	sd t0, 104(sp)
 
 	# prepare params
 
@@ -32,17 +38,17 @@ mainEntry55:
 	addi sp, sp, 8
 
 	# get address of local var:getint
-	sd a0, 104(sp)
+	sd a0, 88(sp)
 
-	# a @getint
+	# gv @getint
 
 	# fetch variables
-	ld t1, 104(sp)
+	ld t1, 88(sp)
 
-	# store a getint
+	# store gv getint
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -60,40 +66,34 @@ mainEntry55:
 	addi sp, sp, 8
 
 	# get address of local var:getint$1
-	sd a0, 96(sp)
+	sd a0, 80(sp)
 
-	# b @getint$1
+	# gv1 @getint$1
 
 	# fetch variables
-	ld t1, 96(sp)
+	ld t1, 80(sp)
 
-	# store b getint$1
+	# store gv1 getint$1
 
-	# get address of b points to
-	la t3, b
+	# get address of gv1 points to
+	la t3, gv1
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# allocate c
-	addi t0, sp, 80
+	# load a gv
 
-	# get address of local var:c
-	sd t0, 88(sp)
-
-	# load a a
-
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 
 	# get address of local var:a
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# load b b
+	# load b gv1
 
-	# get address of b points to
-	la t3, b
+	# get address of gv1 points to
+	la t3, gv1
 	addi t3, t3, 0
 
 	# get address of local var:b
@@ -132,69 +132,69 @@ mainEntry55:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_ secondCond_83 ifFalse_105
+	# condBr cond_ secondCond_85 ifFalse_105
 
 	# fetch variables
 	ld t1, 40(sp)
 	beqz t1, ifFalse_105
-	j secondCond_83
-ifTrue_258:
+	j secondCond_85
+ifTrue_264:
 
-	# c 
+	# lv 
 
 	# fetch variables
 	li t1, 1
 
-	# store c 
+	# store lv 
 
-	# get address of c points to
-	ld t3, 88(sp)
+	# get address of lv points to
+	ld t3, 104(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_449
-	j next_449
+	# br next_442
+	j next_442
 ifFalse_105:
 
-	# c 
+	# lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store c 
+	# store lv 
 
-	# get address of c points to
-	ld t3, 88(sp)
+	# get address of lv points to
+	ld t3, 104(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_449
-	j next_449
-next_449:
+	# br next_442
+	j next_442
+next_442:
 
-	# load c$1 c
+	# load c lv
 
-	# get address of c points to
-	ld t3, 88(sp)
+	# get address of lv points to
+	ld t3, 104(sp)
 	addi t3, t3, 0
 
-	# get address of local var:c$1
+	# get address of local var:c
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# ret c$1
+	# ret c
 
 	# fetch variables
 	ld t1, 32(sp)
 	mv a0, t1
 	addi sp, sp, 112
 	ret 
-secondCond_83:
+secondCond_85:
 
-	# load a$1 a
+	# load a$1 gv
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 
 	# get address of local var:a$1
@@ -234,9 +234,9 @@ secondCond_83:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_258 ifFalse_105
+	# condBr cond_$1 ifTrue_264 ifFalse_105
 
 	# fetch variables
 	ld t1, 0(sp)
 	beqz t1, ifFalse_105
-	j ifTrue_258
+	j ifTrue_264

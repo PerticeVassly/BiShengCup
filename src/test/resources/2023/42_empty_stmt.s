@@ -6,41 +6,41 @@
 .globl main
 main:
 mainEntry:
+	addi sp, sp, -40
 
 	# reserve space
-	addi sp, sp, -40
 
 	# save the parameters
 
-	# allocate a
+	# allocate lv
 	addi t0, sp, 24
 
-	# get address of local var:a
+	# get address of local var:lv
 	sd t0, 32(sp)
 
-	# a 
+	# lv 
 
 	# fetch variables
 	li t1, 10
 
-	# store a 
+	# store lv 
 
-	# get address of a points to
+	# get address of lv points to
 	ld t3, 32(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load a$1 a
+	# load a lv
 
-	# get address of a points to
+	# get address of lv points to
 	ld t3, 32(sp)
 	addi t3, t3, 0
 
-	# get address of local var:a$1
+	# get address of local var:a
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# mul result_ a$1 
+	# mul result_ a 
 
 	# fetch variables
 	ld t1, 16(sp)

@@ -6,14 +6,14 @@
 .globl defn
 defn:
 defnEntry:
-
-	# reserve space
 	addi sp, sp, 0
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -30,17 +30,17 @@ defnEntry:
 .type main, @function
 .globl main
 main:
-mainEntry81:
+mainEntry78:
+	addi sp, sp, -32
 
 	# reserve space
-	addi sp, sp, -32
 
 	# save the parameters
 
-	# allocate a
+	# allocate lv
 	addi t0, sp, 16
 
-	# get address of local var:a
+	# get address of local var:lv
 	sd t0, 24(sp)
 
 	# prepare params
@@ -59,29 +59,29 @@ mainEntry81:
 	# get address of local var:defn
 	sd a0, 8(sp)
 
-	# a defn
+	# lv defn
 
 	# fetch variables
 	ld t1, 8(sp)
 
-	# store a defn
+	# store lv defn
 
-	# get address of a points to
+	# get address of lv points to
 	ld t3, 24(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load a$1 a
+	# load a lv
 
-	# get address of a points to
+	# get address of lv points to
 	ld t3, 24(sp)
 	addi t3, t3, 0
 
-	# get address of local var:a$1
+	# get address of local var:a
 	ld t0, 0(t3)
 	sd t0, 0(sp)
 
-	# ret a$1
+	# ret a
 
 	# fetch variables
 	ld t1, 0(sp)

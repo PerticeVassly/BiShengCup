@@ -20,41 +20,41 @@ reverseEntry:
 	# get address of 0 into 
 	sd a0, 112(sp)
 
-	# allocate n
+	# allocate lv$1
 	addi t0, sp, 96
 
-	# get address of local var:n
+	# get address of local var:lv$1
 	sd t0, 104(sp)
 
-	# n 0
+	# allocate lv
+	addi t0, sp, 80
+
+	# get address of local var:lv
+	sd t0, 88(sp)
+
+	# lv 0
 
 	# fetch variables
 	ld t1, 112(sp)
 
-	# store n 0
+	# store lv 0
 
-	# get address of n points to
-	ld t3, 104(sp)
+	# get address of lv points to
+	ld t3, 88(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# allocate next
-	addi t0, sp, 80
+	# load n lv
 
-	# get address of local var:next
-	sd t0, 88(sp)
-
-	# load n$1 n
-
-	# get address of n points to
-	ld t3, 104(sp)
+	# get address of lv points to
+	ld t3, 88(sp)
 	addi t3, t3, 0
 
-	# get address of local var:n$1
+	# get address of local var:n
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# cmp n$1  cond_le_tmp_
+	# cmp n  cond_le_tmp_
 
 	# fetch variables
 	ld t1, 72(sp)
@@ -87,13 +87,13 @@ reverseEntry:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ ifTrue_259 ifFalse_106
+	# condBr cond_ ifTrue_265 ifFalse_106
 
 	# fetch variables
 	ld t1, 48(sp)
 	beqz t1, ifFalse_106
-	j ifTrue_259
-ifTrue_259:
+	j ifTrue_265
+ifTrue_265:
 
 	# prepare params
 
@@ -111,25 +111,25 @@ ifTrue_259:
 	# get address of local var:getint
 	sd a0, 40(sp)
 
-	# next getint
+	# lv$1 getint
 
 	# fetch variables
 	ld t1, 40(sp)
 
-	# store next getint
+	# store lv$1 getint
 
-	# get address of next points to
-	ld t3, 88(sp)
+	# get address of lv$1 points to
+	ld t3, 104(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load next$1 next
+	# load next lv$1
 
-	# get address of next points to
-	ld t3, 88(sp)
+	# get address of lv$1 points to
+	ld t3, 104(sp)
 	addi t3, t3, 0
 
-	# get address of local var:next$1
+	# get address of local var:next
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
@@ -150,8 +150,8 @@ ifTrue_259:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_450
-	j next_450
+	# br next_443
+	j next_443
 ifFalse_106:
 
 	# prepare params
@@ -170,29 +170,29 @@ ifFalse_106:
 	# get address of local var:getint$1
 	sd a0, 24(sp)
 
-	# next getint$1
+	# lv$1 getint$1
 
 	# fetch variables
 	ld t1, 24(sp)
 
-	# store next getint$1
+	# store lv$1 getint$1
 
-	# get address of next points to
-	ld t3, 88(sp)
+	# get address of lv$1 points to
+	ld t3, 104(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load n$2 n
+	# load n$1 lv
 
-	# get address of n points to
-	ld t3, 104(sp)
+	# get address of lv points to
+	ld t3, 88(sp)
 	addi t3, t3, 0
 
-	# get address of local var:n$2
+	# get address of local var:n$1
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# sub result_ n$2 
+	# sub result_ n$1 
 
 	# fetch variables
 	ld t1, 16(sp)
@@ -219,13 +219,13 @@ ifFalse_106:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# load next$2 next
+	# load next$1 lv$1
 
-	# get address of next points to
-	ld t3, 88(sp)
+	# get address of lv$1 points to
+	ld t3, 104(sp)
 	addi t3, t3, 0
 
-	# get address of local var:next$2
+	# get address of local var:next$1
 	ld t0, 0(t3)
 	sd t0, 0(sp)
 
@@ -246,9 +246,9 @@ ifFalse_106:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_450
-	j next_450
-next_450:
+	# br next_443
+	j next_443
+next_443:
 
 	# ret void
 	addi sp, sp, 120
@@ -259,38 +259,38 @@ next_450:
 .type main, @function
 .globl main
 main:
-mainEntry56:
+mainEntry53:
 
 	# reserve space
 	addi sp, sp, -24
 
 	# save the parameters
 
-	# allocate i
+	# allocate lv
 	addi t0, sp, 8
 
-	# get address of local var:i
+	# get address of local var:lv
 	sd t0, 16(sp)
 
-	# i 
+	# lv 
 
 	# fetch variables
 	li t1, 200
 
-	# store i 
+	# store lv 
 
-	# get address of i points to
+	# get address of lv points to
 	ld t3, 16(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load i$1 i
+	# load i lv
 
-	# get address of i points to
+	# get address of lv points to
 	ld t3, 16(sp)
 	addi t3, t3, 0
 
-	# get address of local var:i$1
+	# get address of local var:i
 	ld t0, 0(t3)
 	sd t0, 0(sp)
 

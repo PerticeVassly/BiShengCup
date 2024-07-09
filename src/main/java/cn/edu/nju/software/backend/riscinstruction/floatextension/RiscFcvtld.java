@@ -4,9 +4,9 @@ import cn.edu.nju.software.backend.riscinstruction.DefaultInstruction;
 import cn.edu.nju.software.backend.riscinstruction.operand.Operand;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscOpcode;
 
-public class RiscFcvtdw extends DefaultInstruction {
+public class RiscFcvtld extends DefaultInstruction {
 
-    public RiscFcvtdw(Operand rs1, Operand rd) {
-        super(RiscOpcode.FCVT_D_W, rs1, rd);
+    public RiscFcvtld(Operand rs1, Operand rd) {
+        super(RiscOpcode.FCVT_L_D, rs1, rd);
     }
 }

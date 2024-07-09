@@ -66,6 +66,7 @@ public class Allocator {
             }
             i++;
         }
+
     }
 
     private void prepareAGlobal(GlobalVar globalVar,int i){
@@ -99,10 +100,10 @@ public class Allocator {
 
     private void prepareAConst(ConstValue constValue, int i){
         if (constValue.getType() instanceof FloatType) {
-            generator.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue((float) (constValue.getValue()))));
+            generator.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue(Double.parseDouble(constValue.getValue().toString()))));
             generator.addInstruction(new RiscFmvdx(new Register("ft" + i), new Register("t" + i)));
         } else if (constValue.getType() instanceof IntType) {
-            generator.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue((int) (constValue.getValue()))));
+            generator.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue(Long.parseLong(constValue.getValue().toString()))));
         } else if (constValue.getType() instanceof BoolType) {
             generator.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue(Boolean.TRUE.equals(constValue.getValue()) ? 1 : 0)));
         } else {

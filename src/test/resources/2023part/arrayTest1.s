@@ -6,64 +6,98 @@
 .globl main
 main:
 mainEntry1:
+	addi sp, sp, -56
 
 	# reserve space
-	addi sp, sp, -40
 
 	# save the parameters
 
-	# allocate a
-	addi t0, sp, 16
+	# allocate lv
+	addi t0, sp, 32
 
-	# get address of local var:a
-	sd t0, 32(sp)
+	# get address of local var:lv
+	sd t0, 48(sp)
 
-	# store a 
+	# gep inp 
+
+	# fetch variables
+	li t1, 0
+	li t2, 8
+	mul t0, t1, t2
+
+	# get address of local var:lv
+	ld t1, 48(sp)
+	add t0, t1, t0
+
+	# get address of local var:inp
+	sd t0, 24(sp)
+
+	# inp 
 
 	# fetch variables
 	li t1, 3
 
-	# get address of a points to
-	ld t3, 32(sp)
+	# store inp 
+
+	# get address of inp points to
+	ld t3, 24(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# fetch variables
-	li t1, 4
-
-	# get address of a points to
-	ld t3, 32(sp)
-	addi t3, t3, 8
-	sd t1, 0(t3)
-
-	# gep a$1 
+	# gep inp$1 
 
 	# fetch variables
 	li t1, 1
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of a into 
-	ld t1, 32(sp)
+	# get address of local var:lv
+	ld t1, 48(sp)
 	add t0, t1, t0
 
-	# get address of a$1 into 
+	# get address of local var:inp$1
+	sd t0, 16(sp)
+
+	# inp$1 
+
+	# fetch variables
+	li t1, 4
+
+	# store inp$1 
+
+	# get address of inp$1 points to
+	ld t3, 16(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# gep a 
+
+	# fetch variables
+	li t1, 1
+	li t2, 8
+	mul t0, t1, t2
+
+	# get address of local var:lv
+	ld t1, 48(sp)
+	add t0, t1, t0
+
+	# get address of local var:a
 	sd t0, 8(sp)
 
-	# load a$2 a$1
+	# load a$1 a
 
-	# get address of a$1 points to
+	# get address of a points to
 	ld t3, 8(sp)
 	addi t3, t3, 0
 
-	# get address of local var:a$2
+	# get address of local var:a$1
 	ld t0, 0(t3)
 	sd t0, 0(sp)
 
-	# ret a$2
+	# ret a$1
 
 	# fetch variables
 	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 40
+	addi sp, sp, 56
 	ret 

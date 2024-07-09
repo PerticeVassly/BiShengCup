@@ -1,19 +1,19 @@
 .data
 .align 2
-.globl a
-a:
+.globl gv
+gv:
 .dword 0
-.globl b
-b:
+.globl gv1
+gv1:
 .dword 0
-.globl c
-c:
+.globl gv2
+gv2:
 .dword 0
-.globl d
-d:
+.globl gv3
+gv3:
 .dword 0
-.globl e
-e:
+.globl gv4
+gv4:
 .dword 0
 .text
 .align 2
@@ -21,11 +21,17 @@ e:
 .globl main
 main:
 mainEntry5:
-
-	# reserve space
 	addi sp, sp, -344
 
+	# reserve space
+
 	# save the parameters
+
+	# allocate lv
+	addi t0, sp, 328
+
+	# get address of local var:lv
+	sd t0, 336(sp)
 
 	# prepare params
 
@@ -41,17 +47,17 @@ mainEntry5:
 	addi sp, sp, 8
 
 	# get address of local var:getint
-	sd a0, 336(sp)
+	sd a0, 320(sp)
 
-	# a @getint
+	# gv @getint
 
 	# fetch variables
-	ld t1, 336(sp)
+	ld t1, 320(sp)
 
-	# store a getint
+	# store gv getint
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -69,17 +75,17 @@ mainEntry5:
 	addi sp, sp, 8
 
 	# get address of local var:getint$1
-	sd a0, 328(sp)
+	sd a0, 312(sp)
 
-	# b @getint$1
+	# gv1 @getint$1
 
 	# fetch variables
-	ld t1, 328(sp)
+	ld t1, 312(sp)
 
-	# store b getint$1
+	# store gv1 getint$1
 
-	# get address of b points to
-	la t3, b
+	# get address of gv1 points to
+	la t3, gv1
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -97,17 +103,17 @@ mainEntry5:
 	addi sp, sp, 8
 
 	# get address of local var:getint$2
-	sd a0, 320(sp)
+	sd a0, 304(sp)
 
-	# c @getint$2
+	# gv2 @getint$2
 
 	# fetch variables
-	ld t1, 320(sp)
+	ld t1, 304(sp)
 
-	# store c getint$2
+	# store gv2 getint$2
 
-	# get address of c points to
-	la t3, c
+	# get address of gv2 points to
+	la t3, gv2
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -125,17 +131,17 @@ mainEntry5:
 	addi sp, sp, 8
 
 	# get address of local var:getint$3
-	sd a0, 312(sp)
+	sd a0, 296(sp)
 
-	# d @getint$3
+	# gv3 @getint$3
 
 	# fetch variables
-	ld t1, 312(sp)
+	ld t1, 296(sp)
 
-	# store d getint$3
+	# store gv3 getint$3
 
-	# get address of d points to
-	la t3, d
+	# get address of gv3 points to
+	la t3, gv3
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -153,62 +159,56 @@ mainEntry5:
 	addi sp, sp, 8
 
 	# get address of local var:getint$4
-	sd a0, 304(sp)
+	sd a0, 288(sp)
 
-	# e @getint$4
+	# gv4 @getint$4
 
 	# fetch variables
-	ld t1, 304(sp)
+	ld t1, 288(sp)
 
-	# store e getint$4
+	# store gv4 getint$4
 
-	# get address of e points to
-	la t3, e
+	# get address of gv4 points to
+	la t3, gv4
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# allocate flag
-	addi t0, sp, 288
-
-	# get address of local var:flag
-	sd t0, 296(sp)
-
-	# flag 
+	# lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store flag 
+	# store lv 
 
-	# get address of flag points to
-	ld t3, 296(sp)
+	# get address of lv points to
+	ld t3, 336(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load a a
+	# load a gv
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 
 	# get address of local var:a
 	ld t0, 0(t3)
 	sd t0, 280(sp)
 
-	# load b b
+	# load b gv1
 
-	# get address of b points to
-	la t3, b
+	# get address of gv1 points to
+	la t3, gv1
 	addi t3, t3, 0
 
 	# get address of local var:b
 	ld t0, 0(t3)
 	sd t0, 272(sp)
 
-	# load c c
+	# load c gv2
 
-	# get address of c points to
-	la t3, c
+	# get address of gv2 points to
+	la t3, gv2
 	addi t3, t3, 0
 
 	# get address of local var:c
@@ -235,30 +235,30 @@ mainEntry5:
 	sub t0, t1, t2
 	sd t0, 248(sp)
 
-	# load d d
+	# load d gv3
 
-	# get address of d points to
-	la t3, d
+	# get address of gv3 points to
+	la t3, gv3
 	addi t3, t3, 0
 
 	# get address of local var:d
 	ld t0, 0(t3)
 	sd t0, 240(sp)
 
-	# load a$1 a
+	# load a$1 gv
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 
 	# get address of local var:a$1
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# load c$1 c
+	# load c$1 gv2
 
-	# get address of c points to
-	la t3, c
+	# get address of gv2 points to
+	la t3, gv2
 	addi t3, t3, 0
 
 	# get address of local var:c$1
@@ -326,15 +326,15 @@ mainEntry5:
 	j ifTrue_10
 ifTrue_10:
 
-	# flag 
+	# lv 
 
 	# fetch variables
 	li t1, 1
 
-	# store flag 
+	# store lv 
 
-	# get address of flag points to
-	ld t3, 296(sp)
+	# get address of lv points to
+	ld t3, 336(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -342,17 +342,17 @@ ifTrue_10:
 	j next_17
 next_17:
 
-	# load flag$1 flag
+	# load flag lv
 
-	# get address of flag points to
-	ld t3, 296(sp)
+	# get address of lv points to
+	ld t3, 336(sp)
 	addi t3, t3, 0
 
-	# get address of local var:flag$1
+	# get address of local var:flag
 	ld t0, 0(t3)
 	sd t0, 176(sp)
 
-	# ret flag$1
+	# ret flag
 
 	# fetch variables
 	ld t1, 176(sp)
@@ -361,20 +361,20 @@ next_17:
 	ret 
 secondCond_:
 
-	# load a$3 a
+	# load a$3 gv
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 
 	# get address of local var:a$3
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# load b$2 b
+	# load b$2 gv1
 
-	# get address of b points to
-	la t3, b
+	# get address of gv1 points to
+	la t3, gv1
 	addi t3, t3, 0
 
 	# get address of local var:b$2
@@ -391,10 +391,10 @@ secondCond_:
 	add t0, t1, t2
 	sd t0, 152(sp)
 
-	# load c$3 c
+	# load c$3 gv2
 
-	# get address of c points to
-	la t3, c
+	# get address of gv2 points to
+	la t3, gv2
 	addi t3, t3, 0
 
 	# get address of local var:c$3
@@ -411,20 +411,20 @@ secondCond_:
 	add t0, t1, t2
 	sd t0, 136(sp)
 
-	# load d$2 d
+	# load d$2 gv3
 
-	# get address of d points to
-	la t3, d
+	# get address of gv3 points to
+	la t3, gv3
 	addi t3, t3, 0
 
 	# get address of local var:d$2
 	ld t0, 0(t3)
 	sd t0, 128(sp)
 
-	# load e$1 e
+	# load e$1 gv4
 
-	# get address of e points to
-	la t3, e
+	# get address of gv4 points to
+	la t3, gv4
 	addi t3, t3, 0
 
 	# get address of local var:e$1
@@ -481,20 +481,20 @@ secondCond_:
 	j ifTrue_10
 secondCond_1:
 
-	# load a$2 a
+	# load a$2 gv
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 
 	# get address of local var:a$2
 	ld t0, 0(t3)
 	sd t0, 80(sp)
 
-	# load b$1 b
+	# load b$1 gv1
 
-	# get address of b points to
-	la t3, b
+	# get address of gv1 points to
+	la t3, gv1
 	addi t3, t3, 0
 
 	# get address of local var:b$1
@@ -511,10 +511,10 @@ secondCond_1:
 	mul t0, t1, t2
 	sd t0, 64(sp)
 
-	# load c$2 c
+	# load c$2 gv2
 
-	# get address of c points to
-	la t3, c
+	# get address of gv2 points to
+	la t3, gv2
 	addi t3, t3, 0
 
 	# get address of local var:c$2
@@ -531,20 +531,20 @@ secondCond_1:
 	div t0, t1, t2
 	sd t0, 48(sp)
 
-	# load e e
+	# load e gv4
 
-	# get address of e points to
-	la t3, e
+	# get address of gv4 points to
+	la t3, gv4
 	addi t3, t3, 0
 
 	# get address of local var:e
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# load d$1 d
+	# load d$1 gv3
 
-	# get address of d points to
-	la t3, d
+	# get address of gv3 points to
+	la t3, gv3
 	addi t3, t3, 0
 
 	# get address of local var:d$1

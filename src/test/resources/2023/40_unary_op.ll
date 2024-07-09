@@ -17,11 +17,11 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry48:
-  %a = alloca i32, align 4
-  store i32 10, i32* %a, align 4
-  %a$1 = load i32, i32* %a, align 4
-  %tmp_ = icmp ne i32 0, %a$1
+mainEntry50:
+  %lv = alloca i32, align 4
+  store i32 10, i32* %lv, align 4
+  %a = load i32, i32* %lv, align 4
+  %tmp_ = icmp ne i32 0, %a
   %tmp_$1 = xor i1 %tmp_, 1
   %tmp_$2 = zext i1 %tmp_$1 to i32
   %tmp_$3 = icmp ne i32 0, %tmp_$2
@@ -32,18 +32,18 @@ mainEntry48:
   %tmp_$8 = zext i1 %tmp_$7 to i32
   %tmp_$9 = sub i32 0, %tmp_$8
   %cond_normalize_ = icmp ne i32 %tmp_$9, 0
-  br i1 %cond_normalize_, label %ifTrue_258, label %ifFalse_102
+  br i1 %cond_normalize_, label %ifTrue_267, label %ifFalse_105
 
-ifTrue_258:                                         ; pred = %mainEntry48
-  store i32 -1, i32* %a, align 4
-  br label %next_449
+ifTrue_267:                                         ; pred = %mainEntry50
+  store i32 -1, i32* %lv, align 4
+  br label %next_451
 
-ifFalse_102:                                        ; pred = %mainEntry48
-  store i32 0, i32* %a, align 4
-  br label %next_449
+ifFalse_105:                                        ; pred = %mainEntry50
+  store i32 0, i32* %lv, align 4
+  br label %next_451
 
-next_449:                                           ; pred = %ifTrue_258, %ifFalse_102
-  %a$2 = load i32, i32* %a, align 4
-  ret i32 %a$2
+next_451:                                           ; pred = %ifTrue_267, %ifFalse_105
+  %a$1 = load i32, i32* %lv, align 4
+  ret i32 %a$1
 }
 

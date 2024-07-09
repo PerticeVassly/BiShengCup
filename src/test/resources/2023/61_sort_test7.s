@@ -124,13 +124,13 @@ merge_sortEntry:
 	seqz t0, t0
 	sd t0, 848(sp)
 
-	# condBr cond_ ifTrue_209 next_348
+	# condBr cond_ ifTrue_230 next_403
 
 	# fetch variables
 	ld t1, 848(sp)
-	beqz t1, next_348
-	j ifTrue_209
-ifTrue_209:
+	beqz t1, next_403
+	j ifTrue_230
+ifTrue_230:
 
 	# ret void
 	addi sp, sp, 944
@@ -138,7 +138,7 @@ ifTrue_209:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_348:
+next_403:
 
 	# allocate mid
 	addi t0, sp, 832
@@ -364,9 +364,9 @@ next_348:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_139
-	j whileCond_139
-whileCond_139:
+	# br whileCond_173
+	j whileCond_173
+whileCond_173:
 
 	# load i$1 i
 
@@ -419,13 +419,13 @@ whileCond_139:
 	seqz t0, t0
 	sd t0, 656(sp)
 
-	# condBr cond_$1 secondCond_55 next_349
+	# condBr cond_$1 secondCond_70 next_404
 
 	# fetch variables
 	ld t1, 656(sp)
-	beqz t1, next_349
-	j secondCond_55
-whileBody_139:
+	beqz t1, next_404
+	j secondCond_70
+whileBody_173:
 
 	# load i$2 i
 
@@ -554,17 +554,17 @@ whileBody_139:
 	seqz t0, t0
 	sd t0, 568(sp)
 
-	# condBr cond_$3 ifTrue_210 ifFalse_89
+	# condBr cond_$3 ifTrue_231 ifFalse_99
 
 	# fetch variables
 	ld t1, 568(sp)
-	beqz t1, ifFalse_89
-	j ifTrue_210
-next_349:
+	beqz t1, ifFalse_99
+	j ifTrue_231
+next_404:
 
-	# br whileCond_140
-	j whileCond_140
-secondCond_55:
+	# br whileCond_174
+	j whileCond_174
+secondCond_70:
 
 	# load j$1 j
 
@@ -617,13 +617,13 @@ secondCond_55:
 	seqz t0, t0
 	sd t0, 528(sp)
 
-	# condBr cond_$2 whileBody_139 next_349
+	# condBr cond_$2 whileBody_173 next_404
 
 	# fetch variables
 	ld t1, 528(sp)
-	beqz t1, next_349
-	j whileBody_139
-ifTrue_210:
+	beqz t1, next_404
+	j whileBody_173
+ifTrue_231:
 
 	# load k$1 k
 
@@ -755,9 +755,9 @@ ifTrue_210:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_350
-	j next_350
-ifFalse_89:
+	# br next_405
+	j next_405
+ifFalse_99:
 
 	# load k$2 k
 
@@ -889,9 +889,9 @@ ifFalse_89:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_350
-	j next_350
-next_350:
+	# br next_405
+	j next_405
+next_405:
 
 	# load k$3 k
 
@@ -925,9 +925,9 @@ next_350:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_139
-	j whileCond_139
-whileCond_140:
+	# br whileCond_173
+	j whileCond_173
+whileCond_174:
 
 	# load i$5 i
 
@@ -980,13 +980,13 @@ whileCond_140:
 	seqz t0, t0
 	sd t0, 328(sp)
 
-	# condBr cond_$4 whileBody_140 next_351
+	# condBr cond_$4 whileBody_174 next_406
 
 	# fetch variables
 	ld t1, 328(sp)
-	beqz t1, next_351
-	j whileBody_140
-whileBody_140:
+	beqz t1, next_406
+	j whileBody_174
+whileBody_174:
 
 	# load k$4 k
 
@@ -1150,13 +1150,13 @@ whileBody_140:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_140
-	j whileCond_140
-next_351:
+	# br whileCond_174
+	j whileCond_174
+next_406:
 
-	# br whileCond_141
-	j whileCond_141
-whileCond_141:
+	# br whileCond_175
+	j whileCond_175
+whileCond_175:
 
 	# load j$5 j
 
@@ -1209,13 +1209,13 @@ whileCond_141:
 	seqz t0, t0
 	sd t0, 200(sp)
 
-	# condBr cond_$5 whileBody_141 next_352
+	# condBr cond_$5 whileBody_175 next_407
 
 	# fetch variables
 	ld t1, 200(sp)
-	beqz t1, next_352
-	j whileBody_141
-whileBody_141:
+	beqz t1, next_407
+	j whileBody_175
+whileBody_175:
 
 	# load k$6 k
 
@@ -1379,13 +1379,13 @@ whileBody_141:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_141
-	j whileCond_141
-next_352:
+	# br whileCond_175
+	j whileCond_175
+next_407:
 
-	# br whileCond_142
-	j whileCond_142
-whileCond_142:
+	# br whileCond_176
+	j whileCond_176
+whileCond_176:
 
 	# load l$6 l
 
@@ -1438,13 +1438,13 @@ whileCond_142:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$6 whileBody_142 next_353
+	# condBr cond_$6 whileBody_176 next_408
 
 	# fetch variables
 	ld t1, 72(sp)
-	beqz t1, next_353
-	j whileBody_142
-whileBody_142:
+	beqz t1, next_408
+	j whileBody_176
+whileBody_176:
 
 	# load l$7 l
 
@@ -1576,9 +1576,9 @@ whileBody_142:
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_142
-	j whileCond_142
-next_353:
+	# br whileCond_176
+	j whileCond_176
+next_408:
 
 	# ret void
 	addi sp, sp, 944
@@ -1589,7 +1589,7 @@ next_353:
 .type main, @function
 .globl main
 main:
-mainEntry12:
+mainEntry45:
 
 	# reserve space
 	addi sp, sp, -72
