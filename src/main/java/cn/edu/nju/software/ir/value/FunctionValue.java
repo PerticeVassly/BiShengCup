@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 
 public class FunctionValue extends ValueRef {
     private final ArrayList<LocalVar> params;
+    private final int fParamNum;
     private int paramsNum;
     private final ArrayList<String> paramsUsedNames = new ArrayList<String>(){{add("");}};
     private final ArrayList<Integer> paramsUsedNamesFreq= new ArrayList<Integer>(){{add(0);}};
@@ -43,6 +44,7 @@ public class FunctionValue extends ValueRef {
             params.add(new LocalVar(typeRef, paramsUsedNamesFreq.get(0) + ""));
             paramsUsedNamesFreq.set(0, paramsUsedNamesFreq.get(0) + 1);
         }
+        fParamNum = paramsNum;
         blocks = new ArrayList<>();
         blockNum = 0;
     }
@@ -91,6 +93,24 @@ public class FunctionValue extends ValueRef {
         params.add(localVar);
         paramsNum++;
         return localVar;
+    }
+
+    /**
+     * get the number of form param
+     * */
+    public int getFParamNum() {
+        return fParamNum;
+    }
+
+    /**
+     * get certain form param
+     * index range: [0, fParamNum)
+     * */
+    public LocalVar getFParam(int index) {
+        if (index >= fParamNum) {
+            return null;
+        }
+        return params.get(index);
     }
 
     public int getParamsNum() {
