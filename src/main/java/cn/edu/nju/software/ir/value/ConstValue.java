@@ -68,7 +68,7 @@ public class ConstValue extends ValueRef {
         } else if (type instanceof BoolType) {
             return value.toString();
         } else if (type instanceof FloatType) {
-            long floatBits = Double.doubleToRawLongBits(Double.parseDouble(value.toString()));
+            long floatBits = Double.doubleToRawLongBits((float) value);
             String hex = Long.toHexString(floatBits);
             return "0x" + hex;
         } else {
