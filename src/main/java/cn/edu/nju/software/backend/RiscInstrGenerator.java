@@ -112,7 +112,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t2")));
 
         //获取basePtr的值，存在t1中
-        riscInstructions.add(new RiscLd(new Register("t1"), allocator.getAddrOfLocalVar(basePtr)));
+        riscInstructions.add(new RiscMv(new Register("t1"), allocator.getValueOfVar(basePtr)));
 
         //计算最终的地址，存在t0中
         riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t1"), new Register("t0")));

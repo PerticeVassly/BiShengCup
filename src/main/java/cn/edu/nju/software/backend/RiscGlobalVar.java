@@ -40,27 +40,25 @@ public class RiscGlobalVar {
                 System.out.println(".double " + initValue);
             }
             else if(globalVar.getInitVal().getType() instanceof ArrayType) {
-                //todo暂时不考虑zeroInitializer
-                if(globalVar.getInitVal() instanceof ArrayValue arrayValue){
-                    List<ValueRef> initValues = arrayValue.getLinerList();
-                    for(ValueRef valueRef : initValues){
-                        if(valueRef instanceof ConstValue){
-                            if(valueRef.getType() instanceof IntType){
-                                System.out.println(".dword " + valueRef.toString());
-                            }
-                            else if(valueRef.getType() instanceof FloatType){
-                                System.out.println(".double " + valueRef.toString());
-                            }
+                assert false;
+            }
+        } else if (globalVar.getInitVal() instanceof ArrayValue) {
+            //todo暂时不考虑zeroInitializer
+            if(globalVar.getInitVal() instanceof ArrayValue arrayValue){
+                System.out.println(name + ":");
+                List<ValueRef> initValues = arrayValue.getLinerList();
+                for(ValueRef valueRef : initValues){
+                    if(valueRef instanceof ConstValue){
+                        if(valueRef.getType() instanceof IntType){
+                            System.out.println(".dword " + valueRef.toString());
+                        }
+                        else if(valueRef.getType() instanceof FloatType){
+                            System.out.println(".double " + valueRef.toString());
                         }
                     }
-
                 }
+
             }
-
-        } else if (globalVar.getInitVal() instanceof GlobalVar) {
-
-            assert false;
-
         } else {
 
             assert false;

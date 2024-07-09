@@ -25,8 +25,9 @@ mainEntry1:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 48(sp)
+	# get value of local var:lv
+	ld t3, 48(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp
@@ -51,8 +52,9 @@ mainEntry1:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 48(sp)
+	# get value of local var:lv
+	ld t3, 48(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$1
@@ -77,8 +79,9 @@ mainEntry1:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of local var:lv
-	ld t1, 48(sp)
+	# get value of local var:lv
+	ld t3, 48(sp)
+	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:a

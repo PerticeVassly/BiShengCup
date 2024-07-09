@@ -124,22 +124,27 @@ public class Allocator {
         }
     }
 
-    public Operand getAddrOfGlobalVar(ValueRef variable) {
-        generator.insertComment("get address of global var:" + variable.getName());
+    public Operand getAddrOfVar(ValueRef variable) {
         if (variable instanceof GlobalVar) {
-            generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(variable.getName()))));
-            return new IndirectRegister("t3", 0);
+            assert false;//global var（label） 本身作为一个var(type is pointer) 无法获取地址.只能获取值
+            return null;
+        } else if (variable instanceof LocalVar) {
+            return getAddrOfLocalVar(variable);
         } else {
             assert false;
             return null;
         }
     }
 
-    public Operand getAddrOfVar(ValueRef variable) {
+    public Operand getValueOfVar(ValueRef variable) {
         if (variable instanceof GlobalVar) {
-            return getAddrOfGlobalVar(variable);
+            generator.insertComment("get value of global var:" + variable.getName());
+            generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(variable.getName()))));
+            return new Register("t3");
         } else if (variable instanceof LocalVar) {
-            return getAddrOfLocalVar(variable);
+            generator.insertComment("get value of local var:" + variable.getName());
+            generator.addInstruction(new RiscLd(new Register("t3"), new IndirectRegister("sp", memoryManager.getOffset(variable))));
+            return new Register("t3");
         } else {
             assert false;
             return null;
