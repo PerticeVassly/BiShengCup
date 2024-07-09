@@ -118,11 +118,15 @@ public class RiscBasicBlock {
 
     private void fetchFromStack(TypeRef type, int i, int preLen) {
         if (type instanceof IntType || type instanceof Pointer) {
-            riscInstructions.add(new RiscLd(new Register("t3"), new IndirectRegister("sp", allocator.getStackSize() + preLen)));
-            riscInstructions.add(new RiscSd(new Register("t3"), new IndirectRegister("sp", allocator.getOffset(new LocalVar(type, i + "")))));
+            allocator.mvAddrWithBigOffsetIntoReg(allocator.getStackSize() + preLen, "sp", "t4");
+            riscInstructions.add(new RiscLd(new Register("t3"), new IndirectRegister("t4", 0)));
+            allocator.mvAddrWithBigOffsetIntoReg(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4");
+            riscInstructions.add(new RiscSd(new Register("t3"), new IndirectRegister("t4", 0)));
         } else if (type instanceof FloatType) {
-            riscInstructions.add(new RiscFld(new Register("ft3"), new IndirectRegister("sp", allocator.getStackSize() + preLen)));
-            riscInstructions.add(new RiscFsd(new Register("ft3"), new IndirectRegister("sp", allocator.getOffset(new LocalVar(type, i + "")))));
+            allocator.mvAddrWithBigOffsetIntoReg(allocator.getStackSize() + preLen, "sp", "t4");
+            riscInstructions.add(new RiscFld(new Register("ft3"), new IndirectRegister("t4", 0)));
+            allocator.mvAddrWithBigOffsetIntoReg(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4");
+            riscInstructions.add(new RiscFsd(new Register("ft3"), new IndirectRegister("t4", 0)));
         } else {
             assert false;
         }

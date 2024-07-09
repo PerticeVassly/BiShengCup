@@ -11,7 +11,7 @@ gv1:
 .type main, @function
 .globl main
 main:
-mainEntry51:
+mainEntry48:
 	addi sp, sp, -112
 
 	# reserve space
@@ -19,7 +19,8 @@ mainEntry51:
 	# save the parameters
 
 	# allocate lv
-	addi t0, sp, 96
+	li t0, 96
+	add t0, sp, t0
 
 	# get address of local var:lv
 	sd t0, 104(sp)
@@ -43,14 +44,17 @@ mainEntry51:
 	# gv @getint
 
 	# fetch variables
-	ld t1, 88(sp)
+	li t4, 88
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store gv getint
 
 	# get address of gv points to
 	la t3, gv
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# prepare params
 
@@ -71,40 +75,49 @@ mainEntry51:
 	# gv1 @getint$1
 
 	# fetch variables
-	ld t1, 80(sp)
+	li t4, 80
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store gv1 getint$1
 
 	# get address of gv1 points to
 	la t3, gv1
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# load a gv
 
 	# get address of gv points to
 	la t3, gv
-	addi t3, t3, 0
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 72(sp)
 
 	# load b gv1
 
 	# get address of gv1 points to
 	la t3, gv1
-	addi t3, t3, 0
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:b
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 64(sp)
 
 	# cmp a b cond_eq_tmp_
 
 	# fetch variables
-	ld t1, 72(sp)
-	ld t2, 64(sp)
+	li t4, 72
+	add t4, sp, t4
+	ld t1, 0(t4)
+	li t4, 64
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:cond_eq_tmp_
 	xor t0, t1, t2
@@ -114,7 +127,9 @@ mainEntry51:
 	# zext cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
-	ld t1, 56(sp)
+	li t4, 56
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -123,7 +138,9 @@ mainEntry51:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	ld t1, 48(sp)
+	li t4, 48
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -132,13 +149,15 @@ mainEntry51:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_ secondCond_41 ifFalse_25
+	# condBr cond_ secondCond_41 ifFalse_24
 
 	# fetch variables
-	ld t1, 40(sp)
-	beqz t1, ifFalse_25
+	li t4, 40
+	add t4, sp, t4
+	ld t1, 0(t4)
+	beqz t1, ifFalse_24
 	j secondCond_41
-ifTrue_95:
+ifTrue_83:
 
 	# lv 
 
@@ -148,13 +167,16 @@ ifTrue_95:
 	# store lv 
 
 	# get address of lv points to
-	ld t3, 104(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 104
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# br next_183
-	j next_183
-ifFalse_25:
+	# br next_160
+	j next_160
+ifFalse_24:
 
 	# lv 
 
@@ -164,30 +186,39 @@ ifFalse_25:
 	# store lv 
 
 	# get address of lv points to
-	ld t3, 104(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 104
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# br next_183
-	j next_183
-next_183:
+	# br next_160
+	j next_160
+next_160:
 
 	# load c lv
 
 	# get address of lv points to
-	ld t3, 104(sp)
-	addi t3, t3, 0
+	li t4, 104
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:c
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 32(sp)
 
 	# ret c
 
 	# fetch variables
-	ld t1, 32(sp)
+	li t4, 32
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 112
+	li t4, 112
+	add sp, sp, t4
 	ret 
 secondCond_41:
 
@@ -195,16 +226,19 @@ secondCond_41:
 
 	# get address of gv points to
 	la t3, gv
-	addi t3, t3, 0
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 24(sp)
 
 	# cmp a$1  cond_neq_tmp_
 
 	# fetch variables
-	ld t1, 24(sp)
+	li t4, 24
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 3
 
 	# get address of local var:cond_neq_tmp_
@@ -216,7 +250,9 @@ secondCond_41:
 	# zext cond_tmp_$1 cond_neq_tmp_
 
 	# fetch variables
-	ld t1, 16(sp)
+	li t4, 16
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# get address of local var:cond_tmp_$1
 	mv t0, t1
@@ -225,7 +261,9 @@ secondCond_41:
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	ld t1, 8(sp)
+	li t4, 8
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 0
 
 	# get address of local var:cond_$1
@@ -234,9 +272,11 @@ secondCond_41:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_95 ifFalse_25
+	# condBr cond_$1 ifTrue_83 ifFalse_24
 
 	# fetch variables
-	ld t1, 0(sp)
-	beqz t1, ifFalse_25
-	j ifTrue_95
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
+	beqz t1, ifFalse_24
+	j ifTrue_83

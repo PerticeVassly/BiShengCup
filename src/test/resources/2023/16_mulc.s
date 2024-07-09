@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry11:
+mainEntry9:
 	addi sp, sp, 0
 
 	# reserve space
@@ -17,5 +17,6 @@ mainEntry11:
 	# fetch variables
 	li t1, 25
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 	ret 

@@ -37,7 +37,7 @@ public class TestBackEndIO {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if ( name.contains("71") || name.contains("64") || name.contains("86") || name.contains("88") || name.contains("77") || name.contains("69") || name.contains("84") || name.contains("82")) {
+        if ( name.contains("71") || name.contains("64") || name.contains("86") || name.contains("88") || name.contains("77") || name.contains("69") || name.contains("84") || name.contains("82") || name.contains("87") || name.contains("65") || name.contains("54")) {
             fail();
         }
         testFile(DIR, name);

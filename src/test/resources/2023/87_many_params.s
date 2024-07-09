@@ -61,7 +61,9 @@ sortEntry:
 	# store lv 0
 
 	# get address of lv points to
-	ld t3, 352(sp)
+	li t4, 352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -73,7 +75,9 @@ sortEntry:
 	# store lv$1 1
 
 	# get address of lv$1 points to
-	ld t3, 368(sp)
+	li t4, 368
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -85,7 +89,9 @@ sortEntry:
 	# store lv$2 
 
 	# get address of lv$2 points to
-	ld t3, 384(sp)
+	li t4, 384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -96,7 +102,9 @@ whileCond_7:
 	# load i lv$2
 
 	# get address of lv$2 points to
-	ld t3, 384(sp)
+	li t4, 384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:i
@@ -106,7 +114,9 @@ whileCond_7:
 	# load len lv$1
 
 	# get address of lv$1 points to
-	ld t3, 368(sp)
+	li t4, 368
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:len
@@ -165,7 +175,9 @@ whileBody_7:
 	# load i$1 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 384(sp)
+	li t4, 384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:i$1
@@ -190,7 +202,9 @@ whileBody_7:
 	# store lv$3 result_$1
 
 	# get address of lv$3 points to
-	ld t3, 400(sp)
+	li t4, 400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -209,7 +223,9 @@ whileCond_8:
 	# load j lv$3
 
 	# get address of lv$3 points to
-	ld t3, 400(sp)
+	li t4, 400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:j
@@ -219,7 +235,9 @@ whileCond_8:
 	# load len$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 368(sp)
+	li t4, 368
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:len$1
@@ -268,7 +286,9 @@ whileBody_8:
 	# load i$2 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 384(sp)
+	li t4, 384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:i$2
@@ -278,7 +298,9 @@ whileBody_8:
 	# load arr_ lv
 
 	# get address of lv points to
-	ld t3, 352(sp)
+	li t4, 352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_
@@ -303,7 +325,9 @@ whileBody_8:
 	# load arr$1 arr
 
 	# get address of arr points to
-	ld t3, 216(sp)
+	li t4, 216
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$1
@@ -313,7 +337,9 @@ whileBody_8:
 	# load j$1 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 400(sp)
+	li t4, 400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:j$1
@@ -323,7 +349,9 @@ whileBody_8:
 	# load arr_$1 lv
 
 	# get address of lv points to
-	ld t3, 352(sp)
+	li t4, 352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$1
@@ -348,7 +376,9 @@ whileBody_8:
 	# load arr$3 arr$2
 
 	# get address of arr$2 points to
-	ld t3, 184(sp)
+	li t4, 184
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$3
@@ -397,7 +427,9 @@ next_19:
 	# load i$5 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 384(sp)
+	li t4, 384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:i$5
@@ -422,7 +454,9 @@ next_19:
 	# store lv$2 result_$3
 
 	# get address of lv$2 points to
-	ld t3, 384(sp)
+	li t4, 384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -433,7 +467,9 @@ ifTrue_11:
 	# load i$3 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 384(sp)
+	li t4, 384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:i$3
@@ -443,7 +479,9 @@ ifTrue_11:
 	# load arr_$2 lv
 
 	# get address of lv points to
-	ld t3, 352(sp)
+	li t4, 352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$2
@@ -468,7 +506,9 @@ ifTrue_11:
 	# load arr$5 arr$4
 
 	# get address of arr$4 points to
-	ld t3, 112(sp)
+	li t4, 112
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$5
@@ -483,14 +523,18 @@ ifTrue_11:
 	# store lv$4 arr$5
 
 	# get address of lv$4 points to
-	ld t3, 416(sp)
+	li t4, 416
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load i$4 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 384(sp)
+	li t4, 384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:i$4
@@ -500,7 +544,9 @@ ifTrue_11:
 	# load arr_$3 lv
 
 	# get address of lv points to
-	ld t3, 352(sp)
+	li t4, 352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$3
@@ -525,7 +571,9 @@ ifTrue_11:
 	# load j$2 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 400(sp)
+	li t4, 400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:j$2
@@ -535,7 +583,9 @@ ifTrue_11:
 	# load arr_$4 lv
 
 	# get address of lv points to
-	ld t3, 352(sp)
+	li t4, 352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$4
@@ -560,7 +610,9 @@ ifTrue_11:
 	# load arr$8 arr$7
 
 	# get address of arr$7 points to
-	ld t3, 56(sp)
+	li t4, 56
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$8
@@ -575,14 +627,18 @@ ifTrue_11:
 	# store arr$6 arr$8
 
 	# get address of arr$6 points to
-	ld t3, 80(sp)
+	li t4, 80
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load j$3 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 400(sp)
+	li t4, 400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:j$3
@@ -592,7 +648,9 @@ ifTrue_11:
 	# load arr_$5 lv
 
 	# get address of lv points to
-	ld t3, 352(sp)
+	li t4, 352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$5
@@ -617,7 +675,9 @@ ifTrue_11:
 	# load temp lv$4
 
 	# get address of lv$4 points to
-	ld t3, 416(sp)
+	li t4, 416
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:temp
@@ -632,7 +692,9 @@ ifTrue_11:
 	# store arr$9 temp
 
 	# get address of arr$9 points to
-	ld t3, 24(sp)
+	li t4, 24
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -643,7 +705,9 @@ next_20:
 	# load j$4 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 400(sp)
+	li t4, 400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:j$4
@@ -668,7 +732,9 @@ next_20:
 	# store lv$3 result_$2
 
 	# get address of lv$3 points to
-	ld t3, 400(sp)
+	li t4, 400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -957,7 +1023,9 @@ param32_recEntry:
 	# store lv 0
 
 	# get address of lv points to
-	ld t3, 336(sp)
+	li t4, 336
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -969,7 +1037,9 @@ param32_recEntry:
 	# store lv$1 1
 
 	# get address of lv$1 points to
-	ld t3, 352(sp)
+	li t4, 352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -981,7 +1051,9 @@ param32_recEntry:
 	# store lv$2 2
 
 	# get address of lv$2 points to
-	ld t3, 368(sp)
+	li t4, 368
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -993,7 +1065,9 @@ param32_recEntry:
 	# store lv$3 3
 
 	# get address of lv$3 points to
-	ld t3, 384(sp)
+	li t4, 384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1005,7 +1079,9 @@ param32_recEntry:
 	# store lv$4 4
 
 	# get address of lv$4 points to
-	ld t3, 400(sp)
+	li t4, 400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1017,7 +1093,9 @@ param32_recEntry:
 	# store lv$5 5
 
 	# get address of lv$5 points to
-	ld t3, 416(sp)
+	li t4, 416
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1029,7 +1107,9 @@ param32_recEntry:
 	# store lv$6 6
 
 	# get address of lv$6 points to
-	ld t3, 432(sp)
+	li t4, 432
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1041,7 +1121,9 @@ param32_recEntry:
 	# store lv$7 7
 
 	# get address of lv$7 points to
-	ld t3, 448(sp)
+	li t4, 448
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1053,7 +1135,9 @@ param32_recEntry:
 	# store lv$8 8
 
 	# get address of lv$8 points to
-	ld t3, 464(sp)
+	li t4, 464
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1065,7 +1149,9 @@ param32_recEntry:
 	# store lv$9 9
 
 	# get address of lv$9 points to
-	ld t3, 480(sp)
+	li t4, 480
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1077,7 +1163,9 @@ param32_recEntry:
 	# store lv$10 10
 
 	# get address of lv$10 points to
-	ld t3, 496(sp)
+	li t4, 496
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1089,7 +1177,9 @@ param32_recEntry:
 	# store lv$11 11
 
 	# get address of lv$11 points to
-	ld t3, 512(sp)
+	li t4, 512
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1101,7 +1191,9 @@ param32_recEntry:
 	# store lv$12 12
 
 	# get address of lv$12 points to
-	ld t3, 528(sp)
+	li t4, 528
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1113,7 +1205,9 @@ param32_recEntry:
 	# store lv$13 13
 
 	# get address of lv$13 points to
-	ld t3, 544(sp)
+	li t4, 544
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1125,7 +1219,9 @@ param32_recEntry:
 	# store lv$14 14
 
 	# get address of lv$14 points to
-	ld t3, 560(sp)
+	li t4, 560
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1137,7 +1233,9 @@ param32_recEntry:
 	# store lv$15 15
 
 	# get address of lv$15 points to
-	ld t3, 576(sp)
+	li t4, 576
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1149,7 +1247,9 @@ param32_recEntry:
 	# store lv$16 16
 
 	# get address of lv$16 points to
-	ld t3, 592(sp)
+	li t4, 592
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1161,7 +1261,9 @@ param32_recEntry:
 	# store lv$17 17
 
 	# get address of lv$17 points to
-	ld t3, 608(sp)
+	li t4, 608
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1173,7 +1275,9 @@ param32_recEntry:
 	# store lv$18 18
 
 	# get address of lv$18 points to
-	ld t3, 624(sp)
+	li t4, 624
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1185,7 +1289,9 @@ param32_recEntry:
 	# store lv$19 19
 
 	# get address of lv$19 points to
-	ld t3, 640(sp)
+	li t4, 640
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1197,7 +1303,9 @@ param32_recEntry:
 	# store lv$20 20
 
 	# get address of lv$20 points to
-	ld t3, 656(sp)
+	li t4, 656
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1209,7 +1317,9 @@ param32_recEntry:
 	# store lv$21 21
 
 	# get address of lv$21 points to
-	ld t3, 672(sp)
+	li t4, 672
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1221,7 +1331,9 @@ param32_recEntry:
 	# store lv$22 22
 
 	# get address of lv$22 points to
-	ld t3, 688(sp)
+	li t4, 688
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1233,7 +1345,9 @@ param32_recEntry:
 	# store lv$23 23
 
 	# get address of lv$23 points to
-	ld t3, 704(sp)
+	li t4, 704
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1245,7 +1359,9 @@ param32_recEntry:
 	# store lv$24 24
 
 	# get address of lv$24 points to
-	ld t3, 720(sp)
+	li t4, 720
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1257,7 +1373,9 @@ param32_recEntry:
 	# store lv$25 25
 
 	# get address of lv$25 points to
-	ld t3, 736(sp)
+	li t4, 736
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1269,7 +1387,9 @@ param32_recEntry:
 	# store lv$26 26
 
 	# get address of lv$26 points to
-	ld t3, 752(sp)
+	li t4, 752
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1281,7 +1401,9 @@ param32_recEntry:
 	# store lv$27 27
 
 	# get address of lv$27 points to
-	ld t3, 768(sp)
+	li t4, 768
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1293,7 +1415,9 @@ param32_recEntry:
 	# store lv$28 28
 
 	# get address of lv$28 points to
-	ld t3, 784(sp)
+	li t4, 784
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1305,7 +1429,9 @@ param32_recEntry:
 	# store lv$29 29
 
 	# get address of lv$29 points to
-	ld t3, 800(sp)
+	li t4, 800
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1317,7 +1443,9 @@ param32_recEntry:
 	# store lv$30 30
 
 	# get address of lv$30 points to
-	ld t3, 816(sp)
+	li t4, 816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -1329,14 +1457,18 @@ param32_recEntry:
 	# store lv$31 31
 
 	# get address of lv$31 points to
-	ld t3, 832(sp)
+	li t4, 832
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load a1 lv
 
 	# get address of lv points to
-	ld t3, 336(sp)
+	li t4, 336
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a1
@@ -1386,7 +1518,9 @@ ifTrue_12:
 	# load a2 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 352(sp)
+	li t4, 352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a2
@@ -1408,7 +1542,9 @@ ifFalse_1:
 	# load a1$1 lv
 
 	# get address of lv points to
-	ld t3, 336(sp)
+	li t4, 336
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a1$1
@@ -1428,7 +1564,9 @@ ifFalse_1:
 	# load a2$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 352(sp)
+	li t4, 352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a2$1
@@ -1438,7 +1576,9 @@ ifFalse_1:
 	# load a3 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 368(sp)
+	li t4, 368
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a3
@@ -1468,7 +1608,9 @@ ifFalse_1:
 	# load a4 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 384(sp)
+	li t4, 384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a4
@@ -1478,7 +1620,9 @@ ifFalse_1:
 	# load a5 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 400(sp)
+	li t4, 400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a5
@@ -1488,7 +1632,9 @@ ifFalse_1:
 	# load a6 lv$5
 
 	# get address of lv$5 points to
-	ld t3, 416(sp)
+	li t4, 416
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a6
@@ -1498,7 +1644,9 @@ ifFalse_1:
 	# load a7 lv$6
 
 	# get address of lv$6 points to
-	ld t3, 432(sp)
+	li t4, 432
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a7
@@ -1508,7 +1656,9 @@ ifFalse_1:
 	# load a8 lv$7
 
 	# get address of lv$7 points to
-	ld t3, 448(sp)
+	li t4, 448
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a8
@@ -1518,7 +1668,9 @@ ifFalse_1:
 	# load a9 lv$8
 
 	# get address of lv$8 points to
-	ld t3, 464(sp)
+	li t4, 464
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a9
@@ -1528,7 +1680,9 @@ ifFalse_1:
 	# load a10 lv$9
 
 	# get address of lv$9 points to
-	ld t3, 480(sp)
+	li t4, 480
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a10
@@ -1538,7 +1692,9 @@ ifFalse_1:
 	# load a11 lv$10
 
 	# get address of lv$10 points to
-	ld t3, 496(sp)
+	li t4, 496
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a11
@@ -1548,7 +1704,9 @@ ifFalse_1:
 	# load a12 lv$11
 
 	# get address of lv$11 points to
-	ld t3, 512(sp)
+	li t4, 512
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a12
@@ -1558,7 +1716,9 @@ ifFalse_1:
 	# load a13 lv$12
 
 	# get address of lv$12 points to
-	ld t3, 528(sp)
+	li t4, 528
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a13
@@ -1568,7 +1728,9 @@ ifFalse_1:
 	# load a14 lv$13
 
 	# get address of lv$13 points to
-	ld t3, 544(sp)
+	li t4, 544
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a14
@@ -1578,7 +1740,9 @@ ifFalse_1:
 	# load a15 lv$14
 
 	# get address of lv$14 points to
-	ld t3, 560(sp)
+	li t4, 560
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a15
@@ -1588,7 +1752,9 @@ ifFalse_1:
 	# load a16 lv$15
 
 	# get address of lv$15 points to
-	ld t3, 576(sp)
+	li t4, 576
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a16
@@ -1598,7 +1764,9 @@ ifFalse_1:
 	# load a17 lv$16
 
 	# get address of lv$16 points to
-	ld t3, 592(sp)
+	li t4, 592
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a17
@@ -1608,7 +1776,9 @@ ifFalse_1:
 	# load a18 lv$17
 
 	# get address of lv$17 points to
-	ld t3, 608(sp)
+	li t4, 608
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a18
@@ -1618,7 +1788,9 @@ ifFalse_1:
 	# load a19 lv$18
 
 	# get address of lv$18 points to
-	ld t3, 624(sp)
+	li t4, 624
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a19
@@ -1628,7 +1800,9 @@ ifFalse_1:
 	# load a20 lv$19
 
 	# get address of lv$19 points to
-	ld t3, 640(sp)
+	li t4, 640
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a20
@@ -1638,7 +1812,9 @@ ifFalse_1:
 	# load a21 lv$20
 
 	# get address of lv$20 points to
-	ld t3, 656(sp)
+	li t4, 656
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a21
@@ -1648,7 +1824,9 @@ ifFalse_1:
 	# load a22 lv$21
 
 	# get address of lv$21 points to
-	ld t3, 672(sp)
+	li t4, 672
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a22
@@ -1658,7 +1836,9 @@ ifFalse_1:
 	# load a23 lv$22
 
 	# get address of lv$22 points to
-	ld t3, 688(sp)
+	li t4, 688
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a23
@@ -1668,7 +1848,9 @@ ifFalse_1:
 	# load a24 lv$23
 
 	# get address of lv$23 points to
-	ld t3, 704(sp)
+	li t4, 704
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a24
@@ -1678,7 +1860,9 @@ ifFalse_1:
 	# load a25 lv$24
 
 	# get address of lv$24 points to
-	ld t3, 720(sp)
+	li t4, 720
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a25
@@ -1688,7 +1872,9 @@ ifFalse_1:
 	# load a26 lv$25
 
 	# get address of lv$25 points to
-	ld t3, 736(sp)
+	li t4, 736
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a26
@@ -1698,7 +1884,9 @@ ifFalse_1:
 	# load a27 lv$26
 
 	# get address of lv$26 points to
-	ld t3, 752(sp)
+	li t4, 752
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a27
@@ -1708,7 +1896,9 @@ ifFalse_1:
 	# load a28 lv$27
 
 	# get address of lv$27 points to
-	ld t3, 768(sp)
+	li t4, 768
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a28
@@ -1718,7 +1908,9 @@ ifFalse_1:
 	# load a29 lv$28
 
 	# get address of lv$28 points to
-	ld t3, 784(sp)
+	li t4, 784
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a29
@@ -1728,7 +1920,9 @@ ifFalse_1:
 	# load a30 lv$29
 
 	# get address of lv$29 points to
-	ld t3, 800(sp)
+	li t4, 800
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a30
@@ -1738,7 +1932,9 @@ ifFalse_1:
 	# load a31 lv$30
 
 	# get address of lv$30 points to
-	ld t3, 816(sp)
+	li t4, 816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a31
@@ -1748,7 +1944,9 @@ ifFalse_1:
 	# load a32 lv$31
 
 	# get address of lv$31 points to
-	ld t3, 832(sp)
+	li t4, 832
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a32
@@ -2226,7 +2424,9 @@ param32_arrEntry:
 	# store lv 0
 
 	# get address of lv points to
-	ld t3, 2304(sp)
+	li t4, 2304
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2238,7 +2438,9 @@ param32_arrEntry:
 	# store lv$1 1
 
 	# get address of lv$1 points to
-	ld t3, 2320(sp)
+	li t4, 2320
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2250,7 +2452,9 @@ param32_arrEntry:
 	# store lv$2 2
 
 	# get address of lv$2 points to
-	ld t3, 2336(sp)
+	li t4, 2336
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2262,7 +2466,9 @@ param32_arrEntry:
 	# store lv$3 3
 
 	# get address of lv$3 points to
-	ld t3, 2352(sp)
+	li t4, 2352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2274,7 +2480,9 @@ param32_arrEntry:
 	# store lv$4 4
 
 	# get address of lv$4 points to
-	ld t3, 2368(sp)
+	li t4, 2368
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2286,7 +2494,9 @@ param32_arrEntry:
 	# store lv$5 5
 
 	# get address of lv$5 points to
-	ld t3, 2384(sp)
+	li t4, 2384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2298,7 +2508,9 @@ param32_arrEntry:
 	# store lv$6 6
 
 	# get address of lv$6 points to
-	ld t3, 2400(sp)
+	li t4, 2400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2310,7 +2522,9 @@ param32_arrEntry:
 	# store lv$7 7
 
 	# get address of lv$7 points to
-	ld t3, 2416(sp)
+	li t4, 2416
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2322,7 +2536,9 @@ param32_arrEntry:
 	# store lv$8 8
 
 	# get address of lv$8 points to
-	ld t3, 2432(sp)
+	li t4, 2432
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2334,7 +2550,9 @@ param32_arrEntry:
 	# store lv$9 9
 
 	# get address of lv$9 points to
-	ld t3, 2448(sp)
+	li t4, 2448
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2346,7 +2564,9 @@ param32_arrEntry:
 	# store lv$10 10
 
 	# get address of lv$10 points to
-	ld t3, 2464(sp)
+	li t4, 2464
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2358,7 +2578,9 @@ param32_arrEntry:
 	# store lv$11 11
 
 	# get address of lv$11 points to
-	ld t3, 2480(sp)
+	li t4, 2480
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2370,7 +2592,9 @@ param32_arrEntry:
 	# store lv$12 12
 
 	# get address of lv$12 points to
-	ld t3, 2496(sp)
+	li t4, 2496
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2382,7 +2606,9 @@ param32_arrEntry:
 	# store lv$13 13
 
 	# get address of lv$13 points to
-	ld t3, 2512(sp)
+	li t4, 2512
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2394,7 +2620,9 @@ param32_arrEntry:
 	# store lv$14 14
 
 	# get address of lv$14 points to
-	ld t3, 2528(sp)
+	li t4, 2528
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2406,7 +2634,9 @@ param32_arrEntry:
 	# store lv$15 15
 
 	# get address of lv$15 points to
-	ld t3, 2544(sp)
+	li t4, 2544
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2418,7 +2648,9 @@ param32_arrEntry:
 	# store lv$16 16
 
 	# get address of lv$16 points to
-	ld t3, 2560(sp)
+	li t4, 2560
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2430,7 +2662,9 @@ param32_arrEntry:
 	# store lv$17 17
 
 	# get address of lv$17 points to
-	ld t3, 2576(sp)
+	li t4, 2576
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2442,7 +2676,9 @@ param32_arrEntry:
 	# store lv$18 18
 
 	# get address of lv$18 points to
-	ld t3, 2592(sp)
+	li t4, 2592
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2454,7 +2690,9 @@ param32_arrEntry:
 	# store lv$19 19
 
 	# get address of lv$19 points to
-	ld t3, 2608(sp)
+	li t4, 2608
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2466,7 +2704,9 @@ param32_arrEntry:
 	# store lv$20 20
 
 	# get address of lv$20 points to
-	ld t3, 2624(sp)
+	li t4, 2624
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2478,7 +2718,9 @@ param32_arrEntry:
 	# store lv$21 21
 
 	# get address of lv$21 points to
-	ld t3, 2640(sp)
+	li t4, 2640
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2490,7 +2732,9 @@ param32_arrEntry:
 	# store lv$22 22
 
 	# get address of lv$22 points to
-	ld t3, 2656(sp)
+	li t4, 2656
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2502,7 +2746,9 @@ param32_arrEntry:
 	# store lv$23 23
 
 	# get address of lv$23 points to
-	ld t3, 2672(sp)
+	li t4, 2672
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2514,7 +2760,9 @@ param32_arrEntry:
 	# store lv$24 24
 
 	# get address of lv$24 points to
-	ld t3, 2688(sp)
+	li t4, 2688
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2526,7 +2774,9 @@ param32_arrEntry:
 	# store lv$25 25
 
 	# get address of lv$25 points to
-	ld t3, 2704(sp)
+	li t4, 2704
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2538,7 +2788,9 @@ param32_arrEntry:
 	# store lv$26 26
 
 	# get address of lv$26 points to
-	ld t3, 2720(sp)
+	li t4, 2720
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2550,7 +2802,9 @@ param32_arrEntry:
 	# store lv$27 27
 
 	# get address of lv$27 points to
-	ld t3, 2736(sp)
+	li t4, 2736
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2562,7 +2816,9 @@ param32_arrEntry:
 	# store lv$28 28
 
 	# get address of lv$28 points to
-	ld t3, 2752(sp)
+	li t4, 2752
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2574,7 +2830,9 @@ param32_arrEntry:
 	# store lv$29 29
 
 	# get address of lv$29 points to
-	ld t3, 2768(sp)
+	li t4, 2768
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2586,7 +2844,9 @@ param32_arrEntry:
 	# store lv$30 30
 
 	# get address of lv$30 points to
-	ld t3, 2784(sp)
+	li t4, 2784
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -2598,14 +2858,18 @@ param32_arrEntry:
 	# store lv$31 31
 
 	# get address of lv$31 points to
-	ld t3, 2800(sp)
+	li t4, 2800
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load arr_ lv
 
 	# get address of lv points to
-	ld t3, 2304(sp)
+	li t4, 2304
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_
@@ -2630,7 +2894,9 @@ param32_arrEntry:
 	# load a1$1 a1
 
 	# get address of a1 points to
-	ld t3, 2280(sp)
+	li t4, 2280
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a1$1
@@ -2640,7 +2906,9 @@ param32_arrEntry:
 	# load arr_$1 lv
 
 	# get address of lv points to
-	ld t3, 2304(sp)
+	li t4, 2304
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$1
@@ -2665,7 +2933,9 @@ param32_arrEntry:
 	# load a1$3 a1$2
 
 	# get address of a1$2 points to
-	ld t3, 2256(sp)
+	li t4, 2256
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a1$3
@@ -2690,14 +2960,18 @@ param32_arrEntry:
 	# store lv$32 result_
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum
@@ -2707,7 +2981,9 @@ param32_arrEntry:
 	# load arr_$2 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 2320(sp)
+	li t4, 2320
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$2
@@ -2732,7 +3008,9 @@ param32_arrEntry:
 	# load a2$1 a2
 
 	# get address of a2 points to
-	ld t3, 2216(sp)
+	li t4, 2216
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a2$1
@@ -2752,7 +3030,9 @@ param32_arrEntry:
 	# load arr_$3 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 2320(sp)
+	li t4, 2320
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$3
@@ -2777,7 +3057,9 @@ param32_arrEntry:
 	# load a2$3 a2$2
 
 	# get address of a2$2 points to
-	ld t3, 2184(sp)
+	li t4, 2184
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a2$3
@@ -2802,14 +3084,18 @@ param32_arrEntry:
 	# store lv$32 result_$2
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$1 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$1
@@ -2819,7 +3105,9 @@ param32_arrEntry:
 	# load arr_$4 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 2336(sp)
+	li t4, 2336
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$4
@@ -2844,7 +3132,9 @@ param32_arrEntry:
 	# load a3$1 a3
 
 	# get address of a3 points to
-	ld t3, 2144(sp)
+	li t4, 2144
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a3$1
@@ -2864,7 +3154,9 @@ param32_arrEntry:
 	# load arr_$5 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 2336(sp)
+	li t4, 2336
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$5
@@ -2889,7 +3181,9 @@ param32_arrEntry:
 	# load a3$3 a3$2
 
 	# get address of a3$2 points to
-	ld t3, 2112(sp)
+	li t4, 2112
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a3$3
@@ -2914,14 +3208,18 @@ param32_arrEntry:
 	# store lv$32 result_$4
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$2 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$2
@@ -2931,7 +3229,9 @@ param32_arrEntry:
 	# load arr_$6 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 2352(sp)
+	li t4, 2352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$6
@@ -2956,7 +3256,9 @@ param32_arrEntry:
 	# load a4$1 a4
 
 	# get address of a4 points to
-	ld t3, 2072(sp)
+	li t4, 2072
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a4$1
@@ -2976,7 +3278,9 @@ param32_arrEntry:
 	# load arr_$7 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 2352(sp)
+	li t4, 2352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$7
@@ -3001,7 +3305,9 @@ param32_arrEntry:
 	# load a4$3 a4$2
 
 	# get address of a4$2 points to
-	ld t3, 2040(sp)
+	li t4, 2040
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a4$3
@@ -3026,14 +3332,18 @@ param32_arrEntry:
 	# store lv$32 result_$6
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$3 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$3
@@ -3043,7 +3353,9 @@ param32_arrEntry:
 	# load arr_$8 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 2368(sp)
+	li t4, 2368
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$8
@@ -3068,7 +3380,9 @@ param32_arrEntry:
 	# load a5$1 a5
 
 	# get address of a5 points to
-	ld t3, 2000(sp)
+	li t4, 2000
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a5$1
@@ -3088,7 +3402,9 @@ param32_arrEntry:
 	# load arr_$9 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 2368(sp)
+	li t4, 2368
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$9
@@ -3113,7 +3429,9 @@ param32_arrEntry:
 	# load a5$3 a5$2
 
 	# get address of a5$2 points to
-	ld t3, 1968(sp)
+	li t4, 1968
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a5$3
@@ -3138,14 +3456,18 @@ param32_arrEntry:
 	# store lv$32 result_$8
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$4 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$4
@@ -3155,7 +3477,9 @@ param32_arrEntry:
 	# load arr_$10 lv$5
 
 	# get address of lv$5 points to
-	ld t3, 2384(sp)
+	li t4, 2384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$10
@@ -3180,7 +3504,9 @@ param32_arrEntry:
 	# load a6$1 a6
 
 	# get address of a6 points to
-	ld t3, 1928(sp)
+	li t4, 1928
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a6$1
@@ -3200,7 +3526,9 @@ param32_arrEntry:
 	# load arr_$11 lv$5
 
 	# get address of lv$5 points to
-	ld t3, 2384(sp)
+	li t4, 2384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$11
@@ -3225,7 +3553,9 @@ param32_arrEntry:
 	# load a6$3 a6$2
 
 	# get address of a6$2 points to
-	ld t3, 1896(sp)
+	li t4, 1896
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a6$3
@@ -3250,14 +3580,18 @@ param32_arrEntry:
 	# store lv$32 result_$10
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$5 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$5
@@ -3267,7 +3601,9 @@ param32_arrEntry:
 	# load arr_$12 lv$6
 
 	# get address of lv$6 points to
-	ld t3, 2400(sp)
+	li t4, 2400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$12
@@ -3292,7 +3628,9 @@ param32_arrEntry:
 	# load a7$1 a7
 
 	# get address of a7 points to
-	ld t3, 1856(sp)
+	li t4, 1856
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a7$1
@@ -3312,7 +3650,9 @@ param32_arrEntry:
 	# load arr_$13 lv$6
 
 	# get address of lv$6 points to
-	ld t3, 2400(sp)
+	li t4, 2400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$13
@@ -3337,7 +3677,9 @@ param32_arrEntry:
 	# load a7$3 a7$2
 
 	# get address of a7$2 points to
-	ld t3, 1824(sp)
+	li t4, 1824
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a7$3
@@ -3362,14 +3704,18 @@ param32_arrEntry:
 	# store lv$32 result_$12
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$6 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$6
@@ -3379,7 +3725,9 @@ param32_arrEntry:
 	# load arr_$14 lv$7
 
 	# get address of lv$7 points to
-	ld t3, 2416(sp)
+	li t4, 2416
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$14
@@ -3404,7 +3752,9 @@ param32_arrEntry:
 	# load a8$1 a8
 
 	# get address of a8 points to
-	ld t3, 1784(sp)
+	li t4, 1784
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a8$1
@@ -3424,7 +3774,9 @@ param32_arrEntry:
 	# load arr_$15 lv$7
 
 	# get address of lv$7 points to
-	ld t3, 2416(sp)
+	li t4, 2416
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$15
@@ -3449,7 +3801,9 @@ param32_arrEntry:
 	# load a8$3 a8$2
 
 	# get address of a8$2 points to
-	ld t3, 1752(sp)
+	li t4, 1752
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a8$3
@@ -3474,14 +3828,18 @@ param32_arrEntry:
 	# store lv$32 result_$14
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$7 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$7
@@ -3491,7 +3849,9 @@ param32_arrEntry:
 	# load arr_$16 lv$8
 
 	# get address of lv$8 points to
-	ld t3, 2432(sp)
+	li t4, 2432
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$16
@@ -3516,7 +3876,9 @@ param32_arrEntry:
 	# load a9$1 a9
 
 	# get address of a9 points to
-	ld t3, 1712(sp)
+	li t4, 1712
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a9$1
@@ -3536,7 +3898,9 @@ param32_arrEntry:
 	# load arr_$17 lv$8
 
 	# get address of lv$8 points to
-	ld t3, 2432(sp)
+	li t4, 2432
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$17
@@ -3561,7 +3925,9 @@ param32_arrEntry:
 	# load a9$3 a9$2
 
 	# get address of a9$2 points to
-	ld t3, 1680(sp)
+	li t4, 1680
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a9$3
@@ -3586,14 +3952,18 @@ param32_arrEntry:
 	# store lv$32 result_$16
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$8 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$8
@@ -3603,7 +3973,9 @@ param32_arrEntry:
 	# load arr_$18 lv$9
 
 	# get address of lv$9 points to
-	ld t3, 2448(sp)
+	li t4, 2448
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$18
@@ -3628,7 +4000,9 @@ param32_arrEntry:
 	# load a10$1 a10
 
 	# get address of a10 points to
-	ld t3, 1640(sp)
+	li t4, 1640
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a10$1
@@ -3648,7 +4022,9 @@ param32_arrEntry:
 	# load arr_$19 lv$9
 
 	# get address of lv$9 points to
-	ld t3, 2448(sp)
+	li t4, 2448
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$19
@@ -3673,7 +4049,9 @@ param32_arrEntry:
 	# load a10$3 a10$2
 
 	# get address of a10$2 points to
-	ld t3, 1608(sp)
+	li t4, 1608
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a10$3
@@ -3698,14 +4076,18 @@ param32_arrEntry:
 	# store lv$32 result_$18
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$9 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$9
@@ -3715,7 +4097,9 @@ param32_arrEntry:
 	# load arr_$20 lv$10
 
 	# get address of lv$10 points to
-	ld t3, 2464(sp)
+	li t4, 2464
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$20
@@ -3740,7 +4124,9 @@ param32_arrEntry:
 	# load a11$1 a11
 
 	# get address of a11 points to
-	ld t3, 1568(sp)
+	li t4, 1568
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a11$1
@@ -3760,7 +4146,9 @@ param32_arrEntry:
 	# load arr_$21 lv$10
 
 	# get address of lv$10 points to
-	ld t3, 2464(sp)
+	li t4, 2464
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$21
@@ -3785,7 +4173,9 @@ param32_arrEntry:
 	# load a11$3 a11$2
 
 	# get address of a11$2 points to
-	ld t3, 1536(sp)
+	li t4, 1536
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a11$3
@@ -3810,14 +4200,18 @@ param32_arrEntry:
 	# store lv$32 result_$20
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$10 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$10
@@ -3827,7 +4221,9 @@ param32_arrEntry:
 	# load arr_$22 lv$11
 
 	# get address of lv$11 points to
-	ld t3, 2480(sp)
+	li t4, 2480
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$22
@@ -3852,7 +4248,9 @@ param32_arrEntry:
 	# load a12$1 a12
 
 	# get address of a12 points to
-	ld t3, 1496(sp)
+	li t4, 1496
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a12$1
@@ -3872,7 +4270,9 @@ param32_arrEntry:
 	# load arr_$23 lv$11
 
 	# get address of lv$11 points to
-	ld t3, 2480(sp)
+	li t4, 2480
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$23
@@ -3897,7 +4297,9 @@ param32_arrEntry:
 	# load a12$3 a12$2
 
 	# get address of a12$2 points to
-	ld t3, 1464(sp)
+	li t4, 1464
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a12$3
@@ -3922,14 +4324,18 @@ param32_arrEntry:
 	# store lv$32 result_$22
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$11 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$11
@@ -3939,7 +4345,9 @@ param32_arrEntry:
 	# load arr_$24 lv$12
 
 	# get address of lv$12 points to
-	ld t3, 2496(sp)
+	li t4, 2496
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$24
@@ -3964,7 +4372,9 @@ param32_arrEntry:
 	# load a13$1 a13
 
 	# get address of a13 points to
-	ld t3, 1424(sp)
+	li t4, 1424
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a13$1
@@ -3984,7 +4394,9 @@ param32_arrEntry:
 	# load arr_$25 lv$12
 
 	# get address of lv$12 points to
-	ld t3, 2496(sp)
+	li t4, 2496
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$25
@@ -4009,7 +4421,9 @@ param32_arrEntry:
 	# load a13$3 a13$2
 
 	# get address of a13$2 points to
-	ld t3, 1392(sp)
+	li t4, 1392
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a13$3
@@ -4034,14 +4448,18 @@ param32_arrEntry:
 	# store lv$32 result_$24
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$12 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$12
@@ -4051,7 +4469,9 @@ param32_arrEntry:
 	# load arr_$26 lv$13
 
 	# get address of lv$13 points to
-	ld t3, 2512(sp)
+	li t4, 2512
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$26
@@ -4076,7 +4496,9 @@ param32_arrEntry:
 	# load a14$1 a14
 
 	# get address of a14 points to
-	ld t3, 1352(sp)
+	li t4, 1352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a14$1
@@ -4096,7 +4518,9 @@ param32_arrEntry:
 	# load arr_$27 lv$13
 
 	# get address of lv$13 points to
-	ld t3, 2512(sp)
+	li t4, 2512
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$27
@@ -4121,7 +4545,9 @@ param32_arrEntry:
 	# load a14$3 a14$2
 
 	# get address of a14$2 points to
-	ld t3, 1320(sp)
+	li t4, 1320
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a14$3
@@ -4146,14 +4572,18 @@ param32_arrEntry:
 	# store lv$32 result_$26
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$13 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$13
@@ -4163,7 +4593,9 @@ param32_arrEntry:
 	# load arr_$28 lv$14
 
 	# get address of lv$14 points to
-	ld t3, 2528(sp)
+	li t4, 2528
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$28
@@ -4188,7 +4620,9 @@ param32_arrEntry:
 	# load a15$1 a15
 
 	# get address of a15 points to
-	ld t3, 1280(sp)
+	li t4, 1280
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a15$1
@@ -4208,7 +4642,9 @@ param32_arrEntry:
 	# load arr_$29 lv$14
 
 	# get address of lv$14 points to
-	ld t3, 2528(sp)
+	li t4, 2528
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$29
@@ -4233,7 +4669,9 @@ param32_arrEntry:
 	# load a15$3 a15$2
 
 	# get address of a15$2 points to
-	ld t3, 1248(sp)
+	li t4, 1248
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a15$3
@@ -4258,14 +4696,18 @@ param32_arrEntry:
 	# store lv$32 result_$28
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$14 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$14
@@ -4275,7 +4717,9 @@ param32_arrEntry:
 	# load arr_$30 lv$15
 
 	# get address of lv$15 points to
-	ld t3, 2544(sp)
+	li t4, 2544
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$30
@@ -4300,7 +4744,9 @@ param32_arrEntry:
 	# load a16$1 a16
 
 	# get address of a16 points to
-	ld t3, 1208(sp)
+	li t4, 1208
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a16$1
@@ -4320,7 +4766,9 @@ param32_arrEntry:
 	# load arr_$31 lv$15
 
 	# get address of lv$15 points to
-	ld t3, 2544(sp)
+	li t4, 2544
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$31
@@ -4345,7 +4793,9 @@ param32_arrEntry:
 	# load a16$3 a16$2
 
 	# get address of a16$2 points to
-	ld t3, 1176(sp)
+	li t4, 1176
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a16$3
@@ -4370,14 +4820,18 @@ param32_arrEntry:
 	# store lv$32 result_$30
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$15 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$15
@@ -4387,7 +4841,9 @@ param32_arrEntry:
 	# load arr_$32 lv$16
 
 	# get address of lv$16 points to
-	ld t3, 2560(sp)
+	li t4, 2560
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$32
@@ -4412,7 +4868,9 @@ param32_arrEntry:
 	# load a17$1 a17
 
 	# get address of a17 points to
-	ld t3, 1136(sp)
+	li t4, 1136
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a17$1
@@ -4432,7 +4890,9 @@ param32_arrEntry:
 	# load arr_$33 lv$16
 
 	# get address of lv$16 points to
-	ld t3, 2560(sp)
+	li t4, 2560
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$33
@@ -4457,7 +4917,9 @@ param32_arrEntry:
 	# load a17$3 a17$2
 
 	# get address of a17$2 points to
-	ld t3, 1104(sp)
+	li t4, 1104
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a17$3
@@ -4482,14 +4944,18 @@ param32_arrEntry:
 	# store lv$32 result_$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$16 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$16
@@ -4499,7 +4965,9 @@ param32_arrEntry:
 	# load arr_$34 lv$17
 
 	# get address of lv$17 points to
-	ld t3, 2576(sp)
+	li t4, 2576
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$34
@@ -4524,7 +4992,9 @@ param32_arrEntry:
 	# load a18$1 a18
 
 	# get address of a18 points to
-	ld t3, 1064(sp)
+	li t4, 1064
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a18$1
@@ -4544,7 +5014,9 @@ param32_arrEntry:
 	# load arr_$35 lv$17
 
 	# get address of lv$17 points to
-	ld t3, 2576(sp)
+	li t4, 2576
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$35
@@ -4569,7 +5041,9 @@ param32_arrEntry:
 	# load a18$3 a18$2
 
 	# get address of a18$2 points to
-	ld t3, 1032(sp)
+	li t4, 1032
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a18$3
@@ -4594,14 +5068,18 @@ param32_arrEntry:
 	# store lv$32 result_$34
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$17 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$17
@@ -4611,7 +5089,9 @@ param32_arrEntry:
 	# load arr_$36 lv$18
 
 	# get address of lv$18 points to
-	ld t3, 2592(sp)
+	li t4, 2592
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$36
@@ -4636,7 +5116,9 @@ param32_arrEntry:
 	# load a19$1 a19
 
 	# get address of a19 points to
-	ld t3, 992(sp)
+	li t4, 992
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a19$1
@@ -4656,7 +5138,9 @@ param32_arrEntry:
 	# load arr_$37 lv$18
 
 	# get address of lv$18 points to
-	ld t3, 2592(sp)
+	li t4, 2592
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$37
@@ -4681,7 +5165,9 @@ param32_arrEntry:
 	# load a19$3 a19$2
 
 	# get address of a19$2 points to
-	ld t3, 960(sp)
+	li t4, 960
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a19$3
@@ -4706,14 +5192,18 @@ param32_arrEntry:
 	# store lv$32 result_$36
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$18 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$18
@@ -4723,7 +5213,9 @@ param32_arrEntry:
 	# load arr_$38 lv$19
 
 	# get address of lv$19 points to
-	ld t3, 2608(sp)
+	li t4, 2608
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$38
@@ -4748,7 +5240,9 @@ param32_arrEntry:
 	# load a20$1 a20
 
 	# get address of a20 points to
-	ld t3, 920(sp)
+	li t4, 920
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a20$1
@@ -4768,7 +5262,9 @@ param32_arrEntry:
 	# load arr_$39 lv$19
 
 	# get address of lv$19 points to
-	ld t3, 2608(sp)
+	li t4, 2608
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$39
@@ -4793,7 +5289,9 @@ param32_arrEntry:
 	# load a20$3 a20$2
 
 	# get address of a20$2 points to
-	ld t3, 888(sp)
+	li t4, 888
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a20$3
@@ -4818,14 +5316,18 @@ param32_arrEntry:
 	# store lv$32 result_$38
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$19 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$19
@@ -4835,7 +5337,9 @@ param32_arrEntry:
 	# load arr_$40 lv$20
 
 	# get address of lv$20 points to
-	ld t3, 2624(sp)
+	li t4, 2624
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$40
@@ -4860,7 +5364,9 @@ param32_arrEntry:
 	# load a21$1 a21
 
 	# get address of a21 points to
-	ld t3, 848(sp)
+	li t4, 848
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a21$1
@@ -4880,7 +5386,9 @@ param32_arrEntry:
 	# load arr_$41 lv$20
 
 	# get address of lv$20 points to
-	ld t3, 2624(sp)
+	li t4, 2624
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$41
@@ -4905,7 +5413,9 @@ param32_arrEntry:
 	# load a21$3 a21$2
 
 	# get address of a21$2 points to
-	ld t3, 816(sp)
+	li t4, 816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a21$3
@@ -4930,14 +5440,18 @@ param32_arrEntry:
 	# store lv$32 result_$40
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$20 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$20
@@ -4947,7 +5461,9 @@ param32_arrEntry:
 	# load arr_$42 lv$21
 
 	# get address of lv$21 points to
-	ld t3, 2640(sp)
+	li t4, 2640
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$42
@@ -4972,7 +5488,9 @@ param32_arrEntry:
 	# load a22$1 a22
 
 	# get address of a22 points to
-	ld t3, 776(sp)
+	li t4, 776
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a22$1
@@ -4992,7 +5510,9 @@ param32_arrEntry:
 	# load arr_$43 lv$21
 
 	# get address of lv$21 points to
-	ld t3, 2640(sp)
+	li t4, 2640
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$43
@@ -5017,7 +5537,9 @@ param32_arrEntry:
 	# load a22$3 a22$2
 
 	# get address of a22$2 points to
-	ld t3, 744(sp)
+	li t4, 744
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a22$3
@@ -5042,14 +5564,18 @@ param32_arrEntry:
 	# store lv$32 result_$42
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$21 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$21
@@ -5059,7 +5585,9 @@ param32_arrEntry:
 	# load arr_$44 lv$22
 
 	# get address of lv$22 points to
-	ld t3, 2656(sp)
+	li t4, 2656
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$44
@@ -5084,7 +5612,9 @@ param32_arrEntry:
 	# load a23$1 a23
 
 	# get address of a23 points to
-	ld t3, 704(sp)
+	li t4, 704
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a23$1
@@ -5104,7 +5634,9 @@ param32_arrEntry:
 	# load arr_$45 lv$22
 
 	# get address of lv$22 points to
-	ld t3, 2656(sp)
+	li t4, 2656
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$45
@@ -5129,7 +5661,9 @@ param32_arrEntry:
 	# load a23$3 a23$2
 
 	# get address of a23$2 points to
-	ld t3, 672(sp)
+	li t4, 672
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a23$3
@@ -5154,14 +5688,18 @@ param32_arrEntry:
 	# store lv$32 result_$44
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$22 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$22
@@ -5171,7 +5709,9 @@ param32_arrEntry:
 	# load arr_$46 lv$23
 
 	# get address of lv$23 points to
-	ld t3, 2672(sp)
+	li t4, 2672
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$46
@@ -5196,7 +5736,9 @@ param32_arrEntry:
 	# load a24$1 a24
 
 	# get address of a24 points to
-	ld t3, 632(sp)
+	li t4, 632
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a24$1
@@ -5216,7 +5758,9 @@ param32_arrEntry:
 	# load arr_$47 lv$23
 
 	# get address of lv$23 points to
-	ld t3, 2672(sp)
+	li t4, 2672
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$47
@@ -5241,7 +5785,9 @@ param32_arrEntry:
 	# load a24$3 a24$2
 
 	# get address of a24$2 points to
-	ld t3, 600(sp)
+	li t4, 600
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a24$3
@@ -5266,14 +5812,18 @@ param32_arrEntry:
 	# store lv$32 result_$46
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$23 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$23
@@ -5283,7 +5833,9 @@ param32_arrEntry:
 	# load arr_$48 lv$24
 
 	# get address of lv$24 points to
-	ld t3, 2688(sp)
+	li t4, 2688
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$48
@@ -5308,7 +5860,9 @@ param32_arrEntry:
 	# load a25$1 a25
 
 	# get address of a25 points to
-	ld t3, 560(sp)
+	li t4, 560
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a25$1
@@ -5328,7 +5882,9 @@ param32_arrEntry:
 	# load arr_$49 lv$24
 
 	# get address of lv$24 points to
-	ld t3, 2688(sp)
+	li t4, 2688
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$49
@@ -5353,7 +5909,9 @@ param32_arrEntry:
 	# load a25$3 a25$2
 
 	# get address of a25$2 points to
-	ld t3, 528(sp)
+	li t4, 528
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a25$3
@@ -5378,14 +5936,18 @@ param32_arrEntry:
 	# store lv$32 result_$48
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$24 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$24
@@ -5395,7 +5957,9 @@ param32_arrEntry:
 	# load arr_$50 lv$25
 
 	# get address of lv$25 points to
-	ld t3, 2704(sp)
+	li t4, 2704
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$50
@@ -5420,7 +5984,9 @@ param32_arrEntry:
 	# load a26$1 a26
 
 	# get address of a26 points to
-	ld t3, 488(sp)
+	li t4, 488
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a26$1
@@ -5440,7 +6006,9 @@ param32_arrEntry:
 	# load arr_$51 lv$25
 
 	# get address of lv$25 points to
-	ld t3, 2704(sp)
+	li t4, 2704
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$51
@@ -5465,7 +6033,9 @@ param32_arrEntry:
 	# load a26$3 a26$2
 
 	# get address of a26$2 points to
-	ld t3, 456(sp)
+	li t4, 456
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a26$3
@@ -5490,14 +6060,18 @@ param32_arrEntry:
 	# store lv$32 result_$50
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$25 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$25
@@ -5507,7 +6081,9 @@ param32_arrEntry:
 	# load arr_$52 lv$26
 
 	# get address of lv$26 points to
-	ld t3, 2720(sp)
+	li t4, 2720
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$52
@@ -5532,7 +6108,9 @@ param32_arrEntry:
 	# load a27$1 a27
 
 	# get address of a27 points to
-	ld t3, 416(sp)
+	li t4, 416
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a27$1
@@ -5552,7 +6130,9 @@ param32_arrEntry:
 	# load arr_$53 lv$26
 
 	# get address of lv$26 points to
-	ld t3, 2720(sp)
+	li t4, 2720
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$53
@@ -5577,7 +6157,9 @@ param32_arrEntry:
 	# load a27$3 a27$2
 
 	# get address of a27$2 points to
-	ld t3, 384(sp)
+	li t4, 384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a27$3
@@ -5602,14 +6184,18 @@ param32_arrEntry:
 	# store lv$32 result_$52
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$26 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$26
@@ -5619,7 +6205,9 @@ param32_arrEntry:
 	# load arr_$54 lv$27
 
 	# get address of lv$27 points to
-	ld t3, 2736(sp)
+	li t4, 2736
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$54
@@ -5644,7 +6232,9 @@ param32_arrEntry:
 	# load a28$1 a28
 
 	# get address of a28 points to
-	ld t3, 344(sp)
+	li t4, 344
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a28$1
@@ -5664,7 +6254,9 @@ param32_arrEntry:
 	# load arr_$55 lv$27
 
 	# get address of lv$27 points to
-	ld t3, 2736(sp)
+	li t4, 2736
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$55
@@ -5689,7 +6281,9 @@ param32_arrEntry:
 	# load a28$3 a28$2
 
 	# get address of a28$2 points to
-	ld t3, 312(sp)
+	li t4, 312
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a28$3
@@ -5714,14 +6308,18 @@ param32_arrEntry:
 	# store lv$32 result_$54
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$27 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$27
@@ -5731,7 +6329,9 @@ param32_arrEntry:
 	# load arr_$56 lv$28
 
 	# get address of lv$28 points to
-	ld t3, 2752(sp)
+	li t4, 2752
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$56
@@ -5756,7 +6356,9 @@ param32_arrEntry:
 	# load a29$1 a29
 
 	# get address of a29 points to
-	ld t3, 272(sp)
+	li t4, 272
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a29$1
@@ -5776,7 +6378,9 @@ param32_arrEntry:
 	# load arr_$57 lv$28
 
 	# get address of lv$28 points to
-	ld t3, 2752(sp)
+	li t4, 2752
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$57
@@ -5801,7 +6405,9 @@ param32_arrEntry:
 	# load a29$3 a29$2
 
 	# get address of a29$2 points to
-	ld t3, 240(sp)
+	li t4, 240
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a29$3
@@ -5826,14 +6432,18 @@ param32_arrEntry:
 	# store lv$32 result_$56
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$28 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$28
@@ -5843,7 +6453,9 @@ param32_arrEntry:
 	# load arr_$58 lv$29
 
 	# get address of lv$29 points to
-	ld t3, 2768(sp)
+	li t4, 2768
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$58
@@ -5868,7 +6480,9 @@ param32_arrEntry:
 	# load a30$1 a30
 
 	# get address of a30 points to
-	ld t3, 200(sp)
+	li t4, 200
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a30$1
@@ -5888,7 +6502,9 @@ param32_arrEntry:
 	# load arr_$59 lv$29
 
 	# get address of lv$29 points to
-	ld t3, 2768(sp)
+	li t4, 2768
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$59
@@ -5913,7 +6529,9 @@ param32_arrEntry:
 	# load a30$3 a30$2
 
 	# get address of a30$2 points to
-	ld t3, 168(sp)
+	li t4, 168
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a30$3
@@ -5938,14 +6556,18 @@ param32_arrEntry:
 	# store lv$32 result_$58
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$29 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$29
@@ -5955,7 +6577,9 @@ param32_arrEntry:
 	# load arr_$60 lv$30
 
 	# get address of lv$30 points to
-	ld t3, 2784(sp)
+	li t4, 2784
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$60
@@ -5980,7 +6604,9 @@ param32_arrEntry:
 	# load a31$1 a31
 
 	# get address of a31 points to
-	ld t3, 128(sp)
+	li t4, 128
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a31$1
@@ -6000,7 +6626,9 @@ param32_arrEntry:
 	# load arr_$61 lv$30
 
 	# get address of lv$30 points to
-	ld t3, 2784(sp)
+	li t4, 2784
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$61
@@ -6025,7 +6653,9 @@ param32_arrEntry:
 	# load a31$3 a31$2
 
 	# get address of a31$2 points to
-	ld t3, 96(sp)
+	li t4, 96
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a31$3
@@ -6050,14 +6680,18 @@ param32_arrEntry:
 	# store lv$32 result_$60
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$30 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$30
@@ -6067,7 +6701,9 @@ param32_arrEntry:
 	# load arr_$62 lv$31
 
 	# get address of lv$31 points to
-	ld t3, 2800(sp)
+	li t4, 2800
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$62
@@ -6092,7 +6728,9 @@ param32_arrEntry:
 	# load a32$1 a32
 
 	# get address of a32 points to
-	ld t3, 56(sp)
+	li t4, 56
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a32$1
@@ -6112,7 +6750,9 @@ param32_arrEntry:
 	# load arr_$63 lv$31
 
 	# get address of lv$31 points to
-	ld t3, 2800(sp)
+	li t4, 2800
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr_$63
@@ -6137,7 +6777,9 @@ param32_arrEntry:
 	# load a32$3 a32$2
 
 	# get address of a32$2 points to
-	ld t3, 24(sp)
+	li t4, 24
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a32$3
@@ -6162,14 +6804,18 @@ param32_arrEntry:
 	# store lv$32 result_$62
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load sum$31 lv$32
 
 	# get address of lv$32 points to
-	ld t3, 2816(sp)
+	li t4, 2816
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:sum$31
@@ -6347,7 +6993,9 @@ param16Entry:
 	# store lv 0
 
 	# get address of lv points to
-	ld t3, 664(sp)
+	li t4, 664
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6359,7 +7007,9 @@ param16Entry:
 	# store lv$1 1
 
 	# get address of lv$1 points to
-	ld t3, 680(sp)
+	li t4, 680
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6371,7 +7021,9 @@ param16Entry:
 	# store lv$2 2
 
 	# get address of lv$2 points to
-	ld t3, 696(sp)
+	li t4, 696
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6383,7 +7035,9 @@ param16Entry:
 	# store lv$3 3
 
 	# get address of lv$3 points to
-	ld t3, 712(sp)
+	li t4, 712
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6395,7 +7049,9 @@ param16Entry:
 	# store lv$4 4
 
 	# get address of lv$4 points to
-	ld t3, 728(sp)
+	li t4, 728
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6407,7 +7063,9 @@ param16Entry:
 	# store lv$5 5
 
 	# get address of lv$5 points to
-	ld t3, 744(sp)
+	li t4, 744
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6419,7 +7077,9 @@ param16Entry:
 	# store lv$6 6
 
 	# get address of lv$6 points to
-	ld t3, 760(sp)
+	li t4, 760
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6431,7 +7091,9 @@ param16Entry:
 	# store lv$7 7
 
 	# get address of lv$7 points to
-	ld t3, 776(sp)
+	li t4, 776
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6443,7 +7105,9 @@ param16Entry:
 	# store lv$8 8
 
 	# get address of lv$8 points to
-	ld t3, 792(sp)
+	li t4, 792
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6455,7 +7119,9 @@ param16Entry:
 	# store lv$9 9
 
 	# get address of lv$9 points to
-	ld t3, 808(sp)
+	li t4, 808
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6467,7 +7133,9 @@ param16Entry:
 	# store lv$10 10
 
 	# get address of lv$10 points to
-	ld t3, 824(sp)
+	li t4, 824
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6479,7 +7147,9 @@ param16Entry:
 	# store lv$11 11
 
 	# get address of lv$11 points to
-	ld t3, 840(sp)
+	li t4, 840
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6491,7 +7161,9 @@ param16Entry:
 	# store lv$12 12
 
 	# get address of lv$12 points to
-	ld t3, 856(sp)
+	li t4, 856
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6503,7 +7175,9 @@ param16Entry:
 	# store lv$13 13
 
 	# get address of lv$13 points to
-	ld t3, 872(sp)
+	li t4, 872
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6515,7 +7189,9 @@ param16Entry:
 	# store lv$14 14
 
 	# get address of lv$14 points to
-	ld t3, 888(sp)
+	li t4, 888
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6527,14 +7203,18 @@ param16Entry:
 	# store lv$15 15
 
 	# get address of lv$15 points to
-	ld t3, 904(sp)
+	li t4, 904
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load a1 lv
 
 	# get address of lv points to
-	ld t3, 664(sp)
+	li t4, 664
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a1
@@ -6544,7 +7224,9 @@ param16Entry:
 	# load a2 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 680(sp)
+	li t4, 680
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a2
@@ -6554,7 +7236,9 @@ param16Entry:
 	# load a3 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 696(sp)
+	li t4, 696
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a3
@@ -6564,7 +7248,9 @@ param16Entry:
 	# load a4 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 712(sp)
+	li t4, 712
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a4
@@ -6574,7 +7260,9 @@ param16Entry:
 	# load a5 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 728(sp)
+	li t4, 728
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a5
@@ -6584,7 +7272,9 @@ param16Entry:
 	# load a6 lv$5
 
 	# get address of lv$5 points to
-	ld t3, 744(sp)
+	li t4, 744
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a6
@@ -6594,7 +7284,9 @@ param16Entry:
 	# load a7 lv$6
 
 	# get address of lv$6 points to
-	ld t3, 760(sp)
+	li t4, 760
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a7
@@ -6604,7 +7296,9 @@ param16Entry:
 	# load a8 lv$7
 
 	# get address of lv$7 points to
-	ld t3, 776(sp)
+	li t4, 776
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a8
@@ -6614,7 +7308,9 @@ param16Entry:
 	# load a9 lv$8
 
 	# get address of lv$8 points to
-	ld t3, 792(sp)
+	li t4, 792
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a9
@@ -6624,7 +7320,9 @@ param16Entry:
 	# load a10 lv$9
 
 	# get address of lv$9 points to
-	ld t3, 808(sp)
+	li t4, 808
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a10
@@ -6634,7 +7332,9 @@ param16Entry:
 	# load a11 lv$10
 
 	# get address of lv$10 points to
-	ld t3, 824(sp)
+	li t4, 824
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a11
@@ -6644,7 +7344,9 @@ param16Entry:
 	# load a12 lv$11
 
 	# get address of lv$11 points to
-	ld t3, 840(sp)
+	li t4, 840
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a12
@@ -6654,7 +7356,9 @@ param16Entry:
 	# load a13 lv$12
 
 	# get address of lv$12 points to
-	ld t3, 856(sp)
+	li t4, 856
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a13
@@ -6664,7 +7368,9 @@ param16Entry:
 	# load a14 lv$13
 
 	# get address of lv$13 points to
-	ld t3, 872(sp)
+	li t4, 872
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a14
@@ -6674,7 +7380,9 @@ param16Entry:
 	# load a15 lv$14
 
 	# get address of lv$14 points to
-	ld t3, 888(sp)
+	li t4, 888
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a15
@@ -6684,7 +7392,9 @@ param16Entry:
 	# load a16 lv$15
 
 	# get address of lv$15 points to
-	ld t3, 904(sp)
+	li t4, 904
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a16
@@ -6714,7 +7424,9 @@ param16Entry:
 	# store inp a1
 
 	# get address of inp points to
-	ld t3, 520(sp)
+	li t4, 520
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6741,7 +7453,9 @@ param16Entry:
 	# store inp$1 a2
 
 	# get address of inp$1 points to
-	ld t3, 512(sp)
+	li t4, 512
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6768,7 +7482,9 @@ param16Entry:
 	# store inp$2 a3
 
 	# get address of inp$2 points to
-	ld t3, 504(sp)
+	li t4, 504
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6795,7 +7511,9 @@ param16Entry:
 	# store inp$3 a4
 
 	# get address of inp$3 points to
-	ld t3, 496(sp)
+	li t4, 496
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6822,7 +7540,9 @@ param16Entry:
 	# store inp$4 a5
 
 	# get address of inp$4 points to
-	ld t3, 488(sp)
+	li t4, 488
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6849,7 +7569,9 @@ param16Entry:
 	# store inp$5 a6
 
 	# get address of inp$5 points to
-	ld t3, 480(sp)
+	li t4, 480
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6876,7 +7598,9 @@ param16Entry:
 	# store inp$6 a7
 
 	# get address of inp$6 points to
-	ld t3, 472(sp)
+	li t4, 472
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6903,7 +7627,9 @@ param16Entry:
 	# store inp$7 a8
 
 	# get address of inp$7 points to
-	ld t3, 464(sp)
+	li t4, 464
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6930,7 +7656,9 @@ param16Entry:
 	# store inp$8 a9
 
 	# get address of inp$8 points to
-	ld t3, 456(sp)
+	li t4, 456
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6957,7 +7685,9 @@ param16Entry:
 	# store inp$9 a10
 
 	# get address of inp$9 points to
-	ld t3, 448(sp)
+	li t4, 448
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -6984,7 +7714,9 @@ param16Entry:
 	# store inp$10 a11
 
 	# get address of inp$10 points to
-	ld t3, 440(sp)
+	li t4, 440
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -7011,7 +7743,9 @@ param16Entry:
 	# store inp$11 a12
 
 	# get address of inp$11 points to
-	ld t3, 432(sp)
+	li t4, 432
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -7038,7 +7772,9 @@ param16Entry:
 	# store inp$12 a13
 
 	# get address of inp$12 points to
-	ld t3, 424(sp)
+	li t4, 424
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -7065,7 +7801,9 @@ param16Entry:
 	# store inp$13 a14
 
 	# get address of inp$13 points to
-	ld t3, 416(sp)
+	li t4, 416
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -7092,7 +7830,9 @@ param16Entry:
 	# store inp$14 a15
 
 	# get address of inp$14 points to
-	ld t3, 408(sp)
+	li t4, 408
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -7119,7 +7859,9 @@ param16Entry:
 	# store inp$15 a16
 
 	# get address of inp$15 points to
-	ld t3, 400(sp)
+	li t4, 400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -7177,7 +7919,9 @@ param16Entry:
 	# load arr$2 arr$1
 
 	# get address of arr$1 points to
-	ld t3, 384(sp)
+	li t4, 384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$2
@@ -7202,7 +7946,9 @@ param16Entry:
 	# load arr$4 arr$3
 
 	# get address of arr$3 points to
-	ld t3, 368(sp)
+	li t4, 368
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$4
@@ -7227,7 +7973,9 @@ param16Entry:
 	# load arr$6 arr$5
 
 	# get address of arr$5 points to
-	ld t3, 352(sp)
+	li t4, 352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$6
@@ -7252,7 +8000,9 @@ param16Entry:
 	# load arr$8 arr$7
 
 	# get address of arr$7 points to
-	ld t3, 336(sp)
+	li t4, 336
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$8
@@ -7277,7 +8027,9 @@ param16Entry:
 	# load arr$10 arr$9
 
 	# get address of arr$9 points to
-	ld t3, 320(sp)
+	li t4, 320
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$10
@@ -7302,7 +8054,9 @@ param16Entry:
 	# load arr$12 arr$11
 
 	# get address of arr$11 points to
-	ld t3, 304(sp)
+	li t4, 304
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$12
@@ -7327,7 +8081,9 @@ param16Entry:
 	# load arr$14 arr$13
 
 	# get address of arr$13 points to
-	ld t3, 288(sp)
+	li t4, 288
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$14
@@ -7352,7 +8108,9 @@ param16Entry:
 	# load arr$16 arr$15
 
 	# get address of arr$15 points to
-	ld t3, 272(sp)
+	li t4, 272
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$16
@@ -7377,7 +8135,9 @@ param16Entry:
 	# load arr$18 arr$17
 
 	# get address of arr$17 points to
-	ld t3, 256(sp)
+	li t4, 256
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$18
@@ -7402,7 +8162,9 @@ param16Entry:
 	# load arr$20 arr$19
 
 	# get address of arr$19 points to
-	ld t3, 240(sp)
+	li t4, 240
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$20
@@ -7427,7 +8189,9 @@ param16Entry:
 	# load arr$22 arr$21
 
 	# get address of arr$21 points to
-	ld t3, 224(sp)
+	li t4, 224
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$22
@@ -7452,7 +8216,9 @@ param16Entry:
 	# load arr$24 arr$23
 
 	# get address of arr$23 points to
-	ld t3, 208(sp)
+	li t4, 208
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$24
@@ -7477,7 +8243,9 @@ param16Entry:
 	# load arr$26 arr$25
 
 	# get address of arr$25 points to
-	ld t3, 192(sp)
+	li t4, 192
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$26
@@ -7502,7 +8270,9 @@ param16Entry:
 	# load arr$28 arr$27
 
 	# get address of arr$27 points to
-	ld t3, 176(sp)
+	li t4, 176
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$28
@@ -7527,7 +8297,9 @@ param16Entry:
 	# load arr$30 arr$29
 
 	# get address of arr$29 points to
-	ld t3, 160(sp)
+	li t4, 160
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$30
@@ -7552,7 +8324,9 @@ param16Entry:
 	# load arr$32 arr$31
 
 	# get address of arr$31 points to
-	ld t3, 144(sp)
+	li t4, 144
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$32
@@ -7562,7 +8336,9 @@ param16Entry:
 	# load a1$1 lv
 
 	# get address of lv points to
-	ld t3, 664(sp)
+	li t4, 664
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a1$1
@@ -7572,7 +8348,9 @@ param16Entry:
 	# load a2$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 680(sp)
+	li t4, 680
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a2$1
@@ -7582,7 +8360,9 @@ param16Entry:
 	# load a3$1 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 696(sp)
+	li t4, 696
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a3$1
@@ -7592,7 +8372,9 @@ param16Entry:
 	# load a4$1 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 712(sp)
+	li t4, 712
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a4$1
@@ -7602,7 +8384,9 @@ param16Entry:
 	# load a5$1 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 728(sp)
+	li t4, 728
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a5$1
@@ -7612,7 +8396,9 @@ param16Entry:
 	# load a6$1 lv$5
 
 	# get address of lv$5 points to
-	ld t3, 744(sp)
+	li t4, 744
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a6$1
@@ -7622,7 +8408,9 @@ param16Entry:
 	# load a7$1 lv$6
 
 	# get address of lv$6 points to
-	ld t3, 760(sp)
+	li t4, 760
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a7$1
@@ -7632,7 +8420,9 @@ param16Entry:
 	# load a8$1 lv$7
 
 	# get address of lv$7 points to
-	ld t3, 776(sp)
+	li t4, 776
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a8$1
@@ -7642,7 +8432,9 @@ param16Entry:
 	# load a9$1 lv$8
 
 	# get address of lv$8 points to
-	ld t3, 792(sp)
+	li t4, 792
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a9$1
@@ -7652,7 +8444,9 @@ param16Entry:
 	# load a10$1 lv$9
 
 	# get address of lv$9 points to
-	ld t3, 808(sp)
+	li t4, 808
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a10$1
@@ -7662,7 +8456,9 @@ param16Entry:
 	# load a11$1 lv$10
 
 	# get address of lv$10 points to
-	ld t3, 824(sp)
+	li t4, 824
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a11$1
@@ -7672,7 +8468,9 @@ param16Entry:
 	# load a12$1 lv$11
 
 	# get address of lv$11 points to
-	ld t3, 840(sp)
+	li t4, 840
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a12$1
@@ -7682,7 +8480,9 @@ param16Entry:
 	# load a13$1 lv$12
 
 	# get address of lv$12 points to
-	ld t3, 856(sp)
+	li t4, 856
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a13$1
@@ -7692,7 +8492,9 @@ param16Entry:
 	# load a14$1 lv$13
 
 	# get address of lv$13 points to
-	ld t3, 872(sp)
+	li t4, 872
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a14$1
@@ -7702,7 +8504,9 @@ param16Entry:
 	# load a15$1 lv$14
 
 	# get address of lv$14 points to
-	ld t3, 888(sp)
+	li t4, 888
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a15$1
@@ -7712,7 +8516,9 @@ param16Entry:
 	# load a16$1 lv$15
 
 	# get address of lv$15 points to
-	ld t3, 904(sp)
+	li t4, 904
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:a16$1
@@ -8309,7 +9115,9 @@ mainEntry6:
 	# store inp param16
 
 	# get address of inp points to
-	ld t3, 1720(sp)
+	li t4, 1720
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8351,7 +9159,9 @@ mainEntry6:
 	# store inp$1 
 
 	# get address of inp$1 points to
-	ld t3, 1704(sp)
+	li t4, 1704
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8393,7 +9203,9 @@ mainEntry6:
 	# store inp$2 
 
 	# get address of inp$2 points to
-	ld t3, 1688(sp)
+	li t4, 1688
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8435,7 +9247,9 @@ mainEntry6:
 	# store inp$3 
 
 	# get address of inp$3 points to
-	ld t3, 1672(sp)
+	li t4, 1672
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8477,7 +9291,9 @@ mainEntry6:
 	# store inp$4 
 
 	# get address of inp$4 points to
-	ld t3, 1656(sp)
+	li t4, 1656
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8519,7 +9335,9 @@ mainEntry6:
 	# store inp$5 
 
 	# get address of inp$5 points to
-	ld t3, 1640(sp)
+	li t4, 1640
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8561,7 +9379,9 @@ mainEntry6:
 	# store inp$6 
 
 	# get address of inp$6 points to
-	ld t3, 1624(sp)
+	li t4, 1624
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8603,7 +9423,9 @@ mainEntry6:
 	# store inp$7 
 
 	# get address of inp$7 points to
-	ld t3, 1608(sp)
+	li t4, 1608
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8645,7 +9467,9 @@ mainEntry6:
 	# store inp$8 
 
 	# get address of inp$8 points to
-	ld t3, 1592(sp)
+	li t4, 1592
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8687,7 +9511,9 @@ mainEntry6:
 	# store inp$9 
 
 	# get address of inp$9 points to
-	ld t3, 1576(sp)
+	li t4, 1576
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8729,7 +9555,9 @@ mainEntry6:
 	# store inp$10 
 
 	# get address of inp$10 points to
-	ld t3, 1560(sp)
+	li t4, 1560
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8771,7 +9599,9 @@ mainEntry6:
 	# store inp$11 
 
 	# get address of inp$11 points to
-	ld t3, 1544(sp)
+	li t4, 1544
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8813,7 +9643,9 @@ mainEntry6:
 	# store inp$12 
 
 	# get address of inp$12 points to
-	ld t3, 1528(sp)
+	li t4, 1528
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8855,7 +9687,9 @@ mainEntry6:
 	# store inp$13 
 
 	# get address of inp$13 points to
-	ld t3, 1512(sp)
+	li t4, 1512
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8897,7 +9731,9 @@ mainEntry6:
 	# store inp$14 
 
 	# get address of inp$14 points to
-	ld t3, 1496(sp)
+	li t4, 1496
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8939,7 +9775,9 @@ mainEntry6:
 	# store inp$15 
 
 	# get address of inp$15 points to
-	ld t3, 1480(sp)
+	li t4, 1480
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -8981,7 +9819,9 @@ mainEntry6:
 	# store inp$16 
 
 	# get address of inp$16 points to
-	ld t3, 1464(sp)
+	li t4, 1464
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9023,7 +9863,9 @@ mainEntry6:
 	# store inp$17 
 
 	# get address of inp$17 points to
-	ld t3, 1448(sp)
+	li t4, 1448
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9065,7 +9907,9 @@ mainEntry6:
 	# store inp$18 
 
 	# get address of inp$18 points to
-	ld t3, 1432(sp)
+	li t4, 1432
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9107,7 +9951,9 @@ mainEntry6:
 	# store inp$19 
 
 	# get address of inp$19 points to
-	ld t3, 1416(sp)
+	li t4, 1416
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9149,7 +9995,9 @@ mainEntry6:
 	# store inp$20 
 
 	# get address of inp$20 points to
-	ld t3, 1400(sp)
+	li t4, 1400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9191,7 +10039,9 @@ mainEntry6:
 	# store inp$21 
 
 	# get address of inp$21 points to
-	ld t3, 1384(sp)
+	li t4, 1384
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9233,7 +10083,9 @@ mainEntry6:
 	# store inp$22 
 
 	# get address of inp$22 points to
-	ld t3, 1368(sp)
+	li t4, 1368
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9275,7 +10127,9 @@ mainEntry6:
 	# store inp$23 
 
 	# get address of inp$23 points to
-	ld t3, 1352(sp)
+	li t4, 1352
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9317,7 +10171,9 @@ mainEntry6:
 	# store inp$24 
 
 	# get address of inp$24 points to
-	ld t3, 1336(sp)
+	li t4, 1336
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9359,7 +10215,9 @@ mainEntry6:
 	# store inp$25 
 
 	# get address of inp$25 points to
-	ld t3, 1320(sp)
+	li t4, 1320
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9401,7 +10259,9 @@ mainEntry6:
 	# store inp$26 
 
 	# get address of inp$26 points to
-	ld t3, 1304(sp)
+	li t4, 1304
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9443,7 +10303,9 @@ mainEntry6:
 	# store inp$27 
 
 	# get address of inp$27 points to
-	ld t3, 1288(sp)
+	li t4, 1288
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9485,7 +10347,9 @@ mainEntry6:
 	# store inp$28 
 
 	# get address of inp$28 points to
-	ld t3, 1272(sp)
+	li t4, 1272
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9527,7 +10391,9 @@ mainEntry6:
 	# store inp$29 
 
 	# get address of inp$29 points to
-	ld t3, 1256(sp)
+	li t4, 1256
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9569,7 +10435,9 @@ mainEntry6:
 	# store inp$30 
 
 	# get address of inp$30 points to
-	ld t3, 1240(sp)
+	li t4, 1240
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9611,7 +10479,9 @@ mainEntry6:
 	# store inp$31 
 
 	# get address of inp$31 points to
-	ld t3, 1224(sp)
+	li t4, 1224
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9653,7 +10523,9 @@ mainEntry6:
 	# store inp$32 
 
 	# get address of inp$32 points to
-	ld t3, 1208(sp)
+	li t4, 1208
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9695,7 +10567,9 @@ mainEntry6:
 	# store inp$33 
 
 	# get address of inp$33 points to
-	ld t3, 1192(sp)
+	li t4, 1192
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9737,7 +10611,9 @@ mainEntry6:
 	# store inp$34 
 
 	# get address of inp$34 points to
-	ld t3, 1176(sp)
+	li t4, 1176
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9779,7 +10655,9 @@ mainEntry6:
 	# store inp$35 
 
 	# get address of inp$35 points to
-	ld t3, 1160(sp)
+	li t4, 1160
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9821,7 +10699,9 @@ mainEntry6:
 	# store inp$36 
 
 	# get address of inp$36 points to
-	ld t3, 1144(sp)
+	li t4, 1144
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9863,7 +10743,9 @@ mainEntry6:
 	# store inp$37 
 
 	# get address of inp$37 points to
-	ld t3, 1128(sp)
+	li t4, 1128
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9905,7 +10787,9 @@ mainEntry6:
 	# store inp$38 
 
 	# get address of inp$38 points to
-	ld t3, 1112(sp)
+	li t4, 1112
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9947,7 +10831,9 @@ mainEntry6:
 	# store inp$39 
 
 	# get address of inp$39 points to
-	ld t3, 1096(sp)
+	li t4, 1096
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -9989,7 +10875,9 @@ mainEntry6:
 	# store inp$40 
 
 	# get address of inp$40 points to
-	ld t3, 1080(sp)
+	li t4, 1080
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10031,7 +10919,9 @@ mainEntry6:
 	# store inp$41 
 
 	# get address of inp$41 points to
-	ld t3, 1064(sp)
+	li t4, 1064
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10073,7 +10963,9 @@ mainEntry6:
 	# store inp$42 
 
 	# get address of inp$42 points to
-	ld t3, 1048(sp)
+	li t4, 1048
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10115,7 +11007,9 @@ mainEntry6:
 	# store inp$43 
 
 	# get address of inp$43 points to
-	ld t3, 1032(sp)
+	li t4, 1032
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10157,7 +11051,9 @@ mainEntry6:
 	# store inp$44 
 
 	# get address of inp$44 points to
-	ld t3, 1016(sp)
+	li t4, 1016
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10199,7 +11095,9 @@ mainEntry6:
 	# store inp$45 
 
 	# get address of inp$45 points to
-	ld t3, 1000(sp)
+	li t4, 1000
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10241,7 +11139,9 @@ mainEntry6:
 	# store inp$46 
 
 	# get address of inp$46 points to
-	ld t3, 984(sp)
+	li t4, 984
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10283,7 +11183,9 @@ mainEntry6:
 	# store inp$47 
 
 	# get address of inp$47 points to
-	ld t3, 968(sp)
+	li t4, 968
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10325,7 +11227,9 @@ mainEntry6:
 	# store inp$48 
 
 	# get address of inp$48 points to
-	ld t3, 952(sp)
+	li t4, 952
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10367,7 +11271,9 @@ mainEntry6:
 	# store inp$49 
 
 	# get address of inp$49 points to
-	ld t3, 936(sp)
+	li t4, 936
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10409,7 +11315,9 @@ mainEntry6:
 	# store inp$50 
 
 	# get address of inp$50 points to
-	ld t3, 920(sp)
+	li t4, 920
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10451,7 +11359,9 @@ mainEntry6:
 	# store inp$51 
 
 	# get address of inp$51 points to
-	ld t3, 904(sp)
+	li t4, 904
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10493,7 +11403,9 @@ mainEntry6:
 	# store inp$52 
 
 	# get address of inp$52 points to
-	ld t3, 888(sp)
+	li t4, 888
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10535,7 +11447,9 @@ mainEntry6:
 	# store inp$53 
 
 	# get address of inp$53 points to
-	ld t3, 872(sp)
+	li t4, 872
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10577,7 +11491,9 @@ mainEntry6:
 	# store inp$54 
 
 	# get address of inp$54 points to
-	ld t3, 856(sp)
+	li t4, 856
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10619,7 +11535,9 @@ mainEntry6:
 	# store inp$55 
 
 	# get address of inp$55 points to
-	ld t3, 840(sp)
+	li t4, 840
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10661,7 +11579,9 @@ mainEntry6:
 	# store inp$56 
 
 	# get address of inp$56 points to
-	ld t3, 824(sp)
+	li t4, 824
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10703,7 +11623,9 @@ mainEntry6:
 	# store inp$57 
 
 	# get address of inp$57 points to
-	ld t3, 808(sp)
+	li t4, 808
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10745,7 +11667,9 @@ mainEntry6:
 	# store inp$58 
 
 	# get address of inp$58 points to
-	ld t3, 792(sp)
+	li t4, 792
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10787,7 +11711,9 @@ mainEntry6:
 	# store inp$59 
 
 	# get address of inp$59 points to
-	ld t3, 776(sp)
+	li t4, 776
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10829,7 +11755,9 @@ mainEntry6:
 	# store inp$60 
 
 	# get address of inp$60 points to
-	ld t3, 760(sp)
+	li t4, 760
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10871,7 +11799,9 @@ mainEntry6:
 	# store inp$61 
 
 	# get address of inp$61 points to
-	ld t3, 744(sp)
+	li t4, 744
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10913,7 +11843,9 @@ mainEntry6:
 	# store inp$62 
 
 	# get address of inp$62 points to
-	ld t3, 728(sp)
+	li t4, 728
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10955,7 +11887,9 @@ mainEntry6:
 	# store inp$63 
 
 	# get address of inp$63 points to
-	ld t3, 712(sp)
+	li t4, 712
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10967,7 +11901,9 @@ mainEntry6:
 	# store lv$1 
 
 	# get address of lv$1 points to
-	ld t3, 2400(sp)
+	li t4, 2400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
@@ -10978,7 +11914,9 @@ whileCond_9:
 	# load i lv$1
 
 	# get address of lv$1 points to
-	ld t3, 2400(sp)
+	li t4, 2400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:i
@@ -11027,7 +11965,9 @@ whileBody_9:
 	# load i$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 2400(sp)
+	li t4, 2400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:i$1
@@ -11067,7 +12007,9 @@ whileBody_9:
 	# load i$2 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 2400(sp)
+	li t4, 2400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:i$2
@@ -11117,7 +12059,9 @@ whileBody_9:
 	# load arr$2 arr$1
 
 	# get address of arr$1 points to
-	ld t3, 624(sp)
+	li t4, 624
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$2
@@ -11142,14 +12086,18 @@ whileBody_9:
 	# store arr result_$1
 
 	# get address of arr points to
-	ld t3, 656(sp)
+	li t4, 656
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load i$3 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 2400(sp)
+	li t4, 2400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:i$3
@@ -11189,7 +12137,9 @@ whileBody_9:
 	# load i$4 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 2400(sp)
+	li t4, 2400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:i$4
@@ -11239,7 +12189,9 @@ whileBody_9:
 	# load arr$5 arr$4
 
 	# get address of arr$4 points to
-	ld t3, 552(sp)
+	li t4, 552
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:arr$5
@@ -11264,14 +12216,18 @@ whileBody_9:
 	# store arr$3 result_$3
 
 	# get address of arr$3 points to
-	ld t3, 584(sp)
+	li t4, 584
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
 	# load i$5 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 2400(sp)
+	li t4, 2400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 
 	# get address of local var:i$5
@@ -11296,7 +12252,9 @@ whileBody_9:
 	# store lv$1 result_$4
 
 	# get address of lv$1 points to
-	ld t3, 2400(sp)
+	li t4, 2400
+	addi t4, sp, t4
+	ld t3, 0(t4)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 

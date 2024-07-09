@@ -1,6 +1,7 @@
 package cn.edu.nju.software.backend.regalloc;
 
 import cn.edu.nju.software.backend.RiscInstrGenerator;
+import cn.edu.nju.software.backend.riscinstruction.RiscAdd;
 import cn.edu.nju.software.backend.riscinstruction.RiscAddi;
 import cn.edu.nju.software.backend.riscinstruction.RiscLa;
 import cn.edu.nju.software.backend.riscinstruction.RiscLd;
@@ -25,8 +26,7 @@ import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
-import javax.swing.*;
-import java.net.URISyntaxException;
+import java.io.PrintStream;
 
 public class Allocator {
 
@@ -88,13 +88,17 @@ public class Allocator {
 
     private void prepareALocal(LocalVar localVar, int i){
         if (localVar.getType() instanceof FloatType) {
-            generator.addInstruction(new RiscFld(new Register("ft" + i), new IndirectRegister("sp", memoryManager.getOffset(localVar))));
+            mvAddrWithBigOffsetIntoReg(memoryManager.getOffset(localVar), "sp", "t4");
+            generator.addInstruction(new RiscFld(new Register("ft" + i), new IndirectRegister("t4", 0)));
         } else if (localVar.getType() instanceof IntType) {
-            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("sp", memoryManager.getOffset(localVar))));
+            mvAddrWithBigOffsetIntoReg(memoryManager.getOffset(localVar), "sp", "t4");
+            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t4", 0)));
         } else if (localVar.getType() instanceof BoolType) {
-            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("sp", memoryManager.getOffset(localVar))));
+            mvAddrWithBigOffsetIntoReg(memoryManager.getOffset(localVar), "sp", "t4");
+            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t4", 0)));
         } else if(localVar.getType() instanceof Pointer){
-            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("sp", memoryManager.getOffset(localVar))));
+            mvAddrWithBigOffsetIntoReg(memoryManager.getOffset(localVar), "sp", "t4");
+            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t4", 0)));
         } else {
             assert false;
         }
@@ -114,10 +118,16 @@ public class Allocator {
     }
 
 
+    //todo不知道为什么这里修改就报错
     public Operand getAddrOfLocalVar(ValueRef variable) {
         generator.insertComment("get address of local var:" + variable.getName());
         if (variable instanceof LocalVar) {
-            return new IndirectRegister("sp", memoryManager.getOffset(variable));
+            if(memoryManager.getOffset(variable) >= 1000){
+                mvAddrWithBigOffsetIntoReg(memoryManager.getOffset(variable), "sp", "t4");
+                return new IndirectRegister("t4", 0);
+            }else{
+                return new IndirectRegister("sp", memoryManager.getOffset(variable));
+            }
         } else {
             assert false;
             return null;
@@ -143,7 +153,8 @@ public class Allocator {
             return new Register("t3");
         } else if (variable instanceof LocalVar) {
             generator.insertComment("get value of local var:" + variable.getName());
-            generator.addInstruction(new RiscLd(new Register("t3"), new IndirectRegister("sp", memoryManager.getOffset(variable))));
+            mvAddrWithBigOffsetIntoReg(memoryManager.getOffset(variable), "sp", "t4");
+            generator.addInstruction(new RiscLd(new Register("t3"), new IndirectRegister("t4", 0)));
             return new Register("t3");
         } else {
             assert false;
@@ -155,30 +166,38 @@ public class Allocator {
         generator.insertComment("get address of " + variable.getName() + " points to");
         if (variable instanceof GlobalVar) {
             generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(variable.getName()))));
-            generator.addInstruction(new RiscAddi(new Register("t3"), new Register("t3"), new ImmediateValue(offset)));
-            return new IndirectRegister("t3", 0);
+            mvAddrWithBigOffsetIntoReg(offset, "t3", "t4");
+            return new IndirectRegister("t4", 0);
         } else if (variable instanceof LocalVar) {
-            generator.addInstruction(new RiscLd(new Register("t3"), new IndirectRegister("sp", memoryManager.getOffset(variable))));
-            generator.addInstruction(new RiscAddi(new Register("t3"), new Register("t3"), new ImmediateValue(offset)));
-            return new IndirectRegister("t3",0);
+            mvAddrWithBigOffsetIntoReg(memoryManager.getOffset(variable), "sp", "t4");
+            generator.addInstruction(new RiscLd(new Register("t3"), new IndirectRegister("t4", 0)));
+            mvAddrWithBigOffsetIntoReg(offset, "t3", "t4");
+            return new IndirectRegister("t4",0);
         } else {
             assert false;
             return null;
         }
     }
 
-    public Operand getAddrOfVarWithOffsetIntoReg(ValueRef variable, String regName, int offset) {
-        generator.insertComment("get address of " + variable.getName() + " into " + regName);
-        if (variable instanceof GlobalVar) {
-            return new RiscLabelAddress(new RiscLabel(variable.getName()));
-        } else if (variable instanceof LocalVar) {
-            generator.addInstruction(new RiscAddi(new Register(regName), new Register("sp"), new ImmediateValue(memoryManager.getOffset(variable))));
-            generator.addInstruction(new RiscAddi(new Register(regName), new Register(regName), new ImmediateValue(offset)));
-            return new IndirectRegister(regName, 0);
-        } else {
-            assert false;
-            return null;
-        }
+//    @Deprecated
+//    public Operand getAddrOfVarWithOffsetIntoReg(ValueRef variable, String regName, int offset) {
+//        generator.insertComment("get address of " + variable.getName() + " into " + regName);
+//        if (variable instanceof GlobalVar) {
+//            return new RiscLabelAddress(new RiscLabel(variable.getName()));
+//        } else if (variable instanceof LocalVar) {
+//            generator.addInstruction(new RiscAddi(new Register(regName), new Register("sp"), new ImmediateValue(memoryManager.getOffset(variable))));
+//            generator.addInstruction(new RiscAddi(new Register(regName), new Register(regName), new ImmediateValue(offset)));
+//            return new IndirectRegister(regName, 0);
+//        } else {
+//            assert false;
+//            return null;
+//        }
+//    }
+//
+    public void mvAddrWithBigOffsetIntoReg(int offset, String srcReg, String destReg) {
+        assert !srcReg.equals(destReg);// not same
+        generator.addInstruction(new RiscLi(new Register(destReg), new ImmediateValue(offset)));
+        generator.addInstruction(new RiscAdd(new Register(destReg), new Register(srcReg), new Register(destReg)));
     }
 
     public int getOffset(ValueRef var) {

@@ -181,7 +181,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         } else{
             typeLen = 8;
         }
-        riscInstructions.add(new RiscAddi(new Register("t0"), new Register("sp"), new ImmediateValue(allocator.getOffset(allocate.getLVal()) - typeLen)));
+        allocator.mvAddrWithBigOffsetIntoReg(allocator.getOffset(allocate.getLVal()) - typeLen, "sp", "t0");
         riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(allocate.getLVal())));
     }
 
@@ -557,7 +557,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
         allocator.prepareVariable(retVal);
 
         riscInstructions.add(new RiscMv(new Register("a0"), new Register("t1")));
-        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(allocator.getStackSize())));
+        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(allocator.getStackSize())));
+        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
 
         if (!llvmFunctionValue.getName().equals("main")) {
             restoreCalleeSavedRegs();
@@ -570,7 +571,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
     public void visit(RetVoid retVoid) {
         insertComment("ret void");
 
-        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(allocator.getStackSize())));
+        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(allocator.getStackSize())));
+        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
 
         if (!llvmFunctionValue.getName().equals("main")) {
             restoreCalleeSavedRegs();
