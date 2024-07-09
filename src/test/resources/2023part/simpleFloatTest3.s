@@ -6,54 +6,63 @@
 .globl main
 main:
 mainEntry6:
-	addi sp, sp, -32
+	addi sp, sp, -40
 
 	# reserve space
 
 	# save the parameters
 
+	# allocate lv$1
+	addi t0, sp, 24
+
+	# get address of local var:lv$1
+	sd t0, 32(sp)
+
 	# allocate lv
-	addi t0, sp, 16
+	addi t0, sp, 8
 
 	# get address of local var:lv
-	sd t0, 24(sp)
+	sd t0, 16(sp)
 
 	# lv 
 
 	# fetch variables
-	li t1, 0x3ff4ccccc0000000
+	li t1, 0x3ff4cccccccccccd
 	fmv.d.x ft1, t1
 
 	# store lv 
 
 	# get address of lv points to
-	ld t3, 24(sp)
+	ld t3, 16(sp)
 	addi t3, t3, 0
 	fsd ft1, 0(t3)
 
-	# load a lv
-
-	# get address of lv points to
-	ld t3, 24(sp)
-	addi t3, t3, 0
-
-	# get address of local var:a
-	ld t0, 0(t3)
-	fsd ft0, 8(sp)
-
-	# floatToInt retVal_ a
+	# lv$1 
 
 	# fetch variables
-	fld ft1, 8(sp)
+	li t1, 1
 
-	# get address of local var:retVal_
-	fcvt.l.d t0, ft1
+	# store lv$1 
+
+	# get address of lv$1 points to
+	ld t3, 32(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# load b lv$1
+
+	# get address of lv$1 points to
+	ld t3, 32(sp)
+	addi t3, t3, 0
+
+	# get address of local var:b
+	ld t0, 0(t3)
 	sd t0, 0(sp)
 
-	# ret retVal_
+	# ret b
 
 	# fetch variables
 	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 32
+	addi sp, sp, 40
 	ret 

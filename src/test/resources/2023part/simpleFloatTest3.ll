@@ -20,7 +20,7 @@ define i32 @main() {
 mainEntry6:
   %lv$1 = alloca i32, align 4
   %lv = alloca float, align 4
-  store float 0x3ff4cccccccccccd, float* %lv, align 4
+  store float 0x3ff4ccccc0000000, float* %lv, align 4
   store i32 1, i32* %lv$1, align 4
   %b = load i32, i32* %lv$1, align 4
   ret i32 %b

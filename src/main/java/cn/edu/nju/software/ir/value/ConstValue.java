@@ -59,16 +59,11 @@ public class ConstValue extends ValueRef {
 
     public String toString() {
         if (type instanceof IntType){
-            if (value instanceof Integer) {
-                return value.toString();
-            } else {
-                // Float
-                return (int)((Float) value).floatValue() + "";
-            }
+            return value.toString();
         } else if (type instanceof BoolType) {
             return value.toString();
         } else if (type instanceof FloatType) {
-            long floatBits = Double.doubleToRawLongBits(Double.parseDouble(value.toString()));
+            long floatBits = Double.doubleToRawLongBits((Float)value);
             String hex = Long.toHexString(floatBits);
             return "0x" + hex;
         } else {
