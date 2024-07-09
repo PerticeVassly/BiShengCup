@@ -88,7 +88,6 @@ public class RiscBasicBlock {
                         ((floatTypeCount > RiscSpecifications.getFArgRegs().length) ? (floatTypeCount - RiscSpecifications.getFArgRegs().length) : 0)  +
                         (RiscSpecifications.getCallerSavedRegs().length)
                     ) * 8 ;
-        System.out.println("preLen: " + preLen);
 
         //获取所有intType和PointerType的参数个数
 
