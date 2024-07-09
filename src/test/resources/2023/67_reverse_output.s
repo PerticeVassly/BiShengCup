@@ -6,19 +6,19 @@
 .globl reverse
 reverse:
 reverseEntry:
-
-	# reserve space
 	addi sp, sp, -120
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 112(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 112(sp)
+	# get address of local var:0
 
 	# allocate lv$1
 	addi t0, sp, 96
@@ -259,10 +259,10 @@ next_443:
 .type main, @function
 .globl main
 main:
-mainEntry53:
+mainEntry54:
+	addi sp, sp, -24
 
 	# reserve space
-	addi sp, sp, -24
 
 	# save the parameters
 

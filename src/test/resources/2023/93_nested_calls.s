@@ -6,25 +6,25 @@
 .globl func1
 func1:
 func1Entry:
-
-	# reserve space
 	addi sp, sp, -168
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 160(sp)
+	sd a1, 152(sp)
+	sd a2, 144(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 160(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 152(sp)
+	# get address of local var:1
 
-	# get address of 2 into 
-	sd a2, 144(sp)
+	# get address of local var:2
 
 	# allocate lv$2
 	addi t0, sp, 128
@@ -254,22 +254,22 @@ ifFalse_111:
 .globl func2
 func2:
 func2Entry:
-
-	# reserve space
 	addi sp, sp, -104
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 96(sp)
+	sd a1, 88(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 96(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 88(sp)
+	# get address of local var:1
 
 	# allocate lv$1
 	addi t0, sp, 72
@@ -427,22 +427,22 @@ ifFalse_112:
 .globl func3
 func3:
 func3Entry:
-
-	# reserve space
 	addi sp, sp, -128
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 120(sp)
+	sd a1, 112(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 120(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 112(sp)
+	# get address of local var:1
 
 	# allocate lv$1
 	addi t0, sp, 96
@@ -630,25 +630,25 @@ ifFalse_113:
 .globl func4
 func4:
 func4Entry:
-
-	# reserve space
 	addi sp, sp, -104
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 96(sp)
+	sd a1, 88(sp)
+	sd a2, 80(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 96(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 88(sp)
+	# get address of local var:1
 
-	# get address of 2 into 
-	sd a2, 80(sp)
+	# get address of local var:2
 
 	# allocate lv$2
 	addi t0, sp, 64
@@ -780,19 +780,19 @@ ifFalse_114:
 .globl func5
 func5:
 func5Entry:
-
-	# reserve space
 	addi sp, sp, -40
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 32(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 32(sp)
+	# get address of local var:0
 
 	# allocate lv
 	addi t0, sp, 16
@@ -846,22 +846,22 @@ func5Entry:
 .globl func6
 func6:
 func6Entry:
-
-	# reserve space
 	addi sp, sp, -80
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 72(sp)
+	sd a1, 64(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 72(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 64(sp)
+	# get address of local var:1
 
 	# allocate lv$1
 	addi t0, sp, 48
@@ -985,19 +985,19 @@ secondCond_92:
 .globl func7
 func7:
 func7Entry:
-
-	# reserve space
 	addi sp, sp, -64
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 56(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 56(sp)
+	# get address of local var:0
 
 	# allocate lv
 	addi t0, sp, 40
@@ -1105,10 +1105,10 @@ ifFalse_116:
 .type main, @function
 .globl main
 main:
-mainEntry68:
+mainEntry69:
+	addi sp, sp, -960
 
 	# reserve space
-	addi sp, sp, -960
 
 	# save the parameters
 
@@ -1348,11 +1348,11 @@ whileBody_199:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr into 
+	# get address of local var:arr
 	sd t0, 696(sp)
 
 	# prepare params
@@ -1598,11 +1598,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$1 into 
+	# get address of local var:arr$1
 	sd t0, 584(sp)
 
 	# load arr$2 arr$1
@@ -1622,11 +1622,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$3 into 
+	# get address of local var:arr$3
 	sd t0, 568(sp)
 
 	# load arr$4 arr$3
@@ -1666,11 +1666,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$5 into 
+	# get address of local var:arr$5
 	sd t0, 544(sp)
 
 	# load arr$6 arr$5
@@ -1690,11 +1690,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$7 into 
+	# get address of local var:arr$7
 	sd t0, 528(sp)
 
 	# load arr$8 arr$7
@@ -1758,11 +1758,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$9 into 
+	# get address of local var:arr$9
 	sd t0, 496(sp)
 
 	# load arr$10 arr$9
@@ -1782,11 +1782,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$11 into 
+	# get address of local var:arr$11
 	sd t0, 480(sp)
 
 	# load arr$12 arr$11
@@ -1878,11 +1878,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$13 into 
+	# get address of local var:arr$13
 	sd t0, 440(sp)
 
 	# load arr$14 arr$13
@@ -1926,11 +1926,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$15 into 
+	# get address of local var:arr$15
 	sd t0, 416(sp)
 
 	# load arr$16 arr$15
@@ -1974,11 +1974,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$17 into 
+	# get address of local var:arr$17
 	sd t0, 392(sp)
 
 	# load arr$18 arr$17
@@ -1998,11 +1998,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$19 into 
+	# get address of local var:arr$19
 	sd t0, 376(sp)
 
 	# load arr$20 arr$19
@@ -2254,11 +2254,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$21 into 
+	# get address of local var:arr$21
 	sd t0, 264(sp)
 
 	# load arr$22 arr$21
@@ -2278,11 +2278,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$23 into 
+	# get address of local var:arr$23
 	sd t0, 248(sp)
 
 	# load arr$24 arr$23
@@ -2330,11 +2330,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$25 into 
+	# get address of local var:arr$25
 	sd t0, 224(sp)
 
 	# load arr$26 arr$25
@@ -2378,11 +2378,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$27 into 
+	# get address of local var:arr$27
 	sd t0, 200(sp)
 
 	# load arr$28 arr$27
@@ -2402,11 +2402,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$29 into 
+	# get address of local var:arr$29
 	sd t0, 184(sp)
 
 	# load arr$30 arr$29
@@ -2426,11 +2426,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$31 into 
+	# get address of local var:arr$31
 	sd t0, 168(sp)
 
 	# load arr$32 arr$31
@@ -2494,11 +2494,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$33 into 
+	# get address of local var:arr$33
 	sd t0, 136(sp)
 
 	# load arr$34 arr$33
@@ -2562,11 +2562,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$35 into 
+	# get address of local var:arr$35
 	sd t0, 104(sp)
 
 	# load arr$36 arr$35
@@ -2586,11 +2586,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$37 into 
+	# get address of local var:arr$37
 	sd t0, 88(sp)
 
 	# load arr$38 arr$37
@@ -2658,11 +2658,11 @@ next_483:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of arr$39 into 
+	# get address of local var:arr$39
 	sd t0, 56(sp)
 
 	# load arr$40 arr$39

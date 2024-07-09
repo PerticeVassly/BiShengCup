@@ -11,17 +11,13 @@ import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.backend.regalloc.Allocator;
-import cn.edu.nju.software.frontend.type.Type;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 
-import java.lang.invoke.TypeDescriptor;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.spi.ToolProvider;
-import java.util.stream.Stream;
 
 public class RiscBasicBlock {
 
@@ -59,7 +55,9 @@ public class RiscBasicBlock {
         }
 
         generator.insertComment("save the parameters");
-        saveParams();
+        if(!llvmFunctionValue.getName().equals("main")){
+            saveParams();
+        }
     }
 
     //todo()这里只能处理RiscSpecifications中arg数组指定的参数个数
@@ -70,22 +68,27 @@ public class RiscBasicBlock {
 
         // 获取所有 IntType 和 FloatType 的参数个数
         int intTypeAndFloatTypeCount = functionType.getFParameters().stream()
-                .filter(typeRef -> typeRef instanceof IntType || typeRef instanceof FloatType)
+                .filter(IntType.class::isInstance)
                 .mapToInt(typeRef -> 1)
                 .sum();
         int floatTypeCount = functionType.getFParameters().stream()
-                .filter(typeRef -> typeRef instanceof FloatType)
+                .filter(FloatType.class::isInstance)
                 .mapToInt(typeRef -> 1)
                 .sum();
 
         int pointerTypeCount = functionType.getFParameters().stream()
-                .filter(typeRef -> typeRef instanceof Pointer)
+                .filter(Pointer.class::isInstance)
                 .mapToInt(typeRef -> 1)
                 .sum();
 
         int intAndPointerCount = intTypeAndFloatTypeCount + pointerTypeCount;
 
-        int preLen = (intAndPointerCount - RiscSpecifications.getArgRegs().length + floatTypeCount - RiscSpecifications.getFArgRegs().length ) * 8;
+        int preLen = (
+                        ((intAndPointerCount > RiscSpecifications.getArgRegs().length) ? (intAndPointerCount - RiscSpecifications.getArgRegs().length) : 0) +
+                        ((floatTypeCount > RiscSpecifications.getFArgRegs().length) ? (floatTypeCount - RiscSpecifications.getFArgRegs().length) : 0)  +
+                        (RiscSpecifications.getCallerSavedRegs().length)
+                    ) * 8 ;
+        System.out.println("preLen: " + preLen);
 
         //获取所有intType和PointerType的参数个数
 
@@ -117,7 +120,7 @@ public class RiscBasicBlock {
     private void fetchFromStack(TypeRef type, int i, int preLen) {
         if (type instanceof IntType || type instanceof Pointer) {
             riscInstructions.add(new RiscLd(new Register("t3"), new IndirectRegister("sp", allocator.getStackSize() + preLen)));
-            riscInstructions.add(new RiscSd(new Register("t3"), new IndirectRegister("t3", allocator.getOffset(new LocalVar(type, i + "")))));
+            riscInstructions.add(new RiscSd(new Register("t3"), new IndirectRegister("sp", allocator.getOffset(new LocalVar(type, i + "")))));
         } else if (type instanceof FloatType) {
             riscInstructions.add(new RiscFld(new Register("ft3"), new IndirectRegister("sp", allocator.getStackSize() + preLen)));
             riscInstructions.add(new RiscFsd(new Register("ft3"), new IndirectRegister("sp", allocator.getOffset(new LocalVar(type, i + "")))));

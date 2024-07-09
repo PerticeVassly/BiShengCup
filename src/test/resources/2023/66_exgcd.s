@@ -6,28 +6,28 @@
 .globl exgcd
 exgcd:
 exgcdEntry:
-
-	# reserve space
 	addi sp, sp, -416
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 408(sp)
+	sd a1, 400(sp)
+	sd a2, 392(sp)
+	sd a3, 384(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 408(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 400(sp)
+	# get address of local var:1
 
-	# get address of 2 into 
-	sd a2, 392(sp)
+	# get address of local var:2
 
-	# get address of 3 into 
-	sd a3, 384(sp)
+	# get address of local var:3
 
 	# allocate lv$5
 	addi t0, sp, 368
@@ -180,11 +180,11 @@ ifTrue_49:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_ into 
+	# get address of local var:arr_
 	ld t1, 248(sp)
 	add t0, t1, t0
 
-	# get address of x into 
+	# get address of local var:x
 	sd t0, 240(sp)
 
 	# x 
@@ -216,11 +216,11 @@ ifTrue_49:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$1 into 
+	# get address of local var:arr_$1
 	ld t1, 232(sp)
 	add t0, t1, t0
 
-	# get address of y into 
+	# get address of local var:y
 	sd t0, 224(sp)
 
 	# y 
@@ -327,11 +327,13 @@ ifFalse_17:
 	ld t1, 184(sp)
 	mv a1, t1
 
-	# get address of local var:x$1
-	ld a2, 176(sp)
+	# fetch variables
+	ld t1, 176(sp)
+	mv a2, t1
 
-	# get address of local var:y$1
-	ld a3, 168(sp)
+	# fetch variables
+	ld t1, 168(sp)
+	mv a3, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -376,11 +378,11 @@ ifFalse_17:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$2 into 
+	# get address of local var:arr_$2
 	ld t1, 152(sp)
 	add t0, t1, t0
 
-	# get address of x$2 into 
+	# get address of local var:x$2
 	sd t0, 144(sp)
 
 	# load x$3 x$2
@@ -422,11 +424,11 @@ ifFalse_17:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$3 into 
+	# get address of local var:arr_$3
 	ld t1, 128(sp)
 	add t0, t1, t0
 
-	# get address of x$4 into 
+	# get address of local var:x$4
 	sd t0, 120(sp)
 
 	# load arr_$4 lv$3
@@ -446,11 +448,11 @@ ifFalse_17:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$4 into 
+	# get address of local var:arr_$4
 	ld t1, 112(sp)
 	add t0, t1, t0
 
-	# get address of y$2 into 
+	# get address of local var:y$2
 	sd t0, 104(sp)
 
 	# load y$3 y$2
@@ -492,11 +494,11 @@ ifFalse_17:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$5 into 
+	# get address of local var:arr_$5
 	ld t1, 88(sp)
 	add t0, t1, t0
 
-	# get address of y$4 into 
+	# get address of local var:y$4
 	sd t0, 80(sp)
 
 	# load t lv$5
@@ -556,11 +558,11 @@ ifFalse_17:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$6 into 
+	# get address of local var:arr_$6
 	ld t1, 40(sp)
 	add t0, t1, t0
 
-	# get address of y$5 into 
+	# get address of local var:y$5
 	sd t0, 32(sp)
 
 	# load y$6 y$5
@@ -628,10 +630,10 @@ ifFalse_17:
 .type main, @function
 .globl main
 main:
-mainEntry37:
+mainEntry38:
+	addi sp, sp, -208
 
 	# reserve space
-	addi sp, sp, -208
 
 	# save the parameters
 
@@ -690,11 +692,11 @@ mainEntry37:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 184(sp)
 	add t0, t1, t0
 
-	# get address of inp into 
+	# get address of local var:inp
 	sd t0, 136(sp)
 
 	# inp 
@@ -716,11 +718,11 @@ mainEntry37:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$3 into 
+	# get address of local var:lv$3
 	ld t1, 200(sp)
 	add t0, t1, t0
 
-	# get address of inp$1 into 
+	# get address of local var:inp$1
 	sd t0, 128(sp)
 
 	# inp$1 
@@ -762,11 +764,11 @@ mainEntry37:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 184(sp)
 	add t0, t1, t0
 
-	# get address of x into 
+	# get address of local var:x
 	sd t0, 104(sp)
 
 	# gep y 
@@ -776,11 +778,11 @@ mainEntry37:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$3 into 
+	# get address of local var:lv$3
 	ld t1, 200(sp)
 	add t0, t1, t0
 
-	# get address of y into 
+	# get address of local var:y
 	sd t0, 96(sp)
 
 	# prepare params
@@ -793,11 +795,13 @@ mainEntry37:
 	ld t1, 112(sp)
 	mv a1, t1
 
-	# get address of local var:x
-	ld a2, 104(sp)
+	# fetch variables
+	ld t1, 104(sp)
+	mv a2, t1
 
-	# get address of local var:y
-	ld a3, 96(sp)
+	# fetch variables
+	ld t1, 96(sp)
+	mv a3, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -820,11 +824,11 @@ mainEntry37:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 184(sp)
 	add t0, t1, t0
 
-	# get address of x$1 into 
+	# get address of local var:x$1
 	sd t0, 80(sp)
 
 	# gep x$2 
@@ -834,11 +838,11 @@ mainEntry37:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 184(sp)
 	add t0, t1, t0
 
-	# get address of x$2 into 
+	# get address of local var:x$2
 	sd t0, 72(sp)
 
 	# load x$3 x$2
@@ -930,11 +934,11 @@ mainEntry37:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 184(sp)
 	add t0, t1, t0
 
-	# get address of x$4 into 
+	# get address of local var:x$4
 	sd t0, 8(sp)
 
 	# load x$5 x$4

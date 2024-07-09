@@ -63,7 +63,7 @@ mainEntry2:
 	addi t3, t3, 0
 
 	# get address of local var:a
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 16(sp)
 
 	# load b lv$1
@@ -73,7 +73,7 @@ mainEntry2:
 	addi t3, t3, 0
 
 	# get address of local var:b
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 8(sp)
 
 	# fadd result_ a b

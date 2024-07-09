@@ -9,19 +9,19 @@ gv:
 .globl bubblesort
 bubblesort:
 bubblesortEntry:
-
-	# reserve space
 	addi sp, sp, -448
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 440(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 440(sp)
+	# get address of local var:0
 
 	# allocate lv$3
 	addi t0, sp, 424
@@ -288,11 +288,11 @@ whileBody_26:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_ into 
+	# get address of local var:arr_
 	ld t1, 248(sp)
 	add t0, t1, t0
 
-	# get address of arr into 
+	# get address of local var:arr
 	sd t0, 240(sp)
 
 	# load arr$1 arr
@@ -342,11 +342,11 @@ whileBody_26:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$1 into 
+	# get address of local var:arr_$1
 	ld t1, 208(sp)
 	add t0, t1, t0
 
-	# get address of arr$2 into 
+	# get address of local var:arr$2
 	sd t0, 200(sp)
 
 	# load arr$3 arr$2
@@ -472,11 +472,11 @@ ifTrue_17:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$2 into 
+	# get address of local var:arr_$2
 	ld t1, 128(sp)
 	add t0, t1, t0
 
-	# get address of arr$4 into 
+	# get address of local var:arr$4
 	sd t0, 120(sp)
 
 	# load arr$5 arr$4
@@ -538,11 +538,11 @@ ifTrue_17:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$3 into 
+	# get address of local var:arr_$3
 	ld t1, 88(sp)
 	add t0, t1, t0
 
-	# get address of arr$6 into 
+	# get address of local var:arr$6
 	sd t0, 80(sp)
 
 	# load j$5 lv$2
@@ -572,11 +572,11 @@ ifTrue_17:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$4 into 
+	# get address of local var:arr_$4
 	ld t1, 64(sp)
 	add t0, t1, t0
 
-	# get address of arr$7 into 
+	# get address of local var:arr$7
 	sd t0, 56(sp)
 
 	# load arr$8 arr$7
@@ -628,11 +628,11 @@ ifTrue_17:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$5 into 
+	# get address of local var:arr_$5
 	ld t1, 32(sp)
 	add t0, t1, t0
 
-	# get address of arr$9 into 
+	# get address of local var:arr$9
 	sd t0, 24(sp)
 
 	# load tmp lv$3
@@ -699,19 +699,19 @@ next_44:
 .globl insertsort
 insertsort:
 insertsortEntry:
-
-	# reserve space
 	addi sp, sp, -392
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 384(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 384(sp)
+	# get address of local var:0
 
 	# allocate lv$3
 	addi t0, sp, 368
@@ -851,11 +851,11 @@ whileBody_27:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_ into 
+	# get address of local var:arr_
 	ld t1, 264(sp)
 	add t0, t1, t0
 
-	# get address of a into 
+	# get address of local var:a
 	sd t0, 256(sp)
 
 	# load a$1 a
@@ -1015,11 +1015,11 @@ whileBody_28:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$2 into 
+	# get address of local var:arr_$2
 	ld t1, 176(sp)
 	add t0, t1, t0
 
-	# get address of a$4 into 
+	# get address of local var:a$4
 	sd t0, 168(sp)
 
 	# load j$3 lv$3
@@ -1049,11 +1049,11 @@ whileBody_28:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$3 into 
+	# get address of local var:arr_$3
 	ld t1, 152(sp)
 	add t0, t1, t0
 
-	# get address of a$5 into 
+	# get address of local var:a$5
 	sd t0, 144(sp)
 
 	# load a$6 a$5
@@ -1151,11 +1151,11 @@ next_46:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$4 into 
+	# get address of local var:arr_$4
 	ld t1, 96(sp)
 	add t0, t1, t0
 
-	# get address of a$7 into 
+	# get address of local var:a$7
 	sd t0, 88(sp)
 
 	# load temp$1 lv$2
@@ -1253,11 +1253,11 @@ secondCond_2:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$1 into 
+	# get address of local var:arr_$1
 	ld t1, 40(sp)
 	add t0, t1, t0
 
-	# get address of a$2 into 
+	# get address of local var:a$2
 	sd t0, 32(sp)
 
 	# load a$3 a$2
@@ -1311,25 +1311,25 @@ secondCond_2:
 .globl QuickSort
 QuickSort:
 QuickSortEntry:
-
-	# reserve space
 	addi sp, sp, -864
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 856(sp)
+	sd a1, 848(sp)
+	sd a2, 840(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 856(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 848(sp)
+	# get address of local var:1
 
-	# get address of 2 into 
-	sd a2, 840(sp)
+	# get address of local var:2
 
 	# allocate lv$6
 	addi t0, sp, 824
@@ -1539,11 +1539,11 @@ ifTrue_18:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_ into 
+	# get address of local var:arr_
 	ld t1, 656(sp)
 	add t0, t1, t0
 
-	# get address of arr into 
+	# get address of local var:arr
 	sd t0, 648(sp)
 
 	# load arr$1 arr
@@ -1674,11 +1674,11 @@ next_48:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$7 into 
+	# get address of local var:arr_$7
 	ld t1, 584(sp)
 	add t0, t1, t0
 
-	# get address of arr$12 into 
+	# get address of local var:arr$12
 	sd t0, 576(sp)
 
 	# load k$2 lv$5
@@ -1767,8 +1767,9 @@ next_48:
 
 	# prepare params
 
-	# get address of local var:arr$13
-	ld a0, 544(sp)
+	# fetch variables
+	ld t1, 544(sp)
+	mv a0, t1
 
 	# fetch variables
 	ld t1, 536(sp)
@@ -1868,8 +1869,9 @@ next_48:
 
 	# prepare params
 
-	# get address of local var:arr$14
-	ld a0, 496(sp)
+	# fetch variables
+	ld t1, 496(sp)
+	mv a0, t1
 
 	# fetch variables
 	ld t1, 488(sp)
@@ -2090,11 +2092,11 @@ secondCond_3:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$1 into 
+	# get address of local var:arr_$1
 	ld t1, 360(sp)
 	add t0, t1, t0
 
-	# get address of arr$2 into 
+	# get address of local var:arr$2
 	sd t0, 352(sp)
 
 	# load arr$3 arr$2
@@ -2194,11 +2196,11 @@ ifTrue_19:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$2 into 
+	# get address of local var:arr_$2
 	ld t1, 288(sp)
 	add t0, t1, t0
 
-	# get address of arr$4 into 
+	# get address of local var:arr$4
 	sd t0, 280(sp)
 
 	# load j$5 lv$4
@@ -2228,11 +2230,11 @@ ifTrue_19:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$3 into 
+	# get address of local var:arr_$3
 	ld t1, 264(sp)
 	add t0, t1, t0
 
-	# get address of arr$5 into 
+	# get address of local var:arr$5
 	sd t0, 256(sp)
 
 	# load arr$6 arr$5
@@ -2478,11 +2480,11 @@ secondCond_4:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$4 into 
+	# get address of local var:arr_$4
 	ld t1, 120(sp)
 	add t0, t1, t0
 
-	# get address of arr$7 into 
+	# get address of local var:arr$7
 	sd t0, 112(sp)
 
 	# load arr$8 arr$7
@@ -2571,11 +2573,11 @@ ifTrue_20:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$5 into 
+	# get address of local var:arr_$5
 	ld t1, 56(sp)
 	add t0, t1, t0
 
-	# get address of arr$9 into 
+	# get address of local var:arr$9
 	sd t0, 48(sp)
 
 	# load i$9 lv$3
@@ -2605,11 +2607,11 @@ ifTrue_20:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$6 into 
+	# get address of local var:arr_$6
 	ld t1, 32(sp)
 	add t0, t1, t0
 
-	# get address of arr$10 into 
+	# get address of local var:arr$10
 	sd t0, 24(sp)
 
 	# load arr$11 arr$10
@@ -2676,19 +2678,19 @@ next_52:
 .globl getMid
 getMid:
 getMidEntry:
-
-	# reserve space
 	addi sp, sp, -232
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 224(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 224(sp)
+	# get address of local var:0
 
 	# allocate lv$1
 	addi t0, sp, 208
@@ -2833,11 +2835,11 @@ ifTrue_21:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_ into 
+	# get address of local var:arr_
 	ld t1, 120(sp)
 	add t0, t1, t0
 
-	# get address of arr into 
+	# get address of local var:arr
 	sd t0, 112(sp)
 
 	# load arr$1 arr
@@ -2887,11 +2889,11 @@ ifTrue_21:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$1 into 
+	# get address of local var:arr_$1
 	ld t1, 80(sp)
 	add t0, t1, t0
 
-	# get address of arr$2 into 
+	# get address of local var:arr$2
 	sd t0, 72(sp)
 
 	# load arr$3 arr$2
@@ -2995,11 +2997,11 @@ ifFalse_3:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$2 into 
+	# get address of local var:arr_$2
 	ld t1, 16(sp)
 	add t0, t1, t0
 
-	# get address of arr$4 into 
+	# get address of local var:arr$4
 	sd t0, 8(sp)
 
 	# load arr$5 arr$4
@@ -3026,19 +3028,19 @@ ifFalse_3:
 .globl getMost
 getMost:
 getMostEntry:
-
-	# reserve space
 	addi sp, sp, -8392
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 8384(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 8384(sp)
+	# get address of local var:0
 
 	# allocate lv$5
 	addi t0, sp, 8368
@@ -3170,11 +3172,11 @@ whileBody_32:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 8312(sp)
 	add t0, t1, t0
 
-	# get address of count into 
+	# get address of local var:count
 	sd t0, 248(sp)
 
 	# count 
@@ -3339,11 +3341,11 @@ whileBody_33:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_ into 
+	# get address of local var:arr_
 	ld t1, 176(sp)
 	add t0, t1, t0
 
-	# get address of arr into 
+	# get address of local var:arr
 	sd t0, 168(sp)
 
 	# load arr$1 arr
@@ -3385,11 +3387,11 @@ whileBody_33:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 8312(sp)
 	add t0, t1, t0
 
-	# get address of count$1 into 
+	# get address of local var:count$1
 	sd t0, 144(sp)
 
 	# load num$1 lv$5
@@ -3409,11 +3411,11 @@ whileBody_33:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 8312(sp)
 	add t0, t1, t0
 
-	# get address of count$2 into 
+	# get address of local var:count$2
 	sd t0, 128(sp)
 
 	# load count$3 count$2
@@ -3465,11 +3467,11 @@ whileBody_33:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 8312(sp)
 	add t0, t1, t0
 
-	# get address of count$4 into 
+	# get address of local var:count$4
 	sd t0, 96(sp)
 
 	# load count$5 count$4
@@ -3571,11 +3573,11 @@ ifTrue_22:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 8312(sp)
 	add t0, t1, t0
 
-	# get address of count$6 into 
+	# get address of local var:count$6
 	sd t0, 32(sp)
 
 	# load count$7 count$6
@@ -3664,19 +3666,19 @@ next_56:
 .globl revert
 revert:
 revertEntry:
-
-	# reserve space
 	addi sp, sp, -264
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 256(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 256(sp)
+	# get address of local var:0
 
 	# allocate lv$3
 	addi t0, sp, 240
@@ -3828,11 +3830,11 @@ whileBody_34:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_ into 
+	# get address of local var:arr_
 	ld t1, 136(sp)
 	add t0, t1, t0
 
-	# get address of arr into 
+	# get address of local var:arr
 	sd t0, 128(sp)
 
 	# load arr$1 arr
@@ -3884,11 +3886,11 @@ whileBody_34:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$1 into 
+	# get address of local var:arr_$1
 	ld t1, 104(sp)
 	add t0, t1, t0
 
-	# get address of arr$2 into 
+	# get address of local var:arr$2
 	sd t0, 96(sp)
 
 	# load j$1 lv$3
@@ -3918,11 +3920,11 @@ whileBody_34:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$2 into 
+	# get address of local var:arr_$2
 	ld t1, 80(sp)
 	add t0, t1, t0
 
-	# get address of arr$3 into 
+	# get address of local var:arr$3
 	sd t0, 72(sp)
 
 	# load arr$4 arr$3
@@ -3974,11 +3976,11 @@ whileBody_34:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$3 into 
+	# get address of local var:arr_$3
 	ld t1, 48(sp)
 	add t0, t1, t0
 
-	# get address of arr$5 into 
+	# get address of local var:arr$5
 	sd t0, 40(sp)
 
 	# load temp lv$1
@@ -4085,22 +4087,22 @@ next_57:
 .globl arrCopy
 arrCopy:
 arrCopyEntry:
-
-	# reserve space
 	addi sp, sp, -176
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 168(sp)
+	sd a1, 160(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 168(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 160(sp)
+	# get address of local var:1
 
 	# allocate lv$2
 	addi t0, sp, 144
@@ -4246,11 +4248,11 @@ whileBody_35:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_ into 
+	# get address of local var:arr_
 	ld t1, 56(sp)
 	add t0, t1, t0
 
-	# get address of target into 
+	# get address of local var:target
 	sd t0, 48(sp)
 
 	# load i$2 lv$2
@@ -4280,11 +4282,11 @@ whileBody_35:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$1 into 
+	# get address of local var:arr_$1
 	ld t1, 32(sp)
 	add t0, t1, t0
 
-	# get address of src into 
+	# get address of local var:src
 	sd t0, 24(sp)
 
 	# load src$1 src
@@ -4359,22 +4361,22 @@ next_58:
 .globl calSum
 calSum:
 calSumEntry:
-
-	# reserve space
 	addi sp, sp, -304
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 296(sp)
+	sd a1, 288(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 296(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 288(sp)
+	# get address of local var:1
 
 	# allocate lv$3
 	addi t0, sp, 272
@@ -4548,11 +4550,11 @@ whileBody_36:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_ into 
+	# get address of local var:arr_
 	ld t1, 160(sp)
 	add t0, t1, t0
 
-	# get address of arr into 
+	# get address of local var:arr
 	sd t0, 152(sp)
 
 	# load arr$1 arr
@@ -4717,11 +4719,11 @@ ifTrue_23:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$1 into 
+	# get address of local var:arr_$1
 	ld t1, 56(sp)
 	add t0, t1, t0
 
-	# get address of arr$2 into 
+	# get address of local var:arr$2
 	sd t0, 48(sp)
 
 	# arr$2 
@@ -4767,11 +4769,11 @@ ifFalse_4:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$2 into 
+	# get address of local var:arr_$2
 	ld t1, 32(sp)
 	add t0, t1, t0
 
-	# get address of arr$3 into 
+	# get address of local var:arr$3
 	sd t0, 24(sp)
 
 	# load sum$1 lv$2
@@ -4850,22 +4852,22 @@ next_60:
 .globl avgPooling
 avgPooling:
 avgPoolingEntry:
-
-	# reserve space
 	addi sp, sp, -664
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 656(sp)
+	sd a1, 648(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 656(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 648(sp)
+	# get address of local var:1
 
 	# allocate lv$4
 	addi t0, sp, 632
@@ -5170,11 +5172,11 @@ ifTrue_24:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_ into 
+	# get address of local var:arr_
 	ld t1, 424(sp)
 	add t0, t1, t0
 
-	# get address of arr into 
+	# get address of local var:arr
 	sd t0, 416(sp)
 
 	# load arr$1 arr
@@ -5336,11 +5338,11 @@ ifTrue_25:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$1 into 
+	# get address of local var:arr_$1
 	ld t1, 328(sp)
 	add t0, t1, t0
 
-	# get address of arr$2 into 
+	# get address of local var:arr$2
 	sd t0, 320(sp)
 
 	# load arr$3 arr$2
@@ -5382,11 +5384,11 @@ ifTrue_25:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$2 into 
+	# get address of local var:arr_$2
 	ld t1, 304(sp)
 	add t0, t1, t0
 
-	# get address of arr$4 into 
+	# get address of local var:arr$4
 	sd t0, 296(sp)
 
 	# load sum$1 lv$2
@@ -5472,11 +5474,11 @@ ifFalse_6:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$3 into 
+	# get address of local var:arr_$3
 	ld t1, 248(sp)
 	add t0, t1, t0
 
-	# get address of arr$5 into 
+	# get address of local var:arr$5
 	sd t0, 240(sp)
 
 	# load arr$6 arr$5
@@ -5588,11 +5590,11 @@ ifFalse_6:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$4 into 
+	# get address of local var:arr_$4
 	ld t1, 168(sp)
 	add t0, t1, t0
 
-	# get address of arr$7 into 
+	# get address of local var:arr$7
 	sd t0, 160(sp)
 
 	# load arr$8 arr$7
@@ -5674,11 +5676,11 @@ ifFalse_6:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$5 into 
+	# get address of local var:arr_$5
 	ld t1, 112(sp)
 	add t0, t1, t0
 
-	# get address of arr$9 into 
+	# get address of local var:arr$9
 	sd t0, 104(sp)
 
 	# load sum$3 lv$2
@@ -5817,11 +5819,11 @@ whileBody_38:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$6 into 
+	# get address of local var:arr_$6
 	ld t1, 24(sp)
 	add t0, t1, t0
 
-	# get address of arr$10 into 
+	# get address of local var:arr$10
 	sd t0, 16(sp)
 
 	# arr$10 
@@ -5886,9 +5888,9 @@ next_64:
 .globl main
 main:
 mainEntry16:
+	addi sp, sp, -1696
 
 	# reserve space
-	addi sp, sp, -1696
 
 	# save the parameters
 
@@ -5935,11 +5937,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr into 
+	# get address of local var:arr
 	sd t0, 1128(sp)
 
 	# arr 
@@ -5961,11 +5963,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$1 into 
+	# get address of local var:arr$1
 	sd t0, 1120(sp)
 
 	# arr$1 
@@ -5987,11 +5989,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$2 into 
+	# get address of local var:arr$2
 	sd t0, 1112(sp)
 
 	# arr$2 
@@ -6013,11 +6015,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$3 into 
+	# get address of local var:arr$3
 	sd t0, 1104(sp)
 
 	# arr$3 
@@ -6039,11 +6041,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$4 into 
+	# get address of local var:arr$4
 	sd t0, 1096(sp)
 
 	# arr$4 
@@ -6065,11 +6067,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$5 into 
+	# get address of local var:arr$5
 	sd t0, 1088(sp)
 
 	# arr$5 
@@ -6091,11 +6093,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$6 into 
+	# get address of local var:arr$6
 	sd t0, 1080(sp)
 
 	# arr$6 
@@ -6117,11 +6119,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$7 into 
+	# get address of local var:arr$7
 	sd t0, 1072(sp)
 
 	# arr$7 
@@ -6143,11 +6145,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$8 into 
+	# get address of local var:arr$8
 	sd t0, 1064(sp)
 
 	# arr$8 
@@ -6169,11 +6171,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$9 into 
+	# get address of local var:arr$9
 	sd t0, 1056(sp)
 
 	# arr$9 
@@ -6195,11 +6197,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$10 into 
+	# get address of local var:arr$10
 	sd t0, 1048(sp)
 
 	# arr$10 
@@ -6221,11 +6223,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$11 into 
+	# get address of local var:arr$11
 	sd t0, 1040(sp)
 
 	# arr$11 
@@ -6247,11 +6249,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$12 into 
+	# get address of local var:arr$12
 	sd t0, 1032(sp)
 
 	# arr$12 
@@ -6273,11 +6275,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$13 into 
+	# get address of local var:arr$13
 	sd t0, 1024(sp)
 
 	# arr$13 
@@ -6299,11 +6301,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$14 into 
+	# get address of local var:arr$14
 	sd t0, 1016(sp)
 
 	# arr$14 
@@ -6325,11 +6327,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$15 into 
+	# get address of local var:arr$15
 	sd t0, 1008(sp)
 
 	# arr$15 
@@ -6351,11 +6353,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$16 into 
+	# get address of local var:arr$16
 	sd t0, 1000(sp)
 
 	# arr$16 
@@ -6377,11 +6379,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$17 into 
+	# get address of local var:arr$17
 	sd t0, 992(sp)
 
 	# arr$17 
@@ -6403,11 +6405,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$18 into 
+	# get address of local var:arr$18
 	sd t0, 984(sp)
 
 	# arr$18 
@@ -6429,11 +6431,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$19 into 
+	# get address of local var:arr$19
 	sd t0, 976(sp)
 
 	# arr$19 
@@ -6455,11 +6457,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$20 into 
+	# get address of local var:arr$20
 	sd t0, 968(sp)
 
 	# arr$20 
@@ -6481,11 +6483,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$21 into 
+	# get address of local var:arr$21
 	sd t0, 960(sp)
 
 	# arr$21 
@@ -6507,11 +6509,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$22 into 
+	# get address of local var:arr$22
 	sd t0, 952(sp)
 
 	# arr$22 
@@ -6533,11 +6535,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$23 into 
+	# get address of local var:arr$23
 	sd t0, 944(sp)
 
 	# arr$23 
@@ -6559,11 +6561,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$24 into 
+	# get address of local var:arr$24
 	sd t0, 936(sp)
 
 	# arr$24 
@@ -6585,11 +6587,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$25 into 
+	# get address of local var:arr$25
 	sd t0, 928(sp)
 
 	# arr$25 
@@ -6611,11 +6613,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$26 into 
+	# get address of local var:arr$26
 	sd t0, 920(sp)
 
 	# arr$26 
@@ -6637,11 +6639,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$27 into 
+	# get address of local var:arr$27
 	sd t0, 912(sp)
 
 	# arr$27 
@@ -6663,11 +6665,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$28 into 
+	# get address of local var:arr$28
 	sd t0, 904(sp)
 
 	# arr$28 
@@ -6689,11 +6691,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$29 into 
+	# get address of local var:arr$29
 	sd t0, 896(sp)
 
 	# arr$29 
@@ -6715,11 +6717,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$30 into 
+	# get address of local var:arr$30
 	sd t0, 888(sp)
 
 	# arr$30 
@@ -6741,11 +6743,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$31 into 
+	# get address of local var:arr$31
 	sd t0, 880(sp)
 
 	# arr$31 
@@ -6767,11 +6769,11 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$32 into 
+	# get address of local var:arr$32
 	sd t0, 872(sp)
 
 	# gep result 
@@ -6781,20 +6783,22 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result into 
+	# get address of local var:result
 	sd t0, 864(sp)
 
 	# prepare params
 
-	# get address of local var:arr$32
-	ld a0, 872(sp)
+	# fetch variables
+	ld t1, 872(sp)
+	mv a0, t1
 
-	# get address of local var:result
-	ld a1, 864(sp)
+	# fetch variables
+	ld t1, 864(sp)
+	mv a1, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -6829,17 +6833,18 @@ mainEntry16:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$1 into 
+	# get address of local var:result$1
 	sd t0, 848(sp)
 
 	# prepare params
 
-	# get address of local var:result$1
-	ld a0, 848(sp)
+	# fetch variables
+	ld t1, 848(sp)
+	mv a0, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -6949,11 +6954,11 @@ whileBody_39:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$2 into 
+	# get address of local var:result$2
 	sd t0, 792(sp)
 
 	# load result$3 result$2
@@ -7048,17 +7053,18 @@ next_65:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$4 into 
+	# get address of local var:result$4
 	sd t0, 752(sp)
 
 	# prepare params
 
-	# get address of local var:result$4
-	ld a0, 752(sp)
+	# fetch variables
+	ld t1, 752(sp)
+	mv a0, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7168,11 +7174,11 @@ whileBody_40:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$5 into 
+	# get address of local var:result$5
 	sd t0, 696(sp)
 
 	# load result$6 result$5
@@ -7267,17 +7273,18 @@ next_66:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$7 into 
+	# get address of local var:result$7
 	sd t0, 656(sp)
 
 	# prepare params
 
-	# get address of local var:result$7
-	ld a0, 656(sp)
+	# fetch variables
+	ld t1, 656(sp)
+	mv a0, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7339,17 +7346,18 @@ next_66:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$8 into 
+	# get address of local var:result$8
 	sd t0, 632(sp)
 
 	# prepare params
 
-	# get address of local var:result$8
-	ld a0, 632(sp)
+	# fetch variables
+	ld t1, 632(sp)
+	mv a0, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7411,11 +7419,11 @@ next_66:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$33 into 
+	# get address of local var:arr$33
 	sd t0, 608(sp)
 
 	# gep result$9 
@@ -7425,20 +7433,22 @@ next_66:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$9 into 
+	# get address of local var:result$9
 	sd t0, 600(sp)
 
 	# prepare params
 
-	# get address of local var:arr$33
-	ld a0, 608(sp)
+	# fetch variables
+	ld t1, 608(sp)
+	mv a0, t1
 
-	# get address of local var:result$9
-	ld a1, 600(sp)
+	# fetch variables
+	ld t1, 600(sp)
+	mv a1, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7473,17 +7483,18 @@ next_66:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$10 into 
+	# get address of local var:result$10
 	sd t0, 584(sp)
 
 	# prepare params
 
-	# get address of local var:result$10
-	ld a0, 584(sp)
+	# fetch variables
+	ld t1, 584(sp)
+	mv a0, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7593,11 +7604,11 @@ whileBody_41:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$11 into 
+	# get address of local var:result$11
 	sd t0, 528(sp)
 
 	# load result$12 result$11
@@ -7692,11 +7703,11 @@ next_67:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$34 into 
+	# get address of local var:arr$34
 	sd t0, 488(sp)
 
 	# gep result$13 
@@ -7706,20 +7717,22 @@ next_67:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$13 into 
+	# get address of local var:result$13
 	sd t0, 480(sp)
 
 	# prepare params
 
-	# get address of local var:arr$34
-	ld a0, 488(sp)
+	# fetch variables
+	ld t1, 488(sp)
+	mv a0, t1
 
-	# get address of local var:result$13
-	ld a1, 480(sp)
+	# fetch variables
+	ld t1, 480(sp)
+	mv a1, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7754,17 +7767,18 @@ next_67:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$14 into 
+	# get address of local var:result$14
 	sd t0, 464(sp)
 
 	# prepare params
 
-	# get address of local var:result$14
-	ld a0, 464(sp)
+	# fetch variables
+	ld t1, 464(sp)
+	mv a0, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7874,11 +7888,11 @@ whileBody_42:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$15 into 
+	# get address of local var:result$15
 	sd t0, 408(sp)
 
 	# load result$16 result$15
@@ -7973,11 +7987,11 @@ next_68:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$35 into 
+	# get address of local var:arr$35
 	sd t0, 368(sp)
 
 	# gep result$17 
@@ -7987,20 +8001,22 @@ next_68:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$17 into 
+	# get address of local var:result$17
 	sd t0, 360(sp)
 
 	# prepare params
 
-	# get address of local var:arr$35
-	ld a0, 368(sp)
+	# fetch variables
+	ld t1, 368(sp)
+	mv a0, t1
 
-	# get address of local var:result$17
-	ld a1, 360(sp)
+	# fetch variables
+	ld t1, 360(sp)
+	mv a1, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8059,11 +8075,11 @@ next_68:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$18 into 
+	# get address of local var:result$18
 	sd t0, 344(sp)
 
 	# load i$12 lv$3
@@ -8088,8 +8104,9 @@ next_68:
 
 	# prepare params
 
-	# get address of local var:result$18
-	ld a0, 344(sp)
+	# fetch variables
+	ld t1, 344(sp)
+	mv a0, t1
 
 	# fetch variables
 	ld t1, 336(sp)
@@ -8195,11 +8212,11 @@ whileBody_43:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$19 into 
+	# get address of local var:result$19
 	sd t0, 272(sp)
 
 	# load result$20 result$19
@@ -8294,11 +8311,11 @@ next_69:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$36 into 
+	# get address of local var:arr$36
 	sd t0, 232(sp)
 
 	# gep result$21 
@@ -8308,20 +8325,22 @@ next_69:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$21 into 
+	# get address of local var:result$21
 	sd t0, 224(sp)
 
 	# prepare params
 
-	# get address of local var:arr$36
-	ld a0, 232(sp)
+	# fetch variables
+	ld t1, 232(sp)
+	mv a0, t1
 
-	# get address of local var:result$21
-	ld a1, 224(sp)
+	# fetch variables
+	ld t1, 224(sp)
+	mv a1, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8356,17 +8375,18 @@ next_69:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$22 into 
+	# get address of local var:result$22
 	sd t0, 208(sp)
 
 	# prepare params
 
-	# get address of local var:result$22
-	ld a0, 208(sp)
+	# fetch variables
+	ld t1, 208(sp)
+	mv a0, t1
 
 	# fetch variables
 	li t1, 4
@@ -8480,11 +8500,11 @@ whileBody_44:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$23 into 
+	# get address of local var:result$23
 	sd t0, 152(sp)
 
 	# load result$24 result$23
@@ -8579,11 +8599,11 @@ next_70:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of arr$37 into 
+	# get address of local var:arr$37
 	sd t0, 112(sp)
 
 	# gep result$25 
@@ -8593,20 +8613,22 @@ next_70:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$25 into 
+	# get address of local var:result$25
 	sd t0, 104(sp)
 
 	# prepare params
 
-	# get address of local var:arr$37
-	ld a0, 112(sp)
+	# fetch variables
+	ld t1, 112(sp)
+	mv a0, t1
 
-	# get address of local var:result$25
-	ld a1, 104(sp)
+	# fetch variables
+	ld t1, 104(sp)
+	mv a1, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8641,17 +8663,18 @@ next_70:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$26 into 
+	# get address of local var:result$26
 	sd t0, 88(sp)
 
 	# prepare params
 
-	# get address of local var:result$26
-	ld a0, 88(sp)
+	# fetch variables
+	ld t1, 88(sp)
+	mv a0, t1
 
 	# fetch variables
 	li t1, 3
@@ -8765,11 +8788,11 @@ whileBody_45:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of result$27 into 
+	# get address of local var:result$27
 	sd t0, 32(sp)
 
 	# load result$28 result$27

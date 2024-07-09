@@ -6,19 +6,19 @@
 .globl float_abs
 float_abs:
 float_absEntry:
-
-	# reserve space
 	addi sp, sp, -80
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	fsd fa0, 72(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	fsd fa0, 72(sp)
+	# get address of local var:0
 
 	# allocate lv
 	addi t0, sp, 56
@@ -45,7 +45,7 @@ float_absEntry:
 	addi t3, t3, 0
 
 	# get address of local var:x
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 48(sp)
 
 	# cmp x  cond_lt_tmp_
@@ -95,7 +95,7 @@ ifTrue_30:
 	addi t3, t3, 0
 
 	# get address of local var:x$1
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 16(sp)
 
 	# fsub tmp_  x$1
@@ -128,7 +128,7 @@ next_80:
 	addi t3, t3, 0
 
 	# get address of local var:x$2
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 0(sp)
 
 	# ret x$2
@@ -145,19 +145,19 @@ next_80:
 .globl circle_area
 circle_area:
 circle_areaEntry:
-
-	# reserve space
 	addi sp, sp, -128
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 120(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 120(sp)
+	# get address of local var:0
 
 	# allocate lv
 	addi t0, sp, 104
@@ -193,13 +193,13 @@ circle_areaEntry:
 	ld t1, 96(sp)
 
 	# get address of local var:i2f_
-	fcvt.d.w ft0, t1
+	fcvt.d.l ft0, t1
 	fsd ft0, 88(sp)
 
 	# fmul result_  i2f_
 
 	# fetch variables
-	li t1, 0x400921fb60000000
+	li t1, 0x400921fb5a7ed197
 	fmv.d.x ft1, t1
 	fld ft2, 88(sp)
 
@@ -223,7 +223,7 @@ circle_areaEntry:
 	ld t1, 72(sp)
 
 	# get address of local var:i2f_$1
-	fcvt.d.w ft0, t1
+	fcvt.d.l ft0, t1
 	fsd ft0, 64(sp)
 
 	# fmul result_$1 result_ i2f_$1
@@ -272,14 +272,14 @@ circle_areaEntry:
 	ld t1, 32(sp)
 
 	# get address of local var:i2f_$2
-	fcvt.d.w ft0, t1
+	fcvt.d.l ft0, t1
 	fsd ft0, 24(sp)
 
 	# fmul result_$3 i2f_$2 
 
 	# fetch variables
 	fld ft1, 24(sp)
-	li t2, 0x400921fb60000000
+	li t2, 0x400921fb5a7ed197
 	fmv.d.x ft2, t2
 
 	# get address of local var:result_$3
@@ -321,22 +321,22 @@ circle_areaEntry:
 .globl float_eq
 float_eq:
 float_eqEntry:
-
-	# reserve space
 	addi sp, sp, -104
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	fsd fa0, 96(sp)
+	fsd fa1, 88(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	fsd fa0, 96(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	fsd fa1, 88(sp)
+	# get address of local var:1
 
 	# allocate lv$1
 	addi t0, sp, 72
@@ -381,7 +381,7 @@ float_eqEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 48(sp)
 
 	# load b lv$1
@@ -391,7 +391,7 @@ float_eqEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 40(sp)
 
 	# fsub result_ a b
@@ -429,7 +429,7 @@ float_eqEntry:
 
 	# fetch variables
 	fld ft1, 24(sp)
-	li t2, 0x3eb0c6f7a0000000
+	li t2, 0x3eb0c6f7a0b5ed8d
 	fmv.d.x ft2, t2
 
 	# get address of local var:cond_lt_tmp_
@@ -491,14 +491,14 @@ ifFalse_7:
 .globl error
 error:
 errorEntry:
-
-	# reserve space
 	addi sp, sp, 0
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -614,14 +614,14 @@ errorEntry:
 .globl ok
 ok:
 okEntry:
-
-	# reserve space
 	addi sp, sp, 0
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -686,19 +686,19 @@ okEntry:
 .globl assert
 assert:
 assertEntry:
-
-	# reserve space
 	addi sp, sp, -64
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 56(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 56(sp)
+	# get address of local var:0
 
 	# allocate lv
 	addi t0, sp, 40
@@ -825,19 +825,19 @@ next_82:
 .globl assert_not
 assert_not:
 assert_notEntry:
-
-	# reserve space
 	addi sp, sp, -40
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 32(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 32(sp)
+	# get address of local var:0
 
 	# allocate lv
 	addi t0, sp, 16
@@ -931,9 +931,9 @@ next_83:
 .globl main
 main:
 mainEntry22:
+	addi sp, sp, -624
 
 	# reserve space
-	addi sp, sp, -624
 
 	# save the parameters
 
@@ -1027,13 +1027,13 @@ mainEntry22:
 	# prepare params
 
 	# fetch variables
-	li t1, 0x4057c21fc0000000
+	li t1, 0x4057c21fc8f32379
 	fmv.d.x ft1, t1
 	fmv.x.d t0, ft1
 	fmv.d.x fa0, t0
 
 	# fetch variables
-	li t1, 0x4041475ce0000000
+	li t1, 0x4041475cd0bb6ed6
 	fmv.d.x ft1, t1
 	fmv.x.d t0, ft1
 	fmv.d.x fa1, t0
@@ -1072,13 +1072,13 @@ mainEntry22:
 	# prepare params
 
 	# fetch variables
-	li t1, 0x4041475ce0000000
+	li t1, 0x4041475cd0bb6ed6
 	fmv.d.x ft1, t1
 	fmv.x.d t0, ft1
 	fmv.d.x fa0, t0
 
 	# fetch variables
-	li t1, 0x4041475ce0000000
+	li t1, 0x4041475cd0bb6ed6
 	fmv.d.x ft1, t1
 	fmv.x.d t0, ft1
 	fmv.d.x fa1, t0
@@ -1443,11 +1443,11 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of inp into 
+	# get address of local var:inp
 	sd t0, 336(sp)
 
 	# inp 
@@ -1470,11 +1470,11 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of inp$1 into 
+	# get address of local var:inp$1
 	sd t0, 328(sp)
 
 	# inp$1 
@@ -1497,11 +1497,11 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of inp$2 into 
+	# get address of local var:inp$2
 	sd t0, 320(sp)
 
 	# inp$2 
@@ -1524,11 +1524,11 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of inp$3 into 
+	# get address of local var:inp$3
 	sd t0, 312(sp)
 
 	# inp$3 
@@ -1551,11 +1551,11 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of inp$4 into 
+	# get address of local var:inp$4
 	sd t0, 304(sp)
 
 	# inp$4 
@@ -1578,11 +1578,11 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of inp$5 into 
+	# get address of local var:inp$5
 	sd t0, 296(sp)
 
 	# inp$5 
@@ -1605,11 +1605,11 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of inp$6 into 
+	# get address of local var:inp$6
 	sd t0, 288(sp)
 
 	# inp$6 
@@ -1632,11 +1632,11 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of inp$7 into 
+	# get address of local var:inp$7
 	sd t0, 280(sp)
 
 	# inp$7 
@@ -1659,11 +1659,11 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of inp$8 into 
+	# get address of local var:inp$8
 	sd t0, 272(sp)
 
 	# inp$8 
@@ -1686,11 +1686,11 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of inp$9 into 
+	# get address of local var:inp$9
 	sd t0, 264(sp)
 
 	# inp$9 
@@ -1713,17 +1713,18 @@ next_87:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of arr into 
+	# get address of local var:arr
 	sd t0, 256(sp)
 
 	# prepare params
 
-	# get address of local var:arr
-	ld a0, 256(sp)
+	# fetch variables
+	ld t1, 256(sp)
+	mv a0, t1
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1758,7 +1759,7 @@ secondCond_8:
 	# cmp   cond_normalize_$5
 
 	# fetch variables
-	li t1, 0x3fd3333340000000
+	li t1, 0x3fd3333333333333
 	fmv.d.x ft1, t1
 	li t2, 0x0
 	fmv.d.x ft2, t2
@@ -1860,13 +1861,13 @@ whileBody_50:
 	addi t3, t3, 0
 
 	# get address of local var:input
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 192(sp)
 
 	# fmul result_  input
 
 	# fetch variables
-	li t1, 0x400921fb60000000
+	li t1, 0x400921fb5a7ed197
 	fmv.d.x ft1, t1
 	fld ft2, 192(sp)
 
@@ -1881,7 +1882,7 @@ whileBody_50:
 	addi t3, t3, 0
 
 	# get address of local var:input$1
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 176(sp)
 
 	# fmul result_$1 result_ input$1
@@ -1913,7 +1914,7 @@ whileBody_50:
 	addi t3, t3, 0
 
 	# get address of local var:input$2
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 160(sp)
 
 	# floatToInt f2i_ input$2
@@ -1922,7 +1923,7 @@ whileBody_50:
 	fld ft1, 160(sp)
 
 	# get address of local var:f2i_
-	fcvt.w.d t0, ft1
+	fcvt.l.d t0, ft1
 	sd t0, 152(sp)
 
 	# prepare params
@@ -1974,11 +1975,11 @@ whileBody_50:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of arr$1 into 
+	# get address of local var:arr$1
 	sd t0, 128(sp)
 
 	# load p$1 lv$1
@@ -1998,11 +1999,11 @@ whileBody_50:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of arr$2 into 
+	# get address of local var:arr$2
 	sd t0, 112(sp)
 
 	# load arr$3 arr$2
@@ -2012,7 +2013,7 @@ whileBody_50:
 	addi t3, t3, 0
 
 	# get address of local var:arr$3
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 104(sp)
 
 	# load input$3 lv$4
@@ -2022,7 +2023,7 @@ whileBody_50:
 	addi t3, t3, 0
 
 	# get address of local var:input$3
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 96(sp)
 
 	# fadd result_$2 arr$3 input$3
@@ -2054,7 +2055,7 @@ whileBody_50:
 	addi t3, t3, 0
 
 	# get address of local var:area
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 80(sp)
 
 	# prepare params
@@ -2099,7 +2100,7 @@ whileBody_50:
 	addi t3, t3, 0
 
 	# get address of local var:area_trunc
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 72(sp)
 
 	# floatToInt f2i_$1 area_trunc
@@ -2108,7 +2109,7 @@ whileBody_50:
 	fld ft1, 72(sp)
 
 	# get address of local var:f2i_$1
-	fcvt.w.d t0, ft1
+	fcvt.l.d t0, ft1
 	sd t0, 64(sp)
 
 	# prepare params
@@ -2161,7 +2162,7 @@ whileBody_50:
 	ld t1, 56(sp)
 
 	# get address of local var:i2f_
-	fcvt.d.w ft0, t1
+	fcvt.d.l ft0, t1
 	fsd ft0, 48(sp)
 
 	# fmul result_$3 i2f_ 
@@ -2181,7 +2182,7 @@ whileBody_50:
 	fld ft1, 40(sp)
 
 	# get address of local var:f2i_$2
-	fcvt.w.d t0, ft1
+	fcvt.l.d t0, ft1
 	sd t0, 32(sp)
 
 	# lv f2i_$2
@@ -2249,11 +2250,11 @@ next_88:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of arr$4 into 
+	# get address of local var:arr$4
 	sd t0, 0(sp)
 
 	# prepare params
@@ -2262,8 +2263,9 @@ next_88:
 	ld t1, 8(sp)
 	mv a0, t1
 
-	# get address of local var:arr$4
-	ld a1, 0(sp)
+	# fetch variables
+	ld t1, 0(sp)
+	mv a1, t1
 
 	# save caller saved regs
 	addi sp, sp, -8

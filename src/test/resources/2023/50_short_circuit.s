@@ -9,19 +9,19 @@ gv:
 .globl func
 func:
 funcEntry2:
-
-	# reserve space
 	addi sp, sp, -64
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 56(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 56(sp)
+	# get address of local var:0
 
 	# allocate lv
 	addi t0, sp, 40
@@ -133,10 +133,10 @@ funcEntry2:
 .type main, @function
 .globl main
 main:
-mainEntry36:
+mainEntry37:
+	addi sp, sp, -328
 
 	# reserve space
-	addi sp, sp, -328
 
 	# save the parameters
 

@@ -6,14 +6,14 @@
 .globl my_getint
 my_getint:
 my_getintEntry:
-
-	# reserve space
 	addi sp, sp, -256
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -488,19 +488,19 @@ secondCond_10:
 .globl my_putint
 my_putint:
 my_putintEntry:
-
-	# reserve space
 	addi sp, sp, -352
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 344(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 344(sp)
+	# get address of local var:0
 
 	# allocate lv$2
 	addi t0, sp, 328
@@ -615,11 +615,11 @@ whileBody_53:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 320(sp)
 	add t0, t1, t0
 
-	# get address of b into 
+	# get address of local var:b
 	sd t0, 128(sp)
 
 	# load a$1 lv
@@ -835,11 +835,11 @@ whileBody_54:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 320(sp)
 	add t0, t1, t0
 
-	# get address of b$1 into 
+	# get address of local var:b$1
 	sd t0, 8(sp)
 
 	# load b$2 b$1
@@ -883,9 +883,9 @@ next_94:
 .globl main
 main:
 mainEntry23:
+	addi sp, sp, -104
 
 	# reserve space
-	addi sp, sp, -104
 
 	# save the parameters
 

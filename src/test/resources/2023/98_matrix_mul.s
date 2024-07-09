@@ -15,43 +15,38 @@ gv2:
 .globl mul
 mul:
 mulEntry:
-
-	# reserve space
 	addi sp, sp, -2032
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 2024(sp)
+	sd a1, 2016(sp)
+	sd a2, 2008(sp)
+	sd a3, 2000(sp)
+	ld t3, 2080(sp)
+	sd t3, 1992(sp)
+	ld t3, 2080(sp)
+	sd t3, 1984(sp)
+	ld t3, 2080(sp)
+	sd t3, 1976(sp)
+	ld t3, 2080(sp)
+	sd t3, 1968(sp)
+	ld t3, 2080(sp)
+	sd t3, 1960(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 2024(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 2016(sp)
+	# get address of local var:1
 
-	# get address of 2 into 
-	sd a2, 2008(sp)
+	# get address of local var:2
 
-	# get address of 3 into 
-	sd a3, 2000(sp)
-
-	# get address of 4 into 
-	sd a4, 1992(sp)
-
-	# get address of 5 into 
-	sd a5, 1984(sp)
-
-	# get address of 6 into 
-	sd a6, 1976(sp)
-
-	# get address of 7 into 
-	sd a7, 1968(sp)
-
-	# get address of 8 into 
-	sd s0, 1960(sp)
+	# get address of local var:3
 
 	# allocate lv$9
 	addi t0, sp, 1944
@@ -250,11 +245,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_ into 
+	# get address of local var:arr_
 	ld t1, 1792(sp)
 	add t0, t1, t0
 
-	# get address of c0 into 
+	# get address of local var:c0
 	sd t0, 1784(sp)
 
 	# load arr_$1 lv
@@ -274,11 +269,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$1 into 
+	# get address of local var:arr_$1
 	ld t1, 1776(sp)
 	add t0, t1, t0
 
-	# get address of a0 into 
+	# get address of local var:a0
 	sd t0, 1768(sp)
 
 	# load a0$1 a0
@@ -288,7 +283,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a0$1
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1760(sp)
 
 	# load arr_$2 lv$3
@@ -308,11 +303,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$2 into 
+	# get address of local var:arr_$2
 	ld t1, 1752(sp)
 	add t0, t1, t0
 
-	# get address of b0 into 
+	# get address of local var:b0
 	sd t0, 1744(sp)
 
 	# load b0$1 b0
@@ -322,7 +317,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b0$1
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1736(sp)
 
 	# fmul result_ a0$1 b0$1
@@ -352,11 +347,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$3 into 
+	# get address of local var:arr_$3
 	ld t1, 1720(sp)
 	add t0, t1, t0
 
-	# get address of a0$2 into 
+	# get address of local var:a0$2
 	sd t0, 1712(sp)
 
 	# load a0$3 a0$2
@@ -366,7 +361,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a0$3
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1704(sp)
 
 	# load arr_$4 lv$4
@@ -386,11 +381,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$4 into 
+	# get address of local var:arr_$4
 	ld t1, 1696(sp)
 	add t0, t1, t0
 
-	# get address of b1 into 
+	# get address of local var:b1
 	sd t0, 1688(sp)
 
 	# load b1$1 b1
@@ -400,7 +395,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b1$1
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1680(sp)
 
 	# fmul result_$1 a0$3 b1$1
@@ -440,11 +435,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$5 into 
+	# get address of local var:arr_$5
 	ld t1, 1656(sp)
 	add t0, t1, t0
 
-	# get address of a0$4 into 
+	# get address of local var:a0$4
 	sd t0, 1648(sp)
 
 	# load a0$5 a0$4
@@ -454,7 +449,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a0$5
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1640(sp)
 
 	# load arr_$6 lv$5
@@ -474,11 +469,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$6 into 
+	# get address of local var:arr_$6
 	ld t1, 1632(sp)
 	add t0, t1, t0
 
-	# get address of b2 into 
+	# get address of local var:b2
 	sd t0, 1624(sp)
 
 	# load b2$1 b2
@@ -488,7 +483,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b2$1
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1616(sp)
 
 	# fmul result_$3 a0$5 b2$1
@@ -540,11 +535,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$7 into 
+	# get address of local var:arr_$7
 	ld t1, 1592(sp)
 	add t0, t1, t0
 
-	# get address of c0$1 into 
+	# get address of local var:c0$1
 	sd t0, 1584(sp)
 
 	# load arr_$8 lv
@@ -564,11 +559,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$8 into 
+	# get address of local var:arr_$8
 	ld t1, 1576(sp)
 	add t0, t1, t0
 
-	# get address of a0$6 into 
+	# get address of local var:a0$6
 	sd t0, 1568(sp)
 
 	# load a0$7 a0$6
@@ -578,7 +573,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a0$7
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1560(sp)
 
 	# load arr_$9 lv$3
@@ -598,11 +593,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$9 into 
+	# get address of local var:arr_$9
 	ld t1, 1552(sp)
 	add t0, t1, t0
 
-	# get address of b0$2 into 
+	# get address of local var:b0$2
 	sd t0, 1544(sp)
 
 	# load b0$3 b0$2
@@ -612,7 +607,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b0$3
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1536(sp)
 
 	# fmul result_$5 a0$7 b0$3
@@ -642,11 +637,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$10 into 
+	# get address of local var:arr_$10
 	ld t1, 1520(sp)
 	add t0, t1, t0
 
-	# get address of a0$8 into 
+	# get address of local var:a0$8
 	sd t0, 1512(sp)
 
 	# load a0$9 a0$8
@@ -656,7 +651,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a0$9
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1504(sp)
 
 	# load arr_$11 lv$4
@@ -676,11 +671,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$11 into 
+	# get address of local var:arr_$11
 	ld t1, 1496(sp)
 	add t0, t1, t0
 
-	# get address of b1$2 into 
+	# get address of local var:b1$2
 	sd t0, 1488(sp)
 
 	# load b1$3 b1$2
@@ -690,7 +685,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b1$3
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1480(sp)
 
 	# fmul result_$6 a0$9 b1$3
@@ -730,11 +725,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$12 into 
+	# get address of local var:arr_$12
 	ld t1, 1456(sp)
 	add t0, t1, t0
 
-	# get address of a0$10 into 
+	# get address of local var:a0$10
 	sd t0, 1448(sp)
 
 	# load a0$11 a0$10
@@ -744,7 +739,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a0$11
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1440(sp)
 
 	# load arr_$13 lv$5
@@ -764,11 +759,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$13 into 
+	# get address of local var:arr_$13
 	ld t1, 1432(sp)
 	add t0, t1, t0
 
-	# get address of b2$2 into 
+	# get address of local var:b2$2
 	sd t0, 1424(sp)
 
 	# load b2$3 b2$2
@@ -778,7 +773,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b2$3
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1416(sp)
 
 	# fmul result_$8 a0$11 b2$3
@@ -830,11 +825,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$14 into 
+	# get address of local var:arr_$14
 	ld t1, 1392(sp)
 	add t0, t1, t0
 
-	# get address of c0$2 into 
+	# get address of local var:c0$2
 	sd t0, 1384(sp)
 
 	# load arr_$15 lv
@@ -854,11 +849,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$15 into 
+	# get address of local var:arr_$15
 	ld t1, 1376(sp)
 	add t0, t1, t0
 
-	# get address of a0$12 into 
+	# get address of local var:a0$12
 	sd t0, 1368(sp)
 
 	# load a0$13 a0$12
@@ -868,7 +863,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a0$13
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1360(sp)
 
 	# load arr_$16 lv$3
@@ -888,11 +883,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$16 into 
+	# get address of local var:arr_$16
 	ld t1, 1352(sp)
 	add t0, t1, t0
 
-	# get address of b0$4 into 
+	# get address of local var:b0$4
 	sd t0, 1344(sp)
 
 	# load b0$5 b0$4
@@ -902,7 +897,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b0$5
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1336(sp)
 
 	# fmul result_$10 a0$13 b0$5
@@ -932,11 +927,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$17 into 
+	# get address of local var:arr_$17
 	ld t1, 1320(sp)
 	add t0, t1, t0
 
-	# get address of a0$14 into 
+	# get address of local var:a0$14
 	sd t0, 1312(sp)
 
 	# load a0$15 a0$14
@@ -946,7 +941,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a0$15
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1304(sp)
 
 	# load arr_$18 lv$4
@@ -966,11 +961,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$18 into 
+	# get address of local var:arr_$18
 	ld t1, 1296(sp)
 	add t0, t1, t0
 
-	# get address of b1$4 into 
+	# get address of local var:b1$4
 	sd t0, 1288(sp)
 
 	# load b1$5 b1$4
@@ -980,7 +975,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b1$5
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1280(sp)
 
 	# fmul result_$11 a0$15 b1$5
@@ -1020,11 +1015,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$19 into 
+	# get address of local var:arr_$19
 	ld t1, 1256(sp)
 	add t0, t1, t0
 
-	# get address of a0$16 into 
+	# get address of local var:a0$16
 	sd t0, 1248(sp)
 
 	# load a0$17 a0$16
@@ -1034,7 +1029,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a0$17
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1240(sp)
 
 	# load arr_$20 lv$5
@@ -1054,11 +1049,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$20 into 
+	# get address of local var:arr_$20
 	ld t1, 1232(sp)
 	add t0, t1, t0
 
-	# get address of b2$4 into 
+	# get address of local var:b2$4
 	sd t0, 1224(sp)
 
 	# load b2$5 b2$4
@@ -1068,7 +1063,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b2$5
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1216(sp)
 
 	# fmul result_$13 a0$17 b2$5
@@ -1120,11 +1115,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$21 into 
+	# get address of local var:arr_$21
 	ld t1, 1192(sp)
 	add t0, t1, t0
 
-	# get address of c1 into 
+	# get address of local var:c1
 	sd t0, 1184(sp)
 
 	# load arr_$22 lv$1
@@ -1144,11 +1139,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$22 into 
+	# get address of local var:arr_$22
 	ld t1, 1176(sp)
 	add t0, t1, t0
 
-	# get address of a1 into 
+	# get address of local var:a1
 	sd t0, 1168(sp)
 
 	# load a1$1 a1
@@ -1158,7 +1153,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a1$1
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1160(sp)
 
 	# load arr_$23 lv$3
@@ -1178,11 +1173,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$23 into 
+	# get address of local var:arr_$23
 	ld t1, 1152(sp)
 	add t0, t1, t0
 
-	# get address of b0$6 into 
+	# get address of local var:b0$6
 	sd t0, 1144(sp)
 
 	# load b0$7 b0$6
@@ -1192,7 +1187,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b0$7
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1136(sp)
 
 	# fmul result_$15 a1$1 b0$7
@@ -1222,11 +1217,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$24 into 
+	# get address of local var:arr_$24
 	ld t1, 1120(sp)
 	add t0, t1, t0
 
-	# get address of a1$2 into 
+	# get address of local var:a1$2
 	sd t0, 1112(sp)
 
 	# load a1$3 a1$2
@@ -1236,7 +1231,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a1$3
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1104(sp)
 
 	# load arr_$25 lv$4
@@ -1256,11 +1251,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$25 into 
+	# get address of local var:arr_$25
 	ld t1, 1096(sp)
 	add t0, t1, t0
 
-	# get address of b1$6 into 
+	# get address of local var:b1$6
 	sd t0, 1088(sp)
 
 	# load b1$7 b1$6
@@ -1270,7 +1265,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b1$7
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1080(sp)
 
 	# fmul result_$16 a1$3 b1$7
@@ -1310,11 +1305,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$26 into 
+	# get address of local var:arr_$26
 	ld t1, 1056(sp)
 	add t0, t1, t0
 
-	# get address of a1$4 into 
+	# get address of local var:a1$4
 	sd t0, 1048(sp)
 
 	# load a1$5 a1$4
@@ -1324,7 +1319,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a1$5
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1040(sp)
 
 	# load arr_$27 lv$5
@@ -1344,11 +1339,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$27 into 
+	# get address of local var:arr_$27
 	ld t1, 1032(sp)
 	add t0, t1, t0
 
-	# get address of b2$6 into 
+	# get address of local var:b2$6
 	sd t0, 1024(sp)
 
 	# load b2$7 b2$6
@@ -1358,7 +1353,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b2$7
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 1016(sp)
 
 	# fmul result_$18 a1$5 b2$7
@@ -1410,11 +1405,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$28 into 
+	# get address of local var:arr_$28
 	ld t1, 992(sp)
 	add t0, t1, t0
 
-	# get address of c1$1 into 
+	# get address of local var:c1$1
 	sd t0, 984(sp)
 
 	# load arr_$29 lv$1
@@ -1434,11 +1429,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$29 into 
+	# get address of local var:arr_$29
 	ld t1, 976(sp)
 	add t0, t1, t0
 
-	# get address of a1$6 into 
+	# get address of local var:a1$6
 	sd t0, 968(sp)
 
 	# load a1$7 a1$6
@@ -1448,7 +1443,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a1$7
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 960(sp)
 
 	# load arr_$30 lv$3
@@ -1468,11 +1463,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$30 into 
+	# get address of local var:arr_$30
 	ld t1, 952(sp)
 	add t0, t1, t0
 
-	# get address of b0$8 into 
+	# get address of local var:b0$8
 	sd t0, 944(sp)
 
 	# load b0$9 b0$8
@@ -1482,7 +1477,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b0$9
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 936(sp)
 
 	# fmul result_$20 a1$7 b0$9
@@ -1512,11 +1507,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$31 into 
+	# get address of local var:arr_$31
 	ld t1, 920(sp)
 	add t0, t1, t0
 
-	# get address of a1$8 into 
+	# get address of local var:a1$8
 	sd t0, 912(sp)
 
 	# load a1$9 a1$8
@@ -1526,7 +1521,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a1$9
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 904(sp)
 
 	# load arr_$32 lv$4
@@ -1546,11 +1541,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$32 into 
+	# get address of local var:arr_$32
 	ld t1, 896(sp)
 	add t0, t1, t0
 
-	# get address of b1$8 into 
+	# get address of local var:b1$8
 	sd t0, 888(sp)
 
 	# load b1$9 b1$8
@@ -1560,7 +1555,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b1$9
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 880(sp)
 
 	# fmul result_$21 a1$9 b1$9
@@ -1600,11 +1595,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$33 into 
+	# get address of local var:arr_$33
 	ld t1, 856(sp)
 	add t0, t1, t0
 
-	# get address of a1$10 into 
+	# get address of local var:a1$10
 	sd t0, 848(sp)
 
 	# load a1$11 a1$10
@@ -1614,7 +1609,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a1$11
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 840(sp)
 
 	# load arr_$34 lv$5
@@ -1634,11 +1629,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$34 into 
+	# get address of local var:arr_$34
 	ld t1, 832(sp)
 	add t0, t1, t0
 
-	# get address of b2$8 into 
+	# get address of local var:b2$8
 	sd t0, 824(sp)
 
 	# load b2$9 b2$8
@@ -1648,7 +1643,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b2$9
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 816(sp)
 
 	# fmul result_$23 a1$11 b2$9
@@ -1700,11 +1695,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$35 into 
+	# get address of local var:arr_$35
 	ld t1, 792(sp)
 	add t0, t1, t0
 
-	# get address of c1$2 into 
+	# get address of local var:c1$2
 	sd t0, 784(sp)
 
 	# load arr_$36 lv$1
@@ -1724,11 +1719,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$36 into 
+	# get address of local var:arr_$36
 	ld t1, 776(sp)
 	add t0, t1, t0
 
-	# get address of a1$12 into 
+	# get address of local var:a1$12
 	sd t0, 768(sp)
 
 	# load a1$13 a1$12
@@ -1738,7 +1733,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a1$13
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 760(sp)
 
 	# load arr_$37 lv$3
@@ -1758,11 +1753,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$37 into 
+	# get address of local var:arr_$37
 	ld t1, 752(sp)
 	add t0, t1, t0
 
-	# get address of b0$10 into 
+	# get address of local var:b0$10
 	sd t0, 744(sp)
 
 	# load b0$11 b0$10
@@ -1772,7 +1767,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b0$11
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 736(sp)
 
 	# fmul result_$25 a1$13 b0$11
@@ -1802,11 +1797,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$38 into 
+	# get address of local var:arr_$38
 	ld t1, 720(sp)
 	add t0, t1, t0
 
-	# get address of a1$14 into 
+	# get address of local var:a1$14
 	sd t0, 712(sp)
 
 	# load a1$15 a1$14
@@ -1816,7 +1811,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a1$15
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 704(sp)
 
 	# load arr_$39 lv$4
@@ -1836,11 +1831,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$39 into 
+	# get address of local var:arr_$39
 	ld t1, 696(sp)
 	add t0, t1, t0
 
-	# get address of b1$10 into 
+	# get address of local var:b1$10
 	sd t0, 688(sp)
 
 	# load b1$11 b1$10
@@ -1850,7 +1845,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b1$11
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 680(sp)
 
 	# fmul result_$26 a1$15 b1$11
@@ -1890,11 +1885,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$40 into 
+	# get address of local var:arr_$40
 	ld t1, 656(sp)
 	add t0, t1, t0
 
-	# get address of a1$16 into 
+	# get address of local var:a1$16
 	sd t0, 648(sp)
 
 	# load a1$17 a1$16
@@ -1904,7 +1899,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a1$17
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 640(sp)
 
 	# load arr_$41 lv$5
@@ -1924,11 +1919,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$41 into 
+	# get address of local var:arr_$41
 	ld t1, 632(sp)
 	add t0, t1, t0
 
-	# get address of b2$10 into 
+	# get address of local var:b2$10
 	sd t0, 624(sp)
 
 	# load b2$11 b2$10
@@ -1938,7 +1933,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b2$11
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 616(sp)
 
 	# fmul result_$28 a1$17 b2$11
@@ -1990,11 +1985,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$42 into 
+	# get address of local var:arr_$42
 	ld t1, 592(sp)
 	add t0, t1, t0
 
-	# get address of c2 into 
+	# get address of local var:c2
 	sd t0, 584(sp)
 
 	# load arr_$43 lv$2
@@ -2014,11 +2009,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$43 into 
+	# get address of local var:arr_$43
 	ld t1, 576(sp)
 	add t0, t1, t0
 
-	# get address of a2 into 
+	# get address of local var:a2
 	sd t0, 568(sp)
 
 	# load a2$1 a2
@@ -2028,7 +2023,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a2$1
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 560(sp)
 
 	# load arr_$44 lv$3
@@ -2048,11 +2043,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$44 into 
+	# get address of local var:arr_$44
 	ld t1, 552(sp)
 	add t0, t1, t0
 
-	# get address of b0$12 into 
+	# get address of local var:b0$12
 	sd t0, 544(sp)
 
 	# load b0$13 b0$12
@@ -2062,7 +2057,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b0$13
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 536(sp)
 
 	# fmul result_$30 a2$1 b0$13
@@ -2092,11 +2087,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$45 into 
+	# get address of local var:arr_$45
 	ld t1, 520(sp)
 	add t0, t1, t0
 
-	# get address of a2$2 into 
+	# get address of local var:a2$2
 	sd t0, 512(sp)
 
 	# load a2$3 a2$2
@@ -2106,7 +2101,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a2$3
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 504(sp)
 
 	# load arr_$46 lv$4
@@ -2126,11 +2121,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$46 into 
+	# get address of local var:arr_$46
 	ld t1, 496(sp)
 	add t0, t1, t0
 
-	# get address of b1$12 into 
+	# get address of local var:b1$12
 	sd t0, 488(sp)
 
 	# load b1$13 b1$12
@@ -2140,7 +2135,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b1$13
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 480(sp)
 
 	# fmul result_$31 a2$3 b1$13
@@ -2180,11 +2175,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$47 into 
+	# get address of local var:arr_$47
 	ld t1, 456(sp)
 	add t0, t1, t0
 
-	# get address of a2$4 into 
+	# get address of local var:a2$4
 	sd t0, 448(sp)
 
 	# load a2$5 a2$4
@@ -2194,7 +2189,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a2$5
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 440(sp)
 
 	# load arr_$48 lv$5
@@ -2214,11 +2209,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$48 into 
+	# get address of local var:arr_$48
 	ld t1, 432(sp)
 	add t0, t1, t0
 
-	# get address of b2$12 into 
+	# get address of local var:b2$12
 	sd t0, 424(sp)
 
 	# load b2$13 b2$12
@@ -2228,7 +2223,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b2$13
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 416(sp)
 
 	# fmul result_$33 a2$5 b2$13
@@ -2280,11 +2275,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$49 into 
+	# get address of local var:arr_$49
 	ld t1, 392(sp)
 	add t0, t1, t0
 
-	# get address of c2$1 into 
+	# get address of local var:c2$1
 	sd t0, 384(sp)
 
 	# load arr_$50 lv$2
@@ -2304,11 +2299,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$50 into 
+	# get address of local var:arr_$50
 	ld t1, 376(sp)
 	add t0, t1, t0
 
-	# get address of a2$6 into 
+	# get address of local var:a2$6
 	sd t0, 368(sp)
 
 	# load a2$7 a2$6
@@ -2318,7 +2313,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a2$7
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 360(sp)
 
 	# load arr_$51 lv$3
@@ -2338,11 +2333,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$51 into 
+	# get address of local var:arr_$51
 	ld t1, 352(sp)
 	add t0, t1, t0
 
-	# get address of b0$14 into 
+	# get address of local var:b0$14
 	sd t0, 344(sp)
 
 	# load b0$15 b0$14
@@ -2352,7 +2347,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b0$15
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 336(sp)
 
 	# fmul result_$35 a2$7 b0$15
@@ -2382,11 +2377,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$52 into 
+	# get address of local var:arr_$52
 	ld t1, 320(sp)
 	add t0, t1, t0
 
-	# get address of a2$8 into 
+	# get address of local var:a2$8
 	sd t0, 312(sp)
 
 	# load a2$9 a2$8
@@ -2396,7 +2391,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a2$9
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 304(sp)
 
 	# load arr_$53 lv$4
@@ -2416,11 +2411,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$53 into 
+	# get address of local var:arr_$53
 	ld t1, 296(sp)
 	add t0, t1, t0
 
-	# get address of b1$14 into 
+	# get address of local var:b1$14
 	sd t0, 288(sp)
 
 	# load b1$15 b1$14
@@ -2430,7 +2425,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b1$15
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 280(sp)
 
 	# fmul result_$36 a2$9 b1$15
@@ -2470,11 +2465,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$54 into 
+	# get address of local var:arr_$54
 	ld t1, 256(sp)
 	add t0, t1, t0
 
-	# get address of a2$10 into 
+	# get address of local var:a2$10
 	sd t0, 248(sp)
 
 	# load a2$11 a2$10
@@ -2484,7 +2479,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a2$11
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 240(sp)
 
 	# load arr_$55 lv$5
@@ -2504,11 +2499,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$55 into 
+	# get address of local var:arr_$55
 	ld t1, 232(sp)
 	add t0, t1, t0
 
-	# get address of b2$14 into 
+	# get address of local var:b2$14
 	sd t0, 224(sp)
 
 	# load b2$15 b2$14
@@ -2518,7 +2513,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b2$15
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 216(sp)
 
 	# fmul result_$38 a2$11 b2$15
@@ -2570,11 +2565,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$56 into 
+	# get address of local var:arr_$56
 	ld t1, 192(sp)
 	add t0, t1, t0
 
-	# get address of c2$2 into 
+	# get address of local var:c2$2
 	sd t0, 184(sp)
 
 	# load arr_$57 lv$2
@@ -2594,11 +2589,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$57 into 
+	# get address of local var:arr_$57
 	ld t1, 176(sp)
 	add t0, t1, t0
 
-	# get address of a2$12 into 
+	# get address of local var:a2$12
 	sd t0, 168(sp)
 
 	# load a2$13 a2$12
@@ -2608,7 +2603,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a2$13
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 160(sp)
 
 	# load arr_$58 lv$3
@@ -2628,11 +2623,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$58 into 
+	# get address of local var:arr_$58
 	ld t1, 152(sp)
 	add t0, t1, t0
 
-	# get address of b0$16 into 
+	# get address of local var:b0$16
 	sd t0, 144(sp)
 
 	# load b0$17 b0$16
@@ -2642,7 +2637,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b0$17
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 136(sp)
 
 	# fmul result_$40 a2$13 b0$17
@@ -2672,11 +2667,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$59 into 
+	# get address of local var:arr_$59
 	ld t1, 120(sp)
 	add t0, t1, t0
 
-	# get address of a2$14 into 
+	# get address of local var:a2$14
 	sd t0, 112(sp)
 
 	# load a2$15 a2$14
@@ -2686,7 +2681,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a2$15
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 104(sp)
 
 	# load arr_$60 lv$4
@@ -2706,11 +2701,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$60 into 
+	# get address of local var:arr_$60
 	ld t1, 96(sp)
 	add t0, t1, t0
 
-	# get address of b1$16 into 
+	# get address of local var:b1$16
 	sd t0, 88(sp)
 
 	# load b1$17 b1$16
@@ -2720,7 +2715,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b1$17
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 80(sp)
 
 	# fmul result_$41 a2$15 b1$17
@@ -2760,11 +2755,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$61 into 
+	# get address of local var:arr_$61
 	ld t1, 56(sp)
 	add t0, t1, t0
 
-	# get address of a2$16 into 
+	# get address of local var:a2$16
 	sd t0, 48(sp)
 
 	# load a2$17 a2$16
@@ -2774,7 +2769,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:a2$17
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 40(sp)
 
 	# load arr_$62 lv$5
@@ -2794,11 +2789,11 @@ mulEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$62 into 
+	# get address of local var:arr_$62
 	ld t1, 32(sp)
 	add t0, t1, t0
 
-	# get address of b2$16 into 
+	# get address of local var:b2$16
 	sd t0, 24(sp)
 
 	# load b2$17 b2$16
@@ -2808,7 +2803,7 @@ mulEntry:
 	addi t3, t3, 0
 
 	# get address of local var:b2$17
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 16(sp)
 
 	# fmul result_$43 a2$17 b2$17
@@ -2856,10 +2851,10 @@ mulEntry:
 .type main, @function
 .globl main
 main:
-mainEntry74:
+mainEntry75:
+	addi sp, sp, -984
 
 	# reserve space
-	addi sp, sp, -984
 
 	# save the parameters
 
@@ -3057,11 +3052,11 @@ whileBody_213:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 664(sp)
 	add t0, t1, t0
 
-	# get address of a0 into 
+	# get address of local var:a0
 	sd t0, 584(sp)
 
 	# load i$2 lv$9
@@ -3080,7 +3075,7 @@ whileBody_213:
 	ld t1, 576(sp)
 
 	# get address of local var:i2f_
-	fcvt.d.w ft0, t1
+	fcvt.d.l ft0, t1
 	fsd ft0, 568(sp)
 
 	# a0 i2f_
@@ -3112,11 +3107,11 @@ whileBody_213:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 696(sp)
 	add t0, t1, t0
 
-	# get address of a1 into 
+	# get address of local var:a1
 	sd t0, 552(sp)
 
 	# load i$4 lv$9
@@ -3135,7 +3130,7 @@ whileBody_213:
 	ld t1, 544(sp)
 
 	# get address of local var:i2f_$1
-	fcvt.d.w ft0, t1
+	fcvt.d.l ft0, t1
 	fsd ft0, 536(sp)
 
 	# a1 i2f_$1
@@ -3167,11 +3162,11 @@ whileBody_213:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 728(sp)
 	add t0, t1, t0
 
-	# get address of a2 into 
+	# get address of local var:a2
 	sd t0, 520(sp)
 
 	# load i$6 lv$9
@@ -3190,7 +3185,7 @@ whileBody_213:
 	ld t1, 512(sp)
 
 	# get address of local var:i2f_$2
-	fcvt.d.w ft0, t1
+	fcvt.d.l ft0, t1
 	fsd ft0, 504(sp)
 
 	# a2 i2f_$2
@@ -3222,11 +3217,11 @@ whileBody_213:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$3 into 
+	# get address of local var:lv$3
 	ld t1, 760(sp)
 	add t0, t1, t0
 
-	# get address of b0 into 
+	# get address of local var:b0
 	sd t0, 488(sp)
 
 	# load i$8 lv$9
@@ -3245,7 +3240,7 @@ whileBody_213:
 	ld t1, 480(sp)
 
 	# get address of local var:i2f_$3
-	fcvt.d.w ft0, t1
+	fcvt.d.l ft0, t1
 	fsd ft0, 472(sp)
 
 	# b0 i2f_$3
@@ -3277,11 +3272,11 @@ whileBody_213:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 792(sp)
 	add t0, t1, t0
 
-	# get address of b1 into 
+	# get address of local var:b1
 	sd t0, 456(sp)
 
 	# load i$10 lv$9
@@ -3300,7 +3295,7 @@ whileBody_213:
 	ld t1, 448(sp)
 
 	# get address of local var:i2f_$4
-	fcvt.d.w ft0, t1
+	fcvt.d.l ft0, t1
 	fsd ft0, 440(sp)
 
 	# b1 i2f_$4
@@ -3332,11 +3327,11 @@ whileBody_213:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$5 into 
+	# get address of local var:lv$5
 	ld t1, 824(sp)
 	add t0, t1, t0
 
-	# get address of b2 into 
+	# get address of local var:b2
 	sd t0, 424(sp)
 
 	# load i$12 lv$9
@@ -3355,7 +3350,7 @@ whileBody_213:
 	ld t1, 416(sp)
 
 	# get address of local var:i2f_$5
-	fcvt.d.w ft0, t1
+	fcvt.d.l ft0, t1
 	fsd ft0, 408(sp)
 
 	# b2 i2f_$5
@@ -3413,11 +3408,11 @@ next_508:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
+	# get address of local var:lv
 	ld t1, 664(sp)
 	add t0, t1, t0
 
-	# get address of a0$1 into 
+	# get address of local var:a0$1
 	sd t0, 384(sp)
 
 	# gep a1$1 
@@ -3427,11 +3422,11 @@ next_508:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
+	# get address of local var:lv$1
 	ld t1, 696(sp)
 	add t0, t1, t0
 
-	# get address of a1$1 into 
+	# get address of local var:a1$1
 	sd t0, 376(sp)
 
 	# gep a2$1 
@@ -3441,11 +3436,11 @@ next_508:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
+	# get address of local var:lv$2
 	ld t1, 728(sp)
 	add t0, t1, t0
 
-	# get address of a2$1 into 
+	# get address of local var:a2$1
 	sd t0, 368(sp)
 
 	# gep b0$1 
@@ -3455,11 +3450,11 @@ next_508:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$3 into 
+	# get address of local var:lv$3
 	ld t1, 760(sp)
 	add t0, t1, t0
 
-	# get address of b0$1 into 
+	# get address of local var:b0$1
 	sd t0, 360(sp)
 
 	# gep b1$1 
@@ -3469,11 +3464,11 @@ next_508:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
+	# get address of local var:lv$4
 	ld t1, 792(sp)
 	add t0, t1, t0
 
-	# get address of b1$1 into 
+	# get address of local var:b1$1
 	sd t0, 352(sp)
 
 	# gep b2$1 
@@ -3483,11 +3478,11 @@ next_508:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$5 into 
+	# get address of local var:lv$5
 	ld t1, 824(sp)
 	add t0, t1, t0
 
-	# get address of b2$1 into 
+	# get address of local var:b2$1
 	sd t0, 344(sp)
 
 	# gep c0 
@@ -3497,11 +3492,11 @@ next_508:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$6 into 
+	# get address of local var:lv$6
 	ld t1, 880(sp)
 	add t0, t1, t0
 
-	# get address of c0 into 
+	# get address of local var:c0
 	sd t0, 336(sp)
 
 	# gep c1 
@@ -3511,11 +3506,11 @@ next_508:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$7 into 
+	# get address of local var:lv$7
 	ld t1, 912(sp)
 	add t0, t1, t0
 
-	# get address of c1 into 
+	# get address of local var:c1
 	sd t0, 328(sp)
 
 	# gep c2 
@@ -3525,41 +3520,55 @@ next_508:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$8 into 
+	# get address of local var:lv$8
 	ld t1, 944(sp)
 	add t0, t1, t0
 
-	# get address of c2 into 
+	# get address of local var:c2
 	sd t0, 320(sp)
 
 	# prepare params
 
-	# get address of local var:a0$1
-	ld a0, 384(sp)
+	# fetch variables
+	ld t1, 384(sp)
+	mv a0, t1
 
-	# get address of local var:a1$1
-	ld a1, 376(sp)
+	# fetch variables
+	ld t1, 376(sp)
+	mv a1, t1
 
-	# get address of local var:a2$1
-	ld a2, 368(sp)
+	# fetch variables
+	ld t1, 368(sp)
+	mv a2, t1
 
-	# get address of local var:b0$1
-	ld a3, 360(sp)
+	# fetch variables
+	ld t1, 360(sp)
+	mv a3, t1
 
-	# get address of local var:b1$1
-	ld a4, 352(sp)
+	# fetch variables
+	ld t1, 352(sp)
+	addi sp, sp, -8
+	sd t1, 984(sp)
 
-	# get address of local var:b2$1
-	ld a5, 344(sp)
+	# fetch variables
+	ld t1, 344(sp)
+	addi sp, sp, -8
+	sd t1, 984(sp)
 
-	# get address of local var:c0
-	ld a6, 336(sp)
+	# fetch variables
+	ld t1, 336(sp)
+	addi sp, sp, -8
+	sd t1, 984(sp)
 
-	# get address of local var:c1
-	ld a7, 328(sp)
+	# fetch variables
+	ld t1, 328(sp)
+	addi sp, sp, -8
+	sd t1, 984(sp)
 
-	# get address of local var:c2
-	ld s0, 320(sp)
+	# fetch variables
+	ld t1, 320(sp)
+	addi sp, sp, -8
+	sd t1, 984(sp)
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3667,11 +3676,11 @@ whileBody_214:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$6 into 
+	# get address of local var:lv$6
 	ld t1, 880(sp)
 	add t0, t1, t0
 
-	# get address of c0$1 into 
+	# get address of local var:c0$1
 	sd t0, 256(sp)
 
 	# load c0$2 c0$1
@@ -3681,7 +3690,7 @@ whileBody_214:
 	addi t3, t3, 0
 
 	# get address of local var:c0$2
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 248(sp)
 
 	# floatToInt f2i_ c0$2
@@ -3690,7 +3699,7 @@ whileBody_214:
 	fld ft1, 248(sp)
 
 	# get address of local var:f2i_
-	fcvt.w.d t0, ft1
+	fcvt.l.d t0, ft1
 	sd t0, 240(sp)
 
 	# lv$10 f2i_
@@ -3899,11 +3908,11 @@ whileBody_215:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$7 into 
+	# get address of local var:lv$7
 	ld t1, 912(sp)
 	add t0, t1, t0
 
-	# get address of c1$1 into 
+	# get address of local var:c1$1
 	sd t0, 152(sp)
 
 	# load c1$2 c1$1
@@ -3913,7 +3922,7 @@ whileBody_215:
 	addi t3, t3, 0
 
 	# get address of local var:c1$2
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 144(sp)
 
 	# floatToInt f2i_$1 c1$2
@@ -3922,7 +3931,7 @@ whileBody_215:
 	fld ft1, 144(sp)
 
 	# get address of local var:f2i_$1
-	fcvt.w.d t0, ft1
+	fcvt.l.d t0, ft1
 	sd t0, 136(sp)
 
 	# lv$10 f2i_$1
@@ -4131,11 +4140,11 @@ whileBody_216:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$8 into 
+	# get address of local var:lv$8
 	ld t1, 944(sp)
 	add t0, t1, t0
 
-	# get address of c2$1 into 
+	# get address of local var:c2$1
 	sd t0, 48(sp)
 
 	# load c2$2 c2$1
@@ -4145,7 +4154,7 @@ whileBody_216:
 	addi t3, t3, 0
 
 	# get address of local var:c2$2
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 40(sp)
 
 	# floatToInt f2i_$2 c2$2
@@ -4154,7 +4163,7 @@ whileBody_216:
 	fld ft1, 40(sp)
 
 	# get address of local var:f2i_$2
-	fcvt.w.d t0, ft1
+	fcvt.l.d t0, ft1
 	sd t0, 32(sp)
 
 	# lv$10 f2i_$2

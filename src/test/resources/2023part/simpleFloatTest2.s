@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry13:
+mainEntry15:
 	addi sp, sp, -104
 
 	# reserve space
@@ -74,7 +74,7 @@ mainEntry13:
 	addi t3, t3, 0
 
 	# get address of local var:a
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 56(sp)
 
 	# cmp a  cond_eq_tmp_
@@ -142,7 +142,7 @@ secondCond_3:
 	addi t3, t3, 0
 
 	# get address of local var:a$1
-	ld t0, 0(t3)
+	fld ft0, 0(t3)
 	fsd ft0, 24(sp)
 
 	# cmp a$1  cond_gt_tmp_

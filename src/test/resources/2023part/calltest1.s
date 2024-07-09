@@ -6,134 +6,144 @@
 .globl g1
 g1:
 g1Entry:
-
-	# reserve space
 	addi sp, sp, -128
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 120(sp)
+	sd a1, 112(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 120(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 112(sp)
+	# get address of local var:1
 
-	# allocate i
+	# allocate lv$4
 	addi t0, sp, 96
 
-	# get address of local var:i
+	# get address of local var:lv$4
 	sd t0, 104(sp)
 
-	# store i 0
+	# allocate lv$3
+	addi t0, sp, 80
+
+	# get address of local var:lv$3
+	sd t0, 88(sp)
+
+	# allocate lv$2
+	addi t0, sp, 64
+
+	# get address of local var:lv$2
+	sd t0, 72(sp)
+
+	# allocate lv$1
+	addi t0, sp, 48
+
+	# get address of local var:lv$1
+	sd t0, 56(sp)
+
+	# allocate lv
+	addi t0, sp, 32
+
+	# get address of local var:lv
+	sd t0, 40(sp)
+
+	# lv 0
 
 	# fetch variables
 	ld t1, 120(sp)
 
-	# get address of i points to
-	ld t3, 104(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	# store lv 0
 
-	# allocate j
-	addi t0, sp, 80
-
-	# get address of local var:j
-	sd t0, 88(sp)
-
-	# store j 1
-
-	# fetch variables
-	ld t1, 112(sp)
-
-	# get address of j points to
-	ld t3, 88(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
-
-	# allocate a
-	addi t0, sp, 64
-
-	# get address of local var:a
-	sd t0, 72(sp)
-
-	# store a 
-
-	# fetch variables
-	li t1, 1
-
-	# get address of a points to
-	ld t3, 72(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
-
-	# allocate b
-	addi t0, sp, 48
-
-	# get address of local var:b
-	sd t0, 56(sp)
-
-	# store b 
-
-	# fetch variables
-	li t1, 2
-
-	# get address of b points to
-	ld t3, 56(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
-
-	# allocate c
-	addi t0, sp, 32
-
-	# get address of local var:c
-	sd t0, 40(sp)
-
-	# load j$1 j
-
-	# get address of j points to
-	ld t3, 88(sp)
-	addi t3, t3, 0
-
-	# get address of local var:j$1
-	ld t0, 0(t3)
-	sd t0, 24(sp)
-
-	# store c j$1
-
-	# fetch variables
-	ld t1, 24(sp)
-
-	# get address of c points to
+	# get address of lv points to
 	ld t3, 40(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load i$1 i
+	# lv$1 1
 
-	# get address of i points to
-	ld t3, 104(sp)
+	# fetch variables
+	ld t1, 112(sp)
+
+	# store lv$1 1
+
+	# get address of lv$1 points to
+	ld t3, 56(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# lv$2 
+
+	# fetch variables
+	li t1, 1
+
+	# store lv$2 
+
+	# get address of lv$2 points to
+	ld t3, 72(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# lv$3 
+
+	# fetch variables
+	li t1, 2
+
+	# store lv$3 
+
+	# get address of lv$3 points to
+	ld t3, 88(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# load j lv$1
+
+	# get address of lv$1 points to
+	ld t3, 56(sp)
 	addi t3, t3, 0
 
-	# get address of local var:i$1
+	# get address of local var:j
+	ld t0, 0(t3)
+	sd t0, 24(sp)
+
+	# lv$4 j
+
+	# fetch variables
+	ld t1, 24(sp)
+
+	# store lv$4 j
+
+	# get address of lv$4 points to
+	ld t3, 104(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# load i lv
+
+	# get address of lv points to
+	ld t3, 40(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# load j$2 j
+	# load j$1 lv$1
 
-	# get address of j points to
-	ld t3, 88(sp)
+	# get address of lv$1 points to
+	ld t3, 56(sp)
 	addi t3, t3, 0
 
-	# get address of local var:j$2
+	# get address of local var:j$1
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_ i$1 j$2
+	# add result_ i j$1
 
 	# fetch variables
 	ld t1, 16(sp)
@@ -157,72 +167,76 @@ g1Entry:
 .globl f1
 f1:
 f1Entry:
-
-	# reserve space
 	addi sp, sp, -104
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 96(sp)
+	sd a1, 88(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 96(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 88(sp)
+	# get address of local var:1
 
-	# allocate i
+	# allocate lv$1
 	addi t0, sp, 72
 
-	# get address of local var:i
+	# get address of local var:lv$1
 	sd t0, 80(sp)
 
-	# store i 0
+	# allocate lv
+	addi t0, sp, 56
+
+	# get address of local var:lv
+	sd t0, 64(sp)
+
+	# lv 0
 
 	# fetch variables
 	ld t1, 96(sp)
 
-	# get address of i points to
-	ld t3, 80(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	# store lv 0
 
-	# allocate j
-	addi t0, sp, 56
-
-	# get address of local var:j
-	sd t0, 64(sp)
-
-	# store j 1
-
-	# fetch variables
-	ld t1, 88(sp)
-
-	# get address of j points to
+	# get address of lv points to
 	ld t3, 64(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load i$1 i
+	# lv$1 1
 
-	# get address of i points to
+	# fetch variables
+	ld t1, 88(sp)
+
+	# store lv$1 1
+
+	# get address of lv$1 points to
 	ld t3, 80(sp)
 	addi t3, t3, 0
+	sd t1, 0(t3)
 
-	# get address of local var:i$1
+	# load i lv
+
+	# get address of lv points to
+	ld t3, 64(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# load i$2 i
+	# load i$1 lv
 
-	# get address of i points to
-	ld t3, 80(sp)
+	# get address of lv points to
+	ld t3, 64(sp)
 	addi t3, t3, 0
 
-	# get address of local var:i$2
+	# get address of local var:i$1
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
@@ -250,23 +264,23 @@ f1Entry:
 	# get address of local var:g1
 	sd a0, 32(sp)
 
-	# load j$1 j
+	# load j lv$1
 
-	# get address of j points to
-	ld t3, 64(sp)
+	# get address of lv$1 points to
+	ld t3, 80(sp)
 	addi t3, t3, 0
 
-	# get address of local var:j$1
+	# get address of local var:j
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# load j$2 j
+	# load j$1 lv$1
 
-	# get address of j points to
-	ld t3, 64(sp)
+	# get address of lv$1 points to
+	ld t3, 80(sp)
 	addi t3, t3, 0
 
-	# get address of local var:j$2
+	# get address of local var:j$1
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
@@ -318,9 +332,9 @@ f1Entry:
 .globl main
 main:
 mainEntry:
+	addi sp, sp, -16
 
 	# reserve space
-	addi sp, sp, -16
 
 	# save the parameters
 

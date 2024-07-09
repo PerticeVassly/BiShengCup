@@ -6,47 +6,49 @@
 .globl fib
 fib:
 fibEntry:
-
-	# reserve space
 	addi sp, sp, -144
-
-	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 136(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 136(sp)
+	# get address of local var:0
 
-	# allocate n
+	# allocate lv
 	addi t0, sp, 120
 
-	# get address of local var:n
+	# get address of local var:lv
 	sd t0, 128(sp)
 
-	# store n 0
+	# lv 0
 
 	# fetch variables
 	ld t1, 136(sp)
 
-	# get address of n points to
+	# store lv 0
+
+	# get address of lv points to
 	ld t3, 128(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load n$1 n
+	# load n lv
 
-	# get address of n points to
+	# get address of lv points to
 	ld t3, 128(sp)
 	addi t3, t3, 0
 
-	# get address of local var:n$1
+	# get address of local var:n
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# cmp n$1  cond_eq_tmp_
+	# cmp n  cond_eq_tmp_
 
 	# fetch variables
 	ld t1, 112(sp)
@@ -57,12 +59,12 @@ fibEntry:
 	seqz t0, t0
 	sd t0, 104(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
 	ld t1, 104(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 96(sp)
 
@@ -98,17 +100,17 @@ ifTrue_4:
 	ret 
 next_4:
 
-	# load n$2 n
+	# load n$1 lv
 
-	# get address of n points to
+	# get address of lv points to
 	ld t3, 128(sp)
 	addi t3, t3, 0
 
-	# get address of local var:n$2
+	# get address of local var:n$1
 	ld t0, 0(t3)
 	sd t0, 80(sp)
 
-	# cmp n$2  cond_eq_tmp_$1
+	# cmp n$1  cond_eq_tmp_$1
 
 	# fetch variables
 	ld t1, 80(sp)
@@ -119,12 +121,12 @@ next_4:
 	seqz t0, t0
 	sd t0, 72(sp)
 
+	# zext cond_tmp_$1 cond_eq_tmp_$1
+
 	# fetch variables
 	ld t1, 72(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_eq_tmp_$1
 	mv t0, t1
 	sd t0, 64(sp)
 
@@ -160,17 +162,17 @@ ifTrue_5:
 	ret 
 next_5:
 
-	# load n$3 n
+	# load n$2 lv
 
-	# get address of n points to
+	# get address of lv points to
 	ld t3, 128(sp)
 	addi t3, t3, 0
 
-	# get address of local var:n$3
+	# get address of local var:n$2
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# sub result_ n$3 
+	# sub result_ n$2 
 
 	# fetch variables
 	ld t1, 48(sp)
@@ -200,17 +202,17 @@ next_5:
 	# get address of local var:fib
 	sd a0, 32(sp)
 
-	# load n$4 n
+	# load n$3 lv
 
-	# get address of n points to
+	# get address of lv points to
 	ld t3, 128(sp)
 	addi t3, t3, 0
 
-	# get address of local var:n$4
+	# get address of local var:n$3
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# sub result_$1 n$4 
+	# sub result_$1 n$3 
 
 	# fetch variables
 	ld t1, 24(sp)
@@ -263,17 +265,17 @@ next_5:
 .type main, @function
 .globl main
 main:
-mainEntry7:
+mainEntry9:
+	addi sp, sp, -24
 
 	# reserve space
-	addi sp, sp, -24
 
 	# save the parameters
 
-	# allocate n
+	# allocate lv
 	addi t0, sp, 8
 
-	# get address of local var:n
+	# get address of local var:lv
 	sd t0, 16(sp)
 
 	# prepare params

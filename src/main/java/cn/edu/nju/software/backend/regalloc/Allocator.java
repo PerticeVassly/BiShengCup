@@ -76,10 +76,7 @@ public class Allocator {
         if (((Pointer)globalVar.getType()).getBase() instanceof FloatType) {
             generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
             generator.addInstruction(new RiscFld(new Register("ft" + i), new IndirectRegister("t3", 0)));
-        } else if (((Pointer) globalVar.getType()).getBase() instanceof IntType) {
-            generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
-            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t3", 0)));
-        } else if (((Pointer) globalVar.getType()).getBase() instanceof BoolType) {
+        } else if (((Pointer) globalVar.getType()).getBase() instanceof IntType || ((Pointer) globalVar.getType()).getBase() instanceof BoolType){
             generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
             generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t3", 0)));
         } else if( ((Pointer) globalVar.getType()).getBase() instanceof ArrayType){
@@ -116,10 +113,33 @@ public class Allocator {
         }
     }
 
+
     public Operand getAddrOfLocalVar(ValueRef variable) {
         generator.insertComment("get address of local var:" + variable.getName());
         if (variable instanceof LocalVar) {
             return new IndirectRegister("sp", memoryManager.getOffset(variable));
+        } else {
+            assert false;
+            return null;
+        }
+    }
+
+    public Operand getAddrOfGlobalVar(ValueRef variable) {
+        generator.insertComment("get address of global var:" + variable.getName());
+        if (variable instanceof GlobalVar) {
+            generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(variable.getName()))));
+            return new IndirectRegister("t3", 0);
+        } else {
+            assert false;
+            return null;
+        }
+    }
+
+    public Operand getAddrOfVar(ValueRef variable) {
+        if (variable instanceof GlobalVar) {
+            return getAddrOfGlobalVar(variable);
+        } else if (variable instanceof LocalVar) {
+            return getAddrOfLocalVar(variable);
         } else {
             assert false;
             return null;
