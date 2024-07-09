@@ -7,210 +7,312 @@
 doubleWhile:
 doubleWhileEntry:
 
-	# allocate space for local variables
-	addi sp, sp, -68
+	# reserve space
+	addi sp, sp, -152
+
+	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
 
-	# store i 
+	# allocate i
+	addi t0, sp, 136
+
+	# get address of local var:i
+	sd t0, 144(sp)
+
+	# i 
 
 	# fetch variables
 	li t1, 5
-	sw t1, 64(sp)
 
-	# store j 
+	# store i 
+
+	# get address of i points to
+	ld t3, 144(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# allocate j
+	addi t0, sp, 120
+
+	# get address of local var:j
+	sd t0, 128(sp)
+
+	# j 
 
 	# fetch variables
 	li t1, 7
-	sw t1, 60(sp)
 
-	# br whileCond_52
-	j whileCond_52
-whileCond_52:
+	# store j 
+
+	# get address of j points to
+	ld t3, 128(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# br whileCond_55
+	j whileCond_55
+whileCond_55:
 
 	# load i$1 i
-	lw t0, 64(sp)
-	sw t0, 56(sp)
+
+	# get address of i points to
+	ld t3, 144(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i$1
+	ld t0, 0(t3)
+	sd t0, 112(sp)
 
 	# cmp i$1  cond_lt_tmp_
 
 	# fetch variables
-	lw t1, 56(sp)
+	ld t1, 112(sp)
 	li t2, 100
-	slt t0, t1, t2
-	sw t0, 52(sp)
 
-	# fetch variables
-	lw t1, 52(sp)
+	# get address of local var:cond_lt_tmp_
+	slt t0, t1, t2
+	sd t0, 104(sp)
 
 	# zext cond_tmp_ cond_lt_tmp_
+
+	# fetch variables
+	ld t1, 104(sp)
+
+	# get address of local var:cond_tmp_
 	mv t0, t1
-	sw t0, 48(sp)
+	sd t0, 96(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 48(sp)
+	ld t1, 96(sp)
 	li t2, 0
+
+	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sw t0, 44(sp)
+	sd t0, 88(sp)
 
-	# condBr cond_ whileBody_52 next_81
+	# condBr cond_ whileBody_55 next_86
 
 	# fetch variables
-	lw t1, 44(sp)
-	beqz t1, next_81
-	j whileBody_52
-whileBody_52:
+	ld t1, 88(sp)
+	beqz t1, next_86
+	j whileBody_55
+whileBody_55:
 
 	# load i$2 i
-	lw t0, 64(sp)
-	sw t0, 40(sp)
+
+	# get address of i points to
+	ld t3, 144(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i$2
+	ld t0, 0(t3)
+	sd t0, 80(sp)
 
 	# add result_ i$2 
 
 	# fetch variables
-	lw t1, 40(sp)
+	ld t1, 80(sp)
 	li t2, 30
+
+	# get address of local var:result_
 	add t0, t1, t2
-	sw t0, 36(sp)
+	sd t0, 72(sp)
+
+	# i result_
+
+	# fetch variables
+	ld t1, 72(sp)
 
 	# store i result_
 
-	# fetch variables
-	lw t1, 36(sp)
-	sw t1, 64(sp)
+	# get address of i points to
+	ld t3, 144(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
-	# br whileCond_53
-	j whileCond_53
-next_81:
+	# br whileCond_56
+	j whileCond_56
+next_86:
 
 	# load j$4 j
-	lw t0, 60(sp)
-	sw t0, 32(sp)
+
+	# get address of j points to
+	ld t3, 128(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j$4
+	ld t0, 0(t3)
+	sd t0, 64(sp)
 
 	# ret j$4
 
 	# fetch variables
-	lw t1, 32(sp)
+	ld t1, 64(sp)
 	mv a0, t1
-	addi sp, sp, 68
+	addi sp, sp, 152
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_53:
+whileCond_56:
 
 	# load j$1 j
-	lw t0, 60(sp)
-	sw t0, 28(sp)
+
+	# get address of j points to
+	ld t3, 128(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j$1
+	ld t0, 0(t3)
+	sd t0, 56(sp)
 
 	# cmp j$1  cond_lt_tmp_$1
 
 	# fetch variables
-	lw t1, 28(sp)
+	ld t1, 56(sp)
 	li t2, 100
-	slt t0, t1, t2
-	sw t0, 24(sp)
 
-	# fetch variables
-	lw t1, 24(sp)
+	# get address of local var:cond_lt_tmp_$1
+	slt t0, t1, t2
+	sd t0, 48(sp)
 
 	# zext cond_tmp_$1 cond_lt_tmp_$1
+
+	# fetch variables
+	ld t1, 48(sp)
+
+	# get address of local var:cond_tmp_$1
 	mv t0, t1
-	sw t0, 20(sp)
+	sd t0, 40(sp)
 
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	lw t1, 20(sp)
+	ld t1, 40(sp)
 	li t2, 0
+
+	# get address of local var:cond_$1
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sw t0, 16(sp)
+	sd t0, 32(sp)
 
-	# condBr cond_$1 whileBody_53 next_82
+	# condBr cond_$1 whileBody_56 next_87
 
 	# fetch variables
-	lw t1, 16(sp)
-	beqz t1, next_82
-	j whileBody_53
-whileBody_53:
+	ld t1, 32(sp)
+	beqz t1, next_87
+	j whileBody_56
+whileBody_56:
 
 	# load j$2 j
-	lw t0, 60(sp)
-	sw t0, 12(sp)
+
+	# get address of j points to
+	ld t3, 128(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j$2
+	ld t0, 0(t3)
+	sd t0, 24(sp)
 
 	# add result_$1 j$2 
 
 	# fetch variables
-	lw t1, 12(sp)
+	ld t1, 24(sp)
 	li t2, 6
+
+	# get address of local var:result_$1
 	add t0, t1, t2
-	sw t0, 8(sp)
+	sd t0, 16(sp)
+
+	# j result_$1
+
+	# fetch variables
+	ld t1, 16(sp)
 
 	# store j result_$1
 
-	# fetch variables
-	lw t1, 8(sp)
-	sw t1, 60(sp)
+	# get address of j points to
+	ld t3, 128(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
-	# br whileCond_53
-	j whileCond_53
-next_82:
+	# br whileCond_56
+	j whileCond_56
+next_87:
 
 	# load j$3 j
-	lw t0, 60(sp)
-	sw t0, 4(sp)
+
+	# get address of j points to
+	ld t3, 128(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j$3
+	ld t0, 0(t3)
+	sd t0, 8(sp)
 
 	# sub result_$2 j$3 
 
 	# fetch variables
-	lw t1, 4(sp)
+	ld t1, 8(sp)
 	li t2, 100
+
+	# get address of local var:result_$2
 	sub t0, t1, t2
-	sw t0, 0(sp)
+	sd t0, 0(sp)
+
+	# j result_$2
+
+	# fetch variables
+	ld t1, 0(sp)
 
 	# store j result_$2
 
-	# fetch variables
-	lw t1, 0(sp)
-	sw t1, 60(sp)
+	# get address of j points to
+	ld t3, 128(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
-	# br whileCond_52
-	j whileCond_52
+	# br whileCond_55
+	j whileCond_55
 .type main, @function
 .globl main
 main:
-mainEntry22:
+mainEntry24:
 
-	# allocate space for local variables
-	addi sp, sp, -4
+	# reserve space
+	addi sp, sp, -8
+
+	# save the parameters
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
+	addi sp, sp, -8
+	sd ra, 0(sp)
 
 	# call doubleWhile
 	call doubleWhile
 
 	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 0(sp)
+	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# get address of local var:doubleWhile
+	sd a0, 0(sp)
 
 	# ret doubleWhile
 
 	# fetch variables
-	lw t1, 0(sp)
+	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 4
+	addi sp, sp, 8
 	ret 

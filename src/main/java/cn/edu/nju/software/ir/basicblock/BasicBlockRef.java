@@ -9,6 +9,7 @@ import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class BasicBlockRef extends ValueRef {
     private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
@@ -90,8 +91,8 @@ public class BasicBlockRef extends ValueRef {
         return irs.get(index);
     }
 
-    public List<Instruction> getIrs() {
-        return irs;
+    public Stream<Instruction> getIrs() {
+        return irs.stream();
     }
 
     public LocalVar createLocalVar(TypeRef type, String name) {

@@ -27,7 +27,7 @@ public class CFGBuildPass implements ModulePass{
     }
     @Override
     public boolean runOnModule(ModuleRef module) {
-        for (FunctionValue functionValue:module.getFunctions()) {
+        for (FunctionValue functionValue:module.getFunctions().toList()) {
              basicBlockCFG.put(functionValue, buildBasicBlockCFG(functionValue));
         }
         if(dbgFlag){

@@ -81,15 +81,16 @@ public class Main {
             assert false;
         }
 
-        PassManager passManager=new PassManager(module);
-        //TODO:调试完成后删除这句
-        passManager.setDbgFlag();
-        passManager.runPass();
+//        PassManager passManager=new PassManager(module);
+//        //TODO:调试完成后删除这句
+//        passManager.setDbgFlag();
+//        passManager.runPass();
         if (emitLLVM) {
             module.dumpToFile(output);
         }
         if(emitAssembly){
             RiscModule riscModule = new RiscModule(module);
+            riscModule.codeGen();
             riscModule.dumpToFile(output);
         }
     }

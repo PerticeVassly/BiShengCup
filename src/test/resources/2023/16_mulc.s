@@ -2,33 +2,43 @@
 .align 2
 .globl a
 a:
-.word 5
+.dword 5
 .text
 .align 2
 .type main, @function
 .globl main
 main:
-mainEntry10:
+mainEntry11:
 
-	# allocate space for local variables
-	addi sp, sp, -8
+	# reserve space
+	addi sp, sp, -16
+
+	# save the parameters
 
 	# load a a
-	lw t0, a
-	sw t0, 4(sp)
+
+	# get address of a points to
+	la t3, a
+	addi t3, t3, 0
+
+	# get address of local var:a
+	ld t0, 0(t3)
+	sd t0, 8(sp)
 
 	# mul result_ a 
 
 	# fetch variables
-	lw t1, 4(sp)
+	ld t1, 8(sp)
 	li t2, 5
+
+	# get address of local var:result_
 	mul t0, t1, t2
-	sw t0, 0(sp)
+	sd t0, 0(sp)
 
 	# ret result_
 
 	# fetch variables
-	lw t1, 0(sp)
+	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 8
+	addi sp, sp, 16
 	ret 

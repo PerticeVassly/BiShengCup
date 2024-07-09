@@ -2,16 +2,18 @@
 .align 2
 .globl a
 a:
-.word 0
+.dword 0
 .text
 .align 2
 .type main, @function
 .globl main
 main:
-mainEntry83:
+mainEntry87:
 
-	# allocate space for local variables
+	# reserve space
 	addi sp, sp, 0
+
+	# save the parameters
 
 	# ret 
 

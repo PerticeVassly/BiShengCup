@@ -28,10 +28,10 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @isdigit(i32 %0) {
 isdigitEntry:
-  %x = alloca i32, align 4
-  store i32 %0, i32* %x, align 4
-  %x$1 = load i32, i32* %x, align 4
-  %cond_ge_tmp_ = icmp sge i32 %x$1, 48
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  %x = load i32, i32* %lv, align 4
+  %cond_ge_tmp_ = icmp sge i32 %x, 48
   %cond_tmp_ = zext i1 %cond_ge_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
   br i1 %cond_, label %secondCond_1, label %next_15
@@ -43,8 +43,8 @@ next_15:                                             ; pred = %isdigitEntry, %se
   ret i32 0
 
 secondCond_1:                                        ; pred = %isdigitEntry
-  %x$2 = load i32, i32* %x, align 4
-  %cond_le_tmp_ = icmp sle i32 %x$2, 57
+  %x$1 = load i32, i32* %lv, align 4
+  %cond_le_tmp_ = icmp sle i32 %x$1, 57
   %cond_tmp_$1 = zext i1 %cond_le_tmp_ to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
   br i1 %cond_$1, label %ifTrue_5, label %next_15
@@ -52,73 +52,73 @@ secondCond_1:                                        ; pred = %isdigitEntry
 
 define i32 @power(i32 %0, i32 %1) {
 powerEntry:
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
   %lv = alloca i32, align 4
-  %a = alloca i32, align 4
-  %b = alloca i32, align 4
-  store i32 %0, i32* %b, align 4
-  store i32 %1, i32* %a, align 4
-  store i32 1, i32* %lv, align 4
+  store i32 %0, i32* %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  store i32 1, i32* %lv$2, align 4
   br label %whileCond_10
 
 whileCond_10:                                        ; pred = %powerEntry, %whileBody_10
-  %a$1 = load i32, i32* %a, align 4
-  %cond_neq_tmp_ = icmp ne i32 %a$1, 0
+  %a = load i32, i32* %lv$1, align 4
+  %cond_neq_tmp_ = icmp ne i32 %a, 0
   %cond_tmp_ = zext i1 %cond_neq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
   br i1 %cond_, label %whileBody_10, label %next_16
 
 whileBody_10:                                        ; pred = %whileCond_10
-  %result = load i32, i32* %lv, align 4
-  %b$1 = load i32, i32* %b, align 4
-  %result_ = mul i32 %result, %b$1
-  store i32 %result_, i32* %lv, align 4
-  %a$2 = load i32, i32* %a, align 4
-  %result_$1 = sub i32 %a$2, 1
-  store i32 %result_$1, i32* %a, align 4
+  %result = load i32, i32* %lv$2, align 4
+  %b = load i32, i32* %lv, align 4
+  %result_ = mul i32 %result, %b
+  store i32 %result_, i32* %lv$2, align 4
+  %a$1 = load i32, i32* %lv$1, align 4
+  %result_$1 = sub i32 %a$1, 1
+  store i32 %result_$1, i32* %lv$1, align 4
   br label %whileCond_10
 
 next_16:                                             ; pred = %whileCond_10
-  %result$1 = load i32, i32* %lv, align 4
+  %result$1 = load i32, i32* %lv$2, align 4
   ret i32 %result$1
 }
 
 define i32 @getstr(i32* %0) {
 getstrEntry:
+  %lv$2 = alloca i32, align 4
   %lv$1 = alloca i32, align 4
-  %lv = alloca i32, align 4
-  %get = alloca i32*, align 4
-  store i32* %0, i32** %get, align 4
+  %lv = alloca i32*, align 4
+  store i32* %0, i32** %lv, align 4
   %getch = call i32 @getch()
-  store i32 %getch, i32* %lv, align 4
-  store i32 0, i32* %lv$1, align 4
+  store i32 %getch, i32* %lv$1, align 4
+  store i32 0, i32* %lv$2, align 4
   br label %whileCond_11
 
 whileCond_11:                                        ; pred = %getstrEntry, %whileBody_11
-  %x = load i32, i32* %lv, align 4
+  %x = load i32, i32* %lv$1, align 4
   %cond_neq_tmp_ = icmp ne i32 %x, 13
   %cond_tmp_ = zext i1 %cond_neq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
   br i1 %cond_, label %secondCond_2, label %next_17
 
 whileBody_11:                                        ; pred = %secondCond_2
-  %length = load i32, i32* %lv$1, align 4
-  %arr_ = load i32*, i32** %get, align 4
-  %get$1 = getelementptr i32, i32* %arr_, i32 %length
-  %x$2 = load i32, i32* %lv, align 4
-  store i32 %x$2, i32* %get$1, align 4
-  %length$1 = load i32, i32* %lv$1, align 4
+  %length = load i32, i32* %lv$2, align 4
+  %arr_ = load i32*, i32** %lv, align 4
+  %get = getelementptr i32, i32* %arr_, i32 %length
+  %x$2 = load i32, i32* %lv$1, align 4
+  store i32 %x$2, i32* %get, align 4
+  %length$1 = load i32, i32* %lv$2, align 4
   %result_ = add i32 %length$1, 1
-  store i32 %result_, i32* %lv$1, align 4
+  store i32 %result_, i32* %lv$2, align 4
   %getch$1 = call i32 @getch()
-  store i32 %getch$1, i32* %lv, align 4
+  store i32 %getch$1, i32* %lv$1, align 4
   br label %whileCond_11
 
 next_17:                                             ; pred = %whileCond_11, %secondCond_2
-  %length$2 = load i32, i32* %lv$1, align 4
+  %length$2 = load i32, i32* %lv$2, align 4
   ret i32 %length$2
 
 secondCond_2:                                        ; pred = %whileCond_11
-  %x$1 = load i32, i32* %lv, align 4
+  %x$1 = load i32, i32* %lv$1, align 4
   %cond_neq_tmp_$1 = icmp ne i32 %x$1, 10
   %cond_tmp_$1 = zext i1 %cond_neq_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
@@ -127,29 +127,29 @@ secondCond_2:                                        ; pred = %whileCond_11
 
 define void @intpush(i32 %0) {
 intpushEntry:
-  %x = alloca i32, align 4
-  store i32 %0, i32* %x, align 4
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
   %intt = load i32, i32* @gv1, align 4
   %result_ = add i32 %intt, 1
   store i32 %result_, i32* @gv1, align 4
   %intt$1 = load i32, i32* @gv1, align 4
   %ints = getelementptr [10000 x i32], [10000 x i32]* @gv, i32 0, i32 %intt$1
-  %x$1 = load i32, i32* %x, align 4
-  store i32 %x$1, i32* %ints, align 4
+  %x = load i32, i32* %lv, align 4
+  store i32 %x, i32* %ints, align 4
   ret void
 }
 
 define void @chapush(i32 %0) {
 chapushEntry:
-  %x = alloca i32, align 4
-  store i32 %0, i32* %x, align 4
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
   %chat = load i32, i32* @gv3, align 4
   %result_ = add i32 %chat, 1
   store i32 %result_, i32* @gv3, align 4
   %chat$1 = load i32, i32* @gv3, align 4
   %chas = getelementptr [10000 x i32], [10000 x i32]* @gv2, i32 0, i32 %chat$1
-  %x$1 = load i32, i32* %x, align 4
-  store i32 %x$1, i32* %chas, align 4
+  %x = load i32, i32* %lv, align 4
+  store i32 %x, i32* %chas, align 4
   ret void
 }
 
@@ -179,8 +179,8 @@ chapopEntry:
 
 define void @intadd(i32 %0) {
 intaddEntry:
-  %x = alloca i32, align 4
-  store i32 %0, i32* %x, align 4
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
   %intt = load i32, i32* @gv1, align 4
   %ints = getelementptr [10000 x i32], [10000 x i32]* @gv, i32 0, i32 %intt
   %intt$1 = load i32, i32* @gv1, align 4
@@ -193,8 +193,8 @@ intaddEntry:
   %intt$3 = load i32, i32* @gv1, align 4
   %ints$4 = getelementptr [10000 x i32], [10000 x i32]* @gv, i32 0, i32 %intt$3
   %ints$5 = load i32, i32* %ints$4, align 4
-  %x$1 = load i32, i32* %x, align 4
-  %result_$1 = add i32 %ints$5, %x$1
+  %x = load i32, i32* %lv, align 4
+  %result_$1 = add i32 %ints$5, %x
   store i32 %result_$1, i32* %ints$3, align 4
   ret void
 }

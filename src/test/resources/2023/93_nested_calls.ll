@@ -18,118 +18,118 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @func1(i32 %0, i32 %1, i32 %2) {
 func1Entry:
-  %z = alloca i32, align 4
-  %y = alloca i32, align 4
-  %x = alloca i32, align 4
-  store i32 %0, i32* %x, align 4
-  store i32 %1, i32* %y, align 4
-  store i32 %2, i32* %z, align 4
-  %z$1 = load i32, i32* %z, align 4
-  %cond_eq_tmp_ = icmp eq i32 %z$1, 0
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  store i32 %2, i32* %lv$2, align 4
+  %z = load i32, i32* %lv$2, align 4
+  %cond_eq_tmp_ = icmp eq i32 %z, 0
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
   br i1 %cond_, label %ifTrue_67, label %ifFalse_21
 
 ifTrue_67:                                         ; pred = %func1Entry
-  %x$1 = load i32, i32* %x, align 4
-  %y$1 = load i32, i32* %y, align 4
-  %result_ = mul i32 %x$1, %y$1
+  %x = load i32, i32* %lv, align 4
+  %y = load i32, i32* %lv$1, align 4
+  %result_ = mul i32 %x, %y
   ret i32 %result_
 
 ifFalse_21:                                        ; pred = %func1Entry
-  %x$2 = load i32, i32* %x, align 4
-  %y$2 = load i32, i32* %y, align 4
-  %z$2 = load i32, i32* %z, align 4
-  %result_$1 = sub i32 %y$2, %z$2
-  %func1 = call i32 @func1(i32 %x$2, i32 %result_$1, i32 0)
+  %x$1 = load i32, i32* %lv, align 4
+  %y$1 = load i32, i32* %lv$1, align 4
+  %z$1 = load i32, i32* %lv$2, align 4
+  %result_$1 = sub i32 %y$1, %z$1
+  %func1 = call i32 @func1(i32 %x$1, i32 %result_$1, i32 0)
   ret i32 %func1
 }
 
 define i32 @func2(i32 %0, i32 %1) {
 func2Entry:
-  %y = alloca i32, align 4
-  %x = alloca i32, align 4
-  store i32 %0, i32* %x, align 4
-  store i32 %1, i32* %y, align 4
-  %y$1 = load i32, i32* %y, align 4
-  %cond_normalize_ = icmp ne i32 %y$1, 0
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  %y = load i32, i32* %lv$1, align 4
+  %cond_normalize_ = icmp ne i32 %y, 0
   br i1 %cond_normalize_, label %ifTrue_68, label %ifFalse_22
 
 ifTrue_68:                                         ; pred = %func2Entry
-  %x$1 = load i32, i32* %x, align 4
-  %y$2 = load i32, i32* %y, align 4
-  %result_ = srem i32 %x$1, %y$2
+  %x = load i32, i32* %lv, align 4
+  %y$1 = load i32, i32* %lv$1, align 4
+  %result_ = srem i32 %x, %y$1
   %func2 = call i32 @func2(i32 %result_, i32 0)
   ret i32 %func2
 
 ifFalse_22:                                        ; pred = %func2Entry
-  %x$2 = load i32, i32* %x, align 4
-  ret i32 %x$2
+  %x$1 = load i32, i32* %lv, align 4
+  ret i32 %x$1
 }
 
 define i32 @func3(i32 %0, i32 %1) {
 func3Entry:
-  %y = alloca i32, align 4
-  %x = alloca i32, align 4
-  store i32 %0, i32* %x, align 4
-  store i32 %1, i32* %y, align 4
-  %y$1 = load i32, i32* %y, align 4
-  %cond_eq_tmp_ = icmp eq i32 %y$1, 0
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  %y = load i32, i32* %lv$1, align 4
+  %cond_eq_tmp_ = icmp eq i32 %y, 0
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
   br i1 %cond_, label %ifTrue_69, label %ifFalse_23
 
 ifTrue_69:                                         ; pred = %func3Entry
-  %x$1 = load i32, i32* %x, align 4
-  %result_ = add i32 %x$1, 1
+  %x = load i32, i32* %lv, align 4
+  %result_ = add i32 %x, 1
   ret i32 %result_
 
 ifFalse_23:                                        ; pred = %func3Entry
-  %x$2 = load i32, i32* %x, align 4
-  %y$2 = load i32, i32* %y, align 4
-  %result_$1 = add i32 %x$2, %y$2
+  %x$1 = load i32, i32* %lv, align 4
+  %y$1 = load i32, i32* %lv$1, align 4
+  %result_$1 = add i32 %x$1, %y$1
   %func3 = call i32 @func3(i32 %result_$1, i32 0)
   ret i32 %func3
 }
 
 define i32 @func4(i32 %0, i32 %1, i32 %2) {
 func4Entry:
-  %z = alloca i32, align 4
-  %y = alloca i32, align 4
-  %x = alloca i32, align 4
-  store i32 %0, i32* %x, align 4
-  store i32 %1, i32* %y, align 4
-  store i32 %2, i32* %z, align 4
-  %x$1 = load i32, i32* %x, align 4
-  %cond_normalize_ = icmp ne i32 %x$1, 0
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  store i32 %2, i32* %lv$2, align 4
+  %x = load i32, i32* %lv, align 4
+  %cond_normalize_ = icmp ne i32 %x, 0
   br i1 %cond_normalize_, label %ifTrue_70, label %ifFalse_24
 
 ifTrue_70:                                         ; pred = %func4Entry
-  %y$1 = load i32, i32* %y, align 4
-  ret i32 %y$1
+  %y = load i32, i32* %lv$1, align 4
+  ret i32 %y
 
 ifFalse_24:                                        ; pred = %func4Entry
-  %z$1 = load i32, i32* %z, align 4
-  ret i32 %z$1
+  %z = load i32, i32* %lv$2, align 4
+  ret i32 %z
 }
 
 define i32 @func5(i32 %0) {
 func5Entry:
-  %x = alloca i32, align 4
-  store i32 %0, i32* %x, align 4
-  %x$1 = load i32, i32* %x, align 4
-  %tmp_ = sub i32 0, %x$1
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  %x = load i32, i32* %lv, align 4
+  %tmp_ = sub i32 0, %x
   ret i32 %tmp_
 }
 
 define i32 @func6(i32 %0, i32 %1) {
 func6Entry:
-  %y = alloca i32, align 4
-  %x = alloca i32, align 4
-  store i32 %0, i32* %x, align 4
-  store i32 %1, i32* %y, align 4
-  %x$1 = load i32, i32* %x, align 4
-  %cond_normalize_ = icmp ne i32 %x$1, 0
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  %x = load i32, i32* %lv, align 4
+  %cond_normalize_ = icmp ne i32 %x, 0
   br i1 %cond_normalize_, label %secondCond_47, label %ifFalse_25
 
 ifTrue_71:                                            ; pred = %secondCond_47
@@ -139,17 +139,17 @@ ifFalse_25:                                           ; pred = %func6Entry, %sec
   ret i32 0
 
 secondCond_47:                                        ; pred = %func6Entry
-  %y$1 = load i32, i32* %y, align 4
-  %cond_normalize_$1 = icmp ne i32 %y$1, 0
+  %y = load i32, i32* %lv$1, align 4
+  %cond_normalize_$1 = icmp ne i32 %y, 0
   br i1 %cond_normalize_$1, label %ifTrue_71, label %ifFalse_25
 }
 
 define i32 @func7(i32 %0) {
 func7Entry:
-  %x = alloca i32, align 4
-  store i32 %0, i32* %x, align 4
-  %x$1 = load i32, i32* %x, align 4
-  %tmp_ = icmp ne i32 0, %x$1
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  %x = load i32, i32* %lv, align 4
+  %tmp_ = icmp ne i32 0, %x
   %tmp_$1 = xor i1 %tmp_, 1
   %tmp_$2 = zext i1 %tmp_$1 to i32
   %cond_normalize_ = icmp ne i32 %tmp_$2, 0
@@ -163,7 +163,7 @@ ifFalse_26:                                        ; pred = %func7Entry
 }
 
 define i32 @main() {
-mainEntry32:
+mainEntry31:
   %lv$6 = alloca i32, align 4
   %lv$5 = alloca i32, align 4
   %lv$4 = alloca [10 x i32], align 16
@@ -180,16 +180,16 @@ mainEntry32:
   %getint$3 = call i32 @getint()
   store i32 %getint$3, i32* %lv$3, align 4
   store i32 0, i32* %lv$5, align 4
-  br label %whileCond_81
+  br label %whileCond_73
 
-whileCond_81:                                        ; pred = %mainEntry32, %whileBody_81
+whileCond_73:                                        ; pred = %mainEntry31, %whileBody_73
   %i = load i32, i32* %lv$5, align 4
   %cond_lt_tmp_ = icmp slt i32 %i, 10
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_81, label %next_154
+  br i1 %cond_, label %whileBody_73, label %next_146
 
-whileBody_81:                                        ; pred = %whileCond_81
+whileBody_73:                                        ; pred = %whileCond_73
   %i$1 = load i32, i32* %lv$5, align 4
   %arr = getelementptr [10 x i32], [10 x i32]* %lv$4, i32 0, i32 %i$1
   %getint$4 = call i32 @getint()
@@ -197,9 +197,9 @@ whileBody_81:                                        ; pred = %whileCond_81
   %i$2 = load i32, i32* %lv$5, align 4
   %result_ = add i32 %i$2, 1
   store i32 %result_, i32* %lv$5, align 4
-  br label %whileCond_81
+  br label %whileCond_73
 
-next_154:                                            ; pred = %whileCond_81
+next_146:                                            ; pred = %whileCond_73
   %i1 = load i32, i32* %lv, align 4
   %func7 = call i32 @func7(i32 %i1)
   %i2 = load i32, i32* %lv$1, align 4

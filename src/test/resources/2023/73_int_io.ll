@@ -16,8 +16,6 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-@gv = global i32 48, align 4
-
 define i32 @my_getint() {
 my_getintEntry:
   %lv$1 = alloca i32, align 4
@@ -31,8 +29,7 @@ whileCond_25:                                          ; pred = %my_getintEntry,
 
 whileBody_25:                                          ; pred = %whileCond_25
   %getch = call i32 @getch()
-  %ascii_0 = load i32, i32* @gv, align 4
-  %result_ = sub i32 %getch, %ascii_0
+  %result_ = sub i32 %getch, 48
   store i32 %result_, i32* %lv$1, align 4
   %c = load i32, i32* %lv$1, align 4
   %cond_lt_tmp_ = icmp slt i32 %c, 0
@@ -69,8 +66,7 @@ whileCond_26:                                          ; pred = %next_57, %next_
 
 whileBody_26:                                          ; pred = %whileCond_26
   %getch$1 = call i32 @getch()
-  %ascii_0$1 = load i32, i32* @gv, align 4
-  %result_$1 = sub i32 %getch$1, %ascii_0$1
+  %result_$1 = sub i32 %getch$1, 48
   store i32 %result_$1, i32* %lv$1, align 4
   %c$3 = load i32, i32* %lv$1, align 4
   %cond_ge_tmp_ = icmp sge i32 %c$3, 0
@@ -107,52 +103,51 @@ secondCond_28:                                         ; pred = %whileBody_26
 
 define void @my_putint(i32 %0) {
 my_putintEntry:
-  %lv$1 = alloca i32, align 4
-  %lv = alloca [16 x i32], align 16
-  %a = alloca i32, align 4
-  store i32 %0, i32* %a, align 4
-  store i32 0, i32* %lv$1, align 4
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca [16 x i32], align 16
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  store i32 0, i32* %lv$2, align 4
   br label %whileCond_27
 
 whileCond_27:                                          ; pred = %my_putintEntry, %whileBody_27
-  %a$1 = load i32, i32* %a, align 4
-  %cond_gt_tmp_ = icmp sgt i32 %a$1, 0
+  %a = load i32, i32* %lv, align 4
+  %cond_gt_tmp_ = icmp sgt i32 %a, 0
   %cond_tmp_ = zext i1 %cond_gt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
   br i1 %cond_, label %whileBody_27, label %next_61
 
 whileBody_27:                                          ; pred = %whileCond_27
-  %i = load i32, i32* %lv$1, align 4
-  %b = getelementptr [16 x i32], [16 x i32]* %lv, i32 0, i32 %i
-  %a$2 = load i32, i32* %a, align 4
-  %result_ = srem i32 %a$2, 10
-  %ascii_0 = load i32, i32* @gv, align 4
-  %result_$1 = add i32 %result_, %ascii_0
+  %i = load i32, i32* %lv$2, align 4
+  %b = getelementptr [16 x i32], [16 x i32]* %lv$1, i32 0, i32 %i
+  %a$1 = load i32, i32* %lv, align 4
+  %result_ = srem i32 %a$1, 10
+  %result_$1 = add i32 %result_, 48
   store i32 %result_$1, i32* %b, align 4
-  %a$3 = load i32, i32* %a, align 4
-  %result_$2 = sdiv i32 %a$3, 10
-  store i32 %result_$2, i32* %a, align 4
-  %i$1 = load i32, i32* %lv$1, align 4
+  %a$2 = load i32, i32* %lv, align 4
+  %result_$2 = sdiv i32 %a$2, 10
+  store i32 %result_$2, i32* %lv, align 4
+  %i$1 = load i32, i32* %lv$2, align 4
   %result_$3 = add i32 %i$1, 1
-  store i32 %result_$3, i32* %lv$1, align 4
+  store i32 %result_$3, i32* %lv$2, align 4
   br label %whileCond_27
 
 next_61:                                               ; pred = %whileCond_27
   br label %whileCond_28
 
 whileCond_28:                                          ; pred = %next_61, %whileBody_28
-  %i$2 = load i32, i32* %lv$1, align 4
+  %i$2 = load i32, i32* %lv$2, align 4
   %cond_gt_tmp_$1 = icmp sgt i32 %i$2, 0
   %cond_tmp_$1 = zext i1 %cond_gt_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
   br i1 %cond_$1, label %whileBody_28, label %next_62
 
 whileBody_28:                                          ; pred = %whileCond_28
-  %i$3 = load i32, i32* %lv$1, align 4
+  %i$3 = load i32, i32* %lv$2, align 4
   %result_$4 = sub i32 %i$3, 1
-  store i32 %result_$4, i32* %lv$1, align 4
-  %i$4 = load i32, i32* %lv$1, align 4
-  %b$1 = getelementptr [16 x i32], [16 x i32]* %lv, i32 0, i32 %i$4
+  store i32 %result_$4, i32* %lv$2, align 4
+  %i$4 = load i32, i32* %lv$2, align 4
+  %b$1 = getelementptr [16 x i32], [16 x i32]* %lv$1, i32 0, i32 %i$4
   %b$2 = load i32, i32* %b$1, align 4
   call void @putch(i32 %b$2)
   br label %whileCond_28

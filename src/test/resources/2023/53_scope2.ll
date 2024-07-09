@@ -19,7 +19,7 @@ declare void @memset(i32*, i32, i32)
 @gv = global i32 0, align 4
 
 define i32 @main() {
-mainEntry76:
+mainEntry77:
   %lv$3 = alloca i32, align 4
   %lv$2 = alloca i32, align 4
   %lv$1 = alloca i32, align 4
@@ -29,27 +29,27 @@ mainEntry76:
   %cond_lt_tmp_ = icmp slt i32 %k, 10000
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_317, label %next_575
+  br i1 %cond_, label %ifTrue_325, label %next_576
 
-ifTrue_317:                                           ; pred = %mainEntry76
+ifTrue_325:                                           ; pred = %mainEntry77
   %k$1 = load i32, i32* @gv, align 4
   %result_ = add i32 %k$1, 1
   store i32 %result_, i32* @gv, align 4
   store i32 112, i32* %lv, align 4
-  br label %whileCond_258
+  br label %whileCond_251
 
-next_575:                                             ; pred = %mainEntry76, %next_576
+next_576:                                             ; pred = %mainEntry77, %next_577
   %k$8 = load i32, i32* @gv, align 4
   ret i32 %k$8
 
-whileCond_258:                                        ; pred = %ifTrue_317, %next_577
+whileCond_251:                                        ; pred = %ifTrue_325, %next_578
   %k$2 = load i32, i32* %lv, align 4
   %cond_gt_tmp_ = icmp sgt i32 %k$2, 10
   %cond_tmp_$1 = zext i1 %cond_gt_tmp_ to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %whileBody_258, label %next_576
+  br i1 %cond_$1, label %whileBody_251, label %next_577
 
-whileBody_258:                                        ; pred = %whileCond_258
+whileBody_251:                                        ; pred = %whileCond_251
   %k$3 = load i32, i32* %lv, align 4
   %result_$1 = sub i32 %k$3, 88
   store i32 %result_$1, i32* %lv, align 4
@@ -57,14 +57,14 @@ whileBody_258:                                        ; pred = %whileCond_258
   %cond_lt_tmp_$1 = icmp slt i32 %k$4, 1000
   %cond_tmp_$2 = zext i1 %cond_lt_tmp_$1 to i32
   %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %ifTrue_318, label %next_577
+  br i1 %cond_$2, label %ifTrue_326, label %next_578
 
-next_576:                                             ; pred = %whileCond_258
+next_577:                                             ; pred = %whileCond_251
   %k$7 = load i32, i32* %lv, align 4
   call void @putint(i32 %k$7)
-  br label %next_575
+  br label %next_576
 
-ifTrue_318:                                           ; pred = %whileBody_258
+ifTrue_326:                                           ; pred = %whileBody_251
   store i32 9, i32* %lv$1, align 4
   store i32 11, i32* %lv$2, align 4
   store i32 10, i32* %lv$1, align 4
@@ -79,9 +79,9 @@ ifTrue_318:                                           ; pred = %whileBody_258
   %l = load i32, i32* %lv$2, align 4
   %result_$4 = add i32 %result_$3, %l
   store i32 %result_$4, i32* %lv, align 4
-  br label %next_577
+  br label %next_578
 
-next_577:                                             ; pred = %whileBody_258, %ifTrue_318
-  br label %whileCond_258
+next_578:                                             ; pred = %whileBody_251, %ifTrue_326
+  br label %whileCond_251
 }
 

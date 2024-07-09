@@ -1,7 +1,5 @@
 package cn.edu.nju.software.backend.riscinstruction.operand;
 
-import cn.edu.nju.software.backend.RiscSpecifications;
-
 /*
  * [sp] (sp = 0x1000000) -> [0x1000000]
  */
@@ -14,8 +12,8 @@ public class IndirectRegister implements Operand{
         this.offset = offset;
     }
 
-    public void setReg(String regName) {
-        this.regName = regName;
+    public void addOffset(int offset) {
+        this.offset += offset;
     }
 
     @Override

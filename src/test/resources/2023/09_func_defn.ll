@@ -20,13 +20,13 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @func(i32 %0) {
 funcEntry2:
-  %p = alloca i32, align 4
-  store i32 %0, i32* %p, align 4
-  %p$1 = load i32, i32* %p, align 4
-  %result_ = sub i32 %p$1, 1
-  store i32 %result_, i32* %p, align 4
-  %p$2 = load i32, i32* %p, align 4
-  ret i32 %p$2
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  %p = load i32, i32* %lv, align 4
+  %result_ = sub i32 %p, 1
+  store i32 %result_, i32* %lv, align 4
+  %p$1 = load i32, i32* %lv, align 4
+  ret i32 %p$1
 }
 
 define i32 @main() {

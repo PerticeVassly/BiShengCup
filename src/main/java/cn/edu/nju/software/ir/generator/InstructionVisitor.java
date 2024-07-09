@@ -13,17 +13,17 @@ public interface InstructionVisitor {
 
     default void visit(Binary binary) {}
 
-    void visit(FSub fSub);
+    default void visit(FSub fSub) {}
 
     default void visit(Mul mul) {}
 
-    void visit(FMul fmul);
+    default void visit(FMul fmul) {}
 
     default void visit(Mod mod) {}
 
     default void visit(Div div) {}
 
-    void visit(FDiv fdiv);
+    default void visit(FDiv fdiv) {}
 
     default void visit(Br br) {}
 
@@ -39,7 +39,7 @@ public interface InstructionVisitor {
 
     default void visit(IntToFloat intToFloat) {}
 
-    void visit(FAdd fAdd);
+    default void visit(FAdd fAdd) {}
 
     default void visit(Sub sub) {}
 

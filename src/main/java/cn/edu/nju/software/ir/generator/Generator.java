@@ -85,7 +85,7 @@ public class Generator implements IrGenerator {
         if (!value.getType().equals(((Pointer)lVal.getType()).getBase())) {
             if (((Pointer)lVal.getType()).getBase().equals(i32Type)) {
                 if (value instanceof ConstValue) {
-                    value = gen.ConstInt(i32Type, (int) (float)((ConstValue) value).getValue());
+                    value = gen.ConstInt(i32Type, ((ConstValue) value).castToInt());
                 } else {
                     value = gen.buildFloatToInt(builder, value, "f2i_");
                 }
@@ -200,11 +200,28 @@ public class Generator implements IrGenerator {
         builder.put(ir);
         return lVal;
     }
+
     @Override
     public ValueRef buildCall(BuilderRef builder, FunctionValue function, ArrayList<ValueRef> arguments
             , int argCount, String retValName, int lineNo) {
         FunctionType ft = ((FunctionType) function.getType());
         TypeRef retTy = ft.getReturnType();
+
+        // implicit type conversion:
+        for (int i = 0; i < arguments.size(); i++) {
+            ValueRef argument = arguments.get(i);
+            if (!ft.getFParameter(i).equals(argument.getType())) {
+                if (ft.getFParameter(i) instanceof IntType && argument.getType() instanceof FloatType) {
+                    argument= gen.buildFloatToInt(builder, argument, "f2i_");
+                } else if (ft.getFParameter(i) instanceof FloatType && argument.getType() instanceof IntType) {
+                    argument= gen.buildIntToFloat(builder, argument, "i2f_");
+                } else {
+                    throw new RuntimeException(String.format("Can't cast %s to %s!", argument.getType(), ft.getFParameter(i)));
+                }
+                arguments.set(i, argument);
+            }
+        }
+
         Instruction ir;
         LocalVar retVal = null;
         if (!(retTy instanceof VoidType)) {
@@ -216,6 +233,7 @@ public class Generator implements IrGenerator {
         builder.put(ir);
         return retVal;
     }
+
     @Override
     public ValueRef buildReturnVoid(BuilderRef builder) {
         Instruction ir = new RetVoid();
@@ -347,6 +365,20 @@ public class Generator implements IrGenerator {
     public ConstValue ConstFloat(FloatType type, float value) {
         return new ConstValue(type, value);
     }
+
+    @Override
+    public ConstValue ConstInt(IntType type, int value, String name) {
+        return new ConstValue(type, value, name);
+    }
+    @Override
+    public ConstValue ConstBool(BoolType type, boolean value, String name) {
+        return new ConstValue(type, value, name);
+    }
+    @Override
+    public ConstValue ConstFloat(FloatType type, float value, String name) {
+        return new ConstValue(type, value, name);
+    }
+
     @Override
     public BasicBlockRef appendBasicBlock(FunctionValue function, String blockName) {
         BasicBlockRef block = new BasicBlockRef(function, blockName);
@@ -361,7 +393,7 @@ public class Generator implements IrGenerator {
     @Override
     public ValueRef buildFloatToInt(BuilderRef builder, ValueRef floatVal, String name) {
         if (floatVal instanceof ConstValue) {
-            return ConstInt(i32Type, (int)(float)((ConstValue) floatVal).getValue());
+            return ConstInt(i32Type, ((ConstValue) floatVal).castToInt());
         }
         LocalVar localVar = builder.createLocalVar(i32Type, name);
         Instruction ir = new FloatToInt(localVar, floatVal);

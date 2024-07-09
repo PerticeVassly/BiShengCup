@@ -2,100 +2,100 @@
 .align 2
 .globl a1
 a1:
-.word 1
+.dword 1
 .globl a2
 a2:
-.word 2
+.dword 2
 .globl a3
 a3:
-.word 3
+.dword 3
 .globl a4
 a4:
-.word 4
+.dword 4
 .globl a5
 a5:
-.word 5
+.dword 5
 .globl a6
 a6:
-.word 6
+.dword 6
 .globl a7
 a7:
-.word 7
+.dword 7
 .globl a8
 a8:
-.word 8
+.dword 8
 .globl a9
 a9:
-.word 9
+.dword 9
 .globl a10
 a10:
-.word 10
+.dword 10
 .globl a11
 a11:
-.word 11
+.dword 11
 .globl a12
 a12:
-.word 12
+.dword 12
 .globl a13
 a13:
-.word 13
+.dword 13
 .globl a14
 a14:
-.word 14
+.dword 14
 .globl a15
 a15:
-.word 15
+.dword 15
 .globl a16
 a16:
-.word 16
+.dword 16
 .globl a17
 a17:
-.word 1
+.dword 1
 .globl a18
 a18:
-.word 2
+.dword 2
 .globl a19
 a19:
-.word 3
+.dword 3
 .globl a20
 a20:
-.word 4
+.dword 4
 .globl a21
 a21:
-.word 5
+.dword 5
 .globl a22
 a22:
-.word 6
+.dword 6
 .globl a23
 a23:
-.word 7
+.dword 7
 .globl a24
 a24:
-.word 8
+.dword 8
 .globl a25
 a25:
-.word 9
+.dword 9
 .globl a26
 a26:
-.word 10
+.dword 10
 .globl a27
 a27:
-.word 11
+.dword 11
 .globl a28
 a28:
-.word 12
+.dword 12
 .globl a29
 a29:
-.word 13
+.dword 13
 .globl a30
 a30:
-.word 14
+.dword 14
 .globl a31
 a31:
-.word 15
+.dword 15
 .globl a32
 a32:
-.word 16
+.dword 16
 .text
 .align 2
 .type func, @function
@@ -103,3026 +103,5398 @@ a32:
 func:
 funcEntry2:
 
-	# allocate space for local variables
-	addi sp, sp, -1844
+	# reserve space
+	addi sp, sp, -4000
+
+	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
 
 	# save the parameters
-	sw a0, 1840(sp)
-	sw a1, 1836(sp)
+
+	# get address of 0 into 
+	sd a0, 3992(sp)
+
+	# get address of 1 into 
+	sd a1, 3984(sp)
+
+	# allocate a
+	addi t0, sp, 3968
+
+	# get address of local var:a
+	sd t0, 3976(sp)
+
+	# a 0
+
+	# fetch variables
+	ld t1, 3992(sp)
 
 	# store a 0
 
+	# get address of a points to
+	ld t3, 3976(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# allocate b
+	addi t0, sp, 3952
+
+	# get address of local var:b
+	sd t0, 3960(sp)
+
+	# b 1
+
 	# fetch variables
-	lw t1, 1840(sp)
-	sw t1, 1832(sp)
+	ld t1, 3984(sp)
 
 	# store b 1
 
-	# fetch variables
-	lw t1, 1836(sp)
-	sw t1, 1828(sp)
+	# get address of b points to
+	ld t3, 3960(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# allocate i
+	addi t0, sp, 3936
+
+	# get address of local var:i
+	sd t0, 3944(sp)
 
 	# load a$1 a
-	lw t0, 1832(sp)
-	sw t0, 1820(sp)
+
+	# get address of a points to
+	ld t3, 3976(sp)
+	addi t3, t3, 0
+
+	# get address of local var:a$1
+	ld t0, 0(t3)
+	sd t0, 3928(sp)
 
 	# load b$1 b
-	lw t0, 1828(sp)
-	sw t0, 1816(sp)
+
+	# get address of b points to
+	ld t3, 3960(sp)
+	addi t3, t3, 0
+
+	# get address of local var:b$1
+	ld t0, 0(t3)
+	sd t0, 3920(sp)
 
 	# add result_ a$1 b$1
 
 	# fetch variables
-	lw t1, 1820(sp)
-	lw t2, 1816(sp)
+	ld t1, 3928(sp)
+	ld t2, 3920(sp)
+
+	# get address of local var:result_
 	add t0, t1, t2
-	sw t0, 1812(sp)
+	sd t0, 3912(sp)
+
+	# i result_
+
+	# fetch variables
+	ld t1, 3912(sp)
 
 	# store i result_
 
-	# fetch variables
-	lw t1, 1812(sp)
-	sw t1, 1824(sp)
+	# get address of i points to
+	ld t3, 3944(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# allocate c1
+	addi t0, sp, 3896
+
+	# get address of local var:c1
+	sd t0, 3904(sp)
+
+	# allocate c2
+	addi t0, sp, 3880
+
+	# get address of local var:c2
+	sd t0, 3888(sp)
+
+	# allocate c3
+	addi t0, sp, 3864
+
+	# get address of local var:c3
+	sd t0, 3872(sp)
+
+	# allocate c4
+	addi t0, sp, 3848
+
+	# get address of local var:c4
+	sd t0, 3856(sp)
+
+	# allocate d1
+	addi t0, sp, 3832
+
+	# get address of local var:d1
+	sd t0, 3840(sp)
+
+	# allocate d2
+	addi t0, sp, 3816
+
+	# get address of local var:d2
+	sd t0, 3824(sp)
+
+	# allocate d3
+	addi t0, sp, 3800
+
+	# get address of local var:d3
+	sd t0, 3808(sp)
+
+	# allocate d4
+	addi t0, sp, 3784
+
+	# get address of local var:d4
+	sd t0, 3792(sp)
+
+	# allocate e1
+	addi t0, sp, 3768
+
+	# get address of local var:e1
+	sd t0, 3776(sp)
+
+	# allocate e2
+	addi t0, sp, 3752
+
+	# get address of local var:e2
+	sd t0, 3760(sp)
+
+	# allocate e3
+	addi t0, sp, 3736
+
+	# get address of local var:e3
+	sd t0, 3744(sp)
+
+	# allocate e4
+	addi t0, sp, 3720
+
+	# get address of local var:e4
+	sd t0, 3728(sp)
+
+	# allocate f1
+	addi t0, sp, 3704
+
+	# get address of local var:f1
+	sd t0, 3712(sp)
+
+	# allocate f2
+	addi t0, sp, 3688
+
+	# get address of local var:f2
+	sd t0, 3696(sp)
+
+	# allocate f3
+	addi t0, sp, 3672
+
+	# get address of local var:f3
+	sd t0, 3680(sp)
+
+	# allocate f4
+	addi t0, sp, 3656
+
+	# get address of local var:f4
+	sd t0, 3664(sp)
+
+	# allocate g1
+	addi t0, sp, 3640
+
+	# get address of local var:g1
+	sd t0, 3648(sp)
+
+	# allocate g2
+	addi t0, sp, 3624
+
+	# get address of local var:g2
+	sd t0, 3632(sp)
+
+	# allocate g3
+	addi t0, sp, 3608
+
+	# get address of local var:g3
+	sd t0, 3616(sp)
+
+	# allocate g4
+	addi t0, sp, 3592
+
+	# get address of local var:g4
+	sd t0, 3600(sp)
+
+	# allocate h1
+	addi t0, sp, 3576
+
+	# get address of local var:h1
+	sd t0, 3584(sp)
+
+	# allocate h2
+	addi t0, sp, 3560
+
+	# get address of local var:h2
+	sd t0, 3568(sp)
+
+	# allocate h3
+	addi t0, sp, 3544
+
+	# get address of local var:h3
+	sd t0, 3552(sp)
+
+	# allocate h4
+	addi t0, sp, 3528
+
+	# get address of local var:h4
+	sd t0, 3536(sp)
+
+	# allocate i1
+	addi t0, sp, 3512
+
+	# get address of local var:i1
+	sd t0, 3520(sp)
+
+	# allocate i2
+	addi t0, sp, 3496
+
+	# get address of local var:i2
+	sd t0, 3504(sp)
+
+	# allocate i3
+	addi t0, sp, 3480
+
+	# get address of local var:i3
+	sd t0, 3488(sp)
+
+	# allocate i4
+	addi t0, sp, 3464
+
+	# get address of local var:i4
+	sd t0, 3472(sp)
+
+	# allocate j1
+	addi t0, sp, 3448
+
+	# get address of local var:j1
+	sd t0, 3456(sp)
+
+	# allocate j2
+	addi t0, sp, 3432
+
+	# get address of local var:j2
+	sd t0, 3440(sp)
+
+	# allocate j3
+	addi t0, sp, 3416
+
+	# get address of local var:j3
+	sd t0, 3424(sp)
+
+	# allocate j4
+	addi t0, sp, 3400
+
+	# get address of local var:j4
+	sd t0, 3408(sp)
+
+	# allocate k1
+	addi t0, sp, 3384
+
+	# get address of local var:k1
+	sd t0, 3392(sp)
+
+	# allocate k2
+	addi t0, sp, 3368
+
+	# get address of local var:k2
+	sd t0, 3376(sp)
+
+	# allocate k3
+	addi t0, sp, 3352
+
+	# get address of local var:k3
+	sd t0, 3360(sp)
+
+	# allocate k4
+	addi t0, sp, 3336
+
+	# get address of local var:k4
+	sd t0, 3344(sp)
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
+	addi sp, sp, -8
+	sd ra, 0(sp)
 
 	# call getint
 	call getint
 
 	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 1664(sp)
+	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# get address of local var:getint
+	sd a0, 3328(sp)
+
+	# c1 getint
+
+	# fetch variables
+	ld t1, 3328(sp)
 
 	# store c1 getint
 
-	# fetch variables
-	lw t1, 1664(sp)
-	sw t1, 1808(sp)
+	# get address of c1 points to
+	ld t3, 3904(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
+	addi sp, sp, -8
+	sd ra, 0(sp)
 
 	# call getint
 	call getint
 
 	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 1660(sp)
+	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# get address of local var:getint$1
+	sd a0, 3320(sp)
+
+	# c2 getint$1
+
+	# fetch variables
+	ld t1, 3320(sp)
 
 	# store c2 getint$1
 
-	# fetch variables
-	lw t1, 1660(sp)
-	sw t1, 1804(sp)
+	# get address of c2 points to
+	ld t3, 3888(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
+	addi sp, sp, -8
+	sd ra, 0(sp)
 
 	# call getint
 	call getint
 
 	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 1656(sp)
+	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# get address of local var:getint$2
+	sd a0, 3312(sp)
+
+	# c3 getint$2
+
+	# fetch variables
+	ld t1, 3312(sp)
 
 	# store c3 getint$2
 
-	# fetch variables
-	lw t1, 1656(sp)
-	sw t1, 1800(sp)
+	# get address of c3 points to
+	ld t3, 3872(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
+	addi sp, sp, -8
+	sd ra, 0(sp)
 
 	# call getint
 	call getint
 
 	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 1652(sp)
+	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# get address of local var:getint$3
+	sd a0, 3304(sp)
+
+	# c4 getint$3
+
+	# fetch variables
+	ld t1, 3304(sp)
 
 	# store c4 getint$3
 
-	# fetch variables
-	lw t1, 1652(sp)
-	sw t1, 1796(sp)
+	# get address of c4 points to
+	ld t3, 3856(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load c1$1 c1
-	lw t0, 1808(sp)
-	sw t0, 1648(sp)
+
+	# get address of c1 points to
+	ld t3, 3904(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c1$1
+	ld t0, 0(t3)
+	sd t0, 3296(sp)
 
 	# add result_$1  c1$1
 
 	# fetch variables
 	li t1, 1
-	lw t2, 1648(sp)
+	ld t2, 3296(sp)
+
+	# get address of local var:result_$1
 	add t0, t1, t2
-	sw t0, 1644(sp)
+	sd t0, 3288(sp)
 
 	# load a1 a1
-	lw t0, a1
-	sw t0, 1640(sp)
+
+	# get address of a1 points to
+	la t3, a1
+	addi t3, t3, 0
+
+	# get address of local var:a1
+	ld t0, 0(t3)
+	sd t0, 3280(sp)
 
 	# add result_$2 result_$1 a1
 
 	# fetch variables
-	lw t1, 1644(sp)
-	lw t2, 1640(sp)
+	ld t1, 3288(sp)
+	ld t2, 3280(sp)
+
+	# get address of local var:result_$2
 	add t0, t1, t2
-	sw t0, 1636(sp)
+	sd t0, 3272(sp)
+
+	# d1 result_$2
+
+	# fetch variables
+	ld t1, 3272(sp)
 
 	# store d1 result_$2
 
-	# fetch variables
-	lw t1, 1636(sp)
-	sw t1, 1792(sp)
+	# get address of d1 points to
+	ld t3, 3840(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load c2$1 c2
-	lw t0, 1804(sp)
-	sw t0, 1632(sp)
+
+	# get address of c2 points to
+	ld t3, 3888(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c2$1
+	ld t0, 0(t3)
+	sd t0, 3264(sp)
 
 	# add result_$3  c2$1
 
 	# fetch variables
 	li t1, 2
-	lw t2, 1632(sp)
+	ld t2, 3264(sp)
+
+	# get address of local var:result_$3
 	add t0, t1, t2
-	sw t0, 1628(sp)
+	sd t0, 3256(sp)
 
 	# load a2 a2
-	lw t0, a2
-	sw t0, 1624(sp)
+
+	# get address of a2 points to
+	la t3, a2
+	addi t3, t3, 0
+
+	# get address of local var:a2
+	ld t0, 0(t3)
+	sd t0, 3248(sp)
 
 	# add result_$4 result_$3 a2
 
 	# fetch variables
-	lw t1, 1628(sp)
-	lw t2, 1624(sp)
+	ld t1, 3256(sp)
+	ld t2, 3248(sp)
+
+	# get address of local var:result_$4
 	add t0, t1, t2
-	sw t0, 1620(sp)
+	sd t0, 3240(sp)
+
+	# d2 result_$4
+
+	# fetch variables
+	ld t1, 3240(sp)
 
 	# store d2 result_$4
 
-	# fetch variables
-	lw t1, 1620(sp)
-	sw t1, 1788(sp)
+	# get address of d2 points to
+	ld t3, 3824(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load c3$1 c3
-	lw t0, 1800(sp)
-	sw t0, 1616(sp)
+
+	# get address of c3 points to
+	ld t3, 3872(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c3$1
+	ld t0, 0(t3)
+	sd t0, 3232(sp)
 
 	# add result_$5  c3$1
 
 	# fetch variables
 	li t1, 3
-	lw t2, 1616(sp)
+	ld t2, 3232(sp)
+
+	# get address of local var:result_$5
 	add t0, t1, t2
-	sw t0, 1612(sp)
+	sd t0, 3224(sp)
 
 	# load a3 a3
-	lw t0, a3
-	sw t0, 1608(sp)
+
+	# get address of a3 points to
+	la t3, a3
+	addi t3, t3, 0
+
+	# get address of local var:a3
+	ld t0, 0(t3)
+	sd t0, 3216(sp)
 
 	# add result_$6 result_$5 a3
 
 	# fetch variables
-	lw t1, 1612(sp)
-	lw t2, 1608(sp)
+	ld t1, 3224(sp)
+	ld t2, 3216(sp)
+
+	# get address of local var:result_$6
 	add t0, t1, t2
-	sw t0, 1604(sp)
+	sd t0, 3208(sp)
+
+	# d3 result_$6
+
+	# fetch variables
+	ld t1, 3208(sp)
 
 	# store d3 result_$6
 
-	# fetch variables
-	lw t1, 1604(sp)
-	sw t1, 1784(sp)
+	# get address of d3 points to
+	ld t3, 3808(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load c4$1 c4
-	lw t0, 1796(sp)
-	sw t0, 1600(sp)
+
+	# get address of c4 points to
+	ld t3, 3856(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c4$1
+	ld t0, 0(t3)
+	sd t0, 3200(sp)
 
 	# add result_$7  c4$1
 
 	# fetch variables
 	li t1, 4
-	lw t2, 1600(sp)
+	ld t2, 3200(sp)
+
+	# get address of local var:result_$7
 	add t0, t1, t2
-	sw t0, 1596(sp)
+	sd t0, 3192(sp)
 
 	# load a4 a4
-	lw t0, a4
-	sw t0, 1592(sp)
+
+	# get address of a4 points to
+	la t3, a4
+	addi t3, t3, 0
+
+	# get address of local var:a4
+	ld t0, 0(t3)
+	sd t0, 3184(sp)
 
 	# add result_$8 result_$7 a4
 
 	# fetch variables
-	lw t1, 1596(sp)
-	lw t2, 1592(sp)
+	ld t1, 3192(sp)
+	ld t2, 3184(sp)
+
+	# get address of local var:result_$8
 	add t0, t1, t2
-	sw t0, 1588(sp)
+	sd t0, 3176(sp)
+
+	# d4 result_$8
+
+	# fetch variables
+	ld t1, 3176(sp)
 
 	# store d4 result_$8
 
-	# fetch variables
-	lw t1, 1588(sp)
-	sw t1, 1780(sp)
+	# get address of d4 points to
+	ld t3, 3792(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load d1$1 d1
-	lw t0, 1792(sp)
-	sw t0, 1584(sp)
+
+	# get address of d1 points to
+	ld t3, 3840(sp)
+	addi t3, t3, 0
+
+	# get address of local var:d1$1
+	ld t0, 0(t3)
+	sd t0, 3168(sp)
 
 	# add result_$9  d1$1
 
 	# fetch variables
 	li t1, 1
-	lw t2, 1584(sp)
+	ld t2, 3168(sp)
+
+	# get address of local var:result_$9
 	add t0, t1, t2
-	sw t0, 1580(sp)
+	sd t0, 3160(sp)
 
 	# load a5 a5
-	lw t0, a5
-	sw t0, 1576(sp)
+
+	# get address of a5 points to
+	la t3, a5
+	addi t3, t3, 0
+
+	# get address of local var:a5
+	ld t0, 0(t3)
+	sd t0, 3152(sp)
 
 	# add result_$10 result_$9 a5
 
 	# fetch variables
-	lw t1, 1580(sp)
-	lw t2, 1576(sp)
+	ld t1, 3160(sp)
+	ld t2, 3152(sp)
+
+	# get address of local var:result_$10
 	add t0, t1, t2
-	sw t0, 1572(sp)
+	sd t0, 3144(sp)
+
+	# e1 result_$10
+
+	# fetch variables
+	ld t1, 3144(sp)
 
 	# store e1 result_$10
 
-	# fetch variables
-	lw t1, 1572(sp)
-	sw t1, 1776(sp)
+	# get address of e1 points to
+	ld t3, 3776(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load d2$1 d2
-	lw t0, 1788(sp)
-	sw t0, 1568(sp)
+
+	# get address of d2 points to
+	ld t3, 3824(sp)
+	addi t3, t3, 0
+
+	# get address of local var:d2$1
+	ld t0, 0(t3)
+	sd t0, 3136(sp)
 
 	# add result_$11  d2$1
 
 	# fetch variables
 	li t1, 2
-	lw t2, 1568(sp)
+	ld t2, 3136(sp)
+
+	# get address of local var:result_$11
 	add t0, t1, t2
-	sw t0, 1564(sp)
+	sd t0, 3128(sp)
 
 	# load a6 a6
-	lw t0, a6
-	sw t0, 1560(sp)
+
+	# get address of a6 points to
+	la t3, a6
+	addi t3, t3, 0
+
+	# get address of local var:a6
+	ld t0, 0(t3)
+	sd t0, 3120(sp)
 
 	# add result_$12 result_$11 a6
 
 	# fetch variables
-	lw t1, 1564(sp)
-	lw t2, 1560(sp)
+	ld t1, 3128(sp)
+	ld t2, 3120(sp)
+
+	# get address of local var:result_$12
 	add t0, t1, t2
-	sw t0, 1556(sp)
+	sd t0, 3112(sp)
+
+	# e2 result_$12
+
+	# fetch variables
+	ld t1, 3112(sp)
 
 	# store e2 result_$12
 
-	# fetch variables
-	lw t1, 1556(sp)
-	sw t1, 1772(sp)
+	# get address of e2 points to
+	ld t3, 3760(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load d3$1 d3
-	lw t0, 1784(sp)
-	sw t0, 1552(sp)
+
+	# get address of d3 points to
+	ld t3, 3808(sp)
+	addi t3, t3, 0
+
+	# get address of local var:d3$1
+	ld t0, 0(t3)
+	sd t0, 3104(sp)
 
 	# add result_$13  d3$1
 
 	# fetch variables
 	li t1, 3
-	lw t2, 1552(sp)
+	ld t2, 3104(sp)
+
+	# get address of local var:result_$13
 	add t0, t1, t2
-	sw t0, 1548(sp)
+	sd t0, 3096(sp)
 
 	# load a7 a7
-	lw t0, a7
-	sw t0, 1544(sp)
+
+	# get address of a7 points to
+	la t3, a7
+	addi t3, t3, 0
+
+	# get address of local var:a7
+	ld t0, 0(t3)
+	sd t0, 3088(sp)
 
 	# add result_$14 result_$13 a7
 
 	# fetch variables
-	lw t1, 1548(sp)
-	lw t2, 1544(sp)
+	ld t1, 3096(sp)
+	ld t2, 3088(sp)
+
+	# get address of local var:result_$14
 	add t0, t1, t2
-	sw t0, 1540(sp)
+	sd t0, 3080(sp)
+
+	# e3 result_$14
+
+	# fetch variables
+	ld t1, 3080(sp)
 
 	# store e3 result_$14
 
-	# fetch variables
-	lw t1, 1540(sp)
-	sw t1, 1768(sp)
+	# get address of e3 points to
+	ld t3, 3744(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load d4$1 d4
-	lw t0, 1780(sp)
-	sw t0, 1536(sp)
+
+	# get address of d4 points to
+	ld t3, 3792(sp)
+	addi t3, t3, 0
+
+	# get address of local var:d4$1
+	ld t0, 0(t3)
+	sd t0, 3072(sp)
 
 	# add result_$15  d4$1
 
 	# fetch variables
 	li t1, 4
-	lw t2, 1536(sp)
+	ld t2, 3072(sp)
+
+	# get address of local var:result_$15
 	add t0, t1, t2
-	sw t0, 1532(sp)
+	sd t0, 3064(sp)
 
 	# load a8 a8
-	lw t0, a8
-	sw t0, 1528(sp)
+
+	# get address of a8 points to
+	la t3, a8
+	addi t3, t3, 0
+
+	# get address of local var:a8
+	ld t0, 0(t3)
+	sd t0, 3056(sp)
 
 	# add result_$16 result_$15 a8
 
 	# fetch variables
-	lw t1, 1532(sp)
-	lw t2, 1528(sp)
+	ld t1, 3064(sp)
+	ld t2, 3056(sp)
+
+	# get address of local var:result_$16
 	add t0, t1, t2
-	sw t0, 1524(sp)
+	sd t0, 3048(sp)
+
+	# e4 result_$16
+
+	# fetch variables
+	ld t1, 3048(sp)
 
 	# store e4 result_$16
 
-	# fetch variables
-	lw t1, 1524(sp)
-	sw t1, 1764(sp)
+	# get address of e4 points to
+	ld t3, 3728(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load e1$1 e1
-	lw t0, 1776(sp)
-	sw t0, 1520(sp)
+
+	# get address of e1 points to
+	ld t3, 3776(sp)
+	addi t3, t3, 0
+
+	# get address of local var:e1$1
+	ld t0, 0(t3)
+	sd t0, 3040(sp)
 
 	# add result_$17  e1$1
 
 	# fetch variables
 	li t1, 1
-	lw t2, 1520(sp)
+	ld t2, 3040(sp)
+
+	# get address of local var:result_$17
 	add t0, t1, t2
-	sw t0, 1516(sp)
+	sd t0, 3032(sp)
 
 	# load a9 a9
-	lw t0, a9
-	sw t0, 1512(sp)
+
+	# get address of a9 points to
+	la t3, a9
+	addi t3, t3, 0
+
+	# get address of local var:a9
+	ld t0, 0(t3)
+	sd t0, 3024(sp)
 
 	# add result_$18 result_$17 a9
 
 	# fetch variables
-	lw t1, 1516(sp)
-	lw t2, 1512(sp)
+	ld t1, 3032(sp)
+	ld t2, 3024(sp)
+
+	# get address of local var:result_$18
 	add t0, t1, t2
-	sw t0, 1508(sp)
+	sd t0, 3016(sp)
+
+	# f1 result_$18
+
+	# fetch variables
+	ld t1, 3016(sp)
 
 	# store f1 result_$18
 
-	# fetch variables
-	lw t1, 1508(sp)
-	sw t1, 1760(sp)
+	# get address of f1 points to
+	ld t3, 3712(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load e2$1 e2
-	lw t0, 1772(sp)
-	sw t0, 1504(sp)
+
+	# get address of e2 points to
+	ld t3, 3760(sp)
+	addi t3, t3, 0
+
+	# get address of local var:e2$1
+	ld t0, 0(t3)
+	sd t0, 3008(sp)
 
 	# add result_$19  e2$1
 
 	# fetch variables
 	li t1, 2
-	lw t2, 1504(sp)
+	ld t2, 3008(sp)
+
+	# get address of local var:result_$19
 	add t0, t1, t2
-	sw t0, 1500(sp)
+	sd t0, 3000(sp)
 
 	# load a10 a10
-	lw t0, a10
-	sw t0, 1496(sp)
+
+	# get address of a10 points to
+	la t3, a10
+	addi t3, t3, 0
+
+	# get address of local var:a10
+	ld t0, 0(t3)
+	sd t0, 2992(sp)
 
 	# add result_$20 result_$19 a10
 
 	# fetch variables
-	lw t1, 1500(sp)
-	lw t2, 1496(sp)
+	ld t1, 3000(sp)
+	ld t2, 2992(sp)
+
+	# get address of local var:result_$20
 	add t0, t1, t2
-	sw t0, 1492(sp)
+	sd t0, 2984(sp)
+
+	# f2 result_$20
+
+	# fetch variables
+	ld t1, 2984(sp)
 
 	# store f2 result_$20
 
-	# fetch variables
-	lw t1, 1492(sp)
-	sw t1, 1756(sp)
+	# get address of f2 points to
+	ld t3, 3696(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load e3$1 e3
-	lw t0, 1768(sp)
-	sw t0, 1488(sp)
+
+	# get address of e3 points to
+	ld t3, 3744(sp)
+	addi t3, t3, 0
+
+	# get address of local var:e3$1
+	ld t0, 0(t3)
+	sd t0, 2976(sp)
 
 	# add result_$21  e3$1
 
 	# fetch variables
 	li t1, 3
-	lw t2, 1488(sp)
+	ld t2, 2976(sp)
+
+	# get address of local var:result_$21
 	add t0, t1, t2
-	sw t0, 1484(sp)
+	sd t0, 2968(sp)
 
 	# load a11 a11
-	lw t0, a11
-	sw t0, 1480(sp)
+
+	# get address of a11 points to
+	la t3, a11
+	addi t3, t3, 0
+
+	# get address of local var:a11
+	ld t0, 0(t3)
+	sd t0, 2960(sp)
 
 	# add result_$22 result_$21 a11
 
 	# fetch variables
-	lw t1, 1484(sp)
-	lw t2, 1480(sp)
+	ld t1, 2968(sp)
+	ld t2, 2960(sp)
+
+	# get address of local var:result_$22
 	add t0, t1, t2
-	sw t0, 1476(sp)
+	sd t0, 2952(sp)
+
+	# f3 result_$22
+
+	# fetch variables
+	ld t1, 2952(sp)
 
 	# store f3 result_$22
 
-	# fetch variables
-	lw t1, 1476(sp)
-	sw t1, 1752(sp)
+	# get address of f3 points to
+	ld t3, 3680(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load e4$1 e4
-	lw t0, 1764(sp)
-	sw t0, 1472(sp)
+
+	# get address of e4 points to
+	ld t3, 3728(sp)
+	addi t3, t3, 0
+
+	# get address of local var:e4$1
+	ld t0, 0(t3)
+	sd t0, 2944(sp)
 
 	# add result_$23  e4$1
 
 	# fetch variables
 	li t1, 4
-	lw t2, 1472(sp)
+	ld t2, 2944(sp)
+
+	# get address of local var:result_$23
 	add t0, t1, t2
-	sw t0, 1468(sp)
+	sd t0, 2936(sp)
 
 	# load a12 a12
-	lw t0, a12
-	sw t0, 1464(sp)
+
+	# get address of a12 points to
+	la t3, a12
+	addi t3, t3, 0
+
+	# get address of local var:a12
+	ld t0, 0(t3)
+	sd t0, 2928(sp)
 
 	# add result_$24 result_$23 a12
 
 	# fetch variables
-	lw t1, 1468(sp)
-	lw t2, 1464(sp)
+	ld t1, 2936(sp)
+	ld t2, 2928(sp)
+
+	# get address of local var:result_$24
 	add t0, t1, t2
-	sw t0, 1460(sp)
+	sd t0, 2920(sp)
+
+	# f4 result_$24
+
+	# fetch variables
+	ld t1, 2920(sp)
 
 	# store f4 result_$24
 
-	# fetch variables
-	lw t1, 1460(sp)
-	sw t1, 1748(sp)
+	# get address of f4 points to
+	ld t3, 3664(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load f1$1 f1
-	lw t0, 1760(sp)
-	sw t0, 1456(sp)
+
+	# get address of f1 points to
+	ld t3, 3712(sp)
+	addi t3, t3, 0
+
+	# get address of local var:f1$1
+	ld t0, 0(t3)
+	sd t0, 2912(sp)
 
 	# add result_$25  f1$1
 
 	# fetch variables
 	li t1, 1
-	lw t2, 1456(sp)
+	ld t2, 2912(sp)
+
+	# get address of local var:result_$25
 	add t0, t1, t2
-	sw t0, 1452(sp)
+	sd t0, 2904(sp)
 
 	# load a13 a13
-	lw t0, a13
-	sw t0, 1448(sp)
+
+	# get address of a13 points to
+	la t3, a13
+	addi t3, t3, 0
+
+	# get address of local var:a13
+	ld t0, 0(t3)
+	sd t0, 2896(sp)
 
 	# add result_$26 result_$25 a13
 
 	# fetch variables
-	lw t1, 1452(sp)
-	lw t2, 1448(sp)
+	ld t1, 2904(sp)
+	ld t2, 2896(sp)
+
+	# get address of local var:result_$26
 	add t0, t1, t2
-	sw t0, 1444(sp)
+	sd t0, 2888(sp)
+
+	# g1 result_$26
+
+	# fetch variables
+	ld t1, 2888(sp)
 
 	# store g1 result_$26
 
-	# fetch variables
-	lw t1, 1444(sp)
-	sw t1, 1744(sp)
+	# get address of g1 points to
+	ld t3, 3648(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load f2$1 f2
-	lw t0, 1756(sp)
-	sw t0, 1440(sp)
+
+	# get address of f2 points to
+	ld t3, 3696(sp)
+	addi t3, t3, 0
+
+	# get address of local var:f2$1
+	ld t0, 0(t3)
+	sd t0, 2880(sp)
 
 	# add result_$27  f2$1
 
 	# fetch variables
 	li t1, 2
-	lw t2, 1440(sp)
+	ld t2, 2880(sp)
+
+	# get address of local var:result_$27
 	add t0, t1, t2
-	sw t0, 1436(sp)
+	sd t0, 2872(sp)
 
 	# load a14 a14
-	lw t0, a14
-	sw t0, 1432(sp)
+
+	# get address of a14 points to
+	la t3, a14
+	addi t3, t3, 0
+
+	# get address of local var:a14
+	ld t0, 0(t3)
+	sd t0, 2864(sp)
 
 	# add result_$28 result_$27 a14
 
 	# fetch variables
-	lw t1, 1436(sp)
-	lw t2, 1432(sp)
+	ld t1, 2872(sp)
+	ld t2, 2864(sp)
+
+	# get address of local var:result_$28
 	add t0, t1, t2
-	sw t0, 1428(sp)
+	sd t0, 2856(sp)
+
+	# g2 result_$28
+
+	# fetch variables
+	ld t1, 2856(sp)
 
 	# store g2 result_$28
 
-	# fetch variables
-	lw t1, 1428(sp)
-	sw t1, 1740(sp)
+	# get address of g2 points to
+	ld t3, 3632(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load f3$1 f3
-	lw t0, 1752(sp)
-	sw t0, 1424(sp)
+
+	# get address of f3 points to
+	ld t3, 3680(sp)
+	addi t3, t3, 0
+
+	# get address of local var:f3$1
+	ld t0, 0(t3)
+	sd t0, 2848(sp)
 
 	# add result_$29  f3$1
 
 	# fetch variables
 	li t1, 3
-	lw t2, 1424(sp)
+	ld t2, 2848(sp)
+
+	# get address of local var:result_$29
 	add t0, t1, t2
-	sw t0, 1420(sp)
+	sd t0, 2840(sp)
 
 	# load a15 a15
-	lw t0, a15
-	sw t0, 1416(sp)
+
+	# get address of a15 points to
+	la t3, a15
+	addi t3, t3, 0
+
+	# get address of local var:a15
+	ld t0, 0(t3)
+	sd t0, 2832(sp)
 
 	# add result_$30 result_$29 a15
 
 	# fetch variables
-	lw t1, 1420(sp)
-	lw t2, 1416(sp)
+	ld t1, 2840(sp)
+	ld t2, 2832(sp)
+
+	# get address of local var:result_$30
 	add t0, t1, t2
-	sw t0, 1412(sp)
+	sd t0, 2824(sp)
+
+	# g3 result_$30
+
+	# fetch variables
+	ld t1, 2824(sp)
 
 	# store g3 result_$30
 
-	# fetch variables
-	lw t1, 1412(sp)
-	sw t1, 1736(sp)
+	# get address of g3 points to
+	ld t3, 3616(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load f4$1 f4
-	lw t0, 1748(sp)
-	sw t0, 1408(sp)
+
+	# get address of f4 points to
+	ld t3, 3664(sp)
+	addi t3, t3, 0
+
+	# get address of local var:f4$1
+	ld t0, 0(t3)
+	sd t0, 2816(sp)
 
 	# add result_$31  f4$1
 
 	# fetch variables
 	li t1, 4
-	lw t2, 1408(sp)
+	ld t2, 2816(sp)
+
+	# get address of local var:result_$31
 	add t0, t1, t2
-	sw t0, 1404(sp)
+	sd t0, 2808(sp)
 
 	# load a16 a16
-	lw t0, a16
-	sw t0, 1400(sp)
+
+	# get address of a16 points to
+	la t3, a16
+	addi t3, t3, 0
+
+	# get address of local var:a16
+	ld t0, 0(t3)
+	sd t0, 2800(sp)
 
 	# add result_$32 result_$31 a16
 
 	# fetch variables
-	lw t1, 1404(sp)
-	lw t2, 1400(sp)
+	ld t1, 2808(sp)
+	ld t2, 2800(sp)
+
+	# get address of local var:result_$32
 	add t0, t1, t2
-	sw t0, 1396(sp)
+	sd t0, 2792(sp)
+
+	# g4 result_$32
+
+	# fetch variables
+	ld t1, 2792(sp)
 
 	# store g4 result_$32
 
-	# fetch variables
-	lw t1, 1396(sp)
-	sw t1, 1732(sp)
+	# get address of g4 points to
+	ld t3, 3600(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load g1$1 g1
-	lw t0, 1744(sp)
-	sw t0, 1392(sp)
+
+	# get address of g1 points to
+	ld t3, 3648(sp)
+	addi t3, t3, 0
+
+	# get address of local var:g1$1
+	ld t0, 0(t3)
+	sd t0, 2784(sp)
 
 	# add result_$33  g1$1
 
 	# fetch variables
 	li t1, 1
-	lw t2, 1392(sp)
+	ld t2, 2784(sp)
+
+	# get address of local var:result_$33
 	add t0, t1, t2
-	sw t0, 1388(sp)
+	sd t0, 2776(sp)
 
 	# load a17 a17
-	lw t0, a17
-	sw t0, 1384(sp)
+
+	# get address of a17 points to
+	la t3, a17
+	addi t3, t3, 0
+
+	# get address of local var:a17
+	ld t0, 0(t3)
+	sd t0, 2768(sp)
 
 	# add result_$34 result_$33 a17
 
 	# fetch variables
-	lw t1, 1388(sp)
-	lw t2, 1384(sp)
+	ld t1, 2776(sp)
+	ld t2, 2768(sp)
+
+	# get address of local var:result_$34
 	add t0, t1, t2
-	sw t0, 1380(sp)
+	sd t0, 2760(sp)
+
+	# h1 result_$34
+
+	# fetch variables
+	ld t1, 2760(sp)
 
 	# store h1 result_$34
 
-	# fetch variables
-	lw t1, 1380(sp)
-	sw t1, 1728(sp)
+	# get address of h1 points to
+	ld t3, 3584(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load g2$1 g2
-	lw t0, 1740(sp)
-	sw t0, 1376(sp)
+
+	# get address of g2 points to
+	ld t3, 3632(sp)
+	addi t3, t3, 0
+
+	# get address of local var:g2$1
+	ld t0, 0(t3)
+	sd t0, 2752(sp)
 
 	# add result_$35  g2$1
 
 	# fetch variables
 	li t1, 2
-	lw t2, 1376(sp)
+	ld t2, 2752(sp)
+
+	# get address of local var:result_$35
 	add t0, t1, t2
-	sw t0, 1372(sp)
+	sd t0, 2744(sp)
 
 	# load a18 a18
-	lw t0, a18
-	sw t0, 1368(sp)
+
+	# get address of a18 points to
+	la t3, a18
+	addi t3, t3, 0
+
+	# get address of local var:a18
+	ld t0, 0(t3)
+	sd t0, 2736(sp)
 
 	# add result_$36 result_$35 a18
 
 	# fetch variables
-	lw t1, 1372(sp)
-	lw t2, 1368(sp)
+	ld t1, 2744(sp)
+	ld t2, 2736(sp)
+
+	# get address of local var:result_$36
 	add t0, t1, t2
-	sw t0, 1364(sp)
+	sd t0, 2728(sp)
+
+	# h2 result_$36
+
+	# fetch variables
+	ld t1, 2728(sp)
 
 	# store h2 result_$36
 
-	# fetch variables
-	lw t1, 1364(sp)
-	sw t1, 1724(sp)
+	# get address of h2 points to
+	ld t3, 3568(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load g3$1 g3
-	lw t0, 1736(sp)
-	sw t0, 1360(sp)
+
+	# get address of g3 points to
+	ld t3, 3616(sp)
+	addi t3, t3, 0
+
+	# get address of local var:g3$1
+	ld t0, 0(t3)
+	sd t0, 2720(sp)
 
 	# add result_$37  g3$1
 
 	# fetch variables
 	li t1, 3
-	lw t2, 1360(sp)
+	ld t2, 2720(sp)
+
+	# get address of local var:result_$37
 	add t0, t1, t2
-	sw t0, 1356(sp)
+	sd t0, 2712(sp)
 
 	# load a19 a19
-	lw t0, a19
-	sw t0, 1352(sp)
+
+	# get address of a19 points to
+	la t3, a19
+	addi t3, t3, 0
+
+	# get address of local var:a19
+	ld t0, 0(t3)
+	sd t0, 2704(sp)
 
 	# add result_$38 result_$37 a19
 
 	# fetch variables
-	lw t1, 1356(sp)
-	lw t2, 1352(sp)
+	ld t1, 2712(sp)
+	ld t2, 2704(sp)
+
+	# get address of local var:result_$38
 	add t0, t1, t2
-	sw t0, 1348(sp)
+	sd t0, 2696(sp)
+
+	# h3 result_$38
+
+	# fetch variables
+	ld t1, 2696(sp)
 
 	# store h3 result_$38
 
-	# fetch variables
-	lw t1, 1348(sp)
-	sw t1, 1720(sp)
+	# get address of h3 points to
+	ld t3, 3552(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load g4$1 g4
-	lw t0, 1732(sp)
-	sw t0, 1344(sp)
+
+	# get address of g4 points to
+	ld t3, 3600(sp)
+	addi t3, t3, 0
+
+	# get address of local var:g4$1
+	ld t0, 0(t3)
+	sd t0, 2688(sp)
 
 	# add result_$39  g4$1
 
 	# fetch variables
 	li t1, 4
-	lw t2, 1344(sp)
+	ld t2, 2688(sp)
+
+	# get address of local var:result_$39
 	add t0, t1, t2
-	sw t0, 1340(sp)
+	sd t0, 2680(sp)
 
 	# load a20 a20
-	lw t0, a20
-	sw t0, 1336(sp)
+
+	# get address of a20 points to
+	la t3, a20
+	addi t3, t3, 0
+
+	# get address of local var:a20
+	ld t0, 0(t3)
+	sd t0, 2672(sp)
 
 	# add result_$40 result_$39 a20
 
 	# fetch variables
-	lw t1, 1340(sp)
-	lw t2, 1336(sp)
+	ld t1, 2680(sp)
+	ld t2, 2672(sp)
+
+	# get address of local var:result_$40
 	add t0, t1, t2
-	sw t0, 1332(sp)
+	sd t0, 2664(sp)
+
+	# h4 result_$40
+
+	# fetch variables
+	ld t1, 2664(sp)
 
 	# store h4 result_$40
 
-	# fetch variables
-	lw t1, 1332(sp)
-	sw t1, 1716(sp)
+	# get address of h4 points to
+	ld t3, 3536(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load h1$1 h1
-	lw t0, 1728(sp)
-	sw t0, 1328(sp)
+
+	# get address of h1 points to
+	ld t3, 3584(sp)
+	addi t3, t3, 0
+
+	# get address of local var:h1$1
+	ld t0, 0(t3)
+	sd t0, 2656(sp)
 
 	# add result_$41  h1$1
 
 	# fetch variables
 	li t1, 1
-	lw t2, 1328(sp)
+	ld t2, 2656(sp)
+
+	# get address of local var:result_$41
 	add t0, t1, t2
-	sw t0, 1324(sp)
+	sd t0, 2648(sp)
 
 	# load a21 a21
-	lw t0, a21
-	sw t0, 1320(sp)
+
+	# get address of a21 points to
+	la t3, a21
+	addi t3, t3, 0
+
+	# get address of local var:a21
+	ld t0, 0(t3)
+	sd t0, 2640(sp)
 
 	# add result_$42 result_$41 a21
 
 	# fetch variables
-	lw t1, 1324(sp)
-	lw t2, 1320(sp)
+	ld t1, 2648(sp)
+	ld t2, 2640(sp)
+
+	# get address of local var:result_$42
 	add t0, t1, t2
-	sw t0, 1316(sp)
+	sd t0, 2632(sp)
+
+	# i1 result_$42
+
+	# fetch variables
+	ld t1, 2632(sp)
 
 	# store i1 result_$42
 
-	# fetch variables
-	lw t1, 1316(sp)
-	sw t1, 1712(sp)
+	# get address of i1 points to
+	ld t3, 3520(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load h2$1 h2
-	lw t0, 1724(sp)
-	sw t0, 1312(sp)
+
+	# get address of h2 points to
+	ld t3, 3568(sp)
+	addi t3, t3, 0
+
+	# get address of local var:h2$1
+	ld t0, 0(t3)
+	sd t0, 2624(sp)
 
 	# add result_$43  h2$1
 
 	# fetch variables
 	li t1, 2
-	lw t2, 1312(sp)
+	ld t2, 2624(sp)
+
+	# get address of local var:result_$43
 	add t0, t1, t2
-	sw t0, 1308(sp)
+	sd t0, 2616(sp)
 
 	# load a22 a22
-	lw t0, a22
-	sw t0, 1304(sp)
+
+	# get address of a22 points to
+	la t3, a22
+	addi t3, t3, 0
+
+	# get address of local var:a22
+	ld t0, 0(t3)
+	sd t0, 2608(sp)
 
 	# add result_$44 result_$43 a22
 
 	# fetch variables
-	lw t1, 1308(sp)
-	lw t2, 1304(sp)
+	ld t1, 2616(sp)
+	ld t2, 2608(sp)
+
+	# get address of local var:result_$44
 	add t0, t1, t2
-	sw t0, 1300(sp)
+	sd t0, 2600(sp)
+
+	# i2 result_$44
+
+	# fetch variables
+	ld t1, 2600(sp)
 
 	# store i2 result_$44
 
-	# fetch variables
-	lw t1, 1300(sp)
-	sw t1, 1708(sp)
+	# get address of i2 points to
+	ld t3, 3504(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load h3$1 h3
-	lw t0, 1720(sp)
-	sw t0, 1296(sp)
+
+	# get address of h3 points to
+	ld t3, 3552(sp)
+	addi t3, t3, 0
+
+	# get address of local var:h3$1
+	ld t0, 0(t3)
+	sd t0, 2592(sp)
 
 	# add result_$45  h3$1
 
 	# fetch variables
 	li t1, 3
-	lw t2, 1296(sp)
+	ld t2, 2592(sp)
+
+	# get address of local var:result_$45
 	add t0, t1, t2
-	sw t0, 1292(sp)
+	sd t0, 2584(sp)
 
 	# load a23 a23
-	lw t0, a23
-	sw t0, 1288(sp)
+
+	# get address of a23 points to
+	la t3, a23
+	addi t3, t3, 0
+
+	# get address of local var:a23
+	ld t0, 0(t3)
+	sd t0, 2576(sp)
 
 	# add result_$46 result_$45 a23
 
 	# fetch variables
-	lw t1, 1292(sp)
-	lw t2, 1288(sp)
+	ld t1, 2584(sp)
+	ld t2, 2576(sp)
+
+	# get address of local var:result_$46
 	add t0, t1, t2
-	sw t0, 1284(sp)
+	sd t0, 2568(sp)
+
+	# i3 result_$46
+
+	# fetch variables
+	ld t1, 2568(sp)
 
 	# store i3 result_$46
 
-	# fetch variables
-	lw t1, 1284(sp)
-	sw t1, 1704(sp)
+	# get address of i3 points to
+	ld t3, 3488(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load h4$1 h4
-	lw t0, 1716(sp)
-	sw t0, 1280(sp)
+
+	# get address of h4 points to
+	ld t3, 3536(sp)
+	addi t3, t3, 0
+
+	# get address of local var:h4$1
+	ld t0, 0(t3)
+	sd t0, 2560(sp)
 
 	# add result_$47  h4$1
 
 	# fetch variables
 	li t1, 4
-	lw t2, 1280(sp)
+	ld t2, 2560(sp)
+
+	# get address of local var:result_$47
 	add t0, t1, t2
-	sw t0, 1276(sp)
+	sd t0, 2552(sp)
 
 	# load a24 a24
-	lw t0, a24
-	sw t0, 1272(sp)
+
+	# get address of a24 points to
+	la t3, a24
+	addi t3, t3, 0
+
+	# get address of local var:a24
+	ld t0, 0(t3)
+	sd t0, 2544(sp)
 
 	# add result_$48 result_$47 a24
 
 	# fetch variables
-	lw t1, 1276(sp)
-	lw t2, 1272(sp)
+	ld t1, 2552(sp)
+	ld t2, 2544(sp)
+
+	# get address of local var:result_$48
 	add t0, t1, t2
-	sw t0, 1268(sp)
+	sd t0, 2536(sp)
+
+	# i4 result_$48
+
+	# fetch variables
+	ld t1, 2536(sp)
 
 	# store i4 result_$48
 
-	# fetch variables
-	lw t1, 1268(sp)
-	sw t1, 1700(sp)
+	# get address of i4 points to
+	ld t3, 3472(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load i1$1 i1
-	lw t0, 1712(sp)
-	sw t0, 1264(sp)
+
+	# get address of i1 points to
+	ld t3, 3520(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i1$1
+	ld t0, 0(t3)
+	sd t0, 2528(sp)
 
 	# add result_$49  i1$1
 
 	# fetch variables
 	li t1, 1
-	lw t2, 1264(sp)
+	ld t2, 2528(sp)
+
+	# get address of local var:result_$49
 	add t0, t1, t2
-	sw t0, 1260(sp)
+	sd t0, 2520(sp)
 
 	# load a25 a25
-	lw t0, a25
-	sw t0, 1256(sp)
+
+	# get address of a25 points to
+	la t3, a25
+	addi t3, t3, 0
+
+	# get address of local var:a25
+	ld t0, 0(t3)
+	sd t0, 2512(sp)
 
 	# add result_$50 result_$49 a25
 
 	# fetch variables
-	lw t1, 1260(sp)
-	lw t2, 1256(sp)
+	ld t1, 2520(sp)
+	ld t2, 2512(sp)
+
+	# get address of local var:result_$50
 	add t0, t1, t2
-	sw t0, 1252(sp)
+	sd t0, 2504(sp)
+
+	# j1 result_$50
+
+	# fetch variables
+	ld t1, 2504(sp)
 
 	# store j1 result_$50
 
-	# fetch variables
-	lw t1, 1252(sp)
-	sw t1, 1696(sp)
+	# get address of j1 points to
+	ld t3, 3456(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load i2$1 i2
-	lw t0, 1708(sp)
-	sw t0, 1248(sp)
+
+	# get address of i2 points to
+	ld t3, 3504(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i2$1
+	ld t0, 0(t3)
+	sd t0, 2496(sp)
 
 	# add result_$51  i2$1
 
 	# fetch variables
 	li t1, 2
-	lw t2, 1248(sp)
+	ld t2, 2496(sp)
+
+	# get address of local var:result_$51
 	add t0, t1, t2
-	sw t0, 1244(sp)
+	sd t0, 2488(sp)
 
 	# load a26 a26
-	lw t0, a26
-	sw t0, 1240(sp)
+
+	# get address of a26 points to
+	la t3, a26
+	addi t3, t3, 0
+
+	# get address of local var:a26
+	ld t0, 0(t3)
+	sd t0, 2480(sp)
 
 	# add result_$52 result_$51 a26
 
 	# fetch variables
-	lw t1, 1244(sp)
-	lw t2, 1240(sp)
+	ld t1, 2488(sp)
+	ld t2, 2480(sp)
+
+	# get address of local var:result_$52
 	add t0, t1, t2
-	sw t0, 1236(sp)
+	sd t0, 2472(sp)
+
+	# j2 result_$52
+
+	# fetch variables
+	ld t1, 2472(sp)
 
 	# store j2 result_$52
 
-	# fetch variables
-	lw t1, 1236(sp)
-	sw t1, 1692(sp)
+	# get address of j2 points to
+	ld t3, 3440(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load i3$1 i3
-	lw t0, 1704(sp)
-	sw t0, 1232(sp)
+
+	# get address of i3 points to
+	ld t3, 3488(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i3$1
+	ld t0, 0(t3)
+	sd t0, 2464(sp)
 
 	# add result_$53  i3$1
 
 	# fetch variables
 	li t1, 3
-	lw t2, 1232(sp)
+	ld t2, 2464(sp)
+
+	# get address of local var:result_$53
 	add t0, t1, t2
-	sw t0, 1228(sp)
+	sd t0, 2456(sp)
 
 	# load a27 a27
-	lw t0, a27
-	sw t0, 1224(sp)
+
+	# get address of a27 points to
+	la t3, a27
+	addi t3, t3, 0
+
+	# get address of local var:a27
+	ld t0, 0(t3)
+	sd t0, 2448(sp)
 
 	# add result_$54 result_$53 a27
 
 	# fetch variables
-	lw t1, 1228(sp)
-	lw t2, 1224(sp)
+	ld t1, 2456(sp)
+	ld t2, 2448(sp)
+
+	# get address of local var:result_$54
 	add t0, t1, t2
-	sw t0, 1220(sp)
+	sd t0, 2440(sp)
+
+	# j3 result_$54
+
+	# fetch variables
+	ld t1, 2440(sp)
 
 	# store j3 result_$54
 
-	# fetch variables
-	lw t1, 1220(sp)
-	sw t1, 1688(sp)
+	# get address of j3 points to
+	ld t3, 3424(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load i4$1 i4
-	lw t0, 1700(sp)
-	sw t0, 1216(sp)
+
+	# get address of i4 points to
+	ld t3, 3472(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i4$1
+	ld t0, 0(t3)
+	sd t0, 2432(sp)
 
 	# add result_$55  i4$1
 
 	# fetch variables
 	li t1, 4
-	lw t2, 1216(sp)
+	ld t2, 2432(sp)
+
+	# get address of local var:result_$55
 	add t0, t1, t2
-	sw t0, 1212(sp)
+	sd t0, 2424(sp)
 
 	# load a28 a28
-	lw t0, a28
-	sw t0, 1208(sp)
+
+	# get address of a28 points to
+	la t3, a28
+	addi t3, t3, 0
+
+	# get address of local var:a28
+	ld t0, 0(t3)
+	sd t0, 2416(sp)
 
 	# add result_$56 result_$55 a28
 
 	# fetch variables
-	lw t1, 1212(sp)
-	lw t2, 1208(sp)
+	ld t1, 2424(sp)
+	ld t2, 2416(sp)
+
+	# get address of local var:result_$56
 	add t0, t1, t2
-	sw t0, 1204(sp)
+	sd t0, 2408(sp)
+
+	# j4 result_$56
+
+	# fetch variables
+	ld t1, 2408(sp)
 
 	# store j4 result_$56
 
-	# fetch variables
-	lw t1, 1204(sp)
-	sw t1, 1684(sp)
+	# get address of j4 points to
+	ld t3, 3408(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load j1$1 j1
-	lw t0, 1696(sp)
-	sw t0, 1200(sp)
+
+	# get address of j1 points to
+	ld t3, 3456(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j1$1
+	ld t0, 0(t3)
+	sd t0, 2400(sp)
 
 	# add result_$57  j1$1
 
 	# fetch variables
 	li t1, 1
-	lw t2, 1200(sp)
+	ld t2, 2400(sp)
+
+	# get address of local var:result_$57
 	add t0, t1, t2
-	sw t0, 1196(sp)
+	sd t0, 2392(sp)
 
 	# load a29 a29
-	lw t0, a29
-	sw t0, 1192(sp)
+
+	# get address of a29 points to
+	la t3, a29
+	addi t3, t3, 0
+
+	# get address of local var:a29
+	ld t0, 0(t3)
+	sd t0, 2384(sp)
 
 	# add result_$58 result_$57 a29
 
 	# fetch variables
-	lw t1, 1196(sp)
-	lw t2, 1192(sp)
+	ld t1, 2392(sp)
+	ld t2, 2384(sp)
+
+	# get address of local var:result_$58
 	add t0, t1, t2
-	sw t0, 1188(sp)
+	sd t0, 2376(sp)
+
+	# k1 result_$58
+
+	# fetch variables
+	ld t1, 2376(sp)
 
 	# store k1 result_$58
 
-	# fetch variables
-	lw t1, 1188(sp)
-	sw t1, 1680(sp)
+	# get address of k1 points to
+	ld t3, 3392(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load j2$1 j2
-	lw t0, 1692(sp)
-	sw t0, 1184(sp)
+
+	# get address of j2 points to
+	ld t3, 3440(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j2$1
+	ld t0, 0(t3)
+	sd t0, 2368(sp)
 
 	# add result_$59  j2$1
 
 	# fetch variables
 	li t1, 2
-	lw t2, 1184(sp)
+	ld t2, 2368(sp)
+
+	# get address of local var:result_$59
 	add t0, t1, t2
-	sw t0, 1180(sp)
+	sd t0, 2360(sp)
 
 	# load a30 a30
-	lw t0, a30
-	sw t0, 1176(sp)
+
+	# get address of a30 points to
+	la t3, a30
+	addi t3, t3, 0
+
+	# get address of local var:a30
+	ld t0, 0(t3)
+	sd t0, 2352(sp)
 
 	# add result_$60 result_$59 a30
 
 	# fetch variables
-	lw t1, 1180(sp)
-	lw t2, 1176(sp)
+	ld t1, 2360(sp)
+	ld t2, 2352(sp)
+
+	# get address of local var:result_$60
 	add t0, t1, t2
-	sw t0, 1172(sp)
+	sd t0, 2344(sp)
+
+	# k2 result_$60
+
+	# fetch variables
+	ld t1, 2344(sp)
 
 	# store k2 result_$60
 
-	# fetch variables
-	lw t1, 1172(sp)
-	sw t1, 1676(sp)
+	# get address of k2 points to
+	ld t3, 3376(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load j3$1 j3
-	lw t0, 1688(sp)
-	sw t0, 1168(sp)
+
+	# get address of j3 points to
+	ld t3, 3424(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j3$1
+	ld t0, 0(t3)
+	sd t0, 2336(sp)
 
 	# add result_$61  j3$1
 
 	# fetch variables
 	li t1, 3
-	lw t2, 1168(sp)
+	ld t2, 2336(sp)
+
+	# get address of local var:result_$61
 	add t0, t1, t2
-	sw t0, 1164(sp)
+	sd t0, 2328(sp)
 
 	# load a31 a31
-	lw t0, a31
-	sw t0, 1160(sp)
+
+	# get address of a31 points to
+	la t3, a31
+	addi t3, t3, 0
+
+	# get address of local var:a31
+	ld t0, 0(t3)
+	sd t0, 2320(sp)
 
 	# add result_$62 result_$61 a31
 
 	# fetch variables
-	lw t1, 1164(sp)
-	lw t2, 1160(sp)
+	ld t1, 2328(sp)
+	ld t2, 2320(sp)
+
+	# get address of local var:result_$62
 	add t0, t1, t2
-	sw t0, 1156(sp)
+	sd t0, 2312(sp)
+
+	# k3 result_$62
+
+	# fetch variables
+	ld t1, 2312(sp)
 
 	# store k3 result_$62
 
-	# fetch variables
-	lw t1, 1156(sp)
-	sw t1, 1672(sp)
+	# get address of k3 points to
+	ld t3, 3360(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load j4$1 j4
-	lw t0, 1684(sp)
-	sw t0, 1152(sp)
+
+	# get address of j4 points to
+	ld t3, 3408(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j4$1
+	ld t0, 0(t3)
+	sd t0, 2304(sp)
 
 	# add result_$63  j4$1
 
 	# fetch variables
 	li t1, 4
-	lw t2, 1152(sp)
+	ld t2, 2304(sp)
+
+	# get address of local var:result_$63
 	add t0, t1, t2
-	sw t0, 1148(sp)
+	sd t0, 2296(sp)
 
 	# load a32 a32
-	lw t0, a32
-	sw t0, 1144(sp)
+
+	# get address of a32 points to
+	la t3, a32
+	addi t3, t3, 0
+
+	# get address of local var:a32
+	ld t0, 0(t3)
+	sd t0, 2288(sp)
 
 	# add result_$64 result_$63 a32
 
 	# fetch variables
-	lw t1, 1148(sp)
-	lw t2, 1144(sp)
+	ld t1, 2296(sp)
+	ld t2, 2288(sp)
+
+	# get address of local var:result_$64
 	add t0, t1, t2
-	sw t0, 1140(sp)
+	sd t0, 2280(sp)
+
+	# k4 result_$64
+
+	# fetch variables
+	ld t1, 2280(sp)
 
 	# store k4 result_$64
 
-	# fetch variables
-	lw t1, 1140(sp)
-	sw t1, 1668(sp)
+	# get address of k4 points to
+	ld t3, 3344(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load a$2 a
-	lw t0, 1832(sp)
-	sw t0, 1136(sp)
+
+	# get address of a points to
+	ld t3, 3976(sp)
+	addi t3, t3, 0
+
+	# get address of local var:a$2
+	ld t0, 0(t3)
+	sd t0, 2272(sp)
 
 	# load b$2 b
-	lw t0, 1828(sp)
-	sw t0, 1132(sp)
+
+	# get address of b points to
+	ld t3, 3960(sp)
+	addi t3, t3, 0
+
+	# get address of local var:b$2
+	ld t0, 0(t3)
+	sd t0, 2264(sp)
 
 	# sub result_$65 a$2 b$2
 
 	# fetch variables
-	lw t1, 1136(sp)
-	lw t2, 1132(sp)
+	ld t1, 2272(sp)
+	ld t2, 2264(sp)
+
+	# get address of local var:result_$65
 	sub t0, t1, t2
-	sw t0, 1128(sp)
+	sd t0, 2256(sp)
 
 	# add result_$66 result_$65 
 
 	# fetch variables
-	lw t1, 1128(sp)
+	ld t1, 2256(sp)
 	li t2, 10
+
+	# get address of local var:result_$66
 	add t0, t1, t2
-	sw t0, 1124(sp)
+	sd t0, 2248(sp)
+
+	# i result_$66
+
+	# fetch variables
+	ld t1, 2248(sp)
 
 	# store i result_$66
 
-	# fetch variables
-	lw t1, 1124(sp)
-	sw t1, 1824(sp)
+	# get address of i points to
+	ld t3, 3944(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load j1$2 j1
-	lw t0, 1696(sp)
-	sw t0, 1120(sp)
+
+	# get address of j1 points to
+	ld t3, 3456(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j1$2
+	ld t0, 0(t3)
+	sd t0, 2240(sp)
 
 	# add result_$67  j1$2
 
 	# fetch variables
 	li t1, 1
-	lw t2, 1120(sp)
+	ld t2, 2240(sp)
+
+	# get address of local var:result_$67
 	add t0, t1, t2
-	sw t0, 1116(sp)
+	sd t0, 2232(sp)
 
 	# load a29$1 a29
-	lw t0, a29
-	sw t0, 1112(sp)
+
+	# get address of a29 points to
+	la t3, a29
+	addi t3, t3, 0
+
+	# get address of local var:a29$1
+	ld t0, 0(t3)
+	sd t0, 2224(sp)
 
 	# add result_$68 result_$67 a29$1
 
 	# fetch variables
-	lw t1, 1116(sp)
-	lw t2, 1112(sp)
+	ld t1, 2232(sp)
+	ld t2, 2224(sp)
+
+	# get address of local var:result_$68
 	add t0, t1, t2
-	sw t0, 1108(sp)
+	sd t0, 2216(sp)
+
+	# k1 result_$68
+
+	# fetch variables
+	ld t1, 2216(sp)
 
 	# store k1 result_$68
 
-	# fetch variables
-	lw t1, 1108(sp)
-	sw t1, 1680(sp)
+	# get address of k1 points to
+	ld t3, 3392(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load j2$2 j2
-	lw t0, 1692(sp)
-	sw t0, 1104(sp)
+
+	# get address of j2 points to
+	ld t3, 3440(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j2$2
+	ld t0, 0(t3)
+	sd t0, 2208(sp)
 
 	# add result_$69  j2$2
 
 	# fetch variables
 	li t1, 2
-	lw t2, 1104(sp)
+	ld t2, 2208(sp)
+
+	# get address of local var:result_$69
 	add t0, t1, t2
-	sw t0, 1100(sp)
+	sd t0, 2200(sp)
 
 	# load a30$1 a30
-	lw t0, a30
-	sw t0, 1096(sp)
+
+	# get address of a30 points to
+	la t3, a30
+	addi t3, t3, 0
+
+	# get address of local var:a30$1
+	ld t0, 0(t3)
+	sd t0, 2192(sp)
 
 	# add result_$70 result_$69 a30$1
 
 	# fetch variables
-	lw t1, 1100(sp)
-	lw t2, 1096(sp)
+	ld t1, 2200(sp)
+	ld t2, 2192(sp)
+
+	# get address of local var:result_$70
 	add t0, t1, t2
-	sw t0, 1092(sp)
+	sd t0, 2184(sp)
+
+	# k2 result_$70
+
+	# fetch variables
+	ld t1, 2184(sp)
 
 	# store k2 result_$70
 
-	# fetch variables
-	lw t1, 1092(sp)
-	sw t1, 1676(sp)
+	# get address of k2 points to
+	ld t3, 3376(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load j3$2 j3
-	lw t0, 1688(sp)
-	sw t0, 1088(sp)
+
+	# get address of j3 points to
+	ld t3, 3424(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j3$2
+	ld t0, 0(t3)
+	sd t0, 2176(sp)
 
 	# add result_$71  j3$2
 
 	# fetch variables
 	li t1, 3
-	lw t2, 1088(sp)
+	ld t2, 2176(sp)
+
+	# get address of local var:result_$71
 	add t0, t1, t2
-	sw t0, 1084(sp)
+	sd t0, 2168(sp)
 
 	# load a31$1 a31
-	lw t0, a31
-	sw t0, 1080(sp)
+
+	# get address of a31 points to
+	la t3, a31
+	addi t3, t3, 0
+
+	# get address of local var:a31$1
+	ld t0, 0(t3)
+	sd t0, 2160(sp)
 
 	# add result_$72 result_$71 a31$1
 
 	# fetch variables
-	lw t1, 1084(sp)
-	lw t2, 1080(sp)
+	ld t1, 2168(sp)
+	ld t2, 2160(sp)
+
+	# get address of local var:result_$72
 	add t0, t1, t2
-	sw t0, 1076(sp)
+	sd t0, 2152(sp)
+
+	# k3 result_$72
+
+	# fetch variables
+	ld t1, 2152(sp)
 
 	# store k3 result_$72
 
-	# fetch variables
-	lw t1, 1076(sp)
-	sw t1, 1672(sp)
+	# get address of k3 points to
+	ld t3, 3360(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load j4$2 j4
-	lw t0, 1684(sp)
-	sw t0, 1072(sp)
+
+	# get address of j4 points to
+	ld t3, 3408(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j4$2
+	ld t0, 0(t3)
+	sd t0, 2144(sp)
 
 	# add result_$73  j4$2
 
 	# fetch variables
 	li t1, 4
-	lw t2, 1072(sp)
+	ld t2, 2144(sp)
+
+	# get address of local var:result_$73
 	add t0, t1, t2
-	sw t0, 1068(sp)
+	sd t0, 2136(sp)
 
 	# load a32$1 a32
-	lw t0, a32
-	sw t0, 1064(sp)
+
+	# get address of a32 points to
+	la t3, a32
+	addi t3, t3, 0
+
+	# get address of local var:a32$1
+	ld t0, 0(t3)
+	sd t0, 2128(sp)
 
 	# add result_$74 result_$73 a32$1
 
 	# fetch variables
-	lw t1, 1068(sp)
-	lw t2, 1064(sp)
+	ld t1, 2136(sp)
+	ld t2, 2128(sp)
+
+	# get address of local var:result_$74
 	add t0, t1, t2
-	sw t0, 1060(sp)
+	sd t0, 2120(sp)
+
+	# k4 result_$74
+
+	# fetch variables
+	ld t1, 2120(sp)
 
 	# store k4 result_$74
 
-	# fetch variables
-	lw t1, 1060(sp)
-	sw t1, 1668(sp)
+	# get address of k4 points to
+	ld t3, 3344(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load i1$2 i1
-	lw t0, 1712(sp)
-	sw t0, 1056(sp)
+
+	# get address of i1 points to
+	ld t3, 3520(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i1$2
+	ld t0, 0(t3)
+	sd t0, 2112(sp)
 
 	# add result_$75  i1$2
 
 	# fetch variables
 	li t1, 1
-	lw t2, 1056(sp)
+	ld t2, 2112(sp)
+
+	# get address of local var:result_$75
 	add t0, t1, t2
-	sw t0, 1052(sp)
+	sd t0, 2104(sp)
 
 	# load a25$1 a25
-	lw t0, a25
-	sw t0, 1048(sp)
+
+	# get address of a25 points to
+	la t3, a25
+	addi t3, t3, 0
+
+	# get address of local var:a25$1
+	ld t0, 0(t3)
+	sd t0, 2096(sp)
 
 	# add result_$76 result_$75 a25$1
 
 	# fetch variables
-	lw t1, 1052(sp)
-	lw t2, 1048(sp)
+	ld t1, 2104(sp)
+	ld t2, 2096(sp)
+
+	# get address of local var:result_$76
 	add t0, t1, t2
-	sw t0, 1044(sp)
+	sd t0, 2088(sp)
+
+	# j1 result_$76
+
+	# fetch variables
+	ld t1, 2088(sp)
 
 	# store j1 result_$76
 
-	# fetch variables
-	lw t1, 1044(sp)
-	sw t1, 1696(sp)
+	# get address of j1 points to
+	ld t3, 3456(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load i2$2 i2
-	lw t0, 1708(sp)
-	sw t0, 1040(sp)
+
+	# get address of i2 points to
+	ld t3, 3504(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i2$2
+	ld t0, 0(t3)
+	sd t0, 2080(sp)
 
 	# add result_$77  i2$2
 
 	# fetch variables
 	li t1, 2
-	lw t2, 1040(sp)
+	ld t2, 2080(sp)
+
+	# get address of local var:result_$77
 	add t0, t1, t2
-	sw t0, 1036(sp)
+	sd t0, 2072(sp)
 
 	# load a26$1 a26
-	lw t0, a26
-	sw t0, 1032(sp)
+
+	# get address of a26 points to
+	la t3, a26
+	addi t3, t3, 0
+
+	# get address of local var:a26$1
+	ld t0, 0(t3)
+	sd t0, 2064(sp)
 
 	# add result_$78 result_$77 a26$1
 
 	# fetch variables
-	lw t1, 1036(sp)
-	lw t2, 1032(sp)
+	ld t1, 2072(sp)
+	ld t2, 2064(sp)
+
+	# get address of local var:result_$78
 	add t0, t1, t2
-	sw t0, 1028(sp)
+	sd t0, 2056(sp)
+
+	# j2 result_$78
+
+	# fetch variables
+	ld t1, 2056(sp)
 
 	# store j2 result_$78
 
-	# fetch variables
-	lw t1, 1028(sp)
-	sw t1, 1692(sp)
+	# get address of j2 points to
+	ld t3, 3440(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load i3$2 i3
-	lw t0, 1704(sp)
-	sw t0, 1024(sp)
+
+	# get address of i3 points to
+	ld t3, 3488(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i3$2
+	ld t0, 0(t3)
+	sd t0, 2048(sp)
 
 	# add result_$79  i3$2
 
 	# fetch variables
 	li t1, 3
-	lw t2, 1024(sp)
+	ld t2, 2048(sp)
+
+	# get address of local var:result_$79
 	add t0, t1, t2
-	sw t0, 1020(sp)
+	sd t0, 2040(sp)
 
 	# load a27$1 a27
-	lw t0, a27
-	sw t0, 1016(sp)
+
+	# get address of a27 points to
+	la t3, a27
+	addi t3, t3, 0
+
+	# get address of local var:a27$1
+	ld t0, 0(t3)
+	sd t0, 2032(sp)
 
 	# add result_$80 result_$79 a27$1
 
 	# fetch variables
-	lw t1, 1020(sp)
-	lw t2, 1016(sp)
+	ld t1, 2040(sp)
+	ld t2, 2032(sp)
+
+	# get address of local var:result_$80
 	add t0, t1, t2
-	sw t0, 1012(sp)
+	sd t0, 2024(sp)
+
+	# j3 result_$80
+
+	# fetch variables
+	ld t1, 2024(sp)
 
 	# store j3 result_$80
 
-	# fetch variables
-	lw t1, 1012(sp)
-	sw t1, 1688(sp)
+	# get address of j3 points to
+	ld t3, 3424(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load i4$2 i4
-	lw t0, 1700(sp)
-	sw t0, 1008(sp)
+
+	# get address of i4 points to
+	ld t3, 3472(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i4$2
+	ld t0, 0(t3)
+	sd t0, 2016(sp)
 
 	# add result_$81  i4$2
 
 	# fetch variables
 	li t1, 4
-	lw t2, 1008(sp)
+	ld t2, 2016(sp)
+
+	# get address of local var:result_$81
 	add t0, t1, t2
-	sw t0, 1004(sp)
+	sd t0, 2008(sp)
 
 	# load a28$1 a28
-	lw t0, a28
-	sw t0, 1000(sp)
+
+	# get address of a28 points to
+	la t3, a28
+	addi t3, t3, 0
+
+	# get address of local var:a28$1
+	ld t0, 0(t3)
+	sd t0, 2000(sp)
 
 	# add result_$82 result_$81 a28$1
 
 	# fetch variables
-	lw t1, 1004(sp)
-	lw t2, 1000(sp)
+	ld t1, 2008(sp)
+	ld t2, 2000(sp)
+
+	# get address of local var:result_$82
 	add t0, t1, t2
-	sw t0, 996(sp)
+	sd t0, 1992(sp)
+
+	# j4 result_$82
+
+	# fetch variables
+	ld t1, 1992(sp)
 
 	# store j4 result_$82
 
-	# fetch variables
-	lw t1, 996(sp)
-	sw t1, 1684(sp)
+	# get address of j4 points to
+	ld t3, 3408(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load h1$2 h1
-	lw t0, 1728(sp)
-	sw t0, 992(sp)
+
+	# get address of h1 points to
+	ld t3, 3584(sp)
+	addi t3, t3, 0
+
+	# get address of local var:h1$2
+	ld t0, 0(t3)
+	sd t0, 1984(sp)
 
 	# add result_$83  h1$2
 
 	# fetch variables
 	li t1, 1
-	lw t2, 992(sp)
+	ld t2, 1984(sp)
+
+	# get address of local var:result_$83
 	add t0, t1, t2
-	sw t0, 988(sp)
+	sd t0, 1976(sp)
 
 	# load a21$1 a21
-	lw t0, a21
-	sw t0, 984(sp)
+
+	# get address of a21 points to
+	la t3, a21
+	addi t3, t3, 0
+
+	# get address of local var:a21$1
+	ld t0, 0(t3)
+	sd t0, 1968(sp)
 
 	# add result_$84 result_$83 a21$1
 
 	# fetch variables
-	lw t1, 988(sp)
-	lw t2, 984(sp)
+	ld t1, 1976(sp)
+	ld t2, 1968(sp)
+
+	# get address of local var:result_$84
 	add t0, t1, t2
-	sw t0, 980(sp)
+	sd t0, 1960(sp)
+
+	# i1 result_$84
+
+	# fetch variables
+	ld t1, 1960(sp)
 
 	# store i1 result_$84
 
-	# fetch variables
-	lw t1, 980(sp)
-	sw t1, 1712(sp)
+	# get address of i1 points to
+	ld t3, 3520(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load h2$2 h2
-	lw t0, 1724(sp)
-	sw t0, 976(sp)
+
+	# get address of h2 points to
+	ld t3, 3568(sp)
+	addi t3, t3, 0
+
+	# get address of local var:h2$2
+	ld t0, 0(t3)
+	sd t0, 1952(sp)
 
 	# add result_$85  h2$2
 
 	# fetch variables
 	li t1, 2
-	lw t2, 976(sp)
+	ld t2, 1952(sp)
+
+	# get address of local var:result_$85
 	add t0, t1, t2
-	sw t0, 972(sp)
+	sd t0, 1944(sp)
 
 	# load a22$1 a22
-	lw t0, a22
-	sw t0, 968(sp)
+
+	# get address of a22 points to
+	la t3, a22
+	addi t3, t3, 0
+
+	# get address of local var:a22$1
+	ld t0, 0(t3)
+	sd t0, 1936(sp)
 
 	# add result_$86 result_$85 a22$1
 
 	# fetch variables
-	lw t1, 972(sp)
-	lw t2, 968(sp)
+	ld t1, 1944(sp)
+	ld t2, 1936(sp)
+
+	# get address of local var:result_$86
 	add t0, t1, t2
-	sw t0, 964(sp)
+	sd t0, 1928(sp)
+
+	# i2 result_$86
+
+	# fetch variables
+	ld t1, 1928(sp)
 
 	# store i2 result_$86
 
-	# fetch variables
-	lw t1, 964(sp)
-	sw t1, 1708(sp)
+	# get address of i2 points to
+	ld t3, 3504(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load h3$2 h3
-	lw t0, 1720(sp)
-	sw t0, 960(sp)
+
+	# get address of h3 points to
+	ld t3, 3552(sp)
+	addi t3, t3, 0
+
+	# get address of local var:h3$2
+	ld t0, 0(t3)
+	sd t0, 1920(sp)
 
 	# add result_$87  h3$2
 
 	# fetch variables
 	li t1, 3
-	lw t2, 960(sp)
+	ld t2, 1920(sp)
+
+	# get address of local var:result_$87
 	add t0, t1, t2
-	sw t0, 956(sp)
+	sd t0, 1912(sp)
 
 	# load a23$1 a23
-	lw t0, a23
-	sw t0, 952(sp)
+
+	# get address of a23 points to
+	la t3, a23
+	addi t3, t3, 0
+
+	# get address of local var:a23$1
+	ld t0, 0(t3)
+	sd t0, 1904(sp)
 
 	# add result_$88 result_$87 a23$1
 
 	# fetch variables
-	lw t1, 956(sp)
-	lw t2, 952(sp)
+	ld t1, 1912(sp)
+	ld t2, 1904(sp)
+
+	# get address of local var:result_$88
 	add t0, t1, t2
-	sw t0, 948(sp)
+	sd t0, 1896(sp)
+
+	# i3 result_$88
+
+	# fetch variables
+	ld t1, 1896(sp)
 
 	# store i3 result_$88
 
-	# fetch variables
-	lw t1, 948(sp)
-	sw t1, 1704(sp)
+	# get address of i3 points to
+	ld t3, 3488(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load h4$2 h4
-	lw t0, 1716(sp)
-	sw t0, 944(sp)
+
+	# get address of h4 points to
+	ld t3, 3536(sp)
+	addi t3, t3, 0
+
+	# get address of local var:h4$2
+	ld t0, 0(t3)
+	sd t0, 1888(sp)
 
 	# add result_$89  h4$2
 
 	# fetch variables
 	li t1, 4
-	lw t2, 944(sp)
+	ld t2, 1888(sp)
+
+	# get address of local var:result_$89
 	add t0, t1, t2
-	sw t0, 940(sp)
+	sd t0, 1880(sp)
 
 	# load a24$1 a24
-	lw t0, a24
-	sw t0, 936(sp)
+
+	# get address of a24 points to
+	la t3, a24
+	addi t3, t3, 0
+
+	# get address of local var:a24$1
+	ld t0, 0(t3)
+	sd t0, 1872(sp)
 
 	# add result_$90 result_$89 a24$1
 
 	# fetch variables
-	lw t1, 940(sp)
-	lw t2, 936(sp)
+	ld t1, 1880(sp)
+	ld t2, 1872(sp)
+
+	# get address of local var:result_$90
 	add t0, t1, t2
-	sw t0, 932(sp)
+	sd t0, 1864(sp)
+
+	# i4 result_$90
+
+	# fetch variables
+	ld t1, 1864(sp)
 
 	# store i4 result_$90
 
-	# fetch variables
-	lw t1, 932(sp)
-	sw t1, 1700(sp)
+	# get address of i4 points to
+	ld t3, 3472(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load g1$2 g1
-	lw t0, 1744(sp)
-	sw t0, 928(sp)
+
+	# get address of g1 points to
+	ld t3, 3648(sp)
+	addi t3, t3, 0
+
+	# get address of local var:g1$2
+	ld t0, 0(t3)
+	sd t0, 1856(sp)
 
 	# add result_$91  g1$2
 
 	# fetch variables
 	li t1, 1
-	lw t2, 928(sp)
+	ld t2, 1856(sp)
+
+	# get address of local var:result_$91
 	add t0, t1, t2
-	sw t0, 924(sp)
+	sd t0, 1848(sp)
 
 	# load a17$1 a17
-	lw t0, a17
-	sw t0, 920(sp)
+
+	# get address of a17 points to
+	la t3, a17
+	addi t3, t3, 0
+
+	# get address of local var:a17$1
+	ld t0, 0(t3)
+	sd t0, 1840(sp)
 
 	# add result_$92 result_$91 a17$1
 
 	# fetch variables
-	lw t1, 924(sp)
-	lw t2, 920(sp)
+	ld t1, 1848(sp)
+	ld t2, 1840(sp)
+
+	# get address of local var:result_$92
 	add t0, t1, t2
-	sw t0, 916(sp)
+	sd t0, 1832(sp)
+
+	# h1 result_$92
+
+	# fetch variables
+	ld t1, 1832(sp)
 
 	# store h1 result_$92
 
-	# fetch variables
-	lw t1, 916(sp)
-	sw t1, 1728(sp)
+	# get address of h1 points to
+	ld t3, 3584(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load g2$2 g2
-	lw t0, 1740(sp)
-	sw t0, 912(sp)
+
+	# get address of g2 points to
+	ld t3, 3632(sp)
+	addi t3, t3, 0
+
+	# get address of local var:g2$2
+	ld t0, 0(t3)
+	sd t0, 1824(sp)
 
 	# add result_$93  g2$2
 
 	# fetch variables
 	li t1, 2
-	lw t2, 912(sp)
+	ld t2, 1824(sp)
+
+	# get address of local var:result_$93
 	add t0, t1, t2
-	sw t0, 908(sp)
+	sd t0, 1816(sp)
 
 	# load a18$1 a18
-	lw t0, a18
-	sw t0, 904(sp)
+
+	# get address of a18 points to
+	la t3, a18
+	addi t3, t3, 0
+
+	# get address of local var:a18$1
+	ld t0, 0(t3)
+	sd t0, 1808(sp)
 
 	# add result_$94 result_$93 a18$1
 
 	# fetch variables
-	lw t1, 908(sp)
-	lw t2, 904(sp)
+	ld t1, 1816(sp)
+	ld t2, 1808(sp)
+
+	# get address of local var:result_$94
 	add t0, t1, t2
-	sw t0, 900(sp)
+	sd t0, 1800(sp)
+
+	# h2 result_$94
+
+	# fetch variables
+	ld t1, 1800(sp)
 
 	# store h2 result_$94
 
-	# fetch variables
-	lw t1, 900(sp)
-	sw t1, 1724(sp)
+	# get address of h2 points to
+	ld t3, 3568(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load g3$2 g3
-	lw t0, 1736(sp)
-	sw t0, 896(sp)
+
+	# get address of g3 points to
+	ld t3, 3616(sp)
+	addi t3, t3, 0
+
+	# get address of local var:g3$2
+	ld t0, 0(t3)
+	sd t0, 1792(sp)
 
 	# add result_$95  g3$2
 
 	# fetch variables
 	li t1, 3
-	lw t2, 896(sp)
+	ld t2, 1792(sp)
+
+	# get address of local var:result_$95
 	add t0, t1, t2
-	sw t0, 892(sp)
+	sd t0, 1784(sp)
 
 	# load a19$1 a19
-	lw t0, a19
-	sw t0, 888(sp)
+
+	# get address of a19 points to
+	la t3, a19
+	addi t3, t3, 0
+
+	# get address of local var:a19$1
+	ld t0, 0(t3)
+	sd t0, 1776(sp)
 
 	# add result_$96 result_$95 a19$1
 
 	# fetch variables
-	lw t1, 892(sp)
-	lw t2, 888(sp)
+	ld t1, 1784(sp)
+	ld t2, 1776(sp)
+
+	# get address of local var:result_$96
 	add t0, t1, t2
-	sw t0, 884(sp)
+	sd t0, 1768(sp)
+
+	# h3 result_$96
+
+	# fetch variables
+	ld t1, 1768(sp)
 
 	# store h3 result_$96
 
-	# fetch variables
-	lw t1, 884(sp)
-	sw t1, 1720(sp)
+	# get address of h3 points to
+	ld t3, 3552(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load g4$2 g4
-	lw t0, 1732(sp)
-	sw t0, 880(sp)
+
+	# get address of g4 points to
+	ld t3, 3600(sp)
+	addi t3, t3, 0
+
+	# get address of local var:g4$2
+	ld t0, 0(t3)
+	sd t0, 1760(sp)
 
 	# add result_$97  g4$2
 
 	# fetch variables
 	li t1, 4
-	lw t2, 880(sp)
+	ld t2, 1760(sp)
+
+	# get address of local var:result_$97
 	add t0, t1, t2
-	sw t0, 876(sp)
+	sd t0, 1752(sp)
 
 	# load a20$1 a20
-	lw t0, a20
-	sw t0, 872(sp)
+
+	# get address of a20 points to
+	la t3, a20
+	addi t3, t3, 0
+
+	# get address of local var:a20$1
+	ld t0, 0(t3)
+	sd t0, 1744(sp)
 
 	# add result_$98 result_$97 a20$1
 
 	# fetch variables
-	lw t1, 876(sp)
-	lw t2, 872(sp)
+	ld t1, 1752(sp)
+	ld t2, 1744(sp)
+
+	# get address of local var:result_$98
 	add t0, t1, t2
-	sw t0, 868(sp)
+	sd t0, 1736(sp)
+
+	# h4 result_$98
+
+	# fetch variables
+	ld t1, 1736(sp)
 
 	# store h4 result_$98
 
-	# fetch variables
-	lw t1, 868(sp)
-	sw t1, 1716(sp)
+	# get address of h4 points to
+	ld t3, 3536(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load f1$2 f1
-	lw t0, 1760(sp)
-	sw t0, 864(sp)
+
+	# get address of f1 points to
+	ld t3, 3712(sp)
+	addi t3, t3, 0
+
+	# get address of local var:f1$2
+	ld t0, 0(t3)
+	sd t0, 1728(sp)
 
 	# add result_$99  f1$2
 
 	# fetch variables
 	li t1, 1
-	lw t2, 864(sp)
+	ld t2, 1728(sp)
+
+	# get address of local var:result_$99
 	add t0, t1, t2
-	sw t0, 860(sp)
+	sd t0, 1720(sp)
 
 	# load a13$1 a13
-	lw t0, a13
-	sw t0, 856(sp)
+
+	# get address of a13 points to
+	la t3, a13
+	addi t3, t3, 0
+
+	# get address of local var:a13$1
+	ld t0, 0(t3)
+	sd t0, 1712(sp)
 
 	# add result_$100 result_$99 a13$1
 
 	# fetch variables
-	lw t1, 860(sp)
-	lw t2, 856(sp)
+	ld t1, 1720(sp)
+	ld t2, 1712(sp)
+
+	# get address of local var:result_$100
 	add t0, t1, t2
-	sw t0, 852(sp)
+	sd t0, 1704(sp)
+
+	# g1 result_$100
+
+	# fetch variables
+	ld t1, 1704(sp)
 
 	# store g1 result_$100
 
-	# fetch variables
-	lw t1, 852(sp)
-	sw t1, 1744(sp)
+	# get address of g1 points to
+	ld t3, 3648(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load f2$2 f2
-	lw t0, 1756(sp)
-	sw t0, 848(sp)
+
+	# get address of f2 points to
+	ld t3, 3696(sp)
+	addi t3, t3, 0
+
+	# get address of local var:f2$2
+	ld t0, 0(t3)
+	sd t0, 1696(sp)
 
 	# add result_$101  f2$2
 
 	# fetch variables
 	li t1, 2
-	lw t2, 848(sp)
+	ld t2, 1696(sp)
+
+	# get address of local var:result_$101
 	add t0, t1, t2
-	sw t0, 844(sp)
+	sd t0, 1688(sp)
 
 	# load a14$1 a14
-	lw t0, a14
-	sw t0, 840(sp)
+
+	# get address of a14 points to
+	la t3, a14
+	addi t3, t3, 0
+
+	# get address of local var:a14$1
+	ld t0, 0(t3)
+	sd t0, 1680(sp)
 
 	# add result_$102 result_$101 a14$1
 
 	# fetch variables
-	lw t1, 844(sp)
-	lw t2, 840(sp)
+	ld t1, 1688(sp)
+	ld t2, 1680(sp)
+
+	# get address of local var:result_$102
 	add t0, t1, t2
-	sw t0, 836(sp)
+	sd t0, 1672(sp)
+
+	# g2 result_$102
+
+	# fetch variables
+	ld t1, 1672(sp)
 
 	# store g2 result_$102
 
-	# fetch variables
-	lw t1, 836(sp)
-	sw t1, 1740(sp)
+	# get address of g2 points to
+	ld t3, 3632(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load f3$2 f3
-	lw t0, 1752(sp)
-	sw t0, 832(sp)
+
+	# get address of f3 points to
+	ld t3, 3680(sp)
+	addi t3, t3, 0
+
+	# get address of local var:f3$2
+	ld t0, 0(t3)
+	sd t0, 1664(sp)
 
 	# add result_$103  f3$2
 
 	# fetch variables
 	li t1, 3
-	lw t2, 832(sp)
+	ld t2, 1664(sp)
+
+	# get address of local var:result_$103
 	add t0, t1, t2
-	sw t0, 828(sp)
+	sd t0, 1656(sp)
 
 	# load a15$1 a15
-	lw t0, a15
-	sw t0, 824(sp)
+
+	# get address of a15 points to
+	la t3, a15
+	addi t3, t3, 0
+
+	# get address of local var:a15$1
+	ld t0, 0(t3)
+	sd t0, 1648(sp)
 
 	# add result_$104 result_$103 a15$1
 
 	# fetch variables
-	lw t1, 828(sp)
-	lw t2, 824(sp)
+	ld t1, 1656(sp)
+	ld t2, 1648(sp)
+
+	# get address of local var:result_$104
 	add t0, t1, t2
-	sw t0, 820(sp)
+	sd t0, 1640(sp)
+
+	# g3 result_$104
+
+	# fetch variables
+	ld t1, 1640(sp)
 
 	# store g3 result_$104
 
-	# fetch variables
-	lw t1, 820(sp)
-	sw t1, 1736(sp)
+	# get address of g3 points to
+	ld t3, 3616(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load f4$2 f4
-	lw t0, 1748(sp)
-	sw t0, 816(sp)
+
+	# get address of f4 points to
+	ld t3, 3664(sp)
+	addi t3, t3, 0
+
+	# get address of local var:f4$2
+	ld t0, 0(t3)
+	sd t0, 1632(sp)
 
 	# add result_$105  f4$2
 
 	# fetch variables
 	li t1, 4
-	lw t2, 816(sp)
+	ld t2, 1632(sp)
+
+	# get address of local var:result_$105
 	add t0, t1, t2
-	sw t0, 812(sp)
+	sd t0, 1624(sp)
 
 	# load a16$1 a16
-	lw t0, a16
-	sw t0, 808(sp)
+
+	# get address of a16 points to
+	la t3, a16
+	addi t3, t3, 0
+
+	# get address of local var:a16$1
+	ld t0, 0(t3)
+	sd t0, 1616(sp)
 
 	# add result_$106 result_$105 a16$1
 
 	# fetch variables
-	lw t1, 812(sp)
-	lw t2, 808(sp)
+	ld t1, 1624(sp)
+	ld t2, 1616(sp)
+
+	# get address of local var:result_$106
 	add t0, t1, t2
-	sw t0, 804(sp)
+	sd t0, 1608(sp)
+
+	# g4 result_$106
+
+	# fetch variables
+	ld t1, 1608(sp)
 
 	# store g4 result_$106
 
-	# fetch variables
-	lw t1, 804(sp)
-	sw t1, 1732(sp)
+	# get address of g4 points to
+	ld t3, 3600(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load e1$2 e1
-	lw t0, 1776(sp)
-	sw t0, 800(sp)
+
+	# get address of e1 points to
+	ld t3, 3776(sp)
+	addi t3, t3, 0
+
+	# get address of local var:e1$2
+	ld t0, 0(t3)
+	sd t0, 1600(sp)
 
 	# add result_$107  e1$2
 
 	# fetch variables
 	li t1, 1
-	lw t2, 800(sp)
+	ld t2, 1600(sp)
+
+	# get address of local var:result_$107
 	add t0, t1, t2
-	sw t0, 796(sp)
+	sd t0, 1592(sp)
 
 	# load a9$1 a9
-	lw t0, a9
-	sw t0, 792(sp)
+
+	# get address of a9 points to
+	la t3, a9
+	addi t3, t3, 0
+
+	# get address of local var:a9$1
+	ld t0, 0(t3)
+	sd t0, 1584(sp)
 
 	# add result_$108 result_$107 a9$1
 
 	# fetch variables
-	lw t1, 796(sp)
-	lw t2, 792(sp)
+	ld t1, 1592(sp)
+	ld t2, 1584(sp)
+
+	# get address of local var:result_$108
 	add t0, t1, t2
-	sw t0, 788(sp)
+	sd t0, 1576(sp)
+
+	# f1 result_$108
+
+	# fetch variables
+	ld t1, 1576(sp)
 
 	# store f1 result_$108
 
-	# fetch variables
-	lw t1, 788(sp)
-	sw t1, 1760(sp)
+	# get address of f1 points to
+	ld t3, 3712(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load e2$2 e2
-	lw t0, 1772(sp)
-	sw t0, 784(sp)
+
+	# get address of e2 points to
+	ld t3, 3760(sp)
+	addi t3, t3, 0
+
+	# get address of local var:e2$2
+	ld t0, 0(t3)
+	sd t0, 1568(sp)
 
 	# add result_$109  e2$2
 
 	# fetch variables
 	li t1, 2
-	lw t2, 784(sp)
+	ld t2, 1568(sp)
+
+	# get address of local var:result_$109
 	add t0, t1, t2
-	sw t0, 780(sp)
+	sd t0, 1560(sp)
 
 	# load a10$1 a10
-	lw t0, a10
-	sw t0, 776(sp)
+
+	# get address of a10 points to
+	la t3, a10
+	addi t3, t3, 0
+
+	# get address of local var:a10$1
+	ld t0, 0(t3)
+	sd t0, 1552(sp)
 
 	# add result_$110 result_$109 a10$1
 
 	# fetch variables
-	lw t1, 780(sp)
-	lw t2, 776(sp)
+	ld t1, 1560(sp)
+	ld t2, 1552(sp)
+
+	# get address of local var:result_$110
 	add t0, t1, t2
-	sw t0, 772(sp)
+	sd t0, 1544(sp)
+
+	# f2 result_$110
+
+	# fetch variables
+	ld t1, 1544(sp)
 
 	# store f2 result_$110
 
-	# fetch variables
-	lw t1, 772(sp)
-	sw t1, 1756(sp)
+	# get address of f2 points to
+	ld t3, 3696(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load e3$2 e3
-	lw t0, 1768(sp)
-	sw t0, 768(sp)
+
+	# get address of e3 points to
+	ld t3, 3744(sp)
+	addi t3, t3, 0
+
+	# get address of local var:e3$2
+	ld t0, 0(t3)
+	sd t0, 1536(sp)
 
 	# add result_$111  e3$2
 
 	# fetch variables
 	li t1, 3
-	lw t2, 768(sp)
+	ld t2, 1536(sp)
+
+	# get address of local var:result_$111
 	add t0, t1, t2
-	sw t0, 764(sp)
+	sd t0, 1528(sp)
 
 	# load a11$1 a11
-	lw t0, a11
-	sw t0, 760(sp)
+
+	# get address of a11 points to
+	la t3, a11
+	addi t3, t3, 0
+
+	# get address of local var:a11$1
+	ld t0, 0(t3)
+	sd t0, 1520(sp)
 
 	# add result_$112 result_$111 a11$1
 
 	# fetch variables
-	lw t1, 764(sp)
-	lw t2, 760(sp)
+	ld t1, 1528(sp)
+	ld t2, 1520(sp)
+
+	# get address of local var:result_$112
 	add t0, t1, t2
-	sw t0, 756(sp)
+	sd t0, 1512(sp)
+
+	# f3 result_$112
+
+	# fetch variables
+	ld t1, 1512(sp)
 
 	# store f3 result_$112
 
-	# fetch variables
-	lw t1, 756(sp)
-	sw t1, 1752(sp)
+	# get address of f3 points to
+	ld t3, 3680(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load e4$2 e4
-	lw t0, 1764(sp)
-	sw t0, 752(sp)
+
+	# get address of e4 points to
+	ld t3, 3728(sp)
+	addi t3, t3, 0
+
+	# get address of local var:e4$2
+	ld t0, 0(t3)
+	sd t0, 1504(sp)
 
 	# add result_$113  e4$2
 
 	# fetch variables
 	li t1, 4
-	lw t2, 752(sp)
+	ld t2, 1504(sp)
+
+	# get address of local var:result_$113
 	add t0, t1, t2
-	sw t0, 748(sp)
+	sd t0, 1496(sp)
 
 	# load a12$1 a12
-	lw t0, a12
-	sw t0, 744(sp)
+
+	# get address of a12 points to
+	la t3, a12
+	addi t3, t3, 0
+
+	# get address of local var:a12$1
+	ld t0, 0(t3)
+	sd t0, 1488(sp)
 
 	# add result_$114 result_$113 a12$1
 
 	# fetch variables
-	lw t1, 748(sp)
-	lw t2, 744(sp)
+	ld t1, 1496(sp)
+	ld t2, 1488(sp)
+
+	# get address of local var:result_$114
 	add t0, t1, t2
-	sw t0, 740(sp)
+	sd t0, 1480(sp)
+
+	# f4 result_$114
+
+	# fetch variables
+	ld t1, 1480(sp)
 
 	# store f4 result_$114
 
-	# fetch variables
-	lw t1, 740(sp)
-	sw t1, 1748(sp)
+	# get address of f4 points to
+	ld t3, 3664(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load d1$2 d1
-	lw t0, 1792(sp)
-	sw t0, 736(sp)
+
+	# get address of d1 points to
+	ld t3, 3840(sp)
+	addi t3, t3, 0
+
+	# get address of local var:d1$2
+	ld t0, 0(t3)
+	sd t0, 1472(sp)
 
 	# add result_$115  d1$2
 
 	# fetch variables
 	li t1, 1
-	lw t2, 736(sp)
+	ld t2, 1472(sp)
+
+	# get address of local var:result_$115
 	add t0, t1, t2
-	sw t0, 732(sp)
+	sd t0, 1464(sp)
 
 	# load a5$1 a5
-	lw t0, a5
-	sw t0, 728(sp)
+
+	# get address of a5 points to
+	la t3, a5
+	addi t3, t3, 0
+
+	# get address of local var:a5$1
+	ld t0, 0(t3)
+	sd t0, 1456(sp)
 
 	# add result_$116 result_$115 a5$1
 
 	# fetch variables
-	lw t1, 732(sp)
-	lw t2, 728(sp)
+	ld t1, 1464(sp)
+	ld t2, 1456(sp)
+
+	# get address of local var:result_$116
 	add t0, t1, t2
-	sw t0, 724(sp)
+	sd t0, 1448(sp)
+
+	# e1 result_$116
+
+	# fetch variables
+	ld t1, 1448(sp)
 
 	# store e1 result_$116
 
-	# fetch variables
-	lw t1, 724(sp)
-	sw t1, 1776(sp)
+	# get address of e1 points to
+	ld t3, 3776(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load d2$2 d2
-	lw t0, 1788(sp)
-	sw t0, 720(sp)
+
+	# get address of d2 points to
+	ld t3, 3824(sp)
+	addi t3, t3, 0
+
+	# get address of local var:d2$2
+	ld t0, 0(t3)
+	sd t0, 1440(sp)
 
 	# add result_$117  d2$2
 
 	# fetch variables
 	li t1, 2
-	lw t2, 720(sp)
+	ld t2, 1440(sp)
+
+	# get address of local var:result_$117
 	add t0, t1, t2
-	sw t0, 716(sp)
+	sd t0, 1432(sp)
 
 	# load a6$1 a6
-	lw t0, a6
-	sw t0, 712(sp)
+
+	# get address of a6 points to
+	la t3, a6
+	addi t3, t3, 0
+
+	# get address of local var:a6$1
+	ld t0, 0(t3)
+	sd t0, 1424(sp)
 
 	# add result_$118 result_$117 a6$1
 
 	# fetch variables
-	lw t1, 716(sp)
-	lw t2, 712(sp)
+	ld t1, 1432(sp)
+	ld t2, 1424(sp)
+
+	# get address of local var:result_$118
 	add t0, t1, t2
-	sw t0, 708(sp)
+	sd t0, 1416(sp)
+
+	# e2 result_$118
+
+	# fetch variables
+	ld t1, 1416(sp)
 
 	# store e2 result_$118
 
-	# fetch variables
-	lw t1, 708(sp)
-	sw t1, 1772(sp)
+	# get address of e2 points to
+	ld t3, 3760(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load d3$2 d3
-	lw t0, 1784(sp)
-	sw t0, 704(sp)
+
+	# get address of d3 points to
+	ld t3, 3808(sp)
+	addi t3, t3, 0
+
+	# get address of local var:d3$2
+	ld t0, 0(t3)
+	sd t0, 1408(sp)
 
 	# add result_$119  d3$2
 
 	# fetch variables
 	li t1, 3
-	lw t2, 704(sp)
+	ld t2, 1408(sp)
+
+	# get address of local var:result_$119
 	add t0, t1, t2
-	sw t0, 700(sp)
+	sd t0, 1400(sp)
 
 	# load a7$1 a7
-	lw t0, a7
-	sw t0, 696(sp)
+
+	# get address of a7 points to
+	la t3, a7
+	addi t3, t3, 0
+
+	# get address of local var:a7$1
+	ld t0, 0(t3)
+	sd t0, 1392(sp)
 
 	# add result_$120 result_$119 a7$1
 
 	# fetch variables
-	lw t1, 700(sp)
-	lw t2, 696(sp)
+	ld t1, 1400(sp)
+	ld t2, 1392(sp)
+
+	# get address of local var:result_$120
 	add t0, t1, t2
-	sw t0, 692(sp)
+	sd t0, 1384(sp)
+
+	# e3 result_$120
+
+	# fetch variables
+	ld t1, 1384(sp)
 
 	# store e3 result_$120
 
-	# fetch variables
-	lw t1, 692(sp)
-	sw t1, 1768(sp)
+	# get address of e3 points to
+	ld t3, 3744(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load d4$2 d4
-	lw t0, 1780(sp)
-	sw t0, 688(sp)
+
+	# get address of d4 points to
+	ld t3, 3792(sp)
+	addi t3, t3, 0
+
+	# get address of local var:d4$2
+	ld t0, 0(t3)
+	sd t0, 1376(sp)
 
 	# add result_$121  d4$2
 
 	# fetch variables
 	li t1, 4
-	lw t2, 688(sp)
+	ld t2, 1376(sp)
+
+	# get address of local var:result_$121
 	add t0, t1, t2
-	sw t0, 684(sp)
+	sd t0, 1368(sp)
 
 	# load a8$1 a8
-	lw t0, a8
-	sw t0, 680(sp)
+
+	# get address of a8 points to
+	la t3, a8
+	addi t3, t3, 0
+
+	# get address of local var:a8$1
+	ld t0, 0(t3)
+	sd t0, 1360(sp)
 
 	# add result_$122 result_$121 a8$1
 
 	# fetch variables
-	lw t1, 684(sp)
-	lw t2, 680(sp)
+	ld t1, 1368(sp)
+	ld t2, 1360(sp)
+
+	# get address of local var:result_$122
 	add t0, t1, t2
-	sw t0, 676(sp)
+	sd t0, 1352(sp)
+
+	# e4 result_$122
+
+	# fetch variables
+	ld t1, 1352(sp)
 
 	# store e4 result_$122
 
-	# fetch variables
-	lw t1, 676(sp)
-	sw t1, 1764(sp)
+	# get address of e4 points to
+	ld t3, 3728(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load c1$2 c1
-	lw t0, 1808(sp)
-	sw t0, 672(sp)
+
+	# get address of c1 points to
+	ld t3, 3904(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c1$2
+	ld t0, 0(t3)
+	sd t0, 1344(sp)
 
 	# add result_$123  c1$2
 
 	# fetch variables
 	li t1, 1
-	lw t2, 672(sp)
+	ld t2, 1344(sp)
+
+	# get address of local var:result_$123
 	add t0, t1, t2
-	sw t0, 668(sp)
+	sd t0, 1336(sp)
 
 	# load a1$1 a1
-	lw t0, a1
-	sw t0, 664(sp)
+
+	# get address of a1 points to
+	la t3, a1
+	addi t3, t3, 0
+
+	# get address of local var:a1$1
+	ld t0, 0(t3)
+	sd t0, 1328(sp)
 
 	# add result_$124 result_$123 a1$1
 
 	# fetch variables
-	lw t1, 668(sp)
-	lw t2, 664(sp)
+	ld t1, 1336(sp)
+	ld t2, 1328(sp)
+
+	# get address of local var:result_$124
 	add t0, t1, t2
-	sw t0, 660(sp)
+	sd t0, 1320(sp)
+
+	# d1 result_$124
+
+	# fetch variables
+	ld t1, 1320(sp)
 
 	# store d1 result_$124
 
-	# fetch variables
-	lw t1, 660(sp)
-	sw t1, 1792(sp)
+	# get address of d1 points to
+	ld t3, 3840(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load c2$2 c2
-	lw t0, 1804(sp)
-	sw t0, 656(sp)
+
+	# get address of c2 points to
+	ld t3, 3888(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c2$2
+	ld t0, 0(t3)
+	sd t0, 1312(sp)
 
 	# add result_$125  c2$2
 
 	# fetch variables
 	li t1, 2
-	lw t2, 656(sp)
+	ld t2, 1312(sp)
+
+	# get address of local var:result_$125
 	add t0, t1, t2
-	sw t0, 652(sp)
+	sd t0, 1304(sp)
 
 	# load a2$1 a2
-	lw t0, a2
-	sw t0, 648(sp)
+
+	# get address of a2 points to
+	la t3, a2
+	addi t3, t3, 0
+
+	# get address of local var:a2$1
+	ld t0, 0(t3)
+	sd t0, 1296(sp)
 
 	# add result_$126 result_$125 a2$1
 
 	# fetch variables
-	lw t1, 652(sp)
-	lw t2, 648(sp)
+	ld t1, 1304(sp)
+	ld t2, 1296(sp)
+
+	# get address of local var:result_$126
 	add t0, t1, t2
-	sw t0, 644(sp)
+	sd t0, 1288(sp)
+
+	# d2 result_$126
+
+	# fetch variables
+	ld t1, 1288(sp)
 
 	# store d2 result_$126
 
-	# fetch variables
-	lw t1, 644(sp)
-	sw t1, 1788(sp)
+	# get address of d2 points to
+	ld t3, 3824(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load c3$2 c3
-	lw t0, 1800(sp)
-	sw t0, 640(sp)
+
+	# get address of c3 points to
+	ld t3, 3872(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c3$2
+	ld t0, 0(t3)
+	sd t0, 1280(sp)
 
 	# add result_$127  c3$2
 
 	# fetch variables
 	li t1, 3
-	lw t2, 640(sp)
+	ld t2, 1280(sp)
+
+	# get address of local var:result_$127
 	add t0, t1, t2
-	sw t0, 636(sp)
+	sd t0, 1272(sp)
 
 	# load a3$1 a3
-	lw t0, a3
-	sw t0, 632(sp)
+
+	# get address of a3 points to
+	la t3, a3
+	addi t3, t3, 0
+
+	# get address of local var:a3$1
+	ld t0, 0(t3)
+	sd t0, 1264(sp)
 
 	# add result_$128 result_$127 a3$1
 
 	# fetch variables
-	lw t1, 636(sp)
-	lw t2, 632(sp)
+	ld t1, 1272(sp)
+	ld t2, 1264(sp)
+
+	# get address of local var:result_$128
 	add t0, t1, t2
-	sw t0, 628(sp)
+	sd t0, 1256(sp)
+
+	# d3 result_$128
+
+	# fetch variables
+	ld t1, 1256(sp)
 
 	# store d3 result_$128
 
-	# fetch variables
-	lw t1, 628(sp)
-	sw t1, 1784(sp)
+	# get address of d3 points to
+	ld t3, 3808(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load c4$2 c4
-	lw t0, 1796(sp)
-	sw t0, 624(sp)
+
+	# get address of c4 points to
+	ld t3, 3856(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c4$2
+	ld t0, 0(t3)
+	sd t0, 1248(sp)
 
 	# add result_$129  c4$2
 
 	# fetch variables
 	li t1, 4
-	lw t2, 624(sp)
+	ld t2, 1248(sp)
+
+	# get address of local var:result_$129
 	add t0, t1, t2
-	sw t0, 620(sp)
+	sd t0, 1240(sp)
 
 	# load a4$1 a4
-	lw t0, a4
-	sw t0, 616(sp)
+
+	# get address of a4 points to
+	la t3, a4
+	addi t3, t3, 0
+
+	# get address of local var:a4$1
+	ld t0, 0(t3)
+	sd t0, 1232(sp)
 
 	# add result_$130 result_$129 a4$1
 
 	# fetch variables
-	lw t1, 620(sp)
-	lw t2, 616(sp)
+	ld t1, 1240(sp)
+	ld t2, 1232(sp)
+
+	# get address of local var:result_$130
 	add t0, t1, t2
-	sw t0, 612(sp)
+	sd t0, 1224(sp)
+
+	# d4 result_$130
+
+	# fetch variables
+	ld t1, 1224(sp)
 
 	# store d4 result_$130
 
-	# fetch variables
-	lw t1, 612(sp)
-	sw t1, 1780(sp)
+	# get address of d4 points to
+	ld t3, 3792(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load c1$3 c1
-	lw t0, 1808(sp)
-	sw t0, 608(sp)
+
+	# get address of c1 points to
+	ld t3, 3904(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c1$3
+	ld t0, 0(t3)
+	sd t0, 1216(sp)
 
 	# add result_$131  c1$3
 
 	# fetch variables
 	li t1, 1
-	lw t2, 608(sp)
+	ld t2, 1216(sp)
+
+	# get address of local var:result_$131
 	add t0, t1, t2
-	sw t0, 604(sp)
+	sd t0, 1208(sp)
 
 	# load a1$2 a1
-	lw t0, a1
-	sw t0, 600(sp)
+
+	# get address of a1 points to
+	la t3, a1
+	addi t3, t3, 0
+
+	# get address of local var:a1$2
+	ld t0, 0(t3)
+	sd t0, 1200(sp)
 
 	# add result_$132 result_$131 a1$2
 
 	# fetch variables
-	lw t1, 604(sp)
-	lw t2, 600(sp)
+	ld t1, 1208(sp)
+	ld t2, 1200(sp)
+
+	# get address of local var:result_$132
 	add t0, t1, t2
-	sw t0, 596(sp)
+	sd t0, 1192(sp)
+
+	# d1 result_$132
+
+	# fetch variables
+	ld t1, 1192(sp)
 
 	# store d1 result_$132
 
-	# fetch variables
-	lw t1, 596(sp)
-	sw t1, 1792(sp)
+	# get address of d1 points to
+	ld t3, 3840(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load c2$3 c2
-	lw t0, 1804(sp)
-	sw t0, 592(sp)
+
+	# get address of c2 points to
+	ld t3, 3888(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c2$3
+	ld t0, 0(t3)
+	sd t0, 1184(sp)
 
 	# add result_$133  c2$3
 
 	# fetch variables
 	li t1, 2
-	lw t2, 592(sp)
+	ld t2, 1184(sp)
+
+	# get address of local var:result_$133
 	add t0, t1, t2
-	sw t0, 588(sp)
+	sd t0, 1176(sp)
 
 	# load a2$2 a2
-	lw t0, a2
-	sw t0, 584(sp)
+
+	# get address of a2 points to
+	la t3, a2
+	addi t3, t3, 0
+
+	# get address of local var:a2$2
+	ld t0, 0(t3)
+	sd t0, 1168(sp)
 
 	# add result_$134 result_$133 a2$2
 
 	# fetch variables
-	lw t1, 588(sp)
-	lw t2, 584(sp)
+	ld t1, 1176(sp)
+	ld t2, 1168(sp)
+
+	# get address of local var:result_$134
 	add t0, t1, t2
-	sw t0, 580(sp)
+	sd t0, 1160(sp)
+
+	# d2 result_$134
+
+	# fetch variables
+	ld t1, 1160(sp)
 
 	# store d2 result_$134
 
-	# fetch variables
-	lw t1, 580(sp)
-	sw t1, 1788(sp)
+	# get address of d2 points to
+	ld t3, 3824(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load c3$3 c3
-	lw t0, 1800(sp)
-	sw t0, 576(sp)
+
+	# get address of c3 points to
+	ld t3, 3872(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c3$3
+	ld t0, 0(t3)
+	sd t0, 1152(sp)
 
 	# add result_$135  c3$3
 
 	# fetch variables
 	li t1, 3
-	lw t2, 576(sp)
+	ld t2, 1152(sp)
+
+	# get address of local var:result_$135
 	add t0, t1, t2
-	sw t0, 572(sp)
+	sd t0, 1144(sp)
 
 	# load a3$2 a3
-	lw t0, a3
-	sw t0, 568(sp)
+
+	# get address of a3 points to
+	la t3, a3
+	addi t3, t3, 0
+
+	# get address of local var:a3$2
+	ld t0, 0(t3)
+	sd t0, 1136(sp)
 
 	# add result_$136 result_$135 a3$2
 
 	# fetch variables
-	lw t1, 572(sp)
-	lw t2, 568(sp)
+	ld t1, 1144(sp)
+	ld t2, 1136(sp)
+
+	# get address of local var:result_$136
 	add t0, t1, t2
-	sw t0, 564(sp)
+	sd t0, 1128(sp)
+
+	# d3 result_$136
+
+	# fetch variables
+	ld t1, 1128(sp)
 
 	# store d3 result_$136
 
-	# fetch variables
-	lw t1, 564(sp)
-	sw t1, 1784(sp)
+	# get address of d3 points to
+	ld t3, 3808(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load c4$3 c4
-	lw t0, 1796(sp)
-	sw t0, 560(sp)
+
+	# get address of c4 points to
+	ld t3, 3856(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c4$3
+	ld t0, 0(t3)
+	sd t0, 1120(sp)
 
 	# add result_$137  c4$3
 
 	# fetch variables
 	li t1, 4
-	lw t2, 560(sp)
+	ld t2, 1120(sp)
+
+	# get address of local var:result_$137
 	add t0, t1, t2
-	sw t0, 556(sp)
+	sd t0, 1112(sp)
 
 	# load a4$2 a4
-	lw t0, a4
-	sw t0, 552(sp)
+
+	# get address of a4 points to
+	la t3, a4
+	addi t3, t3, 0
+
+	# get address of local var:a4$2
+	ld t0, 0(t3)
+	sd t0, 1104(sp)
 
 	# add result_$138 result_$137 a4$2
 
 	# fetch variables
-	lw t1, 556(sp)
-	lw t2, 552(sp)
+	ld t1, 1112(sp)
+	ld t2, 1104(sp)
+
+	# get address of local var:result_$138
 	add t0, t1, t2
-	sw t0, 548(sp)
+	sd t0, 1096(sp)
+
+	# d4 result_$138
+
+	# fetch variables
+	ld t1, 1096(sp)
 
 	# store d4 result_$138
 
-	# fetch variables
-	lw t1, 548(sp)
-	sw t1, 1780(sp)
+	# get address of d4 points to
+	ld t3, 3792(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load i$1 i
-	lw t0, 1824(sp)
-	sw t0, 544(sp)
+
+	# get address of i points to
+	ld t3, 3944(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i$1
+	ld t0, 0(t3)
+	sd t0, 1088(sp)
 
 	# load c1$4 c1
-	lw t0, 1808(sp)
-	sw t0, 540(sp)
+
+	# get address of c1 points to
+	ld t3, 3904(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c1$4
+	ld t0, 0(t3)
+	sd t0, 1080(sp)
 
 	# add result_$139 i$1 c1$4
 
 	# fetch variables
-	lw t1, 544(sp)
-	lw t2, 540(sp)
+	ld t1, 1088(sp)
+	ld t2, 1080(sp)
+
+	# get address of local var:result_$139
 	add t0, t1, t2
-	sw t0, 536(sp)
+	sd t0, 1072(sp)
 
 	# load c2$4 c2
-	lw t0, 1804(sp)
-	sw t0, 532(sp)
+
+	# get address of c2 points to
+	ld t3, 3888(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c2$4
+	ld t0, 0(t3)
+	sd t0, 1064(sp)
 
 	# add result_$140 result_$139 c2$4
 
 	# fetch variables
-	lw t1, 536(sp)
-	lw t2, 532(sp)
+	ld t1, 1072(sp)
+	ld t2, 1064(sp)
+
+	# get address of local var:result_$140
 	add t0, t1, t2
-	sw t0, 528(sp)
+	sd t0, 1056(sp)
 
 	# load c3$4 c3
-	lw t0, 1800(sp)
-	sw t0, 524(sp)
+
+	# get address of c3 points to
+	ld t3, 3872(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c3$4
+	ld t0, 0(t3)
+	sd t0, 1048(sp)
 
 	# add result_$141 result_$140 c3$4
 
 	# fetch variables
-	lw t1, 528(sp)
-	lw t2, 524(sp)
+	ld t1, 1056(sp)
+	ld t2, 1048(sp)
+
+	# get address of local var:result_$141
 	add t0, t1, t2
-	sw t0, 520(sp)
+	sd t0, 1040(sp)
 
 	# load c4$4 c4
-	lw t0, 1796(sp)
-	sw t0, 516(sp)
+
+	# get address of c4 points to
+	ld t3, 3856(sp)
+	addi t3, t3, 0
+
+	# get address of local var:c4$4
+	ld t0, 0(t3)
+	sd t0, 1032(sp)
 
 	# add result_$142 result_$141 c4$4
 
 	# fetch variables
-	lw t1, 520(sp)
-	lw t2, 516(sp)
+	ld t1, 1040(sp)
+	ld t2, 1032(sp)
+
+	# get address of local var:result_$142
 	add t0, t1, t2
-	sw t0, 512(sp)
+	sd t0, 1024(sp)
 
 	# load d1$3 d1
-	lw t0, 1792(sp)
-	sw t0, 508(sp)
+
+	# get address of d1 points to
+	ld t3, 3840(sp)
+	addi t3, t3, 0
+
+	# get address of local var:d1$3
+	ld t0, 0(t3)
+	sd t0, 1016(sp)
 
 	# sub result_$143 result_$142 d1$3
 
 	# fetch variables
-	lw t1, 512(sp)
-	lw t2, 508(sp)
+	ld t1, 1024(sp)
+	ld t2, 1016(sp)
+
+	# get address of local var:result_$143
 	sub t0, t1, t2
-	sw t0, 504(sp)
+	sd t0, 1008(sp)
 
 	# load d2$3 d2
-	lw t0, 1788(sp)
-	sw t0, 500(sp)
+
+	# get address of d2 points to
+	ld t3, 3824(sp)
+	addi t3, t3, 0
+
+	# get address of local var:d2$3
+	ld t0, 0(t3)
+	sd t0, 1000(sp)
 
 	# sub result_$144 result_$143 d2$3
 
 	# fetch variables
-	lw t1, 504(sp)
-	lw t2, 500(sp)
+	ld t1, 1008(sp)
+	ld t2, 1000(sp)
+
+	# get address of local var:result_$144
 	sub t0, t1, t2
-	sw t0, 496(sp)
+	sd t0, 992(sp)
 
 	# load d3$3 d3
-	lw t0, 1784(sp)
-	sw t0, 492(sp)
+
+	# get address of d3 points to
+	ld t3, 3808(sp)
+	addi t3, t3, 0
+
+	# get address of local var:d3$3
+	ld t0, 0(t3)
+	sd t0, 984(sp)
 
 	# sub result_$145 result_$144 d3$3
 
 	# fetch variables
-	lw t1, 496(sp)
-	lw t2, 492(sp)
+	ld t1, 992(sp)
+	ld t2, 984(sp)
+
+	# get address of local var:result_$145
 	sub t0, t1, t2
-	sw t0, 488(sp)
+	sd t0, 976(sp)
 
 	# load d4$3 d4
-	lw t0, 1780(sp)
-	sw t0, 484(sp)
+
+	# get address of d4 points to
+	ld t3, 3792(sp)
+	addi t3, t3, 0
+
+	# get address of local var:d4$3
+	ld t0, 0(t3)
+	sd t0, 968(sp)
 
 	# sub result_$146 result_$145 d4$3
 
 	# fetch variables
-	lw t1, 488(sp)
-	lw t2, 484(sp)
+	ld t1, 976(sp)
+	ld t2, 968(sp)
+
+	# get address of local var:result_$146
 	sub t0, t1, t2
-	sw t0, 480(sp)
+	sd t0, 960(sp)
 
 	# load e1$3 e1
-	lw t0, 1776(sp)
-	sw t0, 476(sp)
+
+	# get address of e1 points to
+	ld t3, 3776(sp)
+	addi t3, t3, 0
+
+	# get address of local var:e1$3
+	ld t0, 0(t3)
+	sd t0, 952(sp)
 
 	# add result_$147 result_$146 e1$3
 
 	# fetch variables
-	lw t1, 480(sp)
-	lw t2, 476(sp)
+	ld t1, 960(sp)
+	ld t2, 952(sp)
+
+	# get address of local var:result_$147
 	add t0, t1, t2
-	sw t0, 472(sp)
+	sd t0, 944(sp)
 
 	# load e2$3 e2
-	lw t0, 1772(sp)
-	sw t0, 468(sp)
+
+	# get address of e2 points to
+	ld t3, 3760(sp)
+	addi t3, t3, 0
+
+	# get address of local var:e2$3
+	ld t0, 0(t3)
+	sd t0, 936(sp)
 
 	# add result_$148 result_$147 e2$3
 
 	# fetch variables
-	lw t1, 472(sp)
-	lw t2, 468(sp)
+	ld t1, 944(sp)
+	ld t2, 936(sp)
+
+	# get address of local var:result_$148
 	add t0, t1, t2
-	sw t0, 464(sp)
+	sd t0, 928(sp)
 
 	# load e3$3 e3
-	lw t0, 1768(sp)
-	sw t0, 460(sp)
+
+	# get address of e3 points to
+	ld t3, 3744(sp)
+	addi t3, t3, 0
+
+	# get address of local var:e3$3
+	ld t0, 0(t3)
+	sd t0, 920(sp)
 
 	# add result_$149 result_$148 e3$3
 
 	# fetch variables
-	lw t1, 464(sp)
-	lw t2, 460(sp)
+	ld t1, 928(sp)
+	ld t2, 920(sp)
+
+	# get address of local var:result_$149
 	add t0, t1, t2
-	sw t0, 456(sp)
+	sd t0, 912(sp)
 
 	# load e4$3 e4
-	lw t0, 1764(sp)
-	sw t0, 452(sp)
+
+	# get address of e4 points to
+	ld t3, 3728(sp)
+	addi t3, t3, 0
+
+	# get address of local var:e4$3
+	ld t0, 0(t3)
+	sd t0, 904(sp)
 
 	# add result_$150 result_$149 e4$3
 
 	# fetch variables
-	lw t1, 456(sp)
-	lw t2, 452(sp)
+	ld t1, 912(sp)
+	ld t2, 904(sp)
+
+	# get address of local var:result_$150
 	add t0, t1, t2
-	sw t0, 448(sp)
+	sd t0, 896(sp)
 
 	# load f1$3 f1
-	lw t0, 1760(sp)
-	sw t0, 444(sp)
+
+	# get address of f1 points to
+	ld t3, 3712(sp)
+	addi t3, t3, 0
+
+	# get address of local var:f1$3
+	ld t0, 0(t3)
+	sd t0, 888(sp)
 
 	# sub result_$151 result_$150 f1$3
 
 	# fetch variables
-	lw t1, 448(sp)
-	lw t2, 444(sp)
+	ld t1, 896(sp)
+	ld t2, 888(sp)
+
+	# get address of local var:result_$151
 	sub t0, t1, t2
-	sw t0, 440(sp)
+	sd t0, 880(sp)
 
 	# load f2$3 f2
-	lw t0, 1756(sp)
-	sw t0, 436(sp)
+
+	# get address of f2 points to
+	ld t3, 3696(sp)
+	addi t3, t3, 0
+
+	# get address of local var:f2$3
+	ld t0, 0(t3)
+	sd t0, 872(sp)
 
 	# sub result_$152 result_$151 f2$3
 
 	# fetch variables
-	lw t1, 440(sp)
-	lw t2, 436(sp)
+	ld t1, 880(sp)
+	ld t2, 872(sp)
+
+	# get address of local var:result_$152
 	sub t0, t1, t2
-	sw t0, 432(sp)
+	sd t0, 864(sp)
 
 	# load f3$3 f3
-	lw t0, 1752(sp)
-	sw t0, 428(sp)
+
+	# get address of f3 points to
+	ld t3, 3680(sp)
+	addi t3, t3, 0
+
+	# get address of local var:f3$3
+	ld t0, 0(t3)
+	sd t0, 856(sp)
 
 	# sub result_$153 result_$152 f3$3
 
 	# fetch variables
-	lw t1, 432(sp)
-	lw t2, 428(sp)
+	ld t1, 864(sp)
+	ld t2, 856(sp)
+
+	# get address of local var:result_$153
 	sub t0, t1, t2
-	sw t0, 424(sp)
+	sd t0, 848(sp)
 
 	# load f4$3 f4
-	lw t0, 1748(sp)
-	sw t0, 420(sp)
+
+	# get address of f4 points to
+	ld t3, 3664(sp)
+	addi t3, t3, 0
+
+	# get address of local var:f4$3
+	ld t0, 0(t3)
+	sd t0, 840(sp)
 
 	# sub result_$154 result_$153 f4$3
 
 	# fetch variables
-	lw t1, 424(sp)
-	lw t2, 420(sp)
+	ld t1, 848(sp)
+	ld t2, 840(sp)
+
+	# get address of local var:result_$154
 	sub t0, t1, t2
-	sw t0, 416(sp)
+	sd t0, 832(sp)
 
 	# load g1$3 g1
-	lw t0, 1744(sp)
-	sw t0, 412(sp)
+
+	# get address of g1 points to
+	ld t3, 3648(sp)
+	addi t3, t3, 0
+
+	# get address of local var:g1$3
+	ld t0, 0(t3)
+	sd t0, 824(sp)
 
 	# add result_$155 result_$154 g1$3
 
 	# fetch variables
-	lw t1, 416(sp)
-	lw t2, 412(sp)
+	ld t1, 832(sp)
+	ld t2, 824(sp)
+
+	# get address of local var:result_$155
 	add t0, t1, t2
-	sw t0, 408(sp)
+	sd t0, 816(sp)
 
 	# load g2$3 g2
-	lw t0, 1740(sp)
-	sw t0, 404(sp)
+
+	# get address of g2 points to
+	ld t3, 3632(sp)
+	addi t3, t3, 0
+
+	# get address of local var:g2$3
+	ld t0, 0(t3)
+	sd t0, 808(sp)
 
 	# add result_$156 result_$155 g2$3
 
 	# fetch variables
-	lw t1, 408(sp)
-	lw t2, 404(sp)
+	ld t1, 816(sp)
+	ld t2, 808(sp)
+
+	# get address of local var:result_$156
 	add t0, t1, t2
-	sw t0, 400(sp)
+	sd t0, 800(sp)
 
 	# load g3$3 g3
-	lw t0, 1736(sp)
-	sw t0, 396(sp)
+
+	# get address of g3 points to
+	ld t3, 3616(sp)
+	addi t3, t3, 0
+
+	# get address of local var:g3$3
+	ld t0, 0(t3)
+	sd t0, 792(sp)
 
 	# add result_$157 result_$156 g3$3
 
 	# fetch variables
-	lw t1, 400(sp)
-	lw t2, 396(sp)
+	ld t1, 800(sp)
+	ld t2, 792(sp)
+
+	# get address of local var:result_$157
 	add t0, t1, t2
-	sw t0, 392(sp)
+	sd t0, 784(sp)
 
 	# load g4$3 g4
-	lw t0, 1732(sp)
-	sw t0, 388(sp)
+
+	# get address of g4 points to
+	ld t3, 3600(sp)
+	addi t3, t3, 0
+
+	# get address of local var:g4$3
+	ld t0, 0(t3)
+	sd t0, 776(sp)
 
 	# add result_$158 result_$157 g4$3
 
 	# fetch variables
-	lw t1, 392(sp)
-	lw t2, 388(sp)
+	ld t1, 784(sp)
+	ld t2, 776(sp)
+
+	# get address of local var:result_$158
 	add t0, t1, t2
-	sw t0, 384(sp)
+	sd t0, 768(sp)
 
 	# load h1$3 h1
-	lw t0, 1728(sp)
-	sw t0, 380(sp)
+
+	# get address of h1 points to
+	ld t3, 3584(sp)
+	addi t3, t3, 0
+
+	# get address of local var:h1$3
+	ld t0, 0(t3)
+	sd t0, 760(sp)
 
 	# sub result_$159 result_$158 h1$3
 
 	# fetch variables
-	lw t1, 384(sp)
-	lw t2, 380(sp)
+	ld t1, 768(sp)
+	ld t2, 760(sp)
+
+	# get address of local var:result_$159
 	sub t0, t1, t2
-	sw t0, 376(sp)
+	sd t0, 752(sp)
 
 	# load h2$3 h2
-	lw t0, 1724(sp)
-	sw t0, 372(sp)
+
+	# get address of h2 points to
+	ld t3, 3568(sp)
+	addi t3, t3, 0
+
+	# get address of local var:h2$3
+	ld t0, 0(t3)
+	sd t0, 744(sp)
 
 	# sub result_$160 result_$159 h2$3
 
 	# fetch variables
-	lw t1, 376(sp)
-	lw t2, 372(sp)
+	ld t1, 752(sp)
+	ld t2, 744(sp)
+
+	# get address of local var:result_$160
 	sub t0, t1, t2
-	sw t0, 368(sp)
+	sd t0, 736(sp)
 
 	# load h3$3 h3
-	lw t0, 1720(sp)
-	sw t0, 364(sp)
+
+	# get address of h3 points to
+	ld t3, 3552(sp)
+	addi t3, t3, 0
+
+	# get address of local var:h3$3
+	ld t0, 0(t3)
+	sd t0, 728(sp)
 
 	# sub result_$161 result_$160 h3$3
 
 	# fetch variables
-	lw t1, 368(sp)
-	lw t2, 364(sp)
+	ld t1, 736(sp)
+	ld t2, 728(sp)
+
+	# get address of local var:result_$161
 	sub t0, t1, t2
-	sw t0, 360(sp)
+	sd t0, 720(sp)
 
 	# load h4$3 h4
-	lw t0, 1716(sp)
-	sw t0, 356(sp)
+
+	# get address of h4 points to
+	ld t3, 3536(sp)
+	addi t3, t3, 0
+
+	# get address of local var:h4$3
+	ld t0, 0(t3)
+	sd t0, 712(sp)
 
 	# sub result_$162 result_$161 h4$3
 
 	# fetch variables
-	lw t1, 360(sp)
-	lw t2, 356(sp)
+	ld t1, 720(sp)
+	ld t2, 712(sp)
+
+	# get address of local var:result_$162
 	sub t0, t1, t2
-	sw t0, 352(sp)
+	sd t0, 704(sp)
 
 	# load i1$3 i1
-	lw t0, 1712(sp)
-	sw t0, 348(sp)
+
+	# get address of i1 points to
+	ld t3, 3520(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i1$3
+	ld t0, 0(t3)
+	sd t0, 696(sp)
 
 	# add result_$163 result_$162 i1$3
 
 	# fetch variables
-	lw t1, 352(sp)
-	lw t2, 348(sp)
+	ld t1, 704(sp)
+	ld t2, 696(sp)
+
+	# get address of local var:result_$163
 	add t0, t1, t2
-	sw t0, 344(sp)
+	sd t0, 688(sp)
 
 	# load i2$3 i2
-	lw t0, 1708(sp)
-	sw t0, 340(sp)
+
+	# get address of i2 points to
+	ld t3, 3504(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i2$3
+	ld t0, 0(t3)
+	sd t0, 680(sp)
 
 	# add result_$164 result_$163 i2$3
 
 	# fetch variables
-	lw t1, 344(sp)
-	lw t2, 340(sp)
+	ld t1, 688(sp)
+	ld t2, 680(sp)
+
+	# get address of local var:result_$164
 	add t0, t1, t2
-	sw t0, 336(sp)
+	sd t0, 672(sp)
 
 	# load i3$3 i3
-	lw t0, 1704(sp)
-	sw t0, 332(sp)
+
+	# get address of i3 points to
+	ld t3, 3488(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i3$3
+	ld t0, 0(t3)
+	sd t0, 664(sp)
 
 	# add result_$165 result_$164 i3$3
 
 	# fetch variables
-	lw t1, 336(sp)
-	lw t2, 332(sp)
+	ld t1, 672(sp)
+	ld t2, 664(sp)
+
+	# get address of local var:result_$165
 	add t0, t1, t2
-	sw t0, 328(sp)
+	sd t0, 656(sp)
 
 	# load i4$3 i4
-	lw t0, 1700(sp)
-	sw t0, 324(sp)
+
+	# get address of i4 points to
+	ld t3, 3472(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i4$3
+	ld t0, 0(t3)
+	sd t0, 648(sp)
 
 	# add result_$166 result_$165 i4$3
 
 	# fetch variables
-	lw t1, 328(sp)
-	lw t2, 324(sp)
+	ld t1, 656(sp)
+	ld t2, 648(sp)
+
+	# get address of local var:result_$166
 	add t0, t1, t2
-	sw t0, 320(sp)
+	sd t0, 640(sp)
 
 	# load j1$3 j1
-	lw t0, 1696(sp)
-	sw t0, 316(sp)
+
+	# get address of j1 points to
+	ld t3, 3456(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j1$3
+	ld t0, 0(t3)
+	sd t0, 632(sp)
 
 	# sub result_$167 result_$166 j1$3
 
 	# fetch variables
-	lw t1, 320(sp)
-	lw t2, 316(sp)
+	ld t1, 640(sp)
+	ld t2, 632(sp)
+
+	# get address of local var:result_$167
 	sub t0, t1, t2
-	sw t0, 312(sp)
+	sd t0, 624(sp)
 
 	# load j2$3 j2
-	lw t0, 1692(sp)
-	sw t0, 308(sp)
+
+	# get address of j2 points to
+	ld t3, 3440(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j2$3
+	ld t0, 0(t3)
+	sd t0, 616(sp)
 
 	# sub result_$168 result_$167 j2$3
 
 	# fetch variables
-	lw t1, 312(sp)
-	lw t2, 308(sp)
+	ld t1, 624(sp)
+	ld t2, 616(sp)
+
+	# get address of local var:result_$168
 	sub t0, t1, t2
-	sw t0, 304(sp)
+	sd t0, 608(sp)
 
 	# load j3$3 j3
-	lw t0, 1688(sp)
-	sw t0, 300(sp)
+
+	# get address of j3 points to
+	ld t3, 3424(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j3$3
+	ld t0, 0(t3)
+	sd t0, 600(sp)
 
 	# sub result_$169 result_$168 j3$3
 
 	# fetch variables
-	lw t1, 304(sp)
-	lw t2, 300(sp)
+	ld t1, 608(sp)
+	ld t2, 600(sp)
+
+	# get address of local var:result_$169
 	sub t0, t1, t2
-	sw t0, 296(sp)
+	sd t0, 592(sp)
 
 	# load j4$3 j4
-	lw t0, 1684(sp)
-	sw t0, 292(sp)
+
+	# get address of j4 points to
+	ld t3, 3408(sp)
+	addi t3, t3, 0
+
+	# get address of local var:j4$3
+	ld t0, 0(t3)
+	sd t0, 584(sp)
 
 	# sub result_$170 result_$169 j4$3
 
 	# fetch variables
-	lw t1, 296(sp)
-	lw t2, 292(sp)
+	ld t1, 592(sp)
+	ld t2, 584(sp)
+
+	# get address of local var:result_$170
 	sub t0, t1, t2
-	sw t0, 288(sp)
+	sd t0, 576(sp)
 
 	# load k1$1 k1
-	lw t0, 1680(sp)
-	sw t0, 284(sp)
+
+	# get address of k1 points to
+	ld t3, 3392(sp)
+	addi t3, t3, 0
+
+	# get address of local var:k1$1
+	ld t0, 0(t3)
+	sd t0, 568(sp)
 
 	# add result_$171 result_$170 k1$1
 
 	# fetch variables
-	lw t1, 288(sp)
-	lw t2, 284(sp)
+	ld t1, 576(sp)
+	ld t2, 568(sp)
+
+	# get address of local var:result_$171
 	add t0, t1, t2
-	sw t0, 280(sp)
+	sd t0, 560(sp)
 
 	# load k2$1 k2
-	lw t0, 1676(sp)
-	sw t0, 276(sp)
+
+	# get address of k2 points to
+	ld t3, 3376(sp)
+	addi t3, t3, 0
+
+	# get address of local var:k2$1
+	ld t0, 0(t3)
+	sd t0, 552(sp)
 
 	# add result_$172 result_$171 k2$1
 
 	# fetch variables
-	lw t1, 280(sp)
-	lw t2, 276(sp)
+	ld t1, 560(sp)
+	ld t2, 552(sp)
+
+	# get address of local var:result_$172
 	add t0, t1, t2
-	sw t0, 272(sp)
+	sd t0, 544(sp)
 
 	# load k3$1 k3
-	lw t0, 1672(sp)
-	sw t0, 268(sp)
+
+	# get address of k3 points to
+	ld t3, 3360(sp)
+	addi t3, t3, 0
+
+	# get address of local var:k3$1
+	ld t0, 0(t3)
+	sd t0, 536(sp)
 
 	# add result_$173 result_$172 k3$1
 
 	# fetch variables
-	lw t1, 272(sp)
-	lw t2, 268(sp)
+	ld t1, 544(sp)
+	ld t2, 536(sp)
+
+	# get address of local var:result_$173
 	add t0, t1, t2
-	sw t0, 264(sp)
+	sd t0, 528(sp)
 
 	# load k4$1 k4
-	lw t0, 1668(sp)
-	sw t0, 260(sp)
+
+	# get address of k4 points to
+	ld t3, 3344(sp)
+	addi t3, t3, 0
+
+	# get address of local var:k4$1
+	ld t0, 0(t3)
+	sd t0, 520(sp)
 
 	# add result_$174 result_$173 k4$1
 
 	# fetch variables
-	lw t1, 264(sp)
-	lw t2, 260(sp)
+	ld t1, 528(sp)
+	ld t2, 520(sp)
+
+	# get address of local var:result_$174
 	add t0, t1, t2
-	sw t0, 256(sp)
+	sd t0, 512(sp)
 
 	# load a1$3 a1
-	lw t0, a1
-	sw t0, 252(sp)
+
+	# get address of a1 points to
+	la t3, a1
+	addi t3, t3, 0
+
+	# get address of local var:a1$3
+	ld t0, 0(t3)
+	sd t0, 504(sp)
 
 	# add result_$175 result_$174 a1$3
 
 	# fetch variables
-	lw t1, 256(sp)
-	lw t2, 252(sp)
+	ld t1, 512(sp)
+	ld t2, 504(sp)
+
+	# get address of local var:result_$175
 	add t0, t1, t2
-	sw t0, 248(sp)
+	sd t0, 496(sp)
 
 	# load a2$3 a2
-	lw t0, a2
-	sw t0, 244(sp)
+
+	# get address of a2 points to
+	la t3, a2
+	addi t3, t3, 0
+
+	# get address of local var:a2$3
+	ld t0, 0(t3)
+	sd t0, 488(sp)
 
 	# sub result_$176 result_$175 a2$3
 
 	# fetch variables
-	lw t1, 248(sp)
-	lw t2, 244(sp)
+	ld t1, 496(sp)
+	ld t2, 488(sp)
+
+	# get address of local var:result_$176
 	sub t0, t1, t2
-	sw t0, 240(sp)
+	sd t0, 480(sp)
 
 	# load a3$3 a3
-	lw t0, a3
-	sw t0, 236(sp)
+
+	# get address of a3 points to
+	la t3, a3
+	addi t3, t3, 0
+
+	# get address of local var:a3$3
+	ld t0, 0(t3)
+	sd t0, 472(sp)
 
 	# add result_$177 result_$176 a3$3
 
 	# fetch variables
-	lw t1, 240(sp)
-	lw t2, 236(sp)
+	ld t1, 480(sp)
+	ld t2, 472(sp)
+
+	# get address of local var:result_$177
 	add t0, t1, t2
-	sw t0, 232(sp)
+	sd t0, 464(sp)
 
 	# load a4$3 a4
-	lw t0, a4
-	sw t0, 228(sp)
+
+	# get address of a4 points to
+	la t3, a4
+	addi t3, t3, 0
+
+	# get address of local var:a4$3
+	ld t0, 0(t3)
+	sd t0, 456(sp)
 
 	# sub result_$178 result_$177 a4$3
 
 	# fetch variables
-	lw t1, 232(sp)
-	lw t2, 228(sp)
+	ld t1, 464(sp)
+	ld t2, 456(sp)
+
+	# get address of local var:result_$178
 	sub t0, t1, t2
-	sw t0, 224(sp)
+	sd t0, 448(sp)
 
 	# load a5$2 a5
-	lw t0, a5
-	sw t0, 220(sp)
+
+	# get address of a5 points to
+	la t3, a5
+	addi t3, t3, 0
+
+	# get address of local var:a5$2
+	ld t0, 0(t3)
+	sd t0, 440(sp)
 
 	# add result_$179 result_$178 a5$2
 
 	# fetch variables
-	lw t1, 224(sp)
-	lw t2, 220(sp)
+	ld t1, 448(sp)
+	ld t2, 440(sp)
+
+	# get address of local var:result_$179
 	add t0, t1, t2
-	sw t0, 216(sp)
+	sd t0, 432(sp)
 
 	# load a6$2 a6
-	lw t0, a6
-	sw t0, 212(sp)
+
+	# get address of a6 points to
+	la t3, a6
+	addi t3, t3, 0
+
+	# get address of local var:a6$2
+	ld t0, 0(t3)
+	sd t0, 424(sp)
 
 	# sub result_$180 result_$179 a6$2
 
 	# fetch variables
-	lw t1, 216(sp)
-	lw t2, 212(sp)
+	ld t1, 432(sp)
+	ld t2, 424(sp)
+
+	# get address of local var:result_$180
 	sub t0, t1, t2
-	sw t0, 208(sp)
+	sd t0, 416(sp)
 
 	# load a7$2 a7
-	lw t0, a7
-	sw t0, 204(sp)
+
+	# get address of a7 points to
+	la t3, a7
+	addi t3, t3, 0
+
+	# get address of local var:a7$2
+	ld t0, 0(t3)
+	sd t0, 408(sp)
 
 	# add result_$181 result_$180 a7$2
 
 	# fetch variables
-	lw t1, 208(sp)
-	lw t2, 204(sp)
+	ld t1, 416(sp)
+	ld t2, 408(sp)
+
+	# get address of local var:result_$181
 	add t0, t1, t2
-	sw t0, 200(sp)
+	sd t0, 400(sp)
 
 	# load a8$2 a8
-	lw t0, a8
-	sw t0, 196(sp)
+
+	# get address of a8 points to
+	la t3, a8
+	addi t3, t3, 0
+
+	# get address of local var:a8$2
+	ld t0, 0(t3)
+	sd t0, 392(sp)
 
 	# sub result_$182 result_$181 a8$2
 
 	# fetch variables
-	lw t1, 200(sp)
-	lw t2, 196(sp)
+	ld t1, 400(sp)
+	ld t2, 392(sp)
+
+	# get address of local var:result_$182
 	sub t0, t1, t2
-	sw t0, 192(sp)
+	sd t0, 384(sp)
 
 	# load a9$2 a9
-	lw t0, a9
-	sw t0, 188(sp)
+
+	# get address of a9 points to
+	la t3, a9
+	addi t3, t3, 0
+
+	# get address of local var:a9$2
+	ld t0, 0(t3)
+	sd t0, 376(sp)
 
 	# add result_$183 result_$182 a9$2
 
 	# fetch variables
-	lw t1, 192(sp)
-	lw t2, 188(sp)
+	ld t1, 384(sp)
+	ld t2, 376(sp)
+
+	# get address of local var:result_$183
 	add t0, t1, t2
-	sw t0, 184(sp)
+	sd t0, 368(sp)
 
 	# load a10$2 a10
-	lw t0, a10
-	sw t0, 180(sp)
+
+	# get address of a10 points to
+	la t3, a10
+	addi t3, t3, 0
+
+	# get address of local var:a10$2
+	ld t0, 0(t3)
+	sd t0, 360(sp)
 
 	# sub result_$184 result_$183 a10$2
 
 	# fetch variables
-	lw t1, 184(sp)
-	lw t2, 180(sp)
+	ld t1, 368(sp)
+	ld t2, 360(sp)
+
+	# get address of local var:result_$184
 	sub t0, t1, t2
-	sw t0, 176(sp)
+	sd t0, 352(sp)
 
 	# load a11$2 a11
-	lw t0, a11
-	sw t0, 172(sp)
+
+	# get address of a11 points to
+	la t3, a11
+	addi t3, t3, 0
+
+	# get address of local var:a11$2
+	ld t0, 0(t3)
+	sd t0, 344(sp)
 
 	# add result_$185 result_$184 a11$2
 
 	# fetch variables
-	lw t1, 176(sp)
-	lw t2, 172(sp)
+	ld t1, 352(sp)
+	ld t2, 344(sp)
+
+	# get address of local var:result_$185
 	add t0, t1, t2
-	sw t0, 168(sp)
+	sd t0, 336(sp)
 
 	# load a12$2 a12
-	lw t0, a12
-	sw t0, 164(sp)
+
+	# get address of a12 points to
+	la t3, a12
+	addi t3, t3, 0
+
+	# get address of local var:a12$2
+	ld t0, 0(t3)
+	sd t0, 328(sp)
 
 	# sub result_$186 result_$185 a12$2
 
 	# fetch variables
-	lw t1, 168(sp)
-	lw t2, 164(sp)
+	ld t1, 336(sp)
+	ld t2, 328(sp)
+
+	# get address of local var:result_$186
 	sub t0, t1, t2
-	sw t0, 160(sp)
+	sd t0, 320(sp)
 
 	# load a13$2 a13
-	lw t0, a13
-	sw t0, 156(sp)
+
+	# get address of a13 points to
+	la t3, a13
+	addi t3, t3, 0
+
+	# get address of local var:a13$2
+	ld t0, 0(t3)
+	sd t0, 312(sp)
 
 	# add result_$187 result_$186 a13$2
 
 	# fetch variables
-	lw t1, 160(sp)
-	lw t2, 156(sp)
+	ld t1, 320(sp)
+	ld t2, 312(sp)
+
+	# get address of local var:result_$187
 	add t0, t1, t2
-	sw t0, 152(sp)
+	sd t0, 304(sp)
 
 	# load a14$2 a14
-	lw t0, a14
-	sw t0, 148(sp)
+
+	# get address of a14 points to
+	la t3, a14
+	addi t3, t3, 0
+
+	# get address of local var:a14$2
+	ld t0, 0(t3)
+	sd t0, 296(sp)
 
 	# sub result_$188 result_$187 a14$2
 
 	# fetch variables
-	lw t1, 152(sp)
-	lw t2, 148(sp)
+	ld t1, 304(sp)
+	ld t2, 296(sp)
+
+	# get address of local var:result_$188
 	sub t0, t1, t2
-	sw t0, 144(sp)
+	sd t0, 288(sp)
 
 	# load a15$2 a15
-	lw t0, a15
-	sw t0, 140(sp)
+
+	# get address of a15 points to
+	la t3, a15
+	addi t3, t3, 0
+
+	# get address of local var:a15$2
+	ld t0, 0(t3)
+	sd t0, 280(sp)
 
 	# add result_$189 result_$188 a15$2
 
 	# fetch variables
-	lw t1, 144(sp)
-	lw t2, 140(sp)
+	ld t1, 288(sp)
+	ld t2, 280(sp)
+
+	# get address of local var:result_$189
 	add t0, t1, t2
-	sw t0, 136(sp)
+	sd t0, 272(sp)
 
 	# load a16$2 a16
-	lw t0, a16
-	sw t0, 132(sp)
+
+	# get address of a16 points to
+	la t3, a16
+	addi t3, t3, 0
+
+	# get address of local var:a16$2
+	ld t0, 0(t3)
+	sd t0, 264(sp)
 
 	# sub result_$190 result_$189 a16$2
 
 	# fetch variables
-	lw t1, 136(sp)
-	lw t2, 132(sp)
+	ld t1, 272(sp)
+	ld t2, 264(sp)
+
+	# get address of local var:result_$190
 	sub t0, t1, t2
-	sw t0, 128(sp)
+	sd t0, 256(sp)
 
 	# load a17$2 a17
-	lw t0, a17
-	sw t0, 124(sp)
+
+	# get address of a17 points to
+	la t3, a17
+	addi t3, t3, 0
+
+	# get address of local var:a17$2
+	ld t0, 0(t3)
+	sd t0, 248(sp)
 
 	# add result_$191 result_$190 a17$2
 
 	# fetch variables
-	lw t1, 128(sp)
-	lw t2, 124(sp)
+	ld t1, 256(sp)
+	ld t2, 248(sp)
+
+	# get address of local var:result_$191
 	add t0, t1, t2
-	sw t0, 120(sp)
+	sd t0, 240(sp)
 
 	# load a18$2 a18
-	lw t0, a18
-	sw t0, 116(sp)
+
+	# get address of a18 points to
+	la t3, a18
+	addi t3, t3, 0
+
+	# get address of local var:a18$2
+	ld t0, 0(t3)
+	sd t0, 232(sp)
 
 	# sub result_$192 result_$191 a18$2
 
 	# fetch variables
-	lw t1, 120(sp)
-	lw t2, 116(sp)
+	ld t1, 240(sp)
+	ld t2, 232(sp)
+
+	# get address of local var:result_$192
 	sub t0, t1, t2
-	sw t0, 112(sp)
+	sd t0, 224(sp)
 
 	# load a19$2 a19
-	lw t0, a19
-	sw t0, 108(sp)
+
+	# get address of a19 points to
+	la t3, a19
+	addi t3, t3, 0
+
+	# get address of local var:a19$2
+	ld t0, 0(t3)
+	sd t0, 216(sp)
 
 	# add result_$193 result_$192 a19$2
 
 	# fetch variables
-	lw t1, 112(sp)
-	lw t2, 108(sp)
+	ld t1, 224(sp)
+	ld t2, 216(sp)
+
+	# get address of local var:result_$193
 	add t0, t1, t2
-	sw t0, 104(sp)
+	sd t0, 208(sp)
 
 	# load a20$2 a20
-	lw t0, a20
-	sw t0, 100(sp)
+
+	# get address of a20 points to
+	la t3, a20
+	addi t3, t3, 0
+
+	# get address of local var:a20$2
+	ld t0, 0(t3)
+	sd t0, 200(sp)
 
 	# sub result_$194 result_$193 a20$2
 
 	# fetch variables
-	lw t1, 104(sp)
-	lw t2, 100(sp)
+	ld t1, 208(sp)
+	ld t2, 200(sp)
+
+	# get address of local var:result_$194
 	sub t0, t1, t2
-	sw t0, 96(sp)
+	sd t0, 192(sp)
 
 	# load a21$2 a21
-	lw t0, a21
-	sw t0, 92(sp)
+
+	# get address of a21 points to
+	la t3, a21
+	addi t3, t3, 0
+
+	# get address of local var:a21$2
+	ld t0, 0(t3)
+	sd t0, 184(sp)
 
 	# add result_$195 result_$194 a21$2
 
 	# fetch variables
-	lw t1, 96(sp)
-	lw t2, 92(sp)
+	ld t1, 192(sp)
+	ld t2, 184(sp)
+
+	# get address of local var:result_$195
 	add t0, t1, t2
-	sw t0, 88(sp)
+	sd t0, 176(sp)
 
 	# load a22$2 a22
-	lw t0, a22
-	sw t0, 84(sp)
+
+	# get address of a22 points to
+	la t3, a22
+	addi t3, t3, 0
+
+	# get address of local var:a22$2
+	ld t0, 0(t3)
+	sd t0, 168(sp)
 
 	# sub result_$196 result_$195 a22$2
 
 	# fetch variables
-	lw t1, 88(sp)
-	lw t2, 84(sp)
+	ld t1, 176(sp)
+	ld t2, 168(sp)
+
+	# get address of local var:result_$196
 	sub t0, t1, t2
-	sw t0, 80(sp)
+	sd t0, 160(sp)
 
 	# load a23$2 a23
-	lw t0, a23
-	sw t0, 76(sp)
+
+	# get address of a23 points to
+	la t3, a23
+	addi t3, t3, 0
+
+	# get address of local var:a23$2
+	ld t0, 0(t3)
+	sd t0, 152(sp)
 
 	# add result_$197 result_$196 a23$2
 
 	# fetch variables
-	lw t1, 80(sp)
-	lw t2, 76(sp)
+	ld t1, 160(sp)
+	ld t2, 152(sp)
+
+	# get address of local var:result_$197
 	add t0, t1, t2
-	sw t0, 72(sp)
+	sd t0, 144(sp)
 
 	# load a24$2 a24
-	lw t0, a24
-	sw t0, 68(sp)
+
+	# get address of a24 points to
+	la t3, a24
+	addi t3, t3, 0
+
+	# get address of local var:a24$2
+	ld t0, 0(t3)
+	sd t0, 136(sp)
 
 	# sub result_$198 result_$197 a24$2
 
 	# fetch variables
-	lw t1, 72(sp)
-	lw t2, 68(sp)
+	ld t1, 144(sp)
+	ld t2, 136(sp)
+
+	# get address of local var:result_$198
 	sub t0, t1, t2
-	sw t0, 64(sp)
+	sd t0, 128(sp)
 
 	# load a25$2 a25
-	lw t0, a25
-	sw t0, 60(sp)
+
+	# get address of a25 points to
+	la t3, a25
+	addi t3, t3, 0
+
+	# get address of local var:a25$2
+	ld t0, 0(t3)
+	sd t0, 120(sp)
 
 	# add result_$199 result_$198 a25$2
 
 	# fetch variables
-	lw t1, 64(sp)
-	lw t2, 60(sp)
+	ld t1, 128(sp)
+	ld t2, 120(sp)
+
+	# get address of local var:result_$199
 	add t0, t1, t2
-	sw t0, 56(sp)
+	sd t0, 112(sp)
 
 	# load a26$2 a26
-	lw t0, a26
-	sw t0, 52(sp)
+
+	# get address of a26 points to
+	la t3, a26
+	addi t3, t3, 0
+
+	# get address of local var:a26$2
+	ld t0, 0(t3)
+	sd t0, 104(sp)
 
 	# sub result_$200 result_$199 a26$2
 
 	# fetch variables
-	lw t1, 56(sp)
-	lw t2, 52(sp)
+	ld t1, 112(sp)
+	ld t2, 104(sp)
+
+	# get address of local var:result_$200
 	sub t0, t1, t2
-	sw t0, 48(sp)
+	sd t0, 96(sp)
 
 	# load a27$2 a27
-	lw t0, a27
-	sw t0, 44(sp)
+
+	# get address of a27 points to
+	la t3, a27
+	addi t3, t3, 0
+
+	# get address of local var:a27$2
+	ld t0, 0(t3)
+	sd t0, 88(sp)
 
 	# add result_$201 result_$200 a27$2
 
 	# fetch variables
-	lw t1, 48(sp)
-	lw t2, 44(sp)
+	ld t1, 96(sp)
+	ld t2, 88(sp)
+
+	# get address of local var:result_$201
 	add t0, t1, t2
-	sw t0, 40(sp)
+	sd t0, 80(sp)
 
 	# load a28$2 a28
-	lw t0, a28
-	sw t0, 36(sp)
+
+	# get address of a28 points to
+	la t3, a28
+	addi t3, t3, 0
+
+	# get address of local var:a28$2
+	ld t0, 0(t3)
+	sd t0, 72(sp)
 
 	# sub result_$202 result_$201 a28$2
 
 	# fetch variables
-	lw t1, 40(sp)
-	lw t2, 36(sp)
+	ld t1, 80(sp)
+	ld t2, 72(sp)
+
+	# get address of local var:result_$202
 	sub t0, t1, t2
-	sw t0, 32(sp)
+	sd t0, 64(sp)
 
 	# load a29$2 a29
-	lw t0, a29
-	sw t0, 28(sp)
+
+	# get address of a29 points to
+	la t3, a29
+	addi t3, t3, 0
+
+	# get address of local var:a29$2
+	ld t0, 0(t3)
+	sd t0, 56(sp)
 
 	# add result_$203 result_$202 a29$2
 
 	# fetch variables
-	lw t1, 32(sp)
-	lw t2, 28(sp)
+	ld t1, 64(sp)
+	ld t2, 56(sp)
+
+	# get address of local var:result_$203
 	add t0, t1, t2
-	sw t0, 24(sp)
+	sd t0, 48(sp)
 
 	# load a30$2 a30
-	lw t0, a30
-	sw t0, 20(sp)
+
+	# get address of a30 points to
+	la t3, a30
+	addi t3, t3, 0
+
+	# get address of local var:a30$2
+	ld t0, 0(t3)
+	sd t0, 40(sp)
 
 	# sub result_$204 result_$203 a30$2
 
 	# fetch variables
-	lw t1, 24(sp)
-	lw t2, 20(sp)
+	ld t1, 48(sp)
+	ld t2, 40(sp)
+
+	# get address of local var:result_$204
 	sub t0, t1, t2
-	sw t0, 16(sp)
+	sd t0, 32(sp)
 
 	# load a31$2 a31
-	lw t0, a31
-	sw t0, 12(sp)
+
+	# get address of a31 points to
+	la t3, a31
+	addi t3, t3, 0
+
+	# get address of local var:a31$2
+	ld t0, 0(t3)
+	sd t0, 24(sp)
 
 	# add result_$205 result_$204 a31$2
 
 	# fetch variables
-	lw t1, 16(sp)
-	lw t2, 12(sp)
+	ld t1, 32(sp)
+	ld t2, 24(sp)
+
+	# get address of local var:result_$205
 	add t0, t1, t2
-	sw t0, 8(sp)
+	sd t0, 16(sp)
 
 	# load a32$2 a32
-	lw t0, a32
-	sw t0, 4(sp)
+
+	# get address of a32 points to
+	la t3, a32
+	addi t3, t3, 0
+
+	# get address of local var:a32$2
+	ld t0, 0(t3)
+	sd t0, 8(sp)
 
 	# sub result_$206 result_$205 a32$2
 
 	# fetch variables
-	lw t1, 8(sp)
-	lw t2, 4(sp)
+	ld t1, 16(sp)
+	ld t2, 8(sp)
+
+	# get address of local var:result_$206
 	sub t0, t1, t2
-	sw t0, 0(sp)
+	sd t0, 0(sp)
 
 	# ret result_$206
 
 	# fetch variables
-	lw t1, 0(sp)
+	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 1844
+	addi sp, sp, 4000
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -3130,114 +5502,182 @@ funcEntry2:
 .type main, @function
 .globl main
 main:
-mainEntry28:
+mainEntry30:
 
-	# allocate space for local variables
-	addi sp, sp, -40
+	# reserve space
+	addi sp, sp, -96
+
+	# save the parameters
+
+	# allocate a
+	addi t0, sp, 80
+
+	# get address of local var:a
+	sd t0, 88(sp)
+
+	# allocate b
+	addi t0, sp, 64
+
+	# get address of local var:b
+	sd t0, 72(sp)
 
 	# prepare params
 
 	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
+	addi sp, sp, -8
+	sd ra, 0(sp)
 
 	# call getint
 	call getint
 
 	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 28(sp)
+	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# get address of local var:getint
+	sd a0, 56(sp)
+
+	# a getint
+
+	# fetch variables
+	ld t1, 56(sp)
 
 	# store a getint
 
-	# fetch variables
-	lw t1, 28(sp)
-	sw t1, 36(sp)
+	# get address of a points to
+	ld t3, 88(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load a$1 a
-	lw t0, 36(sp)
-	sw t0, 24(sp)
+
+	# get address of a points to
+	ld t3, 88(sp)
+	addi t3, t3, 0
+
+	# get address of local var:a$1
+	ld t0, 0(t3)
+	sd t0, 48(sp)
 
 	# add result_ a$1 
 
 	# fetch variables
-	lw t1, 24(sp)
+	ld t1, 48(sp)
 	li t2, 18
+
+	# get address of local var:result_
 	add t0, t1, t2
-	sw t0, 20(sp)
+	sd t0, 40(sp)
+
+	# b result_
+
+	# fetch variables
+	ld t1, 40(sp)
 
 	# store b result_
 
-	# fetch variables
-	lw t1, 20(sp)
-	sw t1, 32(sp)
+	# get address of b points to
+	ld t3, 72(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load a$2 a
-	lw t0, 36(sp)
-	sw t0, 16(sp)
+
+	# get address of a points to
+	ld t3, 88(sp)
+	addi t3, t3, 0
+
+	# get address of local var:a$2
+	ld t0, 0(t3)
+	sd t0, 32(sp)
 
 	# load b$1 b
-	lw t0, 32(sp)
-	sw t0, 12(sp)
+
+	# get address of b points to
+	ld t3, 72(sp)
+	addi t3, t3, 0
+
+	# get address of local var:b$1
+	ld t0, 0(t3)
+	sd t0, 24(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 16(sp)
+	ld t1, 32(sp)
 	mv a0, t1
 
 	# fetch variables
-	lw t1, 12(sp)
+	ld t1, 24(sp)
 	mv a1, t1
 
 	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
+	addi sp, sp, -8
+	sd ra, 0(sp)
 
 	# call func
 	call func
 
 	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
-	sw a0, 8(sp)
+	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# get address of local var:func
+	sd a0, 16(sp)
+
+	# a func
+
+	# fetch variables
+	ld t1, 16(sp)
 
 	# store a func
 
-	# fetch variables
-	lw t1, 8(sp)
-	sw t1, 36(sp)
+	# get address of a points to
+	ld t3, 88(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load a$3 a
-	lw t0, 36(sp)
-	sw t0, 4(sp)
+
+	# get address of a points to
+	ld t3, 88(sp)
+	addi t3, t3, 0
+
+	# get address of local var:a$3
+	ld t0, 0(t3)
+	sd t0, 8(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 4(sp)
+	ld t1, 8(sp)
 	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
+	addi sp, sp, -8
+	sd ra, 0(sp)
 
 	# call putint
 	call putint
 
 	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
+	ld ra, 0(sp)
+	addi sp, sp, 8
 
 	# load a$4 a
-	lw t0, 36(sp)
-	sw t0, 0(sp)
+
+	# get address of a points to
+	ld t3, 88(sp)
+	addi t3, t3, 0
+
+	# get address of local var:a$4
+	ld t0, 0(t3)
+	sd t0, 0(sp)
 
 	# ret a$4
 
 	# fetch variables
-	lw t1, 0(sp)
+	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 40
+	addi sp, sp, 96
 	ret 

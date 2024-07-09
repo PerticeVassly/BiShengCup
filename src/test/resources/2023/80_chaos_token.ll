@@ -23,33 +23,33 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @putstr(i32* %0) {
 putstrEntry:
-  %lv = alloca i32, align 4
-  %str = alloca i32*, align 4
-  store i32* %0, i32** %str, align 4
-  store i32 0, i32* %lv, align 4
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32*, align 4
+  store i32* %0, i32** %lv, align 4
+  store i32 0, i32* %lv$1, align 4
   br label %whileCond_31
 
 whileCond_31:                                        ; pred = %putstrEntry, %whileBody_31
-  %iNd__1X = load i32, i32* %lv, align 4
-  %arr_ = load i32*, i32** %str, align 4
-  %str$1 = getelementptr i32, i32* %arr_, i32 %iNd__1X
-  %str$2 = load i32, i32* %str$1, align 4
-  %cond_normalize_ = icmp ne i32 %str$2, 0
+  %iNd__1X = load i32, i32* %lv$1, align 4
+  %arr_ = load i32*, i32** %lv, align 4
+  %str = getelementptr i32, i32* %arr_, i32 %iNd__1X
+  %str$1 = load i32, i32* %str, align 4
+  %cond_normalize_ = icmp ne i32 %str$1, 0
   br i1 %cond_normalize_, label %whileBody_31, label %next_65
 
 whileBody_31:                                        ; pred = %whileCond_31
-  %iNd__1X$1 = load i32, i32* %lv, align 4
-  %arr_$1 = load i32*, i32** %str, align 4
-  %str$3 = getelementptr i32, i32* %arr_$1, i32 %iNd__1X$1
-  %str$4 = load i32, i32* %str$3, align 4
-  call void @putch(i32 %str$4)
-  %iNd__1X$2 = load i32, i32* %lv, align 4
+  %iNd__1X$1 = load i32, i32* %lv$1, align 4
+  %arr_$1 = load i32*, i32** %lv, align 4
+  %str$2 = getelementptr i32, i32* %arr_$1, i32 %iNd__1X$1
+  %str$3 = load i32, i32* %str$2, align 4
+  call void @putch(i32 %str$3)
+  %iNd__1X$2 = load i32, i32* %lv$1, align 4
   %result_ = add i32 %iNd__1X$2, 1
-  store i32 %result_, i32* %lv, align 4
+  store i32 %result_, i32* %lv$1, align 4
   br label %whileCond_31
 
 next_65:                                             ; pred = %whileCond_31
-  %iNd__1X$3 = load i32, i32* %lv, align 4
+  %iNd__1X$3 = load i32, i32* %lv$1, align 4
   ret i32 %iNd__1X$3
 }
 

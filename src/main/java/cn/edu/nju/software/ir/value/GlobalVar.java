@@ -1,5 +1,6 @@
 package cn.edu.nju.software.ir.value;
 
+import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.TypeRef;
 
 import java.util.ArrayList;
@@ -9,11 +10,18 @@ public class GlobalVar extends ValueRef implements Variable {
     private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
     private final static ArrayList<Integer> usedFreqList = new ArrayList<Integer>(){{add(0);}};
     private ValueRef initVal;
+//    private boolean constant;
+//    /**
+//     * constant: if the variable is defined by const
+//     * */
+//    public boolean isConst() {
+//        return constant;
+//    }
     /**
      * value is for constant propagation
      */
     private final Value value = Value.getUndef();
-    public GlobalVar(TypeRef type, String name) {
+    public GlobalVar(TypeRef type, String name/*, boolean constant*/) {
         if (usedNameList.contains(name)) {
             int index = usedNameList.indexOf(name);
             this.name = name + usedFreqList.get(index);
@@ -24,6 +32,11 @@ public class GlobalVar extends ValueRef implements Variable {
             usedNameList.add(name);
         }
         this.type = type;
+//        this.constant = constant;
+    }
+
+    public boolean isZeroInitializer() {
+        return type instanceof ArrayType && !(initVal.getType() instanceof ArrayType); // initVal = zero
     }
 
     public void initialize(ValueRef value) {

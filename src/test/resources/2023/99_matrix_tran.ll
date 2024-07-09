@@ -22,80 +22,80 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @tran(float* %0, float* %1, float* %2, float* %3, float* %4, float* %5, float* %6, float* %7, float* %8) {
 tranEntry:
-  %lv = alloca i32, align 4
-  %c2 = alloca float*, align 4
-  %c1 = alloca float*, align 4
-  %c0 = alloca float*, align 4
-  %b2 = alloca float*, align 4
-  %b1 = alloca float*, align 4
-  %b0 = alloca float*, align 4
-  %a2 = alloca float*, align 4
-  %a1 = alloca float*, align 4
-  %a0 = alloca float*, align 4
-  store float* %0, float** %a0, align 4
-  store float* %1, float** %a1, align 4
-  store float* %2, float** %a2, align 4
-  store float* %3, float** %b0, align 4
-  store float* %4, float** %b1, align 4
-  store float* %5, float** %b2, align 4
-  store float* %6, float** %c0, align 4
-  store float* %7, float** %c1, align 4
-  store float* %8, float** %c2, align 4
-  store i32 0, i32* %lv, align 4
-  %arr_ = load float*, float** %c1, align 4
-  %c1$1 = getelementptr float, float* %arr_, i32 2
-  %arr_$1 = load float*, float** %a2, align 4
-  %a2$1 = getelementptr float, float* %arr_$1, i32 1
-  %a2$2 = load float, float* %a2$1, align 4
-  store float %a2$2, float* %c1$1, align 4
-  %arr_$2 = load float*, float** %c2, align 4
-  %c2$1 = getelementptr float, float* %arr_$2, i32 1
-  %arr_$3 = load float*, float** %a1, align 4
-  %a1$1 = getelementptr float, float* %arr_$3, i32 2
-  %a1$2 = load float, float* %a1$1, align 4
-  store float %a1$2, float* %c2$1, align 4
-  %arr_$4 = load float*, float** %c0, align 4
-  %c0$1 = getelementptr float, float* %arr_$4, i32 1
-  %arr_$5 = load float*, float** %a1, align 4
-  %a1$3 = getelementptr float, float* %arr_$5, i32 0
-  %a1$4 = load float, float* %a1$3, align 4
-  store float %a1$4, float* %c0$1, align 4
-  %arr_$6 = load float*, float** %c0, align 4
-  %c0$2 = getelementptr float, float* %arr_$6, i32 2
-  %arr_$7 = load float*, float** %a2, align 4
-  %a2$3 = getelementptr float, float* %arr_$7, i32 0
-  %a2$4 = load float, float* %a2$3, align 4
-  store float %a2$4, float* %c0$2, align 4
-  %arr_$8 = load float*, float** %c1, align 4
-  %c1$2 = getelementptr float, float* %arr_$8, i32 0
-  %arr_$9 = load float*, float** %a0, align 4
-  %a0$1 = getelementptr float, float* %arr_$9, i32 1
-  %a0$2 = load float, float* %a0$1, align 4
-  store float %a0$2, float* %c1$2, align 4
-  %arr_$10 = load float*, float** %c2, align 4
-  %c2$2 = getelementptr float, float* %arr_$10, i32 0
-  %arr_$11 = load float*, float** %a0, align 4
-  %a0$3 = getelementptr float, float* %arr_$11, i32 2
-  %a0$4 = load float, float* %a0$3, align 4
-  store float %a0$4, float* %c2$2, align 4
-  %arr_$12 = load float*, float** %c1, align 4
-  %c1$3 = getelementptr float, float* %arr_$12, i32 1
-  %arr_$13 = load float*, float** %a1, align 4
-  %a1$5 = getelementptr float, float* %arr_$13, i32 1
-  %a1$6 = load float, float* %a1$5, align 4
-  store float %a1$6, float* %c1$3, align 4
-  %arr_$14 = load float*, float** %c2, align 4
-  %c2$3 = getelementptr float, float* %arr_$14, i32 2
-  %arr_$15 = load float*, float** %a2, align 4
-  %a2$5 = getelementptr float, float* %arr_$15, i32 2
-  %a2$6 = load float, float* %a2$5, align 4
-  store float %a2$6, float* %c2$3, align 4
-  %arr_$16 = load float*, float** %c0, align 4
-  %c0$3 = getelementptr float, float* %arr_$16, i32 0
-  %arr_$17 = load float*, float** %a0, align 4
-  %a0$5 = getelementptr float, float* %arr_$17, i32 0
-  %a0$6 = load float, float* %a0$5, align 4
-  store float %a0$6, float* %c0$3, align 4
+  %lv$9 = alloca i32, align 4
+  %lv$8 = alloca float*, align 4
+  %lv$7 = alloca float*, align 4
+  %lv$6 = alloca float*, align 4
+  %lv$5 = alloca float*, align 4
+  %lv$4 = alloca float*, align 4
+  %lv$3 = alloca float*, align 4
+  %lv$2 = alloca float*, align 4
+  %lv$1 = alloca float*, align 4
+  %lv = alloca float*, align 4
+  store float* %0, float** %lv, align 4
+  store float* %1, float** %lv$1, align 4
+  store float* %2, float** %lv$2, align 4
+  store float* %3, float** %lv$3, align 4
+  store float* %4, float** %lv$4, align 4
+  store float* %5, float** %lv$5, align 4
+  store float* %6, float** %lv$6, align 4
+  store float* %7, float** %lv$7, align 4
+  store float* %8, float** %lv$8, align 4
+  store i32 0, i32* %lv$9, align 4
+  %arr_ = load float*, float** %lv$7, align 4
+  %c1 = getelementptr float, float* %arr_, i32 2
+  %arr_$1 = load float*, float** %lv$2, align 4
+  %a2 = getelementptr float, float* %arr_$1, i32 1
+  %a2$1 = load float, float* %a2, align 4
+  store float %a2$1, float* %c1, align 4
+  %arr_$2 = load float*, float** %lv$8, align 4
+  %c2 = getelementptr float, float* %arr_$2, i32 1
+  %arr_$3 = load float*, float** %lv$1, align 4
+  %a1 = getelementptr float, float* %arr_$3, i32 2
+  %a1$1 = load float, float* %a1, align 4
+  store float %a1$1, float* %c2, align 4
+  %arr_$4 = load float*, float** %lv$6, align 4
+  %c0 = getelementptr float, float* %arr_$4, i32 1
+  %arr_$5 = load float*, float** %lv$1, align 4
+  %a1$2 = getelementptr float, float* %arr_$5, i32 0
+  %a1$3 = load float, float* %a1$2, align 4
+  store float %a1$3, float* %c0, align 4
+  %arr_$6 = load float*, float** %lv$6, align 4
+  %c0$1 = getelementptr float, float* %arr_$6, i32 2
+  %arr_$7 = load float*, float** %lv$2, align 4
+  %a2$2 = getelementptr float, float* %arr_$7, i32 0
+  %a2$3 = load float, float* %a2$2, align 4
+  store float %a2$3, float* %c0$1, align 4
+  %arr_$8 = load float*, float** %lv$7, align 4
+  %c1$1 = getelementptr float, float* %arr_$8, i32 0
+  %arr_$9 = load float*, float** %lv, align 4
+  %a0 = getelementptr float, float* %arr_$9, i32 1
+  %a0$1 = load float, float* %a0, align 4
+  store float %a0$1, float* %c1$1, align 4
+  %arr_$10 = load float*, float** %lv$8, align 4
+  %c2$1 = getelementptr float, float* %arr_$10, i32 0
+  %arr_$11 = load float*, float** %lv, align 4
+  %a0$2 = getelementptr float, float* %arr_$11, i32 2
+  %a0$3 = load float, float* %a0$2, align 4
+  store float %a0$3, float* %c2$1, align 4
+  %arr_$12 = load float*, float** %lv$7, align 4
+  %c1$2 = getelementptr float, float* %arr_$12, i32 1
+  %arr_$13 = load float*, float** %lv$1, align 4
+  %a1$4 = getelementptr float, float* %arr_$13, i32 1
+  %a1$5 = load float, float* %a1$4, align 4
+  store float %a1$5, float* %c1$2, align 4
+  %arr_$14 = load float*, float** %lv$8, align 4
+  %c2$2 = getelementptr float, float* %arr_$14, i32 2
+  %arr_$15 = load float*, float** %lv$2, align 4
+  %a2$4 = getelementptr float, float* %arr_$15, i32 2
+  %a2$5 = load float, float* %a2$4, align 4
+  store float %a2$5, float* %c2$2, align 4
+  %arr_$16 = load float*, float** %lv$6, align 4
+  %c0$2 = getelementptr float, float* %arr_$16, i32 0
+  %arr_$17 = load float*, float** %lv, align 4
+  %a0$4 = getelementptr float, float* %arr_$17, i32 0
+  %a0$5 = load float, float* %a0$4, align 4
+  store float %a0$5, float* %c0$2, align 4
   ret i32 0
 }
 

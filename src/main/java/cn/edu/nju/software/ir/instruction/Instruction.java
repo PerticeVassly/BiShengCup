@@ -15,7 +15,7 @@ public abstract class Instruction {
     }
 
     public int getNumberOfOperands() {
-        return numberOfOperands;
+        return operands.length;
     }
 
     public OpEnum getOp() {

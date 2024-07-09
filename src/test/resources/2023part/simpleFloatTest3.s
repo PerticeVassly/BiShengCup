@@ -5,52 +5,34 @@
 .type main, @function
 .globl main
 main:
-mainEntry4:
+mainEntry6:
 
-	# allocate space for local variables
-	addi sp, sp, -24
+	# reserve space
+	addi sp, sp, -16
+
+	# save the parameters
+
+	# allocate a
+	addi t0, sp, 0
+
+	# get address of local var:a
+	sd t0, 8(sp)
 
 	# store a 
 
 	# fetch variables
-	li t1, 0x3fa66666
-	fmv.w.x ft1, t1
-	sw t1, 20(sp)
+	li t1, 0x3ff4ccccc0000000
+	fmv.d.x ft1, t1
 
-	# load a$1 a
-	flw ft0, 20(sp)
-	fsw ft0, 12(sp)
+	# get address of a points to
+	ld t3, 8(sp)
+	addi t3, t3, 0
+	fsd ft1, 0(t3)
 
-	# fadd result_  a$1
-
-	# fetch variables
-	li t1, 0x3f800000
-	fmv.w.x ft1, t1
-	flw ft2, 12(sp)
-	fadd.s ft0, ft1, ft2
-	fsw ft0, 8(sp)
-
-	# floatToInt f2i_ result_
+	# ret 
 
 	# fetch variables
-	flw ft1, 8(sp)
-	fcvt.w.s t0, ft1
-	sw t0, 4(sp)
-
-	# store b f2i_
-
-	# fetch variables
-	lw t1, 4(sp)
-	sw t1, 16(sp)
-
-	# load b$1 b
-	lw t0, 16(sp)
-	sw t0, 0(sp)
-
-	# ret b$1
-
-	# fetch variables
-	lw t1, 0(sp)
+	li t1, 0
 	mv a0, t1
-	addi sp, sp, 24
+	addi sp, sp, 16
 	ret 

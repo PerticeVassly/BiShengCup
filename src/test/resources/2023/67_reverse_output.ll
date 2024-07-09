@@ -18,33 +18,33 @@ declare void @memset(i32*, i32, i32)
 
 define void @reverse(i32 %0) {
 reverseEntry:
+  %lv$1 = alloca i32, align 4
   %lv = alloca i32, align 4
-  %n = alloca i32, align 4
-  store i32 %0, i32* %n, align 4
-  %n$1 = load i32, i32* %n, align 4
-  %cond_le_tmp_ = icmp sle i32 %n$1, 1
+  store i32 %0, i32* %lv, align 4
+  %n = load i32, i32* %lv, align 4
+  %cond_le_tmp_ = icmp sle i32 %n, 1
   %cond_tmp_ = zext i1 %cond_le_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_278, label %ifFalse_122
+  br i1 %cond_, label %ifTrue_286, label %ifFalse_125
 
-ifTrue_278:                                          ; pred = %reverseEntry
+ifTrue_286:                                          ; pred = %reverseEntry
   %getint = call i32 @getint()
-  store i32 %getint, i32* %lv, align 4
-  %next = load i32, i32* %lv, align 4
+  store i32 %getint, i32* %lv$1, align 4
+  %next = load i32, i32* %lv$1, align 4
   call void @putint(i32 %next)
-  br label %next_483
+  br label %next_484
 
-ifFalse_122:                                         ; pred = %reverseEntry
+ifFalse_125:                                         ; pred = %reverseEntry
   %getint$1 = call i32 @getint()
-  store i32 %getint$1, i32* %lv, align 4
-  %n$2 = load i32, i32* %n, align 4
-  %result_ = sub i32 %n$2, 1
+  store i32 %getint$1, i32* %lv$1, align 4
+  %n$1 = load i32, i32* %lv, align 4
+  %result_ = sub i32 %n$1, 1
   call void @reverse(i32 %result_)
-  %next$1 = load i32, i32* %lv, align 4
+  %next$1 = load i32, i32* %lv$1, align 4
   call void @putint(i32 %next$1)
-  br label %next_483
+  br label %next_484
 
-next_483:                                            ; pred = %ifTrue_278, %ifFalse_122
+next_484:                                            ; pred = %ifTrue_286, %ifFalse_125
   ret void
 }
 

@@ -2,172 +2,266 @@
 .align 2
 .globl k
 k:
-.word 0
+.dword 0
 .globl n
 n:
-.word 10
+.dword 10
 .text
 .align 2
 .type main, @function
 .globl main
 main:
-mainEntry9:
+mainEntry10:
 
-	# allocate space for local variables
-	addi sp, sp, -64
+	# reserve space
+	addi sp, sp, -136
 
-	# store i 
+	# save the parameters
+
+	# allocate i
+	addi t0, sp, 120
+
+	# get address of local var:i
+	sd t0, 128(sp)
+
+	# i 
 
 	# fetch variables
 	li t1, 0
-	sw t1, 60(sp)
 
-	# store k 
+	# store i 
+
+	# get address of i points to
+	ld t3, 128(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# k @
 
 	# fetch variables
 	li t1, 1
-	sw t1, k, t0
 
-	# br whileCond_15
-	j whileCond_15
-whileCond_15:
+	# store k 
+
+	# get address of k points to
+	la t3, k
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# br whileCond_18
+	j whileCond_18
+whileCond_18:
 
 	# load i$1 i
-	lw t0, 60(sp)
-	sw t0, 56(sp)
+
+	# get address of i points to
+	ld t3, 128(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i$1
+	ld t0, 0(t3)
+	sd t0, 112(sp)
 
 	# load n n
-	lw t0, n
-	sw t0, 52(sp)
+
+	# get address of n points to
+	la t3, n
+	addi t3, t3, 0
+
+	# get address of local var:n
+	ld t0, 0(t3)
+	sd t0, 104(sp)
 
 	# sub result_ n 
 
 	# fetch variables
-	lw t1, 52(sp)
+	ld t1, 104(sp)
 	li t2, 1
+
+	# get address of local var:result_
 	sub t0, t1, t2
-	sw t0, 48(sp)
+	sd t0, 96(sp)
 
 	# cmp i$1 result_ cond_le_tmp_
 
 	# fetch variables
-	lw t1, 56(sp)
-	lw t2, 48(sp)
+	ld t1, 112(sp)
+	ld t2, 96(sp)
+
+	# get address of local var:cond_le_tmp_
 	sub t0, t1, t2
 	sgtz t0, t0
 	seqz t0, t0
-	sw t0, 44(sp)
-
-	# fetch variables
-	lw t1, 44(sp)
+	sd t0, 88(sp)
 
 	# zext cond_tmp_ cond_le_tmp_
+
+	# fetch variables
+	ld t1, 88(sp)
+
+	# get address of local var:cond_tmp_
 	mv t0, t1
-	sw t0, 40(sp)
+	sd t0, 80(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	lw t1, 40(sp)
+	ld t1, 80(sp)
 	li t2, 0
+
+	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sw t0, 36(sp)
+	sd t0, 72(sp)
 
-	# condBr cond_ whileBody_15 next_29
+	# condBr cond_ whileBody_18 next_34
 
 	# fetch variables
-	lw t1, 36(sp)
-	beqz t1, next_29
-	j whileBody_15
-whileBody_15:
+	ld t1, 72(sp)
+	beqz t1, next_34
+	j whileBody_18
+whileBody_18:
 
 	# load i$2 i
-	lw t0, 60(sp)
-	sw t0, 32(sp)
+
+	# get address of i points to
+	ld t3, 128(sp)
+	addi t3, t3, 0
+
+	# get address of local var:i$2
+	ld t0, 0(t3)
+	sd t0, 64(sp)
 
 	# add result_$1 i$2 
 
 	# fetch variables
-	lw t1, 32(sp)
+	ld t1, 64(sp)
 	li t2, 1
+
+	# get address of local var:result_$1
 	add t0, t1, t2
-	sw t0, 28(sp)
+	sd t0, 56(sp)
+
+	# i result_$1
+
+	# fetch variables
+	ld t1, 56(sp)
 
 	# store i result_$1
 
-	# fetch variables
-	lw t1, 28(sp)
-	sw t1, 60(sp)
+	# get address of i points to
+	ld t3, 128(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
 	# load k k
-	lw t0, k
-	sw t0, 24(sp)
+
+	# get address of k points to
+	la t3, k
+	addi t3, t3, 0
+
+	# get address of local var:k
+	ld t0, 0(t3)
+	sd t0, 48(sp)
 
 	# add result_$2 k 
 
 	# fetch variables
-	lw t1, 24(sp)
+	ld t1, 48(sp)
 	li t2, 1
+
+	# get address of local var:result_$2
 	add t0, t1, t2
-	sw t0, 20(sp)
+	sd t0, 40(sp)
 
 	# load k$1 k
-	lw t0, k
-	sw t0, 16(sp)
+
+	# get address of k points to
+	la t3, k
+	addi t3, t3, 0
+
+	# get address of local var:k$1
+	ld t0, 0(t3)
+	sd t0, 32(sp)
 
 	# load k$2 k
-	lw t0, k
-	sw t0, 12(sp)
+
+	# get address of k points to
+	la t3, k
+	addi t3, t3, 0
+
+	# get address of local var:k$2
+	ld t0, 0(t3)
+	sd t0, 24(sp)
 
 	# add result_$3 k$1 k$2
 
 	# fetch variables
-	lw t1, 16(sp)
-	lw t2, 12(sp)
+	ld t1, 32(sp)
+	ld t2, 24(sp)
+
+	# get address of local var:result_$3
 	add t0, t1, t2
-	sw t0, 8(sp)
+	sd t0, 16(sp)
+
+	# k @result_$3
+
+	# fetch variables
+	ld t1, 16(sp)
 
 	# store k result_$3
 
-	# fetch variables
-	lw t1, 8(sp)
-	sw t1, k, t0
+	# get address of k points to
+	la t3, k
+	addi t3, t3, 0
+	sd t1, 0(t3)
 
-	# br whileCond_15
-	j whileCond_15
-next_29:
+	# br whileCond_18
+	j whileCond_18
+next_34:
 
 	# load k$3 k
-	lw t0, k
-	sw t0, 4(sp)
+
+	# get address of k points to
+	la t3, k
+	addi t3, t3, 0
+
+	# get address of local var:k$3
+	ld t0, 0(t3)
+	sd t0, 8(sp)
 
 	# prepare params
 
 	# fetch variables
-	lw t1, 4(sp)
+	ld t1, 8(sp)
 	mv a0, t1
 
 	# save caller saved regs
-	addi sp, sp, -4
-	sw ra, 0(sp)
+	addi sp, sp, -8
+	sd ra, 0(sp)
 
 	# call putint
 	call putint
 
 	# restore caller saved regs
-	lw ra, 0(sp)
-	addi sp, sp, 4
+	ld ra, 0(sp)
+	addi sp, sp, 8
 
 	# load k$4 k
-	lw t0, k
-	sw t0, 0(sp)
+
+	# get address of k points to
+	la t3, k
+	addi t3, t3, 0
+
+	# get address of local var:k$4
+	ld t0, 0(t3)
+	sd t0, 0(sp)
 
 	# ret k$4
 
 	# fetch variables
-	lw t1, 0(sp)
+	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 64
+	addi sp, sp, 136
 	ret 
