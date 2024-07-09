@@ -54,8 +54,8 @@ public class ModuleRef {
     }
 
     //todo() add getFunctions()
-    public List<FunctionValue> getFunctions() {
-        return functions;
+    public Stream<FunctionValue> getFunctions() {
+        return functions.stream();
     }
 
     public int getFunctionNum() {

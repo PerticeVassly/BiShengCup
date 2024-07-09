@@ -13,8 +13,7 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author wzh
@@ -35,12 +34,13 @@ public class FrontEndTest {
 
     @ParameterizedTest
 //    @StringSource("87_many_params")
-//    @StringSource("88_many_params2")
-    @StringSource("65_color")
-//    @StringSource("54_hidden_var")
-//    @StringSource("04_arr_defn3")
+//    @StringSource("65_color")
+//    @StringSource("101_float_arr")
+//    @StringSource("38_light2d")
+    @StringSource("30_many_dimensions")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
-        testFile(DIR, name);
+//        testFile(DIR, name);
+        testFile(DIR_HIDDEN, name);
     }
 
     /**
@@ -58,6 +58,7 @@ public class FrontEndTest {
     @ParameterizedTest
     @MethodSource("dirHidden")
     void testHidden(String name) throws IOException, InterruptedException {
+        if (Stream.of("23_json", "30_many_dimensions", "36_rotate", "38_light2d").anyMatch(name::equals)) fail();
         testFile(DIR_HIDDEN, name);
     }
 
@@ -67,9 +68,6 @@ public class FrontEndTest {
     @ParameterizedTest
     @MethodSource("dirPart")
     void testPart(String name) throws IOException, InterruptedException {
-        if (name.equals("79_var_name") || name.equals("90_many_locals")) {
-            fail();
-        }
         testFile(DIR_PART, name);
     }
 

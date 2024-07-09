@@ -1,34 +1,16 @@
 package cn.edu.nju.software.ir.generator;
 
 import cn.edu.nju.software.frontend.llvm.LLVMStack;
-import cn.edu.nju.software.frontend.parser.SysYParser;
-import cn.edu.nju.software.frontend.parser.SysYParserBaseVisitor;
-import cn.edu.nju.software.frontend.util.Symbol;
-import cn.edu.nju.software.frontend.util.SymbolTable;
+import cn.edu.nju.software.frontend.parser.*;
+import cn.edu.nju.software.frontend.util.*;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
-import cn.edu.nju.software.ir.type.ArrayType;
-import cn.edu.nju.software.ir.type.BoolType;
-import cn.edu.nju.software.ir.type.FloatType;
-import cn.edu.nju.software.ir.type.FunctionType;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.type.Pointer;
-import cn.edu.nju.software.ir.type.TypeRef;
-import cn.edu.nju.software.ir.type.VoidType;
-import cn.edu.nju.software.ir.value.ArrayValue;
-import cn.edu.nju.software.ir.value.ConstValue;
-import cn.edu.nju.software.ir.value.FunctionValue;
-import cn.edu.nju.software.ir.value.GlobalVar;
-import cn.edu.nju.software.ir.value.LocalVar;
-import cn.edu.nju.software.ir.value.ValueRef;
+import cn.edu.nju.software.ir.type.*;
+import cn.edu.nju.software.ir.value.*;
 
-import static cn.edu.nju.software.ir.instruction.Operator.CmpEQ;
-import static cn.edu.nju.software.ir.instruction.Operator.CmpNE;
-import static cn.edu.nju.software.ir.instruction.Operator.CmpSGE;
-import static cn.edu.nju.software.ir.instruction.Operator.CmpSGT;
-import static cn.edu.nju.software.ir.instruction.Operator.CmpSLE;
-import static cn.edu.nju.software.ir.instruction.Operator.CmpSLT;
+import static cn.edu.nju.software.ir.instruction.Operator.*;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -735,16 +717,33 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 if (globalVar != null && !(((Pointer)(globalVar.getType())).getBase() instanceof ArrayType)) {
                     // base type
                     ValueRef init = visitInitVal(ctx.initVal());
+                    if (!type.equals(init.getType())) {
+                        // global variable's init must be compiling constant, so can directly use gen.build...
+                        if (type instanceof IntType) {
+                            init = gen.buildFloatToInt(builder, init, "f2i");
+                        } else {
+                            init = gen.buildIntToFloat(builder, init, "i2f");
+                        }
+                    }
                     gen.setInitValue(globalVar, init);
                 } else if (globalVar != null) {
                     // array
                     arrayInit = new ArrayList<>();
-                    visitInitVal(ctx.initVal());
-                    ArrayType arrayType = (ArrayType) (((Pointer) globalVar.getType()).getBase());
 
-                    ptr = 0;
-                    ArrayValue av = getArrayValue(arrayType);
-                    gen.setInitValue(globalVar, av);
+                    // 特判{}
+                    if (ctx.initVal().getText().equals("{}")) {
+                        // {}
+                        gen.setInitValue(globalVar, zero);
+                    } else {
+                        // {...}
+                        visitInitVal(ctx.initVal());
+                        ArrayType arrayType = (ArrayType) (((Pointer) globalVar.getType()).getBase());
+
+                        ptr = 0;
+                        // 确保数组基类型正确
+                        ArrayValue av = getArrayValue(arrayType, type);
+                        gen.setInitValue(globalVar, av);
+                    }
                 }
             } else {
                 // local variable
@@ -787,16 +786,19 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         return null;
     }
     private int ptr = 0;
-    private ArrayValue getArrayValue(ArrayType arrayType) {
+    private ArrayValue getArrayValue(ArrayType arrayType, TypeRef baseType) {
         int size = arrayType.getElementSize();
         ArrayList<ValueRef> tmp = new ArrayList<>();
         if (!(arrayType.getElementType() instanceof ArrayType)) {
             for (int i = ptr; ptr < i + size; ptr++) {
-                tmp.add(arrayInit.get(ptr));
+                ValueRef t = arrayInit.get(ptr);
+                // 确保数组基类型正确
+                t.updateType(baseType);
+                tmp.add(t);
             }
         } else {
             for (int i = 0; i < size; i++) {
-                tmp.add(getArrayValue((ArrayType) arrayType.getElementType()));
+                tmp.add(getArrayValue((ArrayType) arrayType.getElementType(), baseType));
             }
         }
         return new ArrayValue(arrayType, tmp);
@@ -911,7 +913,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 ArrayType arrayType = (ArrayType) (((Pointer) globalVar.getType()).getBase());
 
                 ptr = 0;
-                ArrayValue av = getArrayValue(arrayType);
+                ArrayValue av = getArrayValue(arrayType, type);
                 gen.setInitValue(globalVar, av);
                 curScope.put(new Symbol<>(ctx.IDENT().getText(), globalVar));
             }

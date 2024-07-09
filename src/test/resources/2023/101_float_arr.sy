@@ -1,0 +1,7 @@
+float f[2][3][4] = {1, 2, 3};
+
+int main() {
+    float ff[2] = {1};
+    int a = f[0][0][2] + ff[0];
+    return a;
+}

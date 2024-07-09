@@ -26,6 +26,10 @@ public class ValueRef {
         this.type = type;
     }
 
+    public void updateType(TypeRef type) {
+        this.type = type;
+    }
+
     public String getName() {
         return name;
     }

@@ -27,10 +27,11 @@ public class BackEndTest {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("21_if_test2")
-    @StringSource("22_if_test3")
-    @StringSource("23_if_test4")
-    @StringSource("24_if_test5")
+//    @StringSource("21_if_test2")
+//    @StringSource("22_if_test3")
+//    @StringSource("23_if_test4")
+//    @StringSource("24_if_test5")
+    @StringSource("92_register_alloc")
     void testRisc(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
     }
@@ -41,8 +42,7 @@ public class BackEndTest {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if (name.contains("64") || name.contains("58")
-                || name.contains("71") || name.contains("73") || name.contains("86")) {
+        if (Stream.of("64", "69", "71", "73", "77", "84", "86", "88").anyMatch(name::contains)) {
             fail();
         }
         testFile(DIR, name);
