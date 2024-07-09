@@ -624,13 +624,24 @@ public class RiscInstrGenerator implements InstructionVisitor {
         int ptr = 0;
         int fptr = 0;
         for (ValueRef realParam : realParams) {
+
+            if(fptr >= fArgRegs.length && ptr >= argRegs.length){
+                pushIntoStack(realParam);
+                continue;
+            }
+
             if (realParam.getType() instanceof FloatType) {
                 //todo() 暂时这样写因为不确定可不可以直接mv freg
+                if(fptr >= fArgRegs.length){
+                    allocator.prepareVariable(realParam);
+                    pushIntoStack(realParam);
+                    continue;
+                }
                 allocator.prepareVariable(realParam);
                 riscInstructions.add(new RiscFmvxd(new Register("t0"), new Register("ft1")));
                 riscInstructions.add(new RiscFmvdx(new Register(fArgRegs[fptr]), new Register("t0")));
                 fptr++;
-            } else if (realParam.getType() instanceof IntType) {
+            } else if (realParam.getType() instanceof IntType){
                 allocator.prepareVariable(realParam);
                 riscInstructions.add(new RiscMv(new Register(argRegs[ptr]), new Register("t1")));
                 ptr++;
@@ -641,6 +652,18 @@ public class RiscInstrGenerator implements InstructionVisitor {
             } else {
                 assert false;
             }
+        }
+    }
+
+    private void pushIntoStack(ValueRef realParam){
+        if(realParam.getType() instanceof IntType || realParam.getType() instanceof Pointer){
+            riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L)));
+            riscInstructions.add(new RiscSd(new Register("t1"), new IndirectRegister("sp", allocator.getStackSize())));
+        } else if(realParam.getType() instanceof FloatType){
+            riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L)));
+            riscInstructions.add(new RiscFsd(new Register("ft1"), new IndirectRegister("sp", allocator.getStackSize())));
+        } else {
+            assert false;
         }
     }
 

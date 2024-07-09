@@ -25,6 +25,9 @@ import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
+import javax.swing.*;
+import java.net.URISyntaxException;
+
 public class Allocator {
 
     private RiscInstrGenerator generator;
@@ -70,15 +73,17 @@ public class Allocator {
     }
 
     private void prepareAGlobal(GlobalVar globalVar,int i){
-        if (globalVar.getType() instanceof FloatType) {
+        if (((Pointer)globalVar.getType()).getBase() instanceof FloatType) {
             generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
             generator.addInstruction(new RiscFld(new Register("ft" + i), new IndirectRegister("t3", 0)));
-        } else if (globalVar.getType() instanceof IntType) {
+        } else if (((Pointer) globalVar.getType()).getBase() instanceof IntType) {
             generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
             generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t3", 0)));
-        } else if (globalVar.getType() instanceof BoolType) {
+        } else if (((Pointer) globalVar.getType()).getBase() instanceof BoolType) {
             generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
             generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t3", 0)));
+        } else if( ((Pointer) globalVar.getType()).getBase() instanceof ArrayType){
+            assert false;
         } else {
             assert false;
         }

@@ -2,23 +2,26 @@ package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.backend.riscinstruction.RiscAddi;
 import cn.edu.nju.software.backend.riscinstruction.RiscInstruction;
+import cn.edu.nju.software.backend.riscinstruction.RiscLd;
 import cn.edu.nju.software.backend.riscinstruction.RiscSd;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFld;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsd;
 import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.backend.regalloc.Allocator;
+import cn.edu.nju.software.frontend.type.Type;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import cn.edu.nju.software.ir.type.FloatType;
-import cn.edu.nju.software.ir.type.FunctionType;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 
+import java.lang.invoke.TypeDescriptor;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.spi.ToolProvider;
+import java.util.stream.Stream;
 
 public class RiscBasicBlock {
 
@@ -61,21 +64,65 @@ public class RiscBasicBlock {
 
     //todo()这里只能处理RiscSpecifications中arg数组指定的参数个数
     private void saveParams() {
+
         FunctionType functionType = (FunctionType) llvmFunctionValue.getType();
+
+
+        // 获取所有 IntType 和 FloatType 的参数个数
+        int intTypeAndFloatTypeCount = functionType.getFParameters().stream()
+                .filter(typeRef -> typeRef instanceof IntType || typeRef instanceof FloatType)
+                .mapToInt(typeRef -> 1)
+                .sum();
+        int floatTypeCount = functionType.getFParameters().stream()
+                .filter(typeRef -> typeRef instanceof FloatType)
+                .mapToInt(typeRef -> 1)
+                .sum();
+
+        int pointerTypeCount = functionType.getFParameters().stream()
+                .filter(typeRef -> typeRef instanceof Pointer)
+                .mapToInt(typeRef -> 1)
+                .sum();
+
+        int intAndPointerCount = intTypeAndFloatTypeCount + pointerTypeCount;
+
+        int preLen = (intAndPointerCount - RiscSpecifications.getArgRegs().length + floatTypeCount - RiscSpecifications.getFArgRegs().length ) * 8;
+
+        //获取所有intType和PointerType的参数个数
+
+        //获取所有intType和PointerType的参数
         int fptr = 0;
         int ptr = 0;
         for (int i = 0; i < functionType.getFParametersCount(); i++) {
-            assert fptr <= RiscSpecifications.getArgRegs().length && ptr <= RiscSpecifications.getFArgRegs().length;
 
             if (functionType.getFParameter(i) instanceof FloatType) {
-                riscInstructions.add(new RiscFsd(new Register(RiscSpecifications.getFArgRegs()[fptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i + ""))));
+                if(fptr >= RiscSpecifications.getFArgRegs().length){
+                    fetchFromStack(functionType.getFParameter(i), i, preLen);
+                    continue;
+                }
+                riscInstructions.add(new RiscFsd(new Register(RiscSpecifications.getFArgRegs()[fptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i +""))));
                 fptr++;
             } else if (functionType.getFParameter(i) instanceof IntType || functionType.getFParameter(i) instanceof Pointer) {
-                riscInstructions.add(new RiscSd(new Register(RiscSpecifications.getArgRegs()[ptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i + ""))));
+                if(ptr >= RiscSpecifications.getArgRegs().length){
+                    fetchFromStack(functionType.getFParameter(i), i, preLen);
+                    continue;
+                }
+                riscInstructions.add(new RiscSd(new Register(RiscSpecifications.getArgRegs()[ptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i +""))));
                 ptr++;
             } else {
                 assert false;
             }
+        }
+    }
+
+    private void fetchFromStack(TypeRef type, int i, int preLen) {
+        if (type instanceof IntType || type instanceof Pointer) {
+            riscInstructions.add(new RiscLd(new Register("t3"), new IndirectRegister("sp", allocator.getStackSize() + preLen)));
+            riscInstructions.add(new RiscSd(new Register("t3"), new IndirectRegister("t3", allocator.getOffset(new LocalVar(type, i + "")))));
+        } else if (type instanceof FloatType) {
+            riscInstructions.add(new RiscFld(new Register("ft3"), new IndirectRegister("sp", allocator.getStackSize() + preLen)));
+            riscInstructions.add(new RiscFsd(new Register("ft3"), new IndirectRegister("sp", allocator.getOffset(new LocalVar(type, i + "")))));
+        } else {
+            assert false;
         }
     }
 
