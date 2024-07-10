@@ -138,15 +138,15 @@ MAXEntry:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_ ifTrue_117 ifFalse_27
+	# condBr cond_ ifTrue_25 ifFalse_3
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_27
-	j ifTrue_117
-ifTrue_117:
+	beqz t1, ifFalse_3
+	j ifTrue_25
+ifTrue_25:
 
 	# load a$1 lv
 
@@ -174,7 +174,7 @@ ifTrue_117:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_27:
+ifFalse_3:
 
 	# load a$2 lv
 
@@ -242,15 +242,15 @@ ifFalse_27:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_$1 ifTrue_118 ifFalse_28
+	# condBr cond_$1 ifTrue_26 ifFalse_4
 
 	# fetch variables
 	li t4, 16
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_28
-	j ifTrue_118
-ifTrue_118:
+	beqz t1, ifFalse_4
+	j ifTrue_26
+ifTrue_26:
 
 	# load a$3 lv
 
@@ -278,7 +278,7 @@ ifTrue_118:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_28:
+ifFalse_4:
 
 	# load b$2 lv$1
 
@@ -1142,9 +1142,9 @@ max_sum_nonadjacentEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_102
-	j whileCond_102
-whileCond_102:
+	# br whileCond_16
+	j whileCond_16
+whileCond_16:
 
 	# load i lv$3
 
@@ -1211,15 +1211,15 @@ whileCond_102:
 	seqz t0, t0
 	sd t0, 176(sp)
 
-	# condBr cond_ whileBody_102 next_221
+	# condBr cond_ whileBody_16 next_43
 
 	# fetch variables
 	li t4, 176
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_221
-	j whileBody_102
-whileBody_102:
+	beqz t1, next_43
+	j whileBody_16
+whileBody_16:
 
 	# load i$1 lv$3
 
@@ -1526,9 +1526,9 @@ whileBody_102:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_102
-	j whileCond_102
-next_221:
+	# br whileCond_16
+	j whileCond_16
+next_43:
 
 	# load n$1 lv$1
 
@@ -15222,9 +15222,9 @@ longest_common_subseqEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_103
-	j whileCond_103
-whileCond_103:
+	# br whileCond_17
+	j whileCond_17
+whileCond_17:
 
 	# load i lv$5
 
@@ -15293,15 +15293,15 @@ whileCond_103:
 	seqz t0, t0
 	sd t0, 448(sp)
 
-	# condBr cond_ whileBody_103 next_222
+	# condBr cond_ whileBody_17 next_44
 
 	# fetch variables
 	li t4, 448
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_222
-	j whileBody_103
-whileBody_103:
+	beqz t1, next_44
+	j whileBody_17
+whileBody_17:
 
 	# lv$6 
 
@@ -15318,9 +15318,9 @@ whileBody_103:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_104
-	j whileCond_104
-next_222:
+	# br whileCond_18
+	j whileCond_18
+next_44:
 
 	# load len1$1 lv$1
 
@@ -15412,7 +15412,7 @@ next_222:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_104:
+whileCond_18:
 
 	# load j lv$6
 
@@ -15481,15 +15481,15 @@ whileCond_104:
 	seqz t0, t0
 	sd t0, 368(sp)
 
-	# condBr cond_$1 whileBody_104 next_223
+	# condBr cond_$1 whileBody_18 next_45
 
 	# fetch variables
 	li t4, 368
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_223
-	j whileBody_104
-whileBody_104:
+	beqz t1, next_45
+	j whileBody_18
+whileBody_18:
 
 	# load i$1 lv$5
 
@@ -15671,15 +15671,15 @@ whileBody_104:
 	seqz t0, t0
 	sd t0, 264(sp)
 
-	# condBr cond_$2 ifTrue_119 ifFalse_29
+	# condBr cond_$2 ifTrue_27 ifFalse_5
 
 	# fetch variables
 	li t4, 264
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_29
-	j ifTrue_119
-next_223:
+	beqz t1, ifFalse_5
+	j ifTrue_27
+next_45:
 
 	# load i$7 lv$5
 
@@ -15723,9 +15723,9 @@ next_223:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_103
-	j whileCond_103
-ifTrue_119:
+	# br whileCond_17
+	j whileCond_17
+ifTrue_27:
 
 	# load i$2 lv$5
 
@@ -15921,9 +15921,9 @@ ifTrue_119:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_224
-	j next_224
-ifFalse_29:
+	# br next_46
+	j next_46
+ifFalse_5:
 
 	# load i$4 lv$5
 
@@ -16212,9 +16212,9 @@ ifFalse_29:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_224
-	j next_224
-next_224:
+	# br next_46
+	j next_46
+next_46:
 
 	# load j$7 lv$6
 
@@ -16258,12 +16258,12 @@ next_224:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_104
-	j whileCond_104
+	# br whileCond_18
+	j whileCond_18
 .type main, @function
 .globl main
 main:
-mainEntry53:
+mainEntry5:
 
 	# reserve space
 	li t4, 536

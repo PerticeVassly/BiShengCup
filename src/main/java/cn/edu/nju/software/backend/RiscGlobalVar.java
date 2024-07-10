@@ -3,6 +3,7 @@ package cn.edu.nju.software.backend;
 import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.value.ArrayValue;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.GlobalVar;

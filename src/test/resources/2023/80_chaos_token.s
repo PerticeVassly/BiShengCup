@@ -520,9 +520,9 @@ putstrEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_91
-	j whileCond_91
-whileCond_91:
+	# br whileCond_25
+	j whileCond_25
+whileCond_25:
 
 	# load iNd__1X lv$1
 
@@ -596,15 +596,15 @@ whileCond_91:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_normalize_ whileBody_91 next_185
+	# condBr cond_normalize_ whileBody_25 next_55
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_185
-	j whileBody_91
-whileBody_91:
+	beqz t1, next_55
+	j whileBody_25
+whileBody_25:
 
 	# load iNd__1X$1 lv$1
 
@@ -725,9 +725,9 @@ whileBody_91:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_91
-	j whileCond_91
-next_185:
+	# br whileCond_25
+	j whileCond_25
+next_55:
 
 	# load iNd__1X$3 lv$1
 
@@ -758,7 +758,7 @@ next_185:
 .type main, @function
 .globl main
 main:
-mainEntry46:
+mainEntry8:
 
 	# reserve space
 	li t4, 304
@@ -839,9 +839,9 @@ mainEntry46:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_92
-	j whileCond_92
-whileCond_92:
+	# br whileCond_26
+	j whileCond_26
+whileCond_26:
 
 	# cmp   cond_normalize_
 
@@ -855,9 +855,9 @@ whileCond_92:
 	seqz t0, t0
 	sd t0, 232(sp)
 
-	# br whileBody_92
-	j whileBody_92
-whileBody_92:
+	# br whileBody_26
+	j whileBody_26
+whileBody_26:
 
 	# load i lv
 
@@ -1010,15 +1010,15 @@ whileBody_92:
 	seqz t0, t0
 	sd t0, 160(sp)
 
-	# condBr cond_ ifTrue_94 next_187
+	# condBr cond_ ifTrue_30 next_57
 
 	# fetch variables
 	li t4, 160
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_187
-	j ifTrue_94
-next_186:
+	beqz t1, next_57
+	j ifTrue_30
+next_56:
 
 	# ret 
 
@@ -1028,7 +1028,7 @@ next_186:
 	li t4, 304
 	add sp, sp, t4
 	ret 
-ifTrue_94:
+ifTrue_30:
 
 	# load _$1 lv$1
 
@@ -1242,9 +1242,9 @@ ifTrue_94:
 	# get address of local var:putstr$4
 	sd a0, 64(sp)
 
-	# br next_187
-	j next_187
-next_187:
+	# br next_57
+	j next_57
+next_57:
 
 	# load i$2 lv
 
@@ -1363,22 +1363,22 @@ next_187:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_95 next_188
+	# condBr cond_$1 ifTrue_31 next_58
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_188
-	j ifTrue_95
-ifTrue_95:
+	beqz t1, next_58
+	j ifTrue_31
+ifTrue_31:
 
-	# br next_186
-	j next_186
+	# br next_56
+	j next_56
 
-	# br next_188
-	j next_188
-next_188:
+	# br next_58
+	j next_58
+next_58:
 
-	# br whileCond_92
-	j whileCond_92
+	# br whileCond_26
+	j whileCond_26

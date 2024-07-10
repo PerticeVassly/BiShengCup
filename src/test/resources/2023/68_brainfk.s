@@ -2,10 +2,10 @@
 .align 2
 .globl gv
 gv:
-.dword 0
+.zero 524288
 .globl gv1
 gv1:
-.dword 0
+.zero 262144
 .globl gv2
 gv2:
 .dword 0
@@ -89,9 +89,9 @@ read_programEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_151
-	j whileCond_151
-whileCond_151:
+	# br whileCond_96
+	j whileCond_96
+whileCond_96:
 
 	# load i lv
 
@@ -158,15 +158,15 @@ whileCond_151:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ whileBody_151 next_321
+	# condBr cond_ whileBody_96 next_195
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_321
-	j whileBody_151
-whileBody_151:
+	beqz t1, next_195
+	j whileBody_96
+whileBody_96:
 
 	# load i$1 lv
 
@@ -273,9 +273,9 @@ whileBody_151:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_151
-	j whileCond_151
-next_321:
+	# br whileCond_96
+	j whileCond_96
+next_195:
 
 	# load i$3 lv
 
@@ -408,9 +408,9 @@ interpretEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_152
-	j whileCond_152
-whileCond_152:
+	# br whileCond_97
+	j whileCond_97
+whileCond_97:
 
 	# load i lv$3
 
@@ -484,15 +484,15 @@ whileCond_152:
 	seqz t0, t0
 	sd t0, 656(sp)
 
-	# condBr cond_normalize_ whileBody_152 next_322
+	# condBr cond_normalize_ whileBody_97 next_196
 
 	# fetch variables
 	li t4, 656
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_322
-	j whileBody_152
-whileBody_152:
+	beqz t1, next_196
+	j whileBody_97
+whileBody_97:
 
 	# load i$1 lv$3
 
@@ -620,15 +620,15 @@ whileBody_152:
 	seqz t0, t0
 	sd t0, 592(sp)
 
-	# condBr cond_ ifTrue_170 ifFalse_55
+	# condBr cond_ ifTrue_99 ifFalse_32
 
 	# fetch variables
 	li t4, 592
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_55
-	j ifTrue_170
-next_322:
+	beqz t1, ifFalse_32
+	j ifTrue_99
+next_196:
 
 	# ret void
 	li t4, 768
@@ -637,7 +637,7 @@ next_322:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_170:
+ifTrue_99:
 
 	# load ptr gv2
 
@@ -677,9 +677,9 @@ ifTrue_170:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_323
-	j next_323
-ifFalse_55:
+	# br next_197
+	j next_197
+ifFalse_32:
 
 	# load cur_char$1 lv$1
 
@@ -732,15 +732,15 @@ ifFalse_55:
 	seqz t0, t0
 	sd t0, 544(sp)
 
-	# condBr cond_$1 ifTrue_171 ifFalse_56
+	# condBr cond_$1 ifTrue_100 ifFalse_33
 
 	# fetch variables
 	li t4, 544
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_56
-	j ifTrue_171
-next_323:
+	beqz t1, ifFalse_33
+	j ifTrue_100
+next_197:
 
 	# load i$4 lv$3
 
@@ -784,9 +784,9 @@ next_323:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_152
-	j whileCond_152
-ifTrue_171:
+	# br whileCond_97
+	j whileCond_97
+ifTrue_100:
 
 	# load ptr$1 gv2
 
@@ -826,9 +826,9 @@ ifTrue_171:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_324
-	j next_324
-ifFalse_56:
+	# br next_198
+	j next_198
+ifFalse_33:
 
 	# load cur_char$2 lv$1
 
@@ -881,19 +881,19 @@ ifFalse_56:
 	seqz t0, t0
 	sd t0, 480(sp)
 
-	# condBr cond_$2 ifTrue_172 ifFalse_57
+	# condBr cond_$2 ifTrue_101 ifFalse_34
 
 	# fetch variables
 	li t4, 480
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_57
-	j ifTrue_172
-next_324:
+	beqz t1, ifFalse_34
+	j ifTrue_101
+next_198:
 
-	# br next_323
-	j next_323
-ifTrue_172:
+	# br next_197
+	j next_197
+ifTrue_101:
 
 	# load ptr$2 gv2
 
@@ -993,9 +993,9 @@ ifTrue_172:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_325
-	j next_325
-ifFalse_57:
+	# br next_199
+	j next_199
+ifFalse_34:
 
 	# load cur_char$3 lv$1
 
@@ -1048,19 +1048,19 @@ ifFalse_57:
 	seqz t0, t0
 	sd t0, 400(sp)
 
-	# condBr cond_$3 ifTrue_173 ifFalse_58
+	# condBr cond_$3 ifTrue_102 ifFalse_35
 
 	# fetch variables
 	li t4, 400
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_58
-	j ifTrue_173
-next_325:
+	beqz t1, ifFalse_35
+	j ifTrue_102
+next_199:
 
-	# br next_324
-	j next_324
-ifTrue_173:
+	# br next_198
+	j next_198
+ifTrue_102:
 
 	# load ptr$4 gv2
 
@@ -1160,9 +1160,9 @@ ifTrue_173:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_326
-	j next_326
-ifFalse_58:
+	# br next_200
+	j next_200
+ifFalse_35:
 
 	# load cur_char$4 lv$1
 
@@ -1215,19 +1215,19 @@ ifFalse_58:
 	seqz t0, t0
 	sd t0, 320(sp)
 
-	# condBr cond_$4 ifTrue_174 ifFalse_59
+	# condBr cond_$4 ifTrue_103 ifFalse_36
 
 	# fetch variables
 	li t4, 320
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_59
-	j ifTrue_174
-next_326:
+	beqz t1, ifFalse_36
+	j ifTrue_103
+next_200:
 
-	# br next_325
-	j next_325
-ifTrue_174:
+	# br next_199
+	j next_199
+ifTrue_103:
 
 	# load ptr$6 gv2
 
@@ -1289,9 +1289,9 @@ ifTrue_174:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_327
-	j next_327
-ifFalse_59:
+	# br next_201
+	j next_201
+ifFalse_36:
 
 	# load cur_char$5 lv$1
 
@@ -1344,19 +1344,19 @@ ifFalse_59:
 	seqz t0, t0
 	sd t0, 264(sp)
 
-	# condBr cond_$5 ifTrue_175 ifFalse_60
+	# condBr cond_$5 ifTrue_104 ifFalse_37
 
 	# fetch variables
 	li t4, 264
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_60
-	j ifTrue_175
-next_327:
+	beqz t1, ifFalse_37
+	j ifTrue_104
+next_201:
 
-	# br next_326
-	j next_326
-ifTrue_175:
+	# br next_200
+	j next_200
+ifTrue_104:
 
 	# load ptr$7 gv2
 
@@ -1419,9 +1419,9 @@ ifTrue_175:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_328
-	j next_328
-ifFalse_60:
+	# br next_202
+	j next_202
+ifFalse_37:
 
 	# load cur_char$6 lv$1
 
@@ -1474,19 +1474,19 @@ ifFalse_60:
 	seqz t0, t0
 	sd t0, 208(sp)
 
-	# condBr cond_$6 secondCond_86 next_329
+	# condBr cond_$6 secondCond_55 next_203
 
 	# fetch variables
 	li t4, 208
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_329
-	j secondCond_86
-next_328:
+	beqz t1, next_203
+	j secondCond_55
+next_202:
 
-	# br next_327
-	j next_327
-ifTrue_176:
+	# br next_201
+	j next_201
+ifTrue_105:
 
 	# lv$2 
 
@@ -1503,13 +1503,13 @@ ifTrue_176:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_153
-	j whileCond_153
-next_329:
+	# br whileCond_98
+	j whileCond_98
+next_203:
 
-	# br next_328
-	j next_328
-secondCond_86:
+	# br next_202
+	j next_202
+secondCond_55:
 
 	# load ptr$8 gv2
 
@@ -1566,15 +1566,15 @@ secondCond_86:
 	seqz t0, t0
 	sd t0, 176(sp)
 
-	# condBr cond_normalize_$1 ifTrue_176 next_329
+	# condBr cond_normalize_$1 ifTrue_105 next_203
 
 	# fetch variables
 	li t4, 176
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_329
-	j ifTrue_176
-whileCond_153:
+	beqz t1, next_203
+	j ifTrue_105
+whileCond_98:
 
 	# load loop lv$2
 
@@ -1627,15 +1627,15 @@ whileCond_153:
 	seqz t0, t0
 	sd t0, 144(sp)
 
-	# condBr cond_$7 whileBody_153 next_330
+	# condBr cond_$7 whileBody_98 next_204
 
 	# fetch variables
 	li t4, 144
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_330
-	j whileBody_153
-whileBody_153:
+	beqz t1, next_204
+	j whileBody_98
+whileBody_98:
 
 	# load i$2 lv$3
 
@@ -1805,19 +1805,19 @@ whileBody_153:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$8 ifTrue_177 ifFalse_61
+	# condBr cond_$8 ifTrue_106 ifFalse_38
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_61
-	j ifTrue_177
-next_330:
+	beqz t1, ifFalse_38
+	j ifTrue_106
+next_204:
 
-	# br next_329
-	j next_329
-ifTrue_177:
+	# br next_203
+	j next_203
+ifTrue_106:
 
 	# load loop$1 lv$2
 
@@ -1861,9 +1861,9 @@ ifTrue_177:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_331
-	j next_331
-ifFalse_61:
+	# br next_205
+	j next_205
+ifFalse_38:
 
 	# load cur_char$8 lv$1
 
@@ -1916,19 +1916,19 @@ ifFalse_61:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_$9 ifTrue_178 next_332
+	# condBr cond_$9 ifTrue_107 next_206
 
 	# fetch variables
 	li t4, 16
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_332
-	j ifTrue_178
-next_331:
+	beqz t1, next_206
+	j ifTrue_107
+next_205:
 
-	# br whileCond_153
-	j whileCond_153
-ifTrue_178:
+	# br whileCond_98
+	j whileCond_98
+ifTrue_107:
 
 	# load loop$2 lv$2
 
@@ -1972,16 +1972,16 @@ ifTrue_178:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_332
-	j next_332
-next_332:
+	# br next_206
+	j next_206
+next_206:
 
-	# br next_331
-	j next_331
+	# br next_205
+	j next_205
 .type main, @function
 .globl main
 main:
-mainEntry85:
+mainEntry45:
 
 	# reserve space
 	li t4, 8

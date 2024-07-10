@@ -23,7 +23,7 @@ public class PassManager {
     public boolean runPass() {
         boolean changed = false;
         changed |=doModulePasses(module);
-        for (FunctionValue functionValue : module.getFunctions().toList()) {
+        for (FunctionValue functionValue : module.getFunctions()) {
             changed|=doFunctionPass(functionValue);
             for (BasicBlockRef basicBlockRef:functionValue.getBasicBlockRefs()){
                 changed|=doBasicBlockPass(basicBlockRef);

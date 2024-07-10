@@ -108,9 +108,9 @@ sortEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_7
-	j whileCond_7
-whileCond_7:
+	# br whileCond_75
+	j whileCond_75
+whileCond_75:
 
 	# load i lv$2
 
@@ -189,15 +189,15 @@ whileCond_7:
 	seqz t0, t0
 	sd t0, 296(sp)
 
-	# condBr cond_ whileBody_7 next_18
+	# condBr cond_ whileBody_75 next_152
 
 	# fetch variables
 	li t4, 296
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_18
-	j whileBody_7
-whileBody_7:
+	beqz t1, next_152
+	j whileBody_75
+whileBody_75:
 
 	# load i$1 lv$2
 
@@ -241,9 +241,9 @@ whileBody_7:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_8
-	j whileCond_8
-next_18:
+	# br whileCond_76
+	j whileCond_76
+next_152:
 
 	# ret void
 	li t4, 440
@@ -252,7 +252,7 @@ next_18:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_8:
+whileCond_76:
 
 	# load j lv$3
 
@@ -319,15 +319,15 @@ whileCond_8:
 	seqz t0, t0
 	sd t0, 240(sp)
 
-	# condBr cond_$1 whileBody_8 next_19
+	# condBr cond_$1 whileBody_76 next_153
 
 	# fetch variables
 	li t4, 240
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_19
-	j whileBody_8
-whileBody_8:
+	beqz t1, next_153
+	j whileBody_76
+whileBody_76:
 
 	# load i$2 lv$2
 
@@ -484,15 +484,15 @@ whileBody_8:
 	seqz t0, t0
 	sd t0, 152(sp)
 
-	# condBr cond_$2 ifTrue_11 next_20
+	# condBr cond_$2 ifTrue_77 next_154
 
 	# fetch variables
 	li t4, 152
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_20
-	j ifTrue_11
-next_19:
+	beqz t1, next_154
+	j ifTrue_77
+next_153:
 
 	# load i$5 lv$2
 
@@ -536,9 +536,9 @@ next_19:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_7
-	j whileCond_7
-ifTrue_11:
+	# br whileCond_75
+	j whileCond_75
+ifTrue_77:
 
 	# load i$3 lv$2
 
@@ -810,9 +810,9 @@ ifTrue_11:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_20
-	j next_20
-next_20:
+	# br next_154
+	j next_154
+next_154:
 
 	# load j$4 lv$3
 
@@ -856,8 +856,8 @@ next_20:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_8
-	j whileCond_8
+	# br whileCond_76
+	j whileCond_76
 .type param32_rec, @function
 .globl param32_rec
 param32_rec:
@@ -1881,15 +1881,15 @@ param32_recEntry:
 	seqz t0, t0
 	sd t0, 296(sp)
 
-	# condBr cond_ ifTrue_12 ifFalse_1
+	# condBr cond_ ifTrue_78 ifFalse_23
 
 	# fetch variables
 	li t4, 296
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_1
-	j ifTrue_12
-ifTrue_12:
+	beqz t1, ifFalse_23
+	j ifTrue_78
+ifTrue_78:
 
 	# load a2 lv$1
 
@@ -1917,7 +1917,7 @@ ifTrue_12:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_1:
+ifFalse_23:
 
 	# load a1$1 lv
 
@@ -10829,7 +10829,7 @@ param16Entry:
 .type main, @function
 .globl main
 main:
-mainEntry6:
+mainEntry32:
 
 	# reserve space
 	li t4, 2408
@@ -14606,9 +14606,9 @@ mainEntry6:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_9
-	j whileCond_9
-whileCond_9:
+	# br whileCond_77
+	j whileCond_77
+whileCond_77:
 
 	# load i lv$1
 
@@ -14660,15 +14660,15 @@ whileCond_9:
 	seqz t0, t0
 	sd t0, 680(sp)
 
-	# condBr cond_ whileBody_9 next_22
+	# condBr cond_ whileBody_77 next_156
 
 	# fetch variables
 	li t4, 680
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_22
-	j whileBody_9
-whileBody_9:
+	beqz t1, next_156
+	j whileBody_77
+whileBody_77:
 
 	# load i$1 lv$1
 
@@ -15016,9 +15016,9 @@ whileBody_9:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_9
-	j whileCond_9
-next_22:
+	# br whileCond_77
+	j whileCond_77
+next_156:
 
 	# gep arr$6 
 

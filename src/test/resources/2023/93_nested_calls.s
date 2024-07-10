@@ -150,15 +150,15 @@ func1Entry:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_ ifTrue_147 ifFalse_39
+	# condBr cond_ ifTrue_63 ifFalse_17
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_39
-	j ifTrue_147
-ifTrue_147:
+	beqz t1, ifFalse_17
+	j ifTrue_63
+ifTrue_63:
 
 	# load x lv
 
@@ -213,7 +213,7 @@ ifTrue_147:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_39:
+ifFalse_17:
 
 	# load x$1 lv
 
@@ -410,15 +410,15 @@ func2Entry:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_normalize_ ifTrue_148 ifFalse_40
+	# condBr cond_normalize_ ifTrue_64 ifFalse_18
 
 	# fetch variables
 	li t4, 40
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_40
-	j ifTrue_148
-ifTrue_148:
+	beqz t1, ifFalse_18
+	j ifTrue_64
+ifTrue_64:
 
 	# load x lv
 
@@ -499,7 +499,7 @@ ifTrue_148:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_40:
+ifFalse_18:
 
 	# load x$1 lv
 
@@ -648,15 +648,15 @@ func3Entry:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ ifTrue_149 ifFalse_41
+	# condBr cond_ ifTrue_65 ifFalse_19
 
 	# fetch variables
 	li t4, 48
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_41
-	j ifTrue_149
-ifTrue_149:
+	beqz t1, ifFalse_19
+	j ifTrue_65
+ifTrue_65:
 
 	# load x lv
 
@@ -696,7 +696,7 @@ ifTrue_149:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_41:
+ifFalse_19:
 
 	# load x$1 lv
 
@@ -901,15 +901,15 @@ func4Entry:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_normalize_ ifTrue_150 ifFalse_42
+	# condBr cond_normalize_ ifTrue_66 ifFalse_20
 
 	# fetch variables
 	li t4, 16
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_42
-	j ifTrue_150
-ifTrue_150:
+	beqz t1, ifFalse_20
+	j ifTrue_66
+ifTrue_66:
 
 	# load y lv$1
 
@@ -937,7 +937,7 @@ ifTrue_150:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_42:
+ifFalse_20:
 
 	# load z lv$2
 
@@ -1143,15 +1143,15 @@ func6Entry:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_normalize_ secondCond_80 ifFalse_43
+	# condBr cond_normalize_ secondCond_47 ifFalse_21
 
 	# fetch variables
 	li t4, 16
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_43
-	j secondCond_80
-ifTrue_151:
+	beqz t1, ifFalse_21
+	j secondCond_47
+ifTrue_67:
 
 	# ret 
 
@@ -1164,7 +1164,7 @@ ifTrue_151:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_43:
+ifFalse_21:
 
 	# ret 
 
@@ -1177,7 +1177,7 @@ ifFalse_43:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-secondCond_80:
+secondCond_47:
 
 	# load y lv$1
 
@@ -1206,14 +1206,14 @@ secondCond_80:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_$1 ifTrue_151 ifFalse_43
+	# condBr cond_normalize_$1 ifTrue_67 ifFalse_21
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_43
-	j ifTrue_151
+	beqz t1, ifFalse_21
+	j ifTrue_67
 .type func7, @function
 .globl func7
 func7:
@@ -1323,15 +1323,15 @@ func7Entry:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_ ifTrue_152 ifFalse_44
+	# condBr cond_normalize_ ifTrue_68 ifFalse_22
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_44
-	j ifTrue_152
-ifTrue_152:
+	beqz t1, ifFalse_22
+	j ifTrue_68
+ifTrue_68:
 
 	# ret 
 
@@ -1344,7 +1344,7 @@ ifTrue_152:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_44:
+ifFalse_22:
 
 	# ret 
 
@@ -1360,7 +1360,7 @@ ifFalse_44:
 .type main, @function
 .globl main
 main:
-mainEntry71:
+mainEntry30:
 
 	# reserve space
 	li t4, 960
@@ -1564,9 +1564,9 @@ mainEntry71:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_132
-	j whileCond_132
-whileCond_132:
+	# br whileCond_67
+	j whileCond_67
+whileCond_67:
 
 	# load i lv$5
 
@@ -1618,15 +1618,15 @@ whileCond_132:
 	seqz t0, t0
 	sd t0, 712(sp)
 
-	# condBr cond_ whileBody_132 next_285
+	# condBr cond_ whileBody_67 next_136
 
 	# fetch variables
 	li t4, 712
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_285
-	j whileBody_132
-whileBody_132:
+	beqz t1, next_136
+	j whileBody_67
+whileBody_67:
 
 	# load i$1 lv$5
 
@@ -1735,9 +1735,9 @@ whileBody_132:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_132
-	j whileCond_132
-next_285:
+	# br whileCond_67
+	j whileCond_67
+next_136:
 
 	# load i1 lv
 

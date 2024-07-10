@@ -18,7 +18,7 @@ public class LoopBuildPass implements ModulePass {
     private Integer cnt=-1;
     @Override
     public boolean runOnModule(ModuleRef module) {
-        for (FunctionValue functionValue : module.getFunctions().toList()) {
+        for (FunctionValue functionValue : module.getFunctions()) {
             LoopSet loopSet =findLoops(functionValue);
             if(!loopSet.isEmpty()){
                 forestTable.put(functionValue, loopSet);

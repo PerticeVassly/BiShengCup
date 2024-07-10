@@ -8,7 +8,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry32:
+mainEntry74:
 
 	# reserve space
 	li t4, 272
@@ -105,15 +105,15 @@ mainEntry32:
 	seqz t0, t0
 	sd t0, 176(sp)
 
-	# condBr cond_ ifTrue_62 next_134
+	# condBr cond_ ifTrue_150 next_304
 
 	# fetch variables
 	li t4, 176
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_134
-	j ifTrue_62
-ifTrue_62:
+	beqz t1, next_304
+	j ifTrue_150
+ifTrue_150:
 
 	# load k$1 gv
 
@@ -168,9 +168,9 @@ ifTrue_62:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_72
-	j whileCond_72
-next_134:
+	# br whileCond_154
+	j whileCond_154
+next_304:
 
 	# load k$8 gv
 
@@ -193,7 +193,7 @@ next_134:
 	li t4, 272
 	add sp, sp, t4
 	ret 
-whileCond_72:
+whileCond_154:
 
 	# load k$2 lv
 
@@ -246,15 +246,15 @@ whileCond_72:
 	seqz t0, t0
 	sd t0, 120(sp)
 
-	# condBr cond_$1 whileBody_72 next_135
+	# condBr cond_$1 whileBody_154 next_305
 
 	# fetch variables
 	li t4, 120
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_135
-	j whileBody_72
-whileBody_72:
+	beqz t1, next_305
+	j whileBody_154
+whileBody_154:
 
 	# load k$3 lv
 
@@ -348,15 +348,15 @@ whileBody_72:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$2 ifTrue_63 next_136
+	# condBr cond_$2 ifTrue_151 next_306
 
 	# fetch variables
 	li t4, 72
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_136
-	j ifTrue_63
-next_135:
+	beqz t1, next_306
+	j ifTrue_151
+next_305:
 
 	# load k$7 lv
 
@@ -390,9 +390,9 @@ next_135:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_134
-	j next_134
-ifTrue_63:
+	# br next_304
+	j next_304
+ifTrue_151:
 
 	# lv$1 
 
@@ -595,9 +595,9 @@ ifTrue_63:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_136
-	j next_136
-next_136:
+	# br next_306
+	j next_306
+next_306:
 
-	# br whileCond_72
-	j whileCond_72
+	# br whileCond_154
+	j whileCond_154

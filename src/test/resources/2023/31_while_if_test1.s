@@ -62,9 +62,9 @@ whileIfEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_134
-	j whileCond_134
-whileCond_134:
+	# br whileCond_105
+	j whileCond_105
+whileCond_105:
 
 	# load a lv
 
@@ -116,15 +116,15 @@ whileCond_134:
 	seqz t0, t0
 	sd t0, 104(sp)
 
-	# condBr cond_ whileBody_134 next_290
+	# condBr cond_ whileBody_105 next_222
 
 	# fetch variables
 	li t4, 104
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_290
-	j whileBody_134
-whileBody_134:
+	beqz t1, next_222
+	j whileBody_105
+whileBody_105:
 
 	# load a$1 lv
 
@@ -177,15 +177,15 @@ whileBody_134:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$1 ifTrue_156 ifFalse_47
+	# condBr cond_$1 ifTrue_117 ifFalse_43
 
 	# fetch variables
 	li t4, 72
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_47
-	j ifTrue_156
-next_290:
+	beqz t1, ifFalse_43
+	j ifTrue_117
+next_222:
 
 	# load b lv$1
 
@@ -213,7 +213,7 @@ next_290:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_156:
+ifTrue_117:
 
 	# lv$1 
 
@@ -230,9 +230,9 @@ ifTrue_156:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_291
-	j next_291
-ifFalse_47:
+	# br next_223
+	j next_223
+ifFalse_43:
 
 	# load a$2 lv
 
@@ -285,15 +285,15 @@ ifFalse_47:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 ifTrue_157 ifFalse_48
+	# condBr cond_$2 ifTrue_118 ifFalse_44
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_48
-	j ifTrue_157
-next_291:
+	beqz t1, ifFalse_44
+	j ifTrue_118
+next_223:
 
 	# load a$4 lv
 
@@ -337,9 +337,9 @@ next_291:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_134
-	j whileCond_134
-ifTrue_157:
+	# br whileCond_105
+	j whileCond_105
+ifTrue_118:
 
 	# lv$1 
 
@@ -356,9 +356,9 @@ ifTrue_157:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_292
-	j next_292
-ifFalse_48:
+	# br next_224
+	j next_224
+ifFalse_44:
 
 	# load a$3 lv
 
@@ -402,16 +402,16 @@ ifFalse_48:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_292
-	j next_292
-next_292:
+	# br next_224
+	j next_224
+next_224:
 
-	# br next_291
-	j next_291
+	# br next_223
+	j next_223
 .type main, @function
 .globl main
 main:
-mainEntry73:
+mainEntry54:
 
 	# reserve space
 	li t4, 8

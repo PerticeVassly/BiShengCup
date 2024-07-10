@@ -11,7 +11,7 @@ gv1:
 .type main, @function
 .globl main
 main:
-mainEntry54:
+mainEntry15:
 
 	# reserve space
 	li t4, 112
@@ -150,15 +150,15 @@ mainEntry54:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_ secondCond_67 ifFalse_30
+	# condBr cond_ secondCond_31 ifFalse_9
 
 	# fetch variables
 	li t4, 40
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_30
-	j secondCond_67
-ifTrue_120:
+	beqz t1, ifFalse_9
+	j secondCond_31
+ifTrue_37:
 
 	# lv 
 
@@ -175,9 +175,9 @@ ifTrue_120:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_225
-	j next_225
-ifFalse_30:
+	# br next_75
+	j next_75
+ifFalse_9:
 
 	# lv 
 
@@ -194,9 +194,9 @@ ifFalse_30:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_225
-	j next_225
-next_225:
+	# br next_75
+	j next_75
+next_75:
 
 	# load c lv
 
@@ -221,7 +221,7 @@ next_225:
 	li t4, 112
 	add sp, sp, t4
 	ret 
-secondCond_67:
+secondCond_31:
 
 	# load a$1 gv
 
@@ -273,11 +273,11 @@ secondCond_67:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_120 ifFalse_30
+	# condBr cond_$1 ifTrue_37 ifFalse_9
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_30
-	j ifTrue_120
+	beqz t1, ifFalse_9
+	j ifTrue_37

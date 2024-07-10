@@ -585,9 +585,9 @@ heap_ajustEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_135
-	j whileCond_135
-whileCond_135:
+	# br whileCond_81
+	j whileCond_81
+whileCond_81:
 
 	# load son lv$4
 
@@ -666,15 +666,15 @@ whileCond_135:
 	seqz t0, t0
 	sd t0, 304(sp)
 
-	# condBr cond_ whileBody_135 next_293
+	# condBr cond_ whileBody_81 next_166
 
 	# fetch variables
 	li t4, 304
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_293
-	j whileBody_135
-whileBody_135:
+	beqz t1, next_166
+	j whileBody_81
+whileBody_81:
 
 	# load son$1 lv$4
 
@@ -741,15 +741,15 @@ whileBody_135:
 	seqz t0, t0
 	sd t0, 264(sp)
 
-	# condBr cond_$1 secondCond_81 next_294
+	# condBr cond_$1 secondCond_51 next_167
 
 	# fetch variables
 	li t4, 264
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_294
-	j secondCond_81
-next_293:
+	beqz t1, next_167
+	j secondCond_51
+next_166:
 
 	# ret 
 
@@ -762,7 +762,7 @@ next_293:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_158:
+ifTrue_85:
 
 	# load son$4 lv$4
 
@@ -806,9 +806,9 @@ ifTrue_158:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_294
-	j next_294
-next_294:
+	# br next_167
+	j next_167
+next_167:
 
 	# load dad$1 lv$3
 
@@ -966,15 +966,15 @@ next_294:
 	seqz t0, t0
 	sd t0, 160(sp)
 
-	# condBr cond_$3 ifTrue_159 ifFalse_49
+	# condBr cond_$3 ifTrue_86 ifFalse_26
 
 	# fetch variables
 	li t4, 160
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_49
-	j ifTrue_159
-secondCond_81:
+	beqz t1, ifFalse_26
+	j ifTrue_86
+secondCond_51:
 
 	# load son$2 lv$4
 
@@ -1143,15 +1143,15 @@ secondCond_81:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$2 ifTrue_158 next_294
+	# condBr cond_$2 ifTrue_85 next_167
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_294
-	j ifTrue_158
-ifTrue_159:
+	beqz t1, next_167
+	j ifTrue_85
+ifTrue_86:
 
 	# ret 
 
@@ -1164,7 +1164,7 @@ ifTrue_159:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_49:
+ifFalse_26:
 
 	# load arr$8 lv
 
@@ -1340,12 +1340,12 @@ ifFalse_49:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_295
-	j next_295
-next_295:
+	# br next_168
+	j next_168
+next_168:
 
-	# br whileCond_135
-	j whileCond_135
+	# br whileCond_81
+	j whileCond_81
 .type heap_sort, @function
 .globl heap_sort
 heap_sort:
@@ -1491,9 +1491,9 @@ heap_sortEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_136
-	j whileCond_136
-whileCond_136:
+	# br whileCond_82
+	j whileCond_82
+whileCond_82:
 
 	# load i lv$2
 
@@ -1546,15 +1546,15 @@ whileCond_136:
 	seqz t0, t0
 	sd t0, 208(sp)
 
-	# condBr cond_ whileBody_136 next_296
+	# condBr cond_ whileBody_82 next_169
 
 	# fetch variables
 	li t4, 208
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_296
-	j whileBody_136
-whileBody_136:
+	beqz t1, next_169
+	j whileBody_82
+whileBody_82:
 
 	# load len$1 lv$1
 
@@ -1730,9 +1730,9 @@ whileBody_136:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_136
-	j whileCond_136
-next_296:
+	# br whileCond_82
+	j whileCond_82
+next_169:
 
 	# load len$2 lv$1
 
@@ -1776,9 +1776,9 @@ next_296:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_137
-	j whileCond_137
-whileCond_137:
+	# br whileCond_83
+	j whileCond_83
+whileCond_83:
 
 	# load i$3 lv$2
 
@@ -1831,15 +1831,15 @@ whileCond_137:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_$1 whileBody_137 next_297
+	# condBr cond_$1 whileBody_83 next_170
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_297
-	j whileBody_137
-whileBody_137:
+	beqz t1, next_170
+	j whileBody_83
+whileBody_83:
 
 	# lv$4 
 
@@ -2120,9 +2120,9 @@ whileBody_137:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_137
-	j whileCond_137
-next_297:
+	# br whileCond_83
+	j whileCond_83
+next_170:
 
 	# ret 
 
@@ -2138,7 +2138,7 @@ next_297:
 .type main, @function
 .globl main
 main:
-mainEntry74:
+mainEntry39:
 
 	# reserve space
 	li t4, 320
@@ -2588,9 +2588,9 @@ mainEntry74:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_138
-	j whileCond_138
-whileCond_138:
+	# br whileCond_84
+	j whileCond_84
+whileCond_84:
 
 	# load i lv$1
 
@@ -2655,15 +2655,15 @@ whileCond_138:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ whileBody_138 next_298
+	# condBr cond_ whileBody_84 next_171
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_298
-	j whileBody_138
-whileBody_138:
+	beqz t1, next_171
+	j whileBody_84
+whileBody_84:
 
 	# load i$1 lv$1
 
@@ -2848,9 +2848,9 @@ whileBody_138:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_138
-	j whileCond_138
-next_298:
+	# br whileCond_84
+	j whileCond_84
+next_171:
 
 	# ret 
 

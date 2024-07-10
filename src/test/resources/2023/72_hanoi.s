@@ -369,15 +369,15 @@ hanoiEntry:
 	seqz t0, t0
 	sd t0, 112(sp)
 
-	# condBr cond_ ifTrue_15 ifFalse_2
+	# condBr cond_ ifTrue_ ifFalse_
 
 	# fetch variables
 	li t4, 112
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_2
-	j ifTrue_15
-ifTrue_15:
+	beqz t1, ifFalse_
+	j ifTrue_
+ifTrue_:
 
 	# load one lv$1
 
@@ -430,9 +430,9 @@ ifTrue_15:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_32
-	j next_32
-ifFalse_2:
+	# br next_3
+	j next_3
+ifFalse_:
 
 	# load n$1 lv
 
@@ -687,9 +687,9 @@ ifFalse_2:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_32
-	j next_32
-next_32:
+	# br next_3
+	j next_3
+next_3:
 
 	# ret void
 	li t4, 240
@@ -701,7 +701,7 @@ next_32:
 .type main, @function
 .globl main
 main:
-mainEntry9:
+mainEntry2:
 
 	# reserve space
 	li t4, 80
@@ -749,9 +749,9 @@ mainEntry9:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_17
-	j whileCond_17
-whileCond_17:
+	# br whileCond_3
+	j whileCond_3
+whileCond_3:
 
 	# load n lv
 
@@ -804,15 +804,15 @@ whileCond_17:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_ whileBody_17 next_33
+	# condBr cond_ whileBody_3 next_4
 
 	# fetch variables
 	li t4, 24
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_33
-	j whileBody_17
-whileBody_17:
+	beqz t1, next_4
+	j whileBody_3
+whileBody_3:
 
 	# prepare params
 
@@ -920,9 +920,9 @@ whileBody_17:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_17
-	j whileCond_17
-next_33:
+	# br whileCond_3
+	j whileCond_3
+next_4:
 
 	# ret 
 

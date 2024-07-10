@@ -8,7 +8,7 @@ gv:
 .type insertsort, @function
 .globl insertsort
 insertsort:
-insertsortEntry1:
+insertsortEntry:
 
 	# reserve space
 	li t4, 392
@@ -84,9 +84,9 @@ insertsortEntry1:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_105
-	j whileCond_105
-whileCond_105:
+	# br whileCond_
+	j whileCond_
+whileCond_:
 
 	# load i lv$1
 
@@ -151,15 +151,15 @@ whileCond_105:
 	seqz t0, t0
 	sd t0, 280(sp)
 
-	# condBr cond_ whileBody_105 next_227
+	# condBr cond_ whileBody_ next_
 
 	# fetch variables
 	li t4, 280
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_227
-	j whileBody_105
-whileBody_105:
+	beqz t1, next_
+	j whileBody_
+whileBody_:
 
 	# load i$1 lv$1
 
@@ -278,9 +278,9 @@ whileBody_105:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_106
-	j whileCond_106
-next_227:
+	# br whileCond_1
+	j whileCond_1
+next_:
 
 	# ret 
 
@@ -293,7 +293,7 @@ next_227:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_106:
+whileCond_1:
 
 	# load j lv$3
 
@@ -346,15 +346,15 @@ whileCond_106:
 	seqz t0, t0
 	sd t0, 200(sp)
 
-	# condBr cond_$1 secondCond_68 next_228
+	# condBr cond_$1 secondCond_ next_1
 
 	# fetch variables
 	li t4, 200
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_228
-	j secondCond_68
-whileBody_106:
+	beqz t1, next_1
+	j secondCond_
+whileBody_1:
 
 	# load j$2 lv$3
 
@@ -530,9 +530,9 @@ whileBody_106:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_106
-	j whileCond_106
-next_228:
+	# br whileCond_1
+	j whileCond_1
+next_1:
 
 	# load j$5 lv$3
 
@@ -663,9 +663,9 @@ next_228:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_105
-	j whileCond_105
-secondCond_68:
+	# br whileCond_
+	j whileCond_
+secondCond_:
 
 	# load temp lv$2
 
@@ -777,18 +777,18 @@ secondCond_68:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$2 whileBody_106 next_228
+	# condBr cond_$2 whileBody_1 next_1
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_228
-	j whileBody_106
+	beqz t1, next_1
+	j whileBody_1
 .type main, @function
 .globl main
 main:
-mainEntry56:
+mainEntry1:
 
 	# reserve space
 	li t4, 312
@@ -1206,9 +1206,9 @@ mainEntry56:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_107
-	j whileCond_107
-whileCond_107:
+	# br whileCond_2
+	j whileCond_2
+whileCond_2:
 
 	# load i lv$1
 
@@ -1273,15 +1273,15 @@ whileCond_107:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ whileBody_107 next_229
+	# condBr cond_ whileBody_2 next_2
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_229
-	j whileBody_107
-whileBody_107:
+	beqz t1, next_2
+	j whileBody_2
+whileBody_2:
 
 	# load i$1 lv$1
 
@@ -1466,9 +1466,9 @@ whileBody_107:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_107
-	j whileCond_107
-next_229:
+	# br whileCond_2
+	j whileCond_2
+next_2:
 
 	# ret 
 

@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry62:
+mainEntry88:
 
 	# reserve space
 	li t4, 144
@@ -57,9 +57,9 @@ mainEntry62:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_115
-	j whileCond_115
-whileCond_115:
+	# br whileCond_180
+	j whileCond_180
+whileCond_180:
 
 	# load i lv
 
@@ -111,15 +111,15 @@ whileCond_115:
 	seqz t0, t0
 	sd t0, 80(sp)
 
-	# condBr cond_ whileBody_115 next_250
+	# condBr cond_ whileBody_180 next_371
 
 	# fetch variables
 	li t4, 80
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_250
-	j whileBody_115
-whileBody_115:
+	beqz t1, next_371
+	j whileBody_180
+whileBody_180:
 
 	# load i$1 lv
 
@@ -172,15 +172,15 @@ whileBody_115:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_$1 ifTrue_135 next_251
+	# condBr cond_$1 ifTrue_191 next_372
 
 	# fetch variables
 	li t4, 48
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_251
-	j ifTrue_135
-next_250:
+	beqz t1, next_372
+	j ifTrue_191
+next_371:
 
 	# load sum$1 lv$1
 
@@ -205,14 +205,14 @@ next_250:
 	li t4, 144
 	add sp, sp, t4
 	ret 
-ifTrue_135:
+ifTrue_191:
 
-	# br next_250
-	j next_250
+	# br next_371
+	j next_371
 
-	# br next_251
-	j next_251
-next_251:
+	# br next_372
+	j next_372
+next_372:
 
 	# load sum lv$1
 
@@ -313,5 +313,5 @@ next_251:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_115
-	j whileCond_115
+	# br whileCond_180
+	j whileCond_180

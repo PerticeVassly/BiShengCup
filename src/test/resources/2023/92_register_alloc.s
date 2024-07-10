@@ -101,7 +101,7 @@ gv31:
 .type func, @function
 .globl func
 func:
-funcEntry2:
+funcEntry3:
 
 	# reserve space
 	li t4, 4000
@@ -7714,7 +7714,7 @@ funcEntry2:
 .type main, @function
 .globl main
 main:
-mainEntry31:
+mainEntry71:
 
 	# reserve space
 	li t4, 96

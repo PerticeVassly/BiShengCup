@@ -20,7 +20,7 @@ gv4:
 .type main, @function
 .globl main
 main:
-mainEntry5:
+mainEntry37:
 
 	# reserve space
 	li t4, 344
@@ -368,15 +368,15 @@ mainEntry5:
 	seqz t0, t0
 	sd t0, 184(sp)
 
-	# condBr cond_ ifTrue_10 secondCond_1
+	# condBr cond_ ifTrue_84 secondCond_50
 
 	# fetch variables
 	li t4, 184
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, secondCond_1
-	j ifTrue_10
-ifTrue_10:
+	beqz t1, secondCond_50
+	j ifTrue_84
+ifTrue_84:
 
 	# lv 
 
@@ -393,9 +393,9 @@ ifTrue_10:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_17
-	j next_17
-next_17:
+	# br next_165
+	j next_165
+next_165:
 
 	# load flag lv
 
@@ -420,7 +420,7 @@ next_17:
 	li t4, 344
 	add sp, sp, t4
 	ret 
-secondCond_:
+secondCond_49:
 
 	# load a$3 gv
 
@@ -559,15 +559,15 @@ secondCond_:
 	seqz t0, t0
 	sd t0, 88(sp)
 
-	# condBr cond_$2 ifTrue_10 next_17
+	# condBr cond_$2 ifTrue_84 next_165
 
 	# fetch variables
 	li t4, 88
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_17
-	j ifTrue_10
-secondCond_1:
+	beqz t1, next_165
+	j ifTrue_84
+secondCond_50:
 
 	# load a$2 gv
 
@@ -706,11 +706,11 @@ secondCond_1:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_10 secondCond_
+	# condBr cond_$1 ifTrue_84 secondCond_49
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, secondCond_
-	j ifTrue_10
+	beqz t1, secondCond_49
+	j ifTrue_84

@@ -113,23 +113,23 @@ ifWhileEntry:
 	seqz t0, t0
 	sd t0, 136(sp)
 
-	# condBr cond_ ifTrue_164 ifFalse_51
+	# condBr cond_ ifTrue_194 ifFalse_63
 
 	# fetch variables
 	li t4, 136
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_51
-	j ifTrue_164
-ifTrue_164:
+	beqz t1, ifFalse_63
+	j ifTrue_194
+ifTrue_194:
 
-	# br whileCond_147
-	j whileCond_147
-ifFalse_51:
+	# br whileCond_181
+	j whileCond_181
+ifFalse_63:
 
-	# br whileCond_148
-	j whileCond_148
-next_311:
+	# br whileCond_182
+	j whileCond_182
+next_375:
 
 	# load b$4 lv$1
 
@@ -157,7 +157,7 @@ next_311:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_147:
+whileCond_181:
 
 	# load b lv$1
 
@@ -210,15 +210,15 @@ whileCond_147:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_$1 whileBody_147 next_312
+	# condBr cond_$1 whileBody_181 next_376
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_312
-	j whileBody_147
-whileBody_147:
+	beqz t1, next_376
+	j whileBody_181
+whileBody_181:
 
 	# load b$1 lv$1
 
@@ -262,9 +262,9 @@ whileBody_147:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_147
-	j whileCond_147
-next_312:
+	# br whileCond_181
+	j whileCond_181
+next_376:
 
 	# load b$2 lv$1
 
@@ -308,9 +308,9 @@ next_312:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_311
-	j next_311
-whileCond_148:
+	# br next_375
+	j next_375
+whileCond_182:
 
 	# load a$1 lv
 
@@ -362,15 +362,15 @@ whileCond_148:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 whileBody_148 next_313
+	# condBr cond_$2 whileBody_182 next_377
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_313
-	j whileBody_148
-whileBody_148:
+	beqz t1, next_377
+	j whileBody_182
+whileBody_182:
 
 	# load b$3 lv$1
 
@@ -456,16 +456,16 @@ whileBody_148:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_148
-	j whileCond_148
-next_313:
+	# br whileCond_182
+	j whileCond_182
+next_377:
 
-	# br next_311
-	j next_311
+	# br next_375
+	j next_375
 .type main, @function
 .globl main
 main:
-mainEntry78:
+mainEntry93:
 
 	# reserve space
 	li t4, 8

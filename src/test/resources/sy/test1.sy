@@ -1,6 +1,5 @@
-int c=100;
-int d=233;
+float a=100;
+int b=a;
 int main() {
-   int b[100]={0};
    return 0;
 }

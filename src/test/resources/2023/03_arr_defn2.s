@@ -2,13 +2,13 @@
 .align 2
 .globl gv
 gv:
-.dword 0
+.zero 800
 .text
 .align 2
 .type main, @function
 .globl main
 main:
-mainEntry86:
+mainEntry34:
 
 	# reserve space
 	li t4, 0

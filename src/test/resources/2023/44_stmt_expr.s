@@ -8,7 +8,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry10:
+mainEntry55:
 
 	# reserve space
 	li t4, 120
@@ -51,9 +51,9 @@ mainEntry10:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_18
-	j whileCond_18
-whileCond_18:
+	# br whileCond_106
+	j whileCond_106
+whileCond_106:
 
 	# load i lv
 
@@ -107,15 +107,15 @@ whileCond_18:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_ whileBody_18 next_34
+	# condBr cond_ whileBody_106 next_225
 
 	# fetch variables
 	li t4, 72
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_34
-	j whileBody_18
-whileBody_18:
+	beqz t1, next_225
+	j whileBody_106
+whileBody_106:
 
 	# load i$1 lv
 
@@ -233,9 +233,9 @@ whileBody_18:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_18
-	j whileCond_18
-next_34:
+	# br whileCond_106
+	j whileCond_106
+next_225:
 
 	# load k$3 gv
 
