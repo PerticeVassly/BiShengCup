@@ -12,7 +12,8 @@ gv1:
 .globl inc_a
 inc_a:
 inc_aEntry:
-	addi sp, sp, -56
+	li t4, 56
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -155,8 +156,9 @@ inc_aEntry:
 .type main, @function
 .globl main
 main:
-mainEntry72:
-	addi sp, sp, -280
+mainEntry80:
+	li t4, 280
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -184,9 +186,9 @@ mainEntry72:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_118
-	j whileCond_118
-whileCond_118:
+	# br whileCond_155
+	j whileCond_155
+whileCond_155:
 
 	# load k lv
 
@@ -239,15 +241,15 @@ whileCond_118:
 	seqz t0, t0
 	sd t0, 232(sp)
 
-	# condBr cond_ whileBody_118 next_233
+	# condBr cond_ whileBody_155 next_324
 
 	# fetch variables
 	li t4, 232
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_233
-	j whileBody_118
-whileBody_118:
+	beqz t1, next_324
+	j whileBody_155
+whileBody_155:
 
 	# prepare params
 
@@ -279,15 +281,15 @@ whileBody_118:
 	seqz t0, t0
 	sd t0, 216(sp)
 
-	# condBr cond_normalize_ secondCond_51 next_234
+	# condBr cond_normalize_ secondCond_83 next_325
 
 	# fetch variables
 	li t4, 216
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_234
-	j secondCond_51
-next_233:
+	beqz t1, next_325
+	j secondCond_83
+next_324:
 
 	# load a$2 gv
 
@@ -404,7 +406,7 @@ next_233:
 	li t4, 280
 	add sp, sp, t4
 	ret 
-ifTrue_115:
+ifTrue_169:
 
 	# load a gv
 
@@ -500,9 +502,9 @@ ifTrue_115:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_234
-	j next_234
-next_234:
+	# br next_325
+	j next_325
+next_325:
 
 	# prepare params
 
@@ -557,15 +559,15 @@ next_234:
 	seqz t0, t0
 	sd t0, 144(sp)
 
-	# condBr cond_$1 ifTrue_116 secondCond_52
+	# condBr cond_$1 ifTrue_170 secondCond_84
 
 	# fetch variables
 	li t4, 144
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, secondCond_52
-	j ifTrue_116
-secondCond_50:
+	beqz t1, secondCond_84
+	j ifTrue_170
+secondCond_82:
 
 	# prepare params
 
@@ -597,15 +599,15 @@ secondCond_50:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_normalize_$2 ifTrue_115 next_234
+	# condBr cond_normalize_$2 ifTrue_169 next_325
 
 	# fetch variables
 	li t4, 128
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_234
-	j ifTrue_115
-secondCond_51:
+	beqz t1, next_325
+	j ifTrue_169
+secondCond_83:
 
 	# prepare params
 
@@ -637,15 +639,15 @@ secondCond_51:
 	seqz t0, t0
 	sd t0, 112(sp)
 
-	# condBr cond_normalize_$1 secondCond_50 next_234
+	# condBr cond_normalize_$1 secondCond_82 next_325
 
 	# fetch variables
 	li t4, 112
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_234
-	j secondCond_50
-ifTrue_116:
+	beqz t1, next_325
+	j secondCond_82
+ifTrue_170:
 
 	# load a$1 gv
 
@@ -732,9 +734,9 @@ ifTrue_116:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_235
-	j next_235
-ifFalse_46:
+	# br next_326
+	j next_326
+ifFalse_56:
 
 	# prepare params
 
@@ -752,9 +754,9 @@ ifFalse_46:
 	# get address of local var:inc_a$7
 	sd a0, 80(sp)
 
-	# br next_235
-	j next_235
-next_235:
+	# br next_326
+	j next_326
+next_326:
 
 	# load k$1 lv
 
@@ -798,9 +800,9 @@ next_235:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_118
-	j whileCond_118
-secondCond_52:
+	# br whileCond_155
+	j whileCond_155
+secondCond_84:
 
 	# prepare params
 
@@ -832,15 +834,15 @@ secondCond_52:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_normalize_$3 secondCond_53 ifFalse_46
+	# condBr cond_normalize_$3 secondCond_85 ifFalse_56
 
 	# fetch variables
 	li t4, 48
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_46
-	j secondCond_53
-secondCond_53:
+	beqz t1, ifFalse_56
+	j secondCond_85
+secondCond_85:
 
 	# prepare params
 
@@ -914,14 +916,14 @@ secondCond_53:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_normalize_$4 ifTrue_116 ifFalse_46
+	# condBr cond_normalize_$4 ifTrue_170 ifFalse_56
 
 	# fetch variables
 	li t4, 8
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_46
-	j ifTrue_116
+	beqz t1, ifFalse_56
+	j ifTrue_170
 
 	# cmp   cond_normalize_$5
 
@@ -935,11 +937,11 @@ secondCond_53:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_$5 ifTrue_116 ifFalse_46
+	# condBr cond_normalize_$5 ifTrue_170 ifFalse_56
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_46
-	j ifTrue_116
+	beqz t1, ifFalse_56
+	j ifTrue_170

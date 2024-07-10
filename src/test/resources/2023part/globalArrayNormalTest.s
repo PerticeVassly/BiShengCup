@@ -14,14 +14,16 @@ gv:
 .globl main
 main:
 mainEntry13:
-	addi sp, sp, -64
+	li t4, 64
+	sub sp, sp, t4
 
 	# reserve space
 
 	# save the parameters
 
 	# allocate lv
-	addi t0, sp, 48
+	li t0, 48
+	add t0, sp, t0
 
 	# get address of local var:lv
 	sd t0, 56(sp)
@@ -34,24 +36,32 @@ mainEntry13:
 	# store lv 
 
 	# get address of lv points to
-	ld t3, 56(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 56
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# load i lv
 
 	# get address of lv points to
-	ld t3, 56(sp)
-	addi t3, t3, 0
+	li t4, 56
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 40(sp)
 
 	# gep ptr_ i
 
 	# fetch variables
-	ld t1, 40(sp)
+	li t4, 40
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 16
 	mul t0, t1, t2
 
@@ -71,7 +81,9 @@ mainEntry13:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_
-	ld t3, 32(sp)
+	li t4, 32
+	add t4, sp, t4
+	ld t3, 0(t4)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -86,9 +98,12 @@ mainEntry13:
 	# store a 
 
 	# get address of a points to
-	ld t3, 24(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 24
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$1 
 
@@ -113,7 +128,9 @@ mainEntry13:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$1
-	ld t3, 16(sp)
+	li t4, 16
+	add t4, sp, t4
+	ld t3, 0(t4)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -123,17 +140,23 @@ mainEntry13:
 	# load a$2 a$1
 
 	# get address of a$1 points to
-	ld t3, 8(sp)
-	addi t3, t3, 0
+	li t4, 8
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a$2
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 0(sp)
 
 	# ret a$2
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 64
+	li t4, 64
+	add sp, sp, t4
 	ret 

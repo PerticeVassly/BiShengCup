@@ -60,7 +60,7 @@ public class RiscFunction {
      */
     private void reserveSpaceForLocalVariables() {
         functionValue.getBasicBlockRefs().stream()
-                .flatMap(BasicBlockRef::getIrs)
+                .flatMap(bb -> bb.getIrs().stream())
                 .filter(i -> i.getLVal() != null)
                 .forEach(i -> {
                     reserveMemoryForType(i.getLVal(), i.getLVal().getType());

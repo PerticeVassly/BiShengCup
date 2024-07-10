@@ -5,8 +5,9 @@
 .type main, @function
 .globl main
 main:
-mainEntry23:
-	addi sp, sp, -24
+mainEntry28:
+	li t4, 24
+	sub sp, sp, t4
 
 	# reserve space
 

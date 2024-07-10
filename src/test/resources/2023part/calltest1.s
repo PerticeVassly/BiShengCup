@@ -6,7 +6,8 @@
 .globl g1
 g1:
 g1Entry:
-	addi sp, sp, -128
+	li t4, 128
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -24,31 +25,36 @@ g1Entry:
 	# get address of local var:1
 
 	# allocate lv$4
-	addi t0, sp, 96
+	li t0, 96
+	add t0, sp, t0
 
 	# get address of local var:lv$4
 	sd t0, 104(sp)
 
 	# allocate lv$3
-	addi t0, sp, 80
+	li t0, 80
+	add t0, sp, t0
 
 	# get address of local var:lv$3
 	sd t0, 88(sp)
 
 	# allocate lv$2
-	addi t0, sp, 64
+	li t0, 64
+	add t0, sp, t0
 
 	# get address of local var:lv$2
 	sd t0, 72(sp)
 
 	# allocate lv$1
-	addi t0, sp, 48
+	li t0, 48
+	add t0, sp, t0
 
 	# get address of local var:lv$1
 	sd t0, 56(sp)
 
 	# allocate lv
-	addi t0, sp, 32
+	li t0, 32
+	add t0, sp, t0
 
 	# get address of local var:lv
 	sd t0, 40(sp)
@@ -56,26 +62,36 @@ g1Entry:
 	# lv 0
 
 	# fetch variables
-	ld t1, 120(sp)
+	li t4, 120
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv 0
 
 	# get address of lv points to
-	ld t3, 40(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 40
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# lv$1 1
 
 	# fetch variables
-	ld t1, 112(sp)
+	li t4, 112
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv$1 1
 
 	# get address of lv$1 points to
-	ld t3, 56(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 56
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# lv$2 
 
@@ -85,9 +101,12 @@ g1Entry:
 	# store lv$2 
 
 	# get address of lv$2 points to
-	ld t3, 72(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 72
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# lv$3 
 
@@ -97,57 +116,78 @@ g1Entry:
 	# store lv$3 
 
 	# get address of lv$3 points to
-	ld t3, 88(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 88
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# load j lv$1
 
 	# get address of lv$1 points to
-	ld t3, 56(sp)
-	addi t3, t3, 0
+	li t4, 56
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:j
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 24(sp)
 
 	# lv$4 j
 
 	# fetch variables
-	ld t1, 24(sp)
+	li t4, 24
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv$4 j
 
 	# get address of lv$4 points to
-	ld t3, 104(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 104
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# load i lv
 
 	# get address of lv points to
-	ld t3, 40(sp)
-	addi t3, t3, 0
+	li t4, 40
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 16(sp)
 
 	# load j$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 56(sp)
-	addi t3, t3, 0
+	li t4, 56
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:j$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 8(sp)
 
 	# add result_ i j$1
 
 	# fetch variables
-	ld t1, 16(sp)
-	ld t2, 8(sp)
+	li t4, 16
+	add t4, sp, t4
+	ld t1, 0(t4)
+	li t4, 8
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:result_
 	add t0, t1, t2
@@ -156,9 +196,12 @@ g1Entry:
 	# ret result_
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 128
+	li t4, 128
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -167,7 +210,8 @@ g1Entry:
 .globl f1
 f1:
 f1Entry:
-	addi sp, sp, -104
+	li t4, 104
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -185,13 +229,15 @@ f1Entry:
 	# get address of local var:1
 
 	# allocate lv$1
-	addi t0, sp, 72
+	li t0, 72
+	add t0, sp, t0
 
 	# get address of local var:lv$1
 	sd t0, 80(sp)
 
 	# allocate lv
-	addi t0, sp, 56
+	li t0, 56
+	add t0, sp, t0
 
 	# get address of local var:lv
 	sd t0, 64(sp)
@@ -199,55 +245,75 @@ f1Entry:
 	# lv 0
 
 	# fetch variables
-	ld t1, 96(sp)
+	li t4, 96
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv 0
 
 	# get address of lv points to
-	ld t3, 64(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 64
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# lv$1 1
 
 	# fetch variables
-	ld t1, 88(sp)
+	li t4, 88
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv$1 1
 
 	# get address of lv$1 points to
-	ld t3, 80(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 80
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# load i lv
 
 	# get address of lv points to
-	ld t3, 64(sp)
-	addi t3, t3, 0
+	li t4, 64
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 48(sp)
 
 	# load i$1 lv
 
 	# get address of lv points to
-	ld t3, 64(sp)
-	addi t3, t3, 0
+	li t4, 64
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 40(sp)
 
 	# prepare params
 
 	# fetch variables
-	ld t1, 48(sp)
+	li t4, 48
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
 
 	# fetch variables
-	ld t1, 40(sp)
+	li t4, 40
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a1, t1
 
 	# save caller saved regs
@@ -267,31 +333,41 @@ f1Entry:
 	# load j lv$1
 
 	# get address of lv$1 points to
-	ld t3, 80(sp)
-	addi t3, t3, 0
+	li t4, 80
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:j
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 24(sp)
 
 	# load j$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 80(sp)
-	addi t3, t3, 0
+	li t4, 80
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:j$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 16(sp)
 
 	# prepare params
 
 	# fetch variables
-	ld t1, 24(sp)
+	li t4, 24
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
 
 	# fetch variables
-	ld t1, 16(sp)
+	li t4, 16
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a1, t1
 
 	# save caller saved regs
@@ -311,8 +387,12 @@ f1Entry:
 	# add result_ g1 g1$1
 
 	# fetch variables
-	ld t1, 32(sp)
-	ld t2, 8(sp)
+	li t4, 32
+	add t4, sp, t4
+	ld t1, 0(t4)
+	li t4, 8
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:result_
 	add t0, t1, t2
@@ -321,9 +401,12 @@ f1Entry:
 	# ret result_
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 104
+	li t4, 104
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -332,7 +415,8 @@ f1Entry:
 .globl main
 main:
 mainEntry:
-	addi sp, sp, -16
+	li t4, 16
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -369,7 +453,9 @@ mainEntry:
 	mv a0, t1
 
 	# fetch variables
-	ld t1, 8(sp)
+	li t4, 8
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a1, t1
 
 	# save caller saved regs
@@ -389,7 +475,10 @@ mainEntry:
 	# ret g1
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 16
+	li t4, 16
+	add sp, sp, t4
 	ret 

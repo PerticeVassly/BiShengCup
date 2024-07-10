@@ -8,8 +8,9 @@ gv:
 .type func, @function
 .globl func
 func:
-funcEntry3:
-	addi sp, sp, -96
+funcEntry4:
+	li t4, 96
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -143,15 +144,15 @@ funcEntry3:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_ ifTrue_103 ifFalse_36
+	# condBr cond_ ifTrue_153 ifFalse_45
 
 	# fetch variables
 	li t4, 16
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_36
-	j ifTrue_103
-ifTrue_103:
+	beqz t1, ifFalse_45
+	j ifTrue_153
+ifTrue_153:
 
 	# load a$2 lv$1
 
@@ -206,7 +207,7 @@ ifTrue_103:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_36:
+ifFalse_45:
 
 	# ret 
 
@@ -222,8 +223,9 @@ ifFalse_36:
 .type main, @function
 .globl main
 main:
-mainEntry65:
-	addi sp, sp, -160
+mainEntry72:
+	li t4, 160
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -273,9 +275,9 @@ mainEntry65:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_99
-	j whileCond_99
-whileCond_99:
+	# br whileCond_133
+	j whileCond_133
+whileCond_133:
 
 	# load i lv$1
 
@@ -327,15 +329,15 @@ whileCond_99:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_ whileBody_99 next_203
+	# condBr cond_ whileBody_133 next_287
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_203
-	j whileBody_99
-whileBody_99:
+	beqz t1, next_287
+	j whileBody_133
+whileBody_133:
 
 	# prepare params
 
@@ -391,15 +393,15 @@ whileBody_99:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$1 ifTrue_104 next_204
+	# condBr cond_$1 ifTrue_154 next_288
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_204
-	j ifTrue_104
-next_203:
+	beqz t1, next_288
+	j ifTrue_154
+next_287:
 
 	# load result$1 lv
 
@@ -451,15 +453,15 @@ next_203:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 ifTrue_105 ifFalse_37
+	# condBr cond_$2 ifTrue_155 ifFalse_46
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_37
-	j ifTrue_105
-ifTrue_104:
+	beqz t1, ifFalse_46
+	j ifTrue_155
+ifTrue_154:
 
 	# load result lv
 
@@ -503,9 +505,9 @@ ifTrue_104:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_204
-	j next_204
-next_204:
+	# br next_288
+	j next_288
+next_288:
 
 	# load i$1 lv$1
 
@@ -549,9 +551,9 @@ next_204:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_99
-	j whileCond_99
-ifTrue_105:
+	# br whileCond_133
+	j whileCond_133
+ifTrue_155:
 
 	# prepare params
 
@@ -570,9 +572,9 @@ ifTrue_105:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_205
-	j next_205
-ifFalse_37:
+	# br next_289
+	j next_289
+ifFalse_46:
 
 	# prepare params
 
@@ -591,9 +593,9 @@ ifFalse_37:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_205
-	j next_205
-next_205:
+	# br next_289
+	j next_289
+next_289:
 
 	# ret 
 

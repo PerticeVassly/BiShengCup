@@ -6,7 +6,8 @@
 .globl whileIf
 whileIf:
 whileIfEntry:
-	addi sp, sp, -168
+	li t4, 168
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -61,9 +62,9 @@ whileIfEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_106
-	j whileCond_106
-whileCond_106:
+	# br whileCond_140
+	j whileCond_140
+whileCond_140:
 
 	# load a lv
 
@@ -115,15 +116,15 @@ whileCond_106:
 	seqz t0, t0
 	sd t0, 104(sp)
 
-	# condBr cond_ whileBody_106 next_216
+	# condBr cond_ whileBody_140 next_300
 
 	# fetch variables
 	li t4, 104
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_216
-	j whileBody_106
-whileBody_106:
+	beqz t1, next_300
+	j whileBody_140
+whileBody_140:
 
 	# load a$1 lv
 
@@ -176,15 +177,15 @@ whileBody_106:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$1 ifTrue_110 ifFalse_42
+	# condBr cond_$1 ifTrue_160 ifFalse_51
 
 	# fetch variables
 	li t4, 72
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_42
-	j ifTrue_110
-next_216:
+	beqz t1, ifFalse_51
+	j ifTrue_160
+next_300:
 
 	# load b lv$1
 
@@ -212,7 +213,7 @@ next_216:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_110:
+ifTrue_160:
 
 	# lv$1 
 
@@ -229,9 +230,9 @@ ifTrue_110:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_217
-	j next_217
-ifFalse_42:
+	# br next_301
+	j next_301
+ifFalse_51:
 
 	# load a$2 lv
 
@@ -284,15 +285,15 @@ ifFalse_42:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 ifTrue_111 ifFalse_43
+	# condBr cond_$2 ifTrue_161 ifFalse_52
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_43
-	j ifTrue_111
-next_217:
+	beqz t1, ifFalse_52
+	j ifTrue_161
+next_301:
 
 	# load a$4 lv
 
@@ -336,9 +337,9 @@ next_217:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_106
-	j whileCond_106
-ifTrue_111:
+	# br whileCond_140
+	j whileCond_140
+ifTrue_161:
 
 	# lv$1 
 
@@ -355,9 +356,9 @@ ifTrue_111:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_218
-	j next_218
-ifFalse_43:
+	# br next_302
+	j next_302
+ifFalse_52:
 
 	# load a$3 lv
 
@@ -401,17 +402,18 @@ ifFalse_43:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_218
-	j next_218
-next_218:
+	# br next_302
+	j next_302
+next_302:
 
-	# br next_217
-	j next_217
+	# br next_301
+	j next_301
 .type main, @function
 .globl main
 main:
-mainEntry67:
-	addi sp, sp, -8
+mainEntry74:
+	li t4, 8
+	sub sp, sp, t4
 
 	# reserve space
 

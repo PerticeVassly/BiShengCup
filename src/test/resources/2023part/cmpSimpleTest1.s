@@ -6,14 +6,16 @@
 .globl main
 main:
 mainEntry10:
-	addi sp, sp, -56
+	li t4, 56
+	sub sp, sp, t4
 
 	# reserve space
 
 	# save the parameters
 
 	# allocate lv
-	addi t0, sp, 40
+	li t0, 40
+	add t0, sp, t0
 
 	# get address of local var:lv
 	sd t0, 48(sp)
@@ -26,24 +28,32 @@ mainEntry10:
 	# store lv 
 
 	# get address of lv points to
-	ld t3, 48(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 48(sp)
-	addi t3, t3, 0
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 32(sp)
 
 	# cmp a  cond_eq_tmp_
 
 	# fetch variables
-	ld t1, 32(sp)
+	li t4, 32
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:cond_eq_tmp_
@@ -54,7 +64,9 @@ mainEntry10:
 	# zext cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
-	ld t1, 24(sp)
+	li t4, 24
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -63,7 +75,9 @@ mainEntry10:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	ld t1, 16(sp)
+	li t4, 16
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -75,7 +89,9 @@ mainEntry10:
 	# condBr cond_ ifTrue_6 next_6
 
 	# fetch variables
-	ld t1, 8(sp)
+	li t4, 8
+	add t4, sp, t4
+	ld t1, 0(t4)
 	beqz t1, next_6
 	j ifTrue_6
 ifTrue_6:
@@ -88,9 +104,12 @@ ifTrue_6:
 	# store lv 
 
 	# get address of lv points to
-	ld t3, 48(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# br next_6
 	j next_6
@@ -99,17 +118,23 @@ next_6:
 	# load a$1 lv
 
 	# get address of lv points to
-	ld t3, 48(sp)
-	addi t3, t3, 0
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 0(sp)
 
 	# ret a$1
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 56
+	li t4, 56
+	add sp, sp, t4
 	ret 

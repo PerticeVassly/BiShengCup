@@ -74,13 +74,13 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     private final FunctionValue llvmFunctionValue;
 
-    private final Stream<Instruction> instructions;
+    private final List<Instruction> instructions;
 
     private final List<RiscInstruction> riscInstructions = new LinkedList<>();
 
     private final Allocator allocator = Allocator.get();
 
-    RiscInstrGenerator(Stream<Instruction> instructions, FunctionValue llvmFunctionValue) {
+    RiscInstrGenerator(List<Instruction> instructions, FunctionValue llvmFunctionValue) {
         this.instructions = instructions;
         this.llvmFunctionValue = llvmFunctionValue;
     }
@@ -89,7 +89,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
      * [将LLVM的基本块转换为RISC的基本块]
      */
     public Stream<RiscInstruction> genRiscInstructions() {
-        instructions.forEach(i -> i.accept(this));
+        for(Instruction instruction : instructions){
+            instruction.accept(this);
+        }
         return riscInstructions.stream();
     }
 
@@ -646,10 +648,10 @@ public class RiscInstrGenerator implements InstructionVisitor {
     private void pushIntoStack(ValueRef realParam){
         if(realParam.getType() instanceof IntType || realParam.getType() instanceof Pointer){
             riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L)));
-            riscInstructions.add(new RiscSd(new Register("t1"), new IndirectRegister("sp", allocator.getStackSize())));
+            riscInstructions.add(new RiscSd(new Register("t1"), new IndirectRegister("sp", 0)));
         } else if(realParam.getType() instanceof FloatType){
             riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L)));
-            riscInstructions.add(new RiscFsd(new Register("ft1"), new IndirectRegister("sp", allocator.getStackSize())));
+            riscInstructions.add(new RiscFsd(new Register("ft1"), new IndirectRegister("sp", 0)));
         } else {
             assert false;
         }

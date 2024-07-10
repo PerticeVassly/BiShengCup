@@ -5,8 +5,9 @@
 .type main, @function
 .globl main
 main:
-mainEntry75:
-	addi sp, sp, -600
+mainEntry83:
+	li t4, 600
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -703,9 +704,9 @@ mainEntry75:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_119
-	j whileCond_119
-whileCond_119:
+	# br whileCond_156
+	j whileCond_156
+whileCond_156:
 
 	# load long_name1$QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz lv
 
@@ -757,15 +758,15 @@ whileCond_119:
 	seqz t0, t0
 	sd t0, 208(sp)
 
-	# condBr cond_ whileBody_119 next_236
+	# condBr cond_ whileBody_156 next_327
 
 	# fetch variables
 	li t4, 208
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_236
-	j whileBody_119
-whileBody_119:
+	beqz t1, next_327
+	j whileBody_156
+whileBody_156:
 
 	# load long_name2$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$1 lv
 
@@ -1215,9 +1216,9 @@ whileBody_119:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_119
-	j whileCond_119
-next_236:
+	# br whileCond_156
+	j whileCond_156
+next_327:
 
 	# load long_name21$RJsXBiXL5NTrpJL22F4zlc3o0KiSE$1 lv$2
 

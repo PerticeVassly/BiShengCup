@@ -5,8 +5,9 @@
 .type main, @function
 .globl main
 main:
-mainEntry25:
-	addi sp, sp, -1168
+mainEntry30:
+	li t4, 1168
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -17,21 +18,27 @@ mainEntry25:
 	add t0, sp, t0
 
 	# get address of local var:lv$4
-	sd t0, 1160(sp)
+	li t4, 1160
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# allocate lv$3
 	li t0, 1024
 	add t0, sp, t0
 
 	# get address of local var:lv$3
-	sd t0, 1088(sp)
+	li t4, 1088
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# allocate lv$2
 	li t0, 952
 	add t0, sp, t0
 
 	# get address of local var:lv$2
-	sd t0, 1016(sp)
+	li t4, 1016
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# allocate lv$1
 	li t0, 880

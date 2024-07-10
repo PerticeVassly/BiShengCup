@@ -5,8 +5,9 @@
 .type main, @function
 .globl main
 main:
-mainEntry43:
-	addi sp, sp, -984
+mainEntry48:
+	li t4, 984
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -63,9 +64,9 @@ mainEntry43:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_68
-	j whileCond_68
-whileCond_68:
+	# br whileCond_93
+	j whileCond_93
+whileCond_93:
 
 	# prepare params
 
@@ -97,15 +98,15 @@ whileCond_68:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_normalize_ whileBody_68 next_131
+	# condBr cond_normalize_ whileBody_93 next_190
 
 	# fetch variables
 	li t4, 128
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_131
-	j whileBody_68
-whileBody_68:
+	beqz t1, next_190
+	j whileBody_93
+whileBody_93:
 
 	# load i lv$1
 
@@ -214,13 +215,13 @@ whileBody_68:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_68
-	j whileCond_68
-next_131:
+	# br whileCond_93
+	j whileCond_93
+next_190:
 
-	# br whileCond_69
-	j whileCond_69
-whileCond_69:
+	# br whileCond_94
+	j whileCond_94
+whileCond_94:
 
 	# load i$2 lv$1
 
@@ -249,15 +250,15 @@ whileCond_69:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_normalize_$1 whileBody_69 next_132
+	# condBr cond_normalize_$1 whileBody_94 next_191
 
 	# fetch variables
 	li t4, 72
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_132
-	j whileBody_69
-whileBody_69:
+	beqz t1, next_191
+	j whileBody_94
+whileBody_94:
 
 	# load i$3 lv$1
 
@@ -390,9 +391,9 @@ whileBody_69:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_69
-	j whileCond_69
-next_132:
+	# br whileCond_94
+	j whileCond_94
+next_191:
 
 	# load sum$1 lv$2
 

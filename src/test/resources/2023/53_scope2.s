@@ -8,8 +8,9 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry27:
-	addi sp, sp, -272
+mainEntry32:
+	li t4, 272
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -104,15 +105,15 @@ mainEntry27:
 	seqz t0, t0
 	sd t0, 176(sp)
 
-	# condBr cond_ ifTrue_28 next_75
+	# condBr cond_ ifTrue_62 next_134
 
 	# fetch variables
 	li t4, 176
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_75
-	j ifTrue_28
-ifTrue_28:
+	beqz t1, next_134
+	j ifTrue_62
+ifTrue_62:
 
 	# load k$1 gv
 
@@ -167,9 +168,9 @@ ifTrue_28:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_47
-	j whileCond_47
-next_75:
+	# br whileCond_72
+	j whileCond_72
+next_134:
 
 	# load k$8 gv
 
@@ -192,7 +193,7 @@ next_75:
 	li t4, 272
 	add sp, sp, t4
 	ret 
-whileCond_47:
+whileCond_72:
 
 	# load k$2 lv
 
@@ -245,15 +246,15 @@ whileCond_47:
 	seqz t0, t0
 	sd t0, 120(sp)
 
-	# condBr cond_$1 whileBody_47 next_76
+	# condBr cond_$1 whileBody_72 next_135
 
 	# fetch variables
 	li t4, 120
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_76
-	j whileBody_47
-whileBody_47:
+	beqz t1, next_135
+	j whileBody_72
+whileBody_72:
 
 	# load k$3 lv
 
@@ -347,15 +348,15 @@ whileBody_47:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$2 ifTrue_29 next_77
+	# condBr cond_$2 ifTrue_63 next_136
 
 	# fetch variables
 	li t4, 72
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_77
-	j ifTrue_29
-next_76:
+	beqz t1, next_136
+	j ifTrue_63
+next_135:
 
 	# load k$7 lv
 
@@ -389,9 +390,9 @@ next_76:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_75
-	j next_75
-ifTrue_29:
+	# br next_134
+	j next_134
+ifTrue_63:
 
 	# lv$1 
 
@@ -594,9 +595,9 @@ ifTrue_29:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_77
-	j next_77
-next_77:
+	# br next_136
+	j next_136
+next_136:
 
-	# br whileCond_47
-	j whileCond_47
+	# br whileCond_72
+	j whileCond_72

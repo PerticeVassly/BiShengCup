@@ -6,7 +6,8 @@
 .globl if_ifElse_
 if_ifElse_:
 if_ifElse_Entry:
-	addi sp, sp, -120
+	li t4, 120
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -112,15 +113,15 @@ if_ifElse_Entry:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ ifTrue_117 next_237
+	# condBr cond_ ifTrue_171 next_328
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_237
-	j ifTrue_117
-ifTrue_117:
+	beqz t1, next_328
+	j ifTrue_171
+ifTrue_171:
 
 	# load b lv$1
 
@@ -173,15 +174,15 @@ ifTrue_117:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_$1 ifTrue_118 ifFalse_47
+	# condBr cond_$1 ifTrue_172 ifFalse_57
 
 	# fetch variables
 	li t4, 24
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_47
-	j ifTrue_118
-next_237:
+	beqz t1, ifFalse_57
+	j ifTrue_172
+next_328:
 
 	# load a$2 lv
 
@@ -209,7 +210,7 @@ next_237:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_118:
+ifTrue_172:
 
 	# lv 
 
@@ -226,9 +227,9 @@ ifTrue_118:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_238
-	j next_238
-ifFalse_47:
+	# br next_329
+	j next_329
+ifFalse_57:
 
 	# load a$1 lv
 
@@ -272,17 +273,18 @@ ifFalse_47:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_238
-	j next_238
-next_238:
+	# br next_329
+	j next_329
+next_329:
 
-	# br next_237
-	j next_237
+	# br next_328
+	j next_328
 .type main, @function
 .globl main
 main:
-mainEntry76:
-	addi sp, sp, -8
+mainEntry84:
+	li t4, 8
+	sub sp, sp, t4
 
 	# reserve space
 

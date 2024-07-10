@@ -1,14 +1,12 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.backend.riscinstruction.RiscAddi;
-import cn.edu.nju.software.backend.riscinstruction.RiscInstruction;
-import cn.edu.nju.software.backend.riscinstruction.RiscLd;
-import cn.edu.nju.software.backend.riscinstruction.RiscSd;
+import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFld;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsd;
 import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
+import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscLi;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
@@ -47,7 +45,8 @@ public class RiscBasicBlock {
 
     private void functionInit() {
         generator.insertComment("reserve space");
-        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-allocator.getStackSize())));
+        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(allocator.getStackSize())));
+        riscInstructions.add(new RiscSub(new Register("sp"), new Register("sp"), new Register("t4")));
 
         if(!llvmFunctionValue.getName().equals("main")){
             generator.insertComment("save CallerSavedRegs");

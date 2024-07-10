@@ -6,7 +6,8 @@
 .globl exgcd
 exgcd:
 exgcdEntry:
-	addi sp, sp, -416
+	li t4, 416
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -190,15 +191,15 @@ exgcdEntry:
 	seqz t0, t0
 	sd t0, 256(sp)
 
-	# condBr cond_ ifTrue_37 ifFalse_16
+	# condBr cond_ ifTrue_71 ifFalse_19
 
 	# fetch variables
 	li t4, 256
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_16
-	j ifTrue_37
-ifTrue_37:
+	beqz t1, ifFalse_19
+	j ifTrue_71
+ifTrue_71:
 
 	# load arr_ lv$2
 
@@ -316,7 +317,7 @@ ifTrue_37:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_16:
+ifFalse_19:
 
 	# load b$1 lv$1
 
@@ -804,8 +805,9 @@ ifFalse_16:
 .type main, @function
 .globl main
 main:
-mainEntry34:
-	addi sp, sp, -208
+mainEntry39:
+	li t4, 208
+	sub sp, sp, t4
 
 	# reserve space
 

@@ -6,7 +6,8 @@
 .globl doubleWhile
 doubleWhile:
 doubleWhileEntry:
-	addi sp, sp, -152
+	li t4, 152
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -61,9 +62,9 @@ doubleWhileEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_45
-	j whileCond_45
-whileCond_45:
+	# br whileCond_67
+	j whileCond_67
+whileCond_67:
 
 	# load i lv
 
@@ -115,15 +116,15 @@ whileCond_45:
 	seqz t0, t0
 	sd t0, 88(sp)
 
-	# condBr cond_ whileBody_45 next_73
+	# condBr cond_ whileBody_67 next_129
 
 	# fetch variables
 	li t4, 88
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_73
-	j whileBody_45
-whileBody_45:
+	beqz t1, next_129
+	j whileBody_67
+whileBody_67:
 
 	# load i$1 lv
 
@@ -167,9 +168,9 @@ whileBody_45:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_46
-	j whileCond_46
-next_73:
+	# br whileCond_68
+	j whileCond_68
+next_129:
 
 	# load j$3 lv$1
 
@@ -197,7 +198,7 @@ next_73:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_46:
+whileCond_68:
 
 	# load j lv$1
 
@@ -249,15 +250,15 @@ whileCond_46:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$1 whileBody_46 next_74
+	# condBr cond_$1 whileBody_68 next_130
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_74
-	j whileBody_46
-whileBody_46:
+	beqz t1, next_130
+	j whileBody_68
+whileBody_68:
 
 	# load j$1 lv$1
 
@@ -301,9 +302,9 @@ whileBody_46:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_46
-	j whileCond_46
-next_74:
+	# br whileCond_68
+	j whileCond_68
+next_130:
 
 	# load j$2 lv$1
 
@@ -347,13 +348,14 @@ next_74:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_45
-	j whileCond_45
+	# br whileCond_67
+	j whileCond_67
 .type main, @function
 .globl main
 main:
-mainEntry21:
-	addi sp, sp, -8
+mainEntry25:
+	li t4, 8
+	sub sp, sp, t4
 
 	# reserve space
 

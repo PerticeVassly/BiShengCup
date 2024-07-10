@@ -6,7 +6,8 @@
 .globl foo
 foo:
 fooEntry:
-	addi sp, sp, -848
+	li t4, 848
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -1455,8 +1456,9 @@ fooEntry:
 .type main, @function
 .globl main
 main:
-mainEntry22:
-	addi sp, sp, -968
+mainEntry27:
+	li t4, 968
+	sub sp, sp, t4
 
 	# reserve space
 

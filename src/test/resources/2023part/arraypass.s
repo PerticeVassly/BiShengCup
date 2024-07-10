@@ -6,7 +6,8 @@
 .globl f
 f:
 fEntry1:
-	addi sp, sp, -40
+	li t4, 40
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -21,7 +22,8 @@ fEntry1:
 	# get address of local var:0
 
 	# allocate lv
-	addi t0, sp, 16
+	li t0, 16
+	add t0, sp, t0
 
 	# get address of local var:lv
 	sd t0, 24(sp)
@@ -29,23 +31,31 @@ fEntry1:
 	# lv 0
 
 	# fetch variables
-	ld t1, 32(sp)
+	li t4, 32
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv 0
 
 	# get address of lv points to
-	ld t3, 24(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 24
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# load arr_ lv
 
 	# get address of lv points to
-	ld t3, 24(sp)
-	addi t3, t3, 0
+	li t4, 24
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:arr_
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 8(sp)
 
 	# gep a 
@@ -56,7 +66,9 @@ fEntry1:
 	mul t0, t1, t2
 
 	# get value of local var:arr_
-	ld t3, 8(sp)
+	li t4, 8
+	add t4, sp, t4
+	ld t3, 0(t4)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -71,16 +83,20 @@ fEntry1:
 	# store a 
 
 	# get address of a points to
-	ld t3, 0(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 0
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# ret 
 
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 40
+	li t4, 40
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -89,14 +105,16 @@ fEntry1:
 .globl main
 main:
 mainEntry14:
-	addi sp, sp, -56
+	li t4, 56
+	sub sp, sp, t4
 
 	# reserve space
 
 	# save the parameters
 
 	# allocate lv
-	addi t0, sp, 40
+	li t0, 40
+	add t0, sp, t0
 
 	# get address of local var:lv
 	sd t0, 48(sp)
@@ -109,7 +127,9 @@ mainEntry14:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	ld t3, 48(sp)
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -124,9 +144,12 @@ mainEntry14:
 	# store inp 
 
 	# get address of inp points to
-	ld t3, 32(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 32
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep a 
 
@@ -136,7 +159,9 @@ mainEntry14:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	ld t3, 48(sp)
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -146,7 +171,9 @@ mainEntry14:
 	# prepare params
 
 	# fetch variables
-	ld t1, 24(sp)
+	li t4, 24
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
 
 	# save caller saved regs
@@ -171,7 +198,9 @@ mainEntry14:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	ld t3, 48(sp)
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -181,17 +210,23 @@ mainEntry14:
 	# load a$2 a$1
 
 	# get address of a$1 points to
-	ld t3, 8(sp)
-	addi t3, t3, 0
+	li t4, 8
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a$2
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 0(sp)
 
 	# ret a$2
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 56
+	li t4, 56
+	add sp, sp, t4
 	ret 

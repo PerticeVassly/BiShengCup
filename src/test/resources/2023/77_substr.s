@@ -6,31 +6,34 @@
 .globl MAX
 MAX:
 MAXEntry:
-
-	# reserve space
-	addi sp, sp, -152
-
-	# save CallerSavedRegs
+	li t4, 152
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 144(sp)
+	sd a1, 136(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 144(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 136(sp)
+	# get address of local var:1
 
 	# allocate lv$1
-	addi t0, sp, 120
+	li t0, 120
+	add t0, sp, t0
 
 	# get address of local var:lv$1
 	sd t0, 128(sp)
 
 	# allocate lv
-	addi t0, sp, 104
+	li t0, 104
+	add t0, sp, t0
 
 	# get address of local var:lv
 	sd t0, 112(sp)
@@ -38,52 +41,72 @@ MAXEntry:
 	# lv 0
 
 	# fetch variables
-	ld t1, 144(sp)
+	li t4, 144
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv 0
 
 	# get address of lv points to
-	ld t3, 112(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# lv$1 1
 
 	# fetch variables
-	ld t1, 136(sp)
+	li t4, 136
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv$1 1
 
 	# get address of lv$1 points to
-	ld t3, 128(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 112(sp)
-	addi t3, t3, 0
+	li t4, 112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 96(sp)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 128(sp)
-	addi t3, t3, 0
+	li t4, 128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:b
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 88(sp)
 
 	# cmp a b cond_eq_tmp_
 
 	# fetch variables
-	ld t1, 96(sp)
-	ld t2, 88(sp)
+	li t4, 96
+	add t4, sp, t4
+	ld t1, 0(t4)
+	li t4, 88
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:cond_eq_tmp_
 	xor t0, t1, t2
@@ -93,7 +116,9 @@ MAXEntry:
 	# zext cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
-	ld t1, 80(sp)
+	li t4, 80
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -102,7 +127,9 @@ MAXEntry:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	ld t1, 72(sp)
+	li t4, 72
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -111,61 +138,79 @@ MAXEntry:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_ ifTrue_264 ifFalse_105
+	# condBr cond_ ifTrue_117 ifFalse_27
 
 	# fetch variables
-	ld t1, 64(sp)
-	beqz t1, ifFalse_105
-	j ifTrue_264
-ifTrue_264:
+	li t4, 64
+	add t4, sp, t4
+	ld t1, 0(t4)
+	beqz t1, ifFalse_27
+	j ifTrue_117
+ifTrue_117:
 
 	# load a$1 lv
 
 	# get address of lv points to
-	ld t3, 112(sp)
-	addi t3, t3, 0
+	li t4, 112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 56(sp)
 
 	# ret a$1
 
 	# fetch variables
-	ld t1, 56(sp)
+	li t4, 56
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 152
+	li t4, 152
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_105:
+ifFalse_27:
 
 	# load a$2 lv
 
 	# get address of lv points to
-	ld t3, 112(sp)
-	addi t3, t3, 0
+	li t4, 112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a$2
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 48(sp)
 
 	# load b$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 128(sp)
-	addi t3, t3, 0
+	li t4, 128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:b$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 40(sp)
 
 	# cmp a$2 b$1 cond_gt_tmp_
 
 	# fetch variables
-	ld t1, 48(sp)
-	ld t2, 40(sp)
+	li t4, 48
+	add t4, sp, t4
+	ld t1, 0(t4)
+	li t4, 40
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:cond_gt_tmp_
 	sub t0, t1, t2
@@ -175,7 +220,9 @@ ifFalse_105:
 	# zext cond_tmp_$1 cond_gt_tmp_
 
 	# fetch variables
-	ld t1, 32(sp)
+	li t4, 32
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# get address of local var:cond_tmp_$1
 	mv t0, t1
@@ -184,7 +231,9 @@ ifFalse_105:
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	ld t1, 24(sp)
+	li t4, 24
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 0
 
 	# get address of local var:cond_$1
@@ -193,52 +242,66 @@ ifFalse_105:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_$1 ifTrue_265 ifFalse_106
+	# condBr cond_$1 ifTrue_118 ifFalse_28
 
 	# fetch variables
-	ld t1, 16(sp)
-	beqz t1, ifFalse_106
-	j ifTrue_265
-ifTrue_265:
+	li t4, 16
+	add t4, sp, t4
+	ld t1, 0(t4)
+	beqz t1, ifFalse_28
+	j ifTrue_118
+ifTrue_118:
 
 	# load a$3 lv
 
 	# get address of lv points to
-	ld t3, 112(sp)
-	addi t3, t3, 0
+	li t4, 112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a$3
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 8(sp)
 
 	# ret a$3
 
 	# fetch variables
-	ld t1, 8(sp)
+	li t4, 8
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 152
+	li t4, 152
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_106:
+ifFalse_28:
 
 	# load b$2 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 128(sp)
-	addi t3, t3, 0
+	li t4, 128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:b$2
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 0(sp)
 
 	# ret b$2
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 152
+	li t4, 152
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -247,43 +310,48 @@ ifFalse_106:
 .globl max_sum_nonadjacent
 max_sum_nonadjacent:
 max_sum_nonadjacentEntry:
-
-	# reserve space
-	addi sp, sp, -640
-
-	# save CallerSavedRegs
+	li t4, 640
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 632(sp)
+	sd a1, 624(sp)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 632(sp)
+	# get address of local var:0
 
-	# get address of 1 into 
-	sd a1, 624(sp)
+	# get address of local var:1
 
 	# allocate lv$3
-	addi t0, sp, 608
+	li t0, 608
+	add t0, sp, t0
 
 	# get address of local var:lv$3
 	sd t0, 616(sp)
 
 	# allocate lv$2
-	addi t0, sp, 472
+	li t0, 472
+	add t0, sp, t0
 
 	# get address of local var:lv$2
 	sd t0, 600(sp)
 
 	# allocate lv$1
-	addi t0, sp, 456
+	li t0, 456
+	add t0, sp, t0
 
 	# get address of local var:lv$1
 	sd t0, 464(sp)
 
 	# allocate lv
-	addi t0, sp, 440
+	li t0, 440
+	add t0, sp, t0
 
 	# get address of local var:lv
 	sd t0, 448(sp)
@@ -291,26 +359,36 @@ max_sum_nonadjacentEntry:
 	# lv 0
 
 	# fetch variables
-	ld t1, 632(sp)
+	li t4, 632
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv 0
 
 	# get address of lv points to
-	ld t3, 448(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 448
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# lv$1 1
 
 	# fetch variables
-	ld t1, 624(sp)
+	li t4, 624
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv$1 1
 
 	# get address of lv$1 points to
-	ld t3, 464(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 464
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp 
 
@@ -319,11 +397,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp into 
+	# get address of local var:inp
 	sd t0, 432(sp)
 
 	# inp 
@@ -334,9 +415,12 @@ max_sum_nonadjacentEntry:
 	# store inp 
 
 	# get address of inp points to
-	ld t3, 432(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 432
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$1 
 
@@ -345,11 +429,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$1 into 
+	# get address of local var:inp$1
 	sd t0, 424(sp)
 
 	# inp$1 
@@ -360,9 +447,12 @@ max_sum_nonadjacentEntry:
 	# store inp$1 
 
 	# get address of inp$1 points to
-	ld t3, 424(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 424
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$2 
 
@@ -371,11 +461,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$2 into 
+	# get address of local var:inp$2
 	sd t0, 416(sp)
 
 	# inp$2 
@@ -386,9 +479,12 @@ max_sum_nonadjacentEntry:
 	# store inp$2 
 
 	# get address of inp$2 points to
-	ld t3, 416(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 416
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$3 
 
@@ -397,11 +493,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$3 into 
+	# get address of local var:inp$3
 	sd t0, 408(sp)
 
 	# inp$3 
@@ -412,9 +511,12 @@ max_sum_nonadjacentEntry:
 	# store inp$3 
 
 	# get address of inp$3 points to
-	ld t3, 408(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 408
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$4 
 
@@ -423,11 +525,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$4 into 
+	# get address of local var:inp$4
 	sd t0, 400(sp)
 
 	# inp$4 
@@ -438,9 +543,12 @@ max_sum_nonadjacentEntry:
 	# store inp$4 
 
 	# get address of inp$4 points to
-	ld t3, 400(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 400
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$5 
 
@@ -449,11 +557,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$5 into 
+	# get address of local var:inp$5
 	sd t0, 392(sp)
 
 	# inp$5 
@@ -464,9 +575,12 @@ max_sum_nonadjacentEntry:
 	# store inp$5 
 
 	# get address of inp$5 points to
-	ld t3, 392(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 392
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$6 
 
@@ -475,11 +589,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$6 into 
+	# get address of local var:inp$6
 	sd t0, 384(sp)
 
 	# inp$6 
@@ -490,9 +607,12 @@ max_sum_nonadjacentEntry:
 	# store inp$6 
 
 	# get address of inp$6 points to
-	ld t3, 384(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$7 
 
@@ -501,11 +621,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$7 into 
+	# get address of local var:inp$7
 	sd t0, 376(sp)
 
 	# inp$7 
@@ -516,9 +639,12 @@ max_sum_nonadjacentEntry:
 	# store inp$7 
 
 	# get address of inp$7 points to
-	ld t3, 376(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 376
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$8 
 
@@ -527,11 +653,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$8 into 
+	# get address of local var:inp$8
 	sd t0, 368(sp)
 
 	# inp$8 
@@ -542,9 +671,12 @@ max_sum_nonadjacentEntry:
 	# store inp$8 
 
 	# get address of inp$8 points to
-	ld t3, 368(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 368
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$9 
 
@@ -553,11 +685,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$9 into 
+	# get address of local var:inp$9
 	sd t0, 360(sp)
 
 	# inp$9 
@@ -568,9 +703,12 @@ max_sum_nonadjacentEntry:
 	# store inp$9 
 
 	# get address of inp$9 points to
-	ld t3, 360(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 360
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$10 
 
@@ -579,11 +717,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$10 into 
+	# get address of local var:inp$10
 	sd t0, 352(sp)
 
 	# inp$10 
@@ -594,9 +735,12 @@ max_sum_nonadjacentEntry:
 	# store inp$10 
 
 	# get address of inp$10 points to
-	ld t3, 352(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 352
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$11 
 
@@ -605,11 +749,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$11 into 
+	# get address of local var:inp$11
 	sd t0, 344(sp)
 
 	# inp$11 
@@ -620,9 +767,12 @@ max_sum_nonadjacentEntry:
 	# store inp$11 
 
 	# get address of inp$11 points to
-	ld t3, 344(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 344
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$12 
 
@@ -631,11 +781,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$12 into 
+	# get address of local var:inp$12
 	sd t0, 336(sp)
 
 	# inp$12 
@@ -646,9 +799,12 @@ max_sum_nonadjacentEntry:
 	# store inp$12 
 
 	# get address of inp$12 points to
-	ld t3, 336(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 336
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$13 
 
@@ -657,11 +813,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$13 into 
+	# get address of local var:inp$13
 	sd t0, 328(sp)
 
 	# inp$13 
@@ -672,9 +831,12 @@ max_sum_nonadjacentEntry:
 	# store inp$13 
 
 	# get address of inp$13 points to
-	ld t3, 328(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 328
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$14 
 
@@ -683,11 +845,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$14 into 
+	# get address of local var:inp$14
 	sd t0, 320(sp)
 
 	# inp$14 
@@ -698,9 +863,12 @@ max_sum_nonadjacentEntry:
 	# store inp$14 
 
 	# get address of inp$14 points to
-	ld t3, 320(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 320
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$15 
 
@@ -709,11 +877,14 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$15 into 
+	# get address of local var:inp$15
 	sd t0, 312(sp)
 
 	# inp$15 
@@ -724,9 +895,12 @@ max_sum_nonadjacentEntry:
 	# store inp$15 
 
 	# get address of inp$15 points to
-	ld t3, 312(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 312
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep temp 
 
@@ -735,21 +909,27 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of temp into 
+	# get address of local var:temp
 	sd t0, 304(sp)
 
 	# load arr_ lv
 
 	# get address of lv points to
-	ld t3, 448(sp)
-	addi t3, t3, 0
+	li t4, 448
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:arr_
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 296(sp)
 
 	# gep arr 
@@ -759,34 +939,45 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_ into 
-	ld t1, 296(sp)
+	# get value of local var:arr_
+	li t4, 296
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of arr into 
+	# get address of local var:arr
 	sd t0, 288(sp)
 
 	# load arr$1 arr
 
 	# get address of arr points to
-	ld t3, 288(sp)
-	addi t3, t3, 0
+	li t4, 288
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:arr$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 280(sp)
 
 	# temp arr$1
 
 	# fetch variables
-	ld t1, 280(sp)
+	li t4, 280
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store temp arr$1
 
 	# get address of temp points to
-	ld t3, 304(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 304
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep temp$1 
 
@@ -795,21 +986,27 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of temp$1 into 
+	# get address of local var:temp$1
 	sd t0, 272(sp)
 
 	# load arr_$1 lv
 
 	# get address of lv points to
-	ld t3, 448(sp)
-	addi t3, t3, 0
+	li t4, 448
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:arr_$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 264(sp)
 
 	# gep arr$2 
@@ -819,31 +1016,40 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$1 into 
-	ld t1, 264(sp)
+	# get value of local var:arr_$1
+	li t4, 264
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of arr$2 into 
+	# get address of local var:arr$2
 	sd t0, 256(sp)
 
 	# load arr$3 arr$2
 
 	# get address of arr$2 points to
-	ld t3, 256(sp)
-	addi t3, t3, 0
+	li t4, 256
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:arr$3
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 248(sp)
 
 	# load arr_$2 lv
 
 	# get address of lv points to
-	ld t3, 448(sp)
-	addi t3, t3, 0
+	li t4, 448
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:arr_$2
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 240(sp)
 
 	# gep arr$4 
@@ -853,31 +1059,41 @@ max_sum_nonadjacentEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$2 into 
-	ld t1, 240(sp)
+	# get value of local var:arr_$2
+	li t4, 240
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of arr$4 into 
+	# get address of local var:arr$4
 	sd t0, 232(sp)
 
 	# load arr$5 arr$4
 
 	# get address of arr$4 points to
-	ld t3, 232(sp)
-	addi t3, t3, 0
+	li t4, 232
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:arr$5
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 224(sp)
 
 	# prepare params
 
 	# fetch variables
-	ld t1, 248(sp)
+	li t4, 248
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
 
 	# fetch variables
-	ld t1, 224(sp)
+	li t4, 224
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a1, t1
 
 	# save caller saved regs
@@ -897,14 +1113,19 @@ max_sum_nonadjacentEntry:
 	# temp$1 MAX
 
 	# fetch variables
-	ld t1, 216(sp)
+	li t4, 216
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store temp$1 MAX
 
 	# get address of temp$1 points to
-	ld t3, 272(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 272
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# lv$3 
 
@@ -914,39 +1135,52 @@ max_sum_nonadjacentEntry:
 	# store lv$3 
 
 	# get address of lv$3 points to
-	ld t3, 616(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 616
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# br whileCond_178
-	j whileCond_178
-whileCond_178:
+	# br whileCond_102
+	j whileCond_102
+whileCond_102:
 
 	# load i lv$3
 
 	# get address of lv$3 points to
-	ld t3, 616(sp)
-	addi t3, t3, 0
+	li t4, 616
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 208(sp)
 
 	# load n lv$1
 
 	# get address of lv$1 points to
-	ld t3, 464(sp)
-	addi t3, t3, 0
+	li t4, 464
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:n
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 200(sp)
 
 	# cmp i n cond_lt_tmp_
 
 	# fetch variables
-	ld t1, 208(sp)
-	ld t2, 200(sp)
+	li t4, 208
+	add t4, sp, t4
+	ld t1, 0(t4)
+	li t4, 200
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:cond_lt_tmp_
 	slt t0, t1, t2
@@ -955,7 +1189,9 @@ whileCond_178:
 	# zext cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
-	ld t1, 192(sp)
+	li t4, 192
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -964,7 +1200,9 @@ whileCond_178:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	ld t1, 184(sp)
+	li t4, 184
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -973,52 +1211,67 @@ whileCond_178:
 	seqz t0, t0
 	sd t0, 176(sp)
 
-	# condBr cond_ whileBody_178 next_444
+	# condBr cond_ whileBody_102 next_221
 
 	# fetch variables
-	ld t1, 176(sp)
-	beqz t1, next_444
-	j whileBody_178
-whileBody_178:
+	li t4, 176
+	add t4, sp, t4
+	ld t1, 0(t4)
+	beqz t1, next_221
+	j whileBody_102
+whileBody_102:
 
 	# load i$1 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 616(sp)
-	addi t3, t3, 0
+	li t4, 616
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 168(sp)
 
 	# gep temp$2 i$1
 
 	# fetch variables
-	ld t1, 168(sp)
+	li t4, 168
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of temp$2 into 
+	# get address of local var:temp$2
 	sd t0, 160(sp)
 
 	# load i$2 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 616(sp)
-	addi t3, t3, 0
+	li t4, 616
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i$2
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 152(sp)
 
 	# sub result_ i$2 
 
 	# fetch variables
-	ld t1, 152(sp)
+	li t4, 152
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 2
 
 	# get address of local var:result_
@@ -1028,76 +1281,102 @@ whileBody_178:
 	# gep temp$3 result_
 
 	# fetch variables
-	ld t1, 144(sp)
+	li t4, 144
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of temp$3 into 
+	# get address of local var:temp$3
 	sd t0, 136(sp)
 
 	# load temp$4 temp$3
 
 	# get address of temp$3 points to
-	ld t3, 136(sp)
-	addi t3, t3, 0
+	li t4, 136
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:temp$4
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 128(sp)
 
 	# load i$3 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 616(sp)
-	addi t3, t3, 0
+	li t4, 616
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i$3
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 120(sp)
 
 	# load arr_$3 lv
 
 	# get address of lv points to
-	ld t3, 448(sp)
-	addi t3, t3, 0
+	li t4, 448
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:arr_$3
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 112(sp)
 
 	# gep arr$6 i$3
 
 	# fetch variables
-	ld t1, 120(sp)
+	li t4, 120
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$3 into 
-	ld t1, 112(sp)
+	# get value of local var:arr_$3
+	li t4, 112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of arr$6 into 
+	# get address of local var:arr$6
 	sd t0, 104(sp)
 
 	# load arr$7 arr$6
 
 	# get address of arr$6 points to
-	ld t3, 104(sp)
-	addi t3, t3, 0
+	li t4, 104
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:arr$7
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 96(sp)
 
 	# add result_$1 temp$4 arr$7
 
 	# fetch variables
-	ld t1, 128(sp)
-	ld t2, 96(sp)
+	li t4, 128
+	add t4, sp, t4
+	ld t1, 0(t4)
+	li t4, 96
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:result_$1
 	add t0, t1, t2
@@ -1106,17 +1385,22 @@ whileBody_178:
 	# load i$4 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 616(sp)
-	addi t3, t3, 0
+	li t4, 616
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i$4
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 80(sp)
 
 	# sub result_$2 i$4 
 
 	# fetch variables
-	ld t1, 80(sp)
+	li t4, 80
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:result_$2
@@ -1126,35 +1410,47 @@ whileBody_178:
 	# gep temp$5 result_$2
 
 	# fetch variables
-	ld t1, 72(sp)
+	li t4, 72
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of temp$5 into 
+	# get address of local var:temp$5
 	sd t0, 64(sp)
 
 	# load temp$6 temp$5
 
 	# get address of temp$5 points to
-	ld t3, 64(sp)
-	addi t3, t3, 0
+	li t4, 64
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:temp$6
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 56(sp)
 
 	# prepare params
 
 	# fetch variables
-	ld t1, 88(sp)
+	li t4, 88
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
 
 	# fetch variables
-	ld t1, 56(sp)
+	li t4, 56
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a1, t1
 
 	# save caller saved regs
@@ -1174,29 +1470,39 @@ whileBody_178:
 	# temp$2 MAX$1
 
 	# fetch variables
-	ld t1, 48(sp)
+	li t4, 48
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store temp$2 MAX$1
 
 	# get address of temp$2 points to
-	ld t3, 160(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 160
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# load i$5 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 616(sp)
-	addi t3, t3, 0
+	li t4, 616
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i$5
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 40(sp)
 
 	# add result_$3 i$5 
 
 	# fetch variables
-	ld t1, 40(sp)
+	li t4, 40
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:result_$3
@@ -1206,33 +1512,43 @@ whileBody_178:
 	# lv$3 result_$3
 
 	# fetch variables
-	ld t1, 32(sp)
+	li t4, 32
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv$3 result_$3
 
 	# get address of lv$3 points to
-	ld t3, 616(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 616
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# br whileCond_178
-	j whileCond_178
-next_444:
+	# br whileCond_102
+	j whileCond_102
+next_221:
 
 	# load n$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 464(sp)
-	addi t3, t3, 0
+	li t4, 464
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:n$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 24(sp)
 
 	# sub result_$4 n$1 
 
 	# fetch variables
-	ld t1, 24(sp)
+	li t4, 24
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:result_$4
@@ -1242,33 +1558,44 @@ next_444:
 	# gep temp$7 result_$4
 
 	# fetch variables
-	ld t1, 16(sp)
+	li t4, 16
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$2 into 
-	ld t1, 600(sp)
+	# get value of local var:lv$2
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of temp$7 into 
+	# get address of local var:temp$7
 	sd t0, 8(sp)
 
 	# load temp$8 temp$7
 
 	# get address of temp$7 points to
-	ld t3, 8(sp)
-	addi t3, t3, 0
+	li t4, 8
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:temp$8
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 0(sp)
 
 	# ret temp$8
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 640
+	li t4, 640
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -1277,118 +1604,168 @@ next_444:
 .globl longest_common_subseq
 longest_common_subseq:
 longest_common_subseqEntry:
-
-	# reserve space
-	addi sp, sp, -6768
-
-	# save CallerSavedRegs
+	li t4, 6768
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
+	sd a0, 0(t4)
+	sd a1, 0(t4)
+	sd a2, 0(t4)
+	sd a3, 0(t4)
+
+	# reserve space
+
+	# save CallerSavedRegs
 
 	# save the parameters
 
-	# get address of 0 into 
-	sd a0, 6760(sp)
+	# get address of local var:0
+	li t4, 6760
+	add t4, sp, t4
 
-	# get address of 1 into 
-	sd a1, 6752(sp)
+	# get address of local var:1
+	li t4, 6752
+	add t4, sp, t4
 
-	# get address of 2 into 
-	sd a2, 6744(sp)
+	# get address of local var:2
+	li t4, 6744
+	add t4, sp, t4
 
-	# get address of 3 into 
-	sd a3, 6736(sp)
+	# get address of local var:3
+	li t4, 6736
+	add t4, sp, t4
 
 	# allocate lv$6
-	addi t0, sp, 6720
+	li t0, 6720
+	add t0, sp, t0
 
 	# get address of local var:lv$6
-	sd t0, 6728(sp)
+	li t4, 6728
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# allocate lv$5
-	addi t0, sp, 6704
+	li t0, 6704
+	add t0, sp, t0
 
 	# get address of local var:lv$5
-	sd t0, 6712(sp)
+	li t4, 6712
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# allocate lv$4
-	addi t0, sp, 4648
+	li t0, 4648
+	add t0, sp, t0
 
 	# get address of local var:lv$4
-	sd t0, 6696(sp)
+	li t4, 6696
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# allocate lv$3
-	addi t0, sp, 4632
+	li t0, 4632
+	add t0, sp, t0
 
 	# get address of local var:lv$3
-	sd t0, 4640(sp)
+	li t4, 4640
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# allocate lv$2
-	addi t0, sp, 4616
+	li t0, 4616
+	add t0, sp, t0
 
 	# get address of local var:lv$2
-	sd t0, 4624(sp)
+	li t4, 4624
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# allocate lv$1
-	addi t0, sp, 4600
+	li t0, 4600
+	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 4608(sp)
+	li t4, 4608
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# allocate lv
-	addi t0, sp, 4584
+	li t0, 4584
+	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 4592(sp)
+	li t4, 4592
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# lv 0
 
 	# fetch variables
-	ld t1, 6760(sp)
+	li t4, 6760
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv 0
 
 	# get address of lv points to
-	ld t3, 4592(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4592
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# lv$1 1
 
 	# fetch variables
-	ld t1, 6752(sp)
+	li t4, 6752
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv$1 1
 
 	# get address of lv$1 points to
-	ld t3, 4608(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4608
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# lv$2 2
 
 	# fetch variables
-	ld t1, 6744(sp)
+	li t4, 6744
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv$2 2
 
 	# get address of lv$2 points to
-	ld t3, 4624(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4624
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# lv$3 3
 
 	# fetch variables
-	ld t1, 6736(sp)
+	li t4, 6736
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv$3 3
 
 	# get address of lv$3 points to
-	ld t3, 4640(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4640
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_ 
 
@@ -1397,12 +1774,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_ into 
-	sd t0, 4576(sp)
+	# get address of local var:ptr_
+	li t4, 4576
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp 
 
@@ -1411,12 +1793,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_ into 
-	ld t1, 4576(sp)
+	# get value of local var:ptr_
+	li t4, 4576
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp into 
-	sd t0, 4568(sp)
+	# get address of local var:inp
+	li t4, 4568
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp 
 
@@ -1426,9 +1813,12 @@ longest_common_subseqEntry:
 	# store inp 
 
 	# get address of inp points to
-	ld t3, 4568(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4568
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$1 
 
@@ -1437,12 +1827,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$1 into 
-	sd t0, 4560(sp)
+	# get address of local var:ptr_$1
+	li t4, 4560
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$1 
 
@@ -1451,12 +1846,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$1 into 
-	ld t1, 4560(sp)
+	# get value of local var:ptr_$1
+	li t4, 4560
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$1 into 
-	sd t0, 4552(sp)
+	# get address of local var:inp$1
+	li t4, 4552
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$1 
 
@@ -1466,9 +1866,12 @@ longest_common_subseqEntry:
 	# store inp$1 
 
 	# get address of inp$1 points to
-	ld t3, 4552(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4552
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$2 
 
@@ -1477,12 +1880,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$2 into 
-	sd t0, 4544(sp)
+	# get address of local var:ptr_$2
+	li t4, 4544
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$2 
 
@@ -1491,12 +1899,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$2 into 
-	ld t1, 4544(sp)
+	# get value of local var:ptr_$2
+	li t4, 4544
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$2 into 
-	sd t0, 4536(sp)
+	# get address of local var:inp$2
+	li t4, 4536
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$2 
 
@@ -1506,9 +1919,12 @@ longest_common_subseqEntry:
 	# store inp$2 
 
 	# get address of inp$2 points to
-	ld t3, 4536(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4536
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$3 
 
@@ -1517,12 +1933,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$3 into 
-	sd t0, 4528(sp)
+	# get address of local var:ptr_$3
+	li t4, 4528
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$3 
 
@@ -1531,12 +1952,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$3 into 
-	ld t1, 4528(sp)
+	# get value of local var:ptr_$3
+	li t4, 4528
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$3 into 
-	sd t0, 4520(sp)
+	# get address of local var:inp$3
+	li t4, 4520
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$3 
 
@@ -1546,9 +1972,12 @@ longest_common_subseqEntry:
 	# store inp$3 
 
 	# get address of inp$3 points to
-	ld t3, 4520(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4520
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$4 
 
@@ -1557,12 +1986,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$4 into 
-	sd t0, 4512(sp)
+	# get address of local var:ptr_$4
+	li t4, 4512
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$4 
 
@@ -1571,12 +2005,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$4 into 
-	ld t1, 4512(sp)
+	# get value of local var:ptr_$4
+	li t4, 4512
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$4 into 
-	sd t0, 4504(sp)
+	# get address of local var:inp$4
+	li t4, 4504
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$4 
 
@@ -1586,9 +2025,12 @@ longest_common_subseqEntry:
 	# store inp$4 
 
 	# get address of inp$4 points to
-	ld t3, 4504(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4504
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$5 
 
@@ -1597,12 +2039,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$5 into 
-	sd t0, 4496(sp)
+	# get address of local var:ptr_$5
+	li t4, 4496
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$5 
 
@@ -1611,12 +2058,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$5 into 
-	ld t1, 4496(sp)
+	# get value of local var:ptr_$5
+	li t4, 4496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$5 into 
-	sd t0, 4488(sp)
+	# get address of local var:inp$5
+	li t4, 4488
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$5 
 
@@ -1626,9 +2078,12 @@ longest_common_subseqEntry:
 	# store inp$5 
 
 	# get address of inp$5 points to
-	ld t3, 4488(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4488
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$6 
 
@@ -1637,12 +2092,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$6 into 
-	sd t0, 4480(sp)
+	# get address of local var:ptr_$6
+	li t4, 4480
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$6 
 
@@ -1651,12 +2111,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$6 into 
-	ld t1, 4480(sp)
+	# get value of local var:ptr_$6
+	li t4, 4480
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$6 into 
-	sd t0, 4472(sp)
+	# get address of local var:inp$6
+	li t4, 4472
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$6 
 
@@ -1666,9 +2131,12 @@ longest_common_subseqEntry:
 	# store inp$6 
 
 	# get address of inp$6 points to
-	ld t3, 4472(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4472
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$7 
 
@@ -1677,12 +2145,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$7 into 
-	sd t0, 4464(sp)
+	# get address of local var:ptr_$7
+	li t4, 4464
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$7 
 
@@ -1691,12 +2164,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$7 into 
-	ld t1, 4464(sp)
+	# get value of local var:ptr_$7
+	li t4, 4464
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$7 into 
-	sd t0, 4456(sp)
+	# get address of local var:inp$7
+	li t4, 4456
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$7 
 
@@ -1706,9 +2184,12 @@ longest_common_subseqEntry:
 	# store inp$7 
 
 	# get address of inp$7 points to
-	ld t3, 4456(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4456
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$8 
 
@@ -1717,12 +2198,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$8 into 
-	sd t0, 4448(sp)
+	# get address of local var:ptr_$8
+	li t4, 4448
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$8 
 
@@ -1731,12 +2217,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$8 into 
-	ld t1, 4448(sp)
+	# get value of local var:ptr_$8
+	li t4, 4448
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$8 into 
-	sd t0, 4440(sp)
+	# get address of local var:inp$8
+	li t4, 4440
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$8 
 
@@ -1746,9 +2237,12 @@ longest_common_subseqEntry:
 	# store inp$8 
 
 	# get address of inp$8 points to
-	ld t3, 4440(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4440
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$9 
 
@@ -1757,12 +2251,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$9 into 
-	sd t0, 4432(sp)
+	# get address of local var:ptr_$9
+	li t4, 4432
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$9 
 
@@ -1771,12 +2270,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$9 into 
-	ld t1, 4432(sp)
+	# get value of local var:ptr_$9
+	li t4, 4432
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$9 into 
-	sd t0, 4424(sp)
+	# get address of local var:inp$9
+	li t4, 4424
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$9 
 
@@ -1786,9 +2290,12 @@ longest_common_subseqEntry:
 	# store inp$9 
 
 	# get address of inp$9 points to
-	ld t3, 4424(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4424
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$10 
 
@@ -1797,12 +2304,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$10 into 
-	sd t0, 4416(sp)
+	# get address of local var:ptr_$10
+	li t4, 4416
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$10 
 
@@ -1811,12 +2323,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$10 into 
-	ld t1, 4416(sp)
+	# get value of local var:ptr_$10
+	li t4, 4416
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$10 into 
-	sd t0, 4408(sp)
+	# get address of local var:inp$10
+	li t4, 4408
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$10 
 
@@ -1826,9 +2343,12 @@ longest_common_subseqEntry:
 	# store inp$10 
 
 	# get address of inp$10 points to
-	ld t3, 4408(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4408
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$11 
 
@@ -1837,12 +2357,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$11 into 
-	sd t0, 4400(sp)
+	# get address of local var:ptr_$11
+	li t4, 4400
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$11 
 
@@ -1851,12 +2376,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$11 into 
-	ld t1, 4400(sp)
+	# get value of local var:ptr_$11
+	li t4, 4400
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$11 into 
-	sd t0, 4392(sp)
+	# get address of local var:inp$11
+	li t4, 4392
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$11 
 
@@ -1866,9 +2396,12 @@ longest_common_subseqEntry:
 	# store inp$11 
 
 	# get address of inp$11 points to
-	ld t3, 4392(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4392
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$12 
 
@@ -1877,12 +2410,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$12 into 
-	sd t0, 4384(sp)
+	# get address of local var:ptr_$12
+	li t4, 4384
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$12 
 
@@ -1891,12 +2429,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$12 into 
-	ld t1, 4384(sp)
+	# get value of local var:ptr_$12
+	li t4, 4384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$12 into 
-	sd t0, 4376(sp)
+	# get address of local var:inp$12
+	li t4, 4376
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$12 
 
@@ -1906,9 +2449,12 @@ longest_common_subseqEntry:
 	# store inp$12 
 
 	# get address of inp$12 points to
-	ld t3, 4376(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4376
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$13 
 
@@ -1917,12 +2463,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$13 into 
-	sd t0, 4368(sp)
+	# get address of local var:ptr_$13
+	li t4, 4368
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$13 
 
@@ -1931,12 +2482,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$13 into 
-	ld t1, 4368(sp)
+	# get value of local var:ptr_$13
+	li t4, 4368
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$13 into 
-	sd t0, 4360(sp)
+	# get address of local var:inp$13
+	li t4, 4360
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$13 
 
@@ -1946,9 +2502,12 @@ longest_common_subseqEntry:
 	# store inp$13 
 
 	# get address of inp$13 points to
-	ld t3, 4360(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4360
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$14 
 
@@ -1957,12 +2516,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$14 into 
-	sd t0, 4352(sp)
+	# get address of local var:ptr_$14
+	li t4, 4352
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$14 
 
@@ -1971,12 +2535,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$14 into 
-	ld t1, 4352(sp)
+	# get value of local var:ptr_$14
+	li t4, 4352
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$14 into 
-	sd t0, 4344(sp)
+	# get address of local var:inp$14
+	li t4, 4344
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$14 
 
@@ -1986,9 +2555,12 @@ longest_common_subseqEntry:
 	# store inp$14 
 
 	# get address of inp$14 points to
-	ld t3, 4344(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4344
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$15 
 
@@ -1997,12 +2569,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$15 into 
-	sd t0, 4336(sp)
+	# get address of local var:ptr_$15
+	li t4, 4336
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$15 
 
@@ -2011,12 +2588,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$15 into 
-	ld t1, 4336(sp)
+	# get value of local var:ptr_$15
+	li t4, 4336
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$15 into 
-	sd t0, 4328(sp)
+	# get address of local var:inp$15
+	li t4, 4328
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$15 
 
@@ -2026,9 +2608,12 @@ longest_common_subseqEntry:
 	# store inp$15 
 
 	# get address of inp$15 points to
-	ld t3, 4328(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4328
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$16 
 
@@ -2037,12 +2622,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$16 into 
-	sd t0, 4320(sp)
+	# get address of local var:ptr_$16
+	li t4, 4320
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$16 
 
@@ -2051,12 +2641,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$16 into 
-	ld t1, 4320(sp)
+	# get value of local var:ptr_$16
+	li t4, 4320
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$16 into 
-	sd t0, 4312(sp)
+	# get address of local var:inp$16
+	li t4, 4312
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$16 
 
@@ -2066,9 +2661,12 @@ longest_common_subseqEntry:
 	# store inp$16 
 
 	# get address of inp$16 points to
-	ld t3, 4312(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4312
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$17 
 
@@ -2077,12 +2675,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$17 into 
-	sd t0, 4304(sp)
+	# get address of local var:ptr_$17
+	li t4, 4304
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$17 
 
@@ -2091,12 +2694,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$17 into 
-	ld t1, 4304(sp)
+	# get value of local var:ptr_$17
+	li t4, 4304
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$17 into 
-	sd t0, 4296(sp)
+	# get address of local var:inp$17
+	li t4, 4296
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$17 
 
@@ -2106,9 +2714,12 @@ longest_common_subseqEntry:
 	# store inp$17 
 
 	# get address of inp$17 points to
-	ld t3, 4296(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4296
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$18 
 
@@ -2117,12 +2728,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$18 into 
-	sd t0, 4288(sp)
+	# get address of local var:ptr_$18
+	li t4, 4288
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$18 
 
@@ -2131,12 +2747,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$18 into 
-	ld t1, 4288(sp)
+	# get value of local var:ptr_$18
+	li t4, 4288
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$18 into 
-	sd t0, 4280(sp)
+	# get address of local var:inp$18
+	li t4, 4280
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$18 
 
@@ -2146,9 +2767,12 @@ longest_common_subseqEntry:
 	# store inp$18 
 
 	# get address of inp$18 points to
-	ld t3, 4280(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4280
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$19 
 
@@ -2157,12 +2781,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$19 into 
-	sd t0, 4272(sp)
+	# get address of local var:ptr_$19
+	li t4, 4272
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$19 
 
@@ -2171,12 +2800,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$19 into 
-	ld t1, 4272(sp)
+	# get value of local var:ptr_$19
+	li t4, 4272
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$19 into 
-	sd t0, 4264(sp)
+	# get address of local var:inp$19
+	li t4, 4264
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$19 
 
@@ -2186,9 +2820,12 @@ longest_common_subseqEntry:
 	# store inp$19 
 
 	# get address of inp$19 points to
-	ld t3, 4264(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4264
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$20 
 
@@ -2197,12 +2834,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$20 into 
-	sd t0, 4256(sp)
+	# get address of local var:ptr_$20
+	li t4, 4256
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$20 
 
@@ -2211,12 +2853,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$20 into 
-	ld t1, 4256(sp)
+	# get value of local var:ptr_$20
+	li t4, 4256
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$20 into 
-	sd t0, 4248(sp)
+	# get address of local var:inp$20
+	li t4, 4248
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$20 
 
@@ -2226,9 +2873,12 @@ longest_common_subseqEntry:
 	# store inp$20 
 
 	# get address of inp$20 points to
-	ld t3, 4248(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4248
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$21 
 
@@ -2237,12 +2887,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$21 into 
-	sd t0, 4240(sp)
+	# get address of local var:ptr_$21
+	li t4, 4240
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$21 
 
@@ -2251,12 +2906,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$21 into 
-	ld t1, 4240(sp)
+	# get value of local var:ptr_$21
+	li t4, 4240
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$21 into 
-	sd t0, 4232(sp)
+	# get address of local var:inp$21
+	li t4, 4232
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$21 
 
@@ -2266,9 +2926,12 @@ longest_common_subseqEntry:
 	# store inp$21 
 
 	# get address of inp$21 points to
-	ld t3, 4232(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4232
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$22 
 
@@ -2277,12 +2940,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$22 into 
-	sd t0, 4224(sp)
+	# get address of local var:ptr_$22
+	li t4, 4224
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$22 
 
@@ -2291,12 +2959,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$22 into 
-	ld t1, 4224(sp)
+	# get value of local var:ptr_$22
+	li t4, 4224
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$22 into 
-	sd t0, 4216(sp)
+	# get address of local var:inp$22
+	li t4, 4216
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$22 
 
@@ -2306,9 +2979,12 @@ longest_common_subseqEntry:
 	# store inp$22 
 
 	# get address of inp$22 points to
-	ld t3, 4216(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4216
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$23 
 
@@ -2317,12 +2993,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$23 into 
-	sd t0, 4208(sp)
+	# get address of local var:ptr_$23
+	li t4, 4208
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$23 
 
@@ -2331,12 +3012,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$23 into 
-	ld t1, 4208(sp)
+	# get value of local var:ptr_$23
+	li t4, 4208
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$23 into 
-	sd t0, 4200(sp)
+	# get address of local var:inp$23
+	li t4, 4200
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$23 
 
@@ -2346,9 +3032,12 @@ longest_common_subseqEntry:
 	# store inp$23 
 
 	# get address of inp$23 points to
-	ld t3, 4200(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4200
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$24 
 
@@ -2357,12 +3046,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$24 into 
-	sd t0, 4192(sp)
+	# get address of local var:ptr_$24
+	li t4, 4192
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$24 
 
@@ -2371,12 +3065,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$24 into 
-	ld t1, 4192(sp)
+	# get value of local var:ptr_$24
+	li t4, 4192
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$24 into 
-	sd t0, 4184(sp)
+	# get address of local var:inp$24
+	li t4, 4184
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$24 
 
@@ -2386,9 +3085,12 @@ longest_common_subseqEntry:
 	# store inp$24 
 
 	# get address of inp$24 points to
-	ld t3, 4184(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4184
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$25 
 
@@ -2397,12 +3099,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$25 into 
-	sd t0, 4176(sp)
+	# get address of local var:ptr_$25
+	li t4, 4176
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$25 
 
@@ -2411,12 +3118,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$25 into 
-	ld t1, 4176(sp)
+	# get value of local var:ptr_$25
+	li t4, 4176
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$25 into 
-	sd t0, 4168(sp)
+	# get address of local var:inp$25
+	li t4, 4168
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$25 
 
@@ -2426,9 +3138,12 @@ longest_common_subseqEntry:
 	# store inp$25 
 
 	# get address of inp$25 points to
-	ld t3, 4168(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4168
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$26 
 
@@ -2437,12 +3152,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$26 into 
-	sd t0, 4160(sp)
+	# get address of local var:ptr_$26
+	li t4, 4160
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$26 
 
@@ -2451,12 +3171,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$26 into 
-	ld t1, 4160(sp)
+	# get value of local var:ptr_$26
+	li t4, 4160
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$26 into 
-	sd t0, 4152(sp)
+	# get address of local var:inp$26
+	li t4, 4152
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$26 
 
@@ -2466,9 +3191,12 @@ longest_common_subseqEntry:
 	# store inp$26 
 
 	# get address of inp$26 points to
-	ld t3, 4152(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4152
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$27 
 
@@ -2477,12 +3205,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$27 into 
-	sd t0, 4144(sp)
+	# get address of local var:ptr_$27
+	li t4, 4144
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$27 
 
@@ -2491,12 +3224,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$27 into 
-	ld t1, 4144(sp)
+	# get value of local var:ptr_$27
+	li t4, 4144
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$27 into 
-	sd t0, 4136(sp)
+	# get address of local var:inp$27
+	li t4, 4136
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$27 
 
@@ -2506,9 +3244,12 @@ longest_common_subseqEntry:
 	# store inp$27 
 
 	# get address of inp$27 points to
-	ld t3, 4136(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4136
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$28 
 
@@ -2517,12 +3258,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$28 into 
-	sd t0, 4128(sp)
+	# get address of local var:ptr_$28
+	li t4, 4128
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$28 
 
@@ -2531,12 +3277,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$28 into 
-	ld t1, 4128(sp)
+	# get value of local var:ptr_$28
+	li t4, 4128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$28 into 
-	sd t0, 4120(sp)
+	# get address of local var:inp$28
+	li t4, 4120
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$28 
 
@@ -2546,9 +3297,12 @@ longest_common_subseqEntry:
 	# store inp$28 
 
 	# get address of inp$28 points to
-	ld t3, 4120(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4120
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$29 
 
@@ -2557,12 +3311,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$29 into 
-	sd t0, 4112(sp)
+	# get address of local var:ptr_$29
+	li t4, 4112
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$29 
 
@@ -2571,12 +3330,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$29 into 
-	ld t1, 4112(sp)
+	# get value of local var:ptr_$29
+	li t4, 4112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$29 into 
-	sd t0, 4104(sp)
+	# get address of local var:inp$29
+	li t4, 4104
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$29 
 
@@ -2586,9 +3350,12 @@ longest_common_subseqEntry:
 	# store inp$29 
 
 	# get address of inp$29 points to
-	ld t3, 4104(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4104
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$30 
 
@@ -2597,12 +3364,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$30 into 
-	sd t0, 4096(sp)
+	# get address of local var:ptr_$30
+	li t4, 4096
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$30 
 
@@ -2611,12 +3383,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$30 into 
-	ld t1, 4096(sp)
+	# get value of local var:ptr_$30
+	li t4, 4096
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$30 into 
-	sd t0, 4088(sp)
+	# get address of local var:inp$30
+	li t4, 4088
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$30 
 
@@ -2626,9 +3403,12 @@ longest_common_subseqEntry:
 	# store inp$30 
 
 	# get address of inp$30 points to
-	ld t3, 4088(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4088
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$31 
 
@@ -2637,12 +3417,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$31 into 
-	sd t0, 4080(sp)
+	# get address of local var:ptr_$31
+	li t4, 4080
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$31 
 
@@ -2651,12 +3436,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$31 into 
-	ld t1, 4080(sp)
+	# get value of local var:ptr_$31
+	li t4, 4080
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$31 into 
-	sd t0, 4072(sp)
+	# get address of local var:inp$31
+	li t4, 4072
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$31 
 
@@ -2666,9 +3456,12 @@ longest_common_subseqEntry:
 	# store inp$31 
 
 	# get address of inp$31 points to
-	ld t3, 4072(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4072
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$32 
 
@@ -2677,12 +3470,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$32 into 
-	sd t0, 4064(sp)
+	# get address of local var:ptr_$32
+	li t4, 4064
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$32 
 
@@ -2691,12 +3489,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$32 into 
-	ld t1, 4064(sp)
+	# get value of local var:ptr_$32
+	li t4, 4064
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$32 into 
-	sd t0, 4056(sp)
+	# get address of local var:inp$32
+	li t4, 4056
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$32 
 
@@ -2706,9 +3509,12 @@ longest_common_subseqEntry:
 	# store inp$32 
 
 	# get address of inp$32 points to
-	ld t3, 4056(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4056
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$33 
 
@@ -2717,12 +3523,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$33 into 
-	sd t0, 4048(sp)
+	# get address of local var:ptr_$33
+	li t4, 4048
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$33 
 
@@ -2731,12 +3542,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$33 into 
-	ld t1, 4048(sp)
+	# get value of local var:ptr_$33
+	li t4, 4048
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$33 into 
-	sd t0, 4040(sp)
+	# get address of local var:inp$33
+	li t4, 4040
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$33 
 
@@ -2746,9 +3562,12 @@ longest_common_subseqEntry:
 	# store inp$33 
 
 	# get address of inp$33 points to
-	ld t3, 4040(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4040
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$34 
 
@@ -2757,12 +3576,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$34 into 
-	sd t0, 4032(sp)
+	# get address of local var:ptr_$34
+	li t4, 4032
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$34 
 
@@ -2771,12 +3595,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$34 into 
-	ld t1, 4032(sp)
+	# get value of local var:ptr_$34
+	li t4, 4032
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$34 into 
-	sd t0, 4024(sp)
+	# get address of local var:inp$34
+	li t4, 4024
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$34 
 
@@ -2786,9 +3615,12 @@ longest_common_subseqEntry:
 	# store inp$34 
 
 	# get address of inp$34 points to
-	ld t3, 4024(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4024
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$35 
 
@@ -2797,12 +3629,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$35 into 
-	sd t0, 4016(sp)
+	# get address of local var:ptr_$35
+	li t4, 4016
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$35 
 
@@ -2811,12 +3648,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$35 into 
-	ld t1, 4016(sp)
+	# get value of local var:ptr_$35
+	li t4, 4016
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$35 into 
-	sd t0, 4008(sp)
+	# get address of local var:inp$35
+	li t4, 4008
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$35 
 
@@ -2826,9 +3668,12 @@ longest_common_subseqEntry:
 	# store inp$35 
 
 	# get address of inp$35 points to
-	ld t3, 4008(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 4008
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$36 
 
@@ -2837,12 +3682,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$36 into 
-	sd t0, 4000(sp)
+	# get address of local var:ptr_$36
+	li t4, 4000
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$36 
 
@@ -2851,12 +3701,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$36 into 
-	ld t1, 4000(sp)
+	# get value of local var:ptr_$36
+	li t4, 4000
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$36 into 
-	sd t0, 3992(sp)
+	# get address of local var:inp$36
+	li t4, 3992
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$36 
 
@@ -2866,9 +3721,12 @@ longest_common_subseqEntry:
 	# store inp$36 
 
 	# get address of inp$36 points to
-	ld t3, 3992(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3992
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$37 
 
@@ -2877,12 +3735,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$37 into 
-	sd t0, 3984(sp)
+	# get address of local var:ptr_$37
+	li t4, 3984
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$37 
 
@@ -2891,12 +3754,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$37 into 
-	ld t1, 3984(sp)
+	# get value of local var:ptr_$37
+	li t4, 3984
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$37 into 
-	sd t0, 3976(sp)
+	# get address of local var:inp$37
+	li t4, 3976
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$37 
 
@@ -2906,9 +3774,12 @@ longest_common_subseqEntry:
 	# store inp$37 
 
 	# get address of inp$37 points to
-	ld t3, 3976(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3976
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$38 
 
@@ -2917,12 +3788,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$38 into 
-	sd t0, 3968(sp)
+	# get address of local var:ptr_$38
+	li t4, 3968
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$38 
 
@@ -2931,12 +3807,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$38 into 
-	ld t1, 3968(sp)
+	# get value of local var:ptr_$38
+	li t4, 3968
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$38 into 
-	sd t0, 3960(sp)
+	# get address of local var:inp$38
+	li t4, 3960
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$38 
 
@@ -2946,9 +3827,12 @@ longest_common_subseqEntry:
 	# store inp$38 
 
 	# get address of inp$38 points to
-	ld t3, 3960(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3960
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$39 
 
@@ -2957,12 +3841,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$39 into 
-	sd t0, 3952(sp)
+	# get address of local var:ptr_$39
+	li t4, 3952
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$39 
 
@@ -2971,12 +3860,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$39 into 
-	ld t1, 3952(sp)
+	# get value of local var:ptr_$39
+	li t4, 3952
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$39 into 
-	sd t0, 3944(sp)
+	# get address of local var:inp$39
+	li t4, 3944
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$39 
 
@@ -2986,9 +3880,12 @@ longest_common_subseqEntry:
 	# store inp$39 
 
 	# get address of inp$39 points to
-	ld t3, 3944(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3944
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$40 
 
@@ -2997,12 +3894,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$40 into 
-	sd t0, 3936(sp)
+	# get address of local var:ptr_$40
+	li t4, 3936
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$40 
 
@@ -3011,12 +3913,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$40 into 
-	ld t1, 3936(sp)
+	# get value of local var:ptr_$40
+	li t4, 3936
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$40 into 
-	sd t0, 3928(sp)
+	# get address of local var:inp$40
+	li t4, 3928
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$40 
 
@@ -3026,9 +3933,12 @@ longest_common_subseqEntry:
 	# store inp$40 
 
 	# get address of inp$40 points to
-	ld t3, 3928(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3928
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$41 
 
@@ -3037,12 +3947,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$41 into 
-	sd t0, 3920(sp)
+	# get address of local var:ptr_$41
+	li t4, 3920
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$41 
 
@@ -3051,12 +3966,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$41 into 
-	ld t1, 3920(sp)
+	# get value of local var:ptr_$41
+	li t4, 3920
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$41 into 
-	sd t0, 3912(sp)
+	# get address of local var:inp$41
+	li t4, 3912
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$41 
 
@@ -3066,9 +3986,12 @@ longest_common_subseqEntry:
 	# store inp$41 
 
 	# get address of inp$41 points to
-	ld t3, 3912(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3912
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$42 
 
@@ -3077,12 +4000,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$42 into 
-	sd t0, 3904(sp)
+	# get address of local var:ptr_$42
+	li t4, 3904
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$42 
 
@@ -3091,12 +4019,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$42 into 
-	ld t1, 3904(sp)
+	# get value of local var:ptr_$42
+	li t4, 3904
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$42 into 
-	sd t0, 3896(sp)
+	# get address of local var:inp$42
+	li t4, 3896
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$42 
 
@@ -3106,9 +4039,12 @@ longest_common_subseqEntry:
 	# store inp$42 
 
 	# get address of inp$42 points to
-	ld t3, 3896(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3896
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$43 
 
@@ -3117,12 +4053,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$43 into 
-	sd t0, 3888(sp)
+	# get address of local var:ptr_$43
+	li t4, 3888
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$43 
 
@@ -3131,12 +4072,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$43 into 
-	ld t1, 3888(sp)
+	# get value of local var:ptr_$43
+	li t4, 3888
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$43 into 
-	sd t0, 3880(sp)
+	# get address of local var:inp$43
+	li t4, 3880
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$43 
 
@@ -3146,9 +4092,12 @@ longest_common_subseqEntry:
 	# store inp$43 
 
 	# get address of inp$43 points to
-	ld t3, 3880(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3880
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$44 
 
@@ -3157,12 +4106,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$44 into 
-	sd t0, 3872(sp)
+	# get address of local var:ptr_$44
+	li t4, 3872
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$44 
 
@@ -3171,12 +4125,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$44 into 
-	ld t1, 3872(sp)
+	# get value of local var:ptr_$44
+	li t4, 3872
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$44 into 
-	sd t0, 3864(sp)
+	# get address of local var:inp$44
+	li t4, 3864
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$44 
 
@@ -3186,9 +4145,12 @@ longest_common_subseqEntry:
 	# store inp$44 
 
 	# get address of inp$44 points to
-	ld t3, 3864(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3864
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$45 
 
@@ -3197,12 +4159,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$45 into 
-	sd t0, 3856(sp)
+	# get address of local var:ptr_$45
+	li t4, 3856
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$45 
 
@@ -3211,12 +4178,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$45 into 
-	ld t1, 3856(sp)
+	# get value of local var:ptr_$45
+	li t4, 3856
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$45 into 
-	sd t0, 3848(sp)
+	# get address of local var:inp$45
+	li t4, 3848
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$45 
 
@@ -3226,9 +4198,12 @@ longest_common_subseqEntry:
 	# store inp$45 
 
 	# get address of inp$45 points to
-	ld t3, 3848(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3848
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$46 
 
@@ -3237,12 +4212,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$46 into 
-	sd t0, 3840(sp)
+	# get address of local var:ptr_$46
+	li t4, 3840
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$46 
 
@@ -3251,12 +4231,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$46 into 
-	ld t1, 3840(sp)
+	# get value of local var:ptr_$46
+	li t4, 3840
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$46 into 
-	sd t0, 3832(sp)
+	# get address of local var:inp$46
+	li t4, 3832
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$46 
 
@@ -3266,9 +4251,12 @@ longest_common_subseqEntry:
 	# store inp$46 
 
 	# get address of inp$46 points to
-	ld t3, 3832(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3832
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$47 
 
@@ -3277,12 +4265,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$47 into 
-	sd t0, 3824(sp)
+	# get address of local var:ptr_$47
+	li t4, 3824
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$47 
 
@@ -3291,12 +4284,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$47 into 
-	ld t1, 3824(sp)
+	# get value of local var:ptr_$47
+	li t4, 3824
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$47 into 
-	sd t0, 3816(sp)
+	# get address of local var:inp$47
+	li t4, 3816
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$47 
 
@@ -3306,9 +4304,12 @@ longest_common_subseqEntry:
 	# store inp$47 
 
 	# get address of inp$47 points to
-	ld t3, 3816(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3816
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$48 
 
@@ -3317,12 +4318,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$48 into 
-	sd t0, 3808(sp)
+	# get address of local var:ptr_$48
+	li t4, 3808
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$48 
 
@@ -3331,12 +4337,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$48 into 
-	ld t1, 3808(sp)
+	# get value of local var:ptr_$48
+	li t4, 3808
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$48 into 
-	sd t0, 3800(sp)
+	# get address of local var:inp$48
+	li t4, 3800
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$48 
 
@@ -3346,9 +4357,12 @@ longest_common_subseqEntry:
 	# store inp$48 
 
 	# get address of inp$48 points to
-	ld t3, 3800(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3800
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$49 
 
@@ -3357,12 +4371,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$49 into 
-	sd t0, 3792(sp)
+	# get address of local var:ptr_$49
+	li t4, 3792
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$49 
 
@@ -3371,12 +4390,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$49 into 
-	ld t1, 3792(sp)
+	# get value of local var:ptr_$49
+	li t4, 3792
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$49 into 
-	sd t0, 3784(sp)
+	# get address of local var:inp$49
+	li t4, 3784
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$49 
 
@@ -3386,9 +4410,12 @@ longest_common_subseqEntry:
 	# store inp$49 
 
 	# get address of inp$49 points to
-	ld t3, 3784(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3784
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$50 
 
@@ -3397,12 +4424,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$50 into 
-	sd t0, 3776(sp)
+	# get address of local var:ptr_$50
+	li t4, 3776
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$50 
 
@@ -3411,12 +4443,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$50 into 
-	ld t1, 3776(sp)
+	# get value of local var:ptr_$50
+	li t4, 3776
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$50 into 
-	sd t0, 3768(sp)
+	# get address of local var:inp$50
+	li t4, 3768
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$50 
 
@@ -3426,9 +4463,12 @@ longest_common_subseqEntry:
 	# store inp$50 
 
 	# get address of inp$50 points to
-	ld t3, 3768(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3768
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$51 
 
@@ -3437,12 +4477,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$51 into 
-	sd t0, 3760(sp)
+	# get address of local var:ptr_$51
+	li t4, 3760
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$51 
 
@@ -3451,12 +4496,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$51 into 
-	ld t1, 3760(sp)
+	# get value of local var:ptr_$51
+	li t4, 3760
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$51 into 
-	sd t0, 3752(sp)
+	# get address of local var:inp$51
+	li t4, 3752
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$51 
 
@@ -3466,9 +4516,12 @@ longest_common_subseqEntry:
 	# store inp$51 
 
 	# get address of inp$51 points to
-	ld t3, 3752(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3752
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$52 
 
@@ -3477,12 +4530,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$52 into 
-	sd t0, 3744(sp)
+	# get address of local var:ptr_$52
+	li t4, 3744
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$52 
 
@@ -3491,12 +4549,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$52 into 
-	ld t1, 3744(sp)
+	# get value of local var:ptr_$52
+	li t4, 3744
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$52 into 
-	sd t0, 3736(sp)
+	# get address of local var:inp$52
+	li t4, 3736
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$52 
 
@@ -3506,9 +4569,12 @@ longest_common_subseqEntry:
 	# store inp$52 
 
 	# get address of inp$52 points to
-	ld t3, 3736(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3736
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$53 
 
@@ -3517,12 +4583,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$53 into 
-	sd t0, 3728(sp)
+	# get address of local var:ptr_$53
+	li t4, 3728
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$53 
 
@@ -3531,12 +4602,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$53 into 
-	ld t1, 3728(sp)
+	# get value of local var:ptr_$53
+	li t4, 3728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$53 into 
-	sd t0, 3720(sp)
+	# get address of local var:inp$53
+	li t4, 3720
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$53 
 
@@ -3546,9 +4622,12 @@ longest_common_subseqEntry:
 	# store inp$53 
 
 	# get address of inp$53 points to
-	ld t3, 3720(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3720
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$54 
 
@@ -3557,12 +4636,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$54 into 
-	sd t0, 3712(sp)
+	# get address of local var:ptr_$54
+	li t4, 3712
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$54 
 
@@ -3571,12 +4655,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$54 into 
-	ld t1, 3712(sp)
+	# get value of local var:ptr_$54
+	li t4, 3712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$54 into 
-	sd t0, 3704(sp)
+	# get address of local var:inp$54
+	li t4, 3704
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$54 
 
@@ -3586,9 +4675,12 @@ longest_common_subseqEntry:
 	# store inp$54 
 
 	# get address of inp$54 points to
-	ld t3, 3704(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3704
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$55 
 
@@ -3597,12 +4689,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$55 into 
-	sd t0, 3696(sp)
+	# get address of local var:ptr_$55
+	li t4, 3696
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$55 
 
@@ -3611,12 +4708,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$55 into 
-	ld t1, 3696(sp)
+	# get value of local var:ptr_$55
+	li t4, 3696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$55 into 
-	sd t0, 3688(sp)
+	# get address of local var:inp$55
+	li t4, 3688
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$55 
 
@@ -3626,9 +4728,12 @@ longest_common_subseqEntry:
 	# store inp$55 
 
 	# get address of inp$55 points to
-	ld t3, 3688(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3688
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$56 
 
@@ -3637,12 +4742,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$56 into 
-	sd t0, 3680(sp)
+	# get address of local var:ptr_$56
+	li t4, 3680
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$56 
 
@@ -3651,12 +4761,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$56 into 
-	ld t1, 3680(sp)
+	# get value of local var:ptr_$56
+	li t4, 3680
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$56 into 
-	sd t0, 3672(sp)
+	# get address of local var:inp$56
+	li t4, 3672
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$56 
 
@@ -3666,9 +4781,12 @@ longest_common_subseqEntry:
 	# store inp$56 
 
 	# get address of inp$56 points to
-	ld t3, 3672(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3672
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$57 
 
@@ -3677,12 +4795,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$57 into 
-	sd t0, 3664(sp)
+	# get address of local var:ptr_$57
+	li t4, 3664
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$57 
 
@@ -3691,12 +4814,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$57 into 
-	ld t1, 3664(sp)
+	# get value of local var:ptr_$57
+	li t4, 3664
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$57 into 
-	sd t0, 3656(sp)
+	# get address of local var:inp$57
+	li t4, 3656
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$57 
 
@@ -3706,9 +4834,12 @@ longest_common_subseqEntry:
 	# store inp$57 
 
 	# get address of inp$57 points to
-	ld t3, 3656(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3656
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$58 
 
@@ -3717,12 +4848,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$58 into 
-	sd t0, 3648(sp)
+	# get address of local var:ptr_$58
+	li t4, 3648
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$58 
 
@@ -3731,12 +4867,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$58 into 
-	ld t1, 3648(sp)
+	# get value of local var:ptr_$58
+	li t4, 3648
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$58 into 
-	sd t0, 3640(sp)
+	# get address of local var:inp$58
+	li t4, 3640
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$58 
 
@@ -3746,9 +4887,12 @@ longest_common_subseqEntry:
 	# store inp$58 
 
 	# get address of inp$58 points to
-	ld t3, 3640(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3640
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$59 
 
@@ -3757,12 +4901,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$59 into 
-	sd t0, 3632(sp)
+	# get address of local var:ptr_$59
+	li t4, 3632
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$59 
 
@@ -3771,12 +4920,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$59 into 
-	ld t1, 3632(sp)
+	# get value of local var:ptr_$59
+	li t4, 3632
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$59 into 
-	sd t0, 3624(sp)
+	# get address of local var:inp$59
+	li t4, 3624
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$59 
 
@@ -3786,9 +4940,12 @@ longest_common_subseqEntry:
 	# store inp$59 
 
 	# get address of inp$59 points to
-	ld t3, 3624(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3624
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$60 
 
@@ -3797,12 +4954,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$60 into 
-	sd t0, 3616(sp)
+	# get address of local var:ptr_$60
+	li t4, 3616
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$60 
 
@@ -3811,12 +4973,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$60 into 
-	ld t1, 3616(sp)
+	# get value of local var:ptr_$60
+	li t4, 3616
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$60 into 
-	sd t0, 3608(sp)
+	# get address of local var:inp$60
+	li t4, 3608
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$60 
 
@@ -3826,9 +4993,12 @@ longest_common_subseqEntry:
 	# store inp$60 
 
 	# get address of inp$60 points to
-	ld t3, 3608(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3608
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$61 
 
@@ -3837,12 +5007,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$61 into 
-	sd t0, 3600(sp)
+	# get address of local var:ptr_$61
+	li t4, 3600
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$61 
 
@@ -3851,12 +5026,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$61 into 
-	ld t1, 3600(sp)
+	# get value of local var:ptr_$61
+	li t4, 3600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$61 into 
-	sd t0, 3592(sp)
+	# get address of local var:inp$61
+	li t4, 3592
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$61 
 
@@ -3866,9 +5046,12 @@ longest_common_subseqEntry:
 	# store inp$61 
 
 	# get address of inp$61 points to
-	ld t3, 3592(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3592
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$62 
 
@@ -3877,12 +5060,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$62 into 
-	sd t0, 3584(sp)
+	# get address of local var:ptr_$62
+	li t4, 3584
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$62 
 
@@ -3891,12 +5079,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$62 into 
-	ld t1, 3584(sp)
+	# get value of local var:ptr_$62
+	li t4, 3584
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$62 into 
-	sd t0, 3576(sp)
+	# get address of local var:inp$62
+	li t4, 3576
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$62 
 
@@ -3906,9 +5099,12 @@ longest_common_subseqEntry:
 	# store inp$62 
 
 	# get address of inp$62 points to
-	ld t3, 3576(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3576
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$63 
 
@@ -3917,12 +5113,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$63 into 
-	sd t0, 3568(sp)
+	# get address of local var:ptr_$63
+	li t4, 3568
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$63 
 
@@ -3931,12 +5132,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$63 into 
-	ld t1, 3568(sp)
+	# get value of local var:ptr_$63
+	li t4, 3568
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$63 into 
-	sd t0, 3560(sp)
+	# get address of local var:inp$63
+	li t4, 3560
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$63 
 
@@ -3946,9 +5152,12 @@ longest_common_subseqEntry:
 	# store inp$63 
 
 	# get address of inp$63 points to
-	ld t3, 3560(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3560
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$64 
 
@@ -3957,12 +5166,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$64 into 
-	sd t0, 3552(sp)
+	# get address of local var:ptr_$64
+	li t4, 3552
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$64 
 
@@ -3971,12 +5185,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$64 into 
-	ld t1, 3552(sp)
+	# get value of local var:ptr_$64
+	li t4, 3552
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$64 into 
-	sd t0, 3544(sp)
+	# get address of local var:inp$64
+	li t4, 3544
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$64 
 
@@ -3986,9 +5205,12 @@ longest_common_subseqEntry:
 	# store inp$64 
 
 	# get address of inp$64 points to
-	ld t3, 3544(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3544
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$65 
 
@@ -3997,12 +5219,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$65 into 
-	sd t0, 3536(sp)
+	# get address of local var:ptr_$65
+	li t4, 3536
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$65 
 
@@ -4011,12 +5238,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$65 into 
-	ld t1, 3536(sp)
+	# get value of local var:ptr_$65
+	li t4, 3536
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$65 into 
-	sd t0, 3528(sp)
+	# get address of local var:inp$65
+	li t4, 3528
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$65 
 
@@ -4026,9 +5258,12 @@ longest_common_subseqEntry:
 	# store inp$65 
 
 	# get address of inp$65 points to
-	ld t3, 3528(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3528
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$66 
 
@@ -4037,12 +5272,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$66 into 
-	sd t0, 3520(sp)
+	# get address of local var:ptr_$66
+	li t4, 3520
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$66 
 
@@ -4051,12 +5291,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$66 into 
-	ld t1, 3520(sp)
+	# get value of local var:ptr_$66
+	li t4, 3520
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$66 into 
-	sd t0, 3512(sp)
+	# get address of local var:inp$66
+	li t4, 3512
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$66 
 
@@ -4066,9 +5311,12 @@ longest_common_subseqEntry:
 	# store inp$66 
 
 	# get address of inp$66 points to
-	ld t3, 3512(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3512
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$67 
 
@@ -4077,12 +5325,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$67 into 
-	sd t0, 3504(sp)
+	# get address of local var:ptr_$67
+	li t4, 3504
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$67 
 
@@ -4091,12 +5344,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$67 into 
-	ld t1, 3504(sp)
+	# get value of local var:ptr_$67
+	li t4, 3504
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$67 into 
-	sd t0, 3496(sp)
+	# get address of local var:inp$67
+	li t4, 3496
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$67 
 
@@ -4106,9 +5364,12 @@ longest_common_subseqEntry:
 	# store inp$67 
 
 	# get address of inp$67 points to
-	ld t3, 3496(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$68 
 
@@ -4117,12 +5378,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$68 into 
-	sd t0, 3488(sp)
+	# get address of local var:ptr_$68
+	li t4, 3488
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$68 
 
@@ -4131,12 +5397,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$68 into 
-	ld t1, 3488(sp)
+	# get value of local var:ptr_$68
+	li t4, 3488
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$68 into 
-	sd t0, 3480(sp)
+	# get address of local var:inp$68
+	li t4, 3480
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$68 
 
@@ -4146,9 +5417,12 @@ longest_common_subseqEntry:
 	# store inp$68 
 
 	# get address of inp$68 points to
-	ld t3, 3480(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3480
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$69 
 
@@ -4157,12 +5431,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$69 into 
-	sd t0, 3472(sp)
+	# get address of local var:ptr_$69
+	li t4, 3472
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$69 
 
@@ -4171,12 +5450,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$69 into 
-	ld t1, 3472(sp)
+	# get value of local var:ptr_$69
+	li t4, 3472
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$69 into 
-	sd t0, 3464(sp)
+	# get address of local var:inp$69
+	li t4, 3464
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$69 
 
@@ -4186,9 +5470,12 @@ longest_common_subseqEntry:
 	# store inp$69 
 
 	# get address of inp$69 points to
-	ld t3, 3464(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3464
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$70 
 
@@ -4197,12 +5484,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$70 into 
-	sd t0, 3456(sp)
+	# get address of local var:ptr_$70
+	li t4, 3456
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$70 
 
@@ -4211,12 +5503,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$70 into 
-	ld t1, 3456(sp)
+	# get value of local var:ptr_$70
+	li t4, 3456
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$70 into 
-	sd t0, 3448(sp)
+	# get address of local var:inp$70
+	li t4, 3448
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$70 
 
@@ -4226,9 +5523,12 @@ longest_common_subseqEntry:
 	# store inp$70 
 
 	# get address of inp$70 points to
-	ld t3, 3448(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3448
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$71 
 
@@ -4237,12 +5537,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$71 into 
-	sd t0, 3440(sp)
+	# get address of local var:ptr_$71
+	li t4, 3440
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$71 
 
@@ -4251,12 +5556,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$71 into 
-	ld t1, 3440(sp)
+	# get value of local var:ptr_$71
+	li t4, 3440
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$71 into 
-	sd t0, 3432(sp)
+	# get address of local var:inp$71
+	li t4, 3432
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$71 
 
@@ -4266,9 +5576,12 @@ longest_common_subseqEntry:
 	# store inp$71 
 
 	# get address of inp$71 points to
-	ld t3, 3432(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3432
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$72 
 
@@ -4277,12 +5590,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$72 into 
-	sd t0, 3424(sp)
+	# get address of local var:ptr_$72
+	li t4, 3424
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$72 
 
@@ -4291,12 +5609,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$72 into 
-	ld t1, 3424(sp)
+	# get value of local var:ptr_$72
+	li t4, 3424
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$72 into 
-	sd t0, 3416(sp)
+	# get address of local var:inp$72
+	li t4, 3416
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$72 
 
@@ -4306,9 +5629,12 @@ longest_common_subseqEntry:
 	# store inp$72 
 
 	# get address of inp$72 points to
-	ld t3, 3416(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3416
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$73 
 
@@ -4317,12 +5643,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$73 into 
-	sd t0, 3408(sp)
+	# get address of local var:ptr_$73
+	li t4, 3408
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$73 
 
@@ -4331,12 +5662,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$73 into 
-	ld t1, 3408(sp)
+	# get value of local var:ptr_$73
+	li t4, 3408
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$73 into 
-	sd t0, 3400(sp)
+	# get address of local var:inp$73
+	li t4, 3400
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$73 
 
@@ -4346,9 +5682,12 @@ longest_common_subseqEntry:
 	# store inp$73 
 
 	# get address of inp$73 points to
-	ld t3, 3400(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3400
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$74 
 
@@ -4357,12 +5696,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$74 into 
-	sd t0, 3392(sp)
+	# get address of local var:ptr_$74
+	li t4, 3392
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$74 
 
@@ -4371,12 +5715,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$74 into 
-	ld t1, 3392(sp)
+	# get value of local var:ptr_$74
+	li t4, 3392
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$74 into 
-	sd t0, 3384(sp)
+	# get address of local var:inp$74
+	li t4, 3384
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$74 
 
@@ -4386,9 +5735,12 @@ longest_common_subseqEntry:
 	# store inp$74 
 
 	# get address of inp$74 points to
-	ld t3, 3384(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$75 
 
@@ -4397,12 +5749,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$75 into 
-	sd t0, 3376(sp)
+	# get address of local var:ptr_$75
+	li t4, 3376
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$75 
 
@@ -4411,12 +5768,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$75 into 
-	ld t1, 3376(sp)
+	# get value of local var:ptr_$75
+	li t4, 3376
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$75 into 
-	sd t0, 3368(sp)
+	# get address of local var:inp$75
+	li t4, 3368
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$75 
 
@@ -4426,9 +5788,12 @@ longest_common_subseqEntry:
 	# store inp$75 
 
 	# get address of inp$75 points to
-	ld t3, 3368(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3368
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$76 
 
@@ -4437,12 +5802,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$76 into 
-	sd t0, 3360(sp)
+	# get address of local var:ptr_$76
+	li t4, 3360
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$76 
 
@@ -4451,12 +5821,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$76 into 
-	ld t1, 3360(sp)
+	# get value of local var:ptr_$76
+	li t4, 3360
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$76 into 
-	sd t0, 3352(sp)
+	# get address of local var:inp$76
+	li t4, 3352
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$76 
 
@@ -4466,9 +5841,12 @@ longest_common_subseqEntry:
 	# store inp$76 
 
 	# get address of inp$76 points to
-	ld t3, 3352(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3352
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$77 
 
@@ -4477,12 +5855,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$77 into 
-	sd t0, 3344(sp)
+	# get address of local var:ptr_$77
+	li t4, 3344
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$77 
 
@@ -4491,12 +5874,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$77 into 
-	ld t1, 3344(sp)
+	# get value of local var:ptr_$77
+	li t4, 3344
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$77 into 
-	sd t0, 3336(sp)
+	# get address of local var:inp$77
+	li t4, 3336
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$77 
 
@@ -4506,9 +5894,12 @@ longest_common_subseqEntry:
 	# store inp$77 
 
 	# get address of inp$77 points to
-	ld t3, 3336(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3336
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$78 
 
@@ -4517,12 +5908,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$78 into 
-	sd t0, 3328(sp)
+	# get address of local var:ptr_$78
+	li t4, 3328
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$78 
 
@@ -4531,12 +5927,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$78 into 
-	ld t1, 3328(sp)
+	# get value of local var:ptr_$78
+	li t4, 3328
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$78 into 
-	sd t0, 3320(sp)
+	# get address of local var:inp$78
+	li t4, 3320
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$78 
 
@@ -4546,9 +5947,12 @@ longest_common_subseqEntry:
 	# store inp$78 
 
 	# get address of inp$78 points to
-	ld t3, 3320(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3320
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$79 
 
@@ -4557,12 +5961,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$79 into 
-	sd t0, 3312(sp)
+	# get address of local var:ptr_$79
+	li t4, 3312
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$79 
 
@@ -4571,12 +5980,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$79 into 
-	ld t1, 3312(sp)
+	# get value of local var:ptr_$79
+	li t4, 3312
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$79 into 
-	sd t0, 3304(sp)
+	# get address of local var:inp$79
+	li t4, 3304
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$79 
 
@@ -4586,9 +6000,12 @@ longest_common_subseqEntry:
 	# store inp$79 
 
 	# get address of inp$79 points to
-	ld t3, 3304(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3304
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$80 
 
@@ -4597,12 +6014,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$80 into 
-	sd t0, 3296(sp)
+	# get address of local var:ptr_$80
+	li t4, 3296
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$80 
 
@@ -4611,12 +6033,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$80 into 
-	ld t1, 3296(sp)
+	# get value of local var:ptr_$80
+	li t4, 3296
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$80 into 
-	sd t0, 3288(sp)
+	# get address of local var:inp$80
+	li t4, 3288
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$80 
 
@@ -4626,9 +6053,12 @@ longest_common_subseqEntry:
 	# store inp$80 
 
 	# get address of inp$80 points to
-	ld t3, 3288(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3288
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$81 
 
@@ -4637,12 +6067,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$81 into 
-	sd t0, 3280(sp)
+	# get address of local var:ptr_$81
+	li t4, 3280
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$81 
 
@@ -4651,12 +6086,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$81 into 
-	ld t1, 3280(sp)
+	# get value of local var:ptr_$81
+	li t4, 3280
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$81 into 
-	sd t0, 3272(sp)
+	# get address of local var:inp$81
+	li t4, 3272
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$81 
 
@@ -4666,9 +6106,12 @@ longest_common_subseqEntry:
 	# store inp$81 
 
 	# get address of inp$81 points to
-	ld t3, 3272(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3272
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$82 
 
@@ -4677,12 +6120,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$82 into 
-	sd t0, 3264(sp)
+	# get address of local var:ptr_$82
+	li t4, 3264
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$82 
 
@@ -4691,12 +6139,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$82 into 
-	ld t1, 3264(sp)
+	# get value of local var:ptr_$82
+	li t4, 3264
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$82 into 
-	sd t0, 3256(sp)
+	# get address of local var:inp$82
+	li t4, 3256
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$82 
 
@@ -4706,9 +6159,12 @@ longest_common_subseqEntry:
 	# store inp$82 
 
 	# get address of inp$82 points to
-	ld t3, 3256(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3256
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$83 
 
@@ -4717,12 +6173,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$83 into 
-	sd t0, 3248(sp)
+	# get address of local var:ptr_$83
+	li t4, 3248
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$83 
 
@@ -4731,12 +6192,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$83 into 
-	ld t1, 3248(sp)
+	# get value of local var:ptr_$83
+	li t4, 3248
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$83 into 
-	sd t0, 3240(sp)
+	# get address of local var:inp$83
+	li t4, 3240
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$83 
 
@@ -4746,9 +6212,12 @@ longest_common_subseqEntry:
 	# store inp$83 
 
 	# get address of inp$83 points to
-	ld t3, 3240(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3240
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$84 
 
@@ -4757,12 +6226,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$84 into 
-	sd t0, 3232(sp)
+	# get address of local var:ptr_$84
+	li t4, 3232
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$84 
 
@@ -4771,12 +6245,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$84 into 
-	ld t1, 3232(sp)
+	# get value of local var:ptr_$84
+	li t4, 3232
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$84 into 
-	sd t0, 3224(sp)
+	# get address of local var:inp$84
+	li t4, 3224
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$84 
 
@@ -4786,9 +6265,12 @@ longest_common_subseqEntry:
 	# store inp$84 
 
 	# get address of inp$84 points to
-	ld t3, 3224(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3224
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$85 
 
@@ -4797,12 +6279,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$85 into 
-	sd t0, 3216(sp)
+	# get address of local var:ptr_$85
+	li t4, 3216
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$85 
 
@@ -4811,12 +6298,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$85 into 
-	ld t1, 3216(sp)
+	# get value of local var:ptr_$85
+	li t4, 3216
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$85 into 
-	sd t0, 3208(sp)
+	# get address of local var:inp$85
+	li t4, 3208
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$85 
 
@@ -4826,9 +6318,12 @@ longest_common_subseqEntry:
 	# store inp$85 
 
 	# get address of inp$85 points to
-	ld t3, 3208(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3208
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$86 
 
@@ -4837,12 +6332,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$86 into 
-	sd t0, 3200(sp)
+	# get address of local var:ptr_$86
+	li t4, 3200
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$86 
 
@@ -4851,12 +6351,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$86 into 
-	ld t1, 3200(sp)
+	# get value of local var:ptr_$86
+	li t4, 3200
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$86 into 
-	sd t0, 3192(sp)
+	# get address of local var:inp$86
+	li t4, 3192
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$86 
 
@@ -4866,9 +6371,12 @@ longest_common_subseqEntry:
 	# store inp$86 
 
 	# get address of inp$86 points to
-	ld t3, 3192(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3192
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$87 
 
@@ -4877,12 +6385,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$87 into 
-	sd t0, 3184(sp)
+	# get address of local var:ptr_$87
+	li t4, 3184
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$87 
 
@@ -4891,12 +6404,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$87 into 
-	ld t1, 3184(sp)
+	# get value of local var:ptr_$87
+	li t4, 3184
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$87 into 
-	sd t0, 3176(sp)
+	# get address of local var:inp$87
+	li t4, 3176
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$87 
 
@@ -4906,9 +6424,12 @@ longest_common_subseqEntry:
 	# store inp$87 
 
 	# get address of inp$87 points to
-	ld t3, 3176(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3176
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$88 
 
@@ -4917,12 +6438,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$88 into 
-	sd t0, 3168(sp)
+	# get address of local var:ptr_$88
+	li t4, 3168
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$88 
 
@@ -4931,12 +6457,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$88 into 
-	ld t1, 3168(sp)
+	# get value of local var:ptr_$88
+	li t4, 3168
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$88 into 
-	sd t0, 3160(sp)
+	# get address of local var:inp$88
+	li t4, 3160
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$88 
 
@@ -4946,9 +6477,12 @@ longest_common_subseqEntry:
 	# store inp$88 
 
 	# get address of inp$88 points to
-	ld t3, 3160(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3160
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$89 
 
@@ -4957,12 +6491,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$89 into 
-	sd t0, 3152(sp)
+	# get address of local var:ptr_$89
+	li t4, 3152
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$89 
 
@@ -4971,12 +6510,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$89 into 
-	ld t1, 3152(sp)
+	# get value of local var:ptr_$89
+	li t4, 3152
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$89 into 
-	sd t0, 3144(sp)
+	# get address of local var:inp$89
+	li t4, 3144
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$89 
 
@@ -4986,9 +6530,12 @@ longest_common_subseqEntry:
 	# store inp$89 
 
 	# get address of inp$89 points to
-	ld t3, 3144(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3144
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$90 
 
@@ -4997,12 +6544,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$90 into 
-	sd t0, 3136(sp)
+	# get address of local var:ptr_$90
+	li t4, 3136
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$90 
 
@@ -5011,12 +6563,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$90 into 
-	ld t1, 3136(sp)
+	# get value of local var:ptr_$90
+	li t4, 3136
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$90 into 
-	sd t0, 3128(sp)
+	# get address of local var:inp$90
+	li t4, 3128
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$90 
 
@@ -5026,9 +6583,12 @@ longest_common_subseqEntry:
 	# store inp$90 
 
 	# get address of inp$90 points to
-	ld t3, 3128(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$91 
 
@@ -5037,12 +6597,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$91 into 
-	sd t0, 3120(sp)
+	# get address of local var:ptr_$91
+	li t4, 3120
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$91 
 
@@ -5051,12 +6616,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$91 into 
-	ld t1, 3120(sp)
+	# get value of local var:ptr_$91
+	li t4, 3120
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$91 into 
-	sd t0, 3112(sp)
+	# get address of local var:inp$91
+	li t4, 3112
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$91 
 
@@ -5066,9 +6636,12 @@ longest_common_subseqEntry:
 	# store inp$91 
 
 	# get address of inp$91 points to
-	ld t3, 3112(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$92 
 
@@ -5077,12 +6650,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$92 into 
-	sd t0, 3104(sp)
+	# get address of local var:ptr_$92
+	li t4, 3104
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$92 
 
@@ -5091,12 +6669,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$92 into 
-	ld t1, 3104(sp)
+	# get value of local var:ptr_$92
+	li t4, 3104
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$92 into 
-	sd t0, 3096(sp)
+	# get address of local var:inp$92
+	li t4, 3096
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$92 
 
@@ -5106,9 +6689,12 @@ longest_common_subseqEntry:
 	# store inp$92 
 
 	# get address of inp$92 points to
-	ld t3, 3096(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3096
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$93 
 
@@ -5117,12 +6703,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$93 into 
-	sd t0, 3088(sp)
+	# get address of local var:ptr_$93
+	li t4, 3088
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$93 
 
@@ -5131,12 +6722,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$93 into 
-	ld t1, 3088(sp)
+	# get value of local var:ptr_$93
+	li t4, 3088
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$93 into 
-	sd t0, 3080(sp)
+	# get address of local var:inp$93
+	li t4, 3080
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$93 
 
@@ -5146,9 +6742,12 @@ longest_common_subseqEntry:
 	# store inp$93 
 
 	# get address of inp$93 points to
-	ld t3, 3080(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3080
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$94 
 
@@ -5157,12 +6756,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$94 into 
-	sd t0, 3072(sp)
+	# get address of local var:ptr_$94
+	li t4, 3072
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$94 
 
@@ -5171,12 +6775,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$94 into 
-	ld t1, 3072(sp)
+	# get value of local var:ptr_$94
+	li t4, 3072
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$94 into 
-	sd t0, 3064(sp)
+	# get address of local var:inp$94
+	li t4, 3064
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$94 
 
@@ -5186,9 +6795,12 @@ longest_common_subseqEntry:
 	# store inp$94 
 
 	# get address of inp$94 points to
-	ld t3, 3064(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3064
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$95 
 
@@ -5197,12 +6809,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$95 into 
-	sd t0, 3056(sp)
+	# get address of local var:ptr_$95
+	li t4, 3056
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$95 
 
@@ -5211,12 +6828,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$95 into 
-	ld t1, 3056(sp)
+	# get value of local var:ptr_$95
+	li t4, 3056
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$95 into 
-	sd t0, 3048(sp)
+	# get address of local var:inp$95
+	li t4, 3048
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$95 
 
@@ -5226,9 +6848,12 @@ longest_common_subseqEntry:
 	# store inp$95 
 
 	# get address of inp$95 points to
-	ld t3, 3048(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3048
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$96 
 
@@ -5237,12 +6862,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$96 into 
-	sd t0, 3040(sp)
+	# get address of local var:ptr_$96
+	li t4, 3040
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$96 
 
@@ -5251,12 +6881,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$96 into 
-	ld t1, 3040(sp)
+	# get value of local var:ptr_$96
+	li t4, 3040
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$96 into 
-	sd t0, 3032(sp)
+	# get address of local var:inp$96
+	li t4, 3032
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$96 
 
@@ -5266,9 +6901,12 @@ longest_common_subseqEntry:
 	# store inp$96 
 
 	# get address of inp$96 points to
-	ld t3, 3032(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3032
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$97 
 
@@ -5277,12 +6915,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$97 into 
-	sd t0, 3024(sp)
+	# get address of local var:ptr_$97
+	li t4, 3024
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$97 
 
@@ -5291,12 +6934,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$97 into 
-	ld t1, 3024(sp)
+	# get value of local var:ptr_$97
+	li t4, 3024
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$97 into 
-	sd t0, 3016(sp)
+	# get address of local var:inp$97
+	li t4, 3016
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$97 
 
@@ -5306,9 +6954,12 @@ longest_common_subseqEntry:
 	# store inp$97 
 
 	# get address of inp$97 points to
-	ld t3, 3016(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3016
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$98 
 
@@ -5317,12 +6968,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$98 into 
-	sd t0, 3008(sp)
+	# get address of local var:ptr_$98
+	li t4, 3008
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$98 
 
@@ -5331,12 +6987,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$98 into 
-	ld t1, 3008(sp)
+	# get value of local var:ptr_$98
+	li t4, 3008
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$98 into 
-	sd t0, 3000(sp)
+	# get address of local var:inp$98
+	li t4, 3000
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$98 
 
@@ -5346,9 +7007,12 @@ longest_common_subseqEntry:
 	# store inp$98 
 
 	# get address of inp$98 points to
-	ld t3, 3000(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 3000
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$99 
 
@@ -5357,12 +7021,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$99 into 
-	sd t0, 2992(sp)
+	# get address of local var:ptr_$99
+	li t4, 2992
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$99 
 
@@ -5371,12 +7040,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$99 into 
-	ld t1, 2992(sp)
+	# get value of local var:ptr_$99
+	li t4, 2992
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$99 into 
-	sd t0, 2984(sp)
+	# get address of local var:inp$99
+	li t4, 2984
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$99 
 
@@ -5386,9 +7060,12 @@ longest_common_subseqEntry:
 	# store inp$99 
 
 	# get address of inp$99 points to
-	ld t3, 2984(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2984
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$100 
 
@@ -5397,12 +7074,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$100 into 
-	sd t0, 2976(sp)
+	# get address of local var:ptr_$100
+	li t4, 2976
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$100 
 
@@ -5411,12 +7093,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$100 into 
-	ld t1, 2976(sp)
+	# get value of local var:ptr_$100
+	li t4, 2976
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$100 into 
-	sd t0, 2968(sp)
+	# get address of local var:inp$100
+	li t4, 2968
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$100 
 
@@ -5426,9 +7113,12 @@ longest_common_subseqEntry:
 	# store inp$100 
 
 	# get address of inp$100 points to
-	ld t3, 2968(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2968
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$101 
 
@@ -5437,12 +7127,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$101 into 
-	sd t0, 2960(sp)
+	# get address of local var:ptr_$101
+	li t4, 2960
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$101 
 
@@ -5451,12 +7146,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$101 into 
-	ld t1, 2960(sp)
+	# get value of local var:ptr_$101
+	li t4, 2960
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$101 into 
-	sd t0, 2952(sp)
+	# get address of local var:inp$101
+	li t4, 2952
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$101 
 
@@ -5466,9 +7166,12 @@ longest_common_subseqEntry:
 	# store inp$101 
 
 	# get address of inp$101 points to
-	ld t3, 2952(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2952
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$102 
 
@@ -5477,12 +7180,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$102 into 
-	sd t0, 2944(sp)
+	# get address of local var:ptr_$102
+	li t4, 2944
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$102 
 
@@ -5491,12 +7199,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$102 into 
-	ld t1, 2944(sp)
+	# get value of local var:ptr_$102
+	li t4, 2944
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$102 into 
-	sd t0, 2936(sp)
+	# get address of local var:inp$102
+	li t4, 2936
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$102 
 
@@ -5506,9 +7219,12 @@ longest_common_subseqEntry:
 	# store inp$102 
 
 	# get address of inp$102 points to
-	ld t3, 2936(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2936
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$103 
 
@@ -5517,12 +7233,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$103 into 
-	sd t0, 2928(sp)
+	# get address of local var:ptr_$103
+	li t4, 2928
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$103 
 
@@ -5531,12 +7252,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$103 into 
-	ld t1, 2928(sp)
+	# get value of local var:ptr_$103
+	li t4, 2928
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$103 into 
-	sd t0, 2920(sp)
+	# get address of local var:inp$103
+	li t4, 2920
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$103 
 
@@ -5546,9 +7272,12 @@ longest_common_subseqEntry:
 	# store inp$103 
 
 	# get address of inp$103 points to
-	ld t3, 2920(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2920
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$104 
 
@@ -5557,12 +7286,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$104 into 
-	sd t0, 2912(sp)
+	# get address of local var:ptr_$104
+	li t4, 2912
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$104 
 
@@ -5571,12 +7305,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$104 into 
-	ld t1, 2912(sp)
+	# get value of local var:ptr_$104
+	li t4, 2912
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$104 into 
-	sd t0, 2904(sp)
+	# get address of local var:inp$104
+	li t4, 2904
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$104 
 
@@ -5586,9 +7325,12 @@ longest_common_subseqEntry:
 	# store inp$104 
 
 	# get address of inp$104 points to
-	ld t3, 2904(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2904
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$105 
 
@@ -5597,12 +7339,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$105 into 
-	sd t0, 2896(sp)
+	# get address of local var:ptr_$105
+	li t4, 2896
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$105 
 
@@ -5611,12 +7358,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$105 into 
-	ld t1, 2896(sp)
+	# get value of local var:ptr_$105
+	li t4, 2896
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$105 into 
-	sd t0, 2888(sp)
+	# get address of local var:inp$105
+	li t4, 2888
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$105 
 
@@ -5626,9 +7378,12 @@ longest_common_subseqEntry:
 	# store inp$105 
 
 	# get address of inp$105 points to
-	ld t3, 2888(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2888
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$106 
 
@@ -5637,12 +7392,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$106 into 
-	sd t0, 2880(sp)
+	# get address of local var:ptr_$106
+	li t4, 2880
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$106 
 
@@ -5651,12 +7411,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$106 into 
-	ld t1, 2880(sp)
+	# get value of local var:ptr_$106
+	li t4, 2880
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$106 into 
-	sd t0, 2872(sp)
+	# get address of local var:inp$106
+	li t4, 2872
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$106 
 
@@ -5666,9 +7431,12 @@ longest_common_subseqEntry:
 	# store inp$106 
 
 	# get address of inp$106 points to
-	ld t3, 2872(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2872
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$107 
 
@@ -5677,12 +7445,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$107 into 
-	sd t0, 2864(sp)
+	# get address of local var:ptr_$107
+	li t4, 2864
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$107 
 
@@ -5691,12 +7464,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$107 into 
-	ld t1, 2864(sp)
+	# get value of local var:ptr_$107
+	li t4, 2864
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$107 into 
-	sd t0, 2856(sp)
+	# get address of local var:inp$107
+	li t4, 2856
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$107 
 
@@ -5706,9 +7484,12 @@ longest_common_subseqEntry:
 	# store inp$107 
 
 	# get address of inp$107 points to
-	ld t3, 2856(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2856
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$108 
 
@@ -5717,12 +7498,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$108 into 
-	sd t0, 2848(sp)
+	# get address of local var:ptr_$108
+	li t4, 2848
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$108 
 
@@ -5731,12 +7517,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$108 into 
-	ld t1, 2848(sp)
+	# get value of local var:ptr_$108
+	li t4, 2848
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$108 into 
-	sd t0, 2840(sp)
+	# get address of local var:inp$108
+	li t4, 2840
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$108 
 
@@ -5746,9 +7537,12 @@ longest_common_subseqEntry:
 	# store inp$108 
 
 	# get address of inp$108 points to
-	ld t3, 2840(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2840
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$109 
 
@@ -5757,12 +7551,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$109 into 
-	sd t0, 2832(sp)
+	# get address of local var:ptr_$109
+	li t4, 2832
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$109 
 
@@ -5771,12 +7570,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$109 into 
-	ld t1, 2832(sp)
+	# get value of local var:ptr_$109
+	li t4, 2832
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$109 into 
-	sd t0, 2824(sp)
+	# get address of local var:inp$109
+	li t4, 2824
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$109 
 
@@ -5786,9 +7590,12 @@ longest_common_subseqEntry:
 	# store inp$109 
 
 	# get address of inp$109 points to
-	ld t3, 2824(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2824
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$110 
 
@@ -5797,12 +7604,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$110 into 
-	sd t0, 2816(sp)
+	# get address of local var:ptr_$110
+	li t4, 2816
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$110 
 
@@ -5811,12 +7623,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$110 into 
-	ld t1, 2816(sp)
+	# get value of local var:ptr_$110
+	li t4, 2816
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$110 into 
-	sd t0, 2808(sp)
+	# get address of local var:inp$110
+	li t4, 2808
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$110 
 
@@ -5826,9 +7643,12 @@ longest_common_subseqEntry:
 	# store inp$110 
 
 	# get address of inp$110 points to
-	ld t3, 2808(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2808
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$111 
 
@@ -5837,12 +7657,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$111 into 
-	sd t0, 2800(sp)
+	# get address of local var:ptr_$111
+	li t4, 2800
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$111 
 
@@ -5851,12 +7676,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$111 into 
-	ld t1, 2800(sp)
+	# get value of local var:ptr_$111
+	li t4, 2800
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$111 into 
-	sd t0, 2792(sp)
+	# get address of local var:inp$111
+	li t4, 2792
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$111 
 
@@ -5866,9 +7696,12 @@ longest_common_subseqEntry:
 	# store inp$111 
 
 	# get address of inp$111 points to
-	ld t3, 2792(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2792
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$112 
 
@@ -5877,12 +7710,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$112 into 
-	sd t0, 2784(sp)
+	# get address of local var:ptr_$112
+	li t4, 2784
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$112 
 
@@ -5891,12 +7729,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$112 into 
-	ld t1, 2784(sp)
+	# get value of local var:ptr_$112
+	li t4, 2784
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$112 into 
-	sd t0, 2776(sp)
+	# get address of local var:inp$112
+	li t4, 2776
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$112 
 
@@ -5906,9 +7749,12 @@ longest_common_subseqEntry:
 	# store inp$112 
 
 	# get address of inp$112 points to
-	ld t3, 2776(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2776
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$113 
 
@@ -5917,12 +7763,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$113 into 
-	sd t0, 2768(sp)
+	# get address of local var:ptr_$113
+	li t4, 2768
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$113 
 
@@ -5931,12 +7782,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$113 into 
-	ld t1, 2768(sp)
+	# get value of local var:ptr_$113
+	li t4, 2768
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$113 into 
-	sd t0, 2760(sp)
+	# get address of local var:inp$113
+	li t4, 2760
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$113 
 
@@ -5946,9 +7802,12 @@ longest_common_subseqEntry:
 	# store inp$113 
 
 	# get address of inp$113 points to
-	ld t3, 2760(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2760
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$114 
 
@@ -5957,12 +7816,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$114 into 
-	sd t0, 2752(sp)
+	# get address of local var:ptr_$114
+	li t4, 2752
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$114 
 
@@ -5971,12 +7835,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$114 into 
-	ld t1, 2752(sp)
+	# get value of local var:ptr_$114
+	li t4, 2752
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$114 into 
-	sd t0, 2744(sp)
+	# get address of local var:inp$114
+	li t4, 2744
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$114 
 
@@ -5986,9 +7855,12 @@ longest_common_subseqEntry:
 	# store inp$114 
 
 	# get address of inp$114 points to
-	ld t3, 2744(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2744
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$115 
 
@@ -5997,12 +7869,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$115 into 
-	sd t0, 2736(sp)
+	# get address of local var:ptr_$115
+	li t4, 2736
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$115 
 
@@ -6011,12 +7888,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$115 into 
-	ld t1, 2736(sp)
+	# get value of local var:ptr_$115
+	li t4, 2736
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$115 into 
-	sd t0, 2728(sp)
+	# get address of local var:inp$115
+	li t4, 2728
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$115 
 
@@ -6026,9 +7908,12 @@ longest_common_subseqEntry:
 	# store inp$115 
 
 	# get address of inp$115 points to
-	ld t3, 2728(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$116 
 
@@ -6037,12 +7922,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$116 into 
-	sd t0, 2720(sp)
+	# get address of local var:ptr_$116
+	li t4, 2720
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$116 
 
@@ -6051,12 +7941,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$116 into 
-	ld t1, 2720(sp)
+	# get value of local var:ptr_$116
+	li t4, 2720
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$116 into 
-	sd t0, 2712(sp)
+	# get address of local var:inp$116
+	li t4, 2712
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$116 
 
@@ -6066,9 +7961,12 @@ longest_common_subseqEntry:
 	# store inp$116 
 
 	# get address of inp$116 points to
-	ld t3, 2712(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$117 
 
@@ -6077,12 +7975,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$117 into 
-	sd t0, 2704(sp)
+	# get address of local var:ptr_$117
+	li t4, 2704
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$117 
 
@@ -6091,12 +7994,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$117 into 
-	ld t1, 2704(sp)
+	# get value of local var:ptr_$117
+	li t4, 2704
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$117 into 
-	sd t0, 2696(sp)
+	# get address of local var:inp$117
+	li t4, 2696
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$117 
 
@@ -6106,9 +8014,12 @@ longest_common_subseqEntry:
 	# store inp$117 
 
 	# get address of inp$117 points to
-	ld t3, 2696(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$118 
 
@@ -6117,12 +8028,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$118 into 
-	sd t0, 2688(sp)
+	# get address of local var:ptr_$118
+	li t4, 2688
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$118 
 
@@ -6131,12 +8047,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$118 into 
-	ld t1, 2688(sp)
+	# get value of local var:ptr_$118
+	li t4, 2688
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$118 into 
-	sd t0, 2680(sp)
+	# get address of local var:inp$118
+	li t4, 2680
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$118 
 
@@ -6146,9 +8067,12 @@ longest_common_subseqEntry:
 	# store inp$118 
 
 	# get address of inp$118 points to
-	ld t3, 2680(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2680
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$119 
 
@@ -6157,12 +8081,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$119 into 
-	sd t0, 2672(sp)
+	# get address of local var:ptr_$119
+	li t4, 2672
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$119 
 
@@ -6171,12 +8100,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$119 into 
-	ld t1, 2672(sp)
+	# get value of local var:ptr_$119
+	li t4, 2672
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$119 into 
-	sd t0, 2664(sp)
+	# get address of local var:inp$119
+	li t4, 2664
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$119 
 
@@ -6186,9 +8120,12 @@ longest_common_subseqEntry:
 	# store inp$119 
 
 	# get address of inp$119 points to
-	ld t3, 2664(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2664
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$120 
 
@@ -6197,12 +8134,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$120 into 
-	sd t0, 2656(sp)
+	# get address of local var:ptr_$120
+	li t4, 2656
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$120 
 
@@ -6211,12 +8153,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$120 into 
-	ld t1, 2656(sp)
+	# get value of local var:ptr_$120
+	li t4, 2656
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$120 into 
-	sd t0, 2648(sp)
+	# get address of local var:inp$120
+	li t4, 2648
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$120 
 
@@ -6226,9 +8173,12 @@ longest_common_subseqEntry:
 	# store inp$120 
 
 	# get address of inp$120 points to
-	ld t3, 2648(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2648
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$121 
 
@@ -6237,12 +8187,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$121 into 
-	sd t0, 2640(sp)
+	# get address of local var:ptr_$121
+	li t4, 2640
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$121 
 
@@ -6251,12 +8206,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$121 into 
-	ld t1, 2640(sp)
+	# get value of local var:ptr_$121
+	li t4, 2640
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$121 into 
-	sd t0, 2632(sp)
+	# get address of local var:inp$121
+	li t4, 2632
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$121 
 
@@ -6266,9 +8226,12 @@ longest_common_subseqEntry:
 	# store inp$121 
 
 	# get address of inp$121 points to
-	ld t3, 2632(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2632
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$122 
 
@@ -6277,12 +8240,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$122 into 
-	sd t0, 2624(sp)
+	# get address of local var:ptr_$122
+	li t4, 2624
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$122 
 
@@ -6291,12 +8259,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$122 into 
-	ld t1, 2624(sp)
+	# get value of local var:ptr_$122
+	li t4, 2624
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$122 into 
-	sd t0, 2616(sp)
+	# get address of local var:inp$122
+	li t4, 2616
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$122 
 
@@ -6306,9 +8279,12 @@ longest_common_subseqEntry:
 	# store inp$122 
 
 	# get address of inp$122 points to
-	ld t3, 2616(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2616
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$123 
 
@@ -6317,12 +8293,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$123 into 
-	sd t0, 2608(sp)
+	# get address of local var:ptr_$123
+	li t4, 2608
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$123 
 
@@ -6331,12 +8312,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$123 into 
-	ld t1, 2608(sp)
+	# get value of local var:ptr_$123
+	li t4, 2608
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$123 into 
-	sd t0, 2600(sp)
+	# get address of local var:inp$123
+	li t4, 2600
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$123 
 
@@ -6346,9 +8332,12 @@ longest_common_subseqEntry:
 	# store inp$123 
 
 	# get address of inp$123 points to
-	ld t3, 2600(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$124 
 
@@ -6357,12 +8346,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$124 into 
-	sd t0, 2592(sp)
+	# get address of local var:ptr_$124
+	li t4, 2592
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$124 
 
@@ -6371,12 +8365,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$124 into 
-	ld t1, 2592(sp)
+	# get value of local var:ptr_$124
+	li t4, 2592
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$124 into 
-	sd t0, 2584(sp)
+	# get address of local var:inp$124
+	li t4, 2584
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$124 
 
@@ -6386,9 +8385,12 @@ longest_common_subseqEntry:
 	# store inp$124 
 
 	# get address of inp$124 points to
-	ld t3, 2584(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2584
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$125 
 
@@ -6397,12 +8399,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$125 into 
-	sd t0, 2576(sp)
+	# get address of local var:ptr_$125
+	li t4, 2576
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$125 
 
@@ -6411,12 +8418,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$125 into 
-	ld t1, 2576(sp)
+	# get value of local var:ptr_$125
+	li t4, 2576
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$125 into 
-	sd t0, 2568(sp)
+	# get address of local var:inp$125
+	li t4, 2568
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$125 
 
@@ -6426,9 +8438,12 @@ longest_common_subseqEntry:
 	# store inp$125 
 
 	# get address of inp$125 points to
-	ld t3, 2568(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2568
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$126 
 
@@ -6437,12 +8452,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$126 into 
-	sd t0, 2560(sp)
+	# get address of local var:ptr_$126
+	li t4, 2560
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$126 
 
@@ -6451,12 +8471,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$126 into 
-	ld t1, 2560(sp)
+	# get value of local var:ptr_$126
+	li t4, 2560
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$126 into 
-	sd t0, 2552(sp)
+	# get address of local var:inp$126
+	li t4, 2552
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$126 
 
@@ -6466,9 +8491,12 @@ longest_common_subseqEntry:
 	# store inp$126 
 
 	# get address of inp$126 points to
-	ld t3, 2552(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2552
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$127 
 
@@ -6477,12 +8505,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$127 into 
-	sd t0, 2544(sp)
+	# get address of local var:ptr_$127
+	li t4, 2544
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$127 
 
@@ -6491,12 +8524,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$127 into 
-	ld t1, 2544(sp)
+	# get value of local var:ptr_$127
+	li t4, 2544
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$127 into 
-	sd t0, 2536(sp)
+	# get address of local var:inp$127
+	li t4, 2536
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$127 
 
@@ -6506,9 +8544,12 @@ longest_common_subseqEntry:
 	# store inp$127 
 
 	# get address of inp$127 points to
-	ld t3, 2536(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2536
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$128 
 
@@ -6517,12 +8558,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$128 into 
-	sd t0, 2528(sp)
+	# get address of local var:ptr_$128
+	li t4, 2528
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$128 
 
@@ -6531,12 +8577,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$128 into 
-	ld t1, 2528(sp)
+	# get value of local var:ptr_$128
+	li t4, 2528
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$128 into 
-	sd t0, 2520(sp)
+	# get address of local var:inp$128
+	li t4, 2520
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$128 
 
@@ -6546,9 +8597,12 @@ longest_common_subseqEntry:
 	# store inp$128 
 
 	# get address of inp$128 points to
-	ld t3, 2520(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2520
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$129 
 
@@ -6557,12 +8611,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$129 into 
-	sd t0, 2512(sp)
+	# get address of local var:ptr_$129
+	li t4, 2512
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$129 
 
@@ -6571,12 +8630,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$129 into 
-	ld t1, 2512(sp)
+	# get value of local var:ptr_$129
+	li t4, 2512
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$129 into 
-	sd t0, 2504(sp)
+	# get address of local var:inp$129
+	li t4, 2504
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$129 
 
@@ -6586,9 +8650,12 @@ longest_common_subseqEntry:
 	# store inp$129 
 
 	# get address of inp$129 points to
-	ld t3, 2504(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2504
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$130 
 
@@ -6597,12 +8664,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$130 into 
-	sd t0, 2496(sp)
+	# get address of local var:ptr_$130
+	li t4, 2496
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$130 
 
@@ -6611,12 +8683,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$130 into 
-	ld t1, 2496(sp)
+	# get value of local var:ptr_$130
+	li t4, 2496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$130 into 
-	sd t0, 2488(sp)
+	# get address of local var:inp$130
+	li t4, 2488
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$130 
 
@@ -6626,9 +8703,12 @@ longest_common_subseqEntry:
 	# store inp$130 
 
 	# get address of inp$130 points to
-	ld t3, 2488(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2488
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$131 
 
@@ -6637,12 +8717,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$131 into 
-	sd t0, 2480(sp)
+	# get address of local var:ptr_$131
+	li t4, 2480
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$131 
 
@@ -6651,12 +8736,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$131 into 
-	ld t1, 2480(sp)
+	# get value of local var:ptr_$131
+	li t4, 2480
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$131 into 
-	sd t0, 2472(sp)
+	# get address of local var:inp$131
+	li t4, 2472
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$131 
 
@@ -6666,9 +8756,12 @@ longest_common_subseqEntry:
 	# store inp$131 
 
 	# get address of inp$131 points to
-	ld t3, 2472(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2472
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$132 
 
@@ -6677,12 +8770,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$132 into 
-	sd t0, 2464(sp)
+	# get address of local var:ptr_$132
+	li t4, 2464
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$132 
 
@@ -6691,12 +8789,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$132 into 
-	ld t1, 2464(sp)
+	# get value of local var:ptr_$132
+	li t4, 2464
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$132 into 
-	sd t0, 2456(sp)
+	# get address of local var:inp$132
+	li t4, 2456
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$132 
 
@@ -6706,9 +8809,12 @@ longest_common_subseqEntry:
 	# store inp$132 
 
 	# get address of inp$132 points to
-	ld t3, 2456(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2456
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$133 
 
@@ -6717,12 +8823,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$133 into 
-	sd t0, 2448(sp)
+	# get address of local var:ptr_$133
+	li t4, 2448
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$133 
 
@@ -6731,12 +8842,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$133 into 
-	ld t1, 2448(sp)
+	# get value of local var:ptr_$133
+	li t4, 2448
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$133 into 
-	sd t0, 2440(sp)
+	# get address of local var:inp$133
+	li t4, 2440
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$133 
 
@@ -6746,9 +8862,12 @@ longest_common_subseqEntry:
 	# store inp$133 
 
 	# get address of inp$133 points to
-	ld t3, 2440(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2440
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$134 
 
@@ -6757,12 +8876,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$134 into 
-	sd t0, 2432(sp)
+	# get address of local var:ptr_$134
+	li t4, 2432
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$134 
 
@@ -6771,12 +8895,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$134 into 
-	ld t1, 2432(sp)
+	# get value of local var:ptr_$134
+	li t4, 2432
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$134 into 
-	sd t0, 2424(sp)
+	# get address of local var:inp$134
+	li t4, 2424
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$134 
 
@@ -6786,9 +8915,12 @@ longest_common_subseqEntry:
 	# store inp$134 
 
 	# get address of inp$134 points to
-	ld t3, 2424(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2424
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$135 
 
@@ -6797,12 +8929,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$135 into 
-	sd t0, 2416(sp)
+	# get address of local var:ptr_$135
+	li t4, 2416
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$135 
 
@@ -6811,12 +8948,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$135 into 
-	ld t1, 2416(sp)
+	# get value of local var:ptr_$135
+	li t4, 2416
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$135 into 
-	sd t0, 2408(sp)
+	# get address of local var:inp$135
+	li t4, 2408
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$135 
 
@@ -6826,9 +8968,12 @@ longest_common_subseqEntry:
 	# store inp$135 
 
 	# get address of inp$135 points to
-	ld t3, 2408(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2408
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$136 
 
@@ -6837,12 +8982,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$136 into 
-	sd t0, 2400(sp)
+	# get address of local var:ptr_$136
+	li t4, 2400
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$136 
 
@@ -6851,12 +9001,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$136 into 
-	ld t1, 2400(sp)
+	# get value of local var:ptr_$136
+	li t4, 2400
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$136 into 
-	sd t0, 2392(sp)
+	# get address of local var:inp$136
+	li t4, 2392
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$136 
 
@@ -6866,9 +9021,12 @@ longest_common_subseqEntry:
 	# store inp$136 
 
 	# get address of inp$136 points to
-	ld t3, 2392(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2392
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$137 
 
@@ -6877,12 +9035,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$137 into 
-	sd t0, 2384(sp)
+	# get address of local var:ptr_$137
+	li t4, 2384
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$137 
 
@@ -6891,12 +9054,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$137 into 
-	ld t1, 2384(sp)
+	# get value of local var:ptr_$137
+	li t4, 2384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$137 into 
-	sd t0, 2376(sp)
+	# get address of local var:inp$137
+	li t4, 2376
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$137 
 
@@ -6906,9 +9074,12 @@ longest_common_subseqEntry:
 	# store inp$137 
 
 	# get address of inp$137 points to
-	ld t3, 2376(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2376
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$138 
 
@@ -6917,12 +9088,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$138 into 
-	sd t0, 2368(sp)
+	# get address of local var:ptr_$138
+	li t4, 2368
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$138 
 
@@ -6931,12 +9107,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$138 into 
-	ld t1, 2368(sp)
+	# get value of local var:ptr_$138
+	li t4, 2368
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$138 into 
-	sd t0, 2360(sp)
+	# get address of local var:inp$138
+	li t4, 2360
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$138 
 
@@ -6946,9 +9127,12 @@ longest_common_subseqEntry:
 	# store inp$138 
 
 	# get address of inp$138 points to
-	ld t3, 2360(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2360
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$139 
 
@@ -6957,12 +9141,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$139 into 
-	sd t0, 2352(sp)
+	# get address of local var:ptr_$139
+	li t4, 2352
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$139 
 
@@ -6971,12 +9160,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$139 into 
-	ld t1, 2352(sp)
+	# get value of local var:ptr_$139
+	li t4, 2352
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$139 into 
-	sd t0, 2344(sp)
+	# get address of local var:inp$139
+	li t4, 2344
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$139 
 
@@ -6986,9 +9180,12 @@ longest_common_subseqEntry:
 	# store inp$139 
 
 	# get address of inp$139 points to
-	ld t3, 2344(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2344
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$140 
 
@@ -6997,12 +9194,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$140 into 
-	sd t0, 2336(sp)
+	# get address of local var:ptr_$140
+	li t4, 2336
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$140 
 
@@ -7011,12 +9213,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$140 into 
-	ld t1, 2336(sp)
+	# get value of local var:ptr_$140
+	li t4, 2336
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$140 into 
-	sd t0, 2328(sp)
+	# get address of local var:inp$140
+	li t4, 2328
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$140 
 
@@ -7026,9 +9233,12 @@ longest_common_subseqEntry:
 	# store inp$140 
 
 	# get address of inp$140 points to
-	ld t3, 2328(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2328
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$141 
 
@@ -7037,12 +9247,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$141 into 
-	sd t0, 2320(sp)
+	# get address of local var:ptr_$141
+	li t4, 2320
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$141 
 
@@ -7051,12 +9266,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$141 into 
-	ld t1, 2320(sp)
+	# get value of local var:ptr_$141
+	li t4, 2320
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$141 into 
-	sd t0, 2312(sp)
+	# get address of local var:inp$141
+	li t4, 2312
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$141 
 
@@ -7066,9 +9286,12 @@ longest_common_subseqEntry:
 	# store inp$141 
 
 	# get address of inp$141 points to
-	ld t3, 2312(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2312
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$142 
 
@@ -7077,12 +9300,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$142 into 
-	sd t0, 2304(sp)
+	# get address of local var:ptr_$142
+	li t4, 2304
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$142 
 
@@ -7091,12 +9319,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$142 into 
-	ld t1, 2304(sp)
+	# get value of local var:ptr_$142
+	li t4, 2304
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$142 into 
-	sd t0, 2296(sp)
+	# get address of local var:inp$142
+	li t4, 2296
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$142 
 
@@ -7106,9 +9339,12 @@ longest_common_subseqEntry:
 	# store inp$142 
 
 	# get address of inp$142 points to
-	ld t3, 2296(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2296
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$143 
 
@@ -7117,12 +9353,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$143 into 
-	sd t0, 2288(sp)
+	# get address of local var:ptr_$143
+	li t4, 2288
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$143 
 
@@ -7131,12 +9372,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$143 into 
-	ld t1, 2288(sp)
+	# get value of local var:ptr_$143
+	li t4, 2288
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$143 into 
-	sd t0, 2280(sp)
+	# get address of local var:inp$143
+	li t4, 2280
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$143 
 
@@ -7146,9 +9392,12 @@ longest_common_subseqEntry:
 	# store inp$143 
 
 	# get address of inp$143 points to
-	ld t3, 2280(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2280
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$144 
 
@@ -7157,12 +9406,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$144 into 
-	sd t0, 2272(sp)
+	# get address of local var:ptr_$144
+	li t4, 2272
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$144 
 
@@ -7171,12 +9425,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$144 into 
-	ld t1, 2272(sp)
+	# get value of local var:ptr_$144
+	li t4, 2272
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$144 into 
-	sd t0, 2264(sp)
+	# get address of local var:inp$144
+	li t4, 2264
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$144 
 
@@ -7186,9 +9445,12 @@ longest_common_subseqEntry:
 	# store inp$144 
 
 	# get address of inp$144 points to
-	ld t3, 2264(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2264
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$145 
 
@@ -7197,12 +9459,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$145 into 
-	sd t0, 2256(sp)
+	# get address of local var:ptr_$145
+	li t4, 2256
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$145 
 
@@ -7211,12 +9478,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$145 into 
-	ld t1, 2256(sp)
+	# get value of local var:ptr_$145
+	li t4, 2256
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$145 into 
-	sd t0, 2248(sp)
+	# get address of local var:inp$145
+	li t4, 2248
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$145 
 
@@ -7226,9 +9498,12 @@ longest_common_subseqEntry:
 	# store inp$145 
 
 	# get address of inp$145 points to
-	ld t3, 2248(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2248
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$146 
 
@@ -7237,12 +9512,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$146 into 
-	sd t0, 2240(sp)
+	# get address of local var:ptr_$146
+	li t4, 2240
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$146 
 
@@ -7251,12 +9531,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$146 into 
-	ld t1, 2240(sp)
+	# get value of local var:ptr_$146
+	li t4, 2240
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$146 into 
-	sd t0, 2232(sp)
+	# get address of local var:inp$146
+	li t4, 2232
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$146 
 
@@ -7266,9 +9551,12 @@ longest_common_subseqEntry:
 	# store inp$146 
 
 	# get address of inp$146 points to
-	ld t3, 2232(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2232
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$147 
 
@@ -7277,12 +9565,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$147 into 
-	sd t0, 2224(sp)
+	# get address of local var:ptr_$147
+	li t4, 2224
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$147 
 
@@ -7291,12 +9584,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$147 into 
-	ld t1, 2224(sp)
+	# get value of local var:ptr_$147
+	li t4, 2224
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$147 into 
-	sd t0, 2216(sp)
+	# get address of local var:inp$147
+	li t4, 2216
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$147 
 
@@ -7306,9 +9604,12 @@ longest_common_subseqEntry:
 	# store inp$147 
 
 	# get address of inp$147 points to
-	ld t3, 2216(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2216
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$148 
 
@@ -7317,12 +9618,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$148 into 
-	sd t0, 2208(sp)
+	# get address of local var:ptr_$148
+	li t4, 2208
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$148 
 
@@ -7331,12 +9637,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$148 into 
-	ld t1, 2208(sp)
+	# get value of local var:ptr_$148
+	li t4, 2208
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$148 into 
-	sd t0, 2200(sp)
+	# get address of local var:inp$148
+	li t4, 2200
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$148 
 
@@ -7346,9 +9657,12 @@ longest_common_subseqEntry:
 	# store inp$148 
 
 	# get address of inp$148 points to
-	ld t3, 2200(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2200
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$149 
 
@@ -7357,12 +9671,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$149 into 
-	sd t0, 2192(sp)
+	# get address of local var:ptr_$149
+	li t4, 2192
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$149 
 
@@ -7371,12 +9690,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$149 into 
-	ld t1, 2192(sp)
+	# get value of local var:ptr_$149
+	li t4, 2192
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$149 into 
-	sd t0, 2184(sp)
+	# get address of local var:inp$149
+	li t4, 2184
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$149 
 
@@ -7386,9 +9710,12 @@ longest_common_subseqEntry:
 	# store inp$149 
 
 	# get address of inp$149 points to
-	ld t3, 2184(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2184
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$150 
 
@@ -7397,12 +9724,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$150 into 
-	sd t0, 2176(sp)
+	# get address of local var:ptr_$150
+	li t4, 2176
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$150 
 
@@ -7411,12 +9743,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$150 into 
-	ld t1, 2176(sp)
+	# get value of local var:ptr_$150
+	li t4, 2176
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$150 into 
-	sd t0, 2168(sp)
+	# get address of local var:inp$150
+	li t4, 2168
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$150 
 
@@ -7426,9 +9763,12 @@ longest_common_subseqEntry:
 	# store inp$150 
 
 	# get address of inp$150 points to
-	ld t3, 2168(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2168
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$151 
 
@@ -7437,12 +9777,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$151 into 
-	sd t0, 2160(sp)
+	# get address of local var:ptr_$151
+	li t4, 2160
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$151 
 
@@ -7451,12 +9796,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$151 into 
-	ld t1, 2160(sp)
+	# get value of local var:ptr_$151
+	li t4, 2160
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$151 into 
-	sd t0, 2152(sp)
+	# get address of local var:inp$151
+	li t4, 2152
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$151 
 
@@ -7466,9 +9816,12 @@ longest_common_subseqEntry:
 	# store inp$151 
 
 	# get address of inp$151 points to
-	ld t3, 2152(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2152
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$152 
 
@@ -7477,12 +9830,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$152 into 
-	sd t0, 2144(sp)
+	# get address of local var:ptr_$152
+	li t4, 2144
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$152 
 
@@ -7491,12 +9849,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$152 into 
-	ld t1, 2144(sp)
+	# get value of local var:ptr_$152
+	li t4, 2144
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$152 into 
-	sd t0, 2136(sp)
+	# get address of local var:inp$152
+	li t4, 2136
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$152 
 
@@ -7506,9 +9869,12 @@ longest_common_subseqEntry:
 	# store inp$152 
 
 	# get address of inp$152 points to
-	ld t3, 2136(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2136
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$153 
 
@@ -7517,12 +9883,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$153 into 
-	sd t0, 2128(sp)
+	# get address of local var:ptr_$153
+	li t4, 2128
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$153 
 
@@ -7531,12 +9902,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$153 into 
-	ld t1, 2128(sp)
+	# get value of local var:ptr_$153
+	li t4, 2128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$153 into 
-	sd t0, 2120(sp)
+	# get address of local var:inp$153
+	li t4, 2120
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$153 
 
@@ -7546,9 +9922,12 @@ longest_common_subseqEntry:
 	# store inp$153 
 
 	# get address of inp$153 points to
-	ld t3, 2120(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2120
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$154 
 
@@ -7557,12 +9936,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$154 into 
-	sd t0, 2112(sp)
+	# get address of local var:ptr_$154
+	li t4, 2112
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$154 
 
@@ -7571,12 +9955,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$154 into 
-	ld t1, 2112(sp)
+	# get value of local var:ptr_$154
+	li t4, 2112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$154 into 
-	sd t0, 2104(sp)
+	# get address of local var:inp$154
+	li t4, 2104
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$154 
 
@@ -7586,9 +9975,12 @@ longest_common_subseqEntry:
 	# store inp$154 
 
 	# get address of inp$154 points to
-	ld t3, 2104(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2104
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$155 
 
@@ -7597,12 +9989,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$155 into 
-	sd t0, 2096(sp)
+	# get address of local var:ptr_$155
+	li t4, 2096
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$155 
 
@@ -7611,12 +10008,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$155 into 
-	ld t1, 2096(sp)
+	# get value of local var:ptr_$155
+	li t4, 2096
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$155 into 
-	sd t0, 2088(sp)
+	# get address of local var:inp$155
+	li t4, 2088
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$155 
 
@@ -7626,9 +10028,12 @@ longest_common_subseqEntry:
 	# store inp$155 
 
 	# get address of inp$155 points to
-	ld t3, 2088(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2088
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$156 
 
@@ -7637,12 +10042,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$156 into 
-	sd t0, 2080(sp)
+	# get address of local var:ptr_$156
+	li t4, 2080
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$156 
 
@@ -7651,12 +10061,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$156 into 
-	ld t1, 2080(sp)
+	# get value of local var:ptr_$156
+	li t4, 2080
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$156 into 
-	sd t0, 2072(sp)
+	# get address of local var:inp$156
+	li t4, 2072
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$156 
 
@@ -7666,9 +10081,12 @@ longest_common_subseqEntry:
 	# store inp$156 
 
 	# get address of inp$156 points to
-	ld t3, 2072(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2072
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$157 
 
@@ -7677,12 +10095,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$157 into 
-	sd t0, 2064(sp)
+	# get address of local var:ptr_$157
+	li t4, 2064
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$157 
 
@@ -7691,12 +10114,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$157 into 
-	ld t1, 2064(sp)
+	# get value of local var:ptr_$157
+	li t4, 2064
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$157 into 
-	sd t0, 2056(sp)
+	# get address of local var:inp$157
+	li t4, 2056
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$157 
 
@@ -7706,9 +10134,12 @@ longest_common_subseqEntry:
 	# store inp$157 
 
 	# get address of inp$157 points to
-	ld t3, 2056(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2056
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$158 
 
@@ -7717,12 +10148,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$158 into 
-	sd t0, 2048(sp)
+	# get address of local var:ptr_$158
+	li t4, 2048
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$158 
 
@@ -7731,12 +10167,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$158 into 
-	ld t1, 2048(sp)
+	# get value of local var:ptr_$158
+	li t4, 2048
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$158 into 
-	sd t0, 2040(sp)
+	# get address of local var:inp$158
+	li t4, 2040
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$158 
 
@@ -7746,9 +10187,12 @@ longest_common_subseqEntry:
 	# store inp$158 
 
 	# get address of inp$158 points to
-	ld t3, 2040(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2040
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$159 
 
@@ -7757,12 +10201,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$159 into 
-	sd t0, 2032(sp)
+	# get address of local var:ptr_$159
+	li t4, 2032
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$159 
 
@@ -7771,12 +10220,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$159 into 
-	ld t1, 2032(sp)
+	# get value of local var:ptr_$159
+	li t4, 2032
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$159 into 
-	sd t0, 2024(sp)
+	# get address of local var:inp$159
+	li t4, 2024
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$159 
 
@@ -7786,9 +10240,12 @@ longest_common_subseqEntry:
 	# store inp$159 
 
 	# get address of inp$159 points to
-	ld t3, 2024(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2024
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$160 
 
@@ -7797,12 +10254,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$160 into 
-	sd t0, 2016(sp)
+	# get address of local var:ptr_$160
+	li t4, 2016
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$160 
 
@@ -7811,12 +10273,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$160 into 
-	ld t1, 2016(sp)
+	# get value of local var:ptr_$160
+	li t4, 2016
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$160 into 
-	sd t0, 2008(sp)
+	# get address of local var:inp$160
+	li t4, 2008
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$160 
 
@@ -7826,9 +10293,12 @@ longest_common_subseqEntry:
 	# store inp$160 
 
 	# get address of inp$160 points to
-	ld t3, 2008(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 2008
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$161 
 
@@ -7837,12 +10307,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$161 into 
-	sd t0, 2000(sp)
+	# get address of local var:ptr_$161
+	li t4, 2000
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$161 
 
@@ -7851,12 +10326,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$161 into 
-	ld t1, 2000(sp)
+	# get value of local var:ptr_$161
+	li t4, 2000
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$161 into 
-	sd t0, 1992(sp)
+	# get address of local var:inp$161
+	li t4, 1992
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$161 
 
@@ -7866,9 +10346,12 @@ longest_common_subseqEntry:
 	# store inp$161 
 
 	# get address of inp$161 points to
-	ld t3, 1992(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1992
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$162 
 
@@ -7877,12 +10360,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$162 into 
-	sd t0, 1984(sp)
+	# get address of local var:ptr_$162
+	li t4, 1984
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$162 
 
@@ -7891,12 +10379,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$162 into 
-	ld t1, 1984(sp)
+	# get value of local var:ptr_$162
+	li t4, 1984
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$162 into 
-	sd t0, 1976(sp)
+	# get address of local var:inp$162
+	li t4, 1976
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$162 
 
@@ -7906,9 +10399,12 @@ longest_common_subseqEntry:
 	# store inp$162 
 
 	# get address of inp$162 points to
-	ld t3, 1976(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1976
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$163 
 
@@ -7917,12 +10413,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$163 into 
-	sd t0, 1968(sp)
+	# get address of local var:ptr_$163
+	li t4, 1968
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$163 
 
@@ -7931,12 +10432,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$163 into 
-	ld t1, 1968(sp)
+	# get value of local var:ptr_$163
+	li t4, 1968
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$163 into 
-	sd t0, 1960(sp)
+	# get address of local var:inp$163
+	li t4, 1960
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$163 
 
@@ -7946,9 +10452,12 @@ longest_common_subseqEntry:
 	# store inp$163 
 
 	# get address of inp$163 points to
-	ld t3, 1960(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1960
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$164 
 
@@ -7957,12 +10466,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$164 into 
-	sd t0, 1952(sp)
+	# get address of local var:ptr_$164
+	li t4, 1952
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$164 
 
@@ -7971,12 +10485,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$164 into 
-	ld t1, 1952(sp)
+	# get value of local var:ptr_$164
+	li t4, 1952
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$164 into 
-	sd t0, 1944(sp)
+	# get address of local var:inp$164
+	li t4, 1944
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$164 
 
@@ -7986,9 +10505,12 @@ longest_common_subseqEntry:
 	# store inp$164 
 
 	# get address of inp$164 points to
-	ld t3, 1944(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1944
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$165 
 
@@ -7997,12 +10519,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$165 into 
-	sd t0, 1936(sp)
+	# get address of local var:ptr_$165
+	li t4, 1936
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$165 
 
@@ -8011,12 +10538,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$165 into 
-	ld t1, 1936(sp)
+	# get value of local var:ptr_$165
+	li t4, 1936
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$165 into 
-	sd t0, 1928(sp)
+	# get address of local var:inp$165
+	li t4, 1928
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$165 
 
@@ -8026,9 +10558,12 @@ longest_common_subseqEntry:
 	# store inp$165 
 
 	# get address of inp$165 points to
-	ld t3, 1928(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1928
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$166 
 
@@ -8037,12 +10572,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$166 into 
-	sd t0, 1920(sp)
+	# get address of local var:ptr_$166
+	li t4, 1920
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$166 
 
@@ -8051,12 +10591,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$166 into 
-	ld t1, 1920(sp)
+	# get value of local var:ptr_$166
+	li t4, 1920
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$166 into 
-	sd t0, 1912(sp)
+	# get address of local var:inp$166
+	li t4, 1912
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$166 
 
@@ -8066,9 +10611,12 @@ longest_common_subseqEntry:
 	# store inp$166 
 
 	# get address of inp$166 points to
-	ld t3, 1912(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1912
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$167 
 
@@ -8077,12 +10625,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$167 into 
-	sd t0, 1904(sp)
+	# get address of local var:ptr_$167
+	li t4, 1904
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$167 
 
@@ -8091,12 +10644,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$167 into 
-	ld t1, 1904(sp)
+	# get value of local var:ptr_$167
+	li t4, 1904
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$167 into 
-	sd t0, 1896(sp)
+	# get address of local var:inp$167
+	li t4, 1896
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$167 
 
@@ -8106,9 +10664,12 @@ longest_common_subseqEntry:
 	# store inp$167 
 
 	# get address of inp$167 points to
-	ld t3, 1896(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1896
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$168 
 
@@ -8117,12 +10678,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$168 into 
-	sd t0, 1888(sp)
+	# get address of local var:ptr_$168
+	li t4, 1888
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$168 
 
@@ -8131,12 +10697,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$168 into 
-	ld t1, 1888(sp)
+	# get value of local var:ptr_$168
+	li t4, 1888
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$168 into 
-	sd t0, 1880(sp)
+	# get address of local var:inp$168
+	li t4, 1880
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$168 
 
@@ -8146,9 +10717,12 @@ longest_common_subseqEntry:
 	# store inp$168 
 
 	# get address of inp$168 points to
-	ld t3, 1880(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1880
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$169 
 
@@ -8157,12 +10731,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$169 into 
-	sd t0, 1872(sp)
+	# get address of local var:ptr_$169
+	li t4, 1872
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$169 
 
@@ -8171,12 +10750,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$169 into 
-	ld t1, 1872(sp)
+	# get value of local var:ptr_$169
+	li t4, 1872
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$169 into 
-	sd t0, 1864(sp)
+	# get address of local var:inp$169
+	li t4, 1864
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$169 
 
@@ -8186,9 +10770,12 @@ longest_common_subseqEntry:
 	# store inp$169 
 
 	# get address of inp$169 points to
-	ld t3, 1864(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1864
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$170 
 
@@ -8197,12 +10784,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$170 into 
-	sd t0, 1856(sp)
+	# get address of local var:ptr_$170
+	li t4, 1856
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$170 
 
@@ -8211,12 +10803,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$170 into 
-	ld t1, 1856(sp)
+	# get value of local var:ptr_$170
+	li t4, 1856
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$170 into 
-	sd t0, 1848(sp)
+	# get address of local var:inp$170
+	li t4, 1848
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$170 
 
@@ -8226,9 +10823,12 @@ longest_common_subseqEntry:
 	# store inp$170 
 
 	# get address of inp$170 points to
-	ld t3, 1848(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1848
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$171 
 
@@ -8237,12 +10837,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$171 into 
-	sd t0, 1840(sp)
+	# get address of local var:ptr_$171
+	li t4, 1840
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$171 
 
@@ -8251,12 +10856,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$171 into 
-	ld t1, 1840(sp)
+	# get value of local var:ptr_$171
+	li t4, 1840
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$171 into 
-	sd t0, 1832(sp)
+	# get address of local var:inp$171
+	li t4, 1832
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$171 
 
@@ -8266,9 +10876,12 @@ longest_common_subseqEntry:
 	# store inp$171 
 
 	# get address of inp$171 points to
-	ld t3, 1832(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1832
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$172 
 
@@ -8277,12 +10890,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$172 into 
-	sd t0, 1824(sp)
+	# get address of local var:ptr_$172
+	li t4, 1824
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$172 
 
@@ -8291,12 +10909,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$172 into 
-	ld t1, 1824(sp)
+	# get value of local var:ptr_$172
+	li t4, 1824
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$172 into 
-	sd t0, 1816(sp)
+	# get address of local var:inp$172
+	li t4, 1816
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$172 
 
@@ -8306,9 +10929,12 @@ longest_common_subseqEntry:
 	# store inp$172 
 
 	# get address of inp$172 points to
-	ld t3, 1816(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1816
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$173 
 
@@ -8317,12 +10943,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$173 into 
-	sd t0, 1808(sp)
+	# get address of local var:ptr_$173
+	li t4, 1808
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$173 
 
@@ -8331,12 +10962,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$173 into 
-	ld t1, 1808(sp)
+	# get value of local var:ptr_$173
+	li t4, 1808
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$173 into 
-	sd t0, 1800(sp)
+	# get address of local var:inp$173
+	li t4, 1800
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$173 
 
@@ -8346,9 +10982,12 @@ longest_common_subseqEntry:
 	# store inp$173 
 
 	# get address of inp$173 points to
-	ld t3, 1800(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1800
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$174 
 
@@ -8357,12 +10996,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$174 into 
-	sd t0, 1792(sp)
+	# get address of local var:ptr_$174
+	li t4, 1792
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$174 
 
@@ -8371,12 +11015,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$174 into 
-	ld t1, 1792(sp)
+	# get value of local var:ptr_$174
+	li t4, 1792
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$174 into 
-	sd t0, 1784(sp)
+	# get address of local var:inp$174
+	li t4, 1784
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$174 
 
@@ -8386,9 +11035,12 @@ longest_common_subseqEntry:
 	# store inp$174 
 
 	# get address of inp$174 points to
-	ld t3, 1784(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1784
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$175 
 
@@ -8397,12 +11049,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$175 into 
-	sd t0, 1776(sp)
+	# get address of local var:ptr_$175
+	li t4, 1776
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$175 
 
@@ -8411,12 +11068,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$175 into 
-	ld t1, 1776(sp)
+	# get value of local var:ptr_$175
+	li t4, 1776
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$175 into 
-	sd t0, 1768(sp)
+	# get address of local var:inp$175
+	li t4, 1768
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$175 
 
@@ -8426,9 +11088,12 @@ longest_common_subseqEntry:
 	# store inp$175 
 
 	# get address of inp$175 points to
-	ld t3, 1768(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1768
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$176 
 
@@ -8437,12 +11102,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$176 into 
-	sd t0, 1760(sp)
+	# get address of local var:ptr_$176
+	li t4, 1760
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$176 
 
@@ -8451,12 +11121,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$176 into 
-	ld t1, 1760(sp)
+	# get value of local var:ptr_$176
+	li t4, 1760
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$176 into 
-	sd t0, 1752(sp)
+	# get address of local var:inp$176
+	li t4, 1752
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$176 
 
@@ -8466,9 +11141,12 @@ longest_common_subseqEntry:
 	# store inp$176 
 
 	# get address of inp$176 points to
-	ld t3, 1752(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1752
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$177 
 
@@ -8477,12 +11155,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$177 into 
-	sd t0, 1744(sp)
+	# get address of local var:ptr_$177
+	li t4, 1744
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$177 
 
@@ -8491,12 +11174,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$177 into 
-	ld t1, 1744(sp)
+	# get value of local var:ptr_$177
+	li t4, 1744
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$177 into 
-	sd t0, 1736(sp)
+	# get address of local var:inp$177
+	li t4, 1736
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$177 
 
@@ -8506,9 +11194,12 @@ longest_common_subseqEntry:
 	# store inp$177 
 
 	# get address of inp$177 points to
-	ld t3, 1736(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1736
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$178 
 
@@ -8517,12 +11208,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$178 into 
-	sd t0, 1728(sp)
+	# get address of local var:ptr_$178
+	li t4, 1728
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$178 
 
@@ -8531,12 +11227,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$178 into 
-	ld t1, 1728(sp)
+	# get value of local var:ptr_$178
+	li t4, 1728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$178 into 
-	sd t0, 1720(sp)
+	# get address of local var:inp$178
+	li t4, 1720
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$178 
 
@@ -8546,9 +11247,12 @@ longest_common_subseqEntry:
 	# store inp$178 
 
 	# get address of inp$178 points to
-	ld t3, 1720(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1720
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$179 
 
@@ -8557,12 +11261,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$179 into 
-	sd t0, 1712(sp)
+	# get address of local var:ptr_$179
+	li t4, 1712
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$179 
 
@@ -8571,12 +11280,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$179 into 
-	ld t1, 1712(sp)
+	# get value of local var:ptr_$179
+	li t4, 1712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$179 into 
-	sd t0, 1704(sp)
+	# get address of local var:inp$179
+	li t4, 1704
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$179 
 
@@ -8586,9 +11300,12 @@ longest_common_subseqEntry:
 	# store inp$179 
 
 	# get address of inp$179 points to
-	ld t3, 1704(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1704
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$180 
 
@@ -8597,12 +11314,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$180 into 
-	sd t0, 1696(sp)
+	# get address of local var:ptr_$180
+	li t4, 1696
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$180 
 
@@ -8611,12 +11333,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$180 into 
-	ld t1, 1696(sp)
+	# get value of local var:ptr_$180
+	li t4, 1696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$180 into 
-	sd t0, 1688(sp)
+	# get address of local var:inp$180
+	li t4, 1688
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$180 
 
@@ -8626,9 +11353,12 @@ longest_common_subseqEntry:
 	# store inp$180 
 
 	# get address of inp$180 points to
-	ld t3, 1688(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1688
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$181 
 
@@ -8637,12 +11367,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$181 into 
-	sd t0, 1680(sp)
+	# get address of local var:ptr_$181
+	li t4, 1680
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$181 
 
@@ -8651,12 +11386,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$181 into 
-	ld t1, 1680(sp)
+	# get value of local var:ptr_$181
+	li t4, 1680
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$181 into 
-	sd t0, 1672(sp)
+	# get address of local var:inp$181
+	li t4, 1672
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$181 
 
@@ -8666,9 +11406,12 @@ longest_common_subseqEntry:
 	# store inp$181 
 
 	# get address of inp$181 points to
-	ld t3, 1672(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1672
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$182 
 
@@ -8677,12 +11420,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$182 into 
-	sd t0, 1664(sp)
+	# get address of local var:ptr_$182
+	li t4, 1664
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$182 
 
@@ -8691,12 +11439,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$182 into 
-	ld t1, 1664(sp)
+	# get value of local var:ptr_$182
+	li t4, 1664
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$182 into 
-	sd t0, 1656(sp)
+	# get address of local var:inp$182
+	li t4, 1656
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$182 
 
@@ -8706,9 +11459,12 @@ longest_common_subseqEntry:
 	# store inp$182 
 
 	# get address of inp$182 points to
-	ld t3, 1656(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1656
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$183 
 
@@ -8717,12 +11473,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$183 into 
-	sd t0, 1648(sp)
+	# get address of local var:ptr_$183
+	li t4, 1648
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$183 
 
@@ -8731,12 +11492,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$183 into 
-	ld t1, 1648(sp)
+	# get value of local var:ptr_$183
+	li t4, 1648
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$183 into 
-	sd t0, 1640(sp)
+	# get address of local var:inp$183
+	li t4, 1640
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$183 
 
@@ -8746,9 +11512,12 @@ longest_common_subseqEntry:
 	# store inp$183 
 
 	# get address of inp$183 points to
-	ld t3, 1640(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1640
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$184 
 
@@ -8757,12 +11526,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$184 into 
-	sd t0, 1632(sp)
+	# get address of local var:ptr_$184
+	li t4, 1632
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$184 
 
@@ -8771,12 +11545,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$184 into 
-	ld t1, 1632(sp)
+	# get value of local var:ptr_$184
+	li t4, 1632
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$184 into 
-	sd t0, 1624(sp)
+	# get address of local var:inp$184
+	li t4, 1624
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$184 
 
@@ -8786,9 +11565,12 @@ longest_common_subseqEntry:
 	# store inp$184 
 
 	# get address of inp$184 points to
-	ld t3, 1624(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1624
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$185 
 
@@ -8797,12 +11579,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$185 into 
-	sd t0, 1616(sp)
+	# get address of local var:ptr_$185
+	li t4, 1616
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$185 
 
@@ -8811,12 +11598,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$185 into 
-	ld t1, 1616(sp)
+	# get value of local var:ptr_$185
+	li t4, 1616
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$185 into 
-	sd t0, 1608(sp)
+	# get address of local var:inp$185
+	li t4, 1608
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$185 
 
@@ -8826,9 +11618,12 @@ longest_common_subseqEntry:
 	# store inp$185 
 
 	# get address of inp$185 points to
-	ld t3, 1608(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1608
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$186 
 
@@ -8837,12 +11632,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$186 into 
-	sd t0, 1600(sp)
+	# get address of local var:ptr_$186
+	li t4, 1600
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$186 
 
@@ -8851,12 +11651,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$186 into 
-	ld t1, 1600(sp)
+	# get value of local var:ptr_$186
+	li t4, 1600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$186 into 
-	sd t0, 1592(sp)
+	# get address of local var:inp$186
+	li t4, 1592
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$186 
 
@@ -8866,9 +11671,12 @@ longest_common_subseqEntry:
 	# store inp$186 
 
 	# get address of inp$186 points to
-	ld t3, 1592(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1592
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$187 
 
@@ -8877,12 +11685,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$187 into 
-	sd t0, 1584(sp)
+	# get address of local var:ptr_$187
+	li t4, 1584
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$187 
 
@@ -8891,12 +11704,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$187 into 
-	ld t1, 1584(sp)
+	# get value of local var:ptr_$187
+	li t4, 1584
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$187 into 
-	sd t0, 1576(sp)
+	# get address of local var:inp$187
+	li t4, 1576
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$187 
 
@@ -8906,9 +11724,12 @@ longest_common_subseqEntry:
 	# store inp$187 
 
 	# get address of inp$187 points to
-	ld t3, 1576(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1576
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$188 
 
@@ -8917,12 +11738,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$188 into 
-	sd t0, 1568(sp)
+	# get address of local var:ptr_$188
+	li t4, 1568
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$188 
 
@@ -8931,12 +11757,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$188 into 
-	ld t1, 1568(sp)
+	# get value of local var:ptr_$188
+	li t4, 1568
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$188 into 
-	sd t0, 1560(sp)
+	# get address of local var:inp$188
+	li t4, 1560
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$188 
 
@@ -8946,9 +11777,12 @@ longest_common_subseqEntry:
 	# store inp$188 
 
 	# get address of inp$188 points to
-	ld t3, 1560(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1560
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$189 
 
@@ -8957,12 +11791,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$189 into 
-	sd t0, 1552(sp)
+	# get address of local var:ptr_$189
+	li t4, 1552
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$189 
 
@@ -8971,12 +11810,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$189 into 
-	ld t1, 1552(sp)
+	# get value of local var:ptr_$189
+	li t4, 1552
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$189 into 
-	sd t0, 1544(sp)
+	# get address of local var:inp$189
+	li t4, 1544
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$189 
 
@@ -8986,9 +11830,12 @@ longest_common_subseqEntry:
 	# store inp$189 
 
 	# get address of inp$189 points to
-	ld t3, 1544(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1544
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$190 
 
@@ -8997,12 +11844,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$190 into 
-	sd t0, 1536(sp)
+	# get address of local var:ptr_$190
+	li t4, 1536
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$190 
 
@@ -9011,12 +11863,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$190 into 
-	ld t1, 1536(sp)
+	# get value of local var:ptr_$190
+	li t4, 1536
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$190 into 
-	sd t0, 1528(sp)
+	# get address of local var:inp$190
+	li t4, 1528
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$190 
 
@@ -9026,9 +11883,12 @@ longest_common_subseqEntry:
 	# store inp$190 
 
 	# get address of inp$190 points to
-	ld t3, 1528(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1528
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$191 
 
@@ -9037,12 +11897,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$191 into 
-	sd t0, 1520(sp)
+	# get address of local var:ptr_$191
+	li t4, 1520
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$191 
 
@@ -9051,12 +11916,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$191 into 
-	ld t1, 1520(sp)
+	# get value of local var:ptr_$191
+	li t4, 1520
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$191 into 
-	sd t0, 1512(sp)
+	# get address of local var:inp$191
+	li t4, 1512
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$191 
 
@@ -9066,9 +11936,12 @@ longest_common_subseqEntry:
 	# store inp$191 
 
 	# get address of inp$191 points to
-	ld t3, 1512(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1512
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$192 
 
@@ -9077,12 +11950,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$192 into 
-	sd t0, 1504(sp)
+	# get address of local var:ptr_$192
+	li t4, 1504
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$192 
 
@@ -9091,12 +11969,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$192 into 
-	ld t1, 1504(sp)
+	# get value of local var:ptr_$192
+	li t4, 1504
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$192 into 
-	sd t0, 1496(sp)
+	# get address of local var:inp$192
+	li t4, 1496
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$192 
 
@@ -9106,9 +11989,12 @@ longest_common_subseqEntry:
 	# store inp$192 
 
 	# get address of inp$192 points to
-	ld t3, 1496(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$193 
 
@@ -9117,12 +12003,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$193 into 
-	sd t0, 1488(sp)
+	# get address of local var:ptr_$193
+	li t4, 1488
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$193 
 
@@ -9131,12 +12022,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$193 into 
-	ld t1, 1488(sp)
+	# get value of local var:ptr_$193
+	li t4, 1488
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$193 into 
-	sd t0, 1480(sp)
+	# get address of local var:inp$193
+	li t4, 1480
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$193 
 
@@ -9146,9 +12042,12 @@ longest_common_subseqEntry:
 	# store inp$193 
 
 	# get address of inp$193 points to
-	ld t3, 1480(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1480
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$194 
 
@@ -9157,12 +12056,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$194 into 
-	sd t0, 1472(sp)
+	# get address of local var:ptr_$194
+	li t4, 1472
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$194 
 
@@ -9171,12 +12075,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$194 into 
-	ld t1, 1472(sp)
+	# get value of local var:ptr_$194
+	li t4, 1472
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$194 into 
-	sd t0, 1464(sp)
+	# get address of local var:inp$194
+	li t4, 1464
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$194 
 
@@ -9186,9 +12095,12 @@ longest_common_subseqEntry:
 	# store inp$194 
 
 	# get address of inp$194 points to
-	ld t3, 1464(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1464
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$195 
 
@@ -9197,12 +12109,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$195 into 
-	sd t0, 1456(sp)
+	# get address of local var:ptr_$195
+	li t4, 1456
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$195 
 
@@ -9211,12 +12128,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$195 into 
-	ld t1, 1456(sp)
+	# get value of local var:ptr_$195
+	li t4, 1456
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$195 into 
-	sd t0, 1448(sp)
+	# get address of local var:inp$195
+	li t4, 1448
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$195 
 
@@ -9226,9 +12148,12 @@ longest_common_subseqEntry:
 	# store inp$195 
 
 	# get address of inp$195 points to
-	ld t3, 1448(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1448
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$196 
 
@@ -9237,12 +12162,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$196 into 
-	sd t0, 1440(sp)
+	# get address of local var:ptr_$196
+	li t4, 1440
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$196 
 
@@ -9251,12 +12181,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$196 into 
-	ld t1, 1440(sp)
+	# get value of local var:ptr_$196
+	li t4, 1440
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$196 into 
-	sd t0, 1432(sp)
+	# get address of local var:inp$196
+	li t4, 1432
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$196 
 
@@ -9266,9 +12201,12 @@ longest_common_subseqEntry:
 	# store inp$196 
 
 	# get address of inp$196 points to
-	ld t3, 1432(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1432
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$197 
 
@@ -9277,12 +12215,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$197 into 
-	sd t0, 1424(sp)
+	# get address of local var:ptr_$197
+	li t4, 1424
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$197 
 
@@ -9291,12 +12234,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$197 into 
-	ld t1, 1424(sp)
+	# get value of local var:ptr_$197
+	li t4, 1424
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$197 into 
-	sd t0, 1416(sp)
+	# get address of local var:inp$197
+	li t4, 1416
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$197 
 
@@ -9306,9 +12254,12 @@ longest_common_subseqEntry:
 	# store inp$197 
 
 	# get address of inp$197 points to
-	ld t3, 1416(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1416
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$198 
 
@@ -9317,12 +12268,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$198 into 
-	sd t0, 1408(sp)
+	# get address of local var:ptr_$198
+	li t4, 1408
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$198 
 
@@ -9331,12 +12287,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$198 into 
-	ld t1, 1408(sp)
+	# get value of local var:ptr_$198
+	li t4, 1408
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$198 into 
-	sd t0, 1400(sp)
+	# get address of local var:inp$198
+	li t4, 1400
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$198 
 
@@ -9346,9 +12307,12 @@ longest_common_subseqEntry:
 	# store inp$198 
 
 	# get address of inp$198 points to
-	ld t3, 1400(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1400
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$199 
 
@@ -9357,12 +12321,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$199 into 
-	sd t0, 1392(sp)
+	# get address of local var:ptr_$199
+	li t4, 1392
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$199 
 
@@ -9371,12 +12340,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$199 into 
-	ld t1, 1392(sp)
+	# get value of local var:ptr_$199
+	li t4, 1392
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$199 into 
-	sd t0, 1384(sp)
+	# get address of local var:inp$199
+	li t4, 1384
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$199 
 
@@ -9386,9 +12360,12 @@ longest_common_subseqEntry:
 	# store inp$199 
 
 	# get address of inp$199 points to
-	ld t3, 1384(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$200 
 
@@ -9397,12 +12374,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$200 into 
-	sd t0, 1376(sp)
+	# get address of local var:ptr_$200
+	li t4, 1376
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$200 
 
@@ -9411,12 +12393,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$200 into 
-	ld t1, 1376(sp)
+	# get value of local var:ptr_$200
+	li t4, 1376
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$200 into 
-	sd t0, 1368(sp)
+	# get address of local var:inp$200
+	li t4, 1368
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$200 
 
@@ -9426,9 +12413,12 @@ longest_common_subseqEntry:
 	# store inp$200 
 
 	# get address of inp$200 points to
-	ld t3, 1368(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1368
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$201 
 
@@ -9437,12 +12427,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$201 into 
-	sd t0, 1360(sp)
+	# get address of local var:ptr_$201
+	li t4, 1360
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$201 
 
@@ -9451,12 +12446,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$201 into 
-	ld t1, 1360(sp)
+	# get value of local var:ptr_$201
+	li t4, 1360
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$201 into 
-	sd t0, 1352(sp)
+	# get address of local var:inp$201
+	li t4, 1352
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$201 
 
@@ -9466,9 +12466,12 @@ longest_common_subseqEntry:
 	# store inp$201 
 
 	# get address of inp$201 points to
-	ld t3, 1352(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1352
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$202 
 
@@ -9477,12 +12480,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$202 into 
-	sd t0, 1344(sp)
+	# get address of local var:ptr_$202
+	li t4, 1344
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$202 
 
@@ -9491,12 +12499,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$202 into 
-	ld t1, 1344(sp)
+	# get value of local var:ptr_$202
+	li t4, 1344
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$202 into 
-	sd t0, 1336(sp)
+	# get address of local var:inp$202
+	li t4, 1336
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$202 
 
@@ -9506,9 +12519,12 @@ longest_common_subseqEntry:
 	# store inp$202 
 
 	# get address of inp$202 points to
-	ld t3, 1336(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1336
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$203 
 
@@ -9517,12 +12533,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$203 into 
-	sd t0, 1328(sp)
+	# get address of local var:ptr_$203
+	li t4, 1328
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$203 
 
@@ -9531,12 +12552,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$203 into 
-	ld t1, 1328(sp)
+	# get value of local var:ptr_$203
+	li t4, 1328
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$203 into 
-	sd t0, 1320(sp)
+	# get address of local var:inp$203
+	li t4, 1320
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$203 
 
@@ -9546,9 +12572,12 @@ longest_common_subseqEntry:
 	# store inp$203 
 
 	# get address of inp$203 points to
-	ld t3, 1320(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1320
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$204 
 
@@ -9557,12 +12586,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$204 into 
-	sd t0, 1312(sp)
+	# get address of local var:ptr_$204
+	li t4, 1312
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$204 
 
@@ -9571,12 +12605,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$204 into 
-	ld t1, 1312(sp)
+	# get value of local var:ptr_$204
+	li t4, 1312
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$204 into 
-	sd t0, 1304(sp)
+	# get address of local var:inp$204
+	li t4, 1304
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$204 
 
@@ -9586,9 +12625,12 @@ longest_common_subseqEntry:
 	# store inp$204 
 
 	# get address of inp$204 points to
-	ld t3, 1304(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1304
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$205 
 
@@ -9597,12 +12639,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$205 into 
-	sd t0, 1296(sp)
+	# get address of local var:ptr_$205
+	li t4, 1296
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$205 
 
@@ -9611,12 +12658,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$205 into 
-	ld t1, 1296(sp)
+	# get value of local var:ptr_$205
+	li t4, 1296
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$205 into 
-	sd t0, 1288(sp)
+	# get address of local var:inp$205
+	li t4, 1288
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$205 
 
@@ -9626,9 +12678,12 @@ longest_common_subseqEntry:
 	# store inp$205 
 
 	# get address of inp$205 points to
-	ld t3, 1288(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1288
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$206 
 
@@ -9637,12 +12692,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$206 into 
-	sd t0, 1280(sp)
+	# get address of local var:ptr_$206
+	li t4, 1280
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$206 
 
@@ -9651,12 +12711,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$206 into 
-	ld t1, 1280(sp)
+	# get value of local var:ptr_$206
+	li t4, 1280
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$206 into 
-	sd t0, 1272(sp)
+	# get address of local var:inp$206
+	li t4, 1272
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$206 
 
@@ -9666,9 +12731,12 @@ longest_common_subseqEntry:
 	# store inp$206 
 
 	# get address of inp$206 points to
-	ld t3, 1272(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1272
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$207 
 
@@ -9677,12 +12745,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$207 into 
-	sd t0, 1264(sp)
+	# get address of local var:ptr_$207
+	li t4, 1264
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$207 
 
@@ -9691,12 +12764,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$207 into 
-	ld t1, 1264(sp)
+	# get value of local var:ptr_$207
+	li t4, 1264
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$207 into 
-	sd t0, 1256(sp)
+	# get address of local var:inp$207
+	li t4, 1256
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$207 
 
@@ -9706,9 +12784,12 @@ longest_common_subseqEntry:
 	# store inp$207 
 
 	# get address of inp$207 points to
-	ld t3, 1256(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1256
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$208 
 
@@ -9717,12 +12798,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$208 into 
-	sd t0, 1248(sp)
+	# get address of local var:ptr_$208
+	li t4, 1248
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$208 
 
@@ -9731,12 +12817,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$208 into 
-	ld t1, 1248(sp)
+	# get value of local var:ptr_$208
+	li t4, 1248
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$208 into 
-	sd t0, 1240(sp)
+	# get address of local var:inp$208
+	li t4, 1240
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$208 
 
@@ -9746,9 +12837,12 @@ longest_common_subseqEntry:
 	# store inp$208 
 
 	# get address of inp$208 points to
-	ld t3, 1240(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1240
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$209 
 
@@ -9757,12 +12851,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$209 into 
-	sd t0, 1232(sp)
+	# get address of local var:ptr_$209
+	li t4, 1232
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$209 
 
@@ -9771,12 +12870,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$209 into 
-	ld t1, 1232(sp)
+	# get value of local var:ptr_$209
+	li t4, 1232
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$209 into 
-	sd t0, 1224(sp)
+	# get address of local var:inp$209
+	li t4, 1224
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$209 
 
@@ -9786,9 +12890,12 @@ longest_common_subseqEntry:
 	# store inp$209 
 
 	# get address of inp$209 points to
-	ld t3, 1224(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1224
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$210 
 
@@ -9797,12 +12904,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$210 into 
-	sd t0, 1216(sp)
+	# get address of local var:ptr_$210
+	li t4, 1216
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$210 
 
@@ -9811,12 +12923,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$210 into 
-	ld t1, 1216(sp)
+	# get value of local var:ptr_$210
+	li t4, 1216
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$210 into 
-	sd t0, 1208(sp)
+	# get address of local var:inp$210
+	li t4, 1208
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$210 
 
@@ -9826,9 +12943,12 @@ longest_common_subseqEntry:
 	# store inp$210 
 
 	# get address of inp$210 points to
-	ld t3, 1208(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1208
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$211 
 
@@ -9837,12 +12957,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$211 into 
-	sd t0, 1200(sp)
+	# get address of local var:ptr_$211
+	li t4, 1200
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$211 
 
@@ -9851,12 +12976,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$211 into 
-	ld t1, 1200(sp)
+	# get value of local var:ptr_$211
+	li t4, 1200
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$211 into 
-	sd t0, 1192(sp)
+	# get address of local var:inp$211
+	li t4, 1192
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$211 
 
@@ -9866,9 +12996,12 @@ longest_common_subseqEntry:
 	# store inp$211 
 
 	# get address of inp$211 points to
-	ld t3, 1192(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1192
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$212 
 
@@ -9877,12 +13010,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$212 into 
-	sd t0, 1184(sp)
+	# get address of local var:ptr_$212
+	li t4, 1184
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$212 
 
@@ -9891,12 +13029,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$212 into 
-	ld t1, 1184(sp)
+	# get value of local var:ptr_$212
+	li t4, 1184
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$212 into 
-	sd t0, 1176(sp)
+	# get address of local var:inp$212
+	li t4, 1176
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$212 
 
@@ -9906,9 +13049,12 @@ longest_common_subseqEntry:
 	# store inp$212 
 
 	# get address of inp$212 points to
-	ld t3, 1176(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1176
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$213 
 
@@ -9917,12 +13063,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$213 into 
-	sd t0, 1168(sp)
+	# get address of local var:ptr_$213
+	li t4, 1168
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$213 
 
@@ -9931,12 +13082,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$213 into 
-	ld t1, 1168(sp)
+	# get value of local var:ptr_$213
+	li t4, 1168
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$213 into 
-	sd t0, 1160(sp)
+	# get address of local var:inp$213
+	li t4, 1160
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$213 
 
@@ -9946,9 +13102,12 @@ longest_common_subseqEntry:
 	# store inp$213 
 
 	# get address of inp$213 points to
-	ld t3, 1160(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1160
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$214 
 
@@ -9957,12 +13116,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$214 into 
-	sd t0, 1152(sp)
+	# get address of local var:ptr_$214
+	li t4, 1152
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$214 
 
@@ -9971,12 +13135,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$214 into 
-	ld t1, 1152(sp)
+	# get value of local var:ptr_$214
+	li t4, 1152
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$214 into 
-	sd t0, 1144(sp)
+	# get address of local var:inp$214
+	li t4, 1144
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$214 
 
@@ -9986,9 +13155,12 @@ longest_common_subseqEntry:
 	# store inp$214 
 
 	# get address of inp$214 points to
-	ld t3, 1144(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1144
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$215 
 
@@ -9997,12 +13169,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$215 into 
-	sd t0, 1136(sp)
+	# get address of local var:ptr_$215
+	li t4, 1136
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$215 
 
@@ -10011,12 +13188,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$215 into 
-	ld t1, 1136(sp)
+	# get value of local var:ptr_$215
+	li t4, 1136
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$215 into 
-	sd t0, 1128(sp)
+	# get address of local var:inp$215
+	li t4, 1128
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$215 
 
@@ -10026,9 +13208,12 @@ longest_common_subseqEntry:
 	# store inp$215 
 
 	# get address of inp$215 points to
-	ld t3, 1128(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$216 
 
@@ -10037,12 +13222,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$216 into 
-	sd t0, 1120(sp)
+	# get address of local var:ptr_$216
+	li t4, 1120
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$216 
 
@@ -10051,12 +13241,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$216 into 
-	ld t1, 1120(sp)
+	# get value of local var:ptr_$216
+	li t4, 1120
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$216 into 
-	sd t0, 1112(sp)
+	# get address of local var:inp$216
+	li t4, 1112
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$216 
 
@@ -10066,9 +13261,12 @@ longest_common_subseqEntry:
 	# store inp$216 
 
 	# get address of inp$216 points to
-	ld t3, 1112(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$217 
 
@@ -10077,12 +13275,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$217 into 
-	sd t0, 1104(sp)
+	# get address of local var:ptr_$217
+	li t4, 1104
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$217 
 
@@ -10091,12 +13294,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$217 into 
-	ld t1, 1104(sp)
+	# get value of local var:ptr_$217
+	li t4, 1104
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$217 into 
-	sd t0, 1096(sp)
+	# get address of local var:inp$217
+	li t4, 1096
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$217 
 
@@ -10106,9 +13314,12 @@ longest_common_subseqEntry:
 	# store inp$217 
 
 	# get address of inp$217 points to
-	ld t3, 1096(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1096
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$218 
 
@@ -10117,12 +13328,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$218 into 
-	sd t0, 1088(sp)
+	# get address of local var:ptr_$218
+	li t4, 1088
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$218 
 
@@ -10131,12 +13347,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$218 into 
-	ld t1, 1088(sp)
+	# get value of local var:ptr_$218
+	li t4, 1088
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$218 into 
-	sd t0, 1080(sp)
+	# get address of local var:inp$218
+	li t4, 1080
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$218 
 
@@ -10146,9 +13367,12 @@ longest_common_subseqEntry:
 	# store inp$218 
 
 	# get address of inp$218 points to
-	ld t3, 1080(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1080
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$219 
 
@@ -10157,12 +13381,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$219 into 
-	sd t0, 1072(sp)
+	# get address of local var:ptr_$219
+	li t4, 1072
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$219 
 
@@ -10171,12 +13400,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$219 into 
-	ld t1, 1072(sp)
+	# get value of local var:ptr_$219
+	li t4, 1072
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$219 into 
-	sd t0, 1064(sp)
+	# get address of local var:inp$219
+	li t4, 1064
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$219 
 
@@ -10186,9 +13420,12 @@ longest_common_subseqEntry:
 	# store inp$219 
 
 	# get address of inp$219 points to
-	ld t3, 1064(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1064
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$220 
 
@@ -10197,12 +13434,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$220 into 
-	sd t0, 1056(sp)
+	# get address of local var:ptr_$220
+	li t4, 1056
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$220 
 
@@ -10211,12 +13453,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$220 into 
-	ld t1, 1056(sp)
+	# get value of local var:ptr_$220
+	li t4, 1056
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$220 into 
-	sd t0, 1048(sp)
+	# get address of local var:inp$220
+	li t4, 1048
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$220 
 
@@ -10226,9 +13473,12 @@ longest_common_subseqEntry:
 	# store inp$220 
 
 	# get address of inp$220 points to
-	ld t3, 1048(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1048
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$221 
 
@@ -10237,12 +13487,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$221 into 
-	sd t0, 1040(sp)
+	# get address of local var:ptr_$221
+	li t4, 1040
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$221 
 
@@ -10251,12 +13506,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$221 into 
-	ld t1, 1040(sp)
+	# get value of local var:ptr_$221
+	li t4, 1040
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$221 into 
-	sd t0, 1032(sp)
+	# get address of local var:inp$221
+	li t4, 1032
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$221 
 
@@ -10266,9 +13526,12 @@ longest_common_subseqEntry:
 	# store inp$221 
 
 	# get address of inp$221 points to
-	ld t3, 1032(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1032
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$222 
 
@@ -10277,12 +13540,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$222 into 
-	sd t0, 1024(sp)
+	# get address of local var:ptr_$222
+	li t4, 1024
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$222 
 
@@ -10291,12 +13559,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$222 into 
-	ld t1, 1024(sp)
+	# get value of local var:ptr_$222
+	li t4, 1024
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$222 into 
-	sd t0, 1016(sp)
+	# get address of local var:inp$222
+	li t4, 1016
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$222 
 
@@ -10306,9 +13579,12 @@ longest_common_subseqEntry:
 	# store inp$222 
 
 	# get address of inp$222 points to
-	ld t3, 1016(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1016
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$223 
 
@@ -10317,12 +13593,17 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$223 into 
-	sd t0, 1008(sp)
+	# get address of local var:ptr_$223
+	li t4, 1008
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# gep inp$223 
 
@@ -10331,12 +13612,17 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$223 into 
-	ld t1, 1008(sp)
+	# get value of local var:ptr_$223
+	li t4, 1008
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$223 into 
-	sd t0, 1000(sp)
+	# get address of local var:inp$223
+	li t4, 1000
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# inp$223 
 
@@ -10346,9 +13632,12 @@ longest_common_subseqEntry:
 	# store inp$223 
 
 	# get address of inp$223 points to
-	ld t3, 1000(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 1000
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$224 
 
@@ -10357,11 +13646,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$224 into 
+	# get address of local var:ptr_$224
 	sd t0, 992(sp)
 
 	# gep inp$224 
@@ -10371,11 +13663,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$224 into 
-	ld t1, 992(sp)
+	# get value of local var:ptr_$224
+	li t4, 992
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$224 into 
+	# get address of local var:inp$224
 	sd t0, 984(sp)
 
 	# inp$224 
@@ -10386,9 +13681,12 @@ longest_common_subseqEntry:
 	# store inp$224 
 
 	# get address of inp$224 points to
-	ld t3, 984(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 984
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$225 
 
@@ -10397,11 +13695,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$225 into 
+	# get address of local var:ptr_$225
 	sd t0, 976(sp)
 
 	# gep inp$225 
@@ -10411,11 +13712,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$225 into 
-	ld t1, 976(sp)
+	# get value of local var:ptr_$225
+	li t4, 976
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$225 into 
+	# get address of local var:inp$225
 	sd t0, 968(sp)
 
 	# inp$225 
@@ -10426,9 +13730,12 @@ longest_common_subseqEntry:
 	# store inp$225 
 
 	# get address of inp$225 points to
-	ld t3, 968(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 968
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$226 
 
@@ -10437,11 +13744,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$226 into 
+	# get address of local var:ptr_$226
 	sd t0, 960(sp)
 
 	# gep inp$226 
@@ -10451,11 +13761,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$226 into 
-	ld t1, 960(sp)
+	# get value of local var:ptr_$226
+	li t4, 960
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$226 into 
+	# get address of local var:inp$226
 	sd t0, 952(sp)
 
 	# inp$226 
@@ -10466,9 +13779,12 @@ longest_common_subseqEntry:
 	# store inp$226 
 
 	# get address of inp$226 points to
-	ld t3, 952(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 952
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$227 
 
@@ -10477,11 +13793,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$227 into 
+	# get address of local var:ptr_$227
 	sd t0, 944(sp)
 
 	# gep inp$227 
@@ -10491,11 +13810,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$227 into 
-	ld t1, 944(sp)
+	# get value of local var:ptr_$227
+	li t4, 944
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$227 into 
+	# get address of local var:inp$227
 	sd t0, 936(sp)
 
 	# inp$227 
@@ -10506,9 +13828,12 @@ longest_common_subseqEntry:
 	# store inp$227 
 
 	# get address of inp$227 points to
-	ld t3, 936(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 936
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$228 
 
@@ -10517,11 +13842,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$228 into 
+	# get address of local var:ptr_$228
 	sd t0, 928(sp)
 
 	# gep inp$228 
@@ -10531,11 +13859,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$228 into 
-	ld t1, 928(sp)
+	# get value of local var:ptr_$228
+	li t4, 928
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$228 into 
+	# get address of local var:inp$228
 	sd t0, 920(sp)
 
 	# inp$228 
@@ -10546,9 +13877,12 @@ longest_common_subseqEntry:
 	# store inp$228 
 
 	# get address of inp$228 points to
-	ld t3, 920(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 920
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$229 
 
@@ -10557,11 +13891,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$229 into 
+	# get address of local var:ptr_$229
 	sd t0, 912(sp)
 
 	# gep inp$229 
@@ -10571,11 +13908,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$229 into 
-	ld t1, 912(sp)
+	# get value of local var:ptr_$229
+	li t4, 912
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$229 into 
+	# get address of local var:inp$229
 	sd t0, 904(sp)
 
 	# inp$229 
@@ -10586,9 +13926,12 @@ longest_common_subseqEntry:
 	# store inp$229 
 
 	# get address of inp$229 points to
-	ld t3, 904(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 904
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$230 
 
@@ -10597,11 +13940,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$230 into 
+	# get address of local var:ptr_$230
 	sd t0, 896(sp)
 
 	# gep inp$230 
@@ -10611,11 +13957,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$230 into 
-	ld t1, 896(sp)
+	# get value of local var:ptr_$230
+	li t4, 896
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$230 into 
+	# get address of local var:inp$230
 	sd t0, 888(sp)
 
 	# inp$230 
@@ -10626,9 +13975,12 @@ longest_common_subseqEntry:
 	# store inp$230 
 
 	# get address of inp$230 points to
-	ld t3, 888(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 888
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$231 
 
@@ -10637,11 +13989,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$231 into 
+	# get address of local var:ptr_$231
 	sd t0, 880(sp)
 
 	# gep inp$231 
@@ -10651,11 +14006,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$231 into 
-	ld t1, 880(sp)
+	# get value of local var:ptr_$231
+	li t4, 880
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$231 into 
+	# get address of local var:inp$231
 	sd t0, 872(sp)
 
 	# inp$231 
@@ -10666,9 +14024,12 @@ longest_common_subseqEntry:
 	# store inp$231 
 
 	# get address of inp$231 points to
-	ld t3, 872(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 872
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$232 
 
@@ -10677,11 +14038,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$232 into 
+	# get address of local var:ptr_$232
 	sd t0, 864(sp)
 
 	# gep inp$232 
@@ -10691,11 +14055,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$232 into 
-	ld t1, 864(sp)
+	# get value of local var:ptr_$232
+	li t4, 864
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$232 into 
+	# get address of local var:inp$232
 	sd t0, 856(sp)
 
 	# inp$232 
@@ -10706,9 +14073,12 @@ longest_common_subseqEntry:
 	# store inp$232 
 
 	# get address of inp$232 points to
-	ld t3, 856(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 856
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$233 
 
@@ -10717,11 +14087,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$233 into 
+	# get address of local var:ptr_$233
 	sd t0, 848(sp)
 
 	# gep inp$233 
@@ -10731,11 +14104,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$233 into 
-	ld t1, 848(sp)
+	# get value of local var:ptr_$233
+	li t4, 848
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$233 into 
+	# get address of local var:inp$233
 	sd t0, 840(sp)
 
 	# inp$233 
@@ -10746,9 +14122,12 @@ longest_common_subseqEntry:
 	# store inp$233 
 
 	# get address of inp$233 points to
-	ld t3, 840(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 840
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$234 
 
@@ -10757,11 +14136,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$234 into 
+	# get address of local var:ptr_$234
 	sd t0, 832(sp)
 
 	# gep inp$234 
@@ -10771,11 +14153,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$234 into 
-	ld t1, 832(sp)
+	# get value of local var:ptr_$234
+	li t4, 832
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$234 into 
+	# get address of local var:inp$234
 	sd t0, 824(sp)
 
 	# inp$234 
@@ -10786,9 +14171,12 @@ longest_common_subseqEntry:
 	# store inp$234 
 
 	# get address of inp$234 points to
-	ld t3, 824(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 824
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$235 
 
@@ -10797,11 +14185,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$235 into 
+	# get address of local var:ptr_$235
 	sd t0, 816(sp)
 
 	# gep inp$235 
@@ -10811,11 +14202,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$235 into 
-	ld t1, 816(sp)
+	# get value of local var:ptr_$235
+	li t4, 816
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$235 into 
+	# get address of local var:inp$235
 	sd t0, 808(sp)
 
 	# inp$235 
@@ -10826,9 +14220,12 @@ longest_common_subseqEntry:
 	# store inp$235 
 
 	# get address of inp$235 points to
-	ld t3, 808(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 808
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$236 
 
@@ -10837,11 +14234,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$236 into 
+	# get address of local var:ptr_$236
 	sd t0, 800(sp)
 
 	# gep inp$236 
@@ -10851,11 +14251,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$236 into 
-	ld t1, 800(sp)
+	# get value of local var:ptr_$236
+	li t4, 800
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$236 into 
+	# get address of local var:inp$236
 	sd t0, 792(sp)
 
 	# inp$236 
@@ -10866,9 +14269,12 @@ longest_common_subseqEntry:
 	# store inp$236 
 
 	# get address of inp$236 points to
-	ld t3, 792(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 792
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$237 
 
@@ -10877,11 +14283,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$237 into 
+	# get address of local var:ptr_$237
 	sd t0, 784(sp)
 
 	# gep inp$237 
@@ -10891,11 +14300,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$237 into 
-	ld t1, 784(sp)
+	# get value of local var:ptr_$237
+	li t4, 784
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$237 into 
+	# get address of local var:inp$237
 	sd t0, 776(sp)
 
 	# inp$237 
@@ -10906,9 +14318,12 @@ longest_common_subseqEntry:
 	# store inp$237 
 
 	# get address of inp$237 points to
-	ld t3, 776(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 776
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$238 
 
@@ -10917,11 +14332,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$238 into 
+	# get address of local var:ptr_$238
 	sd t0, 768(sp)
 
 	# gep inp$238 
@@ -10931,11 +14349,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$238 into 
-	ld t1, 768(sp)
+	# get value of local var:ptr_$238
+	li t4, 768
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$238 into 
+	# get address of local var:inp$238
 	sd t0, 760(sp)
 
 	# inp$238 
@@ -10946,9 +14367,12 @@ longest_common_subseqEntry:
 	# store inp$238 
 
 	# get address of inp$238 points to
-	ld t3, 760(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 760
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$239 
 
@@ -10957,11 +14381,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$239 into 
+	# get address of local var:ptr_$239
 	sd t0, 752(sp)
 
 	# gep inp$239 
@@ -10971,11 +14398,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$239 into 
-	ld t1, 752(sp)
+	# get value of local var:ptr_$239
+	li t4, 752
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$239 into 
+	# get address of local var:inp$239
 	sd t0, 744(sp)
 
 	# inp$239 
@@ -10986,9 +14416,12 @@ longest_common_subseqEntry:
 	# store inp$239 
 
 	# get address of inp$239 points to
-	ld t3, 744(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 744
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$240 
 
@@ -10997,11 +14430,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$240 into 
+	# get address of local var:ptr_$240
 	sd t0, 736(sp)
 
 	# gep inp$240 
@@ -11011,11 +14447,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$240 into 
-	ld t1, 736(sp)
+	# get value of local var:ptr_$240
+	li t4, 736
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$240 into 
+	# get address of local var:inp$240
 	sd t0, 728(sp)
 
 	# inp$240 
@@ -11026,9 +14465,12 @@ longest_common_subseqEntry:
 	# store inp$240 
 
 	# get address of inp$240 points to
-	ld t3, 728(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$241 
 
@@ -11037,11 +14479,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$241 into 
+	# get address of local var:ptr_$241
 	sd t0, 720(sp)
 
 	# gep inp$241 
@@ -11051,11 +14496,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$241 into 
-	ld t1, 720(sp)
+	# get value of local var:ptr_$241
+	li t4, 720
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$241 into 
+	# get address of local var:inp$241
 	sd t0, 712(sp)
 
 	# inp$241 
@@ -11066,9 +14514,12 @@ longest_common_subseqEntry:
 	# store inp$241 
 
 	# get address of inp$241 points to
-	ld t3, 712(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$242 
 
@@ -11077,11 +14528,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$242 into 
+	# get address of local var:ptr_$242
 	sd t0, 704(sp)
 
 	# gep inp$242 
@@ -11091,11 +14545,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$242 into 
-	ld t1, 704(sp)
+	# get value of local var:ptr_$242
+	li t4, 704
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$242 into 
+	# get address of local var:inp$242
 	sd t0, 696(sp)
 
 	# inp$242 
@@ -11106,9 +14563,12 @@ longest_common_subseqEntry:
 	# store inp$242 
 
 	# get address of inp$242 points to
-	ld t3, 696(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$243 
 
@@ -11117,11 +14577,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$243 into 
+	# get address of local var:ptr_$243
 	sd t0, 688(sp)
 
 	# gep inp$243 
@@ -11131,11 +14594,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$243 into 
-	ld t1, 688(sp)
+	# get value of local var:ptr_$243
+	li t4, 688
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$243 into 
+	# get address of local var:inp$243
 	sd t0, 680(sp)
 
 	# inp$243 
@@ -11146,9 +14612,12 @@ longest_common_subseqEntry:
 	# store inp$243 
 
 	# get address of inp$243 points to
-	ld t3, 680(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 680
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$244 
 
@@ -11157,11 +14626,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$244 into 
+	# get address of local var:ptr_$244
 	sd t0, 672(sp)
 
 	# gep inp$244 
@@ -11171,11 +14643,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$244 into 
-	ld t1, 672(sp)
+	# get value of local var:ptr_$244
+	li t4, 672
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$244 into 
+	# get address of local var:inp$244
 	sd t0, 664(sp)
 
 	# inp$244 
@@ -11186,9 +14661,12 @@ longest_common_subseqEntry:
 	# store inp$244 
 
 	# get address of inp$244 points to
-	ld t3, 664(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 664
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$245 
 
@@ -11197,11 +14675,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$245 into 
+	# get address of local var:ptr_$245
 	sd t0, 656(sp)
 
 	# gep inp$245 
@@ -11211,11 +14692,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$245 into 
-	ld t1, 656(sp)
+	# get value of local var:ptr_$245
+	li t4, 656
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$245 into 
+	# get address of local var:inp$245
 	sd t0, 648(sp)
 
 	# inp$245 
@@ -11226,9 +14710,12 @@ longest_common_subseqEntry:
 	# store inp$245 
 
 	# get address of inp$245 points to
-	ld t3, 648(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 648
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$246 
 
@@ -11237,11 +14724,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$246 into 
+	# get address of local var:ptr_$246
 	sd t0, 640(sp)
 
 	# gep inp$246 
@@ -11251,11 +14741,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$246 into 
-	ld t1, 640(sp)
+	# get value of local var:ptr_$246
+	li t4, 640
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$246 into 
+	# get address of local var:inp$246
 	sd t0, 632(sp)
 
 	# inp$246 
@@ -11266,9 +14759,12 @@ longest_common_subseqEntry:
 	# store inp$246 
 
 	# get address of inp$246 points to
-	ld t3, 632(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 632
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$247 
 
@@ -11277,11 +14773,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$247 into 
+	# get address of local var:ptr_$247
 	sd t0, 624(sp)
 
 	# gep inp$247 
@@ -11291,11 +14790,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$247 into 
-	ld t1, 624(sp)
+	# get value of local var:ptr_$247
+	li t4, 624
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$247 into 
+	# get address of local var:inp$247
 	sd t0, 616(sp)
 
 	# inp$247 
@@ -11306,9 +14808,12 @@ longest_common_subseqEntry:
 	# store inp$247 
 
 	# get address of inp$247 points to
-	ld t3, 616(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 616
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$248 
 
@@ -11317,11 +14822,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$248 into 
+	# get address of local var:ptr_$248
 	sd t0, 608(sp)
 
 	# gep inp$248 
@@ -11331,11 +14839,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$248 into 
-	ld t1, 608(sp)
+	# get value of local var:ptr_$248
+	li t4, 608
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$248 into 
+	# get address of local var:inp$248
 	sd t0, 600(sp)
 
 	# inp$248 
@@ -11346,9 +14857,12 @@ longest_common_subseqEntry:
 	# store inp$248 
 
 	# get address of inp$248 points to
-	ld t3, 600(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 600
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$249 
 
@@ -11357,11 +14871,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$249 into 
+	# get address of local var:ptr_$249
 	sd t0, 592(sp)
 
 	# gep inp$249 
@@ -11371,11 +14888,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$249 into 
-	ld t1, 592(sp)
+	# get value of local var:ptr_$249
+	li t4, 592
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$249 into 
+	# get address of local var:inp$249
 	sd t0, 584(sp)
 
 	# inp$249 
@@ -11386,9 +14906,12 @@ longest_common_subseqEntry:
 	# store inp$249 
 
 	# get address of inp$249 points to
-	ld t3, 584(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 584
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$250 
 
@@ -11397,11 +14920,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$250 into 
+	# get address of local var:ptr_$250
 	sd t0, 576(sp)
 
 	# gep inp$250 
@@ -11411,11 +14937,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$250 into 
-	ld t1, 576(sp)
+	# get value of local var:ptr_$250
+	li t4, 576
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$250 into 
+	# get address of local var:inp$250
 	sd t0, 568(sp)
 
 	# inp$250 
@@ -11426,9 +14955,12 @@ longest_common_subseqEntry:
 	# store inp$250 
 
 	# get address of inp$250 points to
-	ld t3, 568(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 568
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$251 
 
@@ -11437,11 +14969,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$251 into 
+	# get address of local var:ptr_$251
 	sd t0, 560(sp)
 
 	# gep inp$251 
@@ -11451,11 +14986,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$251 into 
-	ld t1, 560(sp)
+	# get value of local var:ptr_$251
+	li t4, 560
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$251 into 
+	# get address of local var:inp$251
 	sd t0, 552(sp)
 
 	# inp$251 
@@ -11466,9 +15004,12 @@ longest_common_subseqEntry:
 	# store inp$251 
 
 	# get address of inp$251 points to
-	ld t3, 552(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 552
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$252 
 
@@ -11477,11 +15018,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$252 into 
+	# get address of local var:ptr_$252
 	sd t0, 544(sp)
 
 	# gep inp$252 
@@ -11491,11 +15035,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$252 into 
-	ld t1, 544(sp)
+	# get value of local var:ptr_$252
+	li t4, 544
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$252 into 
+	# get address of local var:inp$252
 	sd t0, 536(sp)
 
 	# inp$252 
@@ -11506,9 +15053,12 @@ longest_common_subseqEntry:
 	# store inp$252 
 
 	# get address of inp$252 points to
-	ld t3, 536(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 536
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$253 
 
@@ -11517,11 +15067,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$253 into 
+	# get address of local var:ptr_$253
 	sd t0, 528(sp)
 
 	# gep inp$253 
@@ -11531,11 +15084,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$253 into 
-	ld t1, 528(sp)
+	# get value of local var:ptr_$253
+	li t4, 528
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$253 into 
+	# get address of local var:inp$253
 	sd t0, 520(sp)
 
 	# inp$253 
@@ -11546,9 +15102,12 @@ longest_common_subseqEntry:
 	# store inp$253 
 
 	# get address of inp$253 points to
-	ld t3, 520(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 520
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$254 
 
@@ -11557,11 +15116,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$254 into 
+	# get address of local var:ptr_$254
 	sd t0, 512(sp)
 
 	# gep inp$254 
@@ -11571,11 +15133,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$254 into 
-	ld t1, 512(sp)
+	# get value of local var:ptr_$254
+	li t4, 512
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$254 into 
+	# get address of local var:inp$254
 	sd t0, 504(sp)
 
 	# inp$254 
@@ -11586,9 +15151,12 @@ longest_common_subseqEntry:
 	# store inp$254 
 
 	# get address of inp$254 points to
-	ld t3, 504(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 504
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep ptr_$255 
 
@@ -11597,11 +15165,14 @@ longest_common_subseqEntry:
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$255 into 
+	# get address of local var:ptr_$255
 	sd t0, 496(sp)
 
 	# gep inp$255 
@@ -11611,11 +15182,14 @@ longest_common_subseqEntry:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$255 into 
-	ld t1, 496(sp)
+	# get value of local var:ptr_$255
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$255 into 
+	# get address of local var:inp$255
 	sd t0, 488(sp)
 
 	# inp$255 
@@ -11626,9 +15200,12 @@ longest_common_subseqEntry:
 	# store inp$255 
 
 	# get address of inp$255 points to
-	ld t3, 488(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 488
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# lv$5 
 
@@ -11638,39 +15215,52 @@ longest_common_subseqEntry:
 	# store lv$5 
 
 	# get address of lv$5 points to
-	ld t3, 6712(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 6712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# br whileCond_179
-	j whileCond_179
-whileCond_179:
+	# br whileCond_103
+	j whileCond_103
+whileCond_103:
 
 	# load i lv$5
 
 	# get address of lv$5 points to
-	ld t3, 6712(sp)
-	addi t3, t3, 0
+	li t4, 6712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 480(sp)
 
 	# load len1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 4608(sp)
-	addi t3, t3, 0
+	li t4, 4608
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:len1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 472(sp)
 
 	# cmp i len1 cond_le_tmp_
 
 	# fetch variables
-	ld t1, 480(sp)
-	ld t2, 472(sp)
+	li t4, 480
+	add t4, sp, t4
+	ld t1, 0(t4)
+	li t4, 472
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:cond_le_tmp_
 	sub t0, t1, t2
@@ -11681,7 +15271,9 @@ whileCond_179:
 	# zext cond_tmp_ cond_le_tmp_
 
 	# fetch variables
-	ld t1, 464(sp)
+	li t4, 464
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -11690,7 +15282,9 @@ whileCond_179:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	ld t1, 456(sp)
+	li t4, 456
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -11699,13 +15293,15 @@ whileCond_179:
 	seqz t0, t0
 	sd t0, 448(sp)
 
-	# condBr cond_ whileBody_179 next_445
+	# condBr cond_ whileBody_103 next_222
 
 	# fetch variables
-	ld t1, 448(sp)
-	beqz t1, next_445
-	j whileBody_179
-whileBody_179:
+	li t4, 448
+	add t4, sp, t4
+	ld t1, 0(t4)
+	beqz t1, next_222
+	j whileBody_103
+whileBody_103:
 
 	# lv$6 
 
@@ -11715,109 +15311,144 @@ whileBody_179:
 	# store lv$6 
 
 	# get address of lv$6 points to
-	ld t3, 6728(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 6728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# br whileCond_180
-	j whileCond_180
-next_445:
+	# br whileCond_104
+	j whileCond_104
+next_222:
 
 	# load len1$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 4608(sp)
-	addi t3, t3, 0
+	li t4, 4608
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:len1$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 440(sp)
 
 	# load len2$1 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 4640(sp)
-	addi t3, t3, 0
+	li t4, 4640
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:len2$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 432(sp)
 
 	# gep ptr_$261 len1$1
 
 	# fetch variables
-	ld t1, 440(sp)
+	li t4, 440
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$261 into 
+	# get address of local var:ptr_$261
 	sd t0, 424(sp)
 
 	# gep p$8 len2$1
 
 	# fetch variables
-	ld t1, 432(sp)
+	li t4, 432
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$261 into 
-	ld t1, 424(sp)
+	# get value of local var:ptr_$261
+	li t4, 424
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of p$8 into 
+	# get address of local var:p$8
 	sd t0, 416(sp)
 
 	# load p$9 p$8
 
 	# get address of p$8 points to
-	ld t3, 416(sp)
-	addi t3, t3, 0
+	li t4, 416
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:p$9
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 408(sp)
 
 	# ret p$9
 
 	# fetch variables
-	ld t1, 408(sp)
+	li t4, 408
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 6768
+	li t4, 6768
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_180:
+whileCond_104:
 
 	# load j lv$6
 
 	# get address of lv$6 points to
-	ld t3, 6728(sp)
-	addi t3, t3, 0
+	li t4, 6728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:j
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 400(sp)
 
 	# load len2 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 4640(sp)
-	addi t3, t3, 0
+	li t4, 4640
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:len2
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 392(sp)
 
 	# cmp j len2 cond_le_tmp_$1
 
 	# fetch variables
-	ld t1, 400(sp)
-	ld t2, 392(sp)
+	li t4, 400
+	add t4, sp, t4
+	ld t1, 0(t4)
+	li t4, 392
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:cond_le_tmp_$1
 	sub t0, t1, t2
@@ -11828,7 +15459,9 @@ whileCond_180:
 	# zext cond_tmp_$1 cond_le_tmp_$1
 
 	# fetch variables
-	ld t1, 384(sp)
+	li t4, 384
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# get address of local var:cond_tmp_$1
 	mv t0, t1
@@ -11837,7 +15470,9 @@ whileCond_180:
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	ld t1, 376(sp)
+	li t4, 376
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 0
 
 	# get address of local var:cond_$1
@@ -11846,28 +15481,35 @@ whileCond_180:
 	seqz t0, t0
 	sd t0, 368(sp)
 
-	# condBr cond_$1 whileBody_180 next_446
+	# condBr cond_$1 whileBody_104 next_223
 
 	# fetch variables
-	ld t1, 368(sp)
-	beqz t1, next_446
-	j whileBody_180
-whileBody_180:
+	li t4, 368
+	add t4, sp, t4
+	ld t1, 0(t4)
+	beqz t1, next_223
+	j whileBody_104
+whileBody_104:
 
 	# load i$1 lv$5
 
 	# get address of lv$5 points to
-	ld t3, 6712(sp)
-	addi t3, t3, 0
+	li t4, 6712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 360(sp)
 
 	# sub result_ i$1 
 
 	# fetch variables
-	ld t1, 360(sp)
+	li t4, 360
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:result_
@@ -11877,51 +15519,67 @@ whileBody_180:
 	# load arr_ lv
 
 	# get address of lv points to
-	ld t3, 4592(sp)
-	addi t3, t3, 0
+	li t4, 4592
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:arr_
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 344(sp)
 
 	# gep arr1 result_
 
 	# fetch variables
-	ld t1, 352(sp)
+	li t4, 352
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_ into 
-	ld t1, 344(sp)
+	# get value of local var:arr_
+	li t4, 344
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of arr1 into 
+	# get address of local var:arr1
 	sd t0, 336(sp)
 
 	# load arr1$1 arr1
 
 	# get address of arr1 points to
-	ld t3, 336(sp)
-	addi t3, t3, 0
+	li t4, 336
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:arr1$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 328(sp)
 
 	# load j$1 lv$6
 
 	# get address of lv$6 points to
-	ld t3, 6728(sp)
-	addi t3, t3, 0
+	li t4, 6728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:j$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 320(sp)
 
 	# sub result_$1 j$1 
 
 	# fetch variables
-	ld t1, 320(sp)
+	li t4, 320
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:result_$1
@@ -11931,42 +15589,57 @@ whileBody_180:
 	# load arr_$1 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 4624(sp)
-	addi t3, t3, 0
+	li t4, 4624
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:arr_$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 304(sp)
 
 	# gep arr2 result_$1
 
 	# fetch variables
-	ld t1, 312(sp)
+	li t4, 312
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr_$1 into 
-	ld t1, 304(sp)
+	# get value of local var:arr_$1
+	li t4, 304
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of arr2 into 
+	# get address of local var:arr2
 	sd t0, 296(sp)
 
 	# load arr2$1 arr2
 
 	# get address of arr2 points to
-	ld t3, 296(sp)
-	addi t3, t3, 0
+	li t4, 296
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:arr2$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 288(sp)
 
 	# cmp arr1$1 arr2$1 cond_eq_tmp_
 
 	# fetch variables
-	ld t1, 328(sp)
-	ld t2, 288(sp)
+	li t4, 328
+	add t4, sp, t4
+	ld t1, 0(t4)
+	li t4, 288
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:cond_eq_tmp_
 	xor t0, t1, t2
@@ -11976,7 +15649,9 @@ whileBody_180:
 	# zext cond_tmp_$2 cond_eq_tmp_
 
 	# fetch variables
-	ld t1, 280(sp)
+	li t4, 280
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# get address of local var:cond_tmp_$2
 	mv t0, t1
@@ -11985,7 +15660,9 @@ whileBody_180:
 	# cmp cond_tmp_$2  cond_$2
 
 	# fetch variables
-	ld t1, 272(sp)
+	li t4, 272
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 0
 
 	# get address of local var:cond_$2
@@ -11994,28 +15671,35 @@ whileBody_180:
 	seqz t0, t0
 	sd t0, 264(sp)
 
-	# condBr cond_$2 ifTrue_266 ifFalse_107
+	# condBr cond_$2 ifTrue_119 ifFalse_29
 
 	# fetch variables
-	ld t1, 264(sp)
-	beqz t1, ifFalse_107
-	j ifTrue_266
-next_446:
+	li t4, 264
+	add t4, sp, t4
+	ld t1, 0(t4)
+	beqz t1, ifFalse_29
+	j ifTrue_119
+next_223:
 
 	# load i$7 lv$5
 
 	# get address of lv$5 points to
-	ld t3, 6712(sp)
-	addi t3, t3, 0
+	li t4, 6712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i$7
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 256(sp)
 
 	# add result_$8 i$7 
 
 	# fetch variables
-	ld t1, 256(sp)
+	li t4, 256
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:result_$8
@@ -12025,81 +15709,107 @@ next_446:
 	# lv$5 result_$8
 
 	# fetch variables
-	ld t1, 248(sp)
+	li t4, 248
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv$5 result_$8
 
 	# get address of lv$5 points to
-	ld t3, 6712(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 6712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# br whileCond_179
-	j whileCond_179
-ifTrue_266:
+	# br whileCond_103
+	j whileCond_103
+ifTrue_119:
 
 	# load i$2 lv$5
 
 	# get address of lv$5 points to
-	ld t3, 6712(sp)
-	addi t3, t3, 0
+	li t4, 6712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i$2
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 240(sp)
 
 	# load j$2 lv$6
 
 	# get address of lv$6 points to
-	ld t3, 6728(sp)
-	addi t3, t3, 0
+	li t4, 6728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:j$2
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 232(sp)
 
 	# gep ptr_$256 i$2
 
 	# fetch variables
-	ld t1, 240(sp)
+	li t4, 240
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$256 into 
+	# get address of local var:ptr_$256
 	sd t0, 224(sp)
 
 	# gep p j$2
 
 	# fetch variables
-	ld t1, 232(sp)
+	li t4, 232
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$256 into 
-	ld t1, 224(sp)
+	# get value of local var:ptr_$256
+	li t4, 224
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of p into 
+	# get address of local var:p
 	sd t0, 216(sp)
 
 	# load i$3 lv$5
 
 	# get address of lv$5 points to
-	ld t3, 6712(sp)
-	addi t3, t3, 0
+	li t4, 6712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i$3
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 208(sp)
 
 	# sub result_$2 i$3 
 
 	# fetch variables
-	ld t1, 208(sp)
+	li t4, 208
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:result_$2
@@ -12109,17 +15819,22 @@ ifTrue_266:
 	# load j$3 lv$6
 
 	# get address of lv$6 points to
-	ld t3, 6728(sp)
-	addi t3, t3, 0
+	li t4, 6728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:j$3
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 192(sp)
 
 	# sub result_$3 j$3 
 
 	# fetch variables
-	ld t1, 192(sp)
+	li t4, 192
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:result_$3
@@ -12129,45 +15844,60 @@ ifTrue_266:
 	# gep ptr_$257 result_$2
 
 	# fetch variables
-	ld t1, 200(sp)
+	li t4, 200
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$257 into 
+	# get address of local var:ptr_$257
 	sd t0, 176(sp)
 
 	# gep p$1 result_$3
 
 	# fetch variables
-	ld t1, 184(sp)
+	li t4, 184
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$257 into 
-	ld t1, 176(sp)
+	# get value of local var:ptr_$257
+	li t4, 176
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of p$1 into 
+	# get address of local var:p$1
 	sd t0, 168(sp)
 
 	# load p$2 p$1
 
 	# get address of p$1 points to
-	ld t3, 168(sp)
-	addi t3, t3, 0
+	li t4, 168
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:p$2
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 160(sp)
 
 	# add result_$4 p$2 
 
 	# fetch variables
-	ld t1, 160(sp)
+	li t4, 160
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:result_$4
@@ -12177,81 +15907,107 @@ ifTrue_266:
 	# p result_$4
 
 	# fetch variables
-	ld t1, 152(sp)
+	li t4, 152
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store p result_$4
 
 	# get address of p points to
-	ld t3, 216(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 216
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# br next_447
-	j next_447
-ifFalse_107:
+	# br next_224
+	j next_224
+ifFalse_29:
 
 	# load i$4 lv$5
 
 	# get address of lv$5 points to
-	ld t3, 6712(sp)
-	addi t3, t3, 0
+	li t4, 6712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i$4
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 144(sp)
 
 	# load j$4 lv$6
 
 	# get address of lv$6 points to
-	ld t3, 6728(sp)
-	addi t3, t3, 0
+	li t4, 6728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:j$4
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 136(sp)
 
 	# gep ptr_$258 i$4
 
 	# fetch variables
-	ld t1, 144(sp)
+	li t4, 144
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$258 into 
+	# get address of local var:ptr_$258
 	sd t0, 128(sp)
 
 	# gep p$3 j$4
 
 	# fetch variables
-	ld t1, 136(sp)
+	li t4, 136
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$258 into 
-	ld t1, 128(sp)
+	# get value of local var:ptr_$258
+	li t4, 128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of p$3 into 
+	# get address of local var:p$3
 	sd t0, 120(sp)
 
 	# load i$5 lv$5
 
 	# get address of lv$5 points to
-	ld t3, 6712(sp)
-	addi t3, t3, 0
+	li t4, 6712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i$5
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 112(sp)
 
 	# sub result_$5 i$5 
 
 	# fetch variables
-	ld t1, 112(sp)
+	li t4, 112
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:result_$5
@@ -12261,75 +16017,99 @@ ifFalse_107:
 	# load j$5 lv$6
 
 	# get address of lv$6 points to
-	ld t3, 6728(sp)
-	addi t3, t3, 0
+	li t4, 6728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:j$5
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 96(sp)
 
 	# gep ptr_$259 result_$5
 
 	# fetch variables
-	ld t1, 104(sp)
+	li t4, 104
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$259 into 
+	# get address of local var:ptr_$259
 	sd t0, 88(sp)
 
 	# gep p$4 j$5
 
 	# fetch variables
-	ld t1, 96(sp)
+	li t4, 96
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$259 into 
-	ld t1, 88(sp)
+	# get value of local var:ptr_$259
+	li t4, 88
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of p$4 into 
+	# get address of local var:p$4
 	sd t0, 80(sp)
 
 	# load p$5 p$4
 
 	# get address of p$4 points to
-	ld t3, 80(sp)
-	addi t3, t3, 0
+	li t4, 80
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:p$5
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 72(sp)
 
 	# load i$6 lv$5
 
 	# get address of lv$5 points to
-	ld t3, 6712(sp)
-	addi t3, t3, 0
+	li t4, 6712
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:i$6
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 64(sp)
 
 	# load j$6 lv$6
 
 	# get address of lv$6 points to
-	ld t3, 6728(sp)
-	addi t3, t3, 0
+	li t4, 6728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:j$6
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 56(sp)
 
 	# sub result_$6 j$6 
 
 	# fetch variables
-	ld t1, 56(sp)
+	li t4, 56
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:result_$6
@@ -12339,49 +16119,66 @@ ifFalse_107:
 	# gep ptr_$260 i$6
 
 	# fetch variables
-	ld t1, 64(sp)
+	li t4, 64
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 128
 	mul t0, t1, t2
 
-	# get address of lv$4 into 
-	ld t1, 6696(sp)
+	# get value of local var:lv$4
+	li t4, 6696
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of ptr_$260 into 
+	# get address of local var:ptr_$260
 	sd t0, 40(sp)
 
 	# gep p$6 result_$6
 
 	# fetch variables
-	ld t1, 48(sp)
+	li t4, 48
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of ptr_$260 into 
-	ld t1, 40(sp)
+	# get value of local var:ptr_$260
+	li t4, 40
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of p$6 into 
+	# get address of local var:p$6
 	sd t0, 32(sp)
 
 	# load p$7 p$6
 
 	# get address of p$6 points to
-	ld t3, 32(sp)
-	addi t3, t3, 0
+	li t4, 32
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:p$7
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 24(sp)
 
 	# prepare params
 
 	# fetch variables
-	ld t1, 72(sp)
+	li t4, 72
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
 
 	# fetch variables
-	ld t1, 24(sp)
+	li t4, 24
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a1, t1
 
 	# save caller saved regs
@@ -12401,33 +16198,43 @@ ifFalse_107:
 	# p$3 MAX
 
 	# fetch variables
-	ld t1, 16(sp)
+	li t4, 16
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store p$3 MAX
 
 	# get address of p$3 points to
-	ld t3, 120(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 120
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# br next_447
-	j next_447
-next_447:
+	# br next_224
+	j next_224
+next_224:
 
 	# load j$7 lv$6
 
 	# get address of lv$6 points to
-	ld t3, 6728(sp)
-	addi t3, t3, 0
+	li t4, 6728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:j$7
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 8(sp)
 
 	# add result_$7 j$7 
 
 	# fetch variables
-	ld t1, 8(sp)
+	li t4, 8
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:result_$7
@@ -12437,47 +16244,57 @@ next_447:
 	# lv$6 result_$7
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv$6 result_$7
 
 	# get address of lv$6 points to
-	ld t3, 6728(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 6728
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# br whileCond_180
-	j whileCond_180
+	# br whileCond_104
+	j whileCond_104
 .type main, @function
 .globl main
 main:
-mainEntry52:
+mainEntry53:
+	li t4, 536
+	sub sp, sp, t4
 
 	# reserve space
-	addi sp, sp, -536
 
 	# save the parameters
 
 	# allocate lv$3
-	addi t0, sp, 520
+	li t0, 520
+	add t0, sp, t0
 
 	# get address of local var:lv$3
 	sd t0, 528(sp)
 
 	# allocate lv$2
-	addi t0, sp, 504
+	li t0, 504
+	add t0, sp, t0
 
 	# get address of local var:lv$2
 	sd t0, 512(sp)
 
 	# allocate lv$1
-	addi t0, sp, 392
+	li t0, 392
+	add t0, sp, t0
 
 	# get address of local var:lv$1
 	sd t0, 496(sp)
 
 	# allocate lv
-	addi t0, sp, 264
+	li t0, 264
+	add t0, sp, t0
 
 	# get address of local var:lv
 	sd t0, 384(sp)
@@ -12489,11 +16306,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp into 
+	# get address of local var:inp
 	sd t0, 256(sp)
 
 	# inp 
@@ -12504,9 +16324,12 @@ mainEntry52:
 	# store inp 
 
 	# get address of inp points to
-	ld t3, 256(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 256
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$1 
 
@@ -12515,11 +16338,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$1 into 
+	# get address of local var:inp$1
 	sd t0, 248(sp)
 
 	# inp$1 
@@ -12530,9 +16356,12 @@ mainEntry52:
 	# store inp$1 
 
 	# get address of inp$1 points to
-	ld t3, 248(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 248
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$2 
 
@@ -12541,11 +16370,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$2 into 
+	# get address of local var:inp$2
 	sd t0, 240(sp)
 
 	# inp$2 
@@ -12556,9 +16388,12 @@ mainEntry52:
 	# store inp$2 
 
 	# get address of inp$2 points to
-	ld t3, 240(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 240
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$3 
 
@@ -12567,11 +16402,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$3 into 
+	# get address of local var:inp$3
 	sd t0, 232(sp)
 
 	# inp$3 
@@ -12582,9 +16420,12 @@ mainEntry52:
 	# store inp$3 
 
 	# get address of inp$3 points to
-	ld t3, 232(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 232
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$4 
 
@@ -12593,11 +16434,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$4 into 
+	# get address of local var:inp$4
 	sd t0, 224(sp)
 
 	# inp$4 
@@ -12608,9 +16452,12 @@ mainEntry52:
 	# store inp$4 
 
 	# get address of inp$4 points to
-	ld t3, 224(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 224
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$5 
 
@@ -12619,11 +16466,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$5 into 
+	# get address of local var:inp$5
 	sd t0, 216(sp)
 
 	# inp$5 
@@ -12634,9 +16484,12 @@ mainEntry52:
 	# store inp$5 
 
 	# get address of inp$5 points to
-	ld t3, 216(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 216
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$6 
 
@@ -12645,11 +16498,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$6 into 
+	# get address of local var:inp$6
 	sd t0, 208(sp)
 
 	# inp$6 
@@ -12660,9 +16516,12 @@ mainEntry52:
 	# store inp$6 
 
 	# get address of inp$6 points to
-	ld t3, 208(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 208
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$7 
 
@@ -12671,11 +16530,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$7 into 
+	# get address of local var:inp$7
 	sd t0, 200(sp)
 
 	# inp$7 
@@ -12686,9 +16548,12 @@ mainEntry52:
 	# store inp$7 
 
 	# get address of inp$7 points to
-	ld t3, 200(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 200
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$8 
 
@@ -12697,11 +16562,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$8 into 
+	# get address of local var:inp$8
 	sd t0, 192(sp)
 
 	# inp$8 
@@ -12712,9 +16580,12 @@ mainEntry52:
 	# store inp$8 
 
 	# get address of inp$8 points to
-	ld t3, 192(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 192
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$9 
 
@@ -12723,11 +16594,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$9 into 
+	# get address of local var:inp$9
 	sd t0, 184(sp)
 
 	# inp$9 
@@ -12738,9 +16612,12 @@ mainEntry52:
 	# store inp$9 
 
 	# get address of inp$9 points to
-	ld t3, 184(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 184
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$10 
 
@@ -12749,11 +16626,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$10 into 
+	# get address of local var:inp$10
 	sd t0, 176(sp)
 
 	# inp$10 
@@ -12764,9 +16644,12 @@ mainEntry52:
 	# store inp$10 
 
 	# get address of inp$10 points to
-	ld t3, 176(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 176
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$11 
 
@@ -12775,11 +16658,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$11 into 
+	# get address of local var:inp$11
 	sd t0, 168(sp)
 
 	# inp$11 
@@ -12790,9 +16676,12 @@ mainEntry52:
 	# store inp$11 
 
 	# get address of inp$11 points to
-	ld t3, 168(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 168
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$12 
 
@@ -12801,11 +16690,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$12 into 
+	# get address of local var:inp$12
 	sd t0, 160(sp)
 
 	# inp$12 
@@ -12816,9 +16708,12 @@ mainEntry52:
 	# store inp$12 
 
 	# get address of inp$12 points to
-	ld t3, 160(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 160
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$13 
 
@@ -12827,11 +16722,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$13 into 
+	# get address of local var:inp$13
 	sd t0, 152(sp)
 
 	# inp$13 
@@ -12842,9 +16740,12 @@ mainEntry52:
 	# store inp$13 
 
 	# get address of inp$13 points to
-	ld t3, 152(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 152
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$14 
 
@@ -12853,11 +16754,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$14 into 
+	# get address of local var:inp$14
 	sd t0, 144(sp)
 
 	# inp$14 
@@ -12868,9 +16772,12 @@ mainEntry52:
 	# store inp$14 
 
 	# get address of inp$14 points to
-	ld t3, 144(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 144
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$15 
 
@@ -12879,11 +16786,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$15 into 
+	# get address of local var:inp$15
 	sd t0, 136(sp)
 
 	# inp$15 
@@ -12894,9 +16804,12 @@ mainEntry52:
 	# store inp$15 
 
 	# get address of inp$15 points to
-	ld t3, 136(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 136
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$16 
 
@@ -12905,11 +16818,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$16 into 
+	# get address of local var:inp$16
 	sd t0, 128(sp)
 
 	# inp$16 
@@ -12920,9 +16836,12 @@ mainEntry52:
 	# store inp$16 
 
 	# get address of inp$16 points to
-	ld t3, 128(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$17 
 
@@ -12931,11 +16850,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$17 into 
+	# get address of local var:inp$17
 	sd t0, 120(sp)
 
 	# inp$17 
@@ -12946,9 +16868,12 @@ mainEntry52:
 	# store inp$17 
 
 	# get address of inp$17 points to
-	ld t3, 120(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 120
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$18 
 
@@ -12957,11 +16882,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$18 into 
+	# get address of local var:inp$18
 	sd t0, 112(sp)
 
 	# inp$18 
@@ -12972,9 +16900,12 @@ mainEntry52:
 	# store inp$18 
 
 	# get address of inp$18 points to
-	ld t3, 112(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$19 
 
@@ -12983,11 +16914,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$19 into 
+	# get address of local var:inp$19
 	sd t0, 104(sp)
 
 	# inp$19 
@@ -12998,9 +16932,12 @@ mainEntry52:
 	# store inp$19 
 
 	# get address of inp$19 points to
-	ld t3, 104(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 104
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$20 
 
@@ -13009,11 +16946,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$20 into 
+	# get address of local var:inp$20
 	sd t0, 96(sp)
 
 	# inp$20 
@@ -13024,9 +16964,12 @@ mainEntry52:
 	# store inp$20 
 
 	# get address of inp$20 points to
-	ld t3, 96(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 96
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$21 
 
@@ -13035,11 +16978,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$21 into 
+	# get address of local var:inp$21
 	sd t0, 88(sp)
 
 	# inp$21 
@@ -13050,9 +16996,12 @@ mainEntry52:
 	# store inp$21 
 
 	# get address of inp$21 points to
-	ld t3, 88(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 88
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$22 
 
@@ -13061,11 +17010,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$22 into 
+	# get address of local var:inp$22
 	sd t0, 80(sp)
 
 	# inp$22 
@@ -13076,9 +17028,12 @@ mainEntry52:
 	# store inp$22 
 
 	# get address of inp$22 points to
-	ld t3, 80(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 80
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$23 
 
@@ -13087,11 +17042,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$23 into 
+	# get address of local var:inp$23
 	sd t0, 72(sp)
 
 	# inp$23 
@@ -13102,9 +17060,12 @@ mainEntry52:
 	# store inp$23 
 
 	# get address of inp$23 points to
-	ld t3, 72(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 72
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$24 
 
@@ -13113,11 +17074,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$24 into 
+	# get address of local var:inp$24
 	sd t0, 64(sp)
 
 	# inp$24 
@@ -13128,9 +17092,12 @@ mainEntry52:
 	# store inp$24 
 
 	# get address of inp$24 points to
-	ld t3, 64(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 64
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$25 
 
@@ -13139,11 +17106,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$25 into 
+	# get address of local var:inp$25
 	sd t0, 56(sp)
 
 	# inp$25 
@@ -13154,9 +17124,12 @@ mainEntry52:
 	# store inp$25 
 
 	# get address of inp$25 points to
-	ld t3, 56(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 56
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$26 
 
@@ -13165,11 +17138,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$26 into 
+	# get address of local var:inp$26
 	sd t0, 48(sp)
 
 	# inp$26 
@@ -13180,9 +17156,12 @@ mainEntry52:
 	# store inp$26 
 
 	# get address of inp$26 points to
-	ld t3, 48(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep inp$27 
 
@@ -13191,11 +17170,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of inp$27 into 
+	# get address of local var:inp$27
 	sd t0, 40(sp)
 
 	# inp$27 
@@ -13206,9 +17188,12 @@ mainEntry52:
 	# store inp$27 
 
 	# get address of inp$27 points to
-	ld t3, 40(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 40
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# gep A 
 
@@ -13217,17 +17202,23 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of A into 
+	# get address of local var:A
 	sd t0, 32(sp)
 
 	# prepare params
 
-	# get address of local var:A
-	ld a0, 32(sp)
+	# fetch variables
+	li t4, 32
+	add t4, sp, t4
+	ld t1, 0(t4)
+	mv a0, t1
 
 	# fetch variables
 	li t1, 15
@@ -13250,7 +17241,9 @@ mainEntry52:
 	# prepare params
 
 	# fetch variables
-	ld t1, 24(sp)
+	li t4, 24
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
 
 	# save caller saved regs
@@ -13288,11 +17281,14 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv into 
-	ld t1, 384(sp)
+	# get value of local var:lv
+	li t4, 384
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of A$1 into 
+	# get address of local var:A$1
 	sd t0, 16(sp)
 
 	# gep B 
@@ -13302,24 +17298,33 @@ mainEntry52:
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of lv$1 into 
-	ld t1, 496(sp)
+	# get value of local var:lv$1
+	li t4, 496
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of B into 
+	# get address of local var:B
 	sd t0, 8(sp)
 
 	# prepare params
 
-	# get address of local var:A$1
-	ld a0, 16(sp)
+	# fetch variables
+	li t4, 16
+	add t4, sp, t4
+	ld t1, 0(t4)
+	mv a0, t1
 
 	# fetch variables
 	li t1, 15
 	mv a1, t1
 
-	# get address of local var:B
-	ld a2, 8(sp)
+	# fetch variables
+	li t4, 8
+	add t4, sp, t4
+	ld t1, 0(t4)
+	mv a2, t1
 
 	# fetch variables
 	li t1, 13
@@ -13342,7 +17347,9 @@ mainEntry52:
 	# prepare params
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
 
 	# save caller saved regs
@@ -13378,5 +17385,6 @@ mainEntry52:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 536
+	li t4, 536
+	add sp, sp, t4
 	ret 

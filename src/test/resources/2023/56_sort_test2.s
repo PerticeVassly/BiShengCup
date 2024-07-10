@@ -9,7 +9,8 @@ gv:
 .globl insertsort
 insertsort:
 insertsortEntry1:
-	addi sp, sp, -392
+	li t4, 392
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -83,9 +84,9 @@ insertsortEntry1:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_77
-	j whileCond_77
-whileCond_77:
+	# br whileCond_105
+	j whileCond_105
+whileCond_105:
 
 	# load i lv$1
 
@@ -150,15 +151,15 @@ whileCond_77:
 	seqz t0, t0
 	sd t0, 280(sp)
 
-	# condBr cond_ whileBody_77 next_162
+	# condBr cond_ whileBody_105 next_227
 
 	# fetch variables
 	li t4, 280
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_162
-	j whileBody_77
-whileBody_77:
+	beqz t1, next_227
+	j whileBody_105
+whileBody_105:
 
 	# load i$1 lv$1
 
@@ -277,9 +278,9 @@ whileBody_77:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_78
-	j whileCond_78
-next_162:
+	# br whileCond_106
+	j whileCond_106
+next_227:
 
 	# ret 
 
@@ -292,7 +293,7 @@ next_162:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_78:
+whileCond_106:
 
 	# load j lv$3
 
@@ -345,15 +346,15 @@ whileCond_78:
 	seqz t0, t0
 	sd t0, 200(sp)
 
-	# condBr cond_$1 secondCond_42 next_163
+	# condBr cond_$1 secondCond_68 next_228
 
 	# fetch variables
 	li t4, 200
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_163
-	j secondCond_42
-whileBody_78:
+	beqz t1, next_228
+	j secondCond_68
+whileBody_106:
 
 	# load j$2 lv$3
 
@@ -529,9 +530,9 @@ whileBody_78:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_78
-	j whileCond_78
-next_163:
+	# br whileCond_106
+	j whileCond_106
+next_228:
 
 	# load j$5 lv$3
 
@@ -662,9 +663,9 @@ next_163:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_77
-	j whileCond_77
-secondCond_42:
+	# br whileCond_105
+	j whileCond_105
+secondCond_68:
 
 	# load temp lv$2
 
@@ -776,19 +777,20 @@ secondCond_42:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$2 whileBody_78 next_163
+	# condBr cond_$2 whileBody_106 next_228
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_163
-	j whileBody_78
+	beqz t1, next_228
+	j whileBody_106
 .type main, @function
 .globl main
 main:
-mainEntry50:
-	addi sp, sp, -312
+mainEntry56:
+	li t4, 312
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -1204,9 +1206,9 @@ mainEntry50:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_79
-	j whileCond_79
-whileCond_79:
+	# br whileCond_107
+	j whileCond_107
+whileCond_107:
 
 	# load i lv$1
 
@@ -1271,15 +1273,15 @@ whileCond_79:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ whileBody_79 next_164
+	# condBr cond_ whileBody_107 next_229
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_164
-	j whileBody_79
-whileBody_79:
+	beqz t1, next_229
+	j whileBody_107
+whileBody_107:
 
 	# load i$1 lv$1
 
@@ -1464,9 +1466,9 @@ whileBody_79:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_79
-	j whileCond_79
-next_164:
+	# br whileCond_107
+	j whileCond_107
+next_229:
 
 	# ret 
 

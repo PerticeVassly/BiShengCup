@@ -6,7 +6,8 @@
 .globl main
 main:
 mainEntry:
-	addi sp, sp, -40
+	li t4, 40
+	sub sp, sp, t4
 
 	# reserve space
 

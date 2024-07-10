@@ -6,7 +6,8 @@
 .globl func1
 func1:
 func1Entry:
-	addi sp, sp, -168
+	li t4, 168
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -149,15 +150,15 @@ func1Entry:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_ ifTrue_97 ifFalse_30
+	# condBr cond_ ifTrue_147 ifFalse_39
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_30
-	j ifTrue_97
-ifTrue_97:
+	beqz t1, ifFalse_39
+	j ifTrue_147
+ifTrue_147:
 
 	# load x lv
 
@@ -212,7 +213,7 @@ ifTrue_97:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_30:
+ifFalse_39:
 
 	# load x$1 lv
 
@@ -316,7 +317,8 @@ ifFalse_30:
 .globl func2
 func2:
 func2Entry:
-	addi sp, sp, -104
+	li t4, 104
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -408,15 +410,15 @@ func2Entry:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_normalize_ ifTrue_98 ifFalse_31
+	# condBr cond_normalize_ ifTrue_148 ifFalse_40
 
 	# fetch variables
 	li t4, 40
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_31
-	j ifTrue_98
-ifTrue_98:
+	beqz t1, ifFalse_40
+	j ifTrue_148
+ifTrue_148:
 
 	# load x lv
 
@@ -497,7 +499,7 @@ ifTrue_98:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_31:
+ifFalse_40:
 
 	# load x$1 lv
 
@@ -529,7 +531,8 @@ ifFalse_31:
 .globl func3
 func3:
 func3Entry:
-	addi sp, sp, -128
+	li t4, 128
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -645,15 +648,15 @@ func3Entry:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ ifTrue_99 ifFalse_32
+	# condBr cond_ ifTrue_149 ifFalse_41
 
 	# fetch variables
 	li t4, 48
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_32
-	j ifTrue_99
-ifTrue_99:
+	beqz t1, ifFalse_41
+	j ifTrue_149
+ifTrue_149:
 
 	# load x lv
 
@@ -693,7 +696,7 @@ ifTrue_99:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_32:
+ifFalse_41:
 
 	# load x$1 lv
 
@@ -778,7 +781,8 @@ ifFalse_32:
 .globl func4
 func4:
 func4Entry:
-	addi sp, sp, -104
+	li t4, 104
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -897,15 +901,15 @@ func4Entry:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_normalize_ ifTrue_100 ifFalse_33
+	# condBr cond_normalize_ ifTrue_150 ifFalse_42
 
 	# fetch variables
 	li t4, 16
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_33
-	j ifTrue_100
-ifTrue_100:
+	beqz t1, ifFalse_42
+	j ifTrue_150
+ifTrue_150:
 
 	# load y lv$1
 
@@ -933,7 +937,7 @@ ifTrue_100:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_33:
+ifFalse_42:
 
 	# load z lv$2
 
@@ -965,7 +969,8 @@ ifFalse_33:
 .globl func5
 func5:
 func5Entry:
-	addi sp, sp, -40
+	li t4, 40
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -1045,7 +1050,8 @@ func5Entry:
 .globl func6
 func6:
 func6Entry:
-	addi sp, sp, -80
+	li t4, 80
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -1137,15 +1143,15 @@ func6Entry:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_normalize_ secondCond_48 ifFalse_34
+	# condBr cond_normalize_ secondCond_80 ifFalse_43
 
 	# fetch variables
 	li t4, 16
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_34
-	j secondCond_48
-ifTrue_101:
+	beqz t1, ifFalse_43
+	j secondCond_80
+ifTrue_151:
 
 	# ret 
 
@@ -1158,7 +1164,7 @@ ifTrue_101:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_34:
+ifFalse_43:
 
 	# ret 
 
@@ -1171,7 +1177,7 @@ ifFalse_34:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-secondCond_48:
+secondCond_80:
 
 	# load y lv$1
 
@@ -1200,19 +1206,20 @@ secondCond_48:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_$1 ifTrue_101 ifFalse_34
+	# condBr cond_normalize_$1 ifTrue_151 ifFalse_43
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_34
-	j ifTrue_101
+	beqz t1, ifFalse_43
+	j ifTrue_151
 .type func7, @function
 .globl func7
 func7:
 func7Entry:
-	addi sp, sp, -64
+	li t4, 64
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -1316,15 +1323,15 @@ func7Entry:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_ ifTrue_102 ifFalse_35
+	# condBr cond_normalize_ ifTrue_152 ifFalse_44
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_35
-	j ifTrue_102
-ifTrue_102:
+	beqz t1, ifFalse_44
+	j ifTrue_152
+ifTrue_152:
 
 	# ret 
 
@@ -1337,7 +1344,7 @@ ifTrue_102:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_35:
+ifFalse_44:
 
 	# ret 
 
@@ -1353,8 +1360,9 @@ ifFalse_35:
 .type main, @function
 .globl main
 main:
-mainEntry64:
-	addi sp, sp, -960
+mainEntry71:
+	li t4, 960
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -1556,9 +1564,9 @@ mainEntry64:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_98
-	j whileCond_98
-whileCond_98:
+	# br whileCond_132
+	j whileCond_132
+whileCond_132:
 
 	# load i lv$5
 
@@ -1610,15 +1618,15 @@ whileCond_98:
 	seqz t0, t0
 	sd t0, 712(sp)
 
-	# condBr cond_ whileBody_98 next_201
+	# condBr cond_ whileBody_132 next_285
 
 	# fetch variables
 	li t4, 712
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_201
-	j whileBody_98
-whileBody_98:
+	beqz t1, next_285
+	j whileBody_132
+whileBody_132:
 
 	# load i$1 lv$5
 
@@ -1727,9 +1735,9 @@ whileBody_98:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_98
-	j whileCond_98
-next_201:
+	# br whileCond_132
+	j whileCond_132
+next_285:
 
 	# load i1 lv
 

@@ -9,7 +9,8 @@ gv:
 .globl swap
 swap:
 swapEntry:
-	addi sp, sp, -208
+	li t4, 208
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -393,7 +394,8 @@ swapEntry:
 .globl heap_ajust
 heap_ajust:
 heap_ajustEntry:
-	addi sp, sp, -488
+	li t4, 488
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -583,9 +585,9 @@ heap_ajustEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_107
-	j whileCond_107
-whileCond_107:
+	# br whileCond_141
+	j whileCond_141
+whileCond_141:
 
 	# load son lv$4
 
@@ -664,15 +666,15 @@ whileCond_107:
 	seqz t0, t0
 	sd t0, 304(sp)
 
-	# condBr cond_ whileBody_107 next_219
+	# condBr cond_ whileBody_141 next_303
 
 	# fetch variables
 	li t4, 304
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_219
-	j whileBody_107
-whileBody_107:
+	beqz t1, next_303
+	j whileBody_141
+whileBody_141:
 
 	# load son$1 lv$4
 
@@ -739,15 +741,15 @@ whileBody_107:
 	seqz t0, t0
 	sd t0, 264(sp)
 
-	# condBr cond_$1 secondCond_49 next_220
+	# condBr cond_$1 secondCond_81 next_304
 
 	# fetch variables
 	li t4, 264
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_220
-	j secondCond_49
-next_219:
+	beqz t1, next_304
+	j secondCond_81
+next_303:
 
 	# ret 
 
@@ -760,7 +762,7 @@ next_219:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_112:
+ifTrue_162:
 
 	# load son$4 lv$4
 
@@ -804,9 +806,9 @@ ifTrue_112:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_220
-	j next_220
-next_220:
+	# br next_304
+	j next_304
+next_304:
 
 	# load dad$1 lv$3
 
@@ -964,15 +966,15 @@ next_220:
 	seqz t0, t0
 	sd t0, 160(sp)
 
-	# condBr cond_$3 ifTrue_113 ifFalse_44
+	# condBr cond_$3 ifTrue_163 ifFalse_53
 
 	# fetch variables
 	li t4, 160
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_44
-	j ifTrue_113
-secondCond_49:
+	beqz t1, ifFalse_53
+	j ifTrue_163
+secondCond_81:
 
 	# load son$2 lv$4
 
@@ -1141,15 +1143,15 @@ secondCond_49:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$2 ifTrue_112 next_220
+	# condBr cond_$2 ifTrue_162 next_304
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_220
-	j ifTrue_112
-ifTrue_113:
+	beqz t1, next_304
+	j ifTrue_162
+ifTrue_163:
 
 	# ret 
 
@@ -1162,7 +1164,7 @@ ifTrue_113:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_44:
+ifFalse_53:
 
 	# load arr$8 lv
 
@@ -1338,17 +1340,18 @@ ifFalse_44:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_221
-	j next_221
-next_221:
+	# br next_305
+	j next_305
+next_305:
 
-	# br whileCond_107
-	j whileCond_107
+	# br whileCond_141
+	j whileCond_141
 .type heap_sort, @function
 .globl heap_sort
 heap_sort:
 heap_sortEntry:
-	addi sp, sp, -360
+	li t4, 360
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -1488,9 +1491,9 @@ heap_sortEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_108
-	j whileCond_108
-whileCond_108:
+	# br whileCond_142
+	j whileCond_142
+whileCond_142:
 
 	# load i lv$2
 
@@ -1543,15 +1546,15 @@ whileCond_108:
 	seqz t0, t0
 	sd t0, 208(sp)
 
-	# condBr cond_ whileBody_108 next_222
+	# condBr cond_ whileBody_142 next_306
 
 	# fetch variables
 	li t4, 208
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_222
-	j whileBody_108
-whileBody_108:
+	beqz t1, next_306
+	j whileBody_142
+whileBody_142:
 
 	# load len$1 lv$1
 
@@ -1727,9 +1730,9 @@ whileBody_108:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_108
-	j whileCond_108
-next_222:
+	# br whileCond_142
+	j whileCond_142
+next_306:
 
 	# load len$2 lv$1
 
@@ -1773,9 +1776,9 @@ next_222:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_109
-	j whileCond_109
-whileCond_109:
+	# br whileCond_143
+	j whileCond_143
+whileCond_143:
 
 	# load i$3 lv$2
 
@@ -1828,15 +1831,15 @@ whileCond_109:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_$1 whileBody_109 next_223
+	# condBr cond_$1 whileBody_143 next_307
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_223
-	j whileBody_109
-whileBody_109:
+	beqz t1, next_307
+	j whileBody_143
+whileBody_143:
 
 	# lv$4 
 
@@ -2117,9 +2120,9 @@ whileBody_109:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_109
-	j whileCond_109
-next_223:
+	# br whileCond_143
+	j whileCond_143
+next_307:
 
 	# ret 
 
@@ -2135,8 +2138,9 @@ next_223:
 .type main, @function
 .globl main
 main:
-mainEntry68:
-	addi sp, sp, -320
+mainEntry75:
+	li t4, 320
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -2584,9 +2588,9 @@ mainEntry68:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_110
-	j whileCond_110
-whileCond_110:
+	# br whileCond_144
+	j whileCond_144
+whileCond_144:
 
 	# load i lv$1
 
@@ -2651,15 +2655,15 @@ whileCond_110:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ whileBody_110 next_224
+	# condBr cond_ whileBody_144 next_308
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_224
-	j whileBody_110
-whileBody_110:
+	beqz t1, next_308
+	j whileBody_144
+whileBody_144:
 
 	# load i$1 lv$1
 
@@ -2844,9 +2848,9 @@ whileBody_110:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_110
-	j whileCond_110
-next_224:
+	# br whileCond_144
+	j whileCond_144
+next_308:
 
 	# ret 
 

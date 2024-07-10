@@ -9,7 +9,8 @@ gv:
 .globl func
 func:
 funcEntry:
-	addi sp, sp, -48
+	li t4, 48
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -118,8 +119,9 @@ funcEntry:
 .type main, @function
 .globl main
 main:
-mainEntry17:
-	addi sp, sp, -40
+mainEntry20:
+	li t4, 40
+	sub sp, sp, t4
 
 	# reserve space
 

@@ -126,7 +126,8 @@ gv39:
 .globl testParam8
 testParam8:
 testParam8Entry:
-	addi sp, sp, -312
+	li t4, 312
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -584,7 +585,8 @@ testParam8Entry:
 .globl testParam16
 testParam16:
 testParam16Entry:
-	addi sp, sp, -632
+	li t4, 632
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -1498,14 +1500,15 @@ testParam16Entry:
 .globl testParam32
 testParam32:
 testParam32Entry:
-	addi sp, sp, -1272
+	li t4, 1272
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 1264(sp)
-	sd a1, 1256(sp)
-	sd a2, 1248(sp)
-	sd a3, 1240(sp)
+	sd a0, 0(t4)
+	sd a1, 0(t4)
+	sd a2, 0(t4)
+	sd a3, 0(t4)
 	ld t3, 0(t4)
 	sd t3, 0(t4)
 	ld t3, 0(t4)
@@ -1570,12 +1573,20 @@ testParam32Entry:
 	# save the parameters
 
 	# get address of local var:0
+	li t4, 1264
+	add t4, sp, t4
 
 	# get address of local var:1
+	li t4, 1256
+	add t4, sp, t4
 
 	# get address of local var:2
+	li t4, 1248
+	add t4, sp, t4
 
 	# get address of local var:3
+	li t4, 1240
+	add t4, sp, t4
 	li t4, 1504
 	add t4, sp, t4
 	li t4, 1232
@@ -1694,7 +1705,9 @@ testParam32Entry:
 	add t0, sp, t0
 
 	# get address of local var:lv$31
-	sd t0, 1008(sp)
+	li t4, 1008
+	add t4, sp, t4
+	sd t0, 0(t4)
 
 	# allocate lv$30
 	li t0, 984
@@ -3323,8 +3336,9 @@ testParam32Entry:
 .type main, @function
 .globl main
 main:
-mainEntry87:
-	addi sp, sp, -496
+mainEntry95:
+	li t4, 496
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -3969,28 +3983,28 @@ mainEntry87:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 448
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 440
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 432
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4258,84 +4272,84 @@ mainEntry87:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 368
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 360
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 352
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 344
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 336
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 328
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 320
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 312
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 304
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 296
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 288
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4779,196 +4793,196 @@ mainEntry87:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 224
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 216
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 208
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 200
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 192
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 184
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 176
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 168
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 160
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 152
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 144
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 136
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 128
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 120
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 112
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 104
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 88
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 80
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 72
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 48
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 40
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 24
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 16
 	add t4, sp, t4
 	ld t1, 0(t4)
 	addi sp, sp, -8
-	sd t1, 496(sp)
+	sd t1, 0(sp)
 
 	# save caller saved regs
 	addi sp, sp, -8

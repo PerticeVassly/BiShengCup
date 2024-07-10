@@ -6,7 +6,8 @@
 .globl move
 move:
 moveEntry:
-	addi sp, sp, -64
+	li t4, 64
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -197,7 +198,8 @@ moveEntry:
 .globl hanoi
 hanoi:
 hanoiEntry:
-	addi sp, sp, -240
+	li t4, 240
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -367,15 +369,15 @@ hanoiEntry:
 	seqz t0, t0
 	sd t0, 112(sp)
 
-	# condBr cond_ ifTrue_5 ifFalse_1
+	# condBr cond_ ifTrue_15 ifFalse_2
 
 	# fetch variables
 	li t4, 112
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_1
-	j ifTrue_5
-ifTrue_5:
+	beqz t1, ifFalse_2
+	j ifTrue_15
+ifTrue_15:
 
 	# load one lv$1
 
@@ -428,9 +430,9 @@ ifTrue_5:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_12
-	j next_12
-ifFalse_1:
+	# br next_32
+	j next_32
+ifFalse_2:
 
 	# load n$1 lv
 
@@ -685,9 +687,9 @@ ifFalse_1:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_12
-	j next_12
-next_12:
+	# br next_32
+	j next_32
+next_32:
 
 	# ret void
 	li t4, 240
@@ -699,8 +701,9 @@ next_12:
 .type main, @function
 .globl main
 main:
-mainEntry7:
-	addi sp, sp, -80
+mainEntry9:
+	li t4, 80
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -746,9 +749,9 @@ mainEntry7:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_7
-	j whileCond_7
-whileCond_7:
+	# br whileCond_17
+	j whileCond_17
+whileCond_17:
 
 	# load n lv
 
@@ -801,15 +804,15 @@ whileCond_7:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_ whileBody_7 next_13
+	# condBr cond_ whileBody_17 next_33
 
 	# fetch variables
 	li t4, 24
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_13
-	j whileBody_7
-whileBody_7:
+	beqz t1, next_33
+	j whileBody_17
+whileBody_17:
 
 	# prepare params
 
@@ -917,9 +920,9 @@ whileBody_7:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_7
-	j whileCond_7
-next_13:
+	# br whileCond_17
+	j whileCond_17
+next_33:
 
 	# ret 
 

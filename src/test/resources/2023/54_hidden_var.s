@@ -14,7 +14,7 @@ gv1:
 .type main, @function
 .globl main
 main:
-mainEntry15:
+mainEntry18:
 	addi sp, sp, -1904
 
 	# reserve space
@@ -239,9 +239,9 @@ mainEntry15:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br whileCond_36
-	j whileCond_36
-whileCond_36:
+	# br whileCond_58
+	j whileCond_58
+whileCond_58:
 
 	# load a$3 lv
 
@@ -301,15 +301,15 @@ whileCond_36:
 	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_ whileBody_36 next_52
+	# condBr cond_ whileBody_58 next_108
 
 	# fetch variables
 	li t4, 1360
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_52
-	j whileBody_36
-whileBody_36:
+	beqz t1, next_108
+	j whileBody_58
+whileBody_58:
 
 	# lv$2 
 
@@ -403,15 +403,15 @@ whileBody_36:
 	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_ ifTrue_16 next_53
+	# condBr cond_normalize_ ifTrue_50 next_109
 
 	# fetch variables
 	li t4, 1328
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_53
-	j ifTrue_16
-next_52:
+	beqz t1, next_109
+	j ifTrue_50
+next_108:
 
 	# load a$6 lv
 
@@ -1407,26 +1407,26 @@ next_52:
 	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$1 ifTrue_17 next_54
+	# condBr cond_normalize_$1 ifTrue_51 next_110
 
 	# fetch variables
 	li t4, 1032
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_54
-	j ifTrue_17
-ifTrue_16:
+	beqz t1, next_110
+	j ifTrue_51
+ifTrue_50:
 
-	# br next_52
-	j next_52
+	# br next_108
+	j next_108
 
-	# br next_53
-	j next_53
-next_53:
+	# br next_109
+	j next_109
+next_109:
 
-	# br whileCond_36
-	j whileCond_36
-ifTrue_17:
+	# br whileCond_58
+	j whileCond_58
+ifTrue_51:
 
 	# gep ptr_$16 
 
@@ -4040,9 +4040,9 @@ ifTrue_17:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_54
-	j next_54
-next_54:
+	# br next_110
+	j next_110
+next_110:
 
 	# prepare params
 
@@ -4318,5 +4318,6 @@ next_54:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 1904
+	li t4, 1904
+	add sp, sp, t4
 	ret 

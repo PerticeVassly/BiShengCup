@@ -27,7 +27,7 @@ fEntry1:
 }
 
 define i32 @main() {
-mainEntry13:
+mainEntry14:
   %lv = alloca [1 x i32], align 16
   %inp = getelementptr [1 x i32], [1 x i32]* %lv, i32 0, i32 0
   store i32 3, i32* %inp, align 4

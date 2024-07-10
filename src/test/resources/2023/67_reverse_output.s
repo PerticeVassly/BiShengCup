@@ -6,7 +6,8 @@
 .globl reverse
 reverse:
 reverseEntry:
-	addi sp, sp, -120
+	li t4, 120
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -103,15 +104,15 @@ reverseEntry:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ ifTrue_84 ifFalse_25
+	# condBr cond_ ifTrue_121 ifFalse_31
 
 	# fetch variables
 	li t4, 48
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_25
-	j ifTrue_84
-ifTrue_84:
+	beqz t1, ifFalse_31
+	j ifTrue_121
+ifTrue_121:
 
 	# prepare params
 
@@ -178,9 +179,9 @@ ifTrue_84:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_161
-	j next_161
-ifFalse_25:
+	# br next_226
+	j next_226
+ifFalse_31:
 
 	# prepare params
 
@@ -291,9 +292,9 @@ ifFalse_25:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_161
-	j next_161
-next_161:
+	# br next_226
+	j next_226
+next_226:
 
 	# ret void
 	li t4, 120
@@ -305,8 +306,9 @@ next_161:
 .type main, @function
 .globl main
 main:
-mainEntry49:
-	addi sp, sp, -24
+mainEntry55:
+	li t4, 24
+	sub sp, sp, t4
 
 	# reserve space
 

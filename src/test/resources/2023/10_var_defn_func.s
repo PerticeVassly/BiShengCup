@@ -6,7 +6,8 @@
 .globl defn
 defn:
 defnEntry:
-	addi sp, sp, 0
+	li t4, 0
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -31,8 +32,9 @@ defnEntry:
 .type main, @function
 .globl main
 main:
-mainEntry73:
-	addi sp, sp, -32
+mainEntry81:
+	li t4, 32
+	sub sp, sp, t4
 
 	# reserve space
 

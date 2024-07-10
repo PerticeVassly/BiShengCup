@@ -6,7 +6,8 @@
 .globl my_getint
 my_getint:
 my_getintEntry:
-	addi sp, sp, -256
+	li t4, 256
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -46,9 +47,9 @@ my_getintEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_40
-	j whileCond_40
-whileCond_40:
+	# br whileCond_62
+	j whileCond_62
+whileCond_62:
 
 	# cmp   cond_normalize_
 
@@ -62,9 +63,9 @@ whileCond_40:
 	seqz t0, t0
 	sd t0, 216(sp)
 
-	# br whileBody_40
-	j whileBody_40
-whileBody_40:
+	# br whileBody_62
+	j whileBody_62
+whileBody_62:
 
 	# prepare params
 
@@ -161,15 +162,15 @@ whileBody_40:
 	seqz t0, t0
 	sd t0, 168(sp)
 
-	# condBr cond_ ifTrue_26 secondCond_9
+	# condBr cond_ ifTrue_60 secondCond_35
 
 	# fetch variables
 	li t4, 168
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, secondCond_9
-	j ifTrue_26
-next_66:
+	beqz t1, secondCond_35
+	j ifTrue_60
+next_122:
 
 	# load c$2 lv$1
 
@@ -201,27 +202,27 @@ next_66:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_41
-	j whileCond_41
-ifTrue_26:
+	# br whileCond_63
+	j whileCond_63
+ifTrue_60:
 
-	# br whileCond_40
-	j whileCond_40
+	# br whileCond_62
+	j whileCond_62
 
-	# br next_67
-	j next_67
-ifFalse_9:
+	# br next_123
+	j next_123
+ifFalse_12:
 
-	# br next_66
-	j next_66
+	# br next_122
+	j next_122
 
-	# br next_67
-	j next_67
-next_67:
+	# br next_123
+	j next_123
+next_123:
 
-	# br whileCond_40
-	j whileCond_40
-secondCond_9:
+	# br whileCond_62
+	j whileCond_62
+secondCond_35:
 
 	# load c$1 lv$1
 
@@ -274,15 +275,15 @@ secondCond_9:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_$1 ifTrue_26 ifFalse_9
+	# condBr cond_$1 ifTrue_60 ifFalse_12
 
 	# fetch variables
 	li t4, 128
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_9
-	j ifTrue_26
-whileCond_41:
+	beqz t1, ifFalse_12
+	j ifTrue_60
+whileCond_63:
 
 	# cmp   cond_normalize_$1
 
@@ -296,9 +297,9 @@ whileCond_41:
 	seqz t0, t0
 	sd t0, 120(sp)
 
-	# br whileBody_41
-	j whileBody_41
-whileBody_41:
+	# br whileBody_63
+	j whileBody_63
+whileBody_63:
 
 	# prepare params
 
@@ -396,15 +397,15 @@ whileBody_41:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$2 secondCond_10 ifFalse_10
+	# condBr cond_$2 secondCond_36 ifFalse_13
 
 	# fetch variables
 	li t4, 72
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_10
-	j secondCond_10
-next_68:
+	beqz t1, ifFalse_13
+	j secondCond_36
+next_124:
 
 	# load sum$1 lv
 
@@ -432,7 +433,7 @@ next_68:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_27:
+ifTrue_61:
 
 	# load sum lv
 
@@ -503,20 +504,20 @@ ifTrue_27:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_69
-	j next_69
-ifFalse_10:
+	# br next_125
+	j next_125
+ifFalse_13:
 
-	# br next_68
-	j next_68
+	# br next_124
+	j next_124
 
-	# br next_69
-	j next_69
-next_69:
+	# br next_125
+	j next_125
+next_125:
 
-	# br whileCond_41
-	j whileCond_41
-secondCond_10:
+	# br whileCond_63
+	j whileCond_63
+secondCond_36:
 
 	# load c$4 lv$1
 
@@ -570,19 +571,20 @@ secondCond_10:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$3 ifTrue_27 ifFalse_10
+	# condBr cond_$3 ifTrue_61 ifFalse_13
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_10
-	j ifTrue_27
+	beqz t1, ifFalse_13
+	j ifTrue_61
 .type my_putint, @function
 .globl my_putint
 my_putint:
 my_putintEntry:
-	addi sp, sp, -352
+	li t4, 352
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -649,9 +651,9 @@ my_putintEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_42
-	j whileCond_42
-whileCond_42:
+	# br whileCond_64
+	j whileCond_64
+whileCond_64:
 
 	# load a lv
 
@@ -704,15 +706,15 @@ whileCond_42:
 	seqz t0, t0
 	sd t0, 144(sp)
 
-	# condBr cond_ whileBody_42 next_70
+	# condBr cond_ whileBody_64 next_126
 
 	# fetch variables
 	li t4, 144
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_70
-	j whileBody_42
-whileBody_42:
+	beqz t1, next_126
+	j whileBody_64
+whileBody_64:
 
 	# load i lv$2
 
@@ -884,13 +886,13 @@ whileBody_42:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_42
-	j whileCond_42
-next_70:
+	# br whileCond_64
+	j whileCond_64
+next_126:
 
-	# br whileCond_43
-	j whileCond_43
-whileCond_43:
+	# br whileCond_65
+	j whileCond_65
+whileCond_65:
 
 	# load i$2 lv$2
 
@@ -943,15 +945,15 @@ whileCond_43:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_$1 whileBody_43 next_71
+	# condBr cond_$1 whileBody_65 next_127
 
 	# fetch variables
 	li t4, 40
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_71
-	j whileBody_43
-whileBody_43:
+	beqz t1, next_127
+	j whileBody_65
+whileBody_65:
 
 	# load i$3 lv$2
 
@@ -1059,9 +1061,9 @@ whileBody_43:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br whileCond_43
-	j whileCond_43
-next_71:
+	# br whileCond_65
+	j whileCond_65
+next_127:
 
 	# ret void
 	li t4, 352
@@ -1073,8 +1075,9 @@ next_71:
 .type main, @function
 .globl main
 main:
-mainEntry20:
-	addi sp, sp, -104
+mainEntry23:
+	li t4, 104
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -1127,9 +1130,9 @@ mainEntry20:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_44
-	j whileCond_44
-whileCond_44:
+	# br whileCond_66
+	j whileCond_66
+whileCond_66:
 
 	# load n lv
 
@@ -1182,15 +1185,15 @@ whileCond_44:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_ whileBody_44 next_72
+	# condBr cond_ whileBody_66 next_128
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_72
-	j whileBody_44
-whileBody_44:
+	beqz t1, next_128
+	j whileBody_66
+whileBody_66:
 
 	# prepare params
 
@@ -1316,9 +1319,9 @@ whileBody_44:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_44
-	j whileCond_44
-next_72:
+	# br whileCond_66
+	j whileCond_66
+next_128:
 
 	# ret 
 

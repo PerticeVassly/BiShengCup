@@ -60,7 +60,7 @@ fEntry:
 
 define i32 @main() {
 mainEntry5:
-  %f = call i32 @f(i32 1, i32 2, i32 3, i32 4, float 0x4014000000000000, float 0x4018000000000000, float 0x401c000000000000, float 0x4020000000000000, float 0x4022000000000000)
+  %f = call i32 @f(i32 1, i32 2, i32 3, i32 4, float 0x40140a3d80000000, float 0x40180a3d80000000, float 0x401c0a3d80000000, float 0x4020051ec0000000, float 0x4022051ec0000000)
   ret i32 %f
 }
 

@@ -5,8 +5,9 @@
 .type main, @function
 .globl main
 main:
-mainEntry32:
-	addi sp, sp, -400
+mainEntry37:
+	li t4, 400
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -196,15 +197,15 @@ mainEntry32:
 	seqz t0, t0
 	sd t0, 272(sp)
 
-	# condBr cond_ ifTrue_30 secondCond_11
+	# condBr cond_ ifTrue_64 secondCond_37
 
 	# fetch variables
 	li t4, 272
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, secondCond_11
-	j ifTrue_30
-ifTrue_30:
+	beqz t1, secondCond_37
+	j ifTrue_64
+ifTrue_64:
 
 	# load result lv$4
 
@@ -238,9 +239,9 @@ ifTrue_30:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_78
-	j next_78
-next_78:
+	# br next_137
+	j next_137
+next_137:
 
 	# load d$1 lv$3
 
@@ -316,15 +317,15 @@ next_78:
 	seqz t0, t0
 	sd t0, 216(sp)
 
-	# condBr cond_$3 ifTrue_31 secondCond_13
+	# condBr cond_$3 ifTrue_65 secondCond_39
 
 	# fetch variables
 	li t4, 216
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, secondCond_13
-	j ifTrue_31
-secondCond_11:
+	beqz t1, secondCond_39
+	j ifTrue_65
+secondCond_37:
 
 	# load a lv
 
@@ -405,15 +406,15 @@ secondCond_11:
 	seqz t0, t0
 	sd t0, 168(sp)
 
-	# condBr cond_$1 secondCond_12 next_78
+	# condBr cond_$1 secondCond_38 next_137
 
 	# fetch variables
 	li t4, 168
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_78
-	j secondCond_12
-secondCond_12:
+	beqz t1, next_137
+	j secondCond_38
+secondCond_38:
 
 	# load c lv$2
 
@@ -491,14 +492,14 @@ secondCond_12:
 	seqz t0, t0
 	sd t0, 120(sp)
 
-	# condBr cond_$2 ifTrue_30 next_78
+	# condBr cond_$2 ifTrue_64 next_137
 
 	# fetch variables
 	li t4, 120
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_78
-	j ifTrue_30
+	beqz t1, next_137
+	j ifTrue_64
 
 	# cmp   cond_normalize_
 
@@ -512,15 +513,15 @@ secondCond_12:
 	seqz t0, t0
 	sd t0, 112(sp)
 
-	# condBr cond_normalize_ ifTrue_30 next_78
+	# condBr cond_normalize_ ifTrue_64 next_137
 
 	# fetch variables
 	li t4, 112
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_78
-	j ifTrue_30
-ifTrue_31:
+	beqz t1, next_137
+	j ifTrue_64
+ifTrue_65:
 
 	# lv$4 
 
@@ -569,9 +570,9 @@ ifTrue_31:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br next_79
-	j next_79
-next_79:
+	# br next_138
+	j next_138
+next_138:
 
 	# ret 
 
@@ -581,7 +582,7 @@ next_79:
 	li t4, 400
 	add sp, sp, t4
 	ret 
-secondCond_13:
+secondCond_39:
 
 	# load a$1 lv
 
@@ -662,15 +663,15 @@ secondCond_13:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_$4 secondCond_14 next_79
+	# condBr cond_$4 secondCond_40 next_138
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_79
-	j secondCond_14
-secondCond_14:
+	beqz t1, next_138
+	j secondCond_40
+secondCond_40:
 
 	# load c$1 lv$2
 
@@ -748,14 +749,14 @@ secondCond_14:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_$5 ifTrue_31 next_79
+	# condBr cond_$5 ifTrue_65 next_138
 
 	# fetch variables
 	li t4, 8
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_79
-	j ifTrue_31
+	beqz t1, next_138
+	j ifTrue_65
 
 	# cmp   cond_normalize_$1
 
@@ -769,11 +770,11 @@ secondCond_14:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_$1 ifTrue_31 next_79
+	# condBr cond_normalize_$1 ifTrue_65 next_138
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_79
-	j ifTrue_31
+	beqz t1, next_138
+	j ifTrue_65

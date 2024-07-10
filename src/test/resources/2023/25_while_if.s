@@ -6,7 +6,8 @@
 .globl get_one
 get_one:
 get_oneEntry:
-	addi sp, sp, -24
+	li t4, 24
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -59,7 +60,8 @@ get_oneEntry:
 .globl deepWhileBr
 deepWhileBr:
 deepWhileBrEntry1:
-	addi sp, sp, -312
+	li t4, 312
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -202,9 +204,9 @@ deepWhileBrEntry1:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_82
-	j whileCond_82
-whileCond_82:
+	# br whileCond_116
+	j whileCond_116
+whileCond_116:
 
 	# load c lv$2
 
@@ -256,15 +258,15 @@ whileCond_82:
 	seqz t0, t0
 	sd t0, 160(sp)
 
-	# condBr cond_ whileBody_82 next_168
+	# condBr cond_ whileBody_116 next_252
 
 	# fetch variables
 	li t4, 160
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_168
-	j whileBody_82
-whileBody_82:
+	beqz t1, next_252
+	j whileBody_116
+whileBody_116:
 
 	# lv$3 
 
@@ -331,15 +333,15 @@ whileBody_82:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_$1 ifTrue_86 next_169
+	# condBr cond_$1 ifTrue_136 next_253
 
 	# fetch variables
 	li t4, 128
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_169
-	j ifTrue_86
-next_168:
+	beqz t1, next_253
+	j ifTrue_136
+next_252:
 
 	# load c$4 lv$2
 
@@ -367,7 +369,7 @@ next_168:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_86:
+ifTrue_136:
 
 	# load c$2 lv$2
 
@@ -477,19 +479,19 @@ ifTrue_86:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$2 ifTrue_87 next_170
+	# condBr cond_$2 ifTrue_137 next_254
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_170
-	j ifTrue_87
-next_169:
+	beqz t1, next_254
+	j ifTrue_137
+next_253:
 
-	# br whileCond_82
-	j whileCond_82
-ifTrue_87:
+	# br whileCond_116
+	j whileCond_116
+ifTrue_137:
 
 	# load d$1 lv$3
 
@@ -591,19 +593,19 @@ ifTrue_87:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_$3 ifTrue_88 next_171
+	# condBr cond_$3 ifTrue_138 next_255
 
 	# fetch variables
 	li t4, 16
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_171
-	j ifTrue_88
-next_170:
+	beqz t1, next_255
+	j ifTrue_138
+next_254:
 
-	# br next_169
-	j next_169
-ifTrue_88:
+	# br next_253
+	j next_253
+ifTrue_138:
 
 	# load e lv$4
 
@@ -647,17 +649,18 @@ ifTrue_88:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_171
-	j next_171
-next_171:
+	# br next_255
+	j next_255
+next_255:
 
-	# br next_170
-	j next_170
+	# br next_254
+	j next_254
 .type main, @function
 .globl main
 main:
-mainEntry56:
-	addi sp, sp, -48
+mainEntry63:
+	li t4, 48
+	sub sp, sp, t4
 
 	# reserve space
 

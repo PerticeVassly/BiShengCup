@@ -11,8 +11,9 @@ gv1:
 .type main, @function
 .globl main
 main:
-mainEntry2:
-	addi sp, sp, -40
+mainEntry3:
+	li t4, 40
+	sub sp, sp, t4
 
 	# reserve space
 

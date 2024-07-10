@@ -6,7 +6,8 @@
 .globl deepWhileBr
 deepWhileBr:
 deepWhileBrEntry:
-	addi sp, sp, -280
+	li t4, 280
+	sub sp, sp, t4
 
 	# save callee saved regs
 	addi sp, sp, 0
@@ -149,9 +150,9 @@ deepWhileBrEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_70
-	j whileCond_70
-whileCond_70:
+	# br whileCond_95
+	j whileCond_95
+whileCond_95:
 
 	# load c lv$2
 
@@ -203,15 +204,15 @@ whileCond_70:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_ whileBody_70 next_133
+	# condBr cond_ whileBody_95 next_192
 
 	# fetch variables
 	li t4, 128
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_133
-	j whileBody_70
-whileBody_70:
+	beqz t1, next_192
+	j whileBody_95
+whileBody_95:
 
 	# lv$3 
 
@@ -278,15 +279,15 @@ whileBody_70:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_$1 ifTrue_63 next_134
+	# condBr cond_$1 ifTrue_97 next_193
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_134
-	j ifTrue_63
-next_133:
+	beqz t1, next_193
+	j ifTrue_97
+next_192:
 
 	# load c$4 lv$2
 
@@ -314,7 +315,7 @@ next_133:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_63:
+ifTrue_97:
 
 	# load c$2 lv$2
 
@@ -424,19 +425,19 @@ ifTrue_63:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 ifTrue_64 next_135
+	# condBr cond_$2 ifTrue_98 next_194
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_135
-	j ifTrue_64
-next_134:
+	beqz t1, next_194
+	j ifTrue_98
+next_193:
 
-	# br whileCond_70
-	j whileCond_70
-ifTrue_64:
+	# br whileCond_95
+	j whileCond_95
+ifTrue_98:
 
 	# load d$1 lv$3
 
@@ -480,17 +481,17 @@ ifTrue_64:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# condBr  ifTrue_65 next_136
+	# condBr  ifTrue_99 next_195
 
 	# fetch variables
 	li t1, 1
-	beqz t1, next_136
-	j ifTrue_65
-next_135:
+	beqz t1, next_195
+	j ifTrue_99
+next_194:
 
-	# br next_134
-	j next_134
-ifTrue_65:
+	# br next_193
+	j next_193
+ifTrue_99:
 
 	# load e lv$4
 
@@ -534,17 +535,18 @@ ifTrue_65:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_136
-	j next_136
-next_136:
+	# br next_195
+	j next_195
+next_195:
 
-	# br next_135
-	j next_135
+	# br next_194
+	j next_194
 .type main, @function
 .globl main
 main:
-mainEntry44:
-	addi sp, sp, -40
+mainEntry49:
+	li t4, 40
+	sub sp, sp, t4
 
 	# reserve space
 

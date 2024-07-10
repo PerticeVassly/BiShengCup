@@ -10,7 +10,8 @@ gv:
 .globl main
 main:
 mainEntry3:
-	addi sp, sp, -16
+	li t4, 16
+	sub sp, sp, t4
 
 	# reserve space
 
@@ -34,17 +35,23 @@ mainEntry3:
 	# load a$1 a
 
 	# get address of a points to
-	ld t3, 8(sp)
-	addi t3, t3, 0
+	li t4, 8
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 0(sp)
 
 	# ret a$1
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 16
+	li t4, 16
+	add sp, sp, t4
 	ret 
