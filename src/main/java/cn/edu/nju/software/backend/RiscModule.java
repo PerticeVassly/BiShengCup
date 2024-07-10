@@ -1,6 +1,8 @@
 package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.ir.module.ModuleRef;
+import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.ir.value.GlobalVar;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -32,15 +34,17 @@ public class RiscModule {
 
     public void codeGen() {
         //一定由全局变量Main
-        llvmModule.getGlobalVars().forEach(globalVar ->
-                riscGlobalVars.add(new RiscGlobalVar(globalVar)));
+        for(GlobalVar globalVar : llvmModule.getGlobalVars()){
+            riscGlobalVars.add(new RiscGlobalVar(globalVar));
+        }
 
-        llvmModule.getFunctions().filter(f -> !libFuncs.contains(f.getName()))
-                .forEach(function -> {
-                    RiscFunction riscFunction = new RiscFunction(function);
-                    riscFunctions.add(riscFunction);
-                    riscFunction.codeGen();
-                });
+        for(FunctionValue function : llvmModule.getFunctions()){
+            if(!libFuncs.contains(function.getName())){
+                RiscFunction riscFunction = new RiscFunction(function);
+                riscFunctions.add(riscFunction);
+                riscFunction.codeGen();
+            }
+        }
     }
 
     public void dumpToConsole() {

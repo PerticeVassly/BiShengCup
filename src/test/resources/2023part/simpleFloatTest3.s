@@ -5,34 +5,79 @@
 .type main, @function
 .globl main
 main:
-mainEntry6:
+mainEntry8:
 
 	# reserve space
-	addi sp, sp, -16
+	li t4, 40
+	sub sp, sp, t4
 
 	# save the parameters
 
-	# allocate a
-	addi t0, sp, 0
+	# allocate lv$1
+	li t0, 24
+	add t0, sp, t0
 
-	# get address of local var:a
-	sd t0, 8(sp)
+	# get address of local var:lv$1
+	sd t0, 32(sp)
 
-	# store a 
+	# allocate lv
+	li t0, 8
+	add t0, sp, t0
+
+	# get address of local var:lv
+	sd t0, 16(sp)
+
+	# lv 
 
 	# fetch variables
-	li t1, 0x3ff4ccccc0000000
+	li t1, 0x3ff4cccccccccccd
 	fmv.d.x ft1, t1
 
-	# get address of a points to
-	ld t3, 8(sp)
-	addi t3, t3, 0
-	fsd ft1, 0(t3)
+	# store lv 
 
-	# ret 
+	# get address of lv points to
+	li t4, 16
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	fsd ft1, 0(t4)
+
+	# lv$1 
 
 	# fetch variables
-	li t1, 0
+	li t1, 1
+
+	# store lv$1 
+
+	# get address of lv$1 points to
+	li t4, 32
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
+
+	# load b lv$1
+
+	# get address of lv$1 points to
+	li t4, 32
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+
+	# get address of local var:b
+	ld t0, 0(t4)
+	sd t0, 0(sp)
+
+	# ret b
+
+	# fetch variables
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 16
+	li t4, 40
+	add sp, sp, t4
 	ret 

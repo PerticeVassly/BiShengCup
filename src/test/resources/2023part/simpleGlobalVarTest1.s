@@ -1,116 +1,146 @@
 .data
 .align 2
-.globl a
-a:
+.globl gv
+gv:
 .dword 1
-.globl b
-b:
+.globl gv1
+gv1:
 .dword 2
-.globl c
-c:
+.globl gv2
+gv2:
 .dword 1
 .text
 .align 2
 .type main, @function
 .globl main
 main:
-mainEntry3:
+mainEntry4:
 
 	# reserve space
-	addi sp, sp, -56
+	li t4, 56
+	sub sp, sp, t4
 
 	# save the parameters
 
-	# load a a
+	# allocate lv
+	li t0, 40
+	add t0, sp, t0
 
-	# get address of a points to
-	la t3, a
-	addi t3, t3, 0
-
-	# get address of local var:a
-	ld t0, 0(t3)
+	# get address of local var:lv
 	sd t0, 48(sp)
 
-	# load b b
+	# load a gv
 
-	# get address of b points to
-	la t3, b
-	addi t3, t3, 0
+	# get address of gv points to
+	la t3, gv
+	li t4, 0
+	add t4, t3, t4
+
+	# get address of local var:a
+	ld t0, 0(t4)
+	sd t0, 32(sp)
+
+	# load b gv1
+
+	# get address of gv1 points to
+	la t3, gv1
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:b
-	ld t0, 0(t3)
-	sd t0, 40(sp)
+	ld t0, 0(t4)
+	sd t0, 24(sp)
 
 	# add result_ a b
 
 	# fetch variables
-	ld t1, 48(sp)
-	ld t2, 40(sp)
+	li t4, 32
+	add t4, sp, t4
+	ld t1, 0(t4)
+	li t4, 24
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:result_
 	add t0, t1, t2
-	sd t0, 32(sp)
+	sd t0, 16(sp)
 
-	# store c result_
+	# gv2 @result_
 
 	# fetch variables
-	ld t1, 32(sp)
+	li t4, 16
+	add t4, sp, t4
+	ld t1, 0(t4)
 
-	# get address of c points to
-	la t3, c
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	# store gv2 result_
 
-	# allocate d
-	addi t0, sp, 16
+	# get address of gv2 points to
+	la t3, gv2
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# get address of local var:d
-	sd t0, 24(sp)
-
-	# store d 
+	# lv 
 
 	# fetch variables
 	li t1, 1
 
-	# get address of d points to
-	ld t3, 24(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	# store lv 
 
-	# load c c
+	# get address of lv points to
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# get address of c points to
-	la t3, c
-	addi t3, t3, 0
+	# load c gv2
+
+	# get address of gv2 points to
+	la t3, gv2
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:c
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 8(sp)
 
-	# store d c
+	# lv c
 
 	# fetch variables
-	ld t1, 8(sp)
+	li t4, 8
+	add t4, sp, t4
+	ld t1, 0(t4)
 
-	# get address of d points to
-	ld t3, 24(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	# store lv c
 
-	# load c$1 c
+	# get address of lv points to
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# get address of c points to
-	la t3, c
-	addi t3, t3, 0
+	# load c$1 gv2
+
+	# get address of gv2 points to
+	la t3, gv2
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:c$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 0(sp)
 
 	# ret c$1
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 56
+	li t4, 56
+	add sp, sp, t4
 	ret 

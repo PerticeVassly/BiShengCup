@@ -3,9 +3,12 @@ package cn.edu.nju.software.backend;
 import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.value.ArrayValue;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
+import cn.edu.nju.software.ir.value.ValueRef;
+
+import java.util.List;
 
 public class RiscGlobalVar {
 
@@ -39,14 +42,26 @@ public class RiscGlobalVar {
                 System.out.println(name + ":");
                 System.out.println(".double " + initValue);
             }
-            else {
+            else if(globalVar.getInitVal().getType() instanceof ArrayType) {
                 assert false;
             }
+        } else if (globalVar.getInitVal() instanceof ArrayValue) {
+            //todo暂时不考虑zeroInitializer
+            if(globalVar.getInitVal() instanceof ArrayValue arrayValue){
+                System.out.println(name + ":");
+                List<ValueRef> initValues = arrayValue.getLinerList();
+                for(ValueRef valueRef : initValues){
+                    if(valueRef instanceof ConstValue){
+                        if(valueRef.getType() instanceof IntType){
+                            System.out.println(".dword " + valueRef.toString());
+                        }
+                        else if(valueRef.getType() instanceof FloatType){
+                            System.out.println(".double " + valueRef.toString());
+                        }
+                    }
+                }
 
-        } else if (globalVar.getInitVal() instanceof GlobalVar) {
-
-            assert false;
-
+            }
         } else {
 
             assert false;

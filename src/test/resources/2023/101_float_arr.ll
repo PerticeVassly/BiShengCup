@@ -19,7 +19,7 @@ declare void @memset(i32*, i32, i32)
 @gv = global [2 x [3 x [4 x float]]] [[3 x [4 x float]] [[4 x float] [float 0x3ff0000000000000, float 0x4000000000000000, float 0x4008000000000000, float 0x0], [4 x float] [float 0x0, float 0x0, float 0x0, float 0x0], [4 x float] [float 0x0, float 0x0, float 0x0, float 0x0]], [3 x [4 x float]] [[4 x float] [float 0x0, float 0x0, float 0x0, float 0x0], [4 x float] [float 0x0, float 0x0, float 0x0, float 0x0], [4 x float] [float 0x0, float 0x0, float 0x0, float 0x0]]], align 4
 
 define i32 @main() {
-mainEntry69:
+mainEntry35:
   %lv$1 = alloca i32, align 4
   %lv = alloca [2 x float], align 16
   %inp = getelementptr [2 x float], [2 x float]* %lv, i32 0, i32 0

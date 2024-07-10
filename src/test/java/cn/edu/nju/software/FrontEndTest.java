@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -27,8 +26,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class FrontEndTest {
     private static final String DIR = "src/test/resources/2023/";
     private static final String DIR_PART = "src/test/resources/2023part/";
-    private static final String SYLIB = "src/test/resources/sylib.ll";
     private static final String DIR_HIDDEN = "src/test/resources/2023hidden/";
+    private static final String SYLIB = "src/test/resources/sylib.ll";
     private static final String LINKED = "src/test/resources/linked.ll";
 
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
@@ -59,7 +58,7 @@ public class FrontEndTest {
     @ParameterizedTest
     @MethodSource("dirHidden")
     void testHidden(String name) throws IOException, InterruptedException {
-        if (List.of("23_json", "30_many_dimensions", "36_rotate", "38_light2d").contains(name)) fail();
+        if (Stream.of("23_json", "30_many_dimensions", "36_rotate", "38_light2d").anyMatch(name::equals)) fail();
         testFile(DIR_HIDDEN, name);
     }
 

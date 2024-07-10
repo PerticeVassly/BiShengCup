@@ -8,4 +8,5 @@ public class RiscAdd extends DefaultInstruction {
     public RiscAdd(Operand d, Operand s1, Operand s2) {
         super(RiscOpcode.ADD, d, s1, s2);
     }
+
 }

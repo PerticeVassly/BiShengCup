@@ -8,7 +8,8 @@ add:
 addEntry:
 
 	# reserve space
-	addi sp, sp, -72
+	li t4, 72
+	sub sp, sp, t4
 
 	# save CallerSavedRegs
 
@@ -17,69 +18,95 @@ addEntry:
 
 	# save the parameters
 
-	# get address of 0 into 
+	# get address of local var:0
 	sd a0, 64(sp)
 
-	# get address of 1 into 
+	# get address of local var:1
 	sd a1, 56(sp)
 
-	# allocate i
-	addi t0, sp, 40
+	# allocate lv$1
+	li t0, 40
+	add t0, sp, t0
 
-	# get address of local var:i
+	# get address of local var:lv$1
 	sd t0, 48(sp)
 
-	# store i 0
+	# allocate lv
+	li t0, 24
+	add t0, sp, t0
 
-	# fetch variables
-	ld t1, 64(sp)
-
-	# get address of i points to
-	ld t3, 48(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
-
-	# allocate j
-	addi t0, sp, 24
-
-	# get address of local var:j
+	# get address of local var:lv
 	sd t0, 32(sp)
 
-	# store j 1
+	# lv 0
 
 	# fetch variables
-	ld t1, 56(sp)
+	li t4, 64
+	add t4, sp, t4
+	ld t1, 0(t4)
 
-	# get address of j points to
-	ld t3, 32(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	# store lv 0
 
-	# load i$1 i
+	# get address of lv points to
+	li t4, 32
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# get address of i points to
-	ld t3, 48(sp)
-	addi t3, t3, 0
+	# lv$1 1
 
-	# get address of local var:i$1
-	ld t0, 0(t3)
+	# fetch variables
+	li t4, 56
+	add t4, sp, t4
+	ld t1, 0(t4)
+
+	# store lv$1 1
+
+	# get address of lv$1 points to
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
+
+	# load i lv
+
+	# get address of lv points to
+	li t4, 32
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+
+	# get address of local var:i
+	ld t0, 0(t4)
 	sd t0, 16(sp)
 
-	# load j$1 j
+	# load j lv$1
 
-	# get address of j points to
-	ld t3, 32(sp)
-	addi t3, t3, 0
+	# get address of lv$1 points to
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
-	# get address of local var:j$1
-	ld t0, 0(t3)
+	# get address of local var:j
+	ld t0, 0(t4)
 	sd t0, 8(sp)
 
-	# add result_ i$1 j$1
+	# add result_ i j
 
 	# fetch variables
-	ld t1, 16(sp)
-	ld t2, 8(sp)
+	li t4, 16
+	add t4, sp, t4
+	ld t1, 0(t4)
+	li t4, 8
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:result_
 	add t0, t1, t2
@@ -88,9 +115,12 @@ addEntry:
 	# ret result_
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 72
+	li t4, 72
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -98,60 +128,79 @@ addEntry:
 .type main, @function
 .globl main
 main:
-mainEntry10:
+mainEntry12:
 
 	# reserve space
-	addi sp, sp, -56
+	li t4, 56
+	sub sp, sp, t4
 
 	# save the parameters
 
-	# allocate a
-	addi t0, sp, 40
+	# allocate lv$2
+	li t0, 40
+	add t0, sp, t0
 
-	# get address of local var:a
+	# get address of local var:lv$2
 	sd t0, 48(sp)
 
-	# store a 
+	# allocate lv$1
+	li t0, 24
+	add t0, sp, t0
+
+	# get address of local var:lv$1
+	sd t0, 32(sp)
+
+	# allocate lv
+	li t0, 8
+	add t0, sp, t0
+
+	# get address of local var:lv
+	sd t0, 16(sp)
+
+	# lv 
 
 	# fetch variables
 	li t1, 2
 
-	# get address of a points to
-	ld t3, 48(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	# store lv 
 
-	# allocate b
-	addi t0, sp, 24
+	# get address of lv points to
+	li t4, 16
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# get address of local var:b
-	sd t0, 32(sp)
-
-	# store b 
+	# lv$1 
 
 	# fetch variables
 	li t1, 3
 
-	# get address of b points to
-	ld t3, 32(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	# store lv$1 
 
-	# allocate c
-	addi t0, sp, 8
+	# get address of lv$1 points to
+	li t4, 32
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# get address of local var:c
-	sd t0, 16(sp)
-
-	# store c 
+	# lv$2 
 
 	# fetch variables
 	li t1, 4
 
-	# get address of c points to
-	ld t3, 16(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	# store lv$2 
+
+	# get address of lv$2 points to
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# prepare params
 
@@ -180,7 +229,10 @@ mainEntry10:
 	# ret add
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 56
+	li t4, 56
+	add sp, sp, t4
 	ret 

@@ -18,22 +18,23 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @f(i32* %0) {
 fEntry1:
-  %a = alloca i32*, align 4
-  store i32* %0, i32** %a, align 4
-  %arr_ = load i32*, i32** %a, align 4
-  %a$1 = getelementptr i32, i32* %arr_, i32 0
-  store i32 114, i32* %a$1, align 4
+  %lv = alloca i32*, align 4
+  store i32* %0, i32** %lv, align 4
+  %arr_ = load i32*, i32** %lv, align 4
+  %a = getelementptr i32, i32* %arr_, i32 0
+  store i32 114, i32* %a, align 4
   ret i32 0
 }
 
 define i32 @main() {
-mainEntry11:
-  %a = alloca [1 x i32], align 16
-  store [1 x i32] [i32 3], [1 x i32]* %a, align 16
-  %a$1 = getelementptr [1 x i32], [1 x i32]* %a, i32 0, i32 0
-  %f = call i32 @f(i32* %a$1)
-  %a$2 = getelementptr [1 x i32], [1 x i32]* %a, i32 0, i32 0
-  %a$3 = load i32, i32* %a$2, align 4
-  ret i32 %a$3
+mainEntry14:
+  %lv = alloca [1 x i32], align 16
+  %inp = getelementptr [1 x i32], [1 x i32]* %lv, i32 0, i32 0
+  store i32 3, i32* %inp, align 4
+  %a = getelementptr [1 x i32], [1 x i32]* %lv, i32 0, i32 0
+  %f = call i32 @f(i32* %a)
+  %a$1 = getelementptr [1 x i32], [1 x i32]* %lv, i32 0, i32 0
+  %a$2 = load i32, i32* %a$1, align 4
+  ret i32 %a$2
 }
 

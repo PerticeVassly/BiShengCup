@@ -5,15 +5,17 @@
 .type main, @function
 .globl main
 main:
-mainEntry4:
-	addi sp, sp, -32
+mainEntry59:
 
 	# reserve space
+	li t4, 32
+	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	addi t0, sp, 16
+	li t0, 16
+	add t0, sp, t0
 
 	# get address of local var:lv
 	sd t0, 24(sp)
@@ -26,24 +28,32 @@ mainEntry4:
 	# store lv 
 
 	# get address of lv points to
-	ld t3, 24(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 24
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 24(sp)
-	addi t3, t3, 0
+	li t4, 24
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 8(sp)
 
 	# div result_ a 
 
 	# fetch variables
-	ld t1, 8(sp)
+	li t4, 8
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 3
 
 	# get address of local var:result_
@@ -53,7 +63,10 @@ mainEntry4:
 	# ret result_
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 32
+	li t4, 32
+	add sp, sp, t4
 	ret 

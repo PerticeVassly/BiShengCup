@@ -5,15 +5,17 @@
 .type main, @function
 .globl main
 main:
-mainEntry88:
-	addi sp, sp, -120
+mainEntry47:
 
 	# reserve space
+	li t4, 120
+	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	addi t0, sp, 104
+	li t0, 104
+	add t0, sp, t0
 
 	# get address of local var:lv
 	sd t0, 112(sp)
@@ -26,25 +28,33 @@ mainEntry88:
 	# store lv 
 
 	# get address of lv points to
-	ld t3, 112(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 112(sp)
-	addi t3, t3, 0
+	li t4, 112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 96(sp)
 
 	# cmp  a tmp_
 
 	# fetch variables
 	li t1, 0
-	ld t2, 96(sp)
+	li t4, 96
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:tmp_
 	xor t0, t1, t2
@@ -55,7 +65,9 @@ mainEntry88:
 	# XOR tmp_$1 tmp_ 
 
 	# fetch variables
-	ld t1, 88(sp)
+	li t4, 88
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:tmp_$1
@@ -67,7 +79,9 @@ mainEntry88:
 	# zext tmp_$2 tmp_$1
 
 	# fetch variables
-	ld t1, 80(sp)
+	li t4, 80
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# get address of local var:tmp_$2
 	mv t0, t1
@@ -77,7 +91,9 @@ mainEntry88:
 
 	# fetch variables
 	li t1, 0
-	ld t2, 72(sp)
+	li t4, 72
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:tmp_$3
 	xor t0, t1, t2
@@ -88,7 +104,9 @@ mainEntry88:
 	# XOR tmp_$4 tmp_$3 
 
 	# fetch variables
-	ld t1, 64(sp)
+	li t4, 64
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:tmp_$4
@@ -100,7 +118,9 @@ mainEntry88:
 	# zext tmp_$5 tmp_$4
 
 	# fetch variables
-	ld t1, 56(sp)
+	li t4, 56
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# get address of local var:tmp_$5
 	mv t0, t1
@@ -110,7 +130,9 @@ mainEntry88:
 
 	# fetch variables
 	li t1, 0
-	ld t2, 48(sp)
+	li t4, 48
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:tmp_$6
 	xor t0, t1, t2
@@ -121,7 +143,9 @@ mainEntry88:
 	# XOR tmp_$7 tmp_$6 
 
 	# fetch variables
-	ld t1, 40(sp)
+	li t4, 40
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 1
 
 	# get address of local var:tmp_$7
@@ -133,7 +157,9 @@ mainEntry88:
 	# zext tmp_$8 tmp_$7
 
 	# fetch variables
-	ld t1, 32(sp)
+	li t4, 32
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# get address of local var:tmp_$8
 	mv t0, t1
@@ -143,7 +169,9 @@ mainEntry88:
 
 	# fetch variables
 	li t1, 0
-	ld t2, 24(sp)
+	li t4, 24
+	add t4, sp, t4
+	ld t2, 0(t4)
 
 	# get address of local var:tmp_$9
 	sub t0, t1, t2
@@ -152,7 +180,9 @@ mainEntry88:
 	# cmp tmp_$9  cond_normalize_
 
 	# fetch variables
-	ld t1, 16(sp)
+	li t4, 16
+	add t4, sp, t4
+	ld t1, 0(t4)
 	li t2, 0
 
 	# get address of local var:cond_normalize_
@@ -161,13 +191,15 @@ mainEntry88:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_normalize_ ifTrue_322 ifFalse_135
+	# condBr cond_normalize_ ifTrue_96 ifFalse_25
 
 	# fetch variables
-	ld t1, 8(sp)
-	beqz t1, ifFalse_135
-	j ifTrue_322
-ifTrue_322:
+	li t4, 8
+	add t4, sp, t4
+	ld t1, 0(t4)
+	beqz t1, ifFalse_25
+	j ifTrue_96
+ifTrue_96:
 
 	# lv 
 
@@ -177,13 +209,16 @@ ifTrue_322:
 	# store lv 
 
 	# get address of lv points to
-	ld t3, 112(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# br next_571
-	j next_571
-ifFalse_135:
+	# br next_189
+	j next_189
+ifFalse_25:
 
 	# lv 
 
@@ -193,28 +228,37 @@ ifFalse_135:
 	# store lv 
 
 	# get address of lv points to
-	ld t3, 112(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# br next_571
-	j next_571
-next_571:
+	# br next_189
+	j next_189
+next_189:
 
 	# load a$1 lv
 
 	# get address of lv points to
-	ld t3, 112(sp)
-	addi t3, t3, 0
+	li t4, 112
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a$1
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 0(sp)
 
 	# ret a$1
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 120
+	li t4, 120
+	add sp, sp, t4
 	ret 

@@ -6,14 +6,15 @@
 .globl defn
 defn:
 defnEntry:
-	addi sp, sp, 0
+
+	# reserve space
+	li t4, 0
+	sub sp, sp, t4
+
+	# save CallerSavedRegs
 
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -22,7 +23,8 @@ defnEntry:
 	# fetch variables
 	li t1, 4
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -30,15 +32,17 @@ defnEntry:
 .type main, @function
 .globl main
 main:
-mainEntry38:
-	addi sp, sp, -32
+mainEntry80:
 
 	# reserve space
+	li t4, 32
+	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	addi t0, sp, 16
+	li t0, 16
+	add t0, sp, t0
 
 	# get address of local var:lv
 	sd t0, 24(sp)
@@ -62,29 +66,40 @@ mainEntry38:
 	# lv defn
 
 	# fetch variables
-	ld t1, 8(sp)
+	li t4, 8
+	add t4, sp, t4
+	ld t1, 0(t4)
 
 	# store lv defn
 
 	# get address of lv points to
-	ld t3, 24(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	li t4, 24
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 24(sp)
-	addi t3, t3, 0
+	li t4, 24
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
 	# get address of local var:a
-	ld t0, 0(t3)
+	ld t0, 0(t4)
 	sd t0, 0(sp)
 
 	# ret a
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t4, 0
+	add t4, sp, t4
+	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 32
+	li t4, 32
+	add sp, sp, t4
 	ret 
