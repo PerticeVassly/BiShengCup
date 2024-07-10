@@ -102,7 +102,7 @@ public class Allocator {
             generator.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue((float) (constValue.getValue()))));
             generator.addInstruction(new RiscFmvdx(new Register("ft" + i), new Register("t" + i)));
         } else if (constValue.getType() instanceof IntType) {
-            generator.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue((int) (constValue.getValue()))));
+            generator.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue(constValue.castToInt())));
         } else if (constValue.getType() instanceof BoolType) {
             generator.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue(Boolean.TRUE.equals(constValue.getValue()) ? 1 : 0)));
         } else {

@@ -206,7 +206,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                             type = baseType;
                             break;
                         }
-                        int size = (int) ((ConstValue) vr).getValue();
+                        int size = ((ConstValue) vr).castToInt();
                         type = new ArrayType(type, size);
                     }
                     type = new Pointer(type);
@@ -462,7 +462,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         res = null;
                         break;
                     }
-                    int index = (int) ((ConstValue)vr).getValue();
+                    int index = ((ConstValue)vr).castToInt();
                     if (av.getValue(index) instanceof ArrayValue) {
                         av = (ArrayValue) av.getValue(index);
                     } else {
@@ -737,11 +737,11 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             curDim = 0;
             int dim = ctx.constExp().size();
             ConstValue cv = (ConstValue) visitConstExp(ctx.constExp(dim - 1));
-            int size = (int) cv.getValue();
+            int size = cv.castToInt();
             ArrayType arrayType = new ArrayType(type, size);
             for (int i = dim - 2; i >= 0; i--) {
                 cv = (ConstValue) visitConstExp(ctx.constExp(i));
-                size = (int) cv.getValue();
+                size = cv.castToInt();
                 arrayType = new ArrayType(arrayType, size);
             }
             elementDim = new ArrayList<>();
@@ -934,11 +934,11 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             arrayInit = new ArrayList<>();
             int dim = ctx.constExp().size();
             ConstValue cv = (ConstValue) visitConstExp(ctx.constExp(dim - 1));
-            int size = (int) cv.getValue();
+            int size = cv.castToInt();
             ArrayType arrayType = new ArrayType(type, size);
             for (int i = dim - 2; i >= 0; i--) {
                 cv = (ConstValue) visitConstExp(ctx.constExp(i));
-                size = (int) cv.getValue();
+                size = cv.castToInt();
                 arrayType = new ArrayType(arrayType, size);
             }
             elementDim = new ArrayList<>();
