@@ -64,11 +64,8 @@ import cn.edu.nju.software.ir.value.ArrayValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
-
-import javax.lang.model.element.Name;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class RiscInstrGenerator implements InstructionVisitor {
 
@@ -80,19 +77,22 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     private final Allocator allocator = Allocator.get();
 
-    RiscInstrGenerator(List<Instruction> instructions, FunctionValue llvmFunctionValue) {
+    private RiscBasicBlock bb;
+
+    RiscInstrGenerator(List<Instruction> instructions, FunctionValue llvmFunctionValue, RiscBasicBlock bb) {
         this.instructions = instructions;
         this.llvmFunctionValue = llvmFunctionValue;
+        this.bb = bb;
     }
 
     /**
      * [将LLVM的基本块转换为RISC的基本块]
      */
-    public Stream<RiscInstruction> genRiscInstructions() {
+    public List<RiscInstruction> genRiscInstructions() {
         for(Instruction instruction : instructions){
             instruction.accept(this);
         }
-        return riscInstructions.stream();
+        return riscInstructions;
     }
 
     @Override

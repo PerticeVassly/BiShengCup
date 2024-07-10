@@ -6,20 +6,20 @@
 .globl f
 f:
 fEntry1:
+
+	# reserve space
 	li t4, 40
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 32(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 32(sp)
 
 	# allocate lv
 	li t0, 16
@@ -105,10 +105,10 @@ fEntry1:
 .globl main
 main:
 mainEntry14:
-	li t4, 56
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 56
+	sub sp, sp, t4
 
 	# save the parameters
 

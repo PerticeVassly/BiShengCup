@@ -6,23 +6,23 @@
 .globl g1
 g1:
 g1Entry:
+
+	# reserve space
 	li t4, 128
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 120(sp)
-	sd a1, 112(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 120(sp)
 
 	# get address of local var:1
+	sd a1, 112(sp)
 
 	# allocate lv$4
 	li t0, 96
@@ -210,23 +210,23 @@ g1Entry:
 .globl f1
 f1:
 f1Entry:
+
+	# reserve space
 	li t4, 104
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 96(sp)
-	sd a1, 88(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 96(sp)
 
 	# get address of local var:1
+	sd a1, 88(sp)
 
 	# allocate lv$1
 	li t0, 72
@@ -415,10 +415,10 @@ f1Entry:
 .globl main
 main:
 mainEntry:
-	li t4, 16
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 16
+	sub sp, sp, t4
 
 	# save the parameters
 

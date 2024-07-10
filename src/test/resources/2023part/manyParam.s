@@ -6,47 +6,47 @@
 .globl f
 f:
 fEntry:
+
+	# reserve space
 	li t4, 368
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 360(sp)
-	sd a1, 352(sp)
-	sd a2, 344(sp)
-	sd a3, 336(sp)
-	fsd fa0, 328(sp)
-	fsd fa1, 320(sp)
-	fsd fa2, 312(sp)
-	fsd fa3, 304(sp)
-	fld ft3, 0(t4)
-	fsd ft3, 0(t4)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 360(sp)
 
 	# get address of local var:1
+	sd a1, 352(sp)
 
 	# get address of local var:2
+	sd a2, 344(sp)
 
 	# get address of local var:3
+	sd a3, 336(sp)
 
 	# get address of local var:4
+	fsd fa0, 328(sp)
 
 	# get address of local var:5
+	fsd fa1, 320(sp)
 
 	# get address of local var:6
+	fsd fa2, 312(sp)
 
 	# get address of local var:7
+	fsd fa3, 304(sp)
 	li t4, 384
 	add t4, sp, t4
+	fld ft3, 0(t4)
 	li t4, 296
 	add t4, sp, t4
+	fsd ft3, 0(t4)
 
 	# allocate lv$8
 	li t0, 280
@@ -532,10 +532,10 @@ fEntry:
 .globl main
 main:
 mainEntry5:
-	li t4, 8
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 8
+	sub sp, sp, t4
 
 	# save the parameters
 

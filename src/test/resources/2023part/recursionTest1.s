@@ -6,20 +6,20 @@
 .globl fib
 fib:
 fibEntry:
+
+	# reserve space
 	li t4, 144
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 136(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 136(sp)
 
 	# allocate lv
 	li t0, 120
@@ -318,10 +318,10 @@ next_5:
 .globl main
 main:
 mainEntry9:
-	li t4, 24
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 24
+	sub sp, sp, t4
 
 	# save the parameters
 

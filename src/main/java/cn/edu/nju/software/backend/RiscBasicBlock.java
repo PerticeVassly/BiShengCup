@@ -14,6 +14,7 @@ import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,14 +26,14 @@ public class RiscBasicBlock {
 
     private final FunctionValue llvmFunctionValue;
 
-    private final List<RiscInstruction> riscInstructions = new LinkedList<>();
+    private final List<RiscInstruction> riscInstructions = new ArrayList<>() ;
 
     private final RiscInstrGenerator generator;
 
     public RiscBasicBlock(BasicBlockRef basicBlockRef, FunctionValue functionValue) {
         this.basicBlockRef = basicBlockRef;
         this.llvmFunctionValue = functionValue;
-        this.generator = new RiscInstrGenerator(basicBlockRef.getIrs(), llvmFunctionValue);
+        this.generator = new RiscInstrGenerator(basicBlockRef.getIrs(), llvmFunctionValue, this);
     }
 
     public void codeGen() {
@@ -40,13 +41,13 @@ public class RiscBasicBlock {
         if (basicBlockRef.getPredNum() == 0) {
             functionInit();
         }
-        generator.genRiscInstructions().forEach(riscInstructions::add);
+        riscInstructions.addAll(generator.genRiscInstructions());
     }
 
     private void functionInit() {
         generator.insertComment("reserve space");
-        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(allocator.getStackSize())));
-        riscInstructions.add(new RiscSub(new Register("sp"), new Register("sp"), new Register("t4")));
+        generator.addInstruction(new RiscLi(new Register("t4"), new ImmediateValue(allocator.getStackSize())));
+        generator.addInstruction(new RiscSub(new Register("sp"), new Register("sp"), new Register("t4")));
 
         if(!llvmFunctionValue.getName().equals("main")){
             generator.insertComment("save CallerSavedRegs");
@@ -66,7 +67,7 @@ public class RiscBasicBlock {
 
 
         // 获取所有 IntType 和 FloatType 的参数个数
-        int intTypeAndFloatTypeCount = functionType.getFParameters().stream()
+        int intTypeCount = functionType.getFParameters().stream()
                 .filter(IntType.class::isInstance)
                 .mapToInt(typeRef -> 1)
                 .sum();
@@ -80,7 +81,7 @@ public class RiscBasicBlock {
                 .mapToInt(typeRef -> 1)
                 .sum();
 
-        int intAndPointerCount = intTypeAndFloatTypeCount + pointerTypeCount;
+        int intAndPointerCount = intTypeCount + pointerTypeCount;
 
         int preLen = (
                         ((intAndPointerCount > RiscSpecifications.getArgRegs().length) ? (intAndPointerCount - RiscSpecifications.getArgRegs().length) : 0) +
@@ -100,14 +101,14 @@ public class RiscBasicBlock {
                     fetchFromStack(functionType.getFParameter(i), i, preLen);
                     continue;
                 }
-                riscInstructions.add(new RiscFsd(new Register(RiscSpecifications.getFArgRegs()[fptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i +""))));
+                generator.addInstruction(new RiscFsd(new Register(RiscSpecifications.getFArgRegs()[fptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i +""))));
                 fptr++;
             } else if (functionType.getFParameter(i) instanceof IntType || functionType.getFParameter(i) instanceof Pointer) {
                 if(ptr >= RiscSpecifications.getArgRegs().length){
                     fetchFromStack(functionType.getFParameter(i), i, preLen);
                     continue;
                 }
-                riscInstructions.add(new RiscSd(new Register(RiscSpecifications.getArgRegs()[ptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i +""))));
+                generator.addInstruction(new RiscSd(new Register(RiscSpecifications.getArgRegs()[ptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i +""))));
                 ptr++;
             } else {
                 assert false;
@@ -118,29 +119,29 @@ public class RiscBasicBlock {
     private void fetchFromStack(TypeRef type, int i, int preLen) {
         if (type instanceof IntType || type instanceof Pointer) {
             allocator.mvAddrWithBigOffsetIntoReg(allocator.getStackSize() + preLen, "sp", "t4");
-            riscInstructions.add(new RiscLd(new Register("t3"), new IndirectRegister("t4", 0)));
+            generator.addInstruction(new RiscLd(new Register("t3"), new IndirectRegister("t4", 0)));
             allocator.mvAddrWithBigOffsetIntoReg(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4");
-            riscInstructions.add(new RiscSd(new Register("t3"), new IndirectRegister("t4", 0)));
+            generator.addInstruction(new RiscSd(new Register("t3"), new IndirectRegister("t4", 0)));
         } else if (type instanceof FloatType) {
             allocator.mvAddrWithBigOffsetIntoReg(allocator.getStackSize() + preLen, "sp", "t4");
-            riscInstructions.add(new RiscFld(new Register("ft3"), new IndirectRegister("t4", 0)));
+            generator.addInstruction(new RiscFld(new Register("ft3"), new IndirectRegister("t4", 0)));
             allocator.mvAddrWithBigOffsetIntoReg(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4");
-            riscInstructions.add(new RiscFsd(new Register("ft3"), new IndirectRegister("t4", 0)));
+            generator.addInstruction(new RiscFsd(new Register("ft3"), new IndirectRegister("t4", 0)));
         } else {
             assert false;
         }
     }
 
     private void saveCalleeSavedRegs() {
-        riscInstructions.add(new RiscComment("save callee saved regs"));
+        generator.addInstruction(new RiscComment("save callee saved regs"));
 
         String[] calleeSavedRegs = RiscSpecifications.getCalleeSavedRegs();
 
-        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L * calleeSavedRegs.length)));
+        generator.addInstruction(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L * calleeSavedRegs.length)));
 
         for (int i = 0; i < calleeSavedRegs.length; i++) {
             RiscInstruction riscSw = new RiscSd(new Register(calleeSavedRegs[i]), new IndirectRegister("sp", i * 8));
-            riscInstructions.add(riscSw);
+            generator.addInstruction(riscSw);
         }
     }
 
@@ -154,9 +155,9 @@ public class RiscBasicBlock {
 
         assert !riscInstructions.isEmpty();
 
-        riscInstructions.forEach(
-                riscInstruction -> System.out.println(riscInstruction.emitCode())
-        );
+        for(RiscInstruction riscInstruction : riscInstructions){
+            System.out.println(riscInstruction.emitCode());
+        }
     }
 
 }

@@ -10,10 +10,10 @@ gv:
 .globl main
 main:
 mainEntry3:
-	li t4, 16
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 16
+	sub sp, sp, t4
 
 	# save the parameters
 

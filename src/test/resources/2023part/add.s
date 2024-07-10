@@ -6,23 +6,23 @@
 .globl add
 add:
 addEntry:
+
+	# reserve space
 	li t4, 72
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 64(sp)
-	sd a1, 56(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 64(sp)
 
 	# get address of local var:1
+	sd a1, 56(sp)
 
 	# allocate lv$1
 	li t0, 40
@@ -129,10 +129,10 @@ addEntry:
 .globl main
 main:
 mainEntry12:
-	li t4, 56
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 56
+	sub sp, sp, t4
 
 	# save the parameters
 
