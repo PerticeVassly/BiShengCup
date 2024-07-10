@@ -35,34 +35,37 @@ tranEntry:
 
 	# get address of local var:2
 	sd a2, 568(sp)
-
-	# get address of local var:3
-	sd a3, 560(sp)
+	li t4, 640
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 560
+	add t4, sp, t4
+	sd t3, 0(t4)
 	li t4, 632
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 552
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 632
+	li t4, 624
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 544
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 632
+	li t4, 616
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 536
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 632
+	li t4, 608
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 528
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 632
+	li t4, 600
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 520
@@ -2008,7 +2011,8 @@ next_361:
 	li t4, 360
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 352
@@ -2055,6 +2059,9 @@ next_361:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 48
 
 	# get address of local var:tran
 	sd a0, 312(sp)
@@ -2258,6 +2265,9 @@ whileBody_176:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$16 lv$9
 
 	# get address of lv$9 points to
@@ -2350,6 +2360,9 @@ next_362:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# lv$9 
 
@@ -2548,6 +2561,9 @@ whileBody_177:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$19 lv$9
 
 	# get address of lv$9 points to
@@ -2655,6 +2671,9 @@ next_363:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br whileCond_178
 	j whileCond_178
@@ -2838,6 +2857,9 @@ whileBody_178:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$22 lv$9
 
 	# get address of lv$9 points to
@@ -2930,6 +2952,9 @@ next_364:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 

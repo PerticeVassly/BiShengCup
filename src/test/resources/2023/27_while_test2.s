@@ -804,6 +804,9 @@ mainEntry7:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:FourWhile
 	sd a0, 0(sp)
 

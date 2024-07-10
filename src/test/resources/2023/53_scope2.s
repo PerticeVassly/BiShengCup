@@ -390,6 +390,9 @@ next_135:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_134
 	j next_134
 ifTrue_63:

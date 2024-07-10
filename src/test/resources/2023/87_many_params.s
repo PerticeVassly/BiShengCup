@@ -888,174 +888,175 @@ param32_recEntry:
 	li t4, 1072
 	add t4, sp, t4
 	sd a2, 0(t4)
-
-	# get address of local var:3
+	li t4, 1328
+	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1064
 	add t4, sp, t4
-	sd a3, 0(t4)
+	sd t3, 0(t4)
 	li t4, 1320
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1056
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1312
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1048
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1304
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1040
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1296
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1032
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1288
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1024
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1280
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1016
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1272
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1008
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1264
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1000
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1256
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 992
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1248
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 984
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1240
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 976
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1232
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 968
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1224
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 960
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1216
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 952
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1208
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 944
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1200
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 936
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1192
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 928
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1184
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 920
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1176
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 912
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1168
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 904
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1160
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 896
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1152
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 888
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1144
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 880
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1136
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 872
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1128
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 864
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1120
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 856
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1112
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 848
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1320
+	li t4, 1104
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 840
@@ -2397,7 +2398,8 @@ ifFalse_1:
 	li t4, 224
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 216
@@ -2604,6 +2606,9 @@ ifFalse_1:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 232
+
 	# get address of local var:param32_rec
 	sd a0, 0(sp)
 
@@ -2650,174 +2655,175 @@ param32_arrEntry:
 	li t4, 3056
 	add t4, sp, t4
 	sd a2, 0(t4)
-
-	# get address of local var:3
+	li t4, 3312
+	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 3048
 	add t4, sp, t4
-	sd a3, 0(t4)
+	sd t3, 0(t4)
 	li t4, 3304
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 3040
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3296
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 3032
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3288
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 3024
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3280
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 3016
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3272
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 3008
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3264
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 3000
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3256
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2992
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3248
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2984
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3240
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2976
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3232
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2968
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3224
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2960
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3216
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2952
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3208
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2944
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3200
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2936
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3192
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2928
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3184
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2920
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3176
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2912
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3168
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2904
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3160
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2896
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3152
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2888
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3144
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2880
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3136
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2872
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3128
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2864
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3120
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2856
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3112
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2848
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3104
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2840
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3096
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2832
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 3304
+	li t4, 3088
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 2824
@@ -8626,78 +8632,79 @@ param16Entry:
 	li t4, 1152
 	add t4, sp, t4
 	sd a2, 0(t4)
-
-	# get address of local var:3
+	li t4, 1280
+	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1144
 	add t4, sp, t4
-	sd a3, 0(t4)
+	sd t3, 0(t4)
 	li t4, 1272
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1136
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1272
+	li t4, 1264
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1128
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1272
+	li t4, 1256
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1120
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1272
+	li t4, 1248
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1112
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1272
+	li t4, 1240
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1104
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1272
+	li t4, 1232
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1096
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1272
+	li t4, 1224
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1088
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1272
+	li t4, 1216
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1080
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1272
+	li t4, 1208
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1072
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1272
+	li t4, 1200
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1064
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1272
+	li t4, 1192
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1056
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1272
+	li t4, 1184
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1048
@@ -9889,6 +9896,9 @@ param16Entry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# gep arr$1 
 
 	# fetch variables
@@ -10601,7 +10611,8 @@ param16Entry:
 	li t4, 328
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 312
@@ -10810,6 +10821,9 @@ param16Entry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 232
+
 	# get address of local var:param32_rec
 	sd a0, 0(sp)
 
@@ -10868,6 +10882,9 @@ mainEntry6:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	li t4, 1864
 	add t4, sp, t4
@@ -10885,6 +10902,9 @@ mainEntry6:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$1
 	li t4, 1856
@@ -10904,6 +10924,9 @@ mainEntry6:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$2
 	li t4, 1848
 	add t4, sp, t4
@@ -10921,6 +10944,9 @@ mainEntry6:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$3
 	li t4, 1840
@@ -10940,6 +10966,9 @@ mainEntry6:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$4
 	li t4, 1832
 	add t4, sp, t4
@@ -10957,6 +10986,9 @@ mainEntry6:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$5
 	li t4, 1824
@@ -10976,6 +11008,9 @@ mainEntry6:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$6
 	li t4, 1816
 	add t4, sp, t4
@@ -10993,6 +11028,9 @@ mainEntry6:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$7
 	li t4, 1808
@@ -11012,6 +11050,9 @@ mainEntry6:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$8
 	li t4, 1800
 	add t4, sp, t4
@@ -11029,6 +11070,9 @@ mainEntry6:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$9
 	li t4, 1792
@@ -11048,6 +11092,9 @@ mainEntry6:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$10
 	li t4, 1784
 	add t4, sp, t4
@@ -11065,6 +11112,9 @@ mainEntry6:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$11
 	li t4, 1776
@@ -11084,6 +11134,9 @@ mainEntry6:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$12
 	li t4, 1768
 	add t4, sp, t4
@@ -11101,6 +11154,9 @@ mainEntry6:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$13
 	li t4, 1760
@@ -11120,6 +11176,9 @@ mainEntry6:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$14
 	li t4, 1752
 	add t4, sp, t4
@@ -11137,6 +11196,9 @@ mainEntry6:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$15
 	li t4, 1744
@@ -11167,7 +11229,8 @@ mainEntry6:
 	li t4, 1840
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 1832
@@ -11263,6 +11326,9 @@ mainEntry6:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 104
 
 	# get address of local var:param16
 	li t4, 1736
@@ -16132,7 +16198,8 @@ next_22:
 	li t4, 456
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 440
@@ -16341,6 +16408,9 @@ next_22:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 232
+
 	# get address of local var:param32_arr
 	sd a0, 0(sp)
 
@@ -16363,6 +16433,9 @@ next_22:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -16379,6 +16452,9 @@ next_22:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 

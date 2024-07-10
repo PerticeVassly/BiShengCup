@@ -239,6 +239,9 @@ ifTrue_64:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_137
 	j next_137
 next_137:
@@ -569,6 +572,9 @@ ifTrue_65:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_138
 	j next_138

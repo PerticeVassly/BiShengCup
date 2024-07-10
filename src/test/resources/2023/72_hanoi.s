@@ -104,6 +104,9 @@ moveEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -120,6 +123,9 @@ moveEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load y lv$1
 
@@ -153,6 +159,9 @@ moveEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -170,6 +179,9 @@ moveEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -186,6 +198,9 @@ moveEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret void
 	li t4, 64
@@ -218,9 +233,12 @@ hanoiEntry:
 
 	# get address of local var:2
 	sd a2, 216(sp)
-
-	# get address of local var:3
-	sd a3, 208(sp)
+	li t4, 248
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 208
+	add t4, sp, t4
+	sd t3, 0(t4)
 
 	# allocate lv$3
 	li t0, 192
@@ -430,6 +448,9 @@ ifTrue_15:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_32
 	j next_32
 ifFalse_2:
@@ -522,7 +543,8 @@ ifFalse_2:
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -533,6 +555,9 @@ ifFalse_2:
 
 	# restore caller saved regs
 	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# release params
 	addi sp, sp, 8
 
 	# load one$2 lv$1
@@ -585,6 +610,9 @@ ifFalse_2:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load n$2 lv
 
@@ -674,7 +702,8 @@ ifFalse_2:
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -685,6 +714,9 @@ ifFalse_2:
 
 	# restore caller saved regs
 	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# release params
 	addi sp, sp, 8
 
 	# br next_32
@@ -728,6 +760,9 @@ mainEntry9:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint
 	sd a0, 56(sp)
@@ -827,6 +862,9 @@ whileBody_17:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$1
 	sd a0, 16(sp)
 
@@ -848,7 +886,8 @@ whileBody_17:
 
 	# fetch variables
 	li t1, 3
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -859,6 +898,9 @@ whileBody_17:
 
 	# restore caller saved regs
 	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# release params
 	addi sp, sp, 8
 
 	# prepare params
@@ -877,6 +919,9 @@ whileBody_17:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load n$1 lv
 

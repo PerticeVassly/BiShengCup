@@ -2582,6 +2582,9 @@ next_376:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:dfs
 	sd a0, 360(sp)
 
@@ -3506,6 +3509,9 @@ whileBody_184:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load s lv
 
 	# get address of lv points to
@@ -3560,6 +3566,9 @@ whileBody_184:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:dfs
 	sd a0, 64(sp)
@@ -3806,6 +3815,9 @@ mainEntry93:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 128(sp)
 
@@ -3838,6 +3850,9 @@ mainEntry93:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$1
 	sd a0, 120(sp)
@@ -3900,6 +3915,9 @@ mainEntry93:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br whileCond_185
 	j whileCond_185
@@ -3979,6 +3997,9 @@ whileBody_185:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$2
 	sd a0, 72(sp)
 
@@ -4012,6 +4033,9 @@ whileBody_185:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$3
 	sd a0, 64(sp)
 
@@ -4044,6 +4068,9 @@ whileBody_185:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$4
 	sd a0, 56(sp)
@@ -4135,6 +4162,9 @@ whileBody_185:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load E$1 lv$1
 
 	# get address of lv$1 points to
@@ -4217,6 +4247,9 @@ next_380:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:max_flow
 	sd a0, 0(sp)
 
@@ -4239,6 +4272,9 @@ next_380:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -4255,6 +4291,9 @@ next_380:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 

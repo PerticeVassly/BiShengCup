@@ -2718,6 +2718,9 @@ modelEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:relu_reg
 	li t4, 10976
 	add t4, sp, t4
@@ -5189,6 +5192,9 @@ modelEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:relu_reg$1
 	li t4, 9768
@@ -7678,6 +7684,9 @@ modelEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:relu_reg$2
 	li t4, 8552
 	add t4, sp, t4
@@ -10165,6 +10174,9 @@ modelEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:relu_reg$3
 	li t4, 7336
@@ -12654,6 +12666,9 @@ modelEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:relu_reg$4
 	li t4, 6120
 	add t4, sp, t4
@@ -15141,6 +15156,9 @@ modelEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:relu_reg$5
 	li t4, 4904
@@ -17630,6 +17648,9 @@ modelEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:relu_reg$6
 	li t4, 3688
 	add t4, sp, t4
@@ -20117,6 +20138,9 @@ modelEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:relu_reg$7
 	li t4, 2472
@@ -22606,6 +22630,9 @@ modelEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:relu_reg$8
 	li t4, 1256
 	add t4, sp, t4
@@ -24856,6 +24883,9 @@ modelEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:relu_reg$9
 	sd a0, 40(sp)
 
@@ -25008,6 +25038,9 @@ mainEntry75:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint
 	sd a0, 208(sp)
@@ -25238,6 +25271,9 @@ next_303:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:model
 	sd a0, 128(sp)
 
@@ -25402,6 +25438,9 @@ whileBody_141:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$1
 	sd a0, 48(sp)
 
@@ -25531,6 +25570,9 @@ ifTrue_163:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -25547,6 +25589,9 @@ ifTrue_163:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# prepare params
 
@@ -25565,6 +25610,9 @@ ifTrue_163:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -25581,6 +25629,9 @@ ifTrue_163:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_305
 	j next_305
@@ -25603,6 +25654,9 @@ ifFalse_50:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -25619,6 +25673,9 @@ ifFalse_50:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# prepare params
 
@@ -25637,6 +25694,9 @@ ifFalse_50:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -25653,6 +25713,9 @@ ifFalse_50:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_305
 	j next_305

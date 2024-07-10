@@ -303,6 +303,9 @@ mainEntry2:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:if_if_Else
 	sd a0, 0(sp)
 

@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry15:
+mainEntry16:
 
 	# reserve space
 	li t4, 24
@@ -67,6 +67,9 @@ mainEntry15:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -83,6 +86,9 @@ mainEntry15:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 

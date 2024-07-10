@@ -300,6 +300,9 @@ mainEntry57:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 784(sp)
 
@@ -1696,6 +1699,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a1$1 lv$1
 
 	# get address of lv$1 points to
@@ -1727,6 +1733,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a2$1 lv$2
 
@@ -1760,6 +1769,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a3$1 lv$3
 
 	# get address of lv$3 points to
@@ -1791,6 +1803,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a4$1 lv$4
 
@@ -1824,6 +1839,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a5$1 lv$5
 
 	# get address of lv$5 points to
@@ -1855,6 +1873,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a6$1 lv$6
 
@@ -1888,6 +1909,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a7$1 lv$7
 
 	# get address of lv$7 points to
@@ -1919,6 +1943,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a8$1 lv$8
 
@@ -1952,6 +1979,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a9$1 lv$9
 
 	# get address of lv$9 points to
@@ -1983,6 +2013,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a10$1 lv$10
 
@@ -2016,6 +2049,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a11$1 lv$11
 
 	# get address of lv$11 points to
@@ -2047,6 +2083,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a12$1 lv$12
 
@@ -2080,6 +2119,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a13$1 lv$13
 
 	# get address of lv$13 points to
@@ -2111,6 +2153,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a14$1 lv$14
 
@@ -2144,6 +2189,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a15$1 lv$15
 
 	# get address of lv$15 points to
@@ -2175,6 +2223,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a16$1 lv$16
 
@@ -2208,6 +2259,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a17$1 lv$17
 
 	# get address of lv$17 points to
@@ -2239,6 +2293,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a18$1 lv$18
 
@@ -2272,6 +2329,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a19$1 lv$19
 
 	# get address of lv$19 points to
@@ -2303,6 +2363,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a20$1 lv$20
 
@@ -2336,6 +2399,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a21$1 lv$21
 
 	# get address of lv$21 points to
@@ -2367,6 +2433,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a22$1 lv$22
 
@@ -2400,6 +2469,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a23$1 lv$23
 
 	# get address of lv$23 points to
@@ -2431,6 +2503,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a24$1 lv$24
 
@@ -2464,6 +2539,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a25$1 lv$25
 
 	# get address of lv$25 points to
@@ -2495,6 +2573,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a26$1 lv$26
 
@@ -2528,6 +2609,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a27$1 lv$27
 
 	# get address of lv$27 points to
@@ -2559,6 +2643,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a28$1 lv$28
 
@@ -2592,6 +2679,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load a29 lv$29
 
 	# get address of lv$29 points to
@@ -2623,6 +2713,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# lv$32 
 
@@ -2671,6 +2764,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load b$2 lv$30
 
 	# get address of lv$30 points to
@@ -2703,6 +2799,9 @@ next_230:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load newline$1 lv$32
 
 	# get address of lv$32 points to
@@ -2734,6 +2833,9 @@ next_230:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a25$2 lv$25
 

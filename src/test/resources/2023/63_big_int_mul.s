@@ -4689,6 +4689,9 @@ ifTrue_143:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_274
 	j next_274
 next_274:
@@ -4891,6 +4894,9 @@ whileBody_131:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load i$16 lv
 

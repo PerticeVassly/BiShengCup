@@ -525,6 +525,9 @@ float_eqEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:float_abs
 	fsd fa0, 24(sp)
 
@@ -633,22 +636,8 @@ errorEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# prepare params
-
-	# fetch variables
-	li t1, 114
-	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -8
-	sd ra, 0(sp)
-
-	# call putch
-	call putch
-
-	# restore caller saved regs
-	ld ra, 0(sp)
-	addi sp, sp, 8
+	# release params
+	addi sp, sp, 0
 
 	# prepare params
 
@@ -666,6 +655,29 @@ errorEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
+
+	# prepare params
+
+	# fetch variables
+	li t1, 114
+	mv a0, t1
+
+	# save caller saved regs
+	addi sp, sp, -8
+	sd ra, 0(sp)
+
+	# call putch
+	call putch
+
+	# restore caller saved regs
+	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# prepare params
 
@@ -684,6 +696,9 @@ errorEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -701,6 +716,9 @@ errorEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -717,6 +735,9 @@ errorEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret void
 	li t4, 0
@@ -758,6 +779,9 @@ okEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -775,6 +799,9 @@ okEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -791,6 +818,9 @@ okEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret void
 	li t4, 0
@@ -931,6 +961,9 @@ ifTrue_54:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_115
 	j next_115
 ifFalse_10:
@@ -947,6 +980,9 @@ ifFalse_10:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_115
 	j next_115
@@ -1052,6 +1088,9 @@ ifTrue_55:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_116
 	j next_116
 ifFalse_11:
@@ -1068,6 +1107,9 @@ ifFalse_11:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_116
 	j next_116
@@ -1165,6 +1207,9 @@ mainEntry22:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:float_eq
 	sd a0, 432(sp)
 
@@ -1186,6 +1231,9 @@ mainEntry22:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# prepare params
 
@@ -1212,6 +1260,9 @@ mainEntry22:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:float_eq$1
 	sd a0, 424(sp)
 
@@ -1233,6 +1284,9 @@ mainEntry22:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# prepare params
 
@@ -1259,6 +1313,9 @@ mainEntry22:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:float_eq$2
 	sd a0, 416(sp)
 
@@ -1281,6 +1338,9 @@ mainEntry22:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -1297,6 +1357,9 @@ mainEntry22:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:circle_area
 	fsd fa0, 408(sp)
@@ -1317,6 +1380,9 @@ mainEntry22:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:circle_area$1
 	fsd fa0, 400(sp)
@@ -1348,6 +1414,9 @@ mainEntry22:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:float_eq$3
 	sd a0, 392(sp)
 
@@ -1369,6 +1438,9 @@ mainEntry22:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# prepare params
 
@@ -1395,6 +1467,9 @@ mainEntry22:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:float_eq$4
 	sd a0, 384(sp)
 
@@ -1416,6 +1491,9 @@ mainEntry22:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# cmp   cond_normalize_
 
@@ -1452,6 +1530,9 @@ ifTrue_56:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_117
 	j next_117
@@ -1492,6 +1573,9 @@ ifTrue_57:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_118
 	j next_118
 next_118:
@@ -1531,6 +1615,9 @@ ifTrue_58:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_119
 	j next_119
@@ -1592,6 +1679,9 @@ ifTrue_59:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_120
 	j next_120
@@ -1993,6 +2083,9 @@ next_120:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getfarray
 	sd a0, 248(sp)
 
@@ -2112,6 +2205,9 @@ whileBody_61:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getfloat
 	fsd fa0, 200(sp)
@@ -2245,6 +2341,9 @@ whileBody_61:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:circle_area$2
 	fsd fa0, 144(sp)
@@ -2420,6 +2519,9 @@ whileBody_61:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -2436,6 +2538,9 @@ whileBody_61:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load area_trunc lv$6
 
@@ -2480,6 +2585,9 @@ whileBody_61:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -2496,6 +2604,9 @@ whileBody_61:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load i$1 lv
 
@@ -2662,6 +2773,9 @@ next_121:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 

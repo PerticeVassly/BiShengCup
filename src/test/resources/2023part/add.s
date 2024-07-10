@@ -128,7 +128,7 @@ addEntry:
 .type main, @function
 .globl main
 main:
-mainEntry12:
+mainEntry13:
 
 	# reserve space
 	li t4, 56
@@ -222,6 +222,9 @@ mainEntry12:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:add
 	sd a0, 0(sp)

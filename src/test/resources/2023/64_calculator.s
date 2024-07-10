@@ -576,6 +576,9 @@ getstrEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getch
 	sd a0, 128(sp)
 
@@ -806,6 +809,9 @@ whileBody_26:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getch$1
 	sd a0, 40(sp)
@@ -1741,6 +1747,9 @@ findEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:chapop
 	sd a0, 96(sp)
 
@@ -2109,6 +2118,9 @@ mainEntry16:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getstr
 	li t4, 3192
 	add t4, sp, t4
@@ -2283,6 +2295,9 @@ whileBody_27:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:isdigit
 	li t4, 3120
@@ -2653,6 +2668,9 @@ ifTrue_20:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_48
 	j next_48
 next_48:
@@ -2775,6 +2793,9 @@ ifTrue_21:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_49
 	j next_49
 next_49:
@@ -2892,6 +2913,9 @@ ifTrue_22:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:chapop
 	li t4, 2872
@@ -3264,6 +3288,9 @@ whileBody_28:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:chapop$1
 	li t4, 2720
 	add t4, sp, t4
@@ -3511,6 +3538,9 @@ whileBody_29:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:find
 	li t4, 2616
 	add t4, sp, t4
@@ -3586,6 +3616,9 @@ next_53:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_52
 	j next_52
@@ -4326,6 +4359,9 @@ whileBody_30:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:find$1
 	li t4, 2248
 	add t4, sp, t4
@@ -4401,6 +4437,9 @@ next_56:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_55
 	j next_55
@@ -5141,6 +5180,9 @@ whileBody_31:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:find$2
 	li t4, 1880
 	add t4, sp, t4
@@ -5216,6 +5258,9 @@ next_59:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_58
 	j next_58
@@ -5754,6 +5799,9 @@ whileBody_32:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:find$3
 	li t4, 1608
 	add t4, sp, t4
@@ -5829,6 +5877,9 @@ next_62:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_61
 	j next_61
@@ -6359,6 +6410,9 @@ whileBody_33:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:find$4
 	li t4, 1352
 	add t4, sp, t4
@@ -6434,6 +6488,9 @@ next_65:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_64
 	j next_64
@@ -6832,6 +6889,9 @@ whileBody_34:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:chapop$2
 	li t4, 1144
@@ -7332,6 +7392,9 @@ next_68:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# ret 
 
 	# fetch variables
@@ -7354,6 +7417,9 @@ ifTrue_33:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:intpop
 	sd a0, 944(sp)
@@ -7387,6 +7453,9 @@ ifTrue_33:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:intpop$1
 	sd a0, 936(sp)
@@ -8875,6 +8944,9 @@ ifTrue_39:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:power
 	sd a0, 200(sp)
 
@@ -8930,6 +9002,9 @@ next_75:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_69
 	j next_69
@@ -9006,6 +9081,9 @@ ifTrue_40:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# gv5 @
 
@@ -9239,6 +9317,9 @@ whileBody_36:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load ii$13 gv5
 

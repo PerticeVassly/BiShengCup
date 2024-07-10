@@ -211,18 +211,19 @@ dfsEntry:
 	li t4, 1368
 	add t4, sp, t4
 	sd a2, 0(t4)
-
-	# get address of local var:3
+	li t4, 1416
+	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1360
 	add t4, sp, t4
-	sd a3, 0(t4)
+	sd t3, 0(t4)
 	li t4, 1408
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1352
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1408
+	li t4, 1400
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1344
@@ -1218,6 +1219,9 @@ ifTrue_3:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:equal
 	sd a0, 856(sp)
 
@@ -1336,7 +1340,8 @@ ifTrue_3:
 	li t4, 808
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 800
@@ -1360,6 +1365,9 @@ ifTrue_3:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 24
 
 	# get address of local var:dfs
 	sd a0, 792(sp)
@@ -1524,6 +1532,9 @@ ifTrue_4:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:equal$1
 	sd a0, 720(sp)
 
@@ -1654,7 +1665,8 @@ ifTrue_4:
 	li t4, 664
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 656
@@ -1678,6 +1690,9 @@ ifTrue_4:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 24
 
 	# get address of local var:dfs$1
 	sd a0, 648(sp)
@@ -1842,6 +1857,9 @@ ifTrue_5:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:equal$2
 	sd a0, 576(sp)
 
@@ -1972,7 +1990,8 @@ ifTrue_5:
 	li t4, 520
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 512
@@ -1996,6 +2015,9 @@ ifTrue_5:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 24
 
 	# get address of local var:dfs$2
 	sd a0, 504(sp)
@@ -2160,6 +2182,9 @@ ifTrue_6:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:equal$3
 	sd a0, 432(sp)
 
@@ -2290,7 +2315,8 @@ ifTrue_6:
 	li t4, 376
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 368
@@ -2314,6 +2340,9 @@ ifTrue_6:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 24
 
 	# get address of local var:dfs$3
 	sd a0, 360(sp)
@@ -2555,7 +2584,8 @@ ifTrue_7:
 	li t4, 264
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 248
@@ -2579,6 +2609,9 @@ ifTrue_7:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 24
 
 	# get address of local var:dfs$4
 	sd a0, 240(sp)
@@ -3171,6 +3204,9 @@ mainEntry1:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint
 	sd a0, 648(sp)
@@ -4284,6 +4320,9 @@ whileBody_6:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$1
 	sd a0, 200(sp)
 
@@ -4676,7 +4715,8 @@ next_14:
 	li t4, 40
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 24
@@ -4700,6 +4740,9 @@ next_14:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 24
 
 	# get address of local var:dfs
 	sd a0, 16(sp)
@@ -4752,6 +4795,9 @@ next_14:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load ans$1 lv$7
 

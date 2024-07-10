@@ -1157,6 +1157,9 @@ whileBody_150:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -1173,6 +1176,9 @@ whileBody_150:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load long_name20$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$7 lv
 

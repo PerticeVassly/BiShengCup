@@ -264,6 +264,9 @@ whileBody_149:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:inc_a
 	sd a0, 224(sp)
 
@@ -321,6 +324,9 @@ next_314:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -337,6 +343,9 @@ next_314:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load b$2 gv1
 
@@ -368,6 +377,9 @@ next_314:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -384,6 +396,9 @@ next_314:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a$3 gv
 
@@ -438,6 +453,9 @@ ifTrue_165:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -454,6 +472,9 @@ ifTrue_165:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load b gv1
 
@@ -485,6 +506,9 @@ ifTrue_165:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -502,6 +526,9 @@ ifTrue_165:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_315
 	j next_315
 next_315:
@@ -518,6 +545,9 @@ next_315:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:inc_a$3
 	sd a0, 168(sp)
@@ -582,6 +612,9 @@ secondCond_82:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:inc_a$2
 	sd a0, 136(sp)
 
@@ -621,6 +654,9 @@ secondCond_83:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:inc_a$1
 	sd a0, 120(sp)
@@ -679,6 +715,9 @@ ifTrue_166:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -695,6 +734,9 @@ ifTrue_166:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load b$1 gv1
 
@@ -750,6 +792,9 @@ ifFalse_52:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:inc_a$7
 	sd a0, 80(sp)
@@ -817,6 +862,9 @@ secondCond_84:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:inc_a$4
 	sd a0, 56(sp)
 
@@ -857,6 +905,9 @@ secondCond_85:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:inc_a$5
 	sd a0, 40(sp)
 
@@ -872,6 +923,9 @@ secondCond_85:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:inc_a$6
 	sd a0, 32(sp)

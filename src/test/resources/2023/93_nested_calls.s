@@ -297,6 +297,9 @@ ifFalse_39:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func1
 	sd a0, 0(sp)
 
@@ -482,6 +485,9 @@ ifTrue_148:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func2
 	sd a0, 8(sp)
@@ -760,6 +766,9 @@ ifFalse_41:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func3
 	sd a0, 0(sp)
@@ -1430,6 +1439,9 @@ mainEntry71:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 768(sp)
 
@@ -1462,6 +1474,9 @@ mainEntry71:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$1
 	sd a0, 760(sp)
@@ -1496,6 +1511,9 @@ mainEntry71:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$2
 	sd a0, 752(sp)
 
@@ -1528,6 +1546,9 @@ mainEntry71:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$3
 	sd a0, 744(sp)
@@ -1673,6 +1694,9 @@ whileBody_132:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$4
 	sd a0, 688(sp)
 
@@ -1771,6 +1795,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func7
 	sd a0, 656(sp)
 
@@ -1806,6 +1833,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func5
 	sd a0, 640(sp)
 
@@ -1833,6 +1863,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func6
 	sd a0, 632(sp)
@@ -1875,6 +1908,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func2
 	sd a0, 616(sp)
 
@@ -1916,6 +1952,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func3
 	sd a0, 600(sp)
 
@@ -1937,6 +1976,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func5$1
 	sd a0, 592(sp)
@@ -2020,6 +2062,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func5$2
 	sd a0, 552(sp)
 
@@ -2102,6 +2147,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func7$1
 	sd a0, 512(sp)
 
@@ -2129,6 +2177,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func6$1
 	sd a0, 504(sp)
@@ -2212,6 +2263,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func7$2
 	sd a0, 464(sp)
 
@@ -2239,6 +2293,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func2$1
 	sd a0, 456(sp)
@@ -2273,6 +2330,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func4
 	sd a0, 448(sp)
@@ -2332,6 +2392,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func3$1
 	sd a0, 424(sp)
 
@@ -2389,6 +2452,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func2$2
 	sd a0, 400(sp)
@@ -2472,6 +2538,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func7$3
 	sd a0, 360(sp)
 
@@ -2499,6 +2568,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func3$2
 	sd a0, 352(sp)
@@ -2547,6 +2619,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func1
 	sd a0, 336(sp)
 
@@ -2580,6 +2655,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func4$1
 	sd a0, 328(sp)
@@ -2629,6 +2707,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func7$4
 	sd a0, 304(sp)
 
@@ -2670,6 +2751,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func3$3
 	sd a0, 288(sp)
 
@@ -2698,6 +2782,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func2$3
 	sd a0, 280(sp)
 
@@ -2725,6 +2812,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func3$4
 	sd a0, 272(sp)
@@ -2820,6 +2910,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func1$1
 	sd a0, 232(sp)
 
@@ -2877,6 +2970,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func2$4
 	sd a0, 208(sp)
@@ -2990,6 +3086,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func5$3
 	sd a0, 152(sp)
 
@@ -3017,6 +3116,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func3$5
 	sd a0, 144(sp)
@@ -3070,6 +3172,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func5$4
 	sd a0, 120(sp)
 
@@ -3097,6 +3202,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func2$5
 	sd a0, 112(sp)
@@ -3180,6 +3288,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func7$5
 	sd a0, 72(sp)
 
@@ -3213,6 +3324,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func1$2
 	sd a0, 64(sp)
@@ -3266,6 +3380,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func5$5
 	sd a0, 40(sp)
 
@@ -3293,6 +3410,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func2$6
 	sd a0, 32(sp)
@@ -3335,6 +3455,9 @@ next_285:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func3$6
 	sd a0, 16(sp)
 
@@ -3368,6 +3491,9 @@ next_285:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func1$3
 	sd a0, 8(sp)

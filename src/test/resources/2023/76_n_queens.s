@@ -237,6 +237,9 @@ whileBody_179:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$2 lv
 
 	# get address of lv points to
@@ -337,6 +340,9 @@ ifTrue_186:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# ret void
 	li t4, 152
 	add sp, sp, t4
@@ -362,6 +368,9 @@ ifFalse_62:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_366
 	j next_366
@@ -1125,6 +1134,9 @@ ifTrue_188:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_369
 	j next_369
 next_369:
@@ -1387,6 +1399,9 @@ next_369:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$8 lv$1
 
 	# get address of lv$1 points to
@@ -1634,6 +1649,9 @@ mainEntry91:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 64(sp)
 
@@ -1732,6 +1750,9 @@ whileBody_181:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$1
 	sd a0, 24(sp)
 
@@ -1766,6 +1787,9 @@ whileBody_181:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load N$1 lv
 

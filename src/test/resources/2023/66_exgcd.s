@@ -26,9 +26,12 @@ exgcdEntry:
 
 	# get address of local var:2
 	sd a2, 392(sp)
-
-	# get address of local var:3
-	sd a3, 384(sp)
+	li t4, 424
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 384
+	add t4, sp, t4
+	sd t3, 0(t4)
 
 	# allocate lv$5
 	li t0, 368
@@ -422,7 +425,8 @@ ifFalse_19:
 	li t4, 168
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -433,6 +437,9 @@ ifFalse_19:
 
 	# restore caller saved regs
 	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# release params
 	addi sp, sp, 8
 
 	# get address of local var:exgcd
@@ -1019,7 +1026,8 @@ mainEntry39:
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1030,6 +1038,9 @@ mainEntry39:
 
 	# restore caller saved regs
 	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# release params
 	addi sp, sp, 8
 
 	# get address of local var:exgcd
@@ -1228,6 +1239,9 @@ mainEntry39:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 

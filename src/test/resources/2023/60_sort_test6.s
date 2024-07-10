@@ -1999,6 +1999,9 @@ mainEntry13:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:counting_sort
 	sd a0, 96(sp)
 
@@ -2190,6 +2193,9 @@ whileBody_24:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# lv$3 
 
 	# fetch variables
@@ -2236,6 +2242,9 @@ whileBody_24:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load i$2 lv$1
 

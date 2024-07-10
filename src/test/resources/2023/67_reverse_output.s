@@ -127,6 +127,9 @@ ifTrue_121:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 40(sp)
 
@@ -179,6 +182,9 @@ ifTrue_121:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_226
 	j next_226
 ifFalse_31:
@@ -195,6 +201,9 @@ ifFalse_31:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$1
 	sd a0, 24(sp)
@@ -260,6 +269,9 @@ ifFalse_31:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load next$1 lv$1
 
 	# get address of lv$1 points to
@@ -291,6 +303,9 @@ ifFalse_31:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_226
 	j next_226
@@ -367,6 +382,9 @@ mainEntry55:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 

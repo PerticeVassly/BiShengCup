@@ -1284,6 +1284,9 @@ mainEntry21:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:bubblesort
 	sd a0, 96(sp)
 
@@ -1475,6 +1478,9 @@ whileBody_60:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# lv$2 
 
 	# fetch variables
@@ -1521,6 +1527,9 @@ whileBody_60:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load i$2 lv$1
 

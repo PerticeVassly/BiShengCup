@@ -1236,6 +1236,9 @@ ifFalse_49:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:swap
 	sd a0, 32(sp)
 
@@ -1668,6 +1671,9 @@ whileBody_136:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:heap_ajust
 	sd a0, 160(sp)
 
@@ -1926,6 +1932,9 @@ whileBody_137:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:swap
 	sd a0, 64(sp)
 
@@ -2057,6 +2066,9 @@ whileBody_137:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:heap_ajust$1
 	sd a0, 16(sp)
@@ -2568,6 +2580,9 @@ mainEntry74:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:heap_sort
 	sd a0, 96(sp)
 
@@ -2759,6 +2774,9 @@ whileBody_138:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# lv$2 
 
 	# fetch variables
@@ -2805,6 +2823,9 @@ whileBody_138:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load i$2 lv$1
 

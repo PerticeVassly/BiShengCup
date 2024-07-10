@@ -327,6 +327,9 @@ f1Entry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:g1
 	sd a0, 32(sp)
 
@@ -380,6 +383,9 @@ f1Entry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:g1$1
 	sd a0, 8(sp)
@@ -443,6 +449,9 @@ mainEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:f1
 	sd a0, 8(sp)
 
@@ -468,6 +477,9 @@ mainEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:g1
 	sd a0, 0(sp)

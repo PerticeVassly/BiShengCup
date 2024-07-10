@@ -883,6 +883,9 @@ KMPEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# lv$3 
 
 	# fetch variables
@@ -1775,6 +1778,9 @@ whileBody_86:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getch
 	sd a0, 104(sp)
 
@@ -2105,6 +2111,9 @@ mainEntry42:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:read_str
 	sd a0, 40(sp)
 
@@ -2143,6 +2152,9 @@ mainEntry42:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:read_str$1
 	sd a0, 24(sp)
@@ -2206,6 +2218,9 @@ mainEntry42:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:KMP
 	sd a0, 0(sp)
 
@@ -2228,6 +2243,9 @@ mainEntry42:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -2244,6 +2262,9 @@ mainEntry42:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 

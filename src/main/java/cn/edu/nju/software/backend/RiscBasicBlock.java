@@ -87,25 +87,28 @@ public class RiscBasicBlock {
                         ((intAndPointerCount > RiscSpecifications.getArgRegs().length) ? (intAndPointerCount - RiscSpecifications.getArgRegs().length) : 0) +
                         ((floatTypeCount > RiscSpecifications.getFArgRegs().length) ? (floatTypeCount - RiscSpecifications.getFArgRegs().length) : 0)  +
                         (RiscSpecifications.getCallerSavedRegs().length)
-                    ) * 8  - 8;
+                    ) * 8 - RiscSpecifications.getCallerSavedRegs().length * 8;
 
         //获取所有intType和PointerType的参数个数
 
         //获取所有intType和PointerType的参数
         int fptr = 0;
         int ptr = 0;
+        int order = 0;
         for (int i = 0; i < functionType.getFParametersCount(); i++) {
 
             if (functionType.getFParameter(i) instanceof FloatType) {
                 if(fptr >= RiscSpecifications.getFArgRegs().length){
-                    fetchFromStack(functionType.getFParameter(i), i, preLen);
+                    fetchFromStack(functionType.getFParameter(i), i, preLen, order);
+                    order++;
                     continue;
                 }
                 generator.addInstruction(new RiscFsd(new Register(RiscSpecifications.getFArgRegs()[fptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i +""))));
                 fptr++;
             } else if (functionType.getFParameter(i) instanceof IntType || functionType.getFParameter(i) instanceof Pointer) {
                 if(ptr >= RiscSpecifications.getArgRegs().length){
-                    fetchFromStack(functionType.getFParameter(i), i, preLen);
+                    fetchFromStack(functionType.getFParameter(i), i, preLen, order);
+                    order++;
                     continue;
                 }
                 generator.addInstruction(new RiscSd(new Register(RiscSpecifications.getArgRegs()[ptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i +""))));
@@ -116,14 +119,14 @@ public class RiscBasicBlock {
         }
     }
 
-    private void fetchFromStack(TypeRef type, int i, int preLen) {
+    private void fetchFromStack(TypeRef type, int i, int preLen, int order) {
         if (type instanceof IntType || type instanceof Pointer) {
-            allocator.mvAddrWithBigOffsetIntoReg(allocator.getStackSize() + preLen, "sp", "t4");
+            allocator.mvAddrWithBigOffsetIntoReg(allocator.getStackSize() + preLen - order * 8, "sp", "t4");
             generator.addInstruction(new RiscLd(new Register("t3"), new IndirectRegister("t4", 0)));
             allocator.mvAddrWithBigOffsetIntoReg(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4");
             generator.addInstruction(new RiscSd(new Register("t3"), new IndirectRegister("t4", 0)));
         } else if (type instanceof FloatType) {
-            allocator.mvAddrWithBigOffsetIntoReg(allocator.getStackSize() + preLen, "sp", "t4");
+            allocator.mvAddrWithBigOffsetIntoReg(allocator.getStackSize() + preLen - order * 8, "sp", "t4");
             generator.addInstruction(new RiscFld(new Register("ft3"), new IndirectRegister("t4", 0)));
             allocator.mvAddrWithBigOffsetIntoReg(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4");
             generator.addInstruction(new RiscFsd(new Register("ft3"), new IndirectRegister("t4", 0)));

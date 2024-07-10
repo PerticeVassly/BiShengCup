@@ -352,6 +352,9 @@ whileBody_133:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func
 	sd a0, 88(sp)
 
@@ -572,6 +575,9 @@ ifTrue_155:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_289
 	j next_289
 ifFalse_46:
@@ -592,6 +598,9 @@ ifFalse_46:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_289
 	j next_289

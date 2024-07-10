@@ -48,6 +48,9 @@ mainEntry5:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 320(sp)
 
@@ -78,6 +81,9 @@ mainEntry5:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$1
 	sd a0, 312(sp)
@@ -110,6 +116,9 @@ mainEntry5:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$2
 	sd a0, 304(sp)
 
@@ -141,6 +150,9 @@ mainEntry5:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$3
 	sd a0, 296(sp)
 
@@ -171,6 +183,9 @@ mainEntry5:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$4
 	sd a0, 288(sp)

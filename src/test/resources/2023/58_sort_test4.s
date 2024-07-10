@@ -1447,6 +1447,9 @@ mainEntry8:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:select_sort
 	sd a0, 96(sp)
 
@@ -1638,6 +1641,9 @@ whileBody_16:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# lv$2 
 
 	# fetch variables
@@ -1684,6 +1690,9 @@ whileBody_16:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load i$2 lv$1
 

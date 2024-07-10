@@ -5,7 +5,7 @@
 .type f, @function
 .globl f
 f:
-fEntry1:
+fEntry2:
 
 	# reserve space
 	li t4, 40
@@ -104,7 +104,7 @@ fEntry1:
 .type main, @function
 .globl main
 main:
-mainEntry14:
+mainEntry15:
 
 	# reserve space
 	li t4, 56
@@ -186,6 +186,9 @@ mainEntry14:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:f
 	sd a0, 16(sp)

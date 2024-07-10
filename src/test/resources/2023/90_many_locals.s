@@ -2364,6 +2364,9 @@ mainEntry27:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:foo
 	sd a0, 264(sp)
 
@@ -2543,6 +2546,9 @@ mainEntry27:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:foo$1
 	sd a0, 240(sp)
@@ -3153,6 +3159,9 @@ mainEntry27:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -3169,6 +3178,9 @@ mainEntry27:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 
