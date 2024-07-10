@@ -454,6 +454,19 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             for (int i = 0; i < dim; i++) {
                 indices[i] = visitExp(ctx.exp(i));
             }
+            if (lVal instanceof  GlobalVar && ((GlobalVar) lVal).isConst()) {
+                ArrayValue av = (ArrayValue) ((GlobalVar) lVal).getInitVal();
+                ValueRef res = null;
+                for (ValueRef vr : indices) {
+                    int index = (int) ((ConstValue)vr).getValue();
+                    if (av.getValue(index) instanceof ArrayValue) {
+                        av = (ArrayValue) av.getValue(index);
+                    } else {
+                        res = av.getValue(index);
+                    }
+                }
+                return res;
+            }
 //            System.err.println(dim);
             if (((Pointer)lVal.getType()).getBase() instanceof Pointer) {
                 lVal = gen.buildLoad(builder, lVal, "arr_");
@@ -930,9 +943,13 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             }
             if (global()) {
                 globalVar = gen.addGlobal(module, arrayType, "gv");
+                globalVar.setConst(true);
             } else {
                 localVar = gen.buildAllocate(builder, arrayType, "lv");
             }
+//            if (!global()) {
+//                localVar = gen.buildAllocate(builder, arrayType, "lv");
+//            }
         }
         // initialize
         if (global()) {
@@ -946,6 +963,8 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 curScope.put(new Symbol<>(ctx.IDENT().getText(), globalVar));
             }
         } else {
+            // local variable keeps old version
+            // difficult point: index may be variable TODO
             if (localVar != null && ((Pointer)(localVar.getType())).getBase() instanceof ArrayType) {
                 visitConstInitVal(ctx.constInitVal());
 
