@@ -1,19 +1,34 @@
 package cn.edu.nju.software.ir.generator;
 
 import cn.edu.nju.software.frontend.llvm.LLVMStack;
-import cn.edu.nju.software.frontend.parser.*;
-import cn.edu.nju.software.frontend.util.*;
+import cn.edu.nju.software.frontend.parser.SysYParser;
+import cn.edu.nju.software.frontend.parser.SysYParserBaseVisitor;
+import cn.edu.nju.software.frontend.util.Symbol;
+import cn.edu.nju.software.frontend.util.SymbolTable;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
-import cn.edu.nju.software.ir.type.*;
-import cn.edu.nju.software.ir.value.*;
+import cn.edu.nju.software.ir.type.ArrayType;
+import cn.edu.nju.software.ir.type.BoolType;
+import cn.edu.nju.software.ir.type.FloatType;
+import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.type.VoidType;
+import cn.edu.nju.software.ir.value.ArrayValue;
+import cn.edu.nju.software.ir.value.ConstValue;
+import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.ir.value.GlobalVar;
+import cn.edu.nju.software.ir.value.LocalVar;
+import cn.edu.nju.software.ir.value.ValueRef;
 
 import static cn.edu.nju.software.ir.instruction.Operator.*;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
@@ -52,7 +67,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     private final Stack<BasicBlockRef> loopStack = new Stack<>();
 
     private boolean functionDef;
-    private boolean haveReturn;
+    private final Stack<Boolean> mustHaveReturn = new Stack<>(){{push(true);}}; // figure out whether always returns in `if () else if () else`
     private SymbolTable<ValueRef> curScope;
 
     private boolean global() {
@@ -220,16 +235,22 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 curScope.put(new Symbol<>(fParam, pointer));
             }
         }
-        haveReturn = false;
+
+        // initialize
+        mustHaveReturn.push(false);
+
         ValueRef ret = visitBlock(ctx.block());
-        if (!haveReturn && retType instanceof VoidType) {
-            // void function and haven't return
+        if (!mustHaveReturn.pop() && retType instanceof VoidType) {
+//             void function and haven't return
             gen.buildReturnVoid(builder);
-            haveReturn = true;
         }
         functionDef = false;
         scope.pop();
         curScope = scope.peek();
+
+        /* eliminate dead blocks: */
+        function.clearDeadBlocks();
+
         return ret;
     }
     @Override
@@ -445,7 +466,8 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 //        System.err.println(ctx.getText());
         if (ctx.RETURN() != null) {
             // return stmt
-            haveReturn = true;
+            mustHaveReturn.pop();
+            mustHaveReturn.push(true);
             if (ctx.exp() != null) {
                 ValueRef retVal = visitExp(ctx.exp());
                 TypeRef retTy = ((FunctionType)currentFunction.getType()).getReturnType();
@@ -499,9 +521,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             }
             // while body part appends on whileBody block
             gen.positionBuilderAtEnd(builder, whileBody);
-            boolean t = haveReturn;
             ValueRef ret = visitStmt(ctx.whileStmt().stmt());
-            haveReturn = t;
             // while body ends, jmp whileCond
             gen.buildBranch(builder, whileCond);
             // while part finished, other irs append on next block
@@ -547,29 +567,37 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             }
             // the ifTrue block runs the ifStmt irs
             gen.positionBuilderAtEnd(builder, ifTrue);
+
             boolean ifHaveRet = false, elseHaveRet = false;
-            boolean t = haveReturn;
+            mustHaveReturn.push(false);
+
             ValueRef ret = visitStmt(ctx.ifStmt().stmt());
-            if (!haveReturn) {
+
+            ifHaveRet = mustHaveReturn.pop();
+            mustHaveReturn.pop();
+            mustHaveReturn.push(ifHaveRet);
+            if (!ifHaveRet) {
                 gen.buildBranch(builder, next);
             }
-            ifHaveRet = haveReturn;
-            haveReturn = t;
             // discuss the "else", exist or not
             if (ctx.ELSE() != null) {
                 gen.positionBuilderAtEnd(builder, ifFalse);
-//                t = haveReturn;
+                mustHaveReturn.push(false);
                 ret = visitStmt(ctx.elseStmt().stmt());
-                if (!haveReturn){
+                elseHaveRet = mustHaveReturn.pop();
+                if (!elseHaveRet){
                     gen.buildBranch(builder, next);
                 }
-                elseHaveRet = haveReturn;
-//                haveReturn = t;
             }
+
+            // update
+            mustHaveReturn.pop();
+            mustHaveReturn.push(ifHaveRet && elseHaveRet);
+
             if (!ifHaveRet || !elseHaveRet) {
                 gen.positionBuilderAtEnd(builder, next);
             } else {
-                gen.dropBlock(builder, next);
+                next.setReachable(false);
             }
             return ret;
         } else {

@@ -211,7 +211,6 @@ public class ModuleRef {
             for (int i = 0; i < fv.getBlockNum(); i++) {
                 // output each basic block
                 BasicBlockRef block = fv.getBasicBlockRef(i);
-                if (!block.isReachable()) continue; // dead code elimination
                 System.out.print(block.getName() + ":");
                 if (block.hasPred()) {
                     for (int k = 0; k < blockNameAreaLength - block.getName().length() + 40; k++) {

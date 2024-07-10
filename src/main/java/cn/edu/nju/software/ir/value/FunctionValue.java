@@ -11,6 +11,7 @@ import cn.edu.nju.software.ir.type.TypeRef;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FunctionValue extends ValueRef {
@@ -18,9 +19,8 @@ public class FunctionValue extends ValueRef {
     private int paramsNum;
     private final ArrayList<String> paramsUsedNames = new ArrayList<String>(){{add("");}};
     private final ArrayList<Integer> paramsUsedNamesFreq= new ArrayList<Integer>(){{add(0);}};
-    private final ArrayList<BasicBlockRef> blocks;
+    private final List<BasicBlockRef> blocks;
     private BasicBlockRef entryBlock;
-    private int blockNum;
 
     private final static ArrayList<String> funcDeclUsedNames = new ArrayList<>();
     private final static ArrayList<Integer> funcDeclUsedNamesFreq = new ArrayList<>();
@@ -44,22 +44,19 @@ public class FunctionValue extends ValueRef {
             paramsUsedNamesFreq.set(0, paramsUsedNamesFreq.get(0) + 1);
         }
         blocks = new ArrayList<>();
-        blockNum = 0;
     }
 
     public void appendBasicBlock(BasicBlockRef basicBlockRef) {
         blocks.add(basicBlockRef);
-        blockNum++;
     }
 
     public void appendEntryBasicBlock(BasicBlockRef basicBlockRef) {
         entryBlock = basicBlockRef;
         blocks.add(basicBlockRef);
-        blockNum++;
     }
 
     public int getBlockNum() {
-        return blockNum;
+        return blocks.size();
     }
 
     public BasicBlockRef getBlock(int index) {
@@ -93,7 +90,6 @@ public class FunctionValue extends ValueRef {
         }
         LocalVar localVar = new LocalVar(type, name);
         params.add(localVar);
-        paramsNum++;
         return localVar;
     }
 
@@ -117,7 +113,11 @@ public class FunctionValue extends ValueRef {
 
     public void dropBlock(BasicBlockRef basicBlockRef) {
         blocks.remove(basicBlockRef);
-        blockNum--;
+    }
+
+
+    public void clearDeadBlocks() {
+        blocks.removeIf(bb -> !bb.isReachable());
     }
 
     public void emitAlloc(Allocate inst) {
