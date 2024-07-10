@@ -9,26 +9,26 @@ gv:
 .globl QuickSort
 QuickSort:
 QuickSortEntry1:
+
+	# reserve space
 	li t4, 864
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 856(sp)
-	sd a1, 848(sp)
-	sd a2, 840(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 856(sp)
 
 	# get address of local var:1
+	sd a1, 848(sp)
 
 	# get address of local var:2
+	sd a2, 840(sp)
 
 	# allocate lv$6
 	li t0, 824
@@ -1766,10 +1766,10 @@ next_266:
 .globl main
 main:
 mainEntry66:
-	li t4, 344
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 344
+	sub sp, sp, t4
 
 	# save the parameters
 

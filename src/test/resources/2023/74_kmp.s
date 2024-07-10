@@ -6,23 +6,23 @@
 .globl get_next
 get_next:
 get_nextEntry:
+
+	# reserve space
 	li t4, 352
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 344(sp)
-	sd a1, 336(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 344(sp)
 
 	# get address of local var:1
+	sd a1, 336(sp)
 
 	# allocate lv$3
 	li t0, 320
@@ -731,27 +731,27 @@ secondCond_53:
 .globl KMP
 KMP:
 KMPEntry:
+
+	# reserve space
 	li t4, 33192
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 0(t4)
-	sd a1, 0(t4)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
 	li t4, 33184
 	add t4, sp, t4
+	sd a0, 0(t4)
 
 	# get address of local var:1
 	li t4, 33176
 	add t4, sp, t4
+	sd a1, 0(t4)
 
 	# allocate lv$4
 	li t0, 33160
@@ -1636,20 +1636,20 @@ next_176:
 .globl read_str
 read_str:
 read_strEntry:
+
+	# reserve space
 	li t4, 184
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 176(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 176(sp)
 
 	# allocate lv$1
 	li t0, 160
@@ -2044,10 +2044,10 @@ next_178:
 .globl main
 main:
 mainEntry42:
-	li t4, 65608
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 65608
+	sub sp, sp, t4
 
 	# save the parameters
 

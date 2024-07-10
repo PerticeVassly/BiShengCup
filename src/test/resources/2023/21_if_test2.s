@@ -6,15 +6,15 @@
 .globl ifElseIf
 ifElseIf:
 ifElseIfEntry:
+
+	# reserve space
 	li t4, 272
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -605,10 +605,10 @@ secondCond_79:
 .globl main
 main:
 mainEntry70:
-	li t4, 8
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 8
+	sub sp, sp, t4
 
 	# save the parameters
 

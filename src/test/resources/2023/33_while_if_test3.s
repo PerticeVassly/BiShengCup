@@ -6,23 +6,23 @@
 .globl deepWhileBr
 deepWhileBr:
 deepWhileBrEntry:
+
+	# reserve space
 	li t4, 280
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 272(sp)
-	sd a1, 264(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 272(sp)
 
 	# get address of local var:1
+	sd a1, 264(sp)
 
 	# allocate lv$4
 	li t0, 248
@@ -545,10 +545,10 @@ next_195:
 .globl main
 main:
 mainEntry49:
-	li t4, 40
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 40
+	sub sp, sp, t4
 
 	# save the parameters
 

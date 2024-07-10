@@ -13,11 +13,11 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry77:
-	li t4, 128
-	sub sp, sp, t4
+mainEntry76:
 
 	# reserve space
+	li t4, 128
+	sub sp, sp, t4
 
 	# save the parameters
 
@@ -65,9 +65,9 @@ mainEntry77:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_148
-	j whileCond_148
-whileCond_148:
+	# br whileCond_142
+	j whileCond_142
+whileCond_142:
 
 	# load i lv
 
@@ -119,15 +119,15 @@ whileCond_148:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_ whileBody_148 next_316
+	# condBr cond_ whileBody_142 next_306
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_316
-	j whileBody_148
-whileBody_148:
+	beqz t1, next_306
+	j whileBody_142
+whileBody_142:
 
 	# load sum lv$1
 
@@ -258,9 +258,9 @@ whileBody_148:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_148
-	j whileCond_148
-next_316:
+	# br whileCond_142
+	j whileCond_142
+next_306:
 
 	# load sum$1 lv$1
 

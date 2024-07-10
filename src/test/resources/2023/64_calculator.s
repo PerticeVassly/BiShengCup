@@ -33,20 +33,20 @@ gv8:
 .globl isdigit
 isdigit:
 isdigitEntry:
+
+	# reserve space
 	li t4, 88
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 80(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 80(sp)
 
 	# allocate lv
 	li t0, 64
@@ -223,23 +223,23 @@ secondCond_2:
 .globl power
 power:
 powerEntry:
+
+	# reserve space
 	li t4, 144
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 136(sp)
-	sd a1, 128(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 136(sp)
 
 	# get address of local var:1
+	sd a1, 128(sp)
 
 	# allocate lv$2
 	li t0, 112
@@ -510,20 +510,20 @@ next_43:
 .globl getstr
 getstr:
 getstrEntry:
+
+	# reserve space
 	li t4, 192
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 184(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 184(sp)
 
 	# allocate lv$2
 	li t0, 168
@@ -923,20 +923,20 @@ secondCond_3:
 .globl intpush
 intpush:
 intpushEntry:
+
+	# reserve space
 	li t4, 64
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 56(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 56(sp)
 
 	# allocate lv
 	li t0, 40
@@ -1069,20 +1069,20 @@ intpushEntry:
 .globl chapush
 chapush:
 chapushEntry:
+
+	# reserve space
 	li t4, 64
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 56(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 56(sp)
 
 	# allocate lv
 	li t0, 40
@@ -1215,15 +1215,15 @@ chapushEntry:
 .globl intpop
 intpop:
 intpopEntry:
+
+	# reserve space
 	li t4, 48
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -1335,15 +1335,15 @@ intpopEntry:
 .globl chapop
 chapop:
 chapopEntry:
+
+	# reserve space
 	li t4, 48
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -1455,20 +1455,20 @@ chapopEntry:
 .globl intadd
 intadd:
 intaddEntry:
+
+	# reserve space
 	li t4, 128
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 120(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 120(sp)
 
 	# allocate lv
 	li t0, 104
@@ -1716,15 +1716,15 @@ intaddEntry:
 .globl find
 find:
 findEntry:
+
+	# reserve space
 	li t4, 104
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -1995,10 +1995,10 @@ next_45:
 .globl main
 main:
 mainEntry16:
-	li t4, 3288
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 3288
+	sub sp, sp, t4
 
 	# save the parameters
 

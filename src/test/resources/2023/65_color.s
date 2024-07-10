@@ -15,23 +15,23 @@ gv2:
 .globl equal
 equal:
 equalEntry:
+
+	# reserve space
 	li t4, 88
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 80(sp)
-	sd a1, 72(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 80(sp)
 
 	# get address of local var:1
+	sd a1, 72(sp)
 
 	# allocate lv$1
 	li t0, 56
@@ -185,49 +185,49 @@ next_:
 .globl dfs
 dfs:
 dfsEntry:
+
+	# reserve space
 	li t4, 1392
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 0(t4)
-	sd a1, 0(t4)
-	sd a2, 0(t4)
-	sd a3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
 	li t4, 1384
 	add t4, sp, t4
+	sd a0, 0(t4)
 
 	# get address of local var:1
 	li t4, 1376
 	add t4, sp, t4
+	sd a1, 0(t4)
 
 	# get address of local var:2
 	li t4, 1368
 	add t4, sp, t4
+	sd a2, 0(t4)
 
 	# get address of local var:3
 	li t4, 1360
 	add t4, sp, t4
-	li t4, 1416
+	sd a3, 0(t4)
+	li t4, 1408
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1352
 	add t4, sp, t4
-	li t4, 1416
+	sd t3, 0(t4)
+	li t4, 1408
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1344
 	add t4, sp, t4
+	sd t3, 0(t4)
 
 	# allocate lv$6
 	li t0, 1328
@@ -3096,10 +3096,10 @@ next_7:
 .globl main
 main:
 mainEntry1:
-	li t4, 784
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 784
+	sub sp, sp, t4
 
 	# save the parameters
 

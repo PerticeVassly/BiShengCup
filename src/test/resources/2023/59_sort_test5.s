@@ -9,26 +9,26 @@ gv:
 .globl swap
 swap:
 swapEntry:
+
+	# reserve space
 	li t4, 208
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 200(sp)
-	sd a1, 192(sp)
-	sd a2, 184(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 200(sp)
 
 	# get address of local var:1
+	sd a1, 192(sp)
 
 	# get address of local var:2
+	sd a2, 184(sp)
 
 	# allocate lv$3
 	li t0, 168
@@ -394,26 +394,26 @@ swapEntry:
 .globl heap_ajust
 heap_ajust:
 heap_ajustEntry:
+
+	# reserve space
 	li t4, 488
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 480(sp)
-	sd a1, 472(sp)
-	sd a2, 464(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 480(sp)
 
 	# get address of local var:1
+	sd a1, 472(sp)
 
 	# get address of local var:2
+	sd a2, 464(sp)
 
 	# allocate lv$4
 	li t0, 448
@@ -585,9 +585,9 @@ heap_ajustEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_141
-	j whileCond_141
-whileCond_141:
+	# br whileCond_135
+	j whileCond_135
+whileCond_135:
 
 	# load son lv$4
 
@@ -666,15 +666,15 @@ whileCond_141:
 	seqz t0, t0
 	sd t0, 304(sp)
 
-	# condBr cond_ whileBody_141 next_303
+	# condBr cond_ whileBody_135 next_293
 
 	# fetch variables
 	li t4, 304
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_303
-	j whileBody_141
-whileBody_141:
+	beqz t1, next_293
+	j whileBody_135
+whileBody_135:
 
 	# load son$1 lv$4
 
@@ -741,15 +741,15 @@ whileBody_141:
 	seqz t0, t0
 	sd t0, 264(sp)
 
-	# condBr cond_$1 secondCond_81 next_304
+	# condBr cond_$1 secondCond_81 next_294
 
 	# fetch variables
 	li t4, 264
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_304
+	beqz t1, next_294
 	j secondCond_81
-next_303:
+next_293:
 
 	# ret 
 
@@ -762,7 +762,7 @@ next_303:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_162:
+ifTrue_158:
 
 	# load son$4 lv$4
 
@@ -806,9 +806,9 @@ ifTrue_162:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_304
-	j next_304
-next_304:
+	# br next_294
+	j next_294
+next_294:
 
 	# load dad$1 lv$3
 
@@ -966,14 +966,14 @@ next_304:
 	seqz t0, t0
 	sd t0, 160(sp)
 
-	# condBr cond_$3 ifTrue_163 ifFalse_53
+	# condBr cond_$3 ifTrue_159 ifFalse_49
 
 	# fetch variables
 	li t4, 160
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_53
-	j ifTrue_163
+	beqz t1, ifFalse_49
+	j ifTrue_159
 secondCond_81:
 
 	# load son$2 lv$4
@@ -1143,15 +1143,15 @@ secondCond_81:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$2 ifTrue_162 next_304
+	# condBr cond_$2 ifTrue_158 next_294
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_304
-	j ifTrue_162
-ifTrue_163:
+	beqz t1, next_294
+	j ifTrue_158
+ifTrue_159:
 
 	# ret 
 
@@ -1164,7 +1164,7 @@ ifTrue_163:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_53:
+ifFalse_49:
 
 	# load arr$8 lv
 
@@ -1340,33 +1340,33 @@ ifFalse_53:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_305
-	j next_305
-next_305:
+	# br next_295
+	j next_295
+next_295:
 
-	# br whileCond_141
-	j whileCond_141
+	# br whileCond_135
+	j whileCond_135
 .type heap_sort, @function
 .globl heap_sort
 heap_sort:
 heap_sortEntry:
+
+	# reserve space
 	li t4, 360
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 352(sp)
-	sd a1, 344(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 352(sp)
 
 	# get address of local var:1
+	sd a1, 344(sp)
 
 	# allocate lv$4
 	li t0, 328
@@ -1491,9 +1491,9 @@ heap_sortEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_142
-	j whileCond_142
-whileCond_142:
+	# br whileCond_136
+	j whileCond_136
+whileCond_136:
 
 	# load i lv$2
 
@@ -1546,15 +1546,15 @@ whileCond_142:
 	seqz t0, t0
 	sd t0, 208(sp)
 
-	# condBr cond_ whileBody_142 next_306
+	# condBr cond_ whileBody_136 next_296
 
 	# fetch variables
 	li t4, 208
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_306
-	j whileBody_142
-whileBody_142:
+	beqz t1, next_296
+	j whileBody_136
+whileBody_136:
 
 	# load len$1 lv$1
 
@@ -1730,9 +1730,9 @@ whileBody_142:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_142
-	j whileCond_142
-next_306:
+	# br whileCond_136
+	j whileCond_136
+next_296:
 
 	# load len$2 lv$1
 
@@ -1776,9 +1776,9 @@ next_306:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_143
-	j whileCond_143
-whileCond_143:
+	# br whileCond_137
+	j whileCond_137
+whileCond_137:
 
 	# load i$3 lv$2
 
@@ -1831,15 +1831,15 @@ whileCond_143:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_$1 whileBody_143 next_307
+	# condBr cond_$1 whileBody_137 next_297
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_307
-	j whileBody_143
-whileBody_143:
+	beqz t1, next_297
+	j whileBody_137
+whileBody_137:
 
 	# lv$4 
 
@@ -2120,9 +2120,9 @@ whileBody_143:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_143
-	j whileCond_143
-next_307:
+	# br whileCond_137
+	j whileCond_137
+next_297:
 
 	# ret 
 
@@ -2138,11 +2138,11 @@ next_307:
 .type main, @function
 .globl main
 main:
-mainEntry75:
-	li t4, 320
-	sub sp, sp, t4
+mainEntry74:
 
 	# reserve space
+	li t4, 320
+	sub sp, sp, t4
 
 	# save the parameters
 
@@ -2588,9 +2588,9 @@ mainEntry75:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_144
-	j whileCond_144
-whileCond_144:
+	# br whileCond_138
+	j whileCond_138
+whileCond_138:
 
 	# load i lv$1
 
@@ -2655,15 +2655,15 @@ whileCond_144:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ whileBody_144 next_308
+	# condBr cond_ whileBody_138 next_298
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_308
-	j whileBody_144
-whileBody_144:
+	beqz t1, next_298
+	j whileBody_138
+whileBody_138:
 
 	# load i$1 lv$1
 
@@ -2848,9 +2848,9 @@ whileBody_144:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_144
-	j whileCond_144
-next_308:
+	# br whileCond_138
+	j whileCond_138
+next_298:
 
 	# ret 
 

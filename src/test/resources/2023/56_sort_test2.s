@@ -9,20 +9,20 @@ gv:
 .globl insertsort
 insertsort:
 insertsortEntry1:
+
+	# reserve space
 	li t4, 392
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 384(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 384(sp)
 
 	# allocate lv$3
 	li t0, 368
@@ -789,10 +789,10 @@ secondCond_68:
 .globl main
 main:
 mainEntry56:
-	li t4, 312
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 312
+	sub sp, sp, t4
 
 	# save the parameters
 

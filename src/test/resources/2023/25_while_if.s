@@ -6,20 +6,20 @@
 .globl get_one
 get_one:
 get_oneEntry:
+
+	# reserve space
 	li t4, 24
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 16(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 16(sp)
 
 	# allocate lv
 	li t0, 0
@@ -60,23 +60,23 @@ get_oneEntry:
 .globl deepWhileBr
 deepWhileBr:
 deepWhileBrEntry1:
+
+	# reserve space
 	li t4, 312
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 304(sp)
-	sd a1, 296(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 304(sp)
 
 	# get address of local var:1
+	sd a1, 296(sp)
 
 	# allocate lv$4
 	li t0, 280
@@ -659,10 +659,10 @@ next_255:
 .globl main
 main:
 mainEntry63:
-	li t4, 48
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 48
+	sub sp, sp, t4
 
 	# save the parameters
 

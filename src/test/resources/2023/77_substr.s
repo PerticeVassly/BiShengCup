@@ -6,23 +6,23 @@
 .globl MAX
 MAX:
 MAXEntry:
+
+	# reserve space
 	li t4, 152
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 144(sp)
-	sd a1, 136(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 144(sp)
 
 	# get address of local var:1
+	sd a1, 136(sp)
 
 	# allocate lv$1
 	li t0, 120
@@ -310,23 +310,23 @@ ifFalse_28:
 .globl max_sum_nonadjacent
 max_sum_nonadjacent:
 max_sum_nonadjacentEntry:
+
+	# reserve space
 	li t4, 640
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 632(sp)
-	sd a1, 624(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 632(sp)
 
 	# get address of local var:1
+	sd a1, 624(sp)
 
 	# allocate lv$3
 	li t0, 608
@@ -1604,37 +1604,37 @@ next_221:
 .globl longest_common_subseq
 longest_common_subseq:
 longest_common_subseqEntry:
+
+	# reserve space
 	li t4, 6768
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 0(t4)
-	sd a1, 0(t4)
-	sd a2, 0(t4)
-	sd a3, 0(t4)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
 	li t4, 6760
 	add t4, sp, t4
+	sd a0, 0(t4)
 
 	# get address of local var:1
 	li t4, 6752
 	add t4, sp, t4
+	sd a1, 0(t4)
 
 	# get address of local var:2
 	li t4, 6744
 	add t4, sp, t4
+	sd a2, 0(t4)
 
 	# get address of local var:3
 	li t4, 6736
 	add t4, sp, t4
+	sd a3, 0(t4)
 
 	# allocate lv$6
 	li t0, 6720
@@ -16264,10 +16264,10 @@ next_224:
 .globl main
 main:
 mainEntry53:
-	li t4, 536
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 536
+	sub sp, sp, t4
 
 	# save the parameters
 

@@ -21,26 +21,26 @@ gv4:
 .globl my_memset
 my_memset:
 my_memsetEntry:
+
+	# reserve space
 	li t4, 176
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 168(sp)
-	sd a1, 160(sp)
-	sd a2, 152(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 168(sp)
 
 	# get address of local var:1
+	sd a1, 160(sp)
 
 	# get address of local var:2
+	sd a2, 152(sp)
 
 	# allocate lv$3
 	li t0, 136
@@ -136,9 +136,9 @@ my_memsetEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_188
-	j whileCond_188
-whileCond_188:
+	# br whileCond_182
+	j whileCond_182
+whileCond_182:
 
 	# load i lv$3
 
@@ -205,15 +205,15 @@ whileCond_188:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ whileBody_188 next_381
+	# condBr cond_ whileBody_182 next_371
 
 	# fetch variables
 	li t4, 48
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_381
-	j whileBody_188
-whileBody_188:
+	beqz t1, next_371
+	j whileBody_182
+whileBody_182:
 
 	# load i$1 lv$3
 
@@ -332,9 +332,9 @@ whileBody_188:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_188
-	j whileCond_188
-next_381:
+	# br whileCond_182
+	j whileCond_182
+next_371:
 
 	# ret void
 	li t4, 176
@@ -347,26 +347,26 @@ next_381:
 .globl add_node
 add_node:
 add_nodeEntry:
+
+	# reserve space
 	li t4, 528
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 520(sp)
-	sd a1, 512(sp)
-	sd a2, 504(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 520(sp)
 
 	# get address of local var:1
+	sd a1, 512(sp)
 
 	# get address of local var:2
+	sd a2, 504(sp)
 
 	# allocate lv$2
 	li t0, 488
@@ -1432,26 +1432,26 @@ add_nodeEntry:
 .globl dfs
 dfs:
 dfsEntry1:
+
+	# reserve space
 	li t4, 944
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 936(sp)
-	sd a1, 928(sp)
-	sd a2, 920(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 936(sp)
 
 	# get address of local var:1
+	sd a1, 928(sp)
 
 	# get address of local var:2
+	sd a2, 920(sp)
 
 	# allocate lv$5
 	li t0, 904
@@ -1612,15 +1612,15 @@ dfsEntry1:
 	seqz t0, t0
 	sd t0, 784(sp)
 
-	# condBr cond_ ifTrue_193 next_382
+	# condBr cond_ ifTrue_189 next_372
 
 	# fetch variables
 	li t4, 784
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_382
-	j ifTrue_193
-ifTrue_193:
+	beqz t1, next_372
+	j ifTrue_189
+ifTrue_189:
 
 	# load f lv$2
 
@@ -1648,7 +1648,7 @@ ifTrue_193:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_382:
+next_372:
 
 	# load s$1 lv
 
@@ -1710,9 +1710,9 @@ next_382:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_189
-	j whileCond_189
-whileCond_189:
+	# br whileCond_183
+	j whileCond_183
+whileCond_183:
 
 	# load i lv$3
 
@@ -1809,15 +1809,15 @@ whileCond_189:
 	seqz t0, t0
 	sd t0, 704(sp)
 
-	# condBr cond_$1 whileBody_189 next_383
+	# condBr cond_$1 whileBody_183 next_373
 
 	# fetch variables
 	li t4, 704
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_383
-	j whileBody_189
-whileBody_189:
+	beqz t1, next_373
+	j whileBody_183
+whileBody_183:
 
 	# load s$3 lv
 
@@ -1938,15 +1938,15 @@ whileBody_189:
 	seqz t0, t0
 	sd t0, 640(sp)
 
-	# condBr cond_normalize_ ifTrue_194 next_384
+	# condBr cond_normalize_ ifTrue_190 next_374
 
 	# fetch variables
 	li t4, 640
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_384
-	j ifTrue_194
-next_383:
+	beqz t1, next_374
+	j ifTrue_190
+next_373:
 
 	# ret 
 
@@ -1959,7 +1959,7 @@ next_383:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_194:
+ifTrue_190:
 
 	# load i$2 lv$3
 
@@ -2003,12 +2003,12 @@ ifTrue_194:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_189
-	j whileCond_189
+	# br whileCond_183
+	j whileCond_183
 
-	# br next_384
-	j next_384
-next_384:
+	# br next_374
+	j next_374
+next_374:
 
 	# load s$4 lv
 
@@ -2124,15 +2124,15 @@ next_384:
 	seqz t0, t0
 	sd t0, 560(sp)
 
-	# condBr cond_$2 ifTrue_195 next_385
+	# condBr cond_$2 ifTrue_191 next_375
 
 	# fetch variables
 	li t4, 560
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_385
-	j ifTrue_195
-ifTrue_195:
+	beqz t1, next_375
+	j ifTrue_191
+ifTrue_191:
 
 	# load i$4 lv$3
 
@@ -2176,12 +2176,12 @@ ifTrue_195:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_189
-	j whileCond_189
+	# br whileCond_183
+	j whileCond_183
 
-	# br next_385
-	j next_385
-next_385:
+	# br next_375
+	j next_375
+next_375:
 
 	# load f$1 lv$2
 
@@ -2310,15 +2310,15 @@ next_385:
 	seqz t0, t0
 	sd t0, 472(sp)
 
-	# condBr cond_$3 ifTrue_196 ifFalse_67
+	# condBr cond_$3 ifTrue_192 ifFalse_63
 
 	# fetch variables
 	li t4, 472
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_67
-	j ifTrue_196
-ifTrue_196:
+	beqz t1, ifFalse_63
+	j ifTrue_192
+ifTrue_192:
 
 	# load f$2 lv$2
 
@@ -2350,9 +2350,9 @@ ifTrue_196:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_386
-	j next_386
-ifFalse_67:
+	# br next_376
+	j next_376
+ifFalse_63:
 
 	# load s$6 lv
 
@@ -2446,9 +2446,9 @@ ifFalse_67:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_386
-	j next_386
-next_386:
+	# br next_376
+	j next_376
+next_376:
 
 	# load s$7 lv
 
@@ -2653,15 +2653,15 @@ next_386:
 	seqz t0, t0
 	sd t0, 328(sp)
 
-	# condBr cond_$4 ifTrue_197 next_387
+	# condBr cond_$4 ifTrue_193 next_377
 
 	# fetch variables
 	li t4, 328
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_387
-	j ifTrue_197
-ifTrue_197:
+	beqz t1, next_377
+	j ifTrue_193
+ifTrue_193:
 
 	# load s$8 lv
 
@@ -3299,7 +3299,7 @@ ifTrue_197:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_387:
+next_377:
 
 	# load i$14 lv$3
 
@@ -3343,29 +3343,29 @@ next_387:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_189
-	j whileCond_189
+	# br whileCond_183
+	j whileCond_183
 .type max_flow, @function
 .globl max_flow
 max_flow:
 max_flowEntry:
+
+	# reserve space
 	li t4, 184
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 176(sp)
-	sd a1, 168(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 176(sp)
 
 	# get address of local var:1
+	sd a1, 168(sp)
 
 	# allocate lv$3
 	li t0, 152
@@ -3444,9 +3444,9 @@ max_flowEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_190
-	j whileCond_190
-whileCond_190:
+	# br whileCond_184
+	j whileCond_184
+whileCond_184:
 
 	# cmp   cond_normalize_
 
@@ -3460,9 +3460,9 @@ whileCond_190:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# br whileBody_190
-	j whileBody_190
-whileBody_190:
+	# br whileBody_184
+	j whileBody_184
+whileBody_184:
 
 	# gep used 
 
@@ -3632,33 +3632,33 @@ whileBody_190:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_ ifTrue_198 next_389
+	# condBr cond_ ifTrue_194 next_379
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_389
-	j ifTrue_198
-next_388:
+	beqz t1, next_379
+	j ifTrue_194
+next_378:
+
+	# reserve space
 	li t4, 184
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 176(sp)
-	sd a1, 168(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 176(sp)
 
 	# get address of local var:1
-ifTrue_198:
+	sd a1, 168(sp)
+ifTrue_194:
 
 	# load flow lv$2
 
@@ -3686,7 +3686,7 @@ ifTrue_198:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_389:
+next_379:
 
 	# load flow$1 lv$2
 
@@ -3745,16 +3745,16 @@ next_389:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_190
-	j whileCond_190
+	# br whileCond_184
+	j whileCond_184
 .type main, @function
 .globl main
 main:
-mainEntry94:
-	li t4, 216
-	sub sp, sp, t4
+mainEntry93:
 
 	# reserve space
+	li t4, 216
+	sub sp, sp, t4
 
 	# save the parameters
 
@@ -3901,9 +3901,9 @@ mainEntry94:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# br whileCond_191
-	j whileCond_191
-whileCond_191:
+	# br whileCond_185
+	j whileCond_185
+whileCond_185:
 
 	# load E lv$1
 
@@ -3956,15 +3956,15 @@ whileCond_191:
 	seqz t0, t0
 	sd t0, 80(sp)
 
-	# condBr cond_ whileBody_191 next_390
+	# condBr cond_ whileBody_185 next_380
 
 	# fetch variables
 	li t4, 80
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_390
-	j whileBody_191
-whileBody_191:
+	beqz t1, next_380
+	j whileBody_185
+whileBody_185:
 
 	# prepare params
 
@@ -4177,9 +4177,9 @@ whileBody_191:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_191
-	j whileCond_191
-next_390:
+	# br whileCond_185
+	j whileCond_185
+next_380:
 
 	# load V lv
 

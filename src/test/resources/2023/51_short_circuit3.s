@@ -15,20 +15,20 @@ gv2:
 .globl set_a
 set_a:
 set_aEntry:
+
+	# reserve space
 	li t4, 40
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 32(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 32(sp)
 
 	# allocate lv
 	li t0, 16
@@ -110,20 +110,20 @@ set_aEntry:
 .globl set_b
 set_b:
 set_bEntry:
+
+	# reserve space
 	li t4, 40
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 32(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 32(sp)
 
 	# allocate lv
 	li t0, 16
@@ -205,20 +205,20 @@ set_bEntry:
 .globl set_d
 set_d:
 set_dEntry:
+
+	# reserve space
 	li t4, 40
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 32(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 32(sp)
 
 	# allocate lv
 	li t0, 16
@@ -300,10 +300,10 @@ set_dEntry:
 .globl main
 main:
 mainEntry50:
-	li t4, 984
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 984
+	sub sp, sp, t4
 
 	# save the parameters
 

@@ -6,15 +6,15 @@
 .globl ifWhile
 ifWhile:
 ifWhileEntry:
+
+	# reserve space
 	li t4, 200
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -113,23 +113,23 @@ ifWhileEntry:
 	seqz t0, t0
 	sd t0, 136(sp)
 
-	# condBr cond_ ifTrue_168 ifFalse_55
+	# condBr cond_ ifTrue_164 ifFalse_51
 
 	# fetch variables
 	li t4, 136
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_55
-	j ifTrue_168
-ifTrue_168:
+	beqz t1, ifFalse_51
+	j ifTrue_164
+ifTrue_164:
 
-	# br whileCond_153
-	j whileCond_153
-ifFalse_55:
+	# br whileCond_147
+	j whileCond_147
+ifFalse_51:
 
-	# br whileCond_154
-	j whileCond_154
-next_321:
+	# br whileCond_148
+	j whileCond_148
+next_311:
 
 	# load b$4 lv$1
 
@@ -157,7 +157,7 @@ next_321:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_153:
+whileCond_147:
 
 	# load b lv$1
 
@@ -210,15 +210,15 @@ whileCond_153:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_$1 whileBody_153 next_322
+	# condBr cond_$1 whileBody_147 next_312
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_322
-	j whileBody_153
-whileBody_153:
+	beqz t1, next_312
+	j whileBody_147
+whileBody_147:
 
 	# load b$1 lv$1
 
@@ -262,9 +262,9 @@ whileBody_153:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_153
-	j whileCond_153
-next_322:
+	# br whileCond_147
+	j whileCond_147
+next_312:
 
 	# load b$2 lv$1
 
@@ -308,9 +308,9 @@ next_322:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_321
-	j next_321
-whileCond_154:
+	# br next_311
+	j next_311
+whileCond_148:
 
 	# load a$1 lv
 
@@ -362,15 +362,15 @@ whileCond_154:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 whileBody_154 next_323
+	# condBr cond_$2 whileBody_148 next_313
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_323
-	j whileBody_154
-whileBody_154:
+	beqz t1, next_313
+	j whileBody_148
+whileBody_148:
 
 	# load b$3 lv$1
 
@@ -456,20 +456,20 @@ whileBody_154:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_154
-	j whileCond_154
-next_323:
+	# br whileCond_148
+	j whileCond_148
+next_313:
 
-	# br next_321
-	j next_321
+	# br next_311
+	j next_311
 .type main, @function
 .globl main
 main:
-mainEntry79:
-	li t4, 8
-	sub sp, sp, t4
+mainEntry78:
 
 	# reserve space
+	li t4, 8
+	sub sp, sp, t4
 
 	# save the parameters
 

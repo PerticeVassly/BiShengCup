@@ -15,59 +15,59 @@ gv2:
 .globl add
 add:
 addEntry:
+
+	# reserve space
 	li t4, 576
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 568(sp)
-	sd a1, 560(sp)
-	sd a2, 552(sp)
-	sd a3, 544(sp)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 568(sp)
 
 	# get address of local var:1
+	sd a1, 560(sp)
 
 	# get address of local var:2
+	sd a2, 552(sp)
 
 	# get address of local var:3
-	li t4, 624
+	sd a3, 544(sp)
+	li t4, 616
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 536
 	add t4, sp, t4
-	li t4, 624
+	sd t3, 0(t4)
+	li t4, 616
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 528
 	add t4, sp, t4
-	li t4, 624
+	sd t3, 0(t4)
+	li t4, 616
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 520
 	add t4, sp, t4
-	li t4, 624
+	sd t3, 0(t4)
+	li t4, 616
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 512
 	add t4, sp, t4
-	li t4, 624
+	sd t3, 0(t4)
+	li t4, 616
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 504
 	add t4, sp, t4
+	sd t3, 0(t4)
 
 	# allocate lv$9
 	li t0, 488
@@ -1021,10 +1021,10 @@ next_212:
 .globl main
 main:
 mainEntry51:
-	li t4, 984
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 984
+	sub sp, sp, t4
 
 	# save the parameters
 

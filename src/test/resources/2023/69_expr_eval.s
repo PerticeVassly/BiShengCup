@@ -18,15 +18,15 @@ gv3:
 .globl next_char
 next_char:
 next_charEntry:
+
+	# reserve space
 	li t4, 16
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -89,20 +89,20 @@ next_charEntry:
 .globl is_space
 is_space:
 is_spaceEntry:
+
+	# reserve space
 	li t4, 88
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 80(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 80(sp)
 
 	# allocate lv
 	li t0, 64
@@ -278,20 +278,20 @@ secondCond_69:
 .globl is_num
 is_num:
 is_numEntry:
+
+	# reserve space
 	li t4, 88
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 80(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 80(sp)
 
 	# allocate lv
 	li t0, 64
@@ -468,15 +468,15 @@ secondCond_70:
 .globl next_token
 next_token:
 next_tokenEntry:
+
+	# reserve space
 	li t4, 160
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -905,15 +905,15 @@ next_235:
 .globl panic
 panic:
 panicEntry:
+
+	# reserve space
 	li t4, 0
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -1051,20 +1051,20 @@ panicEntry:
 .globl get_op_prec
 get_op_prec:
 get_op_precEntry:
+
+	# reserve space
 	li t4, 184
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 176(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 176(sp)
 
 	# allocate lv
 	li t0, 160
@@ -1436,23 +1436,23 @@ secondCond_73:
 .globl stack_push
 stack_push:
 stack_pushEntry:
+
+	# reserve space
 	li t4, 144
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 136(sp)
-	sd a1, 128(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 136(sp)
 
 	# get address of local var:1
+	sd a1, 128(sp)
 
 	# allocate lv$1
 	li t0, 112
@@ -1720,20 +1720,20 @@ stack_pushEntry:
 .globl stack_pop
 stack_pop:
 stack_popEntry:
+
+	# reserve space
 	li t4, 144
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 136(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 136(sp)
 
 	# allocate lv$1
 	li t0, 120
@@ -2003,20 +2003,20 @@ stack_popEntry:
 .globl stack_peek
 stack_peek:
 stack_peekEntry:
+
+	# reserve space
 	li t4, 72
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 64(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 64(sp)
 
 	# allocate lv
 	li t0, 48
@@ -2147,20 +2147,20 @@ stack_peekEntry:
 .globl stack_size
 stack_size:
 stack_sizeEntry:
+
+	# reserve space
 	li t4, 48
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 40(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 40(sp)
 
 	# allocate lv
 	li t0, 24
@@ -2246,26 +2246,26 @@ stack_sizeEntry:
 .globl eval_op
 eval_op:
 eval_opEntry:
+
+	# reserve space
 	li t4, 352
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 344(sp)
-	sd a1, 336(sp)
-	sd a2, 328(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 344(sp)
 
 	# get address of local var:1
+	sd a1, 336(sp)
 
 	# get address of local var:2
+	sd a2, 328(sp)
 
 	# allocate lv$2
 	li t0, 312
@@ -2934,15 +2934,15 @@ next_242:
 .globl eval
 eval:
 evalEntry:
+
+	# reserve space
 	li t4, 8872
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -21840,10 +21840,10 @@ next_248:
 .globl main
 main:
 mainEntry58:
-	li t4, 80
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 80
+	sub sp, sp, t4
 
 	# save the parameters
 

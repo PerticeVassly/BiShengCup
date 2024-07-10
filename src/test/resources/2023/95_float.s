@@ -6,20 +6,20 @@
 .globl float_abs
 float_abs:
 float_absEntry:
+
+	# reserve space
 	li t4, 80
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	fsd fa0, 72(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	fsd fa0, 72(sp)
 
 	# allocate lv
 	li t0, 56
@@ -177,20 +177,20 @@ next_113:
 .globl circle_area
 circle_area:
 circle_areaEntry:
+
+	# reserve space
 	li t4, 128
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 120(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 120(sp)
 
 	# allocate lv
 	li t0, 104
@@ -399,23 +399,23 @@ circle_areaEntry:
 .globl float_eq
 float_eq:
 float_eqEntry:
+
+	# reserve space
 	li t4, 104
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	fsd fa0, 96(sp)
-	fsd fa1, 88(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	fsd fa0, 96(sp)
 
 	# get address of local var:1
+	fsd fa1, 88(sp)
 
 	# allocate lv$1
 	li t0, 72
@@ -604,15 +604,15 @@ ifFalse_9:
 .globl error
 error:
 errorEntry:
+
+	# reserve space
 	li t4, 0
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -729,15 +729,15 @@ errorEntry:
 .globl ok
 ok:
 okEntry:
+
+	# reserve space
 	li t4, 0
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -803,20 +803,20 @@ okEntry:
 .globl assert
 assert:
 assertEntry:
+
+	# reserve space
 	li t4, 64
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 56(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 56(sp)
 
 	# allocate lv
 	li t0, 40
@@ -963,20 +963,20 @@ next_115:
 .globl assert_not
 assert_not:
 assert_notEntry:
+
+	# reserve space
 	li t4, 40
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 32(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 32(sp)
 
 	# allocate lv
 	li t0, 16
@@ -1084,10 +1084,10 @@ next_116:
 .globl main
 main:
 mainEntry22:
-	li t4, 624
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 624
+	sub sp, sp, t4
 
 	# save the parameters
 

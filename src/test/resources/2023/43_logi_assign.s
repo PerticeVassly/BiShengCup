@@ -12,10 +12,10 @@ gv1:
 .globl main
 main:
 mainEntry54:
-	li t4, 112
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 112
+	sub sp, sp, t4
 
 	# save the parameters
 

@@ -9,20 +9,20 @@ gv:
 .globl bubblesort
 bubblesort:
 bubblesortEntry:
+
+	# reserve space
 	li t4, 448
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 440(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 440(sp)
 
 	# allocate lv$3
 	li t0, 424
@@ -887,20 +887,20 @@ next_80:
 .globl insertsort
 insertsort:
 insertsortEntry:
+
+	# reserve space
 	li t4, 392
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 384(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 384(sp)
 
 	# allocate lv$3
 	li t0, 368
@@ -1667,26 +1667,26 @@ secondCond_28:
 .globl QuickSort
 QuickSort:
 QuickSortEntry:
+
+	# reserve space
 	li t4, 864
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 856(sp)
-	sd a1, 848(sp)
-	sd a2, 840(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 856(sp)
 
 	# get address of local var:1
+	sd a1, 848(sp)
 
 	# get address of local var:2
+	sd a2, 840(sp)
 
 	# allocate lv$6
 	li t0, 824
@@ -3424,20 +3424,20 @@ next_88:
 .globl getMid
 getMid:
 getMidEntry:
+
+	# reserve space
 	li t4, 232
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 224(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 224(sp)
 
 	# allocate lv$1
 	li t0, 208
@@ -3865,22 +3865,22 @@ ifFalse_5:
 .globl getMost
 getMost:
 getMostEntry:
+
+	# reserve space
 	li t4, 8392
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 0(t4)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
 	li t4, 8384
 	add t4, sp, t4
+	sd a0, 0(t4)
 
 	# allocate lv$5
 	li t0, 8368
@@ -4691,20 +4691,20 @@ next_92:
 .globl revert
 revert:
 revertEntry:
+
+	# reserve space
 	li t4, 264
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 256(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 256(sp)
 
 	# allocate lv$3
 	li t0, 240
@@ -5233,23 +5233,23 @@ next_93:
 .globl arrCopy
 arrCopy:
 arrCopyEntry:
+
+	# reserve space
 	li t4, 176
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 168(sp)
-	sd a1, 160(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 168(sp)
 
 	# get address of local var:1
+	sd a1, 160(sp)
 
 	# allocate lv$2
 	li t0, 144
@@ -5579,23 +5579,23 @@ next_94:
 .globl calSum
 calSum:
 calSumEntry:
+
+	# reserve space
 	li t4, 304
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 296(sp)
-	sd a1, 288(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 296(sp)
 
 	# get address of local var:1
+	sd a1, 288(sp)
 
 	# allocate lv$3
 	li t0, 272
@@ -6203,23 +6203,23 @@ next_96:
 .globl avgPooling
 avgPooling:
 avgPoolingEntry:
+
+	# reserve space
 	li t4, 664
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 656(sp)
-	sd a1, 648(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 656(sp)
 
 	# get address of local var:1
+	sd a1, 648(sp)
 
 	# allocate lv$4
 	li t0, 632
@@ -7532,10 +7532,10 @@ next_100:
 .globl main
 main:
 mainEntry17:
-	li t4, 1696
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 1696
+	sub sp, sp, t4
 
 	# save the parameters
 

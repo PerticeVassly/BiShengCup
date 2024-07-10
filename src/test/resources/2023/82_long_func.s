@@ -24,15 +24,15 @@ gv:
 .globl long_func
 long_func:
 long_funcEntry:
+
+	# reserve space
 	li t4, 20656
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -54909,10 +54909,10 @@ next_415:
 .globl main
 main:
 mainEntry41:
-	li t4, 8
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 8
+	sub sp, sp, t4
 
 	# save the parameters
 

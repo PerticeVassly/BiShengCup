@@ -6,15 +6,15 @@
 .globl my_getint
 my_getint:
 my_getintEntry:
+
+	# reserve space
 	li t4, 256
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -583,20 +583,20 @@ secondCond_36:
 .globl my_putint
 my_putint:
 my_putintEntry:
+
+	# reserve space
 	li t4, 352
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 344(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 344(sp)
 
 	# allocate lv$2
 	li t0, 328
@@ -1076,10 +1076,10 @@ next_127:
 .globl main
 main:
 mainEntry23:
-	li t4, 104
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 104
+	sub sp, sp, t4
 
 	# save the parameters
 

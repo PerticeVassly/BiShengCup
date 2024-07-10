@@ -6,15 +6,15 @@
 .globl defn
 defn:
 defnEntry:
+
+	# reserve space
 	li t4, 0
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -32,11 +32,11 @@ defnEntry:
 .type main, @function
 .globl main
 main:
-mainEntry81:
-	li t4, 32
-	sub sp, sp, t4
+mainEntry80:
 
 	# reserve space
+	li t4, 32
+	sub sp, sp, t4
 
 	# save the parameters
 

@@ -9,10 +9,10 @@ gv:
 .globl main
 main:
 mainEntry32:
-	li t4, 272
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 272
+	sub sp, sp, t4
 
 	# save the parameters
 

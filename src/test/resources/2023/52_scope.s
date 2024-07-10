@@ -9,15 +9,15 @@ gv:
 .globl func
 func:
 funcEntry4:
+
+	# reserve space
 	li t4, 96
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -224,10 +224,10 @@ ifFalse_45:
 .globl main
 main:
 mainEntry72:
-	li t4, 160
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 160
+	sub sp, sp, t4
 
 	# save the parameters
 

@@ -9,20 +9,20 @@ gv:
 .globl bubblesort
 bubblesort:
 bubblesortEntry1:
+
+	# reserve space
 	li t4, 448
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 440(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 440(sp)
 
 	# allocate lv$3
 	li t0, 424
@@ -887,10 +887,10 @@ next_111:
 .globl main
 main:
 mainEntry21:
-	li t4, 312
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 312
+	sub sp, sp, t4
 
 	# save the parameters
 

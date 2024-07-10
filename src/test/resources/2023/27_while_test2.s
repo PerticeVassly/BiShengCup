@@ -6,15 +6,15 @@
 .globl FourWhile
 FourWhile:
 FourWhileEntry:
+
+	# reserve space
 	li t4, 360
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -784,10 +784,10 @@ next_26:
 .globl main
 main:
 mainEntry7:
-	li t4, 8
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 8
+	sub sp, sp, t4
 
 	# save the parameters
 

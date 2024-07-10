@@ -12,20 +12,20 @@ gv1:
 .globl init
 init:
 initEntry:
+
+	# reserve space
 	li t4, 136
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 128(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 128(sp)
 
 	# allocate lv$1
 	li t0, 112
@@ -295,20 +295,20 @@ next_157:
 .globl findfa
 findfa:
 findfaEntry:
+
+	# reserve space
 	li t4, 160
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 152(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 152(sp)
 
 	# allocate lv
 	li t0, 136
@@ -640,23 +640,23 @@ ifFalse_21:
 .globl mmerge
 mmerge:
 mmergeEntry:
+
+	# reserve space
 	li t4, 176
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 168(sp)
-	sd a1, 160(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 168(sp)
 
 	# get address of local var:1
+	sd a1, 160(sp)
 
 	# allocate lv$3
 	li t0, 144
@@ -976,10 +976,10 @@ next_159:
 .globl main
 main:
 mainEntry41:
-	li t4, 1224
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 1224
+	sub sp, sp, t4
 
 	# save the parameters
 

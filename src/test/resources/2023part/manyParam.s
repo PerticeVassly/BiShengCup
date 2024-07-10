@@ -41,7 +41,7 @@ fEntry:
 
 	# get address of local var:7
 	fsd fa3, 304(sp)
-	li t4, 384
+	li t4, 376
 	add t4, sp, t4
 	fld ft3, 0(t4)
 	li t4, 296
@@ -531,7 +531,7 @@ fEntry:
 .type main, @function
 .globl main
 main:
-mainEntry5:
+mainEntry:
 
 	# reserve space
 	li t4, 8

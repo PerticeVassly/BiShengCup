@@ -6,10 +6,10 @@
 .globl main
 main:
 mainEntry45:
-	li t4, 32
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 32
+	sub sp, sp, t4
 
 	# save the parameters
 

@@ -8,11 +8,11 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry87:
-	li t4, 0
-	sub sp, sp, t4
+mainEntry86:
 
 	# reserve space
+	li t4, 0
+	sub sp, sp, t4
 
 	# save the parameters
 

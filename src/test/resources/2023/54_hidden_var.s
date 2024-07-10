@@ -15,9 +15,10 @@ gv1:
 .globl main
 main:
 mainEntry18:
-	addi sp, sp, -1904
 
 	# reserve space
+	li t4, 1904
+	sub sp, sp, t4
 
 	# save the parameters
 

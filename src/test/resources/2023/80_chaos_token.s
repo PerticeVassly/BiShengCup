@@ -459,20 +459,20 @@ gv3:
 .globl putstr
 putstr:
 putstrEntry:
+
+	# reserve space
 	li t4, 136
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 128(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 128(sp)
 
 	# allocate lv$1
 	li t0, 112
@@ -759,10 +759,10 @@ next_185:
 .globl main
 main:
 mainEntry46:
-	li t4, 304
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 304
+	sub sp, sp, t4
 
 	# save the parameters
 

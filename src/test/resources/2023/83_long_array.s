@@ -6,22 +6,22 @@
 .globl long_array
 long_array:
 long_arrayEntry:
+
+	# reserve space
 	li t4, 241152
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 0(t4)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
 	li t4, 241144
 	add t4, sp, t4
+	sd a0, 0(t4)
 
 	# allocate lv$7
 	li t0, 241128
@@ -2503,10 +2503,10 @@ next_299:
 .globl main
 main:
 mainEntry73:
-	li t4, 8
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 8
+	sub sp, sp, t4
 
 	# save the parameters
 

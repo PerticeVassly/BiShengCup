@@ -6,15 +6,15 @@
 .globl doubleWhile
 doubleWhile:
 doubleWhileEntry:
+
+	# reserve space
 	li t4, 152
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -354,10 +354,10 @@ next_130:
 .globl main
 main:
 mainEntry25:
-	li t4, 8
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 8
+	sub sp, sp, t4
 
 	# save the parameters
 

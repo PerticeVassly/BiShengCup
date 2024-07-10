@@ -6,26 +6,26 @@
 .globl func1
 func1:
 func1Entry:
+
+	# reserve space
 	li t4, 168
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 160(sp)
-	sd a1, 152(sp)
-	sd a2, 144(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 160(sp)
 
 	# get address of local var:1
+	sd a1, 152(sp)
 
 	# get address of local var:2
+	sd a2, 144(sp)
 
 	# allocate lv$2
 	li t0, 128
@@ -317,23 +317,23 @@ ifFalse_39:
 .globl func2
 func2:
 func2Entry:
+
+	# reserve space
 	li t4, 104
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 96(sp)
-	sd a1, 88(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 96(sp)
 
 	# get address of local var:1
+	sd a1, 88(sp)
 
 	# allocate lv$1
 	li t0, 72
@@ -531,23 +531,23 @@ ifFalse_40:
 .globl func3
 func3:
 func3Entry:
+
+	# reserve space
 	li t4, 128
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 120(sp)
-	sd a1, 112(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 120(sp)
 
 	# get address of local var:1
+	sd a1, 112(sp)
 
 	# allocate lv$1
 	li t0, 96
@@ -781,26 +781,26 @@ ifFalse_41:
 .globl func4
 func4:
 func4Entry:
+
+	# reserve space
 	li t4, 104
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 96(sp)
-	sd a1, 88(sp)
-	sd a2, 80(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 96(sp)
 
 	# get address of local var:1
+	sd a1, 88(sp)
 
 	# get address of local var:2
+	sd a2, 80(sp)
 
 	# allocate lv$2
 	li t0, 64
@@ -969,20 +969,20 @@ ifFalse_42:
 .globl func5
 func5:
 func5Entry:
+
+	# reserve space
 	li t4, 40
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 32(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 32(sp)
 
 	# allocate lv
 	li t0, 16
@@ -1050,23 +1050,23 @@ func5Entry:
 .globl func6
 func6:
 func6Entry:
+
+	# reserve space
 	li t4, 80
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 72(sp)
-	sd a1, 64(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 72(sp)
 
 	# get address of local var:1
+	sd a1, 64(sp)
 
 	# allocate lv$1
 	li t0, 48
@@ -1218,20 +1218,20 @@ secondCond_80:
 .globl func7
 func7:
 func7Entry:
+
+	# reserve space
 	li t4, 64
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 56(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 56(sp)
 
 	# allocate lv
 	li t0, 40
@@ -1361,10 +1361,10 @@ ifFalse_44:
 .globl main
 main:
 mainEntry71:
-	li t4, 960
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 960
+	sub sp, sp, t4
 
 	# save the parameters
 

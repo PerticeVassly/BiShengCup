@@ -5,11 +5,11 @@
 .type main, @function
 .globl main
 main:
-mainEntry93:
-	li t4, 0
-	sub sp, sp, t4
+mainEntry92:
 
 	# reserve space
+	li t4, 0
+	sub sp, sp, t4
 
 	# save the parameters
 

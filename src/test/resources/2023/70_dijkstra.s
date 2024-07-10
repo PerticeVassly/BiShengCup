@@ -30,15 +30,15 @@ gv7:
 .globl Dijkstra
 Dijkstra:
 DijkstraEntry:
+
+	# reserve space
 	li t4, 824
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -1749,10 +1749,10 @@ next_151:
 .globl main
 main:
 mainEntry40:
-	li t4, 488
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 488
+	sub sp, sp, t4
 
 	# save the parameters
 

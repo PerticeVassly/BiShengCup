@@ -6,15 +6,15 @@
 .globl foo
 foo:
 fooEntry:
+
+	# reserve space
 	li t4, 848
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -1457,10 +1457,10 @@ fooEntry:
 .globl main
 main:
 mainEntry27:
-	li t4, 968
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 968
+	sub sp, sp, t4
 
 	# save the parameters
 

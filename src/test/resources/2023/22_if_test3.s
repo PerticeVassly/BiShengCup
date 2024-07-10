@@ -6,15 +6,15 @@
 .globl ififElse
 ififElse:
 ififElseEntry:
+
+	# reserve space
 	li t4, 120
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -283,10 +283,10 @@ next_218:
 .globl main
 main:
 mainEntry52:
-	li t4, 8
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 8
+	sub sp, sp, t4
 
 	# save the parameters
 

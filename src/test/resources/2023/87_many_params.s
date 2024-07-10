@@ -6,23 +6,23 @@
 .globl sort
 sort:
 sortEntry:
+
+	# reserve space
 	li t4, 440
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 432(sp)
-	sd a1, 424(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 432(sp)
 
 	# get address of local var:1
+	sd a1, 424(sp)
 
 	# allocate lv$4
 	li t0, 408
@@ -862,205 +862,205 @@ next_20:
 .globl param32_rec
 param32_rec:
 param32_recEntry:
+
+	# reserve space
 	li t4, 1096
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 0(t4)
-	sd a1, 0(t4)
-	sd a2, 0(t4)
-	sd a3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
 	li t4, 1088
 	add t4, sp, t4
+	sd a0, 0(t4)
 
 	# get address of local var:1
 	li t4, 1080
 	add t4, sp, t4
+	sd a1, 0(t4)
 
 	# get address of local var:2
 	li t4, 1072
 	add t4, sp, t4
+	sd a2, 0(t4)
 
 	# get address of local var:3
 	li t4, 1064
 	add t4, sp, t4
-	li t4, 1328
+	sd a3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1056
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1048
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1040
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1032
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1024
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1016
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1008
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1000
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 992
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 984
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 976
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 968
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 960
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 952
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 944
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 936
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 928
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 920
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 912
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 904
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 896
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 888
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 880
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 872
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 864
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 856
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 848
 	add t4, sp, t4
-	li t4, 1328
+	sd t3, 0(t4)
+	li t4, 1320
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 840
 	add t4, sp, t4
+	sd t3, 0(t4)
 
 	# allocate lv$31
 	li t0, 824
@@ -2624,205 +2624,205 @@ ifFalse_1:
 .globl param32_arr
 param32_arr:
 param32_arrEntry:
+
+	# reserve space
 	li t4, 3080
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 0(t4)
-	sd a1, 0(t4)
-	sd a2, 0(t4)
-	sd a3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
 	li t4, 3072
 	add t4, sp, t4
+	sd a0, 0(t4)
 
 	# get address of local var:1
 	li t4, 3064
 	add t4, sp, t4
+	sd a1, 0(t4)
 
 	# get address of local var:2
 	li t4, 3056
 	add t4, sp, t4
+	sd a2, 0(t4)
 
 	# get address of local var:3
 	li t4, 3048
 	add t4, sp, t4
-	li t4, 3312
+	sd a3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 3040
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 3032
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 3024
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 3016
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 3008
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 3000
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2992
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2984
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2976
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2968
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2960
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2952
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2944
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2936
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2928
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2920
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2912
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2904
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2896
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2888
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2880
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2872
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2864
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2856
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2848
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2840
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2832
 	add t4, sp, t4
-	li t4, 3312
+	sd t3, 0(t4)
+	li t4, 3304
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2824
 	add t4, sp, t4
+	sd t3, 0(t4)
 
 	# allocate lv$32
 	li t0, 2808
@@ -8600,109 +8600,109 @@ param32_arrEntry:
 .globl param16
 param16:
 param16Entry:
+
+	# reserve space
 	li t4, 1176
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 0(t4)
-	sd a1, 0(t4)
-	sd a2, 0(t4)
-	sd a3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
 	li t4, 1168
 	add t4, sp, t4
+	sd a0, 0(t4)
 
 	# get address of local var:1
 	li t4, 1160
 	add t4, sp, t4
+	sd a1, 0(t4)
 
 	# get address of local var:2
 	li t4, 1152
 	add t4, sp, t4
+	sd a2, 0(t4)
 
 	# get address of local var:3
 	li t4, 1144
 	add t4, sp, t4
-	li t4, 1280
+	sd a3, 0(t4)
+	li t4, 1272
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1136
 	add t4, sp, t4
-	li t4, 1280
+	sd t3, 0(t4)
+	li t4, 1272
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1128
 	add t4, sp, t4
-	li t4, 1280
+	sd t3, 0(t4)
+	li t4, 1272
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1120
 	add t4, sp, t4
-	li t4, 1280
+	sd t3, 0(t4)
+	li t4, 1272
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1112
 	add t4, sp, t4
-	li t4, 1280
+	sd t3, 0(t4)
+	li t4, 1272
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1104
 	add t4, sp, t4
-	li t4, 1280
+	sd t3, 0(t4)
+	li t4, 1272
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1096
 	add t4, sp, t4
-	li t4, 1280
+	sd t3, 0(t4)
+	li t4, 1272
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1088
 	add t4, sp, t4
-	li t4, 1280
+	sd t3, 0(t4)
+	li t4, 1272
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1080
 	add t4, sp, t4
-	li t4, 1280
+	sd t3, 0(t4)
+	li t4, 1272
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1072
 	add t4, sp, t4
-	li t4, 1280
+	sd t3, 0(t4)
+	li t4, 1272
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1064
 	add t4, sp, t4
-	li t4, 1280
+	sd t3, 0(t4)
+	li t4, 1272
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1056
 	add t4, sp, t4
-	li t4, 1280
+	sd t3, 0(t4)
+	li t4, 1272
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1048
 	add t4, sp, t4
+	sd t3, 0(t4)
 
 	# allocate lv$16
 	li t0, 912
@@ -10830,10 +10830,10 @@ param16Entry:
 .globl main
 main:
 mainEntry6:
-	li t4, 2408
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 2408
+	sub sp, sp, t4
 
 	# save the parameters
 

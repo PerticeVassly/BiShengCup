@@ -6,15 +6,15 @@
 .globl whileIf
 whileIf:
 whileIfEntry:
+
+	# reserve space
 	li t4, 168
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
@@ -62,9 +62,9 @@ whileIfEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_140
-	j whileCond_140
-whileCond_140:
+	# br whileCond_134
+	j whileCond_134
+whileCond_134:
 
 	# load a lv
 
@@ -116,15 +116,15 @@ whileCond_140:
 	seqz t0, t0
 	sd t0, 104(sp)
 
-	# condBr cond_ whileBody_140 next_300
+	# condBr cond_ whileBody_134 next_290
 
 	# fetch variables
 	li t4, 104
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_300
-	j whileBody_140
-whileBody_140:
+	beqz t1, next_290
+	j whileBody_134
+whileBody_134:
 
 	# load a$1 lv
 
@@ -177,15 +177,15 @@ whileBody_140:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$1 ifTrue_160 ifFalse_51
+	# condBr cond_$1 ifTrue_156 ifFalse_47
 
 	# fetch variables
 	li t4, 72
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_51
-	j ifTrue_160
-next_300:
+	beqz t1, ifFalse_47
+	j ifTrue_156
+next_290:
 
 	# load b lv$1
 
@@ -213,7 +213,7 @@ next_300:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_160:
+ifTrue_156:
 
 	# lv$1 
 
@@ -230,9 +230,9 @@ ifTrue_160:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_301
-	j next_301
-ifFalse_51:
+	# br next_291
+	j next_291
+ifFalse_47:
 
 	# load a$2 lv
 
@@ -285,15 +285,15 @@ ifFalse_51:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 ifTrue_161 ifFalse_52
+	# condBr cond_$2 ifTrue_157 ifFalse_48
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_52
-	j ifTrue_161
-next_301:
+	beqz t1, ifFalse_48
+	j ifTrue_157
+next_291:
 
 	# load a$4 lv
 
@@ -337,9 +337,9 @@ next_301:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_140
-	j whileCond_140
-ifTrue_161:
+	# br whileCond_134
+	j whileCond_134
+ifTrue_157:
 
 	# lv$1 
 
@@ -356,9 +356,9 @@ ifTrue_161:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_302
-	j next_302
-ifFalse_52:
+	# br next_292
+	j next_292
+ifFalse_48:
 
 	# load a$3 lv
 
@@ -402,20 +402,20 @@ ifFalse_52:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_302
-	j next_302
-next_302:
+	# br next_292
+	j next_292
+next_292:
 
-	# br next_301
-	j next_301
+	# br next_291
+	j next_291
 .type main, @function
 .globl main
 main:
-mainEntry74:
-	li t4, 8
-	sub sp, sp, t4
+mainEntry73:
 
 	# reserve space
+	li t4, 8
+	sub sp, sp, t4
 
 	# save the parameters
 

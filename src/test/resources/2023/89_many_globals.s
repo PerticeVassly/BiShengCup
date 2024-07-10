@@ -126,53 +126,53 @@ gv39:
 .globl testParam8
 testParam8:
 testParam8Entry:
+
+	# reserve space
 	li t4, 312
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 304(sp)
-	sd a1, 296(sp)
-	sd a2, 288(sp)
-	sd a3, 280(sp)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 304(sp)
 
 	# get address of local var:1
+	sd a1, 296(sp)
 
 	# get address of local var:2
+	sd a2, 288(sp)
 
 	# get address of local var:3
-	li t4, 352
+	sd a3, 280(sp)
+	li t4, 344
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 272
 	add t4, sp, t4
-	li t4, 352
+	sd t3, 0(t4)
+	li t4, 344
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 264
 	add t4, sp, t4
-	li t4, 352
+	sd t3, 0(t4)
+	li t4, 344
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 256
 	add t4, sp, t4
-	li t4, 352
+	sd t3, 0(t4)
+	li t4, 344
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 248
 	add t4, sp, t4
+	sd t3, 0(t4)
 
 	# allocate lv$7
 	li t0, 232
@@ -585,101 +585,101 @@ testParam8Entry:
 .globl testParam16
 testParam16:
 testParam16Entry:
+
+	# reserve space
 	li t4, 632
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 624(sp)
-	sd a1, 616(sp)
-	sd a2, 608(sp)
-	sd a3, 600(sp)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 624(sp)
 
 	# get address of local var:1
+	sd a1, 616(sp)
 
 	# get address of local var:2
+	sd a2, 608(sp)
 
 	# get address of local var:3
-	li t4, 736
+	sd a3, 600(sp)
+	li t4, 728
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 592
 	add t4, sp, t4
-	li t4, 736
+	sd t3, 0(t4)
+	li t4, 728
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 584
 	add t4, sp, t4
-	li t4, 736
+	sd t3, 0(t4)
+	li t4, 728
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 576
 	add t4, sp, t4
-	li t4, 736
+	sd t3, 0(t4)
+	li t4, 728
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 568
 	add t4, sp, t4
-	li t4, 736
+	sd t3, 0(t4)
+	li t4, 728
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 560
 	add t4, sp, t4
-	li t4, 736
+	sd t3, 0(t4)
+	li t4, 728
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 552
 	add t4, sp, t4
-	li t4, 736
+	sd t3, 0(t4)
+	li t4, 728
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 544
 	add t4, sp, t4
-	li t4, 736
+	sd t3, 0(t4)
+	li t4, 728
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 536
 	add t4, sp, t4
-	li t4, 736
+	sd t3, 0(t4)
+	li t4, 728
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 528
 	add t4, sp, t4
-	li t4, 736
+	sd t3, 0(t4)
+	li t4, 728
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 520
 	add t4, sp, t4
-	li t4, 736
+	sd t3, 0(t4)
+	li t4, 728
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 512
 	add t4, sp, t4
-	li t4, 736
+	sd t3, 0(t4)
+	li t4, 728
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 504
 	add t4, sp, t4
+	sd t3, 0(t4)
 
 	# allocate lv$15
 	li t0, 488
@@ -1500,205 +1500,205 @@ testParam16Entry:
 .globl testParam32
 testParam32:
 testParam32Entry:
+
+	# reserve space
 	li t4, 1272
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 0(t4)
-	sd a1, 0(t4)
-	sd a2, 0(t4)
-	sd a3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-	ld t3, 0(t4)
-	sd t3, 0(t4)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
 	li t4, 1264
 	add t4, sp, t4
+	sd a0, 0(t4)
 
 	# get address of local var:1
 	li t4, 1256
 	add t4, sp, t4
+	sd a1, 0(t4)
 
 	# get address of local var:2
 	li t4, 1248
 	add t4, sp, t4
+	sd a2, 0(t4)
 
 	# get address of local var:3
 	li t4, 1240
 	add t4, sp, t4
-	li t4, 1504
+	sd a3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1232
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1224
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1216
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1208
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1200
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1192
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1184
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1176
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1168
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1160
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1152
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1144
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1136
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1128
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1120
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1112
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1104
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1096
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1088
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1080
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1072
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1064
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1056
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1048
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1040
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1032
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1024
 	add t4, sp, t4
-	li t4, 1504
+	sd t3, 0(t4)
+	li t4, 1496
 	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1016
 	add t4, sp, t4
+	sd t3, 0(t4)
 
 	# allocate lv$31
 	li t0, 1000
@@ -3336,11 +3336,11 @@ testParam32Entry:
 .type main, @function
 .globl main
 main:
-mainEntry95:
-	li t4, 496
-	sub sp, sp, t4
+mainEntry94:
 
 	# reserve space
+	li t4, 496
+	sub sp, sp, t4
 
 	# save the parameters
 

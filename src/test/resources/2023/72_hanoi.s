@@ -6,23 +6,23 @@
 .globl move
 move:
 moveEntry:
+
+	# reserve space
 	li t4, 64
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 56(sp)
-	sd a1, 48(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 56(sp)
 
 	# get address of local var:1
+	sd a1, 48(sp)
 
 	# allocate lv$1
 	li t0, 32
@@ -198,29 +198,29 @@ moveEntry:
 .globl hanoi
 hanoi:
 hanoiEntry:
+
+	# reserve space
 	li t4, 240
 	sub sp, sp, t4
 
+	# save CallerSavedRegs
+
 	# save callee saved regs
 	addi sp, sp, 0
-	sd a0, 232(sp)
-	sd a1, 224(sp)
-	sd a2, 216(sp)
-	sd a3, 208(sp)
-
-	# reserve space
-
-	# save CallerSavedRegs
 
 	# save the parameters
 
 	# get address of local var:0
+	sd a0, 232(sp)
 
 	# get address of local var:1
+	sd a1, 224(sp)
 
 	# get address of local var:2
+	sd a2, 216(sp)
 
 	# get address of local var:3
+	sd a3, 208(sp)
 
 	# allocate lv$3
 	li t0, 192
@@ -702,10 +702,10 @@ next_32:
 .globl main
 main:
 mainEntry9:
-	li t4, 80
-	sub sp, sp, t4
 
 	# reserve space
+	li t4, 80
+	sub sp, sp, t4
 
 	# save the parameters
 
