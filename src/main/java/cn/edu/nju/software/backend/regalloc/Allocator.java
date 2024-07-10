@@ -49,6 +49,8 @@ public class Allocator {
 
     /* 将变量分配到寄存器中 */
     /* 以t1,t2,t3,ft1,ft2,ft3的顺序分配 */
+    //TODO：是否需要返回存放在那个寄存器中？
+    //TODO:统一分配函数和load函数
     public void prepareVariable(ValueRef... values) {
 
         generator.addInstruction(new RiscComment("fetch variables"));

@@ -1,64 +1,64 @@
 .data
 .align 2
-.globl a
-a:
+.globl gv
+gv:
 .dword 1
-.globl b
-b:
+.globl gv1
+gv1:
 .dword 0
-.globl c
-c:
+.globl gv2
+gv2:
 .dword 1
-.globl d
-d:
+.globl gv3
+gv3:
 .dword 2
-.globl e
-e:
+.globl gv4
+gv4:
 .dword 4
 .text
 .align 2
 .type main, @function
 .globl main
 main:
-mainEntry19:
+mainEntry87:
+	addi sp, sp, -328
 
 	# reserve space
-	addi sp, sp, -328
 
 	# save the parameters
 
-	# allocate flag
+	# allocate lv
 	addi t0, sp, 312
 
-	# get address of local var:flag
+	# get address of local var:lv
 	sd t0, 320(sp)
 
-	# flag 
+	# lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store flag 
+	# store lv 
 
-	# get address of flag points to
+	# get address of lv points to
 	ld t3, 320(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load a a
+	# load a gv
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 
 	# get address of local var:a
 	ld t0, 0(t3)
 	sd t0, 304(sp)
 
-	# load b b
+	# load b gv1
 
-	# get address of b points to
-	la t3, b
+	# get address of gv1 points to
+	la t3, gv1
 	addi t3, t3, 0
 
 	# get address of local var:b
@@ -75,10 +75,10 @@ mainEntry19:
 	mul t0, t1, t2
 	sd t0, 288(sp)
 
-	# load c c
+	# load c gv2
 
-	# get address of c points to
-	la t3, c
+	# get address of gv2 points to
+	la t3, gv2
 	addi t3, t3, 0
 
 	# get address of local var:c
@@ -95,20 +95,20 @@ mainEntry19:
 	div t0, t1, t2
 	sd t0, 272(sp)
 
-	# load e e
+	# load e gv4
 
-	# get address of e points to
-	la t3, e
+	# get address of gv4 points to
+	la t3, gv4
 	addi t3, t3, 0
 
 	# get address of local var:e
 	ld t0, 0(t3)
 	sd t0, 264(sp)
 
-	# load d d
+	# load d gv3
 
-	# get address of d points to
-	la t3, d
+	# get address of gv3 points to
+	la t3, gv3
 	addi t3, t3, 0
 
 	# get address of local var:d
@@ -157,37 +157,37 @@ mainEntry19:
 	seqz t0, t0
 	sd t0, 224(sp)
 
-	# condBr cond_ secondCond_6 secondCond_5
+	# condBr cond_ secondCond_99 secondCond_98
 
 	# fetch variables
 	ld t1, 224(sp)
-	beqz t1, secondCond_5
-	j secondCond_6
-ifTrue_27:
+	beqz t1, secondCond_98
+	j secondCond_99
+ifTrue_321:
 
-	# flag 
+	# lv 
 
 	# fetch variables
 	li t1, 1
 
-	# store flag 
+	# store lv 
 
-	# get address of flag points to
+	# get address of lv points to
 	ld t3, 320(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br next_74
-	j next_74
-next_74:
+	# br next_570
+	j next_570
+next_570:
 
-	# load flag$1 flag
+	# load flag lv
 
-	# get address of flag points to
+	# get address of lv points to
 	ld t3, 320(sp)
 	addi t3, t3, 0
 
-	# get address of local var:flag$1
+	# get address of local var:flag
 	ld t0, 0(t3)
 	sd t0, 216(sp)
 
@@ -208,49 +208,49 @@ next_74:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
-	# load flag$2 flag
+	# load flag$1 lv
 
-	# get address of flag points to
+	# get address of lv points to
 	ld t3, 320(sp)
 	addi t3, t3, 0
 
-	# get address of local var:flag$2
+	# get address of local var:flag$1
 	ld t0, 0(t3)
 	sd t0, 208(sp)
 
-	# ret flag$2
+	# ret flag$1
 
 	# fetch variables
 	ld t1, 208(sp)
 	mv a0, t1
 	addi sp, sp, 328
 	ret 
-secondCond_5:
+secondCond_98:
 
-	# load a$3 a
+	# load a$3 gv
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 
 	# get address of local var:a$3
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# load b$2 b
+	# load b$2 gv1
 
-	# get address of b points to
-	la t3, b
+	# get address of gv1 points to
+	la t3, gv1
 	addi t3, t3, 0
 
 	# get address of local var:b$2
 	ld t0, 0(t3)
 	sd t0, 192(sp)
 
-	# load c$2 c
+	# load c$2 gv2
 
-	# get address of c points to
-	la t3, c
+	# get address of gv2 points to
+	la t3, gv2
 	addi t3, t3, 0
 
 	# get address of local var:c$2
@@ -277,30 +277,30 @@ secondCond_5:
 	sub t0, t1, t2
 	sd t0, 168(sp)
 
-	# load d$2 d
+	# load d$2 gv3
 
-	# get address of d points to
-	la t3, d
+	# get address of gv3 points to
+	la t3, gv3
 	addi t3, t3, 0
 
 	# get address of local var:d$2
 	ld t0, 0(t3)
 	sd t0, 160(sp)
 
-	# load a$4 a
+	# load a$4 gv
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 
 	# get address of local var:a$4
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# load c$3 c
+	# load c$3 gv2
 
-	# get address of c points to
-	la t3, c
+	# get address of gv2 points to
+	la t3, gv2
 	addi t3, t3, 0
 
 	# get address of local var:c$3
@@ -359,38 +359,38 @@ secondCond_5:
 	seqz t0, t0
 	sd t0, 104(sp)
 
-	# condBr cond_$2 ifTrue_27 next_74
+	# condBr cond_$2 ifTrue_321 next_570
 
 	# fetch variables
 	ld t1, 104(sp)
-	beqz t1, next_74
-	j ifTrue_27
-secondCond_6:
+	beqz t1, next_570
+	j ifTrue_321
+secondCond_99:
 
-	# load a$1 a
+	# load a$1 gv
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 
 	# get address of local var:a$1
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# load a$2 a
+	# load a$2 gv
 
-	# get address of a points to
-	la t3, a
+	# get address of gv points to
+	la t3, gv
 	addi t3, t3, 0
 
 	# get address of local var:a$2
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# load b$1 b
+	# load b$1 gv1
 
-	# get address of b points to
-	la t3, b
+	# get address of gv1 points to
+	la t3, gv1
 	addi t3, t3, 0
 
 	# get address of local var:b$1
@@ -417,10 +417,10 @@ secondCond_6:
 	mul t0, t1, t2
 	sd t0, 64(sp)
 
-	# load c$1 c
+	# load c$1 gv2
 
-	# get address of c points to
-	la t3, c
+	# get address of gv2 points to
+	la t3, gv2
 	addi t3, t3, 0
 
 	# get address of local var:c$1
@@ -437,20 +437,20 @@ secondCond_6:
 	add t0, t1, t2
 	sd t0, 48(sp)
 
-	# load d$1 d
+	# load d$1 gv3
 
-	# get address of d points to
-	la t3, d
+	# get address of gv3 points to
+	la t3, gv3
 	addi t3, t3, 0
 
 	# get address of local var:d$1
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# load e$1 e
+	# load e$1 gv4
 
-	# get address of e points to
-	la t3, e
+	# get address of gv4 points to
+	la t3, gv4
 	addi t3, t3, 0
 
 	# get address of local var:e$1
@@ -500,9 +500,9 @@ secondCond_6:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_27 secondCond_5
+	# condBr cond_$1 ifTrue_321 secondCond_98
 
 	# fetch variables
 	ld t1, 0(sp)
-	beqz t1, secondCond_5
-	j ifTrue_27
+	beqz t1, secondCond_98
+	j ifTrue_321

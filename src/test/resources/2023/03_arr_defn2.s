@@ -1,17 +1,17 @@
 .data
 .align 2
-.globl a
-a:
+.globl gv
+gv:
 .dword 0
 .text
 .align 2
 .type main, @function
 .globl main
 main:
-mainEntry87:
+mainEntry32:
+	addi sp, sp, 0
 
 	# reserve space
-	addi sp, sp, 0
 
 	# save the parameters
 

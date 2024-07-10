@@ -5,60 +5,60 @@
 .type main, @function
 .globl main
 main:
-mainEntry61:
+mainEntry22:
+	addi sp, sp, -72
 
 	# reserve space
-	addi sp, sp, -72
 
 	# save the parameters
 
-	# allocate a
+	# allocate lv$1
 	addi t0, sp, 56
 
-	# get address of local var:a
+	# get address of local var:lv$1
 	sd t0, 64(sp)
 
-	# allocate b
+	# allocate lv
 	addi t0, sp, 40
 
-	# get address of local var:b
+	# get address of local var:lv
 	sd t0, 48(sp)
 
-	# a 
+	# lv 
 
 	# fetch variables
 	li t1, 10
 
-	# store a 
+	# store lv 
 
-	# get address of a points to
-	ld t3, 64(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
-
-	# b 
-
-	# fetch variables
-	li t1, 30
-
-	# store b 
-
-	# get address of b points to
+	# get address of lv points to
 	ld t3, 48(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load a$1 a
+	# lv$1 
 
-	# get address of a points to
+	# fetch variables
+	li t1, 30
+
+	# store lv$1 
+
+	# get address of lv$1 points to
 	ld t3, 64(sp)
 	addi t3, t3, 0
+	sd t1, 0(t3)
 
-	# get address of local var:a$1
+	# load a lv
+
+	# get address of lv points to
+	ld t3, 48(sp)
+	addi t3, t3, 0
+
+	# get address of local var:a
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# sub result_ a$1 
+	# sub result_ a 
 
 	# fetch variables
 	ld t1, 32(sp)
@@ -68,17 +68,17 @@ mainEntry61:
 	sub t0, t1, t2
 	sd t0, 24(sp)
 
-	# load b$1 b
+	# load b lv$1
 
-	# get address of b points to
-	ld t3, 48(sp)
+	# get address of lv$1 points to
+	ld t3, 64(sp)
 	addi t3, t3, 0
 
-	# get address of local var:b$1
+	# get address of local var:b
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# add result_$1 result_ b$1
+	# add result_$1 result_ b
 
 	# fetch variables
 	ld t1, 24(sp)

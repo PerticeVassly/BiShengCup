@@ -1,7 +1,9 @@
 package cn.edu.nju.software.backend;
 
+import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 
@@ -18,10 +20,13 @@ public class RiscGlobalVar {
 
     //todo() 全局变量之间的相互赋值未处理
     public void dumpToConsole() {
-
-
         System.out.println(".globl " + name);
-
+        if(globalVar.isZeroInitializer()){
+            System.out.println(name + ":");
+            int totalSize= ArrayType.getTotalSize(((Pointer)globalVar.getType()).getBase());
+            System.out.println(".zero "+totalSize);
+            return;
+        }
         if( globalVar.getInitVal() instanceof ConstValue){
 
             if(globalVar.getInitVal().getType() instanceof IntType) {

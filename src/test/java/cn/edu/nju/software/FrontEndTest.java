@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -58,7 +59,7 @@ public class FrontEndTest {
     @ParameterizedTest
     @MethodSource("dirHidden")
     void testHidden(String name) throws IOException, InterruptedException {
-        if (Stream.of("23_json", "30_many_dimensions", "36_rotate", "38_light2d").anyMatch(name::equals)) fail();
+        if (List.of("23_json", "30_many_dimensions", "36_rotate", "38_light2d").contains(name)) fail();
         testFile(DIR_HIDDEN, name);
     }
 

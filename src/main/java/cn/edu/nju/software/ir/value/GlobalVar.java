@@ -1,6 +1,7 @@
 package cn.edu.nju.software.ir.value;
 
 import cn.edu.nju.software.ir.type.ArrayType;
+import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.type.TypeRef;
 
 import java.util.ArrayList;
@@ -34,9 +35,9 @@ public class GlobalVar extends ValueRef implements Variable {
         this.type = type;
 //        this.constant = constant;
     }
-
+    
     public boolean isZeroInitializer() {
-        return type instanceof ArrayType && !(initVal.getType() instanceof ArrayType); // initVal = zero
+        return ((Pointer)type).getBase() instanceof ArrayType && !(initVal.getType() instanceof ArrayType); // initVal = zero
     }
 
     public void initialize(ValueRef value) {

@@ -5,58 +5,58 @@
 .type main, @function
 .globl main
 main:
-mainEntry49:
+mainEntry12:
+	addi sp, sp, -984
 
 	# reserve space
-	addi sp, sp, -984
 
 	# save the parameters
 
-	# allocate arr
-	addi t0, sp, 176
+	# allocate lv$2
+	addi t0, sp, 968
 
-	# get address of local var:arr
+	# get address of local var:lv$2
 	sd t0, 976(sp)
 
-	# allocate i
-	addi t0, sp, 160
+	# allocate lv$1
+	addi t0, sp, 952
 
-	# get address of local var:i
-	sd t0, 168(sp)
+	# get address of local var:lv$1
+	sd t0, 960(sp)
 
-	# i 
-
-	# fetch variables
-	li t1, 0
-
-	# store i 
-
-	# get address of i points to
-	ld t3, 168(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
-
-	# allocate sum
+	# allocate lv
 	addi t0, sp, 144
 
-	# get address of local var:sum
-	sd t0, 152(sp)
+	# get address of local var:lv
+	sd t0, 944(sp)
 
-	# sum 
+	# lv$1 
 
 	# fetch variables
 	li t1, 0
 
-	# store sum 
+	# store lv$1 
 
-	# get address of sum points to
-	ld t3, 152(sp)
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_179
-	j whileCond_179
-whileCond_179:
+	# lv$2 
+
+	# fetch variables
+	li t1, 0
+
+	# store lv$2 
+
+	# get address of lv$2 points to
+	ld t3, 976(sp)
+	addi t3, t3, 0
+	sd t1, 0(t3)
+
+	# br whileCond_22
+	j whileCond_22
+whileCond_22:
 
 	# prepare params
 
@@ -86,36 +86,36 @@ whileCond_179:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_normalize_ whileBody_179 next_414
+	# condBr cond_normalize_ whileBody_22 next_34
 
 	# fetch variables
 	ld t1, 128(sp)
-	beqz t1, next_414
-	j whileBody_179
-whileBody_179:
+	beqz t1, next_34
+	j whileBody_22
+whileBody_22:
 
-	# load i$1 i
+	# load i lv$1
 
-	# get address of i points to
-	ld t3, 168(sp)
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 	addi t3, t3, 0
 
-	# get address of local var:i$1
+	# get address of local var:i
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# gep arr$1 i$1
+	# gep arr i
 
 	# fetch variables
 	ld t1, 120(sp)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr into 
-	ld t1, 976(sp)
+	# get address of local var:lv
+	ld t1, 944(sp)
 	add t0, t1, t0
 
-	# get address of arr$1 into 
+	# get address of local var:arr
 	sd t0, 112(sp)
 
 	# prepare params
@@ -134,29 +134,29 @@ whileBody_179:
 	# get address of local var:getint$1
 	sd a0, 104(sp)
 
-	# arr$1 getint$1
+	# arr getint$1
 
 	# fetch variables
 	ld t1, 104(sp)
 
-	# store arr$1 getint$1
+	# store arr getint$1
 
-	# get address of arr$1 points to
+	# get address of arr points to
 	ld t3, 112(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load i$2 i
+	# load i$1 lv$1
 
-	# get address of i points to
-	ld t3, 168(sp)
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 	addi t3, t3, 0
 
-	# get address of local var:i$2
+	# get address of local var:i$1
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# add result_ i$2 
+	# add result_ i$1 
 
 	# fetch variables
 	ld t1, 96(sp)
@@ -166,37 +166,37 @@ whileBody_179:
 	add t0, t1, t2
 	sd t0, 88(sp)
 
-	# i result_
+	# lv$1 result_
 
 	# fetch variables
 	ld t1, 88(sp)
 
-	# store i result_
+	# store lv$1 result_
 
-	# get address of i points to
-	ld t3, 168(sp)
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_179
-	j whileCond_179
-next_414:
+	# br whileCond_22
+	j whileCond_22
+next_34:
 
-	# br whileCond_180
-	j whileCond_180
-whileCond_180:
+	# br whileCond_23
+	j whileCond_23
+whileCond_23:
 
-	# load i$3 i
+	# load i$2 lv$1
 
-	# get address of i points to
-	ld t3, 168(sp)
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 	addi t3, t3, 0
 
-	# get address of local var:i$3
+	# get address of local var:i$2
 	ld t0, 0(t3)
 	sd t0, 80(sp)
 
-	# cmp i$3  cond_normalize_$1
+	# cmp i$2  cond_normalize_$1
 
 	# fetch variables
 	ld t1, 80(sp)
@@ -208,25 +208,25 @@ whileCond_180:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_normalize_$1 whileBody_180 next_415
+	# condBr cond_normalize_$1 whileBody_23 next_35
 
 	# fetch variables
 	ld t1, 72(sp)
-	beqz t1, next_415
-	j whileBody_180
-whileBody_180:
+	beqz t1, next_35
+	j whileBody_23
+whileBody_23:
 
-	# load i$4 i
+	# load i$3 lv$1
 
-	# get address of i points to
-	ld t3, 168(sp)
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 	addi t3, t3, 0
 
-	# get address of local var:i$4
+	# get address of local var:i$3
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# sub result_$1 i$4 
+	# sub result_$1 i$3 
 
 	# fetch variables
 	ld t1, 64(sp)
@@ -236,63 +236,63 @@ whileBody_180:
 	sub t0, t1, t2
 	sd t0, 56(sp)
 
-	# i result_$1
+	# lv$1 result_$1
 
 	# fetch variables
 	ld t1, 56(sp)
 
-	# store i result_$1
+	# store lv$1 result_$1
 
-	# get address of i points to
-	ld t3, 168(sp)
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load sum$1 sum
+	# load sum lv$2
 
-	# get address of sum points to
-	ld t3, 152(sp)
+	# get address of lv$2 points to
+	ld t3, 976(sp)
 	addi t3, t3, 0
 
-	# get address of local var:sum$1
+	# get address of local var:sum
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# load i$5 i
+	# load i$4 lv$1
 
-	# get address of i points to
-	ld t3, 168(sp)
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 	addi t3, t3, 0
 
-	# get address of local var:i$5
+	# get address of local var:i$4
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# gep arr$2 i$5
+	# gep arr$1 i$4
 
 	# fetch variables
 	ld t1, 40(sp)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr into 
-	ld t1, 976(sp)
+	# get address of local var:lv
+	ld t1, 944(sp)
 	add t0, t1, t0
 
-	# get address of arr$2 into 
+	# get address of local var:arr$1
 	sd t0, 32(sp)
 
-	# load arr$3 arr$2
+	# load arr$2 arr$1
 
-	# get address of arr$2 points to
+	# get address of arr$1 points to
 	ld t3, 32(sp)
 	addi t3, t3, 0
 
-	# get address of local var:arr$3
+	# get address of local var:arr$2
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_$2 sum$1 arr$3
+	# add result_$2 sum arr$2
 
 	# fetch variables
 	ld t1, 48(sp)
@@ -302,33 +302,33 @@ whileBody_180:
 	add t0, t1, t2
 	sd t0, 16(sp)
 
-	# sum result_$2
+	# lv$2 result_$2
 
 	# fetch variables
 	ld t1, 16(sp)
 
-	# store sum result_$2
+	# store lv$2 result_$2
 
-	# get address of sum points to
-	ld t3, 152(sp)
+	# get address of lv$2 points to
+	ld t3, 976(sp)
 	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# br whileCond_180
-	j whileCond_180
-next_415:
+	# br whileCond_23
+	j whileCond_23
+next_35:
 
-	# load sum$2 sum
+	# load sum$1 lv$2
 
-	# get address of sum points to
-	ld t3, 152(sp)
+	# get address of lv$2 points to
+	ld t3, 976(sp)
 	addi t3, t3, 0
 
-	# get address of local var:sum$2
+	# get address of local var:sum$1
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# mod result_$3 sum$2 
+	# mod result_$3 sum$1 
 
 	# fetch variables
 	ld t1, 8(sp)
