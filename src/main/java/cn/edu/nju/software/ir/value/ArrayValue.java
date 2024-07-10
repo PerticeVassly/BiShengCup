@@ -12,6 +12,9 @@ public class ArrayValue extends ValueRef {
         values = val;
     }
 
+    public ValueRef getValue(int index) {
+        return values.get(index);
+    }
     public String toString() {
         StringBuilder res = new StringBuilder();
         res.append(type.toString()).append(" ");
