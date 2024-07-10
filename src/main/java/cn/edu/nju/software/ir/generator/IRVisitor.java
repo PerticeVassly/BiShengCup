@@ -458,6 +458,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 ArrayValue av = (ArrayValue) ((GlobalVar) lVal).getInitVal();
                 ValueRef res = null;
                 for (ValueRef vr : indices) {
+                    if (!(vr instanceof ConstValue)) {
+                        res = null;
+                        break;
+                    }
                     int index = (int) ((ConstValue)vr).getValue();
                     if (av.getValue(index) instanceof ArrayValue) {
                         av = (ArrayValue) av.getValue(index);
@@ -465,7 +469,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         res = av.getValue(index);
                     }
                 }
-                return res;
+                if (res != null) return res;
             }
 //            System.err.println(dim);
             if (((Pointer)lVal.getType()).getBase() instanceof Pointer) {
