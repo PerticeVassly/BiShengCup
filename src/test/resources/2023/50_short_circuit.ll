@@ -19,7 +19,7 @@ declare void @memset(i32*, i32, i32)
 @gv = global i32 0, align 4
 
 define i32 @func(i32 %0) {
-funcEntry3:
+funcEntry1:
   %lv = alloca i32, align 4
   store i32 %0, i32* %lv, align 4
   %g = load i32, i32* @gv, align 4
@@ -33,7 +33,7 @@ funcEntry3:
 }
 
 define i32 @main() {
-mainEntry40:
+mainEntry61:
   %lv = alloca i32, align 4
   %getint = call i32 @getint()
   store i32 %getint, i32* %lv, align 4
@@ -41,113 +41,113 @@ mainEntry40:
   %cond_gt_tmp_ = icmp sgt i32 %i, 10
   %cond_tmp_ = zext i1 %cond_gt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %secondCond_41, label %ifFalse_14
+  br i1 %cond_, label %secondCond_103, label %ifFalse_129
 
-ifTrue_68:                                            ; pred = %secondCond_41
+ifTrue_299:                                            ; pred = %secondCond_103
   store i32 1, i32* %lv, align 4
-  br label %next_142
+  br label %next_524
 
-ifFalse_14:                                           ; pred = %mainEntry40, %secondCond_41
+ifFalse_129:                                           ; pred = %mainEntry61, %secondCond_103
   store i32 0, i32* %lv, align 4
-  br label %next_142
+  br label %next_524
 
-next_142:                                             ; pred = %ifTrue_68, %ifFalse_14
+next_524:                                              ; pred = %ifTrue_299, %ifFalse_129
   %getint$1 = call i32 @getint()
   store i32 %getint$1, i32* %lv, align 4
   %i$2 = load i32, i32* %lv, align 4
   %cond_gt_tmp_$1 = icmp sgt i32 %i$2, 11
   %cond_tmp_$1 = zext i1 %cond_gt_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %secondCond_42, label %ifFalse_15
+  br i1 %cond_$1, label %secondCond_104, label %ifFalse_130
 
-secondCond_41:                                        ; pred = %mainEntry40
+secondCond_103:                                        ; pred = %mainEntry61
   %i$1 = load i32, i32* %lv, align 4
   %func = call i32 @func(i32 %i$1)
   %cond_normalize_ = icmp ne i32 %func, 0
-  br i1 %cond_normalize_, label %ifTrue_68, label %ifFalse_14
+  br i1 %cond_normalize_, label %ifTrue_299, label %ifFalse_129
 
-ifTrue_69:                                            ; pred = %secondCond_42
+ifTrue_300:                                            ; pred = %secondCond_104
   store i32 1, i32* %lv, align 4
-  br label %next_143
+  br label %next_525
 
-ifFalse_15:                                           ; pred = %next_142, %secondCond_42
+ifFalse_130:                                           ; pred = %next_524, %secondCond_104
   store i32 0, i32* %lv, align 4
-  br label %next_143
+  br label %next_525
 
-next_143:                                             ; pred = %ifTrue_69, %ifFalse_15
+next_525:                                              ; pred = %ifTrue_300, %ifFalse_130
   %getint$2 = call i32 @getint()
   store i32 %getint$2, i32* %lv, align 4
   %i$4 = load i32, i32* %lv, align 4
   %cond_le_tmp_ = icmp sle i32 %i$4, 99
   %cond_tmp_$2 = zext i1 %cond_le_tmp_ to i32
   %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %ifTrue_70, label %secondCond_43
+  br i1 %cond_$2, label %ifTrue_301, label %secondCond_105
 
-secondCond_42:                                        ; pred = %next_142
+secondCond_104:                                        ; pred = %next_524
   %i$3 = load i32, i32* %lv, align 4
   %func$1 = call i32 @func(i32 %i$3)
   %cond_normalize_$1 = icmp ne i32 %func$1, 0
-  br i1 %cond_normalize_$1, label %ifTrue_69, label %ifFalse_15
+  br i1 %cond_normalize_$1, label %ifTrue_300, label %ifFalse_130
 
-ifTrue_70:                                            ; pred = %next_143, %secondCond_43
+ifTrue_301:                                            ; pred = %next_525, %secondCond_105
   store i32 1, i32* %lv, align 4
-  br label %next_144
+  br label %next_526
 
-ifFalse_16:                                           ; pred = %secondCond_43
+ifFalse_131:                                           ; pred = %secondCond_105
   store i32 0, i32* %lv, align 4
-  br label %next_144
+  br label %next_526
 
-next_144:                                             ; pred = %ifTrue_70, %ifFalse_16
+next_526:                                              ; pred = %ifTrue_301, %ifFalse_131
   %getint$3 = call i32 @getint()
   store i32 %getint$3, i32* %lv, align 4
   %i$6 = load i32, i32* %lv, align 4
   %cond_le_tmp_$1 = icmp sle i32 %i$6, 100
   %cond_tmp_$3 = zext i1 %cond_le_tmp_$1 to i32
   %cond_$3 = icmp ne i32 %cond_tmp_$3, 0
-  br i1 %cond_$3, label %ifTrue_71, label %secondCond_44
+  br i1 %cond_$3, label %ifTrue_302, label %secondCond_106
 
-secondCond_43:                                        ; pred = %next_143
+secondCond_105:                                        ; pred = %next_525
   %i$5 = load i32, i32* %lv, align 4
   %func$2 = call i32 @func(i32 %i$5)
   %cond_normalize_$2 = icmp ne i32 %func$2, 0
-  br i1 %cond_normalize_$2, label %ifTrue_70, label %ifFalse_16
+  br i1 %cond_normalize_$2, label %ifTrue_301, label %ifFalse_131
 
-ifTrue_71:                                            ; pred = %next_144, %secondCond_44
+ifTrue_302:                                            ; pred = %next_526, %secondCond_106
   store i32 1, i32* %lv, align 4
-  br label %next_145
+  br label %next_527
 
-ifFalse_17:                                           ; pred = %secondCond_44
+ifFalse_132:                                           ; pred = %secondCond_106
   store i32 0, i32* %lv, align 4
-  br label %next_145
+  br label %next_527
 
-next_145:                                             ; pred = %ifTrue_71, %ifFalse_17
+next_527:                                              ; pred = %ifTrue_302, %ifFalse_132
   %func$4 = call i32 @func(i32 99)
   %tmp_ = icmp ne i32 0, %func$4
   %tmp_$1 = xor i1 %tmp_, 1
   %tmp_$2 = zext i1 %tmp_$1 to i32
   %cond_normalize_$4 = icmp ne i32 %tmp_$2, 0
-  br i1 %cond_normalize_$4, label %secondCond_45, label %ifFalse_18
+  br i1 %cond_normalize_$4, label %secondCond_107, label %ifFalse_133
 
-secondCond_44:                                        ; pred = %next_144
+secondCond_106:                                        ; pred = %next_526
   %i$7 = load i32, i32* %lv, align 4
   %func$3 = call i32 @func(i32 %i$7)
   %cond_normalize_$3 = icmp ne i32 %func$3, 0
-  br i1 %cond_normalize_$3, label %ifTrue_71, label %ifFalse_17
+  br i1 %cond_normalize_$3, label %ifTrue_302, label %ifFalse_132
 
-ifTrue_72:                                            ; pred = %secondCond_45
+ifTrue_303:                                            ; pred = %secondCond_107
   store i32 1, i32* %lv, align 4
-  br label %next_146
+  br label %next_528
 
-ifFalse_18:                                           ; pred = %next_145, %secondCond_45
+ifFalse_133:                                           ; pred = %next_527, %secondCond_107
   store i32 0, i32* %lv, align 4
-  br label %next_146
+  br label %next_528
 
-next_146:                                             ; pred = %ifTrue_72, %ifFalse_18
+next_528:                                              ; pred = %ifTrue_303, %ifFalse_133
   ret i32 0
 
-secondCond_45:                                        ; pred = %next_145
+secondCond_107:                                        ; pred = %next_527
   %func$5 = call i32 @func(i32 100)
   %cond_normalize_$5 = icmp ne i32 %func$5, 0
-  br i1 %cond_normalize_$5, label %ifTrue_72, label %ifFalse_18
+  br i1 %cond_normalize_$5, label %ifTrue_303, label %ifFalse_133
 }
 

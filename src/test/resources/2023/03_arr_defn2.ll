@@ -19,7 +19,7 @@ declare void @memset(i32*, i32, i32)
 @gv = global [10 x [10 x i32]] zeroinitializer, align 4
 
 define i32 @main() {
-mainEntry90:
+mainEntry36:
   ret i32 0
 }
 
