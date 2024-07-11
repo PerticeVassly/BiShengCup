@@ -19,30 +19,30 @@ mainEntry32:
 	# allocate lv$3
 	li t0, 256
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 264(sp)
+	li t1, 264
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 240
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 248(sp)
+	li t1, 248
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 224
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 232(sp)
+	li t1, 232
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 208
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 216(sp)
+	li t1, 216
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# gv @
 
@@ -105,15 +105,15 @@ mainEntry32:
 	seqz t0, t0
 	sd t0, 176(sp)
 
-	# condBr cond_ ifTrue_62 next_134
+	# condBr cond_ ifTrue_60 next_129
 
 	# fetch variables
 	li t4, 176
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_134
-	j ifTrue_62
-ifTrue_62:
+	beqz t1, next_129
+	j ifTrue_60
+ifTrue_60:
 
 	# load k$1 gv
 
@@ -168,9 +168,9 @@ ifTrue_62:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_72
-	j whileCond_72
-next_134:
+	# br whileCond_69
+	j whileCond_69
+next_129:
 
 	# load k$8 gv
 
@@ -193,7 +193,7 @@ next_134:
 	li t4, 272
 	add sp, sp, t4
 	ret 
-whileCond_72:
+whileCond_69:
 
 	# load k$2 lv
 
@@ -246,15 +246,15 @@ whileCond_72:
 	seqz t0, t0
 	sd t0, 120(sp)
 
-	# condBr cond_$1 whileBody_72 next_135
+	# condBr cond_$1 whileBody_69 next_130
 
 	# fetch variables
 	li t4, 120
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_135
-	j whileBody_72
-whileBody_72:
+	beqz t1, next_130
+	j whileBody_69
+whileBody_69:
 
 	# load k$3 lv
 
@@ -348,15 +348,15 @@ whileBody_72:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$2 ifTrue_63 next_136
+	# condBr cond_$2 ifTrue_61 next_131
 
 	# fetch variables
 	li t4, 72
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_136
-	j ifTrue_63
-next_135:
+	beqz t1, next_131
+	j ifTrue_61
+next_130:
 
 	# load k$7 lv
 
@@ -378,6 +378,7 @@ next_135:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -393,9 +394,9 @@ next_135:
 	# release params
 	addi sp, sp, 0
 
-	# br next_134
-	j next_134
-ifTrue_63:
+	# br next_129
+	j next_129
+ifTrue_61:
 
 	# lv$1 
 
@@ -598,9 +599,9 @@ ifTrue_63:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_136
-	j next_136
-next_136:
+	# br next_131
+	j next_131
+next_131:
 
-	# br whileCond_72
-	j whileCond_72
+	# br whileCond_69
+	j whileCond_69

@@ -16,23 +16,23 @@ mainEntry82:
 	# allocate lv$2
 	li t0, 584
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 592(sp)
+	li t1, 592
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 416
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 576(sp)
+	li t1, 576
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 400
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 408(sp)
+	li t1, 408
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -704,9 +704,9 @@ mainEntry82:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_150
-	j whileCond_150
-whileCond_150:
+	# br whileCond_147
+	j whileCond_147
+whileCond_147:
 
 	# load long_name1$QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz lv
 
@@ -758,15 +758,15 @@ whileCond_150:
 	seqz t0, t0
 	sd t0, 208(sp)
 
-	# condBr cond_ whileBody_150 next_317
+	# condBr cond_ whileBody_147 next_312
 
 	# fetch variables
 	li t4, 208
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_317
-	j whileBody_150
-whileBody_150:
+	beqz t1, next_312
+	j whileBody_147
+whileBody_147:
 
 	# load long_name2$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$1 lv
 
@@ -1145,6 +1145,7 @@ whileBody_150:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1165,6 +1166,7 @@ whileBody_150:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1222,9 +1224,9 @@ whileBody_150:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_150
-	j whileCond_150
-next_317:
+	# br whileCond_147
+	j whileCond_147
+next_312:
 
 	# load long_name21$RJsXBiXL5NTrpJL22F4zlc3o0KiSE$1 lv$2
 

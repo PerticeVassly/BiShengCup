@@ -31,11 +31,12 @@ mainEntry5:
 	# allocate lv
 	li t0, 328
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 336(sp)
+	li t1, 336
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -70,6 +71,7 @@ mainEntry5:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -104,6 +106,7 @@ mainEntry5:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -138,6 +141,7 @@ mainEntry5:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -172,6 +176,7 @@ mainEntry5:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

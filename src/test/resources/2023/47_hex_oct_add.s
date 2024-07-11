@@ -16,16 +16,16 @@ mainEntry14:
 	# allocate lv$1
 	li t0, 48
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 56(sp)
+	li t1, 56
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 32
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 40(sp)
+	li t1, 40
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 

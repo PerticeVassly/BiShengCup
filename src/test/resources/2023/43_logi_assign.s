@@ -22,11 +22,12 @@ mainEntry54:
 	# allocate lv
 	li t0, 96
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 104(sp)
+	li t1, 104
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -61,6 +62,7 @@ mainEntry54:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -156,15 +158,15 @@ mainEntry54:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_ secondCond_67 ifFalse_30
+	# condBr cond_ secondCond_67 ifFalse_29
 
 	# fetch variables
 	li t4, 40
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_30
+	beqz t1, ifFalse_29
 	j secondCond_67
-ifTrue_120:
+ifTrue_118:
 
 	# lv 
 
@@ -181,9 +183,9 @@ ifTrue_120:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_225
-	j next_225
-ifFalse_30:
+	# br next_220
+	j next_220
+ifFalse_29:
 
 	# lv 
 
@@ -200,9 +202,9 @@ ifFalse_30:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_225
-	j next_225
-next_225:
+	# br next_220
+	j next_220
+next_220:
 
 	# load c lv
 
@@ -279,11 +281,11 @@ secondCond_67:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_120 ifFalse_30
+	# condBr cond_$1 ifTrue_118 ifFalse_29
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_30
-	j ifTrue_120
+	beqz t1, ifFalse_29
+	j ifTrue_118

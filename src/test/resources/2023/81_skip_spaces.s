@@ -16,23 +16,23 @@ mainEntry48:
 	# allocate lv$2
 	li t0, 968
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 976(sp)
+	li t1, 976
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 952
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 960(sp)
+	li t1, 960
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 144
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 944(sp)
+	li t1, 944
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv$1 
 
@@ -64,11 +64,12 @@ mainEntry48:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_93
-	j whileCond_93
-whileCond_93:
+	# br whileCond_90
+	j whileCond_90
+whileCond_90:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -101,15 +102,15 @@ whileCond_93:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_normalize_ whileBody_93 next_190
+	# condBr cond_normalize_ whileBody_90 next_185
 
 	# fetch variables
 	li t4, 128
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_190
-	j whileBody_93
-whileBody_93:
+	beqz t1, next_185
+	j whileBody_90
+whileBody_90:
 
 	# load i lv$1
 
@@ -144,6 +145,7 @@ whileBody_93:
 	sd t0, 112(sp)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -221,13 +223,13 @@ whileBody_93:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_93
-	j whileCond_93
-next_190:
+	# br whileCond_90
+	j whileCond_90
+next_185:
 
-	# br whileCond_94
-	j whileCond_94
-whileCond_94:
+	# br whileCond_91
+	j whileCond_91
+whileCond_91:
 
 	# load i$2 lv$1
 
@@ -256,15 +258,15 @@ whileCond_94:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_normalize_$1 whileBody_94 next_191
+	# condBr cond_normalize_$1 whileBody_91 next_186
 
 	# fetch variables
 	li t4, 72
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_191
-	j whileBody_94
-whileBody_94:
+	beqz t1, next_186
+	j whileBody_91
+whileBody_91:
 
 	# load i$3 lv$1
 
@@ -397,9 +399,9 @@ whileBody_94:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_94
-	j whileCond_94
-next_191:
+	# br whileCond_91
+	j whileCond_91
+next_186:
 
 	# load sum$1 lv$2
 

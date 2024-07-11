@@ -27,16 +27,16 @@ moveEntry:
 	# allocate lv$1
 	li t0, 32
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 40(sp)
+	li t1, 40
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 16
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 24(sp)
+	li t1, 24
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -92,6 +92,7 @@ moveEntry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -112,6 +113,7 @@ moveEntry:
 	# fetch variables
 	li t1, 32
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -147,6 +149,7 @@ moveEntry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -167,6 +170,7 @@ moveEntry:
 	# fetch variables
 	li t1, 44
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -187,6 +191,7 @@ moveEntry:
 	# fetch variables
 	li t1, 32
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -230,9 +235,12 @@ hanoiEntry:
 
 	# get address of local var:1
 	sd a1, 224(sp)
-
-	# get address of local var:2
-	sd a2, 216(sp)
+	li t4, 256
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 216
+	add t4, sp, t4
+	sd t3, 0(t4)
 	li t4, 248
 	add t4, sp, t4
 	ld t3, 0(t4)
@@ -243,30 +251,30 @@ hanoiEntry:
 	# allocate lv$3
 	li t0, 192
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 200(sp)
+	li t1, 200
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 176
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 184(sp)
+	li t1, 184
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 160
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 168(sp)
+	li t1, 168
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 144
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 152(sp)
+	li t1, 152
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -387,15 +395,15 @@ hanoiEntry:
 	seqz t0, t0
 	sd t0, 112(sp)
 
-	# condBr cond_ ifTrue_15 ifFalse_2
+	# condBr cond_ ifTrue_13 ifFalse_1
 
 	# fetch variables
 	li t4, 112
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_2
-	j ifTrue_15
-ifTrue_15:
+	beqz t1, ifFalse_1
+	j ifTrue_13
+ifTrue_13:
 
 	# load one lv$1
 
@@ -436,6 +444,7 @@ ifTrue_15:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a1, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -451,9 +460,9 @@ ifTrue_15:
 	# release params
 	addi sp, sp, 0
 
-	# br next_32
-	j next_32
-ifFalse_2:
+	# br next_27
+	j next_27
+ifFalse_1:
 
 	# load n$1 lv
 
@@ -537,14 +546,18 @@ ifFalse_2:
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a2, t1
+
+	# push three$1
+	sd t1, -8(sp)
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	addi sp, sp, -8
-	sd t1, 0(sp)
+
+	# push two
+	sd t1, -16(sp)
+	addi sp, sp, -16
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -558,7 +571,7 @@ ifFalse_2:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 16
 
 	# load one$2 lv$1
 
@@ -599,6 +612,7 @@ ifFalse_2:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a1, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -696,14 +710,18 @@ ifFalse_2:
 	li t4, 8
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a2, t1
+
+	# push one$3
+	sd t1, -8(sp)
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	addi sp, sp, -8
-	sd t1, 0(sp)
+
+	# push three$3
+	sd t1, -16(sp)
+	addi sp, sp, -16
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -717,11 +735,11 @@ ifFalse_2:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 16
 
-	# br next_32
-	j next_32
-next_32:
+	# br next_27
+	j next_27
+next_27:
 
 	# ret void
 	li t4, 240
@@ -744,11 +762,12 @@ mainEntry9:
 	# allocate lv
 	li t0, 64
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 72(sp)
+	li t1, 72
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -784,9 +803,9 @@ mainEntry9:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_17
-	j whileCond_17
-whileCond_17:
+	# br whileCond_14
+	j whileCond_14
+whileCond_14:
 
 	# load n lv
 
@@ -839,17 +858,18 @@ whileCond_17:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_ whileBody_17 next_33
+	# condBr cond_ whileBody_14 next_28
 
 	# fetch variables
 	li t4, 24
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_33
-	j whileBody_17
-whileBody_17:
+	beqz t1, next_28
+	j whileBody_14
+whileBody_14:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -882,12 +902,16 @@ whileBody_17:
 
 	# fetch variables
 	li t1, 2
-	mv a2, t1
+
+	# push 
+	sd t1, -8(sp)
 
 	# fetch variables
 	li t1, 3
-	addi sp, sp, -8
-	sd t1, 0(sp)
+
+	# push 
+	sd t1, -16(sp)
+	addi sp, sp, -16
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -901,13 +925,14 @@ whileBody_17:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 16
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -965,9 +990,9 @@ whileBody_17:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_17
-	j whileCond_17
-next_33:
+	# br whileCond_14
+	j whileCond_14
+next_28:
 
 	# ret 
 

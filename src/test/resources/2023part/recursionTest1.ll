@@ -51,7 +51,7 @@ next_5:                                          ; pred = %next_4
 }
 
 define i32 @main() {
-mainEntry9:
+mainEntry10:
   %lv = alloca i32, align 4
   %fib = call i32 @fib(i32 4)
   ret i32 %fib

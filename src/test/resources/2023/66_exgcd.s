@@ -23,9 +23,12 @@ exgcdEntry:
 
 	# get address of local var:1
 	sd a1, 400(sp)
-
-	# get address of local var:2
-	sd a2, 392(sp)
+	li t4, 432
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 392
+	add t4, sp, t4
+	sd t3, 0(t4)
 	li t4, 424
 	add t4, sp, t4
 	ld t3, 0(t4)
@@ -36,44 +39,44 @@ exgcdEntry:
 	# allocate lv$5
 	li t0, 368
 	add t0, sp, t0
-
-	# get address of local var:lv$5
-	sd t0, 376(sp)
+	li t1, 376
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$4
 	li t0, 352
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	sd t0, 360(sp)
+	li t1, 360
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 336
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 344(sp)
+	li t1, 344
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 320
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 328(sp)
+	li t1, 328
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 304
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 312(sp)
+	li t1, 312
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 288
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 296(sp)
+	li t1, 296
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -194,15 +197,15 @@ exgcdEntry:
 	seqz t0, t0
 	sd t0, 256(sp)
 
-	# condBr cond_ ifTrue_71 ifFalse_19
+	# condBr cond_ ifTrue_69 ifFalse_18
 
 	# fetch variables
 	li t4, 256
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_19
-	j ifTrue_71
-ifTrue_71:
+	beqz t1, ifFalse_18
+	j ifTrue_69
+ifTrue_69:
 
 	# load arr_ lv$2
 
@@ -320,7 +323,7 @@ ifTrue_71:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_19:
+ifFalse_18:
 
 	# load b$1 lv$1
 
@@ -419,14 +422,18 @@ ifFalse_19:
 	li t4, 176
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a2, t1
+
+	# push x$1
+	sd t1, -8(sp)
 
 	# fetch variables
 	li t4, 168
 	add t4, sp, t4
 	ld t1, 0(t4)
-	addi sp, sp, -8
-	sd t1, 0(sp)
+
+	# push y$1
+	sd t1, -16(sp)
+	addi sp, sp, -16
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -440,7 +447,7 @@ ifFalse_19:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 16
 
 	# get address of local var:exgcd
 	sd a0, 160(sp)
@@ -823,30 +830,30 @@ mainEntry39:
 	# allocate lv$3
 	li t0, 192
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 200(sp)
+	li t1, 200
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 176
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 184(sp)
+	li t1, 184
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 160
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 168(sp)
+	li t1, 168
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 144
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 152(sp)
+	li t1, 152
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -1020,14 +1027,18 @@ mainEntry39:
 	li t4, 104
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a2, t1
+
+	# push x
+	sd t1, -8(sp)
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	addi sp, sp, -8
-	sd t1, 0(sp)
+
+	# push y
+	sd t1, -16(sp)
+	addi sp, sp, -16
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1041,7 +1052,7 @@ mainEntry39:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 16
 
 	# get address of local var:exgcd
 	sd a0, 88(sp)
@@ -1228,6 +1239,7 @@ mainEntry39:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

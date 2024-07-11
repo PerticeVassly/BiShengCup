@@ -27,9 +27,9 @@ funcEntry3:
 	# allocate lv
 	li t0, 40
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 48(sp)
+	li t1, 48
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -119,6 +119,7 @@ funcEntry3:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -172,11 +173,12 @@ mainEntry38:
 	# allocate lv
 	li t0, 312
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 320(sp)
+	li t1, 320
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -263,15 +265,15 @@ mainEntry38:
 	seqz t0, t0
 	sd t0, 272(sp)
 
-	# condBr cond_ secondCond_41 ifFalse_14
+	# condBr cond_ secondCond_41 ifFalse_13
 
 	# fetch variables
 	li t4, 272
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_14
+	beqz t1, ifFalse_13
 	j secondCond_41
-ifTrue_66:
+ifTrue_64:
 
 	# lv 
 
@@ -288,9 +290,9 @@ ifTrue_66:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_139
-	j next_139
-ifFalse_14:
+	# br next_134
+	j next_134
+ifFalse_13:
 
 	# lv 
 
@@ -307,11 +309,12 @@ ifFalse_14:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_139
-	j next_139
-next_139:
+	# br next_134
+	j next_134
+next_134:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -398,13 +401,13 @@ next_139:
 	seqz t0, t0
 	sd t0, 232(sp)
 
-	# condBr cond_$1 secondCond_42 ifFalse_15
+	# condBr cond_$1 secondCond_42 ifFalse_14
 
 	# fetch variables
 	li t4, 232
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_15
+	beqz t1, ifFalse_14
 	j secondCond_42
 secondCond_41:
 
@@ -428,6 +431,7 @@ secondCond_41:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -460,15 +464,15 @@ secondCond_41:
 	seqz t0, t0
 	sd t0, 208(sp)
 
-	# condBr cond_normalize_ ifTrue_66 ifFalse_14
+	# condBr cond_normalize_ ifTrue_64 ifFalse_13
 
 	# fetch variables
 	li t4, 208
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_14
-	j ifTrue_66
-ifTrue_67:
+	beqz t1, ifFalse_13
+	j ifTrue_64
+ifTrue_65:
 
 	# lv 
 
@@ -485,9 +489,9 @@ ifTrue_67:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_140
-	j next_140
-ifFalse_15:
+	# br next_135
+	j next_135
+ifFalse_14:
 
 	# lv 
 
@@ -504,11 +508,12 @@ ifFalse_15:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_140
-	j next_140
-next_140:
+	# br next_135
+	j next_135
+next_135:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -596,14 +601,14 @@ next_140:
 	seqz t0, t0
 	sd t0, 168(sp)
 
-	# condBr cond_$2 ifTrue_68 secondCond_43
+	# condBr cond_$2 ifTrue_66 secondCond_43
 
 	# fetch variables
 	li t4, 168
 	add t4, sp, t4
 	ld t1, 0(t4)
 	beqz t1, secondCond_43
-	j ifTrue_68
+	j ifTrue_66
 secondCond_42:
 
 	# load i$3 lv
@@ -626,6 +631,7 @@ secondCond_42:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -658,15 +664,15 @@ secondCond_42:
 	seqz t0, t0
 	sd t0, 144(sp)
 
-	# condBr cond_normalize_$1 ifTrue_67 ifFalse_15
+	# condBr cond_normalize_$1 ifTrue_65 ifFalse_14
 
 	# fetch variables
 	li t4, 144
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_15
-	j ifTrue_67
-ifTrue_68:
+	beqz t1, ifFalse_14
+	j ifTrue_65
+ifTrue_66:
 
 	# lv 
 
@@ -683,9 +689,9 @@ ifTrue_68:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_141
-	j next_141
-ifFalse_16:
+	# br next_136
+	j next_136
+ifFalse_15:
 
 	# lv 
 
@@ -702,11 +708,12 @@ ifFalse_16:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_141
-	j next_141
-next_141:
+	# br next_136
+	j next_136
+next_136:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -794,14 +801,14 @@ next_141:
 	seqz t0, t0
 	sd t0, 104(sp)
 
-	# condBr cond_$3 ifTrue_69 secondCond_44
+	# condBr cond_$3 ifTrue_67 secondCond_44
 
 	# fetch variables
 	li t4, 104
 	add t4, sp, t4
 	ld t1, 0(t4)
 	beqz t1, secondCond_44
-	j ifTrue_69
+	j ifTrue_67
 secondCond_43:
 
 	# load i$5 lv
@@ -824,6 +831,7 @@ secondCond_43:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -856,15 +864,15 @@ secondCond_43:
 	seqz t0, t0
 	sd t0, 80(sp)
 
-	# condBr cond_normalize_$2 ifTrue_68 ifFalse_16
+	# condBr cond_normalize_$2 ifTrue_66 ifFalse_15
 
 	# fetch variables
 	li t4, 80
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_16
-	j ifTrue_68
-ifTrue_69:
+	beqz t1, ifFalse_15
+	j ifTrue_66
+ifTrue_67:
 
 	# lv 
 
@@ -881,9 +889,9 @@ ifTrue_69:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_142
-	j next_142
-ifFalse_17:
+	# br next_137
+	j next_137
+ifFalse_16:
 
 	# lv 
 
@@ -900,15 +908,16 @@ ifFalse_17:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_142
-	j next_142
-next_142:
+	# br next_137
+	j next_137
+next_137:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 99
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -980,13 +989,13 @@ next_142:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_normalize_$4 secondCond_45 ifFalse_18
+	# condBr cond_normalize_$4 secondCond_45 ifFalse_17
 
 	# fetch variables
 	li t4, 40
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_18
+	beqz t1, ifFalse_17
 	j secondCond_45
 secondCond_44:
 
@@ -1010,6 +1019,7 @@ secondCond_44:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1042,15 +1052,15 @@ secondCond_44:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_normalize_$3 ifTrue_69 ifFalse_17
+	# condBr cond_normalize_$3 ifTrue_67 ifFalse_16
 
 	# fetch variables
 	li t4, 16
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_17
-	j ifTrue_69
-ifTrue_70:
+	beqz t1, ifFalse_16
+	j ifTrue_67
+ifTrue_68:
 
 	# lv 
 
@@ -1067,9 +1077,9 @@ ifTrue_70:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_143
-	j next_143
-ifFalse_18:
+	# br next_138
+	j next_138
+ifFalse_17:
 
 	# lv 
 
@@ -1086,9 +1096,9 @@ ifFalse_18:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_143
-	j next_143
-next_143:
+	# br next_138
+	j next_138
+next_138:
 
 	# ret 
 
@@ -1105,6 +1115,7 @@ secondCond_45:
 	# fetch variables
 	li t1, 100
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1137,11 +1148,11 @@ secondCond_45:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_$5 ifTrue_70 ifFalse_18
+	# condBr cond_normalize_$5 ifTrue_68 ifFalse_17
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_18
-	j ifTrue_70
+	beqz t1, ifFalse_17
+	j ifTrue_68

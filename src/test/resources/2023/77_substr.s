@@ -27,16 +27,16 @@ MAXEntry:
 	# allocate lv$1
 	li t0, 120
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 128(sp)
+	li t1, 128
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 104
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 112(sp)
+	li t1, 112
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -138,15 +138,15 @@ MAXEntry:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_ ifTrue_117 ifFalse_27
+	# condBr cond_ ifTrue_115 ifFalse_26
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_27
-	j ifTrue_117
-ifTrue_117:
+	beqz t1, ifFalse_26
+	j ifTrue_115
+ifTrue_115:
 
 	# load a$1 lv
 
@@ -174,7 +174,7 @@ ifTrue_117:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_27:
+ifFalse_26:
 
 	# load a$2 lv
 
@@ -242,15 +242,15 @@ ifFalse_27:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_$1 ifTrue_118 ifFalse_28
+	# condBr cond_$1 ifTrue_116 ifFalse_27
 
 	# fetch variables
 	li t4, 16
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_28
-	j ifTrue_118
-ifTrue_118:
+	beqz t1, ifFalse_27
+	j ifTrue_116
+ifTrue_116:
 
 	# load a$3 lv
 
@@ -278,7 +278,7 @@ ifTrue_118:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_28:
+ifFalse_27:
 
 	# load b$2 lv$1
 
@@ -331,30 +331,30 @@ max_sum_nonadjacentEntry:
 	# allocate lv$3
 	li t0, 608
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 616(sp)
+	li t1, 616
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 472
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 600(sp)
+	li t1, 600
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 456
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 464(sp)
+	li t1, 464
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 440
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 448(sp)
+	li t1, 448
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -1095,6 +1095,7 @@ max_sum_nonadjacentEntry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a1, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1145,9 +1146,9 @@ max_sum_nonadjacentEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_102
-	j whileCond_102
-whileCond_102:
+	# br whileCond_99
+	j whileCond_99
+whileCond_99:
 
 	# load i lv$3
 
@@ -1214,15 +1215,15 @@ whileCond_102:
 	seqz t0, t0
 	sd t0, 176(sp)
 
-	# condBr cond_ whileBody_102 next_221
+	# condBr cond_ whileBody_99 next_216
 
 	# fetch variables
 	li t4, 176
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_221
-	j whileBody_102
-whileBody_102:
+	beqz t1, next_216
+	j whileBody_99
+whileBody_99:
 
 	# load i$1 lv$3
 
@@ -1455,6 +1456,7 @@ whileBody_102:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a1, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1532,9 +1534,9 @@ whileBody_102:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_102
-	j whileCond_102
-next_221:
+	# br whileCond_99
+	j whileCond_99
+next_216:
 
 	# load n$1 lv$1
 
@@ -1631,11 +1633,12 @@ longest_common_subseqEntry:
 	li t4, 6752
 	add t4, sp, t4
 	sd a1, 0(t4)
-
-	# get address of local var:2
+	li t4, 6784
+	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 6744
 	add t4, sp, t4
-	sd a2, 0(t4)
+	sd t3, 0(t4)
 	li t4, 6776
 	add t4, sp, t4
 	ld t3, 0(t4)
@@ -1646,65 +1649,51 @@ longest_common_subseqEntry:
 	# allocate lv$6
 	li t0, 6720
 	add t0, sp, t0
-
-	# get address of local var:lv$6
-	li t4, 6728
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 6728
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$5
 	li t0, 6704
 	add t0, sp, t0
-
-	# get address of local var:lv$5
-	li t4, 6712
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 6712
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$4
 	li t0, 4648
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	li t4, 6696
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 6696
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 4632
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	li t4, 4640
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 4640
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 4616
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	li t4, 4624
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 4624
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 4600
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	li t4, 4608
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 4608
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 4584
 	add t0, sp, t0
-
-	# get address of local var:lv
-	li t4, 4592
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 4592
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -15229,9 +15218,9 @@ longest_common_subseqEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_103
-	j whileCond_103
-whileCond_103:
+	# br whileCond_100
+	j whileCond_100
+whileCond_100:
 
 	# load i lv$5
 
@@ -15300,15 +15289,15 @@ whileCond_103:
 	seqz t0, t0
 	sd t0, 448(sp)
 
-	# condBr cond_ whileBody_103 next_222
+	# condBr cond_ whileBody_100 next_217
 
 	# fetch variables
 	li t4, 448
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_222
-	j whileBody_103
-whileBody_103:
+	beqz t1, next_217
+	j whileBody_100
+whileBody_100:
 
 	# lv$6 
 
@@ -15325,9 +15314,9 @@ whileBody_103:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_104
-	j whileCond_104
-next_222:
+	# br whileCond_101
+	j whileCond_101
+next_217:
 
 	# load len1$1 lv$1
 
@@ -15419,7 +15408,7 @@ next_222:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_104:
+whileCond_101:
 
 	# load j lv$6
 
@@ -15488,15 +15477,15 @@ whileCond_104:
 	seqz t0, t0
 	sd t0, 368(sp)
 
-	# condBr cond_$1 whileBody_104 next_223
+	# condBr cond_$1 whileBody_101 next_218
 
 	# fetch variables
 	li t4, 368
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_223
-	j whileBody_104
-whileBody_104:
+	beqz t1, next_218
+	j whileBody_101
+whileBody_101:
 
 	# load i$1 lv$5
 
@@ -15678,15 +15667,15 @@ whileBody_104:
 	seqz t0, t0
 	sd t0, 264(sp)
 
-	# condBr cond_$2 ifTrue_119 ifFalse_29
+	# condBr cond_$2 ifTrue_117 ifFalse_28
 
 	# fetch variables
 	li t4, 264
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_29
-	j ifTrue_119
-next_223:
+	beqz t1, ifFalse_28
+	j ifTrue_117
+next_218:
 
 	# load i$7 lv$5
 
@@ -15730,9 +15719,9 @@ next_223:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_103
-	j whileCond_103
-ifTrue_119:
+	# br whileCond_100
+	j whileCond_100
+ifTrue_117:
 
 	# load i$2 lv$5
 
@@ -15928,9 +15917,9 @@ ifTrue_119:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_224
-	j next_224
-ifFalse_29:
+	# br next_219
+	j next_219
+ifFalse_28:
 
 	# load i$4 lv$5
 
@@ -16187,6 +16176,7 @@ ifFalse_29:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a1, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -16222,9 +16212,9 @@ ifFalse_29:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_224
-	j next_224
-next_224:
+	# br next_219
+	j next_219
+next_219:
 
 	# load j$7 lv$6
 
@@ -16268,8 +16258,8 @@ next_224:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_104
-	j whileCond_104
+	# br whileCond_101
+	j whileCond_101
 .type main, @function
 .globl main
 main:
@@ -16284,30 +16274,30 @@ mainEntry53:
 	# allocate lv$3
 	li t0, 520
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 528(sp)
+	li t1, 528
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 504
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 512(sp)
+	li t1, 512
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 392
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 496(sp)
+	li t1, 496
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 264
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 384(sp)
+	li t1, 384
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# gep inp 
 
@@ -17233,6 +17223,7 @@ mainEntry53:
 	# fetch variables
 	li t1, 15
 	mv a1, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -17258,6 +17249,7 @@ mainEntry53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -17278,6 +17270,7 @@ mainEntry53:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -17343,12 +17336,16 @@ mainEntry53:
 	li t4, 8
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a2, t1
+
+	# push B
+	sd t1, -8(sp)
 
 	# fetch variables
 	li t1, 13
-	addi sp, sp, -8
-	sd t1, 0(sp)
+
+	# push 
+	sd t1, -16(sp)
+	addi sp, sp, -16
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -17362,7 +17359,7 @@ mainEntry53:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 16
 
 	# get address of local var:longest_common_subseq
 	sd a0, 0(sp)
@@ -17374,6 +17371,7 @@ mainEntry53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -17394,6 +17392,7 @@ mainEntry53:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

@@ -24,16 +24,16 @@ reverseEntry:
 	# allocate lv$1
 	li t0, 96
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 104(sp)
+	li t1, 104
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 80
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 88(sp)
+	li t1, 88
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -104,17 +104,18 @@ reverseEntry:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ ifTrue_121 ifFalse_31
+	# condBr cond_ ifTrue_119 ifFalse_30
 
 	# fetch variables
 	li t4, 48
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_31
-	j ifTrue_121
-ifTrue_121:
+	beqz t1, ifFalse_30
+	j ifTrue_119
+ifTrue_119:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -170,6 +171,7 @@ ifTrue_121:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -185,11 +187,12 @@ ifTrue_121:
 	# release params
 	addi sp, sp, 0
 
-	# br next_226
-	j next_226
-ifFalse_31:
+	# br next_221
+	j next_221
+ifFalse_30:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -257,6 +260,7 @@ ifFalse_31:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -292,6 +296,7 @@ ifFalse_31:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -307,9 +312,9 @@ ifFalse_31:
 	# release params
 	addi sp, sp, 0
 
-	# br next_226
-	j next_226
-next_226:
+	# br next_221
+	j next_221
+next_221:
 
 	# ret void
 	li t4, 120
@@ -332,9 +337,9 @@ mainEntry55:
 	# allocate lv
 	li t0, 8
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 16(sp)
+	li t1, 16
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -371,6 +376,7 @@ mainEntry55:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

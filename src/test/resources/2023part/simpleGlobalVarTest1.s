@@ -25,9 +25,9 @@ mainEntry5:
 	# allocate lv
 	li t0, 40
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 48(sp)
+	li t1, 48
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# load a gv
 

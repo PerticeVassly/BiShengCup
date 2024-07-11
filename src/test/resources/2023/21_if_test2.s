@@ -21,16 +21,16 @@ ifElseIfEntry:
 	# allocate lv$1
 	li t0, 256
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 264(sp)
+	li t1, 264
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 240
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 248(sp)
+	li t1, 248
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -113,15 +113,15 @@ ifElseIfEntry:
 	seqz t0, t0
 	sd t0, 208(sp)
 
-	# condBr cond_ ifTrue_144 secondCond_77
+	# condBr cond_ ifTrue_142 secondCond_77
 
 	# fetch variables
 	li t4, 208
 	add t4, sp, t4
 	ld t1, 0(t4)
 	beqz t1, secondCond_77
-	j ifTrue_144
-ifTrue_144:
+	j ifTrue_142
+ifTrue_142:
 
 	# load a$1 lv
 
@@ -149,7 +149,7 @@ ifTrue_144:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_36:
+ifFalse_35:
 
 	# load b$1 lv$1
 
@@ -202,15 +202,15 @@ ifFalse_36:
 	seqz t0, t0
 	sd t0, 168(sp)
 
-	# condBr cond_$2 secondCond_78 ifFalse_37
+	# condBr cond_$2 secondCond_78 ifFalse_36
 
 	# fetch variables
 	li t4, 168
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_37
+	beqz t1, ifFalse_36
 	j secondCond_78
-next_276:
+next_271:
 
 	# load a$6 lv
 
@@ -291,15 +291,15 @@ secondCond_77:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_$1 ifTrue_144 ifFalse_36
+	# condBr cond_$1 ifTrue_142 ifFalse_35
 
 	# fetch variables
 	li t4, 128
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_36
-	j ifTrue_144
-ifTrue_145:
+	beqz t1, ifFalse_35
+	j ifTrue_142
+ifTrue_143:
 
 	# lv 
 
@@ -316,9 +316,9 @@ ifTrue_145:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_277
-	j next_277
-ifFalse_37:
+	# br next_272
+	j next_272
+ifFalse_36:
 
 	# load b$2 lv$1
 
@@ -371,18 +371,18 @@ ifFalse_37:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_$4 secondCond_79 ifFalse_38
+	# condBr cond_$4 secondCond_79 ifFalse_37
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_38
+	beqz t1, ifFalse_37
 	j secondCond_79
-next_277:
+next_272:
 
-	# br next_276
-	j next_276
+	# br next_271
+	j next_271
 secondCond_78:
 
 	# load a$2 lv
@@ -436,15 +436,15 @@ secondCond_78:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$3 ifTrue_145 ifFalse_37
+	# condBr cond_$3 ifTrue_143 ifFalse_36
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_37
-	j ifTrue_145
-ifTrue_146:
+	beqz t1, ifFalse_36
+	j ifTrue_143
+ifTrue_144:
 
 	# load a$4 lv
 
@@ -488,9 +488,9 @@ ifTrue_146:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_278
-	j next_278
-ifFalse_38:
+	# br next_273
+	j next_273
+ifFalse_37:
 
 	# load a$5 lv
 
@@ -534,12 +534,12 @@ ifFalse_38:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_278
-	j next_278
-next_278:
+	# br next_273
+	j next_273
+next_273:
 
-	# br next_277
-	j next_277
+	# br next_272
+	j next_272
 secondCond_79:
 
 	# load a$3 lv
@@ -593,14 +593,14 @@ secondCond_79:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$5 ifTrue_146 ifFalse_38
+	# condBr cond_$5 ifTrue_144 ifFalse_37
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_38
-	j ifTrue_146
+	beqz t1, ifFalse_37
+	j ifTrue_144
 .type main, @function
 .globl main
 main:
@@ -613,6 +613,7 @@ mainEntry70:
 	# save the parameters
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -638,6 +639,7 @@ mainEntry70:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

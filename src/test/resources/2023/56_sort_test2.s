@@ -27,30 +27,30 @@ insertsortEntry1:
 	# allocate lv$3
 	li t0, 368
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 376(sp)
+	li t1, 376
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 352
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 360(sp)
+	li t1, 360
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 336
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 344(sp)
+	li t1, 344
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 320
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 328(sp)
+	li t1, 328
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -84,9 +84,9 @@ insertsortEntry1:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_105
-	j whileCond_105
-whileCond_105:
+	# br whileCond_102
+	j whileCond_102
+whileCond_102:
 
 	# load i lv$1
 
@@ -151,15 +151,15 @@ whileCond_105:
 	seqz t0, t0
 	sd t0, 280(sp)
 
-	# condBr cond_ whileBody_105 next_227
+	# condBr cond_ whileBody_102 next_222
 
 	# fetch variables
 	li t4, 280
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_227
-	j whileBody_105
-whileBody_105:
+	beqz t1, next_222
+	j whileBody_102
+whileBody_102:
 
 	# load i$1 lv$1
 
@@ -278,9 +278,9 @@ whileBody_105:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_106
-	j whileCond_106
-next_227:
+	# br whileCond_103
+	j whileCond_103
+next_222:
 
 	# ret 
 
@@ -293,7 +293,7 @@ next_227:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_106:
+whileCond_103:
 
 	# load j lv$3
 
@@ -346,15 +346,15 @@ whileCond_106:
 	seqz t0, t0
 	sd t0, 200(sp)
 
-	# condBr cond_$1 secondCond_68 next_228
+	# condBr cond_$1 secondCond_68 next_223
 
 	# fetch variables
 	li t4, 200
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_228
+	beqz t1, next_223
 	j secondCond_68
-whileBody_106:
+whileBody_103:
 
 	# load j$2 lv$3
 
@@ -530,9 +530,9 @@ whileBody_106:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_106
-	j whileCond_106
-next_228:
+	# br whileCond_103
+	j whileCond_103
+next_223:
 
 	# load j$5 lv$3
 
@@ -663,8 +663,8 @@ next_228:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_105
-	j whileCond_105
+	# br whileCond_102
+	j whileCond_102
 secondCond_68:
 
 	# load temp lv$2
@@ -777,14 +777,14 @@ secondCond_68:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$2 whileBody_106 next_228
+	# condBr cond_$2 whileBody_103 next_223
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_228
-	j whileBody_106
+	beqz t1, next_223
+	j whileBody_103
 .type main, @function
 .globl main
 main:
@@ -799,23 +799,23 @@ mainEntry56:
 	# allocate lv$2
 	li t0, 296
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 304(sp)
+	li t1, 304
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 280
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 288(sp)
+	li t1, 288
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 192
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 272(sp)
+	li t1, 272
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# gv @
 
@@ -1174,6 +1174,7 @@ mainEntry56:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1209,9 +1210,9 @@ mainEntry56:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_107
-	j whileCond_107
-whileCond_107:
+	# br whileCond_104
+	j whileCond_104
+whileCond_104:
 
 	# load i lv$1
 
@@ -1276,15 +1277,15 @@ whileCond_107:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ whileBody_107 next_229
+	# condBr cond_ whileBody_104 next_224
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_229
-	j whileBody_107
-whileBody_107:
+	beqz t1, next_224
+	j whileBody_104
+whileBody_104:
 
 	# load i$1 lv$1
 
@@ -1368,6 +1369,7 @@ whileBody_107:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1418,6 +1420,7 @@ whileBody_107:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1475,9 +1478,9 @@ whileBody_107:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_107
-	j whileCond_107
-next_229:
+	# br whileCond_104
+	j whileCond_104
+next_224:
 
 	# ret 
 

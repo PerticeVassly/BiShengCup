@@ -16,16 +16,16 @@ mainEntry84:
 	# allocate lv$1
 	li t0, 168
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 176(sp)
+	li t1, 176
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 152
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 160(sp)
+	li t1, 160
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -282,15 +282,15 @@ mainEntry84:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_normalize_ ifTrue_169 ifFalse_54
+	# condBr cond_normalize_ ifTrue_167 ifFalse_53
 
 	# fetch variables
 	li t4, 24
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_54
-	j ifTrue_169
-ifTrue_169:
+	beqz t1, ifFalse_53
+	j ifTrue_167
+ifTrue_167:
 
 	# lv 
 
@@ -307,9 +307,9 @@ ifTrue_169:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_320
-	j next_320
-ifFalse_54:
+	# br next_315
+	j next_315
+ifFalse_53:
 
 	# load b$1 lv$1
 
@@ -353,9 +353,9 @@ ifFalse_54:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_320
-	j next_320
-next_320:
+	# br next_315
+	j next_315
+next_315:
 
 	# load a$2 lv
 
@@ -377,6 +377,7 @@ next_320:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

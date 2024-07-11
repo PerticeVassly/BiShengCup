@@ -16,43 +16,37 @@ mainEntry30:
 	# allocate lv$4
 	li t0, 1096
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	li t4, 1160
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1160
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 1024
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	li t4, 1088
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1088
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 952
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	li t4, 1016
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1016
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 880
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 944(sp)
+	li t1, 944
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 808
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 872(sp)
+	li t1, 872
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# gep ptr_ 
 

@@ -16,16 +16,16 @@ mainEntry12:
 	# allocate lv$1
 	li t0, 144
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 152(sp)
+	li t1, 152
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 128
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 136(sp)
+	li t1, 136
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -57,9 +57,9 @@ mainEntry12:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_19
-	j whileCond_19
-whileCond_19:
+	# br whileCond_16
+	j whileCond_16
+whileCond_16:
 
 	# load i lv
 
@@ -111,15 +111,15 @@ whileCond_19:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_ whileBody_19 next_35
+	# condBr cond_ whileBody_16 next_30
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_35
-	j whileBody_19
-whileBody_19:
+	beqz t1, next_30
+	j whileBody_16
+whileBody_16:
 
 	# load i$1 lv
 
@@ -172,15 +172,15 @@ whileBody_19:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$1 ifTrue_16 next_36
+	# condBr cond_$1 ifTrue_14 next_31
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_36
-	j ifTrue_16
-next_35:
+	beqz t1, next_31
+	j ifTrue_14
+next_30:
 
 	# load sum$1 lv$1
 
@@ -205,7 +205,7 @@ next_35:
 	li t4, 160
 	add sp, sp, t4
 	ret 
-ifTrue_16:
+ifTrue_14:
 
 	# load i$2 lv
 
@@ -249,12 +249,12 @@ ifTrue_16:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_19
-	j whileCond_19
+	# br whileCond_16
+	j whileCond_16
 
-	# br next_36
-	j next_36
-next_36:
+	# br next_31
+	j next_31
+next_31:
 
 	# load sum lv$1
 
@@ -355,5 +355,5 @@ next_36:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_19
-	j whileCond_19
+	# br whileCond_16
+	j whileCond_16

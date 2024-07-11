@@ -27,37 +27,37 @@ g1Entry:
 	# allocate lv$4
 	li t0, 96
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	sd t0, 104(sp)
+	li t1, 104
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 80
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 88(sp)
+	li t1, 88
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 64
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 72(sp)
+	li t1, 72
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 48
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 56(sp)
+	li t1, 56
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 32
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 40(sp)
+	li t1, 40
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -231,16 +231,16 @@ f1Entry:
 	# allocate lv$1
 	li t0, 72
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 80(sp)
+	li t1, 80
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 56
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 64(sp)
+	li t1, 64
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
