@@ -23,7 +23,7 @@ declare void @memset(i32*, i32, i32)
 @gv4 = global i32 4, align 4
 
 define i32 @main() {
-mainEntry94:
+mainEntry93:
   %lv = alloca i32, align 4
   store i32 0, i32* %lv, align 4
   %a = load i32, i32* @gv, align 4
@@ -37,19 +37,19 @@ mainEntry94:
   %cond_eq_tmp_ = icmp eq i32 %result_$1, %result_$2
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %secondCond_133, label %secondCond_132
+  br i1 %cond_, label %secondCond_90, label %secondCond_89
 
-ifTrue_367:                                            ; pred = %secondCond_133, %secondCond_132
+ifTrue_199:                                           ; pred = %secondCond_90, %secondCond_89
   store i32 1, i32* %lv, align 4
-  br label %next_645
+  br label %next_389
 
-next_645:                                              ; pred = %secondCond_132, %ifTrue_367
+next_389:                                             ; pred = %secondCond_89, %ifTrue_199
   %flag = load i32, i32* %lv, align 4
   call void @putint(i32 %flag)
   %flag$1 = load i32, i32* %lv, align 4
   ret i32 %flag$1
 
-secondCond_132:                                        ; pred = %mainEntry94, %secondCond_133
+secondCond_89:                                        ; pred = %mainEntry93, %secondCond_90
   %a$3 = load i32, i32* @gv, align 4
   %b$2 = load i32, i32* @gv1, align 4
   %c$2 = load i32, i32* @gv2, align 4
@@ -63,9 +63,9 @@ secondCond_132:                                        ; pred = %mainEntry94, %s
   %cond_eq_tmp_$1 = icmp eq i32 %result_$8, %result_$10
   %cond_tmp_$2 = zext i1 %cond_eq_tmp_$1 to i32
   %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %ifTrue_367, label %next_645
+  br i1 %cond_$2, label %ifTrue_199, label %next_389
 
-secondCond_133:                                        ; pred = %mainEntry94
+secondCond_90:                                        ; pred = %mainEntry93
   %a$1 = load i32, i32* @gv, align 4
   %a$2 = load i32, i32* @gv, align 4
   %b$1 = load i32, i32* @gv1, align 4
@@ -79,6 +79,6 @@ secondCond_133:                                        ; pred = %mainEntry94
   %cond_le_tmp_ = icmp sle i32 %result_$5, %result_$6
   %cond_tmp_$1 = zext i1 %cond_le_tmp_ to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_367, label %secondCond_132
+  br i1 %cond_$1, label %ifTrue_199, label %secondCond_89
 }
 

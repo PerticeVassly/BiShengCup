@@ -29,37 +29,37 @@ select_sortEntry:
   store i32* %0, i32** %lv, align 4
   store i32 %1, i32* %lv$1, align 4
   store i32 0, i32* %lv$2, align 4
-  br label %whileCond_195
+  br label %whileCond_107
 
-whileCond_195:                                           ; pred = %select_sortEntry, %next_479
+whileCond_107:                                           ; pred = %select_sortEntry, %next_223
   %i = load i32, i32* %lv$2, align 4
   %n = load i32, i32* %lv$1, align 4
   %result_ = sub i32 %n, 1
   %cond_lt_tmp_ = icmp slt i32 %i, %result_
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_195, label %next_476
+  br i1 %cond_, label %whileBody_107, label %next_220
 
-whileBody_195:                                           ; pred = %whileCond_195
+whileBody_107:                                           ; pred = %whileCond_107
   %i$1 = load i32, i32* %lv$2, align 4
   store i32 %i$1, i32* %lv$4, align 4
   %i$2 = load i32, i32* %lv$2, align 4
   %result_$1 = add i32 %i$2, 1
   store i32 %result_$1, i32* %lv$3, align 4
-  br label %whileCond_196
+  br label %whileCond_108
 
-next_476:                                                ; pred = %whileCond_195
+next_220:                                                ; pred = %whileCond_107
   ret i32 0
 
-whileCond_196:                                           ; pred = %whileBody_195, %next_478
+whileCond_108:                                           ; pred = %whileBody_107, %next_222
   %j = load i32, i32* %lv$3, align 4
   %n$1 = load i32, i32* %lv$1, align 4
   %cond_lt_tmp_$1 = icmp slt i32 %j, %n$1
   %cond_tmp_$1 = zext i1 %cond_lt_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %whileBody_196, label %next_477
+  br i1 %cond_$1, label %whileBody_108, label %next_221
 
-whileBody_196:                                           ; pred = %whileCond_196
+whileBody_108:                                           ; pred = %whileCond_108
   %min = load i32, i32* %lv$4, align 4
   %arr_ = load i32*, i32** %lv, align 4
   %A = getelementptr i32, i32* %arr_, i32 %min
@@ -71,28 +71,28 @@ whileBody_196:                                           ; pred = %whileCond_196
   %cond_gt_tmp_ = icmp sgt i32 %A$1, %A$3
   %cond_tmp_$2 = zext i1 %cond_gt_tmp_ to i32
   %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %ifTrue_281, label %next_478
+  br i1 %cond_$2, label %ifTrue_113, label %next_222
 
-next_477:                                                ; pred = %whileCond_196
+next_221:                                                ; pred = %whileCond_108
   %min$1 = load i32, i32* %lv$4, align 4
   %i$3 = load i32, i32* %lv$2, align 4
   %cond_neq_tmp_ = icmp ne i32 %min$1, %i$3
   %cond_tmp_$3 = zext i1 %cond_neq_tmp_ to i32
   %cond_$3 = icmp ne i32 %cond_tmp_$3, 0
-  br i1 %cond_$3, label %ifTrue_282, label %next_479
+  br i1 %cond_$3, label %ifTrue_114, label %next_223
 
-ifTrue_281:                                              ; pred = %whileBody_196
+ifTrue_113:                                              ; pred = %whileBody_108
   %j$2 = load i32, i32* %lv$3, align 4
   store i32 %j$2, i32* %lv$4, align 4
-  br label %next_478
+  br label %next_222
 
-next_478:                                                ; pred = %whileBody_196, %ifTrue_281
+next_222:                                                ; pred = %whileBody_108, %ifTrue_113
   %j$3 = load i32, i32* %lv$3, align 4
   %result_$2 = add i32 %j$3, 1
   store i32 %result_$2, i32* %lv$3, align 4
-  br label %whileCond_196
+  br label %whileCond_108
 
-ifTrue_282:                                              ; pred = %next_477
+ifTrue_114:                                              ; pred = %next_221
   %min$2 = load i32, i32* %lv$4, align 4
   %arr_$2 = load i32*, i32** %lv, align 4
   %A$4 = getelementptr i32, i32* %arr_$2, i32 %min$2
@@ -111,17 +111,17 @@ ifTrue_282:                                              ; pred = %next_477
   %A$9 = getelementptr i32, i32* %arr_$5, i32 %i$5
   %tmp = load i32, i32* %lv$5, align 4
   store i32 %tmp, i32* %A$9, align 4
-  br label %next_479
+  br label %next_223
 
-next_479:                                                ; pred = %next_477, %ifTrue_282
+next_223:                                                ; pred = %next_221, %ifTrue_114
   %i$6 = load i32, i32* %lv$2, align 4
   %result_$3 = add i32 %i$6, 1
   store i32 %result_$3, i32* %lv$2, align 4
-  br label %whileCond_195
+  br label %whileCond_107
 }
 
 define i32 @main() {
-mainEntry49:
+mainEntry48:
   %lv$2 = alloca i32, align 4
   %lv$1 = alloca i32, align 4
   %lv = alloca [10 x i32], align 16
@@ -151,17 +151,17 @@ mainEntry49:
   %n = load i32, i32* @gv, align 4
   %select_sort = call i32 @select_sort(i32* %a$10, i32 %n)
   store i32 %select_sort, i32* %lv$1, align 4
-  br label %whileCond_197
+  br label %whileCond_109
 
-whileCond_197:                                        ; pred = %mainEntry49, %whileBody_197
+whileCond_109:                                        ; pred = %mainEntry48, %whileBody_109
   %i = load i32, i32* %lv$1, align 4
   %n$1 = load i32, i32* @gv, align 4
   %cond_lt_tmp_ = icmp slt i32 %i, %n$1
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_197, label %next_480
+  br i1 %cond_, label %whileBody_109, label %next_224
 
-whileBody_197:                                        ; pred = %whileCond_197
+whileBody_109:                                        ; pred = %whileCond_109
   %i$1 = load i32, i32* %lv$1, align 4
   %a$11 = getelementptr [10 x i32], [10 x i32]* %lv, i32 0, i32 %i$1
   %a$12 = load i32, i32* %a$11, align 4
@@ -174,9 +174,9 @@ whileBody_197:                                        ; pred = %whileCond_197
   %i$2 = load i32, i32* %lv$1, align 4
   %result_ = add i32 %i$2, 1
   store i32 %result_, i32* %lv$1, align 4
-  br label %whileCond_197
+  br label %whileCond_109
 
-next_480:                                             ; pred = %whileCond_197
+next_224:                                             ; pred = %whileCond_109
   ret i32 0
 }
 

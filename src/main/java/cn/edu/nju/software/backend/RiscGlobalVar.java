@@ -55,28 +55,27 @@ public class RiscGlobalVar {
                 for(ValueRef valueRef : initValues){
                     if(valueRef instanceof ConstValue){
                         if(valueRef.getType() instanceof IntType){
-                            if(((ConstValue) valueRef).castToInt()==0){
+                            if(((ConstValue) valueRef).getValue().equals(0)){
                                 zeroCount++;
                             }else {
                                 if(zeroCount>0){
-                                    System.out.println(".zero " + String.valueOf(zeroCount*8));
+                                    System.out.println(".zero " + zeroCount * 8);
                                     zeroCount=0;
                                 }
-                                System.out.println(".dword " + valueRef.toString());
+                                System.out.println(".dword " + valueRef);
                             }
 
                         }
                         else if(valueRef.getType() instanceof FloatType){
-                            if(((ConstValue) valueRef).castToInt()==0){
+                            if(((ConstValue) valueRef).getValue().equals(0)){
                                 zeroCount++;
                             }else {
                                 if(zeroCount>0){
-                                    System.out.println(".zero " + String.valueOf(zeroCount*8));
+                                    System.out.println(".zero " + zeroCount * 8);
                                     zeroCount=0;
                                 }
-                                System.out.println(".double " + valueRef.toString());
+                                System.out.println(".double " + valueRef);
                             }
-                            System.out.println(".double " + valueRef.toString());
                         }
                     }
                 }

@@ -19,9 +19,7 @@ declare void @memset(i32*, i32, i32)
 @gv = global [5 x i32] [i32 0, i32 1, i32 2, i32 3, i32 4], align 4
 
 define i32 @main() {
-mainEntry82:
-  %a = getelementptr [5 x i32], [5 x i32]* @gv, i32 0, i32 4
-  %a$1 = load i32, i32* %a, align 4
-  ret i32 %a$1
+mainEntry81:
+  ret i32 4
 }
 
