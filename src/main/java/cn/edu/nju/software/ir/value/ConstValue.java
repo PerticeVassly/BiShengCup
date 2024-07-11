@@ -44,26 +44,18 @@ public class ConstValue extends ValueRef {
         return value;
     }
 
-    public int castToInt() {
-        if (value instanceof Integer integer) {
-            return integer;
-        } else if (value instanceof Float floatVal) {
-            return (int)(float)floatVal;
-        } else if (value instanceof Boolean booleanVal) {
-            return booleanVal ? 1 : 0;
-        } else {
-            throw new RuntimeException("castToInt error");
-        }
-    }
-
-
     public String toString() {
         if (type instanceof IntType){
-            return value.toString();
+            if (value instanceof Integer) {
+                return value.toString();
+            } else {
+                // Float
+                return (int)((Float) value).floatValue() + "";
+            }
         } else if (type instanceof BoolType) {
             return value.toString();
         } else if (type instanceof FloatType) {
-            long floatBits = Double.doubleToRawLongBits((Float)value);
+            long floatBits = Double.doubleToRawLongBits(Float.parseFloat(value.toString()));
             String hex = Long.toHexString(floatBits);
             return "0x" + hex;
         } else {

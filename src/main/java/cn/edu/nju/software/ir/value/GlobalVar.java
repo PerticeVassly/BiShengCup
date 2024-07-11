@@ -11,13 +11,16 @@ public class GlobalVar extends ValueRef implements Variable {
     private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
     private final static ArrayList<Integer> usedFreqList = new ArrayList<Integer>(){{add(0);}};
     private ValueRef initVal;
-//    private boolean constant;
-//    /**
-//     * constant: if the variable is defined by const
-//     * */
-//    public boolean isConst() {
-//        return constant;
-//    }
+    private boolean constant;
+    /**
+     * constant: if the variable is defined by const
+     * */
+    public boolean isConst() {
+        return constant;
+    }
+    public void setConst(boolean constant) {
+        this.constant = constant;
+    }
     /**
      * value is for constant propagation
      */
