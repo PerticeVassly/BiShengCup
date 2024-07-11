@@ -320,6 +320,9 @@ next_180:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load mid$1 lv$2
 
 	# get address of lv$2 points to
@@ -370,6 +373,9 @@ next_180:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load l$3 lv
 
@@ -2077,6 +2083,9 @@ mainEntry42:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getarray
 	sd a0, 32(sp)
 
@@ -2132,6 +2141,9 @@ mainEntry42:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load n$1 lv
 
@@ -2202,6 +2214,9 @@ mainEntry42:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 

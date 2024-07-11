@@ -389,6 +389,9 @@ next_212:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# ret 
 
 	# fetch variables

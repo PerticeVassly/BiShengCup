@@ -683,6 +683,9 @@ whileBody_25:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load iNd__1X$2 lv$1
 
 	# get address of lv$1 points to
@@ -820,6 +823,9 @@ mainEntry8:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:putstr
 	sd a0, 240(sp)
@@ -1096,6 +1102,9 @@ ifTrue_30:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:putstr$1
 	sd a0, 128(sp)
 
@@ -1132,6 +1141,9 @@ ifTrue_30:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:putstr$2
 	sd a0, 112(sp)
@@ -1202,6 +1214,9 @@ ifTrue_30:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:putstr$3
 	sd a0, 80(sp)
 
@@ -1238,6 +1253,9 @@ ifTrue_30:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:putstr$4
 	sd a0, 64(sp)

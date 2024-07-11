@@ -9,9 +9,9 @@ public record RiscSpecifications() {
 
     private static final String[] calleeSavedRegs = new String[] {};
 
-    private static final String[] argRegs = new String[] {"a0", "a1", "a2", "a3"};
+    private static final String[] argRegs = new String[] {"a0", "a1", "a2"};
 
-    private static final String[] fArgRegs = new String[] {"fa0", "fa1", "fa2", "fa3"};
+    private static final String[] fArgRegs = new String[] {"fa0", "fa1", "fa2"};
 
     public static String[] getCallerSavedRegs() {
         return callerSavedRegs;

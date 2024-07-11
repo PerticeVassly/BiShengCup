@@ -248,6 +248,9 @@ next_373:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load flag$1 lv
 
 	# get address of lv points to

@@ -131,6 +131,9 @@ funcEntry1:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load g$2 gv
 
 	# get address of gv points to
@@ -185,6 +188,9 @@ mainEntry59:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint
 	sd a0, 304(sp)
@@ -318,6 +324,9 @@ next_255:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$1
 	sd a0, 264(sp)
 
@@ -431,6 +440,9 @@ secondCond_59:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func
 	sd a0, 216(sp)
 
@@ -508,6 +520,9 @@ next_256:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$2
 	sd a0, 200(sp)
@@ -623,6 +638,9 @@ secondCond_60:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func$1
 	sd a0, 152(sp)
 
@@ -700,6 +718,9 @@ next_257:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$3
 	sd a0, 136(sp)
@@ -815,6 +836,9 @@ secondCond_61:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func$2
 	sd a0, 88(sp)
 
@@ -896,6 +920,9 @@ next_258:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func$4
 	sd a0, 72(sp)
@@ -995,6 +1022,9 @@ secondCond_62:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func$3
 	sd a0, 24(sp)
 
@@ -1086,6 +1116,9 @@ secondCond_63:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:func$5
 	sd a0, 8(sp)

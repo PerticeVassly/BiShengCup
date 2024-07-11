@@ -2281,6 +2281,9 @@ next_269:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:QuickSort
 	sd a0, 520(sp)
 
@@ -2412,6 +2415,9 @@ next_269:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:QuickSort$1
 	sd a0, 472(sp)
@@ -8705,6 +8711,9 @@ mainEntry64:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:arrCopy
 	sd a0, 856(sp)
 
@@ -8760,6 +8769,9 @@ mainEntry64:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:revert
 	sd a0, 840(sp)
@@ -8954,6 +8966,9 @@ whileBody_144:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$2 lv$3
 
 	# get address of lv$3 points to
@@ -9035,6 +9050,9 @@ next_286:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:bubblesort
 	sd a0, 744(sp)
@@ -9229,6 +9247,9 @@ whileBody_145:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$5 lv$3
 
 	# get address of lv$3 points to
@@ -9311,6 +9332,9 @@ next_287:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getMid
 	sd a0, 648(sp)
 
@@ -9363,6 +9387,9 @@ next_287:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# gep result$8 
 
 	# fetch variables
@@ -9398,6 +9425,9 @@ next_287:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getMost
 	sd a0, 624(sp)
@@ -9450,6 +9480,9 @@ next_287:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# gep arr$33 
 
@@ -9510,6 +9543,9 @@ next_287:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:arrCopy$1
 	sd a0, 592(sp)
 
@@ -9565,6 +9601,9 @@ next_287:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:bubblesort$1
 	sd a0, 576(sp)
@@ -9759,6 +9798,9 @@ whileBody_146:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$8 lv$3
 
 	# get address of lv$3 points to
@@ -9864,6 +9906,9 @@ next_288:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:arrCopy$2
 	sd a0, 472(sp)
 
@@ -9919,6 +9964,9 @@ next_288:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:insertsort
 	sd a0, 456(sp)
@@ -10113,6 +10161,9 @@ whileBody_147:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$11 lv$3
 
 	# get address of lv$3 points to
@@ -10217,6 +10268,9 @@ next_289:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:arrCopy$3
 	sd a0, 352(sp)
@@ -10341,6 +10395,9 @@ next_289:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:QuickSort
 	sd a0, 320(sp)
@@ -10520,6 +10577,9 @@ whileBody_148:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$15 lv$3
 
 	# get address of lv$3 points to
@@ -10625,6 +10685,9 @@ next_290:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:arrCopy$4
 	sd a0, 216(sp)
 
@@ -10684,6 +10747,9 @@ next_290:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:calSum
 	sd a0, 200(sp)
@@ -10878,6 +10944,9 @@ whileBody_149:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$18 lv$3
 
 	# get address of lv$3 points to
@@ -10983,6 +11052,9 @@ next_291:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:arrCopy$5
 	sd a0, 96(sp)
 
@@ -11042,6 +11114,9 @@ next_291:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:avgPooling
 	sd a0, 80(sp)
@@ -11235,6 +11310,9 @@ whileBody_150:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load i$21 lv$3
 

@@ -623,6 +623,9 @@ next_60:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:QuickSort
 	sd a0, 520(sp)
 
@@ -754,6 +757,9 @@ next_60:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:QuickSort$1
 	sd a0, 472(sp)
@@ -2238,6 +2244,9 @@ mainEntry10:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:QuickSort
 	sd a0, 96(sp)
 
@@ -2429,6 +2438,9 @@ whileBody_30:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# lv$3 
 
 	# fetch variables
@@ -2475,6 +2487,9 @@ whileBody_30:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load i$3 lv$1
 

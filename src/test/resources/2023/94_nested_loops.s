@@ -2877,24 +2877,25 @@ loop3Entry:
 	li t4, 1168
 	add t4, sp, t4
 	sd a2, 0(t4)
-
-	# get address of local var:3
+	li t4, 1224
+	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 1160
 	add t4, sp, t4
-	sd a3, 0(t4)
+	sd t3, 0(t4)
 	li t4, 1216
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1152
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1216
+	li t4, 1208
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1144
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 1216
+	li t4, 1200
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 1136
@@ -5267,6 +5268,9 @@ mainEntry57:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 144(sp)
 
@@ -5299,6 +5303,9 @@ mainEntry57:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$1
 	sd a0, 136(sp)
@@ -5333,6 +5340,9 @@ mainEntry57:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$2
 	sd a0, 128(sp)
 
@@ -5365,6 +5375,9 @@ mainEntry57:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$3
 	sd a0, 120(sp)
@@ -5399,6 +5412,9 @@ mainEntry57:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$4
 	sd a0, 112(sp)
 
@@ -5431,6 +5447,9 @@ mainEntry57:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$5
 	sd a0, 104(sp)
@@ -5465,6 +5484,9 @@ mainEntry57:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$6
 	sd a0, 96(sp)
 
@@ -5498,6 +5520,9 @@ mainEntry57:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$7
 	sd a0, 88(sp)
 
@@ -5530,6 +5555,9 @@ mainEntry57:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$8
 	sd a0, 80(sp)
@@ -5602,6 +5630,9 @@ mainEntry57:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# save caller saved regs
@@ -5614,6 +5645,9 @@ mainEntry57:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load h lv$2
 
@@ -5730,7 +5764,8 @@ mainEntry57:
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 24
@@ -5763,6 +5798,9 @@ mainEntry57:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 32
 
 	# get address of local var:loop3
 	sd a0, 0(sp)

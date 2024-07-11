@@ -552,6 +552,9 @@ ifTrue_153:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:get_one
 	sd a0, 40(sp)
 
@@ -739,6 +742,9 @@ mainEntry77:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:deepWhileBr
 	sd a0, 8(sp)
 
@@ -790,6 +796,9 @@ mainEntry77:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 

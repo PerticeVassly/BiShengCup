@@ -303,6 +303,9 @@ mainEntry63:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:ififElse
 	sd a0, 0(sp)
 

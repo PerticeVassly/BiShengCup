@@ -81,6 +81,9 @@ whileCond_36:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 136(sp)
 
@@ -152,6 +155,9 @@ whileBody_36:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$1
 	sd a0, 104(sp)

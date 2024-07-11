@@ -267,6 +267,9 @@ next_225:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load k$4 gv
 
 	# get address of gv points to

@@ -311,6 +311,9 @@ mainEntry22:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load d$1 lv$3
 
 	# get address of lv$3 points to
@@ -567,6 +570,9 @@ mainEntry22:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 

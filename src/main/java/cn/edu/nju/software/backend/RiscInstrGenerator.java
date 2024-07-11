@@ -594,6 +594,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
         restoreCallerSavedRegs();
 
+        releaseParams(call);
+
         if (call.getLVal() != null) {
             if (call.getLVal().getType() instanceof IntType) {
                 Operand addressToSave = allocator.getAddrOfLocalVar(call.getLVal());
@@ -657,6 +659,16 @@ public class RiscInstrGenerator implements InstructionVisitor {
         }
     }
 
+    private void releaseParams(Call call){
+        riscInstructions.add(new RiscComment("release params"));
+        int intAndPointerParamNum = call.getRealParams().stream().filter(x -> x.getType() instanceof IntType || x.getType() instanceof Pointer).toArray().length;
+
+        int floatParamNum = call.getRealParams().stream().filter(x -> x.getType() instanceof FloatType).toArray().length;
+
+        int finalToRelase =Math.max(intAndPointerParamNum - RiscSpecifications.getArgRegs().length, 0) + Math.max(floatParamNum - RiscSpecifications.getFArgRegs().length, 0);
+        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(8L * finalToRelase)));
+    }
+
     private void saveCallerSavedRegs() {
         riscInstructions.add(new RiscComment("save caller saved regs"));
 
@@ -675,8 +687,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
         String[] registers = RiscSpecifications.getCallerSavedRegs();
 
         for (int i = 0; i < registers.length; i++) {
-            RiscInstruction riscLw = new RiscLd(new Register(registers[i]), new IndirectRegister("sp", i * 8));
-            riscInstructions.add(riscLw);
+            RiscInstruction riscLd = new RiscLd(new Register(registers[i]), new IndirectRegister("sp", i * 8));
+            riscInstructions.add(riscLd);
         }
 
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(8L * registers.length)));

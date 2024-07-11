@@ -1797,6 +1797,9 @@ mainEntry16:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 416(sp)
 
@@ -1827,6 +1830,9 @@ mainEntry16:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$1
 	sd a0, 408(sp)
@@ -2471,6 +2477,9 @@ whileBody_44:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$2
 	sd a0, 144(sp)
 
@@ -2503,6 +2512,9 @@ whileBody_44:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$3
 	sd a0, 136(sp)
@@ -2599,6 +2611,9 @@ whileBody_44:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$4
 	sd a0, 96(sp)
 
@@ -2677,6 +2692,9 @@ next_86:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# lv 
 
@@ -2834,6 +2852,9 @@ whileBody_45:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -2850,6 +2871,9 @@ whileBody_45:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load i$9 lv
 
@@ -2913,6 +2937,9 @@ next_87:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 

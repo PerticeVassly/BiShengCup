@@ -1107,6 +1107,9 @@ max_sum_nonadjacentEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:MAX
 	sd a0, 216(sp)
 
@@ -1464,6 +1467,9 @@ whileBody_16:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:MAX$1
 	sd a0, 48(sp)
 
@@ -1630,11 +1636,12 @@ longest_common_subseqEntry:
 	li t4, 6744
 	add t4, sp, t4
 	sd a2, 0(t4)
-
-	# get address of local var:3
+	li t4, 6776
+	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 6736
 	add t4, sp, t4
-	sd a3, 0(t4)
+	sd t3, 0(t4)
 
 	# allocate lv$6
 	li t0, 6720
@@ -16192,6 +16199,9 @@ ifFalse_5:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:MAX
 	sd a0, 16(sp)
 
@@ -17235,6 +17245,9 @@ mainEntry5:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:max_sum_nonadjacent
 	sd a0, 24(sp)
 
@@ -17257,6 +17270,9 @@ mainEntry5:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -17273,6 +17289,9 @@ mainEntry5:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# gep A$1 
 
@@ -17328,7 +17347,8 @@ mainEntry5:
 
 	# fetch variables
 	li t1, 13
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -17339,6 +17359,9 @@ mainEntry5:
 
 	# restore caller saved regs
 	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# release params
 	addi sp, sp, 8
 
 	# get address of local var:longest_common_subseq
@@ -17363,6 +17386,9 @@ mainEntry5:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -17379,6 +17405,9 @@ mainEntry5:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 

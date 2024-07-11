@@ -585,6 +585,9 @@ funcEntry3:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	li t4, 3328
 	add t4, sp, t4
@@ -619,6 +622,9 @@ funcEntry3:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$1
 	li t4, 3320
@@ -655,6 +661,9 @@ funcEntry3:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$2
 	li t4, 3312
 	add t4, sp, t4
@@ -689,6 +698,9 @@ funcEntry3:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$3
 	li t4, 3304
@@ -7749,6 +7761,9 @@ mainEntry71:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 56(sp)
 
@@ -7862,6 +7877,9 @@ mainEntry71:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func
 	sd a0, 16(sp)
 
@@ -7913,6 +7931,9 @@ mainEntry71:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load a$3 lv
 
