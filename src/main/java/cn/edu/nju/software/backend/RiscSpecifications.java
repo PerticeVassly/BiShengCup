@@ -5,6 +5,7 @@ package cn.edu.nju.software.backend;
  */
 public record RiscSpecifications() {
 
+    //todo() 寄存器分配,增加
     private static final String[] callerSavedRegs = new String[] {"ra"};
 
     private static final String[] calleeSavedRegs = new String[] {};

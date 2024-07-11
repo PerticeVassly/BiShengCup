@@ -56,6 +56,7 @@ public class RiscFunction {
      * [所有出现的变量全部都要预留内存空间]
      * </p>
      */
+
     private void reserveSpaceForLocalVariables() {
 
         for(int i = 0; i < functionValue.getBasicBlockRefs().size(); i++){
