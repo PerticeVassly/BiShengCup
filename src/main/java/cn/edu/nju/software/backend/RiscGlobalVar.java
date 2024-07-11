@@ -51,17 +51,38 @@ public class RiscGlobalVar {
             if(globalVar.getInitVal() instanceof ArrayValue arrayValue){
                 System.out.println(name + ":");
                 List<ValueRef> initValues = arrayValue.getLinerList();
+                int zeroCount=0;
                 for(ValueRef valueRef : initValues){
                     if(valueRef instanceof ConstValue){
                         if(valueRef.getType() instanceof IntType){
-                            System.out.println(".dword " + valueRef.toString());
+                            if(((ConstValue) valueRef).castToInt()==0){
+                                zeroCount++;
+                            }else {
+                                if(zeroCount>0){
+                                    System.out.println(".zero " + String.valueOf(zeroCount*8));
+                                    zeroCount=0;
+                                }
+                                System.out.println(".dword " + valueRef.toString());
+                            }
+
                         }
                         else if(valueRef.getType() instanceof FloatType){
+                            if(((ConstValue) valueRef).castToInt()==0){
+                                zeroCount++;
+                            }else {
+                                if(zeroCount>0){
+                                    System.out.println(".zero " + String.valueOf(zeroCount*8));
+                                    zeroCount=0;
+                                }
+                                System.out.println(".double " + valueRef.toString());
+                            }
                             System.out.println(".double " + valueRef.toString());
                         }
                     }
                 }
-
+                if(zeroCount>0){
+                    System.out.println(".zero " + String.valueOf(zeroCount*8));
+                }
             }
         } else {
 
