@@ -56,9 +56,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 984
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 984(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -73,9 +73,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_
-	li t4, 912
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_
+	ld t3, 912(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -105,9 +105,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 984
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 984(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -122,9 +122,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$1
-	li t4, 896
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$1
+	ld t3, 896(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -154,9 +154,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 984
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 984(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -171,9 +171,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$2
-	li t4, 880
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$2
+	ld t3, 880(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -203,9 +203,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 984
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 984(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -220,9 +220,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$3
-	li t4, 864
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$3
+	ld t3, 864(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -252,9 +252,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 984
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 984(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -269,9 +269,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$4
-	li t4, 848
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$4
+	ld t3, 848(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -301,9 +301,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 984
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 984(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -318,9 +318,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$5
-	li t4, 832
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$5
+	ld t3, 832(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -350,9 +350,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 984
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 984(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -367,9 +367,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$6
-	li t4, 816
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$6
+	ld t3, 816(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -399,9 +399,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 984
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 984(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -416,9 +416,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$7
-	li t4, 800
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$7
+	ld t3, 800(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -448,9 +448,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 1056
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 1056
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -465,9 +467,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$8
-	li t4, 784
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$8
+	ld t3, 784(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -497,9 +499,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 1056
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 1056
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -514,9 +518,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$9
-	li t4, 768
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$9
+	ld t3, 768(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -546,9 +550,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 1056
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 1056
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -563,9 +569,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$10
-	li t4, 752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$10
+	ld t3, 752(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -595,9 +601,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 1056
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 1056
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -612,9 +620,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$11
-	li t4, 736
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$11
+	ld t3, 736(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -644,9 +652,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 1056
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 1056
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -661,9 +671,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$12
-	li t4, 720
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$12
+	ld t3, 720(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -693,9 +703,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 1056
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 1056
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -710,9 +722,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$13
-	li t4, 704
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$13
+	ld t3, 704(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -742,9 +754,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 1056
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 1056
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -759,9 +773,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$14
-	li t4, 688
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$14
+	ld t3, 688(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -791,9 +805,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 1056
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 1056
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -808,9 +824,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$15
-	li t4, 672
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$15
+	ld t3, 672(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -840,9 +856,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$2
+	li t3, 1128
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -857,9 +875,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$16
-	li t4, 656
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$16
+	ld t3, 656(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -889,9 +907,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$2
+	li t3, 1128
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -906,9 +926,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$17
-	li t4, 640
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$17
+	ld t3, 640(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -938,9 +958,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$2
+	li t3, 1128
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -955,9 +977,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$18
-	li t4, 624
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$18
+	ld t3, 624(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -987,9 +1009,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$2
+	li t3, 1128
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1004,9 +1028,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$19
-	li t4, 608
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$19
+	ld t3, 608(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1036,9 +1060,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$2
+	li t3, 1128
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1053,9 +1079,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$20
-	li t4, 592
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$20
+	ld t3, 592(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1085,9 +1111,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$2
+	li t3, 1128
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1102,9 +1130,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$21
-	li t4, 576
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$21
+	ld t3, 576(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1134,9 +1162,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$2
+	li t3, 1128
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1151,9 +1181,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$22
-	li t4, 560
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$22
+	ld t3, 560(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1183,9 +1213,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$2
+	li t3, 1128
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1200,9 +1232,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$23
-	li t4, 544
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$23
+	ld t3, 544(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1232,9 +1264,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 984
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 984(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1249,9 +1281,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$24
-	li t4, 528
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$24
+	ld t3, 528(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1279,9 +1311,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$3
-	li t4, 1200
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$3
+	li t3, 1200
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1296,9 +1330,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$25
-	li t4, 504
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$25
+	ld t3, 504(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1328,9 +1362,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$3
-	li t4, 1200
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$3
+	li t3, 1200
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1345,9 +1381,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$26
-	li t4, 488
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$26
+	ld t3, 488(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1377,9 +1413,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$3
-	li t4, 1200
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$3
+	li t3, 1200
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1394,9 +1432,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$27
-	li t4, 472
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$27
+	ld t3, 472(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1426,9 +1464,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$3
-	li t4, 1200
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$3
+	li t3, 1200
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1443,9 +1483,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$28
-	li t4, 456
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$28
+	ld t3, 456(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1475,9 +1515,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$3
-	li t4, 1200
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$3
+	li t3, 1200
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1492,9 +1534,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$29
-	li t4, 440
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$29
+	ld t3, 440(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1524,9 +1566,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$3
-	li t4, 1200
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$3
+	li t3, 1200
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1541,9 +1585,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$30
-	li t4, 424
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$30
+	ld t3, 424(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1573,9 +1617,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$3
-	li t4, 1200
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$3
+	li t3, 1200
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1590,9 +1636,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$31
-	li t4, 408
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$31
+	ld t3, 408(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1624,9 +1670,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$3
-	li t4, 1200
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$3
+	li t3, 1200
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1641,9 +1689,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$32
-	li t4, 392
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$32
+	ld t3, 392(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1673,9 +1721,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$3
-	li t4, 1200
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$3
+	li t3, 1200
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1690,9 +1740,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$33
-	li t4, 376
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$33
+	ld t3, 376(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1720,9 +1770,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$2
+	li t3, 1128
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1737,9 +1789,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$34
-	li t4, 352
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$34
+	ld t3, 352(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1767,9 +1819,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$4
-	li t4, 1272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$4
+	li t3, 1272
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1784,9 +1838,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$35
-	li t4, 328
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$35
+	ld t3, 328(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1801,9 +1855,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$36
-	li t4, 320
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$36
+	ld t3, 320(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1835,9 +1889,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$4
-	li t4, 1272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$4
+	li t3, 1272
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1852,9 +1908,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$37
-	li t4, 304
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$37
+	ld t3, 304(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1869,9 +1925,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$38
-	li t4, 296
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$38
+	ld t3, 296(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1903,9 +1959,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$4
-	li t4, 1272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$4
+	li t3, 1272
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1920,9 +1978,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$39
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$39
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1937,9 +1995,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$40
-	li t4, 272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$40
+	ld t3, 272(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1969,9 +2027,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$4
-	li t4, 1272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$4
+	li t3, 1272
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1986,9 +2046,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$41
-	li t4, 256
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$41
+	ld t3, 256(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2003,9 +2063,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$42
-	li t4, 248
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$42
+	ld t3, 248(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2035,9 +2095,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$4
-	li t4, 1272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$4
+	li t3, 1272
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2052,9 +2114,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$43
-	li t4, 232
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$43
+	ld t3, 232(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2069,9 +2131,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$44
-	li t4, 224
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$44
+	ld t3, 224(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2101,9 +2163,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$4
-	li t4, 1272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$4
+	li t3, 1272
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2118,9 +2182,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$45
-	li t4, 208
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$45
+	ld t3, 208(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2135,9 +2199,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$46
-	li t4, 200
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$46
+	ld t3, 200(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2167,9 +2231,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$4
-	li t4, 1272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$4
+	li t3, 1272
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2184,9 +2250,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$47
-	li t4, 184
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$47
+	ld t3, 184(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2201,9 +2267,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$48
-	li t4, 176
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$48
+	ld t3, 176(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2233,9 +2299,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$4
-	li t4, 1272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$4
+	li t3, 1272
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2250,9 +2318,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$49
-	li t4, 160
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$49
+	ld t3, 160(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2267,9 +2335,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$50
-	li t4, 152
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$50
+	ld t3, 152(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2299,9 +2367,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$4
-	li t4, 1272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$4
+	li t3, 1272
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2316,9 +2386,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$51
-	li t4, 136
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$51
+	ld t3, 136(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2333,9 +2403,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$52
-	li t4, 128
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$52
+	ld t3, 128(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2363,9 +2433,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$4
-	li t4, 1272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$4
+	li t3, 1272
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2380,9 +2452,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$53
-	li t4, 104
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$53
+	ld t3, 104(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2397,9 +2469,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$54
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$54
+	ld t3, 96(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2441,9 +2513,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$4
-	li t4, 1272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$4
+	li t3, 1272
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2458,9 +2532,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$55
-	li t4, 64
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$55
+	ld t3, 64(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2475,9 +2549,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$56
-	li t4, 56
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$56
+	ld t3, 56(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2519,9 +2593,11 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:lv$3
-	li t4, 1200
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$3
+	li t3, 1200
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2536,9 +2612,9 @@ mainEntry93:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$57
-	li t4, 24
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$57
+	ld t3, 24(sp)
 	mv t1, t3
 	add t0, t1, t0
 

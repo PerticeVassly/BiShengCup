@@ -409,9 +409,9 @@ whileBody_15:
 	mul t0, t1, t2
 
 	# get value of local var:arr_
-	li t4, 272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_
+	ld t3, 272(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -467,9 +467,9 @@ whileBody_15:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$1
-	li t4, 240
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$1
+	ld t3, 240(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -732,9 +732,9 @@ ifTrue_14:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$2
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$2
+	ld t3, 120(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -807,9 +807,9 @@ ifTrue_14:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$3
-	li t4, 88
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$3
+	ld t3, 88(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -852,9 +852,9 @@ ifTrue_14:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$4
-	li t4, 64
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$4
+	ld t3, 64(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -927,9 +927,9 @@ ifTrue_14:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$5
-	li t4, 32
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$5
+	ld t3, 32(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1067,9 +1067,9 @@ mainEntry8:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1099,9 +1099,9 @@ mainEntry8:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1131,9 +1131,9 @@ mainEntry8:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1163,9 +1163,9 @@ mainEntry8:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1195,9 +1195,9 @@ mainEntry8:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1227,9 +1227,9 @@ mainEntry8:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1259,9 +1259,9 @@ mainEntry8:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1291,9 +1291,9 @@ mainEntry8:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1323,9 +1323,9 @@ mainEntry8:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1355,9 +1355,9 @@ mainEntry8:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1402,9 +1402,9 @@ mainEntry8:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1571,9 +1571,9 @@ whileBody_16:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 

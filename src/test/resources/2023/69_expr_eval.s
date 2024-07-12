@@ -1579,9 +1579,9 @@ stack_pushEntry:
 	mul t0, t1, t2
 
 	# get value of local var:arr_
-	li t4, 88
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_
+	ld t3, 88(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1609,9 +1609,9 @@ stack_pushEntry:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$1
-	li t4, 72
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$1
+	ld t3, 72(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1681,9 +1681,9 @@ stack_pushEntry:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$2
-	li t4, 40
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$2
+	ld t3, 40(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1726,9 +1726,9 @@ stack_pushEntry:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$3
-	li t4, 16
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$3
+	ld t3, 16(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1843,9 +1843,9 @@ stack_popEntry:
 	mul t0, t1, t2
 
 	# get value of local var:arr_
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_
+	ld t3, 96(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1888,9 +1888,9 @@ stack_popEntry:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$1
-	li t4, 72
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$1
+	ld t3, 72(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1948,9 +1948,9 @@ stack_popEntry:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$2
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$2
+	ld t3, 48(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1978,9 +1978,9 @@ stack_popEntry:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$3
-	li t4, 32
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$3
+	ld t3, 32(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2119,9 +2119,9 @@ stack_peekEntry:
 	mul t0, t1, t2
 
 	# get value of local var:arr_
-	li t4, 40
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_
+	ld t3, 40(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2164,9 +2164,9 @@ stack_peekEntry:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$1
-	li t4, 16
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$1
+	ld t3, 16(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2263,9 +2263,9 @@ stack_sizeEntry:
 	mul t0, t1, t2
 
 	# get value of local var:arr_
-	li t4, 16
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_
+	ld t3, 16(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3076,9 +3076,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3110,9 +3112,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3144,9 +3148,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3178,9 +3184,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3212,9 +3220,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3246,9 +3256,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3280,9 +3292,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3314,9 +3328,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3348,9 +3364,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3382,9 +3400,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3416,9 +3436,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3450,9 +3472,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3484,9 +3508,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3518,9 +3544,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3552,9 +3580,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3586,9 +3616,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3620,9 +3652,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3654,9 +3688,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3688,9 +3724,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3722,9 +3760,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3756,9 +3796,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3790,9 +3832,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3824,9 +3868,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3858,9 +3904,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3892,9 +3940,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3926,9 +3976,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3960,9 +4012,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -3994,9 +4048,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4028,9 +4084,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4062,9 +4120,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4096,9 +4156,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4130,9 +4192,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4164,9 +4228,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4198,9 +4264,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4232,9 +4300,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4266,9 +4336,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4300,9 +4372,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4334,9 +4408,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4368,9 +4444,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4402,9 +4480,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4436,9 +4516,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4470,9 +4552,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4504,9 +4588,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4538,9 +4624,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4572,9 +4660,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4606,9 +4696,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4640,9 +4732,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4674,9 +4768,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4708,9 +4804,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4742,9 +4840,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4776,9 +4876,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4810,9 +4912,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4844,9 +4948,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4878,9 +4984,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4912,9 +5020,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4946,9 +5056,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4980,9 +5092,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5014,9 +5128,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5048,9 +5164,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5082,9 +5200,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5116,9 +5236,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5150,9 +5272,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5184,9 +5308,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5218,9 +5344,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5252,9 +5380,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5286,9 +5416,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5320,9 +5452,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5354,9 +5488,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5388,9 +5524,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5422,9 +5560,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5456,9 +5596,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5490,9 +5632,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5524,9 +5668,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5558,9 +5704,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5592,9 +5740,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5626,9 +5776,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5660,9 +5812,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5694,9 +5848,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5728,9 +5884,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5762,9 +5920,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5796,9 +5956,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5830,9 +5992,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5864,9 +6028,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5898,9 +6064,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5932,9 +6100,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -5966,9 +6136,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6000,9 +6172,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6034,9 +6208,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6068,9 +6244,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6102,9 +6280,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6136,9 +6316,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6170,9 +6352,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6204,9 +6388,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6238,9 +6424,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6272,9 +6460,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6306,9 +6496,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6340,9 +6532,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6374,9 +6568,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6408,9 +6604,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6442,9 +6640,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6476,9 +6676,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6510,9 +6712,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6544,9 +6748,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6578,9 +6784,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6612,9 +6820,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6646,9 +6856,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6680,9 +6892,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6714,9 +6928,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6748,9 +6964,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6782,9 +7000,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6816,9 +7036,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6850,9 +7072,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6884,9 +7108,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6918,9 +7144,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6952,9 +7180,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -6986,9 +7216,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7020,9 +7252,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7054,9 +7288,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7088,9 +7324,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7122,9 +7360,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7156,9 +7396,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7190,9 +7432,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7224,9 +7468,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7258,9 +7504,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7292,9 +7540,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7326,9 +7576,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7360,9 +7612,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7394,9 +7648,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7428,9 +7684,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7462,9 +7720,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7496,9 +7756,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7530,9 +7792,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7564,9 +7828,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7598,9 +7864,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7632,9 +7900,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7666,9 +7936,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7700,9 +7972,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7734,9 +8008,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7768,9 +8044,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7802,9 +8080,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7836,9 +8116,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7870,9 +8152,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7904,9 +8188,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7938,9 +8224,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -7972,9 +8260,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8006,9 +8296,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8040,9 +8332,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8074,9 +8368,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8108,9 +8404,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8142,9 +8440,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8176,9 +8476,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8210,9 +8512,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8244,9 +8548,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8278,9 +8584,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8312,9 +8620,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8346,9 +8656,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8380,9 +8692,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8414,9 +8728,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8448,9 +8764,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8482,9 +8800,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8516,9 +8836,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8550,9 +8872,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8584,9 +8908,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8618,9 +8944,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8652,9 +8980,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8686,9 +9016,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8720,9 +9052,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8754,9 +9088,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8788,9 +9124,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8822,9 +9160,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8856,9 +9196,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8890,9 +9232,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8924,9 +9268,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8958,9 +9304,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -8992,9 +9340,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9026,9 +9376,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9060,9 +9412,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9094,9 +9448,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9128,9 +9484,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9162,9 +9520,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9196,9 +9556,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9230,9 +9592,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9264,9 +9628,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9298,9 +9664,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9332,9 +9700,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9366,9 +9736,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9400,9 +9772,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9434,9 +9808,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9468,9 +9844,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9502,9 +9880,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9536,9 +9916,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9570,9 +9952,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9604,9 +9988,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9638,9 +10024,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9672,9 +10060,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9706,9 +10096,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9740,9 +10132,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9774,9 +10168,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9808,9 +10204,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9842,9 +10240,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9876,9 +10276,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9910,9 +10312,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9944,9 +10348,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -9978,9 +10384,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10012,9 +10420,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10046,9 +10456,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10080,9 +10492,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10114,9 +10528,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10148,9 +10564,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10182,9 +10600,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10216,9 +10636,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10250,9 +10672,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10284,9 +10708,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10318,9 +10744,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10352,9 +10780,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10386,9 +10816,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10420,9 +10852,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10454,9 +10888,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10488,9 +10924,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10522,9 +10960,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10556,9 +10996,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10590,9 +11032,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10624,9 +11068,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10658,9 +11104,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10692,9 +11140,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10726,9 +11176,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10760,9 +11212,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10794,9 +11248,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10828,9 +11284,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10862,9 +11320,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10896,9 +11356,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10930,9 +11392,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10964,9 +11428,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -10998,9 +11464,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11032,9 +11500,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11066,9 +11536,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11100,9 +11572,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11134,9 +11608,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11168,9 +11644,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11202,9 +11680,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11236,9 +11716,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11270,9 +11752,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11304,9 +11788,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11338,9 +11824,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11372,9 +11860,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11406,9 +11896,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11440,9 +11932,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11474,9 +11968,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11508,9 +12004,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11542,9 +12040,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11576,9 +12076,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11610,9 +12112,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11644,9 +12148,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11678,9 +12184,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11712,9 +12220,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11746,9 +12256,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11780,9 +12292,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11814,9 +12328,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11848,9 +12364,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11882,9 +12400,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11916,9 +12436,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11950,9 +12472,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -11984,9 +12508,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12018,9 +12544,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12052,9 +12580,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12086,9 +12616,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12120,9 +12652,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12154,9 +12688,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12188,9 +12724,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12222,9 +12760,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12256,9 +12796,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12290,9 +12832,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12324,9 +12868,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12358,9 +12904,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12392,9 +12940,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12426,9 +12976,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12460,9 +13012,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12494,9 +13048,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12528,9 +13084,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12562,9 +13120,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12596,9 +13156,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12630,9 +13192,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12664,9 +13228,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12698,9 +13264,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12732,9 +13300,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12766,9 +13336,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12800,9 +13372,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12834,9 +13408,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12868,9 +13444,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12902,9 +13480,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12936,9 +13516,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -12970,9 +13552,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13004,9 +13588,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13038,9 +13624,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13072,9 +13660,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13106,9 +13696,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13140,9 +13732,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13174,9 +13768,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13208,9 +13804,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13242,9 +13840,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13276,9 +13876,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13310,9 +13912,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13344,9 +13948,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13378,9 +13984,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13412,9 +14020,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13446,9 +14056,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13480,9 +14092,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13514,9 +14128,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13548,9 +14164,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13582,9 +14200,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13616,9 +14236,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13650,9 +14272,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13684,9 +14308,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13718,9 +14344,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13752,9 +14380,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13786,9 +14416,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13820,9 +14452,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13854,9 +14488,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13888,9 +14524,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13922,9 +14560,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13956,9 +14596,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -13990,9 +14632,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14024,9 +14668,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14058,9 +14704,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14092,9 +14740,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14126,9 +14776,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14160,9 +14812,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14194,9 +14848,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14228,9 +14884,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14262,9 +14920,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14296,9 +14956,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14330,9 +14992,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14364,9 +15028,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14398,9 +15064,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14432,9 +15100,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14466,9 +15136,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14500,9 +15172,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14534,9 +15208,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14568,9 +15244,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14602,9 +15280,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14636,9 +15316,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14670,9 +15352,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14704,9 +15388,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14738,9 +15424,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14772,9 +15460,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14806,9 +15496,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14840,9 +15532,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14874,9 +15568,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14908,9 +15604,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14942,9 +15640,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -14976,9 +15676,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15010,9 +15712,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15044,9 +15748,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15078,9 +15784,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15112,9 +15820,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15146,9 +15856,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15180,9 +15892,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15214,9 +15928,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15248,9 +15964,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15282,9 +16000,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15316,9 +16036,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15350,9 +16072,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15384,9 +16108,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15418,9 +16144,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15452,9 +16180,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15486,9 +16216,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15520,9 +16252,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15554,9 +16288,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15588,9 +16324,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15622,9 +16360,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15656,9 +16396,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15690,9 +16432,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15724,9 +16468,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15758,9 +16504,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15792,9 +16540,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15826,9 +16576,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15860,9 +16612,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15894,9 +16648,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15928,9 +16684,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15962,9 +16720,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -15996,9 +16756,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16030,9 +16792,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16064,9 +16828,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16098,9 +16864,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16132,9 +16900,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16166,9 +16936,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16200,9 +16972,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16234,9 +17008,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16268,9 +17044,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16302,9 +17080,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16336,9 +17116,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16370,9 +17152,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16404,9 +17188,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16438,9 +17224,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16472,9 +17260,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16506,9 +17296,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16540,9 +17332,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16574,9 +17368,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16608,9 +17404,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16642,9 +17440,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16676,9 +17476,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16710,9 +17512,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16744,9 +17548,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16778,9 +17584,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16812,9 +17620,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16846,9 +17656,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16880,9 +17692,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16914,9 +17728,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16948,9 +17764,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -16982,9 +17800,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17016,9 +17836,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17050,9 +17872,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17084,9 +17908,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17118,9 +17944,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17152,9 +17980,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17186,9 +18016,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17220,9 +18052,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17254,9 +18088,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17288,9 +18124,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17322,9 +18160,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17356,9 +18196,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17390,9 +18232,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17424,9 +18268,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17458,9 +18304,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17492,9 +18340,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17526,9 +18376,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17560,9 +18412,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17594,9 +18448,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17628,9 +18484,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17662,9 +18520,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17696,9 +18556,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17730,9 +18592,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17764,9 +18628,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17798,9 +18664,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17832,9 +18700,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17866,9 +18736,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17900,9 +18772,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17934,9 +18808,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -17968,9 +18844,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18002,9 +18880,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18036,9 +18916,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18070,9 +18952,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18104,9 +18988,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18138,9 +19024,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18172,9 +19060,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18206,9 +19096,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18240,9 +19132,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18274,9 +19168,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18308,9 +19204,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18342,9 +19240,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18376,9 +19276,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18410,9 +19312,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18444,9 +19348,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18478,9 +19384,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18510,9 +19418,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18542,9 +19452,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18574,9 +19486,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18606,9 +19520,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18638,9 +19554,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18670,9 +19588,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18702,9 +19622,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18734,9 +19656,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18766,9 +19690,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18798,9 +19724,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18830,9 +19758,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18862,9 +19792,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18894,9 +19826,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18926,9 +19860,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18958,9 +19894,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -18990,9 +19928,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19022,9 +19962,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19054,9 +19996,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19086,9 +20030,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19118,9 +20064,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19150,9 +20098,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19182,9 +20132,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19214,9 +20166,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19246,9 +20200,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19278,9 +20234,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19310,9 +20268,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19342,9 +20302,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19374,9 +20336,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19406,9 +20370,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19438,9 +20404,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19470,9 +20438,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19502,9 +20472,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19534,9 +20506,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19566,9 +20540,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19598,9 +20574,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19630,9 +20608,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19662,9 +20642,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19694,9 +20676,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19726,9 +20710,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19758,9 +20744,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19790,9 +20778,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19822,9 +20812,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19854,9 +20846,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19886,9 +20880,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19918,9 +20914,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19950,9 +20948,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -19982,9 +20982,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20014,9 +21016,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20046,9 +21050,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20078,9 +21084,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20110,9 +21118,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20142,9 +21152,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20174,9 +21186,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20206,9 +21220,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20238,9 +21254,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20270,9 +21288,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20302,9 +21322,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20334,9 +21356,11 @@ evalEntry:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20461,9 +21485,11 @@ next_513:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20786,9 +21812,11 @@ whileCond_211:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20853,9 +21881,11 @@ whileBody_211:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20913,9 +21943,11 @@ whileBody_211:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -20973,9 +22005,11 @@ whileBody_211:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -21033,9 +22067,11 @@ whileBody_211:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -21162,9 +22198,11 @@ next_516:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -21281,9 +22319,11 @@ secondCond_118:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -21474,9 +22514,11 @@ next_517:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -21555,9 +22597,11 @@ whileCond_212:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -21622,9 +22666,11 @@ whileBody_212:
 	mul t0, t1, t2
 
 	# get value of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv$1
+	li t3, 8752
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -21682,9 +22728,11 @@ whileBody_212:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -21742,9 +22790,11 @@ whileBody_212:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -21802,9 +22852,11 @@ whileBody_212:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -21931,9 +22983,11 @@ next_518:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	li t3, 6696
+	add t3, sp, t3
+	ld t3, 0(t3)
 	mv t1, t3
 	add t0, t1, t0
 

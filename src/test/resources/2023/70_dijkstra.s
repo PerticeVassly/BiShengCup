@@ -246,9 +246,9 @@ whileBody_82:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_
-	li t4, 656
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_
+	ld t3, 656(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1174,9 +1174,9 @@ whileBody_85:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$1
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$1
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1428,9 +1428,9 @@ ifTrue_75:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$2
-	li t4, 152
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$2
+	ld t3, 152(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1686,9 +1686,9 @@ ifTrue_76:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$3
-	li t4, 24
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$3
+	ld t3, 24(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2236,9 +2236,9 @@ ifTrue_77:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_
-	li t4, 248
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_
+	ld t3, 248(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2317,9 +2317,9 @@ ifFalse_20:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$1
-	li t4, 216
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$1
+	ld t3, 216(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2593,9 +2593,9 @@ whileBody_88:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$2
-	li t4, 112
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$2
+	ld t3, 112(sp)
 	mv t1, t3
 	add t0, t1, t0
 

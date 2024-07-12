@@ -1127,9 +1127,9 @@ whileBody_265:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_
-	li t4, 216
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_
+	ld t3, 216(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1146,9 +1146,9 @@ whileBody_265:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$1
-	li t4, 208
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$1
+	ld t3, 208(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1165,9 +1165,9 @@ whileBody_265:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$2
-	li t4, 200
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$2
+	ld t3, 200(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1184,9 +1184,9 @@ whileBody_265:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$3
-	li t4, 192
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$3
+	ld t3, 192(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1203,9 +1203,9 @@ whileBody_265:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$4
-	li t4, 184
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$4
+	ld t3, 184(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1222,9 +1222,9 @@ whileBody_265:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$5
-	li t4, 176
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$5
+	ld t3, 176(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2542,9 +2542,9 @@ whileBody_272:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_
-	li t4, 136
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_
+	ld t3, 136(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2561,9 +2561,9 @@ whileBody_272:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$1
-	li t4, 128
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$1
+	ld t3, 128(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2580,9 +2580,9 @@ whileBody_272:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$2
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$2
+	ld t3, 120(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2599,9 +2599,9 @@ whileBody_272:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$3
-	li t4, 112
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$3
+	ld t3, 112(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2618,9 +2618,9 @@ whileBody_272:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$4
-	li t4, 104
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$4
+	ld t3, 104(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2637,9 +2637,9 @@ whileBody_272:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$5
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$5
+	ld t3, 96(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4470,9 +4470,9 @@ whileBody_279:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_
-	li t4, 304
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_
+	ld t3, 304(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4489,9 +4489,9 @@ whileBody_279:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$1
-	li t4, 296
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$1
+	ld t3, 296(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4508,9 +4508,9 @@ whileBody_279:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$2
-	li t4, 288
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$2
+	ld t3, 288(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4527,9 +4527,9 @@ whileBody_279:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$3
-	li t4, 280
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$3
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4546,9 +4546,9 @@ whileBody_279:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$4
-	li t4, 272
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$4
+	ld t3, 272(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4565,9 +4565,9 @@ whileBody_279:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$5
-	li t4, 264
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$5
+	ld t3, 264(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4719,9 +4719,9 @@ whileBody_279:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$6
-	li t4, 176
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$6
+	ld t3, 176(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4738,9 +4738,9 @@ whileBody_279:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$7
-	li t4, 168
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$7
+	ld t3, 168(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4757,9 +4757,9 @@ whileBody_279:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$8
-	li t4, 160
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$8
+	ld t3, 160(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4776,9 +4776,9 @@ whileBody_279:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$9
-	li t4, 152
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$9
+	ld t3, 152(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4795,9 +4795,9 @@ whileBody_279:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$10
-	li t4, 144
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$10
+	ld t3, 144(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -4814,9 +4814,9 @@ whileBody_279:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$11
-	li t4, 136
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$11
+	ld t3, 136(sp)
 	mv t1, t3
 	add t0, t1, t0
 

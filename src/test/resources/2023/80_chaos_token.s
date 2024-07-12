@@ -230,9 +230,9 @@ whileCond_190:
 	mul t0, t1, t2
 
 	# get value of local var:arr_
-	li t4, 80
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_
+	ld t3, 80(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -312,9 +312,9 @@ whileBody_190:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$1
-	li t4, 40
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$1
+	ld t3, 40(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -746,9 +746,9 @@ ifTrue_265:
 	mul t0, t1, t2
 
 	# get value of local var:N4__mE___
-	li t4, 144
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:N4__mE___
+	ld t3, 144(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -860,9 +860,9 @@ ifTrue_265:
 	mul t0, t1, t2
 
 	# get value of local var:N4__mE___$2
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:N4__mE___$2
+	ld t3, 96(sp)
 	mv t1, t3
 	add t0, t1, t0
 

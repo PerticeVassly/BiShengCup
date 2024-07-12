@@ -201,8 +201,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
         } else{
             typeLen = 8;
         }
-        allocator.mvAddrWithBigOffsetIntoReg(allocator.getOffset(allocate.getLVal()) - typeLen, "sp", "t0");
-        allocator.mvAddrWithBigOffsetIntoReg(allocator.getOffset(allocate.getLVal()), "sp", "t1");
+        allocator.getRegAddImmediate(allocator.getOffset(allocate.getLVal()) - typeLen, "sp", "t0");
+        allocator.getRegAddImmediate(allocator.getOffset(allocate.getLVal()), "sp", "t1");
         riscInstructions.add(new RiscSd(new Register("t0"), new IndirectRegister("t1", 0)));
     }
 

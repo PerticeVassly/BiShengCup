@@ -456,9 +456,9 @@ whileCond_257:
 	mul t0, t1, t2
 
 	# get value of local var:arr_
-	li t4, 680
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_
+	ld t3, 680(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -538,9 +538,9 @@ whileBody_257:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$1
-	li t4, 640
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$1
+	ld t3, 640(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1731,9 +1731,9 @@ whileBody_258:
 	mul t0, t1, t2
 
 	# get value of local var:arr_$2
-	li t4, 112
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_$2
+	ld t3, 112(sp)
 	mv t1, t3
 	add t0, t1, t0
 

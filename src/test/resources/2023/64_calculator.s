@@ -717,9 +717,9 @@ whileBody_26:
 	mul t0, t1, t2
 
 	# get value of local var:arr_
-	li t4, 80
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:arr_
+	ld t3, 80(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -974,11 +974,9 @@ intpushEntry:
 
 	# get address of gv1 points to
 	la t3, gv1
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:intt
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 32(sp)
 
 	# add result_ intt 
@@ -1004,19 +1002,15 @@ intpushEntry:
 
 	# get address of gv1 points to
 	la t3, gv1
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# load intt$1 gv1
 
 	# get address of gv1 points to
 	la t3, gv1
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:intt$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 16(sp)
 
 	# gep ints intt$1
@@ -1120,11 +1114,9 @@ chapushEntry:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 32(sp)
 
 	# add result_ chat 
@@ -1150,19 +1142,15 @@ chapushEntry:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# load chat$1 gv3
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 16(sp)
 
 	# gep chas chat$1
@@ -1239,11 +1227,9 @@ intpopEntry:
 
 	# get address of gv1 points to
 	la t3, gv1
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:intt
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 40(sp)
 
 	# sub result_ intt 
@@ -1269,19 +1255,15 @@ intpopEntry:
 
 	# get address of gv1 points to
 	la t3, gv1
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# load intt$1 gv1
 
 	# get address of gv1 points to
 	la t3, gv1
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:intt$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 24(sp)
 
 	# add result_$1 intt$1 
@@ -1359,11 +1341,9 @@ chapopEntry:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 40(sp)
 
 	# sub result_ chat 
@@ -1389,19 +1369,15 @@ chapopEntry:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# load chat$1 gv3
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 24(sp)
 
 	# add result_$1 chat$1 
@@ -1506,11 +1482,9 @@ intaddEntry:
 
 	# get address of gv1 points to
 	la t3, gv1
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:intt
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 96(sp)
 
 	# gep ints intt
@@ -1534,11 +1508,9 @@ intaddEntry:
 
 	# get address of gv1 points to
 	la t3, gv1
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:intt$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 80(sp)
 
 	# gep ints$1 intt$1
@@ -1604,11 +1576,9 @@ intaddEntry:
 
 	# get address of gv1 points to
 	la t3, gv1
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:intt$2
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 48(sp)
 
 	# gep ints$3 intt$2
@@ -1632,11 +1602,9 @@ intaddEntry:
 
 	# get address of gv1 points to
 	la t3, gv1
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:intt$3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 32(sp)
 
 	# gep ints$4 intt$3
@@ -1767,19 +1735,15 @@ findEntry:
 
 	# get address of gv6 points to
 	la t3, gv6
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# load ii gv5
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 88(sp)
 
 	# gep get2 ii
@@ -1818,11 +1782,9 @@ findEntry:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 72(sp)
 
 	# add result_ ii$1 
@@ -1858,11 +1820,9 @@ findEntry:
 
 	# get address of gv6 points to
 	la t3, gv6
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:c
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 48(sp)
 
 	# get2$1 c
@@ -1886,11 +1846,9 @@ findEntry:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$2
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 40(sp)
 
 	# add result_$1 ii$2 
@@ -1916,19 +1874,15 @@ findEntry:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# load chat gv3
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 24(sp)
 
 	# cmp chat  cond_eq_tmp_
@@ -2058,9 +2012,7 @@ mainEntry16:
 
 	# get address of gv1 points to
 	la t3, gv1
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# gv3 @
 
@@ -2071,9 +2023,7 @@ mainEntry16:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# gep get 
 
@@ -2149,13 +2099,11 @@ whileCond_27:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i
 	li t3, 3184
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# load lengets lv
@@ -2242,13 +2190,11 @@ whileBody_27:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$1
 	li t3, 3144
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get$1 i$1
@@ -2387,13 +2333,11 @@ ifTrue_19:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii
 	li t3, 3088
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get2 ii
@@ -2421,13 +2365,11 @@ ifTrue_19:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$2
 	li t3, 3072
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get$3 i$2
@@ -2489,13 +2431,11 @@ ifTrue_19:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$1
 	li t3, 3048
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# add result_ ii$1 
@@ -2527,9 +2467,7 @@ ifTrue_19:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# br next_47
 	j next_47
@@ -2539,13 +2477,11 @@ ifFalse_3:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$3
 	li t3, 3032
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get$5 i$3
@@ -2650,13 +2586,11 @@ next_47:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$11
 	li t3, 2984
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# add result_$4 i$11 
@@ -2688,9 +2622,7 @@ next_47:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# br whileCond_27
 	j whileCond_27
@@ -2725,13 +2657,11 @@ next_48:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$4
 	li t3, 2968
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get$7 i$4
@@ -2861,13 +2791,11 @@ next_49:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$5
 	li t3, 2920
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get$9 i$5
@@ -3003,9 +2931,7 @@ ifTrue_22:
 
 	# get address of gv6 points to
 	la t3, gv6
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# br whileCond_28
 	j whileCond_28
@@ -3015,13 +2941,11 @@ next_50:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$6
 	li t3, 2864
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get$11 i$6
@@ -3126,13 +3050,11 @@ whileCond_28:
 
 	# get address of gv6 points to
 	la t3, gv6
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:c
 	li t3, 2816
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# cmp c  cond_neq_tmp_
@@ -3202,13 +3124,11 @@ whileBody_28:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$2
 	li t3, 2784
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get2$1 ii$2
@@ -3251,13 +3171,11 @@ whileBody_28:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$3
 	li t3, 2768
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# add result_$1 ii$3 
@@ -3301,13 +3219,11 @@ whileBody_28:
 
 	# get address of gv6 points to
 	la t3, gv6
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:c$1
 	li t3, 2744
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# get2$2 c$1
@@ -3333,13 +3249,11 @@ whileBody_28:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$4
 	li t3, 2736
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# add result_$2 ii$4 
@@ -3371,9 +3285,7 @@ whileBody_28:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# prepare params
 	addi sp, sp, 0
@@ -3410,9 +3322,7 @@ whileBody_28:
 
 	# get address of gv6 points to
 	la t3, gv6
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# br whileCond_28
 	j whileCond_28
@@ -3430,13 +3340,11 @@ next_52:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$7
 	li t3, 2712
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get$13 i$7
@@ -3541,13 +3449,11 @@ whileCond_29:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat
 	li t3, 2664
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas chat
@@ -3761,13 +3667,11 @@ secondCond_4:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$5
 	li t3, 2584
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$10 chat$5
@@ -3872,13 +3776,11 @@ secondCond_5:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$4
 	li t3, 2536
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$8 chat$4
@@ -3983,13 +3885,11 @@ secondCond_6:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$3
 	li t3, 2488
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$6 chat$3
@@ -4094,13 +3994,11 @@ secondCond_7:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$2
 	li t3, 2440
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$4 chat$2
@@ -4205,13 +4103,11 @@ secondCond_8:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$1
 	li t3, 2392
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$2 chat$1
@@ -4331,13 +4227,11 @@ next_55:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$8
 	li t3, 2344
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get$15 i$8
@@ -4442,13 +4336,11 @@ whileCond_30:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$6
 	li t3, 2296
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$12 chat$6
@@ -4662,13 +4554,11 @@ secondCond_9:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$11
 	li t3, 2216
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$22 chat$11
@@ -4773,13 +4663,11 @@ secondCond_10:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$10
 	li t3, 2168
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$20 chat$10
@@ -4884,13 +4772,11 @@ secondCond_11:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$9
 	li t3, 2120
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$18 chat$9
@@ -4995,13 +4881,11 @@ secondCond_12:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$8
 	li t3, 2072
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$16 chat$8
@@ -5106,13 +4990,11 @@ secondCond_13:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$7
 	li t3, 2024
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$14 chat$7
@@ -5232,13 +5114,11 @@ next_58:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$9
 	li t3, 1976
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get$17 i$9
@@ -5343,13 +5223,11 @@ whileCond_31:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$12
 	li t3, 1928
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$24 chat$12
@@ -5563,13 +5441,11 @@ secondCond_14:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$15
 	li t3, 1848
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$30 chat$15
@@ -5674,13 +5550,11 @@ secondCond_15:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$14
 	li t3, 1800
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$28 chat$14
@@ -5785,13 +5659,11 @@ secondCond_16:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$13
 	li t3, 1752
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$26 chat$13
@@ -5911,13 +5783,11 @@ next_61:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$10
 	li t3, 1704
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get$19 i$10
@@ -6022,13 +5892,11 @@ whileCond_32:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$16
 	li t3, 1656
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$32 chat$16
@@ -6242,13 +6110,11 @@ secondCond_17:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$19
 	li t3, 1576
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$38 chat$19
@@ -6353,13 +6219,11 @@ secondCond_18:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$18
 	li t3, 1528
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$36 chat$18
@@ -6464,13 +6328,11 @@ secondCond_19:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$17
 	li t3, 1480
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$34 chat$17
@@ -6590,13 +6452,11 @@ next_64:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$5
 	li t3, 1432
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get2$3 ii$5
@@ -6639,13 +6499,11 @@ next_64:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$6
 	li t3, 1416
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# add result_$3 ii$6 
@@ -6677,9 +6535,7 @@ next_64:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# br next_47
 	j next_47
@@ -6689,13 +6545,11 @@ whileCond_33:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$20
 	li t3, 1400
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$40 chat$20
@@ -6909,13 +6763,11 @@ secondCond_20:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$23
 	li t3, 1320
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$46 chat$23
@@ -7020,13 +6872,11 @@ secondCond_21:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$22
 	li t3, 1272
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$44 chat$22
@@ -7131,13 +6981,11 @@ secondCond_22:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$21
 	li t3, 1224
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep chas$42 chat$21
@@ -7253,13 +7101,11 @@ whileCond_34:
 
 	# get address of gv3 points to
 	la t3, gv3
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:chat$24
 	li t3, 1176
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# cmp chat$24  cond_gt_tmp_
@@ -7369,13 +7215,11 @@ whileBody_34:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$7
 	li t3, 1136
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get2$4 ii$7
@@ -7418,13 +7262,11 @@ whileBody_34:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$8
 	li t3, 1120
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# add result_$5 ii$8 
@@ -7502,13 +7344,11 @@ whileBody_34:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$9
 	li t3, 1088
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# add result_$6 ii$9 
@@ -7540,9 +7380,7 @@ whileBody_34:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# br whileCond_34
 	j whileCond_34
@@ -7552,13 +7390,11 @@ next_67:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$10
 	li t3, 1072
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get2$6 ii$10
@@ -7606,9 +7442,7 @@ next_67:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# br whileCond_35
 	j whileCond_35
@@ -7618,13 +7452,11 @@ whileCond_35:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$12
 	li t3, 1056
 	add t3, sp, t3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(t3)
 
 	# gep get2$7 i$12
@@ -7726,11 +7558,9 @@ whileBody_35:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$13
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 1008(sp)
 
 	# gep get2$9 i$13
@@ -7950,11 +7780,9 @@ ifTrue_33:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$19
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 928(sp)
 
 	# gep get2$21 i$19
@@ -8039,11 +7867,9 @@ ifFalse_4:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$25
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 880(sp)
 
 	# gep get2$33 i$25
@@ -8129,11 +7955,9 @@ next_69:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$30
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 832(sp)
 
 	# add result_$19 i$30 
@@ -8159,9 +7983,7 @@ next_69:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# br whileCond_35
 	j whileCond_35
@@ -8171,11 +7993,9 @@ secondCond_23:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$18
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 816(sp)
 
 	# gep get2$19 i$18
@@ -8260,11 +8080,9 @@ secondCond_24:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$17
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 768(sp)
 
 	# gep get2$17 i$17
@@ -8349,11 +8167,9 @@ secondCond_25:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$16
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 720(sp)
 
 	# gep get2$15 i$16
@@ -8438,11 +8254,9 @@ secondCond_26:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$15
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 672(sp)
 
 	# gep get2$13 i$15
@@ -8527,11 +8341,9 @@ secondCond_27:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$14
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 624(sp)
 
 	# gep get2$11 i$14
@@ -8677,11 +8489,9 @@ next_70:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$20
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 552(sp)
 
 	# gep get2$23 i$20
@@ -8827,11 +8637,9 @@ next_71:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$21
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 480(sp)
 
 	# gep get2$25 i$21
@@ -8977,11 +8785,9 @@ next_72:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$22
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 408(sp)
 
 	# gep get2$27 i$22
@@ -9127,11 +8933,9 @@ next_73:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$23
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 336(sp)
 
 	# gep get2$29 i$23
@@ -9277,11 +9081,9 @@ next_74:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$24
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 264(sp)
 
 	# gep get2$31 i$24
@@ -9485,11 +9287,9 @@ ifTrue_40:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$26
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 184(sp)
 
 	# gep get2$35 i$26
@@ -9566,9 +9366,7 @@ ifTrue_40:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# br whileCond_36
 	j whileCond_36
@@ -9582,22 +9380,18 @@ whileCond_36:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$27
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 152(sp)
 
 	# load ii$11 gv5
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$11
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 144(sp)
 
 	# add result_$13 i$27 ii$11
@@ -9697,22 +9491,18 @@ whileBody_36:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$28
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 88(sp)
 
 	# load ii$12 gv5
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$12
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 80(sp)
 
 	# add result_$14 i$28 ii$12
@@ -9798,11 +9588,9 @@ whileBody_36:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$13
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 40(sp)
 
 	# add result_$16 ii$13 
@@ -9828,9 +9616,7 @@ whileBody_36:
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# br whileCond_36
 	j whileCond_36
@@ -9840,22 +9626,18 @@ next_77:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:i$29
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 24(sp)
 
 	# load ii$14 gv5
 
 	# get address of gv5 points to
 	la t3, gv5
-	li t4, 0
-	add t4, t3, t4
 
 	# get address of local var:ii$14
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 16(sp)
 
 	# add result_$17 i$29 ii$14
@@ -9895,9 +9677,7 @@ next_77:
 
 	# get address of gv4 points to
 	la t3, gv4
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	sd t1, 0(t3)
 
 	# br next_76
 	j next_76

@@ -11,7 +11,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry1:
+mainEntry35:
 
 	# reserve space
 	li t4, 128
@@ -41,9 +41,9 @@ mainEntry1:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 104
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 104(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -74,9 +74,9 @@ mainEntry1:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 104
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 104(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -122,9 +122,9 @@ mainEntry1:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_
-	li t4, 64
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_
+	ld t3, 64(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -139,9 +139,9 @@ mainEntry1:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$1
-	li t4, 56
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$1
+	ld t3, 56(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -169,9 +169,9 @@ mainEntry1:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 104
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 104(sp)
 	mv t1, t3
 	add t0, t1, t0
 

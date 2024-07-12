@@ -135,9 +135,9 @@ whileBody_192:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 944
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 944(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -346,9 +346,9 @@ whileBody_193:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 944
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 944(sp)
 	mv t1, t3
 	add t0, t1, t0
 
