@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry47:
+mainEntry51:
 
 	# reserve space
 	li t4, 120
@@ -28,24 +28,16 @@ mainEntry47:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 112
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 112(sp)
+	sd t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	li t4, 112
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 112(sp)
 
 	# get address of local var:a
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 96(sp)
 
 	# cmp  a tmp_
@@ -191,15 +183,15 @@ mainEntry47:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_normalize_ ifTrue_74 ifFalse_23
+	# condBr cond_normalize_ ifTrue_267 ifFalse_105
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 8(sp)
-	beqz t1, ifFalse_23
-	j ifTrue_74
-ifTrue_74:
+	beqz t1, ifFalse_105
+	j ifTrue_267
+ifTrue_267:
 
 	# lv 
 
@@ -209,16 +201,12 @@ ifTrue_74:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 112
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 112(sp)
+	sd t1, 0(t3)
 
-	# br next_161
-	j next_161
-ifFalse_23:
+	# br next_459
+	j next_459
+ifFalse_105:
 
 	# lv 
 
@@ -228,28 +216,20 @@ ifFalse_23:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 112
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 112(sp)
+	sd t1, 0(t3)
 
-	# br next_161
-	j next_161
-next_161:
+	# br next_459
+	j next_459
+next_459:
 
 	# load a$1 lv
 
 	# get address of lv points to
-	li t4, 112
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 112(sp)
 
 	# get address of local var:a$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(sp)
 
 	# ret a$1

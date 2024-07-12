@@ -11,7 +11,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry32:
+mainEntry35:
 
 	# reserve space
 	li t4, 128
@@ -59,12 +59,8 @@ mainEntry32:
 	# store inp 
 
 	# get address of inp points to
-	li t4, 80
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	fsd ft1, 0(t4)
+	ld t3, 80(sp)
+	fsd ft1, 0(t3)
 
 	# gep inp$1 
 
@@ -92,12 +88,8 @@ mainEntry32:
 	# store inp$1 
 
 	# get address of inp$1 points to
-	li t4, 72
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	fsd ft1, 0(t4)
+	ld t3, 72(sp)
+	fsd ft1, 0(t3)
 
 	# gep ptr_ 
 
@@ -151,14 +143,10 @@ mainEntry32:
 	# load f$1 f
 
 	# get address of f points to
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 48(sp)
 
 	# get address of local var:f$1
-	fld ft0, 0(t4)
+	fld ft0, 0(t3)
 	fsd ft0, 40(sp)
 
 	# gep ff 
@@ -181,14 +169,10 @@ mainEntry32:
 	# load ff$1 ff
 
 	# get address of ff points to
-	li t4, 32
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 32(sp)
 
 	# get address of local var:ff$1
-	fld ft0, 0(t4)
+	fld ft0, 0(t3)
 	fsd ft0, 24(sp)
 
 	# fadd result_ f$1 ff$1
@@ -226,24 +210,16 @@ mainEntry32:
 	# store lv$1 f2i_
 
 	# get address of lv$1 points to
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 120(sp)
+	sd t1, 0(t3)
 
 	# load a lv$1
 
 	# get address of lv$1 points to
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 120(sp)
 
 	# get address of local var:a
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(sp)
 
 	# ret a

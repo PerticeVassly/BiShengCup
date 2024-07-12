@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry61:
+mainEntry66:
 
 	# reserve space
 	li t4, 144
@@ -35,12 +35,8 @@ mainEntry61:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 120(sp)
+	sd t1, 0(t3)
 
 	# lv$1 
 
@@ -50,28 +46,20 @@ mainEntry61:
 	# store lv$1 
 
 	# get address of lv$1 points to
-	li t4, 136
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 136(sp)
+	sd t1, 0(t3)
 
-	# br whileCond_103
-	j whileCond_103
-whileCond_103:
+	# br whileCond_214
+	j whileCond_214
+whileCond_214:
 
 	# load i lv
 
 	# get address of lv points to
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 120(sp)
 
 	# get address of local var:i
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 104(sp)
 
 	# cmp i  cond_lt_tmp_
@@ -111,27 +99,23 @@ whileCond_103:
 	seqz t0, t0
 	sd t0, 80(sp)
 
-	# condBr cond_ whileBody_103 next_203
+	# condBr cond_ whileBody_214 next_520
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 80(sp)
-	beqz t1, next_203
-	j whileBody_103
-whileBody_103:
+	beqz t1, next_520
+	j whileBody_214
+whileBody_214:
 
 	# load i$1 lv
 
 	# get address of lv points to
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 120(sp)
 
 	# get address of local var:i$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 72(sp)
 
 	# cmp i$1  cond_eq_tmp_
@@ -172,27 +156,23 @@ whileBody_103:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_$1 ifTrue_100 next_204
+	# condBr cond_$1 ifTrue_306 next_521
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 48(sp)
-	beqz t1, next_204
-	j ifTrue_100
-next_203:
+	beqz t1, next_521
+	j ifTrue_306
+next_520:
 
 	# load sum$1 lv$1
 
 	# get address of lv$1 points to
-	li t4, 136
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 136(sp)
 
 	# get address of local var:sum$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 40(sp)
 
 	# ret sum$1
@@ -205,39 +185,31 @@ next_203:
 	li t4, 144
 	add sp, sp, t4
 	ret 
-ifTrue_100:
+ifTrue_306:
 
-	# br next_203
-	j next_203
+	# br next_520
+	j next_520
 
-	# br next_204
-	j next_204
-next_204:
+	# br next_521
+	j next_521
+next_521:
 
 	# load sum lv$1
 
 	# get address of lv$1 points to
-	li t4, 136
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 136(sp)
 
 	# get address of local var:sum
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 32(sp)
 
 	# load i$2 lv
 
 	# get address of lv points to
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 120(sp)
 
 	# get address of local var:i$2
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 24(sp)
 
 	# add result_ sum i$2
@@ -264,24 +236,16 @@ next_204:
 	# store lv$1 result_
 
 	# get address of lv$1 points to
-	li t4, 136
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 136(sp)
+	sd t1, 0(t3)
 
 	# load i$3 lv
 
 	# get address of lv points to
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 120(sp)
 
 	# get address of local var:i$3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 8(sp)
 
 	# add result_$1 i$3 
@@ -306,15 +270,11 @@ next_204:
 	# store lv result_$1
 
 	# get address of lv points to
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 120(sp)
+	sd t1, 0(t3)
 
-	# br whileCond_103
-	j whileCond_103
+	# br whileCond_214
+	j whileCond_214
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

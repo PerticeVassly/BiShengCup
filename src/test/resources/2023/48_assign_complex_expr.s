@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry33:
+mainEntry36:
 
 	# reserve space
 	li t4, 312
@@ -56,12 +56,8 @@ mainEntry33:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 240
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 240(sp)
+	sd t1, 0(t3)
 
 	# lv$1 
 
@@ -71,12 +67,8 @@ mainEntry33:
 	# store lv$1 
 
 	# get address of lv$1 points to
-	li t4, 256
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 256(sp)
+	sd t1, 0(t3)
 
 	# lv$2 
 
@@ -86,12 +78,8 @@ mainEntry33:
 	# store lv$2 
 
 	# get address of lv$2 points to
-	li t4, 272
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 272(sp)
+	sd t1, 0(t3)
 
 	# lv$3 
 
@@ -101,24 +89,16 @@ mainEntry33:
 	# store lv$3 
 
 	# get address of lv$3 points to
-	li t4, 288
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 288(sp)
+	sd t1, 0(t3)
 
 	# load d lv$3
 
 	# get address of lv$3 points to
-	li t4, 288
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 288(sp)
 
 	# get address of local var:d
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 224(sp)
 
 	# mul result_ d 
@@ -148,27 +128,19 @@ mainEntry33:
 	# load a lv
 
 	# get address of lv points to
-	li t4, 240
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 240(sp)
 
 	# get address of local var:a
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 200(sp)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
-	li t4, 256
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 256(sp)
 
 	# get address of local var:b
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 192(sp)
 
 	# sub result_$2 a b
@@ -202,14 +174,10 @@ mainEntry33:
 	# load c lv$2
 
 	# get address of lv$2 points to
-	li t4, 272
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 272(sp)
 
 	# get address of local var:c
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 168(sp)
 
 	# add result_$4 c 
@@ -272,24 +240,16 @@ mainEntry33:
 	# store lv$4 result_$6
 
 	# get address of lv$4 points to
-	li t4, 304
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 304(sp)
+	sd t1, 0(t3)
 
 	# load result lv$4
 
 	# get address of lv$4 points to
-	li t4, 304
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 304(sp)
 
 	# get address of local var:result
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 128(sp)
 
 	# prepare params
@@ -318,14 +278,10 @@ mainEntry33:
 	# load d$1 lv$3
 
 	# get address of lv$3 points to
-	li t4, 288
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 288(sp)
 
 	# get address of local var:d$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 120(sp)
 
 	# mod result_$7 d$1 
@@ -355,27 +311,19 @@ mainEntry33:
 	# load a$1 lv
 
 	# get address of lv points to
-	li t4, 240
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 240(sp)
 
 	# get address of local var:a$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 96(sp)
 
 	# load b$1 lv$1
 
 	# get address of lv$1 points to
-	li t4, 256
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 256(sp)
 
 	# get address of local var:b$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 88(sp)
 
 	# sub result_$9 a$1 b$1
@@ -421,14 +369,10 @@ mainEntry33:
 	# load c$1 lv$2
 
 	# get address of lv$2 points to
-	li t4, 272
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 272(sp)
 
 	# get address of local var:c$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 56(sp)
 
 	# add result_$11 c$1 
@@ -491,24 +435,16 @@ mainEntry33:
 	# store lv$4 result_$13
 
 	# get address of lv$4 points to
-	li t4, 304
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 304(sp)
+	sd t1, 0(t3)
 
 	# load result$1 lv$4
 
 	# get address of lv$4 points to
-	li t4, 304
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 304(sp)
 
 	# get address of local var:result$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 16(sp)
 
 	# add result_$14 result$1 
@@ -533,24 +469,16 @@ mainEntry33:
 	# store lv$4 result_$14
 
 	# get address of lv$4 points to
-	li t4, 304
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 304(sp)
+	sd t1, 0(t3)
 
 	# load result$2 lv$4
 
 	# get address of lv$4 points to
-	li t4, 304
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 304(sp)
 
 	# get address of local var:result$2
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(sp)
 
 	# prepare params

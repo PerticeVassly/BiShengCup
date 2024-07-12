@@ -120,7 +120,7 @@ public class Allocator {
     public Operand getAddrOfLocalVar(ValueRef variable) {
         generator.insertComment("get address of local var:" + variable.getName());
         if (variable instanceof LocalVar) {
-            return new IndirectRegister("sp", memoryManager.getOffset(variable));
+            return getRegWithOffset(memoryManager.getOffset(variable), "sp", "t4");
         } else {
             assert false;
             return null;
@@ -221,7 +221,7 @@ public class Allocator {
     }
 
     //todo() 这里要改成1024的判断
-    /**
+    /**目前destReg只能是t4，因为allocator其他地方会用到t3
      * offset可能很大，无法作为offset(reg)的立即数，
      * 如果offset大于1024, destreg = baseReg + immediate 返回0(reg);
      * 否则直接返回offset(baseReg) t4用于offset过大的时候的返回的寄存器

@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry66:
+mainEntry71:
 
 	# reserve space
 	li t4, 56
@@ -35,12 +35,8 @@ mainEntry66:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 32
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 32(sp)
+	sd t1, 0(t3)
 
 	# lv$1 
 
@@ -50,37 +46,25 @@ mainEntry66:
 	# store lv$1 
 
 	# get address of lv$1 points to
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 48(sp)
+	sd t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	li t4, 32
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 32(sp)
 
 	# get address of local var:a
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 16(sp)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 48(sp)
 
 	# get address of local var:b
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 8(sp)
 
 	# div result_ a b

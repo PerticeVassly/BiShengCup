@@ -21,16 +21,16 @@ ifWhileEntry:
 	# allocate lv$1
 	li t0, 184
 	add t0, sp, t0
-	li t1, 192
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 192(sp)
 
 	# allocate lv
 	li t0, 168
 	add t0, sp, t0
-	li t1, 176
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 176(sp)
 
 	# lv 
 
@@ -40,12 +40,8 @@ ifWhileEntry:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 176
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 176(sp)
+	sd t1, 0(t3)
 
 	# lv$1 
 
@@ -55,24 +51,16 @@ ifWhileEntry:
 	# store lv$1 
 
 	# get address of lv$1 points to
-	li t4, 192
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 192(sp)
+	sd t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	li t4, 176
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 176(sp)
 
 	# get address of local var:a
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 160(sp)
 
 	# cmp a  cond_eq_tmp_
@@ -134,14 +122,10 @@ next_591:
 	# load b$4 lv$1
 
 	# get address of lv$1 points to
-	li t4, 192
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 192(sp)
 
 	# get address of local var:b$4
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 128(sp)
 
 	# ret b$4
@@ -162,14 +146,10 @@ whileCond_252:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	li t4, 192
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 192(sp)
 
 	# get address of local var:b
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 120(sp)
 
 	# cmp b  cond_eq_tmp_$1
@@ -223,14 +203,10 @@ whileBody_252:
 	# load b$1 lv$1
 
 	# get address of lv$1 points to
-	li t4, 192
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 192(sp)
 
 	# get address of local var:b$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 88(sp)
 
 	# add result_ b$1 
@@ -255,12 +231,8 @@ whileBody_252:
 	# store lv$1 result_
 
 	# get address of lv$1 points to
-	li t4, 192
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 192(sp)
+	sd t1, 0(t3)
 
 	# br whileCond_252
 	j whileCond_252
@@ -269,14 +241,10 @@ next_592:
 	# load b$2 lv$1
 
 	# get address of lv$1 points to
-	li t4, 192
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 192(sp)
 
 	# get address of local var:b$2
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 72(sp)
 
 	# add result_$1 b$2 
@@ -301,12 +269,8 @@ next_592:
 	# store lv$1 result_$1
 
 	# get address of lv$1 points to
-	li t4, 192
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 192(sp)
+	sd t1, 0(t3)
 
 	# br next_591
 	j next_591
@@ -315,14 +279,10 @@ whileCond_253:
 	# load a$1 lv
 
 	# get address of lv points to
-	li t4, 176
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 176(sp)
 
 	# get address of local var:a$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 56(sp)
 
 	# cmp a$1  cond_lt_tmp_
@@ -375,14 +335,10 @@ whileBody_253:
 	# load b$3 lv$1
 
 	# get address of lv$1 points to
-	li t4, 192
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 192(sp)
 
 	# get address of local var:b$3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 24(sp)
 
 	# mul result_$2 b$3 
@@ -407,24 +363,16 @@ whileBody_253:
 	# store lv$1 result_$2
 
 	# get address of lv$1 points to
-	li t4, 192
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 192(sp)
+	sd t1, 0(t3)
 
 	# load a$2 lv
 
 	# get address of lv points to
-	li t4, 176
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 176(sp)
 
 	# get address of local var:a$2
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 8(sp)
 
 	# add result_$3 a$2 
@@ -449,12 +397,8 @@ whileBody_253:
 	# store lv result_$3
 
 	# get address of lv points to
-	li t4, 176
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 176(sp)
+	sd t1, 0(t3)
 
 	# br whileCond_253
 	j whileCond_253
