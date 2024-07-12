@@ -1,20 +1,34 @@
 package cn.edu.nju.software.ir.generator;
 
 import cn.edu.nju.software.frontend.llvm.LLVMStack;
-import cn.edu.nju.software.frontend.parser.*;
-import cn.edu.nju.software.frontend.util.*;
+import cn.edu.nju.software.frontend.parser.SysYParser;
+import cn.edu.nju.software.frontend.parser.SysYParserBaseVisitor;
+import cn.edu.nju.software.frontend.util.Symbol;
+import cn.edu.nju.software.frontend.util.SymbolTable;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
-import cn.edu.nju.software.ir.type.*;
-import cn.edu.nju.software.ir.value.*;
-import org.antlr.v4.runtime.ParserRuleContext;
+import cn.edu.nju.software.ir.type.ArrayType;
+import cn.edu.nju.software.ir.type.BoolType;
+import cn.edu.nju.software.ir.type.FloatType;
+import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.type.VoidType;
+import cn.edu.nju.software.ir.value.ArrayValue;
+import cn.edu.nju.software.ir.value.ConstValue;
+import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.ir.value.GlobalVar;
+import cn.edu.nju.software.ir.value.LocalVar;
+import cn.edu.nju.software.ir.value.ValueRef;
 
 import static cn.edu.nju.software.ir.instruction.Operator.*;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
@@ -53,7 +67,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     private final Stack<BasicBlockRef> loopStack = new Stack<>();
 
     private boolean functionDef;
-    private boolean haveReturn;
+    private final Stack<Boolean> mustHaveReturn = new Stack<>(){{push(true);}}; // figure out whether always returns in `if () else if () else`
     private SymbolTable<ValueRef> curScope;
 
     private boolean global() {
@@ -85,10 +99,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     }
     private ValueRef normalizeCond(ValueRef cond) {
         TypeRef type = cond.getType();
-        if (type instanceof IntType) {
-            return gen.buildCmp(builder, CmpNE, cond, zero, "cond_normalize_");
-        } else if (type instanceof FloatType) {
+        if (type instanceof FloatType) {
             return gen.buildCmp(builder, CmpNE, cond, fZero, "cond_normalize_");
+        } else if (type instanceof IntType) {
+            return gen.buildCmp(builder, CmpNE, cond, zero, "cond_normalize_");
         }
         return cond;
     }
@@ -192,7 +206,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                             type = baseType;
                             break;
                         }
-                        int size = (int) ((ConstValue) vr).getValue();
+                        int size = ((ConstValue) vr).castToInt();
                         type = new ArrayType(type, size);
                     }
                     type = new Pointer(type);
@@ -221,16 +235,22 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 curScope.put(new Symbol<>(fParam, pointer));
             }
         }
-        haveReturn = false;
+
+        // initialize
+        mustHaveReturn.push(false);
+
         ValueRef ret = visitBlock(ctx.block());
-        if (!haveReturn && retType instanceof VoidType) {
-            // void function and haven't return
+        if (!mustHaveReturn.pop() && retType instanceof VoidType) {
+//             void function and haven't return
             gen.buildReturnVoid(builder);
-            haveReturn = true;
         }
         functionDef = false;
         scope.pop();
         curScope = scope.peek();
+
+        /* eliminate dead blocks: */
+        function.clearDeadBlocks();
+
         return ret;
     }
     @Override
@@ -441,14 +461,18 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 ArrayValue av = (ArrayValue) ((GlobalVar) lVal).getInitVal();
                 ValueRef res = null;
                 for (ValueRef vr : indices) {
-                    int index = (int) ((ConstValue)vr).getValue();
+                    if (!(vr instanceof ConstValue)) {
+                        res = null;
+                        break;
+                    }
+                    int index = ((ConstValue)vr).castToInt();
                     if (av.getValue(index) instanceof ArrayValue) {
                         av = (ArrayValue) av.getValue(index);
                     } else {
                         res = av.getValue(index);
                     }
                 }
-                return res;
+                if (res != null) return res;
             }
 //            System.err.println(dim);
             if (((Pointer)lVal.getType()).getBase() instanceof Pointer) {
@@ -462,7 +486,8 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 //        System.err.println(ctx.getText());
         if (ctx.RETURN() != null) {
             // return stmt
-            haveReturn = true;
+            mustHaveReturn.pop();
+            mustHaveReturn.push(true);
             if (ctx.exp() != null) {
                 ValueRef retVal = visitExp(ctx.exp());
                 TypeRef retTy = ((FunctionType)currentFunction.getType()).getReturnType();
@@ -478,13 +503,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else if (ctx.ASSIGN() != null) {
             ValueRef lVal = visitLVal(ctx.lVal());
             ValueRef exp = visitExp(ctx.exp());
-            // constant propagation
-            if (lVal instanceof Variable variable) {
-//                if (exp instanceof Variable expVar) {
-//                    expVar.mergeValue(expValue(ctx.exp()));
-//                }
-//                valuePropagate(variable, exp);
-            }
             return gen.buildStore(builder, exp, lVal); // assign: lVal = exp;
         } else if (ctx.WHILE() != null) {
             // loop
@@ -507,8 +525,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 boolean alwaysTrue = false;
                 ValueRef cond = visitCond(tmp);
                 if (cond instanceof ConstValue constValue) {
-                    int value = (Integer) constValue.getValue();
-                    alwaysTrue = value != 0;
+                    alwaysTrue = constValue.castToInt() != 0;
                 }
                 // according to the condition decide jumping to where
                 cond = normalizeCond(cond);
@@ -524,9 +541,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             }
             // while body part appends on whileBody block
             gen.positionBuilderAtEnd(builder, whileBody);
-            boolean t = haveReturn;
             ValueRef ret = visitStmt(ctx.whileStmt().stmt());
-            haveReturn = t;
             // while body ends, jmp whileCond
             gen.buildBranch(builder, whileCond);
             // while part finished, other irs append on next block
@@ -572,29 +587,37 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             }
             // the ifTrue block runs the ifStmt irs
             gen.positionBuilderAtEnd(builder, ifTrue);
+
             boolean ifHaveRet = false, elseHaveRet = false;
-            boolean t = haveReturn;
+            mustHaveReturn.push(false);
+
             ValueRef ret = visitStmt(ctx.ifStmt().stmt());
-            if (!haveReturn) {
+
+            ifHaveRet = mustHaveReturn.pop();
+            mustHaveReturn.pop();
+            mustHaveReturn.push(ifHaveRet);
+            if (!ifHaveRet) {
                 gen.buildBranch(builder, next);
             }
-            ifHaveRet = haveReturn;
-            haveReturn = t;
             // discuss the "else", exist or not
             if (ctx.ELSE() != null) {
                 gen.positionBuilderAtEnd(builder, ifFalse);
-//                t = haveReturn;
+                mustHaveReturn.push(false);
                 ret = visitStmt(ctx.elseStmt().stmt());
-                if (!haveReturn){
+                elseHaveRet = mustHaveReturn.pop();
+                if (!elseHaveRet){
                     gen.buildBranch(builder, next);
                 }
-                elseHaveRet = haveReturn;
-//                haveReturn = t;
             }
+
+            // update
+            mustHaveReturn.pop();
+            mustHaveReturn.push(ifHaveRet && elseHaveRet);
+
             if (!ifHaveRet || !elseHaveRet) {
                 gen.positionBuilderAtEnd(builder, next);
             } else {
-                gen.dropBlock(builder, next);
+                next.setReachable(false);
             }
             return ret;
         } else {
@@ -717,11 +740,11 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             curDim = 0;
             int dim = ctx.constExp().size();
             ConstValue cv = (ConstValue) visitConstExp(ctx.constExp(dim - 1));
-            int size = (int) cv.getValue();
+            int size = cv.castToInt();
             ArrayType arrayType = new ArrayType(type, size);
             for (int i = dim - 2; i >= 0; i--) {
                 cv = (ConstValue) visitConstExp(ctx.constExp(i));
-                size = (int) cv.getValue();
+                size = cv.castToInt();
                 arrayType = new ArrayType(arrayType, size);
             }
             elementDim = new ArrayList<>();
@@ -751,7 +774,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         }
                     }
                     gen.setInitValue(globalVar, init);
-                    valuePropagate(globalVar, init);
                 } else if (globalVar != null) {
                     // array
                     arrayInit = new ArrayList<>();
@@ -777,7 +799,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     // base type
                     ValueRef init = visitInitVal(ctx.initVal());
                     gen.buildStore(builder, init, localVar);
-                    valuePropagate(localVar, init);
                 } else if (localVar != null) {
                     // array
                     arrayInit = new ArrayList<>();
@@ -803,7 +824,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else {
             if (global() && globalVar != null){
                 gen.setInitValue(globalVar, zero);
-                valuePropagate(globalVar, zero);
             }
         }
         if (global()) {
@@ -900,12 +920,14 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             // base
             String varName = ctx.IDENT().getText();
             ConstValue cv = (ConstValue) visitConstInitVal(ctx.constInitVal());
-            if (!type.equals(cv.getType())) {
-                // global variable's init must be compiling constant, so can directly use gen.build...
-                if (type instanceof IntType) {
-                    cv = (ConstValue) gen.buildFloatToInt(builder, cv, "f2i");
+            // implicit type conversion
+            if (!cv.getType().equals(type)) {
+                if (cv.getType() instanceof FloatType && type.equals(i32Type)) {
+                    cv = new ConstValue(i32Type, cv.castToInt(), cv.getName());
+                } else if (cv.getType() instanceof IntType && type.equals(floatType)) {
+                    cv = new ConstValue(floatType, (float) (int)cv.getValue(), cv.getName());
                 } else {
-                    cv = (ConstValue) gen.buildIntToFloat(builder, cv, "i2f");
+                    throw new RuntimeException(String.format("Can't cast %s to %s!", cv.getValue(), type));
                 }
             }
             curScope.put(new Symbol<>(varName, cv));
@@ -915,11 +937,11 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             arrayInit = new ArrayList<>();
             int dim = ctx.constExp().size();
             ConstValue cv = (ConstValue) visitConstExp(ctx.constExp(dim - 1));
-            int size = (int) cv.getValue();
+            int size = cv.castToInt();
             ArrayType arrayType = new ArrayType(type, size);
             for (int i = dim - 2; i >= 0; i--) {
                 cv = (ConstValue) visitConstExp(ctx.constExp(i));
-                size = (int) cv.getValue();
+                size = cv.castToInt();
                 arrayType = new ArrayType(arrayType, size);
             }
             elementDim = new ArrayList<>();
@@ -1022,147 +1044,5 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     @Override
     public ValueRef visitConstExp(SysYParser.ConstExpContext ctx) {
         return visitExp(ctx.exp());
-    }
-
-//    private int getIntConst(SysYParser.ConstExpContext constExp) {
-//        return getIntConst(constExp.exp());
-//    }
-
-//    private int getIntConst(SysYParser.ExpContext exp) {
-//        if (exp.number() != null) {
-//            if (exp.number().INTEGER_CONST() != null) {
-//                return string2Int(exp.number().INTEGER_CONST().getText());
-//            }
-//            throw new RuntimeException(exp + " can't be the size of array!");
-//        } else if (exp.lVal() != null) {
-//            ValueRef temp = scope.find(exp.getText());
-//            if (temp instanceof GlobalVar globlVar) {
-//                if (globlVar.isConstant()) {
-//                    return globlVar.getValue();
-//                }
-//                throw new RuntimeException(globlVar + " can't be the size of array!");
-//            } else if (temp instanceof ConstValue constValue) {
-//                if (constValue.getValue() instanceof Integer integer) {
-//                    return integer;
-//                } else {
-//                    throw new RuntimeException(constValue.getValue() + " can't be the size of array!");
-//                }
-//            } else if (temp instanceof LocalVar localVar) {
-//                // todo: constant propagation?
-//                if (localVar.isConstant()) {
-//                    return localVar.getValue();
-//                }
-//                throw new RuntimeException(localVar + " can't be the size of array!");
-//            }
-//        } else if (!exp.exp().isEmpty()) {
-//            if (exp.MUL() != null) return getIntConst(exp.exp(0)) * getIntConst(exp.exp(1));
-//            else if (exp.DIV() != null) return getIntConst(exp.exp(0)) / getIntConst(exp.exp(1));
-//            else if (exp.MOD() != null) return getIntConst(exp.exp(0)) % getIntConst(exp.exp(1));
-//            else if (exp.PLUS() != null) return getIntConst(exp.exp(0)) + getIntConst(exp.exp(1));
-//            else if (exp.MINUS() != null) return getIntConst(exp.exp(0)) - getIntConst(exp.exp(1));
-//            else if (exp.unaryOp() != null) {
-//                if (exp.unaryOp().MINUS() != null) return -getIntConst(exp.exp(0));
-//                else return getIntConst(exp.exp(0));
-//            }
-//        }
-//        throw new RuntimeException("func() can't be the size of array!");
-//    }
-
-    private static void valuePropagate(Variable lVariable, ValueRef value) {
-        if (value instanceof ConstValue constValue) {
-            if (constValue.getValue() instanceof Integer val) {
-                lVariable.mergeValue(Value.makeConstant(val));
-            }
-        }
-        if (value instanceof Variable rVariable) {
-            if (rVariable.isConstant()) {
-                lVariable.mergeValue(Value.makeConstant(rVariable.getValue()));
-            } else {
-                lVariable.mergeValue(Value.getNAC());
-            }
-        }
-    }
-
-    private Value expValue(SysYParser.ExpContext ctx) {
-        if (ctx.funcUse() != null) {
-            return Value.getNAC();
-        }
-        if (ctx.lVal() != null) {
-            if (!ctx.lVal().L_BRACKT().isEmpty()) {
-                return Value.getNAC();
-            }
-            // varName:
-            ValueRef valueRef = scope.find(ctx.lVal().getText());
-            return getConstantValue(valueRef);
-        }
-        if (ctx.L_PAREN() != null) {
-            return expValue(ctx.exp(0));
-        }
-        if (ctx.number() != null) {
-            return Value.makeConstant(string2Int(ctx.number().INTEGER_CONST().getText()));
-        }
-        if (ctx.unaryOp() != null) {
-            if (ctx.unaryOp().MINUS() != null) {
-                Value value = expValue(ctx.exp(0));
-                if (value.isConstant()) {
-                    return Value.makeConstant(-value.getValue());
-                }
-                return value;
-            } else if (ctx.unaryOp().NOT() != null) {
-                Value value = expValue(ctx.exp(0));
-                if (value.isConstant()) {
-                    return Value.makeConstant(value.getValue() == 0 ? 1 : 0);
-                }
-            }
-            return expValue(ctx.exp(0));
-        }
-        Value v1 = expValue(ctx.exp(0));
-        Value v2 = expValue(ctx.exp(1));
-        if (ctx.MUL() != null) {
-            if (v1.isConstant() && v2.isConstant()) {
-                return Value.makeConstant(v1.getValue() * v2.getValue());
-            }
-            return Value.getNAC();
-        }
-        if (ctx.DIV() != null) {
-            if (v1.isConstant() && v2.isConstant()) {
-                return Value.makeConstant(v1.getValue() / v2.getValue());
-            }
-            return Value.getNAC();
-        }
-        if (ctx.MOD() != null) {
-            if (v1.isConstant() && v2.isConstant()) {
-                return Value.makeConstant(v1.getValue() % v2.getValue());
-            }
-            return Value.getNAC();
-        }
-        if (ctx.PLUS() != null) {
-            if (v1.isConstant() && v2.isConstant()) {
-                return Value.makeConstant(v1.getValue() + v2.getValue());
-            }
-            return Value.getNAC();
-        }
-        if (ctx.MINUS() != null) {
-            if (v1.isConstant() && v2.isConstant()) {
-                return Value.makeConstant(v1.getValue() - v2.getValue());
-            }
-            return Value.getNAC();
-        }
-        throw new RuntimeException("unreachable");
-    }
-
-    /**
-     * This method should be used after ir generation, otherwise it'll be unsound!
-     */
-    private Value getConstantValue(ValueRef valueRef) {
-        if (valueRef instanceof ConstValue constValue) {
-            return Value.makeConstant((Integer) constValue.getValue());
-        }
-        if (valueRef instanceof Variable variable) {
-            if (variable.isNAC()) return Value.getNAC();
-            if (variable.isUndef()) return Value.getUndef();
-            return Value.makeConstant(variable.getValue());
-        }
-        throw new RuntimeException("not a value or variable!");
     }
 }
