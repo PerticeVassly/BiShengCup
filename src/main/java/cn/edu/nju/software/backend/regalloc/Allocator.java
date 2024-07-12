@@ -47,6 +47,7 @@ public class Allocator {
         memoryManager.clear(); // reset for memory allocation in current func
     }
 
+    //todo()应该迁移到generator中
     /* 将变量分配到寄存器中 */
     /* 以t1,t2,t3,ft1,ft2,ft3的顺序分配 */
     public void prepareOperands(ValueRef... values) {
@@ -85,17 +86,13 @@ public class Allocator {
 
     private void prepareALocal(LocalVar localVar, int i){
         if (localVar.getType() instanceof FloatType) {
-            mvAddrWithBigOffsetIntoReg(memoryManager.getOffset(localVar), "sp", "t4");
-            generator.addInstruction(new RiscFld(new Register("ft" + i), new IndirectRegister("t4", 0)));
+            generator.addInstruction(new RiscFld(new Register("ft" + i), getAddrOfLocalVar(localVar)));
         } else if (localVar.getType() instanceof IntType) {
-            mvAddrWithBigOffsetIntoReg(memoryManager.getOffset(localVar), "sp", "t4");
-            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t4", 0)));
+            generator.addInstruction(new RiscLd(new Register("t" + i), getAddrOfLocalVar(localVar)));
         } else if (localVar.getType() instanceof BoolType) {
-            mvAddrWithBigOffsetIntoReg(memoryManager.getOffset(localVar), "sp", "t4");
-            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t4", 0)));
+            generator.addInstruction(new RiscLd(new Register("t" + i), getAddrOfLocalVar(localVar)));
         } else if(localVar.getType() instanceof Pointer){
-            mvAddrWithBigOffsetIntoReg(memoryManager.getOffset(localVar), "sp", "t4");
-            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t4", 0)));
+            generator.addInstruction(new RiscLd(new Register("t" + i), getAddrOfLocalVar(localVar)));
         } else {
             assert false;
         }
@@ -115,13 +112,17 @@ public class Allocator {
     }
 
 
-    //todo不知道为什么这里修改就报错
+    /**
+     * t3 用于实现大立即数的转化
+     * @param variable
+     * @return
+     */
     public Operand getAddrOfLocalVar(ValueRef variable) {
         generator.insertComment("get address of local var:" + variable.getName());
         if (variable instanceof LocalVar) {
-            if(memoryManager.getOffset(variable) >= 1000){
-                mvAddrWithBigOffsetIntoReg(memoryManager.getOffset(variable), "sp", "t4");
-                return new IndirectRegister("t4", 0);
+            if(memoryManager.getOffset(variable) >= 1024){
+                mvAddrWithBigOffsetIntoReg(memoryManager.getOffset(variable), "sp", "t3");
+                return new IndirectRegister("t3", 0);
             }else{
                 return new IndirectRegister("sp", memoryManager.getOffset(variable));
             }
@@ -176,21 +177,6 @@ public class Allocator {
         }
     }
 
-//    @Deprecated
-//    public Operand getAddrOfVarWithOffsetIntoReg(ValueRef variable, String regName, int offset) {
-//        generator.insertComment("get address of " + variable.getName() + " into " + regName);
-//        if (variable instanceof GlobalVar) {
-//            return new RiscLabelAddress(new RiscLabel(variable.getName()));
-//        } else if (variable instanceof LocalVar) {
-//            generator.addInstruction(new RiscAddi(new Register(regName), new Register("sp"), new ImmediateValue(memoryManager.getOffset(variable))));
-//            generator.addInstruction(new RiscAddi(new Register(regName), new Register(regName), new ImmediateValue(offset)));
-//            return new IndirectRegister(regName, 0);
-//        } else {
-//            assert false;
-//            return null;
-//        }
-//    }
-//
     public void mvAddrWithBigOffsetIntoReg(int offset, String srcReg, String destReg) {
         assert !srcReg.equals(destReg);// not same
         generator.addInstruction(new RiscLi(new Register(destReg), new ImmediateValue(offset)));
@@ -225,4 +211,5 @@ public class Allocator {
             return 0;
         }
     }
+
 }

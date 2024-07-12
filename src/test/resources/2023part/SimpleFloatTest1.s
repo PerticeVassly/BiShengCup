@@ -95,23 +95,23 @@ mainEntry2:
 	# fadd result_ a b
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	fld ft1, 0(t4)
-	li t4, 8
-	add t4, sp, t4
-	fld ft2, 0(t4)
+
+	# get address of local var:a
+	fld ft1, 16(sp)
+
+	# get address of local var:b
+	fld ft2, 8(sp)
+	fadd.d ft0, ft1, ft2
 
 	# get address of local var:result_
-	fadd.d ft0, ft1, ft2
 	fsd ft0, 0(sp)
 
 	# lv$2 result_
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	fld ft1, 0(t4)
+
+	# get address of local var:result_
+	fld ft1, 0(sp)
 
 	# store lv$2 result_
 
@@ -131,3 +131,13 @@ mainEntry2:
 	li t4, 72
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry91:
+mainEntry48:
 
 	# reserve space
 	li t4, 120
@@ -52,9 +52,9 @@ mainEntry91:
 
 	# fetch variables
 	li t1, 0
-	li t4, 96
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:a
+	ld t2, 96(sp)
 
 	# get address of local var:tmp_
 	xor t0, t1, t2
@@ -65,9 +65,9 @@ mainEntry91:
 	# XOR tmp_$1 tmp_ 
 
 	# fetch variables
-	li t4, 88
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:tmp_
+	ld t1, 88(sp)
 	li t2, 1
 
 	# get address of local var:tmp_$1
@@ -79,9 +79,9 @@ mainEntry91:
 	# zext tmp_$2 tmp_$1
 
 	# fetch variables
-	li t4, 80
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:tmp_$1
+	ld t1, 80(sp)
 
 	# get address of local var:tmp_$2
 	mv t0, t1
@@ -91,9 +91,9 @@ mainEntry91:
 
 	# fetch variables
 	li t1, 0
-	li t4, 72
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:tmp_$2
+	ld t2, 72(sp)
 
 	# get address of local var:tmp_$3
 	xor t0, t1, t2
@@ -104,9 +104,9 @@ mainEntry91:
 	# XOR tmp_$4 tmp_$3 
 
 	# fetch variables
-	li t4, 64
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:tmp_$3
+	ld t1, 64(sp)
 	li t2, 1
 
 	# get address of local var:tmp_$4
@@ -118,9 +118,9 @@ mainEntry91:
 	# zext tmp_$5 tmp_$4
 
 	# fetch variables
-	li t4, 56
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:tmp_$4
+	ld t1, 56(sp)
 
 	# get address of local var:tmp_$5
 	mv t0, t1
@@ -130,9 +130,9 @@ mainEntry91:
 
 	# fetch variables
 	li t1, 0
-	li t4, 48
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:tmp_$5
+	ld t2, 48(sp)
 
 	# get address of local var:tmp_$6
 	xor t0, t1, t2
@@ -143,9 +143,9 @@ mainEntry91:
 	# XOR tmp_$7 tmp_$6 
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:tmp_$6
+	ld t1, 40(sp)
 	li t2, 1
 
 	# get address of local var:tmp_$7
@@ -157,9 +157,9 @@ mainEntry91:
 	# zext tmp_$8 tmp_$7
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:tmp_$7
+	ld t1, 32(sp)
 
 	# get address of local var:tmp_$8
 	mv t0, t1
@@ -169,9 +169,9 @@ mainEntry91:
 
 	# fetch variables
 	li t1, 0
-	li t4, 24
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:tmp_$8
+	ld t2, 24(sp)
 
 	# get address of local var:tmp_$9
 	sub t0, t1, t2
@@ -180,9 +180,9 @@ mainEntry91:
 	# cmp tmp_$9  cond_normalize_
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:tmp_$9
+	ld t1, 16(sp)
 	li t2, 0
 
 	# get address of local var:cond_normalize_
@@ -191,15 +191,15 @@ mainEntry91:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_normalize_ ifTrue_191 ifFalse_61
+	# condBr cond_normalize_ ifTrue_96 ifFalse_25
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_61
-	j ifTrue_191
-ifTrue_191:
+
+	# get address of local var:cond_normalize_
+	ld t1, 8(sp)
+	beqz t1, ifFalse_25
+	j ifTrue_96
+ifTrue_96:
 
 	# lv 
 
@@ -216,9 +216,9 @@ ifTrue_191:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_369
-	j next_369
-ifFalse_61:
+	# br next_189
+	j next_189
+ifFalse_25:
 
 	# lv 
 
@@ -235,9 +235,9 @@ ifFalse_61:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_369
-	j next_369
-next_369:
+	# br next_189
+	j next_189
+next_189:
 
 	# load a$1 lv
 
@@ -255,9 +255,9 @@ next_369:
 	# ret a$1
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a$1
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 120
 	add sp, sp, t4

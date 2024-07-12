@@ -3,6 +3,8 @@ package cn.edu.nju.software.ir.instruction;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.value.ValueRef;
 
+import java.util.List;
+
 public abstract class Instruction {
     protected ValueRef[] operands;
     protected int numberOfOperands;
@@ -12,6 +14,10 @@ public abstract class Instruction {
 
     public ValueRef getOperand(int index) {
         return operands[index];
+    }
+
+    public ValueRef[] getOperands() {
+        return operands;
     }
 
     public int getNumberOfOperands() {

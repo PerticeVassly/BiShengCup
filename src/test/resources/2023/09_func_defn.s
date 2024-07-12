@@ -8,7 +8,7 @@ gv:
 .type func, @function
 .globl func
 func:
-funcEntry2:
+funcEntry:
 
 	# reserve space
 	li t4, 48
@@ -34,9 +34,9 @@ funcEntry2:
 	# lv 0
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:0
+	ld t1, 40(sp)
 
 	# store lv 0
 
@@ -64,9 +64,9 @@ funcEntry2:
 	# sub result_ p 
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:p
+	ld t1, 16(sp)
 	li t2, 1
 
 	# get address of local var:result_
@@ -76,9 +76,9 @@ funcEntry2:
 	# lv result_
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_
+	ld t1, 8(sp)
 
 	# store lv result_
 
@@ -106,9 +106,9 @@ funcEntry2:
 	# ret p$1
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:p$1
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 48
 	add sp, sp, t4
@@ -119,7 +119,7 @@ funcEntry2:
 .type main, @function
 .globl main
 main:
-mainEntry61:
+mainEntry20:
 
 	# reserve space
 	li t4, 40
@@ -161,9 +161,9 @@ mainEntry61:
 	# prepare params
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a
+	ld t1, 16(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -187,9 +187,9 @@ mainEntry61:
 	# lv func
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:func
+	ld t1, 8(sp)
 
 	# store lv func
 
@@ -217,9 +217,9 @@ mainEntry61:
 	# ret b
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:b
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 40
 	add sp, sp, t4

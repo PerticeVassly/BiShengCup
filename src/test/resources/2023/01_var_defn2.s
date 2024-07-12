@@ -11,7 +11,7 @@ gv1:
 .type main, @function
 .globl main
 main:
-mainEntry27:
+mainEntry3:
 
 	# reserve space
 	li t4, 40
@@ -68,23 +68,23 @@ mainEntry27:
 	# add result_ a b
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 8
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:a
+	ld t1, 16(sp)
+
+	# get address of local var:b
+	ld t2, 8(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_
-	add t0, t1, t2
 	sd t0, 0(sp)
 
 	# ret result_
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 40
 	add sp, sp, t4

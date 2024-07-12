@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry43:
+mainEntry89:
 
 	# reserve space
 	li t4, 1280
@@ -1602,9 +1602,9 @@ mainEntry43:
 	# inp$30 a$1
 
 	# fetch variables
-	li t4, 512
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a$1
+	ld t1, 512(sp)
 
 	# store inp$30 a$1
 
@@ -1813,9 +1813,9 @@ mainEntry43:
 	# inp$32 d$1
 
 	# fetch variables
-	li t4, 360
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:d$1
+	ld t1, 360(sp)
 
 	# store inp$32 d$1
 
@@ -1881,9 +1881,9 @@ mainEntry43:
 	# inp$33 c$1
 
 	# fetch variables
-	li t4, 336
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:c$1
+	ld t1, 336(sp)
 
 	# store inp$33 c$1
 
@@ -2422,15 +2422,15 @@ mainEntry43:
 	# add result_ e$1 e$3
 
 	# fetch variables
-	li t4, 112
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 80
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:e$1
+	ld t1, 112(sp)
+
+	# get address of local var:e$3
+	ld t2, 80(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_
-	add t0, t1, t2
 	sd t0, 72(sp)
 
 	# gep ptr_$55 
@@ -2500,15 +2500,15 @@ mainEntry43:
 	# add result_$1 result_ e$5
 
 	# fetch variables
-	li t4, 72
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 40
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:result_
+	ld t1, 72(sp)
+
+	# get address of local var:e$5
+	ld t2, 40(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_$1
-	add t0, t1, t2
 	sd t0, 32(sp)
 
 	# gep ptr_$57 
@@ -2561,23 +2561,23 @@ mainEntry43:
 	# add result_$2 result_$1 d$3
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 8
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:result_$1
+	ld t1, 32(sp)
+
+	# get address of local var:d$3
+	ld t2, 8(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_$2
-	add t0, t1, t2
 	sd t0, 0(sp)
 
 	# ret result_$2
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_$2
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 1280
 	add sp, sp, t4

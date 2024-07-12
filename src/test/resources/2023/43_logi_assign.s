@@ -11,7 +11,7 @@ gv1:
 .type main, @function
 .globl main
 main:
-mainEntry15:
+mainEntry55:
 
 	# reserve space
 	li t4, 112
@@ -49,9 +49,9 @@ mainEntry15:
 	# gv @getint
 
 	# fetch variables
-	li t4, 88
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:getint
+	ld t1, 88(sp)
 
 	# store gv getint
 
@@ -84,9 +84,9 @@ mainEntry15:
 	# gv1 @getint$1
 
 	# fetch variables
-	li t4, 80
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:getint$1
+	ld t1, 80(sp)
 
 	# store gv1 getint$1
 
@@ -121,12 +121,12 @@ mainEntry15:
 	# cmp a b cond_eq_tmp_
 
 	# fetch variables
-	li t4, 72
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 64
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:a
+	ld t1, 72(sp)
+
+	# get address of local var:b
+	ld t2, 64(sp)
 
 	# get address of local var:cond_eq_tmp_
 	xor t0, t1, t2
@@ -136,9 +136,9 @@ mainEntry15:
 	# zext cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
-	li t4, 56
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_eq_tmp_
+	ld t1, 56(sp)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -147,9 +147,9 @@ mainEntry15:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	li t4, 48
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_
+	ld t1, 48(sp)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -158,15 +158,15 @@ mainEntry15:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_ secondCond_31 ifFalse_9
+	# condBr cond_ secondCond_67 ifFalse_30
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_9
-	j secondCond_31
-ifTrue_37:
+
+	# get address of local var:cond_
+	ld t1, 40(sp)
+	beqz t1, ifFalse_30
+	j secondCond_67
+ifTrue_120:
 
 	# lv 
 
@@ -183,9 +183,9 @@ ifTrue_37:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_75
-	j next_75
-ifFalse_9:
+	# br next_225
+	j next_225
+ifFalse_30:
 
 	# lv 
 
@@ -202,9 +202,9 @@ ifFalse_9:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_75
-	j next_75
-next_75:
+	# br next_225
+	j next_225
+next_225:
 
 	# load c lv
 
@@ -222,14 +222,14 @@ next_75:
 	# ret c
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:c
+	ld t1, 32(sp)
 	mv a0, t1
 	li t4, 112
 	add sp, sp, t4
 	ret 
-secondCond_31:
+secondCond_67:
 
 	# load a$1 gv
 
@@ -245,9 +245,9 @@ secondCond_31:
 	# cmp a$1  cond_neq_tmp_
 
 	# fetch variables
-	li t4, 24
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a$1
+	ld t1, 24(sp)
 	li t2, 3
 
 	# get address of local var:cond_neq_tmp_
@@ -259,9 +259,9 @@ secondCond_31:
 	# zext cond_tmp_$1 cond_neq_tmp_
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_neq_tmp_
+	ld t1, 16(sp)
 
 	# get address of local var:cond_tmp_$1
 	mv t0, t1
@@ -270,9 +270,9 @@ secondCond_31:
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_$1
+	ld t1, 8(sp)
 	li t2, 0
 
 	# get address of local var:cond_$1
@@ -281,14 +281,14 @@ secondCond_31:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_37 ifFalse_9
+	# condBr cond_$1 ifTrue_120 ifFalse_30
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_9
-	j ifTrue_37
+
+	# get address of local var:cond_$1
+	ld t1, 0(sp)
+	beqz t1, ifFalse_30
+	j ifTrue_120
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

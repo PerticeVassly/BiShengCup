@@ -31,9 +31,9 @@ fibEntry:
 	# lv 0
 
 	# fetch variables
-	li t4, 136
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:0
+	ld t1, 136(sp)
 
 	# store lv 0
 
@@ -61,9 +61,9 @@ fibEntry:
 	# cmp n  cond_eq_tmp_
 
 	# fetch variables
-	li t4, 112
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:n
+	ld t1, 112(sp)
 	li t2, 1
 
 	# get address of local var:cond_eq_tmp_
@@ -74,9 +74,9 @@ fibEntry:
 	# zext cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
-	li t4, 104
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_eq_tmp_
+	ld t1, 104(sp)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -85,9 +85,9 @@ fibEntry:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	li t4, 96
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_
+	ld t1, 96(sp)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -99,9 +99,9 @@ fibEntry:
 	# condBr cond_ ifTrue_4 next_4
 
 	# fetch variables
-	li t4, 88
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_
+	ld t1, 88(sp)
 	beqz t1, next_4
 	j ifTrue_4
 ifTrue_4:
@@ -135,9 +135,9 @@ next_4:
 	# cmp n$1  cond_eq_tmp_$1
 
 	# fetch variables
-	li t4, 80
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:n$1
+	ld t1, 80(sp)
 	li t2, 2
 
 	# get address of local var:cond_eq_tmp_$1
@@ -148,9 +148,9 @@ next_4:
 	# zext cond_tmp_$1 cond_eq_tmp_$1
 
 	# fetch variables
-	li t4, 72
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_eq_tmp_$1
+	ld t1, 72(sp)
 
 	# get address of local var:cond_tmp_$1
 	mv t0, t1
@@ -159,9 +159,9 @@ next_4:
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	li t4, 64
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_$1
+	ld t1, 64(sp)
 	li t2, 0
 
 	# get address of local var:cond_$1
@@ -173,9 +173,9 @@ next_4:
 	# condBr cond_$1 ifTrue_5 next_5
 
 	# fetch variables
-	li t4, 56
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_$1
+	ld t1, 56(sp)
 	beqz t1, next_5
 	j ifTrue_5
 ifTrue_5:
@@ -209,9 +209,9 @@ next_5:
 	# sub result_ n$2 
 
 	# fetch variables
-	li t4, 48
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:n$2
+	ld t1, 48(sp)
 	li t2, 1
 
 	# get address of local var:result_
@@ -221,10 +221,11 @@ next_5:
 	# prepare params
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_
+	ld t1, 40(sp)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -259,9 +260,9 @@ next_5:
 	# sub result_$1 n$3 
 
 	# fetch variables
-	li t4, 24
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:n$3
+	ld t1, 24(sp)
 	li t2, 2
 
 	# get address of local var:result_$1
@@ -271,10 +272,11 @@ next_5:
 	# prepare params
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_$1
+	ld t1, 16(sp)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -296,23 +298,23 @@ next_5:
 	# add result_$2 fib fib$1
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 8
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:fib
+	ld t1, 32(sp)
+
+	# get address of local var:fib$1
+	ld t2, 8(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_$2
-	add t0, t1, t2
 	sd t0, 0(sp)
 
 	# ret result_$2
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_$2
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 144
 	add sp, sp, t4
@@ -343,6 +345,7 @@ mainEntry10:
 	# fetch variables
 	li t1, 4
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -364,10 +367,20 @@ mainEntry10:
 	# ret fib
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:fib
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 24
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

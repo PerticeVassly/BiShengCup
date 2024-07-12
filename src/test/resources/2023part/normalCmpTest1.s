@@ -108,12 +108,12 @@ mainEntry12:
 	# cmp a b cond_lt_tmp_
 
 	# fetch variables
-	li t4, 72
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 64
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:a
+	ld t1, 72(sp)
+
+	# get address of local var:b
+	ld t2, 64(sp)
 
 	# get address of local var:cond_lt_tmp_
 	slt t0, t1, t2
@@ -122,9 +122,9 @@ mainEntry12:
 	# zext cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
-	li t4, 56
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_lt_tmp_
+	ld t1, 56(sp)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -133,9 +133,9 @@ mainEntry12:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	li t4, 48
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_
+	ld t1, 48(sp)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -147,9 +147,9 @@ mainEntry12:
 	# condBr cond_ secondCond_2 ifFalse_
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_
+	ld t1, 40(sp)
 	beqz t1, ifFalse_
 	j secondCond_2
 ifTrue_7:
@@ -203,12 +203,12 @@ secondCond_2:
 	# cmp b$1 c cond_lt_tmp_$1
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 24
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:b$1
+	ld t1, 32(sp)
+
+	# get address of local var:c
+	ld t2, 24(sp)
 
 	# get address of local var:cond_lt_tmp_$1
 	slt t0, t1, t2
@@ -217,9 +217,9 @@ secondCond_2:
 	# zext cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_lt_tmp_$1
+	ld t1, 16(sp)
 
 	# get address of local var:cond_tmp_$1
 	mv t0, t1
@@ -228,9 +228,9 @@ secondCond_2:
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_$1
+	ld t1, 8(sp)
 	li t2, 0
 
 	# get address of local var:cond_$1
@@ -242,8 +242,18 @@ secondCond_2:
 	# condBr cond_$1 ifTrue_7 ifFalse_
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_$1
+	ld t1, 0(sp)
 	beqz t1, ifFalse_
 	j ifTrue_7
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

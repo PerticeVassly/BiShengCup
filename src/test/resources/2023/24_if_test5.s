@@ -78,9 +78,9 @@ if_if_ElseEntry:
 	# cmp a  cond_eq_tmp_
 
 	# fetch variables
-	li t4, 80
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a
+	ld t1, 80(sp)
 	li t2, 5
 
 	# get address of local var:cond_eq_tmp_
@@ -91,9 +91,9 @@ if_if_ElseEntry:
 	# zext cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
-	li t4, 72
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_eq_tmp_
+	ld t1, 72(sp)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -102,9 +102,9 @@ if_if_ElseEntry:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	li t4, 64
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_
+	ld t1, 64(sp)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -113,15 +113,15 @@ if_if_ElseEntry:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ ifTrue_35 ifFalse_8
+	# condBr cond_ ifTrue_8 ifFalse_
 
 	# fetch variables
-	li t4, 56
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_8
-	j ifTrue_35
-ifTrue_35:
+
+	# get address of local var:cond_
+	ld t1, 56(sp)
+	beqz t1, ifFalse_
+	j ifTrue_8
+ifTrue_8:
 
 	# load b lv$1
 
@@ -139,9 +139,9 @@ ifTrue_35:
 	# cmp b  cond_eq_tmp_$1
 
 	# fetch variables
-	li t4, 48
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:b
+	ld t1, 48(sp)
 	li t2, 10
 
 	# get address of local var:cond_eq_tmp_$1
@@ -152,9 +152,9 @@ ifTrue_35:
 	# zext cond_tmp_$1 cond_eq_tmp_$1
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_eq_tmp_$1
+	ld t1, 40(sp)
 
 	# get address of local var:cond_tmp_$1
 	mv t0, t1
@@ -163,9 +163,9 @@ ifTrue_35:
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_$1
+	ld t1, 32(sp)
 	li t2, 0
 
 	# get address of local var:cond_$1
@@ -174,15 +174,15 @@ ifTrue_35:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_$1 ifTrue_36 next_67
+	# condBr cond_$1 ifTrue_9 next_16
 
 	# fetch variables
-	li t4, 24
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_67
-	j ifTrue_36
-ifFalse_8:
+
+	# get address of local var:cond_$1
+	ld t1, 24(sp)
+	beqz t1, next_16
+	j ifTrue_9
+ifFalse_:
 
 	# load a$1 lv
 
@@ -200,21 +200,21 @@ ifFalse_8:
 	# add result_ a$1 
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a$1
+	ld t1, 16(sp)
 	li t2, 15
+	add t0, t1, t2
 
 	# get address of local var:result_
-	add t0, t1, t2
 	sd t0, 8(sp)
 
 	# lv result_
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_
+	ld t1, 8(sp)
 
 	# store lv result_
 
@@ -226,9 +226,9 @@ ifFalse_8:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_66
-	j next_66
-next_66:
+	# br next_15
+	j next_15
+next_15:
 
 	# load a$2 lv
 
@@ -246,9 +246,9 @@ next_66:
 	# ret a$2
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a$2
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 120
 	add sp, sp, t4
@@ -256,7 +256,7 @@ next_66:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_36:
+ifTrue_9:
 
 	# lv 
 
@@ -273,16 +273,16 @@ ifTrue_36:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_67
-	j next_67
-next_67:
+	# br next_16
+	j next_16
+next_16:
 
-	# br next_66
-	j next_66
+	# br next_15
+	j next_15
 .type main, @function
 .globl main
 main:
-mainEntry11:
+mainEntry2:
 
 	# reserve space
 	li t4, 8
@@ -313,9 +313,9 @@ mainEntry11:
 	# ret if_if_Else
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:if_if_Else
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 8
 	add sp, sp, t4

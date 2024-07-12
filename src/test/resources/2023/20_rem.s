@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry69:
+mainEntry18:
 
 	# reserve space
 	li t4, 32
@@ -51,9 +51,9 @@ mainEntry69:
 	# mod result_ a 
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a
+	ld t1, 8(sp)
 	li t2, 3
 
 	# get address of local var:result_
@@ -63,9 +63,9 @@ mainEntry69:
 	# ret result_
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 32
 	add sp, sp, t4

@@ -67,9 +67,9 @@ fEntry2:
 	# lv 0
 
 	# fetch variables
-	li t4, 120
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:0
+	ld t1, 120(sp)
 
 	# store lv 0
 
@@ -84,9 +84,9 @@ fEntry2:
 	# lv$1 1
 
 	# fetch variables
-	li t4, 112
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:1
+	ld t1, 112(sp)
 
 	# store lv$1 1
 
@@ -101,9 +101,9 @@ fEntry2:
 	# lv$2 2
 
 	# fetch variables
-	li t4, 104
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:2
+	ld t1, 104(sp)
 
 	# store lv$2 2
 
@@ -118,9 +118,9 @@ fEntry2:
 	# lv$3 3
 
 	# fetch variables
-	li t4, 96
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:3
+	ld t1, 96(sp)
 
 	# store lv$3 3
 
@@ -210,9 +210,9 @@ fEntry2:
 	# ret b
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:b
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 128
 	add sp, sp, t4
@@ -559,34 +559,33 @@ mainEntry15:
 	# prepare params
 
 	# fetch variables
-	li t4, 56
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a
+	ld t1, 56(sp)
 	mv a0, t1
 
 	# fetch variables
-	li t4, 48
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:b
+	ld t1, 48(sp)
 	mv a1, t1
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:d
+	ld t1, 40(sp)
 
 	# push d
-	addi sp, sp, -8
-	sd t1, 0(sp)
+	sd t1, -8(sp)
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:c
+	ld t1, 32(sp)
 
 	# push c
-	addi sp, sp, -8
-	sd t1, 0(sp)
+	sd t1, -16(sp)
+	addi sp, sp, -16
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -655,10 +654,20 @@ mainEntry15:
 	# ret c$2
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:c$2
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 216
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

@@ -38,9 +38,9 @@ reverseEntry:
 	# lv 0
 
 	# fetch variables
-	li t4, 112
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:0
+	ld t1, 112(sp)
 
 	# store lv 0
 
@@ -68,9 +68,9 @@ reverseEntry:
 	# cmp n  cond_le_tmp_
 
 	# fetch variables
-	li t4, 72
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:n
+	ld t1, 72(sp)
 	li t2, 1
 
 	# get address of local var:cond_le_tmp_
@@ -82,9 +82,9 @@ reverseEntry:
 	# zext cond_tmp_ cond_le_tmp_
 
 	# fetch variables
-	li t4, 64
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_le_tmp_
+	ld t1, 64(sp)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -93,9 +93,9 @@ reverseEntry:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	li t4, 56
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_
+	ld t1, 56(sp)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -104,15 +104,15 @@ reverseEntry:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ ifTrue_111 ifFalse_40
+	# condBr cond_ ifTrue_121 ifFalse_31
 
 	# fetch variables
-	li t4, 48
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_40
-	j ifTrue_111
-ifTrue_111:
+
+	# get address of local var:cond_
+	ld t1, 48(sp)
+	beqz t1, ifFalse_31
+	j ifTrue_121
+ifTrue_121:
 
 	# prepare params
 	addi sp, sp, 0
@@ -137,9 +137,9 @@ ifTrue_111:
 	# lv$1 getint
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:getint
+	ld t1, 40(sp)
 
 	# store lv$1 getint
 
@@ -167,9 +167,9 @@ ifTrue_111:
 	# prepare params
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:next
+	ld t1, 32(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -187,9 +187,9 @@ ifTrue_111:
 	# release params
 	addi sp, sp, 0
 
-	# br next_210
-	j next_210
-ifFalse_40:
+	# br next_226
+	j next_226
+ifFalse_31:
 
 	# prepare params
 	addi sp, sp, 0
@@ -214,9 +214,9 @@ ifFalse_40:
 	# lv$1 getint$1
 
 	# fetch variables
-	li t4, 24
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:getint$1
+	ld t1, 24(sp)
 
 	# store lv$1 getint$1
 
@@ -244,9 +244,9 @@ ifFalse_40:
 	# sub result_ n$1 
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:n$1
+	ld t1, 16(sp)
 	li t2, 1
 
 	# get address of local var:result_
@@ -256,9 +256,9 @@ ifFalse_40:
 	# prepare params
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_
+	ld t1, 8(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -292,9 +292,9 @@ ifFalse_40:
 	# prepare params
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:next$1
+	ld t1, 0(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -312,9 +312,9 @@ ifFalse_40:
 	# release params
 	addi sp, sp, 0
 
-	# br next_210
-	j next_210
-next_210:
+	# br next_226
+	j next_226
+next_226:
 
 	# ret void
 	li t4, 120
@@ -326,7 +326,7 @@ next_210:
 .type main, @function
 .globl main
 main:
-mainEntry51:
+mainEntry56:
 
 	# reserve space
 	li t4, 24
@@ -372,9 +372,9 @@ mainEntry51:
 	# prepare params
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:i
+	ld t1, 0(sp)
 	mv a0, t1
 	addi sp, sp, 0
 

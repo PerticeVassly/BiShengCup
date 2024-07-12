@@ -14,7 +14,7 @@ gv2:
 .type main, @function
 .globl main
 main:
-mainEntry56:
+mainEntry86:
 
 	# reserve space
 	li t4, 56
@@ -68,9 +68,9 @@ mainEntry56:
 	# floatToInt f2i_ d
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	fld ft1, 0(t4)
+
+	# get address of local var:d
+	fld ft1, 16(sp)
 
 	# get address of local var:f2i_
 	fcvt.l.d t0, ft1
@@ -79,9 +79,9 @@ mainEntry56:
 	# lv$1 f2i_
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:f2i_
+	ld t1, 8(sp)
 
 	# store lv$1 f2i_
 
@@ -109,9 +109,9 @@ mainEntry56:
 	# prepare params
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:e
+	ld t1, 0(sp)
 	mv a0, t1
 	addi sp, sp, 0
 

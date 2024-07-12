@@ -11,7 +11,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry67:
+mainEntry34:
 
 	# reserve space
 	li t4, 128
@@ -194,23 +194,23 @@ mainEntry67:
 	# fadd result_ f$1 ff$1
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	fld ft1, 0(t4)
-	li t4, 24
-	add t4, sp, t4
-	fld ft2, 0(t4)
+
+	# get address of local var:f$1
+	fld ft1, 40(sp)
+
+	# get address of local var:ff$1
+	fld ft2, 24(sp)
+	fadd.d ft0, ft1, ft2
 
 	# get address of local var:result_
-	fadd.d ft0, ft1, ft2
 	fsd ft0, 16(sp)
 
 	# floatToInt f2i_ result_
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	fld ft1, 0(t4)
+
+	# get address of local var:result_
+	fld ft1, 16(sp)
 
 	# get address of local var:f2i_
 	fcvt.l.d t0, ft1
@@ -219,9 +219,9 @@ mainEntry67:
 	# lv$1 f2i_
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:f2i_
+	ld t1, 8(sp)
 
 	# store lv$1 f2i_
 
@@ -249,9 +249,9 @@ mainEntry67:
 	# ret a
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 128
 	add sp, sp, t4

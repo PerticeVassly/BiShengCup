@@ -51,9 +51,9 @@ mainEntry11:
 	# cmp a  cond_eq_tmp_
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a
+	ld t1, 32(sp)
 	li t2, 1
 
 	# get address of local var:cond_eq_tmp_
@@ -64,9 +64,9 @@ mainEntry11:
 	# zext cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
-	li t4, 24
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_eq_tmp_
+	ld t1, 24(sp)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -75,9 +75,9 @@ mainEntry11:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_
+	ld t1, 16(sp)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -89,9 +89,9 @@ mainEntry11:
 	# condBr cond_ ifTrue_6 next_6
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_
+	ld t1, 8(sp)
 	beqz t1, next_6
 	j ifTrue_6
 ifTrue_6:
@@ -131,10 +131,20 @@ next_6:
 	# ret a$1
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a$1
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 56
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

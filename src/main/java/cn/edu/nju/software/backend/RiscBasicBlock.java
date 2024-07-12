@@ -32,7 +32,7 @@ public class RiscBasicBlock {
     public RiscBasicBlock(BasicBlockRef basicBlockRef, FunctionValue functionValue) {
         this.basicBlockRef = basicBlockRef;
         this.llvmFunctionValue = functionValue;
-        this.generator = new RiscInstrGenerator(basicBlockRef.getIrs(), llvmFunctionValue, this);
+        this.generator = new RiscInstrGenerator(basicBlockRef.getIrs(), llvmFunctionValue);
     }
 
     public void codeGen() {

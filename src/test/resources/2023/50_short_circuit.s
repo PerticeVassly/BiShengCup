@@ -8,7 +8,7 @@ gv:
 .type func, @function
 .globl func
 func:
-funcEntry1:
+funcEntry3:
 
 	# reserve space
 	li t4, 64
@@ -34,9 +34,9 @@ funcEntry1:
 	# lv 0
 
 	# fetch variables
-	li t4, 56
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:0
+	ld t1, 56(sp)
 
 	# store lv 0
 
@@ -75,23 +75,23 @@ funcEntry1:
 	# add result_ g n
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 24
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:g
+	ld t1, 32(sp)
+
+	# get address of local var:n
+	ld t2, 24(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_
-	add t0, t1, t2
 	sd t0, 16(sp)
 
 	# gv @result_
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_
+	ld t1, 16(sp)
 
 	# store gv result_
 
@@ -115,9 +115,9 @@ funcEntry1:
 	# prepare params
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:g$1
+	ld t1, 8(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -149,9 +149,9 @@ funcEntry1:
 	# ret g$2
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:g$2
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 64
 	add sp, sp, t4
@@ -162,7 +162,7 @@ funcEntry1:
 .type main, @function
 .globl main
 main:
-mainEntry59:
+mainEntry39:
 
 	# reserve space
 	li t4, 328
@@ -200,9 +200,9 @@ mainEntry59:
 	# lv getint
 
 	# fetch variables
-	li t4, 304
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:getint
+	ld t1, 304(sp)
 
 	# store lv getint
 
@@ -230,9 +230,9 @@ mainEntry59:
 	# cmp i  cond_gt_tmp_
 
 	# fetch variables
-	li t4, 296
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:i
+	ld t1, 296(sp)
 	li t2, 10
 
 	# get address of local var:cond_gt_tmp_
@@ -243,9 +243,9 @@ mainEntry59:
 	# zext cond_tmp_ cond_gt_tmp_
 
 	# fetch variables
-	li t4, 288
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_gt_tmp_
+	ld t1, 288(sp)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -254,9 +254,9 @@ mainEntry59:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	li t4, 280
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_
+	ld t1, 280(sp)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -265,15 +265,15 @@ mainEntry59:
 	seqz t0, t0
 	sd t0, 272(sp)
 
-	# condBr cond_ secondCond_59 ifFalse_44
+	# condBr cond_ secondCond_41 ifFalse_14
 
 	# fetch variables
-	li t4, 272
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_44
-	j secondCond_59
-ifTrue_124:
+
+	# get address of local var:cond_
+	ld t1, 272(sp)
+	beqz t1, ifFalse_14
+	j secondCond_41
+ifTrue_66:
 
 	# lv 
 
@@ -290,9 +290,9 @@ ifTrue_124:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_250
-	j next_250
-ifFalse_44:
+	# br next_139
+	j next_139
+ifFalse_14:
 
 	# lv 
 
@@ -309,9 +309,9 @@ ifFalse_44:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_250
-	j next_250
-next_250:
+	# br next_139
+	j next_139
+next_139:
 
 	# prepare params
 	addi sp, sp, 0
@@ -336,9 +336,9 @@ next_250:
 	# lv getint$1
 
 	# fetch variables
-	li t4, 264
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:getint$1
+	ld t1, 264(sp)
 
 	# store lv getint$1
 
@@ -366,9 +366,9 @@ next_250:
 	# cmp i$2  cond_gt_tmp_$1
 
 	# fetch variables
-	li t4, 256
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:i$2
+	ld t1, 256(sp)
 	li t2, 11
 
 	# get address of local var:cond_gt_tmp_$1
@@ -379,9 +379,9 @@ next_250:
 	# zext cond_tmp_$1 cond_gt_tmp_$1
 
 	# fetch variables
-	li t4, 248
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_gt_tmp_$1
+	ld t1, 248(sp)
 
 	# get address of local var:cond_tmp_$1
 	mv t0, t1
@@ -390,9 +390,9 @@ next_250:
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	li t4, 240
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_$1
+	ld t1, 240(sp)
 	li t2, 0
 
 	# get address of local var:cond_$1
@@ -401,15 +401,15 @@ next_250:
 	seqz t0, t0
 	sd t0, 232(sp)
 
-	# condBr cond_$1 secondCond_60 ifFalse_45
+	# condBr cond_$1 secondCond_42 ifFalse_15
 
 	# fetch variables
-	li t4, 232
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_45
-	j secondCond_60
-secondCond_59:
+
+	# get address of local var:cond_$1
+	ld t1, 232(sp)
+	beqz t1, ifFalse_15
+	j secondCond_42
+secondCond_41:
 
 	# load i$1 lv
 
@@ -427,9 +427,9 @@ secondCond_59:
 	# prepare params
 
 	# fetch variables
-	li t4, 224
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:i$1
+	ld t1, 224(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -453,9 +453,9 @@ secondCond_59:
 	# cmp func  cond_normalize_
 
 	# fetch variables
-	li t4, 216
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:func
+	ld t1, 216(sp)
 	li t2, 0
 
 	# get address of local var:cond_normalize_
@@ -464,15 +464,15 @@ secondCond_59:
 	seqz t0, t0
 	sd t0, 208(sp)
 
-	# condBr cond_normalize_ ifTrue_124 ifFalse_44
+	# condBr cond_normalize_ ifTrue_66 ifFalse_14
 
 	# fetch variables
-	li t4, 208
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_44
-	j ifTrue_124
-ifTrue_125:
+
+	# get address of local var:cond_normalize_
+	ld t1, 208(sp)
+	beqz t1, ifFalse_14
+	j ifTrue_66
+ifTrue_67:
 
 	# lv 
 
@@ -489,9 +489,9 @@ ifTrue_125:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_251
-	j next_251
-ifFalse_45:
+	# br next_140
+	j next_140
+ifFalse_15:
 
 	# lv 
 
@@ -508,9 +508,9 @@ ifFalse_45:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_251
-	j next_251
-next_251:
+	# br next_140
+	j next_140
+next_140:
 
 	# prepare params
 	addi sp, sp, 0
@@ -535,9 +535,9 @@ next_251:
 	# lv getint$2
 
 	# fetch variables
-	li t4, 200
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:getint$2
+	ld t1, 200(sp)
 
 	# store lv getint$2
 
@@ -565,9 +565,9 @@ next_251:
 	# cmp i$4  cond_le_tmp_
 
 	# fetch variables
-	li t4, 192
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:i$4
+	ld t1, 192(sp)
 	li t2, 99
 
 	# get address of local var:cond_le_tmp_
@@ -579,9 +579,9 @@ next_251:
 	# zext cond_tmp_$2 cond_le_tmp_
 
 	# fetch variables
-	li t4, 184
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_le_tmp_
+	ld t1, 184(sp)
 
 	# get address of local var:cond_tmp_$2
 	mv t0, t1
@@ -590,9 +590,9 @@ next_251:
 	# cmp cond_tmp_$2  cond_$2
 
 	# fetch variables
-	li t4, 176
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_$2
+	ld t1, 176(sp)
 	li t2, 0
 
 	# get address of local var:cond_$2
@@ -601,15 +601,15 @@ next_251:
 	seqz t0, t0
 	sd t0, 168(sp)
 
-	# condBr cond_$2 ifTrue_126 secondCond_61
+	# condBr cond_$2 ifTrue_68 secondCond_43
 
 	# fetch variables
-	li t4, 168
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_61
-	j ifTrue_126
-secondCond_60:
+
+	# get address of local var:cond_$2
+	ld t1, 168(sp)
+	beqz t1, secondCond_43
+	j ifTrue_68
+secondCond_42:
 
 	# load i$3 lv
 
@@ -627,9 +627,9 @@ secondCond_60:
 	# prepare params
 
 	# fetch variables
-	li t4, 160
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:i$3
+	ld t1, 160(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -653,9 +653,9 @@ secondCond_60:
 	# cmp func$1  cond_normalize_$1
 
 	# fetch variables
-	li t4, 152
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:func$1
+	ld t1, 152(sp)
 	li t2, 0
 
 	# get address of local var:cond_normalize_$1
@@ -664,15 +664,15 @@ secondCond_60:
 	seqz t0, t0
 	sd t0, 144(sp)
 
-	# condBr cond_normalize_$1 ifTrue_125 ifFalse_45
+	# condBr cond_normalize_$1 ifTrue_67 ifFalse_15
 
 	# fetch variables
-	li t4, 144
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_45
-	j ifTrue_125
-ifTrue_126:
+
+	# get address of local var:cond_normalize_$1
+	ld t1, 144(sp)
+	beqz t1, ifFalse_15
+	j ifTrue_67
+ifTrue_68:
 
 	# lv 
 
@@ -689,9 +689,9 @@ ifTrue_126:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_252
-	j next_252
-ifFalse_46:
+	# br next_141
+	j next_141
+ifFalse_16:
 
 	# lv 
 
@@ -708,9 +708,9 @@ ifFalse_46:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_252
-	j next_252
-next_252:
+	# br next_141
+	j next_141
+next_141:
 
 	# prepare params
 	addi sp, sp, 0
@@ -735,9 +735,9 @@ next_252:
 	# lv getint$3
 
 	# fetch variables
-	li t4, 136
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:getint$3
+	ld t1, 136(sp)
 
 	# store lv getint$3
 
@@ -765,9 +765,9 @@ next_252:
 	# cmp i$6  cond_le_tmp_$1
 
 	# fetch variables
-	li t4, 128
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:i$6
+	ld t1, 128(sp)
 	li t2, 100
 
 	# get address of local var:cond_le_tmp_$1
@@ -779,9 +779,9 @@ next_252:
 	# zext cond_tmp_$3 cond_le_tmp_$1
 
 	# fetch variables
-	li t4, 120
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_le_tmp_$1
+	ld t1, 120(sp)
 
 	# get address of local var:cond_tmp_$3
 	mv t0, t1
@@ -790,9 +790,9 @@ next_252:
 	# cmp cond_tmp_$3  cond_$3
 
 	# fetch variables
-	li t4, 112
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_$3
+	ld t1, 112(sp)
 	li t2, 0
 
 	# get address of local var:cond_$3
@@ -801,15 +801,15 @@ next_252:
 	seqz t0, t0
 	sd t0, 104(sp)
 
-	# condBr cond_$3 ifTrue_127 secondCond_62
+	# condBr cond_$3 ifTrue_69 secondCond_44
 
 	# fetch variables
-	li t4, 104
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_62
-	j ifTrue_127
-secondCond_61:
+
+	# get address of local var:cond_$3
+	ld t1, 104(sp)
+	beqz t1, secondCond_44
+	j ifTrue_69
+secondCond_43:
 
 	# load i$5 lv
 
@@ -827,9 +827,9 @@ secondCond_61:
 	# prepare params
 
 	# fetch variables
-	li t4, 96
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:i$5
+	ld t1, 96(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -853,9 +853,9 @@ secondCond_61:
 	# cmp func$2  cond_normalize_$2
 
 	# fetch variables
-	li t4, 88
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:func$2
+	ld t1, 88(sp)
 	li t2, 0
 
 	# get address of local var:cond_normalize_$2
@@ -864,15 +864,15 @@ secondCond_61:
 	seqz t0, t0
 	sd t0, 80(sp)
 
-	# condBr cond_normalize_$2 ifTrue_126 ifFalse_46
+	# condBr cond_normalize_$2 ifTrue_68 ifFalse_16
 
 	# fetch variables
-	li t4, 80
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_46
-	j ifTrue_126
-ifTrue_127:
+
+	# get address of local var:cond_normalize_$2
+	ld t1, 80(sp)
+	beqz t1, ifFalse_16
+	j ifTrue_68
+ifTrue_69:
 
 	# lv 
 
@@ -889,9 +889,9 @@ ifTrue_127:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_253
-	j next_253
-ifFalse_47:
+	# br next_142
+	j next_142
+ifFalse_17:
 
 	# lv 
 
@@ -908,9 +908,9 @@ ifFalse_47:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_253
-	j next_253
-next_253:
+	# br next_142
+	j next_142
+next_142:
 
 	# prepare params
 
@@ -940,9 +940,9 @@ next_253:
 
 	# fetch variables
 	li t1, 0
-	li t4, 72
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:func$4
+	ld t2, 72(sp)
 
 	# get address of local var:tmp_
 	xor t0, t1, t2
@@ -953,9 +953,9 @@ next_253:
 	# XOR tmp_$1 tmp_ 
 
 	# fetch variables
-	li t4, 64
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:tmp_
+	ld t1, 64(sp)
 	li t2, 1
 
 	# get address of local var:tmp_$1
@@ -967,9 +967,9 @@ next_253:
 	# zext tmp_$2 tmp_$1
 
 	# fetch variables
-	li t4, 56
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:tmp_$1
+	ld t1, 56(sp)
 
 	# get address of local var:tmp_$2
 	mv t0, t1
@@ -978,9 +978,9 @@ next_253:
 	# cmp tmp_$2  cond_normalize_$4
 
 	# fetch variables
-	li t4, 48
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:tmp_$2
+	ld t1, 48(sp)
 	li t2, 0
 
 	# get address of local var:cond_normalize_$4
@@ -989,15 +989,15 @@ next_253:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_normalize_$4 secondCond_63 ifFalse_48
+	# condBr cond_normalize_$4 secondCond_45 ifFalse_18
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_48
-	j secondCond_63
-secondCond_62:
+
+	# get address of local var:cond_normalize_$4
+	ld t1, 40(sp)
+	beqz t1, ifFalse_18
+	j secondCond_45
+secondCond_44:
 
 	# load i$7 lv
 
@@ -1015,9 +1015,9 @@ secondCond_62:
 	# prepare params
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:i$7
+	ld t1, 32(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -1041,9 +1041,9 @@ secondCond_62:
 	# cmp func$3  cond_normalize_$3
 
 	# fetch variables
-	li t4, 24
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:func$3
+	ld t1, 24(sp)
 	li t2, 0
 
 	# get address of local var:cond_normalize_$3
@@ -1052,15 +1052,15 @@ secondCond_62:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_normalize_$3 ifTrue_127 ifFalse_47
+	# condBr cond_normalize_$3 ifTrue_69 ifFalse_17
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_47
-	j ifTrue_127
-ifTrue_128:
+
+	# get address of local var:cond_normalize_$3
+	ld t1, 16(sp)
+	beqz t1, ifFalse_17
+	j ifTrue_69
+ifTrue_70:
 
 	# lv 
 
@@ -1077,9 +1077,9 @@ ifTrue_128:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_254
-	j next_254
-ifFalse_48:
+	# br next_143
+	j next_143
+ifFalse_18:
 
 	# lv 
 
@@ -1096,9 +1096,9 @@ ifFalse_48:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_254
-	j next_254
-next_254:
+	# br next_143
+	j next_143
+next_143:
 
 	# ret 
 
@@ -1108,7 +1108,7 @@ next_254:
 	li t4, 328
 	add sp, sp, t4
 	ret 
-secondCond_63:
+secondCond_45:
 
 	# prepare params
 
@@ -1137,9 +1137,9 @@ secondCond_63:
 	# cmp func$5  cond_normalize_$5
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:func$5
+	ld t1, 8(sp)
 	li t2, 0
 
 	# get address of local var:cond_normalize_$5
@@ -1148,14 +1148,14 @@ secondCond_63:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_$5 ifTrue_128 ifFalse_48
+	# condBr cond_normalize_$5 ifTrue_70 ifFalse_18
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_48
-	j ifTrue_128
+
+	# get address of local var:cond_normalize_$5
+	ld t1, 0(sp)
+	beqz t1, ifFalse_18
+	j ifTrue_70
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 
