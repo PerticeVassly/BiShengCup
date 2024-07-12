@@ -197,15 +197,15 @@ exgcdEntry:
 	seqz t0, t0
 	sd t0, 256(sp)
 
-	# condBr cond_ ifTrue_71 ifFalse_19
+	# condBr cond_ ifTrue_73 ifFalse_19
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 256(sp)
 	beqz t1, ifFalse_19
-	j ifTrue_71
-ifTrue_71:
+	j ifTrue_73
+ifTrue_73:
 
 	# load arr_ lv$2
 
@@ -819,7 +819,7 @@ ifFalse_19:
 .type main, @function
 .globl main
 main:
-mainEntry40:
+mainEntry42:
 
 	# reserve space
 	li t4, 208

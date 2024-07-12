@@ -181,15 +181,15 @@ merge_sortEntry:
 	seqz t0, t0
 	sd t0, 784(sp)
 
-	# condBr cond_ ifTrue_92 next_179
+	# condBr cond_ ifTrue_8 next_9
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 784(sp)
-	beqz t1, next_179
-	j ifTrue_92
-ifTrue_92:
+	beqz t1, next_9
+	j ifTrue_8
+ifTrue_8:
 
 	# ret void
 	li t4, 944
@@ -198,7 +198,7 @@ ifTrue_92:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_179:
+next_9:
 
 	# load l$1 lv
 
@@ -469,9 +469,9 @@ next_179:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_87
-	j whileCond_87
-whileCond_87:
+	# br whileCond_1
+	j whileCond_1
+whileCond_1:
 
 	# load i lv$3
 
@@ -538,15 +538,15 @@ whileCond_87:
 	seqz t0, t0
 	sd t0, 656(sp)
 
-	# condBr cond_$1 secondCond_54 next_180
+	# condBr cond_$1 secondCond_2 next_10
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 656(sp)
-	beqz t1, next_180
-	j secondCond_54
-whileBody_87:
+	beqz t1, next_10
+	j secondCond_2
+whileBody_1:
 
 	# load i$1 lv$3
 
@@ -707,19 +707,19 @@ whileBody_87:
 	seqz t0, t0
 	sd t0, 568(sp)
 
-	# condBr cond_$3 ifTrue_93 ifFalse_24
+	# condBr cond_$3 ifTrue_9 ifFalse_3
 
 	# fetch variables
 
 	# get address of local var:cond_$3
 	ld t1, 568(sp)
-	beqz t1, ifFalse_24
-	j ifTrue_93
-next_180:
+	beqz t1, ifFalse_3
+	j ifTrue_9
+next_10:
 
-	# br whileCond_88
-	j whileCond_88
-secondCond_54:
+	# br whileCond_2
+	j whileCond_2
+secondCond_2:
 
 	# load j lv$4
 
@@ -786,15 +786,15 @@ secondCond_54:
 	seqz t0, t0
 	sd t0, 528(sp)
 
-	# condBr cond_$2 whileBody_87 next_180
+	# condBr cond_$2 whileBody_1 next_10
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	ld t1, 528(sp)
-	beqz t1, next_180
-	j whileBody_87
-ifTrue_93:
+	beqz t1, next_10
+	j whileBody_1
+ifTrue_9:
 
 	# load k lv$5
 
@@ -962,9 +962,9 @@ ifTrue_93:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_181
-	j next_181
-ifFalse_24:
+	# br next_11
+	j next_11
+ifFalse_3:
 
 	# load k$1 lv$5
 
@@ -1132,9 +1132,9 @@ ifFalse_24:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_181
-	j next_181
-next_181:
+	# br next_11
+	j next_11
+next_11:
 
 	# load k$2 lv$5
 
@@ -1178,9 +1178,9 @@ next_181:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_87
-	j whileCond_87
-whileCond_88:
+	# br whileCond_1
+	j whileCond_1
+whileCond_2:
 
 	# load i$4 lv$3
 
@@ -1247,15 +1247,15 @@ whileCond_88:
 	seqz t0, t0
 	sd t0, 328(sp)
 
-	# condBr cond_$4 whileBody_88 next_182
+	# condBr cond_$4 whileBody_2 next_12
 
 	# fetch variables
 
 	# get address of local var:cond_$4
 	ld t1, 328(sp)
-	beqz t1, next_182
-	j whileBody_88
-whileBody_88:
+	beqz t1, next_12
+	j whileBody_2
+whileBody_2:
 
 	# load k$3 lv$5
 
@@ -1465,13 +1465,13 @@ whileBody_88:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_88
-	j whileCond_88
-next_182:
+	# br whileCond_2
+	j whileCond_2
+next_12:
 
-	# br whileCond_89
-	j whileCond_89
-whileCond_89:
+	# br whileCond_3
+	j whileCond_3
+whileCond_3:
 
 	# load j$4 lv$4
 
@@ -1538,15 +1538,15 @@ whileCond_89:
 	seqz t0, t0
 	sd t0, 200(sp)
 
-	# condBr cond_$5 whileBody_89 next_183
+	# condBr cond_$5 whileBody_3 next_13
 
 	# fetch variables
 
 	# get address of local var:cond_$5
 	ld t1, 200(sp)
-	beqz t1, next_183
-	j whileBody_89
-whileBody_89:
+	beqz t1, next_13
+	j whileBody_3
+whileBody_3:
 
 	# load k$5 lv$5
 
@@ -1756,13 +1756,13 @@ whileBody_89:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_89
-	j whileCond_89
-next_183:
+	# br whileCond_3
+	j whileCond_3
+next_13:
 
-	# br whileCond_90
-	j whileCond_90
-whileCond_90:
+	# br whileCond_4
+	j whileCond_4
+whileCond_4:
 
 	# load l$5 lv
 
@@ -1829,15 +1829,15 @@ whileCond_90:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$6 whileBody_90 next_184
+	# condBr cond_$6 whileBody_4 next_14
 
 	# fetch variables
 
 	# get address of local var:cond_$6
 	ld t1, 72(sp)
-	beqz t1, next_184
-	j whileBody_90
-whileBody_90:
+	beqz t1, next_14
+	j whileBody_4
+whileBody_4:
 
 	# load l$6 lv
 
@@ -2005,9 +2005,9 @@ whileBody_90:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_90
-	j whileCond_90
-next_184:
+	# br whileCond_4
+	j whileCond_4
+next_14:
 
 	# ret void
 	li t4, 944
@@ -2019,7 +2019,7 @@ next_184:
 .type main, @function
 .globl main
 main:
-mainEntry45:
+mainEntry2:
 
 	# reserve space
 	li t4, 72

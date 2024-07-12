@@ -37,7 +37,7 @@ public class TestBackEndIO {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if (name.contains("54") || name.contains("82") || name.contains("83")){
+        if (false){
             fail();
         }
         testFile(DIR, name);

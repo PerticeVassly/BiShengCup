@@ -190,9 +190,9 @@ putstrEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_91
-	j whileCond_91
-whileCond_91:
+	# br whileCond_190
+	j whileCond_190
+whileCond_190:
 
 	# load iNd__1X lv$1
 
@@ -266,15 +266,15 @@ whileCond_91:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_normalize_ whileBody_91 next_185
+	# condBr cond_normalize_ whileBody_190 next_455
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 56(sp)
-	beqz t1, next_185
-	j whileBody_91
-whileBody_91:
+	beqz t1, next_455
+	j whileBody_190
+whileBody_190:
 
 	# load iNd__1X$1 lv$1
 
@@ -399,9 +399,9 @@ whileBody_91:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_91
-	j whileCond_91
-next_185:
+	# br whileCond_190
+	j whileCond_190
+next_455:
 
 	# load iNd__1X$3 lv$1
 
@@ -432,7 +432,7 @@ next_185:
 .type main, @function
 .globl main
 main:
-mainEntry47:
+mainEntry50:
 
 	# reserve space
 	li t4, 304
@@ -517,9 +517,9 @@ mainEntry47:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_92
-	j whileCond_92
-whileCond_92:
+	# br whileCond_191
+	j whileCond_191
+whileCond_191:
 
 	# cmp   cond_normalize_
 
@@ -533,9 +533,9 @@ whileCond_92:
 	seqz t0, t0
 	sd t0, 232(sp)
 
-	# br whileBody_92
-	j whileBody_92
-whileBody_92:
+	# br whileBody_191
+	j whileBody_191
+whileBody_191:
 
 	# load i lv
 
@@ -688,15 +688,15 @@ whileBody_92:
 	seqz t0, t0
 	sd t0, 160(sp)
 
-	# condBr cond_ ifTrue_94 next_187
+	# condBr cond_ ifTrue_265 next_457
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 160(sp)
-	beqz t1, next_187
-	j ifTrue_94
-next_186:
+	beqz t1, next_457
+	j ifTrue_265
+next_456:
 
 	# ret 
 
@@ -706,7 +706,7 @@ next_186:
 	li t4, 304
 	add sp, sp, t4
 	ret 
-ifTrue_94:
+ifTrue_265:
 
 	# load _$1 lv$1
 
@@ -936,9 +936,9 @@ ifTrue_94:
 	# get address of local var:putstr$4
 	sd a0, 64(sp)
 
-	# br next_187
-	j next_187
-next_187:
+	# br next_457
+	j next_457
+next_457:
 
 	# load i$2 lv
 
@@ -1057,25 +1057,25 @@ next_187:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_95 next_188
+	# condBr cond_$1 ifTrue_266 next_458
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 0(sp)
-	beqz t1, next_188
-	j ifTrue_95
-ifTrue_95:
+	beqz t1, next_458
+	j ifTrue_266
+ifTrue_266:
 
-	# br next_186
-	j next_186
+	# br next_456
+	j next_456
 
-	# br next_188
-	j next_188
-next_188:
+	# br next_458
+	j next_458
+next_458:
 
-	# br whileCond_92
-	j whileCond_92
+	# br whileCond_191
+	j whileCond_191
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

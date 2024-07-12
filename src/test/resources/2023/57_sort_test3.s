@@ -198,15 +198,15 @@ QuickSortEntry1:
 	seqz t0, t0
 	sd t0, 688(sp)
 
-	# condBr cond_ ifTrue_139 next_261
+	# condBr cond_ ifTrue_310 next_531
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 688(sp)
-	beqz t1, next_261
-	j ifTrue_139
-ifTrue_139:
+	beqz t1, next_531
+	j ifTrue_310
+ifTrue_310:
 
 	# load low$1 lv$1
 
@@ -343,9 +343,9 @@ ifTrue_139:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_122
-	j whileCond_122
-next_261:
+	# br whileCond_221
+	j whileCond_221
+next_531:
 
 	# ret 
 
@@ -358,7 +358,7 @@ next_261:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_122:
+whileCond_221:
 
 	# load i lv$3
 
@@ -425,19 +425,19 @@ whileCond_122:
 	seqz t0, t0
 	sd t0, 600(sp)
 
-	# condBr cond_$1 whileBody_122 next_262
+	# condBr cond_$1 whileBody_221 next_532
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 600(sp)
-	beqz t1, next_262
-	j whileBody_122
-whileBody_122:
+	beqz t1, next_532
+	j whileBody_221
+whileBody_221:
 
-	# br whileCond_123
-	j whileCond_123
-next_262:
+	# br whileCond_222
+	j whileCond_222
+next_532:
 
 	# load i$10 lv$3
 
@@ -790,9 +790,9 @@ next_262:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_261
-	j next_261
-whileCond_123:
+	# br next_531
+	j next_531
+whileCond_222:
 
 	# load i$1 lv$3
 
@@ -859,15 +859,15 @@ whileCond_123:
 	seqz t0, t0
 	sd t0, 432(sp)
 
-	# condBr cond_$2 secondCond_75 next_263
+	# condBr cond_$2 secondCond_119 next_533
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	ld t1, 432(sp)
-	beqz t1, next_263
-	j secondCond_75
-whileBody_123:
+	beqz t1, next_533
+	j secondCond_119
+whileBody_222:
 
 	# load j$3 lv$4
 
@@ -911,9 +911,9 @@ whileBody_123:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_123
-	j whileCond_123
-next_263:
+	# br whileCond_222
+	j whileCond_222
+next_533:
 
 	# load i$2 lv$3
 
@@ -980,15 +980,15 @@ next_263:
 	seqz t0, t0
 	sd t0, 376(sp)
 
-	# condBr cond_$4 ifTrue_140 next_264
+	# condBr cond_$4 ifTrue_311 next_534
 
 	# fetch variables
 
 	# get address of local var:cond_$4
 	ld t1, 376(sp)
-	beqz t1, next_264
-	j ifTrue_140
-secondCond_75:
+	beqz t1, next_534
+	j ifTrue_311
+secondCond_119:
 
 	# load j$2 lv$4
 
@@ -1113,15 +1113,15 @@ secondCond_75:
 	seqz t0, t0
 	sd t0, 304(sp)
 
-	# condBr cond_$3 whileBody_123 next_263
+	# condBr cond_$3 whileBody_222 next_533
 
 	# fetch variables
 
 	# get address of local var:cond_$3
 	ld t1, 304(sp)
-	beqz t1, next_263
-	j whileBody_123
-ifTrue_140:
+	beqz t1, next_533
+	j whileBody_222
+ifTrue_311:
 
 	# load i$3 lv$3
 
@@ -1285,13 +1285,13 @@ ifTrue_140:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_264
-	j next_264
-next_264:
+	# br next_534
+	j next_534
+next_534:
 
-	# br whileCond_124
-	j whileCond_124
-whileCond_124:
+	# br whileCond_223
+	j whileCond_223
+whileCond_223:
 
 	# load i$5 lv$3
 
@@ -1358,15 +1358,15 @@ whileCond_124:
 	seqz t0, t0
 	sd t0, 192(sp)
 
-	# condBr cond_$5 secondCond_76 next_265
+	# condBr cond_$5 secondCond_120 next_535
 
 	# fetch variables
 
 	# get address of local var:cond_$5
 	ld t1, 192(sp)
-	beqz t1, next_265
-	j secondCond_76
-whileBody_124:
+	beqz t1, next_535
+	j secondCond_120
+whileBody_223:
 
 	# load i$7 lv$3
 
@@ -1410,9 +1410,9 @@ whileBody_124:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_124
-	j whileCond_124
-next_265:
+	# br whileCond_223
+	j whileCond_223
+next_535:
 
 	# load i$8 lv$3
 
@@ -1479,15 +1479,15 @@ next_265:
 	seqz t0, t0
 	sd t0, 136(sp)
 
-	# condBr cond_$7 ifTrue_141 next_266
+	# condBr cond_$7 ifTrue_312 next_536
 
 	# fetch variables
 
 	# get address of local var:cond_$7
 	ld t1, 136(sp)
-	beqz t1, next_266
-	j ifTrue_141
-secondCond_76:
+	beqz t1, next_536
+	j ifTrue_312
+secondCond_120:
 
 	# load i$6 lv$3
 
@@ -1599,15 +1599,15 @@ secondCond_76:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$6 whileBody_124 next_265
+	# condBr cond_$6 whileBody_223 next_535
 
 	# fetch variables
 
 	# get address of local var:cond_$6
 	ld t1, 72(sp)
-	beqz t1, next_265
-	j whileBody_124
-ifTrue_141:
+	beqz t1, next_535
+	j whileBody_223
+ifTrue_312:
 
 	# load j$8 lv$4
 
@@ -1771,16 +1771,16 @@ ifTrue_141:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_266
-	j next_266
-next_266:
+	# br next_536
+	j next_536
+next_536:
 
-	# br whileCond_122
-	j whileCond_122
+	# br whileCond_221
+	j whileCond_221
 .type main, @function
 .globl main
 main:
-mainEntry67:
+mainEntry70:
 
 	# reserve space
 	li t4, 344
@@ -2279,9 +2279,9 @@ mainEntry67:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_125
-	j whileCond_125
-whileCond_125:
+	# br whileCond_224
+	j whileCond_224
+whileCond_224:
 
 	# load i$1 lv$1
 
@@ -2346,15 +2346,15 @@ whileCond_125:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ whileBody_125 next_267
+	# condBr cond_ whileBody_224 next_537
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 56(sp)
-	beqz t1, next_267
-	j whileBody_125
-whileBody_125:
+	beqz t1, next_537
+	j whileBody_224
+whileBody_224:
 
 	# load i$2 lv$1
 
@@ -2547,9 +2547,9 @@ whileBody_125:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_125
-	j whileCond_125
-next_267:
+	# br whileCond_224
+	j whileCond_224
+next_537:
 
 	# ret 
 

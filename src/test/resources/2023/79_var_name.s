@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry83:
+mainEntry87:
 
 	# reserve space
 	li t4, 600
@@ -704,9 +704,9 @@ mainEntry83:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_150
-	j whileCond_150
-whileCond_150:
+	# br whileCond_255
+	j whileCond_255
+whileCond_255:
 
 	# load long_name1$QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz lv
 
@@ -758,15 +758,15 @@ whileCond_150:
 	seqz t0, t0
 	sd t0, 208(sp)
 
-	# condBr cond_ whileBody_150 next_317
+	# condBr cond_ whileBody_255 next_597
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 208(sp)
-	beqz t1, next_317
-	j whileBody_150
-whileBody_150:
+	beqz t1, next_597
+	j whileBody_255
+whileBody_255:
 
 	# load long_name2$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$1 lv
 
@@ -1224,9 +1224,9 @@ whileBody_150:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_150
-	j whileCond_150
-next_317:
+	# br whileCond_255
+	j whileCond_255
+next_597:
 
 	# load long_name21$RJsXBiXL5NTrpJL22F4zlc3o0KiSE$1 lv$2
 

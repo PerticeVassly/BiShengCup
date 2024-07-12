@@ -150,9 +150,9 @@ deepWhileBrEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_95
-	j whileCond_95
-whileCond_95:
+	# br whileCond_194
+	j whileCond_194
+whileCond_194:
 
 	# load c lv$2
 
@@ -204,15 +204,15 @@ whileCond_95:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_ whileBody_95 next_192
+	# condBr cond_ whileBody_194 next_462
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 128(sp)
-	beqz t1, next_192
-	j whileBody_95
-whileBody_95:
+	beqz t1, next_462
+	j whileBody_194
+whileBody_194:
 
 	# lv$3 
 
@@ -279,15 +279,15 @@ whileBody_95:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_$1 ifTrue_97 next_193
+	# condBr cond_$1 ifTrue_268 next_463
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 96(sp)
-	beqz t1, next_193
-	j ifTrue_97
-next_192:
+	beqz t1, next_463
+	j ifTrue_268
+next_462:
 
 	# load c$4 lv$2
 
@@ -315,7 +315,7 @@ next_192:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_97:
+ifTrue_268:
 
 	# load c$2 lv$2
 
@@ -425,19 +425,19 @@ ifTrue_97:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 ifTrue_98 next_194
+	# condBr cond_$2 ifTrue_269 next_464
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	ld t1, 32(sp)
-	beqz t1, next_194
-	j ifTrue_98
-next_193:
+	beqz t1, next_464
+	j ifTrue_269
+next_463:
 
-	# br whileCond_95
-	j whileCond_95
-ifTrue_98:
+	# br whileCond_194
+	j whileCond_194
+ifTrue_269:
 
 	# load d$1 lv$3
 
@@ -481,17 +481,17 @@ ifTrue_98:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# condBr  ifTrue_99 next_195
+	# condBr  ifTrue_270 next_465
 
 	# fetch variables
 	li t1, 1
-	beqz t1, next_195
-	j ifTrue_99
-next_194:
+	beqz t1, next_465
+	j ifTrue_270
+next_464:
 
-	# br next_193
-	j next_193
-ifTrue_99:
+	# br next_463
+	j next_463
+ifTrue_270:
 
 	# load e lv$4
 
@@ -535,16 +535,16 @@ ifTrue_99:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_195
-	j next_195
-next_195:
+	# br next_465
+	j next_465
+next_465:
 
-	# br next_194
-	j next_194
+	# br next_464
+	j next_464
 .type main, @function
 .globl main
 main:
-mainEntry50:
+mainEntry53:
 
 	# reserve space
 	li t4, 40

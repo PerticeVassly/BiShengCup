@@ -32,7 +32,7 @@ defnEntry:
 .type main, @function
 .globl main
 main:
-mainEntry81:
+mainEntry85:
 
 	# reserve space
 	li t4, 32

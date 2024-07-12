@@ -11,7 +11,7 @@ gv1:
 .type main, @function
 .globl main
 main:
-mainEntry55:
+mainEntry58:
 
 	# reserve space
 	li t4, 112
@@ -158,15 +158,15 @@ mainEntry55:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_ secondCond_67 ifFalse_30
+	# condBr cond_ secondCond_111 ifFalse_110
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 40(sp)
-	beqz t1, ifFalse_30
-	j secondCond_67
-ifTrue_120:
+	beqz t1, ifFalse_110
+	j secondCond_111
+ifTrue_291:
 
 	# lv 
 
@@ -183,9 +183,9 @@ ifTrue_120:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_225
-	j next_225
-ifFalse_30:
+	# br next_495
+	j next_495
+ifFalse_110:
 
 	# lv 
 
@@ -202,9 +202,9 @@ ifFalse_30:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_225
-	j next_225
-next_225:
+	# br next_495
+	j next_495
+next_495:
 
 	# load c lv
 
@@ -229,7 +229,7 @@ next_225:
 	li t4, 112
 	add sp, sp, t4
 	ret 
-secondCond_67:
+secondCond_111:
 
 	# load a$1 gv
 
@@ -281,14 +281,14 @@ secondCond_67:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_120 ifFalse_30
+	# condBr cond_$1 ifTrue_291 ifFalse_110
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 0(sp)
-	beqz t1, ifFalse_30
-	j ifTrue_120
+	beqz t1, ifFalse_110
+	j ifTrue_291
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

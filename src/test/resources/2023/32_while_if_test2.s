@@ -113,23 +113,23 @@ ifWhileEntry:
 	seqz t0, t0
 	sd t0, 136(sp)
 
-	# condBr cond_ ifTrue_164 ifFalse_51
+	# condBr cond_ ifTrue_339 ifFalse_135
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 136(sp)
-	beqz t1, ifFalse_51
-	j ifTrue_164
-ifTrue_164:
+	beqz t1, ifFalse_135
+	j ifTrue_339
+ifTrue_339:
 
-	# br whileCond_147
-	j whileCond_147
-ifFalse_51:
+	# br whileCond_252
+	j whileCond_252
+ifFalse_135:
 
-	# br whileCond_148
-	j whileCond_148
-next_311:
+	# br whileCond_253
+	j whileCond_253
+next_591:
 
 	# load b$4 lv$1
 
@@ -157,7 +157,7 @@ next_311:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_147:
+whileCond_252:
 
 	# load b lv$1
 
@@ -210,15 +210,15 @@ whileCond_147:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_$1 whileBody_147 next_312
+	# condBr cond_$1 whileBody_252 next_592
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 96(sp)
-	beqz t1, next_312
-	j whileBody_147
-whileBody_147:
+	beqz t1, next_592
+	j whileBody_252
+whileBody_252:
 
 	# load b$1 lv$1
 
@@ -262,9 +262,9 @@ whileBody_147:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_147
-	j whileCond_147
-next_312:
+	# br whileCond_252
+	j whileCond_252
+next_592:
 
 	# load b$2 lv$1
 
@@ -308,9 +308,9 @@ next_312:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_311
-	j next_311
-whileCond_148:
+	# br next_591
+	j next_591
+whileCond_253:
 
 	# load a$1 lv
 
@@ -362,15 +362,15 @@ whileCond_148:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 whileBody_148 next_313
+	# condBr cond_$2 whileBody_253 next_593
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	ld t1, 32(sp)
-	beqz t1, next_313
-	j whileBody_148
-whileBody_148:
+	beqz t1, next_593
+	j whileBody_253
+whileBody_253:
 
 	# load b$3 lv$1
 
@@ -456,16 +456,16 @@ whileBody_148:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_148
-	j whileCond_148
-next_313:
+	# br whileCond_253
+	j whileCond_253
+next_593:
 
-	# br next_311
-	j next_311
+	# br next_591
+	j next_591
 .type main, @function
 .globl main
 main:
-mainEntry79:
+mainEntry83:
 
 	# reserve space
 	li t4, 8

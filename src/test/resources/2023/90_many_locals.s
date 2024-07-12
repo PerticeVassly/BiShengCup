@@ -1456,7 +1456,7 @@ fooEntry:
 .type main, @function
 .globl main
 main:
-mainEntry27:
+mainEntry28:
 
 	# reserve space
 	li t4, 968

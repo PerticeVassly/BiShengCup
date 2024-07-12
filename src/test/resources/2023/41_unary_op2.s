@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry85:
+mainEntry89:
 
 	# reserve space
 	li t4, 184
@@ -282,15 +282,15 @@ mainEntry85:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_normalize_ ifTrue_169 ifFalse_54
+	# condBr cond_normalize_ ifTrue_344 ifFalse_138
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 24(sp)
-	beqz t1, ifFalse_54
-	j ifTrue_169
-ifTrue_169:
+	beqz t1, ifFalse_138
+	j ifTrue_344
+ifTrue_344:
 
 	# lv 
 
@@ -307,9 +307,9 @@ ifTrue_169:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_320
-	j next_320
-ifFalse_54:
+	# br next_600
+	j next_600
+ifFalse_138:
 
 	# load b$1 lv$1
 
@@ -353,9 +353,9 @@ ifFalse_54:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_320
-	j next_320
-next_320:
+	# br next_600
+	j next_600
+next_600:
 
 	# load a$2 lv
 

@@ -119,7 +119,7 @@ funcEntry:
 .type main, @function
 .globl main
 main:
-mainEntry20:
+mainEntry21:
 
 	# reserve space
 	li t4, 40
