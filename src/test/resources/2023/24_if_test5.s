@@ -21,16 +21,16 @@ if_if_ElseEntry:
 	# allocate lv$1
 	li t0, 104
 	add t0, sp, t0
-	li t1, 112
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 112(sp)
 
 	# allocate lv
 	li t0, 88
 	add t0, sp, t0
-	li t1, 96
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 96(sp)
 
 	# lv 
 
@@ -40,12 +40,8 @@ if_if_ElseEntry:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 96(sp)
+	sd t1, 0(t3)
 
 	# lv$1 
 
@@ -55,24 +51,16 @@ if_if_ElseEntry:
 	# store lv$1 
 
 	# get address of lv$1 points to
-	li t4, 112
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 112(sp)
+	sd t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 96(sp)
 
 	# get address of local var:a
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 80(sp)
 
 	# cmp a  cond_eq_tmp_
@@ -126,14 +114,10 @@ ifTrue_8:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	li t4, 112
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 112(sp)
 
 	# get address of local var:b
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 48(sp)
 
 	# cmp b  cond_eq_tmp_$1
@@ -187,14 +171,10 @@ ifFalse_:
 	# load a$1 lv
 
 	# get address of lv points to
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 96(sp)
 
 	# get address of local var:a$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 16(sp)
 
 	# add result_ a$1 
@@ -219,12 +199,8 @@ ifFalse_:
 	# store lv result_
 
 	# get address of lv points to
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 96(sp)
+	sd t1, 0(t3)
 
 	# br next_15
 	j next_15
@@ -233,14 +209,10 @@ next_15:
 	# load a$2 lv
 
 	# get address of lv points to
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 96(sp)
 
 	# get address of local var:a$2
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(sp)
 
 	# ret a$2
@@ -266,12 +238,8 @@ ifTrue_9:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 96(sp)
+	sd t1, 0(t3)
 
 	# br next_16
 	j next_16

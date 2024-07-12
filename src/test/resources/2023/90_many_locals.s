@@ -21,135 +21,135 @@ fooEntry:
 	# allocate lv$18
 	li t0, 832
 	add t0, sp, t0
-	li t1, 840
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$18
+	sd t0, 840(sp)
 
 	# allocate lv$17
 	li t0, 816
 	add t0, sp, t0
-	li t1, 824
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$17
+	sd t0, 824(sp)
 
 	# allocate lv$16
 	li t0, 800
 	add t0, sp, t0
-	li t1, 808
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$16
+	sd t0, 808(sp)
 
 	# allocate lv$15
 	li t0, 784
 	add t0, sp, t0
-	li t1, 792
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$15
+	sd t0, 792(sp)
 
 	# allocate lv$14
 	li t0, 768
 	add t0, sp, t0
-	li t1, 776
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$14
+	sd t0, 776(sp)
 
 	# allocate lv$13
 	li t0, 752
 	add t0, sp, t0
-	li t1, 760
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$13
+	sd t0, 760(sp)
 
 	# allocate lv$12
 	li t0, 736
 	add t0, sp, t0
-	li t1, 744
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$12
+	sd t0, 744(sp)
 
 	# allocate lv$11
 	li t0, 720
 	add t0, sp, t0
-	li t1, 728
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$11
+	sd t0, 728(sp)
 
 	# allocate lv$10
 	li t0, 704
 	add t0, sp, t0
-	li t1, 712
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$10
+	sd t0, 712(sp)
 
 	# allocate lv$9
 	li t0, 688
 	add t0, sp, t0
-	li t1, 696
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$9
+	sd t0, 696(sp)
 
 	# allocate lv$8
 	li t0, 672
 	add t0, sp, t0
-	li t1, 680
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$8
+	sd t0, 680(sp)
 
 	# allocate lv$7
 	li t0, 656
 	add t0, sp, t0
-	li t1, 664
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$7
+	sd t0, 664(sp)
 
 	# allocate lv$6
 	li t0, 640
 	add t0, sp, t0
-	li t1, 648
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$6
+	sd t0, 648(sp)
 
 	# allocate lv$5
 	li t0, 624
 	add t0, sp, t0
-	li t1, 632
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$5
+	sd t0, 632(sp)
 
 	# allocate lv$4
 	li t0, 608
 	add t0, sp, t0
-	li t1, 616
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$4
+	sd t0, 616(sp)
 
 	# allocate lv$3
 	li t0, 592
 	add t0, sp, t0
-	li t1, 600
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$3
+	sd t0, 600(sp)
 
 	# allocate lv$2
 	li t0, 576
 	add t0, sp, t0
-	li t1, 584
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 584(sp)
 
 	# allocate lv$1
 	li t0, 560
 	add t0, sp, t0
-	li t1, 568
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 568(sp)
 
 	# allocate lv
 	li t0, 424
 	add t0, sp, t0
-	li t1, 552
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 552(sp)
 
 	# gep inp 
 
@@ -1456,7 +1456,7 @@ fooEntry:
 .type main, @function
 .globl main
 main:
-mainEntry28:
+mainEntry25:
 
 	# reserve space
 	li t4, 968
@@ -1467,198 +1467,198 @@ mainEntry28:
 	# allocate lv$27
 	li t0, 952
 	add t0, sp, t0
-	li t1, 960
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$27
+	sd t0, 960(sp)
 
 	# allocate lv$26
 	li t0, 936
 	add t0, sp, t0
-	li t1, 944
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$26
+	sd t0, 944(sp)
 
 	# allocate lv$25
 	li t0, 920
 	add t0, sp, t0
-	li t1, 928
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$25
+	sd t0, 928(sp)
 
 	# allocate lv$24
 	li t0, 904
 	add t0, sp, t0
-	li t1, 912
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$24
+	sd t0, 912(sp)
 
 	# allocate lv$23
 	li t0, 888
 	add t0, sp, t0
-	li t1, 896
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$23
+	sd t0, 896(sp)
 
 	# allocate lv$22
 	li t0, 872
 	add t0, sp, t0
-	li t1, 880
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$22
+	sd t0, 880(sp)
 
 	# allocate lv$21
 	li t0, 856
 	add t0, sp, t0
-	li t1, 864
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$21
+	sd t0, 864(sp)
 
 	# allocate lv$20
 	li t0, 840
 	add t0, sp, t0
-	li t1, 848
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$20
+	sd t0, 848(sp)
 
 	# allocate lv$19
 	li t0, 824
 	add t0, sp, t0
-	li t1, 832
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$19
+	sd t0, 832(sp)
 
 	# allocate lv$18
 	li t0, 808
 	add t0, sp, t0
-	li t1, 816
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$18
+	sd t0, 816(sp)
 
 	# allocate lv$17
 	li t0, 792
 	add t0, sp, t0
-	li t1, 800
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$17
+	sd t0, 800(sp)
 
 	# allocate lv$16
 	li t0, 776
 	add t0, sp, t0
-	li t1, 784
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$16
+	sd t0, 784(sp)
 
 	# allocate lv$15
 	li t0, 760
 	add t0, sp, t0
-	li t1, 768
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$15
+	sd t0, 768(sp)
 
 	# allocate lv$14
 	li t0, 744
 	add t0, sp, t0
-	li t1, 752
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$14
+	sd t0, 752(sp)
 
 	# allocate lv$13
 	li t0, 728
 	add t0, sp, t0
-	li t1, 736
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$13
+	sd t0, 736(sp)
 
 	# allocate lv$12
 	li t0, 712
 	add t0, sp, t0
-	li t1, 720
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$12
+	sd t0, 720(sp)
 
 	# allocate lv$11
 	li t0, 696
 	add t0, sp, t0
-	li t1, 704
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$11
+	sd t0, 704(sp)
 
 	# allocate lv$10
 	li t0, 680
 	add t0, sp, t0
-	li t1, 688
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$10
+	sd t0, 688(sp)
 
 	# allocate lv$9
 	li t0, 664
 	add t0, sp, t0
-	li t1, 672
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$9
+	sd t0, 672(sp)
 
 	# allocate lv$8
 	li t0, 648
 	add t0, sp, t0
-	li t1, 656
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$8
+	sd t0, 656(sp)
 
 	# allocate lv$7
 	li t0, 632
 	add t0, sp, t0
-	li t1, 640
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$7
+	sd t0, 640(sp)
 
 	# allocate lv$6
 	li t0, 616
 	add t0, sp, t0
-	li t1, 624
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$6
+	sd t0, 624(sp)
 
 	# allocate lv$5
 	li t0, 600
 	add t0, sp, t0
-	li t1, 608
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$5
+	sd t0, 608(sp)
 
 	# allocate lv$4
 	li t0, 584
 	add t0, sp, t0
-	li t1, 592
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$4
+	sd t0, 592(sp)
 
 	# allocate lv$3
 	li t0, 568
 	add t0, sp, t0
-	li t1, 576
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$3
+	sd t0, 576(sp)
 
 	# allocate lv$2
 	li t0, 552
 	add t0, sp, t0
-	li t1, 560
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 560(sp)
 
 	# allocate lv$1
 	li t0, 536
 	add t0, sp, t0
-	li t1, 544
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 544(sp)
 
 	# allocate lv
 	li t0, 520
 	add t0, sp, t0
-	li t1, 528
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 528(sp)
 
 	# lv 
 

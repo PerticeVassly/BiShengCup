@@ -1,20 +1,7 @@
 package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.backend.regalloc.Allocator;
-import cn.edu.nju.software.backend.riscinstruction.RiscAdd;
-import cn.edu.nju.software.backend.riscinstruction.RiscAddi;
-import cn.edu.nju.software.backend.riscinstruction.RiscAnd;
-import cn.edu.nju.software.backend.riscinstruction.RiscBeqz;
-import cn.edu.nju.software.backend.riscinstruction.RiscInstruction;
-import cn.edu.nju.software.backend.riscinstruction.RiscJ;
-import cn.edu.nju.software.backend.riscinstruction.RiscLd;
-import cn.edu.nju.software.backend.riscinstruction.RiscMv;
-import cn.edu.nju.software.backend.riscinstruction.RiscOr;
-import cn.edu.nju.software.backend.riscinstruction.RiscRet;
-import cn.edu.nju.software.backend.riscinstruction.RiscSd;
-import cn.edu.nju.software.backend.riscinstruction.RiscSlt;
-import cn.edu.nju.software.backend.riscinstruction.RiscSub;
-import cn.edu.nju.software.backend.riscinstruction.RiscXor;
+import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.*;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscDiv;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscMul;
@@ -201,9 +188,10 @@ public class RiscInstrGenerator implements InstructionVisitor {
         } else{
             typeLen = 8;
         }
-        allocator.getRegAddImmediate(allocator.getOffset(allocate.getLVal()) - typeLen, "sp", "t0");
-        allocator.getRegAddImmediate(allocator.getOffset(allocate.getLVal()), "sp", "t1");
-        riscInstructions.add(new RiscSd(new Register("t0"), new IndirectRegister("t1", 0)));
+
+        riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(allocator.getOffset(allocate.getLVal()) - typeLen)));
+        riscInstructions.add(new RiscAdd(new Register("t0"), new Register("sp"), new Register("t0")));
+        riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(allocate.getLVal())));
     }
 
     @Override

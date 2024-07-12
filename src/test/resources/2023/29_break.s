@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry66:
+mainEntry61:
 
 	# reserve space
 	li t4, 144
@@ -16,16 +16,16 @@ mainEntry66:
 	# allocate lv$1
 	li t0, 128
 	add t0, sp, t0
-	li t1, 136
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 136(sp)
 
 	# allocate lv
 	li t0, 112
 	add t0, sp, t0
-	li t1, 120
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 120(sp)
 
 	# lv 
 
@@ -57,9 +57,9 @@ mainEntry66:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_214
-	j whileCond_214
-whileCond_214:
+	# br whileCond_103
+	j whileCond_103
+whileCond_103:
 
 	# load i lv
 
@@ -111,15 +111,15 @@ whileCond_214:
 	seqz t0, t0
 	sd t0, 80(sp)
 
-	# condBr cond_ whileBody_214 next_520
+	# condBr cond_ whileBody_103 next_203
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 80(sp)
-	beqz t1, next_520
-	j whileBody_214
-whileBody_214:
+	beqz t1, next_203
+	j whileBody_103
+whileBody_103:
 
 	# load i$1 lv
 
@@ -172,15 +172,15 @@ whileBody_214:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_$1 ifTrue_306 next_521
+	# condBr cond_$1 ifTrue_100 next_204
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 48(sp)
-	beqz t1, next_521
-	j ifTrue_306
-next_520:
+	beqz t1, next_204
+	j ifTrue_100
+next_203:
 
 	# load sum$1 lv$1
 
@@ -205,14 +205,14 @@ next_520:
 	li t4, 144
 	add sp, sp, t4
 	ret 
-ifTrue_306:
+ifTrue_100:
 
-	# br next_520
-	j next_520
+	# br next_203
+	j next_203
 
-	# br next_521
-	j next_521
-next_521:
+	# br next_204
+	j next_204
+next_204:
 
 	# load sum lv$1
 
@@ -313,8 +313,8 @@ next_521:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_214
-	j whileCond_214
+	# br whileCond_103
+	j whileCond_103
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

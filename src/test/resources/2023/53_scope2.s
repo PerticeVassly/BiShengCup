@@ -8,7 +8,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry33:
+mainEntry30:
 
 	# reserve space
 	li t4, 272
@@ -19,30 +19,30 @@ mainEntry33:
 	# allocate lv$3
 	li t0, 256
 	add t0, sp, t0
-	li t1, 264
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$3
+	sd t0, 264(sp)
 
 	# allocate lv$2
 	li t0, 240
 	add t0, sp, t0
-	li t1, 248
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 248(sp)
 
 	# allocate lv$1
 	li t0, 224
 	add t0, sp, t0
-	li t1, 232
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 232(sp)
 
 	# allocate lv
 	li t0, 208
 	add t0, sp, t0
-	li t1, 216
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 216(sp)
 
 	# gv @
 
@@ -105,15 +105,15 @@ mainEntry33:
 	seqz t0, t0
 	sd t0, 176(sp)
 
-	# condBr cond_ ifTrue_64 next_137
+	# condBr cond_ ifTrue_40 next_98
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 176(sp)
-	beqz t1, next_137
-	j ifTrue_64
-ifTrue_64:
+	beqz t1, next_98
+	j ifTrue_40
+ifTrue_40:
 
 	# load k$1 gv
 
@@ -168,9 +168,9 @@ ifTrue_64:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_73
-	j whileCond_73
-next_137:
+	# br whileCond_58
+	j whileCond_58
+next_98:
 
 	# load k$8 gv
 
@@ -193,7 +193,7 @@ next_137:
 	li t4, 272
 	add sp, sp, t4
 	ret 
-whileCond_73:
+whileCond_58:
 
 	# load k$2 lv
 
@@ -246,15 +246,15 @@ whileCond_73:
 	seqz t0, t0
 	sd t0, 120(sp)
 
-	# condBr cond_$1 whileBody_73 next_138
+	# condBr cond_$1 whileBody_58 next_99
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 120(sp)
-	beqz t1, next_138
-	j whileBody_73
-whileBody_73:
+	beqz t1, next_99
+	j whileBody_58
+whileBody_58:
 
 	# load k$3 lv
 
@@ -348,15 +348,15 @@ whileBody_73:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$2 ifTrue_65 next_139
+	# condBr cond_$2 ifTrue_41 next_100
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	ld t1, 72(sp)
-	beqz t1, next_139
-	j ifTrue_65
-next_138:
+	beqz t1, next_100
+	j ifTrue_41
+next_99:
 
 	# load k$7 lv
 
@@ -394,9 +394,9 @@ next_138:
 	# release params
 	addi sp, sp, 0
 
-	# br next_137
-	j next_137
-ifTrue_65:
+	# br next_98
+	j next_98
+ifTrue_41:
 
 	# lv$1 
 
@@ -599,12 +599,12 @@ ifTrue_65:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_139
-	j next_139
-next_139:
+	# br next_100
+	j next_100
+next_100:
 
-	# br whileCond_73
-	j whileCond_73
+	# br whileCond_58
+	j whileCond_58
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

@@ -147,16 +147,16 @@ putstrEntry:
 	# allocate lv$1
 	li t0, 112
 	add t0, sp, t0
-	li t1, 120
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 120(sp)
 
 	# allocate lv
 	li t0, 96
 	add t0, sp, t0
-	li t1, 104
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 104(sp)
 
 	# lv 0
 
@@ -190,9 +190,9 @@ putstrEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_190
-	j whileCond_190
-whileCond_190:
+	# br whileCond_85
+	j whileCond_85
+whileCond_85:
 
 	# load iNd__1X lv$1
 
@@ -266,15 +266,15 @@ whileCond_190:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_normalize_ whileBody_190 next_455
+	# condBr cond_normalize_ whileBody_85 next_157
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 56(sp)
-	beqz t1, next_455
-	j whileBody_190
-whileBody_190:
+	beqz t1, next_157
+	j whileBody_85
+whileBody_85:
 
 	# load iNd__1X$1 lv$1
 
@@ -399,9 +399,9 @@ whileBody_190:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_190
-	j whileCond_190
-next_455:
+	# br whileCond_85
+	j whileCond_85
+next_157:
 
 	# load iNd__1X$3 lv$1
 
@@ -432,7 +432,7 @@ next_455:
 .type main, @function
 .globl main
 main:
-mainEntry50:
+mainEntry46:
 
 	# reserve space
 	li t4, 304
@@ -443,23 +443,23 @@ mainEntry50:
 	# allocate lv$2
 	li t0, 288
 	add t0, sp, t0
-	li t1, 296
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 296(sp)
 
 	# allocate lv$1
 	li t0, 272
 	add t0, sp, t0
-	li t1, 280
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 280(sp)
 
 	# allocate lv
 	li t0, 256
 	add t0, sp, t0
-	li t1, 264
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 264(sp)
 
 	# gep __HELLO 
 
@@ -517,9 +517,9 @@ mainEntry50:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_191
-	j whileCond_191
-whileCond_191:
+	# br whileCond_86
+	j whileCond_86
+whileCond_86:
 
 	# cmp   cond_normalize_
 
@@ -533,9 +533,9 @@ whileCond_191:
 	seqz t0, t0
 	sd t0, 232(sp)
 
-	# br whileBody_191
-	j whileBody_191
-whileBody_191:
+	# br whileBody_86
+	j whileBody_86
+whileBody_86:
 
 	# load i lv
 
@@ -688,15 +688,15 @@ whileBody_191:
 	seqz t0, t0
 	sd t0, 160(sp)
 
-	# condBr cond_ ifTrue_265 next_457
+	# condBr cond_ ifTrue_72 next_159
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 160(sp)
-	beqz t1, next_457
-	j ifTrue_265
-next_456:
+	beqz t1, next_159
+	j ifTrue_72
+next_158:
 
 	# ret 
 
@@ -706,7 +706,7 @@ next_456:
 	li t4, 304
 	add sp, sp, t4
 	ret 
-ifTrue_265:
+ifTrue_72:
 
 	# load _$1 lv$1
 
@@ -936,9 +936,9 @@ ifTrue_265:
 	# get address of local var:putstr$4
 	sd a0, 64(sp)
 
-	# br next_457
-	j next_457
-next_457:
+	# br next_159
+	j next_159
+next_159:
 
 	# load i$2 lv
 
@@ -1057,25 +1057,25 @@ next_457:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_266 next_458
+	# condBr cond_$1 ifTrue_73 next_160
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 0(sp)
-	beqz t1, next_458
-	j ifTrue_266
-ifTrue_266:
+	beqz t1, next_160
+	j ifTrue_73
+ifTrue_73:
 
-	# br next_456
-	j next_456
+	# br next_158
+	j next_158
 
-	# br next_458
-	j next_458
-next_458:
+	# br next_160
+	j next_160
+next_160:
 
-	# br whileCond_191
-	j whileCond_191
+	# br whileCond_86
+	j whileCond_86
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

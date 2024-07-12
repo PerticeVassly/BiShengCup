@@ -24,9 +24,9 @@ float_absEntry:
 	# allocate lv
 	li t0, 56
 	add t0, sp, t0
-	li t1, 64
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 64(sp)
 
 	# lv 0
 
@@ -96,15 +96,15 @@ float_absEntry:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_ ifTrue_54 next_116
+	# condBr cond_ ifTrue_30 next_80
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 24(sp)
-	beqz t1, next_116
-	j ifTrue_54
-ifTrue_54:
+	beqz t1, next_80
+	j ifTrue_30
+ifTrue_30:
 
 	# load x$1 lv
 
@@ -145,7 +145,7 @@ ifTrue_54:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_116:
+next_80:
 
 	# load x$2 lv
 
@@ -195,9 +195,9 @@ circle_areaEntry:
 	# allocate lv
 	li t0, 104
 	add t0, sp, t0
-	li t1, 112
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 112(sp)
 
 	# lv 0
 
@@ -420,16 +420,16 @@ float_eqEntry:
 	# allocate lv$1
 	li t0, 72
 	add t0, sp, t0
-	li t1, 80
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 80(sp)
 
 	# allocate lv
 	li t0, 56
 	add t0, sp, t0
-	li t1, 64
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 64(sp)
 
 	# lv 0
 
@@ -570,15 +570,15 @@ float_eqEntry:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_ ifTrue_55 ifFalse_9
+	# condBr cond_ ifTrue_31 ifFalse_7
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 0(sp)
-	beqz t1, ifFalse_9
-	j ifTrue_55
-ifTrue_55:
+	beqz t1, ifFalse_7
+	j ifTrue_31
+ifTrue_31:
 
 	# ret 
 
@@ -591,7 +591,7 @@ ifTrue_55:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_9:
+ifFalse_7:
 
 	# ret 
 
@@ -861,9 +861,9 @@ assertEntry:
 	# allocate lv
 	li t0, 40
 	add t0, sp, t0
-	li t1, 48
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 48(sp)
 
 	# lv 0
 
@@ -948,15 +948,15 @@ assertEntry:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_ ifTrue_56 ifFalse_10
+	# condBr cond_normalize_ ifTrue_32 ifFalse_8
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 0(sp)
-	beqz t1, ifFalse_10
-	j ifTrue_56
-ifTrue_56:
+	beqz t1, ifFalse_8
+	j ifTrue_32
+ifTrue_32:
 
 	# prepare params
 	addi sp, sp, 0
@@ -975,9 +975,9 @@ ifTrue_56:
 	# release params
 	addi sp, sp, 0
 
-	# br next_118
-	j next_118
-ifFalse_10:
+	# br next_82
+	j next_82
+ifFalse_8:
 
 	# prepare params
 	addi sp, sp, 0
@@ -996,9 +996,9 @@ ifFalse_10:
 	# release params
 	addi sp, sp, 0
 
-	# br next_118
-	j next_118
-next_118:
+	# br next_82
+	j next_82
+next_82:
 
 	# ret void
 	li t4, 64
@@ -1029,9 +1029,9 @@ assert_notEntry:
 	# allocate lv
 	li t0, 16
 	add t0, sp, t0
-	li t1, 24
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 24(sp)
 
 	# lv 0
 
@@ -1077,15 +1077,15 @@ assert_notEntry:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_ ifTrue_57 ifFalse_11
+	# condBr cond_normalize_ ifTrue_33 ifFalse_9
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 0(sp)
-	beqz t1, ifFalse_11
-	j ifTrue_57
-ifTrue_57:
+	beqz t1, ifFalse_9
+	j ifTrue_33
+ifTrue_33:
 
 	# prepare params
 	addi sp, sp, 0
@@ -1104,9 +1104,9 @@ ifTrue_57:
 	# release params
 	addi sp, sp, 0
 
-	# br next_119
-	j next_119
-ifFalse_11:
+	# br next_83
+	j next_83
+ifFalse_9:
 
 	# prepare params
 	addi sp, sp, 0
@@ -1125,9 +1125,9 @@ ifFalse_11:
 	# release params
 	addi sp, sp, 0
 
-	# br next_119
-	j next_119
-next_119:
+	# br next_83
+	j next_83
+next_83:
 
 	# ret void
 	li t4, 40
@@ -1139,7 +1139,7 @@ next_119:
 .type main, @function
 .globl main
 main:
-mainEntry23:
+mainEntry22:
 
 	# reserve space
 	li t4, 624
@@ -1150,51 +1150,51 @@ mainEntry23:
 	# allocate lv$6
 	li t0, 608
 	add t0, sp, t0
-	li t1, 616
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$6
+	sd t0, 616(sp)
 
 	# allocate lv$5
 	li t0, 592
 	add t0, sp, t0
-	li t1, 600
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$5
+	sd t0, 600(sp)
 
 	# allocate lv$4
 	li t0, 576
 	add t0, sp, t0
-	li t1, 584
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$4
+	sd t0, 584(sp)
 
 	# allocate lv$3
 	li t0, 560
 	add t0, sp, t0
-	li t1, 568
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$3
+	sd t0, 568(sp)
 
 	# allocate lv$2
 	li t0, 472
 	add t0, sp, t0
-	li t1, 552
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 552(sp)
 
 	# allocate lv$1
 	li t0, 456
 	add t0, sp, t0
-	li t1, 464
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 464(sp)
 
 	# allocate lv
 	li t0, 440
 	add t0, sp, t0
-	li t1, 448
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 448(sp)
 
 	# prepare params
 
@@ -1534,15 +1534,15 @@ mainEntry23:
 	seqz t0, t0
 	sd t0, 376(sp)
 
-	# condBr cond_normalize_ ifTrue_58 next_120
+	# condBr cond_normalize_ ifTrue_34 next_84
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 376(sp)
-	beqz t1, next_120
-	j ifTrue_58
-ifTrue_58:
+	beqz t1, next_84
+	j ifTrue_34
+ifTrue_34:
 
 	# prepare params
 	addi sp, sp, 0
@@ -1561,9 +1561,9 @@ ifTrue_58:
 	# release params
 	addi sp, sp, 0
 
-	# br next_120
-	j next_120
-next_120:
+	# br next_84
+	j next_84
+next_84:
 
 	# cmp   cond_normalize_$1
 
@@ -1577,15 +1577,15 @@ next_120:
 	seqz t0, t0
 	sd t0, 368(sp)
 
-	# condBr cond_normalize_$1 ifTrue_59 next_121
+	# condBr cond_normalize_$1 ifTrue_35 next_85
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$1
 	ld t1, 368(sp)
-	beqz t1, next_121
-	j ifTrue_59
-ifTrue_59:
+	beqz t1, next_85
+	j ifTrue_35
+ifTrue_35:
 
 	# prepare params
 	addi sp, sp, 0
@@ -1604,9 +1604,9 @@ ifTrue_59:
 	# release params
 	addi sp, sp, 0
 
-	# br next_121
-	j next_121
-next_121:
+	# br next_85
+	j next_85
+next_85:
 
 	# cmp   cond_normalize_$2
 
@@ -1621,15 +1621,15 @@ next_121:
 	seqz t0, t0
 	sd t0, 360(sp)
 
-	# condBr cond_normalize_$2 secondCond_33 next_122
+	# condBr cond_normalize_$2 secondCond_7 next_86
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$2
 	ld t1, 360(sp)
-	beqz t1, next_122
-	j secondCond_33
-ifTrue_60:
+	beqz t1, next_86
+	j secondCond_7
+ifTrue_36:
 
 	# prepare params
 	addi sp, sp, 0
@@ -1648,9 +1648,9 @@ ifTrue_60:
 	# release params
 	addi sp, sp, 0
 
-	# br next_122
-	j next_122
-next_122:
+	# br next_86
+	j next_86
+next_86:
 
 	# cmp   cond_normalize_$4
 
@@ -1664,15 +1664,15 @@ next_122:
 	seqz t0, t0
 	sd t0, 352(sp)
 
-	# condBr cond_normalize_$4 ifTrue_61 secondCond_34
+	# condBr cond_normalize_$4 ifTrue_37 secondCond_8
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$4
 	ld t1, 352(sp)
-	beqz t1, secondCond_34
-	j ifTrue_61
-secondCond_33:
+	beqz t1, secondCond_8
+	j ifTrue_37
+secondCond_7:
 
 	# cmp   cond_normalize_$3
 
@@ -1686,15 +1686,15 @@ secondCond_33:
 	seqz t0, t0
 	sd t0, 344(sp)
 
-	# condBr cond_normalize_$3 ifTrue_60 next_122
+	# condBr cond_normalize_$3 ifTrue_36 next_86
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$3
 	ld t1, 344(sp)
-	beqz t1, next_122
-	j ifTrue_60
-ifTrue_61:
+	beqz t1, next_86
+	j ifTrue_36
+ifTrue_37:
 
 	# prepare params
 	addi sp, sp, 0
@@ -1713,9 +1713,9 @@ ifTrue_61:
 	# release params
 	addi sp, sp, 0
 
-	# br next_123
-	j next_123
-next_123:
+	# br next_87
+	j next_87
+next_87:
 
 	# lv 
 
@@ -2137,9 +2137,9 @@ next_123:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_62
-	j whileCond_62
-secondCond_34:
+	# br whileCond_50
+	j whileCond_50
+secondCond_8:
 
 	# cmp   cond_normalize_$5
 
@@ -2154,15 +2154,15 @@ secondCond_34:
 	seqz t0, t0
 	sd t0, 240(sp)
 
-	# condBr cond_normalize_$5 ifTrue_61 next_123
+	# condBr cond_normalize_$5 ifTrue_37 next_87
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$5
 	ld t1, 240(sp)
-	beqz t1, next_123
-	j ifTrue_61
-whileCond_62:
+	beqz t1, next_87
+	j ifTrue_37
+whileCond_50:
 
 	# load i lv
 
@@ -2214,15 +2214,15 @@ whileCond_62:
 	seqz t0, t0
 	sd t0, 208(sp)
 
-	# condBr cond_ whileBody_62 next_124
+	# condBr cond_ whileBody_50 next_88
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 208(sp)
-	beqz t1, next_124
-	j whileBody_62
-whileBody_62:
+	beqz t1, next_88
+	j whileBody_50
+whileBody_50:
 
 	# prepare params
 	addi sp, sp, 0
@@ -2752,9 +2752,9 @@ whileBody_62:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_62
-	j whileCond_62
-next_124:
+	# br whileCond_50
+	j whileCond_50
+next_88:
 
 	# load len lv$3
 

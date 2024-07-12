@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry52:
+mainEntry48:
 
 	# reserve space
 	li t4, 984
@@ -16,23 +16,23 @@ mainEntry52:
 	# allocate lv$2
 	li t0, 968
 	add t0, sp, t0
-	li t1, 976
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 976(sp)
 
 	# allocate lv$1
 	li t0, 952
 	add t0, sp, t0
-	li t1, 960
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 960(sp)
 
 	# allocate lv
 	li t0, 144
 	add t0, sp, t0
-	li t1, 944
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 944(sp)
 
 	# lv$1 
 
@@ -64,9 +64,9 @@ mainEntry52:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_192
-	j whileCond_192
-whileCond_192:
+	# br whileCond_87
+	j whileCond_87
+whileCond_87:
 
 	# prepare params
 	addi sp, sp, 0
@@ -102,15 +102,15 @@ whileCond_192:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_normalize_ whileBody_192 next_460
+	# condBr cond_normalize_ whileBody_87 next_162
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 128(sp)
-	beqz t1, next_460
-	j whileBody_192
-whileBody_192:
+	beqz t1, next_162
+	j whileBody_87
+whileBody_87:
 
 	# load i lv$1
 
@@ -223,13 +223,13 @@ whileBody_192:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_192
-	j whileCond_192
-next_460:
+	# br whileCond_87
+	j whileCond_87
+next_162:
 
-	# br whileCond_193
-	j whileCond_193
-whileCond_193:
+	# br whileCond_88
+	j whileCond_88
+whileCond_88:
 
 	# load i$2 lv$1
 
@@ -258,15 +258,15 @@ whileCond_193:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_normalize_$1 whileBody_193 next_461
+	# condBr cond_normalize_$1 whileBody_88 next_163
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$1
 	ld t1, 72(sp)
-	beqz t1, next_461
-	j whileBody_193
-whileBody_193:
+	beqz t1, next_163
+	j whileBody_88
+whileBody_88:
 
 	# load i$3 lv$1
 
@@ -399,9 +399,9 @@ whileBody_193:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_193
-	j whileCond_193
-next_461:
+	# br whileCond_88
+	j whileCond_88
+next_163:
 
 	# load sum$1 lv$2
 

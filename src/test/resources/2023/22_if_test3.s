@@ -21,16 +21,16 @@ ififElseEntry:
 	# allocate lv$1
 	li t0, 104
 	add t0, sp, t0
-	li t1, 112
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 112(sp)
 
 	# allocate lv
 	li t0, 88
 	add t0, sp, t0
-	li t1, 96
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 96(sp)
 
 	# lv 
 
@@ -113,15 +113,15 @@ ififElseEntry:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ ifTrue_286 next_487
+	# condBr cond_ ifTrue_93 next_189
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 56(sp)
-	beqz t1, next_487
-	j ifTrue_286
-ifTrue_286:
+	beqz t1, next_189
+	j ifTrue_93
+ifTrue_93:
 
 	# load b lv$1
 
@@ -174,15 +174,15 @@ ifTrue_286:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_$1 ifTrue_287 ifFalse_106
+	# condBr cond_$1 ifTrue_94 ifFalse_24
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 24(sp)
-	beqz t1, ifFalse_106
-	j ifTrue_287
-next_487:
+	beqz t1, ifFalse_24
+	j ifTrue_94
+next_189:
 
 	# load a$2 lv
 
@@ -210,7 +210,7 @@ next_487:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_287:
+ifTrue_94:
 
 	# lv 
 
@@ -227,9 +227,9 @@ ifTrue_287:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_488
-	j next_488
-ifFalse_106:
+	# br next_190
+	j next_190
+ifFalse_24:
 
 	# load a$1 lv
 
@@ -273,16 +273,16 @@ ifFalse_106:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_488
-	j next_488
-next_488:
+	# br next_190
+	j next_190
+next_190:
 
-	# br next_487
-	j next_487
+	# br next_189
+	j next_189
 .type main, @function
 .globl main
 main:
-mainEntry56:
+mainEntry52:
 
 	# reserve space
 	li t4, 8

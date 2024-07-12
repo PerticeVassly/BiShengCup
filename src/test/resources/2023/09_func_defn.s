@@ -27,9 +27,9 @@ funcEntry:
 	# allocate lv
 	li t0, 24
 	add t0, sp, t0
-	li t1, 32
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 32(sp)
 
 	# lv 0
 
@@ -119,7 +119,7 @@ funcEntry:
 .type main, @function
 .globl main
 main:
-mainEntry21:
+mainEntry20:
 
 	# reserve space
 	li t4, 40
@@ -130,9 +130,9 @@ mainEntry21:
 	# allocate lv
 	li t0, 24
 	add t0, sp, t0
-	li t1, 32
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 32(sp)
 
 	# gv @
 

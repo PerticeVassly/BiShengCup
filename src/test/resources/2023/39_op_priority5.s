@@ -20,7 +20,7 @@ gv4:
 .type main, @function
 .globl main
 main:
-mainEntry20:
+mainEntry19:
 
 	# reserve space
 	li t4, 328
@@ -31,9 +31,9 @@ mainEntry20:
 	# allocate lv
 	li t0, 312
 	add t0, sp, t0
-	li t1, 320
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 320(sp)
 
 	# lv 
 
@@ -187,15 +187,15 @@ mainEntry20:
 	seqz t0, t0
 	sd t0, 224(sp)
 
-	# condBr cond_ secondCond_32 secondCond_31
+	# condBr cond_ secondCond_6 secondCond_5
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 224(sp)
-	beqz t1, secondCond_31
-	j secondCond_32
-ifTrue_52:
+	beqz t1, secondCond_5
+	j secondCond_6
+ifTrue_28:
 
 	# lv 
 
@@ -212,9 +212,9 @@ ifTrue_52:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_111
-	j next_111
-next_111:
+	# br next_75
+	j next_75
+next_75:
 
 	# load flag lv
 
@@ -275,7 +275,7 @@ next_111:
 	li t4, 328
 	add sp, sp, t4
 	ret 
-secondCond_31:
+secondCond_5:
 
 	# load a$3 gv
 
@@ -439,15 +439,15 @@ secondCond_31:
 	seqz t0, t0
 	sd t0, 104(sp)
 
-	# condBr cond_$2 ifTrue_52 next_111
+	# condBr cond_$2 ifTrue_28 next_75
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	ld t1, 104(sp)
-	beqz t1, next_111
-	j ifTrue_52
-secondCond_32:
+	beqz t1, next_75
+	j ifTrue_28
+secondCond_6:
 
 	# load a$1 gv
 
@@ -612,14 +612,14 @@ secondCond_32:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_52 secondCond_31
+	# condBr cond_$1 ifTrue_28 secondCond_5
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 0(sp)
-	beqz t1, secondCond_31
-	j ifTrue_52
+	beqz t1, secondCond_5
+	j ifTrue_28
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

@@ -24,16 +24,16 @@ reverseEntry:
 	# allocate lv$1
 	li t0, 96
 	add t0, sp, t0
-	li t1, 104
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 104(sp)
 
 	# allocate lv
 	li t0, 80
 	add t0, sp, t0
-	li t1, 88
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 88(sp)
 
 	# lv 0
 
@@ -104,15 +104,15 @@ reverseEntry:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ ifTrue_292 ifFalse_111
+	# condBr cond_ ifTrue_99 ifFalse_29
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 48(sp)
-	beqz t1, ifFalse_111
-	j ifTrue_292
-ifTrue_292:
+	beqz t1, ifFalse_29
+	j ifTrue_99
+ifTrue_99:
 
 	# prepare params
 	addi sp, sp, 0
@@ -187,9 +187,9 @@ ifTrue_292:
 	# release params
 	addi sp, sp, 0
 
-	# br next_496
-	j next_496
-ifFalse_111:
+	# br next_198
+	j next_198
+ifFalse_29:
 
 	# prepare params
 	addi sp, sp, 0
@@ -312,9 +312,9 @@ ifFalse_111:
 	# release params
 	addi sp, sp, 0
 
-	# br next_496
-	j next_496
-next_496:
+	# br next_198
+	j next_198
+next_198:
 
 	# ret void
 	li t4, 120
@@ -326,7 +326,7 @@ next_496:
 .type main, @function
 .globl main
 main:
-mainEntry59:
+mainEntry55:
 
 	# reserve space
 	li t4, 24
@@ -337,9 +337,9 @@ mainEntry59:
 	# allocate lv
 	li t0, 8
 	add t0, sp, t0
-	li t1, 16
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 16(sp)
 
 	# lv 
 

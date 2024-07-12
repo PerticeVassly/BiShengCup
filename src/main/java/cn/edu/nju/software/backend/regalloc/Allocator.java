@@ -210,36 +210,34 @@ public class Allocator {
         }
         if (ptr instanceof GlobalVar) {
             generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(ptr.getName()))));
-            return getRegAddImmediate(offset, "t3", "t4");
+            return getRegWithOffset(offset, "t3", "t4");
         } else if (ptr instanceof LocalVar) {
-            getRegAddImmediate(memoryManager.getOffset(ptr), "sp", "t4");
-            generator.addInstruction(new RiscLd(new Register("t3"), new IndirectRegister("t4", 0)));
-            getRegAddImmediate(offset, "t3", "t4");
-            return new IndirectRegister("t4",0);
+            generator.addInstruction(new RiscLd(new Register("t3"), getRegWithOffset(memoryManager.getOffset(ptr), "sp", "t4")));
+            return getRegWithOffset(offset, "t3", "t4");
         } else {
             assert false;
             return null;
         }
     }
 
+    //todo() 这里要改成1024的判断
     /**
      * offset可能很大，无法作为offset(reg)的立即数，
      * 如果offset大于1024, destreg = baseReg + immediate 返回0(reg);
-     * 否则直接返回offset(baseReg)
+     * 否则直接返回offset(baseReg) t4用于offset过大的时候的返回的寄存器
      * 之所以要单独使用一个destReg是因为regToAdd可能是sp这种值不能随意更改的寄存器
      * @param immediate
      * @param baseReg
      * @param destReg
      * @return
      */
-    public Operand getRegAddImmediate(int immediate, String baseReg, String destReg) {
+    public Operand getRegWithOffset(int immediate, String baseReg, String destReg) {
         assert !baseReg.equals(destReg);// not same
         if(immediate >= 1024){
             generator.addInstruction(new RiscLi(new Register(destReg), new ImmediateValue(immediate)));
             generator.addInstruction(new RiscAdd(new Register(destReg), new Register(baseReg), new Register(destReg)));
             return new IndirectRegister(destReg,0);
-        }
-        else{
+        }else {
             return new IndirectRegister(baseReg, immediate);
         }
     }

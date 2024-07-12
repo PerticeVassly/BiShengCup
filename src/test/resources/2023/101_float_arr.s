@@ -11,7 +11,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry35:
+mainEntry32:
 
 	# reserve space
 	li t4, 128
@@ -22,16 +22,16 @@ mainEntry35:
 	# allocate lv$1
 	li t0, 112
 	add t0, sp, t0
-	li t1, 120
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 120(sp)
 
 	# allocate lv
 	li t0, 88
 	add t0, sp, t0
-	li t1, 104
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 104(sp)
 
 	# gep inp 
 

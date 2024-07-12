@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry31:
+mainEntry28:
 
 	# reserve space
 	li t4, 1168
@@ -16,37 +16,37 @@ mainEntry31:
 	# allocate lv$4
 	li t0, 1096
 	add t0, sp, t0
-	li t1, 1160
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$4
+	sd t0, 1160(sp)
 
 	# allocate lv$3
 	li t0, 1024
 	add t0, sp, t0
-	li t1, 1088
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$3
+	sd t0, 1088(sp)
 
 	# allocate lv$2
 	li t0, 952
 	add t0, sp, t0
-	li t1, 1016
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 1016(sp)
 
 	# allocate lv$1
 	li t0, 880
 	add t0, sp, t0
-	li t1, 944
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 944(sp)
 
 	# allocate lv
 	li t0, 808
 	add t0, sp, t0
-	li t1, 872
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 872(sp)
 
 	# gep ptr_ 
 
@@ -1234,9 +1234,7 @@ mainEntry31:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	li t3, 1088
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1088(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1285,9 +1283,7 @@ mainEntry31:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	li t3, 1088
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1088(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1336,9 +1332,7 @@ mainEntry31:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	li t3, 1088
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1088(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1387,9 +1381,7 @@ mainEntry31:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	li t3, 1088
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1088(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1438,9 +1430,7 @@ mainEntry31:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	li t3, 1088
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1088(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1489,9 +1479,7 @@ mainEntry31:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	li t3, 1088
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1088(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1540,9 +1528,7 @@ mainEntry31:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	li t3, 1088
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1088(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1591,9 +1577,7 @@ mainEntry31:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	li t3, 1088
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1088(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1642,9 +1626,7 @@ mainEntry31:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	li t3, 1088
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1088(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1738,9 +1720,7 @@ mainEntry31:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	li t3, 1160
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1160(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1791,9 +1771,7 @@ mainEntry31:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	li t3, 1160
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1160(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1844,9 +1822,7 @@ mainEntry31:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	li t3, 1160
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1160(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1895,9 +1871,7 @@ mainEntry31:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	li t3, 1160
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1160(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1946,9 +1920,7 @@ mainEntry31:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	li t3, 1160
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1160(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1997,9 +1969,7 @@ mainEntry31:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	li t3, 1160
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1160(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2048,9 +2018,7 @@ mainEntry31:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	li t3, 1160
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1160(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2099,9 +2067,7 @@ mainEntry31:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	li t3, 1160
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1160(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2150,9 +2116,7 @@ mainEntry31:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	li t3, 1160
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1160(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2199,9 +2163,7 @@ mainEntry31:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	li t3, 1160
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1160(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2262,9 +2224,7 @@ mainEntry31:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	li t3, 1160
-	add t3, sp, t3
-	ld t3, 0(t3)
+	ld t3, 1160(sp)
 	mv t1, t3
 	add t0, t1, t0
 

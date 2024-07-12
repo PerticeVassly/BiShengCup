@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry38:
+mainEntry35:
 
 	# reserve space
 	li t4, 400
@@ -16,37 +16,37 @@ mainEntry38:
 	# allocate lv$4
 	li t0, 384
 	add t0, sp, t0
-	li t1, 392
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$4
+	sd t0, 392(sp)
 
 	# allocate lv$3
 	li t0, 368
 	add t0, sp, t0
-	li t1, 376
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$3
+	sd t0, 376(sp)
 
 	# allocate lv$2
 	li t0, 352
 	add t0, sp, t0
-	li t1, 360
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 360(sp)
 
 	# allocate lv$1
 	li t0, 336
 	add t0, sp, t0
-	li t1, 344
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 344(sp)
 
 	# allocate lv
 	li t0, 320
 	add t0, sp, t0
-	li t1, 328
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 328(sp)
 
 	# lv 
 
@@ -197,15 +197,15 @@ mainEntry38:
 	seqz t0, t0
 	sd t0, 272(sp)
 
-	# condBr cond_ ifTrue_66 secondCond_37
+	# condBr cond_ ifTrue_42 secondCond_11
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 272(sp)
-	beqz t1, secondCond_37
-	j ifTrue_66
-ifTrue_66:
+	beqz t1, secondCond_11
+	j ifTrue_42
+ifTrue_42:
 
 	# load result lv$4
 
@@ -243,9 +243,9 @@ ifTrue_66:
 	# release params
 	addi sp, sp, 0
 
-	# br next_140
-	j next_140
-next_140:
+	# br next_101
+	j next_101
+next_101:
 
 	# load d$1 lv$3
 
@@ -321,15 +321,15 @@ next_140:
 	seqz t0, t0
 	sd t0, 216(sp)
 
-	# condBr cond_$3 ifTrue_67 secondCond_39
+	# condBr cond_$3 ifTrue_43 secondCond_13
 
 	# fetch variables
 
 	# get address of local var:cond_$3
 	ld t1, 216(sp)
-	beqz t1, secondCond_39
-	j ifTrue_67
-secondCond_37:
+	beqz t1, secondCond_13
+	j ifTrue_43
+secondCond_11:
 
 	# load a lv
 
@@ -410,15 +410,15 @@ secondCond_37:
 	seqz t0, t0
 	sd t0, 168(sp)
 
-	# condBr cond_$1 secondCond_38 next_140
+	# condBr cond_$1 secondCond_12 next_101
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 168(sp)
-	beqz t1, next_140
-	j secondCond_38
-secondCond_38:
+	beqz t1, next_101
+	j secondCond_12
+secondCond_12:
 
 	# load c lv$2
 
@@ -496,14 +496,14 @@ secondCond_38:
 	seqz t0, t0
 	sd t0, 120(sp)
 
-	# condBr cond_$2 ifTrue_66 next_140
+	# condBr cond_$2 ifTrue_42 next_101
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	ld t1, 120(sp)
-	beqz t1, next_140
-	j ifTrue_66
+	beqz t1, next_101
+	j ifTrue_42
 
 	# cmp   cond_normalize_
 
@@ -517,15 +517,15 @@ secondCond_38:
 	seqz t0, t0
 	sd t0, 112(sp)
 
-	# condBr cond_normalize_ ifTrue_66 next_140
+	# condBr cond_normalize_ ifTrue_42 next_101
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 112(sp)
-	beqz t1, next_140
-	j ifTrue_66
-ifTrue_67:
+	beqz t1, next_101
+	j ifTrue_42
+ifTrue_43:
 
 	# lv$4 
 
@@ -578,9 +578,9 @@ ifTrue_67:
 	# release params
 	addi sp, sp, 0
 
-	# br next_141
-	j next_141
-next_141:
+	# br next_102
+	j next_102
+next_102:
 
 	# ret 
 
@@ -590,7 +590,7 @@ next_141:
 	li t4, 400
 	add sp, sp, t4
 	ret 
-secondCond_39:
+secondCond_13:
 
 	# load a$1 lv
 
@@ -671,15 +671,15 @@ secondCond_39:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_$4 secondCond_40 next_141
+	# condBr cond_$4 secondCond_14 next_102
 
 	# fetch variables
 
 	# get address of local var:cond_$4
 	ld t1, 56(sp)
-	beqz t1, next_141
-	j secondCond_40
-secondCond_40:
+	beqz t1, next_102
+	j secondCond_14
+secondCond_14:
 
 	# load c$1 lv$2
 
@@ -757,14 +757,14 @@ secondCond_40:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_$5 ifTrue_67 next_141
+	# condBr cond_$5 ifTrue_43 next_102
 
 	# fetch variables
 
 	# get address of local var:cond_$5
 	ld t1, 8(sp)
-	beqz t1, next_141
-	j ifTrue_67
+	beqz t1, next_102
+	j ifTrue_43
 
 	# cmp   cond_normalize_$1
 
@@ -778,14 +778,14 @@ secondCond_40:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_$1 ifTrue_67 next_141
+	# condBr cond_normalize_$1 ifTrue_43 next_102
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$1
 	ld t1, 0(sp)
-	beqz t1, next_141
-	j ifTrue_67
+	beqz t1, next_102
+	j ifTrue_43
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

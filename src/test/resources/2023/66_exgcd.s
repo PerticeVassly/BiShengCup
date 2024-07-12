@@ -39,44 +39,44 @@ exgcdEntry:
 	# allocate lv$5
 	li t0, 368
 	add t0, sp, t0
-	li t1, 376
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$5
+	sd t0, 376(sp)
 
 	# allocate lv$4
 	li t0, 352
 	add t0, sp, t0
-	li t1, 360
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$4
+	sd t0, 360(sp)
 
 	# allocate lv$3
 	li t0, 336
 	add t0, sp, t0
-	li t1, 344
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$3
+	sd t0, 344(sp)
 
 	# allocate lv$2
 	li t0, 320
 	add t0, sp, t0
-	li t1, 328
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 328(sp)
 
 	# allocate lv$1
 	li t0, 304
 	add t0, sp, t0
-	li t1, 312
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 312(sp)
 
 	# allocate lv
 	li t0, 288
 	add t0, sp, t0
-	li t1, 296
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 296(sp)
 
 	# lv 0
 
@@ -197,15 +197,15 @@ exgcdEntry:
 	seqz t0, t0
 	sd t0, 256(sp)
 
-	# condBr cond_ ifTrue_73 ifFalse_19
+	# condBr cond_ ifTrue_49 ifFalse_17
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 256(sp)
-	beqz t1, ifFalse_19
-	j ifTrue_73
-ifTrue_73:
+	beqz t1, ifFalse_17
+	j ifTrue_49
+ifTrue_49:
 
 	# load arr_ lv$2
 
@@ -323,7 +323,7 @@ ifTrue_73:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_19:
+ifFalse_17:
 
 	# load b$1 lv$1
 
@@ -819,7 +819,7 @@ ifFalse_19:
 .type main, @function
 .globl main
 main:
-mainEntry42:
+mainEntry39:
 
 	# reserve space
 	li t4, 208
@@ -830,30 +830,30 @@ mainEntry42:
 	# allocate lv$3
 	li t0, 192
 	add t0, sp, t0
-	li t1, 200
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$3
+	sd t0, 200(sp)
 
 	# allocate lv$2
 	li t0, 176
 	add t0, sp, t0
-	li t1, 184
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 184(sp)
 
 	# allocate lv$1
 	li t0, 160
 	add t0, sp, t0
-	li t1, 168
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 168(sp)
 
 	# allocate lv
 	li t0, 144
 	add t0, sp, t0
-	li t1, 152
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 152(sp)
 
 	# lv 
 
