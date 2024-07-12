@@ -25,8 +25,11 @@ public class SysYParser extends Parser {
 		RETURN=10, PLUS=11, MINUS=12, MUL=13, DIV=14, MOD=15, ASSIGN=16, EQ=17, 
 		NEQ=18, LT=19, GT=20, LE=21, GE=22, NOT=23, AND=24, OR=25, L_PAREN=26, 
 		R_PAREN=27, L_BRACE=28, R_BRACE=29, L_BRACKT=30, R_BRACKT=31, COMMA=32, 
-		SEMICOLON=33, IDENT=34, INTEGER_CONST=35, FLOAT_CONST=36, WS=37, LINE_COMMENT=38, 
-		MULTILINE_COMMENT=39;
+		SEMICOLON=33, IDENT=34, INTEGER_CONST=35, FLOAT_CONST=36, Decimal_floating_constant=37, 
+		Hexadecimal_floating_constant=38, Fractional_constant=39, Exponent_part=40, 
+		Sign=41, Digit_sequence=42, Hexadecimal_fractional_constant=43, Binary_exponent_part=44, 
+		Hexadecimal_digit_sequence=45, Floating_suffix=46, Hexadecimal_prefix=47, 
+		Hexadecimal_digit=48, WS=49, LINE_COMMENT=50, MULTILINE_COMMENT=51;
 	public static final int
 		RULE_program = 0, RULE_funcUse = 1, RULE_funcName = 2, RULE_compUnit = 3, 
 		RULE_decl = 4, RULE_constDecl = 5, RULE_bType = 6, RULE_constDef = 7, 
@@ -62,7 +65,10 @@ public class SysYParser extends Parser {
 			"CONTINUE", "RETURN", "PLUS", "MINUS", "MUL", "DIV", "MOD", "ASSIGN", 
 			"EQ", "NEQ", "LT", "GT", "LE", "GE", "NOT", "AND", "OR", "L_PAREN", "R_PAREN", 
 			"L_BRACE", "R_BRACE", "L_BRACKT", "R_BRACKT", "COMMA", "SEMICOLON", "IDENT", 
-			"INTEGER_CONST", "FLOAT_CONST", "WS", "LINE_COMMENT", "MULTILINE_COMMENT"
+			"INTEGER_CONST", "FLOAT_CONST", "Decimal_floating_constant", "Hexadecimal_floating_constant", 
+			"Fractional_constant", "Exponent_part", "Sign", "Digit_sequence", "Hexadecimal_fractional_constant", 
+			"Binary_exponent_part", "Hexadecimal_digit_sequence", "Floating_suffix", 
+			"Hexadecimal_prefix", "Hexadecimal_digit", "WS", "LINE_COMMENT", "MULTILINE_COMMENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -2511,7 +2517,7 @@ public class SysYParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\'\u0150\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u00013\u0150\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
 		"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007\u0002"+
 		"\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0002\u000b\u0007\u000b\u0002"+
