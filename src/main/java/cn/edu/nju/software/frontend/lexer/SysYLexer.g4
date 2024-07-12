@@ -85,7 +85,7 @@ Hexadecimal_floating_constant : Hexadecimal_prefix Hexadecimal_fractional_consta
 Fractional_constant : Digit_sequence? '.' Digit_sequence
                     | Digit_sequence '.' ;
 
-Exponent_part : ('e' | 'E') Sign? Digit_sequence ;
+fragment Exponent_part : ('e' | 'E') Sign? Digit_sequence ;
 
 Sign : '+' | '-' ;
 
