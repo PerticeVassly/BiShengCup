@@ -15,7 +15,6 @@ import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 public class RiscBasicBlock {
@@ -85,9 +84,8 @@ public class RiscBasicBlock {
 
         int preLen = (
                         ((intAndPointerCount > RiscSpecifications.getArgRegs().length) ? (intAndPointerCount - RiscSpecifications.getArgRegs().length) : 0) +
-                        ((floatTypeCount > RiscSpecifications.getFArgRegs().length) ? (floatTypeCount - RiscSpecifications.getFArgRegs().length) : 0)  +
-                        (RiscSpecifications.getCallerSavedRegs().length)
-                    ) * 8 - RiscSpecifications.getCallerSavedRegs().length * 8;
+                        ((floatTypeCount > RiscSpecifications.getFArgRegs().length) ? (floatTypeCount - RiscSpecifications.getFArgRegs().length) : 0)
+        ) * 8;
 
         //获取所有intType和PointerType的参数个数
 

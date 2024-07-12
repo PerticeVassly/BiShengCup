@@ -26,58 +26,61 @@ QuickSortEntry:
 
 	# get address of local var:1
 	sd a1, 848(sp)
-
-	# get address of local var:2
-	sd a2, 840(sp)
+	li t4, 872
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 840
+	add t4, sp, t4
+	sd t3, 0(t4)
 
 	# allocate lv$6
 	li t0, 824
 	add t0, sp, t0
-
-	# get address of local var:lv$6
-	sd t0, 832(sp)
+	li t1, 832
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$5
 	li t0, 808
 	add t0, sp, t0
-
-	# get address of local var:lv$5
-	sd t0, 816(sp)
+	li t1, 816
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$4
 	li t0, 792
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	sd t0, 800(sp)
+	li t1, 800
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 776
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 784(sp)
+	li t1, 784
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 760
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 768(sp)
+	li t1, 768
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 744
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 752(sp)
+	li t1, 752
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 728
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 736(sp)
+	li t1, 736
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -610,7 +613,10 @@ next_60:
 	li t4, 528
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a2, t1
+
+	# push tmp
+	sd t1, -8(sp)
+	addi sp, sp, -8
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -624,7 +630,7 @@ next_60:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	addi sp, sp, 8
 
 	# get address of local var:QuickSort
 	sd a0, 520(sp)
@@ -745,7 +751,10 @@ next_60:
 	li t4, 480
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a2, t1
+
+	# push high$2
+	sd t1, -8(sp)
+	addi sp, sp, -8
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -759,7 +768,7 @@ next_60:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	addi sp, sp, 8
 
 	# get address of local var:QuickSort$1
 	sd a0, 472(sp)
@@ -1782,30 +1791,30 @@ mainEntry10:
 	# allocate lv$3
 	li t0, 328
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 336(sp)
+	li t1, 336
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 312
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 320(sp)
+	li t1, 320
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 296
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 304(sp)
+	li t1, 304
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 208
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 288(sp)
+	li t1, 288
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# gv @
 
@@ -2231,7 +2240,10 @@ mainEntry10:
 	li t4, 104
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a2, t1
+
+	# push tmp
+	sd t1, -8(sp)
+	addi sp, sp, -8
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2245,7 +2257,7 @@ mainEntry10:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	addi sp, sp, 8
 
 	# get address of local var:QuickSort
 	sd a0, 96(sp)
@@ -2426,6 +2438,7 @@ whileBody_30:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2476,6 +2489,7 @@ whileBody_30:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

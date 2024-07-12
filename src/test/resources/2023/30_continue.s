@@ -16,16 +16,16 @@ mainEntry85:
 	# allocate lv$1
 	li t0, 144
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 152(sp)
+	li t1, 152
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 128
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 136(sp)
+	li t1, 136
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -57,9 +57,9 @@ mainEntry85:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_174
-	j whileCond_174
-whileCond_174:
+	# br whileCond_171
+	j whileCond_171
+whileCond_171:
 
 	# load i lv
 
@@ -111,15 +111,15 @@ whileCond_174:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_ whileBody_174 next_349
+	# condBr cond_ whileBody_171 next_344
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_349
-	j whileBody_174
-whileBody_174:
+	beqz t1, next_344
+	j whileBody_171
+whileBody_171:
 
 	# load i$1 lv
 
@@ -172,15 +172,15 @@ whileBody_174:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$1 ifTrue_175 next_350
+	# condBr cond_$1 ifTrue_173 next_345
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_350
-	j ifTrue_175
-next_349:
+	beqz t1, next_345
+	j ifTrue_173
+next_344:
 
 	# load sum$1 lv$1
 
@@ -205,7 +205,7 @@ next_349:
 	li t4, 160
 	add sp, sp, t4
 	ret 
-ifTrue_175:
+ifTrue_173:
 
 	# load i$2 lv
 
@@ -249,12 +249,12 @@ ifTrue_175:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_174
-	j whileCond_174
+	# br whileCond_171
+	j whileCond_171
 
-	# br next_350
-	j next_350
-next_350:
+	# br next_345
+	j next_345
+next_345:
 
 	# load sum lv$1
 
@@ -355,8 +355,8 @@ next_350:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_174
-	j whileCond_174
+	# br whileCond_171
+	j whileCond_171
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

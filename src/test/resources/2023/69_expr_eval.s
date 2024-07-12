@@ -31,6 +31,7 @@ next_charEntry:
 	# save the parameters
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -110,9 +111,9 @@ is_spaceEntry:
 	# allocate lv
 	li t0, 64
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 72(sp)
+	li t1, 72
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -299,9 +300,9 @@ is_numEntry:
 	# allocate lv
 	li t0, 64
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 72(sp)
+	li t1, 72
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -505,6 +506,7 @@ whileCond_50:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -548,6 +550,7 @@ whileCond_50:
 whileBody_50:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -588,6 +591,7 @@ next_96:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -699,6 +703,7 @@ ifFalse_13:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -761,6 +766,7 @@ next_97:
 whileCond_51:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -786,6 +792,7 @@ whileCond_51:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -943,6 +950,7 @@ panicEntry:
 	# fetch variables
 	li t1, 112
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -963,6 +971,7 @@ panicEntry:
 	# fetch variables
 	li t1, 97
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -983,6 +992,7 @@ panicEntry:
 	# fetch variables
 	li t1, 110
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1003,6 +1013,7 @@ panicEntry:
 	# fetch variables
 	li t1, 105
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1023,6 +1034,7 @@ panicEntry:
 	# fetch variables
 	li t1, 99
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1043,6 +1055,7 @@ panicEntry:
 	# fetch variables
 	li t1, 33
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1063,6 +1076,7 @@ panicEntry:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1111,9 +1125,9 @@ get_op_precEntry:
 	# allocate lv
 	li t0, 160
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 168(sp)
+	li t1, 168
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -1499,16 +1513,16 @@ stack_pushEntry:
 	# allocate lv$1
 	li t0, 112
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 120(sp)
+	li t1, 120
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 96
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 104(sp)
+	li t1, 104
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -1780,16 +1794,16 @@ stack_popEntry:
 	# allocate lv$1
 	li t0, 120
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 128(sp)
+	li t1, 128
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 104
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 112(sp)
+	li t1, 112
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -2063,9 +2077,9 @@ stack_peekEntry:
 	# allocate lv
 	li t0, 48
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 56(sp)
+	li t1, 56
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -2207,9 +2221,9 @@ stack_sizeEntry:
 	# allocate lv
 	li t0, 24
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 32(sp)
+	li t1, 32
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -2305,30 +2319,33 @@ eval_opEntry:
 
 	# get address of local var:1
 	sd a1, 336(sp)
-
-	# get address of local var:2
-	sd a2, 328(sp)
+	li t4, 360
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 328
+	add t4, sp, t4
+	sd t3, 0(t4)
 
 	# allocate lv$2
 	li t0, 312
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 320(sp)
+	li t1, 320
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 296
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 304(sp)
+	li t1, 304
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 280
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 288(sp)
+	li t1, 288
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -2991,83 +3008,65 @@ evalEntry:
 	# allocate lv$8
 	li t0, 8856
 	add t0, sp, t0
-
-	# get address of local var:lv$8
-	li t4, 8864
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 8864
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$7
 	li t0, 8840
 	add t0, sp, t0
-
-	# get address of local var:lv$7
-	li t4, 8848
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 8848
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$6
 	li t0, 8824
 	add t0, sp, t0
-
-	# get address of local var:lv$6
-	li t4, 8832
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 8832
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$5
 	li t0, 8808
 	add t0, sp, t0
-
-	# get address of local var:lv$5
-	li t4, 8816
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 8816
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$4
 	li t0, 8792
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	li t4, 8800
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 8800
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 8776
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	li t4, 8784
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 8784
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 8760
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	li t4, 8768
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 8768
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 6704
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	li t4, 8752
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 8752
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 4648
 	add t0, sp, t0
-
-	# get address of local var:lv
-	li t4, 6696
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 6696
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# gep inp 
 
@@ -20426,6 +20425,7 @@ evalEntry:
 ifTrue_54:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -20500,6 +20500,7 @@ next_106:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a1, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -20516,6 +20517,7 @@ next_106:
 	addi sp, sp, 0
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -20645,6 +20647,7 @@ whileBody_52:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -20727,6 +20730,7 @@ whileBody_52:
 next_107:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -20757,6 +20761,7 @@ ifTrue_55:
 next_108:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -20803,6 +20808,7 @@ whileCond_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -20869,6 +20875,7 @@ whileBody_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -20928,6 +20935,7 @@ whileBody_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -20987,6 +20995,7 @@ whileBody_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21096,7 +21105,10 @@ whileBody_53:
 	li t4, 280
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a2, t1
+
+	# push rhs
+	sd t1, -8(sp)
+	addi sp, sp, -8
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21110,7 +21122,7 @@ whileBody_53:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	addi sp, sp, 8
 
 	# get address of local var:eval_op
 	sd a0, 272(sp)
@@ -21128,6 +21140,7 @@ whileBody_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a1, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21190,6 +21203,7 @@ next_109:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a1, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21289,6 +21303,7 @@ secondCond_42:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21314,6 +21329,7 @@ secondCond_42:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21352,6 +21368,7 @@ secondCond_42:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21421,6 +21438,7 @@ secondCond_42:
 ifTrue_56:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21495,6 +21513,7 @@ next_110:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a1, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21511,6 +21530,7 @@ next_110:
 	addi sp, sp, 0
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21557,6 +21577,7 @@ whileCond_54:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21623,6 +21644,7 @@ whileBody_54:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21682,6 +21704,7 @@ whileBody_54:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21741,6 +21764,7 @@ whileBody_54:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21850,7 +21874,10 @@ whileBody_54:
 	li t4, 24
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a2, t1
+
+	# push rhs$1
+	sd t1, -8(sp)
+	addi sp, sp, -8
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21864,7 +21891,7 @@ whileBody_54:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	addi sp, sp, 8
 
 	# get address of local var:eval_op$1
 	sd a0, 16(sp)
@@ -21882,6 +21909,7 @@ whileBody_54:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a1, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21925,6 +21953,7 @@ next_111:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21970,11 +21999,12 @@ mainEntry19:
 	# allocate lv
 	li t0, 64
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 72(sp)
+	li t1, 72
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -22011,6 +22041,7 @@ mainEntry19:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -22030,6 +22061,7 @@ mainEntry19:
 	sd a0, 48(sp)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -22090,6 +22122,7 @@ whileCond_55:
 whileBody_55:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -22115,6 +22148,7 @@ whileBody_55:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -22135,6 +22169,7 @@ whileBody_55:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

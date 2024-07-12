@@ -21,16 +21,16 @@ my_getintEntry:
 	# allocate lv$1
 	li t0, 240
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 248(sp)
+	li t1, 248
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 224
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 232(sp)
+	li t1, 232
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -68,6 +68,7 @@ whileCond_19:
 whileBody_19:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -305,6 +306,7 @@ whileCond_20:
 whileBody_20:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -607,23 +609,23 @@ my_putintEntry:
 	# allocate lv$2
 	li t0, 328
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 336(sp)
+	li t1, 336
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 192
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 320(sp)
+	li t1, 320
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 176
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 184(sp)
+	li t1, 184
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -1055,6 +1057,7 @@ whileBody_22:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1095,18 +1098,19 @@ mainEntry6:
 	# allocate lv$1
 	li t0, 88
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 96(sp)
+	li t1, 96
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 72
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 80(sp)
+	li t1, 80
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1208,6 +1212,7 @@ whileCond_23:
 whileBody_23:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1263,6 +1268,7 @@ whileBody_23:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1283,6 +1289,7 @@ whileBody_23:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

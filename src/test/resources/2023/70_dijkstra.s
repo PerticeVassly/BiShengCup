@@ -45,44 +45,44 @@ DijkstraEntry:
 	# allocate lv$5
 	li t0, 808
 	add t0, sp, t0
-
-	# get address of local var:lv$5
-	sd t0, 816(sp)
+	li t1, 816
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$4
 	li t0, 792
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	sd t0, 800(sp)
+	li t1, 800
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 776
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 784(sp)
+	li t1, 784
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 760
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 768(sp)
+	li t1, 768
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 744
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 752(sp)
+	li t1, 752
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 728
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 736(sp)
+	li t1, 736
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -1759,32 +1759,33 @@ mainEntry16:
 	# allocate lv$3
 	li t0, 472
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 480(sp)
+	li t1, 480
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 456
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 464(sp)
+	li t1, 464
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 440
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 448(sp)
+	li t1, 448
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 424
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 432(sp)
+	li t1, 432
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1819,6 +1820,7 @@ mainEntry16:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2465,6 +2467,7 @@ whileCond_44:
 whileBody_44:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2501,6 +2504,7 @@ whileBody_44:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2599,6 +2603,7 @@ whileBody_44:
 	sd t0, 104(sp)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2681,6 +2686,7 @@ whileBody_44:
 next_86:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2840,6 +2846,7 @@ whileBody_45:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2860,6 +2867,7 @@ whileBody_45:
 	# fetch variables
 	li t1, 32
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2926,6 +2934,7 @@ next_87:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

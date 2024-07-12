@@ -16,16 +16,16 @@ mainEntry88:
 	# allocate lv$1
 	li t0, 128
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 136(sp)
+	li t1, 136
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 112
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 120(sp)
+	li t1, 120
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -57,9 +57,9 @@ mainEntry88:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_180
-	j whileCond_180
-whileCond_180:
+	# br whileCond_177
+	j whileCond_177
+whileCond_177:
 
 	# load i lv
 
@@ -111,15 +111,15 @@ whileCond_180:
 	seqz t0, t0
 	sd t0, 80(sp)
 
-	# condBr cond_ whileBody_180 next_371
+	# condBr cond_ whileBody_177 next_366
 
 	# fetch variables
 	li t4, 80
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_371
-	j whileBody_180
-whileBody_180:
+	beqz t1, next_366
+	j whileBody_177
+whileBody_177:
 
 	# load i$1 lv
 
@@ -172,15 +172,15 @@ whileBody_180:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_$1 ifTrue_191 next_372
+	# condBr cond_$1 ifTrue_189 next_367
 
 	# fetch variables
 	li t4, 48
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_372
-	j ifTrue_191
-next_371:
+	beqz t1, next_367
+	j ifTrue_189
+next_366:
 
 	# load sum$1 lv$1
 
@@ -205,14 +205,14 @@ next_371:
 	li t4, 144
 	add sp, sp, t4
 	ret 
-ifTrue_191:
+ifTrue_189:
 
-	# br next_371
-	j next_371
+	# br next_366
+	j next_366
 
-	# br next_372
-	j next_372
-next_372:
+	# br next_367
+	j next_367
+next_367:
 
 	# load sum lv$1
 
@@ -313,8 +313,8 @@ next_372:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_180
-	j whileCond_180
+	# br whileCond_177
+	j whileCond_177
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

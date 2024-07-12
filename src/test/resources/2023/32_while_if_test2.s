@@ -21,16 +21,16 @@ ifWhileEntry:
 	# allocate lv$1
 	li t0, 184
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 192(sp)
+	li t1, 192
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 168
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 176(sp)
+	li t1, 176
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -113,23 +113,23 @@ ifWhileEntry:
 	seqz t0, t0
 	sd t0, 136(sp)
 
-	# condBr cond_ ifTrue_194 ifFalse_63
+	# condBr cond_ ifTrue_192 ifFalse_62
 
 	# fetch variables
 	li t4, 136
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_63
-	j ifTrue_194
-ifTrue_194:
+	beqz t1, ifFalse_62
+	j ifTrue_192
+ifTrue_192:
 
-	# br whileCond_181
-	j whileCond_181
-ifFalse_63:
+	# br whileCond_178
+	j whileCond_178
+ifFalse_62:
 
-	# br whileCond_182
-	j whileCond_182
-next_375:
+	# br whileCond_179
+	j whileCond_179
+next_370:
 
 	# load b$4 lv$1
 
@@ -157,7 +157,7 @@ next_375:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_181:
+whileCond_178:
 
 	# load b lv$1
 
@@ -210,15 +210,15 @@ whileCond_181:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_$1 whileBody_181 next_376
+	# condBr cond_$1 whileBody_178 next_371
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_376
-	j whileBody_181
-whileBody_181:
+	beqz t1, next_371
+	j whileBody_178
+whileBody_178:
 
 	# load b$1 lv$1
 
@@ -262,9 +262,9 @@ whileBody_181:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_181
-	j whileCond_181
-next_376:
+	# br whileCond_178
+	j whileCond_178
+next_371:
 
 	# load b$2 lv$1
 
@@ -308,9 +308,9 @@ next_376:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_375
-	j next_375
-whileCond_182:
+	# br next_370
+	j next_370
+whileCond_179:
 
 	# load a$1 lv
 
@@ -362,15 +362,15 @@ whileCond_182:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 whileBody_182 next_377
+	# condBr cond_$2 whileBody_179 next_372
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_377
-	j whileBody_182
-whileBody_182:
+	beqz t1, next_372
+	j whileBody_179
+whileBody_179:
 
 	# load b$3 lv$1
 
@@ -456,12 +456,12 @@ whileBody_182:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_182
-	j whileCond_182
-next_377:
+	# br whileCond_179
+	j whileCond_179
+next_372:
 
-	# br next_375
-	j next_375
+	# br next_370
+	j next_370
 .type main, @function
 .globl main
 main:
@@ -474,6 +474,7 @@ mainEntry93:
 	# save the parameters
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

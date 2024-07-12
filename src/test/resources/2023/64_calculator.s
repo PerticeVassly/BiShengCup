@@ -51,9 +51,9 @@ isdigitEntry:
 	# allocate lv
 	li t0, 64
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 72(sp)
+	li t1, 72
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -244,23 +244,23 @@ powerEntry:
 	# allocate lv$2
 	li t0, 112
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 120(sp)
+	li t1, 120
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 96
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 104(sp)
+	li t1, 104
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 80
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 88(sp)
+	li t1, 88
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -528,23 +528,23 @@ getstrEntry:
 	# allocate lv$2
 	li t0, 168
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 176(sp)
+	li t1, 176
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 152
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 160(sp)
+	li t1, 160
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 136
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 144(sp)
+	li t1, 144
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -564,6 +564,7 @@ getstrEntry:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -798,6 +799,7 @@ whileBody_5:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -947,9 +949,9 @@ intpushEntry:
 	# allocate lv
 	li t0, 40
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 48(sp)
+	li t1, 48
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -1093,9 +1095,9 @@ chapushEntry:
 	# allocate lv
 	li t0, 40
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 48(sp)
+	li t1, 48
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -1479,9 +1481,9 @@ intaddEntry:
 	# allocate lv
 	li t0, 104
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 112(sp)
+	li t1, 112
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -1735,6 +1737,7 @@ findEntry:
 	# save the parameters
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2014,47 +2017,37 @@ mainEntry3:
 	# allocate lv$4
 	li t0, 3272
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	li t4, 3280
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 3280
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 3256
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	li t4, 3264
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 3264
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 3240
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	li t4, 3248
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 3248
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 3224
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	li t4, 3232
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 3232
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 3208
 	add t0, sp, t0
-
-	# get address of local var:lv
-	li t4, 3216
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 3216
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# gv1 @
 
@@ -2106,6 +2099,7 @@ mainEntry3:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2284,6 +2278,7 @@ whileBody_6:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2656,6 +2651,7 @@ ifTrue_4:
 	# fetch variables
 	li t1, 40
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2781,6 +2777,7 @@ ifTrue_5:
 	# fetch variables
 	li t1, 94
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2902,6 +2899,7 @@ next_12:
 ifTrue_6:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3276,6 +3274,7 @@ whileBody_7:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3526,6 +3525,7 @@ whileCond_8:
 whileBody_8:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3605,6 +3605,7 @@ next_16:
 	# fetch variables
 	li t1, 43
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4347,6 +4348,7 @@ whileCond_9:
 whileBody_9:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4426,6 +4428,7 @@ next_19:
 	# fetch variables
 	li t1, 45
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5168,6 +5171,7 @@ whileCond_10:
 whileBody_10:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5247,6 +5251,7 @@ next_22:
 	# fetch variables
 	li t1, 42
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5787,6 +5792,7 @@ whileCond_11:
 whileBody_11:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5866,6 +5872,7 @@ next_25:
 	# fetch variables
 	li t1, 47
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -6398,6 +6405,7 @@ whileCond_12:
 whileBody_12:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -6477,6 +6485,7 @@ next_28:
 	# fetch variables
 	li t1, 37
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -6878,6 +6887,7 @@ whileCond_13:
 whileBody_13:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7380,6 +7390,7 @@ next_31:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7406,6 +7417,7 @@ next_31:
 ifTrue_17:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7442,6 +7454,7 @@ ifTrue_17:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8932,6 +8945,7 @@ ifTrue_23:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a1, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8991,6 +9005,7 @@ next_38:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9070,6 +9085,7 @@ ifTrue_24:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9306,6 +9322,7 @@ whileBody_15:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

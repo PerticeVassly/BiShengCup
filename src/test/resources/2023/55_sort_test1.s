@@ -27,30 +27,30 @@ bubblesortEntry:
 	# allocate lv$3
 	li t0, 424
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 432(sp)
+	li t1, 432
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 408
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 416(sp)
+	li t1, 416
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 392
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 400(sp)
+	li t1, 400
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 376
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 384(sp)
+	li t1, 384
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -897,23 +897,23 @@ mainEntry24:
 	# allocate lv$2
 	li t0, 296
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 304(sp)
+	li t1, 304
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 280
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 288(sp)
+	li t1, 288
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 192
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 272(sp)
+	li t1, 272
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# gv @
 
@@ -1272,6 +1272,7 @@ mainEntry24:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1466,6 +1467,7 @@ whileBody_59:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1516,6 +1518,7 @@ whileBody_59:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

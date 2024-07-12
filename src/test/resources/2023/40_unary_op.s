@@ -16,9 +16,9 @@ mainEntry91:
 	# allocate lv
 	li t0, 104
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 112(sp)
+	li t1, 112
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -191,15 +191,15 @@ mainEntry91:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_normalize_ ifTrue_193 ifFalse_62
+	# condBr cond_normalize_ ifTrue_191 ifFalse_61
 
 	# fetch variables
 	li t4, 8
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_62
-	j ifTrue_193
-ifTrue_193:
+	beqz t1, ifFalse_61
+	j ifTrue_191
+ifTrue_191:
 
 	# lv 
 
@@ -216,9 +216,9 @@ ifTrue_193:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_374
-	j next_374
-ifFalse_62:
+	# br next_369
+	j next_369
+ifFalse_61:
 
 	# lv 
 
@@ -235,9 +235,9 @@ ifFalse_62:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_374
-	j next_374
-next_374:
+	# br next_369
+	j next_369
+next_369:
 
 	# load a$1 lv
 

@@ -25,16 +25,16 @@ mainEntry56:
 	# allocate lv$1
 	li t0, 40
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 48(sp)
+	li t1, 48
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 24
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 32(sp)
+	li t1, 32
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -113,6 +113,7 @@ mainEntry56:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

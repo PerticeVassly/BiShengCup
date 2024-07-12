@@ -16,37 +16,37 @@ mainEntry17:
 	# allocate lv$4
 	li t0, 384
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	sd t0, 392(sp)
+	li t1, 392
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 368
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 376(sp)
+	li t1, 376
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 352
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 360(sp)
+	li t1, 360
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 336
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 344(sp)
+	li t1, 344
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 320
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 328(sp)
+	li t1, 328
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -227,6 +227,7 @@ ifTrue_42:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -561,6 +562,7 @@ ifTrue_43:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

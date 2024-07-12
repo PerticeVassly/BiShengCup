@@ -33,9 +33,9 @@ set_aEntry:
 	# allocate lv
 	li t0, 16
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 24(sp)
+	li t1, 24
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -128,9 +128,9 @@ set_bEntry:
 	# allocate lv
 	li t0, 16
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 24(sp)
+	li t1, 24
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -223,9 +223,9 @@ set_dEntry:
 	# allocate lv
 	li t0, 16
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 24(sp)
+	li t1, 24
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -310,37 +310,37 @@ mainEntry87:
 	# allocate lv$4
 	li t0, 968
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	sd t0, 976(sp)
+	li t1, 976
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 952
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 960(sp)
+	li t1, 960
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 936
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 944(sp)
+	li t1, 944
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 920
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 928(sp)
+	li t1, 928
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 904
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 912(sp)
+	li t1, 912
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# gv @
 
@@ -373,6 +373,7 @@ mainEntry87:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -405,19 +406,19 @@ mainEntry87:
 	seqz t0, t0
 	sd t0, 888(sp)
 
-	# condBr cond_normalize_ secondCond_76 next_355
+	# condBr cond_normalize_ secondCond_76 next_350
 
 	# fetch variables
 	li t4, 888
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_355
+	beqz t1, next_350
 	j secondCond_76
-ifTrue_176:
+ifTrue_174:
 
-	# br next_355
-	j next_355
-next_355:
+	# br next_350
+	j next_350
+next_350:
 
 	# load a gv
 
@@ -437,6 +438,7 @@ next_355:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -457,6 +459,7 @@ next_355:
 	# fetch variables
 	li t1, 32
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -490,6 +493,7 @@ next_355:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -510,6 +514,7 @@ next_355:
 	# fetch variables
 	li t1, 32
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -556,6 +561,7 @@ next_355:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -588,13 +594,13 @@ next_355:
 	seqz t0, t0
 	sd t0, 856(sp)
 
-	# condBr cond_normalize_$2 secondCond_77 next_356
+	# condBr cond_normalize_$2 secondCond_77 next_351
 
 	# fetch variables
 	li t4, 856
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_356
+	beqz t1, next_351
 	j secondCond_77
 secondCond_76:
 
@@ -603,6 +609,7 @@ secondCond_76:
 	# fetch variables
 	li t1, 1
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -635,19 +642,19 @@ secondCond_76:
 	seqz t0, t0
 	sd t0, 840(sp)
 
-	# condBr cond_normalize_$1 ifTrue_176 next_355
+	# condBr cond_normalize_$1 ifTrue_174 next_350
 
 	# fetch variables
 	li t4, 840
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_355
-	j ifTrue_176
-ifTrue_177:
+	beqz t1, next_350
+	j ifTrue_174
+ifTrue_175:
 
-	# br next_356
-	j next_356
-next_356:
+	# br next_351
+	j next_351
+next_351:
 
 	# load a$1 gv
 
@@ -667,6 +674,7 @@ next_356:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -687,6 +695,7 @@ next_356:
 	# fetch variables
 	li t1, 32
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -720,6 +729,7 @@ next_356:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -740,6 +750,7 @@ next_356:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -804,13 +815,13 @@ next_356:
 	seqz t0, t0
 	sd t0, 800(sp)
 
-	# condBr cond_ secondCond_78 next_357
+	# condBr cond_ secondCond_78 next_352
 
 	# fetch variables
 	li t4, 800
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_357
+	beqz t1, next_352
 	j secondCond_78
 secondCond_77:
 
@@ -819,6 +830,7 @@ secondCond_77:
 	# fetch variables
 	li t1, 1
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -851,19 +863,19 @@ secondCond_77:
 	seqz t0, t0
 	sd t0, 784(sp)
 
-	# condBr cond_normalize_$3 ifTrue_177 next_356
+	# condBr cond_normalize_$3 ifTrue_175 next_351
 
 	# fetch variables
 	li t4, 784
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_356
-	j ifTrue_177
-ifTrue_178:
+	beqz t1, next_351
+	j ifTrue_175
+ifTrue_176:
 
-	# br next_357
-	j next_357
-next_357:
+	# br next_352
+	j next_352
+next_352:
 
 	# load d gv2
 
@@ -883,6 +895,7 @@ next_357:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -903,6 +916,7 @@ next_357:
 	# fetch variables
 	li t1, 32
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -955,14 +969,14 @@ next_357:
 	seqz t0, t0
 	sd t0, 752(sp)
 
-	# condBr cond_$1 ifTrue_179 secondCond_79
+	# condBr cond_$1 ifTrue_177 secondCond_79
 
 	# fetch variables
 	li t4, 752
 	add t4, sp, t4
 	ld t1, 0(t4)
 	beqz t1, secondCond_79
-	j ifTrue_179
+	j ifTrue_177
 secondCond_78:
 
 	# prepare params
@@ -970,6 +984,7 @@ secondCond_78:
 	# fetch variables
 	li t1, 3
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1002,19 +1017,19 @@ secondCond_78:
 	seqz t0, t0
 	sd t0, 736(sp)
 
-	# condBr cond_normalize_$4 ifTrue_178 next_357
+	# condBr cond_normalize_$4 ifTrue_176 next_352
 
 	# fetch variables
 	li t4, 736
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_357
-	j ifTrue_178
-ifTrue_179:
+	beqz t1, next_352
+	j ifTrue_176
+ifTrue_177:
 
-	# br next_358
-	j next_358
-next_358:
+	# br next_353
+	j next_353
+next_353:
 
 	# load d$1 gv2
 
@@ -1034,6 +1049,7 @@ next_358:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1054,6 +1070,7 @@ next_358:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1105,14 +1122,14 @@ next_358:
 	seqz t0, t0
 	sd t0, 704(sp)
 
-	# condBr cond_$2 ifTrue_180 next_359
+	# condBr cond_$2 ifTrue_178 next_354
 
 	# fetch variables
 	li t4, 704
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_359
-	j ifTrue_180
+	beqz t1, next_354
+	j ifTrue_178
 secondCond_79:
 
 	# prepare params
@@ -1120,6 +1137,7 @@ secondCond_79:
 	# fetch variables
 	li t1, 4
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1152,21 +1170,22 @@ secondCond_79:
 	seqz t0, t0
 	sd t0, 688(sp)
 
-	# condBr cond_normalize_$5 ifTrue_179 next_358
+	# condBr cond_normalize_$5 ifTrue_177 next_353
 
 	# fetch variables
 	li t4, 688
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_358
-	j ifTrue_179
-ifTrue_180:
+	beqz t1, next_353
+	j ifTrue_177
+ifTrue_178:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 65
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1182,23 +1201,24 @@ ifTrue_180:
 	# release params
 	addi sp, sp, 0
 
-	# br next_359
-	j next_359
-next_359:
+	# br next_354
+	j next_354
+next_354:
 
-	# condBr  ifTrue_181 next_360
+	# condBr  ifTrue_179 next_355
 
 	# fetch variables
 	li t1, 0
-	beqz t1, next_360
-	j ifTrue_181
-ifTrue_181:
+	beqz t1, next_355
+	j ifTrue_179
+ifTrue_179:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 66
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1214,9 +1234,9 @@ ifTrue_181:
 	# release params
 	addi sp, sp, 0
 
-	# br next_360
-	j next_360
-next_360:
+	# br next_355
+	j next_355
+next_355:
 
 	# cmp   cond_lt_tmp_
 
@@ -1303,21 +1323,22 @@ next_360:
 	seqz t0, t0
 	sd t0, 632(sp)
 
-	# condBr cond_$4 ifTrue_182 next_361
+	# condBr cond_$4 ifTrue_180 next_356
 
 	# fetch variables
 	li t4, 632
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_361
-	j ifTrue_182
-ifTrue_182:
+	beqz t1, next_356
+	j ifTrue_180
+ifTrue_180:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 67
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1333,9 +1354,9 @@ ifTrue_182:
 	# release params
 	addi sp, sp, 0
 
-	# br next_361
-	j next_361
-next_361:
+	# br next_356
+	j next_356
+next_356:
 
 	# cmp   cond_gt_tmp_
 
@@ -1422,21 +1443,22 @@ next_361:
 	seqz t0, t0
 	sd t0, 576(sp)
 
-	# condBr cond_$6 ifTrue_183 next_362
+	# condBr cond_$6 ifTrue_181 next_357
 
 	# fetch variables
 	li t4, 576
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_362
-	j ifTrue_183
-ifTrue_183:
+	beqz t1, next_357
+	j ifTrue_181
+ifTrue_181:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 68
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1452,9 +1474,9 @@ ifTrue_183:
 	# release params
 	addi sp, sp, 0
 
-	# br next_362
-	j next_362
-next_362:
+	# br next_357
+	j next_357
+next_357:
 
 	# cmp   cond_le_tmp_$1
 
@@ -1542,21 +1564,22 @@ next_362:
 	seqz t0, t0
 	sd t0, 520(sp)
 
-	# condBr cond_$8 ifTrue_184 next_363
+	# condBr cond_$8 ifTrue_182 next_358
 
 	# fetch variables
 	li t4, 520
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_363
-	j ifTrue_184
-ifTrue_184:
+	beqz t1, next_358
+	j ifTrue_182
+ifTrue_182:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 69
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1572,23 +1595,24 @@ ifTrue_184:
 	# release params
 	addi sp, sp, 0
 
-	# br next_363
-	j next_363
-next_363:
+	# br next_358
+	j next_358
+next_358:
 
-	# condBr  ifTrue_185 next_364
+	# condBr  ifTrue_183 next_359
 
 	# fetch variables
 	li t1, 1
-	beqz t1, next_364
-	j ifTrue_185
-ifTrue_185:
+	beqz t1, next_359
+	j ifTrue_183
+ifTrue_183:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 70
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1604,15 +1628,16 @@ ifTrue_185:
 	# release params
 	addi sp, sp, 0
 
-	# br next_364
-	j next_364
-next_364:
+	# br next_359
+	j next_359
+next_359:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1703,9 +1728,9 @@ next_364:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_179
-	j whileCond_179
-whileCond_179:
+	# br whileCond_176
+	j whileCond_176
+whileCond_176:
 
 	# load i0 lv
 
@@ -1734,21 +1759,22 @@ whileCond_179:
 	seqz t0, t0
 	sd t0, 504(sp)
 
-	# condBr cond_normalize_$6 secondCond_80 next_365
+	# condBr cond_normalize_$6 secondCond_80 next_360
 
 	# fetch variables
 	li t4, 504
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_365
+	beqz t1, next_360
 	j secondCond_80
-whileBody_179:
+whileBody_176:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 32
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1764,9 +1790,9 @@ whileBody_179:
 	# release params
 	addi sp, sp, 0
 
-	# br whileCond_179
-	j whileCond_179
-next_365:
+	# br whileCond_176
+	j whileCond_176
+next_360:
 
 	# load i0$1 lv
 
@@ -1795,14 +1821,14 @@ next_365:
 	seqz t0, t0
 	sd t0, 488(sp)
 
-	# condBr cond_normalize_$8 ifTrue_186 secondCond_81
+	# condBr cond_normalize_$8 ifTrue_184 secondCond_81
 
 	# fetch variables
 	li t4, 488
 	add t4, sp, t4
 	ld t1, 0(t4)
 	beqz t1, secondCond_81
-	j ifTrue_186
+	j ifTrue_184
 secondCond_80:
 
 	# load i1 lv$1
@@ -1832,21 +1858,22 @@ secondCond_80:
 	seqz t0, t0
 	sd t0, 472(sp)
 
-	# condBr cond_normalize_$7 whileBody_179 next_365
+	# condBr cond_normalize_$7 whileBody_176 next_360
 
 	# fetch variables
 	li t4, 472
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_365
-	j whileBody_179
-ifTrue_186:
+	beqz t1, next_360
+	j whileBody_176
+ifTrue_184:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 67
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1862,9 +1889,9 @@ ifTrue_186:
 	# release params
 	addi sp, sp, 0
 
-	# br next_366
-	j next_366
-next_366:
+	# br next_361
+	j next_361
+next_361:
 
 	# load i0$2 lv
 
@@ -1932,14 +1959,14 @@ next_366:
 	seqz t0, t0
 	sd t0, 432(sp)
 
-	# condBr cond_$9 ifTrue_187 secondCond_82
+	# condBr cond_$9 ifTrue_185 secondCond_82
 
 	# fetch variables
 	li t4, 432
 	add t4, sp, t4
 	ld t1, 0(t4)
 	beqz t1, secondCond_82
-	j ifTrue_187
+	j ifTrue_185
 secondCond_81:
 
 	# load i1$1 lv$1
@@ -1969,21 +1996,22 @@ secondCond_81:
 	seqz t0, t0
 	sd t0, 416(sp)
 
-	# condBr cond_normalize_$9 ifTrue_186 next_366
+	# condBr cond_normalize_$9 ifTrue_184 next_361
 
 	# fetch variables
 	li t4, 416
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_366
-	j ifTrue_186
-ifTrue_187:
+	beqz t1, next_361
+	j ifTrue_184
+ifTrue_185:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 72
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1999,9 +2027,9 @@ ifTrue_187:
 	# release params
 	addi sp, sp, 0
 
-	# br next_367
-	j next_367
-next_367:
+	# br next_362
+	j next_362
+next_362:
 
 	# load i2 lv$2
 
@@ -2069,13 +2097,13 @@ next_367:
 	seqz t0, t0
 	sd t0, 376(sp)
 
-	# condBr cond_$11 secondCond_83 next_368
+	# condBr cond_$11 secondCond_83 next_363
 
 	# fetch variables
 	li t4, 376
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_368
+	beqz t1, next_363
 	j secondCond_83
 secondCond_82:
 
@@ -2146,21 +2174,22 @@ secondCond_82:
 	seqz t0, t0
 	sd t0, 336(sp)
 
-	# condBr cond_$10 ifTrue_187 next_367
+	# condBr cond_$10 ifTrue_185 next_362
 
 	# fetch variables
 	li t4, 336
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_367
-	j ifTrue_187
-ifTrue_188:
+	beqz t1, next_362
+	j ifTrue_185
+ifTrue_186:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 73
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2176,9 +2205,9 @@ ifTrue_188:
 	# release params
 	addi sp, sp, 0
 
-	# br next_368
-	j next_368
-next_368:
+	# br next_363
+	j next_363
+next_363:
 
 	# load i0$4 lv
 
@@ -2362,21 +2391,22 @@ secondCond_83:
 	seqz t0, t0
 	sd t0, 232(sp)
 
-	# condBr cond_$12 ifTrue_188 next_368
+	# condBr cond_$12 ifTrue_186 next_363
 
 	# fetch variables
 	li t4, 232
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_368
-	j ifTrue_188
-ifTrue_189:
+	beqz t1, next_363
+	j ifTrue_186
+ifTrue_187:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 74
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2392,9 +2422,9 @@ ifTrue_189:
 	# release params
 	addi sp, sp, 0
 
-	# br next_369
-	j next_369
-next_369:
+	# br next_364
+	j next_364
+next_364:
 
 	# load i0$5 lv
 
@@ -2501,14 +2531,14 @@ next_369:
 	seqz t0, t0
 	sd t0, 168(sp)
 
-	# condBr cond_$16 ifTrue_190 secondCond_86
+	# condBr cond_$16 ifTrue_188 secondCond_86
 
 	# fetch variables
 	li t4, 168
 	add t4, sp, t4
 	ld t1, 0(t4)
 	beqz t1, secondCond_86
-	j ifTrue_190
+	j ifTrue_188
 secondCond_84:
 
 	# load i4$1 lv$4
@@ -2577,14 +2607,14 @@ secondCond_84:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_$15 ifTrue_189 next_369
+	# condBr cond_$15 ifTrue_187 next_364
 
 	# fetch variables
 	li t4, 128
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_369
-	j ifTrue_189
+	beqz t1, next_364
+	j ifTrue_187
 secondCond_85:
 
 	# load i3$1 lv$3
@@ -2652,21 +2682,22 @@ secondCond_85:
 	seqz t0, t0
 	sd t0, 88(sp)
 
-	# condBr cond_$14 ifTrue_189 secondCond_84
+	# condBr cond_$14 ifTrue_187 secondCond_84
 
 	# fetch variables
 	li t4, 88
 	add t4, sp, t4
 	ld t1, 0(t4)
 	beqz t1, secondCond_84
-	j ifTrue_189
-ifTrue_190:
+	j ifTrue_187
+ifTrue_188:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 75
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2682,15 +2713,16 @@ ifTrue_190:
 	# release params
 	addi sp, sp, 0
 
-	# br next_370
-	j next_370
-next_370:
+	# br next_365
+	j next_365
+next_365:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2781,13 +2813,13 @@ secondCond_86:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_$17 secondCond_87 next_370
+	# condBr cond_$17 secondCond_87 next_365
 
 	# fetch variables
 	li t4, 48
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_370
+	beqz t1, next_365
 	j secondCond_87
 secondCond_87:
 
@@ -2857,14 +2889,14 @@ secondCond_87:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_$18 ifTrue_190 next_370
+	# condBr cond_$18 ifTrue_188 next_365
 
 	# fetch variables
 	li t4, 8
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_370
-	j ifTrue_190
+	beqz t1, next_365
+	j ifTrue_188
 
 	# cmp   cond_normalize_$10
 
@@ -2878,14 +2910,14 @@ secondCond_87:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_$10 ifTrue_190 next_370
+	# condBr cond_normalize_$10 ifTrue_188 next_365
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_370
-	j ifTrue_190
+	beqz t1, next_365
+	j ifTrue_188
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

@@ -21,16 +21,16 @@ whileIfEntry:
 	# allocate lv$1
 	li t0, 152
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 160(sp)
+	li t1, 160
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 136
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 144(sp)
+	li t1, 144
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -62,9 +62,9 @@ whileIfEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_105
-	j whileCond_105
-whileCond_105:
+	# br whileCond_102
+	j whileCond_102
+whileCond_102:
 
 	# load a lv
 
@@ -116,15 +116,15 @@ whileCond_105:
 	seqz t0, t0
 	sd t0, 104(sp)
 
-	# condBr cond_ whileBody_105 next_222
+	# condBr cond_ whileBody_102 next_217
 
 	# fetch variables
 	li t4, 104
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_222
-	j whileBody_105
-whileBody_105:
+	beqz t1, next_217
+	j whileBody_102
+whileBody_102:
 
 	# load a$1 lv
 
@@ -177,15 +177,15 @@ whileBody_105:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$1 ifTrue_117 ifFalse_43
+	# condBr cond_$1 ifTrue_115 ifFalse_42
 
 	# fetch variables
 	li t4, 72
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_43
-	j ifTrue_117
-next_222:
+	beqz t1, ifFalse_42
+	j ifTrue_115
+next_217:
 
 	# load b lv$1
 
@@ -213,7 +213,7 @@ next_222:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_117:
+ifTrue_115:
 
 	# lv$1 
 
@@ -230,9 +230,9 @@ ifTrue_117:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_223
-	j next_223
-ifFalse_43:
+	# br next_218
+	j next_218
+ifFalse_42:
 
 	# load a$2 lv
 
@@ -285,15 +285,15 @@ ifFalse_43:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 ifTrue_118 ifFalse_44
+	# condBr cond_$2 ifTrue_116 ifFalse_43
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_44
-	j ifTrue_118
-next_223:
+	beqz t1, ifFalse_43
+	j ifTrue_116
+next_218:
 
 	# load a$4 lv
 
@@ -337,9 +337,9 @@ next_223:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_105
-	j whileCond_105
-ifTrue_118:
+	# br whileCond_102
+	j whileCond_102
+ifTrue_116:
 
 	# lv$1 
 
@@ -356,9 +356,9 @@ ifTrue_118:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_224
-	j next_224
-ifFalse_44:
+	# br next_219
+	j next_219
+ifFalse_43:
 
 	# load a$3 lv
 
@@ -402,12 +402,12 @@ ifFalse_44:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_224
-	j next_224
-next_224:
+	# br next_219
+	j next_219
+next_219:
 
-	# br next_223
-	j next_223
+	# br next_218
+	j next_218
 .type main, @function
 .globl main
 main:
@@ -420,6 +420,7 @@ mainEntry54:
 	# save the parameters
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

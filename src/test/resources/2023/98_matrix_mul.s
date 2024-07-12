@@ -36,11 +36,12 @@ mulEntry:
 	li t4, 2016
 	add t4, sp, t4
 	sd a1, 0(t4)
-
-	# get address of local var:2
+	li t4, 2088
+	add t4, sp, t4
+	ld t3, 0(t4)
 	li t4, 2008
 	add t4, sp, t4
-	sd a2, 0(t4)
+	sd t3, 0(t4)
 	li t4, 2080
 	add t4, sp, t4
 	ld t3, 0(t4)
@@ -81,92 +82,72 @@ mulEntry:
 	# allocate lv$9
 	li t0, 1944
 	add t0, sp, t0
-
-	# get address of local var:lv$9
-	li t4, 1952
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1952
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$8
 	li t0, 1928
 	add t0, sp, t0
-
-	# get address of local var:lv$8
-	li t4, 1936
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1936
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$7
 	li t0, 1912
 	add t0, sp, t0
-
-	# get address of local var:lv$7
-	li t4, 1920
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1920
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$6
 	li t0, 1896
 	add t0, sp, t0
-
-	# get address of local var:lv$6
-	li t4, 1904
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1904
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$5
 	li t0, 1880
 	add t0, sp, t0
-
-	# get address of local var:lv$5
-	li t4, 1888
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1888
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$4
 	li t0, 1864
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	li t4, 1872
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1872
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 1848
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	li t4, 1856
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1856
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 1832
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	li t4, 1840
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1840
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 1816
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	li t4, 1824
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1824
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 1800
 	add t0, sp, t0
-
-	# get address of local var:lv
-	li t4, 1808
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1808
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -3936,79 +3917,79 @@ mainEntry29:
 	# allocate lv$10
 	li t0, 968
 	add t0, sp, t0
-
-	# get address of local var:lv$10
-	sd t0, 976(sp)
+	li t1, 976
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$9
 	li t0, 952
 	add t0, sp, t0
-
-	# get address of local var:lv$9
-	sd t0, 960(sp)
+	li t1, 960
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$8
 	li t0, 920
 	add t0, sp, t0
-
-	# get address of local var:lv$8
-	sd t0, 944(sp)
+	li t1, 944
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$7
 	li t0, 888
 	add t0, sp, t0
-
-	# get address of local var:lv$7
-	sd t0, 912(sp)
+	li t1, 912
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$6
 	li t0, 832
 	add t0, sp, t0
-
-	# get address of local var:lv$6
-	sd t0, 880(sp)
+	li t1, 880
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$5
 	li t0, 800
 	add t0, sp, t0
-
-	# get address of local var:lv$5
-	sd t0, 824(sp)
+	li t1, 824
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$4
 	li t0, 768
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	sd t0, 792(sp)
+	li t1, 792
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 736
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 760(sp)
+	li t1, 760
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 704
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 728(sp)
+	li t1, 728
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 672
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 696(sp)
+	li t1, 696
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 640
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 664(sp)
+	li t1, 664
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# gv2 @
 
@@ -4796,49 +4777,58 @@ next_126:
 	li t4, 368
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a2, t1
+
+	# push a2$1
+	sd t1, -8(sp)
 
 	# fetch variables
 	li t4, 360
 	add t4, sp, t4
 	ld t1, 0(t4)
-	addi sp, sp, -8
-	sd t1, 0(sp)
+
+	# push b0$1
+	sd t1, -16(sp)
 
 	# fetch variables
 	li t4, 352
 	add t4, sp, t4
 	ld t1, 0(t4)
-	addi sp, sp, -8
-	sd t1, 0(sp)
+
+	# push b1$1
+	sd t1, -24(sp)
 
 	# fetch variables
 	li t4, 344
 	add t4, sp, t4
 	ld t1, 0(t4)
-	addi sp, sp, -8
-	sd t1, 0(sp)
+
+	# push b2$1
+	sd t1, -32(sp)
 
 	# fetch variables
 	li t4, 336
 	add t4, sp, t4
 	ld t1, 0(t4)
-	addi sp, sp, -8
-	sd t1, 0(sp)
+
+	# push c0
+	sd t1, -40(sp)
 
 	# fetch variables
 	li t4, 328
 	add t4, sp, t4
 	ld t1, 0(t4)
-	addi sp, sp, -8
-	sd t1, 0(sp)
+
+	# push c1
+	sd t1, -48(sp)
 
 	# fetch variables
 	li t4, 320
 	add t4, sp, t4
 	ld t1, 0(t4)
-	addi sp, sp, -8
-	sd t1, 0(sp)
+
+	# push c2
+	sd t1, -56(sp)
+	addi sp, sp, -56
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4852,7 +4842,7 @@ next_126:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 48
+	addi sp, sp, 56
 
 	# get address of local var:mul
 	sd a0, 312(sp)
@@ -5044,6 +5034,7 @@ whileBody_64:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5155,6 +5146,7 @@ next_127:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5340,6 +5332,7 @@ whileBody_65:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5451,6 +5444,7 @@ next_128:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5636,6 +5630,7 @@ whileBody_66:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5732,6 +5727,7 @@ next_129:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

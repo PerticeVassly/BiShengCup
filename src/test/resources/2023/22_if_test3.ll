@@ -22,6 +22,7 @@ ififElseEntry:
   %lv = alloca i32, align 4
   store i32 5, i32* %lv, align 4
   store i32 10, i32* %lv$1, align 4
+
   %a = load i32, i32* %lv, align 4
   %cond_eq_tmp_ = icmp eq i32 %a, 5
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32

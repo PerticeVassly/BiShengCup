@@ -21,16 +21,16 @@ doubleWhileEntry:
 	# allocate lv$1
 	li t0, 136
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 144(sp)
+	li t1, 144
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 120
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 128(sp)
+	li t1, 128
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -362,6 +362,7 @@ mainEntry28:
 	# save the parameters
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

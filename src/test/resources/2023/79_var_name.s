@@ -16,23 +16,23 @@ mainEntry7:
 	# allocate lv$2
 	li t0, 584
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 592(sp)
+	li t1, 592
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 416
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 576(sp)
+	li t1, 576
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 400
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 408(sp)
+	li t1, 408
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -1145,6 +1145,7 @@ whileBody_24:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1165,6 +1166,7 @@ whileBody_24:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

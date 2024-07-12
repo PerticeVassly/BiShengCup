@@ -24,16 +24,16 @@ funcEntry:
 	# allocate lv$1
 	li t0, 80
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 88(sp)
+	li t1, 88
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 64
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 72(sp)
+	li t1, 72
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# load a gv
 
@@ -234,16 +234,16 @@ mainEntry21:
 	# allocate lv$1
 	li t0, 144
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 152(sp)
+	li t1, 152
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 128
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 136(sp)
+	li t1, 136
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -340,6 +340,7 @@ whileCond_56:
 whileBody_56:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -563,6 +564,7 @@ ifTrue_59:
 	# fetch variables
 	li t1, 1
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -587,6 +589,7 @@ ifFalse_15:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

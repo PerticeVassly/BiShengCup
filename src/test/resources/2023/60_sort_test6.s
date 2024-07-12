@@ -26,58 +26,61 @@ counting_sortEntry:
 
 	# get address of local var:1
 	sd a1, 816(sp)
-
-	# get address of local var:2
-	sd a2, 808(sp)
+	li t4, 840
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 808
+	add t4, sp, t4
+	sd t3, 0(t4)
 
 	# allocate lv$6
 	li t0, 792
 	add t0, sp, t0
-
-	# get address of local var:lv$6
-	sd t0, 800(sp)
+	li t1, 800
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$5
 	li t0, 776
 	add t0, sp, t0
-
-	# get address of local var:lv$5
-	sd t0, 784(sp)
+	li t1, 784
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$4
 	li t0, 760
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	sd t0, 768(sp)
+	li t1, 768
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 672
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 752(sp)
+	li t1, 752
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 656
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 664(sp)
+	li t1, 664
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 640
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 648(sp)
+	li t1, 648
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 624
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 632(sp)
+	li t1, 632
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -1550,30 +1553,30 @@ mainEntry12:
 	# allocate lv$3
 	li t0, 400
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 408(sp)
+	li t1, 408
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 312
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 392(sp)
+	li t1, 392
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 296
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 304(sp)
+	li t1, 304
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 208
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 288(sp)
+	li t1, 288
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# gv @
 
@@ -1986,7 +1989,10 @@ mainEntry12:
 	li t4, 104
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a2, t1
+
+	# push n
+	sd t1, -8(sp)
+	addi sp, sp, -8
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2000,7 +2006,7 @@ mainEntry12:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	addi sp, sp, 8
 
 	# get address of local var:counting_sort
 	sd a0, 96(sp)
@@ -2181,6 +2187,7 @@ whileBody_35:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2231,6 +2238,7 @@ whileBody_35:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

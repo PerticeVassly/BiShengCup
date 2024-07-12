@@ -31,11 +31,12 @@ mainEntry37:
 	# allocate lv
 	li t0, 328
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 336(sp)
+	li t1, 336
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -70,6 +71,7 @@ mainEntry37:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -104,6 +106,7 @@ mainEntry37:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -138,6 +141,7 @@ mainEntry37:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -172,6 +176,7 @@ mainEntry37:
 	sd t1, 0(t4)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -383,15 +388,15 @@ mainEntry37:
 	seqz t0, t0
 	sd t0, 184(sp)
 
-	# condBr cond_ ifTrue_84 secondCond_50
+	# condBr cond_ ifTrue_82 secondCond_50
 
 	# fetch variables
 	li t4, 184
 	add t4, sp, t4
 	ld t1, 0(t4)
 	beqz t1, secondCond_50
-	j ifTrue_84
-ifTrue_84:
+	j ifTrue_82
+ifTrue_82:
 
 	# lv 
 
@@ -408,9 +413,9 @@ ifTrue_84:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_165
-	j next_165
-next_165:
+	# br next_160
+	j next_160
+next_160:
 
 	# load flag lv
 
@@ -574,14 +579,14 @@ secondCond_49:
 	seqz t0, t0
 	sd t0, 88(sp)
 
-	# condBr cond_$2 ifTrue_84 next_165
+	# condBr cond_$2 ifTrue_82 next_160
 
 	# fetch variables
 	li t4, 88
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_165
-	j ifTrue_84
+	beqz t1, next_160
+	j ifTrue_82
 secondCond_50:
 
 	# load a$2 gv
@@ -721,14 +726,14 @@ secondCond_50:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_84 secondCond_49
+	# condBr cond_$1 ifTrue_82 secondCond_49
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
 	beqz t1, secondCond_49
-	j ifTrue_84
+	j ifTrue_82
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

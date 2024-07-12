@@ -24,16 +24,16 @@ mainEntry58:
 	# allocate lv$1
 	li t0, 112
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 120(sp)
+	li t1, 120
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 96
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 104(sp)
+	li t1, 104
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -65,9 +65,9 @@ mainEntry58:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_128
-	j whileCond_128
-whileCond_128:
+	# br whileCond_125
+	j whileCond_125
+whileCond_125:
 
 	# load i lv
 
@@ -119,15 +119,15 @@ whileCond_128:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_ whileBody_128 next_254
+	# condBr cond_ whileBody_125 next_249
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_254
-	j whileBody_128
-whileBody_128:
+	beqz t1, next_249
+	j whileBody_125
+whileBody_125:
 
 	# load sum lv$1
 
@@ -258,9 +258,9 @@ whileBody_128:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_128
-	j whileCond_128
-next_254:
+	# br whileCond_125
+	j whileCond_125
+next_249:
 
 	# load sum$1 lv$1
 

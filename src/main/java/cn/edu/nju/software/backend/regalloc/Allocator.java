@@ -2,7 +2,6 @@ package cn.edu.nju.software.backend.regalloc;
 
 import cn.edu.nju.software.backend.RiscInstrGenerator;
 import cn.edu.nju.software.backend.riscinstruction.RiscAdd;
-import cn.edu.nju.software.backend.riscinstruction.RiscAddi;
 import cn.edu.nju.software.backend.riscinstruction.RiscLa;
 import cn.edu.nju.software.backend.riscinstruction.RiscLd;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFld;
@@ -25,8 +24,6 @@ import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
-
-import java.io.PrintStream;
 
 public class Allocator {
 
@@ -52,9 +49,7 @@ public class Allocator {
 
     /* 将变量分配到寄存器中 */
     /* 以t1,t2,t3,ft1,ft2,ft3的顺序分配 */
-    //TODO：是否需要返回存放在那个寄存器中？
-    //TODO:统一分配函数和load函数(如果变量放在寄存器里，直接返回对应寄存器)
-    public void prepareVariable(ValueRef... values) {
+    public void prepareOperands(ValueRef... values) {
 
         generator.addInstruction(new RiscComment("fetch variables"));
 

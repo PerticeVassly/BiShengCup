@@ -19,9 +19,9 @@ mainEntry55:
 	# allocate lv
 	li t0, 104
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 112(sp)
+	li t1, 112
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 
 
@@ -51,9 +51,9 @@ mainEntry55:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_106
-	j whileCond_106
-whileCond_106:
+	# br whileCond_103
+	j whileCond_103
+whileCond_103:
 
 	# load i lv
 
@@ -107,15 +107,15 @@ whileCond_106:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_ whileBody_106 next_225
+	# condBr cond_ whileBody_103 next_220
 
 	# fetch variables
 	li t4, 72
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_225
-	j whileBody_106
-whileBody_106:
+	beqz t1, next_220
+	j whileBody_103
+whileBody_103:
 
 	# load i$1 lv
 
@@ -233,9 +233,9 @@ whileBody_106:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_106
-	j whileCond_106
-next_225:
+	# br whileCond_103
+	j whileCond_103
+next_220:
 
 	# load k$3 gv
 
@@ -255,6 +255,7 @@ next_225:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

@@ -19,275 +19,236 @@ mainEntry62:
 	# allocate lv$32
 	li t0, 1304
 	add t0, sp, t0
-
-	# get address of local var:lv$32
-	li t4, 1312
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1312
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$31
 	li t0, 1288
 	add t0, sp, t0
-
-	# get address of local var:lv$31
-	li t4, 1296
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1296
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$30
 	li t0, 1272
 	add t0, sp, t0
-
-	# get address of local var:lv$30
-	li t4, 1280
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1280
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$29
 	li t0, 1256
 	add t0, sp, t0
-
-	# get address of local var:lv$29
-	li t4, 1264
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1264
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$28
 	li t0, 1240
 	add t0, sp, t0
-
-	# get address of local var:lv$28
-	li t4, 1248
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1248
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$27
 	li t0, 1224
 	add t0, sp, t0
-
-	# get address of local var:lv$27
-	li t4, 1232
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1232
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$26
 	li t0, 1208
 	add t0, sp, t0
-
-	# get address of local var:lv$26
-	li t4, 1216
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1216
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$25
 	li t0, 1192
 	add t0, sp, t0
-
-	# get address of local var:lv$25
-	li t4, 1200
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1200
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$24
 	li t0, 1176
 	add t0, sp, t0
-
-	# get address of local var:lv$24
-	li t4, 1184
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1184
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$23
 	li t0, 1160
 	add t0, sp, t0
-
-	# get address of local var:lv$23
-	li t4, 1168
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1168
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$22
 	li t0, 1144
 	add t0, sp, t0
-
-	# get address of local var:lv$22
-	li t4, 1152
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1152
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$21
 	li t0, 1128
 	add t0, sp, t0
-
-	# get address of local var:lv$21
-	li t4, 1136
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1136
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$20
 	li t0, 1112
 	add t0, sp, t0
-
-	# get address of local var:lv$20
-	li t4, 1120
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1120
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$19
 	li t0, 1096
 	add t0, sp, t0
-
-	# get address of local var:lv$19
-	li t4, 1104
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1104
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$18
 	li t0, 1080
 	add t0, sp, t0
-
-	# get address of local var:lv$18
-	li t4, 1088
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1088
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$17
 	li t0, 1064
 	add t0, sp, t0
-
-	# get address of local var:lv$17
-	li t4, 1072
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1072
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$16
 	li t0, 1048
 	add t0, sp, t0
-
-	# get address of local var:lv$16
-	li t4, 1056
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1056
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$15
 	li t0, 1032
 	add t0, sp, t0
-
-	# get address of local var:lv$15
-	li t4, 1040
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1040
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$14
 	li t0, 1016
 	add t0, sp, t0
-
-	# get address of local var:lv$14
-	li t4, 1024
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1024
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$13
 	li t0, 1000
 	add t0, sp, t0
-
-	# get address of local var:lv$13
-	li t4, 1008
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1008
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$12
 	li t0, 984
 	add t0, sp, t0
-
-	# get address of local var:lv$12
-	sd t0, 992(sp)
+	li t1, 992
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$11
 	li t0, 968
 	add t0, sp, t0
-
-	# get address of local var:lv$11
-	sd t0, 976(sp)
+	li t1, 976
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$10
 	li t0, 952
 	add t0, sp, t0
-
-	# get address of local var:lv$10
-	sd t0, 960(sp)
+	li t1, 960
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$9
 	li t0, 936
 	add t0, sp, t0
-
-	# get address of local var:lv$9
-	sd t0, 944(sp)
+	li t1, 944
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$8
 	li t0, 920
 	add t0, sp, t0
-
-	# get address of local var:lv$8
-	sd t0, 928(sp)
+	li t1, 928
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$7
 	li t0, 904
 	add t0, sp, t0
-
-	# get address of local var:lv$7
-	sd t0, 912(sp)
+	li t1, 912
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$6
 	li t0, 888
 	add t0, sp, t0
-
-	# get address of local var:lv$6
-	sd t0, 896(sp)
+	li t1, 896
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$5
 	li t0, 872
 	add t0, sp, t0
-
-	# get address of local var:lv$5
-	sd t0, 880(sp)
+	li t1, 880
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$4
 	li t0, 856
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	sd t0, 864(sp)
+	li t1, 864
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 840
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 848(sp)
+	li t1, 848
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 824
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 832(sp)
+	li t1, 832
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 808
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 816(sp)
+	li t1, 816
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 792
 	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 800(sp)
+	li t1, 800
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -323,9 +284,9 @@ mainEntry62:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_129
-	j whileCond_129
-whileCond_129:
+	# br whileCond_126
+	j whileCond_126
+whileCond_126:
 
 	# load b lv$30
 
@@ -378,15 +339,15 @@ whileCond_129:
 	seqz t0, t0
 	sd t0, 752(sp)
 
-	# condBr cond_ whileBody_129 next_260
+	# condBr cond_ whileBody_126 next_255
 
 	# fetch variables
 	li t4, 752
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_260
-	j whileBody_129
-whileBody_129:
+	beqz t1, next_255
+	j whileBody_126
+whileBody_126:
 
 	# load b$1 lv$30
 
@@ -430,9 +391,9 @@ whileBody_129:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_129
-	j whileCond_129
-next_260:
+	# br whileCond_126
+	j whileCond_126
+next_255:
 
 	# lv 
 
@@ -1687,6 +1648,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1722,6 +1684,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1757,6 +1720,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1792,6 +1756,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1827,6 +1792,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1862,6 +1828,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1897,6 +1864,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1932,6 +1900,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1967,6 +1936,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2002,6 +1972,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2037,6 +2008,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2072,6 +2044,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2107,6 +2080,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2142,6 +2116,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2177,6 +2152,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2212,6 +2188,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2247,6 +2224,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2282,6 +2260,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2317,6 +2296,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2352,6 +2332,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2387,6 +2368,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2422,6 +2404,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2457,6 +2440,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2492,6 +2476,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2527,6 +2512,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2562,6 +2548,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2597,6 +2584,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2632,6 +2620,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2667,6 +2656,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2702,6 +2692,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2752,6 +2743,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2787,6 +2779,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2822,6 +2815,7 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
