@@ -69,6 +69,9 @@ read_programEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 96(sp)
 
@@ -210,6 +213,9 @@ whileBody_96:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getch
 	sd a0, 32(sp)
@@ -1289,6 +1295,9 @@ ifTrue_103:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_201
 	j next_201
 ifFalse_36:
@@ -1398,6 +1407,9 @@ ifTrue_104:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getch
 	sd a0, 240(sp)
@@ -2002,6 +2014,9 @@ mainEntry45:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# gep program 
 
 	# fetch variables
@@ -2036,6 +2051,9 @@ mainEntry45:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# ret 
 
 	# fetch variables
@@ -2044,3 +2062,13 @@ mainEntry45:
 	li t4, 8
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

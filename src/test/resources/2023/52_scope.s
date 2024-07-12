@@ -352,6 +352,9 @@ whileBody_56:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func
 	sd a0, 88(sp)
 
@@ -572,6 +575,9 @@ ifTrue_59:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_116
 	j next_116
 ifFalse_15:
@@ -593,6 +599,9 @@ ifFalse_15:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_116
 	j next_116
 next_116:
@@ -605,3 +614,13 @@ next_116:
 	li t4, 160
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

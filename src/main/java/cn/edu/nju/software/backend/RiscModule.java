@@ -61,7 +61,7 @@ public class RiscModule {
                     slli    a2, a2, 2\s
                     add     a2, a2, a0\s
                 .LBB0_2:\s
-                    sw      a1, 0(a0)\
+                    sw      a1, 0(a0)\s
                     addi    a0, a0, 4\s
                     bltu    a0, a2, .LBB0_2\s
                 .LBB0_3:\s

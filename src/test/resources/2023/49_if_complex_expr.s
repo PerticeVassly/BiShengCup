@@ -239,6 +239,9 @@ ifTrue_42:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_88
 	j next_88
 next_88:
@@ -570,6 +573,9 @@ ifTrue_43:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_89
 	j next_89
 next_89:
@@ -778,3 +784,13 @@ secondCond_36:
 	ld t1, 0(t4)
 	beqz t1, next_89
 	j ifTrue_43
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

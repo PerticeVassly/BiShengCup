@@ -4689,6 +4689,9 @@ ifTrue_88:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_178
 	j next_178
 next_178:
@@ -4892,6 +4895,9 @@ whileBody_90:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$16 lv
 
 	# get address of lv points to
@@ -4946,3 +4952,13 @@ next_179:
 	li t4, 2720
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

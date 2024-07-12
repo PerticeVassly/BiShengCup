@@ -44,6 +44,19 @@ public class ConstValue extends ValueRef {
         return value;
     }
 
+    public int castToInt() {
+        if (value instanceof Integer integer) {
+            return integer;
+        } else if (value instanceof Float floatVal) {
+            return (int)(float)floatVal;
+        } else if (value instanceof Boolean booleanVal) {
+            return booleanVal ? 1 : 0;
+        } else {
+            throw new RuntimeException("castToInt error");
+        }
+    }
+
+
     public String toString() {
         if (type instanceof IntType){
             if (value instanceof Integer) {

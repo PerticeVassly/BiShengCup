@@ -43,6 +43,9 @@ next_charEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getch
 	sd a0, 8(sp)
 
@@ -514,6 +517,9 @@ whileCond_50:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:is_space
 	sd a0, 144(sp)
 
@@ -554,6 +560,9 @@ whileBody_50:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:next_char
 	sd a0, 128(sp)
 
@@ -590,6 +599,9 @@ next_96:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:is_num
 	sd a0, 112(sp)
@@ -699,6 +711,9 @@ ifFalse_13:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:next_char$2
 	sd a0, 72(sp)
 
@@ -758,6 +773,9 @@ whileCond_51:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:next_char$1
 	sd a0, 56(sp)
 
@@ -779,6 +797,9 @@ whileCond_51:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:is_num$1
 	sd a0, 48(sp)
@@ -934,6 +955,9 @@ panicEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -950,6 +974,9 @@ panicEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# prepare params
 
@@ -968,6 +995,9 @@ panicEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -984,6 +1014,9 @@ panicEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# prepare params
 
@@ -1002,6 +1035,9 @@ panicEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -1019,6 +1055,9 @@ panicEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -1035,6 +1074,9 @@ panicEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 
@@ -20396,6 +20438,9 @@ ifTrue_54:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:panic
 	sd a0, 512(sp)
 
@@ -20467,6 +20512,9 @@ next_106:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# save caller saved regs
@@ -20479,6 +20527,9 @@ next_106:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:next_token
 	sd a0, 488(sp)
@@ -20606,6 +20657,9 @@ whileBody_52:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:get_op_prec
 	sd a0, 432(sp)
 
@@ -20685,6 +20739,9 @@ next_107:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:next_token$3
 	sd a0, 392(sp)
 
@@ -20711,6 +20768,9 @@ next_108:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:next_token$1
 	sd a0, 384(sp)
@@ -20754,6 +20814,9 @@ whileCond_53:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:stack_size
 	sd a0, 368(sp)
@@ -20818,6 +20881,9 @@ whileBody_53:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:stack_pop
 	sd a0, 344(sp)
 
@@ -20874,6 +20940,9 @@ whileBody_53:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:stack_pop$1
 	sd a0, 328(sp)
 
@@ -20929,6 +20998,9 @@ whileBody_53:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:stack_pop$2
 	sd a0, 312(sp)
@@ -21037,6 +21109,9 @@ whileBody_53:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:eval_op
 	sd a0, 272(sp)
 
@@ -21064,6 +21139,9 @@ whileBody_53:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br whileCond_53
 	j whileCond_53
@@ -21123,6 +21201,9 @@ next_109:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load cur_token$2 gv3
 
@@ -21220,6 +21301,9 @@ secondCond_42:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:stack_peek
 	sd a0, 208(sp)
 
@@ -21241,6 +21325,9 @@ secondCond_42:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:get_op_prec$1
 	sd a0, 200(sp)
@@ -21276,6 +21363,9 @@ secondCond_42:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:get_op_prec$2
 	sd a0, 184(sp)
@@ -21342,6 +21432,9 @@ ifTrue_56:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:panic$1
 	sd a0, 152(sp)
@@ -21414,6 +21507,9 @@ next_110:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# save caller saved regs
@@ -21426,6 +21522,9 @@ next_110:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:next_token$2
 	sd a0, 128(sp)
@@ -21469,6 +21568,9 @@ whileCond_54:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:stack_size$1
 	sd a0, 112(sp)
@@ -21533,6 +21635,9 @@ whileBody_54:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:stack_pop$3
 	sd a0, 88(sp)
 
@@ -21589,6 +21694,9 @@ whileBody_54:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:stack_pop$4
 	sd a0, 72(sp)
 
@@ -21644,6 +21752,9 @@ whileBody_54:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:stack_pop$5
 	sd a0, 56(sp)
@@ -21752,6 +21863,9 @@ whileBody_54:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:eval_op$1
 	sd a0, 16(sp)
 
@@ -21779,6 +21893,9 @@ whileBody_54:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br whileCond_54
 	j whileCond_54
@@ -21819,6 +21936,9 @@ next_111:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:stack_peek$1
 	sd a0, 0(sp)
@@ -21867,6 +21987,9 @@ mainEntry19:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 56(sp)
 
@@ -21900,6 +22023,9 @@ mainEntry19:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getch
 	sd a0, 48(sp)
 
@@ -21915,6 +22041,9 @@ mainEntry19:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:next_token
 	sd a0, 40(sp)
@@ -21973,6 +22102,9 @@ whileBody_55:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:eval
 	sd a0, 16(sp)
 
@@ -21995,6 +22127,9 @@ whileBody_55:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -22011,6 +22146,9 @@ whileBody_55:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load count$1 lv
 
@@ -22066,3 +22204,13 @@ next_112:
 	li t4, 80
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

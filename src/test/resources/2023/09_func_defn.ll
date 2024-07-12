@@ -30,7 +30,7 @@ funcEntry2:
 }
 
 define i32 @main() {
-mainEntry62:
+mainEntry63:
   %lv = alloca i32, align 4
   store i32 10, i32* @gv, align 4
   %a = load i32, i32* @gv, align 4

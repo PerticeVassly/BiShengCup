@@ -560,6 +560,9 @@ ifFalse_60:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:findfa
 	sd a0, 24(sp)
 
@@ -752,6 +755,9 @@ mmergeEntry:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:findfa
 	sd a0, 80(sp)
 
@@ -803,6 +809,9 @@ mmergeEntry:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:findfa$1
 	sd a0, 64(sp)
@@ -1260,6 +1269,9 @@ whileBody_167:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load n$1 gv1
 
 	# get address of gv1 points to
@@ -1437,6 +1449,9 @@ whileBody_168:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 960(sp)
 
@@ -1469,6 +1484,9 @@ whileBody_168:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$1
 	sd a0, 952(sp)
@@ -1969,6 +1987,9 @@ ifTrue_158:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_327
 	j next_327
 next_327:
@@ -2158,6 +2179,9 @@ ifTrue_159:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_328
 	j next_328
 next_328:
@@ -2297,6 +2321,9 @@ ifTrue_160:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_329
 	j next_329
@@ -2529,6 +2556,9 @@ ifTrue_161:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_330
 	j next_330
@@ -2787,6 +2817,9 @@ ifTrue_162:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_331
 	j next_331
 next_331:
@@ -3044,6 +3077,9 @@ ifTrue_163:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_332
 	j next_332
@@ -3332,6 +3368,9 @@ ifTrue_164:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -3348,6 +3387,9 @@ ifTrue_164:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_333
 	j next_333
@@ -3373,6 +3415,9 @@ secondCond_74:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:findfa
 	sd a0, 88(sp)
@@ -3408,6 +3453,9 @@ secondCond_74:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:findfa$1
 	sd a0, 72(sp)
@@ -3571,6 +3619,9 @@ ifTrue_165:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -3588,9 +3639,22 @@ ifTrue_165:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_334
 	j next_334
 next_334:
 
 	# br whileCond_167
 	j whileCond_167
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

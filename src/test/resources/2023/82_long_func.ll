@@ -436,9 +436,7 @@ ifFalse_31:                                            ; pred = %next_188
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$3 = load i32, i32* %lv$12, align 4
-  %SHIFT_TABLE$10 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$11 = load i32, i32* %SHIFT_TABLE$10, align 4
-  %result_$31 = mul i32 %c$3, %SHIFT_TABLE$11
+  %result_$31 = mul i32 %c$3, 2
   store i32 %result_$31, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_94
@@ -469,9 +467,9 @@ next_191:                                              ; pred = %whileCond_94
 ifTrue_97:                                             ; pred = %secondCond_52
   %ans$9 = load i32, i32* %lv, align 4
   %i$14 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$12 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$14
-  %SHIFT_TABLE$13 = load i32, i32* %SHIFT_TABLE$12, align 4
-  %result_$34 = mul i32 1, %SHIFT_TABLE$13
+  %SHIFT_TABLE$10 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$14
+  %SHIFT_TABLE$11 = load i32, i32* %SHIFT_TABLE$10, align 4
+  %result_$34 = mul i32 1, %SHIFT_TABLE$11
   %result_$35 = add i32 %ans$9, %result_$34
   store i32 %result_$35, i32* %lv, align 4
   br label %next_192
@@ -575,9 +573,9 @@ next_195:                                              ; pred = %next_196, %next
 ifTrue_99:                                             ; pred = %ifTrue_98
   %ans$12 = load i32, i32* %lv, align 4
   %i$17 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$14 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$17
-  %SHIFT_TABLE$15 = load i32, i32* %SHIFT_TABLE$14, align 4
-  %result_$41 = mul i32 1, %SHIFT_TABLE$15
+  %SHIFT_TABLE$12 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$17
+  %SHIFT_TABLE$13 = load i32, i32* %SHIFT_TABLE$12, align 4
+  %result_$41 = mul i32 1, %SHIFT_TABLE$13
   %result_$42 = add i32 %ans$12, %result_$41
   store i32 %result_$42, i32* %lv, align 4
   br label %next_196
@@ -588,9 +586,9 @@ next_196:                                              ; pred = %ifTrue_98, %ifT
 ifTrue_100:                                            ; pred = %ifFalse_32
   %ans$13 = load i32, i32* %lv, align 4
   %i$18 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$16 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$18
-  %SHIFT_TABLE$17 = load i32, i32* %SHIFT_TABLE$16, align 4
-  %result_$44 = mul i32 1, %SHIFT_TABLE$17
+  %SHIFT_TABLE$14 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$18
+  %SHIFT_TABLE$15 = load i32, i32* %SHIFT_TABLE$14, align 4
+  %result_$44 = mul i32 1, %SHIFT_TABLE$15
   %result_$45 = add i32 %ans$13, %result_$44
   store i32 %result_$45, i32* %lv, align 4
   br label %next_197
@@ -622,9 +620,9 @@ next_198:                                              ; pred = %whileCond_97
 ifTrue_101:                                            ; pred = %secondCond_53
   %ans$15 = load i32, i32* %lv, align 4
   %i$21 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$18 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$21
-  %SHIFT_TABLE$19 = load i32, i32* %SHIFT_TABLE$18, align 4
-  %result_$51 = mul i32 1, %SHIFT_TABLE$19
+  %SHIFT_TABLE$16 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$21
+  %SHIFT_TABLE$17 = load i32, i32* %SHIFT_TABLE$16, align 4
+  %result_$51 = mul i32 1, %SHIFT_TABLE$17
   %result_$52 = add i32 %ans$15, %result_$51
   store i32 %result_$52, i32* %lv, align 4
   br label %next_199
@@ -655,9 +653,7 @@ ifFalse_33:                                            ; pred = %next_198
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$7 = load i32, i32* %lv$15, align 4
-  %SHIFT_TABLE$20 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$21 = load i32, i32* %SHIFT_TABLE$20, align 4
-  %result_$56 = mul i32 %c$7, %SHIFT_TABLE$21
+  %result_$56 = mul i32 %c$7, 2
   store i32 %result_$56, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_98
@@ -688,9 +684,9 @@ next_201:                                              ; pred = %whileCond_98
 ifTrue_103:                                            ; pred = %secondCond_54
   %ans$17 = load i32, i32* %lv, align 4
   %i$24 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$22 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$24
-  %SHIFT_TABLE$23 = load i32, i32* %SHIFT_TABLE$22, align 4
-  %result_$59 = mul i32 1, %SHIFT_TABLE$23
+  %SHIFT_TABLE$18 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$24
+  %SHIFT_TABLE$19 = load i32, i32* %SHIFT_TABLE$18, align 4
+  %result_$59 = mul i32 1, %SHIFT_TABLE$19
   %result_$60 = add i32 %ans$17, %result_$59
   store i32 %result_$60, i32* %lv, align 4
   br label %next_202
@@ -761,27 +757,27 @@ next_205:                                              ; pred = %next_206, %ifFa
 ifTrue_107:                                            ; pred = %ifTrue_106
   %x$18 = load i32, i32* %lv$2, align 4
   %y$20 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$24 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$20
-  %SHIFT_TABLE$25 = load i32, i32* %SHIFT_TABLE$24, align 4
-  %result_$64 = sdiv i32 %x$18, %SHIFT_TABLE$25
+  %SHIFT_TABLE$20 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$20
+  %SHIFT_TABLE$21 = load i32, i32* %SHIFT_TABLE$20, align 4
+  %result_$64 = sdiv i32 %x$18, %SHIFT_TABLE$21
   store i32 %result_$64, i32* %lv$2, align 4
   %x$19 = load i32, i32* %lv$2, align 4
   %result_$65 = add i32 %x$19, 65536
   %y$21 = load i32, i32* %lv$3, align 4
   %result_$66 = sub i32 15, %y$21
   %result_$67 = add i32 %result_$66, 1
-  %SHIFT_TABLE$26 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$67
-  %SHIFT_TABLE$27 = load i32, i32* %SHIFT_TABLE$26, align 4
-  %result_$68 = sub i32 %result_$65, %SHIFT_TABLE$27
+  %SHIFT_TABLE$22 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$67
+  %SHIFT_TABLE$23 = load i32, i32* %SHIFT_TABLE$22, align 4
+  %result_$68 = sub i32 %result_$65, %SHIFT_TABLE$23
   store i32 %result_$68, i32* %lv, align 4
   br label %next_206
 
 ifFalse_37:                                            ; pred = %ifTrue_106
   %x$20 = load i32, i32* %lv$2, align 4
   %y$22 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$28 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$22
-  %SHIFT_TABLE$29 = load i32, i32* %SHIFT_TABLE$28, align 4
-  %result_$69 = sdiv i32 %x$20, %SHIFT_TABLE$29
+  %SHIFT_TABLE$24 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$22
+  %SHIFT_TABLE$25 = load i32, i32* %SHIFT_TABLE$24, align 4
+  %result_$69 = sdiv i32 %x$20, %SHIFT_TABLE$25
   store i32 %result_$69, i32* %lv, align 4
   br label %next_206
 
@@ -836,9 +832,9 @@ next_208:                                              ; pred = %whileCond_100
 ifTrue_108:                                            ; pred = %secondCond_55
   %ans$22 = load i32, i32* %lv, align 4
   %i$27 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$30 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$27
-  %SHIFT_TABLE$31 = load i32, i32* %SHIFT_TABLE$30, align 4
-  %result_$72 = mul i32 1, %SHIFT_TABLE$31
+  %SHIFT_TABLE$26 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$27
+  %SHIFT_TABLE$27 = load i32, i32* %SHIFT_TABLE$26, align 4
+  %result_$72 = mul i32 1, %SHIFT_TABLE$27
   %result_$73 = add i32 %ans$22, %result_$72
   store i32 %result_$73, i32* %lv, align 4
   br label %next_209
@@ -949,9 +945,9 @@ next_213:                                              ; pred = %next_214, %next
 ifTrue_111:                                            ; pred = %ifTrue_110
   %ans$24 = load i32, i32* %lv, align 4
   %i$30 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$32 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$30
-  %SHIFT_TABLE$33 = load i32, i32* %SHIFT_TABLE$32, align 4
-  %result_$79 = mul i32 1, %SHIFT_TABLE$33
+  %SHIFT_TABLE$28 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$30
+  %SHIFT_TABLE$29 = load i32, i32* %SHIFT_TABLE$28, align 4
+  %result_$79 = mul i32 1, %SHIFT_TABLE$29
   %result_$80 = add i32 %ans$24, %result_$79
   store i32 %result_$80, i32* %lv, align 4
   br label %next_214
@@ -962,9 +958,9 @@ next_214:                                              ; pred = %ifTrue_110, %if
 ifTrue_112:                                            ; pred = %ifFalse_38
   %ans$25 = load i32, i32* %lv, align 4
   %i$31 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$34 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$31
-  %SHIFT_TABLE$35 = load i32, i32* %SHIFT_TABLE$34, align 4
-  %result_$82 = mul i32 1, %SHIFT_TABLE$35
+  %SHIFT_TABLE$30 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$31
+  %SHIFT_TABLE$31 = load i32, i32* %SHIFT_TABLE$30, align 4
+  %result_$82 = mul i32 1, %SHIFT_TABLE$31
   %result_$83 = add i32 %ans$25, %result_$82
   store i32 %result_$83, i32* %lv, align 4
   br label %next_215
@@ -996,9 +992,9 @@ next_216:                                              ; pred = %whileCond_103
 ifTrue_113:                                            ; pred = %secondCond_56
   %ans$27 = load i32, i32* %lv, align 4
   %i$34 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$36 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$34
-  %SHIFT_TABLE$37 = load i32, i32* %SHIFT_TABLE$36, align 4
-  %result_$89 = mul i32 1, %SHIFT_TABLE$37
+  %SHIFT_TABLE$32 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$34
+  %SHIFT_TABLE$33 = load i32, i32* %SHIFT_TABLE$32, align 4
+  %result_$89 = mul i32 1, %SHIFT_TABLE$33
   %result_$90 = add i32 %ans$27, %result_$89
   store i32 %result_$90, i32* %lv, align 4
   br label %next_217
@@ -1029,9 +1025,7 @@ ifFalse_39:                                            ; pred = %next_216
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$11 = load i32, i32* %lv$21, align 4
-  %SHIFT_TABLE$38 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$39 = load i32, i32* %SHIFT_TABLE$38, align 4
-  %result_$94 = mul i32 %c$11, %SHIFT_TABLE$39
+  %result_$94 = mul i32 %c$11, 2
   store i32 %result_$94, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_104
@@ -1062,9 +1056,9 @@ next_219:                                              ; pred = %whileCond_104
 ifTrue_115:                                            ; pred = %secondCond_57
   %ans$29 = load i32, i32* %lv, align 4
   %i$37 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$40 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$37
-  %SHIFT_TABLE$41 = load i32, i32* %SHIFT_TABLE$40, align 4
-  %result_$97 = mul i32 1, %SHIFT_TABLE$41
+  %SHIFT_TABLE$34 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$37
+  %SHIFT_TABLE$35 = load i32, i32* %SHIFT_TABLE$34, align 4
+  %result_$97 = mul i32 1, %SHIFT_TABLE$35
   %result_$98 = add i32 %ans$29, %result_$97
   store i32 %result_$98, i32* %lv, align 4
   br label %next_220
@@ -1168,9 +1162,9 @@ next_223:                                              ; pred = %next_224, %next
 ifTrue_117:                                            ; pred = %ifTrue_116
   %ans$32 = load i32, i32* %lv, align 4
   %i$40 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$42 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$40
-  %SHIFT_TABLE$43 = load i32, i32* %SHIFT_TABLE$42, align 4
-  %result_$104 = mul i32 1, %SHIFT_TABLE$43
+  %SHIFT_TABLE$36 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$40
+  %SHIFT_TABLE$37 = load i32, i32* %SHIFT_TABLE$36, align 4
+  %result_$104 = mul i32 1, %SHIFT_TABLE$37
   %result_$105 = add i32 %ans$32, %result_$104
   store i32 %result_$105, i32* %lv, align 4
   br label %next_224
@@ -1181,9 +1175,9 @@ next_224:                                              ; pred = %ifTrue_116, %if
 ifTrue_118:                                            ; pred = %ifFalse_40
   %ans$33 = load i32, i32* %lv, align 4
   %i$41 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$44 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$41
-  %SHIFT_TABLE$45 = load i32, i32* %SHIFT_TABLE$44, align 4
-  %result_$107 = mul i32 1, %SHIFT_TABLE$45
+  %SHIFT_TABLE$38 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$41
+  %SHIFT_TABLE$39 = load i32, i32* %SHIFT_TABLE$38, align 4
+  %result_$107 = mul i32 1, %SHIFT_TABLE$39
   %result_$108 = add i32 %ans$33, %result_$107
   store i32 %result_$108, i32* %lv, align 4
   br label %next_225
@@ -1215,9 +1209,9 @@ next_226:                                              ; pred = %whileCond_107
 ifTrue_119:                                            ; pred = %secondCond_58
   %ans$35 = load i32, i32* %lv, align 4
   %i$44 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$46 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$44
-  %SHIFT_TABLE$47 = load i32, i32* %SHIFT_TABLE$46, align 4
-  %result_$114 = mul i32 1, %SHIFT_TABLE$47
+  %SHIFT_TABLE$40 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$44
+  %SHIFT_TABLE$41 = load i32, i32* %SHIFT_TABLE$40, align 4
+  %result_$114 = mul i32 1, %SHIFT_TABLE$41
   %result_$115 = add i32 %ans$35, %result_$114
   store i32 %result_$115, i32* %lv, align 4
   br label %next_227
@@ -1248,9 +1242,7 @@ ifFalse_41:                                            ; pred = %next_226
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$15 = load i32, i32* %lv$24, align 4
-  %SHIFT_TABLE$48 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$49 = load i32, i32* %SHIFT_TABLE$48, align 4
-  %result_$119 = mul i32 %c$15, %SHIFT_TABLE$49
+  %result_$119 = mul i32 %c$15, 2
   store i32 %result_$119, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_108
@@ -1281,9 +1273,9 @@ next_229:                                              ; pred = %whileCond_108
 ifTrue_121:                                            ; pred = %secondCond_59
   %ans$37 = load i32, i32* %lv, align 4
   %i$47 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$50 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$47
-  %SHIFT_TABLE$51 = load i32, i32* %SHIFT_TABLE$50, align 4
-  %result_$122 = mul i32 1, %SHIFT_TABLE$51
+  %SHIFT_TABLE$42 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$47
+  %SHIFT_TABLE$43 = load i32, i32* %SHIFT_TABLE$42, align 4
+  %result_$122 = mul i32 1, %SHIFT_TABLE$43
   %result_$123 = add i32 %ans$37, %result_$122
   store i32 %result_$123, i32* %lv, align 4
   br label %next_230
@@ -1354,27 +1346,27 @@ next_233:                                              ; pred = %next_234, %ifFa
 ifTrue_125:                                            ; pred = %ifTrue_124
   %x$38 = load i32, i32* %lv$2, align 4
   %y$41 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$52 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$41
-  %SHIFT_TABLE$53 = load i32, i32* %SHIFT_TABLE$52, align 4
-  %result_$127 = sdiv i32 %x$38, %SHIFT_TABLE$53
+  %SHIFT_TABLE$44 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$41
+  %SHIFT_TABLE$45 = load i32, i32* %SHIFT_TABLE$44, align 4
+  %result_$127 = sdiv i32 %x$38, %SHIFT_TABLE$45
   store i32 %result_$127, i32* %lv$2, align 4
   %x$39 = load i32, i32* %lv$2, align 4
   %result_$128 = add i32 %x$39, 65536
   %y$42 = load i32, i32* %lv$3, align 4
   %result_$129 = sub i32 15, %y$42
   %result_$130 = add i32 %result_$129, 1
-  %SHIFT_TABLE$54 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$130
-  %SHIFT_TABLE$55 = load i32, i32* %SHIFT_TABLE$54, align 4
-  %result_$131 = sub i32 %result_$128, %SHIFT_TABLE$55
+  %SHIFT_TABLE$46 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$130
+  %SHIFT_TABLE$47 = load i32, i32* %SHIFT_TABLE$46, align 4
+  %result_$131 = sub i32 %result_$128, %SHIFT_TABLE$47
   store i32 %result_$131, i32* %lv, align 4
   br label %next_234
 
 ifFalse_45:                                            ; pred = %ifTrue_124
   %x$40 = load i32, i32* %lv$2, align 4
   %y$43 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$56 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$43
-  %SHIFT_TABLE$57 = load i32, i32* %SHIFT_TABLE$56, align 4
-  %result_$132 = sdiv i32 %x$40, %SHIFT_TABLE$57
+  %SHIFT_TABLE$48 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$43
+  %SHIFT_TABLE$49 = load i32, i32* %SHIFT_TABLE$48, align 4
+  %result_$132 = sdiv i32 %x$40, %SHIFT_TABLE$49
   store i32 %result_$132, i32* %lv, align 4
   br label %next_234
 
@@ -1429,27 +1421,27 @@ next_237:                                              ; pred = %next_238, %ifFa
 ifTrue_129:                                            ; pred = %ifTrue_128
   %x$44 = load i32, i32* %lv$2, align 4
   %y$46 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$58 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$46
-  %SHIFT_TABLE$59 = load i32, i32* %SHIFT_TABLE$58, align 4
-  %result_$133 = sdiv i32 %x$44, %SHIFT_TABLE$59
+  %SHIFT_TABLE$50 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$46
+  %SHIFT_TABLE$51 = load i32, i32* %SHIFT_TABLE$50, align 4
+  %result_$133 = sdiv i32 %x$44, %SHIFT_TABLE$51
   store i32 %result_$133, i32* %lv$2, align 4
   %x$45 = load i32, i32* %lv$2, align 4
   %result_$134 = add i32 %x$45, 65536
   %y$47 = load i32, i32* %lv$3, align 4
   %result_$135 = sub i32 15, %y$47
   %result_$136 = add i32 %result_$135, 1
-  %SHIFT_TABLE$60 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$136
-  %SHIFT_TABLE$61 = load i32, i32* %SHIFT_TABLE$60, align 4
-  %result_$137 = sub i32 %result_$134, %SHIFT_TABLE$61
+  %SHIFT_TABLE$52 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$136
+  %SHIFT_TABLE$53 = load i32, i32* %SHIFT_TABLE$52, align 4
+  %result_$137 = sub i32 %result_$134, %SHIFT_TABLE$53
   store i32 %result_$137, i32* %lv, align 4
   br label %next_238
 
 ifFalse_49:                                            ; pred = %ifTrue_128
   %x$46 = load i32, i32* %lv$2, align 4
   %y$48 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$62 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$48
-  %SHIFT_TABLE$63 = load i32, i32* %SHIFT_TABLE$62, align 4
-  %result_$138 = sdiv i32 %x$46, %SHIFT_TABLE$63
+  %SHIFT_TABLE$54 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$48
+  %SHIFT_TABLE$55 = load i32, i32* %SHIFT_TABLE$54, align 4
+  %result_$138 = sdiv i32 %x$46, %SHIFT_TABLE$55
   store i32 %result_$138, i32* %lv, align 4
   br label %next_238
 
@@ -1501,9 +1493,9 @@ next_240:                                              ; pred = %whileCond_110
 ifTrue_130:                                            ; pred = %secondCond_60
   %ans$44 = load i32, i32* %lv, align 4
   %i$50 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$64 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$50
-  %SHIFT_TABLE$65 = load i32, i32* %SHIFT_TABLE$64, align 4
-  %result_$141 = mul i32 1, %SHIFT_TABLE$65
+  %SHIFT_TABLE$56 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$50
+  %SHIFT_TABLE$57 = load i32, i32* %SHIFT_TABLE$56, align 4
+  %result_$141 = mul i32 1, %SHIFT_TABLE$57
   %result_$142 = add i32 %ans$44, %result_$141
   store i32 %result_$142, i32* %lv, align 4
   br label %next_241
@@ -1583,9 +1575,9 @@ next_244:                                              ; pred = %whileCond_112
 ifTrue_132:                                            ; pred = %secondCond_61
   %ans$46 = load i32, i32* %lv, align 4
   %i$53 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$66 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$53
-  %SHIFT_TABLE$67 = load i32, i32* %SHIFT_TABLE$66, align 4
-  %result_$148 = mul i32 1, %SHIFT_TABLE$67
+  %SHIFT_TABLE$58 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$53
+  %SHIFT_TABLE$59 = load i32, i32* %SHIFT_TABLE$58, align 4
+  %result_$148 = mul i32 1, %SHIFT_TABLE$59
   %result_$149 = add i32 %ans$46, %result_$148
   store i32 %result_$149, i32* %lv, align 4
   br label %next_245
@@ -1696,9 +1688,9 @@ next_249:                                              ; pred = %next_250, %next
 ifTrue_135:                                            ; pred = %ifTrue_134
   %ans$48 = load i32, i32* %lv, align 4
   %i$56 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$68 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$56
-  %SHIFT_TABLE$69 = load i32, i32* %SHIFT_TABLE$68, align 4
-  %result_$155 = mul i32 1, %SHIFT_TABLE$69
+  %SHIFT_TABLE$60 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$56
+  %SHIFT_TABLE$61 = load i32, i32* %SHIFT_TABLE$60, align 4
+  %result_$155 = mul i32 1, %SHIFT_TABLE$61
   %result_$156 = add i32 %ans$48, %result_$155
   store i32 %result_$156, i32* %lv, align 4
   br label %next_250
@@ -1709,9 +1701,9 @@ next_250:                                              ; pred = %ifTrue_134, %if
 ifTrue_136:                                            ; pred = %ifFalse_50
   %ans$49 = load i32, i32* %lv, align 4
   %i$57 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$70 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$57
-  %SHIFT_TABLE$71 = load i32, i32* %SHIFT_TABLE$70, align 4
-  %result_$158 = mul i32 1, %SHIFT_TABLE$71
+  %SHIFT_TABLE$62 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$57
+  %SHIFT_TABLE$63 = load i32, i32* %SHIFT_TABLE$62, align 4
+  %result_$158 = mul i32 1, %SHIFT_TABLE$63
   %result_$159 = add i32 %ans$49, %result_$158
   store i32 %result_$159, i32* %lv, align 4
   br label %next_251
@@ -1743,9 +1735,9 @@ next_252:                                              ; pred = %whileCond_115
 ifTrue_137:                                            ; pred = %secondCond_62
   %ans$51 = load i32, i32* %lv, align 4
   %i$60 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$72 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$60
-  %SHIFT_TABLE$73 = load i32, i32* %SHIFT_TABLE$72, align 4
-  %result_$165 = mul i32 1, %SHIFT_TABLE$73
+  %SHIFT_TABLE$64 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$60
+  %SHIFT_TABLE$65 = load i32, i32* %SHIFT_TABLE$64, align 4
+  %result_$165 = mul i32 1, %SHIFT_TABLE$65
   %result_$166 = add i32 %ans$51, %result_$165
   store i32 %result_$166, i32* %lv, align 4
   br label %next_253
@@ -1776,9 +1768,7 @@ ifFalse_51:                                            ; pred = %next_252
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$19 = load i32, i32* %lv$33, align 4
-  %SHIFT_TABLE$74 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$75 = load i32, i32* %SHIFT_TABLE$74, align 4
-  %result_$170 = mul i32 %c$19, %SHIFT_TABLE$75
+  %result_$170 = mul i32 %c$19, 2
   store i32 %result_$170, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_116
@@ -1809,9 +1799,9 @@ next_255:                                              ; pred = %whileCond_116
 ifTrue_139:                                            ; pred = %secondCond_63
   %ans$53 = load i32, i32* %lv, align 4
   %i$63 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$76 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$63
-  %SHIFT_TABLE$77 = load i32, i32* %SHIFT_TABLE$76, align 4
-  %result_$173 = mul i32 1, %SHIFT_TABLE$77
+  %SHIFT_TABLE$66 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$63
+  %SHIFT_TABLE$67 = load i32, i32* %SHIFT_TABLE$66, align 4
+  %result_$173 = mul i32 1, %SHIFT_TABLE$67
   %result_$174 = add i32 %ans$53, %result_$173
   store i32 %result_$174, i32* %lv, align 4
   br label %next_256
@@ -1915,9 +1905,9 @@ next_259:                                              ; pred = %next_260, %next
 ifTrue_141:                                            ; pred = %ifTrue_140
   %ans$56 = load i32, i32* %lv, align 4
   %i$66 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$78 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$66
-  %SHIFT_TABLE$79 = load i32, i32* %SHIFT_TABLE$78, align 4
-  %result_$180 = mul i32 1, %SHIFT_TABLE$79
+  %SHIFT_TABLE$68 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$66
+  %SHIFT_TABLE$69 = load i32, i32* %SHIFT_TABLE$68, align 4
+  %result_$180 = mul i32 1, %SHIFT_TABLE$69
   %result_$181 = add i32 %ans$56, %result_$180
   store i32 %result_$181, i32* %lv, align 4
   br label %next_260
@@ -1928,9 +1918,9 @@ next_260:                                              ; pred = %ifTrue_140, %if
 ifTrue_142:                                            ; pred = %ifFalse_52
   %ans$57 = load i32, i32* %lv, align 4
   %i$67 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$80 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$67
-  %SHIFT_TABLE$81 = load i32, i32* %SHIFT_TABLE$80, align 4
-  %result_$183 = mul i32 1, %SHIFT_TABLE$81
+  %SHIFT_TABLE$70 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$67
+  %SHIFT_TABLE$71 = load i32, i32* %SHIFT_TABLE$70, align 4
+  %result_$183 = mul i32 1, %SHIFT_TABLE$71
   %result_$184 = add i32 %ans$57, %result_$183
   store i32 %result_$184, i32* %lv, align 4
   br label %next_261
@@ -1962,9 +1952,9 @@ next_262:                                              ; pred = %whileCond_119
 ifTrue_143:                                            ; pred = %secondCond_64
   %ans$59 = load i32, i32* %lv, align 4
   %i$70 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$82 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$70
-  %SHIFT_TABLE$83 = load i32, i32* %SHIFT_TABLE$82, align 4
-  %result_$190 = mul i32 1, %SHIFT_TABLE$83
+  %SHIFT_TABLE$72 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$70
+  %SHIFT_TABLE$73 = load i32, i32* %SHIFT_TABLE$72, align 4
+  %result_$190 = mul i32 1, %SHIFT_TABLE$73
   %result_$191 = add i32 %ans$59, %result_$190
   store i32 %result_$191, i32* %lv, align 4
   br label %next_263
@@ -1995,9 +1985,7 @@ ifFalse_53:                                            ; pred = %next_262
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$23 = load i32, i32* %lv$36, align 4
-  %SHIFT_TABLE$84 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$85 = load i32, i32* %SHIFT_TABLE$84, align 4
-  %result_$195 = mul i32 %c$23, %SHIFT_TABLE$85
+  %result_$195 = mul i32 %c$23, 2
   store i32 %result_$195, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_120
@@ -2028,9 +2016,9 @@ next_265:                                              ; pred = %whileCond_120
 ifTrue_145:                                            ; pred = %secondCond_65
   %ans$61 = load i32, i32* %lv, align 4
   %i$73 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$86 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$73
-  %SHIFT_TABLE$87 = load i32, i32* %SHIFT_TABLE$86, align 4
-  %result_$198 = mul i32 1, %SHIFT_TABLE$87
+  %SHIFT_TABLE$74 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$73
+  %SHIFT_TABLE$75 = load i32, i32* %SHIFT_TABLE$74, align 4
+  %result_$198 = mul i32 1, %SHIFT_TABLE$75
   %result_$199 = add i32 %ans$61, %result_$198
   store i32 %result_$199, i32* %lv, align 4
   br label %next_266
@@ -2101,27 +2089,27 @@ next_269:                                              ; pred = %next_270, %ifFa
 ifTrue_149:                                            ; pred = %ifTrue_148
   %x$66 = load i32, i32* %lv$2, align 4
   %y$69 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$88 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$69
-  %SHIFT_TABLE$89 = load i32, i32* %SHIFT_TABLE$88, align 4
-  %result_$203 = sdiv i32 %x$66, %SHIFT_TABLE$89
+  %SHIFT_TABLE$76 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$69
+  %SHIFT_TABLE$77 = load i32, i32* %SHIFT_TABLE$76, align 4
+  %result_$203 = sdiv i32 %x$66, %SHIFT_TABLE$77
   store i32 %result_$203, i32* %lv$2, align 4
   %x$67 = load i32, i32* %lv$2, align 4
   %result_$204 = add i32 %x$67, 65536
   %y$70 = load i32, i32* %lv$3, align 4
   %result_$205 = sub i32 15, %y$70
   %result_$206 = add i32 %result_$205, 1
-  %SHIFT_TABLE$90 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$206
-  %SHIFT_TABLE$91 = load i32, i32* %SHIFT_TABLE$90, align 4
-  %result_$207 = sub i32 %result_$204, %SHIFT_TABLE$91
+  %SHIFT_TABLE$78 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$206
+  %SHIFT_TABLE$79 = load i32, i32* %SHIFT_TABLE$78, align 4
+  %result_$207 = sub i32 %result_$204, %SHIFT_TABLE$79
   store i32 %result_$207, i32* %lv, align 4
   br label %next_270
 
 ifFalse_57:                                            ; pred = %ifTrue_148
   %x$68 = load i32, i32* %lv$2, align 4
   %y$71 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$92 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$71
-  %SHIFT_TABLE$93 = load i32, i32* %SHIFT_TABLE$92, align 4
-  %result_$208 = sdiv i32 %x$68, %SHIFT_TABLE$93
+  %SHIFT_TABLE$80 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$71
+  %SHIFT_TABLE$81 = load i32, i32* %SHIFT_TABLE$80, align 4
+  %result_$208 = sdiv i32 %x$68, %SHIFT_TABLE$81
   store i32 %result_$208, i32* %lv, align 4
   br label %next_270
 
@@ -2176,9 +2164,9 @@ next_272:                                              ; pred = %whileCond_122
 ifTrue_150:                                            ; pred = %secondCond_66
   %ans$66 = load i32, i32* %lv, align 4
   %i$76 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$94 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$76
-  %SHIFT_TABLE$95 = load i32, i32* %SHIFT_TABLE$94, align 4
-  %result_$211 = mul i32 1, %SHIFT_TABLE$95
+  %SHIFT_TABLE$82 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$76
+  %SHIFT_TABLE$83 = load i32, i32* %SHIFT_TABLE$82, align 4
+  %result_$211 = mul i32 1, %SHIFT_TABLE$83
   %result_$212 = add i32 %ans$66, %result_$211
   store i32 %result_$212, i32* %lv, align 4
   br label %next_273
@@ -2289,9 +2277,9 @@ next_277:                                              ; pred = %next_278, %next
 ifTrue_153:                                            ; pred = %ifTrue_152
   %ans$68 = load i32, i32* %lv, align 4
   %i$79 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$96 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$79
-  %SHIFT_TABLE$97 = load i32, i32* %SHIFT_TABLE$96, align 4
-  %result_$218 = mul i32 1, %SHIFT_TABLE$97
+  %SHIFT_TABLE$84 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$79
+  %SHIFT_TABLE$85 = load i32, i32* %SHIFT_TABLE$84, align 4
+  %result_$218 = mul i32 1, %SHIFT_TABLE$85
   %result_$219 = add i32 %ans$68, %result_$218
   store i32 %result_$219, i32* %lv, align 4
   br label %next_278
@@ -2302,9 +2290,9 @@ next_278:                                              ; pred = %ifTrue_152, %if
 ifTrue_154:                                            ; pred = %ifFalse_58
   %ans$69 = load i32, i32* %lv, align 4
   %i$80 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$98 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$80
-  %SHIFT_TABLE$99 = load i32, i32* %SHIFT_TABLE$98, align 4
-  %result_$221 = mul i32 1, %SHIFT_TABLE$99
+  %SHIFT_TABLE$86 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$80
+  %SHIFT_TABLE$87 = load i32, i32* %SHIFT_TABLE$86, align 4
+  %result_$221 = mul i32 1, %SHIFT_TABLE$87
   %result_$222 = add i32 %ans$69, %result_$221
   store i32 %result_$222, i32* %lv, align 4
   br label %next_279
@@ -2336,9 +2324,9 @@ next_280:                                              ; pred = %whileCond_125
 ifTrue_155:                                            ; pred = %secondCond_67
   %ans$71 = load i32, i32* %lv, align 4
   %i$83 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$100 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$83
-  %SHIFT_TABLE$101 = load i32, i32* %SHIFT_TABLE$100, align 4
-  %result_$228 = mul i32 1, %SHIFT_TABLE$101
+  %SHIFT_TABLE$88 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$83
+  %SHIFT_TABLE$89 = load i32, i32* %SHIFT_TABLE$88, align 4
+  %result_$228 = mul i32 1, %SHIFT_TABLE$89
   %result_$229 = add i32 %ans$71, %result_$228
   store i32 %result_$229, i32* %lv, align 4
   br label %next_281
@@ -2369,9 +2357,7 @@ ifFalse_59:                                            ; pred = %next_280
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$27 = load i32, i32* %lv$42, align 4
-  %SHIFT_TABLE$102 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$103 = load i32, i32* %SHIFT_TABLE$102, align 4
-  %result_$233 = mul i32 %c$27, %SHIFT_TABLE$103
+  %result_$233 = mul i32 %c$27, 2
   store i32 %result_$233, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_126
@@ -2402,9 +2388,9 @@ next_283:                                              ; pred = %whileCond_126
 ifTrue_157:                                            ; pred = %secondCond_68
   %ans$73 = load i32, i32* %lv, align 4
   %i$86 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$104 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$86
-  %SHIFT_TABLE$105 = load i32, i32* %SHIFT_TABLE$104, align 4
-  %result_$236 = mul i32 1, %SHIFT_TABLE$105
+  %SHIFT_TABLE$90 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$86
+  %SHIFT_TABLE$91 = load i32, i32* %SHIFT_TABLE$90, align 4
+  %result_$236 = mul i32 1, %SHIFT_TABLE$91
   %result_$237 = add i32 %ans$73, %result_$236
   store i32 %result_$237, i32* %lv, align 4
   br label %next_284
@@ -2508,9 +2494,9 @@ next_287:                                              ; pred = %next_288, %next
 ifTrue_159:                                            ; pred = %ifTrue_158
   %ans$76 = load i32, i32* %lv, align 4
   %i$89 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$106 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$89
-  %SHIFT_TABLE$107 = load i32, i32* %SHIFT_TABLE$106, align 4
-  %result_$243 = mul i32 1, %SHIFT_TABLE$107
+  %SHIFT_TABLE$92 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$89
+  %SHIFT_TABLE$93 = load i32, i32* %SHIFT_TABLE$92, align 4
+  %result_$243 = mul i32 1, %SHIFT_TABLE$93
   %result_$244 = add i32 %ans$76, %result_$243
   store i32 %result_$244, i32* %lv, align 4
   br label %next_288
@@ -2521,9 +2507,9 @@ next_288:                                              ; pred = %ifTrue_158, %if
 ifTrue_160:                                            ; pred = %ifFalse_60
   %ans$77 = load i32, i32* %lv, align 4
   %i$90 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$108 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$90
-  %SHIFT_TABLE$109 = load i32, i32* %SHIFT_TABLE$108, align 4
-  %result_$246 = mul i32 1, %SHIFT_TABLE$109
+  %SHIFT_TABLE$94 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$90
+  %SHIFT_TABLE$95 = load i32, i32* %SHIFT_TABLE$94, align 4
+  %result_$246 = mul i32 1, %SHIFT_TABLE$95
   %result_$247 = add i32 %ans$77, %result_$246
   store i32 %result_$247, i32* %lv, align 4
   br label %next_289
@@ -2555,9 +2541,9 @@ next_290:                                              ; pred = %whileCond_129
 ifTrue_161:                                            ; pred = %secondCond_69
   %ans$79 = load i32, i32* %lv, align 4
   %i$93 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$110 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$93
-  %SHIFT_TABLE$111 = load i32, i32* %SHIFT_TABLE$110, align 4
-  %result_$253 = mul i32 1, %SHIFT_TABLE$111
+  %SHIFT_TABLE$96 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$93
+  %SHIFT_TABLE$97 = load i32, i32* %SHIFT_TABLE$96, align 4
+  %result_$253 = mul i32 1, %SHIFT_TABLE$97
   %result_$254 = add i32 %ans$79, %result_$253
   store i32 %result_$254, i32* %lv, align 4
   br label %next_291
@@ -2588,9 +2574,7 @@ ifFalse_61:                                            ; pred = %next_290
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$31 = load i32, i32* %lv$45, align 4
-  %SHIFT_TABLE$112 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$113 = load i32, i32* %SHIFT_TABLE$112, align 4
-  %result_$258 = mul i32 %c$31, %SHIFT_TABLE$113
+  %result_$258 = mul i32 %c$31, 2
   store i32 %result_$258, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_130
@@ -2621,9 +2605,9 @@ next_293:                                              ; pred = %whileCond_130
 ifTrue_163:                                            ; pred = %secondCond_70
   %ans$81 = load i32, i32* %lv, align 4
   %i$96 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$114 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$96
-  %SHIFT_TABLE$115 = load i32, i32* %SHIFT_TABLE$114, align 4
-  %result_$261 = mul i32 1, %SHIFT_TABLE$115
+  %SHIFT_TABLE$98 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$96
+  %SHIFT_TABLE$99 = load i32, i32* %SHIFT_TABLE$98, align 4
+  %result_$261 = mul i32 1, %SHIFT_TABLE$99
   %result_$262 = add i32 %ans$81, %result_$261
   store i32 %result_$262, i32* %lv, align 4
   br label %next_294
@@ -2694,27 +2678,27 @@ next_297:                                              ; pred = %next_298, %ifFa
 ifTrue_167:                                            ; pred = %ifTrue_166
   %x$86 = load i32, i32* %lv$2, align 4
   %y$90 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$116 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$90
-  %SHIFT_TABLE$117 = load i32, i32* %SHIFT_TABLE$116, align 4
-  %result_$266 = sdiv i32 %x$86, %SHIFT_TABLE$117
+  %SHIFT_TABLE$100 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$90
+  %SHIFT_TABLE$101 = load i32, i32* %SHIFT_TABLE$100, align 4
+  %result_$266 = sdiv i32 %x$86, %SHIFT_TABLE$101
   store i32 %result_$266, i32* %lv$2, align 4
   %x$87 = load i32, i32* %lv$2, align 4
   %result_$267 = add i32 %x$87, 65536
   %y$91 = load i32, i32* %lv$3, align 4
   %result_$268 = sub i32 15, %y$91
   %result_$269 = add i32 %result_$268, 1
-  %SHIFT_TABLE$118 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$269
-  %SHIFT_TABLE$119 = load i32, i32* %SHIFT_TABLE$118, align 4
-  %result_$270 = sub i32 %result_$267, %SHIFT_TABLE$119
+  %SHIFT_TABLE$102 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$269
+  %SHIFT_TABLE$103 = load i32, i32* %SHIFT_TABLE$102, align 4
+  %result_$270 = sub i32 %result_$267, %SHIFT_TABLE$103
   store i32 %result_$270, i32* %lv, align 4
   br label %next_298
 
 ifFalse_65:                                            ; pred = %ifTrue_166
   %x$88 = load i32, i32* %lv$2, align 4
   %y$92 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$120 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$92
-  %SHIFT_TABLE$121 = load i32, i32* %SHIFT_TABLE$120, align 4
-  %result_$271 = sdiv i32 %x$88, %SHIFT_TABLE$121
+  %SHIFT_TABLE$104 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$92
+  %SHIFT_TABLE$105 = load i32, i32* %SHIFT_TABLE$104, align 4
+  %result_$271 = sdiv i32 %x$88, %SHIFT_TABLE$105
   store i32 %result_$271, i32* %lv, align 4
   br label %next_298
 
@@ -2769,27 +2753,27 @@ next_301:                                              ; pred = %next_302, %ifFa
 ifTrue_171:                                            ; pred = %ifTrue_170
   %x$92 = load i32, i32* %lv$2, align 4
   %y$95 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$122 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$95
-  %SHIFT_TABLE$123 = load i32, i32* %SHIFT_TABLE$122, align 4
-  %result_$272 = sdiv i32 %x$92, %SHIFT_TABLE$123
+  %SHIFT_TABLE$106 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$95
+  %SHIFT_TABLE$107 = load i32, i32* %SHIFT_TABLE$106, align 4
+  %result_$272 = sdiv i32 %x$92, %SHIFT_TABLE$107
   store i32 %result_$272, i32* %lv$2, align 4
   %x$93 = load i32, i32* %lv$2, align 4
   %result_$273 = add i32 %x$93, 65536
   %y$96 = load i32, i32* %lv$3, align 4
   %result_$274 = sub i32 15, %y$96
   %result_$275 = add i32 %result_$274, 1
-  %SHIFT_TABLE$124 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$275
-  %SHIFT_TABLE$125 = load i32, i32* %SHIFT_TABLE$124, align 4
-  %result_$276 = sub i32 %result_$273, %SHIFT_TABLE$125
+  %SHIFT_TABLE$108 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$275
+  %SHIFT_TABLE$109 = load i32, i32* %SHIFT_TABLE$108, align 4
+  %result_$276 = sub i32 %result_$273, %SHIFT_TABLE$109
   store i32 %result_$276, i32* %lv, align 4
   br label %next_302
 
 ifFalse_69:                                            ; pred = %ifTrue_170
   %x$94 = load i32, i32* %lv$2, align 4
   %y$97 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$126 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$97
-  %SHIFT_TABLE$127 = load i32, i32* %SHIFT_TABLE$126, align 4
-  %result_$277 = sdiv i32 %x$94, %SHIFT_TABLE$127
+  %SHIFT_TABLE$110 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$97
+  %SHIFT_TABLE$111 = load i32, i32* %SHIFT_TABLE$110, align 4
+  %result_$277 = sdiv i32 %x$94, %SHIFT_TABLE$111
   store i32 %result_$277, i32* %lv, align 4
   br label %next_302
 
@@ -2861,9 +2845,9 @@ next_305:                                              ; pred = %whileCond_133
 ifTrue_172:                                            ; pred = %secondCond_71
   %ans$88 = load i32, i32* %lv, align 4
   %i$99 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$128 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$99
-  %SHIFT_TABLE$129 = load i32, i32* %SHIFT_TABLE$128, align 4
-  %result_$280 = mul i32 1, %SHIFT_TABLE$129
+  %SHIFT_TABLE$112 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$99
+  %SHIFT_TABLE$113 = load i32, i32* %SHIFT_TABLE$112, align 4
+  %result_$280 = mul i32 1, %SHIFT_TABLE$113
   %result_$281 = add i32 %ans$88, %result_$280
   store i32 %result_$281, i32* %lv, align 4
   br label %next_306
@@ -2943,9 +2927,9 @@ next_309:                                              ; pred = %whileCond_135
 ifTrue_174:                                            ; pred = %secondCond_72
   %ans$90 = load i32, i32* %lv, align 4
   %i$102 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$130 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$102
-  %SHIFT_TABLE$131 = load i32, i32* %SHIFT_TABLE$130, align 4
-  %result_$287 = mul i32 1, %SHIFT_TABLE$131
+  %SHIFT_TABLE$114 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$102
+  %SHIFT_TABLE$115 = load i32, i32* %SHIFT_TABLE$114, align 4
+  %result_$287 = mul i32 1, %SHIFT_TABLE$115
   %result_$288 = add i32 %ans$90, %result_$287
   store i32 %result_$288, i32* %lv, align 4
   br label %next_310
@@ -3056,9 +3040,9 @@ next_314:                                              ; pred = %next_315, %next
 ifTrue_177:                                            ; pred = %ifTrue_176
   %ans$92 = load i32, i32* %lv, align 4
   %i$105 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$132 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$105
-  %SHIFT_TABLE$133 = load i32, i32* %SHIFT_TABLE$132, align 4
-  %result_$294 = mul i32 1, %SHIFT_TABLE$133
+  %SHIFT_TABLE$116 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$105
+  %SHIFT_TABLE$117 = load i32, i32* %SHIFT_TABLE$116, align 4
+  %result_$294 = mul i32 1, %SHIFT_TABLE$117
   %result_$295 = add i32 %ans$92, %result_$294
   store i32 %result_$295, i32* %lv, align 4
   br label %next_315
@@ -3069,9 +3053,9 @@ next_315:                                              ; pred = %ifTrue_176, %if
 ifTrue_178:                                            ; pred = %ifFalse_70
   %ans$93 = load i32, i32* %lv, align 4
   %i$106 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$134 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$106
-  %SHIFT_TABLE$135 = load i32, i32* %SHIFT_TABLE$134, align 4
-  %result_$297 = mul i32 1, %SHIFT_TABLE$135
+  %SHIFT_TABLE$118 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$106
+  %SHIFT_TABLE$119 = load i32, i32* %SHIFT_TABLE$118, align 4
+  %result_$297 = mul i32 1, %SHIFT_TABLE$119
   %result_$298 = add i32 %ans$93, %result_$297
   store i32 %result_$298, i32* %lv, align 4
   br label %next_316
@@ -3103,9 +3087,9 @@ next_317:                                              ; pred = %whileCond_138
 ifTrue_179:                                            ; pred = %secondCond_73
   %ans$95 = load i32, i32* %lv, align 4
   %i$109 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$136 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$109
-  %SHIFT_TABLE$137 = load i32, i32* %SHIFT_TABLE$136, align 4
-  %result_$304 = mul i32 1, %SHIFT_TABLE$137
+  %SHIFT_TABLE$120 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$109
+  %SHIFT_TABLE$121 = load i32, i32* %SHIFT_TABLE$120, align 4
+  %result_$304 = mul i32 1, %SHIFT_TABLE$121
   %result_$305 = add i32 %ans$95, %result_$304
   store i32 %result_$305, i32* %lv, align 4
   br label %next_318
@@ -3136,9 +3120,7 @@ ifFalse_71:                                            ; pred = %next_317
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$35 = load i32, i32* %lv$54, align 4
-  %SHIFT_TABLE$138 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$139 = load i32, i32* %SHIFT_TABLE$138, align 4
-  %result_$309 = mul i32 %c$35, %SHIFT_TABLE$139
+  %result_$309 = mul i32 %c$35, 2
   store i32 %result_$309, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_139
@@ -3169,9 +3151,9 @@ next_320:                                              ; pred = %whileCond_139
 ifTrue_181:                                            ; pred = %secondCond_74
   %ans$97 = load i32, i32* %lv, align 4
   %i$112 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$140 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$112
-  %SHIFT_TABLE$141 = load i32, i32* %SHIFT_TABLE$140, align 4
-  %result_$312 = mul i32 1, %SHIFT_TABLE$141
+  %SHIFT_TABLE$122 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$112
+  %SHIFT_TABLE$123 = load i32, i32* %SHIFT_TABLE$122, align 4
+  %result_$312 = mul i32 1, %SHIFT_TABLE$123
   %result_$313 = add i32 %ans$97, %result_$312
   store i32 %result_$313, i32* %lv, align 4
   br label %next_321
@@ -3275,9 +3257,9 @@ next_324:                                              ; pred = %next_325, %next
 ifTrue_183:                                            ; pred = %ifTrue_182
   %ans$100 = load i32, i32* %lv, align 4
   %i$115 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$142 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$115
-  %SHIFT_TABLE$143 = load i32, i32* %SHIFT_TABLE$142, align 4
-  %result_$319 = mul i32 1, %SHIFT_TABLE$143
+  %SHIFT_TABLE$124 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$115
+  %SHIFT_TABLE$125 = load i32, i32* %SHIFT_TABLE$124, align 4
+  %result_$319 = mul i32 1, %SHIFT_TABLE$125
   %result_$320 = add i32 %ans$100, %result_$319
   store i32 %result_$320, i32* %lv, align 4
   br label %next_325
@@ -3288,9 +3270,9 @@ next_325:                                              ; pred = %ifTrue_182, %if
 ifTrue_184:                                            ; pred = %ifFalse_72
   %ans$101 = load i32, i32* %lv, align 4
   %i$116 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$144 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$116
-  %SHIFT_TABLE$145 = load i32, i32* %SHIFT_TABLE$144, align 4
-  %result_$322 = mul i32 1, %SHIFT_TABLE$145
+  %SHIFT_TABLE$126 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$116
+  %SHIFT_TABLE$127 = load i32, i32* %SHIFT_TABLE$126, align 4
+  %result_$322 = mul i32 1, %SHIFT_TABLE$127
   %result_$323 = add i32 %ans$101, %result_$322
   store i32 %result_$323, i32* %lv, align 4
   br label %next_326
@@ -3322,9 +3304,9 @@ next_327:                                              ; pred = %whileCond_142
 ifTrue_185:                                            ; pred = %secondCond_75
   %ans$103 = load i32, i32* %lv, align 4
   %i$119 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$146 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$119
-  %SHIFT_TABLE$147 = load i32, i32* %SHIFT_TABLE$146, align 4
-  %result_$329 = mul i32 1, %SHIFT_TABLE$147
+  %SHIFT_TABLE$128 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$119
+  %SHIFT_TABLE$129 = load i32, i32* %SHIFT_TABLE$128, align 4
+  %result_$329 = mul i32 1, %SHIFT_TABLE$129
   %result_$330 = add i32 %ans$103, %result_$329
   store i32 %result_$330, i32* %lv, align 4
   br label %next_328
@@ -3355,9 +3337,7 @@ ifFalse_73:                                            ; pred = %next_327
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$39 = load i32, i32* %lv$57, align 4
-  %SHIFT_TABLE$148 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$149 = load i32, i32* %SHIFT_TABLE$148, align 4
-  %result_$334 = mul i32 %c$39, %SHIFT_TABLE$149
+  %result_$334 = mul i32 %c$39, 2
   store i32 %result_$334, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_143
@@ -3388,9 +3368,9 @@ next_330:                                              ; pred = %whileCond_143
 ifTrue_187:                                            ; pred = %secondCond_76
   %ans$105 = load i32, i32* %lv, align 4
   %i$122 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$150 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$122
-  %SHIFT_TABLE$151 = load i32, i32* %SHIFT_TABLE$150, align 4
-  %result_$337 = mul i32 1, %SHIFT_TABLE$151
+  %SHIFT_TABLE$130 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$122
+  %SHIFT_TABLE$131 = load i32, i32* %SHIFT_TABLE$130, align 4
+  %result_$337 = mul i32 1, %SHIFT_TABLE$131
   %result_$338 = add i32 %ans$105, %result_$337
   store i32 %result_$338, i32* %lv, align 4
   br label %next_331
@@ -3461,27 +3441,27 @@ next_334:                                              ; pred = %next_335, %ifFa
 ifTrue_191:                                            ; pred = %ifTrue_190
   %x$114 = load i32, i32* %lv$2, align 4
   %y$118 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$152 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$118
-  %SHIFT_TABLE$153 = load i32, i32* %SHIFT_TABLE$152, align 4
-  %result_$342 = sdiv i32 %x$114, %SHIFT_TABLE$153
+  %SHIFT_TABLE$132 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$118
+  %SHIFT_TABLE$133 = load i32, i32* %SHIFT_TABLE$132, align 4
+  %result_$342 = sdiv i32 %x$114, %SHIFT_TABLE$133
   store i32 %result_$342, i32* %lv$2, align 4
   %x$115 = load i32, i32* %lv$2, align 4
   %result_$343 = add i32 %x$115, 65536
   %y$119 = load i32, i32* %lv$3, align 4
   %result_$344 = sub i32 15, %y$119
   %result_$345 = add i32 %result_$344, 1
-  %SHIFT_TABLE$154 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$345
-  %SHIFT_TABLE$155 = load i32, i32* %SHIFT_TABLE$154, align 4
-  %result_$346 = sub i32 %result_$343, %SHIFT_TABLE$155
+  %SHIFT_TABLE$134 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$345
+  %SHIFT_TABLE$135 = load i32, i32* %SHIFT_TABLE$134, align 4
+  %result_$346 = sub i32 %result_$343, %SHIFT_TABLE$135
   store i32 %result_$346, i32* %lv, align 4
   br label %next_335
 
 ifFalse_77:                                            ; pred = %ifTrue_190
   %x$116 = load i32, i32* %lv$2, align 4
   %y$120 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$156 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$120
-  %SHIFT_TABLE$157 = load i32, i32* %SHIFT_TABLE$156, align 4
-  %result_$347 = sdiv i32 %x$116, %SHIFT_TABLE$157
+  %SHIFT_TABLE$136 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$120
+  %SHIFT_TABLE$137 = load i32, i32* %SHIFT_TABLE$136, align 4
+  %result_$347 = sdiv i32 %x$116, %SHIFT_TABLE$137
   store i32 %result_$347, i32* %lv, align 4
   br label %next_335
 
@@ -3536,9 +3516,9 @@ next_337:                                              ; pred = %whileCond_145
 ifTrue_192:                                            ; pred = %secondCond_77
   %ans$110 = load i32, i32* %lv, align 4
   %i$125 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$158 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$125
-  %SHIFT_TABLE$159 = load i32, i32* %SHIFT_TABLE$158, align 4
-  %result_$350 = mul i32 1, %SHIFT_TABLE$159
+  %SHIFT_TABLE$138 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$125
+  %SHIFT_TABLE$139 = load i32, i32* %SHIFT_TABLE$138, align 4
+  %result_$350 = mul i32 1, %SHIFT_TABLE$139
   %result_$351 = add i32 %ans$110, %result_$350
   store i32 %result_$351, i32* %lv, align 4
   br label %next_338
@@ -3649,9 +3629,9 @@ next_342:                                              ; pred = %next_343, %next
 ifTrue_195:                                            ; pred = %ifTrue_194
   %ans$112 = load i32, i32* %lv, align 4
   %i$128 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$160 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$128
-  %SHIFT_TABLE$161 = load i32, i32* %SHIFT_TABLE$160, align 4
-  %result_$357 = mul i32 1, %SHIFT_TABLE$161
+  %SHIFT_TABLE$140 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$128
+  %SHIFT_TABLE$141 = load i32, i32* %SHIFT_TABLE$140, align 4
+  %result_$357 = mul i32 1, %SHIFT_TABLE$141
   %result_$358 = add i32 %ans$112, %result_$357
   store i32 %result_$358, i32* %lv, align 4
   br label %next_343
@@ -3662,9 +3642,9 @@ next_343:                                              ; pred = %ifTrue_194, %if
 ifTrue_196:                                            ; pred = %ifFalse_78
   %ans$113 = load i32, i32* %lv, align 4
   %i$129 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$162 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$129
-  %SHIFT_TABLE$163 = load i32, i32* %SHIFT_TABLE$162, align 4
-  %result_$360 = mul i32 1, %SHIFT_TABLE$163
+  %SHIFT_TABLE$142 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$129
+  %SHIFT_TABLE$143 = load i32, i32* %SHIFT_TABLE$142, align 4
+  %result_$360 = mul i32 1, %SHIFT_TABLE$143
   %result_$361 = add i32 %ans$113, %result_$360
   store i32 %result_$361, i32* %lv, align 4
   br label %next_344
@@ -3696,9 +3676,9 @@ next_345:                                              ; pred = %whileCond_148
 ifTrue_197:                                            ; pred = %secondCond_78
   %ans$115 = load i32, i32* %lv, align 4
   %i$132 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$164 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$132
-  %SHIFT_TABLE$165 = load i32, i32* %SHIFT_TABLE$164, align 4
-  %result_$367 = mul i32 1, %SHIFT_TABLE$165
+  %SHIFT_TABLE$144 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$132
+  %SHIFT_TABLE$145 = load i32, i32* %SHIFT_TABLE$144, align 4
+  %result_$367 = mul i32 1, %SHIFT_TABLE$145
   %result_$368 = add i32 %ans$115, %result_$367
   store i32 %result_$368, i32* %lv, align 4
   br label %next_346
@@ -3729,9 +3709,7 @@ ifFalse_79:                                            ; pred = %next_345
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$43 = load i32, i32* %lv$63, align 4
-  %SHIFT_TABLE$166 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$167 = load i32, i32* %SHIFT_TABLE$166, align 4
-  %result_$372 = mul i32 %c$43, %SHIFT_TABLE$167
+  %result_$372 = mul i32 %c$43, 2
   store i32 %result_$372, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_149
@@ -3762,9 +3740,9 @@ next_348:                                              ; pred = %whileCond_149
 ifTrue_199:                                            ; pred = %secondCond_79
   %ans$117 = load i32, i32* %lv, align 4
   %i$135 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$168 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$135
-  %SHIFT_TABLE$169 = load i32, i32* %SHIFT_TABLE$168, align 4
-  %result_$375 = mul i32 1, %SHIFT_TABLE$169
+  %SHIFT_TABLE$146 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$135
+  %SHIFT_TABLE$147 = load i32, i32* %SHIFT_TABLE$146, align 4
+  %result_$375 = mul i32 1, %SHIFT_TABLE$147
   %result_$376 = add i32 %ans$117, %result_$375
   store i32 %result_$376, i32* %lv, align 4
   br label %next_349
@@ -3868,9 +3846,9 @@ next_352:                                              ; pred = %next_353, %next
 ifTrue_201:                                            ; pred = %ifTrue_200
   %ans$120 = load i32, i32* %lv, align 4
   %i$138 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$170 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$138
-  %SHIFT_TABLE$171 = load i32, i32* %SHIFT_TABLE$170, align 4
-  %result_$382 = mul i32 1, %SHIFT_TABLE$171
+  %SHIFT_TABLE$148 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$138
+  %SHIFT_TABLE$149 = load i32, i32* %SHIFT_TABLE$148, align 4
+  %result_$382 = mul i32 1, %SHIFT_TABLE$149
   %result_$383 = add i32 %ans$120, %result_$382
   store i32 %result_$383, i32* %lv, align 4
   br label %next_353
@@ -3881,9 +3859,9 @@ next_353:                                              ; pred = %ifTrue_200, %if
 ifTrue_202:                                            ; pred = %ifFalse_80
   %ans$121 = load i32, i32* %lv, align 4
   %i$139 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$172 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$139
-  %SHIFT_TABLE$173 = load i32, i32* %SHIFT_TABLE$172, align 4
-  %result_$385 = mul i32 1, %SHIFT_TABLE$173
+  %SHIFT_TABLE$150 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$139
+  %SHIFT_TABLE$151 = load i32, i32* %SHIFT_TABLE$150, align 4
+  %result_$385 = mul i32 1, %SHIFT_TABLE$151
   %result_$386 = add i32 %ans$121, %result_$385
   store i32 %result_$386, i32* %lv, align 4
   br label %next_354
@@ -3915,9 +3893,9 @@ next_355:                                              ; pred = %whileCond_152
 ifTrue_203:                                            ; pred = %secondCond_80
   %ans$123 = load i32, i32* %lv, align 4
   %i$142 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$174 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$142
-  %SHIFT_TABLE$175 = load i32, i32* %SHIFT_TABLE$174, align 4
-  %result_$392 = mul i32 1, %SHIFT_TABLE$175
+  %SHIFT_TABLE$152 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$142
+  %SHIFT_TABLE$153 = load i32, i32* %SHIFT_TABLE$152, align 4
+  %result_$392 = mul i32 1, %SHIFT_TABLE$153
   %result_$393 = add i32 %ans$123, %result_$392
   store i32 %result_$393, i32* %lv, align 4
   br label %next_356
@@ -3948,9 +3926,7 @@ ifFalse_81:                                            ; pred = %next_355
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$47 = load i32, i32* %lv$66, align 4
-  %SHIFT_TABLE$176 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$177 = load i32, i32* %SHIFT_TABLE$176, align 4
-  %result_$397 = mul i32 %c$47, %SHIFT_TABLE$177
+  %result_$397 = mul i32 %c$47, 2
   store i32 %result_$397, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_153
@@ -3981,9 +3957,9 @@ next_358:                                              ; pred = %whileCond_153
 ifTrue_205:                                            ; pred = %secondCond_81
   %ans$125 = load i32, i32* %lv, align 4
   %i$145 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$178 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$145
-  %SHIFT_TABLE$179 = load i32, i32* %SHIFT_TABLE$178, align 4
-  %result_$400 = mul i32 1, %SHIFT_TABLE$179
+  %SHIFT_TABLE$154 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$145
+  %SHIFT_TABLE$155 = load i32, i32* %SHIFT_TABLE$154, align 4
+  %result_$400 = mul i32 1, %SHIFT_TABLE$155
   %result_$401 = add i32 %ans$125, %result_$400
   store i32 %result_$401, i32* %lv, align 4
   br label %next_359
@@ -4054,27 +4030,27 @@ next_362:                                              ; pred = %next_363, %ifFa
 ifTrue_209:                                            ; pred = %ifTrue_208
   %x$134 = load i32, i32* %lv$2, align 4
   %y$139 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$180 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$139
-  %SHIFT_TABLE$181 = load i32, i32* %SHIFT_TABLE$180, align 4
-  %result_$405 = sdiv i32 %x$134, %SHIFT_TABLE$181
+  %SHIFT_TABLE$156 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$139
+  %SHIFT_TABLE$157 = load i32, i32* %SHIFT_TABLE$156, align 4
+  %result_$405 = sdiv i32 %x$134, %SHIFT_TABLE$157
   store i32 %result_$405, i32* %lv$2, align 4
   %x$135 = load i32, i32* %lv$2, align 4
   %result_$406 = add i32 %x$135, 65536
   %y$140 = load i32, i32* %lv$3, align 4
   %result_$407 = sub i32 15, %y$140
   %result_$408 = add i32 %result_$407, 1
-  %SHIFT_TABLE$182 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$408
-  %SHIFT_TABLE$183 = load i32, i32* %SHIFT_TABLE$182, align 4
-  %result_$409 = sub i32 %result_$406, %SHIFT_TABLE$183
+  %SHIFT_TABLE$158 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$408
+  %SHIFT_TABLE$159 = load i32, i32* %SHIFT_TABLE$158, align 4
+  %result_$409 = sub i32 %result_$406, %SHIFT_TABLE$159
   store i32 %result_$409, i32* %lv, align 4
   br label %next_363
 
 ifFalse_85:                                            ; pred = %ifTrue_208
   %x$136 = load i32, i32* %lv$2, align 4
   %y$141 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$184 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$141
-  %SHIFT_TABLE$185 = load i32, i32* %SHIFT_TABLE$184, align 4
-  %result_$410 = sdiv i32 %x$136, %SHIFT_TABLE$185
+  %SHIFT_TABLE$160 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$141
+  %SHIFT_TABLE$161 = load i32, i32* %SHIFT_TABLE$160, align 4
+  %result_$410 = sdiv i32 %x$136, %SHIFT_TABLE$161
   store i32 %result_$410, i32* %lv, align 4
   br label %next_363
 
@@ -4129,27 +4105,27 @@ next_366:                                              ; pred = %next_367, %ifFa
 ifTrue_213:                                            ; pred = %ifTrue_212
   %x$140 = load i32, i32* %lv$2, align 4
   %y$144 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$186 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$144
-  %SHIFT_TABLE$187 = load i32, i32* %SHIFT_TABLE$186, align 4
-  %result_$411 = sdiv i32 %x$140, %SHIFT_TABLE$187
+  %SHIFT_TABLE$162 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$144
+  %SHIFT_TABLE$163 = load i32, i32* %SHIFT_TABLE$162, align 4
+  %result_$411 = sdiv i32 %x$140, %SHIFT_TABLE$163
   store i32 %result_$411, i32* %lv$2, align 4
   %x$141 = load i32, i32* %lv$2, align 4
   %result_$412 = add i32 %x$141, 65536
   %y$145 = load i32, i32* %lv$3, align 4
   %result_$413 = sub i32 15, %y$145
   %result_$414 = add i32 %result_$413, 1
-  %SHIFT_TABLE$188 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$414
-  %SHIFT_TABLE$189 = load i32, i32* %SHIFT_TABLE$188, align 4
-  %result_$415 = sub i32 %result_$412, %SHIFT_TABLE$189
+  %SHIFT_TABLE$164 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$414
+  %SHIFT_TABLE$165 = load i32, i32* %SHIFT_TABLE$164, align 4
+  %result_$415 = sub i32 %result_$412, %SHIFT_TABLE$165
   store i32 %result_$415, i32* %lv, align 4
   br label %next_367
 
 ifFalse_89:                                            ; pred = %ifTrue_212
   %x$142 = load i32, i32* %lv$2, align 4
   %y$146 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$190 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$146
-  %SHIFT_TABLE$191 = load i32, i32* %SHIFT_TABLE$190, align 4
-  %result_$416 = sdiv i32 %x$142, %SHIFT_TABLE$191
+  %SHIFT_TABLE$166 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$146
+  %SHIFT_TABLE$167 = load i32, i32* %SHIFT_TABLE$166, align 4
+  %result_$416 = sdiv i32 %x$142, %SHIFT_TABLE$167
   store i32 %result_$416, i32* %lv, align 4
   br label %next_367
 
@@ -4192,10 +4168,10 @@ next_369:                                              ; pred = %whileCond_155
   %pres$7 = load i32, i32* %lv$70, align 4
   store i32 %pres$7, i32* %lv, align 4
   %cur$5 = load i32, i32* %lv$4, align 4
-  %SHIFT_TABLE$256 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %cur$5
-  %SHIFT_TABLE$257 = load i32, i32* %SHIFT_TABLE$256, align 4
+  %SHIFT_TABLE$224 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %cur$5
+  %SHIFT_TABLE$225 = load i32, i32* %SHIFT_TABLE$224, align 4
   %ans$175 = load i32, i32* %lv, align 4
-  %cond_neq_tmp_ = icmp ne i32 %SHIFT_TABLE$257, %ans$175
+  %cond_neq_tmp_ = icmp ne i32 %SHIFT_TABLE$225, %ans$175
   %cond_tmp_$146 = zext i1 %cond_neq_tmp_ to i32
   %cond_$146 = icmp ne i32 %cond_tmp_$146, 0
   br i1 %cond_$146, label %ifTrue_256, label %next_433
@@ -4221,9 +4197,9 @@ next_370:                                              ; pred = %whileCond_156
 ifTrue_214:                                            ; pred = %secondCond_82
   %ans$132 = load i32, i32* %lv, align 4
   %i$148 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$192 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$148
-  %SHIFT_TABLE$193 = load i32, i32* %SHIFT_TABLE$192, align 4
-  %result_$420 = mul i32 1, %SHIFT_TABLE$193
+  %SHIFT_TABLE$168 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$148
+  %SHIFT_TABLE$169 = load i32, i32* %SHIFT_TABLE$168, align 4
+  %result_$420 = mul i32 1, %SHIFT_TABLE$169
   %result_$421 = add i32 %ans$132, %result_$420
   store i32 %result_$421, i32* %lv, align 4
   br label %next_371
@@ -4303,9 +4279,9 @@ next_374:                                              ; pred = %whileCond_158
 ifTrue_216:                                            ; pred = %secondCond_83
   %ans$134 = load i32, i32* %lv, align 4
   %i$151 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$194 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$151
-  %SHIFT_TABLE$195 = load i32, i32* %SHIFT_TABLE$194, align 4
-  %result_$427 = mul i32 1, %SHIFT_TABLE$195
+  %SHIFT_TABLE$170 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$151
+  %SHIFT_TABLE$171 = load i32, i32* %SHIFT_TABLE$170, align 4
+  %result_$427 = mul i32 1, %SHIFT_TABLE$171
   %result_$428 = add i32 %ans$134, %result_$427
   store i32 %result_$428, i32* %lv, align 4
   br label %next_375
@@ -4416,9 +4392,9 @@ next_379:                                              ; pred = %next_380, %next
 ifTrue_219:                                            ; pred = %ifTrue_218
   %ans$136 = load i32, i32* %lv, align 4
   %i$154 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$196 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$154
-  %SHIFT_TABLE$197 = load i32, i32* %SHIFT_TABLE$196, align 4
-  %result_$434 = mul i32 1, %SHIFT_TABLE$197
+  %SHIFT_TABLE$172 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$154
+  %SHIFT_TABLE$173 = load i32, i32* %SHIFT_TABLE$172, align 4
+  %result_$434 = mul i32 1, %SHIFT_TABLE$173
   %result_$435 = add i32 %ans$136, %result_$434
   store i32 %result_$435, i32* %lv, align 4
   br label %next_380
@@ -4429,9 +4405,9 @@ next_380:                                              ; pred = %ifTrue_218, %if
 ifTrue_220:                                            ; pred = %ifFalse_90
   %ans$137 = load i32, i32* %lv, align 4
   %i$155 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$198 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$155
-  %SHIFT_TABLE$199 = load i32, i32* %SHIFT_TABLE$198, align 4
-  %result_$437 = mul i32 1, %SHIFT_TABLE$199
+  %SHIFT_TABLE$174 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$155
+  %SHIFT_TABLE$175 = load i32, i32* %SHIFT_TABLE$174, align 4
+  %result_$437 = mul i32 1, %SHIFT_TABLE$175
   %result_$438 = add i32 %ans$137, %result_$437
   store i32 %result_$438, i32* %lv, align 4
   br label %next_381
@@ -4463,9 +4439,9 @@ next_382:                                              ; pred = %whileCond_161
 ifTrue_221:                                            ; pred = %secondCond_84
   %ans$139 = load i32, i32* %lv, align 4
   %i$158 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$200 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$158
-  %SHIFT_TABLE$201 = load i32, i32* %SHIFT_TABLE$200, align 4
-  %result_$444 = mul i32 1, %SHIFT_TABLE$201
+  %SHIFT_TABLE$176 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$158
+  %SHIFT_TABLE$177 = load i32, i32* %SHIFT_TABLE$176, align 4
+  %result_$444 = mul i32 1, %SHIFT_TABLE$177
   %result_$445 = add i32 %ans$139, %result_$444
   store i32 %result_$445, i32* %lv, align 4
   br label %next_383
@@ -4496,9 +4472,7 @@ ifFalse_91:                                            ; pred = %next_382
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$51 = load i32, i32* %lv$75, align 4
-  %SHIFT_TABLE$202 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$203 = load i32, i32* %SHIFT_TABLE$202, align 4
-  %result_$449 = mul i32 %c$51, %SHIFT_TABLE$203
+  %result_$449 = mul i32 %c$51, 2
   store i32 %result_$449, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_162
@@ -4529,9 +4503,9 @@ next_385:                                              ; pred = %whileCond_162
 ifTrue_223:                                            ; pred = %secondCond_85
   %ans$141 = load i32, i32* %lv, align 4
   %i$161 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$204 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$161
-  %SHIFT_TABLE$205 = load i32, i32* %SHIFT_TABLE$204, align 4
-  %result_$452 = mul i32 1, %SHIFT_TABLE$205
+  %SHIFT_TABLE$178 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$161
+  %SHIFT_TABLE$179 = load i32, i32* %SHIFT_TABLE$178, align 4
+  %result_$452 = mul i32 1, %SHIFT_TABLE$179
   %result_$453 = add i32 %ans$141, %result_$452
   store i32 %result_$453, i32* %lv, align 4
   br label %next_386
@@ -4635,9 +4609,9 @@ next_389:                                              ; pred = %next_390, %next
 ifTrue_225:                                            ; pred = %ifTrue_224
   %ans$144 = load i32, i32* %lv, align 4
   %i$164 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$206 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$164
-  %SHIFT_TABLE$207 = load i32, i32* %SHIFT_TABLE$206, align 4
-  %result_$459 = mul i32 1, %SHIFT_TABLE$207
+  %SHIFT_TABLE$180 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$164
+  %SHIFT_TABLE$181 = load i32, i32* %SHIFT_TABLE$180, align 4
+  %result_$459 = mul i32 1, %SHIFT_TABLE$181
   %result_$460 = add i32 %ans$144, %result_$459
   store i32 %result_$460, i32* %lv, align 4
   br label %next_390
@@ -4648,9 +4622,9 @@ next_390:                                              ; pred = %ifTrue_224, %if
 ifTrue_226:                                            ; pred = %ifFalse_92
   %ans$145 = load i32, i32* %lv, align 4
   %i$165 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$208 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$165
-  %SHIFT_TABLE$209 = load i32, i32* %SHIFT_TABLE$208, align 4
-  %result_$462 = mul i32 1, %SHIFT_TABLE$209
+  %SHIFT_TABLE$182 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$165
+  %SHIFT_TABLE$183 = load i32, i32* %SHIFT_TABLE$182, align 4
+  %result_$462 = mul i32 1, %SHIFT_TABLE$183
   %result_$463 = add i32 %ans$145, %result_$462
   store i32 %result_$463, i32* %lv, align 4
   br label %next_391
@@ -4682,9 +4656,9 @@ next_392:                                              ; pred = %whileCond_165
 ifTrue_227:                                            ; pred = %secondCond_86
   %ans$147 = load i32, i32* %lv, align 4
   %i$168 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$210 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$168
-  %SHIFT_TABLE$211 = load i32, i32* %SHIFT_TABLE$210, align 4
-  %result_$469 = mul i32 1, %SHIFT_TABLE$211
+  %SHIFT_TABLE$184 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$168
+  %SHIFT_TABLE$185 = load i32, i32* %SHIFT_TABLE$184, align 4
+  %result_$469 = mul i32 1, %SHIFT_TABLE$185
   %result_$470 = add i32 %ans$147, %result_$469
   store i32 %result_$470, i32* %lv, align 4
   br label %next_393
@@ -4715,9 +4689,7 @@ ifFalse_93:                                            ; pred = %next_392
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$55 = load i32, i32* %lv$78, align 4
-  %SHIFT_TABLE$212 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$213 = load i32, i32* %SHIFT_TABLE$212, align 4
-  %result_$474 = mul i32 %c$55, %SHIFT_TABLE$213
+  %result_$474 = mul i32 %c$55, 2
   store i32 %result_$474, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_166
@@ -4748,9 +4720,9 @@ next_395:                                              ; pred = %whileCond_166
 ifTrue_229:                                            ; pred = %secondCond_87
   %ans$149 = load i32, i32* %lv, align 4
   %i$171 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$214 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$171
-  %SHIFT_TABLE$215 = load i32, i32* %SHIFT_TABLE$214, align 4
-  %result_$477 = mul i32 1, %SHIFT_TABLE$215
+  %SHIFT_TABLE$186 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$171
+  %SHIFT_TABLE$187 = load i32, i32* %SHIFT_TABLE$186, align 4
+  %result_$477 = mul i32 1, %SHIFT_TABLE$187
   %result_$478 = add i32 %ans$149, %result_$477
   store i32 %result_$478, i32* %lv, align 4
   br label %next_396
@@ -4821,27 +4793,27 @@ next_399:                                              ; pred = %next_400, %ifFa
 ifTrue_233:                                            ; pred = %ifTrue_232
   %x$162 = load i32, i32* %lv$2, align 4
   %y$167 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$216 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$167
-  %SHIFT_TABLE$217 = load i32, i32* %SHIFT_TABLE$216, align 4
-  %result_$482 = sdiv i32 %x$162, %SHIFT_TABLE$217
+  %SHIFT_TABLE$188 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$167
+  %SHIFT_TABLE$189 = load i32, i32* %SHIFT_TABLE$188, align 4
+  %result_$482 = sdiv i32 %x$162, %SHIFT_TABLE$189
   store i32 %result_$482, i32* %lv$2, align 4
   %x$163 = load i32, i32* %lv$2, align 4
   %result_$483 = add i32 %x$163, 65536
   %y$168 = load i32, i32* %lv$3, align 4
   %result_$484 = sub i32 15, %y$168
   %result_$485 = add i32 %result_$484, 1
-  %SHIFT_TABLE$218 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$485
-  %SHIFT_TABLE$219 = load i32, i32* %SHIFT_TABLE$218, align 4
-  %result_$486 = sub i32 %result_$483, %SHIFT_TABLE$219
+  %SHIFT_TABLE$190 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$485
+  %SHIFT_TABLE$191 = load i32, i32* %SHIFT_TABLE$190, align 4
+  %result_$486 = sub i32 %result_$483, %SHIFT_TABLE$191
   store i32 %result_$486, i32* %lv, align 4
   br label %next_400
 
 ifFalse_97:                                            ; pred = %ifTrue_232
   %x$164 = load i32, i32* %lv$2, align 4
   %y$169 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$220 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$169
-  %SHIFT_TABLE$221 = load i32, i32* %SHIFT_TABLE$220, align 4
-  %result_$487 = sdiv i32 %x$164, %SHIFT_TABLE$221
+  %SHIFT_TABLE$192 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$169
+  %SHIFT_TABLE$193 = load i32, i32* %SHIFT_TABLE$192, align 4
+  %result_$487 = sdiv i32 %x$164, %SHIFT_TABLE$193
   store i32 %result_$487, i32* %lv, align 4
   br label %next_400
 
@@ -4896,9 +4868,9 @@ next_402:                                              ; pred = %whileCond_168
 ifTrue_234:                                            ; pred = %secondCond_88
   %ans$154 = load i32, i32* %lv, align 4
   %i$174 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$222 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$174
-  %SHIFT_TABLE$223 = load i32, i32* %SHIFT_TABLE$222, align 4
-  %result_$490 = mul i32 1, %SHIFT_TABLE$223
+  %SHIFT_TABLE$194 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$174
+  %SHIFT_TABLE$195 = load i32, i32* %SHIFT_TABLE$194, align 4
+  %result_$490 = mul i32 1, %SHIFT_TABLE$195
   %result_$491 = add i32 %ans$154, %result_$490
   store i32 %result_$491, i32* %lv, align 4
   br label %next_403
@@ -5009,9 +4981,9 @@ next_407:                                              ; pred = %next_408, %next
 ifTrue_237:                                            ; pred = %ifTrue_236
   %ans$156 = load i32, i32* %lv, align 4
   %i$177 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$224 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$177
-  %SHIFT_TABLE$225 = load i32, i32* %SHIFT_TABLE$224, align 4
-  %result_$497 = mul i32 1, %SHIFT_TABLE$225
+  %SHIFT_TABLE$196 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$177
+  %SHIFT_TABLE$197 = load i32, i32* %SHIFT_TABLE$196, align 4
+  %result_$497 = mul i32 1, %SHIFT_TABLE$197
   %result_$498 = add i32 %ans$156, %result_$497
   store i32 %result_$498, i32* %lv, align 4
   br label %next_408
@@ -5022,9 +4994,9 @@ next_408:                                              ; pred = %ifTrue_236, %if
 ifTrue_238:                                            ; pred = %ifFalse_98
   %ans$157 = load i32, i32* %lv, align 4
   %i$178 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$226 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$178
-  %SHIFT_TABLE$227 = load i32, i32* %SHIFT_TABLE$226, align 4
-  %result_$500 = mul i32 1, %SHIFT_TABLE$227
+  %SHIFT_TABLE$198 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$178
+  %SHIFT_TABLE$199 = load i32, i32* %SHIFT_TABLE$198, align 4
+  %result_$500 = mul i32 1, %SHIFT_TABLE$199
   %result_$501 = add i32 %ans$157, %result_$500
   store i32 %result_$501, i32* %lv, align 4
   br label %next_409
@@ -5056,9 +5028,9 @@ next_410:                                              ; pred = %whileCond_171
 ifTrue_239:                                            ; pred = %secondCond_89
   %ans$159 = load i32, i32* %lv, align 4
   %i$181 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$228 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$181
-  %SHIFT_TABLE$229 = load i32, i32* %SHIFT_TABLE$228, align 4
-  %result_$507 = mul i32 1, %SHIFT_TABLE$229
+  %SHIFT_TABLE$200 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$181
+  %SHIFT_TABLE$201 = load i32, i32* %SHIFT_TABLE$200, align 4
+  %result_$507 = mul i32 1, %SHIFT_TABLE$201
   %result_$508 = add i32 %ans$159, %result_$507
   store i32 %result_$508, i32* %lv, align 4
   br label %next_411
@@ -5089,9 +5061,7 @@ ifFalse_99:                                            ; pred = %next_410
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$59 = load i32, i32* %lv$84, align 4
-  %SHIFT_TABLE$230 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$231 = load i32, i32* %SHIFT_TABLE$230, align 4
-  %result_$512 = mul i32 %c$59, %SHIFT_TABLE$231
+  %result_$512 = mul i32 %c$59, 2
   store i32 %result_$512, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_172
@@ -5122,9 +5092,9 @@ next_413:                                              ; pred = %whileCond_172
 ifTrue_241:                                            ; pred = %secondCond_90
   %ans$161 = load i32, i32* %lv, align 4
   %i$184 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$232 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$184
-  %SHIFT_TABLE$233 = load i32, i32* %SHIFT_TABLE$232, align 4
-  %result_$515 = mul i32 1, %SHIFT_TABLE$233
+  %SHIFT_TABLE$202 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$184
+  %SHIFT_TABLE$203 = load i32, i32* %SHIFT_TABLE$202, align 4
+  %result_$515 = mul i32 1, %SHIFT_TABLE$203
   %result_$516 = add i32 %ans$161, %result_$515
   store i32 %result_$516, i32* %lv, align 4
   br label %next_414
@@ -5228,9 +5198,9 @@ next_417:                                              ; pred = %next_418, %next
 ifTrue_243:                                            ; pred = %ifTrue_242
   %ans$164 = load i32, i32* %lv, align 4
   %i$187 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$234 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$187
-  %SHIFT_TABLE$235 = load i32, i32* %SHIFT_TABLE$234, align 4
-  %result_$522 = mul i32 1, %SHIFT_TABLE$235
+  %SHIFT_TABLE$204 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$187
+  %SHIFT_TABLE$205 = load i32, i32* %SHIFT_TABLE$204, align 4
+  %result_$522 = mul i32 1, %SHIFT_TABLE$205
   %result_$523 = add i32 %ans$164, %result_$522
   store i32 %result_$523, i32* %lv, align 4
   br label %next_418
@@ -5241,9 +5211,9 @@ next_418:                                              ; pred = %ifTrue_242, %if
 ifTrue_244:                                            ; pred = %ifFalse_100
   %ans$165 = load i32, i32* %lv, align 4
   %i$188 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$236 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$188
-  %SHIFT_TABLE$237 = load i32, i32* %SHIFT_TABLE$236, align 4
-  %result_$525 = mul i32 1, %SHIFT_TABLE$237
+  %SHIFT_TABLE$206 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$188
+  %SHIFT_TABLE$207 = load i32, i32* %SHIFT_TABLE$206, align 4
+  %result_$525 = mul i32 1, %SHIFT_TABLE$207
   %result_$526 = add i32 %ans$165, %result_$525
   store i32 %result_$526, i32* %lv, align 4
   br label %next_419
@@ -5275,9 +5245,9 @@ next_420:                                              ; pred = %whileCond_175
 ifTrue_245:                                            ; pred = %secondCond_91
   %ans$167 = load i32, i32* %lv, align 4
   %i$191 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$238 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$191
-  %SHIFT_TABLE$239 = load i32, i32* %SHIFT_TABLE$238, align 4
-  %result_$532 = mul i32 1, %SHIFT_TABLE$239
+  %SHIFT_TABLE$208 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$191
+  %SHIFT_TABLE$209 = load i32, i32* %SHIFT_TABLE$208, align 4
+  %result_$532 = mul i32 1, %SHIFT_TABLE$209
   %result_$533 = add i32 %ans$167, %result_$532
   store i32 %result_$533, i32* %lv, align 4
   br label %next_421
@@ -5308,9 +5278,7 @@ ifFalse_101:                                           ; pred = %next_420
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %c$63 = load i32, i32* %lv$87, align 4
-  %SHIFT_TABLE$240 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 1
-  %SHIFT_TABLE$241 = load i32, i32* %SHIFT_TABLE$240, align 4
-  %result_$537 = mul i32 %c$63, %SHIFT_TABLE$241
+  %result_$537 = mul i32 %c$63, 2
   store i32 %result_$537, i32* %lv$2, align 4
   store i32 65535, i32* %lv$3, align 4
   br label %whileCond_176
@@ -5341,9 +5309,9 @@ next_423:                                              ; pred = %whileCond_176
 ifTrue_247:                                            ; pred = %secondCond_92
   %ans$169 = load i32, i32* %lv, align 4
   %i$194 = load i32, i32* %lv$1, align 4
-  %SHIFT_TABLE$242 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$194
-  %SHIFT_TABLE$243 = load i32, i32* %SHIFT_TABLE$242, align 4
-  %result_$540 = mul i32 1, %SHIFT_TABLE$243
+  %SHIFT_TABLE$210 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %i$194
+  %SHIFT_TABLE$211 = load i32, i32* %SHIFT_TABLE$210, align 4
+  %result_$540 = mul i32 1, %SHIFT_TABLE$211
   %result_$541 = add i32 %ans$169, %result_$540
   store i32 %result_$541, i32* %lv, align 4
   br label %next_424
@@ -5414,27 +5382,27 @@ next_427:                                              ; pred = %next_428, %ifFa
 ifTrue_251:                                            ; pred = %ifTrue_250
   %x$182 = load i32, i32* %lv$2, align 4
   %y$188 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$244 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$188
-  %SHIFT_TABLE$245 = load i32, i32* %SHIFT_TABLE$244, align 4
-  %result_$545 = sdiv i32 %x$182, %SHIFT_TABLE$245
+  %SHIFT_TABLE$212 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$188
+  %SHIFT_TABLE$213 = load i32, i32* %SHIFT_TABLE$212, align 4
+  %result_$545 = sdiv i32 %x$182, %SHIFT_TABLE$213
   store i32 %result_$545, i32* %lv$2, align 4
   %x$183 = load i32, i32* %lv$2, align 4
   %result_$546 = add i32 %x$183, 65536
   %y$189 = load i32, i32* %lv$3, align 4
   %result_$547 = sub i32 15, %y$189
   %result_$548 = add i32 %result_$547, 1
-  %SHIFT_TABLE$246 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$548
-  %SHIFT_TABLE$247 = load i32, i32* %SHIFT_TABLE$246, align 4
-  %result_$549 = sub i32 %result_$546, %SHIFT_TABLE$247
+  %SHIFT_TABLE$214 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$548
+  %SHIFT_TABLE$215 = load i32, i32* %SHIFT_TABLE$214, align 4
+  %result_$549 = sub i32 %result_$546, %SHIFT_TABLE$215
   store i32 %result_$549, i32* %lv, align 4
   br label %next_428
 
 ifFalse_105:                                           ; pred = %ifTrue_250
   %x$184 = load i32, i32* %lv$2, align 4
   %y$190 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$248 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$190
-  %SHIFT_TABLE$249 = load i32, i32* %SHIFT_TABLE$248, align 4
-  %result_$550 = sdiv i32 %x$184, %SHIFT_TABLE$249
+  %SHIFT_TABLE$216 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$190
+  %SHIFT_TABLE$217 = load i32, i32* %SHIFT_TABLE$216, align 4
+  %result_$550 = sdiv i32 %x$184, %SHIFT_TABLE$217
   store i32 %result_$550, i32* %lv, align 4
   br label %next_428
 
@@ -5489,27 +5457,27 @@ next_431:                                              ; pred = %next_432, %ifFa
 ifTrue_255:                                            ; pred = %ifTrue_254
   %x$188 = load i32, i32* %lv$2, align 4
   %y$193 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$250 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$193
-  %SHIFT_TABLE$251 = load i32, i32* %SHIFT_TABLE$250, align 4
-  %result_$551 = sdiv i32 %x$188, %SHIFT_TABLE$251
+  %SHIFT_TABLE$218 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$193
+  %SHIFT_TABLE$219 = load i32, i32* %SHIFT_TABLE$218, align 4
+  %result_$551 = sdiv i32 %x$188, %SHIFT_TABLE$219
   store i32 %result_$551, i32* %lv$2, align 4
   %x$189 = load i32, i32* %lv$2, align 4
   %result_$552 = add i32 %x$189, 65536
   %y$194 = load i32, i32* %lv$3, align 4
   %result_$553 = sub i32 15, %y$194
   %result_$554 = add i32 %result_$553, 1
-  %SHIFT_TABLE$252 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$554
-  %SHIFT_TABLE$253 = load i32, i32* %SHIFT_TABLE$252, align 4
-  %result_$555 = sub i32 %result_$552, %SHIFT_TABLE$253
+  %SHIFT_TABLE$220 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %result_$554
+  %SHIFT_TABLE$221 = load i32, i32* %SHIFT_TABLE$220, align 4
+  %result_$555 = sub i32 %result_$552, %SHIFT_TABLE$221
   store i32 %result_$555, i32* %lv, align 4
   br label %next_432
 
 ifFalse_109:                                           ; pred = %ifTrue_254
   %x$190 = load i32, i32* %lv$2, align 4
   %y$195 = load i32, i32* %lv$3, align 4
-  %SHIFT_TABLE$254 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$195
-  %SHIFT_TABLE$255 = load i32, i32* %SHIFT_TABLE$254, align 4
-  %result_$556 = sdiv i32 %x$190, %SHIFT_TABLE$255
+  %SHIFT_TABLE$222 = getelementptr [16 x i32], [16 x i32]* @gv, i32 0, i32 %y$195
+  %SHIFT_TABLE$223 = load i32, i32* %SHIFT_TABLE$222, align 4
+  %result_$556 = sdiv i32 %x$190, %SHIFT_TABLE$223
   store i32 %result_$556, i32* %lv, align 4
   br label %next_432
 

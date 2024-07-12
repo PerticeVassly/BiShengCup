@@ -2582,6 +2582,9 @@ next_340:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:dfs
 	sd a0, 360(sp)
 
@@ -3506,6 +3509,9 @@ whileBody_171:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load s lv
 
 	# get address of lv points to
@@ -3560,6 +3566,9 @@ whileBody_171:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:dfs
 	sd a0, 64(sp)
@@ -3640,24 +3649,6 @@ whileBody_171:
 	ld t1, 0(t4)
 	beqz t1, next_343
 	j ifTrue_171
-next_342:
-
-	# reserve space
-	li t4, 184
-	sub sp, sp, t4
-
-	# save CallerSavedRegs
-
-	# save callee saved regs
-	addi sp, sp, 0
-
-	# save the parameters
-
-	# get address of local var:0
-	sd a0, 176(sp)
-
-	# get address of local var:1
-	sd a1, 168(sp)
 ifTrue_171:
 
 	# load flow lv$2
@@ -3806,6 +3797,9 @@ mainEntry83:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 128(sp)
 
@@ -3838,6 +3832,9 @@ mainEntry83:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$1
 	sd a0, 120(sp)
@@ -3900,6 +3897,9 @@ mainEntry83:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br whileCond_172
 	j whileCond_172
@@ -3979,6 +3979,9 @@ whileBody_172:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$2
 	sd a0, 72(sp)
 
@@ -4012,6 +4015,9 @@ whileBody_172:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$3
 	sd a0, 64(sp)
 
@@ -4044,6 +4050,9 @@ whileBody_172:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getint$4
 	sd a0, 56(sp)
@@ -4135,6 +4144,9 @@ whileBody_172:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load E$1 lv$1
 
 	# get address of lv$1 points to
@@ -4217,6 +4229,9 @@ next_344:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:max_flow
 	sd a0, 0(sp)
 
@@ -4239,6 +4254,9 @@ next_344:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -4256,6 +4274,9 @@ next_344:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# ret 
 
 	# fetch variables
@@ -4264,3 +4285,13 @@ next_344:
 	li t4, 216
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

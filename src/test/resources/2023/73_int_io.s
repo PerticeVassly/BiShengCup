@@ -80,6 +80,9 @@ whileBody_19:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getch
 	sd a0, 208(sp)
 
@@ -313,6 +316,9 @@ whileBody_20:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:getch$1
 	sd a0, 112(sp)
@@ -1061,6 +1067,9 @@ whileBody_22:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br whileCond_22
 	j whileCond_22
 next_52:
@@ -1109,6 +1118,9 @@ mainEntry6:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:my_getint
 	sd a0, 64(sp)
@@ -1208,6 +1220,9 @@ whileBody_23:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:my_getint$1
 	sd a0, 24(sp)
 
@@ -1260,6 +1275,9 @@ whileBody_23:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -1276,6 +1294,9 @@ whileBody_23:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load n$1 lv
 
@@ -1331,3 +1352,13 @@ next_53:
 	li t4, 104
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

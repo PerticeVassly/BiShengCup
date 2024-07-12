@@ -385,6 +385,9 @@ mainEntry87:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:set_a
 	sd a0, 896(sp)
 
@@ -446,6 +449,9 @@ next_355:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -462,6 +468,9 @@ next_355:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load b gv1
 
@@ -493,6 +502,9 @@ next_355:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -509,6 +521,9 @@ next_355:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# gv @
 
@@ -553,6 +568,9 @@ next_355:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:set_a$1
 	sd a0, 864(sp)
 
@@ -596,6 +614,9 @@ secondCond_76:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:set_b
 	sd a0, 848(sp)
@@ -658,6 +679,9 @@ next_356:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -674,6 +698,9 @@ next_356:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load b$1 gv1
 
@@ -705,6 +732,9 @@ next_356:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -721,6 +751,9 @@ next_356:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# gv2 @
 
@@ -798,6 +831,9 @@ secondCond_77:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:set_b$1
 	sd a0, 792(sp)
 
@@ -859,6 +895,9 @@ next_357:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -875,6 +914,9 @@ next_357:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# cmp   cond_le_tmp_
 
@@ -940,6 +982,9 @@ secondCond_78:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:set_d
 	sd a0, 744(sp)
 
@@ -1001,6 +1046,9 @@ next_358:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# prepare params
 
 	# fetch variables
@@ -1017,6 +1065,9 @@ next_358:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# cmp   cond_ge_tmp_$1
 
@@ -1081,6 +1132,9 @@ secondCond_79:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:set_d$1
 	sd a0, 696(sp)
 
@@ -1125,6 +1179,9 @@ ifTrue_180:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_359
 	j next_359
 next_359:
@@ -1153,6 +1210,9 @@ ifTrue_181:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_360
 	j next_360
@@ -1270,6 +1330,9 @@ ifTrue_182:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_361
 	j next_361
 next_361:
@@ -1385,6 +1448,9 @@ ifTrue_183:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_362
 	j next_362
@@ -1503,6 +1569,9 @@ ifTrue_184:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_363
 	j next_363
 next_363:
@@ -1532,6 +1601,9 @@ ifTrue_185:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_364
 	j next_364
 next_364:
@@ -1552,6 +1624,9 @@ next_364:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# lv 
 
@@ -1686,6 +1761,9 @@ whileBody_179:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br whileCond_179
 	j whileCond_179
 next_365:
@@ -1780,6 +1858,9 @@ ifTrue_186:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_366
 	j next_366
@@ -1914,6 +1995,9 @@ ifTrue_187:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_367
 	j next_367
@@ -2088,6 +2172,9 @@ ifTrue_188:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_368
 	j next_368
@@ -2301,6 +2388,9 @@ ifTrue_189:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_369
 	j next_369
@@ -2589,6 +2679,9 @@ ifTrue_190:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_370
 	j next_370
 next_370:
@@ -2609,6 +2702,9 @@ next_370:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# ret 
 
@@ -2790,3 +2886,13 @@ secondCond_87:
 	ld t1, 0(t4)
 	beqz t1, next_370
 	j ifTrue_190
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

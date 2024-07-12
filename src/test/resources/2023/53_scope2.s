@@ -390,6 +390,9 @@ next_305:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_304
 	j next_304
 ifTrue_151:
@@ -601,3 +604,13 @@ next_306:
 
 	# br whileCond_154
 	j whileCond_154
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

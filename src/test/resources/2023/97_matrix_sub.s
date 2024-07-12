@@ -35,34 +35,37 @@ subEntry:
 
 	# get address of local var:2
 	sd a2, 544(sp)
-
-	# get address of local var:3
-	sd a3, 536(sp)
+	li t4, 616
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 536
+	add t4, sp, t4
+	sd t3, 0(t4)
 	li t4, 608
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 528
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 608
+	li t4, 600
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 520
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 608
+	li t4, 592
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 512
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 608
+	li t4, 584
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 504
 	add t4, sp, t4
 	sd t3, 0(t4)
-	li t4, 608
+	li t4, 576
 	add t4, sp, t4
 	ld t3, 0(t4)
 	li t4, 496
@@ -1871,7 +1874,8 @@ next_308:
 	li t4, 336
 	add t4, sp, t4
 	ld t1, 0(t4)
-	mv a3, t1
+	addi sp, sp, -8
+	sd t1, 0(sp)
 
 	# fetch variables
 	li t4, 328
@@ -1918,6 +1922,9 @@ next_308:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 48
 
 	# get address of local var:sub
 	sd a0, 288(sp)
@@ -2108,6 +2115,9 @@ whileBody_157:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$16 lv$9
 
 	# get address of lv$9 points to
@@ -2215,6 +2225,9 @@ next_309:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br whileCond_158
 	j whileCond_158
@@ -2385,6 +2398,9 @@ whileBody_158:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$19 lv$9
 
 	# get address of lv$9 points to
@@ -2492,6 +2508,9 @@ next_310:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br whileCond_159
 	j whileCond_159
@@ -2662,6 +2681,9 @@ whileBody_159:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$22 lv$9
 
 	# get address of lv$9 points to
@@ -2755,6 +2777,9 @@ next_311:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# ret 
 
 	# fetch variables
@@ -2763,3 +2788,13 @@ next_311:
 	li t4, 952
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

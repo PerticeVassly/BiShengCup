@@ -237,6 +237,9 @@ whileBody_102:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$2 lv
 
 	# get address of lv points to
@@ -337,6 +340,9 @@ ifTrue_114:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# ret void
 	li t4, 152
 	add sp, sp, t4
@@ -362,6 +368,9 @@ ifFalse_42:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# br next_217
 	j next_217
@@ -1125,6 +1134,9 @@ ifTrue_116:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# br next_220
 	j next_220
 next_220:
@@ -1387,6 +1399,9 @@ next_220:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# load i$8 lv$1
 
 	# get address of lv$1 points to
@@ -1634,6 +1649,9 @@ mainEntry53:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 64(sp)
 
@@ -1732,6 +1750,9 @@ whileBody_104:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$1
 	sd a0, 24(sp)
 
@@ -1766,6 +1787,9 @@ whileBody_104:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# load N$1 lv
 
@@ -1834,3 +1858,13 @@ next_221:
 	li t4, 88
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret
