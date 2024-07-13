@@ -38,7 +38,7 @@ public class GlobalVar extends ValueRef implements Variable {
         this.type = type;
 //        this.constant = constant;
     }
-
+    
     public boolean isZeroInitializer() {
         return ((Pointer)type).getBase() instanceof ArrayType && !(initVal.getType() instanceof ArrayType); // initVal = zero
     }

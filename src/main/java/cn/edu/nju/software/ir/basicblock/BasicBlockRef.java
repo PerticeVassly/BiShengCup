@@ -91,8 +91,8 @@ public class BasicBlockRef extends ValueRef {
         return irs.get(index);
     }
 
-    public Stream<Instruction> getIrs() {
-        return irs.stream();
+    public List<Instruction> getIrs() {
+        return irs;
     }
 
     public LocalVar createLocalVar(TypeRef type, String name) {

@@ -3,6 +3,7 @@ package cn.edu.nju.software.backend;
 import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.Allocate;
+import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.type.TypeRef;
@@ -12,7 +13,6 @@ import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class RiscFunction {
 
@@ -45,11 +45,9 @@ public class RiscFunction {
      */
     private void reserveSpaceForFParams() {
         FunctionType functionType = (FunctionType) functionValue.getType();
-        IntStream.range(0, functionType.getFParametersCount())
-            .forEach(i -> {
-                int size = 8;
-                allocator.allocate(new LocalVar(functionType.getFParameter(i), i + ""), size);
-            });
+        for(int i = 0; i < functionType.getFParametersCount(); i++){
+            allocator.allocate(new LocalVar(functionType.getFParameter(i), i + ""), 8);
+        }
     }
 
     /**
@@ -58,18 +56,22 @@ public class RiscFunction {
      * [所有出现的变量全部都要预留内存空间]
      * </p>
      */
+
     private void reserveSpaceForLocalVariables() {
-        functionValue.getBasicBlockRefs().stream()
-                .flatMap(BasicBlockRef::getIrs)
-                .filter(i -> i.getLVal() != null)
-                .forEach(i -> {
-                    reserveMemoryForType(i.getLVal(), i.getLVal().getType());
-                    if (i instanceof Allocate) {
-                        //allocate得到一个lVal需要分配空间，同时也要为其指向的对象分配空间
-                        TypeRef baseType = ((Pointer) i.getLVal().getType()).getBase();
+
+        for(int i = 0; i < functionValue.getBasicBlockRefs().size(); i++){
+            BasicBlockRef bb = functionValue.getBasicBlockRefs().get(i);
+            for(int j = 0; j < bb.getIrs().size(); j++){
+                Instruction ir = bb.getIrs().get(j);
+                if(ir.getLVal() != null){
+                    reserveMemoryForType(ir.getLVal(), ir.getLVal().getType());
+                    if(ir instanceof Allocate){
+                        TypeRef baseType = ((Pointer) ir.getLVal().getType()).getBase();
                         reserveMemoryForAllocate(baseType);
                     }
-                });
+                }
+            }
+        }
     }
 
     private void reserveMemoryForType(ValueRef var, TypeRef type) {
@@ -83,8 +85,8 @@ public class RiscFunction {
     private void genRiscBasicBlocks() {
         for (BasicBlockRef bb : functionValue.getBasicBlockRefs()) {
             RiscBasicBlock riscBasicBlock = new RiscBasicBlock(bb, functionValue);
-            riscBasicBlocks.add(riscBasicBlock);
             riscBasicBlock.codeGen();
+            riscBasicBlocks.add(riscBasicBlock);
         }
     }
 

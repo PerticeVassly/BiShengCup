@@ -8,7 +8,8 @@ fib:
 fibEntry:
 
 	# reserve space
-	addi sp, sp, -144
+	li t4, 144
+	sub sp, sp, t4
 
 	# save CallerSavedRegs
 
@@ -17,38 +18,51 @@ fibEntry:
 
 	# save the parameters
 
-	# get address of 0 into 
+	# get address of local var:0
 	sd a0, 136(sp)
 
-	# allocate n
-	addi t0, sp, 120
+	# allocate lv
+	li t0, 120
+	add t0, sp, t0
+	li t1, 128
+	add t1, sp, t1
+	sd t0, 0(t1)
 
-	# get address of local var:n
-	sd t0, 128(sp)
-
-	# store n 0
+	# lv 0
 
 	# fetch variables
+
+	# get address of local var:0
 	ld t1, 136(sp)
 
-	# get address of n points to
-	ld t3, 128(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	# store lv 0
 
-	# load n$1 n
+	# get address of lv points to
+	li t4, 128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# get address of n points to
-	ld t3, 128(sp)
-	addi t3, t3, 0
+	# load n lv
 
-	# get address of local var:n$1
-	ld t0, 0(t3)
+	# get address of lv points to
+	li t4, 128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+
+	# get address of local var:n
+	ld t0, 0(t4)
 	sd t0, 112(sp)
 
-	# cmp n$1  cond_eq_tmp_
+	# cmp n  cond_eq_tmp_
 
 	# fetch variables
+
+	# get address of local var:n
 	ld t1, 112(sp)
 	li t2, 1
 
@@ -57,18 +71,22 @@ fibEntry:
 	seqz t0, t0
 	sd t0, 104(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
+
+	# get address of local var:cond_eq_tmp_
 	ld t1, 104(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 96(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
+
+	# get address of local var:cond_tmp_
 	ld t1, 96(sp)
 	li t2, 0
 
@@ -81,6 +99,8 @@ fibEntry:
 	# condBr cond_ ifTrue_4 next_4
 
 	# fetch variables
+
+	# get address of local var:cond_
 	ld t1, 88(sp)
 	beqz t1, next_4
 	j ifTrue_4
@@ -91,26 +111,32 @@ ifTrue_4:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 144
+	li t4, 144
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
 next_4:
 
-	# load n$2 n
+	# load n$1 lv
 
-	# get address of n points to
-	ld t3, 128(sp)
-	addi t3, t3, 0
+	# get address of lv points to
+	li t4, 128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
-	# get address of local var:n$2
-	ld t0, 0(t3)
+	# get address of local var:n$1
+	ld t0, 0(t4)
 	sd t0, 80(sp)
 
-	# cmp n$2  cond_eq_tmp_$1
+	# cmp n$1  cond_eq_tmp_$1
 
 	# fetch variables
+
+	# get address of local var:n$1
 	ld t1, 80(sp)
 	li t2, 2
 
@@ -119,18 +145,22 @@ next_4:
 	seqz t0, t0
 	sd t0, 72(sp)
 
+	# zext cond_tmp_$1 cond_eq_tmp_$1
+
 	# fetch variables
+
+	# get address of local var:cond_eq_tmp_$1
 	ld t1, 72(sp)
 
 	# get address of local var:cond_tmp_$1
-
-	# zext cond_tmp_$1 cond_eq_tmp_$1
 	mv t0, t1
 	sd t0, 64(sp)
 
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
+
+	# get address of local var:cond_tmp_$1
 	ld t1, 64(sp)
 	li t2, 0
 
@@ -143,6 +173,8 @@ next_4:
 	# condBr cond_$1 ifTrue_5 next_5
 
 	# fetch variables
+
+	# get address of local var:cond_$1
 	ld t1, 56(sp)
 	beqz t1, next_5
 	j ifTrue_5
@@ -153,26 +185,32 @@ ifTrue_5:
 	# fetch variables
 	li t1, 1
 	mv a0, t1
-	addi sp, sp, 144
+	li t4, 144
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
 next_5:
 
-	# load n$3 n
+	# load n$2 lv
 
-	# get address of n points to
-	ld t3, 128(sp)
-	addi t3, t3, 0
+	# get address of lv points to
+	li t4, 128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
-	# get address of local var:n$3
-	ld t0, 0(t3)
+	# get address of local var:n$2
+	ld t0, 0(t4)
 	sd t0, 48(sp)
 
-	# sub result_ n$3 
+	# sub result_ n$2 
 
 	# fetch variables
+
+	# get address of local var:n$2
 	ld t1, 48(sp)
 	li t2, 1
 
@@ -183,8 +221,11 @@ next_5:
 	# prepare params
 
 	# fetch variables
+
+	# get address of local var:result_
 	ld t1, 40(sp)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -197,22 +238,30 @@ next_5:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:fib
 	sd a0, 32(sp)
 
-	# load n$4 n
+	# load n$3 lv
 
-	# get address of n points to
-	ld t3, 128(sp)
-	addi t3, t3, 0
+	# get address of lv points to
+	li t4, 128
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
-	# get address of local var:n$4
-	ld t0, 0(t3)
+	# get address of local var:n$3
+	ld t0, 0(t4)
 	sd t0, 24(sp)
 
-	# sub result_$1 n$4 
+	# sub result_$1 n$3 
 
 	# fetch variables
+
+	# get address of local var:n$3
 	ld t1, 24(sp)
 	li t2, 2
 
@@ -223,8 +272,11 @@ next_5:
 	# prepare params
 
 	# fetch variables
+
+	# get address of local var:result_$1
 	ld t1, 16(sp)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -236,6 +288,9 @@ next_5:
 	# restore caller saved regs
 	ld ra, 0(sp)
 	addi sp, sp, 8
+
+	# release params
+	addi sp, sp, 0
 
 	# get address of local var:fib$1
 	sd a0, 8(sp)
@@ -243,19 +298,26 @@ next_5:
 	# add result_$2 fib fib$1
 
 	# fetch variables
+
+	# get address of local var:fib
 	ld t1, 32(sp)
+
+	# get address of local var:fib$1
 	ld t2, 8(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_$2
-	add t0, t1, t2
 	sd t0, 0(sp)
 
 	# ret result_$2
 
 	# fetch variables
+
+	# get address of local var:result_$2
 	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 144
+	li t4, 144
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -263,24 +325,27 @@ next_5:
 .type main, @function
 .globl main
 main:
-mainEntry7:
+mainEntry10:
 
 	# reserve space
-	addi sp, sp, -24
+	li t4, 24
+	sub sp, sp, t4
 
 	# save the parameters
 
-	# allocate n
-	addi t0, sp, 8
-
-	# get address of local var:n
-	sd t0, 16(sp)
+	# allocate lv
+	li t0, 8
+	add t0, sp, t0
+	li t1, 16
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# prepare params
 
 	# fetch variables
 	li t1, 4
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -293,13 +358,29 @@ mainEntry7:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:fib
 	sd a0, 0(sp)
 
 	# ret fib
 
 	# fetch variables
+
+	# get address of local var:fib
 	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 24
+	li t4, 24
+	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

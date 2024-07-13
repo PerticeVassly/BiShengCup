@@ -1,37 +1,33 @@
 .data
 .align 2
-.globl a
-a:
-.dword 10
-.globl b
-b:
-.dword 5
 .text
 .align 2
 .type main, @function
 .globl main
 main:
-mainEntry28:
+mainEntry30:
 
 	# reserve space
-	addi sp, sp, -8
+	li t4, 0
+	sub sp, sp, t4
 
 	# save the parameters
 
-	# load b b
-
-	# get address of b points to
-	la t3, b
-	addi t3, t3, 0
-
-	# get address of local var:b
-	ld t0, 0(t3)
-	sd t0, 0(sp)
-
-	# ret b
+	# ret 
 
 	# fetch variables
-	ld t1, 0(sp)
+	li t1, 5
 	mv a0, t1
-	addi sp, sp, 8
+	li t4, 0
+	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

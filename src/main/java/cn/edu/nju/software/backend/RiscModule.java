@@ -1,6 +1,8 @@
 package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.ir.module.ModuleRef;
+import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.ir.value.GlobalVar;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -32,15 +34,17 @@ public class RiscModule {
 
     public void codeGen() {
         //一定由全局变量Main
-        llvmModule.getGlobalVars().forEach(globalVar ->
-                riscGlobalVars.add(new RiscGlobalVar(globalVar)));
+        for(GlobalVar globalVar : llvmModule.getGlobalVars()){
+            riscGlobalVars.add(new RiscGlobalVar(globalVar));
+        }
 
-        llvmModule.getFunctions().filter(f -> !libFuncs.contains(f.getName()))
-                .forEach(function -> {
-                    RiscFunction riscFunction = new RiscFunction(function);
-                    riscFunctions.add(riscFunction);
-                    riscFunction.codeGen();
-                });
+        for(FunctionValue function : llvmModule.getFunctions()){
+            if(!libFuncs.contains(function.getName())){
+                RiscFunction riscFunction = new RiscFunction(function);
+                riscFunctions.add(riscFunction);
+                riscFunction.codeGen();
+            }
+        }
     }
 
     public void dumpToConsole() {
@@ -50,6 +54,18 @@ public class RiscModule {
 
         System.out.println(".text" + System.lineSeparator() + ".align 2");
         riscFunctions.forEach(RiscFunction::dumpToConsole);
+        //添加memset函数，a0传数组首地址，a1传想要赋的值，a2传需要赋值的空间大小
+        System.out.print("""
+                memset:\s
+                    blez    a2, .LBB0_3\s
+                    slli    a2, a2, 2\s
+                    add     a2, a2, a0\s
+                .LBB0_2:\s
+                    sw      a1, 0(a0)\s
+                    addi    a0, a0, 4\s
+                    bltu    a0, a2, .LBB0_2\s
+                .LBB0_3:\s
+                    ret""");
     }
 
     public void dumpToFile(String path) {

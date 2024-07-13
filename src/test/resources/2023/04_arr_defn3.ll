@@ -17,7 +17,11 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry18:
+mainEntry96:
+  %lv$4 = alloca [4 x [2 x i32]], align 16
+  %lv$3 = alloca [4 x [2 x i32]], align 16
+  %lv$2 = alloca [4 x [2 x i32]], align 16
+  %lv$1 = alloca [4 x [2 x i32]], align 16
   %lv = alloca [4 x [2 x i32]], align 16
   %ptr_ = getelementptr [4 x [2 x i32]], [4 x [2 x i32]]* %lv, i32 0, i32 0
   %inp = getelementptr [2 x i32], [2 x i32]* %ptr_, i32 0, i32 0
@@ -43,7 +47,6 @@ mainEntry18:
   %ptr_$7 = getelementptr [4 x [2 x i32]], [4 x [2 x i32]]* %lv, i32 0, i32 3
   %inp$7 = getelementptr [2 x i32], [2 x i32]* %ptr_$7, i32 0, i32 1
   store i32 0, i32* %inp$7, align 4
-  %lv$1 = alloca [4 x [2 x i32]], align 16
   %ptr_$8 = getelementptr [4 x [2 x i32]], [4 x [2 x i32]]* %lv$1, i32 0, i32 0
   %inp$8 = getelementptr [2 x i32], [2 x i32]* %ptr_$8, i32 0, i32 0
   store i32 1, i32* %inp$8, align 4
@@ -68,7 +71,6 @@ mainEntry18:
   %ptr_$15 = getelementptr [4 x [2 x i32]], [4 x [2 x i32]]* %lv$1, i32 0, i32 3
   %inp$15 = getelementptr [2 x i32], [2 x i32]* %ptr_$15, i32 0, i32 1
   store i32 8, i32* %inp$15, align 4
-  %lv$2 = alloca [4 x [2 x i32]], align 16
   %ptr_$16 = getelementptr [4 x [2 x i32]], [4 x [2 x i32]]* %lv$2, i32 0, i32 0
   %inp$16 = getelementptr [2 x i32], [2 x i32]* %ptr_$16, i32 0, i32 0
   store i32 1, i32* %inp$16, align 4
@@ -93,7 +95,6 @@ mainEntry18:
   %ptr_$23 = getelementptr [4 x [2 x i32]], [4 x [2 x i32]]* %lv$2, i32 0, i32 3
   %inp$23 = getelementptr [2 x i32], [2 x i32]* %ptr_$23, i32 0, i32 1
   store i32 8, i32* %inp$23, align 4
-  %lv$3 = alloca [4 x [2 x i32]], align 16
   %ptr_$24 = getelementptr [4 x [2 x i32]], [4 x [2 x i32]]* %lv$3, i32 0, i32 0
   %inp$24 = getelementptr [2 x i32], [2 x i32]* %ptr_$24, i32 0, i32 0
   store i32 1, i32* %inp$24, align 4
@@ -118,7 +119,6 @@ mainEntry18:
   %ptr_$31 = getelementptr [4 x [2 x i32]], [4 x [2 x i32]]* %lv$3, i32 0, i32 3
   %inp$31 = getelementptr [2 x i32], [2 x i32]* %ptr_$31, i32 0, i32 1
   store i32 8, i32* %inp$31, align 4
-  %lv$4 = alloca [4 x [2 x i32]], align 16
   %ptr_$32 = getelementptr [4 x [2 x i32]], [4 x [2 x i32]]* %lv$3, i32 0, i32 2
   %d = getelementptr [2 x i32], [2 x i32]* %ptr_$32, i32 0, i32 1
   %d$1 = load i32, i32* %d, align 4

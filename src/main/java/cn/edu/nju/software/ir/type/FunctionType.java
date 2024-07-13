@@ -21,6 +21,10 @@ public class FunctionType extends TypeRef {
         return fParametersCount;
     }
 
+    public ArrayList<TypeRef> getFParameters() {
+        return fParameters;
+    }
+
     public TypeRef getFParameter(int index) {
         if (index < 0 || index >= fParametersCount) {
             return null;

@@ -1,8 +1,6 @@
 package cn.edu.nju.software.ir.type;
 
-import cn.edu.nju.software.frontend.type.Type;
-
-import java.util.Arrays;
+import cn.edu.nju.software.ir.value.ArrayValue;
 
 public class ArrayType extends TypeRef {
     private final TypeRef elementType;
@@ -23,6 +21,13 @@ public class ArrayType extends TypeRef {
         return elementType;
     }
 
+    public TypeRef getBaseType() {
+        if (elementType instanceof ArrayType) {
+            return ((ArrayType) elementType).getBaseType();
+        } else {
+            return elementType;
+        }
+    }
     public String toString() {
         if (elementSize != UNKNOWN){
             return "[" + elementSize + " x " + elementType.toString() + "]";
@@ -61,7 +66,7 @@ public class ArrayType extends TypeRef {
 
     public int getTotSize() {
         if (!(elementType instanceof ArrayType)) {
-            return elementSize;
+            return elementSize*elementType.getWidth();
         } else {
             return ((ArrayType) elementType).getTotSize() * elementSize;
         }

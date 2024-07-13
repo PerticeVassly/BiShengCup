@@ -36,6 +36,8 @@ import java.util.ArrayList;
     // bit extend
      ValueRef buildZExtend(BuilderRef builder, ValueRef operand, TypeRef type, String lValName); // zero extend, unsigned int value extension
 
+     // bitcast
+     ValueRef buildBitCast(BuilderRef builder, ValueRef operand, String name);
     // call func and build return stmt
      ValueRef buildCall(BuilderRef builder, FunctionValue function, ArrayList<ValueRef> arguments
              , int argCount, String retValName, int lineNo);

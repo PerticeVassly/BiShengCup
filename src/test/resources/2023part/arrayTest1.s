@@ -8,62 +8,129 @@ main:
 mainEntry1:
 
 	# reserve space
-	addi sp, sp, -40
+	li t4, 56
+	sub sp, sp, t4
 
 	# save the parameters
 
-	# allocate a
-	addi t0, sp, 16
+	# allocate lv
+	li t0, 32
+	add t0, sp, t0
+	li t1, 48
+	add t1, sp, t1
+	sd t0, 0(t1)
 
-	# get address of local var:a
-	sd t0, 32(sp)
+	# gep inp 
 
-	# store a 
+	# fetch variables
+	li t1, 0
+	li t2, 8
+	mul t0, t1, t2
+
+	# get value of local var:lv
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
+	add t0, t1, t0
+
+	# get address of local var:inp
+	sd t0, 24(sp)
+
+	# inp 
 
 	# fetch variables
 	li t1, 3
 
-	# get address of a points to
-	ld t3, 32(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	# store inp 
 
-	# fetch variables
-	li t1, 4
+	# get address of inp points to
+	li t4, 24
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# get address of a points to
-	ld t3, 32(sp)
-	addi t3, t3, 8
-	sd t1, 0(t3)
-
-	# gep a$1 
+	# gep inp$1 
 
 	# fetch variables
 	li t1, 1
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of a into 
-	ld t1, 32(sp)
+	# get value of local var:lv
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of a$1 into 
-	sd t0, 8(sp)
+	# get address of local var:inp$1
+	sd t0, 16(sp)
 
-	# load a$2 a$1
-
-	# get address of a$1 points to
-	ld t3, 8(sp)
-	addi t3, t3, 0
-
-	# get address of local var:a$2
-	ld t0, 0(t3)
-	sd t0, 0(sp)
-
-	# ret a$2
+	# inp$1 
 
 	# fetch variables
+	li t1, 4
+
+	# store inp$1 
+
+	# get address of inp$1 points to
+	li t4, 16
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
+
+	# gep a 
+
+	# fetch variables
+	li t1, 1
+	li t2, 8
+	mul t0, t1, t2
+
+	# get value of local var:lv
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	mv t1, t3
+	add t0, t1, t0
+
+	# get address of local var:a
+	sd t0, 8(sp)
+
+	# load a$1 a
+
+	# get address of a points to
+	li t4, 8
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+
+	# get address of local var:a$1
+	ld t0, 0(t4)
+	sd t0, 0(sp)
+
+	# ret a$1
+
+	# fetch variables
+
+	# get address of local var:a$1
 	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 40
+	li t4, 56
+	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

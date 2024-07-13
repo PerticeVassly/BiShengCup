@@ -1,0 +1,4 @@
+float a[200][2]={{1,2}};
+int main() {
+   return 0;
+}

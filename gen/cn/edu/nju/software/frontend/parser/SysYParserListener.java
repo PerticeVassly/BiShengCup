@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+// Generated from //wsl.localhost/Ubuntu/home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/frontend/parser/SysYParser.g4 by ANTLR 4.13.1
+=======
 // Generated from E:/codes/2024-Compiler-Contest/compilers/src/main/java/cn/edu/nju/software/frontend/parser/SysYParser.g4 by ANTLR 4.13.1
+>>>>>>> 2031039867fcf2cadb6f2f223a4bffe627cd15d1
 package cn.edu.nju.software.frontend.parser;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 

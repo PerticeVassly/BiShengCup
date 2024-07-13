@@ -17,22 +17,22 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry15:
-  %a = alloca i32, align 4
-  %b = alloca i32, align 4
-  %c = alloca i32, align 4
-  %d = alloca i32, align 4
-  store i32 10, i32* %a, align 4
-  store i32 4, i32* %b, align 4
-  store i32 2, i32* %c, align 4
-  store i32 2, i32* %d, align 4
-  %c$1 = load i32, i32* %c, align 4
-  %a$1 = load i32, i32* %a, align 4
-  %b$1 = load i32, i32* %b, align 4
-  %result_ = mul i32 %a$1, %b$1
-  %result_$1 = add i32 %c$1, %result_
-  %d$1 = load i32, i32* %d, align 4
-  %result_$2 = sub i32 %result_$1, %d$1
+mainEntry70:
+  %lv$3 = alloca i32, align 4
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 10, i32* %lv, align 4
+  store i32 4, i32* %lv$1, align 4
+  store i32 2, i32* %lv$2, align 4
+  store i32 2, i32* %lv$3, align 4
+  %c = load i32, i32* %lv$2, align 4
+  %a = load i32, i32* %lv, align 4
+  %b = load i32, i32* %lv$1, align 4
+  %result_ = mul i32 %a, %b
+  %result_$1 = add i32 %c, %result_
+  %d = load i32, i32* %lv$3, align 4
+  %result_$2 = sub i32 %result_$1, %d
   ret i32 %result_$2
 }
 

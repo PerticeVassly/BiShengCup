@@ -1,7 +1,7 @@
 .data
 .align 2
-.globl a
-a:
+.globl gv
+gv:
 .dword 0
 .text
 .align 2
@@ -11,7 +11,8 @@ func:
 funcEntry:
 
 	# reserve space
-	addi sp, sp, -48
+	li t4, 48
+	sub sp, sp, t4
 
 	# save CallerSavedRegs
 
@@ -20,40 +21,43 @@ funcEntry:
 
 	# save the parameters
 
-	# get address of 0 into 
+	# get address of local var:0
 	sd a0, 40(sp)
 
-	# allocate p
-	addi t0, sp, 24
+	# allocate lv
+	li t0, 24
+	add t0, sp, t0
 
-	# get address of local var:p
+	# get address of local var:lv
 	sd t0, 32(sp)
 
-	# p 0
+	# lv 0
 
 	# fetch variables
+
+	# get address of local var:0
 	ld t1, 40(sp)
 
-	# store p 0
+	# store lv 0
 
-	# get address of p points to
+	# get address of lv points to
 	ld t3, 32(sp)
-	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load p$1 p
+	# load p lv
 
-	# get address of p points to
+	# get address of lv points to
 	ld t3, 32(sp)
-	addi t3, t3, 0
 
-	# get address of local var:p$1
+	# get address of local var:p
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# sub result_ p$1 
+	# sub result_ p 
 
 	# fetch variables
+
+	# get address of local var:p
 	ld t1, 16(sp)
 	li t2, 1
 
@@ -61,34 +65,37 @@ funcEntry:
 	sub t0, t1, t2
 	sd t0, 8(sp)
 
-	# p result_
+	# lv result_
 
 	# fetch variables
+
+	# get address of local var:result_
 	ld t1, 8(sp)
 
-	# store p result_
+	# store lv result_
 
-	# get address of p points to
+	# get address of lv points to
 	ld t3, 32(sp)
-	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load p$2 p
+	# load p$1 lv
 
-	# get address of p points to
+	# get address of lv points to
 	ld t3, 32(sp)
-	addi t3, t3, 0
 
-	# get address of local var:p$2
+	# get address of local var:p$1
 	ld t0, 0(t3)
 	sd t0, 0(sp)
 
-	# ret p$2
+	# ret p$1
 
 	# fetch variables
+
+	# get address of local var:p$1
 	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 48
+	li t4, 48
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -96,36 +103,36 @@ funcEntry:
 .type main, @function
 .globl main
 main:
-mainEntry20:
+mainEntry21:
 
 	# reserve space
-	addi sp, sp, -40
+	li t4, 40
+	sub sp, sp, t4
 
 	# save the parameters
 
-	# allocate b
-	addi t0, sp, 24
+	# allocate lv
+	li t0, 24
+	add t0, sp, t0
 
-	# get address of local var:b
+	# get address of local var:lv
 	sd t0, 32(sp)
 
-	# a @
+	# gv @
 
 	# fetch variables
 	li t1, 10
 
-	# store a 
+	# store gv 
 
-	# get address of a points to
-	la t3, a
-	addi t3, t3, 0
+	# get address of gv points to
+	la t3, gv
 	sd t1, 0(t3)
 
-	# load a a
+	# load a gv
 
-	# get address of a points to
-	la t3, a
-	addi t3, t3, 0
+	# get address of gv points to
+	la t3, gv
 
 	# get address of local var:a
 	ld t0, 0(t3)
@@ -134,8 +141,11 @@ mainEntry20:
 	# prepare params
 
 	# fetch variables
+
+	# get address of local var:a
 	ld t1, 16(sp)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -148,35 +158,51 @@ mainEntry20:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:func
 	sd a0, 8(sp)
 
-	# b func
+	# lv func
 
 	# fetch variables
+
+	# get address of local var:func
 	ld t1, 8(sp)
 
-	# store b func
+	# store lv func
 
-	# get address of b points to
+	# get address of lv points to
 	ld t3, 32(sp)
-	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load b$1 b
+	# load b lv
 
-	# get address of b points to
+	# get address of lv points to
 	ld t3, 32(sp)
-	addi t3, t3, 0
 
-	# get address of local var:b$1
+	# get address of local var:b
 	ld t0, 0(t3)
 	sd t0, 0(sp)
 
-	# ret b$1
+	# ret b
 
 	# fetch variables
+
+	# get address of local var:b
 	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 40
+	li t4, 40
+	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

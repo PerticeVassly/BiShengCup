@@ -8,7 +8,8 @@ defn:
 defnEntry:
 
 	# reserve space
-	addi sp, sp, 0
+	li t4, 0
+	sub sp, sp, t4
 
 	# save CallerSavedRegs
 
@@ -22,7 +23,8 @@ defnEntry:
 	# fetch variables
 	li t1, 4
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -30,20 +32,23 @@ defnEntry:
 .type main, @function
 .globl main
 main:
-mainEntry81:
+mainEntry85:
 
 	# reserve space
-	addi sp, sp, -32
+	li t4, 32
+	sub sp, sp, t4
 
 	# save the parameters
 
-	# allocate a
-	addi t0, sp, 16
+	# allocate lv
+	li t0, 16
+	add t0, sp, t0
 
-	# get address of local var:a
+	# get address of local var:lv
 	sd t0, 24(sp)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -56,35 +61,51 @@ mainEntry81:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:defn
 	sd a0, 8(sp)
 
-	# a defn
+	# lv defn
 
 	# fetch variables
+
+	# get address of local var:defn
 	ld t1, 8(sp)
 
-	# store a defn
+	# store lv defn
 
-	# get address of a points to
+	# get address of lv points to
 	ld t3, 24(sp)
-	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load a$1 a
+	# load a lv
 
-	# get address of a points to
+	# get address of lv points to
 	ld t3, 24(sp)
-	addi t3, t3, 0
 
-	# get address of local var:a$1
+	# get address of local var:a
 	ld t0, 0(t3)
 	sd t0, 0(sp)
 
-	# ret a$1
+	# ret a
 
 	# fetch variables
+
+	# get address of local var:a
 	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 32
+	li t4, 32
+	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

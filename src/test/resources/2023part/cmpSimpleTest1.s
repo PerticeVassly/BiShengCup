@@ -5,42 +5,54 @@
 .type main, @function
 .globl main
 main:
-mainEntry8:
+mainEntry11:
 
 	# reserve space
-	addi sp, sp, -56
+	li t4, 56
+	sub sp, sp, t4
 
 	# save the parameters
 
-	# allocate a
-	addi t0, sp, 40
+	# allocate lv
+	li t0, 40
+	add t0, sp, t0
+	li t1, 48
+	add t1, sp, t1
+	sd t0, 0(t1)
 
-	# get address of local var:a
-	sd t0, 48(sp)
-
-	# store a 
+	# lv 
 
 	# fetch variables
 	li t1, 1
 
-	# get address of a points to
-	ld t3, 48(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	# store lv 
 
-	# load a$1 a
+	# get address of lv points to
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
-	# get address of a points to
-	ld t3, 48(sp)
-	addi t3, t3, 0
+	# load a lv
 
-	# get address of local var:a$1
-	ld t0, 0(t3)
+	# get address of lv points to
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+
+	# get address of local var:a
+	ld t0, 0(t4)
 	sd t0, 32(sp)
 
-	# cmp a$1  cond_eq_tmp_
+	# cmp a  cond_eq_tmp_
 
 	# fetch variables
+
+	# get address of local var:a
 	ld t1, 32(sp)
 	li t2, 1
 
@@ -49,18 +61,22 @@ mainEntry8:
 	seqz t0, t0
 	sd t0, 24(sp)
 
+	# zext cond_tmp_ cond_eq_tmp_
+
 	# fetch variables
+
+	# get address of local var:cond_eq_tmp_
 	ld t1, 24(sp)
 
 	# get address of local var:cond_tmp_
-
-	# zext cond_tmp_ cond_eq_tmp_
 	mv t0, t1
 	sd t0, 16(sp)
 
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
+
+	# get address of local var:cond_tmp_
 	ld t1, 16(sp)
 	li t2, 0
 
@@ -73,39 +89,62 @@ mainEntry8:
 	# condBr cond_ ifTrue_6 next_6
 
 	# fetch variables
+
+	# get address of local var:cond_
 	ld t1, 8(sp)
 	beqz t1, next_6
 	j ifTrue_6
 ifTrue_6:
 
-	# store a 
+	# lv 
 
 	# fetch variables
 	li t1, 2
 
-	# get address of a points to
-	ld t3, 48(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
+	# store lv 
+
+	# get address of lv points to
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
+	sd t1, 0(t4)
 
 	# br next_6
 	j next_6
 next_6:
 
-	# load a$2 a
+	# load a$1 lv
 
-	# get address of a points to
-	ld t3, 48(sp)
-	addi t3, t3, 0
+	# get address of lv points to
+	li t4, 48
+	add t4, sp, t4
+	ld t3, 0(t4)
+	li t4, 0
+	add t4, t3, t4
 
-	# get address of local var:a$2
-	ld t0, 0(t3)
+	# get address of local var:a$1
+	ld t0, 0(t4)
 	sd t0, 0(sp)
 
-	# ret a$2
+	# ret a$1
 
 	# fetch variables
+
+	# get address of local var:a$1
 	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 56
+	li t4, 56
+	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

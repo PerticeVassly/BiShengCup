@@ -5,60 +5,63 @@
 .type main, @function
 .globl main
 main:
-mainEntry49:
+mainEntry52:
 
 	# reserve space
-	addi sp, sp, -984
+	li t4, 984
+	sub sp, sp, t4
 
 	# save the parameters
 
-	# allocate arr
-	addi t0, sp, 176
+	# allocate lv$2
+	li t0, 968
+	add t0, sp, t0
 
-	# get address of local var:arr
+	# get address of local var:lv$2
 	sd t0, 976(sp)
 
-	# allocate i
-	addi t0, sp, 160
+	# allocate lv$1
+	li t0, 952
+	add t0, sp, t0
 
-	# get address of local var:i
-	sd t0, 168(sp)
+	# get address of local var:lv$1
+	sd t0, 960(sp)
 
-	# i 
+	# allocate lv
+	li t0, 144
+	add t0, sp, t0
 
-	# fetch variables
-	li t1, 0
+	# get address of local var:lv
+	sd t0, 944(sp)
 
-	# store i 
-
-	# get address of i points to
-	ld t3, 168(sp)
-	addi t3, t3, 0
-	sd t1, 0(t3)
-
-	# allocate sum
-	addi t0, sp, 144
-
-	# get address of local var:sum
-	sd t0, 152(sp)
-
-	# sum 
+	# lv$1 
 
 	# fetch variables
 	li t1, 0
 
-	# store sum 
+	# store lv$1 
 
-	# get address of sum points to
-	ld t3, 152(sp)
-	addi t3, t3, 0
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_179
-	j whileCond_179
-whileCond_179:
+	# lv$2 
+
+	# fetch variables
+	li t1, 0
+
+	# store lv$2 
+
+	# get address of lv$2 points to
+	ld t3, 976(sp)
+	sd t1, 0(t3)
+
+	# br whileCond_192
+	j whileCond_192
+whileCond_192:
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -71,12 +74,17 @@ whileCond_179:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint
 	sd a0, 136(sp)
 
 	# cmp getint  cond_normalize_
 
 	# fetch variables
+
+	# get address of local var:getint
 	ld t1, 136(sp)
 	li t2, 0
 
@@ -86,39 +94,46 @@ whileCond_179:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_normalize_ whileBody_179 next_414
+	# condBr cond_normalize_ whileBody_192 next_460
 
 	# fetch variables
+
+	# get address of local var:cond_normalize_
 	ld t1, 128(sp)
-	beqz t1, next_414
-	j whileBody_179
-whileBody_179:
+	beqz t1, next_460
+	j whileBody_192
+whileBody_192:
 
-	# load i$1 i
+	# load i lv$1
 
-	# get address of i points to
-	ld t3, 168(sp)
-	addi t3, t3, 0
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 
-	# get address of local var:i$1
+	# get address of local var:i
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# gep arr$1 i$1
+	# gep arr i
 
 	# fetch variables
+
+	# get address of local var:i
 	ld t1, 120(sp)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr into 
-	ld t1, 976(sp)
+	# get value of local var:lv
+
+	# get address of local var:lv
+	ld t3, 944(sp)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of arr$1 into 
+	# get address of local var:arr
 	sd t0, 112(sp)
 
 	# prepare params
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -131,74 +146,81 @@ whileBody_179:
 	ld ra, 0(sp)
 	addi sp, sp, 8
 
+	# release params
+	addi sp, sp, 0
+
 	# get address of local var:getint$1
 	sd a0, 104(sp)
 
-	# arr$1 getint$1
+	# arr getint$1
 
 	# fetch variables
+
+	# get address of local var:getint$1
 	ld t1, 104(sp)
 
-	# store arr$1 getint$1
+	# store arr getint$1
 
-	# get address of arr$1 points to
+	# get address of arr points to
 	ld t3, 112(sp)
-	addi t3, t3, 0
 	sd t1, 0(t3)
 
-	# load i$2 i
+	# load i$1 lv$1
 
-	# get address of i points to
-	ld t3, 168(sp)
-	addi t3, t3, 0
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 
-	# get address of local var:i$2
+	# get address of local var:i$1
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# add result_ i$2 
+	# add result_ i$1 
 
 	# fetch variables
+
+	# get address of local var:i$1
 	ld t1, 96(sp)
 	li t2, 1
+	add t0, t1, t2
 
 	# get address of local var:result_
-	add t0, t1, t2
 	sd t0, 88(sp)
 
-	# i result_
+	# lv$1 result_
 
 	# fetch variables
+
+	# get address of local var:result_
 	ld t1, 88(sp)
 
-	# store i result_
+	# store lv$1 result_
 
-	# get address of i points to
-	ld t3, 168(sp)
-	addi t3, t3, 0
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_179
-	j whileCond_179
-next_414:
+	# br whileCond_192
+	j whileCond_192
+next_460:
 
-	# br whileCond_180
-	j whileCond_180
-whileCond_180:
+	# br whileCond_193
+	j whileCond_193
+whileCond_193:
 
-	# load i$3 i
+	# load i$2 lv$1
 
-	# get address of i points to
-	ld t3, 168(sp)
-	addi t3, t3, 0
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 
-	# get address of local var:i$3
+	# get address of local var:i$2
 	ld t0, 0(t3)
 	sd t0, 80(sp)
 
-	# cmp i$3  cond_normalize_$1
+	# cmp i$2  cond_normalize_$1
 
 	# fetch variables
+
+	# get address of local var:i$2
 	ld t1, 80(sp)
 	li t2, 0
 
@@ -208,27 +230,30 @@ whileCond_180:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_normalize_$1 whileBody_180 next_415
+	# condBr cond_normalize_$1 whileBody_193 next_461
 
 	# fetch variables
+
+	# get address of local var:cond_normalize_$1
 	ld t1, 72(sp)
-	beqz t1, next_415
-	j whileBody_180
-whileBody_180:
+	beqz t1, next_461
+	j whileBody_193
+whileBody_193:
 
-	# load i$4 i
+	# load i$3 lv$1
 
-	# get address of i points to
-	ld t3, 168(sp)
-	addi t3, t3, 0
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 
-	# get address of local var:i$4
+	# get address of local var:i$3
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# sub result_$1 i$4 
+	# sub result_$1 i$3 
 
 	# fetch variables
+
+	# get address of local var:i$3
 	ld t1, 64(sp)
 	li t2, 1
 
@@ -236,101 +261,110 @@ whileBody_180:
 	sub t0, t1, t2
 	sd t0, 56(sp)
 
-	# i result_$1
+	# lv$1 result_$1
 
 	# fetch variables
+
+	# get address of local var:result_$1
 	ld t1, 56(sp)
 
-	# store i result_$1
+	# store lv$1 result_$1
 
-	# get address of i points to
-	ld t3, 168(sp)
-	addi t3, t3, 0
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# load sum$1 sum
+	# load sum lv$2
 
-	# get address of sum points to
-	ld t3, 152(sp)
-	addi t3, t3, 0
+	# get address of lv$2 points to
+	ld t3, 976(sp)
 
-	# get address of local var:sum$1
+	# get address of local var:sum
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# load i$5 i
+	# load i$4 lv$1
 
-	# get address of i points to
-	ld t3, 168(sp)
-	addi t3, t3, 0
+	# get address of lv$1 points to
+	ld t3, 960(sp)
 
-	# get address of local var:i$5
+	# get address of local var:i$4
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# gep arr$2 i$5
+	# gep arr$1 i$4
 
 	# fetch variables
+
+	# get address of local var:i$4
 	ld t1, 40(sp)
 	li t2, 8
 	mul t0, t1, t2
 
-	# get address of arr into 
-	ld t1, 976(sp)
+	# get value of local var:lv
+
+	# get address of local var:lv
+	ld t3, 944(sp)
+	mv t1, t3
 	add t0, t1, t0
 
-	# get address of arr$2 into 
+	# get address of local var:arr$1
 	sd t0, 32(sp)
 
-	# load arr$3 arr$2
+	# load arr$2 arr$1
 
-	# get address of arr$2 points to
+	# get address of arr$1 points to
 	ld t3, 32(sp)
-	addi t3, t3, 0
 
-	# get address of local var:arr$3
+	# get address of local var:arr$2
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_$2 sum$1 arr$3
+	# add result_$2 sum arr$2
 
 	# fetch variables
+
+	# get address of local var:sum
 	ld t1, 48(sp)
+
+	# get address of local var:arr$2
 	ld t2, 24(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_$2
-	add t0, t1, t2
 	sd t0, 16(sp)
 
-	# sum result_$2
+	# lv$2 result_$2
 
 	# fetch variables
+
+	# get address of local var:result_$2
 	ld t1, 16(sp)
 
-	# store sum result_$2
+	# store lv$2 result_$2
 
-	# get address of sum points to
-	ld t3, 152(sp)
-	addi t3, t3, 0
+	# get address of lv$2 points to
+	ld t3, 976(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_180
-	j whileCond_180
-next_415:
+	# br whileCond_193
+	j whileCond_193
+next_461:
 
-	# load sum$2 sum
+	# load sum$1 lv$2
 
-	# get address of sum points to
-	ld t3, 152(sp)
-	addi t3, t3, 0
+	# get address of lv$2 points to
+	ld t3, 976(sp)
 
-	# get address of local var:sum$2
+	# get address of local var:sum$1
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# mod result_$3 sum$2 
+	# mod result_$3 sum$1 
 
 	# fetch variables
+
+	# get address of local var:sum$1
 	ld t1, 8(sp)
 	li t2, 79
 
@@ -341,7 +375,20 @@ next_415:
 	# ret result_$3
 
 	# fetch variables
+
+	# get address of local var:result_$3
 	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 984
+	li t4, 984
+	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

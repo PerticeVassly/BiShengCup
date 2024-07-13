@@ -18,42 +18,42 @@ declare void @memset(i32*, i32, i32)
 
 define void @reverse(i32 %0) {
 reverseEntry:
-  %n = alloca i32, align 4
-  store i32 %0, i32* %n, align 4
-  %next = alloca i32, align 4
-  %n$1 = load i32, i32* %n, align 4
-  %cond_le_tmp_ = icmp sle i32 %n$1, 1
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  %n = load i32, i32* %lv, align 4
+  %cond_le_tmp_ = icmp sle i32 %n, 1
   %cond_tmp_ = zext i1 %cond_le_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_283, label %ifFalse_108
+  br i1 %cond_, label %ifTrue_286, label %ifFalse_125
 
-ifTrue_283:                                          ; pred = %reverseEntry
+ifTrue_286:                                          ; pred = %reverseEntry
   %getint = call i32 @getint()
-  store i32 %getint, i32* %next, align 4
-  %next$1 = load i32, i32* %next, align 4
-  call void @putint(i32 %next$1)
-  br label %next_486
+  store i32 %getint, i32* %lv$1, align 4
+  %next = load i32, i32* %lv$1, align 4
+  call void @putint(i32 %next)
+  br label %next_484
 
-ifFalse_108:                                         ; pred = %reverseEntry
+ifFalse_125:                                         ; pred = %reverseEntry
   %getint$1 = call i32 @getint()
-  store i32 %getint$1, i32* %next, align 4
-  %n$2 = load i32, i32* %n, align 4
-  %result_ = sub i32 %n$2, 1
+  store i32 %getint$1, i32* %lv$1, align 4
+  %n$1 = load i32, i32* %lv, align 4
+  %result_ = sub i32 %n$1, 1
   call void @reverse(i32 %result_)
-  %next$2 = load i32, i32* %next, align 4
-  call void @putint(i32 %next$2)
-  br label %next_486
+  %next$1 = load i32, i32* %lv$1, align 4
+  call void @putint(i32 %next$1)
+  br label %next_484
 
-next_486:                                            ; pred = %ifTrue_283, %ifFalse_108
+next_484:                                            ; pred = %ifTrue_286, %ifFalse_125
   ret void
 }
 
 define i32 @main() {
-mainEntry56:
-  %i = alloca i32, align 4
-  store i32 200, i32* %i, align 4
-  %i$1 = load i32, i32* %i, align 4
-  call void @reverse(i32 %i$1)
+mainEntry53:
+  %lv = alloca i32, align 4
+  store i32 200, i32* %lv, align 4
+  %i = load i32, i32* %lv, align 4
+  call void @reverse(i32 %i)
   ret i32 0
 }
 

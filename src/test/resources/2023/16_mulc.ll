@@ -16,12 +16,8 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-@a = global i32 5, align 4
-
 define i32 @main() {
-mainEntry11:
-  %a = load i32, i32* @a, align 4
-  %result_ = mul i32 %a, 5
-  ret i32 %result_
+mainEntry1:
+  ret i32 25
 }
 

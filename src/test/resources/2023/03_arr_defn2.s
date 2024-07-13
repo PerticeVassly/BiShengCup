@@ -1,17 +1,18 @@
 .data
 .align 2
-.globl a
-a:
-.dword 0
+.globl gv
+gv:
+.zero 800
 .text
 .align 2
 .type main, @function
 .globl main
 main:
-mainEntry87:
+mainEntry92:
 
 	# reserve space
-	addi sp, sp, 0
+	li t4, 0
+	sub sp, sp, t4
 
 	# save the parameters
 
@@ -20,5 +21,16 @@ mainEntry87:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret
