@@ -10,6 +10,7 @@ import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscLi;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.instruction.BitCast;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
@@ -157,8 +158,4 @@ public class RiscBasicBlock {
         }
     }
 
-    @Override
-    public void visit(BitCast bitCast) {
-        // TODO
-    }
 }

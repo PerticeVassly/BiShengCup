@@ -17,21 +17,7 @@ import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscSgtz;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
-import cn.edu.nju.software.ir.instruction.Allocate;
-import cn.edu.nju.software.ir.instruction.Br;
-import cn.edu.nju.software.ir.instruction.Call;
-import cn.edu.nju.software.ir.instruction.Cmp;
-import cn.edu.nju.software.ir.instruction.CondBr;
-import cn.edu.nju.software.ir.instruction.FloatToInt;
-import cn.edu.nju.software.ir.instruction.GEP;
-import cn.edu.nju.software.ir.instruction.Instruction;
-import cn.edu.nju.software.ir.instruction.IntToFloat;
-import cn.edu.nju.software.ir.instruction.Load;
-import cn.edu.nju.software.ir.instruction.OpEnum;
-import cn.edu.nju.software.ir.instruction.RetValue;
-import cn.edu.nju.software.ir.instruction.RetVoid;
-import cn.edu.nju.software.ir.instruction.Store;
-import cn.edu.nju.software.ir.instruction.ZExt;
+import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.Add;
 import cn.edu.nju.software.ir.instruction.arithmetic.Div;
 import cn.edu.nju.software.ir.instruction.arithmetic.FAdd;
@@ -603,6 +589,10 @@ public class RiscInstrGenerator implements InstructionVisitor {
         }
     }
 
+    @Override
+    public void visit(BitCast bitCast) {
+        //TODO
+    }
     private void prepareParams(Call call) {
         riscInstructions.add(new RiscComment("prepare params"));
         //prepare the parameters

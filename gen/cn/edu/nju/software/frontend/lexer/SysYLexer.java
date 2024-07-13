@@ -1,4 +1,4 @@
-// Generated from E:/codes/2024-Compiler-Contest/compilers/src/main/java/cn/edu/nju/software/frontend/lexer/SysYLexer.g4 by ANTLR 4.13.1
+// Generated from /home/ymhui/compiler_principle/SysyCompiler_old/src/main/java/cn/edu/nju/software/frontend/lexer/SysYLexer.g4 by ANTLR 4.13.1
 package cn.edu.nju.software.frontend.lexer;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
