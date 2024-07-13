@@ -1,4 +1,13 @@
-float a[200][2]={{1,2}};
-int main() {
-   return 0;
+int main(){
+   int a=1;
+   while(a<60){
+        while(a<60){
+            while(a<60){
+                while(a<60){
+                   a=a+1;
+                }
+            }
+        }
+   }
+ return a;
 }

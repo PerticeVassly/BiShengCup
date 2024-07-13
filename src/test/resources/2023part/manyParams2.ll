@@ -17,7 +17,7 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @f(i32 %0, i32 %1, i32 %2, i32 %3, i32 %4, i32 %5) {
-fEntry:
+fEntry1:
   %lv$5 = alloca i32, align 4
   %lv$4 = alloca i32, align 4
   %lv$3 = alloca i32, align 4
@@ -45,7 +45,7 @@ fEntry:
 }
 
 define i32 @main() {
-mainEntry3:
+mainEntry8:
   %f = call i32 @f(i32 1, i32 2, i32 3, i32 4, i32 5, i32 6)
   ret i32 %f
 }

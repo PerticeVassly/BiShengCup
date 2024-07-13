@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry91:
+mainEntry92:
 
 	# reserve space
 	li t4, 120
@@ -216,8 +216,8 @@ ifTrue_191:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_369
-	j next_369
+	# br next_377
+	j next_377
 ifFalse_61:
 
 	# lv 
@@ -235,9 +235,9 @@ ifFalse_61:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_369
-	j next_369
-next_369:
+	# br next_377
+	j next_377
+next_377:
 
 	# load a$1 lv
 

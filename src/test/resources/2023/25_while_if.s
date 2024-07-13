@@ -204,9 +204,9 @@ deepWhileBrEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_157
-	j whileCond_157
-whileCond_157:
+	# br whileCond_165
+	j whileCond_165
+whileCond_165:
 
 	# load c lv$2
 
@@ -258,15 +258,15 @@ whileCond_157:
 	seqz t0, t0
 	sd t0, 160(sp)
 
-	# condBr cond_ whileBody_157 next_307
+	# condBr cond_ whileBody_165 next_315
 
 	# fetch variables
 	li t4, 160
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_307
-	j whileBody_157
-whileBody_157:
+	beqz t1, next_315
+	j whileBody_165
+whileBody_165:
 
 	# lv$3 
 
@@ -333,15 +333,15 @@ whileBody_157:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_$1 ifTrue_150 next_308
+	# condBr cond_$1 ifTrue_150 next_316
 
 	# fetch variables
 	li t4, 128
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_308
+	beqz t1, next_316
 	j ifTrue_150
-next_307:
+next_315:
 
 	# load c$4 lv$2
 
@@ -479,18 +479,18 @@ ifTrue_150:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$2 ifTrue_151 next_309
+	# condBr cond_$2 ifTrue_151 next_317
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_309
+	beqz t1, next_317
 	j ifTrue_151
-next_308:
+next_316:
 
-	# br whileCond_157
-	j whileCond_157
+	# br whileCond_165
+	j whileCond_165
 ifTrue_151:
 
 	# load d$1 lv$3
@@ -597,18 +597,18 @@ ifTrue_151:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_$3 ifTrue_152 next_310
+	# condBr cond_$3 ifTrue_152 next_318
 
 	# fetch variables
 	li t4, 16
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_310
+	beqz t1, next_318
 	j ifTrue_152
-next_309:
+next_317:
 
-	# br next_308
-	j next_308
+	# br next_316
+	j next_316
 ifTrue_152:
 
 	# load e lv$4
@@ -653,16 +653,16 @@ ifTrue_152:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_310
-	j next_310
-next_310:
+	# br next_318
+	j next_318
+next_318:
 
-	# br next_309
-	j next_309
+	# br next_317
+	j next_317
 .type main, @function
 .globl main
 main:
-mainEntry77:
+mainEntry78:
 
 	# reserve space
 	li t4, 48

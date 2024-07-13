@@ -113,13 +113,13 @@ ififElseEntry:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ ifTrue_129 next_256
+	# condBr cond_ ifTrue_129 next_264
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_256
+	beqz t1, next_264
 	j ifTrue_129
 ifTrue_129:
 
@@ -182,7 +182,7 @@ ifTrue_129:
 	ld t1, 0(t4)
 	beqz t1, ifFalse_49
 	j ifTrue_130
-next_256:
+next_264:
 
 	# load a$2 lv
 
@@ -227,8 +227,8 @@ ifTrue_130:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_257
-	j next_257
+	# br next_265
+	j next_265
 ifFalse_49:
 
 	# load a$1 lv
@@ -273,16 +273,16 @@ ifFalse_49:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_257
-	j next_257
-next_257:
+	# br next_265
+	j next_265
+next_265:
 
-	# br next_256
-	j next_256
+	# br next_264
+	j next_264
 .type main, @function
 .globl main
 main:
-mainEntry63:
+mainEntry64:
 
 	# reserve space
 	li t4, 8

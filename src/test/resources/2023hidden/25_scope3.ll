@@ -17,17 +17,21 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry28:
+mainEntry22:
+  %lv$6 = alloca i32, align 4
+  %lv$5 = alloca i32, align 4
+  %lv$4 = alloca i32, align 4
+  %lv$3 = alloca i32, align 4
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
   call void @putch(i32 97)
   call void @putch(i32 10)
-  %lv = alloca i32, align 4
   store i32 1, i32* %lv, align 4
-  %lv$1 = alloca i32, align 4
   store i32 0, i32* %lv$1, align 4
   %a = load i32, i32* %lv, align 4
   %result_ = add i32 %a, 2
   store i32 %result_, i32* %lv, align 4
-  %lv$2 = alloca i32, align 4
   %a$1 = load i32, i32* %lv, align 4
   %result_$1 = add i32 %a$1, 3
   store i32 %result_$1, i32* %lv$2, align 4
@@ -43,7 +47,6 @@ mainEntry28:
   %b$2 = load i32, i32* %lv$2, align 4
   %result_$5 = add i32 %b$2, 5
   store i32 %result_$5, i32* %lv$2, align 4
-  %lv$3 = alloca i32, align 4
   %b$3 = load i32, i32* %lv$2, align 4
   %result_$6 = add i32 %b$3, 6
   store i32 %result_$6, i32* %lv$3, align 4
@@ -63,7 +66,6 @@ mainEntry28:
   %a$5 = load i32, i32* %lv, align 4
   %result_$11 = add i32 %b$5, %a$5
   store i32 %result_$11, i32* %lv$2, align 4
-  %lv$4 = alloca i32, align 4
   %main$2 = load i32, i32* %lv$3, align 4
   %result_$12 = add i32 %main$2, 7
   store i32 %result_$12, i32* %lv$4, align 4
@@ -82,21 +84,17 @@ mainEntry28:
   %a$8 = load i32, i32* %lv$4, align 4
   %result_$17 = add i32 %b$7, %a$8
   store i32 %result_$17, i32* %lv$2, align 4
-  %lv$5 = alloca i32, align 4
   %main$4 = load i32, i32* %lv$3, align 4
   %result_$18 = add i32 %main$4, 9
   store i32 %result_$18, i32* %lv$5, align 4
   %a$9 = load i32, i32* %lv$4, align 4
   %result_$19 = add i32 %a$9, 10
   store i32 %result_$19, i32* %lv$4, align 4
-  %lv$6 = alloca i32, align 4
-  store i32 11, i32* %lv$6, align 4
   %b$8 = load i32, i32* %lv$5, align 4
   %result_$20 = add i32 %b$8, 12
   store i32 %result_$20, i32* %lv$5, align 4
   %putch$3 = load i32, i32* %lv$1, align 4
-  %a$10 = load i32, i32* %lv$6, align 4
-  %result_$21 = add i32 %putch$3, %a$10
+  %result_$21 = add i32 %putch$3, 11
   %b$9 = load i32, i32* %lv$5, align 4
   %result_$22 = add i32 %result_$21, %b$9
   %main$5 = load i32, i32* %lv$3, align 4
@@ -106,20 +104,17 @@ mainEntry28:
   %b$10 = load i32, i32* %lv$5, align 4
   %result_$24 = add i32 %main$6, %b$10
   store i32 %result_$24, i32* %lv$3, align 4
-  %lv$7 = alloca i32, align 4
   %b$11 = load i32, i32* %lv$5, align 4
   %result_$25 = add i32 %b$11, 13
-  store i32 %result_$25, i32* %lv$7, align 4
-  %main$7 = load i32, i32* %lv$7, align 4
-  %a$11 = load i32, i32* %lv$6, align 4
-  %result_$26 = add i32 %main$7, %a$11
-  store i32 %result_$26, i32* %lv$7, align 4
+  store i32 %result_$25, i32* %lv$6, align 4
+  %main$7 = load i32, i32* %lv$6, align 4
+  %result_$26 = add i32 %main$7, 11
+  store i32 %result_$26, i32* %lv$6, align 4
   %putch$4 = load i32, i32* %lv$1, align 4
-  %a$12 = load i32, i32* %lv$6, align 4
-  %result_$27 = add i32 %putch$4, %a$12
+  %result_$27 = add i32 %putch$4, 11
   %b$12 = load i32, i32* %lv$5, align 4
   %result_$28 = add i32 %result_$27, %b$12
-  %main$8 = load i32, i32* %lv$7, align 4
+  %main$8 = load i32, i32* %lv$6, align 4
   %result_$29 = add i32 %result_$28, %main$8
   store i32 %result_$29, i32* %lv$1, align 4
   %putch$5 = load i32, i32* %lv$1, align 4
@@ -131,8 +126,8 @@ mainEntry28:
   %result_$31 = sub i32 %putch$6, %b$13
   store i32 %result_$31, i32* %lv$1, align 4
   %putch$7 = load i32, i32* %lv$1, align 4
-  %a$13 = load i32, i32* %lv, align 4
-  %result_$32 = sub i32 %putch$7, %a$13
+  %a$10 = load i32, i32* %lv, align 4
+  %result_$32 = sub i32 %putch$7, %a$10
   store i32 %result_$32, i32* %lv$1, align 4
   %putch$8 = load i32, i32* %lv$1, align 4
   %result_$33 = srem i32 %putch$8, 77

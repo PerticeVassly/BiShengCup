@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry8:
+mainEntry9:
 
 	# reserve space
 	li t4, 288
@@ -144,15 +144,15 @@ mainEntry8:
 	seqz t0, t0
 	sd t0, 200(sp)
 
-	# condBr cond_ ifTrue_ next_
+	# condBr cond_ ifTrue_2 next_2
 
 	# fetch variables
 	li t4, 200
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_
-	j ifTrue_
-ifTrue_:
+	beqz t1, next_2
+	j ifTrue_2
+ifTrue_2:
 
 	# load b$1 lv$1
 
@@ -219,15 +219,15 @@ ifTrue_:
 	seqz t0, t0
 	sd t0, 160(sp)
 
-	# condBr cond_$1 secondCond_1 next_1
+	# condBr cond_$1 secondCond_2 next_3
 
 	# fetch variables
 	li t4, 160
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_1
-	j secondCond_1
-next_:
+	beqz t1, next_3
+	j secondCond_2
+next_2:
 
 	# load b$3 lv$1
 
@@ -294,15 +294,15 @@ next_:
 	seqz t0, t0
 	sd t0, 120(sp)
 
-	# condBr cond_$4 ifTrue_2 next_2
+	# condBr cond_$4 ifTrue_4 next_4
 
 	# fetch variables
 	li t4, 120
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_2
-	j ifTrue_2
-ifTrue_1:
+	beqz t1, next_4
+	j ifTrue_4
+ifTrue_3:
 
 	# ret 
 
@@ -312,11 +312,11 @@ ifTrue_1:
 	li t4, 288
 	add sp, sp, t4
 	ret 
-next_1:
+next_3:
 
-	# br next_
-	j next_
-secondCond_:
+	# br next_2
+	j next_2
+secondCond_1:
 
 	# load a$2 lv
 
@@ -383,15 +383,15 @@ secondCond_:
 	seqz t0, t0
 	sd t0, 80(sp)
 
-	# condBr cond_$3 ifTrue_1 next_1
+	# condBr cond_$3 ifTrue_3 next_3
 
 	# fetch variables
 	li t4, 80
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_1
-	j ifTrue_1
-secondCond_1:
+	beqz t1, next_3
+	j ifTrue_3
+secondCond_2:
 
 	# load a$1 lv
 
@@ -458,15 +458,15 @@ secondCond_1:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_$2 secondCond_ next_1
+	# condBr cond_$2 secondCond_1 next_3
 
 	# fetch variables
 	li t4, 40
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_1
-	j secondCond_
-ifTrue_2:
+	beqz t1, next_3
+	j secondCond_1
+ifTrue_4:
 
 	# load a$3 lv
 
@@ -533,15 +533,15 @@ ifTrue_2:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$5 ifTrue_3 next_3
+	# condBr cond_$5 ifTrue_5 next_5
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_3
-	j ifTrue_3
-next_2:
+	beqz t1, next_5
+	j ifTrue_5
+next_4:
 
 	# ret 
 
@@ -551,7 +551,7 @@ next_2:
 	li t4, 288
 	add sp, sp, t4
 	ret 
-ifTrue_3:
+ifTrue_5:
 
 	# ret 
 
@@ -561,7 +561,7 @@ ifTrue_3:
 	li t4, 288
 	add sp, sp, t4
 	ret 
-next_3:
+next_5:
 
 	# ret 
 
@@ -571,3 +571,13 @@ next_3:
 	li t4, 288
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

@@ -29,20 +29,20 @@ mainEntry12:
   %cond_lt_tmp_ = icmp slt i32 %a, %b
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %secondCond_2, label %ifFalse_
+  br i1 %cond_, label %secondCond_3, label %ifFalse_1
 
-ifTrue_7:                                            ; pred = %secondCond_2
+ifTrue_6:                                            ; pred = %secondCond_3
   ret i32 10
 
-ifFalse_:                                            ; pred = %mainEntry12, %secondCond_2
+ifFalse_1:                                           ; pred = %mainEntry12, %secondCond_3
   ret i32 0
 
-secondCond_2:                                        ; pred = %mainEntry12
+secondCond_3:                                        ; pred = %mainEntry12
   %b$1 = load i32, i32* %lv$1, align 4
   %c = load i32, i32* %lv$2, align 4
   %cond_lt_tmp_$1 = icmp slt i32 %b$1, %c
   %cond_tmp_$1 = zext i1 %cond_lt_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_7, label %ifFalse_
+  br i1 %cond_$1, label %ifTrue_6, label %ifFalse_1
 }
 

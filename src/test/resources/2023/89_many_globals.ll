@@ -294,7 +294,7 @@ testParam32Entry:
 }
 
 define i32 @main() {
-mainEntry83:
+mainEntry84:
   store i32 0, i32* @gv, align 4
   store i32 1, i32* @gv1, align 4
   store i32 2, i32* @gv2, align 4

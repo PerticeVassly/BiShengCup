@@ -210,7 +210,7 @@ ifFalse_56:
 	ld t1, 0(t4)
 	beqz t1, ifFalse_57
 	j secondCond_68
-next_296:
+next_304:
 
 	# load a$6 lv
 
@@ -316,8 +316,8 @@ ifTrue_146:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_297
-	j next_297
+	# br next_305
+	j next_305
 ifFalse_57:
 
 	# load b$2 lv$1
@@ -379,10 +379,10 @@ ifFalse_57:
 	ld t1, 0(t4)
 	beqz t1, ifFalse_58
 	j secondCond_69
-next_297:
+next_305:
 
-	# br next_296
-	j next_296
+	# br next_304
+	j next_304
 secondCond_68:
 
 	# load a$2 lv
@@ -488,8 +488,8 @@ ifTrue_147:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_298
-	j next_298
+	# br next_306
+	j next_306
 ifFalse_58:
 
 	# load a$5 lv
@@ -534,12 +534,12 @@ ifFalse_58:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_298
-	j next_298
-next_298:
+	# br next_306
+	j next_306
+next_306:
 
-	# br next_297
-	j next_297
+	# br next_305
+	j next_305
 secondCond_69:
 
 	# load a$3 lv
@@ -604,7 +604,7 @@ secondCond_69:
 .type main, @function
 .globl main
 main:
-mainEntry72:
+mainEntry73:
 
 	# reserve space
 	li t4, 8

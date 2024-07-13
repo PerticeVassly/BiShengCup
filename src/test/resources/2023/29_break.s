@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry88:
+mainEntry89:
 
 	# reserve space
 	li t4, 144
@@ -57,9 +57,9 @@ mainEntry88:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_177
-	j whileCond_177
-whileCond_177:
+	# br whileCond_185
+	j whileCond_185
+whileCond_185:
 
 	# load i lv
 
@@ -111,15 +111,15 @@ whileCond_177:
 	seqz t0, t0
 	sd t0, 80(sp)
 
-	# condBr cond_ whileBody_177 next_366
+	# condBr cond_ whileBody_185 next_374
 
 	# fetch variables
 	li t4, 80
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_366
-	j whileBody_177
-whileBody_177:
+	beqz t1, next_374
+	j whileBody_185
+whileBody_185:
 
 	# load i$1 lv
 
@@ -172,15 +172,15 @@ whileBody_177:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_$1 ifTrue_189 next_367
+	# condBr cond_$1 ifTrue_189 next_375
 
 	# fetch variables
 	li t4, 48
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_367
+	beqz t1, next_375
 	j ifTrue_189
-next_366:
+next_374:
 
 	# load sum$1 lv$1
 
@@ -207,12 +207,12 @@ next_366:
 	ret 
 ifTrue_189:
 
-	# br next_366
-	j next_366
+	# br next_374
+	j next_374
 
-	# br next_367
-	j next_367
-next_367:
+	# br next_375
+	j next_375
+next_375:
 
 	# load sum lv$1
 
@@ -313,8 +313,8 @@ next_367:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_177
-	j whileCond_177
+	# br whileCond_185
+	j whileCond_185
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

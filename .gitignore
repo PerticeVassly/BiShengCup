@@ -21,7 +21,6 @@ pom.xml
 !output/.gitkeep
 
 /production
-
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
@@ -47,6 +46,7 @@ pom.xml
 /dist/
 /nbdist/
 /.nb-gradle/
+
 build/
 
 ### VS Code ###

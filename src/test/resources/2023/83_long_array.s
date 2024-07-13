@@ -26,74 +26,58 @@ long_arrayEntry:
 	# allocate lv$7
 	li t0, 241128
 	add t0, sp, t0
-
-	# get address of local var:lv$7
-	li t4, 241136
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 241136
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$6
 	li t0, 241112
 	add t0, sp, t0
-
-	# get address of local var:lv$6
-	li t4, 241120
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 241120
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$5
 	li t0, 241096
 	add t0, sp, t0
-
-	# get address of local var:lv$5
-	li t4, 241104
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 241104
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$4
 	li t0, 241080
 	add t0, sp, t0
-
-	# get address of local var:lv$4
-	li t4, 241088
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 241088
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$3
 	li t0, 161072
 	add t0, sp, t0
-
-	# get address of local var:lv$3
-	li t4, 241072
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 241072
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$2
 	li t0, 81064
 	add t0, sp, t0
-
-	# get address of local var:lv$2
-	li t4, 161064
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 161064
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv$1
 	li t0, 1056
 	add t0, sp, t0
-
-	# get address of local var:lv$1
-	li t4, 81056
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 81056
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# allocate lv
 	li t0, 1040
 	add t0, sp, t0
-
-	# get address of local var:lv
-	li t4, 1048
-	add t4, sp, t4
-	sd t0, 0(t4)
+	li t1, 1048
+	add t1, sp, t1
+	sd t0, 0(t1)
 
 	# lv 0
 
@@ -1290,6 +1274,7 @@ ifTrue_:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1772,6 +1757,7 @@ next_6:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2087,6 +2073,7 @@ next_8:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2524,6 +2511,7 @@ mainEntry:
 	# fetch variables
 	li t1, 9
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8

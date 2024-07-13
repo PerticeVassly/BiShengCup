@@ -223,7 +223,7 @@ fEntry2:
 .type main, @function
 .globl main
 main:
-mainEntry15:
+mainEntry13:
 
 	# reserve space
 	li t4, 216
@@ -576,8 +576,7 @@ mainEntry15:
 	ld t1, 0(t4)
 
 	# push d
-	addi sp, sp, -8
-	sd t1, 0(sp)
+	sd t1, -8(sp)
 
 	# fetch variables
 	li t4, 32
@@ -585,8 +584,8 @@ mainEntry15:
 	ld t1, 0(t4)
 
 	# push c
-	addi sp, sp, -8
-	sd t1, 0(sp)
+	sd t1, -16(sp)
+	addi sp, sp, -16
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -662,3 +661,13 @@ mainEntry15:
 	li t4, 216
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

@@ -7652,7 +7652,7 @@ funcEntry3:
 .type main, @function
 .globl main
 main:
-mainEntry71:
+mainEntry72:
 
 	# reserve space
 	li t4, 96

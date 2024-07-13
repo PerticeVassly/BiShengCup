@@ -313,9 +313,9 @@ subEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_152
-	j whileCond_152
-whileCond_152:
+	# br whileCond_160
+	j whileCond_160
+whileCond_160:
 
 	# load i lv$9
 
@@ -367,15 +367,15 @@ whileCond_152:
 	seqz t0, t0
 	sd t0, 304(sp)
 
-	# condBr cond_ whileBody_152 next_302
+	# condBr cond_ whileBody_160 next_310
 
 	# fetch variables
 	li t4, 304
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_302
-	j whileBody_152
-whileBody_152:
+	beqz t1, next_310
+	j whileBody_160
+whileBody_160:
 
 	# load i$1 lv$9
 
@@ -995,9 +995,9 @@ whileBody_152:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_152
-	j whileCond_152
-next_302:
+	# br whileCond_160
+	j whileCond_160
+next_310:
 
 	# ret 
 
@@ -1013,7 +1013,7 @@ next_302:
 .type main, @function
 .globl main
 main:
-mainEntry75:
+mainEntry76:
 
 	# reserve space
 	li t4, 952
@@ -1152,9 +1152,9 @@ mainEntry75:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_153
-	j whileCond_153
-whileCond_153:
+	# br whileCond_161
+	j whileCond_161
+whileCond_161:
 
 	# load i lv$9
 
@@ -1206,15 +1206,15 @@ whileCond_153:
 	seqz t0, t0
 	sd t0, 576(sp)
 
-	# condBr cond_ whileBody_153 next_303
+	# condBr cond_ whileBody_161 next_311
 
 	# fetch variables
 	li t4, 576
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_303
-	j whileBody_153
-whileBody_153:
+	beqz t1, next_311
+	j whileBody_161
+whileBody_161:
 
 	# load i$1 lv$9
 
@@ -1696,9 +1696,9 @@ whileBody_153:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_153
-	j whileCond_153
-next_303:
+	# br whileCond_161
+	j whileCond_161
+next_311:
 
 	# gep a0$1 
 
@@ -1958,9 +1958,9 @@ next_303:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_154
-	j whileCond_154
-whileCond_154:
+	# br whileCond_162
+	j whileCond_162
+whileCond_162:
 
 	# load i$14 lv$9
 
@@ -2012,15 +2012,15 @@ whileCond_154:
 	seqz t0, t0
 	sd t0, 256(sp)
 
-	# condBr cond_$1 whileBody_154 next_304
+	# condBr cond_$1 whileBody_162 next_312
 
 	# fetch variables
 	li t4, 256
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_304
-	j whileBody_154
-whileBody_154:
+	beqz t1, next_312
+	j whileBody_162
+whileBody_162:
 
 	# load i$15 lv$9
 
@@ -2173,9 +2173,9 @@ whileBody_154:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_154
-	j whileCond_154
-next_304:
+	# br whileCond_162
+	j whileCond_162
+next_312:
 
 	# lv$10 
 
@@ -2243,9 +2243,9 @@ next_304:
 	# release params
 	addi sp, sp, 0
 
-	# br whileCond_155
-	j whileCond_155
-whileCond_155:
+	# br whileCond_163
+	j whileCond_163
+whileCond_163:
 
 	# load i$17 lv$9
 
@@ -2297,15 +2297,15 @@ whileCond_155:
 	seqz t0, t0
 	sd t0, 160(sp)
 
-	# condBr cond_$2 whileBody_155 next_305
+	# condBr cond_$2 whileBody_163 next_313
 
 	# fetch variables
 	li t4, 160
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_305
-	j whileBody_155
-whileBody_155:
+	beqz t1, next_313
+	j whileBody_163
+whileBody_163:
 
 	# load i$18 lv$9
 
@@ -2458,9 +2458,9 @@ whileBody_155:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_155
-	j whileCond_155
-next_305:
+	# br whileCond_163
+	j whileCond_163
+next_313:
 
 	# lv$10 
 
@@ -2528,9 +2528,9 @@ next_305:
 	# release params
 	addi sp, sp, 0
 
-	# br whileCond_156
-	j whileCond_156
-whileCond_156:
+	# br whileCond_164
+	j whileCond_164
+whileCond_164:
 
 	# load i$20 lv$9
 
@@ -2582,15 +2582,15 @@ whileCond_156:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$3 whileBody_156 next_306
+	# condBr cond_$3 whileBody_164 next_314
 
 	# fetch variables
 	li t4, 64
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_306
-	j whileBody_156
-whileBody_156:
+	beqz t1, next_314
+	j whileBody_164
+whileBody_164:
 
 	# load i$21 lv$9
 
@@ -2743,9 +2743,9 @@ whileBody_156:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_156
-	j whileCond_156
-next_306:
+	# br whileCond_164
+	j whileCond_164
+next_314:
 
 	# lv$10 
 

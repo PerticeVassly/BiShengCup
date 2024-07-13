@@ -8,7 +8,6 @@ public class CmdExecutor {
     private String output;
     private String errorInfo;
     private Boolean hasError = false;
-
     public void exec(String... terms) throws IOException, InterruptedException {
         ProcessBuilder pb = new ProcessBuilder(terms);
         Process process = pb.start();

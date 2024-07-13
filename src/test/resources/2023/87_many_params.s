@@ -1297,7 +1297,7 @@ param16Entry:
 .type main, @function
 .globl main
 main:
-mainEntry32:
+mainEntry33:
 
 	# reserve space
 	li t4, 1576

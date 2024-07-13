@@ -17,7 +17,7 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry1:
+mainEntry2:
   %lv = alloca [2 x i32], align 16
   %inp = getelementptr [2 x i32], [2 x i32]* %lv, i32 0, i32 0
   store i32 3, i32* %inp, align 4

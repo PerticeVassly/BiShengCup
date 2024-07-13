@@ -34,24 +34,24 @@ inc_aEntry:
 }
 
 define i32 @main() {
-mainEntry27:
+mainEntry28:
   %lv = alloca i32, align 4
   store i32 5, i32* %lv, align 4
-  br label %whileCond_66
+  br label %whileCond_74
 
-whileCond_66:                                         ; pred = %mainEntry27, %next_133
+whileCond_74:                                         ; pred = %mainEntry28, %next_141
   %k = load i32, i32* %lv, align 4
   %cond_ge_tmp_ = icmp sge i32 %k, 0
   %cond_tmp_ = zext i1 %cond_ge_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_66, label %next_131
+  br i1 %cond_, label %whileBody_74, label %next_139
 
-whileBody_66:                                         ; pred = %whileCond_66
+whileBody_74:                                         ; pred = %whileCond_74
   %inc_a = call i32 @inc_a()
   %cond_normalize_ = icmp ne i32 %inc_a, 0
-  br i1 %cond_normalize_, label %secondCond_44, label %next_132
+  br i1 %cond_normalize_, label %secondCond_44, label %next_140
 
-next_131:                                             ; pred = %whileCond_66
+next_139:                                             ; pred = %whileCond_74
   %a$2 = load i32, i32* @gv, align 4
   call void @putint(i32 %a$2)
   call void @putch(i32 32)
@@ -68,9 +68,9 @@ ifTrue_65:                                            ; pred = %secondCond_43
   %b = load i32, i32* @gv1, align 4
   call void @putint(i32 %b)
   call void @putch(i32 10)
-  br label %next_132
+  br label %next_140
 
-next_132:                                             ; pred = %whileBody_66, %secondCond_44, %secondCond_43, %ifTrue_65
+next_140:                                             ; pred = %whileBody_74, %secondCond_44, %secondCond_43, %ifTrue_65
   %inc_a$3 = call i32 @inc_a()
   %cond_lt_tmp_ = icmp slt i32 %inc_a$3, 14
   %cond_tmp_$1 = zext i1 %cond_lt_tmp_ to i32
@@ -80,33 +80,33 @@ next_132:                                             ; pred = %whileBody_66, %s
 secondCond_43:                                        ; pred = %secondCond_44
   %inc_a$2 = call i32 @inc_a()
   %cond_normalize_$2 = icmp ne i32 %inc_a$2, 0
-  br i1 %cond_normalize_$2, label %ifTrue_65, label %next_132
+  br i1 %cond_normalize_$2, label %ifTrue_65, label %next_140
 
-secondCond_44:                                        ; pred = %whileBody_66
+secondCond_44:                                        ; pred = %whileBody_74
   %inc_a$1 = call i32 @inc_a()
   %cond_normalize_$1 = icmp ne i32 %inc_a$1, 0
-  br i1 %cond_normalize_$1, label %secondCond_43, label %next_132
+  br i1 %cond_normalize_$1, label %secondCond_43, label %next_140
 
-ifTrue_66:                                            ; pred = %next_132, %secondCond_46, %secondCond_46
+ifTrue_66:                                            ; pred = %next_140, %secondCond_46, %secondCond_46
   %a$1 = load i32, i32* @gv, align 4
   call void @putint(i32 %a$1)
   call void @putch(i32 10)
   %b$1 = load i32, i32* @gv1, align 4
   %result_$2 = mul i32 %b$1, 2
   store i32 %result_$2, i32* @gv1, align 4
-  br label %next_133
+  br label %next_141
 
 ifFalse_20:                                           ; pred = %secondCond_45, %secondCond_46, %secondCond_46
   %inc_a$7 = call i32 @inc_a()
-  br label %next_133
+  br label %next_141
 
-next_133:                                             ; pred = %ifTrue_66, %ifFalse_20
+next_141:                                             ; pred = %ifTrue_66, %ifFalse_20
   %k$1 = load i32, i32* %lv, align 4
   %result_$3 = sub i32 %k$1, 1
   store i32 %result_$3, i32* %lv, align 4
-  br label %whileCond_66
+  br label %whileCond_74
 
-secondCond_45:                                        ; pred = %next_132
+secondCond_45:                                        ; pred = %next_140
   %inc_a$4 = call i32 @inc_a()
   %cond_normalize_$3 = icmp ne i32 %inc_a$4, 0
   br i1 %cond_normalize_$3, label %secondCond_46, label %ifFalse_20

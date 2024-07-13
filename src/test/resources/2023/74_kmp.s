@@ -161,9 +161,9 @@ get_nextEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_75
-	j whileCond_75
-whileCond_75:
+	# br whileCond_83
+	j whileCond_83
+whileCond_83:
 
 	# load i lv$2
 
@@ -237,15 +237,15 @@ whileCond_75:
 	seqz t0, t0
 	sd t0, 216(sp)
 
-	# condBr cond_normalize_ whileBody_75 next_152
+	# condBr cond_normalize_ whileBody_83 next_160
 
 	# fetch variables
 	li t4, 216
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_152
-	j whileBody_75
-whileBody_75:
+	beqz t1, next_160
+	j whileBody_83
+whileBody_83:
 
 	# load j lv$3
 
@@ -306,7 +306,7 @@ whileBody_75:
 	ld t1, 0(t4)
 	beqz t1, secondCond_48
 	j ifTrue_77
-next_152:
+next_160:
 
 	# ret void
 	li t4, 352
@@ -476,8 +476,8 @@ ifTrue_77:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_153
-	j next_153
+	# br next_161
+	j next_161
 ifFalse_23:
 
 	# load j$4 lv$3
@@ -555,12 +555,12 @@ ifFalse_23:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_153
-	j next_153
-next_153:
+	# br next_161
+	j next_161
+next_161:
 
-	# br whileCond_75
-	j whileCond_75
+	# br whileCond_83
+	j whileCond_83
 secondCond_48:
 
 	# load i$1 lv$2
@@ -911,9 +911,9 @@ KMPEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_76
-	j whileCond_76
-whileCond_76:
+	# br whileCond_84
+	j whileCond_84
+whileCond_84:
 
 	# load j lv$4
 
@@ -987,15 +987,15 @@ whileCond_76:
 	seqz t0, t0
 	sd t0, 280(sp)
 
-	# condBr cond_normalize_ whileBody_76 next_154
+	# condBr cond_normalize_ whileBody_84 next_162
 
 	# fetch variables
 	li t4, 280
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_154
-	j whileBody_76
-whileBody_76:
+	beqz t1, next_162
+	j whileBody_84
+whileBody_84:
 
 	# load i lv$3
 
@@ -1161,7 +1161,7 @@ whileBody_76:
 	ld t1, 0(t4)
 	beqz t1, ifFalse_24
 	j ifTrue_78
-next_154:
+next_162:
 
 	# ret 
 
@@ -1371,13 +1371,13 @@ ifTrue_78:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_normalize_$1 ifTrue_79 next_156
+	# condBr cond_normalize_$1 ifTrue_79 next_164
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_156
+	beqz t1, next_164
 	j ifTrue_79
 ifFalse_24:
 
@@ -1494,18 +1494,18 @@ ifFalse_24:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_$1 ifTrue_80 next_157
+	# condBr cond_$1 ifTrue_80 next_165
 
 	# fetch variables
 	li t4, 40
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_157
+	beqz t1, next_165
 	j ifTrue_80
-next_155:
+next_163:
 
-	# br whileCond_76
-	j whileCond_76
+	# br whileCond_84
+	j whileCond_84
 ifTrue_79:
 
 	# load j$3 lv$4
@@ -1534,10 +1534,10 @@ ifTrue_79:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_156:
+next_164:
 
-	# br next_155
-	j next_155
+	# br next_163
+	j next_163
 ifTrue_80:
 
 	# load i$5 lv$3
@@ -1624,12 +1624,12 @@ ifTrue_80:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_157
-	j next_157
-next_157:
+	# br next_165
+	j next_165
+next_165:
 
-	# br next_155
-	j next_155
+	# br next_163
+	j next_163
 .type read_str, @function
 .globl read_str
 read_str:
@@ -1695,9 +1695,9 @@ read_strEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_77
-	j whileCond_77
-whileCond_77:
+	# br whileCond_85
+	j whileCond_85
+whileCond_85:
 
 	# cmp   cond_normalize_
 
@@ -1711,9 +1711,9 @@ whileCond_77:
 	seqz t0, t0
 	sd t0, 136(sp)
 
-	# br whileBody_77
-	j whileBody_77
-whileBody_77:
+	# br whileBody_85
+	j whileBody_85
+whileBody_85:
 
 	# load i lv$1
 
@@ -1893,15 +1893,15 @@ whileBody_77:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ ifTrue_81 next_159
+	# condBr cond_ ifTrue_81 next_167
 
 	# fetch variables
 	li t4, 48
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_159
+	beqz t1, next_167
 	j ifTrue_81
-next_158:
+next_166:
 
 	# load i$3 lv$1
 
@@ -1991,12 +1991,12 @@ next_158:
 	ret 
 ifTrue_81:
 
-	# br next_158
-	j next_158
+	# br next_166
+	j next_166
 
-	# br next_159
-	j next_159
-next_159:
+	# br next_167
+	j next_167
+next_167:
 
 	# load i$2 lv$1
 
@@ -2040,12 +2040,12 @@ next_159:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_77
-	j whileCond_77
+	# br whileCond_85
+	j whileCond_85
 .type main, @function
 .globl main
 main:
-mainEntry33:
+mainEntry34:
 
 	# reserve space
 	li t4, 65608

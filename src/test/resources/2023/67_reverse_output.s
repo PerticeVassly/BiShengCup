@@ -187,8 +187,8 @@ ifTrue_111:
 	# release params
 	addi sp, sp, 0
 
-	# br next_210
-	j next_210
+	# br next_218
+	j next_218
 ifFalse_40:
 
 	# prepare params
@@ -312,9 +312,9 @@ ifFalse_40:
 	# release params
 	addi sp, sp, 0
 
-	# br next_210
-	j next_210
-next_210:
+	# br next_218
+	j next_218
+next_218:
 
 	# ret void
 	li t4, 120
@@ -326,7 +326,7 @@ next_210:
 .type main, @function
 .globl main
 main:
-mainEntry51:
+mainEntry52:
 
 	# reserve space
 	li t4, 24

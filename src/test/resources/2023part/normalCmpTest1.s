@@ -144,15 +144,15 @@ mainEntry12:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_ secondCond_2 ifFalse_
+	# condBr cond_ secondCond_3 ifFalse_1
 
 	# fetch variables
 	li t4, 40
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_
-	j secondCond_2
-ifTrue_7:
+	beqz t1, ifFalse_1
+	j secondCond_3
+ifTrue_6:
 
 	# ret 
 
@@ -162,7 +162,7 @@ ifTrue_7:
 	li t4, 128
 	add sp, sp, t4
 	ret 
-ifFalse_:
+ifFalse_1:
 
 	# ret 
 
@@ -172,7 +172,7 @@ ifFalse_:
 	li t4, 128
 	add sp, sp, t4
 	ret 
-secondCond_2:
+secondCond_3:
 
 	# load b$1 lv$1
 
@@ -239,11 +239,21 @@ secondCond_2:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_7 ifFalse_
+	# condBr cond_$1 ifTrue_6 ifFalse_1
 
 	# fetch variables
 	li t4, 0
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_
-	j ifTrue_7
+	beqz t1, ifFalse_1
+	j ifTrue_6
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

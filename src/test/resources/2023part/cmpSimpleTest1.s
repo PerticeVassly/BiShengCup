@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry11:
+mainEntry7:
 
 	# reserve space
 	li t4, 56
@@ -86,15 +86,15 @@ mainEntry11:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_ ifTrue_6 next_6
+	# condBr cond_ ifTrue_1 next_1
 
 	# fetch variables
 	li t4, 8
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_6
-	j ifTrue_6
-ifTrue_6:
+	beqz t1, next_1
+	j ifTrue_1
+ifTrue_1:
 
 	# lv 
 
@@ -111,9 +111,9 @@ ifTrue_6:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_6
-	j next_6
-next_6:
+	# br next_1
+	j next_1
+next_1:
 
 	# load a$1 lv
 
@@ -138,3 +138,13 @@ next_6:
 	li t4, 56
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

@@ -163,7 +163,7 @@ ifFalse_26:                                        ; pred = %func7Entry
 }
 
 define i32 @main() {
-mainEntry31:
+mainEntry32:
   %lv$6 = alloca i32, align 4
   %lv$5 = alloca i32, align 4
   %lv$4 = alloca [10 x i32], align 16
@@ -180,16 +180,16 @@ mainEntry31:
   %getint$3 = call i32 @getint()
   store i32 %getint$3, i32* %lv$3, align 4
   store i32 0, i32* %lv$5, align 4
-  br label %whileCond_73
+  br label %whileCond_81
 
-whileCond_73:                                        ; pred = %mainEntry31, %whileBody_73
+whileCond_81:                                        ; pred = %mainEntry32, %whileBody_81
   %i = load i32, i32* %lv$5, align 4
   %cond_lt_tmp_ = icmp slt i32 %i, 10
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_73, label %next_146
+  br i1 %cond_, label %whileBody_81, label %next_154
 
-whileBody_73:                                        ; pred = %whileCond_73
+whileBody_81:                                        ; pred = %whileCond_81
   %i$1 = load i32, i32* %lv$5, align 4
   %arr = getelementptr [10 x i32], [10 x i32]* %lv$4, i32 0, i32 %i$1
   %getint$4 = call i32 @getint()
@@ -197,9 +197,9 @@ whileBody_73:                                        ; pred = %whileCond_73
   %i$2 = load i32, i32* %lv$5, align 4
   %result_ = add i32 %i$2, 1
   store i32 %result_, i32* %lv$5, align 4
-  br label %whileCond_73
+  br label %whileCond_81
 
-next_146:                                            ; pred = %whileCond_73
+next_154:                                            ; pred = %whileCond_81
   %i1 = load i32, i32* %lv, align 4
   %func7 = call i32 @func7(i32 %i1)
   %i2 = load i32, i32* %lv$1, align 4

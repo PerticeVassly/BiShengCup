@@ -20,7 +20,7 @@ gv4:
 .type main, @function
 .globl main
 main:
-mainEntry37:
+mainEntry38:
 
 	# reserve space
 	li t4, 344
@@ -413,9 +413,9 @@ ifTrue_82:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_160
-	j next_160
-next_160:
+	# br next_168
+	j next_168
+next_168:
 
 	# load flag lv
 
@@ -579,13 +579,13 @@ secondCond_49:
 	seqz t0, t0
 	sd t0, 88(sp)
 
-	# condBr cond_$2 ifTrue_82 next_160
+	# condBr cond_$2 ifTrue_82 next_168
 
 	# fetch variables
 	li t4, 88
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_160
+	beqz t1, next_168
 	j ifTrue_82
 secondCond_50:
 

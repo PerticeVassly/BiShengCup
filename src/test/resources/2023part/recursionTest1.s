@@ -96,15 +96,15 @@ fibEntry:
 	seqz t0, t0
 	sd t0, 88(sp)
 
-	# condBr cond_ ifTrue_4 next_4
+	# condBr cond_ ifTrue_7 next_7
 
 	# fetch variables
 	li t4, 88
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_4
-	j ifTrue_4
-ifTrue_4:
+	beqz t1, next_7
+	j ifTrue_7
+ifTrue_7:
 
 	# ret 
 
@@ -117,7 +117,7 @@ ifTrue_4:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_4:
+next_7:
 
 	# load n$1 lv
 
@@ -170,15 +170,15 @@ next_4:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_$1 ifTrue_5 next_5
+	# condBr cond_$1 ifTrue_8 next_8
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_5
-	j ifTrue_5
-ifTrue_5:
+	beqz t1, next_8
+	j ifTrue_8
+ifTrue_8:
 
 	# ret 
 
@@ -191,7 +191,7 @@ ifTrue_5:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_5:
+next_8:
 
 	# load n$2 lv
 
@@ -225,6 +225,7 @@ next_5:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -275,6 +276,7 @@ next_5:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -323,7 +325,7 @@ next_5:
 .type main, @function
 .globl main
 main:
-mainEntry10:
+mainEntry16:
 
 	# reserve space
 	li t4, 24
@@ -343,6 +345,7 @@ mainEntry10:
 	# fetch variables
 	li t1, 4
 	mv a0, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -371,3 +374,13 @@ mainEntry10:
 	li t4, 24
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

@@ -106,9 +106,9 @@ FourWhileEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_172
-	j whileCond_172
-whileCond_172:
+	# br whileCond_180
+	j whileCond_180
+whileCond_180:
 
 	# load a lv
 
@@ -160,15 +160,15 @@ whileCond_172:
 	seqz t0, t0
 	sd t0, 264(sp)
 
-	# condBr cond_ whileBody_172 next_346
+	# condBr cond_ whileBody_180 next_354
 
 	# fetch variables
 	li t4, 264
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_346
-	j whileBody_172
-whileBody_172:
+	beqz t1, next_354
+	j whileBody_180
+whileBody_180:
 
 	# load a$1 lv
 
@@ -212,9 +212,9 @@ whileBody_172:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_173
-	j whileCond_173
-next_346:
+	# br whileCond_181
+	j whileCond_181
+next_354:
 
 	# load a$2 lv
 
@@ -323,7 +323,7 @@ next_346:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_173:
+whileCond_181:
 
 	# load b lv$1
 
@@ -375,15 +375,15 @@ whileCond_173:
 	seqz t0, t0
 	sd t0, 160(sp)
 
-	# condBr cond_$1 whileBody_173 next_347
+	# condBr cond_$1 whileBody_181 next_355
 
 	# fetch variables
 	li t4, 160
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_347
-	j whileBody_173
-whileBody_173:
+	beqz t1, next_355
+	j whileBody_181
+whileBody_181:
 
 	# load b$1 lv$1
 
@@ -427,9 +427,9 @@ whileBody_173:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_174
-	j whileCond_174
-next_347:
+	# br whileCond_182
+	j whileCond_182
+next_355:
 
 	# load b$2 lv$1
 
@@ -473,9 +473,9 @@ next_347:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_172
-	j whileCond_172
-whileCond_174:
+	# br whileCond_180
+	j whileCond_180
+whileCond_182:
 
 	# load c lv$2
 
@@ -528,15 +528,15 @@ whileCond_174:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_$2 whileBody_174 next_348
+	# condBr cond_$2 whileBody_182 next_356
 
 	# fetch variables
 	li t4, 96
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_348
-	j whileBody_174
-whileBody_174:
+	beqz t1, next_356
+	j whileBody_182
+whileBody_182:
 
 	# load c$1 lv$2
 
@@ -580,9 +580,9 @@ whileBody_174:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_175
-	j whileCond_175
-next_348:
+	# br whileCond_183
+	j whileCond_183
+next_356:
 
 	# load c$2 lv$2
 
@@ -626,9 +626,9 @@ next_348:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_173
-	j whileCond_173
-whileCond_175:
+	# br whileCond_181
+	j whileCond_181
+whileCond_183:
 
 	# load d lv$3
 
@@ -680,15 +680,15 @@ whileCond_175:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$3 whileBody_175 next_349
+	# condBr cond_$3 whileBody_183 next_357
 
 	# fetch variables
 	li t4, 32
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_349
-	j whileBody_175
-whileBody_175:
+	beqz t1, next_357
+	j whileBody_183
+whileBody_183:
 
 	# load d$1 lv$3
 
@@ -732,9 +732,9 @@ whileBody_175:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_175
-	j whileCond_175
-next_349:
+	# br whileCond_183
+	j whileCond_183
+next_357:
 
 	# load d$2 lv$3
 
@@ -778,12 +778,12 @@ next_349:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_174
-	j whileCond_174
+	# br whileCond_182
+	j whileCond_182
 .type main, @function
 .globl main
 main:
-mainEntry86:
+mainEntry87:
 
 	# reserve space
 	li t4, 8

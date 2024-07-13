@@ -162,7 +162,7 @@ funcEntry1:
 .type main, @function
 .globl main
 main:
-mainEntry59:
+mainEntry60:
 
 	# reserve space
 	li t4, 328
@@ -290,8 +290,8 @@ ifTrue_124:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_250
-	j next_250
+	# br next_258
+	j next_258
 ifFalse_44:
 
 	# lv 
@@ -309,9 +309,9 @@ ifFalse_44:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_250
-	j next_250
-next_250:
+	# br next_258
+	j next_258
+next_258:
 
 	# prepare params
 	addi sp, sp, 0
@@ -489,8 +489,8 @@ ifTrue_125:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_251
-	j next_251
+	# br next_259
+	j next_259
 ifFalse_45:
 
 	# lv 
@@ -508,9 +508,9 @@ ifFalse_45:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_251
-	j next_251
-next_251:
+	# br next_259
+	j next_259
+next_259:
 
 	# prepare params
 	addi sp, sp, 0
@@ -689,8 +689,8 @@ ifTrue_126:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_252
-	j next_252
+	# br next_260
+	j next_260
 ifFalse_46:
 
 	# lv 
@@ -708,9 +708,9 @@ ifFalse_46:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_252
-	j next_252
-next_252:
+	# br next_260
+	j next_260
+next_260:
 
 	# prepare params
 	addi sp, sp, 0
@@ -889,8 +889,8 @@ ifTrue_127:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_253
-	j next_253
+	# br next_261
+	j next_261
 ifFalse_47:
 
 	# lv 
@@ -908,9 +908,9 @@ ifFalse_47:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_253
-	j next_253
-next_253:
+	# br next_261
+	j next_261
+next_261:
 
 	# prepare params
 
@@ -1077,8 +1077,8 @@ ifTrue_128:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_254
-	j next_254
+	# br next_262
+	j next_262
 ifFalse_48:
 
 	# lv 
@@ -1096,9 +1096,9 @@ ifFalse_48:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_254
-	j next_254
-next_254:
+	# br next_262
+	j next_262
+next_262:
 
 	# ret 
 

@@ -3348,7 +3348,7 @@ testParam32Entry:
 .type main, @function
 .globl main
 main:
-mainEntry80:
+mainEntry81:
 
 	# reserve space
 	li t4, 496

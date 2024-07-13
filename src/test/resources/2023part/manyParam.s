@@ -5,7 +5,7 @@
 .type f, @function
 .globl f
 f:
-fEntry1:
+fEntry:
 
 	# reserve space
 	li t4, 424
@@ -622,7 +622,7 @@ fEntry1:
 .type main, @function
 .globl main
 main:
-mainEntry6:
+mainEntry:
 
 	# reserve space
 	li t4, 8
@@ -644,8 +644,7 @@ mainEntry6:
 	li t1, 3
 
 	# push 
-	addi sp, sp, -8
-	sd t1, 0(sp)
+	sd t1, -8(sp)
 
 	# fetch variables
 	li t1, 0x40140a3d70a3d70a
@@ -664,38 +663,34 @@ mainEntry6:
 	fmv.d.x ft1, t1
 
 	# push 
-	addi sp, sp, -8
-	fsd ft1, 0(sp)
+	fsd ft1, -16(sp)
 
 	# fetch variables
 	li t1, 0x4020051eb851eb85
 	fmv.d.x ft1, t1
 
 	# push 
-	addi sp, sp, -8
-	fsd ft1, 0(sp)
+	fsd ft1, -24(sp)
 
 	# fetch variables
 	li t1, 9
 
 	# push 
-	addi sp, sp, -8
-	sd t1, 0(sp)
+	sd t1, -32(sp)
 
 	# fetch variables
 	li t1, 10
 
 	# push 
-	addi sp, sp, -8
-	sd t1, 0(sp)
+	sd t1, -40(sp)
 
 	# fetch variables
 	li t1, 0x4022000000000000
 	fmv.d.x ft1, t1
 
 	# push 
-	addi sp, sp, -8
-	fsd ft1, 0(sp)
+	fsd ft1, -48(sp)
+	addi sp, sp, -48
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -724,3 +719,13 @@ mainEntry6:
 	li t4, 8
 	add sp, sp, t4
 	ret 
+memset: 
+    blez    a2, .LBB0_3 
+    slli    a2, a2, 2 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret

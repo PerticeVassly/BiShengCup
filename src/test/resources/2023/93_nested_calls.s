@@ -1380,7 +1380,7 @@ ifFalse_22:
 .type main, @function
 .globl main
 main:
-mainEntry30:
+mainEntry31:
 
 	# reserve space
 	li t4, 960
@@ -1600,9 +1600,9 @@ mainEntry30:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_67
-	j whileCond_67
-whileCond_67:
+	# br whileCond_75
+	j whileCond_75
+whileCond_75:
 
 	# load i lv$5
 
@@ -1654,15 +1654,15 @@ whileCond_67:
 	seqz t0, t0
 	sd t0, 712(sp)
 
-	# condBr cond_ whileBody_67 next_136
+	# condBr cond_ whileBody_75 next_144
 
 	# fetch variables
 	li t4, 712
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_136
-	j whileBody_67
-whileBody_67:
+	beqz t1, next_144
+	j whileBody_75
+whileBody_75:
 
 	# load i$1 lv$5
 
@@ -1775,9 +1775,9 @@ whileBody_67:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_67
-	j whileCond_67
-next_136:
+	# br whileCond_75
+	j whileCond_75
+next_144:
 
 	# load i1 lv
 

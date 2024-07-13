@@ -62,9 +62,9 @@ whileIfEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_102
-	j whileCond_102
-whileCond_102:
+	# br whileCond_110
+	j whileCond_110
+whileCond_110:
 
 	# load a lv
 
@@ -116,15 +116,15 @@ whileCond_102:
 	seqz t0, t0
 	sd t0, 104(sp)
 
-	# condBr cond_ whileBody_102 next_217
+	# condBr cond_ whileBody_110 next_225
 
 	# fetch variables
 	li t4, 104
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_217
-	j whileBody_102
-whileBody_102:
+	beqz t1, next_225
+	j whileBody_110
+whileBody_110:
 
 	# load a$1 lv
 
@@ -185,7 +185,7 @@ whileBody_102:
 	ld t1, 0(t4)
 	beqz t1, ifFalse_42
 	j ifTrue_115
-next_217:
+next_225:
 
 	# load b lv$1
 
@@ -230,8 +230,8 @@ ifTrue_115:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_218
-	j next_218
+	# br next_226
+	j next_226
 ifFalse_42:
 
 	# load a$2 lv
@@ -293,7 +293,7 @@ ifFalse_42:
 	ld t1, 0(t4)
 	beqz t1, ifFalse_43
 	j ifTrue_116
-next_218:
+next_226:
 
 	# load a$4 lv
 
@@ -337,8 +337,8 @@ next_218:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_102
-	j whileCond_102
+	# br whileCond_110
+	j whileCond_110
 ifTrue_116:
 
 	# lv$1 
@@ -356,8 +356,8 @@ ifTrue_116:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_219
-	j next_219
+	# br next_227
+	j next_227
 ifFalse_43:
 
 	# load a$3 lv
@@ -402,16 +402,16 @@ ifFalse_43:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_219
-	j next_219
-next_219:
+	# br next_227
+	j next_227
+next_227:
 
-	# br next_218
-	j next_218
+	# br next_226
+	j next_226
 .type main, @function
 .globl main
 main:
-mainEntry54:
+mainEntry55:
 
 	# reserve space
 	li t4, 8

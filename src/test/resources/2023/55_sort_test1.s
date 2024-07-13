@@ -84,9 +84,9 @@ bubblesortEntry:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_57
-	j whileCond_57
-whileCond_57:
+	# br whileCond_65
+	j whileCond_65
+whileCond_65:
 
 	# load i lv$1
 
@@ -163,15 +163,15 @@ whileCond_57:
 	seqz t0, t0
 	sd t0, 328(sp)
 
-	# condBr cond_ whileBody_57 next_117
+	# condBr cond_ whileBody_65 next_125
 
 	# fetch variables
 	li t4, 328
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_117
-	j whileBody_57
-whileBody_57:
+	beqz t1, next_125
+	j whileBody_65
+whileBody_65:
 
 	# lv$2 
 
@@ -188,9 +188,9 @@ whileBody_57:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_58
-	j whileCond_58
-next_117:
+	# br whileCond_66
+	j whileCond_66
+next_125:
 
 	# ret 
 
@@ -203,7 +203,7 @@ next_117:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_58:
+whileCond_66:
 
 	# load j lv$2
 
@@ -307,15 +307,15 @@ whileCond_58:
 	seqz t0, t0
 	sd t0, 264(sp)
 
-	# condBr cond_$1 whileBody_58 next_118
+	# condBr cond_$1 whileBody_66 next_126
 
 	# fetch variables
 	li t4, 264
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_118
-	j whileBody_58
-whileBody_58:
+	beqz t1, next_126
+	j whileBody_66
+whileBody_66:
 
 	# load j$1 lv$2
 
@@ -485,15 +485,15 @@ whileBody_58:
 	seqz t0, t0
 	sd t0, 168(sp)
 
-	# condBr cond_$2 ifTrue_60 next_119
+	# condBr cond_$2 ifTrue_60 next_127
 
 	# fetch variables
 	li t4, 168
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_119
+	beqz t1, next_127
 	j ifTrue_60
-next_118:
+next_126:
 
 	# load i$2 lv$1
 
@@ -537,8 +537,8 @@ next_118:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_57
-	j whileCond_57
+	# br whileCond_65
+	j whileCond_65
 ifTrue_60:
 
 	# load j$3 lv$2
@@ -835,9 +835,9 @@ ifTrue_60:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br next_119
-	j next_119
-next_119:
+	# br next_127
+	j next_127
+next_127:
 
 	# load j$7 lv$2
 
@@ -881,12 +881,12 @@ next_119:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_58
-	j whileCond_58
+	# br whileCond_66
+	j whileCond_66
 .type main, @function
 .globl main
 main:
-mainEntry24:
+mainEntry25:
 
 	# reserve space
 	li t4, 312
@@ -1308,9 +1308,9 @@ mainEntry24:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_59
-	j whileCond_59
-whileCond_59:
+	# br whileCond_67
+	j whileCond_67
+whileCond_67:
 
 	# load i lv$1
 
@@ -1375,15 +1375,15 @@ whileCond_59:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ whileBody_59 next_120
+	# condBr cond_ whileBody_67 next_128
 
 	# fetch variables
 	li t4, 56
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_120
-	j whileBody_59
-whileBody_59:
+	beqz t1, next_128
+	j whileBody_67
+whileBody_67:
 
 	# load i$1 lv$1
 
@@ -1576,9 +1576,9 @@ whileBody_59:
 	add t4, t3, t4
 	sd t1, 0(t4)
 
-	# br whileCond_59
-	j whileCond_59
-next_120:
+	# br whileCond_67
+	j whileCond_67
+next_128:
 
 	# ret 
 

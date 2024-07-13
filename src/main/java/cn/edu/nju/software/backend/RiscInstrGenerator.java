@@ -1,33 +1,18 @@
 package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.backend.regalloc.Allocator;
-import cn.edu.nju.software.backend.riscinstruction.RiscAdd;
-import cn.edu.nju.software.backend.riscinstruction.RiscAddi;
-import cn.edu.nju.software.backend.riscinstruction.RiscAnd;
-import cn.edu.nju.software.backend.riscinstruction.RiscBeqz;
-import cn.edu.nju.software.backend.riscinstruction.RiscInstruction;
-import cn.edu.nju.software.backend.riscinstruction.RiscJ;
-import cn.edu.nju.software.backend.riscinstruction.RiscLd;
-import cn.edu.nju.software.backend.riscinstruction.RiscMv;
-import cn.edu.nju.software.backend.riscinstruction.RiscOr;
-import cn.edu.nju.software.backend.riscinstruction.RiscRet;
-import cn.edu.nju.software.backend.riscinstruction.RiscSd;
-import cn.edu.nju.software.backend.riscinstruction.RiscSlt;
-import cn.edu.nju.software.backend.riscinstruction.RiscSub;
-import cn.edu.nju.software.backend.riscinstruction.RiscXor;
+import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.*;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscDiv;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscMul;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscRem;
-import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
-import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
-import cn.edu.nju.software.backend.riscinstruction.operand.Operand;
-import cn.edu.nju.software.backend.riscinstruction.operand.Register;
+import cn.edu.nju.software.backend.riscinstruction.operand.*;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscCall;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscLi;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscSeqz;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscSgtz;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
+import cn.edu.nju.software.backend.riscinstruction.util.RiscLabel;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.Allocate;
@@ -123,7 +108,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         //计算最终的地址，存在t0中
         riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t1"), new Register("t0")));
 
-        //存放到lVal中
+            //存放到lVal中
         riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
     }
 
