@@ -1,0 +1,10 @@
+int a=1;
+int b=a;
+float c=b;
+
+int main(){
+   float d= 1.2;
+   int e=d;
+   putint(e);
+   return 1;
+}
