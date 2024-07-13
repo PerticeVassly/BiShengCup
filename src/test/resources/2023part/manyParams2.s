@@ -93,9 +93,9 @@ fEntry1:
 	# lv 0
 
 	# fetch variables
-	li t4, 224
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:0
+	ld t1, 224(sp)
 
 	# store lv 0
 
@@ -110,9 +110,9 @@ fEntry1:
 	# lv$1 1
 
 	# fetch variables
-	li t4, 216
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:1
+	ld t1, 216(sp)
 
 	# store lv$1 1
 
@@ -127,9 +127,9 @@ fEntry1:
 	# lv$2 2
 
 	# fetch variables
-	li t4, 208
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:2
+	ld t1, 208(sp)
 
 	# store lv$2 2
 
@@ -144,9 +144,9 @@ fEntry1:
 	# lv$3 3
 
 	# fetch variables
-	li t4, 200
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:3
+	ld t1, 200(sp)
 
 	# store lv$3 3
 
@@ -161,9 +161,9 @@ fEntry1:
 	# lv$4 4
 
 	# fetch variables
-	li t4, 192
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:4
+	ld t1, 192(sp)
 
 	# store lv$4 4
 
@@ -178,9 +178,9 @@ fEntry1:
 	# lv$5 5
 
 	# fetch variables
-	li t4, 184
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:5
+	ld t1, 184(sp)
 
 	# store lv$5 5
 
@@ -221,15 +221,15 @@ fEntry1:
 	# add result_ a b
 
 	# fetch variables
-	li t4, 80
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 72
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:a
+	ld t1, 80(sp)
+
+	# get address of local var:b
+	ld t2, 72(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_
-	add t0, t1, t2
 	sd t0, 64(sp)
 
 	# load c lv$2
@@ -248,15 +248,15 @@ fEntry1:
 	# add result_$1 result_ c
 
 	# fetch variables
-	li t4, 64
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 56
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:result_
+	ld t1, 64(sp)
+
+	# get address of local var:c
+	ld t2, 56(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_$1
-	add t0, t1, t2
 	sd t0, 48(sp)
 
 	# load d lv$3
@@ -275,15 +275,15 @@ fEntry1:
 	# add result_$2 result_$1 d
 
 	# fetch variables
-	li t4, 48
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 40
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:result_$1
+	ld t1, 48(sp)
+
+	# get address of local var:d
+	ld t2, 40(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_$2
-	add t0, t1, t2
 	sd t0, 32(sp)
 
 	# load e lv$4
@@ -302,15 +302,15 @@ fEntry1:
 	# add result_$3 result_$2 e
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 24
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:result_$2
+	ld t1, 32(sp)
+
+	# get address of local var:e
+	ld t2, 24(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_$3
-	add t0, t1, t2
 	sd t0, 16(sp)
 
 	# load f lv$5
@@ -329,23 +329,23 @@ fEntry1:
 	# add result_$4 result_$3 f
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 8
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:result_$3
+	ld t1, 16(sp)
+
+	# get address of local var:f
+	ld t2, 8(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_$4
-	add t0, t1, t2
 	sd t0, 0(sp)
 
 	# ret result_$4
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_$4
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 232
 	add sp, sp, t4
@@ -419,9 +419,9 @@ mainEntry8:
 	# ret f
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:f
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 8
 	add sp, sp, t4

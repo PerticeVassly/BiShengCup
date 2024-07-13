@@ -139,9 +139,9 @@ fEntry:
 	# lv 0
 
 	# fetch variables
-	li t4, 416
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:0
+	ld t1, 416(sp)
 
 	# store lv 0
 
@@ -156,9 +156,9 @@ fEntry:
 	# lv$1 1
 
 	# fetch variables
-	li t4, 408
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:1
+	ld t1, 408(sp)
 
 	# store lv$1 1
 
@@ -173,9 +173,9 @@ fEntry:
 	# lv$2 2
 
 	# fetch variables
-	li t4, 400
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:2
+	ld t1, 400(sp)
 
 	# store lv$2 2
 
@@ -190,9 +190,9 @@ fEntry:
 	# lv$3 3
 
 	# fetch variables
-	li t4, 392
-	add t4, sp, t4
-	fld ft1, 0(t4)
+
+	# get address of local var:3
+	fld ft1, 392(sp)
 
 	# store lv$3 3
 
@@ -207,9 +207,9 @@ fEntry:
 	# lv$4 4
 
 	# fetch variables
-	li t4, 384
-	add t4, sp, t4
-	fld ft1, 0(t4)
+
+	# get address of local var:4
+	fld ft1, 384(sp)
 
 	# store lv$4 4
 
@@ -224,9 +224,9 @@ fEntry:
 	# lv$5 5
 
 	# fetch variables
-	li t4, 376
-	add t4, sp, t4
-	fld ft1, 0(t4)
+
+	# get address of local var:5
+	fld ft1, 376(sp)
 
 	# store lv$5 5
 
@@ -241,9 +241,9 @@ fEntry:
 	# lv$6 6
 
 	# fetch variables
-	li t4, 368
-	add t4, sp, t4
-	fld ft1, 0(t4)
+
+	# get address of local var:6
+	fld ft1, 368(sp)
 
 	# store lv$6 6
 
@@ -258,9 +258,9 @@ fEntry:
 	# lv$7 7
 
 	# fetch variables
-	li t4, 360
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:7
+	ld t1, 360(sp)
 
 	# store lv$7 7
 
@@ -275,9 +275,9 @@ fEntry:
 	# lv$8 8
 
 	# fetch variables
-	li t4, 352
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:8
+	ld t1, 352(sp)
 
 	# store lv$8 8
 
@@ -292,9 +292,9 @@ fEntry:
 	# lv$9 9
 
 	# fetch variables
-	li t4, 344
-	add t4, sp, t4
-	fld ft1, 0(t4)
+
+	# get address of local var:9
+	fld ft1, 344(sp)
 
 	# store lv$9 9
 
@@ -335,15 +335,15 @@ fEntry:
 	# add result_ ai bi
 
 	# fetch variables
-	li t4, 176
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 168
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:ai
+	ld t1, 176(sp)
+
+	# get address of local var:bi
+	ld t2, 168(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_
-	add t0, t1, t2
 	sd t0, 160(sp)
 
 	# load ci lv$2
@@ -362,15 +362,15 @@ fEntry:
 	# add result_$1 result_ ci
 
 	# fetch variables
-	li t4, 160
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 152
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:result_
+	ld t1, 160(sp)
+
+	# get address of local var:ci
+	ld t2, 152(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_$1
-	add t0, t1, t2
 	sd t0, 144(sp)
 
 	# load af lv$3
@@ -389,9 +389,9 @@ fEntry:
 	# intToFloat i2f_ result_$1
 
 	# fetch variables
-	li t4, 144
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_$1
+	ld t1, 144(sp)
 
 	# get address of local var:i2f_
 	fcvt.d.l ft0, t1
@@ -400,15 +400,15 @@ fEntry:
 	# fadd result_$2 i2f_ af
 
 	# fetch variables
-	li t4, 128
-	add t4, sp, t4
-	fld ft1, 0(t4)
-	li t4, 136
-	add t4, sp, t4
-	fld ft2, 0(t4)
+
+	# get address of local var:i2f_
+	fld ft1, 128(sp)
+
+	# get address of local var:af
+	fld ft2, 136(sp)
+	fadd.d ft0, ft1, ft2
 
 	# get address of local var:result_$2
-	fadd.d ft0, ft1, ft2
 	fsd ft0, 120(sp)
 
 	# load bf lv$4
@@ -427,15 +427,15 @@ fEntry:
 	# fadd result_$3 result_$2 bf
 
 	# fetch variables
-	li t4, 120
-	add t4, sp, t4
-	fld ft1, 0(t4)
-	li t4, 112
-	add t4, sp, t4
-	fld ft2, 0(t4)
+
+	# get address of local var:result_$2
+	fld ft1, 120(sp)
+
+	# get address of local var:bf
+	fld ft2, 112(sp)
+	fadd.d ft0, ft1, ft2
 
 	# get address of local var:result_$3
-	fadd.d ft0, ft1, ft2
 	fsd ft0, 104(sp)
 
 	# load cf lv$5
@@ -454,15 +454,15 @@ fEntry:
 	# fadd result_$4 result_$3 cf
 
 	# fetch variables
-	li t4, 104
-	add t4, sp, t4
-	fld ft1, 0(t4)
-	li t4, 96
-	add t4, sp, t4
-	fld ft2, 0(t4)
+
+	# get address of local var:result_$3
+	fld ft1, 104(sp)
+
+	# get address of local var:cf
+	fld ft2, 96(sp)
+	fadd.d ft0, ft1, ft2
 
 	# get address of local var:result_$4
-	fadd.d ft0, ft1, ft2
 	fsd ft0, 88(sp)
 
 	# load df lv$6
@@ -481,15 +481,15 @@ fEntry:
 	# fadd result_$5 result_$4 df
 
 	# fetch variables
-	li t4, 88
-	add t4, sp, t4
-	fld ft1, 0(t4)
-	li t4, 80
-	add t4, sp, t4
-	fld ft2, 0(t4)
+
+	# get address of local var:result_$4
+	fld ft1, 88(sp)
+
+	# get address of local var:df
+	fld ft2, 80(sp)
+	fadd.d ft0, ft1, ft2
 
 	# get address of local var:result_$5
-	fadd.d ft0, ft1, ft2
 	fsd ft0, 72(sp)
 
 	# load ei lv$7
@@ -508,9 +508,9 @@ fEntry:
 	# intToFloat i2f_$1 ei
 
 	# fetch variables
-	li t4, 64
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:ei
+	ld t1, 64(sp)
 
 	# get address of local var:i2f_$1
 	fcvt.d.l ft0, t1
@@ -519,15 +519,15 @@ fEntry:
 	# fadd result_$6 result_$5 i2f_$1
 
 	# fetch variables
-	li t4, 72
-	add t4, sp, t4
-	fld ft1, 0(t4)
-	li t4, 56
-	add t4, sp, t4
-	fld ft2, 0(t4)
+
+	# get address of local var:result_$5
+	fld ft1, 72(sp)
+
+	# get address of local var:i2f_$1
+	fld ft2, 56(sp)
+	fadd.d ft0, ft1, ft2
 
 	# get address of local var:result_$6
-	fadd.d ft0, ft1, ft2
 	fsd ft0, 48(sp)
 
 	# load fi lv$8
@@ -546,9 +546,9 @@ fEntry:
 	# intToFloat i2f_$2 fi
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:fi
+	ld t1, 40(sp)
 
 	# get address of local var:i2f_$2
 	fcvt.d.l ft0, t1
@@ -557,15 +557,15 @@ fEntry:
 	# fadd result_$7 result_$6 i2f_$2
 
 	# fetch variables
-	li t4, 48
-	add t4, sp, t4
-	fld ft1, 0(t4)
-	li t4, 32
-	add t4, sp, t4
-	fld ft2, 0(t4)
+
+	# get address of local var:result_$6
+	fld ft1, 48(sp)
+
+	# get address of local var:i2f_$2
+	fld ft2, 32(sp)
+	fadd.d ft0, ft1, ft2
 
 	# get address of local var:result_$7
-	fadd.d ft0, ft1, ft2
 	fsd ft0, 24(sp)
 
 	# load gf lv$9
@@ -584,23 +584,23 @@ fEntry:
 	# fadd result_$8 result_$7 gf
 
 	# fetch variables
-	li t4, 24
-	add t4, sp, t4
-	fld ft1, 0(t4)
-	li t4, 16
-	add t4, sp, t4
-	fld ft2, 0(t4)
+
+	# get address of local var:result_$7
+	fld ft1, 24(sp)
+
+	# get address of local var:gf
+	fld ft2, 16(sp)
+	fadd.d ft0, ft1, ft2
 
 	# get address of local var:result_$8
-	fadd.d ft0, ft1, ft2
 	fsd ft0, 8(sp)
 
 	# floatToInt retVal_ result_$8
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	fld ft1, 0(t4)
+
+	# get address of local var:result_$8
+	fld ft1, 8(sp)
 
 	# get address of local var:retVal_
 	fcvt.l.d t0, ft1
@@ -609,9 +609,9 @@ fEntry:
 	# ret retVal_
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:retVal_
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 424
 	add sp, sp, t4
@@ -712,9 +712,9 @@ mainEntry:
 	# ret f
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:f
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 8
 	add sp, sp, t4

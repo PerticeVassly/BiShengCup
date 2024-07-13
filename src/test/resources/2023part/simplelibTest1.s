@@ -51,9 +51,9 @@ mainEntry10:
 	# prepare params
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a
+	ld t1, 0(sp)
 	mv a0, t1
 	addi sp, sp, 0
 

@@ -8,6 +8,7 @@ target/
 **/src/test/rescources/2023part/*.s
 **/src/test/rescources/linked.ll
 **/src/test/rescources/libriscv.o
+**/src/test/rescources/2023/[0-9]*
 
 
 

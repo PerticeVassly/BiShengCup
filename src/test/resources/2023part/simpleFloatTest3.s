@@ -74,9 +74,9 @@ mainEntry11:
 	# ret b
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:b
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 40
 	add sp, sp, t4

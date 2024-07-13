@@ -62,12 +62,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     private final Allocator allocator = Allocator.get();
 
-    private RiscBasicBlock bb;
-
-    RiscInstrGenerator(List<Instruction> instructions, FunctionValue llvmFunctionValue, RiscBasicBlock bb) {
+    RiscInstrGenerator(List<Instruction> instructions, FunctionValue llvmFunctionValue) {
         this.instructions = instructions;
         this.llvmFunctionValue = llvmFunctionValue;
-        this.bb = bb;
     }
 
     /**
@@ -78,6 +75,23 @@ public class RiscInstrGenerator implements InstructionVisitor {
             instruction.accept(this);
         }
         return riscInstructions;
+    }
+
+
+    /**
+     * 将指令将所对应的左值进行保存
+     * @param lVal
+     */
+    private void saveLVal(ValueRef lVal){
+        if( lVal.getType() instanceof IntType){
+            riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
+        } else if(lVal.getType() instanceof FloatType){
+            riscInstructions.add(new RiscFsd(new Register("ft0"), allocator.getAddrOfLocalVar(lVal)));
+        } else if(lVal.getType() instanceof Pointer){
+            riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
+        } else {
+            assert false;
+        }
     }
 
     /**
@@ -172,9 +186,10 @@ public class RiscInstrGenerator implements InstructionVisitor {
         } else{
             typeLen = 8;
         }
-        allocator.mvAddrWithBigOffsetIntoReg(allocator.getOffset(allocate.getLVal()) - typeLen, "sp", "t0");
-        allocator.mvAddrWithBigOffsetIntoReg(allocator.getOffset(allocate.getLVal()), "sp", "t1");
-        riscInstructions.add(new RiscSd(new Register("t0"), new IndirectRegister("t1", 0)));
+
+        riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(allocator.getOffset(allocate.getLVal()) - typeLen)));
+        riscInstructions.add(new RiscAdd(new Register("t0"), new Register("sp"), new Register("t0")));
+        riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(allocate.getLVal())));
     }
 
     @Override
@@ -200,33 +215,18 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Add add) {
-        ValueRef op1 = add.getOperand(0);
-        ValueRef op2 = add.getOperand(1);
-        ValueRef dest = add.getLVal();
-
-        insertComment("add " + dest.getName() + " " + op1.getName() + " " + op2.getName());
-
-        allocator.prepareOperands(op1, op2);
-        Operand destOperand = allocator.getAddrOfLocalVar(dest);
-
+        insertComment("add " + add.getLVal().getName() + " " + add.getOperand(0).getName() + " " + add.getOperand(1).getName());
+        allocator.prepareOperands(add.getOperand(0), add.getOperand(1));
         riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t1"), new Register("t2")));
-        riscInstructions.add(new RiscSd(new Register("t0"), destOperand));
-
+        saveLVal(add.getLVal());
     }
 
     @Override
     public void visit(FAdd fAdd) {
-        ValueRef op1 = fAdd.getOperand(0);
-        ValueRef op2 = fAdd.getOperand(1);
-        ValueRef dest = fAdd.getLVal();
-
-        insertComment("fadd " + dest.getName() + " " + op1.getName() + " " + op2.getName());
-
-        allocator.prepareOperands(op1, op2);
-        Operand destOperand = allocator.getAddrOfLocalVar(dest);
-
+        insertComment("fadd " + fAdd.getLVal().getName() + " " + fAdd.getOperand(0).getName() + " " + fAdd.getOperand(1).getName());
+        allocator.prepareOperands(fAdd.getOperand(0), fAdd.getOperand(1));
         riscInstructions.add(new RiscFaddd(new Register("ft0"), new Register("ft1"), new Register("ft2")));
-        riscInstructions.add(new RiscFsd(new Register("ft0"), destOperand));
+        saveLVal(fAdd.getLVal());
     }
 
 

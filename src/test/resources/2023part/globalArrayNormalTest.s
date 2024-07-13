@@ -59,9 +59,9 @@ mainEntry6:
 	# gep ptr_ i
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:i
+	ld t1, 40(sp)
 	li t2, 16
 	mul t0, t1, t2
 
@@ -153,9 +153,9 @@ mainEntry6:
 	# ret a$2
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:a$2
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 64
 	add sp, sp, t4
