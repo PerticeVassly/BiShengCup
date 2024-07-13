@@ -4,6 +4,10 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
+import cn.edu.nju.software.ir.instruction.logic.And;
+import cn.edu.nju.software.ir.instruction.logic.Logic;
+import cn.edu.nju.software.ir.instruction.logic.Or;
+import cn.edu.nju.software.ir.instruction.logic.Xor;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.*;
@@ -35,19 +39,19 @@ public class Generator implements IrGenerator {
     }
 
     //这里改成各个指令对应一条
-    private LocalVar buildArithmeticIr(BuilderRef builder, OpEnum op, ValueRef operand1, ValueRef operand2, String lValName) {
-        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
-        Instruction ir = new Arithmetic(lVal, op, operand1, operand2);
-        builder.put(ir);
-        return lVal;
-    }
+//    private LocalVar buildArithmeticIr(BuilderRef builder, OpEnum op, ValueRef operand1, ValueRef operand2, String lValName) {
+//        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
+//        Instruction ir = new Arithmetic(lVal, op, operand1, operand2);
+//        builder.put(ir);
+//        return lVal;
+//    }
 
-    private LocalVar buildLogicalIr(BuilderRef builder, OpEnum op, ValueRef operand1, ValueRef operand2, String lValName) {
-        LocalVar lVal = builder.createLocalVar(new BoolType(), lValName);
-        Instruction ir = new Logic(lVal, op, operand1, operand2);
-        builder.put(ir);
-        return lVal;
-    }
+//    private LocalVar buildLogicalIr(BuilderRef builder, OpEnum op, ValueRef operand1, ValueRef operand2, String lValName) {
+//        LocalVar lVal = builder.createLocalVar(new BoolType(), lValName);
+//        Instruction ir = new Logic(lVal, op, operand1, operand2);
+//        builder.put(ir);
+//        return lVal;
+//    }
 
 //    @Override
     public GlobalVar addGlobal(ModuleRef module, TypeRef type, String name) {
@@ -81,7 +85,7 @@ public class Generator implements IrGenerator {
         if (!value.getType().equals(((Pointer)lVal.getType()).getBase())) {
             if (((Pointer)lVal.getType()).getBase().equals(i32Type)) {
                 if (value instanceof ConstValue) {
-                    value = gen.ConstInt(i32Type, (int) (float)((ConstValue) value).getValue());
+                    value = gen.ConstInt(i32Type,  (int) (float)((ConstValue) value).getValue());
                 } else {
                     value = gen.buildFloatToInt(builder, value, "f2i_");
                 }
@@ -164,15 +168,27 @@ public class Generator implements IrGenerator {
     }
     @Override
     public LocalVar buildXor(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        return buildLogicalIr(builder, XOR, operand1, operand2, lValName);
+        LocalVar lVal = builder.createLocalVar(new BoolType(), lValName);
+        Instruction ir = new Xor(lVal, XOR, operand1, operand2);
+        builder.put(ir);
+        return lVal;
+//        return buildLogicalIr(builder, XOR, operand1, operand2, lValName);
     }
     @Override
     public ValueRef buildAnd(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        return buildLogicalIr(builder, AND, operand1, operand2, lValName);
+        LocalVar lVal = builder.createLocalVar(new BoolType(), lValName);
+        Instruction ir = new And(lVal, AND, operand1, operand2);
+        builder.put(ir);
+        return lVal;
+//        return buildLogicalIr(builder, AND, operand1, operand2, lValName);
     }
     @Override
     public ValueRef buildOr(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        return buildLogicalIr(builder, OR, operand1, operand2, lValName);
+        LocalVar lVal = builder.createLocalVar(new BoolType(), lValName);
+        Instruction ir = new Or(lVal, OR, operand1, operand2);
+        builder.put(ir);
+        return lVal;
+//        return buildLogicalIr(builder, OR, operand1, operand2, lValName);
     }
     @Override
     public ValueRef buildZExtend(BuilderRef builder, ValueRef operand, TypeRef type, String lValName) {
@@ -184,6 +200,7 @@ public class Generator implements IrGenerator {
         builder.put(ir);
         return lVal;
     }
+
     @Override
     public ValueRef buildBitCast(BuilderRef builder, ValueRef operand, String name) {
          TypeRef base = ((ArrayType)((Pointer)operand.getType()).getBase()).getBaseType();
@@ -197,6 +214,22 @@ public class Generator implements IrGenerator {
             , int argCount, String retValName, int lineNo) {
         FunctionType ft = ((FunctionType) function.getType());
         TypeRef retTy = ft.getReturnType();
+
+        // implicit type conversion:
+        for (int i = 0; i < arguments.size(); i++) {
+            ValueRef argument = arguments.get(i);
+            if (!ft.getFParameter(i).equals(argument.getType())) {
+                if (ft.getFParameter(i) instanceof IntType && argument.getType() instanceof FloatType) {
+                    argument= gen.buildFloatToInt(builder, argument, "f2i_");
+                } else if (ft.getFParameter(i) instanceof FloatType && argument.getType() instanceof IntType) {
+                    argument= gen.buildIntToFloat(builder, argument, "i2f_");
+                } else {
+                    throw new RuntimeException(String.format("Can't cast %s to %s!", argument.getType(), ft.getFParameter(i)));
+                }
+                arguments.set(i, argument);
+            }
+        }
+
         Instruction ir;
         LocalVar retVal = null;
         if (!(retTy instanceof VoidType)) {
@@ -208,6 +241,7 @@ public class Generator implements IrGenerator {
         builder.put(ir);
         return retVal;
     }
+
     @Override
     public ValueRef buildReturnVoid(BuilderRef builder) {
         Instruction ir = new RetVoid();
@@ -227,8 +261,8 @@ public class Generator implements IrGenerator {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
         Instruction ir = new Add(lVal, ADD, operand1, operand2);
         builder.put(ir);
-        //return
         return lVal;
+//        return buildArithmeticIr(builder, ADD, operand1, operand2, lValName);
     }
 
     @Override
@@ -236,7 +270,6 @@ public class Generator implements IrGenerator {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
         Instruction ir = new FAdd(lVal, FADD, operand1, operand2);
         builder.put(ir);
-        //return
         return lVal;
 //        return buildArithmeticIr(builder, FADD, operand1, operand2, lValName);
     }
@@ -255,34 +288,53 @@ public class Generator implements IrGenerator {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
         Instruction ir = new FSub(lVal, FSUB, operand1, operand2);
         builder.put(ir);
-        //return
         return lVal;
 //        return buildArithmeticIr(builder, FSUB, operand1, operand2, lValName);
     }
 
     @Override
     public LocalVar buildMul(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        return buildArithmeticIr(builder, MUL, operand1, operand2, lValName);
+        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
+        Instruction ir = new Mul(lVal, MUL, operand1, operand2);
+        builder.put(ir);
+        return lVal;
+//        return buildArithmeticIr(builder, MUL, operand1, operand2, lValName);
     }
 
     @Override
     public ValueRef buildFMul(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        return buildArithmeticIr(builder, FMUL, operand1, operand2, lValName);
+        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
+        Instruction ir = new FMul(lVal, FMUL, operand1, operand2);
+        builder.put(ir);
+        return lVal;
+//        return buildArithmeticIr(builder, FMUL, operand1, operand2, lValName);
     }
 
     @Override
     public LocalVar buildDiv(BuilderRef builder, ValueRef dividend, ValueRef divisor, String lValName) {
-        return buildArithmeticIr(builder, DIV, dividend, divisor, lValName);
+        LocalVar lVal = builder.createLocalVar(typeTransfer(dividend.getType(), divisor.getType()), lValName);
+        Instruction ir = new Div(lVal, DIV, dividend, divisor);
+        builder.put(ir);
+        return lVal;
+//        return buildArithmeticIr(builder, DIV, dividend, divisor, lValName);
     }
 
     @Override
     public ValueRef buildFDiv(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        return buildArithmeticIr(builder, FDIV, operand1, operand2, lValName);
+        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
+        Instruction ir = new FDiv(lVal, FDIV, operand1, operand2);
+        builder.put(ir);
+        return lVal;
+//        return buildArithmeticIr(builder, FDIV, operand1, operand2, lValName);
     }
 
     @Override
     public LocalVar buildMod(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
-        return buildArithmeticIr(builder, MOD, operand1, operand2, lValName);
+        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
+        Instruction ir = new Mod(lVal, MOD, operand1, operand2);
+        builder.put(ir);
+        return lVal;
+//        return buildArithmeticIr(builder, MOD, operand1, operand2, lValName);
     }
     @Override
     public ValueRef buildBranch(BuilderRef builder, BasicBlockRef targetBlock) {

@@ -6,37 +6,39 @@ import cn.edu.nju.software.ir.type.VoidType;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
 
 import static cn.edu.nju.software.ir.instruction.OpEnum.CALL;
 import static cn.edu.nju.software.ir.instruction.Operator.getOperator;
 
 public class Call extends Instruction {
-    private final ArrayList<ValueRef> realParams;
+    private final List<ValueRef> realParams;
     private final FunctionValue function;
     private int lineNo = -1;
 
-    public Call(FunctionValue function, ArrayList<ValueRef> realParams) {
+    public Call(FunctionValue function, List<ValueRef> realParams) {
         operator = getOperator(CALL);
         this.function = function;
         this.realParams = realParams;
     }
 
-    public Call(ValueRef lVal, FunctionValue function, ArrayList<ValueRef> realParams) {
+    public Call(ValueRef lVal, FunctionValue function, List<ValueRef> realParams) {
         this.lVal = lVal;
         operator = getOperator(CALL);
         this.function = function;
         this.realParams = realParams;
     }
 
-    public Call(FunctionValue function, ArrayList<ValueRef> realParams, int lineNo) {
+    public Call(FunctionValue function, List<ValueRef> realParams, int lineNo) {
         operator = getOperator(CALL);
         this.function = function;
         this.realParams = realParams;
         this.lineNo = lineNo;
     }
 
-    public Call(ValueRef lVal, FunctionValue function, ArrayList<ValueRef> realParams, int lineNo) {
+    public Call(ValueRef lVal, FunctionValue function, List<ValueRef> realParams, int lineNo) {
         this.lVal = lVal;
         operator = getOperator(CALL);
         this.function = function;
@@ -44,8 +46,8 @@ public class Call extends Instruction {
         this.lineNo = lineNo;
     }
 
-    public ArrayList<ValueRef> getRealParams() {
-        return realParams;
+    public List<ValueRef> getRealParams() {
+        return Collections.unmodifiableList(realParams);
     }
 
     public FunctionValue getFunction() {

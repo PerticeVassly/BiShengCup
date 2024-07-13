@@ -2,9 +2,19 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+**/src/test/rescources/2023/*.ll
+**/src/test/rescources/2023/*.s
+**/src/test/rescources/2023part/*.ll
+**/src/test/rescources/2023part/*.s
+**/src/test/rescources/linked.ll
+**/src/test/rescources/libriscv.o
+**/src/test/rescources/2023/[0-9]*
 
-!pom.xml
 
+
+
+
+pom.xml
 /out
 /.idea
 
@@ -45,3 +55,4 @@ build/
 
 ### Mac OS ###
 .DS_Store
+

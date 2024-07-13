@@ -13,8 +13,8 @@ public class CmdExecutor {
         ProcessBuilder pb = new ProcessBuilder(terms);
         Process process = pb.start();
         exitCode = process.waitFor();
-        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + "\n");
-        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + "\n");
+        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + System.lineSeparator());
+        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + System.lineSeparator());
         hasError = !errorInfo.isEmpty();
     }
 
@@ -23,7 +23,7 @@ public class CmdExecutor {
         Process process = pb.start();
         OutputStream os = process.getOutputStream();
         try (FileInputStream fis = new FileInputStream(inputFile)) {
-            byte[] buffer = new byte[65536];
+            byte[] buffer = new byte[65536]; //todo() buffer size too small?
             int bytesRead;
             while ((bytesRead = fis.read(buffer)) != -1) {
                 os.write(buffer, 0, bytesRead);
@@ -32,12 +32,12 @@ public class CmdExecutor {
             os.close();
         }
         exitCode = process.waitFor();
-        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + "\n");
-        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + "\n");
+        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + System.lineSeparator());
+        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + System.lineSeparator());
         hasError = !errorInfo.isEmpty();
     }
 
-        public String getErrorInfo() {
+    public String getErrorInfo() {
         return errorInfo;
     }
 

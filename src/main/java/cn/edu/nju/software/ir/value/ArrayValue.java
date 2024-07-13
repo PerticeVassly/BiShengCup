@@ -1,8 +1,8 @@
 package cn.edu.nju.software.ir.value;
 
 import cn.edu.nju.software.ir.type.ArrayType;
-import cn.edu.nju.software.ir.type.TypeRef;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArrayValue extends ValueRef {
@@ -41,5 +41,17 @@ public class ArrayValue extends ValueRef {
         }
         res.append("]");
         return res.toString();
+    }
+
+    public List<ValueRef> getLinerList(){
+        List<ValueRef> res = new ArrayList<>();
+        for (ValueRef element : values) {
+            if (element instanceof ArrayValue) {
+                res.addAll(((ArrayValue) element).getLinerList());
+            } else {
+                res.add(element);
+            }
+        }
+        return res;
     }
 }

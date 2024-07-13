@@ -16,6 +16,9 @@ public class GEP extends Instruction {
         this.operands = operands;
     }
 
+    public Pointer getArrayTypePtr() {
+        return arrayTypePtr;
+    }
     @Override
     public String toString() {
         StringBuilder instr = new StringBuilder(lVal + " = ");
@@ -30,4 +33,6 @@ public class GEP extends Instruction {
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
     }
+
+
 }

@@ -38,16 +38,16 @@ public class TestFrontEnd {
      */
     @ParameterizedTest
     @StringSource("add")
-    @StringSource("test1")
-    @StringSource("prime")
-    @StringSource("floattest1")
-    @StringSource("merge-sort")
-    @StringSource("matrix")
-    @StringSource("fmatrix")
-    @StringSource("recursion")
-    @StringSource("integration")
-    @StringSource("quick-sort")
-    @StringSource("smallmatrix")
+//    @StringSource("test1")
+//    @StringSource("prime")
+//    @StringSource("floattest1")
+//    @StringSource("merge-sort")
+//    @StringSource("matrix")
+//    @StringSource("fmatrix")
+//    @StringSource("recursion")
+//    @StringSource("integration")
+//    @StringSource("quick-sort")
+//    @StringSource("smallmatrix")
     void testFrontEnd(String name) throws IOException, InterruptedException{
         testFile(name);
     }

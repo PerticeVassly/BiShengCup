@@ -36,6 +36,14 @@ public class ArrayType extends TypeRef {
         }
     }
 
+    public static int getTotalSize(TypeRef arrayType){
+        //递归计算数组的总大小
+        if(!(arrayType instanceof ArrayType)){
+            return 8;
+        }
+        return ((ArrayType) arrayType).elementSize * getTotalSize(((ArrayType) arrayType).elementType);
+    }
+
     public int getDim() {
         if (!(elementType instanceof ArrayType)) {
             return 1;
@@ -58,7 +66,7 @@ public class ArrayType extends TypeRef {
 
     public int getTotSize() {
         if (!(elementType instanceof ArrayType)) {
-            return elementSize;
+            return elementSize*elementType.getWidth();
         } else {
             return ((ArrayType) elementType).getTotSize() * elementSize;
         }

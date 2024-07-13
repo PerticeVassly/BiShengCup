@@ -1,0 +1,22 @@
+
+int f(int a[], int n)
+{
+    int i, j, k;
+    int max = 0;
+    for (i = 0; i < n; i++)
+    {
+        for (j = i; j < n; j++)
+        {
+            int sum = 0;
+            for (k = i; k <= j; k++)
+            {
+                sum += a[k];
+            }
+            if (sum > max)
+            {
+                max = sum;
+            }
+        }
+    }
+    return max;
+}

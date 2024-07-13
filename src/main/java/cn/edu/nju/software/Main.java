@@ -3,12 +3,12 @@ package cn.edu.nju.software;
 import java.io.IOException;
 import java.util.Arrays;
 
+import cn.edu.nju.software.backend.RiscModule;
+import cn.edu.nju.software.frontend.pass.PassManager;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-
-import cn.edu.nju.software.backend.RiscModule;
 import cn.edu.nju.software.frontend.lexer.LexerErrorListener;
 import cn.edu.nju.software.frontend.lexer.SysYLexer;
 import cn.edu.nju.software.frontend.parser.ParserErrorListener;
@@ -77,15 +77,22 @@ public class Main {
         irVisitor.dumpModuleToConsole();
 
         ModuleRef module = irVisitor.getModule();
+        if(module == null){
+            assert false;
+        }
+
+//        PassManager passManager=new PassManager(module);
+//        //TODO:调试完成后删除这句
+//        passManager.setDbgFlag();
+//        passManager.runPass();
         if (emitLLVM) {
             module.dumpToFile(output);
         }
-
-//        if(emitAssembly){
-//            RiscModule riscModule = new RiscModule(module);
-//            riscModule.getAssemblyModule().dumpToConsole();
-//            riscModule.getAssemblyModule().dumpToFile(output);
-//        }
+        if(emitAssembly){
+            RiscModule riscModule = new RiscModule(module);
+            riscModule.codeGen();
+            riscModule.dumpToFile(output);
+        }
     }
 
     private static void parseArgs(String... args) {
