@@ -46,4 +46,7 @@ public interface InstructionVisitor {
 
     //
     void visit(Add add);
+
+    // TODO: tobe implemented
+    void visit(BitCast bitCast);
 }

@@ -1,6 +1,6 @@
-const int a[3] = {1,2,3};
-int b = a[1];
-
+const int len = 3;
 int main() {
-    return 0;
+    int a[len] = {1,2,3};
+    int b = a[1] * a[2];
+    return b;
 }

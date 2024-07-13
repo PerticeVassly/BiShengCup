@@ -17,12 +17,7 @@ import cn.edu.nju.software.backend.asm.RiscLabel;
 import cn.edu.nju.software.backend.registeralloc.RegisterManager;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
-import cn.edu.nju.software.ir.instruction.Br;
-import cn.edu.nju.software.ir.instruction.Call;
-import cn.edu.nju.software.ir.instruction.CondBr;
-import cn.edu.nju.software.ir.instruction.Load;
-import cn.edu.nju.software.ir.instruction.Ret;
-import cn.edu.nju.software.ir.instruction.Store;
+import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.Add;
 import cn.edu.nju.software.ir.instruction.arithmetic.Alloc;
 import cn.edu.nju.software.ir.type.IntType;
@@ -361,4 +356,8 @@ public class RiscBasicBlock implements InstructionVisitor {
 
     }
 
+    @Override
+    public void visit(BitCast bitCast) {
+        // TODO
+    }
 }

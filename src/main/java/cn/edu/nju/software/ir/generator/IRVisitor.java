@@ -37,6 +37,8 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     private final VoidType voidType = new VoidType();
     private final FloatType floatType = new FloatType();
 
+    private FunctionValue memset;
+
     private final ValueRef zero = gen.ConstInt(i32Type, 0);
     private final ValueRef fZero = gen.ConstFloat(floatType, 0.0f);
 
@@ -133,8 +135,20 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 
             ft = new FunctionType(voidType, new ArrayList<>(){{add(i32Type); add(new Pointer(floatType));}}, 2);
             curScope.put(new Symbol<>("putfarray", gen.addFunction(module, ft, "putfarray")));
+
+            addMemSet();
         }
     }
+
+    private void addMemSet() {
+        ArrayList<TypeRef> argsTy = new ArrayList<>();
+        argsTy.add(new Pointer(i32Type));
+        argsTy.add(i32Type);
+        argsTy.add(i32Type);
+        FunctionType ft = new FunctionType(voidType, argsTy, 3);
+        memset = new FunctionValue(ft, "memset");
+    }
+
     @Override
     public ValueRef visitProgram(SysYParser.ProgramContext ctx) {
         functionDef = false;
@@ -426,6 +440,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     @Override
     public ValueRef visitLVal(SysYParser.LValContext ctx) {
         ValueRef lVal = scope.find(ctx.IDENT().getText()); // lVal is a pointer type in fact
+        System.err.println(ctx.exp().size());
         if (ctx.exp() == null || ctx.exp().isEmpty()) {
             return lVal;
         } else {
@@ -434,7 +449,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             for (int i = 0; i < dim; i++) {
                 indices[i] = visitExp(ctx.exp(i));
             }
-            if (lVal instanceof  GlobalVar && ((GlobalVar) lVal).isConst()) {
+            if (lVal instanceof  GlobalVar && ((GlobalVar) lVal).isConst() && global()) {
                 ArrayValue av = (ArrayValue) ((GlobalVar) lVal).getInitVal();
                 ValueRef res = null;
                 for (ValueRef vr : indices) {
@@ -696,6 +711,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         GlobalVar globalVar = null;
         LocalVar localVar = null;
         TypeRef type;
+        int arrSz = 0;
         if (parent.bType().INT() != null){
             type = i32Type;
         } else {
@@ -715,10 +731,12 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             int dim = ctx.constExp().size();
             ConstValue cv = (ConstValue) visitConstExp(ctx.constExp(dim - 1));
             int size = (int) cv.getValue();
+            arrSz = size;
             ArrayType arrayType = new ArrayType(type, size);
             for (int i = dim - 2; i >= 0; i--) {
                 cv = (ConstValue) visitConstExp(ctx.constExp(i));
                 size = (int) cv.getValue();
+                arrSz *= size;
                 arrayType = new ArrayType(arrayType, size);
             }
             elementDim = new ArrayList<>();
@@ -776,6 +794,18 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     gen.buildStore(builder, init, localVar);
                     valuePropagate(localVar, init);
                 } else if (localVar != null) {
+                    // special {}
+                    if (ctx.initVal().getText().equals("{}")) {
+                        ValueRef bitCastPtr = gen.buildBitCast(builder, localVar, "ptr");
+                        ArrayList<ValueRef> args = new ArrayList<>();
+                        args.add(bitCastPtr);
+                        args.add(zero);
+                        ConstValue totSz = gen.ConstInt(i32Type, arrSz);
+                        args.add(totSz);
+                        gen.buildCall(builder, memset, args, 3, "ret",
+                                ctx.IDENT().getSymbol().getLine());
+                        return null;
+                    }
                     // array
                     arrayInit = new ArrayList<>();
                     visitInitVal(ctx.initVal());
