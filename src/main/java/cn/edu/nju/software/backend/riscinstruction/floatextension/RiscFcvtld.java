@@ -9,4 +9,9 @@ public class RiscFcvtld extends DefaultInstruction {
     public RiscFcvtld(Operand rs1, Operand rd) {
         super(RiscOpcode.FCVT_L_D, rs1, rd);
     }
+
+    @Override
+    public String emitCode() {
+        return super.emitCode() + ", rtz";
+    }
 }

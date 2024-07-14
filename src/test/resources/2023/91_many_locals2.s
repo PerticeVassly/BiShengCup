@@ -8,7 +8,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry61:
+mainEntry35:
 
 	# reserve space
 	li t4, 1320
@@ -320,9 +320,9 @@ mainEntry61:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_207
-	j whileCond_207
-whileCond_207:
+	# br whileCond_158
+	j whileCond_158
+whileCond_158:
 
 	# load b lv$30
 
@@ -373,15 +373,15 @@ whileCond_207:
 	seqz t0, t0
 	sd t0, 752(sp)
 
-	# condBr cond_ whileBody_207 next_500
+	# condBr cond_ whileBody_158 next_401
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 752(sp)
-	beqz t1, next_500
-	j whileBody_207
-whileBody_207:
+	beqz t1, next_401
+	j whileBody_158
+whileBody_158:
 
 	# load b$1 lv$30
 
@@ -421,9 +421,9 @@ whileBody_207:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_207
-	j whileCond_207
-next_500:
+	# br whileCond_158
+	j whileCond_158
+next_401:
 
 	# lv 
 

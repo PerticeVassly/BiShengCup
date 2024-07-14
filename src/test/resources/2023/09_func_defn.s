@@ -8,7 +8,7 @@ gv:
 .type func, @function
 .globl func
 func:
-funcEntry:
+funcEntry4:
 
 	# reserve space
 	li t4, 48
@@ -103,7 +103,7 @@ funcEntry:
 .type main, @function
 .globl main
 main:
-mainEntry21:
+mainEntry90:
 
 	# reserve space
 	li t4, 40

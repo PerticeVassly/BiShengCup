@@ -22,7 +22,7 @@ defnEntry:
 }
 
 define i32 @main() {
-mainEntry42:
+mainEntry45:
   %lv = alloca i32, align 4
   %defn = call i32 @defn()
   store i32 %defn, i32* %lv, align 4

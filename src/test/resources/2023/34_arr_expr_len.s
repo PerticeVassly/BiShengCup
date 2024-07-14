@@ -13,7 +13,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry81:
+mainEntry52:
 
 	# reserve space
 	li t4, 128
@@ -57,9 +57,9 @@ mainEntry81:
 	ld t3, 120(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_247
-	j whileCond_247
-whileCond_247:
+	# br whileCond_196
+	j whileCond_196
+whileCond_196:
 
 	# load i lv
 
@@ -107,15 +107,15 @@ whileCond_247:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_ whileBody_247 next_586
+	# condBr cond_ whileBody_196 next_504
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 64(sp)
-	beqz t1, next_586
-	j whileBody_247
-whileBody_247:
+	beqz t1, next_504
+	j whileBody_196
+whileBody_196:
 
 	# load sum lv$1
 
@@ -222,9 +222,9 @@ whileBody_247:
 	ld t3, 104(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_247
-	j whileCond_247
-next_586:
+	# br whileCond_196
+	j whileCond_196
+next_504:
 
 	# load sum$1 lv$1
 

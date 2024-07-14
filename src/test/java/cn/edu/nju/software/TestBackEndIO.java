@@ -26,7 +26,9 @@ public class TestBackEndIO {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("92_register_alloc")
+    @StringSource("102_cvt_fl")
+//    @StringSource("95_float")
+//    @StringSource("61_sort_test7")
     void testRisc(String name) throws IOException, InterruptedException {
         testFile(DIR, name);
     }

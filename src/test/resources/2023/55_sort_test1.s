@@ -76,9 +76,9 @@ bubblesortEntry1:
 	ld t3, 400(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_59
-	j whileCond_59
-whileCond_59:
+	# br whileCond_264
+	j whileCond_264
+whileCond_264:
 
 	# load i lv$1
 
@@ -149,15 +149,15 @@ whileCond_59:
 	seqz t0, t0
 	sd t0, 328(sp)
 
-	# condBr cond_ whileBody_59 next_112
+	# condBr cond_ whileBody_264 next_623
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 328(sp)
-	beqz t1, next_112
-	j whileBody_59
-whileBody_59:
+	beqz t1, next_623
+	j whileBody_264
+whileBody_264:
 
 	# lv$2 
 
@@ -170,9 +170,9 @@ whileBody_59:
 	ld t3, 416(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_60
-	j whileCond_60
-next_112:
+	# br whileCond_265
+	j whileCond_265
+next_623:
 
 	# ret 
 
@@ -185,7 +185,7 @@ next_112:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_60:
+whileCond_265:
 
 	# load j lv$2
 
@@ -279,15 +279,15 @@ whileCond_60:
 	seqz t0, t0
 	sd t0, 264(sp)
 
-	# condBr cond_$1 whileBody_60 next_113
+	# condBr cond_$1 whileBody_265 next_624
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 264(sp)
-	beqz t1, next_113
-	j whileBody_60
-whileBody_60:
+	beqz t1, next_624
+	j whileBody_265
+whileBody_265:
 
 	# load j$1 lv$2
 
@@ -433,15 +433,15 @@ whileBody_60:
 	seqz t0, t0
 	sd t0, 168(sp)
 
-	# condBr cond_$2 ifTrue_53 next_114
+	# condBr cond_$2 ifTrue_359 next_625
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	ld t1, 168(sp)
-	beqz t1, next_114
-	j ifTrue_53
-next_113:
+	beqz t1, next_625
+	j ifTrue_359
+next_624:
 
 	# load i$2 lv$1
 
@@ -477,9 +477,9 @@ next_113:
 	ld t3, 400(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_59
-	j whileCond_59
-ifTrue_53:
+	# br whileCond_264
+	j whileCond_264
+ifTrue_359:
 
 	# load j$3 lv$2
 
@@ -719,9 +719,9 @@ ifTrue_53:
 	ld t3, 24(sp)
 	sd t1, 0(t3)
 
-	# br next_114
-	j next_114
-next_114:
+	# br next_625
+	j next_625
+next_625:
 
 	# load j$7 lv$2
 
@@ -757,12 +757,12 @@ next_114:
 	ld t3, 416(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_60
-	j whileCond_60
+	# br whileCond_265
+	j whileCond_265
 .type main, @function
 .globl main
 main:
-mainEntry22:
+mainEntry92:
 
 	# reserve space
 	li t4, 312
@@ -1138,9 +1138,9 @@ mainEntry22:
 	ld t3, 288(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_61
-	j whileCond_61
-whileCond_61:
+	# br whileCond_266
+	j whileCond_266
+whileCond_266:
 
 	# load i lv$1
 
@@ -1199,15 +1199,15 @@ whileCond_61:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ whileBody_61 next_115
+	# condBr cond_ whileBody_266 next_626
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 56(sp)
-	beqz t1, next_115
-	j whileBody_61
-whileBody_61:
+	beqz t1, next_626
+	j whileBody_266
+whileBody_266:
 
 	# load i$1 lv$1
 
@@ -1368,9 +1368,9 @@ whileBody_61:
 	ld t3, 288(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_61
-	j whileCond_61
-next_115:
+	# br whileCond_266
+	j whileCond_266
+next_626:
 
 	# ret 
 
