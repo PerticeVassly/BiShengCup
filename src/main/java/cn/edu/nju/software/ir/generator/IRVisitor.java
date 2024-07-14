@@ -823,30 +823,30 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         ArrayList<ValueRef> args = new ArrayList<>();
                         args.add(bitCastPtr);
                         args.add(zero);
-                        ConstValue totSz = gen.ConstInt(i32Type, arrSz);
+                        ConstValue totSz = gen.ConstInt(i32Type, arrSz * 4); // need size of Bytes here!
                         args.add(totSz);
                         gen.buildCall(builder, memset, args, 3, "ret",
                                 ctx.IDENT().getSymbol().getLine());
-                        return null;
-                    }
-                    // array
-                    arrayInit = new ArrayList<>();
-                    visitInitVal(ctx.initVal());
-                    /* initialize array for local variable
-                     * consider use GEP to get store target %p
-                     * store %init %p
-                     */
-                    int dims = elementDim.size();
-                    ValueRef[] indices = new ValueRef[dims];
-                    for (int i = 0; i < arrayInit.size(); i++) {
-                        ValueRef storeVal = arrayInit.get(i);
-                        int tmp = i;
-                        for (int j = dims - 1; j >= 0; j--) {
-                            indices[j] = gen.ConstInt(i32Type, tmp % elementDim.get(j));
-                            tmp /= elementDim.get(j);
+                    } else {
+                        // array
+                        arrayInit = new ArrayList<>();
+                        visitInitVal(ctx.initVal());
+                        /* initialize array for local variable
+                         * consider use GEP to get store target %p
+                         * store %init %p
+                         */
+                        int dims = elementDim.size();
+                        ValueRef[] indices = new ValueRef[dims];
+                        for (int i = 0; i < arrayInit.size(); i++) {
+                            ValueRef storeVal = arrayInit.get(i);
+                            int tmp = i;
+                            for (int j = dims - 1; j >= 0; j--) {
+                                indices[j] = gen.ConstInt(i32Type, tmp % elementDim.get(j));
+                                tmp /= elementDim.get(j);
+                            }
+                            ValueRef ptr = gen.buildGEP(builder, localVar, indices, dims, "inp");
+                            gen.buildStore(builder, storeVal, ptr);
                         }
-                        ValueRef ptr = gen.buildGEP(builder, localVar, indices, dims, "inp");
-                        gen.buildStore(builder, storeVal, ptr);
                     }
                 }
             }
