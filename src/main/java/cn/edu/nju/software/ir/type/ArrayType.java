@@ -1,6 +1,6 @@
 package cn.edu.nju.software.ir.type;
 
-
+import cn.edu.nju.software.ir.value.ArrayValue;
 
 public class ArrayType extends TypeRef {
     private final TypeRef elementType;
@@ -21,6 +21,13 @@ public class ArrayType extends TypeRef {
         return elementType;
     }
 
+    public TypeRef getBaseType() {
+        if (elementType instanceof ArrayType) {
+            return ((ArrayType) elementType).getBaseType();
+        } else {
+            return elementType;
+        }
+    }
     public String toString() {
         if (elementSize != UNKNOWN){
             return "[" + elementSize + " x " + elementType.toString() + "]";

@@ -55,6 +55,10 @@ public interface InstructionVisitor {
 
     default void visit(ZExt zExt) {}
 
+    //
+
+    // TODO: tobe implemented
+    void visit(BitCast bitCast);
     default void visit(Ret ret) {}
 
     default void visit(Add add){}

@@ -87,23 +87,23 @@ Fractional_constant : Digit_sequence? '.' Digit_sequence
 
 fragment Exponent_part : ('e' | 'E') Sign? Digit_sequence ;
 
-Sign : '+' | '-' ;
+fragment Sign : '+' | '-' ;
 
-Digit_sequence : DIGIT+
+fragment Digit_sequence : DIGIT+
                ;
 
-Hexadecimal_fractional_constant : Hexadecimal_digit_sequence? '.' Hexadecimal_digit_sequence
+fragment Hexadecimal_fractional_constant : Hexadecimal_digit_sequence? '.' Hexadecimal_digit_sequence
                                 | Hexadecimal_digit_sequence '.' ;
 
-Binary_exponent_part : ('p' | 'P') Sign? Digit_sequence ;
+fragment Binary_ponent_part : ('p' | 'P') Sign? Digit_sequence ;
 
-Hexadecimal_digit_sequence : Hexadecimal_digit+ ;
+fragment Hexadecimal_digit_sequence : Hexadecimal_digit+ ;
 
-Floating_suffix : ('f' | 'l' | 'F' | 'L') ;
+fragment Floating_suffix : ('f' | 'l' | 'F' | 'L') ;
 
-Hexadecimal_prefix : '0' ('x' | 'X') ;
+fragment Hexadecimal_prefix : '0' ('x' | 'X') ;
 
-Hexadecimal_digit : DIGIT | HEX ;
+fragment Hexadecimal_digit : DIGIT | HEX ;
 
 WS
    : [ \r\n\t]+ -> skip

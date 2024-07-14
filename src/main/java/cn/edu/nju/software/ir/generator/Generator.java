@@ -202,6 +202,14 @@ public class Generator implements IrGenerator {
     }
 
     @Override
+    public ValueRef buildBitCast(BuilderRef builder, ValueRef operand, String name) {
+         TypeRef base = ((ArrayType)((Pointer)operand.getType()).getBase()).getBaseType();
+         LocalVar lVal = builder.createLocalVar(new Pointer(base), name);
+         Instruction ir = new BitCast(lVal, operand);
+         builder.put(ir);
+         return lVal;
+    }
+    @Override
     public ValueRef buildCall(BuilderRef builder, FunctionValue function, ArrayList<ValueRef> arguments
             , int argCount, String retValName, int lineNo) {
         FunctionType ft = ((FunctionType) function.getType());
