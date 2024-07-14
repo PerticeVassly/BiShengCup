@@ -8,9 +8,9 @@ target/
 **/src/test/resources/2023part/*.s
 **/src/test/resources/linked.ll
 **/src/test/resources/libriscv.o
-/src/test/resources/2023/
-/src/test/resources/2023part/
-/src/test/resources/2023hidden/
+**/src/test/resources/2023/*
+**/src/test/resources/2023part/*
+**/src/test/resources/2023hidden/*
 
 
 
