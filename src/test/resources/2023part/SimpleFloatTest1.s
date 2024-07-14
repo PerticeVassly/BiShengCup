@@ -16,23 +16,23 @@ mainEntry18:
 	# allocate lv$2
 	li t0, 56
 	add t0, sp, t0
-	li t1, 64
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 64(sp)
 
 	# allocate lv$1
 	li t0, 40
 	add t0, sp, t0
-	li t1, 48
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 48(sp)
 
 	# allocate lv
 	li t0, 24
 	add t0, sp, t0
-	li t1, 32
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 32(sp)
 
 	# lv 
 
@@ -43,12 +43,8 @@ mainEntry18:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 32
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	fsd ft1, 0(t4)
+	ld t3, 32(sp)
+	fsd ft1, 0(t3)
 
 	# lv$1 
 
@@ -59,37 +55,25 @@ mainEntry18:
 	# store lv$1 
 
 	# get address of lv$1 points to
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	fsd ft1, 0(t4)
+	ld t3, 48(sp)
+	fsd ft1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	li t4, 32
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 32(sp)
 
 	# get address of local var:a
-	fld ft0, 0(t4)
+	fld ft0, 0(t3)
 	fsd ft0, 16(sp)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 48(sp)
 
 	# get address of local var:b
-	fld ft0, 0(t4)
+	fld ft0, 0(t3)
 	fsd ft0, 8(sp)
 
 	# fadd result_ a b
@@ -116,12 +100,8 @@ mainEntry18:
 	# store lv$2 result_
 
 	# get address of lv$2 points to
-	li t4, 64
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	fsd ft1, 0(t4)
+	ld t3, 64(sp)
+	fsd ft1, 0(t3)
 
 	# ret 
 

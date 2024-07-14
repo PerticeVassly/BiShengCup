@@ -16,9 +16,9 @@ mainEntry2:
 	# allocate lv
 	li t0, 32
 	add t0, sp, t0
-	li t1, 48
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 48(sp)
 
 	# gep inp 
 
@@ -28,9 +28,9 @@ mainEntry2:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 48(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -45,12 +45,8 @@ mainEntry2:
 	# store inp 
 
 	# get address of inp points to
-	li t4, 24
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 24(sp)
+	sd t1, 0(t3)
 
 	# gep inp$1 
 
@@ -60,9 +56,9 @@ mainEntry2:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 48(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -77,12 +73,8 @@ mainEntry2:
 	# store inp$1 
 
 	# get address of inp$1 points to
-	li t4, 16
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 16(sp)
+	sd t1, 0(t3)
 
 	# gep a 
 
@@ -92,9 +84,9 @@ mainEntry2:
 	mul t0, t1, t2
 
 	# get value of local var:lv
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:lv
+	ld t3, 48(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -104,14 +96,10 @@ mainEntry2:
 	# load a$1 a
 
 	# get address of a points to
-	li t4, 8
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 8(sp)
 
 	# get address of local var:a$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(sp)
 
 	# ret a$1

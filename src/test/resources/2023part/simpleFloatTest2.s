@@ -16,16 +16,16 @@ mainEntry4:
 	# allocate lv$1
 	li t0, 88
 	add t0, sp, t0
-	li t1, 96
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 96(sp)
 
 	# allocate lv
 	li t0, 72
 	add t0, sp, t0
-	li t1, 80
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 80(sp)
 
 	# lv 
 
@@ -36,12 +36,8 @@ mainEntry4:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 80
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	fsd ft1, 0(t4)
+	ld t3, 80(sp)
+	fsd ft1, 0(t3)
 
 	# lv$1 
 
@@ -51,32 +47,24 @@ mainEntry4:
 	# store lv$1 
 
 	# get address of lv$1 points to
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 96(sp)
+	sd t1, 0(t3)
 
 	# load c lv$1
 
 	# get address of lv$1 points to
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 96(sp)
 
 	# get address of local var:c
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 64(sp)
 
 	# ret c
 
 	# fetch variables
-	li t4, 64
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:c
+	ld t1, 64(sp)
 	mv a0, t1
 	li t4, 104
 	add sp, sp, t4
@@ -85,22 +73,18 @@ mainEntry4:
 	# load a lv
 
 	# get address of lv points to
-	li t4, 80
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 80(sp)
 
 	# get address of local var:a
-	fld ft0, 0(t4)
+	fld ft0, 0(t3)
 	fsd ft0, 56(sp)
 
 	# cmp a  cond_eq_tmp_
 
 	# fetch variables
-	li t4, 56
-	add t4, sp, t4
-	fld ft1, 0(t4)
+
+	# get address of local var:a
+	fld ft1, 56(sp)
 	li t2, 0x401e000000000000
 	fmv.d.x ft2, t2
 
@@ -111,9 +95,9 @@ mainEntry4:
 	# zext cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
-	li t4, 48
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_eq_tmp_
+	ld t1, 48(sp)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -122,9 +106,9 @@ mainEntry4:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_
+	ld t1, 40(sp)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -136,9 +120,9 @@ mainEntry4:
 	# condBr cond_ secondCond_ ifFalse_
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_
+	ld t1, 32(sp)
 	beqz t1, ifFalse_
 	j secondCond_
 ifTrue_:
@@ -166,22 +150,18 @@ secondCond_:
 	# load a$1 lv
 
 	# get address of lv points to
-	li t4, 80
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 80(sp)
 
 	# get address of local var:a$1
-	fld ft0, 0(t4)
+	fld ft0, 0(t3)
 	fsd ft0, 24(sp)
 
 	# cmp a$1  cond_gt_tmp_
 
 	# fetch variables
-	li t4, 24
-	add t4, sp, t4
-	fld ft1, 0(t4)
+
+	# get address of local var:a$1
+	fld ft1, 24(sp)
 	li t2, 0x4014000000000000
 	fmv.d.x ft2, t2
 
@@ -193,9 +173,9 @@ secondCond_:
 	# zext cond_tmp_$1 cond_gt_tmp_
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_gt_tmp_
+	ld t1, 16(sp)
 
 	# get address of local var:cond_tmp_$1
 	mv t0, t1
@@ -204,9 +184,9 @@ secondCond_:
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_$1
+	ld t1, 8(sp)
 	li t2, 0
 
 	# get address of local var:cond_$1
@@ -218,9 +198,9 @@ secondCond_:
 	# condBr cond_$1 ifTrue_ ifFalse_
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_$1
+	ld t1, 0(sp)
 	beqz t1, ifFalse_
 	j ifTrue_
 memset: 

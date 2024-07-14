@@ -8,7 +8,7 @@ gv:
 .type func, @function
 .globl func
 func:
-funcEntry4:
+funcEntry:
 
 	# reserve space
 	li t4, 96
@@ -126,15 +126,15 @@ funcEntry4:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_ ifTrue_324 ifFalse_125
+	# condBr cond_ ifTrue_61 ifFalse_18
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 16(sp)
-	beqz t1, ifFalse_125
-	j ifTrue_324
-ifTrue_324:
+	beqz t1, ifFalse_18
+	j ifTrue_61
+ifTrue_61:
 
 	# load a$2 lv$1
 
@@ -181,7 +181,7 @@ ifTrue_324:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_125:
+ifFalse_18:
 
 	# ret 
 
@@ -197,7 +197,7 @@ ifFalse_125:
 .type main, @function
 .globl main
 main:
-mainEntry76:
+mainEntry22:
 
 	# reserve space
 	li t4, 160
@@ -241,9 +241,9 @@ mainEntry76:
 	ld t3, 152(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_232
-	j whileCond_232
-whileCond_232:
+	# br whileCond_62
+	j whileCond_62
+whileCond_62:
 
 	# load i lv$1
 
@@ -291,15 +291,15 @@ whileCond_232:
 	seqz t0, t0
 	sd t0, 96(sp)
 
-	# condBr cond_ whileBody_232 next_557
+	# condBr cond_ whileBody_62 next_124
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 96(sp)
-	beqz t1, next_557
-	j whileBody_232
-whileBody_232:
+	beqz t1, next_124
+	j whileBody_62
+whileBody_62:
 
 	# prepare params
 	addi sp, sp, 0
@@ -359,15 +359,15 @@ whileBody_232:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$1 ifTrue_325 next_558
+	# condBr cond_$1 ifTrue_62 next_125
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 64(sp)
-	beqz t1, next_558
-	j ifTrue_325
-next_557:
+	beqz t1, next_125
+	j ifTrue_62
+next_124:
 
 	# load result$1 lv
 
@@ -415,15 +415,15 @@ next_557:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_$2 ifTrue_326 ifFalse_126
+	# condBr cond_$2 ifTrue_63 ifFalse_19
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	ld t1, 32(sp)
-	beqz t1, ifFalse_126
-	j ifTrue_326
-ifTrue_325:
+	beqz t1, ifFalse_19
+	j ifTrue_63
+ifTrue_62:
 
 	# load result lv
 
@@ -459,9 +459,9 @@ ifTrue_325:
 	ld t3, 136(sp)
 	sd t1, 0(t3)
 
-	# br next_558
-	j next_558
-next_558:
+	# br next_125
+	j next_125
+next_125:
 
 	# load i$1 lv$1
 
@@ -497,9 +497,9 @@ next_558:
 	ld t3, 152(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_232
-	j whileCond_232
-ifTrue_326:
+	# br whileCond_62
+	j whileCond_62
+ifTrue_63:
 
 	# prepare params
 
@@ -522,9 +522,9 @@ ifTrue_326:
 	# release params
 	addi sp, sp, 0
 
-	# br next_559
-	j next_559
-ifFalse_126:
+	# br next_126
+	j next_126
+ifFalse_19:
 
 	# prepare params
 
@@ -547,9 +547,9 @@ ifFalse_126:
 	# release params
 	addi sp, sp, 0
 
-	# br next_559
-	j next_559
-next_559:
+	# br next_126
+	j next_126
+next_126:
 
 	# ret 
 

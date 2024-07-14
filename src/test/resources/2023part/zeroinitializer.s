@@ -64,9 +64,9 @@ mainEntry1:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_
-	li t4, 40
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_
+	ld t3, 40(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -81,9 +81,9 @@ mainEntry1:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$1
-	li t4, 32
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$1
+	ld t3, 32(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -98,9 +98,9 @@ mainEntry1:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$2
-	li t4, 24
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$2
+	ld t3, 24(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -115,9 +115,9 @@ mainEntry1:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$3
-	li t4, 16
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$3
+	ld t3, 16(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -127,22 +127,18 @@ mainEntry1:
 	# load f$1 f
 
 	# get address of f points to
-	li t4, 8
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 8(sp)
 
 	# get address of local var:f$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(sp)
 
 	# ret f$1
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:f$1
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 48
 	add sp, sp, t4

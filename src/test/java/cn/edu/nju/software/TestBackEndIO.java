@@ -37,9 +37,6 @@ public class TestBackEndIO {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if (false){
-            fail();
-        }
         testFile(DIR, name);
     }
 

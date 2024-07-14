@@ -8,7 +8,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry35:
+mainEntry37:
 
 	# reserve space
 	li t4, 0

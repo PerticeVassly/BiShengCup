@@ -14,7 +14,7 @@ gv2:
 .type main, @function
 .globl main
 main:
-mainEntry57:
+mainEntry59:
 
 	# reserve space
 	li t4, 56
@@ -25,16 +25,16 @@ mainEntry57:
 	# allocate lv$1
 	li t0, 40
 	add t0, sp, t0
-	li t1, 48
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 48(sp)
 
 	# allocate lv
 	li t0, 24
 	add t0, sp, t0
-	li t1, 32
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 32(sp)
 
 	# lv 
 
@@ -45,32 +45,24 @@ mainEntry57:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 32
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	fsd ft1, 0(t4)
+	ld t3, 32(sp)
+	fsd ft1, 0(t3)
 
 	# load d lv
 
 	# get address of lv points to
-	li t4, 32
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 32(sp)
 
 	# get address of local var:d
-	fld ft0, 0(t4)
+	fld ft0, 0(t3)
 	fsd ft0, 16(sp)
 
 	# floatToInt f2i_ d
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	fld ft1, 0(t4)
+
+	# get address of local var:d
+	fld ft1, 16(sp)
 
 	# get address of local var:f2i_
 	fcvt.l.d t0, ft1
@@ -79,39 +71,31 @@ mainEntry57:
 	# lv$1 f2i_
 
 	# fetch variables
-	li t4, 8
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:f2i_
+	ld t1, 8(sp)
 
 	# store lv$1 f2i_
 
 	# get address of lv$1 points to
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 48(sp)
+	sd t1, 0(t3)
 
 	# load e lv$1
 
 	# get address of lv$1 points to
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 48(sp)
 
 	# get address of local var:e
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(sp)
 
 	# prepare params
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:e
+	ld t1, 0(sp)
 	mv a0, t1
 	addi sp, sp, 0
 

@@ -24,46 +24,38 @@ fibEntry:
 	# allocate lv
 	li t0, 120
 	add t0, sp, t0
-	li t1, 128
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 128(sp)
 
 	# lv 0
 
 	# fetch variables
-	li t4, 136
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:0
+	ld t1, 136(sp)
 
 	# store lv 0
 
 	# get address of lv points to
-	li t4, 128
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 128(sp)
+	sd t1, 0(t3)
 
 	# load n lv
 
 	# get address of lv points to
-	li t4, 128
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 128(sp)
 
 	# get address of local var:n
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 112(sp)
 
 	# cmp n  cond_eq_tmp_
 
 	# fetch variables
-	li t4, 112
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:n
+	ld t1, 112(sp)
 	li t2, 1
 
 	# get address of local var:cond_eq_tmp_
@@ -74,9 +66,9 @@ fibEntry:
 	# zext cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
-	li t4, 104
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_eq_tmp_
+	ld t1, 104(sp)
 
 	# get address of local var:cond_tmp_
 	mv t0, t1
@@ -85,9 +77,9 @@ fibEntry:
 	# cmp cond_tmp_  cond_
 
 	# fetch variables
-	li t4, 96
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_
+	ld t1, 96(sp)
 	li t2, 0
 
 	# get address of local var:cond_
@@ -99,9 +91,9 @@ fibEntry:
 	# condBr cond_ ifTrue_7 next_7
 
 	# fetch variables
-	li t4, 88
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_
+	ld t1, 88(sp)
 	beqz t1, next_7
 	j ifTrue_7
 ifTrue_7:
@@ -122,22 +114,18 @@ next_7:
 	# load n$1 lv
 
 	# get address of lv points to
-	li t4, 128
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 128(sp)
 
 	# get address of local var:n$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 80(sp)
 
 	# cmp n$1  cond_eq_tmp_$1
 
 	# fetch variables
-	li t4, 80
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:n$1
+	ld t1, 80(sp)
 	li t2, 2
 
 	# get address of local var:cond_eq_tmp_$1
@@ -148,9 +136,9 @@ next_7:
 	# zext cond_tmp_$1 cond_eq_tmp_$1
 
 	# fetch variables
-	li t4, 72
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_eq_tmp_$1
+	ld t1, 72(sp)
 
 	# get address of local var:cond_tmp_$1
 	mv t0, t1
@@ -159,9 +147,9 @@ next_7:
 	# cmp cond_tmp_$1  cond_$1
 
 	# fetch variables
-	li t4, 64
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_tmp_$1
+	ld t1, 64(sp)
 	li t2, 0
 
 	# get address of local var:cond_$1
@@ -173,9 +161,9 @@ next_7:
 	# condBr cond_$1 ifTrue_8 next_8
 
 	# fetch variables
-	li t4, 56
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:cond_$1
+	ld t1, 56(sp)
 	beqz t1, next_8
 	j ifTrue_8
 ifTrue_8:
@@ -196,22 +184,18 @@ next_8:
 	# load n$2 lv
 
 	# get address of lv points to
-	li t4, 128
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 128(sp)
 
 	# get address of local var:n$2
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 48(sp)
 
 	# sub result_ n$2 
 
 	# fetch variables
-	li t4, 48
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:n$2
+	ld t1, 48(sp)
 	li t2, 1
 
 	# get address of local var:result_
@@ -221,9 +205,9 @@ next_8:
 	# prepare params
 
 	# fetch variables
-	li t4, 40
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_
+	ld t1, 40(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -247,22 +231,18 @@ next_8:
 	# load n$3 lv
 
 	# get address of lv points to
-	li t4, 128
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 128(sp)
 
 	# get address of local var:n$3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 24(sp)
 
 	# sub result_$1 n$3 
 
 	# fetch variables
-	li t4, 24
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:n$3
+	ld t1, 24(sp)
 	li t2, 2
 
 	# get address of local var:result_$1
@@ -272,9 +252,9 @@ next_8:
 	# prepare params
 
 	# fetch variables
-	li t4, 16
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_$1
+	ld t1, 16(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -298,23 +278,23 @@ next_8:
 	# add result_$2 fib fib$1
 
 	# fetch variables
-	li t4, 32
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t4, 8
-	add t4, sp, t4
-	ld t2, 0(t4)
+
+	# get address of local var:fib
+	ld t1, 32(sp)
+
+	# get address of local var:fib$1
+	ld t2, 8(sp)
+	add t0, t1, t2
 
 	# get address of local var:result_$2
-	add t0, t1, t2
 	sd t0, 0(sp)
 
 	# ret result_$2
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:result_$2
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 144
 	add sp, sp, t4
@@ -336,9 +316,9 @@ mainEntry16:
 	# allocate lv
 	li t0, 8
 	add t0, sp, t0
-	li t1, 16
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 16(sp)
 
 	# prepare params
 
@@ -367,9 +347,9 @@ mainEntry16:
 	# ret fib
 
 	# fetch variables
-	li t4, 0
-	add t4, sp, t4
-	ld t1, 0(t4)
+
+	# get address of local var:fib
+	ld t1, 0(sp)
 	mv a0, t1
 	li t4, 24
 	add sp, sp, t4
