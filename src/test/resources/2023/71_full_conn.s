@@ -88,15 +88,15 @@ relu_regEntry:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_ ifTrue_335 next_579
+	# condBr cond_ ifTrue_287 next_463
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 40(sp)
-	beqz t1, next_579
-	j ifTrue_335
-ifTrue_335:
+	beqz t1, next_463
+	j ifTrue_287
+ifTrue_287:
 
 	# ret 
 
@@ -109,7 +109,7 @@ ifTrue_335:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_579:
+next_463:
 
 	# load a$1 lv
 
@@ -157,15 +157,15 @@ next_579:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_$1 ifTrue_336 next_580
+	# condBr cond_$1 ifTrue_288 next_464
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 8(sp)
-	beqz t1, next_580
-	j ifTrue_336
-ifTrue_336:
+	beqz t1, next_464
+	j ifTrue_288
+ifTrue_288:
 
 	# ret 
 
@@ -178,7 +178,7 @@ ifTrue_336:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_580:
+next_464:
 
 	# load a$2 lv
 
@@ -26229,15 +26229,15 @@ modelEntry:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_ ifTrue_337 next_581
+	# condBr cond_ ifTrue_289 next_465
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 0(sp)
-	beqz t1, next_581
-	j ifTrue_337
-ifTrue_337:
+	beqz t1, next_465
+	j ifTrue_289
+ifTrue_289:
 
 	# ret 
 
@@ -26250,7 +26250,7 @@ ifTrue_337:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_581:
+next_465:
 
 	# ret 
 
@@ -26266,7 +26266,7 @@ next_581:
 .type main, @function
 .globl main
 main:
-mainEntry80:
+mainEntry44:
 
 	# reserve space
 	li t4, 472
@@ -26335,9 +26335,9 @@ mainEntry80:
 	ld t3, 224(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_244
-	j whileCond_244
-whileCond_244:
+	# br whileCond_176
+	j whileCond_176
+whileCond_176:
 
 	# load N lv
 
@@ -26386,15 +26386,15 @@ whileCond_244:
 	seqz t0, t0
 	sd t0, 176(sp)
 
-	# condBr cond_ whileBody_244 next_582
+	# condBr cond_ whileBody_176 next_466
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 176(sp)
-	beqz t1, next_582
-	j whileBody_244
-whileBody_244:
+	beqz t1, next_466
+	j whileBody_176
+whileBody_176:
 
 	# lv$2 
 
@@ -26407,9 +26407,9 @@ whileBody_244:
 	ld t3, 448(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_245
-	j whileCond_245
-next_582:
+	# br whileCond_177
+	j whileCond_177
+next_466:
 
 	# ret 
 
@@ -26419,7 +26419,7 @@ next_582:
 	li t4, 472
 	add sp, sp, t4
 	ret 
-whileCond_245:
+whileCond_177:
 
 	# load i lv$2
 
@@ -26467,15 +26467,15 @@ whileCond_245:
 	seqz t0, t0
 	sd t0, 144(sp)
 
-	# condBr cond_$1 whileBody_245 next_583
+	# condBr cond_$1 whileBody_177 next_467
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 144(sp)
-	beqz t1, next_583
-	j whileBody_245
-whileBody_245:
+	beqz t1, next_467
+	j whileBody_177
+whileBody_177:
 
 	# lv$3 
 
@@ -26488,9 +26488,9 @@ whileBody_245:
 	ld t3, 464(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_246
-	j whileCond_246
-next_583:
+	# br whileCond_178
+	j whileCond_178
+next_467:
 
 	# gep a$1 
 
@@ -26549,15 +26549,15 @@ next_583:
 	seqz t0, t0
 	sd t0, 120(sp)
 
-	# condBr cond_normalize_ ifTrue_338 ifFalse_134
+	# condBr cond_normalize_ ifTrue_290 ifFalse_113
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 120(sp)
-	beqz t1, ifFalse_134
-	j ifTrue_338
-whileCond_246:
+	beqz t1, ifFalse_113
+	j ifTrue_290
+whileCond_178:
 
 	# load j lv$3
 
@@ -26605,15 +26605,15 @@ whileCond_246:
 	seqz t0, t0
 	sd t0, 88(sp)
 
-	# condBr cond_$2 whileBody_246 next_584
+	# condBr cond_$2 whileBody_178 next_468
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	ld t1, 88(sp)
-	beqz t1, next_584
-	j whileBody_246
-whileBody_246:
+	beqz t1, next_468
+	j whileBody_178
+whileBody_178:
 
 	# load i$1 lv$2
 
@@ -26738,9 +26738,9 @@ whileBody_246:
 	ld t3, 464(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_246
-	j whileCond_246
-next_584:
+	# br whileCond_178
+	j whileCond_178
+next_468:
 
 	# load i$2 lv$2
 
@@ -26776,9 +26776,9 @@ next_584:
 	ld t3, 448(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_245
-	j whileCond_245
-ifTrue_338:
+	# br whileCond_177
+	j whileCond_177
+ifTrue_290:
 
 	# prepare params
 
@@ -26864,9 +26864,9 @@ ifTrue_338:
 	# release params
 	addi sp, sp, 0
 
-	# br next_585
-	j next_585
-ifFalse_134:
+	# br next_469
+	j next_469
+ifFalse_113:
 
 	# prepare params
 
@@ -26952,9 +26952,9 @@ ifFalse_134:
 	# release params
 	addi sp, sp, 0
 
-	# br next_585
-	j next_585
-next_585:
+	# br next_469
+	j next_469
+next_469:
 
 	# load N$1 lv
 
@@ -26990,8 +26990,8 @@ next_585:
 	ld t3, 224(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_244
-	j whileCond_244
+	# br whileCond_176
+	j whileCond_176
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 

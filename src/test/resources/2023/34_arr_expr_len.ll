@@ -19,21 +19,21 @@ declare void @memset(i32*, i32, i32)
 @gv = global [6 x i32] [i32 1, i32 2, i32 33, i32 4, i32 5, i32 6], align 4
 
 define i32 @main() {
-mainEntry60:
+mainEntry52:
   %lv$1 = alloca i32, align 4
   %lv = alloca i32, align 4
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
-  br label %whileCond_224
+  br label %whileCond_196
 
-whileCond_224:                                        ; pred = %mainEntry60, %whileBody_224
+whileCond_196:                                        ; pred = %mainEntry52, %whileBody_196
   %i = load i32, i32* %lv, align 4
   %cond_lt_tmp_ = icmp slt i32 %i, 6
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_224, label %next_523
+  br i1 %cond_, label %whileBody_196, label %next_504
 
-whileBody_224:                                        ; pred = %whileCond_224
+whileBody_196:                                        ; pred = %whileCond_196
   %sum = load i32, i32* %lv$1, align 4
   %i$1 = load i32, i32* %lv, align 4
   %arr = getelementptr [6 x i32], [6 x i32]* @gv, i32 0, i32 %i$1
@@ -43,9 +43,9 @@ whileBody_224:                                        ; pred = %whileCond_224
   %i$2 = load i32, i32* %lv, align 4
   %result_$1 = add i32 %i$2, 1
   store i32 %result_$1, i32* %lv, align 4
-  br label %whileCond_224
+  br label %whileCond_196
 
-next_523:                                             ; pred = %whileCond_224
+next_504:                                             ; pred = %whileCond_196
   %sum$1 = load i32, i32* %lv$1, align 4
   ret i32 %sum$1
 }

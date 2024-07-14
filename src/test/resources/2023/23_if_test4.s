@@ -101,15 +101,15 @@ if_ifElse_Entry:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_ ifTrue_342 next_598
+	# condBr cond_ ifTrue_320 next_526
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 56(sp)
-	beqz t1, next_598
-	j ifTrue_342
-ifTrue_342:
+	beqz t1, next_526
+	j ifTrue_320
+ifTrue_320:
 
 	# load b lv$1
 
@@ -158,15 +158,15 @@ ifTrue_342:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_$1 ifTrue_343 ifFalse_137
+	# condBr cond_$1 ifTrue_321 ifFalse_123
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 24(sp)
-	beqz t1, ifFalse_137
-	j ifTrue_343
-next_598:
+	beqz t1, ifFalse_123
+	j ifTrue_321
+next_526:
 
 	# load a$2 lv
 
@@ -190,7 +190,7 @@ next_598:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_343:
+ifTrue_321:
 
 	# lv 
 
@@ -203,9 +203,9 @@ ifTrue_343:
 	ld t3, 96(sp)
 	sd t1, 0(t3)
 
-	# br next_599
-	j next_599
-ifFalse_137:
+	# br next_527
+	j next_527
+ifFalse_123:
 
 	# load a$1 lv
 
@@ -241,16 +241,16 @@ ifFalse_137:
 	ld t3, 96(sp)
 	sd t1, 0(t3)
 
-	# br next_599
-	j next_599
-next_599:
+	# br next_527
+	j next_527
+next_527:
 
-	# br next_598
-	j next_598
+	# br next_526
+	j next_526
 .type main, @function
 .globl main
 main:
-mainEntry88:
+mainEntry60:
 
 	# reserve space
 	li t4, 8

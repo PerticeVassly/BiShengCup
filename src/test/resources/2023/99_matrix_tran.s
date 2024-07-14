@@ -1054,9 +1054,9 @@ mainEntry95:
 	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_280
-	j whileCond_280
-whileCond_280:
+	# br whileCond_241
+	j whileCond_241
+whileCond_241:
 
 	# load i lv$9
 
@@ -1525,9 +1525,9 @@ whileBody_280:
 	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_280
-	j whileCond_280
-next_641:
+	# br whileCond_241
+	j whileCond_241
+next_580:
 
 	# gep a0$1 
 

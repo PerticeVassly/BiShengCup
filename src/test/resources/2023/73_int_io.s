@@ -43,9 +43,9 @@ my_getintEntry:
 	ld t3, 232(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_63
-	j whileCond_63
-whileCond_63:
+	# br whileCond_249
+	j whileCond_249
+whileCond_249:
 
 	# cmp   cond_normalize_
 
@@ -59,9 +59,9 @@ whileCond_63:
 	seqz t0, t0
 	sd t0, 216(sp)
 
-	# br whileBody_63
-	j whileBody_63
-whileBody_63:
+	# br whileBody_249
+	j whileBody_249
+whileBody_249:
 
 	# prepare params
 	addi sp, sp, 0
@@ -154,15 +154,15 @@ whileBody_63:
 	seqz t0, t0
 	sd t0, 168(sp)
 
-	# condBr cond_ ifTrue_62 secondCond_35
+	# condBr cond_ ifTrue_353 secondCond_127
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 168(sp)
-	beqz t1, secondCond_35
-	j ifTrue_62
-next_125:
+	beqz t1, secondCond_127
+	j ifTrue_353
+next_602:
 
 	# load c$2 lv$1
 
@@ -186,27 +186,27 @@ next_125:
 	ld t3, 232(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_64
-	j whileCond_64
-ifTrue_62:
+	# br whileCond_250
+	j whileCond_250
+ifTrue_353:
 
-	# br whileCond_63
-	j whileCond_63
+	# br whileCond_249
+	j whileCond_249
 
-	# br next_126
-	j next_126
-ifFalse_12:
+	# br next_603
+	j next_603
+ifFalse_144:
 
-	# br next_125
-	j next_125
+	# br next_602
+	j next_602
 
-	# br next_126
-	j next_126
-next_126:
+	# br next_603
+	j next_603
+next_603:
 
-	# br whileCond_63
-	j whileCond_63
-secondCond_35:
+	# br whileCond_249
+	j whileCond_249
+secondCond_127:
 
 	# load c$1 lv$1
 
@@ -255,15 +255,15 @@ secondCond_35:
 	seqz t0, t0
 	sd t0, 128(sp)
 
-	# condBr cond_$1 ifTrue_62 ifFalse_12
+	# condBr cond_$1 ifTrue_353 ifFalse_144
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 128(sp)
-	beqz t1, ifFalse_12
-	j ifTrue_62
-whileCond_64:
+	beqz t1, ifFalse_144
+	j ifTrue_353
+whileCond_250:
 
 	# cmp   cond_normalize_$1
 
@@ -277,9 +277,9 @@ whileCond_64:
 	seqz t0, t0
 	sd t0, 120(sp)
 
-	# br whileBody_64
-	j whileBody_64
-whileBody_64:
+	# br whileBody_250
+	j whileBody_250
+whileBody_250:
 
 	# prepare params
 	addi sp, sp, 0
@@ -373,15 +373,15 @@ whileBody_64:
 	seqz t0, t0
 	sd t0, 72(sp)
 
-	# condBr cond_$2 secondCond_36 ifFalse_13
+	# condBr cond_$2 secondCond_128 ifFalse_145
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	ld t1, 72(sp)
-	beqz t1, ifFalse_13
-	j secondCond_36
-next_127:
+	beqz t1, ifFalse_145
+	j secondCond_128
+next_604:
 
 	# load sum$1 lv
 
@@ -405,7 +405,7 @@ next_127:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_63:
+ifTrue_354:
 
 	# load sum lv
 
@@ -464,20 +464,20 @@ ifTrue_63:
 	ld t3, 232(sp)
 	sd t1, 0(t3)
 
-	# br next_128
-	j next_128
-ifFalse_13:
+	# br next_605
+	j next_605
+ifFalse_145:
 
-	# br next_127
-	j next_127
+	# br next_604
+	j next_604
 
-	# br next_128
-	j next_128
-next_128:
+	# br next_605
+	j next_605
+next_605:
 
-	# br whileCond_64
-	j whileCond_64
-secondCond_36:
+	# br whileCond_250
+	j whileCond_250
+secondCond_128:
 
 	# load c$4 lv$1
 
@@ -527,14 +527,14 @@ secondCond_36:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$3 ifTrue_63 ifFalse_13
+	# condBr cond_$3 ifTrue_354 ifFalse_145
 
 	# fetch variables
 
 	# get address of local var:cond_$3
 	ld t1, 0(sp)
-	beqz t1, ifFalse_13
-	j ifTrue_63
+	beqz t1, ifFalse_145
+	j ifTrue_354
 .type my_putint, @function
 .globl my_putint
 my_putint:
@@ -599,9 +599,9 @@ my_putintEntry:
 	ld t3, 336(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_65
-	j whileCond_65
-whileCond_65:
+	# br whileCond_251
+	j whileCond_251
+whileCond_251:
 
 	# load a lv
 
@@ -650,15 +650,15 @@ whileCond_65:
 	seqz t0, t0
 	sd t0, 144(sp)
 
-	# condBr cond_ whileBody_65 next_129
+	# condBr cond_ whileBody_251 next_606
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 144(sp)
-	beqz t1, next_129
-	j whileBody_65
-whileBody_65:
+	beqz t1, next_606
+	j whileBody_251
+whileBody_251:
 
 	# load i lv$2
 
@@ -802,13 +802,13 @@ whileBody_65:
 	ld t3, 336(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_65
-	j whileCond_65
-next_129:
+	# br whileCond_251
+	j whileCond_251
+next_606:
 
-	# br whileCond_66
-	j whileCond_66
-whileCond_66:
+	# br whileCond_252
+	j whileCond_252
+whileCond_252:
 
 	# load i$2 lv$2
 
@@ -857,15 +857,15 @@ whileCond_66:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_$1 whileBody_66 next_130
+	# condBr cond_$1 whileBody_252 next_607
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 40(sp)
-	beqz t1, next_130
-	j whileBody_66
-whileBody_66:
+	beqz t1, next_607
+	j whileBody_252
+whileBody_252:
 
 	# load i$3 lv$2
 
@@ -961,9 +961,9 @@ whileBody_66:
 	# release params
 	addi sp, sp, 0
 
-	# br whileCond_66
-	j whileCond_66
-next_130:
+	# br whileCond_252
+	j whileCond_252
+next_607:
 
 	# ret void
 	li t4, 352
@@ -975,7 +975,7 @@ next_130:
 .type main, @function
 .globl main
 main:
-mainEntry24:
+mainEntry87:
 
 	# reserve space
 	li t4, 104
@@ -1030,9 +1030,9 @@ mainEntry24:
 	ld t3, 80(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_67
-	j whileCond_67
-whileCond_67:
+	# br whileCond_253
+	j whileCond_253
+whileCond_253:
 
 	# load n lv
 
@@ -1081,15 +1081,15 @@ whileCond_67:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_ whileBody_67 next_131
+	# condBr cond_ whileBody_253 next_608
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 32(sp)
-	beqz t1, next_131
-	j whileBody_67
-whileBody_67:
+	beqz t1, next_608
+	j whileBody_253
+whileBody_253:
 
 	# prepare params
 	addi sp, sp, 0
@@ -1211,9 +1211,9 @@ whileBody_67:
 	ld t3, 80(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_67
-	j whileCond_67
-next_131:
+	# br whileCond_253
+	j whileCond_253
+next_608:
 
 	# ret 
 

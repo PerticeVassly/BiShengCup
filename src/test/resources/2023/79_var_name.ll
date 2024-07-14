@@ -17,7 +17,7 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry8:
+mainEntry59:
   %lv$2 = alloca i32, align 4
   %lv$1 = alloca [20 x i32], align 16
   %lv = alloca i32, align 4
@@ -63,16 +63,16 @@ mainEntry8:
   %inp$19 = getelementptr [20 x i32], [20 x i32]* %lv$1, i32 0, i32 19
   store i32 0, i32* %inp$19, align 4
   store i32 0, i32* %lv$2, align 4
-  br label %whileCond_30
+  br label %whileCond_205
 
-whileCond_30:                                        ; pred = %mainEntry8, %whileBody_30
+whileCond_205:                                        ; pred = %mainEntry59, %whileBody_205
   %long_name1$QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz = load i32, i32* %lv, align 4
   %cond_lt_tmp_ = icmp slt i32 %long_name1$QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz, 20
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_30, label %next_64
+  br i1 %cond_, label %whileBody_205, label %next_525
 
-whileBody_30:                                        ; pred = %whileCond_30
+whileBody_205:                                        ; pred = %whileCond_205
   %long_name2$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$1 = load i32, i32* %lv, align 4
   %long_name3$FCzdKgkQxe8BClbywbfbacJx86aWsSC = getelementptr [20 x i32], [20 x i32]* %lv$1, i32 0, i32 %long_name2$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$1
   %long_name4$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$2 = load i32, i32* %lv, align 4
@@ -103,9 +103,9 @@ whileBody_30:                                        ; pred = %whileCond_30
   %long_name20$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$7 = load i32, i32* %lv, align 4
   %result_$5 = add i32 %long_name20$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$7, 1
   store i32 %result_$5, i32* %lv, align 4
-  br label %whileCond_30
+  br label %whileCond_205
 
-next_64:                                             ; pred = %whileCond_30
+next_525:                                             ; pred = %whileCond_205
   %long_name21$RJsXBiXL5NTrpJL22F4zlc3o0KiSE$1 = load i32, i32* %lv$2, align 4
   ret i32 %long_name21$RJsXBiXL5NTrpJL22F4zlc3o0KiSE$1
 }

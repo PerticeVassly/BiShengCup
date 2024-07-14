@@ -17,7 +17,7 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry1:
+mainEntry37:
   ret i32 25
 }
 
