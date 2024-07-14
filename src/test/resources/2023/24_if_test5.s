@@ -177,7 +177,7 @@ ifFalse_:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# add result_ a$1 
+	# ADDresult_ a$1 
 
 	# fetch variables
 
@@ -288,13 +288,24 @@ mainEntry2:
 	li t4, 8
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

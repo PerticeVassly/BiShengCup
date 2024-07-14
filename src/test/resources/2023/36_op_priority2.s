@@ -103,7 +103,7 @@ mainEntry86:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# add result_ c a
+	# ADDresult_ c a
 
 	# fetch variables
 
@@ -135,7 +135,7 @@ mainEntry86:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# sub result_$1 b d
+	# SUBresult_$1 b d
 
 	# fetch variables
 
@@ -144,12 +144,12 @@ mainEntry86:
 
 	# get address of local var:d
 	ld t2, 16(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$1
-	sub t0, t1, t2
 	sd t0, 8(sp)
 
-	# mul result_$2 result_ result_$1
+	# MULresult_$2 result_ result_$1
 
 	# fetch variables
 
@@ -158,9 +158,9 @@ mainEntry86:
 
 	# get address of local var:result_$1
 	ld t2, 8(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$2
-	mul t0, t1, t2
 	sd t0, 0(sp)
 
 	# ret result_$2
@@ -173,13 +173,24 @@ mainEntry86:
 	li t4, 120
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

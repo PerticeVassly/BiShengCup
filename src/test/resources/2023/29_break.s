@@ -212,7 +212,7 @@ next_521:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_ sum i$2
+	# ADDresult_ sum i$2
 
 	# fetch variables
 
@@ -248,7 +248,7 @@ next_521:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$1 i$3 
+	# ADDresult_$1 i$3 
 
 	# fetch variables
 
@@ -275,13 +275,24 @@ next_521:
 
 	# br whileCond_214
 	j whileCond_214
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

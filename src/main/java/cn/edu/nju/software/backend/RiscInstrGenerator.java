@@ -67,9 +67,14 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
 
     /**
-     * 将指令将所对应的左值进行保存
-     * @param lVal
+     * [在生成指令之后的操作]
+     * 保存左值
+     * @param instr
      */
+    private void afterAnIntrGen(Instruction instr){
+        saveLVal(instr.getLVal());
+    }
+
     private void saveLVal(ValueRef lVal){
         if( lVal.getType() instanceof IntType){
             riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
@@ -81,6 +86,17 @@ public class RiscInstrGenerator implements InstructionVisitor {
             assert false;
         }
     }
+
+    /**
+     * [在生成指令之前的操作]
+     * @param instr
+     */
+    private void beforeAnIntrGen(Instruction instr){
+        insertComment(instr.getOp().name() + instr.getLVal().getName() + " " + instr.getOperand(0).getName() + " " + instr.getOperand(1).getName());
+        allocator.prepareOperands(instr.getOperand(0), instr.getOperand(1));
+    }
+
+
 
     /**
      * t0 t1 t2 的被修改，t0的值为ptr的值，t1的值为basePtr的值， t2的值的elment的length大小
@@ -111,7 +127,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t1"), new Register("t0")));
 
         //存放到lVal中
-        riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
+        afterAnIntrGen(gep);
     }
 
     @Override
@@ -177,7 +193,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
         riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(allocator.getOffset(allocate.getLVal()) - typeLen)));
         riscInstructions.add(new RiscAdd(new Register("t0"), new Register("sp"), new Register("t0")));
-        riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(allocate.getLVal())));
+        afterAnIntrGen(allocate);
     }
 
     @Override
@@ -203,163 +219,87 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Add add) {
-        insertComment("add " + add.getLVal().getName() + " " + add.getOperand(0).getName() + " " + add.getOperand(1).getName());
-        allocator.prepareOperands(add.getOperand(0), add.getOperand(1));
+        beforeAnIntrGen(add);
         riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t1"), new Register("t2")));
-        saveLVal(add.getLVal());
+        afterAnIntrGen(add);
     }
 
     @Override
     public void visit(FAdd fAdd) {
-        insertComment("fadd " + fAdd.getLVal().getName() + " " + fAdd.getOperand(0).getName() + " " + fAdd.getOperand(1).getName());
-        allocator.prepareOperands(fAdd.getOperand(0), fAdd.getOperand(1));
+        beforeAnIntrGen(fAdd);
         riscInstructions.add(new RiscFaddd(new Register("ft0"), new Register("ft1"), new Register("ft2")));
-        saveLVal(fAdd.getLVal());
+        afterAnIntrGen(fAdd);
     }
 
 
     @Override
     public void visit(Sub sub) {
-        ValueRef op1 = sub.getOperand(0);
-        ValueRef op2 = sub.getOperand(1);
-        ValueRef dest = sub.getLVal();
-
-        insertComment("sub " + dest.getName() + " " + op1.getName() + " " + op2.getName());
-
-        allocator.prepareOperands(op1, op2);
-        Operand addressToSave = allocator.getAddrOfLocalVar(dest);
-
+        beforeAnIntrGen(sub);
         riscInstructions.add(new RiscSub(new Register("t0"), new Register("t1"), new Register("t2")));
-        riscInstructions.add(new RiscSd(new Register("t0"), addressToSave));
+        afterAnIntrGen(sub);
     }
 
     @Override
     public void visit(FSub fSub) {
-        ValueRef op1 = fSub.getOperand(0);
-        ValueRef op2 = fSub.getOperand(1);
-        ValueRef dest = fSub.getLVal();
-
-        insertComment("fsub " + dest.getName() + " " + op1.getName() + " " + op2.getName());
-
-        allocator.prepareOperands(op1, op2);
-        Operand addressToSave = allocator.getAddrOfLocalVar(dest);
-
+        beforeAnIntrGen(fSub);
         riscInstructions.add(new RiscFsubd(new Register("ft0"), new Register("ft1"), new Register("ft2")));
-        riscInstructions.add(new RiscFsd(new Register("ft0"), addressToSave));
+        afterAnIntrGen(fSub);
     }
 
     @Override
     public void visit(Mul mul) {
-        ValueRef op1 = mul.getOperand(0);
-        ValueRef op2 = mul.getOperand(1);
-        ValueRef dest = mul.getLVal();
-
-        insertComment("mul " + dest.getName() + " " + op1.getName() + " " + op2.getName());
-
-        allocator.prepareOperands(op1, op2);
-        Operand addressToSave = allocator.getAddrOfLocalVar(dest);
-
+        beforeAnIntrGen(mul);
         riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t2")));
-        riscInstructions.add(new RiscSd(new Register("t0"), addressToSave));
+        afterAnIntrGen(mul);
     }
 
     @Override
     public void visit(FMul fmul) {
-        ValueRef op1 = fmul.getOperand(0);
-        ValueRef op2 = fmul.getOperand(1);
-        ValueRef dest = fmul.getLVal();
-
-        insertComment("fmul " + dest.getName() + " " + op1.getName() + " " + op2.getName());
-
-        allocator.prepareOperands(op1, op2);
-        Operand addressToSave = allocator.getAddrOfLocalVar(dest);
-
+        beforeAnIntrGen(fmul);
         riscInstructions.add(new RiscFmuld(new Register("ft0"), new Register("ft1"), new Register("ft2")));
-        riscInstructions.add(new RiscFsd(new Register("ft0"), addressToSave));
-
+        afterAnIntrGen(fmul);
     }
 
     @Override
     public void visit(Mod mod) {
-        ValueRef op1 = mod.getOperand(0);
-        ValueRef op2 = mod.getOperand(1);
-        ValueRef dest = mod.getLVal();
-
-        insertComment("mod " + dest.getName() + " " + op1.getName() + " " + op2.getName());
-
-        allocator.prepareOperands(op1, op2);
-        Operand addressToSave = allocator.getAddrOfLocalVar(dest);
-
+        beforeAnIntrGen(mod);
         riscInstructions.add(new RiscRem(new Register("t0"), new Register("t1"), new Register("t2")));
-        riscInstructions.add(new RiscSd(new Register("t0"), addressToSave));
+        afterAnIntrGen(mod);
     }
 
     @Override
     public void visit(Div div) {
-        ValueRef op1 = div.getOperand(0);
-        ValueRef op2 = div.getOperand(1);
-        ValueRef dest = div.getLVal();
-
-        insertComment("div " + dest.getName() + " " + op1.getName() + " " + op2.getName());
-
-        allocator.prepareOperands(op1, op2);
-        Operand addressToSave = allocator.getAddrOfLocalVar(dest);
-
+        beforeAnIntrGen(div);
         riscInstructions.add(new RiscDiv(new Register("t0"), new Register("t1"), new Register("t2")));
-        riscInstructions.add(new RiscSd(new Register("t0"), addressToSave));
-
+        afterAnIntrGen(div);
     }
 
     @Override
     public void visit(FDiv fdiv) {
-        ValueRef op1 = fdiv.getOperand(0);
-        ValueRef op2 = fdiv.getOperand(1);
-        ValueRef dest = fdiv.getLVal();
-
-        insertComment("fdiv " + dest.getName() + " " + op1.getName() + " " + op2.getName());
-
-        allocator.prepareOperands(op1, op2);
-        Operand addressToSave = allocator.getAddrOfLocalVar(dest);
-
+        beforeAnIntrGen(fdiv);
         riscInstructions.add(new RiscFdivd(new Register("ft0"), new Register("ft1"), new Register("ft2")));
-        riscInstructions.add(new RiscFsd(new Register("ft0"), addressToSave));
+        afterAnIntrGen(fdiv);
     }
 
     //todo() 改成截断
     @Override
     public void visit(IntToFloat intToFloat) {
-        ValueRef lVal = intToFloat.getLVal();
-        ValueRef initVal = intToFloat.getOperand(0);
-
-        insertComment("intToFloat " + lVal.getName() + " " + initVal.getName());
-
-        allocator.prepareOperands(initVal);
-        Operand addressToSave = allocator.getAddrOfLocalVar(lVal);
-
+        beforeAnIntrGen(intToFloat);
         riscInstructions.add(new RiscFcvtdl(new Register("ft0"), new Register("t1")));
-        riscInstructions.add(new RiscFsd(new Register("ft0"), addressToSave));
-
+        afterAnIntrGen(intToFloat);
     }
 
     //todo() 改成截断
     @Override
     public void visit(FloatToInt floatToInt) {
-        ValueRef lVal = floatToInt.getLVal();
-        ValueRef initVal = floatToInt.getOperand(0);
-
-        insertComment("floatToInt " + lVal.getName() + " " + initVal.getName());
-
-        allocator.prepareOperands(initVal);
-        Operand addressToSave = allocator.getAddrOfLocalVar(lVal);
-
+        beforeAnIntrGen(floatToInt);
         riscInstructions.add(new RiscFcvtld(new Register("t0"), new Register("ft1")));
-        riscInstructions.add(new RiscSd(new Register("t0"), addressToSave));
+        afterAnIntrGen(floatToInt);
     }
 
     @Override
     public void visit(Br br) {
         insertComment("br " + br.getTarget().getName());
-
         riscInstructions.add(new RiscJ(br.getTarget().getName()));
     }
 
@@ -602,7 +542,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         insertComment("bitcast from " + bitCast.getOperand(0).getName() + " to " + bitCast.getLVal().getName());
         allocator.prepareOperands(bitCast.getOperand(0));
         riscInstructions.add(new RiscMv(new Register("t0"), new Register("t1")));
-        saveLVal(bitCast.getLVal());
+        afterAnIntrGen(bitCast);
     }
 
     private void prepareParams(Call call) {

@@ -26,8 +26,9 @@ QuickSortEntry1:
 
 	# get address of local var:1
 	sd a1, 848(sp)
-	ld t3, 872(sp)
-	sd t3, 840(sp)
+
+	# get address of local var:2
+	sd a2, 840(sp)
 
 	# allocate lv$6
 	li t0, 824
@@ -443,16 +444,16 @@ next_532:
 	ld t0, 0(t3)
 	sd t0, 560(sp)
 
-	# sub result_$5 i$11 
+	# SUBresult_$5 i$11 
 
 	# fetch variables
 
 	# get address of local var:i$11
 	ld t1, 560(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$5
-	sub t0, t1, t2
 	sd t0, 552(sp)
 
 	# lv$6 result_$5
@@ -513,10 +514,8 @@ next_532:
 
 	# get address of local var:tmp
 	ld t1, 528(sp)
-
-	# push tmp
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -530,7 +529,7 @@ next_532:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:QuickSort
 	sd a0, 520(sp)
@@ -557,7 +556,7 @@ next_532:
 	ld t0, 0(t3)
 	sd t0, 512(sp)
 
-	# add result_$6 i$12 
+	# ADDresult_$6 i$12 
 
 	# fetch variables
 
@@ -627,10 +626,8 @@ next_532:
 
 	# get address of local var:high$2
 	ld t1, 480(sp)
-
-	# push high$2
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -644,7 +641,7 @@ next_532:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:QuickSort$1
 	sd a0, 472(sp)
@@ -742,16 +739,16 @@ whileBody_222:
 	ld t0, 0(t3)
 	sd t0, 424(sp)
 
-	# sub result_$1 j$3 
+	# SUBresult_$1 j$3 
 
 	# fetch variables
 
 	# get address of local var:j$3
 	ld t1, 424(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$1
-	sub t0, t1, t2
 	sd t0, 416(sp)
 
 	# lv$4 result_$1
@@ -893,16 +890,16 @@ secondCond_119:
 	ld t0, 0(t3)
 	sd t0, 336(sp)
 
-	# sub result_ k 
+	# SUBresult_ k 
 
 	# fetch variables
 
 	# get address of local var:k
 	ld t1, 336(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
 	sd t0, 328(sp)
 
 	# cmp arr$3 result_ cond_gt_tmp_
@@ -1060,7 +1057,7 @@ ifTrue_311:
 	ld t0, 0(t3)
 	sd t0, 240(sp)
 
-	# add result_$2 i$4 
+	# ADDresult_$2 i$4 
 
 	# fetch variables
 
@@ -1169,7 +1166,7 @@ whileBody_223:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# add result_$3 i$7 
+	# ADDresult_$3 i$7 
 
 	# fetch variables
 
@@ -1474,16 +1471,16 @@ ifTrue_312:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# sub result_$4 j$9 
+	# SUBresult_$4 j$9 
 
 	# fetch variables
 
 	# get address of local var:j$9
 	ld t1, 8(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$4
-	sub t0, t1, t2
 	sd t0, 0(sp)
 
 	# lv$4 result_$4
@@ -1910,10 +1907,8 @@ mainEntry70:
 
 	# get address of local var:tmp
 	ld t1, 104(sp)
-
-	# push tmp
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1927,7 +1922,7 @@ mainEntry70:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:QuickSort
 	sd a0, 96(sp)
@@ -2150,7 +2145,7 @@ whileBody_224:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_ i$3 
+	# ADDresult_ i$3 
 
 	# fetch variables
 
@@ -2187,13 +2182,24 @@ next_537:
 	li t4, 344
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

@@ -98,16 +98,16 @@ whileCond_37:
 	ld t0, 0(t3)
 	sd t0, 360(sp)
 
-	# sub result_ n 
+	# SUBresult_ n 
 
 	# fetch variables
 
 	# get address of local var:n
 	ld t1, 360(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
 	sd t0, 352(sp)
 
 	# cmp i result_ cond_lt_tmp_
@@ -214,7 +214,7 @@ whileCond_38:
 	ld t0, 0(t3)
 	sd t0, 304(sp)
 
-	# sub result_$1 n$1 i$1
+	# SUBresult_$1 n$1 i$1
 
 	# fetch variables
 
@@ -223,21 +223,21 @@ whileCond_38:
 
 	# get address of local var:i$1
 	ld t2, 304(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$1
-	sub t0, t1, t2
 	sd t0, 296(sp)
 
-	# sub result_$2 result_$1 
+	# SUBresult_$2 result_$1 
 
 	# fetch variables
 
 	# get address of local var:result_$1
 	ld t1, 296(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sub t0, t1, t2
 	sd t0, 288(sp)
 
 	# cmp j result_$2 cond_lt_tmp_$1
@@ -344,7 +344,7 @@ whileBody_38:
 	ld t0, 0(t3)
 	sd t0, 224(sp)
 
-	# add result_$3 j$2 
+	# ADDresult_$3 j$2 
 
 	# fetch variables
 
@@ -452,7 +452,7 @@ next_79:
 	ld t0, 0(t3)
 	sd t0, 160(sp)
 
-	# add result_$7 i$2 
+	# ADDresult_$7 i$2 
 
 	# fetch variables
 
@@ -490,7 +490,7 @@ ifTrue_41:
 	ld t0, 0(t3)
 	sd t0, 144(sp)
 
-	# add result_$4 j$3 
+	# ADDresult_$4 j$3 
 
 	# fetch variables
 
@@ -561,7 +561,7 @@ ifTrue_41:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# add result_$5 j$4 
+	# ADDresult_$5 j$4 
 
 	# fetch variables
 
@@ -732,7 +732,7 @@ next_80:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$6 j$7 
+	# ADDresult_$6 j$7 
 
 	# fetch variables
 
@@ -969,16 +969,16 @@ whileBody_39:
 	ld t0, 0(t3)
 	sd t0, 240(sp)
 
-	# sub result_ i$2 
+	# SUBresult_ i$2 
 
 	# fetch variables
 
 	# get address of local var:i$2
 	ld t1, 240(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
 	sd t0, 232(sp)
 
 	# lv$3 result_
@@ -1077,7 +1077,7 @@ whileBody_40:
 	ld t0, 0(t3)
 	sd t0, 192(sp)
 
-	# add result_$1 j$2 
+	# ADDresult_$1 j$2 
 
 	# fetch variables
 
@@ -1185,16 +1185,16 @@ whileBody_40:
 	ld t0, 0(t3)
 	sd t0, 128(sp)
 
-	# sub result_$2 j$4 
+	# SUBresult_$2 j$4 
 
 	# fetch variables
 
 	# get address of local var:j$4
 	ld t1, 128(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sub t0, t1, t2
 	sd t0, 120(sp)
 
 	# lv$3 result_$2
@@ -1223,7 +1223,7 @@ next_82:
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# add result_$3 j$5 
+	# ADDresult_$3 j$5 
 
 	# fetch variables
 
@@ -1294,7 +1294,7 @@ next_82:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# add result_$4 i$3 
+	# ADDresult_$4 i$3 
 
 	# fetch variables
 
@@ -1446,8 +1446,9 @@ QuickSortEntry:
 
 	# get address of local var:1
 	sd a1, 848(sp)
-	ld t3, 872(sp)
-	sd t3, 840(sp)
+
+	# get address of local var:2
+	sd a2, 840(sp)
 
 	# allocate lv$6
 	li t0, 824
@@ -1863,16 +1864,16 @@ next_84:
 	ld t0, 0(t3)
 	sd t0, 560(sp)
 
-	# sub result_$5 i$11 
+	# SUBresult_$5 i$11 
 
 	# fetch variables
 
 	# get address of local var:i$11
 	ld t1, 560(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$5
-	sub t0, t1, t2
 	sd t0, 552(sp)
 
 	# lv$6 result_$5
@@ -1933,10 +1934,8 @@ next_84:
 
 	# get address of local var:tmp
 	ld t1, 528(sp)
-
-	# push tmp
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1950,7 +1949,7 @@ next_84:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:QuickSort
 	sd a0, 520(sp)
@@ -1977,7 +1976,7 @@ next_84:
 	ld t0, 0(t3)
 	sd t0, 512(sp)
 
-	# add result_$6 i$12 
+	# ADDresult_$6 i$12 
 
 	# fetch variables
 
@@ -2047,10 +2046,8 @@ next_84:
 
 	# get address of local var:high$2
 	ld t1, 480(sp)
-
-	# push high$2
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2064,7 +2061,7 @@ next_84:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:QuickSort$1
 	sd a0, 472(sp)
@@ -2162,16 +2159,16 @@ whileBody_42:
 	ld t0, 0(t3)
 	sd t0, 424(sp)
 
-	# sub result_$1 j$3 
+	# SUBresult_$1 j$3 
 
 	# fetch variables
 
 	# get address of local var:j$3
 	ld t1, 424(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$1
-	sub t0, t1, t2
 	sd t0, 416(sp)
 
 	# lv$4 result_$1
@@ -2313,16 +2310,16 @@ secondCond_29:
 	ld t0, 0(t3)
 	sd t0, 336(sp)
 
-	# sub result_ k 
+	# SUBresult_ k 
 
 	# fetch variables
 
 	# get address of local var:k
 	ld t1, 336(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
 	sd t0, 328(sp)
 
 	# cmp arr$3 result_ cond_gt_tmp_
@@ -2480,7 +2477,7 @@ ifTrue_43:
 	ld t0, 0(t3)
 	sd t0, 240(sp)
 
-	# add result_$2 i$4 
+	# ADDresult_$2 i$4 
 
 	# fetch variables
 
@@ -2589,7 +2586,7 @@ whileBody_43:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# add result_$3 i$7 
+	# ADDresult_$3 i$7 
 
 	# fetch variables
 
@@ -2894,16 +2891,16 @@ ifTrue_44:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# sub result_$4 j$9 
+	# SUBresult_$4 j$9 
 
 	# fetch variables
 
 	# get address of local var:j$9
 	ld t1, 8(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$4
-	sub t0, t1, t2
 	sd t0, 0(sp)
 
 	# lv$4 result_$4
@@ -3129,16 +3126,16 @@ ifTrue_45:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# sub result_$2 mid$1 
+	# SUBresult_$2 mid$1 
 
 	# fetch variables
 
 	# get address of local var:mid$1
 	ld t1, 96(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sub t0, t1, t2
 	sd t0, 88(sp)
 
 	# load arr_$1 lv
@@ -3178,7 +3175,7 @@ ifTrue_45:
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# add result_$3 arr$1 arr$3
+	# ADDresult_$3 arr$1 arr$3
 
 	# fetch variables
 
@@ -3529,7 +3526,7 @@ whileBody_44:
 	ld t0, 0(t3)
 	sd t0, 240(sp)
 
-	# add result_ i$2 
+	# ADDresult_ i$2 
 
 	# fetch variables
 
@@ -3795,7 +3792,7 @@ whileBody_45:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# add result_$1 count$3 
+	# ADDresult_$1 count$3 
 
 	# fetch variables
 
@@ -4045,7 +4042,7 @@ next_92:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$2 i$5 
+	# ADDresult_$2 i$5 
 
 	# fetch variables
 
@@ -4450,7 +4447,7 @@ whileBody_46:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_ i$3 
+	# ADDresult_ i$3 
 
 	# fetch variables
 
@@ -4484,16 +4481,16 @@ whileBody_46:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# sub result_$1 j$3 
+	# SUBresult_$1 j$3 
 
 	# fetch variables
 
 	# get address of local var:j$3
 	ld t1, 8(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$1
-	sub t0, t1, t2
 	sd t0, 0(sp)
 
 	# lv$3 result_$1
@@ -4780,7 +4777,7 @@ whileBody_47:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_ i$3 
+	# ADDresult_ i$3 
 
 	# fetch variables
 
@@ -5044,7 +5041,7 @@ whileBody_48:
 	ld t0, 0(t3)
 	sd t0, 144(sp)
 
-	# add result_ sum arr$1
+	# ADDresult_ sum arr$1
 
 	# fetch variables
 
@@ -5112,16 +5109,16 @@ whileBody_48:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# sub result_$2 stride$1 
+	# SUBresult_$2 stride$1 
 
 	# fetch variables
 
 	# get address of local var:stride$1
 	ld t1, 104(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sub t0, t1, t2
 	sd t0, 96(sp)
 
 	# cmp result_$1 result_$2 cond_neq_tmp_
@@ -5323,7 +5320,7 @@ next_96:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$3 i$5 
+	# ADDresult_$3 i$5 
 
 	# fetch variables
 
@@ -5544,16 +5541,16 @@ whileBody_49:
 	ld t0, 0(t3)
 	sd t0, 512(sp)
 
-	# sub result_ stride 
+	# SUBresult_ stride 
 
 	# fetch variables
 
 	# get address of local var:stride
 	ld t1, 512(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
 	sd t0, 504(sp)
 
 	# cmp i$1 result_ cond_lt_tmp_$1
@@ -5623,7 +5620,7 @@ next_97:
 	ld t0, 0(t3)
 	sd t0, 464(sp)
 
-	# sub result_$12 n$1 stride$6
+	# SUBresult_$12 n$1 stride$6
 
 	# fetch variables
 
@@ -5632,12 +5629,12 @@ next_97:
 
 	# get address of local var:stride$6
 	ld t2, 464(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$12
-	sub t0, t1, t2
 	sd t0, 456(sp)
 
-	# add result_$13 result_$12 
+	# ADDresult_$13 result_$12 
 
 	# fetch variables
 
@@ -5721,7 +5718,7 @@ ifTrue_48:
 	ld t0, 0(t3)
 	sd t0, 408(sp)
 
-	# add result_$1 sum arr$1
+	# ADDresult_$1 sum arr$1
 
 	# fetch variables
 
@@ -5770,16 +5767,16 @@ ifFalse_7:
 	ld t0, 0(t3)
 	sd t0, 384(sp)
 
-	# sub result_$2 stride$1 
+	# SUBresult_$2 stride$1 
 
 	# fetch variables
 
 	# get address of local var:stride$1
 	ld t1, 384(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sub t0, t1, t2
 	sd t0, 376(sp)
 
 	# cmp i$3 result_$2 cond_eq_tmp_
@@ -5841,7 +5838,7 @@ next_98:
 	ld t0, 0(t3)
 	sd t0, 344(sp)
 
-	# add result_$11 i$7 
+	# ADDresult_$11 i$7 
 
 	# fetch variables
 
@@ -6048,7 +6045,7 @@ ifFalse_8:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# add result_$4 sum$2 arr$6
+	# ADDresult_$4 sum$2 arr$6
 
 	# fetch variables
 
@@ -6071,7 +6068,7 @@ ifFalse_8:
 	ld t0, 0(t3)
 	sd t0, 216(sp)
 
-	# sub result_$5 result_$4 lastnum
+	# SUBresult_$5 result_$4 lastnum
 
 	# fetch variables
 
@@ -6080,9 +6077,9 @@ ifFalse_8:
 
 	# get address of local var:lastnum
 	ld t2, 216(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$5
-	sub t0, t1, t2
 	sd t0, 208(sp)
 
 	# lv$2 result_$5
@@ -6116,7 +6113,7 @@ ifFalse_8:
 	ld t0, 0(t3)
 	sd t0, 192(sp)
 
-	# sub result_$6 i$5 stride$3
+	# SUBresult_$6 i$5 stride$3
 
 	# fetch variables
 
@@ -6125,12 +6122,12 @@ ifFalse_8:
 
 	# get address of local var:stride$3
 	ld t2, 192(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$6
-	sub t0, t1, t2
 	sd t0, 184(sp)
 
-	# add result_$7 result_$6 
+	# ADDresult_$7 result_$6 
 
 	# fetch variables
 
@@ -6210,7 +6207,7 @@ ifFalse_8:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# sub result_$8 i$6 stride$4
+	# SUBresult_$8 i$6 stride$4
 
 	# fetch variables
 
@@ -6219,12 +6216,12 @@ ifFalse_8:
 
 	# get address of local var:stride$4
 	ld t2, 136(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$8
-	sub t0, t1, t2
 	sd t0, 128(sp)
 
-	# add result_$9 result_$8 
+	# ADDresult_$9 result_$8 
 
 	# fetch variables
 
@@ -6441,7 +6438,7 @@ whileBody_50:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$14 i$10 
+	# ADDresult_$14 i$10 
 
 	# fetch variables
 
@@ -7876,7 +7873,7 @@ whileBody_51:
 	ld t0, 0(t3)
 	sd t0, 768(sp)
 
-	# add result_ i$2 
+	# ADDresult_ i$2 
 
 	# fetch variables
 
@@ -8143,7 +8140,7 @@ whileBody_52:
 	ld t0, 0(t3)
 	sd t0, 672(sp)
 
-	# add result_$1 i$5 
+	# ADDresult_$1 i$5 
 
 	# fetch variables
 
@@ -8683,7 +8680,7 @@ whileBody_53:
 	ld t0, 0(t3)
 	sd t0, 504(sp)
 
-	# add result_$2 i$8 
+	# ADDresult_$2 i$8 
 
 	# fetch variables
 
@@ -9035,7 +9032,7 @@ whileBody_54:
 	ld t0, 0(t3)
 	sd t0, 384(sp)
 
-	# add result_$3 i$11 
+	# ADDresult_$3 i$11 
 
 	# fetch variables
 
@@ -9236,10 +9233,8 @@ next_104:
 
 	# get address of local var:t$6
 	ld t1, 328(sp)
-
-	# push t$6
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9253,7 +9248,7 @@ next_104:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:QuickSort
 	sd a0, 320(sp)
@@ -9436,7 +9431,7 @@ whileBody_55:
 	ld t0, 0(t3)
 	sd t0, 248(sp)
 
-	# add result_$4 i$15 
+	# ADDresult_$4 i$15 
 
 	# fetch variables
 
@@ -9792,7 +9787,7 @@ whileBody_56:
 	ld t0, 0(t3)
 	sd t0, 128(sp)
 
-	# add result_$5 i$18 
+	# ADDresult_$5 i$18 
 
 	# fetch variables
 
@@ -10148,7 +10143,7 @@ whileBody_57:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$6 i$21 
+	# ADDresult_$6 i$21 
 
 	# fetch variables
 
@@ -10187,13 +10182,24 @@ next_107:
 	li t4, 1696
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

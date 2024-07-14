@@ -23,8 +23,9 @@ func1Entry:
 
 	# get address of local var:1
 	sd a1, 152(sp)
-	ld t3, 176(sp)
-	sd t3, 144(sp)
+
+	# get address of local var:2
+	sd a2, 144(sp)
 
 	# allocate lv$2
 	li t0, 128
@@ -161,7 +162,7 @@ ifTrue_318:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# mul result_ x y
+	# MULresult_ x y
 
 	# fetch variables
 
@@ -170,9 +171,9 @@ ifTrue_318:
 
 	# get address of local var:y
 	ld t2, 48(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_
-	mul t0, t1, t2
 	sd t0, 40(sp)
 
 	# ret result_
@@ -217,7 +218,7 @@ ifFalse_119:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# sub result_$1 y$1 z$1
+	# SUBresult_$1 y$1 z$1
 
 	# fetch variables
 
@@ -226,9 +227,9 @@ ifFalse_119:
 
 	# get address of local var:z$1
 	ld t2, 16(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$1
-	sub t0, t1, t2
 	sd t0, 8(sp)
 
 	# prepare params
@@ -247,10 +248,8 @@ ifFalse_119:
 
 	# fetch variables
 	li t1, 0
-
-	# push 
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -264,7 +263,7 @@ ifFalse_119:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:func1
 	sd a0, 0(sp)
@@ -604,7 +603,7 @@ ifTrue_320:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# add result_ x 
+	# ADDresult_ x 
 
 	# fetch variables
 
@@ -649,7 +648,7 @@ ifFalse_121:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# add result_$1 x$1 y$1
+	# ADDresult_$1 x$1 y$1
 
 	# fetch variables
 
@@ -727,8 +726,9 @@ func4Entry:
 
 	# get address of local var:1
 	sd a1, 88(sp)
-	ld t3, 112(sp)
-	sd t3, 80(sp)
+
+	# get address of local var:2
+	sd a2, 80(sp)
 
 	# allocate lv$2
 	li t0, 64
@@ -917,16 +917,16 @@ func5Entry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# sub tmp_  x
+	# SUBtmp_  x
 
 	# fetch variables
 	li t1, 0
 
 	# get address of local var:x
 	ld t2, 8(sp)
+	sub t0, t1, t2
 
 	# get address of local var:tmp_
-	sub t0, t1, t2
 	sd t0, 0(sp)
 
 	# ret tmp_
@@ -1562,7 +1562,7 @@ whileBody_231:
 	ld t0, 0(t3)
 	sd t0, 680(sp)
 
-	# add result_ i$2 
+	# ADDresult_ i$2 
 
 	# fetch variables
 
@@ -2117,10 +2117,8 @@ next_555:
 
 	# get address of local var:func2$1
 	ld t1, 456(sp)
-
-	# push func2$1
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2134,7 +2132,7 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:func4
 	sd a0, 448(sp)
@@ -2392,10 +2390,8 @@ next_555:
 
 	# get address of local var:i1$1
 	ld t1, 344(sp)
-
-	# push i1$1
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2409,7 +2405,7 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:func1
 	sd a0, 336(sp)
@@ -2432,10 +2428,8 @@ next_555:
 
 	# get address of local var:func1
 	ld t1, 336(sp)
-
-	# push func1
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2449,7 +2443,7 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:func4$1
 	sd a0, 328(sp)
@@ -2673,10 +2667,8 @@ next_555:
 
 	# get address of local var:arr$24
 	ld t1, 240(sp)
-
-	# push arr$24
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2690,7 +2682,7 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:func1$1
 	sd a0, 232(sp)
@@ -3069,10 +3061,8 @@ next_555:
 
 	# get address of local var:func7$5
 	ld t1, 72(sp)
-
-	# push func7$5
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3086,7 +3076,7 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:func1$2
 	sd a0, 64(sp)
@@ -3234,10 +3224,8 @@ next_555:
 
 	# get address of local var:func3$6
 	ld t1, 16(sp)
-
-	# push func3$6
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3251,7 +3239,7 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:func1$3
 	sd a0, 8(sp)
@@ -3288,13 +3276,24 @@ next_555:
 	li t4, 960
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

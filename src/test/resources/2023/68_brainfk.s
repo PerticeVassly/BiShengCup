@@ -224,7 +224,7 @@ whileBody_256:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_ i$2 
+	# ADDresult_ i$2 
 
 	# fetch variables
 
@@ -576,7 +576,7 @@ ifTrue_345:
 	ld t0, 0(t3)
 	sd t0, 584(sp)
 
-	# add result_ ptr 
+	# ADDresult_ ptr 
 
 	# fetch variables
 
@@ -671,7 +671,7 @@ next_603:
 	ld t0, 0(t3)
 	sd t0, 536(sp)
 
-	# add result_$7 i$4 
+	# ADDresult_$7 i$4 
 
 	# fetch variables
 
@@ -709,16 +709,16 @@ ifTrue_346:
 	ld t0, 0(t3)
 	sd t0, 520(sp)
 
-	# sub result_$1 ptr$1 
+	# SUBresult_$1 ptr$1 
 
 	# fetch variables
 
 	# get address of local var:ptr$1
 	ld t1, 520(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$1
-	sub t0, t1, t2
 	sd t0, 512(sp)
 
 	# gv2 @result_$1
@@ -860,7 +860,7 @@ ifTrue_347:
 	ld t0, 0(t3)
 	sd t0, 440(sp)
 
-	# add result_$2 tape$2 
+	# ADDresult_$2 tape$2 
 
 	# fetch variables
 
@@ -1011,16 +1011,16 @@ ifTrue_348:
 	ld t0, 0(t3)
 	sd t0, 360(sp)
 
-	# sub result_$3 tape$5 
+	# SUBresult_$3 tape$5 
 
 	# fetch variables
 
 	# get address of local var:tape$5
 	ld t1, 360(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$3
-	sub t0, t1, t2
 	sd t0, 352(sp)
 
 	# tape$3 result_$3
@@ -1492,16 +1492,16 @@ whileBody_258:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# sub result_$4 i$2 
+	# SUBresult_$4 i$2 
 
 	# fetch variables
 
 	# get address of local var:i$2
 	ld t1, 136(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$4
-	sub t0, t1, t2
 	sd t0, 128(sp)
 
 	# lv$3 result_$4
@@ -1646,16 +1646,16 @@ ifTrue_352:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# sub result_$5 loop$1 
+	# SUBresult_$5 loop$1 
 
 	# fetch variables
 
 	# get address of local var:loop$1
 	ld t1, 56(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$5
-	sub t0, t1, t2
 	sd t0, 48(sp)
 
 	# lv$2 result_$5
@@ -1745,7 +1745,7 @@ ifTrue_353:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$6 loop$2 
+	# ADDresult_$6 loop$2 
 
 	# fetch variables
 
@@ -1850,13 +1850,24 @@ mainEntry90:
 	li t4, 8
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

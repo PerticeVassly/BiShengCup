@@ -26,8 +26,9 @@ swapEntry:
 
 	# get address of local var:1
 	sd a1, 192(sp)
-	ld t3, 216(sp)
-	sd t3, 184(sp)
+
+	# get address of local var:2
+	sd a2, 184(sp)
 
 	# allocate lv$3
 	li t0, 168
@@ -342,8 +343,9 @@ heap_ajustEntry:
 
 	# get address of local var:1
 	sd a1, 472(sp)
-	ld t3, 496(sp)
-	sd t3, 464(sp)
+
+	# get address of local var:2
+	sd a2, 464(sp)
 
 	# allocate lv$4
 	li t0, 448
@@ -450,19 +452,19 @@ heap_ajustEntry:
 	ld t0, 0(t3)
 	sd t0, 368(sp)
 
-	# mul result_ dad 
+	# MULresult_ dad 
 
 	# fetch variables
 
 	# get address of local var:dad
 	ld t1, 368(sp)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_
-	mul t0, t1, t2
 	sd t0, 360(sp)
 
-	# add result_$1 result_ 
+	# ADDresult_$1 result_ 
 
 	# fetch variables
 
@@ -509,7 +511,7 @@ whileCond_240:
 	ld t0, 0(t3)
 	sd t0, 336(sp)
 
-	# add result_$2 end 
+	# ADDresult_$2 end 
 
 	# fetch variables
 
@@ -659,7 +661,7 @@ ifTrue_333:
 	ld t0, 0(t3)
 	sd t0, 256(sp)
 
-	# add result_$4 son$4 
+	# ADDresult_$4 son$4 
 
 	# fetch variables
 
@@ -885,7 +887,7 @@ secondCond_125:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# add result_$3 son$3 
+	# ADDresult_$3 son$3 
 
 	# fetch variables
 
@@ -1041,10 +1043,8 @@ ifFalse_133:
 
 	# get address of local var:son$6
 	ld t1, 40(sp)
-
-	# push son$6
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1058,7 +1058,7 @@ ifFalse_133:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:swap
 	sd a0, 32(sp)
@@ -1107,19 +1107,19 @@ ifFalse_133:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# mul result_$5 dad$3 
+	# MULresult_$5 dad$3 
 
 	# fetch variables
 
 	# get address of local var:dad$3
 	ld t1, 16(sp)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$5
-	mul t0, t1, t2
 	sd t0, 8(sp)
 
-	# add result_$6 result_$5 
+	# ADDresult_$6 result_$5 
 
 	# fetch variables
 
@@ -1254,16 +1254,16 @@ heap_sortEntry:
 	div t0, t1, t2
 	sd t0, 248(sp)
 
-	# sub result_$1 result_ 
+	# SUBresult_$1 result_ 
 
 	# fetch variables
 
 	# get address of local var:result_
 	ld t1, 248(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$1
-	sub t0, t1, t2
 	sd t0, 240(sp)
 
 	# lv$2 result_$1
@@ -1349,16 +1349,16 @@ whileBody_241:
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# sub result_$2 len$1 
+	# SUBresult_$2 len$1 
 
 	# fetch variables
 
 	# get address of local var:len$1
 	ld t1, 200(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sub t0, t1, t2
 	sd t0, 192(sp)
 
 	# lv$3 result_$2
@@ -1419,10 +1419,8 @@ whileBody_241:
 
 	# get address of local var:tmp
 	ld t1, 168(sp)
-
-	# push tmp
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1436,7 +1434,7 @@ whileBody_241:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:heap_ajust
 	sd a0, 160(sp)
@@ -1463,16 +1461,16 @@ whileBody_241:
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# sub result_$3 i$2 
+	# SUBresult_$3 i$2 
 
 	# fetch variables
 
 	# get address of local var:i$2
 	ld t1, 152(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$3
-	sub t0, t1, t2
 	sd t0, 144(sp)
 
 	# lv$2 result_$3
@@ -1501,16 +1499,16 @@ next_576:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# sub result_$4 len$2 
+	# SUBresult_$4 len$2 
 
 	# fetch variables
 
 	# get address of local var:len$2
 	ld t1, 136(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$4
-	sub t0, t1, t2
 	sd t0, 128(sp)
 
 	# lv$2 result_$4
@@ -1643,10 +1641,8 @@ whileBody_242:
 
 	# get address of local var:i$4
 	ld t1, 72(sp)
-
-	# push i$4
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1660,7 +1656,7 @@ whileBody_242:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:swap
 	sd a0, 64(sp)
@@ -1687,16 +1683,16 @@ whileBody_242:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# sub result_$5 i$5 
+	# SUBresult_$5 i$5 
 
 	# fetch variables
 
 	# get address of local var:i$5
 	ld t1, 56(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$5
-	sub t0, t1, t2
 	sd t0, 48(sp)
 
 	# lv$3 result_$5
@@ -1757,10 +1753,8 @@ whileBody_242:
 
 	# get address of local var:tmp$1
 	ld t1, 24(sp)
-
-	# push tmp$1
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1774,7 +1768,7 @@ whileBody_242:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:heap_ajust$1
 	sd a0, 16(sp)
@@ -1801,16 +1795,16 @@ whileBody_242:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# sub result_$6 i$6 
+	# SUBresult_$6 i$6 
 
 	# fetch variables
 
 	# get address of local var:i$6
 	ld t1, 8(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$6
-	sub t0, t1, t2
 	sd t0, 0(sp)
 
 	# lv$2 result_$6
@@ -2451,7 +2445,7 @@ whileBody_243:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_ i$2 
+	# ADDresult_ i$2 
 
 	# fetch variables
 
@@ -2488,13 +2482,24 @@ next_578:
 	li t4, 320
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

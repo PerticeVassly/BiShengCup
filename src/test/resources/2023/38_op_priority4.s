@@ -238,7 +238,7 @@ mainEntry5:
 	ld t0, 0(t3)
 	sd t0, 264(sp)
 
-	# mul result_ b c
+	# MULresult_ b c
 
 	# fetch variables
 
@@ -247,12 +247,12 @@ mainEntry5:
 
 	# get address of local var:c
 	ld t2, 264(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_
-	mul t0, t1, t2
 	sd t0, 256(sp)
 
-	# sub result_$1 a result_
+	# SUBresult_$1 a result_
 
 	# fetch variables
 
@@ -261,9 +261,9 @@ mainEntry5:
 
 	# get address of local var:result_
 	ld t2, 256(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$1
-	sub t0, t1, t2
 	sd t0, 248(sp)
 
 	# load d gv3
@@ -307,7 +307,7 @@ mainEntry5:
 	div t0, t1, t2
 	sd t0, 216(sp)
 
-	# sub result_$3 d result_$2
+	# SUBresult_$3 d result_$2
 
 	# fetch variables
 
@@ -316,9 +316,9 @@ mainEntry5:
 
 	# get address of local var:result_$2
 	ld t2, 216(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$3
-	sub t0, t1, t2
 	sd t0, 208(sp)
 
 	# cmp result_$1 result_$3 cond_neq_tmp_
@@ -426,7 +426,7 @@ secondCond_:
 	ld t0, 0(t3)
 	sd t0, 160(sp)
 
-	# add result_$7 a$3 b$2
+	# ADDresult_$7 a$3 b$2
 
 	# fetch variables
 
@@ -449,7 +449,7 @@ secondCond_:
 	ld t0, 0(t3)
 	sd t0, 144(sp)
 
-	# add result_$8 result_$7 c$3
+	# ADDresult_$8 result_$7 c$3
 
 	# fetch variables
 
@@ -481,7 +481,7 @@ secondCond_:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# add result_$9 d$2 e$1
+	# ADDresult_$9 d$2 e$1
 
 	# fetch variables
 
@@ -563,7 +563,7 @@ secondCond_1:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# mul result_$4 a$2 b$1
+	# MULresult_$4 a$2 b$1
 
 	# fetch variables
 
@@ -572,9 +572,9 @@ secondCond_1:
 
 	# get address of local var:b$1
 	ld t2, 72(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$4
-	mul t0, t1, t2
 	sd t0, 64(sp)
 
 	# load c$2 gv2
@@ -618,7 +618,7 @@ secondCond_1:
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# add result_$6 e d$1
+	# ADDresult_$6 e d$1
 
 	# fetch variables
 
@@ -680,13 +680,24 @@ secondCond_1:
 	ld t1, 0(sp)
 	beqz t1, secondCond_
 	j ifTrue_10
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

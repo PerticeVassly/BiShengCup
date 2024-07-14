@@ -394,7 +394,7 @@ whileBody_207:
 	ld t0, 0(t3)
 	sd t0, 744(sp)
 
-	# add result_ b$1 
+	# ADDresult_ b$1 
 
 	# fetch variables
 
@@ -445,7 +445,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 728(sp)
 
-	# add result_$1 a0 
+	# ADDresult_$1 a0 
 
 	# fetch variables
 
@@ -479,7 +479,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 712(sp)
 
-	# add result_$2 a1 
+	# ADDresult_$2 a1 
 
 	# fetch variables
 
@@ -513,7 +513,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 696(sp)
 
-	# add result_$3 a2 
+	# ADDresult_$3 a2 
 
 	# fetch variables
 
@@ -547,7 +547,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 680(sp)
 
-	# add result_$4 a3 
+	# ADDresult_$4 a3 
 
 	# fetch variables
 
@@ -581,7 +581,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 664(sp)
 
-	# add result_$5 a4 
+	# ADDresult_$5 a4 
 
 	# fetch variables
 
@@ -615,7 +615,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 648(sp)
 
-	# add result_$6 a5 
+	# ADDresult_$6 a5 
 
 	# fetch variables
 
@@ -649,7 +649,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 632(sp)
 
-	# add result_$7 a6 
+	# ADDresult_$7 a6 
 
 	# fetch variables
 
@@ -683,7 +683,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 616(sp)
 
-	# add result_$8 a7 
+	# ADDresult_$8 a7 
 
 	# fetch variables
 
@@ -717,7 +717,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 600(sp)
 
-	# add result_$9 a8 
+	# ADDresult_$9 a8 
 
 	# fetch variables
 
@@ -751,7 +751,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 584(sp)
 
-	# add result_$10 a9 
+	# ADDresult_$10 a9 
 
 	# fetch variables
 
@@ -785,7 +785,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 568(sp)
 
-	# add result_$11 a10 
+	# ADDresult_$11 a10 
 
 	# fetch variables
 
@@ -819,7 +819,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 552(sp)
 
-	# add result_$12 a11 
+	# ADDresult_$12 a11 
 
 	# fetch variables
 
@@ -853,7 +853,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 536(sp)
 
-	# add result_$13 a12 
+	# ADDresult_$13 a12 
 
 	# fetch variables
 
@@ -887,7 +887,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 520(sp)
 
-	# add result_$14 a13 
+	# ADDresult_$14 a13 
 
 	# fetch variables
 
@@ -925,7 +925,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 504(sp)
 
-	# add result_$15 a14 
+	# ADDresult_$15 a14 
 
 	# fetch variables
 
@@ -963,7 +963,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 488(sp)
 
-	# add result_$16 a15 
+	# ADDresult_$16 a15 
 
 	# fetch variables
 
@@ -1001,7 +1001,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 472(sp)
 
-	# add result_$17 a16 
+	# ADDresult_$17 a16 
 
 	# fetch variables
 
@@ -1039,7 +1039,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 456(sp)
 
-	# add result_$18 a17 
+	# ADDresult_$18 a17 
 
 	# fetch variables
 
@@ -1077,7 +1077,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 440(sp)
 
-	# add result_$19 a18 
+	# ADDresult_$19 a18 
 
 	# fetch variables
 
@@ -1115,7 +1115,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 424(sp)
 
-	# add result_$20 a19 
+	# ADDresult_$20 a19 
 
 	# fetch variables
 
@@ -1153,7 +1153,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 408(sp)
 
-	# add result_$21 a20 
+	# ADDresult_$21 a20 
 
 	# fetch variables
 
@@ -1191,7 +1191,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 392(sp)
 
-	# add result_$22 a21 
+	# ADDresult_$22 a21 
 
 	# fetch variables
 
@@ -1229,7 +1229,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 376(sp)
 
-	# add result_$23 a22 
+	# ADDresult_$23 a22 
 
 	# fetch variables
 
@@ -1267,7 +1267,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 360(sp)
 
-	# add result_$24 a23 
+	# ADDresult_$24 a23 
 
 	# fetch variables
 
@@ -1305,7 +1305,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 344(sp)
 
-	# add result_$25 a24 
+	# ADDresult_$25 a24 
 
 	# fetch variables
 
@@ -1343,7 +1343,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 328(sp)
 
-	# add result_$26 a25 
+	# ADDresult_$26 a25 
 
 	# fetch variables
 
@@ -1381,7 +1381,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 312(sp)
 
-	# add result_$27 a26 
+	# ADDresult_$27 a26 
 
 	# fetch variables
 
@@ -1419,7 +1419,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 296(sp)
 
-	# add result_$28 a27 
+	# ADDresult_$28 a27 
 
 	# fetch variables
 
@@ -1457,7 +1457,7 @@ next_500:
 	ld t0, 0(t3)
 	sd t0, 280(sp)
 
-	# add result_$29 a28 
+	# ADDresult_$29 a28 
 
 	# fetch variables
 
@@ -2612,13 +2612,24 @@ next_500:
 	li t4, 1320
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

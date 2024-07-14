@@ -26,8 +26,9 @@ counting_sortEntry:
 
 	# get address of local var:1
 	sd a1, 816(sp)
-	ld t3, 840(sp)
-	sd t3, 808(sp)
+
+	# get address of local var:2
+	sd a2, 808(sp)
 
 	# allocate lv$6
 	li t0, 792
@@ -258,7 +259,7 @@ whileBody_20:
 	ld t0, 0(t3)
 	sd t0, 568(sp)
 
-	# add result_ k$2 
+	# ADDresult_ k$2 
 
 	# fetch variables
 
@@ -497,7 +498,7 @@ whileBody_21:
 	ld t0, 0(t3)
 	sd t0, 432(sp)
 
-	# add result_$1 count_arr$3 
+	# ADDresult_$1 count_arr$3 
 
 	# fetch variables
 
@@ -531,7 +532,7 @@ whileBody_21:
 	ld t0, 0(t3)
 	sd t0, 416(sp)
 
-	# add result_$2 i$3 
+	# ADDresult_$2 i$3 
 
 	# fetch variables
 
@@ -705,16 +706,16 @@ whileBody_22:
 	ld t0, 0(t3)
 	sd t0, 328(sp)
 
-	# sub result_$3 k$6 
+	# SUBresult_$3 k$6 
 
 	# fetch variables
 
 	# get address of local var:k$6
 	ld t1, 328(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$3
-	sub t0, t1, t2
 	sd t0, 320(sp)
 
 	# gep count_arr$7 result_$3
@@ -745,7 +746,7 @@ whileBody_22:
 	ld t0, 0(t3)
 	sd t0, 304(sp)
 
-	# add result_$4 count_arr$6 count_arr$8
+	# ADDresult_$4 count_arr$6 count_arr$8
 
 	# fetch variables
 
@@ -781,7 +782,7 @@ whileBody_22:
 	ld t0, 0(t3)
 	sd t0, 288(sp)
 
-	# add result_$5 k$7 
+	# ADDresult_$5 k$7 
 
 	# fetch variables
 
@@ -902,16 +903,16 @@ whileBody_23:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# sub result_$6 j$1 
+	# SUBresult_$6 j$1 
 
 	# fetch variables
 
 	# get address of local var:j$1
 	ld t1, 232(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$6
-	sub t0, t1, t2
 	sd t0, 224(sp)
 
 	# load arr_$2 lv
@@ -979,16 +980,16 @@ whileBody_23:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# sub result_$7 j$2 
+	# SUBresult_$7 j$2 
 
 	# fetch variables
 
 	# get address of local var:j$2
 	ld t1, 184(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$7
-	sub t0, t1, t2
 	sd t0, 176(sp)
 
 	# load arr_$3 lv
@@ -1056,16 +1057,16 @@ whileBody_23:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# sub result_$8 count_arr$11 
+	# SUBresult_$8 count_arr$11 
 
 	# fetch variables
 
 	# get address of local var:count_arr$11
 	ld t1, 136(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$8
-	sub t0, t1, t2
 	sd t0, 128(sp)
 
 	# count_arr$9 result_$8
@@ -1090,16 +1091,16 @@ whileBody_23:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# sub result_$9 j$3 
+	# SUBresult_$9 j$3 
 
 	# fetch variables
 
 	# get address of local var:j$3
 	ld t1, 120(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$9
-	sub t0, t1, t2
 	sd t0, 112(sp)
 
 	# load arr_$4 lv
@@ -1204,16 +1205,16 @@ whileBody_23:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# sub result_$10 j$4 
+	# SUBresult_$10 j$4 
 
 	# fetch variables
 
 	# get address of local var:j$4
 	ld t1, 48(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$10
-	sub t0, t1, t2
 	sd t0, 40(sp)
 
 	# load arr_$6 lv
@@ -1275,16 +1276,16 @@ whileBody_23:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# sub result_$11 j$5 
+	# SUBresult_$11 j$5 
 
 	# fetch variables
 
 	# get address of local var:j$5
 	ld t1, 8(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$11
-	sub t0, t1, t2
 	sd t0, 0(sp)
 
 	# lv$5 result_$11
@@ -1717,10 +1718,8 @@ mainEntry13:
 
 	# get address of local var:n
 	ld t1, 104(sp)
-
-	# push n
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1734,7 +1733,7 @@ mainEntry13:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:counting_sort
 	sd a0, 96(sp)
@@ -1957,7 +1956,7 @@ whileBody_24:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_ i$2 
+	# ADDresult_ i$2 
 
 	# fetch variables
 
@@ -1994,13 +1993,24 @@ next_41:
 	li t4, 416
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

@@ -535,7 +535,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_ a b
+	# ADDresult_ a b
 
 	# fetch variables
 
@@ -741,7 +741,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$1  c1
+	# ADDresult_$1  c1
 
 	# fetch variables
 	li t1, 1
@@ -768,7 +768,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$2 result_$1 a1
+	# ADDresult_$2 result_$1 a1
 
 	# fetch variables
 
@@ -818,7 +818,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$3  c2
+	# ADDresult_$3  c2
 
 	# fetch variables
 	li t1, 2
@@ -845,7 +845,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$4 result_$3 a2
+	# ADDresult_$4 result_$3 a2
 
 	# fetch variables
 
@@ -895,7 +895,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$5  c3
+	# ADDresult_$5  c3
 
 	# fetch variables
 	li t1, 3
@@ -922,7 +922,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$6 result_$5 a3
+	# ADDresult_$6 result_$5 a3
 
 	# fetch variables
 
@@ -972,7 +972,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$7  c4
+	# ADDresult_$7  c4
 
 	# fetch variables
 	li t1, 4
@@ -999,7 +999,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$8 result_$7 a4
+	# ADDresult_$8 result_$7 a4
 
 	# fetch variables
 
@@ -1049,7 +1049,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$9  d1
+	# ADDresult_$9  d1
 
 	# fetch variables
 	li t1, 1
@@ -1076,7 +1076,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$10 result_$9 a5
+	# ADDresult_$10 result_$9 a5
 
 	# fetch variables
 
@@ -1126,7 +1126,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$11  d2
+	# ADDresult_$11  d2
 
 	# fetch variables
 	li t1, 2
@@ -1153,7 +1153,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$12 result_$11 a6
+	# ADDresult_$12 result_$11 a6
 
 	# fetch variables
 
@@ -1203,7 +1203,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$13  d3
+	# ADDresult_$13  d3
 
 	# fetch variables
 	li t1, 3
@@ -1230,7 +1230,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$14 result_$13 a7
+	# ADDresult_$14 result_$13 a7
 
 	# fetch variables
 
@@ -1280,7 +1280,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$15  d4
+	# ADDresult_$15  d4
 
 	# fetch variables
 	li t1, 4
@@ -1307,7 +1307,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$16 result_$15 a8
+	# ADDresult_$16 result_$15 a8
 
 	# fetch variables
 
@@ -1357,7 +1357,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$17  e1
+	# ADDresult_$17  e1
 
 	# fetch variables
 	li t1, 1
@@ -1384,7 +1384,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$18 result_$17 a9
+	# ADDresult_$18 result_$17 a9
 
 	# fetch variables
 
@@ -1434,7 +1434,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$19  e2
+	# ADDresult_$19  e2
 
 	# fetch variables
 	li t1, 2
@@ -1461,7 +1461,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$20 result_$19 a10
+	# ADDresult_$20 result_$19 a10
 
 	# fetch variables
 
@@ -1511,7 +1511,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$21  e3
+	# ADDresult_$21  e3
 
 	# fetch variables
 	li t1, 3
@@ -1538,7 +1538,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$22 result_$21 a11
+	# ADDresult_$22 result_$21 a11
 
 	# fetch variables
 
@@ -1588,7 +1588,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$23  e4
+	# ADDresult_$23  e4
 
 	# fetch variables
 	li t1, 4
@@ -1615,7 +1615,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$24 result_$23 a12
+	# ADDresult_$24 result_$23 a12
 
 	# fetch variables
 
@@ -1665,7 +1665,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$25  f1
+	# ADDresult_$25  f1
 
 	# fetch variables
 	li t1, 1
@@ -1692,7 +1692,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$26 result_$25 a13
+	# ADDresult_$26 result_$25 a13
 
 	# fetch variables
 
@@ -1742,7 +1742,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$27  f2
+	# ADDresult_$27  f2
 
 	# fetch variables
 	li t1, 2
@@ -1769,7 +1769,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$28 result_$27 a14
+	# ADDresult_$28 result_$27 a14
 
 	# fetch variables
 
@@ -1819,7 +1819,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$29  f3
+	# ADDresult_$29  f3
 
 	# fetch variables
 	li t1, 3
@@ -1846,7 +1846,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$30 result_$29 a15
+	# ADDresult_$30 result_$29 a15
 
 	# fetch variables
 
@@ -1896,7 +1896,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$31  f4
+	# ADDresult_$31  f4
 
 	# fetch variables
 	li t1, 4
@@ -1923,7 +1923,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$32 result_$31 a16
+	# ADDresult_$32 result_$31 a16
 
 	# fetch variables
 
@@ -1973,7 +1973,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$33  g1
+	# ADDresult_$33  g1
 
 	# fetch variables
 	li t1, 1
@@ -2000,7 +2000,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$34 result_$33 a17
+	# ADDresult_$34 result_$33 a17
 
 	# fetch variables
 
@@ -2050,7 +2050,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$35  g2
+	# ADDresult_$35  g2
 
 	# fetch variables
 	li t1, 2
@@ -2077,7 +2077,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$36 result_$35 a18
+	# ADDresult_$36 result_$35 a18
 
 	# fetch variables
 
@@ -2127,7 +2127,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$37  g3
+	# ADDresult_$37  g3
 
 	# fetch variables
 	li t1, 3
@@ -2154,7 +2154,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$38 result_$37 a19
+	# ADDresult_$38 result_$37 a19
 
 	# fetch variables
 
@@ -2204,7 +2204,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$39  g4
+	# ADDresult_$39  g4
 
 	# fetch variables
 	li t1, 4
@@ -2231,7 +2231,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$40 result_$39 a20
+	# ADDresult_$40 result_$39 a20
 
 	# fetch variables
 
@@ -2281,7 +2281,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$41  h1
+	# ADDresult_$41  h1
 
 	# fetch variables
 	li t1, 1
@@ -2308,7 +2308,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$42 result_$41 a21
+	# ADDresult_$42 result_$41 a21
 
 	# fetch variables
 
@@ -2358,7 +2358,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$43  h2
+	# ADDresult_$43  h2
 
 	# fetch variables
 	li t1, 2
@@ -2385,7 +2385,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$44 result_$43 a22
+	# ADDresult_$44 result_$43 a22
 
 	# fetch variables
 
@@ -2435,7 +2435,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$45  h3
+	# ADDresult_$45  h3
 
 	# fetch variables
 	li t1, 3
@@ -2462,7 +2462,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$46 result_$45 a23
+	# ADDresult_$46 result_$45 a23
 
 	# fetch variables
 
@@ -2512,7 +2512,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$47  h4
+	# ADDresult_$47  h4
 
 	# fetch variables
 	li t1, 4
@@ -2539,7 +2539,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$48 result_$47 a24
+	# ADDresult_$48 result_$47 a24
 
 	# fetch variables
 
@@ -2589,7 +2589,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$49  i1
+	# ADDresult_$49  i1
 
 	# fetch variables
 	li t1, 1
@@ -2616,7 +2616,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$50 result_$49 a25
+	# ADDresult_$50 result_$49 a25
 
 	# fetch variables
 
@@ -2666,7 +2666,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$51  i2
+	# ADDresult_$51  i2
 
 	# fetch variables
 	li t1, 2
@@ -2693,7 +2693,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$52 result_$51 a26
+	# ADDresult_$52 result_$51 a26
 
 	# fetch variables
 
@@ -2743,7 +2743,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$53  i3
+	# ADDresult_$53  i3
 
 	# fetch variables
 	li t1, 3
@@ -2770,7 +2770,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$54 result_$53 a27
+	# ADDresult_$54 result_$53 a27
 
 	# fetch variables
 
@@ -2820,7 +2820,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$55  i4
+	# ADDresult_$55  i4
 
 	# fetch variables
 	li t1, 4
@@ -2847,7 +2847,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$56 result_$55 a28
+	# ADDresult_$56 result_$55 a28
 
 	# fetch variables
 
@@ -2897,7 +2897,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$57  j1
+	# ADDresult_$57  j1
 
 	# fetch variables
 	li t1, 1
@@ -2924,7 +2924,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$58 result_$57 a29
+	# ADDresult_$58 result_$57 a29
 
 	# fetch variables
 
@@ -2974,7 +2974,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$59  j2
+	# ADDresult_$59  j2
 
 	# fetch variables
 	li t1, 2
@@ -3001,7 +3001,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$60 result_$59 a30
+	# ADDresult_$60 result_$59 a30
 
 	# fetch variables
 
@@ -3051,7 +3051,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$61  j3
+	# ADDresult_$61  j3
 
 	# fetch variables
 	li t1, 3
@@ -3078,7 +3078,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$62 result_$61 a31
+	# ADDresult_$62 result_$61 a31
 
 	# fetch variables
 
@@ -3128,7 +3128,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$63  j4
+	# ADDresult_$63  j4
 
 	# fetch variables
 	li t1, 4
@@ -3155,7 +3155,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$64 result_$63 a32
+	# ADDresult_$64 result_$63 a32
 
 	# fetch variables
 
@@ -3218,7 +3218,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$65 a$1 b$1
+	# SUBresult_$65 a$1 b$1
 
 	# fetch variables
 
@@ -3231,14 +3231,14 @@ funcEntry2:
 	li t4, 2264
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$65
 	li t4, 2256
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$66 result_$65 
+	# ADDresult_$66 result_$65 
 
 	# fetch variables
 
@@ -3284,7 +3284,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$67  j1$1
+	# ADDresult_$67  j1$1
 
 	# fetch variables
 	li t1, 1
@@ -3311,7 +3311,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$68 result_$67 a29$1
+	# ADDresult_$68 result_$67 a29$1
 
 	# fetch variables
 
@@ -3361,7 +3361,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$69  j2$1
+	# ADDresult_$69  j2$1
 
 	# fetch variables
 	li t1, 2
@@ -3388,7 +3388,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$70 result_$69 a30$1
+	# ADDresult_$70 result_$69 a30$1
 
 	# fetch variables
 
@@ -3438,7 +3438,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$71  j3$1
+	# ADDresult_$71  j3$1
 
 	# fetch variables
 	li t1, 3
@@ -3465,7 +3465,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$72 result_$71 a31$1
+	# ADDresult_$72 result_$71 a31$1
 
 	# fetch variables
 
@@ -3515,7 +3515,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$73  j4$1
+	# ADDresult_$73  j4$1
 
 	# fetch variables
 	li t1, 4
@@ -3542,7 +3542,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$74 result_$73 a32$1
+	# ADDresult_$74 result_$73 a32$1
 
 	# fetch variables
 
@@ -3592,7 +3592,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$75  i1$1
+	# ADDresult_$75  i1$1
 
 	# fetch variables
 	li t1, 1
@@ -3619,7 +3619,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$76 result_$75 a25$1
+	# ADDresult_$76 result_$75 a25$1
 
 	# fetch variables
 
@@ -3669,7 +3669,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$77  i2$1
+	# ADDresult_$77  i2$1
 
 	# fetch variables
 	li t1, 2
@@ -3696,7 +3696,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$78 result_$77 a26$1
+	# ADDresult_$78 result_$77 a26$1
 
 	# fetch variables
 
@@ -3746,7 +3746,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$79  i3$1
+	# ADDresult_$79  i3$1
 
 	# fetch variables
 	li t1, 3
@@ -3773,7 +3773,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$80 result_$79 a27$1
+	# ADDresult_$80 result_$79 a27$1
 
 	# fetch variables
 
@@ -3823,7 +3823,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$81  i4$1
+	# ADDresult_$81  i4$1
 
 	# fetch variables
 	li t1, 4
@@ -3850,7 +3850,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$82 result_$81 a28$1
+	# ADDresult_$82 result_$81 a28$1
 
 	# fetch variables
 
@@ -3900,7 +3900,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$83  h1$1
+	# ADDresult_$83  h1$1
 
 	# fetch variables
 	li t1, 1
@@ -3927,7 +3927,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$84 result_$83 a21$1
+	# ADDresult_$84 result_$83 a21$1
 
 	# fetch variables
 
@@ -3977,7 +3977,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$85  h2$1
+	# ADDresult_$85  h2$1
 
 	# fetch variables
 	li t1, 2
@@ -4004,7 +4004,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$86 result_$85 a22$1
+	# ADDresult_$86 result_$85 a22$1
 
 	# fetch variables
 
@@ -4054,7 +4054,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$87  h3$1
+	# ADDresult_$87  h3$1
 
 	# fetch variables
 	li t1, 3
@@ -4081,7 +4081,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$88 result_$87 a23$1
+	# ADDresult_$88 result_$87 a23$1
 
 	# fetch variables
 
@@ -4131,7 +4131,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$89  h4$1
+	# ADDresult_$89  h4$1
 
 	# fetch variables
 	li t1, 4
@@ -4158,7 +4158,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$90 result_$89 a24$1
+	# ADDresult_$90 result_$89 a24$1
 
 	# fetch variables
 
@@ -4208,7 +4208,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$91  g1$1
+	# ADDresult_$91  g1$1
 
 	# fetch variables
 	li t1, 1
@@ -4235,7 +4235,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$92 result_$91 a17$1
+	# ADDresult_$92 result_$91 a17$1
 
 	# fetch variables
 
@@ -4285,7 +4285,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$93  g2$1
+	# ADDresult_$93  g2$1
 
 	# fetch variables
 	li t1, 2
@@ -4312,7 +4312,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$94 result_$93 a18$1
+	# ADDresult_$94 result_$93 a18$1
 
 	# fetch variables
 
@@ -4362,7 +4362,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$95  g3$1
+	# ADDresult_$95  g3$1
 
 	# fetch variables
 	li t1, 3
@@ -4389,7 +4389,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$96 result_$95 a19$1
+	# ADDresult_$96 result_$95 a19$1
 
 	# fetch variables
 
@@ -4439,7 +4439,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$97  g4$1
+	# ADDresult_$97  g4$1
 
 	# fetch variables
 	li t1, 4
@@ -4466,7 +4466,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$98 result_$97 a20$1
+	# ADDresult_$98 result_$97 a20$1
 
 	# fetch variables
 
@@ -4516,7 +4516,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$99  f1$1
+	# ADDresult_$99  f1$1
 
 	# fetch variables
 	li t1, 1
@@ -4543,7 +4543,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$100 result_$99 a13$1
+	# ADDresult_$100 result_$99 a13$1
 
 	# fetch variables
 
@@ -4593,7 +4593,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$101  f2$1
+	# ADDresult_$101  f2$1
 
 	# fetch variables
 	li t1, 2
@@ -4620,7 +4620,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$102 result_$101 a14$1
+	# ADDresult_$102 result_$101 a14$1
 
 	# fetch variables
 
@@ -4670,7 +4670,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$103  f3$1
+	# ADDresult_$103  f3$1
 
 	# fetch variables
 	li t1, 3
@@ -4697,7 +4697,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$104 result_$103 a15$1
+	# ADDresult_$104 result_$103 a15$1
 
 	# fetch variables
 
@@ -4747,7 +4747,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$105  f4$1
+	# ADDresult_$105  f4$1
 
 	# fetch variables
 	li t1, 4
@@ -4774,7 +4774,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$106 result_$105 a16$1
+	# ADDresult_$106 result_$105 a16$1
 
 	# fetch variables
 
@@ -4824,7 +4824,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$107  e1$1
+	# ADDresult_$107  e1$1
 
 	# fetch variables
 	li t1, 1
@@ -4851,7 +4851,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$108 result_$107 a9$1
+	# ADDresult_$108 result_$107 a9$1
 
 	# fetch variables
 
@@ -4901,7 +4901,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$109  e2$1
+	# ADDresult_$109  e2$1
 
 	# fetch variables
 	li t1, 2
@@ -4928,7 +4928,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$110 result_$109 a10$1
+	# ADDresult_$110 result_$109 a10$1
 
 	# fetch variables
 
@@ -4978,7 +4978,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$111  e3$1
+	# ADDresult_$111  e3$1
 
 	# fetch variables
 	li t1, 3
@@ -5005,7 +5005,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$112 result_$111 a11$1
+	# ADDresult_$112 result_$111 a11$1
 
 	# fetch variables
 
@@ -5055,7 +5055,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$113  e4$1
+	# ADDresult_$113  e4$1
 
 	# fetch variables
 	li t1, 4
@@ -5082,7 +5082,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$114 result_$113 a12$1
+	# ADDresult_$114 result_$113 a12$1
 
 	# fetch variables
 
@@ -5132,7 +5132,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$115  d1$1
+	# ADDresult_$115  d1$1
 
 	# fetch variables
 	li t1, 1
@@ -5159,7 +5159,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$116 result_$115 a5$1
+	# ADDresult_$116 result_$115 a5$1
 
 	# fetch variables
 
@@ -5209,7 +5209,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$117  d2$1
+	# ADDresult_$117  d2$1
 
 	# fetch variables
 	li t1, 2
@@ -5236,7 +5236,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$118 result_$117 a6$1
+	# ADDresult_$118 result_$117 a6$1
 
 	# fetch variables
 
@@ -5286,7 +5286,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$119  d3$1
+	# ADDresult_$119  d3$1
 
 	# fetch variables
 	li t1, 3
@@ -5313,7 +5313,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$120 result_$119 a7$1
+	# ADDresult_$120 result_$119 a7$1
 
 	# fetch variables
 
@@ -5363,7 +5363,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$121  d4$1
+	# ADDresult_$121  d4$1
 
 	# fetch variables
 	li t1, 4
@@ -5390,7 +5390,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$122 result_$121 a8$1
+	# ADDresult_$122 result_$121 a8$1
 
 	# fetch variables
 
@@ -5440,7 +5440,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$123  c1$1
+	# ADDresult_$123  c1$1
 
 	# fetch variables
 	li t1, 1
@@ -5467,7 +5467,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$124 result_$123 a1$1
+	# ADDresult_$124 result_$123 a1$1
 
 	# fetch variables
 
@@ -5517,7 +5517,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$125  c2$1
+	# ADDresult_$125  c2$1
 
 	# fetch variables
 	li t1, 2
@@ -5544,7 +5544,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$126 result_$125 a2$1
+	# ADDresult_$126 result_$125 a2$1
 
 	# fetch variables
 
@@ -5594,7 +5594,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$127  c3$1
+	# ADDresult_$127  c3$1
 
 	# fetch variables
 	li t1, 3
@@ -5621,7 +5621,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$128 result_$127 a3$1
+	# ADDresult_$128 result_$127 a3$1
 
 	# fetch variables
 
@@ -5671,7 +5671,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$129  c4$1
+	# ADDresult_$129  c4$1
 
 	# fetch variables
 	li t1, 4
@@ -5698,7 +5698,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$130 result_$129 a4$1
+	# ADDresult_$130 result_$129 a4$1
 
 	# fetch variables
 
@@ -5748,7 +5748,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$131  c1$2
+	# ADDresult_$131  c1$2
 
 	# fetch variables
 	li t1, 1
@@ -5775,7 +5775,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$132 result_$131 a1$2
+	# ADDresult_$132 result_$131 a1$2
 
 	# fetch variables
 
@@ -5825,7 +5825,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$133  c2$2
+	# ADDresult_$133  c2$2
 
 	# fetch variables
 	li t1, 2
@@ -5852,7 +5852,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$134 result_$133 a2$2
+	# ADDresult_$134 result_$133 a2$2
 
 	# fetch variables
 
@@ -5902,7 +5902,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$135  c3$2
+	# ADDresult_$135  c3$2
 
 	# fetch variables
 	li t1, 3
@@ -5929,7 +5929,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$136 result_$135 a3$2
+	# ADDresult_$136 result_$135 a3$2
 
 	# fetch variables
 
@@ -5979,7 +5979,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$137  c4$2
+	# ADDresult_$137  c4$2
 
 	# fetch variables
 	li t1, 4
@@ -6006,7 +6006,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$138 result_$137 a4$2
+	# ADDresult_$138 result_$137 a4$2
 
 	# fetch variables
 
@@ -6069,7 +6069,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$139 i c1$3
+	# ADDresult_$139 i c1$3
 
 	# fetch variables
 
@@ -6102,7 +6102,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$140 result_$139 c2$3
+	# ADDresult_$140 result_$139 c2$3
 
 	# fetch variables
 
@@ -6135,7 +6135,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$141 result_$140 c3$3
+	# ADDresult_$141 result_$140 c3$3
 
 	# fetch variables
 
@@ -6168,7 +6168,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$142 result_$141 c4$3
+	# ADDresult_$142 result_$141 c4$3
 
 	# fetch variables
 
@@ -6199,7 +6199,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 1016(sp)
 
-	# sub result_$143 result_$142 d1$2
+	# SUBresult_$143 result_$142 d1$2
 
 	# fetch variables
 
@@ -6210,9 +6210,9 @@ funcEntry2:
 
 	# get address of local var:d1$2
 	ld t2, 1016(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$143
-	sub t0, t1, t2
 	sd t0, 1008(sp)
 
 	# load d2$2 lv$8
@@ -6226,7 +6226,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 1000(sp)
 
-	# sub result_$144 result_$143 d2$2
+	# SUBresult_$144 result_$143 d2$2
 
 	# fetch variables
 
@@ -6235,9 +6235,9 @@ funcEntry2:
 
 	# get address of local var:d2$2
 	ld t2, 1000(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$144
-	sub t0, t1, t2
 	sd t0, 992(sp)
 
 	# load d3$2 lv$9
@@ -6251,7 +6251,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 984(sp)
 
-	# sub result_$145 result_$144 d3$2
+	# SUBresult_$145 result_$144 d3$2
 
 	# fetch variables
 
@@ -6260,9 +6260,9 @@ funcEntry2:
 
 	# get address of local var:d3$2
 	ld t2, 984(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$145
-	sub t0, t1, t2
 	sd t0, 976(sp)
 
 	# load d4$2 lv$10
@@ -6276,7 +6276,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 968(sp)
 
-	# sub result_$146 result_$145 d4$2
+	# SUBresult_$146 result_$145 d4$2
 
 	# fetch variables
 
@@ -6285,9 +6285,9 @@ funcEntry2:
 
 	# get address of local var:d4$2
 	ld t2, 968(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$146
-	sub t0, t1, t2
 	sd t0, 960(sp)
 
 	# load e1$2 lv$11
@@ -6301,7 +6301,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 952(sp)
 
-	# add result_$147 result_$146 e1$2
+	# ADDresult_$147 result_$146 e1$2
 
 	# fetch variables
 
@@ -6326,7 +6326,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 936(sp)
 
-	# add result_$148 result_$147 e2$2
+	# ADDresult_$148 result_$147 e2$2
 
 	# fetch variables
 
@@ -6351,7 +6351,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 920(sp)
 
-	# add result_$149 result_$148 e3$2
+	# ADDresult_$149 result_$148 e3$2
 
 	# fetch variables
 
@@ -6376,7 +6376,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 904(sp)
 
-	# add result_$150 result_$149 e4$2
+	# ADDresult_$150 result_$149 e4$2
 
 	# fetch variables
 
@@ -6401,7 +6401,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 888(sp)
 
-	# sub result_$151 result_$150 f1$2
+	# SUBresult_$151 result_$150 f1$2
 
 	# fetch variables
 
@@ -6410,9 +6410,9 @@ funcEntry2:
 
 	# get address of local var:f1$2
 	ld t2, 888(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$151
-	sub t0, t1, t2
 	sd t0, 880(sp)
 
 	# load f2$2 lv$16
@@ -6426,7 +6426,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 872(sp)
 
-	# sub result_$152 result_$151 f2$2
+	# SUBresult_$152 result_$151 f2$2
 
 	# fetch variables
 
@@ -6435,9 +6435,9 @@ funcEntry2:
 
 	# get address of local var:f2$2
 	ld t2, 872(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$152
-	sub t0, t1, t2
 	sd t0, 864(sp)
 
 	# load f3$2 lv$17
@@ -6451,7 +6451,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 856(sp)
 
-	# sub result_$153 result_$152 f3$2
+	# SUBresult_$153 result_$152 f3$2
 
 	# fetch variables
 
@@ -6460,9 +6460,9 @@ funcEntry2:
 
 	# get address of local var:f3$2
 	ld t2, 856(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$153
-	sub t0, t1, t2
 	sd t0, 848(sp)
 
 	# load f4$2 lv$18
@@ -6476,7 +6476,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 840(sp)
 
-	# sub result_$154 result_$153 f4$2
+	# SUBresult_$154 result_$153 f4$2
 
 	# fetch variables
 
@@ -6485,9 +6485,9 @@ funcEntry2:
 
 	# get address of local var:f4$2
 	ld t2, 840(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$154
-	sub t0, t1, t2
 	sd t0, 832(sp)
 
 	# load g1$2 lv$19
@@ -6501,7 +6501,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 824(sp)
 
-	# add result_$155 result_$154 g1$2
+	# ADDresult_$155 result_$154 g1$2
 
 	# fetch variables
 
@@ -6526,7 +6526,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 808(sp)
 
-	# add result_$156 result_$155 g2$2
+	# ADDresult_$156 result_$155 g2$2
 
 	# fetch variables
 
@@ -6551,7 +6551,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 792(sp)
 
-	# add result_$157 result_$156 g3$2
+	# ADDresult_$157 result_$156 g3$2
 
 	# fetch variables
 
@@ -6576,7 +6576,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 776(sp)
 
-	# add result_$158 result_$157 g4$2
+	# ADDresult_$158 result_$157 g4$2
 
 	# fetch variables
 
@@ -6601,7 +6601,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 760(sp)
 
-	# sub result_$159 result_$158 h1$2
+	# SUBresult_$159 result_$158 h1$2
 
 	# fetch variables
 
@@ -6610,9 +6610,9 @@ funcEntry2:
 
 	# get address of local var:h1$2
 	ld t2, 760(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$159
-	sub t0, t1, t2
 	sd t0, 752(sp)
 
 	# load h2$2 lv$24
@@ -6626,7 +6626,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 744(sp)
 
-	# sub result_$160 result_$159 h2$2
+	# SUBresult_$160 result_$159 h2$2
 
 	# fetch variables
 
@@ -6635,9 +6635,9 @@ funcEntry2:
 
 	# get address of local var:h2$2
 	ld t2, 744(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$160
-	sub t0, t1, t2
 	sd t0, 736(sp)
 
 	# load h3$2 lv$25
@@ -6651,7 +6651,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 728(sp)
 
-	# sub result_$161 result_$160 h3$2
+	# SUBresult_$161 result_$160 h3$2
 
 	# fetch variables
 
@@ -6660,9 +6660,9 @@ funcEntry2:
 
 	# get address of local var:h3$2
 	ld t2, 728(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$161
-	sub t0, t1, t2
 	sd t0, 720(sp)
 
 	# load h4$2 lv$26
@@ -6676,7 +6676,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 712(sp)
 
-	# sub result_$162 result_$161 h4$2
+	# SUBresult_$162 result_$161 h4$2
 
 	# fetch variables
 
@@ -6685,9 +6685,9 @@ funcEntry2:
 
 	# get address of local var:h4$2
 	ld t2, 712(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$162
-	sub t0, t1, t2
 	sd t0, 704(sp)
 
 	# load i1$2 lv$27
@@ -6701,7 +6701,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 696(sp)
 
-	# add result_$163 result_$162 i1$2
+	# ADDresult_$163 result_$162 i1$2
 
 	# fetch variables
 
@@ -6726,7 +6726,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 680(sp)
 
-	# add result_$164 result_$163 i2$2
+	# ADDresult_$164 result_$163 i2$2
 
 	# fetch variables
 
@@ -6751,7 +6751,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 664(sp)
 
-	# add result_$165 result_$164 i3$2
+	# ADDresult_$165 result_$164 i3$2
 
 	# fetch variables
 
@@ -6776,7 +6776,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 648(sp)
 
-	# add result_$166 result_$165 i4$2
+	# ADDresult_$166 result_$165 i4$2
 
 	# fetch variables
 
@@ -6801,7 +6801,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 632(sp)
 
-	# sub result_$167 result_$166 j1$2
+	# SUBresult_$167 result_$166 j1$2
 
 	# fetch variables
 
@@ -6810,9 +6810,9 @@ funcEntry2:
 
 	# get address of local var:j1$2
 	ld t2, 632(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$167
-	sub t0, t1, t2
 	sd t0, 624(sp)
 
 	# load j2$2 lv$32
@@ -6826,7 +6826,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 616(sp)
 
-	# sub result_$168 result_$167 j2$2
+	# SUBresult_$168 result_$167 j2$2
 
 	# fetch variables
 
@@ -6835,9 +6835,9 @@ funcEntry2:
 
 	# get address of local var:j2$2
 	ld t2, 616(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$168
-	sub t0, t1, t2
 	sd t0, 608(sp)
 
 	# load j3$2 lv$33
@@ -6851,7 +6851,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 600(sp)
 
-	# sub result_$169 result_$168 j3$2
+	# SUBresult_$169 result_$168 j3$2
 
 	# fetch variables
 
@@ -6860,9 +6860,9 @@ funcEntry2:
 
 	# get address of local var:j3$2
 	ld t2, 600(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$169
-	sub t0, t1, t2
 	sd t0, 592(sp)
 
 	# load j4$2 lv$34
@@ -6876,7 +6876,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 584(sp)
 
-	# sub result_$170 result_$169 j4$2
+	# SUBresult_$170 result_$169 j4$2
 
 	# fetch variables
 
@@ -6885,9 +6885,9 @@ funcEntry2:
 
 	# get address of local var:j4$2
 	ld t2, 584(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$170
-	sub t0, t1, t2
 	sd t0, 576(sp)
 
 	# load k1 lv$35
@@ -6901,7 +6901,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 568(sp)
 
-	# add result_$171 result_$170 k1
+	# ADDresult_$171 result_$170 k1
 
 	# fetch variables
 
@@ -6926,7 +6926,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 552(sp)
 
-	# add result_$172 result_$171 k2
+	# ADDresult_$172 result_$171 k2
 
 	# fetch variables
 
@@ -6951,7 +6951,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 536(sp)
 
-	# add result_$173 result_$172 k3
+	# ADDresult_$173 result_$172 k3
 
 	# fetch variables
 
@@ -6976,7 +6976,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 520(sp)
 
-	# add result_$174 result_$173 k4
+	# ADDresult_$174 result_$173 k4
 
 	# fetch variables
 
@@ -6999,7 +6999,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 504(sp)
 
-	# add result_$175 result_$174 a1$3
+	# ADDresult_$175 result_$174 a1$3
 
 	# fetch variables
 
@@ -7022,7 +7022,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 488(sp)
 
-	# sub result_$176 result_$175 a2$3
+	# SUBresult_$176 result_$175 a2$3
 
 	# fetch variables
 
@@ -7031,9 +7031,9 @@ funcEntry2:
 
 	# get address of local var:a2$3
 	ld t2, 488(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$176
-	sub t0, t1, t2
 	sd t0, 480(sp)
 
 	# load a3$3 gv2
@@ -7045,7 +7045,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 472(sp)
 
-	# add result_$177 result_$176 a3$3
+	# ADDresult_$177 result_$176 a3$3
 
 	# fetch variables
 
@@ -7068,7 +7068,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 456(sp)
 
-	# sub result_$178 result_$177 a4$3
+	# SUBresult_$178 result_$177 a4$3
 
 	# fetch variables
 
@@ -7077,9 +7077,9 @@ funcEntry2:
 
 	# get address of local var:a4$3
 	ld t2, 456(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$178
-	sub t0, t1, t2
 	sd t0, 448(sp)
 
 	# load a5$2 gv4
@@ -7091,7 +7091,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 440(sp)
 
-	# add result_$179 result_$178 a5$2
+	# ADDresult_$179 result_$178 a5$2
 
 	# fetch variables
 
@@ -7114,7 +7114,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 424(sp)
 
-	# sub result_$180 result_$179 a6$2
+	# SUBresult_$180 result_$179 a6$2
 
 	# fetch variables
 
@@ -7123,9 +7123,9 @@ funcEntry2:
 
 	# get address of local var:a6$2
 	ld t2, 424(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$180
-	sub t0, t1, t2
 	sd t0, 416(sp)
 
 	# load a7$2 gv6
@@ -7137,7 +7137,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 408(sp)
 
-	# add result_$181 result_$180 a7$2
+	# ADDresult_$181 result_$180 a7$2
 
 	# fetch variables
 
@@ -7160,7 +7160,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 392(sp)
 
-	# sub result_$182 result_$181 a8$2
+	# SUBresult_$182 result_$181 a8$2
 
 	# fetch variables
 
@@ -7169,9 +7169,9 @@ funcEntry2:
 
 	# get address of local var:a8$2
 	ld t2, 392(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$182
-	sub t0, t1, t2
 	sd t0, 384(sp)
 
 	# load a9$2 gv8
@@ -7183,7 +7183,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 376(sp)
 
-	# add result_$183 result_$182 a9$2
+	# ADDresult_$183 result_$182 a9$2
 
 	# fetch variables
 
@@ -7206,7 +7206,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 360(sp)
 
-	# sub result_$184 result_$183 a10$2
+	# SUBresult_$184 result_$183 a10$2
 
 	# fetch variables
 
@@ -7215,9 +7215,9 @@ funcEntry2:
 
 	# get address of local var:a10$2
 	ld t2, 360(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$184
-	sub t0, t1, t2
 	sd t0, 352(sp)
 
 	# load a11$2 gv10
@@ -7229,7 +7229,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 344(sp)
 
-	# add result_$185 result_$184 a11$2
+	# ADDresult_$185 result_$184 a11$2
 
 	# fetch variables
 
@@ -7252,7 +7252,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 328(sp)
 
-	# sub result_$186 result_$185 a12$2
+	# SUBresult_$186 result_$185 a12$2
 
 	# fetch variables
 
@@ -7261,9 +7261,9 @@ funcEntry2:
 
 	# get address of local var:a12$2
 	ld t2, 328(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$186
-	sub t0, t1, t2
 	sd t0, 320(sp)
 
 	# load a13$2 gv12
@@ -7275,7 +7275,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 312(sp)
 
-	# add result_$187 result_$186 a13$2
+	# ADDresult_$187 result_$186 a13$2
 
 	# fetch variables
 
@@ -7298,7 +7298,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 296(sp)
 
-	# sub result_$188 result_$187 a14$2
+	# SUBresult_$188 result_$187 a14$2
 
 	# fetch variables
 
@@ -7307,9 +7307,9 @@ funcEntry2:
 
 	# get address of local var:a14$2
 	ld t2, 296(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$188
-	sub t0, t1, t2
 	sd t0, 288(sp)
 
 	# load a15$2 gv14
@@ -7321,7 +7321,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 280(sp)
 
-	# add result_$189 result_$188 a15$2
+	# ADDresult_$189 result_$188 a15$2
 
 	# fetch variables
 
@@ -7344,7 +7344,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 264(sp)
 
-	# sub result_$190 result_$189 a16$2
+	# SUBresult_$190 result_$189 a16$2
 
 	# fetch variables
 
@@ -7353,9 +7353,9 @@ funcEntry2:
 
 	# get address of local var:a16$2
 	ld t2, 264(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$190
-	sub t0, t1, t2
 	sd t0, 256(sp)
 
 	# load a17$2 gv16
@@ -7367,7 +7367,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 248(sp)
 
-	# add result_$191 result_$190 a17$2
+	# ADDresult_$191 result_$190 a17$2
 
 	# fetch variables
 
@@ -7390,7 +7390,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# sub result_$192 result_$191 a18$2
+	# SUBresult_$192 result_$191 a18$2
 
 	# fetch variables
 
@@ -7399,9 +7399,9 @@ funcEntry2:
 
 	# get address of local var:a18$2
 	ld t2, 232(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$192
-	sub t0, t1, t2
 	sd t0, 224(sp)
 
 	# load a19$2 gv18
@@ -7413,7 +7413,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 216(sp)
 
-	# add result_$193 result_$192 a19$2
+	# ADDresult_$193 result_$192 a19$2
 
 	# fetch variables
 
@@ -7436,7 +7436,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# sub result_$194 result_$193 a20$2
+	# SUBresult_$194 result_$193 a20$2
 
 	# fetch variables
 
@@ -7445,9 +7445,9 @@ funcEntry2:
 
 	# get address of local var:a20$2
 	ld t2, 200(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$194
-	sub t0, t1, t2
 	sd t0, 192(sp)
 
 	# load a21$2 gv20
@@ -7459,7 +7459,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# add result_$195 result_$194 a21$2
+	# ADDresult_$195 result_$194 a21$2
 
 	# fetch variables
 
@@ -7482,7 +7482,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# sub result_$196 result_$195 a22$2
+	# SUBresult_$196 result_$195 a22$2
 
 	# fetch variables
 
@@ -7491,9 +7491,9 @@ funcEntry2:
 
 	# get address of local var:a22$2
 	ld t2, 168(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$196
-	sub t0, t1, t2
 	sd t0, 160(sp)
 
 	# load a23$2 gv22
@@ -7505,7 +7505,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# add result_$197 result_$196 a23$2
+	# ADDresult_$197 result_$196 a23$2
 
 	# fetch variables
 
@@ -7528,7 +7528,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# sub result_$198 result_$197 a24$2
+	# SUBresult_$198 result_$197 a24$2
 
 	# fetch variables
 
@@ -7537,9 +7537,9 @@ funcEntry2:
 
 	# get address of local var:a24$2
 	ld t2, 136(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$198
-	sub t0, t1, t2
 	sd t0, 128(sp)
 
 	# load a25$2 gv24
@@ -7551,7 +7551,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# add result_$199 result_$198 a25$2
+	# ADDresult_$199 result_$198 a25$2
 
 	# fetch variables
 
@@ -7574,7 +7574,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# sub result_$200 result_$199 a26$2
+	# SUBresult_$200 result_$199 a26$2
 
 	# fetch variables
 
@@ -7583,9 +7583,9 @@ funcEntry2:
 
 	# get address of local var:a26$2
 	ld t2, 104(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$200
-	sub t0, t1, t2
 	sd t0, 96(sp)
 
 	# load a27$2 gv26
@@ -7597,7 +7597,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# add result_$201 result_$200 a27$2
+	# ADDresult_$201 result_$200 a27$2
 
 	# fetch variables
 
@@ -7620,7 +7620,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# sub result_$202 result_$201 a28$2
+	# SUBresult_$202 result_$201 a28$2
 
 	# fetch variables
 
@@ -7629,9 +7629,9 @@ funcEntry2:
 
 	# get address of local var:a28$2
 	ld t2, 72(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$202
-	sub t0, t1, t2
 	sd t0, 64(sp)
 
 	# load a29$2 gv28
@@ -7643,7 +7643,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# add result_$203 result_$202 a29$2
+	# ADDresult_$203 result_$202 a29$2
 
 	# fetch variables
 
@@ -7666,7 +7666,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# sub result_$204 result_$203 a30$2
+	# SUBresult_$204 result_$203 a30$2
 
 	# fetch variables
 
@@ -7675,9 +7675,9 @@ funcEntry2:
 
 	# get address of local var:a30$2
 	ld t2, 40(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$204
-	sub t0, t1, t2
 	sd t0, 32(sp)
 
 	# load a31$2 gv30
@@ -7689,7 +7689,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_$205 result_$204 a31$2
+	# ADDresult_$205 result_$204 a31$2
 
 	# fetch variables
 
@@ -7712,7 +7712,7 @@ funcEntry2:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# sub result_$206 result_$205 a32$2
+	# SUBresult_$206 result_$205 a32$2
 
 	# fetch variables
 
@@ -7721,9 +7721,9 @@ funcEntry2:
 
 	# get address of local var:a32$2
 	ld t2, 8(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$206
-	sub t0, t1, t2
 	sd t0, 0(sp)
 
 	# ret result_$206
@@ -7806,7 +7806,7 @@ mainEntry32:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# add result_ a 
+	# ADDresult_ a 
 
 	# fetch variables
 
@@ -7945,13 +7945,24 @@ mainEntry32:
 	li t4, 96
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

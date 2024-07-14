@@ -103,7 +103,7 @@ deepWhileBrEntry:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# add result_ a b
+	# ADDresult_ a b
 
 	# fetch variables
 
@@ -299,7 +299,7 @@ ifTrue_268:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# add result_$1 c$2 d
+	# ADDresult_$1 c$2 d
 
 	# fetch variables
 
@@ -396,16 +396,16 @@ ifTrue_269:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# mul result_$2 d$1 
+	# MULresult_$2 d$1 
 
 	# fetch variables
 
 	# get address of local var:d$1
 	ld t1, 24(sp)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$2
-	mul t0, t1, t2
 	sd t0, 16(sp)
 
 	# lv$4 result_$2
@@ -442,16 +442,16 @@ ifTrue_270:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# mul result_$3 e 
+	# MULresult_$3 e 
 
 	# fetch variables
 
 	# get address of local var:e
 	ld t1, 8(sp)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$3
-	mul t0, t1, t2
 	sd t0, 0(sp)
 
 	# lv$2 result_$3
@@ -562,13 +562,24 @@ mainEntry53:
 	li t4, 40
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

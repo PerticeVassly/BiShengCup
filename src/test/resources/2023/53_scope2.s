@@ -120,7 +120,7 @@ ifTrue_64:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# add result_ k$1 
+	# ADDresult_ k$1 
 
 	# fetch variables
 
@@ -247,16 +247,16 @@ whileBody_73:
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# sub result_$1 k$3 
+	# SUBresult_$1 k$3 
 
 	# fetch variables
 
 	# get address of local var:k$3
 	ld t1, 112(sp)
 	li t2, 88
+	sub t0, t1, t2
 
 	# get address of local var:result_$1
-	sub t0, t1, t2
 	sd t0, 104(sp)
 
 	# lv result_$1
@@ -415,7 +415,7 @@ ifTrue_65:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# sub result_$2 k$5 g
+	# SUBresult_$2 k$5 g
 
 	# fetch variables
 
@@ -424,9 +424,9 @@ ifTrue_65:
 
 	# get address of local var:g
 	ld t2, 48(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sub t0, t1, t2
 	sd t0, 40(sp)
 
 	# lv result_$2
@@ -471,7 +471,7 @@ ifTrue_65:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_$3 k$6 g$1
+	# ADDresult_$3 k$6 g$1
 
 	# fetch variables
 
@@ -494,7 +494,7 @@ ifTrue_65:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$4 result_$3 l
+	# ADDresult_$4 result_$3 l
 
 	# fetch variables
 
@@ -527,13 +527,24 @@ next_139:
 
 	# br whileCond_73
 	j whileCond_73
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

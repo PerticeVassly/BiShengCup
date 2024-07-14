@@ -88,15 +88,15 @@ float_absEntry:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_ ifTrue_ next_
+	# condBr cond_ ifTrue_54 next_116
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 24(sp)
-	beqz t1, next_
-	j ifTrue_
-ifTrue_:
+	beqz t1, next_116
+	j ifTrue_54
+ifTrue_54:
 
 	# load x$1 lv
 
@@ -107,7 +107,7 @@ ifTrue_:
 	fld ft0, 0(t3)
 	fsd ft0, 16(sp)
 
-	# fsub tmp_  x$1
+	# FSUBtmp_  x$1
 
 	# fetch variables
 	li t1, 0x0
@@ -115,9 +115,9 @@ ifTrue_:
 
 	# get address of local var:x$1
 	fld ft2, 16(sp)
+	fsub.d ft0, ft1, ft2
 
 	# get address of local var:tmp_
-	fsub.d ft0, ft1, ft2
 	fsd ft0, 8(sp)
 
 	# ret tmp_
@@ -133,7 +133,7 @@ ifTrue_:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_:
+next_116:
 
 	# load x$2 lv
 
@@ -216,7 +216,7 @@ circle_areaEntry:
 	fcvt.d.l ft0, t1
 	fsd ft0, 88(sp)
 
-	# fmul result_  i2f_
+	# FMULresult_  i2f_
 
 	# fetch variables
 	li t1, 0x400921fb5a7ed197
@@ -224,9 +224,9 @@ circle_areaEntry:
 
 	# get address of local var:i2f_
 	fld ft2, 88(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 80(sp)
 
 	# load radius$1 lv
@@ -249,7 +249,7 @@ circle_areaEntry:
 	fcvt.d.l ft0, t1
 	fsd ft0, 64(sp)
 
-	# fmul result_$1 result_ i2f_$1
+	# FMULresult_$1 result_ i2f_$1
 
 	# fetch variables
 
@@ -258,9 +258,9 @@ circle_areaEntry:
 
 	# get address of local var:i2f_$1
 	fld ft2, 64(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$1
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 56(sp)
 
 	# load radius$2 lv
@@ -281,7 +281,7 @@ circle_areaEntry:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# mul result_$2 radius$2 radius$3
+	# MULresult_$2 radius$2 radius$3
 
 	# fetch variables
 
@@ -290,9 +290,9 @@ circle_areaEntry:
 
 	# get address of local var:radius$3
 	ld t2, 40(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$2
-	mul t0, t1, t2
 	sd t0, 32(sp)
 
 	# intToFloat i2f_$2 result_$2
@@ -306,7 +306,7 @@ circle_areaEntry:
 	fcvt.d.l ft0, t1
 	fsd ft0, 24(sp)
 
-	# fmul result_$3 i2f_$2 
+	# FMULresult_$3 i2f_$2 
 
 	# fetch variables
 
@@ -314,12 +314,12 @@ circle_areaEntry:
 	fld ft1, 24(sp)
 	li t2, 0x400921fb5a7ed197
 	fmv.d.x ft2, t2
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$3
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 16(sp)
 
-	# fadd result_$4 result_$1 result_$3
+	# FADDresult_$4 result_$1 result_$3
 
 	# fetch variables
 
@@ -439,7 +439,7 @@ float_eqEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 40(sp)
 
-	# fsub result_ a b
+	# FSUBresult_ a b
 
 	# fetch variables
 
@@ -448,9 +448,9 @@ float_eqEntry:
 
 	# get address of local var:b
 	fld ft2, 40(sp)
+	fsub.d ft0, ft1, ft2
 
 	# get address of local var:result_
-	fsub.d ft0, ft1, ft2
 	fsd ft0, 32(sp)
 
 	# prepare params
@@ -518,15 +518,15 @@ float_eqEntry:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_ ifTrue_1 ifFalse_
+	# condBr cond_ ifTrue_55 ifFalse_9
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 0(sp)
-	beqz t1, ifFalse_
-	j ifTrue_1
-ifTrue_1:
+	beqz t1, ifFalse_9
+	j ifTrue_55
+ifTrue_55:
 
 	# ret 
 
@@ -539,7 +539,7 @@ ifTrue_1:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_:
+ifFalse_9:
 
 	# ret 
 
@@ -888,15 +888,15 @@ assertEntry:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_ ifTrue_2 ifFalse_1
+	# condBr cond_normalize_ ifTrue_56 ifFalse_10
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 0(sp)
-	beqz t1, ifFalse_1
-	j ifTrue_2
-ifTrue_2:
+	beqz t1, ifFalse_10
+	j ifTrue_56
+ifTrue_56:
 
 	# prepare params
 	addi sp, sp, 0
@@ -915,9 +915,9 @@ ifTrue_2:
 	# release params
 	addi sp, sp, 0
 
-	# br next_2
-	j next_2
-ifFalse_1:
+	# br next_118
+	j next_118
+ifFalse_10:
 
 	# prepare params
 	addi sp, sp, 0
@@ -936,9 +936,9 @@ ifFalse_1:
 	# release params
 	addi sp, sp, 0
 
-	# br next_2
-	j next_2
-next_2:
+	# br next_118
+	j next_118
+next_118:
 
 	# ret void
 	li t4, 64
@@ -1009,15 +1009,15 @@ assert_notEntry:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_ ifTrue_3 ifFalse_2
+	# condBr cond_normalize_ ifTrue_57 ifFalse_11
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 0(sp)
-	beqz t1, ifFalse_2
-	j ifTrue_3
-ifTrue_3:
+	beqz t1, ifFalse_11
+	j ifTrue_57
+ifTrue_57:
 
 	# prepare params
 	addi sp, sp, 0
@@ -1036,9 +1036,9 @@ ifTrue_3:
 	# release params
 	addi sp, sp, 0
 
-	# br next_3
-	j next_3
-ifFalse_2:
+	# br next_119
+	j next_119
+ifFalse_11:
 
 	# prepare params
 	addi sp, sp, 0
@@ -1057,9 +1057,9 @@ ifFalse_2:
 	# release params
 	addi sp, sp, 0
 
-	# br next_3
-	j next_3
-next_3:
+	# br next_119
+	j next_119
+next_119:
 
 	# ret void
 	li t4, 40
@@ -1071,7 +1071,7 @@ next_3:
 .type main, @function
 .globl main
 main:
-mainEntry:
+mainEntry23:
 
 	# reserve space
 	li t4, 624
@@ -1466,15 +1466,15 @@ mainEntry:
 	seqz t0, t0
 	sd t0, 376(sp)
 
-	# condBr cond_normalize_ ifTrue_4 next_4
+	# condBr cond_normalize_ ifTrue_58 next_120
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 376(sp)
-	beqz t1, next_4
-	j ifTrue_4
-ifTrue_4:
+	beqz t1, next_120
+	j ifTrue_58
+ifTrue_58:
 
 	# prepare params
 	addi sp, sp, 0
@@ -1493,9 +1493,9 @@ ifTrue_4:
 	# release params
 	addi sp, sp, 0
 
-	# br next_4
-	j next_4
-next_4:
+	# br next_120
+	j next_120
+next_120:
 
 	# cmp   cond_normalize_$1
 
@@ -1509,15 +1509,15 @@ next_4:
 	seqz t0, t0
 	sd t0, 368(sp)
 
-	# condBr cond_normalize_$1 ifTrue_5 next_5
+	# condBr cond_normalize_$1 ifTrue_59 next_121
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$1
 	ld t1, 368(sp)
-	beqz t1, next_5
-	j ifTrue_5
-ifTrue_5:
+	beqz t1, next_121
+	j ifTrue_59
+ifTrue_59:
 
 	# prepare params
 	addi sp, sp, 0
@@ -1536,9 +1536,9 @@ ifTrue_5:
 	# release params
 	addi sp, sp, 0
 
-	# br next_5
-	j next_5
-next_5:
+	# br next_121
+	j next_121
+next_121:
 
 	# cmp   cond_normalize_$2
 
@@ -1553,15 +1553,15 @@ next_5:
 	seqz t0, t0
 	sd t0, 360(sp)
 
-	# condBr cond_normalize_$2 secondCond_ next_6
+	# condBr cond_normalize_$2 secondCond_33 next_122
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$2
 	ld t1, 360(sp)
-	beqz t1, next_6
-	j secondCond_
-ifTrue_6:
+	beqz t1, next_122
+	j secondCond_33
+ifTrue_60:
 
 	# prepare params
 	addi sp, sp, 0
@@ -1580,9 +1580,9 @@ ifTrue_6:
 	# release params
 	addi sp, sp, 0
 
-	# br next_6
-	j next_6
-next_6:
+	# br next_122
+	j next_122
+next_122:
 
 	# cmp   cond_normalize_$4
 
@@ -1596,15 +1596,15 @@ next_6:
 	seqz t0, t0
 	sd t0, 352(sp)
 
-	# condBr cond_normalize_$4 ifTrue_7 secondCond_1
+	# condBr cond_normalize_$4 ifTrue_61 secondCond_34
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$4
 	ld t1, 352(sp)
-	beqz t1, secondCond_1
-	j ifTrue_7
-secondCond_:
+	beqz t1, secondCond_34
+	j ifTrue_61
+secondCond_33:
 
 	# cmp   cond_normalize_$3
 
@@ -1618,15 +1618,15 @@ secondCond_:
 	seqz t0, t0
 	sd t0, 344(sp)
 
-	# condBr cond_normalize_$3 ifTrue_6 next_6
+	# condBr cond_normalize_$3 ifTrue_60 next_122
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$3
 	ld t1, 344(sp)
-	beqz t1, next_6
-	j ifTrue_6
-ifTrue_7:
+	beqz t1, next_122
+	j ifTrue_60
+ifTrue_61:
 
 	# prepare params
 	addi sp, sp, 0
@@ -1645,9 +1645,9 @@ ifTrue_7:
 	# release params
 	addi sp, sp, 0
 
-	# br next_7
-	j next_7
-next_7:
+	# br next_123
+	j next_123
+next_123:
 
 	# lv 
 
@@ -2017,9 +2017,9 @@ next_7:
 	ld t3, 568(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_
-	j whileCond_
-secondCond_1:
+	# br whileCond_62
+	j whileCond_62
+secondCond_34:
 
 	# cmp   cond_normalize_$5
 
@@ -2034,15 +2034,15 @@ secondCond_1:
 	seqz t0, t0
 	sd t0, 240(sp)
 
-	# condBr cond_normalize_$5 ifTrue_7 next_7
+	# condBr cond_normalize_$5 ifTrue_61 next_123
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$5
 	ld t1, 240(sp)
-	beqz t1, next_7
-	j ifTrue_7
-whileCond_:
+	beqz t1, next_123
+	j ifTrue_61
+whileCond_62:
 
 	# load i lv
 
@@ -2090,15 +2090,15 @@ whileCond_:
 	seqz t0, t0
 	sd t0, 208(sp)
 
-	# condBr cond_ whileBody_ next_8
+	# condBr cond_ whileBody_62 next_124
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 208(sp)
-	beqz t1, next_8
-	j whileBody_
-whileBody_:
+	beqz t1, next_124
+	j whileBody_62
+whileBody_62:
 
 	# prepare params
 	addi sp, sp, 0
@@ -2142,7 +2142,7 @@ whileBody_:
 	fld ft0, 0(t3)
 	fsd ft0, 192(sp)
 
-	# fmul result_  input
+	# FMULresult_  input
 
 	# fetch variables
 	li t1, 0x400921fb5a7ed197
@@ -2150,9 +2150,9 @@ whileBody_:
 
 	# get address of local var:input
 	fld ft2, 192(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 184(sp)
 
 	# load input$1 lv$4
@@ -2164,7 +2164,7 @@ whileBody_:
 	fld ft0, 0(t3)
 	fsd ft0, 176(sp)
 
-	# fmul result_$1 result_ input$1
+	# FMULresult_$1 result_ input$1
 
 	# fetch variables
 
@@ -2173,9 +2173,9 @@ whileBody_:
 
 	# get address of local var:input$1
 	fld ft2, 176(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$1
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 168(sp)
 
 	# lv$5 result_$1
@@ -2324,7 +2324,7 @@ whileBody_:
 	fld ft0, 0(t3)
 	fsd ft0, 96(sp)
 
-	# fadd result_$2 arr$3 input$3
+	# FADDresult_$2 arr$3 input$3
 
 	# fetch variables
 
@@ -2489,7 +2489,7 @@ whileBody_:
 	fcvt.d.l ft0, t1
 	fsd ft0, 48(sp)
 
-	# fmul result_$3 i2f_ 
+	# FMULresult_$3 i2f_ 
 
 	# fetch variables
 
@@ -2497,9 +2497,9 @@ whileBody_:
 	fld ft1, 48(sp)
 	li t2, 0x4024000000000000
 	fmv.d.x ft2, t2
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$3
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 40(sp)
 
 	# floatToInt f2i_$2 result_$3
@@ -2535,7 +2535,7 @@ whileBody_:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_$4 p$2 
+	# ADDresult_$4 p$2 
 
 	# fetch variables
 
@@ -2560,9 +2560,9 @@ whileBody_:
 	ld t3, 464(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_
-	j whileCond_
-next_8:
+	# br whileCond_62
+	j whileCond_62
+next_124:
 
 	# load len lv$3
 
@@ -2627,13 +2627,24 @@ next_8:
 	li t4, 624
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

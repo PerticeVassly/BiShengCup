@@ -23,10 +23,12 @@ exgcdEntry:
 
 	# get address of local var:1
 	sd a1, 400(sp)
-	ld t3, 432(sp)
-	sd t3, 392(sp)
-	ld t3, 424(sp)
-	sd t3, 384(sp)
+
+	# get address of local var:2
+	sd a2, 392(sp)
+
+	# get address of local var:3
+	sd a3, 384(sp)
 
 	# allocate lv$5
 	li t0, 368
@@ -354,18 +356,14 @@ ifFalse_19:
 
 	# get address of local var:x$1
 	ld t1, 176(sp)
-
-	# push x$1
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:y$1
 	ld t1, 168(sp)
-
-	# push y$1
-	sd t1, -16(sp)
-	addi sp, sp, -16
+	mv a3, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -379,7 +377,7 @@ ifFalse_19:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 16
+	addi sp, sp, 0
 
 	# get address of local var:exgcd
 	sd a0, 160(sp)
@@ -621,7 +619,7 @@ ifFalse_19:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# mul result_$2 result_$1 y$6
+	# MULresult_$2 result_$1 y$6
 
 	# fetch variables
 
@@ -630,12 +628,12 @@ ifFalse_19:
 
 	# get address of local var:y$6
 	ld t2, 24(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$2
-	mul t0, t1, t2
 	sd t0, 16(sp)
 
-	# sub result_$3 t result_$2
+	# SUBresult_$3 t result_$2
 
 	# fetch variables
 
@@ -644,9 +642,9 @@ ifFalse_19:
 
 	# get address of local var:result_$2
 	ld t2, 16(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$3
-	sub t0, t1, t2
 	sd t0, 8(sp)
 
 	# y$4 result_$3
@@ -871,18 +869,14 @@ mainEntry42:
 
 	# get address of local var:x
 	ld t1, 104(sp)
-
-	# push x
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:y
 	ld t1, 96(sp)
-
-	# push y
-	sd t1, -16(sp)
-	addi sp, sp, -16
+	mv a3, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -896,7 +890,7 @@ mainEntry42:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 16
+	addi sp, sp, 0
 
 	# get address of local var:exgcd
 	sd a0, 88(sp)
@@ -976,7 +970,7 @@ mainEntry42:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# add result_$1 result_ b$2
+	# ADDresult_$1 result_ b$2
 
 	# fetch variables
 
@@ -1083,13 +1077,24 @@ mainEntry42:
 	li t4, 208
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

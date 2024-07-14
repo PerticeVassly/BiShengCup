@@ -276,7 +276,7 @@ next_571:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_$1 a$4 
+	# ADDresult_$1 a$4 
 
 	# fetch variables
 
@@ -329,16 +329,16 @@ ifFalse_132:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# mul result_ a$3 
+	# MULresult_ a$3 
 
 	# fetch variables
 
 	# get address of local var:a$3
 	ld t1, 8(sp)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_
-	mul t0, t1, t2
 	sd t0, 0(sp)
 
 	# lv$1 result_
@@ -401,13 +401,24 @@ mainEntry78:
 	li t4, 8
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

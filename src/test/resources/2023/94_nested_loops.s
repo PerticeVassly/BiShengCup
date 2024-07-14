@@ -372,7 +372,7 @@ next_614:
 	ld t0, 0(t3)
 	sd t0, 512(sp)
 
-	# add result_$14 a$4 
+	# ADDresult_$14 a$4 
 
 	# fetch variables
 
@@ -481,7 +481,7 @@ next_615:
 	ld t0, 0(t3)
 	sd t0, 464(sp)
 
-	# add result_$13 b$3 
+	# ADDresult_$13 b$3 
 
 	# fetch variables
 
@@ -590,7 +590,7 @@ next_616:
 	ld t0, 0(t3)
 	sd t0, 416(sp)
 
-	# add result_$12 c$3 
+	# ADDresult_$12 c$3 
 
 	# fetch variables
 
@@ -699,7 +699,7 @@ next_617:
 	ld t0, 0(t3)
 	sd t0, 368(sp)
 
-	# add result_$11 d$3 
+	# ADDresult_$11 d$3 
 
 	# fetch variables
 
@@ -808,7 +808,7 @@ next_618:
 	ld t0, 0(t3)
 	sd t0, 320(sp)
 
-	# add result_$10 e$3 
+	# ADDresult_$10 e$3 
 
 	# fetch variables
 
@@ -1105,7 +1105,7 @@ whileBody_265:
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# add result_ a$3 b$2
+	# ADDresult_ a$3 b$2
 
 	# fetch variables
 
@@ -1128,7 +1128,7 @@ whileBody_265:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# add result_$1 result_ c$2
+	# ADDresult_$1 result_ c$2
 
 	# fetch variables
 
@@ -1151,7 +1151,7 @@ whileBody_265:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# add result_$2 result_$1 d$2
+	# ADDresult_$2 result_$1 d$2
 
 	# fetch variables
 
@@ -1174,7 +1174,7 @@ whileBody_265:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# add result_$3 result_$2 e$2
+	# ADDresult_$3 result_$2 e$2
 
 	# fetch variables
 
@@ -1197,7 +1197,7 @@ whileBody_265:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# add result_$4 result_$3 f$2
+	# ADDresult_$4 result_$3 f$2
 
 	# fetch variables
 
@@ -1220,7 +1220,7 @@ whileBody_265:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# add result_$5 result_$4 g$2
+	# ADDresult_$5 result_$4 g$2
 
 	# fetch variables
 
@@ -1243,7 +1243,7 @@ whileBody_265:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# add result_$6 result_$5 x$1
+	# ADDresult_$6 result_$5 x$1
 
 	# fetch variables
 
@@ -1266,7 +1266,7 @@ whileBody_265:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# add result_$7 result_$6 y$1
+	# ADDresult_$7 result_$6 y$1
 
 	# fetch variables
 
@@ -1302,7 +1302,7 @@ whileBody_265:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_$8 g$3 
+	# ADDresult_$8 g$3 
 
 	# fetch variables
 
@@ -1340,7 +1340,7 @@ next_619:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$9 f$3 
+	# ADDresult_$9 f$3 
 
 	# fetch variables
 
@@ -1607,7 +1607,7 @@ next_621:
 	ld t0, 0(t3)
 	sd t0, 432(sp)
 
-	# add result_$9 a$3 
+	# ADDresult_$9 a$3 
 
 	# fetch variables
 
@@ -1716,7 +1716,7 @@ next_622:
 	ld t0, 0(t3)
 	sd t0, 384(sp)
 
-	# add result_$8 b$3 
+	# ADDresult_$8 b$3 
 
 	# fetch variables
 
@@ -1825,7 +1825,7 @@ next_623:
 	ld t0, 0(t3)
 	sd t0, 336(sp)
 
-	# add result_$7 c$2 
+	# ADDresult_$7 c$2 
 
 	# fetch variables
 
@@ -1934,7 +1934,7 @@ next_624:
 	ld t0, 0(t3)
 	sd t0, 288(sp)
 
-	# add result_$6 d$3 
+	# ADDresult_$6 d$3 
 
 	# fetch variables
 
@@ -2043,7 +2043,7 @@ next_625:
 	ld t0, 0(t3)
 	sd t0, 240(sp)
 
-	# add result_$5 e$2 
+	# ADDresult_$5 e$2 
 
 	# fetch variables
 
@@ -2340,7 +2340,7 @@ whileBody_272:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# add result_ a$2 b$2
+	# ADDresult_ a$2 b$2
 
 	# fetch variables
 
@@ -2363,7 +2363,7 @@ whileBody_272:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# add result_$1 result_ d$2
+	# ADDresult_$1 result_ d$2
 
 	# fetch variables
 
@@ -2386,7 +2386,7 @@ whileBody_272:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# add result_$2 result_$1 g$2
+	# ADDresult_$2 result_$1 g$2
 
 	# fetch variables
 
@@ -2422,7 +2422,7 @@ whileBody_272:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_$3 g$3 
+	# ADDresult_$3 g$3 
 
 	# fetch variables
 
@@ -2460,7 +2460,7 @@ next_626:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$4 f$2 
+	# ADDresult_$4 f$2 
 
 	# fetch variables
 
@@ -2512,36 +2512,31 @@ loop3Entry:
 	li t4, 1176
 	add t4, sp, t4
 	sd a1, 0(t4)
-	li t4, 1232
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:2
 	li t4, 1168
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 1224
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a2, 0(t4)
+
+	# get address of local var:3
 	li t4, 1160
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 1216
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a3, 0(t4)
+
+	# get address of local var:4
 	li t4, 1152
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 1208
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a4, 0(t4)
+
+	# get address of local var:5
 	li t4, 1144
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 1200
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a5, 0(t4)
+
+	# get address of local var:6
 	li t4, 1136
 	add t4, sp, t4
-	sd t3, 0(t4)
+	sd a6, 0(t4)
 
 	# allocate lv$14
 	li t0, 1120
@@ -2978,7 +2973,7 @@ next_628:
 	ld t0, 0(t3)
 	sd t0, 816(sp)
 
-	# add result_$9 a$3 
+	# ADDresult_$9 a$3 
 
 	# fetch variables
 
@@ -3157,7 +3152,7 @@ next_629:
 	ld t0, 0(t3)
 	sd t0, 728(sp)
 
-	# add result_$8 b$3 
+	# ADDresult_$8 b$3 
 
 	# fetch variables
 
@@ -3340,7 +3335,7 @@ next_630:
 	ld t0, 0(t3)
 	sd t0, 640(sp)
 
-	# add result_$7 c$3 
+	# ADDresult_$7 c$3 
 
 	# fetch variables
 
@@ -3523,7 +3518,7 @@ next_631:
 	ld t0, 0(t3)
 	sd t0, 552(sp)
 
-	# add result_$6 d$3 
+	# ADDresult_$6 d$3 
 
 	# fetch variables
 
@@ -3706,7 +3701,7 @@ next_632:
 	ld t0, 0(t3)
 	sd t0, 464(sp)
 
-	# add result_$5 e$3 
+	# ADDresult_$5 e$3 
 
 	# fetch variables
 
@@ -4099,7 +4094,7 @@ whileBody_279:
 	ld t0, 0(t3)
 	sd t0, 248(sp)
 
-	# add result_$1 result_ arr1$1
+	# ADDresult_$1 result_ arr1$1
 
 	# fetch variables
 
@@ -4328,7 +4323,7 @@ whileBody_279:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# add result_$2 result_$1 arr2$1
+	# ADDresult_$2 result_$1 arr2$1
 
 	# fetch variables
 
@@ -4368,7 +4363,7 @@ whileBody_279:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# add result_$3 g$3 
+	# ADDresult_$3 g$3 
 
 	# fetch variables
 
@@ -4476,7 +4471,7 @@ next_633:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# add result_$4 f$3 
+	# ADDresult_$4 f$3 
 
 	# fetch variables
 
@@ -5164,42 +5159,32 @@ mainEntry93:
 
 	# get address of local var:j
 	ld t1, 40(sp)
-
-	# push j
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:k
 	ld t1, 32(sp)
-
-	# push k
-	sd t1, -16(sp)
+	mv a3, t1
 
 	# fetch variables
 
 	# get address of local var:l
 	ld t1, 24(sp)
-
-	# push l
-	sd t1, -24(sp)
+	mv a4, t1
 
 	# fetch variables
 
 	# get address of local var:m
 	ld t1, 16(sp)
-
-	# push m
-	sd t1, -32(sp)
+	mv a5, t1
 
 	# fetch variables
 
 	# get address of local var:n
 	ld t1, 8(sp)
-
-	# push n
-	sd t1, -40(sp)
-	addi sp, sp, -40
+	mv a6, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5213,7 +5198,7 @@ mainEntry93:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 40
+	addi sp, sp, 0
 
 	# get address of local var:loop3
 	sd a0, 0(sp)
@@ -5228,13 +5213,24 @@ mainEntry93:
 	li t4, 296
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

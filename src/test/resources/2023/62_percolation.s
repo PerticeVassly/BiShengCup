@@ -96,7 +96,7 @@ whileCond_180:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# mul result_ n n$1
+	# MULresult_ n n$1
 
 	# fetch variables
 
@@ -105,12 +105,12 @@ whileCond_180:
 
 	# get address of local var:n$1
 	ld t2, 72(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_
-	mul t0, t1, t2
 	sd t0, 64(sp)
 
-	# add result_$1 result_ 
+	# ADDresult_$1 result_ 
 
 	# fetch variables
 
@@ -219,7 +219,7 @@ whileBody_180:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$2 i$2 
+	# ADDresult_$2 i$2 
 
 	# fetch variables
 
@@ -1025,7 +1025,7 @@ whileBody_181:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_ t$1 
+	# SUBresult_ t$1 
 
 	# fetch variables
 
@@ -1034,11 +1034,11 @@ whileBody_181:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
 	li t4, 1048
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv result_
@@ -1166,7 +1166,7 @@ whileBody_181:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$1 n$1 n$2
+	# MULresult_$1 n$1 n$2
 
 	# fetch variables
 
@@ -1179,12 +1179,12 @@ whileBody_181:
 	li t4, 1024
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$1
-	mul t0, t1, t2
 	sd t0, 1016(sp)
 
-	# add result_$2 result_$1 
+	# ADDresult_$2 result_$1 
 
 	# fetch variables
 
@@ -1534,19 +1534,19 @@ ifTrue_249:
 	ld t0, 0(t3)
 	sd t0, 856(sp)
 
-	# sub result_$3 a 
+	# SUBresult_$3 a 
 
 	# fetch variables
 
 	# get address of local var:a
 	ld t1, 856(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$3
-	sub t0, t1, t2
 	sd t0, 848(sp)
 
-	# mul result_$4 n$3 result_$3
+	# MULresult_$4 n$3 result_$3
 
 	# fetch variables
 
@@ -1555,9 +1555,9 @@ ifTrue_249:
 
 	# get address of local var:result_$3
 	ld t2, 848(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$4
-	mul t0, t1, t2
 	sd t0, 840(sp)
 
 	# load b lv$3
@@ -1571,7 +1571,7 @@ ifTrue_249:
 	ld t0, 0(t3)
 	sd t0, 832(sp)
 
-	# add result_$5 result_$4 b
+	# ADDresult_$5 result_$4 b
 
 	# fetch variables
 
@@ -1722,7 +1722,7 @@ next_432:
 	ld t0, 0(t3)
 	sd t0, 760(sp)
 
-	# add result_$15 i$2 
+	# ADDresult_$15 i$2 
 
 	# fetch variables
 
@@ -2089,7 +2089,7 @@ ifTrue_252:
 	ld t0, 0(t3)
 	sd t0, 600(sp)
 
-	# add result_$7 loc$6 
+	# ADDresult_$7 loc$6 
 
 	# fetch variables
 
@@ -2204,7 +2204,7 @@ secondCond_91:
 	ld t0, 0(t3)
 	sd t0, 552(sp)
 
-	# add result_$6 loc$4 
+	# ADDresult_$6 loc$4 
 
 	# fetch variables
 
@@ -2313,16 +2313,16 @@ ifTrue_253:
 	ld t0, 0(t3)
 	sd t0, 488(sp)
 
-	# sub result_$9 loc$9 
+	# SUBresult_$9 loc$9 
 
 	# fetch variables
 
 	# get address of local var:loc$9
 	ld t1, 488(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$9
-	sub t0, t1, t2
 	sd t0, 480(sp)
 
 	# prepare params
@@ -2438,16 +2438,16 @@ secondCond_92:
 	ld t0, 0(t3)
 	sd t0, 432(sp)
 
-	# sub result_$8 loc$7 
+	# SUBresult_$8 loc$7 
 
 	# fetch variables
 
 	# get address of local var:loc$7
 	ld t1, 432(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$8
-	sub t0, t1, t2
 	sd t0, 424(sp)
 
 	# gep array$5 result_$8
@@ -2556,7 +2556,7 @@ ifTrue_254:
 	ld t0, 0(t3)
 	sd t0, 360(sp)
 
-	# add result_$11 loc$12 n$8
+	# ADDresult_$11 loc$12 n$8
 
 	# fetch variables
 
@@ -2682,7 +2682,7 @@ secondCond_93:
 	ld t0, 0(t3)
 	sd t0, 304(sp)
 
-	# add result_$10 loc$10 n$7
+	# ADDresult_$10 loc$10 n$7
 
 	# fetch variables
 
@@ -2802,7 +2802,7 @@ ifTrue_255:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# sub result_$13 loc$15 n$10
+	# SUBresult_$13 loc$15 n$10
 
 	# fetch variables
 
@@ -2811,9 +2811,9 @@ ifTrue_255:
 
 	# get address of local var:n$10
 	ld t2, 232(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$13
-	sub t0, t1, t2
 	sd t0, 224(sp)
 
 	# prepare params
@@ -2942,7 +2942,7 @@ secondCond_94:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# sub result_$12 loc$13 n$9
+	# SUBresult_$12 loc$13 n$9
 
 	# fetch variables
 
@@ -2951,9 +2951,9 @@ secondCond_94:
 
 	# get address of local var:n$9
 	ld t2, 168(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$12
-	sub t0, t1, t2
 	sd t0, 160(sp)
 
 	# gep array$9 result_$12
@@ -3055,7 +3055,7 @@ ifTrue_256:
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# add result_$14 i$1 
+	# ADDresult_$14 i$1 
 
 	# fetch variables
 
@@ -3390,13 +3390,24 @@ next_440:
 
 	# br whileCond_181
 	j whileCond_181
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

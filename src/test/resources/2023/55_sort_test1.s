@@ -98,16 +98,16 @@ whileCond_59:
 	ld t0, 0(t3)
 	sd t0, 360(sp)
 
-	# sub result_ n 
+	# SUBresult_ n 
 
 	# fetch variables
 
 	# get address of local var:n
 	ld t1, 360(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
 	sd t0, 352(sp)
 
 	# cmp i result_ cond_lt_tmp_
@@ -214,7 +214,7 @@ whileCond_60:
 	ld t0, 0(t3)
 	sd t0, 304(sp)
 
-	# sub result_$1 n$1 i$1
+	# SUBresult_$1 n$1 i$1
 
 	# fetch variables
 
@@ -223,21 +223,21 @@ whileCond_60:
 
 	# get address of local var:i$1
 	ld t2, 304(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$1
-	sub t0, t1, t2
 	sd t0, 296(sp)
 
-	# sub result_$2 result_$1 
+	# SUBresult_$2 result_$1 
 
 	# fetch variables
 
 	# get address of local var:result_$1
 	ld t1, 296(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sub t0, t1, t2
 	sd t0, 288(sp)
 
 	# cmp j result_$2 cond_lt_tmp_$1
@@ -344,7 +344,7 @@ whileBody_60:
 	ld t0, 0(t3)
 	sd t0, 224(sp)
 
-	# add result_$3 j$2 
+	# ADDresult_$3 j$2 
 
 	# fetch variables
 
@@ -452,7 +452,7 @@ next_113:
 	ld t0, 0(t3)
 	sd t0, 160(sp)
 
-	# add result_$7 i$2 
+	# ADDresult_$7 i$2 
 
 	# fetch variables
 
@@ -490,7 +490,7 @@ ifTrue_53:
 	ld t0, 0(t3)
 	sd t0, 144(sp)
 
-	# add result_$4 j$3 
+	# ADDresult_$4 j$3 
 
 	# fetch variables
 
@@ -561,7 +561,7 @@ ifTrue_53:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# add result_$5 j$4 
+	# ADDresult_$5 j$4 
 
 	# fetch variables
 
@@ -732,7 +732,7 @@ next_114:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$6 j$7 
+	# ADDresult_$6 j$7 
 
 	# fetch variables
 
@@ -1343,7 +1343,7 @@ whileBody_61:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_ i$2 
+	# ADDresult_ i$2 
 
 	# fetch variables
 
@@ -1380,13 +1380,24 @@ next_115:
 	li t4, 312
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

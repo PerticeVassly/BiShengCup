@@ -143,18 +143,24 @@ testParam8Entry:
 
 	# get address of local var:1
 	sd a1, 296(sp)
-	ld t3, 360(sp)
-	sd t3, 288(sp)
-	ld t3, 352(sp)
-	sd t3, 280(sp)
-	ld t3, 344(sp)
-	sd t3, 272(sp)
-	ld t3, 336(sp)
-	sd t3, 264(sp)
-	ld t3, 328(sp)
-	sd t3, 256(sp)
-	ld t3, 320(sp)
-	sd t3, 248(sp)
+
+	# get address of local var:2
+	sd a2, 288(sp)
+
+	# get address of local var:3
+	sd a3, 280(sp)
+
+	# get address of local var:4
+	sd a4, 272(sp)
+
+	# get address of local var:5
+	sd a5, 264(sp)
+
+	# get address of local var:6
+	sd a6, 256(sp)
+
+	# get address of local var:7
+	sd a7, 248(sp)
 
 	# allocate lv$7
 	li t0, 232
@@ -334,7 +340,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# add result_ a0 a1
+	# ADDresult_ a0 a1
 
 	# fetch variables
 
@@ -357,7 +363,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# add result_$1 result_ a2
+	# ADDresult_$1 result_ a2
 
 	# fetch variables
 
@@ -380,7 +386,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# add result_$2 result_$1 a3
+	# ADDresult_$2 result_$1 a3
 
 	# fetch variables
 
@@ -403,7 +409,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# add result_$3 result_$2 a4
+	# ADDresult_$3 result_$2 a4
 
 	# fetch variables
 
@@ -426,7 +432,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# add result_$4 result_$3 a5
+	# ADDresult_$4 result_$3 a5
 
 	# fetch variables
 
@@ -449,7 +455,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_$5 result_$4 a6
+	# ADDresult_$5 result_$4 a6
 
 	# fetch variables
 
@@ -472,7 +478,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$6 result_$5 a7
+	# ADDresult_$6 result_$5 a7
 
 	# fetch variables
 
@@ -520,18 +526,24 @@ testParam16Entry:
 
 	# get address of local var:1
 	sd a1, 616(sp)
-	ld t3, 744(sp)
-	sd t3, 608(sp)
-	ld t3, 736(sp)
-	sd t3, 600(sp)
-	ld t3, 728(sp)
-	sd t3, 592(sp)
-	ld t3, 720(sp)
-	sd t3, 584(sp)
-	ld t3, 712(sp)
-	sd t3, 576(sp)
-	ld t3, 704(sp)
-	sd t3, 568(sp)
+
+	# get address of local var:2
+	sd a2, 608(sp)
+
+	# get address of local var:3
+	sd a3, 600(sp)
+
+	# get address of local var:4
+	sd a4, 592(sp)
+
+	# get address of local var:5
+	sd a5, 584(sp)
+
+	# get address of local var:6
+	sd a6, 576(sp)
+
+	# get address of local var:7
+	sd a7, 568(sp)
 	ld t3, 696(sp)
 	sd t3, 560(sp)
 	ld t3, 688(sp)
@@ -887,7 +899,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# add result_ a0 a1
+	# ADDresult_ a0 a1
 
 	# fetch variables
 
@@ -910,7 +922,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 216(sp)
 
-	# add result_$1 result_ a2
+	# ADDresult_$1 result_ a2
 
 	# fetch variables
 
@@ -933,7 +945,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# sub result_$2 result_$1 a3
+	# SUBresult_$2 result_$1 a3
 
 	# fetch variables
 
@@ -942,9 +954,9 @@ testParam16Entry:
 
 	# get address of local var:a3
 	ld t2, 200(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sub t0, t1, t2
 	sd t0, 192(sp)
 
 	# load a4 lv$4
@@ -956,7 +968,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# sub result_$3 result_$2 a4
+	# SUBresult_$3 result_$2 a4
 
 	# fetch variables
 
@@ -965,9 +977,9 @@ testParam16Entry:
 
 	# get address of local var:a4
 	ld t2, 184(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$3
-	sub t0, t1, t2
 	sd t0, 176(sp)
 
 	# load a5 lv$5
@@ -979,7 +991,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# sub result_$4 result_$3 a5
+	# SUBresult_$4 result_$3 a5
 
 	# fetch variables
 
@@ -988,9 +1000,9 @@ testParam16Entry:
 
 	# get address of local var:a5
 	ld t2, 168(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$4
-	sub t0, t1, t2
 	sd t0, 160(sp)
 
 	# load a6 lv$6
@@ -1002,7 +1014,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# sub result_$5 result_$4 a6
+	# SUBresult_$5 result_$4 a6
 
 	# fetch variables
 
@@ -1011,9 +1023,9 @@ testParam16Entry:
 
 	# get address of local var:a6
 	ld t2, 152(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$5
-	sub t0, t1, t2
 	sd t0, 144(sp)
 
 	# load a7 lv$7
@@ -1025,7 +1037,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# sub result_$6 result_$5 a7
+	# SUBresult_$6 result_$5 a7
 
 	# fetch variables
 
@@ -1034,9 +1046,9 @@ testParam16Entry:
 
 	# get address of local var:a7
 	ld t2, 136(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$6
-	sub t0, t1, t2
 	sd t0, 128(sp)
 
 	# load a8 lv$8
@@ -1048,7 +1060,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# add result_$7 result_$6 a8
+	# ADDresult_$7 result_$6 a8
 
 	# fetch variables
 
@@ -1071,7 +1083,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# add result_$8 result_$7 a9
+	# ADDresult_$8 result_$7 a9
 
 	# fetch variables
 
@@ -1094,7 +1106,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# add result_$9 result_$8 a10
+	# ADDresult_$9 result_$8 a10
 
 	# fetch variables
 
@@ -1117,7 +1129,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# add result_$10 result_$9 a11
+	# ADDresult_$10 result_$9 a11
 
 	# fetch variables
 
@@ -1140,7 +1152,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# add result_$11 result_$10 a12
+	# ADDresult_$11 result_$10 a12
 
 	# fetch variables
 
@@ -1163,7 +1175,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# add result_$12 result_$11 a13
+	# ADDresult_$12 result_$11 a13
 
 	# fetch variables
 
@@ -1186,7 +1198,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_$13 result_$12 a14
+	# ADDresult_$13 result_$12 a14
 
 	# fetch variables
 
@@ -1209,7 +1221,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$14 result_$13 a15
+	# ADDresult_$14 result_$13 a15
 
 	# fetch variables
 
@@ -1261,42 +1273,36 @@ testParam32Entry:
 	li t4, 1256
 	add t4, sp, t4
 	sd a1, 0(t4)
-	li t4, 1512
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:2
 	li t4, 1248
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 1504
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a2, 0(t4)
+
+	# get address of local var:3
 	li t4, 1240
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 1496
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a3, 0(t4)
+
+	# get address of local var:4
 	li t4, 1232
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 1488
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a4, 0(t4)
+
+	# get address of local var:5
 	li t4, 1224
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 1480
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a5, 0(t4)
+
+	# get address of local var:6
 	li t4, 1216
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 1472
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a6, 0(t4)
+
+	# get address of local var:7
 	li t4, 1208
 	add t4, sp, t4
-	sd t3, 0(t4)
+	sd a7, 0(t4)
 	li t4, 1464
 	add t4, sp, t4
 	ld t3, 0(t4)
@@ -2160,7 +2166,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 488(sp)
 
-	# add result_ a0 a1
+	# ADDresult_ a0 a1
 
 	# fetch variables
 
@@ -2183,7 +2189,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 472(sp)
 
-	# add result_$1 result_ a2
+	# ADDresult_$1 result_ a2
 
 	# fetch variables
 
@@ -2206,7 +2212,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 456(sp)
 
-	# add result_$2 result_$1 a3
+	# ADDresult_$2 result_$1 a3
 
 	# fetch variables
 
@@ -2229,7 +2235,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 440(sp)
 
-	# add result_$3 result_$2 a4
+	# ADDresult_$3 result_$2 a4
 
 	# fetch variables
 
@@ -2252,7 +2258,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 424(sp)
 
-	# add result_$4 result_$3 a5
+	# ADDresult_$4 result_$3 a5
 
 	# fetch variables
 
@@ -2275,7 +2281,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 408(sp)
 
-	# add result_$5 result_$4 a6
+	# ADDresult_$5 result_$4 a6
 
 	# fetch variables
 
@@ -2298,7 +2304,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 392(sp)
 
-	# add result_$6 result_$5 a7
+	# ADDresult_$6 result_$5 a7
 
 	# fetch variables
 
@@ -2321,7 +2327,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 376(sp)
 
-	# add result_$7 result_$6 a8
+	# ADDresult_$7 result_$6 a8
 
 	# fetch variables
 
@@ -2344,7 +2350,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 360(sp)
 
-	# add result_$8 result_$7 a9
+	# ADDresult_$8 result_$7 a9
 
 	# fetch variables
 
@@ -2367,7 +2373,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 344(sp)
 
-	# add result_$9 result_$8 a10
+	# ADDresult_$9 result_$8 a10
 
 	# fetch variables
 
@@ -2390,7 +2396,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 328(sp)
 
-	# add result_$10 result_$9 a11
+	# ADDresult_$10 result_$9 a11
 
 	# fetch variables
 
@@ -2413,7 +2419,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 312(sp)
 
-	# add result_$11 result_$10 a12
+	# ADDresult_$11 result_$10 a12
 
 	# fetch variables
 
@@ -2436,7 +2442,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 296(sp)
 
-	# add result_$12 result_$11 a13
+	# ADDresult_$12 result_$11 a13
 
 	# fetch variables
 
@@ -2459,7 +2465,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 280(sp)
 
-	# add result_$13 result_$12 a14
+	# ADDresult_$13 result_$12 a14
 
 	# fetch variables
 
@@ -2482,7 +2488,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 264(sp)
 
-	# add result_$14 result_$13 a15
+	# ADDresult_$14 result_$13 a15
 
 	# fetch variables
 
@@ -2505,7 +2511,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 248(sp)
 
-	# add result_$15 result_$14 a16
+	# ADDresult_$15 result_$14 a16
 
 	# fetch variables
 
@@ -2528,7 +2534,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# add result_$16 result_$15 a17
+	# ADDresult_$16 result_$15 a17
 
 	# fetch variables
 
@@ -2551,7 +2557,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 216(sp)
 
-	# sub result_$17 result_$16 a18
+	# SUBresult_$17 result_$16 a18
 
 	# fetch variables
 
@@ -2560,9 +2566,9 @@ testParam32Entry:
 
 	# get address of local var:a18
 	ld t2, 216(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$17
-	sub t0, t1, t2
 	sd t0, 208(sp)
 
 	# load a19 lv$19
@@ -2574,7 +2580,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# sub result_$18 result_$17 a19
+	# SUBresult_$18 result_$17 a19
 
 	# fetch variables
 
@@ -2583,9 +2589,9 @@ testParam32Entry:
 
 	# get address of local var:a19
 	ld t2, 200(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$18
-	sub t0, t1, t2
 	sd t0, 192(sp)
 
 	# load a20 lv$20
@@ -2597,7 +2603,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# sub result_$19 result_$18 a20
+	# SUBresult_$19 result_$18 a20
 
 	# fetch variables
 
@@ -2606,9 +2612,9 @@ testParam32Entry:
 
 	# get address of local var:a20
 	ld t2, 184(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$19
-	sub t0, t1, t2
 	sd t0, 176(sp)
 
 	# load a21 lv$21
@@ -2620,7 +2626,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# sub result_$20 result_$19 a21
+	# SUBresult_$20 result_$19 a21
 
 	# fetch variables
 
@@ -2629,9 +2635,9 @@ testParam32Entry:
 
 	# get address of local var:a21
 	ld t2, 168(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$20
-	sub t0, t1, t2
 	sd t0, 160(sp)
 
 	# load a22 lv$22
@@ -2643,7 +2649,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# sub result_$21 result_$20 a22
+	# SUBresult_$21 result_$20 a22
 
 	# fetch variables
 
@@ -2652,9 +2658,9 @@ testParam32Entry:
 
 	# get address of local var:a22
 	ld t2, 152(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$21
-	sub t0, t1, t2
 	sd t0, 144(sp)
 
 	# load a23 lv$23
@@ -2666,7 +2672,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# add result_$22 result_$21 a23
+	# ADDresult_$22 result_$21 a23
 
 	# fetch variables
 
@@ -2689,7 +2695,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# add result_$23 result_$22 a24
+	# ADDresult_$23 result_$22 a24
 
 	# fetch variables
 
@@ -2712,7 +2718,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# add result_$24 result_$23 a25
+	# ADDresult_$24 result_$23 a25
 
 	# fetch variables
 
@@ -2735,7 +2741,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# add result_$25 result_$24 a26
+	# ADDresult_$25 result_$24 a26
 
 	# fetch variables
 
@@ -2758,7 +2764,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# add result_$26 result_$25 a27
+	# ADDresult_$26 result_$25 a27
 
 	# fetch variables
 
@@ -2781,7 +2787,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# add result_$27 result_$26 a28
+	# ADDresult_$27 result_$26 a28
 
 	# fetch variables
 
@@ -2804,7 +2810,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# add result_$28 result_$27 a29
+	# ADDresult_$28 result_$27 a29
 
 	# fetch variables
 
@@ -2827,7 +2833,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_$29 result_$28 a30
+	# ADDresult_$29 result_$28 a30
 
 	# fetch variables
 
@@ -2850,7 +2856,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$30 result_$29 a31
+	# ADDresult_$30 result_$29 a31
 
 	# fetch variables
 
@@ -3418,50 +3424,38 @@ mainEntry99:
 
 	# get address of local var:a2
 	ld t1, 472(sp)
-
-	# push a2
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:a3
 	ld t1, 464(sp)
-
-	# push a3
-	sd t1, -16(sp)
+	mv a3, t1
 
 	# fetch variables
 
 	# get address of local var:a4
 	ld t1, 456(sp)
-
-	# push a4
-	sd t1, -24(sp)
+	mv a4, t1
 
 	# fetch variables
 
 	# get address of local var:a5
 	ld t1, 448(sp)
-
-	# push a5
-	sd t1, -32(sp)
+	mv a5, t1
 
 	# fetch variables
 
 	# get address of local var:a6
 	ld t1, 440(sp)
-
-	# push a6
-	sd t1, -40(sp)
+	mv a6, t1
 
 	# fetch variables
 
 	# get address of local var:a7
 	ld t1, 432(sp)
-
-	# push a7
-	sd t1, -48(sp)
-	addi sp, sp, -48
+	mv a7, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3475,7 +3469,7 @@ mainEntry99:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 48
+	addi sp, sp, 0
 
 	# get address of local var:testParam8
 	sd a0, 424(sp)
@@ -3687,49 +3681,37 @@ mainEntry99:
 
 	# get address of local var:a34
 	ld t1, 392(sp)
-
-	# push a34
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:a35
 	ld t1, 384(sp)
-
-	# push a35
-	sd t1, -16(sp)
+	mv a3, t1
 
 	# fetch variables
 
 	# get address of local var:a36
 	ld t1, 376(sp)
-
-	# push a36
-	sd t1, -24(sp)
+	mv a4, t1
 
 	# fetch variables
 
 	# get address of local var:a37
 	ld t1, 368(sp)
-
-	# push a37
-	sd t1, -32(sp)
+	mv a5, t1
 
 	# fetch variables
 
 	# get address of local var:a38
 	ld t1, 360(sp)
-
-	# push a38
-	sd t1, -40(sp)
+	mv a6, t1
 
 	# fetch variables
 
 	# get address of local var:a39
 	ld t1, 352(sp)
-
-	# push a39
-	sd t1, -48(sp)
+	mv a7, t1
 
 	# fetch variables
 
@@ -3737,7 +3719,7 @@ mainEntry99:
 	ld t1, 344(sp)
 
 	# push a8
-	sd t1, -56(sp)
+	sd t1, -8(sp)
 
 	# fetch variables
 
@@ -3745,7 +3727,7 @@ mainEntry99:
 	ld t1, 336(sp)
 
 	# push a9
-	sd t1, -64(sp)
+	sd t1, -16(sp)
 
 	# fetch variables
 
@@ -3753,7 +3735,7 @@ mainEntry99:
 	ld t1, 328(sp)
 
 	# push a10
-	sd t1, -72(sp)
+	sd t1, -24(sp)
 
 	# fetch variables
 
@@ -3761,7 +3743,7 @@ mainEntry99:
 	ld t1, 320(sp)
 
 	# push a11
-	sd t1, -80(sp)
+	sd t1, -32(sp)
 
 	# fetch variables
 
@@ -3769,7 +3751,7 @@ mainEntry99:
 	ld t1, 312(sp)
 
 	# push a12
-	sd t1, -88(sp)
+	sd t1, -40(sp)
 
 	# fetch variables
 
@@ -3777,7 +3759,7 @@ mainEntry99:
 	ld t1, 304(sp)
 
 	# push a13
-	sd t1, -96(sp)
+	sd t1, -48(sp)
 
 	# fetch variables
 
@@ -3785,7 +3767,7 @@ mainEntry99:
 	ld t1, 296(sp)
 
 	# push a14
-	sd t1, -104(sp)
+	sd t1, -56(sp)
 
 	# fetch variables
 
@@ -3793,8 +3775,8 @@ mainEntry99:
 	ld t1, 288(sp)
 
 	# push a15
-	sd t1, -112(sp)
-	addi sp, sp, -112
+	sd t1, -64(sp)
+	addi sp, sp, -64
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3808,7 +3790,7 @@ mainEntry99:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 112
+	addi sp, sp, 64
 
 	# get address of local var:testParam16
 	sd a0, 280(sp)
@@ -4164,49 +4146,37 @@ mainEntry99:
 
 	# get address of local var:a2$1
 	ld t1, 248(sp)
-
-	# push a2$1
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:a3$1
 	ld t1, 240(sp)
-
-	# push a3$1
-	sd t1, -16(sp)
+	mv a3, t1
 
 	# fetch variables
 
 	# get address of local var:a4$1
 	ld t1, 232(sp)
-
-	# push a4$1
-	sd t1, -24(sp)
+	mv a4, t1
 
 	# fetch variables
 
 	# get address of local var:a5$1
 	ld t1, 224(sp)
-
-	# push a5$1
-	sd t1, -32(sp)
+	mv a5, t1
 
 	# fetch variables
 
 	# get address of local var:a6$1
 	ld t1, 216(sp)
-
-	# push a6$1
-	sd t1, -40(sp)
+	mv a6, t1
 
 	# fetch variables
 
 	# get address of local var:a7$1
 	ld t1, 208(sp)
-
-	# push a7$1
-	sd t1, -48(sp)
+	mv a7, t1
 
 	# fetch variables
 
@@ -4214,7 +4184,7 @@ mainEntry99:
 	ld t1, 200(sp)
 
 	# push a8$1
-	sd t1, -56(sp)
+	sd t1, -8(sp)
 
 	# fetch variables
 
@@ -4222,7 +4192,7 @@ mainEntry99:
 	ld t1, 192(sp)
 
 	# push a9$1
-	sd t1, -64(sp)
+	sd t1, -16(sp)
 
 	# fetch variables
 
@@ -4230,7 +4200,7 @@ mainEntry99:
 	ld t1, 184(sp)
 
 	# push a10$1
-	sd t1, -72(sp)
+	sd t1, -24(sp)
 
 	# fetch variables
 
@@ -4238,7 +4208,7 @@ mainEntry99:
 	ld t1, 176(sp)
 
 	# push a11$1
-	sd t1, -80(sp)
+	sd t1, -32(sp)
 
 	# fetch variables
 
@@ -4246,7 +4216,7 @@ mainEntry99:
 	ld t1, 168(sp)
 
 	# push a12$1
-	sd t1, -88(sp)
+	sd t1, -40(sp)
 
 	# fetch variables
 
@@ -4254,7 +4224,7 @@ mainEntry99:
 	ld t1, 160(sp)
 
 	# push a13$1
-	sd t1, -96(sp)
+	sd t1, -48(sp)
 
 	# fetch variables
 
@@ -4262,7 +4232,7 @@ mainEntry99:
 	ld t1, 152(sp)
 
 	# push a14$1
-	sd t1, -104(sp)
+	sd t1, -56(sp)
 
 	# fetch variables
 
@@ -4270,7 +4240,7 @@ mainEntry99:
 	ld t1, 144(sp)
 
 	# push a15$1
-	sd t1, -112(sp)
+	sd t1, -64(sp)
 
 	# fetch variables
 
@@ -4278,7 +4248,7 @@ mainEntry99:
 	ld t1, 136(sp)
 
 	# push a16
-	sd t1, -120(sp)
+	sd t1, -72(sp)
 
 	# fetch variables
 
@@ -4286,7 +4256,7 @@ mainEntry99:
 	ld t1, 128(sp)
 
 	# push a17
-	sd t1, -128(sp)
+	sd t1, -80(sp)
 
 	# fetch variables
 
@@ -4294,7 +4264,7 @@ mainEntry99:
 	ld t1, 120(sp)
 
 	# push a18
-	sd t1, -136(sp)
+	sd t1, -88(sp)
 
 	# fetch variables
 
@@ -4302,7 +4272,7 @@ mainEntry99:
 	ld t1, 112(sp)
 
 	# push a19
-	sd t1, -144(sp)
+	sd t1, -96(sp)
 
 	# fetch variables
 
@@ -4310,7 +4280,7 @@ mainEntry99:
 	ld t1, 104(sp)
 
 	# push a20
-	sd t1, -152(sp)
+	sd t1, -104(sp)
 
 	# fetch variables
 
@@ -4318,7 +4288,7 @@ mainEntry99:
 	ld t1, 96(sp)
 
 	# push a21
-	sd t1, -160(sp)
+	sd t1, -112(sp)
 
 	# fetch variables
 
@@ -4326,7 +4296,7 @@ mainEntry99:
 	ld t1, 88(sp)
 
 	# push a22
-	sd t1, -168(sp)
+	sd t1, -120(sp)
 
 	# fetch variables
 
@@ -4334,7 +4304,7 @@ mainEntry99:
 	ld t1, 80(sp)
 
 	# push a23
-	sd t1, -176(sp)
+	sd t1, -128(sp)
 
 	# fetch variables
 
@@ -4342,7 +4312,7 @@ mainEntry99:
 	ld t1, 72(sp)
 
 	# push a24
-	sd t1, -184(sp)
+	sd t1, -136(sp)
 
 	# fetch variables
 
@@ -4350,7 +4320,7 @@ mainEntry99:
 	ld t1, 64(sp)
 
 	# push a25
-	sd t1, -192(sp)
+	sd t1, -144(sp)
 
 	# fetch variables
 
@@ -4358,7 +4328,7 @@ mainEntry99:
 	ld t1, 56(sp)
 
 	# push a26
-	sd t1, -200(sp)
+	sd t1, -152(sp)
 
 	# fetch variables
 
@@ -4366,7 +4336,7 @@ mainEntry99:
 	ld t1, 48(sp)
 
 	# push a27
-	sd t1, -208(sp)
+	sd t1, -160(sp)
 
 	# fetch variables
 
@@ -4374,7 +4344,7 @@ mainEntry99:
 	ld t1, 40(sp)
 
 	# push a28
-	sd t1, -216(sp)
+	sd t1, -168(sp)
 
 	# fetch variables
 
@@ -4382,7 +4352,7 @@ mainEntry99:
 	ld t1, 32(sp)
 
 	# push a29
-	sd t1, -224(sp)
+	sd t1, -176(sp)
 
 	# fetch variables
 
@@ -4390,7 +4360,7 @@ mainEntry99:
 	ld t1, 24(sp)
 
 	# push a30
-	sd t1, -232(sp)
+	sd t1, -184(sp)
 
 	# fetch variables
 
@@ -4398,8 +4368,8 @@ mainEntry99:
 	ld t1, 16(sp)
 
 	# push a31
-	sd t1, -240(sp)
-	addi sp, sp, -240
+	sd t1, -192(sp)
+	addi sp, sp, -192
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4413,7 +4383,7 @@ mainEntry99:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 240
+	addi sp, sp, 192
 
 	# get address of local var:testParam32
 	sd a0, 8(sp)
@@ -4471,13 +4441,24 @@ mainEntry99:
 	li t4, 496
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

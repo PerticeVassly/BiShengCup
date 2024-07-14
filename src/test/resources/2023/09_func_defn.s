@@ -53,16 +53,16 @@ funcEntry:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# sub result_ p 
+	# SUBresult_ p 
 
 	# fetch variables
 
 	# get address of local var:p
 	ld t1, 16(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
 	sd t0, 8(sp)
 
 	# lv result_
@@ -196,13 +196,24 @@ mainEntry21:
 	li t4, 40
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

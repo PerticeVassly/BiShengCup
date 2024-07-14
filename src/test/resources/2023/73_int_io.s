@@ -83,16 +83,16 @@ whileBody_63:
 	# get address of local var:getch
 	sd a0, 208(sp)
 
-	# sub result_ getch 
+	# SUBresult_ getch 
 
 	# fetch variables
 
 	# get address of local var:getch
 	ld t1, 208(sp)
 	li t2, 48
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
 	sd t0, 200(sp)
 
 	# lv$1 result_
@@ -301,16 +301,16 @@ whileBody_64:
 	# get address of local var:getch$1
 	sd a0, 112(sp)
 
-	# sub result_$1 getch$1 
+	# SUBresult_$1 getch$1 
 
 	# fetch variables
 
 	# get address of local var:getch$1
 	ld t1, 112(sp)
 	li t2, 48
+	sub t0, t1, t2
 
 	# get address of local var:result_$1
-	sub t0, t1, t2
 	sd t0, 104(sp)
 
 	# lv$1 result_$1
@@ -416,16 +416,16 @@ ifTrue_63:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# mul result_$2 sum 
+	# MULresult_$2 sum 
 
 	# fetch variables
 
 	# get address of local var:sum
 	ld t1, 56(sp)
 	li t2, 10
+	mul t0, t1, t2
 
 	# get address of local var:result_$2
-	mul t0, t1, t2
 	sd t0, 48(sp)
 
 	# load c$5 lv$1
@@ -437,7 +437,7 @@ ifTrue_63:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# add result_$3 result_$2 c$5
+	# ADDresult_$3 result_$2 c$5
 
 	# fetch variables
 
@@ -709,7 +709,7 @@ whileBody_65:
 	rem t0, t1, t2
 	sd t0, 112(sp)
 
-	# add result_$1 result_ 
+	# ADDresult_$1 result_ 
 
 	# fetch variables
 
@@ -777,7 +777,7 @@ whileBody_65:
 	ld t0, 0(t3)
 	sd t0, 80(sp)
 
-	# add result_$3 i$1 
+	# ADDresult_$3 i$1 
 
 	# fetch variables
 
@@ -876,16 +876,16 @@ whileBody_66:
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# sub result_$4 i$3 
+	# SUBresult_$4 i$3 
 
 	# fetch variables
 
 	# get address of local var:i$3
 	ld t1, 32(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$4
-	sub t0, t1, t2
 	sd t0, 24(sp)
 
 	# lv$2 result_$4
@@ -1186,16 +1186,16 @@ whileBody_67:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# sub result_ n$1 
+	# SUBresult_ n$1 
 
 	# fetch variables
 
 	# get address of local var:n$1
 	ld t1, 8(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
 	sd t0, 0(sp)
 
 	# lv result_
@@ -1223,13 +1223,24 @@ next_131:
 	li t4, 104
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

@@ -32,18 +32,24 @@ subEntry:
 
 	# get address of local var:1
 	sd a1, 552(sp)
-	ld t3, 624(sp)
-	sd t3, 544(sp)
-	ld t3, 616(sp)
-	sd t3, 536(sp)
-	ld t3, 608(sp)
-	sd t3, 528(sp)
-	ld t3, 600(sp)
-	sd t3, 520(sp)
-	ld t3, 592(sp)
-	sd t3, 512(sp)
-	ld t3, 584(sp)
-	sd t3, 504(sp)
+
+	# get address of local var:2
+	sd a2, 544(sp)
+
+	# get address of local var:3
+	sd a3, 536(sp)
+
+	# get address of local var:4
+	sd a4, 528(sp)
+
+	# get address of local var:5
+	sd a5, 520(sp)
+
+	# get address of local var:6
+	sd a6, 512(sp)
+
+	# get address of local var:7
+	sd a7, 504(sp)
 	ld t3, 576(sp)
 	sd t3, 496(sp)
 
@@ -434,7 +440,7 @@ whileBody_216:
 	fld ft0, 0(t3)
 	fsd ft0, 216(sp)
 
-	# fsub result_ a0$1 b0$1
+	# FSUBresult_ a0$1 b0$1
 
 	# fetch variables
 
@@ -443,9 +449,9 @@ whileBody_216:
 
 	# get address of local var:b0$1
 	fld ft2, 216(sp)
+	fsub.d ft0, ft1, ft2
 
 	# get address of local var:result_
-	fsub.d ft0, ft1, ft2
 	fsd ft0, 208(sp)
 
 	# c0 result_
@@ -590,7 +596,7 @@ whileBody_216:
 	fld ft0, 0(t3)
 	fsd ft0, 120(sp)
 
-	# fsub result_$1 a1$1 b1$1
+	# FSUBresult_$1 a1$1 b1$1
 
 	# fetch variables
 
@@ -599,9 +605,9 @@ whileBody_216:
 
 	# get address of local var:b1$1
 	fld ft2, 120(sp)
+	fsub.d ft0, ft1, ft2
 
 	# get address of local var:result_$1
-	fsub.d ft0, ft1, ft2
 	fsd ft0, 112(sp)
 
 	# c1 result_$1
@@ -746,7 +752,7 @@ whileBody_216:
 	fld ft0, 0(t3)
 	fsd ft0, 24(sp)
 
-	# fsub result_$2 a2$1 b2$1
+	# FSUBresult_$2 a2$1 b2$1
 
 	# fetch variables
 
@@ -755,9 +761,9 @@ whileBody_216:
 
 	# get address of local var:b2$1
 	fld ft2, 24(sp)
+	fsub.d ft0, ft1, ft2
 
 	# get address of local var:result_$2
-	fsub.d ft0, ft1, ft2
 	fsd ft0, 16(sp)
 
 	# c2 result_$2
@@ -782,7 +788,7 @@ whileBody_216:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$3 i$10 
+	# ADDresult_$3 i$10 
 
 	# fetch variables
 
@@ -1389,7 +1395,7 @@ whileBody_217:
 	ld t0, 0(t3)
 	sd t0, 376(sp)
 
-	# add result_ i$13 
+	# ADDresult_ i$13 
 
 	# fetch variables
 
@@ -1589,49 +1595,37 @@ next_527:
 
 	# get address of local var:a2$1
 	ld t1, 344(sp)
-
-	# push a2$1
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:b0$1
 	ld t1, 336(sp)
-
-	# push b0$1
-	sd t1, -16(sp)
+	mv a3, t1
 
 	# fetch variables
 
 	# get address of local var:b1$1
 	ld t1, 328(sp)
-
-	# push b1$1
-	sd t1, -24(sp)
+	mv a4, t1
 
 	# fetch variables
 
 	# get address of local var:b2$1
 	ld t1, 320(sp)
-
-	# push b2$1
-	sd t1, -32(sp)
+	mv a5, t1
 
 	# fetch variables
 
 	# get address of local var:c0
 	ld t1, 312(sp)
-
-	# push c0
-	sd t1, -40(sp)
+	mv a6, t1
 
 	# fetch variables
 
 	# get address of local var:c1
 	ld t1, 304(sp)
-
-	# push c1
-	sd t1, -48(sp)
+	mv a7, t1
 
 	# fetch variables
 
@@ -1639,8 +1633,8 @@ next_527:
 	ld t1, 296(sp)
 
 	# push c2
-	sd t1, -56(sp)
-	addi sp, sp, -56
+	sd t1, -8(sp)
+	addi sp, sp, -8
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1654,7 +1648,7 @@ next_527:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 56
+	addi sp, sp, 8
 
 	# get address of local var:sub
 	sd a0, 288(sp)
@@ -1834,7 +1828,7 @@ whileBody_218:
 	ld t0, 0(t3)
 	sd t0, 208(sp)
 
-	# add result_$1 i$16 
+	# ADDresult_$1 i$16 
 
 	# fetch variables
 
@@ -2079,7 +2073,7 @@ whileBody_219:
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# add result_$2 i$19 
+	# ADDresult_$2 i$19 
 
 	# fetch variables
 
@@ -2324,7 +2318,7 @@ whileBody_220:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# add result_$3 i$22 
+	# ADDresult_$3 i$22 
 
 	# fetch variables
 
@@ -2404,13 +2398,24 @@ next_530:
 	li t4, 952
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

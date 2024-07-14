@@ -101,16 +101,16 @@ mainEntry36:
 	ld t0, 0(t3)
 	sd t0, 224(sp)
 
-	# mul result_ d 
+	# MULresult_ d 
 
 	# fetch variables
 
 	# get address of local var:d
 	ld t1, 224(sp)
 	li t2, 1
+	mul t0, t1, t2
 
 	# get address of local var:result_
-	mul t0, t1, t2
 	sd t0, 216(sp)
 
 	# div result_$1 result_ 
@@ -143,7 +143,7 @@ mainEntry36:
 	ld t0, 0(t3)
 	sd t0, 192(sp)
 
-	# sub result_$2 a b
+	# SUBresult_$2 a b
 
 	# fetch variables
 
@@ -152,12 +152,12 @@ mainEntry36:
 
 	# get address of local var:b
 	ld t2, 192(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sub t0, t1, t2
 	sd t0, 184(sp)
 
-	# add result_$3 result_$1 result_$2
+	# ADDresult_$3 result_$1 result_$2
 
 	# fetch variables
 
@@ -180,7 +180,7 @@ mainEntry36:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# add result_$4 c 
+	# ADDresult_$4 c 
 
 	# fetch variables
 
@@ -192,16 +192,16 @@ mainEntry36:
 	# get address of local var:result_$4
 	sd t0, 160(sp)
 
-	# sub tmp_  result_$4
+	# SUBtmp_  result_$4
 
 	# fetch variables
 	li t1, 0
 
 	# get address of local var:result_$4
 	ld t2, 160(sp)
+	sub t0, t1, t2
 
 	# get address of local var:tmp_
-	sub t0, t1, t2
 	sd t0, 152(sp)
 
 	# mod result_$5 tmp_ 
@@ -216,7 +216,7 @@ mainEntry36:
 	rem t0, t1, t2
 	sd t0, 144(sp)
 
-	# sub result_$6 result_$3 result_$5
+	# SUBresult_$6 result_$3 result_$5
 
 	# fetch variables
 
@@ -225,9 +225,9 @@ mainEntry36:
 
 	# get address of local var:result_$5
 	ld t2, 144(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$6
-	sub t0, t1, t2
 	sd t0, 136(sp)
 
 	# lv$4 result_$6
@@ -296,7 +296,7 @@ mainEntry36:
 	rem t0, t1, t2
 	sd t0, 112(sp)
 
-	# add result_$8 result_$7 
+	# ADDresult_$8 result_$7 
 
 	# fetch variables
 
@@ -326,7 +326,7 @@ mainEntry36:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# sub result_$9 a$1 b$1
+	# SUBresult_$9 a$1 b$1
 
 	# fetch variables
 
@@ -335,24 +335,24 @@ mainEntry36:
 
 	# get address of local var:b$1
 	ld t2, 88(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$9
-	sub t0, t1, t2
 	sd t0, 80(sp)
 
-	# sub tmp_$1  result_$9
+	# SUBtmp_$1  result_$9
 
 	# fetch variables
 	li t1, 0
 
 	# get address of local var:result_$9
 	ld t2, 80(sp)
+	sub t0, t1, t2
 
 	# get address of local var:tmp_$1
-	sub t0, t1, t2
 	sd t0, 72(sp)
 
-	# add result_$10 result_$8 tmp_$1
+	# ADDresult_$10 result_$8 tmp_$1
 
 	# fetch variables
 
@@ -375,7 +375,7 @@ mainEntry36:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# add result_$11 c$1 
+	# ADDresult_$11 c$1 
 
 	# fetch variables
 
@@ -399,19 +399,19 @@ mainEntry36:
 	rem t0, t1, t2
 	sd t0, 40(sp)
 
-	# sub tmp_$2  result_$12
+	# SUBtmp_$2  result_$12
 
 	# fetch variables
 	li t1, 0
 
 	# get address of local var:result_$12
 	ld t2, 40(sp)
+	sub t0, t1, t2
 
 	# get address of local var:tmp_$2
-	sub t0, t1, t2
 	sd t0, 32(sp)
 
-	# sub result_$13 result_$10 tmp_$2
+	# SUBresult_$13 result_$10 tmp_$2
 
 	# fetch variables
 
@@ -420,9 +420,9 @@ mainEntry36:
 
 	# get address of local var:tmp_$2
 	ld t2, 32(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$13
-	sub t0, t1, t2
 	sd t0, 24(sp)
 
 	# lv$4 result_$13
@@ -447,7 +447,7 @@ mainEntry36:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# add result_$14 result$1 
+	# ADDresult_$14 result$1 
 
 	# fetch variables
 
@@ -512,13 +512,24 @@ mainEntry36:
 	li t4, 312
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

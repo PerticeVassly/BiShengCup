@@ -62,7 +62,7 @@ inc_aEntry:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# add result_ b 
+	# ADDresult_ b 
 
 	# fetch variables
 
@@ -719,16 +719,16 @@ ifTrue_341:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# mul result_$2 b$1 
+	# MULresult_$2 b$1 
 
 	# fetch variables
 
 	# get address of local var:b$1
 	ld t1, 96(sp)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$2
-	mul t0, t1, t2
 	sd t0, 88(sp)
 
 	# gv1 @result_$2
@@ -781,16 +781,16 @@ next_596:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# sub result_$3 k$1 
+	# SUBresult_$3 k$1 
 
 	# fetch variables
 
 	# get address of local var:k$1
 	ld t1, 72(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$3
-	sub t0, t1, t2
 	sd t0, 64(sp)
 
 	# lv result_$3
@@ -894,7 +894,7 @@ secondCond_129:
 	# get address of local var:inc_a$6
 	sd a0, 32(sp)
 
-	# sub result_ inc_a$5 inc_a$6
+	# SUBresult_ inc_a$5 inc_a$6
 
 	# fetch variables
 
@@ -903,12 +903,12 @@ secondCond_129:
 
 	# get address of local var:inc_a$6
 	ld t2, 32(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
 	sd t0, 24(sp)
 
-	# add result_$1 result_ 
+	# ADDresult_$1 result_ 
 
 	# fetch variables
 
@@ -963,13 +963,24 @@ secondCond_129:
 	ld t1, 0(sp)
 	beqz t1, ifFalse_136
 	j ifTrue_341
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

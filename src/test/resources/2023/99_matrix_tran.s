@@ -32,18 +32,24 @@ tranEntry:
 
 	# get address of local var:1
 	sd a1, 576(sp)
-	ld t3, 648(sp)
-	sd t3, 568(sp)
-	ld t3, 640(sp)
-	sd t3, 560(sp)
-	ld t3, 632(sp)
-	sd t3, 552(sp)
-	ld t3, 624(sp)
-	sd t3, 544(sp)
-	ld t3, 616(sp)
-	sd t3, 536(sp)
-	ld t3, 608(sp)
-	sd t3, 528(sp)
+
+	# get address of local var:2
+	sd a2, 568(sp)
+
+	# get address of local var:3
+	sd a3, 560(sp)
+
+	# get address of local var:4
+	sd a4, 552(sp)
+
+	# get address of local var:5
+	sd a5, 544(sp)
+
+	# get address of local var:6
+	sd a6, 536(sp)
+
+	# get address of local var:7
+	sd a7, 528(sp)
 	ld t3, 600(sp)
 	sd t3, 520(sp)
 
@@ -1500,7 +1506,7 @@ whileBody_280:
 	ld t0, 0(t3)
 	sd t0, 400(sp)
 
-	# add result_ i$13 
+	# ADDresult_ i$13 
 
 	# fetch variables
 
@@ -1700,49 +1706,37 @@ next_641:
 
 	# get address of local var:a2$1
 	ld t1, 368(sp)
-
-	# push a2$1
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:b0$1
 	ld t1, 360(sp)
-
-	# push b0$1
-	sd t1, -16(sp)
+	mv a3, t1
 
 	# fetch variables
 
 	# get address of local var:b1$1
 	ld t1, 352(sp)
-
-	# push b1$1
-	sd t1, -24(sp)
+	mv a4, t1
 
 	# fetch variables
 
 	# get address of local var:b2$1
 	ld t1, 344(sp)
-
-	# push b2$1
-	sd t1, -32(sp)
+	mv a5, t1
 
 	# fetch variables
 
 	# get address of local var:c0
 	ld t1, 336(sp)
-
-	# push c0
-	sd t1, -40(sp)
+	mv a6, t1
 
 	# fetch variables
 
 	# get address of local var:c1
 	ld t1, 328(sp)
-
-	# push c1
-	sd t1, -48(sp)
+	mv a7, t1
 
 	# fetch variables
 
@@ -1750,8 +1744,8 @@ next_641:
 	ld t1, 320(sp)
 
 	# push c2
-	sd t1, -56(sp)
-	addi sp, sp, -56
+	sd t1, -8(sp)
+	addi sp, sp, -8
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1765,7 +1759,7 @@ next_641:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 56
+	addi sp, sp, 8
 
 	# get address of local var:tran
 	sd a0, 312(sp)
@@ -1956,7 +1950,7 @@ whileBody_281:
 	ld t0, 0(t3)
 	sd t0, 224(sp)
 
-	# add result_$1 i$16 
+	# ADDresult_$1 i$16 
 
 	# fetch variables
 
@@ -2212,7 +2206,7 @@ whileBody_282:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# add result_$2 i$19 
+	# ADDresult_$2 i$19 
 
 	# fetch variables
 
@@ -2468,7 +2462,7 @@ whileBody_283:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# add result_$3 i$22 
+	# ADDresult_$3 i$22 
 
 	# fetch variables
 
@@ -2548,13 +2542,24 @@ next_644:
 	li t4, 984
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

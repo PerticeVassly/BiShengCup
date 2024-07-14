@@ -52,7 +52,7 @@ printansEntry:
 	ld t0, 0(t3)
 	sd t0, 128(sp)
 
-	# add result_ sum 
+	# ADDresult_ sum 
 
 	# fetch variables
 
@@ -360,7 +360,7 @@ next_646:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$1 i$3 
+	# ADDresult_$1 i$3 
 
 	# fetch variables
 
@@ -735,7 +735,7 @@ next_648:
 	ld t0, 0(t3)
 	sd t0, 368(sp)
 
-	# add result_$10 i$11 
+	# ADDresult_$10 i$11 
 
 	# fetch variables
 
@@ -782,7 +782,7 @@ secondCond_132:
 	ld t0, 0(t3)
 	sd t0, 344(sp)
 
-	# add result_$1 n$1 step$1
+	# ADDresult_$1 n$1 step$1
 
 	# fetch variables
 
@@ -805,7 +805,7 @@ secondCond_132:
 	ld t0, 0(t3)
 	sd t0, 328(sp)
 
-	# sub result_$2 result_$1 i$3
+	# SUBresult_$2 result_$1 i$3
 
 	# fetch variables
 
@@ -814,9 +814,9 @@ secondCond_132:
 
 	# get address of local var:i$3
 	ld t2, 328(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sub t0, t1, t2
 	sd t0, 320(sp)
 
 	# gep line2 result_$2
@@ -926,7 +926,7 @@ secondCond_133:
 	ld t0, 0(t3)
 	sd t0, 256(sp)
 
-	# add result_ step i$2
+	# ADDresult_ step i$2
 
 	# fetch variables
 
@@ -1090,7 +1090,7 @@ next_649:
 	ld t0, 0(t3)
 	sd t0, 176(sp)
 
-	# add result_$3 step$4 i$6
+	# ADDresult_$3 step$4 i$6
 
 	# fetch variables
 
@@ -1150,7 +1150,7 @@ next_649:
 	ld t0, 0(t3)
 	sd t0, 144(sp)
 
-	# add result_$4 n$3 step$5
+	# ADDresult_$4 n$3 step$5
 
 	# fetch variables
 
@@ -1173,7 +1173,7 @@ next_649:
 	ld t0, 0(t3)
 	sd t0, 128(sp)
 
-	# sub result_$5 result_$4 i$7
+	# SUBresult_$5 result_$4 i$7
 
 	# fetch variables
 
@@ -1182,9 +1182,9 @@ next_649:
 
 	# get address of local var:i$7
 	ld t2, 128(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$5
-	sub t0, t1, t2
 	sd t0, 120(sp)
 
 	# gep line2$2 result_$5
@@ -1224,7 +1224,7 @@ next_649:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# add result_$6 step$6 
+	# ADDresult_$6 step$6 
 
 	# fetch variables
 
@@ -1314,7 +1314,7 @@ next_649:
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# add result_$7 step$7 i$9
+	# ADDresult_$7 step$7 i$9
 
 	# fetch variables
 
@@ -1374,7 +1374,7 @@ next_649:
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# add result_$8 n$4 step$8
+	# ADDresult_$8 n$4 step$8
 
 	# fetch variables
 
@@ -1397,7 +1397,7 @@ next_649:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# sub result_$9 result_$8 i$10
+	# SUBresult_$9 result_$8 i$10
 
 	# fetch variables
 
@@ -1406,9 +1406,9 @@ next_649:
 
 	# get address of local var:i$10
 	ld t2, 16(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$9
-	sub t0, t1, t2
 	sd t0, 8(sp)
 
 	# gep line2$3 result_$9
@@ -1616,16 +1616,16 @@ whileBody_286:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# sub result_ N$1 
+	# SUBresult_ N$1 
 
 	# fetch variables
 
 	# get address of local var:N$1
 	ld t1, 16(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
 	sd t0, 8(sp)
 
 	# lv result_
@@ -1664,13 +1664,24 @@ next_650:
 	li t4, 88
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

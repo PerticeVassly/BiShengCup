@@ -215,16 +215,16 @@ whileBody_204:
 	ld t0, 0(t3)
 	sd t0, 240(sp)
 
-	# sub result_ i$2 
+	# SUBresult_ i$2 
 
 	# fetch variables
 
 	# get address of local var:i$2
 	ld t1, 240(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
 	sd t0, 232(sp)
 
 	# lv$3 result_
@@ -323,7 +323,7 @@ whileBody_205:
 	ld t0, 0(t3)
 	sd t0, 192(sp)
 
-	# add result_$1 j$2 
+	# ADDresult_$1 j$2 
 
 	# fetch variables
 
@@ -431,16 +431,16 @@ whileBody_205:
 	ld t0, 0(t3)
 	sd t0, 128(sp)
 
-	# sub result_$2 j$4 
+	# SUBresult_$2 j$4 
 
 	# fetch variables
 
 	# get address of local var:j$4
 	ld t1, 128(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sub t0, t1, t2
 	sd t0, 120(sp)
 
 	# lv$3 result_$2
@@ -469,7 +469,7 @@ next_498:
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# add result_$3 j$5 
+	# ADDresult_$3 j$5 
 
 	# fetch variables
 
@@ -540,7 +540,7 @@ next_498:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# add result_$4 i$3 
+	# ADDresult_$4 i$3 
 
 	# fetch variables
 
@@ -1255,7 +1255,7 @@ whileBody_206:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_ i$2 
+	# ADDresult_ i$2 
 
 	# fetch variables
 
@@ -1292,13 +1292,24 @@ next_499:
 	li t4, 312
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

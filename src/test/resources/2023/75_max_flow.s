@@ -38,8 +38,9 @@ my_memsetEntry:
 
 	# get address of local var:1
 	sd a1, 160(sp)
-	ld t3, 184(sp)
-	sd t3, 152(sp)
+
+	# get address of local var:2
+	sd a2, 152(sp)
 
 	# allocate lv$3
 	li t0, 136
@@ -258,7 +259,7 @@ whileBody_287:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_ i$2 
+	# ADDresult_ i$2 
 
 	# fetch variables
 
@@ -315,8 +316,9 @@ add_nodeEntry:
 
 	# get address of local var:1
 	sd a1, 512(sp)
-	ld t3, 536(sp)
-	sd t3, 504(sp)
+
+	# get address of local var:2
+	sd a2, 504(sp)
 
 	# allocate lv$2
 	li t0, 488
@@ -1092,7 +1094,7 @@ add_nodeEntry:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# add result_ size$18 
+	# ADDresult_ size$18 
 
 	# fetch variables
 
@@ -1178,7 +1180,7 @@ add_nodeEntry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$1 size$21 
+	# ADDresult_$1 size$21 
 
 	# fetch variables
 
@@ -1231,8 +1233,9 @@ dfsEntry1:
 
 	# get address of local var:1
 	sd a1, 928(sp)
-	ld t3, 952(sp)
-	sd t3, 920(sp)
+
+	# get address of local var:2
+	sd a2, 920(sp)
 
 	# allocate lv$5
 	li t0, 904
@@ -1687,7 +1690,7 @@ ifTrue_365:
 	ld t0, 0(t3)
 	sd t0, 632(sp)
 
-	# add result_ i$2 
+	# ADDresult_ i$2 
 
 	# fetch variables
 
@@ -1840,7 +1843,7 @@ ifTrue_366:
 	ld t0, 0(t3)
 	sd t0, 552(sp)
 
-	# add result_$1 i$4 
+	# ADDresult_$1 i$4 
 
 	# fetch variables
 
@@ -2198,10 +2201,8 @@ next_656:
 
 	# get address of local var:min_f
 	ld t1, 368(sp)
-
-	# push min_f
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2215,7 +2216,7 @@ next_656:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:dfs
 	sd a0, 360(sp)
@@ -2416,7 +2417,7 @@ ifTrue_368:
 	ld t0, 0(t3)
 	sd t0, 248(sp)
 
-	# sub result_$2 cap$8 d$1
+	# SUBresult_$2 cap$8 d$1
 
 	# fetch variables
 
@@ -2425,9 +2426,9 @@ ifTrue_368:
 
 	# get address of local var:d$1
 	ld t2, 248(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sub t0, t1, t2
 	sd t0, 240(sp)
 
 	# cap$6 result_$2
@@ -2785,7 +2786,7 @@ ifTrue_368:
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# add result_$3 cap$11 d$2
+	# ADDresult_$3 cap$11 d$2
 
 	# fetch variables
 
@@ -2845,7 +2846,7 @@ next_657:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$4 i$14 
+	# ADDresult_$4 i$14 
 
 	# fetch variables
 
@@ -3008,10 +3009,8 @@ whileBody_289:
 
 	# fetch variables
 	li t1, 10
-
-	# push 
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3025,7 +3024,7 @@ whileBody_289:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# load s lv
 
@@ -3061,10 +3060,8 @@ whileBody_289:
 
 	# fetch variables
 	li t1, 1879048192
-
-	# push 
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3078,7 +3075,7 @@ whileBody_289:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# get address of local var:dfs
 	sd a0, 64(sp)
@@ -3195,7 +3192,7 @@ next_659:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_ flow$1 f$1
+	# ADDresult_ flow$1 f$1
 
 	# fetch variables
 
@@ -3365,10 +3362,8 @@ mainEntry98:
 
 	# fetch variables
 	li t1, 10
-
-	# push 
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3382,7 +3377,7 @@ mainEntry98:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# br whileCond_290
 	j whileCond_290
@@ -3589,10 +3584,8 @@ whileBody_290:
 
 	# get address of local var:c
 	ld t1, 32(sp)
-
-	# push c
-	sd t1, -8(sp)
-	addi sp, sp, -8
+	mv a2, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3606,7 +3599,7 @@ whileBody_290:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	addi sp, sp, 0
 
 	# load E$1 lv$1
 
@@ -3617,16 +3610,16 @@ whileBody_290:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# sub result_ E$1 
+	# SUBresult_ E$1 
 
 	# fetch variables
 
 	# get address of local var:E$1
 	ld t1, 24(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
 	sd t0, 16(sp)
 
 	# lv$1 result_
@@ -3737,13 +3730,24 @@ next_660:
 	li t4, 216
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

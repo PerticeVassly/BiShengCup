@@ -36,42 +36,36 @@ mulEntry:
 	li t4, 2016
 	add t4, sp, t4
 	sd a1, 0(t4)
-	li t4, 2088
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:2
 	li t4, 2008
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 2080
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a2, 0(t4)
+
+	# get address of local var:3
 	li t4, 2000
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 2072
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a3, 0(t4)
+
+	# get address of local var:4
 	li t4, 1992
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 2064
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a4, 0(t4)
+
+	# get address of local var:5
 	li t4, 1984
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 2056
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a5, 0(t4)
+
+	# get address of local var:6
 	li t4, 1976
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 2048
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a6, 0(t4)
+
+	# get address of local var:7
 	li t4, 1968
 	add t4, sp, t4
-	sd t3, 0(t4)
+	sd a7, 0(t4)
 	li t4, 2040
 	add t4, sp, t4
 	ld t3, 0(t4)
@@ -463,7 +457,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 0(t4)
 
-	# fmul result_ a0$1 b0$1
+	# FMULresult_ a0$1 b0$1
 
 	# fetch variables
 
@@ -476,11 +470,11 @@ mulEntry:
 	li t4, 1736
 	add t4, sp, t4
 	fld ft2, 0(t4)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_
 	li t4, 1728
 	add t4, sp, t4
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 0(t4)
 
 	# load arr_$3 lv
@@ -577,7 +571,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 0(t4)
 
-	# fmul result_$1 a0$3 b1$1
+	# FMULresult_$1 a0$3 b1$1
 
 	# fetch variables
 
@@ -590,14 +584,14 @@ mulEntry:
 	li t4, 1680
 	add t4, sp, t4
 	fld ft2, 0(t4)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$1
 	li t4, 1672
 	add t4, sp, t4
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 0(t4)
 
-	# fadd result_$2 result_ result_$1
+	# FADDresult_$2 result_ result_$1
 
 	# fetch variables
 
@@ -711,7 +705,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 0(t4)
 
-	# fmul result_$3 a0$5 b2$1
+	# FMULresult_$3 a0$5 b2$1
 
 	# fetch variables
 
@@ -724,14 +718,14 @@ mulEntry:
 	li t4, 1616
 	add t4, sp, t4
 	fld ft2, 0(t4)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$3
 	li t4, 1608
 	add t4, sp, t4
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 0(t4)
 
-	# fadd result_$4 result_$2 result_$3
+	# FADDresult_$4 result_$2 result_$3
 
 	# fetch variables
 
@@ -896,7 +890,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 0(t4)
 
-	# fmul result_$5 a0$7 b0$3
+	# FMULresult_$5 a0$7 b0$3
 
 	# fetch variables
 
@@ -909,11 +903,11 @@ mulEntry:
 	li t4, 1536
 	add t4, sp, t4
 	fld ft2, 0(t4)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$5
 	li t4, 1528
 	add t4, sp, t4
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 0(t4)
 
 	# load arr_$10 lv
@@ -1010,7 +1004,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 0(t4)
 
-	# fmul result_$6 a0$9 b1$3
+	# FMULresult_$6 a0$9 b1$3
 
 	# fetch variables
 
@@ -1023,14 +1017,14 @@ mulEntry:
 	li t4, 1480
 	add t4, sp, t4
 	fld ft2, 0(t4)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$6
 	li t4, 1472
 	add t4, sp, t4
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 0(t4)
 
-	# fadd result_$7 result_$5 result_$6
+	# FADDresult_$7 result_$5 result_$6
 
 	# fetch variables
 
@@ -1144,7 +1138,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 0(t4)
 
-	# fmul result_$8 a0$11 b2$3
+	# FMULresult_$8 a0$11 b2$3
 
 	# fetch variables
 
@@ -1157,14 +1151,14 @@ mulEntry:
 	li t4, 1416
 	add t4, sp, t4
 	fld ft2, 0(t4)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$8
 	li t4, 1408
 	add t4, sp, t4
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 0(t4)
 
-	# fadd result_$9 result_$7 result_$8
+	# FADDresult_$9 result_$7 result_$8
 
 	# fetch variables
 
@@ -1329,7 +1323,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 0(t4)
 
-	# fmul result_$10 a0$13 b0$5
+	# FMULresult_$10 a0$13 b0$5
 
 	# fetch variables
 
@@ -1342,11 +1336,11 @@ mulEntry:
 	li t4, 1336
 	add t4, sp, t4
 	fld ft2, 0(t4)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$10
 	li t4, 1328
 	add t4, sp, t4
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 0(t4)
 
 	# load arr_$17 lv
@@ -1443,7 +1437,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 0(t4)
 
-	# fmul result_$11 a0$15 b1$5
+	# FMULresult_$11 a0$15 b1$5
 
 	# fetch variables
 
@@ -1456,14 +1450,14 @@ mulEntry:
 	li t4, 1280
 	add t4, sp, t4
 	fld ft2, 0(t4)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$11
 	li t4, 1272
 	add t4, sp, t4
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 0(t4)
 
-	# fadd result_$12 result_$10 result_$11
+	# FADDresult_$12 result_$10 result_$11
 
 	# fetch variables
 
@@ -1577,7 +1571,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 0(t4)
 
-	# fmul result_$13 a0$17 b2$5
+	# FMULresult_$13 a0$17 b2$5
 
 	# fetch variables
 
@@ -1590,14 +1584,14 @@ mulEntry:
 	li t4, 1216
 	add t4, sp, t4
 	fld ft2, 0(t4)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$13
 	li t4, 1208
 	add t4, sp, t4
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 0(t4)
 
-	# fadd result_$14 result_$12 result_$13
+	# FADDresult_$14 result_$12 result_$13
 
 	# fetch variables
 
@@ -1762,7 +1756,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 0(t4)
 
-	# fmul result_$15 a1$1 b0$7
+	# FMULresult_$15 a1$1 b0$7
 
 	# fetch variables
 
@@ -1775,11 +1769,11 @@ mulEntry:
 	li t4, 1136
 	add t4, sp, t4
 	fld ft2, 0(t4)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$15
 	li t4, 1128
 	add t4, sp, t4
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 0(t4)
 
 	# load arr_$24 lv$1
@@ -1876,7 +1870,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 0(t4)
 
-	# fmul result_$16 a1$3 b1$7
+	# FMULresult_$16 a1$3 b1$7
 
 	# fetch variables
 
@@ -1889,14 +1883,14 @@ mulEntry:
 	li t4, 1080
 	add t4, sp, t4
 	fld ft2, 0(t4)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$16
 	li t4, 1072
 	add t4, sp, t4
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 0(t4)
 
-	# fadd result_$17 result_$15 result_$16
+	# FADDresult_$17 result_$15 result_$16
 
 	# fetch variables
 
@@ -2008,7 +2002,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 1016(sp)
 
-	# fmul result_$18 a1$5 b2$7
+	# FMULresult_$18 a1$5 b2$7
 
 	# fetch variables
 
@@ -2019,12 +2013,12 @@ mulEntry:
 
 	# get address of local var:b2$7
 	fld ft2, 1016(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$18
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 1008(sp)
 
-	# fadd result_$19 result_$17 result_$18
+	# FADDresult_$19 result_$17 result_$18
 
 	# fetch variables
 
@@ -2157,7 +2151,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 936(sp)
 
-	# fmul result_$20 a1$7 b0$9
+	# FMULresult_$20 a1$7 b0$9
 
 	# fetch variables
 
@@ -2166,9 +2160,9 @@ mulEntry:
 
 	# get address of local var:b0$9
 	fld ft2, 936(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$20
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 928(sp)
 
 	# load arr_$31 lv$1
@@ -2245,7 +2239,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 880(sp)
 
-	# fmul result_$21 a1$9 b1$9
+	# FMULresult_$21 a1$9 b1$9
 
 	# fetch variables
 
@@ -2254,12 +2248,12 @@ mulEntry:
 
 	# get address of local var:b1$9
 	fld ft2, 880(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$21
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 872(sp)
 
-	# fadd result_$22 result_$20 result_$21
+	# FADDresult_$22 result_$20 result_$21
 
 	# fetch variables
 
@@ -2347,7 +2341,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 816(sp)
 
-	# fmul result_$23 a1$11 b2$9
+	# FMULresult_$23 a1$11 b2$9
 
 	# fetch variables
 
@@ -2356,12 +2350,12 @@ mulEntry:
 
 	# get address of local var:b2$9
 	fld ft2, 816(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$23
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 808(sp)
 
-	# fadd result_$24 result_$22 result_$23
+	# FADDresult_$24 result_$22 result_$23
 
 	# fetch variables
 
@@ -2490,7 +2484,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 736(sp)
 
-	# fmul result_$25 a1$13 b0$11
+	# FMULresult_$25 a1$13 b0$11
 
 	# fetch variables
 
@@ -2499,9 +2493,9 @@ mulEntry:
 
 	# get address of local var:b0$11
 	fld ft2, 736(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$25
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 728(sp)
 
 	# load arr_$38 lv$1
@@ -2578,7 +2572,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 680(sp)
 
-	# fmul result_$26 a1$15 b1$11
+	# FMULresult_$26 a1$15 b1$11
 
 	# fetch variables
 
@@ -2587,12 +2581,12 @@ mulEntry:
 
 	# get address of local var:b1$11
 	fld ft2, 680(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$26
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 672(sp)
 
-	# fadd result_$27 result_$25 result_$26
+	# FADDresult_$27 result_$25 result_$26
 
 	# fetch variables
 
@@ -2680,7 +2674,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 616(sp)
 
-	# fmul result_$28 a1$17 b2$11
+	# FMULresult_$28 a1$17 b2$11
 
 	# fetch variables
 
@@ -2689,12 +2683,12 @@ mulEntry:
 
 	# get address of local var:b2$11
 	fld ft2, 616(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$28
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 608(sp)
 
-	# fadd result_$29 result_$27 result_$28
+	# FADDresult_$29 result_$27 result_$28
 
 	# fetch variables
 
@@ -2823,7 +2817,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 536(sp)
 
-	# fmul result_$30 a2$1 b0$13
+	# FMULresult_$30 a2$1 b0$13
 
 	# fetch variables
 
@@ -2832,9 +2826,9 @@ mulEntry:
 
 	# get address of local var:b0$13
 	fld ft2, 536(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$30
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 528(sp)
 
 	# load arr_$45 lv$2
@@ -2911,7 +2905,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 480(sp)
 
-	# fmul result_$31 a2$3 b1$13
+	# FMULresult_$31 a2$3 b1$13
 
 	# fetch variables
 
@@ -2920,12 +2914,12 @@ mulEntry:
 
 	# get address of local var:b1$13
 	fld ft2, 480(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$31
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 472(sp)
 
-	# fadd result_$32 result_$30 result_$31
+	# FADDresult_$32 result_$30 result_$31
 
 	# fetch variables
 
@@ -3013,7 +3007,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 416(sp)
 
-	# fmul result_$33 a2$5 b2$13
+	# FMULresult_$33 a2$5 b2$13
 
 	# fetch variables
 
@@ -3022,12 +3016,12 @@ mulEntry:
 
 	# get address of local var:b2$13
 	fld ft2, 416(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$33
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 408(sp)
 
-	# fadd result_$34 result_$32 result_$33
+	# FADDresult_$34 result_$32 result_$33
 
 	# fetch variables
 
@@ -3156,7 +3150,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 336(sp)
 
-	# fmul result_$35 a2$7 b0$15
+	# FMULresult_$35 a2$7 b0$15
 
 	# fetch variables
 
@@ -3165,9 +3159,9 @@ mulEntry:
 
 	# get address of local var:b0$15
 	fld ft2, 336(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$35
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 328(sp)
 
 	# load arr_$52 lv$2
@@ -3244,7 +3238,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 280(sp)
 
-	# fmul result_$36 a2$9 b1$15
+	# FMULresult_$36 a2$9 b1$15
 
 	# fetch variables
 
@@ -3253,12 +3247,12 @@ mulEntry:
 
 	# get address of local var:b1$15
 	fld ft2, 280(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$36
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 272(sp)
 
-	# fadd result_$37 result_$35 result_$36
+	# FADDresult_$37 result_$35 result_$36
 
 	# fetch variables
 
@@ -3346,7 +3340,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 216(sp)
 
-	# fmul result_$38 a2$11 b2$15
+	# FMULresult_$38 a2$11 b2$15
 
 	# fetch variables
 
@@ -3355,12 +3349,12 @@ mulEntry:
 
 	# get address of local var:b2$15
 	fld ft2, 216(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$38
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 208(sp)
 
-	# fadd result_$39 result_$37 result_$38
+	# FADDresult_$39 result_$37 result_$38
 
 	# fetch variables
 
@@ -3489,7 +3483,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 136(sp)
 
-	# fmul result_$40 a2$13 b0$17
+	# FMULresult_$40 a2$13 b0$17
 
 	# fetch variables
 
@@ -3498,9 +3492,9 @@ mulEntry:
 
 	# get address of local var:b0$17
 	fld ft2, 136(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$40
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 128(sp)
 
 	# load arr_$59 lv$2
@@ -3577,7 +3571,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 80(sp)
 
-	# fmul result_$41 a2$15 b1$17
+	# FMULresult_$41 a2$15 b1$17
 
 	# fetch variables
 
@@ -3586,12 +3580,12 @@ mulEntry:
 
 	# get address of local var:b1$17
 	fld ft2, 80(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$41
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 72(sp)
 
-	# fadd result_$42 result_$40 result_$41
+	# FADDresult_$42 result_$40 result_$41
 
 	# fetch variables
 
@@ -3679,7 +3673,7 @@ mulEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 16(sp)
 
-	# fmul result_$43 a2$17 b2$17
+	# FMULresult_$43 a2$17 b2$17
 
 	# fetch variables
 
@@ -3688,12 +3682,12 @@ mulEntry:
 
 	# get address of local var:b2$17
 	fld ft2, 16(sp)
+	fmul.d ft0, ft1, ft2
 
 	# get address of local var:result_$43
-	fmul.d ft0, ft1, ft2
 	fsd ft0, 8(sp)
 
-	# fadd result_$44 result_$42 result_$43
+	# FADDresult_$44 result_$42 result_$43
 
 	# fetch variables
 
@@ -4309,7 +4303,7 @@ whileBody_248:
 	ld t0, 0(t3)
 	sd t0, 400(sp)
 
-	# add result_ i$13 
+	# ADDresult_ i$13 
 
 	# fetch variables
 
@@ -4509,49 +4503,37 @@ next_587:
 
 	# get address of local var:a2$1
 	ld t1, 368(sp)
-
-	# push a2$1
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:b0$1
 	ld t1, 360(sp)
-
-	# push b0$1
-	sd t1, -16(sp)
+	mv a3, t1
 
 	# fetch variables
 
 	# get address of local var:b1$1
 	ld t1, 352(sp)
-
-	# push b1$1
-	sd t1, -24(sp)
+	mv a4, t1
 
 	# fetch variables
 
 	# get address of local var:b2$1
 	ld t1, 344(sp)
-
-	# push b2$1
-	sd t1, -32(sp)
+	mv a5, t1
 
 	# fetch variables
 
 	# get address of local var:c0
 	ld t1, 336(sp)
-
-	# push c0
-	sd t1, -40(sp)
+	mv a6, t1
 
 	# fetch variables
 
 	# get address of local var:c1
 	ld t1, 328(sp)
-
-	# push c1
-	sd t1, -48(sp)
+	mv a7, t1
 
 	# fetch variables
 
@@ -4559,8 +4541,8 @@ next_587:
 	ld t1, 320(sp)
 
 	# push c2
-	sd t1, -56(sp)
-	addi sp, sp, -56
+	sd t1, -8(sp)
+	addi sp, sp, -8
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4574,7 +4556,7 @@ next_587:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 56
+	addi sp, sp, 8
 
 	# get address of local var:mul
 	sd a0, 312(sp)
@@ -4765,7 +4747,7 @@ whileBody_249:
 	ld t0, 0(t3)
 	sd t0, 224(sp)
 
-	# add result_$1 i$16 
+	# ADDresult_$1 i$16 
 
 	# fetch variables
 
@@ -5021,7 +5003,7 @@ whileBody_250:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# add result_$2 i$19 
+	# ADDresult_$2 i$19 
 
 	# fetch variables
 
@@ -5277,7 +5259,7 @@ whileBody_251:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# add result_$3 i$22 
+	# ADDresult_$3 i$22 
 
 	# fetch variables
 
@@ -5357,13 +5339,24 @@ next_590:
 	li t4, 984
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

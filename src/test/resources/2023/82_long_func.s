@@ -1396,7 +1396,7 @@ ifTrue_78:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$2  SHIFT_TABLE$1
+	# MULresult_$2  SHIFT_TABLE$1
 
 	# fetch variables
 	li t1, 1
@@ -1405,14 +1405,14 @@ ifTrue_78:
 	li t4, 18816
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$2
 	li t4, 18808
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$3 ans result_$2
+	# ADDresult_$3 ans result_$2
 
 	# fetch variables
 
@@ -1558,7 +1558,7 @@ next_170:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$6 i$2 
+	# ADDresult_$6 i$2 
 
 	# fetch variables
 
@@ -2224,7 +2224,7 @@ ifTrue_80:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$9  SHIFT_TABLE$3
+	# MULresult_$9  SHIFT_TABLE$3
 
 	# fetch variables
 	li t1, 1
@@ -2233,14 +2233,14 @@ ifTrue_80:
 	li t4, 18552
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$9
 	li t4, 18544
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$10 ans$2 result_$9
+	# ADDresult_$10 ans$2 result_$9
 
 	# fetch variables
 
@@ -2386,7 +2386,7 @@ next_174:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$13 i$5 
+	# ADDresult_$13 i$5 
 
 	# fetch variables
 
@@ -3315,7 +3315,7 @@ next_178:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$23 i$9 
+	# ADDresult_$23 i$9 
 
 	# fetch variables
 
@@ -3412,7 +3412,7 @@ ifTrue_83:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$16  SHIFT_TABLE$5
+	# MULresult_$16  SHIFT_TABLE$5
 
 	# fetch variables
 	li t1, 1
@@ -3421,14 +3421,14 @@ ifTrue_83:
 	li t4, 18160
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$16
 	li t4, 18152
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$17 ans$4 result_$16
+	# ADDresult_$17 ans$4 result_$16
 
 	# fetch variables
 
@@ -3533,7 +3533,7 @@ ifTrue_84:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$19  SHIFT_TABLE$7
+	# MULresult_$19  SHIFT_TABLE$7
 
 	# fetch variables
 	li t1, 1
@@ -3542,14 +3542,14 @@ ifTrue_84:
 	li t4, 18112
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$19
 	li t4, 18104
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$20 ans$5 result_$19
+	# ADDresult_$20 ans$5 result_$19
 
 	# fetch variables
 
@@ -3875,7 +3875,7 @@ ifTrue_85:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$26  SHIFT_TABLE$9
+	# MULresult_$26  SHIFT_TABLE$9
 
 	# fetch variables
 	li t1, 1
@@ -3884,14 +3884,14 @@ ifTrue_85:
 	li t4, 17976
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$26
 	li t4, 17968
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$27 ans$7 result_$26
+	# ADDresult_$27 ans$7 result_$26
 
 	# fetch variables
 
@@ -4037,7 +4037,7 @@ next_182:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$30 i$12 
+	# ADDresult_$30 i$12 
 
 	# fetch variables
 
@@ -4189,7 +4189,7 @@ ifFalse_22:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$31 c$3 
+	# MULresult_$31 c$3 
 
 	# fetch variables
 
@@ -4198,11 +4198,11 @@ ifFalse_22:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$31
 	li t4, 17872
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$31
@@ -4500,7 +4500,7 @@ ifTrue_87:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$34  SHIFT_TABLE$11
+	# MULresult_$34  SHIFT_TABLE$11
 
 	# fetch variables
 	li t1, 1
@@ -4509,14 +4509,14 @@ ifTrue_87:
 	li t4, 17768
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$34
 	li t4, 17760
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$35 ans$9 result_$34
+	# ADDresult_$35 ans$9 result_$34
 
 	# fetch variables
 
@@ -4662,7 +4662,7 @@ next_185:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$38 i$15 
+	# ADDresult_$38 i$15 
 
 	# fetch variables
 
@@ -5577,7 +5577,7 @@ next_188:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$48 i$19 
+	# ADDresult_$48 i$19 
 
 	# fetch variables
 
@@ -5674,7 +5674,7 @@ ifTrue_89:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$41  SHIFT_TABLE$13
+	# MULresult_$41  SHIFT_TABLE$13
 
 	# fetch variables
 	li t1, 1
@@ -5683,14 +5683,14 @@ ifTrue_89:
 	li t4, 17368
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$41
 	li t4, 17360
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$42 ans$12 result_$41
+	# ADDresult_$42 ans$12 result_$41
 
 	# fetch variables
 
@@ -5795,7 +5795,7 @@ ifTrue_90:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$44  SHIFT_TABLE$15
+	# MULresult_$44  SHIFT_TABLE$15
 
 	# fetch variables
 	li t1, 1
@@ -5804,14 +5804,14 @@ ifTrue_90:
 	li t4, 17320
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$44
 	li t4, 17312
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$45 ans$13 result_$44
+	# ADDresult_$45 ans$13 result_$44
 
 	# fetch variables
 
@@ -6137,7 +6137,7 @@ ifTrue_91:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$51  SHIFT_TABLE$17
+	# MULresult_$51  SHIFT_TABLE$17
 
 	# fetch variables
 	li t1, 1
@@ -6146,14 +6146,14 @@ ifTrue_91:
 	li t4, 17184
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$51
 	li t4, 17176
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$52 ans$15 result_$51
+	# ADDresult_$52 ans$15 result_$51
 
 	# fetch variables
 
@@ -6299,7 +6299,7 @@ next_192:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$55 i$22 
+	# ADDresult_$55 i$22 
 
 	# fetch variables
 
@@ -6451,7 +6451,7 @@ ifFalse_24:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$56 c$7 
+	# MULresult_$56 c$7 
 
 	# fetch variables
 
@@ -6460,11 +6460,11 @@ ifFalse_24:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$56
 	li t4, 17080
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$56
@@ -6762,7 +6762,7 @@ ifTrue_93:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$59  SHIFT_TABLE$19
+	# MULresult_$59  SHIFT_TABLE$19
 
 	# fetch variables
 	li t1, 1
@@ -6771,14 +6771,14 @@ ifTrue_93:
 	li t4, 16976
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$59
 	li t4, 16968
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$60 ans$17 result_$59
+	# ADDresult_$60 ans$17 result_$59
 
 	# fetch variables
 
@@ -6924,7 +6924,7 @@ next_195:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$63 i$25 
+	# ADDresult_$63 i$25 
 
 	# fetch variables
 
@@ -7464,7 +7464,7 @@ ifTrue_97:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$65 x$19 
+	# ADDresult_$65 x$19 
 
 	# fetch variables
 
@@ -7493,7 +7493,7 @@ ifTrue_97:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$66  y$21
+	# SUBresult_$66  y$21
 
 	# fetch variables
 	li t1, 15
@@ -7502,14 +7502,14 @@ ifTrue_97:
 	li t4, 16712
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$66
 	li t4, 16704
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$67 result_$66 
+	# ADDresult_$67 result_$66 
 
 	# fetch variables
 
@@ -7559,7 +7559,7 @@ ifTrue_97:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$68 result_$65 SHIFT_TABLE$23
+	# SUBresult_$68 result_$65 SHIFT_TABLE$23
 
 	# fetch variables
 
@@ -7572,11 +7572,11 @@ ifTrue_97:
 	li t4, 16680
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$68
 	li t4, 16672
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv result_$68
@@ -8235,7 +8235,7 @@ ifTrue_98:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$72  SHIFT_TABLE$27
+	# MULresult_$72  SHIFT_TABLE$27
 
 	# fetch variables
 	li t1, 1
@@ -8244,14 +8244,14 @@ ifTrue_98:
 	li t4, 16448
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$72
 	li t4, 16440
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$73 ans$22 result_$72
+	# ADDresult_$73 ans$22 result_$72
 
 	# fetch variables
 
@@ -8397,7 +8397,7 @@ next_202:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$76 i$28 
+	# ADDresult_$76 i$28 
 
 	# fetch variables
 
@@ -9326,7 +9326,7 @@ next_206:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$86 i$32 
+	# ADDresult_$86 i$32 
 
 	# fetch variables
 
@@ -9423,7 +9423,7 @@ ifTrue_101:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$79  SHIFT_TABLE$29
+	# MULresult_$79  SHIFT_TABLE$29
 
 	# fetch variables
 	li t1, 1
@@ -9432,14 +9432,14 @@ ifTrue_101:
 	li t4, 16056
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$79
 	li t4, 16048
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$80 ans$24 result_$79
+	# ADDresult_$80 ans$24 result_$79
 
 	# fetch variables
 
@@ -9544,7 +9544,7 @@ ifTrue_102:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$82  SHIFT_TABLE$31
+	# MULresult_$82  SHIFT_TABLE$31
 
 	# fetch variables
 	li t1, 1
@@ -9553,14 +9553,14 @@ ifTrue_102:
 	li t4, 16008
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$82
 	li t4, 16000
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$83 ans$25 result_$82
+	# ADDresult_$83 ans$25 result_$82
 
 	# fetch variables
 
@@ -9886,7 +9886,7 @@ ifTrue_103:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$89  SHIFT_TABLE$33
+	# MULresult_$89  SHIFT_TABLE$33
 
 	# fetch variables
 	li t1, 1
@@ -9895,14 +9895,14 @@ ifTrue_103:
 	li t4, 15872
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$89
 	li t4, 15864
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$90 ans$27 result_$89
+	# ADDresult_$90 ans$27 result_$89
 
 	# fetch variables
 
@@ -10048,7 +10048,7 @@ next_210:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$93 i$35 
+	# ADDresult_$93 i$35 
 
 	# fetch variables
 
@@ -10200,7 +10200,7 @@ ifFalse_30:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$94 c$11 
+	# MULresult_$94 c$11 
 
 	# fetch variables
 
@@ -10209,11 +10209,11 @@ ifFalse_30:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$94
 	li t4, 15768
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$94
@@ -10511,7 +10511,7 @@ ifTrue_105:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$97  SHIFT_TABLE$35
+	# MULresult_$97  SHIFT_TABLE$35
 
 	# fetch variables
 	li t1, 1
@@ -10520,14 +10520,14 @@ ifTrue_105:
 	li t4, 15664
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$97
 	li t4, 15656
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$98 ans$29 result_$97
+	# ADDresult_$98 ans$29 result_$97
 
 	# fetch variables
 
@@ -10673,7 +10673,7 @@ next_213:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$101 i$38 
+	# ADDresult_$101 i$38 
 
 	# fetch variables
 
@@ -11588,7 +11588,7 @@ next_216:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$111 i$42 
+	# ADDresult_$111 i$42 
 
 	# fetch variables
 
@@ -11685,7 +11685,7 @@ ifTrue_107:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$104  SHIFT_TABLE$37
+	# MULresult_$104  SHIFT_TABLE$37
 
 	# fetch variables
 	li t1, 1
@@ -11694,14 +11694,14 @@ ifTrue_107:
 	li t4, 15264
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$104
 	li t4, 15256
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$105 ans$32 result_$104
+	# ADDresult_$105 ans$32 result_$104
 
 	# fetch variables
 
@@ -11806,7 +11806,7 @@ ifTrue_108:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$107  SHIFT_TABLE$39
+	# MULresult_$107  SHIFT_TABLE$39
 
 	# fetch variables
 	li t1, 1
@@ -11815,14 +11815,14 @@ ifTrue_108:
 	li t4, 15216
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$107
 	li t4, 15208
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$108 ans$33 result_$107
+	# ADDresult_$108 ans$33 result_$107
 
 	# fetch variables
 
@@ -12148,7 +12148,7 @@ ifTrue_109:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$114  SHIFT_TABLE$41
+	# MULresult_$114  SHIFT_TABLE$41
 
 	# fetch variables
 	li t1, 1
@@ -12157,14 +12157,14 @@ ifTrue_109:
 	li t4, 15080
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$114
 	li t4, 15072
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$115 ans$35 result_$114
+	# ADDresult_$115 ans$35 result_$114
 
 	# fetch variables
 
@@ -12310,7 +12310,7 @@ next_220:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$118 i$45 
+	# ADDresult_$118 i$45 
 
 	# fetch variables
 
@@ -12462,7 +12462,7 @@ ifFalse_32:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$119 c$15 
+	# MULresult_$119 c$15 
 
 	# fetch variables
 
@@ -12471,11 +12471,11 @@ ifFalse_32:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$119
 	li t4, 14976
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$119
@@ -12773,7 +12773,7 @@ ifTrue_111:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$122  SHIFT_TABLE$43
+	# MULresult_$122  SHIFT_TABLE$43
 
 	# fetch variables
 	li t1, 1
@@ -12782,14 +12782,14 @@ ifTrue_111:
 	li t4, 14872
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$122
 	li t4, 14864
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$123 ans$37 result_$122
+	# ADDresult_$123 ans$37 result_$122
 
 	# fetch variables
 
@@ -12935,7 +12935,7 @@ next_223:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$126 i$48 
+	# ADDresult_$126 i$48 
 
 	# fetch variables
 
@@ -13475,7 +13475,7 @@ ifTrue_115:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$128 x$39 
+	# ADDresult_$128 x$39 
 
 	# fetch variables
 
@@ -13504,7 +13504,7 @@ ifTrue_115:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$129  y$42
+	# SUBresult_$129  y$42
 
 	# fetch variables
 	li t1, 15
@@ -13513,14 +13513,14 @@ ifTrue_115:
 	li t4, 14608
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$129
 	li t4, 14600
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$130 result_$129 
+	# ADDresult_$130 result_$129 
 
 	# fetch variables
 
@@ -13570,7 +13570,7 @@ ifTrue_115:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$131 result_$128 SHIFT_TABLE$47
+	# SUBresult_$131 result_$128 SHIFT_TABLE$47
 
 	# fetch variables
 
@@ -13583,11 +13583,11 @@ ifTrue_115:
 	li t4, 14576
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$131
 	li t4, 14568
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv result_$131
@@ -14160,7 +14160,7 @@ ifTrue_119:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$134 x$45 
+	# ADDresult_$134 x$45 
 
 	# fetch variables
 
@@ -14189,7 +14189,7 @@ ifTrue_119:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$135  y$47
+	# SUBresult_$135  y$47
 
 	# fetch variables
 	li t1, 15
@@ -14198,14 +14198,14 @@ ifTrue_119:
 	li t4, 14352
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$135
 	li t4, 14344
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$136 result_$135 
+	# ADDresult_$136 result_$135 
 
 	# fetch variables
 
@@ -14255,7 +14255,7 @@ ifTrue_119:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$137 result_$134 SHIFT_TABLE$53
+	# SUBresult_$137 result_$134 SHIFT_TABLE$53
 
 	# fetch variables
 
@@ -14268,11 +14268,11 @@ ifTrue_119:
 	li t4, 14320
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$137
 	li t4, 14312
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv result_$137
@@ -14891,7 +14891,7 @@ ifTrue_120:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$141  SHIFT_TABLE$57
+	# MULresult_$141  SHIFT_TABLE$57
 
 	# fetch variables
 	li t1, 1
@@ -14900,14 +14900,14 @@ ifTrue_120:
 	li t4, 14112
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$141
 	li t4, 14104
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$142 ans$44 result_$141
+	# ADDresult_$142 ans$44 result_$141
 
 	# fetch variables
 
@@ -15053,7 +15053,7 @@ next_234:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$145 i$51 
+	# ADDresult_$145 i$51 
 
 	# fetch variables
 
@@ -15719,7 +15719,7 @@ ifTrue_122:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$148  SHIFT_TABLE$59
+	# MULresult_$148  SHIFT_TABLE$59
 
 	# fetch variables
 	li t1, 1
@@ -15728,14 +15728,14 @@ ifTrue_122:
 	li t4, 13848
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$148
 	li t4, 13840
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$149 ans$46 result_$148
+	# ADDresult_$149 ans$46 result_$148
 
 	# fetch variables
 
@@ -15881,7 +15881,7 @@ next_238:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$152 i$54 
+	# ADDresult_$152 i$54 
 
 	# fetch variables
 
@@ -16810,7 +16810,7 @@ next_242:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$162 i$58 
+	# ADDresult_$162 i$58 
 
 	# fetch variables
 
@@ -16907,7 +16907,7 @@ ifTrue_125:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$155  SHIFT_TABLE$61
+	# MULresult_$155  SHIFT_TABLE$61
 
 	# fetch variables
 	li t1, 1
@@ -16916,14 +16916,14 @@ ifTrue_125:
 	li t4, 13456
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$155
 	li t4, 13448
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$156 ans$48 result_$155
+	# ADDresult_$156 ans$48 result_$155
 
 	# fetch variables
 
@@ -17028,7 +17028,7 @@ ifTrue_126:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$158  SHIFT_TABLE$63
+	# MULresult_$158  SHIFT_TABLE$63
 
 	# fetch variables
 	li t1, 1
@@ -17037,14 +17037,14 @@ ifTrue_126:
 	li t4, 13408
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$158
 	li t4, 13400
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$159 ans$49 result_$158
+	# ADDresult_$159 ans$49 result_$158
 
 	# fetch variables
 
@@ -17370,7 +17370,7 @@ ifTrue_127:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$165  SHIFT_TABLE$65
+	# MULresult_$165  SHIFT_TABLE$65
 
 	# fetch variables
 	li t1, 1
@@ -17379,14 +17379,14 @@ ifTrue_127:
 	li t4, 13272
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$165
 	li t4, 13264
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$166 ans$51 result_$165
+	# ADDresult_$166 ans$51 result_$165
 
 	# fetch variables
 
@@ -17532,7 +17532,7 @@ next_246:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$169 i$61 
+	# ADDresult_$169 i$61 
 
 	# fetch variables
 
@@ -17684,7 +17684,7 @@ ifFalse_42:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$170 c$19 
+	# MULresult_$170 c$19 
 
 	# fetch variables
 
@@ -17693,11 +17693,11 @@ ifFalse_42:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$170
 	li t4, 13168
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$170
@@ -17995,7 +17995,7 @@ ifTrue_129:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$173  SHIFT_TABLE$67
+	# MULresult_$173  SHIFT_TABLE$67
 
 	# fetch variables
 	li t1, 1
@@ -18004,14 +18004,14 @@ ifTrue_129:
 	li t4, 13064
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$173
 	li t4, 13056
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$174 ans$53 result_$173
+	# ADDresult_$174 ans$53 result_$173
 
 	# fetch variables
 
@@ -18157,7 +18157,7 @@ next_249:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$177 i$64 
+	# ADDresult_$177 i$64 
 
 	# fetch variables
 
@@ -19072,7 +19072,7 @@ next_252:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$187 i$68 
+	# ADDresult_$187 i$68 
 
 	# fetch variables
 
@@ -19169,7 +19169,7 @@ ifTrue_131:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$180  SHIFT_TABLE$69
+	# MULresult_$180  SHIFT_TABLE$69
 
 	# fetch variables
 	li t1, 1
@@ -19178,14 +19178,14 @@ ifTrue_131:
 	li t4, 12664
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$180
 	li t4, 12656
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$181 ans$56 result_$180
+	# ADDresult_$181 ans$56 result_$180
 
 	# fetch variables
 
@@ -19290,7 +19290,7 @@ ifTrue_132:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$183  SHIFT_TABLE$71
+	# MULresult_$183  SHIFT_TABLE$71
 
 	# fetch variables
 	li t1, 1
@@ -19299,14 +19299,14 @@ ifTrue_132:
 	li t4, 12616
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$183
 	li t4, 12608
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$184 ans$57 result_$183
+	# ADDresult_$184 ans$57 result_$183
 
 	# fetch variables
 
@@ -19632,7 +19632,7 @@ ifTrue_133:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$190  SHIFT_TABLE$73
+	# MULresult_$190  SHIFT_TABLE$73
 
 	# fetch variables
 	li t1, 1
@@ -19641,14 +19641,14 @@ ifTrue_133:
 	li t4, 12480
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$190
 	li t4, 12472
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$191 ans$59 result_$190
+	# ADDresult_$191 ans$59 result_$190
 
 	# fetch variables
 
@@ -19794,7 +19794,7 @@ next_256:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$194 i$71 
+	# ADDresult_$194 i$71 
 
 	# fetch variables
 
@@ -19946,7 +19946,7 @@ ifFalse_44:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$195 c$23 
+	# MULresult_$195 c$23 
 
 	# fetch variables
 
@@ -19955,11 +19955,11 @@ ifFalse_44:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$195
 	li t4, 12376
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$195
@@ -20257,7 +20257,7 @@ ifTrue_135:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$198  SHIFT_TABLE$75
+	# MULresult_$198  SHIFT_TABLE$75
 
 	# fetch variables
 	li t1, 1
@@ -20266,14 +20266,14 @@ ifTrue_135:
 	li t4, 12272
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$198
 	li t4, 12264
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$199 ans$61 result_$198
+	# ADDresult_$199 ans$61 result_$198
 
 	# fetch variables
 
@@ -20419,7 +20419,7 @@ next_259:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$202 i$74 
+	# ADDresult_$202 i$74 
 
 	# fetch variables
 
@@ -20959,7 +20959,7 @@ ifTrue_139:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$204 x$67 
+	# ADDresult_$204 x$67 
 
 	# fetch variables
 
@@ -20988,7 +20988,7 @@ ifTrue_139:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$205  y$70
+	# SUBresult_$205  y$70
 
 	# fetch variables
 	li t1, 15
@@ -20997,14 +20997,14 @@ ifTrue_139:
 	li t4, 12008
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$205
 	li t4, 12000
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$206 result_$205 
+	# ADDresult_$206 result_$205 
 
 	# fetch variables
 
@@ -21054,7 +21054,7 @@ ifTrue_139:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$207 result_$204 SHIFT_TABLE$79
+	# SUBresult_$207 result_$204 SHIFT_TABLE$79
 
 	# fetch variables
 
@@ -21067,11 +21067,11 @@ ifTrue_139:
 	li t4, 11976
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$207
 	li t4, 11968
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv result_$207
@@ -21730,7 +21730,7 @@ ifTrue_140:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$211  SHIFT_TABLE$83
+	# MULresult_$211  SHIFT_TABLE$83
 
 	# fetch variables
 	li t1, 1
@@ -21739,14 +21739,14 @@ ifTrue_140:
 	li t4, 11744
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$211
 	li t4, 11736
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$212 ans$66 result_$211
+	# ADDresult_$212 ans$66 result_$211
 
 	# fetch variables
 
@@ -21892,7 +21892,7 @@ next_266:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$215 i$77 
+	# ADDresult_$215 i$77 
 
 	# fetch variables
 
@@ -22821,7 +22821,7 @@ next_270:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$225 i$81 
+	# ADDresult_$225 i$81 
 
 	# fetch variables
 
@@ -22918,7 +22918,7 @@ ifTrue_143:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$218  SHIFT_TABLE$85
+	# MULresult_$218  SHIFT_TABLE$85
 
 	# fetch variables
 	li t1, 1
@@ -22927,14 +22927,14 @@ ifTrue_143:
 	li t4, 11352
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$218
 	li t4, 11344
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$219 ans$68 result_$218
+	# ADDresult_$219 ans$68 result_$218
 
 	# fetch variables
 
@@ -23039,7 +23039,7 @@ ifTrue_144:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$221  SHIFT_TABLE$87
+	# MULresult_$221  SHIFT_TABLE$87
 
 	# fetch variables
 	li t1, 1
@@ -23048,14 +23048,14 @@ ifTrue_144:
 	li t4, 11304
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$221
 	li t4, 11296
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$222 ans$69 result_$221
+	# ADDresult_$222 ans$69 result_$221
 
 	# fetch variables
 
@@ -23381,7 +23381,7 @@ ifTrue_145:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$228  SHIFT_TABLE$89
+	# MULresult_$228  SHIFT_TABLE$89
 
 	# fetch variables
 	li t1, 1
@@ -23390,14 +23390,14 @@ ifTrue_145:
 	li t4, 11168
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$228
 	li t4, 11160
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$229 ans$71 result_$228
+	# ADDresult_$229 ans$71 result_$228
 
 	# fetch variables
 
@@ -23543,7 +23543,7 @@ next_274:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$232 i$84 
+	# ADDresult_$232 i$84 
 
 	# fetch variables
 
@@ -23695,7 +23695,7 @@ ifFalse_50:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$233 c$27 
+	# MULresult_$233 c$27 
 
 	# fetch variables
 
@@ -23704,11 +23704,11 @@ ifFalse_50:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$233
 	li t4, 11064
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$233
@@ -24006,7 +24006,7 @@ ifTrue_147:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$236  SHIFT_TABLE$91
+	# MULresult_$236  SHIFT_TABLE$91
 
 	# fetch variables
 	li t1, 1
@@ -24015,14 +24015,14 @@ ifTrue_147:
 	li t4, 10960
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$236
 	li t4, 10952
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$237 ans$73 result_$236
+	# ADDresult_$237 ans$73 result_$236
 
 	# fetch variables
 
@@ -24168,7 +24168,7 @@ next_277:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$240 i$87 
+	# ADDresult_$240 i$87 
 
 	# fetch variables
 
@@ -25083,7 +25083,7 @@ next_280:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$250 i$91 
+	# ADDresult_$250 i$91 
 
 	# fetch variables
 
@@ -25180,7 +25180,7 @@ ifTrue_149:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$243  SHIFT_TABLE$93
+	# MULresult_$243  SHIFT_TABLE$93
 
 	# fetch variables
 	li t1, 1
@@ -25189,14 +25189,14 @@ ifTrue_149:
 	li t4, 10560
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$243
 	li t4, 10552
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$244 ans$76 result_$243
+	# ADDresult_$244 ans$76 result_$243
 
 	# fetch variables
 
@@ -25301,7 +25301,7 @@ ifTrue_150:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$246  SHIFT_TABLE$95
+	# MULresult_$246  SHIFT_TABLE$95
 
 	# fetch variables
 	li t1, 1
@@ -25310,14 +25310,14 @@ ifTrue_150:
 	li t4, 10512
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$246
 	li t4, 10504
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$247 ans$77 result_$246
+	# ADDresult_$247 ans$77 result_$246
 
 	# fetch variables
 
@@ -25643,7 +25643,7 @@ ifTrue_151:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$253  SHIFT_TABLE$97
+	# MULresult_$253  SHIFT_TABLE$97
 
 	# fetch variables
 	li t1, 1
@@ -25652,14 +25652,14 @@ ifTrue_151:
 	li t4, 10376
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$253
 	li t4, 10368
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$254 ans$79 result_$253
+	# ADDresult_$254 ans$79 result_$253
 
 	# fetch variables
 
@@ -25805,7 +25805,7 @@ next_284:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$257 i$94 
+	# ADDresult_$257 i$94 
 
 	# fetch variables
 
@@ -25957,7 +25957,7 @@ ifFalse_52:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$258 c$31 
+	# MULresult_$258 c$31 
 
 	# fetch variables
 
@@ -25966,11 +25966,11 @@ ifFalse_52:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$258
 	li t4, 10272
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$258
@@ -26268,7 +26268,7 @@ ifTrue_153:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$261  SHIFT_TABLE$99
+	# MULresult_$261  SHIFT_TABLE$99
 
 	# fetch variables
 	li t1, 1
@@ -26277,14 +26277,14 @@ ifTrue_153:
 	li t4, 10168
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$261
 	li t4, 10160
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$262 ans$81 result_$261
+	# ADDresult_$262 ans$81 result_$261
 
 	# fetch variables
 
@@ -26430,7 +26430,7 @@ next_287:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$265 i$97 
+	# ADDresult_$265 i$97 
 
 	# fetch variables
 
@@ -26970,7 +26970,7 @@ ifTrue_157:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$267 x$87 
+	# ADDresult_$267 x$87 
 
 	# fetch variables
 
@@ -26999,7 +26999,7 @@ ifTrue_157:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$268  y$91
+	# SUBresult_$268  y$91
 
 	# fetch variables
 	li t1, 15
@@ -27008,14 +27008,14 @@ ifTrue_157:
 	li t4, 9904
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$268
 	li t4, 9896
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$269 result_$268 
+	# ADDresult_$269 result_$268 
 
 	# fetch variables
 
@@ -27065,7 +27065,7 @@ ifTrue_157:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$270 result_$267 SHIFT_TABLE$103
+	# SUBresult_$270 result_$267 SHIFT_TABLE$103
 
 	# fetch variables
 
@@ -27078,11 +27078,11 @@ ifTrue_157:
 	li t4, 9872
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$270
 	li t4, 9864
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv result_$270
@@ -27655,7 +27655,7 @@ ifTrue_161:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$273 x$93 
+	# ADDresult_$273 x$93 
 
 	# fetch variables
 
@@ -27684,7 +27684,7 @@ ifTrue_161:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$274  y$96
+	# SUBresult_$274  y$96
 
 	# fetch variables
 	li t1, 15
@@ -27693,14 +27693,14 @@ ifTrue_161:
 	li t4, 9648
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$274
 	li t4, 9640
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$275 result_$274 
+	# ADDresult_$275 result_$274 
 
 	# fetch variables
 
@@ -27750,7 +27750,7 @@ ifTrue_161:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$276 result_$273 SHIFT_TABLE$109
+	# SUBresult_$276 result_$273 SHIFT_TABLE$109
 
 	# fetch variables
 
@@ -27763,11 +27763,11 @@ ifTrue_161:
 	li t4, 9616
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$276
 	li t4, 9608
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv result_$276
@@ -28297,7 +28297,7 @@ next_297:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$417 cur$2 
+	# ADDresult_$417 cur$2 
 
 	# fetch variables
 
@@ -28570,7 +28570,7 @@ ifTrue_162:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$280  SHIFT_TABLE$113
+	# MULresult_$280  SHIFT_TABLE$113
 
 	# fetch variables
 	li t1, 1
@@ -28579,14 +28579,14 @@ ifTrue_162:
 	li t4, 9352
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$280
 	li t4, 9344
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$281 ans$88 result_$280
+	# ADDresult_$281 ans$88 result_$280
 
 	# fetch variables
 
@@ -28732,7 +28732,7 @@ next_299:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$284 i$100 
+	# ADDresult_$284 i$100 
 
 	# fetch variables
 
@@ -29398,7 +29398,7 @@ ifTrue_164:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$287  SHIFT_TABLE$115
+	# MULresult_$287  SHIFT_TABLE$115
 
 	# fetch variables
 	li t1, 1
@@ -29407,14 +29407,14 @@ ifTrue_164:
 	li t4, 9088
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$287
 	li t4, 9080
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$288 ans$90 result_$287
+	# ADDresult_$288 ans$90 result_$287
 
 	# fetch variables
 
@@ -29560,7 +29560,7 @@ next_303:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$291 i$103 
+	# ADDresult_$291 i$103 
 
 	# fetch variables
 
@@ -30489,7 +30489,7 @@ next_307:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$301 i$107 
+	# ADDresult_$301 i$107 
 
 	# fetch variables
 
@@ -30586,7 +30586,7 @@ ifTrue_167:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$294  SHIFT_TABLE$117
+	# MULresult_$294  SHIFT_TABLE$117
 
 	# fetch variables
 	li t1, 1
@@ -30595,14 +30595,14 @@ ifTrue_167:
 	li t4, 8696
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$294
 	li t4, 8688
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$295 ans$92 result_$294
+	# ADDresult_$295 ans$92 result_$294
 
 	# fetch variables
 
@@ -30707,7 +30707,7 @@ ifTrue_168:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$297  SHIFT_TABLE$119
+	# MULresult_$297  SHIFT_TABLE$119
 
 	# fetch variables
 	li t1, 1
@@ -30716,14 +30716,14 @@ ifTrue_168:
 	li t4, 8648
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$297
 	li t4, 8640
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$298 ans$93 result_$297
+	# ADDresult_$298 ans$93 result_$297
 
 	# fetch variables
 
@@ -31049,7 +31049,7 @@ ifTrue_169:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$304  SHIFT_TABLE$121
+	# MULresult_$304  SHIFT_TABLE$121
 
 	# fetch variables
 	li t1, 1
@@ -31058,14 +31058,14 @@ ifTrue_169:
 	li t4, 8512
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$304
 	li t4, 8504
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$305 ans$95 result_$304
+	# ADDresult_$305 ans$95 result_$304
 
 	# fetch variables
 
@@ -31211,7 +31211,7 @@ next_311:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$308 i$110 
+	# ADDresult_$308 i$110 
 
 	# fetch variables
 
@@ -31363,7 +31363,7 @@ ifFalse_62:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$309 c$35 
+	# MULresult_$309 c$35 
 
 	# fetch variables
 
@@ -31372,11 +31372,11 @@ ifFalse_62:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$309
 	li t4, 8408
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$309
@@ -31674,7 +31674,7 @@ ifTrue_171:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$312  SHIFT_TABLE$123
+	# MULresult_$312  SHIFT_TABLE$123
 
 	# fetch variables
 	li t1, 1
@@ -31683,14 +31683,14 @@ ifTrue_171:
 	li t4, 8304
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$312
 	li t4, 8296
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$313 ans$97 result_$312
+	# ADDresult_$313 ans$97 result_$312
 
 	# fetch variables
 
@@ -31836,7 +31836,7 @@ next_314:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$316 i$113 
+	# ADDresult_$316 i$113 
 
 	# fetch variables
 
@@ -32751,7 +32751,7 @@ next_317:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$326 i$117 
+	# ADDresult_$326 i$117 
 
 	# fetch variables
 
@@ -32848,7 +32848,7 @@ ifTrue_173:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$319  SHIFT_TABLE$125
+	# MULresult_$319  SHIFT_TABLE$125
 
 	# fetch variables
 	li t1, 1
@@ -32857,14 +32857,14 @@ ifTrue_173:
 	li t4, 7904
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$319
 	li t4, 7896
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$320 ans$100 result_$319
+	# ADDresult_$320 ans$100 result_$319
 
 	# fetch variables
 
@@ -32969,7 +32969,7 @@ ifTrue_174:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$322  SHIFT_TABLE$127
+	# MULresult_$322  SHIFT_TABLE$127
 
 	# fetch variables
 	li t1, 1
@@ -32978,14 +32978,14 @@ ifTrue_174:
 	li t4, 7856
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$322
 	li t4, 7848
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$323 ans$101 result_$322
+	# ADDresult_$323 ans$101 result_$322
 
 	# fetch variables
 
@@ -33311,7 +33311,7 @@ ifTrue_175:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$329  SHIFT_TABLE$129
+	# MULresult_$329  SHIFT_TABLE$129
 
 	# fetch variables
 	li t1, 1
@@ -33320,14 +33320,14 @@ ifTrue_175:
 	li t4, 7720
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$329
 	li t4, 7712
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$330 ans$103 result_$329
+	# ADDresult_$330 ans$103 result_$329
 
 	# fetch variables
 
@@ -33473,7 +33473,7 @@ next_321:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$333 i$120 
+	# ADDresult_$333 i$120 
 
 	# fetch variables
 
@@ -33625,7 +33625,7 @@ ifFalse_64:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$334 c$39 
+	# MULresult_$334 c$39 
 
 	# fetch variables
 
@@ -33634,11 +33634,11 @@ ifFalse_64:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$334
 	li t4, 7616
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$334
@@ -33936,7 +33936,7 @@ ifTrue_177:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$337  SHIFT_TABLE$131
+	# MULresult_$337  SHIFT_TABLE$131
 
 	# fetch variables
 	li t1, 1
@@ -33945,14 +33945,14 @@ ifTrue_177:
 	li t4, 7512
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$337
 	li t4, 7504
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$338 ans$105 result_$337
+	# ADDresult_$338 ans$105 result_$337
 
 	# fetch variables
 
@@ -34098,7 +34098,7 @@ next_324:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$341 i$123 
+	# ADDresult_$341 i$123 
 
 	# fetch variables
 
@@ -34638,7 +34638,7 @@ ifTrue_181:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$343 x$115 
+	# ADDresult_$343 x$115 
 
 	# fetch variables
 
@@ -34667,7 +34667,7 @@ ifTrue_181:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$344  y$119
+	# SUBresult_$344  y$119
 
 	# fetch variables
 	li t1, 15
@@ -34676,14 +34676,14 @@ ifTrue_181:
 	li t4, 7248
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$344
 	li t4, 7240
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$345 result_$344 
+	# ADDresult_$345 result_$344 
 
 	# fetch variables
 
@@ -34733,7 +34733,7 @@ ifTrue_181:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$346 result_$343 SHIFT_TABLE$135
+	# SUBresult_$346 result_$343 SHIFT_TABLE$135
 
 	# fetch variables
 
@@ -34746,11 +34746,11 @@ ifTrue_181:
 	li t4, 7216
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$346
 	li t4, 7208
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv result_$346
@@ -35409,7 +35409,7 @@ ifTrue_182:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$350  SHIFT_TABLE$139
+	# MULresult_$350  SHIFT_TABLE$139
 
 	# fetch variables
 	li t1, 1
@@ -35418,14 +35418,14 @@ ifTrue_182:
 	li t4, 6984
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$350
 	li t4, 6976
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$351 ans$110 result_$350
+	# ADDresult_$351 ans$110 result_$350
 
 	# fetch variables
 
@@ -35571,7 +35571,7 @@ next_331:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$354 i$126 
+	# ADDresult_$354 i$126 
 
 	# fetch variables
 
@@ -36500,7 +36500,7 @@ next_335:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$364 i$130 
+	# ADDresult_$364 i$130 
 
 	# fetch variables
 
@@ -36597,7 +36597,7 @@ ifTrue_185:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$357  SHIFT_TABLE$141
+	# MULresult_$357  SHIFT_TABLE$141
 
 	# fetch variables
 	li t1, 1
@@ -36606,14 +36606,14 @@ ifTrue_185:
 	li t4, 6592
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$357
 	li t4, 6584
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$358 ans$112 result_$357
+	# ADDresult_$358 ans$112 result_$357
 
 	# fetch variables
 
@@ -36718,7 +36718,7 @@ ifTrue_186:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$360  SHIFT_TABLE$143
+	# MULresult_$360  SHIFT_TABLE$143
 
 	# fetch variables
 	li t1, 1
@@ -36727,14 +36727,14 @@ ifTrue_186:
 	li t4, 6544
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$360
 	li t4, 6536
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$361 ans$113 result_$360
+	# ADDresult_$361 ans$113 result_$360
 
 	# fetch variables
 
@@ -37060,7 +37060,7 @@ ifTrue_187:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$367  SHIFT_TABLE$145
+	# MULresult_$367  SHIFT_TABLE$145
 
 	# fetch variables
 	li t1, 1
@@ -37069,14 +37069,14 @@ ifTrue_187:
 	li t4, 6408
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$367
 	li t4, 6400
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$368 ans$115 result_$367
+	# ADDresult_$368 ans$115 result_$367
 
 	# fetch variables
 
@@ -37222,7 +37222,7 @@ next_339:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$371 i$133 
+	# ADDresult_$371 i$133 
 
 	# fetch variables
 
@@ -37374,7 +37374,7 @@ ifFalse_70:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$372 c$43 
+	# MULresult_$372 c$43 
 
 	# fetch variables
 
@@ -37383,11 +37383,11 @@ ifFalse_70:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$372
 	li t4, 6304
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$372
@@ -37685,7 +37685,7 @@ ifTrue_189:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$375  SHIFT_TABLE$147
+	# MULresult_$375  SHIFT_TABLE$147
 
 	# fetch variables
 	li t1, 1
@@ -37694,14 +37694,14 @@ ifTrue_189:
 	li t4, 6200
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$375
 	li t4, 6192
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$376 ans$117 result_$375
+	# ADDresult_$376 ans$117 result_$375
 
 	# fetch variables
 
@@ -37847,7 +37847,7 @@ next_342:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$379 i$136 
+	# ADDresult_$379 i$136 
 
 	# fetch variables
 
@@ -38762,7 +38762,7 @@ next_345:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$389 i$140 
+	# ADDresult_$389 i$140 
 
 	# fetch variables
 
@@ -38859,7 +38859,7 @@ ifTrue_191:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$382  SHIFT_TABLE$149
+	# MULresult_$382  SHIFT_TABLE$149
 
 	# fetch variables
 	li t1, 1
@@ -38868,14 +38868,14 @@ ifTrue_191:
 	li t4, 5800
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$382
 	li t4, 5792
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$383 ans$120 result_$382
+	# ADDresult_$383 ans$120 result_$382
 
 	# fetch variables
 
@@ -38980,7 +38980,7 @@ ifTrue_192:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$385  SHIFT_TABLE$151
+	# MULresult_$385  SHIFT_TABLE$151
 
 	# fetch variables
 	li t1, 1
@@ -38989,14 +38989,14 @@ ifTrue_192:
 	li t4, 5752
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$385
 	li t4, 5744
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$386 ans$121 result_$385
+	# ADDresult_$386 ans$121 result_$385
 
 	# fetch variables
 
@@ -39322,7 +39322,7 @@ ifTrue_193:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$392  SHIFT_TABLE$153
+	# MULresult_$392  SHIFT_TABLE$153
 
 	# fetch variables
 	li t1, 1
@@ -39331,14 +39331,14 @@ ifTrue_193:
 	li t4, 5616
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$392
 	li t4, 5608
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$393 ans$123 result_$392
+	# ADDresult_$393 ans$123 result_$392
 
 	# fetch variables
 
@@ -39484,7 +39484,7 @@ next_349:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$396 i$143 
+	# ADDresult_$396 i$143 
 
 	# fetch variables
 
@@ -39636,7 +39636,7 @@ ifFalse_72:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$397 c$47 
+	# MULresult_$397 c$47 
 
 	# fetch variables
 
@@ -39645,11 +39645,11 @@ ifFalse_72:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$397
 	li t4, 5512
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$397
@@ -39947,7 +39947,7 @@ ifTrue_195:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$400  SHIFT_TABLE$155
+	# MULresult_$400  SHIFT_TABLE$155
 
 	# fetch variables
 	li t1, 1
@@ -39956,14 +39956,14 @@ ifTrue_195:
 	li t4, 5408
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$400
 	li t4, 5400
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$401 ans$125 result_$400
+	# ADDresult_$401 ans$125 result_$400
 
 	# fetch variables
 
@@ -40109,7 +40109,7 @@ next_352:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$404 i$146 
+	# ADDresult_$404 i$146 
 
 	# fetch variables
 
@@ -40649,7 +40649,7 @@ ifTrue_199:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$406 x$135 
+	# ADDresult_$406 x$135 
 
 	# fetch variables
 
@@ -40678,7 +40678,7 @@ ifTrue_199:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$407  y$140
+	# SUBresult_$407  y$140
 
 	# fetch variables
 	li t1, 15
@@ -40687,14 +40687,14 @@ ifTrue_199:
 	li t4, 5144
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$407
 	li t4, 5136
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$408 result_$407 
+	# ADDresult_$408 result_$407 
 
 	# fetch variables
 
@@ -40744,7 +40744,7 @@ ifTrue_199:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$409 result_$406 SHIFT_TABLE$159
+	# SUBresult_$409 result_$406 SHIFT_TABLE$159
 
 	# fetch variables
 
@@ -40757,11 +40757,11 @@ ifTrue_199:
 	li t4, 5112
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$409
 	li t4, 5104
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv result_$409
@@ -41334,7 +41334,7 @@ ifTrue_203:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$412 x$141 
+	# ADDresult_$412 x$141 
 
 	# fetch variables
 
@@ -41363,7 +41363,7 @@ ifTrue_203:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$413  y$145
+	# SUBresult_$413  y$145
 
 	# fetch variables
 	li t1, 15
@@ -41372,14 +41372,14 @@ ifTrue_203:
 	li t4, 4888
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$413
 	li t4, 4880
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$414 result_$413 
+	# ADDresult_$414 result_$413 
 
 	# fetch variables
 
@@ -41429,7 +41429,7 @@ ifTrue_203:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$415 result_$412 SHIFT_TABLE$165
+	# SUBresult_$415 result_$412 SHIFT_TABLE$165
 
 	# fetch variables
 
@@ -41442,11 +41442,11 @@ ifTrue_203:
 	li t4, 4856
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$415
 	li t4, 4848
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv result_$415
@@ -42263,7 +42263,7 @@ ifTrue_204:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$420  SHIFT_TABLE$169
+	# MULresult_$420  SHIFT_TABLE$169
 
 	# fetch variables
 	li t1, 1
@@ -42272,14 +42272,14 @@ ifTrue_204:
 	li t4, 4560
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$420
 	li t4, 4552
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$421 ans$132 result_$420
+	# ADDresult_$421 ans$132 result_$420
 
 	# fetch variables
 
@@ -42425,7 +42425,7 @@ next_364:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$424 i$149 
+	# ADDresult_$424 i$149 
 
 	# fetch variables
 
@@ -43091,7 +43091,7 @@ ifTrue_206:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$427  SHIFT_TABLE$171
+	# MULresult_$427  SHIFT_TABLE$171
 
 	# fetch variables
 	li t1, 1
@@ -43100,14 +43100,14 @@ ifTrue_206:
 	li t4, 4296
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$427
 	li t4, 4288
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$428 ans$134 result_$427
+	# ADDresult_$428 ans$134 result_$427
 
 	# fetch variables
 
@@ -43253,7 +43253,7 @@ next_368:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$431 i$152 
+	# ADDresult_$431 i$152 
 
 	# fetch variables
 
@@ -44182,7 +44182,7 @@ next_372:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$441 i$156 
+	# ADDresult_$441 i$156 
 
 	# fetch variables
 
@@ -44279,7 +44279,7 @@ ifTrue_209:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$434  SHIFT_TABLE$173
+	# MULresult_$434  SHIFT_TABLE$173
 
 	# fetch variables
 	li t1, 1
@@ -44288,14 +44288,14 @@ ifTrue_209:
 	li t4, 3904
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$434
 	li t4, 3896
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$435 ans$136 result_$434
+	# ADDresult_$435 ans$136 result_$434
 
 	# fetch variables
 
@@ -44400,7 +44400,7 @@ ifTrue_210:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$437  SHIFT_TABLE$175
+	# MULresult_$437  SHIFT_TABLE$175
 
 	# fetch variables
 	li t1, 1
@@ -44409,14 +44409,14 @@ ifTrue_210:
 	li t4, 3856
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$437
 	li t4, 3848
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$438 ans$137 result_$437
+	# ADDresult_$438 ans$137 result_$437
 
 	# fetch variables
 
@@ -44742,7 +44742,7 @@ ifTrue_211:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$444  SHIFT_TABLE$177
+	# MULresult_$444  SHIFT_TABLE$177
 
 	# fetch variables
 	li t1, 1
@@ -44751,14 +44751,14 @@ ifTrue_211:
 	li t4, 3720
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$444
 	li t4, 3712
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$445 ans$139 result_$444
+	# ADDresult_$445 ans$139 result_$444
 
 	# fetch variables
 
@@ -44904,7 +44904,7 @@ next_376:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$448 i$159 
+	# ADDresult_$448 i$159 
 
 	# fetch variables
 
@@ -45056,7 +45056,7 @@ ifFalse_82:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$449 c$51 
+	# MULresult_$449 c$51 
 
 	# fetch variables
 
@@ -45065,11 +45065,11 @@ ifFalse_82:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$449
 	li t4, 3616
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$449
@@ -45367,7 +45367,7 @@ ifTrue_213:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$452  SHIFT_TABLE$179
+	# MULresult_$452  SHIFT_TABLE$179
 
 	# fetch variables
 	li t1, 1
@@ -45376,14 +45376,14 @@ ifTrue_213:
 	li t4, 3512
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$452
 	li t4, 3504
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$453 ans$141 result_$452
+	# ADDresult_$453 ans$141 result_$452
 
 	# fetch variables
 
@@ -45529,7 +45529,7 @@ next_379:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$456 i$162 
+	# ADDresult_$456 i$162 
 
 	# fetch variables
 
@@ -46444,7 +46444,7 @@ next_382:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$466 i$166 
+	# ADDresult_$466 i$166 
 
 	# fetch variables
 
@@ -46541,7 +46541,7 @@ ifTrue_215:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$459  SHIFT_TABLE$181
+	# MULresult_$459  SHIFT_TABLE$181
 
 	# fetch variables
 	li t1, 1
@@ -46550,14 +46550,14 @@ ifTrue_215:
 	li t4, 3112
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$459
 	li t4, 3104
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$460 ans$144 result_$459
+	# ADDresult_$460 ans$144 result_$459
 
 	# fetch variables
 
@@ -46662,7 +46662,7 @@ ifTrue_216:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$462  SHIFT_TABLE$183
+	# MULresult_$462  SHIFT_TABLE$183
 
 	# fetch variables
 	li t1, 1
@@ -46671,14 +46671,14 @@ ifTrue_216:
 	li t4, 3064
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$462
 	li t4, 3056
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$463 ans$145 result_$462
+	# ADDresult_$463 ans$145 result_$462
 
 	# fetch variables
 
@@ -47004,7 +47004,7 @@ ifTrue_217:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$469  SHIFT_TABLE$185
+	# MULresult_$469  SHIFT_TABLE$185
 
 	# fetch variables
 	li t1, 1
@@ -47013,14 +47013,14 @@ ifTrue_217:
 	li t4, 2928
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$469
 	li t4, 2920
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$470 ans$147 result_$469
+	# ADDresult_$470 ans$147 result_$469
 
 	# fetch variables
 
@@ -47166,7 +47166,7 @@ next_386:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$473 i$169 
+	# ADDresult_$473 i$169 
 
 	# fetch variables
 
@@ -47318,7 +47318,7 @@ ifFalse_84:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$474 c$55 
+	# MULresult_$474 c$55 
 
 	# fetch variables
 
@@ -47327,11 +47327,11 @@ ifFalse_84:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$474
 	li t4, 2824
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$474
@@ -47629,7 +47629,7 @@ ifTrue_219:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$477  SHIFT_TABLE$187
+	# MULresult_$477  SHIFT_TABLE$187
 
 	# fetch variables
 	li t1, 1
@@ -47638,14 +47638,14 @@ ifTrue_219:
 	li t4, 2720
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$477
 	li t4, 2712
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$478 ans$149 result_$477
+	# ADDresult_$478 ans$149 result_$477
 
 	# fetch variables
 
@@ -47791,7 +47791,7 @@ next_389:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$481 i$172 
+	# ADDresult_$481 i$172 
 
 	# fetch variables
 
@@ -48331,7 +48331,7 @@ ifTrue_223:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$483 x$163 
+	# ADDresult_$483 x$163 
 
 	# fetch variables
 
@@ -48360,7 +48360,7 @@ ifTrue_223:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$484  y$168
+	# SUBresult_$484  y$168
 
 	# fetch variables
 	li t1, 15
@@ -48369,14 +48369,14 @@ ifTrue_223:
 	li t4, 2456
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$484
 	li t4, 2448
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$485 result_$484 
+	# ADDresult_$485 result_$484 
 
 	# fetch variables
 
@@ -48426,7 +48426,7 @@ ifTrue_223:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# sub result_$486 result_$483 SHIFT_TABLE$191
+	# SUBresult_$486 result_$483 SHIFT_TABLE$191
 
 	# fetch variables
 
@@ -48439,11 +48439,11 @@ ifTrue_223:
 	li t4, 2424
 	add t4, sp, t4
 	ld t2, 0(t4)
+	sub t0, t1, t2
 
 	# get address of local var:result_$486
 	li t4, 2416
 	add t4, sp, t4
-	sub t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv result_$486
@@ -49102,7 +49102,7 @@ ifTrue_224:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$490  SHIFT_TABLE$195
+	# MULresult_$490  SHIFT_TABLE$195
 
 	# fetch variables
 	li t1, 1
@@ -49111,14 +49111,14 @@ ifTrue_224:
 	li t4, 2192
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$490
 	li t4, 2184
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$491 ans$154 result_$490
+	# ADDresult_$491 ans$154 result_$490
 
 	# fetch variables
 
@@ -49264,7 +49264,7 @@ next_396:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$494 i$175 
+	# ADDresult_$494 i$175 
 
 	# fetch variables
 
@@ -50193,7 +50193,7 @@ next_400:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$504 i$179 
+	# ADDresult_$504 i$179 
 
 	# fetch variables
 
@@ -50290,7 +50290,7 @@ ifTrue_227:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$497  SHIFT_TABLE$197
+	# MULresult_$497  SHIFT_TABLE$197
 
 	# fetch variables
 	li t1, 1
@@ -50299,14 +50299,14 @@ ifTrue_227:
 	li t4, 1800
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$497
 	li t4, 1792
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$498 ans$156 result_$497
+	# ADDresult_$498 ans$156 result_$497
 
 	# fetch variables
 
@@ -50411,7 +50411,7 @@ ifTrue_228:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$500  SHIFT_TABLE$199
+	# MULresult_$500  SHIFT_TABLE$199
 
 	# fetch variables
 	li t1, 1
@@ -50420,14 +50420,14 @@ ifTrue_228:
 	li t4, 1752
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$500
 	li t4, 1744
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$501 ans$157 result_$500
+	# ADDresult_$501 ans$157 result_$500
 
 	# fetch variables
 
@@ -50753,7 +50753,7 @@ ifTrue_229:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$507  SHIFT_TABLE$201
+	# MULresult_$507  SHIFT_TABLE$201
 
 	# fetch variables
 	li t1, 1
@@ -50762,14 +50762,14 @@ ifTrue_229:
 	li t4, 1616
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$507
 	li t4, 1608
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$508 ans$159 result_$507
+	# ADDresult_$508 ans$159 result_$507
 
 	# fetch variables
 
@@ -50915,7 +50915,7 @@ next_404:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$511 i$182 
+	# ADDresult_$511 i$182 
 
 	# fetch variables
 
@@ -51067,7 +51067,7 @@ ifFalse_90:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$512 c$59 
+	# MULresult_$512 c$59 
 
 	# fetch variables
 
@@ -51076,11 +51076,11 @@ ifFalse_90:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$512
 	li t4, 1512
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
 	# lv$2 result_$512
@@ -51378,7 +51378,7 @@ ifTrue_231:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mul result_$515  SHIFT_TABLE$203
+	# MULresult_$515  SHIFT_TABLE$203
 
 	# fetch variables
 	li t1, 1
@@ -51387,14 +51387,14 @@ ifTrue_231:
 	li t4, 1408
 	add t4, sp, t4
 	ld t2, 0(t4)
+	mul t0, t1, t2
 
 	# get address of local var:result_$515
 	li t4, 1400
 	add t4, sp, t4
-	mul t0, t1, t2
 	sd t0, 0(t4)
 
-	# add result_$516 ans$161 result_$515
+	# ADDresult_$516 ans$161 result_$515
 
 	# fetch variables
 
@@ -51540,7 +51540,7 @@ next_407:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$519 i$185 
+	# ADDresult_$519 i$185 
 
 	# fetch variables
 
@@ -52455,7 +52455,7 @@ next_410:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# add result_$529 i$189 
+	# ADDresult_$529 i$189 
 
 	# fetch variables
 
@@ -52546,19 +52546,19 @@ ifTrue_233:
 	ld t0, 0(t3)
 	sd t0, 1008(sp)
 
-	# mul result_$522  SHIFT_TABLE$205
+	# MULresult_$522  SHIFT_TABLE$205
 
 	# fetch variables
 	li t1, 1
 
 	# get address of local var:SHIFT_TABLE$205
 	ld t2, 1008(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$522
-	mul t0, t1, t2
 	sd t0, 1000(sp)
 
-	# add result_$523 ans$164 result_$522
+	# ADDresult_$523 ans$164 result_$522
 
 	# fetch variables
 
@@ -52645,19 +52645,19 @@ ifTrue_234:
 	ld t0, 0(t3)
 	sd t0, 960(sp)
 
-	# mul result_$525  SHIFT_TABLE$207
+	# MULresult_$525  SHIFT_TABLE$207
 
 	# fetch variables
 	li t1, 1
 
 	# get address of local var:SHIFT_TABLE$207
 	ld t2, 960(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$525
-	mul t0, t1, t2
 	sd t0, 952(sp)
 
-	# add result_$526 ans$165 result_$525
+	# ADDresult_$526 ans$165 result_$525
 
 	# fetch variables
 
@@ -52919,19 +52919,19 @@ ifTrue_235:
 	ld t0, 0(t3)
 	sd t0, 824(sp)
 
-	# mul result_$532  SHIFT_TABLE$209
+	# MULresult_$532  SHIFT_TABLE$209
 
 	# fetch variables
 	li t1, 1
 
 	# get address of local var:SHIFT_TABLE$209
 	ld t2, 824(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$532
-	mul t0, t1, t2
 	sd t0, 816(sp)
 
-	# add result_$533 ans$167 result_$532
+	# ADDresult_$533 ans$167 result_$532
 
 	# fetch variables
 
@@ -53051,7 +53051,7 @@ next_414:
 	ld t0, 0(t3)
 	sd t0, 768(sp)
 
-	# add result_$536 i$192 
+	# ADDresult_$536 i$192 
 
 	# fetch variables
 
@@ -53183,16 +53183,16 @@ ifFalse_92:
 	ld t0, 0(t3)
 	sd t0, 728(sp)
 
-	# mul result_$537 c$63 
+	# MULresult_$537 c$63 
 
 	# fetch variables
 
 	# get address of local var:c$63
 	ld t1, 728(sp)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_$537
-	mul t0, t1, t2
 	sd t0, 720(sp)
 
 	# lv$2 result_$537
@@ -53440,19 +53440,19 @@ ifTrue_237:
 	ld t0, 0(t3)
 	sd t0, 616(sp)
 
-	# mul result_$540  SHIFT_TABLE$211
+	# MULresult_$540  SHIFT_TABLE$211
 
 	# fetch variables
 	li t1, 1
 
 	# get address of local var:SHIFT_TABLE$211
 	ld t2, 616(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$540
-	mul t0, t1, t2
 	sd t0, 608(sp)
 
-	# add result_$541 ans$169 result_$540
+	# ADDresult_$541 ans$169 result_$540
 
 	# fetch variables
 
@@ -53572,7 +53572,7 @@ next_417:
 	ld t0, 0(t3)
 	sd t0, 560(sp)
 
-	# add result_$544 i$195 
+	# ADDresult_$544 i$195 
 
 	# fetch variables
 
@@ -54016,7 +54016,7 @@ ifTrue_241:
 	ld t0, 0(t3)
 	sd t0, 368(sp)
 
-	# add result_$546 x$183 
+	# ADDresult_$546 x$183 
 
 	# fetch variables
 
@@ -54039,19 +54039,19 @@ ifTrue_241:
 	ld t0, 0(t3)
 	sd t0, 352(sp)
 
-	# sub result_$547  y$189
+	# SUBresult_$547  y$189
 
 	# fetch variables
 	li t1, 15
 
 	# get address of local var:y$189
 	ld t2, 352(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$547
-	sub t0, t1, t2
 	sd t0, 344(sp)
 
-	# add result_$548 result_$547 
+	# ADDresult_$548 result_$547 
 
 	# fetch variables
 
@@ -54089,7 +54089,7 @@ ifTrue_241:
 	ld t0, 0(t3)
 	sd t0, 320(sp)
 
-	# sub result_$549 result_$546 SHIFT_TABLE$215
+	# SUBresult_$549 result_$546 SHIFT_TABLE$215
 
 	# fetch variables
 
@@ -54098,9 +54098,9 @@ ifTrue_241:
 
 	# get address of local var:SHIFT_TABLE$215
 	ld t2, 320(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$549
-	sub t0, t1, t2
 	sd t0, 312(sp)
 
 	# lv result_$549
@@ -54573,7 +54573,7 @@ ifTrue_245:
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# add result_$552 x$189 
+	# ADDresult_$552 x$189 
 
 	# fetch variables
 
@@ -54596,19 +54596,19 @@ ifTrue_245:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# sub result_$553  y$194
+	# SUBresult_$553  y$194
 
 	# fetch variables
 	li t1, 15
 
 	# get address of local var:y$194
 	ld t2, 96(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$553
-	sub t0, t1, t2
 	sd t0, 88(sp)
 
-	# add result_$554 result_$553 
+	# ADDresult_$554 result_$553 
 
 	# fetch variables
 
@@ -54646,7 +54646,7 @@ ifTrue_245:
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# sub result_$555 result_$552 SHIFT_TABLE$221
+	# SUBresult_$555 result_$552 SHIFT_TABLE$221
 
 	# fetch variables
 
@@ -54655,9 +54655,9 @@ ifTrue_245:
 
 	# get address of local var:SHIFT_TABLE$221
 	ld t2, 64(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$555
-	sub t0, t1, t2
 	sd t0, 56(sp)
 
 	# lv result_$555
@@ -54788,7 +54788,7 @@ next_426:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# add result_$557 cur$6 
+	# ADDresult_$557 cur$6 
 
 	# fetch variables
 
@@ -54858,13 +54858,24 @@ mainEntry44:
 	li t4, 8
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

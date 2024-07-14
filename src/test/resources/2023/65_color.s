@@ -190,30 +190,26 @@ dfsEntry:
 	li t4, 1376
 	add t4, sp, t4
 	sd a1, 0(t4)
-	li t4, 1424
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:2
 	li t4, 1368
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 1416
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a2, 0(t4)
+
+	# get address of local var:3
 	li t4, 1360
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 1408
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a3, 0(t4)
+
+	# get address of local var:4
 	li t4, 1352
 	add t4, sp, t4
-	sd t3, 0(t4)
-	li t4, 1400
-	add t4, sp, t4
-	ld t3, 0(t4)
+	sd a4, 0(t4)
+
+	# get address of local var:5
 	li t4, 1344
 	add t4, sp, t4
-	sd t3, 0(t4)
+	sd a5, 0(t4)
 
 	# allocate lv$6
 	li t0, 1328
@@ -944,7 +940,7 @@ next_1:
 	ld t0, 0(t3)
 	sd t0, 984(sp)
 
-	# add result_ a$2 b$2
+	# ADDresult_ a$2 b$2
 
 	# fetch variables
 
@@ -969,7 +965,7 @@ next_1:
 	ld t0, 0(t3)
 	sd t0, 968(sp)
 
-	# add result_$1 result_ c$2
+	# ADDresult_$1 result_ c$2
 
 	# fetch variables
 
@@ -994,7 +990,7 @@ next_1:
 	ld t0, 0(t3)
 	sd t0, 952(sp)
 
-	# add result_$2 result_$1 d$2
+	# ADDresult_$2 result_$1 d$2
 
 	# fetch variables
 
@@ -1019,7 +1015,7 @@ next_1:
 	ld t0, 0(t3)
 	sd t0, 936(sp)
 
-	# add result_$3 result_$2 e$2
+	# ADDresult_$3 result_$2 e$2
 
 	# fetch variables
 
@@ -1205,7 +1201,7 @@ ifTrue_3:
 	# get address of local var:equal
 	sd a0, 856(sp)
 
-	# sub result_$4 a$4 equal
+	# SUBresult_$4 a$4 equal
 
 	# fetch variables
 
@@ -1214,9 +1210,9 @@ ifTrue_3:
 
 	# get address of local var:equal
 	ld t2, 856(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$4
-	sub t0, t1, t2
 	sd t0, 848(sp)
 
 	# load a$5 lv
@@ -1230,16 +1226,16 @@ ifTrue_3:
 	ld t0, 0(t3)
 	sd t0, 840(sp)
 
-	# sub result_$5 a$5 
+	# SUBresult_$5 a$5 
 
 	# fetch variables
 
 	# get address of local var:a$5
 	ld t1, 840(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$5
-	sub t0, t1, t2
 	sd t0, 832(sp)
 
 	# load b$3 lv$1
@@ -1304,32 +1300,24 @@ ifTrue_3:
 
 	# get address of local var:c$3
 	ld t1, 816(sp)
-
-	# push c$3
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:d$3
 	ld t1, 808(sp)
-
-	# push d$3
-	sd t1, -16(sp)
+	mv a3, t1
 
 	# fetch variables
 
 	# get address of local var:e$3
 	ld t1, 800(sp)
-
-	# push e$3
-	sd t1, -24(sp)
+	mv a4, t1
 
 	# fetch variables
 	li t1, 1
-
-	# push 
-	sd t1, -32(sp)
-	addi sp, sp, -32
+	mv a5, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1343,12 +1331,12 @@ ifTrue_3:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 32
+	addi sp, sp, 0
 
 	# get address of local var:dfs
 	sd a0, 792(sp)
 
-	# mul result_$6 result_$4 dfs
+	# MULresult_$6 result_$4 dfs
 
 	# fetch variables
 
@@ -1357,12 +1345,12 @@ ifTrue_3:
 
 	# get address of local var:dfs
 	ld t2, 792(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$6
-	mul t0, t1, t2
 	sd t0, 784(sp)
 
-	# add result_$7 ans result_$6
+	# ADDresult_$7 ans result_$6
 
 	# fetch variables
 
@@ -1505,7 +1493,7 @@ ifTrue_4:
 	# get address of local var:equal$1
 	sd a0, 720(sp)
 
-	# sub result_$9 b$5 equal$1
+	# SUBresult_$9 b$5 equal$1
 
 	# fetch variables
 
@@ -1514,9 +1502,9 @@ ifTrue_4:
 
 	# get address of local var:equal$1
 	ld t2, 720(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$9
-	sub t0, t1, t2
 	sd t0, 712(sp)
 
 	# load a$6 lv
@@ -1530,7 +1518,7 @@ ifTrue_4:
 	ld t0, 0(t3)
 	sd t0, 704(sp)
 
-	# add result_$10 a$6 
+	# ADDresult_$10 a$6 
 
 	# fetch variables
 
@@ -1553,16 +1541,16 @@ ifTrue_4:
 	ld t0, 0(t3)
 	sd t0, 688(sp)
 
-	# sub result_$11 b$6 
+	# SUBresult_$11 b$6 
 
 	# fetch variables
 
 	# get address of local var:b$6
 	ld t1, 688(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$11
-	sub t0, t1, t2
 	sd t0, 680(sp)
 
 	# load c$4 lv$2
@@ -1616,32 +1604,24 @@ ifTrue_4:
 
 	# get address of local var:c$4
 	ld t1, 672(sp)
-
-	# push c$4
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:d$4
 	ld t1, 664(sp)
-
-	# push d$4
-	sd t1, -16(sp)
+	mv a3, t1
 
 	# fetch variables
 
 	# get address of local var:e$4
 	ld t1, 656(sp)
-
-	# push e$4
-	sd t1, -24(sp)
+	mv a4, t1
 
 	# fetch variables
 	li t1, 2
-
-	# push 
-	sd t1, -32(sp)
-	addi sp, sp, -32
+	mv a5, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1655,12 +1635,12 @@ ifTrue_4:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 32
+	addi sp, sp, 0
 
 	# get address of local var:dfs$1
 	sd a0, 648(sp)
 
-	# mul result_$12 result_$9 dfs$1
+	# MULresult_$12 result_$9 dfs$1
 
 	# fetch variables
 
@@ -1669,12 +1649,12 @@ ifTrue_4:
 
 	# get address of local var:dfs$1
 	ld t2, 648(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$12
-	mul t0, t1, t2
 	sd t0, 640(sp)
 
-	# add result_$13 ans$1 result_$12
+	# ADDresult_$13 ans$1 result_$12
 
 	# fetch variables
 
@@ -1817,7 +1797,7 @@ ifTrue_5:
 	# get address of local var:equal$2
 	sd a0, 576(sp)
 
-	# sub result_$15 c$6 equal$2
+	# SUBresult_$15 c$6 equal$2
 
 	# fetch variables
 
@@ -1826,9 +1806,9 @@ ifTrue_5:
 
 	# get address of local var:equal$2
 	ld t2, 576(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$15
-	sub t0, t1, t2
 	sd t0, 568(sp)
 
 	# load a$7 lv
@@ -1853,7 +1833,7 @@ ifTrue_5:
 	ld t0, 0(t3)
 	sd t0, 552(sp)
 
-	# add result_$16 b$7 
+	# ADDresult_$16 b$7 
 
 	# fetch variables
 
@@ -1876,16 +1856,16 @@ ifTrue_5:
 	ld t0, 0(t3)
 	sd t0, 536(sp)
 
-	# sub result_$17 c$7 
+	# SUBresult_$17 c$7 
 
 	# fetch variables
 
 	# get address of local var:c$7
 	ld t1, 536(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$17
-	sub t0, t1, t2
 	sd t0, 528(sp)
 
 	# load d$5 lv$3
@@ -1928,32 +1908,24 @@ ifTrue_5:
 
 	# get address of local var:result_$17
 	ld t1, 528(sp)
-
-	# push result_$17
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:d$5
 	ld t1, 520(sp)
-
-	# push d$5
-	sd t1, -16(sp)
+	mv a3, t1
 
 	# fetch variables
 
 	# get address of local var:e$5
 	ld t1, 512(sp)
-
-	# push e$5
-	sd t1, -24(sp)
+	mv a4, t1
 
 	# fetch variables
 	li t1, 3
-
-	# push 
-	sd t1, -32(sp)
-	addi sp, sp, -32
+	mv a5, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1967,12 +1939,12 @@ ifTrue_5:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 32
+	addi sp, sp, 0
 
 	# get address of local var:dfs$2
 	sd a0, 504(sp)
 
-	# mul result_$18 result_$15 dfs$2
+	# MULresult_$18 result_$15 dfs$2
 
 	# fetch variables
 
@@ -1981,12 +1953,12 @@ ifTrue_5:
 
 	# get address of local var:dfs$2
 	ld t2, 504(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$18
-	mul t0, t1, t2
 	sd t0, 496(sp)
 
-	# add result_$19 ans$2 result_$18
+	# ADDresult_$19 ans$2 result_$18
 
 	# fetch variables
 
@@ -2129,7 +2101,7 @@ ifTrue_6:
 	# get address of local var:equal$3
 	sd a0, 432(sp)
 
-	# sub result_$21 d$7 equal$3
+	# SUBresult_$21 d$7 equal$3
 
 	# fetch variables
 
@@ -2138,9 +2110,9 @@ ifTrue_6:
 
 	# get address of local var:equal$3
 	ld t2, 432(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$21
-	sub t0, t1, t2
 	sd t0, 424(sp)
 
 	# load a$8 lv
@@ -2176,7 +2148,7 @@ ifTrue_6:
 	ld t0, 0(t3)
 	sd t0, 400(sp)
 
-	# add result_$22 c$8 
+	# ADDresult_$22 c$8 
 
 	# fetch variables
 
@@ -2199,16 +2171,16 @@ ifTrue_6:
 	ld t0, 0(t3)
 	sd t0, 384(sp)
 
-	# sub result_$23 d$8 
+	# SUBresult_$23 d$8 
 
 	# fetch variables
 
 	# get address of local var:d$8
 	ld t1, 384(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$23
-	sub t0, t1, t2
 	sd t0, 376(sp)
 
 	# load e$6 lv$4
@@ -2240,32 +2212,24 @@ ifTrue_6:
 
 	# get address of local var:result_$22
 	ld t1, 392(sp)
-
-	# push result_$22
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:result_$23
 	ld t1, 376(sp)
-
-	# push result_$23
-	sd t1, -16(sp)
+	mv a3, t1
 
 	# fetch variables
 
 	# get address of local var:e$6
 	ld t1, 368(sp)
-
-	# push e$6
-	sd t1, -24(sp)
+	mv a4, t1
 
 	# fetch variables
 	li t1, 4
-
-	# push 
-	sd t1, -32(sp)
-	addi sp, sp, -32
+	mv a5, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2279,12 +2243,12 @@ ifTrue_6:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 32
+	addi sp, sp, 0
 
 	# get address of local var:dfs$3
 	sd a0, 360(sp)
 
-	# mul result_$24 result_$21 dfs$3
+	# MULresult_$24 result_$21 dfs$3
 
 	# fetch variables
 
@@ -2293,12 +2257,12 @@ ifTrue_6:
 
 	# get address of local var:dfs$3
 	ld t2, 360(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$24
-	mul t0, t1, t2
 	sd t0, 352(sp)
 
-	# add result_$25 ans$3 result_$24
+	# ADDresult_$25 ans$3 result_$24
 
 	# fetch variables
 
@@ -2444,7 +2408,7 @@ ifTrue_7:
 	ld t0, 0(t3)
 	sd t0, 272(sp)
 
-	# add result_$27 d$9 
+	# ADDresult_$27 d$9 
 
 	# fetch variables
 
@@ -2467,16 +2431,16 @@ ifTrue_7:
 	ld t0, 0(t3)
 	sd t0, 256(sp)
 
-	# sub result_$28 e$9 
+	# SUBresult_$28 e$9 
 
 	# fetch variables
 
 	# get address of local var:e$9
 	ld t1, 256(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$28
-	sub t0, t1, t2
 	sd t0, 248(sp)
 
 	# prepare params
@@ -2497,32 +2461,24 @@ ifTrue_7:
 
 	# get address of local var:c$9
 	ld t1, 280(sp)
-
-	# push c$9
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:result_$27
 	ld t1, 264(sp)
-
-	# push result_$27
-	sd t1, -16(sp)
+	mv a3, t1
 
 	# fetch variables
 
 	# get address of local var:result_$28
 	ld t1, 248(sp)
-
-	# push result_$28
-	sd t1, -24(sp)
+	mv a4, t1
 
 	# fetch variables
 	li t1, 5
-
-	# push 
-	sd t1, -32(sp)
-	addi sp, sp, -32
+	mv a5, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2536,12 +2492,12 @@ ifTrue_7:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 32
+	addi sp, sp, 0
 
 	# get address of local var:dfs$4
 	sd a0, 240(sp)
 
-	# mul result_$29 e$8 dfs$4
+	# MULresult_$29 e$8 dfs$4
 
 	# fetch variables
 
@@ -2550,12 +2506,12 @@ ifTrue_7:
 
 	# get address of local var:dfs$4
 	ld t2, 240(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$29
-	mul t0, t1, t2
 	sd t0, 232(sp)
 
-	# add result_$30 ans$4 result_$29
+	# ADDresult_$30 ans$4 result_$29
 
 	# fetch variables
 
@@ -3295,7 +3251,7 @@ next_9:
 	ld t0, 0(t3)
 	sd t0, 576(sp)
 
-	# add result_$5 i$2 
+	# ADDresult_$5 i$2 
 
 	# fetch variables
 
@@ -3404,7 +3360,7 @@ next_10:
 	ld t0, 0(t3)
 	sd t0, 528(sp)
 
-	# add result_$4 j$2 
+	# ADDresult_$4 j$2 
 
 	# fetch variables
 
@@ -3513,7 +3469,7 @@ next_11:
 	ld t0, 0(t3)
 	sd t0, 480(sp)
 
-	# add result_$3 k$2 
+	# ADDresult_$3 k$2 
 
 	# fetch variables
 
@@ -3622,7 +3578,7 @@ next_12:
 	ld t0, 0(t3)
 	sd t0, 432(sp)
 
-	# add result_$2 l$2 
+	# ADDresult_$2 l$2 
 
 	# fetch variables
 
@@ -3893,7 +3849,7 @@ whileBody_5:
 	ld t0, 0(t3)
 	sd t0, 288(sp)
 
-	# add result_ h$2 
+	# ADDresult_ h$2 
 
 	# fetch variables
 
@@ -3931,7 +3887,7 @@ next_13:
 	ld t0, 0(t3)
 	sd t0, 272(sp)
 
-	# add result_$1 m$2 
+	# ADDresult_$1 m$2 
 
 	# fetch variables
 
@@ -4199,7 +4155,7 @@ whileBody_6:
 	ld t0, 0(t3)
 	sd t0, 128(sp)
 
-	# add result_$6 cns$2 
+	# ADDresult_$6 cns$2 
 
 	# fetch variables
 
@@ -4233,7 +4189,7 @@ whileBody_6:
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# add result_$7 i$7 
+	# ADDresult_$7 i$7 
 
 	# fetch variables
 
@@ -4400,32 +4356,24 @@ next_14:
 
 	# get address of local var:cns$8
 	ld t1, 56(sp)
-
-	# push cns$8
-	sd t1, -8(sp)
+	mv a2, t1
 
 	# fetch variables
 
 	# get address of local var:cns$10
 	ld t1, 40(sp)
-
-	# push cns$10
-	sd t1, -16(sp)
+	mv a3, t1
 
 	# fetch variables
 
 	# get address of local var:cns$12
 	ld t1, 24(sp)
-
-	# push cns$12
-	sd t1, -24(sp)
+	mv a4, t1
 
 	# fetch variables
 	li t1, 0
-
-	# push 
-	sd t1, -32(sp)
-	addi sp, sp, -32
+	mv a5, t1
+	addi sp, sp, 0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4439,7 +4387,7 @@ next_14:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 32
+	addi sp, sp, 0
 
 	# get address of local var:dfs
 	sd a0, 16(sp)
@@ -4508,13 +4456,24 @@ next_14:
 	li t4, 784
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 

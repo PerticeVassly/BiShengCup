@@ -64,7 +64,7 @@ mainEntry20:
 	ld t0, 0(t3)
 	sd t0, 296(sp)
 
-	# mul result_ a b
+	# MULresult_ a b
 
 	# fetch variables
 
@@ -73,9 +73,9 @@ mainEntry20:
 
 	# get address of local var:b
 	ld t2, 296(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_
-	mul t0, t1, t2
 	sd t0, 288(sp)
 
 	# load c gv2
@@ -119,7 +119,7 @@ mainEntry20:
 	ld t0, 0(t3)
 	sd t0, 256(sp)
 
-	# add result_$2 e d
+	# ADDresult_$2 e d
 
 	# fetch variables
 
@@ -278,7 +278,7 @@ secondCond_31:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# mul result_$7 b$2 c$2
+	# MULresult_$7 b$2 c$2
 
 	# fetch variables
 
@@ -287,12 +287,12 @@ secondCond_31:
 
 	# get address of local var:c$2
 	ld t2, 184(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$7
-	mul t0, t1, t2
 	sd t0, 176(sp)
 
-	# sub result_$8 a$3 result_$7
+	# SUBresult_$8 a$3 result_$7
 
 	# fetch variables
 
@@ -301,9 +301,9 @@ secondCond_31:
 
 	# get address of local var:result_$7
 	ld t2, 176(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$8
-	sub t0, t1, t2
 	sd t0, 168(sp)
 
 	# load d$2 gv3
@@ -347,7 +347,7 @@ secondCond_31:
 	div t0, t1, t2
 	sd t0, 136(sp)
 
-	# sub result_$10 d$2 result_$9
+	# SUBresult_$10 d$2 result_$9
 
 	# fetch variables
 
@@ -356,9 +356,9 @@ secondCond_31:
 
 	# get address of local var:result_$9
 	ld t2, 136(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$10
-	sub t0, t1, t2
 	sd t0, 128(sp)
 
 	# cmp result_$8 result_$10 cond_eq_tmp_$1
@@ -438,7 +438,7 @@ secondCond_32:
 	ld t0, 0(t3)
 	sd t0, 80(sp)
 
-	# add result_$3 a$2 b$1
+	# ADDresult_$3 a$2 b$1
 
 	# fetch variables
 
@@ -452,7 +452,7 @@ secondCond_32:
 	# get address of local var:result_$3
 	sd t0, 72(sp)
 
-	# mul result_$4 a$1 result_$3
+	# MULresult_$4 a$1 result_$3
 
 	# fetch variables
 
@@ -461,9 +461,9 @@ secondCond_32:
 
 	# get address of local var:result_$3
 	ld t2, 72(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$4
-	mul t0, t1, t2
 	sd t0, 64(sp)
 
 	# load c$1 gv2
@@ -475,7 +475,7 @@ secondCond_32:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# add result_$5 result_$4 c$1
+	# ADDresult_$5 result_$4 c$1
 
 	# fetch variables
 
@@ -507,7 +507,7 @@ secondCond_32:
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# add result_$6 d$1 e$1
+	# ADDresult_$6 d$1 e$1
 
 	# fetch variables
 
@@ -570,13 +570,24 @@ secondCond_32:
 	ld t1, 0(sp)
 	beqz t1, secondCond_31
 	j ifTrue_52
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
     ret 
