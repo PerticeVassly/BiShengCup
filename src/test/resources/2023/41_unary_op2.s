@@ -135,7 +135,7 @@ mainEntry90:
 	# get address of local var:tmp_$1
 	sw t0, 48(sp)
 
-	# ZEXT tmp_$2 tmp_$1
+	#  tmp_$2 tmp_$1
 
 	# fetch variables
 
@@ -172,7 +172,7 @@ mainEntry90:
 	# get address of local var:tmp_$4
 	sw t0, 36(sp)
 
-	# ZEXT tmp_$5 tmp_$4
+	#  tmp_$5 tmp_$4
 
 	# fetch variables
 
@@ -209,7 +209,7 @@ mainEntry90:
 	# get address of local var:tmp_$7
 	sw t0, 24(sp)
 
-	# ZEXT tmp_$8 tmp_$7
+	#  tmp_$8 tmp_$7
 
 	# fetch variables
 

@@ -256,7 +256,7 @@ whileCond_216:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 232(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -949,7 +949,7 @@ whileCond_217:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 368(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -1021,7 +1021,7 @@ whileBody_217:
 	lw t0, 0(t3)
 	sw t0, 344(sp)
 
-	# F2I i2f_ i$2
+	#  i2f_ i$2
 
 	# fetch variables
 
@@ -1080,7 +1080,7 @@ whileBody_217:
 	lw t0, 0(t3)
 	sw t0, 324(sp)
 
-	# F2I i2f_$1 i$4
+	#  i2f_$1 i$4
 
 	# fetch variables
 
@@ -1139,7 +1139,7 @@ whileBody_217:
 	lw t0, 0(t3)
 	sw t0, 304(sp)
 
-	# F2I i2f_$2 i$6
+	#  i2f_$2 i$6
 
 	# fetch variables
 
@@ -1198,7 +1198,7 @@ whileBody_217:
 	lw t0, 0(t3)
 	sw t0, 284(sp)
 
-	# F2I i2f_$3 i$8
+	#  i2f_$3 i$8
 
 	# fetch variables
 
@@ -1257,7 +1257,7 @@ whileBody_217:
 	lw t0, 0(t3)
 	sw t0, 264(sp)
 
-	# F2I i2f_$4 i$10
+	#  i2f_$4 i$10
 
 	# fetch variables
 
@@ -1316,7 +1316,7 @@ whileBody_217:
 	lw t0, 0(t3)
 	sw t0, 244(sp)
 
-	# F2I i2f_$5 i$12
+	#  i2f_$5 i$12
 
 	# fetch variables
 
@@ -1639,7 +1639,7 @@ whileCond_218:
 	# get address of local var:cond_lt_tmp_$1
 	sw t0, 148(sp)
 
-	# ZEXT cond_tmp_$1 cond_lt_tmp_$1
+	#  cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -1711,7 +1711,7 @@ whileBody_218:
 	flw ft0, 0(t3)
 	fsw ft0, 124(sp)
 
-	# F2I f2i_ c0$2
+	#  f2i_ c0$2
 
 	# fetch variables
 
@@ -1876,7 +1876,7 @@ whileCond_219:
 	# get address of local var:cond_lt_tmp_$2
 	sw t0, 96(sp)
 
-	# ZEXT cond_tmp_$2 cond_lt_tmp_$2
+	#  cond_tmp_$2 cond_lt_tmp_$2
 
 	# fetch variables
 
@@ -1948,7 +1948,7 @@ whileBody_219:
 	flw ft0, 0(t3)
 	fsw ft0, 72(sp)
 
-	# F2I f2i_$1 c1$2
+	#  f2i_$1 c1$2
 
 	# fetch variables
 
@@ -2113,7 +2113,7 @@ whileCond_220:
 	# get address of local var:cond_lt_tmp_$3
 	sw t0, 44(sp)
 
-	# ZEXT cond_tmp_$3 cond_lt_tmp_$3
+	#  cond_tmp_$3 cond_lt_tmp_$3
 
 	# fetch variables
 
@@ -2185,7 +2185,7 @@ whileBody_220:
 	flw ft0, 0(t3)
 	fsw ft0, 20(sp)
 
-	# F2I f2i_$2 c2$2
+	#  f2i_$2 c2$2
 
 	# fetch variables
 

@@ -84,7 +84,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
      * @param instr
      */
     private void beforeAUnaryInstr(Instruction instr){
-        insertComment(instr.getOp().toString() + " " + instr.getLVal().getName() + " " + instr.getOperand(0).getName());
+        insertComment( " " + instr.getLVal().getName() + " " + instr.getOperand(0).getName());
         allocator.prepareOperands(instr.getOperand(0));
     }
 
@@ -410,7 +410,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
                 break;
 
             case "olt":
-                riscInstructions.add(new RiscFlts(new Register("t0"), new Register("ft2"), new Register("ft1")));
+                riscInstructions.add(new RiscFlts(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 break;
 
             case "oge":
@@ -463,7 +463,14 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
         allocator.prepareOperands(retVal);
 
-        riscInstructions.add(new RiscMv(new Register("a0"), new Register("t1")));
+        if(retVal.getType() instanceof IntType){
+            riscInstructions.add(new RiscMv(new Register("a0"), new Register("t1")));
+        } else if(retVal.getType() instanceof FloatType){
+            riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft1")));
+            riscInstructions.add(new RiscFmvwx(new Register("fa0"), new Register("t0")));
+        } else {
+            assert false;
+        }
         riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(allocator.getStackSize())));
         riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
 

@@ -3699,7 +3699,7 @@ whileCond_248:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 380(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -3771,7 +3771,7 @@ whileBody_248:
 	lw t0, 0(t3)
 	sw t0, 356(sp)
 
-	# F2I i2f_ i$2
+	#  i2f_ i$2
 
 	# fetch variables
 
@@ -3830,7 +3830,7 @@ whileBody_248:
 	lw t0, 0(t3)
 	sw t0, 336(sp)
 
-	# F2I i2f_$1 i$4
+	#  i2f_$1 i$4
 
 	# fetch variables
 
@@ -3889,7 +3889,7 @@ whileBody_248:
 	lw t0, 0(t3)
 	sw t0, 316(sp)
 
-	# F2I i2f_$2 i$6
+	#  i2f_$2 i$6
 
 	# fetch variables
 
@@ -3948,7 +3948,7 @@ whileBody_248:
 	lw t0, 0(t3)
 	sw t0, 296(sp)
 
-	# F2I i2f_$3 i$8
+	#  i2f_$3 i$8
 
 	# fetch variables
 
@@ -4007,7 +4007,7 @@ whileBody_248:
 	lw t0, 0(t3)
 	sw t0, 276(sp)
 
-	# F2I i2f_$4 i$10
+	#  i2f_$4 i$10
 
 	# fetch variables
 
@@ -4066,7 +4066,7 @@ whileBody_248:
 	lw t0, 0(t3)
 	sw t0, 256(sp)
 
-	# F2I i2f_$5 i$12
+	#  i2f_$5 i$12
 
 	# fetch variables
 
@@ -4400,7 +4400,7 @@ whileCond_249:
 	# get address of local var:cond_lt_tmp_$1
 	sw t0, 156(sp)
 
-	# ZEXT cond_tmp_$1 cond_lt_tmp_$1
+	#  cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -4472,7 +4472,7 @@ whileBody_249:
 	flw ft0, 0(t3)
 	fsw ft0, 132(sp)
 
-	# F2I f2i_ c0$2
+	#  f2i_ c0$2
 
 	# fetch variables
 
@@ -4648,7 +4648,7 @@ whileCond_250:
 	# get address of local var:cond_lt_tmp_$2
 	sw t0, 100(sp)
 
-	# ZEXT cond_tmp_$2 cond_lt_tmp_$2
+	#  cond_tmp_$2 cond_lt_tmp_$2
 
 	# fetch variables
 
@@ -4720,7 +4720,7 @@ whileBody_250:
 	flw ft0, 0(t3)
 	fsw ft0, 76(sp)
 
-	# F2I f2i_$1 c1$2
+	#  f2i_$1 c1$2
 
 	# fetch variables
 
@@ -4896,7 +4896,7 @@ whileCond_251:
 	# get address of local var:cond_lt_tmp_$3
 	sw t0, 44(sp)
 
-	# ZEXT cond_tmp_$3 cond_lt_tmp_$3
+	#  cond_tmp_$3 cond_lt_tmp_$3
 
 	# fetch variables
 
@@ -4968,7 +4968,7 @@ whileBody_251:
 	flw ft0, 0(t3)
 	fsw ft0, 20(sp)
 
-	# F2I f2i_$2 c2$2
+	#  f2i_$2 c2$2
 
 	# fetch variables
 

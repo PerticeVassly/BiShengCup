@@ -24,14 +24,14 @@ float_absEntry:
   %cond_lt_tmp_ = fcmp olt float %x, 0x0
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_267, label %next_438
+  br i1 %cond_, label %ifTrue_, label %next_
 
-ifTrue_267:                                            ; pred = %float_absEntry
+ifTrue_:                                               ; pred = %float_absEntry
   %x$1 = load float, float* %lv, align 4
   %tmp_ = fsub float 0x0, %x$1
   ret float %tmp_
 
-next_438:                                              ; pred = %float_absEntry
+next_:                                                 ; pred = %float_absEntry
   %x$2 = load float, float* %lv, align 4
   ret float %x$2
 }
@@ -40,20 +40,7 @@ define float @circle_area(i32 %0) {
 circle_areaEntry:
   %lv = alloca i32, align 4
   store i32 %0, i32* %lv, align 4
-  %radius = load i32, i32* %lv, align 4
-  %i2f_ = sitofp i32 %radius to float
-  %result_ = fmul float 0x400921fb60000000, %i2f_
-  %radius$1 = load i32, i32* %lv, align 4
-  %i2f_$1 = sitofp i32 %radius$1 to float
-  %result_$1 = fmul float %result_, %i2f_$1
-  %radius$2 = load i32, i32* %lv, align 4
-  %radius$3 = load i32, i32* %lv, align 4
-  %result_$2 = mul i32 %radius$2, %radius$3
-  %i2f_$2 = sitofp i32 %result_$2 to float
-  %result_$3 = fmul float %i2f_$2, 0x400921fb60000000
-  %result_$4 = fadd float %result_$1, %result_$3
-  %result_$5 = fdiv float %result_$4, 0x4000000000000000
-  ret float %result_$5
+  ret float 0x4008ccccc0000000
 }
 
 define i32 @float_eq(float %0, float %1) {
@@ -69,12 +56,12 @@ float_eqEntry:
   %cond_lt_tmp_ = fcmp olt float %float_abs, 0x3eb0c6f7a0000000
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_268, label %ifFalse_101
+  br i1 %cond_, label %ifTrue_1, label %ifFalse_
 
-ifTrue_268:                                           ; pred = %float_eqEntry
+ifTrue_1:                                             ; pred = %float_eqEntry
   ret i32 1
 
-ifFalse_101:                                          ; pred = %float_eqEntry
+ifFalse_:                                             ; pred = %float_eqEntry
   ret i32 0
 }
 
@@ -106,17 +93,17 @@ assertEntry:
   %tmp_$1 = xor i1 %tmp_, 1
   %tmp_$2 = zext i1 %tmp_$1 to i32
   %cond_normalize_ = icmp ne i32 %tmp_$2, 0
-  br i1 %cond_normalize_, label %ifTrue_269, label %ifFalse_102
+  br i1 %cond_normalize_, label %ifTrue_2, label %ifFalse_1
 
-ifTrue_269:                                         ; pred = %assertEntry
+ifTrue_2:                                           ; pred = %assertEntry
   call void @error()
-  br label %next_440
+  br label %next_2
 
-ifFalse_102:                                        ; pred = %assertEntry
+ifFalse_1:                                          ; pred = %assertEntry
   call void @ok()
-  br label %next_440
+  br label %next_2
 
-next_440:                                           ; pred = %ifTrue_269, %ifFalse_102
+next_2:                                             ; pred = %ifTrue_2, %ifFalse_1
   ret void
 }
 
@@ -126,22 +113,22 @@ assert_notEntry:
   store i32 %0, i32* %lv, align 4
   %cond = load i32, i32* %lv, align 4
   %cond_normalize_ = icmp ne i32 %cond, 0
-  br i1 %cond_normalize_, label %ifTrue_270, label %ifFalse_103
+  br i1 %cond_normalize_, label %ifTrue_3, label %ifFalse_2
 
-ifTrue_270:                                             ; pred = %assert_notEntry
+ifTrue_3:                                               ; pred = %assert_notEntry
   call void @error()
-  br label %next_441
+  br label %next_3
 
-ifFalse_103:                                            ; pred = %assert_notEntry
+ifFalse_2:                                              ; pred = %assert_notEntry
   call void @ok()
-  br label %next_441
+  br label %next_3
 
-next_441:                                               ; pred = %ifTrue_270, %ifFalse_103
+next_3:                                                 ; pred = %ifTrue_3, %ifFalse_2
   ret void
 }
 
 define i32 @main() {
-mainEntry40:
+mainEntry:
   %lv$6 = alloca float, align 4
   %lv$5 = alloca float, align 4
   %lv$4 = alloca float, align 4
@@ -162,41 +149,41 @@ mainEntry40:
   %float_eq$4 = call i32 @float_eq(float 0x406d200000000000, float 0x40affe0000000000)
   call void @assert_not(i32 %float_eq$4)
   %cond_normalize_ = fcmp one float 0x3ff8000000000000, 0x0
-  br i1 %cond_normalize_, label %ifTrue_271, label %next_442
+  br i1 %cond_normalize_, label %ifTrue_4, label %next_4
 
-ifTrue_271:                                            ; pred = %mainEntry40
+ifTrue_4:                                            ; pred = %mainEntry
   call void @ok()
-  br label %next_442
+  br label %next_4
 
-next_442:                                              ; pred = %mainEntry40, %ifTrue_271
+next_4:                                              ; pred = %mainEntry, %ifTrue_4
   %cond_normalize_$1 = icmp ne i32 1, 0
-  br i1 %cond_normalize_$1, label %ifTrue_272, label %next_443
+  br i1 %cond_normalize_$1, label %ifTrue_5, label %next_5
 
-ifTrue_272:                                            ; pred = %next_442
+ifTrue_5:                                            ; pred = %next_4
   call void @ok()
-  br label %next_443
+  br label %next_5
 
-next_443:                                              ; pred = %next_442, %ifTrue_272
+next_5:                                              ; pred = %next_4, %ifTrue_5
   %cond_normalize_$2 = fcmp one float 0x0, 0x0
-  br i1 %cond_normalize_$2, label %secondCond_101, label %next_444
+  br i1 %cond_normalize_$2, label %secondCond_, label %next_6
 
-ifTrue_273:                                            ; pred = %secondCond_101
+ifTrue_6:                                            ; pred = %secondCond_
   call void @error()
-  br label %next_444
+  br label %next_6
 
-next_444:                                              ; pred = %next_443, %secondCond_101, %ifTrue_273
+next_6:                                              ; pred = %next_5, %secondCond_, %ifTrue_6
   %cond_normalize_$4 = icmp ne i32 0, 0
-  br i1 %cond_normalize_$4, label %ifTrue_274, label %secondCond_102
+  br i1 %cond_normalize_$4, label %ifTrue_7, label %secondCond_1
 
-secondCond_101:                                        ; pred = %next_443
+secondCond_:                                         ; pred = %next_5
   %cond_normalize_$3 = icmp ne i32 3, 0
-  br i1 %cond_normalize_$3, label %ifTrue_273, label %next_444
+  br i1 %cond_normalize_$3, label %ifTrue_6, label %next_6
 
-ifTrue_274:                                            ; pred = %next_444, %secondCond_102
+ifTrue_7:                                            ; pred = %next_6, %secondCond_1
   call void @ok()
-  br label %next_445
+  br label %next_7
 
-next_445:                                              ; pred = %secondCond_102, %ifTrue_274
+next_7:                                              ; pred = %secondCond_1, %ifTrue_7
   store i32 1, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   %inp = getelementptr [10 x float], [10 x float]* %lv$2, i32 0, i32 0
@@ -222,20 +209,20 @@ next_445:                                              ; pred = %secondCond_102,
   %arr = getelementptr [10 x float], [10 x float]* %lv$2, i32 0, i32 0
   %getfarray = call i32 @getfarray(float* %arr)
   store i32 %getfarray, i32* %lv$3, align 4
-  br label %whileCond_171
+  br label %whileCond_
 
-secondCond_102:                                        ; pred = %next_444
+secondCond_1:                                        ; pred = %next_6
   %cond_normalize_$5 = fcmp one float 0x3fd3333340000000, 0x0
-  br i1 %cond_normalize_$5, label %ifTrue_274, label %next_445
+  br i1 %cond_normalize_$5, label %ifTrue_7, label %next_7
 
-whileCond_171:                                         ; pred = %next_445, %whileBody_171
+whileCond_:                                          ; pred = %next_7, %whileBody_
   %i = load i32, i32* %lv, align 4
   %cond_lt_tmp_ = icmp slt i32 %i, 1000000000
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_171, label %next_446
+  br i1 %cond_, label %whileBody_, label %next_8
 
-whileBody_171:                                         ; pred = %whileCond_171
+whileBody_:                                          ; pred = %whileCond_
   %getfloat = call float @getfloat()
   store float %getfloat, float* %lv$4, align 4
   %input = load float, float* %lv$4, align 4
@@ -270,9 +257,9 @@ whileBody_171:                                         ; pred = %whileCond_171
   %p$2 = load i32, i32* %lv$1, align 4
   %result_$4 = add i32 %p$2, 1
   store i32 %result_$4, i32* %lv$1, align 4
-  br label %whileCond_171
+  br label %whileCond_
 
-next_446:                                              ; pred = %whileCond_171
+next_8:                                              ; pred = %whileCond_
   %len = load i32, i32* %lv$3, align 4
   %arr$4 = getelementptr [10 x float], [10 x float]* %lv$2, i32 0, i32 0
   call void @putfarray(i32 %len, float* %arr$4)

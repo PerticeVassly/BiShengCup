@@ -146,7 +146,7 @@ mainEntry21:
 	# get address of local var:cond_eq_tmp_
 	sw t0, 120(sp)
 
-	# ZEXT cond_tmp_ cond_eq_tmp_
+	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -372,7 +372,7 @@ secondCond_31:
 	# get address of local var:cond_eq_tmp_$1
 	sw t0, 60(sp)
 
-	# ZEXT cond_tmp_$2 cond_eq_tmp_$1
+	#  cond_tmp_$2 cond_eq_tmp_$1
 
 	# fetch variables
 
@@ -533,7 +533,7 @@ secondCond_32:
 	# get address of local var:cond_le_tmp_
 	sw t0, 8(sp)
 
-	# ZEXT cond_tmp_$1 cond_le_tmp_
+	#  cond_tmp_$1 cond_le_tmp_
 
 	# fetch variables
 

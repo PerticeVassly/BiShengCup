@@ -97,7 +97,7 @@ funcEntry4:
 	# get address of local var:cond_eq_tmp_
 	sw t0, 16(sp)
 
-	# ZEXT cond_tmp_ cond_eq_tmp_
+	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -256,7 +256,7 @@ whileCond_232:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 56(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -324,7 +324,7 @@ whileBody_232:
 	# get address of local var:cond_eq_tmp_
 	sw t0, 40(sp)
 
-	# ZEXT cond_tmp_$1 cond_eq_tmp_
+	#  cond_tmp_$1 cond_eq_tmp_
 
 	# fetch variables
 
@@ -380,7 +380,7 @@ next_557:
 	# get address of local var:cond_lt_tmp_$1
 	sw t0, 24(sp)
 
-	# ZEXT cond_tmp_$2 cond_lt_tmp_$1
+	#  cond_tmp_$2 cond_lt_tmp_$1
 
 	# fetch variables
 

@@ -144,7 +144,7 @@ whileCond_233:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 576(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -348,7 +348,7 @@ whileCond_234:
 	# get address of local var:cond_lt_tmp_$1
 	sw t0, 524(sp)
 
-	# ZEXT cond_tmp_$1 cond_lt_tmp_$1
+	#  cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -612,7 +612,7 @@ whileCond_235:
 	# get address of local var:cond_lt_tmp_$2
 	sw t0, 448(sp)
 
-	# ZEXT cond_tmp_$2 cond_lt_tmp_$2
+	#  cond_tmp_$2 cond_lt_tmp_$2
 
 	# fetch variables
 
@@ -942,7 +942,7 @@ whileCond_236:
 	# get address of local var:cond_lt_tmp_$3
 	sw t0, 352(sp)
 
-	# ZEXT cond_tmp_$3 cond_lt_tmp_$3
+	#  cond_tmp_$3 cond_lt_tmp_$3
 
 	# fetch variables
 
@@ -1000,7 +1000,7 @@ whileBody_236:
 	# get address of local var:cond_lt_tmp_$4
 	sw t0, 336(sp)
 
-	# ZEXT cond_tmp_$4 cond_lt_tmp_$4
+	#  cond_tmp_$4 cond_lt_tmp_$4
 
 	# fetch variables
 
@@ -1213,7 +1213,7 @@ ifFalse_127:
 	# get address of local var:cond_lt_tmp_$5
 	sw t0, 284(sp)
 
-	# ZEXT cond_tmp_$5 cond_lt_tmp_$5
+	#  cond_tmp_$5 cond_lt_tmp_$5
 
 	# fetch variables
 
@@ -1326,7 +1326,7 @@ ifFalse_128:
 	# get address of local var:cond_lt_tmp_$7
 	sw t0, 260(sp)
 
-	# ZEXT cond_tmp_$7 cond_lt_tmp_$7
+	#  cond_tmp_$7 cond_lt_tmp_$7
 
 	# fetch variables
 
@@ -1388,7 +1388,7 @@ whileCond_237:
 	# get address of local var:cond_lt_tmp_$6
 	sw t0, 244(sp)
 
-	# ZEXT cond_tmp_$6 cond_lt_tmp_$6
+	#  cond_tmp_$6 cond_lt_tmp_$6
 
 	# fetch variables
 
@@ -1795,7 +1795,7 @@ whileCond_238:
 	# get address of local var:cond_lt_tmp_$8
 	sw t0, 136(sp)
 
-	# ZEXT cond_tmp_$8 cond_lt_tmp_$8
+	#  cond_tmp_$8 cond_lt_tmp_$8
 
 	# fetch variables
 
@@ -1854,7 +1854,7 @@ whileBody_238:
 	# get address of local var:cond_gt_tmp_
 	sw t0, 120(sp)
 
-	# ZEXT cond_tmp_$9 cond_gt_tmp_
+	#  cond_tmp_$9 cond_gt_tmp_
 
 	# fetch variables
 

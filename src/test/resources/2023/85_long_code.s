@@ -120,7 +120,7 @@ whileCond_37:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 220(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -248,7 +248,7 @@ whileCond_38:
 	# get address of local var:cond_lt_tmp_$1
 	sw t0, 188(sp)
 
-	# ZEXT cond_tmp_$1 cond_lt_tmp_$1
+	#  cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -402,7 +402,7 @@ whileBody_38:
 	# get address of local var:cond_gt_tmp_
 	sw t0, 124(sp)
 
-	# ZEXT cond_tmp_$2 cond_gt_tmp_
+	#  cond_tmp_$2 cond_gt_tmp_
 
 	# fetch variables
 
@@ -846,7 +846,7 @@ whileCond_39:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 188(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -1009,7 +1009,7 @@ whileCond_40:
 	# get address of local var:cond_gt_tmp_
 	sw t0, 140(sp)
 
-	# ZEXT cond_tmp_$1 cond_gt_tmp_
+	#  cond_tmp_$1 cond_gt_tmp_
 
 	# fetch variables
 
@@ -1360,7 +1360,7 @@ secondCond_28:
 	# get address of local var:cond_lt_tmp_$1
 	sw t0, 8(sp)
 
-	# ZEXT cond_tmp_$2 cond_lt_tmp_$1
+	#  cond_tmp_$2 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -1532,7 +1532,7 @@ QuickSortEntry:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 424(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -1713,7 +1713,7 @@ whileCond_41:
 	# get address of local var:cond_lt_tmp_$1
 	sw t0, 372(sp)
 
-	# ZEXT cond_tmp_$1 cond_lt_tmp_$1
+	#  cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -2061,7 +2061,7 @@ whileCond_42:
 	# get address of local var:cond_lt_tmp_$2
 	sw t0, 272(sp)
 
-	# ZEXT cond_tmp_$2 cond_lt_tmp_$2
+	#  cond_tmp_$2 cond_lt_tmp_$2
 
 	# fetch variables
 
@@ -2164,7 +2164,7 @@ next_85:
 	# get address of local var:cond_lt_tmp_$3
 	sw t0, 244(sp)
 
-	# ZEXT cond_tmp_$4 cond_lt_tmp_$3
+	#  cond_tmp_$4 cond_lt_tmp_$3
 
 	# fetch variables
 
@@ -2281,7 +2281,7 @@ secondCond_29:
 	# get address of local var:cond_gt_tmp_
 	sw t0, 200(sp)
 
-	# ZEXT cond_tmp_$3 cond_gt_tmp_
+	#  cond_tmp_$3 cond_gt_tmp_
 
 	# fetch variables
 
@@ -2482,7 +2482,7 @@ whileCond_43:
 	# get address of local var:cond_lt_tmp_$4
 	sw t0, 128(sp)
 
-	# ZEXT cond_tmp_$5 cond_lt_tmp_$4
+	#  cond_tmp_$5 cond_lt_tmp_$4
 
 	# fetch variables
 
@@ -2585,7 +2585,7 @@ next_87:
 	# get address of local var:cond_lt_tmp_$6
 	sw t0, 100(sp)
 
-	# ZEXT cond_tmp_$7 cond_lt_tmp_$6
+	#  cond_tmp_$7 cond_lt_tmp_$6
 
 	# fetch variables
 
@@ -2689,7 +2689,7 @@ secondCond_30:
 	# get address of local var:cond_lt_tmp_$5
 	sw t0, 60(sp)
 
-	# ZEXT cond_tmp_$6 cond_lt_tmp_$5
+	#  cond_tmp_$6 cond_lt_tmp_$5
 
 	# fetch variables
 
@@ -2934,7 +2934,7 @@ getMidEntry:
 	# get address of local var:cond_eq_tmp_
 	sw t0, 108(sp)
 
-	# ZEXT cond_tmp_ cond_eq_tmp_
+	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -3361,7 +3361,7 @@ whileCond_44:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 168(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -3537,7 +3537,7 @@ whileCond_45:
 	# get address of local var:cond_lt_tmp_$1
 	sw t0, 128(sp)
 
-	# ZEXT cond_tmp_$1 cond_lt_tmp_$1
+	#  cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -3796,7 +3796,7 @@ whileBody_45:
 	# get address of local var:cond_gt_tmp_
 	sw t0, 40(sp)
 
-	# ZEXT cond_tmp_$2 cond_gt_tmp_
+	#  cond_tmp_$2 cond_gt_tmp_
 
 	# fetch variables
 
@@ -4089,7 +4089,7 @@ whileCond_46:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 116(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -4521,7 +4521,7 @@ whileCond_47:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 60(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -4823,7 +4823,7 @@ whileCond_48:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 124(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -5007,7 +5007,7 @@ whileBody_48:
 	# get address of local var:cond_neq_tmp_
 	sw t0, 60(sp)
 
-	# ZEXT cond_tmp_$1 cond_neq_tmp_
+	#  cond_tmp_$1 cond_neq_tmp_
 
 	# fetch variables
 
@@ -5342,7 +5342,7 @@ whileCond_49:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 328(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -5421,7 +5421,7 @@ whileBody_49:
 	# get address of local var:cond_lt_tmp_$1
 	sw t0, 304(sp)
 
-	# ZEXT cond_tmp_$1 cond_lt_tmp_$1
+	#  cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -5644,7 +5644,7 @@ ifFalse_7:
 	# get address of local var:cond_eq_tmp_
 	sw t0, 232(sp)
 
-	# ZEXT cond_tmp_$2 cond_eq_tmp_
+	#  cond_tmp_$2 cond_eq_tmp_
 
 	# fetch variables
 
@@ -6184,7 +6184,7 @@ whileCond_50:
 	# get address of local var:cond_lt_tmp_$2
 	sw t0, 36(sp)
 
-	# ZEXT cond_tmp_$3 cond_lt_tmp_$2
+	#  cond_tmp_$3 cond_lt_tmp_$2
 
 	# fetch variables
 
@@ -7375,7 +7375,7 @@ whileCond_51:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 512(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -7634,7 +7634,7 @@ whileCond_52:
 	# get address of local var:cond_lt_tmp_$1
 	sw t0, 456(sp)
 
-	# ZEXT cond_tmp_$1 cond_lt_tmp_$1
+	#  cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -8158,7 +8158,7 @@ whileCond_53:
 	# get address of local var:cond_lt_tmp_$2
 	sw t0, 348(sp)
 
-	# ZEXT cond_tmp_$2 cond_lt_tmp_$2
+	#  cond_tmp_$2 cond_lt_tmp_$2
 
 	# fetch variables
 
@@ -8498,7 +8498,7 @@ whileCond_54:
 	# get address of local var:cond_lt_tmp_$3
 	sw t0, 272(sp)
 
-	# ZEXT cond_tmp_$3 cond_lt_tmp_$3
+	#  cond_tmp_$3 cond_lt_tmp_$3
 
 	# fetch variables
 
@@ -8883,7 +8883,7 @@ whileCond_55:
 	# get address of local var:cond_lt_tmp_$4
 	sw t0, 188(sp)
 
-	# ZEXT cond_tmp_$4 cond_lt_tmp_$4
+	#  cond_tmp_$4 cond_lt_tmp_$4
 
 	# fetch variables
 
@@ -9227,7 +9227,7 @@ whileCond_56:
 	# get address of local var:cond_lt_tmp_$5
 	sw t0, 112(sp)
 
-	# ZEXT cond_tmp_$5 cond_lt_tmp_$5
+	#  cond_tmp_$5 cond_lt_tmp_$5
 
 	# fetch variables
 
@@ -9571,7 +9571,7 @@ whileCond_57:
 	# get address of local var:cond_lt_tmp_$6
 	sw t0, 36(sp)
 
-	# ZEXT cond_tmp_$6 cond_lt_tmp_$6
+	#  cond_tmp_$6 cond_lt_tmp_$6
 
 	# fetch variables
 

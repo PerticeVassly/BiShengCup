@@ -138,7 +138,7 @@ exgcdEntry:
 	# get address of local var:cond_eq_tmp_
 	sw t0, 200(sp)
 
-	# ZEXT cond_tmp_ cond_eq_tmp_
+	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 

@@ -117,7 +117,7 @@ whileCond_256:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 44(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -507,7 +507,7 @@ whileBody_257:
 	# get address of local var:cond_eq_tmp_
 	sw t0, 340(sp)
 
-	# ZEXT cond_tmp_ cond_eq_tmp_
+	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -609,7 +609,7 @@ ifFalse_139:
 	# get address of local var:cond_eq_tmp_$1
 	sw t0, 316(sp)
 
-	# ZEXT cond_tmp_$1 cond_eq_tmp_$1
+	#  cond_tmp_$1 cond_eq_tmp_$1
 
 	# fetch variables
 
@@ -738,7 +738,7 @@ ifFalse_140:
 	# get address of local var:cond_eq_tmp_$2
 	sw t0, 284(sp)
 
-	# ZEXT cond_tmp_$2 cond_eq_tmp_$2
+	#  cond_tmp_$2 cond_eq_tmp_$2
 
 	# fetch variables
 
@@ -887,7 +887,7 @@ ifFalse_141:
 	# get address of local var:cond_eq_tmp_$3
 	sw t0, 236(sp)
 
-	# ZEXT cond_tmp_$3 cond_eq_tmp_$3
+	#  cond_tmp_$3 cond_eq_tmp_$3
 
 	# fetch variables
 
@@ -1036,7 +1036,7 @@ ifFalse_142:
 	# get address of local var:cond_eq_tmp_$4
 	sw t0, 188(sp)
 
-	# ZEXT cond_tmp_$4 cond_eq_tmp_$4
+	#  cond_tmp_$4 cond_eq_tmp_$4
 
 	# fetch variables
 
@@ -1159,7 +1159,7 @@ ifFalse_143:
 	# get address of local var:cond_eq_tmp_$5
 	sw t0, 156(sp)
 
-	# ZEXT cond_tmp_$5 cond_eq_tmp_$5
+	#  cond_tmp_$5 cond_eq_tmp_$5
 
 	# fetch variables
 
@@ -1281,7 +1281,7 @@ ifFalse_144:
 	# get address of local var:cond_eq_tmp_$6
 	sw t0, 124(sp)
 
-	# ZEXT cond_tmp_$6 cond_eq_tmp_$6
+	#  cond_tmp_$6 cond_eq_tmp_$6
 
 	# fetch variables
 
@@ -1418,7 +1418,7 @@ whileCond_258:
 	# get address of local var:cond_gt_tmp_
 	sw t0, 88(sp)
 
-	# ZEXT cond_tmp_$7 cond_gt_tmp_
+	#  cond_tmp_$7 cond_gt_tmp_
 
 	# fetch variables
 
@@ -1564,7 +1564,7 @@ whileBody_258:
 	# get address of local var:cond_eq_tmp_$7
 	sw t0, 40(sp)
 
-	# ZEXT cond_tmp_$8 cond_eq_tmp_$7
+	#  cond_tmp_$8 cond_eq_tmp_$7
 
 	# fetch variables
 
@@ -1661,7 +1661,7 @@ ifFalse_145:
 	# get address of local var:cond_eq_tmp_$8
 	sw t0, 16(sp)
 
-	# ZEXT cond_tmp_$9 cond_eq_tmp_$8
+	#  cond_tmp_$9 cond_eq_tmp_$8
 
 	# fetch variables
 

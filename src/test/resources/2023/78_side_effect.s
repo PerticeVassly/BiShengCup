@@ -178,7 +178,7 @@ whileCond_254:
 	# get address of local var:cond_ge_tmp_
 	sw t0, 124(sp)
 
-	# ZEXT cond_tmp_ cond_ge_tmp_
+	#  cond_tmp_ cond_ge_tmp_
 
 	# fetch variables
 
@@ -526,7 +526,7 @@ next_595:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 80(sp)
 
-	# ZEXT cond_tmp_$1 cond_lt_tmp_
+	#  cond_tmp_$1 cond_lt_tmp_
 
 	# fetch variables
 

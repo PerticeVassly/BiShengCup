@@ -185,7 +185,7 @@ mainEntry36:
 	# get address of local var:result_
 	fsw ft0, 8(sp)
 
-	# F2I f2i_ result_
+	#  f2i_ result_
 
 	# fetch variables
 

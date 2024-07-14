@@ -72,7 +72,7 @@ ififElseEntry:
 	# get address of local var:cond_eq_tmp_
 	sw t0, 36(sp)
 
-	# ZEXT cond_tmp_ cond_eq_tmp_
+	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -129,7 +129,7 @@ ifTrue_286:
 	# get address of local var:cond_eq_tmp_$1
 	sw t0, 20(sp)
 
-	# ZEXT cond_tmp_$1 cond_eq_tmp_$1
+	#  cond_tmp_$1 cond_eq_tmp_$1
 
 	# fetch variables
 

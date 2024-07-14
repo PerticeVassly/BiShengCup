@@ -75,7 +75,7 @@ whileCond_239:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 60(sp)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -132,7 +132,7 @@ whileBody_239:
 	# get address of local var:cond_eq_tmp_
 	sw t0, 44(sp)
 
-	# ZEXT cond_tmp_$1 cond_eq_tmp_
+	#  cond_tmp_$1 cond_eq_tmp_
 
 	# fetch variables
 
@@ -226,7 +226,7 @@ ifFalse_131:
 	# get address of local var:cond_eq_tmp_$1
 	sw t0, 24(sp)
 
-	# ZEXT cond_tmp_$2 cond_eq_tmp_$1
+	#  cond_tmp_$2 cond_eq_tmp_$1
 
 	# fetch variables
 

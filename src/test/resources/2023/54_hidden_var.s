@@ -277,7 +277,7 @@ whileCond_58:
 	add t4, sp, t4
 	sw t0, 0(t4)
 
-	# ZEXT cond_tmp_ cond_lt_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 

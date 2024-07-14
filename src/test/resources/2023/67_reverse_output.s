@@ -69,7 +69,7 @@ reverseEntry:
 	# get address of local var:cond_le_tmp_
 	sw t0, 32(sp)
 
-	# ZEXT cond_tmp_ cond_le_tmp_
+	#  cond_tmp_ cond_le_tmp_
 
 	# fetch variables
 

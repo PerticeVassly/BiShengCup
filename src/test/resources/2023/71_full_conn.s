@@ -61,7 +61,7 @@ relu_regEntry:
 	# get address of local var:cond_gt_tmp_
 	sw t0, 28(sp)
 
-	# ZEXT cond_tmp_ cond_gt_tmp_
+	#  cond_tmp_ cond_gt_tmp_
 
 	# fetch variables
 
@@ -130,7 +130,7 @@ next_579:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 12(sp)
 
-	# ZEXT cond_tmp_$1 cond_lt_tmp_
+	#  cond_tmp_$1 cond_lt_tmp_
 
 	# fetch variables
 
@@ -26016,7 +26016,7 @@ modelEntry:
 	# get address of local var:cond_gt_tmp_
 	sw t0, 8(sp)
 
-	# ZEXT cond_tmp_ cond_gt_tmp_
+	#  cond_tmp_ cond_gt_tmp_
 
 	# fetch variables
 
@@ -26171,7 +26171,7 @@ whileCond_244:
 	# get address of local var:cond_gt_tmp_
 	sw t0, 108(sp)
 
-	# ZEXT cond_tmp_ cond_gt_tmp_
+	#  cond_tmp_ cond_gt_tmp_
 
 	# fetch variables
 
@@ -26250,7 +26250,7 @@ whileCond_245:
 	# get address of local var:cond_lt_tmp_
 	sw t0, 92(sp)
 
-	# ZEXT cond_tmp_$1 cond_lt_tmp_
+	#  cond_tmp_$1 cond_lt_tmp_
 
 	# fetch variables
 
@@ -26386,7 +26386,7 @@ whileCond_246:
 	# get address of local var:cond_lt_tmp_$1
 	sw t0, 60(sp)
 
-	# ZEXT cond_tmp_$2 cond_lt_tmp_$1
+	#  cond_tmp_$2 cond_lt_tmp_$1
 
 	# fetch variables
 

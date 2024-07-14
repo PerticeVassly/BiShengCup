@@ -64,7 +64,7 @@ mainEntry52:
 	# get address of local var:tmp_$1
 	sw t0, 40(sp)
 
-	# ZEXT tmp_$2 tmp_$1
+	#  tmp_$2 tmp_$1
 
 	# fetch variables
 
@@ -101,7 +101,7 @@ mainEntry52:
 	# get address of local var:tmp_$4
 	sw t0, 28(sp)
 
-	# ZEXT tmp_$5 tmp_$4
+	#  tmp_$5 tmp_$4
 
 	# fetch variables
 
@@ -138,7 +138,7 @@ mainEntry52:
 	# get address of local var:tmp_$7
 	sw t0, 16(sp)
 
-	# ZEXT tmp_$8 tmp_$7
+	#  tmp_$8 tmp_$7
 
 	# fetch variables
 

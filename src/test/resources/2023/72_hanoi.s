@@ -316,7 +316,7 @@ hanoiEntry:
 	# get address of local var:cond_eq_tmp_
 	sw t0, 64(sp)
 
-	# ZEXT cond_tmp_ cond_eq_tmp_
+	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -713,7 +713,7 @@ whileCond_17:
 	# get address of local var:cond_gt_tmp_
 	sw t0, 20(sp)
 
-	# ZEXT cond_tmp_ cond_gt_tmp_
+	#  cond_tmp_ cond_gt_tmp_
 
 	# fetch variables
 
