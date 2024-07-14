@@ -46,7 +46,7 @@ public class RiscFunction {
     private void reserveSpaceForFParams() {
         FunctionType functionType = (FunctionType) functionValue.getType();
         for(int i = 0; i < functionType.getFParametersCount(); i++){
-            allocator.allocate(new LocalVar(functionType.getFParameter(i), i + ""), 8);
+            allocator.allocate(new LocalVar(functionType.getFParameter(i), i + ""), allocator.getSizeOfType(functionType.getFParameter(i)));
         }
     }
 

@@ -1,26 +1,15 @@
 package cn.edu.nju.software.backend;
 
+import cn.edu.nju.software.ir.type.BoolType;
+import cn.edu.nju.software.ir.type.FloatType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.value.ValueRef;
+
 /**
  * use to provide the basic information of the RiscvMachine
  */
 public record RiscSpecifications() {
-
-    private static final int pointerSize = 8;
-    private static final int intSize = 4;
-    private static final int floatSize = 4;
-
-    public static int getPointerSize() {
-        return pointerSize;
-    }
-
-    public static int getIntSize() {
-        return intSize;
-    }
-
-    public static int getFloatSize() {
-        return floatSize;
-    }
-
 
     //todo() 寄存器分配,增加
     private static final String[] callerSavedRegs = new String[] {"ra"};

@@ -262,7 +262,7 @@ public class Allocator {
         if (type instanceof ArrayType) {
             return ArrayType.getTotalSize(type);
         } else if (type instanceof FloatType || type instanceof IntType || type instanceof BoolType) {
-            return 8;
+            return 4;
         } else if (type instanceof Pointer) {
             return 8;
         } else {

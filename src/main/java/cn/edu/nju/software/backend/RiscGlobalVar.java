@@ -35,12 +35,12 @@ public class RiscGlobalVar {
             if(globalVar.getInitVal().getType() instanceof IntType) {
                 String initValue = globalVar.getInitVal().toString();
                 System.out.println(name + ":");
-                System.out.println(".dword " + initValue);
+                System.out.println(".word " + initValue);
             }
             else if(globalVar.getInitVal().getType() instanceof FloatType) {
                 String initValue = globalVar.getInitVal().toString();
                 System.out.println(name + ":");
-                System.out.println(".dword " + initValue);
+                System.out.println(".word " + initValue);
             }
             else if(globalVar.getInitVal().getType() instanceof ArrayType) {
                 assert false;
@@ -58,10 +58,10 @@ public class RiscGlobalVar {
                                 zeroCount++;
                             }else {
                                 if(zeroCount>0){
-                                    System.out.println(".zero " + zeroCount * 8);
+                                    System.out.println(".zero " + zeroCount * 4);
                                     zeroCount=0;
                                 }
-                                System.out.println(".dword " + valueRef);
+                                System.out.println(".word " + valueRef);
                             }
 
                         }
@@ -70,16 +70,16 @@ public class RiscGlobalVar {
                                 zeroCount++;
                             }else {
                                 if(zeroCount>0){
-                                    System.out.println(".zero " + zeroCount * 8);
+                                    System.out.println(".zero " + zeroCount * 4);
                                     zeroCount=0;
                                 }
-                                System.out.println(".dword " + valueRef);
+                                System.out.println(".word " + valueRef);
                             }
                         }
                     }
                 }
                 if(zeroCount>0){
-                    System.out.println(".zero " + String.valueOf(zeroCount*8));
+                    System.out.println(".zero " + String.valueOf(zeroCount * 4));
                 }
             }
         } else {
