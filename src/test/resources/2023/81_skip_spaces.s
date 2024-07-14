@@ -76,7 +76,7 @@ whileCond_192:
 	# get address of local var:getint
 	sd a0, 136(sp)
 
-	# ICMPcond_normalize_ getint  
+	# ICMP cond_normalize_ getint  
 
 	# fetch variables
 
@@ -168,7 +168,7 @@ whileBody_192:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# ADDresult_ i$1  
+	# ADD result_ i$1  
 
 	# fetch variables
 
@@ -208,7 +208,7 @@ whileCond_193:
 	ld t0, 0(t3)
 	sd t0, 80(sp)
 
-	# ICMPcond_normalize_$1 i$2  
+	# ICMP cond_normalize_$1 i$2  
 
 	# fetch variables
 
@@ -241,7 +241,7 @@ whileBody_193:
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# SUBresult_$1 i$3  
+	# SUB result_$1 i$3  
 
 	# fetch variables
 
@@ -310,7 +310,7 @@ whileBody_193:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_$2 sum arr$2 
+	# ADD result_$2 sum arr$2 
 
 	# fetch variables
 
@@ -348,7 +348,7 @@ next_461:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# MODresult_$3 sum$1  
+	# MOD result_$3 sum$1  
 
 	# fetch variables
 

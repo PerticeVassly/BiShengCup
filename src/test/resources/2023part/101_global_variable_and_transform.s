@@ -8,7 +8,7 @@ gv1:
 .dword 1
 .globl gv2
 gv2:
-.double 0x3ff0000000000000
+.dword 0x3ff0000000000000
 .text
 .align 2
 .type main, @function
@@ -55,7 +55,7 @@ mainEntry17:
 	fld ft0, 0(t3)
 	fsd ft0, 16(sp)
 
-	# F2If2i_ d
+	# F2I f2i_ d
 
 	# fetch variables
 

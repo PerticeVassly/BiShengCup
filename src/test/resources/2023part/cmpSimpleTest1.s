@@ -38,7 +38,7 @@ mainEntry11:
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# ICMPcond_eq_tmp_ a  
+	# ICMP cond_eq_tmp_ a  
 
 	# fetch variables
 
@@ -51,7 +51,7 @@ mainEntry11:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 24(sp)
 
-	# ZEXTcond_tmp_ cond_eq_tmp_
+	# ZEXT cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -62,7 +62,7 @@ mainEntry11:
 	# get address of local var:cond_tmp_
 	sd t0, 16(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 

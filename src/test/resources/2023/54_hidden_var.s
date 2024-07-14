@@ -261,7 +261,7 @@ whileCond_58:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ICMPcond_lt_tmp_ a$3  
+	# ICMP cond_lt_tmp_ a$3  
 
 	# fetch variables
 
@@ -277,7 +277,7 @@ whileCond_58:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ZEXTcond_tmp_ cond_lt_tmp_
+	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -292,7 +292,7 @@ whileCond_58:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -346,7 +346,7 @@ whileBody_58:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_ a$4  
+	# ADD result_ a$4  
 
 	# fetch variables
 
@@ -390,7 +390,7 @@ whileBody_58:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ICMPcond_normalize_ a$5  
+	# ICMP cond_normalize_ a$5  
 
 	# fetch variables
 
@@ -1396,7 +1396,7 @@ next_108:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ICMPcond_normalize_$1 c$2  
+	# ICMP cond_normalize_$1 c$2  
 
 	# fetch variables
 

@@ -246,7 +246,7 @@ fEntry1:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# ADDresult_ ai bi 
+	# ADD result_ ai bi 
 
 	# fetch variables
 
@@ -269,7 +269,7 @@ fEntry1:
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# ADDresult_$1 result_ ci 
+	# ADD result_$1 result_ ci 
 
 	# fetch variables
 
@@ -292,7 +292,7 @@ fEntry1:
 	fld ft0, 0(t3)
 	fsd ft0, 136(sp)
 
-	# F2Ii2f_ result_$1
+	# F2I i2f_ result_$1
 
 	# fetch variables
 
@@ -303,7 +303,7 @@ fEntry1:
 	# get address of local var:i2f_
 	fsd ft0, 128(sp)
 
-	# FADDresult_$2 i2f_ af 
+	# FADD result_$2 i2f_ af 
 
 	# fetch variables
 
@@ -326,7 +326,7 @@ fEntry1:
 	fld ft0, 0(t3)
 	fsd ft0, 112(sp)
 
-	# FADDresult_$3 result_$2 bf 
+	# FADD result_$3 result_$2 bf 
 
 	# fetch variables
 
@@ -349,7 +349,7 @@ fEntry1:
 	fld ft0, 0(t3)
 	fsd ft0, 96(sp)
 
-	# FADDresult_$4 result_$3 cf 
+	# FADD result_$4 result_$3 cf 
 
 	# fetch variables
 
@@ -372,7 +372,7 @@ fEntry1:
 	fld ft0, 0(t3)
 	fsd ft0, 80(sp)
 
-	# FADDresult_$5 result_$4 df 
+	# FADD result_$5 result_$4 df 
 
 	# fetch variables
 
@@ -395,7 +395,7 @@ fEntry1:
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# F2Ii2f_$1 ei
+	# F2I i2f_$1 ei
 
 	# fetch variables
 
@@ -406,7 +406,7 @@ fEntry1:
 	# get address of local var:i2f_$1
 	fsd ft0, 56(sp)
 
-	# FADDresult_$6 result_$5 i2f_$1 
+	# FADD result_$6 result_$5 i2f_$1 
 
 	# fetch variables
 
@@ -429,7 +429,7 @@ fEntry1:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# F2Ii2f_$2 fi
+	# F2I i2f_$2 fi
 
 	# fetch variables
 
@@ -440,7 +440,7 @@ fEntry1:
 	# get address of local var:i2f_$2
 	fsd ft0, 32(sp)
 
-	# FADDresult_$7 result_$6 i2f_$2 
+	# FADD result_$7 result_$6 i2f_$2 
 
 	# fetch variables
 
@@ -463,7 +463,7 @@ fEntry1:
 	fld ft0, 0(t3)
 	fsd ft0, 16(sp)
 
-	# FADDresult_$8 result_$7 gf 
+	# FADD result_$8 result_$7 gf 
 
 	# fetch variables
 
@@ -477,7 +477,7 @@ fEntry1:
 	# get address of local var:result_$8
 	fsd ft0, 8(sp)
 
-	# F2IretVal_ result_$8
+	# F2I retVal_ result_$8
 
 	# fetch variables
 

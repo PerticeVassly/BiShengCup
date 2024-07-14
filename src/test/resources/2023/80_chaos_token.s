@@ -228,7 +228,7 @@ whileCond_190:
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# ICMPcond_normalize_ str$1  
+	# ICMP cond_normalize_ str$1  
 
 	# fetch variables
 
@@ -330,7 +330,7 @@ whileBody_190:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# ADDresult_ iNd__1X$2  
+	# ADD result_ iNd__1X$2  
 
 	# fetch variables
 
@@ -465,7 +465,7 @@ mainEntry51:
 	j whileCond_191
 whileCond_191:
 
-	# ICMPcond_normalize_   
+	# ICMP cond_normalize_   
 
 	# fetch variables
 	li t1, 1
@@ -490,7 +490,7 @@ whileBody_191:
 	ld t0, 0(t3)
 	sd t0, 224(sp)
 
-	# DIVresult_ i  
+	# DIV result_ i  
 
 	# fetch variables
 
@@ -522,7 +522,7 @@ whileBody_191:
 	ld t0, 0(t3)
 	sd t0, 208(sp)
 
-	# MODresult_$1 i$1  
+	# MOD result_$1 i$1  
 
 	# fetch variables
 
@@ -563,7 +563,7 @@ whileBody_191:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# ICMPcond_neq_tmp_ _ __ 
+	# ICMP cond_neq_tmp_ _ __ 
 
 	# fetch variables
 
@@ -579,7 +579,7 @@ whileBody_191:
 	# get address of local var:cond_neq_tmp_
 	sd t0, 176(sp)
 
-	# ZEXTcond_tmp_ cond_neq_tmp_
+	# ZEXT cond_tmp_ cond_neq_tmp_
 
 	# fetch variables
 
@@ -590,7 +590,7 @@ whileBody_191:
 	# get address of local var:cond_tmp_
 	sd t0, 168(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -857,7 +857,7 @@ next_457:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# MULresult_$2 i$2  
+	# MUL result_$2 i$2  
 
 	# fetch variables
 
@@ -869,7 +869,7 @@ next_457:
 	# get address of local var:result_$2
 	sd t0, 48(sp)
 
-	# ADDresult_$3 result_$2  
+	# ADD result_$3 result_$2  
 
 	# fetch variables
 
@@ -881,7 +881,7 @@ next_457:
 	# get address of local var:result_$3
 	sd t0, 40(sp)
 
-	# MODresult_$4 result_$3  
+	# MOD result_$4 result_$3  
 
 	# fetch variables
 
@@ -913,7 +913,7 @@ next_457:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ICMPcond_eq_tmp_ i$3  
+	# ICMP cond_eq_tmp_ i$3  
 
 	# fetch variables
 
@@ -926,7 +926,7 @@ next_457:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 16(sp)
 
-	# ZEXTcond_tmp_$1 cond_eq_tmp_
+	# ZEXT cond_tmp_$1 cond_eq_tmp_
 
 	# fetch variables
 
@@ -937,7 +937,7 @@ next_457:
 	# get address of local var:cond_tmp_$1
 	sd t0, 8(sp)
 
-	# ICMPcond_$1 cond_tmp_$1  
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 

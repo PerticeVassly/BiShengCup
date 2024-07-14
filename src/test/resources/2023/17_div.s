@@ -63,7 +63,7 @@ mainEntry72:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# DIVresult_ a b 
+	# DIV result_ a b 
 
 	# fetch variables
 

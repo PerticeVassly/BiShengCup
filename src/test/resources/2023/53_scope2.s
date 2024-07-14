@@ -62,7 +62,7 @@ mainEntry34:
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# ICMPcond_lt_tmp_ k  
+	# ICMP cond_lt_tmp_ k  
 
 	# fetch variables
 
@@ -74,7 +74,7 @@ mainEntry34:
 	# get address of local var:cond_lt_tmp_
 	sd t0, 192(sp)
 
-	# ZEXTcond_tmp_ cond_lt_tmp_
+	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -85,7 +85,7 @@ mainEntry34:
 	# get address of local var:cond_tmp_
 	sd t0, 184(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -118,7 +118,7 @@ ifTrue_64:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# ADDresult_ k$1  
+	# ADD result_ k$1  
 
 	# fetch variables
 
@@ -184,7 +184,7 @@ whileCond_73:
 	ld t0, 0(t3)
 	sd t0, 144(sp)
 
-	# ICMPcond_gt_tmp_ k$2  
+	# ICMP cond_gt_tmp_ k$2  
 
 	# fetch variables
 
@@ -197,7 +197,7 @@ whileCond_73:
 	# get address of local var:cond_gt_tmp_
 	sd t0, 136(sp)
 
-	# ZEXTcond_tmp_$1 cond_gt_tmp_
+	# ZEXT cond_tmp_$1 cond_gt_tmp_
 
 	# fetch variables
 
@@ -208,7 +208,7 @@ whileCond_73:
 	# get address of local var:cond_tmp_$1
 	sd t0, 128(sp)
 
-	# ICMPcond_$1 cond_tmp_$1  
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
@@ -241,7 +241,7 @@ whileBody_73:
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# SUBresult_$1 k$3  
+	# SUB result_$1 k$3  
 
 	# fetch variables
 
@@ -273,7 +273,7 @@ whileBody_73:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# ICMPcond_lt_tmp_$1 k$4  
+	# ICMP cond_lt_tmp_$1 k$4  
 
 	# fetch variables
 
@@ -285,7 +285,7 @@ whileBody_73:
 	# get address of local var:cond_lt_tmp_$1
 	sd t0, 88(sp)
 
-	# ZEXTcond_tmp_$2 cond_lt_tmp_$1
+	# ZEXT cond_tmp_$2 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -296,7 +296,7 @@ whileBody_73:
 	# get address of local var:cond_tmp_$2
 	sd t0, 80(sp)
 
-	# ICMPcond_$2 cond_tmp_$2  
+	# ICMP cond_$2 cond_tmp_$2  
 
 	# fetch variables
 
@@ -401,7 +401,7 @@ ifTrue_65:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# SUBresult_$2 k$5 g 
+	# SUB result_$2 k$5 g 
 
 	# fetch variables
 
@@ -453,7 +453,7 @@ ifTrue_65:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_$3 k$6 g$1 
+	# ADD result_$3 k$6 g$1 
 
 	# fetch variables
 
@@ -476,7 +476,7 @@ ifTrue_65:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$4 result_$3 l 
+	# ADD result_$4 result_$3 l 
 
 	# fetch variables
 

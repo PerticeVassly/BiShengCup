@@ -59,7 +59,7 @@ if_ifElse_Entry:
 	ld t0, 0(t3)
 	sd t0, 80(sp)
 
-	# ICMPcond_eq_tmp_ a  
+	# ICMP cond_eq_tmp_ a  
 
 	# fetch variables
 
@@ -72,7 +72,7 @@ if_ifElse_Entry:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 72(sp)
 
-	# ZEXTcond_tmp_ cond_eq_tmp_
+	# ZEXT cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -83,7 +83,7 @@ if_ifElse_Entry:
 	# get address of local var:cond_tmp_
 	sd t0, 64(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -116,7 +116,7 @@ ifTrue_342:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# ICMPcond_eq_tmp_$1 b  
+	# ICMP cond_eq_tmp_$1 b  
 
 	# fetch variables
 
@@ -129,7 +129,7 @@ ifTrue_342:
 	# get address of local var:cond_eq_tmp_$1
 	sd t0, 40(sp)
 
-	# ZEXTcond_tmp_$1 cond_eq_tmp_$1
+	# ZEXT cond_tmp_$1 cond_eq_tmp_$1
 
 	# fetch variables
 
@@ -140,7 +140,7 @@ ifTrue_342:
 	# get address of local var:cond_tmp_$1
 	sd t0, 32(sp)
 
-	# ICMPcond_$1 cond_tmp_$1  
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
@@ -210,7 +210,7 @@ ifFalse_137:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_ a$1  
+	# ADD result_ a$1  
 
 	# fetch variables
 

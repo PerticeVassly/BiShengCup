@@ -55,7 +55,7 @@ reverseEntry:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# ICMPcond_le_tmp_ n  
+	# ICMP cond_le_tmp_ n  
 
 	# fetch variables
 
@@ -69,7 +69,7 @@ reverseEntry:
 	# get address of local var:cond_le_tmp_
 	sd t0, 64(sp)
 
-	# ZEXTcond_tmp_ cond_le_tmp_
+	# ZEXT cond_tmp_ cond_le_tmp_
 
 	# fetch variables
 
@@ -80,7 +80,7 @@ reverseEntry:
 	# get address of local var:cond_tmp_
 	sd t0, 56(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -211,7 +211,7 @@ ifFalse_111:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# SUBresult_ n$1  
+	# SUB result_ n$1  
 
 	# fetch variables
 

@@ -729,7 +729,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 280(sp)
 
-	# ADDresult_ a b 
+	# ADD result_ a b 
 
 	# fetch variables
 
@@ -752,7 +752,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 264(sp)
 
-	# ADDresult_$1 result_ c 
+	# ADD result_$1 result_ c 
 
 	# fetch variables
 
@@ -775,7 +775,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 248(sp)
 
-	# ADDresult_$2 result_$1 d 
+	# ADD result_$2 result_$1 d 
 
 	# fetch variables
 
@@ -798,7 +798,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# ADDresult_$3 result_$2 e 
+	# ADD result_$3 result_$2 e 
 
 	# fetch variables
 
@@ -821,7 +821,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 216(sp)
 
-	# ADDresult_$4 result_$3 f 
+	# ADD result_$4 result_$3 f 
 
 	# fetch variables
 
@@ -844,7 +844,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# ADDresult_$5 result_$4 g 
+	# ADD result_$5 result_$4 g 
 
 	# fetch variables
 
@@ -867,7 +867,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# ADDresult_$6 result_$5 h 
+	# ADD result_$6 result_$5 h 
 
 	# fetch variables
 
@@ -910,7 +910,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 160(sp)
 
-	# ADDresult_$7 i j 
+	# ADD result_$7 i j 
 
 	# fetch variables
 
@@ -933,7 +933,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 144(sp)
 
-	# ADDresult_$8 result_$7 k 
+	# ADD result_$8 result_$7 k 
 
 	# fetch variables
 
@@ -956,7 +956,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 128(sp)
 
-	# ADDresult_$9 result_$8 l 
+	# ADD result_$9 result_$8 l 
 
 	# fetch variables
 
@@ -979,7 +979,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# ADDresult_$10 result_$9 m 
+	# ADD result_$10 result_$9 m 
 
 	# fetch variables
 
@@ -1002,7 +1002,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# ADDresult_$11 result_$10 n 
+	# ADD result_$11 result_$10 n 
 
 	# fetch variables
 
@@ -1025,7 +1025,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 80(sp)
 
-	# ADDresult_$12 result_$11 o 
+	# ADD result_$12 result_$11 o 
 
 	# fetch variables
 
@@ -1048,7 +1048,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# ADDresult_$13 result_$12 p 
+	# ADD result_$13 result_$12 p 
 
 	# fetch variables
 
@@ -1091,7 +1091,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# ADDresult_$14 sum1 sum2 
+	# ADD result_$14 sum1 sum2 
 
 	# fetch variables
 
@@ -1142,7 +1142,7 @@ fooEntry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$15 result_$14 arr$1 
+	# ADD result_$15 result_$14 arr$1 
 
 	# fetch variables
 
@@ -1538,7 +1538,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 504(sp)
 
-	# ADDresult_ a b 
+	# ADD result_ a b 
 
 	# fetch variables
 
@@ -1561,7 +1561,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 488(sp)
 
-	# ADDresult_$1 result_ c 
+	# ADD result_$1 result_ c 
 
 	# fetch variables
 
@@ -1584,7 +1584,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 472(sp)
 
-	# ADDresult_$2 result_$1 d 
+	# ADD result_$2 result_$1 d 
 
 	# fetch variables
 
@@ -1607,7 +1607,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 456(sp)
 
-	# ADDresult_$3 result_$2 e 
+	# ADD result_$3 result_$2 e 
 
 	# fetch variables
 
@@ -1630,7 +1630,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 440(sp)
 
-	# ADDresult_$4 result_$3 f 
+	# ADD result_$4 result_$3 f 
 
 	# fetch variables
 
@@ -1653,7 +1653,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 424(sp)
 
-	# ADDresult_$5 result_$4 g 
+	# ADD result_$5 result_$4 g 
 
 	# fetch variables
 
@@ -1676,7 +1676,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 408(sp)
 
-	# ADDresult_$6 result_$5 h 
+	# ADD result_$6 result_$5 h 
 
 	# fetch variables
 
@@ -1719,7 +1719,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 384(sp)
 
-	# ADDresult_$7 i j 
+	# ADD result_$7 i j 
 
 	# fetch variables
 
@@ -1742,7 +1742,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 368(sp)
 
-	# ADDresult_$8 result_$7 k 
+	# ADD result_$8 result_$7 k 
 
 	# fetch variables
 
@@ -1765,7 +1765,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 352(sp)
 
-	# ADDresult_$9 result_$8 l 
+	# ADD result_$9 result_$8 l 
 
 	# fetch variables
 
@@ -1788,7 +1788,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 336(sp)
 
-	# ADDresult_$10 result_$9 m 
+	# ADD result_$10 result_$9 m 
 
 	# fetch variables
 
@@ -1811,7 +1811,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 320(sp)
 
-	# ADDresult_$11 result_$10 n 
+	# ADD result_$11 result_$10 n 
 
 	# fetch variables
 
@@ -1834,7 +1834,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 304(sp)
 
-	# ADDresult_$12 result_$11 o 
+	# ADD result_$12 result_$11 o 
 
 	# fetch variables
 
@@ -1857,7 +1857,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 288(sp)
 
-	# ADDresult_$13 result_$12 p 
+	# ADD result_$13 result_$12 p 
 
 	# fetch variables
 
@@ -1911,7 +1911,7 @@ mainEntry29:
 	# get address of local var:foo
 	sd a0, 264(sp)
 
-	# ADDresult_$14 sum1 foo 
+	# ADD result_$14 sum1 foo 
 
 	# fetch variables
 
@@ -2037,7 +2037,7 @@ mainEntry29:
 	# get address of local var:foo$1
 	sd a0, 240(sp)
 
-	# ADDresult_$15 sum2 foo$1 
+	# ADD result_$15 sum2 foo$1 
 
 	# fetch variables
 
@@ -2240,7 +2240,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# ADDresult_$16 q r 
+	# ADD result_$16 q r 
 
 	# fetch variables
 
@@ -2263,7 +2263,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# ADDresult_$17 result_$16 s 
+	# ADD result_$17 result_$16 s 
 
 	# fetch variables
 
@@ -2286,7 +2286,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# ADDresult_$18 result_$17 t 
+	# ADD result_$18 result_$17 t 
 
 	# fetch variables
 
@@ -2309,7 +2309,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# ADDresult_$19 result_$18 u 
+	# ADD result_$19 result_$18 u 
 
 	# fetch variables
 
@@ -2332,7 +2332,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# ADDresult_$20 result_$19 v 
+	# ADD result_$20 result_$19 v 
 
 	# fetch variables
 
@@ -2355,7 +2355,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# ADDresult_$21 result_$20 w 
+	# ADD result_$21 result_$20 w 
 
 	# fetch variables
 
@@ -2378,7 +2378,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# ADDresult_$22 result_$21 x 
+	# ADD result_$22 result_$21 x 
 
 	# fetch variables
 
@@ -2421,7 +2421,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# ADDresult_$23 sum1$1 sum2$1 
+	# ADD result_$23 sum1$1 sum2$1 
 
 	# fetch variables
 
@@ -2444,7 +2444,7 @@ mainEntry29:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# ADDresult_$24 result_$23 sum3 
+	# ADD result_$24 result_$23 sum3 
 
 	# fetch variables
 

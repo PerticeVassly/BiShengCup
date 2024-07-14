@@ -303,7 +303,7 @@ hanoiEntry:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# ICMPcond_eq_tmp_ n  
+	# ICMP cond_eq_tmp_ n  
 
 	# fetch variables
 
@@ -316,7 +316,7 @@ hanoiEntry:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 128(sp)
 
-	# ZEXTcond_tmp_ cond_eq_tmp_
+	# ZEXT cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -327,7 +327,7 @@ hanoiEntry:
 	# get address of local var:cond_tmp_
 	sd t0, 120(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -411,7 +411,7 @@ ifFalse_2:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# SUBresult_ n$1  
+	# SUB result_ n$1  
 
 	# fetch variables
 
@@ -547,7 +547,7 @@ ifFalse_2:
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# SUBresult_$1 n$2  
+	# SUB result_$1 n$2  
 
 	# fetch variables
 
@@ -700,7 +700,7 @@ whileCond_17:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# ICMPcond_gt_tmp_ n  
+	# ICMP cond_gt_tmp_ n  
 
 	# fetch variables
 
@@ -713,7 +713,7 @@ whileCond_17:
 	# get address of local var:cond_gt_tmp_
 	sd t0, 40(sp)
 
-	# ZEXTcond_tmp_ cond_gt_tmp_
+	# ZEXT cond_tmp_ cond_gt_tmp_
 
 	# fetch variables
 
@@ -724,7 +724,7 @@ whileCond_17:
 	# get address of local var:cond_tmp_
 	sd t0, 32(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -833,7 +833,7 @@ whileBody_17:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# SUBresult_ n$1  
+	# SUB result_ n$1  
 
 	# fetch variables
 

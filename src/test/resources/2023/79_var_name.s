@@ -585,7 +585,7 @@ whileCond_255:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# ICMPcond_lt_tmp_ long_name1$QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz  
+	# ICMP cond_lt_tmp_ long_name1$QOiC8Blhf3J77ykaAhFYeWAp0W1TtVz  
 
 	# fetch variables
 
@@ -597,7 +597,7 @@ whileCond_255:
 	# get address of local var:cond_lt_tmp_
 	sd t0, 224(sp)
 
-	# ZEXTcond_tmp_ cond_lt_tmp_
+	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -608,7 +608,7 @@ whileCond_255:
 	# get address of local var:cond_tmp_
 	sd t0, 216(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -706,7 +706,7 @@ whileBody_255:
 	ld t0, 0(t3)
 	sd t0, 160(sp)
 
-	# SUBresult_ long_name7$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$3  
+	# SUB result_ long_name7$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$3  
 
 	# fetch variables
 
@@ -746,7 +746,7 @@ whileBody_255:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# ADDresult_$1 long_name6$zdKgkQxe8BClbywbfbacJx86aWsSC$2 long_name9$zdKgkQxe8BClbywbfbacJx86aWsSC$4 
+	# ADD result_$1 long_name6$zdKgkQxe8BClbywbfbacJx86aWsSC$2 long_name9$zdKgkQxe8BClbywbfbacJx86aWsSC$4 
 
 	# fetch variables
 
@@ -769,7 +769,7 @@ whileBody_255:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# SUBresult_$2 long_name10$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$4  
+	# SUB result_$2 long_name10$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$4  
 
 	# fetch variables
 
@@ -809,7 +809,7 @@ whileBody_255:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# ADDresult_$3 result_$1 long_name12$zdKgkQxe8BClbywbfbacJx86aWsSC$6 
+	# ADD result_$3 result_$1 long_name12$zdKgkQxe8BClbywbfbacJx86aWsSC$6 
 
 	# fetch variables
 
@@ -880,7 +880,7 @@ whileBody_255:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# ADDresult_$4 long_name13$46RJsXBiXL5NTrpJL22F4zlc3o0KiSE long_name16$zdKgkQxe8BClbywbfbacJx86aWsSC$8 
+	# ADD result_$4 long_name13$46RJsXBiXL5NTrpJL22F4zlc3o0KiSE long_name16$zdKgkQxe8BClbywbfbacJx86aWsSC$8 
 
 	# fetch variables
 
@@ -995,7 +995,7 @@ whileBody_255:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# ADDresult_$5 long_name20$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$7  
+	# ADD result_$5 long_name20$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$7  
 
 	# fetch variables
 

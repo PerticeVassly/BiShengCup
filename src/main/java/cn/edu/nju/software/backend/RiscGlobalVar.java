@@ -22,7 +22,6 @@ public class RiscGlobalVar {
         this.globalVar = globalVar;
     }
 
-    //todo() 全局变量之间的相互赋值未处理
     public void dumpToConsole() {
         System.out.println(".globl " + name);
         if(globalVar.isZeroInitializer()){
@@ -41,7 +40,7 @@ public class RiscGlobalVar {
             else if(globalVar.getInitVal().getType() instanceof FloatType) {
                 String initValue = globalVar.getInitVal().toString();
                 System.out.println(name + ":");
-                System.out.println(".double " + initValue);
+                System.out.println(".dword " + initValue);
             }
             else if(globalVar.getInitVal().getType() instanceof ArrayType) {
                 assert false;

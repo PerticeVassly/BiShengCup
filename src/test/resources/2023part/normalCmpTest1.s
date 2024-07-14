@@ -79,7 +79,7 @@ mainEntry12:
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# ICMPcond_lt_tmp_ a b 
+	# ICMP cond_lt_tmp_ a b 
 
 	# fetch variables
 
@@ -93,7 +93,7 @@ mainEntry12:
 	# get address of local var:cond_lt_tmp_
 	sd t0, 56(sp)
 
-	# ZEXTcond_tmp_ cond_lt_tmp_
+	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -104,7 +104,7 @@ mainEntry12:
 	# get address of local var:cond_tmp_
 	sd t0, 48(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -166,7 +166,7 @@ secondCond_2:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ICMPcond_lt_tmp_$1 b$1 c 
+	# ICMP cond_lt_tmp_$1 b$1 c 
 
 	# fetch variables
 
@@ -180,7 +180,7 @@ secondCond_2:
 	# get address of local var:cond_lt_tmp_$1
 	sd t0, 16(sp)
 
-	# ZEXTcond_tmp_$1 cond_lt_tmp_$1
+	# ZEXT cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -191,7 +191,7 @@ secondCond_2:
 	# get address of local var:cond_tmp_$1
 	sd t0, 8(sp)
 
-	# ICMPcond_$1 cond_tmp_$1  
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 

@@ -54,7 +54,7 @@ whileCond_18:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# ICMPcond_le_tmp_ i  
+	# ICMP cond_le_tmp_ i  
 
 	# fetch variables
 
@@ -68,7 +68,7 @@ whileCond_18:
 	# get address of local var:cond_le_tmp_
 	sd t0, 88(sp)
 
-	# ZEXTcond_tmp_ cond_le_tmp_
+	# ZEXT cond_tmp_ cond_le_tmp_
 
 	# fetch variables
 
@@ -79,7 +79,7 @@ whileCond_18:
 	# get address of local var:cond_tmp_
 	sd t0, 80(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -112,7 +112,7 @@ whileBody_18:
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# ADDresult_ i$1  
+	# ADD result_ i$1  
 
 	# fetch variables
 
@@ -144,7 +144,7 @@ whileBody_18:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# ADDresult_$1 k  
+	# ADD result_$1 k  
 
 	# fetch variables
 
@@ -174,7 +174,7 @@ whileBody_18:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_$2 k$1 k$2 
+	# ADD result_$2 k$1 k$2 
 
 	# fetch variables
 

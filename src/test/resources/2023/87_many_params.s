@@ -112,7 +112,7 @@ whileCond_7:
 	ld t0, 0(t3)
 	sd t0, 328(sp)
 
-	# SUBresult_ len  
+	# SUB result_ len  
 
 	# fetch variables
 
@@ -124,7 +124,7 @@ whileCond_7:
 	# get address of local var:result_
 	sd t0, 320(sp)
 
-	# ICMPcond_lt_tmp_ i result_ 
+	# ICMP cond_lt_tmp_ i result_ 
 
 	# fetch variables
 
@@ -138,7 +138,7 @@ whileCond_7:
 	# get address of local var:cond_lt_tmp_
 	sd t0, 312(sp)
 
-	# ZEXTcond_tmp_ cond_lt_tmp_
+	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -149,7 +149,7 @@ whileCond_7:
 	# get address of local var:cond_tmp_
 	sd t0, 304(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -182,7 +182,7 @@ whileBody_7:
 	ld t0, 0(t3)
 	sd t0, 288(sp)
 
-	# ADDresult_$1 i$1  
+	# ADD result_$1 i$1  
 
 	# fetch variables
 
@@ -236,7 +236,7 @@ whileCond_8:
 	ld t0, 0(t3)
 	sd t0, 264(sp)
 
-	# ICMPcond_lt_tmp_$1 j len$1 
+	# ICMP cond_lt_tmp_$1 j len$1 
 
 	# fetch variables
 
@@ -250,7 +250,7 @@ whileCond_8:
 	# get address of local var:cond_lt_tmp_$1
 	sd t0, 256(sp)
 
-	# ZEXTcond_tmp_$1 cond_lt_tmp_$1
+	# ZEXT cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -261,7 +261,7 @@ whileCond_8:
 	# get address of local var:cond_tmp_$1
 	sd t0, 248(sp)
 
-	# ICMPcond_$1 cond_tmp_$1  
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
@@ -377,7 +377,7 @@ whileBody_8:
 	ld t0, 0(t3)
 	sd t0, 176(sp)
 
-	# ICMPcond_lt_tmp_$2 arr$1 arr$3 
+	# ICMP cond_lt_tmp_$2 arr$1 arr$3 
 
 	# fetch variables
 
@@ -391,7 +391,7 @@ whileBody_8:
 	# get address of local var:cond_lt_tmp_$2
 	sd t0, 168(sp)
 
-	# ZEXTcond_tmp_$2 cond_lt_tmp_$2
+	# ZEXT cond_tmp_$2 cond_lt_tmp_$2
 
 	# fetch variables
 
@@ -402,7 +402,7 @@ whileBody_8:
 	# get address of local var:cond_tmp_$2
 	sd t0, 160(sp)
 
-	# ICMPcond_$2 cond_tmp_$2  
+	# ICMP cond_$2 cond_tmp_$2  
 
 	# fetch variables
 
@@ -435,7 +435,7 @@ next_19:
 	ld t0, 0(t3)
 	sd t0, 144(sp)
 
-	# ADDresult_$3 i$5  
+	# ADD result_$3 i$5  
 
 	# fetch variables
 
@@ -683,7 +683,7 @@ next_20:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$2 j$4  
+	# ADD result_$2 j$4  
 
 	# fetch variables
 
@@ -1465,7 +1465,7 @@ param32_recEntry:
 	ld t0, 0(t3)
 	sd t0, 320(sp)
 
-	# ICMPcond_eq_tmp_ a1  
+	# ICMP cond_eq_tmp_ a1  
 
 	# fetch variables
 
@@ -1478,7 +1478,7 @@ param32_recEntry:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 312(sp)
 
-	# ZEXTcond_tmp_ cond_eq_tmp_
+	# ZEXT cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -1489,7 +1489,7 @@ param32_recEntry:
 	# get address of local var:cond_tmp_
 	sd t0, 304(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -1546,7 +1546,7 @@ ifFalse_1:
 	ld t0, 0(t3)
 	sd t0, 280(sp)
 
-	# SUBresult_ a1$1  
+	# SUB result_ a1$1  
 
 	# fetch variables
 
@@ -1576,7 +1576,7 @@ ifFalse_1:
 	ld t0, 0(t3)
 	sd t0, 256(sp)
 
-	# ADDresult_$1 a2$1 a3 
+	# ADD result_$1 a2$1 a3 
 
 	# fetch variables
 
@@ -1590,7 +1590,7 @@ ifFalse_1:
 	# get address of local var:result_$1
 	sd t0, 248(sp)
 
-	# MODresult_$2 result_$1  
+	# MOD result_$2 result_$1  
 
 	# fetch variables
 
@@ -3205,7 +3205,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_ a1$1 a1$3 
+	# ADD result_ a1$1 a1$3 
 
 	# fetch variables
 
@@ -3300,7 +3300,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$1 sum a2$1 
+	# ADD result_$1 sum a2$1 
 
 	# fetch variables
 
@@ -3367,7 +3367,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$2 result_$1 a2$3 
+	# ADD result_$2 result_$1 a2$3 
 
 	# fetch variables
 
@@ -3462,7 +3462,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$3 sum$1 a3$1 
+	# ADD result_$3 sum$1 a3$1 
 
 	# fetch variables
 
@@ -3529,7 +3529,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$4 result_$3 a3$3 
+	# ADD result_$4 result_$3 a3$3 
 
 	# fetch variables
 
@@ -3624,7 +3624,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$5 sum$2 a4$1 
+	# ADD result_$5 sum$2 a4$1 
 
 	# fetch variables
 
@@ -3691,7 +3691,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$6 result_$5 a4$3 
+	# ADD result_$6 result_$5 a4$3 
 
 	# fetch variables
 
@@ -3786,7 +3786,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$7 sum$3 a5$1 
+	# ADD result_$7 sum$3 a5$1 
 
 	# fetch variables
 
@@ -3853,7 +3853,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$8 result_$7 a5$3 
+	# ADD result_$8 result_$7 a5$3 
 
 	# fetch variables
 
@@ -3948,7 +3948,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$9 sum$4 a6$1 
+	# ADD result_$9 sum$4 a6$1 
 
 	# fetch variables
 
@@ -4015,7 +4015,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$10 result_$9 a6$3 
+	# ADD result_$10 result_$9 a6$3 
 
 	# fetch variables
 
@@ -4110,7 +4110,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$11 sum$5 a7$1 
+	# ADD result_$11 sum$5 a7$1 
 
 	# fetch variables
 
@@ -4177,7 +4177,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$12 result_$11 a7$3 
+	# ADD result_$12 result_$11 a7$3 
 
 	# fetch variables
 
@@ -4272,7 +4272,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$13 sum$6 a8$1 
+	# ADD result_$13 sum$6 a8$1 
 
 	# fetch variables
 
@@ -4339,7 +4339,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$14 result_$13 a8$3 
+	# ADD result_$14 result_$13 a8$3 
 
 	# fetch variables
 
@@ -4434,7 +4434,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$15 sum$7 a9$1 
+	# ADD result_$15 sum$7 a9$1 
 
 	# fetch variables
 
@@ -4501,7 +4501,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$16 result_$15 a9$3 
+	# ADD result_$16 result_$15 a9$3 
 
 	# fetch variables
 
@@ -4596,7 +4596,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$17 sum$8 a10$1 
+	# ADD result_$17 sum$8 a10$1 
 
 	# fetch variables
 
@@ -4663,7 +4663,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$18 result_$17 a10$3 
+	# ADD result_$18 result_$17 a10$3 
 
 	# fetch variables
 
@@ -4758,7 +4758,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$19 sum$9 a11$1 
+	# ADD result_$19 sum$9 a11$1 
 
 	# fetch variables
 
@@ -4825,7 +4825,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$20 result_$19 a11$3 
+	# ADD result_$20 result_$19 a11$3 
 
 	# fetch variables
 
@@ -4920,7 +4920,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$21 sum$10 a12$1 
+	# ADD result_$21 sum$10 a12$1 
 
 	# fetch variables
 
@@ -4987,7 +4987,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$22 result_$21 a12$3 
+	# ADD result_$22 result_$21 a12$3 
 
 	# fetch variables
 
@@ -5082,7 +5082,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$23 sum$11 a13$1 
+	# ADD result_$23 sum$11 a13$1 
 
 	# fetch variables
 
@@ -5149,7 +5149,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$24 result_$23 a13$3 
+	# ADD result_$24 result_$23 a13$3 
 
 	# fetch variables
 
@@ -5244,7 +5244,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$25 sum$12 a14$1 
+	# ADD result_$25 sum$12 a14$1 
 
 	# fetch variables
 
@@ -5311,7 +5311,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$26 result_$25 a14$3 
+	# ADD result_$26 result_$25 a14$3 
 
 	# fetch variables
 
@@ -5406,7 +5406,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$27 sum$13 a15$1 
+	# ADD result_$27 sum$13 a15$1 
 
 	# fetch variables
 
@@ -5473,7 +5473,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$28 result_$27 a15$3 
+	# ADD result_$28 result_$27 a15$3 
 
 	# fetch variables
 
@@ -5568,7 +5568,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$29 sum$14 a16$1 
+	# ADD result_$29 sum$14 a16$1 
 
 	# fetch variables
 
@@ -5635,7 +5635,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$30 result_$29 a16$3 
+	# ADD result_$30 result_$29 a16$3 
 
 	# fetch variables
 
@@ -5730,7 +5730,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$31 sum$15 a17$1 
+	# ADD result_$31 sum$15 a17$1 
 
 	# fetch variables
 
@@ -5797,7 +5797,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$32 result_$31 a17$3 
+	# ADD result_$32 result_$31 a17$3 
 
 	# fetch variables
 
@@ -5892,7 +5892,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$33 sum$16 a18$1 
+	# ADD result_$33 sum$16 a18$1 
 
 	# fetch variables
 
@@ -5959,7 +5959,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$34 result_$33 a18$3 
+	# ADD result_$34 result_$33 a18$3 
 
 	# fetch variables
 
@@ -6038,7 +6038,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 984(sp)
 
-	# ADDresult_$35 sum$17 a19$1 
+	# ADD result_$35 sum$17 a19$1 
 
 	# fetch variables
 
@@ -6089,7 +6089,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 952(sp)
 
-	# ADDresult_$36 result_$35 a19$3 
+	# ADD result_$36 result_$35 a19$3 
 
 	# fetch variables
 
@@ -6164,7 +6164,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 912(sp)
 
-	# ADDresult_$37 sum$18 a20$1 
+	# ADD result_$37 sum$18 a20$1 
 
 	# fetch variables
 
@@ -6215,7 +6215,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 880(sp)
 
-	# ADDresult_$38 result_$37 a20$3 
+	# ADD result_$38 result_$37 a20$3 
 
 	# fetch variables
 
@@ -6290,7 +6290,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 840(sp)
 
-	# ADDresult_$39 sum$19 a21$1 
+	# ADD result_$39 sum$19 a21$1 
 
 	# fetch variables
 
@@ -6341,7 +6341,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 808(sp)
 
-	# ADDresult_$40 result_$39 a21$3 
+	# ADD result_$40 result_$39 a21$3 
 
 	# fetch variables
 
@@ -6416,7 +6416,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 768(sp)
 
-	# ADDresult_$41 sum$20 a22$1 
+	# ADD result_$41 sum$20 a22$1 
 
 	# fetch variables
 
@@ -6467,7 +6467,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 736(sp)
 
-	# ADDresult_$42 result_$41 a22$3 
+	# ADD result_$42 result_$41 a22$3 
 
 	# fetch variables
 
@@ -6542,7 +6542,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 696(sp)
 
-	# ADDresult_$43 sum$21 a23$1 
+	# ADD result_$43 sum$21 a23$1 
 
 	# fetch variables
 
@@ -6593,7 +6593,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 664(sp)
 
-	# ADDresult_$44 result_$43 a23$3 
+	# ADD result_$44 result_$43 a23$3 
 
 	# fetch variables
 
@@ -6668,7 +6668,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 624(sp)
 
-	# ADDresult_$45 sum$22 a24$1 
+	# ADD result_$45 sum$22 a24$1 
 
 	# fetch variables
 
@@ -6719,7 +6719,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 592(sp)
 
-	# ADDresult_$46 result_$45 a24$3 
+	# ADD result_$46 result_$45 a24$3 
 
 	# fetch variables
 
@@ -6794,7 +6794,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 552(sp)
 
-	# ADDresult_$47 sum$23 a25$1 
+	# ADD result_$47 sum$23 a25$1 
 
 	# fetch variables
 
@@ -6845,7 +6845,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 520(sp)
 
-	# ADDresult_$48 result_$47 a25$3 
+	# ADD result_$48 result_$47 a25$3 
 
 	# fetch variables
 
@@ -6920,7 +6920,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 480(sp)
 
-	# ADDresult_$49 sum$24 a26$1 
+	# ADD result_$49 sum$24 a26$1 
 
 	# fetch variables
 
@@ -6971,7 +6971,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 448(sp)
 
-	# ADDresult_$50 result_$49 a26$3 
+	# ADD result_$50 result_$49 a26$3 
 
 	# fetch variables
 
@@ -7046,7 +7046,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 408(sp)
 
-	# ADDresult_$51 sum$25 a27$1 
+	# ADD result_$51 sum$25 a27$1 
 
 	# fetch variables
 
@@ -7097,7 +7097,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 376(sp)
 
-	# ADDresult_$52 result_$51 a27$3 
+	# ADD result_$52 result_$51 a27$3 
 
 	# fetch variables
 
@@ -7172,7 +7172,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 336(sp)
 
-	# ADDresult_$53 sum$26 a28$1 
+	# ADD result_$53 sum$26 a28$1 
 
 	# fetch variables
 
@@ -7223,7 +7223,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 304(sp)
 
-	# ADDresult_$54 result_$53 a28$3 
+	# ADD result_$54 result_$53 a28$3 
 
 	# fetch variables
 
@@ -7298,7 +7298,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 264(sp)
 
-	# ADDresult_$55 sum$27 a29$1 
+	# ADD result_$55 sum$27 a29$1 
 
 	# fetch variables
 
@@ -7349,7 +7349,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# ADDresult_$56 result_$55 a29$3 
+	# ADD result_$56 result_$55 a29$3 
 
 	# fetch variables
 
@@ -7424,7 +7424,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 192(sp)
 
-	# ADDresult_$57 sum$28 a30$1 
+	# ADD result_$57 sum$28 a30$1 
 
 	# fetch variables
 
@@ -7475,7 +7475,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 160(sp)
 
-	# ADDresult_$58 result_$57 a30$3 
+	# ADD result_$58 result_$57 a30$3 
 
 	# fetch variables
 
@@ -7550,7 +7550,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# ADDresult_$59 sum$29 a31$1 
+	# ADD result_$59 sum$29 a31$1 
 
 	# fetch variables
 
@@ -7601,7 +7601,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# ADDresult_$60 result_$59 a31$3 
+	# ADD result_$60 result_$59 a31$3 
 
 	# fetch variables
 
@@ -7676,7 +7676,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# ADDresult_$61 sum$30 a32$1 
+	# ADD result_$61 sum$30 a32$1 
 
 	# fetch variables
 
@@ -7727,7 +7727,7 @@ param32_arrEntry:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# ADDresult_$62 result_$61 a32$3 
+	# ADD result_$62 result_$61 a32$3 
 
 	# fetch variables
 
@@ -13559,7 +13559,7 @@ whileCond_9:
 	ld t0, 0(t3)
 	sd t0, 704(sp)
 
-	# ICMPcond_lt_tmp_ i  
+	# ICMP cond_lt_tmp_ i  
 
 	# fetch variables
 
@@ -13571,7 +13571,7 @@ whileCond_9:
 	# get address of local var:cond_lt_tmp_
 	sd t0, 696(sp)
 
-	# ZEXTcond_tmp_ cond_lt_tmp_
+	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -13582,7 +13582,7 @@ whileCond_9:
 	# get address of local var:cond_tmp_
 	sd t0, 688(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -13666,7 +13666,7 @@ whileBody_9:
 	ld t0, 0(t3)
 	sd t0, 648(sp)
 
-	# SUBresult_ i$2  
+	# SUB result_ i$2  
 
 	# fetch variables
 
@@ -13725,7 +13725,7 @@ whileBody_9:
 	ld t0, 0(t3)
 	sd t0, 616(sp)
 
-	# SUBresult_$1 arr$2  
+	# SUB result_$1 arr$2  
 
 	# fetch variables
 
@@ -13808,7 +13808,7 @@ whileBody_9:
 	ld t0, 0(t3)
 	sd t0, 576(sp)
 
-	# SUBresult_$2 i$4  
+	# SUB result_$2 i$4  
 
 	# fetch variables
 
@@ -13867,7 +13867,7 @@ whileBody_9:
 	ld t0, 0(t3)
 	sd t0, 544(sp)
 
-	# SUBresult_$3 arr$5  
+	# SUB result_$3 arr$5  
 
 	# fetch variables
 
@@ -13901,7 +13901,7 @@ whileBody_9:
 	ld t0, 0(t3)
 	sd t0, 528(sp)
 
-	# ADDresult_$4 i$5  
+	# ADD result_$4 i$5  
 
 	# fetch variables
 

@@ -82,7 +82,7 @@ funcEntry4:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# ICMPcond_eq_tmp_ a$1 b 
+	# ICMP cond_eq_tmp_ a$1 b 
 
 	# fetch variables
 
@@ -97,7 +97,7 @@ funcEntry4:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 32(sp)
 
-	# ZEXTcond_tmp_ cond_eq_tmp_
+	# ZEXT cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -108,7 +108,7 @@ funcEntry4:
 	# get address of local var:cond_tmp_
 	sd t0, 24(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -141,7 +141,7 @@ ifTrue_324:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_ a$2  
+	# ADD result_ a$2  
 
 	# fetch variables
 
@@ -244,7 +244,7 @@ whileCond_232:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# ICMPcond_lt_tmp_ i  
+	# ICMP cond_lt_tmp_ i  
 
 	# fetch variables
 
@@ -256,7 +256,7 @@ whileCond_232:
 	# get address of local var:cond_lt_tmp_
 	sd t0, 112(sp)
 
-	# ZEXTcond_tmp_ cond_lt_tmp_
+	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -267,7 +267,7 @@ whileCond_232:
 	# get address of local var:cond_tmp_
 	sd t0, 104(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -311,7 +311,7 @@ whileBody_232:
 	# get address of local var:func
 	sd a0, 88(sp)
 
-	# ICMPcond_eq_tmp_ func  
+	# ICMP cond_eq_tmp_ func  
 
 	# fetch variables
 
@@ -324,7 +324,7 @@ whileBody_232:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 80(sp)
 
-	# ZEXTcond_tmp_$1 cond_eq_tmp_
+	# ZEXT cond_tmp_$1 cond_eq_tmp_
 
 	# fetch variables
 
@@ -335,7 +335,7 @@ whileBody_232:
 	# get address of local var:cond_tmp_$1
 	sd t0, 72(sp)
 
-	# ICMPcond_$1 cond_tmp_$1  
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
@@ -368,7 +368,7 @@ next_557:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# ICMPcond_lt_tmp_$1 result$1  
+	# ICMP cond_lt_tmp_$1 result$1  
 
 	# fetch variables
 
@@ -380,7 +380,7 @@ next_557:
 	# get address of local var:cond_lt_tmp_$1
 	sd t0, 48(sp)
 
-	# ZEXTcond_tmp_$2 cond_lt_tmp_$1
+	# ZEXT cond_tmp_$2 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -391,7 +391,7 @@ next_557:
 	# get address of local var:cond_tmp_$2
 	sd t0, 40(sp)
 
-	# ICMPcond_$2 cond_tmp_$2  
+	# ICMP cond_$2 cond_tmp_$2  
 
 	# fetch variables
 
@@ -424,7 +424,7 @@ ifTrue_325:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_ result  
+	# ADD result_ result  
 
 	# fetch variables
 
@@ -460,7 +460,7 @@ next_558:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$1 i$1  
+	# ADD result_$1 i$1  
 
 	# fetch variables
 

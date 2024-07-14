@@ -92,7 +92,7 @@ whileCond_180:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# MULresult_ n n$1 
+	# MUL result_ n n$1 
 
 	# fetch variables
 
@@ -106,7 +106,7 @@ whileCond_180:
 	# get address of local var:result_
 	sd t0, 64(sp)
 
-	# ADDresult_$1 result_  
+	# ADD result_$1 result_  
 
 	# fetch variables
 
@@ -118,7 +118,7 @@ whileCond_180:
 	# get address of local var:result_$1
 	sd t0, 56(sp)
 
-	# ICMPcond_le_tmp_ i result_$1 
+	# ICMP cond_le_tmp_ i result_$1 
 
 	# fetch variables
 
@@ -134,7 +134,7 @@ whileCond_180:
 	# get address of local var:cond_le_tmp_
 	sd t0, 48(sp)
 
-	# ZEXTcond_tmp_ cond_le_tmp_
+	# ZEXT cond_tmp_ cond_le_tmp_
 
 	# fetch variables
 
@@ -145,7 +145,7 @@ whileCond_180:
 	# get address of local var:cond_tmp_
 	sd t0, 40(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -213,7 +213,7 @@ whileBody_180:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$2 i$2  
+	# ADD result_$2 i$2  
 
 	# fetch variables
 
@@ -328,7 +328,7 @@ findfaEntry:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# ICMPcond_eq_tmp_ array$1 a$1 
+	# ICMP cond_eq_tmp_ array$1 a$1 
 
 	# fetch variables
 
@@ -343,7 +343,7 @@ findfaEntry:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 96(sp)
 
-	# ZEXTcond_tmp_ cond_eq_tmp_
+	# ZEXT cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -354,7 +354,7 @@ findfaEntry:
 	# get address of local var:cond_tmp_
 	sd t0, 88(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -730,7 +730,7 @@ mmergeEntry:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# ICMPcond_neq_tmp_ m n 
+	# ICMP cond_neq_tmp_ m n 
 
 	# fetch variables
 
@@ -746,7 +746,7 @@ mmergeEntry:
 	# get address of local var:cond_neq_tmp_
 	sd t0, 40(sp)
 
-	# ZEXTcond_tmp_ cond_neq_tmp_
+	# ZEXT cond_tmp_ cond_neq_tmp_
 
 	# fetch variables
 
@@ -757,7 +757,7 @@ mmergeEntry:
 	# get address of local var:cond_tmp_
 	sd t0, 32(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -958,7 +958,7 @@ whileCond_181:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ICMPcond_normalize_ t  
+	# ICMP cond_normalize_ t  
 
 	# fetch variables
 
@@ -1001,7 +1001,7 @@ whileBody_181:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_ t$1  
+	# SUB result_ t$1  
 
 	# fetch variables
 
@@ -1132,7 +1132,7 @@ whileBody_181:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$1 n$1 n$2 
+	# MUL result_$1 n$1 n$2 
 
 	# fetch variables
 
@@ -1150,7 +1150,7 @@ whileBody_181:
 	# get address of local var:result_$1
 	sd t0, 1016(sp)
 
-	# ADDresult_$2 result_$1  
+	# ADD result_$2 result_$1  
 
 	# fetch variables
 
@@ -1211,7 +1211,7 @@ whileCond_182:
 	ld t0, 0(t3)
 	sd t0, 992(sp)
 
-	# ICMPcond_lt_tmp_ i m 
+	# ICMP cond_lt_tmp_ i m 
 
 	# fetch variables
 
@@ -1225,7 +1225,7 @@ whileCond_182:
 	# get address of local var:cond_lt_tmp_
 	sd t0, 984(sp)
 
-	# ZEXTcond_tmp_ cond_lt_tmp_
+	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -1236,7 +1236,7 @@ whileCond_182:
 	# get address of local var:cond_tmp_
 	sd t0, 976(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -1337,7 +1337,7 @@ whileBody_182:
 	ld t0, 0(t3)
 	sd t0, 944(sp)
 
-	# ICMPtmp_  flag 
+	# ICMP tmp_  flag 
 
 	# fetch variables
 	li t1, 0
@@ -1351,7 +1351,7 @@ whileBody_182:
 	# get address of local var:tmp_
 	sd t0, 936(sp)
 
-	# XORtmp_$1 tmp_  
+	# XOR tmp_$1 tmp_  
 
 	# fetch variables
 
@@ -1363,7 +1363,7 @@ whileBody_182:
 	# get address of local var:tmp_$1
 	sd t0, 928(sp)
 
-	# ZEXTtmp_$2 tmp_$1
+	# ZEXT tmp_$2 tmp_$1
 
 	# fetch variables
 
@@ -1374,7 +1374,7 @@ whileBody_182:
 	# get address of local var:tmp_$2
 	sd t0, 920(sp)
 
-	# ICMPcond_normalize_$1 tmp_$2  
+	# ICMP cond_normalize_$1 tmp_$2  
 
 	# fetch variables
 
@@ -1409,7 +1409,7 @@ next_431:
 	ld t0, 0(t3)
 	sd t0, 904(sp)
 
-	# ICMPtmp_$3  flag$1 
+	# ICMP tmp_$3  flag$1 
 
 	# fetch variables
 	li t1, 0
@@ -1423,7 +1423,7 @@ next_431:
 	# get address of local var:tmp_$3
 	sd t0, 896(sp)
 
-	# XORtmp_$4 tmp_$3  
+	# XOR tmp_$4 tmp_$3  
 
 	# fetch variables
 
@@ -1435,7 +1435,7 @@ next_431:
 	# get address of local var:tmp_$4
 	sd t0, 888(sp)
 
-	# ZEXTtmp_$5 tmp_$4
+	# ZEXT tmp_$5 tmp_$4
 
 	# fetch variables
 
@@ -1446,7 +1446,7 @@ next_431:
 	# get address of local var:tmp_$5
 	sd t0, 880(sp)
 
-	# ICMPcond_normalize_$2 tmp_$5  
+	# ICMP cond_normalize_$2 tmp_$5  
 
 	# fetch variables
 
@@ -1490,7 +1490,7 @@ ifTrue_249:
 	ld t0, 0(t3)
 	sd t0, 856(sp)
 
-	# SUBresult_$3 a  
+	# SUB result_$3 a  
 
 	# fetch variables
 
@@ -1502,7 +1502,7 @@ ifTrue_249:
 	# get address of local var:result_$3
 	sd t0, 848(sp)
 
-	# MULresult_$4 n$3 result_$3 
+	# MUL result_$4 n$3 result_$3 
 
 	# fetch variables
 
@@ -1527,7 +1527,7 @@ ifTrue_249:
 	ld t0, 0(t3)
 	sd t0, 832(sp)
 
-	# ADDresult_$5 result_$4 b 
+	# ADD result_$5 result_$4 b 
 
 	# fetch variables
 
@@ -1615,7 +1615,7 @@ ifTrue_249:
 	ld t0, 0(t3)
 	sd t0, 792(sp)
 
-	# ICMPcond_eq_tmp_ a$1  
+	# ICMP cond_eq_tmp_ a$1  
 
 	# fetch variables
 
@@ -1628,7 +1628,7 @@ ifTrue_249:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 784(sp)
 
-	# ZEXTcond_tmp_$1 cond_eq_tmp_
+	# ZEXT cond_tmp_$1 cond_eq_tmp_
 
 	# fetch variables
 
@@ -1639,7 +1639,7 @@ ifTrue_249:
 	# get address of local var:cond_tmp_$1
 	sd t0, 776(sp)
 
-	# ICMPcond_$1 cond_tmp_$1  
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
@@ -1674,7 +1674,7 @@ next_432:
 	ld t0, 0(t3)
 	sd t0, 760(sp)
 
-	# ADDresult_$15 i$2  
+	# ADD result_$15 i$2  
 
 	# fetch variables
 
@@ -1789,7 +1789,7 @@ next_433:
 	ld t0, 0(t3)
 	sd t0, 720(sp)
 
-	# ICMPcond_eq_tmp_$1 a$2 n$4 
+	# ICMP cond_eq_tmp_$1 a$2 n$4 
 
 	# fetch variables
 
@@ -1804,7 +1804,7 @@ next_433:
 	# get address of local var:cond_eq_tmp_$1
 	sd t0, 712(sp)
 
-	# ZEXTcond_tmp_$2 cond_eq_tmp_$1
+	# ZEXT cond_tmp_$2 cond_eq_tmp_$1
 
 	# fetch variables
 
@@ -1815,7 +1815,7 @@ next_433:
 	# get address of local var:cond_tmp_$2
 	sd t0, 704(sp)
 
-	# ICMPcond_$2 cond_tmp_$2  
+	# ICMP cond_$2 cond_tmp_$2  
 
 	# fetch variables
 
@@ -1964,7 +1964,7 @@ next_434:
 	ld t0, 0(t3)
 	sd t0, 640(sp)
 
-	# ICMPcond_lt_tmp_$1 b$1 n$5 
+	# ICMP cond_lt_tmp_$1 b$1 n$5 
 
 	# fetch variables
 
@@ -1978,7 +1978,7 @@ next_434:
 	# get address of local var:cond_lt_tmp_$1
 	sd t0, 632(sp)
 
-	# ZEXTcond_tmp_$3 cond_lt_tmp_$1
+	# ZEXT cond_tmp_$3 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -1989,7 +1989,7 @@ next_434:
 	# get address of local var:cond_tmp_$3
 	sd t0, 624(sp)
 
-	# ICMPcond_$3 cond_tmp_$3  
+	# ICMP cond_$3 cond_tmp_$3  
 
 	# fetch variables
 
@@ -2035,7 +2035,7 @@ ifTrue_252:
 	ld t0, 0(t3)
 	sd t0, 600(sp)
 
-	# ADDresult_$7 loc$6  
+	# ADD result_$7 loc$6  
 
 	# fetch variables
 
@@ -2091,7 +2091,7 @@ next_435:
 	ld t0, 0(t3)
 	sd t0, 584(sp)
 
-	# ICMPcond_gt_tmp_ b$2  
+	# ICMP cond_gt_tmp_ b$2  
 
 	# fetch variables
 
@@ -2104,7 +2104,7 @@ next_435:
 	# get address of local var:cond_gt_tmp_
 	sd t0, 576(sp)
 
-	# ZEXTcond_tmp_$5 cond_gt_tmp_
+	# ZEXT cond_tmp_$5 cond_gt_tmp_
 
 	# fetch variables
 
@@ -2115,7 +2115,7 @@ next_435:
 	# get address of local var:cond_tmp_$5
 	sd t0, 568(sp)
 
-	# ICMPcond_$5 cond_tmp_$5  
+	# ICMP cond_$5 cond_tmp_$5  
 
 	# fetch variables
 
@@ -2150,7 +2150,7 @@ secondCond_91:
 	ld t0, 0(t3)
 	sd t0, 552(sp)
 
-	# ADDresult_$6 loc$4  
+	# ADD result_$6 loc$4  
 
 	# fetch variables
 
@@ -2188,7 +2188,7 @@ secondCond_91:
 	ld t0, 0(t3)
 	sd t0, 528(sp)
 
-	# ICMPcond_neq_tmp_ array$4  
+	# ICMP cond_neq_tmp_ array$4  
 
 	# fetch variables
 
@@ -2202,7 +2202,7 @@ secondCond_91:
 	# get address of local var:cond_neq_tmp_
 	sd t0, 520(sp)
 
-	# ZEXTcond_tmp_$4 cond_neq_tmp_
+	# ZEXT cond_tmp_$4 cond_neq_tmp_
 
 	# fetch variables
 
@@ -2213,7 +2213,7 @@ secondCond_91:
 	# get address of local var:cond_tmp_$4
 	sd t0, 512(sp)
 
-	# ICMPcond_$4 cond_tmp_$4  
+	# ICMP cond_$4 cond_tmp_$4  
 
 	# fetch variables
 
@@ -2259,7 +2259,7 @@ ifTrue_253:
 	ld t0, 0(t3)
 	sd t0, 488(sp)
 
-	# SUBresult_$9 loc$9  
+	# SUB result_$9 loc$9  
 
 	# fetch variables
 
@@ -2324,7 +2324,7 @@ next_436:
 	ld t0, 0(t3)
 	sd t0, 464(sp)
 
-	# ICMPcond_lt_tmp_$2 a$3 n$6 
+	# ICMP cond_lt_tmp_$2 a$3 n$6 
 
 	# fetch variables
 
@@ -2338,7 +2338,7 @@ next_436:
 	# get address of local var:cond_lt_tmp_$2
 	sd t0, 456(sp)
 
-	# ZEXTcond_tmp_$7 cond_lt_tmp_$2
+	# ZEXT cond_tmp_$7 cond_lt_tmp_$2
 
 	# fetch variables
 
@@ -2349,7 +2349,7 @@ next_436:
 	# get address of local var:cond_tmp_$7
 	sd t0, 448(sp)
 
-	# ICMPcond_$7 cond_tmp_$7  
+	# ICMP cond_$7 cond_tmp_$7  
 
 	# fetch variables
 
@@ -2384,7 +2384,7 @@ secondCond_92:
 	ld t0, 0(t3)
 	sd t0, 432(sp)
 
-	# SUBresult_$8 loc$7  
+	# SUB result_$8 loc$7  
 
 	# fetch variables
 
@@ -2422,7 +2422,7 @@ secondCond_92:
 	ld t0, 0(t3)
 	sd t0, 408(sp)
 
-	# ICMPcond_neq_tmp_$1 array$6  
+	# ICMP cond_neq_tmp_$1 array$6  
 
 	# fetch variables
 
@@ -2436,7 +2436,7 @@ secondCond_92:
 	# get address of local var:cond_neq_tmp_$1
 	sd t0, 400(sp)
 
-	# ZEXTcond_tmp_$6 cond_neq_tmp_$1
+	# ZEXT cond_tmp_$6 cond_neq_tmp_$1
 
 	# fetch variables
 
@@ -2447,7 +2447,7 @@ secondCond_92:
 	# get address of local var:cond_tmp_$6
 	sd t0, 392(sp)
 
-	# ICMPcond_$6 cond_tmp_$6  
+	# ICMP cond_$6 cond_tmp_$6  
 
 	# fetch variables
 
@@ -2502,7 +2502,7 @@ ifTrue_254:
 	ld t0, 0(t3)
 	sd t0, 360(sp)
 
-	# ADDresult_$11 loc$12 n$8 
+	# ADD result_$11 loc$12 n$8 
 
 	# fetch variables
 
@@ -2560,7 +2560,7 @@ next_437:
 	ld t0, 0(t3)
 	sd t0, 344(sp)
 
-	# ICMPcond_gt_tmp_$1 a$4  
+	# ICMP cond_gt_tmp_$1 a$4  
 
 	# fetch variables
 
@@ -2573,7 +2573,7 @@ next_437:
 	# get address of local var:cond_gt_tmp_$1
 	sd t0, 336(sp)
 
-	# ZEXTcond_tmp_$9 cond_gt_tmp_$1
+	# ZEXT cond_tmp_$9 cond_gt_tmp_$1
 
 	# fetch variables
 
@@ -2584,7 +2584,7 @@ next_437:
 	# get address of local var:cond_tmp_$9
 	sd t0, 328(sp)
 
-	# ICMPcond_$9 cond_tmp_$9  
+	# ICMP cond_$9 cond_tmp_$9  
 
 	# fetch variables
 
@@ -2628,7 +2628,7 @@ secondCond_93:
 	ld t0, 0(t3)
 	sd t0, 304(sp)
 
-	# ADDresult_$10 loc$10 n$7 
+	# ADD result_$10 loc$10 n$7 
 
 	# fetch variables
 
@@ -2668,7 +2668,7 @@ secondCond_93:
 	ld t0, 0(t3)
 	sd t0, 280(sp)
 
-	# ICMPcond_neq_tmp_$2 array$8  
+	# ICMP cond_neq_tmp_$2 array$8  
 
 	# fetch variables
 
@@ -2682,7 +2682,7 @@ secondCond_93:
 	# get address of local var:cond_neq_tmp_$2
 	sd t0, 272(sp)
 
-	# ZEXTcond_tmp_$8 cond_neq_tmp_$2
+	# ZEXT cond_tmp_$8 cond_neq_tmp_$2
 
 	# fetch variables
 
@@ -2693,7 +2693,7 @@ secondCond_93:
 	# get address of local var:cond_tmp_$8
 	sd t0, 264(sp)
 
-	# ICMPcond_$8 cond_tmp_$8  
+	# ICMP cond_$8 cond_tmp_$8  
 
 	# fetch variables
 
@@ -2748,7 +2748,7 @@ ifTrue_255:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# SUBresult_$13 loc$15 n$10 
+	# SUB result_$13 loc$15 n$10 
 
 	# fetch variables
 
@@ -2819,7 +2819,7 @@ next_438:
 	ld t0, 0(t3)
 	sd t0, 208(sp)
 
-	# ICMPcond_neq_tmp_$4 array$12  
+	# ICMP cond_neq_tmp_$4 array$12  
 
 	# fetch variables
 
@@ -2833,7 +2833,7 @@ next_438:
 	# get address of local var:cond_neq_tmp_$4
 	sd t0, 200(sp)
 
-	# ZEXTcond_tmp_$11 cond_neq_tmp_$4
+	# ZEXT cond_tmp_$11 cond_neq_tmp_$4
 
 	# fetch variables
 
@@ -2844,7 +2844,7 @@ next_438:
 	# get address of local var:cond_tmp_$11
 	sd t0, 192(sp)
 
-	# ICMPcond_$11 cond_tmp_$11  
+	# ICMP cond_$11 cond_tmp_$11  
 
 	# fetch variables
 
@@ -2888,7 +2888,7 @@ secondCond_94:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# SUBresult_$12 loc$13 n$9 
+	# SUB result_$12 loc$13 n$9 
 
 	# fetch variables
 
@@ -2928,7 +2928,7 @@ secondCond_94:
 	ld t0, 0(t3)
 	sd t0, 144(sp)
 
-	# ICMPcond_neq_tmp_$3 array$10  
+	# ICMP cond_neq_tmp_$3 array$10  
 
 	# fetch variables
 
@@ -2942,7 +2942,7 @@ secondCond_94:
 	# get address of local var:cond_neq_tmp_$3
 	sd t0, 136(sp)
 
-	# ZEXTcond_tmp_$10 cond_neq_tmp_$3
+	# ZEXT cond_tmp_$10 cond_neq_tmp_$3
 
 	# fetch variables
 
@@ -2953,7 +2953,7 @@ secondCond_94:
 	# get address of local var:cond_tmp_$10
 	sd t0, 128(sp)
 
-	# ICMPcond_$10 cond_tmp_$10  
+	# ICMP cond_$10 cond_tmp_$10  
 
 	# fetch variables
 
@@ -2999,7 +2999,7 @@ ifTrue_256:
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# ADDresult_$14 i$1  
+	# ADD result_$14 i$1  
 
 	# fetch variables
 
@@ -3148,7 +3148,7 @@ secondCond_95:
 	# get address of local var:findfa$1
 	sd a0, 72(sp)
 
-	# ICMPcond_eq_tmp_$2 findfa findfa$1 
+	# ICMP cond_eq_tmp_$2 findfa findfa$1 
 
 	# fetch variables
 
@@ -3163,7 +3163,7 @@ secondCond_95:
 	# get address of local var:cond_eq_tmp_$2
 	sd t0, 64(sp)
 
-	# ZEXTcond_tmp_$13 cond_eq_tmp_$2
+	# ZEXT cond_tmp_$13 cond_eq_tmp_$2
 
 	# fetch variables
 
@@ -3174,7 +3174,7 @@ secondCond_95:
 	# get address of local var:cond_tmp_$13
 	sd t0, 56(sp)
 
-	# ICMPcond_$13 cond_tmp_$13  
+	# ICMP cond_$13 cond_tmp_$13  
 
 	# fetch variables
 
@@ -3235,7 +3235,7 @@ secondCond_96:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ICMPcond_neq_tmp_$5 array$14  
+	# ICMP cond_neq_tmp_$5 array$14  
 
 	# fetch variables
 
@@ -3249,7 +3249,7 @@ secondCond_96:
 	# get address of local var:cond_neq_tmp_$5
 	sd t0, 16(sp)
 
-	# ZEXTcond_tmp_$12 cond_neq_tmp_$5
+	# ZEXT cond_tmp_$12 cond_neq_tmp_$5
 
 	# fetch variables
 
@@ -3260,7 +3260,7 @@ secondCond_96:
 	# get address of local var:cond_tmp_$12
 	sd t0, 8(sp)
 
-	# ICMPcond_$12 cond_tmp_$12  
+	# ICMP cond_$12 cond_tmp_$12  
 
 	# fetch variables
 

@@ -5,6 +5,23 @@ package cn.edu.nju.software.backend;
  */
 public record RiscSpecifications() {
 
+    private static final int pointerSize = 8;
+    private static final int intSize = 4;
+    private static final int floatSize = 4;
+
+    public static int getPointerSize() {
+        return pointerSize;
+    }
+
+    public static int getIntSize() {
+        return intSize;
+    }
+
+    public static int getFloatSize() {
+        return floatSize;
+    }
+
+
     //todo() 寄存器分配,增加
     private static final String[] callerSavedRegs = new String[] {"ra"};
 
@@ -15,7 +32,7 @@ public record RiscSpecifications() {
     private static final String[] fArgRegs = new String[] {"fa0", "fa1", "fa2", "fa3", "fa4", "fa5", "fa6", "fa7"};
 
     // todo: remove this field when Riscv basic type (int, float) is 32bit !
-    private static final boolean is64bit = true;
+    private static final boolean is64bit = false;
 
     public static String[] getCallerSavedRegs() {
         return callerSavedRegs;

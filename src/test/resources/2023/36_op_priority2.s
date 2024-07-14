@@ -95,7 +95,7 @@ mainEntry87:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# ADDresult_ c a 
+	# ADD result_ c a 
 
 	# fetch variables
 
@@ -127,7 +127,7 @@ mainEntry87:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# SUBresult_$1 b d 
+	# SUB result_$1 b d 
 
 	# fetch variables
 
@@ -141,7 +141,7 @@ mainEntry87:
 	# get address of local var:result_$1
 	sd t0, 8(sp)
 
-	# MULresult_$2 result_ result_$1 
+	# MUL result_$2 result_ result_$1 
 
 	# fetch variables
 

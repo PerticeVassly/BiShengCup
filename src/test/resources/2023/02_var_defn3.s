@@ -79,7 +79,7 @@ mainEntry38:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_ b0 _c 
+	# ADD result_ b0 _c 
 
 	# fetch variables
 

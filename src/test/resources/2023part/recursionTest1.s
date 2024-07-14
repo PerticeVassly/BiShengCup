@@ -48,7 +48,7 @@ fibEntry:
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# ICMPcond_eq_tmp_ n  
+	# ICMP cond_eq_tmp_ n  
 
 	# fetch variables
 
@@ -61,7 +61,7 @@ fibEntry:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 104(sp)
 
-	# ZEXTcond_tmp_ cond_eq_tmp_
+	# ZEXT cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -72,7 +72,7 @@ fibEntry:
 	# get address of local var:cond_tmp_
 	sd t0, 96(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -118,7 +118,7 @@ next_4:
 	ld t0, 0(t3)
 	sd t0, 80(sp)
 
-	# ICMPcond_eq_tmp_$1 n$1  
+	# ICMP cond_eq_tmp_$1 n$1  
 
 	# fetch variables
 
@@ -131,7 +131,7 @@ next_4:
 	# get address of local var:cond_eq_tmp_$1
 	sd t0, 72(sp)
 
-	# ZEXTcond_tmp_$1 cond_eq_tmp_$1
+	# ZEXT cond_tmp_$1 cond_eq_tmp_$1
 
 	# fetch variables
 
@@ -142,7 +142,7 @@ next_4:
 	# get address of local var:cond_tmp_$1
 	sd t0, 64(sp)
 
-	# ICMPcond_$1 cond_tmp_$1  
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
@@ -188,7 +188,7 @@ next_5:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# SUBresult_ n$2  
+	# SUB result_ n$2  
 
 	# fetch variables
 
@@ -235,7 +235,7 @@ next_5:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# SUBresult_$1 n$3  
+	# SUB result_$1 n$3  
 
 	# fetch variables
 
@@ -273,7 +273,7 @@ next_5:
 	# get address of local var:fib$1
 	sd a0, 8(sp)
 
-	# ADDresult_$2 fib fib$1 
+	# ADD result_$2 fib fib$1 
 
 	# fetch variables
 

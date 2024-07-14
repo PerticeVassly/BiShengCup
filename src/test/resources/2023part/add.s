@@ -78,7 +78,7 @@ addEntry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_ i j 
+	# ADD result_ i j 
 
 	# fetch variables
 

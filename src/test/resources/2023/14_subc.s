@@ -38,7 +38,7 @@ mainEntry35:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# SUBresult_ a  
+	# SUB result_ a  
 
 	# fetch variables
 

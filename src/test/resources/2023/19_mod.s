@@ -38,7 +38,7 @@ mainEntry64:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# DIVresult_ a  
+	# DIV result_ a  
 
 	# fetch variables
 

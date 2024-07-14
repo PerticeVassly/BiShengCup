@@ -99,7 +99,7 @@ deepWhileBrEntry:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# ADDresult_ a b 
+	# ADD result_ a b 
 
 	# fetch variables
 
@@ -137,7 +137,7 @@ whileCond_194:
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# ICMPcond_lt_tmp_ c  
+	# ICMP cond_lt_tmp_ c  
 
 	# fetch variables
 
@@ -149,7 +149,7 @@ whileCond_194:
 	# get address of local var:cond_lt_tmp_
 	sd t0, 144(sp)
 
-	# ZEXTcond_tmp_ cond_lt_tmp_
+	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -160,7 +160,7 @@ whileCond_194:
 	# get address of local var:cond_tmp_
 	sd t0, 136(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -202,7 +202,7 @@ whileBody_194:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# ICMPcond_lt_tmp_$1 c$1  
+	# ICMP cond_lt_tmp_$1 c$1  
 
 	# fetch variables
 
@@ -214,7 +214,7 @@ whileBody_194:
 	# get address of local var:cond_lt_tmp_$1
 	sd t0, 112(sp)
 
-	# ZEXTcond_tmp_$1 cond_lt_tmp_$1
+	# ZEXT cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -225,7 +225,7 @@ whileBody_194:
 	# get address of local var:cond_tmp_$1
 	sd t0, 104(sp)
 
-	# ICMPcond_$1 cond_tmp_$1  
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
@@ -291,7 +291,7 @@ ifTrue_268:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# ADDresult_$1 c$2 d 
+	# ADD result_$1 c$2 d 
 
 	# fetch variables
 
@@ -325,7 +325,7 @@ ifTrue_268:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# ICMPcond_gt_tmp_ c$3  
+	# ICMP cond_gt_tmp_ c$3  
 
 	# fetch variables
 
@@ -338,7 +338,7 @@ ifTrue_268:
 	# get address of local var:cond_gt_tmp_
 	sd t0, 48(sp)
 
-	# ZEXTcond_tmp_$2 cond_gt_tmp_
+	# ZEXT cond_tmp_$2 cond_gt_tmp_
 
 	# fetch variables
 
@@ -349,7 +349,7 @@ ifTrue_268:
 	# get address of local var:cond_tmp_$2
 	sd t0, 40(sp)
 
-	# ICMPcond_$2 cond_tmp_$2  
+	# ICMP cond_$2 cond_tmp_$2  
 
 	# fetch variables
 
@@ -386,7 +386,7 @@ ifTrue_269:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# MULresult_$2 d$1  
+	# MUL result_$2 d$1  
 
 	# fetch variables
 
@@ -430,7 +430,7 @@ ifTrue_270:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# MULresult_$3 e  
+	# MUL result_$3 e  
 
 	# fetch variables
 

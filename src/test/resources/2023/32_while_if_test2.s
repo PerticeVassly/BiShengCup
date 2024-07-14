@@ -59,7 +59,7 @@ ifWhileEntry:
 	ld t0, 0(t3)
 	sd t0, 160(sp)
 
-	# ICMPcond_eq_tmp_ a  
+	# ICMP cond_eq_tmp_ a  
 
 	# fetch variables
 
@@ -72,7 +72,7 @@ ifWhileEntry:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 152(sp)
 
-	# ZEXTcond_tmp_ cond_eq_tmp_
+	# ZEXT cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -83,7 +83,7 @@ ifWhileEntry:
 	# get address of local var:cond_tmp_
 	sd t0, 144(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -148,7 +148,7 @@ whileCond_252:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# ICMPcond_eq_tmp_$1 b  
+	# ICMP cond_eq_tmp_$1 b  
 
 	# fetch variables
 
@@ -161,7 +161,7 @@ whileCond_252:
 	# get address of local var:cond_eq_tmp_$1
 	sd t0, 112(sp)
 
-	# ZEXTcond_tmp_$1 cond_eq_tmp_$1
+	# ZEXT cond_tmp_$1 cond_eq_tmp_$1
 
 	# fetch variables
 
@@ -172,7 +172,7 @@ whileCond_252:
 	# get address of local var:cond_tmp_$1
 	sd t0, 104(sp)
 
-	# ICMPcond_$1 cond_tmp_$1  
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
@@ -205,7 +205,7 @@ whileBody_252:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# ADDresult_ b$1  
+	# ADD result_ b$1  
 
 	# fetch variables
 
@@ -241,7 +241,7 @@ next_592:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# ADDresult_$1 b$2  
+	# ADD result_$1 b$2  
 
 	# fetch variables
 
@@ -277,7 +277,7 @@ whileCond_253:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# ICMPcond_lt_tmp_ a$1  
+	# ICMP cond_lt_tmp_ a$1  
 
 	# fetch variables
 
@@ -289,7 +289,7 @@ whileCond_253:
 	# get address of local var:cond_lt_tmp_
 	sd t0, 48(sp)
 
-	# ZEXTcond_tmp_$2 cond_lt_tmp_
+	# ZEXT cond_tmp_$2 cond_lt_tmp_
 
 	# fetch variables
 
@@ -300,7 +300,7 @@ whileCond_253:
 	# get address of local var:cond_tmp_$2
 	sd t0, 40(sp)
 
-	# ICMPcond_$2 cond_tmp_$2  
+	# ICMP cond_$2 cond_tmp_$2  
 
 	# fetch variables
 
@@ -333,7 +333,7 @@ whileBody_253:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# MULresult_$2 b$3  
+	# MUL result_$2 b$3  
 
 	# fetch variables
 
@@ -365,7 +365,7 @@ whileBody_253:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$3 a$2  
+	# ADD result_$3 a$2  
 
 	# fetch variables
 

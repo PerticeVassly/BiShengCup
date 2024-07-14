@@ -38,7 +38,7 @@ mainEntry20:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# MODresult_ a  
+	# MOD result_ a  
 
 	# fetch variables
 

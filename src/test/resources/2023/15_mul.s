@@ -63,7 +63,7 @@ mainEntry70:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# MULresult_ a b 
+	# MUL result_ a b 
 
 	# fetch variables
 

@@ -324,7 +324,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# ADDresult_ a0 a1 
+	# ADD result_ a0 a1 
 
 	# fetch variables
 
@@ -347,7 +347,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# ADDresult_$1 result_ a2 
+	# ADD result_$1 result_ a2 
 
 	# fetch variables
 
@@ -370,7 +370,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# ADDresult_$2 result_$1 a3 
+	# ADD result_$2 result_$1 a3 
 
 	# fetch variables
 
@@ -393,7 +393,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# ADDresult_$3 result_$2 a4 
+	# ADD result_$3 result_$2 a4 
 
 	# fetch variables
 
@@ -416,7 +416,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# ADDresult_$4 result_$3 a5 
+	# ADD result_$4 result_$3 a5 
 
 	# fetch variables
 
@@ -439,7 +439,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_$5 result_$4 a6 
+	# ADD result_$5 result_$4 a6 
 
 	# fetch variables
 
@@ -462,7 +462,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$6 result_$5 a7 
+	# ADD result_$6 result_$5 a7 
 
 	# fetch variables
 
@@ -851,7 +851,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# ADDresult_ a0 a1 
+	# ADD result_ a0 a1 
 
 	# fetch variables
 
@@ -874,7 +874,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 216(sp)
 
-	# ADDresult_$1 result_ a2 
+	# ADD result_$1 result_ a2 
 
 	# fetch variables
 
@@ -897,7 +897,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# SUBresult_$2 result_$1 a3 
+	# SUB result_$2 result_$1 a3 
 
 	# fetch variables
 
@@ -920,7 +920,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# SUBresult_$3 result_$2 a4 
+	# SUB result_$3 result_$2 a4 
 
 	# fetch variables
 
@@ -943,7 +943,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# SUBresult_$4 result_$3 a5 
+	# SUB result_$4 result_$3 a5 
 
 	# fetch variables
 
@@ -966,7 +966,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# SUBresult_$5 result_$4 a6 
+	# SUB result_$5 result_$4 a6 
 
 	# fetch variables
 
@@ -989,7 +989,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# SUBresult_$6 result_$5 a7 
+	# SUB result_$6 result_$5 a7 
 
 	# fetch variables
 
@@ -1012,7 +1012,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# ADDresult_$7 result_$6 a8 
+	# ADD result_$7 result_$6 a8 
 
 	# fetch variables
 
@@ -1035,7 +1035,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# ADDresult_$8 result_$7 a9 
+	# ADD result_$8 result_$7 a9 
 
 	# fetch variables
 
@@ -1058,7 +1058,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# ADDresult_$9 result_$8 a10 
+	# ADD result_$9 result_$8 a10 
 
 	# fetch variables
 
@@ -1081,7 +1081,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# ADDresult_$10 result_$9 a11 
+	# ADD result_$10 result_$9 a11 
 
 	# fetch variables
 
@@ -1104,7 +1104,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# ADDresult_$11 result_$10 a12 
+	# ADD result_$11 result_$10 a12 
 
 	# fetch variables
 
@@ -1127,7 +1127,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# ADDresult_$12 result_$11 a13 
+	# ADD result_$12 result_$11 a13 
 
 	# fetch variables
 
@@ -1150,7 +1150,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_$13 result_$12 a14 
+	# ADD result_$13 result_$12 a14 
 
 	# fetch variables
 
@@ -1173,7 +1173,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$14 result_$13 a15 
+	# ADD result_$14 result_$13 a15 
 
 	# fetch variables
 
@@ -2054,7 +2054,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 488(sp)
 
-	# ADDresult_ a0 a1 
+	# ADD result_ a0 a1 
 
 	# fetch variables
 
@@ -2077,7 +2077,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 472(sp)
 
-	# ADDresult_$1 result_ a2 
+	# ADD result_$1 result_ a2 
 
 	# fetch variables
 
@@ -2100,7 +2100,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 456(sp)
 
-	# ADDresult_$2 result_$1 a3 
+	# ADD result_$2 result_$1 a3 
 
 	# fetch variables
 
@@ -2123,7 +2123,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 440(sp)
 
-	# ADDresult_$3 result_$2 a4 
+	# ADD result_$3 result_$2 a4 
 
 	# fetch variables
 
@@ -2146,7 +2146,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 424(sp)
 
-	# ADDresult_$4 result_$3 a5 
+	# ADD result_$4 result_$3 a5 
 
 	# fetch variables
 
@@ -2169,7 +2169,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 408(sp)
 
-	# ADDresult_$5 result_$4 a6 
+	# ADD result_$5 result_$4 a6 
 
 	# fetch variables
 
@@ -2192,7 +2192,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 392(sp)
 
-	# ADDresult_$6 result_$5 a7 
+	# ADD result_$6 result_$5 a7 
 
 	# fetch variables
 
@@ -2215,7 +2215,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 376(sp)
 
-	# ADDresult_$7 result_$6 a8 
+	# ADD result_$7 result_$6 a8 
 
 	# fetch variables
 
@@ -2238,7 +2238,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 360(sp)
 
-	# ADDresult_$8 result_$7 a9 
+	# ADD result_$8 result_$7 a9 
 
 	# fetch variables
 
@@ -2261,7 +2261,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 344(sp)
 
-	# ADDresult_$9 result_$8 a10 
+	# ADD result_$9 result_$8 a10 
 
 	# fetch variables
 
@@ -2284,7 +2284,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 328(sp)
 
-	# ADDresult_$10 result_$9 a11 
+	# ADD result_$10 result_$9 a11 
 
 	# fetch variables
 
@@ -2307,7 +2307,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 312(sp)
 
-	# ADDresult_$11 result_$10 a12 
+	# ADD result_$11 result_$10 a12 
 
 	# fetch variables
 
@@ -2330,7 +2330,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 296(sp)
 
-	# ADDresult_$12 result_$11 a13 
+	# ADD result_$12 result_$11 a13 
 
 	# fetch variables
 
@@ -2353,7 +2353,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 280(sp)
 
-	# ADDresult_$13 result_$12 a14 
+	# ADD result_$13 result_$12 a14 
 
 	# fetch variables
 
@@ -2376,7 +2376,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 264(sp)
 
-	# ADDresult_$14 result_$13 a15 
+	# ADD result_$14 result_$13 a15 
 
 	# fetch variables
 
@@ -2399,7 +2399,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 248(sp)
 
-	# ADDresult_$15 result_$14 a16 
+	# ADD result_$15 result_$14 a16 
 
 	# fetch variables
 
@@ -2422,7 +2422,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# ADDresult_$16 result_$15 a17 
+	# ADD result_$16 result_$15 a17 
 
 	# fetch variables
 
@@ -2445,7 +2445,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 216(sp)
 
-	# SUBresult_$17 result_$16 a18 
+	# SUB result_$17 result_$16 a18 
 
 	# fetch variables
 
@@ -2468,7 +2468,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# SUBresult_$18 result_$17 a19 
+	# SUB result_$18 result_$17 a19 
 
 	# fetch variables
 
@@ -2491,7 +2491,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# SUBresult_$19 result_$18 a20 
+	# SUB result_$19 result_$18 a20 
 
 	# fetch variables
 
@@ -2514,7 +2514,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# SUBresult_$20 result_$19 a21 
+	# SUB result_$20 result_$19 a21 
 
 	# fetch variables
 
@@ -2537,7 +2537,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# SUBresult_$21 result_$20 a22 
+	# SUB result_$21 result_$20 a22 
 
 	# fetch variables
 
@@ -2560,7 +2560,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# ADDresult_$22 result_$21 a23 
+	# ADD result_$22 result_$21 a23 
 
 	# fetch variables
 
@@ -2583,7 +2583,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# ADDresult_$23 result_$22 a24 
+	# ADD result_$23 result_$22 a24 
 
 	# fetch variables
 
@@ -2606,7 +2606,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# ADDresult_$24 result_$23 a25 
+	# ADD result_$24 result_$23 a25 
 
 	# fetch variables
 
@@ -2629,7 +2629,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# ADDresult_$25 result_$24 a26 
+	# ADD result_$25 result_$24 a26 
 
 	# fetch variables
 
@@ -2652,7 +2652,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# ADDresult_$26 result_$25 a27 
+	# ADD result_$26 result_$25 a27 
 
 	# fetch variables
 
@@ -2675,7 +2675,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# ADDresult_$27 result_$26 a28 
+	# ADD result_$27 result_$26 a28 
 
 	# fetch variables
 
@@ -2698,7 +2698,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# ADDresult_$28 result_$27 a29 
+	# ADD result_$28 result_$27 a29 
 
 	# fetch variables
 
@@ -2721,7 +2721,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_$29 result_$28 a30 
+	# ADD result_$29 result_$28 a30 
 
 	# fetch variables
 
@@ -2744,7 +2744,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$30 result_$29 a31 
+	# ADD result_$30 result_$29 a31 
 
 	# fetch variables
 

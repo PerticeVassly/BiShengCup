@@ -38,7 +38,7 @@ mainEntry52:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# ICMPtmp_  a 
+	# ICMP tmp_  a 
 
 	# fetch variables
 	li t1, 0
@@ -52,7 +52,7 @@ mainEntry52:
 	# get address of local var:tmp_
 	sd t0, 88(sp)
 
-	# XORtmp_$1 tmp_  
+	# XOR tmp_$1 tmp_  
 
 	# fetch variables
 
@@ -64,7 +64,7 @@ mainEntry52:
 	# get address of local var:tmp_$1
 	sd t0, 80(sp)
 
-	# ZEXTtmp_$2 tmp_$1
+	# ZEXT tmp_$2 tmp_$1
 
 	# fetch variables
 
@@ -75,7 +75,7 @@ mainEntry52:
 	# get address of local var:tmp_$2
 	sd t0, 72(sp)
 
-	# ICMPtmp_$3  tmp_$2 
+	# ICMP tmp_$3  tmp_$2 
 
 	# fetch variables
 	li t1, 0
@@ -89,7 +89,7 @@ mainEntry52:
 	# get address of local var:tmp_$3
 	sd t0, 64(sp)
 
-	# XORtmp_$4 tmp_$3  
+	# XOR tmp_$4 tmp_$3  
 
 	# fetch variables
 
@@ -101,7 +101,7 @@ mainEntry52:
 	# get address of local var:tmp_$4
 	sd t0, 56(sp)
 
-	# ZEXTtmp_$5 tmp_$4
+	# ZEXT tmp_$5 tmp_$4
 
 	# fetch variables
 
@@ -112,7 +112,7 @@ mainEntry52:
 	# get address of local var:tmp_$5
 	sd t0, 48(sp)
 
-	# ICMPtmp_$6  tmp_$5 
+	# ICMP tmp_$6  tmp_$5 
 
 	# fetch variables
 	li t1, 0
@@ -126,7 +126,7 @@ mainEntry52:
 	# get address of local var:tmp_$6
 	sd t0, 40(sp)
 
-	# XORtmp_$7 tmp_$6  
+	# XOR tmp_$7 tmp_$6  
 
 	# fetch variables
 
@@ -138,7 +138,7 @@ mainEntry52:
 	# get address of local var:tmp_$7
 	sd t0, 32(sp)
 
-	# ZEXTtmp_$8 tmp_$7
+	# ZEXT tmp_$8 tmp_$7
 
 	# fetch variables
 
@@ -149,7 +149,7 @@ mainEntry52:
 	# get address of local var:tmp_$8
 	sd t0, 24(sp)
 
-	# SUBtmp_$9  tmp_$8 
+	# SUB tmp_$9  tmp_$8 
 
 	# fetch variables
 	li t1, 0
@@ -161,7 +161,7 @@ mainEntry52:
 	# get address of local var:tmp_$9
 	sd t0, 16(sp)
 
-	# ICMPcond_normalize_ tmp_$9  
+	# ICMP cond_normalize_ tmp_$9  
 
 	# fetch variables
 

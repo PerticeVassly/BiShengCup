@@ -93,7 +93,7 @@ mainEntry37:
 	ld t0, 0(t3)
 	sd t0, 224(sp)
 
-	# MULresult_ d  
+	# MUL result_ d  
 
 	# fetch variables
 
@@ -105,7 +105,7 @@ mainEntry37:
 	# get address of local var:result_
 	sd t0, 216(sp)
 
-	# DIVresult_$1 result_  
+	# DIV result_$1 result_  
 
 	# fetch variables
 
@@ -135,7 +135,7 @@ mainEntry37:
 	ld t0, 0(t3)
 	sd t0, 192(sp)
 
-	# SUBresult_$2 a b 
+	# SUB result_$2 a b 
 
 	# fetch variables
 
@@ -149,7 +149,7 @@ mainEntry37:
 	# get address of local var:result_$2
 	sd t0, 184(sp)
 
-	# ADDresult_$3 result_$1 result_$2 
+	# ADD result_$3 result_$1 result_$2 
 
 	# fetch variables
 
@@ -172,7 +172,7 @@ mainEntry37:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# ADDresult_$4 c  
+	# ADD result_$4 c  
 
 	# fetch variables
 
@@ -184,7 +184,7 @@ mainEntry37:
 	# get address of local var:result_$4
 	sd t0, 160(sp)
 
-	# SUBtmp_  result_$4 
+	# SUB tmp_  result_$4 
 
 	# fetch variables
 	li t1, 0
@@ -196,7 +196,7 @@ mainEntry37:
 	# get address of local var:tmp_
 	sd t0, 152(sp)
 
-	# MODresult_$5 tmp_  
+	# MOD result_$5 tmp_  
 
 	# fetch variables
 
@@ -208,7 +208,7 @@ mainEntry37:
 	# get address of local var:result_$5
 	sd t0, 144(sp)
 
-	# SUBresult_$6 result_$3 result_$5 
+	# SUB result_$6 result_$3 result_$5 
 
 	# fetch variables
 
@@ -274,7 +274,7 @@ mainEntry37:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# MODresult_$7 d$1  
+	# MOD result_$7 d$1  
 
 	# fetch variables
 
@@ -286,7 +286,7 @@ mainEntry37:
 	# get address of local var:result_$7
 	sd t0, 112(sp)
 
-	# ADDresult_$8 result_$7  
+	# ADD result_$8 result_$7  
 
 	# fetch variables
 
@@ -316,7 +316,7 @@ mainEntry37:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# SUBresult_$9 a$1 b$1 
+	# SUB result_$9 a$1 b$1 
 
 	# fetch variables
 
@@ -330,7 +330,7 @@ mainEntry37:
 	# get address of local var:result_$9
 	sd t0, 80(sp)
 
-	# SUBtmp_$1  result_$9 
+	# SUB tmp_$1  result_$9 
 
 	# fetch variables
 	li t1, 0
@@ -342,7 +342,7 @@ mainEntry37:
 	# get address of local var:tmp_$1
 	sd t0, 72(sp)
 
-	# ADDresult_$10 result_$8 tmp_$1 
+	# ADD result_$10 result_$8 tmp_$1 
 
 	# fetch variables
 
@@ -365,7 +365,7 @@ mainEntry37:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# ADDresult_$11 c$1  
+	# ADD result_$11 c$1  
 
 	# fetch variables
 
@@ -377,7 +377,7 @@ mainEntry37:
 	# get address of local var:result_$11
 	sd t0, 48(sp)
 
-	# MODresult_$12 result_$11  
+	# MOD result_$12 result_$11  
 
 	# fetch variables
 
@@ -389,7 +389,7 @@ mainEntry37:
 	# get address of local var:result_$12
 	sd t0, 40(sp)
 
-	# SUBtmp_$2  result_$12 
+	# SUB tmp_$2  result_$12 
 
 	# fetch variables
 	li t1, 0
@@ -401,7 +401,7 @@ mainEntry37:
 	# get address of local var:tmp_$2
 	sd t0, 32(sp)
 
-	# SUBresult_$13 result_$10 tmp_$2 
+	# SUB result_$13 result_$10 tmp_$2 
 
 	# fetch variables
 
@@ -435,7 +435,7 @@ mainEntry37:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# ADDresult_$14 result$1  
+	# ADD result_$14 result$1  
 
 	# fetch variables
 

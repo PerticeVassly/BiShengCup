@@ -51,7 +51,7 @@ funcEntry:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# SUBresult_ p  
+	# SUB result_ p  
 
 	# fetch variables
 

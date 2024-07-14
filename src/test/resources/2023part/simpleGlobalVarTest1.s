@@ -47,7 +47,7 @@ mainEntry5:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_ a b 
+	# ADD result_ a b 
 
 	# fetch variables
 

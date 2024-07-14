@@ -75,7 +75,7 @@ mainEntry18:
 	fld ft0, 0(t3)
 	fsd ft0, 56(sp)
 
-	# FCMPcond_eq_tmp_ a  
+	# FCMP cond_eq_tmp_ a  
 
 	# fetch variables
 
@@ -88,7 +88,7 @@ mainEntry18:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 48(sp)
 
-	# ZEXTcond_tmp_ cond_eq_tmp_
+	# ZEXT cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -99,7 +99,7 @@ mainEntry18:
 	# get address of local var:cond_tmp_
 	sd t0, 40(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -152,7 +152,7 @@ secondCond_3:
 	fld ft0, 0(t3)
 	fsd ft0, 24(sp)
 
-	# FCMPcond_gt_tmp_ a$1  
+	# FCMP cond_gt_tmp_ a$1  
 
 	# fetch variables
 
@@ -166,7 +166,7 @@ secondCond_3:
 	# get address of local var:cond_gt_tmp_
 	sd t0, 16(sp)
 
-	# ZEXTcond_tmp_$1 cond_gt_tmp_
+	# ZEXT cond_tmp_$1 cond_gt_tmp_
 
 	# fetch variables
 
@@ -177,7 +177,7 @@ secondCond_3:
 	# get address of local var:cond_tmp_$1
 	sd t0, 8(sp)
 
-	# ICMPcond_$1 cond_tmp_$1  
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 

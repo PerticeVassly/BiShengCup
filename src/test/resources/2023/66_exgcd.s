@@ -125,7 +125,7 @@ exgcdEntry:
 	ld t0, 0(t3)
 	sd t0, 280(sp)
 
-	# ICMPcond_eq_tmp_ b  
+	# ICMP cond_eq_tmp_ b  
 
 	# fetch variables
 
@@ -138,7 +138,7 @@ exgcdEntry:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 272(sp)
 
-	# ZEXTcond_tmp_ cond_eq_tmp_
+	# ZEXT cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -149,7 +149,7 @@ exgcdEntry:
 	# get address of local var:cond_tmp_
 	sd t0, 264(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -294,7 +294,7 @@ ifFalse_19:
 	ld t0, 0(t3)
 	sd t0, 192(sp)
 
-	# MODresult_ a$1 b$2 
+	# MOD result_ a$1 b$2 
 
 	# fetch variables
 
@@ -552,7 +552,7 @@ ifFalse_19:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# DIVresult_$1 a$2 b$3 
+	# DIV result_$1 a$2 b$3 
 
 	# fetch variables
 
@@ -601,7 +601,7 @@ ifFalse_19:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# MULresult_$2 result_$1 y$6 
+	# MUL result_$2 result_$1 y$6 
 
 	# fetch variables
 
@@ -615,7 +615,7 @@ ifFalse_19:
 	# get address of local var:result_$2
 	sd t0, 16(sp)
 
-	# SUBresult_$3 t result_$2 
+	# SUB result_$3 t result_$2 
 
 	# fetch variables
 
@@ -919,7 +919,7 @@ mainEntry43:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# MODresult_ x$3 b$1 
+	# MOD result_ x$3 b$1 
 
 	# fetch variables
 
@@ -942,7 +942,7 @@ mainEntry43:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# ADDresult_$1 result_ b$2 
+	# ADD result_$1 result_ b$2 
 
 	# fetch variables
 
@@ -965,7 +965,7 @@ mainEntry43:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# MODresult_$2 result_$1 b$3 
+	# MOD result_$2 result_$1 b$3 
 
 	# fetch variables
 

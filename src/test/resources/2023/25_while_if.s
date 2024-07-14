@@ -147,7 +147,7 @@ deepWhileBrEntry1:
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# ADDresult_ a b 
+	# ADD result_ a b 
 
 	# fetch variables
 
@@ -185,7 +185,7 @@ whileCond_215:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# ICMPcond_lt_tmp_ c  
+	# ICMP cond_lt_tmp_ c  
 
 	# fetch variables
 
@@ -197,7 +197,7 @@ whileCond_215:
 	# get address of local var:cond_lt_tmp_
 	sd t0, 176(sp)
 
-	# ZEXTcond_tmp_ cond_lt_tmp_
+	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -208,7 +208,7 @@ whileCond_215:
 	# get address of local var:cond_tmp_
 	sd t0, 168(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -250,7 +250,7 @@ whileBody_215:
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# ICMPcond_lt_tmp_$1 c$1  
+	# ICMP cond_lt_tmp_$1 c$1  
 
 	# fetch variables
 
@@ -262,7 +262,7 @@ whileBody_215:
 	# get address of local var:cond_lt_tmp_$1
 	sd t0, 144(sp)
 
-	# ZEXTcond_tmp_$1 cond_lt_tmp_$1
+	# ZEXT cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -273,7 +273,7 @@ whileBody_215:
 	# get address of local var:cond_tmp_$1
 	sd t0, 136(sp)
 
-	# ICMPcond_$1 cond_tmp_$1  
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
@@ -339,7 +339,7 @@ ifTrue_307:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# ADDresult_$1 c$2 d 
+	# ADD result_$1 c$2 d 
 
 	# fetch variables
 
@@ -373,7 +373,7 @@ ifTrue_307:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# ICMPcond_gt_tmp_ c$3  
+	# ICMP cond_gt_tmp_ c$3  
 
 	# fetch variables
 
@@ -386,7 +386,7 @@ ifTrue_307:
 	# get address of local var:cond_gt_tmp_
 	sd t0, 80(sp)
 
-	# ZEXTcond_tmp_$2 cond_gt_tmp_
+	# ZEXT cond_tmp_$2 cond_gt_tmp_
 
 	# fetch variables
 
@@ -397,7 +397,7 @@ ifTrue_307:
 	# get address of local var:cond_tmp_$2
 	sd t0, 72(sp)
 
-	# ICMPcond_$2 cond_tmp_$2  
+	# ICMP cond_$2 cond_tmp_$2  
 
 	# fetch variables
 
@@ -434,7 +434,7 @@ ifTrue_308:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# MULresult_$2 d$1  
+	# MUL result_$2 d$1  
 
 	# fetch variables
 
@@ -481,7 +481,7 @@ ifTrue_308:
 	# get address of local var:get_one
 	sd a0, 40(sp)
 
-	# ICMPcond_eq_tmp_ get_one  
+	# ICMP cond_eq_tmp_ get_one  
 
 	# fetch variables
 
@@ -494,7 +494,7 @@ ifTrue_308:
 	# get address of local var:cond_eq_tmp_
 	sd t0, 32(sp)
 
-	# ZEXTcond_tmp_$3 cond_eq_tmp_
+	# ZEXT cond_tmp_$3 cond_eq_tmp_
 
 	# fetch variables
 
@@ -505,7 +505,7 @@ ifTrue_308:
 	# get address of local var:cond_tmp_$3
 	sd t0, 24(sp)
 
-	# ICMPcond_$3 cond_tmp_$3  
+	# ICMP cond_$3 cond_tmp_$3  
 
 	# fetch variables
 
@@ -542,7 +542,7 @@ ifTrue_309:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# MULresult_$3 e  
+	# MUL result_$3 e  
 
 	# fetch variables
 

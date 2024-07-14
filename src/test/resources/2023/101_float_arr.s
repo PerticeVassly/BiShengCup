@@ -171,7 +171,7 @@ mainEntry36:
 	fld ft0, 0(t3)
 	fsd ft0, 24(sp)
 
-	# FADDresult_ f$1 ff$1 
+	# FADD result_ f$1 ff$1 
 
 	# fetch variables
 
@@ -185,7 +185,7 @@ mainEntry36:
 	# get address of local var:result_
 	fsd ft0, 16(sp)
 
-	# F2If2i_ result_
+	# F2I f2i_ result_
 
 	# fetch variables
 

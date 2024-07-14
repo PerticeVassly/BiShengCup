@@ -48,7 +48,7 @@ float_absEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 48(sp)
 
-	# FCMPcond_lt_tmp_ x  
+	# FCMP cond_lt_tmp_ x  
 
 	# fetch variables
 
@@ -61,7 +61,7 @@ float_absEntry:
 	# get address of local var:cond_lt_tmp_
 	sd t0, 40(sp)
 
-	# ZEXTcond_tmp_ cond_lt_tmp_
+	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -72,7 +72,7 @@ float_absEntry:
 	# get address of local var:cond_tmp_
 	sd t0, 32(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -105,7 +105,7 @@ ifTrue_54:
 	fld ft0, 0(t3)
 	fsd ft0, 16(sp)
 
-	# FSUBtmp_  x$1 
+	# FSUB tmp_  x$1 
 
 	# fetch variables
 	li t1, 0x0
@@ -201,7 +201,7 @@ circle_areaEntry:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# F2Ii2f_ radius
+	# F2I i2f_ radius
 
 	# fetch variables
 
@@ -212,7 +212,7 @@ circle_areaEntry:
 	# get address of local var:i2f_
 	fsd ft0, 88(sp)
 
-	# FMULresult_  i2f_ 
+	# FMUL result_  i2f_ 
 
 	# fetch variables
 	li t1, 0x400921fb5a7ed197
@@ -234,7 +234,7 @@ circle_areaEntry:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# F2Ii2f_$1 radius$1
+	# F2I i2f_$1 radius$1
 
 	# fetch variables
 
@@ -245,7 +245,7 @@ circle_areaEntry:
 	# get address of local var:i2f_$1
 	fsd ft0, 64(sp)
 
-	# FMULresult_$1 result_ i2f_$1 
+	# FMUL result_$1 result_ i2f_$1 
 
 	# fetch variables
 
@@ -277,7 +277,7 @@ circle_areaEntry:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# MULresult_$2 radius$2 radius$3 
+	# MUL result_$2 radius$2 radius$3 
 
 	# fetch variables
 
@@ -291,7 +291,7 @@ circle_areaEntry:
 	# get address of local var:result_$2
 	sd t0, 32(sp)
 
-	# F2Ii2f_$2 result_$2
+	# F2I i2f_$2 result_$2
 
 	# fetch variables
 
@@ -302,7 +302,7 @@ circle_areaEntry:
 	# get address of local var:i2f_$2
 	fsd ft0, 24(sp)
 
-	# FMULresult_$3 i2f_$2  
+	# FMUL result_$3 i2f_$2  
 
 	# fetch variables
 
@@ -315,7 +315,7 @@ circle_areaEntry:
 	# get address of local var:result_$3
 	fsd ft0, 16(sp)
 
-	# FADDresult_$4 result_$1 result_$3 
+	# FADD result_$4 result_$1 result_$3 
 
 	# fetch variables
 
@@ -329,7 +329,7 @@ circle_areaEntry:
 	# get address of local var:result_$4
 	fsd ft0, 8(sp)
 
-	# FDIVresult_$5 result_$4  
+	# FDIV result_$5 result_$4  
 
 	# fetch variables
 
@@ -431,7 +431,7 @@ float_eqEntry:
 	fld ft0, 0(t3)
 	fsd ft0, 40(sp)
 
-	# FSUBresult_ a b 
+	# FSUB result_ a b 
 
 	# fetch variables
 
@@ -472,7 +472,7 @@ float_eqEntry:
 	# get address of local var:float_abs
 	fsd fa0, 24(sp)
 
-	# FCMPcond_lt_tmp_ float_abs  
+	# FCMP cond_lt_tmp_ float_abs  
 
 	# fetch variables
 
@@ -485,7 +485,7 @@ float_eqEntry:
 	# get address of local var:cond_lt_tmp_
 	sd t0, 16(sp)
 
-	# ZEXTcond_tmp_ cond_lt_tmp_
+	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -496,7 +496,7 @@ float_eqEntry:
 	# get address of local var:cond_tmp_
 	sd t0, 8(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -825,7 +825,7 @@ assertEntry:
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# ICMPtmp_  cond 
+	# ICMP tmp_  cond 
 
 	# fetch variables
 	li t1, 0
@@ -839,7 +839,7 @@ assertEntry:
 	# get address of local var:tmp_
 	sd t0, 24(sp)
 
-	# XORtmp_$1 tmp_  
+	# XOR tmp_$1 tmp_  
 
 	# fetch variables
 
@@ -851,7 +851,7 @@ assertEntry:
 	# get address of local var:tmp_$1
 	sd t0, 16(sp)
 
-	# ZEXTtmp_$2 tmp_$1
+	# ZEXT tmp_$2 tmp_$1
 
 	# fetch variables
 
@@ -862,7 +862,7 @@ assertEntry:
 	# get address of local var:tmp_$2
 	sd t0, 8(sp)
 
-	# ICMPcond_normalize_ tmp_$2  
+	# ICMP cond_normalize_ tmp_$2  
 
 	# fetch variables
 
@@ -981,7 +981,7 @@ assert_notEntry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ICMPcond_normalize_ cond  
+	# ICMP cond_normalize_ cond  
 
 	# fetch variables
 
@@ -1439,7 +1439,7 @@ mainEntry24:
 	# release params
 	addi sp, sp, 0
 
-	# FCMPcond_normalize_   
+	# FCMP cond_normalize_   
 
 	# fetch variables
 	li t1, 0x3ff8000000000000
@@ -1483,7 +1483,7 @@ ifTrue_58:
 	j next_120
 next_120:
 
-	# ICMPcond_normalize_$1   
+	# ICMP cond_normalize_$1   
 
 	# fetch variables
 	li t1, 1
@@ -1526,7 +1526,7 @@ ifTrue_59:
 	j next_121
 next_121:
 
-	# FCMPcond_normalize_$2   
+	# FCMP cond_normalize_$2   
 
 	# fetch variables
 	li t1, 0x0
@@ -1570,7 +1570,7 @@ ifTrue_60:
 	j next_122
 next_122:
 
-	# ICMPcond_normalize_$4   
+	# ICMP cond_normalize_$4   
 
 	# fetch variables
 	li t1, 0
@@ -1592,7 +1592,7 @@ next_122:
 	j ifTrue_61
 secondCond_33:
 
-	# ICMPcond_normalize_$3   
+	# ICMP cond_normalize_$3   
 
 	# fetch variables
 	li t1, 3
@@ -1981,7 +1981,7 @@ next_123:
 	j whileCond_62
 secondCond_34:
 
-	# FCMPcond_normalize_$5   
+	# FCMP cond_normalize_$5   
 
 	# fetch variables
 	li t1, 0x3fd3333333333333
@@ -2013,7 +2013,7 @@ whileCond_62:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# ICMPcond_lt_tmp_ i  
+	# ICMP cond_lt_tmp_ i  
 
 	# fetch variables
 
@@ -2025,7 +2025,7 @@ whileCond_62:
 	# get address of local var:cond_lt_tmp_
 	sd t0, 224(sp)
 
-	# ZEXTcond_tmp_ cond_lt_tmp_
+	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -2036,7 +2036,7 @@ whileCond_62:
 	# get address of local var:cond_tmp_
 	sd t0, 216(sp)
 
-	# ICMPcond_ cond_tmp_  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
@@ -2100,7 +2100,7 @@ whileBody_62:
 	fld ft0, 0(t3)
 	fsd ft0, 192(sp)
 
-	# FMULresult_  input 
+	# FMUL result_  input 
 
 	# fetch variables
 	li t1, 0x400921fb5a7ed197
@@ -2122,7 +2122,7 @@ whileBody_62:
 	fld ft0, 0(t3)
 	fsd ft0, 176(sp)
 
-	# FMULresult_$1 result_ input$1 
+	# FMUL result_$1 result_ input$1 
 
 	# fetch variables
 
@@ -2156,7 +2156,7 @@ whileBody_62:
 	fld ft0, 0(t3)
 	fsd ft0, 160(sp)
 
-	# F2If2i_ input$2
+	# F2I f2i_ input$2
 
 	# fetch variables
 
@@ -2278,7 +2278,7 @@ whileBody_62:
 	fld ft0, 0(t3)
 	fsd ft0, 96(sp)
 
-	# FADDresult_$2 arr$3 input$3 
+	# FADD result_$2 arr$3 input$3 
 
 	# fetch variables
 
@@ -2366,7 +2366,7 @@ whileBody_62:
 	fld ft0, 0(t3)
 	fsd ft0, 72(sp)
 
-	# F2If2i_$1 area_trunc
+	# F2I f2i_$1 area_trunc
 
 	# fetch variables
 
@@ -2430,7 +2430,7 @@ whileBody_62:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# F2Ii2f_ i$1
+	# F2I i2f_ i$1
 
 	# fetch variables
 
@@ -2441,7 +2441,7 @@ whileBody_62:
 	# get address of local var:i2f_
 	fsd ft0, 48(sp)
 
-	# FMULresult_$3 i2f_  
+	# FMUL result_$3 i2f_  
 
 	# fetch variables
 
@@ -2454,7 +2454,7 @@ whileBody_62:
 	# get address of local var:result_$3
 	fsd ft0, 40(sp)
 
-	# F2If2i_$2 result_$3
+	# F2I f2i_$2 result_$3
 
 	# fetch variables
 
@@ -2485,7 +2485,7 @@ whileBody_62:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_$4 p$2  
+	# ADD result_$4 p$2  
 
 	# fetch variables
 
