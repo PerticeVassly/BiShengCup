@@ -104,7 +104,15 @@ public class RiscBasicBlock {
                 }
                 generator.addInstruction(new RiscFsw(new Register(RiscSpecifications.getFArgRegs()[fptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i +""))));
                 fptr++;
-            } else if (functionType.getFParameter(i) instanceof IntType || functionType.getFParameter(i) instanceof Pointer) {
+            } else if (functionType.getFParameter(i) instanceof IntType) {
+                if(ptr >= RiscSpecifications.getArgRegs().length){
+                    fetchFromStack(functionType.getFParameter(i), i, preLen, order);
+                    order++;
+                    continue;
+                }
+                generator.addInstruction(new RiscSw(new Register(RiscSpecifications.getArgRegs()[ptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i +""))));
+                ptr++;
+            } else if(functionType.getFParameter(i) instanceof Pointer){
                 if(ptr >= RiscSpecifications.getArgRegs().length){
                     fetchFromStack(functionType.getFParameter(i), i, preLen, order);
                     order++;
@@ -119,12 +127,15 @@ public class RiscBasicBlock {
     }
 
     private void fetchFromStack(TypeRef type, int i, int preLen, int order) {
-        if (type instanceof IntType || type instanceof Pointer) {
+        if (type instanceof IntType) {
             generator.addInstruction(new RiscLw(new Register("t3"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
-            generator.addInstruction(new RiscSd(new Register("t3"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4")));
+            generator.addInstruction(new RiscSw(new Register("t3"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4")));
         } else if (type instanceof FloatType) {
             generator.addInstruction(new RiscFlw(new Register("ft3"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
             generator.addInstruction(new RiscFsw(new Register("ft3"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4")));
+        } else if(type instanceof Pointer){
+            generator.addInstruction(new RiscLd(new Register("t3"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
+            generator.addInstruction(new RiscSd(new Register("t3"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")),"sp", "t4")));
         } else {
             assert false;
         }

@@ -35,17 +35,17 @@ main:
 mainEntry86:
 
 	# reserve space
-	li t4, 32
+	li t4, 20
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	li t0, 16
+	li t0, 8
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 24(sp)
+	sd t0, 12(sp)
 
 	# prepare params
 	addi sp, sp, 0
@@ -65,36 +65,36 @@ mainEntry86:
 	addi sp, sp, 0
 
 	# get address of local var:defn
-	sd a0, 8(sp)
+	sw a0, 4(sp)
 
 	# store lv defn
 
 	# fetch variables
 
 	# get address of local var:defn
-	ld t1, 8(sp)
+	lw t1, 4(sp)
 
 	# get address of lv points to
-	ld t3, 24(sp)
-	sd t1, 0(t3)
+	ld t3, 12(sp)
+	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 24(sp)
+	ld t3, 12(sp)
 
 	# get address of local var:a
-	ld t0, 0(t3)
-	sd t0, 0(sp)
+	lw t0, 0(t3)
+	sw t0, 0(sp)
 
 	# ret a
 
 	# fetch variables
 
 	# get address of local var:a
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 32
+	li t4, 20
 	add sp, sp, t4
 	ret 
 

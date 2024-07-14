@@ -2,11 +2,11 @@
 .align 2
 .globl gv
 gv:
-.zero 8
-.dword 1
-.dword 2
-.dword 3
-.dword 4
+.zero 4
+.word 1
+.word 2
+.word 3
+.word 4
 .text
 .align 2
 .type main, @function

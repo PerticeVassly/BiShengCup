@@ -33,12 +33,12 @@ public class RiscGlobalVar {
         if( globalVar.getInitVal() instanceof ConstValue){
 
             if(globalVar.getInitVal().getType() instanceof IntType) {
-                String initValue = globalVar.getInitVal().toString();
+                String initValue = ((ConstValue) globalVar.getInitVal()).toRiscvString();
                 System.out.println(name + ":");
                 System.out.println(".word " + initValue);
             }
             else if(globalVar.getInitVal().getType() instanceof FloatType) {
-                String initValue = globalVar.getInitVal().toString();
+                String initValue = ((ConstValue) globalVar.getInitVal()).toRiscvString();
                 System.out.println(name + ":");
                 System.out.println(".word " + initValue);
             }
@@ -61,7 +61,7 @@ public class RiscGlobalVar {
                                     System.out.println(".zero " + zeroCount * 4);
                                     zeroCount=0;
                                 }
-                                System.out.println(".word " + valueRef);
+                                System.out.println(".word " + ((ConstValue) valueRef).toRiscvString());
                             }
 
                         }
@@ -73,7 +73,7 @@ public class RiscGlobalVar {
                                     System.out.println(".zero " + zeroCount * 4);
                                     zeroCount=0;
                                 }
-                                System.out.println(".word " + valueRef);
+                                System.out.println(".word " + ((ConstValue) valueRef).toRiscvString());
                             }
                         }
                     }

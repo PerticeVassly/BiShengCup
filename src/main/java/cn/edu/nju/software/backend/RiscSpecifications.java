@@ -11,6 +11,27 @@ import cn.edu.nju.software.ir.value.ValueRef;
  */
 public record RiscSpecifications() {
 
+    private static final int INT_SIZE = 4;
+    private static final int FLOAT_SIZE = 4;
+    private static final int POINTER_SIZE = 8;
+    private static final int BOOL_SIZE = 4;
+
+    public static int getIntSize() {
+        return INT_SIZE;
+    }
+
+    public static int getFloatSize() {
+        return FLOAT_SIZE;
+    }
+
+    public static int getPointerSize() {
+        return POINTER_SIZE;
+    }
+
+    public static int getBoolSize() {
+        return BOOL_SIZE;
+    }
+
     //todo() 寄存器分配,增加
     private static final String[] callerSavedRegs = new String[] {"ra"};
 

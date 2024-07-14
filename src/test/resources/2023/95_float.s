@@ -8,7 +8,7 @@ float_abs:
 float_absEntry:
 
 	# reserve space
-	li t4, 80
+	li t4, 44
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -19,79 +19,79 @@ float_absEntry:
 	# save the parameters
 
 	# get address of local var:0
-	fsd fa0, 72(sp)
+	fsw fa0, 40(sp)
 
 	# allocate lv
-	li t0, 56
+	li t0, 28
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 64(sp)
+	sd t0, 32(sp)
 
 	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
-	fld ft1, 72(sp)
+	flw ft1, 40(sp)
 
 	# get address of lv points to
-	ld t3, 64(sp)
-	fsd ft1, 0(t3)
+	ld t3, 32(sp)
+	fsw ft1, 0(t3)
 
 	# load x lv
 
 	# get address of lv points to
-	ld t3, 64(sp)
+	ld t3, 32(sp)
 
 	# get address of local var:x
-	fld ft0, 0(t3)
-	fsd ft0, 48(sp)
+	flw ft0, 0(t3)
+	fsw ft0, 24(sp)
 
 	# FCMP cond_lt_tmp_ x  
 
 	# fetch variables
 
 	# get address of local var:x
-	fld ft1, 48(sp)
+	flw ft1, 24(sp)
 	li t2, 0x0
-	fmv.d.x ft2, t2
-	flt.d t0, ft2, ft1
+	fmv.w.x ft2, t2
+	flt.s t0, ft2, ft1
 
 	# get address of local var:cond_lt_tmp_
-	sd t0, 40(sp)
+	sw t0, 20(sp)
 
 	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_
-	ld t1, 40(sp)
+	lw t1, 20(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	sd t0, 32(sp)
+	sw t0, 16(sp)
 
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
-	ld t1, 32(sp)
+	lw t1, 16(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_
-	sd t0, 24(sp)
+	sw t0, 12(sp)
 
 	# condBr cond_ ifTrue_54 next_116
 
 	# fetch variables
 
 	# get address of local var:cond_
-	ld t1, 24(sp)
+	lw t1, 12(sp)
 	beqz t1, next_116
 	j ifTrue_54
 ifTrue_54:
@@ -99,33 +99,33 @@ ifTrue_54:
 	# load x$1 lv
 
 	# get address of lv points to
-	ld t3, 64(sp)
+	ld t3, 32(sp)
 
 	# get address of local var:x$1
-	fld ft0, 0(t3)
-	fsd ft0, 16(sp)
+	flw ft0, 0(t3)
+	fsw ft0, 8(sp)
 
 	# FSUB tmp_  x$1 
 
 	# fetch variables
 	li t1, 0x0
-	fmv.d.x ft1, t1
+	fmv.w.x ft1, t1
 
 	# get address of local var:x$1
-	fld ft2, 16(sp)
-	fsub.d ft0, ft1, ft2
+	flw ft2, 8(sp)
+	fsub.s ft0, ft1, ft2
 
 	# get address of local var:tmp_
-	fsd ft0, 8(sp)
+	fsw ft0, 4(sp)
 
 	# ret tmp_
 
 	# fetch variables
 
 	# get address of local var:tmp_
-	fld ft1, 8(sp)
+	flw ft1, 4(sp)
 	mv a0, t1
-	li t4, 80
+	li t4, 44
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -136,20 +136,20 @@ next_116:
 	# load x$2 lv
 
 	# get address of lv points to
-	ld t3, 64(sp)
+	ld t3, 32(sp)
 
 	# get address of local var:x$2
-	fld ft0, 0(t3)
-	fsd ft0, 0(sp)
+	flw ft0, 0(t3)
+	fsw ft0, 0(sp)
 
 	# ret x$2
 
 	# fetch variables
 
 	# get address of local var:x$2
-	fld ft1, 0(sp)
+	flw ft1, 0(sp)
 	mv a0, t1
-	li t4, 80
+	li t4, 44
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -161,7 +161,7 @@ circle_area:
 circle_areaEntry:
 
 	# reserve space
-	li t4, 128
+	li t4, 68
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -172,184 +172,184 @@ circle_areaEntry:
 	# save the parameters
 
 	# get address of local var:0
-	sd a0, 120(sp)
+	sw a0, 64(sp)
 
 	# allocate lv
-	li t0, 104
+	li t0, 52
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 112(sp)
+	sd t0, 56(sp)
 
 	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
-	ld t1, 120(sp)
+	lw t1, 64(sp)
 
 	# get address of lv points to
-	ld t3, 112(sp)
-	sd t1, 0(t3)
+	ld t3, 56(sp)
+	sw t1, 0(t3)
 
 	# load radius lv
 
 	# get address of lv points to
-	ld t3, 112(sp)
+	ld t3, 56(sp)
 
 	# get address of local var:radius
-	ld t0, 0(t3)
-	sd t0, 96(sp)
+	lw t0, 0(t3)
+	sw t0, 48(sp)
 
 	# F2I i2f_ radius
 
 	# fetch variables
 
 	# get address of local var:radius
-	ld t1, 96(sp)
-	fcvt.d.l ft0, t1
+	lw t1, 48(sp)
+	fcvt.s.w ft0, t1
 
 	# get address of local var:i2f_
-	fsd ft0, 88(sp)
+	fsw ft0, 44(sp)
 
 	# FMUL result_  i2f_ 
 
 	# fetch variables
-	li t1, 0x400921fb5a7ed197
-	fmv.d.x ft1, t1
+	li t1, 0x40490fdb
+	fmv.w.x ft1, t1
 
 	# get address of local var:i2f_
-	fld ft2, 88(sp)
-	fmul.d ft0, ft1, ft2
+	flw ft2, 44(sp)
+	fmul.s ft0, ft1, ft2
 
 	# get address of local var:result_
-	fsd ft0, 80(sp)
+	fsw ft0, 40(sp)
 
 	# load radius$1 lv
 
 	# get address of lv points to
-	ld t3, 112(sp)
+	ld t3, 56(sp)
 
 	# get address of local var:radius$1
-	ld t0, 0(t3)
-	sd t0, 72(sp)
+	lw t0, 0(t3)
+	sw t0, 36(sp)
 
 	# F2I i2f_$1 radius$1
 
 	# fetch variables
 
 	# get address of local var:radius$1
-	ld t1, 72(sp)
-	fcvt.d.l ft0, t1
+	lw t1, 36(sp)
+	fcvt.s.w ft0, t1
 
 	# get address of local var:i2f_$1
-	fsd ft0, 64(sp)
+	fsw ft0, 32(sp)
 
 	# FMUL result_$1 result_ i2f_$1 
 
 	# fetch variables
 
 	# get address of local var:result_
-	fld ft1, 80(sp)
+	flw ft1, 40(sp)
 
 	# get address of local var:i2f_$1
-	fld ft2, 64(sp)
-	fmul.d ft0, ft1, ft2
+	flw ft2, 32(sp)
+	fmul.s ft0, ft1, ft2
 
 	# get address of local var:result_$1
-	fsd ft0, 56(sp)
+	fsw ft0, 28(sp)
 
 	# load radius$2 lv
 
 	# get address of lv points to
-	ld t3, 112(sp)
+	ld t3, 56(sp)
 
 	# get address of local var:radius$2
-	ld t0, 0(t3)
-	sd t0, 48(sp)
+	lw t0, 0(t3)
+	sw t0, 24(sp)
 
 	# load radius$3 lv
 
 	# get address of lv points to
-	ld t3, 112(sp)
+	ld t3, 56(sp)
 
 	# get address of local var:radius$3
-	ld t0, 0(t3)
-	sd t0, 40(sp)
+	lw t0, 0(t3)
+	sw t0, 20(sp)
 
 	# MUL result_$2 radius$2 radius$3 
 
 	# fetch variables
 
 	# get address of local var:radius$2
-	ld t1, 48(sp)
+	lw t1, 24(sp)
 
 	# get address of local var:radius$3
-	ld t2, 40(sp)
+	lw t2, 20(sp)
 	mul t0, t1, t2
 
 	# get address of local var:result_$2
-	sd t0, 32(sp)
+	sw t0, 16(sp)
 
 	# F2I i2f_$2 result_$2
 
 	# fetch variables
 
 	# get address of local var:result_$2
-	ld t1, 32(sp)
-	fcvt.d.l ft0, t1
+	lw t1, 16(sp)
+	fcvt.s.w ft0, t1
 
 	# get address of local var:i2f_$2
-	fsd ft0, 24(sp)
+	fsw ft0, 12(sp)
 
 	# FMUL result_$3 i2f_$2  
 
 	# fetch variables
 
 	# get address of local var:i2f_$2
-	fld ft1, 24(sp)
-	li t2, 0x400921fb5a7ed197
-	fmv.d.x ft2, t2
-	fmul.d ft0, ft1, ft2
+	flw ft1, 12(sp)
+	li t2, 0x40490fdb
+	fmv.w.x ft2, t2
+	fmul.s ft0, ft1, ft2
 
 	# get address of local var:result_$3
-	fsd ft0, 16(sp)
+	fsw ft0, 8(sp)
 
 	# FADD result_$4 result_$1 result_$3 
 
 	# fetch variables
 
 	# get address of local var:result_$1
-	fld ft1, 56(sp)
+	flw ft1, 28(sp)
 
 	# get address of local var:result_$3
-	fld ft2, 16(sp)
-	fadd.d ft0, ft1, ft2
+	flw ft2, 8(sp)
+	fadd.s ft0, ft1, ft2
 
 	# get address of local var:result_$4
-	fsd ft0, 8(sp)
+	fsw ft0, 4(sp)
 
 	# FDIV result_$5 result_$4  
 
 	# fetch variables
 
 	# get address of local var:result_$4
-	fld ft1, 8(sp)
-	li t2, 0x4000000000000000
-	fmv.d.x ft2, t2
-	fdiv.d ft0, ft1, ft2
+	flw ft1, 4(sp)
+	li t2, 0x40000000
+	fmv.w.x ft2, t2
+	fdiv.s ft0, ft1, ft2
 
 	# get address of local var:result_$5
-	fsd ft0, 0(sp)
+	fsw ft0, 0(sp)
 
 	# ret result_$5
 
 	# fetch variables
 
 	# get address of local var:result_$5
-	fld ft1, 0(sp)
+	flw ft1, 0(sp)
 	mv a0, t1
-	li t4, 128
+	li t4, 68
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -361,7 +361,7 @@ float_eq:
 float_eqEntry:
 
 	# reserve space
-	li t4, 104
+	li t4, 60
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -372,87 +372,87 @@ float_eqEntry:
 	# save the parameters
 
 	# get address of local var:0
-	fsd fa0, 96(sp)
+	fsw fa0, 56(sp)
 
 	# get address of local var:1
-	fsd fa1, 88(sp)
+	fsw fa1, 52(sp)
 
 	# allocate lv$1
-	li t0, 72
+	li t0, 40
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 80(sp)
+	sd t0, 44(sp)
 
 	# allocate lv
-	li t0, 56
+	li t0, 28
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 64(sp)
+	sd t0, 32(sp)
 
 	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
-	fld ft1, 96(sp)
+	flw ft1, 56(sp)
 
 	# get address of lv points to
-	ld t3, 64(sp)
-	fsd ft1, 0(t3)
+	ld t3, 32(sp)
+	fsw ft1, 0(t3)
 
 	# store lv$1 1
 
 	# fetch variables
 
 	# get address of local var:1
-	fld ft1, 88(sp)
+	flw ft1, 52(sp)
 
 	# get address of lv$1 points to
-	ld t3, 80(sp)
-	fsd ft1, 0(t3)
+	ld t3, 44(sp)
+	fsw ft1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 64(sp)
+	ld t3, 32(sp)
 
 	# get address of local var:a
-	fld ft0, 0(t3)
-	fsd ft0, 48(sp)
+	flw ft0, 0(t3)
+	fsw ft0, 24(sp)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 80(sp)
+	ld t3, 44(sp)
 
 	# get address of local var:b
-	fld ft0, 0(t3)
-	fsd ft0, 40(sp)
+	flw ft0, 0(t3)
+	fsw ft0, 20(sp)
 
 	# FSUB result_ a b 
 
 	# fetch variables
 
 	# get address of local var:a
-	fld ft1, 48(sp)
+	flw ft1, 24(sp)
 
 	# get address of local var:b
-	fld ft2, 40(sp)
-	fsub.d ft0, ft1, ft2
+	flw ft2, 20(sp)
+	fsub.s ft0, ft1, ft2
 
 	# get address of local var:result_
-	fsd ft0, 32(sp)
+	fsw ft0, 16(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:result_
-	fld ft1, 32(sp)
-	fmv.x.d t0, ft1
-	fmv.d.x fa0, t0
+	flw ft1, 16(sp)
+	fmv.x.w t0, ft1
+	fmv.w.x fa0, t0
 	addi sp, sp, 0
 
 	# save caller saved regs
@@ -470,52 +470,52 @@ float_eqEntry:
 	addi sp, sp, 0
 
 	# get address of local var:float_abs
-	fsd fa0, 24(sp)
+	fsw fa0, 12(sp)
 
 	# FCMP cond_lt_tmp_ float_abs  
 
 	# fetch variables
 
 	# get address of local var:float_abs
-	fld ft1, 24(sp)
-	li t2, 0x3eb0c6f7a0b5ed8d
-	fmv.d.x ft2, t2
-	flt.d t0, ft2, ft1
+	flw ft1, 12(sp)
+	li t2, 0x358637bd
+	fmv.w.x ft2, t2
+	flt.s t0, ft2, ft1
 
 	# get address of local var:cond_lt_tmp_
-	sd t0, 16(sp)
+	sw t0, 8(sp)
 
 	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_
-	ld t1, 16(sp)
+	lw t1, 8(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	sd t0, 8(sp)
+	sw t0, 4(sp)
 
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
-	ld t1, 8(sp)
+	lw t1, 4(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_
-	sd t0, 0(sp)
+	sw t0, 0(sp)
 
 	# condBr cond_ ifTrue_55 ifFalse_9
 
 	# fetch variables
 
 	# get address of local var:cond_
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	beqz t1, ifFalse_9
 	j ifTrue_55
 ifTrue_55:
@@ -525,7 +525,7 @@ ifTrue_55:
 	# fetch variables
 	li t1, 1
 	mv a0, t1
-	li t4, 104
+	li t4, 60
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -538,7 +538,7 @@ ifFalse_9:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	li t4, 104
+	li t4, 60
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -785,7 +785,7 @@ assert:
 assertEntry:
 
 	# reserve space
-	li t4, 64
+	li t4, 36
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -796,34 +796,34 @@ assertEntry:
 	# save the parameters
 
 	# get address of local var:0
-	sd a0, 56(sp)
+	sw a0, 32(sp)
 
 	# allocate lv
-	li t0, 40
+	li t0, 20
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 48(sp)
+	sd t0, 24(sp)
 
 	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
-	ld t1, 56(sp)
+	lw t1, 32(sp)
 
 	# get address of lv points to
-	ld t3, 48(sp)
-	sd t1, 0(t3)
+	ld t3, 24(sp)
+	sw t1, 0(t3)
 
 	# load cond lv
 
 	# get address of lv points to
-	ld t3, 48(sp)
+	ld t3, 24(sp)
 
 	# get address of local var:cond
-	ld t0, 0(t3)
-	sd t0, 32(sp)
+	lw t0, 0(t3)
+	sw t0, 16(sp)
 
 	# ICMP tmp_  cond 
 
@@ -831,57 +831,57 @@ assertEntry:
 	li t1, 0
 
 	# get address of local var:cond
-	ld t2, 32(sp)
+	lw t2, 16(sp)
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:tmp_
-	sd t0, 24(sp)
+	sw t0, 12(sp)
 
 	# XOR tmp_$1 tmp_  
 
 	# fetch variables
 
 	# get address of local var:tmp_
-	ld t1, 24(sp)
+	lw t1, 12(sp)
 	li t2, 1
 	xor t0, t1, t2
 
 	# get address of local var:tmp_$1
-	sd t0, 16(sp)
+	sw t0, 8(sp)
 
 	# ZEXT tmp_$2 tmp_$1
 
 	# fetch variables
 
 	# get address of local var:tmp_$1
-	ld t1, 16(sp)
+	lw t1, 8(sp)
 	mv t0, t1
 
 	# get address of local var:tmp_$2
-	sd t0, 8(sp)
+	sw t0, 4(sp)
 
 	# ICMP cond_normalize_ tmp_$2  
 
 	# fetch variables
 
 	# get address of local var:tmp_$2
-	ld t1, 8(sp)
+	lw t1, 4(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_normalize_
-	sd t0, 0(sp)
+	sw t0, 0(sp)
 
 	# condBr cond_normalize_ ifTrue_56 ifFalse_10
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	beqz t1, ifFalse_10
 	j ifTrue_56
 ifTrue_56:
@@ -929,7 +929,7 @@ ifFalse_10:
 next_118:
 
 	# ret void
-	li t4, 64
+	li t4, 36
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -941,7 +941,7 @@ assert_not:
 assert_notEntry:
 
 	# reserve space
-	li t4, 40
+	li t4, 24
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -952,55 +952,55 @@ assert_notEntry:
 	# save the parameters
 
 	# get address of local var:0
-	sd a0, 32(sp)
+	sw a0, 20(sp)
 
 	# allocate lv
-	li t0, 16
+	li t0, 8
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 24(sp)
+	sd t0, 12(sp)
 
 	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
-	ld t1, 32(sp)
+	lw t1, 20(sp)
 
 	# get address of lv points to
-	ld t3, 24(sp)
-	sd t1, 0(t3)
+	ld t3, 12(sp)
+	sw t1, 0(t3)
 
 	# load cond lv
 
 	# get address of lv points to
-	ld t3, 24(sp)
+	ld t3, 12(sp)
 
 	# get address of local var:cond
-	ld t0, 0(t3)
-	sd t0, 8(sp)
+	lw t0, 0(t3)
+	sw t0, 4(sp)
 
 	# ICMP cond_normalize_ cond  
 
 	# fetch variables
 
 	# get address of local var:cond
-	ld t1, 8(sp)
+	lw t1, 4(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_normalize_
-	sd t0, 0(sp)
+	sw t0, 0(sp)
 
 	# condBr cond_normalize_ ifTrue_57 ifFalse_11
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	beqz t1, ifFalse_11
 	j ifTrue_57
 ifTrue_57:
@@ -1048,7 +1048,7 @@ ifFalse_11:
 next_119:
 
 	# ret void
-	li t4, 40
+	li t4, 24
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -1060,73 +1060,73 @@ main:
 mainEntry24:
 
 	# reserve space
-	li t4, 624
+	li t4, 396
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv$6
-	li t0, 608
+	li t0, 384
 	add t0, sp, t0
 
 	# get address of local var:lv$6
-	sd t0, 616(sp)
+	sd t0, 388(sp)
 
 	# allocate lv$5
-	li t0, 592
+	li t0, 372
 	add t0, sp, t0
 
 	# get address of local var:lv$5
-	sd t0, 600(sp)
+	sd t0, 376(sp)
 
 	# allocate lv$4
-	li t0, 576
+	li t0, 360
 	add t0, sp, t0
 
 	# get address of local var:lv$4
-	sd t0, 584(sp)
+	sd t0, 364(sp)
 
 	# allocate lv$3
-	li t0, 560
+	li t0, 348
 	add t0, sp, t0
 
 	# get address of local var:lv$3
-	sd t0, 568(sp)
+	sd t0, 352(sp)
 
 	# allocate lv$2
-	li t0, 472
+	li t0, 300
 	add t0, sp, t0
 
 	# get address of local var:lv$2
-	sd t0, 552(sp)
+	sd t0, 340(sp)
 
 	# allocate lv$1
-	li t0, 456
+	li t0, 288
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 464(sp)
+	sd t0, 292(sp)
 
 	# allocate lv
-	li t0, 440
+	li t0, 276
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 448(sp)
+	sd t0, 280(sp)
 
 	# prepare params
 
 	# fetch variables
-	li t1, 0x3fb4000000000000
-	fmv.d.x ft1, t1
-	fmv.x.d t0, ft1
-	fmv.d.x fa0, t0
+	li t1, 0x3da00000
+	fmv.w.x ft1, t1
+	fmv.x.w t0, ft1
+	fmv.w.x fa0, t0
 
 	# fetch variables
-	li t1, 0xc0e01d0000000000
-	fmv.d.x ft1, t1
-	fmv.x.d t0, ft1
-	fmv.d.x fa1, t0
+	li t1, 0xc700e800
+	fmv.w.x ft1, t1
+	fmv.x.w t0, ft1
+	fmv.w.x fa1, t0
 	addi sp, sp, 0
 
 	# save caller saved regs
@@ -1144,14 +1144,14 @@ mainEntry24:
 	addi sp, sp, 0
 
 	# get address of local var:float_eq
-	sd a0, 432(sp)
+	sw a0, 272(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:float_eq
-	ld t1, 432(sp)
+	lw t1, 272(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -1172,16 +1172,16 @@ mainEntry24:
 	# prepare params
 
 	# fetch variables
-	li t1, 0x4057c21fc8f32379
-	fmv.d.x ft1, t1
-	fmv.x.d t0, ft1
-	fmv.d.x fa0, t0
+	li t1, 0x42be10fe
+	fmv.w.x ft1, t1
+	fmv.x.w t0, ft1
+	fmv.w.x fa0, t0
 
 	# fetch variables
-	li t1, 0x4041475cd0bb6ed6
-	fmv.d.x ft1, t1
-	fmv.x.d t0, ft1
-	fmv.d.x fa1, t0
+	li t1, 0x420a3ae7
+	fmv.w.x ft1, t1
+	fmv.x.w t0, ft1
+	fmv.w.x fa1, t0
 	addi sp, sp, 0
 
 	# save caller saved regs
@@ -1199,14 +1199,14 @@ mainEntry24:
 	addi sp, sp, 0
 
 	# get address of local var:float_eq$1
-	sd a0, 424(sp)
+	sw a0, 268(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:float_eq$1
-	ld t1, 424(sp)
+	lw t1, 268(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -1227,16 +1227,16 @@ mainEntry24:
 	# prepare params
 
 	# fetch variables
-	li t1, 0x4041475cd0bb6ed6
-	fmv.d.x ft1, t1
-	fmv.x.d t0, ft1
-	fmv.d.x fa0, t0
+	li t1, 0x420a3ae7
+	fmv.w.x ft1, t1
+	fmv.x.w t0, ft1
+	fmv.w.x fa0, t0
 
 	# fetch variables
-	li t1, 0x4041475cd0bb6ed6
-	fmv.d.x ft1, t1
-	fmv.x.d t0, ft1
-	fmv.d.x fa1, t0
+	li t1, 0x420a3ae7
+	fmv.w.x ft1, t1
+	fmv.x.w t0, ft1
+	fmv.w.x fa1, t0
 	addi sp, sp, 0
 
 	# save caller saved regs
@@ -1254,14 +1254,14 @@ mainEntry24:
 	addi sp, sp, 0
 
 	# get address of local var:float_eq$2
-	sd a0, 416(sp)
+	sw a0, 264(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:float_eq$2
-	ld t1, 416(sp)
+	lw t1, 264(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -1301,7 +1301,7 @@ mainEntry24:
 	addi sp, sp, 0
 
 	# get address of local var:circle_area
-	fsd fa0, 408(sp)
+	fsw fa0, 260(sp)
 
 	# prepare params
 
@@ -1325,23 +1325,23 @@ mainEntry24:
 	addi sp, sp, 0
 
 	# get address of local var:circle_area$1
-	fsd fa0, 400(sp)
+	fsw fa0, 256(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:circle_area
-	fld ft1, 408(sp)
-	fmv.x.d t0, ft1
-	fmv.d.x fa0, t0
+	flw ft1, 260(sp)
+	fmv.x.w t0, ft1
+	fmv.w.x fa0, t0
 
 	# fetch variables
 
 	# get address of local var:circle_area$1
-	fld ft1, 400(sp)
-	fmv.x.d t0, ft1
-	fmv.d.x fa1, t0
+	flw ft1, 256(sp)
+	fmv.x.w t0, ft1
+	fmv.w.x fa1, t0
 	addi sp, sp, 0
 
 	# save caller saved regs
@@ -1359,14 +1359,14 @@ mainEntry24:
 	addi sp, sp, 0
 
 	# get address of local var:float_eq$3
-	sd a0, 392(sp)
+	sw a0, 252(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:float_eq$3
-	ld t1, 392(sp)
+	lw t1, 252(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -1387,16 +1387,16 @@ mainEntry24:
 	# prepare params
 
 	# fetch variables
-	li t1, 0x406d200000000000
-	fmv.d.x ft1, t1
-	fmv.x.d t0, ft1
-	fmv.d.x fa0, t0
+	li t1, 0x43690000
+	fmv.w.x ft1, t1
+	fmv.x.w t0, ft1
+	fmv.w.x fa0, t0
 
 	# fetch variables
-	li t1, 0x40affe0000000000
-	fmv.d.x ft1, t1
-	fmv.x.d t0, ft1
-	fmv.d.x fa1, t0
+	li t1, 0x457ff000
+	fmv.w.x ft1, t1
+	fmv.x.w t0, ft1
+	fmv.w.x fa1, t0
 	addi sp, sp, 0
 
 	# save caller saved regs
@@ -1414,14 +1414,14 @@ mainEntry24:
 	addi sp, sp, 0
 
 	# get address of local var:float_eq$4
-	sd a0, 384(sp)
+	sw a0, 248(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:float_eq$4
-	ld t1, 384(sp)
+	lw t1, 248(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -1442,22 +1442,22 @@ mainEntry24:
 	# FCMP cond_normalize_   
 
 	# fetch variables
-	li t1, 0x3ff8000000000000
-	fmv.d.x ft1, t1
+	li t1, 0x3fc00000
+	fmv.w.x ft1, t1
 	li t2, 0x0
-	fmv.d.x ft2, t2
-	feq.d t0, ft1, ft2
+	fmv.w.x ft2, t2
+	feq.s t0, ft1, ft2
 	seqz t0, t0
 
 	# get address of local var:cond_normalize_
-	sd t0, 376(sp)
+	sw t0, 244(sp)
 
 	# condBr cond_normalize_ ifTrue_58 next_120
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
-	ld t1, 376(sp)
+	lw t1, 244(sp)
 	beqz t1, next_120
 	j ifTrue_58
 ifTrue_58:
@@ -1493,14 +1493,14 @@ next_120:
 	seqz t0, t0
 
 	# get address of local var:cond_normalize_$1
-	sd t0, 368(sp)
+	sw t0, 240(sp)
 
 	# condBr cond_normalize_$1 ifTrue_59 next_121
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$1
-	ld t1, 368(sp)
+	lw t1, 240(sp)
 	beqz t1, next_121
 	j ifTrue_59
 ifTrue_59:
@@ -1530,21 +1530,21 @@ next_121:
 
 	# fetch variables
 	li t1, 0x0
-	fmv.d.x ft1, t1
+	fmv.w.x ft1, t1
 	li t2, 0x0
-	fmv.d.x ft2, t2
-	feq.d t0, ft1, ft2
+	fmv.w.x ft2, t2
+	feq.s t0, ft1, ft2
 	seqz t0, t0
 
 	# get address of local var:cond_normalize_$2
-	sd t0, 360(sp)
+	sw t0, 236(sp)
 
 	# condBr cond_normalize_$2 secondCond_33 next_122
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$2
-	ld t1, 360(sp)
+	lw t1, 236(sp)
 	beqz t1, next_122
 	j secondCond_33
 ifTrue_60:
@@ -1580,14 +1580,14 @@ next_122:
 	seqz t0, t0
 
 	# get address of local var:cond_normalize_$4
-	sd t0, 352(sp)
+	sw t0, 232(sp)
 
 	# condBr cond_normalize_$4 ifTrue_61 secondCond_34
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$4
-	ld t1, 352(sp)
+	lw t1, 232(sp)
 	beqz t1, secondCond_34
 	j ifTrue_61
 secondCond_33:
@@ -1602,14 +1602,14 @@ secondCond_33:
 	seqz t0, t0
 
 	# get address of local var:cond_normalize_$3
-	sd t0, 344(sp)
+	sw t0, 228(sp)
 
 	# condBr cond_normalize_$3 ifTrue_60 next_122
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$3
-	ld t1, 344(sp)
+	lw t1, 228(sp)
 	beqz t1, next_122
 	j ifTrue_60
 ifTrue_61:
@@ -1641,8 +1641,8 @@ next_123:
 	li t1, 1
 
 	# get address of lv points to
-	ld t3, 448(sp)
-	sd t1, 0(t3)
+	ld t3, 280(sp)
+	sw t1, 0(t3)
 
 	# store lv$1 
 
@@ -1650,302 +1650,302 @@ next_123:
 	li t1, 0
 
 	# get address of lv$1 points to
-	ld t3, 464(sp)
-	sd t1, 0(t3)
+	ld t3, 292(sp)
+	sw t1, 0(t3)
 
 	# gep inp 
 
 	# fetch variables
 	li t1, 0
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp
-	sd t0, 336(sp)
+	sd t0, 220(sp)
 
 	# store inp 
 
 	# fetch variables
-	li t1, 0x3ff0000000000000
-	fmv.d.x ft1, t1
+	li t1, 0x3f800000
+	fmv.w.x ft1, t1
 
 	# get address of inp points to
-	ld t3, 336(sp)
-	fsd ft1, 0(t3)
+	ld t3, 220(sp)
+	fsw ft1, 0(t3)
 
 	# gep inp$1 
 
 	# fetch variables
 	li t1, 1
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$1
-	sd t0, 328(sp)
+	sd t0, 212(sp)
 
 	# store inp$1 
 
 	# fetch variables
-	li t1, 0x4000000000000000
-	fmv.d.x ft1, t1
+	li t1, 0x40000000
+	fmv.w.x ft1, t1
 
 	# get address of inp$1 points to
-	ld t3, 328(sp)
-	fsd ft1, 0(t3)
+	ld t3, 212(sp)
+	fsw ft1, 0(t3)
 
 	# gep inp$2 
 
 	# fetch variables
 	li t1, 2
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$2
-	sd t0, 320(sp)
+	sd t0, 204(sp)
 
 	# store inp$2 
 
 	# fetch variables
 	li t1, 0x0
-	fmv.d.x ft1, t1
+	fmv.w.x ft1, t1
 
 	# get address of inp$2 points to
-	ld t3, 320(sp)
-	fsd ft1, 0(t3)
+	ld t3, 204(sp)
+	fsw ft1, 0(t3)
 
 	# gep inp$3 
 
 	# fetch variables
 	li t1, 3
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$3
-	sd t0, 312(sp)
+	sd t0, 196(sp)
 
 	# store inp$3 
 
 	# fetch variables
 	li t1, 0x0
-	fmv.d.x ft1, t1
+	fmv.w.x ft1, t1
 
 	# get address of inp$3 points to
-	ld t3, 312(sp)
-	fsd ft1, 0(t3)
+	ld t3, 196(sp)
+	fsw ft1, 0(t3)
 
 	# gep inp$4 
 
 	# fetch variables
 	li t1, 4
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$4
-	sd t0, 304(sp)
+	sd t0, 188(sp)
 
 	# store inp$4 
 
 	# fetch variables
 	li t1, 0x0
-	fmv.d.x ft1, t1
+	fmv.w.x ft1, t1
 
 	# get address of inp$4 points to
-	ld t3, 304(sp)
-	fsd ft1, 0(t3)
+	ld t3, 188(sp)
+	fsw ft1, 0(t3)
 
 	# gep inp$5 
 
 	# fetch variables
 	li t1, 5
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$5
-	sd t0, 296(sp)
+	sd t0, 180(sp)
 
 	# store inp$5 
 
 	# fetch variables
 	li t1, 0x0
-	fmv.d.x ft1, t1
+	fmv.w.x ft1, t1
 
 	# get address of inp$5 points to
-	ld t3, 296(sp)
-	fsd ft1, 0(t3)
+	ld t3, 180(sp)
+	fsw ft1, 0(t3)
 
 	# gep inp$6 
 
 	# fetch variables
 	li t1, 6
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$6
-	sd t0, 288(sp)
+	sd t0, 172(sp)
 
 	# store inp$6 
 
 	# fetch variables
 	li t1, 0x0
-	fmv.d.x ft1, t1
+	fmv.w.x ft1, t1
 
 	# get address of inp$6 points to
-	ld t3, 288(sp)
-	fsd ft1, 0(t3)
+	ld t3, 172(sp)
+	fsw ft1, 0(t3)
 
 	# gep inp$7 
 
 	# fetch variables
 	li t1, 7
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$7
-	sd t0, 280(sp)
+	sd t0, 164(sp)
 
 	# store inp$7 
 
 	# fetch variables
 	li t1, 0x0
-	fmv.d.x ft1, t1
+	fmv.w.x ft1, t1
 
 	# get address of inp$7 points to
-	ld t3, 280(sp)
-	fsd ft1, 0(t3)
+	ld t3, 164(sp)
+	fsw ft1, 0(t3)
 
 	# gep inp$8 
 
 	# fetch variables
 	li t1, 8
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$8
-	sd t0, 272(sp)
+	sd t0, 156(sp)
 
 	# store inp$8 
 
 	# fetch variables
 	li t1, 0x0
-	fmv.d.x ft1, t1
+	fmv.w.x ft1, t1
 
 	# get address of inp$8 points to
-	ld t3, 272(sp)
-	fsd ft1, 0(t3)
+	ld t3, 156(sp)
+	fsw ft1, 0(t3)
 
 	# gep inp$9 
 
 	# fetch variables
 	li t1, 9
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$9
-	sd t0, 264(sp)
+	sd t0, 148(sp)
 
 	# store inp$9 
 
 	# fetch variables
 	li t1, 0x0
-	fmv.d.x ft1, t1
+	fmv.w.x ft1, t1
 
 	# get address of inp$9 points to
-	ld t3, 264(sp)
-	fsd ft1, 0(t3)
+	ld t3, 148(sp)
+	fsw ft1, 0(t3)
 
 	# gep arr 
 
 	# fetch variables
 	li t1, 0
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr
-	sd t0, 256(sp)
+	sd t0, 140(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:arr
-	ld t1, 256(sp)
+	ld t1, 140(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -1964,18 +1964,18 @@ next_123:
 	addi sp, sp, 0
 
 	# get address of local var:getfarray
-	sd a0, 248(sp)
+	sw a0, 136(sp)
 
 	# store lv$3 getfarray
 
 	# fetch variables
 
 	# get address of local var:getfarray
-	ld t1, 248(sp)
+	lw t1, 136(sp)
 
 	# get address of lv$3 points to
-	ld t3, 568(sp)
-	sd t1, 0(t3)
+	ld t3, 352(sp)
+	sw t1, 0(t3)
 
 	# br whileCond_62
 	j whileCond_62
@@ -1984,22 +1984,22 @@ secondCond_34:
 	# FCMP cond_normalize_$5   
 
 	# fetch variables
-	li t1, 0x3fd3333333333333
-	fmv.d.x ft1, t1
+	li t1, 0x3e99999a
+	fmv.w.x ft1, t1
 	li t2, 0x0
-	fmv.d.x ft2, t2
-	feq.d t0, ft1, ft2
+	fmv.w.x ft2, t2
+	feq.s t0, ft1, ft2
 	seqz t0, t0
 
 	# get address of local var:cond_normalize_$5
-	sd t0, 240(sp)
+	sw t0, 132(sp)
 
 	# condBr cond_normalize_$5 ifTrue_61 next_123
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$5
-	ld t1, 240(sp)
+	lw t1, 132(sp)
 	beqz t1, next_123
 	j ifTrue_61
 whileCond_62:
@@ -2007,55 +2007,55 @@ whileCond_62:
 	# load i lv
 
 	# get address of lv points to
-	ld t3, 448(sp)
+	ld t3, 280(sp)
 
 	# get address of local var:i
-	ld t0, 0(t3)
-	sd t0, 232(sp)
+	lw t0, 0(t3)
+	sw t0, 128(sp)
 
 	# ICMP cond_lt_tmp_ i  
 
 	# fetch variables
 
 	# get address of local var:i
-	ld t1, 232(sp)
+	lw t1, 128(sp)
 	li t2, 1000000000
 	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_
-	sd t0, 224(sp)
+	sw t0, 124(sp)
 
 	# ZEXT cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_
-	ld t1, 224(sp)
+	lw t1, 124(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	sd t0, 216(sp)
+	sw t0, 120(sp)
 
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
-	ld t1, 216(sp)
+	lw t1, 120(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_
-	sd t0, 208(sp)
+	sw t0, 116(sp)
 
 	# condBr cond_ whileBody_62 next_124
 
 	# fetch variables
 
 	# get address of local var:cond_
-	ld t1, 208(sp)
+	lw t1, 116(sp)
 	beqz t1, next_124
 	j whileBody_62
 whileBody_62:
@@ -2078,101 +2078,101 @@ whileBody_62:
 	addi sp, sp, 0
 
 	# get address of local var:getfloat
-	fsd fa0, 200(sp)
+	fsw fa0, 112(sp)
 
 	# store lv$4 getfloat
 
 	# fetch variables
 
 	# get address of local var:getfloat
-	fld ft1, 200(sp)
+	flw ft1, 112(sp)
 
 	# get address of lv$4 points to
-	ld t3, 584(sp)
-	fsd ft1, 0(t3)
+	ld t3, 364(sp)
+	fsw ft1, 0(t3)
 
 	# load input lv$4
 
 	# get address of lv$4 points to
-	ld t3, 584(sp)
+	ld t3, 364(sp)
 
 	# get address of local var:input
-	fld ft0, 0(t3)
-	fsd ft0, 192(sp)
+	flw ft0, 0(t3)
+	fsw ft0, 108(sp)
 
 	# FMUL result_  input 
 
 	# fetch variables
-	li t1, 0x400921fb5a7ed197
-	fmv.d.x ft1, t1
+	li t1, 0x40490fdb
+	fmv.w.x ft1, t1
 
 	# get address of local var:input
-	fld ft2, 192(sp)
-	fmul.d ft0, ft1, ft2
+	flw ft2, 108(sp)
+	fmul.s ft0, ft1, ft2
 
 	# get address of local var:result_
-	fsd ft0, 184(sp)
+	fsw ft0, 104(sp)
 
 	# load input$1 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 584(sp)
+	ld t3, 364(sp)
 
 	# get address of local var:input$1
-	fld ft0, 0(t3)
-	fsd ft0, 176(sp)
+	flw ft0, 0(t3)
+	fsw ft0, 100(sp)
 
 	# FMUL result_$1 result_ input$1 
 
 	# fetch variables
 
 	# get address of local var:result_
-	fld ft1, 184(sp)
+	flw ft1, 104(sp)
 
 	# get address of local var:input$1
-	fld ft2, 176(sp)
-	fmul.d ft0, ft1, ft2
+	flw ft2, 100(sp)
+	fmul.s ft0, ft1, ft2
 
 	# get address of local var:result_$1
-	fsd ft0, 168(sp)
+	fsw ft0, 96(sp)
 
 	# store lv$5 result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
-	fld ft1, 168(sp)
+	flw ft1, 96(sp)
 
 	# get address of lv$5 points to
-	ld t3, 600(sp)
-	fsd ft1, 0(t3)
+	ld t3, 376(sp)
+	fsw ft1, 0(t3)
 
 	# load input$2 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 584(sp)
+	ld t3, 364(sp)
 
 	# get address of local var:input$2
-	fld ft0, 0(t3)
-	fsd ft0, 160(sp)
+	flw ft0, 0(t3)
+	fsw ft0, 92(sp)
 
 	# F2I f2i_ input$2
 
 	# fetch variables
 
 	# get address of local var:input$2
-	fld ft1, 160(sp)
-	fcvt.l.d t0, ft1, rtz
+	flw ft1, 92(sp)
+	fcvt.w.s t0, ft1, rtz
 
 	# get address of local var:f2i_
-	sd t0, 152(sp)
+	sw t0, 88(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:f2i_
-	ld t1, 152(sp)
+	lw t1, 88(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -2191,135 +2191,135 @@ whileBody_62:
 	addi sp, sp, 0
 
 	# get address of local var:circle_area$2
-	fsd fa0, 144(sp)
+	fsw fa0, 84(sp)
 
 	# store lv$6 circle_area$2
 
 	# fetch variables
 
 	# get address of local var:circle_area$2
-	fld ft1, 144(sp)
+	flw ft1, 84(sp)
 
 	# get address of lv$6 points to
-	ld t3, 616(sp)
-	fsd ft1, 0(t3)
+	ld t3, 388(sp)
+	fsw ft1, 0(t3)
 
 	# load p lv$1
 
 	# get address of lv$1 points to
-	ld t3, 464(sp)
+	ld t3, 292(sp)
 
 	# get address of local var:p
-	ld t0, 0(t3)
-	sd t0, 136(sp)
+	lw t0, 0(t3)
+	sw t0, 80(sp)
 
 	# gep arr$1 p
 
 	# fetch variables
 
 	# get address of local var:p
-	ld t1, 136(sp)
-	li t2, 8
+	lw t1, 80(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$1
-	sd t0, 128(sp)
+	sd t0, 72(sp)
 
 	# load p$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 464(sp)
+	ld t3, 292(sp)
 
 	# get address of local var:p$1
-	ld t0, 0(t3)
-	sd t0, 120(sp)
+	lw t0, 0(t3)
+	sw t0, 68(sp)
 
 	# gep arr$2 p$1
 
 	# fetch variables
 
 	# get address of local var:p$1
-	ld t1, 120(sp)
-	li t2, 8
+	lw t1, 68(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:arr$2
-	sd t0, 112(sp)
+	sd t0, 60(sp)
 
 	# load arr$3 arr$2
 
 	# get address of arr$2 points to
-	ld t3, 112(sp)
+	ld t3, 60(sp)
 
 	# get address of local var:arr$3
-	fld ft0, 0(t3)
-	fsd ft0, 104(sp)
+	flw ft0, 0(t3)
+	fsw ft0, 56(sp)
 
 	# load input$3 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 584(sp)
+	ld t3, 364(sp)
 
 	# get address of local var:input$3
-	fld ft0, 0(t3)
-	fsd ft0, 96(sp)
+	flw ft0, 0(t3)
+	fsw ft0, 52(sp)
 
 	# FADD result_$2 arr$3 input$3 
 
 	# fetch variables
 
 	# get address of local var:arr$3
-	fld ft1, 104(sp)
+	flw ft1, 56(sp)
 
 	# get address of local var:input$3
-	fld ft2, 96(sp)
-	fadd.d ft0, ft1, ft2
+	flw ft2, 52(sp)
+	fadd.s ft0, ft1, ft2
 
 	# get address of local var:result_$2
-	fsd ft0, 88(sp)
+	fsw ft0, 48(sp)
 
 	# store arr$1 result_$2
 
 	# fetch variables
 
 	# get address of local var:result_$2
-	fld ft1, 88(sp)
+	flw ft1, 48(sp)
 
 	# get address of arr$1 points to
-	ld t3, 128(sp)
-	fsd ft1, 0(t3)
+	ld t3, 72(sp)
+	fsw ft1, 0(t3)
 
 	# load area lv$5
 
 	# get address of lv$5 points to
-	ld t3, 600(sp)
+	ld t3, 376(sp)
 
 	# get address of local var:area
-	fld ft0, 0(t3)
-	fsd ft0, 80(sp)
+	flw ft0, 0(t3)
+	fsw ft0, 44(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:area
-	fld ft1, 80(sp)
-	fmv.x.d t0, ft1
-	fmv.d.x fa0, t0
+	flw ft1, 44(sp)
+	fmv.x.w t0, ft1
+	fmv.w.x fa0, t0
 	addi sp, sp, 0
 
 	# save caller saved regs
@@ -2360,29 +2360,29 @@ whileBody_62:
 	# load area_trunc lv$6
 
 	# get address of lv$6 points to
-	ld t3, 616(sp)
+	ld t3, 388(sp)
 
 	# get address of local var:area_trunc
-	fld ft0, 0(t3)
-	fsd ft0, 72(sp)
+	flw ft0, 0(t3)
+	fsw ft0, 40(sp)
 
 	# F2I f2i_$1 area_trunc
 
 	# fetch variables
 
 	# get address of local var:area_trunc
-	fld ft1, 72(sp)
-	fcvt.l.d t0, ft1, rtz
+	flw ft1, 40(sp)
+	fcvt.w.s t0, ft1, rtz
 
 	# get address of local var:f2i_$1
-	sd t0, 64(sp)
+	sw t0, 36(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:f2i_$1
-	ld t1, 64(sp)
+	lw t1, 36(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -2424,89 +2424,89 @@ whileBody_62:
 	# load i$1 lv
 
 	# get address of lv points to
-	ld t3, 448(sp)
+	ld t3, 280(sp)
 
 	# get address of local var:i$1
-	ld t0, 0(t3)
-	sd t0, 56(sp)
+	lw t0, 0(t3)
+	sw t0, 32(sp)
 
 	# F2I i2f_ i$1
 
 	# fetch variables
 
 	# get address of local var:i$1
-	ld t1, 56(sp)
-	fcvt.d.l ft0, t1
+	lw t1, 32(sp)
+	fcvt.s.w ft0, t1
 
 	# get address of local var:i2f_
-	fsd ft0, 48(sp)
+	fsw ft0, 28(sp)
 
 	# FMUL result_$3 i2f_  
 
 	# fetch variables
 
 	# get address of local var:i2f_
-	fld ft1, 48(sp)
-	li t2, 0x4024000000000000
-	fmv.d.x ft2, t2
-	fmul.d ft0, ft1, ft2
+	flw ft1, 28(sp)
+	li t2, 0x41200000
+	fmv.w.x ft2, t2
+	fmul.s ft0, ft1, ft2
 
 	# get address of local var:result_$3
-	fsd ft0, 40(sp)
+	fsw ft0, 24(sp)
 
 	# F2I f2i_$2 result_$3
 
 	# fetch variables
 
 	# get address of local var:result_$3
-	fld ft1, 40(sp)
-	fcvt.l.d t0, ft1, rtz
+	flw ft1, 24(sp)
+	fcvt.w.s t0, ft1, rtz
 
 	# get address of local var:f2i_$2
-	sd t0, 32(sp)
+	sw t0, 20(sp)
 
 	# store lv f2i_$2
 
 	# fetch variables
 
 	# get address of local var:f2i_$2
-	ld t1, 32(sp)
+	lw t1, 20(sp)
 
 	# get address of lv points to
-	ld t3, 448(sp)
-	sd t1, 0(t3)
+	ld t3, 280(sp)
+	sw t1, 0(t3)
 
 	# load p$2 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 464(sp)
+	ld t3, 292(sp)
 
 	# get address of local var:p$2
-	ld t0, 0(t3)
-	sd t0, 24(sp)
+	lw t0, 0(t3)
+	sw t0, 16(sp)
 
 	# ADD result_$4 p$2  
 
 	# fetch variables
 
 	# get address of local var:p$2
-	ld t1, 24(sp)
+	lw t1, 16(sp)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_$4
-	sd t0, 16(sp)
+	sw t0, 12(sp)
 
 	# store lv$1 result_$4
 
 	# fetch variables
 
 	# get address of local var:result_$4
-	ld t1, 16(sp)
+	lw t1, 12(sp)
 
 	# get address of lv$1 points to
-	ld t3, 464(sp)
-	sd t1, 0(t3)
+	ld t3, 292(sp)
+	sw t1, 0(t3)
 
 	# br whileCond_62
 	j whileCond_62
@@ -2515,23 +2515,23 @@ next_124:
 	# load len lv$3
 
 	# get address of lv$3 points to
-	ld t3, 568(sp)
+	ld t3, 352(sp)
 
 	# get address of local var:len
-	ld t0, 0(t3)
-	sd t0, 8(sp)
+	lw t0, 0(t3)
+	sw t0, 8(sp)
 
 	# gep arr$4 
 
 	# fetch variables
 	li t1, 0
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 552(sp)
+	ld t3, 340(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -2543,7 +2543,7 @@ next_124:
 	# fetch variables
 
 	# get address of local var:len
-	ld t1, 8(sp)
+	lw t1, 8(sp)
 	mv a0, t1
 
 	# fetch variables
@@ -2572,7 +2572,7 @@ next_124:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	li t4, 624
+	li t4, 396
 	add sp, sp, t4
 	ret 
 

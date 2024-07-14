@@ -8,17 +8,17 @@ main:
 mainEntry11:
 
 	# reserve space
-	li t4, 56
+	li t4, 32
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	li t0, 40
+	li t0, 20
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 48(sp)
+	sd t0, 24(sp)
 
 	# store lv 
 
@@ -26,62 +26,62 @@ mainEntry11:
 	li t1, 1
 
 	# get address of lv points to
-	ld t3, 48(sp)
-	sd t1, 0(t3)
+	ld t3, 24(sp)
+	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 48(sp)
+	ld t3, 24(sp)
 
 	# get address of local var:a
-	ld t0, 0(t3)
-	sd t0, 32(sp)
+	lw t0, 0(t3)
+	sw t0, 16(sp)
 
 	# ICMP cond_eq_tmp_ a  
 
 	# fetch variables
 
 	# get address of local var:a
-	ld t1, 32(sp)
+	lw t1, 16(sp)
 	li t2, 1
 	xor t0, t1, t2
 	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_
-	sd t0, 24(sp)
+	sw t0, 12(sp)
 
 	# ZEXT cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_
-	ld t1, 24(sp)
+	lw t1, 12(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	sd t0, 16(sp)
+	sw t0, 8(sp)
 
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
-	ld t1, 16(sp)
+	lw t1, 8(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_
-	sd t0, 8(sp)
+	sw t0, 4(sp)
 
 	# condBr cond_ ifTrue_6 next_6
 
 	# fetch variables
 
 	# get address of local var:cond_
-	ld t1, 8(sp)
+	lw t1, 4(sp)
 	beqz t1, next_6
 	j ifTrue_6
 ifTrue_6:
@@ -92,8 +92,8 @@ ifTrue_6:
 	li t1, 2
 
 	# get address of lv points to
-	ld t3, 48(sp)
-	sd t1, 0(t3)
+	ld t3, 24(sp)
+	sw t1, 0(t3)
 
 	# br next_6
 	j next_6
@@ -102,20 +102,20 @@ next_6:
 	# load a$1 lv
 
 	# get address of lv points to
-	ld t3, 48(sp)
+	ld t3, 24(sp)
 
 	# get address of local var:a$1
-	ld t0, 0(t3)
-	sd t0, 0(sp)
+	lw t0, 0(t3)
+	sw t0, 0(sp)
 
 	# ret a$1
 
 	# fetch variables
 
 	# get address of local var:a$1
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 56
+	li t4, 32
 	add sp, sp, t4
 	ret 
 

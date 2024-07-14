@@ -8,45 +8,45 @@ main:
 mainEntry37:
 
 	# reserve space
-	li t4, 312
+	li t4, 176
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv$4
-	li t0, 296
+	li t0, 164
 	add t0, sp, t0
 
 	# get address of local var:lv$4
-	sd t0, 304(sp)
+	sd t0, 168(sp)
 
 	# allocate lv$3
-	li t0, 280
+	li t0, 152
 	add t0, sp, t0
 
 	# get address of local var:lv$3
-	sd t0, 288(sp)
+	sd t0, 156(sp)
 
 	# allocate lv$2
-	li t0, 264
+	li t0, 140
 	add t0, sp, t0
 
 	# get address of local var:lv$2
-	sd t0, 272(sp)
+	sd t0, 144(sp)
 
 	# allocate lv$1
-	li t0, 248
+	li t0, 128
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 256(sp)
+	sd t0, 132(sp)
 
 	# allocate lv
-	li t0, 232
+	li t0, 116
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 240(sp)
+	sd t0, 120(sp)
 
 	# store lv 
 
@@ -54,8 +54,8 @@ mainEntry37:
 	li t1, 5
 
 	# get address of lv points to
-	ld t3, 240(sp)
-	sd t1, 0(t3)
+	ld t3, 120(sp)
+	sw t1, 0(t3)
 
 	# store lv$1 
 
@@ -63,8 +63,8 @@ mainEntry37:
 	li t1, 5
 
 	# get address of lv$1 points to
-	ld t3, 256(sp)
-	sd t1, 0(t3)
+	ld t3, 132(sp)
+	sw t1, 0(t3)
 
 	# store lv$2 
 
@@ -72,8 +72,8 @@ mainEntry37:
 	li t1, 1
 
 	# get address of lv$2 points to
-	ld t3, 272(sp)
-	sd t1, 0(t3)
+	ld t3, 144(sp)
+	sw t1, 0(t3)
 
 	# store lv$3 
 
@@ -81,108 +81,108 @@ mainEntry37:
 	li t1, -2
 
 	# get address of lv$3 points to
-	ld t3, 288(sp)
-	sd t1, 0(t3)
+	ld t3, 156(sp)
+	sw t1, 0(t3)
 
 	# load d lv$3
 
 	# get address of lv$3 points to
-	ld t3, 288(sp)
+	ld t3, 156(sp)
 
 	# get address of local var:d
-	ld t0, 0(t3)
-	sd t0, 224(sp)
+	lw t0, 0(t3)
+	sw t0, 112(sp)
 
 	# MUL result_ d  
 
 	# fetch variables
 
 	# get address of local var:d
-	ld t1, 224(sp)
+	lw t1, 112(sp)
 	li t2, 1
 	mul t0, t1, t2
 
 	# get address of local var:result_
-	sd t0, 216(sp)
+	sw t0, 108(sp)
 
 	# DIV result_$1 result_  
 
 	# fetch variables
 
 	# get address of local var:result_
-	ld t1, 216(sp)
+	lw t1, 108(sp)
 	li t2, 2
 	div t0, t1, t2
 
 	# get address of local var:result_$1
-	sd t0, 208(sp)
+	sw t0, 104(sp)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 240(sp)
+	ld t3, 120(sp)
 
 	# get address of local var:a
-	ld t0, 0(t3)
-	sd t0, 200(sp)
+	lw t0, 0(t3)
+	sw t0, 100(sp)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 256(sp)
+	ld t3, 132(sp)
 
 	# get address of local var:b
-	ld t0, 0(t3)
-	sd t0, 192(sp)
+	lw t0, 0(t3)
+	sw t0, 96(sp)
 
 	# SUB result_$2 a b 
 
 	# fetch variables
 
 	# get address of local var:a
-	ld t1, 200(sp)
+	lw t1, 100(sp)
 
 	# get address of local var:b
-	ld t2, 192(sp)
+	lw t2, 96(sp)
 	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sd t0, 184(sp)
+	sw t0, 92(sp)
 
 	# ADD result_$3 result_$1 result_$2 
 
 	# fetch variables
 
 	# get address of local var:result_$1
-	ld t1, 208(sp)
+	lw t1, 104(sp)
 
 	# get address of local var:result_$2
-	ld t2, 184(sp)
+	lw t2, 92(sp)
 	add t0, t1, t2
 
 	# get address of local var:result_$3
-	sd t0, 176(sp)
+	sw t0, 88(sp)
 
 	# load c lv$2
 
 	# get address of lv$2 points to
-	ld t3, 272(sp)
+	ld t3, 144(sp)
 
 	# get address of local var:c
-	ld t0, 0(t3)
-	sd t0, 168(sp)
+	lw t0, 0(t3)
+	sw t0, 84(sp)
 
 	# ADD result_$4 c  
 
 	# fetch variables
 
 	# get address of local var:c
-	ld t1, 168(sp)
+	lw t1, 84(sp)
 	li t2, 3
 	add t0, t1, t2
 
 	# get address of local var:result_$4
-	sd t0, 160(sp)
+	sw t0, 80(sp)
 
 	# SUB tmp_  result_$4 
 
@@ -190,64 +190,64 @@ mainEntry37:
 	li t1, 0
 
 	# get address of local var:result_$4
-	ld t2, 160(sp)
+	lw t2, 80(sp)
 	sub t0, t1, t2
 
 	# get address of local var:tmp_
-	sd t0, 152(sp)
+	sw t0, 76(sp)
 
 	# MOD result_$5 tmp_  
 
 	# fetch variables
 
 	# get address of local var:tmp_
-	ld t1, 152(sp)
+	lw t1, 76(sp)
 	li t2, 2
 	rem t0, t1, t2
 
 	# get address of local var:result_$5
-	sd t0, 144(sp)
+	sw t0, 72(sp)
 
 	# SUB result_$6 result_$3 result_$5 
 
 	# fetch variables
 
 	# get address of local var:result_$3
-	ld t1, 176(sp)
+	lw t1, 88(sp)
 
 	# get address of local var:result_$5
-	ld t2, 144(sp)
+	lw t2, 72(sp)
 	sub t0, t1, t2
 
 	# get address of local var:result_$6
-	sd t0, 136(sp)
+	sw t0, 68(sp)
 
 	# store lv$4 result_$6
 
 	# fetch variables
 
 	# get address of local var:result_$6
-	ld t1, 136(sp)
+	lw t1, 68(sp)
 
 	# get address of lv$4 points to
-	ld t3, 304(sp)
-	sd t1, 0(t3)
+	ld t3, 168(sp)
+	sw t1, 0(t3)
 
 	# load result lv$4
 
 	# get address of lv$4 points to
-	ld t3, 304(sp)
+	ld t3, 168(sp)
 
 	# get address of local var:result
-	ld t0, 0(t3)
-	sd t0, 128(sp)
+	lw t0, 0(t3)
+	sw t0, 64(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:result
-	ld t1, 128(sp)
+	lw t1, 64(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -268,67 +268,67 @@ mainEntry37:
 	# load d$1 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 288(sp)
+	ld t3, 156(sp)
 
 	# get address of local var:d$1
-	ld t0, 0(t3)
-	sd t0, 120(sp)
+	lw t0, 0(t3)
+	sw t0, 60(sp)
 
 	# MOD result_$7 d$1  
 
 	# fetch variables
 
 	# get address of local var:d$1
-	ld t1, 120(sp)
+	lw t1, 60(sp)
 	li t2, 2
 	rem t0, t1, t2
 
 	# get address of local var:result_$7
-	sd t0, 112(sp)
+	sw t0, 56(sp)
 
 	# ADD result_$8 result_$7  
 
 	# fetch variables
 
 	# get address of local var:result_$7
-	ld t1, 112(sp)
+	lw t1, 56(sp)
 	li t2, 67
 	add t0, t1, t2
 
 	# get address of local var:result_$8
-	sd t0, 104(sp)
+	sw t0, 52(sp)
 
 	# load a$1 lv
 
 	# get address of lv points to
-	ld t3, 240(sp)
+	ld t3, 120(sp)
 
 	# get address of local var:a$1
-	ld t0, 0(t3)
-	sd t0, 96(sp)
+	lw t0, 0(t3)
+	sw t0, 48(sp)
 
 	# load b$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 256(sp)
+	ld t3, 132(sp)
 
 	# get address of local var:b$1
-	ld t0, 0(t3)
-	sd t0, 88(sp)
+	lw t0, 0(t3)
+	sw t0, 44(sp)
 
 	# SUB result_$9 a$1 b$1 
 
 	# fetch variables
 
 	# get address of local var:a$1
-	ld t1, 96(sp)
+	lw t1, 48(sp)
 
 	# get address of local var:b$1
-	ld t2, 88(sp)
+	lw t2, 44(sp)
 	sub t0, t1, t2
 
 	# get address of local var:result_$9
-	sd t0, 80(sp)
+	sw t0, 40(sp)
 
 	# SUB tmp_$1  result_$9 
 
@@ -336,58 +336,58 @@ mainEntry37:
 	li t1, 0
 
 	# get address of local var:result_$9
-	ld t2, 80(sp)
+	lw t2, 40(sp)
 	sub t0, t1, t2
 
 	# get address of local var:tmp_$1
-	sd t0, 72(sp)
+	sw t0, 36(sp)
 
 	# ADD result_$10 result_$8 tmp_$1 
 
 	# fetch variables
 
 	# get address of local var:result_$8
-	ld t1, 104(sp)
+	lw t1, 52(sp)
 
 	# get address of local var:tmp_$1
-	ld t2, 72(sp)
+	lw t2, 36(sp)
 	add t0, t1, t2
 
 	# get address of local var:result_$10
-	sd t0, 64(sp)
+	sw t0, 32(sp)
 
 	# load c$1 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 272(sp)
+	ld t3, 144(sp)
 
 	# get address of local var:c$1
-	ld t0, 0(t3)
-	sd t0, 56(sp)
+	lw t0, 0(t3)
+	sw t0, 28(sp)
 
 	# ADD result_$11 c$1  
 
 	# fetch variables
 
 	# get address of local var:c$1
-	ld t1, 56(sp)
+	lw t1, 28(sp)
 	li t2, 2
 	add t0, t1, t2
 
 	# get address of local var:result_$11
-	sd t0, 48(sp)
+	sw t0, 24(sp)
 
 	# MOD result_$12 result_$11  
 
 	# fetch variables
 
 	# get address of local var:result_$11
-	ld t1, 48(sp)
+	lw t1, 24(sp)
 	li t2, 2
 	rem t0, t1, t2
 
 	# get address of local var:result_$12
-	sd t0, 40(sp)
+	sw t0, 20(sp)
 
 	# SUB tmp_$2  result_$12 
 
@@ -395,84 +395,84 @@ mainEntry37:
 	li t1, 0
 
 	# get address of local var:result_$12
-	ld t2, 40(sp)
+	lw t2, 20(sp)
 	sub t0, t1, t2
 
 	# get address of local var:tmp_$2
-	sd t0, 32(sp)
+	sw t0, 16(sp)
 
 	# SUB result_$13 result_$10 tmp_$2 
 
 	# fetch variables
 
 	# get address of local var:result_$10
-	ld t1, 64(sp)
+	lw t1, 32(sp)
 
 	# get address of local var:tmp_$2
-	ld t2, 32(sp)
+	lw t2, 16(sp)
 	sub t0, t1, t2
 
 	# get address of local var:result_$13
-	sd t0, 24(sp)
+	sw t0, 12(sp)
 
 	# store lv$4 result_$13
 
 	# fetch variables
 
 	# get address of local var:result_$13
-	ld t1, 24(sp)
+	lw t1, 12(sp)
 
 	# get address of lv$4 points to
-	ld t3, 304(sp)
-	sd t1, 0(t3)
+	ld t3, 168(sp)
+	sw t1, 0(t3)
 
 	# load result$1 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 304(sp)
+	ld t3, 168(sp)
 
 	# get address of local var:result$1
-	ld t0, 0(t3)
-	sd t0, 16(sp)
+	lw t0, 0(t3)
+	sw t0, 8(sp)
 
 	# ADD result_$14 result$1  
 
 	# fetch variables
 
 	# get address of local var:result$1
-	ld t1, 16(sp)
+	lw t1, 8(sp)
 	li t2, 3
 	add t0, t1, t2
 
 	# get address of local var:result_$14
-	sd t0, 8(sp)
+	sw t0, 4(sp)
 
 	# store lv$4 result_$14
 
 	# fetch variables
 
 	# get address of local var:result_$14
-	ld t1, 8(sp)
+	lw t1, 4(sp)
 
 	# get address of lv$4 points to
-	ld t3, 304(sp)
-	sd t1, 0(t3)
+	ld t3, 168(sp)
+	sw t1, 0(t3)
 
 	# load result$2 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 304(sp)
+	ld t3, 168(sp)
 
 	# get address of local var:result$2
-	ld t0, 0(t3)
-	sd t0, 0(sp)
+	lw t0, 0(t3)
+	sw t0, 0(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:result$2
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
 	addi sp, sp, 0
 
@@ -495,7 +495,7 @@ mainEntry37:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	li t4, 312
+	li t4, 176
 	add sp, sp, t4
 	ret 
 

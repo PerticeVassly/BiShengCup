@@ -8,7 +8,7 @@ if_if_Else:
 if_if_ElseEntry:
 
 	# reserve space
-	li t4, 120
+	li t4, 68
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -19,18 +19,18 @@ if_if_ElseEntry:
 	# save the parameters
 
 	# allocate lv$1
-	li t0, 104
+	li t0, 56
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 112(sp)
+	sd t0, 60(sp)
 
 	# allocate lv
-	li t0, 88
+	li t0, 44
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 96(sp)
+	sd t0, 48(sp)
 
 	# store lv 
 
@@ -38,8 +38,8 @@ if_if_ElseEntry:
 	li t1, 5
 
 	# get address of lv points to
-	ld t3, 96(sp)
-	sd t1, 0(t3)
+	ld t3, 48(sp)
+	sw t1, 0(t3)
 
 	# store lv$1 
 
@@ -47,62 +47,62 @@ if_if_ElseEntry:
 	li t1, 10
 
 	# get address of lv$1 points to
-	ld t3, 112(sp)
-	sd t1, 0(t3)
+	ld t3, 60(sp)
+	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 96(sp)
+	ld t3, 48(sp)
 
 	# get address of local var:a
-	ld t0, 0(t3)
-	sd t0, 80(sp)
+	lw t0, 0(t3)
+	sw t0, 40(sp)
 
 	# ICMP cond_eq_tmp_ a  
 
 	# fetch variables
 
 	# get address of local var:a
-	ld t1, 80(sp)
+	lw t1, 40(sp)
 	li t2, 5
 	xor t0, t1, t2
 	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_
-	sd t0, 72(sp)
+	sw t0, 36(sp)
 
 	# ZEXT cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_
-	ld t1, 72(sp)
+	lw t1, 36(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	sd t0, 64(sp)
+	sw t0, 32(sp)
 
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
-	ld t1, 64(sp)
+	lw t1, 32(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_
-	sd t0, 56(sp)
+	sw t0, 28(sp)
 
 	# condBr cond_ ifTrue_8 ifFalse_
 
 	# fetch variables
 
 	# get address of local var:cond_
-	ld t1, 56(sp)
+	lw t1, 28(sp)
 	beqz t1, ifFalse_
 	j ifTrue_8
 ifTrue_8:
@@ -110,56 +110,56 @@ ifTrue_8:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 112(sp)
+	ld t3, 60(sp)
 
 	# get address of local var:b
-	ld t0, 0(t3)
-	sd t0, 48(sp)
+	lw t0, 0(t3)
+	sw t0, 24(sp)
 
 	# ICMP cond_eq_tmp_$1 b  
 
 	# fetch variables
 
 	# get address of local var:b
-	ld t1, 48(sp)
+	lw t1, 24(sp)
 	li t2, 10
 	xor t0, t1, t2
 	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$1
-	sd t0, 40(sp)
+	sw t0, 20(sp)
 
 	# ZEXT cond_tmp_$1 cond_eq_tmp_$1
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$1
-	ld t1, 40(sp)
+	lw t1, 20(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$1
-	sd t0, 32(sp)
+	sw t0, 16(sp)
 
 	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$1
-	ld t1, 32(sp)
+	lw t1, 16(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_$1
-	sd t0, 24(sp)
+	sw t0, 12(sp)
 
 	# condBr cond_$1 ifTrue_9 next_16
 
 	# fetch variables
 
 	# get address of local var:cond_$1
-	ld t1, 24(sp)
+	lw t1, 12(sp)
 	beqz t1, next_16
 	j ifTrue_9
 ifFalse_:
@@ -167,34 +167,34 @@ ifFalse_:
 	# load a$1 lv
 
 	# get address of lv points to
-	ld t3, 96(sp)
+	ld t3, 48(sp)
 
 	# get address of local var:a$1
-	ld t0, 0(t3)
-	sd t0, 16(sp)
+	lw t0, 0(t3)
+	sw t0, 8(sp)
 
 	# ADD result_ a$1  
 
 	# fetch variables
 
 	# get address of local var:a$1
-	ld t1, 16(sp)
+	lw t1, 8(sp)
 	li t2, 15
 	add t0, t1, t2
 
 	# get address of local var:result_
-	sd t0, 8(sp)
+	sw t0, 4(sp)
 
 	# store lv result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	ld t1, 8(sp)
+	lw t1, 4(sp)
 
 	# get address of lv points to
-	ld t3, 96(sp)
-	sd t1, 0(t3)
+	ld t3, 48(sp)
+	sw t1, 0(t3)
 
 	# br next_15
 	j next_15
@@ -203,20 +203,20 @@ next_15:
 	# load a$2 lv
 
 	# get address of lv points to
-	ld t3, 96(sp)
+	ld t3, 48(sp)
 
 	# get address of local var:a$2
-	ld t0, 0(t3)
-	sd t0, 0(sp)
+	lw t0, 0(t3)
+	sw t0, 0(sp)
 
 	# ret a$2
 
 	# fetch variables
 
 	# get address of local var:a$2
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 120
+	li t4, 68
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -230,8 +230,8 @@ ifTrue_9:
 	li t1, 25
 
 	# get address of lv points to
-	ld t3, 96(sp)
-	sd t1, 0(t3)
+	ld t3, 48(sp)
+	sw t1, 0(t3)
 
 	# br next_16
 	j next_16
@@ -245,7 +245,7 @@ main:
 mainEntry2:
 
 	# reserve space
-	li t4, 8
+	li t4, 4
 	sub sp, sp, t4
 
 	# save the parameters
@@ -268,16 +268,16 @@ mainEntry2:
 	addi sp, sp, 0
 
 	# get address of local var:if_if_Else
-	sd a0, 0(sp)
+	sw a0, 0(sp)
 
 	# ret if_if_Else
 
 	# fetch variables
 
 	# get address of local var:if_if_Else
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 8
+	li t4, 4
 	add sp, sp, t4
 	ret 
 

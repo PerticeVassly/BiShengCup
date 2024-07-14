@@ -2,12 +2,12 @@
 .align 2
 .globl gv
 gv:
-.dword 1
-.dword 1
-.dword 1
-.dword 1
-.dword 4
-.dword 3
+.word 1
+.word 1
+.word 1
+.word 1
+.word 4
+.word 3
 .text
 .align 2
 .type main, @function
@@ -16,17 +16,17 @@ main:
 mainEntry14:
 
 	# reserve space
-	li t4, 64
+	li t4, 52
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	li t0, 48
+	li t0, 40
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 56(sp)
+	sd t0, 44(sp)
 
 	# store lv 
 
@@ -34,25 +34,25 @@ mainEntry14:
 	li t1, 1
 
 	# get address of lv points to
-	ld t3, 56(sp)
-	sd t1, 0(t3)
+	ld t3, 44(sp)
+	sw t1, 0(t3)
 
 	# load i lv
 
 	# get address of lv points to
-	ld t3, 56(sp)
+	ld t3, 44(sp)
 
 	# get address of local var:i
-	ld t0, 0(t3)
-	sd t0, 40(sp)
+	lw t0, 0(t3)
+	sw t0, 36(sp)
 
 	# gep ptr_ i
 
 	# fetch variables
 
 	# get address of local var:i
-	ld t1, 40(sp)
-	li t2, 16
+	lw t1, 36(sp)
+	li t2, 8
 	mul t0, t1, t2
 
 	# get value of global var:gv
@@ -61,24 +61,24 @@ mainEntry14:
 	add t0, t1, t0
 
 	# get address of local var:ptr_
-	sd t0, 32(sp)
+	sd t0, 28(sp)
 
 	# gep a 
 
 	# fetch variables
 	li t1, 1
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:ptr_
 
 	# get address of local var:ptr_
-	ld t3, 32(sp)
+	ld t3, 28(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:a
-	sd t0, 24(sp)
+	sd t0, 20(sp)
 
 	# store a 
 
@@ -86,14 +86,14 @@ mainEntry14:
 	li t1, 11
 
 	# get address of a points to
-	ld t3, 24(sp)
-	sd t1, 0(t3)
+	ld t3, 20(sp)
+	sw t1, 0(t3)
 
 	# gep ptr_$1 
 
 	# fetch variables
 	li t1, 1
-	li t2, 16
+	li t2, 8
 	mul t0, t1, t2
 
 	# get value of global var:gv
@@ -102,42 +102,42 @@ mainEntry14:
 	add t0, t1, t0
 
 	# get address of local var:ptr_$1
-	sd t0, 16(sp)
+	sd t0, 12(sp)
 
 	# gep a$1 
 
 	# fetch variables
 	li t1, 1
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$1
 
 	# get address of local var:ptr_$1
-	ld t3, 16(sp)
+	ld t3, 12(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:a$1
-	sd t0, 8(sp)
+	sd t0, 4(sp)
 
 	# load a$2 a$1
 
 	# get address of a$1 points to
-	ld t3, 8(sp)
+	ld t3, 4(sp)
 
 	# get address of local var:a$2
-	ld t0, 0(t3)
-	sd t0, 0(sp)
+	lw t0, 0(t3)
+	sw t0, 0(sp)
 
 	# ret a$2
 
 	# fetch variables
 
 	# get address of local var:a$2
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 64
+	li t4, 52
 	add sp, sp, t4
 	ret 
 

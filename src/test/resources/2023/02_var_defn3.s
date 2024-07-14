@@ -8,31 +8,31 @@ main:
 mainEntry38:
 
 	# reserve space
-	li t4, 72
+	li t4, 48
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv$2
-	li t0, 56
+	li t0, 36
 	add t0, sp, t0
 
 	# get address of local var:lv$2
-	sd t0, 64(sp)
+	sd t0, 40(sp)
 
 	# allocate lv$1
-	li t0, 40
-	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 48(sp)
-
-	# allocate lv
 	li t0, 24
 	add t0, sp, t0
 
+	# get address of local var:lv$1
+	sd t0, 28(sp)
+
+	# allocate lv
+	li t0, 12
+	add t0, sp, t0
+
 	# get address of local var:lv
-	sd t0, 32(sp)
+	sd t0, 16(sp)
 
 	# store lv 
 
@@ -40,8 +40,8 @@ mainEntry38:
 	li t1, 1
 
 	# get address of lv points to
-	ld t3, 32(sp)
-	sd t1, 0(t3)
+	ld t3, 16(sp)
+	sw t1, 0(t3)
 
 	# store lv$1 
 
@@ -49,8 +49,8 @@ mainEntry38:
 	li t1, 2
 
 	# get address of lv$1 points to
-	ld t3, 48(sp)
-	sd t1, 0(t3)
+	ld t3, 28(sp)
+	sw t1, 0(t3)
 
 	# store lv$2 
 
@@ -58,49 +58,49 @@ mainEntry38:
 	li t1, 3
 
 	# get address of lv$2 points to
-	ld t3, 64(sp)
-	sd t1, 0(t3)
+	ld t3, 40(sp)
+	sw t1, 0(t3)
 
 	# load b0 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 48(sp)
+	ld t3, 28(sp)
 
 	# get address of local var:b0
-	ld t0, 0(t3)
-	sd t0, 16(sp)
+	lw t0, 0(t3)
+	sw t0, 8(sp)
 
 	# load _c lv$2
 
 	# get address of lv$2 points to
-	ld t3, 64(sp)
+	ld t3, 40(sp)
 
 	# get address of local var:_c
-	ld t0, 0(t3)
-	sd t0, 8(sp)
+	lw t0, 0(t3)
+	sw t0, 4(sp)
 
 	# ADD result_ b0 _c 
 
 	# fetch variables
 
 	# get address of local var:b0
-	ld t1, 16(sp)
+	lw t1, 8(sp)
 
 	# get address of local var:_c
-	ld t2, 8(sp)
+	lw t2, 4(sp)
 	add t0, t1, t2
 
 	# get address of local var:result_
-	sd t0, 0(sp)
+	sw t0, 0(sp)
 
 	# ret result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 72
+	li t4, 48
 	add sp, sp, t4
 	ret 
 

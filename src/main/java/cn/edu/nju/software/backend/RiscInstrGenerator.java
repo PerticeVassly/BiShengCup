@@ -98,13 +98,13 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     private void saveLVal(ValueRef lVal){
         if( lVal.getType() instanceof IntType){
-            riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
+            riscInstructions.add(new RiscSw(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
         } else if(lVal.getType() instanceof FloatType){
             riscInstructions.add(new RiscFsw(new Register("ft0"), allocator.getAddrOfLocalVar(lVal)));
         } else if(lVal.getType() instanceof Pointer){
             riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
         } else if(lVal.getType() instanceof BoolType){
-            riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
+            riscInstructions.add(new RiscSw(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
         } else {
             assert false;
         }
@@ -149,19 +149,27 @@ public class RiscInstrGenerator implements InstructionVisitor {
         ValueRef dest = store.getOperand(1);
 
         TypeRef destType = ((Pointer) dest.getType()).getBase();
-        if(destType instanceof IntType || destType instanceof Pointer){
-            storeIntoIntOrPointer(dest, src);
+        if(destType instanceof IntType){
+            storeIntoInt(dest, src);
         } else if(destType instanceof FloatType){
             storeIntoFloat(dest, src);
         } else if(destType instanceof ArrayType){
             storeIntoArray(dest, src);
+        } else if(destType instanceof Pointer) {
+            storeIntoPointer(dest, src);
         } else {
             assert false;
         }
-
     }
 
-    private void storeIntoIntOrPointer(ValueRef dest, ValueRef src) {
+    private void storeIntoInt(ValueRef dest, ValueRef src) {
+        insertComment("store " + dest.getName() + " " + src.getName());
+        allocator.prepareOperands(src);
+        Operand destOperand = allocator.getAddrOfVarPtrPointsToWithOffset(dest,0);
+        riscInstructions.add(new RiscSw(new Register("t1"), destOperand));
+    }
+
+    private void storeIntoPointer(ValueRef dest, ValueRef src) {
         insertComment("store " + dest.getName() + " " + src.getName());
         allocator.prepareOperands(src);
         Operand destOperand = allocator.getAddrOfVarPtrPointsToWithOffset(dest,0);
@@ -182,9 +190,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
         for (int i = 0; i < linerList.size(); i++) {
             allocator.prepareOperands(linerList.get(i));
             if (linerList.get(i).getType() instanceof IntType) {
-                riscInstructions.add(new RiscSd(new Register("t1"), allocator.getAddrOfVarPtrPointsToWithOffset(dest, i * 8)));
+                riscInstructions.add(new RiscSw(new Register("t1"), allocator.getAddrOfVarPtrPointsToWithOffset(dest, i * RiscSpecifications.getIntSize() )));
             } else if (linerList.get(i).getType() instanceof FloatType) {
-                riscInstructions.add(new RiscFsw(new Register("ft1"), allocator.getAddrOfVarPtrPointsToWithOffset(dest, i * 8)));
+                riscInstructions.add(new RiscFsw(new Register("ft1"), allocator.getAddrOfVarPtrPointsToWithOffset(dest, i * RiscSpecifications.getFloatSize())));
             } else {
                 assert false;
             }
@@ -195,11 +203,17 @@ public class RiscInstrGenerator implements InstructionVisitor {
     public void visit(Allocate allocate) {
         riscInstructions.add(new RiscComment("allocate " + allocate.getLVal().getName()));
         TypeRef base = ((Pointer) allocate.getLVal().getType()).getBase();
-        int typeLen;
+        int typeLen = 8;
         if(base instanceof ArrayType){
             typeLen = ArrayType.getTotalSize(base);
-        } else{
+        } else if(base instanceof IntType){
+            typeLen = 4;
+        } else if(base instanceof FloatType){
+            typeLen = 4;
+        } else if(base instanceof Pointer){
             typeLen = 8;
+        } else {
+            assert false;
         }
 
         riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(allocator.getOffset(allocate.getLVal()) - typeLen)));
@@ -217,12 +231,15 @@ public class RiscInstrGenerator implements InstructionVisitor {
         Operand srcOperand = allocator.getAddrOfVarPtrPointsToWithOffset(src, 0);
         Operand destOperand = allocator.getAddrOfLocalVar(lVal);
 
-        if (((Pointer) src.getType()).getBase() instanceof IntType || ((Pointer) src.getType()).getBase() instanceof Pointer) {
-            riscInstructions.add(new RiscLd(new Register("t0"), srcOperand));
-            riscInstructions.add(new RiscSd(new Register("t0"), destOperand));
+        if (((Pointer) src.getType()).getBase() instanceof IntType) {
+            riscInstructions.add(new RiscLw(new Register("t0"), srcOperand));
+            riscInstructions.add(new RiscSw(new Register("t0"), destOperand));
         } else if (((Pointer) src.getType()).getBase() instanceof FloatType) {
             riscInstructions.add(new RiscFlw(new Register("ft0"), srcOperand));
             riscInstructions.add(new RiscFsw(new Register("ft0"), destOperand));
+        } else if (((Pointer) src.getType()).getBase() instanceof Pointer){
+            riscInstructions.add(new RiscLd(new Register("t0"), srcOperand));
+            riscInstructions.add(new RiscSd(new Register("t0"), destOperand));
         } else {
             assert false;
         }
@@ -503,7 +520,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         if (call.getLVal() != null) {
             if (call.getLVal().getType() instanceof IntType) {
                 Operand addressToSave = allocator.getAddrOfLocalVar(call.getLVal());
-                riscInstructions.add(new RiscSd(new Register("a0"), addressToSave));
+                riscInstructions.add(new RiscSw(new Register("a0"), addressToSave));
             } else if (call.getLVal().getType() instanceof FloatType) {
                 Operand addressToSave = allocator.getAddrOfLocalVar(call.getLVal());
                 riscInstructions.add(new RiscFsw(new Register("fa0"), addressToSave));
@@ -539,7 +556,17 @@ public class RiscInstrGenerator implements InstructionVisitor {
                 riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft1")));
                 riscInstructions.add(new RiscFmvwx(new Register(fArgRegs[fptr]), new Register("t0")));
                 fptr++;
-            } else if (realParam.getType() instanceof IntType || realParam.getType() instanceof Pointer){
+            } else if (realParam.getType() instanceof IntType){
+                if(ptr >= argRegs.length){
+                    allocator.prepareOperands(realParam);
+                    order++;
+                    pushIntoStack(realParam, order);
+                    continue;
+                }
+                allocator.prepareOperands(realParam);
+                riscInstructions.add(new RiscMv(new Register(argRegs[ptr]), new Register("t1")));
+                ptr++;
+            } else if(realParam.getType() instanceof Pointer){
                 if(ptr >= argRegs.length){
                     allocator.prepareOperands(realParam);
                     order++;
@@ -559,10 +586,12 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     private void pushIntoStack(ValueRef realParam, int order){
         insertComment("push " + realParam.getName());
-        if(realParam.getType() instanceof IntType || realParam.getType() instanceof Pointer){
-            riscInstructions.add(new RiscSd(new Register("t1"), new IndirectRegister("sp", -8 * order)));
+        if(realParam.getType() instanceof IntType){
+            riscInstructions.add(new RiscSw(new Register("t1"), new IndirectRegister("sp", -8 * order)));
         } else if(realParam.getType() instanceof FloatType){
             riscInstructions.add(new RiscFsw(new Register("ft1"), new IndirectRegister("sp", -8 * order)));
+        } else if(realParam.getType() instanceof Pointer){
+            riscInstructions.add(new RiscSd(new Register("t1"), new IndirectRegister("sp", -8 * order)));
         } else {
             assert false;
         }

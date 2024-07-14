@@ -2,7 +2,7 @@
 .align 2
 .globl gv
 gv:
-.zero 800
+.zero 400
 .text
 .align 2
 .type main, @function

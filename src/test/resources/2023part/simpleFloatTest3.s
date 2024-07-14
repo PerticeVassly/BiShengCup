@@ -8,34 +8,34 @@ main:
 mainEntry9:
 
 	# reserve space
-	li t4, 40
+	li t4, 28
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv$1
-	li t0, 24
+	li t0, 16
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 32(sp)
+	sd t0, 20(sp)
 
 	# allocate lv
-	li t0, 8
+	li t0, 4
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 16(sp)
+	sd t0, 8(sp)
 
 	# store lv 
 
 	# fetch variables
-	li t1, 0x3ff4cccccccccccd
-	fmv.d.x ft1, t1
+	li t1, 0x3fa66666
+	fmv.w.x ft1, t1
 
 	# get address of lv points to
-	ld t3, 16(sp)
-	fsd ft1, 0(t3)
+	ld t3, 8(sp)
+	fsw ft1, 0(t3)
 
 	# store lv$1 
 
@@ -43,26 +43,26 @@ mainEntry9:
 	li t1, 1
 
 	# get address of lv$1 points to
-	ld t3, 32(sp)
-	sd t1, 0(t3)
+	ld t3, 20(sp)
+	sw t1, 0(t3)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 32(sp)
+	ld t3, 20(sp)
 
 	# get address of local var:b
-	ld t0, 0(t3)
-	sd t0, 0(sp)
+	lw t0, 0(t3)
+	sw t0, 0(sp)
 
 	# ret b
 
 	# fetch variables
 
 	# get address of local var:b
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 40
+	li t4, 28
 	add sp, sp, t4
 	ret 
 
