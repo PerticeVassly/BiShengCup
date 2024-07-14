@@ -14,7 +14,7 @@ gv1:
 .type main, @function
 .globl main
 main:
-mainEntry72:
+mainEntry71:
 
 	# reserve space
 	li t4, 1904
@@ -4325,4 +4325,4 @@ memset:
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 

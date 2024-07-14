@@ -305,7 +305,7 @@ next_8:
 .type main, @function
 .globl main
 main:
-mainEntry16:
+mainEntry18:
 
 	# reserve space
 	li t4, 24
@@ -363,4 +363,4 @@ memset:
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 

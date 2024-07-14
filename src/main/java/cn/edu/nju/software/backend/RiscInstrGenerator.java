@@ -37,6 +37,7 @@ import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class RiscInstrGenerator implements InstructionVisitor {
 
@@ -568,6 +569,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
         saveCallerSavedRegs();
 
         riscInstructions.add(new RiscComment("call " + call.getFunction().getName()));
+        if(Objects.equals(call.getFunction().getName(), "putfloat")){
+            riscInstructions.add(new RiscFcvtsd(new Register("fa0"),new Register("fa0")));
+        }
         riscInstructions.add(new RiscCall(call.getFunction().getName()));
 
         restoreCallerSavedRegs();

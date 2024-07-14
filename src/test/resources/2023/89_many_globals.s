@@ -2880,7 +2880,7 @@ testParam32Entry:
 .type main, @function
 .globl main
 main:
-mainEntry84:
+mainEntry83:
 
 	# reserve space
 	li t4, 496
@@ -4480,4 +4480,4 @@ memset:
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 

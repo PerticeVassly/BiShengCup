@@ -1,13 +1,4 @@
-int main(){
-   int a=1;
-   while(a<60){
-        while(a<60){
-            while(a<60){
-                while(a<60){
-                   a=a+1;
-                }
-            }
-        }
-   }
- return a;
+float main(){
+   int s=3;
+   return s*3;
 }

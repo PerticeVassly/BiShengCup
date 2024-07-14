@@ -26,9 +26,9 @@ public class TestBackEndIO {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("82_long_func")
+    @StringSource("implicit_conversion")
     void testRisc(String name) throws IOException, InterruptedException {
-        testFile(DIR, name);
+        testFile(DIR_PART, name);
     }
 
     /**
