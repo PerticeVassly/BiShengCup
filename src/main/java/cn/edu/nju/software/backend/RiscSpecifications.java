@@ -10,9 +10,12 @@ public record RiscSpecifications() {
 
     private static final String[] calleeSavedRegs = new String[] {};
 
-    private static final String[] argRegs = new String[] {"a0","a1"};
+    private static final String[] argRegs = new String[] {"a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7"};
 
-    private static final String[] fArgRegs = new String[] {"fa0", "fa1"};
+    private static final String[] fArgRegs = new String[] {"fa0", "fa1", "fa2", "fa3", "fa4", "fa5", "fa6", "fa7"};
+
+    // todo: remove this field when Riscv basic type (int, float) is 32bit !
+    private static final boolean is64bit = true;
 
     public static String[] getCallerSavedRegs() {
         return callerSavedRegs;
@@ -29,4 +32,9 @@ public record RiscSpecifications() {
     public static String[] getFArgRegs() {
         return fArgRegs;
     }
+
+    public static boolean is64Bit() {
+        return is64bit;
+    }
+
 }

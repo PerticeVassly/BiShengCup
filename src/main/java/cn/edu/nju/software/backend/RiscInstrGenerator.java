@@ -569,8 +569,16 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
         saveCallerSavedRegs();
 
-        riscInstructions.add(new RiscComment("call " + call.getFunction().getName()));
-        riscInstructions.add(new RiscCall(call.getFunction().getName()));
+        String funcName = call.getFunction().getName();
+
+        // memset: (32b or 64b)
+        if (funcName.equals("memset")) {
+            if (RiscSpecifications.is64Bit()) funcName += "64";
+            else funcName += "32";
+        }
+
+        riscInstructions.add(new RiscComment("call " + funcName));
+        riscInstructions.add(new RiscCall(funcName));
 
         restoreCallerSavedRegs();
 
@@ -591,8 +599,12 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(BitCast bitCast) {
-        //TODO
+        insertComment("bitcast from " + bitCast.getOperand(0).getName() + " to " + bitCast.getLVal().getName());
+        allocator.prepareOperands(bitCast.getOperand(0));
+        riscInstructions.add(new RiscMv(new Register("t0"), new Register("t1")));
+        saveLVal(bitCast.getLVal());
     }
+
     private void prepareParams(Call call) {
         riscInstructions.add(new RiscComment("prepare params"));
         //prepare the parameters
