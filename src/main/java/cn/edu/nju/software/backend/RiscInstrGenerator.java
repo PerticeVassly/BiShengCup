@@ -34,8 +34,6 @@ import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
-import javax.swing.text.StyledEditorKit;
-import java.lang.ref.PhantomReference;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -102,7 +100,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         if( lVal.getType() instanceof IntType){
             riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
         } else if(lVal.getType() instanceof FloatType){
-            riscInstructions.add(new RiscFsd(new Register("ft0"), allocator.getAddrOfLocalVar(lVal)));
+            riscInstructions.add(new RiscFsw(new Register("ft0"), allocator.getAddrOfLocalVar(lVal)));
         } else if(lVal.getType() instanceof Pointer){
             riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
         } else if(lVal.getType() instanceof BoolType){
@@ -174,7 +172,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         insertComment("store " + dest.getName() + " " + src.getName());
         allocator.prepareOperands(src);
         Operand destOperand = allocator.getAddrOfVarPtrPointsToWithOffset(dest,0);
-        riscInstructions.add(new RiscFsd(new Register("ft1"), destOperand));
+        riscInstructions.add(new RiscFsw(new Register("ft1"), destOperand));
     }
 
     private void storeIntoArray(ValueRef dest, ValueRef src) {
@@ -186,7 +184,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
             if (linerList.get(i).getType() instanceof IntType) {
                 riscInstructions.add(new RiscSd(new Register("t1"), allocator.getAddrOfVarPtrPointsToWithOffset(dest, i * 8)));
             } else if (linerList.get(i).getType() instanceof FloatType) {
-                riscInstructions.add(new RiscFsd(new Register("ft1"), allocator.getAddrOfVarPtrPointsToWithOffset(dest, i * 8)));
+                riscInstructions.add(new RiscFsw(new Register("ft1"), allocator.getAddrOfVarPtrPointsToWithOffset(dest, i * 8)));
             } else {
                 assert false;
             }
@@ -223,8 +221,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
             riscInstructions.add(new RiscLd(new Register("t0"), srcOperand));
             riscInstructions.add(new RiscSd(new Register("t0"), destOperand));
         } else if (((Pointer) src.getType()).getBase() instanceof FloatType) {
-            riscInstructions.add(new RiscFld(new Register("ft0"), srcOperand));
-            riscInstructions.add(new RiscFsd(new Register("ft0"), destOperand));
+            riscInstructions.add(new RiscFlw(new Register("ft0"), srcOperand));
+            riscInstructions.add(new RiscFsw(new Register("ft0"), destOperand));
         } else {
             assert false;
         }
@@ -240,7 +238,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(FAdd fAdd) {
         beforeABinaryInstr(fAdd);
-        riscInstructions.add(new RiscFaddd(new Register("ft0"), new Register("ft1"), new Register("ft2")));
+        riscInstructions.add(new RiscFadds(new Register("ft0"), new Register("ft1"), new Register("ft2")));
         afterABinaryInstr(fAdd);
     }
 
@@ -255,7 +253,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(FSub fSub) {
         beforeABinaryInstr(fSub);
-        riscInstructions.add(new RiscFsubd(new Register("ft0"), new Register("ft1"), new Register("ft2")));
+        riscInstructions.add(new RiscFsubs(new Register("ft0"), new Register("ft1"), new Register("ft2")));
         afterABinaryInstr(fSub);
     }
 
@@ -269,7 +267,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(FMul fmul) {
         beforeABinaryInstr(fmul);
-        riscInstructions.add(new RiscFmuld(new Register("ft0"), new Register("ft1"), new Register("ft2")));
+        riscInstructions.add(new RiscFmuls(new Register("ft0"), new Register("ft1"), new Register("ft2")));
         afterABinaryInstr(fmul);
     }
 
@@ -290,21 +288,21 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(FDiv fdiv) {
         beforeABinaryInstr(fdiv);
-        riscInstructions.add(new RiscFdivd(new Register("ft0"), new Register("ft1"), new Register("ft2")));
+        riscInstructions.add(new RiscFdivs(new Register("ft0"), new Register("ft1"), new Register("ft2")));
         afterABinaryInstr(fdiv);
     }
 
     @Override
     public void visit(IntToFloat intToFloat) {
         beforeAUnaryInstr(intToFloat);
-        riscInstructions.add(new RiscFcvtdl(new Register("ft0"), new Register("t1")));
+        riscInstructions.add(new RiscFcvtsw(new Register("ft0"), new Register("t1")));
         afterAUnaryInstr(intToFloat);
     }
 
     @Override
     public void visit(FloatToInt floatToInt) {
         beforeAUnaryInstr(floatToInt);
-        riscInstructions.add(new RiscFcvtld(new Register("t0"), new Register("ft1")));
+        riscInstructions.add(new RiscFcvtws(new Register("t0"), new Register("ft1")));
         afterAUnaryInstr(floatToInt);
     }
 
@@ -381,30 +379,30 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
             case "one":
                 //dest = rs1 - rs2 (dest != 0)
-                riscInstructions.add(new RiscFeqd(new Register("t0"), new Register("ft1"), new Register("ft2")));
+                riscInstructions.add(new RiscFeqs(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("t0")));
                 break;
 
             case "oeq":
-                riscInstructions.add(new RiscFeqd(new Register("t0"), new Register("ft1"), new Register("ft2")));
+                riscInstructions.add(new RiscFeqs(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 break;
 
             case "ogt":
-                riscInstructions.add(new RiscFled(new Register("t0"), new Register("ft1"), new Register("ft2")));
+                riscInstructions.add(new RiscFles(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("ft0")));
                 break;
 
             case "olt":
-                riscInstructions.add(new RiscFltd(new Register("t0"), new Register("ft2"), new Register("ft1")));
+                riscInstructions.add(new RiscFlts(new Register("t0"), new Register("ft2"), new Register("ft1")));
                 break;
 
             case "oge":
-                riscInstructions.add(new RiscFltd(new Register("t0"), new Register("ft2"), new Register("ft1")));
+                riscInstructions.add(new RiscFlts(new Register("t0"), new Register("ft2"), new Register("ft1")));
                 riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("t0")));
                 break;
 
             case "ole":
-                riscInstructions.add(new RiscFled(new Register("t0"), new Register("ft2"), new Register("ft1")));
+                riscInstructions.add(new RiscFles(new Register("t0"), new Register("ft2"), new Register("ft1")));
                 break;
 
         }
@@ -508,7 +506,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
                 riscInstructions.add(new RiscSd(new Register("a0"), addressToSave));
             } else if (call.getLVal().getType() instanceof FloatType) {
                 Operand addressToSave = allocator.getAddrOfLocalVar(call.getLVal());
-                riscInstructions.add(new RiscFsd(new Register("fa0"), addressToSave));
+                riscInstructions.add(new RiscFsw(new Register("fa0"), addressToSave));
             } else {
                 assert false;
             }
@@ -538,8 +536,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
                     continue;
                 }
                 allocator.prepareOperands(realParam);
-                riscInstructions.add(new RiscFmvxd(new Register("t0"), new Register("ft1")));
-                riscInstructions.add(new RiscFmvdx(new Register(fArgRegs[fptr]), new Register("t0")));
+                riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft1")));
+                riscInstructions.add(new RiscFmvwx(new Register(fArgRegs[fptr]), new Register("t0")));
                 fptr++;
             } else if (realParam.getType() instanceof IntType || realParam.getType() instanceof Pointer){
                 if(ptr >= argRegs.length){
@@ -564,7 +562,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         if(realParam.getType() instanceof IntType || realParam.getType() instanceof Pointer){
             riscInstructions.add(new RiscSd(new Register("t1"), new IndirectRegister("sp", -8 * order)));
         } else if(realParam.getType() instanceof FloatType){
-            riscInstructions.add(new RiscFsd(new Register("ft1"), new IndirectRegister("sp", -8 * order)));
+            riscInstructions.add(new RiscFsw(new Register("ft1"), new IndirectRegister("sp", -8 * order)));
         } else {
             assert false;
         }
