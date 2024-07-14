@@ -32,23 +32,19 @@ ifWhileEntry:
 	# get address of local var:lv
 	sd t0, 176(sp)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	ld t3, 176(sp)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 3
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	ld t3, 192(sp)
@@ -63,61 +59,61 @@ ifWhileEntry:
 	ld t0, 0(t3)
 	sd t0, 160(sp)
 
-	# cmp a  cond_eq_tmp_
+	# ICMPcond_eq_tmp_ a  
 
 	# fetch variables
 
 	# get address of local var:a
 	ld t1, 160(sp)
 	li t2, 5
-
-	# get address of local var:cond_eq_tmp_
 	xor t0, t1, t2
 	seqz t0, t0
+
+	# get address of local var:cond_eq_tmp_
 	sd t0, 152(sp)
 
-	# zext cond_tmp_ cond_eq_tmp_
+	# ZEXTcond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_
 	ld t1, 152(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	mv t0, t1
 	sd t0, 144(sp)
 
-	# cmp cond_tmp_  cond_
+	# ICMPcond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
 	ld t1, 144(sp)
 	li t2, 0
-
-	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_
 	sd t0, 136(sp)
 
-	# condBr cond_ ifTrue_2 ifFalse_1
+	# condBr cond_ ifTrue_339 ifFalse_135
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 136(sp)
-	beqz t1, ifFalse_1
-	j ifTrue_2
-ifTrue_2:
+	beqz t1, ifFalse_135
+	j ifTrue_339
+ifTrue_339:
 
-	# br whileCond_1
-	j whileCond_1
-ifFalse_1:
+	# br whileCond_252
+	j whileCond_252
+ifFalse_135:
 
-	# br whileCond_2
-	j whileCond_2
-next_3:
+	# br whileCond_253
+	j whileCond_253
+next_591:
 
 	# load b$4 lv$1
 
@@ -141,7 +137,7 @@ next_3:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_1:
+whileCond_252:
 
 	# load b lv$1
 
@@ -152,53 +148,53 @@ whileCond_1:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# cmp b  cond_eq_tmp_$1
+	# ICMPcond_eq_tmp_$1 b  
 
 	# fetch variables
 
 	# get address of local var:b
 	ld t1, 120(sp)
 	li t2, 2
-
-	# get address of local var:cond_eq_tmp_$1
 	xor t0, t1, t2
 	seqz t0, t0
+
+	# get address of local var:cond_eq_tmp_$1
 	sd t0, 112(sp)
 
-	# zext cond_tmp_$1 cond_eq_tmp_$1
+	# ZEXTcond_tmp_$1 cond_eq_tmp_$1
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$1
 	ld t1, 112(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$1
-	mv t0, t1
 	sd t0, 104(sp)
 
-	# cmp cond_tmp_$1  cond_$1
+	# ICMPcond_$1 cond_tmp_$1  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$1
 	ld t1, 104(sp)
 	li t2, 0
-
-	# get address of local var:cond_$1
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$1
 	sd t0, 96(sp)
 
-	# condBr cond_$1 whileBody_1 next_4
+	# condBr cond_$1 whileBody_252 next_592
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 96(sp)
-	beqz t1, next_4
-	j whileBody_1
-whileBody_1:
+	beqz t1, next_592
+	j whileBody_252
+whileBody_252:
 
 	# load b$1 lv$1
 
@@ -209,7 +205,7 @@ whileBody_1:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# ADDresult_ b$1 
+	# ADDresult_ b$1  
 
 	# fetch variables
 
@@ -221,22 +217,20 @@ whileBody_1:
 	# get address of local var:result_
 	sd t0, 80(sp)
 
-	# lv$1 result_
+	# store lv$1 result_
 
 	# fetch variables
 
 	# get address of local var:result_
 	ld t1, 80(sp)
 
-	# store lv$1 result_
-
 	# get address of lv$1 points to
 	ld t3, 192(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_1
-	j whileCond_1
-next_4:
+	# br whileCond_252
+	j whileCond_252
+next_592:
 
 	# load b$2 lv$1
 
@@ -247,7 +241,7 @@ next_4:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# ADDresult_$1 b$2 
+	# ADDresult_$1 b$2  
 
 	# fetch variables
 
@@ -259,22 +253,20 @@ next_4:
 	# get address of local var:result_$1
 	sd t0, 64(sp)
 
-	# lv$1 result_$1
+	# store lv$1 result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
 	ld t1, 64(sp)
 
-	# store lv$1 result_$1
-
 	# get address of lv$1 points to
 	ld t3, 192(sp)
 	sd t1, 0(t3)
 
-	# br next_3
-	j next_3
-whileCond_2:
+	# br next_591
+	j next_591
+whileCond_253:
 
 	# load a$1 lv
 
@@ -285,52 +277,52 @@ whileCond_2:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# cmp a$1  cond_lt_tmp_
+	# ICMPcond_lt_tmp_ a$1  
 
 	# fetch variables
 
 	# get address of local var:a$1
 	ld t1, 56(sp)
 	li t2, 5
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_
-	slt t0, t1, t2
 	sd t0, 48(sp)
 
-	# zext cond_tmp_$2 cond_lt_tmp_
+	# ZEXTcond_tmp_$2 cond_lt_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_
 	ld t1, 48(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$2
-	mv t0, t1
 	sd t0, 40(sp)
 
-	# cmp cond_tmp_$2  cond_$2
+	# ICMPcond_$2 cond_tmp_$2  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$2
 	ld t1, 40(sp)
 	li t2, 0
-
-	# get address of local var:cond_$2
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$2
 	sd t0, 32(sp)
 
-	# condBr cond_$2 whileBody_2 next_5
+	# condBr cond_$2 whileBody_253 next_593
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	ld t1, 32(sp)
-	beqz t1, next_5
-	j whileBody_2
-whileBody_2:
+	beqz t1, next_593
+	j whileBody_253
+whileBody_253:
 
 	# load b$3 lv$1
 
@@ -341,7 +333,7 @@ whileBody_2:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# MULresult_$2 b$3 
+	# MULresult_$2 b$3  
 
 	# fetch variables
 
@@ -353,14 +345,12 @@ whileBody_2:
 	# get address of local var:result_$2
 	sd t0, 16(sp)
 
-	# lv$1 result_$2
+	# store lv$1 result_$2
 
 	# fetch variables
 
 	# get address of local var:result_$2
 	ld t1, 16(sp)
-
-	# store lv$1 result_$2
 
 	# get address of lv$1 points to
 	ld t3, 192(sp)
@@ -375,7 +365,7 @@ whileBody_2:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$3 a$2 
+	# ADDresult_$3 a$2  
 
 	# fetch variables
 
@@ -387,29 +377,27 @@ whileBody_2:
 	# get address of local var:result_$3
 	sd t0, 0(sp)
 
-	# lv result_$3
+	# store lv result_$3
 
 	# fetch variables
 
 	# get address of local var:result_$3
 	ld t1, 0(sp)
 
-	# store lv result_$3
-
 	# get address of lv points to
 	ld t3, 176(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_2
-	j whileCond_2
-next_5:
+	# br whileCond_253
+	j whileCond_253
+next_593:
 
-	# br next_3
-	j next_3
+	# br next_591
+	j next_591
 .type main, @function
 .globl main
 main:
-mainEntry5:
+mainEntry84:
 
 	# reserve space
 	li t4, 8

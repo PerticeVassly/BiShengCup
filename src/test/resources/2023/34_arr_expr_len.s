@@ -13,7 +13,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry52:
+mainEntry82:
 
 	# reserve space
 	li t4, 128
@@ -35,31 +35,27 @@ mainEntry52:
 	# get address of local var:lv
 	sd t0, 104(sp)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	ld t3, 104(sp)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	ld t3, 120(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_196
-	j whileCond_196
-whileCond_196:
+	# br whileCond_247
+	j whileCond_247
+whileCond_247:
 
 	# load i lv
 
@@ -70,52 +66,52 @@ whileCond_196:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# cmp i  cond_lt_tmp_
+	# ICMPcond_lt_tmp_ i  
 
 	# fetch variables
 
 	# get address of local var:i
 	ld t1, 88(sp)
 	li t2, 6
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_
-	slt t0, t1, t2
 	sd t0, 80(sp)
 
-	# zext cond_tmp_ cond_lt_tmp_
+	# ZEXTcond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_
 	ld t1, 80(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	mv t0, t1
 	sd t0, 72(sp)
 
-	# cmp cond_tmp_  cond_
+	# ICMPcond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
 	ld t1, 72(sp)
 	li t2, 0
-
-	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_
 	sd t0, 64(sp)
 
-	# condBr cond_ whileBody_196 next_504
+	# condBr cond_ whileBody_247 next_586
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 64(sp)
-	beqz t1, next_504
-	j whileBody_196
-whileBody_196:
+	beqz t1, next_586
+	j whileBody_247
+whileBody_247:
 
 	# load sum lv$1
 
@@ -161,7 +157,7 @@ whileBody_196:
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# ADDresult_ sum arr$1
+	# ADDresult_ sum arr$1 
 
 	# fetch variables
 
@@ -175,14 +171,12 @@ whileBody_196:
 	# get address of local var:result_
 	sd t0, 24(sp)
 
-	# lv$1 result_
+	# store lv$1 result_
 
 	# fetch variables
 
 	# get address of local var:result_
 	ld t1, 24(sp)
-
-	# store lv$1 result_
 
 	# get address of lv$1 points to
 	ld t3, 120(sp)
@@ -197,7 +191,7 @@ whileBody_196:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# ADDresult_$1 i$2 
+	# ADDresult_$1 i$2  
 
 	# fetch variables
 
@@ -209,22 +203,20 @@ whileBody_196:
 	# get address of local var:result_$1
 	sd t0, 8(sp)
 
-	# lv result_$1
+	# store lv result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
 	ld t1, 8(sp)
 
-	# store lv result_$1
-
 	# get address of lv points to
 	ld t3, 104(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_196
-	j whileCond_196
-next_504:
+	# br whileCond_247
+	j whileCond_247
+next_586:
 
 	# load sum$1 lv$1
 

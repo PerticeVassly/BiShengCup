@@ -14,7 +14,7 @@ gv2:
 .type main, @function
 .globl main
 main:
-mainEntry90:
+mainEntry17:
 
 	# reserve space
 	li t4, 56
@@ -36,13 +36,11 @@ mainEntry90:
 	# get address of local var:lv
 	sd t0, 32(sp)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0x3ff3333333333333
 	fmv.d.x ft1, t1
-
-	# store lv 
 
 	# get address of lv points to
 	ld t3, 32(sp)
@@ -57,25 +55,23 @@ mainEntry90:
 	fld ft0, 0(t3)
 	fsd ft0, 16(sp)
 
-	# floatToInt f2i_ d
+	# F2If2i_ d
 
 	# fetch variables
 
 	# get address of local var:d
 	fld ft1, 16(sp)
+	fcvt.l.d t0, ft1, rtz
 
 	# get address of local var:f2i_
-	fcvt.l.d t0, ft1
 	sd t0, 8(sp)
 
-	# lv$1 f2i_
+	# store lv$1 f2i_
 
 	# fetch variables
 
 	# get address of local var:f2i_
 	ld t1, 8(sp)
-
-	# store lv$1 f2i_
 
 	# get address of lv$1 points to
 	ld t3, 48(sp)
@@ -121,13 +117,24 @@ mainEntry90:
 	li t4, 56
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
+    ret 

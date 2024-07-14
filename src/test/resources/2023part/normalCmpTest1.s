@@ -16,96 +16,70 @@ mainEntry12:
 	# allocate lv$2
 	li t0, 112
 	add t0, sp, t0
-	li t1, 120
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 120(sp)
 
 	# allocate lv$1
 	li t0, 96
 	add t0, sp, t0
-	li t1, 104
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 104(sp)
 
 	# allocate lv
 	li t0, 80
 	add t0, sp, t0
-	li t1, 88
-	add t1, sp, t1
-	sd t0, 0(t1)
 
-	# lv 
+	# get address of local var:lv
+	sd t0, 88(sp)
+
+	# store lv 
 
 	# fetch variables
 	li t1, 1
 
-	# store lv 
-
 	# get address of lv points to
-	li t4, 88
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 88(sp)
+	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 2
 
-	# store lv$1 
-
 	# get address of lv$1 points to
-	li t4, 104
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 104(sp)
+	sd t1, 0(t3)
 
-	# lv$2 
+	# store lv$2 
 
 	# fetch variables
 	li t1, 3
 
-	# store lv$2 
-
 	# get address of lv$2 points to
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 120(sp)
+	sd t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	li t4, 88
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 88(sp)
 
 	# get address of local var:a
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 72(sp)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
-	li t4, 104
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 104(sp)
 
 	# get address of local var:b
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# cmp a b cond_lt_tmp_
+	# ICMPcond_lt_tmp_ a b 
 
 	# fetch variables
 
@@ -114,34 +88,34 @@ mainEntry12:
 
 	# get address of local var:b
 	ld t2, 64(sp)
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_
-	slt t0, t1, t2
 	sd t0, 56(sp)
 
-	# zext cond_tmp_ cond_lt_tmp_
+	# ZEXTcond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_
 	ld t1, 56(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	mv t0, t1
 	sd t0, 48(sp)
 
-	# cmp cond_tmp_  cond_
+	# ICMPcond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
 	ld t1, 48(sp)
 	li t2, 0
-
-	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_
 	sd t0, 40(sp)
 
 	# condBr cond_ secondCond_2 ifFalse_
@@ -177,30 +151,22 @@ secondCond_2:
 	# load b$1 lv$1
 
 	# get address of lv$1 points to
-	li t4, 104
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 104(sp)
 
 	# get address of local var:b$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 32(sp)
 
 	# load c lv$2
 
 	# get address of lv$2 points to
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 120(sp)
 
 	# get address of local var:c
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# cmp b$1 c cond_lt_tmp_$1
+	# ICMPcond_lt_tmp_$1 b$1 c 
 
 	# fetch variables
 
@@ -209,34 +175,34 @@ secondCond_2:
 
 	# get address of local var:c
 	ld t2, 24(sp)
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$1
-	slt t0, t1, t2
 	sd t0, 16(sp)
 
-	# zext cond_tmp_$1 cond_lt_tmp_$1
+	# ZEXTcond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_$1
 	ld t1, 16(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$1
-	mv t0, t1
 	sd t0, 8(sp)
 
-	# cmp cond_tmp_$1  cond_$1
+	# ICMPcond_$1 cond_tmp_$1  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$1
 	ld t1, 8(sp)
 	li t2, 0
-
-	# get address of local var:cond_$1
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$1
 	sd t0, 0(sp)
 
 	# condBr cond_$1 ifTrue_7 ifFalse_
@@ -247,13 +213,24 @@ secondCond_2:
 	ld t1, 0(sp)
 	beqz t1, ifFalse_
 	j ifTrue_7
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
+    ret 

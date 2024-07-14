@@ -14,7 +14,7 @@ gv1:
 .type main, @function
 .globl main
 main:
-mainEntry16:
+mainEntry19:
 
 	# reserve space
 	li t4, 1904
@@ -76,12 +76,10 @@ mainEntry16:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 1424
@@ -89,12 +87,10 @@ mainEntry16:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 2
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 1440
@@ -102,12 +98,10 @@ mainEntry16:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 3
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 1440
@@ -250,9 +244,9 @@ mainEntry16:
 	# release params
 	addi sp, sp, 0
 
-	# br whileCond_35
-	j whileCond_35
-whileCond_35:
+	# br whileCond_58
+	j whileCond_58
+whileCond_58:
 
 	# load a$3 lv
 
@@ -267,7 +261,7 @@ whileCond_35:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp a$3  cond_lt_tmp_
+	# ICMPcond_lt_tmp_ a$3  
 
 	# fetch variables
 
@@ -276,14 +270,14 @@ whileCond_35:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 5
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_
 	li t4, 1376
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_ cond_lt_tmp_
+	# ZEXTcond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
@@ -291,14 +285,14 @@ whileCond_35:
 	li t4, 1376
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_
 	li t4, 1368
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_  cond_
+	# ICMPcond_ cond_tmp_  
 
 	# fetch variables
 
@@ -307,16 +301,16 @@ whileCond_35:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_
 	li t4, 1360
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_ whileBody_35 next_61
+	# condBr cond_ whileBody_58 next_108
 
 	# fetch variables
 
@@ -324,16 +318,14 @@ whileCond_35:
 	li t4, 1360
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_61
-	j whileBody_35
-whileBody_35:
+	beqz t1, next_108
+	j whileBody_58
+whileBody_58:
 
-	# lv$2 
+	# store lv$2 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$2 
 
 	# get address of lv$2 points to
 	li t4, 1456
@@ -354,7 +346,7 @@ whileBody_35:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_ a$4 
+	# ADDresult_ a$4  
 
 	# fetch variables
 
@@ -370,7 +362,7 @@ whileBody_35:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_
+	# store lv$2 result_
 
 	# fetch variables
 
@@ -378,8 +370,6 @@ whileBody_35:
 	li t4, 1344
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_
 
 	# get address of lv$2 points to
 	li t4, 1456
@@ -400,7 +390,7 @@ whileBody_35:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp a$5  cond_normalize_
+	# ICMPcond_normalize_ a$5  
 
 	# fetch variables
 
@@ -409,16 +399,16 @@ whileBody_35:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_
 	li t4, 1328
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_ ifTrue_26 next_62
+	# condBr cond_normalize_ ifTrue_50 next_109
 
 	# fetch variables
 
@@ -426,9 +416,9 @@ whileBody_35:
 	li t4, 1328
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_62
-	j ifTrue_26
-next_61:
+	beqz t1, next_109
+	j ifTrue_50
+next_108:
 
 	# load a$6 lv
 
@@ -506,12 +496,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# c 
+	# store c 
 
 	# fetch variables
 	li t1, 1
-
-	# store c 
 
 	# get address of c points to
 	li t4, 1312
@@ -561,12 +549,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp 
+	# store inp 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp 
 
 	# get address of inp points to
 	li t4, 1296
@@ -616,12 +602,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$1 
+	# store inp$1 
 
 	# fetch variables
 	li t1, 9
-
-	# store inp$1 
 
 	# get address of inp$1 points to
 	li t4, 1280
@@ -671,12 +655,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$2 
+	# store inp$2 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$2 
 
 	# get address of inp$2 points to
 	li t4, 1264
@@ -726,12 +708,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$3 
+	# store inp$3 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$3 
 
 	# get address of inp$3 points to
 	li t4, 1248
@@ -781,12 +761,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$4 
+	# store inp$4 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$4 
 
 	# get address of inp$4 points to
 	li t4, 1232
@@ -836,12 +814,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$5 
+	# store inp$5 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$5 
 
 	# get address of inp$5 points to
 	li t4, 1216
@@ -891,12 +867,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$6 
+	# store inp$6 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$6 
 
 	# get address of inp$6 points to
 	li t4, 1200
@@ -946,12 +920,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$7 
+	# store inp$7 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$7 
 
 	# get address of inp$7 points to
 	li t4, 1184
@@ -1001,12 +973,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$8 
+	# store inp$8 
 
 	# fetch variables
 	li t1, 8
-
-	# store inp$8 
 
 	# get address of inp$8 points to
 	li t4, 1168
@@ -1056,12 +1026,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$9 
+	# store inp$9 
 
 	# fetch variables
 	li t1, 3
-
-	# store inp$9 
 
 	# get address of inp$9 points to
 	li t4, 1152
@@ -1111,12 +1079,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$10 
+	# store inp$10 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$10 
 
 	# get address of inp$10 points to
 	li t4, 1136
@@ -1166,12 +1132,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$11 
+	# store inp$11 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$11 
 
 	# get address of inp$11 points to
 	li t4, 1120
@@ -1221,12 +1185,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$12 
+	# store inp$12 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$12 
 
 	# get address of inp$12 points to
 	li t4, 1104
@@ -1276,12 +1238,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$13 
+	# store inp$13 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$13 
 
 	# get address of inp$13 points to
 	li t4, 1088
@@ -1331,12 +1291,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$14 
+	# store inp$14 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$14 
 
 	# get address of inp$14 points to
 	li t4, 1072
@@ -1386,12 +1344,10 @@ next_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# inp$15 
+	# store inp$15 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$15 
 
 	# get address of inp$15 points to
 	li t4, 1056
@@ -1399,12 +1355,10 @@ next_61:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$4 
+	# store lv$4 
 
 	# fetch variables
 	li t1, 2
-
-	# store lv$4 
 
 	# get address of lv$4 points to
 	li t4, 1608
@@ -1442,7 +1396,7 @@ next_61:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$2  cond_normalize_$1
+	# ICMPcond_normalize_$1 c$2  
 
 	# fetch variables
 
@@ -1451,16 +1405,16 @@ next_61:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$1
 	li t4, 1032
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$1 ifTrue_27 next_63
+	# condBr cond_normalize_$1 ifTrue_51 next_110
 
 	# fetch variables
 
@@ -1468,20 +1422,20 @@ next_61:
 	li t4, 1032
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_63
-	j ifTrue_27
-ifTrue_26:
+	beqz t1, next_110
+	j ifTrue_51
+ifTrue_50:
 
-	# br next_61
-	j next_61
+	# br next_108
+	j next_108
 
-	# br next_62
-	j next_62
-next_62:
+	# br next_109
+	j next_109
+next_109:
 
-	# br whileCond_35
-	j whileCond_35
-ifTrue_27:
+	# br whileCond_58
+	j whileCond_58
+ifTrue_51:
 
 	# gep ptr_$16 
 
@@ -1540,12 +1494,10 @@ ifTrue_27:
 	# get address of local var:inp$16
 	sd t0, 1008(sp)
 
-	# inp$16 
+	# store inp$16 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$16 
 
 	# get address of inp$16 points to
 	ld t3, 1008(sp)
@@ -1604,12 +1556,10 @@ ifTrue_27:
 	# get address of local var:inp$17
 	sd t0, 984(sp)
 
-	# inp$17 
+	# store inp$17 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$17 
 
 	# get address of inp$17 points to
 	ld t3, 984(sp)
@@ -1668,12 +1618,10 @@ ifTrue_27:
 	# get address of local var:inp$18
 	sd t0, 960(sp)
 
-	# inp$18 
+	# store inp$18 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$18 
 
 	# get address of inp$18 points to
 	ld t3, 960(sp)
@@ -1732,12 +1680,10 @@ ifTrue_27:
 	# get address of local var:inp$19
 	sd t0, 936(sp)
 
-	# inp$19 
+	# store inp$19 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$19 
 
 	# get address of inp$19 points to
 	ld t3, 936(sp)
@@ -1796,12 +1742,10 @@ ifTrue_27:
 	# get address of local var:inp$20
 	sd t0, 912(sp)
 
-	# inp$20 
+	# store inp$20 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$20 
 
 	# get address of inp$20 points to
 	ld t3, 912(sp)
@@ -1860,12 +1804,10 @@ ifTrue_27:
 	# get address of local var:inp$21
 	sd t0, 888(sp)
 
-	# inp$21 
+	# store inp$21 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$21 
 
 	# get address of inp$21 points to
 	ld t3, 888(sp)
@@ -1924,12 +1866,10 @@ ifTrue_27:
 	# get address of local var:inp$22
 	sd t0, 864(sp)
 
-	# inp$22 
+	# store inp$22 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$22 
 
 	# get address of inp$22 points to
 	ld t3, 864(sp)
@@ -1988,12 +1928,10 @@ ifTrue_27:
 	# get address of local var:inp$23
 	sd t0, 840(sp)
 
-	# inp$23 
+	# store inp$23 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$23 
 
 	# get address of inp$23 points to
 	ld t3, 840(sp)
@@ -2052,12 +1990,10 @@ ifTrue_27:
 	# get address of local var:inp$24
 	sd t0, 816(sp)
 
-	# inp$24 
+	# store inp$24 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$24 
 
 	# get address of inp$24 points to
 	ld t3, 816(sp)
@@ -2116,12 +2052,10 @@ ifTrue_27:
 	# get address of local var:inp$25
 	sd t0, 792(sp)
 
-	# inp$25 
+	# store inp$25 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$25 
 
 	# get address of inp$25 points to
 	ld t3, 792(sp)
@@ -2180,12 +2114,10 @@ ifTrue_27:
 	# get address of local var:inp$26
 	sd t0, 768(sp)
 
-	# inp$26 
+	# store inp$26 
 
 	# fetch variables
 	li t1, 2
-
-	# store inp$26 
 
 	# get address of inp$26 points to
 	ld t3, 768(sp)
@@ -2244,12 +2176,10 @@ ifTrue_27:
 	# get address of local var:inp$27
 	sd t0, 744(sp)
 
-	# inp$27 
+	# store inp$27 
 
 	# fetch variables
 	li t1, 1
-
-	# store inp$27 
 
 	# get address of inp$27 points to
 	ld t3, 744(sp)
@@ -2308,12 +2238,10 @@ ifTrue_27:
 	# get address of local var:inp$28
 	sd t0, 720(sp)
 
-	# inp$28 
+	# store inp$28 
 
 	# fetch variables
 	li t1, 8
-
-	# store inp$28 
 
 	# get address of inp$28 points to
 	ld t3, 720(sp)
@@ -2372,12 +2300,10 @@ ifTrue_27:
 	# get address of local var:inp$29
 	sd t0, 696(sp)
 
-	# inp$29 
+	# store inp$29 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$29 
 
 	# get address of inp$29 points to
 	ld t3, 696(sp)
@@ -2436,12 +2362,10 @@ ifTrue_27:
 	# get address of local var:inp$30
 	sd t0, 672(sp)
 
-	# inp$30 
+	# store inp$30 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$30 
 
 	# get address of inp$30 points to
 	ld t3, 672(sp)
@@ -2500,12 +2424,10 @@ ifTrue_27:
 	# get address of local var:inp$31
 	sd t0, 648(sp)
 
-	# inp$31 
+	# store inp$31 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$31 
 
 	# get address of inp$31 points to
 	ld t3, 648(sp)
@@ -2564,12 +2486,10 @@ ifTrue_27:
 	# get address of local var:inp$32
 	sd t0, 624(sp)
 
-	# inp$32 
+	# store inp$32 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$32 
 
 	# get address of inp$32 points to
 	ld t3, 624(sp)
@@ -2628,12 +2548,10 @@ ifTrue_27:
 	# get address of local var:inp$33
 	sd t0, 600(sp)
 
-	# inp$33 
+	# store inp$33 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$33 
 
 	# get address of inp$33 points to
 	ld t3, 600(sp)
@@ -2692,12 +2610,10 @@ ifTrue_27:
 	# get address of local var:inp$34
 	sd t0, 576(sp)
 
-	# inp$34 
+	# store inp$34 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$34 
 
 	# get address of inp$34 points to
 	ld t3, 576(sp)
@@ -2756,12 +2672,10 @@ ifTrue_27:
 	# get address of local var:inp$35
 	sd t0, 552(sp)
 
-	# inp$35 
+	# store inp$35 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$35 
 
 	# get address of inp$35 points to
 	ld t3, 552(sp)
@@ -2820,12 +2734,10 @@ ifTrue_27:
 	# get address of local var:inp$36
 	sd t0, 528(sp)
 
-	# inp$36 
+	# store inp$36 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$36 
 
 	# get address of inp$36 points to
 	ld t3, 528(sp)
@@ -2884,12 +2796,10 @@ ifTrue_27:
 	# get address of local var:inp$37
 	sd t0, 504(sp)
 
-	# inp$37 
+	# store inp$37 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$37 
 
 	# get address of inp$37 points to
 	ld t3, 504(sp)
@@ -2948,12 +2858,10 @@ ifTrue_27:
 	# get address of local var:inp$38
 	sd t0, 480(sp)
 
-	# inp$38 
+	# store inp$38 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$38 
 
 	# get address of inp$38 points to
 	ld t3, 480(sp)
@@ -3012,12 +2920,10 @@ ifTrue_27:
 	# get address of local var:inp$39
 	sd t0, 456(sp)
 
-	# inp$39 
+	# store inp$39 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$39 
 
 	# get address of inp$39 points to
 	ld t3, 456(sp)
@@ -3076,12 +2982,10 @@ ifTrue_27:
 	# get address of local var:inp$40
 	sd t0, 432(sp)
 
-	# inp$40 
+	# store inp$40 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$40 
 
 	# get address of inp$40 points to
 	ld t3, 432(sp)
@@ -3140,12 +3044,10 @@ ifTrue_27:
 	# get address of local var:inp$41
 	sd t0, 408(sp)
 
-	# inp$41 
+	# store inp$41 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$41 
 
 	# get address of inp$41 points to
 	ld t3, 408(sp)
@@ -3204,12 +3106,10 @@ ifTrue_27:
 	# get address of local var:inp$42
 	sd t0, 384(sp)
 
-	# inp$42 
+	# store inp$42 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$42 
 
 	# get address of inp$42 points to
 	ld t3, 384(sp)
@@ -3268,12 +3168,10 @@ ifTrue_27:
 	# get address of local var:inp$43
 	sd t0, 360(sp)
 
-	# inp$43 
+	# store inp$43 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$43 
 
 	# get address of inp$43 points to
 	ld t3, 360(sp)
@@ -3332,12 +3230,10 @@ ifTrue_27:
 	# get address of local var:inp$44
 	sd t0, 336(sp)
 
-	# inp$44 
+	# store inp$44 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$44 
 
 	# get address of inp$44 points to
 	ld t3, 336(sp)
@@ -3396,12 +3292,10 @@ ifTrue_27:
 	# get address of local var:inp$45
 	sd t0, 312(sp)
 
-	# inp$45 
+	# store inp$45 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$45 
 
 	# get address of inp$45 points to
 	ld t3, 312(sp)
@@ -3460,12 +3354,10 @@ ifTrue_27:
 	# get address of local var:inp$46
 	sd t0, 288(sp)
 
-	# inp$46 
+	# store inp$46 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$46 
 
 	# get address of inp$46 points to
 	ld t3, 288(sp)
@@ -3524,12 +3416,10 @@ ifTrue_27:
 	# get address of local var:inp$47
 	sd t0, 264(sp)
 
-	# inp$47 
+	# store inp$47 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$47 
 
 	# get address of inp$47 points to
 	ld t3, 264(sp)
@@ -3588,12 +3478,10 @@ ifTrue_27:
 	# get address of local var:inp$48
 	sd t0, 240(sp)
 
-	# inp$48 
+	# store inp$48 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$48 
 
 	# get address of inp$48 points to
 	ld t3, 240(sp)
@@ -3652,12 +3540,10 @@ ifTrue_27:
 	# get address of local var:inp$49
 	sd t0, 216(sp)
 
-	# inp$49 
+	# store inp$49 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$49 
 
 	# get address of inp$49 points to
 	ld t3, 216(sp)
@@ -3716,12 +3602,10 @@ ifTrue_27:
 	# get address of local var:inp$50
 	sd t0, 192(sp)
 
-	# inp$50 
+	# store inp$50 
 
 	# fetch variables
 	li t1, 0
-
-	# store inp$50 
 
 	# get address of inp$50 points to
 	ld t3, 192(sp)
@@ -4021,9 +3905,9 @@ ifTrue_27:
 	# release params
 	addi sp, sp, 0
 
-	# br next_63
-	j next_63
-next_63:
+	# br next_110
+	j next_110
+next_110:
 
 	# prepare params
 

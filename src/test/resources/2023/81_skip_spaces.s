@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry89:
+mainEntry53:
 
 	# reserve space
 	li t4, 984
@@ -34,31 +34,27 @@ mainEntry89:
 	# get address of local var:lv
 	sd t0, 944(sp)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# lv$2 
+	# store lv$2 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$2 
 
 	# get address of lv$2 points to
 	ld t3, 976(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_254
-	j whileCond_254
-whileCond_254:
+	# br whileCond_192
+	j whileCond_192
+whileCond_192:
 
 	# prepare params
 	addi sp, sp, 0
@@ -80,29 +76,29 @@ whileCond_254:
 	# get address of local var:getint
 	sd a0, 136(sp)
 
-	# cmp getint  cond_normalize_
+	# ICMPcond_normalize_ getint  
 
 	# fetch variables
 
 	# get address of local var:getint
 	ld t1, 136(sp)
 	li t2, 0
-
-	# get address of local var:cond_normalize_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_normalize_
 	sd t0, 128(sp)
 
-	# condBr cond_normalize_ whileBody_254 next_609
+	# condBr cond_normalize_ whileBody_192 next_460
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 128(sp)
-	beqz t1, next_609
-	j whileBody_254
-whileBody_254:
+	beqz t1, next_460
+	j whileBody_192
+whileBody_192:
 
 	# load i lv$1
 
@@ -152,14 +148,12 @@ whileBody_254:
 	# get address of local var:getint$1
 	sd a0, 104(sp)
 
-	# arr getint$1
+	# store arr getint$1
 
 	# fetch variables
 
 	# get address of local var:getint$1
 	ld t1, 104(sp)
-
-	# store arr getint$1
 
 	# get address of arr points to
 	ld t3, 112(sp)
@@ -174,7 +168,7 @@ whileBody_254:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# ADDresult_ i$1 
+	# ADDresult_ i$1  
 
 	# fetch variables
 
@@ -186,26 +180,24 @@ whileBody_254:
 	# get address of local var:result_
 	sd t0, 88(sp)
 
-	# lv$1 result_
+	# store lv$1 result_
 
 	# fetch variables
 
 	# get address of local var:result_
 	ld t1, 88(sp)
 
-	# store lv$1 result_
-
 	# get address of lv$1 points to
 	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_254
-	j whileCond_254
-next_609:
+	# br whileCond_192
+	j whileCond_192
+next_460:
 
-	# br whileCond_255
-	j whileCond_255
-whileCond_255:
+	# br whileCond_193
+	j whileCond_193
+whileCond_193:
 
 	# load i$2 lv$1
 
@@ -216,29 +208,29 @@ whileCond_255:
 	ld t0, 0(t3)
 	sd t0, 80(sp)
 
-	# cmp i$2  cond_normalize_$1
+	# ICMPcond_normalize_$1 i$2  
 
 	# fetch variables
 
 	# get address of local var:i$2
 	ld t1, 80(sp)
 	li t2, 0
-
-	# get address of local var:cond_normalize_$1
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_normalize_$1
 	sd t0, 72(sp)
 
-	# condBr cond_normalize_$1 whileBody_255 next_610
+	# condBr cond_normalize_$1 whileBody_193 next_461
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$1
 	ld t1, 72(sp)
-	beqz t1, next_610
-	j whileBody_255
-whileBody_255:
+	beqz t1, next_461
+	j whileBody_193
+whileBody_193:
 
 	# load i$3 lv$1
 
@@ -249,7 +241,7 @@ whileBody_255:
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# SUBresult_$1 i$3 
+	# SUBresult_$1 i$3  
 
 	# fetch variables
 
@@ -261,14 +253,12 @@ whileBody_255:
 	# get address of local var:result_$1
 	sd t0, 56(sp)
 
-	# lv$1 result_$1
+	# store lv$1 result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
 	ld t1, 56(sp)
-
-	# store lv$1 result_$1
 
 	# get address of lv$1 points to
 	ld t3, 960(sp)
@@ -320,7 +310,7 @@ whileBody_255:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_$2 sum arr$2
+	# ADDresult_$2 sum arr$2 
 
 	# fetch variables
 
@@ -334,22 +324,20 @@ whileBody_255:
 	# get address of local var:result_$2
 	sd t0, 16(sp)
 
-	# lv$2 result_$2
+	# store lv$2 result_$2
 
 	# fetch variables
 
 	# get address of local var:result_$2
 	ld t1, 16(sp)
 
-	# store lv$2 result_$2
-
 	# get address of lv$2 points to
 	ld t3, 976(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_255
-	j whileCond_255
-next_610:
+	# br whileCond_193
+	j whileCond_193
+next_461:
 
 	# load sum$1 lv$2
 
@@ -360,16 +348,16 @@ next_610:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# mod result_$3 sum$1 
+	# MODresult_$3 sum$1  
 
 	# fetch variables
 
 	# get address of local var:sum$1
 	ld t1, 8(sp)
 	li t2, 79
+	rem t0, t1, t2
 
 	# get address of local var:result_$3
-	rem t0, t1, t2
 	sd t0, 0(sp)
 
 	# ret result_$3

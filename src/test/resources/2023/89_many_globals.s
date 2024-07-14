@@ -218,105 +218,89 @@ testParam8Entry:
 	# get address of local var:lv
 	sd t0, 128(sp)
 
-	# lv 0
+	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
 	ld t1, 304(sp)
 
-	# store lv 0
-
 	# get address of lv points to
 	ld t3, 128(sp)
 	sd t1, 0(t3)
 
-	# lv$1 1
+	# store lv$1 1
 
 	# fetch variables
 
 	# get address of local var:1
 	ld t1, 296(sp)
 
-	# store lv$1 1
-
 	# get address of lv$1 points to
 	ld t3, 144(sp)
 	sd t1, 0(t3)
 
-	# lv$2 2
+	# store lv$2 2
 
 	# fetch variables
 
 	# get address of local var:2
 	ld t1, 288(sp)
 
-	# store lv$2 2
-
 	# get address of lv$2 points to
 	ld t3, 160(sp)
 	sd t1, 0(t3)
 
-	# lv$3 3
+	# store lv$3 3
 
 	# fetch variables
 
 	# get address of local var:3
 	ld t1, 280(sp)
 
-	# store lv$3 3
-
 	# get address of lv$3 points to
 	ld t3, 176(sp)
 	sd t1, 0(t3)
 
-	# lv$4 4
+	# store lv$4 4
 
 	# fetch variables
 
 	# get address of local var:4
 	ld t1, 272(sp)
 
-	# store lv$4 4
-
 	# get address of lv$4 points to
 	ld t3, 192(sp)
 	sd t1, 0(t3)
 
-	# lv$5 5
+	# store lv$5 5
 
 	# fetch variables
 
 	# get address of local var:5
 	ld t1, 264(sp)
 
-	# store lv$5 5
-
 	# get address of lv$5 points to
 	ld t3, 208(sp)
 	sd t1, 0(t3)
 
-	# lv$6 6
+	# store lv$6 6
 
 	# fetch variables
 
 	# get address of local var:6
 	ld t1, 256(sp)
 
-	# store lv$6 6
-
 	# get address of lv$6 points to
 	ld t3, 224(sp)
 	sd t1, 0(t3)
 
-	# lv$7 7
+	# store lv$7 7
 
 	# fetch variables
 
 	# get address of local var:7
 	ld t1, 248(sp)
-
-	# store lv$7 7
 
 	# get address of lv$7 points to
 	ld t3, 240(sp)
@@ -340,7 +324,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# ADDresult_ a0 a1
+	# ADDresult_ a0 a1 
 
 	# fetch variables
 
@@ -363,7 +347,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# ADDresult_$1 result_ a2
+	# ADDresult_$1 result_ a2 
 
 	# fetch variables
 
@@ -386,7 +370,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# ADDresult_$2 result_$1 a3
+	# ADDresult_$2 result_$1 a3 
 
 	# fetch variables
 
@@ -409,7 +393,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# ADDresult_$3 result_$2 a4
+	# ADDresult_$3 result_$2 a4 
 
 	# fetch variables
 
@@ -432,7 +416,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# ADDresult_$4 result_$3 a5
+	# ADDresult_$4 result_$3 a5 
 
 	# fetch variables
 
@@ -455,7 +439,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_$5 result_$4 a6
+	# ADDresult_$5 result_$4 a6 
 
 	# fetch variables
 
@@ -478,7 +462,7 @@ testParam8Entry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$6 result_$5 a7
+	# ADDresult_$6 result_$5 a7 
 
 	# fetch variables
 
@@ -673,209 +657,177 @@ testParam16Entry:
 	# get address of local var:lv
 	sd t0, 256(sp)
 
-	# lv 0
+	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
 	ld t1, 624(sp)
 
-	# store lv 0
-
 	# get address of lv points to
 	ld t3, 256(sp)
 	sd t1, 0(t3)
 
-	# lv$1 1
+	# store lv$1 1
 
 	# fetch variables
 
 	# get address of local var:1
 	ld t1, 616(sp)
 
-	# store lv$1 1
-
 	# get address of lv$1 points to
 	ld t3, 272(sp)
 	sd t1, 0(t3)
 
-	# lv$2 2
+	# store lv$2 2
 
 	# fetch variables
 
 	# get address of local var:2
 	ld t1, 608(sp)
 
-	# store lv$2 2
-
 	# get address of lv$2 points to
 	ld t3, 288(sp)
 	sd t1, 0(t3)
 
-	# lv$3 3
+	# store lv$3 3
 
 	# fetch variables
 
 	# get address of local var:3
 	ld t1, 600(sp)
 
-	# store lv$3 3
-
 	# get address of lv$3 points to
 	ld t3, 304(sp)
 	sd t1, 0(t3)
 
-	# lv$4 4
+	# store lv$4 4
 
 	# fetch variables
 
 	# get address of local var:4
 	ld t1, 592(sp)
 
-	# store lv$4 4
-
 	# get address of lv$4 points to
 	ld t3, 320(sp)
 	sd t1, 0(t3)
 
-	# lv$5 5
+	# store lv$5 5
 
 	# fetch variables
 
 	# get address of local var:5
 	ld t1, 584(sp)
 
-	# store lv$5 5
-
 	# get address of lv$5 points to
 	ld t3, 336(sp)
 	sd t1, 0(t3)
 
-	# lv$6 6
+	# store lv$6 6
 
 	# fetch variables
 
 	# get address of local var:6
 	ld t1, 576(sp)
 
-	# store lv$6 6
-
 	# get address of lv$6 points to
 	ld t3, 352(sp)
 	sd t1, 0(t3)
 
-	# lv$7 7
+	# store lv$7 7
 
 	# fetch variables
 
 	# get address of local var:7
 	ld t1, 568(sp)
 
-	# store lv$7 7
-
 	# get address of lv$7 points to
 	ld t3, 368(sp)
 	sd t1, 0(t3)
 
-	# lv$8 8
+	# store lv$8 8
 
 	# fetch variables
 
 	# get address of local var:8
 	ld t1, 560(sp)
 
-	# store lv$8 8
-
 	# get address of lv$8 points to
 	ld t3, 384(sp)
 	sd t1, 0(t3)
 
-	# lv$9 9
+	# store lv$9 9
 
 	# fetch variables
 
 	# get address of local var:9
 	ld t1, 552(sp)
 
-	# store lv$9 9
-
 	# get address of lv$9 points to
 	ld t3, 400(sp)
 	sd t1, 0(t3)
 
-	# lv$10 10
+	# store lv$10 10
 
 	# fetch variables
 
 	# get address of local var:10
 	ld t1, 544(sp)
 
-	# store lv$10 10
-
 	# get address of lv$10 points to
 	ld t3, 416(sp)
 	sd t1, 0(t3)
 
-	# lv$11 11
+	# store lv$11 11
 
 	# fetch variables
 
 	# get address of local var:11
 	ld t1, 536(sp)
 
-	# store lv$11 11
-
 	# get address of lv$11 points to
 	ld t3, 432(sp)
 	sd t1, 0(t3)
 
-	# lv$12 12
+	# store lv$12 12
 
 	# fetch variables
 
 	# get address of local var:12
 	ld t1, 528(sp)
 
-	# store lv$12 12
-
 	# get address of lv$12 points to
 	ld t3, 448(sp)
 	sd t1, 0(t3)
 
-	# lv$13 13
+	# store lv$13 13
 
 	# fetch variables
 
 	# get address of local var:13
 	ld t1, 520(sp)
 
-	# store lv$13 13
-
 	# get address of lv$13 points to
 	ld t3, 464(sp)
 	sd t1, 0(t3)
 
-	# lv$14 14
+	# store lv$14 14
 
 	# fetch variables
 
 	# get address of local var:14
 	ld t1, 512(sp)
 
-	# store lv$14 14
-
 	# get address of lv$14 points to
 	ld t3, 480(sp)
 	sd t1, 0(t3)
 
-	# lv$15 15
+	# store lv$15 15
 
 	# fetch variables
 
 	# get address of local var:15
 	ld t1, 504(sp)
-
-	# store lv$15 15
 
 	# get address of lv$15 points to
 	ld t3, 496(sp)
@@ -899,7 +851,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# ADDresult_ a0 a1
+	# ADDresult_ a0 a1 
 
 	# fetch variables
 
@@ -922,7 +874,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 216(sp)
 
-	# ADDresult_$1 result_ a2
+	# ADDresult_$1 result_ a2 
 
 	# fetch variables
 
@@ -945,7 +897,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# SUBresult_$2 result_$1 a3
+	# SUBresult_$2 result_$1 a3 
 
 	# fetch variables
 
@@ -968,7 +920,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# SUBresult_$3 result_$2 a4
+	# SUBresult_$3 result_$2 a4 
 
 	# fetch variables
 
@@ -991,7 +943,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# SUBresult_$4 result_$3 a5
+	# SUBresult_$4 result_$3 a5 
 
 	# fetch variables
 
@@ -1014,7 +966,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# SUBresult_$5 result_$4 a6
+	# SUBresult_$5 result_$4 a6 
 
 	# fetch variables
 
@@ -1037,7 +989,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# SUBresult_$6 result_$5 a7
+	# SUBresult_$6 result_$5 a7 
 
 	# fetch variables
 
@@ -1060,7 +1012,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# ADDresult_$7 result_$6 a8
+	# ADDresult_$7 result_$6 a8 
 
 	# fetch variables
 
@@ -1083,7 +1035,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# ADDresult_$8 result_$7 a9
+	# ADDresult_$8 result_$7 a9 
 
 	# fetch variables
 
@@ -1106,7 +1058,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# ADDresult_$9 result_$8 a10
+	# ADDresult_$9 result_$8 a10 
 
 	# fetch variables
 
@@ -1129,7 +1081,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# ADDresult_$10 result_$9 a11
+	# ADDresult_$10 result_$9 a11 
 
 	# fetch variables
 
@@ -1152,7 +1104,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# ADDresult_$11 result_$10 a12
+	# ADDresult_$11 result_$10 a12 
 
 	# fetch variables
 
@@ -1175,7 +1127,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# ADDresult_$12 result_$11 a13
+	# ADDresult_$12 result_$11 a13 
 
 	# fetch variables
 
@@ -1198,7 +1150,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_$13 result_$12 a14
+	# ADDresult_$13 result_$12 a14 
 
 	# fetch variables
 
@@ -1221,7 +1173,7 @@ testParam16Entry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$14 result_$13 a15
+	# ADDresult_$14 result_$13 a15 
 
 	# fetch variables
 
@@ -1670,7 +1622,7 @@ testParam32Entry:
 	# get address of local var:lv
 	sd t0, 512(sp)
 
-	# lv 0
+	# store lv 0
 
 	# fetch variables
 
@@ -1679,13 +1631,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv 0
-
 	# get address of lv points to
 	ld t3, 512(sp)
 	sd t1, 0(t3)
 
-	# lv$1 1
+	# store lv$1 1
 
 	# fetch variables
 
@@ -1694,13 +1644,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 1
-
 	# get address of lv$1 points to
 	ld t3, 528(sp)
 	sd t1, 0(t3)
 
-	# lv$2 2
+	# store lv$2 2
 
 	# fetch variables
 
@@ -1709,13 +1657,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 2
-
 	# get address of lv$2 points to
 	ld t3, 544(sp)
 	sd t1, 0(t3)
 
-	# lv$3 3
+	# store lv$3 3
 
 	# fetch variables
 
@@ -1724,13 +1670,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 3
-
 	# get address of lv$3 points to
 	ld t3, 560(sp)
 	sd t1, 0(t3)
 
-	# lv$4 4
+	# store lv$4 4
 
 	# fetch variables
 
@@ -1739,13 +1683,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$4 4
-
 	# get address of lv$4 points to
 	ld t3, 576(sp)
 	sd t1, 0(t3)
 
-	# lv$5 5
+	# store lv$5 5
 
 	# fetch variables
 
@@ -1754,13 +1696,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$5 5
-
 	# get address of lv$5 points to
 	ld t3, 592(sp)
 	sd t1, 0(t3)
 
-	# lv$6 6
+	# store lv$6 6
 
 	# fetch variables
 
@@ -1769,13 +1709,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$6 6
-
 	# get address of lv$6 points to
 	ld t3, 608(sp)
 	sd t1, 0(t3)
 
-	# lv$7 7
+	# store lv$7 7
 
 	# fetch variables
 
@@ -1784,13 +1722,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$7 7
-
 	# get address of lv$7 points to
 	ld t3, 624(sp)
 	sd t1, 0(t3)
 
-	# lv$8 8
+	# store lv$8 8
 
 	# fetch variables
 
@@ -1799,13 +1735,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$8 8
-
 	# get address of lv$8 points to
 	ld t3, 640(sp)
 	sd t1, 0(t3)
 
-	# lv$9 9
+	# store lv$9 9
 
 	# fetch variables
 
@@ -1814,13 +1748,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$9 9
-
 	# get address of lv$9 points to
 	ld t3, 656(sp)
 	sd t1, 0(t3)
 
-	# lv$10 10
+	# store lv$10 10
 
 	# fetch variables
 
@@ -1829,13 +1761,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$10 10
-
 	# get address of lv$10 points to
 	ld t3, 672(sp)
 	sd t1, 0(t3)
 
-	# lv$11 11
+	# store lv$11 11
 
 	# fetch variables
 
@@ -1844,13 +1774,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$11 11
-
 	# get address of lv$11 points to
 	ld t3, 688(sp)
 	sd t1, 0(t3)
 
-	# lv$12 12
+	# store lv$12 12
 
 	# fetch variables
 
@@ -1859,13 +1787,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$12 12
-
 	# get address of lv$12 points to
 	ld t3, 704(sp)
 	sd t1, 0(t3)
 
-	# lv$13 13
+	# store lv$13 13
 
 	# fetch variables
 
@@ -1874,13 +1800,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$13 13
-
 	# get address of lv$13 points to
 	ld t3, 720(sp)
 	sd t1, 0(t3)
 
-	# lv$14 14
+	# store lv$14 14
 
 	# fetch variables
 
@@ -1889,13 +1813,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$14 14
-
 	# get address of lv$14 points to
 	ld t3, 736(sp)
 	sd t1, 0(t3)
 
-	# lv$15 15
+	# store lv$15 15
 
 	# fetch variables
 
@@ -1904,13 +1826,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$15 15
-
 	# get address of lv$15 points to
 	ld t3, 752(sp)
 	sd t1, 0(t3)
 
-	# lv$16 16
+	# store lv$16 16
 
 	# fetch variables
 
@@ -1919,13 +1839,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$16 16
-
 	# get address of lv$16 points to
 	ld t3, 768(sp)
 	sd t1, 0(t3)
 
-	# lv$17 17
+	# store lv$17 17
 
 	# fetch variables
 
@@ -1934,13 +1852,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$17 17
-
 	# get address of lv$17 points to
 	ld t3, 784(sp)
 	sd t1, 0(t3)
 
-	# lv$18 18
+	# store lv$18 18
 
 	# fetch variables
 
@@ -1949,13 +1865,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$18 18
-
 	# get address of lv$18 points to
 	ld t3, 800(sp)
 	sd t1, 0(t3)
 
-	# lv$19 19
+	# store lv$19 19
 
 	# fetch variables
 
@@ -1964,13 +1878,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$19 19
-
 	# get address of lv$19 points to
 	ld t3, 816(sp)
 	sd t1, 0(t3)
 
-	# lv$20 20
+	# store lv$20 20
 
 	# fetch variables
 
@@ -1979,13 +1891,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$20 20
-
 	# get address of lv$20 points to
 	ld t3, 832(sp)
 	sd t1, 0(t3)
 
-	# lv$21 21
+	# store lv$21 21
 
 	# fetch variables
 
@@ -1994,13 +1904,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$21 21
-
 	# get address of lv$21 points to
 	ld t3, 848(sp)
 	sd t1, 0(t3)
 
-	# lv$22 22
+	# store lv$22 22
 
 	# fetch variables
 
@@ -2009,13 +1917,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$22 22
-
 	# get address of lv$22 points to
 	ld t3, 864(sp)
 	sd t1, 0(t3)
 
-	# lv$23 23
+	# store lv$23 23
 
 	# fetch variables
 
@@ -2024,13 +1930,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$23 23
-
 	# get address of lv$23 points to
 	ld t3, 880(sp)
 	sd t1, 0(t3)
 
-	# lv$24 24
+	# store lv$24 24
 
 	# fetch variables
 
@@ -2039,13 +1943,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$24 24
-
 	# get address of lv$24 points to
 	ld t3, 896(sp)
 	sd t1, 0(t3)
 
-	# lv$25 25
+	# store lv$25 25
 
 	# fetch variables
 
@@ -2054,13 +1956,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$25 25
-
 	# get address of lv$25 points to
 	ld t3, 912(sp)
 	sd t1, 0(t3)
 
-	# lv$26 26
+	# store lv$26 26
 
 	# fetch variables
 
@@ -2069,13 +1969,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$26 26
-
 	# get address of lv$26 points to
 	ld t3, 928(sp)
 	sd t1, 0(t3)
 
-	# lv$27 27
+	# store lv$27 27
 
 	# fetch variables
 
@@ -2084,13 +1982,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$27 27
-
 	# get address of lv$27 points to
 	ld t3, 944(sp)
 	sd t1, 0(t3)
 
-	# lv$28 28
+	# store lv$28 28
 
 	# fetch variables
 
@@ -2099,13 +1995,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$28 28
-
 	# get address of lv$28 points to
 	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# lv$29 29
+	# store lv$29 29
 
 	# fetch variables
 
@@ -2114,13 +2008,11 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$29 29
-
 	# get address of lv$29 points to
 	ld t3, 976(sp)
 	sd t1, 0(t3)
 
-	# lv$30 30
+	# store lv$30 30
 
 	# fetch variables
 
@@ -2129,20 +2021,16 @@ testParam32Entry:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$30 30
-
 	# get address of lv$30 points to
 	ld t3, 992(sp)
 	sd t1, 0(t3)
 
-	# lv$31 31
+	# store lv$31 31
 
 	# fetch variables
 
 	# get address of local var:31
 	ld t1, 1016(sp)
-
-	# store lv$31 31
 
 	# get address of lv$31 points to
 	ld t3, 1008(sp)
@@ -2166,7 +2054,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 488(sp)
 
-	# ADDresult_ a0 a1
+	# ADDresult_ a0 a1 
 
 	# fetch variables
 
@@ -2189,7 +2077,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 472(sp)
 
-	# ADDresult_$1 result_ a2
+	# ADDresult_$1 result_ a2 
 
 	# fetch variables
 
@@ -2212,7 +2100,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 456(sp)
 
-	# ADDresult_$2 result_$1 a3
+	# ADDresult_$2 result_$1 a3 
 
 	# fetch variables
 
@@ -2235,7 +2123,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 440(sp)
 
-	# ADDresult_$3 result_$2 a4
+	# ADDresult_$3 result_$2 a4 
 
 	# fetch variables
 
@@ -2258,7 +2146,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 424(sp)
 
-	# ADDresult_$4 result_$3 a5
+	# ADDresult_$4 result_$3 a5 
 
 	# fetch variables
 
@@ -2281,7 +2169,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 408(sp)
 
-	# ADDresult_$5 result_$4 a6
+	# ADDresult_$5 result_$4 a6 
 
 	# fetch variables
 
@@ -2304,7 +2192,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 392(sp)
 
-	# ADDresult_$6 result_$5 a7
+	# ADDresult_$6 result_$5 a7 
 
 	# fetch variables
 
@@ -2327,7 +2215,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 376(sp)
 
-	# ADDresult_$7 result_$6 a8
+	# ADDresult_$7 result_$6 a8 
 
 	# fetch variables
 
@@ -2350,7 +2238,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 360(sp)
 
-	# ADDresult_$8 result_$7 a9
+	# ADDresult_$8 result_$7 a9 
 
 	# fetch variables
 
@@ -2373,7 +2261,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 344(sp)
 
-	# ADDresult_$9 result_$8 a10
+	# ADDresult_$9 result_$8 a10 
 
 	# fetch variables
 
@@ -2396,7 +2284,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 328(sp)
 
-	# ADDresult_$10 result_$9 a11
+	# ADDresult_$10 result_$9 a11 
 
 	# fetch variables
 
@@ -2419,7 +2307,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 312(sp)
 
-	# ADDresult_$11 result_$10 a12
+	# ADDresult_$11 result_$10 a12 
 
 	# fetch variables
 
@@ -2442,7 +2330,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 296(sp)
 
-	# ADDresult_$12 result_$11 a13
+	# ADDresult_$12 result_$11 a13 
 
 	# fetch variables
 
@@ -2465,7 +2353,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 280(sp)
 
-	# ADDresult_$13 result_$12 a14
+	# ADDresult_$13 result_$12 a14 
 
 	# fetch variables
 
@@ -2488,7 +2376,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 264(sp)
 
-	# ADDresult_$14 result_$13 a15
+	# ADDresult_$14 result_$13 a15 
 
 	# fetch variables
 
@@ -2511,7 +2399,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 248(sp)
 
-	# ADDresult_$15 result_$14 a16
+	# ADDresult_$15 result_$14 a16 
 
 	# fetch variables
 
@@ -2534,7 +2422,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# ADDresult_$16 result_$15 a17
+	# ADDresult_$16 result_$15 a17 
 
 	# fetch variables
 
@@ -2557,7 +2445,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 216(sp)
 
-	# SUBresult_$17 result_$16 a18
+	# SUBresult_$17 result_$16 a18 
 
 	# fetch variables
 
@@ -2580,7 +2468,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# SUBresult_$18 result_$17 a19
+	# SUBresult_$18 result_$17 a19 
 
 	# fetch variables
 
@@ -2603,7 +2491,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 184(sp)
 
-	# SUBresult_$19 result_$18 a20
+	# SUBresult_$19 result_$18 a20 
 
 	# fetch variables
 
@@ -2626,7 +2514,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# SUBresult_$20 result_$19 a21
+	# SUBresult_$20 result_$19 a21 
 
 	# fetch variables
 
@@ -2649,7 +2537,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 152(sp)
 
-	# SUBresult_$21 result_$20 a22
+	# SUBresult_$21 result_$20 a22 
 
 	# fetch variables
 
@@ -2672,7 +2560,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 136(sp)
 
-	# ADDresult_$22 result_$21 a23
+	# ADDresult_$22 result_$21 a23 
 
 	# fetch variables
 
@@ -2695,7 +2583,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# ADDresult_$23 result_$22 a24
+	# ADDresult_$23 result_$22 a24 
 
 	# fetch variables
 
@@ -2718,7 +2606,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# ADDresult_$24 result_$23 a25
+	# ADDresult_$24 result_$23 a25 
 
 	# fetch variables
 
@@ -2741,7 +2629,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# ADDresult_$25 result_$24 a26
+	# ADDresult_$25 result_$24 a26 
 
 	# fetch variables
 
@@ -2764,7 +2652,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# ADDresult_$26 result_$25 a27
+	# ADDresult_$26 result_$25 a27 
 
 	# fetch variables
 
@@ -2787,7 +2675,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# ADDresult_$27 result_$26 a28
+	# ADDresult_$27 result_$26 a28 
 
 	# fetch variables
 
@@ -2810,7 +2698,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# ADDresult_$28 result_$27 a29
+	# ADDresult_$28 result_$27 a29 
 
 	# fetch variables
 
@@ -2833,7 +2721,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_$29 result_$28 a30
+	# ADDresult_$29 result_$28 a30 
 
 	# fetch variables
 
@@ -2856,7 +2744,7 @@ testParam32Entry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$30 result_$29 a31
+	# ADDresult_$30 result_$29 a31 
 
 	# fetch variables
 
@@ -2886,7 +2774,7 @@ testParam32Entry:
 .type main, @function
 .globl main
 main:
-mainEntry99:
+mainEntry100:
 
 	# reserve space
 	li t4, 496
@@ -2894,441 +2782,361 @@ mainEntry99:
 
 	# save the parameters
 
-	# gv @
+	# store gv 
 
 	# fetch variables
 	li t1, 0
-
-	# store gv 
 
 	# get address of gv points to
 	la t3, gv
 	sd t1, 0(t3)
 
-	# gv1 @
+	# store gv1 
 
 	# fetch variables
 	li t1, 1
-
-	# store gv1 
 
 	# get address of gv1 points to
 	la t3, gv1
 	sd t1, 0(t3)
 
-	# gv2 @
+	# store gv2 
 
 	# fetch variables
 	li t1, 2
-
-	# store gv2 
 
 	# get address of gv2 points to
 	la t3, gv2
 	sd t1, 0(t3)
 
-	# gv3 @
+	# store gv3 
 
 	# fetch variables
 	li t1, 3
-
-	# store gv3 
 
 	# get address of gv3 points to
 	la t3, gv3
 	sd t1, 0(t3)
 
-	# gv4 @
+	# store gv4 
 
 	# fetch variables
 	li t1, 4
-
-	# store gv4 
 
 	# get address of gv4 points to
 	la t3, gv4
 	sd t1, 0(t3)
 
-	# gv5 @
+	# store gv5 
 
 	# fetch variables
 	li t1, 5
-
-	# store gv5 
 
 	# get address of gv5 points to
 	la t3, gv5
 	sd t1, 0(t3)
 
-	# gv6 @
+	# store gv6 
 
 	# fetch variables
 	li t1, 6
-
-	# store gv6 
 
 	# get address of gv6 points to
 	la t3, gv6
 	sd t1, 0(t3)
 
-	# gv7 @
+	# store gv7 
 
 	# fetch variables
 	li t1, 7
-
-	# store gv7 
 
 	# get address of gv7 points to
 	la t3, gv7
 	sd t1, 0(t3)
 
-	# gv8 @
+	# store gv8 
 
 	# fetch variables
 	li t1, 8
-
-	# store gv8 
 
 	# get address of gv8 points to
 	la t3, gv8
 	sd t1, 0(t3)
 
-	# gv9 @
+	# store gv9 
 
 	# fetch variables
 	li t1, 9
-
-	# store gv9 
 
 	# get address of gv9 points to
 	la t3, gv9
 	sd t1, 0(t3)
 
-	# gv10 @
+	# store gv10 
 
 	# fetch variables
 	li t1, 0
-
-	# store gv10 
 
 	# get address of gv10 points to
 	la t3, gv10
 	sd t1, 0(t3)
 
-	# gv11 @
+	# store gv11 
 
 	# fetch variables
 	li t1, 1
-
-	# store gv11 
 
 	# get address of gv11 points to
 	la t3, gv11
 	sd t1, 0(t3)
 
-	# gv12 @
+	# store gv12 
 
 	# fetch variables
 	li t1, 2
-
-	# store gv12 
 
 	# get address of gv12 points to
 	la t3, gv12
 	sd t1, 0(t3)
 
-	# gv13 @
+	# store gv13 
 
 	# fetch variables
 	li t1, 3
-
-	# store gv13 
 
 	# get address of gv13 points to
 	la t3, gv13
 	sd t1, 0(t3)
 
-	# gv14 @
+	# store gv14 
 
 	# fetch variables
 	li t1, 4
-
-	# store gv14 
 
 	# get address of gv14 points to
 	la t3, gv14
 	sd t1, 0(t3)
 
-	# gv15 @
+	# store gv15 
 
 	# fetch variables
 	li t1, 5
-
-	# store gv15 
 
 	# get address of gv15 points to
 	la t3, gv15
 	sd t1, 0(t3)
 
-	# gv16 @
+	# store gv16 
 
 	# fetch variables
 	li t1, 6
-
-	# store gv16 
 
 	# get address of gv16 points to
 	la t3, gv16
 	sd t1, 0(t3)
 
-	# gv17 @
+	# store gv17 
 
 	# fetch variables
 	li t1, 7
-
-	# store gv17 
 
 	# get address of gv17 points to
 	la t3, gv17
 	sd t1, 0(t3)
 
-	# gv18 @
+	# store gv18 
 
 	# fetch variables
 	li t1, 8
-
-	# store gv18 
 
 	# get address of gv18 points to
 	la t3, gv18
 	sd t1, 0(t3)
 
-	# gv19 @
+	# store gv19 
 
 	# fetch variables
 	li t1, 9
-
-	# store gv19 
 
 	# get address of gv19 points to
 	la t3, gv19
 	sd t1, 0(t3)
 
-	# gv20 @
+	# store gv20 
 
 	# fetch variables
 	li t1, 0
-
-	# store gv20 
 
 	# get address of gv20 points to
 	la t3, gv20
 	sd t1, 0(t3)
 
-	# gv21 @
+	# store gv21 
 
 	# fetch variables
 	li t1, 1
-
-	# store gv21 
 
 	# get address of gv21 points to
 	la t3, gv21
 	sd t1, 0(t3)
 
-	# gv22 @
+	# store gv22 
 
 	# fetch variables
 	li t1, 2
-
-	# store gv22 
 
 	# get address of gv22 points to
 	la t3, gv22
 	sd t1, 0(t3)
 
-	# gv23 @
+	# store gv23 
 
 	# fetch variables
 	li t1, 3
-
-	# store gv23 
 
 	# get address of gv23 points to
 	la t3, gv23
 	sd t1, 0(t3)
 
-	# gv24 @
+	# store gv24 
 
 	# fetch variables
 	li t1, 4
-
-	# store gv24 
 
 	# get address of gv24 points to
 	la t3, gv24
 	sd t1, 0(t3)
 
-	# gv25 @
+	# store gv25 
 
 	# fetch variables
 	li t1, 5
-
-	# store gv25 
 
 	# get address of gv25 points to
 	la t3, gv25
 	sd t1, 0(t3)
 
-	# gv26 @
+	# store gv26 
 
 	# fetch variables
 	li t1, 6
-
-	# store gv26 
 
 	# get address of gv26 points to
 	la t3, gv26
 	sd t1, 0(t3)
 
-	# gv27 @
+	# store gv27 
 
 	# fetch variables
 	li t1, 7
-
-	# store gv27 
 
 	# get address of gv27 points to
 	la t3, gv27
 	sd t1, 0(t3)
 
-	# gv28 @
+	# store gv28 
 
 	# fetch variables
 	li t1, 8
-
-	# store gv28 
 
 	# get address of gv28 points to
 	la t3, gv28
 	sd t1, 0(t3)
 
-	# gv29 @
+	# store gv29 
 
 	# fetch variables
 	li t1, 9
-
-	# store gv29 
 
 	# get address of gv29 points to
 	la t3, gv29
 	sd t1, 0(t3)
 
-	# gv30 @
+	# store gv30 
 
 	# fetch variables
 	li t1, 0
-
-	# store gv30 
 
 	# get address of gv30 points to
 	la t3, gv30
 	sd t1, 0(t3)
 
-	# gv31 @
+	# store gv31 
 
 	# fetch variables
 	li t1, 1
-
-	# store gv31 
 
 	# get address of gv31 points to
 	la t3, gv31
 	sd t1, 0(t3)
 
-	# gv32 @
+	# store gv32 
 
 	# fetch variables
 	li t1, 4
-
-	# store gv32 
 
 	# get address of gv32 points to
 	la t3, gv32
 	sd t1, 0(t3)
 
-	# gv33 @
+	# store gv33 
 
 	# fetch variables
 	li t1, 5
-
-	# store gv33 
 
 	# get address of gv33 points to
 	la t3, gv33
 	sd t1, 0(t3)
 
-	# gv34 @
+	# store gv34 
 
 	# fetch variables
 	li t1, 6
-
-	# store gv34 
 
 	# get address of gv34 points to
 	la t3, gv34
 	sd t1, 0(t3)
 
-	# gv35 @
+	# store gv35 
 
 	# fetch variables
 	li t1, 7
-
-	# store gv35 
 
 	# get address of gv35 points to
 	la t3, gv35
 	sd t1, 0(t3)
 
-	# gv36 @
+	# store gv36 
 
 	# fetch variables
 	li t1, 8
-
-	# store gv36 
 
 	# get address of gv36 points to
 	la t3, gv36
 	sd t1, 0(t3)
 
-	# gv37 @
+	# store gv37 
 
 	# fetch variables
 	li t1, 9
-
-	# store gv37 
 
 	# get address of gv37 points to
 	la t3, gv37
 	sd t1, 0(t3)
 
-	# gv38 @
+	# store gv38 
 
 	# fetch variables
 	li t1, 0
-
-	# store gv38 
 
 	# get address of gv38 points to
 	la t3, gv38
 	sd t1, 0(t3)
 
-	# gv39 @
+	# store gv39 
 
 	# fetch variables
 	li t1, 1
-
-	# store gv39 
 
 	# get address of gv39 points to
 	la t3, gv39
@@ -3474,14 +3282,12 @@ mainEntry99:
 	# get address of local var:testParam8
 	sd a0, 424(sp)
 
-	# gv @testParam8
+	# store gv testParam8
 
 	# fetch variables
 
 	# get address of local var:testParam8
 	ld t1, 424(sp)
-
-	# store gv testParam8
 
 	# get address of gv points to
 	la t3, gv
@@ -3795,14 +3601,12 @@ mainEntry99:
 	# get address of local var:testParam16
 	sd a0, 280(sp)
 
-	# gv @testParam16
+	# store gv testParam16
 
 	# fetch variables
 
 	# get address of local var:testParam16
 	ld t1, 280(sp)
-
-	# store gv testParam16
 
 	# get address of gv points to
 	la t3, gv
@@ -4388,14 +4192,12 @@ mainEntry99:
 	# get address of local var:testParam32
 	sd a0, 8(sp)
 
-	# gv @testParam32
+	# store gv testParam32
 
 	# fetch variables
 
 	# get address of local var:testParam32
 	ld t1, 8(sp)
-
-	# store gv testParam32
 
 	# get address of gv points to
 	la t3, gv

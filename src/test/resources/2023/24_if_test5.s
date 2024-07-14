@@ -32,23 +32,19 @@ if_if_ElseEntry:
 	# get address of local var:lv
 	sd t0, 96(sp)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 5
-
-	# store lv 
 
 	# get address of lv points to
 	ld t3, 96(sp)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 10
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	ld t3, 112(sp)
@@ -63,53 +59,53 @@ if_if_ElseEntry:
 	ld t0, 0(t3)
 	sd t0, 80(sp)
 
-	# cmp a  cond_eq_tmp_
+	# ICMPcond_eq_tmp_ a  
 
 	# fetch variables
 
 	# get address of local var:a
 	ld t1, 80(sp)
 	li t2, 5
-
-	# get address of local var:cond_eq_tmp_
 	xor t0, t1, t2
 	seqz t0, t0
+
+	# get address of local var:cond_eq_tmp_
 	sd t0, 72(sp)
 
-	# zext cond_tmp_ cond_eq_tmp_
+	# ZEXTcond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_
 	ld t1, 72(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	mv t0, t1
 	sd t0, 64(sp)
 
-	# cmp cond_tmp_  cond_
+	# ICMPcond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
 	ld t1, 64(sp)
 	li t2, 0
-
-	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_
 	sd t0, 56(sp)
 
-	# condBr cond_ ifTrue_368 ifFalse_147
+	# condBr cond_ ifTrue_8 ifFalse_
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 56(sp)
-	beqz t1, ifFalse_147
-	j ifTrue_368
-ifTrue_368:
+	beqz t1, ifFalse_
+	j ifTrue_8
+ifTrue_8:
 
 	# load b lv$1
 
@@ -120,53 +116,53 @@ ifTrue_368:
 	ld t0, 0(t3)
 	sd t0, 48(sp)
 
-	# cmp b  cond_eq_tmp_$1
+	# ICMPcond_eq_tmp_$1 b  
 
 	# fetch variables
 
 	# get address of local var:b
 	ld t1, 48(sp)
 	li t2, 10
-
-	# get address of local var:cond_eq_tmp_$1
 	xor t0, t1, t2
 	seqz t0, t0
+
+	# get address of local var:cond_eq_tmp_$1
 	sd t0, 40(sp)
 
-	# zext cond_tmp_$1 cond_eq_tmp_$1
+	# ZEXTcond_tmp_$1 cond_eq_tmp_$1
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$1
 	ld t1, 40(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$1
-	mv t0, t1
 	sd t0, 32(sp)
 
-	# cmp cond_tmp_$1  cond_$1
+	# ICMPcond_$1 cond_tmp_$1  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$1
 	ld t1, 32(sp)
 	li t2, 0
-
-	# get address of local var:cond_$1
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$1
 	sd t0, 24(sp)
 
-	# condBr cond_$1 ifTrue_369 next_660
+	# condBr cond_$1 ifTrue_9 next_16
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 24(sp)
-	beqz t1, next_660
-	j ifTrue_369
-ifFalse_147:
+	beqz t1, next_16
+	j ifTrue_9
+ifFalse_:
 
 	# load a$1 lv
 
@@ -177,7 +173,7 @@ ifFalse_147:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# ADDresult_ a$1 
+	# ADDresult_ a$1  
 
 	# fetch variables
 
@@ -189,22 +185,20 @@ ifFalse_147:
 	# get address of local var:result_
 	sd t0, 8(sp)
 
-	# lv result_
+	# store lv result_
 
 	# fetch variables
 
 	# get address of local var:result_
 	ld t1, 8(sp)
 
-	# store lv result_
-
 	# get address of lv points to
 	ld t3, 96(sp)
 	sd t1, 0(t3)
 
-	# br next_659
-	j next_659
-next_659:
+	# br next_15
+	j next_15
+next_15:
 
 	# load a$2 lv
 
@@ -228,29 +222,27 @@ next_659:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifTrue_369:
+ifTrue_9:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 25
-
-	# store lv 
 
 	# get address of lv points to
 	ld t3, 96(sp)
 	sd t1, 0(t3)
 
-	# br next_660
-	j next_660
-next_660:
+	# br next_16
+	j next_16
+next_16:
 
-	# br next_659
-	j next_659
+	# br next_15
+	j next_15
 .type main, @function
 .globl main
 main:
-mainEntry100:
+mainEntry2:
 
 	# reserve space
 	li t4, 8

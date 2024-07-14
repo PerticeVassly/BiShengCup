@@ -16,83 +16,63 @@ mainEntry2:
 	# allocate lv$2
 	li t0, 56
 	add t0, sp, t0
-	li t1, 64
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 64(sp)
 
 	# allocate lv$1
 	li t0, 40
 	add t0, sp, t0
-	li t1, 48
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 48(sp)
 
 	# allocate lv
 	li t0, 24
 	add t0, sp, t0
-	li t1, 32
-	add t1, sp, t1
-	sd t0, 0(t1)
 
-	# lv 
+	# get address of local var:lv
+	sd t0, 32(sp)
+
+	# store lv 
 
 	# fetch variables
 	li t1, 0x3ff0000000000000
 	fmv.d.x ft1, t1
 
-	# store lv 
-
 	# get address of lv points to
-	li t4, 32
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	fsd ft1, 0(t4)
+	ld t3, 32(sp)
+	fsd ft1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0x4000000000000000
 	fmv.d.x ft1, t1
 
-	# store lv$1 
-
 	# get address of lv$1 points to
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	fsd ft1, 0(t4)
+	ld t3, 48(sp)
+	fsd ft1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	li t4, 32
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 32(sp)
 
 	# get address of local var:a
-	fld ft0, 0(t4)
+	fld ft0, 0(t3)
 	fsd ft0, 16(sp)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 48(sp)
 
 	# get address of local var:b
-	fld ft0, 0(t4)
+	fld ft0, 0(t3)
 	fsd ft0, 8(sp)
 
-	# fadd result_ a b
+	# FADD result_ a b 
 
 	# fetch variables
 
@@ -106,22 +86,16 @@ mainEntry2:
 	# get address of local var:result_
 	fsd ft0, 0(sp)
 
-	# lv$2 result_
+	# store lv$2 result_
 
 	# fetch variables
 
 	# get address of local var:result_
 	fld ft1, 0(sp)
 
-	# store lv$2 result_
-
 	# get address of lv$2 points to
-	li t4, 64
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	fsd ft1, 0(t4)
+	ld t3, 64(sp)
+	fsd ft1, 0(t3)
 
 	# ret 
 
@@ -131,13 +105,24 @@ mainEntry2:
 	li t4, 72
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
+    ret 

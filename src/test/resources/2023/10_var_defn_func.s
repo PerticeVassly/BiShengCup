@@ -32,7 +32,7 @@ defnEntry:
 .type main, @function
 .globl main
 main:
-mainEntry45:
+mainEntry86:
 
 	# reserve space
 	li t4, 32
@@ -67,14 +67,12 @@ mainEntry45:
 	# get address of local var:defn
 	sd a0, 8(sp)
 
-	# lv defn
+	# store lv defn
 
 	# fetch variables
 
 	# get address of local var:defn
 	ld t1, 8(sp)
-
-	# store lv defn
 
 	# get address of lv points to
 	ld t3, 24(sp)

@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry81:
+mainEntry37:
 
 	# reserve space
 	li t4, 312
@@ -48,45 +48,37 @@ mainEntry81:
 	# get address of local var:lv
 	sd t0, 240(sp)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 5
-
-	# store lv 
 
 	# get address of lv points to
 	ld t3, 240(sp)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 5
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	ld t3, 256(sp)
 	sd t1, 0(t3)
 
-	# lv$2 
+	# store lv$2 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$2 
 
 	# get address of lv$2 points to
 	ld t3, 272(sp)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, -2
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	ld t3, 288(sp)
@@ -101,7 +93,7 @@ mainEntry81:
 	ld t0, 0(t3)
 	sd t0, 224(sp)
 
-	# MULresult_ d 
+	# MULresult_ d  
 
 	# fetch variables
 
@@ -113,16 +105,16 @@ mainEntry81:
 	# get address of local var:result_
 	sd t0, 216(sp)
 
-	# div result_$1 result_ 
+	# DIVresult_$1 result_  
 
 	# fetch variables
 
 	# get address of local var:result_
 	ld t1, 216(sp)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$1
-	div t0, t1, t2
 	sd t0, 208(sp)
 
 	# load a lv
@@ -143,7 +135,7 @@ mainEntry81:
 	ld t0, 0(t3)
 	sd t0, 192(sp)
 
-	# SUBresult_$2 a b
+	# SUBresult_$2 a b 
 
 	# fetch variables
 
@@ -157,7 +149,7 @@ mainEntry81:
 	# get address of local var:result_$2
 	sd t0, 184(sp)
 
-	# ADDresult_$3 result_$1 result_$2
+	# ADDresult_$3 result_$1 result_$2 
 
 	# fetch variables
 
@@ -180,7 +172,7 @@ mainEntry81:
 	ld t0, 0(t3)
 	sd t0, 168(sp)
 
-	# ADDresult_$4 c 
+	# ADDresult_$4 c  
 
 	# fetch variables
 
@@ -192,7 +184,7 @@ mainEntry81:
 	# get address of local var:result_$4
 	sd t0, 160(sp)
 
-	# SUBtmp_  result_$4
+	# SUBtmp_  result_$4 
 
 	# fetch variables
 	li t1, 0
@@ -204,19 +196,19 @@ mainEntry81:
 	# get address of local var:tmp_
 	sd t0, 152(sp)
 
-	# mod result_$5 tmp_ 
+	# MODresult_$5 tmp_  
 
 	# fetch variables
 
 	# get address of local var:tmp_
 	ld t1, 152(sp)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$5
-	rem t0, t1, t2
 	sd t0, 144(sp)
 
-	# SUBresult_$6 result_$3 result_$5
+	# SUBresult_$6 result_$3 result_$5 
 
 	# fetch variables
 
@@ -230,14 +222,12 @@ mainEntry81:
 	# get address of local var:result_$6
 	sd t0, 136(sp)
 
-	# lv$4 result_$6
+	# store lv$4 result_$6
 
 	# fetch variables
 
 	# get address of local var:result_$6
 	ld t1, 136(sp)
-
-	# store lv$4 result_$6
 
 	# get address of lv$4 points to
 	ld t3, 304(sp)
@@ -284,19 +274,19 @@ mainEntry81:
 	ld t0, 0(t3)
 	sd t0, 120(sp)
 
-	# mod result_$7 d$1 
+	# MODresult_$7 d$1  
 
 	# fetch variables
 
 	# get address of local var:d$1
 	ld t1, 120(sp)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$7
-	rem t0, t1, t2
 	sd t0, 112(sp)
 
-	# ADDresult_$8 result_$7 
+	# ADDresult_$8 result_$7  
 
 	# fetch variables
 
@@ -326,7 +316,7 @@ mainEntry81:
 	ld t0, 0(t3)
 	sd t0, 88(sp)
 
-	# SUBresult_$9 a$1 b$1
+	# SUBresult_$9 a$1 b$1 
 
 	# fetch variables
 
@@ -340,7 +330,7 @@ mainEntry81:
 	# get address of local var:result_$9
 	sd t0, 80(sp)
 
-	# SUBtmp_$1  result_$9
+	# SUBtmp_$1  result_$9 
 
 	# fetch variables
 	li t1, 0
@@ -352,7 +342,7 @@ mainEntry81:
 	# get address of local var:tmp_$1
 	sd t0, 72(sp)
 
-	# ADDresult_$10 result_$8 tmp_$1
+	# ADDresult_$10 result_$8 tmp_$1 
 
 	# fetch variables
 
@@ -375,7 +365,7 @@ mainEntry81:
 	ld t0, 0(t3)
 	sd t0, 56(sp)
 
-	# ADDresult_$11 c$1 
+	# ADDresult_$11 c$1  
 
 	# fetch variables
 
@@ -387,19 +377,19 @@ mainEntry81:
 	# get address of local var:result_$11
 	sd t0, 48(sp)
 
-	# mod result_$12 result_$11 
+	# MODresult_$12 result_$11  
 
 	# fetch variables
 
 	# get address of local var:result_$11
 	ld t1, 48(sp)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$12
-	rem t0, t1, t2
 	sd t0, 40(sp)
 
-	# SUBtmp_$2  result_$12
+	# SUBtmp_$2  result_$12 
 
 	# fetch variables
 	li t1, 0
@@ -411,7 +401,7 @@ mainEntry81:
 	# get address of local var:tmp_$2
 	sd t0, 32(sp)
 
-	# SUBresult_$13 result_$10 tmp_$2
+	# SUBresult_$13 result_$10 tmp_$2 
 
 	# fetch variables
 
@@ -425,14 +415,12 @@ mainEntry81:
 	# get address of local var:result_$13
 	sd t0, 24(sp)
 
-	# lv$4 result_$13
+	# store lv$4 result_$13
 
 	# fetch variables
 
 	# get address of local var:result_$13
 	ld t1, 24(sp)
-
-	# store lv$4 result_$13
 
 	# get address of lv$4 points to
 	ld t3, 304(sp)
@@ -447,7 +435,7 @@ mainEntry81:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# ADDresult_$14 result$1 
+	# ADDresult_$14 result$1  
 
 	# fetch variables
 
@@ -459,14 +447,12 @@ mainEntry81:
 	# get address of local var:result_$14
 	sd t0, 8(sp)
 
-	# lv$4 result_$14
+	# store lv$4 result_$14
 
 	# fetch variables
 
 	# get address of local var:result_$14
 	ld t1, 8(sp)
-
-	# store lv$4 result_$14
 
 	# get address of lv$4 points to
 	ld t3, 304(sp)

@@ -11,7 +11,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry47:
+mainEntry36:
 
 	# reserve space
 	li t4, 128
@@ -50,13 +50,11 @@ mainEntry47:
 	# get address of local var:inp
 	sd t0, 80(sp)
 
-	# inp 
+	# store inp 
 
 	# fetch variables
 	li t1, 0x3ff0000000000000
 	fmv.d.x ft1, t1
-
-	# store inp 
 
 	# get address of inp points to
 	ld t3, 80(sp)
@@ -79,13 +77,11 @@ mainEntry47:
 	# get address of local var:inp$1
 	sd t0, 72(sp)
 
-	# inp$1 
+	# store inp$1 
 
 	# fetch variables
 	li t1, 0x0
 	fmv.d.x ft1, t1
-
-	# store inp$1 
 
 	# get address of inp$1 points to
 	ld t3, 72(sp)
@@ -175,7 +171,7 @@ mainEntry47:
 	fld ft0, 0(t3)
 	fsd ft0, 24(sp)
 
-	# FADDresult_ f$1 ff$1
+	# FADDresult_ f$1 ff$1 
 
 	# fetch variables
 
@@ -189,25 +185,23 @@ mainEntry47:
 	# get address of local var:result_
 	fsd ft0, 16(sp)
 
-	# floatToInt f2i_ result_
+	# F2If2i_ result_
 
 	# fetch variables
 
 	# get address of local var:result_
 	fld ft1, 16(sp)
+	fcvt.l.d t0, ft1, rtz
 
 	# get address of local var:f2i_
-	fcvt.l.d t0, ft1, rtz
 	sd t0, 8(sp)
 
-	# lv$1 f2i_
+	# store lv$1 f2i_
 
 	# fetch variables
 
 	# get address of local var:f2i_
 	ld t1, 8(sp)
-
-	# store lv$1 f2i_
 
 	# get address of lv$1 points to
 	ld t3, 120(sp)

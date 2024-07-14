@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry66:
+mainEntry67:
 
 	# reserve space
 	li t4, 144
@@ -27,23 +27,19 @@ mainEntry66:
 	# get address of local var:lv
 	sd t0, 120(sp)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	ld t3, 120(sp)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	ld t3, 136(sp)
@@ -62,41 +58,41 @@ whileCond_214:
 	ld t0, 0(t3)
 	sd t0, 104(sp)
 
-	# cmp i  cond_lt_tmp_
+	# ICMPcond_lt_tmp_ i  
 
 	# fetch variables
 
 	# get address of local var:i
 	ld t1, 104(sp)
 	li t2, 100
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_
-	slt t0, t1, t2
 	sd t0, 96(sp)
 
-	# zext cond_tmp_ cond_lt_tmp_
+	# ZEXTcond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_
 	ld t1, 96(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	mv t0, t1
 	sd t0, 88(sp)
 
-	# cmp cond_tmp_  cond_
+	# ICMPcond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
 	ld t1, 88(sp)
 	li t2, 0
-
-	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_
 	sd t0, 80(sp)
 
 	# condBr cond_ whileBody_214 next_520
@@ -118,42 +114,42 @@ whileBody_214:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# cmp i$1  cond_eq_tmp_
+	# ICMPcond_eq_tmp_ i$1  
 
 	# fetch variables
 
 	# get address of local var:i$1
 	ld t1, 72(sp)
 	li t2, 50
-
-	# get address of local var:cond_eq_tmp_
 	xor t0, t1, t2
 	seqz t0, t0
+
+	# get address of local var:cond_eq_tmp_
 	sd t0, 64(sp)
 
-	# zext cond_tmp_$1 cond_eq_tmp_
+	# ZEXTcond_tmp_$1 cond_eq_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_
 	ld t1, 64(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$1
-	mv t0, t1
 	sd t0, 56(sp)
 
-	# cmp cond_tmp_$1  cond_$1
+	# ICMPcond_$1 cond_tmp_$1  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$1
 	ld t1, 56(sp)
 	li t2, 0
-
-	# get address of local var:cond_$1
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$1
 	sd t0, 48(sp)
 
 	# condBr cond_$1 ifTrue_306 next_521
@@ -212,7 +208,7 @@ next_521:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_ sum i$2
+	# ADDresult_ sum i$2 
 
 	# fetch variables
 
@@ -226,14 +222,12 @@ next_521:
 	# get address of local var:result_
 	sd t0, 16(sp)
 
-	# lv$1 result_
+	# store lv$1 result_
 
 	# fetch variables
 
 	# get address of local var:result_
 	ld t1, 16(sp)
-
-	# store lv$1 result_
 
 	# get address of lv$1 points to
 	ld t3, 136(sp)
@@ -248,7 +242,7 @@ next_521:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$1 i$3 
+	# ADDresult_$1 i$3  
 
 	# fetch variables
 
@@ -260,14 +254,12 @@ next_521:
 	# get address of local var:result_$1
 	sd t0, 0(sp)
 
-	# lv result_$1
+	# store lv result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
 	ld t1, 0(sp)
-
-	# store lv result_$1
 
 	# get address of lv points to
 	ld t3, 120(sp)

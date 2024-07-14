@@ -35,14 +35,12 @@ reverseEntry:
 	# get address of local var:lv
 	sd t0, 88(sp)
 
-	# lv 0
+	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
 	ld t1, 112(sp)
-
-	# store lv 0
 
 	# get address of lv points to
 	ld t3, 88(sp)
@@ -57,54 +55,54 @@ reverseEntry:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# cmp n  cond_le_tmp_
+	# ICMPcond_le_tmp_ n  
 
 	# fetch variables
 
 	# get address of local var:n
 	ld t1, 72(sp)
 	li t2, 1
-
-	# get address of local var:cond_le_tmp_
 	sub t0, t1, t2
 	sgtz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_le_tmp_
 	sd t0, 64(sp)
 
-	# zext cond_tmp_ cond_le_tmp_
+	# ZEXTcond_tmp_ cond_le_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_le_tmp_
 	ld t1, 64(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	mv t0, t1
 	sd t0, 56(sp)
 
-	# cmp cond_tmp_  cond_
+	# ICMPcond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
 	ld t1, 56(sp)
 	li t2, 0
-
-	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_
 	sd t0, 48(sp)
 
-	# condBr cond_ ifTrue_316 ifFalse_120
+	# condBr cond_ ifTrue_292 ifFalse_111
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 48(sp)
-	beqz t1, ifFalse_120
-	j ifTrue_316
-ifTrue_316:
+	beqz t1, ifFalse_111
+	j ifTrue_292
+ifTrue_292:
 
 	# prepare params
 	addi sp, sp, 0
@@ -126,14 +124,12 @@ ifTrue_316:
 	# get address of local var:getint
 	sd a0, 40(sp)
 
-	# lv$1 getint
+	# store lv$1 getint
 
 	# fetch variables
 
 	# get address of local var:getint
 	ld t1, 40(sp)
-
-	# store lv$1 getint
 
 	# get address of lv$1 points to
 	ld t3, 104(sp)
@@ -171,9 +167,9 @@ ifTrue_316:
 	# release params
 	addi sp, sp, 0
 
-	# br next_517
-	j next_517
-ifFalse_120:
+	# br next_496
+	j next_496
+ifFalse_111:
 
 	# prepare params
 	addi sp, sp, 0
@@ -195,14 +191,12 @@ ifFalse_120:
 	# get address of local var:getint$1
 	sd a0, 24(sp)
 
-	# lv$1 getint$1
+	# store lv$1 getint$1
 
 	# fetch variables
 
 	# get address of local var:getint$1
 	ld t1, 24(sp)
-
-	# store lv$1 getint$1
 
 	# get address of lv$1 points to
 	ld t3, 104(sp)
@@ -217,7 +211,7 @@ ifFalse_120:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# SUBresult_ n$1 
+	# SUBresult_ n$1  
 
 	# fetch variables
 
@@ -284,9 +278,9 @@ ifFalse_120:
 	# release params
 	addi sp, sp, 0
 
-	# br next_517
-	j next_517
-next_517:
+	# br next_496
+	j next_496
+next_496:
 
 	# ret void
 	li t4, 120
@@ -298,7 +292,7 @@ next_517:
 .type main, @function
 .globl main
 main:
-mainEntry56:
+mainEntry60:
 
 	# reserve space
 	li t4, 24
@@ -313,12 +307,10 @@ mainEntry56:
 	# get address of local var:lv
 	sd t0, 16(sp)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 200
-
-	# store lv 
 
 	# get address of lv points to
 	ld t3, 16(sp)

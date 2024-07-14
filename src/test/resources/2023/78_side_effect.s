@@ -40,14 +40,12 @@ inc_aEntry:
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# lv a
+	# store lv a
 
 	# fetch variables
 
 	# get address of local var:a
 	ld t1, 32(sp)
-
-	# store lv a
 
 	# get address of lv points to
 	ld t3, 48(sp)
@@ -62,7 +60,7 @@ inc_aEntry:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# ADDresult_ b 
+	# ADDresult_ b  
 
 	# fetch variables
 
@@ -74,14 +72,12 @@ inc_aEntry:
 	# get address of local var:result_
 	sd t0, 16(sp)
 
-	# lv result_
+	# store lv result_
 
 	# fetch variables
 
 	# get address of local var:result_
 	ld t1, 16(sp)
-
-	# store lv result_
 
 	# get address of lv points to
 	ld t3, 48(sp)
@@ -96,14 +92,12 @@ inc_aEntry:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# gv @b$1
+	# store gv b$1
 
 	# fetch variables
 
 	# get address of local var:b$1
 	ld t1, 8(sp)
-
-	# store gv b$1
 
 	# get address of gv points to
 	la t3, gv
@@ -134,7 +128,7 @@ inc_aEntry:
 .type main, @function
 .globl main
 main:
-mainEntry84:
+mainEntry85:
 
 	# reserve space
 	li t4, 280
@@ -149,12 +143,10 @@ mainEntry84:
 	# get address of local var:lv
 	sd t0, 272(sp)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 5
-
-	# store lv 
 
 	# get address of lv points to
 	ld t3, 272(sp)
@@ -173,42 +165,42 @@ whileCond_254:
 	ld t0, 0(t3)
 	sd t0, 256(sp)
 
-	# cmp k  cond_ge_tmp_
+	# ICMPcond_ge_tmp_ k  
 
 	# fetch variables
 
 	# get address of local var:k
 	ld t1, 256(sp)
 	li t2, 0
-
-	# get address of local var:cond_ge_tmp_
 	slt t0, t1, t2
 	seqz t0, t0
+
+	# get address of local var:cond_ge_tmp_
 	sd t0, 248(sp)
 
-	# zext cond_tmp_ cond_ge_tmp_
+	# ZEXTcond_tmp_ cond_ge_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_ge_tmp_
 	ld t1, 248(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	mv t0, t1
 	sd t0, 240(sp)
 
-	# cmp cond_tmp_  cond_
+	# ICMPcond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
 	ld t1, 240(sp)
 	li t2, 0
-
-	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_
 	sd t0, 232(sp)
 
 	# condBr cond_ whileBody_254 next_594
@@ -241,18 +233,18 @@ whileBody_254:
 	# get address of local var:inc_a
 	sd a0, 224(sp)
 
-	# cmp inc_a  cond_normalize_
+	# ICMPcond_normalize_ inc_a  
 
 	# fetch variables
 
 	# get address of local var:inc_a
 	ld t1, 224(sp)
 	li t2, 0
-
-	# get address of local var:cond_normalize_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_normalize_
 	sd t0, 216(sp)
 
 	# condBr cond_normalize_ secondCond_127 next_595
@@ -522,41 +514,41 @@ next_595:
 	# get address of local var:inc_a$3
 	sd a0, 168(sp)
 
-	# cmp inc_a$3  cond_lt_tmp_
+	# ICMPcond_lt_tmp_ inc_a$3  
 
 	# fetch variables
 
 	# get address of local var:inc_a$3
 	ld t1, 168(sp)
 	li t2, 14
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_
-	slt t0, t1, t2
 	sd t0, 160(sp)
 
-	# zext cond_tmp_$1 cond_lt_tmp_
+	# ZEXTcond_tmp_$1 cond_lt_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_
 	ld t1, 160(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$1
-	mv t0, t1
 	sd t0, 152(sp)
 
-	# cmp cond_tmp_$1  cond_$1
+	# ICMPcond_$1 cond_tmp_$1  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$1
 	ld t1, 152(sp)
 	li t2, 0
-
-	# get address of local var:cond_$1
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$1
 	sd t0, 144(sp)
 
 	# condBr cond_$1 ifTrue_341 secondCond_128
@@ -589,18 +581,18 @@ secondCond_126:
 	# get address of local var:inc_a$2
 	sd a0, 136(sp)
 
-	# cmp inc_a$2  cond_normalize_$2
+	# ICMPcond_normalize_$2 inc_a$2  
 
 	# fetch variables
 
 	# get address of local var:inc_a$2
 	ld t1, 136(sp)
 	li t2, 0
-
-	# get address of local var:cond_normalize_$2
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_normalize_$2
 	sd t0, 128(sp)
 
 	# condBr cond_normalize_$2 ifTrue_340 next_595
@@ -633,18 +625,18 @@ secondCond_127:
 	# get address of local var:inc_a$1
 	sd a0, 120(sp)
 
-	# cmp inc_a$1  cond_normalize_$1
+	# ICMPcond_normalize_$1 inc_a$1  
 
 	# fetch variables
 
 	# get address of local var:inc_a$1
 	ld t1, 120(sp)
 	li t2, 0
-
-	# get address of local var:cond_normalize_$1
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_normalize_$1
 	sd t0, 112(sp)
 
 	# condBr cond_normalize_$1 secondCond_126 next_595
@@ -719,7 +711,7 @@ ifTrue_341:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# MULresult_$2 b$1 
+	# MULresult_$2 b$1  
 
 	# fetch variables
 
@@ -731,14 +723,12 @@ ifTrue_341:
 	# get address of local var:result_$2
 	sd t0, 88(sp)
 
-	# gv1 @result_$2
+	# store gv1 result_$2
 
 	# fetch variables
 
 	# get address of local var:result_$2
 	ld t1, 88(sp)
-
-	# store gv1 result_$2
 
 	# get address of gv1 points to
 	la t3, gv1
@@ -781,7 +771,7 @@ next_596:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# SUBresult_$3 k$1 
+	# SUBresult_$3 k$1  
 
 	# fetch variables
 
@@ -793,14 +783,12 @@ next_596:
 	# get address of local var:result_$3
 	sd t0, 64(sp)
 
-	# lv result_$3
+	# store lv result_$3
 
 	# fetch variables
 
 	# get address of local var:result_$3
 	ld t1, 64(sp)
-
-	# store lv result_$3
 
 	# get address of lv points to
 	ld t3, 272(sp)
@@ -830,18 +818,18 @@ secondCond_128:
 	# get address of local var:inc_a$4
 	sd a0, 56(sp)
 
-	# cmp inc_a$4  cond_normalize_$3
+	# ICMPcond_normalize_$3 inc_a$4  
 
 	# fetch variables
 
 	# get address of local var:inc_a$4
 	ld t1, 56(sp)
 	li t2, 0
-
-	# get address of local var:cond_normalize_$3
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_normalize_$3
 	sd t0, 48(sp)
 
 	# condBr cond_normalize_$3 secondCond_129 ifFalse_136
@@ -894,7 +882,7 @@ secondCond_129:
 	# get address of local var:inc_a$6
 	sd a0, 32(sp)
 
-	# SUBresult_ inc_a$5 inc_a$6
+	# SUBresult_ inc_a$5 inc_a$6 
 
 	# fetch variables
 
@@ -908,7 +896,7 @@ secondCond_129:
 	# get address of local var:result_
 	sd t0, 24(sp)
 
-	# ADDresult_$1 result_ 
+	# ADDresult_$1 result_  
 
 	# fetch variables
 
@@ -920,18 +908,18 @@ secondCond_129:
 	# get address of local var:result_$1
 	sd t0, 16(sp)
 
-	# cmp result_$1  cond_normalize_$4
+	# ICMPcond_normalize_$4 result_$1  
 
 	# fetch variables
 
 	# get address of local var:result_$1
 	ld t1, 16(sp)
 	li t2, 0
-
-	# get address of local var:cond_normalize_$4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_normalize_$4
 	sd t0, 8(sp)
 
 	# condBr cond_normalize_$4 ifTrue_341 ifFalse_136
@@ -943,16 +931,16 @@ secondCond_129:
 	beqz t1, ifFalse_136
 	j ifTrue_341
 
-	# cmp   cond_normalize_$5
+	# ICMPcond_normalize_$5   
 
 	# fetch variables
 	li t1, 0
 	li t2, 0
-
-	# get address of local var:cond_normalize_$5
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_normalize_$5
 	sd t0, 0(sp)
 
 	# condBr cond_normalize_$5 ifTrue_341 ifFalse_136

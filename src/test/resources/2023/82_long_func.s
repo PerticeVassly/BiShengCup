@@ -837,12 +837,10 @@ long_funcEntry:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$5 
+	# store lv$5 
 
 	# fetch variables
 	li t1, 2
-
-	# store lv$5 
 
 	# get address of lv$5 points to
 	li t4, 19064
@@ -850,12 +848,10 @@ long_funcEntry:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$6 
+	# store lv$6 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$6 
 
 	# get address of lv$6 points to
 	li t4, 19080
@@ -863,12 +859,10 @@ long_funcEntry:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$7 
+	# store lv$7 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$7 
 
 	# get address of lv$7 points to
 	li t4, 19096
@@ -876,9 +870,9 @@ long_funcEntry:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_44
-	j whileCond_44
-whileCond_44:
+	# br whileCond_90
+	j whileCond_90
+whileCond_90:
 
 	# load pr lv$6
 
@@ -893,7 +887,7 @@ whileCond_44:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp pr  cond_gt_tmp_
+	# ICMPcond_gt_tmp_ pr  
 
 	# fetch variables
 
@@ -902,15 +896,15 @@ whileCond_44:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_
 	li t4, 18960
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_ cond_gt_tmp_
+	# ZEXTcond_tmp_ cond_gt_tmp_
 
 	# fetch variables
 
@@ -918,14 +912,14 @@ whileCond_44:
 	li t4, 18960
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_
 	li t4, 18952
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_  cond_
+	# ICMPcond_ cond_tmp_  
 
 	# fetch variables
 
@@ -934,16 +928,16 @@ whileCond_44:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_
 	li t4, 18944
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_ whileBody_44 next_75
+	# condBr cond_ whileBody_90 next_168
 
 	# fetch variables
 
@@ -951,16 +945,14 @@ whileCond_44:
 	li t4, 18944
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_75
-	j whileBody_44
-whileBody_44:
+	beqz t1, next_168
+	j whileBody_90
+whileBody_90:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -968,12 +960,10 @@ whileBody_44:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -994,7 +984,7 @@ whileBody_44:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 pr$1
+	# store lv$2 pr$1
 
 	# fetch variables
 
@@ -1003,20 +993,16 @@ whileBody_44:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 pr$1
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -1024,9 +1010,9 @@ whileBody_44:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_45
-	j whileCond_45
-next_75:
+	# br whileCond_91
+	j whileCond_91
+next_168:
 
 	# load pres$1 lv$7
 
@@ -1041,7 +1027,7 @@ next_75:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv pres$1
+	# store lv pres$1
 
 	# fetch variables
 
@@ -1049,8 +1035,6 @@ next_75:
 	li t4, 18928
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv pres$1
 
 	# get address of lv points to
 	li t4, 18984
@@ -1117,12 +1101,10 @@ next_75:
 	# release params
 	addi sp, sp, 0
 
-	# lv$26 
+	# store lv$26 
 
 	# fetch variables
 	li t1, 2
-
-	# store lv$26 
 
 	# get address of lv$26 points to
 	li t4, 19400
@@ -1130,12 +1112,10 @@ next_75:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$27 
+	# store lv$27 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$27 
 
 	# get address of lv$27 points to
 	li t4, 19416
@@ -1143,12 +1123,10 @@ next_75:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$28 
+	# store lv$28 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$28 
 
 	# get address of lv$28 points to
 	li t4, 19432
@@ -1156,9 +1134,9 @@ next_75:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_66
-	j whileCond_66
-whileCond_45:
+	# br whileCond_112
+	j whileCond_112
+whileCond_91:
 
 	# load i lv$1
 
@@ -1173,7 +1151,7 @@ whileCond_45:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i  cond_lt_tmp_
+	# ICMPcond_lt_tmp_ i  
 
 	# fetch variables
 
@@ -1182,14 +1160,14 @@ whileCond_45:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_
 	li t4, 18904
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$1 cond_lt_tmp_
+	# ZEXTcond_tmp_$1 cond_lt_tmp_
 
 	# fetch variables
 
@@ -1197,14 +1175,14 @@ whileCond_45:
 	li t4, 18904
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$1
 	li t4, 18896
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$1  cond_$1
+	# ICMPcond_$1 cond_tmp_$1  
 
 	# fetch variables
 
@@ -1213,16 +1191,16 @@ whileCond_45:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$1
 	li t4, 18888
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$1 whileBody_45 next_76
+	# condBr cond_$1 whileBody_91 next_169
 
 	# fetch variables
 
@@ -1230,9 +1208,9 @@ whileCond_45:
 	li t4, 18888
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_76
-	j whileBody_45
-whileBody_45:
+	beqz t1, next_169
+	j whileBody_91
+whileBody_91:
 
 	# load x lv$2
 
@@ -1247,7 +1225,7 @@ whileBody_45:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_ x 
+	# MODresult_ x  
 
 	# fetch variables
 
@@ -1256,14 +1234,14 @@ whileBody_45:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_
 	li t4, 18872
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_  cond_normalize_
+	# ICMPcond_normalize_ result_  
 
 	# fetch variables
 
@@ -1272,16 +1250,16 @@ whileBody_45:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_
 	li t4, 18864
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_ secondCond_12 next_77
+	# condBr cond_normalize_ secondCond_47 next_170
 
 	# fetch variables
 
@@ -1289,9 +1267,9 @@ whileBody_45:
 	li t4, 18864
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_77
-	j secondCond_12
-next_76:
+	beqz t1, next_170
+	j secondCond_47
+next_169:
 
 	# load ans$1 lv
 
@@ -1306,7 +1284,7 @@ next_76:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp ans$1  cond_normalize_$2
+	# ICMPcond_normalize_$2 ans$1  
 
 	# fetch variables
 
@@ -1315,16 +1293,16 @@ next_76:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$2
 	li t4, 18848
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$2 ifTrue_32 next_78
+	# condBr cond_normalize_$2 ifTrue_79 next_171
 
 	# fetch variables
 
@@ -1332,9 +1310,9 @@ next_76:
 	li t4, 18848
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_78
-	j ifTrue_32
-ifTrue_31:
+	beqz t1, next_171
+	j ifTrue_79
+ifTrue_78:
 
 	# load ans lv
 
@@ -1396,7 +1374,7 @@ ifTrue_31:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$2  SHIFT_TABLE$1
+	# MULresult_$2  SHIFT_TABLE$1 
 
 	# fetch variables
 	li t1, 1
@@ -1412,7 +1390,7 @@ ifTrue_31:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$3 ans result_$2
+	# ADDresult_$3 ans result_$2 
 
 	# fetch variables
 
@@ -1432,7 +1410,7 @@ ifTrue_31:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$3
+	# store lv result_$3
 
 	# fetch variables
 
@@ -1441,17 +1419,15 @@ ifTrue_31:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$3
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_77
-	j next_77
-next_77:
+	# br next_170
+	j next_170
+next_170:
 
 	# load x$1 lv$2
 
@@ -1466,7 +1442,7 @@ next_77:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$4 x$1 
+	# DIVresult_$4 x$1  
 
 	# fetch variables
 
@@ -1475,14 +1451,14 @@ next_77:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$4
 	li t4, 18784
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$4
+	# store lv$2 result_$4
 
 	# fetch variables
 
@@ -1490,8 +1466,6 @@ next_77:
 	li t4, 18784
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$4
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -1512,7 +1486,7 @@ next_77:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$5 y$1 
+	# DIVresult_$5 y$1  
 
 	# fetch variables
 
@@ -1521,14 +1495,14 @@ next_77:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$5
 	li t4, 18768
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$5
+	# store lv$3 result_$5
 
 	# fetch variables
 
@@ -1536,8 +1510,6 @@ next_77:
 	li t4, 18768
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$5
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -1558,7 +1530,7 @@ next_77:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$6 i$2 
+	# ADDresult_$6 i$2  
 
 	# fetch variables
 
@@ -1574,7 +1546,7 @@ next_77:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$6
+	# store lv$1 result_$6
 
 	# fetch variables
 
@@ -1583,17 +1555,15 @@ next_77:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$6
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_45
-	j whileCond_45
-secondCond_12:
+	# br whileCond_91
+	j whileCond_91
+secondCond_47:
 
 	# load y lv$3
 
@@ -1608,7 +1578,7 @@ secondCond_12:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$1 y 
+	# MODresult_$1 y  
 
 	# fetch variables
 
@@ -1617,14 +1587,14 @@ secondCond_12:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$1
 	li t4, 18736
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$1  cond_normalize_$1
+	# ICMPcond_normalize_$1 result_$1  
 
 	# fetch variables
 
@@ -1633,16 +1603,16 @@ secondCond_12:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$1
 	li t4, 18728
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$1 ifTrue_31 next_77
+	# condBr cond_normalize_$1 ifTrue_78 next_170
 
 	# fetch variables
 
@@ -1650,9 +1620,9 @@ secondCond_12:
 	li t4, 18728
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_77
-	j ifTrue_31
-ifTrue_32:
+	beqz t1, next_170
+	j ifTrue_78
+ifTrue_79:
 
 	# load pres lv$7
 
@@ -1667,7 +1637,7 @@ ifTrue_32:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$8 pres
+	# store lv$8 pres
 
 	# fetch variables
 
@@ -1675,8 +1645,6 @@ ifTrue_32:
 	li t4, 18720
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$8 pres
 
 	# get address of lv$8 points to
 	li t4, 19112
@@ -1697,7 +1665,7 @@ ifTrue_32:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$9 pl
+	# store lv$9 pl
 
 	# fetch variables
 
@@ -1706,20 +1674,16 @@ ifTrue_32:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$9 pl
-
 	# get address of lv$9 points to
 	li t4, 19128
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$10 
+	# store lv$10 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$10 
 
 	# get address of lv$10 points to
 	li t4, 19144
@@ -1727,9 +1691,9 @@ ifTrue_32:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_46
-	j whileCond_46
-next_78:
+	# br whileCond_92
+	j whileCond_92
+next_171:
 
 	# load pl$1 lv$5
 
@@ -1744,7 +1708,7 @@ next_78:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$17 pl$1
+	# store lv$17 pl$1
 
 	# fetch variables
 
@@ -1752,8 +1716,6 @@ next_78:
 	li t4, 18704
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$17 pl$1
 
 	# get address of lv$17 points to
 	li t4, 19256
@@ -1774,7 +1736,7 @@ next_78:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$18 pl$2
+	# store lv$18 pl$2
 
 	# fetch variables
 
@@ -1783,20 +1745,16 @@ next_78:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$18 pl$2
-
 	# get address of lv$18 points to
 	li t4, 19272
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$19 
+	# store lv$19 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$19 
 
 	# get address of lv$19 points to
 	li t4, 19288
@@ -1804,9 +1762,9 @@ next_78:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_56
-	j whileCond_56
-whileCond_46:
+	# br whileCond_102
+	j whileCond_102
+whileCond_92:
 
 	# load mr lv$9
 
@@ -1821,7 +1779,7 @@ whileCond_46:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp mr  cond_normalize_$3
+	# ICMPcond_normalize_$3 mr  
 
 	# fetch variables
 
@@ -1830,16 +1788,16 @@ whileCond_46:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$3
 	li t4, 18680
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$3 whileBody_46 next_79
+	# condBr cond_normalize_$3 whileBody_92 next_172
 
 	# fetch variables
 
@@ -1847,16 +1805,14 @@ whileCond_46:
 	li t4, 18680
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_79
-	j whileBody_46
-whileBody_46:
+	beqz t1, next_172
+	j whileBody_92
+whileBody_92:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -1864,12 +1820,10 @@ whileBody_46:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -1890,7 +1844,7 @@ whileBody_46:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$1
+	# store lv$2 mr$1
 
 	# fetch variables
 
@@ -1899,20 +1853,16 @@ whileBody_46:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$1
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -1920,9 +1870,9 @@ whileBody_46:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_47
-	j whileCond_47
-next_79:
+	# br whileCond_93
+	j whileCond_93
+next_172:
 
 	# load mres$1 lv$10
 
@@ -1937,7 +1887,7 @@ next_79:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv mres$1
+	# store lv mres$1
 
 	# fetch variables
 
@@ -1945,8 +1895,6 @@ next_79:
 	li t4, 18664
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv mres$1
 
 	# get address of lv points to
 	li t4, 18984
@@ -1967,7 +1915,7 @@ next_79:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$7 ans$21
+	# store lv$7 ans$21
 
 	# fetch variables
 
@@ -1976,17 +1924,15 @@ next_79:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$7 ans$21
-
 	# get address of lv$7 points to
 	li t4, 19096
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_78
-	j next_78
-whileCond_47:
+	# br next_171
+	j next_171
+whileCond_93:
 
 	# load i$3 lv$1
 
@@ -2001,7 +1947,7 @@ whileCond_47:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$3  cond_lt_tmp_$1
+	# ICMPcond_lt_tmp_$1 i$3  
 
 	# fetch variables
 
@@ -2010,14 +1956,14 @@ whileCond_47:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$1
 	li t4, 18640
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$2 cond_lt_tmp_$1
+	# ZEXTcond_tmp_$2 cond_lt_tmp_$1
 
 	# fetch variables
 
@@ -2025,14 +1971,14 @@ whileCond_47:
 	li t4, 18640
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$2
 	li t4, 18632
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$2  cond_$2
+	# ICMPcond_$2 cond_tmp_$2  
 
 	# fetch variables
 
@@ -2041,16 +1987,16 @@ whileCond_47:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$2
 	li t4, 18624
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$2 whileBody_47 next_80
+	# condBr cond_$2 whileBody_93 next_173
 
 	# fetch variables
 
@@ -2058,9 +2004,9 @@ whileCond_47:
 	li t4, 18624
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_80
-	j whileBody_47
-whileBody_47:
+	beqz t1, next_173
+	j whileBody_93
+whileBody_93:
 
 	# load x$2 lv$2
 
@@ -2075,7 +2021,7 @@ whileBody_47:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$7 x$2 
+	# MODresult_$7 x$2  
 
 	# fetch variables
 
@@ -2084,14 +2030,14 @@ whileBody_47:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$7
 	li t4, 18608
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$7  cond_normalize_$4
+	# ICMPcond_normalize_$4 result_$7  
 
 	# fetch variables
 
@@ -2100,16 +2046,16 @@ whileBody_47:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$4
 	li t4, 18600
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$4 secondCond_13 next_81
+	# condBr cond_normalize_$4 secondCond_48 next_174
 
 	# fetch variables
 
@@ -2117,9 +2063,9 @@ whileBody_47:
 	li t4, 18600
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_81
-	j secondCond_13
-next_80:
+	beqz t1, next_174
+	j secondCond_48
+next_173:
 
 	# load ans$3 lv
 
@@ -2134,7 +2080,7 @@ next_80:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp ans$3  cond_normalize_$6
+	# ICMPcond_normalize_$6 ans$3  
 
 	# fetch variables
 
@@ -2143,16 +2089,16 @@ next_80:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$6
 	li t4, 18584
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$6 ifTrue_34 next_82
+	# condBr cond_normalize_$6 ifTrue_81 next_175
 
 	# fetch variables
 
@@ -2160,9 +2106,9 @@ next_80:
 	li t4, 18584
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_82
-	j ifTrue_34
-ifTrue_33:
+	beqz t1, next_175
+	j ifTrue_81
+ifTrue_80:
 
 	# load ans$2 lv
 
@@ -2224,7 +2170,7 @@ ifTrue_33:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$9  SHIFT_TABLE$3
+	# MULresult_$9  SHIFT_TABLE$3 
 
 	# fetch variables
 	li t1, 1
@@ -2240,7 +2186,7 @@ ifTrue_33:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$10 ans$2 result_$9
+	# ADDresult_$10 ans$2 result_$9 
 
 	# fetch variables
 
@@ -2260,7 +2206,7 @@ ifTrue_33:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$10
+	# store lv result_$10
 
 	# fetch variables
 
@@ -2269,17 +2215,15 @@ ifTrue_33:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$10
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_81
-	j next_81
-next_81:
+	# br next_174
+	j next_174
+next_174:
 
 	# load x$3 lv$2
 
@@ -2294,7 +2238,7 @@ next_81:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$11 x$3 
+	# DIVresult_$11 x$3  
 
 	# fetch variables
 
@@ -2303,14 +2247,14 @@ next_81:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$11
 	li t4, 18520
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$11
+	# store lv$2 result_$11
 
 	# fetch variables
 
@@ -2318,8 +2262,6 @@ next_81:
 	li t4, 18520
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$11
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -2340,7 +2282,7 @@ next_81:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$12 y$3 
+	# DIVresult_$12 y$3  
 
 	# fetch variables
 
@@ -2349,14 +2291,14 @@ next_81:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$12
 	li t4, 18504
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$12
+	# store lv$3 result_$12
 
 	# fetch variables
 
@@ -2364,8 +2306,6 @@ next_81:
 	li t4, 18504
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$12
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -2386,7 +2326,7 @@ next_81:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$13 i$5 
+	# ADDresult_$13 i$5  
 
 	# fetch variables
 
@@ -2402,7 +2342,7 @@ next_81:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$13
+	# store lv$1 result_$13
 
 	# fetch variables
 
@@ -2411,17 +2351,15 @@ next_81:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$13
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_47
-	j whileCond_47
-secondCond_13:
+	# br whileCond_93
+	j whileCond_93
+secondCond_48:
 
 	# load y$2 lv$3
 
@@ -2436,7 +2374,7 @@ secondCond_13:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$8 y$2 
+	# MODresult_$8 y$2  
 
 	# fetch variables
 
@@ -2445,14 +2383,14 @@ secondCond_13:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$8
 	li t4, 18472
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$8  cond_normalize_$5
+	# ICMPcond_normalize_$5 result_$8  
 
 	# fetch variables
 
@@ -2461,16 +2399,16 @@ secondCond_13:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$5
 	li t4, 18464
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$5 ifTrue_33 next_81
+	# condBr cond_normalize_$5 ifTrue_80 next_174
 
 	# fetch variables
 
@@ -2478,9 +2416,9 @@ secondCond_13:
 	li t4, 18464
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_81
-	j ifTrue_33
-ifTrue_34:
+	beqz t1, next_174
+	j ifTrue_80
+ifTrue_81:
 
 	# load mres lv$10
 
@@ -2495,7 +2433,7 @@ ifTrue_34:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$11 mres
+	# store lv$11 mres
 
 	# fetch variables
 
@@ -2503,8 +2441,6 @@ ifTrue_34:
 	li t4, 18456
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$11 mres
 
 	# get address of lv$11 points to
 	li t4, 19160
@@ -2525,7 +2461,7 @@ ifTrue_34:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$12 ml
+	# store lv$12 ml
 
 	# fetch variables
 
@@ -2534,17 +2470,15 @@ ifTrue_34:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$12 ml
-
 	# get address of lv$12 points to
 	li t4, 19176
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_48
-	j whileCond_48
-next_82:
+	# br whileCond_94
+	j whileCond_94
+next_175:
 
 	# load ml$1 lv$8
 
@@ -2559,7 +2493,7 @@ next_82:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$14 ml$1
+	# store lv$14 ml$1
 
 	# fetch variables
 
@@ -2567,8 +2501,6 @@ next_82:
 	li t4, 18440
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$14 ml$1
 
 	# get address of lv$14 points to
 	li t4, 19208
@@ -2589,7 +2521,7 @@ next_82:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$15 ml$2
+	# store lv$15 ml$2
 
 	# fetch variables
 
@@ -2598,17 +2530,15 @@ next_82:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$15 ml$2
-
 	# get address of lv$15 points to
 	li t4, 19224
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_52
-	j whileCond_52
-whileCond_48:
+	# br whileCond_98
+	j whileCond_98
+whileCond_94:
 
 	# load c lv$12
 
@@ -2623,7 +2553,7 @@ whileCond_48:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c  cond_normalize_$7
+	# ICMPcond_normalize_$7 c  
 
 	# fetch variables
 
@@ -2632,16 +2562,16 @@ whileCond_48:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$7
 	li t4, 18416
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$7 whileBody_48 next_83
+	# condBr cond_normalize_$7 whileBody_94 next_176
 
 	# fetch variables
 
@@ -2649,16 +2579,14 @@ whileCond_48:
 	li t4, 18416
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_83
-	j whileBody_48
-whileBody_48:
+	beqz t1, next_176
+	j whileBody_94
+whileBody_94:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -2666,12 +2594,10 @@ whileBody_48:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -2692,7 +2618,7 @@ whileBody_48:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al
+	# store lv$2 al
 
 	# fetch variables
 
@@ -2700,8 +2626,6 @@ whileBody_48:
 	li t4, 18408
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -2722,7 +2646,7 @@ whileBody_48:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$1
+	# store lv$3 c$1
 
 	# fetch variables
 
@@ -2731,17 +2655,15 @@ whileBody_48:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$1
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_49
-	j whileCond_49
-next_83:
+	# br whileCond_95
+	j whileCond_95
+next_176:
 
 	# load al$2 lv$11
 
@@ -2756,7 +2678,7 @@ next_83:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$2
+	# store lv al$2
 
 	# fetch variables
 
@@ -2764,8 +2686,6 @@ next_83:
 	li t4, 18392
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$2
 
 	# get address of lv points to
 	li t4, 18984
@@ -2786,7 +2706,7 @@ next_83:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$10 ans$11
+	# store lv$10 ans$11
 
 	# fetch variables
 
@@ -2795,17 +2715,15 @@ next_83:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$10 ans$11
-
 	# get address of lv$10 points to
 	li t4, 19144
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_82
-	j next_82
-whileCond_49:
+	# br next_175
+	j next_175
+whileCond_95:
 
 	# load i$6 lv$1
 
@@ -2820,7 +2738,7 @@ whileCond_49:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$6  cond_lt_tmp_$2
+	# ICMPcond_lt_tmp_$2 i$6  
 
 	# fetch variables
 
@@ -2829,14 +2747,14 @@ whileCond_49:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$2
 	li t4, 18368
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$3 cond_lt_tmp_$2
+	# ZEXTcond_tmp_$3 cond_lt_tmp_$2
 
 	# fetch variables
 
@@ -2844,14 +2762,14 @@ whileCond_49:
 	li t4, 18368
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$3
 	li t4, 18360
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$3  cond_$3
+	# ICMPcond_$3 cond_tmp_$3  
 
 	# fetch variables
 
@@ -2860,16 +2778,16 @@ whileCond_49:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$3
 	li t4, 18352
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$3 whileBody_49 next_84
+	# condBr cond_$3 whileBody_95 next_177
 
 	# fetch variables
 
@@ -2877,9 +2795,9 @@ whileCond_49:
 	li t4, 18352
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_84
-	j whileBody_49
-whileBody_49:
+	beqz t1, next_177
+	j whileBody_95
+whileBody_95:
 
 	# load x$4 lv$2
 
@@ -2894,7 +2812,7 @@ whileBody_49:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$14 x$4 
+	# MODresult_$14 x$4  
 
 	# fetch variables
 
@@ -2903,14 +2821,14 @@ whileBody_49:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$14
 	li t4, 18336
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$14  cond_normalize_$8
+	# ICMPcond_normalize_$8 result_$14  
 
 	# fetch variables
 
@@ -2919,16 +2837,16 @@ whileBody_49:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$8
 	li t4, 18328
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$8 ifTrue_35 ifFalse_16
+	# condBr cond_normalize_$8 ifTrue_82 ifFalse_21
 
 	# fetch variables
 
@@ -2936,9 +2854,9 @@ whileBody_49:
 	li t4, 18328
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_16
-	j ifTrue_35
-next_84:
+	beqz t1, ifFalse_21
+	j ifTrue_82
+next_177:
 
 	# load ans$6 lv
 
@@ -2953,7 +2871,7 @@ next_84:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$13 ans$6
+	# store lv$13 ans$6
 
 	# fetch variables
 
@@ -2962,20 +2880,16 @@ next_84:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$13 ans$6
-
 	# get address of lv$13 points to
 	li t4, 19192
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -2983,12 +2897,10 @@ next_84:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -3009,7 +2921,7 @@ next_84:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$1
+	# store lv$2 al$1
 
 	# fetch variables
 
@@ -3017,8 +2929,6 @@ next_84:
 	li t4, 18312
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$1
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -3039,7 +2949,7 @@ next_84:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$2
+	# store lv$3 c$2
 
 	# fetch variables
 
@@ -3048,17 +2958,15 @@ next_84:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$2
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_50
-	j whileCond_50
-ifTrue_35:
+	# br whileCond_96
+	j whileCond_96
+ifTrue_82:
 
 	# load y$4 lv$3
 
@@ -3073,7 +2981,7 @@ ifTrue_35:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$15 y$4 
+	# MODresult_$15 y$4  
 
 	# fetch variables
 
@@ -3082,14 +2990,14 @@ ifTrue_35:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$15
-	li t4, 18288
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$15
+	li t4, 18288
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$15  cond_eq_tmp_
+	# ICMPcond_eq_tmp_ result_$15  
 
 	# fetch variables
 
@@ -3098,15 +3006,15 @@ ifTrue_35:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_
 	li t4, 18280
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$4 cond_eq_tmp_
+	# ZEXTcond_tmp_$4 cond_eq_tmp_
 
 	# fetch variables
 
@@ -3114,14 +3022,14 @@ ifTrue_35:
 	li t4, 18280
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$4
 	li t4, 18272
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$4  cond_$4
+	# ICMPcond_$4 cond_tmp_$4  
 
 	# fetch variables
 
@@ -3130,16 +3038,16 @@ ifTrue_35:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$4
 	li t4, 18264
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$4 ifTrue_36 next_86
+	# condBr cond_$4 ifTrue_83 next_179
 
 	# fetch variables
 
@@ -3147,9 +3055,9 @@ ifTrue_35:
 	li t4, 18264
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_86
-	j ifTrue_36
-ifFalse_16:
+	beqz t1, next_179
+	j ifTrue_83
+ifFalse_21:
 
 	# load y$5 lv$3
 
@@ -3164,7 +3072,7 @@ ifFalse_16:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$18 y$5 
+	# MODresult_$18 y$5  
 
 	# fetch variables
 
@@ -3173,14 +3081,14 @@ ifFalse_16:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$18
 	li t4, 18248
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$18  cond_normalize_$9
+	# ICMPcond_normalize_$9 result_$18  
 
 	# fetch variables
 
@@ -3189,16 +3097,16 @@ ifFalse_16:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$9
 	li t4, 18240
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$9 ifTrue_37 next_87
+	# condBr cond_normalize_$9 ifTrue_84 next_180
 
 	# fetch variables
 
@@ -3206,9 +3114,9 @@ ifFalse_16:
 	li t4, 18240
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_87
-	j ifTrue_37
-next_85:
+	beqz t1, next_180
+	j ifTrue_84
+next_178:
 
 	# load x$5 lv$2
 
@@ -3223,7 +3131,7 @@ next_85:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$21 x$5 
+	# DIVresult_$21 x$5  
 
 	# fetch variables
 
@@ -3232,14 +3140,14 @@ next_85:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$21
 	li t4, 18224
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$21
+	# store lv$2 result_$21
 
 	# fetch variables
 
@@ -3247,8 +3155,6 @@ next_85:
 	li t4, 18224
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$21
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -3269,7 +3175,7 @@ next_85:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$22 y$6 
+	# DIVresult_$22 y$6  
 
 	# fetch variables
 
@@ -3278,14 +3184,14 @@ next_85:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$22
 	li t4, 18208
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$22
+	# store lv$3 result_$22
 
 	# fetch variables
 
@@ -3293,8 +3199,6 @@ next_85:
 	li t4, 18208
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$22
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -3315,7 +3219,7 @@ next_85:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$23 i$9 
+	# ADDresult_$23 i$9  
 
 	# fetch variables
 
@@ -3331,7 +3235,7 @@ next_85:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$23
+	# store lv$1 result_$23
 
 	# fetch variables
 
@@ -3340,17 +3244,15 @@ next_85:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$23
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_49
-	j whileCond_49
-ifTrue_36:
+	# br whileCond_95
+	j whileCond_95
+ifTrue_83:
 
 	# load ans$4 lv
 
@@ -3412,7 +3314,7 @@ ifTrue_36:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$16  SHIFT_TABLE$5
+	# MULresult_$16  SHIFT_TABLE$5 
 
 	# fetch variables
 	li t1, 1
@@ -3428,7 +3330,7 @@ ifTrue_36:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$17 ans$4 result_$16
+	# ADDresult_$17 ans$4 result_$16 
 
 	# fetch variables
 
@@ -3448,7 +3350,7 @@ ifTrue_36:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$17
+	# store lv result_$17
 
 	# fetch variables
 
@@ -3457,21 +3359,19 @@ ifTrue_36:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$17
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_86
-	j next_86
-next_86:
+	# br next_179
+	j next_179
+next_179:
 
-	# br next_85
-	j next_85
-ifTrue_37:
+	# br next_178
+	j next_178
+ifTrue_84:
 
 	# load ans$5 lv
 
@@ -3533,7 +3433,7 @@ ifTrue_37:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$19  SHIFT_TABLE$7
+	# MULresult_$19  SHIFT_TABLE$7 
 
 	# fetch variables
 	li t1, 1
@@ -3549,7 +3449,7 @@ ifTrue_37:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$20 ans$5 result_$19
+	# ADDresult_$20 ans$5 result_$19 
 
 	# fetch variables
 
@@ -3569,7 +3469,7 @@ ifTrue_37:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$20
+	# store lv result_$20
 
 	# fetch variables
 
@@ -3578,21 +3478,19 @@ ifTrue_37:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$20
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_87
-	j next_87
-next_87:
+	# br next_180
+	j next_180
+next_180:
 
-	# br next_85
-	j next_85
-whileCond_50:
+	# br next_178
+	j next_178
+whileCond_96:
 
 	# load i$10 lv$1
 
@@ -3607,7 +3505,7 @@ whileCond_50:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$10  cond_lt_tmp_$3
+	# ICMPcond_lt_tmp_$3 i$10  
 
 	# fetch variables
 
@@ -3616,14 +3514,14 @@ whileCond_50:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$3
 	li t4, 18080
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$5 cond_lt_tmp_$3
+	# ZEXTcond_tmp_$5 cond_lt_tmp_$3
 
 	# fetch variables
 
@@ -3631,14 +3529,14 @@ whileCond_50:
 	li t4, 18080
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$5
 	li t4, 18072
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$5  cond_$5
+	# ICMPcond_$5 cond_tmp_$5  
 
 	# fetch variables
 
@@ -3647,16 +3545,16 @@ whileCond_50:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$5
 	li t4, 18064
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$5 whileBody_50 next_88
+	# condBr cond_$5 whileBody_96 next_181
 
 	# fetch variables
 
@@ -3664,9 +3562,9 @@ whileCond_50:
 	li t4, 18064
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_88
-	j whileBody_50
-whileBody_50:
+	beqz t1, next_181
+	j whileBody_96
+whileBody_96:
 
 	# load x$6 lv$2
 
@@ -3681,7 +3579,7 @@ whileBody_50:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$24 x$6 
+	# MODresult_$24 x$6  
 
 	# fetch variables
 
@@ -3690,14 +3588,14 @@ whileBody_50:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$24
 	li t4, 18048
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$24  cond_normalize_$10
+	# ICMPcond_normalize_$10 result_$24  
 
 	# fetch variables
 
@@ -3706,16 +3604,16 @@ whileBody_50:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$10
 	li t4, 18040
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$10 secondCond_14 next_89
+	# condBr cond_normalize_$10 secondCond_49 next_182
 
 	# fetch variables
 
@@ -3723,9 +3621,9 @@ whileBody_50:
 	li t4, 18040
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_89
-	j secondCond_14
-next_88:
+	beqz t1, next_182
+	j secondCond_49
+next_181:
 
 	# load ans$8 lv
 
@@ -3740,7 +3638,7 @@ next_88:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$12 ans$8
+	# store lv$12 ans$8
 
 	# fetch variables
 
@@ -3749,28 +3647,26 @@ next_88:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$12 ans$8
-
 	# get address of lv$12 points to
 	li t4, 19176
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$1
+	# ICMPcond_gt_tmp_$1   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$1
 	li t4, 18024
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$6 cond_gt_tmp_$1
+	# ZEXTcond_tmp_$6 cond_gt_tmp_$1
 
 	# fetch variables
 
@@ -3778,14 +3674,14 @@ next_88:
 	li t4, 18024
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$6
 	li t4, 18016
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$6  cond_$6
+	# ICMPcond_$6 cond_tmp_$6  
 
 	# fetch variables
 
@@ -3794,16 +3690,16 @@ next_88:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$6
 	li t4, 18008
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$6 ifTrue_39 ifFalse_17
+	# condBr cond_$6 ifTrue_86 ifFalse_22
 
 	# fetch variables
 
@@ -3811,9 +3707,9 @@ next_88:
 	li t4, 18008
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_17
-	j ifTrue_39
-ifTrue_38:
+	beqz t1, ifFalse_22
+	j ifTrue_86
+ifTrue_85:
 
 	# load ans$7 lv
 
@@ -3875,7 +3771,7 @@ ifTrue_38:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$26  SHIFT_TABLE$9
+	# MULresult_$26  SHIFT_TABLE$9 
 
 	# fetch variables
 	li t1, 1
@@ -3891,7 +3787,7 @@ ifTrue_38:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$27 ans$7 result_$26
+	# ADDresult_$27 ans$7 result_$26 
 
 	# fetch variables
 
@@ -3911,7 +3807,7 @@ ifTrue_38:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$27
+	# store lv result_$27
 
 	# fetch variables
 
@@ -3920,17 +3816,15 @@ ifTrue_38:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$27
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_89
-	j next_89
-next_89:
+	# br next_182
+	j next_182
+next_182:
 
 	# load x$7 lv$2
 
@@ -3945,7 +3839,7 @@ next_89:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$28 x$7 
+	# DIVresult_$28 x$7  
 
 	# fetch variables
 
@@ -3954,14 +3848,14 @@ next_89:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$28
 	li t4, 17944
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$28
+	# store lv$2 result_$28
 
 	# fetch variables
 
@@ -3969,8 +3863,6 @@ next_89:
 	li t4, 17944
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$28
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -3991,7 +3883,7 @@ next_89:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$29 y$8 
+	# DIVresult_$29 y$8  
 
 	# fetch variables
 
@@ -4000,14 +3892,14 @@ next_89:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$29
 	li t4, 17928
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$29
+	# store lv$3 result_$29
 
 	# fetch variables
 
@@ -4015,8 +3907,6 @@ next_89:
 	li t4, 17928
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$29
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -4037,7 +3927,7 @@ next_89:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$30 i$12 
+	# ADDresult_$30 i$12  
 
 	# fetch variables
 
@@ -4053,7 +3943,7 @@ next_89:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$30
+	# store lv$1 result_$30
 
 	# fetch variables
 
@@ -4062,17 +3952,15 @@ next_89:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$30
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_50
-	j whileCond_50
-secondCond_14:
+	# br whileCond_96
+	j whileCond_96
+secondCond_49:
 
 	# load y$7 lv$3
 
@@ -4087,7 +3975,7 @@ secondCond_14:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$25 y$7 
+	# MODresult_$25 y$7  
 
 	# fetch variables
 
@@ -4096,14 +3984,14 @@ secondCond_14:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$25
 	li t4, 17896
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$25  cond_normalize_$11
+	# ICMPcond_normalize_$11 result_$25  
 
 	# fetch variables
 
@@ -4112,16 +4000,16 @@ secondCond_14:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$11
 	li t4, 17888
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$11 ifTrue_38 next_89
+	# condBr cond_normalize_$11 ifTrue_85 next_182
 
 	# fetch variables
 
@@ -4129,16 +4017,14 @@ secondCond_14:
 	li t4, 17888
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_89
-	j ifTrue_38
-ifTrue_39:
+	beqz t1, next_182
+	j ifTrue_85
+ifTrue_86:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -4146,29 +4032,25 @@ ifTrue_39:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_90
-	j next_90
-ifFalse_17:
+	# br next_183
+	j next_183
+ifFalse_22:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -4189,7 +4071,7 @@ ifFalse_17:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$31 c$3 
+	# MULresult_$31 c$3  
 
 	# fetch variables
 
@@ -4205,7 +4087,7 @@ ifFalse_17:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$31
+	# store lv$2 result_$31
 
 	# fetch variables
 
@@ -4214,20 +4096,16 @@ ifFalse_17:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$31
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -4235,9 +4113,9 @@ ifFalse_17:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_51
-	j whileCond_51
-next_90:
+	# br whileCond_97
+	j whileCond_97
+next_183:
 
 	# load ans$10 lv
 
@@ -4252,7 +4130,7 @@ next_90:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$12 ans$10
+	# store lv$12 ans$10
 
 	# fetch variables
 
@@ -4260,8 +4138,6 @@ next_90:
 	li t4, 17864
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$12 ans$10
 
 	# get address of lv$12 points to
 	li t4, 19176
@@ -4282,7 +4158,7 @@ next_90:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$11 sum
+	# store lv$11 sum
 
 	# fetch variables
 
@@ -4291,17 +4167,15 @@ next_90:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$11 sum
-
 	# get address of lv$11 points to
 	li t4, 19160
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_48
-	j whileCond_48
-whileCond_51:
+	# br whileCond_94
+	j whileCond_94
+whileCond_97:
 
 	# load i$13 lv$1
 
@@ -4316,7 +4190,7 @@ whileCond_51:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$13  cond_lt_tmp_$4
+	# ICMPcond_lt_tmp_$4 i$13  
 
 	# fetch variables
 
@@ -4325,14 +4199,14 @@ whileCond_51:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$4
 	li t4, 17840
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$7 cond_lt_tmp_$4
+	# ZEXTcond_tmp_$7 cond_lt_tmp_$4
 
 	# fetch variables
 
@@ -4340,14 +4214,14 @@ whileCond_51:
 	li t4, 17840
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$7
 	li t4, 17832
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$7  cond_$7
+	# ICMPcond_$7 cond_tmp_$7  
 
 	# fetch variables
 
@@ -4356,16 +4230,16 @@ whileCond_51:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$7
 	li t4, 17824
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$7 whileBody_51 next_91
+	# condBr cond_$7 whileBody_97 next_184
 
 	# fetch variables
 
@@ -4373,9 +4247,9 @@ whileCond_51:
 	li t4, 17824
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_91
-	j whileBody_51
-whileBody_51:
+	beqz t1, next_184
+	j whileBody_97
+whileBody_97:
 
 	# load x$8 lv$2
 
@@ -4390,7 +4264,7 @@ whileBody_51:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$32 x$8 
+	# MODresult_$32 x$8  
 
 	# fetch variables
 
@@ -4399,14 +4273,14 @@ whileBody_51:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$32
 	li t4, 17808
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$32  cond_normalize_$12
+	# ICMPcond_normalize_$12 result_$32  
 
 	# fetch variables
 
@@ -4415,16 +4289,16 @@ whileBody_51:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$12
 	li t4, 17800
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$12 secondCond_15 next_92
+	# condBr cond_normalize_$12 secondCond_50 next_185
 
 	# fetch variables
 
@@ -4432,13 +4306,13 @@ whileBody_51:
 	li t4, 17800
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_92
-	j secondCond_15
-next_91:
+	beqz t1, next_185
+	j secondCond_50
+next_184:
 
-	# br next_90
-	j next_90
-ifTrue_40:
+	# br next_183
+	j next_183
+ifTrue_87:
 
 	# load ans$9 lv
 
@@ -4500,7 +4374,7 @@ ifTrue_40:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$34  SHIFT_TABLE$11
+	# MULresult_$34  SHIFT_TABLE$11 
 
 	# fetch variables
 	li t1, 1
@@ -4516,7 +4390,7 @@ ifTrue_40:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$35 ans$9 result_$34
+	# ADDresult_$35 ans$9 result_$34 
 
 	# fetch variables
 
@@ -4536,7 +4410,7 @@ ifTrue_40:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$35
+	# store lv result_$35
 
 	# fetch variables
 
@@ -4545,17 +4419,15 @@ ifTrue_40:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$35
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_92
-	j next_92
-next_92:
+	# br next_185
+	j next_185
+next_185:
 
 	# load x$9 lv$2
 
@@ -4570,7 +4442,7 @@ next_92:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$36 x$9 
+	# DIVresult_$36 x$9  
 
 	# fetch variables
 
@@ -4579,14 +4451,14 @@ next_92:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$36
 	li t4, 17736
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$36
+	# store lv$2 result_$36
 
 	# fetch variables
 
@@ -4594,8 +4466,6 @@ next_92:
 	li t4, 17736
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$36
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -4616,7 +4486,7 @@ next_92:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$37 y$10 
+	# DIVresult_$37 y$10  
 
 	# fetch variables
 
@@ -4625,14 +4495,14 @@ next_92:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$37
 	li t4, 17720
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$37
+	# store lv$3 result_$37
 
 	# fetch variables
 
@@ -4640,8 +4510,6 @@ next_92:
 	li t4, 17720
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$37
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -4662,7 +4530,7 @@ next_92:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$38 i$15 
+	# ADDresult_$38 i$15  
 
 	# fetch variables
 
@@ -4678,7 +4546,7 @@ next_92:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$38
+	# store lv$1 result_$38
 
 	# fetch variables
 
@@ -4687,17 +4555,15 @@ next_92:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$38
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_51
-	j whileCond_51
-secondCond_15:
+	# br whileCond_97
+	j whileCond_97
+secondCond_50:
 
 	# load y$9 lv$3
 
@@ -4712,7 +4578,7 @@ secondCond_15:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$33 y$9 
+	# MODresult_$33 y$9  
 
 	# fetch variables
 
@@ -4721,14 +4587,14 @@ secondCond_15:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$33
 	li t4, 17688
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$33  cond_normalize_$13
+	# ICMPcond_normalize_$13 result_$33  
 
 	# fetch variables
 
@@ -4737,16 +4603,16 @@ secondCond_15:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$13
 	li t4, 17680
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$13 ifTrue_40 next_92
+	# condBr cond_normalize_$13 ifTrue_87 next_185
 
 	# fetch variables
 
@@ -4754,9 +4620,9 @@ secondCond_15:
 	li t4, 17680
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_92
-	j ifTrue_40
-whileCond_52:
+	beqz t1, next_185
+	j ifTrue_87
+whileCond_98:
 
 	# load c$4 lv$15
 
@@ -4771,7 +4637,7 @@ whileCond_52:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$4  cond_normalize_$14
+	# ICMPcond_normalize_$14 c$4  
 
 	# fetch variables
 
@@ -4780,16 +4646,16 @@ whileCond_52:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$14
 	li t4, 17664
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$14 whileBody_52 next_93
+	# condBr cond_normalize_$14 whileBody_98 next_186
 
 	# fetch variables
 
@@ -4797,16 +4663,14 @@ whileCond_52:
 	li t4, 17664
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_93
-	j whileBody_52
-whileBody_52:
+	beqz t1, next_186
+	j whileBody_98
+whileBody_98:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -4814,12 +4678,10 @@ whileBody_52:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -4840,7 +4702,7 @@ whileBody_52:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$3
+	# store lv$2 al$3
 
 	# fetch variables
 
@@ -4848,8 +4710,6 @@ whileBody_52:
 	li t4, 17656
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$3
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -4870,7 +4730,7 @@ whileBody_52:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$5
+	# store lv$3 c$5
 
 	# fetch variables
 
@@ -4879,17 +4739,15 @@ whileBody_52:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$5
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_53
-	j whileCond_53
-next_93:
+	# br whileCond_99
+	j whileCond_99
+next_186:
 
 	# load al$5 lv$14
 
@@ -4904,7 +4762,7 @@ next_93:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$5
+	# store lv al$5
 
 	# fetch variables
 
@@ -4912,8 +4770,6 @@ next_93:
 	li t4, 17640
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$5
 
 	# get address of lv points to
 	li t4, 18984
@@ -4934,7 +4790,7 @@ next_93:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$8 ans$19
+	# store lv$8 ans$19
 
 	# fetch variables
 
@@ -4942,8 +4798,6 @@ next_93:
 	li t4, 17632
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$8 ans$19
 
 	# get address of lv$8 points to
 	li t4, 19112
@@ -4964,7 +4818,7 @@ next_93:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$2
+	# store lv$2 mr$2
 
 	# fetch variables
 
@@ -4973,20 +4827,16 @@ next_93:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$2
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -5007,7 +4857,7 @@ next_93:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$18  cond_ge_tmp_
+	# ICMPcond_ge_tmp_ y$18  
 
 	# fetch variables
 
@@ -5016,15 +4866,15 @@ next_93:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 15
+	slt t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_ge_tmp_
 	li t4, 17608
 	add t4, sp, t4
-	slt t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$13 cond_ge_tmp_
+	# ZEXTcond_tmp_$13 cond_ge_tmp_
 
 	# fetch variables
 
@@ -5032,14 +4882,14 @@ next_93:
 	li t4, 17608
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$13
 	li t4, 17600
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$13  cond_$13
+	# ICMPcond_$13 cond_tmp_$13  
 
 	# fetch variables
 
@@ -5048,16 +4898,16 @@ next_93:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$13
 	li t4, 17592
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$13 ifTrue_47 ifFalse_20
+	# condBr cond_$13 ifTrue_94 ifFalse_25
 
 	# fetch variables
 
@@ -5065,9 +4915,9 @@ next_93:
 	li t4, 17592
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_20
-	j ifTrue_47
-whileCond_53:
+	beqz t1, ifFalse_25
+	j ifTrue_94
+whileCond_99:
 
 	# load i$16 lv$1
 
@@ -5082,7 +4932,7 @@ whileCond_53:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$16  cond_lt_tmp_$5
+	# ICMPcond_lt_tmp_$5 i$16  
 
 	# fetch variables
 
@@ -5091,14 +4941,14 @@ whileCond_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$5
 	li t4, 17576
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$8 cond_lt_tmp_$5
+	# ZEXTcond_tmp_$8 cond_lt_tmp_$5
 
 	# fetch variables
 
@@ -5106,14 +4956,14 @@ whileCond_53:
 	li t4, 17576
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$8
 	li t4, 17568
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$8  cond_$8
+	# ICMPcond_$8 cond_tmp_$8  
 
 	# fetch variables
 
@@ -5122,16 +4972,16 @@ whileCond_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$8
 	li t4, 17560
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$8 whileBody_53 next_94
+	# condBr cond_$8 whileBody_99 next_187
 
 	# fetch variables
 
@@ -5139,9 +4989,9 @@ whileCond_53:
 	li t4, 17560
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_94
-	j whileBody_53
-whileBody_53:
+	beqz t1, next_187
+	j whileBody_99
+whileBody_99:
 
 	# load x$10 lv$2
 
@@ -5156,7 +5006,7 @@ whileBody_53:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$39 x$10 
+	# MODresult_$39 x$10  
 
 	# fetch variables
 
@@ -5165,14 +5015,14 @@ whileBody_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$39
 	li t4, 17544
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$39  cond_normalize_$15
+	# ICMPcond_normalize_$15 result_$39  
 
 	# fetch variables
 
@@ -5181,16 +5031,16 @@ whileBody_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$15
 	li t4, 17536
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$15 ifTrue_41 ifFalse_18
+	# condBr cond_normalize_$15 ifTrue_88 ifFalse_23
 
 	# fetch variables
 
@@ -5198,9 +5048,9 @@ whileBody_53:
 	li t4, 17536
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_18
-	j ifTrue_41
-next_94:
+	beqz t1, ifFalse_23
+	j ifTrue_88
+next_187:
 
 	# load ans$14 lv
 
@@ -5215,7 +5065,7 @@ next_94:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$16 ans$14
+	# store lv$16 ans$14
 
 	# fetch variables
 
@@ -5224,20 +5074,16 @@ next_94:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$16 ans$14
-
 	# get address of lv$16 points to
 	li t4, 19240
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -5245,12 +5091,10 @@ next_94:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -5271,7 +5115,7 @@ next_94:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$4
+	# store lv$2 al$4
 
 	# fetch variables
 
@@ -5279,8 +5123,6 @@ next_94:
 	li t4, 17520
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$4
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -5301,7 +5143,7 @@ next_94:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$6
+	# store lv$3 c$6
 
 	# fetch variables
 
@@ -5310,17 +5152,15 @@ next_94:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$6
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_54
-	j whileCond_54
-ifTrue_41:
+	# br whileCond_100
+	j whileCond_100
+ifTrue_88:
 
 	# load y$11 lv$3
 
@@ -5335,7 +5175,7 @@ ifTrue_41:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$40 y$11 
+	# MODresult_$40 y$11  
 
 	# fetch variables
 
@@ -5344,14 +5184,14 @@ ifTrue_41:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$40
-	li t4, 17496
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$40
+	li t4, 17496
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$40  cond_eq_tmp_$1
+	# ICMPcond_eq_tmp_$1 result_$40  
 
 	# fetch variables
 
@@ -5360,15 +5200,15 @@ ifTrue_41:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$1
 	li t4, 17488
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$9 cond_eq_tmp_$1
+	# ZEXTcond_tmp_$9 cond_eq_tmp_$1
 
 	# fetch variables
 
@@ -5376,14 +5216,14 @@ ifTrue_41:
 	li t4, 17488
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$9
 	li t4, 17480
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$9  cond_$9
+	# ICMPcond_$9 cond_tmp_$9  
 
 	# fetch variables
 
@@ -5392,16 +5232,16 @@ ifTrue_41:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$9
 	li t4, 17472
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$9 ifTrue_42 next_96
+	# condBr cond_$9 ifTrue_89 next_189
 
 	# fetch variables
 
@@ -5409,9 +5249,9 @@ ifTrue_41:
 	li t4, 17472
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_96
-	j ifTrue_42
-ifFalse_18:
+	beqz t1, next_189
+	j ifTrue_89
+ifFalse_23:
 
 	# load y$12 lv$3
 
@@ -5426,7 +5266,7 @@ ifFalse_18:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$43 y$12 
+	# MODresult_$43 y$12  
 
 	# fetch variables
 
@@ -5435,14 +5275,14 @@ ifFalse_18:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$43
 	li t4, 17456
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$43  cond_normalize_$16
+	# ICMPcond_normalize_$16 result_$43  
 
 	# fetch variables
 
@@ -5451,16 +5291,16 @@ ifFalse_18:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$16
 	li t4, 17448
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$16 ifTrue_43 next_97
+	# condBr cond_normalize_$16 ifTrue_90 next_190
 
 	# fetch variables
 
@@ -5468,9 +5308,9 @@ ifFalse_18:
 	li t4, 17448
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_97
-	j ifTrue_43
-next_95:
+	beqz t1, next_190
+	j ifTrue_90
+next_188:
 
 	# load x$11 lv$2
 
@@ -5485,7 +5325,7 @@ next_95:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$46 x$11 
+	# DIVresult_$46 x$11  
 
 	# fetch variables
 
@@ -5494,14 +5334,14 @@ next_95:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$46
 	li t4, 17432
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$46
+	# store lv$2 result_$46
 
 	# fetch variables
 
@@ -5509,8 +5349,6 @@ next_95:
 	li t4, 17432
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$46
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -5531,7 +5369,7 @@ next_95:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$47 y$13 
+	# DIVresult_$47 y$13  
 
 	# fetch variables
 
@@ -5540,14 +5378,14 @@ next_95:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$47
 	li t4, 17416
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$47
+	# store lv$3 result_$47
 
 	# fetch variables
 
@@ -5555,8 +5393,6 @@ next_95:
 	li t4, 17416
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$47
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -5577,7 +5413,7 @@ next_95:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$48 i$19 
+	# ADDresult_$48 i$19  
 
 	# fetch variables
 
@@ -5593,7 +5429,7 @@ next_95:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$48
+	# store lv$1 result_$48
 
 	# fetch variables
 
@@ -5602,17 +5438,15 @@ next_95:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$48
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_53
-	j whileCond_53
-ifTrue_42:
+	# br whileCond_99
+	j whileCond_99
+ifTrue_89:
 
 	# load ans$12 lv
 
@@ -5674,7 +5508,7 @@ ifTrue_42:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$41  SHIFT_TABLE$13
+	# MULresult_$41  SHIFT_TABLE$13 
 
 	# fetch variables
 	li t1, 1
@@ -5690,7 +5524,7 @@ ifTrue_42:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$42 ans$12 result_$41
+	# ADDresult_$42 ans$12 result_$41 
 
 	# fetch variables
 
@@ -5710,7 +5544,7 @@ ifTrue_42:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$42
+	# store lv result_$42
 
 	# fetch variables
 
@@ -5719,21 +5553,19 @@ ifTrue_42:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$42
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_96
-	j next_96
-next_96:
+	# br next_189
+	j next_189
+next_189:
 
-	# br next_95
-	j next_95
-ifTrue_43:
+	# br next_188
+	j next_188
+ifTrue_90:
 
 	# load ans$13 lv
 
@@ -5795,7 +5627,7 @@ ifTrue_43:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$44  SHIFT_TABLE$15
+	# MULresult_$44  SHIFT_TABLE$15 
 
 	# fetch variables
 	li t1, 1
@@ -5811,7 +5643,7 @@ ifTrue_43:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$45 ans$13 result_$44
+	# ADDresult_$45 ans$13 result_$44 
 
 	# fetch variables
 
@@ -5831,7 +5663,7 @@ ifTrue_43:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$45
+	# store lv result_$45
 
 	# fetch variables
 
@@ -5840,21 +5672,19 @@ ifTrue_43:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$45
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_97
-	j next_97
-next_97:
+	# br next_190
+	j next_190
+next_190:
 
-	# br next_95
-	j next_95
-whileCond_54:
+	# br next_188
+	j next_188
+whileCond_100:
 
 	# load i$20 lv$1
 
@@ -5869,7 +5699,7 @@ whileCond_54:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$20  cond_lt_tmp_$6
+	# ICMPcond_lt_tmp_$6 i$20  
 
 	# fetch variables
 
@@ -5878,14 +5708,14 @@ whileCond_54:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$6
 	li t4, 17288
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$10 cond_lt_tmp_$6
+	# ZEXTcond_tmp_$10 cond_lt_tmp_$6
 
 	# fetch variables
 
@@ -5893,14 +5723,14 @@ whileCond_54:
 	li t4, 17288
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$10
 	li t4, 17280
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$10  cond_$10
+	# ICMPcond_$10 cond_tmp_$10  
 
 	# fetch variables
 
@@ -5909,16 +5739,16 @@ whileCond_54:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$10
 	li t4, 17272
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$10 whileBody_54 next_98
+	# condBr cond_$10 whileBody_100 next_191
 
 	# fetch variables
 
@@ -5926,9 +5756,9 @@ whileCond_54:
 	li t4, 17272
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_98
-	j whileBody_54
-whileBody_54:
+	beqz t1, next_191
+	j whileBody_100
+whileBody_100:
 
 	# load x$12 lv$2
 
@@ -5943,7 +5773,7 @@ whileBody_54:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$49 x$12 
+	# MODresult_$49 x$12  
 
 	# fetch variables
 
@@ -5952,14 +5782,14 @@ whileBody_54:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$49
 	li t4, 17256
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$49  cond_normalize_$17
+	# ICMPcond_normalize_$17 result_$49  
 
 	# fetch variables
 
@@ -5968,16 +5798,16 @@ whileBody_54:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$17
 	li t4, 17248
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$17 secondCond_16 next_99
+	# condBr cond_normalize_$17 secondCond_51 next_192
 
 	# fetch variables
 
@@ -5985,9 +5815,9 @@ whileBody_54:
 	li t4, 17248
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_99
-	j secondCond_16
-next_98:
+	beqz t1, next_192
+	j secondCond_51
+next_191:
 
 	# load ans$16 lv
 
@@ -6002,7 +5832,7 @@ next_98:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$15 ans$16
+	# store lv$15 ans$16
 
 	# fetch variables
 
@@ -6011,28 +5841,26 @@ next_98:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$15 ans$16
-
 	# get address of lv$15 points to
 	li t4, 19224
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$2
+	# ICMPcond_gt_tmp_$2   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$2
 	li t4, 17232
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$11 cond_gt_tmp_$2
+	# ZEXTcond_tmp_$11 cond_gt_tmp_$2
 
 	# fetch variables
 
@@ -6040,14 +5868,14 @@ next_98:
 	li t4, 17232
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$11
 	li t4, 17224
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$11  cond_$11
+	# ICMPcond_$11 cond_tmp_$11  
 
 	# fetch variables
 
@@ -6056,16 +5884,16 @@ next_98:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$11
 	li t4, 17216
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$11 ifTrue_45 ifFalse_19
+	# condBr cond_$11 ifTrue_92 ifFalse_24
 
 	# fetch variables
 
@@ -6073,9 +5901,9 @@ next_98:
 	li t4, 17216
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_19
-	j ifTrue_45
-ifTrue_44:
+	beqz t1, ifFalse_24
+	j ifTrue_92
+ifTrue_91:
 
 	# load ans$15 lv
 
@@ -6137,7 +5965,7 @@ ifTrue_44:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$51  SHIFT_TABLE$17
+	# MULresult_$51  SHIFT_TABLE$17 
 
 	# fetch variables
 	li t1, 1
@@ -6153,7 +5981,7 @@ ifTrue_44:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$52 ans$15 result_$51
+	# ADDresult_$52 ans$15 result_$51 
 
 	# fetch variables
 
@@ -6173,7 +6001,7 @@ ifTrue_44:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$52
+	# store lv result_$52
 
 	# fetch variables
 
@@ -6182,17 +6010,15 @@ ifTrue_44:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$52
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_99
-	j next_99
-next_99:
+	# br next_192
+	j next_192
+next_192:
 
 	# load x$13 lv$2
 
@@ -6207,7 +6033,7 @@ next_99:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$53 x$13 
+	# DIVresult_$53 x$13  
 
 	# fetch variables
 
@@ -6216,14 +6042,14 @@ next_99:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$53
 	li t4, 17152
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$53
+	# store lv$2 result_$53
 
 	# fetch variables
 
@@ -6231,8 +6057,6 @@ next_99:
 	li t4, 17152
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$53
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -6253,7 +6077,7 @@ next_99:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$54 y$15 
+	# DIVresult_$54 y$15  
 
 	# fetch variables
 
@@ -6262,14 +6086,14 @@ next_99:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$54
 	li t4, 17136
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$54
+	# store lv$3 result_$54
 
 	# fetch variables
 
@@ -6277,8 +6101,6 @@ next_99:
 	li t4, 17136
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$54
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -6299,7 +6121,7 @@ next_99:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$55 i$22 
+	# ADDresult_$55 i$22  
 
 	# fetch variables
 
@@ -6315,7 +6137,7 @@ next_99:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$55
+	# store lv$1 result_$55
 
 	# fetch variables
 
@@ -6324,17 +6146,15 @@ next_99:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$55
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_54
-	j whileCond_54
-secondCond_16:
+	# br whileCond_100
+	j whileCond_100
+secondCond_51:
 
 	# load y$14 lv$3
 
@@ -6349,7 +6169,7 @@ secondCond_16:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$50 y$14 
+	# MODresult_$50 y$14  
 
 	# fetch variables
 
@@ -6358,14 +6178,14 @@ secondCond_16:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$50
 	li t4, 17104
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$50  cond_normalize_$18
+	# ICMPcond_normalize_$18 result_$50  
 
 	# fetch variables
 
@@ -6374,16 +6194,16 @@ secondCond_16:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$18
 	li t4, 17096
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$18 ifTrue_44 next_99
+	# condBr cond_normalize_$18 ifTrue_91 next_192
 
 	# fetch variables
 
@@ -6391,16 +6211,14 @@ secondCond_16:
 	li t4, 17096
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_99
-	j ifTrue_44
-ifTrue_45:
+	beqz t1, next_192
+	j ifTrue_91
+ifTrue_92:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -6408,29 +6226,25 @@ ifTrue_45:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_100
-	j next_100
-ifFalse_19:
+	# br next_193
+	j next_193
+ifFalse_24:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -6451,7 +6265,7 @@ ifFalse_19:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$56 c$7 
+	# MULresult_$56 c$7  
 
 	# fetch variables
 
@@ -6467,7 +6281,7 @@ ifFalse_19:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$56
+	# store lv$2 result_$56
 
 	# fetch variables
 
@@ -6476,20 +6290,16 @@ ifFalse_19:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$56
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -6497,9 +6307,9 @@ ifFalse_19:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_55
-	j whileCond_55
-next_100:
+	# br whileCond_101
+	j whileCond_101
+next_193:
 
 	# load ans$18 lv
 
@@ -6514,7 +6324,7 @@ next_100:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$15 ans$18
+	# store lv$15 ans$18
 
 	# fetch variables
 
@@ -6522,8 +6332,6 @@ next_100:
 	li t4, 17072
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$15 ans$18
 
 	# get address of lv$15 points to
 	li t4, 19224
@@ -6544,7 +6352,7 @@ next_100:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$14 sum$1
+	# store lv$14 sum$1
 
 	# fetch variables
 
@@ -6553,17 +6361,15 @@ next_100:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$14 sum$1
-
 	# get address of lv$14 points to
 	li t4, 19208
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_52
-	j whileCond_52
-whileCond_55:
+	# br whileCond_98
+	j whileCond_98
+whileCond_101:
 
 	# load i$23 lv$1
 
@@ -6578,7 +6384,7 @@ whileCond_55:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$23  cond_lt_tmp_$7
+	# ICMPcond_lt_tmp_$7 i$23  
 
 	# fetch variables
 
@@ -6587,14 +6393,14 @@ whileCond_55:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$7
 	li t4, 17048
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$12 cond_lt_tmp_$7
+	# ZEXTcond_tmp_$12 cond_lt_tmp_$7
 
 	# fetch variables
 
@@ -6602,14 +6408,14 @@ whileCond_55:
 	li t4, 17048
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$12
 	li t4, 17040
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$12  cond_$12
+	# ICMPcond_$12 cond_tmp_$12  
 
 	# fetch variables
 
@@ -6618,16 +6424,16 @@ whileCond_55:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$12
 	li t4, 17032
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$12 whileBody_55 next_101
+	# condBr cond_$12 whileBody_101 next_194
 
 	# fetch variables
 
@@ -6635,9 +6441,9 @@ whileCond_55:
 	li t4, 17032
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_101
-	j whileBody_55
-whileBody_55:
+	beqz t1, next_194
+	j whileBody_101
+whileBody_101:
 
 	# load x$14 lv$2
 
@@ -6652,7 +6458,7 @@ whileBody_55:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$57 x$14 
+	# MODresult_$57 x$14  
 
 	# fetch variables
 
@@ -6661,14 +6467,14 @@ whileBody_55:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$57
 	li t4, 17016
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$57  cond_normalize_$19
+	# ICMPcond_normalize_$19 result_$57  
 
 	# fetch variables
 
@@ -6677,16 +6483,16 @@ whileBody_55:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$19
 	li t4, 17008
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$19 secondCond_17 next_102
+	# condBr cond_normalize_$19 secondCond_52 next_195
 
 	# fetch variables
 
@@ -6694,13 +6500,13 @@ whileBody_55:
 	li t4, 17008
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_102
-	j secondCond_17
-next_101:
+	beqz t1, next_195
+	j secondCond_52
+next_194:
 
-	# br next_100
-	j next_100
-ifTrue_46:
+	# br next_193
+	j next_193
+ifTrue_93:
 
 	# load ans$17 lv
 
@@ -6762,7 +6568,7 @@ ifTrue_46:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$59  SHIFT_TABLE$19
+	# MULresult_$59  SHIFT_TABLE$19 
 
 	# fetch variables
 	li t1, 1
@@ -6778,7 +6584,7 @@ ifTrue_46:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$60 ans$17 result_$59
+	# ADDresult_$60 ans$17 result_$59 
 
 	# fetch variables
 
@@ -6798,7 +6604,7 @@ ifTrue_46:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$60
+	# store lv result_$60
 
 	# fetch variables
 
@@ -6807,17 +6613,15 @@ ifTrue_46:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$60
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_102
-	j next_102
-next_102:
+	# br next_195
+	j next_195
+next_195:
 
 	# load x$15 lv$2
 
@@ -6832,7 +6636,7 @@ next_102:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$61 x$15 
+	# DIVresult_$61 x$15  
 
 	# fetch variables
 
@@ -6841,14 +6645,14 @@ next_102:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$61
 	li t4, 16944
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$61
+	# store lv$2 result_$61
 
 	# fetch variables
 
@@ -6856,8 +6660,6 @@ next_102:
 	li t4, 16944
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$61
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -6878,7 +6680,7 @@ next_102:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$62 y$17 
+	# DIVresult_$62 y$17  
 
 	# fetch variables
 
@@ -6887,14 +6689,14 @@ next_102:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$62
 	li t4, 16928
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$62
+	# store lv$3 result_$62
 
 	# fetch variables
 
@@ -6902,8 +6704,6 @@ next_102:
 	li t4, 16928
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$62
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -6924,7 +6724,7 @@ next_102:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$63 i$25 
+	# ADDresult_$63 i$25  
 
 	# fetch variables
 
@@ -6940,7 +6740,7 @@ next_102:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$63
+	# store lv$1 result_$63
 
 	# fetch variables
 
@@ -6949,17 +6749,15 @@ next_102:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$63
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_55
-	j whileCond_55
-secondCond_17:
+	# br whileCond_101
+	j whileCond_101
+secondCond_52:
 
 	# load y$16 lv$3
 
@@ -6974,7 +6772,7 @@ secondCond_17:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$58 y$16 
+	# MODresult_$58 y$16  
 
 	# fetch variables
 
@@ -6983,14 +6781,14 @@ secondCond_17:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$58
 	li t4, 16896
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$58  cond_normalize_$20
+	# ICMPcond_normalize_$20 result_$58  
 
 	# fetch variables
 
@@ -6999,16 +6797,16 @@ secondCond_17:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$20
 	li t4, 16888
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$20 ifTrue_46 next_102
+	# condBr cond_normalize_$20 ifTrue_93 next_195
 
 	# fetch variables
 
@@ -7016,9 +6814,9 @@ secondCond_17:
 	li t4, 16888
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_102
-	j ifTrue_46
-ifTrue_47:
+	beqz t1, next_195
+	j ifTrue_93
+ifTrue_94:
 
 	# load x$16 lv$2
 
@@ -7033,7 +6831,7 @@ ifTrue_47:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$16  cond_lt_tmp_$8
+	# ICMPcond_lt_tmp_$8 x$16  
 
 	# fetch variables
 
@@ -7042,14 +6840,14 @@ ifTrue_47:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$8
 	li t4, 16872
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$14 cond_lt_tmp_$8
+	# ZEXTcond_tmp_$14 cond_lt_tmp_$8
 
 	# fetch variables
 
@@ -7057,14 +6855,14 @@ ifTrue_47:
 	li t4, 16872
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$14
 	li t4, 16864
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$14  cond_$14
+	# ICMPcond_$14 cond_tmp_$14  
 
 	# fetch variables
 
@@ -7073,16 +6871,16 @@ ifTrue_47:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$14
 	li t4, 16856
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$14 ifTrue_48 ifFalse_21
+	# condBr cond_$14 ifTrue_95 ifFalse_26
 
 	# fetch variables
 
@@ -7090,9 +6888,9 @@ ifTrue_47:
 	li t4, 16856
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_21
-	j ifTrue_48
-ifFalse_20:
+	beqz t1, ifFalse_26
+	j ifTrue_95
+ifFalse_25:
 
 	# load y$19 lv$3
 
@@ -7107,7 +6905,7 @@ ifFalse_20:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$19  cond_gt_tmp_$3
+	# ICMPcond_gt_tmp_$3 y$19  
 
 	# fetch variables
 
@@ -7116,15 +6914,15 @@ ifFalse_20:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$3
 	li t4, 16840
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$15 cond_gt_tmp_$3
+	# ZEXTcond_tmp_$15 cond_gt_tmp_$3
 
 	# fetch variables
 
@@ -7132,14 +6930,14 @@ ifFalse_20:
 	li t4, 16840
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$15
 	li t4, 16832
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$15  cond_$15
+	# ICMPcond_$15 cond_tmp_$15  
 
 	# fetch variables
 
@@ -7148,16 +6946,16 @@ ifFalse_20:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$15
 	li t4, 16824
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$15 ifTrue_49 ifFalse_22
+	# condBr cond_$15 ifTrue_96 ifFalse_27
 
 	# fetch variables
 
@@ -7165,9 +6963,9 @@ ifFalse_20:
 	li t4, 16824
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_22
-	j ifTrue_49
-next_103:
+	beqz t1, ifFalse_27
+	j ifTrue_96
+next_196:
 
 	# load ans$20 lv
 
@@ -7182,7 +6980,7 @@ next_103:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$9 ans$20
+	# store lv$9 ans$20
 
 	# fetch variables
 
@@ -7191,55 +6989,49 @@ next_103:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$9 ans$20
-
 	# get address of lv$9 points to
 	li t4, 19128
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_46
-	j whileCond_46
-ifTrue_48:
+	# br whileCond_92
+	j whileCond_92
+ifTrue_95:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 65535
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_104
-	j next_104
-ifFalse_21:
+	# br next_197
+	j next_197
+ifFalse_26:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_104
-	j next_104
-next_104:
+	# br next_197
+	j next_197
+next_197:
 
-	# br next_103
-	j next_103
-ifTrue_49:
+	# br next_196
+	j next_196
+ifTrue_96:
 
 	# load x$17 lv$2
 
@@ -7254,7 +7046,7 @@ ifTrue_49:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$17  cond_gt_tmp_$4
+	# ICMPcond_gt_tmp_$4 x$17  
 
 	# fetch variables
 
@@ -7263,15 +7055,15 @@ ifTrue_49:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 32767
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$4
 	li t4, 16800
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$16 cond_gt_tmp_$4
+	# ZEXTcond_tmp_$16 cond_gt_tmp_$4
 
 	# fetch variables
 
@@ -7279,14 +7071,14 @@ ifTrue_49:
 	li t4, 16800
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$16
 	li t4, 16792
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$16  cond_$16
+	# ICMPcond_$16 cond_tmp_$16  
 
 	# fetch variables
 
@@ -7295,16 +7087,16 @@ ifTrue_49:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$16
 	li t4, 16784
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$16 ifTrue_50 ifFalse_23
+	# condBr cond_$16 ifTrue_97 ifFalse_28
 
 	# fetch variables
 
@@ -7312,9 +7104,9 @@ ifTrue_49:
 	li t4, 16784
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_23
-	j ifTrue_50
-ifFalse_22:
+	beqz t1, ifFalse_28
+	j ifTrue_97
+ifFalse_27:
 
 	# load x$21 lv$2
 
@@ -7329,7 +7121,7 @@ ifFalse_22:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv x$21
+	# store lv x$21
 
 	# fetch variables
 
@@ -7338,21 +7130,19 @@ ifFalse_22:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv x$21
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_105
-	j next_105
-next_105:
+	# br next_198
+	j next_198
+next_198:
 
-	# br next_103
-	j next_103
-ifTrue_50:
+	# br next_196
+	j next_196
+ifTrue_97:
 
 	# load x$18 lv$2
 
@@ -7414,7 +7204,7 @@ ifTrue_50:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$64 x$18 SHIFT_TABLE$21
+	# DIVresult_$64 x$18 SHIFT_TABLE$21 
 
 	# fetch variables
 
@@ -7427,14 +7217,14 @@ ifTrue_50:
 	li t4, 16744
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$64
 	li t4, 16736
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$64
+	# store lv$2 result_$64
 
 	# fetch variables
 
@@ -7442,8 +7232,6 @@ ifTrue_50:
 	li t4, 16736
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$64
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -7464,7 +7252,7 @@ ifTrue_50:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$65 x$19 
+	# ADDresult_$65 x$19  
 
 	# fetch variables
 
@@ -7493,7 +7281,7 @@ ifTrue_50:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$66  y$21
+	# SUBresult_$66  y$21 
 
 	# fetch variables
 	li t1, 15
@@ -7509,7 +7297,7 @@ ifTrue_50:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$67 result_$66 
+	# ADDresult_$67 result_$66  
 
 	# fetch variables
 
@@ -7559,7 +7347,7 @@ ifTrue_50:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$68 result_$65 SHIFT_TABLE$23
+	# SUBresult_$68 result_$65 SHIFT_TABLE$23 
 
 	# fetch variables
 
@@ -7579,7 +7367,7 @@ ifTrue_50:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$68
+	# store lv result_$68
 
 	# fetch variables
 
@@ -7588,17 +7376,15 @@ ifTrue_50:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$68
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_106
-	j next_106
-ifFalse_23:
+	# br next_199
+	j next_199
+ifFalse_28:
 
 	# load x$20 lv$2
 
@@ -7660,7 +7446,7 @@ ifFalse_23:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$69 x$20 SHIFT_TABLE$25
+	# DIVresult_$69 x$20 SHIFT_TABLE$25 
 
 	# fetch variables
 
@@ -7673,14 +7459,14 @@ ifFalse_23:
 	li t4, 16640
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$69
 	li t4, 16632
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv result_$69
+	# store lv result_$69
 
 	# fetch variables
 
@@ -7689,21 +7475,19 @@ ifFalse_23:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$69
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_106
-	j next_106
-next_106:
+	# br next_199
+	j next_199
+next_199:
 
-	# br next_105
-	j next_105
-whileCond_56:
+	# br next_198
+	j next_198
+whileCond_102:
 
 	# load mr$3 lv$18
 
@@ -7718,7 +7502,7 @@ whileCond_56:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp mr$3  cond_normalize_$21
+	# ICMPcond_normalize_$21 mr$3  
 
 	# fetch variables
 
@@ -7727,16 +7511,16 @@ whileCond_56:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$21
 	li t4, 16616
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$21 whileBody_56 next_107
+	# condBr cond_normalize_$21 whileBody_102 next_200
 
 	# fetch variables
 
@@ -7744,16 +7528,14 @@ whileCond_56:
 	li t4, 16616
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_107
-	j whileBody_56
-whileBody_56:
+	beqz t1, next_200
+	j whileBody_102
+whileBody_102:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -7761,12 +7543,10 @@ whileBody_56:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -7787,7 +7567,7 @@ whileBody_56:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$4
+	# store lv$2 mr$4
 
 	# fetch variables
 
@@ -7796,20 +7576,16 @@ whileBody_56:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$4
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -7817,9 +7593,9 @@ whileBody_56:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_57
-	j whileCond_57
-next_107:
+	# br whileCond_103
+	j whileCond_103
+next_200:
 
 	# load mres$3 lv$19
 
@@ -7834,7 +7610,7 @@ next_107:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv mres$3
+	# store lv mres$3
 
 	# fetch variables
 
@@ -7842,8 +7618,6 @@ next_107:
 	li t4, 16600
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv mres$3
 
 	# get address of lv points to
 	li t4, 18984
@@ -7864,7 +7638,7 @@ next_107:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$5 ans$41
+	# store lv$5 ans$41
 
 	# fetch variables
 
@@ -7872,8 +7646,6 @@ next_107:
 	li t4, 16592
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$5 ans$41
 
 	# get address of lv$5 points to
 	li t4, 19064
@@ -7894,7 +7666,7 @@ next_107:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 pr$2
+	# store lv$2 pr$2
 
 	# fetch variables
 
@@ -7903,20 +7675,16 @@ next_107:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 pr$2
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -7937,7 +7705,7 @@ next_107:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$44  cond_ge_tmp_$2
+	# ICMPcond_ge_tmp_$2 y$44  
 
 	# fetch variables
 
@@ -7946,15 +7714,15 @@ next_107:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 15
+	slt t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_ge_tmp_$2
 	li t4, 16568
 	add t4, sp, t4
-	slt t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$32 cond_ge_tmp_$2
+	# ZEXTcond_tmp_$32 cond_ge_tmp_$2
 
 	# fetch variables
 
@@ -7962,14 +7730,14 @@ next_107:
 	li t4, 16568
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$32
 	li t4, 16560
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$32  cond_$32
+	# ICMPcond_$32 cond_tmp_$32  
 
 	# fetch variables
 
@@ -7978,16 +7746,16 @@ next_107:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$32
 	li t4, 16552
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$32 ifTrue_69 ifFalse_32
+	# condBr cond_$32 ifTrue_116 ifFalse_37
 
 	# fetch variables
 
@@ -7995,9 +7763,9 @@ next_107:
 	li t4, 16552
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_32
-	j ifTrue_69
-whileCond_57:
+	beqz t1, ifFalse_37
+	j ifTrue_116
+whileCond_103:
 
 	# load i$26 lv$1
 
@@ -8012,7 +7780,7 @@ whileCond_57:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$26  cond_lt_tmp_$9
+	# ICMPcond_lt_tmp_$9 i$26  
 
 	# fetch variables
 
@@ -8021,14 +7789,14 @@ whileCond_57:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$9
 	li t4, 16536
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$17 cond_lt_tmp_$9
+	# ZEXTcond_tmp_$17 cond_lt_tmp_$9
 
 	# fetch variables
 
@@ -8036,14 +7804,14 @@ whileCond_57:
 	li t4, 16536
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$17
 	li t4, 16528
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$17  cond_$17
+	# ICMPcond_$17 cond_tmp_$17  
 
 	# fetch variables
 
@@ -8052,16 +7820,16 @@ whileCond_57:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$17
 	li t4, 16520
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$17 whileBody_57 next_108
+	# condBr cond_$17 whileBody_103 next_201
 
 	# fetch variables
 
@@ -8069,9 +7837,9 @@ whileCond_57:
 	li t4, 16520
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_108
-	j whileBody_57
-whileBody_57:
+	beqz t1, next_201
+	j whileBody_103
+whileBody_103:
 
 	# load x$22 lv$2
 
@@ -8086,7 +7854,7 @@ whileBody_57:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$70 x$22 
+	# MODresult_$70 x$22  
 
 	# fetch variables
 
@@ -8095,14 +7863,14 @@ whileBody_57:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$70
 	li t4, 16504
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$70  cond_normalize_$22
+	# ICMPcond_normalize_$22 result_$70  
 
 	# fetch variables
 
@@ -8111,16 +7879,16 @@ whileBody_57:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$22
 	li t4, 16496
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$22 secondCond_18 next_109
+	# condBr cond_normalize_$22 secondCond_53 next_202
 
 	# fetch variables
 
@@ -8128,9 +7896,9 @@ whileBody_57:
 	li t4, 16496
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_109
-	j secondCond_18
-next_108:
+	beqz t1, next_202
+	j secondCond_53
+next_201:
 
 	# load ans$23 lv
 
@@ -8145,7 +7913,7 @@ next_108:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp ans$23  cond_normalize_$24
+	# ICMPcond_normalize_$24 ans$23  
 
 	# fetch variables
 
@@ -8154,16 +7922,16 @@ next_108:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$24
 	li t4, 16480
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$24 ifTrue_52 next_110
+	# condBr cond_normalize_$24 ifTrue_99 next_203
 
 	# fetch variables
 
@@ -8171,9 +7939,9 @@ next_108:
 	li t4, 16480
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_110
-	j ifTrue_52
-ifTrue_51:
+	beqz t1, next_203
+	j ifTrue_99
+ifTrue_98:
 
 	# load ans$22 lv
 
@@ -8235,7 +8003,7 @@ ifTrue_51:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$72  SHIFT_TABLE$27
+	# MULresult_$72  SHIFT_TABLE$27 
 
 	# fetch variables
 	li t1, 1
@@ -8251,7 +8019,7 @@ ifTrue_51:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$73 ans$22 result_$72
+	# ADDresult_$73 ans$22 result_$72 
 
 	# fetch variables
 
@@ -8271,7 +8039,7 @@ ifTrue_51:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$73
+	# store lv result_$73
 
 	# fetch variables
 
@@ -8280,17 +8048,15 @@ ifTrue_51:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$73
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_109
-	j next_109
-next_109:
+	# br next_202
+	j next_202
+next_202:
 
 	# load x$23 lv$2
 
@@ -8305,7 +8071,7 @@ next_109:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$74 x$23 
+	# DIVresult_$74 x$23  
 
 	# fetch variables
 
@@ -8314,14 +8080,14 @@ next_109:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$74
 	li t4, 16416
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$74
+	# store lv$2 result_$74
 
 	# fetch variables
 
@@ -8329,8 +8095,6 @@ next_109:
 	li t4, 16416
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$74
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -8351,7 +8115,7 @@ next_109:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$75 y$24 
+	# DIVresult_$75 y$24  
 
 	# fetch variables
 
@@ -8360,14 +8124,14 @@ next_109:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$75
 	li t4, 16400
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$75
+	# store lv$3 result_$75
 
 	# fetch variables
 
@@ -8375,8 +8139,6 @@ next_109:
 	li t4, 16400
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$75
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -8397,7 +8159,7 @@ next_109:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$76 i$28 
+	# ADDresult_$76 i$28  
 
 	# fetch variables
 
@@ -8413,7 +8175,7 @@ next_109:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$76
+	# store lv$1 result_$76
 
 	# fetch variables
 
@@ -8422,17 +8184,15 @@ next_109:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$76
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_57
-	j whileCond_57
-secondCond_18:
+	# br whileCond_103
+	j whileCond_103
+secondCond_53:
 
 	# load y$23 lv$3
 
@@ -8447,7 +8207,7 @@ secondCond_18:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$71 y$23 
+	# MODresult_$71 y$23  
 
 	# fetch variables
 
@@ -8456,14 +8216,14 @@ secondCond_18:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$71
 	li t4, 16368
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$71  cond_normalize_$23
+	# ICMPcond_normalize_$23 result_$71  
 
 	# fetch variables
 
@@ -8472,16 +8232,16 @@ secondCond_18:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$23
 	li t4, 16360
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$23 ifTrue_51 next_109
+	# condBr cond_normalize_$23 ifTrue_98 next_202
 
 	# fetch variables
 
@@ -8489,9 +8249,9 @@ secondCond_18:
 	li t4, 16360
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_109
-	j ifTrue_51
-ifTrue_52:
+	beqz t1, next_202
+	j ifTrue_98
+ifTrue_99:
 
 	# load mres$2 lv$19
 
@@ -8506,7 +8266,7 @@ ifTrue_52:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$20 mres$2
+	# store lv$20 mres$2
 
 	# fetch variables
 
@@ -8514,8 +8274,6 @@ ifTrue_52:
 	li t4, 16352
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$20 mres$2
 
 	# get address of lv$20 points to
 	li t4, 19304
@@ -8536,7 +8294,7 @@ ifTrue_52:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$21 ml$3
+	# store lv$21 ml$3
 
 	# fetch variables
 
@@ -8545,17 +8303,15 @@ ifTrue_52:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$21 ml$3
-
 	# get address of lv$21 points to
 	li t4, 19320
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_58
-	j whileCond_58
-next_110:
+	# br whileCond_104
+	j whileCond_104
+next_203:
 
 	# load ml$4 lv$17
 
@@ -8570,7 +8326,7 @@ next_110:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$23 ml$4
+	# store lv$23 ml$4
 
 	# fetch variables
 
@@ -8578,8 +8334,6 @@ next_110:
 	li t4, 16336
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$23 ml$4
 
 	# get address of lv$23 points to
 	li t4, 19352
@@ -8600,7 +8354,7 @@ next_110:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$24 ml$5
+	# store lv$24 ml$5
 
 	# fetch variables
 
@@ -8609,17 +8363,15 @@ next_110:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$24 ml$5
-
 	# get address of lv$24 points to
 	li t4, 19368
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_62
-	j whileCond_62
-whileCond_58:
+	# br whileCond_108
+	j whileCond_108
+whileCond_104:
 
 	# load c$8 lv$21
 
@@ -8634,7 +8386,7 @@ whileCond_58:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$8  cond_normalize_$25
+	# ICMPcond_normalize_$25 c$8  
 
 	# fetch variables
 
@@ -8643,16 +8395,16 @@ whileCond_58:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$25
 	li t4, 16312
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$25 whileBody_58 next_111
+	# condBr cond_normalize_$25 whileBody_104 next_204
 
 	# fetch variables
 
@@ -8660,16 +8412,14 @@ whileCond_58:
 	li t4, 16312
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_111
-	j whileBody_58
-whileBody_58:
+	beqz t1, next_204
+	j whileBody_104
+whileBody_104:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -8677,12 +8427,10 @@ whileBody_58:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -8703,7 +8451,7 @@ whileBody_58:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$6
+	# store lv$2 al$6
 
 	# fetch variables
 
@@ -8711,8 +8459,6 @@ whileBody_58:
 	li t4, 16304
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$6
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -8733,7 +8479,7 @@ whileBody_58:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$9
+	# store lv$3 c$9
 
 	# fetch variables
 
@@ -8742,17 +8488,15 @@ whileBody_58:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$9
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_59
-	j whileCond_59
-next_111:
+	# br whileCond_105
+	j whileCond_105
+next_204:
 
 	# load al$8 lv$20
 
@@ -8767,7 +8511,7 @@ next_111:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$8
+	# store lv al$8
 
 	# fetch variables
 
@@ -8775,8 +8519,6 @@ next_111:
 	li t4, 16288
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$8
 
 	# get address of lv points to
 	li t4, 18984
@@ -8797,7 +8539,7 @@ next_111:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$19 ans$31
+	# store lv$19 ans$31
 
 	# fetch variables
 
@@ -8806,17 +8548,15 @@ next_111:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$19 ans$31
-
 	# get address of lv$19 points to
 	li t4, 19288
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_110
-	j next_110
-whileCond_59:
+	# br next_203
+	j next_203
+whileCond_105:
 
 	# load i$29 lv$1
 
@@ -8831,7 +8571,7 @@ whileCond_59:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$29  cond_lt_tmp_$10
+	# ICMPcond_lt_tmp_$10 i$29  
 
 	# fetch variables
 
@@ -8840,14 +8580,14 @@ whileCond_59:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$10
 	li t4, 16264
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$18 cond_lt_tmp_$10
+	# ZEXTcond_tmp_$18 cond_lt_tmp_$10
 
 	# fetch variables
 
@@ -8855,14 +8595,14 @@ whileCond_59:
 	li t4, 16264
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$18
 	li t4, 16256
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$18  cond_$18
+	# ICMPcond_$18 cond_tmp_$18  
 
 	# fetch variables
 
@@ -8871,16 +8611,16 @@ whileCond_59:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$18
 	li t4, 16248
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$18 whileBody_59 next_112
+	# condBr cond_$18 whileBody_105 next_205
 
 	# fetch variables
 
@@ -8888,9 +8628,9 @@ whileCond_59:
 	li t4, 16248
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_112
-	j whileBody_59
-whileBody_59:
+	beqz t1, next_205
+	j whileBody_105
+whileBody_105:
 
 	# load x$24 lv$2
 
@@ -8905,7 +8645,7 @@ whileBody_59:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$77 x$24 
+	# MODresult_$77 x$24  
 
 	# fetch variables
 
@@ -8914,14 +8654,14 @@ whileBody_59:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$77
 	li t4, 16232
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$77  cond_normalize_$26
+	# ICMPcond_normalize_$26 result_$77  
 
 	# fetch variables
 
@@ -8930,16 +8670,16 @@ whileBody_59:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$26
 	li t4, 16224
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$26 ifTrue_53 ifFalse_24
+	# condBr cond_normalize_$26 ifTrue_100 ifFalse_29
 
 	# fetch variables
 
@@ -8947,9 +8687,9 @@ whileBody_59:
 	li t4, 16224
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_24
-	j ifTrue_53
-next_112:
+	beqz t1, ifFalse_29
+	j ifTrue_100
+next_205:
 
 	# load ans$26 lv
 
@@ -8964,7 +8704,7 @@ next_112:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$22 ans$26
+	# store lv$22 ans$26
 
 	# fetch variables
 
@@ -8973,20 +8713,16 @@ next_112:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$22 ans$26
-
 	# get address of lv$22 points to
 	li t4, 19336
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -8994,12 +8730,10 @@ next_112:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -9020,7 +8754,7 @@ next_112:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$7
+	# store lv$2 al$7
 
 	# fetch variables
 
@@ -9028,8 +8762,6 @@ next_112:
 	li t4, 16208
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$7
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -9050,7 +8782,7 @@ next_112:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$10
+	# store lv$3 c$10
 
 	# fetch variables
 
@@ -9059,17 +8791,15 @@ next_112:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$10
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_60
-	j whileCond_60
-ifTrue_53:
+	# br whileCond_106
+	j whileCond_106
+ifTrue_100:
 
 	# load y$25 lv$3
 
@@ -9084,7 +8814,7 @@ ifTrue_53:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$78 y$25 
+	# MODresult_$78 y$25  
 
 	# fetch variables
 
@@ -9093,14 +8823,14 @@ ifTrue_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$78
-	li t4, 16184
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$78
+	li t4, 16184
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$78  cond_eq_tmp_$2
+	# ICMPcond_eq_tmp_$2 result_$78  
 
 	# fetch variables
 
@@ -9109,15 +8839,15 @@ ifTrue_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$2
 	li t4, 16176
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$19 cond_eq_tmp_$2
+	# ZEXTcond_tmp_$19 cond_eq_tmp_$2
 
 	# fetch variables
 
@@ -9125,14 +8855,14 @@ ifTrue_53:
 	li t4, 16176
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$19
 	li t4, 16168
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$19  cond_$19
+	# ICMPcond_$19 cond_tmp_$19  
 
 	# fetch variables
 
@@ -9141,16 +8871,16 @@ ifTrue_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$19
 	li t4, 16160
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$19 ifTrue_54 next_114
+	# condBr cond_$19 ifTrue_101 next_207
 
 	# fetch variables
 
@@ -9158,9 +8888,9 @@ ifTrue_53:
 	li t4, 16160
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_114
-	j ifTrue_54
-ifFalse_24:
+	beqz t1, next_207
+	j ifTrue_101
+ifFalse_29:
 
 	# load y$26 lv$3
 
@@ -9175,7 +8905,7 @@ ifFalse_24:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$81 y$26 
+	# MODresult_$81 y$26  
 
 	# fetch variables
 
@@ -9184,14 +8914,14 @@ ifFalse_24:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$81
 	li t4, 16144
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$81  cond_normalize_$27
+	# ICMPcond_normalize_$27 result_$81  
 
 	# fetch variables
 
@@ -9200,16 +8930,16 @@ ifFalse_24:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$27
 	li t4, 16136
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$27 ifTrue_55 next_115
+	# condBr cond_normalize_$27 ifTrue_102 next_208
 
 	# fetch variables
 
@@ -9217,9 +8947,9 @@ ifFalse_24:
 	li t4, 16136
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_115
-	j ifTrue_55
-next_113:
+	beqz t1, next_208
+	j ifTrue_102
+next_206:
 
 	# load x$25 lv$2
 
@@ -9234,7 +8964,7 @@ next_113:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$84 x$25 
+	# DIVresult_$84 x$25  
 
 	# fetch variables
 
@@ -9243,14 +8973,14 @@ next_113:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$84
 	li t4, 16120
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$84
+	# store lv$2 result_$84
 
 	# fetch variables
 
@@ -9258,8 +8988,6 @@ next_113:
 	li t4, 16120
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$84
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -9280,7 +9008,7 @@ next_113:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$85 y$27 
+	# DIVresult_$85 y$27  
 
 	# fetch variables
 
@@ -9289,14 +9017,14 @@ next_113:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$85
 	li t4, 16104
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$85
+	# store lv$3 result_$85
 
 	# fetch variables
 
@@ -9304,8 +9032,6 @@ next_113:
 	li t4, 16104
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$85
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -9326,7 +9052,7 @@ next_113:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$86 i$32 
+	# ADDresult_$86 i$32  
 
 	# fetch variables
 
@@ -9342,7 +9068,7 @@ next_113:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$86
+	# store lv$1 result_$86
 
 	# fetch variables
 
@@ -9351,17 +9077,15 @@ next_113:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$86
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_59
-	j whileCond_59
-ifTrue_54:
+	# br whileCond_105
+	j whileCond_105
+ifTrue_101:
 
 	# load ans$24 lv
 
@@ -9423,7 +9147,7 @@ ifTrue_54:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$79  SHIFT_TABLE$29
+	# MULresult_$79  SHIFT_TABLE$29 
 
 	# fetch variables
 	li t1, 1
@@ -9439,7 +9163,7 @@ ifTrue_54:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$80 ans$24 result_$79
+	# ADDresult_$80 ans$24 result_$79 
 
 	# fetch variables
 
@@ -9459,7 +9183,7 @@ ifTrue_54:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$80
+	# store lv result_$80
 
 	# fetch variables
 
@@ -9468,21 +9192,19 @@ ifTrue_54:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$80
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_114
-	j next_114
-next_114:
+	# br next_207
+	j next_207
+next_207:
 
-	# br next_113
-	j next_113
-ifTrue_55:
+	# br next_206
+	j next_206
+ifTrue_102:
 
 	# load ans$25 lv
 
@@ -9544,7 +9266,7 @@ ifTrue_55:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$82  SHIFT_TABLE$31
+	# MULresult_$82  SHIFT_TABLE$31 
 
 	# fetch variables
 	li t1, 1
@@ -9560,7 +9282,7 @@ ifTrue_55:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$83 ans$25 result_$82
+	# ADDresult_$83 ans$25 result_$82 
 
 	# fetch variables
 
@@ -9580,7 +9302,7 @@ ifTrue_55:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$83
+	# store lv result_$83
 
 	# fetch variables
 
@@ -9589,21 +9311,19 @@ ifTrue_55:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$83
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_115
-	j next_115
-next_115:
+	# br next_208
+	j next_208
+next_208:
 
-	# br next_113
-	j next_113
-whileCond_60:
+	# br next_206
+	j next_206
+whileCond_106:
 
 	# load i$33 lv$1
 
@@ -9618,7 +9338,7 @@ whileCond_60:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$33  cond_lt_tmp_$11
+	# ICMPcond_lt_tmp_$11 i$33  
 
 	# fetch variables
 
@@ -9627,14 +9347,14 @@ whileCond_60:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$11
 	li t4, 15976
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$20 cond_lt_tmp_$11
+	# ZEXTcond_tmp_$20 cond_lt_tmp_$11
 
 	# fetch variables
 
@@ -9642,14 +9362,14 @@ whileCond_60:
 	li t4, 15976
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$20
 	li t4, 15968
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$20  cond_$20
+	# ICMPcond_$20 cond_tmp_$20  
 
 	# fetch variables
 
@@ -9658,16 +9378,16 @@ whileCond_60:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$20
 	li t4, 15960
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$20 whileBody_60 next_116
+	# condBr cond_$20 whileBody_106 next_209
 
 	# fetch variables
 
@@ -9675,9 +9395,9 @@ whileCond_60:
 	li t4, 15960
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_116
-	j whileBody_60
-whileBody_60:
+	beqz t1, next_209
+	j whileBody_106
+whileBody_106:
 
 	# load x$26 lv$2
 
@@ -9692,7 +9412,7 @@ whileBody_60:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$87 x$26 
+	# MODresult_$87 x$26  
 
 	# fetch variables
 
@@ -9701,14 +9421,14 @@ whileBody_60:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$87
 	li t4, 15944
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$87  cond_normalize_$28
+	# ICMPcond_normalize_$28 result_$87  
 
 	# fetch variables
 
@@ -9717,16 +9437,16 @@ whileBody_60:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$28
 	li t4, 15936
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$28 secondCond_19 next_117
+	# condBr cond_normalize_$28 secondCond_54 next_210
 
 	# fetch variables
 
@@ -9734,9 +9454,9 @@ whileBody_60:
 	li t4, 15936
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_117
-	j secondCond_19
-next_116:
+	beqz t1, next_210
+	j secondCond_54
+next_209:
 
 	# load ans$28 lv
 
@@ -9751,7 +9471,7 @@ next_116:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$21 ans$28
+	# store lv$21 ans$28
 
 	# fetch variables
 
@@ -9760,28 +9480,26 @@ next_116:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$21 ans$28
-
 	# get address of lv$21 points to
 	li t4, 19320
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$5
+	# ICMPcond_gt_tmp_$5   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$5
 	li t4, 15920
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$21 cond_gt_tmp_$5
+	# ZEXTcond_tmp_$21 cond_gt_tmp_$5
 
 	# fetch variables
 
@@ -9789,14 +9507,14 @@ next_116:
 	li t4, 15920
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$21
 	li t4, 15912
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$21  cond_$21
+	# ICMPcond_$21 cond_tmp_$21  
 
 	# fetch variables
 
@@ -9805,16 +9523,16 @@ next_116:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$21
 	li t4, 15904
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$21 ifTrue_57 ifFalse_25
+	# condBr cond_$21 ifTrue_104 ifFalse_30
 
 	# fetch variables
 
@@ -9822,9 +9540,9 @@ next_116:
 	li t4, 15904
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_25
-	j ifTrue_57
-ifTrue_56:
+	beqz t1, ifFalse_30
+	j ifTrue_104
+ifTrue_103:
 
 	# load ans$27 lv
 
@@ -9886,7 +9604,7 @@ ifTrue_56:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$89  SHIFT_TABLE$33
+	# MULresult_$89  SHIFT_TABLE$33 
 
 	# fetch variables
 	li t1, 1
@@ -9902,7 +9620,7 @@ ifTrue_56:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$90 ans$27 result_$89
+	# ADDresult_$90 ans$27 result_$89 
 
 	# fetch variables
 
@@ -9922,7 +9640,7 @@ ifTrue_56:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$90
+	# store lv result_$90
 
 	# fetch variables
 
@@ -9931,17 +9649,15 @@ ifTrue_56:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$90
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_117
-	j next_117
-next_117:
+	# br next_210
+	j next_210
+next_210:
 
 	# load x$27 lv$2
 
@@ -9956,7 +9672,7 @@ next_117:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$91 x$27 
+	# DIVresult_$91 x$27  
 
 	# fetch variables
 
@@ -9965,14 +9681,14 @@ next_117:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$91
 	li t4, 15840
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$91
+	# store lv$2 result_$91
 
 	# fetch variables
 
@@ -9980,8 +9696,6 @@ next_117:
 	li t4, 15840
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$91
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -10002,7 +9716,7 @@ next_117:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$92 y$29 
+	# DIVresult_$92 y$29  
 
 	# fetch variables
 
@@ -10011,14 +9725,14 @@ next_117:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$92
 	li t4, 15824
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$92
+	# store lv$3 result_$92
 
 	# fetch variables
 
@@ -10026,8 +9740,6 @@ next_117:
 	li t4, 15824
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$92
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -10048,7 +9760,7 @@ next_117:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$93 i$35 
+	# ADDresult_$93 i$35  
 
 	# fetch variables
 
@@ -10064,7 +9776,7 @@ next_117:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$93
+	# store lv$1 result_$93
 
 	# fetch variables
 
@@ -10073,17 +9785,15 @@ next_117:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$93
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_60
-	j whileCond_60
-secondCond_19:
+	# br whileCond_106
+	j whileCond_106
+secondCond_54:
 
 	# load y$28 lv$3
 
@@ -10098,7 +9808,7 @@ secondCond_19:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$88 y$28 
+	# MODresult_$88 y$28  
 
 	# fetch variables
 
@@ -10107,14 +9817,14 @@ secondCond_19:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$88
 	li t4, 15792
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$88  cond_normalize_$29
+	# ICMPcond_normalize_$29 result_$88  
 
 	# fetch variables
 
@@ -10123,16 +9833,16 @@ secondCond_19:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$29
 	li t4, 15784
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$29 ifTrue_56 next_117
+	# condBr cond_normalize_$29 ifTrue_103 next_210
 
 	# fetch variables
 
@@ -10140,16 +9850,14 @@ secondCond_19:
 	li t4, 15784
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_117
-	j ifTrue_56
-ifTrue_57:
+	beqz t1, next_210
+	j ifTrue_103
+ifTrue_104:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -10157,29 +9865,25 @@ ifTrue_57:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_118
-	j next_118
-ifFalse_25:
+	# br next_211
+	j next_211
+ifFalse_30:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -10200,7 +9904,7 @@ ifFalse_25:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$94 c$11 
+	# MULresult_$94 c$11  
 
 	# fetch variables
 
@@ -10216,7 +9920,7 @@ ifFalse_25:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$94
+	# store lv$2 result_$94
 
 	# fetch variables
 
@@ -10225,20 +9929,16 @@ ifFalse_25:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$94
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -10246,9 +9946,9 @@ ifFalse_25:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_61
-	j whileCond_61
-next_118:
+	# br whileCond_107
+	j whileCond_107
+next_211:
 
 	# load ans$30 lv
 
@@ -10263,7 +9963,7 @@ next_118:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$21 ans$30
+	# store lv$21 ans$30
 
 	# fetch variables
 
@@ -10271,8 +9971,6 @@ next_118:
 	li t4, 15760
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$21 ans$30
 
 	# get address of lv$21 points to
 	li t4, 19320
@@ -10293,7 +9991,7 @@ next_118:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$20 sum$2
+	# store lv$20 sum$2
 
 	# fetch variables
 
@@ -10302,17 +10000,15 @@ next_118:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$20 sum$2
-
 	# get address of lv$20 points to
 	li t4, 19304
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_58
-	j whileCond_58
-whileCond_61:
+	# br whileCond_104
+	j whileCond_104
+whileCond_107:
 
 	# load i$36 lv$1
 
@@ -10327,7 +10023,7 @@ whileCond_61:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$36  cond_lt_tmp_$12
+	# ICMPcond_lt_tmp_$12 i$36  
 
 	# fetch variables
 
@@ -10336,14 +10032,14 @@ whileCond_61:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$12
 	li t4, 15736
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$22 cond_lt_tmp_$12
+	# ZEXTcond_tmp_$22 cond_lt_tmp_$12
 
 	# fetch variables
 
@@ -10351,14 +10047,14 @@ whileCond_61:
 	li t4, 15736
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$22
 	li t4, 15728
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$22  cond_$22
+	# ICMPcond_$22 cond_tmp_$22  
 
 	# fetch variables
 
@@ -10367,16 +10063,16 @@ whileCond_61:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$22
 	li t4, 15720
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$22 whileBody_61 next_119
+	# condBr cond_$22 whileBody_107 next_212
 
 	# fetch variables
 
@@ -10384,9 +10080,9 @@ whileCond_61:
 	li t4, 15720
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_119
-	j whileBody_61
-whileBody_61:
+	beqz t1, next_212
+	j whileBody_107
+whileBody_107:
 
 	# load x$28 lv$2
 
@@ -10401,7 +10097,7 @@ whileBody_61:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$95 x$28 
+	# MODresult_$95 x$28  
 
 	# fetch variables
 
@@ -10410,14 +10106,14 @@ whileBody_61:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$95
 	li t4, 15704
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$95  cond_normalize_$30
+	# ICMPcond_normalize_$30 result_$95  
 
 	# fetch variables
 
@@ -10426,16 +10122,16 @@ whileBody_61:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$30
 	li t4, 15696
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$30 secondCond_20 next_120
+	# condBr cond_normalize_$30 secondCond_55 next_213
 
 	# fetch variables
 
@@ -10443,13 +10139,13 @@ whileBody_61:
 	li t4, 15696
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_120
-	j secondCond_20
-next_119:
+	beqz t1, next_213
+	j secondCond_55
+next_212:
 
-	# br next_118
-	j next_118
-ifTrue_58:
+	# br next_211
+	j next_211
+ifTrue_105:
 
 	# load ans$29 lv
 
@@ -10511,7 +10207,7 @@ ifTrue_58:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$97  SHIFT_TABLE$35
+	# MULresult_$97  SHIFT_TABLE$35 
 
 	# fetch variables
 	li t1, 1
@@ -10527,7 +10223,7 @@ ifTrue_58:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$98 ans$29 result_$97
+	# ADDresult_$98 ans$29 result_$97 
 
 	# fetch variables
 
@@ -10547,7 +10243,7 @@ ifTrue_58:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$98
+	# store lv result_$98
 
 	# fetch variables
 
@@ -10556,17 +10252,15 @@ ifTrue_58:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$98
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_120
-	j next_120
-next_120:
+	# br next_213
+	j next_213
+next_213:
 
 	# load x$29 lv$2
 
@@ -10581,7 +10275,7 @@ next_120:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$99 x$29 
+	# DIVresult_$99 x$29  
 
 	# fetch variables
 
@@ -10590,14 +10284,14 @@ next_120:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$99
 	li t4, 15632
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$99
+	# store lv$2 result_$99
 
 	# fetch variables
 
@@ -10605,8 +10299,6 @@ next_120:
 	li t4, 15632
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$99
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -10627,7 +10319,7 @@ next_120:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$100 y$31 
+	# DIVresult_$100 y$31  
 
 	# fetch variables
 
@@ -10636,14 +10328,14 @@ next_120:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$100
 	li t4, 15616
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$100
+	# store lv$3 result_$100
 
 	# fetch variables
 
@@ -10651,8 +10343,6 @@ next_120:
 	li t4, 15616
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$100
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -10673,7 +10363,7 @@ next_120:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$101 i$38 
+	# ADDresult_$101 i$38  
 
 	# fetch variables
 
@@ -10689,7 +10379,7 @@ next_120:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$101
+	# store lv$1 result_$101
 
 	# fetch variables
 
@@ -10698,17 +10388,15 @@ next_120:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$101
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_61
-	j whileCond_61
-secondCond_20:
+	# br whileCond_107
+	j whileCond_107
+secondCond_55:
 
 	# load y$30 lv$3
 
@@ -10723,7 +10411,7 @@ secondCond_20:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$96 y$30 
+	# MODresult_$96 y$30  
 
 	# fetch variables
 
@@ -10732,14 +10420,14 @@ secondCond_20:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$96
 	li t4, 15584
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$96  cond_normalize_$31
+	# ICMPcond_normalize_$31 result_$96  
 
 	# fetch variables
 
@@ -10748,16 +10436,16 @@ secondCond_20:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$31
 	li t4, 15576
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$31 ifTrue_58 next_120
+	# condBr cond_normalize_$31 ifTrue_105 next_213
 
 	# fetch variables
 
@@ -10765,9 +10453,9 @@ secondCond_20:
 	li t4, 15576
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_120
-	j ifTrue_58
-whileCond_62:
+	beqz t1, next_213
+	j ifTrue_105
+whileCond_108:
 
 	# load c$12 lv$24
 
@@ -10782,7 +10470,7 @@ whileCond_62:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$12  cond_normalize_$32
+	# ICMPcond_normalize_$32 c$12  
 
 	# fetch variables
 
@@ -10791,16 +10479,16 @@ whileCond_62:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$32
 	li t4, 15560
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$32 whileBody_62 next_121
+	# condBr cond_normalize_$32 whileBody_108 next_214
 
 	# fetch variables
 
@@ -10808,16 +10496,14 @@ whileCond_62:
 	li t4, 15560
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_121
-	j whileBody_62
-whileBody_62:
+	beqz t1, next_214
+	j whileBody_108
+whileBody_108:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -10825,12 +10511,10 @@ whileBody_62:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -10851,7 +10535,7 @@ whileBody_62:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$9
+	# store lv$2 al$9
 
 	# fetch variables
 
@@ -10859,8 +10543,6 @@ whileBody_62:
 	li t4, 15552
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$9
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -10881,7 +10563,7 @@ whileBody_62:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$13
+	# store lv$3 c$13
 
 	# fetch variables
 
@@ -10890,17 +10572,15 @@ whileBody_62:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$13
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_63
-	j whileCond_63
-next_121:
+	# br whileCond_109
+	j whileCond_109
+next_214:
 
 	# load al$11 lv$23
 
@@ -10915,7 +10595,7 @@ next_121:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$11
+	# store lv al$11
 
 	# fetch variables
 
@@ -10923,8 +10603,6 @@ next_121:
 	li t4, 15536
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$11
 
 	# get address of lv points to
 	li t4, 18984
@@ -10945,7 +10623,7 @@ next_121:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$17 ans$39
+	# store lv$17 ans$39
 
 	# fetch variables
 
@@ -10953,8 +10631,6 @@ next_121:
 	li t4, 15528
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$17 ans$39
 
 	# get address of lv$17 points to
 	li t4, 19256
@@ -10975,7 +10651,7 @@ next_121:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$5
+	# store lv$2 mr$5
 
 	# fetch variables
 
@@ -10984,20 +10660,16 @@ next_121:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$5
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -11018,7 +10690,7 @@ next_121:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$39  cond_ge_tmp_$1
+	# ICMPcond_ge_tmp_$1 y$39  
 
 	# fetch variables
 
@@ -11027,15 +10699,15 @@ next_121:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 15
+	slt t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_ge_tmp_$1
 	li t4, 15504
 	add t4, sp, t4
-	slt t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$28 cond_ge_tmp_$1
+	# ZEXTcond_tmp_$28 cond_ge_tmp_$1
 
 	# fetch variables
 
@@ -11043,14 +10715,14 @@ next_121:
 	li t4, 15504
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$28
 	li t4, 15496
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$28  cond_$28
+	# ICMPcond_$28 cond_tmp_$28  
 
 	# fetch variables
 
@@ -11059,16 +10731,16 @@ next_121:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$28
 	li t4, 15488
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$28 ifTrue_65 ifFalse_28
+	# condBr cond_$28 ifTrue_112 ifFalse_33
 
 	# fetch variables
 
@@ -11076,9 +10748,9 @@ next_121:
 	li t4, 15488
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_28
-	j ifTrue_65
-whileCond_63:
+	beqz t1, ifFalse_33
+	j ifTrue_112
+whileCond_109:
 
 	# load i$39 lv$1
 
@@ -11093,7 +10765,7 @@ whileCond_63:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$39  cond_lt_tmp_$13
+	# ICMPcond_lt_tmp_$13 i$39  
 
 	# fetch variables
 
@@ -11102,14 +10774,14 @@ whileCond_63:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$13
 	li t4, 15472
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$23 cond_lt_tmp_$13
+	# ZEXTcond_tmp_$23 cond_lt_tmp_$13
 
 	# fetch variables
 
@@ -11117,14 +10789,14 @@ whileCond_63:
 	li t4, 15472
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$23
 	li t4, 15464
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$23  cond_$23
+	# ICMPcond_$23 cond_tmp_$23  
 
 	# fetch variables
 
@@ -11133,16 +10805,16 @@ whileCond_63:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$23
 	li t4, 15456
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$23 whileBody_63 next_122
+	# condBr cond_$23 whileBody_109 next_215
 
 	# fetch variables
 
@@ -11150,9 +10822,9 @@ whileCond_63:
 	li t4, 15456
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_122
-	j whileBody_63
-whileBody_63:
+	beqz t1, next_215
+	j whileBody_109
+whileBody_109:
 
 	# load x$30 lv$2
 
@@ -11167,7 +10839,7 @@ whileBody_63:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$102 x$30 
+	# MODresult_$102 x$30  
 
 	# fetch variables
 
@@ -11176,14 +10848,14 @@ whileBody_63:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$102
 	li t4, 15440
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$102  cond_normalize_$33
+	# ICMPcond_normalize_$33 result_$102  
 
 	# fetch variables
 
@@ -11192,16 +10864,16 @@ whileBody_63:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$33
 	li t4, 15432
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$33 ifTrue_59 ifFalse_26
+	# condBr cond_normalize_$33 ifTrue_106 ifFalse_31
 
 	# fetch variables
 
@@ -11209,9 +10881,9 @@ whileBody_63:
 	li t4, 15432
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_26
-	j ifTrue_59
-next_122:
+	beqz t1, ifFalse_31
+	j ifTrue_106
+next_215:
 
 	# load ans$34 lv
 
@@ -11226,7 +10898,7 @@ next_122:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$25 ans$34
+	# store lv$25 ans$34
 
 	# fetch variables
 
@@ -11235,20 +10907,16 @@ next_122:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$25 ans$34
-
 	# get address of lv$25 points to
 	li t4, 19384
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -11256,12 +10924,10 @@ next_122:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -11282,7 +10948,7 @@ next_122:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$10
+	# store lv$2 al$10
 
 	# fetch variables
 
@@ -11290,8 +10956,6 @@ next_122:
 	li t4, 15416
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$10
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -11312,7 +10976,7 @@ next_122:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$14
+	# store lv$3 c$14
 
 	# fetch variables
 
@@ -11321,17 +10985,15 @@ next_122:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$14
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_64
-	j whileCond_64
-ifTrue_59:
+	# br whileCond_110
+	j whileCond_110
+ifTrue_106:
 
 	# load y$32 lv$3
 
@@ -11346,7 +11008,7 @@ ifTrue_59:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$103 y$32 
+	# MODresult_$103 y$32  
 
 	# fetch variables
 
@@ -11355,14 +11017,14 @@ ifTrue_59:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$103
-	li t4, 15392
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$103
+	li t4, 15392
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$103  cond_eq_tmp_$3
+	# ICMPcond_eq_tmp_$3 result_$103  
 
 	# fetch variables
 
@@ -11371,15 +11033,15 @@ ifTrue_59:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$3
 	li t4, 15384
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$24 cond_eq_tmp_$3
+	# ZEXTcond_tmp_$24 cond_eq_tmp_$3
 
 	# fetch variables
 
@@ -11387,14 +11049,14 @@ ifTrue_59:
 	li t4, 15384
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$24
 	li t4, 15376
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$24  cond_$24
+	# ICMPcond_$24 cond_tmp_$24  
 
 	# fetch variables
 
@@ -11403,16 +11065,16 @@ ifTrue_59:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$24
 	li t4, 15368
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$24 ifTrue_60 next_124
+	# condBr cond_$24 ifTrue_107 next_217
 
 	# fetch variables
 
@@ -11420,9 +11082,9 @@ ifTrue_59:
 	li t4, 15368
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_124
-	j ifTrue_60
-ifFalse_26:
+	beqz t1, next_217
+	j ifTrue_107
+ifFalse_31:
 
 	# load y$33 lv$3
 
@@ -11437,7 +11099,7 @@ ifFalse_26:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$106 y$33 
+	# MODresult_$106 y$33  
 
 	# fetch variables
 
@@ -11446,14 +11108,14 @@ ifFalse_26:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$106
 	li t4, 15352
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$106  cond_normalize_$34
+	# ICMPcond_normalize_$34 result_$106  
 
 	# fetch variables
 
@@ -11462,16 +11124,16 @@ ifFalse_26:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$34
 	li t4, 15344
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$34 ifTrue_61 next_125
+	# condBr cond_normalize_$34 ifTrue_108 next_218
 
 	# fetch variables
 
@@ -11479,9 +11141,9 @@ ifFalse_26:
 	li t4, 15344
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_125
-	j ifTrue_61
-next_123:
+	beqz t1, next_218
+	j ifTrue_108
+next_216:
 
 	# load x$31 lv$2
 
@@ -11496,7 +11158,7 @@ next_123:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$109 x$31 
+	# DIVresult_$109 x$31  
 
 	# fetch variables
 
@@ -11505,14 +11167,14 @@ next_123:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$109
 	li t4, 15328
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$109
+	# store lv$2 result_$109
 
 	# fetch variables
 
@@ -11520,8 +11182,6 @@ next_123:
 	li t4, 15328
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$109
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -11542,7 +11202,7 @@ next_123:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$110 y$34 
+	# DIVresult_$110 y$34  
 
 	# fetch variables
 
@@ -11551,14 +11211,14 @@ next_123:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$110
 	li t4, 15312
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$110
+	# store lv$3 result_$110
 
 	# fetch variables
 
@@ -11566,8 +11226,6 @@ next_123:
 	li t4, 15312
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$110
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -11588,7 +11246,7 @@ next_123:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$111 i$42 
+	# ADDresult_$111 i$42  
 
 	# fetch variables
 
@@ -11604,7 +11262,7 @@ next_123:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$111
+	# store lv$1 result_$111
 
 	# fetch variables
 
@@ -11613,17 +11271,15 @@ next_123:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$111
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_63
-	j whileCond_63
-ifTrue_60:
+	# br whileCond_109
+	j whileCond_109
+ifTrue_107:
 
 	# load ans$32 lv
 
@@ -11685,7 +11341,7 @@ ifTrue_60:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$104  SHIFT_TABLE$37
+	# MULresult_$104  SHIFT_TABLE$37 
 
 	# fetch variables
 	li t1, 1
@@ -11701,7 +11357,7 @@ ifTrue_60:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$105 ans$32 result_$104
+	# ADDresult_$105 ans$32 result_$104 
 
 	# fetch variables
 
@@ -11721,7 +11377,7 @@ ifTrue_60:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$105
+	# store lv result_$105
 
 	# fetch variables
 
@@ -11730,21 +11386,19 @@ ifTrue_60:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$105
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_124
-	j next_124
-next_124:
+	# br next_217
+	j next_217
+next_217:
 
-	# br next_123
-	j next_123
-ifTrue_61:
+	# br next_216
+	j next_216
+ifTrue_108:
 
 	# load ans$33 lv
 
@@ -11806,7 +11460,7 @@ ifTrue_61:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$107  SHIFT_TABLE$39
+	# MULresult_$107  SHIFT_TABLE$39 
 
 	# fetch variables
 	li t1, 1
@@ -11822,7 +11476,7 @@ ifTrue_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$108 ans$33 result_$107
+	# ADDresult_$108 ans$33 result_$107 
 
 	# fetch variables
 
@@ -11842,7 +11496,7 @@ ifTrue_61:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$108
+	# store lv result_$108
 
 	# fetch variables
 
@@ -11851,21 +11505,19 @@ ifTrue_61:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$108
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_125
-	j next_125
-next_125:
+	# br next_218
+	j next_218
+next_218:
 
-	# br next_123
-	j next_123
-whileCond_64:
+	# br next_216
+	j next_216
+whileCond_110:
 
 	# load i$43 lv$1
 
@@ -11880,7 +11532,7 @@ whileCond_64:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$43  cond_lt_tmp_$14
+	# ICMPcond_lt_tmp_$14 i$43  
 
 	# fetch variables
 
@@ -11889,14 +11541,14 @@ whileCond_64:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$14
 	li t4, 15184
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$25 cond_lt_tmp_$14
+	# ZEXTcond_tmp_$25 cond_lt_tmp_$14
 
 	# fetch variables
 
@@ -11904,14 +11556,14 @@ whileCond_64:
 	li t4, 15184
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$25
 	li t4, 15176
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$25  cond_$25
+	# ICMPcond_$25 cond_tmp_$25  
 
 	# fetch variables
 
@@ -11920,16 +11572,16 @@ whileCond_64:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$25
 	li t4, 15168
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$25 whileBody_64 next_126
+	# condBr cond_$25 whileBody_110 next_219
 
 	# fetch variables
 
@@ -11937,9 +11589,9 @@ whileCond_64:
 	li t4, 15168
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_126
-	j whileBody_64
-whileBody_64:
+	beqz t1, next_219
+	j whileBody_110
+whileBody_110:
 
 	# load x$32 lv$2
 
@@ -11954,7 +11606,7 @@ whileBody_64:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$112 x$32 
+	# MODresult_$112 x$32  
 
 	# fetch variables
 
@@ -11963,14 +11615,14 @@ whileBody_64:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$112
 	li t4, 15152
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$112  cond_normalize_$35
+	# ICMPcond_normalize_$35 result_$112  
 
 	# fetch variables
 
@@ -11979,16 +11631,16 @@ whileBody_64:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$35
 	li t4, 15144
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$35 secondCond_21 next_127
+	# condBr cond_normalize_$35 secondCond_56 next_220
 
 	# fetch variables
 
@@ -11996,9 +11648,9 @@ whileBody_64:
 	li t4, 15144
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_127
-	j secondCond_21
-next_126:
+	beqz t1, next_220
+	j secondCond_56
+next_219:
 
 	# load ans$36 lv
 
@@ -12013,7 +11665,7 @@ next_126:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$24 ans$36
+	# store lv$24 ans$36
 
 	# fetch variables
 
@@ -12022,28 +11674,26 @@ next_126:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$24 ans$36
-
 	# get address of lv$24 points to
 	li t4, 19368
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$6
+	# ICMPcond_gt_tmp_$6   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$6
 	li t4, 15128
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$26 cond_gt_tmp_$6
+	# ZEXTcond_tmp_$26 cond_gt_tmp_$6
 
 	# fetch variables
 
@@ -12051,14 +11701,14 @@ next_126:
 	li t4, 15128
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$26
 	li t4, 15120
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$26  cond_$26
+	# ICMPcond_$26 cond_tmp_$26  
 
 	# fetch variables
 
@@ -12067,16 +11717,16 @@ next_126:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$26
 	li t4, 15112
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$26 ifTrue_63 ifFalse_27
+	# condBr cond_$26 ifTrue_110 ifFalse_32
 
 	# fetch variables
 
@@ -12084,9 +11734,9 @@ next_126:
 	li t4, 15112
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_27
-	j ifTrue_63
-ifTrue_62:
+	beqz t1, ifFalse_32
+	j ifTrue_110
+ifTrue_109:
 
 	# load ans$35 lv
 
@@ -12148,7 +11798,7 @@ ifTrue_62:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$114  SHIFT_TABLE$41
+	# MULresult_$114  SHIFT_TABLE$41 
 
 	# fetch variables
 	li t1, 1
@@ -12164,7 +11814,7 @@ ifTrue_62:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$115 ans$35 result_$114
+	# ADDresult_$115 ans$35 result_$114 
 
 	# fetch variables
 
@@ -12184,7 +11834,7 @@ ifTrue_62:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$115
+	# store lv result_$115
 
 	# fetch variables
 
@@ -12193,17 +11843,15 @@ ifTrue_62:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$115
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_127
-	j next_127
-next_127:
+	# br next_220
+	j next_220
+next_220:
 
 	# load x$33 lv$2
 
@@ -12218,7 +11866,7 @@ next_127:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$116 x$33 
+	# DIVresult_$116 x$33  
 
 	# fetch variables
 
@@ -12227,14 +11875,14 @@ next_127:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$116
 	li t4, 15048
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$116
+	# store lv$2 result_$116
 
 	# fetch variables
 
@@ -12242,8 +11890,6 @@ next_127:
 	li t4, 15048
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$116
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -12264,7 +11910,7 @@ next_127:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$117 y$36 
+	# DIVresult_$117 y$36  
 
 	# fetch variables
 
@@ -12273,14 +11919,14 @@ next_127:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$117
 	li t4, 15032
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$117
+	# store lv$3 result_$117
 
 	# fetch variables
 
@@ -12288,8 +11934,6 @@ next_127:
 	li t4, 15032
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$117
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -12310,7 +11954,7 @@ next_127:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$118 i$45 
+	# ADDresult_$118 i$45  
 
 	# fetch variables
 
@@ -12326,7 +11970,7 @@ next_127:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$118
+	# store lv$1 result_$118
 
 	# fetch variables
 
@@ -12335,17 +11979,15 @@ next_127:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$118
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_64
-	j whileCond_64
-secondCond_21:
+	# br whileCond_110
+	j whileCond_110
+secondCond_56:
 
 	# load y$35 lv$3
 
@@ -12360,7 +12002,7 @@ secondCond_21:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$113 y$35 
+	# MODresult_$113 y$35  
 
 	# fetch variables
 
@@ -12369,14 +12011,14 @@ secondCond_21:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$113
 	li t4, 15000
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$113  cond_normalize_$36
+	# ICMPcond_normalize_$36 result_$113  
 
 	# fetch variables
 
@@ -12385,16 +12027,16 @@ secondCond_21:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$36
 	li t4, 14992
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$36 ifTrue_62 next_127
+	# condBr cond_normalize_$36 ifTrue_109 next_220
 
 	# fetch variables
 
@@ -12402,16 +12044,14 @@ secondCond_21:
 	li t4, 14992
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_127
-	j ifTrue_62
-ifTrue_63:
+	beqz t1, next_220
+	j ifTrue_109
+ifTrue_110:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -12419,29 +12059,25 @@ ifTrue_63:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_128
-	j next_128
-ifFalse_27:
+	# br next_221
+	j next_221
+ifFalse_32:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -12462,7 +12098,7 @@ ifFalse_27:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$119 c$15 
+	# MULresult_$119 c$15  
 
 	# fetch variables
 
@@ -12478,7 +12114,7 @@ ifFalse_27:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$119
+	# store lv$2 result_$119
 
 	# fetch variables
 
@@ -12487,20 +12123,16 @@ ifFalse_27:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$119
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -12508,9 +12140,9 @@ ifFalse_27:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_65
-	j whileCond_65
-next_128:
+	# br whileCond_111
+	j whileCond_111
+next_221:
 
 	# load ans$38 lv
 
@@ -12525,7 +12157,7 @@ next_128:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$24 ans$38
+	# store lv$24 ans$38
 
 	# fetch variables
 
@@ -12533,8 +12165,6 @@ next_128:
 	li t4, 14968
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$24 ans$38
 
 	# get address of lv$24 points to
 	li t4, 19368
@@ -12555,7 +12185,7 @@ next_128:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$23 sum$3
+	# store lv$23 sum$3
 
 	# fetch variables
 
@@ -12564,17 +12194,15 @@ next_128:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$23 sum$3
-
 	# get address of lv$23 points to
 	li t4, 19352
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_62
-	j whileCond_62
-whileCond_65:
+	# br whileCond_108
+	j whileCond_108
+whileCond_111:
 
 	# load i$46 lv$1
 
@@ -12589,7 +12217,7 @@ whileCond_65:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$46  cond_lt_tmp_$15
+	# ICMPcond_lt_tmp_$15 i$46  
 
 	# fetch variables
 
@@ -12598,14 +12226,14 @@ whileCond_65:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$15
 	li t4, 14944
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$27 cond_lt_tmp_$15
+	# ZEXTcond_tmp_$27 cond_lt_tmp_$15
 
 	# fetch variables
 
@@ -12613,14 +12241,14 @@ whileCond_65:
 	li t4, 14944
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$27
 	li t4, 14936
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$27  cond_$27
+	# ICMPcond_$27 cond_tmp_$27  
 
 	# fetch variables
 
@@ -12629,16 +12257,16 @@ whileCond_65:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$27
 	li t4, 14928
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$27 whileBody_65 next_129
+	# condBr cond_$27 whileBody_111 next_222
 
 	# fetch variables
 
@@ -12646,9 +12274,9 @@ whileCond_65:
 	li t4, 14928
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_129
-	j whileBody_65
-whileBody_65:
+	beqz t1, next_222
+	j whileBody_111
+whileBody_111:
 
 	# load x$34 lv$2
 
@@ -12663,7 +12291,7 @@ whileBody_65:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$120 x$34 
+	# MODresult_$120 x$34  
 
 	# fetch variables
 
@@ -12672,14 +12300,14 @@ whileBody_65:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$120
 	li t4, 14912
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$120  cond_normalize_$37
+	# ICMPcond_normalize_$37 result_$120  
 
 	# fetch variables
 
@@ -12688,16 +12316,16 @@ whileBody_65:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$37
 	li t4, 14904
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$37 secondCond_22 next_130
+	# condBr cond_normalize_$37 secondCond_57 next_223
 
 	# fetch variables
 
@@ -12705,13 +12333,13 @@ whileBody_65:
 	li t4, 14904
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_130
-	j secondCond_22
-next_129:
+	beqz t1, next_223
+	j secondCond_57
+next_222:
 
-	# br next_128
-	j next_128
-ifTrue_64:
+	# br next_221
+	j next_221
+ifTrue_111:
 
 	# load ans$37 lv
 
@@ -12773,7 +12401,7 @@ ifTrue_64:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$122  SHIFT_TABLE$43
+	# MULresult_$122  SHIFT_TABLE$43 
 
 	# fetch variables
 	li t1, 1
@@ -12789,7 +12417,7 @@ ifTrue_64:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$123 ans$37 result_$122
+	# ADDresult_$123 ans$37 result_$122 
 
 	# fetch variables
 
@@ -12809,7 +12437,7 @@ ifTrue_64:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$123
+	# store lv result_$123
 
 	# fetch variables
 
@@ -12818,17 +12446,15 @@ ifTrue_64:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$123
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_130
-	j next_130
-next_130:
+	# br next_223
+	j next_223
+next_223:
 
 	# load x$35 lv$2
 
@@ -12843,7 +12469,7 @@ next_130:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$124 x$35 
+	# DIVresult_$124 x$35  
 
 	# fetch variables
 
@@ -12852,14 +12478,14 @@ next_130:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$124
 	li t4, 14840
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$124
+	# store lv$2 result_$124
 
 	# fetch variables
 
@@ -12867,8 +12493,6 @@ next_130:
 	li t4, 14840
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$124
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -12889,7 +12513,7 @@ next_130:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$125 y$38 
+	# DIVresult_$125 y$38  
 
 	# fetch variables
 
@@ -12898,14 +12522,14 @@ next_130:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$125
 	li t4, 14824
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$125
+	# store lv$3 result_$125
 
 	# fetch variables
 
@@ -12913,8 +12537,6 @@ next_130:
 	li t4, 14824
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$125
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -12935,7 +12557,7 @@ next_130:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$126 i$48 
+	# ADDresult_$126 i$48  
 
 	# fetch variables
 
@@ -12951,7 +12573,7 @@ next_130:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$126
+	# store lv$1 result_$126
 
 	# fetch variables
 
@@ -12960,17 +12582,15 @@ next_130:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$126
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_65
-	j whileCond_65
-secondCond_22:
+	# br whileCond_111
+	j whileCond_111
+secondCond_57:
 
 	# load y$37 lv$3
 
@@ -12985,7 +12605,7 @@ secondCond_22:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$121 y$37 
+	# MODresult_$121 y$37  
 
 	# fetch variables
 
@@ -12994,14 +12614,14 @@ secondCond_22:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$121
 	li t4, 14792
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$121  cond_normalize_$38
+	# ICMPcond_normalize_$38 result_$121  
 
 	# fetch variables
 
@@ -13010,16 +12630,16 @@ secondCond_22:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$38
 	li t4, 14784
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$38 ifTrue_64 next_130
+	# condBr cond_normalize_$38 ifTrue_111 next_223
 
 	# fetch variables
 
@@ -13027,9 +12647,9 @@ secondCond_22:
 	li t4, 14784
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_130
-	j ifTrue_64
-ifTrue_65:
+	beqz t1, next_223
+	j ifTrue_111
+ifTrue_112:
 
 	# load x$36 lv$2
 
@@ -13044,7 +12664,7 @@ ifTrue_65:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$36  cond_lt_tmp_$16
+	# ICMPcond_lt_tmp_$16 x$36  
 
 	# fetch variables
 
@@ -13053,14 +12673,14 @@ ifTrue_65:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$16
 	li t4, 14768
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$29 cond_lt_tmp_$16
+	# ZEXTcond_tmp_$29 cond_lt_tmp_$16
 
 	# fetch variables
 
@@ -13068,14 +12688,14 @@ ifTrue_65:
 	li t4, 14768
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$29
 	li t4, 14760
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$29  cond_$29
+	# ICMPcond_$29 cond_tmp_$29  
 
 	# fetch variables
 
@@ -13084,16 +12704,16 @@ ifTrue_65:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$29
 	li t4, 14752
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$29 ifTrue_66 ifFalse_29
+	# condBr cond_$29 ifTrue_113 ifFalse_34
 
 	# fetch variables
 
@@ -13101,9 +12721,9 @@ ifTrue_65:
 	li t4, 14752
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_29
-	j ifTrue_66
-ifFalse_28:
+	beqz t1, ifFalse_34
+	j ifTrue_113
+ifFalse_33:
 
 	# load y$40 lv$3
 
@@ -13118,7 +12738,7 @@ ifFalse_28:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$40  cond_gt_tmp_$7
+	# ICMPcond_gt_tmp_$7 y$40  
 
 	# fetch variables
 
@@ -13127,15 +12747,15 @@ ifFalse_28:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$7
 	li t4, 14736
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$30 cond_gt_tmp_$7
+	# ZEXTcond_tmp_$30 cond_gt_tmp_$7
 
 	# fetch variables
 
@@ -13143,14 +12763,14 @@ ifFalse_28:
 	li t4, 14736
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$30
 	li t4, 14728
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$30  cond_$30
+	# ICMPcond_$30 cond_tmp_$30  
 
 	# fetch variables
 
@@ -13159,16 +12779,16 @@ ifFalse_28:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$30
 	li t4, 14720
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$30 ifTrue_67 ifFalse_30
+	# condBr cond_$30 ifTrue_114 ifFalse_35
 
 	# fetch variables
 
@@ -13176,9 +12796,9 @@ ifFalse_28:
 	li t4, 14720
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_30
-	j ifTrue_67
-next_131:
+	beqz t1, ifFalse_35
+	j ifTrue_114
+next_224:
 
 	# load ans$40 lv
 
@@ -13193,7 +12813,7 @@ next_131:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$18 ans$40
+	# store lv$18 ans$40
 
 	# fetch variables
 
@@ -13202,55 +12822,49 @@ next_131:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$18 ans$40
-
 	# get address of lv$18 points to
 	li t4, 19272
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_56
-	j whileCond_56
-ifTrue_66:
+	# br whileCond_102
+	j whileCond_102
+ifTrue_113:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 65535
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_132
-	j next_132
-ifFalse_29:
+	# br next_225
+	j next_225
+ifFalse_34:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_132
-	j next_132
-next_132:
+	# br next_225
+	j next_225
+next_225:
 
-	# br next_131
-	j next_131
-ifTrue_67:
+	# br next_224
+	j next_224
+ifTrue_114:
 
 	# load x$37 lv$2
 
@@ -13265,7 +12879,7 @@ ifTrue_67:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$37  cond_gt_tmp_$8
+	# ICMPcond_gt_tmp_$8 x$37  
 
 	# fetch variables
 
@@ -13274,15 +12888,15 @@ ifTrue_67:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 32767
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$8
 	li t4, 14696
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$31 cond_gt_tmp_$8
+	# ZEXTcond_tmp_$31 cond_gt_tmp_$8
 
 	# fetch variables
 
@@ -13290,14 +12904,14 @@ ifTrue_67:
 	li t4, 14696
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$31
 	li t4, 14688
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$31  cond_$31
+	# ICMPcond_$31 cond_tmp_$31  
 
 	# fetch variables
 
@@ -13306,16 +12920,16 @@ ifTrue_67:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$31
 	li t4, 14680
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$31 ifTrue_68 ifFalse_31
+	# condBr cond_$31 ifTrue_115 ifFalse_36
 
 	# fetch variables
 
@@ -13323,9 +12937,9 @@ ifTrue_67:
 	li t4, 14680
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_31
-	j ifTrue_68
-ifFalse_30:
+	beqz t1, ifFalse_36
+	j ifTrue_115
+ifFalse_35:
 
 	# load x$41 lv$2
 
@@ -13340,7 +12954,7 @@ ifFalse_30:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv x$41
+	# store lv x$41
 
 	# fetch variables
 
@@ -13349,21 +12963,19 @@ ifFalse_30:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv x$41
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_133
-	j next_133
-next_133:
+	# br next_226
+	j next_226
+next_226:
 
-	# br next_131
-	j next_131
-ifTrue_68:
+	# br next_224
+	j next_224
+ifTrue_115:
 
 	# load x$38 lv$2
 
@@ -13425,7 +13037,7 @@ ifTrue_68:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$127 x$38 SHIFT_TABLE$45
+	# DIVresult_$127 x$38 SHIFT_TABLE$45 
 
 	# fetch variables
 
@@ -13438,14 +13050,14 @@ ifTrue_68:
 	li t4, 14640
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$127
 	li t4, 14632
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$127
+	# store lv$2 result_$127
 
 	# fetch variables
 
@@ -13453,8 +13065,6 @@ ifTrue_68:
 	li t4, 14632
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$127
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -13475,7 +13085,7 @@ ifTrue_68:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$128 x$39 
+	# ADDresult_$128 x$39  
 
 	# fetch variables
 
@@ -13504,7 +13114,7 @@ ifTrue_68:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$129  y$42
+	# SUBresult_$129  y$42 
 
 	# fetch variables
 	li t1, 15
@@ -13520,7 +13130,7 @@ ifTrue_68:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$130 result_$129 
+	# ADDresult_$130 result_$129  
 
 	# fetch variables
 
@@ -13570,7 +13180,7 @@ ifTrue_68:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$131 result_$128 SHIFT_TABLE$47
+	# SUBresult_$131 result_$128 SHIFT_TABLE$47 
 
 	# fetch variables
 
@@ -13590,7 +13200,7 @@ ifTrue_68:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$131
+	# store lv result_$131
 
 	# fetch variables
 
@@ -13599,17 +13209,15 @@ ifTrue_68:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$131
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_134
-	j next_134
-ifFalse_31:
+	# br next_227
+	j next_227
+ifFalse_36:
 
 	# load x$40 lv$2
 
@@ -13671,7 +13279,7 @@ ifFalse_31:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$132 x$40 SHIFT_TABLE$49
+	# DIVresult_$132 x$40 SHIFT_TABLE$49 
 
 	# fetch variables
 
@@ -13684,14 +13292,14 @@ ifFalse_31:
 	li t4, 14536
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$132
 	li t4, 14528
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv result_$132
+	# store lv result_$132
 
 	# fetch variables
 
@@ -13700,21 +13308,19 @@ ifFalse_31:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$132
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_134
-	j next_134
-next_134:
+	# br next_227
+	j next_227
+next_227:
 
-	# br next_133
-	j next_133
-ifTrue_69:
+	# br next_226
+	j next_226
+ifTrue_116:
 
 	# load x$42 lv$2
 
@@ -13729,7 +13335,7 @@ ifTrue_69:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$42  cond_lt_tmp_$17
+	# ICMPcond_lt_tmp_$17 x$42  
 
 	# fetch variables
 
@@ -13738,14 +13344,14 @@ ifTrue_69:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$17
 	li t4, 14512
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$33 cond_lt_tmp_$17
+	# ZEXTcond_tmp_$33 cond_lt_tmp_$17
 
 	# fetch variables
 
@@ -13753,14 +13359,14 @@ ifTrue_69:
 	li t4, 14512
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$33
 	li t4, 14504
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$33  cond_$33
+	# ICMPcond_$33 cond_tmp_$33  
 
 	# fetch variables
 
@@ -13769,16 +13375,16 @@ ifTrue_69:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$33
 	li t4, 14496
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$33 ifTrue_70 ifFalse_33
+	# condBr cond_$33 ifTrue_117 ifFalse_38
 
 	# fetch variables
 
@@ -13786,9 +13392,9 @@ ifTrue_69:
 	li t4, 14496
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_33
-	j ifTrue_70
-ifFalse_32:
+	beqz t1, ifFalse_38
+	j ifTrue_117
+ifFalse_37:
 
 	# load y$45 lv$3
 
@@ -13803,7 +13409,7 @@ ifFalse_32:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$45  cond_gt_tmp_$9
+	# ICMPcond_gt_tmp_$9 y$45  
 
 	# fetch variables
 
@@ -13812,15 +13418,15 @@ ifFalse_32:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$9
 	li t4, 14480
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$34 cond_gt_tmp_$9
+	# ZEXTcond_tmp_$34 cond_gt_tmp_$9
 
 	# fetch variables
 
@@ -13828,14 +13434,14 @@ ifFalse_32:
 	li t4, 14480
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$34
 	li t4, 14472
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$34  cond_$34
+	# ICMPcond_$34 cond_tmp_$34  
 
 	# fetch variables
 
@@ -13844,16 +13450,16 @@ ifFalse_32:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$34
 	li t4, 14464
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$34 ifTrue_71 ifFalse_34
+	# condBr cond_$34 ifTrue_118 ifFalse_39
 
 	# fetch variables
 
@@ -13861,9 +13467,9 @@ ifFalse_32:
 	li t4, 14464
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_34
-	j ifTrue_71
-next_135:
+	beqz t1, ifFalse_39
+	j ifTrue_118
+next_228:
 
 	# load ans$42 lv
 
@@ -13878,7 +13484,7 @@ next_135:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$6 ans$42
+	# store lv$6 ans$42
 
 	# fetch variables
 
@@ -13887,55 +13493,49 @@ next_135:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$6 ans$42
-
 	# get address of lv$6 points to
 	li t4, 19080
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_44
-	j whileCond_44
-ifTrue_70:
+	# br whileCond_90
+	j whileCond_90
+ifTrue_117:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 65535
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_136
-	j next_136
-ifFalse_33:
+	# br next_229
+	j next_229
+ifFalse_38:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_136
-	j next_136
-next_136:
+	# br next_229
+	j next_229
+next_229:
 
-	# br next_135
-	j next_135
-ifTrue_71:
+	# br next_228
+	j next_228
+ifTrue_118:
 
 	# load x$43 lv$2
 
@@ -13950,7 +13550,7 @@ ifTrue_71:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$43  cond_gt_tmp_$10
+	# ICMPcond_gt_tmp_$10 x$43  
 
 	# fetch variables
 
@@ -13959,15 +13559,15 @@ ifTrue_71:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 32767
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$10
 	li t4, 14440
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$35 cond_gt_tmp_$10
+	# ZEXTcond_tmp_$35 cond_gt_tmp_$10
 
 	# fetch variables
 
@@ -13975,14 +13575,14 @@ ifTrue_71:
 	li t4, 14440
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$35
 	li t4, 14432
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$35  cond_$35
+	# ICMPcond_$35 cond_tmp_$35  
 
 	# fetch variables
 
@@ -13991,16 +13591,16 @@ ifTrue_71:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$35
 	li t4, 14424
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$35 ifTrue_72 ifFalse_35
+	# condBr cond_$35 ifTrue_119 ifFalse_40
 
 	# fetch variables
 
@@ -14008,9 +13608,9 @@ ifTrue_71:
 	li t4, 14424
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_35
-	j ifTrue_72
-ifFalse_34:
+	beqz t1, ifFalse_40
+	j ifTrue_119
+ifFalse_39:
 
 	# load x$47 lv$2
 
@@ -14025,7 +13625,7 @@ ifFalse_34:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv x$47
+	# store lv x$47
 
 	# fetch variables
 
@@ -14034,21 +13634,19 @@ ifFalse_34:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv x$47
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_137
-	j next_137
-next_137:
+	# br next_230
+	j next_230
+next_230:
 
-	# br next_135
-	j next_135
-ifTrue_72:
+	# br next_228
+	j next_228
+ifTrue_119:
 
 	# load x$44 lv$2
 
@@ -14110,7 +13708,7 @@ ifTrue_72:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$133 x$44 SHIFT_TABLE$51
+	# DIVresult_$133 x$44 SHIFT_TABLE$51 
 
 	# fetch variables
 
@@ -14123,14 +13721,14 @@ ifTrue_72:
 	li t4, 14384
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$133
 	li t4, 14376
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$133
+	# store lv$2 result_$133
 
 	# fetch variables
 
@@ -14138,8 +13736,6 @@ ifTrue_72:
 	li t4, 14376
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$133
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -14160,7 +13756,7 @@ ifTrue_72:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$134 x$45 
+	# ADDresult_$134 x$45  
 
 	# fetch variables
 
@@ -14189,7 +13785,7 @@ ifTrue_72:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$135  y$47
+	# SUBresult_$135  y$47 
 
 	# fetch variables
 	li t1, 15
@@ -14205,7 +13801,7 @@ ifTrue_72:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$136 result_$135 
+	# ADDresult_$136 result_$135  
 
 	# fetch variables
 
@@ -14255,7 +13851,7 @@ ifTrue_72:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$137 result_$134 SHIFT_TABLE$53
+	# SUBresult_$137 result_$134 SHIFT_TABLE$53 
 
 	# fetch variables
 
@@ -14275,7 +13871,7 @@ ifTrue_72:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$137
+	# store lv result_$137
 
 	# fetch variables
 
@@ -14284,17 +13880,15 @@ ifTrue_72:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$137
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_138
-	j next_138
-ifFalse_35:
+	# br next_231
+	j next_231
+ifFalse_40:
 
 	# load x$46 lv$2
 
@@ -14356,7 +13950,7 @@ ifFalse_35:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$138 x$46 SHIFT_TABLE$55
+	# DIVresult_$138 x$46 SHIFT_TABLE$55 
 
 	# fetch variables
 
@@ -14369,14 +13963,14 @@ ifFalse_35:
 	li t4, 14280
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$138
 	li t4, 14272
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv result_$138
+	# store lv result_$138
 
 	# fetch variables
 
@@ -14385,21 +13979,19 @@ ifFalse_35:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$138
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_138
-	j next_138
-next_138:
+	# br next_231
+	j next_231
+next_231:
 
-	# br next_137
-	j next_137
-whileCond_66:
+	# br next_230
+	j next_230
+whileCond_112:
 
 	# load pr$3 lv$27
 
@@ -14414,7 +14006,7 @@ whileCond_66:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp pr$3  cond_gt_tmp_$11
+	# ICMPcond_gt_tmp_$11 pr$3  
 
 	# fetch variables
 
@@ -14423,15 +14015,15 @@ whileCond_66:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$11
 	li t4, 14256
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$36 cond_gt_tmp_$11
+	# ZEXTcond_tmp_$36 cond_gt_tmp_$11
 
 	# fetch variables
 
@@ -14439,14 +14031,14 @@ whileCond_66:
 	li t4, 14256
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$36
 	li t4, 14248
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$36  cond_$36
+	# ICMPcond_$36 cond_tmp_$36  
 
 	# fetch variables
 
@@ -14455,16 +14047,16 @@ whileCond_66:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$36
 	li t4, 14240
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$36 whileBody_66 next_139
+	# condBr cond_$36 whileBody_112 next_232
 
 	# fetch variables
 
@@ -14472,16 +14064,14 @@ whileCond_66:
 	li t4, 14240
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_139
-	j whileBody_66
-whileBody_66:
+	beqz t1, next_232
+	j whileBody_112
+whileBody_112:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -14489,12 +14079,10 @@ whileBody_66:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -14515,7 +14103,7 @@ whileBody_66:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 pr$4
+	# store lv$2 pr$4
 
 	# fetch variables
 
@@ -14524,20 +14112,16 @@ whileBody_66:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 pr$4
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -14545,9 +14129,9 @@ whileBody_66:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_67
-	j whileCond_67
-next_139:
+	# br whileCond_113
+	j whileCond_113
+next_232:
 
 	# load pres$3 lv$28
 
@@ -14562,7 +14146,7 @@ next_139:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv pres$3
+	# store lv pres$3
 
 	# fetch variables
 
@@ -14570,8 +14154,6 @@ next_139:
 	li t4, 14224
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv pres$3
 
 	# get address of lv points to
 	li t4, 18984
@@ -14638,12 +14220,10 @@ next_139:
 	# release params
 	addi sp, sp, 0
 
-	# lv$4 
+	# store lv$4 
 
 	# fetch variables
 	li t1, 2
-
-	# store lv$4 
 
 	# get address of lv$4 points to
 	li t4, 19048
@@ -14651,9 +14231,9 @@ next_139:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_88
-	j whileCond_88
-whileCond_67:
+	# br whileCond_134
+	j whileCond_134
+whileCond_113:
 
 	# load i$49 lv$1
 
@@ -14668,7 +14248,7 @@ whileCond_67:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$49  cond_lt_tmp_$18
+	# ICMPcond_lt_tmp_$18 i$49  
 
 	# fetch variables
 
@@ -14677,14 +14257,14 @@ whileCond_67:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$18
 	li t4, 14200
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$37 cond_lt_tmp_$18
+	# ZEXTcond_tmp_$37 cond_lt_tmp_$18
 
 	# fetch variables
 
@@ -14692,14 +14272,14 @@ whileCond_67:
 	li t4, 14200
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$37
 	li t4, 14192
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$37  cond_$37
+	# ICMPcond_$37 cond_tmp_$37  
 
 	# fetch variables
 
@@ -14708,16 +14288,16 @@ whileCond_67:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$37
 	li t4, 14184
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$37 whileBody_67 next_140
+	# condBr cond_$37 whileBody_113 next_233
 
 	# fetch variables
 
@@ -14725,9 +14305,9 @@ whileCond_67:
 	li t4, 14184
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_140
-	j whileBody_67
-whileBody_67:
+	beqz t1, next_233
+	j whileBody_113
+whileBody_113:
 
 	# load x$48 lv$2
 
@@ -14742,7 +14322,7 @@ whileBody_67:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$139 x$48 
+	# MODresult_$139 x$48  
 
 	# fetch variables
 
@@ -14751,14 +14331,14 @@ whileBody_67:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$139
 	li t4, 14168
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$139  cond_normalize_$39
+	# ICMPcond_normalize_$39 result_$139  
 
 	# fetch variables
 
@@ -14767,16 +14347,16 @@ whileBody_67:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$39
 	li t4, 14160
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$39 secondCond_23 next_141
+	# condBr cond_normalize_$39 secondCond_58 next_234
 
 	# fetch variables
 
@@ -14784,9 +14364,9 @@ whileBody_67:
 	li t4, 14160
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_141
-	j secondCond_23
-next_140:
+	beqz t1, next_234
+	j secondCond_58
+next_233:
 
 	# load ans$45 lv
 
@@ -14801,7 +14381,7 @@ next_140:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp ans$45  cond_normalize_$41
+	# ICMPcond_normalize_$41 ans$45  
 
 	# fetch variables
 
@@ -14810,16 +14390,16 @@ next_140:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$41
 	li t4, 14144
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$41 ifTrue_74 next_142
+	# condBr cond_normalize_$41 ifTrue_121 next_235
 
 	# fetch variables
 
@@ -14827,9 +14407,9 @@ next_140:
 	li t4, 14144
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_142
-	j ifTrue_74
-ifTrue_73:
+	beqz t1, next_235
+	j ifTrue_121
+ifTrue_120:
 
 	# load ans$44 lv
 
@@ -14891,7 +14471,7 @@ ifTrue_73:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$141  SHIFT_TABLE$57
+	# MULresult_$141  SHIFT_TABLE$57 
 
 	# fetch variables
 	li t1, 1
@@ -14907,7 +14487,7 @@ ifTrue_73:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$142 ans$44 result_$141
+	# ADDresult_$142 ans$44 result_$141 
 
 	# fetch variables
 
@@ -14927,7 +14507,7 @@ ifTrue_73:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$142
+	# store lv result_$142
 
 	# fetch variables
 
@@ -14936,17 +14516,15 @@ ifTrue_73:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$142
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_141
-	j next_141
-next_141:
+	# br next_234
+	j next_234
+next_234:
 
 	# load x$49 lv$2
 
@@ -14961,7 +14539,7 @@ next_141:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$143 x$49 
+	# DIVresult_$143 x$49  
 
 	# fetch variables
 
@@ -14970,14 +14548,14 @@ next_141:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$143
 	li t4, 14080
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$143
+	# store lv$2 result_$143
 
 	# fetch variables
 
@@ -14985,8 +14563,6 @@ next_141:
 	li t4, 14080
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$143
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -15007,7 +14583,7 @@ next_141:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$144 y$50 
+	# DIVresult_$144 y$50  
 
 	# fetch variables
 
@@ -15016,14 +14592,14 @@ next_141:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$144
 	li t4, 14064
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$144
+	# store lv$3 result_$144
 
 	# fetch variables
 
@@ -15031,8 +14607,6 @@ next_141:
 	li t4, 14064
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$144
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -15053,7 +14627,7 @@ next_141:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$145 i$51 
+	# ADDresult_$145 i$51  
 
 	# fetch variables
 
@@ -15069,7 +14643,7 @@ next_141:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$145
+	# store lv$1 result_$145
 
 	# fetch variables
 
@@ -15078,17 +14652,15 @@ next_141:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$145
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_67
-	j whileCond_67
-secondCond_23:
+	# br whileCond_113
+	j whileCond_113
+secondCond_58:
 
 	# load y$49 lv$3
 
@@ -15103,7 +14675,7 @@ secondCond_23:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$140 y$49 
+	# MODresult_$140 y$49  
 
 	# fetch variables
 
@@ -15112,14 +14684,14 @@ secondCond_23:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$140
 	li t4, 14032
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$140  cond_normalize_$40
+	# ICMPcond_normalize_$40 result_$140  
 
 	# fetch variables
 
@@ -15128,16 +14700,16 @@ secondCond_23:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$40
 	li t4, 14024
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$40 ifTrue_73 next_141
+	# condBr cond_normalize_$40 ifTrue_120 next_234
 
 	# fetch variables
 
@@ -15145,9 +14717,9 @@ secondCond_23:
 	li t4, 14024
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_141
-	j ifTrue_73
-ifTrue_74:
+	beqz t1, next_234
+	j ifTrue_120
+ifTrue_121:
 
 	# load pres$2 lv$28
 
@@ -15162,7 +14734,7 @@ ifTrue_74:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$29 pres$2
+	# store lv$29 pres$2
 
 	# fetch variables
 
@@ -15170,8 +14742,6 @@ ifTrue_74:
 	li t4, 14016
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$29 pres$2
 
 	# get address of lv$29 points to
 	li t4, 19448
@@ -15192,7 +14762,7 @@ ifTrue_74:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$30 pl$3
+	# store lv$30 pl$3
 
 	# fetch variables
 
@@ -15201,20 +14771,16 @@ ifTrue_74:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$30 pl$3
-
 	# get address of lv$30 points to
 	li t4, 19464
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$31 
+	# store lv$31 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$31 
 
 	# get address of lv$31 points to
 	li t4, 19480
@@ -15222,9 +14788,9 @@ ifTrue_74:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_68
-	j whileCond_68
-next_142:
+	# br whileCond_114
+	j whileCond_114
+next_235:
 
 	# load pl$4 lv$26
 
@@ -15239,7 +14805,7 @@ next_142:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$38 pl$4
+	# store lv$38 pl$4
 
 	# fetch variables
 
@@ -15247,8 +14813,6 @@ next_142:
 	li t4, 14000
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$38 pl$4
 
 	# get address of lv$38 points to
 	li t4, 19592
@@ -15269,7 +14833,7 @@ next_142:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$39 pl$5
+	# store lv$39 pl$5
 
 	# fetch variables
 
@@ -15278,20 +14842,16 @@ next_142:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$39 pl$5
-
 	# get address of lv$39 points to
 	li t4, 19608
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$40 
+	# store lv$40 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$40 
 
 	# get address of lv$40 points to
 	li t4, 19624
@@ -15299,9 +14859,9 @@ next_142:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_78
-	j whileCond_78
-whileCond_68:
+	# br whileCond_124
+	j whileCond_124
+whileCond_114:
 
 	# load mr$6 lv$30
 
@@ -15316,7 +14876,7 @@ whileCond_68:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp mr$6  cond_normalize_$42
+	# ICMPcond_normalize_$42 mr$6  
 
 	# fetch variables
 
@@ -15325,16 +14885,16 @@ whileCond_68:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$42
 	li t4, 13976
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$42 whileBody_68 next_143
+	# condBr cond_normalize_$42 whileBody_114 next_236
 
 	# fetch variables
 
@@ -15342,16 +14902,14 @@ whileCond_68:
 	li t4, 13976
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_143
-	j whileBody_68
-whileBody_68:
+	beqz t1, next_236
+	j whileBody_114
+whileBody_114:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -15359,12 +14917,10 @@ whileBody_68:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -15385,7 +14941,7 @@ whileBody_68:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$7
+	# store lv$2 mr$7
 
 	# fetch variables
 
@@ -15394,20 +14950,16 @@ whileBody_68:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$7
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -15415,9 +14967,9 @@ whileBody_68:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_69
-	j whileCond_69
-next_143:
+	# br whileCond_115
+	j whileCond_115
+next_236:
 
 	# load mres$5 lv$31
 
@@ -15432,7 +14984,7 @@ next_143:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv mres$5
+	# store lv mres$5
 
 	# fetch variables
 
@@ -15440,8 +14992,6 @@ next_143:
 	li t4, 13960
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv mres$5
 
 	# get address of lv points to
 	li t4, 18984
@@ -15462,7 +15012,7 @@ next_143:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$28 ans$65
+	# store lv$28 ans$65
 
 	# fetch variables
 
@@ -15471,17 +15021,15 @@ next_143:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$28 ans$65
-
 	# get address of lv$28 points to
 	li t4, 19432
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_142
-	j next_142
-whileCond_69:
+	# br next_235
+	j next_235
+whileCond_115:
 
 	# load i$52 lv$1
 
@@ -15496,7 +15044,7 @@ whileCond_69:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$52  cond_lt_tmp_$19
+	# ICMPcond_lt_tmp_$19 i$52  
 
 	# fetch variables
 
@@ -15505,14 +15053,14 @@ whileCond_69:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$19
 	li t4, 13936
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$38 cond_lt_tmp_$19
+	# ZEXTcond_tmp_$38 cond_lt_tmp_$19
 
 	# fetch variables
 
@@ -15520,14 +15068,14 @@ whileCond_69:
 	li t4, 13936
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$38
 	li t4, 13928
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$38  cond_$38
+	# ICMPcond_$38 cond_tmp_$38  
 
 	# fetch variables
 
@@ -15536,16 +15084,16 @@ whileCond_69:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$38
 	li t4, 13920
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$38 whileBody_69 next_144
+	# condBr cond_$38 whileBody_115 next_237
 
 	# fetch variables
 
@@ -15553,9 +15101,9 @@ whileCond_69:
 	li t4, 13920
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_144
-	j whileBody_69
-whileBody_69:
+	beqz t1, next_237
+	j whileBody_115
+whileBody_115:
 
 	# load x$50 lv$2
 
@@ -15570,7 +15118,7 @@ whileBody_69:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$146 x$50 
+	# MODresult_$146 x$50  
 
 	# fetch variables
 
@@ -15579,14 +15127,14 @@ whileBody_69:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$146
 	li t4, 13904
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$146  cond_normalize_$43
+	# ICMPcond_normalize_$43 result_$146  
 
 	# fetch variables
 
@@ -15595,16 +15143,16 @@ whileBody_69:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$43
 	li t4, 13896
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$43 secondCond_24 next_145
+	# condBr cond_normalize_$43 secondCond_59 next_238
 
 	# fetch variables
 
@@ -15612,9 +15160,9 @@ whileBody_69:
 	li t4, 13896
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_145
-	j secondCond_24
-next_144:
+	beqz t1, next_238
+	j secondCond_59
+next_237:
 
 	# load ans$47 lv
 
@@ -15629,7 +15177,7 @@ next_144:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp ans$47  cond_normalize_$45
+	# ICMPcond_normalize_$45 ans$47  
 
 	# fetch variables
 
@@ -15638,16 +15186,16 @@ next_144:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$45
 	li t4, 13880
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$45 ifTrue_76 next_146
+	# condBr cond_normalize_$45 ifTrue_123 next_239
 
 	# fetch variables
 
@@ -15655,9 +15203,9 @@ next_144:
 	li t4, 13880
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_146
-	j ifTrue_76
-ifTrue_75:
+	beqz t1, next_239
+	j ifTrue_123
+ifTrue_122:
 
 	# load ans$46 lv
 
@@ -15719,7 +15267,7 @@ ifTrue_75:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$148  SHIFT_TABLE$59
+	# MULresult_$148  SHIFT_TABLE$59 
 
 	# fetch variables
 	li t1, 1
@@ -15735,7 +15283,7 @@ ifTrue_75:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$149 ans$46 result_$148
+	# ADDresult_$149 ans$46 result_$148 
 
 	# fetch variables
 
@@ -15755,7 +15303,7 @@ ifTrue_75:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$149
+	# store lv result_$149
 
 	# fetch variables
 
@@ -15764,17 +15312,15 @@ ifTrue_75:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$149
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_145
-	j next_145
-next_145:
+	# br next_238
+	j next_238
+next_238:
 
 	# load x$51 lv$2
 
@@ -15789,7 +15335,7 @@ next_145:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$150 x$51 
+	# DIVresult_$150 x$51  
 
 	# fetch variables
 
@@ -15798,14 +15344,14 @@ next_145:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$150
 	li t4, 13816
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$150
+	# store lv$2 result_$150
 
 	# fetch variables
 
@@ -15813,8 +15359,6 @@ next_145:
 	li t4, 13816
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$150
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -15835,7 +15379,7 @@ next_145:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$151 y$52 
+	# DIVresult_$151 y$52  
 
 	# fetch variables
 
@@ -15844,14 +15388,14 @@ next_145:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$151
 	li t4, 13800
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$151
+	# store lv$3 result_$151
 
 	# fetch variables
 
@@ -15859,8 +15403,6 @@ next_145:
 	li t4, 13800
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$151
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -15881,7 +15423,7 @@ next_145:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$152 i$54 
+	# ADDresult_$152 i$54  
 
 	# fetch variables
 
@@ -15897,7 +15439,7 @@ next_145:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$152
+	# store lv$1 result_$152
 
 	# fetch variables
 
@@ -15906,17 +15448,15 @@ next_145:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$152
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_69
-	j whileCond_69
-secondCond_24:
+	# br whileCond_115
+	j whileCond_115
+secondCond_59:
 
 	# load y$51 lv$3
 
@@ -15931,7 +15471,7 @@ secondCond_24:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$147 y$51 
+	# MODresult_$147 y$51  
 
 	# fetch variables
 
@@ -15940,14 +15480,14 @@ secondCond_24:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$147
 	li t4, 13768
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$147  cond_normalize_$44
+	# ICMPcond_normalize_$44 result_$147  
 
 	# fetch variables
 
@@ -15956,16 +15496,16 @@ secondCond_24:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$44
 	li t4, 13760
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$44 ifTrue_75 next_145
+	# condBr cond_normalize_$44 ifTrue_122 next_238
 
 	# fetch variables
 
@@ -15973,9 +15513,9 @@ secondCond_24:
 	li t4, 13760
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_145
-	j ifTrue_75
-ifTrue_76:
+	beqz t1, next_238
+	j ifTrue_122
+ifTrue_123:
 
 	# load mres$4 lv$31
 
@@ -15990,7 +15530,7 @@ ifTrue_76:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$32 mres$4
+	# store lv$32 mres$4
 
 	# fetch variables
 
@@ -15998,8 +15538,6 @@ ifTrue_76:
 	li t4, 13752
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$32 mres$4
 
 	# get address of lv$32 points to
 	li t4, 19496
@@ -16020,7 +15558,7 @@ ifTrue_76:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$33 ml$6
+	# store lv$33 ml$6
 
 	# fetch variables
 
@@ -16029,17 +15567,15 @@ ifTrue_76:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$33 ml$6
-
 	# get address of lv$33 points to
 	li t4, 19512
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_70
-	j whileCond_70
-next_146:
+	# br whileCond_116
+	j whileCond_116
+next_239:
 
 	# load ml$7 lv$29
 
@@ -16054,7 +15590,7 @@ next_146:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$35 ml$7
+	# store lv$35 ml$7
 
 	# fetch variables
 
@@ -16062,8 +15598,6 @@ next_146:
 	li t4, 13736
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$35 ml$7
 
 	# get address of lv$35 points to
 	li t4, 19544
@@ -16084,7 +15618,7 @@ next_146:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$36 ml$8
+	# store lv$36 ml$8
 
 	# fetch variables
 
@@ -16093,17 +15627,15 @@ next_146:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$36 ml$8
-
 	# get address of lv$36 points to
 	li t4, 19560
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_74
-	j whileCond_74
-whileCond_70:
+	# br whileCond_120
+	j whileCond_120
+whileCond_116:
 
 	# load c$16 lv$33
 
@@ -16118,7 +15650,7 @@ whileCond_70:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$16  cond_normalize_$46
+	# ICMPcond_normalize_$46 c$16  
 
 	# fetch variables
 
@@ -16127,16 +15659,16 @@ whileCond_70:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$46
 	li t4, 13712
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$46 whileBody_70 next_147
+	# condBr cond_normalize_$46 whileBody_116 next_240
 
 	# fetch variables
 
@@ -16144,16 +15676,14 @@ whileCond_70:
 	li t4, 13712
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_147
-	j whileBody_70
-whileBody_70:
+	beqz t1, next_240
+	j whileBody_116
+whileBody_116:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -16161,12 +15691,10 @@ whileBody_70:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -16187,7 +15715,7 @@ whileBody_70:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$12
+	# store lv$2 al$12
 
 	# fetch variables
 
@@ -16195,8 +15723,6 @@ whileBody_70:
 	li t4, 13704
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$12
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -16217,7 +15743,7 @@ whileBody_70:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$17
+	# store lv$3 c$17
 
 	# fetch variables
 
@@ -16226,17 +15752,15 @@ whileBody_70:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$17
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_71
-	j whileCond_71
-next_147:
+	# br whileCond_117
+	j whileCond_117
+next_240:
 
 	# load al$14 lv$32
 
@@ -16251,7 +15775,7 @@ next_147:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$14
+	# store lv al$14
 
 	# fetch variables
 
@@ -16259,8 +15783,6 @@ next_147:
 	li t4, 13688
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$14
 
 	# get address of lv points to
 	li t4, 18984
@@ -16281,7 +15803,7 @@ next_147:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$31 ans$55
+	# store lv$31 ans$55
 
 	# fetch variables
 
@@ -16290,17 +15812,15 @@ next_147:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$31 ans$55
-
 	# get address of lv$31 points to
 	li t4, 19480
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_146
-	j next_146
-whileCond_71:
+	# br next_239
+	j next_239
+whileCond_117:
 
 	# load i$55 lv$1
 
@@ -16315,7 +15835,7 @@ whileCond_71:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$55  cond_lt_tmp_$20
+	# ICMPcond_lt_tmp_$20 i$55  
 
 	# fetch variables
 
@@ -16324,14 +15844,14 @@ whileCond_71:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$20
 	li t4, 13664
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$39 cond_lt_tmp_$20
+	# ZEXTcond_tmp_$39 cond_lt_tmp_$20
 
 	# fetch variables
 
@@ -16339,14 +15859,14 @@ whileCond_71:
 	li t4, 13664
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$39
 	li t4, 13656
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$39  cond_$39
+	# ICMPcond_$39 cond_tmp_$39  
 
 	# fetch variables
 
@@ -16355,16 +15875,16 @@ whileCond_71:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$39
 	li t4, 13648
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$39 whileBody_71 next_148
+	# condBr cond_$39 whileBody_117 next_241
 
 	# fetch variables
 
@@ -16372,9 +15892,9 @@ whileCond_71:
 	li t4, 13648
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_148
-	j whileBody_71
-whileBody_71:
+	beqz t1, next_241
+	j whileBody_117
+whileBody_117:
 
 	# load x$52 lv$2
 
@@ -16389,7 +15909,7 @@ whileBody_71:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$153 x$52 
+	# MODresult_$153 x$52  
 
 	# fetch variables
 
@@ -16398,14 +15918,14 @@ whileBody_71:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$153
 	li t4, 13632
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$153  cond_normalize_$47
+	# ICMPcond_normalize_$47 result_$153  
 
 	# fetch variables
 
@@ -16414,16 +15934,16 @@ whileBody_71:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$47
 	li t4, 13624
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$47 ifTrue_77 ifFalse_36
+	# condBr cond_normalize_$47 ifTrue_124 ifFalse_41
 
 	# fetch variables
 
@@ -16431,9 +15951,9 @@ whileBody_71:
 	li t4, 13624
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_36
-	j ifTrue_77
-next_148:
+	beqz t1, ifFalse_41
+	j ifTrue_124
+next_241:
 
 	# load ans$50 lv
 
@@ -16448,7 +15968,7 @@ next_148:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$34 ans$50
+	# store lv$34 ans$50
 
 	# fetch variables
 
@@ -16457,20 +15977,16 @@ next_148:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$34 ans$50
-
 	# get address of lv$34 points to
 	li t4, 19528
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -16478,12 +15994,10 @@ next_148:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -16504,7 +16018,7 @@ next_148:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$13
+	# store lv$2 al$13
 
 	# fetch variables
 
@@ -16512,8 +16026,6 @@ next_148:
 	li t4, 13608
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$13
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -16534,7 +16046,7 @@ next_148:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$18
+	# store lv$3 c$18
 
 	# fetch variables
 
@@ -16543,17 +16055,15 @@ next_148:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$18
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_72
-	j whileCond_72
-ifTrue_77:
+	# br whileCond_118
+	j whileCond_118
+ifTrue_124:
 
 	# load y$53 lv$3
 
@@ -16568,7 +16078,7 @@ ifTrue_77:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$154 y$53 
+	# MODresult_$154 y$53  
 
 	# fetch variables
 
@@ -16577,14 +16087,14 @@ ifTrue_77:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$154
-	li t4, 13584
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$154
+	li t4, 13584
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$154  cond_eq_tmp_$4
+	# ICMPcond_eq_tmp_$4 result_$154  
 
 	# fetch variables
 
@@ -16593,15 +16103,15 @@ ifTrue_77:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$4
 	li t4, 13576
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$40 cond_eq_tmp_$4
+	# ZEXTcond_tmp_$40 cond_eq_tmp_$4
 
 	# fetch variables
 
@@ -16609,14 +16119,14 @@ ifTrue_77:
 	li t4, 13576
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$40
 	li t4, 13568
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$40  cond_$40
+	# ICMPcond_$40 cond_tmp_$40  
 
 	# fetch variables
 
@@ -16625,16 +16135,16 @@ ifTrue_77:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$40
 	li t4, 13560
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$40 ifTrue_78 next_150
+	# condBr cond_$40 ifTrue_125 next_243
 
 	# fetch variables
 
@@ -16642,9 +16152,9 @@ ifTrue_77:
 	li t4, 13560
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_150
-	j ifTrue_78
-ifFalse_36:
+	beqz t1, next_243
+	j ifTrue_125
+ifFalse_41:
 
 	# load y$54 lv$3
 
@@ -16659,7 +16169,7 @@ ifFalse_36:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$157 y$54 
+	# MODresult_$157 y$54  
 
 	# fetch variables
 
@@ -16668,14 +16178,14 @@ ifFalse_36:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$157
 	li t4, 13544
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$157  cond_normalize_$48
+	# ICMPcond_normalize_$48 result_$157  
 
 	# fetch variables
 
@@ -16684,16 +16194,16 @@ ifFalse_36:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$48
 	li t4, 13536
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$48 ifTrue_79 next_151
+	# condBr cond_normalize_$48 ifTrue_126 next_244
 
 	# fetch variables
 
@@ -16701,9 +16211,9 @@ ifFalse_36:
 	li t4, 13536
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_151
-	j ifTrue_79
-next_149:
+	beqz t1, next_244
+	j ifTrue_126
+next_242:
 
 	# load x$53 lv$2
 
@@ -16718,7 +16228,7 @@ next_149:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$160 x$53 
+	# DIVresult_$160 x$53  
 
 	# fetch variables
 
@@ -16727,14 +16237,14 @@ next_149:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$160
 	li t4, 13520
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$160
+	# store lv$2 result_$160
 
 	# fetch variables
 
@@ -16742,8 +16252,6 @@ next_149:
 	li t4, 13520
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$160
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -16764,7 +16272,7 @@ next_149:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$161 y$55 
+	# DIVresult_$161 y$55  
 
 	# fetch variables
 
@@ -16773,14 +16281,14 @@ next_149:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$161
 	li t4, 13504
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$161
+	# store lv$3 result_$161
 
 	# fetch variables
 
@@ -16788,8 +16296,6 @@ next_149:
 	li t4, 13504
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$161
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -16810,7 +16316,7 @@ next_149:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$162 i$58 
+	# ADDresult_$162 i$58  
 
 	# fetch variables
 
@@ -16826,7 +16332,7 @@ next_149:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$162
+	# store lv$1 result_$162
 
 	# fetch variables
 
@@ -16835,17 +16341,15 @@ next_149:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$162
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_71
-	j whileCond_71
-ifTrue_78:
+	# br whileCond_117
+	j whileCond_117
+ifTrue_125:
 
 	# load ans$48 lv
 
@@ -16907,7 +16411,7 @@ ifTrue_78:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$155  SHIFT_TABLE$61
+	# MULresult_$155  SHIFT_TABLE$61 
 
 	# fetch variables
 	li t1, 1
@@ -16923,7 +16427,7 @@ ifTrue_78:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$156 ans$48 result_$155
+	# ADDresult_$156 ans$48 result_$155 
 
 	# fetch variables
 
@@ -16943,7 +16447,7 @@ ifTrue_78:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$156
+	# store lv result_$156
 
 	# fetch variables
 
@@ -16952,21 +16456,19 @@ ifTrue_78:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$156
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_150
-	j next_150
-next_150:
+	# br next_243
+	j next_243
+next_243:
 
-	# br next_149
-	j next_149
-ifTrue_79:
+	# br next_242
+	j next_242
+ifTrue_126:
 
 	# load ans$49 lv
 
@@ -17028,7 +16530,7 @@ ifTrue_79:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$158  SHIFT_TABLE$63
+	# MULresult_$158  SHIFT_TABLE$63 
 
 	# fetch variables
 	li t1, 1
@@ -17044,7 +16546,7 @@ ifTrue_79:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$159 ans$49 result_$158
+	# ADDresult_$159 ans$49 result_$158 
 
 	# fetch variables
 
@@ -17064,7 +16566,7 @@ ifTrue_79:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$159
+	# store lv result_$159
 
 	# fetch variables
 
@@ -17073,21 +16575,19 @@ ifTrue_79:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$159
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_151
-	j next_151
-next_151:
+	# br next_244
+	j next_244
+next_244:
 
-	# br next_149
-	j next_149
-whileCond_72:
+	# br next_242
+	j next_242
+whileCond_118:
 
 	# load i$59 lv$1
 
@@ -17102,7 +16602,7 @@ whileCond_72:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$59  cond_lt_tmp_$21
+	# ICMPcond_lt_tmp_$21 i$59  
 
 	# fetch variables
 
@@ -17111,14 +16611,14 @@ whileCond_72:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$21
 	li t4, 13376
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$41 cond_lt_tmp_$21
+	# ZEXTcond_tmp_$41 cond_lt_tmp_$21
 
 	# fetch variables
 
@@ -17126,14 +16626,14 @@ whileCond_72:
 	li t4, 13376
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$41
 	li t4, 13368
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$41  cond_$41
+	# ICMPcond_$41 cond_tmp_$41  
 
 	# fetch variables
 
@@ -17142,16 +16642,16 @@ whileCond_72:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$41
 	li t4, 13360
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$41 whileBody_72 next_152
+	# condBr cond_$41 whileBody_118 next_245
 
 	# fetch variables
 
@@ -17159,9 +16659,9 @@ whileCond_72:
 	li t4, 13360
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_152
-	j whileBody_72
-whileBody_72:
+	beqz t1, next_245
+	j whileBody_118
+whileBody_118:
 
 	# load x$54 lv$2
 
@@ -17176,7 +16676,7 @@ whileBody_72:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$163 x$54 
+	# MODresult_$163 x$54  
 
 	# fetch variables
 
@@ -17185,14 +16685,14 @@ whileBody_72:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$163
 	li t4, 13344
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$163  cond_normalize_$49
+	# ICMPcond_normalize_$49 result_$163  
 
 	# fetch variables
 
@@ -17201,16 +16701,16 @@ whileBody_72:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$49
 	li t4, 13336
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$49 secondCond_25 next_153
+	# condBr cond_normalize_$49 secondCond_60 next_246
 
 	# fetch variables
 
@@ -17218,9 +16718,9 @@ whileBody_72:
 	li t4, 13336
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_153
-	j secondCond_25
-next_152:
+	beqz t1, next_246
+	j secondCond_60
+next_245:
 
 	# load ans$52 lv
 
@@ -17235,7 +16735,7 @@ next_152:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$33 ans$52
+	# store lv$33 ans$52
 
 	# fetch variables
 
@@ -17244,28 +16744,26 @@ next_152:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$33 ans$52
-
 	# get address of lv$33 points to
 	li t4, 19512
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$12
+	# ICMPcond_gt_tmp_$12   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$12
 	li t4, 13320
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$42 cond_gt_tmp_$12
+	# ZEXTcond_tmp_$42 cond_gt_tmp_$12
 
 	# fetch variables
 
@@ -17273,14 +16771,14 @@ next_152:
 	li t4, 13320
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$42
 	li t4, 13312
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$42  cond_$42
+	# ICMPcond_$42 cond_tmp_$42  
 
 	# fetch variables
 
@@ -17289,16 +16787,16 @@ next_152:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$42
 	li t4, 13304
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$42 ifTrue_81 ifFalse_37
+	# condBr cond_$42 ifTrue_128 ifFalse_42
 
 	# fetch variables
 
@@ -17306,9 +16804,9 @@ next_152:
 	li t4, 13304
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_37
-	j ifTrue_81
-ifTrue_80:
+	beqz t1, ifFalse_42
+	j ifTrue_128
+ifTrue_127:
 
 	# load ans$51 lv
 
@@ -17370,7 +16868,7 @@ ifTrue_80:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$165  SHIFT_TABLE$65
+	# MULresult_$165  SHIFT_TABLE$65 
 
 	# fetch variables
 	li t1, 1
@@ -17386,7 +16884,7 @@ ifTrue_80:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$166 ans$51 result_$165
+	# ADDresult_$166 ans$51 result_$165 
 
 	# fetch variables
 
@@ -17406,7 +16904,7 @@ ifTrue_80:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$166
+	# store lv result_$166
 
 	# fetch variables
 
@@ -17415,17 +16913,15 @@ ifTrue_80:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$166
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_153
-	j next_153
-next_153:
+	# br next_246
+	j next_246
+next_246:
 
 	# load x$55 lv$2
 
@@ -17440,7 +16936,7 @@ next_153:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$167 x$55 
+	# DIVresult_$167 x$55  
 
 	# fetch variables
 
@@ -17449,14 +16945,14 @@ next_153:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$167
 	li t4, 13240
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$167
+	# store lv$2 result_$167
 
 	# fetch variables
 
@@ -17464,8 +16960,6 @@ next_153:
 	li t4, 13240
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$167
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -17486,7 +16980,7 @@ next_153:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$168 y$57 
+	# DIVresult_$168 y$57  
 
 	# fetch variables
 
@@ -17495,14 +16989,14 @@ next_153:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$168
 	li t4, 13224
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$168
+	# store lv$3 result_$168
 
 	# fetch variables
 
@@ -17510,8 +17004,6 @@ next_153:
 	li t4, 13224
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$168
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -17532,7 +17024,7 @@ next_153:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$169 i$61 
+	# ADDresult_$169 i$61  
 
 	# fetch variables
 
@@ -17548,7 +17040,7 @@ next_153:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$169
+	# store lv$1 result_$169
 
 	# fetch variables
 
@@ -17557,17 +17049,15 @@ next_153:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$169
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_72
-	j whileCond_72
-secondCond_25:
+	# br whileCond_118
+	j whileCond_118
+secondCond_60:
 
 	# load y$56 lv$3
 
@@ -17582,7 +17072,7 @@ secondCond_25:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$164 y$56 
+	# MODresult_$164 y$56  
 
 	# fetch variables
 
@@ -17591,14 +17081,14 @@ secondCond_25:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$164
 	li t4, 13192
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$164  cond_normalize_$50
+	# ICMPcond_normalize_$50 result_$164  
 
 	# fetch variables
 
@@ -17607,16 +17097,16 @@ secondCond_25:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$50
 	li t4, 13184
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$50 ifTrue_80 next_153
+	# condBr cond_normalize_$50 ifTrue_127 next_246
 
 	# fetch variables
 
@@ -17624,16 +17114,14 @@ secondCond_25:
 	li t4, 13184
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_153
-	j ifTrue_80
-ifTrue_81:
+	beqz t1, next_246
+	j ifTrue_127
+ifTrue_128:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -17641,29 +17129,25 @@ ifTrue_81:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_154
-	j next_154
-ifFalse_37:
+	# br next_247
+	j next_247
+ifFalse_42:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -17684,7 +17168,7 @@ ifFalse_37:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$170 c$19 
+	# MULresult_$170 c$19  
 
 	# fetch variables
 
@@ -17700,7 +17184,7 @@ ifFalse_37:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$170
+	# store lv$2 result_$170
 
 	# fetch variables
 
@@ -17709,20 +17193,16 @@ ifFalse_37:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$170
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -17730,9 +17210,9 @@ ifFalse_37:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_73
-	j whileCond_73
-next_154:
+	# br whileCond_119
+	j whileCond_119
+next_247:
 
 	# load ans$54 lv
 
@@ -17747,7 +17227,7 @@ next_154:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$33 ans$54
+	# store lv$33 ans$54
 
 	# fetch variables
 
@@ -17755,8 +17235,6 @@ next_154:
 	li t4, 13160
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$33 ans$54
 
 	# get address of lv$33 points to
 	li t4, 19512
@@ -17777,7 +17255,7 @@ next_154:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$32 sum$4
+	# store lv$32 sum$4
 
 	# fetch variables
 
@@ -17786,17 +17264,15 @@ next_154:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$32 sum$4
-
 	# get address of lv$32 points to
 	li t4, 19496
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_70
-	j whileCond_70
-whileCond_73:
+	# br whileCond_116
+	j whileCond_116
+whileCond_119:
 
 	# load i$62 lv$1
 
@@ -17811,7 +17287,7 @@ whileCond_73:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$62  cond_lt_tmp_$22
+	# ICMPcond_lt_tmp_$22 i$62  
 
 	# fetch variables
 
@@ -17820,14 +17296,14 @@ whileCond_73:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$22
 	li t4, 13136
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$43 cond_lt_tmp_$22
+	# ZEXTcond_tmp_$43 cond_lt_tmp_$22
 
 	# fetch variables
 
@@ -17835,14 +17311,14 @@ whileCond_73:
 	li t4, 13136
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$43
 	li t4, 13128
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$43  cond_$43
+	# ICMPcond_$43 cond_tmp_$43  
 
 	# fetch variables
 
@@ -17851,16 +17327,16 @@ whileCond_73:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$43
 	li t4, 13120
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$43 whileBody_73 next_155
+	# condBr cond_$43 whileBody_119 next_248
 
 	# fetch variables
 
@@ -17868,9 +17344,9 @@ whileCond_73:
 	li t4, 13120
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_155
-	j whileBody_73
-whileBody_73:
+	beqz t1, next_248
+	j whileBody_119
+whileBody_119:
 
 	# load x$56 lv$2
 
@@ -17885,7 +17361,7 @@ whileBody_73:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$171 x$56 
+	# MODresult_$171 x$56  
 
 	# fetch variables
 
@@ -17894,14 +17370,14 @@ whileBody_73:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$171
 	li t4, 13104
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$171  cond_normalize_$51
+	# ICMPcond_normalize_$51 result_$171  
 
 	# fetch variables
 
@@ -17910,16 +17386,16 @@ whileBody_73:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$51
 	li t4, 13096
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$51 secondCond_26 next_156
+	# condBr cond_normalize_$51 secondCond_61 next_249
 
 	# fetch variables
 
@@ -17927,13 +17403,13 @@ whileBody_73:
 	li t4, 13096
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_156
-	j secondCond_26
-next_155:
+	beqz t1, next_249
+	j secondCond_61
+next_248:
 
-	# br next_154
-	j next_154
-ifTrue_82:
+	# br next_247
+	j next_247
+ifTrue_129:
 
 	# load ans$53 lv
 
@@ -17995,7 +17471,7 @@ ifTrue_82:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$173  SHIFT_TABLE$67
+	# MULresult_$173  SHIFT_TABLE$67 
 
 	# fetch variables
 	li t1, 1
@@ -18011,7 +17487,7 @@ ifTrue_82:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$174 ans$53 result_$173
+	# ADDresult_$174 ans$53 result_$173 
 
 	# fetch variables
 
@@ -18031,7 +17507,7 @@ ifTrue_82:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$174
+	# store lv result_$174
 
 	# fetch variables
 
@@ -18040,17 +17516,15 @@ ifTrue_82:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$174
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_156
-	j next_156
-next_156:
+	# br next_249
+	j next_249
+next_249:
 
 	# load x$57 lv$2
 
@@ -18065,7 +17539,7 @@ next_156:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$175 x$57 
+	# DIVresult_$175 x$57  
 
 	# fetch variables
 
@@ -18074,14 +17548,14 @@ next_156:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$175
 	li t4, 13032
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$175
+	# store lv$2 result_$175
 
 	# fetch variables
 
@@ -18089,8 +17563,6 @@ next_156:
 	li t4, 13032
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$175
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -18111,7 +17583,7 @@ next_156:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$176 y$59 
+	# DIVresult_$176 y$59  
 
 	# fetch variables
 
@@ -18120,14 +17592,14 @@ next_156:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$176
 	li t4, 13016
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$176
+	# store lv$3 result_$176
 
 	# fetch variables
 
@@ -18135,8 +17607,6 @@ next_156:
 	li t4, 13016
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$176
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -18157,7 +17627,7 @@ next_156:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$177 i$64 
+	# ADDresult_$177 i$64  
 
 	# fetch variables
 
@@ -18173,7 +17643,7 @@ next_156:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$177
+	# store lv$1 result_$177
 
 	# fetch variables
 
@@ -18182,17 +17652,15 @@ next_156:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$177
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_73
-	j whileCond_73
-secondCond_26:
+	# br whileCond_119
+	j whileCond_119
+secondCond_61:
 
 	# load y$58 lv$3
 
@@ -18207,7 +17675,7 @@ secondCond_26:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$172 y$58 
+	# MODresult_$172 y$58  
 
 	# fetch variables
 
@@ -18216,14 +17684,14 @@ secondCond_26:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$172
 	li t4, 12984
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$172  cond_normalize_$52
+	# ICMPcond_normalize_$52 result_$172  
 
 	# fetch variables
 
@@ -18232,16 +17700,16 @@ secondCond_26:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$52
 	li t4, 12976
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$52 ifTrue_82 next_156
+	# condBr cond_normalize_$52 ifTrue_129 next_249
 
 	# fetch variables
 
@@ -18249,9 +17717,9 @@ secondCond_26:
 	li t4, 12976
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_156
-	j ifTrue_82
-whileCond_74:
+	beqz t1, next_249
+	j ifTrue_129
+whileCond_120:
 
 	# load c$20 lv$36
 
@@ -18266,7 +17734,7 @@ whileCond_74:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$20  cond_normalize_$53
+	# ICMPcond_normalize_$53 c$20  
 
 	# fetch variables
 
@@ -18275,16 +17743,16 @@ whileCond_74:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$53
 	li t4, 12960
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$53 whileBody_74 next_157
+	# condBr cond_normalize_$53 whileBody_120 next_250
 
 	# fetch variables
 
@@ -18292,16 +17760,14 @@ whileCond_74:
 	li t4, 12960
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_157
-	j whileBody_74
-whileBody_74:
+	beqz t1, next_250
+	j whileBody_120
+whileBody_120:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -18309,12 +17775,10 @@ whileBody_74:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -18335,7 +17799,7 @@ whileBody_74:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$15
+	# store lv$2 al$15
 
 	# fetch variables
 
@@ -18343,8 +17807,6 @@ whileBody_74:
 	li t4, 12952
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$15
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -18365,7 +17827,7 @@ whileBody_74:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$21
+	# store lv$3 c$21
 
 	# fetch variables
 
@@ -18374,17 +17836,15 @@ whileBody_74:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$21
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_75
-	j whileCond_75
-next_157:
+	# br whileCond_121
+	j whileCond_121
+next_250:
 
 	# load al$17 lv$35
 
@@ -18399,7 +17859,7 @@ next_157:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$17
+	# store lv al$17
 
 	# fetch variables
 
@@ -18407,8 +17867,6 @@ next_157:
 	li t4, 12936
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$17
 
 	# get address of lv points to
 	li t4, 18984
@@ -18429,7 +17887,7 @@ next_157:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$29 ans$63
+	# store lv$29 ans$63
 
 	# fetch variables
 
@@ -18437,8 +17895,6 @@ next_157:
 	li t4, 12928
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$29 ans$63
 
 	# get address of lv$29 points to
 	li t4, 19448
@@ -18459,7 +17915,7 @@ next_157:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$8
+	# store lv$2 mr$8
 
 	# fetch variables
 
@@ -18468,20 +17924,16 @@ next_157:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$8
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -18502,7 +17954,7 @@ next_157:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$67  cond_ge_tmp_$3
+	# ICMPcond_ge_tmp_$3 y$67  
 
 	# fetch variables
 
@@ -18511,15 +17963,15 @@ next_157:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 15
+	slt t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_ge_tmp_$3
 	li t4, 12904
 	add t4, sp, t4
-	slt t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$49 cond_ge_tmp_$3
+	# ZEXTcond_tmp_$49 cond_ge_tmp_$3
 
 	# fetch variables
 
@@ -18527,14 +17979,14 @@ next_157:
 	li t4, 12904
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$49
 	li t4, 12896
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$49  cond_$49
+	# ICMPcond_$49 cond_tmp_$49  
 
 	# fetch variables
 
@@ -18543,16 +17995,16 @@ next_157:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$49
 	li t4, 12888
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$49 ifTrue_89 ifFalse_40
+	# condBr cond_$49 ifTrue_136 ifFalse_45
 
 	# fetch variables
 
@@ -18560,9 +18012,9 @@ next_157:
 	li t4, 12888
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_40
-	j ifTrue_89
-whileCond_75:
+	beqz t1, ifFalse_45
+	j ifTrue_136
+whileCond_121:
 
 	# load i$65 lv$1
 
@@ -18577,7 +18029,7 @@ whileCond_75:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$65  cond_lt_tmp_$23
+	# ICMPcond_lt_tmp_$23 i$65  
 
 	# fetch variables
 
@@ -18586,14 +18038,14 @@ whileCond_75:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$23
 	li t4, 12872
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$44 cond_lt_tmp_$23
+	# ZEXTcond_tmp_$44 cond_lt_tmp_$23
 
 	# fetch variables
 
@@ -18601,14 +18053,14 @@ whileCond_75:
 	li t4, 12872
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$44
 	li t4, 12864
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$44  cond_$44
+	# ICMPcond_$44 cond_tmp_$44  
 
 	# fetch variables
 
@@ -18617,16 +18069,16 @@ whileCond_75:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$44
 	li t4, 12856
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$44 whileBody_75 next_158
+	# condBr cond_$44 whileBody_121 next_251
 
 	# fetch variables
 
@@ -18634,9 +18086,9 @@ whileCond_75:
 	li t4, 12856
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_158
-	j whileBody_75
-whileBody_75:
+	beqz t1, next_251
+	j whileBody_121
+whileBody_121:
 
 	# load x$58 lv$2
 
@@ -18651,7 +18103,7 @@ whileBody_75:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$178 x$58 
+	# MODresult_$178 x$58  
 
 	# fetch variables
 
@@ -18660,14 +18112,14 @@ whileBody_75:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$178
 	li t4, 12840
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$178  cond_normalize_$54
+	# ICMPcond_normalize_$54 result_$178  
 
 	# fetch variables
 
@@ -18676,16 +18128,16 @@ whileBody_75:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$54
 	li t4, 12832
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$54 ifTrue_83 ifFalse_38
+	# condBr cond_normalize_$54 ifTrue_130 ifFalse_43
 
 	# fetch variables
 
@@ -18693,9 +18145,9 @@ whileBody_75:
 	li t4, 12832
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_38
-	j ifTrue_83
-next_158:
+	beqz t1, ifFalse_43
+	j ifTrue_130
+next_251:
 
 	# load ans$58 lv
 
@@ -18710,7 +18162,7 @@ next_158:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$37 ans$58
+	# store lv$37 ans$58
 
 	# fetch variables
 
@@ -18719,20 +18171,16 @@ next_158:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$37 ans$58
-
 	# get address of lv$37 points to
 	li t4, 19576
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -18740,12 +18188,10 @@ next_158:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -18766,7 +18212,7 @@ next_158:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$16
+	# store lv$2 al$16
 
 	# fetch variables
 
@@ -18774,8 +18220,6 @@ next_158:
 	li t4, 12816
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$16
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -18796,7 +18240,7 @@ next_158:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$22
+	# store lv$3 c$22
 
 	# fetch variables
 
@@ -18805,17 +18249,15 @@ next_158:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$22
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_76
-	j whileCond_76
-ifTrue_83:
+	# br whileCond_122
+	j whileCond_122
+ifTrue_130:
 
 	# load y$60 lv$3
 
@@ -18830,7 +18272,7 @@ ifTrue_83:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$179 y$60 
+	# MODresult_$179 y$60  
 
 	# fetch variables
 
@@ -18839,14 +18281,14 @@ ifTrue_83:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$179
-	li t4, 12792
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$179
+	li t4, 12792
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$179  cond_eq_tmp_$5
+	# ICMPcond_eq_tmp_$5 result_$179  
 
 	# fetch variables
 
@@ -18855,15 +18297,15 @@ ifTrue_83:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$5
 	li t4, 12784
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$45 cond_eq_tmp_$5
+	# ZEXTcond_tmp_$45 cond_eq_tmp_$5
 
 	# fetch variables
 
@@ -18871,14 +18313,14 @@ ifTrue_83:
 	li t4, 12784
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$45
 	li t4, 12776
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$45  cond_$45
+	# ICMPcond_$45 cond_tmp_$45  
 
 	# fetch variables
 
@@ -18887,16 +18329,16 @@ ifTrue_83:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$45
 	li t4, 12768
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$45 ifTrue_84 next_160
+	# condBr cond_$45 ifTrue_131 next_253
 
 	# fetch variables
 
@@ -18904,9 +18346,9 @@ ifTrue_83:
 	li t4, 12768
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_160
-	j ifTrue_84
-ifFalse_38:
+	beqz t1, next_253
+	j ifTrue_131
+ifFalse_43:
 
 	# load y$61 lv$3
 
@@ -18921,7 +18363,7 @@ ifFalse_38:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$182 y$61 
+	# MODresult_$182 y$61  
 
 	# fetch variables
 
@@ -18930,14 +18372,14 @@ ifFalse_38:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$182
 	li t4, 12752
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$182  cond_normalize_$55
+	# ICMPcond_normalize_$55 result_$182  
 
 	# fetch variables
 
@@ -18946,16 +18388,16 @@ ifFalse_38:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$55
 	li t4, 12744
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$55 ifTrue_85 next_161
+	# condBr cond_normalize_$55 ifTrue_132 next_254
 
 	# fetch variables
 
@@ -18963,9 +18405,9 @@ ifFalse_38:
 	li t4, 12744
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_161
-	j ifTrue_85
-next_159:
+	beqz t1, next_254
+	j ifTrue_132
+next_252:
 
 	# load x$59 lv$2
 
@@ -18980,7 +18422,7 @@ next_159:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$185 x$59 
+	# DIVresult_$185 x$59  
 
 	# fetch variables
 
@@ -18989,14 +18431,14 @@ next_159:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$185
 	li t4, 12728
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$185
+	# store lv$2 result_$185
 
 	# fetch variables
 
@@ -19004,8 +18446,6 @@ next_159:
 	li t4, 12728
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$185
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -19026,7 +18466,7 @@ next_159:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$186 y$62 
+	# DIVresult_$186 y$62  
 
 	# fetch variables
 
@@ -19035,14 +18475,14 @@ next_159:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$186
 	li t4, 12712
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$186
+	# store lv$3 result_$186
 
 	# fetch variables
 
@@ -19050,8 +18490,6 @@ next_159:
 	li t4, 12712
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$186
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -19072,7 +18510,7 @@ next_159:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$187 i$68 
+	# ADDresult_$187 i$68  
 
 	# fetch variables
 
@@ -19088,7 +18526,7 @@ next_159:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$187
+	# store lv$1 result_$187
 
 	# fetch variables
 
@@ -19097,17 +18535,15 @@ next_159:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$187
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_75
-	j whileCond_75
-ifTrue_84:
+	# br whileCond_121
+	j whileCond_121
+ifTrue_131:
 
 	# load ans$56 lv
 
@@ -19169,7 +18605,7 @@ ifTrue_84:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$180  SHIFT_TABLE$69
+	# MULresult_$180  SHIFT_TABLE$69 
 
 	# fetch variables
 	li t1, 1
@@ -19185,7 +18621,7 @@ ifTrue_84:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$181 ans$56 result_$180
+	# ADDresult_$181 ans$56 result_$180 
 
 	# fetch variables
 
@@ -19205,7 +18641,7 @@ ifTrue_84:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$181
+	# store lv result_$181
 
 	# fetch variables
 
@@ -19214,21 +18650,19 @@ ifTrue_84:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$181
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_160
-	j next_160
-next_160:
+	# br next_253
+	j next_253
+next_253:
 
-	# br next_159
-	j next_159
-ifTrue_85:
+	# br next_252
+	j next_252
+ifTrue_132:
 
 	# load ans$57 lv
 
@@ -19290,7 +18724,7 @@ ifTrue_85:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$183  SHIFT_TABLE$71
+	# MULresult_$183  SHIFT_TABLE$71 
 
 	# fetch variables
 	li t1, 1
@@ -19306,7 +18740,7 @@ ifTrue_85:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$184 ans$57 result_$183
+	# ADDresult_$184 ans$57 result_$183 
 
 	# fetch variables
 
@@ -19326,7 +18760,7 @@ ifTrue_85:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$184
+	# store lv result_$184
 
 	# fetch variables
 
@@ -19335,21 +18769,19 @@ ifTrue_85:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$184
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_161
-	j next_161
-next_161:
+	# br next_254
+	j next_254
+next_254:
 
-	# br next_159
-	j next_159
-whileCond_76:
+	# br next_252
+	j next_252
+whileCond_122:
 
 	# load i$69 lv$1
 
@@ -19364,7 +18796,7 @@ whileCond_76:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$69  cond_lt_tmp_$24
+	# ICMPcond_lt_tmp_$24 i$69  
 
 	# fetch variables
 
@@ -19373,14 +18805,14 @@ whileCond_76:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$24
 	li t4, 12584
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$46 cond_lt_tmp_$24
+	# ZEXTcond_tmp_$46 cond_lt_tmp_$24
 
 	# fetch variables
 
@@ -19388,14 +18820,14 @@ whileCond_76:
 	li t4, 12584
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$46
 	li t4, 12576
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$46  cond_$46
+	# ICMPcond_$46 cond_tmp_$46  
 
 	# fetch variables
 
@@ -19404,16 +18836,16 @@ whileCond_76:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$46
 	li t4, 12568
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$46 whileBody_76 next_162
+	# condBr cond_$46 whileBody_122 next_255
 
 	# fetch variables
 
@@ -19421,9 +18853,9 @@ whileCond_76:
 	li t4, 12568
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_162
-	j whileBody_76
-whileBody_76:
+	beqz t1, next_255
+	j whileBody_122
+whileBody_122:
 
 	# load x$60 lv$2
 
@@ -19438,7 +18870,7 @@ whileBody_76:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$188 x$60 
+	# MODresult_$188 x$60  
 
 	# fetch variables
 
@@ -19447,14 +18879,14 @@ whileBody_76:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$188
 	li t4, 12552
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$188  cond_normalize_$56
+	# ICMPcond_normalize_$56 result_$188  
 
 	# fetch variables
 
@@ -19463,16 +18895,16 @@ whileBody_76:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$56
 	li t4, 12544
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$56 secondCond_27 next_163
+	# condBr cond_normalize_$56 secondCond_62 next_256
 
 	# fetch variables
 
@@ -19480,9 +18912,9 @@ whileBody_76:
 	li t4, 12544
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_163
-	j secondCond_27
-next_162:
+	beqz t1, next_256
+	j secondCond_62
+next_255:
 
 	# load ans$60 lv
 
@@ -19497,7 +18929,7 @@ next_162:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$36 ans$60
+	# store lv$36 ans$60
 
 	# fetch variables
 
@@ -19506,28 +18938,26 @@ next_162:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$36 ans$60
-
 	# get address of lv$36 points to
 	li t4, 19560
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$13
+	# ICMPcond_gt_tmp_$13   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$13
 	li t4, 12528
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$47 cond_gt_tmp_$13
+	# ZEXTcond_tmp_$47 cond_gt_tmp_$13
 
 	# fetch variables
 
@@ -19535,14 +18965,14 @@ next_162:
 	li t4, 12528
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$47
 	li t4, 12520
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$47  cond_$47
+	# ICMPcond_$47 cond_tmp_$47  
 
 	# fetch variables
 
@@ -19551,16 +18981,16 @@ next_162:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$47
 	li t4, 12512
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$47 ifTrue_87 ifFalse_39
+	# condBr cond_$47 ifTrue_134 ifFalse_44
 
 	# fetch variables
 
@@ -19568,9 +18998,9 @@ next_162:
 	li t4, 12512
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_39
-	j ifTrue_87
-ifTrue_86:
+	beqz t1, ifFalse_44
+	j ifTrue_134
+ifTrue_133:
 
 	# load ans$59 lv
 
@@ -19632,7 +19062,7 @@ ifTrue_86:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$190  SHIFT_TABLE$73
+	# MULresult_$190  SHIFT_TABLE$73 
 
 	# fetch variables
 	li t1, 1
@@ -19648,7 +19078,7 @@ ifTrue_86:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$191 ans$59 result_$190
+	# ADDresult_$191 ans$59 result_$190 
 
 	# fetch variables
 
@@ -19668,7 +19098,7 @@ ifTrue_86:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$191
+	# store lv result_$191
 
 	# fetch variables
 
@@ -19677,17 +19107,15 @@ ifTrue_86:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$191
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_163
-	j next_163
-next_163:
+	# br next_256
+	j next_256
+next_256:
 
 	# load x$61 lv$2
 
@@ -19702,7 +19130,7 @@ next_163:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$192 x$61 
+	# DIVresult_$192 x$61  
 
 	# fetch variables
 
@@ -19711,14 +19139,14 @@ next_163:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$192
 	li t4, 12448
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$192
+	# store lv$2 result_$192
 
 	# fetch variables
 
@@ -19726,8 +19154,6 @@ next_163:
 	li t4, 12448
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$192
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -19748,7 +19174,7 @@ next_163:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$193 y$64 
+	# DIVresult_$193 y$64  
 
 	# fetch variables
 
@@ -19757,14 +19183,14 @@ next_163:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$193
 	li t4, 12432
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$193
+	# store lv$3 result_$193
 
 	# fetch variables
 
@@ -19772,8 +19198,6 @@ next_163:
 	li t4, 12432
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$193
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -19794,7 +19218,7 @@ next_163:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$194 i$71 
+	# ADDresult_$194 i$71  
 
 	# fetch variables
 
@@ -19810,7 +19234,7 @@ next_163:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$194
+	# store lv$1 result_$194
 
 	# fetch variables
 
@@ -19819,17 +19243,15 @@ next_163:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$194
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_76
-	j whileCond_76
-secondCond_27:
+	# br whileCond_122
+	j whileCond_122
+secondCond_62:
 
 	# load y$63 lv$3
 
@@ -19844,7 +19266,7 @@ secondCond_27:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$189 y$63 
+	# MODresult_$189 y$63  
 
 	# fetch variables
 
@@ -19853,14 +19275,14 @@ secondCond_27:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$189
 	li t4, 12400
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$189  cond_normalize_$57
+	# ICMPcond_normalize_$57 result_$189  
 
 	# fetch variables
 
@@ -19869,16 +19291,16 @@ secondCond_27:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$57
 	li t4, 12392
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$57 ifTrue_86 next_163
+	# condBr cond_normalize_$57 ifTrue_133 next_256
 
 	# fetch variables
 
@@ -19886,16 +19308,14 @@ secondCond_27:
 	li t4, 12392
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_163
-	j ifTrue_86
-ifTrue_87:
+	beqz t1, next_256
+	j ifTrue_133
+ifTrue_134:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -19903,29 +19323,25 @@ ifTrue_87:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_164
-	j next_164
-ifFalse_39:
+	# br next_257
+	j next_257
+ifFalse_44:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -19946,7 +19362,7 @@ ifFalse_39:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$195 c$23 
+	# MULresult_$195 c$23  
 
 	# fetch variables
 
@@ -19962,7 +19378,7 @@ ifFalse_39:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$195
+	# store lv$2 result_$195
 
 	# fetch variables
 
@@ -19971,20 +19387,16 @@ ifFalse_39:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$195
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -19992,9 +19404,9 @@ ifFalse_39:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_77
-	j whileCond_77
-next_164:
+	# br whileCond_123
+	j whileCond_123
+next_257:
 
 	# load ans$62 lv
 
@@ -20009,7 +19421,7 @@ next_164:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$36 ans$62
+	# store lv$36 ans$62
 
 	# fetch variables
 
@@ -20017,8 +19429,6 @@ next_164:
 	li t4, 12368
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$36 ans$62
 
 	# get address of lv$36 points to
 	li t4, 19560
@@ -20039,7 +19449,7 @@ next_164:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$35 sum$5
+	# store lv$35 sum$5
 
 	# fetch variables
 
@@ -20048,17 +19458,15 @@ next_164:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$35 sum$5
-
 	# get address of lv$35 points to
 	li t4, 19544
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_74
-	j whileCond_74
-whileCond_77:
+	# br whileCond_120
+	j whileCond_120
+whileCond_123:
 
 	# load i$72 lv$1
 
@@ -20073,7 +19481,7 @@ whileCond_77:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$72  cond_lt_tmp_$25
+	# ICMPcond_lt_tmp_$25 i$72  
 
 	# fetch variables
 
@@ -20082,14 +19490,14 @@ whileCond_77:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$25
 	li t4, 12344
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$48 cond_lt_tmp_$25
+	# ZEXTcond_tmp_$48 cond_lt_tmp_$25
 
 	# fetch variables
 
@@ -20097,14 +19505,14 @@ whileCond_77:
 	li t4, 12344
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$48
 	li t4, 12336
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$48  cond_$48
+	# ICMPcond_$48 cond_tmp_$48  
 
 	# fetch variables
 
@@ -20113,16 +19521,16 @@ whileCond_77:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$48
 	li t4, 12328
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$48 whileBody_77 next_165
+	# condBr cond_$48 whileBody_123 next_258
 
 	# fetch variables
 
@@ -20130,9 +19538,9 @@ whileCond_77:
 	li t4, 12328
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_165
-	j whileBody_77
-whileBody_77:
+	beqz t1, next_258
+	j whileBody_123
+whileBody_123:
 
 	# load x$62 lv$2
 
@@ -20147,7 +19555,7 @@ whileBody_77:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$196 x$62 
+	# MODresult_$196 x$62  
 
 	# fetch variables
 
@@ -20156,14 +19564,14 @@ whileBody_77:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$196
 	li t4, 12312
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$196  cond_normalize_$58
+	# ICMPcond_normalize_$58 result_$196  
 
 	# fetch variables
 
@@ -20172,16 +19580,16 @@ whileBody_77:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$58
 	li t4, 12304
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$58 secondCond_28 next_166
+	# condBr cond_normalize_$58 secondCond_63 next_259
 
 	# fetch variables
 
@@ -20189,13 +19597,13 @@ whileBody_77:
 	li t4, 12304
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_166
-	j secondCond_28
-next_165:
+	beqz t1, next_259
+	j secondCond_63
+next_258:
 
-	# br next_164
-	j next_164
-ifTrue_88:
+	# br next_257
+	j next_257
+ifTrue_135:
 
 	# load ans$61 lv
 
@@ -20257,7 +19665,7 @@ ifTrue_88:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$198  SHIFT_TABLE$75
+	# MULresult_$198  SHIFT_TABLE$75 
 
 	# fetch variables
 	li t1, 1
@@ -20273,7 +19681,7 @@ ifTrue_88:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$199 ans$61 result_$198
+	# ADDresult_$199 ans$61 result_$198 
 
 	# fetch variables
 
@@ -20293,7 +19701,7 @@ ifTrue_88:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$199
+	# store lv result_$199
 
 	# fetch variables
 
@@ -20302,17 +19710,15 @@ ifTrue_88:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$199
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_166
-	j next_166
-next_166:
+	# br next_259
+	j next_259
+next_259:
 
 	# load x$63 lv$2
 
@@ -20327,7 +19733,7 @@ next_166:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$200 x$63 
+	# DIVresult_$200 x$63  
 
 	# fetch variables
 
@@ -20336,14 +19742,14 @@ next_166:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$200
 	li t4, 12240
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$200
+	# store lv$2 result_$200
 
 	# fetch variables
 
@@ -20351,8 +19757,6 @@ next_166:
 	li t4, 12240
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$200
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -20373,7 +19777,7 @@ next_166:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$201 y$66 
+	# DIVresult_$201 y$66  
 
 	# fetch variables
 
@@ -20382,14 +19786,14 @@ next_166:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$201
 	li t4, 12224
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$201
+	# store lv$3 result_$201
 
 	# fetch variables
 
@@ -20397,8 +19801,6 @@ next_166:
 	li t4, 12224
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$201
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -20419,7 +19821,7 @@ next_166:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$202 i$74 
+	# ADDresult_$202 i$74  
 
 	# fetch variables
 
@@ -20435,7 +19837,7 @@ next_166:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$202
+	# store lv$1 result_$202
 
 	# fetch variables
 
@@ -20444,17 +19846,15 @@ next_166:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$202
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_77
-	j whileCond_77
-secondCond_28:
+	# br whileCond_123
+	j whileCond_123
+secondCond_63:
 
 	# load y$65 lv$3
 
@@ -20469,7 +19869,7 @@ secondCond_28:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$197 y$65 
+	# MODresult_$197 y$65  
 
 	# fetch variables
 
@@ -20478,14 +19878,14 @@ secondCond_28:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$197
 	li t4, 12192
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$197  cond_normalize_$59
+	# ICMPcond_normalize_$59 result_$197  
 
 	# fetch variables
 
@@ -20494,16 +19894,16 @@ secondCond_28:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$59
 	li t4, 12184
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$59 ifTrue_88 next_166
+	# condBr cond_normalize_$59 ifTrue_135 next_259
 
 	# fetch variables
 
@@ -20511,9 +19911,9 @@ secondCond_28:
 	li t4, 12184
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_166
-	j ifTrue_88
-ifTrue_89:
+	beqz t1, next_259
+	j ifTrue_135
+ifTrue_136:
 
 	# load x$64 lv$2
 
@@ -20528,7 +19928,7 @@ ifTrue_89:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$64  cond_lt_tmp_$26
+	# ICMPcond_lt_tmp_$26 x$64  
 
 	# fetch variables
 
@@ -20537,14 +19937,14 @@ ifTrue_89:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$26
 	li t4, 12168
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$50 cond_lt_tmp_$26
+	# ZEXTcond_tmp_$50 cond_lt_tmp_$26
 
 	# fetch variables
 
@@ -20552,14 +19952,14 @@ ifTrue_89:
 	li t4, 12168
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$50
 	li t4, 12160
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$50  cond_$50
+	# ICMPcond_$50 cond_tmp_$50  
 
 	# fetch variables
 
@@ -20568,16 +19968,16 @@ ifTrue_89:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$50
 	li t4, 12152
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$50 ifTrue_90 ifFalse_41
+	# condBr cond_$50 ifTrue_137 ifFalse_46
 
 	# fetch variables
 
@@ -20585,9 +19985,9 @@ ifTrue_89:
 	li t4, 12152
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_41
-	j ifTrue_90
-ifFalse_40:
+	beqz t1, ifFalse_46
+	j ifTrue_137
+ifFalse_45:
 
 	# load y$68 lv$3
 
@@ -20602,7 +20002,7 @@ ifFalse_40:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$68  cond_gt_tmp_$14
+	# ICMPcond_gt_tmp_$14 y$68  
 
 	# fetch variables
 
@@ -20611,15 +20011,15 @@ ifFalse_40:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$14
 	li t4, 12136
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$51 cond_gt_tmp_$14
+	# ZEXTcond_tmp_$51 cond_gt_tmp_$14
 
 	# fetch variables
 
@@ -20627,14 +20027,14 @@ ifFalse_40:
 	li t4, 12136
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$51
 	li t4, 12128
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$51  cond_$51
+	# ICMPcond_$51 cond_tmp_$51  
 
 	# fetch variables
 
@@ -20643,16 +20043,16 @@ ifFalse_40:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$51
 	li t4, 12120
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$51 ifTrue_91 ifFalse_42
+	# condBr cond_$51 ifTrue_138 ifFalse_47
 
 	# fetch variables
 
@@ -20660,9 +20060,9 @@ ifFalse_40:
 	li t4, 12120
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_42
-	j ifTrue_91
-next_167:
+	beqz t1, ifFalse_47
+	j ifTrue_138
+next_260:
 
 	# load ans$64 lv
 
@@ -20677,7 +20077,7 @@ next_167:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$30 ans$64
+	# store lv$30 ans$64
 
 	# fetch variables
 
@@ -20686,55 +20086,49 @@ next_167:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$30 ans$64
-
 	# get address of lv$30 points to
 	li t4, 19464
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_68
-	j whileCond_68
-ifTrue_90:
+	# br whileCond_114
+	j whileCond_114
+ifTrue_137:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 65535
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_168
-	j next_168
-ifFalse_41:
+	# br next_261
+	j next_261
+ifFalse_46:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_168
-	j next_168
-next_168:
+	# br next_261
+	j next_261
+next_261:
 
-	# br next_167
-	j next_167
-ifTrue_91:
+	# br next_260
+	j next_260
+ifTrue_138:
 
 	# load x$65 lv$2
 
@@ -20749,7 +20143,7 @@ ifTrue_91:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$65  cond_gt_tmp_$15
+	# ICMPcond_gt_tmp_$15 x$65  
 
 	# fetch variables
 
@@ -20758,15 +20152,15 @@ ifTrue_91:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 32767
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$15
 	li t4, 12096
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$52 cond_gt_tmp_$15
+	# ZEXTcond_tmp_$52 cond_gt_tmp_$15
 
 	# fetch variables
 
@@ -20774,14 +20168,14 @@ ifTrue_91:
 	li t4, 12096
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$52
 	li t4, 12088
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$52  cond_$52
+	# ICMPcond_$52 cond_tmp_$52  
 
 	# fetch variables
 
@@ -20790,16 +20184,16 @@ ifTrue_91:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$52
 	li t4, 12080
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$52 ifTrue_92 ifFalse_43
+	# condBr cond_$52 ifTrue_139 ifFalse_48
 
 	# fetch variables
 
@@ -20807,9 +20201,9 @@ ifTrue_91:
 	li t4, 12080
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_43
-	j ifTrue_92
-ifFalse_42:
+	beqz t1, ifFalse_48
+	j ifTrue_139
+ifFalse_47:
 
 	# load x$69 lv$2
 
@@ -20824,7 +20218,7 @@ ifFalse_42:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv x$69
+	# store lv x$69
 
 	# fetch variables
 
@@ -20833,21 +20227,19 @@ ifFalse_42:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv x$69
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_169
-	j next_169
-next_169:
+	# br next_262
+	j next_262
+next_262:
 
-	# br next_167
-	j next_167
-ifTrue_92:
+	# br next_260
+	j next_260
+ifTrue_139:
 
 	# load x$66 lv$2
 
@@ -20909,7 +20301,7 @@ ifTrue_92:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$203 x$66 SHIFT_TABLE$77
+	# DIVresult_$203 x$66 SHIFT_TABLE$77 
 
 	# fetch variables
 
@@ -20922,14 +20314,14 @@ ifTrue_92:
 	li t4, 12040
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$203
 	li t4, 12032
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$203
+	# store lv$2 result_$203
 
 	# fetch variables
 
@@ -20937,8 +20329,6 @@ ifTrue_92:
 	li t4, 12032
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$203
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -20959,7 +20349,7 @@ ifTrue_92:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$204 x$67 
+	# ADDresult_$204 x$67  
 
 	# fetch variables
 
@@ -20988,7 +20378,7 @@ ifTrue_92:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$205  y$70
+	# SUBresult_$205  y$70 
 
 	# fetch variables
 	li t1, 15
@@ -21004,7 +20394,7 @@ ifTrue_92:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$206 result_$205 
+	# ADDresult_$206 result_$205  
 
 	# fetch variables
 
@@ -21054,7 +20444,7 @@ ifTrue_92:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$207 result_$204 SHIFT_TABLE$79
+	# SUBresult_$207 result_$204 SHIFT_TABLE$79 
 
 	# fetch variables
 
@@ -21074,7 +20464,7 @@ ifTrue_92:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$207
+	# store lv result_$207
 
 	# fetch variables
 
@@ -21083,17 +20473,15 @@ ifTrue_92:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$207
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_170
-	j next_170
-ifFalse_43:
+	# br next_263
+	j next_263
+ifFalse_48:
 
 	# load x$68 lv$2
 
@@ -21155,7 +20543,7 @@ ifFalse_43:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$208 x$68 SHIFT_TABLE$81
+	# DIVresult_$208 x$68 SHIFT_TABLE$81 
 
 	# fetch variables
 
@@ -21168,14 +20556,14 @@ ifFalse_43:
 	li t4, 11936
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$208
 	li t4, 11928
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv result_$208
+	# store lv result_$208
 
 	# fetch variables
 
@@ -21184,21 +20572,19 @@ ifFalse_43:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$208
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_170
-	j next_170
-next_170:
+	# br next_263
+	j next_263
+next_263:
 
-	# br next_169
-	j next_169
-whileCond_78:
+	# br next_262
+	j next_262
+whileCond_124:
 
 	# load mr$9 lv$39
 
@@ -21213,7 +20599,7 @@ whileCond_78:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp mr$9  cond_normalize_$60
+	# ICMPcond_normalize_$60 mr$9  
 
 	# fetch variables
 
@@ -21222,16 +20608,16 @@ whileCond_78:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$60
 	li t4, 11912
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$60 whileBody_78 next_171
+	# condBr cond_normalize_$60 whileBody_124 next_264
 
 	# fetch variables
 
@@ -21239,16 +20625,14 @@ whileCond_78:
 	li t4, 11912
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_171
-	j whileBody_78
-whileBody_78:
+	beqz t1, next_264
+	j whileBody_124
+whileBody_124:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -21256,12 +20640,10 @@ whileBody_78:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -21282,7 +20664,7 @@ whileBody_78:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$10
+	# store lv$2 mr$10
 
 	# fetch variables
 
@@ -21291,20 +20673,16 @@ whileBody_78:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$10
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -21312,9 +20690,9 @@ whileBody_78:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_79
-	j whileCond_79
-next_171:
+	# br whileCond_125
+	j whileCond_125
+next_264:
 
 	# load mres$7 lv$40
 
@@ -21329,7 +20707,7 @@ next_171:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv mres$7
+	# store lv mres$7
 
 	# fetch variables
 
@@ -21337,8 +20715,6 @@ next_171:
 	li t4, 11896
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv mres$7
 
 	# get address of lv points to
 	li t4, 18984
@@ -21359,7 +20735,7 @@ next_171:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$26 ans$85
+	# store lv$26 ans$85
 
 	# fetch variables
 
@@ -21367,8 +20743,6 @@ next_171:
 	li t4, 11888
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$26 ans$85
 
 	# get address of lv$26 points to
 	li t4, 19400
@@ -21389,7 +20763,7 @@ next_171:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 pr$5
+	# store lv$2 pr$5
 
 	# fetch variables
 
@@ -21398,20 +20772,16 @@ next_171:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 pr$5
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -21432,7 +20802,7 @@ next_171:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$93  cond_ge_tmp_$5
+	# ICMPcond_ge_tmp_$5 y$93  
 
 	# fetch variables
 
@@ -21441,15 +20811,15 @@ next_171:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 15
+	slt t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_ge_tmp_$5
 	li t4, 11864
 	add t4, sp, t4
-	slt t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$68 cond_ge_tmp_$5
+	# ZEXTcond_tmp_$68 cond_ge_tmp_$5
 
 	# fetch variables
 
@@ -21457,14 +20827,14 @@ next_171:
 	li t4, 11864
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$68
 	li t4, 11856
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$68  cond_$68
+	# ICMPcond_$68 cond_tmp_$68  
 
 	# fetch variables
 
@@ -21473,16 +20843,16 @@ next_171:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$68
 	li t4, 11848
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$68 ifTrue_111 ifFalse_52
+	# condBr cond_$68 ifTrue_158 ifFalse_57
 
 	# fetch variables
 
@@ -21490,9 +20860,9 @@ next_171:
 	li t4, 11848
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_52
-	j ifTrue_111
-whileCond_79:
+	beqz t1, ifFalse_57
+	j ifTrue_158
+whileCond_125:
 
 	# load i$75 lv$1
 
@@ -21507,7 +20877,7 @@ whileCond_79:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$75  cond_lt_tmp_$27
+	# ICMPcond_lt_tmp_$27 i$75  
 
 	# fetch variables
 
@@ -21516,14 +20886,14 @@ whileCond_79:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$27
 	li t4, 11832
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$53 cond_lt_tmp_$27
+	# ZEXTcond_tmp_$53 cond_lt_tmp_$27
 
 	# fetch variables
 
@@ -21531,14 +20901,14 @@ whileCond_79:
 	li t4, 11832
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$53
 	li t4, 11824
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$53  cond_$53
+	# ICMPcond_$53 cond_tmp_$53  
 
 	# fetch variables
 
@@ -21547,16 +20917,16 @@ whileCond_79:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$53
 	li t4, 11816
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$53 whileBody_79 next_172
+	# condBr cond_$53 whileBody_125 next_265
 
 	# fetch variables
 
@@ -21564,9 +20934,9 @@ whileCond_79:
 	li t4, 11816
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_172
-	j whileBody_79
-whileBody_79:
+	beqz t1, next_265
+	j whileBody_125
+whileBody_125:
 
 	# load x$70 lv$2
 
@@ -21581,7 +20951,7 @@ whileBody_79:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$209 x$70 
+	# MODresult_$209 x$70  
 
 	# fetch variables
 
@@ -21590,14 +20960,14 @@ whileBody_79:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$209
 	li t4, 11800
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$209  cond_normalize_$61
+	# ICMPcond_normalize_$61 result_$209  
 
 	# fetch variables
 
@@ -21606,16 +20976,16 @@ whileBody_79:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$61
 	li t4, 11792
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$61 secondCond_29 next_173
+	# condBr cond_normalize_$61 secondCond_64 next_266
 
 	# fetch variables
 
@@ -21623,9 +20993,9 @@ whileBody_79:
 	li t4, 11792
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_173
-	j secondCond_29
-next_172:
+	beqz t1, next_266
+	j secondCond_64
+next_265:
 
 	# load ans$67 lv
 
@@ -21640,7 +21010,7 @@ next_172:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp ans$67  cond_normalize_$63
+	# ICMPcond_normalize_$63 ans$67  
 
 	# fetch variables
 
@@ -21649,16 +21019,16 @@ next_172:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$63
 	li t4, 11776
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$63 ifTrue_94 next_174
+	# condBr cond_normalize_$63 ifTrue_141 next_267
 
 	# fetch variables
 
@@ -21666,9 +21036,9 @@ next_172:
 	li t4, 11776
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_174
-	j ifTrue_94
-ifTrue_93:
+	beqz t1, next_267
+	j ifTrue_141
+ifTrue_140:
 
 	# load ans$66 lv
 
@@ -21730,7 +21100,7 @@ ifTrue_93:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$211  SHIFT_TABLE$83
+	# MULresult_$211  SHIFT_TABLE$83 
 
 	# fetch variables
 	li t1, 1
@@ -21746,7 +21116,7 @@ ifTrue_93:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$212 ans$66 result_$211
+	# ADDresult_$212 ans$66 result_$211 
 
 	# fetch variables
 
@@ -21766,7 +21136,7 @@ ifTrue_93:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$212
+	# store lv result_$212
 
 	# fetch variables
 
@@ -21775,17 +21145,15 @@ ifTrue_93:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$212
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_173
-	j next_173
-next_173:
+	# br next_266
+	j next_266
+next_266:
 
 	# load x$71 lv$2
 
@@ -21800,7 +21168,7 @@ next_173:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$213 x$71 
+	# DIVresult_$213 x$71  
 
 	# fetch variables
 
@@ -21809,14 +21177,14 @@ next_173:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$213
 	li t4, 11712
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$213
+	# store lv$2 result_$213
 
 	# fetch variables
 
@@ -21824,8 +21192,6 @@ next_173:
 	li t4, 11712
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$213
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -21846,7 +21212,7 @@ next_173:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$214 y$73 
+	# DIVresult_$214 y$73  
 
 	# fetch variables
 
@@ -21855,14 +21221,14 @@ next_173:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$214
 	li t4, 11696
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$214
+	# store lv$3 result_$214
 
 	# fetch variables
 
@@ -21870,8 +21236,6 @@ next_173:
 	li t4, 11696
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$214
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -21892,7 +21256,7 @@ next_173:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$215 i$77 
+	# ADDresult_$215 i$77  
 
 	# fetch variables
 
@@ -21908,7 +21272,7 @@ next_173:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$215
+	# store lv$1 result_$215
 
 	# fetch variables
 
@@ -21917,17 +21281,15 @@ next_173:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$215
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_79
-	j whileCond_79
-secondCond_29:
+	# br whileCond_125
+	j whileCond_125
+secondCond_64:
 
 	# load y$72 lv$3
 
@@ -21942,7 +21304,7 @@ secondCond_29:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$210 y$72 
+	# MODresult_$210 y$72  
 
 	# fetch variables
 
@@ -21951,14 +21313,14 @@ secondCond_29:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$210
 	li t4, 11664
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$210  cond_normalize_$62
+	# ICMPcond_normalize_$62 result_$210  
 
 	# fetch variables
 
@@ -21967,16 +21329,16 @@ secondCond_29:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$62
 	li t4, 11656
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$62 ifTrue_93 next_173
+	# condBr cond_normalize_$62 ifTrue_140 next_266
 
 	# fetch variables
 
@@ -21984,9 +21346,9 @@ secondCond_29:
 	li t4, 11656
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_173
-	j ifTrue_93
-ifTrue_94:
+	beqz t1, next_266
+	j ifTrue_140
+ifTrue_141:
 
 	# load mres$6 lv$40
 
@@ -22001,7 +21363,7 @@ ifTrue_94:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$41 mres$6
+	# store lv$41 mres$6
 
 	# fetch variables
 
@@ -22009,8 +21371,6 @@ ifTrue_94:
 	li t4, 11648
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$41 mres$6
 
 	# get address of lv$41 points to
 	li t4, 19640
@@ -22031,7 +21391,7 @@ ifTrue_94:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$42 ml$9
+	# store lv$42 ml$9
 
 	# fetch variables
 
@@ -22040,17 +21400,15 @@ ifTrue_94:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$42 ml$9
-
 	# get address of lv$42 points to
 	li t4, 19656
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_80
-	j whileCond_80
-next_174:
+	# br whileCond_126
+	j whileCond_126
+next_267:
 
 	# load ml$10 lv$38
 
@@ -22065,7 +21423,7 @@ next_174:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$44 ml$10
+	# store lv$44 ml$10
 
 	# fetch variables
 
@@ -22073,8 +21431,6 @@ next_174:
 	li t4, 11632
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$44 ml$10
 
 	# get address of lv$44 points to
 	li t4, 19688
@@ -22095,7 +21451,7 @@ next_174:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$45 ml$11
+	# store lv$45 ml$11
 
 	# fetch variables
 
@@ -22104,17 +21460,15 @@ next_174:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$45 ml$11
-
 	# get address of lv$45 points to
 	li t4, 19704
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_84
-	j whileCond_84
-whileCond_80:
+	# br whileCond_130
+	j whileCond_130
+whileCond_126:
 
 	# load c$24 lv$42
 
@@ -22129,7 +21483,7 @@ whileCond_80:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$24  cond_normalize_$64
+	# ICMPcond_normalize_$64 c$24  
 
 	# fetch variables
 
@@ -22138,16 +21492,16 @@ whileCond_80:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$64
 	li t4, 11608
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$64 whileBody_80 next_175
+	# condBr cond_normalize_$64 whileBody_126 next_268
 
 	# fetch variables
 
@@ -22155,16 +21509,14 @@ whileCond_80:
 	li t4, 11608
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_175
-	j whileBody_80
-whileBody_80:
+	beqz t1, next_268
+	j whileBody_126
+whileBody_126:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -22172,12 +21524,10 @@ whileBody_80:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -22198,7 +21548,7 @@ whileBody_80:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$18
+	# store lv$2 al$18
 
 	# fetch variables
 
@@ -22206,8 +21556,6 @@ whileBody_80:
 	li t4, 11600
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$18
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -22228,7 +21576,7 @@ whileBody_80:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$25
+	# store lv$3 c$25
 
 	# fetch variables
 
@@ -22237,17 +21585,15 @@ whileBody_80:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$25
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_81
-	j whileCond_81
-next_175:
+	# br whileCond_127
+	j whileCond_127
+next_268:
 
 	# load al$20 lv$41
 
@@ -22262,7 +21608,7 @@ next_175:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$20
+	# store lv al$20
 
 	# fetch variables
 
@@ -22270,8 +21616,6 @@ next_175:
 	li t4, 11584
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$20
 
 	# get address of lv points to
 	li t4, 18984
@@ -22292,7 +21636,7 @@ next_175:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$40 ans$75
+	# store lv$40 ans$75
 
 	# fetch variables
 
@@ -22301,17 +21645,15 @@ next_175:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$40 ans$75
-
 	# get address of lv$40 points to
 	li t4, 19624
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_174
-	j next_174
-whileCond_81:
+	# br next_267
+	j next_267
+whileCond_127:
 
 	# load i$78 lv$1
 
@@ -22326,7 +21668,7 @@ whileCond_81:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$78  cond_lt_tmp_$28
+	# ICMPcond_lt_tmp_$28 i$78  
 
 	# fetch variables
 
@@ -22335,14 +21677,14 @@ whileCond_81:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$28
 	li t4, 11560
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$54 cond_lt_tmp_$28
+	# ZEXTcond_tmp_$54 cond_lt_tmp_$28
 
 	# fetch variables
 
@@ -22350,14 +21692,14 @@ whileCond_81:
 	li t4, 11560
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$54
 	li t4, 11552
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$54  cond_$54
+	# ICMPcond_$54 cond_tmp_$54  
 
 	# fetch variables
 
@@ -22366,16 +21708,16 @@ whileCond_81:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$54
 	li t4, 11544
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$54 whileBody_81 next_176
+	# condBr cond_$54 whileBody_127 next_269
 
 	# fetch variables
 
@@ -22383,9 +21725,9 @@ whileCond_81:
 	li t4, 11544
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_176
-	j whileBody_81
-whileBody_81:
+	beqz t1, next_269
+	j whileBody_127
+whileBody_127:
 
 	# load x$72 lv$2
 
@@ -22400,7 +21742,7 @@ whileBody_81:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$216 x$72 
+	# MODresult_$216 x$72  
 
 	# fetch variables
 
@@ -22409,14 +21751,14 @@ whileBody_81:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$216
 	li t4, 11528
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$216  cond_normalize_$65
+	# ICMPcond_normalize_$65 result_$216  
 
 	# fetch variables
 
@@ -22425,16 +21767,16 @@ whileBody_81:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$65
 	li t4, 11520
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$65 ifTrue_95 ifFalse_44
+	# condBr cond_normalize_$65 ifTrue_142 ifFalse_49
 
 	# fetch variables
 
@@ -22442,9 +21784,9 @@ whileBody_81:
 	li t4, 11520
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_44
-	j ifTrue_95
-next_176:
+	beqz t1, ifFalse_49
+	j ifTrue_142
+next_269:
 
 	# load ans$70 lv
 
@@ -22459,7 +21801,7 @@ next_176:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$43 ans$70
+	# store lv$43 ans$70
 
 	# fetch variables
 
@@ -22468,20 +21810,16 @@ next_176:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$43 ans$70
-
 	# get address of lv$43 points to
 	li t4, 19672
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -22489,12 +21827,10 @@ next_176:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -22515,7 +21851,7 @@ next_176:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$19
+	# store lv$2 al$19
 
 	# fetch variables
 
@@ -22523,8 +21859,6 @@ next_176:
 	li t4, 11504
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$19
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -22545,7 +21879,7 @@ next_176:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$26
+	# store lv$3 c$26
 
 	# fetch variables
 
@@ -22554,17 +21888,15 @@ next_176:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$26
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_82
-	j whileCond_82
-ifTrue_95:
+	# br whileCond_128
+	j whileCond_128
+ifTrue_142:
 
 	# load y$74 lv$3
 
@@ -22579,7 +21911,7 @@ ifTrue_95:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$217 y$74 
+	# MODresult_$217 y$74  
 
 	# fetch variables
 
@@ -22588,14 +21920,14 @@ ifTrue_95:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$217
-	li t4, 11480
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$217
+	li t4, 11480
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$217  cond_eq_tmp_$6
+	# ICMPcond_eq_tmp_$6 result_$217  
 
 	# fetch variables
 
@@ -22604,15 +21936,15 @@ ifTrue_95:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$6
 	li t4, 11472
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$55 cond_eq_tmp_$6
+	# ZEXTcond_tmp_$55 cond_eq_tmp_$6
 
 	# fetch variables
 
@@ -22620,14 +21952,14 @@ ifTrue_95:
 	li t4, 11472
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$55
 	li t4, 11464
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$55  cond_$55
+	# ICMPcond_$55 cond_tmp_$55  
 
 	# fetch variables
 
@@ -22636,16 +21968,16 @@ ifTrue_95:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$55
 	li t4, 11456
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$55 ifTrue_96 next_178
+	# condBr cond_$55 ifTrue_143 next_271
 
 	# fetch variables
 
@@ -22653,9 +21985,9 @@ ifTrue_95:
 	li t4, 11456
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_178
-	j ifTrue_96
-ifFalse_44:
+	beqz t1, next_271
+	j ifTrue_143
+ifFalse_49:
 
 	# load y$75 lv$3
 
@@ -22670,7 +22002,7 @@ ifFalse_44:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$220 y$75 
+	# MODresult_$220 y$75  
 
 	# fetch variables
 
@@ -22679,14 +22011,14 @@ ifFalse_44:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$220
 	li t4, 11440
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$220  cond_normalize_$66
+	# ICMPcond_normalize_$66 result_$220  
 
 	# fetch variables
 
@@ -22695,16 +22027,16 @@ ifFalse_44:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$66
 	li t4, 11432
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$66 ifTrue_97 next_179
+	# condBr cond_normalize_$66 ifTrue_144 next_272
 
 	# fetch variables
 
@@ -22712,9 +22044,9 @@ ifFalse_44:
 	li t4, 11432
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_179
-	j ifTrue_97
-next_177:
+	beqz t1, next_272
+	j ifTrue_144
+next_270:
 
 	# load x$73 lv$2
 
@@ -22729,7 +22061,7 @@ next_177:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$223 x$73 
+	# DIVresult_$223 x$73  
 
 	# fetch variables
 
@@ -22738,14 +22070,14 @@ next_177:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$223
 	li t4, 11416
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$223
+	# store lv$2 result_$223
 
 	# fetch variables
 
@@ -22753,8 +22085,6 @@ next_177:
 	li t4, 11416
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$223
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -22775,7 +22105,7 @@ next_177:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$224 y$76 
+	# DIVresult_$224 y$76  
 
 	# fetch variables
 
@@ -22784,14 +22114,14 @@ next_177:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$224
 	li t4, 11400
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$224
+	# store lv$3 result_$224
 
 	# fetch variables
 
@@ -22799,8 +22129,6 @@ next_177:
 	li t4, 11400
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$224
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -22821,7 +22149,7 @@ next_177:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$225 i$81 
+	# ADDresult_$225 i$81  
 
 	# fetch variables
 
@@ -22837,7 +22165,7 @@ next_177:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$225
+	# store lv$1 result_$225
 
 	# fetch variables
 
@@ -22846,17 +22174,15 @@ next_177:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$225
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_81
-	j whileCond_81
-ifTrue_96:
+	# br whileCond_127
+	j whileCond_127
+ifTrue_143:
 
 	# load ans$68 lv
 
@@ -22918,7 +22244,7 @@ ifTrue_96:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$218  SHIFT_TABLE$85
+	# MULresult_$218  SHIFT_TABLE$85 
 
 	# fetch variables
 	li t1, 1
@@ -22934,7 +22260,7 @@ ifTrue_96:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$219 ans$68 result_$218
+	# ADDresult_$219 ans$68 result_$218 
 
 	# fetch variables
 
@@ -22954,7 +22280,7 @@ ifTrue_96:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$219
+	# store lv result_$219
 
 	# fetch variables
 
@@ -22963,21 +22289,19 @@ ifTrue_96:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$219
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_178
-	j next_178
-next_178:
+	# br next_271
+	j next_271
+next_271:
 
-	# br next_177
-	j next_177
-ifTrue_97:
+	# br next_270
+	j next_270
+ifTrue_144:
 
 	# load ans$69 lv
 
@@ -23039,7 +22363,7 @@ ifTrue_97:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$221  SHIFT_TABLE$87
+	# MULresult_$221  SHIFT_TABLE$87 
 
 	# fetch variables
 	li t1, 1
@@ -23055,7 +22379,7 @@ ifTrue_97:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$222 ans$69 result_$221
+	# ADDresult_$222 ans$69 result_$221 
 
 	# fetch variables
 
@@ -23075,7 +22399,7 @@ ifTrue_97:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$222
+	# store lv result_$222
 
 	# fetch variables
 
@@ -23084,21 +22408,19 @@ ifTrue_97:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$222
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_179
-	j next_179
-next_179:
+	# br next_272
+	j next_272
+next_272:
 
-	# br next_177
-	j next_177
-whileCond_82:
+	# br next_270
+	j next_270
+whileCond_128:
 
 	# load i$82 lv$1
 
@@ -23113,7 +22435,7 @@ whileCond_82:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$82  cond_lt_tmp_$29
+	# ICMPcond_lt_tmp_$29 i$82  
 
 	# fetch variables
 
@@ -23122,14 +22444,14 @@ whileCond_82:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$29
 	li t4, 11272
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$56 cond_lt_tmp_$29
+	# ZEXTcond_tmp_$56 cond_lt_tmp_$29
 
 	# fetch variables
 
@@ -23137,14 +22459,14 @@ whileCond_82:
 	li t4, 11272
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$56
 	li t4, 11264
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$56  cond_$56
+	# ICMPcond_$56 cond_tmp_$56  
 
 	# fetch variables
 
@@ -23153,16 +22475,16 @@ whileCond_82:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$56
 	li t4, 11256
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$56 whileBody_82 next_180
+	# condBr cond_$56 whileBody_128 next_273
 
 	# fetch variables
 
@@ -23170,9 +22492,9 @@ whileCond_82:
 	li t4, 11256
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_180
-	j whileBody_82
-whileBody_82:
+	beqz t1, next_273
+	j whileBody_128
+whileBody_128:
 
 	# load x$74 lv$2
 
@@ -23187,7 +22509,7 @@ whileBody_82:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$226 x$74 
+	# MODresult_$226 x$74  
 
 	# fetch variables
 
@@ -23196,14 +22518,14 @@ whileBody_82:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$226
 	li t4, 11240
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$226  cond_normalize_$67
+	# ICMPcond_normalize_$67 result_$226  
 
 	# fetch variables
 
@@ -23212,16 +22534,16 @@ whileBody_82:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$67
 	li t4, 11232
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$67 secondCond_30 next_181
+	# condBr cond_normalize_$67 secondCond_65 next_274
 
 	# fetch variables
 
@@ -23229,9 +22551,9 @@ whileBody_82:
 	li t4, 11232
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_181
-	j secondCond_30
-next_180:
+	beqz t1, next_274
+	j secondCond_65
+next_273:
 
 	# load ans$72 lv
 
@@ -23246,7 +22568,7 @@ next_180:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$42 ans$72
+	# store lv$42 ans$72
 
 	# fetch variables
 
@@ -23255,28 +22577,26 @@ next_180:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$42 ans$72
-
 	# get address of lv$42 points to
 	li t4, 19656
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$16
+	# ICMPcond_gt_tmp_$16   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$16
 	li t4, 11216
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$57 cond_gt_tmp_$16
+	# ZEXTcond_tmp_$57 cond_gt_tmp_$16
 
 	# fetch variables
 
@@ -23284,14 +22604,14 @@ next_180:
 	li t4, 11216
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$57
 	li t4, 11208
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$57  cond_$57
+	# ICMPcond_$57 cond_tmp_$57  
 
 	# fetch variables
 
@@ -23300,16 +22620,16 @@ next_180:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$57
 	li t4, 11200
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$57 ifTrue_99 ifFalse_45
+	# condBr cond_$57 ifTrue_146 ifFalse_50
 
 	# fetch variables
 
@@ -23317,9 +22637,9 @@ next_180:
 	li t4, 11200
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_45
-	j ifTrue_99
-ifTrue_98:
+	beqz t1, ifFalse_50
+	j ifTrue_146
+ifTrue_145:
 
 	# load ans$71 lv
 
@@ -23381,7 +22701,7 @@ ifTrue_98:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$228  SHIFT_TABLE$89
+	# MULresult_$228  SHIFT_TABLE$89 
 
 	# fetch variables
 	li t1, 1
@@ -23397,7 +22717,7 @@ ifTrue_98:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$229 ans$71 result_$228
+	# ADDresult_$229 ans$71 result_$228 
 
 	# fetch variables
 
@@ -23417,7 +22737,7 @@ ifTrue_98:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$229
+	# store lv result_$229
 
 	# fetch variables
 
@@ -23426,17 +22746,15 @@ ifTrue_98:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$229
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_181
-	j next_181
-next_181:
+	# br next_274
+	j next_274
+next_274:
 
 	# load x$75 lv$2
 
@@ -23451,7 +22769,7 @@ next_181:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$230 x$75 
+	# DIVresult_$230 x$75  
 
 	# fetch variables
 
@@ -23460,14 +22778,14 @@ next_181:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$230
 	li t4, 11136
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$230
+	# store lv$2 result_$230
 
 	# fetch variables
 
@@ -23475,8 +22793,6 @@ next_181:
 	li t4, 11136
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$230
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -23497,7 +22813,7 @@ next_181:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$231 y$78 
+	# DIVresult_$231 y$78  
 
 	# fetch variables
 
@@ -23506,14 +22822,14 @@ next_181:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$231
 	li t4, 11120
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$231
+	# store lv$3 result_$231
 
 	# fetch variables
 
@@ -23521,8 +22837,6 @@ next_181:
 	li t4, 11120
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$231
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -23543,7 +22857,7 @@ next_181:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$232 i$84 
+	# ADDresult_$232 i$84  
 
 	# fetch variables
 
@@ -23559,7 +22873,7 @@ next_181:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$232
+	# store lv$1 result_$232
 
 	# fetch variables
 
@@ -23568,17 +22882,15 @@ next_181:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$232
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_82
-	j whileCond_82
-secondCond_30:
+	# br whileCond_128
+	j whileCond_128
+secondCond_65:
 
 	# load y$77 lv$3
 
@@ -23593,7 +22905,7 @@ secondCond_30:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$227 y$77 
+	# MODresult_$227 y$77  
 
 	# fetch variables
 
@@ -23602,14 +22914,14 @@ secondCond_30:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$227
 	li t4, 11088
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$227  cond_normalize_$68
+	# ICMPcond_normalize_$68 result_$227  
 
 	# fetch variables
 
@@ -23618,16 +22930,16 @@ secondCond_30:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$68
 	li t4, 11080
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$68 ifTrue_98 next_181
+	# condBr cond_normalize_$68 ifTrue_145 next_274
 
 	# fetch variables
 
@@ -23635,16 +22947,14 @@ secondCond_30:
 	li t4, 11080
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_181
-	j ifTrue_98
-ifTrue_99:
+	beqz t1, next_274
+	j ifTrue_145
+ifTrue_146:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -23652,29 +22962,25 @@ ifTrue_99:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_182
-	j next_182
-ifFalse_45:
+	# br next_275
+	j next_275
+ifFalse_50:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -23695,7 +23001,7 @@ ifFalse_45:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$233 c$27 
+	# MULresult_$233 c$27  
 
 	# fetch variables
 
@@ -23711,7 +23017,7 @@ ifFalse_45:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$233
+	# store lv$2 result_$233
 
 	# fetch variables
 
@@ -23720,20 +23026,16 @@ ifFalse_45:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$233
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -23741,9 +23043,9 @@ ifFalse_45:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_83
-	j whileCond_83
-next_182:
+	# br whileCond_129
+	j whileCond_129
+next_275:
 
 	# load ans$74 lv
 
@@ -23758,7 +23060,7 @@ next_182:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$42 ans$74
+	# store lv$42 ans$74
 
 	# fetch variables
 
@@ -23766,8 +23068,6 @@ next_182:
 	li t4, 11056
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$42 ans$74
 
 	# get address of lv$42 points to
 	li t4, 19656
@@ -23788,7 +23088,7 @@ next_182:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$41 sum$6
+	# store lv$41 sum$6
 
 	# fetch variables
 
@@ -23797,17 +23097,15 @@ next_182:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$41 sum$6
-
 	# get address of lv$41 points to
 	li t4, 19640
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_80
-	j whileCond_80
-whileCond_83:
+	# br whileCond_126
+	j whileCond_126
+whileCond_129:
 
 	# load i$85 lv$1
 
@@ -23822,7 +23120,7 @@ whileCond_83:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$85  cond_lt_tmp_$30
+	# ICMPcond_lt_tmp_$30 i$85  
 
 	# fetch variables
 
@@ -23831,14 +23129,14 @@ whileCond_83:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$30
 	li t4, 11032
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$58 cond_lt_tmp_$30
+	# ZEXTcond_tmp_$58 cond_lt_tmp_$30
 
 	# fetch variables
 
@@ -23846,14 +23144,14 @@ whileCond_83:
 	li t4, 11032
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$58
 	li t4, 11024
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$58  cond_$58
+	# ICMPcond_$58 cond_tmp_$58  
 
 	# fetch variables
 
@@ -23862,16 +23160,16 @@ whileCond_83:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$58
 	li t4, 11016
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$58 whileBody_83 next_183
+	# condBr cond_$58 whileBody_129 next_276
 
 	# fetch variables
 
@@ -23879,9 +23177,9 @@ whileCond_83:
 	li t4, 11016
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_183
-	j whileBody_83
-whileBody_83:
+	beqz t1, next_276
+	j whileBody_129
+whileBody_129:
 
 	# load x$76 lv$2
 
@@ -23896,7 +23194,7 @@ whileBody_83:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$234 x$76 
+	# MODresult_$234 x$76  
 
 	# fetch variables
 
@@ -23905,14 +23203,14 @@ whileBody_83:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$234
 	li t4, 11000
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$234  cond_normalize_$69
+	# ICMPcond_normalize_$69 result_$234  
 
 	# fetch variables
 
@@ -23921,16 +23219,16 @@ whileBody_83:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$69
 	li t4, 10992
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$69 secondCond_31 next_184
+	# condBr cond_normalize_$69 secondCond_66 next_277
 
 	# fetch variables
 
@@ -23938,13 +23236,13 @@ whileBody_83:
 	li t4, 10992
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_184
-	j secondCond_31
-next_183:
+	beqz t1, next_277
+	j secondCond_66
+next_276:
 
-	# br next_182
-	j next_182
-ifTrue_100:
+	# br next_275
+	j next_275
+ifTrue_147:
 
 	# load ans$73 lv
 
@@ -24006,7 +23304,7 @@ ifTrue_100:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$236  SHIFT_TABLE$91
+	# MULresult_$236  SHIFT_TABLE$91 
 
 	# fetch variables
 	li t1, 1
@@ -24022,7 +23320,7 @@ ifTrue_100:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$237 ans$73 result_$236
+	# ADDresult_$237 ans$73 result_$236 
 
 	# fetch variables
 
@@ -24042,7 +23340,7 @@ ifTrue_100:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$237
+	# store lv result_$237
 
 	# fetch variables
 
@@ -24051,17 +23349,15 @@ ifTrue_100:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$237
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_184
-	j next_184
-next_184:
+	# br next_277
+	j next_277
+next_277:
 
 	# load x$77 lv$2
 
@@ -24076,7 +23372,7 @@ next_184:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$238 x$77 
+	# DIVresult_$238 x$77  
 
 	# fetch variables
 
@@ -24085,14 +23381,14 @@ next_184:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$238
 	li t4, 10928
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$238
+	# store lv$2 result_$238
 
 	# fetch variables
 
@@ -24100,8 +23396,6 @@ next_184:
 	li t4, 10928
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$238
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -24122,7 +23416,7 @@ next_184:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$239 y$80 
+	# DIVresult_$239 y$80  
 
 	# fetch variables
 
@@ -24131,14 +23425,14 @@ next_184:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$239
 	li t4, 10912
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$239
+	# store lv$3 result_$239
 
 	# fetch variables
 
@@ -24146,8 +23440,6 @@ next_184:
 	li t4, 10912
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$239
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -24168,7 +23460,7 @@ next_184:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$240 i$87 
+	# ADDresult_$240 i$87  
 
 	# fetch variables
 
@@ -24184,7 +23476,7 @@ next_184:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$240
+	# store lv$1 result_$240
 
 	# fetch variables
 
@@ -24193,17 +23485,15 @@ next_184:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$240
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_83
-	j whileCond_83
-secondCond_31:
+	# br whileCond_129
+	j whileCond_129
+secondCond_66:
 
 	# load y$79 lv$3
 
@@ -24218,7 +23508,7 @@ secondCond_31:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$235 y$79 
+	# MODresult_$235 y$79  
 
 	# fetch variables
 
@@ -24227,14 +23517,14 @@ secondCond_31:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$235
 	li t4, 10880
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$235  cond_normalize_$70
+	# ICMPcond_normalize_$70 result_$235  
 
 	# fetch variables
 
@@ -24243,16 +23533,16 @@ secondCond_31:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$70
 	li t4, 10872
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$70 ifTrue_100 next_184
+	# condBr cond_normalize_$70 ifTrue_147 next_277
 
 	# fetch variables
 
@@ -24260,9 +23550,9 @@ secondCond_31:
 	li t4, 10872
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_184
-	j ifTrue_100
-whileCond_84:
+	beqz t1, next_277
+	j ifTrue_147
+whileCond_130:
 
 	# load c$28 lv$45
 
@@ -24277,7 +23567,7 @@ whileCond_84:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$28  cond_normalize_$71
+	# ICMPcond_normalize_$71 c$28  
 
 	# fetch variables
 
@@ -24286,16 +23576,16 @@ whileCond_84:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$71
 	li t4, 10856
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$71 whileBody_84 next_185
+	# condBr cond_normalize_$71 whileBody_130 next_278
 
 	# fetch variables
 
@@ -24303,16 +23593,14 @@ whileCond_84:
 	li t4, 10856
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_185
-	j whileBody_84
-whileBody_84:
+	beqz t1, next_278
+	j whileBody_130
+whileBody_130:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -24320,12 +23608,10 @@ whileBody_84:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -24346,7 +23632,7 @@ whileBody_84:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$21
+	# store lv$2 al$21
 
 	# fetch variables
 
@@ -24354,8 +23640,6 @@ whileBody_84:
 	li t4, 10848
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$21
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -24376,7 +23660,7 @@ whileBody_84:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$29
+	# store lv$3 c$29
 
 	# fetch variables
 
@@ -24385,17 +23669,15 @@ whileBody_84:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$29
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_85
-	j whileCond_85
-next_185:
+	# br whileCond_131
+	j whileCond_131
+next_278:
 
 	# load al$23 lv$44
 
@@ -24410,7 +23692,7 @@ next_185:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$23
+	# store lv al$23
 
 	# fetch variables
 
@@ -24418,8 +23700,6 @@ next_185:
 	li t4, 10832
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$23
 
 	# get address of lv points to
 	li t4, 18984
@@ -24440,7 +23720,7 @@ next_185:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$38 ans$83
+	# store lv$38 ans$83
 
 	# fetch variables
 
@@ -24448,8 +23728,6 @@ next_185:
 	li t4, 10824
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$38 ans$83
 
 	# get address of lv$38 points to
 	li t4, 19592
@@ -24470,7 +23748,7 @@ next_185:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$11
+	# store lv$2 mr$11
 
 	# fetch variables
 
@@ -24479,20 +23757,16 @@ next_185:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$11
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -24513,7 +23787,7 @@ next_185:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$88  cond_ge_tmp_$4
+	# ICMPcond_ge_tmp_$4 y$88  
 
 	# fetch variables
 
@@ -24522,15 +23796,15 @@ next_185:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 15
+	slt t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_ge_tmp_$4
 	li t4, 10800
 	add t4, sp, t4
-	slt t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$64 cond_ge_tmp_$4
+	# ZEXTcond_tmp_$64 cond_ge_tmp_$4
 
 	# fetch variables
 
@@ -24538,14 +23812,14 @@ next_185:
 	li t4, 10800
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$64
 	li t4, 10792
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$64  cond_$64
+	# ICMPcond_$64 cond_tmp_$64  
 
 	# fetch variables
 
@@ -24554,16 +23828,16 @@ next_185:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$64
 	li t4, 10784
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$64 ifTrue_107 ifFalse_48
+	# condBr cond_$64 ifTrue_154 ifFalse_53
 
 	# fetch variables
 
@@ -24571,9 +23845,9 @@ next_185:
 	li t4, 10784
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_48
-	j ifTrue_107
-whileCond_85:
+	beqz t1, ifFalse_53
+	j ifTrue_154
+whileCond_131:
 
 	# load i$88 lv$1
 
@@ -24588,7 +23862,7 @@ whileCond_85:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$88  cond_lt_tmp_$31
+	# ICMPcond_lt_tmp_$31 i$88  
 
 	# fetch variables
 
@@ -24597,14 +23871,14 @@ whileCond_85:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$31
 	li t4, 10768
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$59 cond_lt_tmp_$31
+	# ZEXTcond_tmp_$59 cond_lt_tmp_$31
 
 	# fetch variables
 
@@ -24612,14 +23886,14 @@ whileCond_85:
 	li t4, 10768
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$59
 	li t4, 10760
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$59  cond_$59
+	# ICMPcond_$59 cond_tmp_$59  
 
 	# fetch variables
 
@@ -24628,16 +23902,16 @@ whileCond_85:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$59
 	li t4, 10752
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$59 whileBody_85 next_186
+	# condBr cond_$59 whileBody_131 next_279
 
 	# fetch variables
 
@@ -24645,9 +23919,9 @@ whileCond_85:
 	li t4, 10752
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_186
-	j whileBody_85
-whileBody_85:
+	beqz t1, next_279
+	j whileBody_131
+whileBody_131:
 
 	# load x$78 lv$2
 
@@ -24662,7 +23936,7 @@ whileBody_85:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$241 x$78 
+	# MODresult_$241 x$78  
 
 	# fetch variables
 
@@ -24671,14 +23945,14 @@ whileBody_85:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$241
 	li t4, 10736
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$241  cond_normalize_$72
+	# ICMPcond_normalize_$72 result_$241  
 
 	# fetch variables
 
@@ -24687,16 +23961,16 @@ whileBody_85:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$72
 	li t4, 10728
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$72 ifTrue_101 ifFalse_46
+	# condBr cond_normalize_$72 ifTrue_148 ifFalse_51
 
 	# fetch variables
 
@@ -24704,9 +23978,9 @@ whileBody_85:
 	li t4, 10728
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_46
-	j ifTrue_101
-next_186:
+	beqz t1, ifFalse_51
+	j ifTrue_148
+next_279:
 
 	# load ans$78 lv
 
@@ -24721,7 +23995,7 @@ next_186:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$46 ans$78
+	# store lv$46 ans$78
 
 	# fetch variables
 
@@ -24730,20 +24004,16 @@ next_186:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$46 ans$78
-
 	# get address of lv$46 points to
 	li t4, 19720
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -24751,12 +24021,10 @@ next_186:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -24777,7 +24045,7 @@ next_186:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$22
+	# store lv$2 al$22
 
 	# fetch variables
 
@@ -24785,8 +24053,6 @@ next_186:
 	li t4, 10712
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$22
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -24807,7 +24073,7 @@ next_186:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$30
+	# store lv$3 c$30
 
 	# fetch variables
 
@@ -24816,17 +24082,15 @@ next_186:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$30
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_86
-	j whileCond_86
-ifTrue_101:
+	# br whileCond_132
+	j whileCond_132
+ifTrue_148:
 
 	# load y$81 lv$3
 
@@ -24841,7 +24105,7 @@ ifTrue_101:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$242 y$81 
+	# MODresult_$242 y$81  
 
 	# fetch variables
 
@@ -24850,14 +24114,14 @@ ifTrue_101:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$242
-	li t4, 10688
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$242
+	li t4, 10688
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$242  cond_eq_tmp_$7
+	# ICMPcond_eq_tmp_$7 result_$242  
 
 	# fetch variables
 
@@ -24866,15 +24130,15 @@ ifTrue_101:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$7
 	li t4, 10680
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$60 cond_eq_tmp_$7
+	# ZEXTcond_tmp_$60 cond_eq_tmp_$7
 
 	# fetch variables
 
@@ -24882,14 +24146,14 @@ ifTrue_101:
 	li t4, 10680
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$60
 	li t4, 10672
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$60  cond_$60
+	# ICMPcond_$60 cond_tmp_$60  
 
 	# fetch variables
 
@@ -24898,16 +24162,16 @@ ifTrue_101:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$60
 	li t4, 10664
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$60 ifTrue_102 next_188
+	# condBr cond_$60 ifTrue_149 next_281
 
 	# fetch variables
 
@@ -24915,9 +24179,9 @@ ifTrue_101:
 	li t4, 10664
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_188
-	j ifTrue_102
-ifFalse_46:
+	beqz t1, next_281
+	j ifTrue_149
+ifFalse_51:
 
 	# load y$82 lv$3
 
@@ -24932,7 +24196,7 @@ ifFalse_46:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$245 y$82 
+	# MODresult_$245 y$82  
 
 	# fetch variables
 
@@ -24941,14 +24205,14 @@ ifFalse_46:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$245
 	li t4, 10648
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$245  cond_normalize_$73
+	# ICMPcond_normalize_$73 result_$245  
 
 	# fetch variables
 
@@ -24957,16 +24221,16 @@ ifFalse_46:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$73
 	li t4, 10640
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$73 ifTrue_103 next_189
+	# condBr cond_normalize_$73 ifTrue_150 next_282
 
 	# fetch variables
 
@@ -24974,9 +24238,9 @@ ifFalse_46:
 	li t4, 10640
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_189
-	j ifTrue_103
-next_187:
+	beqz t1, next_282
+	j ifTrue_150
+next_280:
 
 	# load x$79 lv$2
 
@@ -24991,7 +24255,7 @@ next_187:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$248 x$79 
+	# DIVresult_$248 x$79  
 
 	# fetch variables
 
@@ -25000,14 +24264,14 @@ next_187:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$248
 	li t4, 10624
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$248
+	# store lv$2 result_$248
 
 	# fetch variables
 
@@ -25015,8 +24279,6 @@ next_187:
 	li t4, 10624
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$248
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -25037,7 +24299,7 @@ next_187:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$249 y$83 
+	# DIVresult_$249 y$83  
 
 	# fetch variables
 
@@ -25046,14 +24308,14 @@ next_187:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$249
 	li t4, 10608
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$249
+	# store lv$3 result_$249
 
 	# fetch variables
 
@@ -25061,8 +24323,6 @@ next_187:
 	li t4, 10608
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$249
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -25083,7 +24343,7 @@ next_187:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$250 i$91 
+	# ADDresult_$250 i$91  
 
 	# fetch variables
 
@@ -25099,7 +24359,7 @@ next_187:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$250
+	# store lv$1 result_$250
 
 	# fetch variables
 
@@ -25108,17 +24368,15 @@ next_187:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$250
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_85
-	j whileCond_85
-ifTrue_102:
+	# br whileCond_131
+	j whileCond_131
+ifTrue_149:
 
 	# load ans$76 lv
 
@@ -25180,7 +24438,7 @@ ifTrue_102:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$243  SHIFT_TABLE$93
+	# MULresult_$243  SHIFT_TABLE$93 
 
 	# fetch variables
 	li t1, 1
@@ -25196,7 +24454,7 @@ ifTrue_102:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$244 ans$76 result_$243
+	# ADDresult_$244 ans$76 result_$243 
 
 	# fetch variables
 
@@ -25216,7 +24474,7 @@ ifTrue_102:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$244
+	# store lv result_$244
 
 	# fetch variables
 
@@ -25225,21 +24483,19 @@ ifTrue_102:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$244
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_188
-	j next_188
-next_188:
+	# br next_281
+	j next_281
+next_281:
 
-	# br next_187
-	j next_187
-ifTrue_103:
+	# br next_280
+	j next_280
+ifTrue_150:
 
 	# load ans$77 lv
 
@@ -25301,7 +24557,7 @@ ifTrue_103:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$246  SHIFT_TABLE$95
+	# MULresult_$246  SHIFT_TABLE$95 
 
 	# fetch variables
 	li t1, 1
@@ -25317,7 +24573,7 @@ ifTrue_103:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$247 ans$77 result_$246
+	# ADDresult_$247 ans$77 result_$246 
 
 	# fetch variables
 
@@ -25337,7 +24593,7 @@ ifTrue_103:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$247
+	# store lv result_$247
 
 	# fetch variables
 
@@ -25346,21 +24602,19 @@ ifTrue_103:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$247
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_189
-	j next_189
-next_189:
+	# br next_282
+	j next_282
+next_282:
 
-	# br next_187
-	j next_187
-whileCond_86:
+	# br next_280
+	j next_280
+whileCond_132:
 
 	# load i$92 lv$1
 
@@ -25375,7 +24629,7 @@ whileCond_86:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$92  cond_lt_tmp_$32
+	# ICMPcond_lt_tmp_$32 i$92  
 
 	# fetch variables
 
@@ -25384,14 +24638,14 @@ whileCond_86:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$32
 	li t4, 10480
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$61 cond_lt_tmp_$32
+	# ZEXTcond_tmp_$61 cond_lt_tmp_$32
 
 	# fetch variables
 
@@ -25399,14 +24653,14 @@ whileCond_86:
 	li t4, 10480
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$61
 	li t4, 10472
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$61  cond_$61
+	# ICMPcond_$61 cond_tmp_$61  
 
 	# fetch variables
 
@@ -25415,16 +24669,16 @@ whileCond_86:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$61
 	li t4, 10464
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$61 whileBody_86 next_190
+	# condBr cond_$61 whileBody_132 next_283
 
 	# fetch variables
 
@@ -25432,9 +24686,9 @@ whileCond_86:
 	li t4, 10464
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_190
-	j whileBody_86
-whileBody_86:
+	beqz t1, next_283
+	j whileBody_132
+whileBody_132:
 
 	# load x$80 lv$2
 
@@ -25449,7 +24703,7 @@ whileBody_86:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$251 x$80 
+	# MODresult_$251 x$80  
 
 	# fetch variables
 
@@ -25458,14 +24712,14 @@ whileBody_86:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$251
 	li t4, 10448
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$251  cond_normalize_$74
+	# ICMPcond_normalize_$74 result_$251  
 
 	# fetch variables
 
@@ -25474,16 +24728,16 @@ whileBody_86:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$74
 	li t4, 10440
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$74 secondCond_32 next_191
+	# condBr cond_normalize_$74 secondCond_67 next_284
 
 	# fetch variables
 
@@ -25491,9 +24745,9 @@ whileBody_86:
 	li t4, 10440
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_191
-	j secondCond_32
-next_190:
+	beqz t1, next_284
+	j secondCond_67
+next_283:
 
 	# load ans$80 lv
 
@@ -25508,7 +24762,7 @@ next_190:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$45 ans$80
+	# store lv$45 ans$80
 
 	# fetch variables
 
@@ -25517,28 +24771,26 @@ next_190:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$45 ans$80
-
 	# get address of lv$45 points to
 	li t4, 19704
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$17
+	# ICMPcond_gt_tmp_$17   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$17
 	li t4, 10424
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$62 cond_gt_tmp_$17
+	# ZEXTcond_tmp_$62 cond_gt_tmp_$17
 
 	# fetch variables
 
@@ -25546,14 +24798,14 @@ next_190:
 	li t4, 10424
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$62
 	li t4, 10416
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$62  cond_$62
+	# ICMPcond_$62 cond_tmp_$62  
 
 	# fetch variables
 
@@ -25562,16 +24814,16 @@ next_190:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$62
 	li t4, 10408
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$62 ifTrue_105 ifFalse_47
+	# condBr cond_$62 ifTrue_152 ifFalse_52
 
 	# fetch variables
 
@@ -25579,9 +24831,9 @@ next_190:
 	li t4, 10408
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_47
-	j ifTrue_105
-ifTrue_104:
+	beqz t1, ifFalse_52
+	j ifTrue_152
+ifTrue_151:
 
 	# load ans$79 lv
 
@@ -25643,7 +24895,7 @@ ifTrue_104:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$253  SHIFT_TABLE$97
+	# MULresult_$253  SHIFT_TABLE$97 
 
 	# fetch variables
 	li t1, 1
@@ -25659,7 +24911,7 @@ ifTrue_104:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$254 ans$79 result_$253
+	# ADDresult_$254 ans$79 result_$253 
 
 	# fetch variables
 
@@ -25679,7 +24931,7 @@ ifTrue_104:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$254
+	# store lv result_$254
 
 	# fetch variables
 
@@ -25688,17 +24940,15 @@ ifTrue_104:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$254
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_191
-	j next_191
-next_191:
+	# br next_284
+	j next_284
+next_284:
 
 	# load x$81 lv$2
 
@@ -25713,7 +24963,7 @@ next_191:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$255 x$81 
+	# DIVresult_$255 x$81  
 
 	# fetch variables
 
@@ -25722,14 +24972,14 @@ next_191:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$255
 	li t4, 10344
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$255
+	# store lv$2 result_$255
 
 	# fetch variables
 
@@ -25737,8 +24987,6 @@ next_191:
 	li t4, 10344
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$255
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -25759,7 +25007,7 @@ next_191:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$256 y$85 
+	# DIVresult_$256 y$85  
 
 	# fetch variables
 
@@ -25768,14 +25016,14 @@ next_191:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$256
 	li t4, 10328
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$256
+	# store lv$3 result_$256
 
 	# fetch variables
 
@@ -25783,8 +25031,6 @@ next_191:
 	li t4, 10328
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$256
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -25805,7 +25051,7 @@ next_191:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$257 i$94 
+	# ADDresult_$257 i$94  
 
 	# fetch variables
 
@@ -25821,7 +25067,7 @@ next_191:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$257
+	# store lv$1 result_$257
 
 	# fetch variables
 
@@ -25830,17 +25076,15 @@ next_191:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$257
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_86
-	j whileCond_86
-secondCond_32:
+	# br whileCond_132
+	j whileCond_132
+secondCond_67:
 
 	# load y$84 lv$3
 
@@ -25855,7 +25099,7 @@ secondCond_32:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$252 y$84 
+	# MODresult_$252 y$84  
 
 	# fetch variables
 
@@ -25864,14 +25108,14 @@ secondCond_32:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$252
 	li t4, 10296
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$252  cond_normalize_$75
+	# ICMPcond_normalize_$75 result_$252  
 
 	# fetch variables
 
@@ -25880,16 +25124,16 @@ secondCond_32:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$75
 	li t4, 10288
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$75 ifTrue_104 next_191
+	# condBr cond_normalize_$75 ifTrue_151 next_284
 
 	# fetch variables
 
@@ -25897,16 +25141,14 @@ secondCond_32:
 	li t4, 10288
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_191
-	j ifTrue_104
-ifTrue_105:
+	beqz t1, next_284
+	j ifTrue_151
+ifTrue_152:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -25914,29 +25156,25 @@ ifTrue_105:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_192
-	j next_192
-ifFalse_47:
+	# br next_285
+	j next_285
+ifFalse_52:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -25957,7 +25195,7 @@ ifFalse_47:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$258 c$31 
+	# MULresult_$258 c$31  
 
 	# fetch variables
 
@@ -25973,7 +25211,7 @@ ifFalse_47:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$258
+	# store lv$2 result_$258
 
 	# fetch variables
 
@@ -25982,20 +25220,16 @@ ifFalse_47:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$258
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -26003,9 +25237,9 @@ ifFalse_47:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_87
-	j whileCond_87
-next_192:
+	# br whileCond_133
+	j whileCond_133
+next_285:
 
 	# load ans$82 lv
 
@@ -26020,7 +25254,7 @@ next_192:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$45 ans$82
+	# store lv$45 ans$82
 
 	# fetch variables
 
@@ -26028,8 +25262,6 @@ next_192:
 	li t4, 10264
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$45 ans$82
 
 	# get address of lv$45 points to
 	li t4, 19704
@@ -26050,7 +25282,7 @@ next_192:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$44 sum$7
+	# store lv$44 sum$7
 
 	# fetch variables
 
@@ -26059,17 +25291,15 @@ next_192:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$44 sum$7
-
 	# get address of lv$44 points to
 	li t4, 19688
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_84
-	j whileCond_84
-whileCond_87:
+	# br whileCond_130
+	j whileCond_130
+whileCond_133:
 
 	# load i$95 lv$1
 
@@ -26084,7 +25314,7 @@ whileCond_87:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$95  cond_lt_tmp_$33
+	# ICMPcond_lt_tmp_$33 i$95  
 
 	# fetch variables
 
@@ -26093,14 +25323,14 @@ whileCond_87:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$33
 	li t4, 10240
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$63 cond_lt_tmp_$33
+	# ZEXTcond_tmp_$63 cond_lt_tmp_$33
 
 	# fetch variables
 
@@ -26108,14 +25338,14 @@ whileCond_87:
 	li t4, 10240
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$63
 	li t4, 10232
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$63  cond_$63
+	# ICMPcond_$63 cond_tmp_$63  
 
 	# fetch variables
 
@@ -26124,16 +25354,16 @@ whileCond_87:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$63
 	li t4, 10224
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$63 whileBody_87 next_193
+	# condBr cond_$63 whileBody_133 next_286
 
 	# fetch variables
 
@@ -26141,9 +25371,9 @@ whileCond_87:
 	li t4, 10224
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_193
-	j whileBody_87
-whileBody_87:
+	beqz t1, next_286
+	j whileBody_133
+whileBody_133:
 
 	# load x$82 lv$2
 
@@ -26158,7 +25388,7 @@ whileBody_87:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$259 x$82 
+	# MODresult_$259 x$82  
 
 	# fetch variables
 
@@ -26167,14 +25397,14 @@ whileBody_87:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$259
 	li t4, 10208
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$259  cond_normalize_$76
+	# ICMPcond_normalize_$76 result_$259  
 
 	# fetch variables
 
@@ -26183,16 +25413,16 @@ whileBody_87:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$76
 	li t4, 10200
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$76 secondCond_33 next_194
+	# condBr cond_normalize_$76 secondCond_68 next_287
 
 	# fetch variables
 
@@ -26200,13 +25430,13 @@ whileBody_87:
 	li t4, 10200
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_194
-	j secondCond_33
-next_193:
+	beqz t1, next_287
+	j secondCond_68
+next_286:
 
-	# br next_192
-	j next_192
-ifTrue_106:
+	# br next_285
+	j next_285
+ifTrue_153:
 
 	# load ans$81 lv
 
@@ -26268,7 +25498,7 @@ ifTrue_106:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$261  SHIFT_TABLE$99
+	# MULresult_$261  SHIFT_TABLE$99 
 
 	# fetch variables
 	li t1, 1
@@ -26284,7 +25514,7 @@ ifTrue_106:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$262 ans$81 result_$261
+	# ADDresult_$262 ans$81 result_$261 
 
 	# fetch variables
 
@@ -26304,7 +25534,7 @@ ifTrue_106:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$262
+	# store lv result_$262
 
 	# fetch variables
 
@@ -26313,17 +25543,15 @@ ifTrue_106:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$262
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_194
-	j next_194
-next_194:
+	# br next_287
+	j next_287
+next_287:
 
 	# load x$83 lv$2
 
@@ -26338,7 +25566,7 @@ next_194:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$263 x$83 
+	# DIVresult_$263 x$83  
 
 	# fetch variables
 
@@ -26347,14 +25575,14 @@ next_194:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$263
 	li t4, 10136
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$263
+	# store lv$2 result_$263
 
 	# fetch variables
 
@@ -26362,8 +25590,6 @@ next_194:
 	li t4, 10136
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$263
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -26384,7 +25610,7 @@ next_194:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$264 y$87 
+	# DIVresult_$264 y$87  
 
 	# fetch variables
 
@@ -26393,14 +25619,14 @@ next_194:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$264
 	li t4, 10120
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$264
+	# store lv$3 result_$264
 
 	# fetch variables
 
@@ -26408,8 +25634,6 @@ next_194:
 	li t4, 10120
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$264
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -26430,7 +25654,7 @@ next_194:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$265 i$97 
+	# ADDresult_$265 i$97  
 
 	# fetch variables
 
@@ -26446,7 +25670,7 @@ next_194:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$265
+	# store lv$1 result_$265
 
 	# fetch variables
 
@@ -26455,17 +25679,15 @@ next_194:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$265
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_87
-	j whileCond_87
-secondCond_33:
+	# br whileCond_133
+	j whileCond_133
+secondCond_68:
 
 	# load y$86 lv$3
 
@@ -26480,7 +25702,7 @@ secondCond_33:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$260 y$86 
+	# MODresult_$260 y$86  
 
 	# fetch variables
 
@@ -26489,14 +25711,14 @@ secondCond_33:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$260
 	li t4, 10088
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$260  cond_normalize_$77
+	# ICMPcond_normalize_$77 result_$260  
 
 	# fetch variables
 
@@ -26505,16 +25727,16 @@ secondCond_33:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$77
 	li t4, 10080
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$77 ifTrue_106 next_194
+	# condBr cond_normalize_$77 ifTrue_153 next_287
 
 	# fetch variables
 
@@ -26522,9 +25744,9 @@ secondCond_33:
 	li t4, 10080
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_194
-	j ifTrue_106
-ifTrue_107:
+	beqz t1, next_287
+	j ifTrue_153
+ifTrue_154:
 
 	# load x$84 lv$2
 
@@ -26539,7 +25761,7 @@ ifTrue_107:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$84  cond_lt_tmp_$34
+	# ICMPcond_lt_tmp_$34 x$84  
 
 	# fetch variables
 
@@ -26548,14 +25770,14 @@ ifTrue_107:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$34
 	li t4, 10064
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$65 cond_lt_tmp_$34
+	# ZEXTcond_tmp_$65 cond_lt_tmp_$34
 
 	# fetch variables
 
@@ -26563,14 +25785,14 @@ ifTrue_107:
 	li t4, 10064
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$65
 	li t4, 10056
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$65  cond_$65
+	# ICMPcond_$65 cond_tmp_$65  
 
 	# fetch variables
 
@@ -26579,16 +25801,16 @@ ifTrue_107:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$65
 	li t4, 10048
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$65 ifTrue_108 ifFalse_49
+	# condBr cond_$65 ifTrue_155 ifFalse_54
 
 	# fetch variables
 
@@ -26596,9 +25818,9 @@ ifTrue_107:
 	li t4, 10048
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_49
-	j ifTrue_108
-ifFalse_48:
+	beqz t1, ifFalse_54
+	j ifTrue_155
+ifFalse_53:
 
 	# load y$89 lv$3
 
@@ -26613,7 +25835,7 @@ ifFalse_48:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$89  cond_gt_tmp_$18
+	# ICMPcond_gt_tmp_$18 y$89  
 
 	# fetch variables
 
@@ -26622,15 +25844,15 @@ ifFalse_48:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$18
 	li t4, 10032
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$66 cond_gt_tmp_$18
+	# ZEXTcond_tmp_$66 cond_gt_tmp_$18
 
 	# fetch variables
 
@@ -26638,14 +25860,14 @@ ifFalse_48:
 	li t4, 10032
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$66
 	li t4, 10024
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$66  cond_$66
+	# ICMPcond_$66 cond_tmp_$66  
 
 	# fetch variables
 
@@ -26654,16 +25876,16 @@ ifFalse_48:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$66
 	li t4, 10016
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$66 ifTrue_109 ifFalse_50
+	# condBr cond_$66 ifTrue_156 ifFalse_55
 
 	# fetch variables
 
@@ -26671,9 +25893,9 @@ ifFalse_48:
 	li t4, 10016
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_50
-	j ifTrue_109
-next_195:
+	beqz t1, ifFalse_55
+	j ifTrue_156
+next_288:
 
 	# load ans$84 lv
 
@@ -26688,7 +25910,7 @@ next_195:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$39 ans$84
+	# store lv$39 ans$84
 
 	# fetch variables
 
@@ -26697,55 +25919,49 @@ next_195:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$39 ans$84
-
 	# get address of lv$39 points to
 	li t4, 19608
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_78
-	j whileCond_78
-ifTrue_108:
+	# br whileCond_124
+	j whileCond_124
+ifTrue_155:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 65535
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_196
-	j next_196
-ifFalse_49:
+	# br next_289
+	j next_289
+ifFalse_54:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_196
-	j next_196
-next_196:
+	# br next_289
+	j next_289
+next_289:
 
-	# br next_195
-	j next_195
-ifTrue_109:
+	# br next_288
+	j next_288
+ifTrue_156:
 
 	# load x$85 lv$2
 
@@ -26760,7 +25976,7 @@ ifTrue_109:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$85  cond_gt_tmp_$19
+	# ICMPcond_gt_tmp_$19 x$85  
 
 	# fetch variables
 
@@ -26769,15 +25985,15 @@ ifTrue_109:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 32767
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$19
 	li t4, 9992
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$67 cond_gt_tmp_$19
+	# ZEXTcond_tmp_$67 cond_gt_tmp_$19
 
 	# fetch variables
 
@@ -26785,14 +26001,14 @@ ifTrue_109:
 	li t4, 9992
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$67
 	li t4, 9984
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$67  cond_$67
+	# ICMPcond_$67 cond_tmp_$67  
 
 	# fetch variables
 
@@ -26801,16 +26017,16 @@ ifTrue_109:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$67
 	li t4, 9976
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$67 ifTrue_110 ifFalse_51
+	# condBr cond_$67 ifTrue_157 ifFalse_56
 
 	# fetch variables
 
@@ -26818,9 +26034,9 @@ ifTrue_109:
 	li t4, 9976
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_51
-	j ifTrue_110
-ifFalse_50:
+	beqz t1, ifFalse_56
+	j ifTrue_157
+ifFalse_55:
 
 	# load x$89 lv$2
 
@@ -26835,7 +26051,7 @@ ifFalse_50:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv x$89
+	# store lv x$89
 
 	# fetch variables
 
@@ -26844,21 +26060,19 @@ ifFalse_50:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv x$89
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_197
-	j next_197
-next_197:
+	# br next_290
+	j next_290
+next_290:
 
-	# br next_195
-	j next_195
-ifTrue_110:
+	# br next_288
+	j next_288
+ifTrue_157:
 
 	# load x$86 lv$2
 
@@ -26920,7 +26134,7 @@ ifTrue_110:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$266 x$86 SHIFT_TABLE$101
+	# DIVresult_$266 x$86 SHIFT_TABLE$101 
 
 	# fetch variables
 
@@ -26933,14 +26147,14 @@ ifTrue_110:
 	li t4, 9936
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$266
 	li t4, 9928
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$266
+	# store lv$2 result_$266
 
 	# fetch variables
 
@@ -26948,8 +26162,6 @@ ifTrue_110:
 	li t4, 9928
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$266
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -26970,7 +26182,7 @@ ifTrue_110:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$267 x$87 
+	# ADDresult_$267 x$87  
 
 	# fetch variables
 
@@ -26999,7 +26211,7 @@ ifTrue_110:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$268  y$91
+	# SUBresult_$268  y$91 
 
 	# fetch variables
 	li t1, 15
@@ -27015,7 +26227,7 @@ ifTrue_110:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$269 result_$268 
+	# ADDresult_$269 result_$268  
 
 	# fetch variables
 
@@ -27065,7 +26277,7 @@ ifTrue_110:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$270 result_$267 SHIFT_TABLE$103
+	# SUBresult_$270 result_$267 SHIFT_TABLE$103 
 
 	# fetch variables
 
@@ -27085,7 +26297,7 @@ ifTrue_110:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$270
+	# store lv result_$270
 
 	# fetch variables
 
@@ -27094,17 +26306,15 @@ ifTrue_110:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$270
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_198
-	j next_198
-ifFalse_51:
+	# br next_291
+	j next_291
+ifFalse_56:
 
 	# load x$88 lv$2
 
@@ -27166,7 +26376,7 @@ ifFalse_51:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$271 x$88 SHIFT_TABLE$105
+	# DIVresult_$271 x$88 SHIFT_TABLE$105 
 
 	# fetch variables
 
@@ -27179,14 +26389,14 @@ ifFalse_51:
 	li t4, 9832
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$271
 	li t4, 9824
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv result_$271
+	# store lv result_$271
 
 	# fetch variables
 
@@ -27195,21 +26405,19 @@ ifFalse_51:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$271
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_198
-	j next_198
-next_198:
+	# br next_291
+	j next_291
+next_291:
 
-	# br next_197
-	j next_197
-ifTrue_111:
+	# br next_290
+	j next_290
+ifTrue_158:
 
 	# load x$90 lv$2
 
@@ -27224,7 +26432,7 @@ ifTrue_111:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$90  cond_lt_tmp_$35
+	# ICMPcond_lt_tmp_$35 x$90  
 
 	# fetch variables
 
@@ -27233,14 +26441,14 @@ ifTrue_111:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$35
 	li t4, 9808
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$69 cond_lt_tmp_$35
+	# ZEXTcond_tmp_$69 cond_lt_tmp_$35
 
 	# fetch variables
 
@@ -27248,14 +26456,14 @@ ifTrue_111:
 	li t4, 9808
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$69
 	li t4, 9800
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$69  cond_$69
+	# ICMPcond_$69 cond_tmp_$69  
 
 	# fetch variables
 
@@ -27264,16 +26472,16 @@ ifTrue_111:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$69
 	li t4, 9792
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$69 ifTrue_112 ifFalse_53
+	# condBr cond_$69 ifTrue_159 ifFalse_58
 
 	# fetch variables
 
@@ -27281,9 +26489,9 @@ ifTrue_111:
 	li t4, 9792
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_53
-	j ifTrue_112
-ifFalse_52:
+	beqz t1, ifFalse_58
+	j ifTrue_159
+ifFalse_57:
 
 	# load y$94 lv$3
 
@@ -27298,7 +26506,7 @@ ifFalse_52:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$94  cond_gt_tmp_$20
+	# ICMPcond_gt_tmp_$20 y$94  
 
 	# fetch variables
 
@@ -27307,15 +26515,15 @@ ifFalse_52:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$20
 	li t4, 9776
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$70 cond_gt_tmp_$20
+	# ZEXTcond_tmp_$70 cond_gt_tmp_$20
 
 	# fetch variables
 
@@ -27323,14 +26531,14 @@ ifFalse_52:
 	li t4, 9776
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$70
 	li t4, 9768
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$70  cond_$70
+	# ICMPcond_$70 cond_tmp_$70  
 
 	# fetch variables
 
@@ -27339,16 +26547,16 @@ ifFalse_52:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$70
 	li t4, 9760
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$70 ifTrue_113 ifFalse_54
+	# condBr cond_$70 ifTrue_160 ifFalse_59
 
 	# fetch variables
 
@@ -27356,9 +26564,9 @@ ifFalse_52:
 	li t4, 9760
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_54
-	j ifTrue_113
-next_199:
+	beqz t1, ifFalse_59
+	j ifTrue_160
+next_292:
 
 	# load ans$86 lv
 
@@ -27373,7 +26581,7 @@ next_199:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$27 ans$86
+	# store lv$27 ans$86
 
 	# fetch variables
 
@@ -27382,55 +26590,49 @@ next_199:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$27 ans$86
-
 	# get address of lv$27 points to
 	li t4, 19416
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_66
-	j whileCond_66
-ifTrue_112:
+	# br whileCond_112
+	j whileCond_112
+ifTrue_159:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 65535
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_200
-	j next_200
-ifFalse_53:
+	# br next_293
+	j next_293
+ifFalse_58:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_200
-	j next_200
-next_200:
+	# br next_293
+	j next_293
+next_293:
 
-	# br next_199
-	j next_199
-ifTrue_113:
+	# br next_292
+	j next_292
+ifTrue_160:
 
 	# load x$91 lv$2
 
@@ -27445,7 +26647,7 @@ ifTrue_113:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$91  cond_gt_tmp_$21
+	# ICMPcond_gt_tmp_$21 x$91  
 
 	# fetch variables
 
@@ -27454,15 +26656,15 @@ ifTrue_113:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 32767
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$21
 	li t4, 9736
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$71 cond_gt_tmp_$21
+	# ZEXTcond_tmp_$71 cond_gt_tmp_$21
 
 	# fetch variables
 
@@ -27470,14 +26672,14 @@ ifTrue_113:
 	li t4, 9736
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$71
 	li t4, 9728
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$71  cond_$71
+	# ICMPcond_$71 cond_tmp_$71  
 
 	# fetch variables
 
@@ -27486,16 +26688,16 @@ ifTrue_113:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$71
 	li t4, 9720
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$71 ifTrue_114 ifFalse_55
+	# condBr cond_$71 ifTrue_161 ifFalse_60
 
 	# fetch variables
 
@@ -27503,9 +26705,9 @@ ifTrue_113:
 	li t4, 9720
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_55
-	j ifTrue_114
-ifFalse_54:
+	beqz t1, ifFalse_60
+	j ifTrue_161
+ifFalse_59:
 
 	# load x$95 lv$2
 
@@ -27520,7 +26722,7 @@ ifFalse_54:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv x$95
+	# store lv x$95
 
 	# fetch variables
 
@@ -27529,21 +26731,19 @@ ifFalse_54:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv x$95
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_201
-	j next_201
-next_201:
+	# br next_294
+	j next_294
+next_294:
 
-	# br next_199
-	j next_199
-ifTrue_114:
+	# br next_292
+	j next_292
+ifTrue_161:
 
 	# load x$92 lv$2
 
@@ -27605,7 +26805,7 @@ ifTrue_114:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$272 x$92 SHIFT_TABLE$107
+	# DIVresult_$272 x$92 SHIFT_TABLE$107 
 
 	# fetch variables
 
@@ -27618,14 +26818,14 @@ ifTrue_114:
 	li t4, 9680
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$272
 	li t4, 9672
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$272
+	# store lv$2 result_$272
 
 	# fetch variables
 
@@ -27633,8 +26833,6 @@ ifTrue_114:
 	li t4, 9672
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$272
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -27655,7 +26853,7 @@ ifTrue_114:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$273 x$93 
+	# ADDresult_$273 x$93  
 
 	# fetch variables
 
@@ -27684,7 +26882,7 @@ ifTrue_114:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$274  y$96
+	# SUBresult_$274  y$96 
 
 	# fetch variables
 	li t1, 15
@@ -27700,7 +26898,7 @@ ifTrue_114:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$275 result_$274 
+	# ADDresult_$275 result_$274  
 
 	# fetch variables
 
@@ -27750,7 +26948,7 @@ ifTrue_114:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$276 result_$273 SHIFT_TABLE$109
+	# SUBresult_$276 result_$273 SHIFT_TABLE$109 
 
 	# fetch variables
 
@@ -27770,7 +26968,7 @@ ifTrue_114:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$276
+	# store lv result_$276
 
 	# fetch variables
 
@@ -27779,17 +26977,15 @@ ifTrue_114:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$276
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_202
-	j next_202
-ifFalse_55:
+	# br next_295
+	j next_295
+ifFalse_60:
 
 	# load x$94 lv$2
 
@@ -27851,7 +27047,7 @@ ifFalse_55:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$277 x$94 SHIFT_TABLE$111
+	# DIVresult_$277 x$94 SHIFT_TABLE$111 
 
 	# fetch variables
 
@@ -27864,14 +27060,14 @@ ifFalse_55:
 	li t4, 9576
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$277
 	li t4, 9568
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv result_$277
+	# store lv result_$277
 
 	# fetch variables
 
@@ -27880,21 +27076,19 @@ ifFalse_55:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$277
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_202
-	j next_202
-next_202:
+	# br next_295
+	j next_295
+next_295:
 
-	# br next_201
-	j next_201
-whileCond_88:
+	# br next_294
+	j next_294
+whileCond_134:
 
 	# load cur lv$4
 
@@ -27909,7 +27103,7 @@ whileCond_88:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp cur  cond_lt_tmp_$36
+	# ICMPcond_lt_tmp_$36 cur  
 
 	# fetch variables
 
@@ -27918,14 +27112,14 @@ whileCond_88:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$36
 	li t4, 9552
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$72 cond_lt_tmp_$36
+	# ZEXTcond_tmp_$72 cond_lt_tmp_$36
 
 	# fetch variables
 
@@ -27933,14 +27127,14 @@ whileCond_88:
 	li t4, 9552
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$72
 	li t4, 9544
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$72  cond_$72
+	# ICMPcond_$72 cond_tmp_$72  
 
 	# fetch variables
 
@@ -27949,16 +27143,16 @@ whileCond_88:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$72
 	li t4, 9536
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$72 whileBody_88 next_203
+	# condBr cond_$72 whileBody_134 next_296
 
 	# fetch variables
 
@@ -27966,16 +27160,14 @@ whileCond_88:
 	li t4, 9536
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_203
-	j whileBody_88
-whileBody_88:
+	beqz t1, next_296
+	j whileBody_134
+whileBody_134:
 
-	# lv$47 
+	# store lv$47 
 
 	# fetch variables
 	li t1, 2
-
-	# store lv$47 
 
 	# get address of lv$47 points to
 	li t4, 19736
@@ -27996,7 +27188,7 @@ whileBody_88:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$48 cur$1
+	# store lv$48 cur$1
 
 	# fetch variables
 
@@ -28005,20 +27197,16 @@ whileBody_88:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$48 cur$1
-
 	# get address of lv$48 points to
 	li t4, 19752
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$49 
+	# store lv$49 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$49 
 
 	# get address of lv$49 points to
 	li t4, 19768
@@ -28026,16 +27214,14 @@ whileBody_88:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_89
-	j whileCond_89
-next_203:
+	# br whileCond_135
+	j whileCond_135
+next_296:
 
-	# lv$4 
+	# store lv$4 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$4 
 
 	# get address of lv$4 points to
 	li t4, 19048
@@ -28043,9 +27229,9 @@ next_203:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_111
-	j whileCond_111
-whileCond_89:
+	# br whileCond_157
+	j whileCond_157
+whileCond_135:
 
 	# load pr$6 lv$48
 
@@ -28060,7 +27246,7 @@ whileCond_89:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp pr$6  cond_gt_tmp_$22
+	# ICMPcond_gt_tmp_$22 pr$6  
 
 	# fetch variables
 
@@ -28069,15 +27255,15 @@ whileCond_89:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$22
 	li t4, 9512
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$73 cond_gt_tmp_$22
+	# ZEXTcond_tmp_$73 cond_gt_tmp_$22
 
 	# fetch variables
 
@@ -28085,14 +27271,14 @@ whileCond_89:
 	li t4, 9512
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$73
 	li t4, 9504
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$73  cond_$73
+	# ICMPcond_$73 cond_tmp_$73  
 
 	# fetch variables
 
@@ -28101,16 +27287,16 @@ whileCond_89:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$73
 	li t4, 9496
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$73 whileBody_89 next_204
+	# condBr cond_$73 whileBody_135 next_297
 
 	# fetch variables
 
@@ -28118,16 +27304,14 @@ whileCond_89:
 	li t4, 9496
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_204
-	j whileBody_89
-whileBody_89:
+	beqz t1, next_297
+	j whileBody_135
+whileBody_135:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -28135,12 +27319,10 @@ whileBody_89:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -28161,7 +27343,7 @@ whileBody_89:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 pr$7
+	# store lv$2 pr$7
 
 	# fetch variables
 
@@ -28170,20 +27352,16 @@ whileBody_89:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 pr$7
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -28191,9 +27369,9 @@ whileBody_89:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_90
-	j whileCond_90
-next_204:
+	# br whileCond_136
+	j whileCond_136
+next_297:
 
 	# load pres$5 lv$49
 
@@ -28208,7 +27386,7 @@ next_204:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv pres$5
+	# store lv pres$5
 
 	# fetch variables
 
@@ -28216,8 +27394,6 @@ next_204:
 	li t4, 9480
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv pres$5
 
 	# get address of lv points to
 	li t4, 18984
@@ -28297,7 +27473,7 @@ next_204:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$417 cur$2 
+	# ADDresult_$417 cur$2  
 
 	# fetch variables
 
@@ -28313,7 +27489,7 @@ next_204:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$4 result_$417
+	# store lv$4 result_$417
 
 	# fetch variables
 
@@ -28322,17 +27498,15 @@ next_204:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$4 result_$417
-
 	# get address of lv$4 points to
 	li t4, 19048
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_88
-	j whileCond_88
-whileCond_90:
+	# br whileCond_134
+	j whileCond_134
+whileCond_136:
 
 	# load i$98 lv$1
 
@@ -28347,7 +27521,7 @@ whileCond_90:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$98  cond_lt_tmp_$37
+	# ICMPcond_lt_tmp_$37 i$98  
 
 	# fetch variables
 
@@ -28356,14 +27530,14 @@ whileCond_90:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$37
 	li t4, 9440
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$74 cond_lt_tmp_$37
+	# ZEXTcond_tmp_$74 cond_lt_tmp_$37
 
 	# fetch variables
 
@@ -28371,14 +27545,14 @@ whileCond_90:
 	li t4, 9440
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$74
 	li t4, 9432
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$74  cond_$74
+	# ICMPcond_$74 cond_tmp_$74  
 
 	# fetch variables
 
@@ -28387,16 +27561,16 @@ whileCond_90:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$74
 	li t4, 9424
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$74 whileBody_90 next_205
+	# condBr cond_$74 whileBody_136 next_298
 
 	# fetch variables
 
@@ -28404,9 +27578,9 @@ whileCond_90:
 	li t4, 9424
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_205
-	j whileBody_90
-whileBody_90:
+	beqz t1, next_298
+	j whileBody_136
+whileBody_136:
 
 	# load x$96 lv$2
 
@@ -28421,7 +27595,7 @@ whileBody_90:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$278 x$96 
+	# MODresult_$278 x$96  
 
 	# fetch variables
 
@@ -28430,14 +27604,14 @@ whileBody_90:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$278
 	li t4, 9408
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$278  cond_normalize_$78
+	# ICMPcond_normalize_$78 result_$278  
 
 	# fetch variables
 
@@ -28446,16 +27620,16 @@ whileBody_90:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$78
 	li t4, 9400
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$78 secondCond_34 next_206
+	# condBr cond_normalize_$78 secondCond_69 next_299
 
 	# fetch variables
 
@@ -28463,9 +27637,9 @@ whileBody_90:
 	li t4, 9400
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_206
-	j secondCond_34
-next_205:
+	beqz t1, next_299
+	j secondCond_69
+next_298:
 
 	# load ans$89 lv
 
@@ -28480,7 +27654,7 @@ next_205:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp ans$89  cond_normalize_$80
+	# ICMPcond_normalize_$80 ans$89  
 
 	# fetch variables
 
@@ -28489,16 +27663,16 @@ next_205:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$80
 	li t4, 9384
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$80 ifTrue_116 next_207
+	# condBr cond_normalize_$80 ifTrue_163 next_300
 
 	# fetch variables
 
@@ -28506,9 +27680,9 @@ next_205:
 	li t4, 9384
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_207
-	j ifTrue_116
-ifTrue_115:
+	beqz t1, next_300
+	j ifTrue_163
+ifTrue_162:
 
 	# load ans$88 lv
 
@@ -28570,7 +27744,7 @@ ifTrue_115:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$280  SHIFT_TABLE$113
+	# MULresult_$280  SHIFT_TABLE$113 
 
 	# fetch variables
 	li t1, 1
@@ -28586,7 +27760,7 @@ ifTrue_115:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$281 ans$88 result_$280
+	# ADDresult_$281 ans$88 result_$280 
 
 	# fetch variables
 
@@ -28606,7 +27780,7 @@ ifTrue_115:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$281
+	# store lv result_$281
 
 	# fetch variables
 
@@ -28615,17 +27789,15 @@ ifTrue_115:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$281
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_206
-	j next_206
-next_206:
+	# br next_299
+	j next_299
+next_299:
 
 	# load x$97 lv$2
 
@@ -28640,7 +27812,7 @@ next_206:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$282 x$97 
+	# DIVresult_$282 x$97  
 
 	# fetch variables
 
@@ -28649,14 +27821,14 @@ next_206:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$282
 	li t4, 9320
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$282
+	# store lv$2 result_$282
 
 	# fetch variables
 
@@ -28664,8 +27836,6 @@ next_206:
 	li t4, 9320
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$282
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -28686,7 +27856,7 @@ next_206:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$283 y$99 
+	# DIVresult_$283 y$99  
 
 	# fetch variables
 
@@ -28695,14 +27865,14 @@ next_206:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$283
 	li t4, 9304
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$283
+	# store lv$3 result_$283
 
 	# fetch variables
 
@@ -28710,8 +27880,6 @@ next_206:
 	li t4, 9304
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$283
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -28732,7 +27900,7 @@ next_206:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$284 i$100 
+	# ADDresult_$284 i$100  
 
 	# fetch variables
 
@@ -28748,7 +27916,7 @@ next_206:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$284
+	# store lv$1 result_$284
 
 	# fetch variables
 
@@ -28757,17 +27925,15 @@ next_206:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$284
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_90
-	j whileCond_90
-secondCond_34:
+	# br whileCond_136
+	j whileCond_136
+secondCond_69:
 
 	# load y$98 lv$3
 
@@ -28782,7 +27948,7 @@ secondCond_34:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$279 y$98 
+	# MODresult_$279 y$98  
 
 	# fetch variables
 
@@ -28791,14 +27957,14 @@ secondCond_34:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$279
 	li t4, 9272
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$279  cond_normalize_$79
+	# ICMPcond_normalize_$79 result_$279  
 
 	# fetch variables
 
@@ -28807,16 +27973,16 @@ secondCond_34:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$79
 	li t4, 9264
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$79 ifTrue_115 next_206
+	# condBr cond_normalize_$79 ifTrue_162 next_299
 
 	# fetch variables
 
@@ -28824,9 +27990,9 @@ secondCond_34:
 	li t4, 9264
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_206
-	j ifTrue_115
-ifTrue_116:
+	beqz t1, next_299
+	j ifTrue_162
+ifTrue_163:
 
 	# load pres$4 lv$49
 
@@ -28841,7 +28007,7 @@ ifTrue_116:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$50 pres$4
+	# store lv$50 pres$4
 
 	# fetch variables
 
@@ -28849,8 +28015,6 @@ ifTrue_116:
 	li t4, 9256
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$50 pres$4
 
 	# get address of lv$50 points to
 	li t4, 19784
@@ -28871,7 +28035,7 @@ ifTrue_116:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$51 pl$6
+	# store lv$51 pl$6
 
 	# fetch variables
 
@@ -28880,20 +28044,16 @@ ifTrue_116:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$51 pl$6
-
 	# get address of lv$51 points to
 	li t4, 19800
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$52 
+	# store lv$52 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$52 
 
 	# get address of lv$52 points to
 	li t4, 19816
@@ -28901,9 +28061,9 @@ ifTrue_116:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_91
-	j whileCond_91
-next_207:
+	# br whileCond_137
+	j whileCond_137
+next_300:
 
 	# load pl$7 lv$47
 
@@ -28918,7 +28078,7 @@ next_207:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$59 pl$7
+	# store lv$59 pl$7
 
 	# fetch variables
 
@@ -28926,8 +28086,6 @@ next_207:
 	li t4, 9240
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$59 pl$7
 
 	# get address of lv$59 points to
 	li t4, 19928
@@ -28948,7 +28106,7 @@ next_207:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$60 pl$8
+	# store lv$60 pl$8
 
 	# fetch variables
 
@@ -28957,20 +28115,16 @@ next_207:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$60 pl$8
-
 	# get address of lv$60 points to
 	li t4, 19944
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$61 
+	# store lv$61 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$61 
 
 	# get address of lv$61 points to
 	li t4, 19960
@@ -28978,9 +28132,9 @@ next_207:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_101
-	j whileCond_101
-whileCond_91:
+	# br whileCond_147
+	j whileCond_147
+whileCond_137:
 
 	# load mr$12 lv$51
 
@@ -28995,7 +28149,7 @@ whileCond_91:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp mr$12  cond_normalize_$81
+	# ICMPcond_normalize_$81 mr$12  
 
 	# fetch variables
 
@@ -29004,16 +28158,16 @@ whileCond_91:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$81
 	li t4, 9216
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$81 whileBody_91 next_208
+	# condBr cond_normalize_$81 whileBody_137 next_301
 
 	# fetch variables
 
@@ -29021,16 +28175,14 @@ whileCond_91:
 	li t4, 9216
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_208
-	j whileBody_91
-whileBody_91:
+	beqz t1, next_301
+	j whileBody_137
+whileBody_137:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -29038,12 +28190,10 @@ whileBody_91:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -29064,7 +28214,7 @@ whileBody_91:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$13
+	# store lv$2 mr$13
 
 	# fetch variables
 
@@ -29073,20 +28223,16 @@ whileBody_91:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$13
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -29094,9 +28240,9 @@ whileBody_91:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_92
-	j whileCond_92
-next_208:
+	# br whileCond_138
+	j whileCond_138
+next_301:
 
 	# load mres$9 lv$52
 
@@ -29111,7 +28257,7 @@ next_208:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv mres$9
+	# store lv mres$9
 
 	# fetch variables
 
@@ -29119,8 +28265,6 @@ next_208:
 	li t4, 9200
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv mres$9
 
 	# get address of lv points to
 	li t4, 18984
@@ -29141,7 +28285,7 @@ next_208:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$49 ans$109
+	# store lv$49 ans$109
 
 	# fetch variables
 
@@ -29150,17 +28294,15 @@ next_208:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$49 ans$109
-
 	# get address of lv$49 points to
 	li t4, 19768
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_207
-	j next_207
-whileCond_92:
+	# br next_300
+	j next_300
+whileCond_138:
 
 	# load i$101 lv$1
 
@@ -29175,7 +28317,7 @@ whileCond_92:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$101  cond_lt_tmp_$38
+	# ICMPcond_lt_tmp_$38 i$101  
 
 	# fetch variables
 
@@ -29184,14 +28326,14 @@ whileCond_92:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$38
 	li t4, 9176
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$75 cond_lt_tmp_$38
+	# ZEXTcond_tmp_$75 cond_lt_tmp_$38
 
 	# fetch variables
 
@@ -29199,14 +28341,14 @@ whileCond_92:
 	li t4, 9176
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$75
 	li t4, 9168
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$75  cond_$75
+	# ICMPcond_$75 cond_tmp_$75  
 
 	# fetch variables
 
@@ -29215,16 +28357,16 @@ whileCond_92:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$75
 	li t4, 9160
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$75 whileBody_92 next_209
+	# condBr cond_$75 whileBody_138 next_302
 
 	# fetch variables
 
@@ -29232,9 +28374,9 @@ whileCond_92:
 	li t4, 9160
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_209
-	j whileBody_92
-whileBody_92:
+	beqz t1, next_302
+	j whileBody_138
+whileBody_138:
 
 	# load x$98 lv$2
 
@@ -29249,7 +28391,7 @@ whileBody_92:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$285 x$98 
+	# MODresult_$285 x$98  
 
 	# fetch variables
 
@@ -29258,14 +28400,14 @@ whileBody_92:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$285
 	li t4, 9144
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$285  cond_normalize_$82
+	# ICMPcond_normalize_$82 result_$285  
 
 	# fetch variables
 
@@ -29274,16 +28416,16 @@ whileBody_92:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$82
 	li t4, 9136
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$82 secondCond_35 next_210
+	# condBr cond_normalize_$82 secondCond_70 next_303
 
 	# fetch variables
 
@@ -29291,9 +28433,9 @@ whileBody_92:
 	li t4, 9136
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_210
-	j secondCond_35
-next_209:
+	beqz t1, next_303
+	j secondCond_70
+next_302:
 
 	# load ans$91 lv
 
@@ -29308,7 +28450,7 @@ next_209:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp ans$91  cond_normalize_$84
+	# ICMPcond_normalize_$84 ans$91  
 
 	# fetch variables
 
@@ -29317,16 +28459,16 @@ next_209:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$84
 	li t4, 9120
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$84 ifTrue_118 next_211
+	# condBr cond_normalize_$84 ifTrue_165 next_304
 
 	# fetch variables
 
@@ -29334,9 +28476,9 @@ next_209:
 	li t4, 9120
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_211
-	j ifTrue_118
-ifTrue_117:
+	beqz t1, next_304
+	j ifTrue_165
+ifTrue_164:
 
 	# load ans$90 lv
 
@@ -29398,7 +28540,7 @@ ifTrue_117:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$287  SHIFT_TABLE$115
+	# MULresult_$287  SHIFT_TABLE$115 
 
 	# fetch variables
 	li t1, 1
@@ -29414,7 +28556,7 @@ ifTrue_117:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$288 ans$90 result_$287
+	# ADDresult_$288 ans$90 result_$287 
 
 	# fetch variables
 
@@ -29434,7 +28576,7 @@ ifTrue_117:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$288
+	# store lv result_$288
 
 	# fetch variables
 
@@ -29443,17 +28585,15 @@ ifTrue_117:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$288
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_210
-	j next_210
-next_210:
+	# br next_303
+	j next_303
+next_303:
 
 	# load x$99 lv$2
 
@@ -29468,7 +28608,7 @@ next_210:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$289 x$99 
+	# DIVresult_$289 x$99  
 
 	# fetch variables
 
@@ -29477,14 +28617,14 @@ next_210:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$289
 	li t4, 9056
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$289
+	# store lv$2 result_$289
 
 	# fetch variables
 
@@ -29492,8 +28632,6 @@ next_210:
 	li t4, 9056
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$289
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -29514,7 +28652,7 @@ next_210:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$290 y$101 
+	# DIVresult_$290 y$101  
 
 	# fetch variables
 
@@ -29523,14 +28661,14 @@ next_210:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$290
 	li t4, 9040
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$290
+	# store lv$3 result_$290
 
 	# fetch variables
 
@@ -29538,8 +28676,6 @@ next_210:
 	li t4, 9040
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$290
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -29560,7 +28696,7 @@ next_210:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$291 i$103 
+	# ADDresult_$291 i$103  
 
 	# fetch variables
 
@@ -29576,7 +28712,7 @@ next_210:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$291
+	# store lv$1 result_$291
 
 	# fetch variables
 
@@ -29585,17 +28721,15 @@ next_210:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$291
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_92
-	j whileCond_92
-secondCond_35:
+	# br whileCond_138
+	j whileCond_138
+secondCond_70:
 
 	# load y$100 lv$3
 
@@ -29610,7 +28744,7 @@ secondCond_35:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$286 y$100 
+	# MODresult_$286 y$100  
 
 	# fetch variables
 
@@ -29619,14 +28753,14 @@ secondCond_35:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$286
 	li t4, 9008
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$286  cond_normalize_$83
+	# ICMPcond_normalize_$83 result_$286  
 
 	# fetch variables
 
@@ -29635,16 +28769,16 @@ secondCond_35:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$83
 	li t4, 9000
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$83 ifTrue_117 next_210
+	# condBr cond_normalize_$83 ifTrue_164 next_303
 
 	# fetch variables
 
@@ -29652,9 +28786,9 @@ secondCond_35:
 	li t4, 9000
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_210
-	j ifTrue_117
-ifTrue_118:
+	beqz t1, next_303
+	j ifTrue_164
+ifTrue_165:
 
 	# load mres$8 lv$52
 
@@ -29669,7 +28803,7 @@ ifTrue_118:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$53 mres$8
+	# store lv$53 mres$8
 
 	# fetch variables
 
@@ -29677,8 +28811,6 @@ ifTrue_118:
 	li t4, 8992
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$53 mres$8
 
 	# get address of lv$53 points to
 	li t4, 19832
@@ -29699,7 +28831,7 @@ ifTrue_118:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$54 ml$12
+	# store lv$54 ml$12
 
 	# fetch variables
 
@@ -29708,17 +28840,15 @@ ifTrue_118:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$54 ml$12
-
 	# get address of lv$54 points to
 	li t4, 19848
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_93
-	j whileCond_93
-next_211:
+	# br whileCond_139
+	j whileCond_139
+next_304:
 
 	# load ml$13 lv$50
 
@@ -29733,7 +28863,7 @@ next_211:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$56 ml$13
+	# store lv$56 ml$13
 
 	# fetch variables
 
@@ -29741,8 +28871,6 @@ next_211:
 	li t4, 8976
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$56 ml$13
 
 	# get address of lv$56 points to
 	li t4, 19880
@@ -29763,7 +28891,7 @@ next_211:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$57 ml$14
+	# store lv$57 ml$14
 
 	# fetch variables
 
@@ -29772,17 +28900,15 @@ next_211:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$57 ml$14
-
 	# get address of lv$57 points to
 	li t4, 19896
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_97
-	j whileCond_97
-whileCond_93:
+	# br whileCond_143
+	j whileCond_143
+whileCond_139:
 
 	# load c$32 lv$54
 
@@ -29797,7 +28923,7 @@ whileCond_93:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$32  cond_normalize_$85
+	# ICMPcond_normalize_$85 c$32  
 
 	# fetch variables
 
@@ -29806,16 +28932,16 @@ whileCond_93:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$85
 	li t4, 8952
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$85 whileBody_93 next_212
+	# condBr cond_normalize_$85 whileBody_139 next_305
 
 	# fetch variables
 
@@ -29823,16 +28949,14 @@ whileCond_93:
 	li t4, 8952
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_212
-	j whileBody_93
-whileBody_93:
+	beqz t1, next_305
+	j whileBody_139
+whileBody_139:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -29840,12 +28964,10 @@ whileBody_93:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -29866,7 +28988,7 @@ whileBody_93:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$24
+	# store lv$2 al$24
 
 	# fetch variables
 
@@ -29874,8 +28996,6 @@ whileBody_93:
 	li t4, 8944
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$24
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -29896,7 +29016,7 @@ whileBody_93:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$33
+	# store lv$3 c$33
 
 	# fetch variables
 
@@ -29905,17 +29025,15 @@ whileBody_93:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$33
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_94
-	j whileCond_94
-next_212:
+	# br whileCond_140
+	j whileCond_140
+next_305:
 
 	# load al$26 lv$53
 
@@ -29930,7 +29048,7 @@ next_212:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$26
+	# store lv al$26
 
 	# fetch variables
 
@@ -29938,8 +29056,6 @@ next_212:
 	li t4, 8928
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$26
 
 	# get address of lv points to
 	li t4, 18984
@@ -29960,7 +29076,7 @@ next_212:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$52 ans$99
+	# store lv$52 ans$99
 
 	# fetch variables
 
@@ -29969,17 +29085,15 @@ next_212:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$52 ans$99
-
 	# get address of lv$52 points to
 	li t4, 19816
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_211
-	j next_211
-whileCond_94:
+	# br next_304
+	j next_304
+whileCond_140:
 
 	# load i$104 lv$1
 
@@ -29994,7 +29108,7 @@ whileCond_94:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$104  cond_lt_tmp_$39
+	# ICMPcond_lt_tmp_$39 i$104  
 
 	# fetch variables
 
@@ -30003,14 +29117,14 @@ whileCond_94:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$39
 	li t4, 8904
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$76 cond_lt_tmp_$39
+	# ZEXTcond_tmp_$76 cond_lt_tmp_$39
 
 	# fetch variables
 
@@ -30018,14 +29132,14 @@ whileCond_94:
 	li t4, 8904
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$76
 	li t4, 8896
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$76  cond_$76
+	# ICMPcond_$76 cond_tmp_$76  
 
 	# fetch variables
 
@@ -30034,16 +29148,16 @@ whileCond_94:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$76
 	li t4, 8888
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$76 whileBody_94 next_213
+	# condBr cond_$76 whileBody_140 next_306
 
 	# fetch variables
 
@@ -30051,9 +29165,9 @@ whileCond_94:
 	li t4, 8888
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_213
-	j whileBody_94
-whileBody_94:
+	beqz t1, next_306
+	j whileBody_140
+whileBody_140:
 
 	# load x$100 lv$2
 
@@ -30068,7 +29182,7 @@ whileBody_94:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$292 x$100 
+	# MODresult_$292 x$100  
 
 	# fetch variables
 
@@ -30077,14 +29191,14 @@ whileBody_94:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$292
 	li t4, 8872
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$292  cond_normalize_$86
+	# ICMPcond_normalize_$86 result_$292  
 
 	# fetch variables
 
@@ -30093,16 +29207,16 @@ whileBody_94:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$86
 	li t4, 8864
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$86 ifTrue_119 ifFalse_56
+	# condBr cond_normalize_$86 ifTrue_166 ifFalse_61
 
 	# fetch variables
 
@@ -30110,9 +29224,9 @@ whileBody_94:
 	li t4, 8864
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_56
-	j ifTrue_119
-next_213:
+	beqz t1, ifFalse_61
+	j ifTrue_166
+next_306:
 
 	# load ans$94 lv
 
@@ -30127,7 +29241,7 @@ next_213:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$55 ans$94
+	# store lv$55 ans$94
 
 	# fetch variables
 
@@ -30136,20 +29250,16 @@ next_213:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$55 ans$94
-
 	# get address of lv$55 points to
 	li t4, 19864
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -30157,12 +29267,10 @@ next_213:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -30183,7 +29291,7 @@ next_213:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$25
+	# store lv$2 al$25
 
 	# fetch variables
 
@@ -30191,8 +29299,6 @@ next_213:
 	li t4, 8848
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$25
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -30213,7 +29319,7 @@ next_213:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$34
+	# store lv$3 c$34
 
 	# fetch variables
 
@@ -30222,17 +29328,15 @@ next_213:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$34
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_95
-	j whileCond_95
-ifTrue_119:
+	# br whileCond_141
+	j whileCond_141
+ifTrue_166:
 
 	# load y$102 lv$3
 
@@ -30247,7 +29351,7 @@ ifTrue_119:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$293 y$102 
+	# MODresult_$293 y$102  
 
 	# fetch variables
 
@@ -30256,14 +29360,14 @@ ifTrue_119:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$293
-	li t4, 8824
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$293
+	li t4, 8824
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$293  cond_eq_tmp_$8
+	# ICMPcond_eq_tmp_$8 result_$293  
 
 	# fetch variables
 
@@ -30272,15 +29376,15 @@ ifTrue_119:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$8
 	li t4, 8816
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$77 cond_eq_tmp_$8
+	# ZEXTcond_tmp_$77 cond_eq_tmp_$8
 
 	# fetch variables
 
@@ -30288,14 +29392,14 @@ ifTrue_119:
 	li t4, 8816
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$77
 	li t4, 8808
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$77  cond_$77
+	# ICMPcond_$77 cond_tmp_$77  
 
 	# fetch variables
 
@@ -30304,16 +29408,16 @@ ifTrue_119:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$77
 	li t4, 8800
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$77 ifTrue_120 next_215
+	# condBr cond_$77 ifTrue_167 next_308
 
 	# fetch variables
 
@@ -30321,9 +29425,9 @@ ifTrue_119:
 	li t4, 8800
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_215
-	j ifTrue_120
-ifFalse_56:
+	beqz t1, next_308
+	j ifTrue_167
+ifFalse_61:
 
 	# load y$103 lv$3
 
@@ -30338,7 +29442,7 @@ ifFalse_56:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$296 y$103 
+	# MODresult_$296 y$103  
 
 	# fetch variables
 
@@ -30347,14 +29451,14 @@ ifFalse_56:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$296
 	li t4, 8784
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$296  cond_normalize_$87
+	# ICMPcond_normalize_$87 result_$296  
 
 	# fetch variables
 
@@ -30363,16 +29467,16 @@ ifFalse_56:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$87
 	li t4, 8776
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$87 ifTrue_121 next_216
+	# condBr cond_normalize_$87 ifTrue_168 next_309
 
 	# fetch variables
 
@@ -30380,9 +29484,9 @@ ifFalse_56:
 	li t4, 8776
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_216
-	j ifTrue_121
-next_214:
+	beqz t1, next_309
+	j ifTrue_168
+next_307:
 
 	# load x$101 lv$2
 
@@ -30397,7 +29501,7 @@ next_214:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$299 x$101 
+	# DIVresult_$299 x$101  
 
 	# fetch variables
 
@@ -30406,14 +29510,14 @@ next_214:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$299
 	li t4, 8760
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$299
+	# store lv$2 result_$299
 
 	# fetch variables
 
@@ -30421,8 +29525,6 @@ next_214:
 	li t4, 8760
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$299
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -30443,7 +29545,7 @@ next_214:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$300 y$104 
+	# DIVresult_$300 y$104  
 
 	# fetch variables
 
@@ -30452,14 +29554,14 @@ next_214:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$300
 	li t4, 8744
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$300
+	# store lv$3 result_$300
 
 	# fetch variables
 
@@ -30467,8 +29569,6 @@ next_214:
 	li t4, 8744
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$300
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -30489,7 +29589,7 @@ next_214:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$301 i$107 
+	# ADDresult_$301 i$107  
 
 	# fetch variables
 
@@ -30505,7 +29605,7 @@ next_214:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$301
+	# store lv$1 result_$301
 
 	# fetch variables
 
@@ -30514,17 +29614,15 @@ next_214:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$301
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_94
-	j whileCond_94
-ifTrue_120:
+	# br whileCond_140
+	j whileCond_140
+ifTrue_167:
 
 	# load ans$92 lv
 
@@ -30586,7 +29684,7 @@ ifTrue_120:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$294  SHIFT_TABLE$117
+	# MULresult_$294  SHIFT_TABLE$117 
 
 	# fetch variables
 	li t1, 1
@@ -30602,7 +29700,7 @@ ifTrue_120:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$295 ans$92 result_$294
+	# ADDresult_$295 ans$92 result_$294 
 
 	# fetch variables
 
@@ -30622,7 +29720,7 @@ ifTrue_120:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$295
+	# store lv result_$295
 
 	# fetch variables
 
@@ -30631,21 +29729,19 @@ ifTrue_120:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$295
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_215
-	j next_215
-next_215:
+	# br next_308
+	j next_308
+next_308:
 
-	# br next_214
-	j next_214
-ifTrue_121:
+	# br next_307
+	j next_307
+ifTrue_168:
 
 	# load ans$93 lv
 
@@ -30707,7 +29803,7 @@ ifTrue_121:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$297  SHIFT_TABLE$119
+	# MULresult_$297  SHIFT_TABLE$119 
 
 	# fetch variables
 	li t1, 1
@@ -30723,7 +29819,7 @@ ifTrue_121:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$298 ans$93 result_$297
+	# ADDresult_$298 ans$93 result_$297 
 
 	# fetch variables
 
@@ -30743,7 +29839,7 @@ ifTrue_121:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$298
+	# store lv result_$298
 
 	# fetch variables
 
@@ -30752,21 +29848,19 @@ ifTrue_121:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$298
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_216
-	j next_216
-next_216:
+	# br next_309
+	j next_309
+next_309:
 
-	# br next_214
-	j next_214
-whileCond_95:
+	# br next_307
+	j next_307
+whileCond_141:
 
 	# load i$108 lv$1
 
@@ -30781,7 +29875,7 @@ whileCond_95:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$108  cond_lt_tmp_$40
+	# ICMPcond_lt_tmp_$40 i$108  
 
 	# fetch variables
 
@@ -30790,14 +29884,14 @@ whileCond_95:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$40
 	li t4, 8616
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$78 cond_lt_tmp_$40
+	# ZEXTcond_tmp_$78 cond_lt_tmp_$40
 
 	# fetch variables
 
@@ -30805,14 +29899,14 @@ whileCond_95:
 	li t4, 8616
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$78
 	li t4, 8608
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$78  cond_$78
+	# ICMPcond_$78 cond_tmp_$78  
 
 	# fetch variables
 
@@ -30821,16 +29915,16 @@ whileCond_95:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$78
 	li t4, 8600
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$78 whileBody_95 next_217
+	# condBr cond_$78 whileBody_141 next_310
 
 	# fetch variables
 
@@ -30838,9 +29932,9 @@ whileCond_95:
 	li t4, 8600
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_217
-	j whileBody_95
-whileBody_95:
+	beqz t1, next_310
+	j whileBody_141
+whileBody_141:
 
 	# load x$102 lv$2
 
@@ -30855,7 +29949,7 @@ whileBody_95:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$302 x$102 
+	# MODresult_$302 x$102  
 
 	# fetch variables
 
@@ -30864,14 +29958,14 @@ whileBody_95:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$302
 	li t4, 8584
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$302  cond_normalize_$88
+	# ICMPcond_normalize_$88 result_$302  
 
 	# fetch variables
 
@@ -30880,16 +29974,16 @@ whileBody_95:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$88
 	li t4, 8576
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$88 secondCond_36 next_218
+	# condBr cond_normalize_$88 secondCond_71 next_311
 
 	# fetch variables
 
@@ -30897,9 +29991,9 @@ whileBody_95:
 	li t4, 8576
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_218
-	j secondCond_36
-next_217:
+	beqz t1, next_311
+	j secondCond_71
+next_310:
 
 	# load ans$96 lv
 
@@ -30914,7 +30008,7 @@ next_217:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$54 ans$96
+	# store lv$54 ans$96
 
 	# fetch variables
 
@@ -30923,28 +30017,26 @@ next_217:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$54 ans$96
-
 	# get address of lv$54 points to
 	li t4, 19848
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$23
+	# ICMPcond_gt_tmp_$23   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$23
 	li t4, 8560
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$79 cond_gt_tmp_$23
+	# ZEXTcond_tmp_$79 cond_gt_tmp_$23
 
 	# fetch variables
 
@@ -30952,14 +30044,14 @@ next_217:
 	li t4, 8560
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$79
 	li t4, 8552
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$79  cond_$79
+	# ICMPcond_$79 cond_tmp_$79  
 
 	# fetch variables
 
@@ -30968,16 +30060,16 @@ next_217:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$79
 	li t4, 8544
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$79 ifTrue_123 ifFalse_57
+	# condBr cond_$79 ifTrue_170 ifFalse_62
 
 	# fetch variables
 
@@ -30985,9 +30077,9 @@ next_217:
 	li t4, 8544
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_57
-	j ifTrue_123
-ifTrue_122:
+	beqz t1, ifFalse_62
+	j ifTrue_170
+ifTrue_169:
 
 	# load ans$95 lv
 
@@ -31049,7 +30141,7 @@ ifTrue_122:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$304  SHIFT_TABLE$121
+	# MULresult_$304  SHIFT_TABLE$121 
 
 	# fetch variables
 	li t1, 1
@@ -31065,7 +30157,7 @@ ifTrue_122:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$305 ans$95 result_$304
+	# ADDresult_$305 ans$95 result_$304 
 
 	# fetch variables
 
@@ -31085,7 +30177,7 @@ ifTrue_122:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$305
+	# store lv result_$305
 
 	# fetch variables
 
@@ -31094,17 +30186,15 @@ ifTrue_122:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$305
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_218
-	j next_218
-next_218:
+	# br next_311
+	j next_311
+next_311:
 
 	# load x$103 lv$2
 
@@ -31119,7 +30209,7 @@ next_218:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$306 x$103 
+	# DIVresult_$306 x$103  
 
 	# fetch variables
 
@@ -31128,14 +30218,14 @@ next_218:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$306
 	li t4, 8480
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$306
+	# store lv$2 result_$306
 
 	# fetch variables
 
@@ -31143,8 +30233,6 @@ next_218:
 	li t4, 8480
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$306
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -31165,7 +30253,7 @@ next_218:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$307 y$106 
+	# DIVresult_$307 y$106  
 
 	# fetch variables
 
@@ -31174,14 +30262,14 @@ next_218:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$307
 	li t4, 8464
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$307
+	# store lv$3 result_$307
 
 	# fetch variables
 
@@ -31189,8 +30277,6 @@ next_218:
 	li t4, 8464
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$307
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -31211,7 +30297,7 @@ next_218:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$308 i$110 
+	# ADDresult_$308 i$110  
 
 	# fetch variables
 
@@ -31227,7 +30313,7 @@ next_218:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$308
+	# store lv$1 result_$308
 
 	# fetch variables
 
@@ -31236,17 +30322,15 @@ next_218:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$308
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_95
-	j whileCond_95
-secondCond_36:
+	# br whileCond_141
+	j whileCond_141
+secondCond_71:
 
 	# load y$105 lv$3
 
@@ -31261,7 +30345,7 @@ secondCond_36:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$303 y$105 
+	# MODresult_$303 y$105  
 
 	# fetch variables
 
@@ -31270,14 +30354,14 @@ secondCond_36:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$303
 	li t4, 8432
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$303  cond_normalize_$89
+	# ICMPcond_normalize_$89 result_$303  
 
 	# fetch variables
 
@@ -31286,16 +30370,16 @@ secondCond_36:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$89
 	li t4, 8424
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$89 ifTrue_122 next_218
+	# condBr cond_normalize_$89 ifTrue_169 next_311
 
 	# fetch variables
 
@@ -31303,16 +30387,14 @@ secondCond_36:
 	li t4, 8424
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_218
-	j ifTrue_122
-ifTrue_123:
+	beqz t1, next_311
+	j ifTrue_169
+ifTrue_170:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -31320,29 +30402,25 @@ ifTrue_123:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_219
-	j next_219
-ifFalse_57:
+	# br next_312
+	j next_312
+ifFalse_62:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -31363,7 +30441,7 @@ ifFalse_57:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$309 c$35 
+	# MULresult_$309 c$35  
 
 	# fetch variables
 
@@ -31379,7 +30457,7 @@ ifFalse_57:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$309
+	# store lv$2 result_$309
 
 	# fetch variables
 
@@ -31388,20 +30466,16 @@ ifFalse_57:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$309
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -31409,9 +30483,9 @@ ifFalse_57:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_96
-	j whileCond_96
-next_219:
+	# br whileCond_142
+	j whileCond_142
+next_312:
 
 	# load ans$98 lv
 
@@ -31426,7 +30500,7 @@ next_219:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$54 ans$98
+	# store lv$54 ans$98
 
 	# fetch variables
 
@@ -31434,8 +30508,6 @@ next_219:
 	li t4, 8400
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$54 ans$98
 
 	# get address of lv$54 points to
 	li t4, 19848
@@ -31456,7 +30528,7 @@ next_219:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$53 sum$8
+	# store lv$53 sum$8
 
 	# fetch variables
 
@@ -31465,17 +30537,15 @@ next_219:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$53 sum$8
-
 	# get address of lv$53 points to
 	li t4, 19832
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_93
-	j whileCond_93
-whileCond_96:
+	# br whileCond_139
+	j whileCond_139
+whileCond_142:
 
 	# load i$111 lv$1
 
@@ -31490,7 +30560,7 @@ whileCond_96:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$111  cond_lt_tmp_$41
+	# ICMPcond_lt_tmp_$41 i$111  
 
 	# fetch variables
 
@@ -31499,14 +30569,14 @@ whileCond_96:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$41
 	li t4, 8376
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$80 cond_lt_tmp_$41
+	# ZEXTcond_tmp_$80 cond_lt_tmp_$41
 
 	# fetch variables
 
@@ -31514,14 +30584,14 @@ whileCond_96:
 	li t4, 8376
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$80
 	li t4, 8368
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$80  cond_$80
+	# ICMPcond_$80 cond_tmp_$80  
 
 	# fetch variables
 
@@ -31530,16 +30600,16 @@ whileCond_96:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$80
 	li t4, 8360
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$80 whileBody_96 next_220
+	# condBr cond_$80 whileBody_142 next_313
 
 	# fetch variables
 
@@ -31547,9 +30617,9 @@ whileCond_96:
 	li t4, 8360
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_220
-	j whileBody_96
-whileBody_96:
+	beqz t1, next_313
+	j whileBody_142
+whileBody_142:
 
 	# load x$104 lv$2
 
@@ -31564,7 +30634,7 @@ whileBody_96:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$310 x$104 
+	# MODresult_$310 x$104  
 
 	# fetch variables
 
@@ -31573,14 +30643,14 @@ whileBody_96:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$310
 	li t4, 8344
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$310  cond_normalize_$90
+	# ICMPcond_normalize_$90 result_$310  
 
 	# fetch variables
 
@@ -31589,16 +30659,16 @@ whileBody_96:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$90
 	li t4, 8336
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$90 secondCond_37 next_221
+	# condBr cond_normalize_$90 secondCond_72 next_314
 
 	# fetch variables
 
@@ -31606,13 +30676,13 @@ whileBody_96:
 	li t4, 8336
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_221
-	j secondCond_37
-next_220:
+	beqz t1, next_314
+	j secondCond_72
+next_313:
 
-	# br next_219
-	j next_219
-ifTrue_124:
+	# br next_312
+	j next_312
+ifTrue_171:
 
 	# load ans$97 lv
 
@@ -31674,7 +30744,7 @@ ifTrue_124:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$312  SHIFT_TABLE$123
+	# MULresult_$312  SHIFT_TABLE$123 
 
 	# fetch variables
 	li t1, 1
@@ -31690,7 +30760,7 @@ ifTrue_124:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$313 ans$97 result_$312
+	# ADDresult_$313 ans$97 result_$312 
 
 	# fetch variables
 
@@ -31710,7 +30780,7 @@ ifTrue_124:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$313
+	# store lv result_$313
 
 	# fetch variables
 
@@ -31719,17 +30789,15 @@ ifTrue_124:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$313
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_221
-	j next_221
-next_221:
+	# br next_314
+	j next_314
+next_314:
 
 	# load x$105 lv$2
 
@@ -31744,7 +30812,7 @@ next_221:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$314 x$105 
+	# DIVresult_$314 x$105  
 
 	# fetch variables
 
@@ -31753,14 +30821,14 @@ next_221:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$314
 	li t4, 8272
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$314
+	# store lv$2 result_$314
 
 	# fetch variables
 
@@ -31768,8 +30836,6 @@ next_221:
 	li t4, 8272
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$314
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -31790,7 +30856,7 @@ next_221:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$315 y$108 
+	# DIVresult_$315 y$108  
 
 	# fetch variables
 
@@ -31799,14 +30865,14 @@ next_221:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$315
 	li t4, 8256
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$315
+	# store lv$3 result_$315
 
 	# fetch variables
 
@@ -31814,8 +30880,6 @@ next_221:
 	li t4, 8256
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$315
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -31836,7 +30900,7 @@ next_221:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$316 i$113 
+	# ADDresult_$316 i$113  
 
 	# fetch variables
 
@@ -31852,7 +30916,7 @@ next_221:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$316
+	# store lv$1 result_$316
 
 	# fetch variables
 
@@ -31861,17 +30925,15 @@ next_221:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$316
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_96
-	j whileCond_96
-secondCond_37:
+	# br whileCond_142
+	j whileCond_142
+secondCond_72:
 
 	# load y$107 lv$3
 
@@ -31886,7 +30948,7 @@ secondCond_37:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$311 y$107 
+	# MODresult_$311 y$107  
 
 	# fetch variables
 
@@ -31895,14 +30957,14 @@ secondCond_37:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$311
 	li t4, 8224
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$311  cond_normalize_$91
+	# ICMPcond_normalize_$91 result_$311  
 
 	# fetch variables
 
@@ -31911,16 +30973,16 @@ secondCond_37:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$91
 	li t4, 8216
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$91 ifTrue_124 next_221
+	# condBr cond_normalize_$91 ifTrue_171 next_314
 
 	# fetch variables
 
@@ -31928,9 +30990,9 @@ secondCond_37:
 	li t4, 8216
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_221
-	j ifTrue_124
-whileCond_97:
+	beqz t1, next_314
+	j ifTrue_171
+whileCond_143:
 
 	# load c$36 lv$57
 
@@ -31945,7 +31007,7 @@ whileCond_97:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$36  cond_normalize_$92
+	# ICMPcond_normalize_$92 c$36  
 
 	# fetch variables
 
@@ -31954,16 +31016,16 @@ whileCond_97:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$92
 	li t4, 8200
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$92 whileBody_97 next_222
+	# condBr cond_normalize_$92 whileBody_143 next_315
 
 	# fetch variables
 
@@ -31971,16 +31033,14 @@ whileCond_97:
 	li t4, 8200
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_222
-	j whileBody_97
-whileBody_97:
+	beqz t1, next_315
+	j whileBody_143
+whileBody_143:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -31988,12 +31048,10 @@ whileBody_97:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -32014,7 +31072,7 @@ whileBody_97:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$27
+	# store lv$2 al$27
 
 	# fetch variables
 
@@ -32022,8 +31080,6 @@ whileBody_97:
 	li t4, 8192
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$27
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -32044,7 +31100,7 @@ whileBody_97:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$37
+	# store lv$3 c$37
 
 	# fetch variables
 
@@ -32053,17 +31109,15 @@ whileBody_97:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$37
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_98
-	j whileCond_98
-next_222:
+	# br whileCond_144
+	j whileCond_144
+next_315:
 
 	# load al$29 lv$56
 
@@ -32078,7 +31132,7 @@ next_222:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$29
+	# store lv al$29
 
 	# fetch variables
 
@@ -32086,8 +31140,6 @@ next_222:
 	li t4, 8176
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$29
 
 	# get address of lv points to
 	li t4, 18984
@@ -32108,7 +31160,7 @@ next_222:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$50 ans$107
+	# store lv$50 ans$107
 
 	# fetch variables
 
@@ -32116,8 +31168,6 @@ next_222:
 	li t4, 8168
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$50 ans$107
 
 	# get address of lv$50 points to
 	li t4, 19784
@@ -32138,7 +31188,7 @@ next_222:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$14
+	# store lv$2 mr$14
 
 	# fetch variables
 
@@ -32147,20 +31197,16 @@ next_222:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$14
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -32181,7 +31227,7 @@ next_222:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$116  cond_ge_tmp_$6
+	# ICMPcond_ge_tmp_$6 y$116  
 
 	# fetch variables
 
@@ -32190,15 +31236,15 @@ next_222:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 15
+	slt t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_ge_tmp_$6
 	li t4, 8144
 	add t4, sp, t4
-	slt t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$86 cond_ge_tmp_$6
+	# ZEXTcond_tmp_$86 cond_ge_tmp_$6
 
 	# fetch variables
 
@@ -32206,14 +31252,14 @@ next_222:
 	li t4, 8144
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$86
 	li t4, 8136
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$86  cond_$86
+	# ICMPcond_$86 cond_tmp_$86  
 
 	# fetch variables
 
@@ -32222,16 +31268,16 @@ next_222:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$86
 	li t4, 8128
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$86 ifTrue_131 ifFalse_60
+	# condBr cond_$86 ifTrue_178 ifFalse_65
 
 	# fetch variables
 
@@ -32239,9 +31285,9 @@ next_222:
 	li t4, 8128
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_60
-	j ifTrue_131
-whileCond_98:
+	beqz t1, ifFalse_65
+	j ifTrue_178
+whileCond_144:
 
 	# load i$114 lv$1
 
@@ -32256,7 +31302,7 @@ whileCond_98:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$114  cond_lt_tmp_$42
+	# ICMPcond_lt_tmp_$42 i$114  
 
 	# fetch variables
 
@@ -32265,14 +31311,14 @@ whileCond_98:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$42
 	li t4, 8112
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$81 cond_lt_tmp_$42
+	# ZEXTcond_tmp_$81 cond_lt_tmp_$42
 
 	# fetch variables
 
@@ -32280,14 +31326,14 @@ whileCond_98:
 	li t4, 8112
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$81
 	li t4, 8104
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$81  cond_$81
+	# ICMPcond_$81 cond_tmp_$81  
 
 	# fetch variables
 
@@ -32296,16 +31342,16 @@ whileCond_98:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$81
 	li t4, 8096
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$81 whileBody_98 next_223
+	# condBr cond_$81 whileBody_144 next_316
 
 	# fetch variables
 
@@ -32313,9 +31359,9 @@ whileCond_98:
 	li t4, 8096
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_223
-	j whileBody_98
-whileBody_98:
+	beqz t1, next_316
+	j whileBody_144
+whileBody_144:
 
 	# load x$106 lv$2
 
@@ -32330,7 +31376,7 @@ whileBody_98:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$317 x$106 
+	# MODresult_$317 x$106  
 
 	# fetch variables
 
@@ -32339,14 +31385,14 @@ whileBody_98:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$317
 	li t4, 8080
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$317  cond_normalize_$93
+	# ICMPcond_normalize_$93 result_$317  
 
 	# fetch variables
 
@@ -32355,16 +31401,16 @@ whileBody_98:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$93
 	li t4, 8072
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$93 ifTrue_125 ifFalse_58
+	# condBr cond_normalize_$93 ifTrue_172 ifFalse_63
 
 	# fetch variables
 
@@ -32372,9 +31418,9 @@ whileBody_98:
 	li t4, 8072
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_58
-	j ifTrue_125
-next_223:
+	beqz t1, ifFalse_63
+	j ifTrue_172
+next_316:
 
 	# load ans$102 lv
 
@@ -32389,7 +31435,7 @@ next_223:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$58 ans$102
+	# store lv$58 ans$102
 
 	# fetch variables
 
@@ -32398,20 +31444,16 @@ next_223:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$58 ans$102
-
 	# get address of lv$58 points to
 	li t4, 19912
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -32419,12 +31461,10 @@ next_223:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -32445,7 +31485,7 @@ next_223:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$28
+	# store lv$2 al$28
 
 	# fetch variables
 
@@ -32453,8 +31493,6 @@ next_223:
 	li t4, 8056
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$28
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -32475,7 +31513,7 @@ next_223:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$38
+	# store lv$3 c$38
 
 	# fetch variables
 
@@ -32484,17 +31522,15 @@ next_223:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$38
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_99
-	j whileCond_99
-ifTrue_125:
+	# br whileCond_145
+	j whileCond_145
+ifTrue_172:
 
 	# load y$109 lv$3
 
@@ -32509,7 +31545,7 @@ ifTrue_125:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$318 y$109 
+	# MODresult_$318 y$109  
 
 	# fetch variables
 
@@ -32518,14 +31554,14 @@ ifTrue_125:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$318
-	li t4, 8032
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$318
+	li t4, 8032
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$318  cond_eq_tmp_$9
+	# ICMPcond_eq_tmp_$9 result_$318  
 
 	# fetch variables
 
@@ -32534,15 +31570,15 @@ ifTrue_125:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$9
 	li t4, 8024
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$82 cond_eq_tmp_$9
+	# ZEXTcond_tmp_$82 cond_eq_tmp_$9
 
 	# fetch variables
 
@@ -32550,14 +31586,14 @@ ifTrue_125:
 	li t4, 8024
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$82
 	li t4, 8016
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$82  cond_$82
+	# ICMPcond_$82 cond_tmp_$82  
 
 	# fetch variables
 
@@ -32566,16 +31602,16 @@ ifTrue_125:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$82
 	li t4, 8008
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$82 ifTrue_126 next_225
+	# condBr cond_$82 ifTrue_173 next_318
 
 	# fetch variables
 
@@ -32583,9 +31619,9 @@ ifTrue_125:
 	li t4, 8008
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_225
-	j ifTrue_126
-ifFalse_58:
+	beqz t1, next_318
+	j ifTrue_173
+ifFalse_63:
 
 	# load y$110 lv$3
 
@@ -32600,7 +31636,7 @@ ifFalse_58:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$321 y$110 
+	# MODresult_$321 y$110  
 
 	# fetch variables
 
@@ -32609,14 +31645,14 @@ ifFalse_58:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$321
 	li t4, 7992
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$321  cond_normalize_$94
+	# ICMPcond_normalize_$94 result_$321  
 
 	# fetch variables
 
@@ -32625,16 +31661,16 @@ ifFalse_58:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$94
 	li t4, 7984
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$94 ifTrue_127 next_226
+	# condBr cond_normalize_$94 ifTrue_174 next_319
 
 	# fetch variables
 
@@ -32642,9 +31678,9 @@ ifFalse_58:
 	li t4, 7984
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_226
-	j ifTrue_127
-next_224:
+	beqz t1, next_319
+	j ifTrue_174
+next_317:
 
 	# load x$107 lv$2
 
@@ -32659,7 +31695,7 @@ next_224:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$324 x$107 
+	# DIVresult_$324 x$107  
 
 	# fetch variables
 
@@ -32668,14 +31704,14 @@ next_224:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$324
 	li t4, 7968
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$324
+	# store lv$2 result_$324
 
 	# fetch variables
 
@@ -32683,8 +31719,6 @@ next_224:
 	li t4, 7968
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$324
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -32705,7 +31739,7 @@ next_224:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$325 y$111 
+	# DIVresult_$325 y$111  
 
 	# fetch variables
 
@@ -32714,14 +31748,14 @@ next_224:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$325
 	li t4, 7952
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$325
+	# store lv$3 result_$325
 
 	# fetch variables
 
@@ -32729,8 +31763,6 @@ next_224:
 	li t4, 7952
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$325
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -32751,7 +31783,7 @@ next_224:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$326 i$117 
+	# ADDresult_$326 i$117  
 
 	# fetch variables
 
@@ -32767,7 +31799,7 @@ next_224:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$326
+	# store lv$1 result_$326
 
 	# fetch variables
 
@@ -32776,17 +31808,15 @@ next_224:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$326
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_98
-	j whileCond_98
-ifTrue_126:
+	# br whileCond_144
+	j whileCond_144
+ifTrue_173:
 
 	# load ans$100 lv
 
@@ -32848,7 +31878,7 @@ ifTrue_126:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$319  SHIFT_TABLE$125
+	# MULresult_$319  SHIFT_TABLE$125 
 
 	# fetch variables
 	li t1, 1
@@ -32864,7 +31894,7 @@ ifTrue_126:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$320 ans$100 result_$319
+	# ADDresult_$320 ans$100 result_$319 
 
 	# fetch variables
 
@@ -32884,7 +31914,7 @@ ifTrue_126:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$320
+	# store lv result_$320
 
 	# fetch variables
 
@@ -32893,21 +31923,19 @@ ifTrue_126:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$320
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_225
-	j next_225
-next_225:
+	# br next_318
+	j next_318
+next_318:
 
-	# br next_224
-	j next_224
-ifTrue_127:
+	# br next_317
+	j next_317
+ifTrue_174:
 
 	# load ans$101 lv
 
@@ -32969,7 +31997,7 @@ ifTrue_127:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$322  SHIFT_TABLE$127
+	# MULresult_$322  SHIFT_TABLE$127 
 
 	# fetch variables
 	li t1, 1
@@ -32985,7 +32013,7 @@ ifTrue_127:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$323 ans$101 result_$322
+	# ADDresult_$323 ans$101 result_$322 
 
 	# fetch variables
 
@@ -33005,7 +32033,7 @@ ifTrue_127:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$323
+	# store lv result_$323
 
 	# fetch variables
 
@@ -33014,21 +32042,19 @@ ifTrue_127:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$323
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_226
-	j next_226
-next_226:
+	# br next_319
+	j next_319
+next_319:
 
-	# br next_224
-	j next_224
-whileCond_99:
+	# br next_317
+	j next_317
+whileCond_145:
 
 	# load i$118 lv$1
 
@@ -33043,7 +32069,7 @@ whileCond_99:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$118  cond_lt_tmp_$43
+	# ICMPcond_lt_tmp_$43 i$118  
 
 	# fetch variables
 
@@ -33052,14 +32078,14 @@ whileCond_99:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$43
 	li t4, 7824
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$83 cond_lt_tmp_$43
+	# ZEXTcond_tmp_$83 cond_lt_tmp_$43
 
 	# fetch variables
 
@@ -33067,14 +32093,14 @@ whileCond_99:
 	li t4, 7824
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$83
 	li t4, 7816
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$83  cond_$83
+	# ICMPcond_$83 cond_tmp_$83  
 
 	# fetch variables
 
@@ -33083,16 +32109,16 @@ whileCond_99:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$83
 	li t4, 7808
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$83 whileBody_99 next_227
+	# condBr cond_$83 whileBody_145 next_320
 
 	# fetch variables
 
@@ -33100,9 +32126,9 @@ whileCond_99:
 	li t4, 7808
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_227
-	j whileBody_99
-whileBody_99:
+	beqz t1, next_320
+	j whileBody_145
+whileBody_145:
 
 	# load x$108 lv$2
 
@@ -33117,7 +32143,7 @@ whileBody_99:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$327 x$108 
+	# MODresult_$327 x$108  
 
 	# fetch variables
 
@@ -33126,14 +32152,14 @@ whileBody_99:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$327
 	li t4, 7792
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$327  cond_normalize_$95
+	# ICMPcond_normalize_$95 result_$327  
 
 	# fetch variables
 
@@ -33142,16 +32168,16 @@ whileBody_99:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$95
 	li t4, 7784
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$95 secondCond_38 next_228
+	# condBr cond_normalize_$95 secondCond_73 next_321
 
 	# fetch variables
 
@@ -33159,9 +32185,9 @@ whileBody_99:
 	li t4, 7784
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_228
-	j secondCond_38
-next_227:
+	beqz t1, next_321
+	j secondCond_73
+next_320:
 
 	# load ans$104 lv
 
@@ -33176,7 +32202,7 @@ next_227:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$57 ans$104
+	# store lv$57 ans$104
 
 	# fetch variables
 
@@ -33185,28 +32211,26 @@ next_227:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$57 ans$104
-
 	# get address of lv$57 points to
 	li t4, 19896
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$24
+	# ICMPcond_gt_tmp_$24   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$24
 	li t4, 7768
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$84 cond_gt_tmp_$24
+	# ZEXTcond_tmp_$84 cond_gt_tmp_$24
 
 	# fetch variables
 
@@ -33214,14 +32238,14 @@ next_227:
 	li t4, 7768
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$84
 	li t4, 7760
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$84  cond_$84
+	# ICMPcond_$84 cond_tmp_$84  
 
 	# fetch variables
 
@@ -33230,16 +32254,16 @@ next_227:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$84
 	li t4, 7752
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$84 ifTrue_129 ifFalse_59
+	# condBr cond_$84 ifTrue_176 ifFalse_64
 
 	# fetch variables
 
@@ -33247,9 +32271,9 @@ next_227:
 	li t4, 7752
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_59
-	j ifTrue_129
-ifTrue_128:
+	beqz t1, ifFalse_64
+	j ifTrue_176
+ifTrue_175:
 
 	# load ans$103 lv
 
@@ -33311,7 +32335,7 @@ ifTrue_128:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$329  SHIFT_TABLE$129
+	# MULresult_$329  SHIFT_TABLE$129 
 
 	# fetch variables
 	li t1, 1
@@ -33327,7 +32351,7 @@ ifTrue_128:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$330 ans$103 result_$329
+	# ADDresult_$330 ans$103 result_$329 
 
 	# fetch variables
 
@@ -33347,7 +32371,7 @@ ifTrue_128:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$330
+	# store lv result_$330
 
 	# fetch variables
 
@@ -33356,17 +32380,15 @@ ifTrue_128:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$330
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_228
-	j next_228
-next_228:
+	# br next_321
+	j next_321
+next_321:
 
 	# load x$109 lv$2
 
@@ -33381,7 +32403,7 @@ next_228:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$331 x$109 
+	# DIVresult_$331 x$109  
 
 	# fetch variables
 
@@ -33390,14 +32412,14 @@ next_228:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$331
 	li t4, 7688
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$331
+	# store lv$2 result_$331
 
 	# fetch variables
 
@@ -33405,8 +32427,6 @@ next_228:
 	li t4, 7688
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$331
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -33427,7 +32447,7 @@ next_228:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$332 y$113 
+	# DIVresult_$332 y$113  
 
 	# fetch variables
 
@@ -33436,14 +32456,14 @@ next_228:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$332
 	li t4, 7672
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$332
+	# store lv$3 result_$332
 
 	# fetch variables
 
@@ -33451,8 +32471,6 @@ next_228:
 	li t4, 7672
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$332
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -33473,7 +32491,7 @@ next_228:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$333 i$120 
+	# ADDresult_$333 i$120  
 
 	# fetch variables
 
@@ -33489,7 +32507,7 @@ next_228:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$333
+	# store lv$1 result_$333
 
 	# fetch variables
 
@@ -33498,17 +32516,15 @@ next_228:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$333
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_99
-	j whileCond_99
-secondCond_38:
+	# br whileCond_145
+	j whileCond_145
+secondCond_73:
 
 	# load y$112 lv$3
 
@@ -33523,7 +32539,7 @@ secondCond_38:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$328 y$112 
+	# MODresult_$328 y$112  
 
 	# fetch variables
 
@@ -33532,14 +32548,14 @@ secondCond_38:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$328
 	li t4, 7640
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$328  cond_normalize_$96
+	# ICMPcond_normalize_$96 result_$328  
 
 	# fetch variables
 
@@ -33548,16 +32564,16 @@ secondCond_38:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$96
 	li t4, 7632
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$96 ifTrue_128 next_228
+	# condBr cond_normalize_$96 ifTrue_175 next_321
 
 	# fetch variables
 
@@ -33565,16 +32581,14 @@ secondCond_38:
 	li t4, 7632
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_228
-	j ifTrue_128
-ifTrue_129:
+	beqz t1, next_321
+	j ifTrue_175
+ifTrue_176:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -33582,29 +32596,25 @@ ifTrue_129:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_229
-	j next_229
-ifFalse_59:
+	# br next_322
+	j next_322
+ifFalse_64:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -33625,7 +32635,7 @@ ifFalse_59:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$334 c$39 
+	# MULresult_$334 c$39  
 
 	# fetch variables
 
@@ -33641,7 +32651,7 @@ ifFalse_59:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$334
+	# store lv$2 result_$334
 
 	# fetch variables
 
@@ -33650,20 +32660,16 @@ ifFalse_59:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$334
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -33671,9 +32677,9 @@ ifFalse_59:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_100
-	j whileCond_100
-next_229:
+	# br whileCond_146
+	j whileCond_146
+next_322:
 
 	# load ans$106 lv
 
@@ -33688,7 +32694,7 @@ next_229:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$57 ans$106
+	# store lv$57 ans$106
 
 	# fetch variables
 
@@ -33696,8 +32702,6 @@ next_229:
 	li t4, 7608
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$57 ans$106
 
 	# get address of lv$57 points to
 	li t4, 19896
@@ -33718,7 +32722,7 @@ next_229:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$56 sum$9
+	# store lv$56 sum$9
 
 	# fetch variables
 
@@ -33727,17 +32731,15 @@ next_229:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$56 sum$9
-
 	# get address of lv$56 points to
 	li t4, 19880
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_97
-	j whileCond_97
-whileCond_100:
+	# br whileCond_143
+	j whileCond_143
+whileCond_146:
 
 	# load i$121 lv$1
 
@@ -33752,7 +32754,7 @@ whileCond_100:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$121  cond_lt_tmp_$44
+	# ICMPcond_lt_tmp_$44 i$121  
 
 	# fetch variables
 
@@ -33761,14 +32763,14 @@ whileCond_100:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$44
 	li t4, 7584
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$85 cond_lt_tmp_$44
+	# ZEXTcond_tmp_$85 cond_lt_tmp_$44
 
 	# fetch variables
 
@@ -33776,14 +32778,14 @@ whileCond_100:
 	li t4, 7584
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$85
 	li t4, 7576
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$85  cond_$85
+	# ICMPcond_$85 cond_tmp_$85  
 
 	# fetch variables
 
@@ -33792,16 +32794,16 @@ whileCond_100:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$85
 	li t4, 7568
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$85 whileBody_100 next_230
+	# condBr cond_$85 whileBody_146 next_323
 
 	# fetch variables
 
@@ -33809,9 +32811,9 @@ whileCond_100:
 	li t4, 7568
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_230
-	j whileBody_100
-whileBody_100:
+	beqz t1, next_323
+	j whileBody_146
+whileBody_146:
 
 	# load x$110 lv$2
 
@@ -33826,7 +32828,7 @@ whileBody_100:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$335 x$110 
+	# MODresult_$335 x$110  
 
 	# fetch variables
 
@@ -33835,14 +32837,14 @@ whileBody_100:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$335
 	li t4, 7552
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$335  cond_normalize_$97
+	# ICMPcond_normalize_$97 result_$335  
 
 	# fetch variables
 
@@ -33851,16 +32853,16 @@ whileBody_100:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$97
 	li t4, 7544
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$97 secondCond_39 next_231
+	# condBr cond_normalize_$97 secondCond_74 next_324
 
 	# fetch variables
 
@@ -33868,13 +32870,13 @@ whileBody_100:
 	li t4, 7544
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_231
-	j secondCond_39
-next_230:
+	beqz t1, next_324
+	j secondCond_74
+next_323:
 
-	# br next_229
-	j next_229
-ifTrue_130:
+	# br next_322
+	j next_322
+ifTrue_177:
 
 	# load ans$105 lv
 
@@ -33936,7 +32938,7 @@ ifTrue_130:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$337  SHIFT_TABLE$131
+	# MULresult_$337  SHIFT_TABLE$131 
 
 	# fetch variables
 	li t1, 1
@@ -33952,7 +32954,7 @@ ifTrue_130:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$338 ans$105 result_$337
+	# ADDresult_$338 ans$105 result_$337 
 
 	# fetch variables
 
@@ -33972,7 +32974,7 @@ ifTrue_130:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$338
+	# store lv result_$338
 
 	# fetch variables
 
@@ -33981,17 +32983,15 @@ ifTrue_130:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$338
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_231
-	j next_231
-next_231:
+	# br next_324
+	j next_324
+next_324:
 
 	# load x$111 lv$2
 
@@ -34006,7 +33006,7 @@ next_231:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$339 x$111 
+	# DIVresult_$339 x$111  
 
 	# fetch variables
 
@@ -34015,14 +33015,14 @@ next_231:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$339
 	li t4, 7480
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$339
+	# store lv$2 result_$339
 
 	# fetch variables
 
@@ -34030,8 +33030,6 @@ next_231:
 	li t4, 7480
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$339
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -34052,7 +33050,7 @@ next_231:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$340 y$115 
+	# DIVresult_$340 y$115  
 
 	# fetch variables
 
@@ -34061,14 +33059,14 @@ next_231:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$340
 	li t4, 7464
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$340
+	# store lv$3 result_$340
 
 	# fetch variables
 
@@ -34076,8 +33074,6 @@ next_231:
 	li t4, 7464
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$340
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -34098,7 +33094,7 @@ next_231:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$341 i$123 
+	# ADDresult_$341 i$123  
 
 	# fetch variables
 
@@ -34114,7 +33110,7 @@ next_231:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$341
+	# store lv$1 result_$341
 
 	# fetch variables
 
@@ -34123,17 +33119,15 @@ next_231:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$341
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_100
-	j whileCond_100
-secondCond_39:
+	# br whileCond_146
+	j whileCond_146
+secondCond_74:
 
 	# load y$114 lv$3
 
@@ -34148,7 +33142,7 @@ secondCond_39:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$336 y$114 
+	# MODresult_$336 y$114  
 
 	# fetch variables
 
@@ -34157,14 +33151,14 @@ secondCond_39:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$336
 	li t4, 7432
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$336  cond_normalize_$98
+	# ICMPcond_normalize_$98 result_$336  
 
 	# fetch variables
 
@@ -34173,16 +33167,16 @@ secondCond_39:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$98
 	li t4, 7424
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$98 ifTrue_130 next_231
+	# condBr cond_normalize_$98 ifTrue_177 next_324
 
 	# fetch variables
 
@@ -34190,9 +33184,9 @@ secondCond_39:
 	li t4, 7424
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_231
-	j ifTrue_130
-ifTrue_131:
+	beqz t1, next_324
+	j ifTrue_177
+ifTrue_178:
 
 	# load x$112 lv$2
 
@@ -34207,7 +33201,7 @@ ifTrue_131:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$112  cond_lt_tmp_$45
+	# ICMPcond_lt_tmp_$45 x$112  
 
 	# fetch variables
 
@@ -34216,14 +33210,14 @@ ifTrue_131:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$45
 	li t4, 7408
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$87 cond_lt_tmp_$45
+	# ZEXTcond_tmp_$87 cond_lt_tmp_$45
 
 	# fetch variables
 
@@ -34231,14 +33225,14 @@ ifTrue_131:
 	li t4, 7408
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$87
 	li t4, 7400
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$87  cond_$87
+	# ICMPcond_$87 cond_tmp_$87  
 
 	# fetch variables
 
@@ -34247,16 +33241,16 @@ ifTrue_131:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$87
 	li t4, 7392
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$87 ifTrue_132 ifFalse_61
+	# condBr cond_$87 ifTrue_179 ifFalse_66
 
 	# fetch variables
 
@@ -34264,9 +33258,9 @@ ifTrue_131:
 	li t4, 7392
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_61
-	j ifTrue_132
-ifFalse_60:
+	beqz t1, ifFalse_66
+	j ifTrue_179
+ifFalse_65:
 
 	# load y$117 lv$3
 
@@ -34281,7 +33275,7 @@ ifFalse_60:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$117  cond_gt_tmp_$25
+	# ICMPcond_gt_tmp_$25 y$117  
 
 	# fetch variables
 
@@ -34290,15 +33284,15 @@ ifFalse_60:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$25
 	li t4, 7376
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$88 cond_gt_tmp_$25
+	# ZEXTcond_tmp_$88 cond_gt_tmp_$25
 
 	# fetch variables
 
@@ -34306,14 +33300,14 @@ ifFalse_60:
 	li t4, 7376
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$88
 	li t4, 7368
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$88  cond_$88
+	# ICMPcond_$88 cond_tmp_$88  
 
 	# fetch variables
 
@@ -34322,16 +33316,16 @@ ifFalse_60:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$88
 	li t4, 7360
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$88 ifTrue_133 ifFalse_62
+	# condBr cond_$88 ifTrue_180 ifFalse_67
 
 	# fetch variables
 
@@ -34339,9 +33333,9 @@ ifFalse_60:
 	li t4, 7360
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_62
-	j ifTrue_133
-next_232:
+	beqz t1, ifFalse_67
+	j ifTrue_180
+next_325:
 
 	# load ans$108 lv
 
@@ -34356,7 +33350,7 @@ next_232:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$51 ans$108
+	# store lv$51 ans$108
 
 	# fetch variables
 
@@ -34365,55 +33359,49 @@ next_232:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$51 ans$108
-
 	# get address of lv$51 points to
 	li t4, 19800
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_91
-	j whileCond_91
-ifTrue_132:
+	# br whileCond_137
+	j whileCond_137
+ifTrue_179:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 65535
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_233
-	j next_233
-ifFalse_61:
+	# br next_326
+	j next_326
+ifFalse_66:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_233
-	j next_233
-next_233:
+	# br next_326
+	j next_326
+next_326:
 
-	# br next_232
-	j next_232
-ifTrue_133:
+	# br next_325
+	j next_325
+ifTrue_180:
 
 	# load x$113 lv$2
 
@@ -34428,7 +33416,7 @@ ifTrue_133:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$113  cond_gt_tmp_$26
+	# ICMPcond_gt_tmp_$26 x$113  
 
 	# fetch variables
 
@@ -34437,15 +33425,15 @@ ifTrue_133:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 32767
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$26
 	li t4, 7336
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$89 cond_gt_tmp_$26
+	# ZEXTcond_tmp_$89 cond_gt_tmp_$26
 
 	# fetch variables
 
@@ -34453,14 +33441,14 @@ ifTrue_133:
 	li t4, 7336
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$89
 	li t4, 7328
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$89  cond_$89
+	# ICMPcond_$89 cond_tmp_$89  
 
 	# fetch variables
 
@@ -34469,16 +33457,16 @@ ifTrue_133:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$89
 	li t4, 7320
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$89 ifTrue_134 ifFalse_63
+	# condBr cond_$89 ifTrue_181 ifFalse_68
 
 	# fetch variables
 
@@ -34486,9 +33474,9 @@ ifTrue_133:
 	li t4, 7320
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_63
-	j ifTrue_134
-ifFalse_62:
+	beqz t1, ifFalse_68
+	j ifTrue_181
+ifFalse_67:
 
 	# load x$117 lv$2
 
@@ -34503,7 +33491,7 @@ ifFalse_62:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv x$117
+	# store lv x$117
 
 	# fetch variables
 
@@ -34512,21 +33500,19 @@ ifFalse_62:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv x$117
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_234
-	j next_234
-next_234:
+	# br next_327
+	j next_327
+next_327:
 
-	# br next_232
-	j next_232
-ifTrue_134:
+	# br next_325
+	j next_325
+ifTrue_181:
 
 	# load x$114 lv$2
 
@@ -34588,7 +33574,7 @@ ifTrue_134:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$342 x$114 SHIFT_TABLE$133
+	# DIVresult_$342 x$114 SHIFT_TABLE$133 
 
 	# fetch variables
 
@@ -34601,14 +33587,14 @@ ifTrue_134:
 	li t4, 7280
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$342
 	li t4, 7272
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$342
+	# store lv$2 result_$342
 
 	# fetch variables
 
@@ -34616,8 +33602,6 @@ ifTrue_134:
 	li t4, 7272
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$342
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -34638,7 +33622,7 @@ ifTrue_134:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$343 x$115 
+	# ADDresult_$343 x$115  
 
 	# fetch variables
 
@@ -34667,7 +33651,7 @@ ifTrue_134:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$344  y$119
+	# SUBresult_$344  y$119 
 
 	# fetch variables
 	li t1, 15
@@ -34683,7 +33667,7 @@ ifTrue_134:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$345 result_$344 
+	# ADDresult_$345 result_$344  
 
 	# fetch variables
 
@@ -34733,7 +33717,7 @@ ifTrue_134:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$346 result_$343 SHIFT_TABLE$135
+	# SUBresult_$346 result_$343 SHIFT_TABLE$135 
 
 	# fetch variables
 
@@ -34753,7 +33737,7 @@ ifTrue_134:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$346
+	# store lv result_$346
 
 	# fetch variables
 
@@ -34762,17 +33746,15 @@ ifTrue_134:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$346
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_235
-	j next_235
-ifFalse_63:
+	# br next_328
+	j next_328
+ifFalse_68:
 
 	# load x$116 lv$2
 
@@ -34834,7 +33816,7 @@ ifFalse_63:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$347 x$116 SHIFT_TABLE$137
+	# DIVresult_$347 x$116 SHIFT_TABLE$137 
 
 	# fetch variables
 
@@ -34847,14 +33829,14 @@ ifFalse_63:
 	li t4, 7176
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$347
 	li t4, 7168
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv result_$347
+	# store lv result_$347
 
 	# fetch variables
 
@@ -34863,21 +33845,19 @@ ifFalse_63:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$347
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_235
-	j next_235
-next_235:
+	# br next_328
+	j next_328
+next_328:
 
-	# br next_234
-	j next_234
-whileCond_101:
+	# br next_327
+	j next_327
+whileCond_147:
 
 	# load mr$15 lv$60
 
@@ -34892,7 +33872,7 @@ whileCond_101:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp mr$15  cond_normalize_$99
+	# ICMPcond_normalize_$99 mr$15  
 
 	# fetch variables
 
@@ -34901,16 +33881,16 @@ whileCond_101:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$99
 	li t4, 7152
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$99 whileBody_101 next_236
+	# condBr cond_normalize_$99 whileBody_147 next_329
 
 	# fetch variables
 
@@ -34918,16 +33898,14 @@ whileCond_101:
 	li t4, 7152
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_236
-	j whileBody_101
-whileBody_101:
+	beqz t1, next_329
+	j whileBody_147
+whileBody_147:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -34935,12 +33913,10 @@ whileBody_101:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -34961,7 +33937,7 @@ whileBody_101:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$16
+	# store lv$2 mr$16
 
 	# fetch variables
 
@@ -34970,20 +33946,16 @@ whileBody_101:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$16
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -34991,9 +33963,9 @@ whileBody_101:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_102
-	j whileCond_102
-next_236:
+	# br whileCond_148
+	j whileCond_148
+next_329:
 
 	# load mres$11 lv$61
 
@@ -35008,7 +33980,7 @@ next_236:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv mres$11
+	# store lv mres$11
 
 	# fetch variables
 
@@ -35016,8 +33988,6 @@ next_236:
 	li t4, 7136
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv mres$11
 
 	# get address of lv points to
 	li t4, 18984
@@ -35038,7 +34008,7 @@ next_236:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$47 ans$129
+	# store lv$47 ans$129
 
 	# fetch variables
 
@@ -35046,8 +34016,6 @@ next_236:
 	li t4, 7128
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$47 ans$129
 
 	# get address of lv$47 points to
 	li t4, 19736
@@ -35068,7 +34036,7 @@ next_236:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 pr$8
+	# store lv$2 pr$8
 
 	# fetch variables
 
@@ -35077,20 +34045,16 @@ next_236:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 pr$8
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -35111,7 +34075,7 @@ next_236:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$142  cond_ge_tmp_$8
+	# ICMPcond_ge_tmp_$8 y$142  
 
 	# fetch variables
 
@@ -35120,15 +34084,15 @@ next_236:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 15
+	slt t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_ge_tmp_$8
 	li t4, 7104
 	add t4, sp, t4
-	slt t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$105 cond_ge_tmp_$8
+	# ZEXTcond_tmp_$105 cond_ge_tmp_$8
 
 	# fetch variables
 
@@ -35136,14 +34100,14 @@ next_236:
 	li t4, 7104
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$105
 	li t4, 7096
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$105  cond_$105
+	# ICMPcond_$105 cond_tmp_$105  
 
 	# fetch variables
 
@@ -35152,16 +34116,16 @@ next_236:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$105
 	li t4, 7088
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$105 ifTrue_153 ifFalse_72
+	# condBr cond_$105 ifTrue_200 ifFalse_77
 
 	# fetch variables
 
@@ -35169,9 +34133,9 @@ next_236:
 	li t4, 7088
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_72
-	j ifTrue_153
-whileCond_102:
+	beqz t1, ifFalse_77
+	j ifTrue_200
+whileCond_148:
 
 	# load i$124 lv$1
 
@@ -35186,7 +34150,7 @@ whileCond_102:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$124  cond_lt_tmp_$46
+	# ICMPcond_lt_tmp_$46 i$124  
 
 	# fetch variables
 
@@ -35195,14 +34159,14 @@ whileCond_102:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$46
 	li t4, 7072
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$90 cond_lt_tmp_$46
+	# ZEXTcond_tmp_$90 cond_lt_tmp_$46
 
 	# fetch variables
 
@@ -35210,14 +34174,14 @@ whileCond_102:
 	li t4, 7072
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$90
 	li t4, 7064
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$90  cond_$90
+	# ICMPcond_$90 cond_tmp_$90  
 
 	# fetch variables
 
@@ -35226,16 +34190,16 @@ whileCond_102:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$90
 	li t4, 7056
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$90 whileBody_102 next_237
+	# condBr cond_$90 whileBody_148 next_330
 
 	# fetch variables
 
@@ -35243,9 +34207,9 @@ whileCond_102:
 	li t4, 7056
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_237
-	j whileBody_102
-whileBody_102:
+	beqz t1, next_330
+	j whileBody_148
+whileBody_148:
 
 	# load x$118 lv$2
 
@@ -35260,7 +34224,7 @@ whileBody_102:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$348 x$118 
+	# MODresult_$348 x$118  
 
 	# fetch variables
 
@@ -35269,14 +34233,14 @@ whileBody_102:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$348
 	li t4, 7040
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$348  cond_normalize_$100
+	# ICMPcond_normalize_$100 result_$348  
 
 	# fetch variables
 
@@ -35285,16 +34249,16 @@ whileBody_102:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$100
 	li t4, 7032
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$100 secondCond_40 next_238
+	# condBr cond_normalize_$100 secondCond_75 next_331
 
 	# fetch variables
 
@@ -35302,9 +34266,9 @@ whileBody_102:
 	li t4, 7032
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_238
-	j secondCond_40
-next_237:
+	beqz t1, next_331
+	j secondCond_75
+next_330:
 
 	# load ans$111 lv
 
@@ -35319,7 +34283,7 @@ next_237:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp ans$111  cond_normalize_$102
+	# ICMPcond_normalize_$102 ans$111  
 
 	# fetch variables
 
@@ -35328,16 +34292,16 @@ next_237:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$102
 	li t4, 7016
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$102 ifTrue_136 next_239
+	# condBr cond_normalize_$102 ifTrue_183 next_332
 
 	# fetch variables
 
@@ -35345,9 +34309,9 @@ next_237:
 	li t4, 7016
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_239
-	j ifTrue_136
-ifTrue_135:
+	beqz t1, next_332
+	j ifTrue_183
+ifTrue_182:
 
 	# load ans$110 lv
 
@@ -35409,7 +34373,7 @@ ifTrue_135:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$350  SHIFT_TABLE$139
+	# MULresult_$350  SHIFT_TABLE$139 
 
 	# fetch variables
 	li t1, 1
@@ -35425,7 +34389,7 @@ ifTrue_135:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$351 ans$110 result_$350
+	# ADDresult_$351 ans$110 result_$350 
 
 	# fetch variables
 
@@ -35445,7 +34409,7 @@ ifTrue_135:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$351
+	# store lv result_$351
 
 	# fetch variables
 
@@ -35454,17 +34418,15 @@ ifTrue_135:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$351
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_238
-	j next_238
-next_238:
+	# br next_331
+	j next_331
+next_331:
 
 	# load x$119 lv$2
 
@@ -35479,7 +34441,7 @@ next_238:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$352 x$119 
+	# DIVresult_$352 x$119  
 
 	# fetch variables
 
@@ -35488,14 +34450,14 @@ next_238:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$352
 	li t4, 6952
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$352
+	# store lv$2 result_$352
 
 	# fetch variables
 
@@ -35503,8 +34465,6 @@ next_238:
 	li t4, 6952
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$352
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -35525,7 +34485,7 @@ next_238:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$353 y$122 
+	# DIVresult_$353 y$122  
 
 	# fetch variables
 
@@ -35534,14 +34494,14 @@ next_238:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$353
 	li t4, 6936
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$353
+	# store lv$3 result_$353
 
 	# fetch variables
 
@@ -35549,8 +34509,6 @@ next_238:
 	li t4, 6936
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$353
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -35571,7 +34529,7 @@ next_238:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$354 i$126 
+	# ADDresult_$354 i$126  
 
 	# fetch variables
 
@@ -35587,7 +34545,7 @@ next_238:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$354
+	# store lv$1 result_$354
 
 	# fetch variables
 
@@ -35596,17 +34554,15 @@ next_238:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$354
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_102
-	j whileCond_102
-secondCond_40:
+	# br whileCond_148
+	j whileCond_148
+secondCond_75:
 
 	# load y$121 lv$3
 
@@ -35621,7 +34577,7 @@ secondCond_40:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$349 y$121 
+	# MODresult_$349 y$121  
 
 	# fetch variables
 
@@ -35630,14 +34586,14 @@ secondCond_40:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$349
 	li t4, 6904
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$349  cond_normalize_$101
+	# ICMPcond_normalize_$101 result_$349  
 
 	# fetch variables
 
@@ -35646,16 +34602,16 @@ secondCond_40:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$101
 	li t4, 6896
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$101 ifTrue_135 next_238
+	# condBr cond_normalize_$101 ifTrue_182 next_331
 
 	# fetch variables
 
@@ -35663,9 +34619,9 @@ secondCond_40:
 	li t4, 6896
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_238
-	j ifTrue_135
-ifTrue_136:
+	beqz t1, next_331
+	j ifTrue_182
+ifTrue_183:
 
 	# load mres$10 lv$61
 
@@ -35680,7 +34636,7 @@ ifTrue_136:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$62 mres$10
+	# store lv$62 mres$10
 
 	# fetch variables
 
@@ -35688,8 +34644,6 @@ ifTrue_136:
 	li t4, 6888
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$62 mres$10
 
 	# get address of lv$62 points to
 	li t4, 19976
@@ -35710,7 +34664,7 @@ ifTrue_136:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$63 ml$15
+	# store lv$63 ml$15
 
 	# fetch variables
 
@@ -35719,17 +34673,15 @@ ifTrue_136:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$63 ml$15
-
 	# get address of lv$63 points to
 	li t4, 19992
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_103
-	j whileCond_103
-next_239:
+	# br whileCond_149
+	j whileCond_149
+next_332:
 
 	# load ml$16 lv$59
 
@@ -35744,7 +34696,7 @@ next_239:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$65 ml$16
+	# store lv$65 ml$16
 
 	# fetch variables
 
@@ -35752,8 +34704,6 @@ next_239:
 	li t4, 6872
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$65 ml$16
 
 	# get address of lv$65 points to
 	li t4, 20024
@@ -35774,7 +34724,7 @@ next_239:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$66 ml$17
+	# store lv$66 ml$17
 
 	# fetch variables
 
@@ -35783,17 +34733,15 @@ next_239:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$66 ml$17
-
 	# get address of lv$66 points to
 	li t4, 20040
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_107
-	j whileCond_107
-whileCond_103:
+	# br whileCond_153
+	j whileCond_153
+whileCond_149:
 
 	# load c$40 lv$63
 
@@ -35808,7 +34756,7 @@ whileCond_103:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$40  cond_normalize_$103
+	# ICMPcond_normalize_$103 c$40  
 
 	# fetch variables
 
@@ -35817,16 +34765,16 @@ whileCond_103:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$103
 	li t4, 6848
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$103 whileBody_103 next_240
+	# condBr cond_normalize_$103 whileBody_149 next_333
 
 	# fetch variables
 
@@ -35834,16 +34782,14 @@ whileCond_103:
 	li t4, 6848
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_240
-	j whileBody_103
-whileBody_103:
+	beqz t1, next_333
+	j whileBody_149
+whileBody_149:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -35851,12 +34797,10 @@ whileBody_103:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -35877,7 +34821,7 @@ whileBody_103:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$30
+	# store lv$2 al$30
 
 	# fetch variables
 
@@ -35885,8 +34829,6 @@ whileBody_103:
 	li t4, 6840
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$30
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -35907,7 +34849,7 @@ whileBody_103:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$41
+	# store lv$3 c$41
 
 	# fetch variables
 
@@ -35916,17 +34858,15 @@ whileBody_103:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$41
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_104
-	j whileCond_104
-next_240:
+	# br whileCond_150
+	j whileCond_150
+next_333:
 
 	# load al$32 lv$62
 
@@ -35941,7 +34881,7 @@ next_240:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$32
+	# store lv al$32
 
 	# fetch variables
 
@@ -35949,8 +34889,6 @@ next_240:
 	li t4, 6824
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$32
 
 	# get address of lv points to
 	li t4, 18984
@@ -35971,7 +34909,7 @@ next_240:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$61 ans$119
+	# store lv$61 ans$119
 
 	# fetch variables
 
@@ -35980,17 +34918,15 @@ next_240:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$61 ans$119
-
 	# get address of lv$61 points to
 	li t4, 19960
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_239
-	j next_239
-whileCond_104:
+	# br next_332
+	j next_332
+whileCond_150:
 
 	# load i$127 lv$1
 
@@ -36005,7 +34941,7 @@ whileCond_104:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$127  cond_lt_tmp_$47
+	# ICMPcond_lt_tmp_$47 i$127  
 
 	# fetch variables
 
@@ -36014,14 +34950,14 @@ whileCond_104:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$47
 	li t4, 6800
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$91 cond_lt_tmp_$47
+	# ZEXTcond_tmp_$91 cond_lt_tmp_$47
 
 	# fetch variables
 
@@ -36029,14 +34965,14 @@ whileCond_104:
 	li t4, 6800
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$91
 	li t4, 6792
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$91  cond_$91
+	# ICMPcond_$91 cond_tmp_$91  
 
 	# fetch variables
 
@@ -36045,16 +34981,16 @@ whileCond_104:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$91
 	li t4, 6784
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$91 whileBody_104 next_241
+	# condBr cond_$91 whileBody_150 next_334
 
 	# fetch variables
 
@@ -36062,9 +34998,9 @@ whileCond_104:
 	li t4, 6784
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_241
-	j whileBody_104
-whileBody_104:
+	beqz t1, next_334
+	j whileBody_150
+whileBody_150:
 
 	# load x$120 lv$2
 
@@ -36079,7 +35015,7 @@ whileBody_104:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$355 x$120 
+	# MODresult_$355 x$120  
 
 	# fetch variables
 
@@ -36088,14 +35024,14 @@ whileBody_104:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$355
 	li t4, 6768
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$355  cond_normalize_$104
+	# ICMPcond_normalize_$104 result_$355  
 
 	# fetch variables
 
@@ -36104,16 +35040,16 @@ whileBody_104:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$104
 	li t4, 6760
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$104 ifTrue_137 ifFalse_64
+	# condBr cond_normalize_$104 ifTrue_184 ifFalse_69
 
 	# fetch variables
 
@@ -36121,9 +35057,9 @@ whileBody_104:
 	li t4, 6760
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_64
-	j ifTrue_137
-next_241:
+	beqz t1, ifFalse_69
+	j ifTrue_184
+next_334:
 
 	# load ans$114 lv
 
@@ -36138,7 +35074,7 @@ next_241:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$64 ans$114
+	# store lv$64 ans$114
 
 	# fetch variables
 
@@ -36147,20 +35083,16 @@ next_241:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$64 ans$114
-
 	# get address of lv$64 points to
 	li t4, 20008
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -36168,12 +35100,10 @@ next_241:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -36194,7 +35124,7 @@ next_241:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$31
+	# store lv$2 al$31
 
 	# fetch variables
 
@@ -36202,8 +35132,6 @@ next_241:
 	li t4, 6744
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$31
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -36224,7 +35152,7 @@ next_241:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$42
+	# store lv$3 c$42
 
 	# fetch variables
 
@@ -36233,17 +35161,15 @@ next_241:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$42
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_105
-	j whileCond_105
-ifTrue_137:
+	# br whileCond_151
+	j whileCond_151
+ifTrue_184:
 
 	# load y$123 lv$3
 
@@ -36258,7 +35184,7 @@ ifTrue_137:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$356 y$123 
+	# MODresult_$356 y$123  
 
 	# fetch variables
 
@@ -36267,14 +35193,14 @@ ifTrue_137:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$356
-	li t4, 6720
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$356
+	li t4, 6720
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$356  cond_eq_tmp_$10
+	# ICMPcond_eq_tmp_$10 result_$356  
 
 	# fetch variables
 
@@ -36283,15 +35209,15 @@ ifTrue_137:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$10
 	li t4, 6712
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$92 cond_eq_tmp_$10
+	# ZEXTcond_tmp_$92 cond_eq_tmp_$10
 
 	# fetch variables
 
@@ -36299,14 +35225,14 @@ ifTrue_137:
 	li t4, 6712
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$92
 	li t4, 6704
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$92  cond_$92
+	# ICMPcond_$92 cond_tmp_$92  
 
 	# fetch variables
 
@@ -36315,16 +35241,16 @@ ifTrue_137:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$92
 	li t4, 6696
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$92 ifTrue_138 next_243
+	# condBr cond_$92 ifTrue_185 next_336
 
 	# fetch variables
 
@@ -36332,9 +35258,9 @@ ifTrue_137:
 	li t4, 6696
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_243
-	j ifTrue_138
-ifFalse_64:
+	beqz t1, next_336
+	j ifTrue_185
+ifFalse_69:
 
 	# load y$124 lv$3
 
@@ -36349,7 +35275,7 @@ ifFalse_64:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$359 y$124 
+	# MODresult_$359 y$124  
 
 	# fetch variables
 
@@ -36358,14 +35284,14 @@ ifFalse_64:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$359
 	li t4, 6680
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$359  cond_normalize_$105
+	# ICMPcond_normalize_$105 result_$359  
 
 	# fetch variables
 
@@ -36374,16 +35300,16 @@ ifFalse_64:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$105
 	li t4, 6672
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$105 ifTrue_139 next_244
+	# condBr cond_normalize_$105 ifTrue_186 next_337
 
 	# fetch variables
 
@@ -36391,9 +35317,9 @@ ifFalse_64:
 	li t4, 6672
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_244
-	j ifTrue_139
-next_242:
+	beqz t1, next_337
+	j ifTrue_186
+next_335:
 
 	# load x$121 lv$2
 
@@ -36408,7 +35334,7 @@ next_242:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$362 x$121 
+	# DIVresult_$362 x$121  
 
 	# fetch variables
 
@@ -36417,14 +35343,14 @@ next_242:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$362
 	li t4, 6656
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$362
+	# store lv$2 result_$362
 
 	# fetch variables
 
@@ -36432,8 +35358,6 @@ next_242:
 	li t4, 6656
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$362
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -36454,7 +35378,7 @@ next_242:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$363 y$125 
+	# DIVresult_$363 y$125  
 
 	# fetch variables
 
@@ -36463,14 +35387,14 @@ next_242:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$363
 	li t4, 6640
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$363
+	# store lv$3 result_$363
 
 	# fetch variables
 
@@ -36478,8 +35402,6 @@ next_242:
 	li t4, 6640
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$363
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -36500,7 +35422,7 @@ next_242:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$364 i$130 
+	# ADDresult_$364 i$130  
 
 	# fetch variables
 
@@ -36516,7 +35438,7 @@ next_242:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$364
+	# store lv$1 result_$364
 
 	# fetch variables
 
@@ -36525,17 +35447,15 @@ next_242:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$364
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_104
-	j whileCond_104
-ifTrue_138:
+	# br whileCond_150
+	j whileCond_150
+ifTrue_185:
 
 	# load ans$112 lv
 
@@ -36597,7 +35517,7 @@ ifTrue_138:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$357  SHIFT_TABLE$141
+	# MULresult_$357  SHIFT_TABLE$141 
 
 	# fetch variables
 	li t1, 1
@@ -36613,7 +35533,7 @@ ifTrue_138:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$358 ans$112 result_$357
+	# ADDresult_$358 ans$112 result_$357 
 
 	# fetch variables
 
@@ -36633,7 +35553,7 @@ ifTrue_138:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$358
+	# store lv result_$358
 
 	# fetch variables
 
@@ -36642,21 +35562,19 @@ ifTrue_138:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$358
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_243
-	j next_243
-next_243:
+	# br next_336
+	j next_336
+next_336:
 
-	# br next_242
-	j next_242
-ifTrue_139:
+	# br next_335
+	j next_335
+ifTrue_186:
 
 	# load ans$113 lv
 
@@ -36718,7 +35636,7 @@ ifTrue_139:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$360  SHIFT_TABLE$143
+	# MULresult_$360  SHIFT_TABLE$143 
 
 	# fetch variables
 	li t1, 1
@@ -36734,7 +35652,7 @@ ifTrue_139:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$361 ans$113 result_$360
+	# ADDresult_$361 ans$113 result_$360 
 
 	# fetch variables
 
@@ -36754,7 +35672,7 @@ ifTrue_139:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$361
+	# store lv result_$361
 
 	# fetch variables
 
@@ -36763,21 +35681,19 @@ ifTrue_139:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$361
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_244
-	j next_244
-next_244:
+	# br next_337
+	j next_337
+next_337:
 
-	# br next_242
-	j next_242
-whileCond_105:
+	# br next_335
+	j next_335
+whileCond_151:
 
 	# load i$131 lv$1
 
@@ -36792,7 +35708,7 @@ whileCond_105:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$131  cond_lt_tmp_$48
+	# ICMPcond_lt_tmp_$48 i$131  
 
 	# fetch variables
 
@@ -36801,14 +35717,14 @@ whileCond_105:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$48
 	li t4, 6512
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$93 cond_lt_tmp_$48
+	# ZEXTcond_tmp_$93 cond_lt_tmp_$48
 
 	# fetch variables
 
@@ -36816,14 +35732,14 @@ whileCond_105:
 	li t4, 6512
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$93
 	li t4, 6504
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$93  cond_$93
+	# ICMPcond_$93 cond_tmp_$93  
 
 	# fetch variables
 
@@ -36832,16 +35748,16 @@ whileCond_105:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$93
 	li t4, 6496
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$93 whileBody_105 next_245
+	# condBr cond_$93 whileBody_151 next_338
 
 	# fetch variables
 
@@ -36849,9 +35765,9 @@ whileCond_105:
 	li t4, 6496
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_245
-	j whileBody_105
-whileBody_105:
+	beqz t1, next_338
+	j whileBody_151
+whileBody_151:
 
 	# load x$122 lv$2
 
@@ -36866,7 +35782,7 @@ whileBody_105:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$365 x$122 
+	# MODresult_$365 x$122  
 
 	# fetch variables
 
@@ -36875,14 +35791,14 @@ whileBody_105:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$365
 	li t4, 6480
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$365  cond_normalize_$106
+	# ICMPcond_normalize_$106 result_$365  
 
 	# fetch variables
 
@@ -36891,16 +35807,16 @@ whileBody_105:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$106
 	li t4, 6472
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$106 secondCond_41 next_246
+	# condBr cond_normalize_$106 secondCond_76 next_339
 
 	# fetch variables
 
@@ -36908,9 +35824,9 @@ whileBody_105:
 	li t4, 6472
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_246
-	j secondCond_41
-next_245:
+	beqz t1, next_339
+	j secondCond_76
+next_338:
 
 	# load ans$116 lv
 
@@ -36925,7 +35841,7 @@ next_245:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$63 ans$116
+	# store lv$63 ans$116
 
 	# fetch variables
 
@@ -36934,28 +35850,26 @@ next_245:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$63 ans$116
-
 	# get address of lv$63 points to
 	li t4, 19992
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$27
+	# ICMPcond_gt_tmp_$27   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$27
 	li t4, 6456
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$94 cond_gt_tmp_$27
+	# ZEXTcond_tmp_$94 cond_gt_tmp_$27
 
 	# fetch variables
 
@@ -36963,14 +35877,14 @@ next_245:
 	li t4, 6456
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$94
 	li t4, 6448
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$94  cond_$94
+	# ICMPcond_$94 cond_tmp_$94  
 
 	# fetch variables
 
@@ -36979,16 +35893,16 @@ next_245:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$94
 	li t4, 6440
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$94 ifTrue_141 ifFalse_65
+	# condBr cond_$94 ifTrue_188 ifFalse_70
 
 	# fetch variables
 
@@ -36996,9 +35910,9 @@ next_245:
 	li t4, 6440
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_65
-	j ifTrue_141
-ifTrue_140:
+	beqz t1, ifFalse_70
+	j ifTrue_188
+ifTrue_187:
 
 	# load ans$115 lv
 
@@ -37060,7 +35974,7 @@ ifTrue_140:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$367  SHIFT_TABLE$145
+	# MULresult_$367  SHIFT_TABLE$145 
 
 	# fetch variables
 	li t1, 1
@@ -37076,7 +35990,7 @@ ifTrue_140:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$368 ans$115 result_$367
+	# ADDresult_$368 ans$115 result_$367 
 
 	# fetch variables
 
@@ -37096,7 +36010,7 @@ ifTrue_140:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$368
+	# store lv result_$368
 
 	# fetch variables
 
@@ -37105,17 +36019,15 @@ ifTrue_140:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$368
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_246
-	j next_246
-next_246:
+	# br next_339
+	j next_339
+next_339:
 
 	# load x$123 lv$2
 
@@ -37130,7 +36042,7 @@ next_246:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$369 x$123 
+	# DIVresult_$369 x$123  
 
 	# fetch variables
 
@@ -37139,14 +36051,14 @@ next_246:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$369
 	li t4, 6376
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$369
+	# store lv$2 result_$369
 
 	# fetch variables
 
@@ -37154,8 +36066,6 @@ next_246:
 	li t4, 6376
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$369
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -37176,7 +36086,7 @@ next_246:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$370 y$127 
+	# DIVresult_$370 y$127  
 
 	# fetch variables
 
@@ -37185,14 +36095,14 @@ next_246:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$370
 	li t4, 6360
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$370
+	# store lv$3 result_$370
 
 	# fetch variables
 
@@ -37200,8 +36110,6 @@ next_246:
 	li t4, 6360
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$370
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -37222,7 +36130,7 @@ next_246:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$371 i$133 
+	# ADDresult_$371 i$133  
 
 	# fetch variables
 
@@ -37238,7 +36146,7 @@ next_246:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$371
+	# store lv$1 result_$371
 
 	# fetch variables
 
@@ -37247,17 +36155,15 @@ next_246:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$371
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_105
-	j whileCond_105
-secondCond_41:
+	# br whileCond_151
+	j whileCond_151
+secondCond_76:
 
 	# load y$126 lv$3
 
@@ -37272,7 +36178,7 @@ secondCond_41:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$366 y$126 
+	# MODresult_$366 y$126  
 
 	# fetch variables
 
@@ -37281,14 +36187,14 @@ secondCond_41:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$366
 	li t4, 6328
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$366  cond_normalize_$107
+	# ICMPcond_normalize_$107 result_$366  
 
 	# fetch variables
 
@@ -37297,16 +36203,16 @@ secondCond_41:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$107
 	li t4, 6320
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$107 ifTrue_140 next_246
+	# condBr cond_normalize_$107 ifTrue_187 next_339
 
 	# fetch variables
 
@@ -37314,16 +36220,14 @@ secondCond_41:
 	li t4, 6320
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_246
-	j ifTrue_140
-ifTrue_141:
+	beqz t1, next_339
+	j ifTrue_187
+ifTrue_188:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -37331,29 +36235,25 @@ ifTrue_141:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_247
-	j next_247
-ifFalse_65:
+	# br next_340
+	j next_340
+ifFalse_70:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -37374,7 +36274,7 @@ ifFalse_65:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$372 c$43 
+	# MULresult_$372 c$43  
 
 	# fetch variables
 
@@ -37390,7 +36290,7 @@ ifFalse_65:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$372
+	# store lv$2 result_$372
 
 	# fetch variables
 
@@ -37399,20 +36299,16 @@ ifFalse_65:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$372
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -37420,9 +36316,9 @@ ifFalse_65:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_106
-	j whileCond_106
-next_247:
+	# br whileCond_152
+	j whileCond_152
+next_340:
 
 	# load ans$118 lv
 
@@ -37437,7 +36333,7 @@ next_247:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$63 ans$118
+	# store lv$63 ans$118
 
 	# fetch variables
 
@@ -37445,8 +36341,6 @@ next_247:
 	li t4, 6296
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$63 ans$118
 
 	# get address of lv$63 points to
 	li t4, 19992
@@ -37467,7 +36361,7 @@ next_247:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$62 sum$10
+	# store lv$62 sum$10
 
 	# fetch variables
 
@@ -37476,17 +36370,15 @@ next_247:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$62 sum$10
-
 	# get address of lv$62 points to
 	li t4, 19976
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_103
-	j whileCond_103
-whileCond_106:
+	# br whileCond_149
+	j whileCond_149
+whileCond_152:
 
 	# load i$134 lv$1
 
@@ -37501,7 +36393,7 @@ whileCond_106:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$134  cond_lt_tmp_$49
+	# ICMPcond_lt_tmp_$49 i$134  
 
 	# fetch variables
 
@@ -37510,14 +36402,14 @@ whileCond_106:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$49
 	li t4, 6272
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$95 cond_lt_tmp_$49
+	# ZEXTcond_tmp_$95 cond_lt_tmp_$49
 
 	# fetch variables
 
@@ -37525,14 +36417,14 @@ whileCond_106:
 	li t4, 6272
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$95
 	li t4, 6264
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$95  cond_$95
+	# ICMPcond_$95 cond_tmp_$95  
 
 	# fetch variables
 
@@ -37541,16 +36433,16 @@ whileCond_106:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$95
 	li t4, 6256
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$95 whileBody_106 next_248
+	# condBr cond_$95 whileBody_152 next_341
 
 	# fetch variables
 
@@ -37558,9 +36450,9 @@ whileCond_106:
 	li t4, 6256
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_248
-	j whileBody_106
-whileBody_106:
+	beqz t1, next_341
+	j whileBody_152
+whileBody_152:
 
 	# load x$124 lv$2
 
@@ -37575,7 +36467,7 @@ whileBody_106:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$373 x$124 
+	# MODresult_$373 x$124  
 
 	# fetch variables
 
@@ -37584,14 +36476,14 @@ whileBody_106:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$373
 	li t4, 6240
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$373  cond_normalize_$108
+	# ICMPcond_normalize_$108 result_$373  
 
 	# fetch variables
 
@@ -37600,16 +36492,16 @@ whileBody_106:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$108
 	li t4, 6232
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$108 secondCond_42 next_249
+	# condBr cond_normalize_$108 secondCond_77 next_342
 
 	# fetch variables
 
@@ -37617,13 +36509,13 @@ whileBody_106:
 	li t4, 6232
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_249
-	j secondCond_42
-next_248:
+	beqz t1, next_342
+	j secondCond_77
+next_341:
 
-	# br next_247
-	j next_247
-ifTrue_142:
+	# br next_340
+	j next_340
+ifTrue_189:
 
 	# load ans$117 lv
 
@@ -37685,7 +36577,7 @@ ifTrue_142:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$375  SHIFT_TABLE$147
+	# MULresult_$375  SHIFT_TABLE$147 
 
 	# fetch variables
 	li t1, 1
@@ -37701,7 +36593,7 @@ ifTrue_142:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$376 ans$117 result_$375
+	# ADDresult_$376 ans$117 result_$375 
 
 	# fetch variables
 
@@ -37721,7 +36613,7 @@ ifTrue_142:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$376
+	# store lv result_$376
 
 	# fetch variables
 
@@ -37730,17 +36622,15 @@ ifTrue_142:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$376
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_249
-	j next_249
-next_249:
+	# br next_342
+	j next_342
+next_342:
 
 	# load x$125 lv$2
 
@@ -37755,7 +36645,7 @@ next_249:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$377 x$125 
+	# DIVresult_$377 x$125  
 
 	# fetch variables
 
@@ -37764,14 +36654,14 @@ next_249:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$377
 	li t4, 6168
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$377
+	# store lv$2 result_$377
 
 	# fetch variables
 
@@ -37779,8 +36669,6 @@ next_249:
 	li t4, 6168
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$377
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -37801,7 +36689,7 @@ next_249:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$378 y$129 
+	# DIVresult_$378 y$129  
 
 	# fetch variables
 
@@ -37810,14 +36698,14 @@ next_249:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$378
 	li t4, 6152
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$378
+	# store lv$3 result_$378
 
 	# fetch variables
 
@@ -37825,8 +36713,6 @@ next_249:
 	li t4, 6152
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$378
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -37847,7 +36733,7 @@ next_249:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$379 i$136 
+	# ADDresult_$379 i$136  
 
 	# fetch variables
 
@@ -37863,7 +36749,7 @@ next_249:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$379
+	# store lv$1 result_$379
 
 	# fetch variables
 
@@ -37872,17 +36758,15 @@ next_249:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$379
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_106
-	j whileCond_106
-secondCond_42:
+	# br whileCond_152
+	j whileCond_152
+secondCond_77:
 
 	# load y$128 lv$3
 
@@ -37897,7 +36781,7 @@ secondCond_42:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$374 y$128 
+	# MODresult_$374 y$128  
 
 	# fetch variables
 
@@ -37906,14 +36790,14 @@ secondCond_42:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$374
 	li t4, 6120
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$374  cond_normalize_$109
+	# ICMPcond_normalize_$109 result_$374  
 
 	# fetch variables
 
@@ -37922,16 +36806,16 @@ secondCond_42:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$109
 	li t4, 6112
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$109 ifTrue_142 next_249
+	# condBr cond_normalize_$109 ifTrue_189 next_342
 
 	# fetch variables
 
@@ -37939,9 +36823,9 @@ secondCond_42:
 	li t4, 6112
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_249
-	j ifTrue_142
-whileCond_107:
+	beqz t1, next_342
+	j ifTrue_189
+whileCond_153:
 
 	# load c$44 lv$66
 
@@ -37956,7 +36840,7 @@ whileCond_107:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$44  cond_normalize_$110
+	# ICMPcond_normalize_$110 c$44  
 
 	# fetch variables
 
@@ -37965,16 +36849,16 @@ whileCond_107:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$110
 	li t4, 6096
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$110 whileBody_107 next_250
+	# condBr cond_normalize_$110 whileBody_153 next_343
 
 	# fetch variables
 
@@ -37982,16 +36866,14 @@ whileCond_107:
 	li t4, 6096
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_250
-	j whileBody_107
-whileBody_107:
+	beqz t1, next_343
+	j whileBody_153
+whileBody_153:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -37999,12 +36881,10 @@ whileBody_107:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -38025,7 +36905,7 @@ whileBody_107:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$33
+	# store lv$2 al$33
 
 	# fetch variables
 
@@ -38033,8 +36913,6 @@ whileBody_107:
 	li t4, 6088
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$33
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -38055,7 +36933,7 @@ whileBody_107:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$45
+	# store lv$3 c$45
 
 	# fetch variables
 
@@ -38064,17 +36942,15 @@ whileBody_107:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$45
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_108
-	j whileCond_108
-next_250:
+	# br whileCond_154
+	j whileCond_154
+next_343:
 
 	# load al$35 lv$65
 
@@ -38089,7 +36965,7 @@ next_250:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$35
+	# store lv al$35
 
 	# fetch variables
 
@@ -38097,8 +36973,6 @@ next_250:
 	li t4, 6072
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$35
 
 	# get address of lv points to
 	li t4, 18984
@@ -38119,7 +36993,7 @@ next_250:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$59 ans$127
+	# store lv$59 ans$127
 
 	# fetch variables
 
@@ -38127,8 +37001,6 @@ next_250:
 	li t4, 6064
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$59 ans$127
 
 	# get address of lv$59 points to
 	li t4, 19928
@@ -38149,7 +37021,7 @@ next_250:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$17
+	# store lv$2 mr$17
 
 	# fetch variables
 
@@ -38158,20 +37030,16 @@ next_250:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$17
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -38192,7 +37060,7 @@ next_250:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$137  cond_ge_tmp_$7
+	# ICMPcond_ge_tmp_$7 y$137  
 
 	# fetch variables
 
@@ -38201,15 +37069,15 @@ next_250:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 15
+	slt t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_ge_tmp_$7
 	li t4, 6040
 	add t4, sp, t4
-	slt t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$101 cond_ge_tmp_$7
+	# ZEXTcond_tmp_$101 cond_ge_tmp_$7
 
 	# fetch variables
 
@@ -38217,14 +37085,14 @@ next_250:
 	li t4, 6040
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$101
 	li t4, 6032
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$101  cond_$101
+	# ICMPcond_$101 cond_tmp_$101  
 
 	# fetch variables
 
@@ -38233,16 +37101,16 @@ next_250:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$101
 	li t4, 6024
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$101 ifTrue_149 ifFalse_68
+	# condBr cond_$101 ifTrue_196 ifFalse_73
 
 	# fetch variables
 
@@ -38250,9 +37118,9 @@ next_250:
 	li t4, 6024
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_68
-	j ifTrue_149
-whileCond_108:
+	beqz t1, ifFalse_73
+	j ifTrue_196
+whileCond_154:
 
 	# load i$137 lv$1
 
@@ -38267,7 +37135,7 @@ whileCond_108:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$137  cond_lt_tmp_$50
+	# ICMPcond_lt_tmp_$50 i$137  
 
 	# fetch variables
 
@@ -38276,14 +37144,14 @@ whileCond_108:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$50
 	li t4, 6008
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$96 cond_lt_tmp_$50
+	# ZEXTcond_tmp_$96 cond_lt_tmp_$50
 
 	# fetch variables
 
@@ -38291,14 +37159,14 @@ whileCond_108:
 	li t4, 6008
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$96
 	li t4, 6000
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$96  cond_$96
+	# ICMPcond_$96 cond_tmp_$96  
 
 	# fetch variables
 
@@ -38307,16 +37175,16 @@ whileCond_108:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$96
 	li t4, 5992
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$96 whileBody_108 next_251
+	# condBr cond_$96 whileBody_154 next_344
 
 	# fetch variables
 
@@ -38324,9 +37192,9 @@ whileCond_108:
 	li t4, 5992
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_251
-	j whileBody_108
-whileBody_108:
+	beqz t1, next_344
+	j whileBody_154
+whileBody_154:
 
 	# load x$126 lv$2
 
@@ -38341,7 +37209,7 @@ whileBody_108:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$380 x$126 
+	# MODresult_$380 x$126  
 
 	# fetch variables
 
@@ -38350,14 +37218,14 @@ whileBody_108:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$380
 	li t4, 5976
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$380  cond_normalize_$111
+	# ICMPcond_normalize_$111 result_$380  
 
 	# fetch variables
 
@@ -38366,16 +37234,16 @@ whileBody_108:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$111
 	li t4, 5968
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$111 ifTrue_143 ifFalse_66
+	# condBr cond_normalize_$111 ifTrue_190 ifFalse_71
 
 	# fetch variables
 
@@ -38383,9 +37251,9 @@ whileBody_108:
 	li t4, 5968
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_66
-	j ifTrue_143
-next_251:
+	beqz t1, ifFalse_71
+	j ifTrue_190
+next_344:
 
 	# load ans$122 lv
 
@@ -38400,7 +37268,7 @@ next_251:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$67 ans$122
+	# store lv$67 ans$122
 
 	# fetch variables
 
@@ -38409,20 +37277,16 @@ next_251:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$67 ans$122
-
 	# get address of lv$67 points to
 	li t4, 20056
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -38430,12 +37294,10 @@ next_251:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -38456,7 +37318,7 @@ next_251:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$34
+	# store lv$2 al$34
 
 	# fetch variables
 
@@ -38464,8 +37326,6 @@ next_251:
 	li t4, 5952
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$34
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -38486,7 +37346,7 @@ next_251:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$46
+	# store lv$3 c$46
 
 	# fetch variables
 
@@ -38495,17 +37355,15 @@ next_251:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$46
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_109
-	j whileCond_109
-ifTrue_143:
+	# br whileCond_155
+	j whileCond_155
+ifTrue_190:
 
 	# load y$130 lv$3
 
@@ -38520,7 +37378,7 @@ ifTrue_143:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$381 y$130 
+	# MODresult_$381 y$130  
 
 	# fetch variables
 
@@ -38529,14 +37387,14 @@ ifTrue_143:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$381
-	li t4, 5928
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$381
+	li t4, 5928
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$381  cond_eq_tmp_$11
+	# ICMPcond_eq_tmp_$11 result_$381  
 
 	# fetch variables
 
@@ -38545,15 +37403,15 @@ ifTrue_143:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$11
 	li t4, 5920
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$97 cond_eq_tmp_$11
+	# ZEXTcond_tmp_$97 cond_eq_tmp_$11
 
 	# fetch variables
 
@@ -38561,14 +37419,14 @@ ifTrue_143:
 	li t4, 5920
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$97
 	li t4, 5912
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$97  cond_$97
+	# ICMPcond_$97 cond_tmp_$97  
 
 	# fetch variables
 
@@ -38577,16 +37435,16 @@ ifTrue_143:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$97
 	li t4, 5904
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$97 ifTrue_144 next_253
+	# condBr cond_$97 ifTrue_191 next_346
 
 	# fetch variables
 
@@ -38594,9 +37452,9 @@ ifTrue_143:
 	li t4, 5904
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_253
-	j ifTrue_144
-ifFalse_66:
+	beqz t1, next_346
+	j ifTrue_191
+ifFalse_71:
 
 	# load y$131 lv$3
 
@@ -38611,7 +37469,7 @@ ifFalse_66:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$384 y$131 
+	# MODresult_$384 y$131  
 
 	# fetch variables
 
@@ -38620,14 +37478,14 @@ ifFalse_66:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$384
 	li t4, 5888
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$384  cond_normalize_$112
+	# ICMPcond_normalize_$112 result_$384  
 
 	# fetch variables
 
@@ -38636,16 +37494,16 @@ ifFalse_66:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$112
 	li t4, 5880
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$112 ifTrue_145 next_254
+	# condBr cond_normalize_$112 ifTrue_192 next_347
 
 	# fetch variables
 
@@ -38653,9 +37511,9 @@ ifFalse_66:
 	li t4, 5880
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_254
-	j ifTrue_145
-next_252:
+	beqz t1, next_347
+	j ifTrue_192
+next_345:
 
 	# load x$127 lv$2
 
@@ -38670,7 +37528,7 @@ next_252:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$387 x$127 
+	# DIVresult_$387 x$127  
 
 	# fetch variables
 
@@ -38679,14 +37537,14 @@ next_252:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$387
 	li t4, 5864
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$387
+	# store lv$2 result_$387
 
 	# fetch variables
 
@@ -38694,8 +37552,6 @@ next_252:
 	li t4, 5864
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$387
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -38716,7 +37572,7 @@ next_252:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$388 y$132 
+	# DIVresult_$388 y$132  
 
 	# fetch variables
 
@@ -38725,14 +37581,14 @@ next_252:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$388
 	li t4, 5848
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$388
+	# store lv$3 result_$388
 
 	# fetch variables
 
@@ -38740,8 +37596,6 @@ next_252:
 	li t4, 5848
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$388
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -38762,7 +37616,7 @@ next_252:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$389 i$140 
+	# ADDresult_$389 i$140  
 
 	# fetch variables
 
@@ -38778,7 +37632,7 @@ next_252:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$389
+	# store lv$1 result_$389
 
 	# fetch variables
 
@@ -38787,17 +37641,15 @@ next_252:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$389
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_108
-	j whileCond_108
-ifTrue_144:
+	# br whileCond_154
+	j whileCond_154
+ifTrue_191:
 
 	# load ans$120 lv
 
@@ -38859,7 +37711,7 @@ ifTrue_144:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$382  SHIFT_TABLE$149
+	# MULresult_$382  SHIFT_TABLE$149 
 
 	# fetch variables
 	li t1, 1
@@ -38875,7 +37727,7 @@ ifTrue_144:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$383 ans$120 result_$382
+	# ADDresult_$383 ans$120 result_$382 
 
 	# fetch variables
 
@@ -38895,7 +37747,7 @@ ifTrue_144:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$383
+	# store lv result_$383
 
 	# fetch variables
 
@@ -38904,21 +37756,19 @@ ifTrue_144:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$383
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_253
-	j next_253
-next_253:
+	# br next_346
+	j next_346
+next_346:
 
-	# br next_252
-	j next_252
-ifTrue_145:
+	# br next_345
+	j next_345
+ifTrue_192:
 
 	# load ans$121 lv
 
@@ -38980,7 +37830,7 @@ ifTrue_145:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$385  SHIFT_TABLE$151
+	# MULresult_$385  SHIFT_TABLE$151 
 
 	# fetch variables
 	li t1, 1
@@ -38996,7 +37846,7 @@ ifTrue_145:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$386 ans$121 result_$385
+	# ADDresult_$386 ans$121 result_$385 
 
 	# fetch variables
 
@@ -39016,7 +37866,7 @@ ifTrue_145:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$386
+	# store lv result_$386
 
 	# fetch variables
 
@@ -39025,21 +37875,19 @@ ifTrue_145:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$386
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_254
-	j next_254
-next_254:
+	# br next_347
+	j next_347
+next_347:
 
-	# br next_252
-	j next_252
-whileCond_109:
+	# br next_345
+	j next_345
+whileCond_155:
 
 	# load i$141 lv$1
 
@@ -39054,7 +37902,7 @@ whileCond_109:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$141  cond_lt_tmp_$51
+	# ICMPcond_lt_tmp_$51 i$141  
 
 	# fetch variables
 
@@ -39063,14 +37911,14 @@ whileCond_109:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$51
 	li t4, 5720
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$98 cond_lt_tmp_$51
+	# ZEXTcond_tmp_$98 cond_lt_tmp_$51
 
 	# fetch variables
 
@@ -39078,14 +37926,14 @@ whileCond_109:
 	li t4, 5720
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$98
 	li t4, 5712
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$98  cond_$98
+	# ICMPcond_$98 cond_tmp_$98  
 
 	# fetch variables
 
@@ -39094,16 +37942,16 @@ whileCond_109:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$98
 	li t4, 5704
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$98 whileBody_109 next_255
+	# condBr cond_$98 whileBody_155 next_348
 
 	# fetch variables
 
@@ -39111,9 +37959,9 @@ whileCond_109:
 	li t4, 5704
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_255
-	j whileBody_109
-whileBody_109:
+	beqz t1, next_348
+	j whileBody_155
+whileBody_155:
 
 	# load x$128 lv$2
 
@@ -39128,7 +37976,7 @@ whileBody_109:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$390 x$128 
+	# MODresult_$390 x$128  
 
 	# fetch variables
 
@@ -39137,14 +37985,14 @@ whileBody_109:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$390
 	li t4, 5688
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$390  cond_normalize_$113
+	# ICMPcond_normalize_$113 result_$390  
 
 	# fetch variables
 
@@ -39153,16 +38001,16 @@ whileBody_109:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$113
 	li t4, 5680
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$113 secondCond_43 next_256
+	# condBr cond_normalize_$113 secondCond_78 next_349
 
 	# fetch variables
 
@@ -39170,9 +38018,9 @@ whileBody_109:
 	li t4, 5680
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_256
-	j secondCond_43
-next_255:
+	beqz t1, next_349
+	j secondCond_78
+next_348:
 
 	# load ans$124 lv
 
@@ -39187,7 +38035,7 @@ next_255:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$66 ans$124
+	# store lv$66 ans$124
 
 	# fetch variables
 
@@ -39196,28 +38044,26 @@ next_255:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$66 ans$124
-
 	# get address of lv$66 points to
 	li t4, 20040
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$28
+	# ICMPcond_gt_tmp_$28   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$28
 	li t4, 5664
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$99 cond_gt_tmp_$28
+	# ZEXTcond_tmp_$99 cond_gt_tmp_$28
 
 	# fetch variables
 
@@ -39225,14 +38071,14 @@ next_255:
 	li t4, 5664
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$99
 	li t4, 5656
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$99  cond_$99
+	# ICMPcond_$99 cond_tmp_$99  
 
 	# fetch variables
 
@@ -39241,16 +38087,16 @@ next_255:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$99
 	li t4, 5648
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$99 ifTrue_147 ifFalse_67
+	# condBr cond_$99 ifTrue_194 ifFalse_72
 
 	# fetch variables
 
@@ -39258,9 +38104,9 @@ next_255:
 	li t4, 5648
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_67
-	j ifTrue_147
-ifTrue_146:
+	beqz t1, ifFalse_72
+	j ifTrue_194
+ifTrue_193:
 
 	# load ans$123 lv
 
@@ -39322,7 +38168,7 @@ ifTrue_146:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$392  SHIFT_TABLE$153
+	# MULresult_$392  SHIFT_TABLE$153 
 
 	# fetch variables
 	li t1, 1
@@ -39338,7 +38184,7 @@ ifTrue_146:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$393 ans$123 result_$392
+	# ADDresult_$393 ans$123 result_$392 
 
 	# fetch variables
 
@@ -39358,7 +38204,7 @@ ifTrue_146:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$393
+	# store lv result_$393
 
 	# fetch variables
 
@@ -39367,17 +38213,15 @@ ifTrue_146:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$393
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_256
-	j next_256
-next_256:
+	# br next_349
+	j next_349
+next_349:
 
 	# load x$129 lv$2
 
@@ -39392,7 +38236,7 @@ next_256:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$394 x$129 
+	# DIVresult_$394 x$129  
 
 	# fetch variables
 
@@ -39401,14 +38245,14 @@ next_256:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$394
 	li t4, 5584
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$394
+	# store lv$2 result_$394
 
 	# fetch variables
 
@@ -39416,8 +38260,6 @@ next_256:
 	li t4, 5584
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$394
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -39438,7 +38280,7 @@ next_256:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$395 y$134 
+	# DIVresult_$395 y$134  
 
 	# fetch variables
 
@@ -39447,14 +38289,14 @@ next_256:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$395
 	li t4, 5568
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$395
+	# store lv$3 result_$395
 
 	# fetch variables
 
@@ -39462,8 +38304,6 @@ next_256:
 	li t4, 5568
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$395
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -39484,7 +38324,7 @@ next_256:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$396 i$143 
+	# ADDresult_$396 i$143  
 
 	# fetch variables
 
@@ -39500,7 +38340,7 @@ next_256:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$396
+	# store lv$1 result_$396
 
 	# fetch variables
 
@@ -39509,17 +38349,15 @@ next_256:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$396
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_109
-	j whileCond_109
-secondCond_43:
+	# br whileCond_155
+	j whileCond_155
+secondCond_78:
 
 	# load y$133 lv$3
 
@@ -39534,7 +38372,7 @@ secondCond_43:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$391 y$133 
+	# MODresult_$391 y$133  
 
 	# fetch variables
 
@@ -39543,14 +38381,14 @@ secondCond_43:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$391
 	li t4, 5536
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$391  cond_normalize_$114
+	# ICMPcond_normalize_$114 result_$391  
 
 	# fetch variables
 
@@ -39559,16 +38397,16 @@ secondCond_43:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$114
 	li t4, 5528
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$114 ifTrue_146 next_256
+	# condBr cond_normalize_$114 ifTrue_193 next_349
 
 	# fetch variables
 
@@ -39576,16 +38414,14 @@ secondCond_43:
 	li t4, 5528
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_256
-	j ifTrue_146
-ifTrue_147:
+	beqz t1, next_349
+	j ifTrue_193
+ifTrue_194:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -39593,29 +38429,25 @@ ifTrue_147:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_257
-	j next_257
-ifFalse_67:
+	# br next_350
+	j next_350
+ifFalse_72:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -39636,7 +38468,7 @@ ifFalse_67:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$397 c$47 
+	# MULresult_$397 c$47  
 
 	# fetch variables
 
@@ -39652,7 +38484,7 @@ ifFalse_67:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$397
+	# store lv$2 result_$397
 
 	# fetch variables
 
@@ -39661,20 +38493,16 @@ ifFalse_67:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$397
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -39682,9 +38510,9 @@ ifFalse_67:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_110
-	j whileCond_110
-next_257:
+	# br whileCond_156
+	j whileCond_156
+next_350:
 
 	# load ans$126 lv
 
@@ -39699,7 +38527,7 @@ next_257:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$66 ans$126
+	# store lv$66 ans$126
 
 	# fetch variables
 
@@ -39707,8 +38535,6 @@ next_257:
 	li t4, 5504
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$66 ans$126
 
 	# get address of lv$66 points to
 	li t4, 20040
@@ -39729,7 +38555,7 @@ next_257:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$65 sum$11
+	# store lv$65 sum$11
 
 	# fetch variables
 
@@ -39738,17 +38564,15 @@ next_257:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$65 sum$11
-
 	# get address of lv$65 points to
 	li t4, 20024
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_107
-	j whileCond_107
-whileCond_110:
+	# br whileCond_153
+	j whileCond_153
+whileCond_156:
 
 	# load i$144 lv$1
 
@@ -39763,7 +38587,7 @@ whileCond_110:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$144  cond_lt_tmp_$52
+	# ICMPcond_lt_tmp_$52 i$144  
 
 	# fetch variables
 
@@ -39772,14 +38596,14 @@ whileCond_110:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$52
 	li t4, 5480
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$100 cond_lt_tmp_$52
+	# ZEXTcond_tmp_$100 cond_lt_tmp_$52
 
 	# fetch variables
 
@@ -39787,14 +38611,14 @@ whileCond_110:
 	li t4, 5480
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$100
 	li t4, 5472
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$100  cond_$100
+	# ICMPcond_$100 cond_tmp_$100  
 
 	# fetch variables
 
@@ -39803,16 +38627,16 @@ whileCond_110:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$100
 	li t4, 5464
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$100 whileBody_110 next_258
+	# condBr cond_$100 whileBody_156 next_351
 
 	# fetch variables
 
@@ -39820,9 +38644,9 @@ whileCond_110:
 	li t4, 5464
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_258
-	j whileBody_110
-whileBody_110:
+	beqz t1, next_351
+	j whileBody_156
+whileBody_156:
 
 	# load x$130 lv$2
 
@@ -39837,7 +38661,7 @@ whileBody_110:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$398 x$130 
+	# MODresult_$398 x$130  
 
 	# fetch variables
 
@@ -39846,14 +38670,14 @@ whileBody_110:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$398
 	li t4, 5448
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$398  cond_normalize_$115
+	# ICMPcond_normalize_$115 result_$398  
 
 	# fetch variables
 
@@ -39862,16 +38686,16 @@ whileBody_110:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$115
 	li t4, 5440
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$115 secondCond_44 next_259
+	# condBr cond_normalize_$115 secondCond_79 next_352
 
 	# fetch variables
 
@@ -39879,13 +38703,13 @@ whileBody_110:
 	li t4, 5440
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_259
-	j secondCond_44
-next_258:
+	beqz t1, next_352
+	j secondCond_79
+next_351:
 
-	# br next_257
-	j next_257
-ifTrue_148:
+	# br next_350
+	j next_350
+ifTrue_195:
 
 	# load ans$125 lv
 
@@ -39947,7 +38771,7 @@ ifTrue_148:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$400  SHIFT_TABLE$155
+	# MULresult_$400  SHIFT_TABLE$155 
 
 	# fetch variables
 	li t1, 1
@@ -39963,7 +38787,7 @@ ifTrue_148:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$401 ans$125 result_$400
+	# ADDresult_$401 ans$125 result_$400 
 
 	# fetch variables
 
@@ -39983,7 +38807,7 @@ ifTrue_148:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$401
+	# store lv result_$401
 
 	# fetch variables
 
@@ -39992,17 +38816,15 @@ ifTrue_148:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$401
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_259
-	j next_259
-next_259:
+	# br next_352
+	j next_352
+next_352:
 
 	# load x$131 lv$2
 
@@ -40017,7 +38839,7 @@ next_259:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$402 x$131 
+	# DIVresult_$402 x$131  
 
 	# fetch variables
 
@@ -40026,14 +38848,14 @@ next_259:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$402
 	li t4, 5376
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$402
+	# store lv$2 result_$402
 
 	# fetch variables
 
@@ -40041,8 +38863,6 @@ next_259:
 	li t4, 5376
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$402
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -40063,7 +38883,7 @@ next_259:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$403 y$136 
+	# DIVresult_$403 y$136  
 
 	# fetch variables
 
@@ -40072,14 +38892,14 @@ next_259:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$403
 	li t4, 5360
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$403
+	# store lv$3 result_$403
 
 	# fetch variables
 
@@ -40087,8 +38907,6 @@ next_259:
 	li t4, 5360
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$403
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -40109,7 +38927,7 @@ next_259:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$404 i$146 
+	# ADDresult_$404 i$146  
 
 	# fetch variables
 
@@ -40125,7 +38943,7 @@ next_259:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$404
+	# store lv$1 result_$404
 
 	# fetch variables
 
@@ -40134,17 +38952,15 @@ next_259:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$404
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_110
-	j whileCond_110
-secondCond_44:
+	# br whileCond_156
+	j whileCond_156
+secondCond_79:
 
 	# load y$135 lv$3
 
@@ -40159,7 +38975,7 @@ secondCond_44:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$399 y$135 
+	# MODresult_$399 y$135  
 
 	# fetch variables
 
@@ -40168,14 +38984,14 @@ secondCond_44:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$399
 	li t4, 5328
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$399  cond_normalize_$116
+	# ICMPcond_normalize_$116 result_$399  
 
 	# fetch variables
 
@@ -40184,16 +39000,16 @@ secondCond_44:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$116
 	li t4, 5320
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$116 ifTrue_148 next_259
+	# condBr cond_normalize_$116 ifTrue_195 next_352
 
 	# fetch variables
 
@@ -40201,9 +39017,9 @@ secondCond_44:
 	li t4, 5320
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_259
-	j ifTrue_148
-ifTrue_149:
+	beqz t1, next_352
+	j ifTrue_195
+ifTrue_196:
 
 	# load x$132 lv$2
 
@@ -40218,7 +39034,7 @@ ifTrue_149:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$132  cond_lt_tmp_$53
+	# ICMPcond_lt_tmp_$53 x$132  
 
 	# fetch variables
 
@@ -40227,14 +39043,14 @@ ifTrue_149:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$53
 	li t4, 5304
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$102 cond_lt_tmp_$53
+	# ZEXTcond_tmp_$102 cond_lt_tmp_$53
 
 	# fetch variables
 
@@ -40242,14 +39058,14 @@ ifTrue_149:
 	li t4, 5304
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$102
 	li t4, 5296
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$102  cond_$102
+	# ICMPcond_$102 cond_tmp_$102  
 
 	# fetch variables
 
@@ -40258,16 +39074,16 @@ ifTrue_149:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$102
 	li t4, 5288
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$102 ifTrue_150 ifFalse_69
+	# condBr cond_$102 ifTrue_197 ifFalse_74
 
 	# fetch variables
 
@@ -40275,9 +39091,9 @@ ifTrue_149:
 	li t4, 5288
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_69
-	j ifTrue_150
-ifFalse_68:
+	beqz t1, ifFalse_74
+	j ifTrue_197
+ifFalse_73:
 
 	# load y$138 lv$3
 
@@ -40292,7 +39108,7 @@ ifFalse_68:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$138  cond_gt_tmp_$29
+	# ICMPcond_gt_tmp_$29 y$138  
 
 	# fetch variables
 
@@ -40301,15 +39117,15 @@ ifFalse_68:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$29
 	li t4, 5272
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$103 cond_gt_tmp_$29
+	# ZEXTcond_tmp_$103 cond_gt_tmp_$29
 
 	# fetch variables
 
@@ -40317,14 +39133,14 @@ ifFalse_68:
 	li t4, 5272
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$103
 	li t4, 5264
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$103  cond_$103
+	# ICMPcond_$103 cond_tmp_$103  
 
 	# fetch variables
 
@@ -40333,16 +39149,16 @@ ifFalse_68:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$103
 	li t4, 5256
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$103 ifTrue_151 ifFalse_70
+	# condBr cond_$103 ifTrue_198 ifFalse_75
 
 	# fetch variables
 
@@ -40350,9 +39166,9 @@ ifFalse_68:
 	li t4, 5256
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_70
-	j ifTrue_151
-next_260:
+	beqz t1, ifFalse_75
+	j ifTrue_198
+next_353:
 
 	# load ans$128 lv
 
@@ -40367,7 +39183,7 @@ next_260:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$60 ans$128
+	# store lv$60 ans$128
 
 	# fetch variables
 
@@ -40376,55 +39192,49 @@ next_260:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$60 ans$128
-
 	# get address of lv$60 points to
 	li t4, 19944
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_101
-	j whileCond_101
-ifTrue_150:
+	# br whileCond_147
+	j whileCond_147
+ifTrue_197:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 65535
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_261
-	j next_261
-ifFalse_69:
+	# br next_354
+	j next_354
+ifFalse_74:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_261
-	j next_261
-next_261:
+	# br next_354
+	j next_354
+next_354:
 
-	# br next_260
-	j next_260
-ifTrue_151:
+	# br next_353
+	j next_353
+ifTrue_198:
 
 	# load x$133 lv$2
 
@@ -40439,7 +39249,7 @@ ifTrue_151:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$133  cond_gt_tmp_$30
+	# ICMPcond_gt_tmp_$30 x$133  
 
 	# fetch variables
 
@@ -40448,15 +39258,15 @@ ifTrue_151:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 32767
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$30
 	li t4, 5232
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$104 cond_gt_tmp_$30
+	# ZEXTcond_tmp_$104 cond_gt_tmp_$30
 
 	# fetch variables
 
@@ -40464,14 +39274,14 @@ ifTrue_151:
 	li t4, 5232
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$104
 	li t4, 5224
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$104  cond_$104
+	# ICMPcond_$104 cond_tmp_$104  
 
 	# fetch variables
 
@@ -40480,16 +39290,16 @@ ifTrue_151:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$104
 	li t4, 5216
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$104 ifTrue_152 ifFalse_71
+	# condBr cond_$104 ifTrue_199 ifFalse_76
 
 	# fetch variables
 
@@ -40497,9 +39307,9 @@ ifTrue_151:
 	li t4, 5216
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_71
-	j ifTrue_152
-ifFalse_70:
+	beqz t1, ifFalse_76
+	j ifTrue_199
+ifFalse_75:
 
 	# load x$137 lv$2
 
@@ -40514,7 +39324,7 @@ ifFalse_70:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv x$137
+	# store lv x$137
 
 	# fetch variables
 
@@ -40523,21 +39333,19 @@ ifFalse_70:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv x$137
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_262
-	j next_262
-next_262:
+	# br next_355
+	j next_355
+next_355:
 
-	# br next_260
-	j next_260
-ifTrue_152:
+	# br next_353
+	j next_353
+ifTrue_199:
 
 	# load x$134 lv$2
 
@@ -40599,7 +39407,7 @@ ifTrue_152:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$405 x$134 SHIFT_TABLE$157
+	# DIVresult_$405 x$134 SHIFT_TABLE$157 
 
 	# fetch variables
 
@@ -40612,14 +39420,14 @@ ifTrue_152:
 	li t4, 5176
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$405
 	li t4, 5168
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$405
+	# store lv$2 result_$405
 
 	# fetch variables
 
@@ -40627,8 +39435,6 @@ ifTrue_152:
 	li t4, 5168
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$405
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -40649,7 +39455,7 @@ ifTrue_152:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$406 x$135 
+	# ADDresult_$406 x$135  
 
 	# fetch variables
 
@@ -40678,7 +39484,7 @@ ifTrue_152:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$407  y$140
+	# SUBresult_$407  y$140 
 
 	# fetch variables
 	li t1, 15
@@ -40694,7 +39500,7 @@ ifTrue_152:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$408 result_$407 
+	# ADDresult_$408 result_$407  
 
 	# fetch variables
 
@@ -40744,7 +39550,7 @@ ifTrue_152:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$409 result_$406 SHIFT_TABLE$159
+	# SUBresult_$409 result_$406 SHIFT_TABLE$159 
 
 	# fetch variables
 
@@ -40764,7 +39570,7 @@ ifTrue_152:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$409
+	# store lv result_$409
 
 	# fetch variables
 
@@ -40773,17 +39579,15 @@ ifTrue_152:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$409
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_263
-	j next_263
-ifFalse_71:
+	# br next_356
+	j next_356
+ifFalse_76:
 
 	# load x$136 lv$2
 
@@ -40845,7 +39649,7 @@ ifFalse_71:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$410 x$136 SHIFT_TABLE$161
+	# DIVresult_$410 x$136 SHIFT_TABLE$161 
 
 	# fetch variables
 
@@ -40858,14 +39662,14 @@ ifFalse_71:
 	li t4, 5072
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$410
 	li t4, 5064
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv result_$410
+	# store lv result_$410
 
 	# fetch variables
 
@@ -40874,21 +39678,19 @@ ifFalse_71:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$410
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_263
-	j next_263
-next_263:
+	# br next_356
+	j next_356
+next_356:
 
-	# br next_262
-	j next_262
-ifTrue_153:
+	# br next_355
+	j next_355
+ifTrue_200:
 
 	# load x$138 lv$2
 
@@ -40903,7 +39705,7 @@ ifTrue_153:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$138  cond_lt_tmp_$54
+	# ICMPcond_lt_tmp_$54 x$138  
 
 	# fetch variables
 
@@ -40912,14 +39714,14 @@ ifTrue_153:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$54
 	li t4, 5048
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$106 cond_lt_tmp_$54
+	# ZEXTcond_tmp_$106 cond_lt_tmp_$54
 
 	# fetch variables
 
@@ -40927,14 +39729,14 @@ ifTrue_153:
 	li t4, 5048
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$106
 	li t4, 5040
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$106  cond_$106
+	# ICMPcond_$106 cond_tmp_$106  
 
 	# fetch variables
 
@@ -40943,16 +39745,16 @@ ifTrue_153:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$106
 	li t4, 5032
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$106 ifTrue_154 ifFalse_73
+	# condBr cond_$106 ifTrue_201 ifFalse_78
 
 	# fetch variables
 
@@ -40960,9 +39762,9 @@ ifTrue_153:
 	li t4, 5032
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_73
-	j ifTrue_154
-ifFalse_72:
+	beqz t1, ifFalse_78
+	j ifTrue_201
+ifFalse_77:
 
 	# load y$143 lv$3
 
@@ -40977,7 +39779,7 @@ ifFalse_72:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$143  cond_gt_tmp_$31
+	# ICMPcond_gt_tmp_$31 y$143  
 
 	# fetch variables
 
@@ -40986,15 +39788,15 @@ ifFalse_72:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$31
 	li t4, 5016
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$107 cond_gt_tmp_$31
+	# ZEXTcond_tmp_$107 cond_gt_tmp_$31
 
 	# fetch variables
 
@@ -41002,14 +39804,14 @@ ifFalse_72:
 	li t4, 5016
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$107
 	li t4, 5008
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$107  cond_$107
+	# ICMPcond_$107 cond_tmp_$107  
 
 	# fetch variables
 
@@ -41018,16 +39820,16 @@ ifFalse_72:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$107
 	li t4, 5000
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$107 ifTrue_155 ifFalse_74
+	# condBr cond_$107 ifTrue_202 ifFalse_79
 
 	# fetch variables
 
@@ -41035,9 +39837,9 @@ ifFalse_72:
 	li t4, 5000
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_74
-	j ifTrue_155
-next_264:
+	beqz t1, ifFalse_79
+	j ifTrue_202
+next_357:
 
 	# load ans$130 lv
 
@@ -41052,7 +39854,7 @@ next_264:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$48 ans$130
+	# store lv$48 ans$130
 
 	# fetch variables
 
@@ -41061,55 +39863,49 @@ next_264:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$48 ans$130
-
 	# get address of lv$48 points to
 	li t4, 19752
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_89
-	j whileCond_89
-ifTrue_154:
+	# br whileCond_135
+	j whileCond_135
+ifTrue_201:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 65535
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_265
-	j next_265
-ifFalse_73:
+	# br next_358
+	j next_358
+ifFalse_78:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_265
-	j next_265
-next_265:
+	# br next_358
+	j next_358
+next_358:
 
-	# br next_264
-	j next_264
-ifTrue_155:
+	# br next_357
+	j next_357
+ifTrue_202:
 
 	# load x$139 lv$2
 
@@ -41124,7 +39920,7 @@ ifTrue_155:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$139  cond_gt_tmp_$32
+	# ICMPcond_gt_tmp_$32 x$139  
 
 	# fetch variables
 
@@ -41133,15 +39929,15 @@ ifTrue_155:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 32767
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$32
 	li t4, 4976
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$108 cond_gt_tmp_$32
+	# ZEXTcond_tmp_$108 cond_gt_tmp_$32
 
 	# fetch variables
 
@@ -41149,14 +39945,14 @@ ifTrue_155:
 	li t4, 4976
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$108
 	li t4, 4968
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$108  cond_$108
+	# ICMPcond_$108 cond_tmp_$108  
 
 	# fetch variables
 
@@ -41165,16 +39961,16 @@ ifTrue_155:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$108
 	li t4, 4960
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$108 ifTrue_156 ifFalse_75
+	# condBr cond_$108 ifTrue_203 ifFalse_80
 
 	# fetch variables
 
@@ -41182,9 +39978,9 @@ ifTrue_155:
 	li t4, 4960
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_75
-	j ifTrue_156
-ifFalse_74:
+	beqz t1, ifFalse_80
+	j ifTrue_203
+ifFalse_79:
 
 	# load x$143 lv$2
 
@@ -41199,7 +39995,7 @@ ifFalse_74:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv x$143
+	# store lv x$143
 
 	# fetch variables
 
@@ -41208,21 +40004,19 @@ ifFalse_74:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv x$143
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_266
-	j next_266
-next_266:
+	# br next_359
+	j next_359
+next_359:
 
-	# br next_264
-	j next_264
-ifTrue_156:
+	# br next_357
+	j next_357
+ifTrue_203:
 
 	# load x$140 lv$2
 
@@ -41284,7 +40078,7 @@ ifTrue_156:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$411 x$140 SHIFT_TABLE$163
+	# DIVresult_$411 x$140 SHIFT_TABLE$163 
 
 	# fetch variables
 
@@ -41297,14 +40091,14 @@ ifTrue_156:
 	li t4, 4920
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$411
 	li t4, 4912
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$411
+	# store lv$2 result_$411
 
 	# fetch variables
 
@@ -41312,8 +40106,6 @@ ifTrue_156:
 	li t4, 4912
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$411
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -41334,7 +40126,7 @@ ifTrue_156:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$412 x$141 
+	# ADDresult_$412 x$141  
 
 	# fetch variables
 
@@ -41363,7 +40155,7 @@ ifTrue_156:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$413  y$145
+	# SUBresult_$413  y$145 
 
 	# fetch variables
 	li t1, 15
@@ -41379,7 +40171,7 @@ ifTrue_156:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$414 result_$413 
+	# ADDresult_$414 result_$413  
 
 	# fetch variables
 
@@ -41429,7 +40221,7 @@ ifTrue_156:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$415 result_$412 SHIFT_TABLE$165
+	# SUBresult_$415 result_$412 SHIFT_TABLE$165 
 
 	# fetch variables
 
@@ -41449,7 +40241,7 @@ ifTrue_156:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$415
+	# store lv result_$415
 
 	# fetch variables
 
@@ -41458,17 +40250,15 @@ ifTrue_156:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$415
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_267
-	j next_267
-ifFalse_75:
+	# br next_360
+	j next_360
+ifFalse_80:
 
 	# load x$142 lv$2
 
@@ -41530,7 +40320,7 @@ ifFalse_75:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$416 x$142 SHIFT_TABLE$167
+	# DIVresult_$416 x$142 SHIFT_TABLE$167 
 
 	# fetch variables
 
@@ -41543,14 +40333,14 @@ ifFalse_75:
 	li t4, 4816
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$416
 	li t4, 4808
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv result_$416
+	# store lv result_$416
 
 	# fetch variables
 
@@ -41559,21 +40349,19 @@ ifFalse_75:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$416
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_267
-	j next_267
-next_267:
+	# br next_360
+	j next_360
+next_360:
 
-	# br next_266
-	j next_266
-whileCond_111:
+	# br next_359
+	j next_359
+whileCond_157:
 
 	# load cur$3 lv$4
 
@@ -41588,7 +40376,7 @@ whileCond_111:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp cur$3  cond_lt_tmp_$55
+	# ICMPcond_lt_tmp_$55 cur$3  
 
 	# fetch variables
 
@@ -41597,14 +40385,14 @@ whileCond_111:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$55
 	li t4, 4792
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$109 cond_lt_tmp_$55
+	# ZEXTcond_tmp_$109 cond_lt_tmp_$55
 
 	# fetch variables
 
@@ -41612,14 +40400,14 @@ whileCond_111:
 	li t4, 4792
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$109
 	li t4, 4784
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$109  cond_$109
+	# ICMPcond_$109 cond_tmp_$109  
 
 	# fetch variables
 
@@ -41628,16 +40416,16 @@ whileCond_111:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$109
 	li t4, 4776
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$109 whileBody_111 next_268
+	# condBr cond_$109 whileBody_157 next_361
 
 	# fetch variables
 
@@ -41645,16 +40433,14 @@ whileCond_111:
 	li t4, 4776
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_268
-	j whileBody_111
-whileBody_111:
+	beqz t1, next_361
+	j whileBody_157
+whileBody_157:
 
-	# lv$68 
+	# store lv$68 
 
 	# fetch variables
 	li t1, 2
-
-	# store lv$68 
 
 	# get address of lv$68 points to
 	li t4, 20072
@@ -41675,7 +40461,7 @@ whileBody_111:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$69 cur$4
+	# store lv$69 cur$4
 
 	# fetch variables
 
@@ -41684,20 +40470,16 @@ whileBody_111:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$69 cur$4
-
 	# get address of lv$69 points to
 	li t4, 20088
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$70 
+	# store lv$70 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$70 
 
 	# get address of lv$70 points to
 	li t4, 20104
@@ -41705,9 +40487,9 @@ whileBody_111:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_112
-	j whileCond_112
-next_268:
+	# br whileCond_158
+	j whileCond_158
+next_361:
 
 	# ret 
 
@@ -41720,7 +40502,7 @@ next_268:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_112:
+whileCond_158:
 
 	# load pr$9 lv$69
 
@@ -41735,7 +40517,7 @@ whileCond_112:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp pr$9  cond_gt_tmp_$33
+	# ICMPcond_gt_tmp_$33 pr$9  
 
 	# fetch variables
 
@@ -41744,15 +40526,15 @@ whileCond_112:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$33
 	li t4, 4752
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$110 cond_gt_tmp_$33
+	# ZEXTcond_tmp_$110 cond_gt_tmp_$33
 
 	# fetch variables
 
@@ -41760,14 +40542,14 @@ whileCond_112:
 	li t4, 4752
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$110
 	li t4, 4744
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$110  cond_$110
+	# ICMPcond_$110 cond_tmp_$110  
 
 	# fetch variables
 
@@ -41776,16 +40558,16 @@ whileCond_112:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$110
 	li t4, 4736
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$110 whileBody_112 next_269
+	# condBr cond_$110 whileBody_158 next_362
 
 	# fetch variables
 
@@ -41793,16 +40575,14 @@ whileCond_112:
 	li t4, 4736
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_269
-	j whileBody_112
-whileBody_112:
+	beqz t1, next_362
+	j whileBody_158
+whileBody_158:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -41810,12 +40590,10 @@ whileBody_112:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -41836,7 +40614,7 @@ whileBody_112:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 pr$10
+	# store lv$2 pr$10
 
 	# fetch variables
 
@@ -41845,20 +40623,16 @@ whileBody_112:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 pr$10
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -41866,9 +40640,9 @@ whileBody_112:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_113
-	j whileCond_113
-next_269:
+	# br whileCond_159
+	j whileCond_159
+next_362:
 
 	# load pres$7 lv$70
 
@@ -41883,7 +40657,7 @@ next_269:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv pres$7
+	# store lv pres$7
 
 	# fetch variables
 
@@ -41891,8 +40665,6 @@ next_269:
 	li t4, 4720
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv pres$7
 
 	# get address of lv points to
 	li t4, 18984
@@ -41960,7 +40732,7 @@ next_269:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp SHIFT_TABLE$225 ans$175 cond_neq_tmp_
+	# ICMPcond_neq_tmp_ SHIFT_TABLE$225 ans$175 
 
 	# fetch variables
 
@@ -41973,16 +40745,16 @@ next_269:
 	li t4, 4688
 	add t4, sp, t4
 	ld t2, 0(t4)
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_neq_tmp_
 	li t4, 4680
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$146 cond_neq_tmp_
+	# ZEXTcond_tmp_$146 cond_neq_tmp_
 
 	# fetch variables
 
@@ -41990,14 +40762,14 @@ next_269:
 	li t4, 4680
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$146
 	li t4, 4672
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$146  cond_$146
+	# ICMPcond_$146 cond_tmp_$146  
 
 	# fetch variables
 
@@ -42006,16 +40778,16 @@ next_269:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$146
 	li t4, 4664
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$146 ifTrue_199 next_333
+	# condBr cond_$146 ifTrue_246 next_426
 
 	# fetch variables
 
@@ -42023,9 +40795,9 @@ next_269:
 	li t4, 4664
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_333
-	j ifTrue_199
-whileCond_113:
+	beqz t1, next_426
+	j ifTrue_246
+whileCond_159:
 
 	# load i$147 lv$1
 
@@ -42040,7 +40812,7 @@ whileCond_113:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$147  cond_lt_tmp_$56
+	# ICMPcond_lt_tmp_$56 i$147  
 
 	# fetch variables
 
@@ -42049,14 +40821,14 @@ whileCond_113:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$56
 	li t4, 4648
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$111 cond_lt_tmp_$56
+	# ZEXTcond_tmp_$111 cond_lt_tmp_$56
 
 	# fetch variables
 
@@ -42064,14 +40836,14 @@ whileCond_113:
 	li t4, 4648
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$111
 	li t4, 4640
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$111  cond_$111
+	# ICMPcond_$111 cond_tmp_$111  
 
 	# fetch variables
 
@@ -42080,16 +40852,16 @@ whileCond_113:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$111
 	li t4, 4632
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$111 whileBody_113 next_270
+	# condBr cond_$111 whileBody_159 next_363
 
 	# fetch variables
 
@@ -42097,9 +40869,9 @@ whileCond_113:
 	li t4, 4632
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_270
-	j whileBody_113
-whileBody_113:
+	beqz t1, next_363
+	j whileBody_159
+whileBody_159:
 
 	# load x$144 lv$2
 
@@ -42114,7 +40886,7 @@ whileBody_113:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$418 x$144 
+	# MODresult_$418 x$144  
 
 	# fetch variables
 
@@ -42123,14 +40895,14 @@ whileBody_113:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$418
 	li t4, 4616
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$418  cond_normalize_$117
+	# ICMPcond_normalize_$117 result_$418  
 
 	# fetch variables
 
@@ -42139,16 +40911,16 @@ whileBody_113:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$117
 	li t4, 4608
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$117 secondCond_45 next_271
+	# condBr cond_normalize_$117 secondCond_80 next_364
 
 	# fetch variables
 
@@ -42156,9 +40928,9 @@ whileBody_113:
 	li t4, 4608
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_271
-	j secondCond_45
-next_270:
+	beqz t1, next_364
+	j secondCond_80
+next_363:
 
 	# load ans$133 lv
 
@@ -42173,7 +40945,7 @@ next_270:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp ans$133  cond_normalize_$119
+	# ICMPcond_normalize_$119 ans$133  
 
 	# fetch variables
 
@@ -42182,16 +40954,16 @@ next_270:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$119
 	li t4, 4592
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$119 ifTrue_158 next_272
+	# condBr cond_normalize_$119 ifTrue_205 next_365
 
 	# fetch variables
 
@@ -42199,9 +40971,9 @@ next_270:
 	li t4, 4592
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_272
-	j ifTrue_158
-ifTrue_157:
+	beqz t1, next_365
+	j ifTrue_205
+ifTrue_204:
 
 	# load ans$132 lv
 
@@ -42263,7 +41035,7 @@ ifTrue_157:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$420  SHIFT_TABLE$169
+	# MULresult_$420  SHIFT_TABLE$169 
 
 	# fetch variables
 	li t1, 1
@@ -42279,7 +41051,7 @@ ifTrue_157:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$421 ans$132 result_$420
+	# ADDresult_$421 ans$132 result_$420 
 
 	# fetch variables
 
@@ -42299,7 +41071,7 @@ ifTrue_157:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$421
+	# store lv result_$421
 
 	# fetch variables
 
@@ -42308,17 +41080,15 @@ ifTrue_157:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$421
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_271
-	j next_271
-next_271:
+	# br next_364
+	j next_364
+next_364:
 
 	# load x$145 lv$2
 
@@ -42333,7 +41103,7 @@ next_271:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$422 x$145 
+	# DIVresult_$422 x$145  
 
 	# fetch variables
 
@@ -42342,14 +41112,14 @@ next_271:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$422
 	li t4, 4528
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$422
+	# store lv$2 result_$422
 
 	# fetch variables
 
@@ -42357,8 +41127,6 @@ next_271:
 	li t4, 4528
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$422
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -42379,7 +41147,7 @@ next_271:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$423 y$148 
+	# DIVresult_$423 y$148  
 
 	# fetch variables
 
@@ -42388,14 +41156,14 @@ next_271:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$423
 	li t4, 4512
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$423
+	# store lv$3 result_$423
 
 	# fetch variables
 
@@ -42403,8 +41171,6 @@ next_271:
 	li t4, 4512
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$423
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -42425,7 +41191,7 @@ next_271:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$424 i$149 
+	# ADDresult_$424 i$149  
 
 	# fetch variables
 
@@ -42441,7 +41207,7 @@ next_271:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$424
+	# store lv$1 result_$424
 
 	# fetch variables
 
@@ -42450,17 +41216,15 @@ next_271:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$424
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_113
-	j whileCond_113
-secondCond_45:
+	# br whileCond_159
+	j whileCond_159
+secondCond_80:
 
 	# load y$147 lv$3
 
@@ -42475,7 +41239,7 @@ secondCond_45:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$419 y$147 
+	# MODresult_$419 y$147  
 
 	# fetch variables
 
@@ -42484,14 +41248,14 @@ secondCond_45:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$419
 	li t4, 4480
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$419  cond_normalize_$118
+	# ICMPcond_normalize_$118 result_$419  
 
 	# fetch variables
 
@@ -42500,16 +41264,16 @@ secondCond_45:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$118
 	li t4, 4472
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$118 ifTrue_157 next_271
+	# condBr cond_normalize_$118 ifTrue_204 next_364
 
 	# fetch variables
 
@@ -42517,9 +41281,9 @@ secondCond_45:
 	li t4, 4472
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_271
-	j ifTrue_157
-ifTrue_158:
+	beqz t1, next_364
+	j ifTrue_204
+ifTrue_205:
 
 	# load pres$6 lv$70
 
@@ -42534,7 +41298,7 @@ ifTrue_158:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$71 pres$6
+	# store lv$71 pres$6
 
 	# fetch variables
 
@@ -42542,8 +41306,6 @@ ifTrue_158:
 	li t4, 4464
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$71 pres$6
 
 	# get address of lv$71 points to
 	li t4, 20120
@@ -42564,7 +41326,7 @@ ifTrue_158:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$72 pl$9
+	# store lv$72 pl$9
 
 	# fetch variables
 
@@ -42573,20 +41335,16 @@ ifTrue_158:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$72 pl$9
-
 	# get address of lv$72 points to
 	li t4, 20136
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$73 
+	# store lv$73 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$73 
 
 	# get address of lv$73 points to
 	li t4, 20152
@@ -42594,9 +41352,9 @@ ifTrue_158:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_114
-	j whileCond_114
-next_272:
+	# br whileCond_160
+	j whileCond_160
+next_365:
 
 	# load pl$10 lv$68
 
@@ -42611,7 +41369,7 @@ next_272:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$80 pl$10
+	# store lv$80 pl$10
 
 	# fetch variables
 
@@ -42619,8 +41377,6 @@ next_272:
 	li t4, 4448
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$80 pl$10
 
 	# get address of lv$80 points to
 	li t4, 20264
@@ -42641,7 +41397,7 @@ next_272:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$81 pl$11
+	# store lv$81 pl$11
 
 	# fetch variables
 
@@ -42650,20 +41406,16 @@ next_272:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$81 pl$11
-
 	# get address of lv$81 points to
 	li t4, 20280
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$82 
+	# store lv$82 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$82 
 
 	# get address of lv$82 points to
 	li t4, 20296
@@ -42671,9 +41423,9 @@ next_272:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_124
-	j whileCond_124
-whileCond_114:
+	# br whileCond_170
+	j whileCond_170
+whileCond_160:
 
 	# load mr$18 lv$72
 
@@ -42688,7 +41440,7 @@ whileCond_114:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp mr$18  cond_normalize_$120
+	# ICMPcond_normalize_$120 mr$18  
 
 	# fetch variables
 
@@ -42697,16 +41449,16 @@ whileCond_114:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$120
 	li t4, 4424
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$120 whileBody_114 next_273
+	# condBr cond_normalize_$120 whileBody_160 next_366
 
 	# fetch variables
 
@@ -42714,16 +41466,14 @@ whileCond_114:
 	li t4, 4424
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_273
-	j whileBody_114
-whileBody_114:
+	beqz t1, next_366
+	j whileBody_160
+whileBody_160:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -42731,12 +41481,10 @@ whileBody_114:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -42757,7 +41505,7 @@ whileBody_114:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$19
+	# store lv$2 mr$19
 
 	# fetch variables
 
@@ -42766,20 +41514,16 @@ whileBody_114:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$19
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -42787,9 +41531,9 @@ whileBody_114:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_115
-	j whileCond_115
-next_273:
+	# br whileCond_161
+	j whileCond_161
+next_366:
 
 	# load mres$13 lv$73
 
@@ -42804,7 +41548,7 @@ next_273:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv mres$13
+	# store lv mres$13
 
 	# fetch variables
 
@@ -42812,8 +41556,6 @@ next_273:
 	li t4, 4408
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv mres$13
 
 	# get address of lv points to
 	li t4, 18984
@@ -42834,7 +41576,7 @@ next_273:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$70 ans$153
+	# store lv$70 ans$153
 
 	# fetch variables
 
@@ -42843,17 +41585,15 @@ next_273:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$70 ans$153
-
 	# get address of lv$70 points to
 	li t4, 20104
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_272
-	j next_272
-whileCond_115:
+	# br next_365
+	j next_365
+whileCond_161:
 
 	# load i$150 lv$1
 
@@ -42868,7 +41608,7 @@ whileCond_115:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$150  cond_lt_tmp_$57
+	# ICMPcond_lt_tmp_$57 i$150  
 
 	# fetch variables
 
@@ -42877,14 +41617,14 @@ whileCond_115:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$57
 	li t4, 4384
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$112 cond_lt_tmp_$57
+	# ZEXTcond_tmp_$112 cond_lt_tmp_$57
 
 	# fetch variables
 
@@ -42892,14 +41632,14 @@ whileCond_115:
 	li t4, 4384
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$112
 	li t4, 4376
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$112  cond_$112
+	# ICMPcond_$112 cond_tmp_$112  
 
 	# fetch variables
 
@@ -42908,16 +41648,16 @@ whileCond_115:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$112
 	li t4, 4368
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$112 whileBody_115 next_274
+	# condBr cond_$112 whileBody_161 next_367
 
 	# fetch variables
 
@@ -42925,9 +41665,9 @@ whileCond_115:
 	li t4, 4368
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_274
-	j whileBody_115
-whileBody_115:
+	beqz t1, next_367
+	j whileBody_161
+whileBody_161:
 
 	# load x$146 lv$2
 
@@ -42942,7 +41682,7 @@ whileBody_115:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$425 x$146 
+	# MODresult_$425 x$146  
 
 	# fetch variables
 
@@ -42951,14 +41691,14 @@ whileBody_115:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$425
 	li t4, 4352
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$425  cond_normalize_$121
+	# ICMPcond_normalize_$121 result_$425  
 
 	# fetch variables
 
@@ -42967,16 +41707,16 @@ whileBody_115:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$121
 	li t4, 4344
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$121 secondCond_46 next_275
+	# condBr cond_normalize_$121 secondCond_81 next_368
 
 	# fetch variables
 
@@ -42984,9 +41724,9 @@ whileBody_115:
 	li t4, 4344
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_275
-	j secondCond_46
-next_274:
+	beqz t1, next_368
+	j secondCond_81
+next_367:
 
 	# load ans$135 lv
 
@@ -43001,7 +41741,7 @@ next_274:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp ans$135  cond_normalize_$123
+	# ICMPcond_normalize_$123 ans$135  
 
 	# fetch variables
 
@@ -43010,16 +41750,16 @@ next_274:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$123
 	li t4, 4328
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$123 ifTrue_160 next_276
+	# condBr cond_normalize_$123 ifTrue_207 next_369
 
 	# fetch variables
 
@@ -43027,9 +41767,9 @@ next_274:
 	li t4, 4328
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_276
-	j ifTrue_160
-ifTrue_159:
+	beqz t1, next_369
+	j ifTrue_207
+ifTrue_206:
 
 	# load ans$134 lv
 
@@ -43091,7 +41831,7 @@ ifTrue_159:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$427  SHIFT_TABLE$171
+	# MULresult_$427  SHIFT_TABLE$171 
 
 	# fetch variables
 	li t1, 1
@@ -43107,7 +41847,7 @@ ifTrue_159:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$428 ans$134 result_$427
+	# ADDresult_$428 ans$134 result_$427 
 
 	# fetch variables
 
@@ -43127,7 +41867,7 @@ ifTrue_159:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$428
+	# store lv result_$428
 
 	# fetch variables
 
@@ -43136,17 +41876,15 @@ ifTrue_159:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$428
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_275
-	j next_275
-next_275:
+	# br next_368
+	j next_368
+next_368:
 
 	# load x$147 lv$2
 
@@ -43161,7 +41899,7 @@ next_275:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$429 x$147 
+	# DIVresult_$429 x$147  
 
 	# fetch variables
 
@@ -43170,14 +41908,14 @@ next_275:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$429
 	li t4, 4264
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$429
+	# store lv$2 result_$429
 
 	# fetch variables
 
@@ -43185,8 +41923,6 @@ next_275:
 	li t4, 4264
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$429
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -43207,7 +41943,7 @@ next_275:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$430 y$150 
+	# DIVresult_$430 y$150  
 
 	# fetch variables
 
@@ -43216,14 +41952,14 @@ next_275:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$430
 	li t4, 4248
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$430
+	# store lv$3 result_$430
 
 	# fetch variables
 
@@ -43231,8 +41967,6 @@ next_275:
 	li t4, 4248
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$430
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -43253,7 +41987,7 @@ next_275:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$431 i$152 
+	# ADDresult_$431 i$152  
 
 	# fetch variables
 
@@ -43269,7 +42003,7 @@ next_275:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$431
+	# store lv$1 result_$431
 
 	# fetch variables
 
@@ -43278,17 +42012,15 @@ next_275:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$431
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_115
-	j whileCond_115
-secondCond_46:
+	# br whileCond_161
+	j whileCond_161
+secondCond_81:
 
 	# load y$149 lv$3
 
@@ -43303,7 +42035,7 @@ secondCond_46:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$426 y$149 
+	# MODresult_$426 y$149  
 
 	# fetch variables
 
@@ -43312,14 +42044,14 @@ secondCond_46:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$426
 	li t4, 4216
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$426  cond_normalize_$122
+	# ICMPcond_normalize_$122 result_$426  
 
 	# fetch variables
 
@@ -43328,16 +42060,16 @@ secondCond_46:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$122
 	li t4, 4208
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$122 ifTrue_159 next_275
+	# condBr cond_normalize_$122 ifTrue_206 next_368
 
 	# fetch variables
 
@@ -43345,9 +42077,9 @@ secondCond_46:
 	li t4, 4208
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_275
-	j ifTrue_159
-ifTrue_160:
+	beqz t1, next_368
+	j ifTrue_206
+ifTrue_207:
 
 	# load mres$12 lv$73
 
@@ -43362,7 +42094,7 @@ ifTrue_160:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$74 mres$12
+	# store lv$74 mres$12
 
 	# fetch variables
 
@@ -43370,8 +42102,6 @@ ifTrue_160:
 	li t4, 4200
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$74 mres$12
 
 	# get address of lv$74 points to
 	li t4, 20168
@@ -43392,7 +42122,7 @@ ifTrue_160:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$75 ml$18
+	# store lv$75 ml$18
 
 	# fetch variables
 
@@ -43401,17 +42131,15 @@ ifTrue_160:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$75 ml$18
-
 	# get address of lv$75 points to
 	li t4, 20184
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_116
-	j whileCond_116
-next_276:
+	# br whileCond_162
+	j whileCond_162
+next_369:
 
 	# load ml$19 lv$71
 
@@ -43426,7 +42154,7 @@ next_276:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$77 ml$19
+	# store lv$77 ml$19
 
 	# fetch variables
 
@@ -43434,8 +42162,6 @@ next_276:
 	li t4, 4184
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$77 ml$19
 
 	# get address of lv$77 points to
 	li t4, 20216
@@ -43456,7 +42182,7 @@ next_276:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$78 ml$20
+	# store lv$78 ml$20
 
 	# fetch variables
 
@@ -43465,17 +42191,15 @@ next_276:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$78 ml$20
-
 	# get address of lv$78 points to
 	li t4, 20232
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_120
-	j whileCond_120
-whileCond_116:
+	# br whileCond_166
+	j whileCond_166
+whileCond_162:
 
 	# load c$48 lv$75
 
@@ -43490,7 +42214,7 @@ whileCond_116:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$48  cond_normalize_$124
+	# ICMPcond_normalize_$124 c$48  
 
 	# fetch variables
 
@@ -43499,16 +42223,16 @@ whileCond_116:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$124
 	li t4, 4160
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$124 whileBody_116 next_277
+	# condBr cond_normalize_$124 whileBody_162 next_370
 
 	# fetch variables
 
@@ -43516,16 +42240,14 @@ whileCond_116:
 	li t4, 4160
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_277
-	j whileBody_116
-whileBody_116:
+	beqz t1, next_370
+	j whileBody_162
+whileBody_162:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -43533,12 +42255,10 @@ whileBody_116:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -43559,7 +42279,7 @@ whileBody_116:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$36
+	# store lv$2 al$36
 
 	# fetch variables
 
@@ -43567,8 +42287,6 @@ whileBody_116:
 	li t4, 4152
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$36
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -43589,7 +42307,7 @@ whileBody_116:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$49
+	# store lv$3 c$49
 
 	# fetch variables
 
@@ -43598,17 +42316,15 @@ whileBody_116:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$49
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_117
-	j whileCond_117
-next_277:
+	# br whileCond_163
+	j whileCond_163
+next_370:
 
 	# load al$38 lv$74
 
@@ -43623,7 +42339,7 @@ next_277:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$38
+	# store lv al$38
 
 	# fetch variables
 
@@ -43631,8 +42347,6 @@ next_277:
 	li t4, 4136
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$38
 
 	# get address of lv points to
 	li t4, 18984
@@ -43653,7 +42367,7 @@ next_277:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$73 ans$143
+	# store lv$73 ans$143
 
 	# fetch variables
 
@@ -43662,17 +42376,15 @@ next_277:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$73 ans$143
-
 	# get address of lv$73 points to
 	li t4, 20152
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_276
-	j next_276
-whileCond_117:
+	# br next_369
+	j next_369
+whileCond_163:
 
 	# load i$153 lv$1
 
@@ -43687,7 +42399,7 @@ whileCond_117:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$153  cond_lt_tmp_$58
+	# ICMPcond_lt_tmp_$58 i$153  
 
 	# fetch variables
 
@@ -43696,14 +42408,14 @@ whileCond_117:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$58
 	li t4, 4112
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$113 cond_lt_tmp_$58
+	# ZEXTcond_tmp_$113 cond_lt_tmp_$58
 
 	# fetch variables
 
@@ -43711,14 +42423,14 @@ whileCond_117:
 	li t4, 4112
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$113
 	li t4, 4104
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$113  cond_$113
+	# ICMPcond_$113 cond_tmp_$113  
 
 	# fetch variables
 
@@ -43727,16 +42439,16 @@ whileCond_117:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$113
 	li t4, 4096
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$113 whileBody_117 next_278
+	# condBr cond_$113 whileBody_163 next_371
 
 	# fetch variables
 
@@ -43744,9 +42456,9 @@ whileCond_117:
 	li t4, 4096
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_278
-	j whileBody_117
-whileBody_117:
+	beqz t1, next_371
+	j whileBody_163
+whileBody_163:
 
 	# load x$148 lv$2
 
@@ -43761,7 +42473,7 @@ whileBody_117:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$432 x$148 
+	# MODresult_$432 x$148  
 
 	# fetch variables
 
@@ -43770,14 +42482,14 @@ whileBody_117:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$432
 	li t4, 4080
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$432  cond_normalize_$125
+	# ICMPcond_normalize_$125 result_$432  
 
 	# fetch variables
 
@@ -43786,16 +42498,16 @@ whileBody_117:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$125
 	li t4, 4072
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$125 ifTrue_161 ifFalse_76
+	# condBr cond_normalize_$125 ifTrue_208 ifFalse_81
 
 	# fetch variables
 
@@ -43803,9 +42515,9 @@ whileBody_117:
 	li t4, 4072
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_76
-	j ifTrue_161
-next_278:
+	beqz t1, ifFalse_81
+	j ifTrue_208
+next_371:
 
 	# load ans$138 lv
 
@@ -43820,7 +42532,7 @@ next_278:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$76 ans$138
+	# store lv$76 ans$138
 
 	# fetch variables
 
@@ -43829,20 +42541,16 @@ next_278:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$76 ans$138
-
 	# get address of lv$76 points to
 	li t4, 20200
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -43850,12 +42558,10 @@ next_278:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -43876,7 +42582,7 @@ next_278:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$37
+	# store lv$2 al$37
 
 	# fetch variables
 
@@ -43884,8 +42590,6 @@ next_278:
 	li t4, 4056
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$37
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -43906,7 +42610,7 @@ next_278:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$50
+	# store lv$3 c$50
 
 	# fetch variables
 
@@ -43915,17 +42619,15 @@ next_278:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$50
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_118
-	j whileCond_118
-ifTrue_161:
+	# br whileCond_164
+	j whileCond_164
+ifTrue_208:
 
 	# load y$151 lv$3
 
@@ -43940,7 +42642,7 @@ ifTrue_161:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$433 y$151 
+	# MODresult_$433 y$151  
 
 	# fetch variables
 
@@ -43949,14 +42651,14 @@ ifTrue_161:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$433
-	li t4, 4032
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$433
+	li t4, 4032
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$433  cond_eq_tmp_$12
+	# ICMPcond_eq_tmp_$12 result_$433  
 
 	# fetch variables
 
@@ -43965,15 +42667,15 @@ ifTrue_161:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$12
 	li t4, 4024
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$114 cond_eq_tmp_$12
+	# ZEXTcond_tmp_$114 cond_eq_tmp_$12
 
 	# fetch variables
 
@@ -43981,14 +42683,14 @@ ifTrue_161:
 	li t4, 4024
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$114
 	li t4, 4016
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$114  cond_$114
+	# ICMPcond_$114 cond_tmp_$114  
 
 	# fetch variables
 
@@ -43997,16 +42699,16 @@ ifTrue_161:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$114
 	li t4, 4008
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$114 ifTrue_162 next_280
+	# condBr cond_$114 ifTrue_209 next_373
 
 	# fetch variables
 
@@ -44014,9 +42716,9 @@ ifTrue_161:
 	li t4, 4008
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_280
-	j ifTrue_162
-ifFalse_76:
+	beqz t1, next_373
+	j ifTrue_209
+ifFalse_81:
 
 	# load y$152 lv$3
 
@@ -44031,7 +42733,7 @@ ifFalse_76:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$436 y$152 
+	# MODresult_$436 y$152  
 
 	# fetch variables
 
@@ -44040,14 +42742,14 @@ ifFalse_76:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$436
 	li t4, 3992
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$436  cond_normalize_$126
+	# ICMPcond_normalize_$126 result_$436  
 
 	# fetch variables
 
@@ -44056,16 +42758,16 @@ ifFalse_76:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$126
 	li t4, 3984
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$126 ifTrue_163 next_281
+	# condBr cond_normalize_$126 ifTrue_210 next_374
 
 	# fetch variables
 
@@ -44073,9 +42775,9 @@ ifFalse_76:
 	li t4, 3984
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_281
-	j ifTrue_163
-next_279:
+	beqz t1, next_374
+	j ifTrue_210
+next_372:
 
 	# load x$149 lv$2
 
@@ -44090,7 +42792,7 @@ next_279:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$439 x$149 
+	# DIVresult_$439 x$149  
 
 	# fetch variables
 
@@ -44099,14 +42801,14 @@ next_279:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$439
 	li t4, 3968
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$439
+	# store lv$2 result_$439
 
 	# fetch variables
 
@@ -44114,8 +42816,6 @@ next_279:
 	li t4, 3968
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$439
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -44136,7 +42836,7 @@ next_279:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$440 y$153 
+	# DIVresult_$440 y$153  
 
 	# fetch variables
 
@@ -44145,14 +42845,14 @@ next_279:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$440
 	li t4, 3952
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$440
+	# store lv$3 result_$440
 
 	# fetch variables
 
@@ -44160,8 +42860,6 @@ next_279:
 	li t4, 3952
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$440
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -44182,7 +42880,7 @@ next_279:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$441 i$156 
+	# ADDresult_$441 i$156  
 
 	# fetch variables
 
@@ -44198,7 +42896,7 @@ next_279:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$441
+	# store lv$1 result_$441
 
 	# fetch variables
 
@@ -44207,17 +42905,15 @@ next_279:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$441
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_117
-	j whileCond_117
-ifTrue_162:
+	# br whileCond_163
+	j whileCond_163
+ifTrue_209:
 
 	# load ans$136 lv
 
@@ -44279,7 +42975,7 @@ ifTrue_162:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$434  SHIFT_TABLE$173
+	# MULresult_$434  SHIFT_TABLE$173 
 
 	# fetch variables
 	li t1, 1
@@ -44295,7 +42991,7 @@ ifTrue_162:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$435 ans$136 result_$434
+	# ADDresult_$435 ans$136 result_$434 
 
 	# fetch variables
 
@@ -44315,7 +43011,7 @@ ifTrue_162:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$435
+	# store lv result_$435
 
 	# fetch variables
 
@@ -44324,21 +43020,19 @@ ifTrue_162:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$435
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_280
-	j next_280
-next_280:
+	# br next_373
+	j next_373
+next_373:
 
-	# br next_279
-	j next_279
-ifTrue_163:
+	# br next_372
+	j next_372
+ifTrue_210:
 
 	# load ans$137 lv
 
@@ -44400,7 +43094,7 @@ ifTrue_163:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$437  SHIFT_TABLE$175
+	# MULresult_$437  SHIFT_TABLE$175 
 
 	# fetch variables
 	li t1, 1
@@ -44416,7 +43110,7 @@ ifTrue_163:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$438 ans$137 result_$437
+	# ADDresult_$438 ans$137 result_$437 
 
 	# fetch variables
 
@@ -44436,7 +43130,7 @@ ifTrue_163:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$438
+	# store lv result_$438
 
 	# fetch variables
 
@@ -44445,21 +43139,19 @@ ifTrue_163:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$438
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_281
-	j next_281
-next_281:
+	# br next_374
+	j next_374
+next_374:
 
-	# br next_279
-	j next_279
-whileCond_118:
+	# br next_372
+	j next_372
+whileCond_164:
 
 	# load i$157 lv$1
 
@@ -44474,7 +43166,7 @@ whileCond_118:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$157  cond_lt_tmp_$59
+	# ICMPcond_lt_tmp_$59 i$157  
 
 	# fetch variables
 
@@ -44483,14 +43175,14 @@ whileCond_118:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$59
 	li t4, 3824
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$115 cond_lt_tmp_$59
+	# ZEXTcond_tmp_$115 cond_lt_tmp_$59
 
 	# fetch variables
 
@@ -44498,14 +43190,14 @@ whileCond_118:
 	li t4, 3824
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$115
 	li t4, 3816
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$115  cond_$115
+	# ICMPcond_$115 cond_tmp_$115  
 
 	# fetch variables
 
@@ -44514,16 +43206,16 @@ whileCond_118:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$115
 	li t4, 3808
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$115 whileBody_118 next_282
+	# condBr cond_$115 whileBody_164 next_375
 
 	# fetch variables
 
@@ -44531,9 +43223,9 @@ whileCond_118:
 	li t4, 3808
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_282
-	j whileBody_118
-whileBody_118:
+	beqz t1, next_375
+	j whileBody_164
+whileBody_164:
 
 	# load x$150 lv$2
 
@@ -44548,7 +43240,7 @@ whileBody_118:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$442 x$150 
+	# MODresult_$442 x$150  
 
 	# fetch variables
 
@@ -44557,14 +43249,14 @@ whileBody_118:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$442
 	li t4, 3792
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$442  cond_normalize_$127
+	# ICMPcond_normalize_$127 result_$442  
 
 	# fetch variables
 
@@ -44573,16 +43265,16 @@ whileBody_118:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$127
 	li t4, 3784
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$127 secondCond_47 next_283
+	# condBr cond_normalize_$127 secondCond_82 next_376
 
 	# fetch variables
 
@@ -44590,9 +43282,9 @@ whileBody_118:
 	li t4, 3784
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_283
-	j secondCond_47
-next_282:
+	beqz t1, next_376
+	j secondCond_82
+next_375:
 
 	# load ans$140 lv
 
@@ -44607,7 +43299,7 @@ next_282:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$75 ans$140
+	# store lv$75 ans$140
 
 	# fetch variables
 
@@ -44616,28 +43308,26 @@ next_282:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$75 ans$140
-
 	# get address of lv$75 points to
 	li t4, 20184
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$34
+	# ICMPcond_gt_tmp_$34   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$34
 	li t4, 3768
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$116 cond_gt_tmp_$34
+	# ZEXTcond_tmp_$116 cond_gt_tmp_$34
 
 	# fetch variables
 
@@ -44645,14 +43335,14 @@ next_282:
 	li t4, 3768
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$116
 	li t4, 3760
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$116  cond_$116
+	# ICMPcond_$116 cond_tmp_$116  
 
 	# fetch variables
 
@@ -44661,16 +43351,16 @@ next_282:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$116
 	li t4, 3752
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$116 ifTrue_165 ifFalse_77
+	# condBr cond_$116 ifTrue_212 ifFalse_82
 
 	# fetch variables
 
@@ -44678,9 +43368,9 @@ next_282:
 	li t4, 3752
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_77
-	j ifTrue_165
-ifTrue_164:
+	beqz t1, ifFalse_82
+	j ifTrue_212
+ifTrue_211:
 
 	# load ans$139 lv
 
@@ -44742,7 +43432,7 @@ ifTrue_164:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$444  SHIFT_TABLE$177
+	# MULresult_$444  SHIFT_TABLE$177 
 
 	# fetch variables
 	li t1, 1
@@ -44758,7 +43448,7 @@ ifTrue_164:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$445 ans$139 result_$444
+	# ADDresult_$445 ans$139 result_$444 
 
 	# fetch variables
 
@@ -44778,7 +43468,7 @@ ifTrue_164:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$445
+	# store lv result_$445
 
 	# fetch variables
 
@@ -44787,17 +43477,15 @@ ifTrue_164:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$445
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_283
-	j next_283
-next_283:
+	# br next_376
+	j next_376
+next_376:
 
 	# load x$151 lv$2
 
@@ -44812,7 +43500,7 @@ next_283:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$446 x$151 
+	# DIVresult_$446 x$151  
 
 	# fetch variables
 
@@ -44821,14 +43509,14 @@ next_283:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$446
 	li t4, 3688
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$446
+	# store lv$2 result_$446
 
 	# fetch variables
 
@@ -44836,8 +43524,6 @@ next_283:
 	li t4, 3688
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$446
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -44858,7 +43544,7 @@ next_283:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$447 y$155 
+	# DIVresult_$447 y$155  
 
 	# fetch variables
 
@@ -44867,14 +43553,14 @@ next_283:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$447
 	li t4, 3672
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$447
+	# store lv$3 result_$447
 
 	# fetch variables
 
@@ -44882,8 +43568,6 @@ next_283:
 	li t4, 3672
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$447
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -44904,7 +43588,7 @@ next_283:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$448 i$159 
+	# ADDresult_$448 i$159  
 
 	# fetch variables
 
@@ -44920,7 +43604,7 @@ next_283:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$448
+	# store lv$1 result_$448
 
 	# fetch variables
 
@@ -44929,17 +43613,15 @@ next_283:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$448
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_118
-	j whileCond_118
-secondCond_47:
+	# br whileCond_164
+	j whileCond_164
+secondCond_82:
 
 	# load y$154 lv$3
 
@@ -44954,7 +43636,7 @@ secondCond_47:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$443 y$154 
+	# MODresult_$443 y$154  
 
 	# fetch variables
 
@@ -44963,14 +43645,14 @@ secondCond_47:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$443
 	li t4, 3640
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$443  cond_normalize_$128
+	# ICMPcond_normalize_$128 result_$443  
 
 	# fetch variables
 
@@ -44979,16 +43661,16 @@ secondCond_47:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$128
 	li t4, 3632
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$128 ifTrue_164 next_283
+	# condBr cond_normalize_$128 ifTrue_211 next_376
 
 	# fetch variables
 
@@ -44996,16 +43678,14 @@ secondCond_47:
 	li t4, 3632
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_283
-	j ifTrue_164
-ifTrue_165:
+	beqz t1, next_376
+	j ifTrue_211
+ifTrue_212:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -45013,29 +43693,25 @@ ifTrue_165:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_284
-	j next_284
-ifFalse_77:
+	# br next_377
+	j next_377
+ifFalse_82:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -45056,7 +43732,7 @@ ifFalse_77:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$449 c$51 
+	# MULresult_$449 c$51  
 
 	# fetch variables
 
@@ -45072,7 +43748,7 @@ ifFalse_77:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$449
+	# store lv$2 result_$449
 
 	# fetch variables
 
@@ -45081,20 +43757,16 @@ ifFalse_77:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$449
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -45102,9 +43774,9 @@ ifFalse_77:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_119
-	j whileCond_119
-next_284:
+	# br whileCond_165
+	j whileCond_165
+next_377:
 
 	# load ans$142 lv
 
@@ -45119,7 +43791,7 @@ next_284:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$75 ans$142
+	# store lv$75 ans$142
 
 	# fetch variables
 
@@ -45127,8 +43799,6 @@ next_284:
 	li t4, 3608
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$75 ans$142
 
 	# get address of lv$75 points to
 	li t4, 20184
@@ -45149,7 +43819,7 @@ next_284:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$74 sum$12
+	# store lv$74 sum$12
 
 	# fetch variables
 
@@ -45158,17 +43828,15 @@ next_284:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$74 sum$12
-
 	# get address of lv$74 points to
 	li t4, 20168
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_116
-	j whileCond_116
-whileCond_119:
+	# br whileCond_162
+	j whileCond_162
+whileCond_165:
 
 	# load i$160 lv$1
 
@@ -45183,7 +43851,7 @@ whileCond_119:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$160  cond_lt_tmp_$60
+	# ICMPcond_lt_tmp_$60 i$160  
 
 	# fetch variables
 
@@ -45192,14 +43860,14 @@ whileCond_119:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$60
 	li t4, 3584
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$117 cond_lt_tmp_$60
+	# ZEXTcond_tmp_$117 cond_lt_tmp_$60
 
 	# fetch variables
 
@@ -45207,14 +43875,14 @@ whileCond_119:
 	li t4, 3584
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$117
 	li t4, 3576
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$117  cond_$117
+	# ICMPcond_$117 cond_tmp_$117  
 
 	# fetch variables
 
@@ -45223,16 +43891,16 @@ whileCond_119:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$117
 	li t4, 3568
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$117 whileBody_119 next_285
+	# condBr cond_$117 whileBody_165 next_378
 
 	# fetch variables
 
@@ -45240,9 +43908,9 @@ whileCond_119:
 	li t4, 3568
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_285
-	j whileBody_119
-whileBody_119:
+	beqz t1, next_378
+	j whileBody_165
+whileBody_165:
 
 	# load x$152 lv$2
 
@@ -45257,7 +43925,7 @@ whileBody_119:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$450 x$152 
+	# MODresult_$450 x$152  
 
 	# fetch variables
 
@@ -45266,14 +43934,14 @@ whileBody_119:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$450
 	li t4, 3552
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$450  cond_normalize_$129
+	# ICMPcond_normalize_$129 result_$450  
 
 	# fetch variables
 
@@ -45282,16 +43950,16 @@ whileBody_119:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$129
 	li t4, 3544
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$129 secondCond_48 next_286
+	# condBr cond_normalize_$129 secondCond_83 next_379
 
 	# fetch variables
 
@@ -45299,13 +43967,13 @@ whileBody_119:
 	li t4, 3544
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_286
-	j secondCond_48
-next_285:
+	beqz t1, next_379
+	j secondCond_83
+next_378:
 
-	# br next_284
-	j next_284
-ifTrue_166:
+	# br next_377
+	j next_377
+ifTrue_213:
 
 	# load ans$141 lv
 
@@ -45367,7 +44035,7 @@ ifTrue_166:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$452  SHIFT_TABLE$179
+	# MULresult_$452  SHIFT_TABLE$179 
 
 	# fetch variables
 	li t1, 1
@@ -45383,7 +44051,7 @@ ifTrue_166:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$453 ans$141 result_$452
+	# ADDresult_$453 ans$141 result_$452 
 
 	# fetch variables
 
@@ -45403,7 +44071,7 @@ ifTrue_166:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$453
+	# store lv result_$453
 
 	# fetch variables
 
@@ -45412,17 +44080,15 @@ ifTrue_166:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$453
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_286
-	j next_286
-next_286:
+	# br next_379
+	j next_379
+next_379:
 
 	# load x$153 lv$2
 
@@ -45437,7 +44103,7 @@ next_286:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$454 x$153 
+	# DIVresult_$454 x$153  
 
 	# fetch variables
 
@@ -45446,14 +44112,14 @@ next_286:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$454
 	li t4, 3480
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$454
+	# store lv$2 result_$454
 
 	# fetch variables
 
@@ -45461,8 +44127,6 @@ next_286:
 	li t4, 3480
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$454
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -45483,7 +44147,7 @@ next_286:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$455 y$157 
+	# DIVresult_$455 y$157  
 
 	# fetch variables
 
@@ -45492,14 +44156,14 @@ next_286:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$455
 	li t4, 3464
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$455
+	# store lv$3 result_$455
 
 	# fetch variables
 
@@ -45507,8 +44171,6 @@ next_286:
 	li t4, 3464
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$455
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -45529,7 +44191,7 @@ next_286:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$456 i$162 
+	# ADDresult_$456 i$162  
 
 	# fetch variables
 
@@ -45545,7 +44207,7 @@ next_286:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$456
+	# store lv$1 result_$456
 
 	# fetch variables
 
@@ -45554,17 +44216,15 @@ next_286:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$456
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_119
-	j whileCond_119
-secondCond_48:
+	# br whileCond_165
+	j whileCond_165
+secondCond_83:
 
 	# load y$156 lv$3
 
@@ -45579,7 +44239,7 @@ secondCond_48:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$451 y$156 
+	# MODresult_$451 y$156  
 
 	# fetch variables
 
@@ -45588,14 +44248,14 @@ secondCond_48:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$451
 	li t4, 3432
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$451  cond_normalize_$130
+	# ICMPcond_normalize_$130 result_$451  
 
 	# fetch variables
 
@@ -45604,16 +44264,16 @@ secondCond_48:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$130
 	li t4, 3424
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$130 ifTrue_166 next_286
+	# condBr cond_normalize_$130 ifTrue_213 next_379
 
 	# fetch variables
 
@@ -45621,9 +44281,9 @@ secondCond_48:
 	li t4, 3424
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_286
-	j ifTrue_166
-whileCond_120:
+	beqz t1, next_379
+	j ifTrue_213
+whileCond_166:
 
 	# load c$52 lv$78
 
@@ -45638,7 +44298,7 @@ whileCond_120:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$52  cond_normalize_$131
+	# ICMPcond_normalize_$131 c$52  
 
 	# fetch variables
 
@@ -45647,16 +44307,16 @@ whileCond_120:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$131
 	li t4, 3408
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$131 whileBody_120 next_287
+	# condBr cond_normalize_$131 whileBody_166 next_380
 
 	# fetch variables
 
@@ -45664,16 +44324,14 @@ whileCond_120:
 	li t4, 3408
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_287
-	j whileBody_120
-whileBody_120:
+	beqz t1, next_380
+	j whileBody_166
+whileBody_166:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -45681,12 +44339,10 @@ whileBody_120:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -45707,7 +44363,7 @@ whileBody_120:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$39
+	# store lv$2 al$39
 
 	# fetch variables
 
@@ -45715,8 +44371,6 @@ whileBody_120:
 	li t4, 3400
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$39
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -45737,7 +44391,7 @@ whileBody_120:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$53
+	# store lv$3 c$53
 
 	# fetch variables
 
@@ -45746,17 +44400,15 @@ whileBody_120:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$53
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_121
-	j whileCond_121
-next_287:
+	# br whileCond_167
+	j whileCond_167
+next_380:
 
 	# load al$41 lv$77
 
@@ -45771,7 +44423,7 @@ next_287:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$41
+	# store lv al$41
 
 	# fetch variables
 
@@ -45779,8 +44431,6 @@ next_287:
 	li t4, 3384
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$41
 
 	# get address of lv points to
 	li t4, 18984
@@ -45801,7 +44451,7 @@ next_287:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$71 ans$151
+	# store lv$71 ans$151
 
 	# fetch variables
 
@@ -45809,8 +44459,6 @@ next_287:
 	li t4, 3376
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$71 ans$151
 
 	# get address of lv$71 points to
 	li t4, 20120
@@ -45831,7 +44479,7 @@ next_287:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$20
+	# store lv$2 mr$20
 
 	# fetch variables
 
@@ -45840,20 +44488,16 @@ next_287:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$20
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -45874,7 +44518,7 @@ next_287:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$165  cond_ge_tmp_$9
+	# ICMPcond_ge_tmp_$9 y$165  
 
 	# fetch variables
 
@@ -45883,15 +44527,15 @@ next_287:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 15
+	slt t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_ge_tmp_$9
 	li t4, 3352
 	add t4, sp, t4
-	slt t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$123 cond_ge_tmp_$9
+	# ZEXTcond_tmp_$123 cond_ge_tmp_$9
 
 	# fetch variables
 
@@ -45899,14 +44543,14 @@ next_287:
 	li t4, 3352
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$123
 	li t4, 3344
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$123  cond_$123
+	# ICMPcond_$123 cond_tmp_$123  
 
 	# fetch variables
 
@@ -45915,16 +44559,16 @@ next_287:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$123
 	li t4, 3336
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$123 ifTrue_173 ifFalse_80
+	# condBr cond_$123 ifTrue_220 ifFalse_85
 
 	# fetch variables
 
@@ -45932,9 +44576,9 @@ next_287:
 	li t4, 3336
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_80
-	j ifTrue_173
-whileCond_121:
+	beqz t1, ifFalse_85
+	j ifTrue_220
+whileCond_167:
 
 	# load i$163 lv$1
 
@@ -45949,7 +44593,7 @@ whileCond_121:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$163  cond_lt_tmp_$61
+	# ICMPcond_lt_tmp_$61 i$163  
 
 	# fetch variables
 
@@ -45958,14 +44602,14 @@ whileCond_121:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$61
 	li t4, 3320
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$118 cond_lt_tmp_$61
+	# ZEXTcond_tmp_$118 cond_lt_tmp_$61
 
 	# fetch variables
 
@@ -45973,14 +44617,14 @@ whileCond_121:
 	li t4, 3320
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$118
 	li t4, 3312
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$118  cond_$118
+	# ICMPcond_$118 cond_tmp_$118  
 
 	# fetch variables
 
@@ -45989,16 +44633,16 @@ whileCond_121:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$118
 	li t4, 3304
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$118 whileBody_121 next_288
+	# condBr cond_$118 whileBody_167 next_381
 
 	# fetch variables
 
@@ -46006,9 +44650,9 @@ whileCond_121:
 	li t4, 3304
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_288
-	j whileBody_121
-whileBody_121:
+	beqz t1, next_381
+	j whileBody_167
+whileBody_167:
 
 	# load x$154 lv$2
 
@@ -46023,7 +44667,7 @@ whileBody_121:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$457 x$154 
+	# MODresult_$457 x$154  
 
 	# fetch variables
 
@@ -46032,14 +44676,14 @@ whileBody_121:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$457
 	li t4, 3288
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$457  cond_normalize_$132
+	# ICMPcond_normalize_$132 result_$457  
 
 	# fetch variables
 
@@ -46048,16 +44692,16 @@ whileBody_121:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$132
 	li t4, 3280
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$132 ifTrue_167 ifFalse_78
+	# condBr cond_normalize_$132 ifTrue_214 ifFalse_83
 
 	# fetch variables
 
@@ -46065,9 +44709,9 @@ whileBody_121:
 	li t4, 3280
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_78
-	j ifTrue_167
-next_288:
+	beqz t1, ifFalse_83
+	j ifTrue_214
+next_381:
 
 	# load ans$146 lv
 
@@ -46082,7 +44726,7 @@ next_288:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$79 ans$146
+	# store lv$79 ans$146
 
 	# fetch variables
 
@@ -46091,20 +44735,16 @@ next_288:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$79 ans$146
-
 	# get address of lv$79 points to
 	li t4, 20248
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -46112,12 +44752,10 @@ next_288:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -46138,7 +44776,7 @@ next_288:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$40
+	# store lv$2 al$40
 
 	# fetch variables
 
@@ -46146,8 +44784,6 @@ next_288:
 	li t4, 3264
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$40
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -46168,7 +44804,7 @@ next_288:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$54
+	# store lv$3 c$54
 
 	# fetch variables
 
@@ -46177,17 +44813,15 @@ next_288:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$54
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_122
-	j whileCond_122
-ifTrue_167:
+	# br whileCond_168
+	j whileCond_168
+ifTrue_214:
 
 	# load y$158 lv$3
 
@@ -46202,7 +44836,7 @@ ifTrue_167:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$458 y$158 
+	# MODresult_$458 y$158  
 
 	# fetch variables
 
@@ -46211,14 +44845,14 @@ ifTrue_167:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$458
-	li t4, 3240
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$458
+	li t4, 3240
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$458  cond_eq_tmp_$13
+	# ICMPcond_eq_tmp_$13 result_$458  
 
 	# fetch variables
 
@@ -46227,15 +44861,15 @@ ifTrue_167:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$13
 	li t4, 3232
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$119 cond_eq_tmp_$13
+	# ZEXTcond_tmp_$119 cond_eq_tmp_$13
 
 	# fetch variables
 
@@ -46243,14 +44877,14 @@ ifTrue_167:
 	li t4, 3232
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$119
 	li t4, 3224
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$119  cond_$119
+	# ICMPcond_$119 cond_tmp_$119  
 
 	# fetch variables
 
@@ -46259,16 +44893,16 @@ ifTrue_167:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$119
 	li t4, 3216
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$119 ifTrue_168 next_290
+	# condBr cond_$119 ifTrue_215 next_383
 
 	# fetch variables
 
@@ -46276,9 +44910,9 @@ ifTrue_167:
 	li t4, 3216
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_290
-	j ifTrue_168
-ifFalse_78:
+	beqz t1, next_383
+	j ifTrue_215
+ifFalse_83:
 
 	# load y$159 lv$3
 
@@ -46293,7 +44927,7 @@ ifFalse_78:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$461 y$159 
+	# MODresult_$461 y$159  
 
 	# fetch variables
 
@@ -46302,14 +44936,14 @@ ifFalse_78:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$461
 	li t4, 3200
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$461  cond_normalize_$133
+	# ICMPcond_normalize_$133 result_$461  
 
 	# fetch variables
 
@@ -46318,16 +44952,16 @@ ifFalse_78:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$133
 	li t4, 3192
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$133 ifTrue_169 next_291
+	# condBr cond_normalize_$133 ifTrue_216 next_384
 
 	# fetch variables
 
@@ -46335,9 +44969,9 @@ ifFalse_78:
 	li t4, 3192
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_291
-	j ifTrue_169
-next_289:
+	beqz t1, next_384
+	j ifTrue_216
+next_382:
 
 	# load x$155 lv$2
 
@@ -46352,7 +44986,7 @@ next_289:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$464 x$155 
+	# DIVresult_$464 x$155  
 
 	# fetch variables
 
@@ -46361,14 +44995,14 @@ next_289:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$464
 	li t4, 3176
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$464
+	# store lv$2 result_$464
 
 	# fetch variables
 
@@ -46376,8 +45010,6 @@ next_289:
 	li t4, 3176
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$464
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -46398,7 +45030,7 @@ next_289:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$465 y$160 
+	# DIVresult_$465 y$160  
 
 	# fetch variables
 
@@ -46407,14 +45039,14 @@ next_289:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$465
 	li t4, 3160
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$465
+	# store lv$3 result_$465
 
 	# fetch variables
 
@@ -46422,8 +45054,6 @@ next_289:
 	li t4, 3160
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$465
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -46444,7 +45074,7 @@ next_289:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$466 i$166 
+	# ADDresult_$466 i$166  
 
 	# fetch variables
 
@@ -46460,7 +45090,7 @@ next_289:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$466
+	# store lv$1 result_$466
 
 	# fetch variables
 
@@ -46469,17 +45099,15 @@ next_289:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$466
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_121
-	j whileCond_121
-ifTrue_168:
+	# br whileCond_167
+	j whileCond_167
+ifTrue_215:
 
 	# load ans$144 lv
 
@@ -46541,7 +45169,7 @@ ifTrue_168:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$459  SHIFT_TABLE$181
+	# MULresult_$459  SHIFT_TABLE$181 
 
 	# fetch variables
 	li t1, 1
@@ -46557,7 +45185,7 @@ ifTrue_168:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$460 ans$144 result_$459
+	# ADDresult_$460 ans$144 result_$459 
 
 	# fetch variables
 
@@ -46577,7 +45205,7 @@ ifTrue_168:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$460
+	# store lv result_$460
 
 	# fetch variables
 
@@ -46586,21 +45214,19 @@ ifTrue_168:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$460
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_290
-	j next_290
-next_290:
+	# br next_383
+	j next_383
+next_383:
 
-	# br next_289
-	j next_289
-ifTrue_169:
+	# br next_382
+	j next_382
+ifTrue_216:
 
 	# load ans$145 lv
 
@@ -46662,7 +45288,7 @@ ifTrue_169:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$462  SHIFT_TABLE$183
+	# MULresult_$462  SHIFT_TABLE$183 
 
 	# fetch variables
 	li t1, 1
@@ -46678,7 +45304,7 @@ ifTrue_169:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$463 ans$145 result_$462
+	# ADDresult_$463 ans$145 result_$462 
 
 	# fetch variables
 
@@ -46698,7 +45324,7 @@ ifTrue_169:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$463
+	# store lv result_$463
 
 	# fetch variables
 
@@ -46707,21 +45333,19 @@ ifTrue_169:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$463
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_291
-	j next_291
-next_291:
+	# br next_384
+	j next_384
+next_384:
 
-	# br next_289
-	j next_289
-whileCond_122:
+	# br next_382
+	j next_382
+whileCond_168:
 
 	# load i$167 lv$1
 
@@ -46736,7 +45360,7 @@ whileCond_122:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$167  cond_lt_tmp_$62
+	# ICMPcond_lt_tmp_$62 i$167  
 
 	# fetch variables
 
@@ -46745,14 +45369,14 @@ whileCond_122:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$62
 	li t4, 3032
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$120 cond_lt_tmp_$62
+	# ZEXTcond_tmp_$120 cond_lt_tmp_$62
 
 	# fetch variables
 
@@ -46760,14 +45384,14 @@ whileCond_122:
 	li t4, 3032
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$120
 	li t4, 3024
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$120  cond_$120
+	# ICMPcond_$120 cond_tmp_$120  
 
 	# fetch variables
 
@@ -46776,16 +45400,16 @@ whileCond_122:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$120
 	li t4, 3016
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$120 whileBody_122 next_292
+	# condBr cond_$120 whileBody_168 next_385
 
 	# fetch variables
 
@@ -46793,9 +45417,9 @@ whileCond_122:
 	li t4, 3016
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_292
-	j whileBody_122
-whileBody_122:
+	beqz t1, next_385
+	j whileBody_168
+whileBody_168:
 
 	# load x$156 lv$2
 
@@ -46810,7 +45434,7 @@ whileBody_122:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$467 x$156 
+	# MODresult_$467 x$156  
 
 	# fetch variables
 
@@ -46819,14 +45443,14 @@ whileBody_122:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$467
 	li t4, 3000
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$467  cond_normalize_$134
+	# ICMPcond_normalize_$134 result_$467  
 
 	# fetch variables
 
@@ -46835,16 +45459,16 @@ whileBody_122:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$134
 	li t4, 2992
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$134 secondCond_49 next_293
+	# condBr cond_normalize_$134 secondCond_84 next_386
 
 	# fetch variables
 
@@ -46852,9 +45476,9 @@ whileBody_122:
 	li t4, 2992
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_293
-	j secondCond_49
-next_292:
+	beqz t1, next_386
+	j secondCond_84
+next_385:
 
 	# load ans$148 lv
 
@@ -46869,7 +45493,7 @@ next_292:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$78 ans$148
+	# store lv$78 ans$148
 
 	# fetch variables
 
@@ -46878,28 +45502,26 @@ next_292:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$78 ans$148
-
 	# get address of lv$78 points to
 	li t4, 20232
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$35
+	# ICMPcond_gt_tmp_$35   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$35
 	li t4, 2976
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$121 cond_gt_tmp_$35
+	# ZEXTcond_tmp_$121 cond_gt_tmp_$35
 
 	# fetch variables
 
@@ -46907,14 +45529,14 @@ next_292:
 	li t4, 2976
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$121
 	li t4, 2968
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$121  cond_$121
+	# ICMPcond_$121 cond_tmp_$121  
 
 	# fetch variables
 
@@ -46923,16 +45545,16 @@ next_292:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$121
 	li t4, 2960
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$121 ifTrue_171 ifFalse_79
+	# condBr cond_$121 ifTrue_218 ifFalse_84
 
 	# fetch variables
 
@@ -46940,9 +45562,9 @@ next_292:
 	li t4, 2960
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_79
-	j ifTrue_171
-ifTrue_170:
+	beqz t1, ifFalse_84
+	j ifTrue_218
+ifTrue_217:
 
 	# load ans$147 lv
 
@@ -47004,7 +45626,7 @@ ifTrue_170:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$469  SHIFT_TABLE$185
+	# MULresult_$469  SHIFT_TABLE$185 
 
 	# fetch variables
 	li t1, 1
@@ -47020,7 +45642,7 @@ ifTrue_170:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$470 ans$147 result_$469
+	# ADDresult_$470 ans$147 result_$469 
 
 	# fetch variables
 
@@ -47040,7 +45662,7 @@ ifTrue_170:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$470
+	# store lv result_$470
 
 	# fetch variables
 
@@ -47049,17 +45671,15 @@ ifTrue_170:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$470
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_293
-	j next_293
-next_293:
+	# br next_386
+	j next_386
+next_386:
 
 	# load x$157 lv$2
 
@@ -47074,7 +45694,7 @@ next_293:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$471 x$157 
+	# DIVresult_$471 x$157  
 
 	# fetch variables
 
@@ -47083,14 +45703,14 @@ next_293:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$471
 	li t4, 2896
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$471
+	# store lv$2 result_$471
 
 	# fetch variables
 
@@ -47098,8 +45718,6 @@ next_293:
 	li t4, 2896
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$471
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -47120,7 +45738,7 @@ next_293:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$472 y$162 
+	# DIVresult_$472 y$162  
 
 	# fetch variables
 
@@ -47129,14 +45747,14 @@ next_293:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$472
 	li t4, 2880
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$472
+	# store lv$3 result_$472
 
 	# fetch variables
 
@@ -47144,8 +45762,6 @@ next_293:
 	li t4, 2880
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$472
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -47166,7 +45782,7 @@ next_293:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$473 i$169 
+	# ADDresult_$473 i$169  
 
 	# fetch variables
 
@@ -47182,7 +45798,7 @@ next_293:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$473
+	# store lv$1 result_$473
 
 	# fetch variables
 
@@ -47191,17 +45807,15 @@ next_293:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$473
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_122
-	j whileCond_122
-secondCond_49:
+	# br whileCond_168
+	j whileCond_168
+secondCond_84:
 
 	# load y$161 lv$3
 
@@ -47216,7 +45830,7 @@ secondCond_49:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$468 y$161 
+	# MODresult_$468 y$161  
 
 	# fetch variables
 
@@ -47225,14 +45839,14 @@ secondCond_49:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$468
 	li t4, 2848
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$468  cond_normalize_$135
+	# ICMPcond_normalize_$135 result_$468  
 
 	# fetch variables
 
@@ -47241,16 +45855,16 @@ secondCond_49:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$135
 	li t4, 2840
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$135 ifTrue_170 next_293
+	# condBr cond_normalize_$135 ifTrue_217 next_386
 
 	# fetch variables
 
@@ -47258,16 +45872,14 @@ secondCond_49:
 	li t4, 2840
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_293
-	j ifTrue_170
-ifTrue_171:
+	beqz t1, next_386
+	j ifTrue_217
+ifTrue_218:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -47275,29 +45887,25 @@ ifTrue_171:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_294
-	j next_294
-ifFalse_79:
+	# br next_387
+	j next_387
+ifFalse_84:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -47318,7 +45926,7 @@ ifFalse_79:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$474 c$55 
+	# MULresult_$474 c$55  
 
 	# fetch variables
 
@@ -47334,7 +45942,7 @@ ifFalse_79:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$474
+	# store lv$2 result_$474
 
 	# fetch variables
 
@@ -47343,20 +45951,16 @@ ifFalse_79:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$474
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -47364,9 +45968,9 @@ ifFalse_79:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_123
-	j whileCond_123
-next_294:
+	# br whileCond_169
+	j whileCond_169
+next_387:
 
 	# load ans$150 lv
 
@@ -47381,7 +45985,7 @@ next_294:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$78 ans$150
+	# store lv$78 ans$150
 
 	# fetch variables
 
@@ -47389,8 +45993,6 @@ next_294:
 	li t4, 2816
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$78 ans$150
 
 	# get address of lv$78 points to
 	li t4, 20232
@@ -47411,7 +46013,7 @@ next_294:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$77 sum$13
+	# store lv$77 sum$13
 
 	# fetch variables
 
@@ -47420,17 +46022,15 @@ next_294:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$77 sum$13
-
 	# get address of lv$77 points to
 	li t4, 20216
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_120
-	j whileCond_120
-whileCond_123:
+	# br whileCond_166
+	j whileCond_166
+whileCond_169:
 
 	# load i$170 lv$1
 
@@ -47445,7 +46045,7 @@ whileCond_123:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$170  cond_lt_tmp_$63
+	# ICMPcond_lt_tmp_$63 i$170  
 
 	# fetch variables
 
@@ -47454,14 +46054,14 @@ whileCond_123:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$63
 	li t4, 2792
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$122 cond_lt_tmp_$63
+	# ZEXTcond_tmp_$122 cond_lt_tmp_$63
 
 	# fetch variables
 
@@ -47469,14 +46069,14 @@ whileCond_123:
 	li t4, 2792
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$122
 	li t4, 2784
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$122  cond_$122
+	# ICMPcond_$122 cond_tmp_$122  
 
 	# fetch variables
 
@@ -47485,16 +46085,16 @@ whileCond_123:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$122
 	li t4, 2776
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$122 whileBody_123 next_295
+	# condBr cond_$122 whileBody_169 next_388
 
 	# fetch variables
 
@@ -47502,9 +46102,9 @@ whileCond_123:
 	li t4, 2776
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_295
-	j whileBody_123
-whileBody_123:
+	beqz t1, next_388
+	j whileBody_169
+whileBody_169:
 
 	# load x$158 lv$2
 
@@ -47519,7 +46119,7 @@ whileBody_123:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$475 x$158 
+	# MODresult_$475 x$158  
 
 	# fetch variables
 
@@ -47528,14 +46128,14 @@ whileBody_123:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$475
 	li t4, 2760
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$475  cond_normalize_$136
+	# ICMPcond_normalize_$136 result_$475  
 
 	# fetch variables
 
@@ -47544,16 +46144,16 @@ whileBody_123:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$136
 	li t4, 2752
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$136 secondCond_50 next_296
+	# condBr cond_normalize_$136 secondCond_85 next_389
 
 	# fetch variables
 
@@ -47561,13 +46161,13 @@ whileBody_123:
 	li t4, 2752
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_296
-	j secondCond_50
-next_295:
+	beqz t1, next_389
+	j secondCond_85
+next_388:
 
-	# br next_294
-	j next_294
-ifTrue_172:
+	# br next_387
+	j next_387
+ifTrue_219:
 
 	# load ans$149 lv
 
@@ -47629,7 +46229,7 @@ ifTrue_172:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$477  SHIFT_TABLE$187
+	# MULresult_$477  SHIFT_TABLE$187 
 
 	# fetch variables
 	li t1, 1
@@ -47645,7 +46245,7 @@ ifTrue_172:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$478 ans$149 result_$477
+	# ADDresult_$478 ans$149 result_$477 
 
 	# fetch variables
 
@@ -47665,7 +46265,7 @@ ifTrue_172:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$478
+	# store lv result_$478
 
 	# fetch variables
 
@@ -47674,17 +46274,15 @@ ifTrue_172:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$478
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_296
-	j next_296
-next_296:
+	# br next_389
+	j next_389
+next_389:
 
 	# load x$159 lv$2
 
@@ -47699,7 +46297,7 @@ next_296:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$479 x$159 
+	# DIVresult_$479 x$159  
 
 	# fetch variables
 
@@ -47708,14 +46306,14 @@ next_296:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$479
 	li t4, 2688
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$479
+	# store lv$2 result_$479
 
 	# fetch variables
 
@@ -47723,8 +46321,6 @@ next_296:
 	li t4, 2688
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$479
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -47745,7 +46341,7 @@ next_296:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$480 y$164 
+	# DIVresult_$480 y$164  
 
 	# fetch variables
 
@@ -47754,14 +46350,14 @@ next_296:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$480
 	li t4, 2672
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$480
+	# store lv$3 result_$480
 
 	# fetch variables
 
@@ -47769,8 +46365,6 @@ next_296:
 	li t4, 2672
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$480
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -47791,7 +46385,7 @@ next_296:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$481 i$172 
+	# ADDresult_$481 i$172  
 
 	# fetch variables
 
@@ -47807,7 +46401,7 @@ next_296:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$481
+	# store lv$1 result_$481
 
 	# fetch variables
 
@@ -47816,17 +46410,15 @@ next_296:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$481
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_123
-	j whileCond_123
-secondCond_50:
+	# br whileCond_169
+	j whileCond_169
+secondCond_85:
 
 	# load y$163 lv$3
 
@@ -47841,7 +46433,7 @@ secondCond_50:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$476 y$163 
+	# MODresult_$476 y$163  
 
 	# fetch variables
 
@@ -47850,14 +46442,14 @@ secondCond_50:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$476
 	li t4, 2640
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$476  cond_normalize_$137
+	# ICMPcond_normalize_$137 result_$476  
 
 	# fetch variables
 
@@ -47866,16 +46458,16 @@ secondCond_50:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$137
 	li t4, 2632
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$137 ifTrue_172 next_296
+	# condBr cond_normalize_$137 ifTrue_219 next_389
 
 	# fetch variables
 
@@ -47883,9 +46475,9 @@ secondCond_50:
 	li t4, 2632
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_296
-	j ifTrue_172
-ifTrue_173:
+	beqz t1, next_389
+	j ifTrue_219
+ifTrue_220:
 
 	# load x$160 lv$2
 
@@ -47900,7 +46492,7 @@ ifTrue_173:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$160  cond_lt_tmp_$64
+	# ICMPcond_lt_tmp_$64 x$160  
 
 	# fetch variables
 
@@ -47909,14 +46501,14 @@ ifTrue_173:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$64
 	li t4, 2616
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$124 cond_lt_tmp_$64
+	# ZEXTcond_tmp_$124 cond_lt_tmp_$64
 
 	# fetch variables
 
@@ -47924,14 +46516,14 @@ ifTrue_173:
 	li t4, 2616
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$124
 	li t4, 2608
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$124  cond_$124
+	# ICMPcond_$124 cond_tmp_$124  
 
 	# fetch variables
 
@@ -47940,16 +46532,16 @@ ifTrue_173:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$124
 	li t4, 2600
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$124 ifTrue_174 ifFalse_81
+	# condBr cond_$124 ifTrue_221 ifFalse_86
 
 	# fetch variables
 
@@ -47957,9 +46549,9 @@ ifTrue_173:
 	li t4, 2600
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_81
-	j ifTrue_174
-ifFalse_80:
+	beqz t1, ifFalse_86
+	j ifTrue_221
+ifFalse_85:
 
 	# load y$166 lv$3
 
@@ -47974,7 +46566,7 @@ ifFalse_80:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$166  cond_gt_tmp_$36
+	# ICMPcond_gt_tmp_$36 y$166  
 
 	# fetch variables
 
@@ -47983,15 +46575,15 @@ ifFalse_80:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$36
 	li t4, 2584
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$125 cond_gt_tmp_$36
+	# ZEXTcond_tmp_$125 cond_gt_tmp_$36
 
 	# fetch variables
 
@@ -47999,14 +46591,14 @@ ifFalse_80:
 	li t4, 2584
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$125
 	li t4, 2576
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$125  cond_$125
+	# ICMPcond_$125 cond_tmp_$125  
 
 	# fetch variables
 
@@ -48015,16 +46607,16 @@ ifFalse_80:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$125
 	li t4, 2568
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$125 ifTrue_175 ifFalse_82
+	# condBr cond_$125 ifTrue_222 ifFalse_87
 
 	# fetch variables
 
@@ -48032,9 +46624,9 @@ ifFalse_80:
 	li t4, 2568
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_82
-	j ifTrue_175
-next_297:
+	beqz t1, ifFalse_87
+	j ifTrue_222
+next_390:
 
 	# load ans$152 lv
 
@@ -48049,7 +46641,7 @@ next_297:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$72 ans$152
+	# store lv$72 ans$152
 
 	# fetch variables
 
@@ -48058,55 +46650,49 @@ next_297:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$72 ans$152
-
 	# get address of lv$72 points to
 	li t4, 20136
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_114
-	j whileCond_114
-ifTrue_174:
+	# br whileCond_160
+	j whileCond_160
+ifTrue_221:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 65535
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_298
-	j next_298
-ifFalse_81:
+	# br next_391
+	j next_391
+ifFalse_86:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_298
-	j next_298
-next_298:
+	# br next_391
+	j next_391
+next_391:
 
-	# br next_297
-	j next_297
-ifTrue_175:
+	# br next_390
+	j next_390
+ifTrue_222:
 
 	# load x$161 lv$2
 
@@ -48121,7 +46707,7 @@ ifTrue_175:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp x$161  cond_gt_tmp_$37
+	# ICMPcond_gt_tmp_$37 x$161  
 
 	# fetch variables
 
@@ -48130,15 +46716,15 @@ ifTrue_175:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 32767
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$37
 	li t4, 2544
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$126 cond_gt_tmp_$37
+	# ZEXTcond_tmp_$126 cond_gt_tmp_$37
 
 	# fetch variables
 
@@ -48146,14 +46732,14 @@ ifTrue_175:
 	li t4, 2544
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$126
 	li t4, 2536
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$126  cond_$126
+	# ICMPcond_$126 cond_tmp_$126  
 
 	# fetch variables
 
@@ -48162,16 +46748,16 @@ ifTrue_175:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$126
 	li t4, 2528
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$126 ifTrue_176 ifFalse_83
+	# condBr cond_$126 ifTrue_223 ifFalse_88
 
 	# fetch variables
 
@@ -48179,9 +46765,9 @@ ifTrue_175:
 	li t4, 2528
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_83
-	j ifTrue_176
-ifFalse_82:
+	beqz t1, ifFalse_88
+	j ifTrue_223
+ifFalse_87:
 
 	# load x$165 lv$2
 
@@ -48196,7 +46782,7 @@ ifFalse_82:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv x$165
+	# store lv x$165
 
 	# fetch variables
 
@@ -48205,21 +46791,19 @@ ifFalse_82:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv x$165
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_299
-	j next_299
-next_299:
+	# br next_392
+	j next_392
+next_392:
 
-	# br next_297
-	j next_297
-ifTrue_176:
+	# br next_390
+	j next_390
+ifTrue_223:
 
 	# load x$162 lv$2
 
@@ -48281,7 +46865,7 @@ ifTrue_176:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$482 x$162 SHIFT_TABLE$189
+	# DIVresult_$482 x$162 SHIFT_TABLE$189 
 
 	# fetch variables
 
@@ -48294,14 +46878,14 @@ ifTrue_176:
 	li t4, 2488
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$482
 	li t4, 2480
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$482
+	# store lv$2 result_$482
 
 	# fetch variables
 
@@ -48309,8 +46893,6 @@ ifTrue_176:
 	li t4, 2480
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$482
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -48331,7 +46913,7 @@ ifTrue_176:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$483 x$163 
+	# ADDresult_$483 x$163  
 
 	# fetch variables
 
@@ -48360,7 +46942,7 @@ ifTrue_176:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$484  y$168
+	# SUBresult_$484  y$168 
 
 	# fetch variables
 	li t1, 15
@@ -48376,7 +46958,7 @@ ifTrue_176:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$485 result_$484 
+	# ADDresult_$485 result_$484  
 
 	# fetch variables
 
@@ -48426,7 +47008,7 @@ ifTrue_176:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# SUBresult_$486 result_$483 SHIFT_TABLE$191
+	# SUBresult_$486 result_$483 SHIFT_TABLE$191 
 
 	# fetch variables
 
@@ -48446,7 +47028,7 @@ ifTrue_176:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$486
+	# store lv result_$486
 
 	# fetch variables
 
@@ -48455,17 +47037,15 @@ ifTrue_176:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$486
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_300
-	j next_300
-ifFalse_83:
+	# br next_393
+	j next_393
+ifFalse_88:
 
 	# load x$164 lv$2
 
@@ -48527,7 +47107,7 @@ ifFalse_83:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$487 x$164 SHIFT_TABLE$193
+	# DIVresult_$487 x$164 SHIFT_TABLE$193 
 
 	# fetch variables
 
@@ -48540,14 +47120,14 @@ ifFalse_83:
 	li t4, 2384
 	add t4, sp, t4
 	ld t2, 0(t4)
+	div t0, t1, t2
 
 	# get address of local var:result_$487
 	li t4, 2376
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv result_$487
+	# store lv result_$487
 
 	# fetch variables
 
@@ -48556,21 +47136,19 @@ ifFalse_83:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$487
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_300
-	j next_300
-next_300:
+	# br next_393
+	j next_393
+next_393:
 
-	# br next_299
-	j next_299
-whileCond_124:
+	# br next_392
+	j next_392
+whileCond_170:
 
 	# load mr$21 lv$81
 
@@ -48585,7 +47163,7 @@ whileCond_124:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp mr$21  cond_normalize_$138
+	# ICMPcond_normalize_$138 mr$21  
 
 	# fetch variables
 
@@ -48594,16 +47172,16 @@ whileCond_124:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$138
 	li t4, 2360
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$138 whileBody_124 next_301
+	# condBr cond_normalize_$138 whileBody_170 next_394
 
 	# fetch variables
 
@@ -48611,16 +47189,14 @@ whileCond_124:
 	li t4, 2360
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_301
-	j whileBody_124
-whileBody_124:
+	beqz t1, next_394
+	j whileBody_170
+whileBody_170:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -48628,12 +47204,10 @@ whileBody_124:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -48654,7 +47228,7 @@ whileBody_124:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$22
+	# store lv$2 mr$22
 
 	# fetch variables
 
@@ -48663,20 +47237,16 @@ whileBody_124:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$22
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -48684,9 +47254,9 @@ whileBody_124:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_125
-	j whileCond_125
-next_301:
+	# br whileCond_171
+	j whileCond_171
+next_394:
 
 	# load mres$15 lv$82
 
@@ -48701,7 +47271,7 @@ next_301:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv mres$15
+	# store lv mres$15
 
 	# fetch variables
 
@@ -48709,8 +47279,6 @@ next_301:
 	li t4, 2344
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv mres$15
 
 	# get address of lv points to
 	li t4, 18984
@@ -48731,7 +47299,7 @@ next_301:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$68 ans$173
+	# store lv$68 ans$173
 
 	# fetch variables
 
@@ -48739,8 +47307,6 @@ next_301:
 	li t4, 2336
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$68 ans$173
 
 	# get address of lv$68 points to
 	li t4, 20072
@@ -48761,7 +47327,7 @@ next_301:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 pr$11
+	# store lv$2 pr$11
 
 	# fetch variables
 
@@ -48770,20 +47336,16 @@ next_301:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 pr$11
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -48804,7 +47366,7 @@ next_301:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$191  cond_ge_tmp_$11
+	# ICMPcond_ge_tmp_$11 y$191  
 
 	# fetch variables
 
@@ -48813,15 +47375,15 @@ next_301:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 15
+	slt t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_ge_tmp_$11
 	li t4, 2312
 	add t4, sp, t4
-	slt t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$142 cond_ge_tmp_$11
+	# ZEXTcond_tmp_$142 cond_ge_tmp_$11
 
 	# fetch variables
 
@@ -48829,14 +47391,14 @@ next_301:
 	li t4, 2312
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$142
 	li t4, 2304
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$142  cond_$142
+	# ICMPcond_$142 cond_tmp_$142  
 
 	# fetch variables
 
@@ -48845,16 +47407,16 @@ next_301:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$142
 	li t4, 2296
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$142 ifTrue_195 ifFalse_92
+	# condBr cond_$142 ifTrue_242 ifFalse_97
 
 	# fetch variables
 
@@ -48862,9 +47424,9 @@ next_301:
 	li t4, 2296
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_92
-	j ifTrue_195
-whileCond_125:
+	beqz t1, ifFalse_97
+	j ifTrue_242
+whileCond_171:
 
 	# load i$173 lv$1
 
@@ -48879,7 +47441,7 @@ whileCond_125:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$173  cond_lt_tmp_$65
+	# ICMPcond_lt_tmp_$65 i$173  
 
 	# fetch variables
 
@@ -48888,14 +47450,14 @@ whileCond_125:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$65
 	li t4, 2280
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$127 cond_lt_tmp_$65
+	# ZEXTcond_tmp_$127 cond_lt_tmp_$65
 
 	# fetch variables
 
@@ -48903,14 +47465,14 @@ whileCond_125:
 	li t4, 2280
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$127
 	li t4, 2272
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$127  cond_$127
+	# ICMPcond_$127 cond_tmp_$127  
 
 	# fetch variables
 
@@ -48919,16 +47481,16 @@ whileCond_125:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$127
 	li t4, 2264
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$127 whileBody_125 next_302
+	# condBr cond_$127 whileBody_171 next_395
 
 	# fetch variables
 
@@ -48936,9 +47498,9 @@ whileCond_125:
 	li t4, 2264
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_302
-	j whileBody_125
-whileBody_125:
+	beqz t1, next_395
+	j whileBody_171
+whileBody_171:
 
 	# load x$166 lv$2
 
@@ -48953,7 +47515,7 @@ whileBody_125:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$488 x$166 
+	# MODresult_$488 x$166  
 
 	# fetch variables
 
@@ -48962,14 +47524,14 @@ whileBody_125:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$488
 	li t4, 2248
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$488  cond_normalize_$139
+	# ICMPcond_normalize_$139 result_$488  
 
 	# fetch variables
 
@@ -48978,16 +47540,16 @@ whileBody_125:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$139
 	li t4, 2240
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$139 secondCond_51 next_303
+	# condBr cond_normalize_$139 secondCond_86 next_396
 
 	# fetch variables
 
@@ -48995,9 +47557,9 @@ whileBody_125:
 	li t4, 2240
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_303
-	j secondCond_51
-next_302:
+	beqz t1, next_396
+	j secondCond_86
+next_395:
 
 	# load ans$155 lv
 
@@ -49012,7 +47574,7 @@ next_302:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp ans$155  cond_normalize_$141
+	# ICMPcond_normalize_$141 ans$155  
 
 	# fetch variables
 
@@ -49021,16 +47583,16 @@ next_302:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$141
 	li t4, 2224
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$141 ifTrue_178 next_304
+	# condBr cond_normalize_$141 ifTrue_225 next_397
 
 	# fetch variables
 
@@ -49038,9 +47600,9 @@ next_302:
 	li t4, 2224
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_304
-	j ifTrue_178
-ifTrue_177:
+	beqz t1, next_397
+	j ifTrue_225
+ifTrue_224:
 
 	# load ans$154 lv
 
@@ -49102,7 +47664,7 @@ ifTrue_177:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$490  SHIFT_TABLE$195
+	# MULresult_$490  SHIFT_TABLE$195 
 
 	# fetch variables
 	li t1, 1
@@ -49118,7 +47680,7 @@ ifTrue_177:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$491 ans$154 result_$490
+	# ADDresult_$491 ans$154 result_$490 
 
 	# fetch variables
 
@@ -49138,7 +47700,7 @@ ifTrue_177:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$491
+	# store lv result_$491
 
 	# fetch variables
 
@@ -49147,17 +47709,15 @@ ifTrue_177:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$491
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_303
-	j next_303
-next_303:
+	# br next_396
+	j next_396
+next_396:
 
 	# load x$167 lv$2
 
@@ -49172,7 +47732,7 @@ next_303:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$492 x$167 
+	# DIVresult_$492 x$167  
 
 	# fetch variables
 
@@ -49181,14 +47741,14 @@ next_303:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$492
 	li t4, 2160
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$492
+	# store lv$2 result_$492
 
 	# fetch variables
 
@@ -49196,8 +47756,6 @@ next_303:
 	li t4, 2160
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$492
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -49218,7 +47776,7 @@ next_303:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$493 y$171 
+	# DIVresult_$493 y$171  
 
 	# fetch variables
 
@@ -49227,14 +47785,14 @@ next_303:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$493
 	li t4, 2144
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$493
+	# store lv$3 result_$493
 
 	# fetch variables
 
@@ -49242,8 +47800,6 @@ next_303:
 	li t4, 2144
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$493
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -49264,7 +47820,7 @@ next_303:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$494 i$175 
+	# ADDresult_$494 i$175  
 
 	# fetch variables
 
@@ -49280,7 +47836,7 @@ next_303:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$494
+	# store lv$1 result_$494
 
 	# fetch variables
 
@@ -49289,17 +47845,15 @@ next_303:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$494
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_125
-	j whileCond_125
-secondCond_51:
+	# br whileCond_171
+	j whileCond_171
+secondCond_86:
 
 	# load y$170 lv$3
 
@@ -49314,7 +47868,7 @@ secondCond_51:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$489 y$170 
+	# MODresult_$489 y$170  
 
 	# fetch variables
 
@@ -49323,14 +47877,14 @@ secondCond_51:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$489
 	li t4, 2112
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$489  cond_normalize_$140
+	# ICMPcond_normalize_$140 result_$489  
 
 	# fetch variables
 
@@ -49339,16 +47893,16 @@ secondCond_51:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$140
 	li t4, 2104
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$140 ifTrue_177 next_303
+	# condBr cond_normalize_$140 ifTrue_224 next_396
 
 	# fetch variables
 
@@ -49356,9 +47910,9 @@ secondCond_51:
 	li t4, 2104
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_303
-	j ifTrue_177
-ifTrue_178:
+	beqz t1, next_396
+	j ifTrue_224
+ifTrue_225:
 
 	# load mres$14 lv$82
 
@@ -49373,7 +47927,7 @@ ifTrue_178:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$83 mres$14
+	# store lv$83 mres$14
 
 	# fetch variables
 
@@ -49381,8 +47935,6 @@ ifTrue_178:
 	li t4, 2096
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$83 mres$14
 
 	# get address of lv$83 points to
 	li t4, 20312
@@ -49403,7 +47955,7 @@ ifTrue_178:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$84 ml$21
+	# store lv$84 ml$21
 
 	# fetch variables
 
@@ -49412,17 +47964,15 @@ ifTrue_178:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$84 ml$21
-
 	# get address of lv$84 points to
 	li t4, 20328
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_126
-	j whileCond_126
-next_304:
+	# br whileCond_172
+	j whileCond_172
+next_397:
 
 	# load ml$22 lv$80
 
@@ -49437,7 +47987,7 @@ next_304:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$86 ml$22
+	# store lv$86 ml$22
 
 	# fetch variables
 
@@ -49445,8 +47995,6 @@ next_304:
 	li t4, 2080
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$86 ml$22
 
 	# get address of lv$86 points to
 	li t4, 20360
@@ -49467,7 +48015,7 @@ next_304:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$87 ml$23
+	# store lv$87 ml$23
 
 	# fetch variables
 
@@ -49476,17 +48024,15 @@ next_304:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$87 ml$23
-
 	# get address of lv$87 points to
 	li t4, 20376
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_130
-	j whileCond_130
-whileCond_126:
+	# br whileCond_176
+	j whileCond_176
+whileCond_172:
 
 	# load c$56 lv$84
 
@@ -49501,7 +48047,7 @@ whileCond_126:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$56  cond_normalize_$142
+	# ICMPcond_normalize_$142 c$56  
 
 	# fetch variables
 
@@ -49510,16 +48056,16 @@ whileCond_126:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$142
 	li t4, 2056
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$142 whileBody_126 next_305
+	# condBr cond_normalize_$142 whileBody_172 next_398
 
 	# fetch variables
 
@@ -49527,16 +48073,14 @@ whileCond_126:
 	li t4, 2056
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_305
-	j whileBody_126
-whileBody_126:
+	beqz t1, next_398
+	j whileBody_172
+whileBody_172:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -49544,12 +48088,10 @@ whileBody_126:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -49570,7 +48112,7 @@ whileBody_126:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$42
+	# store lv$2 al$42
 
 	# fetch variables
 
@@ -49578,8 +48120,6 @@ whileBody_126:
 	li t4, 2048
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$42
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -49600,7 +48140,7 @@ whileBody_126:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$57
+	# store lv$3 c$57
 
 	# fetch variables
 
@@ -49609,17 +48149,15 @@ whileBody_126:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$57
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_127
-	j whileCond_127
-next_305:
+	# br whileCond_173
+	j whileCond_173
+next_398:
 
 	# load al$44 lv$83
 
@@ -49634,7 +48172,7 @@ next_305:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$44
+	# store lv al$44
 
 	# fetch variables
 
@@ -49642,8 +48180,6 @@ next_305:
 	li t4, 2032
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$44
 
 	# get address of lv points to
 	li t4, 18984
@@ -49664,7 +48200,7 @@ next_305:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$82 ans$163
+	# store lv$82 ans$163
 
 	# fetch variables
 
@@ -49673,17 +48209,15 @@ next_305:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$82 ans$163
-
 	# get address of lv$82 points to
 	li t4, 20296
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_304
-	j next_304
-whileCond_127:
+	# br next_397
+	j next_397
+whileCond_173:
 
 	# load i$176 lv$1
 
@@ -49698,7 +48232,7 @@ whileCond_127:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$176  cond_lt_tmp_$66
+	# ICMPcond_lt_tmp_$66 i$176  
 
 	# fetch variables
 
@@ -49707,14 +48241,14 @@ whileCond_127:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$66
 	li t4, 2008
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$128 cond_lt_tmp_$66
+	# ZEXTcond_tmp_$128 cond_lt_tmp_$66
 
 	# fetch variables
 
@@ -49722,14 +48256,14 @@ whileCond_127:
 	li t4, 2008
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$128
 	li t4, 2000
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$128  cond_$128
+	# ICMPcond_$128 cond_tmp_$128  
 
 	# fetch variables
 
@@ -49738,16 +48272,16 @@ whileCond_127:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$128
 	li t4, 1992
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$128 whileBody_127 next_306
+	# condBr cond_$128 whileBody_173 next_399
 
 	# fetch variables
 
@@ -49755,9 +48289,9 @@ whileCond_127:
 	li t4, 1992
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_306
-	j whileBody_127
-whileBody_127:
+	beqz t1, next_399
+	j whileBody_173
+whileBody_173:
 
 	# load x$168 lv$2
 
@@ -49772,7 +48306,7 @@ whileBody_127:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$495 x$168 
+	# MODresult_$495 x$168  
 
 	# fetch variables
 
@@ -49781,14 +48315,14 @@ whileBody_127:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$495
 	li t4, 1976
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$495  cond_normalize_$143
+	# ICMPcond_normalize_$143 result_$495  
 
 	# fetch variables
 
@@ -49797,16 +48331,16 @@ whileBody_127:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$143
 	li t4, 1968
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$143 ifTrue_179 ifFalse_84
+	# condBr cond_normalize_$143 ifTrue_226 ifFalse_89
 
 	# fetch variables
 
@@ -49814,9 +48348,9 @@ whileBody_127:
 	li t4, 1968
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_84
-	j ifTrue_179
-next_306:
+	beqz t1, ifFalse_89
+	j ifTrue_226
+next_399:
 
 	# load ans$158 lv
 
@@ -49831,7 +48365,7 @@ next_306:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$85 ans$158
+	# store lv$85 ans$158
 
 	# fetch variables
 
@@ -49840,20 +48374,16 @@ next_306:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$85 ans$158
-
 	# get address of lv$85 points to
 	li t4, 20344
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -49861,12 +48391,10 @@ next_306:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -49887,7 +48415,7 @@ next_306:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$43
+	# store lv$2 al$43
 
 	# fetch variables
 
@@ -49895,8 +48423,6 @@ next_306:
 	li t4, 1952
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$43
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -49917,7 +48443,7 @@ next_306:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$58
+	# store lv$3 c$58
 
 	# fetch variables
 
@@ -49926,17 +48452,15 @@ next_306:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$58
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_128
-	j whileCond_128
-ifTrue_179:
+	# br whileCond_174
+	j whileCond_174
+ifTrue_226:
 
 	# load y$172 lv$3
 
@@ -49951,7 +48475,7 @@ ifTrue_179:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$496 y$172 
+	# MODresult_$496 y$172  
 
 	# fetch variables
 
@@ -49960,14 +48484,14 @@ ifTrue_179:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$496
-	li t4, 1928
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$496
+	li t4, 1928
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$496  cond_eq_tmp_$14
+	# ICMPcond_eq_tmp_$14 result_$496  
 
 	# fetch variables
 
@@ -49976,15 +48500,15 @@ ifTrue_179:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$14
 	li t4, 1920
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$129 cond_eq_tmp_$14
+	# ZEXTcond_tmp_$129 cond_eq_tmp_$14
 
 	# fetch variables
 
@@ -49992,14 +48516,14 @@ ifTrue_179:
 	li t4, 1920
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$129
 	li t4, 1912
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$129  cond_$129
+	# ICMPcond_$129 cond_tmp_$129  
 
 	# fetch variables
 
@@ -50008,16 +48532,16 @@ ifTrue_179:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$129
 	li t4, 1904
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$129 ifTrue_180 next_308
+	# condBr cond_$129 ifTrue_227 next_401
 
 	# fetch variables
 
@@ -50025,9 +48549,9 @@ ifTrue_179:
 	li t4, 1904
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_308
-	j ifTrue_180
-ifFalse_84:
+	beqz t1, next_401
+	j ifTrue_227
+ifFalse_89:
 
 	# load y$173 lv$3
 
@@ -50042,7 +48566,7 @@ ifFalse_84:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$499 y$173 
+	# MODresult_$499 y$173  
 
 	# fetch variables
 
@@ -50051,14 +48575,14 @@ ifFalse_84:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$499
 	li t4, 1888
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$499  cond_normalize_$144
+	# ICMPcond_normalize_$144 result_$499  
 
 	# fetch variables
 
@@ -50067,16 +48591,16 @@ ifFalse_84:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$144
 	li t4, 1880
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$144 ifTrue_181 next_309
+	# condBr cond_normalize_$144 ifTrue_228 next_402
 
 	# fetch variables
 
@@ -50084,9 +48608,9 @@ ifFalse_84:
 	li t4, 1880
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_309
-	j ifTrue_181
-next_307:
+	beqz t1, next_402
+	j ifTrue_228
+next_400:
 
 	# load x$169 lv$2
 
@@ -50101,7 +48625,7 @@ next_307:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$502 x$169 
+	# DIVresult_$502 x$169  
 
 	# fetch variables
 
@@ -50110,14 +48634,14 @@ next_307:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$502
 	li t4, 1864
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$502
+	# store lv$2 result_$502
 
 	# fetch variables
 
@@ -50125,8 +48649,6 @@ next_307:
 	li t4, 1864
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$502
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -50147,7 +48669,7 @@ next_307:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$503 y$174 
+	# DIVresult_$503 y$174  
 
 	# fetch variables
 
@@ -50156,14 +48678,14 @@ next_307:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$503
 	li t4, 1848
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$503
+	# store lv$3 result_$503
 
 	# fetch variables
 
@@ -50171,8 +48693,6 @@ next_307:
 	li t4, 1848
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$503
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -50193,7 +48713,7 @@ next_307:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$504 i$179 
+	# ADDresult_$504 i$179  
 
 	# fetch variables
 
@@ -50209,7 +48729,7 @@ next_307:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$504
+	# store lv$1 result_$504
 
 	# fetch variables
 
@@ -50218,17 +48738,15 @@ next_307:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$504
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_127
-	j whileCond_127
-ifTrue_180:
+	# br whileCond_173
+	j whileCond_173
+ifTrue_227:
 
 	# load ans$156 lv
 
@@ -50290,7 +48808,7 @@ ifTrue_180:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$497  SHIFT_TABLE$197
+	# MULresult_$497  SHIFT_TABLE$197 
 
 	# fetch variables
 	li t1, 1
@@ -50306,7 +48824,7 @@ ifTrue_180:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$498 ans$156 result_$497
+	# ADDresult_$498 ans$156 result_$497 
 
 	# fetch variables
 
@@ -50326,7 +48844,7 @@ ifTrue_180:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$498
+	# store lv result_$498
 
 	# fetch variables
 
@@ -50335,21 +48853,19 @@ ifTrue_180:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$498
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_308
-	j next_308
-next_308:
+	# br next_401
+	j next_401
+next_401:
 
-	# br next_307
-	j next_307
-ifTrue_181:
+	# br next_400
+	j next_400
+ifTrue_228:
 
 	# load ans$157 lv
 
@@ -50411,7 +48927,7 @@ ifTrue_181:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$500  SHIFT_TABLE$199
+	# MULresult_$500  SHIFT_TABLE$199 
 
 	# fetch variables
 	li t1, 1
@@ -50427,7 +48943,7 @@ ifTrue_181:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$501 ans$157 result_$500
+	# ADDresult_$501 ans$157 result_$500 
 
 	# fetch variables
 
@@ -50447,7 +48963,7 @@ ifTrue_181:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$501
+	# store lv result_$501
 
 	# fetch variables
 
@@ -50456,21 +48972,19 @@ ifTrue_181:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$501
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_309
-	j next_309
-next_309:
+	# br next_402
+	j next_402
+next_402:
 
-	# br next_307
-	j next_307
-whileCond_128:
+	# br next_400
+	j next_400
+whileCond_174:
 
 	# load i$180 lv$1
 
@@ -50485,7 +48999,7 @@ whileCond_128:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$180  cond_lt_tmp_$67
+	# ICMPcond_lt_tmp_$67 i$180  
 
 	# fetch variables
 
@@ -50494,14 +49008,14 @@ whileCond_128:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$67
 	li t4, 1720
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$130 cond_lt_tmp_$67
+	# ZEXTcond_tmp_$130 cond_lt_tmp_$67
 
 	# fetch variables
 
@@ -50509,14 +49023,14 @@ whileCond_128:
 	li t4, 1720
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$130
 	li t4, 1712
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$130  cond_$130
+	# ICMPcond_$130 cond_tmp_$130  
 
 	# fetch variables
 
@@ -50525,16 +49039,16 @@ whileCond_128:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$130
 	li t4, 1704
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$130 whileBody_128 next_310
+	# condBr cond_$130 whileBody_174 next_403
 
 	# fetch variables
 
@@ -50542,9 +49056,9 @@ whileCond_128:
 	li t4, 1704
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_310
-	j whileBody_128
-whileBody_128:
+	beqz t1, next_403
+	j whileBody_174
+whileBody_174:
 
 	# load x$170 lv$2
 
@@ -50559,7 +49073,7 @@ whileBody_128:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$505 x$170 
+	# MODresult_$505 x$170  
 
 	# fetch variables
 
@@ -50568,14 +49082,14 @@ whileBody_128:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$505
 	li t4, 1688
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$505  cond_normalize_$145
+	# ICMPcond_normalize_$145 result_$505  
 
 	# fetch variables
 
@@ -50584,16 +49098,16 @@ whileBody_128:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$145
 	li t4, 1680
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$145 secondCond_52 next_311
+	# condBr cond_normalize_$145 secondCond_87 next_404
 
 	# fetch variables
 
@@ -50601,9 +49115,9 @@ whileBody_128:
 	li t4, 1680
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_311
-	j secondCond_52
-next_310:
+	beqz t1, next_404
+	j secondCond_87
+next_403:
 
 	# load ans$160 lv
 
@@ -50618,7 +49132,7 @@ next_310:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$84 ans$160
+	# store lv$84 ans$160
 
 	# fetch variables
 
@@ -50627,28 +49141,26 @@ next_310:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$84 ans$160
-
 	# get address of lv$84 points to
 	li t4, 20328
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$38
+	# ICMPcond_gt_tmp_$38   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
+	sub t0, t1, t2
+	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$38
 	li t4, 1664
 	add t4, sp, t4
-	sub t0, t1, t2
-	sgtz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$131 cond_gt_tmp_$38
+	# ZEXTcond_tmp_$131 cond_gt_tmp_$38
 
 	# fetch variables
 
@@ -50656,14 +49168,14 @@ next_310:
 	li t4, 1664
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$131
 	li t4, 1656
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$131  cond_$131
+	# ICMPcond_$131 cond_tmp_$131  
 
 	# fetch variables
 
@@ -50672,16 +49184,16 @@ next_310:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$131
 	li t4, 1648
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$131 ifTrue_183 ifFalse_85
+	# condBr cond_$131 ifTrue_230 ifFalse_90
 
 	# fetch variables
 
@@ -50689,9 +49201,9 @@ next_310:
 	li t4, 1648
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_85
-	j ifTrue_183
-ifTrue_182:
+	beqz t1, ifFalse_90
+	j ifTrue_230
+ifTrue_229:
 
 	# load ans$159 lv
 
@@ -50753,7 +49265,7 @@ ifTrue_182:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$507  SHIFT_TABLE$201
+	# MULresult_$507  SHIFT_TABLE$201 
 
 	# fetch variables
 	li t1, 1
@@ -50769,7 +49281,7 @@ ifTrue_182:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$508 ans$159 result_$507
+	# ADDresult_$508 ans$159 result_$507 
 
 	# fetch variables
 
@@ -50789,7 +49301,7 @@ ifTrue_182:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$508
+	# store lv result_$508
 
 	# fetch variables
 
@@ -50798,17 +49310,15 @@ ifTrue_182:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$508
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_311
-	j next_311
-next_311:
+	# br next_404
+	j next_404
+next_404:
 
 	# load x$171 lv$2
 
@@ -50823,7 +49333,7 @@ next_311:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$509 x$171 
+	# DIVresult_$509 x$171  
 
 	# fetch variables
 
@@ -50832,14 +49342,14 @@ next_311:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$509
 	li t4, 1584
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$509
+	# store lv$2 result_$509
 
 	# fetch variables
 
@@ -50847,8 +49357,6 @@ next_311:
 	li t4, 1584
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$509
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -50869,7 +49377,7 @@ next_311:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$510 y$176 
+	# DIVresult_$510 y$176  
 
 	# fetch variables
 
@@ -50878,14 +49386,14 @@ next_311:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$510
 	li t4, 1568
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$510
+	# store lv$3 result_$510
 
 	# fetch variables
 
@@ -50893,8 +49401,6 @@ next_311:
 	li t4, 1568
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$510
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -50915,7 +49421,7 @@ next_311:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$511 i$182 
+	# ADDresult_$511 i$182  
 
 	# fetch variables
 
@@ -50931,7 +49437,7 @@ next_311:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$511
+	# store lv$1 result_$511
 
 	# fetch variables
 
@@ -50940,17 +49446,15 @@ next_311:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$511
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_128
-	j whileCond_128
-secondCond_52:
+	# br whileCond_174
+	j whileCond_174
+secondCond_87:
 
 	# load y$175 lv$3
 
@@ -50965,7 +49469,7 @@ secondCond_52:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$506 y$175 
+	# MODresult_$506 y$175  
 
 	# fetch variables
 
@@ -50974,14 +49478,14 @@ secondCond_52:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$506
 	li t4, 1536
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$506  cond_normalize_$146
+	# ICMPcond_normalize_$146 result_$506  
 
 	# fetch variables
 
@@ -50990,16 +49494,16 @@ secondCond_52:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$146
 	li t4, 1528
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$146 ifTrue_182 next_311
+	# condBr cond_normalize_$146 ifTrue_229 next_404
 
 	# fetch variables
 
@@ -51007,16 +49511,14 @@ secondCond_52:
 	li t4, 1528
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_311
-	j ifTrue_182
-ifTrue_183:
+	beqz t1, next_404
+	j ifTrue_229
+ifTrue_230:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -51024,29 +49526,25 @@ ifTrue_183:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_312
-	j next_312
-ifFalse_85:
+	# br next_405
+	j next_405
+ifFalse_90:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -51067,7 +49565,7 @@ ifFalse_85:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$512 c$59 
+	# MULresult_$512 c$59  
 
 	# fetch variables
 
@@ -51083,7 +49581,7 @@ ifFalse_85:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$2 result_$512
+	# store lv$2 result_$512
 
 	# fetch variables
 
@@ -51092,20 +49590,16 @@ ifFalse_85:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 result_$512
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -51113,9 +49607,9 @@ ifFalse_85:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_129
-	j whileCond_129
-next_312:
+	# br whileCond_175
+	j whileCond_175
+next_405:
 
 	# load ans$162 lv
 
@@ -51130,7 +49624,7 @@ next_312:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$84 ans$162
+	# store lv$84 ans$162
 
 	# fetch variables
 
@@ -51138,8 +49632,6 @@ next_312:
 	li t4, 1504
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$84 ans$162
 
 	# get address of lv$84 points to
 	li t4, 20328
@@ -51160,7 +49652,7 @@ next_312:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$83 sum$14
+	# store lv$83 sum$14
 
 	# fetch variables
 
@@ -51169,17 +49661,15 @@ next_312:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$83 sum$14
-
 	# get address of lv$83 points to
 	li t4, 20312
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_126
-	j whileCond_126
-whileCond_129:
+	# br whileCond_172
+	j whileCond_172
+whileCond_175:
 
 	# load i$183 lv$1
 
@@ -51194,7 +49684,7 @@ whileCond_129:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$183  cond_lt_tmp_$68
+	# ICMPcond_lt_tmp_$68 i$183  
 
 	# fetch variables
 
@@ -51203,14 +49693,14 @@ whileCond_129:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$68
 	li t4, 1480
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$132 cond_lt_tmp_$68
+	# ZEXTcond_tmp_$132 cond_lt_tmp_$68
 
 	# fetch variables
 
@@ -51218,14 +49708,14 @@ whileCond_129:
 	li t4, 1480
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$132
 	li t4, 1472
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$132  cond_$132
+	# ICMPcond_$132 cond_tmp_$132  
 
 	# fetch variables
 
@@ -51234,16 +49724,16 @@ whileCond_129:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$132
 	li t4, 1464
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$132 whileBody_129 next_313
+	# condBr cond_$132 whileBody_175 next_406
 
 	# fetch variables
 
@@ -51251,9 +49741,9 @@ whileCond_129:
 	li t4, 1464
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_313
-	j whileBody_129
-whileBody_129:
+	beqz t1, next_406
+	j whileBody_175
+whileBody_175:
 
 	# load x$172 lv$2
 
@@ -51268,7 +49758,7 @@ whileBody_129:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$513 x$172 
+	# MODresult_$513 x$172  
 
 	# fetch variables
 
@@ -51277,14 +49767,14 @@ whileBody_129:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$513
 	li t4, 1448
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$513  cond_normalize_$147
+	# ICMPcond_normalize_$147 result_$513  
 
 	# fetch variables
 
@@ -51293,16 +49783,16 @@ whileBody_129:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$147
 	li t4, 1440
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$147 secondCond_53 next_314
+	# condBr cond_normalize_$147 secondCond_88 next_407
 
 	# fetch variables
 
@@ -51310,13 +49800,13 @@ whileBody_129:
 	li t4, 1440
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_314
-	j secondCond_53
-next_313:
+	beqz t1, next_407
+	j secondCond_88
+next_406:
 
-	# br next_312
-	j next_312
-ifTrue_184:
+	# br next_405
+	j next_405
+ifTrue_231:
 
 	# load ans$161 lv
 
@@ -51378,7 +49868,7 @@ ifTrue_184:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# MULresult_$515  SHIFT_TABLE$203
+	# MULresult_$515  SHIFT_TABLE$203 
 
 	# fetch variables
 	li t1, 1
@@ -51394,7 +49884,7 @@ ifTrue_184:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# ADDresult_$516 ans$161 result_$515
+	# ADDresult_$516 ans$161 result_$515 
 
 	# fetch variables
 
@@ -51414,7 +49904,7 @@ ifTrue_184:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv result_$516
+	# store lv result_$516
 
 	# fetch variables
 
@@ -51423,17 +49913,15 @@ ifTrue_184:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv result_$516
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_314
-	j next_314
-next_314:
+	# br next_407
+	j next_407
+next_407:
 
 	# load x$173 lv$2
 
@@ -51448,7 +49936,7 @@ next_314:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$517 x$173 
+	# DIVresult_$517 x$173  
 
 	# fetch variables
 
@@ -51457,14 +49945,14 @@ next_314:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$517
 	li t4, 1376
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$517
+	# store lv$2 result_$517
 
 	# fetch variables
 
@@ -51472,8 +49960,6 @@ next_314:
 	li t4, 1376
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$517
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -51494,7 +49980,7 @@ next_314:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$518 y$178 
+	# DIVresult_$518 y$178  
 
 	# fetch variables
 
@@ -51503,14 +49989,14 @@ next_314:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$518
 	li t4, 1360
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$518
+	# store lv$3 result_$518
 
 	# fetch variables
 
@@ -51518,8 +50004,6 @@ next_314:
 	li t4, 1360
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$518
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -51540,7 +50024,7 @@ next_314:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$519 i$185 
+	# ADDresult_$519 i$185  
 
 	# fetch variables
 
@@ -51556,7 +50040,7 @@ next_314:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$519
+	# store lv$1 result_$519
 
 	# fetch variables
 
@@ -51565,17 +50049,15 @@ next_314:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$519
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_129
-	j whileCond_129
-secondCond_53:
+	# br whileCond_175
+	j whileCond_175
+secondCond_88:
 
 	# load y$177 lv$3
 
@@ -51590,7 +50072,7 @@ secondCond_53:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$514 y$177 
+	# MODresult_$514 y$177  
 
 	# fetch variables
 
@@ -51599,14 +50081,14 @@ secondCond_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$514
 	li t4, 1328
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$514  cond_normalize_$148
+	# ICMPcond_normalize_$148 result_$514  
 
 	# fetch variables
 
@@ -51615,16 +50097,16 @@ secondCond_53:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$148
 	li t4, 1320
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$148 ifTrue_184 next_314
+	# condBr cond_normalize_$148 ifTrue_231 next_407
 
 	# fetch variables
 
@@ -51632,9 +50114,9 @@ secondCond_53:
 	li t4, 1320
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_314
-	j ifTrue_184
-whileCond_130:
+	beqz t1, next_407
+	j ifTrue_231
+whileCond_176:
 
 	# load c$60 lv$87
 
@@ -51649,7 +50131,7 @@ whileCond_130:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp c$60  cond_normalize_$149
+	# ICMPcond_normalize_$149 c$60  
 
 	# fetch variables
 
@@ -51658,16 +50140,16 @@ whileCond_130:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$149
 	li t4, 1304
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$149 whileBody_130 next_315
+	# condBr cond_normalize_$149 whileBody_176 next_408
 
 	# fetch variables
 
@@ -51675,16 +50157,14 @@ whileCond_130:
 	li t4, 1304
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_315
-	j whileBody_130
-whileBody_130:
+	beqz t1, next_408
+	j whileBody_176
+whileBody_176:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -51692,12 +50172,10 @@ whileBody_130:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -51718,7 +50196,7 @@ whileBody_130:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$45
+	# store lv$2 al$45
 
 	# fetch variables
 
@@ -51726,8 +50204,6 @@ whileBody_130:
 	li t4, 1296
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$45
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -51748,7 +50224,7 @@ whileBody_130:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$61
+	# store lv$3 c$61
 
 	# fetch variables
 
@@ -51757,17 +50233,15 @@ whileBody_130:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$61
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_131
-	j whileCond_131
-next_315:
+	# br whileCond_177
+	j whileCond_177
+next_408:
 
 	# load al$47 lv$86
 
@@ -51782,7 +50256,7 @@ next_315:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv al$47
+	# store lv al$47
 
 	# fetch variables
 
@@ -51790,8 +50264,6 @@ next_315:
 	li t4, 1280
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv al$47
 
 	# get address of lv points to
 	li t4, 18984
@@ -51812,7 +50284,7 @@ next_315:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$80 ans$171
+	# store lv$80 ans$171
 
 	# fetch variables
 
@@ -51820,8 +50292,6 @@ next_315:
 	li t4, 1272
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$80 ans$171
 
 	# get address of lv$80 points to
 	li t4, 20264
@@ -51842,7 +50312,7 @@ next_315:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 mr$23
+	# store lv$2 mr$23
 
 	# fetch variables
 
@@ -51851,20 +50321,16 @@ next_315:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$2 mr$23
-
 	# get address of lv$2 points to
 	li t4, 19016
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 1
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -51885,7 +50351,7 @@ next_315:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp y$186  cond_ge_tmp_$10
+	# ICMPcond_ge_tmp_$10 y$186  
 
 	# fetch variables
 
@@ -51894,15 +50360,15 @@ next_315:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 15
+	slt t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_ge_tmp_$10
 	li t4, 1248
 	add t4, sp, t4
-	slt t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$138 cond_ge_tmp_$10
+	# ZEXTcond_tmp_$138 cond_ge_tmp_$10
 
 	# fetch variables
 
@@ -51910,14 +50376,14 @@ next_315:
 	li t4, 1248
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$138
 	li t4, 1240
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$138  cond_$138
+	# ICMPcond_$138 cond_tmp_$138  
 
 	# fetch variables
 
@@ -51926,16 +50392,16 @@ next_315:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$138
 	li t4, 1232
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$138 ifTrue_191 ifFalse_88
+	# condBr cond_$138 ifTrue_238 ifFalse_93
 
 	# fetch variables
 
@@ -51943,9 +50409,9 @@ next_315:
 	li t4, 1232
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_88
-	j ifTrue_191
-whileCond_131:
+	beqz t1, ifFalse_93
+	j ifTrue_238
+whileCond_177:
 
 	# load i$186 lv$1
 
@@ -51960,7 +50426,7 @@ whileCond_131:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# cmp i$186  cond_lt_tmp_$69
+	# ICMPcond_lt_tmp_$69 i$186  
 
 	# fetch variables
 
@@ -51969,14 +50435,14 @@ whileCond_131:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$69
 	li t4, 1216
 	add t4, sp, t4
-	slt t0, t1, t2
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$133 cond_lt_tmp_$69
+	# ZEXTcond_tmp_$133 cond_lt_tmp_$69
 
 	# fetch variables
 
@@ -51984,14 +50450,14 @@ whileCond_131:
 	li t4, 1216
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$133
 	li t4, 1208
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$133  cond_$133
+	# ICMPcond_$133 cond_tmp_$133  
 
 	# fetch variables
 
@@ -52000,16 +50466,16 @@ whileCond_131:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$133
 	li t4, 1200
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$133 whileBody_131 next_316
+	# condBr cond_$133 whileBody_177 next_409
 
 	# fetch variables
 
@@ -52017,9 +50483,9 @@ whileCond_131:
 	li t4, 1200
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_316
-	j whileBody_131
-whileBody_131:
+	beqz t1, next_409
+	j whileBody_177
+whileBody_177:
 
 	# load x$174 lv$2
 
@@ -52034,7 +50500,7 @@ whileBody_131:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$520 x$174 
+	# MODresult_$520 x$174  
 
 	# fetch variables
 
@@ -52043,14 +50509,14 @@ whileBody_131:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$520
 	li t4, 1184
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$520  cond_normalize_$150
+	# ICMPcond_normalize_$150 result_$520  
 
 	# fetch variables
 
@@ -52059,16 +50525,16 @@ whileBody_131:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$150
 	li t4, 1176
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$150 ifTrue_185 ifFalse_86
+	# condBr cond_normalize_$150 ifTrue_232 ifFalse_91
 
 	# fetch variables
 
@@ -52076,9 +50542,9 @@ whileBody_131:
 	li t4, 1176
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, ifFalse_86
-	j ifTrue_185
-next_316:
+	beqz t1, ifFalse_91
+	j ifTrue_232
+next_409:
 
 	# load ans$166 lv
 
@@ -52093,7 +50559,7 @@ next_316:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$88 ans$166
+	# store lv$88 ans$166
 
 	# fetch variables
 
@@ -52102,20 +50568,16 @@ next_316:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$88 ans$166
-
 	# get address of lv$88 points to
 	li t4, 20392
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -52123,12 +50585,10 @@ next_316:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -52149,7 +50609,7 @@ next_316:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$2 al$46
+	# store lv$2 al$46
 
 	# fetch variables
 
@@ -52157,8 +50617,6 @@ next_316:
 	li t4, 1160
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 al$46
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -52179,7 +50637,7 @@ next_316:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# lv$3 c$62
+	# store lv$3 c$62
 
 	# fetch variables
 
@@ -52188,17 +50646,15 @@ next_316:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$3 c$62
-
 	# get address of lv$3 points to
 	li t4, 19032
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_132
-	j whileCond_132
-ifTrue_185:
+	# br whileCond_178
+	j whileCond_178
+ifTrue_232:
 
 	# load y$179 lv$3
 
@@ -52213,7 +50669,7 @@ ifTrue_185:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$521 y$179 
+	# MODresult_$521 y$179  
 
 	# fetch variables
 
@@ -52222,14 +50678,14 @@ ifTrue_185:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
-
-	# get address of local var:result_$521
-	li t4, 1136
-	add t4, sp, t4
 	rem t0, t1, t2
+
+	# get address of local var:result_$521
+	li t4, 1136
+	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# cmp result_$521  cond_eq_tmp_$15
+	# ICMPcond_eq_tmp_$15 result_$521  
 
 	# fetch variables
 
@@ -52238,15 +50694,15 @@ ifTrue_185:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
 
 	# get address of local var:cond_eq_tmp_$15
 	li t4, 1128
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# zext cond_tmp_$134 cond_eq_tmp_$15
+	# ZEXTcond_tmp_$134 cond_eq_tmp_$15
 
 	# fetch variables
 
@@ -52254,14 +50710,14 @@ ifTrue_185:
 	li t4, 1128
 	add t4, sp, t4
 	ld t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$134
 	li t4, 1120
 	add t4, sp, t4
-	mv t0, t1
 	sd t0, 0(t4)
 
-	# cmp cond_tmp_$134  cond_$134
+	# ICMPcond_$134 cond_tmp_$134  
 
 	# fetch variables
 
@@ -52270,16 +50726,16 @@ ifTrue_185:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_$134
 	li t4, 1112
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_$134 ifTrue_186 next_318
+	# condBr cond_$134 ifTrue_233 next_411
 
 	# fetch variables
 
@@ -52287,9 +50743,9 @@ ifTrue_185:
 	li t4, 1112
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_318
-	j ifTrue_186
-ifFalse_86:
+	beqz t1, next_411
+	j ifTrue_233
+ifFalse_91:
 
 	# load y$180 lv$3
 
@@ -52304,7 +50760,7 @@ ifFalse_86:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# mod result_$524 y$180 
+	# MODresult_$524 y$180  
 
 	# fetch variables
 
@@ -52313,14 +50769,14 @@ ifFalse_86:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$524
 	li t4, 1096
 	add t4, sp, t4
-	rem t0, t1, t2
 	sd t0, 0(t4)
 
-	# cmp result_$524  cond_normalize_$151
+	# ICMPcond_normalize_$151 result_$524  
 
 	# fetch variables
 
@@ -52329,16 +50785,16 @@ ifFalse_86:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
 
 	# get address of local var:cond_normalize_$151
 	li t4, 1088
 	add t4, sp, t4
-	xor t0, t1, t2
-	seqz t0, t0
-	seqz t0, t0
 	sd t0, 0(t4)
 
-	# condBr cond_normalize_$151 ifTrue_187 next_319
+	# condBr cond_normalize_$151 ifTrue_234 next_412
 
 	# fetch variables
 
@@ -52346,9 +50802,9 @@ ifFalse_86:
 	li t4, 1088
 	add t4, sp, t4
 	ld t1, 0(t4)
-	beqz t1, next_319
-	j ifTrue_187
-next_317:
+	beqz t1, next_412
+	j ifTrue_234
+next_410:
 
 	# load x$175 lv$2
 
@@ -52363,7 +50819,7 @@ next_317:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$527 x$175 
+	# DIVresult_$527 x$175  
 
 	# fetch variables
 
@@ -52372,14 +50828,14 @@ next_317:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$527
 	li t4, 1072
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$2 result_$527
+	# store lv$2 result_$527
 
 	# fetch variables
 
@@ -52387,8 +50843,6 @@ next_317:
 	li t4, 1072
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$2 result_$527
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -52409,7 +50863,7 @@ next_317:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# div result_$528 y$181 
+	# DIVresult_$528 y$181  
 
 	# fetch variables
 
@@ -52418,14 +50872,14 @@ next_317:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$528
 	li t4, 1056
 	add t4, sp, t4
-	div t0, t1, t2
 	sd t0, 0(t4)
 
-	# lv$3 result_$528
+	# store lv$3 result_$528
 
 	# fetch variables
 
@@ -52433,8 +50887,6 @@ next_317:
 	li t4, 1056
 	add t4, sp, t4
 	ld t1, 0(t4)
-
-	# store lv$3 result_$528
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -52455,7 +50907,7 @@ next_317:
 	ld t0, 0(t3)
 	sd t0, 0(t4)
 
-	# ADDresult_$529 i$189 
+	# ADDresult_$529 i$189  
 
 	# fetch variables
 
@@ -52471,7 +50923,7 @@ next_317:
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# lv$1 result_$529
+	# store lv$1 result_$529
 
 	# fetch variables
 
@@ -52480,17 +50932,15 @@ next_317:
 	add t4, sp, t4
 	ld t1, 0(t4)
 
-	# store lv$1 result_$529
-
 	# get address of lv$1 points to
 	li t4, 19000
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_131
-	j whileCond_131
-ifTrue_186:
+	# br whileCond_177
+	j whileCond_177
+ifTrue_233:
 
 	# load ans$164 lv
 
@@ -52546,7 +50996,7 @@ ifTrue_186:
 	ld t0, 0(t3)
 	sd t0, 1008(sp)
 
-	# MULresult_$522  SHIFT_TABLE$205
+	# MULresult_$522  SHIFT_TABLE$205 
 
 	# fetch variables
 	li t1, 1
@@ -52558,7 +51008,7 @@ ifTrue_186:
 	# get address of local var:result_$522
 	sd t0, 1000(sp)
 
-	# ADDresult_$523 ans$164 result_$522
+	# ADDresult_$523 ans$164 result_$522 
 
 	# fetch variables
 
@@ -52574,14 +51024,12 @@ ifTrue_186:
 	# get address of local var:result_$523
 	sd t0, 992(sp)
 
-	# lv result_$523
+	# store lv result_$523
 
 	# fetch variables
 
 	# get address of local var:result_$523
 	ld t1, 992(sp)
-
-	# store lv result_$523
 
 	# get address of lv points to
 	li t4, 18984
@@ -52589,13 +51037,13 @@ ifTrue_186:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_318
-	j next_318
-next_318:
+	# br next_411
+	j next_411
+next_411:
 
-	# br next_317
-	j next_317
-ifTrue_187:
+	# br next_410
+	j next_410
+ifTrue_234:
 
 	# load ans$165 lv
 
@@ -52645,7 +51093,7 @@ ifTrue_187:
 	ld t0, 0(t3)
 	sd t0, 960(sp)
 
-	# MULresult_$525  SHIFT_TABLE$207
+	# MULresult_$525  SHIFT_TABLE$207 
 
 	# fetch variables
 	li t1, 1
@@ -52657,7 +51105,7 @@ ifTrue_187:
 	# get address of local var:result_$525
 	sd t0, 952(sp)
 
-	# ADDresult_$526 ans$165 result_$525
+	# ADDresult_$526 ans$165 result_$525 
 
 	# fetch variables
 
@@ -52671,14 +51119,12 @@ ifTrue_187:
 	# get address of local var:result_$526
 	sd t0, 944(sp)
 
-	# lv result_$526
+	# store lv result_$526
 
 	# fetch variables
 
 	# get address of local var:result_$526
 	ld t1, 944(sp)
-
-	# store lv result_$526
 
 	# get address of lv points to
 	li t4, 18984
@@ -52686,13 +51132,13 @@ ifTrue_187:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_319
-	j next_319
-next_319:
+	# br next_412
+	j next_412
+next_412:
 
-	# br next_317
-	j next_317
-whileCond_132:
+	# br next_410
+	j next_410
+whileCond_178:
 
 	# load i$190 lv$1
 
@@ -52705,52 +51151,52 @@ whileCond_132:
 	ld t0, 0(t3)
 	sd t0, 936(sp)
 
-	# cmp i$190  cond_lt_tmp_$70
+	# ICMPcond_lt_tmp_$70 i$190  
 
 	# fetch variables
 
 	# get address of local var:i$190
 	ld t1, 936(sp)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$70
-	slt t0, t1, t2
 	sd t0, 928(sp)
 
-	# zext cond_tmp_$135 cond_lt_tmp_$70
+	# ZEXTcond_tmp_$135 cond_lt_tmp_$70
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_$70
 	ld t1, 928(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$135
-	mv t0, t1
 	sd t0, 920(sp)
 
-	# cmp cond_tmp_$135  cond_$135
+	# ICMPcond_$135 cond_tmp_$135  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$135
 	ld t1, 920(sp)
 	li t2, 0
-
-	# get address of local var:cond_$135
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$135
 	sd t0, 912(sp)
 
-	# condBr cond_$135 whileBody_132 next_320
+	# condBr cond_$135 whileBody_178 next_413
 
 	# fetch variables
 
 	# get address of local var:cond_$135
 	ld t1, 912(sp)
-	beqz t1, next_320
-	j whileBody_132
-whileBody_132:
+	beqz t1, next_413
+	j whileBody_178
+whileBody_178:
 
 	# load x$176 lv$2
 
@@ -52763,41 +51209,41 @@ whileBody_132:
 	ld t0, 0(t3)
 	sd t0, 904(sp)
 
-	# mod result_$530 x$176 
+	# MODresult_$530 x$176  
 
 	# fetch variables
 
 	# get address of local var:x$176
 	ld t1, 904(sp)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$530
-	rem t0, t1, t2
 	sd t0, 896(sp)
 
-	# cmp result_$530  cond_normalize_$152
+	# ICMPcond_normalize_$152 result_$530  
 
 	# fetch variables
 
 	# get address of local var:result_$530
 	ld t1, 896(sp)
 	li t2, 0
-
-	# get address of local var:cond_normalize_$152
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_normalize_$152
 	sd t0, 888(sp)
 
-	# condBr cond_normalize_$152 secondCond_54 next_321
+	# condBr cond_normalize_$152 secondCond_89 next_414
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$152
 	ld t1, 888(sp)
-	beqz t1, next_321
-	j secondCond_54
-next_320:
+	beqz t1, next_414
+	j secondCond_89
+next_413:
 
 	# load ans$168 lv
 
@@ -52810,14 +51256,12 @@ next_320:
 	ld t0, 0(t3)
 	sd t0, 880(sp)
 
-	# lv$87 ans$168
+	# store lv$87 ans$168
 
 	# fetch variables
 
 	# get address of local var:ans$168
 	ld t1, 880(sp)
-
-	# store lv$87 ans$168
 
 	# get address of lv$87 points to
 	li t4, 20376
@@ -52825,51 +51269,51 @@ next_320:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# cmp   cond_gt_tmp_$39
+	# ICMPcond_gt_tmp_$39   
 
 	# fetch variables
 	li t1, 1
 	li t2, 15
-
-	# get address of local var:cond_gt_tmp_$39
 	sub t0, t1, t2
 	sgtz t0, t0
+
+	# get address of local var:cond_gt_tmp_$39
 	sd t0, 872(sp)
 
-	# zext cond_tmp_$136 cond_gt_tmp_$39
+	# ZEXTcond_tmp_$136 cond_gt_tmp_$39
 
 	# fetch variables
 
 	# get address of local var:cond_gt_tmp_$39
 	ld t1, 872(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$136
-	mv t0, t1
 	sd t0, 864(sp)
 
-	# cmp cond_tmp_$136  cond_$136
+	# ICMPcond_$136 cond_tmp_$136  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$136
 	ld t1, 864(sp)
 	li t2, 0
-
-	# get address of local var:cond_$136
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$136
 	sd t0, 856(sp)
 
-	# condBr cond_$136 ifTrue_189 ifFalse_87
+	# condBr cond_$136 ifTrue_236 ifFalse_92
 
 	# fetch variables
 
 	# get address of local var:cond_$136
 	ld t1, 856(sp)
-	beqz t1, ifFalse_87
-	j ifTrue_189
-ifTrue_188:
+	beqz t1, ifFalse_92
+	j ifTrue_236
+ifTrue_235:
 
 	# load ans$167 lv
 
@@ -52919,7 +51363,7 @@ ifTrue_188:
 	ld t0, 0(t3)
 	sd t0, 824(sp)
 
-	# MULresult_$532  SHIFT_TABLE$209
+	# MULresult_$532  SHIFT_TABLE$209 
 
 	# fetch variables
 	li t1, 1
@@ -52931,7 +51375,7 @@ ifTrue_188:
 	# get address of local var:result_$532
 	sd t0, 816(sp)
 
-	# ADDresult_$533 ans$167 result_$532
+	# ADDresult_$533 ans$167 result_$532 
 
 	# fetch variables
 
@@ -52945,14 +51389,12 @@ ifTrue_188:
 	# get address of local var:result_$533
 	sd t0, 808(sp)
 
-	# lv result_$533
+	# store lv result_$533
 
 	# fetch variables
 
 	# get address of local var:result_$533
 	ld t1, 808(sp)
-
-	# store lv result_$533
 
 	# get address of lv points to
 	li t4, 18984
@@ -52960,9 +51402,9 @@ ifTrue_188:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_321
-	j next_321
-next_321:
+	# br next_414
+	j next_414
+next_414:
 
 	# load x$177 lv$2
 
@@ -52975,26 +51417,24 @@ next_321:
 	ld t0, 0(t3)
 	sd t0, 800(sp)
 
-	# div result_$534 x$177 
+	# DIVresult_$534 x$177  
 
 	# fetch variables
 
 	# get address of local var:x$177
 	ld t1, 800(sp)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$534
-	div t0, t1, t2
 	sd t0, 792(sp)
 
-	# lv$2 result_$534
+	# store lv$2 result_$534
 
 	# fetch variables
 
 	# get address of local var:result_$534
 	ld t1, 792(sp)
-
-	# store lv$2 result_$534
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -53013,26 +51453,24 @@ next_321:
 	ld t0, 0(t3)
 	sd t0, 784(sp)
 
-	# div result_$535 y$183 
+	# DIVresult_$535 y$183  
 
 	# fetch variables
 
 	# get address of local var:y$183
 	ld t1, 784(sp)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$535
-	div t0, t1, t2
 	sd t0, 776(sp)
 
-	# lv$3 result_$535
+	# store lv$3 result_$535
 
 	# fetch variables
 
 	# get address of local var:result_$535
 	ld t1, 776(sp)
-
-	# store lv$3 result_$535
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -53051,7 +51489,7 @@ next_321:
 	ld t0, 0(t3)
 	sd t0, 768(sp)
 
-	# ADDresult_$536 i$192 
+	# ADDresult_$536 i$192  
 
 	# fetch variables
 
@@ -53063,14 +51501,12 @@ next_321:
 	# get address of local var:result_$536
 	sd t0, 760(sp)
 
-	# lv$1 result_$536
+	# store lv$1 result_$536
 
 	# fetch variables
 
 	# get address of local var:result_$536
 	ld t1, 760(sp)
-
-	# store lv$1 result_$536
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -53078,9 +51514,9 @@ next_321:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_132
-	j whileCond_132
-secondCond_54:
+	# br whileCond_178
+	j whileCond_178
+secondCond_89:
 
 	# load y$182 lv$3
 
@@ -53093,48 +51529,46 @@ secondCond_54:
 	ld t0, 0(t3)
 	sd t0, 752(sp)
 
-	# mod result_$531 y$182 
+	# MODresult_$531 y$182  
 
 	# fetch variables
 
 	# get address of local var:y$182
 	ld t1, 752(sp)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$531
-	rem t0, t1, t2
 	sd t0, 744(sp)
 
-	# cmp result_$531  cond_normalize_$153
+	# ICMPcond_normalize_$153 result_$531  
 
 	# fetch variables
 
 	# get address of local var:result_$531
 	ld t1, 744(sp)
 	li t2, 0
-
-	# get address of local var:cond_normalize_$153
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_normalize_$153
 	sd t0, 736(sp)
 
-	# condBr cond_normalize_$153 ifTrue_188 next_321
+	# condBr cond_normalize_$153 ifTrue_235 next_414
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$153
 	ld t1, 736(sp)
-	beqz t1, next_321
-	j ifTrue_188
-ifTrue_189:
+	beqz t1, next_414
+	j ifTrue_235
+ifTrue_236:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
@@ -53142,29 +51576,25 @@ ifTrue_189:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_322
-	j next_322
-ifFalse_87:
+	# br next_415
+	j next_415
+ifFalse_92:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
-
-	# lv$1 
-
-	# fetch variables
-	li t1, 0
 
 	# store lv$1 
+
+	# fetch variables
+	li t1, 0
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -53183,7 +51613,7 @@ ifFalse_87:
 	ld t0, 0(t3)
 	sd t0, 728(sp)
 
-	# MULresult_$537 c$63 
+	# MULresult_$537 c$63  
 
 	# fetch variables
 
@@ -53195,14 +51625,12 @@ ifFalse_87:
 	# get address of local var:result_$537
 	sd t0, 720(sp)
 
-	# lv$2 result_$537
+	# store lv$2 result_$537
 
 	# fetch variables
 
 	# get address of local var:result_$537
 	ld t1, 720(sp)
-
-	# store lv$2 result_$537
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -53210,12 +51638,10 @@ ifFalse_87:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# lv$3 
+	# store lv$3 
 
 	# fetch variables
 	li t1, 65535
-
-	# store lv$3 
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -53223,9 +51649,9 @@ ifFalse_87:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_133
-	j whileCond_133
-next_322:
+	# br whileCond_179
+	j whileCond_179
+next_415:
 
 	# load ans$170 lv
 
@@ -53238,14 +51664,12 @@ next_322:
 	ld t0, 0(t3)
 	sd t0, 712(sp)
 
-	# lv$87 ans$170
+	# store lv$87 ans$170
 
 	# fetch variables
 
 	# get address of local var:ans$170
 	ld t1, 712(sp)
-
-	# store lv$87 ans$170
 
 	# get address of lv$87 points to
 	li t4, 20376
@@ -53264,14 +51688,12 @@ next_322:
 	ld t0, 0(t3)
 	sd t0, 704(sp)
 
-	# lv$86 sum$15
+	# store lv$86 sum$15
 
 	# fetch variables
 
 	# get address of local var:sum$15
 	ld t1, 704(sp)
-
-	# store lv$86 sum$15
 
 	# get address of lv$86 points to
 	li t4, 20360
@@ -53279,9 +51701,9 @@ next_322:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_130
-	j whileCond_130
-whileCond_133:
+	# br whileCond_176
+	j whileCond_176
+whileCond_179:
 
 	# load i$193 lv$1
 
@@ -53294,52 +51716,52 @@ whileCond_133:
 	ld t0, 0(t3)
 	sd t0, 696(sp)
 
-	# cmp i$193  cond_lt_tmp_$71
+	# ICMPcond_lt_tmp_$71 i$193  
 
 	# fetch variables
 
 	# get address of local var:i$193
 	ld t1, 696(sp)
 	li t2, 16
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$71
-	slt t0, t1, t2
 	sd t0, 688(sp)
 
-	# zext cond_tmp_$137 cond_lt_tmp_$71
+	# ZEXTcond_tmp_$137 cond_lt_tmp_$71
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_$71
 	ld t1, 688(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$137
-	mv t0, t1
 	sd t0, 680(sp)
 
-	# cmp cond_tmp_$137  cond_$137
+	# ICMPcond_$137 cond_tmp_$137  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$137
 	ld t1, 680(sp)
 	li t2, 0
-
-	# get address of local var:cond_$137
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$137
 	sd t0, 672(sp)
 
-	# condBr cond_$137 whileBody_133 next_323
+	# condBr cond_$137 whileBody_179 next_416
 
 	# fetch variables
 
 	# get address of local var:cond_$137
 	ld t1, 672(sp)
-	beqz t1, next_323
-	j whileBody_133
-whileBody_133:
+	beqz t1, next_416
+	j whileBody_179
+whileBody_179:
 
 	# load x$178 lv$2
 
@@ -53352,45 +51774,45 @@ whileBody_133:
 	ld t0, 0(t3)
 	sd t0, 664(sp)
 
-	# mod result_$538 x$178 
+	# MODresult_$538 x$178  
 
 	# fetch variables
 
 	# get address of local var:x$178
 	ld t1, 664(sp)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$538
-	rem t0, t1, t2
 	sd t0, 656(sp)
 
-	# cmp result_$538  cond_normalize_$154
+	# ICMPcond_normalize_$154 result_$538  
 
 	# fetch variables
 
 	# get address of local var:result_$538
 	ld t1, 656(sp)
 	li t2, 0
-
-	# get address of local var:cond_normalize_$154
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_normalize_$154
 	sd t0, 648(sp)
 
-	# condBr cond_normalize_$154 secondCond_55 next_324
+	# condBr cond_normalize_$154 secondCond_90 next_417
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$154
 	ld t1, 648(sp)
-	beqz t1, next_324
-	j secondCond_55
-next_323:
+	beqz t1, next_417
+	j secondCond_90
+next_416:
 
-	# br next_322
-	j next_322
-ifTrue_190:
+	# br next_415
+	j next_415
+ifTrue_237:
 
 	# load ans$169 lv
 
@@ -53440,7 +51862,7 @@ ifTrue_190:
 	ld t0, 0(t3)
 	sd t0, 616(sp)
 
-	# MULresult_$540  SHIFT_TABLE$211
+	# MULresult_$540  SHIFT_TABLE$211 
 
 	# fetch variables
 	li t1, 1
@@ -53452,7 +51874,7 @@ ifTrue_190:
 	# get address of local var:result_$540
 	sd t0, 608(sp)
 
-	# ADDresult_$541 ans$169 result_$540
+	# ADDresult_$541 ans$169 result_$540 
 
 	# fetch variables
 
@@ -53466,14 +51888,12 @@ ifTrue_190:
 	# get address of local var:result_$541
 	sd t0, 600(sp)
 
-	# lv result_$541
+	# store lv result_$541
 
 	# fetch variables
 
 	# get address of local var:result_$541
 	ld t1, 600(sp)
-
-	# store lv result_$541
 
 	# get address of lv points to
 	li t4, 18984
@@ -53481,9 +51901,9 @@ ifTrue_190:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_324
-	j next_324
-next_324:
+	# br next_417
+	j next_417
+next_417:
 
 	# load x$179 lv$2
 
@@ -53496,26 +51916,24 @@ next_324:
 	ld t0, 0(t3)
 	sd t0, 592(sp)
 
-	# div result_$542 x$179 
+	# DIVresult_$542 x$179  
 
 	# fetch variables
 
 	# get address of local var:x$179
 	ld t1, 592(sp)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$542
-	div t0, t1, t2
 	sd t0, 584(sp)
 
-	# lv$2 result_$542
+	# store lv$2 result_$542
 
 	# fetch variables
 
 	# get address of local var:result_$542
 	ld t1, 584(sp)
-
-	# store lv$2 result_$542
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -53534,26 +51952,24 @@ next_324:
 	ld t0, 0(t3)
 	sd t0, 576(sp)
 
-	# div result_$543 y$185 
+	# DIVresult_$543 y$185  
 
 	# fetch variables
 
 	# get address of local var:y$185
 	ld t1, 576(sp)
 	li t2, 2
+	div t0, t1, t2
 
 	# get address of local var:result_$543
-	div t0, t1, t2
 	sd t0, 568(sp)
 
-	# lv$3 result_$543
+	# store lv$3 result_$543
 
 	# fetch variables
 
 	# get address of local var:result_$543
 	ld t1, 568(sp)
-
-	# store lv$3 result_$543
 
 	# get address of lv$3 points to
 	li t4, 19032
@@ -53572,7 +51988,7 @@ next_324:
 	ld t0, 0(t3)
 	sd t0, 560(sp)
 
-	# ADDresult_$544 i$195 
+	# ADDresult_$544 i$195  
 
 	# fetch variables
 
@@ -53584,14 +52000,12 @@ next_324:
 	# get address of local var:result_$544
 	sd t0, 552(sp)
 
-	# lv$1 result_$544
+	# store lv$1 result_$544
 
 	# fetch variables
 
 	# get address of local var:result_$544
 	ld t1, 552(sp)
-
-	# store lv$1 result_$544
 
 	# get address of lv$1 points to
 	li t4, 19000
@@ -53599,9 +52013,9 @@ next_324:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_133
-	j whileCond_133
-secondCond_55:
+	# br whileCond_179
+	j whileCond_179
+secondCond_90:
 
 	# load y$184 lv$3
 
@@ -53614,41 +52028,41 @@ secondCond_55:
 	ld t0, 0(t3)
 	sd t0, 544(sp)
 
-	# mod result_$539 y$184 
+	# MODresult_$539 y$184  
 
 	# fetch variables
 
 	# get address of local var:y$184
 	ld t1, 544(sp)
 	li t2, 2
+	rem t0, t1, t2
 
 	# get address of local var:result_$539
-	rem t0, t1, t2
 	sd t0, 536(sp)
 
-	# cmp result_$539  cond_normalize_$155
+	# ICMPcond_normalize_$155 result_$539  
 
 	# fetch variables
 
 	# get address of local var:result_$539
 	ld t1, 536(sp)
 	li t2, 0
-
-	# get address of local var:cond_normalize_$155
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_normalize_$155
 	sd t0, 528(sp)
 
-	# condBr cond_normalize_$155 ifTrue_190 next_324
+	# condBr cond_normalize_$155 ifTrue_237 next_417
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$155
 	ld t1, 528(sp)
-	beqz t1, next_324
-	j ifTrue_190
-ifTrue_191:
+	beqz t1, next_417
+	j ifTrue_237
+ifTrue_238:
 
 	# load x$180 lv$2
 
@@ -53661,52 +52075,52 @@ ifTrue_191:
 	ld t0, 0(t3)
 	sd t0, 520(sp)
 
-	# cmp x$180  cond_lt_tmp_$72
+	# ICMPcond_lt_tmp_$72 x$180  
 
 	# fetch variables
 
 	# get address of local var:x$180
 	ld t1, 520(sp)
 	li t2, 0
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$72
-	slt t0, t1, t2
 	sd t0, 512(sp)
 
-	# zext cond_tmp_$139 cond_lt_tmp_$72
+	# ZEXTcond_tmp_$139 cond_lt_tmp_$72
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_$72
 	ld t1, 512(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$139
-	mv t0, t1
 	sd t0, 504(sp)
 
-	# cmp cond_tmp_$139  cond_$139
+	# ICMPcond_$139 cond_tmp_$139  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$139
 	ld t1, 504(sp)
 	li t2, 0
-
-	# get address of local var:cond_$139
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$139
 	sd t0, 496(sp)
 
-	# condBr cond_$139 ifTrue_192 ifFalse_89
+	# condBr cond_$139 ifTrue_239 ifFalse_94
 
 	# fetch variables
 
 	# get address of local var:cond_$139
 	ld t1, 496(sp)
-	beqz t1, ifFalse_89
-	j ifTrue_192
-ifFalse_88:
+	beqz t1, ifFalse_94
+	j ifTrue_239
+ifFalse_93:
 
 	# load y$187 lv$3
 
@@ -53719,53 +52133,53 @@ ifFalse_88:
 	ld t0, 0(t3)
 	sd t0, 488(sp)
 
-	# cmp y$187  cond_gt_tmp_$40
+	# ICMPcond_gt_tmp_$40 y$187  
 
 	# fetch variables
 
 	# get address of local var:y$187
 	ld t1, 488(sp)
 	li t2, 0
-
-	# get address of local var:cond_gt_tmp_$40
 	sub t0, t1, t2
 	sgtz t0, t0
+
+	# get address of local var:cond_gt_tmp_$40
 	sd t0, 480(sp)
 
-	# zext cond_tmp_$140 cond_gt_tmp_$40
+	# ZEXTcond_tmp_$140 cond_gt_tmp_$40
 
 	# fetch variables
 
 	# get address of local var:cond_gt_tmp_$40
 	ld t1, 480(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$140
-	mv t0, t1
 	sd t0, 472(sp)
 
-	# cmp cond_tmp_$140  cond_$140
+	# ICMPcond_$140 cond_tmp_$140  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$140
 	ld t1, 472(sp)
 	li t2, 0
-
-	# get address of local var:cond_$140
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$140
 	sd t0, 464(sp)
 
-	# condBr cond_$140 ifTrue_193 ifFalse_90
+	# condBr cond_$140 ifTrue_240 ifFalse_95
 
 	# fetch variables
 
 	# get address of local var:cond_$140
 	ld t1, 464(sp)
-	beqz t1, ifFalse_90
-	j ifTrue_193
-next_325:
+	beqz t1, ifFalse_95
+	j ifTrue_240
+next_418:
 
 	# load ans$172 lv
 
@@ -53778,14 +52192,12 @@ next_325:
 	ld t0, 0(t3)
 	sd t0, 456(sp)
 
-	# lv$81 ans$172
+	# store lv$81 ans$172
 
 	# fetch variables
 
 	# get address of local var:ans$172
 	ld t1, 456(sp)
-
-	# store lv$81 ans$172
 
 	# get address of lv$81 points to
 	li t4, 20280
@@ -53793,47 +52205,43 @@ next_325:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_124
-	j whileCond_124
-ifTrue_192:
+	# br whileCond_170
+	j whileCond_170
+ifTrue_239:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 65535
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_326
-	j next_326
-ifFalse_89:
+	# br next_419
+	j next_419
+ifFalse_94:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_326
-	j next_326
-next_326:
+	# br next_419
+	j next_419
+next_419:
 
-	# br next_325
-	j next_325
-ifTrue_193:
+	# br next_418
+	j next_418
+ifTrue_240:
 
 	# load x$181 lv$2
 
@@ -53846,53 +52254,53 @@ ifTrue_193:
 	ld t0, 0(t3)
 	sd t0, 448(sp)
 
-	# cmp x$181  cond_gt_tmp_$41
+	# ICMPcond_gt_tmp_$41 x$181  
 
 	# fetch variables
 
 	# get address of local var:x$181
 	ld t1, 448(sp)
 	li t2, 32767
-
-	# get address of local var:cond_gt_tmp_$41
 	sub t0, t1, t2
 	sgtz t0, t0
+
+	# get address of local var:cond_gt_tmp_$41
 	sd t0, 440(sp)
 
-	# zext cond_tmp_$141 cond_gt_tmp_$41
+	# ZEXTcond_tmp_$141 cond_gt_tmp_$41
 
 	# fetch variables
 
 	# get address of local var:cond_gt_tmp_$41
 	ld t1, 440(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$141
-	mv t0, t1
 	sd t0, 432(sp)
 
-	# cmp cond_tmp_$141  cond_$141
+	# ICMPcond_$141 cond_tmp_$141  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$141
 	ld t1, 432(sp)
 	li t2, 0
-
-	# get address of local var:cond_$141
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$141
 	sd t0, 424(sp)
 
-	# condBr cond_$141 ifTrue_194 ifFalse_91
+	# condBr cond_$141 ifTrue_241 ifFalse_96
 
 	# fetch variables
 
 	# get address of local var:cond_$141
 	ld t1, 424(sp)
-	beqz t1, ifFalse_91
-	j ifTrue_194
-ifFalse_90:
+	beqz t1, ifFalse_96
+	j ifTrue_241
+ifFalse_95:
 
 	# load x$185 lv$2
 
@@ -53905,14 +52313,12 @@ ifFalse_90:
 	ld t0, 0(t3)
 	sd t0, 416(sp)
 
-	# lv x$185
+	# store lv x$185
 
 	# fetch variables
 
 	# get address of local var:x$185
 	ld t1, 416(sp)
-
-	# store lv x$185
 
 	# get address of lv points to
 	li t4, 18984
@@ -53920,13 +52326,13 @@ ifFalse_90:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_327
-	j next_327
-next_327:
+	# br next_420
+	j next_420
+next_420:
 
-	# br next_325
-	j next_325
-ifTrue_194:
+	# br next_418
+	j next_418
+ifTrue_241:
 
 	# load x$182 lv$2
 
@@ -53976,7 +52382,7 @@ ifTrue_194:
 	ld t0, 0(t3)
 	sd t0, 384(sp)
 
-	# div result_$545 x$182 SHIFT_TABLE$213
+	# DIVresult_$545 x$182 SHIFT_TABLE$213 
 
 	# fetch variables
 
@@ -53985,19 +52391,17 @@ ifTrue_194:
 
 	# get address of local var:SHIFT_TABLE$213
 	ld t2, 384(sp)
+	div t0, t1, t2
 
 	# get address of local var:result_$545
-	div t0, t1, t2
 	sd t0, 376(sp)
 
-	# lv$2 result_$545
+	# store lv$2 result_$545
 
 	# fetch variables
 
 	# get address of local var:result_$545
 	ld t1, 376(sp)
-
-	# store lv$2 result_$545
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -54016,7 +52420,7 @@ ifTrue_194:
 	ld t0, 0(t3)
 	sd t0, 368(sp)
 
-	# ADDresult_$546 x$183 
+	# ADDresult_$546 x$183  
 
 	# fetch variables
 
@@ -54039,7 +52443,7 @@ ifTrue_194:
 	ld t0, 0(t3)
 	sd t0, 352(sp)
 
-	# SUBresult_$547  y$189
+	# SUBresult_$547  y$189 
 
 	# fetch variables
 	li t1, 15
@@ -54051,7 +52455,7 @@ ifTrue_194:
 	# get address of local var:result_$547
 	sd t0, 344(sp)
 
-	# ADDresult_$548 result_$547 
+	# ADDresult_$548 result_$547  
 
 	# fetch variables
 
@@ -54089,7 +52493,7 @@ ifTrue_194:
 	ld t0, 0(t3)
 	sd t0, 320(sp)
 
-	# SUBresult_$549 result_$546 SHIFT_TABLE$215
+	# SUBresult_$549 result_$546 SHIFT_TABLE$215 
 
 	# fetch variables
 
@@ -54103,14 +52507,12 @@ ifTrue_194:
 	# get address of local var:result_$549
 	sd t0, 312(sp)
 
-	# lv result_$549
+	# store lv result_$549
 
 	# fetch variables
 
 	# get address of local var:result_$549
 	ld t1, 312(sp)
-
-	# store lv result_$549
 
 	# get address of lv points to
 	li t4, 18984
@@ -54118,9 +52520,9 @@ ifTrue_194:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_328
-	j next_328
-ifFalse_91:
+	# br next_421
+	j next_421
+ifFalse_96:
 
 	# load x$184 lv$2
 
@@ -54170,7 +52572,7 @@ ifFalse_91:
 	ld t0, 0(t3)
 	sd t0, 280(sp)
 
-	# div result_$550 x$184 SHIFT_TABLE$217
+	# DIVresult_$550 x$184 SHIFT_TABLE$217 
 
 	# fetch variables
 
@@ -54179,19 +52581,17 @@ ifFalse_91:
 
 	# get address of local var:SHIFT_TABLE$217
 	ld t2, 280(sp)
+	div t0, t1, t2
 
 	# get address of local var:result_$550
-	div t0, t1, t2
 	sd t0, 272(sp)
 
-	# lv result_$550
+	# store lv result_$550
 
 	# fetch variables
 
 	# get address of local var:result_$550
 	ld t1, 272(sp)
-
-	# store lv result_$550
 
 	# get address of lv points to
 	li t4, 18984
@@ -54199,13 +52599,13 @@ ifFalse_91:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_328
-	j next_328
-next_328:
+	# br next_421
+	j next_421
+next_421:
 
-	# br next_327
-	j next_327
-ifTrue_195:
+	# br next_420
+	j next_420
+ifTrue_242:
 
 	# load x$186 lv$2
 
@@ -54218,52 +52618,52 @@ ifTrue_195:
 	ld t0, 0(t3)
 	sd t0, 264(sp)
 
-	# cmp x$186  cond_lt_tmp_$73
+	# ICMPcond_lt_tmp_$73 x$186  
 
 	# fetch variables
 
 	# get address of local var:x$186
 	ld t1, 264(sp)
 	li t2, 0
+	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$73
-	slt t0, t1, t2
 	sd t0, 256(sp)
 
-	# zext cond_tmp_$143 cond_lt_tmp_$73
+	# ZEXTcond_tmp_$143 cond_lt_tmp_$73
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_$73
 	ld t1, 256(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$143
-	mv t0, t1
 	sd t0, 248(sp)
 
-	# cmp cond_tmp_$143  cond_$143
+	# ICMPcond_$143 cond_tmp_$143  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$143
 	ld t1, 248(sp)
 	li t2, 0
-
-	# get address of local var:cond_$143
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$143
 	sd t0, 240(sp)
 
-	# condBr cond_$143 ifTrue_196 ifFalse_93
+	# condBr cond_$143 ifTrue_243 ifFalse_98
 
 	# fetch variables
 
 	# get address of local var:cond_$143
 	ld t1, 240(sp)
-	beqz t1, ifFalse_93
-	j ifTrue_196
-ifFalse_92:
+	beqz t1, ifFalse_98
+	j ifTrue_243
+ifFalse_97:
 
 	# load y$192 lv$3
 
@@ -54276,53 +52676,53 @@ ifFalse_92:
 	ld t0, 0(t3)
 	sd t0, 232(sp)
 
-	# cmp y$192  cond_gt_tmp_$42
+	# ICMPcond_gt_tmp_$42 y$192  
 
 	# fetch variables
 
 	# get address of local var:y$192
 	ld t1, 232(sp)
 	li t2, 0
-
-	# get address of local var:cond_gt_tmp_$42
 	sub t0, t1, t2
 	sgtz t0, t0
+
+	# get address of local var:cond_gt_tmp_$42
 	sd t0, 224(sp)
 
-	# zext cond_tmp_$144 cond_gt_tmp_$42
+	# ZEXTcond_tmp_$144 cond_gt_tmp_$42
 
 	# fetch variables
 
 	# get address of local var:cond_gt_tmp_$42
 	ld t1, 224(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$144
-	mv t0, t1
 	sd t0, 216(sp)
 
-	# cmp cond_tmp_$144  cond_$144
+	# ICMPcond_$144 cond_tmp_$144  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$144
 	ld t1, 216(sp)
 	li t2, 0
-
-	# get address of local var:cond_$144
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$144
 	sd t0, 208(sp)
 
-	# condBr cond_$144 ifTrue_197 ifFalse_94
+	# condBr cond_$144 ifTrue_244 ifFalse_99
 
 	# fetch variables
 
 	# get address of local var:cond_$144
 	ld t1, 208(sp)
-	beqz t1, ifFalse_94
-	j ifTrue_197
-next_329:
+	beqz t1, ifFalse_99
+	j ifTrue_244
+next_422:
 
 	# load ans$174 lv
 
@@ -54335,14 +52735,12 @@ next_329:
 	ld t0, 0(t3)
 	sd t0, 200(sp)
 
-	# lv$69 ans$174
+	# store lv$69 ans$174
 
 	# fetch variables
 
 	# get address of local var:ans$174
 	ld t1, 200(sp)
-
-	# store lv$69 ans$174
 
 	# get address of lv$69 points to
 	li t4, 20088
@@ -54350,47 +52748,43 @@ next_329:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_112
-	j whileCond_112
-ifTrue_196:
+	# br whileCond_158
+	j whileCond_158
+ifTrue_243:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 65535
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_330
-	j next_330
-ifFalse_93:
+	# br next_423
+	j next_423
+ifFalse_98:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv 
-
 	# get address of lv points to
 	li t4, 18984
 	add t4, sp, t4
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_330
-	j next_330
-next_330:
+	# br next_423
+	j next_423
+next_423:
 
-	# br next_329
-	j next_329
-ifTrue_197:
+	# br next_422
+	j next_422
+ifTrue_244:
 
 	# load x$187 lv$2
 
@@ -54403,53 +52797,53 @@ ifTrue_197:
 	ld t0, 0(t3)
 	sd t0, 192(sp)
 
-	# cmp x$187  cond_gt_tmp_$43
+	# ICMPcond_gt_tmp_$43 x$187  
 
 	# fetch variables
 
 	# get address of local var:x$187
 	ld t1, 192(sp)
 	li t2, 32767
-
-	# get address of local var:cond_gt_tmp_$43
 	sub t0, t1, t2
 	sgtz t0, t0
+
+	# get address of local var:cond_gt_tmp_$43
 	sd t0, 184(sp)
 
-	# zext cond_tmp_$145 cond_gt_tmp_$43
+	# ZEXTcond_tmp_$145 cond_gt_tmp_$43
 
 	# fetch variables
 
 	# get address of local var:cond_gt_tmp_$43
 	ld t1, 184(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$145
-	mv t0, t1
 	sd t0, 176(sp)
 
-	# cmp cond_tmp_$145  cond_$145
+	# ICMPcond_$145 cond_tmp_$145  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$145
 	ld t1, 176(sp)
 	li t2, 0
-
-	# get address of local var:cond_$145
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_$145
 	sd t0, 168(sp)
 
-	# condBr cond_$145 ifTrue_198 ifFalse_95
+	# condBr cond_$145 ifTrue_245 ifFalse_100
 
 	# fetch variables
 
 	# get address of local var:cond_$145
 	ld t1, 168(sp)
-	beqz t1, ifFalse_95
-	j ifTrue_198
-ifFalse_94:
+	beqz t1, ifFalse_100
+	j ifTrue_245
+ifFalse_99:
 
 	# load x$191 lv$2
 
@@ -54462,14 +52856,12 @@ ifFalse_94:
 	ld t0, 0(t3)
 	sd t0, 160(sp)
 
-	# lv x$191
+	# store lv x$191
 
 	# fetch variables
 
 	# get address of local var:x$191
 	ld t1, 160(sp)
-
-	# store lv x$191
 
 	# get address of lv points to
 	li t4, 18984
@@ -54477,13 +52869,13 @@ ifFalse_94:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_331
-	j next_331
-next_331:
+	# br next_424
+	j next_424
+next_424:
 
-	# br next_329
-	j next_329
-ifTrue_198:
+	# br next_422
+	j next_422
+ifTrue_245:
 
 	# load x$188 lv$2
 
@@ -54533,7 +52925,7 @@ ifTrue_198:
 	ld t0, 0(t3)
 	sd t0, 128(sp)
 
-	# div result_$551 x$188 SHIFT_TABLE$219
+	# DIVresult_$551 x$188 SHIFT_TABLE$219 
 
 	# fetch variables
 
@@ -54542,19 +52934,17 @@ ifTrue_198:
 
 	# get address of local var:SHIFT_TABLE$219
 	ld t2, 128(sp)
+	div t0, t1, t2
 
 	# get address of local var:result_$551
-	div t0, t1, t2
 	sd t0, 120(sp)
 
-	# lv$2 result_$551
+	# store lv$2 result_$551
 
 	# fetch variables
 
 	# get address of local var:result_$551
 	ld t1, 120(sp)
-
-	# store lv$2 result_$551
 
 	# get address of lv$2 points to
 	li t4, 19016
@@ -54573,7 +52963,7 @@ ifTrue_198:
 	ld t0, 0(t3)
 	sd t0, 112(sp)
 
-	# ADDresult_$552 x$189 
+	# ADDresult_$552 x$189  
 
 	# fetch variables
 
@@ -54596,7 +52986,7 @@ ifTrue_198:
 	ld t0, 0(t3)
 	sd t0, 96(sp)
 
-	# SUBresult_$553  y$194
+	# SUBresult_$553  y$194 
 
 	# fetch variables
 	li t1, 15
@@ -54608,7 +52998,7 @@ ifTrue_198:
 	# get address of local var:result_$553
 	sd t0, 88(sp)
 
-	# ADDresult_$554 result_$553 
+	# ADDresult_$554 result_$553  
 
 	# fetch variables
 
@@ -54646,7 +53036,7 @@ ifTrue_198:
 	ld t0, 0(t3)
 	sd t0, 64(sp)
 
-	# SUBresult_$555 result_$552 SHIFT_TABLE$221
+	# SUBresult_$555 result_$552 SHIFT_TABLE$221 
 
 	# fetch variables
 
@@ -54660,14 +53050,12 @@ ifTrue_198:
 	# get address of local var:result_$555
 	sd t0, 56(sp)
 
-	# lv result_$555
+	# store lv result_$555
 
 	# fetch variables
 
 	# get address of local var:result_$555
 	ld t1, 56(sp)
-
-	# store lv result_$555
 
 	# get address of lv points to
 	li t4, 18984
@@ -54675,9 +53063,9 @@ ifTrue_198:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_332
-	j next_332
-ifFalse_95:
+	# br next_425
+	j next_425
+ifFalse_100:
 
 	# load x$190 lv$2
 
@@ -54727,7 +53115,7 @@ ifFalse_95:
 	ld t0, 0(t3)
 	sd t0, 24(sp)
 
-	# div result_$556 x$190 SHIFT_TABLE$223
+	# DIVresult_$556 x$190 SHIFT_TABLE$223 
 
 	# fetch variables
 
@@ -54736,19 +53124,17 @@ ifFalse_95:
 
 	# get address of local var:SHIFT_TABLE$223
 	ld t2, 24(sp)
+	div t0, t1, t2
 
 	# get address of local var:result_$556
-	div t0, t1, t2
 	sd t0, 16(sp)
 
-	# lv result_$556
+	# store lv result_$556
 
 	# fetch variables
 
 	# get address of local var:result_$556
 	ld t1, 16(sp)
-
-	# store lv result_$556
 
 	# get address of lv points to
 	li t4, 18984
@@ -54756,13 +53142,13 @@ ifFalse_95:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br next_332
-	j next_332
-next_332:
+	# br next_425
+	j next_425
+next_425:
 
-	# br next_331
-	j next_331
-ifTrue_199:
+	# br next_424
+	j next_424
+ifTrue_246:
 
 	# ret 
 
@@ -54775,7 +53161,7 @@ ifTrue_199:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_333:
+next_426:
 
 	# load cur$6 lv$4
 
@@ -54788,7 +53174,7 @@ next_333:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$557 cur$6 
+	# ADDresult_$557 cur$6  
 
 	# fetch variables
 
@@ -54800,14 +53186,12 @@ next_333:
 	# get address of local var:result_$557
 	sd t0, 0(sp)
 
-	# lv$4 result_$557
+	# store lv$4 result_$557
 
 	# fetch variables
 
 	# get address of local var:result_$557
 	ld t1, 0(sp)
-
-	# store lv$4 result_$557
 
 	# get address of lv$4 points to
 	li t4, 19048
@@ -54815,12 +53199,12 @@ next_333:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_111
-	j whileCond_111
+	# br whileCond_157
+	j whileCond_157
 .type main, @function
 .globl main
 main:
-mainEntry21:
+mainEntry45:
 
 	# reserve space
 	li t4, 8

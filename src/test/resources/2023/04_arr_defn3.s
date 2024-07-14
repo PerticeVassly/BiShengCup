@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry64:
+mainEntry32:
 
 	# reserve space
 	li t4, 1048
@@ -1728,7 +1728,7 @@ mainEntry64:
 	ld t0, 0(t3)
 	sd t0, 72(sp)
 
-	# ADDresult_ e$1 e$3
+	# ADDresult_ e$1 e$3 
 
 	# fetch variables
 
@@ -1787,7 +1787,7 @@ mainEntry64:
 	ld t0, 0(t3)
 	sd t0, 40(sp)
 
-	# ADDresult_$1 result_ e$5
+	# ADDresult_$1 result_ e$5 
 
 	# fetch variables
 
@@ -1844,7 +1844,7 @@ mainEntry64:
 	ld t0, 0(t3)
 	sd t0, 8(sp)
 
-	# ADDresult_$2 result_$1 a$1
+	# ADDresult_$2 result_$1 a$1 
 
 	# fetch variables
 

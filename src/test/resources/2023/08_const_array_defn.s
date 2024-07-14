@@ -12,7 +12,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry65:
+mainEntry66:
 
 	# reserve space
 	li t4, 0

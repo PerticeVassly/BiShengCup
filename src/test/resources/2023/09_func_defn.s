@@ -8,7 +8,7 @@ gv:
 .type func, @function
 .globl func
 func:
-funcEntry4:
+funcEntry:
 
 	# reserve space
 	li t4, 48
@@ -31,14 +31,12 @@ funcEntry4:
 	# get address of local var:lv
 	sd t0, 32(sp)
 
-	# lv 0
+	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
 	ld t1, 40(sp)
-
-	# store lv 0
 
 	# get address of lv points to
 	ld t3, 32(sp)
@@ -53,7 +51,7 @@ funcEntry4:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# SUBresult_ p 
+	# SUBresult_ p  
 
 	# fetch variables
 
@@ -65,14 +63,12 @@ funcEntry4:
 	# get address of local var:result_
 	sd t0, 8(sp)
 
-	# lv result_
+	# store lv result_
 
 	# fetch variables
 
 	# get address of local var:result_
 	ld t1, 8(sp)
-
-	# store lv result_
 
 	# get address of lv points to
 	ld t3, 32(sp)
@@ -103,7 +99,7 @@ funcEntry4:
 .type main, @function
 .globl main
 main:
-mainEntry90:
+mainEntry22:
 
 	# reserve space
 	li t4, 40
@@ -118,12 +114,10 @@ mainEntry90:
 	# get address of local var:lv
 	sd t0, 32(sp)
 
-	# gv @
+	# store gv 
 
 	# fetch variables
 	li t1, 10
-
-	# store gv 
 
 	# get address of gv points to
 	la t3, gv
@@ -164,14 +158,12 @@ mainEntry90:
 	# get address of local var:func
 	sd a0, 8(sp)
 
-	# lv func
+	# store lv func
 
 	# fetch variables
 
 	# get address of local var:func
 	ld t1, 8(sp)
-
-	# store lv func
 
 	# get address of lv points to
 	ld t3, 32(sp)

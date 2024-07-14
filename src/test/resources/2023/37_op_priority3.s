@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry12:
+mainEntry65:
 
 	# reserve space
 	li t4, 72
@@ -27,23 +27,19 @@ mainEntry12:
 	# get address of local var:lv
 	sd t0, 48(sp)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 10
-
-	# store lv 
 
 	# get address of lv points to
 	ld t3, 48(sp)
 	sd t1, 0(t3)
 
-	# lv$1 
+	# store lv$1 
 
 	# fetch variables
 	li t1, 30
-
-	# store lv$1 
 
 	# get address of lv$1 points to
 	ld t3, 64(sp)
@@ -58,7 +54,7 @@ mainEntry12:
 	ld t0, 0(t3)
 	sd t0, 32(sp)
 
-	# SUBresult_ a 
+	# SUBresult_ a  
 
 	# fetch variables
 
@@ -79,7 +75,7 @@ mainEntry12:
 	ld t0, 0(t3)
 	sd t0, 16(sp)
 
-	# ADDresult_$1 result_ b
+	# ADDresult_$1 result_ b 
 
 	# fetch variables
 
@@ -93,7 +89,7 @@ mainEntry12:
 	# get address of local var:result_$1
 	sd t0, 8(sp)
 
-	# ADDresult_$2 result_$1 
+	# ADDresult_$2 result_$1  
 
 	# fetch variables
 

@@ -8,7 +8,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry35:
+mainEntry62:
 
 	# reserve space
 	li t4, 1320
@@ -305,14 +305,12 @@ mainEntry35:
 	# get address of local var:getint
 	sd a0, 784(sp)
 
-	# lv$30 getint
+	# store lv$30 getint
 
 	# fetch variables
 
 	# get address of local var:getint
 	ld t1, 784(sp)
-
-	# store lv$30 getint
 
 	# get address of lv$30 points to
 	li t4, 1280
@@ -320,9 +318,9 @@ mainEntry35:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_158
-	j whileCond_158
-whileCond_158:
+	# br whileCond_207
+	j whileCond_207
+whileCond_207:
 
 	# load b lv$30
 
@@ -335,53 +333,53 @@ whileCond_158:
 	ld t0, 0(t3)
 	sd t0, 776(sp)
 
-	# cmp b  cond_eq_tmp_
+	# ICMPcond_eq_tmp_ b  
 
 	# fetch variables
 
 	# get address of local var:b
 	ld t1, 776(sp)
 	li t2, 5
-
-	# get address of local var:cond_eq_tmp_
 	xor t0, t1, t2
 	seqz t0, t0
+
+	# get address of local var:cond_eq_tmp_
 	sd t0, 768(sp)
 
-	# zext cond_tmp_ cond_eq_tmp_
+	# ZEXTcond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_
 	ld t1, 768(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	mv t0, t1
 	sd t0, 760(sp)
 
-	# cmp cond_tmp_  cond_
+	# ICMPcond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
 	ld t1, 760(sp)
 	li t2, 0
-
-	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+
+	# get address of local var:cond_
 	sd t0, 752(sp)
 
-	# condBr cond_ whileBody_158 next_401
+	# condBr cond_ whileBody_207 next_500
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 752(sp)
-	beqz t1, next_401
-	j whileBody_158
-whileBody_158:
+	beqz t1, next_500
+	j whileBody_207
+whileBody_207:
 
 	# load b$1 lv$30
 
@@ -394,7 +392,7 @@ whileBody_158:
 	ld t0, 0(t3)
 	sd t0, 744(sp)
 
-	# ADDresult_ b$1 
+	# ADDresult_ b$1  
 
 	# fetch variables
 
@@ -406,14 +404,12 @@ whileBody_158:
 	# get address of local var:result_
 	sd t0, 736(sp)
 
-	# lv$30 result_
+	# store lv$30 result_
 
 	# fetch variables
 
 	# get address of local var:result_
 	ld t1, 736(sp)
-
-	# store lv$30 result_
 
 	# get address of lv$30 points to
 	li t4, 1280
@@ -421,16 +417,14 @@ whileBody_158:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_158
-	j whileCond_158
-next_401:
+	# br whileCond_207
+	j whileCond_207
+next_500:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
-
-	# store lv 
 
 	# get address of lv points to
 	ld t3, 800(sp)
@@ -445,7 +439,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 728(sp)
 
-	# ADDresult_$1 a0 
+	# ADDresult_$1 a0  
 
 	# fetch variables
 
@@ -457,14 +451,12 @@ next_401:
 	# get address of local var:result_$1
 	sd t0, 720(sp)
 
-	# lv$1 result_$1
+	# store lv$1 result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
 	ld t1, 720(sp)
-
-	# store lv$1 result_$1
 
 	# get address of lv$1 points to
 	ld t3, 816(sp)
@@ -479,7 +471,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 712(sp)
 
-	# ADDresult_$2 a1 
+	# ADDresult_$2 a1  
 
 	# fetch variables
 
@@ -491,14 +483,12 @@ next_401:
 	# get address of local var:result_$2
 	sd t0, 704(sp)
 
-	# lv$2 result_$2
+	# store lv$2 result_$2
 
 	# fetch variables
 
 	# get address of local var:result_$2
 	ld t1, 704(sp)
-
-	# store lv$2 result_$2
 
 	# get address of lv$2 points to
 	ld t3, 832(sp)
@@ -513,7 +503,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 696(sp)
 
-	# ADDresult_$3 a2 
+	# ADDresult_$3 a2  
 
 	# fetch variables
 
@@ -525,14 +515,12 @@ next_401:
 	# get address of local var:result_$3
 	sd t0, 688(sp)
 
-	# lv$3 result_$3
+	# store lv$3 result_$3
 
 	# fetch variables
 
 	# get address of local var:result_$3
 	ld t1, 688(sp)
-
-	# store lv$3 result_$3
 
 	# get address of lv$3 points to
 	ld t3, 848(sp)
@@ -547,7 +535,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 680(sp)
 
-	# ADDresult_$4 a3 
+	# ADDresult_$4 a3  
 
 	# fetch variables
 
@@ -559,14 +547,12 @@ next_401:
 	# get address of local var:result_$4
 	sd t0, 672(sp)
 
-	# lv$4 result_$4
+	# store lv$4 result_$4
 
 	# fetch variables
 
 	# get address of local var:result_$4
 	ld t1, 672(sp)
-
-	# store lv$4 result_$4
 
 	# get address of lv$4 points to
 	ld t3, 864(sp)
@@ -581,7 +567,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 664(sp)
 
-	# ADDresult_$5 a4 
+	# ADDresult_$5 a4  
 
 	# fetch variables
 
@@ -593,14 +579,12 @@ next_401:
 	# get address of local var:result_$5
 	sd t0, 656(sp)
 
-	# lv$5 result_$5
+	# store lv$5 result_$5
 
 	# fetch variables
 
 	# get address of local var:result_$5
 	ld t1, 656(sp)
-
-	# store lv$5 result_$5
 
 	# get address of lv$5 points to
 	ld t3, 880(sp)
@@ -615,7 +599,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 648(sp)
 
-	# ADDresult_$6 a5 
+	# ADDresult_$6 a5  
 
 	# fetch variables
 
@@ -627,14 +611,12 @@ next_401:
 	# get address of local var:result_$6
 	sd t0, 640(sp)
 
-	# lv$6 result_$6
+	# store lv$6 result_$6
 
 	# fetch variables
 
 	# get address of local var:result_$6
 	ld t1, 640(sp)
-
-	# store lv$6 result_$6
 
 	# get address of lv$6 points to
 	ld t3, 896(sp)
@@ -649,7 +631,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 632(sp)
 
-	# ADDresult_$7 a6 
+	# ADDresult_$7 a6  
 
 	# fetch variables
 
@@ -661,14 +643,12 @@ next_401:
 	# get address of local var:result_$7
 	sd t0, 624(sp)
 
-	# lv$7 result_$7
+	# store lv$7 result_$7
 
 	# fetch variables
 
 	# get address of local var:result_$7
 	ld t1, 624(sp)
-
-	# store lv$7 result_$7
 
 	# get address of lv$7 points to
 	ld t3, 912(sp)
@@ -683,7 +663,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 616(sp)
 
-	# ADDresult_$8 a7 
+	# ADDresult_$8 a7  
 
 	# fetch variables
 
@@ -695,14 +675,12 @@ next_401:
 	# get address of local var:result_$8
 	sd t0, 608(sp)
 
-	# lv$8 result_$8
+	# store lv$8 result_$8
 
 	# fetch variables
 
 	# get address of local var:result_$8
 	ld t1, 608(sp)
-
-	# store lv$8 result_$8
 
 	# get address of lv$8 points to
 	ld t3, 928(sp)
@@ -717,7 +695,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 600(sp)
 
-	# ADDresult_$9 a8 
+	# ADDresult_$9 a8  
 
 	# fetch variables
 
@@ -729,14 +707,12 @@ next_401:
 	# get address of local var:result_$9
 	sd t0, 592(sp)
 
-	# lv$9 result_$9
+	# store lv$9 result_$9
 
 	# fetch variables
 
 	# get address of local var:result_$9
 	ld t1, 592(sp)
-
-	# store lv$9 result_$9
 
 	# get address of lv$9 points to
 	ld t3, 944(sp)
@@ -751,7 +727,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 584(sp)
 
-	# ADDresult_$10 a9 
+	# ADDresult_$10 a9  
 
 	# fetch variables
 
@@ -763,14 +739,12 @@ next_401:
 	# get address of local var:result_$10
 	sd t0, 576(sp)
 
-	# lv$10 result_$10
+	# store lv$10 result_$10
 
 	# fetch variables
 
 	# get address of local var:result_$10
 	ld t1, 576(sp)
-
-	# store lv$10 result_$10
 
 	# get address of lv$10 points to
 	ld t3, 960(sp)
@@ -785,7 +759,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 568(sp)
 
-	# ADDresult_$11 a10 
+	# ADDresult_$11 a10  
 
 	# fetch variables
 
@@ -797,14 +771,12 @@ next_401:
 	# get address of local var:result_$11
 	sd t0, 560(sp)
 
-	# lv$11 result_$11
+	# store lv$11 result_$11
 
 	# fetch variables
 
 	# get address of local var:result_$11
 	ld t1, 560(sp)
-
-	# store lv$11 result_$11
 
 	# get address of lv$11 points to
 	ld t3, 976(sp)
@@ -819,7 +791,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 552(sp)
 
-	# ADDresult_$12 a11 
+	# ADDresult_$12 a11  
 
 	# fetch variables
 
@@ -831,14 +803,12 @@ next_401:
 	# get address of local var:result_$12
 	sd t0, 544(sp)
 
-	# lv$12 result_$12
+	# store lv$12 result_$12
 
 	# fetch variables
 
 	# get address of local var:result_$12
 	ld t1, 544(sp)
-
-	# store lv$12 result_$12
 
 	# get address of lv$12 points to
 	ld t3, 992(sp)
@@ -853,7 +823,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 536(sp)
 
-	# ADDresult_$13 a12 
+	# ADDresult_$13 a12  
 
 	# fetch variables
 
@@ -865,14 +835,12 @@ next_401:
 	# get address of local var:result_$13
 	sd t0, 528(sp)
 
-	# lv$13 result_$13
+	# store lv$13 result_$13
 
 	# fetch variables
 
 	# get address of local var:result_$13
 	ld t1, 528(sp)
-
-	# store lv$13 result_$13
 
 	# get address of lv$13 points to
 	ld t3, 1008(sp)
@@ -887,7 +855,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 520(sp)
 
-	# ADDresult_$14 a13 
+	# ADDresult_$14 a13  
 
 	# fetch variables
 
@@ -899,14 +867,12 @@ next_401:
 	# get address of local var:result_$14
 	sd t0, 512(sp)
 
-	# lv$14 result_$14
+	# store lv$14 result_$14
 
 	# fetch variables
 
 	# get address of local var:result_$14
 	ld t1, 512(sp)
-
-	# store lv$14 result_$14
 
 	# get address of lv$14 points to
 	li t4, 1024
@@ -925,7 +891,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 504(sp)
 
-	# ADDresult_$15 a14 
+	# ADDresult_$15 a14  
 
 	# fetch variables
 
@@ -937,14 +903,12 @@ next_401:
 	# get address of local var:result_$15
 	sd t0, 496(sp)
 
-	# lv$15 result_$15
+	# store lv$15 result_$15
 
 	# fetch variables
 
 	# get address of local var:result_$15
 	ld t1, 496(sp)
-
-	# store lv$15 result_$15
 
 	# get address of lv$15 points to
 	li t4, 1040
@@ -963,7 +927,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 488(sp)
 
-	# ADDresult_$16 a15 
+	# ADDresult_$16 a15  
 
 	# fetch variables
 
@@ -975,14 +939,12 @@ next_401:
 	# get address of local var:result_$16
 	sd t0, 480(sp)
 
-	# lv$16 result_$16
+	# store lv$16 result_$16
 
 	# fetch variables
 
 	# get address of local var:result_$16
 	ld t1, 480(sp)
-
-	# store lv$16 result_$16
 
 	# get address of lv$16 points to
 	li t4, 1056
@@ -1001,7 +963,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 472(sp)
 
-	# ADDresult_$17 a16 
+	# ADDresult_$17 a16  
 
 	# fetch variables
 
@@ -1013,14 +975,12 @@ next_401:
 	# get address of local var:result_$17
 	sd t0, 464(sp)
 
-	# lv$17 result_$17
+	# store lv$17 result_$17
 
 	# fetch variables
 
 	# get address of local var:result_$17
 	ld t1, 464(sp)
-
-	# store lv$17 result_$17
 
 	# get address of lv$17 points to
 	li t4, 1072
@@ -1039,7 +999,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 456(sp)
 
-	# ADDresult_$18 a17 
+	# ADDresult_$18 a17  
 
 	# fetch variables
 
@@ -1051,14 +1011,12 @@ next_401:
 	# get address of local var:result_$18
 	sd t0, 448(sp)
 
-	# lv$18 result_$18
+	# store lv$18 result_$18
 
 	# fetch variables
 
 	# get address of local var:result_$18
 	ld t1, 448(sp)
-
-	# store lv$18 result_$18
 
 	# get address of lv$18 points to
 	li t4, 1088
@@ -1077,7 +1035,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 440(sp)
 
-	# ADDresult_$19 a18 
+	# ADDresult_$19 a18  
 
 	# fetch variables
 
@@ -1089,14 +1047,12 @@ next_401:
 	# get address of local var:result_$19
 	sd t0, 432(sp)
 
-	# lv$19 result_$19
+	# store lv$19 result_$19
 
 	# fetch variables
 
 	# get address of local var:result_$19
 	ld t1, 432(sp)
-
-	# store lv$19 result_$19
 
 	# get address of lv$19 points to
 	li t4, 1104
@@ -1115,7 +1071,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 424(sp)
 
-	# ADDresult_$20 a19 
+	# ADDresult_$20 a19  
 
 	# fetch variables
 
@@ -1127,14 +1083,12 @@ next_401:
 	# get address of local var:result_$20
 	sd t0, 416(sp)
 
-	# lv$20 result_$20
+	# store lv$20 result_$20
 
 	# fetch variables
 
 	# get address of local var:result_$20
 	ld t1, 416(sp)
-
-	# store lv$20 result_$20
 
 	# get address of lv$20 points to
 	li t4, 1120
@@ -1153,7 +1107,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 408(sp)
 
-	# ADDresult_$21 a20 
+	# ADDresult_$21 a20  
 
 	# fetch variables
 
@@ -1165,14 +1119,12 @@ next_401:
 	# get address of local var:result_$21
 	sd t0, 400(sp)
 
-	# lv$21 result_$21
+	# store lv$21 result_$21
 
 	# fetch variables
 
 	# get address of local var:result_$21
 	ld t1, 400(sp)
-
-	# store lv$21 result_$21
 
 	# get address of lv$21 points to
 	li t4, 1136
@@ -1191,7 +1143,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 392(sp)
 
-	# ADDresult_$22 a21 
+	# ADDresult_$22 a21  
 
 	# fetch variables
 
@@ -1203,14 +1155,12 @@ next_401:
 	# get address of local var:result_$22
 	sd t0, 384(sp)
 
-	# lv$22 result_$22
+	# store lv$22 result_$22
 
 	# fetch variables
 
 	# get address of local var:result_$22
 	ld t1, 384(sp)
-
-	# store lv$22 result_$22
 
 	# get address of lv$22 points to
 	li t4, 1152
@@ -1229,7 +1179,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 376(sp)
 
-	# ADDresult_$23 a22 
+	# ADDresult_$23 a22  
 
 	# fetch variables
 
@@ -1241,14 +1191,12 @@ next_401:
 	# get address of local var:result_$23
 	sd t0, 368(sp)
 
-	# lv$23 result_$23
+	# store lv$23 result_$23
 
 	# fetch variables
 
 	# get address of local var:result_$23
 	ld t1, 368(sp)
-
-	# store lv$23 result_$23
 
 	# get address of lv$23 points to
 	li t4, 1168
@@ -1267,7 +1215,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 360(sp)
 
-	# ADDresult_$24 a23 
+	# ADDresult_$24 a23  
 
 	# fetch variables
 
@@ -1279,14 +1227,12 @@ next_401:
 	# get address of local var:result_$24
 	sd t0, 352(sp)
 
-	# lv$24 result_$24
+	# store lv$24 result_$24
 
 	# fetch variables
 
 	# get address of local var:result_$24
 	ld t1, 352(sp)
-
-	# store lv$24 result_$24
 
 	# get address of lv$24 points to
 	li t4, 1184
@@ -1305,7 +1251,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 344(sp)
 
-	# ADDresult_$25 a24 
+	# ADDresult_$25 a24  
 
 	# fetch variables
 
@@ -1317,14 +1263,12 @@ next_401:
 	# get address of local var:result_$25
 	sd t0, 336(sp)
 
-	# lv$25 result_$25
+	# store lv$25 result_$25
 
 	# fetch variables
 
 	# get address of local var:result_$25
 	ld t1, 336(sp)
-
-	# store lv$25 result_$25
 
 	# get address of lv$25 points to
 	li t4, 1200
@@ -1343,7 +1287,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 328(sp)
 
-	# ADDresult_$26 a25 
+	# ADDresult_$26 a25  
 
 	# fetch variables
 
@@ -1355,14 +1299,12 @@ next_401:
 	# get address of local var:result_$26
 	sd t0, 320(sp)
 
-	# lv$26 result_$26
+	# store lv$26 result_$26
 
 	# fetch variables
 
 	# get address of local var:result_$26
 	ld t1, 320(sp)
-
-	# store lv$26 result_$26
 
 	# get address of lv$26 points to
 	li t4, 1216
@@ -1381,7 +1323,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 312(sp)
 
-	# ADDresult_$27 a26 
+	# ADDresult_$27 a26  
 
 	# fetch variables
 
@@ -1393,14 +1335,12 @@ next_401:
 	# get address of local var:result_$27
 	sd t0, 304(sp)
 
-	# lv$27 result_$27
+	# store lv$27 result_$27
 
 	# fetch variables
 
 	# get address of local var:result_$27
 	ld t1, 304(sp)
-
-	# store lv$27 result_$27
 
 	# get address of lv$27 points to
 	li t4, 1232
@@ -1419,7 +1359,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 296(sp)
 
-	# ADDresult_$28 a27 
+	# ADDresult_$28 a27  
 
 	# fetch variables
 
@@ -1431,14 +1371,12 @@ next_401:
 	# get address of local var:result_$28
 	sd t0, 288(sp)
 
-	# lv$28 result_$28
+	# store lv$28 result_$28
 
 	# fetch variables
 
 	# get address of local var:result_$28
 	ld t1, 288(sp)
-
-	# store lv$28 result_$28
 
 	# get address of lv$28 points to
 	li t4, 1248
@@ -1457,7 +1395,7 @@ next_401:
 	ld t0, 0(t3)
 	sd t0, 280(sp)
 
-	# ADDresult_$29 a28 
+	# ADDresult_$29 a28  
 
 	# fetch variables
 
@@ -1469,14 +1407,12 @@ next_401:
 	# get address of local var:result_$29
 	sd t0, 272(sp)
 
-	# lv$29 result_$29
+	# store lv$29 result_$29
 
 	# fetch variables
 
 	# get address of local var:result_$29
 	ld t1, 272(sp)
-
-	# store lv$29 result_$29
 
 	# get address of lv$29 points to
 	li t4, 1264
@@ -2476,12 +2412,10 @@ next_401:
 	# release params
 	addi sp, sp, 0
 
-	# lv$32 
+	# store lv$32 
 
 	# fetch variables
 	li t1, 10
-
-	# store lv$32 
 
 	# get address of lv$32 points to
 	li t4, 1312
