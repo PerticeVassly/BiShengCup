@@ -134,15 +134,15 @@ func1Entry:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_ ifTrue_318 ifFalse_119
+	# condBr cond_ ifTrue_275 ifFalse_104
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 64(sp)
-	beqz t1, ifFalse_119
-	j ifTrue_318
-ifTrue_318:
+	beqz t1, ifFalse_104
+	j ifTrue_275
+ifTrue_275:
 
 	# load x lv
 
@@ -189,7 +189,7 @@ ifTrue_318:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_119:
+ifFalse_104:
 
 	# load x$1 lv
 
@@ -366,15 +366,15 @@ func2Entry:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_normalize_ ifTrue_319 ifFalse_120
+	# condBr cond_normalize_ ifTrue_276 ifFalse_105
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 40(sp)
-	beqz t1, ifFalse_120
-	j ifTrue_319
-ifTrue_319:
+	beqz t1, ifFalse_105
+	j ifTrue_276
+ifTrue_276:
 
 	# load x lv
 
@@ -451,7 +451,7 @@ ifTrue_319:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_120:
+ifFalse_105:
 
 	# load x$1 lv
 
@@ -584,15 +584,15 @@ func3Entry:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ ifTrue_320 ifFalse_121
+	# condBr cond_ ifTrue_277 ifFalse_106
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 48(sp)
-	beqz t1, ifFalse_121
-	j ifTrue_320
-ifTrue_320:
+	beqz t1, ifFalse_106
+	j ifTrue_277
+ifTrue_277:
 
 	# load x lv
 
@@ -628,7 +628,7 @@ ifTrue_320:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_121:
+ifFalse_106:
 
 	# load x$1 lv
 
@@ -813,15 +813,15 @@ func4Entry:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_normalize_ ifTrue_321 ifFalse_122
+	# condBr cond_normalize_ ifTrue_278 ifFalse_107
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 16(sp)
-	beqz t1, ifFalse_122
-	j ifTrue_321
-ifTrue_321:
+	beqz t1, ifFalse_107
+	j ifTrue_278
+ifTrue_278:
 
 	# load y lv$1
 
@@ -845,7 +845,7 @@ ifTrue_321:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_122:
+ifFalse_107:
 
 	# load z lv$2
 
@@ -1027,15 +1027,15 @@ func6Entry:
 	seqz t0, t0
 	sd t0, 16(sp)
 
-	# condBr cond_normalize_ secondCond_124 ifFalse_123
+	# condBr cond_normalize_ secondCond_103 ifFalse_108
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 16(sp)
-	beqz t1, ifFalse_123
-	j secondCond_124
-ifTrue_322:
+	beqz t1, ifFalse_108
+	j secondCond_103
+ifTrue_279:
 
 	# ret 
 
@@ -1048,7 +1048,7 @@ ifTrue_322:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_123:
+ifFalse_108:
 
 	# ret 
 
@@ -1061,7 +1061,7 @@ ifFalse_123:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-secondCond_124:
+secondCond_103:
 
 	# load y lv$1
 
@@ -1086,14 +1086,14 @@ secondCond_124:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_$1 ifTrue_322 ifFalse_123
+	# condBr cond_normalize_$1 ifTrue_279 ifFalse_108
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$1
 	ld t1, 0(sp)
-	beqz t1, ifFalse_123
-	j ifTrue_322
+	beqz t1, ifFalse_108
+	j ifTrue_279
 .type func7, @function
 .globl func7
 func7:
@@ -1195,15 +1195,15 @@ func7Entry:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_normalize_ ifTrue_323 ifFalse_124
+	# condBr cond_normalize_ ifTrue_280 ifFalse_109
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	ld t1, 0(sp)
-	beqz t1, ifFalse_124
-	j ifTrue_323
-ifTrue_323:
+	beqz t1, ifFalse_109
+	j ifTrue_280
+ifTrue_280:
 
 	# ret 
 
@@ -1216,7 +1216,7 @@ ifTrue_323:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_124:
+ifFalse_109:
 
 	# ret 
 
@@ -1232,7 +1232,7 @@ ifFalse_124:
 .type main, @function
 .globl main
 main:
-mainEntry75:
+mainEntry41:
 
 	# reserve space
 	li t4, 960
@@ -1432,9 +1432,9 @@ mainEntry75:
 	ld t3, 936(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_231
-	j whileCond_231
-whileCond_231:
+	# br whileCond_172
+	j whileCond_172
+whileCond_172:
 
 	# load i lv$5
 
@@ -1482,15 +1482,15 @@ whileCond_231:
 	seqz t0, t0
 	sd t0, 712(sp)
 
-	# condBr cond_ whileBody_231 next_555
+	# condBr cond_ whileBody_172 next_453
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 712(sp)
-	beqz t1, next_555
-	j whileBody_231
-whileBody_231:
+	beqz t1, next_453
+	j whileBody_172
+whileBody_172:
 
 	# load i$1 lv$5
 
@@ -1587,9 +1587,9 @@ whileBody_231:
 	ld t3, 936(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_231
-	j whileCond_231
-next_555:
+	# br whileCond_172
+	j whileCond_172
+next_453:
 
 	# load i1 lv
 

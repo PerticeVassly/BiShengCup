@@ -11,7 +11,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry35:
+mainEntry47:
 
 	# reserve space
 	li t4, 128
@@ -197,7 +197,7 @@ mainEntry35:
 	fld ft1, 16(sp)
 
 	# get address of local var:f2i_
-	fcvt.l.d t0, ft1
+	fcvt.l.d t0, ft1, rtz
 	sd t0, 8(sp)
 
 	# lv$1 f2i_

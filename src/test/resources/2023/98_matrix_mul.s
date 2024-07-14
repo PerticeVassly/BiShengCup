@@ -3728,7 +3728,7 @@ mulEntry:
 .type main, @function
 .globl main
 main:
-mainEntry82:
+mainEntry19:
 
 	# reserve space
 	li t4, 984
@@ -3857,9 +3857,9 @@ mainEntry82:
 	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_248
-	j whileCond_248
-whileCond_248:
+	# br whileCond_40
+	j whileCond_40
+whileCond_40:
 
 	# load i lv$9
 
@@ -3918,15 +3918,15 @@ whileCond_248:
 	seqz t0, t0
 	sd t0, 600(sp)
 
-	# condBr cond_ whileBody_248 next_587
+	# condBr cond_ whileBody_40 next_71
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 600(sp)
-	beqz t1, next_587
-	j whileBody_248
-whileBody_248:
+	beqz t1, next_71
+	j whileBody_40
+whileBody_40:
 
 	# load i$1 lv$9
 
@@ -4328,9 +4328,9 @@ whileBody_248:
 	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_248
-	j whileCond_248
-next_587:
+	# br whileCond_40
+	j whileCond_40
+next_71:
 
 	# gep a0$1 
 
@@ -4574,9 +4574,9 @@ next_587:
 	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_249
-	j whileCond_249
-whileCond_249:
+	# br whileCond_41
+	j whileCond_41
+whileCond_41:
 
 	# load i$14 lv$9
 
@@ -4635,15 +4635,15 @@ whileCond_249:
 	seqz t0, t0
 	sd t0, 272(sp)
 
-	# condBr cond_$1 whileBody_249 next_588
+	# condBr cond_$1 whileBody_41 next_72
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 272(sp)
-	beqz t1, next_588
-	j whileBody_249
-whileBody_249:
+	beqz t1, next_72
+	j whileBody_41
+whileBody_41:
 
 	# load i$15 lv$9
 
@@ -4690,7 +4690,7 @@ whileBody_249:
 	fld ft1, 248(sp)
 
 	# get address of local var:f2i_
-	fcvt.l.d t0, ft1
+	fcvt.l.d t0, ft1, rtz
 	sd t0, 240(sp)
 
 	# lv$10 f2i_
@@ -4772,9 +4772,9 @@ whileBody_249:
 	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_249
-	j whileCond_249
-next_588:
+	# br whileCond_41
+	j whileCond_41
+next_72:
 
 	# lv$10 
 
@@ -4830,9 +4830,9 @@ next_588:
 	# release params
 	addi sp, sp, 0
 
-	# br whileCond_250
-	j whileCond_250
-whileCond_250:
+	# br whileCond_42
+	j whileCond_42
+whileCond_42:
 
 	# load i$17 lv$9
 
@@ -4891,15 +4891,15 @@ whileCond_250:
 	seqz t0, t0
 	sd t0, 168(sp)
 
-	# condBr cond_$2 whileBody_250 next_589
+	# condBr cond_$2 whileBody_42 next_73
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	ld t1, 168(sp)
-	beqz t1, next_589
-	j whileBody_250
-whileBody_250:
+	beqz t1, next_73
+	j whileBody_42
+whileBody_42:
 
 	# load i$18 lv$9
 
@@ -4946,7 +4946,7 @@ whileBody_250:
 	fld ft1, 144(sp)
 
 	# get address of local var:f2i_$1
-	fcvt.l.d t0, ft1
+	fcvt.l.d t0, ft1, rtz
 	sd t0, 136(sp)
 
 	# lv$10 f2i_$1
@@ -5028,9 +5028,9 @@ whileBody_250:
 	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_250
-	j whileCond_250
-next_589:
+	# br whileCond_42
+	j whileCond_42
+next_73:
 
 	# lv$10 
 
@@ -5086,9 +5086,9 @@ next_589:
 	# release params
 	addi sp, sp, 0
 
-	# br whileCond_251
-	j whileCond_251
-whileCond_251:
+	# br whileCond_43
+	j whileCond_43
+whileCond_43:
 
 	# load i$20 lv$9
 
@@ -5147,15 +5147,15 @@ whileCond_251:
 	seqz t0, t0
 	sd t0, 64(sp)
 
-	# condBr cond_$3 whileBody_251 next_590
+	# condBr cond_$3 whileBody_43 next_74
 
 	# fetch variables
 
 	# get address of local var:cond_$3
 	ld t1, 64(sp)
-	beqz t1, next_590
-	j whileBody_251
-whileBody_251:
+	beqz t1, next_74
+	j whileBody_43
+whileBody_43:
 
 	# load i$21 lv$9
 
@@ -5202,7 +5202,7 @@ whileBody_251:
 	fld ft1, 40(sp)
 
 	# get address of local var:f2i_$2
-	fcvt.l.d t0, ft1
+	fcvt.l.d t0, ft1, rtz
 	sd t0, 32(sp)
 
 	# lv$10 f2i_$2
@@ -5284,9 +5284,9 @@ whileBody_251:
 	ld t3, 960(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_251
-	j whileCond_251
-next_590:
+	# br whileCond_43
+	j whileCond_43
+next_74:
 
 	# lv$10 
 

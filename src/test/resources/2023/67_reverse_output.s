@@ -96,15 +96,15 @@ reverseEntry:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ ifTrue_292 ifFalse_111
+	# condBr cond_ ifTrue_316 ifFalse_120
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 48(sp)
-	beqz t1, ifFalse_111
-	j ifTrue_292
-ifTrue_292:
+	beqz t1, ifFalse_120
+	j ifTrue_316
+ifTrue_316:
 
 	# prepare params
 	addi sp, sp, 0
@@ -171,9 +171,9 @@ ifTrue_292:
 	# release params
 	addi sp, sp, 0
 
-	# br next_496
-	j next_496
-ifFalse_111:
+	# br next_517
+	j next_517
+ifFalse_120:
 
 	# prepare params
 	addi sp, sp, 0
@@ -284,9 +284,9 @@ ifFalse_111:
 	# release params
 	addi sp, sp, 0
 
-	# br next_496
-	j next_496
-next_496:
+	# br next_517
+	j next_517
+next_517:
 
 	# ret void
 	li t4, 120
@@ -298,7 +298,7 @@ next_496:
 .type main, @function
 .globl main
 main:
-mainEntry59:
+mainEntry56:
 
 	# reserve space
 	li t4, 24

@@ -242,9 +242,9 @@ funcEntry1:
 	ld t3, 416(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_70
-	j whileCond_70
-whileCond_70:
+	# br whileCond_142
+	j whileCond_142
+whileCond_142:
 
 	# load index lv$9
 
@@ -292,15 +292,15 @@ whileCond_70:
 	seqz t0, t0
 	sd t0, 232(sp)
 
-	# condBr cond_ whileBody_70 next_134
+	# condBr cond_ whileBody_142 next_347
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 232(sp)
-	beqz t1, next_134
-	j whileBody_70
-whileBody_70:
+	beqz t1, next_347
+	j whileBody_142
+whileBody_142:
 
 	# load a lv
 
@@ -433,9 +433,9 @@ whileBody_70:
 	ld t3, 416(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_70
-	j whileCond_70
-next_134:
+	# br whileCond_142
+	j whileCond_142
+next_347:
 
 	# prepare params
 
@@ -548,9 +548,9 @@ next_134:
 	# release params
 	addi sp, sp, 0
 
-	# br whileCond_71
-	j whileCond_71
-whileCond_71:
+	# br whileCond_143
+	j whileCond_143
+whileCond_143:
 
 	# load i lv$8
 
@@ -598,15 +598,15 @@ whileCond_71:
 	seqz t0, t0
 	sd t0, 104(sp)
 
-	# condBr cond_$1 whileBody_71 next_135
+	# condBr cond_$1 whileBody_143 next_348
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 104(sp)
-	beqz t1, next_135
-	j whileBody_71
-whileBody_71:
+	beqz t1, next_348
+	j whileBody_143
+whileBody_143:
 
 	# load i$1 lv$8
 
@@ -759,9 +759,9 @@ whileBody_71:
 	ld t3, 384(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_71
-	j whileCond_71
-next_135:
+	# br whileCond_143
+	j whileCond_143
+next_348:
 
 	# load e lv$4
 
@@ -1821,9 +1821,9 @@ mainEntry27:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_72
-	j whileCond_72
-whileCond_72:
+	# br whileCond_144
+	j whileCond_144
+whileCond_144:
 
 	# load ret lv$2
 
@@ -1874,15 +1874,15 @@ whileCond_72:
 	seqz t0, t0
 	sd t0, 48(sp)
 
-	# condBr cond_ whileBody_72 next_136
+	# condBr cond_ whileBody_144 next_349
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 48(sp)
-	beqz t1, next_136
-	j whileBody_72
-whileBody_72:
+	beqz t1, next_349
+	j whileBody_144
+whileBody_144:
 
 	# load ret$1 lv$2
 
@@ -2024,9 +2024,9 @@ whileBody_72:
 	ld t3, 0(t4)
 	sd t1, 0(t3)
 
-	# br whileCond_72
-	j whileCond_72
-next_136:
+	# br whileCond_144
+	j whileCond_144
+next_349:
 
 	# prepare params
 

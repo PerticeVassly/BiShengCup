@@ -353,15 +353,15 @@ hanoiEntry:
 	seqz t0, t0
 	sd t0, 112(sp)
 
-	# condBr cond_ ifTrue_15 ifFalse_2
+	# condBr cond_ ifTrue_30 ifFalse_15
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 112(sp)
-	beqz t1, ifFalse_2
-	j ifTrue_15
-ifTrue_15:
+	beqz t1, ifFalse_15
+	j ifTrue_30
+ifTrue_30:
 
 	# load one lv$1
 
@@ -410,9 +410,9 @@ ifTrue_15:
 	# release params
 	addi sp, sp, 0
 
-	# br next_32
-	j next_32
-ifFalse_2:
+	# br next_69
+	j next_69
+ifFalse_15:
 
 	# load n$1 lv
 
@@ -639,9 +639,9 @@ ifFalse_2:
 	# release params
 	addi sp, sp, 0
 
-	# br next_32
-	j next_32
-next_32:
+	# br next_69
+	j next_69
+next_69:
 
 	# ret void
 	li t4, 240
@@ -653,7 +653,7 @@ next_32:
 .type main, @function
 .globl main
 main:
-mainEntry9:
+mainEntry18:
 
 	# reserve space
 	li t4, 80
@@ -701,9 +701,9 @@ mainEntry9:
 	ld t3, 72(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_17
-	j whileCond_17
-whileCond_17:
+	# br whileCond_39
+	j whileCond_39
+whileCond_39:
 
 	# load n lv
 
@@ -752,15 +752,15 @@ whileCond_17:
 	seqz t0, t0
 	sd t0, 24(sp)
 
-	# condBr cond_ whileBody_17 next_33
+	# condBr cond_ whileBody_39 next_70
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 24(sp)
-	beqz t1, next_33
-	j whileBody_17
-whileBody_17:
+	beqz t1, next_70
+	j whileBody_39
+whileBody_39:
 
 	# prepare params
 	addi sp, sp, 0
@@ -872,9 +872,9 @@ whileBody_17:
 	ld t3, 72(sp)
 	sd t1, 0(t3)
 
-	# br whileCond_17
-	j whileCond_17
-next_33:
+	# br whileCond_39
+	j whileCond_39
+next_70:
 
 	# ret 
 
