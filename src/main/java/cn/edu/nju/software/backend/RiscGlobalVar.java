@@ -74,7 +74,7 @@ public class RiscGlobalVar {
                                     System.out.println(".zero " + zeroCount * 8);
                                     zeroCount=0;
                                 }
-                                System.out.println(".double " + valueRef);
+                                System.out.println(".dword " + valueRef);
                             }
                         }
                     }

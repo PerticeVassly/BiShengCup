@@ -55,7 +55,7 @@ public class RiscModule {
         System.out.println(".text" + System.lineSeparator() + ".align 2");
         riscFunctions.forEach(RiscFunction::dumpToConsole);
         //添加memset函数，a0传数组首地址，a1传想要赋的值，a2传需要赋值的空间大小
-        System.out.print("""
+        System.out.println("""
                 memset:\s
                     blez    a2, .LBB0_3\s
                     slli    a2, a2, 2\s
@@ -65,7 +65,7 @@ public class RiscModule {
                     addi    a0, a0, 4\s
                     bltu    a0, a2, .LBB0_2\s
                 .LBB0_3:\s
-                    ret""");
+                    ret\s""");
     }
 
     public void dumpToFile(String path) {
