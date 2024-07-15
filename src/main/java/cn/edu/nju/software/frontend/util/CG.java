@@ -1,37 +1,38 @@
 package cn.edu.nju.software.frontend.util;
 
-import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.value.FunctionValue;
 
-import java.util.*;
-public class CFG {
-    private final Graph<BasicBlockRef> graph;
+import java.util.Set;
 
-    public CFG(){
+public class CG {
+    private final Graph<FunctionValue> graph;
+
+    public CG(){
         graph=new Graph<>();
     }
-    public void addPoint(BasicBlockRef bb){
-       graph.addNode(bb);
+    public void addPoint(FunctionValue bb){
+        graph.addNode(bb);
     }
 
-    public void addEdge(BasicBlockRef from,BasicBlockRef to){
-       graph.addEdge(from,to);
+    public void addEdge(FunctionValue from,FunctionValue to){
+        graph.addEdge(from,to);
     }
 
-    public Set<Edge<BasicBlockRef>> getAllEdges(){
+    public Set<Edge<FunctionValue>> getAllEdges(){
         return graph.getAllEdges();
     }
-    public Set<BasicBlockRef> getSuccessors(BasicBlockRef bb){
+    public Set<FunctionValue> getSuccessors(FunctionValue bb){
         return graph.getNeighbors(bb);
     }
 
-    public Set<BasicBlockRef> getAllBasicBlock(){
+    public Set<FunctionValue> getAllFunction(){
         return graph.getAllNodes();
     }
     public void dumpWholeGraph(String fileName){
         GraphViz gv=new GraphViz();
         gv.addln(gv.start_graph());
-        for(BasicBlockRef bb:getAllBasicBlock()){
-            for(BasicBlockRef succ:getSuccessors(bb)){
+        for(FunctionValue bb:getAllFunction()){
+            for(FunctionValue succ:getSuccessors(bb)){
                 gv.addln(bb.getName()+" -> "+succ.getName()+";");
             }
         }
@@ -45,4 +46,3 @@ public class CFG {
         return graph.isEmpty();
     }
 }
-
