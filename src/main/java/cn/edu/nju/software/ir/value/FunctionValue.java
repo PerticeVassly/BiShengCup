@@ -137,6 +137,9 @@ public class FunctionValue extends ValueRef {
 
 
     public void clearDeadBlocks() {
+        for (BasicBlockRef bb : blocks) {
+            bb.dropDeadPred();
+        }
         blocks.removeIf(bb -> !bb.isReachable());
     }
 
