@@ -212,6 +212,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
             typeLen = 4;
         } else if(base instanceof Pointer){
             typeLen = 8;
+        } else {
+            assert false;
         }
 
         riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(allocator.getOffset(allocate.getLVal()) - typeLen)));
@@ -295,18 +297,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Div div) {
-        ValueRef op1 = div.getOperand(0);
-        ValueRef op2 = div.getOperand(1);
-        ValueRef dest = div.getLVal();
-
-        insertComment("div " + dest.getName() + " " + op1.getName() + " " + op2.getName());
-
-        allocator.prepareOperands(op1, op2);
-        Operand addressToSave = allocator.getAddrOfLocalVar(dest);
-
+        beforeABinaryInstr(div);
         riscInstructions.add(new RiscDiv(new Register("t0"), new Register("t1"), new Register("t2")));
-        riscInstructions.add(new RiscSd(new Register("t0"), addressToSave));
-
+        afterABinaryInstr(div);
     }
 
     @Override
@@ -458,8 +451,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
     public void visit(ZExt zExt) {
         beforeAUnaryInstr(zExt);
         riscInstructions.add(new RiscMv(new Register("t0"), new Register("t1")));
-        riscInstructions.add(new RiscSd(new Register("t0"), addressToSave));
-
+        afterAUnaryInstr(zExt);
     }
 
 
@@ -604,7 +596,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
         if(realParam.getType() instanceof IntType){
             riscInstructions.add(new RiscSw(new Register("t1"), new IndirectRegister("sp", -8 * order)));
         } else if(realParam.getType() instanceof FloatType){
-            riscInstructions.add(new RiscFsd(new Register("ft1"), new IndirectRegister("sp", -8 * order)));
+            riscInstructions.add(new RiscFsw(new Register("ft1"), new IndirectRegister("sp", -8 * order)));
+        } else if(realParam.getType() instanceof Pointer){
+            riscInstructions.add(new RiscSd(new Register("t1"), new IndirectRegister("sp", -8 * order)));
         } else {
             assert false;
         }
