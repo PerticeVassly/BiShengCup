@@ -2,13 +2,15 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-**/src/test/rescources/2023/*.ll
-**/src/test/rescources/2023/*.s
-**/src/test/rescources/2023part/*.ll
-**/src/test/rescources/2023part/*.s
-**/src/test/rescources/linked.ll
-**/src/test/rescources/libriscv.o
-**/src/test/rescources/2023/[0-9]*
+**/src/test/resources/2023/*.ll
+**/src/test/resources/2023/*.s
+**/src/test/resources/2023part/*.ll
+**/src/test/resources/2023part/*.s
+**/src/test/resources/linked.ll
+**/src/test/resources/libriscv.o
+**/src/test/resources/2023/*
+**/src/test/resources/2023part/*
+**/src/test/resources/2023hidden/*
 
 
 
