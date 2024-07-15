@@ -27,6 +27,7 @@ public class TestBackEndIO {
 
     @ParameterizedTest
     @StringSource("implicit_conversion")
+    @StringSource("95_float")
     void testRisc(String name) throws IOException, InterruptedException {
         testFile(DIR_PART, name);
     }

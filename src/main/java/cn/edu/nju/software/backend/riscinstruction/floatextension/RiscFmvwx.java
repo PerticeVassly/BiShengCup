@@ -4,14 +4,9 @@ import cn.edu.nju.software.backend.riscinstruction.DefaultInstruction;
 import cn.edu.nju.software.backend.riscinstruction.operand.Operand;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscOpcode;
 
-public class RiscFcvtld extends DefaultInstruction {
+public class RiscFmvwx extends DefaultInstruction {
 
-    public RiscFcvtld(Operand rs1, Operand rd) {
-        super(RiscOpcode.FCVT_L_D, rs1, rd);
-    }
-
-    @Override
-    public String emitCode() {
-        return super.emitCode() + ", rtz";
+    public RiscFmvwx(Operand rd, Operand rs) {
+        super(RiscOpcode.FMV_W_X, rd, rs);
     }
 }

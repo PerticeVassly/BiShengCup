@@ -56,6 +56,25 @@ public class ConstValue extends ValueRef {
         }
     }
 
+    public String toRiscvString() {
+        if (type instanceof IntType){
+            if (value instanceof Integer) {
+                return value.toString();
+            } else {
+                // Float
+                return (int)((Float) value).floatValue() + "";
+            }
+        } else if (type instanceof BoolType) {
+            return value.toString();
+        } else if (type instanceof FloatType) {
+            int floatBits = Float.floatToRawIntBits(Float.parseFloat(value.toString()));
+            String hex = Long.toHexString(floatBits);
+            return "0x" + hex;
+        } else {
+            throw new RuntimeException("Unexpected type");
+        }
+    }
+
 
     public String toString() {
         if (type instanceof IntType){
