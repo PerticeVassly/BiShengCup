@@ -156,25 +156,8 @@ public class LoopBuildPass implements ModulePass {
         }
         cnt=-1;
         tot=0;
-        //TODO:无法正确识别子循环
         CFG cfg = cfgBuildPass.getBasicBlockCFG(functionValue);
-        Stack<BasicBlockRef> help=new Stack<>();
-        help.add(loop.getRoot());
-        Set<BasicBlockRef> record=new HashSet<>();
-        while (!help.isEmpty()){
-            BasicBlockRef cur=help.pop();
-            if(record.contains(cur)){
-                continue;
-            }
-            record.add(cur);
-            for (BasicBlockRef bb : cfg.getSuccessors(cur)) {
-                if (blockSet.contains(bb)||dfn.containsKey(bb)) {
-                    continue;
-                }
-                tarjan(blockSet, bb, functionValue, scc, size, stack, inStk, dfn, low, roots);
-                help.push(bb);
-            }
-        }
+        tarjan(blockSet, loop.getRoot(), functionValue, scc, size, stack, inStk, dfn, low, roots);
         for (BasicBlockRef root : roots) {
             if (size.get(root) == 1) {
                 continue;

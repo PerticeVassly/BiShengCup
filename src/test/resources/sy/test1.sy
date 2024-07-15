@@ -1,8 +1,21 @@
-float main(){
-   int s=3;
-   return 0;
-}
-
-int  f(int a,int b,int c){
-   return c;
+int main(){
+   int a=1;
+   while(a){
+      while(a){
+        while(a){
+              while(a){
+                  return 0;
+                  }
+            }
+      }
+   }
+   while(a){
+         while(a){
+           while(a){
+                 while(a){
+                     return 0;
+                     }
+               }
+         }
+      }
 }
