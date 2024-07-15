@@ -110,7 +110,7 @@ next_634:                                              ; pred = %whileCond_283
 }
 
 define i32 @main() {
-mainEntry90:
+mainEntry91:
   %FourWhile = call i32 @FourWhile()
   ret i32 %FourWhile
 }

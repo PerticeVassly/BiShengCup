@@ -20,7 +20,7 @@ declare void @memset(i32*, i32, i32)
 @gv1 = global [4 x i32] [i32 6, i32 7, i32 8, i32 9], align 4
 
 define i32 @main() {
-mainEntry71:
+mainEntry72:
   %lv$5 = alloca [7 x [1 x [5 x i32]]], align 16
   %lv$4 = alloca i32, align 4
   %lv$3 = alloca [2 x [8 x i32]], align 16
@@ -39,7 +39,7 @@ mainEntry71:
   call void @putch(i32 10)
   br label %whileCond_258
 
-whileCond_258:                                        ; pred = %mainEntry71, %next_579
+whileCond_258:                                        ; pred = %mainEntry72, %next_579
   %a$3 = load i32, i32* %lv, align 4
   %cond_lt_tmp_ = icmp slt i32 %a$3, 5
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32

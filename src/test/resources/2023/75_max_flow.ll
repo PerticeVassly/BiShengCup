@@ -345,7 +345,7 @@ next_623:                                             ; pred = %whileBody_276
 }
 
 define i32 @main() {
-mainEntry86:
+mainEntry87:
   %lv$4 = alloca i32, align 4
   %lv$3 = alloca i32, align 4
   %lv$2 = alloca i32, align 4
@@ -359,7 +359,7 @@ mainEntry86:
   call void @my_memset(i32* %size, i32 0, i32 10)
   br label %whileCond_277
 
-whileCond_277:                                        ; pred = %mainEntry86, %whileBody_277
+whileCond_277:                                        ; pred = %mainEntry87, %whileBody_277
   %E = load i32, i32* %lv$1, align 4
   %cond_gt_tmp_ = icmp sgt i32 %E, 0
   %cond_tmp_ = zext i1 %cond_gt_tmp_ to i32

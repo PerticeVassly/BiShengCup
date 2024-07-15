@@ -102,7 +102,7 @@ next_596:                                             ; pred = %whileCond_266
 }
 
 define i32 @main() {
-mainEntry84:
+mainEntry85:
   %lv$10 = alloca i32, align 4
   %lv$9 = alloca i32, align 4
   %lv$8 = alloca [3 x float], align 16
@@ -120,7 +120,7 @@ mainEntry84:
   store i32 0, i32* %lv$9, align 4
   br label %whileCond_267
 
-whileCond_267:                                        ; pred = %mainEntry84, %whileBody_267
+whileCond_267:                                        ; pred = %mainEntry85, %whileBody_267
   %i = load i32, i32* %lv$9, align 4
   %M = load i32, i32* @gv, align 4
   %cond_lt_tmp_ = icmp slt i32 %i, %M

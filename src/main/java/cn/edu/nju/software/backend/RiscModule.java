@@ -56,16 +56,21 @@ public class RiscModule {
         riscFunctions.forEach(RiscFunction::dumpToConsole);
         //添加memset函数，a0传数组首地址，a1传想要赋的值，a2传需要赋值的空间大小
         System.out.println("""
-                memset:\s
-                    blez    a2, .LBB0_3\s
-                    slli    a2, a2, 2\s
-                    add     a2, a2, a0\s
-                .LBB0_2:\s
-                    sw      a1, 0(a0)\s
-                    addi    a0, a0, 4\s
-                    bltu    a0, a2, .LBB0_2\s
-                .LBB0_3:\s
-                    ret\s""");
+                memset:                                 # @memset
+                li      a3, 4
+        blt     a2, a3, .LBB0_3
+        srai    a3, a2, 63
+        srli    a3, a3, 62
+        add     a2, a2, a3
+        srai    a2, a2, 2
+        slli    a2, a2, 3
+        add     a2, a2, a0
+.LBB0_2:                                # =>This Inner Loop Header: Depth=1
+        sd      a1, 0(a0)
+        addi    a0, a0, 8
+        bne     a0, a2, .LBB0_2
+.LBB0_3:
+        ret""");
     }
 
     public void dumpToFile(String path) {

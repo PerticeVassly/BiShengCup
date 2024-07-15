@@ -33,7 +33,7 @@ funcEntry1:
 }
 
 define i32 @main() {
-mainEntry61:
+mainEntry62:
   %lv = alloca i32, align 4
   %getint = call i32 @getint()
   store i32 %getint, i32* %lv, align 4
@@ -47,7 +47,7 @@ ifTrue_299:                                            ; pred = %secondCond_103
   store i32 1, i32* %lv, align 4
   br label %next_532
 
-ifFalse_129:                                           ; pred = %mainEntry61, %secondCond_103
+ifFalse_129:                                           ; pred = %mainEntry62, %secondCond_103
   store i32 0, i32* %lv, align 4
   br label %next_532
 
@@ -60,7 +60,7 @@ next_532:                                              ; pred = %ifTrue_299, %if
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
   br i1 %cond_$1, label %secondCond_104, label %ifFalse_130
 
-secondCond_103:                                        ; pred = %mainEntry61
+secondCond_103:                                        ; pred = %mainEntry62
   %i$1 = load i32, i32* %lv, align 4
   %func = call i32 @func(i32 %i$1)
   %cond_normalize_ = icmp ne i32 %func, 0

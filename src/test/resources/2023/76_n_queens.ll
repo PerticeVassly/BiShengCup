@@ -183,13 +183,13 @@ next_497:                                              ; pred = %ifTrue_288, %if
 }
 
 define i32 @main() {
-mainEntry56:
+mainEntry57:
   %lv = alloca i32, align 4
   %getint = call i32 @getint()
   store i32 %getint, i32* %lv, align 4
   br label %whileCond_208
 
-whileCond_208:                                        ; pred = %mainEntry56, %whileBody_208
+whileCond_208:                                        ; pred = %mainEntry57, %whileBody_208
   %N = load i32, i32* %lv, align 4
   %cond_gt_tmp_ = icmp sgt i32 %N, 0
   %cond_tmp_ = zext i1 %cond_gt_tmp_ to i32

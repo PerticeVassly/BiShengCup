@@ -262,7 +262,7 @@ next_483:                                              ; pred = %ifFalse_122, %i
 }
 
 define i32 @main() {
-mainEntry48:
+mainEntry49:
   call void @read_program()
   %program = getelementptr [32768 x i32], [32768 x i32]* @gv1, i32 0, i32 0
   call void @interpret(i32* %program)

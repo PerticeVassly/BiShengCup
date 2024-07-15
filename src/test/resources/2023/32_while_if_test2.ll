@@ -78,7 +78,7 @@ next_657:                                             ; pred = %whileCond_287
 }
 
 define i32 @main() {
-mainEntry97:
+mainEntry98:
   %ifWhile = call i32 @ifWhile()
   ret i32 %ifWhile
 }

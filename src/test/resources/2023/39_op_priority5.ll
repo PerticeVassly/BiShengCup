@@ -23,7 +23,7 @@ declare void @memset(i32*, i32, i32)
 @gv4 = global i32 4, align 4
 
 define i32 @main() {
-mainEntry94:
+mainEntry95:
   %lv = alloca i32, align 4
   store i32 0, i32* %lv, align 4
   %a = load i32, i32* @gv, align 4
@@ -49,7 +49,7 @@ next_653:                                              ; pred = %secondCond_132,
   %flag$1 = load i32, i32* %lv, align 4
   ret i32 %flag$1
 
-secondCond_132:                                        ; pred = %mainEntry94, %secondCond_133
+secondCond_132:                                        ; pred = %mainEntry95, %secondCond_133
   %a$3 = load i32, i32* @gv, align 4
   %b$2 = load i32, i32* @gv1, align 4
   %c$2 = load i32, i32* @gv2, align 4
@@ -65,7 +65,7 @@ secondCond_132:                                        ; pred = %mainEntry94, %s
   %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
   br i1 %cond_$2, label %ifTrue_367, label %next_653
 
-secondCond_133:                                        ; pred = %mainEntry94
+secondCond_133:                                        ; pred = %mainEntry95
   %a$1 = load i32, i32* @gv, align 4
   %a$2 = load i32, i32* @gv, align 4
   %b$1 = load i32, i32* @gv1, align 4

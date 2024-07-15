@@ -17,14 +17,14 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry89:
+mainEntry90:
   %lv$1 = alloca i32, align 4
   %lv = alloca i32, align 4
   store i32 0, i32* %lv, align 4
   store i32 0, i32* %lv$1, align 4
   br label %whileCond_279
 
-whileCond_279:                                        ; pred = %mainEntry89, %ifTrue_350, %next_630
+whileCond_279:                                        ; pred = %mainEntry90, %ifTrue_350, %next_630
   %i = load i32, i32* %lv, align 4
   %cond_lt_tmp_ = icmp slt i32 %i, 100
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32

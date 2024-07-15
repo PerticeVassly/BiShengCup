@@ -95,7 +95,7 @@ secondCond_113:                                        ; pred = %ifFalse_142
 }
 
 define i32 @main() {
-mainEntry75:
+mainEntry76:
   %ifElseIf = call i32 @ifElseIf()
   call void @putint(i32 %ifElseIf)
   ret i32 0

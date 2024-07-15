@@ -616,7 +616,7 @@ next_530:                                             ; pred = %next_518, %ifTru
 }
 
 define i32 @main() {
-mainEntry59:
+mainEntry60:
   %lv$8 = alloca i32, align 4
   %lv$7 = alloca i32, align 4
   %lv$6 = alloca i32, align 4

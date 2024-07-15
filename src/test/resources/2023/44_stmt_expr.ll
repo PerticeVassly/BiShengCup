@@ -19,13 +19,13 @@ declare void @memset(i32*, i32, i32)
 @gv = global i32 0, align 4
 
 define i32 @main() {
-mainEntry58:
+mainEntry59:
   %lv = alloca i32, align 4
   store i32 0, i32* %lv, align 4
   store i32 1, i32* @gv, align 4
   br label %whileCond_210
 
-whileCond_210:                                        ; pred = %mainEntry58, %whileBody_210
+whileCond_210:                                        ; pred = %mainEntry59, %whileBody_210
   %i = load i32, i32* %lv, align 4
   %cond_le_tmp_ = icmp sle i32 %i, 9
   %cond_tmp_ = zext i1 %cond_le_tmp_ to i32

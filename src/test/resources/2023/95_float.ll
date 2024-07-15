@@ -141,7 +141,7 @@ next_466:                                               ; pred = %ifTrue_267, %i
 }
 
 define i32 @main() {
-mainEntry47:
+mainEntry48:
   %lv$6 = alloca float, align 4
   %lv$5 = alloca float, align 4
   %lv$4 = alloca float, align 4
@@ -164,11 +164,11 @@ mainEntry47:
   %cond_normalize_ = fcmp one float 0x3ff8000000000000, 0x0
   br i1 %cond_normalize_, label %ifTrue_268, label %next_467
 
-ifTrue_268:                                           ; pred = %mainEntry47
+ifTrue_268:                                           ; pred = %mainEntry48
   call void @ok()
   br label %next_467
 
-next_467:                                             ; pred = %mainEntry47, %ifTrue_268
+next_467:                                             ; pred = %mainEntry48, %ifTrue_268
   %cond_normalize_$1 = icmp ne i32 1, 0
   br i1 %cond_normalize_$1, label %ifTrue_269, label %next_468
 

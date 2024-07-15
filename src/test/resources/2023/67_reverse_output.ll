@@ -49,7 +49,7 @@ next_492:                                            ; pred = %ifTrue_286, %ifFa
 }
 
 define i32 @main() {
-mainEntry54:
+mainEntry55:
   %lv = alloca i32, align 4
   store i32 200, i32* %lv, align 4
   %i = load i32, i32* %lv, align 4

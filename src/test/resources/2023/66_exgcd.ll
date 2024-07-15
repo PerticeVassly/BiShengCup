@@ -32,9 +32,9 @@ exgcdEntry:
   %cond_eq_tmp_ = icmp eq i32 %b, 0
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_339, label %ifFalse_132
+  br i1 %cond_, label %ifTrue_319, label %ifFalse_140
 
-ifTrue_339:                                         ; pred = %exgcdEntry
+ifTrue_319:                                         ; pred = %exgcdEntry
   %arr_ = load i32*, i32** %lv$2, align 4
   %x = getelementptr i32, i32* %arr_, i32 0
   store i32 1, i32* %x, align 4
@@ -44,7 +44,7 @@ ifTrue_339:                                         ; pred = %exgcdEntry
   %a = load i32, i32* %lv, align 4
   ret i32 %a
 
-ifFalse_132:                                        ; pred = %exgcdEntry
+ifFalse_140:                                        ; pred = %exgcdEntry
   %b$1 = load i32, i32* %lv$1, align 4
   %a$1 = load i32, i32* %lv, align 4
   %b$2 = load i32, i32* %lv$1, align 4
@@ -80,7 +80,7 @@ ifFalse_132:                                        ; pred = %exgcdEntry
 }
 
 define i32 @main() {
-mainEntry80:
+mainEntry69:
   %lv$3 = alloca [1 x i32], align 16
   %lv$2 = alloca [1 x i32], align 16
   %lv$1 = alloca i32, align 4

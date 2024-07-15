@@ -115,7 +115,7 @@ next_603:                                           ; pred = %mmergeEntry, %ifTr
 }
 
 define i32 @main() {
-mainEntry85:
+mainEntry86:
   %lv$8 = alloca i32, align 4
   %lv$7 = alloca i32, align 4
   %lv$6 = alloca i32, align 4
@@ -128,7 +128,7 @@ mainEntry85:
   store i32 1, i32* %lv, align 4
   br label %whileCond_272
 
-whileCond_272:                                         ; pred = %mainEntry85, %next_614
+whileCond_272:                                         ; pred = %mainEntry86, %next_614
   %t = load i32, i32* %lv, align 4
   %cond_normalize_ = icmp ne i32 %t, 0
   br i1 %cond_normalize_, label %whileBody_272, label %next_604

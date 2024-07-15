@@ -209,7 +209,7 @@ next_462:                                               ; pred = %whileCond_198
 }
 
 define i32 @main() {
-mainEntry45:
+mainEntry46:
   %lv = alloca i32, align 4
   %buf = getelementptr [2 x [100 x i32]], [2 x [100 x i32]]* @gv, i32 0, i32 0
   %buf$1 = getelementptr [100 x i32], [100 x i32]* %buf, i32 0, i32 0

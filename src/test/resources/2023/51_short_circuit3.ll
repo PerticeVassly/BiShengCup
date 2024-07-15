@@ -51,7 +51,7 @@ set_dEntry:
 }
 
 define i32 @main() {
-mainEntry91:
+mainEntry92:
   %lv$4 = alloca i32, align 4
   %lv$3 = alloca i32, align 4
   %lv$2 = alloca i32, align 4
@@ -66,7 +66,7 @@ mainEntry91:
 ifTrue_351:                                            ; pred = %secondCond_120
   br label %next_635
 
-next_635:                                              ; pred = %mainEntry91, %secondCond_120, %ifTrue_351
+next_635:                                              ; pred = %mainEntry92, %secondCond_120, %ifTrue_351
   %a = load i32, i32* @gv, align 4
   call void @putint(i32 %a)
   call void @putch(i32 32)
@@ -79,7 +79,7 @@ next_635:                                              ; pred = %mainEntry91, %s
   %cond_normalize_$2 = icmp ne i32 %set_a$1, 0
   br i1 %cond_normalize_$2, label %secondCond_121, label %next_636
 
-secondCond_120:                                        ; pred = %mainEntry91
+secondCond_120:                                        ; pred = %mainEntry92
   %set_b = call i32 @set_b(i32 1)
   %cond_normalize_$1 = icmp ne i32 %set_b, 0
   br i1 %cond_normalize_$1, label %ifTrue_351, label %next_635

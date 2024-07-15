@@ -74,7 +74,7 @@ next_501:                                             ; pred = %ifTrue_291, %ifF
 }
 
 define i32 @main() {
-mainEntry57:
+mainEntry58:
   %whileIf = call i32 @whileIf()
   ret i32 %whileIf
 }

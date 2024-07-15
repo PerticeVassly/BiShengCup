@@ -54,7 +54,7 @@ next_539:                                             ; pred = %ifTrue_305, %ifF
 }
 
 define i32 @main() {
-mainEntry65:
+mainEntry66:
   %ififElse = call i32 @ififElse()
   ret i32 %ififElse
 }

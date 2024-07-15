@@ -1071,7 +1071,7 @@ next_466:
 .type main, @function
 .globl main
 main:
-mainEntry47:
+mainEntry48:
 
 	# reserve space
 	li t4, 624
@@ -2208,7 +2208,7 @@ whileBody_199:
 	fld ft1, 160(sp)
 
 	# get address of local var:f2i_
-	fcvt.l.d t0, ft1
+	fcvt.l.d t0, ft1, rtz
 	sd t0, 152(sp)
 
 	# prepare params
@@ -2423,7 +2423,7 @@ whileBody_199:
 	fld ft1, 72(sp)
 
 	# get address of local var:f2i_$1
-	fcvt.l.d t0, ft1
+	fcvt.l.d t0, ft1, rtz
 	sd t0, 64(sp)
 
 	# prepare params
@@ -2511,7 +2511,7 @@ whileBody_199:
 	fld ft1, 40(sp)
 
 	# get address of local var:f2i_$2
-	fcvt.l.d t0, ft1
+	fcvt.l.d t0, ft1, rtz
 	sd t0, 32(sp)
 
 	# lv f2i_$2
@@ -2628,13 +2628,18 @@ next_471:
 	li t4, 624
 	add sp, sp, t4
 	ret 
-memset: 
-    blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
-    add     a2, a2, a0 
-.LBB0_2: 
-    sw      a1, 0(a0) 
-    addi    a0, a0, 4 
-    bltu    a0, a2, .LBB0_2 
-.LBB0_3: 
-    ret 
+                memset:                                 # @memset
+                li      a3, 4
+        blt     a2, a3, .LBB0_3
+        srai    a3, a2, 63
+        srli    a3, a3, 62
+        add     a2, a2, a3
+        srai    a2, a2, 2
+        slli    a2, a2, 3
+        add     a2, a2, a0
+.LBB0_2:                                # =>This Inner Loop Header: Depth=1
+        sd      a1, 0(a0)
+        addi    a0, a0, 8
+        bne     a0, a2, .LBB0_2
+.LBB0_3:
+        ret

@@ -1580,7 +1580,7 @@ next_572:                                          ; pred = %modelEntry
 }
 
 define i32 @main() {
-mainEntry67:
+mainEntry68:
   %lv$3 = alloca i32, align 4
   %lv$2 = alloca i32, align 4
   %lv$1 = alloca [5 x [5 x i32]], align 16
@@ -1589,7 +1589,7 @@ mainEntry67:
   store i32 %getint, i32* %lv, align 4
   br label %whileCond_255
 
-whileCond_255:                                        ; pred = %mainEntry67, %next_576
+whileCond_255:                                        ; pred = %mainEntry68, %next_576
   %N = load i32, i32* %lv, align 4
   %cond_gt_tmp_ = icmp sgt i32 %N, 0
   %cond_tmp_ = zext i1 %cond_gt_tmp_ to i32

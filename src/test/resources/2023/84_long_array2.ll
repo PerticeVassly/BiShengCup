@@ -44,7 +44,7 @@ f1Entry:
 }
 
 define i32 @main() {
-mainEntry74:
+mainEntry94:
   %lv$1 = alloca [1024 x [4 x i32]], align 16
   %lv = alloca [4 x [1024 x i32]], align 16
   %ptr_ = getelementptr [4 x [1024 x i32]], [4 x [1024 x i32]]* %lv, i32 0, i32 0
