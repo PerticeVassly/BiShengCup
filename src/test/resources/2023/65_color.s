@@ -980,7 +980,8 @@ ifTrue_3:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:equal
 	sw a0, 476(sp)
@@ -1105,7 +1106,8 @@ ifTrue_3:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:dfs
 	sw a0, 444(sp)
@@ -1250,7 +1252,8 @@ ifTrue_4:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:equal$1
 	sw a0, 408(sp)
@@ -1387,7 +1390,8 @@ ifTrue_4:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:dfs$1
 	sw a0, 372(sp)
@@ -1532,7 +1536,8 @@ ifTrue_5:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:equal$2
 	sw a0, 336(sp)
@@ -1669,7 +1674,8 @@ ifTrue_5:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:dfs$2
 	sw a0, 300(sp)
@@ -1814,7 +1820,8 @@ ifTrue_6:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:equal$3
 	sw a0, 264(sp)
@@ -1951,7 +1958,8 @@ ifTrue_6:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:dfs$3
 	sw a0, 228(sp)
@@ -2180,7 +2188,8 @@ ifTrue_7:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:dfs$4
 	sw a0, 168(sp)
@@ -2708,7 +2717,8 @@ mainEntry1:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 388(sp)
@@ -3650,7 +3660,8 @@ whileBody_6:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 136(sp)
@@ -4007,7 +4018,8 @@ next_14:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:dfs
 	sw a0, 8(sp)
@@ -4053,7 +4065,8 @@ next_14:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load ans$1 lv$7
 

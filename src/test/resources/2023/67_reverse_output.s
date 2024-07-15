@@ -119,7 +119,8 @@ ifTrue_292:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 20(sp)
@@ -165,7 +166,8 @@ ifTrue_292:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_496
 	j next_496
@@ -186,7 +188,8 @@ ifFalse_111:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 12(sp)
@@ -244,7 +247,8 @@ ifFalse_111:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load next$1 lv$1
 
@@ -276,7 +280,8 @@ ifFalse_111:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_496
 	j next_496
@@ -346,7 +351,8 @@ mainEntry60:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 

@@ -1901,7 +1901,8 @@ next_84:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:QuickSort
 	sw a0, 312(sp)
@@ -2009,7 +2010,8 @@ next_84:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:QuickSort$1
 	sw a0, 284(sp)
@@ -7261,7 +7263,8 @@ mainEntry18:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:arrCopy
 	sw a0, 532(sp)
@@ -7319,7 +7322,8 @@ mainEntry18:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:revert
 	sw a0, 520(sp)
@@ -7496,7 +7500,8 @@ whileBody_51:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$2 lv$3
 
@@ -7578,7 +7583,8 @@ next_101:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:bubblesort
 	sw a0, 464(sp)
@@ -7755,7 +7761,8 @@ whileBody_52:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$5 lv$3
 
@@ -7837,7 +7844,8 @@ next_102:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getMid
 	sw a0, 408(sp)
@@ -7887,7 +7895,8 @@ next_102:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# gep result$8 
 
@@ -7929,7 +7938,8 @@ next_102:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getMost
 	sw a0, 392(sp)
@@ -7979,7 +7989,8 @@ next_102:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# gep arr$33 
 
@@ -8044,7 +8055,8 @@ next_102:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:arrCopy$1
 	sw a0, 368(sp)
@@ -8102,7 +8114,8 @@ next_102:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:bubblesort$1
 	sw a0, 356(sp)
@@ -8279,7 +8292,8 @@ whileBody_53:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$8 lv$3
 
@@ -8384,7 +8398,8 @@ next_103:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:arrCopy$2
 	sw a0, 292(sp)
@@ -8442,7 +8457,8 @@ next_103:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:insertsort
 	sw a0, 280(sp)
@@ -8619,7 +8635,8 @@ whileBody_54:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$11 lv$3
 
@@ -8724,7 +8741,8 @@ next_104:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:arrCopy$3
 	sw a0, 216(sp)
@@ -8838,7 +8856,8 @@ next_104:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:QuickSort
 	sw a0, 196(sp)
@@ -9004,7 +9023,8 @@ whileBody_55:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$15 lv$3
 
@@ -9109,7 +9129,8 @@ next_105:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:arrCopy$4
 	sw a0, 132(sp)
@@ -9171,7 +9192,8 @@ next_105:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:calSum
 	sw a0, 120(sp)
@@ -9348,7 +9370,8 @@ whileBody_56:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$18 lv$3
 
@@ -9453,7 +9476,8 @@ next_106:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:arrCopy$5
 	sw a0, 56(sp)
@@ -9515,7 +9539,8 @@ next_106:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:avgPooling
 	sw a0, 44(sp)
@@ -9692,7 +9717,8 @@ whileBody_57:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$21 lv$3
 

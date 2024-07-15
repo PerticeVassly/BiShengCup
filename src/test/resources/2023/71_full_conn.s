@@ -2848,7 +2848,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:relu_reg
 	li t4, 8188
@@ -5474,7 +5475,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:relu_reg$1
 	li t4, 7284
@@ -8120,7 +8122,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:relu_reg$2
 	li t4, 6376
@@ -10766,7 +10769,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:relu_reg$3
 	li t4, 5468
@@ -13412,7 +13416,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:relu_reg$4
 	li t4, 4560
@@ -16058,7 +16063,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:relu_reg$5
 	li t4, 3652
@@ -18704,7 +18710,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:relu_reg$6
 	li t4, 2744
@@ -21350,7 +21357,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:relu_reg$7
 	li t4, 1836
@@ -23932,7 +23940,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:relu_reg$8
 	sw a0, 928(sp)
@@ -25972,7 +25981,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:relu_reg$9
 	sw a0, 20(sp)
@@ -26129,7 +26139,8 @@ mainEntry81:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 116(sp)
@@ -26336,7 +26347,8 @@ next_583:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:model
 	sw a0, 72(sp)
@@ -26492,7 +26504,8 @@ whileBody_246:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 24(sp)
@@ -26599,7 +26612,8 @@ ifTrue_338:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -26620,7 +26634,8 @@ ifTrue_338:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -26641,7 +26656,8 @@ ifTrue_338:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -26662,7 +26678,8 @@ ifTrue_338:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_585
 	j next_585
@@ -26687,7 +26704,8 @@ ifFalse_134:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -26708,7 +26726,8 @@ ifFalse_134:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -26729,7 +26748,8 @@ ifFalse_134:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -26750,7 +26770,8 @@ ifFalse_134:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_585
 	j next_585

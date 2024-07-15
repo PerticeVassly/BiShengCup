@@ -76,7 +76,8 @@ whileBody_63:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getch
 	sw a0, 104(sp)
@@ -290,7 +291,8 @@ whileBody_64:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getch$1
 	sw a0, 56(sp)
@@ -937,7 +939,8 @@ whileBody_66:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br whileCond_66
 	j whileCond_66
@@ -990,7 +993,8 @@ mainEntry25:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:my_getint
 	sw a0, 32(sp)
@@ -1082,7 +1086,8 @@ whileBody_67:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:my_getint$1
 	sw a0, 12(sp)
@@ -1128,7 +1133,8 @@ whileBody_67:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -1149,7 +1155,8 @@ whileBody_67:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load n$1 lv
 

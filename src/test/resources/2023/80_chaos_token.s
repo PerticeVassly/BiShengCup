@@ -319,7 +319,8 @@ whileBody_190:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load iNd__1X$2 lv$1
 
@@ -447,7 +448,8 @@ mainEntry51:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:putstr
 	sw a0, 144(sp)
@@ -688,7 +690,8 @@ ifTrue_265:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:putstr$1
 	sw a0, 80(sp)
@@ -729,7 +732,8 @@ ifTrue_265:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:putstr$2
 	sw a0, 68(sp)
@@ -798,7 +802,8 @@ ifTrue_265:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:putstr$3
 	sw a0, 44(sp)
@@ -839,7 +844,8 @@ ifTrue_265:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:putstr$4
 	sw a0, 32(sp)

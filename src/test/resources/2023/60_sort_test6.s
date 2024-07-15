@@ -1675,7 +1675,8 @@ mainEntry13:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:counting_sort
 	sw a0, 52(sp)
@@ -1840,7 +1841,8 @@ whileBody_24:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# store lv$3 
 
@@ -1881,7 +1883,8 @@ whileBody_24:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$2 lv$1
 

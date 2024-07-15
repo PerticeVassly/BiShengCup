@@ -377,7 +377,8 @@ whileBody_70:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load index$2 lv$9
 
@@ -434,7 +435,8 @@ next_134:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load c lv$2
 
@@ -503,7 +505,8 @@ next_134:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -524,7 +527,8 @@ next_134:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br whileCond_71
 	j whileCond_71
@@ -860,7 +864,8 @@ mainEntry28:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	#  ptr$1 lv$1
 
@@ -904,7 +909,8 @@ mainEntry28:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# gep ptr_ 
 
@@ -1728,7 +1734,7 @@ mainEntry28:
 	lw t1, 56(sp)
 
 	# push b$14
-	sw t1, -8(sp)
+	sw t1, 8(sp)
 	addi sp, sp, -8
 
 	# save caller saved regs
@@ -1743,7 +1749,8 @@ mainEntry28:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	li t4, 8
+	addi sp, sp, t4
 
 	# get address of local var:func
 	sw a0, 52(sp)
@@ -1915,7 +1922,8 @@ whileBody_72:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -1936,7 +1944,8 @@ whileBody_72:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load ret$2 lv$2
 
@@ -1997,7 +2006,8 @@ next_136:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 

@@ -65,7 +65,8 @@ read_programEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 56(sp)
@@ -193,7 +194,8 @@ whileBody_256:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getch
 	sw a0, 20(sp)
@@ -1131,7 +1133,8 @@ ifTrue_349:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_607
 	j next_607
@@ -1239,7 +1242,8 @@ ifTrue_350:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getch
 	sw a0, 132(sp)
@@ -1764,7 +1768,8 @@ mainEntry91:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# gep program 
 
@@ -1802,7 +1807,8 @@ mainEntry91:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 

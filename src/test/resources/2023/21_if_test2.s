@@ -557,7 +557,8 @@ mainEntry75:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:ifElseIf
 	sw a0, 0(sp)
@@ -583,7 +584,8 @@ mainEntry75:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 

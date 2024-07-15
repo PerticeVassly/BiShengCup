@@ -1078,7 +1078,8 @@ next_168:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -1099,7 +1100,8 @@ next_168:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# store lv$26 
 
@@ -14197,7 +14199,8 @@ next_232:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -14218,7 +14221,8 @@ next_232:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# store lv$4 
 
@@ -27437,7 +27441,8 @@ next_297:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -27458,7 +27463,8 @@ next_297:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load cur$2 lv$4
 
@@ -52771,7 +52777,8 @@ mainEntry45:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:long_func
 	sw a0, 0(sp)

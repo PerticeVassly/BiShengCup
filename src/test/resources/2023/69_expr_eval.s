@@ -45,7 +45,8 @@ next_charEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getch
 	sw a0, 4(sp)
@@ -484,7 +485,8 @@ whileCond_208:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:is_space
 	sw a0, 72(sp)
@@ -528,7 +530,8 @@ whileBody_208:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:next_char
 	sw a0, 64(sp)
@@ -567,7 +570,8 @@ next_503:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:is_num
 	sw a0, 56(sp)
@@ -667,7 +671,8 @@ ifFalse_114:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:next_char$2
 	sw a0, 36(sp)
@@ -724,7 +729,8 @@ whileCond_209:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:next_char$1
 	sw a0, 28(sp)
@@ -750,7 +756,8 @@ whileCond_209:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:is_num$1
 	sw a0, 24(sp)
@@ -896,7 +903,8 @@ panicEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -917,7 +925,8 @@ panicEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -938,7 +947,8 @@ panicEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -959,7 +969,8 @@ panicEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -980,7 +991,8 @@ panicEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -1001,7 +1013,8 @@ panicEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -1022,7 +1035,8 @@ panicEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 
@@ -2815,7 +2829,8 @@ evalEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	#  ptr$1 lv$1
 
@@ -2859,7 +2874,8 @@ evalEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load cur_token gv3
 
@@ -2934,7 +2950,8 @@ ifTrue_303:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:panic
 	sw a0, 316(sp)
@@ -3009,7 +3026,8 @@ next_513:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 	addi sp, sp, 0
@@ -3026,7 +3044,8 @@ next_513:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:next_token
 	sw a0, 300(sp)
@@ -3146,7 +3165,8 @@ whileBody_210:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:get_op_prec
 	sw a0, 272(sp)
@@ -3227,7 +3247,8 @@ next_514:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:next_token$3
 	sw a0, 252(sp)
@@ -3258,7 +3279,8 @@ next_515:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:next_token$1
 	sw a0, 248(sp)
@@ -3307,7 +3329,8 @@ whileCond_211:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:stack_size
 	sw a0, 236(sp)
@@ -3376,7 +3399,8 @@ whileBody_211:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:stack_pop
 	sw a0, 220(sp)
@@ -3434,7 +3458,8 @@ whileBody_211:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:stack_pop$1
 	sw a0, 208(sp)
@@ -3492,7 +3517,8 @@ whileBody_211:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:stack_pop$2
 	sw a0, 196(sp)
@@ -3595,7 +3621,8 @@ whileBody_211:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:eval_op
 	sw a0, 172(sp)
@@ -3627,7 +3654,8 @@ whileBody_211:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br whileCond_211
 	j whileCond_211
@@ -3690,7 +3718,8 @@ next_516:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load cur_token$2 gv3
 
@@ -3790,7 +3819,8 @@ secondCond_118:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:stack_peek
 	sw a0, 132(sp)
@@ -3816,7 +3846,8 @@ secondCond_118:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:get_op_prec$1
 	sw a0, 128(sp)
@@ -3853,7 +3884,8 @@ secondCond_118:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:get_op_prec$2
 	sw a0, 120(sp)
@@ -3923,7 +3955,8 @@ ifTrue_305:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:panic$1
 	sw a0, 104(sp)
@@ -3998,7 +4031,8 @@ next_517:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 	addi sp, sp, 0
@@ -4015,7 +4049,8 @@ next_517:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:next_token$2
 	sw a0, 88(sp)
@@ -4064,7 +4099,8 @@ whileCond_212:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:stack_size$1
 	sw a0, 76(sp)
@@ -4133,7 +4169,8 @@ whileBody_212:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:stack_pop$3
 	sw a0, 60(sp)
@@ -4191,7 +4228,8 @@ whileBody_212:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:stack_pop$4
 	sw a0, 48(sp)
@@ -4249,7 +4287,8 @@ whileBody_212:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:stack_pop$5
 	sw a0, 36(sp)
@@ -4352,7 +4391,8 @@ whileBody_212:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:eval_op$1
 	sw a0, 12(sp)
@@ -4384,7 +4424,8 @@ whileBody_212:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br whileCond_212
 	j whileCond_212
@@ -4430,7 +4471,8 @@ next_518:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:stack_peek$1
 	sw a0, 0(sp)
@@ -4481,7 +4523,8 @@ mainEntry63:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 28(sp)
@@ -4512,7 +4555,8 @@ mainEntry63:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getch
 	sw a0, 24(sp)
@@ -4532,7 +4576,8 @@ mainEntry63:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:next_token
 	sw a0, 20(sp)
@@ -4589,7 +4634,8 @@ whileBody_213:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:eval
 	sw a0, 8(sp)
@@ -4615,7 +4661,8 @@ whileBody_213:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -4636,7 +4683,8 @@ whileBody_213:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load count$1 lv
 

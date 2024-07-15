@@ -476,7 +476,8 @@ ifTrue_308:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:get_one
 	sw a0, 20(sp)
@@ -643,7 +644,8 @@ mainEntry68:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:deepWhileBr
 	sw a0, 4(sp)
@@ -689,7 +691,8 @@ mainEntry68:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 

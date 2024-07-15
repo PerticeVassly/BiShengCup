@@ -257,7 +257,8 @@ ifFalse_119:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func1
 	sw a0, 0(sp)
@@ -423,7 +424,8 @@ ifTrue_319:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func2
 	sw a0, 4(sp)
@@ -673,7 +675,8 @@ ifFalse_121:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func3
 	sw a0, 0(sp)
@@ -1274,7 +1277,8 @@ mainEntry76:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 468(sp)
@@ -1305,7 +1309,8 @@ mainEntry76:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 464(sp)
@@ -1336,7 +1341,8 @@ mainEntry76:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$2
 	sw a0, 460(sp)
@@ -1367,7 +1373,8 @@ mainEntry76:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$3
 	sw a0, 456(sp)
@@ -1495,7 +1502,8 @@ whileBody_231:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$4
 	sw a0, 424(sp)
@@ -1577,7 +1585,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func7
 	sw a0, 408(sp)
@@ -1612,7 +1621,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func5
 	sw a0, 400(sp)
@@ -1644,7 +1654,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func6
 	sw a0, 396(sp)
@@ -1685,7 +1696,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func2
 	sw a0, 388(sp)
@@ -1726,7 +1738,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func3
 	sw a0, 380(sp)
@@ -1752,7 +1765,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func5$1
 	sw a0, 376(sp)
@@ -1830,7 +1844,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func5$2
 	sw a0, 348(sp)
@@ -1908,7 +1923,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func7$1
 	sw a0, 320(sp)
@@ -1940,7 +1956,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func6$1
 	sw a0, 316(sp)
@@ -2018,7 +2035,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func7$2
 	sw a0, 288(sp)
@@ -2050,7 +2068,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func2$1
 	sw a0, 284(sp)
@@ -2088,7 +2107,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func4
 	sw a0, 280(sp)
@@ -2146,7 +2166,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func3$1
 	sw a0, 264(sp)
@@ -2204,7 +2225,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func2$2
 	sw a0, 248(sp)
@@ -2282,7 +2304,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func7$3
 	sw a0, 220(sp)
@@ -2314,7 +2337,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func3$2
 	sw a0, 216(sp)
@@ -2361,7 +2385,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func1
 	sw a0, 208(sp)
@@ -2399,7 +2424,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func4$1
 	sw a0, 204(sp)
@@ -2443,7 +2469,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func7$4
 	sw a0, 192(sp)
@@ -2484,7 +2511,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func3$3
 	sw a0, 184(sp)
@@ -2516,7 +2544,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func2$3
 	sw a0, 180(sp)
@@ -2548,7 +2577,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func3$4
 	sw a0, 176(sp)
@@ -2638,7 +2668,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func1$1
 	sw a0, 148(sp)
@@ -2696,7 +2727,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func2$4
 	sw a0, 132(sp)
@@ -2800,7 +2832,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func5$3
 	sw a0, 92(sp)
@@ -2832,7 +2865,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func3$5
 	sw a0, 88(sp)
@@ -2884,7 +2918,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func5$4
 	sw a0, 72(sp)
@@ -2916,7 +2951,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func2$5
 	sw a0, 68(sp)
@@ -2994,7 +3030,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func7$5
 	sw a0, 40(sp)
@@ -3032,7 +3069,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func1$2
 	sw a0, 36(sp)
@@ -3084,7 +3122,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func5$5
 	sw a0, 20(sp)
@@ -3116,7 +3155,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func2$6
 	sw a0, 16(sp)
@@ -3157,7 +3197,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func3$6
 	sw a0, 8(sp)
@@ -3195,7 +3236,8 @@ next_555:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func1$3
 	sw a0, 4(sp)

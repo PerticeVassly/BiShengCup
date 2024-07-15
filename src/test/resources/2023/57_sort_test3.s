@@ -513,7 +513,8 @@ next_532:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:QuickSort
 	sw a0, 312(sp)
@@ -621,7 +622,8 @@ next_532:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:QuickSort$1
 	sw a0, 284(sp)
@@ -1862,7 +1864,8 @@ mainEntry71:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:QuickSort
 	sw a0, 52(sp)
@@ -2027,7 +2030,8 @@ whileBody_224:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# store lv$3 
 
@@ -2068,7 +2072,8 @@ whileBody_224:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$3 lv$1
 

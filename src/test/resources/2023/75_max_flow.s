@@ -2164,7 +2164,8 @@ next_656:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:dfs
 	sw a0, 244(sp)
@@ -2958,7 +2959,8 @@ whileBody_289:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load s lv
 
@@ -3009,7 +3011,8 @@ whileBody_289:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:dfs
 	sw a0, 32(sp)
@@ -3212,7 +3215,8 @@ mainEntry99:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 68(sp)
@@ -3243,7 +3247,8 @@ mainEntry99:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 64(sp)
@@ -3303,7 +3308,8 @@ mainEntry99:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br whileCond_290
 	j whileCond_290
@@ -3381,7 +3387,8 @@ whileBody_290:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$2
 	sw a0, 36(sp)
@@ -3412,7 +3419,8 @@ whileBody_290:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$3
 	sw a0, 32(sp)
@@ -3443,7 +3451,8 @@ whileBody_290:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$4
 	sw a0, 28(sp)
@@ -3519,7 +3528,8 @@ whileBody_290:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load E$1 lv$1
 
@@ -3591,7 +3601,8 @@ next_660:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:max_flow
 	sw a0, 0(sp)
@@ -3617,7 +3628,8 @@ next_660:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -3638,7 +3650,8 @@ next_660:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 

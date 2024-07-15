@@ -203,7 +203,8 @@ ifTrue_66:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_140
 	j next_140
@@ -512,7 +513,8 @@ ifTrue_67:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_141
 	j next_141

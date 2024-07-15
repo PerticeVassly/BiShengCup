@@ -280,7 +280,8 @@ next_449:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load mid$1 lv$2
 
@@ -327,7 +328,8 @@ next_449:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load l$3 lv
 
@@ -1781,7 +1783,8 @@ mainEntry49:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getarray
 	sw a0, 24(sp)
@@ -1831,7 +1834,8 @@ mainEntry49:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load n$1 lv
 
@@ -1901,7 +1905,8 @@ mainEntry49:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 

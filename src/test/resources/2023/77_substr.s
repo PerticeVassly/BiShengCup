@@ -378,7 +378,8 @@ max_sum_nonadjacentEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# gep temp 
 
@@ -557,7 +558,8 @@ max_sum_nonadjacentEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:MAX
 	sw a0, 132(sp)
@@ -866,7 +868,8 @@ whileBody_201:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:MAX$1
 	sw a0, 28(sp)
@@ -1165,7 +1168,8 @@ longest_common_subseqEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# store lv$5 
 
@@ -2070,7 +2074,8 @@ ifFalse_109:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:MAX
 	sw a0, 8(sp)
@@ -2937,7 +2942,8 @@ mainEntry58:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:max_sum_nonadjacent
 	sw a0, 20(sp)
@@ -2963,7 +2969,8 @@ mainEntry58:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -2984,7 +2991,8 @@ mainEntry58:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# gep A$1 
 
@@ -3055,7 +3063,8 @@ mainEntry58:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:longest_common_subseq
 	sw a0, 0(sp)
@@ -3081,7 +3090,8 @@ mainEntry58:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -3102,7 +3112,8 @@ mainEntry58:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 

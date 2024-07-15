@@ -1034,7 +1034,8 @@ ifFalse_133:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:swap
 	sw a0, 16(sp)
@@ -1396,7 +1397,8 @@ whileBody_241:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:heap_ajust
 	sw a0, 88(sp)
@@ -1610,7 +1612,8 @@ whileBody_242:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:swap
 	sw a0, 36(sp)
@@ -1718,7 +1721,8 @@ whileBody_242:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:heap_ajust$1
 	sw a0, 8(sp)
@@ -2144,7 +2148,8 @@ mainEntry80:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:heap_sort
 	sw a0, 52(sp)
@@ -2309,7 +2314,8 @@ whileBody_243:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# store lv$2 
 
@@ -2350,7 +2356,8 @@ whileBody_243:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$2 lv$1
 

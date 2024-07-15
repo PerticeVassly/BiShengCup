@@ -262,7 +262,8 @@ mainEntry62:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 392(sp)
@@ -1342,7 +1343,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a1$1 lv$1
 
@@ -1374,7 +1376,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a2$1 lv$2
 
@@ -1406,7 +1409,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a3$1 lv$3
 
@@ -1438,7 +1442,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a4$1 lv$4
 
@@ -1470,7 +1475,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a5$1 lv$5
 
@@ -1502,7 +1508,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a6$1 lv$6
 
@@ -1534,7 +1541,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a7$1 lv$7
 
@@ -1566,7 +1574,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a8$1 lv$8
 
@@ -1598,7 +1607,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a9$1 lv$9
 
@@ -1630,7 +1640,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a10$1 lv$10
 
@@ -1662,7 +1673,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a11$1 lv$11
 
@@ -1694,7 +1706,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a12$1 lv$12
 
@@ -1726,7 +1739,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a13$1 lv$13
 
@@ -1758,7 +1772,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a14$1 lv$14
 
@@ -1790,7 +1805,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a15$1 lv$15
 
@@ -1822,7 +1838,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a16$1 lv$16
 
@@ -1854,7 +1871,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a17$1 lv$17
 
@@ -1886,7 +1904,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a18$1 lv$18
 
@@ -1918,7 +1937,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a19$1 lv$19
 
@@ -1950,7 +1970,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a20$1 lv$20
 
@@ -1982,7 +2003,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a21$1 lv$21
 
@@ -2014,7 +2036,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a22$1 lv$22
 
@@ -2046,7 +2069,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a23$1 lv$23
 
@@ -2078,7 +2102,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a24$1 lv$24
 
@@ -2110,7 +2135,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a25$1 lv$25
 
@@ -2142,7 +2168,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a26$1 lv$26
 
@@ -2174,7 +2201,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a27$1 lv$27
 
@@ -2206,7 +2234,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a28$1 lv$28
 
@@ -2238,7 +2267,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a29 lv$29
 
@@ -2270,7 +2300,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# store lv$32 
 
@@ -2311,7 +2342,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load b$2 lv$30
 
@@ -2343,7 +2375,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load newline$1 lv$32
 
@@ -2375,7 +2408,8 @@ next_500:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a25$2 lv$25
 

@@ -581,7 +581,8 @@ funcEntry2:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint
 	li t4, 1664
@@ -618,7 +619,8 @@ funcEntry2:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$1
 	li t4, 1660
@@ -655,7 +657,8 @@ funcEntry2:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$2
 	li t4, 1656
@@ -692,7 +695,8 @@ funcEntry2:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$3
 	li t4, 1652
@@ -7115,7 +7119,8 @@ mainEntry33:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 28(sp)
@@ -7208,7 +7213,8 @@ mainEntry33:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:func
 	sw a0, 8(sp)
@@ -7254,7 +7260,8 @@ mainEntry33:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a$3 lv
 

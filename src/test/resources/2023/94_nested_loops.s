@@ -4488,7 +4488,8 @@ mainEntry94:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 72(sp)
@@ -4519,7 +4520,8 @@ mainEntry94:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 68(sp)
@@ -4550,7 +4552,8 @@ mainEntry94:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$2
 	sw a0, 64(sp)
@@ -4581,7 +4584,8 @@ mainEntry94:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$3
 	sw a0, 60(sp)
@@ -4612,7 +4616,8 @@ mainEntry94:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$4
 	sw a0, 56(sp)
@@ -4643,7 +4648,8 @@ mainEntry94:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$5
 	sw a0, 52(sp)
@@ -4674,7 +4680,8 @@ mainEntry94:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$6
 	sw a0, 48(sp)
@@ -4705,7 +4712,8 @@ mainEntry94:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$7
 	sw a0, 44(sp)
@@ -4736,7 +4744,8 @@ mainEntry94:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$8
 	sw a0, 40(sp)
@@ -4797,7 +4806,8 @@ mainEntry94:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 	addi sp, sp, 0
@@ -4814,7 +4824,8 @@ mainEntry94:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load h lv$2
 
@@ -4936,7 +4947,8 @@ mainEntry94:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:loop3
 	sw a0, 0(sp)

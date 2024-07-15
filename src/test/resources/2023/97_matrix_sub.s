@@ -1583,7 +1583,7 @@ next_527:
 	ld t1, 160(sp)
 
 	# push c2
-	sd t1, -8(sp)
+	sd t1, 8(sp)
 	addi sp, sp, -8
 
 	# save caller saved regs
@@ -1598,7 +1598,8 @@ next_527:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	li t4, 8
+	addi sp, sp, t4
 
 	# get address of local var:sub
 	sw a0, 156(sp)
@@ -1763,7 +1764,8 @@ whileBody_218:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$16 lv$9
 
@@ -1849,7 +1851,8 @@ next_528:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br whileCond_219
 	j whileCond_219
@@ -2000,7 +2003,8 @@ whileBody_219:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$19 lv$9
 
@@ -2086,7 +2090,8 @@ next_529:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br whileCond_220
 	j whileCond_220
@@ -2237,7 +2242,8 @@ whileBody_220:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$22 lv$9
 
@@ -2314,7 +2320,8 @@ next_530:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 

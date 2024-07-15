@@ -1684,7 +1684,7 @@ next_641:
 	ld t1, 172(sp)
 
 	# push c2
-	sd t1, -8(sp)
+	sd t1, 8(sp)
 	addi sp, sp, -8
 
 	# save caller saved regs
@@ -1699,7 +1699,8 @@ next_641:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	li t4, 8
+	addi sp, sp, t4
 
 	# get address of local var:tran
 	sw a0, 168(sp)
@@ -1875,7 +1876,8 @@ whileBody_281:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$16 lv$9
 
@@ -1952,7 +1954,8 @@ next_642:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# store lv$9 
 
@@ -2123,7 +2126,8 @@ whileBody_282:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$19 lv$9
 
@@ -2209,7 +2213,8 @@ next_643:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br whileCond_283
 	j whileCond_283
@@ -2371,7 +2376,8 @@ whileBody_283:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$22 lv$9
 
@@ -2448,7 +2454,8 @@ next_644:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 

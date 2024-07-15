@@ -3105,7 +3105,8 @@ mainEntry100:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:testParam8
 	sw a0, 212(sp)
@@ -3151,7 +3152,8 @@ mainEntry100:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a32 gv32
 
@@ -3353,7 +3355,7 @@ mainEntry100:
 	lw t1, 172(sp)
 
 	# push a8
-	sw t1, -8(sp)
+	sw t1, 8(sp)
 
 	# fetch variables
 
@@ -3361,7 +3363,7 @@ mainEntry100:
 	lw t1, 168(sp)
 
 	# push a9
-	sw t1, -16(sp)
+	sw t1, 16(sp)
 
 	# fetch variables
 
@@ -3369,7 +3371,7 @@ mainEntry100:
 	lw t1, 164(sp)
 
 	# push a10
-	sw t1, -24(sp)
+	sw t1, 24(sp)
 
 	# fetch variables
 
@@ -3377,7 +3379,7 @@ mainEntry100:
 	lw t1, 160(sp)
 
 	# push a11
-	sw t1, -32(sp)
+	sw t1, 32(sp)
 
 	# fetch variables
 
@@ -3385,7 +3387,7 @@ mainEntry100:
 	lw t1, 156(sp)
 
 	# push a12
-	sw t1, -40(sp)
+	sw t1, 40(sp)
 
 	# fetch variables
 
@@ -3393,7 +3395,7 @@ mainEntry100:
 	lw t1, 152(sp)
 
 	# push a13
-	sw t1, -48(sp)
+	sw t1, 48(sp)
 
 	# fetch variables
 
@@ -3401,7 +3403,7 @@ mainEntry100:
 	lw t1, 148(sp)
 
 	# push a14
-	sw t1, -56(sp)
+	sw t1, 56(sp)
 
 	# fetch variables
 
@@ -3409,7 +3411,7 @@ mainEntry100:
 	lw t1, 144(sp)
 
 	# push a15
-	sw t1, -64(sp)
+	sw t1, 64(sp)
 	addi sp, sp, -64
 
 	# save caller saved regs
@@ -3424,7 +3426,8 @@ mainEntry100:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 64
+	li t4, 64
+	addi sp, sp, t4
 
 	# get address of local var:testParam16
 	sw a0, 140(sp)
@@ -3470,7 +3473,8 @@ mainEntry100:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a0$3 gv
 
@@ -3816,7 +3820,7 @@ mainEntry100:
 	lw t1, 100(sp)
 
 	# push a8$1
-	sw t1, -8(sp)
+	sw t1, 8(sp)
 
 	# fetch variables
 
@@ -3824,7 +3828,7 @@ mainEntry100:
 	lw t1, 96(sp)
 
 	# push a9$1
-	sw t1, -16(sp)
+	sw t1, 16(sp)
 
 	# fetch variables
 
@@ -3832,7 +3836,7 @@ mainEntry100:
 	lw t1, 92(sp)
 
 	# push a10$1
-	sw t1, -24(sp)
+	sw t1, 24(sp)
 
 	# fetch variables
 
@@ -3840,7 +3844,7 @@ mainEntry100:
 	lw t1, 88(sp)
 
 	# push a11$1
-	sw t1, -32(sp)
+	sw t1, 32(sp)
 
 	# fetch variables
 
@@ -3848,7 +3852,7 @@ mainEntry100:
 	lw t1, 84(sp)
 
 	# push a12$1
-	sw t1, -40(sp)
+	sw t1, 40(sp)
 
 	# fetch variables
 
@@ -3856,7 +3860,7 @@ mainEntry100:
 	lw t1, 80(sp)
 
 	# push a13$1
-	sw t1, -48(sp)
+	sw t1, 48(sp)
 
 	# fetch variables
 
@@ -3864,7 +3868,7 @@ mainEntry100:
 	lw t1, 76(sp)
 
 	# push a14$1
-	sw t1, -56(sp)
+	sw t1, 56(sp)
 
 	# fetch variables
 
@@ -3872,7 +3876,7 @@ mainEntry100:
 	lw t1, 72(sp)
 
 	# push a15$1
-	sw t1, -64(sp)
+	sw t1, 64(sp)
 
 	# fetch variables
 
@@ -3880,7 +3884,7 @@ mainEntry100:
 	lw t1, 68(sp)
 
 	# push a16
-	sw t1, -72(sp)
+	sw t1, 72(sp)
 
 	# fetch variables
 
@@ -3888,7 +3892,7 @@ mainEntry100:
 	lw t1, 64(sp)
 
 	# push a17
-	sw t1, -80(sp)
+	sw t1, 80(sp)
 
 	# fetch variables
 
@@ -3896,7 +3900,7 @@ mainEntry100:
 	lw t1, 60(sp)
 
 	# push a18
-	sw t1, -88(sp)
+	sw t1, 88(sp)
 
 	# fetch variables
 
@@ -3904,7 +3908,7 @@ mainEntry100:
 	lw t1, 56(sp)
 
 	# push a19
-	sw t1, -96(sp)
+	sw t1, 96(sp)
 
 	# fetch variables
 
@@ -3912,7 +3916,7 @@ mainEntry100:
 	lw t1, 52(sp)
 
 	# push a20
-	sw t1, -104(sp)
+	sw t1, 104(sp)
 
 	# fetch variables
 
@@ -3920,7 +3924,7 @@ mainEntry100:
 	lw t1, 48(sp)
 
 	# push a21
-	sw t1, -112(sp)
+	sw t1, 112(sp)
 
 	# fetch variables
 
@@ -3928,7 +3932,7 @@ mainEntry100:
 	lw t1, 44(sp)
 
 	# push a22
-	sw t1, -120(sp)
+	sw t1, 120(sp)
 
 	# fetch variables
 
@@ -3936,7 +3940,7 @@ mainEntry100:
 	lw t1, 40(sp)
 
 	# push a23
-	sw t1, -128(sp)
+	sw t1, 128(sp)
 
 	# fetch variables
 
@@ -3944,7 +3948,7 @@ mainEntry100:
 	lw t1, 36(sp)
 
 	# push a24
-	sw t1, -136(sp)
+	sw t1, 136(sp)
 
 	# fetch variables
 
@@ -3952,7 +3956,7 @@ mainEntry100:
 	lw t1, 32(sp)
 
 	# push a25
-	sw t1, -144(sp)
+	sw t1, 144(sp)
 
 	# fetch variables
 
@@ -3960,7 +3964,7 @@ mainEntry100:
 	lw t1, 28(sp)
 
 	# push a26
-	sw t1, -152(sp)
+	sw t1, 152(sp)
 
 	# fetch variables
 
@@ -3968,7 +3972,7 @@ mainEntry100:
 	lw t1, 24(sp)
 
 	# push a27
-	sw t1, -160(sp)
+	sw t1, 160(sp)
 
 	# fetch variables
 
@@ -3976,7 +3980,7 @@ mainEntry100:
 	lw t1, 20(sp)
 
 	# push a28
-	sw t1, -168(sp)
+	sw t1, 168(sp)
 
 	# fetch variables
 
@@ -3984,7 +3988,7 @@ mainEntry100:
 	lw t1, 16(sp)
 
 	# push a29
-	sw t1, -176(sp)
+	sw t1, 176(sp)
 
 	# fetch variables
 
@@ -3992,7 +3996,7 @@ mainEntry100:
 	lw t1, 12(sp)
 
 	# push a30
-	sw t1, -184(sp)
+	sw t1, 184(sp)
 
 	# fetch variables
 
@@ -4000,7 +4004,7 @@ mainEntry100:
 	lw t1, 8(sp)
 
 	# push a31
-	sw t1, -192(sp)
+	sw t1, 192(sp)
 	addi sp, sp, -192
 
 	# save caller saved regs
@@ -4015,7 +4019,8 @@ mainEntry100:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 192
+	li t4, 192
+	addi sp, sp, t4
 
 	# get address of local var:testParam32
 	sw a0, 4(sp)
@@ -4061,7 +4066,8 @@ mainEntry100:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 

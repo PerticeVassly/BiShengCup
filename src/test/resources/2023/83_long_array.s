@@ -1184,7 +1184,8 @@ ifTrue_327:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_564
 	j next_564
@@ -1629,7 +1630,8 @@ next_566:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_565
 	j next_565
@@ -1921,7 +1923,8 @@ next_568:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_567
 	j next_567
@@ -2319,7 +2322,8 @@ mainEntry78:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:long_array
 	sw a0, 0(sp)

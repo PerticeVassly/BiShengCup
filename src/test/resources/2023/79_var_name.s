@@ -963,7 +963,8 @@ whileBody_255:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -984,7 +985,8 @@ whileBody_255:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load long_name20$iC8Blhf3J77ykaAhFYeWAp0W1TtVz$7 lv
 

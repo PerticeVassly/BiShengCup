@@ -228,7 +228,8 @@ whileBody_254:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:inc_a
 	sw a0, 112(sp)
@@ -287,7 +288,8 @@ next_594:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -308,7 +310,8 @@ next_594:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load b$2 gv1
 
@@ -340,7 +343,8 @@ next_594:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -361,7 +365,8 @@ next_594:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load a$3 gv
 
@@ -414,7 +419,8 @@ ifTrue_340:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -435,7 +441,8 @@ ifTrue_340:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load b gv1
 
@@ -467,7 +474,8 @@ ifTrue_340:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -488,7 +496,8 @@ ifTrue_340:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_595
 	j next_595
@@ -509,7 +518,8 @@ next_595:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:inc_a$3
 	sw a0, 84(sp)
@@ -576,7 +586,8 @@ secondCond_126:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:inc_a$2
 	sw a0, 68(sp)
@@ -620,7 +631,8 @@ secondCond_127:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:inc_a$1
 	sw a0, 60(sp)
@@ -679,7 +691,8 @@ ifTrue_341:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -700,7 +713,8 @@ ifTrue_341:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load b$1 gv1
 
@@ -753,7 +767,8 @@ ifFalse_136:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:inc_a$7
 	sw a0, 40(sp)
@@ -813,7 +828,8 @@ secondCond_128:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:inc_a$4
 	sw a0, 28(sp)
@@ -857,7 +873,8 @@ secondCond_129:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:inc_a$5
 	sw a0, 20(sp)
@@ -877,7 +894,8 @@ secondCond_129:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:inc_a$6
 	sw a0, 16(sp)

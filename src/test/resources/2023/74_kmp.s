@@ -745,7 +745,8 @@ KMPEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# store lv$3 
 
@@ -1535,7 +1536,8 @@ whileBody_185:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getch
 	sw a0, 68(sp)
@@ -1825,7 +1827,8 @@ mainEntry47:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:read_str
 	sw a0, 32(sp)
@@ -1870,7 +1873,8 @@ mainEntry47:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:read_str$1
 	sw a0, 20(sp)
@@ -1940,7 +1944,8 @@ mainEntry47:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:KMP
 	sw a0, 0(sp)
@@ -1966,7 +1971,8 @@ mainEntry47:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -1987,7 +1993,8 @@ mainEntry47:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 

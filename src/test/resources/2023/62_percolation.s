@@ -484,7 +484,8 @@ ifFalse_101:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:findfa
 	sw a0, 16(sp)
@@ -650,7 +651,8 @@ mmergeEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:findfa
 	sw a0, 44(sp)
@@ -696,7 +698,8 @@ mmergeEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:findfa$1
 	sw a0, 36(sp)
@@ -1056,7 +1059,8 @@ whileBody_181:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load n$1 gv1
 
@@ -1209,7 +1213,8 @@ whileBody_182:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 516(sp)
@@ -1240,7 +1245,8 @@ whileBody_182:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 512(sp)
@@ -1671,7 +1677,8 @@ ifTrue_250:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_433
 	j next_433
@@ -1836,7 +1843,8 @@ ifTrue_251:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_434
 	j next_434
@@ -1966,7 +1974,8 @@ ifTrue_252:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_435
 	j next_435
@@ -2182,7 +2191,8 @@ ifTrue_253:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_436
 	j next_436
@@ -2419,7 +2429,8 @@ ifTrue_254:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_437
 	j next_437
@@ -2657,7 +2668,8 @@ ifTrue_255:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_438
 	j next_438
@@ -2914,7 +2926,8 @@ ifTrue_256:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -2935,7 +2948,8 @@ ifTrue_256:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_439
 	j next_439
@@ -2964,7 +2978,8 @@ secondCond_95:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:findfa
 	sw a0, 48(sp)
@@ -2999,7 +3014,8 @@ secondCond_95:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:findfa$1
 	sw a0, 40(sp)
@@ -3157,7 +3173,8 @@ ifTrue_257:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# prepare params
 
@@ -3178,7 +3195,8 @@ ifTrue_257:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_440
 	j next_440

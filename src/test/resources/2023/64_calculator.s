@@ -508,7 +508,8 @@ getstrEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getch
 	sw a0, 72(sp)
@@ -699,7 +700,8 @@ whileBody_26:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getch$1
 	sw a0, 20(sp)
@@ -1513,7 +1515,8 @@ findEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:chapop
 	sw a0, 56(sp)
@@ -1849,7 +1852,8 @@ mainEntry16:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getstr
 	li t4, 1832
@@ -2032,7 +2036,8 @@ whileBody_27:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:isdigit
 	li t4, 1792
@@ -2411,7 +2416,8 @@ ifTrue_20:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_48
 	j next_48
@@ -2543,7 +2549,8 @@ ifTrue_21:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_49
 	j next_49
@@ -2671,7 +2678,8 @@ ifTrue_22:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:chapop
 	li t4, 1648
@@ -3048,7 +3056,8 @@ whileBody_28:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:chapop$1
 	li t4, 1560
@@ -3309,7 +3318,8 @@ whileBody_29:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:find
 	li t4, 1500
@@ -3397,7 +3407,8 @@ next_53:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_52
 	j next_52
@@ -4182,7 +4193,8 @@ whileBody_30:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:find$1
 	li t4, 1288
@@ -4270,7 +4282,8 @@ next_56:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_55
 	j next_55
@@ -5055,7 +5068,8 @@ whileBody_31:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:find$2
 	li t4, 1076
@@ -5143,7 +5157,8 @@ next_59:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_58
 	j next_58
@@ -5626,7 +5641,8 @@ whileBody_32:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:find$3
 	sw a0, 920(sp)
@@ -5698,7 +5714,8 @@ next_62:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_61
 	j next_61
@@ -6137,7 +6154,8 @@ whileBody_33:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:find$4
 	sw a0, 772(sp)
@@ -6209,7 +6227,8 @@ next_65:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_64
 	j next_64
@@ -6547,7 +6566,8 @@ whileBody_34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:chapop$2
 	sw a0, 656(sp)
@@ -6956,7 +6976,8 @@ next_68:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret 
 
@@ -6983,7 +7004,8 @@ ifTrue_33:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:intpop
 	sw a0, 532(sp)
@@ -7016,7 +7038,8 @@ ifTrue_33:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:intpop$1
 	sw a0, 528(sp)
@@ -8381,7 +8404,8 @@ ifTrue_39:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:power
 	sw a0, 112(sp)
@@ -8435,7 +8459,8 @@ next_75:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_69
 	j next_69
@@ -8509,7 +8534,8 @@ ifTrue_40:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# store gv5 
 
@@ -8726,7 +8752,8 @@ whileBody_36:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load ii$13 gv5
 

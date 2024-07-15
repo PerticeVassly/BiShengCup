@@ -350,7 +350,8 @@ next_138:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_137
 	j next_137

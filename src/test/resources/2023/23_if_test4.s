@@ -265,7 +265,8 @@ mainEntry89:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:if_ifElse_
 	sw a0, 0(sp)

@@ -213,7 +213,8 @@ whileBody_284:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$2 lv
 
@@ -311,7 +312,8 @@ ifTrue_361:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# ret void
 	li t4, 84
@@ -341,7 +343,8 @@ ifFalse_146:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_646
 	j next_646
@@ -1013,7 +1016,8 @@ ifTrue_363:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# br next_649
 	j next_649
@@ -1235,7 +1239,8 @@ next_649:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$8 lv$1
 
@@ -1446,7 +1451,8 @@ mainEntry97:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 32(sp)
@@ -1538,7 +1544,8 @@ whileBody_286:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 12(sp)
@@ -1573,7 +1580,8 @@ whileBody_286:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load N$1 lv
 

@@ -1199,7 +1199,8 @@ mainEntry8:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# get address of local var:select_sort
 	sw a0, 52(sp)
@@ -1364,7 +1365,8 @@ whileBody_16:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# store lv$2 
 
@@ -1405,7 +1407,8 @@ whileBody_16:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	addi sp, sp, t4
 
 	# load i$2 lv$1
 
