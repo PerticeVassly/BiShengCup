@@ -1,7 +1,7 @@
 package cn.edu.nju.software.frontend.util;
 import java.io.*;
 import java.util.Properties;
-//TODO:mark these code as opensouces
+//TODO:代码复制自开源项目，需在报告中注明
     /**
      * <dl>
      * <dt>Purpose: GraphViz Java API
@@ -49,6 +49,7 @@ import java.util.Properties;
          * Load the config.properties file.
          * 加载配置路径
          */
+        //TODO:这里填配置文件路径
         private final static String cfgProp = "./src/main/java/cn/edu/nju/software/frontend/util/config.properties";
         private final static Properties configFile = new Properties() {
             @Serial
@@ -60,9 +61,9 @@ import java.util.Properties;
         };
 
         /**
-         * The dir. where temporary files will be created.
-         * 输出的路径
+         * 输出图片所在的目录
          */
+        //TODO:根据自身情况修改
         private static final String TEMP_DIR = "./src/test/resources/graph";
 
         /**

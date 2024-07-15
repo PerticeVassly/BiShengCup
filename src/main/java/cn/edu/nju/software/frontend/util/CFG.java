@@ -17,6 +17,9 @@ public class CFG {
        graph.addEdge(from,to);
     }
 
+    public Set<Edge<BasicBlockRef>> getAllEdges(){
+        return graph.getAllEdges();
+    }
     public Set<BasicBlockRef> getSuccessors(BasicBlockRef bb){
         return graph.getNeighbors(bb);
     }
