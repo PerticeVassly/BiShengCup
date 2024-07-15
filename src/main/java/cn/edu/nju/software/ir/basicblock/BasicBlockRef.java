@@ -21,7 +21,7 @@ public class BasicBlockRef extends ValueRef {
      * the function it belongs to
      */
     private final FunctionValue function;
-    private final ArrayList<BasicBlockRef> pred;
+    private ArrayList<BasicBlockRef> pred;
     private int predNum;
     private boolean reachable = true;
 
@@ -101,6 +101,18 @@ public class BasicBlockRef extends ValueRef {
 
     public void drop() {
         function.dropBlock(this);
+    }
+
+    public void dropDeadPred() {
+        ArrayList<BasicBlockRef> tmp = new ArrayList<>();
+        for (BasicBlockRef bb : pred) {
+            if (bb.isReachable()) {
+                tmp.add(bb);
+                continue;
+            }
+            predNum--;
+        }
+        pred = tmp;
     }
 
     @Override

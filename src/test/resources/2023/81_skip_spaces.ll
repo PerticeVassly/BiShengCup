@@ -23,14 +23,14 @@ mainEntry89:
   %lv = alloca [100 x i32], align 16
   store i32 0, i32* %lv$1, align 4
   store i32 0, i32* %lv$2, align 4
-  br label %whileCond_254
+  br label %whileCond_243
 
-whileCond_254:                                        ; pred = %mainEntry89, %whileBody_254
+whileCond_243:                                        ; pred = %mainEntry89, %whileBody_243
   %getint = call i32 @getint()
   %cond_normalize_ = icmp ne i32 %getint, 0
-  br i1 %cond_normalize_, label %whileBody_254, label %next_609
+  br i1 %cond_normalize_, label %whileBody_243, label %next_593
 
-whileBody_254:                                        ; pred = %whileCond_254
+whileBody_243:                                        ; pred = %whileCond_243
   %i = load i32, i32* %lv$1, align 4
   %arr = getelementptr [100 x i32], [100 x i32]* %lv, i32 0, i32 %i
   %getint$1 = call i32 @getint()
@@ -38,17 +38,17 @@ whileBody_254:                                        ; pred = %whileCond_254
   %i$1 = load i32, i32* %lv$1, align 4
   %result_ = add i32 %i$1, 1
   store i32 %result_, i32* %lv$1, align 4
-  br label %whileCond_254
+  br label %whileCond_243
 
-next_609:                                             ; pred = %whileCond_254
-  br label %whileCond_255
+next_593:                                             ; pred = %whileCond_243
+  br label %whileCond_244
 
-whileCond_255:                                        ; pred = %next_609, %whileBody_255
+whileCond_244:                                        ; pred = %next_593, %whileBody_244
   %i$2 = load i32, i32* %lv$1, align 4
   %cond_normalize_$1 = icmp ne i32 %i$2, 0
-  br i1 %cond_normalize_$1, label %whileBody_255, label %next_610
+  br i1 %cond_normalize_$1, label %whileBody_244, label %next_594
 
-whileBody_255:                                        ; pred = %whileCond_255
+whileBody_244:                                        ; pred = %whileCond_244
   %i$3 = load i32, i32* %lv$1, align 4
   %result_$1 = sub i32 %i$3, 1
   store i32 %result_$1, i32* %lv$1, align 4
@@ -58,9 +58,9 @@ whileBody_255:                                        ; pred = %whileCond_255
   %arr$2 = load i32, i32* %arr$1, align 4
   %result_$2 = add i32 %sum, %arr$2
   store i32 %result_$2, i32* %lv$2, align 4
-  br label %whileCond_255
+  br label %whileCond_244
 
-next_610:                                             ; pred = %whileCond_255
+next_594:                                             ; pred = %whileCond_244
   %sum$1 = load i32, i32* %lv$2, align 4
   %result_$3 = srem i32 %sum$1, 79
   ret i32 %result_$3

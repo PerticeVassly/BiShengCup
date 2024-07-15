@@ -55,22 +55,22 @@ mainEntry35:
   %lv = alloca i32, align 4
   %getint = call i32 @getint()
   store i32 %getint, i32* %lv$30, align 4
-  br label %whileCond_158
+  br label %whileCond_154
 
-whileCond_158:                                        ; pred = %mainEntry35, %whileBody_158
+whileCond_154:                                        ; pred = %mainEntry35, %whileBody_154
   %b = load i32, i32* %lv$30, align 4
   %cond_eq_tmp_ = icmp eq i32 %b, 5
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_158, label %next_401
+  br i1 %cond_, label %whileBody_154, label %next_395
 
-whileBody_158:                                        ; pred = %whileCond_158
+whileBody_154:                                        ; pred = %whileCond_154
   %b$1 = load i32, i32* %lv$30, align 4
   %result_ = add i32 %b$1, 1
   store i32 %result_, i32* %lv$30, align 4
-  br label %whileCond_158
+  br label %whileCond_154
 
-next_401:                                             ; pred = %whileCond_158
+next_395:                                             ; pred = %whileCond_154
   store i32 0, i32* %lv, align 4
   %a0 = load i32, i32* %lv, align 4
   %result_$1 = add i32 %a0, 1
