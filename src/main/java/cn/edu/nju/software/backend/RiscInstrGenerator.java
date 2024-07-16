@@ -414,12 +414,12 @@ public class RiscInstrGenerator implements InstructionVisitor {
                 break;
 
             case "oge":
-                riscInstructions.add(new RiscFlts(new Register("t0"), new Register("ft2"), new Register("ft1")));
+                riscInstructions.add(new RiscFlts(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("t0")));
                 break;
 
             case "ole":
-                riscInstructions.add(new RiscFles(new Register("t0"), new Register("ft2"), new Register("ft1")));
+                riscInstructions.add(new RiscFles(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 break;
 
         }
