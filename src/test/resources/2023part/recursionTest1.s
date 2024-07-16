@@ -61,7 +61,7 @@ fibEntry:
 	# get address of local var:cond_eq_tmp_
 	sw t0, 52(sp)
 
-	# ZEXT cond_tmp_ cond_eq_tmp_
+	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -131,7 +131,7 @@ next_4:
 	# get address of local var:cond_eq_tmp_$1
 	sw t0, 36(sp)
 
-	# ZEXT cond_tmp_$1 cond_eq_tmp_$1
+	#  cond_tmp_$1 cond_eq_tmp_$1
 
 	# fetch variables
 
@@ -207,7 +207,8 @@ next_5:
 	# get address of local var:result_
 	lw t1, 20(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -221,7 +222,8 @@ next_5:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:fib
 	sw a0, 16(sp)
@@ -254,7 +256,8 @@ next_5:
 	# get address of local var:result_$1
 	lw t1, 8(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -268,7 +271,8 @@ next_5:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:fib$1
 	sw a0, 4(sp)
@@ -323,7 +327,8 @@ mainEntry10:
 	# fetch variables
 	li t1, 4
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -337,7 +342,8 @@ mainEntry10:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:fib
 	sw a0, 0(sp)

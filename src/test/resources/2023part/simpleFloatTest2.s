@@ -88,7 +88,7 @@ mainEntry18:
 	# get address of local var:cond_eq_tmp_
 	sw t0, 24(sp)
 
-	# ZEXT cond_tmp_ cond_eq_tmp_
+	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
@@ -161,12 +161,12 @@ secondCond_3:
 	li t2, 0x40a00000
 	fmv.w.x ft2, t2
 	fle.s t0, ft1, ft2
-	seqz t0, ft0
+	seqz t0, t0
 
 	# get address of local var:cond_gt_tmp_
 	sw t0, 8(sp)
 
-	# ZEXT cond_tmp_$1 cond_gt_tmp_
+	#  cond_tmp_$1 cond_gt_tmp_
 
 	# fetch variables
 

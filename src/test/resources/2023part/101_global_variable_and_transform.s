@@ -55,7 +55,7 @@ mainEntry17:
 	flw ft0, 0(t3)
 	fsw ft0, 8(sp)
 
-	# F2I f2i_ d
+	#  f2i_ d
 
 	# fetch variables
 
@@ -93,7 +93,8 @@ mainEntry17:
 	# get address of local var:e
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -107,7 +108,8 @@ mainEntry17:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# ret 
 
