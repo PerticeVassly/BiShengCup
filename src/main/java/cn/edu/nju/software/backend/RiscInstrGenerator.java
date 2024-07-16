@@ -588,18 +588,18 @@ public class RiscInstrGenerator implements InstructionVisitor {
             }
         }
 
-        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(8L * order)));
+        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(-8L * order)));
         riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
     }
 
     private void pushIntoStack(ValueRef realParam, int order){
         insertComment("push " + realParam.getName());
         if(realParam.getType() instanceof IntType){
-            riscInstructions.add(new RiscSw(new Register("t1"),allocator.getRegWithOffset(order * 8, "sp", "t4")));
+            riscInstructions.add(new RiscSw(new Register("t1"),allocator.getRegWithOffset(-order * 8, "sp", "t4")));
         } else if(realParam.getType() instanceof FloatType){
-            riscInstructions.add(new RiscFsw(new Register("ft1"), allocator.getRegWithOffset(order * 8, "sp", "t4")));
+            riscInstructions.add(new RiscFsw(new Register("ft1"), allocator.getRegWithOffset(-order * 8, "sp", "t4")));
         } else if(realParam.getType() instanceof Pointer){
-            riscInstructions.add(new RiscSd(new Register("t1"), allocator.getRegWithOffset(order * 8, "sp", "t4")));
+            riscInstructions.add(new RiscSd(new Register("t1"), allocator.getRegWithOffset(-order * 8, "sp", "t4")));
         } else {
             assert false;
         }

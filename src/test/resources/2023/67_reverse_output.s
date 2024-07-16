@@ -105,7 +105,8 @@ reverseEntry:
 ifTrue_292:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -120,7 +121,7 @@ ifTrue_292:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 20(sp)
@@ -152,7 +153,8 @@ ifTrue_292:
 	# get address of local var:next
 	lw t1, 16(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -167,14 +169,15 @@ ifTrue_292:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# br next_496
 	j next_496
 ifFalse_111:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -189,7 +192,7 @@ ifFalse_111:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 12(sp)
@@ -233,7 +236,8 @@ ifFalse_111:
 	# get address of local var:result_
 	lw t1, 4(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -248,7 +252,7 @@ ifFalse_111:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load next$1 lv$1
 
@@ -266,7 +270,8 @@ ifFalse_111:
 	# get address of local var:next$1
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -281,7 +286,7 @@ ifFalse_111:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# br next_496
 	j next_496
@@ -337,7 +342,8 @@ mainEntry60:
 	# get address of local var:i
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -352,7 +358,7 @@ mainEntry60:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# ret 
 

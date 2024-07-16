@@ -1239,7 +1239,8 @@ mainEntry73:
 	# fetch variables
 	li t1, 160
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1254,7 +1255,7 @@ mainEntry73:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# store lv 
 
@@ -2818,7 +2819,8 @@ ifTrue_314:
 	# get address of local var:result$11
 	lw t1, 56(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2833,7 +2835,7 @@ ifTrue_314:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# br next_544
 	j next_544
@@ -3006,7 +3008,8 @@ whileBody_230:
 	# get address of local var:result$13
 	lw t1, 8(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3021,7 +3024,7 @@ whileBody_230:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load i$16 lv
 

@@ -51,7 +51,8 @@ read_programEntry:
 	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -66,7 +67,7 @@ read_programEntry:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 56(sp)
@@ -180,7 +181,8 @@ whileBody_256:
 	sd t0, 24(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -195,7 +197,7 @@ whileBody_256:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getch
 	sw a0, 20(sp)
@@ -1119,7 +1121,8 @@ ifTrue_349:
 	# get address of local var:tape$7
 	lw t1, 164(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1134,7 +1137,7 @@ ifTrue_349:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# br next_607
 	j next_607
@@ -1228,7 +1231,8 @@ ifTrue_350:
 	sd t0, 136(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1243,7 +1247,7 @@ ifTrue_350:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getch
 	sw a0, 132(sp)
@@ -1754,7 +1758,8 @@ mainEntry91:
 	# save the parameters
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1769,7 +1774,7 @@ mainEntry91:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# gep program 
 
@@ -1793,7 +1798,8 @@ mainEntry91:
 	# get address of local var:program
 	ld t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1808,7 +1814,7 @@ mainEntry91:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# ret 
 

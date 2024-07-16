@@ -214,7 +214,8 @@ whileCond_254:
 whileBody_254:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -229,7 +230,7 @@ whileBody_254:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:inc_a
 	sw a0, 112(sp)
@@ -274,7 +275,8 @@ next_594:
 	# get address of local var:a$2
 	lw t1, 104(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -289,14 +291,15 @@ next_594:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 32
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -311,7 +314,7 @@ next_594:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load b$2 gv1
 
@@ -329,7 +332,8 @@ next_594:
 	# get address of local var:b$2
 	lw t1, 100(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -344,14 +348,15 @@ next_594:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -366,7 +371,7 @@ next_594:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load a$3 gv
 
@@ -405,7 +410,8 @@ ifTrue_340:
 	# get address of local var:a
 	lw t1, 92(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -420,14 +426,15 @@ ifTrue_340:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 32
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -442,7 +449,7 @@ ifTrue_340:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load b gv1
 
@@ -460,7 +467,8 @@ ifTrue_340:
 	# get address of local var:b
 	lw t1, 88(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -475,14 +483,15 @@ ifTrue_340:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -497,14 +506,15 @@ ifTrue_340:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# br next_595
 	j next_595
 next_595:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -519,7 +529,7 @@ next_595:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:inc_a$3
 	sw a0, 84(sp)
@@ -572,7 +582,8 @@ next_595:
 secondCond_126:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -587,7 +598,7 @@ secondCond_126:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:inc_a$2
 	sw a0, 68(sp)
@@ -617,7 +628,8 @@ secondCond_126:
 secondCond_127:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -632,7 +644,7 @@ secondCond_127:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:inc_a$1
 	sw a0, 60(sp)
@@ -677,7 +689,8 @@ ifTrue_341:
 	# get address of local var:a$1
 	lw t1, 52(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -692,14 +705,15 @@ ifTrue_341:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -714,7 +728,7 @@ ifTrue_341:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load b$1 gv1
 
@@ -753,7 +767,8 @@ ifTrue_341:
 ifFalse_136:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -768,7 +783,7 @@ ifFalse_136:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:inc_a$7
 	sw a0, 40(sp)
@@ -814,7 +829,8 @@ next_596:
 secondCond_128:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -829,7 +845,7 @@ secondCond_128:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:inc_a$4
 	sw a0, 28(sp)
@@ -859,7 +875,8 @@ secondCond_128:
 secondCond_129:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -874,13 +891,14 @@ secondCond_129:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:inc_a$5
 	sw a0, 20(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -895,7 +913,7 @@ secondCond_129:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:inc_a$6
 	sw a0, 16(sp)

@@ -1887,7 +1887,8 @@ next_84:
 	# get address of local var:tmp
 	lw t1, 316(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1902,7 +1903,7 @@ next_84:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:QuickSort
 	sw a0, 312(sp)
@@ -1996,7 +1997,8 @@ next_84:
 	# get address of local var:high$2
 	lw t1, 288(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2011,7 +2013,7 @@ next_84:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:QuickSort$1
 	sw a0, 284(sp)
@@ -7249,7 +7251,8 @@ mainEntry18:
 	# get address of local var:result
 	ld t1, 536(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7264,7 +7267,7 @@ mainEntry18:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:arrCopy
 	sw a0, 532(sp)
@@ -7308,7 +7311,8 @@ mainEntry18:
 	# get address of local var:result$1
 	ld t1, 524(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7323,7 +7327,7 @@ mainEntry18:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:revert
 	sw a0, 520(sp)
@@ -7486,7 +7490,8 @@ whileBody_51:
 	# get address of local var:t
 	lw t1, 484(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7501,7 +7506,7 @@ whileBody_51:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load i$2 lv$3
 
@@ -7569,7 +7574,8 @@ next_101:
 	# get address of local var:result$4
 	ld t1, 468(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7584,7 +7590,7 @@ next_101:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:bubblesort
 	sw a0, 464(sp)
@@ -7747,7 +7753,8 @@ whileBody_52:
 	# get address of local var:t$1
 	lw t1, 428(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7762,7 +7769,7 @@ whileBody_52:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load i$5 lv$3
 
@@ -7830,7 +7837,8 @@ next_102:
 	# get address of local var:result$7
 	ld t1, 412(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7845,7 +7853,7 @@ next_102:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getMid
 	sw a0, 408(sp)
@@ -7881,7 +7889,8 @@ next_102:
 	# get address of local var:t$2
 	lw t1, 404(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7896,7 +7905,7 @@ next_102:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# gep result$8 
 
@@ -7924,7 +7933,8 @@ next_102:
 	# get address of local var:result$8
 	ld t1, 396(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7939,7 +7949,7 @@ next_102:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getMost
 	sw a0, 392(sp)
@@ -7975,7 +7985,8 @@ next_102:
 	# get address of local var:t$3
 	lw t1, 388(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7990,7 +8001,7 @@ next_102:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# gep arr$33 
 
@@ -8041,7 +8052,8 @@ next_102:
 	# get address of local var:result$9
 	ld t1, 372(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8056,7 +8068,7 @@ next_102:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:arrCopy$1
 	sw a0, 368(sp)
@@ -8100,7 +8112,8 @@ next_102:
 	# get address of local var:result$10
 	ld t1, 360(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8115,7 +8128,7 @@ next_102:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:bubblesort$1
 	sw a0, 356(sp)
@@ -8278,7 +8291,8 @@ whileBody_53:
 	# get address of local var:t$4
 	lw t1, 320(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8293,7 +8307,7 @@ whileBody_53:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load i$8 lv$3
 
@@ -8384,7 +8398,8 @@ next_103:
 	# get address of local var:result$13
 	ld t1, 296(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8399,7 +8414,7 @@ next_103:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:arrCopy$2
 	sw a0, 292(sp)
@@ -8443,7 +8458,8 @@ next_103:
 	# get address of local var:result$14
 	ld t1, 284(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8458,7 +8474,7 @@ next_103:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:insertsort
 	sw a0, 280(sp)
@@ -8621,7 +8637,8 @@ whileBody_54:
 	# get address of local var:t$5
 	lw t1, 244(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8636,7 +8653,7 @@ whileBody_54:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load i$11 lv$3
 
@@ -8727,7 +8744,8 @@ next_104:
 	# get address of local var:result$17
 	ld t1, 220(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8742,7 +8760,7 @@ next_104:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:arrCopy$3
 	sw a0, 216(sp)
@@ -8842,7 +8860,8 @@ next_104:
 	# get address of local var:t$6
 	lw t1, 200(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8857,7 +8876,7 @@ next_104:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:QuickSort
 	sw a0, 196(sp)
@@ -9009,7 +9028,8 @@ whileBody_55:
 	# get address of local var:t$7
 	lw t1, 160(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9024,7 +9044,7 @@ whileBody_55:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load i$15 lv$3
 
@@ -9115,7 +9135,8 @@ next_105:
 	# get address of local var:result$21
 	ld t1, 136(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9130,7 +9151,7 @@ next_105:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:arrCopy$4
 	sw a0, 132(sp)
@@ -9178,7 +9199,8 @@ next_105:
 	# fetch variables
 	li t1, 4
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9193,7 +9215,7 @@ next_105:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:calSum
 	sw a0, 120(sp)
@@ -9356,7 +9378,8 @@ whileBody_56:
 	# get address of local var:t$8
 	lw t1, 84(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9371,7 +9394,7 @@ whileBody_56:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load i$18 lv$3
 
@@ -9462,7 +9485,8 @@ next_106:
 	# get address of local var:result$25
 	ld t1, 60(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9477,7 +9501,7 @@ next_106:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:arrCopy$5
 	sw a0, 56(sp)
@@ -9525,7 +9549,8 @@ next_106:
 	# fetch variables
 	li t1, 3
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9540,7 +9565,7 @@ next_106:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:avgPooling
 	sw a0, 44(sp)
@@ -9703,7 +9728,8 @@ whileBody_57:
 	# get address of local var:t$9
 	lw t1, 8(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9718,7 +9744,7 @@ whileBody_57:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load i$21 lv$3
 

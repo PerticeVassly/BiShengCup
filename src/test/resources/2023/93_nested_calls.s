@@ -243,7 +243,8 @@ ifFalse_119:
 	# fetch variables
 	li t1, 0
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -258,7 +259,7 @@ ifFalse_119:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func1
 	sw a0, 0(sp)
@@ -410,7 +411,8 @@ ifTrue_319:
 	# fetch variables
 	li t1, 0
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -425,7 +427,7 @@ ifTrue_319:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func2
 	sw a0, 4(sp)
@@ -661,7 +663,8 @@ ifFalse_121:
 	# fetch variables
 	li t1, 0
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -676,7 +679,7 @@ ifFalse_121:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func3
 	sw a0, 0(sp)
@@ -1263,7 +1266,8 @@ mainEntry76:
 	sd t0, 476(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1278,7 +1282,7 @@ mainEntry76:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 468(sp)
@@ -1295,7 +1299,8 @@ mainEntry76:
 	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1310,7 +1315,7 @@ mainEntry76:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 464(sp)
@@ -1327,7 +1332,8 @@ mainEntry76:
 	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1342,7 +1348,7 @@ mainEntry76:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$2
 	sw a0, 460(sp)
@@ -1359,7 +1365,8 @@ mainEntry76:
 	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1374,7 +1381,7 @@ mainEntry76:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$3
 	sw a0, 456(sp)
@@ -1488,7 +1495,8 @@ whileBody_231:
 	sd t0, 428(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1503,7 +1511,7 @@ whileBody_231:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$4
 	sw a0, 424(sp)
@@ -1571,7 +1579,8 @@ next_555:
 	# get address of local var:i1
 	lw t1, 412(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1586,7 +1595,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func7
 	sw a0, 408(sp)
@@ -1607,7 +1616,8 @@ next_555:
 	# get address of local var:i2
 	lw t1, 404(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1622,7 +1632,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func5
 	sw a0, 400(sp)
@@ -1640,7 +1650,8 @@ next_555:
 	# get address of local var:func5
 	lw t1, 400(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1655,7 +1666,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func6
 	sw a0, 396(sp)
@@ -1682,7 +1693,8 @@ next_555:
 	# get address of local var:i3
 	lw t1, 392(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1697,7 +1709,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func2
 	sw a0, 388(sp)
@@ -1724,7 +1736,8 @@ next_555:
 	# get address of local var:i4
 	lw t1, 384(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1739,7 +1752,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func3
 	sw a0, 380(sp)
@@ -1751,7 +1764,8 @@ next_555:
 	# get address of local var:func3
 	lw t1, 380(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1766,7 +1780,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func5$1
 	sw a0, 376(sp)
@@ -1830,7 +1844,8 @@ next_555:
 	# get address of local var:arr$4
 	lw t1, 352(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1845,7 +1860,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func5$2
 	sw a0, 348(sp)
@@ -1909,7 +1924,8 @@ next_555:
 	# get address of local var:arr$8
 	lw t1, 324(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1924,7 +1940,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func7$1
 	sw a0, 320(sp)
@@ -1942,7 +1958,8 @@ next_555:
 	# get address of local var:func7$1
 	lw t1, 320(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1957,7 +1974,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func6$1
 	sw a0, 316(sp)
@@ -2021,7 +2038,8 @@ next_555:
 	# get address of local var:arr$12
 	lw t1, 292(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2036,7 +2054,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func7$2
 	sw a0, 288(sp)
@@ -2054,7 +2072,8 @@ next_555:
 	# get address of local var:func7$2
 	lw t1, 288(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2069,7 +2088,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func2$1
 	sw a0, 284(sp)
@@ -2093,7 +2112,8 @@ next_555:
 	# get address of local var:func2$1
 	lw t1, 284(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2108,7 +2128,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func4
 	sw a0, 280(sp)
@@ -2152,7 +2172,8 @@ next_555:
 	# get address of local var:arr$14
 	lw t1, 268(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2167,7 +2188,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func3$1
 	sw a0, 264(sp)
@@ -2211,7 +2232,8 @@ next_555:
 	# get address of local var:arr$16
 	lw t1, 252(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2226,7 +2248,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func2$2
 	sw a0, 248(sp)
@@ -2290,7 +2312,8 @@ next_555:
 	# get address of local var:arr$20
 	lw t1, 224(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2305,7 +2328,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func7$3
 	sw a0, 220(sp)
@@ -2323,7 +2346,8 @@ next_555:
 	# get address of local var:func7$3
 	lw t1, 220(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2338,7 +2362,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func3$2
 	sw a0, 216(sp)
@@ -2371,7 +2395,8 @@ next_555:
 	# get address of local var:i1$1
 	lw t1, 212(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2386,7 +2411,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func1
 	sw a0, 208(sp)
@@ -2410,7 +2435,8 @@ next_555:
 	# get address of local var:func1
 	lw t1, 208(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2425,7 +2451,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func4$1
 	sw a0, 204(sp)
@@ -2455,7 +2481,8 @@ next_555:
 	# get address of local var:i3$1
 	lw t1, 196(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2470,7 +2497,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func7$4
 	sw a0, 192(sp)
@@ -2497,7 +2524,8 @@ next_555:
 	# get address of local var:i4$1
 	lw t1, 188(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2512,7 +2540,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func3$3
 	sw a0, 184(sp)
@@ -2530,7 +2558,8 @@ next_555:
 	# get address of local var:func3$3
 	lw t1, 184(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2545,7 +2574,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func2$3
 	sw a0, 180(sp)
@@ -2563,7 +2592,8 @@ next_555:
 	# get address of local var:func2$3
 	lw t1, 180(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2578,7 +2608,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func3$4
 	sw a0, 176(sp)
@@ -2654,7 +2684,8 @@ next_555:
 	# get address of local var:arr$24
 	lw t1, 152(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2669,7 +2700,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func1$1
 	sw a0, 148(sp)
@@ -2713,7 +2744,8 @@ next_555:
 	# get address of local var:arr$26
 	lw t1, 136(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2728,7 +2760,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func2$4
 	sw a0, 132(sp)
@@ -2818,7 +2850,8 @@ next_555:
 	# get address of local var:arr$32
 	lw t1, 96(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2833,7 +2866,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func5$3
 	sw a0, 92(sp)
@@ -2851,7 +2884,8 @@ next_555:
 	# get address of local var:func5$3
 	lw t1, 92(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2866,7 +2900,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func3$5
 	sw a0, 88(sp)
@@ -2904,7 +2938,8 @@ next_555:
 	# get address of local var:arr$34
 	lw t1, 76(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2919,7 +2954,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func5$4
 	sw a0, 72(sp)
@@ -2937,7 +2972,8 @@ next_555:
 	# get address of local var:func5$4
 	lw t1, 72(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2952,7 +2988,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func2$5
 	sw a0, 68(sp)
@@ -3016,7 +3052,8 @@ next_555:
 	# get address of local var:arr$38
 	lw t1, 44(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3031,7 +3068,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func7$5
 	sw a0, 40(sp)
@@ -3055,7 +3092,8 @@ next_555:
 	# get address of local var:func7$5
 	lw t1, 40(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3070,7 +3108,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func1$2
 	sw a0, 36(sp)
@@ -3108,7 +3146,8 @@ next_555:
 	# get address of local var:arr$40
 	lw t1, 24(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3123,7 +3162,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func5$5
 	sw a0, 20(sp)
@@ -3141,7 +3180,8 @@ next_555:
 	# get address of local var:func5$5
 	lw t1, 20(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3156,7 +3196,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func2$6
 	sw a0, 16(sp)
@@ -3183,7 +3223,8 @@ next_555:
 	# get address of local var:i1$2
 	lw t1, 12(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3198,7 +3239,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func3$6
 	sw a0, 8(sp)
@@ -3222,7 +3263,8 @@ next_555:
 	# get address of local var:func3$6
 	lw t1, 8(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3237,7 +3279,7 @@ next_555:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func1$3
 	sw a0, 4(sp)

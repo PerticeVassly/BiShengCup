@@ -2150,7 +2150,8 @@ next_656:
 	# get address of local var:min_f
 	lw t1, 248(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2165,7 +2166,7 @@ next_656:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:dfs
 	sw a0, 244(sp)
@@ -2945,7 +2946,8 @@ whileBody_289:
 	# fetch variables
 	li t1, 10
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2960,7 +2962,7 @@ whileBody_289:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load s lv
 
@@ -2997,7 +2999,8 @@ whileBody_289:
 	# fetch variables
 	li t1, 1879048192
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3012,7 +3015,7 @@ whileBody_289:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:dfs
 	sw a0, 32(sp)
@@ -3201,7 +3204,8 @@ mainEntry99:
 	sd t0, 76(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3216,7 +3220,7 @@ mainEntry99:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 68(sp)
@@ -3233,7 +3237,8 @@ mainEntry99:
 	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3248,7 +3253,7 @@ mainEntry99:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 64(sp)
@@ -3294,7 +3299,8 @@ mainEntry99:
 	# fetch variables
 	li t1, 10
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3309,7 +3315,7 @@ mainEntry99:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# br whileCond_290
 	j whileCond_290
@@ -3373,7 +3379,8 @@ whileCond_290:
 whileBody_290:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3388,7 +3395,7 @@ whileBody_290:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$2
 	sw a0, 36(sp)
@@ -3405,7 +3412,8 @@ whileBody_290:
 	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3420,7 +3428,7 @@ whileBody_290:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$3
 	sw a0, 32(sp)
@@ -3437,7 +3445,8 @@ whileBody_290:
 	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3452,7 +3461,7 @@ whileBody_290:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$4
 	sw a0, 28(sp)
@@ -3514,7 +3523,8 @@ whileBody_290:
 	# get address of local var:c
 	lw t1, 16(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3529,7 +3539,7 @@ whileBody_290:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load E$1 lv$1
 
@@ -3587,7 +3597,8 @@ next_660:
 	# get address of local var:V
 	lw t1, 4(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3602,7 +3613,7 @@ next_660:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:max_flow
 	sw a0, 0(sp)
@@ -3614,7 +3625,8 @@ next_660:
 	# get address of local var:max_flow
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3629,14 +3641,15 @@ next_660:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3651,7 +3664,7 @@ next_660:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# ret 
 

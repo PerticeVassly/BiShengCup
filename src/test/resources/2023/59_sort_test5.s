@@ -1020,7 +1020,8 @@ ifFalse_133:
 	# get address of local var:son$6
 	lw t1, 20(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1035,7 +1036,7 @@ ifFalse_133:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:swap
 	sw a0, 16(sp)
@@ -1383,7 +1384,8 @@ whileBody_241:
 	# get address of local var:tmp
 	lw t1, 92(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1398,7 +1400,7 @@ whileBody_241:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:heap_ajust
 	sw a0, 88(sp)
@@ -1598,7 +1600,8 @@ whileBody_242:
 	# get address of local var:i$4
 	lw t1, 40(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1613,7 +1616,7 @@ whileBody_242:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:swap
 	sw a0, 36(sp)
@@ -1707,7 +1710,8 @@ whileBody_242:
 	# get address of local var:tmp$1
 	lw t1, 12(sp)
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1722,7 +1726,7 @@ whileBody_242:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:heap_ajust$1
 	sw a0, 8(sp)
@@ -2134,7 +2138,8 @@ mainEntry80:
 	# get address of local var:n
 	lw t1, 56(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2149,7 +2154,7 @@ mainEntry80:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:heap_sort
 	sw a0, 52(sp)
@@ -2300,7 +2305,8 @@ whileBody_243:
 	# get address of local var:tmp
 	lw t1, 12(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2315,7 +2321,7 @@ whileBody_243:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# store lv$2 
 
@@ -2342,7 +2348,8 @@ whileBody_243:
 	# get address of local var:tmp$1
 	lw t1, 8(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2357,7 +2364,7 @@ whileBody_243:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load i$2 lv$1
 

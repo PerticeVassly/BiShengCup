@@ -305,7 +305,8 @@ whileBody_190:
 	# get address of local var:str$3
 	lw t1, 12(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -320,7 +321,7 @@ whileBody_190:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load iNd__1X$2 lv$1
 
@@ -434,7 +435,8 @@ mainEntry51:
 	# get address of local var:__HELLO
 	ld t1, 148(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -449,7 +451,7 @@ mainEntry51:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:putstr
 	sw a0, 144(sp)
@@ -676,7 +678,8 @@ ifTrue_265:
 	# get address of local var:N4__mE___$1
 	ld t1, 84(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -691,7 +694,7 @@ ifTrue_265:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:putstr$1
 	sw a0, 80(sp)
@@ -718,7 +721,8 @@ ifTrue_265:
 	# get address of local var:saY_HeI10_To
 	ld t1, 72(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -733,7 +737,7 @@ ifTrue_265:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:putstr$2
 	sw a0, 68(sp)
@@ -788,7 +792,8 @@ ifTrue_265:
 	# get address of local var:N4__mE___$3
 	ld t1, 48(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -803,7 +808,7 @@ ifTrue_265:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:putstr$3
 	sw a0, 44(sp)
@@ -830,7 +835,8 @@ ifTrue_265:
 	# get address of local var:RET
 	ld t1, 36(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -845,7 +851,7 @@ ifTrue_265:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:putstr$4
 	sw a0, 32(sp)

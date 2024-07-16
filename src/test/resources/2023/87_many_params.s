@@ -1835,7 +1835,7 @@ ifFalse_1:
 	lw t1, 92(sp)
 
 	# push a10
-	sw t1, 8(sp)
+	sw t1, -8(sp)
 
 	# fetch variables
 
@@ -1843,7 +1843,7 @@ ifFalse_1:
 	lw t1, 88(sp)
 
 	# push a11
-	sw t1, 16(sp)
+	sw t1, -16(sp)
 
 	# fetch variables
 
@@ -1851,7 +1851,7 @@ ifFalse_1:
 	lw t1, 84(sp)
 
 	# push a12
-	sw t1, 24(sp)
+	sw t1, -24(sp)
 
 	# fetch variables
 
@@ -1859,7 +1859,7 @@ ifFalse_1:
 	lw t1, 80(sp)
 
 	# push a13
-	sw t1, 32(sp)
+	sw t1, -32(sp)
 
 	# fetch variables
 
@@ -1867,7 +1867,7 @@ ifFalse_1:
 	lw t1, 76(sp)
 
 	# push a14
-	sw t1, 40(sp)
+	sw t1, -40(sp)
 
 	# fetch variables
 
@@ -1875,7 +1875,7 @@ ifFalse_1:
 	lw t1, 72(sp)
 
 	# push a15
-	sw t1, 48(sp)
+	sw t1, -48(sp)
 
 	# fetch variables
 
@@ -1883,7 +1883,7 @@ ifFalse_1:
 	lw t1, 68(sp)
 
 	# push a16
-	sw t1, 56(sp)
+	sw t1, -56(sp)
 
 	# fetch variables
 
@@ -1891,7 +1891,7 @@ ifFalse_1:
 	lw t1, 64(sp)
 
 	# push a17
-	sw t1, 64(sp)
+	sw t1, -64(sp)
 
 	# fetch variables
 
@@ -1899,7 +1899,7 @@ ifFalse_1:
 	lw t1, 60(sp)
 
 	# push a18
-	sw t1, 72(sp)
+	sw t1, -72(sp)
 
 	# fetch variables
 
@@ -1907,7 +1907,7 @@ ifFalse_1:
 	lw t1, 56(sp)
 
 	# push a19
-	sw t1, 80(sp)
+	sw t1, -80(sp)
 
 	# fetch variables
 
@@ -1915,7 +1915,7 @@ ifFalse_1:
 	lw t1, 52(sp)
 
 	# push a20
-	sw t1, 88(sp)
+	sw t1, -88(sp)
 
 	# fetch variables
 
@@ -1923,7 +1923,7 @@ ifFalse_1:
 	lw t1, 48(sp)
 
 	# push a21
-	sw t1, 96(sp)
+	sw t1, -96(sp)
 
 	# fetch variables
 
@@ -1931,7 +1931,7 @@ ifFalse_1:
 	lw t1, 44(sp)
 
 	# push a22
-	sw t1, 104(sp)
+	sw t1, -104(sp)
 
 	# fetch variables
 
@@ -1939,7 +1939,7 @@ ifFalse_1:
 	lw t1, 40(sp)
 
 	# push a23
-	sw t1, 112(sp)
+	sw t1, -112(sp)
 
 	# fetch variables
 
@@ -1947,7 +1947,7 @@ ifFalse_1:
 	lw t1, 36(sp)
 
 	# push a24
-	sw t1, 120(sp)
+	sw t1, -120(sp)
 
 	# fetch variables
 
@@ -1955,7 +1955,7 @@ ifFalse_1:
 	lw t1, 32(sp)
 
 	# push a25
-	sw t1, 128(sp)
+	sw t1, -128(sp)
 
 	# fetch variables
 
@@ -1963,7 +1963,7 @@ ifFalse_1:
 	lw t1, 28(sp)
 
 	# push a26
-	sw t1, 136(sp)
+	sw t1, -136(sp)
 
 	# fetch variables
 
@@ -1971,7 +1971,7 @@ ifFalse_1:
 	lw t1, 24(sp)
 
 	# push a27
-	sw t1, 144(sp)
+	sw t1, -144(sp)
 
 	# fetch variables
 
@@ -1979,7 +1979,7 @@ ifFalse_1:
 	lw t1, 20(sp)
 
 	# push a28
-	sw t1, 152(sp)
+	sw t1, -152(sp)
 
 	# fetch variables
 
@@ -1987,7 +1987,7 @@ ifFalse_1:
 	lw t1, 16(sp)
 
 	# push a29
-	sw t1, 160(sp)
+	sw t1, -160(sp)
 
 	# fetch variables
 
@@ -1995,7 +1995,7 @@ ifFalse_1:
 	lw t1, 12(sp)
 
 	# push a30
-	sw t1, 168(sp)
+	sw t1, -168(sp)
 
 	# fetch variables
 
@@ -2003,7 +2003,7 @@ ifFalse_1:
 	lw t1, 8(sp)
 
 	# push a31
-	sw t1, 176(sp)
+	sw t1, -176(sp)
 
 	# fetch variables
 
@@ -2011,14 +2011,15 @@ ifFalse_1:
 	lw t1, 4(sp)
 
 	# push a32
-	sw t1, 184(sp)
+	sw t1, -184(sp)
 
 	# fetch variables
 	li t1, 0
 
 	# push 
-	sw t1, 192(sp)
-	addi sp, sp, -192
+	sw t1, -192(sp)
+	li t4, -192
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2033,7 +2034,7 @@ ifFalse_1:
 
 	# release params
 	li t4, 192
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:param32_rec
 	sw a0, 0(sp)
@@ -8466,7 +8467,8 @@ param16Entry:
 	# fetch variables
 	li t1, 16
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8481,7 +8483,7 @@ param16Entry:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# gep arr$1 
 
@@ -9099,7 +9101,7 @@ param16Entry:
 	lw t1, 152(sp)
 
 	# push arr$18
-	sw t1, 8(sp)
+	sw t1, -8(sp)
 
 	# fetch variables
 
@@ -9107,7 +9109,7 @@ param16Entry:
 	lw t1, 140(sp)
 
 	# push arr$20
-	sw t1, 16(sp)
+	sw t1, -16(sp)
 
 	# fetch variables
 
@@ -9115,7 +9117,7 @@ param16Entry:
 	lw t1, 128(sp)
 
 	# push arr$22
-	sw t1, 24(sp)
+	sw t1, -24(sp)
 
 	# fetch variables
 
@@ -9123,7 +9125,7 @@ param16Entry:
 	lw t1, 116(sp)
 
 	# push arr$24
-	sw t1, 32(sp)
+	sw t1, -32(sp)
 
 	# fetch variables
 
@@ -9131,7 +9133,7 @@ param16Entry:
 	lw t1, 104(sp)
 
 	# push arr$26
-	sw t1, 40(sp)
+	sw t1, -40(sp)
 
 	# fetch variables
 
@@ -9139,7 +9141,7 @@ param16Entry:
 	lw t1, 92(sp)
 
 	# push arr$28
-	sw t1, 48(sp)
+	sw t1, -48(sp)
 
 	# fetch variables
 
@@ -9147,7 +9149,7 @@ param16Entry:
 	lw t1, 80(sp)
 
 	# push arr$30
-	sw t1, 56(sp)
+	sw t1, -56(sp)
 
 	# fetch variables
 
@@ -9155,7 +9157,7 @@ param16Entry:
 	lw t1, 68(sp)
 
 	# push arr$32
-	sw t1, 64(sp)
+	sw t1, -64(sp)
 
 	# fetch variables
 
@@ -9163,7 +9165,7 @@ param16Entry:
 	lw t1, 64(sp)
 
 	# push a1$1
-	sw t1, 72(sp)
+	sw t1, -72(sp)
 
 	# fetch variables
 
@@ -9171,7 +9173,7 @@ param16Entry:
 	lw t1, 60(sp)
 
 	# push a2$1
-	sw t1, 80(sp)
+	sw t1, -80(sp)
 
 	# fetch variables
 
@@ -9179,7 +9181,7 @@ param16Entry:
 	lw t1, 56(sp)
 
 	# push a3$1
-	sw t1, 88(sp)
+	sw t1, -88(sp)
 
 	# fetch variables
 
@@ -9187,7 +9189,7 @@ param16Entry:
 	lw t1, 52(sp)
 
 	# push a4$1
-	sw t1, 96(sp)
+	sw t1, -96(sp)
 
 	# fetch variables
 
@@ -9195,7 +9197,7 @@ param16Entry:
 	lw t1, 48(sp)
 
 	# push a5$1
-	sw t1, 104(sp)
+	sw t1, -104(sp)
 
 	# fetch variables
 
@@ -9203,7 +9205,7 @@ param16Entry:
 	lw t1, 44(sp)
 
 	# push a6$1
-	sw t1, 112(sp)
+	sw t1, -112(sp)
 
 	# fetch variables
 
@@ -9211,7 +9213,7 @@ param16Entry:
 	lw t1, 40(sp)
 
 	# push a7$1
-	sw t1, 120(sp)
+	sw t1, -120(sp)
 
 	# fetch variables
 
@@ -9219,7 +9221,7 @@ param16Entry:
 	lw t1, 36(sp)
 
 	# push a8$1
-	sw t1, 128(sp)
+	sw t1, -128(sp)
 
 	# fetch variables
 
@@ -9227,7 +9229,7 @@ param16Entry:
 	lw t1, 32(sp)
 
 	# push a9$1
-	sw t1, 136(sp)
+	sw t1, -136(sp)
 
 	# fetch variables
 
@@ -9235,7 +9237,7 @@ param16Entry:
 	lw t1, 28(sp)
 
 	# push a10$1
-	sw t1, 144(sp)
+	sw t1, -144(sp)
 
 	# fetch variables
 
@@ -9243,7 +9245,7 @@ param16Entry:
 	lw t1, 24(sp)
 
 	# push a11$1
-	sw t1, 152(sp)
+	sw t1, -152(sp)
 
 	# fetch variables
 
@@ -9251,7 +9253,7 @@ param16Entry:
 	lw t1, 20(sp)
 
 	# push a12$1
-	sw t1, 160(sp)
+	sw t1, -160(sp)
 
 	# fetch variables
 
@@ -9259,7 +9261,7 @@ param16Entry:
 	lw t1, 16(sp)
 
 	# push a13$1
-	sw t1, 168(sp)
+	sw t1, -168(sp)
 
 	# fetch variables
 
@@ -9267,7 +9269,7 @@ param16Entry:
 	lw t1, 12(sp)
 
 	# push a14$1
-	sw t1, 176(sp)
+	sw t1, -176(sp)
 
 	# fetch variables
 
@@ -9275,7 +9277,7 @@ param16Entry:
 	lw t1, 8(sp)
 
 	# push a15$1
-	sw t1, 184(sp)
+	sw t1, -184(sp)
 
 	# fetch variables
 
@@ -9283,8 +9285,9 @@ param16Entry:
 	lw t1, 4(sp)
 
 	# push a16$1
-	sw t1, 192(sp)
-	addi sp, sp, -192
+	sw t1, -192(sp)
+	li t4, -192
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9299,7 +9302,7 @@ param16Entry:
 
 	# release params
 	li t4, 192
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:param32_rec
 	sw a0, 0(sp)
@@ -9347,7 +9350,8 @@ mainEntry6:
 	sd t0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9362,7 +9366,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint
 	li t4, 1732
@@ -9370,7 +9374,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9385,7 +9390,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$1
 	li t4, 1728
@@ -9393,7 +9398,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9408,7 +9414,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$2
 	li t4, 1724
@@ -9416,7 +9422,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9431,7 +9438,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$3
 	li t4, 1720
@@ -9439,7 +9446,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9454,7 +9462,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$4
 	li t4, 1716
@@ -9462,7 +9470,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9477,7 +9486,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$5
 	li t4, 1712
@@ -9485,7 +9494,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9500,7 +9510,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$6
 	li t4, 1708
@@ -9508,7 +9518,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9523,7 +9534,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$7
 	li t4, 1704
@@ -9531,7 +9542,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9546,7 +9558,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$8
 	li t4, 1700
@@ -9554,7 +9566,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9569,7 +9582,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$9
 	li t4, 1696
@@ -9577,7 +9590,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9592,7 +9606,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$10
 	li t4, 1692
@@ -9600,7 +9614,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9615,7 +9630,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$11
 	li t4, 1688
@@ -9623,7 +9638,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9638,7 +9654,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$12
 	li t4, 1684
@@ -9646,7 +9662,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9661,7 +9678,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$13
 	li t4, 1680
@@ -9669,7 +9686,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9684,7 +9702,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$14
 	li t4, 1676
@@ -9692,7 +9710,8 @@ mainEntry6:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9707,7 +9726,7 @@ mainEntry6:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$15
 	li t4, 1672
@@ -9788,7 +9807,7 @@ mainEntry6:
 	lw t1, 0(t4)
 
 	# push getint$8
-	sw t1, 8(sp)
+	sw t1, -8(sp)
 
 	# fetch variables
 
@@ -9798,7 +9817,7 @@ mainEntry6:
 	lw t1, 0(t4)
 
 	# push getint$9
-	sw t1, 16(sp)
+	sw t1, -16(sp)
 
 	# fetch variables
 
@@ -9808,7 +9827,7 @@ mainEntry6:
 	lw t1, 0(t4)
 
 	# push getint$10
-	sw t1, 24(sp)
+	sw t1, -24(sp)
 
 	# fetch variables
 
@@ -9818,7 +9837,7 @@ mainEntry6:
 	lw t1, 0(t4)
 
 	# push getint$11
-	sw t1, 32(sp)
+	sw t1, -32(sp)
 
 	# fetch variables
 
@@ -9828,7 +9847,7 @@ mainEntry6:
 	lw t1, 0(t4)
 
 	# push getint$12
-	sw t1, 40(sp)
+	sw t1, -40(sp)
 
 	# fetch variables
 
@@ -9838,7 +9857,7 @@ mainEntry6:
 	lw t1, 0(t4)
 
 	# push getint$13
-	sw t1, 48(sp)
+	sw t1, -48(sp)
 
 	# fetch variables
 
@@ -9848,7 +9867,7 @@ mainEntry6:
 	lw t1, 0(t4)
 
 	# push getint$14
-	sw t1, 56(sp)
+	sw t1, -56(sp)
 
 	# fetch variables
 
@@ -9858,8 +9877,9 @@ mainEntry6:
 	lw t1, 0(t4)
 
 	# push getint$15
-	sw t1, 64(sp)
-	addi sp, sp, -64
+	sw t1, -64(sp)
+	li t4, -64
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9874,7 +9894,7 @@ mainEntry6:
 
 	# release params
 	li t4, 64
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:param16
 	li t4, 1668
@@ -14690,7 +14710,7 @@ next_22:
 	ld t1, 372(sp)
 
 	# push arr$23
-	sd t1, 8(sp)
+	sd t1, -8(sp)
 
 	# fetch variables
 
@@ -14698,7 +14718,7 @@ next_22:
 	ld t1, 356(sp)
 
 	# push arr$25
-	sd t1, 16(sp)
+	sd t1, -16(sp)
 
 	# fetch variables
 
@@ -14706,7 +14726,7 @@ next_22:
 	ld t1, 340(sp)
 
 	# push arr$27
-	sd t1, 24(sp)
+	sd t1, -24(sp)
 
 	# fetch variables
 
@@ -14714,7 +14734,7 @@ next_22:
 	ld t1, 324(sp)
 
 	# push arr$29
-	sd t1, 32(sp)
+	sd t1, -32(sp)
 
 	# fetch variables
 
@@ -14722,7 +14742,7 @@ next_22:
 	ld t1, 308(sp)
 
 	# push arr$31
-	sd t1, 40(sp)
+	sd t1, -40(sp)
 
 	# fetch variables
 
@@ -14730,7 +14750,7 @@ next_22:
 	ld t1, 292(sp)
 
 	# push arr$33
-	sd t1, 48(sp)
+	sd t1, -48(sp)
 
 	# fetch variables
 
@@ -14738,7 +14758,7 @@ next_22:
 	ld t1, 276(sp)
 
 	# push arr$35
-	sd t1, 56(sp)
+	sd t1, -56(sp)
 
 	# fetch variables
 
@@ -14746,7 +14766,7 @@ next_22:
 	ld t1, 260(sp)
 
 	# push arr$37
-	sd t1, 64(sp)
+	sd t1, -64(sp)
 
 	# fetch variables
 
@@ -14754,7 +14774,7 @@ next_22:
 	ld t1, 244(sp)
 
 	# push arr$39
-	sd t1, 72(sp)
+	sd t1, -72(sp)
 
 	# fetch variables
 
@@ -14762,7 +14782,7 @@ next_22:
 	ld t1, 228(sp)
 
 	# push arr$41
-	sd t1, 80(sp)
+	sd t1, -80(sp)
 
 	# fetch variables
 
@@ -14770,7 +14790,7 @@ next_22:
 	ld t1, 212(sp)
 
 	# push arr$43
-	sd t1, 88(sp)
+	sd t1, -88(sp)
 
 	# fetch variables
 
@@ -14778,7 +14798,7 @@ next_22:
 	ld t1, 196(sp)
 
 	# push arr$45
-	sd t1, 96(sp)
+	sd t1, -96(sp)
 
 	# fetch variables
 
@@ -14786,7 +14806,7 @@ next_22:
 	ld t1, 180(sp)
 
 	# push arr$47
-	sd t1, 104(sp)
+	sd t1, -104(sp)
 
 	# fetch variables
 
@@ -14794,7 +14814,7 @@ next_22:
 	ld t1, 164(sp)
 
 	# push arr$49
-	sd t1, 112(sp)
+	sd t1, -112(sp)
 
 	# fetch variables
 
@@ -14802,7 +14822,7 @@ next_22:
 	ld t1, 148(sp)
 
 	# push arr$51
-	sd t1, 120(sp)
+	sd t1, -120(sp)
 
 	# fetch variables
 
@@ -14810,7 +14830,7 @@ next_22:
 	ld t1, 132(sp)
 
 	# push arr$53
-	sd t1, 128(sp)
+	sd t1, -128(sp)
 
 	# fetch variables
 
@@ -14818,7 +14838,7 @@ next_22:
 	ld t1, 116(sp)
 
 	# push arr$55
-	sd t1, 136(sp)
+	sd t1, -136(sp)
 
 	# fetch variables
 
@@ -14826,7 +14846,7 @@ next_22:
 	ld t1, 100(sp)
 
 	# push arr$57
-	sd t1, 144(sp)
+	sd t1, -144(sp)
 
 	# fetch variables
 
@@ -14834,7 +14854,7 @@ next_22:
 	ld t1, 84(sp)
 
 	# push arr$59
-	sd t1, 152(sp)
+	sd t1, -152(sp)
 
 	# fetch variables
 
@@ -14842,7 +14862,7 @@ next_22:
 	ld t1, 68(sp)
 
 	# push arr$61
-	sd t1, 160(sp)
+	sd t1, -160(sp)
 
 	# fetch variables
 
@@ -14850,7 +14870,7 @@ next_22:
 	ld t1, 52(sp)
 
 	# push arr$63
-	sd t1, 168(sp)
+	sd t1, -168(sp)
 
 	# fetch variables
 
@@ -14858,7 +14878,7 @@ next_22:
 	ld t1, 36(sp)
 
 	# push arr$65
-	sd t1, 176(sp)
+	sd t1, -176(sp)
 
 	# fetch variables
 
@@ -14866,7 +14886,7 @@ next_22:
 	ld t1, 20(sp)
 
 	# push arr$67
-	sd t1, 184(sp)
+	sd t1, -184(sp)
 
 	# fetch variables
 
@@ -14874,8 +14894,9 @@ next_22:
 	ld t1, 4(sp)
 
 	# push arr$69
-	sd t1, 192(sp)
-	addi sp, sp, -192
+	sd t1, -192(sp)
+	li t4, -192
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -14890,7 +14911,7 @@ next_22:
 
 	# release params
 	li t4, 192
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:param32_arr
 	sw a0, 0(sp)
@@ -14902,7 +14923,8 @@ next_22:
 	# get address of local var:param32_arr
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -14917,14 +14939,15 @@ next_22:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -14939,7 +14962,7 @@ next_22:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# ret 
 

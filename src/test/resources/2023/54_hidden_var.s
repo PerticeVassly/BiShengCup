@@ -131,7 +131,8 @@ mainEntry19:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -146,7 +147,7 @@ mainEntry19:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load a$1 lv$1
 
@@ -170,7 +171,8 @@ mainEntry19:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -185,7 +187,7 @@ mainEntry19:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load a$2 lv
 
@@ -209,7 +211,8 @@ mainEntry19:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -224,14 +227,15 @@ mainEntry19:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -246,7 +250,7 @@ mainEntry19:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# br whileCond_58
 	j whileCond_58
@@ -446,7 +450,8 @@ next_108:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -461,14 +466,15 @@ next_108:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -483,7 +489,7 @@ next_108:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# gep c 
 
@@ -3671,7 +3677,8 @@ ifTrue_51:
 	# get address of local var:c$4
 	lw t1, 116(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3686,7 +3693,7 @@ ifTrue_51:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load b$1 lv$4
 
@@ -3770,7 +3777,8 @@ ifTrue_51:
 	# get address of local var:c$6
 	lw t1, 84(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3785,7 +3793,7 @@ ifTrue_51:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load b$2 lv$4
 
@@ -3869,7 +3877,8 @@ ifTrue_51:
 	# get address of local var:c$8
 	lw t1, 52(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3884,7 +3893,7 @@ ifTrue_51:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# br next_110
 	j next_110
@@ -3895,7 +3904,8 @@ next_110:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3910,7 +3920,7 @@ next_110:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load b$3 gv
 
@@ -3928,7 +3938,8 @@ next_110:
 	# get address of local var:b$3
 	lw t1, 48(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3943,14 +3954,15 @@ next_110:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3965,7 +3977,7 @@ next_110:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# gep c$9 
 
@@ -3998,7 +4010,8 @@ next_110:
 	# get address of local var:c$10
 	lw t1, 36(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4013,7 +4026,7 @@ next_110:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# gep c$11 
 
@@ -4046,7 +4059,8 @@ next_110:
 	# get address of local var:c$12
 	lw t1, 24(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4061,7 +4075,7 @@ next_110:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# gep c$13 
 
@@ -4094,7 +4108,8 @@ next_110:
 	# get address of local var:c$14
 	lw t1, 12(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4109,7 +4124,7 @@ next_110:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# gep c$15 
 
@@ -4142,7 +4157,8 @@ next_110:
 	# get address of local var:c$16
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4157,14 +4173,15 @@ next_110:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4179,7 +4196,7 @@ next_110:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# ret 
 

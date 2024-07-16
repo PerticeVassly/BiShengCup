@@ -74,7 +74,8 @@ mainEntry32:
 	# fetch variables
 	li t1, 32
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -89,7 +90,7 @@ mainEntry32:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# gep ptr_ 
 

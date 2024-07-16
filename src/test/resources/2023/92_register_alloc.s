@@ -567,7 +567,8 @@ funcEntry2:
 	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -582,7 +583,7 @@ funcEntry2:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint
 	li t4, 1664
@@ -605,7 +606,8 @@ funcEntry2:
 	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -620,7 +622,7 @@ funcEntry2:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$1
 	li t4, 1660
@@ -643,7 +645,8 @@ funcEntry2:
 	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -658,7 +661,7 @@ funcEntry2:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$2
 	li t4, 1656
@@ -681,7 +684,8 @@ funcEntry2:
 	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -696,7 +700,7 @@ funcEntry2:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint$3
 	li t4, 1652
@@ -7105,7 +7109,8 @@ mainEntry33:
 	sd t0, 36(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7120,7 +7125,7 @@ mainEntry33:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 28(sp)
@@ -7199,7 +7204,8 @@ mainEntry33:
 	# get address of local var:b
 	lw t1, 12(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7214,7 +7220,7 @@ mainEntry33:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func
 	sw a0, 8(sp)
@@ -7246,7 +7252,8 @@ mainEntry33:
 	# get address of local var:a$2
 	lw t1, 4(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7261,7 +7268,7 @@ mainEntry33:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load a$3 lv
 

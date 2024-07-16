@@ -351,7 +351,8 @@ ifFalse_19:
 	# get address of local var:y$1
 	ld t1, 124(sp)
 	mv a3, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -366,7 +367,7 @@ ifFalse_19:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:exgcd
 	sw a0, 120(sp)
@@ -849,7 +850,8 @@ mainEntry43:
 	# get address of local var:y
 	ld t1, 60(sp)
 	mv a3, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -864,7 +866,7 @@ mainEntry43:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:exgcd
 	sw a0, 56(sp)
@@ -1025,7 +1027,8 @@ mainEntry43:
 	# get address of local var:x$5
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1040,7 +1043,7 @@ mainEntry43:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# ret 
 

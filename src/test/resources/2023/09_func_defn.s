@@ -139,7 +139,8 @@ mainEntry22:
 	# get address of local var:a
 	lw t1, 8(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -154,7 +155,7 @@ mainEntry22:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func
 	sw a0, 4(sp)

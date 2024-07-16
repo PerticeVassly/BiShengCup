@@ -251,7 +251,8 @@ mainEntry2:
 	# save the parameters
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -266,7 +267,7 @@ mainEntry2:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:if_if_Else
 	sw a0, 0(sp)

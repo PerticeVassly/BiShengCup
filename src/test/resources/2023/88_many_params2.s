@@ -363,7 +363,8 @@ whileBody_70:
 	# get address of local var:b$1
 	lw t1, 108(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -378,7 +379,7 @@ whileBody_70:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load index$2 lv$9
 
@@ -421,7 +422,8 @@ next_134:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -436,7 +438,7 @@ next_134:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load c lv$2
 
@@ -491,7 +493,8 @@ next_134:
 	# get address of local var:d$1
 	lw t1, 76(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -506,14 +509,15 @@ next_134:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -528,7 +532,7 @@ next_134:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# br whileCond_71
 	j whileCond_71
@@ -850,7 +854,8 @@ mainEntry28:
 	# fetch variables
 	li t1, 16348
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -865,7 +870,7 @@ mainEntry28:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	#  ptr$1 lv$1
 
@@ -895,7 +900,8 @@ mainEntry28:
 	# fetch variables
 	li t1, 12508
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -910,7 +916,7 @@ mainEntry28:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# gep ptr_ 
 
@@ -1734,8 +1740,9 @@ mainEntry28:
 	lw t1, 56(sp)
 
 	# push b$14
-	sw t1, 8(sp)
-	addi sp, sp, -8
+	sw t1, -8(sp)
+	li t4, -8
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1750,7 +1757,7 @@ mainEntry28:
 
 	# release params
 	li t4, 8
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# get address of local var:func
 	sw a0, 52(sp)
@@ -1908,7 +1915,8 @@ whileBody_72:
 	# get address of local var:b$16
 	lw t1, 8(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1923,14 +1931,15 @@ whileBody_72:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 32
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1945,7 +1954,7 @@ whileBody_72:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# load ret$2 lv$2
 
@@ -1992,7 +2001,8 @@ next_136:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2007,7 +2017,7 @@ next_136:
 
 	# release params
 	li t4, 0
-	addi sp, sp, t4
+	add sp, sp, t4
 
 	# ret 
 
