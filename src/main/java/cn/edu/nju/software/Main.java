@@ -81,10 +81,12 @@ public class Main {
             assert false;
         }
 
-        PassManager passManager=new PassManager(module);
-        //TODO:调试完成后删除这句
-        passManager.setDbgFlag();
-        passManager.runPass();
+        if(optimized){
+            PassManager passManager=new PassManager(module);
+            //TODO:调试完成后删除这句
+            passManager.setDbgFlag();
+            passManager.runPass();
+        }
         if (emitLLVM) {
             module.dumpToFile(output);
         }

@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class TestBackEndIO {
-    private static final String DIR = "src/test/resources/2023/";
+    private static final String DIR = "src/test/resources/2023hidden/";
     private static final String DIR_PART = "src/test/resources/2023part/";
     private static final String SYLIB = "src/test/resources/sylib.ll";
     private static final String LINKED = "src/test/resources/linked.ll";
@@ -38,6 +38,7 @@ public class TestBackEndIO {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
+        if (Stream.of("23_json", "30_many_dimensions", "36_rotate", "38_light2d").anyMatch(name::equals)) fail();
         testFile(DIR, name);
     }
 
