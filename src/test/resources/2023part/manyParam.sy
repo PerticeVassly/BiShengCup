@@ -1,7 +1,0 @@
-int f(int ai, int bi, int ci, float af, float bf, float cf, float df, int ei, int fi, float gf){
-    return ai + bi + ci + af + bf + cf + df + ei + fi + gf;
-}
-
-int main(){
-    return f(1, 2, 3, 5.01, 6.01, 7.01, 8.01, 9, 10, 9.0);
-}
