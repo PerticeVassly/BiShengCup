@@ -97,15 +97,15 @@ ifElseIfEntry:
 	# get address of local var:cond_
 	sw t0, 104(sp)
 
-	# condBr cond_ ifTrue_315 secondCond_121
+	# condBr cond_ ifTrue_ secondCond_
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 104(sp)
-	beqz t1, secondCond_121
-	j ifTrue_315
-ifTrue_315:
+	beqz t1, secondCond_
+	j ifTrue_
+ifTrue_:
 
 	# load a$1 lv
 
@@ -129,7 +129,7 @@ ifTrue_315:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_116:
+ifFalse_:
 
 	# load b$1 lv$1
 
@@ -178,15 +178,15 @@ ifFalse_116:
 	# get address of local var:cond_$2
 	sw t0, 84(sp)
 
-	# condBr cond_$2 secondCond_122 ifFalse_117
+	# condBr cond_$2 secondCond_1 ifFalse_1
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	lw t1, 84(sp)
-	beqz t1, ifFalse_117
-	j secondCond_122
-next_546:
+	beqz t1, ifFalse_1
+	j secondCond_1
+next_:
 
 	# load a$6 lv
 
@@ -210,7 +210,7 @@ next_546:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-secondCond_121:
+secondCond_:
 
 	# load b lv$1
 
@@ -259,15 +259,15 @@ secondCond_121:
 	# get address of local var:cond_$1
 	sw t0, 64(sp)
 
-	# condBr cond_$1 ifTrue_315 ifFalse_116
+	# condBr cond_$1 ifTrue_ ifFalse_
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 64(sp)
-	beqz t1, ifFalse_116
-	j ifTrue_315
-ifTrue_316:
+	beqz t1, ifFalse_
+	j ifTrue_
+ifTrue_1:
 
 	# store lv 
 
@@ -278,9 +278,9 @@ ifTrue_316:
 	ld t3, 124(sp)
 	sw t1, 0(t3)
 
-	# br next_547
-	j next_547
-ifFalse_117:
+	# br next_1
+	j next_1
+ifFalse_1:
 
 	# load b$2 lv$1
 
@@ -329,19 +329,19 @@ ifFalse_117:
 	# get address of local var:cond_$4
 	sw t0, 48(sp)
 
-	# condBr cond_$4 secondCond_123 ifFalse_118
+	# condBr cond_$4 secondCond_2 ifFalse_2
 
 	# fetch variables
 
 	# get address of local var:cond_$4
 	lw t1, 48(sp)
-	beqz t1, ifFalse_118
-	j secondCond_123
-next_547:
+	beqz t1, ifFalse_2
+	j secondCond_2
+next_1:
 
-	# br next_546
-	j next_546
-secondCond_122:
+	# br next_
+	j next_
+secondCond_1:
 
 	# load a$2 lv
 
@@ -390,15 +390,15 @@ secondCond_122:
 	# get address of local var:cond_$3
 	sw t0, 32(sp)
 
-	# condBr cond_$3 ifTrue_316 ifFalse_117
+	# condBr cond_$3 ifTrue_1 ifFalse_1
 
 	# fetch variables
 
 	# get address of local var:cond_$3
 	lw t1, 32(sp)
-	beqz t1, ifFalse_117
-	j ifTrue_316
-ifTrue_317:
+	beqz t1, ifFalse_1
+	j ifTrue_1
+ifTrue_2:
 
 	# load a$4 lv
 
@@ -432,9 +432,9 @@ ifTrue_317:
 	ld t3, 124(sp)
 	sw t1, 0(t3)
 
-	# br next_548
-	j next_548
-ifFalse_118:
+	# br next_2
+	j next_2
+ifFalse_2:
 
 	# load a$5 lv
 
@@ -468,13 +468,13 @@ ifFalse_118:
 	ld t3, 124(sp)
 	sw t1, 0(t3)
 
-	# br next_548
-	j next_548
-next_548:
+	# br next_2
+	j next_2
+next_2:
 
-	# br next_547
-	j next_547
-secondCond_123:
+	# br next_1
+	j next_1
+secondCond_2:
 
 	# load a$3 lv
 
@@ -523,18 +523,18 @@ secondCond_123:
 	# get address of local var:cond_$5
 	sw t0, 0(sp)
 
-	# condBr cond_$5 ifTrue_317 ifFalse_118
+	# condBr cond_$5 ifTrue_2 ifFalse_2
 
 	# fetch variables
 
 	# get address of local var:cond_$5
 	lw t1, 0(sp)
-	beqz t1, ifFalse_118
-	j ifTrue_317
+	beqz t1, ifFalse_2
+	j ifTrue_2
 .type main, @function
 .globl main
 main:
-mainEntry75:
+mainEntry:
 
 	# reserve space
 	li t4, 4

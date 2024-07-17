@@ -169,15 +169,15 @@ is_spaceEntry:
 	# get address of local var:cond_
 	sw t0, 16(sp)
 
-	# condBr cond_ ifTrue_293 secondCond_113
+	# condBr cond_ ifTrue_20 secondCond_8
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 16(sp)
-	beqz t1, secondCond_113
-	j ifTrue_293
-ifTrue_293:
+	beqz t1, secondCond_8
+	j ifTrue_20
+ifTrue_20:
 
 	# ret 
 
@@ -190,7 +190,7 @@ ifTrue_293:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_112:
+ifFalse_11:
 
 	# ret 
 
@@ -203,7 +203,7 @@ ifFalse_112:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-secondCond_113:
+secondCond_8:
 
 	# load c$1 lv
 
@@ -252,14 +252,14 @@ secondCond_113:
 	# get address of local var:cond_$1
 	sw t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_293 ifFalse_112
+	# condBr cond_$1 ifTrue_20 ifFalse_11
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 0(sp)
-	beqz t1, ifFalse_112
-	j ifTrue_293
+	beqz t1, ifFalse_11
+	j ifTrue_20
 .type is_num, @function
 .globl is_num
 is_num:
@@ -344,15 +344,15 @@ is_numEntry:
 	# get address of local var:cond_
 	sw t0, 16(sp)
 
-	# condBr cond_ secondCond_114 ifFalse_113
+	# condBr cond_ secondCond_9 ifFalse_12
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 16(sp)
-	beqz t1, ifFalse_113
-	j secondCond_114
-ifTrue_294:
+	beqz t1, ifFalse_12
+	j secondCond_9
+ifTrue_21:
 
 	# ret 
 
@@ -365,7 +365,7 @@ ifTrue_294:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_113:
+ifFalse_12:
 
 	# ret 
 
@@ -378,7 +378,7 @@ ifFalse_113:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-secondCond_114:
+secondCond_9:
 
 	# load c$1 lv
 
@@ -428,14 +428,14 @@ secondCond_114:
 	# get address of local var:cond_$1
 	sw t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_294 ifFalse_113
+	# condBr cond_$1 ifTrue_21 ifFalse_12
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 0(sp)
-	beqz t1, ifFalse_113
-	j ifTrue_294
+	beqz t1, ifFalse_12
+	j ifTrue_21
 .type next_token, @function
 .globl next_token
 next_token:
@@ -452,9 +452,9 @@ next_tokenEntry:
 
 	# save the parameters
 
-	# br whileCond_208
-	j whileCond_208
-whileCond_208:
+	# br whileCond_20
+	j whileCond_20
+whileCond_20:
 
 	# load last_char gv
 
@@ -507,15 +507,15 @@ whileCond_208:
 	# get address of local var:cond_normalize_
 	sw t0, 68(sp)
 
-	# condBr cond_normalize_ whileBody_208 next_503
+	# condBr cond_normalize_ whileBody_20 next_42
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	lw t1, 68(sp)
-	beqz t1, next_503
-	j whileBody_208
-whileBody_208:
+	beqz t1, next_42
+	j whileBody_20
+whileBody_20:
 
 	# prepare params
 	li t4, 0
@@ -539,9 +539,9 @@ whileBody_208:
 	# get address of local var:next_char
 	sw a0, 64(sp)
 
-	# br whileCond_208
-	j whileCond_208
-next_503:
+	# br whileCond_20
+	j whileCond_20
+next_42:
 
 	# load last_char$1 gv
 
@@ -594,15 +594,15 @@ next_503:
 	# get address of local var:cond_normalize_$1
 	sw t0, 52(sp)
 
-	# condBr cond_normalize_$1 ifTrue_295 ifFalse_114
+	# condBr cond_normalize_$1 ifTrue_22 ifFalse_13
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$1
 	lw t1, 52(sp)
-	beqz t1, ifFalse_114
-	j ifTrue_295
-ifTrue_295:
+	beqz t1, ifFalse_13
+	j ifTrue_22
+ifTrue_22:
 
 	# load last_char$2 gv
 
@@ -636,9 +636,9 @@ ifTrue_295:
 	la t3, gv1
 	sw t1, 0(t3)
 
-	# br whileCond_209
-	j whileCond_209
-ifFalse_114:
+	# br whileCond_21
+	j whileCond_21
+ifFalse_13:
 
 	# load last_char$4 gv
 
@@ -691,9 +691,9 @@ ifFalse_114:
 	la t3, gv3
 	sw t1, 0(t3)
 
-	# br next_504
-	j next_504
-next_504:
+	# br next_43
+	j next_43
+next_43:
 
 	# load cur_token gv3
 
@@ -717,7 +717,7 @@ next_504:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_209:
+whileCond_21:
 
 	# prepare params
 	li t4, 0
@@ -783,15 +783,15 @@ whileCond_209:
 	# get address of local var:cond_normalize_$2
 	sw t0, 20(sp)
 
-	# condBr cond_normalize_$2 whileBody_209 next_505
+	# condBr cond_normalize_$2 whileBody_21 next_44
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$2
 	lw t1, 20(sp)
-	beqz t1, next_505
-	j whileBody_209
-whileBody_209:
+	beqz t1, next_44
+	j whileBody_21
+whileBody_21:
 
 	# load num gv1
 
@@ -860,9 +860,9 @@ whileBody_209:
 	la t3, gv1
 	sw t1, 0(t3)
 
-	# br whileCond_209
-	j whileCond_209
-next_505:
+	# br whileCond_21
+	j whileCond_21
+next_44:
 
 	# store gv3 
 
@@ -873,8 +873,8 @@ next_505:
 	la t3, gv3
 	sw t1, 0(t3)
 
-	# br next_504
-	j next_504
+	# br next_43
+	j next_43
 .type panic, @function
 .globl panic
 panic:
@@ -1147,15 +1147,15 @@ get_op_precEntry:
 	# get address of local var:cond_
 	sw t0, 64(sp)
 
-	# condBr cond_ ifTrue_296 secondCond_115
+	# condBr cond_ ifTrue_23 secondCond_10
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 64(sp)
-	beqz t1, secondCond_115
-	j ifTrue_296
-ifTrue_296:
+	beqz t1, secondCond_10
+	j ifTrue_23
+ifTrue_23:
 
 	# ret 
 
@@ -1168,7 +1168,7 @@ ifTrue_296:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_506:
+next_45:
 
 	# load op$2 lv
 
@@ -1217,15 +1217,15 @@ next_506:
 	# get address of local var:cond_$2
 	sw t0, 48(sp)
 
-	# condBr cond_$2 ifTrue_297 secondCond_117
+	# condBr cond_$2 ifTrue_24 secondCond_12
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	lw t1, 48(sp)
-	beqz t1, secondCond_117
-	j ifTrue_297
-secondCond_115:
+	beqz t1, secondCond_12
+	j ifTrue_24
+secondCond_10:
 
 	# load op$1 lv
 
@@ -1274,15 +1274,15 @@ secondCond_115:
 	# get address of local var:cond_$1
 	sw t0, 32(sp)
 
-	# condBr cond_$1 ifTrue_296 next_506
+	# condBr cond_$1 ifTrue_23 next_45
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 32(sp)
-	beqz t1, next_506
-	j ifTrue_296
-ifTrue_297:
+	beqz t1, next_45
+	j ifTrue_23
+ifTrue_24:
 
 	# ret 
 
@@ -1295,7 +1295,7 @@ ifTrue_297:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_507:
+next_46:
 
 	# ret 
 
@@ -1308,7 +1308,7 @@ next_507:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-secondCond_116:
+secondCond_11:
 
 	# load op$4 lv
 
@@ -1357,15 +1357,15 @@ secondCond_116:
 	# get address of local var:cond_$4
 	sw t0, 16(sp)
 
-	# condBr cond_$4 ifTrue_297 next_507
+	# condBr cond_$4 ifTrue_24 next_46
 
 	# fetch variables
 
 	# get address of local var:cond_$4
 	lw t1, 16(sp)
-	beqz t1, next_507
-	j ifTrue_297
-secondCond_117:
+	beqz t1, next_46
+	j ifTrue_24
+secondCond_12:
 
 	# load op$3 lv
 
@@ -1414,14 +1414,14 @@ secondCond_117:
 	# get address of local var:cond_$3
 	sw t0, 0(sp)
 
-	# condBr cond_$3 ifTrue_297 secondCond_116
+	# condBr cond_$3 ifTrue_24 secondCond_11
 
 	# fetch variables
 
 	# get address of local var:cond_$3
 	lw t1, 0(sp)
-	beqz t1, secondCond_116
-	j ifTrue_297
+	beqz t1, secondCond_11
+	j ifTrue_24
 .type stack_push, @function
 .globl stack_push
 stack_push:
@@ -2220,15 +2220,15 @@ eval_opEntry:
 	# get address of local var:cond_
 	sw t0, 124(sp)
 
-	# condBr cond_ ifTrue_298 next_508
+	# condBr cond_ ifTrue_25 next_47
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 124(sp)
-	beqz t1, next_508
-	j ifTrue_298
-ifTrue_298:
+	beqz t1, next_47
+	j ifTrue_25
+ifTrue_25:
 
 	# load lhs lv$1
 
@@ -2275,7 +2275,7 @@ ifTrue_298:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_508:
+next_47:
 
 	# load op$1 lv
 
@@ -2324,15 +2324,15 @@ next_508:
 	# get address of local var:cond_$1
 	sw t0, 96(sp)
 
-	# condBr cond_$1 ifTrue_299 next_509
+	# condBr cond_$1 ifTrue_26 next_48
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 96(sp)
-	beqz t1, next_509
-	j ifTrue_299
-ifTrue_299:
+	beqz t1, next_48
+	j ifTrue_26
+ifTrue_26:
 
 	# load lhs$1 lv$1
 
@@ -2379,7 +2379,7 @@ ifTrue_299:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_509:
+next_48:
 
 	# load op$2 lv
 
@@ -2428,15 +2428,15 @@ next_509:
 	# get address of local var:cond_$2
 	sw t0, 68(sp)
 
-	# condBr cond_$2 ifTrue_300 next_510
+	# condBr cond_$2 ifTrue_27 next_49
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	lw t1, 68(sp)
-	beqz t1, next_510
-	j ifTrue_300
-ifTrue_300:
+	beqz t1, next_49
+	j ifTrue_27
+ifTrue_27:
 
 	# load lhs$2 lv$1
 
@@ -2483,7 +2483,7 @@ ifTrue_300:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_510:
+next_49:
 
 	# load op$3 lv
 
@@ -2532,15 +2532,15 @@ next_510:
 	# get address of local var:cond_$3
 	sw t0, 40(sp)
 
-	# condBr cond_$3 ifTrue_301 next_511
+	# condBr cond_$3 ifTrue_28 next_50
 
 	# fetch variables
 
 	# get address of local var:cond_$3
 	lw t1, 40(sp)
-	beqz t1, next_511
-	j ifTrue_301
-ifTrue_301:
+	beqz t1, next_50
+	j ifTrue_28
+ifTrue_28:
 
 	# load lhs$3 lv$1
 
@@ -2587,7 +2587,7 @@ ifTrue_301:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_511:
+next_50:
 
 	# load op$4 lv
 
@@ -2636,15 +2636,15 @@ next_511:
 	# get address of local var:cond_$4
 	sw t0, 12(sp)
 
-	# condBr cond_$4 ifTrue_302 next_512
+	# condBr cond_$4 ifTrue_29 next_51
 
 	# fetch variables
 
 	# get address of local var:cond_$4
 	lw t1, 12(sp)
-	beqz t1, next_512
-	j ifTrue_302
-ifTrue_302:
+	beqz t1, next_51
+	j ifTrue_29
+ifTrue_29:
 
 	# load lhs$4 lv$1
 
@@ -2691,7 +2691,7 @@ ifTrue_302:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_512:
+next_51:
 
 	# ret 
 
@@ -2941,15 +2941,15 @@ evalEntry:
 	# get address of local var:cond_
 	sw t0, 320(sp)
 
-	# condBr cond_ ifTrue_303 next_513
+	# condBr cond_ ifTrue_30 next_52
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 320(sp)
-	beqz t1, next_513
-	j ifTrue_303
-ifTrue_303:
+	beqz t1, next_52
+	j ifTrue_30
+ifTrue_30:
 
 	# prepare params
 	li t4, 0
@@ -2986,7 +2986,7 @@ ifTrue_303:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_513:
+next_52:
 
 	# gep oprs 
 
@@ -3069,9 +3069,9 @@ next_513:
 	# get address of local var:next_token
 	sw a0, 300(sp)
 
-	# br whileCond_210
-	j whileCond_210
-whileCond_210:
+	# br whileCond_22
+	j whileCond_22
+whileCond_22:
 
 	# load cur_token$1 gv3
 
@@ -3120,15 +3120,15 @@ whileCond_210:
 	# get address of local var:cond_$1
 	sw t0, 284(sp)
 
-	# condBr cond_$1 whileBody_210 next_514
+	# condBr cond_$1 whileBody_22 next_53
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 284(sp)
-	beqz t1, next_514
-	j whileBody_210
-whileBody_210:
+	beqz t1, next_53
+	j whileBody_22
+whileBody_22:
 
 	# load other gv2
 
@@ -3242,15 +3242,15 @@ whileBody_210:
 	# get address of local var:cond_normalize_
 	sw t0, 256(sp)
 
-	# condBr cond_normalize_ ifTrue_304 next_515
+	# condBr cond_normalize_ ifTrue_31 next_54
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	lw t1, 256(sp)
-	beqz t1, next_515
-	j ifTrue_304
-next_514:
+	beqz t1, next_54
+	j ifTrue_31
+next_53:
 
 	# prepare params
 	li t4, 0
@@ -3274,16 +3274,16 @@ next_514:
 	# get address of local var:next_token$3
 	sw a0, 252(sp)
 
-	# br whileCond_212
-	j whileCond_212
-ifTrue_304:
+	# br whileCond_24
+	j whileCond_24
+ifTrue_31:
 
-	# br next_514
-	j next_514
+	# br next_53
+	j next_53
 
-	# br next_515
-	j next_515
-next_515:
+	# br next_54
+	j next_54
+next_54:
 
 	# prepare params
 	li t4, 0
@@ -3307,9 +3307,9 @@ next_515:
 	# get address of local var:next_token$1
 	sw a0, 248(sp)
 
-	# br whileCond_211
-	j whileCond_211
-whileCond_211:
+	# br whileCond_23
+	j whileCond_23
+whileCond_23:
 
 	# gep ops 
 
@@ -3372,15 +3372,15 @@ whileCond_211:
 	# get address of local var:cond_normalize_$1
 	sw t0, 232(sp)
 
-	# condBr cond_normalize_$1 secondCond_118 next_516
+	# condBr cond_normalize_$1 secondCond_13 next_55
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$1
 	lw t1, 232(sp)
-	beqz t1, next_516
-	j secondCond_118
-whileBody_211:
+	beqz t1, next_55
+	j secondCond_13
+whileBody_23:
 
 	# gep ops$2 
 
@@ -3685,9 +3685,9 @@ whileBody_211:
 	li t4, 0
 	add sp, sp, t4
 
-	# br whileCond_211
-	j whileCond_211
-next_516:
+	# br whileCond_23
+	j whileCond_23
+next_55:
 
 	# gep ops$3 
 
@@ -3798,15 +3798,15 @@ next_516:
 	# get address of local var:cond_$3
 	sw t0, 144(sp)
 
-	# condBr cond_$3 ifTrue_305 next_517
+	# condBr cond_$3 ifTrue_32 next_56
 
 	# fetch variables
 
 	# get address of local var:cond_$3
 	lw t1, 144(sp)
-	beqz t1, next_517
-	j ifTrue_305
-secondCond_118:
+	beqz t1, next_56
+	j ifTrue_32
+secondCond_13:
 
 	# gep ops$1 
 
@@ -3962,15 +3962,15 @@ secondCond_118:
 	# get address of local var:cond_$2
 	sw t0, 108(sp)
 
-	# condBr cond_$2 whileBody_211 next_516
+	# condBr cond_$2 whileBody_23 next_55
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	lw t1, 108(sp)
-	beqz t1, next_516
-	j whileBody_211
-ifTrue_305:
+	beqz t1, next_55
+	j whileBody_23
+ifTrue_32:
 
 	# prepare params
 	li t4, 0
@@ -4007,7 +4007,7 @@ ifTrue_305:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_517:
+next_56:
 
 	# gep oprs$4 
 
@@ -4090,9 +4090,9 @@ next_517:
 	# get address of local var:next_token$2
 	sw a0, 88(sp)
 
-	# br whileCond_210
-	j whileCond_210
-whileCond_212:
+	# br whileCond_22
+	j whileCond_22
+whileCond_24:
 
 	# gep ops$4 
 
@@ -4155,15 +4155,15 @@ whileCond_212:
 	# get address of local var:cond_normalize_$2
 	sw t0, 72(sp)
 
-	# condBr cond_normalize_$2 whileBody_212 next_518
+	# condBr cond_normalize_$2 whileBody_24 next_57
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$2
 	lw t1, 72(sp)
-	beqz t1, next_518
-	j whileBody_212
-whileBody_212:
+	beqz t1, next_57
+	j whileBody_24
+whileBody_24:
 
 	# gep ops$5 
 
@@ -4468,9 +4468,9 @@ whileBody_212:
 	li t4, 0
 	add sp, sp, t4
 
-	# br whileCond_212
-	j whileCond_212
-next_518:
+	# br whileCond_24
+	j whileCond_24
+next_57:
 
 	# gep oprs$8 
 
@@ -4535,7 +4535,7 @@ next_518:
 .type main, @function
 .globl main
 main:
-mainEntry63:
+mainEntry18:
 
 	# reserve space
 	li t4, 44
@@ -4627,9 +4627,9 @@ mainEntry63:
 	# get address of local var:next_token
 	sw a0, 20(sp)
 
-	# br whileCond_213
-	j whileCond_213
-whileCond_213:
+	# br whileCond_25
+	j whileCond_25
+whileCond_25:
 
 	# load count lv
 
@@ -4654,15 +4654,15 @@ whileCond_213:
 	# get address of local var:cond_normalize_
 	sw t0, 12(sp)
 
-	# condBr cond_normalize_ whileBody_213 next_519
+	# condBr cond_normalize_ whileBody_25 next_58
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	lw t1, 12(sp)
-	beqz t1, next_519
-	j whileBody_213
-whileBody_213:
+	beqz t1, next_58
+	j whileBody_25
+whileBody_25:
 
 	# prepare params
 	li t4, 0
@@ -4766,9 +4766,9 @@ whileBody_213:
 	ld t3, 36(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_213
-	j whileCond_213
-next_519:
+	# br whileCond_25
+	j whileCond_25
+next_58:
 
 	# ret 
 

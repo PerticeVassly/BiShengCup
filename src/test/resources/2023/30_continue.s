@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry12:
+mainEntry15:
 
 	# reserve space
 	li t4, 88
@@ -45,9 +45,9 @@ mainEntry12:
 	ld t3, 80(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_19
-	j whileCond_19
-whileCond_19:
+	# br whileCond_15
+	j whileCond_15
+whileCond_15:
 
 	# load i lv
 
@@ -95,15 +95,15 @@ whileCond_19:
 	# get address of local var:cond_
 	sw t0, 48(sp)
 
-	# condBr cond_ whileBody_19 next_35
+	# condBr cond_ whileBody_15 next_32
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 48(sp)
-	beqz t1, next_35
-	j whileBody_19
-whileBody_19:
+	beqz t1, next_32
+	j whileBody_15
+whileBody_15:
 
 	# load i$1 lv
 
@@ -152,15 +152,15 @@ whileBody_19:
 	# get address of local var:cond_$1
 	sw t0, 32(sp)
 
-	# condBr cond_$1 ifTrue_16 next_36
+	# condBr cond_$1 ifTrue_17 next_33
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 32(sp)
-	beqz t1, next_36
-	j ifTrue_16
-next_35:
+	beqz t1, next_33
+	j ifTrue_17
+next_32:
 
 	# load sum$1 lv$1
 
@@ -181,7 +181,7 @@ next_35:
 	li t4, 88
 	add sp, sp, t4
 	ret 
-ifTrue_16:
+ifTrue_17:
 
 	# load i$2 lv
 
@@ -215,12 +215,12 @@ ifTrue_16:
 	ld t3, 68(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_19
-	j whileCond_19
+	# br whileCond_15
+	j whileCond_15
 
-	# br next_36
-	j next_36
-next_36:
+	# br next_33
+	j next_33
+next_33:
 
 	# load sum lv$1
 
@@ -297,8 +297,8 @@ next_36:
 	ld t3, 68(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_19
-	j whileCond_19
+	# br whileCond_15
+	j whileCond_15
 
 memset32: 
     blez    a2, .LBB0_3 

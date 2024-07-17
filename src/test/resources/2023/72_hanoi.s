@@ -351,15 +351,15 @@ hanoiEntry:
 	# get address of local var:cond_
 	sw t0, 56(sp)
 
-	# condBr cond_ ifTrue_15 ifFalse_2
+	# condBr cond_ ifTrue_290 ifFalse_124
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 56(sp)
-	beqz t1, ifFalse_2
-	j ifTrue_15
-ifTrue_15:
+	beqz t1, ifFalse_124
+	j ifTrue_290
+ifTrue_290:
 
 	# load one lv$1
 
@@ -410,9 +410,9 @@ ifTrue_15:
 	li t4, 0
 	add sp, sp, t4
 
-	# br next_32
-	j next_32
-ifFalse_2:
+	# br next_493
+	j next_493
+ifFalse_124:
 
 	# load n$1 lv
 
@@ -645,9 +645,9 @@ ifFalse_2:
 	li t4, 0
 	add sp, sp, t4
 
-	# br next_32
-	j next_32
-next_32:
+	# br next_493
+	j next_493
+next_493:
 
 	# ret void
 	li t4, 136
@@ -659,7 +659,7 @@ next_32:
 .type main, @function
 .globl main
 main:
-mainEntry9:
+mainEntry70:
 
 	# reserve space
 	li t4, 44
@@ -707,9 +707,9 @@ mainEntry9:
 	ld t3, 36(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_17
-	j whileCond_17
-whileCond_17:
+	# br whileCond_203
+	j whileCond_203
+whileCond_203:
 
 	# load n lv
 
@@ -758,15 +758,15 @@ whileCond_17:
 	# get address of local var:cond_
 	sw t0, 12(sp)
 
-	# condBr cond_ whileBody_17 next_33
+	# condBr cond_ whileBody_203 next_494
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 12(sp)
-	beqz t1, next_33
-	j whileBody_17
-whileBody_17:
+	beqz t1, next_494
+	j whileBody_203
+whileBody_203:
 
 	# prepare params
 	li t4, 0
@@ -882,9 +882,9 @@ whileBody_17:
 	ld t3, 36(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_17
-	j whileCond_17
-next_33:
+	# br whileCond_203
+	j whileCond_203
+next_494:
 
 	# ret 
 

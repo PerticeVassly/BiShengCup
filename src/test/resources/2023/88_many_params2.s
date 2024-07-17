@@ -5,7 +5,7 @@
 .type func, @function
 .globl func
 func:
-funcEntry1:
+funcEntry4:
 
 	# reserve space
 	li t4, 340
@@ -222,9 +222,9 @@ funcEntry1:
 	ld t3, 284(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_70
-	j whileCond_70
-whileCond_70:
+	# br whileCond_228
+	j whileCond_228
+whileCond_228:
 
 	# load index lv$9
 
@@ -272,15 +272,15 @@ whileCond_70:
 	# get address of local var:cond_
 	sw t0, 144(sp)
 
-	# condBr cond_ whileBody_70 next_134
+	# condBr cond_ whileBody_228 next_535
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 144(sp)
-	beqz t1, next_134
-	j whileBody_70
-whileBody_70:
+	beqz t1, next_535
+	j whileBody_228
+whileBody_228:
 
 	# load a lv
 
@@ -413,9 +413,9 @@ whileBody_70:
 	ld t3, 284(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_70
-	j whileCond_70
-next_134:
+	# br whileCond_228
+	j whileCond_228
+next_535:
 
 	# prepare params
 
@@ -534,9 +534,9 @@ next_134:
 	li t4, 0
 	add sp, sp, t4
 
-	# br whileCond_71
-	j whileCond_71
-whileCond_71:
+	# br whileCond_229
+	j whileCond_229
+whileCond_229:
 
 	# load i lv$8
 
@@ -584,15 +584,15 @@ whileCond_71:
 	# get address of local var:cond_$1
 	sw t0, 60(sp)
 
-	# condBr cond_$1 whileBody_71 next_135
+	# condBr cond_$1 whileBody_229 next_536
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 60(sp)
-	beqz t1, next_135
-	j whileBody_71
-whileBody_71:
+	beqz t1, next_536
+	j whileBody_229
+whileBody_229:
 
 	# load i$1 lv$8
 
@@ -739,9 +739,9 @@ whileBody_71:
 	ld t3, 260(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_71
-	j whileCond_71
-next_135:
+	# br whileCond_229
+	j whileCond_229
+next_536:
 
 	# load e lv$4
 
@@ -791,7 +791,7 @@ next_135:
 .type main, @function
 .globl main
 main:
-mainEntry28:
+mainEntry75:
 
 	# reserve space
 	li t4, 29260
@@ -1787,9 +1787,9 @@ mainEntry28:
 	ld t3, 0(t4)
 	sw t1, 0(t3)
 
-	# br whileCond_72
-	j whileCond_72
-whileCond_72:
+	# br whileCond_230
+	j whileCond_230
+whileCond_230:
 
 	# load ret lv$2
 
@@ -1840,15 +1840,15 @@ whileCond_72:
 	# get address of local var:cond_
 	sw t0, 32(sp)
 
-	# condBr cond_ whileBody_72 next_136
+	# condBr cond_ whileBody_230 next_537
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 32(sp)
-	beqz t1, next_136
-	j whileBody_72
-whileBody_72:
+	beqz t1, next_537
+	j whileBody_230
+whileBody_230:
 
 	# load ret$1 lv$2
 
@@ -1992,9 +1992,9 @@ whileBody_72:
 	ld t3, 0(t4)
 	sw t1, 0(t3)
 
-	# br whileCond_72
-	j whileCond_72
-next_136:
+	# br whileCond_230
+	j whileCond_230
+next_537:
 
 	# prepare params
 

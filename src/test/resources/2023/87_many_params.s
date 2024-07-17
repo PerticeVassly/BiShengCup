@@ -90,9 +90,9 @@ sortEntry:
 	ld t3, 252(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_7
-	j whileCond_7
-whileCond_7:
+	# br whileCond_
+	j whileCond_
+whileCond_:
 
 	# load i lv$2
 
@@ -163,15 +163,15 @@ whileCond_7:
 	# get address of local var:cond_
 	sw t0, 196(sp)
 
-	# condBr cond_ whileBody_7 next_18
+	# condBr cond_ whileBody_ next_3
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 196(sp)
-	beqz t1, next_18
-	j whileBody_7
-whileBody_7:
+	beqz t1, next_3
+	j whileBody_
+whileBody_:
 
 	# load i$1 lv$2
 
@@ -205,9 +205,9 @@ whileBody_7:
 	ld t3, 264(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_8
-	j whileCond_8
-next_18:
+	# br whileCond_1
+	j whileCond_1
+next_3:
 
 	# ret void
 	li t4, 296
@@ -216,7 +216,7 @@ next_18:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_8:
+whileCond_1:
 
 	# load j lv$3
 
@@ -275,15 +275,15 @@ whileCond_8:
 	# get address of local var:cond_$1
 	sw t0, 168(sp)
 
-	# condBr cond_$1 whileBody_8 next_19
+	# condBr cond_$1 whileBody_1 next_4
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 168(sp)
-	beqz t1, next_19
-	j whileBody_8
-whileBody_8:
+	beqz t1, next_4
+	j whileBody_1
+whileBody_1:
 
 	# load i$2 lv$2
 
@@ -416,15 +416,15 @@ whileBody_8:
 	# get address of local var:cond_$2
 	sw t0, 108(sp)
 
-	# condBr cond_$2 ifTrue_11 next_20
+	# condBr cond_$2 ifTrue_3 next_5
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	lw t1, 108(sp)
-	beqz t1, next_20
-	j ifTrue_11
-next_19:
+	beqz t1, next_5
+	j ifTrue_3
+next_4:
 
 	# load i$5 lv$2
 
@@ -458,9 +458,9 @@ next_19:
 	ld t3, 252(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_7
-	j whileCond_7
-ifTrue_11:
+	# br whileCond_
+	j whileCond_
+ifTrue_3:
 
 	# load i$3 lv$2
 
@@ -670,9 +670,9 @@ ifTrue_11:
 	ld t3, 12(sp)
 	sw t1, 0(t3)
 
-	# br next_20
-	j next_20
-next_20:
+	# br next_5
+	j next_5
+next_5:
 
 	# load j$4 lv$3
 
@@ -706,8 +706,8 @@ next_20:
 	ld t3, 264(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_8
-	j whileCond_8
+	# br whileCond_1
+	j whileCond_1
 .type param32_rec, @function
 .globl param32_rec
 param32_rec:
@@ -1419,15 +1419,15 @@ param32_recEntry:
 	# get address of local var:cond_
 	sw t0, 148(sp)
 
-	# condBr cond_ ifTrue_12 ifFalse_1
+	# condBr cond_ ifTrue_4 ifFalse_3
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 148(sp)
-	beqz t1, ifFalse_1
-	j ifTrue_12
-ifTrue_12:
+	beqz t1, ifFalse_3
+	j ifTrue_4
+ifTrue_4:
 
 	# load a2 lv$1
 
@@ -1451,7 +1451,7 @@ ifTrue_12:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_1:
+ifFalse_3:
 
 	# load a1$1 lv
 
@@ -9323,7 +9323,7 @@ param16Entry:
 .type main, @function
 .globl main
 main:
-mainEntry6:
+mainEntry2:
 
 	# reserve space
 	li t4, 2012
@@ -13116,9 +13116,9 @@ mainEntry6:
 	ld t3, 0(t4)
 	sw t1, 0(t3)
 
-	# br whileCond_9
-	j whileCond_9
-whileCond_9:
+	# br whileCond_2
+	j whileCond_2
+whileCond_2:
 
 	# load i lv$1
 
@@ -13168,15 +13168,15 @@ whileCond_9:
 	# get address of local var:cond_
 	sw t0, 628(sp)
 
-	# condBr cond_ whileBody_9 next_22
+	# condBr cond_ whileBody_2 next_7
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 628(sp)
-	beqz t1, next_22
-	j whileBody_9
-whileBody_9:
+	beqz t1, next_7
+	j whileBody_2
+whileBody_2:
 
 	# load i$1 lv$1
 
@@ -13498,9 +13498,9 @@ whileBody_9:
 	ld t3, 0(t4)
 	sw t1, 0(t3)
 
-	# br whileCond_9
-	j whileCond_9
-next_22:
+	# br whileCond_2
+	j whileCond_2
+next_7:
 
 	# gep arr$6 
 

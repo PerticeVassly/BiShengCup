@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry53:
+mainEntry29:
 
 	# reserve space
 	li t4, 512
@@ -52,9 +52,9 @@ mainEntry53:
 	ld t3, 504(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_192
-	j whileCond_192
-whileCond_192:
+	# br whileCond_45
+	j whileCond_45
+whileCond_45:
 
 	# prepare params
 	li t4, 0
@@ -92,15 +92,15 @@ whileCond_192:
 	# get address of local var:cond_normalize_
 	sw t0, 72(sp)
 
-	# condBr cond_normalize_ whileBody_192 next_460
+	# condBr cond_normalize_ whileBody_45 next_79
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	lw t1, 72(sp)
-	beqz t1, next_460
-	j whileBody_192
-whileBody_192:
+	beqz t1, next_79
+	j whileBody_45
+whileBody_45:
 
 	# load i lv$1
 
@@ -195,13 +195,13 @@ whileBody_192:
 	ld t3, 492(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_192
-	j whileCond_192
-next_460:
+	# br whileCond_45
+	j whileCond_45
+next_79:
 
-	# br whileCond_193
-	j whileCond_193
-whileCond_193:
+	# br whileCond_46
+	j whileCond_46
+whileCond_46:
 
 	# load i$2 lv$1
 
@@ -226,15 +226,15 @@ whileCond_193:
 	# get address of local var:cond_normalize_$1
 	sw t0, 40(sp)
 
-	# condBr cond_normalize_$1 whileBody_193 next_461
+	# condBr cond_normalize_$1 whileBody_46 next_80
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$1
 	lw t1, 40(sp)
-	beqz t1, next_461
-	j whileBody_193
-whileBody_193:
+	beqz t1, next_80
+	j whileBody_46
+whileBody_46:
 
 	# load i$3 lv$1
 
@@ -339,9 +339,9 @@ whileBody_193:
 	ld t3, 504(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_193
-	j whileCond_193
-next_461:
+	# br whileCond_46
+	j whileCond_46
+next_80:
 
 	# load sum$1 lv$2
 

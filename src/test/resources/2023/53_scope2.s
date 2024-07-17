@@ -8,7 +8,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry34:
+mainEntry92:
 
 	# reserve space
 	li t4, 152
@@ -99,15 +99,15 @@ mainEntry34:
 	# get address of local var:cond_
 	sw t0, 88(sp)
 
-	# condBr cond_ ifTrue_64 next_137
+	# condBr cond_ ifTrue_348 next_627
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 88(sp)
-	beqz t1, next_137
-	j ifTrue_64
-ifTrue_64:
+	beqz t1, next_627
+	j ifTrue_348
+ifTrue_348:
 
 	# load k$1 gv
 
@@ -150,9 +150,9 @@ ifTrue_64:
 	ld t3, 108(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_73
-	j whileCond_73
-next_137:
+	# br whileCond_279
+	j whileCond_279
+next_627:
 
 	# load k$8 gv
 
@@ -173,7 +173,7 @@ next_137:
 	li t4, 152
 	add sp, sp, t4
 	ret 
-whileCond_73:
+whileCond_279:
 
 	# load k$2 lv
 
@@ -222,15 +222,15 @@ whileCond_73:
 	# get address of local var:cond_$1
 	sw t0, 60(sp)
 
-	# condBr cond_$1 whileBody_73 next_138
+	# condBr cond_$1 whileBody_279 next_628
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 60(sp)
-	beqz t1, next_138
-	j whileBody_73
-whileBody_73:
+	beqz t1, next_628
+	j whileBody_279
+whileBody_279:
 
 	# load k$3 lv
 
@@ -310,15 +310,15 @@ whileBody_73:
 	# get address of local var:cond_$2
 	sw t0, 36(sp)
 
-	# condBr cond_$2 ifTrue_65 next_139
+	# condBr cond_$2 ifTrue_349 next_629
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	lw t1, 36(sp)
-	beqz t1, next_139
-	j ifTrue_65
-next_138:
+	beqz t1, next_629
+	j ifTrue_349
+next_628:
 
 	# load k$7 lv
 
@@ -354,9 +354,9 @@ next_138:
 	li t4, 0
 	add sp, sp, t4
 
-	# br next_137
-	j next_137
-ifTrue_65:
+	# br next_627
+	j next_627
+ifTrue_349:
 
 	# store lv$1 
 
@@ -503,12 +503,12 @@ ifTrue_65:
 	ld t3, 108(sp)
 	sw t1, 0(t3)
 
-	# br next_139
-	j next_139
-next_139:
+	# br next_629
+	j next_629
+next_629:
 
-	# br whileCond_73
-	j whileCond_73
+	# br whileCond_279
+	j whileCond_279
 
 memset32: 
     blez    a2, .LBB0_3 

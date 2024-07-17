@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry67:
+mainEntry3:
 
 	# reserve space
 	li t4, 80
@@ -45,9 +45,9 @@ mainEntry67:
 	ld t3, 72(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_214
-	j whileCond_214
-whileCond_214:
+	# br whileCond_3
+	j whileCond_3
+whileCond_3:
 
 	# load i lv
 
@@ -95,15 +95,15 @@ whileCond_214:
 	# get address of local var:cond_
 	sw t0, 40(sp)
 
-	# condBr cond_ whileBody_214 next_520
+	# condBr cond_ whileBody_3 next_8
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 40(sp)
-	beqz t1, next_520
-	j whileBody_214
-whileBody_214:
+	beqz t1, next_8
+	j whileBody_3
+whileBody_3:
 
 	# load i$1 lv
 
@@ -152,15 +152,15 @@ whileBody_214:
 	# get address of local var:cond_$1
 	sw t0, 24(sp)
 
-	# condBr cond_$1 ifTrue_306 next_521
+	# condBr cond_$1 ifTrue_5 next_9
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 24(sp)
-	beqz t1, next_521
-	j ifTrue_306
-next_520:
+	beqz t1, next_9
+	j ifTrue_5
+next_8:
 
 	# load sum$1 lv$1
 
@@ -181,14 +181,14 @@ next_520:
 	li t4, 80
 	add sp, sp, t4
 	ret 
-ifTrue_306:
+ifTrue_5:
 
-	# br next_520
-	j next_520
+	# br next_8
+	j next_8
 
-	# br next_521
-	j next_521
-next_521:
+	# br next_9
+	j next_9
+next_9:
 
 	# load sum lv$1
 
@@ -265,8 +265,8 @@ next_521:
 	ld t3, 60(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_214
-	j whileCond_214
+	# br whileCond_3
+	j whileCond_3
 
 memset32: 
     blez    a2, .LBB0_3 

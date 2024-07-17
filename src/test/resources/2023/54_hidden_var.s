@@ -14,7 +14,7 @@ gv1:
 .type main, @function
 .globl main
 main:
-mainEntry19:
+mainEntry56:
 
 	# reserve space
 	li t4, 1584
@@ -252,9 +252,9 @@ mainEntry19:
 	li t4, 0
 	add sp, sp, t4
 
-	# br whileCond_58
-	j whileCond_58
-whileCond_58:
+	# br whileCond_182
+	j whileCond_182
+whileCond_182:
 
 	# load a$3 lv
 
@@ -318,7 +318,7 @@ whileCond_58:
 	add t4, sp, t4
 	sw t0, 0(t4)
 
-	# condBr cond_ whileBody_58 next_108
+	# condBr cond_ whileBody_182 next_451
 
 	# fetch variables
 
@@ -326,9 +326,9 @@ whileCond_58:
 	li t4, 1288
 	add t4, sp, t4
 	lw t1, 0(t4)
-	beqz t1, next_108
-	j whileBody_58
-whileBody_58:
+	beqz t1, next_451
+	j whileBody_182
+whileBody_182:
 
 	# store lv$2 
 
@@ -416,7 +416,7 @@ whileBody_58:
 	add t4, sp, t4
 	sw t0, 0(t4)
 
-	# condBr cond_normalize_ ifTrue_50 next_109
+	# condBr cond_normalize_ ifTrue_269 next_452
 
 	# fetch variables
 
@@ -424,9 +424,9 @@ whileBody_58:
 	li t4, 1272
 	add t4, sp, t4
 	lw t1, 0(t4)
-	beqz t1, next_109
-	j ifTrue_50
-next_108:
+	beqz t1, next_452
+	j ifTrue_269
+next_451:
 
 	# load a$6 lv
 
@@ -1404,26 +1404,26 @@ next_108:
 	# get address of local var:cond_normalize_$1
 	sw t0, 988(sp)
 
-	# condBr cond_normalize_$1 ifTrue_51 next_110
+	# condBr cond_normalize_$1 ifTrue_270 next_453
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$1
 	lw t1, 988(sp)
-	beqz t1, next_110
-	j ifTrue_51
-ifTrue_50:
+	beqz t1, next_453
+	j ifTrue_270
+ifTrue_269:
 
-	# br next_108
-	j next_108
+	# br next_451
+	j next_451
 
-	# br next_109
-	j next_109
-next_109:
+	# br next_452
+	j next_452
+next_452:
 
-	# br whileCond_58
-	j whileCond_58
-ifTrue_51:
+	# br whileCond_182
+	j whileCond_182
+ifTrue_270:
 
 	# gep ptr_$16 
 
@@ -3895,9 +3895,9 @@ ifTrue_51:
 	li t4, 0
 	add sp, sp, t4
 
-	# br next_110
-	j next_110
-next_110:
+	# br next_453
+	j next_453
+next_453:
 
 	# prepare params
 
