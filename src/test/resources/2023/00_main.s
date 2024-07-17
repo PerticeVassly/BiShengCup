@@ -5,13 +5,36 @@
 .type main, @function
 .globl main
 main:
-mainEntry98:
+mainEntry:
 
 	# reserve space
 	li t4, 0
 	sub sp, sp, t4
 
 	# save the parameters
+
+	# prepare params
+
+	# fetch variables
+	li t1, 65
+	mv a0, t1
+	li t4, 0
+	add sp, sp, t4
+
+	# save caller saved regs
+	addi sp, sp, -8
+	sd ra, 0(sp)
+
+	# call putch
+	call putch
+
+	# restore caller saved regs
+	ld ra, 0(sp)
+	addi sp, sp, 8
+
+	# release params
+	li t4, 0
+	add sp, sp, t4
 
 	# ret 
 

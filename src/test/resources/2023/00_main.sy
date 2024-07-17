@@ -1,3 +1,4 @@
 int main(){
+putch(65);
     return 3;
 }
