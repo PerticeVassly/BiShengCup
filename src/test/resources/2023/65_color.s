@@ -966,7 +966,8 @@ ifTrue_76:
 	# fetch variables
 	li t1, 2
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -980,7 +981,8 @@ ifTrue_76:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:equal
 	sw a0, 476(sp)
@@ -1091,7 +1093,8 @@ ifTrue_76:
 	# fetch variables
 	li t1, 1
 	mv a5, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1105,7 +1108,8 @@ ifTrue_76:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:dfs
 	sw a0, 444(sp)
@@ -1236,7 +1240,8 @@ ifTrue_77:
 	# fetch variables
 	li t1, 3
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1250,7 +1255,8 @@ ifTrue_77:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:equal$1
 	sw a0, 408(sp)
@@ -1373,7 +1379,8 @@ ifTrue_77:
 	# fetch variables
 	li t1, 2
 	mv a5, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1387,7 +1394,8 @@ ifTrue_77:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:dfs$1
 	sw a0, 372(sp)
@@ -1518,7 +1526,8 @@ ifTrue_78:
 	# fetch variables
 	li t1, 4
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1532,7 +1541,8 @@ ifTrue_78:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:equal$2
 	sw a0, 336(sp)
@@ -1655,7 +1665,8 @@ ifTrue_78:
 	# fetch variables
 	li t1, 3
 	mv a5, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1669,7 +1680,8 @@ ifTrue_78:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:dfs$2
 	sw a0, 300(sp)
@@ -1800,7 +1812,8 @@ ifTrue_79:
 	# fetch variables
 	li t1, 5
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1814,7 +1827,8 @@ ifTrue_79:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:equal$3
 	sw a0, 264(sp)
@@ -1937,7 +1951,8 @@ ifTrue_79:
 	# fetch variables
 	li t1, 4
 	mv a5, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1951,7 +1966,8 @@ ifTrue_79:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:dfs$3
 	sw a0, 228(sp)
@@ -2166,7 +2182,8 @@ ifTrue_80:
 	# fetch variables
 	li t1, 5
 	mv a5, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2180,7 +2197,8 @@ ifTrue_80:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:dfs$4
 	sw a0, 168(sp)
@@ -2694,7 +2712,8 @@ mainEntry33:
 	sd t0, 396(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2708,7 +2727,8 @@ mainEntry33:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 388(sp)
@@ -3636,7 +3656,8 @@ whileBody_88:
 	sd t0, 140(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3650,7 +3671,8 @@ whileBody_88:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 136(sp)
@@ -3993,7 +4015,8 @@ next_169:
 	# fetch variables
 	li t1, 0
 	mv a5, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4007,7 +4030,8 @@ next_169:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:dfs
 	sw a0, 8(sp)
@@ -4039,7 +4063,8 @@ next_169:
 	# get address of local var:ans
 	lw t1, 4(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4053,7 +4078,8 @@ next_169:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load ans$1 lv$7
 

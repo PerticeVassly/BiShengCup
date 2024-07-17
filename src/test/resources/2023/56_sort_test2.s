@@ -980,7 +980,8 @@ mainEntry2:
 	# get address of local var:a$10
 	ld t1, 56(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -994,7 +995,8 @@ mainEntry2:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:insertsort
 	sw a0, 52(sp)
@@ -1145,7 +1147,8 @@ whileBody_8:
 	# get address of local var:tmp
 	lw t1, 12(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1159,7 +1162,8 @@ whileBody_8:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# store lv$2 
 
@@ -1186,7 +1190,8 @@ whileBody_8:
 	# get address of local var:tmp$1
 	lw t1, 8(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1200,7 +1205,8 @@ whileBody_8:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load i$2 lv$1
 

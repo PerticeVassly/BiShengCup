@@ -2018,7 +2018,8 @@ ifFalse_27:
 
 	# push 
 	sw t1, -192(sp)
-	addi sp, sp, -192
+	li t4, -192
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2032,7 +2033,8 @@ ifFalse_27:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 192
+	li t4, 192
+	add sp, sp, t4
 
 	# get address of local var:param32_rec
 	sw a0, 0(sp)
@@ -8465,7 +8467,8 @@ param16Entry:
 	# fetch variables
 	li t1, 16
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8479,7 +8482,8 @@ param16Entry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# gep arr$1 
 
@@ -9282,7 +9286,8 @@ param16Entry:
 
 	# push a16$1
 	sw t1, -192(sp)
-	addi sp, sp, -192
+	li t4, -192
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9296,7 +9301,8 @@ param16Entry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 192
+	li t4, 192
+	add sp, sp, t4
 
 	# get address of local var:param32_rec
 	sw a0, 0(sp)
@@ -9344,7 +9350,8 @@ mainEntry34:
 	sd t0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9358,7 +9365,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint
 	li t4, 1732
@@ -9366,7 +9374,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9380,7 +9389,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$1
 	li t4, 1728
@@ -9388,7 +9398,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9402,7 +9413,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$2
 	li t4, 1724
@@ -9410,7 +9422,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9424,7 +9437,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$3
 	li t4, 1720
@@ -9432,7 +9446,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9446,7 +9461,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$4
 	li t4, 1716
@@ -9454,7 +9470,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9468,7 +9485,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$5
 	li t4, 1712
@@ -9476,7 +9494,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9490,7 +9509,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$6
 	li t4, 1708
@@ -9498,7 +9518,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9512,7 +9533,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$7
 	li t4, 1704
@@ -9520,7 +9542,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9534,7 +9557,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$8
 	li t4, 1700
@@ -9542,7 +9566,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9556,7 +9581,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$9
 	li t4, 1696
@@ -9564,7 +9590,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9578,7 +9605,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$10
 	li t4, 1692
@@ -9586,7 +9614,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9600,7 +9629,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$11
 	li t4, 1688
@@ -9608,7 +9638,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9622,7 +9653,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$12
 	li t4, 1684
@@ -9630,7 +9662,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9644,7 +9677,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$13
 	li t4, 1680
@@ -9652,7 +9686,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9666,7 +9701,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$14
 	li t4, 1676
@@ -9674,7 +9710,8 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9688,7 +9725,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$15
 	li t4, 1672
@@ -9840,7 +9878,8 @@ mainEntry34:
 
 	# push getint$15
 	sw t1, -64(sp)
-	addi sp, sp, -64
+	li t4, -64
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9854,7 +9893,8 @@ mainEntry34:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 64
+	li t4, 64
+	add sp, sp, t4
 
 	# get address of local var:param16
 	li t4, 1668
@@ -14855,7 +14895,8 @@ next_174:
 
 	# push arr$69
 	sd t1, -192(sp)
-	addi sp, sp, -192
+	li t4, -192
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -14869,7 +14910,8 @@ next_174:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 192
+	li t4, 192
+	add sp, sp, t4
 
 	# get address of local var:param32_arr
 	sw a0, 0(sp)
@@ -14881,7 +14923,8 @@ next_174:
 	# get address of local var:param32_arr
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -14895,14 +14938,16 @@ next_174:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -14916,7 +14961,8 @@ next_174:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# ret 
 

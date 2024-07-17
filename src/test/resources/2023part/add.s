@@ -183,7 +183,8 @@ mainEntry15:
 	# fetch variables
 	li t1, 1
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -197,7 +198,8 @@ mainEntry15:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:add
 	sd a0, 0(sp)

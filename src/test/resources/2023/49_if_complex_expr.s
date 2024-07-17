@@ -189,7 +189,8 @@ ifTrue_46:
 	# get address of local var:result
 	lw t1, 132(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -203,7 +204,8 @@ ifTrue_46:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_98
 	j next_98
@@ -498,7 +500,8 @@ ifTrue_47:
 	# get address of local var:result$1
 	lw t1, 52(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -512,7 +515,8 @@ ifTrue_47:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_99
 	j next_99

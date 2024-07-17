@@ -267,7 +267,8 @@ f1Entry:
 	# get address of local var:i$1
 	ld t1, 40(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -281,7 +282,8 @@ f1Entry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:g1
 	sd a0, 32(sp)
@@ -317,7 +319,8 @@ f1Entry:
 	# get address of local var:j$1
 	ld t1, 16(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -331,7 +334,8 @@ f1Entry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:g1$1
 	sd a0, 8(sp)
@@ -383,7 +387,8 @@ mainEntry16:
 	# fetch variables
 	li t1, 1
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -397,7 +402,8 @@ mainEntry16:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:f1
 	sd a0, 8(sp)
@@ -413,7 +419,8 @@ mainEntry16:
 	# get address of local var:f1
 	ld t1, 8(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -427,7 +434,8 @@ mainEntry16:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:g1
 	sd a0, 0(sp)

@@ -3091,7 +3091,8 @@ mainEntry84:
 	# get address of local var:a7
 	lw t1, 216(sp)
 	mv a7, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3105,7 +3106,8 @@ mainEntry84:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:testParam8
 	sw a0, 212(sp)
@@ -3137,7 +3139,8 @@ mainEntry84:
 	# get address of local var:a0$1
 	lw t1, 208(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3151,7 +3154,8 @@ mainEntry84:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load a32 gv32
 
@@ -3410,7 +3414,8 @@ mainEntry84:
 
 	# push a15
 	sw t1, -64(sp)
-	addi sp, sp, -64
+	li t4, -64
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3424,7 +3429,8 @@ mainEntry84:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 64
+	li t4, 64
+	add sp, sp, t4
 
 	# get address of local var:testParam16
 	sw a0, 140(sp)
@@ -3456,7 +3462,8 @@ mainEntry84:
 	# get address of local var:a0$2
 	lw t1, 136(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3470,7 +3477,8 @@ mainEntry84:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load a0$3 gv
 
@@ -4001,7 +4009,8 @@ mainEntry84:
 
 	# push a31
 	sw t1, -192(sp)
-	addi sp, sp, -192
+	li t4, -192
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4015,7 +4024,8 @@ mainEntry84:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 192
+	li t4, 192
+	add sp, sp, t4
 
 	# get address of local var:testParam32
 	sw a0, 4(sp)
@@ -4047,7 +4057,8 @@ mainEntry84:
 	# get address of local var:a0$4
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4061,7 +4072,8 @@ mainEntry84:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# ret 
 

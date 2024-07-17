@@ -336,7 +336,8 @@ next_585:
 	# get address of local var:k$7
 	lw t1, 32(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -350,7 +351,8 @@ next_585:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_584
 	j next_584

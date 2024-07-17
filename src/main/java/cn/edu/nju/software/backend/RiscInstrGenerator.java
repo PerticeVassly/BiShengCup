@@ -406,7 +406,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
             case "ogt":
                 riscInstructions.add(new RiscFles(new Register("t0"), new Register("ft1"), new Register("ft2")));
-                riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("ft0")));
+                riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("t0")));
                 break;
 
             case "olt":
@@ -414,12 +414,12 @@ public class RiscInstrGenerator implements InstructionVisitor {
                 break;
 
             case "oge":
-                riscInstructions.add(new RiscFlts(new Register("t0"), new Register("ft2"), new Register("ft1")));
+                riscInstructions.add(new RiscFlts(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("t0")));
                 break;
 
             case "ole":
-                riscInstructions.add(new RiscFles(new Register("t0"), new Register("ft2"), new Register("ft1")));
+                riscInstructions.add(new RiscFles(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 break;
 
         }
@@ -588,17 +588,18 @@ public class RiscInstrGenerator implements InstructionVisitor {
             }
         }
 
-        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L * order)));
+        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(-8L * order)));
+        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
     }
 
     private void pushIntoStack(ValueRef realParam, int order){
         insertComment("push " + realParam.getName());
         if(realParam.getType() instanceof IntType){
-            riscInstructions.add(new RiscSw(new Register("t1"), new IndirectRegister("sp", -8 * order)));
+            riscInstructions.add(new RiscSw(new Register("t1"),allocator.getRegWithOffset(-order * 8, "sp", "t4")));
         } else if(realParam.getType() instanceof FloatType){
-            riscInstructions.add(new RiscFsw(new Register("ft1"), new IndirectRegister("sp", -8 * order)));
+            riscInstructions.add(new RiscFsw(new Register("ft1"), allocator.getRegWithOffset(-order * 8, "sp", "t4")));
         } else if(realParam.getType() instanceof Pointer){
-            riscInstructions.add(new RiscSd(new Register("t1"), new IndirectRegister("sp", -8 * order)));
+            riscInstructions.add(new RiscSd(new Register("t1"), allocator.getRegWithOffset(-order * 8, "sp", "t4")));
         } else {
             assert false;
         }
@@ -611,7 +612,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
         int floatParamNum = call.getRealParams().stream().filter(x -> x.getType() instanceof FloatType).toArray().length;
 
         int finalToRelase =Math.max(intAndPointerParamNum - RiscSpecifications.getArgRegs().length, 0) + Math.max(floatParamNum - RiscSpecifications.getFArgRegs().length, 0);
-        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(8L * finalToRelase)));
+        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(8L * finalToRelase)));
+        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
     }
 
     private void saveCallerSavedRegs() {
