@@ -1170,7 +1170,8 @@ ifTrue_327:
 	# get address of local var:ans$1
 	lw t1, 292(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1184,7 +1185,8 @@ ifTrue_327:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_564
 	j next_564
@@ -1615,7 +1617,8 @@ next_566:
 	# get address of local var:ans$3
 	lw t1, 180(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1629,7 +1632,8 @@ next_566:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_565
 	j next_565
@@ -1907,7 +1911,8 @@ next_568:
 	# get address of local var:ans$6
 	lw t1, 108(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1921,7 +1926,8 @@ next_568:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_567
 	j next_567
@@ -2305,7 +2311,8 @@ mainEntry78:
 	# fetch variables
 	li t1, 9
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2319,7 +2326,8 @@ mainEntry78:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:long_array
 	sw a0, 0(sp)

@@ -238,7 +238,7 @@ public class Allocator {
      */
     public Operand getRegWithOffset(int immediate, String baseReg, String destReg) {
         assert !baseReg.equals(destReg);// not same
-        if(immediate >= 1024){
+        if(immediate >= 1024 || immediate <= -1024){
             generator.addInstruction(new RiscLi(new Register(destReg), new ImmediateValue(immediate)));
             generator.addInstruction(new RiscAdd(new Register(destReg), new Register(baseReg), new Register(destReg)));
             return new IndirectRegister(destReg,0);

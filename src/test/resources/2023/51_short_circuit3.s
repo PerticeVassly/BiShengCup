@@ -317,7 +317,8 @@ mainEntry55:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -331,7 +332,8 @@ mainEntry55:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:set_a
 	sw a0, 448(sp)
@@ -380,7 +382,8 @@ next_466:
 	# get address of local var:a
 	lw t1, 440(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -394,14 +397,16 @@ next_466:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 32
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -415,7 +420,8 @@ next_466:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load b gv1
 
@@ -433,7 +439,8 @@ next_466:
 	# get address of local var:b
 	lw t1, 436(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -447,14 +454,16 @@ next_466:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 32
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -468,7 +477,8 @@ next_466:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# store gv 
 
@@ -493,7 +503,8 @@ next_466:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -507,7 +518,8 @@ next_466:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:set_a$1
 	sw a0, 432(sp)
@@ -541,7 +553,8 @@ secondCond_99:
 	# fetch variables
 	li t1, 1
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -555,7 +568,8 @@ secondCond_99:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:set_b
 	sw a0, 424(sp)
@@ -604,7 +618,8 @@ next_467:
 	# get address of local var:a$1
 	lw t1, 416(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -618,14 +633,16 @@ next_467:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 32
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -639,7 +656,8 @@ next_467:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load b$1 gv1
 
@@ -657,7 +675,8 @@ next_467:
 	# get address of local var:b$1
 	lw t1, 412(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -671,14 +690,16 @@ next_467:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -692,7 +713,8 @@ next_467:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# store gv2 
 
@@ -754,7 +776,8 @@ secondCond_100:
 	# fetch variables
 	li t1, 1
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -768,7 +791,8 @@ secondCond_100:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:set_b$1
 	sw a0, 396(sp)
@@ -817,7 +841,8 @@ next_468:
 	# get address of local var:d
 	lw t1, 388(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -831,14 +856,16 @@ next_468:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 32
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -852,7 +879,8 @@ next_468:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# ICMP cond_le_tmp_   
 
@@ -906,7 +934,8 @@ secondCond_101:
 	# fetch variables
 	li t1, 3
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -920,7 +949,8 @@ secondCond_101:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:set_d
 	sw a0, 372(sp)
@@ -969,7 +999,8 @@ next_469:
 	# get address of local var:d$1
 	lw t1, 364(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -983,14 +1014,16 @@ next_469:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1004,7 +1037,8 @@ next_469:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# ICMP cond_ge_tmp_$1   
 
@@ -1057,7 +1091,8 @@ secondCond_102:
 	# fetch variables
 	li t1, 4
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1071,7 +1106,8 @@ secondCond_102:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:set_d$1
 	sw a0, 348(sp)
@@ -1105,7 +1141,8 @@ ifTrue_275:
 	# fetch variables
 	li t1, 65
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1119,7 +1156,8 @@ ifTrue_275:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_470
 	j next_470
@@ -1138,7 +1176,8 @@ ifTrue_276:
 	# fetch variables
 	li t1, 66
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1152,7 +1191,8 @@ ifTrue_276:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_471
 	j next_471
@@ -1258,7 +1298,8 @@ ifTrue_277:
 	# fetch variables
 	li t1, 67
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1272,7 +1313,8 @@ ifTrue_277:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_472
 	j next_472
@@ -1378,7 +1420,8 @@ ifTrue_278:
 	# fetch variables
 	li t1, 68
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1392,7 +1435,8 @@ ifTrue_278:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_473
 	j next_473
@@ -1499,7 +1543,8 @@ ifTrue_279:
 	# fetch variables
 	li t1, 69
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1513,7 +1558,8 @@ ifTrue_279:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_474
 	j next_474
@@ -1532,7 +1578,8 @@ ifTrue_280:
 	# fetch variables
 	li t1, 70
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1546,7 +1593,8 @@ ifTrue_280:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_475
 	j next_475
@@ -1557,7 +1605,8 @@ next_475:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1571,7 +1620,8 @@ next_475:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# store lv 
 
@@ -1660,7 +1710,8 @@ whileBody_195:
 	# fetch variables
 	li t1, 32
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1674,7 +1725,8 @@ whileBody_195:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br whileCond_195
 	j whileCond_195
@@ -1751,7 +1803,8 @@ ifTrue_281:
 	# fetch variables
 	li t1, 67
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1765,7 +1818,8 @@ ifTrue_281:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_477
 	j next_477
@@ -1877,7 +1931,8 @@ ifTrue_282:
 	# fetch variables
 	li t1, 72
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1891,7 +1946,8 @@ ifTrue_282:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_478
 	j next_478
@@ -2039,7 +2095,8 @@ ifTrue_283:
 	# fetch variables
 	li t1, 73
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2053,7 +2110,8 @@ ifTrue_283:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_479
 	j next_479
@@ -2238,7 +2296,8 @@ ifTrue_284:
 	# fetch variables
 	li t1, 74
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2252,7 +2311,8 @@ ifTrue_284:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_480
 	j next_480
@@ -2503,7 +2563,8 @@ ifTrue_285:
 	# fetch variables
 	li t1, 75
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2517,7 +2578,8 @@ ifTrue_285:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_481
 	j next_481
@@ -2528,7 +2590,8 @@ next_481:
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2542,7 +2605,8 @@ next_481:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# ret 
 

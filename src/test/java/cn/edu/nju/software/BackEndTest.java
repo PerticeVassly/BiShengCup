@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class BackEndTest {
     private static final String DIR = "src/test/resources/2023/";
     private static final String DIR_PART = "src/test/resources/2023part/";
+    private static final String DIR_HIDDEN = "src/test/resources/2023hidden/";
     private static final String SYLIB_RISC = "src/test/resources/libriscv.o";
 
     private static final String EMULATOR = "spike";
@@ -100,6 +101,10 @@ public class BackEndTest {
 
     private static Stream<String> dirPart() {
         return parameters(DIR_PART);
+    }
+
+    private static Stream<String> dirHidden() {
+        return parameters(DIR_HIDDEN);
     }
 
     /**

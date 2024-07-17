@@ -48,7 +48,8 @@ mainEntry86:
 	sd t0, 12(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -62,7 +63,8 @@ mainEntry86:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:defn
 	sw a0, 4(sp)

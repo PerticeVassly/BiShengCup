@@ -8,7 +8,7 @@ fi
 
 # 获取参数并转换为绝对路径
 EXECUTABLE=$(realpath "$1")
-QEMU_BIN=qemu-riscv64
+QEMU_BIN=qemu-riscv64 
 GDB_BIN=riscv64-unknown-elf-gdb
 GDB_PORT=1234
 

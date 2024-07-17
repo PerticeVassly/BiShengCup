@@ -62,7 +62,8 @@ whileCond_63:
 whileBody_63:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -76,7 +77,8 @@ whileBody_63:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getch
 	sw a0, 104(sp)
@@ -276,7 +278,8 @@ whileCond_64:
 whileBody_64:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -290,7 +293,8 @@ whileBody_64:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getch$1
 	sw a0, 56(sp)
@@ -923,7 +927,8 @@ whileBody_66:
 	# get address of local var:b$2
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -937,7 +942,8 @@ whileBody_66:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br whileCond_66
 	j whileCond_66
@@ -976,7 +982,8 @@ mainEntry25:
 	sd t0, 40(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -990,7 +997,8 @@ mainEntry25:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:my_getint
 	sw a0, 32(sp)
@@ -1068,7 +1076,8 @@ whileCond_67:
 whileBody_67:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1082,7 +1091,8 @@ whileBody_67:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:my_getint$1
 	sw a0, 12(sp)
@@ -1114,7 +1124,8 @@ whileBody_67:
 	# get address of local var:m
 	lw t1, 8(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1128,14 +1139,16 @@ whileBody_67:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1149,7 +1162,8 @@ whileBody_67:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load n$1 lv
 

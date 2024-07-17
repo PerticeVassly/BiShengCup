@@ -462,7 +462,8 @@ ifTrue_308:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -476,7 +477,8 @@ ifTrue_308:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:get_one
 	sw a0, 20(sp)
@@ -629,7 +631,8 @@ mainEntry68:
 	# get address of local var:p$1
 	lw t1, 8(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -643,7 +646,8 @@ mainEntry68:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:deepWhileBr
 	sw a0, 4(sp)
@@ -675,7 +679,8 @@ mainEntry68:
 	# get address of local var:p$2
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -689,7 +694,8 @@ mainEntry68:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# ret 
 

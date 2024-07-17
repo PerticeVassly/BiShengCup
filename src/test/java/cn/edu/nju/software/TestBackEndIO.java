@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class TestBackEndIO {
     private static final String DIR = "src/test/resources/2023/";
+    private static final String DIR_HIDDEN = "src/test/resources/2023hidden/";
     private static final String DIR_PART = "src/test/resources/2023part/";
     private static final String SYLIB = "src/test/resources/sylib.ll";
     private static final String LINKED = "src/test/resources/linked.ll";
@@ -43,6 +44,15 @@ public class TestBackEndIO {
             fail();
         }
         testFile(DIR, name);
+    }
+
+    @ParameterizedTest
+    @MethodSource("dirHidden")
+    void testHidden(String name) throws IOException, InterruptedException {
+        if(false){
+            fail();
+        }
+        testFile(DIR_HIDDEN, name);
     }
 
     /**
@@ -90,6 +100,10 @@ public class TestBackEndIO {
 
     private static Stream<String> dirPart() {
         return parameters(DIR_PART);
+    }
+
+    private static Stream<String> dirHidden() {
+        return parameters(DIR_HIDDEN);
     }
 
     /**

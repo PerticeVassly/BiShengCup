@@ -4334,7 +4334,8 @@ next_587:
 
 	# push c2
 	sd t1, -8(sp)
-	addi sp, sp, -8
+	li t4, -8
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4348,7 +4349,8 @@ next_587:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	li t4, 8
+	add sp, sp, t4
 
 	# get address of local var:mul
 	sw a0, 168(sp)
@@ -4510,7 +4512,8 @@ whileBody_249:
 	# get address of local var:x
 	lw t1, 124(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4524,7 +4527,8 @@ whileBody_249:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load i$16 lv$9
 
@@ -4596,7 +4600,8 @@ next_588:
 	# get address of local var:x$1
 	lw t1, 112(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4610,7 +4615,8 @@ next_588:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br whileCond_250
 	j whileCond_250
@@ -4758,7 +4764,8 @@ whileBody_250:
 	# get address of local var:x$2
 	lw t1, 68(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4772,7 +4779,8 @@ whileBody_250:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load i$19 lv$9
 
@@ -4844,7 +4852,8 @@ next_589:
 	# get address of local var:x$3
 	lw t1, 56(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4858,7 +4867,8 @@ next_589:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br whileCond_251
 	j whileCond_251
@@ -5006,7 +5016,8 @@ whileBody_251:
 	# get address of local var:x$4
 	lw t1, 12(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5020,7 +5031,8 @@ whileBody_251:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load i$22 lv$9
 
@@ -5083,7 +5095,8 @@ next_590:
 	# get address of local var:x$5
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5097,7 +5110,8 @@ next_590:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# ret 
 

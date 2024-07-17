@@ -292,7 +292,7 @@ fEntry1:
 	flw ft0, 0(t3)
 	fsw ft0, 68(sp)
 
-	# F2I i2f_ result_$1
+	#  i2f_ result_$1
 
 	# fetch variables
 
@@ -395,7 +395,7 @@ fEntry1:
 	lw t0, 0(t3)
 	sw t0, 32(sp)
 
-	# F2I i2f_$1 ei
+	#  i2f_$1 ei
 
 	# fetch variables
 
@@ -429,7 +429,7 @@ fEntry1:
 	lw t0, 0(t3)
 	sw t0, 20(sp)
 
-	# F2I i2f_$2 fi
+	#  i2f_$2 fi
 
 	# fetch variables
 
@@ -477,7 +477,7 @@ fEntry1:
 	# get address of local var:result_$8
 	fsw ft0, 4(sp)
 
-	# F2I retVal_ result_$8
+	#  retVal_ result_$8
 
 	# fetch variables
 
@@ -563,7 +563,8 @@ mainEntry6:
 	fmv.w.x ft1, t1
 	fmv.x.w t0, ft1
 	fmv.w.x fa4, t0
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -577,7 +578,8 @@ mainEntry6:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:f
 	sw a0, 0(sp)

@@ -1685,7 +1685,8 @@ next_641:
 
 	# push c2
 	sd t1, -8(sp)
-	addi sp, sp, -8
+	li t4, -8
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1699,7 +1700,8 @@ next_641:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 8
+	li t4, 8
+	add sp, sp, t4
 
 	# get address of local var:tran
 	sw a0, 168(sp)
@@ -1861,7 +1863,8 @@ whileBody_281:
 	# get address of local var:x
 	lw t1, 124(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1875,7 +1878,8 @@ whileBody_281:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load i$16 lv$9
 
@@ -1938,7 +1942,8 @@ next_642:
 	# get address of local var:x$1
 	lw t1, 112(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1952,7 +1957,8 @@ next_642:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# store lv$9 
 
@@ -2109,7 +2115,8 @@ whileBody_282:
 	# get address of local var:x$2
 	lw t1, 68(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2123,7 +2130,8 @@ whileBody_282:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load i$19 lv$9
 
@@ -2195,7 +2203,8 @@ next_643:
 	# get address of local var:x$3
 	lw t1, 56(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2209,7 +2218,8 @@ next_643:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br whileCond_283
 	j whileCond_283
@@ -2357,7 +2367,8 @@ whileBody_283:
 	# get address of local var:x$4
 	lw t1, 12(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2371,7 +2382,8 @@ whileBody_283:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load i$22 lv$9
 
@@ -2434,7 +2446,8 @@ next_644:
 	# get address of local var:x$5
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2448,7 +2461,8 @@ next_644:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# ret 
 

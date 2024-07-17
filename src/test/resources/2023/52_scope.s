@@ -292,7 +292,8 @@ whileCond_232:
 whileBody_232:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -306,7 +307,8 @@ whileBody_232:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:func
 	sw a0, 44(sp)
@@ -492,7 +494,8 @@ ifTrue_326:
 	# fetch variables
 	li t1, 1
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -506,7 +509,8 @@ ifTrue_326:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_559
 	j next_559
@@ -517,7 +521,8 @@ ifFalse_126:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -531,7 +536,8 @@ ifFalse_126:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_559
 	j next_559

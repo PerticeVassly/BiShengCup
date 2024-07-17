@@ -101,7 +101,8 @@ funcEntry3:
 	# get address of local var:g$1
 	lw t1, 4(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -115,7 +116,8 @@ funcEntry3:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load g$2 gv
 
@@ -158,7 +160,8 @@ mainEntry42:
 	sd t0, 160(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -172,7 +175,8 @@ mainEntry42:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 152(sp)
@@ -272,7 +276,8 @@ ifFalse_14:
 next_150:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -286,7 +291,8 @@ next_150:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 132(sp)
@@ -375,7 +381,8 @@ secondCond_41:
 	# get address of local var:i$1
 	lw t1, 112(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -389,7 +396,8 @@ secondCond_41:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:func
 	sw a0, 108(sp)
@@ -445,7 +453,8 @@ ifFalse_15:
 next_151:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -459,7 +468,8 @@ next_151:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$2
 	sw a0, 100(sp)
@@ -549,7 +559,8 @@ secondCond_42:
 	# get address of local var:i$3
 	lw t1, 80(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -563,7 +574,8 @@ secondCond_42:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:func$1
 	sw a0, 76(sp)
@@ -619,7 +631,8 @@ ifFalse_16:
 next_152:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -633,7 +646,8 @@ next_152:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$3
 	sw a0, 68(sp)
@@ -723,7 +737,8 @@ secondCond_43:
 	# get address of local var:i$5
 	lw t1, 48(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -737,7 +752,8 @@ secondCond_43:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:func$2
 	sw a0, 44(sp)
@@ -797,7 +813,8 @@ next_153:
 	# fetch variables
 	li t1, 99
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -811,7 +828,8 @@ next_153:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:func$4
 	sw a0, 36(sp)
@@ -893,7 +911,8 @@ secondCond_44:
 	# get address of local var:i$7
 	lw t1, 16(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -907,7 +926,8 @@ secondCond_44:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:func$3
 	sw a0, 12(sp)
@@ -977,7 +997,8 @@ secondCond_45:
 	# fetch variables
 	li t1, 100
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -991,7 +1012,8 @@ secondCond_45:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:func$5
 	sw a0, 4(sp)

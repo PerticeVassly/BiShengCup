@@ -470,7 +470,8 @@ ifFalse_101:
 	# get address of local var:array$4
 	lw t1, 20(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -484,7 +485,8 @@ ifFalse_101:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:findfa
 	sw a0, 16(sp)
@@ -636,7 +638,8 @@ mmergeEntry:
 	# get address of local var:a
 	lw t1, 48(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -650,7 +653,8 @@ mmergeEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:findfa
 	sw a0, 44(sp)
@@ -682,7 +686,8 @@ mmergeEntry:
 	# get address of local var:b
 	lw t1, 40(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -696,7 +701,8 @@ mmergeEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:findfa$1
 	sw a0, 36(sp)
@@ -1042,7 +1048,8 @@ whileBody_181:
 	# get address of local var:n
 	lw t1, 556(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1056,7 +1063,8 @@ whileBody_181:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load n$1 gv1
 
@@ -1195,7 +1203,8 @@ whileCond_182:
 whileBody_182:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1209,7 +1218,8 @@ whileBody_182:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 516(sp)
@@ -1226,7 +1236,8 @@ whileBody_182:
 	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1240,7 +1251,8 @@ whileBody_182:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 512(sp)
@@ -1657,7 +1669,8 @@ ifTrue_250:
 	# fetch variables
 	li t1, 0
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1671,7 +1684,8 @@ ifTrue_250:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_433
 	j next_433
@@ -1822,7 +1836,8 @@ ifTrue_251:
 	# get address of local var:k$2
 	lw t1, 352(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1836,7 +1851,8 @@ ifTrue_251:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_434
 	j next_434
@@ -1952,7 +1968,8 @@ ifTrue_252:
 	# get address of local var:result_$7
 	lw t1, 320(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1966,7 +1983,8 @@ ifTrue_252:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_435
 	j next_435
@@ -2168,7 +2186,8 @@ ifTrue_253:
 	# get address of local var:result_$9
 	lw t1, 260(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2182,7 +2201,8 @@ ifTrue_253:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_436
 	j next_436
@@ -2405,7 +2425,8 @@ ifTrue_254:
 	# get address of local var:result_$11
 	lw t1, 192(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2419,7 +2440,8 @@ ifTrue_254:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_437
 	j next_437
@@ -2643,7 +2665,8 @@ ifTrue_255:
 	# get address of local var:result_$13
 	lw t1, 124(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2657,7 +2680,8 @@ ifTrue_255:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_438
 	j next_438
@@ -2900,7 +2924,8 @@ ifTrue_256:
 	# get address of local var:tmp
 	lw t1, 52(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2914,14 +2939,16 @@ ifTrue_256:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2935,7 +2962,8 @@ ifTrue_256:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_439
 	j next_439
@@ -2950,7 +2978,8 @@ secondCond_95:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2964,7 +2993,8 @@ secondCond_95:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:findfa
 	sw a0, 48(sp)
@@ -2985,7 +3015,8 @@ secondCond_95:
 	# get address of local var:k$4
 	lw t1, 44(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2999,7 +3030,8 @@ secondCond_95:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:findfa$1
 	sw a0, 40(sp)
@@ -3143,7 +3175,8 @@ ifTrue_257:
 	# fetch variables
 	li t1, -1
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3157,14 +3190,16 @@ ifTrue_257:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3178,7 +3213,8 @@ ifTrue_257:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_440
 	j next_440

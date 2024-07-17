@@ -51,7 +51,7 @@ mainEntry11:
 	# get address of local var:cond_eq_tmp_
 	sw t0, 12(sp)
 
-	# ZEXT cond_tmp_ cond_eq_tmp_
+	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 

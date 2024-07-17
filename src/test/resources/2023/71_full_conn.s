@@ -2834,7 +2834,8 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2848,7 +2849,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:relu_reg
 	li t4, 8188
@@ -5460,7 +5462,8 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5474,7 +5477,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:relu_reg$1
 	li t4, 7284
@@ -8106,7 +8110,8 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8120,7 +8125,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:relu_reg$2
 	li t4, 6376
@@ -10752,7 +10758,8 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -10766,7 +10773,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:relu_reg$3
 	li t4, 5468
@@ -13398,7 +13406,8 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -13412,7 +13421,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:relu_reg$4
 	li t4, 4560
@@ -16044,7 +16054,8 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -16058,7 +16069,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:relu_reg$5
 	li t4, 3652
@@ -18690,7 +18702,8 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -18704,7 +18717,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:relu_reg$6
 	li t4, 2744
@@ -21336,7 +21350,8 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21350,7 +21365,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:relu_reg$7
 	li t4, 1836
@@ -23918,7 +23934,8 @@ modelEntry:
 	# get address of local var:result_$455
 	lw t1, 932(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -23932,7 +23949,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:relu_reg$8
 	sw a0, 928(sp)
@@ -25958,7 +25976,8 @@ modelEntry:
 	# get address of local var:result_$506
 	lw t1, 24(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -25972,7 +25991,8 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:relu_reg$9
 	sw a0, 20(sp)
@@ -26115,7 +26135,8 @@ mainEntry81:
 	sd t0, 124(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26129,7 +26150,8 @@ mainEntry81:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 116(sp)
@@ -26322,7 +26344,8 @@ next_583:
 	# get address of local var:a$1
 	ld t1, 76(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26336,7 +26359,8 @@ next_583:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:model
 	sw a0, 72(sp)
@@ -26478,7 +26502,8 @@ whileBody_246:
 	sd t0, 28(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26492,7 +26517,8 @@ whileBody_246:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 24(sp)
@@ -26585,7 +26611,8 @@ ifTrue_338:
 	# fetch variables
 	li t1, 99
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26599,14 +26626,16 @@ ifTrue_338:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 97
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26620,14 +26649,16 @@ ifTrue_338:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 116
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26641,14 +26672,16 @@ ifTrue_338:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26662,7 +26695,8 @@ ifTrue_338:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_585
 	j next_585
@@ -26673,7 +26707,8 @@ ifFalse_134:
 	# fetch variables
 	li t1, 100
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26687,14 +26722,16 @@ ifFalse_134:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 111
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26708,14 +26745,16 @@ ifFalse_134:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 103
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26729,14 +26768,16 @@ ifFalse_134:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26750,7 +26791,8 @@ ifFalse_134:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# br next_585
 	j next_585

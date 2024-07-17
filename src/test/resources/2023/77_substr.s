@@ -364,7 +364,8 @@ max_sum_nonadjacentEntry:
 	# fetch variables
 	li t1, 64
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -378,7 +379,8 @@ max_sum_nonadjacentEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# gep temp 
 
@@ -543,7 +545,8 @@ max_sum_nonadjacentEntry:
 	# get address of local var:arr$5
 	lw t1, 136(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -557,7 +560,8 @@ max_sum_nonadjacentEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:MAX
 	sw a0, 132(sp)
@@ -852,7 +856,8 @@ whileBody_201:
 	# get address of local var:temp$6
 	lw t1, 32(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -866,7 +871,8 @@ whileBody_201:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:MAX$1
 	sw a0, 28(sp)
@@ -1151,7 +1157,8 @@ longest_common_subseqEntry:
 	# fetch variables
 	li t1, 1024
 	mv a2, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1165,7 +1172,8 @@ longest_common_subseqEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# store lv$5 
 
@@ -2056,7 +2064,8 @@ ifFalse_109:
 	# get address of local var:p$7
 	lw t1, 12(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2070,7 +2079,8 @@ ifFalse_109:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:MAX
 	sw a0, 8(sp)
@@ -2923,7 +2933,8 @@ mainEntry58:
 	# fetch variables
 	li t1, 15
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2937,7 +2948,8 @@ mainEntry58:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:max_sum_nonadjacent
 	sw a0, 20(sp)
@@ -2949,7 +2961,8 @@ mainEntry58:
 	# get address of local var:max_sum_nonadjacent
 	lw t1, 20(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2963,14 +2976,16 @@ mainEntry58:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2984,7 +2999,8 @@ mainEntry58:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# gep A$1 
 
@@ -3041,7 +3057,8 @@ mainEntry58:
 	# fetch variables
 	li t1, 13
 	mv a3, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3055,7 +3072,8 @@ mainEntry58:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:longest_common_subseq
 	sw a0, 0(sp)
@@ -3067,7 +3085,8 @@ mainEntry58:
 	# get address of local var:longest_common_subseq
 	lw t1, 0(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3081,14 +3100,16 @@ mainEntry58:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
 	li t1, 10
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3102,7 +3123,8 @@ mainEntry58:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# ret 
 
