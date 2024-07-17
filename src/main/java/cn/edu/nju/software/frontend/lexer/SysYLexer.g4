@@ -95,7 +95,7 @@ fragment Digit_sequence : DIGIT+
 fragment Hexadecimal_fractional_constant : Hexadecimal_digit_sequence? '.' Hexadecimal_digit_sequence
                                 | Hexadecimal_digit_sequence '.' ;
 
-fragment Binary_ponent_part : ('p' | 'P') Sign? Digit_sequence ;
+fragment Binary_exponent_part : ('p' | 'P') Sign? Digit_sequence ;
 
 fragment Hexadecimal_digit_sequence : Hexadecimal_digit+ ;
 

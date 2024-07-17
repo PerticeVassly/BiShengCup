@@ -112,30 +112,6 @@ public class ModuleRef {
             } else {
                 ir += gv.getInitVal().toString() + ", ";
             }
-//            else if (gv.getInitVal() instanceof ArrayValue){
-//                // TODO initial value is an array
-//                ArrayValue init = (ArrayValue) gv.getInitVal();
-//                ArrayType type = (ArrayType) gv.getType();
-//                int size = type.getElementSize();
-//                for (int i = 0; i < size; i++) {
-//                    ir += "[";
-//                    ir += type.getElementType().toString() + " ";
-//                    if (init.getElement(i) != null && init.getElement(i).getType() instanceof ArrayType) {
-//                        // init.element is an array, then element type must be an array
-//                        ir += implementArrInitIr(((ArrayType)type.getElementType()), ((ArrayValue)init.getElement(i)));
-//                    } else {
-//                        if (init.getElement(i) == null || ((ConstValue)init.getElement(i)).getValue().equals(0)){
-//                            ir += "zeroinitializer";
-//                            if (i < size - 1) {
-//                                ir += ", ";
-//                            }
-//                        } else {
-//                            // TODO: the codes possibly have problems, refactor
-//                        }
-//                    }
-//                    ir += "], ";
-//                }
-//            }
         }
         ir += "align " + gv.getType().getWidth();
         return ir;
