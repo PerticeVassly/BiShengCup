@@ -35,6 +35,7 @@ public class RiscFunction {
     private void allocateSpace() {
         reserveSpaceForFParams();
         reserveSpaceForLocalVariables();
+        alignStack8byte();
     }
 
     /**
