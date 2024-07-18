@@ -62,7 +62,7 @@ public class FrontEndTest {
     @ParameterizedTest
     @MethodSource("dirHidden")
     void testHidden(String name) throws IOException, InterruptedException {
-        if (Stream.of("23_json", "30_many_dimensions", "36_rotate", "38_light2d").anyMatch(name::equals)) fail();
+        if (Stream.of("30_many_dimensions", "36_rotate", "38_light2d").anyMatch(name::equals)) fail();
         testFile(DIR_HIDDEN, name);
     }
 

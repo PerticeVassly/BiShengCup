@@ -16,42 +16,35 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-@gv = global i32 4, align 4
-@gv1 = global i32 32, align 4
-@gv2 = global i32 10, align 4
-
 define void @printSolution(i32* %0) {
 printSolutionEntry:
-  %color = alloca i32*, align 4
-  store i32* %0, i32** %color, align 4
-  %lv = alloca i32, align 4
-  store i32 0, i32* %lv, align 4
-  br label %whileCond_42
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32*, align 4
+  store i32* %0, i32** %lv, align 4
+  store i32 0, i32* %lv$1, align 4
+  br label %whileCond_128
 
-whileCond_42:                                              ; pred = %printSolutionEntry, %whileBody_42
-  %i = load i32, i32* %lv, align 4
-  %V = load i32, i32* @gv, align 4
-  %cond_lt_tmp_ = icmp slt i32 %i, %V
+whileCond_128:                                             ; pred = %printSolutionEntry, %whileBody_128
+  %i = load i32, i32* %lv$1, align 4
+  %cond_lt_tmp_ = icmp slt i32 %i, 4
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_42, label %next_72
+  br i1 %cond_, label %whileBody_128, label %next_1437
 
-whileBody_42:                                              ; pred = %whileCond_42
-  %i$1 = load i32, i32* %lv, align 4
-  %arr_ = load i32*, i32** %color, align 4
-  %color$1 = getelementptr i32, i32* %arr_, i32 %i$1
-  %color$2 = load i32, i32* %color$1, align 4
-  call void @putint(i32 %color$2)
-  %space = load i32, i32* @gv1, align 4
-  call void @putch(i32 %space)
-  %i$2 = load i32, i32* %lv, align 4
+whileBody_128:                                             ; pred = %whileCond_128
+  %i$1 = load i32, i32* %lv$1, align 4
+  %arr_ = load i32*, i32** %lv, align 4
+  %color = getelementptr i32, i32* %arr_, i32 %i$1
+  %color$1 = load i32, i32* %color, align 4
+  call void @putint(i32 %color$1)
+  call void @putch(i32 32)
+  %i$2 = load i32, i32* %lv$1, align 4
   %result_ = add i32 %i$2, 1
-  store i32 %result_, i32* %lv, align 4
-  br label %whileCond_42
+  store i32 %result_, i32* %lv$1, align 4
+  br label %whileCond_128
 
-next_72:                                                   ; pred = %whileCond_42
-  %LF = load i32, i32* @gv2, align 4
-  call void @putch(i32 %LF)
+next_1437:                                                 ; pred = %whileCond_128
+  call void @putch(i32 10)
   ret void
 }
 
@@ -60,8 +53,7 @@ printMessageEntry:
   call void @putch(i32 78)
   call void @putch(i32 111)
   call void @putch(i32 116)
-  %space = load i32, i32* @gv1, align 4
-  call void @putch(i32 %space)
+  call void @putch(i32 32)
   call void @putch(i32 101)
   call void @putch(i32 120)
   call void @putch(i32 105)
@@ -72,159 +64,159 @@ printMessageEntry:
 
 define i32 @isSafe([4 x i32]* %0, i32* %1) {
 isSafeEntry:
-  %graph = alloca [4 x i32]*, align 4
-  store [4 x i32]* %0, [4 x i32]** %graph, align 4
-  %color = alloca i32*, align 4
-  store i32* %1, i32** %color, align 4
-  %lv = alloca i32, align 4
-  store i32 0, i32* %lv, align 4
-  br label %whileCond_43
+  %lv$3 = alloca i32, align 4
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca i32*, align 4
+  %lv = alloca [4 x i32]*, align 4
+  store [4 x i32]* %0, [4 x i32]** %lv, align 4
+  store i32* %1, i32** %lv$1, align 4
+  store i32 0, i32* %lv$2, align 4
+  br label %whileCond_129
 
-whileCond_43:                                         ; pred = %isSafeEntry, %next_74
-  %i = load i32, i32* %lv, align 4
-  %V = load i32, i32* @gv, align 4
-  %cond_lt_tmp_ = icmp slt i32 %i, %V
+whileCond_129:                                         ; pred = %isSafeEntry, %next_1439
+  %i = load i32, i32* %lv$2, align 4
+  %cond_lt_tmp_ = icmp slt i32 %i, 4
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_43, label %next_73
+  br i1 %cond_, label %whileBody_129, label %next_1438
 
-whileBody_43:                                         ; pred = %whileCond_43
-  %lv$1 = alloca i32, align 4
-  %i$1 = load i32, i32* %lv, align 4
+whileBody_129:                                         ; pred = %whileCond_129
+  %i$1 = load i32, i32* %lv$2, align 4
   %result_ = add i32 %i$1, 1
-  store i32 %result_, i32* %lv$1, align 4
-  br label %whileCond_44
+  store i32 %result_, i32* %lv$3, align 4
+  br label %whileCond_130
 
-next_73:                                              ; pred = %whileCond_43
+next_1438:                                             ; pred = %whileCond_129
   ret i32 1
 
-whileCond_44:                                         ; pred = %whileBody_43, %next_75
-  %j = load i32, i32* %lv$1, align 4
-  %V$1 = load i32, i32* @gv, align 4
-  %cond_lt_tmp_$1 = icmp slt i32 %j, %V$1
+whileCond_130:                                         ; pred = %whileBody_129, %next_1440
+  %j = load i32, i32* %lv$3, align 4
+  %cond_lt_tmp_$1 = icmp slt i32 %j, 4
   %cond_tmp_$1 = zext i1 %cond_lt_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %whileBody_44, label %next_74
+  br i1 %cond_$1, label %whileBody_130, label %next_1439
 
-whileBody_44:                                         ; pred = %whileCond_44
-  %i$2 = load i32, i32* %lv, align 4
-  %j$1 = load i32, i32* %lv$1, align 4
-  %arr_ = load [4 x i32]*, [4 x i32]** %graph, align 4
+whileBody_130:                                         ; pred = %whileCond_130
+  %i$2 = load i32, i32* %lv$2, align 4
+  %j$1 = load i32, i32* %lv$3, align 4
+  %arr_ = load [4 x i32]*, [4 x i32]** %lv, align 4
   %ptr_ = getelementptr [4 x i32], [4 x i32]* %arr_, i32 %i$2
-  %graph$1 = getelementptr [4 x i32], [4 x i32]* %ptr_, i32 0, i32 %j$1
-  %graph$2 = load i32, i32* %graph$1, align 4
-  %cond_normalize_ = icmp ne i32 %graph$2, 0
-  br i1 %cond_normalize_, label %secondCond_68, label %next_75
+  %graph = getelementptr [4 x i32], [4 x i32]* %ptr_, i32 0, i32 %j$1
+  %graph$1 = load i32, i32* %graph, align 4
+  %cond_normalize_ = icmp ne i32 %graph$1, 0
+  br i1 %cond_normalize_, label %secondCond_910, label %next_1440
 
-next_74:                                              ; pred = %whileCond_44
-  %i$4 = load i32, i32* %lv, align 4
+next_1439:                                             ; pred = %whileCond_130
+  %i$4 = load i32, i32* %lv$2, align 4
   %result_$2 = add i32 %i$4, 1
-  store i32 %result_$2, i32* %lv, align 4
-  br label %whileCond_43
+  store i32 %result_$2, i32* %lv$2, align 4
+  br label %whileCond_129
 
-ifTrue_30:                                            ; pred = %secondCond_68
+ifTrue_1309:                                           ; pred = %secondCond_910
   ret i32 0
 
-next_75:                                              ; pred = %whileBody_44, %secondCond_68
-  %j$3 = load i32, i32* %lv$1, align 4
+next_1440:                                             ; pred = %whileBody_130, %secondCond_910
+  %j$3 = load i32, i32* %lv$3, align 4
   %result_$1 = add i32 %j$3, 1
-  store i32 %result_$1, i32* %lv$1, align 4
-  br label %whileCond_44
+  store i32 %result_$1, i32* %lv$3, align 4
+  br label %whileCond_130
 
-secondCond_68:                                        ; pred = %whileBody_44
-  %j$2 = load i32, i32* %lv$1, align 4
-  %arr_$1 = load i32*, i32** %color, align 4
-  %color$1 = getelementptr i32, i32* %arr_$1, i32 %j$2
-  %color$2 = load i32, i32* %color$1, align 4
-  %i$3 = load i32, i32* %lv, align 4
-  %arr_$2 = load i32*, i32** %color, align 4
-  %color$3 = getelementptr i32, i32* %arr_$2, i32 %i$3
-  %color$4 = load i32, i32* %color$3, align 4
-  %cond_eq_tmp_ = icmp eq i32 %color$2, %color$4
+secondCond_910:                                        ; pred = %whileBody_130
+  %j$2 = load i32, i32* %lv$3, align 4
+  %arr_$1 = load i32*, i32** %lv$1, align 4
+  %color = getelementptr i32, i32* %arr_$1, i32 %j$2
+  %color$1 = load i32, i32* %color, align 4
+  %i$3 = load i32, i32* %lv$2, align 4
+  %arr_$2 = load i32*, i32** %lv$1, align 4
+  %color$2 = getelementptr i32, i32* %arr_$2, i32 %i$3
+  %color$3 = load i32, i32* %color$2, align 4
+  %cond_eq_tmp_ = icmp eq i32 %color$1, %color$3
   %cond_tmp_$2 = zext i1 %cond_eq_tmp_ to i32
   %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %ifTrue_30, label %next_75
+  br i1 %cond_$2, label %ifTrue_1309, label %next_1440
 }
 
 define i32 @graphColoring([4 x i32]* %0, i32 %1, i32 %2, i32* %3) {
 graphColoringEntry:
-  %graph = alloca [4 x i32]*, align 4
-  store [4 x i32]* %0, [4 x i32]** %graph, align 4
-  %m = alloca i32, align 4
-  store i32 %1, i32* %m, align 4
-  %i = alloca i32, align 4
-  store i32 %2, i32* %i, align 4
-  %color = alloca i32*, align 4
-  store i32* %3, i32** %color, align 4
-  %i$1 = load i32, i32* %i, align 4
-  %V = load i32, i32* @gv, align 4
-  %cond_eq_tmp_ = icmp eq i32 %i$1, %V
+  %lv$4 = alloca i32, align 4
+  %lv$3 = alloca i32*, align 4
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
+  %lv = alloca [4 x i32]*, align 4
+  store [4 x i32]* %0, [4 x i32]** %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  store i32 %2, i32* %lv$2, align 4
+  store i32* %3, i32** %lv$3, align 4
+  %i = load i32, i32* %lv$2, align 4
+  %cond_eq_tmp_ = icmp eq i32 %i, 4
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_31, label %next_76
+  br i1 %cond_, label %ifTrue_1310, label %next_1441
 
-ifTrue_31:                                                 ; pred = %graphColoringEntry
-  %graph$1 = load [4 x i32]*, [4 x i32]** %graph, align 4
-  %color$1 = load i32*, i32** %color, align 4
-  %isSafe = call i32 @isSafe([4 x i32]* %graph$1, i32* %color$1)
+ifTrue_1310:                                               ; pred = %graphColoringEntry
+  %graph = load [4 x i32]*, [4 x i32]** %lv, align 4
+  %color = load i32*, i32** %lv$3, align 4
+  %isSafe = call i32 @isSafe([4 x i32]* %graph, i32* %color)
   %cond_normalize_ = icmp ne i32 %isSafe, 0
-  br i1 %cond_normalize_, label %ifTrue_32, label %next_77
+  br i1 %cond_normalize_, label %ifTrue_1311, label %next_1442
 
-next_76:                                                   ; pred = %graphColoringEntry
-  %lv = alloca i32, align 4
-  store i32 1, i32* %lv, align 4
-  br label %whileCond_45
+next_1441:                                                 ; pred = %graphColoringEntry
+  store i32 1, i32* %lv$4, align 4
+  br label %whileCond_131
 
-ifTrue_32:                                                 ; pred = %ifTrue_31
-  %color$2 = load i32*, i32** %color, align 4
-  call void @printSolution(i32* %color$2)
+ifTrue_1311:                                               ; pred = %ifTrue_1310
+  %color$1 = load i32*, i32** %lv$3, align 4
+  call void @printSolution(i32* %color$1)
   ret i32 1
 
-next_77:                                                   ; pred = %ifTrue_31
+next_1442:                                                 ; pred = %ifTrue_1310
   ret i32 0
 
-whileCond_45:                                              ; pred = %next_76, %next_79
-  %j = load i32, i32* %lv, align 4
-  %m$1 = load i32, i32* %m, align 4
-  %cond_le_tmp_ = icmp sle i32 %j, %m$1
+whileCond_131:                                             ; pred = %next_1441, %next_1444
+  %j = load i32, i32* %lv$4, align 4
+  %m = load i32, i32* %lv$1, align 4
+  %cond_le_tmp_ = icmp sle i32 %j, %m
   %cond_tmp_$1 = zext i1 %cond_le_tmp_ to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %whileBody_45, label %next_78
+  br i1 %cond_$1, label %whileBody_131, label %next_1443
 
-whileBody_45:                                              ; pred = %whileCond_45
-  %i$2 = load i32, i32* %i, align 4
-  %arr_ = load i32*, i32** %color, align 4
-  %color$3 = getelementptr i32, i32* %arr_, i32 %i$2
-  %j$1 = load i32, i32* %lv, align 4
-  store i32 %j$1, i32* %color$3, align 4
-  %graph$2 = load [4 x i32]*, [4 x i32]** %graph, align 4
-  %m$2 = load i32, i32* %m, align 4
-  %i$3 = load i32, i32* %i, align 4
-  %result_ = add i32 %i$3, 1
-  %color$4 = load i32*, i32** %color, align 4
-  %graphColoring = call i32 @graphColoring([4 x i32]* %graph$2, i32 %m$2, i32 %result_, i32* %color$4)
+whileBody_131:                                             ; pred = %whileCond_131
+  %i$1 = load i32, i32* %lv$2, align 4
+  %arr_ = load i32*, i32** %lv$3, align 4
+  %color$2 = getelementptr i32, i32* %arr_, i32 %i$1
+  %j$1 = load i32, i32* %lv$4, align 4
+  store i32 %j$1, i32* %color$2, align 4
+  %graph$1 = load [4 x i32]*, [4 x i32]** %lv, align 4
+  %m$1 = load i32, i32* %lv$1, align 4
+  %i$2 = load i32, i32* %lv$2, align 4
+  %result_ = add i32 %i$2, 1
+  %color$3 = load i32*, i32** %lv$3, align 4
+  %graphColoring = call i32 @graphColoring([4 x i32]* %graph$1, i32 %m$1, i32 %result_, i32* %color$3)
   %cond_normalize_$1 = icmp ne i32 %graphColoring, 0
-  br i1 %cond_normalize_$1, label %ifTrue_33, label %next_79
+  br i1 %cond_normalize_$1, label %ifTrue_1312, label %next_1444
 
-next_78:                                                   ; pred = %whileCond_45
+next_1443:                                                 ; pred = %whileCond_131
   ret i32 0
 
-ifTrue_33:                                                 ; pred = %whileBody_45
+ifTrue_1312:                                               ; pred = %whileBody_131
   ret i32 1
 
-next_79:                                                   ; pred = %whileBody_45
-  %i$4 = load i32, i32* %i, align 4
-  %arr_$1 = load i32*, i32** %color, align 4
-  %color$5 = getelementptr i32, i32* %arr_$1, i32 %i$4
-  store i32 0, i32* %color$5, align 4
-  %j$2 = load i32, i32* %lv, align 4
+next_1444:                                                 ; pred = %whileBody_131
+  %i$3 = load i32, i32* %lv$2, align 4
+  %arr_$1 = load i32*, i32** %lv$3, align 4
+  %color$4 = getelementptr i32, i32* %arr_$1, i32 %i$3
+  store i32 0, i32* %color$4, align 4
+  %j$2 = load i32, i32* %lv$4, align 4
   %result_$1 = add i32 %j$2, 1
-  store i32 %result_$1, i32* %lv, align 4
-  br label %whileCond_45
+  store i32 %result_$1, i32* %lv$4, align 4
+  br label %whileCond_131
 }
 
 define i32 @main() {
-mainEntry7:
+mainEntry31:
+  %lv$3 = alloca i32, align 4
+  %lv$2 = alloca [4 x i32], align 16
+  %lv$1 = alloca i32, align 4
   %lv = alloca [4 x [4 x i32]], align 16
   %ptr_ = getelementptr [4 x [4 x i32]], [4 x [4 x i32]]* %lv, i32 0, i32 0
   %inp = getelementptr [4 x i32], [4 x i32]* %ptr_, i32 0, i32 0
@@ -274,31 +266,27 @@ mainEntry7:
   %ptr_$15 = getelementptr [4 x [4 x i32]], [4 x [4 x i32]]* %lv, i32 0, i32 3
   %inp$15 = getelementptr [4 x i32], [4 x i32]* %ptr_$15, i32 0, i32 3
   store i32 0, i32* %inp$15, align 4
-  %lv$1 = alloca i32, align 4
   store i32 3, i32* %lv$1, align 4
-  %lv$2 = alloca [4 x i32], align 16
-  %lv$3 = alloca i32, align 4
   store i32 0, i32* %lv$3, align 4
-  br label %whileCond_46
+  br label %whileCond_132
 
-whileCond_46:                                        ; pred = %mainEntry7, %whileBody_46
+whileCond_132:                                        ; pred = %mainEntry31, %whileBody_132
   %i = load i32, i32* %lv$3, align 4
-  %V = load i32, i32* @gv, align 4
-  %cond_lt_tmp_ = icmp slt i32 %i, %V
+  %cond_lt_tmp_ = icmp slt i32 %i, 4
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_46, label %next_80
+  br i1 %cond_, label %whileBody_132, label %next_1445
 
-whileBody_46:                                        ; pred = %whileCond_46
+whileBody_132:                                        ; pred = %whileCond_132
   %i$1 = load i32, i32* %lv$3, align 4
   %color = getelementptr [4 x i32], [4 x i32]* %lv$2, i32 0, i32 %i$1
   store i32 0, i32* %color, align 4
   %i$2 = load i32, i32* %lv$3, align 4
   %result_ = add i32 %i$2, 1
   store i32 %result_, i32* %lv$3, align 4
-  br label %whileCond_46
+  br label %whileCond_132
 
-next_80:                                             ; pred = %whileCond_46
+next_1445:                                            ; pred = %whileCond_132
   %graph = getelementptr [4 x [4 x i32]], [4 x [4 x i32]]* %lv, i32 0, i32 0
   %m = load i32, i32* %lv$1, align 4
   %color$1 = getelementptr [4 x i32], [4 x i32]* %lv$2, i32 0, i32 0
@@ -307,13 +295,13 @@ next_80:                                             ; pred = %whileCond_46
   %tmp_$1 = xor i1 %tmp_, 1
   %tmp_$2 = zext i1 %tmp_$1 to i32
   %cond_normalize_ = icmp ne i32 %tmp_$2, 0
-  br i1 %cond_normalize_, label %ifTrue_34, label %next_81
+  br i1 %cond_normalize_, label %ifTrue_1313, label %next_1446
 
-ifTrue_34:                                           ; pred = %next_80
+ifTrue_1313:                                          ; pred = %next_1445
   call void @printMessage()
-  br label %next_81
+  br label %next_1446
 
-next_81:                                             ; pred = %next_80, %ifTrue_34
+next_1446:                                            ; pred = %next_1445, %ifTrue_1313
   ret i32 0
 }
 

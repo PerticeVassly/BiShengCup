@@ -489,6 +489,9 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 if (res != null) return res;
             }
 //            System.err.println(dim);
+//            if (lVal == null) {
+//                System.err.println(ctx.IDENT().getText());
+//            } // for dbg
             if (((Pointer)lVal.getType()).getBase() instanceof Pointer) {
                 lVal = gen.buildLoad(builder, lVal, "arr_");
             }
@@ -818,7 +821,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     gen.buildStore(builder, init, localVar);
                 } else if (localVar != null) {
                     // special {}
-                    if (ctx.initVal().getText().equals("{}")) {
+                    if (ctx.initVal().getText().equals("{}") || ctx.initVal().getText().equals("{0}")) {
                         ValueRef bitCastPtr = gen.buildBitCast(builder, localVar, "ptr");
                         ArrayList<ValueRef> args = new ArrayList<>();
                         args.add(bitCastPtr);
@@ -827,6 +830,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         args.add(totSz);
                         gen.buildCall(builder, memset, args, 3, "ret",
                                 ctx.IDENT().getSymbol().getLine());
+                        curScope.put(new Symbol<>(ctx.IDENT().getText(), localVar));
                         return null;
                     }
                     // array
@@ -846,6 +850,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                             tmp /= elementDim.get(j);
                         }
                         ValueRef ptr = gen.buildGEP(builder, localVar, indices, dims, "inp");
+//                        System.err.println(ctx.getText());// for dbg
                         gen.buildStore(builder, storeVal, ptr);
                     }
                 }
