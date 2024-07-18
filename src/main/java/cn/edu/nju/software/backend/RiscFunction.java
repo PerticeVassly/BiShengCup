@@ -74,6 +74,10 @@ public class RiscFunction {
         }
     }
 
+    private void alignStack8byte(){
+        allocator.alignStack8byte();
+    }
+
     private void reserveMemoryForType(ValueRef var, TypeRef type) {
         allocator.allocate(var, allocator.getSizeOfType(type));
     }

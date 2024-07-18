@@ -276,4 +276,7 @@ public class Allocator {
         }
     }
 
+    public void alignStack8byte() {
+        memoryManager.align8byte();
+    }
 }

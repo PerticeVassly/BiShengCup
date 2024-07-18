@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry101:
+mainEntry100:
 
 	# reserve space
 	li t4, 0

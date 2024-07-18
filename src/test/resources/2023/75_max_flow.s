@@ -3160,7 +3160,7 @@ next_659:
 .type main, @function
 .globl main
 main:
-mainEntry99:
+mainEntry98:
 
 	# reserve space
 	li t4, 132
