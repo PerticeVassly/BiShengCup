@@ -57,4 +57,9 @@ public class MemoryManager {
     public int getSize() {
         return size;
     }
+
+    public void align8byte() {
+        size = (size + 7) / 8 * 8;
+    }
+
 }
