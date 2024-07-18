@@ -163,6 +163,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         memset = new FunctionValue(ft, "memset");
     }
 
+    private static boolean isZeroInit(String initStr) {
+        return initStr.replaceAll("[{0,}]", "").isEmpty();
+    }
+
     @Override
     public ValueRef visitProgram(SysYParser.ProgramContext ctx) {
         functionDef = false;
@@ -818,7 +822,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     gen.buildStore(builder, init, localVar);
                 } else if (localVar != null) {
                     // special {}
-                    if (ctx.initVal().getText().equals("{}")) {
+                    if (isZeroInit(ctx.initVal().getText())) {
                         ValueRef bitCastPtr = gen.buildBitCast(builder, localVar, "ptr");
                         ArrayList<ValueRef> args = new ArrayList<>();
                         args.add(bitCastPtr);
