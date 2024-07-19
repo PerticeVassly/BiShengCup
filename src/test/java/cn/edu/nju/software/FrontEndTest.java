@@ -37,10 +37,15 @@ public class FrontEndTest {
 //    @StringSource("65_color")
 //    @StringSource("101_float_arr")
 //    @StringSource("38_light2d")
-    @StringSource("86_long_code2")
+//    @StringSource("34_multi_loop")
+    @StringSource("38_light2d")
+//    @StringSource("79_var_name")
+//    @StringSource("90_many_locals")
+//    @StringSource("64_calculator")
+//    @StringSource("08_const_array_defn")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
-//        testFile(DIR, name);
         testFile(DIR_HIDDEN, name);
+//        testFile(DIR_HIDDEN, name);
     }
 
     /**
