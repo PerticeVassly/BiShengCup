@@ -2,7 +2,7 @@
 
 .globl gv
 gv:
-.word 0
+.zero 4
 .word 1
 .word 2
 .word 3
@@ -12,7 +12,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry65:
+mainEntry66:
 
 	# reserve space
 	li t4, 0

@@ -163,15 +163,15 @@ exgcdEntry:
 	# get address of local var:cond_
 	sw t0, 212(sp)
 
-	# condBr cond_ ifTrue_65 ifFalse_16
+	# condBr cond_ ifTrue_73 ifFalse_19
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 212(sp)
-	beqz t1, ifFalse_16
-	j ifTrue_65
-ifTrue_65:
+	beqz t1, ifFalse_19
+	j ifTrue_73
+ifTrue_73:
 
 	# load arr_ lv$2
 
@@ -265,7 +265,7 @@ ifTrue_65:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-ifFalse_16:
+ifFalse_19:
 
 	# load b$1 lv$1
 
@@ -667,7 +667,7 @@ ifFalse_16:
 .type main, @function
 .globl main
 main:
-mainEntry42:
+mainEntry43:
 
 	# reserve space
 	li t4, 176

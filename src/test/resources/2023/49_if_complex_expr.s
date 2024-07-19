@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry38:
+mainEntry39:
 
 	# reserve space
 	li t4, 240
@@ -163,15 +163,15 @@ mainEntry38:
 	# get address of local var:cond_
 	sw t0, 140(sp)
 
-	# condBr cond_ ifTrue_58 secondCond_35
+	# condBr cond_ ifTrue_66 secondCond_37
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 140(sp)
-	beqz t1, secondCond_35
-	j ifTrue_58
-ifTrue_58:
+	beqz t1, secondCond_37
+	j ifTrue_66
+ifTrue_66:
 
 	# load result lv$4
 
@@ -207,9 +207,9 @@ ifTrue_58:
 	li t4, 0
 	add sp, sp, t4
 
-	# br next_131
-	j next_131
-next_131:
+	# br next_140
+	j next_140
+next_140:
 
 	# load d$1 lv$3
 
@@ -281,15 +281,15 @@ next_131:
 	# get address of local var:cond_$3
 	sw t0, 112(sp)
 
-	# condBr cond_$3 ifTrue_59 secondCond_37
+	# condBr cond_$3 ifTrue_67 secondCond_39
 
 	# fetch variables
 
 	# get address of local var:cond_$3
 	lw t1, 112(sp)
-	beqz t1, secondCond_37
-	j ifTrue_59
-secondCond_35:
+	beqz t1, secondCond_39
+	j ifTrue_67
+secondCond_37:
 
 	# load a lv
 
@@ -362,15 +362,15 @@ secondCond_35:
 	# get address of local var:cond_$1
 	sw t0, 88(sp)
 
-	# condBr cond_$1 secondCond_36 next_131
+	# condBr cond_$1 secondCond_38 next_140
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 88(sp)
-	beqz t1, next_131
-	j secondCond_36
-secondCond_36:
+	beqz t1, next_140
+	j secondCond_38
+secondCond_38:
 
 	# load c lv$2
 
@@ -444,14 +444,14 @@ secondCond_36:
 	# get address of local var:cond_$2
 	sw t0, 64(sp)
 
-	# condBr cond_$2 ifTrue_58 next_131
+	# condBr cond_$2 ifTrue_66 next_140
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	lw t1, 64(sp)
-	beqz t1, next_131
-	j ifTrue_58
+	beqz t1, next_140
+	j ifTrue_66
 
 	# ICMP cond_normalize_   
 
@@ -465,15 +465,15 @@ secondCond_36:
 	# get address of local var:cond_normalize_
 	sw t0, 60(sp)
 
-	# condBr cond_normalize_ ifTrue_58 next_131
+	# condBr cond_normalize_ ifTrue_66 next_140
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
 	lw t1, 60(sp)
-	beqz t1, next_131
-	j ifTrue_58
-ifTrue_59:
+	beqz t1, next_140
+	j ifTrue_66
+ifTrue_67:
 
 	# store lv$4 
 
@@ -518,9 +518,9 @@ ifTrue_59:
 	li t4, 0
 	add sp, sp, t4
 
-	# br next_132
-	j next_132
-next_132:
+	# br next_141
+	j next_141
+next_141:
 
 	# ret 
 
@@ -530,7 +530,7 @@ next_132:
 	li t4, 240
 	add sp, sp, t4
 	ret 
-secondCond_37:
+secondCond_39:
 
 	# load a$1 lv
 
@@ -603,15 +603,15 @@ secondCond_37:
 	# get address of local var:cond_$4
 	sw t0, 32(sp)
 
-	# condBr cond_$4 secondCond_38 next_132
+	# condBr cond_$4 secondCond_40 next_141
 
 	# fetch variables
 
 	# get address of local var:cond_$4
 	lw t1, 32(sp)
-	beqz t1, next_132
-	j secondCond_38
-secondCond_38:
+	beqz t1, next_141
+	j secondCond_40
+secondCond_40:
 
 	# load c$1 lv$2
 
@@ -685,14 +685,14 @@ secondCond_38:
 	# get address of local var:cond_$5
 	sw t0, 8(sp)
 
-	# condBr cond_$5 ifTrue_59 next_132
+	# condBr cond_$5 ifTrue_67 next_141
 
 	# fetch variables
 
 	# get address of local var:cond_$5
 	lw t1, 8(sp)
-	beqz t1, next_132
-	j ifTrue_59
+	beqz t1, next_141
+	j ifTrue_67
 
 	# ICMP cond_normalize_$1   
 
@@ -706,14 +706,14 @@ secondCond_38:
 	# get address of local var:cond_normalize_$1
 	sw t0, 4(sp)
 
-	# condBr cond_normalize_$1 ifTrue_59 next_132
+	# condBr cond_normalize_$1 ifTrue_67 next_141
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_$1
 	lw t1, 4(sp)
-	beqz t1, next_132
-	j ifTrue_59
+	beqz t1, next_141
+	j ifTrue_67
 
 memset32: 
     blez    a2, .LBB0_3 

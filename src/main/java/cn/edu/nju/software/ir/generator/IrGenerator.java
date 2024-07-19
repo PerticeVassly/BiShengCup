@@ -64,9 +64,6 @@ import java.util.ArrayList;
      ValueRef positionBuilderAtEnd(BuilderRef builder, BasicBlockRef block);
 
      ConstValue ConstInt(IntType type, int value);
-
-     ConstValue ConstLong(IntType type, long value);
-
 //     ArrayValue ConstArray()
      ConstValue ConstBool(BoolType type, boolean value);
      ConstValue ConstFloat(FloatType type, float value);

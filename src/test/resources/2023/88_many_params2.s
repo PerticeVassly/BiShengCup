@@ -222,9 +222,9 @@ funcEntry1:
 	ld t3, 312(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_69
-	j whileCond_69
-whileCond_69:
+	# br whileCond_70
+	j whileCond_70
+whileCond_70:
 
 	# load index lv$9
 
@@ -272,15 +272,15 @@ whileCond_69:
 	# get address of local var:cond_
 	sw t0, 148(sp)
 
-	# condBr cond_ whileBody_69 next_125
+	# condBr cond_ whileBody_70 next_134
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 148(sp)
-	beqz t1, next_125
-	j whileBody_69
-whileBody_69:
+	beqz t1, next_134
+	j whileBody_70
+whileBody_70:
 
 	# load a lv
 
@@ -413,9 +413,9 @@ whileBody_69:
 	ld t3, 312(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_69
-	j whileCond_69
-next_125:
+	# br whileCond_70
+	j whileCond_70
+next_134:
 
 	# prepare params
 
@@ -534,9 +534,9 @@ next_125:
 	li t4, 0
 	add sp, sp, t4
 
-	# br whileCond_70
-	j whileCond_70
-whileCond_70:
+	# br whileCond_71
+	j whileCond_71
+whileCond_71:
 
 	# load i lv$8
 
@@ -584,15 +584,15 @@ whileCond_70:
 	# get address of local var:cond_$1
 	sw t0, 60(sp)
 
-	# condBr cond_$1 whileBody_70 next_126
+	# condBr cond_$1 whileBody_71 next_135
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 60(sp)
-	beqz t1, next_126
-	j whileBody_70
-whileBody_70:
+	beqz t1, next_135
+	j whileBody_71
+whileBody_71:
 
 	# load i$1 lv$8
 
@@ -739,9 +739,9 @@ whileBody_70:
 	ld t3, 280(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_70
-	j whileCond_70
-next_126:
+	# br whileCond_71
+	j whileCond_71
+next_135:
 
 	# load e lv$4
 
@@ -791,7 +791,7 @@ next_126:
 .type main, @function
 .globl main
 main:
-mainEntry27:
+mainEntry28:
 
 	# reserve space
 	li t4, 29296
@@ -1787,9 +1787,9 @@ mainEntry27:
 	ld t3, 0(t4)
 	sw t1, 0(t3)
 
-	# br whileCond_71
-	j whileCond_71
-whileCond_71:
+	# br whileCond_72
+	j whileCond_72
+whileCond_72:
 
 	# load ret lv$2
 
@@ -1840,15 +1840,15 @@ whileCond_71:
 	# get address of local var:cond_
 	sw t0, 36(sp)
 
-	# condBr cond_ whileBody_71 next_127
+	# condBr cond_ whileBody_72 next_136
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 36(sp)
-	beqz t1, next_127
-	j whileBody_71
-whileBody_71:
+	beqz t1, next_136
+	j whileBody_72
+whileBody_72:
 
 	# load ret$1 lv$2
 
@@ -1992,9 +1992,9 @@ whileBody_71:
 	ld t3, 0(t4)
 	sw t1, 0(t3)
 
-	# br whileCond_71
-	j whileCond_71
-next_127:
+	# br whileCond_72
+	j whileCond_72
+next_136:
 
 	# prepare params
 

@@ -50,9 +50,9 @@ doubleWhileEntry:
 	ld t3, 80(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_67
-	j whileCond_67
-whileCond_67:
+	# br whileCond_68
+	j whileCond_68
+whileCond_68:
 
 	# load i lv
 
@@ -100,15 +100,15 @@ whileCond_67:
 	# get address of local var:cond_
 	sw t0, 44(sp)
 
-	# condBr cond_ whileBody_67 next_123
+	# condBr cond_ whileBody_68 next_132
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 44(sp)
-	beqz t1, next_123
-	j whileBody_67
-whileBody_67:
+	beqz t1, next_132
+	j whileBody_68
+whileBody_68:
 
 	# load i$1 lv
 
@@ -142,9 +142,9 @@ whileBody_67:
 	ld t3, 64(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_68
-	j whileCond_68
-next_123:
+	# br whileCond_69
+	j whileCond_69
+next_132:
 
 	# load j$3 lv$1
 
@@ -168,7 +168,7 @@ next_123:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_68:
+whileCond_69:
 
 	# load j lv$1
 
@@ -216,15 +216,15 @@ whileCond_68:
 	# get address of local var:cond_$1
 	sw t0, 16(sp)
 
-	# condBr cond_$1 whileBody_68 next_124
+	# condBr cond_$1 whileBody_69 next_133
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 16(sp)
-	beqz t1, next_124
-	j whileBody_68
-whileBody_68:
+	beqz t1, next_133
+	j whileBody_69
+whileBody_69:
 
 	# load j$1 lv$1
 
@@ -258,9 +258,9 @@ whileBody_68:
 	ld t3, 80(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_68
-	j whileCond_68
-next_124:
+	# br whileCond_69
+	j whileCond_69
+next_133:
 
 	# load j$2 lv$1
 
@@ -294,12 +294,12 @@ next_124:
 	ld t3, 80(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_67
-	j whileCond_67
+	# br whileCond_68
+	j whileCond_68
 .type main, @function
 .globl main
 main:
-mainEntry26:
+mainEntry27:
 
 	# reserve space
 	li t4, 8

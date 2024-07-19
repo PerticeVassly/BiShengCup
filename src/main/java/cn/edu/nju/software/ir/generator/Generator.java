@@ -90,8 +90,8 @@ public class Generator implements IrGenerator {
                     value = gen.buildFloatToInt(builder, value, "f2i_");
                 }
             } else {
-                if (value instanceof ConstValue constValue) {
-                    value = gen.ConstFloat(floatType, constValue.castToFloat());
+                if (value instanceof ConstValue) {
+                    value = gen.ConstFloat(floatType, (float) (int)((ConstValue) value).getValue());
                 } else {
                     value = gen.buildIntToFloat(builder, value, "i2f_");
                 }
@@ -365,12 +365,6 @@ public class Generator implements IrGenerator {
     public ConstValue ConstInt(IntType type, int value) {
         return new ConstValue(type, value);
     }
-
-    @Override
-    public ConstValue ConstLong(IntType type, long value) {
-        return new ConstValue(type, value);
-    }
-
     @Override
     public ConstValue ConstBool(BoolType type, boolean value) {
         return new ConstValue(type, value);
@@ -406,8 +400,8 @@ public class Generator implements IrGenerator {
     }
     @Override
     public ValueRef buildFloatToInt(BuilderRef builder, ValueRef floatVal, String name) {
-        if (floatVal instanceof ConstValue constValue) {
-            return ConstInt(i32Type, constValue.castToInt());
+        if (floatVal instanceof ConstValue) {
+            return ConstInt(i32Type, ((ConstValue) floatVal).castToInt());
         }
         LocalVar localVar = builder.createLocalVar(i32Type, name);
         Instruction ir = new FloatToInt(localVar, floatVal);
@@ -416,8 +410,8 @@ public class Generator implements IrGenerator {
     }
     @Override
     public ValueRef buildIntToFloat(BuilderRef builder, ValueRef intVal, String name) {
-        if (intVal instanceof ConstValue constValue) {
-            return ConstFloat(floatType, constValue.castToFloat());
+        if (intVal instanceof ConstValue) {
+            return ConstFloat(floatType, (float) (int)((ConstValue) intVal).getValue());
         }
         LocalVar localVar = builder.createLocalVar(floatType, name);
         Instruction ir = new IntToFloat(localVar, intVal);

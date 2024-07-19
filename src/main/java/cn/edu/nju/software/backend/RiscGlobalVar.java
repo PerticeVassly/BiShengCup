@@ -23,6 +23,7 @@ public class RiscGlobalVar {
     }
 
     public void dumpToConsole() {
+        System.out.println(".align 8");
         System.out.println(".globl " + name);
         if(globalVar.isZeroInitializer()){
             System.out.println(name + ":");

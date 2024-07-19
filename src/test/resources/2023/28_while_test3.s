@@ -94,9 +94,9 @@ EightWhileEntry:
 	ld t3, 360(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_73
-	j whileCond_73
-whileCond_73:
+	# br whileCond_74
+	j whileCond_74
+whileCond_74:
 
 	# load a lv
 
@@ -144,15 +144,15 @@ whileCond_73:
 	# get address of local var:cond_
 	sw t0, 292(sp)
 
-	# condBr cond_ whileBody_73 next_133
+	# condBr cond_ whileBody_74 next_142
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 292(sp)
-	beqz t1, next_133
-	j whileBody_73
-whileBody_73:
+	beqz t1, next_142
+	j whileBody_74
+whileBody_74:
 
 	# load a$1 lv
 
@@ -186,9 +186,9 @@ whileBody_73:
 	ld t3, 312(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_74
-	j whileCond_74
-next_133:
+	# br whileCond_75
+	j whileCond_75
+next_142:
 
 	# load a$2 lv
 
@@ -373,7 +373,7 @@ next_133:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_74:
+whileCond_75:
 
 	# load b lv$1
 
@@ -421,15 +421,15 @@ whileCond_74:
 	# get address of local var:cond_$1
 	sw t0, 208(sp)
 
-	# condBr cond_$1 whileBody_74 next_134
+	# condBr cond_$1 whileBody_75 next_143
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 208(sp)
-	beqz t1, next_134
-	j whileBody_74
-whileBody_74:
+	beqz t1, next_143
+	j whileBody_75
+whileBody_75:
 
 	# load b$1 lv$1
 
@@ -463,9 +463,9 @@ whileBody_74:
 	ld t3, 328(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_75
-	j whileCond_75
-next_134:
+	# br whileCond_76
+	j whileCond_76
+next_143:
 
 	# load b$2 lv$1
 
@@ -499,9 +499,9 @@ next_134:
 	ld t3, 328(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_73
-	j whileCond_73
-whileCond_75:
+	# br whileCond_74
+	j whileCond_74
+whileCond_76:
 
 	# load c lv$2
 
@@ -550,15 +550,15 @@ whileCond_75:
 	# get address of local var:cond_$2
 	sw t0, 176(sp)
 
-	# condBr cond_$2 whileBody_75 next_135
+	# condBr cond_$2 whileBody_76 next_144
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	lw t1, 176(sp)
-	beqz t1, next_135
-	j whileBody_75
-whileBody_75:
+	beqz t1, next_144
+	j whileBody_76
+whileBody_76:
 
 	# load c$1 lv$2
 
@@ -592,9 +592,9 @@ whileBody_75:
 	ld t3, 344(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_76
-	j whileCond_76
-next_135:
+	# br whileCond_77
+	j whileCond_77
+next_144:
 
 	# load c$2 lv$2
 
@@ -628,9 +628,9 @@ next_135:
 	ld t3, 344(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_74
-	j whileCond_74
-whileCond_76:
+	# br whileCond_75
+	j whileCond_75
+whileCond_77:
 
 	# load d lv$3
 
@@ -678,15 +678,15 @@ whileCond_76:
 	# get address of local var:cond_$3
 	sw t0, 144(sp)
 
-	# condBr cond_$3 whileBody_76 next_136
+	# condBr cond_$3 whileBody_77 next_145
 
 	# fetch variables
 
 	# get address of local var:cond_$3
 	lw t1, 144(sp)
-	beqz t1, next_136
-	j whileBody_76
-whileBody_76:
+	beqz t1, next_145
+	j whileBody_77
+whileBody_77:
 
 	# load d$1 lv$3
 
@@ -720,9 +720,9 @@ whileBody_76:
 	ld t3, 360(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_77
-	j whileCond_77
-next_136:
+	# br whileCond_78
+	j whileCond_78
+next_145:
 
 	# load d$2 lv$3
 
@@ -756,9 +756,9 @@ next_136:
 	ld t3, 360(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_75
-	j whileCond_75
-whileCond_77:
+	# br whileCond_76
+	j whileCond_76
+whileCond_78:
 
 	# load e gv3
 
@@ -807,15 +807,15 @@ whileCond_77:
 	# get address of local var:cond_$4
 	sw t0, 112(sp)
 
-	# condBr cond_$4 whileBody_77 next_137
+	# condBr cond_$4 whileBody_78 next_146
 
 	# fetch variables
 
 	# get address of local var:cond_$4
 	lw t1, 112(sp)
-	beqz t1, next_137
-	j whileBody_77
-whileBody_77:
+	beqz t1, next_146
+	j whileBody_78
+whileBody_78:
 
 	# load e$1 gv3
 
@@ -849,9 +849,9 @@ whileBody_77:
 	la t3, gv3
 	sw t1, 0(t3)
 
-	# br whileCond_78
-	j whileCond_78
-next_137:
+	# br whileCond_79
+	j whileCond_79
+next_146:
 
 	# load e$2 gv3
 
@@ -885,9 +885,9 @@ next_137:
 	la t3, gv3
 	sw t1, 0(t3)
 
-	# br whileCond_76
-	j whileCond_76
-whileCond_78:
+	# br whileCond_77
+	j whileCond_77
+whileCond_79:
 
 	# load f gv2
 
@@ -936,15 +936,15 @@ whileCond_78:
 	# get address of local var:cond_$5
 	sw t0, 80(sp)
 
-	# condBr cond_$5 whileBody_78 next_138
+	# condBr cond_$5 whileBody_79 next_147
 
 	# fetch variables
 
 	# get address of local var:cond_$5
 	lw t1, 80(sp)
-	beqz t1, next_138
-	j whileBody_78
-whileBody_78:
+	beqz t1, next_147
+	j whileBody_79
+whileBody_79:
 
 	# load f$1 gv2
 
@@ -978,9 +978,9 @@ whileBody_78:
 	la t3, gv2
 	sw t1, 0(t3)
 
-	# br whileCond_79
-	j whileCond_79
-next_138:
+	# br whileCond_80
+	j whileCond_80
+next_147:
 
 	# load f$2 gv2
 
@@ -1014,9 +1014,9 @@ next_138:
 	la t3, gv2
 	sw t1, 0(t3)
 
-	# br whileCond_77
-	j whileCond_77
-whileCond_79:
+	# br whileCond_78
+	j whileCond_78
+whileCond_80:
 
 	# load g gv
 
@@ -1064,15 +1064,15 @@ whileCond_79:
 	# get address of local var:cond_$6
 	sw t0, 48(sp)
 
-	# condBr cond_$6 whileBody_79 next_139
+	# condBr cond_$6 whileBody_80 next_148
 
 	# fetch variables
 
 	# get address of local var:cond_$6
 	lw t1, 48(sp)
-	beqz t1, next_139
-	j whileBody_79
-whileBody_79:
+	beqz t1, next_148
+	j whileBody_80
+whileBody_80:
 
 	# load g$1 gv
 
@@ -1106,9 +1106,9 @@ whileBody_79:
 	la t3, gv
 	sw t1, 0(t3)
 
-	# br whileCond_80
-	j whileCond_80
-next_139:
+	# br whileCond_81
+	j whileCond_81
+next_148:
 
 	# load g$2 gv
 
@@ -1142,9 +1142,9 @@ next_139:
 	la t3, gv
 	sw t1, 0(t3)
 
-	# br whileCond_78
-	j whileCond_78
-whileCond_80:
+	# br whileCond_79
+	j whileCond_79
+whileCond_81:
 
 	# load h gv1
 
@@ -1192,15 +1192,15 @@ whileCond_80:
 	# get address of local var:cond_$7
 	sw t0, 16(sp)
 
-	# condBr cond_$7 whileBody_80 next_140
+	# condBr cond_$7 whileBody_81 next_149
 
 	# fetch variables
 
 	# get address of local var:cond_$7
 	lw t1, 16(sp)
-	beqz t1, next_140
-	j whileBody_80
-whileBody_80:
+	beqz t1, next_149
+	j whileBody_81
+whileBody_81:
 
 	# load h$1 gv1
 
@@ -1234,9 +1234,9 @@ whileBody_80:
 	la t3, gv1
 	sw t1, 0(t3)
 
-	# br whileCond_80
-	j whileCond_80
-next_140:
+	# br whileCond_81
+	j whileCond_81
+next_149:
 
 	# load h$2 gv1
 
@@ -1270,12 +1270,12 @@ next_140:
 	la t3, gv1
 	sw t1, 0(t3)
 
-	# br whileCond_79
-	j whileCond_79
+	# br whileCond_80
+	j whileCond_80
 .type main, @function
 .globl main
 main:
-mainEntry40:
+mainEntry41:
 
 	# reserve space
 	li t4, 8

@@ -231,9 +231,9 @@ addEntry:
 	ld t3, 416(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_194
-	j whileCond_194
-whileCond_194:
+	# br whileCond_196
+	j whileCond_196
+whileCond_196:
 
 	# load i lv$9
 
@@ -292,15 +292,15 @@ whileCond_194:
 	# get address of local var:cond_
 	sw t0, 244(sp)
 
-	# condBr cond_ whileBody_194 next_467
+	# condBr cond_ whileBody_196 next_482
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 244(sp)
-	beqz t1, next_467
-	j whileBody_194
-whileBody_194:
+	beqz t1, next_482
+	j whileBody_196
+whileBody_196:
 
 	# load i$1 lv$9
 
@@ -796,9 +796,9 @@ whileBody_194:
 	ld t3, 416(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_194
-	j whileCond_194
-next_467:
+	# br whileCond_196
+	j whileCond_196
+next_482:
 
 	# ret 
 
@@ -814,7 +814,7 @@ next_467:
 .type main, @function
 .globl main
 main:
-mainEntry55:
+mainEntry56:
 
 	# reserve space
 	li t4, 672
@@ -935,9 +935,9 @@ mainEntry55:
 	ld t3, 648(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_195
-	j whileCond_195
-whileCond_195:
+	# br whileCond_197
+	j whileCond_197
+whileCond_197:
 
 	# load i lv$9
 
@@ -996,15 +996,15 @@ whileCond_195:
 	# get address of local var:cond_
 	sw t0, 400(sp)
 
-	# condBr cond_ whileBody_195 next_468
+	# condBr cond_ whileBody_197 next_483
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 400(sp)
-	beqz t1, next_468
-	j whileBody_195
-whileBody_195:
+	beqz t1, next_483
+	j whileBody_197
+whileBody_197:
 
 	# load i$1 lv$9
 
@@ -1392,9 +1392,9 @@ whileBody_195:
 	ld t3, 648(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_195
-	j whileCond_195
-next_468:
+	# br whileCond_197
+	j whileCond_197
+next_483:
 
 	# gep a0$1 
 
@@ -1638,9 +1638,9 @@ next_468:
 	ld t3, 648(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_196
-	j whileCond_196
-whileCond_196:
+	# br whileCond_198
+	j whileCond_198
+whileCond_198:
 
 	# load i$14 lv$9
 
@@ -1699,15 +1699,15 @@ whileCond_196:
 	# get address of local var:cond_$1
 	sw t0, 152(sp)
 
-	# condBr cond_$1 whileBody_196 next_469
+	# condBr cond_$1 whileBody_198 next_484
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 152(sp)
-	beqz t1, next_469
-	j whileBody_196
-whileBody_196:
+	beqz t1, next_484
+	j whileBody_198
+whileBody_198:
 
 	# load i$15 lv$9
 
@@ -1834,9 +1834,9 @@ whileBody_196:
 	ld t3, 648(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_196
-	j whileCond_196
-next_469:
+	# br whileCond_198
+	j whileCond_198
+next_484:
 
 	# store lv$10 
 
@@ -1890,9 +1890,9 @@ next_469:
 	ld t3, 648(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_197
-	j whileCond_197
-whileCond_197:
+	# br whileCond_199
+	j whileCond_199
+whileCond_199:
 
 	# load i$17 lv$9
 
@@ -1951,15 +1951,15 @@ whileCond_197:
 	# get address of local var:cond_$2
 	sw t0, 92(sp)
 
-	# condBr cond_$2 whileBody_197 next_470
+	# condBr cond_$2 whileBody_199 next_485
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	lw t1, 92(sp)
-	beqz t1, next_470
-	j whileBody_197
-whileBody_197:
+	beqz t1, next_485
+	j whileBody_199
+whileBody_199:
 
 	# load i$18 lv$9
 
@@ -2086,9 +2086,9 @@ whileBody_197:
 	ld t3, 648(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_197
-	j whileCond_197
-next_470:
+	# br whileCond_199
+	j whileCond_199
+next_485:
 
 	# store lv$10 
 
@@ -2142,9 +2142,9 @@ next_470:
 	ld t3, 648(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_198
-	j whileCond_198
-whileCond_198:
+	# br whileCond_200
+	j whileCond_200
+whileCond_200:
 
 	# load i$20 lv$9
 
@@ -2203,15 +2203,15 @@ whileCond_198:
 	# get address of local var:cond_$3
 	sw t0, 36(sp)
 
-	# condBr cond_$3 whileBody_198 next_471
+	# condBr cond_$3 whileBody_200 next_486
 
 	# fetch variables
 
 	# get address of local var:cond_$3
 	lw t1, 36(sp)
-	beqz t1, next_471
-	j whileBody_198
-whileBody_198:
+	beqz t1, next_486
+	j whileBody_200
+whileBody_200:
 
 	# load i$21 lv$9
 
@@ -2338,9 +2338,9 @@ whileBody_198:
 	ld t3, 648(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_198
-	j whileCond_198
-next_471:
+	# br whileCond_200
+	j whileCond_200
+next_486:
 
 	# store lv$10 
 
