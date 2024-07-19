@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 public class FunctionValue extends ValueRef {
     private final ArrayList<LocalVar> params;
     private final int fParamNum;
-    private int paramsNum;
+    private final int paramsNum;
     private final ArrayList<String> paramsUsedNames = new ArrayList<String>(){{add("");}};
     private final ArrayList<Integer> paramsUsedNamesFreq= new ArrayList<Integer>(){{add(0);}};
     private final List<BasicBlockRef> blocks;
@@ -138,6 +138,7 @@ public class FunctionValue extends ValueRef {
 
     public void clearDeadBlocks() {
         blocks.removeIf(bb -> !bb.isReachable());
+        blocks.forEach(BasicBlockRef::dropDeadPred);
     }
 
     public void emitAlloc(Allocate inst) {

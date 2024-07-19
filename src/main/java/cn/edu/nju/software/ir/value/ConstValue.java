@@ -12,6 +12,11 @@ public class ConstValue extends ValueRef {
         this.value = value;
     }
 
+    public ConstValue(IntType type, Long value) {
+        this.type = type;
+        this.value = value;
+    }
+
     public ConstValue(FloatType type, Float value) {
         this.type = type;
         this.value = value;
@@ -47,6 +52,8 @@ public class ConstValue extends ValueRef {
     public int castToInt() {
         if (value instanceof Integer integer) {
             return integer;
+        } else if (value instanceof Long longVal) {
+          return Math.toIntExact(longVal);
         } else if (value instanceof Float floatVal) {
             return (int)(float)floatVal;
         } else if (value instanceof Boolean booleanVal) {
@@ -56,9 +63,23 @@ public class ConstValue extends ValueRef {
         }
     }
 
+    public float castToFloat() {
+        if (value instanceof Integer integer) {
+            return integer + 0.0f;
+        } else if (value instanceof Long longVal) {
+            return Math.toIntExact(longVal) + 0.0f;
+        } else if (value instanceof Float floatVal) {
+            return floatVal;
+        } else if (value instanceof Boolean booleanVal) {
+            return booleanVal ? 1.0f : 0.0f;
+        } else {
+            throw new RuntimeException("castToInt error");
+        }
+    }
+
     public String toRiscvString() {
         if (type instanceof IntType){
-            if (value instanceof Integer) {
+            if (value instanceof Integer || value instanceof Long) {
                 return value.toString();
             } else {
                 // Float
@@ -78,7 +99,7 @@ public class ConstValue extends ValueRef {
 
     public String toString() {
         if (type instanceof IntType){
-            if (value instanceof Integer) {
+            if (value instanceof Integer || value instanceof Long) {
                 return value.toString();
             } else {
                 // Float

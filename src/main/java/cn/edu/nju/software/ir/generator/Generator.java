@@ -85,13 +85,13 @@ public class Generator implements IrGenerator {
         if (!value.getType().equals(((Pointer)lVal.getType()).getBase())) {
             if (((Pointer)lVal.getType()).getBase().equals(i32Type)) {
                 if (value instanceof ConstValue) {
-                    value = gen.ConstInt(i32Type,  (int) (float)((ConstValue) value).getValue());
+                    value = gen.ConstInt(i32Type, ((ConstValue) value).castToInt());
                 } else {
                     value = gen.buildFloatToInt(builder, value, "f2i_");
                 }
             } else {
-                if (value instanceof ConstValue) {
-                    value = gen.ConstFloat(floatType, (float) (int)((ConstValue) value).getValue());
+                if (value instanceof ConstValue constValue) {
+                    value = gen.ConstFloat(floatType, constValue.castToFloat());
                 } else {
                     value = gen.buildIntToFloat(builder, value, "i2f_");
                 }
@@ -365,6 +365,12 @@ public class Generator implements IrGenerator {
     public ConstValue ConstInt(IntType type, int value) {
         return new ConstValue(type, value);
     }
+
+    @Override
+    public ConstValue ConstLong(IntType type, long value) {
+        return new ConstValue(type, value);
+    }
+
     @Override
     public ConstValue ConstBool(BoolType type, boolean value) {
         return new ConstValue(type, value);
@@ -400,8 +406,8 @@ public class Generator implements IrGenerator {
     }
     @Override
     public ValueRef buildFloatToInt(BuilderRef builder, ValueRef floatVal, String name) {
-        if (floatVal instanceof ConstValue) {
-            return ConstInt(i32Type, (int)(float)((ConstValue) floatVal).getValue());
+        if (floatVal instanceof ConstValue constValue) {
+            return ConstInt(i32Type, constValue.castToInt());
         }
         LocalVar localVar = builder.createLocalVar(i32Type, name);
         Instruction ir = new FloatToInt(localVar, floatVal);
@@ -410,8 +416,8 @@ public class Generator implements IrGenerator {
     }
     @Override
     public ValueRef buildIntToFloat(BuilderRef builder, ValueRef intVal, String name) {
-        if (intVal instanceof ConstValue) {
-            return ConstFloat(floatType, (float) (int)((ConstValue) intVal).getValue());
+        if (intVal instanceof ConstValue constValue) {
+            return ConstFloat(floatType, constValue.castToFloat());
         }
         LocalVar localVar = builder.createLocalVar(floatType, name);
         Instruction ir = new IntToFloat(localVar, intVal);
