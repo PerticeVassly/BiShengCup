@@ -47,7 +47,7 @@ public class TestBackEndIO {
     @ParameterizedTest
     @MethodSource("dirHidden")
     void testHidden(String name) throws IOException, InterruptedException {
-        if(name.contains("38")){
+        if(name.contains("38") || name.contains("36")){
             fail();
         }
         testFile(DIR_HIDDEN, name);

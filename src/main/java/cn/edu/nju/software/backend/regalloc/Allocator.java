@@ -280,4 +280,7 @@ public class Allocator {
         memoryManager.align8byte();
     }
 
+    public void alignStack16byte() {
+        memoryManager.align16byte();
+    }
 }

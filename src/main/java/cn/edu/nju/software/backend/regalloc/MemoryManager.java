@@ -62,4 +62,7 @@ public class MemoryManager {
         size = (size + 7) / 8 * 8;
     }
 
+    public void align16byte() {
+        size = (size + 15) / 16 * 16;
+    }
 }

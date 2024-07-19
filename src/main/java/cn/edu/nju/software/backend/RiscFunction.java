@@ -35,7 +35,7 @@ public class RiscFunction {
     private void allocateSpace() {
         reserveSpaceForFParams();
         reserveSpaceForLocalVariables();
-        alignStack8byte();
+        alignStack16byte();
     }
 
     /**
@@ -79,10 +79,12 @@ public class RiscFunction {
         allocator.alignStack8byte();
     }
 
+    private void alignStack16byte(){
+        allocator.alignStack16byte();
+    }
+
     private void reserveMemoryForType(ValueRef var, TypeRef type) {
-        if(type instanceof Pointer){
-            alignStack8byte();
-        }
+        alignStack8byte();
         allocator.allocate(var, allocator.getSizeOfType(type));
     }
 
