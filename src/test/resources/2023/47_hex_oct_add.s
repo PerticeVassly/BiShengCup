@@ -1,31 +1,31 @@
-.data
-.align 2
+.bss
+
 .text
-.align 2
+
 .type main, @function
 .globl main
 main:
 mainEntry14:
 
 	# reserve space
-	li t4, 40
+	li t4, 48
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv$1
-	li t0, 28
+	li t0, 36
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 32(sp)
+	sd t0, 40(sp)
 
 	# allocate lv
-	li t0, 16
+	li t0, 20
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 20(sp)
+	sd t0, 24(sp)
 
 	# store lv 
 
@@ -33,7 +33,7 @@ mainEntry14:
 	li t1, 15
 
 	# get address of lv points to
-	ld t3, 20(sp)
+	ld t3, 24(sp)
 	sw t1, 0(t3)
 
 	# store lv$1 
@@ -42,61 +42,61 @@ mainEntry14:
 	li t1, 12
 
 	# get address of lv$1 points to
-	ld t3, 32(sp)
+	ld t3, 40(sp)
 	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 20(sp)
+	ld t3, 24(sp)
 
 	# get address of local var:a
 	lw t0, 0(t3)
-	sw t0, 12(sp)
+	sw t0, 16(sp)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 32(sp)
+	ld t3, 40(sp)
 
 	# get address of local var:b
 	lw t0, 0(t3)
-	sw t0, 8(sp)
+	sw t0, 12(sp)
 
 	# ADD result_ a b 
 
 	# fetch variables
 
 	# get address of local var:a
-	lw t1, 12(sp)
+	lw t1, 16(sp)
 
 	# get address of local var:b
-	lw t2, 8(sp)
+	lw t2, 12(sp)
 	add t0, t1, t2
 
 	# get address of local var:result_
-	sw t0, 4(sp)
+	sw t0, 8(sp)
 
 	# ADD result_$1 result_  
 
 	# fetch variables
 
 	# get address of local var:result_
-	lw t1, 4(sp)
+	lw t1, 8(sp)
 	li t2, 61
 	add t0, t1, t2
 
 	# get address of local var:result_$1
-	sw t0, 0(sp)
+	sw t0, 4(sp)
 
 	# ret result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
-	lw t1, 0(sp)
+	lw t1, 4(sp)
 	mv a0, t1
-	li t4, 40
+	li t4, 48
 	add sp, sp, t4
 	ret 
 

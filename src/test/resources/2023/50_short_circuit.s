@@ -1,17 +1,17 @@
-.data
-.align 2
+.bss
+
 .globl gv
 gv:
 .word 0
 .text
-.align 2
+
 .type func, @function
 .globl func
 func:
 funcEntry3:
 
 	# reserve space
-	li t4, 36
+	li t4, 40
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -22,7 +22,7 @@ funcEntry3:
 	# save the parameters
 
 	# get address of local var:0
-	sw a0, 32(sp)
+	sw a0, 36(sp)
 
 	# allocate lv
 	li t0, 20
@@ -36,7 +36,7 @@ funcEntry3:
 	# fetch variables
 
 	# get address of local var:0
-	lw t1, 32(sp)
+	lw t1, 36(sp)
 
 	# get address of lv points to
 	ld t3, 24(sp)
@@ -135,7 +135,7 @@ funcEntry3:
 	# get address of local var:g$2
 	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 36
+	li t4, 40
 	add sp, sp, t4
 
 	# restore callee saved regs

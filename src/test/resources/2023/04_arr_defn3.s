@@ -1,70 +1,70 @@
-.data
-.align 2
+.bss
+
 .text
-.align 2
+
 .type main, @function
 .globl main
 main:
 mainEntry32:
 
 	# reserve space
-	li t4, 852
+	li t4, 864
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv$4
-	li t0, 812
+	li t0, 824
 	add t0, sp, t0
 
 	# get address of local var:lv$4
-	sd t0, 844(sp)
+	sd t0, 856(sp)
 
 	# allocate lv$3
-	li t0, 772
+	li t0, 784
 	add t0, sp, t0
 
 	# get address of local var:lv$3
-	sd t0, 804(sp)
+	sd t0, 816(sp)
 
 	# allocate lv$2
-	li t0, 732
+	li t0, 744
 	add t0, sp, t0
 
 	# get address of local var:lv$2
-	sd t0, 764(sp)
+	sd t0, 776(sp)
 
 	# allocate lv$1
-	li t0, 692
+	li t0, 704
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 724(sp)
+	sd t0, 736(sp)
 
 	# allocate lv
-	li t0, 652
+	li t0, 664
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 684(sp)
+	sd t0, 696(sp)
 
 	#  ptr lv
 
 	# fetch variables
 
 	# get address of local var:lv
-	ld t1, 684(sp)
+	ld t1, 696(sp)
 	mv t0, t1
 
 	# get address of local var:ptr
-	sd t0, 644(sp)
+	sd t0, 656(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:ptr
-	ld t1, 644(sp)
+	ld t1, 656(sp)
 	mv a0, t1
 
 	# fetch variables
@@ -102,12 +102,12 @@ mainEntry32:
 	# get value of local var:lv$1
 
 	# get address of local var:lv$1
-	ld t3, 724(sp)
+	ld t3, 736(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_
-	sd t0, 636(sp)
+	sd t0, 648(sp)
 
 	# gep inp 
 
@@ -119,12 +119,12 @@ mainEntry32:
 	# get value of local var:ptr_
 
 	# get address of local var:ptr_
-	ld t3, 636(sp)
+	ld t3, 648(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp
-	sd t0, 628(sp)
+	sd t0, 640(sp)
 
 	# store inp 
 
@@ -132,7 +132,7 @@ mainEntry32:
 	li t1, 1
 
 	# get address of inp points to
-	ld t3, 628(sp)
+	ld t3, 640(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$1 
@@ -145,12 +145,12 @@ mainEntry32:
 	# get value of local var:lv$1
 
 	# get address of local var:lv$1
-	ld t3, 724(sp)
+	ld t3, 736(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$1
-	sd t0, 620(sp)
+	sd t0, 632(sp)
 
 	# gep inp$1 
 
@@ -162,12 +162,12 @@ mainEntry32:
 	# get value of local var:ptr_$1
 
 	# get address of local var:ptr_$1
-	ld t3, 620(sp)
+	ld t3, 632(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$1
-	sd t0, 612(sp)
+	sd t0, 624(sp)
 
 	# store inp$1 
 
@@ -175,7 +175,7 @@ mainEntry32:
 	li t1, 2
 
 	# get address of inp$1 points to
-	ld t3, 612(sp)
+	ld t3, 624(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$2 
@@ -188,12 +188,12 @@ mainEntry32:
 	# get value of local var:lv$1
 
 	# get address of local var:lv$1
-	ld t3, 724(sp)
+	ld t3, 736(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$2
-	sd t0, 604(sp)
+	sd t0, 616(sp)
 
 	# gep inp$2 
 
@@ -205,12 +205,12 @@ mainEntry32:
 	# get value of local var:ptr_$2
 
 	# get address of local var:ptr_$2
-	ld t3, 604(sp)
+	ld t3, 616(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$2
-	sd t0, 596(sp)
+	sd t0, 608(sp)
 
 	# store inp$2 
 
@@ -218,7 +218,7 @@ mainEntry32:
 	li t1, 3
 
 	# get address of inp$2 points to
-	ld t3, 596(sp)
+	ld t3, 608(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$3 
@@ -231,12 +231,12 @@ mainEntry32:
 	# get value of local var:lv$1
 
 	# get address of local var:lv$1
-	ld t3, 724(sp)
+	ld t3, 736(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$3
-	sd t0, 588(sp)
+	sd t0, 600(sp)
 
 	# gep inp$3 
 
@@ -248,12 +248,12 @@ mainEntry32:
 	# get value of local var:ptr_$3
 
 	# get address of local var:ptr_$3
-	ld t3, 588(sp)
+	ld t3, 600(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$3
-	sd t0, 580(sp)
+	sd t0, 592(sp)
 
 	# store inp$3 
 
@@ -261,7 +261,7 @@ mainEntry32:
 	li t1, 4
 
 	# get address of inp$3 points to
-	ld t3, 580(sp)
+	ld t3, 592(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$4 
@@ -274,12 +274,12 @@ mainEntry32:
 	# get value of local var:lv$1
 
 	# get address of local var:lv$1
-	ld t3, 724(sp)
+	ld t3, 736(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$4
-	sd t0, 572(sp)
+	sd t0, 584(sp)
 
 	# gep inp$4 
 
@@ -291,12 +291,12 @@ mainEntry32:
 	# get value of local var:ptr_$4
 
 	# get address of local var:ptr_$4
-	ld t3, 572(sp)
+	ld t3, 584(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$4
-	sd t0, 564(sp)
+	sd t0, 576(sp)
 
 	# store inp$4 
 
@@ -304,7 +304,7 @@ mainEntry32:
 	li t1, 5
 
 	# get address of inp$4 points to
-	ld t3, 564(sp)
+	ld t3, 576(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$5 
@@ -317,12 +317,12 @@ mainEntry32:
 	# get value of local var:lv$1
 
 	# get address of local var:lv$1
-	ld t3, 724(sp)
+	ld t3, 736(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$5
-	sd t0, 556(sp)
+	sd t0, 568(sp)
 
 	# gep inp$5 
 
@@ -334,12 +334,12 @@ mainEntry32:
 	# get value of local var:ptr_$5
 
 	# get address of local var:ptr_$5
-	ld t3, 556(sp)
+	ld t3, 568(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$5
-	sd t0, 548(sp)
+	sd t0, 560(sp)
 
 	# store inp$5 
 
@@ -347,7 +347,7 @@ mainEntry32:
 	li t1, 6
 
 	# get address of inp$5 points to
-	ld t3, 548(sp)
+	ld t3, 560(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$6 
@@ -360,12 +360,12 @@ mainEntry32:
 	# get value of local var:lv$1
 
 	# get address of local var:lv$1
-	ld t3, 724(sp)
+	ld t3, 736(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$6
-	sd t0, 540(sp)
+	sd t0, 552(sp)
 
 	# gep inp$6 
 
@@ -377,12 +377,12 @@ mainEntry32:
 	# get value of local var:ptr_$6
 
 	# get address of local var:ptr_$6
-	ld t3, 540(sp)
+	ld t3, 552(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$6
-	sd t0, 532(sp)
+	sd t0, 544(sp)
 
 	# store inp$6 
 
@@ -390,7 +390,7 @@ mainEntry32:
 	li t1, 7
 
 	# get address of inp$6 points to
-	ld t3, 532(sp)
+	ld t3, 544(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$7 
@@ -403,12 +403,12 @@ mainEntry32:
 	# get value of local var:lv$1
 
 	# get address of local var:lv$1
-	ld t3, 724(sp)
+	ld t3, 736(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$7
-	sd t0, 524(sp)
+	sd t0, 536(sp)
 
 	# gep inp$7 
 
@@ -420,12 +420,12 @@ mainEntry32:
 	# get value of local var:ptr_$7
 
 	# get address of local var:ptr_$7
-	ld t3, 524(sp)
+	ld t3, 536(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$7
-	sd t0, 516(sp)
+	sd t0, 528(sp)
 
 	# store inp$7 
 
@@ -433,7 +433,7 @@ mainEntry32:
 	li t1, 8
 
 	# get address of inp$7 points to
-	ld t3, 516(sp)
+	ld t3, 528(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$8 
@@ -446,12 +446,12 @@ mainEntry32:
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 764(sp)
+	ld t3, 776(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$8
-	sd t0, 508(sp)
+	sd t0, 520(sp)
 
 	# gep inp$8 
 
@@ -463,12 +463,12 @@ mainEntry32:
 	# get value of local var:ptr_$8
 
 	# get address of local var:ptr_$8
-	ld t3, 508(sp)
+	ld t3, 520(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$8
-	sd t0, 500(sp)
+	sd t0, 512(sp)
 
 	# store inp$8 
 
@@ -476,7 +476,7 @@ mainEntry32:
 	li t1, 1
 
 	# get address of inp$8 points to
-	ld t3, 500(sp)
+	ld t3, 512(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$9 
@@ -489,12 +489,12 @@ mainEntry32:
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 764(sp)
+	ld t3, 776(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$9
-	sd t0, 492(sp)
+	sd t0, 504(sp)
 
 	# gep inp$9 
 
@@ -506,12 +506,12 @@ mainEntry32:
 	# get value of local var:ptr_$9
 
 	# get address of local var:ptr_$9
-	ld t3, 492(sp)
+	ld t3, 504(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$9
-	sd t0, 484(sp)
+	sd t0, 496(sp)
 
 	# store inp$9 
 
@@ -519,7 +519,7 @@ mainEntry32:
 	li t1, 2
 
 	# get address of inp$9 points to
-	ld t3, 484(sp)
+	ld t3, 496(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$10 
@@ -532,12 +532,12 @@ mainEntry32:
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 764(sp)
+	ld t3, 776(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$10
-	sd t0, 476(sp)
+	sd t0, 488(sp)
 
 	# gep inp$10 
 
@@ -549,12 +549,12 @@ mainEntry32:
 	# get value of local var:ptr_$10
 
 	# get address of local var:ptr_$10
-	ld t3, 476(sp)
+	ld t3, 488(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$10
-	sd t0, 468(sp)
+	sd t0, 480(sp)
 
 	# store inp$10 
 
@@ -562,7 +562,7 @@ mainEntry32:
 	li t1, 3
 
 	# get address of inp$10 points to
-	ld t3, 468(sp)
+	ld t3, 480(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$11 
@@ -575,12 +575,12 @@ mainEntry32:
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 764(sp)
+	ld t3, 776(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$11
-	sd t0, 460(sp)
+	sd t0, 472(sp)
 
 	# gep inp$11 
 
@@ -592,12 +592,12 @@ mainEntry32:
 	# get value of local var:ptr_$11
 
 	# get address of local var:ptr_$11
-	ld t3, 460(sp)
+	ld t3, 472(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$11
-	sd t0, 452(sp)
+	sd t0, 464(sp)
 
 	# store inp$11 
 
@@ -605,7 +605,7 @@ mainEntry32:
 	li t1, 4
 
 	# get address of inp$11 points to
-	ld t3, 452(sp)
+	ld t3, 464(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$12 
@@ -618,12 +618,12 @@ mainEntry32:
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 764(sp)
+	ld t3, 776(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$12
-	sd t0, 444(sp)
+	sd t0, 456(sp)
 
 	# gep inp$12 
 
@@ -635,12 +635,12 @@ mainEntry32:
 	# get value of local var:ptr_$12
 
 	# get address of local var:ptr_$12
-	ld t3, 444(sp)
+	ld t3, 456(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$12
-	sd t0, 436(sp)
+	sd t0, 448(sp)
 
 	# store inp$12 
 
@@ -648,7 +648,7 @@ mainEntry32:
 	li t1, 5
 
 	# get address of inp$12 points to
-	ld t3, 436(sp)
+	ld t3, 448(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$13 
@@ -661,12 +661,12 @@ mainEntry32:
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 764(sp)
+	ld t3, 776(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$13
-	sd t0, 428(sp)
+	sd t0, 440(sp)
 
 	# gep inp$13 
 
@@ -678,12 +678,12 @@ mainEntry32:
 	# get value of local var:ptr_$13
 
 	# get address of local var:ptr_$13
-	ld t3, 428(sp)
+	ld t3, 440(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$13
-	sd t0, 420(sp)
+	sd t0, 432(sp)
 
 	# store inp$13 
 
@@ -691,7 +691,7 @@ mainEntry32:
 	li t1, 6
 
 	# get address of inp$13 points to
-	ld t3, 420(sp)
+	ld t3, 432(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$14 
@@ -704,12 +704,12 @@ mainEntry32:
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 764(sp)
+	ld t3, 776(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$14
-	sd t0, 412(sp)
+	sd t0, 424(sp)
 
 	# gep inp$14 
 
@@ -721,12 +721,12 @@ mainEntry32:
 	# get value of local var:ptr_$14
 
 	# get address of local var:ptr_$14
-	ld t3, 412(sp)
+	ld t3, 424(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$14
-	sd t0, 404(sp)
+	sd t0, 416(sp)
 
 	# store inp$14 
 
@@ -734,7 +734,7 @@ mainEntry32:
 	li t1, 7
 
 	# get address of inp$14 points to
-	ld t3, 404(sp)
+	ld t3, 416(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$15 
@@ -747,12 +747,12 @@ mainEntry32:
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 764(sp)
+	ld t3, 776(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$15
-	sd t0, 396(sp)
+	sd t0, 408(sp)
 
 	# gep inp$15 
 
@@ -764,12 +764,12 @@ mainEntry32:
 	# get value of local var:ptr_$15
 
 	# get address of local var:ptr_$15
-	ld t3, 396(sp)
+	ld t3, 408(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$15
-	sd t0, 388(sp)
+	sd t0, 400(sp)
 
 	# store inp$15 
 
@@ -777,7 +777,7 @@ mainEntry32:
 	li t1, 8
 
 	# get address of inp$15 points to
-	ld t3, 388(sp)
+	ld t3, 400(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$16 
@@ -790,12 +790,12 @@ mainEntry32:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	ld t3, 804(sp)
+	ld t3, 816(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$16
-	sd t0, 380(sp)
+	sd t0, 392(sp)
 
 	# gep inp$16 
 
@@ -807,12 +807,12 @@ mainEntry32:
 	# get value of local var:ptr_$16
 
 	# get address of local var:ptr_$16
-	ld t3, 380(sp)
+	ld t3, 392(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$16
-	sd t0, 372(sp)
+	sd t0, 384(sp)
 
 	# store inp$16 
 
@@ -820,7 +820,7 @@ mainEntry32:
 	li t1, 1
 
 	# get address of inp$16 points to
-	ld t3, 372(sp)
+	ld t3, 384(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$17 
@@ -833,12 +833,12 @@ mainEntry32:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	ld t3, 804(sp)
+	ld t3, 816(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$17
-	sd t0, 364(sp)
+	sd t0, 376(sp)
 
 	# gep inp$17 
 
@@ -850,12 +850,12 @@ mainEntry32:
 	# get value of local var:ptr_$17
 
 	# get address of local var:ptr_$17
-	ld t3, 364(sp)
+	ld t3, 376(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$17
-	sd t0, 356(sp)
+	sd t0, 368(sp)
 
 	# store inp$17 
 
@@ -863,7 +863,7 @@ mainEntry32:
 	li t1, 2
 
 	# get address of inp$17 points to
-	ld t3, 356(sp)
+	ld t3, 368(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$18 
@@ -876,12 +876,12 @@ mainEntry32:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	ld t3, 804(sp)
+	ld t3, 816(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$18
-	sd t0, 348(sp)
+	sd t0, 360(sp)
 
 	# gep inp$18 
 
@@ -893,12 +893,12 @@ mainEntry32:
 	# get value of local var:ptr_$18
 
 	# get address of local var:ptr_$18
-	ld t3, 348(sp)
+	ld t3, 360(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$18
-	sd t0, 340(sp)
+	sd t0, 352(sp)
 
 	# store inp$18 
 
@@ -906,7 +906,7 @@ mainEntry32:
 	li t1, 3
 
 	# get address of inp$18 points to
-	ld t3, 340(sp)
+	ld t3, 352(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$19 
@@ -919,12 +919,12 @@ mainEntry32:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	ld t3, 804(sp)
+	ld t3, 816(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$19
-	sd t0, 332(sp)
+	sd t0, 344(sp)
 
 	# gep inp$19 
 
@@ -936,12 +936,12 @@ mainEntry32:
 	# get value of local var:ptr_$19
 
 	# get address of local var:ptr_$19
-	ld t3, 332(sp)
+	ld t3, 344(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$19
-	sd t0, 324(sp)
+	sd t0, 336(sp)
 
 	# store inp$19 
 
@@ -949,7 +949,7 @@ mainEntry32:
 	li t1, 0
 
 	# get address of inp$19 points to
-	ld t3, 324(sp)
+	ld t3, 336(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$20 
@@ -962,12 +962,12 @@ mainEntry32:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	ld t3, 804(sp)
+	ld t3, 816(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$20
-	sd t0, 316(sp)
+	sd t0, 328(sp)
 
 	# gep inp$20 
 
@@ -979,12 +979,12 @@ mainEntry32:
 	# get value of local var:ptr_$20
 
 	# get address of local var:ptr_$20
-	ld t3, 316(sp)
+	ld t3, 328(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$20
-	sd t0, 308(sp)
+	sd t0, 320(sp)
 
 	# store inp$20 
 
@@ -992,7 +992,7 @@ mainEntry32:
 	li t1, 5
 
 	# get address of inp$20 points to
-	ld t3, 308(sp)
+	ld t3, 320(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$21 
@@ -1005,12 +1005,12 @@ mainEntry32:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	ld t3, 804(sp)
+	ld t3, 816(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$21
-	sd t0, 300(sp)
+	sd t0, 312(sp)
 
 	# gep inp$21 
 
@@ -1022,12 +1022,12 @@ mainEntry32:
 	# get value of local var:ptr_$21
 
 	# get address of local var:ptr_$21
-	ld t3, 300(sp)
+	ld t3, 312(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$21
-	sd t0, 292(sp)
+	sd t0, 304(sp)
 
 	# store inp$21 
 
@@ -1035,7 +1035,7 @@ mainEntry32:
 	li t1, 0
 
 	# get address of inp$21 points to
-	ld t3, 292(sp)
+	ld t3, 304(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$22 
@@ -1048,12 +1048,12 @@ mainEntry32:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	ld t3, 804(sp)
+	ld t3, 816(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$22
-	sd t0, 284(sp)
+	sd t0, 296(sp)
 
 	# gep inp$22 
 
@@ -1065,12 +1065,12 @@ mainEntry32:
 	# get value of local var:ptr_$22
 
 	# get address of local var:ptr_$22
-	ld t3, 284(sp)
+	ld t3, 296(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$22
-	sd t0, 276(sp)
+	sd t0, 288(sp)
 
 	# store inp$22 
 
@@ -1078,7 +1078,7 @@ mainEntry32:
 	li t1, 7
 
 	# get address of inp$22 points to
-	ld t3, 276(sp)
+	ld t3, 288(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$23 
@@ -1091,12 +1091,12 @@ mainEntry32:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	ld t3, 804(sp)
+	ld t3, 816(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$23
-	sd t0, 268(sp)
+	sd t0, 280(sp)
 
 	# gep inp$23 
 
@@ -1108,12 +1108,12 @@ mainEntry32:
 	# get value of local var:ptr_$23
 
 	# get address of local var:ptr_$23
-	ld t3, 268(sp)
+	ld t3, 280(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$23
-	sd t0, 260(sp)
+	sd t0, 272(sp)
 
 	# store inp$23 
 
@@ -1121,7 +1121,7 @@ mainEntry32:
 	li t1, 8
 
 	# get address of inp$23 points to
-	ld t3, 260(sp)
+	ld t3, 272(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$24 
@@ -1134,12 +1134,12 @@ mainEntry32:
 	# get value of local var:lv$3
 
 	# get address of local var:lv$3
-	ld t3, 804(sp)
+	ld t3, 816(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$24
-	sd t0, 252(sp)
+	sd t0, 264(sp)
 
 	# gep d 
 
@@ -1151,21 +1151,21 @@ mainEntry32:
 	# get value of local var:ptr_$24
 
 	# get address of local var:ptr_$24
-	ld t3, 252(sp)
+	ld t3, 264(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:d
-	sd t0, 244(sp)
+	sd t0, 256(sp)
 
 	# load d$1 d
 
 	# get address of d points to
-	ld t3, 244(sp)
+	ld t3, 256(sp)
 
 	# get address of local var:d$1
 	lw t0, 0(t3)
-	sw t0, 240(sp)
+	sw t0, 252(sp)
 
 	# gep ptr_$25 
 
@@ -1177,12 +1177,12 @@ mainEntry32:
 	# get value of local var:lv$2
 
 	# get address of local var:lv$2
-	ld t3, 764(sp)
+	ld t3, 776(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$25
-	sd t0, 232(sp)
+	sd t0, 240(sp)
 
 	# gep c 
 
@@ -1194,21 +1194,21 @@ mainEntry32:
 	# get value of local var:ptr_$25
 
 	# get address of local var:ptr_$25
-	ld t3, 232(sp)
+	ld t3, 240(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:c
-	sd t0, 224(sp)
+	sd t0, 232(sp)
 
 	# load c$1 c
 
 	# get address of c points to
-	ld t3, 224(sp)
+	ld t3, 232(sp)
 
 	# get address of local var:c$1
 	lw t0, 0(t3)
-	sw t0, 220(sp)
+	sw t0, 228(sp)
 
 	# gep ptr_$26 
 
@@ -1220,12 +1220,12 @@ mainEntry32:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	ld t3, 844(sp)
+	ld t3, 856(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$26
-	sd t0, 212(sp)
+	sd t0, 216(sp)
 
 	# gep inp$24 
 
@@ -1237,22 +1237,22 @@ mainEntry32:
 	# get value of local var:ptr_$26
 
 	# get address of local var:ptr_$26
-	ld t3, 212(sp)
+	ld t3, 216(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$24
-	sd t0, 204(sp)
+	sd t0, 208(sp)
 
 	# store inp$24 d$1
 
 	# fetch variables
 
 	# get address of local var:d$1
-	lw t1, 240(sp)
+	lw t1, 252(sp)
 
 	# get address of inp$24 points to
-	ld t3, 204(sp)
+	ld t3, 208(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$27 
@@ -1265,12 +1265,12 @@ mainEntry32:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	ld t3, 844(sp)
+	ld t3, 856(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$27
-	sd t0, 196(sp)
+	sd t0, 200(sp)
 
 	# gep inp$25 
 
@@ -1282,22 +1282,22 @@ mainEntry32:
 	# get value of local var:ptr_$27
 
 	# get address of local var:ptr_$27
-	ld t3, 196(sp)
+	ld t3, 200(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$25
-	sd t0, 188(sp)
+	sd t0, 192(sp)
 
 	# store inp$25 c$1
 
 	# fetch variables
 
 	# get address of local var:c$1
-	lw t1, 220(sp)
+	lw t1, 228(sp)
 
 	# get address of inp$25 points to
-	ld t3, 188(sp)
+	ld t3, 192(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$28 
@@ -1310,12 +1310,12 @@ mainEntry32:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	ld t3, 844(sp)
+	ld t3, 856(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$28
-	sd t0, 180(sp)
+	sd t0, 184(sp)
 
 	# gep inp$26 
 
@@ -1327,12 +1327,12 @@ mainEntry32:
 	# get value of local var:ptr_$28
 
 	# get address of local var:ptr_$28
-	ld t3, 180(sp)
+	ld t3, 184(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$26
-	sd t0, 172(sp)
+	sd t0, 176(sp)
 
 	# store inp$26 
 
@@ -1340,7 +1340,7 @@ mainEntry32:
 	li t1, 3
 
 	# get address of inp$26 points to
-	ld t3, 172(sp)
+	ld t3, 176(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$29 
@@ -1353,12 +1353,12 @@ mainEntry32:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	ld t3, 844(sp)
+	ld t3, 856(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$29
-	sd t0, 164(sp)
+	sd t0, 168(sp)
 
 	# gep inp$27 
 
@@ -1370,12 +1370,12 @@ mainEntry32:
 	# get value of local var:ptr_$29
 
 	# get address of local var:ptr_$29
-	ld t3, 164(sp)
+	ld t3, 168(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$27
-	sd t0, 156(sp)
+	sd t0, 160(sp)
 
 	# store inp$27 
 
@@ -1383,7 +1383,7 @@ mainEntry32:
 	li t1, 4
 
 	# get address of inp$27 points to
-	ld t3, 156(sp)
+	ld t3, 160(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$30 
@@ -1396,12 +1396,12 @@ mainEntry32:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	ld t3, 844(sp)
+	ld t3, 856(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$30
-	sd t0, 148(sp)
+	sd t0, 152(sp)
 
 	# gep inp$28 
 
@@ -1413,12 +1413,12 @@ mainEntry32:
 	# get value of local var:ptr_$30
 
 	# get address of local var:ptr_$30
-	ld t3, 148(sp)
+	ld t3, 152(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$28
-	sd t0, 140(sp)
+	sd t0, 144(sp)
 
 	# store inp$28 
 
@@ -1426,7 +1426,7 @@ mainEntry32:
 	li t1, 5
 
 	# get address of inp$28 points to
-	ld t3, 140(sp)
+	ld t3, 144(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$31 
@@ -1439,12 +1439,12 @@ mainEntry32:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	ld t3, 844(sp)
+	ld t3, 856(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$31
-	sd t0, 132(sp)
+	sd t0, 136(sp)
 
 	# gep inp$29 
 
@@ -1456,12 +1456,12 @@ mainEntry32:
 	# get value of local var:ptr_$31
 
 	# get address of local var:ptr_$31
-	ld t3, 132(sp)
+	ld t3, 136(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$29
-	sd t0, 124(sp)
+	sd t0, 128(sp)
 
 	# store inp$29 
 
@@ -1469,7 +1469,7 @@ mainEntry32:
 	li t1, 6
 
 	# get address of inp$29 points to
-	ld t3, 124(sp)
+	ld t3, 128(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$32 
@@ -1482,12 +1482,12 @@ mainEntry32:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	ld t3, 844(sp)
+	ld t3, 856(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$32
-	sd t0, 116(sp)
+	sd t0, 120(sp)
 
 	# gep inp$30 
 
@@ -1499,12 +1499,12 @@ mainEntry32:
 	# get value of local var:ptr_$32
 
 	# get address of local var:ptr_$32
-	ld t3, 116(sp)
+	ld t3, 120(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$30
-	sd t0, 108(sp)
+	sd t0, 112(sp)
 
 	# store inp$30 
 
@@ -1512,7 +1512,7 @@ mainEntry32:
 	li t1, 7
 
 	# get address of inp$30 points to
-	ld t3, 108(sp)
+	ld t3, 112(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$33 
@@ -1525,12 +1525,12 @@ mainEntry32:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	ld t3, 844(sp)
+	ld t3, 856(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$33
-	sd t0, 100(sp)
+	sd t0, 104(sp)
 
 	# gep inp$31 
 
@@ -1542,12 +1542,12 @@ mainEntry32:
 	# get value of local var:ptr_$33
 
 	# get address of local var:ptr_$33
-	ld t3, 100(sp)
+	ld t3, 104(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$31
-	sd t0, 92(sp)
+	sd t0, 96(sp)
 
 	# store inp$31 
 
@@ -1555,7 +1555,7 @@ mainEntry32:
 	li t1, 8
 
 	# get address of inp$31 points to
-	ld t3, 92(sp)
+	ld t3, 96(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$34 
@@ -1568,12 +1568,12 @@ mainEntry32:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	ld t3, 844(sp)
+	ld t3, 856(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$34
-	sd t0, 84(sp)
+	sd t0, 88(sp)
 
 	# gep e 
 
@@ -1585,21 +1585,21 @@ mainEntry32:
 	# get value of local var:ptr_$34
 
 	# get address of local var:ptr_$34
-	ld t3, 84(sp)
+	ld t3, 88(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:e
-	sd t0, 76(sp)
+	sd t0, 80(sp)
 
 	# load e$1 e
 
 	# get address of e points to
-	ld t3, 76(sp)
+	ld t3, 80(sp)
 
 	# get address of local var:e$1
 	lw t0, 0(t3)
-	sw t0, 72(sp)
+	sw t0, 76(sp)
 
 	# gep ptr_$35 
 
@@ -1611,7 +1611,7 @@ mainEntry32:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	ld t3, 844(sp)
+	ld t3, 856(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1649,7 +1649,7 @@ mainEntry32:
 	# fetch variables
 
 	# get address of local var:e$1
-	lw t1, 72(sp)
+	lw t1, 76(sp)
 
 	# get address of local var:e$3
 	lw t2, 52(sp)
@@ -1668,7 +1668,7 @@ mainEntry32:
 	# get value of local var:lv$4
 
 	# get address of local var:lv$4
-	ld t3, 844(sp)
+	ld t3, 856(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1725,7 +1725,7 @@ mainEntry32:
 	# get value of local var:lv
 
 	# get address of local var:lv
-	ld t3, 684(sp)
+	ld t3, 696(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -1779,7 +1779,7 @@ mainEntry32:
 	# get address of local var:result_$2
 	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 852
+	li t4, 864
 	add sp, sp, t4
 	ret 
 

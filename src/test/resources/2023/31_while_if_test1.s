@@ -1,14 +1,14 @@
-.data
-.align 2
+.bss
+
 .text
-.align 2
+
 .type whileIf, @function
 .globl whileIf
 whileIf:
 whileIfEntry:
 
 	# reserve space
-	li t4, 92
+	li t4, 96
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -19,11 +19,11 @@ whileIfEntry:
 	# save the parameters
 
 	# allocate lv$1
-	li t0, 80
+	li t0, 84
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 84(sp)
+	sd t0, 88(sp)
 
 	# allocate lv
 	li t0, 68
@@ -47,7 +47,7 @@ whileIfEntry:
 	li t1, 0
 
 	# get address of lv$1 points to
-	ld t3, 84(sp)
+	ld t3, 88(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_239
@@ -170,7 +170,7 @@ next_570:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 84(sp)
+	ld t3, 88(sp)
 
 	# get address of local var:b
 	lw t0, 0(t3)
@@ -183,7 +183,7 @@ next_570:
 	# get address of local var:b
 	lw t1, 32(sp)
 	mv a0, t1
-	li t4, 92
+	li t4, 96
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -197,7 +197,7 @@ ifTrue_331:
 	li t1, 25
 
 	# get address of lv$1 points to
-	ld t3, 84(sp)
+	ld t3, 88(sp)
 	sw t1, 0(t3)
 
 	# br next_571
@@ -303,7 +303,7 @@ ifTrue_332:
 	li t1, 42
 
 	# get address of lv$1 points to
-	ld t3, 84(sp)
+	ld t3, 88(sp)
 	sw t1, 0(t3)
 
 	# br next_572
@@ -339,7 +339,7 @@ ifFalse_132:
 	lw t1, 0(sp)
 
 	# get address of lv$1 points to
-	ld t3, 84(sp)
+	ld t3, 88(sp)
 	sw t1, 0(t3)
 
 	# br next_572
@@ -354,7 +354,7 @@ main:
 mainEntry79:
 
 	# reserve space
-	li t4, 4
+	li t4, 8
 	sub sp, sp, t4
 
 	# save the parameters
@@ -379,16 +379,16 @@ mainEntry79:
 	add sp, sp, t4
 
 	# get address of local var:whileIf
-	sw a0, 0(sp)
+	sw a0, 4(sp)
 
 	# ret whileIf
 
 	# fetch variables
 
 	# get address of local var:whileIf
-	lw t1, 0(sp)
+	lw t1, 4(sp)
 	mv a0, t1
-	li t4, 4
+	li t4, 8
 	add sp, sp, t4
 	ret 
 

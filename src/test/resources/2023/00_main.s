@@ -1,11 +1,11 @@
-.data
-.align 2
+.bss
+
 .text
-.align 2
+
 .type main, @function
 .globl main
 main:
-mainEntry:
+mainEntry98:
 
 	# reserve space
 	li t4, 0

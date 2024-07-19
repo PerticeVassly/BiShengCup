@@ -1,5 +1,5 @@
-.data
-.align 2
+.bss
+
 .globl gv
 gv:
 .word 0x3f800000
@@ -7,31 +7,31 @@ gv:
 .word 0x40400000
 .zero 84
 .text
-.align 2
+
 .type main, @function
 .globl main
 main:
 mainEntry36:
 
 	# reserve space
-	li t4, 96
+	li t4, 104
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv$1
-	li t0, 84
+	li t0, 92
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 88(sp)
+	sd t0, 96(sp)
 
 	# allocate lv
-	li t0, 68
+	li t0, 72
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 76(sp)
+	sd t0, 80(sp)
 
 	# gep inp 
 
@@ -43,12 +43,12 @@ mainEntry36:
 	# get value of local var:lv
 
 	# get address of local var:lv
-	ld t3, 76(sp)
+	ld t3, 80(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp
-	sd t0, 60(sp)
+	sd t0, 64(sp)
 
 	# store inp 
 
@@ -57,7 +57,7 @@ mainEntry36:
 	fmv.w.x ft1, t1
 
 	# get address of inp points to
-	ld t3, 60(sp)
+	ld t3, 64(sp)
 	fsw ft1, 0(t3)
 
 	# gep inp$1 
@@ -70,12 +70,12 @@ mainEntry36:
 	# get value of local var:lv
 
 	# get address of local var:lv
-	ld t3, 76(sp)
+	ld t3, 80(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$1
-	sd t0, 52(sp)
+	sd t0, 56(sp)
 
 	# store inp$1 
 
@@ -84,7 +84,7 @@ mainEntry36:
 	fmv.w.x ft1, t1
 
 	# get address of inp$1 points to
-	ld t3, 52(sp)
+	ld t3, 56(sp)
 	fsw ft1, 0(t3)
 
 	# gep ptr_ 
@@ -100,7 +100,7 @@ mainEntry36:
 	add t0, t1, t0
 
 	# get address of local var:ptr_
-	sd t0, 44(sp)
+	sd t0, 48(sp)
 
 	# gep ptr_$1 
 
@@ -112,12 +112,12 @@ mainEntry36:
 	# get value of local var:ptr_
 
 	# get address of local var:ptr_
-	ld t3, 44(sp)
+	ld t3, 48(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:ptr_$1
-	sd t0, 36(sp)
+	sd t0, 40(sp)
 
 	# gep f 
 
@@ -129,21 +129,21 @@ mainEntry36:
 	# get value of local var:ptr_$1
 
 	# get address of local var:ptr_$1
-	ld t3, 36(sp)
+	ld t3, 40(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:f
-	sd t0, 28(sp)
+	sd t0, 32(sp)
 
 	# load f$1 f
 
 	# get address of f points to
-	ld t3, 28(sp)
+	ld t3, 32(sp)
 
 	# get address of local var:f$1
 	flw ft0, 0(t3)
-	fsw ft0, 24(sp)
+	fsw ft0, 28(sp)
 
 	# gep ff 
 
@@ -155,7 +155,7 @@ mainEntry36:
 	# get value of local var:lv
 
 	# get address of local var:lv
-	ld t3, 76(sp)
+	ld t3, 80(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -176,7 +176,7 @@ mainEntry36:
 	# fetch variables
 
 	# get address of local var:f$1
-	flw ft1, 24(sp)
+	flw ft1, 28(sp)
 
 	# get address of local var:ff$1
 	flw ft2, 12(sp)
@@ -204,13 +204,13 @@ mainEntry36:
 	lw t1, 4(sp)
 
 	# get address of lv$1 points to
-	ld t3, 88(sp)
+	ld t3, 96(sp)
 	sw t1, 0(t3)
 
 	# load a lv$1
 
 	# get address of lv$1 points to
-	ld t3, 88(sp)
+	ld t3, 96(sp)
 
 	# get address of local var:a
 	lw t0, 0(t3)
@@ -223,7 +223,7 @@ mainEntry36:
 	# get address of local var:a
 	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 96
+	li t4, 104
 	add sp, sp, t4
 	ret 
 

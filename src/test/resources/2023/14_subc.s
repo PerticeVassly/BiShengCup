@@ -1,24 +1,24 @@
-.data
-.align 2
+.bss
+
 .text
-.align 2
+
 .type main, @function
 .globl main
 main:
 mainEntry35:
 
 	# reserve space
-	li t4, 20
+	li t4, 24
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	li t0, 8
+	li t0, 12
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 12(sp)
+	sd t0, 16(sp)
 
 	# store lv 
 
@@ -26,38 +26,38 @@ mainEntry35:
 	li t1, 10
 
 	# get address of lv points to
-	ld t3, 12(sp)
+	ld t3, 16(sp)
 	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 12(sp)
+	ld t3, 16(sp)
 
 	# get address of local var:a
 	lw t0, 0(t3)
-	sw t0, 4(sp)
+	sw t0, 8(sp)
 
 	# SUB result_ a  
 
 	# fetch variables
 
 	# get address of local var:a
-	lw t1, 4(sp)
+	lw t1, 8(sp)
 	li t2, 2
 	sub t0, t1, t2
 
 	# get address of local var:result_
-	sw t0, 0(sp)
+	sw t0, 4(sp)
 
 	# ret result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	lw t1, 0(sp)
+	lw t1, 4(sp)
 	mv a0, t1
-	li t4, 20
+	li t4, 24
 	add sp, sp, t4
 	ret 
 

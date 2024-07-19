@@ -1,14 +1,14 @@
-.data
-.align 2
+.bss
+
 .text
-.align 2
+
 .type FourWhile, @function
 .globl FourWhile
 FourWhile:
 FourWhileEntry:
 
 	# reserve space
-	li t4, 196
+	li t4, 208
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -19,25 +19,25 @@ FourWhileEntry:
 	# save the parameters
 
 	# allocate lv$3
-	li t0, 184
+	li t0, 196
 	add t0, sp, t0
 
 	# get address of local var:lv$3
-	sd t0, 188(sp)
+	sd t0, 200(sp)
 
 	# allocate lv$2
-	li t0, 172
+	li t0, 180
 	add t0, sp, t0
 
 	# get address of local var:lv$2
-	sd t0, 176(sp)
+	sd t0, 184(sp)
 
 	# allocate lv$1
-	li t0, 160
+	li t0, 164
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 164(sp)
+	sd t0, 168(sp)
 
 	# allocate lv
 	li t0, 148
@@ -61,7 +61,7 @@ FourWhileEntry:
 	li t1, 6
 
 	# get address of lv$1 points to
-	ld t3, 164(sp)
+	ld t3, 168(sp)
 	sw t1, 0(t3)
 
 	# store lv$2 
@@ -70,7 +70,7 @@ FourWhileEntry:
 	li t1, 7
 
 	# get address of lv$2 points to
-	ld t3, 176(sp)
+	ld t3, 184(sp)
 	sw t1, 0(t3)
 
 	# store lv$3 
@@ -79,7 +79,7 @@ FourWhileEntry:
 	li t1, 10
 
 	# get address of lv$3 points to
-	ld t3, 188(sp)
+	ld t3, 200(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_10
@@ -190,7 +190,7 @@ next_23:
 	# load b$3 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 164(sp)
+	ld t3, 168(sp)
 
 	# get address of local var:b$3
 	lw t0, 0(t3)
@@ -199,7 +199,7 @@ next_23:
 	# load d$3 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 188(sp)
+	ld t3, 200(sp)
 
 	# get address of local var:d$3
 	lw t0, 0(t3)
@@ -236,7 +236,7 @@ next_23:
 	# load c$3 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 176(sp)
+	ld t3, 184(sp)
 
 	# get address of local var:c$3
 	lw t0, 0(t3)
@@ -263,7 +263,7 @@ next_23:
 	# get address of local var:result_$9
 	lw t1, 96(sp)
 	mv a0, t1
-	li t4, 196
+	li t4, 208
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -274,7 +274,7 @@ whileCond_11:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 164(sp)
+	ld t3, 168(sp)
 
 	# get address of local var:b
 	lw t0, 0(t3)
@@ -330,7 +330,7 @@ whileBody_11:
 	# load b$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 164(sp)
+	ld t3, 168(sp)
 
 	# get address of local var:b$1
 	lw t0, 0(t3)
@@ -356,7 +356,7 @@ whileBody_11:
 	lw t1, 72(sp)
 
 	# get address of lv$1 points to
-	ld t3, 164(sp)
+	ld t3, 168(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_12
@@ -366,7 +366,7 @@ next_24:
 	# load b$2 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 164(sp)
+	ld t3, 168(sp)
 
 	# get address of local var:b$2
 	lw t0, 0(t3)
@@ -392,7 +392,7 @@ next_24:
 	lw t1, 64(sp)
 
 	# get address of lv$1 points to
-	ld t3, 164(sp)
+	ld t3, 168(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_10
@@ -402,7 +402,7 @@ whileCond_12:
 	# load c lv$2
 
 	# get address of lv$2 points to
-	ld t3, 176(sp)
+	ld t3, 184(sp)
 
 	# get address of local var:c
 	lw t0, 0(t3)
@@ -459,7 +459,7 @@ whileBody_12:
 	# load c$1 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 176(sp)
+	ld t3, 184(sp)
 
 	# get address of local var:c$1
 	lw t0, 0(t3)
@@ -485,7 +485,7 @@ whileBody_12:
 	lw t1, 40(sp)
 
 	# get address of lv$2 points to
-	ld t3, 176(sp)
+	ld t3, 184(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_13
@@ -495,7 +495,7 @@ next_25:
 	# load c$2 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 176(sp)
+	ld t3, 184(sp)
 
 	# get address of local var:c$2
 	lw t0, 0(t3)
@@ -521,7 +521,7 @@ next_25:
 	lw t1, 32(sp)
 
 	# get address of lv$2 points to
-	ld t3, 176(sp)
+	ld t3, 184(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_11
@@ -531,7 +531,7 @@ whileCond_13:
 	# load d lv$3
 
 	# get address of lv$3 points to
-	ld t3, 188(sp)
+	ld t3, 200(sp)
 
 	# get address of local var:d
 	lw t0, 0(t3)
@@ -587,7 +587,7 @@ whileBody_13:
 	# load d$1 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 188(sp)
+	ld t3, 200(sp)
 
 	# get address of local var:d$1
 	lw t0, 0(t3)
@@ -613,7 +613,7 @@ whileBody_13:
 	lw t1, 8(sp)
 
 	# get address of lv$3 points to
-	ld t3, 188(sp)
+	ld t3, 200(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_13
@@ -623,7 +623,7 @@ next_26:
 	# load d$2 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 188(sp)
+	ld t3, 200(sp)
 
 	# get address of local var:d$2
 	lw t0, 0(t3)
@@ -649,7 +649,7 @@ next_26:
 	lw t1, 0(sp)
 
 	# get address of lv$3 points to
-	ld t3, 188(sp)
+	ld t3, 200(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_12
@@ -660,7 +660,7 @@ main:
 mainEntry7:
 
 	# reserve space
-	li t4, 4
+	li t4, 8
 	sub sp, sp, t4
 
 	# save the parameters
@@ -685,16 +685,16 @@ mainEntry7:
 	add sp, sp, t4
 
 	# get address of local var:FourWhile
-	sw a0, 0(sp)
+	sw a0, 4(sp)
 
 	# ret FourWhile
 
 	# fetch variables
 
 	# get address of local var:FourWhile
-	lw t1, 0(sp)
+	lw t1, 4(sp)
 	mv a0, t1
-	li t4, 4
+	li t4, 8
 	add sp, sp, t4
 	ret 
 

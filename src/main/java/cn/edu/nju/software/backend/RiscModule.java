@@ -52,10 +52,10 @@ public class RiscModule {
 
     public void dumpToConsole() {
         //补一个main
-        System.out.println(".data" + System.lineSeparator() + ".align 2");
+        System.out.println(".bbs" + System.lineSeparator() );
         riscGlobalVars.forEach(RiscGlobalVar::dumpToConsole);
 
-        System.out.println(".text" + System.lineSeparator() + ".align 2");
+        System.out.println(".text" + System.lineSeparator() );
         riscFunctions.forEach(RiscFunction::dumpToConsole);
         //添加memset函数，a0传数组首地址，a1传想要赋的值，a2传需要赋值的空间大小
         // memset32:

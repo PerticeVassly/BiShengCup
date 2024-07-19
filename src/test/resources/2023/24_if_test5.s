@@ -1,14 +1,14 @@
-.data
-.align 2
+.bss
+
 .text
-.align 2
+
 .type if_if_Else, @function
 .globl if_if_Else
 if_if_Else:
 if_if_ElseEntry:
 
 	# reserve space
-	li t4, 68
+	li t4, 72
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -19,11 +19,11 @@ if_if_ElseEntry:
 	# save the parameters
 
 	# allocate lv$1
-	li t0, 56
+	li t0, 60
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 60(sp)
+	sd t0, 64(sp)
 
 	# allocate lv
 	li t0, 44
@@ -47,7 +47,7 @@ if_if_ElseEntry:
 	li t1, 10
 
 	# get address of lv$1 points to
-	ld t3, 60(sp)
+	ld t3, 64(sp)
 	sw t1, 0(t3)
 
 	# load a lv
@@ -110,7 +110,7 @@ ifTrue_8:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 60(sp)
+	ld t3, 64(sp)
 
 	# get address of local var:b
 	lw t0, 0(t3)
@@ -216,7 +216,7 @@ next_15:
 	# get address of local var:a$2
 	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 68
+	li t4, 72
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -245,7 +245,7 @@ main:
 mainEntry2:
 
 	# reserve space
-	li t4, 4
+	li t4, 8
 	sub sp, sp, t4
 
 	# save the parameters
@@ -270,16 +270,16 @@ mainEntry2:
 	add sp, sp, t4
 
 	# get address of local var:if_if_Else
-	sw a0, 0(sp)
+	sw a0, 4(sp)
 
 	# ret if_if_Else
 
 	# fetch variables
 
 	# get address of local var:if_if_Else
-	lw t1, 0(sp)
+	lw t1, 4(sp)
 	mv a0, t1
-	li t4, 4
+	li t4, 8
 	add sp, sp, t4
 	ret 
 

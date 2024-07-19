@@ -27,9 +27,9 @@ public class TestBackEndIO {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("00_main")
+    @StringSource("34_multi_loop")
     void testRisc(String name) throws IOException, InterruptedException {
-        testFile(DIR, name);
+        testFile(DIR_HIDDEN, name);
     }
 
     /**
@@ -47,7 +47,7 @@ public class TestBackEndIO {
     @ParameterizedTest
     @MethodSource("dirHidden")
     void testHidden(String name) throws IOException, InterruptedException {
-        if(false){
+        if(name.contains("38") || name.contains("36")){
             fail();
         }
         testFile(DIR_HIDDEN, name);

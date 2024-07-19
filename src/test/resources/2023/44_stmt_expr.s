@@ -1,10 +1,10 @@
-.data
-.align 2
+.bss
+
 .globl gv
 gv:
 .word 0
 .text
-.align 2
+
 .type main, @function
 .globl main
 main:

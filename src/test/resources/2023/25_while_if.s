@@ -1,14 +1,14 @@
-.data
-.align 2
+.bss
+
 .text
-.align 2
+
 .type get_one, @function
 .globl get_one
 get_one:
 get_oneEntry:
 
 	# reserve space
-	li t4, 16
+	li t4, 24
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -19,24 +19,24 @@ get_oneEntry:
 	# save the parameters
 
 	# get address of local var:0
-	sw a0, 12(sp)
+	sw a0, 20(sp)
 
 	# allocate lv
-	li t0, 0
+	li t0, 4
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 4(sp)
+	sd t0, 8(sp)
 
 	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
-	lw t1, 12(sp)
+	lw t1, 20(sp)
 
 	# get address of lv points to
-	ld t3, 4(sp)
+	ld t3, 8(sp)
 	sw t1, 0(t3)
 
 	# ret 
@@ -44,7 +44,7 @@ get_oneEntry:
 	# fetch variables
 	li t1, 1
 	mv a0, t1
-	li t4, 16
+	li t4, 24
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -56,7 +56,7 @@ deepWhileBr:
 deepWhileBrEntry1:
 
 	# reserve space
-	li t4, 176
+	li t4, 192
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -67,38 +67,38 @@ deepWhileBrEntry1:
 	# save the parameters
 
 	# get address of local var:0
-	sw a0, 172(sp)
+	sw a0, 188(sp)
 
 	# get address of local var:1
-	sw a1, 168(sp)
+	sw a1, 184(sp)
 
 	# allocate lv$4
-	li t0, 156
+	li t0, 172
 	add t0, sp, t0
 
 	# get address of local var:lv$4
-	sd t0, 160(sp)
+	sd t0, 176(sp)
 
 	# allocate lv$3
-	li t0, 144
+	li t0, 156
 	add t0, sp, t0
 
 	# get address of local var:lv$3
-	sd t0, 148(sp)
+	sd t0, 160(sp)
 
 	# allocate lv$2
-	li t0, 132
+	li t0, 140
 	add t0, sp, t0
 
 	# get address of local var:lv$2
-	sd t0, 136(sp)
+	sd t0, 144(sp)
 
 	# allocate lv$1
-	li t0, 120
+	li t0, 124
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 124(sp)
+	sd t0, 128(sp)
 
 	# allocate lv
 	li t0, 108
@@ -112,7 +112,7 @@ deepWhileBrEntry1:
 	# fetch variables
 
 	# get address of local var:0
-	lw t1, 172(sp)
+	lw t1, 188(sp)
 
 	# get address of lv points to
 	ld t3, 112(sp)
@@ -123,10 +123,10 @@ deepWhileBrEntry1:
 	# fetch variables
 
 	# get address of local var:1
-	lw t1, 168(sp)
+	lw t1, 184(sp)
 
 	# get address of lv$1 points to
-	ld t3, 124(sp)
+	ld t3, 128(sp)
 	sw t1, 0(t3)
 
 	# load a lv
@@ -141,7 +141,7 @@ deepWhileBrEntry1:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 124(sp)
+	ld t3, 128(sp)
 
 	# get address of local var:b
 	lw t0, 0(t3)
@@ -169,7 +169,7 @@ deepWhileBrEntry1:
 	lw t1, 96(sp)
 
 	# get address of lv$2 points to
-	ld t3, 136(sp)
+	ld t3, 144(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_215
@@ -179,7 +179,7 @@ whileCond_215:
 	# load c lv$2
 
 	# get address of lv$2 points to
-	ld t3, 136(sp)
+	ld t3, 144(sp)
 
 	# get address of local var:c
 	lw t0, 0(t3)
@@ -238,13 +238,13 @@ whileBody_215:
 	li t1, 42
 
 	# get address of lv$3 points to
-	ld t3, 148(sp)
+	ld t3, 160(sp)
 	sw t1, 0(t3)
 
 	# load c$1 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 136(sp)
+	ld t3, 144(sp)
 
 	# get address of local var:c$1
 	lw t0, 0(t3)
@@ -300,7 +300,7 @@ next_522:
 	# load c$4 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 136(sp)
+	ld t3, 144(sp)
 
 	# get address of local var:c$4
 	lw t0, 0(t3)
@@ -313,7 +313,7 @@ next_522:
 	# get address of local var:c$4
 	lw t1, 60(sp)
 	mv a0, t1
-	li t4, 176
+	li t4, 192
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -324,7 +324,7 @@ ifTrue_307:
 	# load c$2 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 136(sp)
+	ld t3, 144(sp)
 
 	# get address of local var:c$2
 	lw t0, 0(t3)
@@ -333,7 +333,7 @@ ifTrue_307:
 	# load d lv$3
 
 	# get address of lv$3 points to
-	ld t3, 148(sp)
+	ld t3, 160(sp)
 
 	# get address of local var:d
 	lw t0, 0(t3)
@@ -361,13 +361,13 @@ ifTrue_307:
 	lw t1, 48(sp)
 
 	# get address of lv$2 points to
-	ld t3, 136(sp)
+	ld t3, 144(sp)
 	sw t1, 0(t3)
 
 	# load c$3 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 136(sp)
+	ld t3, 144(sp)
 
 	# get address of local var:c$3
 	lw t0, 0(t3)
@@ -428,7 +428,7 @@ ifTrue_308:
 	# load d$1 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 148(sp)
+	ld t3, 160(sp)
 
 	# get address of local var:d$1
 	lw t0, 0(t3)
@@ -454,7 +454,7 @@ ifTrue_308:
 	lw t1, 24(sp)
 
 	# get address of lv$4 points to
-	ld t3, 160(sp)
+	ld t3, 176(sp)
 	sw t1, 0(t3)
 
 	# prepare params
@@ -538,7 +538,7 @@ ifTrue_309:
 	# load e lv$4
 
 	# get address of lv$4 points to
-	ld t3, 160(sp)
+	ld t3, 176(sp)
 
 	# get address of local var:e
 	lw t0, 0(t3)
@@ -564,7 +564,7 @@ ifTrue_309:
 	lw t1, 0(sp)
 
 	# get address of lv$2 points to
-	ld t3, 136(sp)
+	ld t3, 144(sp)
 	sw t1, 0(t3)
 
 	# br next_525
@@ -579,17 +579,17 @@ main:
 mainEntry68:
 
 	# reserve space
-	li t4, 28
+	li t4, 32
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	li t0, 16
+	li t0, 20
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 20(sp)
+	sd t0, 24(sp)
 
 	# store lv 
 
@@ -597,39 +597,39 @@ mainEntry68:
 	li t1, 2
 
 	# get address of lv points to
-	ld t3, 20(sp)
+	ld t3, 24(sp)
 	sw t1, 0(t3)
 
 	# load p lv
 
 	# get address of lv points to
-	ld t3, 20(sp)
+	ld t3, 24(sp)
 
 	# get address of local var:p
 	lw t0, 0(t3)
-	sw t0, 12(sp)
+	sw t0, 16(sp)
 
 	# load p$1 lv
 
 	# get address of lv points to
-	ld t3, 20(sp)
+	ld t3, 24(sp)
 
 	# get address of local var:p$1
 	lw t0, 0(t3)
-	sw t0, 8(sp)
+	sw t0, 12(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:p
-	lw t1, 12(sp)
+	lw t1, 16(sp)
 	mv a0, t1
 
 	# fetch variables
 
 	# get address of local var:p$1
-	lw t1, 8(sp)
+	lw t1, 12(sp)
 	mv a1, t1
 	li t4, 0
 	add sp, sp, t4
@@ -650,34 +650,34 @@ mainEntry68:
 	add sp, sp, t4
 
 	# get address of local var:deepWhileBr
-	sw a0, 4(sp)
+	sw a0, 8(sp)
 
 	# store lv deepWhileBr
 
 	# fetch variables
 
 	# get address of local var:deepWhileBr
-	lw t1, 4(sp)
+	lw t1, 8(sp)
 
 	# get address of lv points to
-	ld t3, 20(sp)
+	ld t3, 24(sp)
 	sw t1, 0(t3)
 
 	# load p$2 lv
 
 	# get address of lv points to
-	ld t3, 20(sp)
+	ld t3, 24(sp)
 
 	# get address of local var:p$2
 	lw t0, 0(t3)
-	sw t0, 0(sp)
+	sw t0, 4(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:p$2
-	lw t1, 0(sp)
+	lw t1, 4(sp)
 	mv a0, t1
 	li t4, 0
 	add sp, sp, t4
@@ -702,7 +702,7 @@ mainEntry68:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	li t4, 28
+	li t4, 32
 	add sp, sp, t4
 	ret 
 

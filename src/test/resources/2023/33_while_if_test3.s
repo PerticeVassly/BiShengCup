@@ -1,14 +1,14 @@
-.data
-.align 2
+.bss
+
 .text
-.align 2
+
 .type deepWhileBr, @function
 .globl deepWhileBr
 deepWhileBr:
 deepWhileBrEntry:
 
 	# reserve space
-	li t4, 160
+	li t4, 176
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -19,38 +19,38 @@ deepWhileBrEntry:
 	# save the parameters
 
 	# get address of local var:0
-	sw a0, 156(sp)
+	sw a0, 172(sp)
 
 	# get address of local var:1
-	sw a1, 152(sp)
+	sw a1, 168(sp)
 
 	# allocate lv$4
-	li t0, 140
+	li t0, 156
 	add t0, sp, t0
 
 	# get address of local var:lv$4
-	sd t0, 144(sp)
+	sd t0, 160(sp)
 
 	# allocate lv$3
-	li t0, 128
+	li t0, 140
 	add t0, sp, t0
 
 	# get address of local var:lv$3
-	sd t0, 132(sp)
+	sd t0, 144(sp)
 
 	# allocate lv$2
-	li t0, 116
+	li t0, 124
 	add t0, sp, t0
 
 	# get address of local var:lv$2
-	sd t0, 120(sp)
+	sd t0, 128(sp)
 
 	# allocate lv$1
-	li t0, 104
+	li t0, 108
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 108(sp)
+	sd t0, 112(sp)
 
 	# allocate lv
 	li t0, 92
@@ -64,7 +64,7 @@ deepWhileBrEntry:
 	# fetch variables
 
 	# get address of local var:0
-	lw t1, 156(sp)
+	lw t1, 172(sp)
 
 	# get address of lv points to
 	ld t3, 96(sp)
@@ -75,10 +75,10 @@ deepWhileBrEntry:
 	# fetch variables
 
 	# get address of local var:1
-	lw t1, 152(sp)
+	lw t1, 168(sp)
 
 	# get address of lv$1 points to
-	ld t3, 108(sp)
+	ld t3, 112(sp)
 	sw t1, 0(t3)
 
 	# load a lv
@@ -93,7 +93,7 @@ deepWhileBrEntry:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 108(sp)
+	ld t3, 112(sp)
 
 	# get address of local var:b
 	lw t0, 0(t3)
@@ -121,7 +121,7 @@ deepWhileBrEntry:
 	lw t1, 80(sp)
 
 	# get address of lv$2 points to
-	ld t3, 120(sp)
+	ld t3, 128(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_194
@@ -131,7 +131,7 @@ whileCond_194:
 	# load c lv$2
 
 	# get address of lv$2 points to
-	ld t3, 120(sp)
+	ld t3, 128(sp)
 
 	# get address of local var:c
 	lw t0, 0(t3)
@@ -190,13 +190,13 @@ whileBody_194:
 	li t1, 42
 
 	# get address of lv$3 points to
-	ld t3, 132(sp)
+	ld t3, 144(sp)
 	sw t1, 0(t3)
 
 	# load c$1 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 120(sp)
+	ld t3, 128(sp)
 
 	# get address of local var:c$1
 	lw t0, 0(t3)
@@ -252,7 +252,7 @@ next_462:
 	# load c$4 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 120(sp)
+	ld t3, 128(sp)
 
 	# get address of local var:c$4
 	lw t0, 0(t3)
@@ -265,7 +265,7 @@ next_462:
 	# get address of local var:c$4
 	lw t1, 44(sp)
 	mv a0, t1
-	li t4, 160
+	li t4, 176
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -276,7 +276,7 @@ ifTrue_268:
 	# load c$2 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 120(sp)
+	ld t3, 128(sp)
 
 	# get address of local var:c$2
 	lw t0, 0(t3)
@@ -285,7 +285,7 @@ ifTrue_268:
 	# load d lv$3
 
 	# get address of lv$3 points to
-	ld t3, 132(sp)
+	ld t3, 144(sp)
 
 	# get address of local var:d
 	lw t0, 0(t3)
@@ -313,13 +313,13 @@ ifTrue_268:
 	lw t1, 32(sp)
 
 	# get address of lv$2 points to
-	ld t3, 120(sp)
+	ld t3, 128(sp)
 	sw t1, 0(t3)
 
 	# load c$3 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 120(sp)
+	ld t3, 128(sp)
 
 	# get address of local var:c$3
 	lw t0, 0(t3)
@@ -380,7 +380,7 @@ ifTrue_269:
 	# load d$1 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 132(sp)
+	ld t3, 144(sp)
 
 	# get address of local var:d$1
 	lw t0, 0(t3)
@@ -406,7 +406,7 @@ ifTrue_269:
 	lw t1, 8(sp)
 
 	# get address of lv$4 points to
-	ld t3, 144(sp)
+	ld t3, 160(sp)
 	sw t1, 0(t3)
 
 	# condBr  ifTrue_270 next_465
@@ -424,7 +424,7 @@ ifTrue_270:
 	# load e lv$4
 
 	# get address of lv$4 points to
-	ld t3, 144(sp)
+	ld t3, 160(sp)
 
 	# get address of local var:e
 	lw t0, 0(t3)
@@ -450,7 +450,7 @@ ifTrue_270:
 	lw t1, 0(sp)
 
 	# get address of lv$2 points to
-	ld t3, 120(sp)
+	ld t3, 128(sp)
 	sw t1, 0(t3)
 
 	# br next_465

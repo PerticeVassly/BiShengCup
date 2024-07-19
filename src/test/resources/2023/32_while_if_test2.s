@@ -1,14 +1,14 @@
-.data
-.align 2
+.bss
+
 .text
-.align 2
+
 .type ifWhile, @function
 .globl ifWhile
 ifWhile:
 ifWhileEntry:
 
 	# reserve space
-	li t4, 108
+	li t4, 112
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -19,11 +19,11 @@ ifWhileEntry:
 	# save the parameters
 
 	# allocate lv$1
-	li t0, 96
+	li t0, 100
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 100(sp)
+	sd t0, 104(sp)
 
 	# allocate lv
 	li t0, 84
@@ -47,7 +47,7 @@ ifWhileEntry:
 	li t1, 3
 
 	# get address of lv$1 points to
-	ld t3, 100(sp)
+	ld t3, 104(sp)
 	sw t1, 0(t3)
 
 	# load a lv
@@ -118,7 +118,7 @@ next_591:
 	# load b$4 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 100(sp)
+	ld t3, 104(sp)
 
 	# get address of local var:b$4
 	lw t0, 0(t3)
@@ -131,7 +131,7 @@ next_591:
 	# get address of local var:b$4
 	lw t1, 64(sp)
 	mv a0, t1
-	li t4, 108
+	li t4, 112
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -142,7 +142,7 @@ whileCond_252:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 100(sp)
+	ld t3, 104(sp)
 
 	# get address of local var:b
 	lw t0, 0(t3)
@@ -199,7 +199,7 @@ whileBody_252:
 	# load b$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 100(sp)
+	ld t3, 104(sp)
 
 	# get address of local var:b$1
 	lw t0, 0(t3)
@@ -225,7 +225,7 @@ whileBody_252:
 	lw t1, 40(sp)
 
 	# get address of lv$1 points to
-	ld t3, 100(sp)
+	ld t3, 104(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_252
@@ -235,7 +235,7 @@ next_592:
 	# load b$2 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 100(sp)
+	ld t3, 104(sp)
 
 	# get address of local var:b$2
 	lw t0, 0(t3)
@@ -261,7 +261,7 @@ next_592:
 	lw t1, 32(sp)
 
 	# get address of lv$1 points to
-	ld t3, 100(sp)
+	ld t3, 104(sp)
 	sw t1, 0(t3)
 
 	# br next_591
@@ -327,7 +327,7 @@ whileBody_253:
 	# load b$3 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 100(sp)
+	ld t3, 104(sp)
 
 	# get address of local var:b$3
 	lw t0, 0(t3)
@@ -353,7 +353,7 @@ whileBody_253:
 	lw t1, 8(sp)
 
 	# get address of lv$1 points to
-	ld t3, 100(sp)
+	ld t3, 104(sp)
 	sw t1, 0(t3)
 
 	# load a$2 lv
@@ -400,7 +400,7 @@ main:
 mainEntry84:
 
 	# reserve space
-	li t4, 4
+	li t4, 8
 	sub sp, sp, t4
 
 	# save the parameters
@@ -425,16 +425,16 @@ mainEntry84:
 	add sp, sp, t4
 
 	# get address of local var:ifWhile
-	sw a0, 0(sp)
+	sw a0, 4(sp)
 
 	# ret ifWhile
 
 	# fetch variables
 
 	# get address of local var:ifWhile
-	lw t1, 0(sp)
+	lw t1, 4(sp)
 	mv a0, t1
-	li t4, 4
+	li t4, 8
 	add sp, sp, t4
 	ret 
 

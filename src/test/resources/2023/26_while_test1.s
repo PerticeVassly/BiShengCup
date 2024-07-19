@@ -1,14 +1,14 @@
-.data
-.align 2
+.bss
+
 .text
-.align 2
+
 .type doubleWhile, @function
 .globl doubleWhile
 doubleWhile:
 doubleWhileEntry:
 
 	# reserve space
-	li t4, 84
+	li t4, 88
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -19,11 +19,11 @@ doubleWhileEntry:
 	# save the parameters
 
 	# allocate lv$1
-	li t0, 72
+	li t0, 76
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 76(sp)
+	sd t0, 80(sp)
 
 	# allocate lv
 	li t0, 60
@@ -47,7 +47,7 @@ doubleWhileEntry:
 	li t1, 7
 
 	# get address of lv$1 points to
-	ld t3, 76(sp)
+	ld t3, 80(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_68
@@ -149,7 +149,7 @@ next_132:
 	# load j$3 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 76(sp)
+	ld t3, 80(sp)
 
 	# get address of local var:j$3
 	lw t0, 0(t3)
@@ -162,7 +162,7 @@ next_132:
 	# get address of local var:j$3
 	lw t1, 32(sp)
 	mv a0, t1
-	li t4, 84
+	li t4, 88
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -173,7 +173,7 @@ whileCond_69:
 	# load j lv$1
 
 	# get address of lv$1 points to
-	ld t3, 76(sp)
+	ld t3, 80(sp)
 
 	# get address of local var:j
 	lw t0, 0(t3)
@@ -229,7 +229,7 @@ whileBody_69:
 	# load j$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 76(sp)
+	ld t3, 80(sp)
 
 	# get address of local var:j$1
 	lw t0, 0(t3)
@@ -255,7 +255,7 @@ whileBody_69:
 	lw t1, 8(sp)
 
 	# get address of lv$1 points to
-	ld t3, 76(sp)
+	ld t3, 80(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_69
@@ -265,7 +265,7 @@ next_133:
 	# load j$2 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 76(sp)
+	ld t3, 80(sp)
 
 	# get address of local var:j$2
 	lw t0, 0(t3)
@@ -291,7 +291,7 @@ next_133:
 	lw t1, 0(sp)
 
 	# get address of lv$1 points to
-	ld t3, 76(sp)
+	ld t3, 80(sp)
 	sw t1, 0(t3)
 
 	# br whileCond_68
@@ -302,7 +302,7 @@ main:
 mainEntry27:
 
 	# reserve space
-	li t4, 4
+	li t4, 8
 	sub sp, sp, t4
 
 	# save the parameters
@@ -327,16 +327,16 @@ mainEntry27:
 	add sp, sp, t4
 
 	# get address of local var:doubleWhile
-	sw a0, 0(sp)
+	sw a0, 4(sp)
 
 	# ret doubleWhile
 
 	# fetch variables
 
 	# get address of local var:doubleWhile
-	lw t1, 0(sp)
+	lw t1, 4(sp)
 	mv a0, t1
-	li t4, 4
+	li t4, 8
 	add sp, sp, t4
 	ret 
 

@@ -1,5 +1,5 @@
-.data
-.align 2
+.bss
+
 .globl gv
 gv:
 .word -1
@@ -7,7 +7,7 @@ gv:
 gv1:
 .word 1
 .text
-.align 2
+
 .type inc_a, @function
 .globl inc_a
 inc_a:

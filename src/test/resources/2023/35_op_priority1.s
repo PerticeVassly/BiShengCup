@@ -1,38 +1,38 @@
-.data
-.align 2
+.bss
+
 .text
-.align 2
+
 .type main, @function
 .globl main
 main:
 mainEntry15:
 
 	# reserve space
-	li t4, 76
+	li t4, 88
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv$3
-	li t0, 64
+	li t0, 76
 	add t0, sp, t0
 
 	# get address of local var:lv$3
-	sd t0, 68(sp)
+	sd t0, 80(sp)
 
 	# allocate lv$2
-	li t0, 52
+	li t0, 60
 	add t0, sp, t0
 
 	# get address of local var:lv$2
-	sd t0, 56(sp)
+	sd t0, 64(sp)
 
 	# allocate lv$1
-	li t0, 40
+	li t0, 44
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 44(sp)
+	sd t0, 48(sp)
 
 	# allocate lv
 	li t0, 28
@@ -56,7 +56,7 @@ mainEntry15:
 	li t1, 4
 
 	# get address of lv$1 points to
-	ld t3, 44(sp)
+	ld t3, 48(sp)
 	sw t1, 0(t3)
 
 	# store lv$2 
@@ -65,7 +65,7 @@ mainEntry15:
 	li t1, 2
 
 	# get address of lv$2 points to
-	ld t3, 56(sp)
+	ld t3, 64(sp)
 	sw t1, 0(t3)
 
 	# store lv$3 
@@ -74,13 +74,13 @@ mainEntry15:
 	li t1, 2
 
 	# get address of lv$3 points to
-	ld t3, 68(sp)
+	ld t3, 80(sp)
 	sw t1, 0(t3)
 
 	# load c lv$2
 
 	# get address of lv$2 points to
-	ld t3, 56(sp)
+	ld t3, 64(sp)
 
 	# get address of local var:c
 	lw t0, 0(t3)
@@ -98,7 +98,7 @@ mainEntry15:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 44(sp)
+	ld t3, 48(sp)
 
 	# get address of local var:b
 	lw t0, 0(t3)
@@ -135,7 +135,7 @@ mainEntry15:
 	# load d lv$3
 
 	# get address of lv$3 points to
-	ld t3, 68(sp)
+	ld t3, 80(sp)
 
 	# get address of local var:d
 	lw t0, 0(t3)
@@ -162,7 +162,7 @@ mainEntry15:
 	# get address of local var:result_$2
 	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 76
+	li t4, 88
 	add sp, sp, t4
 	ret 
 

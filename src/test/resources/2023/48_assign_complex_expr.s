@@ -1,45 +1,45 @@
-.data
-.align 2
+.bss
+
 .text
-.align 2
+
 .type main, @function
 .globl main
 main:
 mainEntry37:
 
 	# reserve space
-	li t4, 176
+	li t4, 192
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv$4
-	li t0, 164
+	li t0, 180
 	add t0, sp, t0
 
 	# get address of local var:lv$4
-	sd t0, 168(sp)
+	sd t0, 184(sp)
 
 	# allocate lv$3
-	li t0, 152
+	li t0, 164
 	add t0, sp, t0
 
 	# get address of local var:lv$3
-	sd t0, 156(sp)
+	sd t0, 168(sp)
 
 	# allocate lv$2
-	li t0, 140
+	li t0, 148
 	add t0, sp, t0
 
 	# get address of local var:lv$2
-	sd t0, 144(sp)
+	sd t0, 152(sp)
 
 	# allocate lv$1
-	li t0, 128
+	li t0, 132
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 132(sp)
+	sd t0, 136(sp)
 
 	# allocate lv
 	li t0, 116
@@ -63,7 +63,7 @@ mainEntry37:
 	li t1, 5
 
 	# get address of lv$1 points to
-	ld t3, 132(sp)
+	ld t3, 136(sp)
 	sw t1, 0(t3)
 
 	# store lv$2 
@@ -72,7 +72,7 @@ mainEntry37:
 	li t1, 1
 
 	# get address of lv$2 points to
-	ld t3, 144(sp)
+	ld t3, 152(sp)
 	sw t1, 0(t3)
 
 	# store lv$3 
@@ -81,13 +81,13 @@ mainEntry37:
 	li t1, -2
 
 	# get address of lv$3 points to
-	ld t3, 156(sp)
+	ld t3, 168(sp)
 	sw t1, 0(t3)
 
 	# load d lv$3
 
 	# get address of lv$3 points to
-	ld t3, 156(sp)
+	ld t3, 168(sp)
 
 	# get address of local var:d
 	lw t0, 0(t3)
@@ -129,7 +129,7 @@ mainEntry37:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 132(sp)
+	ld t3, 136(sp)
 
 	# get address of local var:b
 	lw t0, 0(t3)
@@ -166,7 +166,7 @@ mainEntry37:
 	# load c lv$2
 
 	# get address of lv$2 points to
-	ld t3, 144(sp)
+	ld t3, 152(sp)
 
 	# get address of local var:c
 	lw t0, 0(t3)
@@ -230,13 +230,13 @@ mainEntry37:
 	lw t1, 68(sp)
 
 	# get address of lv$4 points to
-	ld t3, 168(sp)
+	ld t3, 184(sp)
 	sw t1, 0(t3)
 
 	# load result lv$4
 
 	# get address of lv$4 points to
-	ld t3, 168(sp)
+	ld t3, 184(sp)
 
 	# get address of local var:result
 	lw t0, 0(t3)
@@ -270,7 +270,7 @@ mainEntry37:
 	# load d$1 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 156(sp)
+	ld t3, 168(sp)
 
 	# get address of local var:d$1
 	lw t0, 0(t3)
@@ -312,7 +312,7 @@ mainEntry37:
 	# load b$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 132(sp)
+	ld t3, 136(sp)
 
 	# get address of local var:b$1
 	lw t0, 0(t3)
@@ -361,7 +361,7 @@ mainEntry37:
 	# load c$1 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 144(sp)
+	ld t3, 152(sp)
 
 	# get address of local var:c$1
 	lw t0, 0(t3)
@@ -425,13 +425,13 @@ mainEntry37:
 	lw t1, 12(sp)
 
 	# get address of lv$4 points to
-	ld t3, 168(sp)
+	ld t3, 184(sp)
 	sw t1, 0(t3)
 
 	# load result$1 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 168(sp)
+	ld t3, 184(sp)
 
 	# get address of local var:result$1
 	lw t0, 0(t3)
@@ -457,13 +457,13 @@ mainEntry37:
 	lw t1, 4(sp)
 
 	# get address of lv$4 points to
-	ld t3, 168(sp)
+	ld t3, 184(sp)
 	sw t1, 0(t3)
 
 	# load result$2 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 168(sp)
+	ld t3, 184(sp)
 
 	# get address of local var:result$2
 	lw t0, 0(t3)
@@ -499,7 +499,7 @@ mainEntry37:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	li t4, 176
+	li t4, 192
 	add sp, sp, t4
 	ret 
 
