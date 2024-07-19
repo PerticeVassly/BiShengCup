@@ -1,190 +1,218 @@
 .data
+.align 2
 .text
-.type getint, @function
-.globl getint
-getint:
-
-.type getch, @function
-.globl getch
-getch:
-
-.type getfloat, @function
-.globl getfloat
-getfloat:
-
-.type putint, @function
-.globl putint
-putint:
-
-.type putch, @function
-.globl putch
-putch:
-
-.type putfloat, @function
-.globl putfloat
-putfloat:
-
-.type starttime, @function
-.globl starttime
-starttime:
-
-.type stoptime, @function
-.globl stoptime
-stoptime:
-
-.type g, @function
-.globl g
-g:
-
-gEntry:
-	# save callee saved regs
-	addi sp, sp, -48
-	sw s0, 0(sp)
-	sw s1, 4(sp)
-	sw s2, 8(sp)
-	sw s3, 12(sp)
-	sw s4, 16(sp)
-	sw s5, 20(sp)
-	sw s6, 24(sp)
-	sw s7, 28(sp)
-	sw s8, 32(sp)
-	sw s9, 36(sp)
-	sw s10, 40(sp)
-	sw s11, 44(sp)
-	# save callee saved regs end
-	mv t0, a0
-	mv t1, t0
-	mv t2, t1
-	li t3, 1
-	add t4, t2, t3
-	mv a0, t4
-	addi sp, sp, 0
-	# restore callee saved regs
-	lw s0, 0(sp)
-	lw s1, 4(sp)
-	lw s2, 8(sp)
-	lw s3, 12(sp)
-	lw s4, 16(sp)
-	lw s5, 20(sp)
-	lw s6, 24(sp)
-	lw s7, 28(sp)
-	lw s8, 32(sp)
-	lw s9, 36(sp)
-	lw s10, 40(sp)
-	lw s11, 44(sp)
-	addi sp, sp, 48
-	# restore callee saved regs end
-	ret 
-.type f, @function
-.globl f
-f:
-
-fEntry:
-	# save callee saved regs
-	addi sp, sp, -48
-	sw s0, 0(sp)
-	sw s1, 4(sp)
-	sw s2, 8(sp)
-	sw s3, 12(sp)
-	sw s4, 16(sp)
-	sw s5, 20(sp)
-	sw s6, 24(sp)
-	sw s7, 28(sp)
-	sw s8, 32(sp)
-	sw s9, 36(sp)
-	sw s10, 40(sp)
-	sw s11, 44(sp)
-	# save callee saved regs end
-	mv t0, a0
-	mv t1, t0
-	mv t2, t1
-	addi sp, sp, -4
-	mv a0, t2
-	# save caller saved regs
-	addi sp, sp, -40
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
-	call g
-	sw a0, 40(sp)
-	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
-	# restore caller saved regs end
-	lw t3, 0(sp)
-	li t4, 1
-	add t5, t3, t4
-	mv a0, t5
-	addi sp, sp, 4
-	# restore callee saved regs
-	lw s0, 0(sp)
-	lw s1, 4(sp)
-	lw s2, 8(sp)
-	lw s3, 12(sp)
-	lw s4, 16(sp)
-	lw s5, 20(sp)
-	lw s6, 24(sp)
-	lw s7, 28(sp)
-	lw s8, 32(sp)
-	lw s9, 36(sp)
-	lw s10, 40(sp)
-	lw s11, 44(sp)
-	addi sp, sp, 48
-	# restore callee saved regs end
-	ret 
+.align 2
 .type main, @function
 .globl main
 main:
+mainEntry288:
 
-mainEntry:
-	li t0, 2
-	mv t1, t0
-	addi sp, sp, -4
-	li a0, 100
-	# save caller saved regs
-	addi sp, sp, -40
-	sw t0, 0(sp)
-	sw t1, 4(sp)
-	sw t2, 8(sp)
-	sw t3, 12(sp)
-	sw t4, 16(sp)
-	sw t5, 20(sp)
-	sw t6, 24(sp)
-	sw a0, 28(sp)
-	sw a1, 32(sp)
-	sw ra, 36(sp)
-	call f
-	sw a0, 40(sp)
-	# restore caller saved regs
-	lw t0, 0(sp)
-	lw t1, 4(sp)
-	lw t2, 8(sp)
-	lw t3, 12(sp)
-	lw t4, 16(sp)
-	lw t5, 20(sp)
-	lw t6, 24(sp)
-	lw a0, 28(sp)
-	lw a1, 32(sp)
-	lw ra, 36(sp)
-	addi sp, sp, 40
-	# restore caller saved regs end
-	lw t2, 0(sp)
-	mv a0, t2
-	addi sp, sp, 4
+	# reserve space
+	li t4, 68
+	sub sp, sp, t4
+
+	# save the parameters
+
+	# allocate lv$2
+	li t0, 56
+	add t0, sp, t0
+
+	# get address of local var:lv$2
+	sd t0, 60(sp)
+
+	# allocate lv$1
+	li t0, 44
+	add t0, sp, t0
+
+	# get address of local var:lv$1
+	sd t0, 48(sp)
+
+	# allocate lv
+	li t0, 32
+	add t0, sp, t0
+
+	# get address of local var:lv
+	sd t0, 36(sp)
+
+	# store lv 
+
+	# fetch variables
+	li t1, 2
+
+	# get address of lv points to
+	ld t3, 36(sp)
+	sw t1, 0(t3)
+
+	# store lv$1 
+
+	# fetch variables
+	li t1, 3
+
+	# get address of lv$1 points to
+	ld t3, 48(sp)
+	sw t1, 0(t3)
+
+	# store lv$2 
+
+	# fetch variables
+	li t1, 4
+
+	# get address of lv$2 points to
+	ld t3, 60(sp)
+	sw t1, 0(t3)
+
+	# load a lv
+
+	# get address of lv points to
+	ld t3, 36(sp)
+
+	# get address of local var:a
+	lw t0, 0(t3)
+	sw t0, 28(sp)
+
+	# ICMP cond_gt_tmp_ a  
+
+	# fetch variables
+
+	# get address of local var:a
+	lw t1, 28(sp)
+	li t2, 1
+	sub t0, t1, t2
+	sgtz t0, t0
+
+	# get address of local var:cond_gt_tmp_
+	sw t0, 24(sp)
+
+	#  cond_tmp_ cond_gt_tmp_
+
+	# fetch variables
+
+	# get address of local var:cond_gt_tmp_
+	lw t1, 24(sp)
+	mv t0, t1
+
+	# get address of local var:cond_tmp_
+	sw t0, 20(sp)
+
+	# ICMP cond_ cond_tmp_  
+
+	# fetch variables
+
+	# get address of local var:cond_tmp_
+	lw t1, 20(sp)
+	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
+
+	# get address of local var:cond_
+	sw t0, 16(sp)
+
+	# condBr cond_ secondCond_1161 next_2779
+
+	# fetch variables
+
+	# get address of local var:cond_
+	lw t1, 16(sp)
+	beqz t1, next_2779
+	j secondCond_1161
+ifTrue_2063:
+
+	# store lv 
+
+	# fetch variables
+	li t1, 3
+
+	# get address of lv points to
+	ld t3, 36(sp)
+	sw t1, 0(t3)
+
+	# br next_2779
+	j next_2779
+next_2779:
+
+	# ret 
+
+	# fetch variables
+	li t1, 0
+	mv a0, t1
+	li t4, 68
+	add sp, sp, t4
 	ret 
+secondCond_1161:
+
+	# load a$1 lv
+
+	# get address of lv points to
+	ld t3, 36(sp)
+
+	# get address of local var:a$1
+	lw t0, 0(t3)
+	sw t0, 12(sp)
+
+	# ICMP cond_lt_tmp_ a$1  
+
+	# fetch variables
+
+	# get address of local var:a$1
+	lw t1, 12(sp)
+	li t2, 5
+	slt t0, t1, t2
+
+	# get address of local var:cond_lt_tmp_
+	sw t0, 8(sp)
+
+	#  cond_tmp_$1 cond_lt_tmp_
+
+	# fetch variables
+
+	# get address of local var:cond_lt_tmp_
+	lw t1, 8(sp)
+	mv t0, t1
+
+	# get address of local var:cond_tmp_$1
+	sw t0, 4(sp)
+
+	# ICMP cond_$1 cond_tmp_$1  
+
+	# fetch variables
+
+	# get address of local var:cond_tmp_$1
+	lw t1, 4(sp)
+	li t2, 0
+	xor t0, t1, t2
+	seqz t0, t0
+	seqz t0, t0
+
+	# get address of local var:cond_$1
+	sw t0, 0(sp)
+
+	# condBr cond_$1 ifTrue_2063 next_2779
+
+	# fetch variables
+
+	# get address of local var:cond_$1
+	lw t1, 0(sp)
+	beqz t1, next_2779
+	j ifTrue_2063
+
+memset32: 
+    blez    a2, .LBB0_3 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
+    ret 

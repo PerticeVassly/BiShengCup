@@ -1,34 +1,163 @@
-; ModuleId = 'module'
-source_filename = "module"
+.data
+.align 2
+.globl gv
+gv:
+.word 1
+.word 1
+.word 1
+.word 1
+.word 4
+.word 3
+.text
+.align 2
+.type main, @function
+.globl main
+main:
+mainEntry224:
 
-declare i32 @getint()
-declare i32 @getch()
-declare float @getfloat()
-declare i32 @getarray(i32*)
-declare i32 @getfarray(float*)
-declare void @putint(i32)
-declare void @putch(i32)
-declare void @putfloat(float)
-declare void @putarray(i32, i32*)
-declare void @putfarray(i32, float*)
-declare void @_sysy_starttime(i32)
-declare void @_sysy_stoptime(i32)
-declare void @memset(i32*, i32, i32)
+	# reserve space
+	li t4, 52
+	sub sp, sp, t4
 
+	# save the parameters
 
-@gv = global [3 x [2 x i32]] [[2 x i32] [i32 1, i32 1], [2 x i32] [i32 1, i32 1], [2 x i32] [i32 4, i32 3]], align 4
+	# allocate lv
+	li t0, 40
+	add t0, sp, t0
 
-define i32 @main() {
-mainEntry6:
-  %lv = alloca i32, align 4
-  store i32 1, i32* %lv, align 4
-  %i = load i32, i32* %lv, align 4
-  %ptr_ = getelementptr [3 x [2 x i32]], [3 x [2 x i32]]* @gv, i32 0, i32 %i
-  %a = getelementptr [2 x i32], [2 x i32]* %ptr_, i32 0, i32 1
-  store i32 11, i32* %a, align 4
-  %ptr_$1 = getelementptr [3 x [2 x i32]], [3 x [2 x i32]]* @gv, i32 0, i32 1
-  %a$1 = getelementptr [2 x i32], [2 x i32]* %ptr_$1, i32 0, i32 1
-  %a$2 = load i32, i32* %a$1, align 4
-  ret i32 %a$2
-}
+	# get address of local var:lv
+	sd t0, 44(sp)
 
+	# store lv 
+
+	# fetch variables
+	li t1, 1
+
+	# get address of lv points to
+	ld t3, 44(sp)
+	sw t1, 0(t3)
+
+	# load i lv
+
+	# get address of lv points to
+	ld t3, 44(sp)
+
+	# get address of local var:i
+	lw t0, 0(t3)
+	sw t0, 36(sp)
+
+	# gep ptr_ i
+
+	# fetch variables
+
+	# get address of local var:i
+	lw t1, 36(sp)
+	li t2, 8
+	mul t0, t1, t2
+
+	# get value of global var:gv
+	la t3, gv
+	mv t1, t3
+	add t0, t1, t0
+
+	# get address of local var:ptr_
+	sd t0, 28(sp)
+
+	# gep a 
+
+	# fetch variables
+	li t1, 1
+	li t2, 4
+	mul t0, t1, t2
+
+	# get value of local var:ptr_
+
+	# get address of local var:ptr_
+	ld t3, 28(sp)
+	mv t1, t3
+	add t0, t1, t0
+
+	# get address of local var:a
+	sd t0, 20(sp)
+
+	# store a 
+
+	# fetch variables
+	li t1, 11
+
+	# get address of a points to
+	ld t3, 20(sp)
+	sw t1, 0(t3)
+
+	# gep ptr_$1 
+
+	# fetch variables
+	li t1, 1
+	li t2, 8
+	mul t0, t1, t2
+
+	# get value of global var:gv
+	la t3, gv
+	mv t1, t3
+	add t0, t1, t0
+
+	# get address of local var:ptr_$1
+	sd t0, 12(sp)
+
+	# gep a$1 
+
+	# fetch variables
+	li t1, 1
+	li t2, 4
+	mul t0, t1, t2
+
+	# get value of local var:ptr_$1
+
+	# get address of local var:ptr_$1
+	ld t3, 12(sp)
+	mv t1, t3
+	add t0, t1, t0
+
+	# get address of local var:a$1
+	sd t0, 4(sp)
+
+	# load a$2 a$1
+
+	# get address of a$1 points to
+	ld t3, 4(sp)
+
+	# get address of local var:a$2
+	lw t0, 0(t3)
+	sw t0, 0(sp)
+
+	# ret a$2
+
+	# fetch variables
+
+	# get address of local var:a$2
+	lw t1, 0(sp)
+	mv a0, t1
+	li t4, 52
+	add sp, sp, t4
+	ret 
+
+memset32: 
+    blez    a2, .LBB0_3 
+    add     a2, a2, a0 
+.LBB0_2: 
+    sw      a1, 0(a0) 
+    addi    a0, a0, 4 
+    bltu    a0, a2, .LBB0_2 
+.LBB0_3: 
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
+    ret 
