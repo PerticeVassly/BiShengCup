@@ -52,7 +52,7 @@ public class RiscModule {
 
     public void dumpToConsole() {
         //补一个main
-        System.out.println(".bss" + System.lineSeparator() + ".align 8"); // todo: .data for no zero init
+        System.out.println(".data" + System.lineSeparator() + ".align 8"); // todo: .bss
         riscGlobalVars.forEach(RiscGlobalVar::dumpToConsole);
 
         System.out.println(".text" + System.lineSeparator() + ".align 8");
