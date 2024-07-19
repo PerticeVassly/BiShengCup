@@ -1,11 +1,11 @@
-.bss
+.bbs
 
 .text
 
 .type main, @function
 .globl main
 main:
-mainEntry37:
+mainEntry36:
 
 	# reserve space
 	li t4, 192

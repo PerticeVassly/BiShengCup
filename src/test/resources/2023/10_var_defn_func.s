@@ -1,4 +1,4 @@
-.bss
+.bbs
 
 .text
 
@@ -32,7 +32,7 @@ defnEntry:
 .type main, @function
 .globl main
 main:
-mainEntry86:
+mainEntry85:
 
 	# reserve space
 	li t4, 24

@@ -1,4 +1,4 @@
-.bss
+.bbs
 
 .text
 
@@ -1172,7 +1172,7 @@ fooEntry:
 .type main, @function
 .globl main
 main:
-mainEntry29:
+mainEntry28:
 
 	# reserve space
 	li t4, 704

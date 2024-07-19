@@ -1,8 +1,8 @@
-.bss
+.bbs
 
 .globl gv
 gv:
-.zero 4
+.word 0
 .word 1
 .word 2
 .word 3
@@ -12,7 +12,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry66:
+mainEntry65:
 
 	# reserve space
 	li t4, 0

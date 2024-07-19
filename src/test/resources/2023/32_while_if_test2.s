@@ -1,4 +1,4 @@
-.bss
+.bbs
 
 .text
 
@@ -97,23 +97,23 @@ ifWhileEntry:
 	# get address of local var:cond_
 	sw t0, 68(sp)
 
-	# condBr cond_ ifTrue_339 ifFalse_135
+	# condBr cond_ ifTrue_326 ifFalse_132
 
 	# fetch variables
 
 	# get address of local var:cond_
 	lw t1, 68(sp)
-	beqz t1, ifFalse_135
-	j ifTrue_339
-ifTrue_339:
+	beqz t1, ifFalse_132
+	j ifTrue_326
+ifTrue_326:
 
-	# br whileCond_252
-	j whileCond_252
-ifFalse_135:
+	# br whileCond_250
+	j whileCond_250
+ifFalse_132:
 
-	# br whileCond_253
-	j whileCond_253
-next_591:
+	# br whileCond_251
+	j whileCond_251
+next_576:
 
 	# load b$4 lv$1
 
@@ -137,7 +137,7 @@ next_591:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-whileCond_252:
+whileCond_250:
 
 	# load b lv$1
 
@@ -186,15 +186,15 @@ whileCond_252:
 	# get address of local var:cond_$1
 	sw t0, 48(sp)
 
-	# condBr cond_$1 whileBody_252 next_592
+	# condBr cond_$1 whileBody_250 next_577
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	lw t1, 48(sp)
-	beqz t1, next_592
-	j whileBody_252
-whileBody_252:
+	beqz t1, next_577
+	j whileBody_250
+whileBody_250:
 
 	# load b$1 lv$1
 
@@ -228,9 +228,9 @@ whileBody_252:
 	ld t3, 104(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_252
-	j whileCond_252
-next_592:
+	# br whileCond_250
+	j whileCond_250
+next_577:
 
 	# load b$2 lv$1
 
@@ -264,9 +264,9 @@ next_592:
 	ld t3, 104(sp)
 	sw t1, 0(t3)
 
-	# br next_591
-	j next_591
-whileCond_253:
+	# br next_576
+	j next_576
+whileCond_251:
 
 	# load a$1 lv
 
@@ -314,15 +314,15 @@ whileCond_253:
 	# get address of local var:cond_$2
 	sw t0, 16(sp)
 
-	# condBr cond_$2 whileBody_253 next_593
+	# condBr cond_$2 whileBody_251 next_578
 
 	# fetch variables
 
 	# get address of local var:cond_$2
 	lw t1, 16(sp)
-	beqz t1, next_593
-	j whileBody_253
-whileBody_253:
+	beqz t1, next_578
+	j whileBody_251
+whileBody_251:
 
 	# load b$3 lv$1
 
@@ -388,16 +388,16 @@ whileBody_253:
 	ld t3, 88(sp)
 	sw t1, 0(t3)
 
-	# br whileCond_253
-	j whileCond_253
-next_593:
+	# br whileCond_251
+	j whileCond_251
+next_578:
 
-	# br next_591
-	j next_591
+	# br next_576
+	j next_576
 .type main, @function
 .globl main
 main:
-mainEntry84:
+mainEntry83:
 
 	# reserve space
 	li t4, 8

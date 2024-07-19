@@ -1,4 +1,4 @@
-.bss
+.bbs
 
 .globl gv
 gv:
