@@ -24,22 +24,22 @@ fibEntry:
   %cond_eq_tmp_ = icmp eq i32 %n, 1
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_4, label %next_4
+  br i1 %cond_, label %ifTrue_7, label %next_7
 
-ifTrue_4:                                        ; pred = %fibEntry
+ifTrue_7:                                        ; pred = %fibEntry
   ret i32 0
 
-next_4:                                          ; pred = %fibEntry
+next_7:                                          ; pred = %fibEntry
   %n$1 = load i32, i32* %lv, align 4
   %cond_eq_tmp_$1 = icmp eq i32 %n$1, 2
   %cond_tmp_$1 = zext i1 %cond_eq_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_5, label %next_5
+  br i1 %cond_$1, label %ifTrue_8, label %next_8
 
-ifTrue_5:                                        ; pred = %next_4
+ifTrue_8:                                        ; pred = %next_7
   ret i32 1
 
-next_5:                                          ; pred = %next_4
+next_8:                                          ; pred = %next_7
   %n$2 = load i32, i32* %lv, align 4
   %result_ = sub i32 %n$2, 1
   %fib = call i32 @fib(i32 %result_)
@@ -51,7 +51,7 @@ next_5:                                          ; pred = %next_4
 }
 
 define i32 @main() {
-mainEntry10:
+mainEntry16:
   %lv = alloca i32, align 4
   %fib = call i32 @fib(i32 4)
   ret i32 %fib

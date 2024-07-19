@@ -13,7 +13,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry14:
+mainEntry6:
 
 	# reserve space
 	li t4, 64
@@ -24,9 +24,9 @@ mainEntry14:
 	# allocate lv
 	li t0, 48
 	add t0, sp, t0
-	li t1, 56
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 56(sp)
 
 	# lv 
 
@@ -36,24 +36,16 @@ mainEntry14:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 56
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 56(sp)
+	sd t1, 0(t3)
 
 	# load i lv
 
 	# get address of lv points to
-	li t4, 56
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 56(sp)
 
 	# get address of local var:i
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 40(sp)
 
 	# gep ptr_ i
@@ -81,9 +73,9 @@ mainEntry14:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_
-	li t4, 32
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_
+	ld t3, 32(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -98,12 +90,8 @@ mainEntry14:
 	# store a 
 
 	# get address of a points to
-	li t4, 24
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 24(sp)
+	sd t1, 0(t3)
 
 	# gep ptr_$1 
 
@@ -128,9 +116,9 @@ mainEntry14:
 	mul t0, t1, t2
 
 	# get value of local var:ptr_$1
-	li t4, 16
-	add t4, sp, t4
-	ld t3, 0(t4)
+
+	# get address of local var:ptr_$1
+	ld t3, 16(sp)
 	mv t1, t3
 	add t0, t1, t0
 
@@ -140,14 +128,10 @@ mainEntry14:
 	# load a$2 a$1
 
 	# get address of a$1 points to
-	li t4, 8
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 8(sp)
 
 	# get address of local var:a$2
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(sp)
 
 	# ret a$2
@@ -169,4 +153,4 @@ memset:
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 

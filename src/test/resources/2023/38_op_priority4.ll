@@ -23,7 +23,7 @@ declare void @memset(i32*, i32, i32)
 @gv4 = global i32 0, align 4
 
 define i32 @main() {
-mainEntry96:
+mainEntry40:
   %lv = alloca i32, align 4
   %getint = call i32 @getint()
   store i32 %getint, i32* @gv, align 4
@@ -49,17 +49,17 @@ mainEntry96:
   %cond_neq_tmp_ = icmp ne i32 %result_$1, %result_$3
   %cond_tmp_ = zext i1 %cond_neq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_355, label %secondCond_130
+  br i1 %cond_, label %ifTrue_257, label %secondCond_94
 
-ifTrue_355:                                            ; pred = %mainEntry96, %secondCond_130, %secondCond_129
+ifTrue_257:                                           ; pred = %mainEntry40, %secondCond_94, %secondCond_93
   store i32 1, i32* %lv, align 4
-  br label %next_611
+  br label %next_442
 
-next_611:                                              ; pred = %secondCond_129, %ifTrue_355
+next_442:                                             ; pred = %secondCond_93, %ifTrue_257
   %flag = load i32, i32* %lv, align 4
   ret i32 %flag
 
-secondCond_129:                                        ; pred = %secondCond_130
+secondCond_93:                                        ; pred = %secondCond_94
   %a$3 = load i32, i32* @gv, align 4
   %b$2 = load i32, i32* @gv1, align 4
   %result_$7 = add i32 %a$3, %b$2
@@ -71,9 +71,9 @@ secondCond_129:                                        ; pred = %secondCond_130
   %cond_eq_tmp_$1 = icmp eq i32 %result_$8, %result_$9
   %cond_tmp_$2 = zext i1 %cond_eq_tmp_$1 to i32
   %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %ifTrue_355, label %next_611
+  br i1 %cond_$2, label %ifTrue_257, label %next_442
 
-secondCond_130:                                        ; pred = %mainEntry96
+secondCond_94:                                        ; pred = %mainEntry40
   %a$2 = load i32, i32* @gv, align 4
   %b$1 = load i32, i32* @gv1, align 4
   %result_$4 = mul i32 %a$2, %b$1
@@ -85,6 +85,6 @@ secondCond_130:                                        ; pred = %mainEntry96
   %cond_eq_tmp_ = icmp eq i32 %result_$5, %result_$6
   %cond_tmp_$1 = zext i1 %cond_eq_tmp_ to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_355, label %secondCond_129
+  br i1 %cond_$1, label %ifTrue_257, label %secondCond_93
 }
 

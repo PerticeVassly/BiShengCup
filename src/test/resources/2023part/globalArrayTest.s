@@ -9,7 +9,7 @@ gv:
 .type main, @function
 .globl main
 main:
-mainEntry4:
+mainEntry3:
 
 	# reserve space
 	li t4, 16
@@ -35,14 +35,10 @@ mainEntry4:
 	# load a$1 a
 
 	# get address of a points to
-	li t4, 8
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 8(sp)
 
 	# get address of local var:a$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(sp)
 
 	# ret a$1
@@ -64,4 +60,4 @@ memset:
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 

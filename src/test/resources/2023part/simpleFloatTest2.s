@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry17:
+mainEntry4:
 
 	# reserve space
 	li t4, 104
@@ -16,16 +16,16 @@ mainEntry17:
 	# allocate lv$1
 	li t0, 88
 	add t0, sp, t0
-	li t1, 96
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 96(sp)
 
 	# allocate lv
 	li t0, 72
 	add t0, sp, t0
-	li t1, 80
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 80(sp)
 
 	# lv 
 
@@ -36,12 +36,8 @@ mainEntry17:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 80
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	fsd ft1, 0(t4)
+	ld t3, 80(sp)
+	fsd ft1, 0(t3)
 
 	# lv$1 
 
@@ -51,24 +47,16 @@ mainEntry17:
 	# store lv$1 
 
 	# get address of lv$1 points to
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 96(sp)
+	sd t1, 0(t3)
 
 	# load c lv$1
 
 	# get address of lv$1 points to
-	li t4, 96
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 96(sp)
 
 	# get address of local var:c
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 64(sp)
 
 	# ret c
@@ -85,14 +73,10 @@ mainEntry17:
 	# load a lv
 
 	# get address of lv points to
-	li t4, 80
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 80(sp)
 
 	# get address of local var:a
-	fld ft0, 0(t4)
+	fld ft0, 0(t3)
 	fsd ft0, 56(sp)
 
 	# cmp a  cond_eq_tmp_
@@ -133,15 +117,15 @@ mainEntry17:
 	seqz t0, t0
 	sd t0, 32(sp)
 
-	# condBr cond_ secondCond_3 ifFalse_1
+	# condBr cond_ secondCond_ ifFalse_
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 32(sp)
-	beqz t1, ifFalse_1
-	j secondCond_3
-ifTrue_8:
+	beqz t1, ifFalse_
+	j secondCond_
+ifTrue_:
 
 	# ret 
 
@@ -151,7 +135,7 @@ ifTrue_8:
 	li t4, 104
 	add sp, sp, t4
 	ret 
-ifFalse_1:
+ifFalse_:
 
 	# ret 
 
@@ -161,19 +145,15 @@ ifFalse_1:
 	li t4, 104
 	add sp, sp, t4
 	ret 
-secondCond_3:
+secondCond_:
 
 	# load a$1 lv
 
 	# get address of lv points to
-	li t4, 80
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 80(sp)
 
 	# get address of local var:a$1
-	fld ft0, 0(t4)
+	fld ft0, 0(t3)
 	fsd ft0, 24(sp)
 
 	# cmp a$1  cond_gt_tmp_
@@ -215,14 +195,14 @@ secondCond_3:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_8 ifFalse_1
+	# condBr cond_$1 ifTrue_ ifFalse_
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 0(sp)
-	beqz t1, ifFalse_1
-	j ifTrue_8
+	beqz t1, ifFalse_
+	j ifTrue_
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 
@@ -232,4 +212,4 @@ memset:
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 

@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry11:
+mainEntry7:
 
 	# reserve space
 	li t4, 56
@@ -16,9 +16,9 @@ mainEntry11:
 	# allocate lv
 	li t0, 40
 	add t0, sp, t0
-	li t1, 48
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 48(sp)
 
 	# lv 
 
@@ -28,24 +28,16 @@ mainEntry11:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 48(sp)
+	sd t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 48(sp)
 
 	# get address of local var:a
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 32(sp)
 
 	# cmp a  cond_eq_tmp_
@@ -86,15 +78,15 @@ mainEntry11:
 	seqz t0, t0
 	sd t0, 8(sp)
 
-	# condBr cond_ ifTrue_6 next_6
+	# condBr cond_ ifTrue_1 next_1
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 8(sp)
-	beqz t1, next_6
-	j ifTrue_6
-ifTrue_6:
+	beqz t1, next_1
+	j ifTrue_1
+ifTrue_1:
 
 	# lv 
 
@@ -104,28 +96,20 @@ ifTrue_6:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 48(sp)
+	sd t1, 0(t3)
 
-	# br next_6
-	j next_6
-next_6:
+	# br next_1
+	j next_1
+next_1:
 
 	# load a$1 lv
 
 	# get address of lv points to
-	li t4, 48
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 48(sp)
 
 	# get address of local var:a$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 0(sp)
 
 	# ret a$1
@@ -147,4 +131,4 @@ memset:
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 

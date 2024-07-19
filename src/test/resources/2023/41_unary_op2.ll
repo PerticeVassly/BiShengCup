@@ -17,7 +17,7 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry57:
+mainEntry52:
   %lv$1 = alloca i32, align 4
   %lv = alloca i32, align 4
   store i32 56, i32* %lv, align 4
@@ -39,19 +39,19 @@ mainEntry57:
   %tmp_$8 = zext i1 %tmp_$7 to i32
   %tmp_$9 = sub i32 0, %tmp_$8
   %cond_normalize_ = icmp ne i32 %tmp_$9, 0
-  br i1 %cond_normalize_, label %ifTrue_315, label %ifFalse_121
+  br i1 %cond_normalize_, label %ifTrue_283, label %ifFalse_123
 
-ifTrue_315:                                         ; pred = %mainEntry57
+ifTrue_283:                                         ; pred = %mainEntry52
   store i32 -1, i32* %lv, align 4
-  br label %next_512
+  br label %next_489
 
-ifFalse_121:                                        ; pred = %mainEntry57
+ifFalse_123:                                        ; pred = %mainEntry52
   %b$1 = load i32, i32* %lv$1, align 4
   %result_$2 = add i32 0, %b$1
   store i32 %result_$2, i32* %lv, align 4
-  br label %next_512
+  br label %next_489
 
-next_512:                                           ; pred = %ifTrue_315, %ifFalse_121
+next_489:                                           ; pred = %ifTrue_283, %ifFalse_123
   %a$2 = load i32, i32* %lv, align 4
   call void @putint(i32 %a$2)
   ret i32 0

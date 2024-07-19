@@ -5,82 +5,91 @@
 .type main, @function
 .globl main
 main:
-mainEntry25:
+mainEntry39:
 
 	# reserve space
-	li t4, 40
+	li t4, 24
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	li t0, 24
+	li t0, 12
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 32(sp)
+	sd t0, 16(sp)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 10
 
-	# store lv 
-
 	# get address of lv points to
-	ld t3, 32(sp)
-	sd t1, 0(t3)
+	ld t3, 16(sp)
+	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 32(sp)
+	ld t3, 16(sp)
 
 	# get address of local var:a
-	ld t0, 0(t3)
-	sd t0, 16(sp)
+	lw t0, 0(t3)
+	sw t0, 8(sp)
 
-	# mul result_ a 
+	# MUL result_ a  
 
 	# fetch variables
 
 	# get address of local var:a
-	ld t1, 16(sp)
+	lw t1, 8(sp)
 	li t2, 2
+	mul t0, t1, t2
 
 	# get address of local var:result_
-	mul t0, t1, t2
-	sd t0, 8(sp)
+	sw t0, 4(sp)
 
-	# add result_$1 result_ 
+	# ADD result_$1 result_  
 
 	# fetch variables
 
 	# get address of local var:result_
-	ld t1, 8(sp)
+	lw t1, 4(sp)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_$1
-	sd t0, 0(sp)
+	sw t0, 0(sp)
 
 	# ret result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 40
+	li t4, 24
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
+    ret 

@@ -24,9 +24,9 @@ fibEntry:
 	# allocate lv
 	li t0, 120
 	add t0, sp, t0
-	li t1, 128
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 128(sp)
 
 	# lv 0
 
@@ -38,24 +38,16 @@ fibEntry:
 	# store lv 0
 
 	# get address of lv points to
-	li t4, 128
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 128(sp)
+	sd t1, 0(t3)
 
 	# load n lv
 
 	# get address of lv points to
-	li t4, 128
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 128(sp)
 
 	# get address of local var:n
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 112(sp)
 
 	# cmp n  cond_eq_tmp_
@@ -96,15 +88,15 @@ fibEntry:
 	seqz t0, t0
 	sd t0, 88(sp)
 
-	# condBr cond_ ifTrue_4 next_4
+	# condBr cond_ ifTrue_7 next_7
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 88(sp)
-	beqz t1, next_4
-	j ifTrue_4
-ifTrue_4:
+	beqz t1, next_7
+	j ifTrue_7
+ifTrue_7:
 
 	# ret 
 
@@ -117,19 +109,15 @@ ifTrue_4:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_4:
+next_7:
 
 	# load n$1 lv
 
 	# get address of lv points to
-	li t4, 128
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 128(sp)
 
 	# get address of local var:n$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 80(sp)
 
 	# cmp n$1  cond_eq_tmp_$1
@@ -170,15 +158,15 @@ next_4:
 	seqz t0, t0
 	sd t0, 56(sp)
 
-	# condBr cond_$1 ifTrue_5 next_5
+	# condBr cond_$1 ifTrue_8 next_8
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 56(sp)
-	beqz t1, next_5
-	j ifTrue_5
-ifTrue_5:
+	beqz t1, next_8
+	j ifTrue_8
+ifTrue_8:
 
 	# ret 
 
@@ -191,19 +179,15 @@ ifTrue_5:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_5:
+next_8:
 
 	# load n$2 lv
 
 	# get address of lv points to
-	li t4, 128
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 128(sp)
 
 	# get address of local var:n$2
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 48(sp)
 
 	# sub result_ n$2 
@@ -247,14 +231,10 @@ next_5:
 	# load n$3 lv
 
 	# get address of lv points to
-	li t4, 128
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 128(sp)
 
 	# get address of local var:n$3
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 24(sp)
 
 	# sub result_$1 n$3 
@@ -325,7 +305,7 @@ next_5:
 .type main, @function
 .globl main
 main:
-mainEntry10:
+mainEntry18:
 
 	# reserve space
 	li t4, 24
@@ -336,9 +316,9 @@ mainEntry10:
 	# allocate lv
 	li t0, 8
 	add t0, sp, t0
-	li t1, 16
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 16(sp)
 
 	# prepare params
 
@@ -383,4 +363,4 @@ memset:
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 

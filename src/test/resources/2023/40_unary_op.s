@@ -5,250 +5,249 @@
 .type main, @function
 .globl main
 main:
-mainEntry42:
+mainEntry96:
 
 	# reserve space
-	li t4, 120
+	li t4, 64
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	li t0, 104
+	li t0, 52
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 112(sp)
+	sd t0, 56(sp)
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 10
 
-	# store lv 
-
 	# get address of lv points to
-	ld t3, 112(sp)
-	sd t1, 0(t3)
+	ld t3, 56(sp)
+	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 112(sp)
+	ld t3, 56(sp)
 
 	# get address of local var:a
-	ld t0, 0(t3)
-	sd t0, 96(sp)
+	lw t0, 0(t3)
+	sw t0, 48(sp)
 
-	# cmp  a tmp_
+	# ICMP tmp_  a 
 
 	# fetch variables
 	li t1, 0
 
 	# get address of local var:a
-	ld t2, 96(sp)
-
-	# get address of local var:tmp_
+	lw t2, 48(sp)
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 88(sp)
 
-	# XOR tmp_$1 tmp_ 
+	# get address of local var:tmp_
+	sw t0, 44(sp)
+
+	# XOR tmp_$1 tmp_  
 
 	# fetch variables
 
 	# get address of local var:tmp_
-	ld t1, 88(sp)
+	lw t1, 44(sp)
 	li t2, 1
+	xor t0, t1, t2
 
 	# get address of local var:tmp_$1
+	sw t0, 40(sp)
 
-	# xor t0 tmp_ 
-	xor t0, t1, t2
-	sd t0, 80(sp)
-
-	# zext tmp_$2 tmp_$1
+	#  tmp_$2 tmp_$1
 
 	# fetch variables
 
 	# get address of local var:tmp_$1
-	ld t1, 80(sp)
+	lw t1, 40(sp)
+	mv t0, t1
 
 	# get address of local var:tmp_$2
-	mv t0, t1
-	sd t0, 72(sp)
+	sw t0, 36(sp)
 
-	# cmp  tmp_$2 tmp_$3
+	# ICMP tmp_$3  tmp_$2 
 
 	# fetch variables
 	li t1, 0
 
 	# get address of local var:tmp_$2
-	ld t2, 72(sp)
-
-	# get address of local var:tmp_$3
+	lw t2, 36(sp)
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 64(sp)
 
-	# XOR tmp_$4 tmp_$3 
+	# get address of local var:tmp_$3
+	sw t0, 32(sp)
+
+	# XOR tmp_$4 tmp_$3  
 
 	# fetch variables
 
 	# get address of local var:tmp_$3
-	ld t1, 64(sp)
+	lw t1, 32(sp)
 	li t2, 1
+	xor t0, t1, t2
 
 	# get address of local var:tmp_$4
+	sw t0, 28(sp)
 
-	# xor t0 tmp_$3 
-	xor t0, t1, t2
-	sd t0, 56(sp)
-
-	# zext tmp_$5 tmp_$4
+	#  tmp_$5 tmp_$4
 
 	# fetch variables
 
 	# get address of local var:tmp_$4
-	ld t1, 56(sp)
+	lw t1, 28(sp)
+	mv t0, t1
 
 	# get address of local var:tmp_$5
-	mv t0, t1
-	sd t0, 48(sp)
+	sw t0, 24(sp)
 
-	# cmp  tmp_$5 tmp_$6
+	# ICMP tmp_$6  tmp_$5 
 
 	# fetch variables
 	li t1, 0
 
 	# get address of local var:tmp_$5
-	ld t2, 48(sp)
-
-	# get address of local var:tmp_$6
+	lw t2, 24(sp)
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 40(sp)
 
-	# XOR tmp_$7 tmp_$6 
+	# get address of local var:tmp_$6
+	sw t0, 20(sp)
+
+	# XOR tmp_$7 tmp_$6  
 
 	# fetch variables
 
 	# get address of local var:tmp_$6
-	ld t1, 40(sp)
+	lw t1, 20(sp)
 	li t2, 1
+	xor t0, t1, t2
 
 	# get address of local var:tmp_$7
+	sw t0, 16(sp)
 
-	# xor t0 tmp_$6 
-	xor t0, t1, t2
-	sd t0, 32(sp)
-
-	# zext tmp_$8 tmp_$7
+	#  tmp_$8 tmp_$7
 
 	# fetch variables
 
 	# get address of local var:tmp_$7
-	ld t1, 32(sp)
+	lw t1, 16(sp)
+	mv t0, t1
 
 	# get address of local var:tmp_$8
-	mv t0, t1
-	sd t0, 24(sp)
+	sw t0, 12(sp)
 
-	# sub tmp_$9  tmp_$8
+	# SUB tmp_$9  tmp_$8 
 
 	# fetch variables
 	li t1, 0
 
 	# get address of local var:tmp_$8
-	ld t2, 24(sp)
-
-	# get address of local var:tmp_$9
+	lw t2, 12(sp)
 	sub t0, t1, t2
-	sd t0, 16(sp)
 
-	# cmp tmp_$9  cond_normalize_
+	# get address of local var:tmp_$9
+	sw t0, 8(sp)
+
+	# ICMP cond_normalize_ tmp_$9  
 
 	# fetch variables
 
 	# get address of local var:tmp_$9
-	ld t1, 16(sp)
+	lw t1, 8(sp)
 	li t2, 0
-
-	# get address of local var:cond_normalize_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 8(sp)
 
-	# condBr cond_normalize_ ifTrue_281 ifFalse_110
+	# get address of local var:cond_normalize_
+	sw t0, 4(sp)
+
+	# condBr cond_normalize_ ifTrue_368 ifFalse_146
 
 	# fetch variables
 
 	# get address of local var:cond_normalize_
-	ld t1, 8(sp)
-	beqz t1, ifFalse_110
-	j ifTrue_281
-ifTrue_281:
+	lw t1, 4(sp)
+	beqz t1, ifFalse_146
+	j ifTrue_368
+ifTrue_368:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, -1
 
-	# store lv 
-
 	# get address of lv points to
-	ld t3, 112(sp)
-	sd t1, 0(t3)
+	ld t3, 56(sp)
+	sw t1, 0(t3)
 
-	# br next_454
-	j next_454
-ifFalse_110:
+	# br next_654
+	j next_654
+ifFalse_146:
 
-	# lv 
+	# store lv 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv 
-
 	# get address of lv points to
-	ld t3, 112(sp)
-	sd t1, 0(t3)
+	ld t3, 56(sp)
+	sw t1, 0(t3)
 
-	# br next_454
-	j next_454
-next_454:
+	# br next_654
+	j next_654
+next_654:
 
 	# load a$1 lv
 
 	# get address of lv points to
-	ld t3, 112(sp)
+	ld t3, 56(sp)
 
 	# get address of local var:a$1
-	ld t0, 0(t3)
-	sd t0, 0(sp)
+	lw t0, 0(t3)
+	sw t0, 0(sp)
 
 	# ret a$1
 
 	# fetch variables
 
 	# get address of local var:a$1
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 120
+	li t4, 64
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
+    ret 

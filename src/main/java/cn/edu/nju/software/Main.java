@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import cn.edu.nju.software.backend.RiscModule;
-import cn.edu.nju.software.frontend.pass.PassManager;
+import cn.edu.nju.software.pass.PassManager;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -74,17 +74,19 @@ public class Main {
         // generate llvm ir
         IRVisitor irVisitor = new IRVisitor();
         irVisitor.visit(tree);
-        irVisitor.dumpModuleToConsole();
+//        irVisitor.dumpModuleToConsole();
 
         ModuleRef module = irVisitor.getModule();
         if(module == null){
             assert false;
         }
 
-//        PassManager passManager=new PassManager(module);
-//        //TODO:调试完成后删除这句
-//        passManager.setDbgFlag();
-//        passManager.runPass();
+        if(optimized){
+            PassManager passManager=new PassManager(module);
+            //TODO:调试完成后删除这句
+            passManager.setDbgFlag();
+            passManager.runPass();
+        }
         if (emitLLVM) {
             module.dumpToFile(output);
         }

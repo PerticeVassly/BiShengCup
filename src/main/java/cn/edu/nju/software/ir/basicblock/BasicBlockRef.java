@@ -21,8 +21,7 @@ public class BasicBlockRef extends ValueRef {
      * the function it belongs to
      */
     private final FunctionValue function;
-    private ArrayList<BasicBlockRef> pred;
-    private int predNum;
+    private final ArrayList<BasicBlockRef> pred;
     private boolean reachable = true;
 
     public BasicBlockRef(FunctionValue fv, String name) {
@@ -39,20 +38,18 @@ public class BasicBlockRef extends ValueRef {
         irs = new ArrayList<>();
         irNum = 0;
         pred = new ArrayList<>();
-        predNum = 0;
     }
 
     public void addPred(BasicBlockRef block) {
         pred.add(block);
-        predNum++;
     }
 
     public boolean hasPred() {
-        return predNum > 0;
+        return !pred.isEmpty();
     }
 
     public int getPredNum() {
-        return predNum;
+        return pred.size();
     }
 
     public BasicBlockRef getPred(int index) {
@@ -104,15 +101,7 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public void dropDeadPred() {
-        ArrayList<BasicBlockRef> tmp = new ArrayList<>();
-        for (BasicBlockRef bb : pred) {
-            if (bb.isReachable()) {
-                tmp.add(bb);
-                continue;
-            }
-            predNum--;
-        }
-        pred = tmp;
+        pred.removeIf(bb -> !bb.isReachable());
     }
 
     @Override

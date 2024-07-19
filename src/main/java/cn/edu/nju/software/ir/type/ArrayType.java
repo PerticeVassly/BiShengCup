@@ -39,7 +39,7 @@ public class ArrayType extends TypeRef {
     public static int getTotalSize(TypeRef arrayType){
         //递归计算数组的总大小
         if(!(arrayType instanceof ArrayType)){
-            return 8;
+            return 4;
         }
         return ((ArrayType) arrayType).elementSize * getTotalSize(((ArrayType) arrayType).elementType);
     }

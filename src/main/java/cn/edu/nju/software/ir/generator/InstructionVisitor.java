@@ -5,6 +5,7 @@ import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
 
 public interface InstructionVisitor {
+
     default void visit(Allocate allocate) {}
 
     // 这里已经被分解成了各个子类所以暂时用不到了
@@ -55,10 +56,8 @@ public interface InstructionVisitor {
 
     default void visit(ZExt zExt) {}
 
-    //
+    default void visit(BitCast bitCast) {}
 
-    // TODO: tobe implemented
-    void visit(BitCast bitCast);
     default void visit(Ret ret) {}
 
     default void visit(Add add){}

@@ -1,8 +1,8 @@
 package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.backend.riscinstruction.*;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFld;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsd;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlw;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsw;
 import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
@@ -10,7 +10,6 @@ import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscLi;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import cn.edu.nju.software.ir.instruction.BitCast;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
@@ -60,6 +59,7 @@ public class RiscBasicBlock {
         }
     }
 
+    //压栈弹栈，寄存器保存都还是使用8byte(ra也是8byte)，分配8byte的空间，但是存储和拿去只用到其中的4byte
     //todo()这里只能处理RiscSpecifications中arg数组指定的参数个数
     private void saveParams() {
 
@@ -102,9 +102,17 @@ public class RiscBasicBlock {
                     order++;
                     continue;
                 }
-                generator.addInstruction(new RiscFsd(new Register(RiscSpecifications.getFArgRegs()[fptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i +""))));
+                generator.addInstruction(new RiscFsw(new Register(RiscSpecifications.getFArgRegs()[fptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i +""))));
                 fptr++;
-            } else if (functionType.getFParameter(i) instanceof IntType || functionType.getFParameter(i) instanceof Pointer) {
+            } else if (functionType.getFParameter(i) instanceof IntType) {
+                if(ptr >= RiscSpecifications.getArgRegs().length){
+                    fetchFromStack(functionType.getFParameter(i), i, preLen, order);
+                    order++;
+                    continue;
+                }
+                generator.addInstruction(new RiscSw(new Register(RiscSpecifications.getArgRegs()[ptr]), allocator.getAddrOfLocalVar(new LocalVar(functionType.getFParameter(i), i +""))));
+                ptr++;
+            } else if(functionType.getFParameter(i) instanceof Pointer){
                 if(ptr >= RiscSpecifications.getArgRegs().length){
                     fetchFromStack(functionType.getFParameter(i), i, preLen, order);
                     order++;
@@ -119,12 +127,15 @@ public class RiscBasicBlock {
     }
 
     private void fetchFromStack(TypeRef type, int i, int preLen, int order) {
-        if (type instanceof IntType || type instanceof Pointer) {
-            generator.addInstruction(new RiscLd(new Register("t3"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
-            generator.addInstruction(new RiscSd(new Register("t3"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4")));
+        if (type instanceof IntType) {
+            generator.addInstruction(new RiscLw(new Register("t3"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
+            generator.addInstruction(new RiscSw(new Register("t3"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4")));
         } else if (type instanceof FloatType) {
-            generator.addInstruction(new RiscFld(new Register("ft3"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
-            generator.addInstruction(new RiscFsd(new Register("ft3"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4")));
+            generator.addInstruction(new RiscFlw(new Register("ft3"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
+            generator.addInstruction(new RiscFsw(new Register("ft3"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4")));
+        } else if(type instanceof Pointer){
+            generator.addInstruction(new RiscLd(new Register("t3"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
+            generator.addInstruction(new RiscSd(new Register("t3"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")),"sp", "t4")));
         } else {
             assert false;
         }

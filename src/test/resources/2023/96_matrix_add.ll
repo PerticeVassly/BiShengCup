@@ -42,17 +42,17 @@ addEntry:
   store float* %7, float** %lv$7, align 4
   store float* %8, float** %lv$8, align 4
   store i32 0, i32* %lv$9, align 4
-  br label %whileCond_212
+  br label %whileCond_266
 
-whileCond_212:                                        ; pred = %addEntry, %whileBody_212
+whileCond_266:                                        ; pred = %addEntry, %whileBody_266
   %i = load i32, i32* %lv$9, align 4
   %M = load i32, i32* @gv, align 4
   %cond_lt_tmp_ = icmp slt i32 %i, %M
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_212, label %next_540
+  br i1 %cond_, label %whileBody_266, label %next_596
 
-whileBody_212:                                        ; pred = %whileCond_212
+whileBody_266:                                        ; pred = %whileCond_266
   %i$1 = load i32, i32* %lv$9, align 4
   %arr_ = load float*, float** %lv$6, align 4
   %c0 = getelementptr float, float* %arr_, i32 %i$1
@@ -95,14 +95,14 @@ whileBody_212:                                        ; pred = %whileCond_212
   %i$10 = load i32, i32* %lv$9, align 4
   %result_$3 = add i32 %i$10, 1
   store i32 %result_$3, i32* %lv$9, align 4
-  br label %whileCond_212
+  br label %whileCond_266
 
-next_540:                                             ; pred = %whileCond_212
+next_596:                                             ; pred = %whileCond_266
   ret i32 0
 }
 
 define i32 @main() {
-mainEntry70:
+mainEntry85:
   %lv$10 = alloca i32, align 4
   %lv$9 = alloca i32, align 4
   %lv$8 = alloca [3 x float], align 16
@@ -118,17 +118,17 @@ mainEntry70:
   store i32 3, i32* @gv, align 4
   store i32 3, i32* @gv1, align 4
   store i32 0, i32* %lv$9, align 4
-  br label %whileCond_213
+  br label %whileCond_267
 
-whileCond_213:                                        ; pred = %mainEntry70, %whileBody_213
+whileCond_267:                                        ; pred = %mainEntry85, %whileBody_267
   %i = load i32, i32* %lv$9, align 4
   %M = load i32, i32* @gv, align 4
   %cond_lt_tmp_ = icmp slt i32 %i, %M
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_213, label %next_541
+  br i1 %cond_, label %whileBody_267, label %next_597
 
-whileBody_213:                                        ; pred = %whileCond_213
+whileBody_267:                                        ; pred = %whileCond_267
   %i$1 = load i32, i32* %lv$9, align 4
   %a0 = getelementptr [3 x float], [3 x float]* %lv, i32 0, i32 %i$1
   %i$2 = load i32, i32* %lv$9, align 4
@@ -162,9 +162,9 @@ whileBody_213:                                        ; pred = %whileCond_213
   %i$13 = load i32, i32* %lv$9, align 4
   %result_ = add i32 %i$13, 1
   store i32 %result_, i32* %lv$9, align 4
-  br label %whileCond_213
+  br label %whileCond_267
 
-next_541:                                             ; pred = %whileCond_213
+next_597:                                             ; pred = %whileCond_267
   %a0$1 = getelementptr [3 x float], [3 x float]* %lv, i32 0, i32 0
   %a1$1 = getelementptr [3 x float], [3 x float]* %lv$1, i32 0, i32 0
   %a2$1 = getelementptr [3 x float], [3 x float]* %lv$2, i32 0, i32 0
@@ -176,17 +176,17 @@ next_541:                                             ; pred = %whileCond_213
   %c2 = getelementptr [3 x float], [3 x float]* %lv$8, i32 0, i32 0
   %add = call i32 @add(float* %a0$1, float* %a1$1, float* %a2$1, float* %b0$1, float* %b1$1, float* %b2$1, float* %c0, float* %c1, float* %c2)
   store i32 %add, i32* %lv$9, align 4
-  br label %whileCond_214
+  br label %whileCond_268
 
-whileCond_214:                                        ; pred = %next_541, %whileBody_214
+whileCond_268:                                        ; pred = %next_597, %whileBody_268
   %i$14 = load i32, i32* %lv$9, align 4
   %N = load i32, i32* @gv2, align 4
   %cond_lt_tmp_$1 = icmp slt i32 %i$14, %N
   %cond_tmp_$1 = zext i1 %cond_lt_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %whileBody_214, label %next_542
+  br i1 %cond_$1, label %whileBody_268, label %next_598
 
-whileBody_214:                                        ; pred = %whileCond_214
+whileBody_268:                                        ; pred = %whileCond_268
   %i$15 = load i32, i32* %lv$9, align 4
   %c0$1 = getelementptr [6 x float], [6 x float]* %lv$6, i32 0, i32 %i$15
   %c0$2 = load float, float* %c0$1, align 4
@@ -197,24 +197,24 @@ whileBody_214:                                        ; pred = %whileCond_214
   %i$16 = load i32, i32* %lv$9, align 4
   %result_$1 = add i32 %i$16, 1
   store i32 %result_$1, i32* %lv$9, align 4
-  br label %whileCond_214
+  br label %whileCond_268
 
-next_542:                                             ; pred = %whileCond_214
+next_598:                                             ; pred = %whileCond_268
   store i32 10, i32* %lv$10, align 4
   %x$1 = load i32, i32* %lv$10, align 4
   call void @putch(i32 %x$1)
   store i32 0, i32* %lv$9, align 4
-  br label %whileCond_215
+  br label %whileCond_269
 
-whileCond_215:                                        ; pred = %next_542, %whileBody_215
+whileCond_269:                                        ; pred = %next_598, %whileBody_269
   %i$17 = load i32, i32* %lv$9, align 4
   %N$1 = load i32, i32* @gv2, align 4
   %cond_lt_tmp_$2 = icmp slt i32 %i$17, %N$1
   %cond_tmp_$2 = zext i1 %cond_lt_tmp_$2 to i32
   %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %whileBody_215, label %next_543
+  br i1 %cond_$2, label %whileBody_269, label %next_599
 
-whileBody_215:                                        ; pred = %whileCond_215
+whileBody_269:                                        ; pred = %whileCond_269
   %i$18 = load i32, i32* %lv$9, align 4
   %c1$1 = getelementptr [3 x float], [3 x float]* %lv$7, i32 0, i32 %i$18
   %c1$2 = load float, float* %c1$1, align 4
@@ -225,24 +225,24 @@ whileBody_215:                                        ; pred = %whileCond_215
   %i$19 = load i32, i32* %lv$9, align 4
   %result_$2 = add i32 %i$19, 1
   store i32 %result_$2, i32* %lv$9, align 4
-  br label %whileCond_215
+  br label %whileCond_269
 
-next_543:                                             ; pred = %whileCond_215
+next_599:                                             ; pred = %whileCond_269
   store i32 10, i32* %lv$10, align 4
   %x$3 = load i32, i32* %lv$10, align 4
   call void @putch(i32 %x$3)
   store i32 0, i32* %lv$9, align 4
-  br label %whileCond_216
+  br label %whileCond_270
 
-whileCond_216:                                        ; pred = %next_543, %whileBody_216
+whileCond_270:                                        ; pred = %next_599, %whileBody_270
   %i$20 = load i32, i32* %lv$9, align 4
   %N$2 = load i32, i32* @gv2, align 4
   %cond_lt_tmp_$3 = icmp slt i32 %i$20, %N$2
   %cond_tmp_$3 = zext i1 %cond_lt_tmp_$3 to i32
   %cond_$3 = icmp ne i32 %cond_tmp_$3, 0
-  br i1 %cond_$3, label %whileBody_216, label %next_544
+  br i1 %cond_$3, label %whileBody_270, label %next_600
 
-whileBody_216:                                        ; pred = %whileCond_216
+whileBody_270:                                        ; pred = %whileCond_270
   %i$21 = load i32, i32* %lv$9, align 4
   %c2$1 = getelementptr [3 x float], [3 x float]* %lv$8, i32 0, i32 %i$21
   %c2$2 = load float, float* %c2$1, align 4
@@ -253,9 +253,9 @@ whileBody_216:                                        ; pred = %whileCond_216
   %i$22 = load i32, i32* %lv$9, align 4
   %result_$3 = add i32 %i$22, 1
   store i32 %result_$3, i32* %lv$9, align 4
-  br label %whileCond_216
+  br label %whileCond_270
 
-next_544:                                             ; pred = %whileCond_216
+next_600:                                             ; pred = %whileCond_270
   store i32 10, i32* %lv$10, align 4
   %x$5 = load i32, i32* %lv$10, align 4
   call void @putch(i32 %x$5)

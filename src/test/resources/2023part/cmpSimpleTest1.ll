@@ -17,20 +17,20 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry11:
+mainEntry7:
   %lv = alloca i32, align 4
   store i32 1, i32* %lv, align 4
   %a = load i32, i32* %lv, align 4
   %cond_eq_tmp_ = icmp eq i32 %a, 1
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_6, label %next_6
+  br i1 %cond_, label %ifTrue_1, label %next_1
 
-ifTrue_6:                                           ; pred = %mainEntry11
+ifTrue_1:                                          ; pred = %mainEntry7
   store i32 2, i32* %lv, align 4
-  br label %next_6
+  br label %next_1
 
-next_6:                                             ; pred = %mainEntry11, %ifTrue_6
+next_1:                                            ; pred = %mainEntry7, %ifTrue_1
   %a$1 = load i32, i32* %lv, align 4
   ret i32 %a$1
 }

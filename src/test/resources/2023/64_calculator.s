@@ -2,31 +2,31 @@
 .align 2
 .globl gv
 gv:
-.zero 80000
+.zero 40000
 .globl gv1
 gv1:
-.dword 0
+.word 0
 .globl gv2
 gv2:
-.zero 80000
+.zero 40000
 .globl gv3
 gv3:
-.dword 0
+.word 0
 .globl gv4
 gv4:
-.dword 0
+.word 0
 .globl gv5
 gv5:
-.dword 1
+.word 1
 .globl gv6
 gv6:
-.dword 0
+.word 0
 .globl gv7
 gv7:
-.zero 80000
+.zero 40000
 .globl gv8
 gv8:
-.zero 80000
+.zero 40000
 .text
 .align 2
 .type isdigit, @function
@@ -35,7 +35,7 @@ isdigit:
 isdigitEntry:
 
 	# reserve space
-	li t4, 88
+	li t4, 48
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -46,174 +46,172 @@ isdigitEntry:
 	# save the parameters
 
 	# get address of local var:0
-	sd a0, 80(sp)
+	sw a0, 44(sp)
 
 	# allocate lv
-	li t0, 64
+	li t0, 32
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 72(sp)
+	sd t0, 36(sp)
 
-	# lv 0
+	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
-	ld t1, 80(sp)
-
-	# store lv 0
+	lw t1, 44(sp)
 
 	# get address of lv points to
-	ld t3, 72(sp)
-	sd t1, 0(t3)
+	ld t3, 36(sp)
+	sw t1, 0(t3)
 
 	# load x lv
 
 	# get address of lv points to
-	ld t3, 72(sp)
+	ld t3, 36(sp)
 
 	# get address of local var:x
-	ld t0, 0(t3)
-	sd t0, 56(sp)
+	lw t0, 0(t3)
+	sw t0, 28(sp)
 
-	# cmp x  cond_ge_tmp_
+	# ICMP cond_ge_tmp_ x  
 
 	# fetch variables
 
 	# get address of local var:x
-	ld t1, 56(sp)
+	lw t1, 28(sp)
 	li t2, 48
-
-	# get address of local var:cond_ge_tmp_
 	slt t0, t1, t2
 	seqz t0, t0
-	sd t0, 48(sp)
 
-	# zext cond_tmp_ cond_ge_tmp_
+	# get address of local var:cond_ge_tmp_
+	sw t0, 24(sp)
+
+	#  cond_tmp_ cond_ge_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_ge_tmp_
-	ld t1, 48(sp)
+	lw t1, 24(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	mv t0, t1
-	sd t0, 40(sp)
+	sw t0, 20(sp)
 
-	# cmp cond_tmp_  cond_
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
-	ld t1, 40(sp)
+	lw t1, 20(sp)
 	li t2, 0
-
-	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 32(sp)
 
-	# condBr cond_ secondCond_75 next_402
+	# get address of local var:cond_
+	sw t0, 16(sp)
+
+	# condBr cond_ secondCond_1 next_15
 
 	# fetch variables
 
 	# get address of local var:cond_
-	ld t1, 32(sp)
-	beqz t1, next_402
-	j secondCond_75
-ifTrue_243:
+	lw t1, 16(sp)
+	beqz t1, next_15
+	j secondCond_1
+ifTrue_5:
 
 	# ret 
 
 	# fetch variables
 	li t1, 1
 	mv a0, t1
-	li t4, 88
+	li t4, 48
 	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_402:
+next_15:
 
 	# ret 
 
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	li t4, 88
+	li t4, 48
 	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-secondCond_75:
+secondCond_1:
 
 	# load x$1 lv
 
 	# get address of lv points to
-	ld t3, 72(sp)
+	ld t3, 36(sp)
 
 	# get address of local var:x$1
-	ld t0, 0(t3)
-	sd t0, 24(sp)
+	lw t0, 0(t3)
+	sw t0, 12(sp)
 
-	# cmp x$1  cond_le_tmp_
+	# ICMP cond_le_tmp_ x$1  
 
 	# fetch variables
 
 	# get address of local var:x$1
-	ld t1, 24(sp)
+	lw t1, 12(sp)
 	li t2, 57
-
-	# get address of local var:cond_le_tmp_
 	sub t0, t1, t2
 	sgtz t0, t0
 	seqz t0, t0
-	sd t0, 16(sp)
 
-	# zext cond_tmp_$1 cond_le_tmp_
+	# get address of local var:cond_le_tmp_
+	sw t0, 8(sp)
+
+	#  cond_tmp_$1 cond_le_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_le_tmp_
-	ld t1, 16(sp)
+	lw t1, 8(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$1
-	mv t0, t1
-	sd t0, 8(sp)
+	sw t0, 4(sp)
 
-	# cmp cond_tmp_$1  cond_$1
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$1
-	ld t1, 8(sp)
+	lw t1, 4(sp)
 	li t2, 0
-
-	# get address of local var:cond_$1
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_243 next_402
+	# get address of local var:cond_$1
+	sw t0, 0(sp)
+
+	# condBr cond_$1 ifTrue_5 next_15
 
 	# fetch variables
 
 	# get address of local var:cond_$1
-	ld t1, 0(sp)
-	beqz t1, next_402
-	j ifTrue_243
+	lw t1, 0(sp)
+	beqz t1, next_15
+	j ifTrue_5
 .type power, @function
 .globl power
 power:
 powerEntry:
 
 	# reserve space
-	li t4, 144
+	li t4, 84
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -224,231 +222,221 @@ powerEntry:
 	# save the parameters
 
 	# get address of local var:0
-	sd a0, 136(sp)
+	sw a0, 80(sp)
 
 	# get address of local var:1
-	sd a1, 128(sp)
+	sw a1, 76(sp)
 
 	# allocate lv$2
-	li t0, 112
+	li t0, 64
 	add t0, sp, t0
 
 	# get address of local var:lv$2
-	sd t0, 120(sp)
+	sd t0, 68(sp)
 
 	# allocate lv$1
-	li t0, 96
+	li t0, 52
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 104(sp)
+	sd t0, 56(sp)
 
 	# allocate lv
-	li t0, 80
+	li t0, 40
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 88(sp)
+	sd t0, 44(sp)
 
-	# lv 0
+	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
-	ld t1, 136(sp)
-
-	# store lv 0
+	lw t1, 80(sp)
 
 	# get address of lv points to
-	ld t3, 88(sp)
-	sd t1, 0(t3)
+	ld t3, 44(sp)
+	sw t1, 0(t3)
 
-	# lv$1 1
+	# store lv$1 1
 
 	# fetch variables
 
 	# get address of local var:1
-	ld t1, 128(sp)
-
-	# store lv$1 1
+	lw t1, 76(sp)
 
 	# get address of lv$1 points to
-	ld t3, 104(sp)
-	sd t1, 0(t3)
+	ld t3, 56(sp)
+	sw t1, 0(t3)
 
-	# lv$2 
+	# store lv$2 
 
 	# fetch variables
 	li t1, 1
 
-	# store lv$2 
-
 	# get address of lv$2 points to
-	ld t3, 120(sp)
-	sd t1, 0(t3)
+	ld t3, 68(sp)
+	sw t1, 0(t3)
 
-	# br whileCond_159
-	j whileCond_159
-whileCond_159:
+	# br whileCond_10
+	j whileCond_10
+whileCond_10:
 
 	# load a lv$1
 
 	# get address of lv$1 points to
-	ld t3, 104(sp)
+	ld t3, 56(sp)
 
 	# get address of local var:a
-	ld t0, 0(t3)
-	sd t0, 72(sp)
+	lw t0, 0(t3)
+	sw t0, 36(sp)
 
-	# cmp a  cond_neq_tmp_
+	# ICMP cond_neq_tmp_ a  
 
 	# fetch variables
 
 	# get address of local var:a
-	ld t1, 72(sp)
+	lw t1, 36(sp)
 	li t2, 0
-
-	# get address of local var:cond_neq_tmp_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 64(sp)
 
-	# zext cond_tmp_ cond_neq_tmp_
+	# get address of local var:cond_neq_tmp_
+	sw t0, 32(sp)
+
+	#  cond_tmp_ cond_neq_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_neq_tmp_
-	ld t1, 64(sp)
-
-	# get address of local var:cond_tmp_
+	lw t1, 32(sp)
 	mv t0, t1
-	sd t0, 56(sp)
 
-	# cmp cond_tmp_  cond_
+	# get address of local var:cond_tmp_
+	sw t0, 28(sp)
+
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
-	ld t1, 56(sp)
+	lw t1, 28(sp)
 	li t2, 0
-
-	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 48(sp)
 
-	# condBr cond_ whileBody_159 next_403
+	# get address of local var:cond_
+	sw t0, 24(sp)
+
+	# condBr cond_ whileBody_10 next_16
 
 	# fetch variables
 
 	# get address of local var:cond_
-	ld t1, 48(sp)
-	beqz t1, next_403
-	j whileBody_159
-whileBody_159:
+	lw t1, 24(sp)
+	beqz t1, next_16
+	j whileBody_10
+whileBody_10:
 
 	# load result lv$2
 
 	# get address of lv$2 points to
-	ld t3, 120(sp)
+	ld t3, 68(sp)
 
 	# get address of local var:result
-	ld t0, 0(t3)
-	sd t0, 40(sp)
+	lw t0, 0(t3)
+	sw t0, 20(sp)
 
 	# load b lv
 
 	# get address of lv points to
-	ld t3, 88(sp)
+	ld t3, 44(sp)
 
 	# get address of local var:b
-	ld t0, 0(t3)
-	sd t0, 32(sp)
+	lw t0, 0(t3)
+	sw t0, 16(sp)
 
-	# mul result_ result b
+	# MUL result_ result b 
 
 	# fetch variables
 
 	# get address of local var:result
-	ld t1, 40(sp)
+	lw t1, 20(sp)
 
 	# get address of local var:b
-	ld t2, 32(sp)
+	lw t2, 16(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_
-	mul t0, t1, t2
-	sd t0, 24(sp)
+	sw t0, 12(sp)
 
-	# lv$2 result_
+	# store lv$2 result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	ld t1, 24(sp)
-
-	# store lv$2 result_
+	lw t1, 12(sp)
 
 	# get address of lv$2 points to
-	ld t3, 120(sp)
-	sd t1, 0(t3)
+	ld t3, 68(sp)
+	sw t1, 0(t3)
 
 	# load a$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 104(sp)
+	ld t3, 56(sp)
 
 	# get address of local var:a$1
-	ld t0, 0(t3)
-	sd t0, 16(sp)
+	lw t0, 0(t3)
+	sw t0, 8(sp)
 
-	# sub result_$1 a$1 
+	# SUB result_$1 a$1  
 
 	# fetch variables
 
 	# get address of local var:a$1
-	ld t1, 16(sp)
+	lw t1, 8(sp)
 	li t2, 1
-
-	# get address of local var:result_$1
 	sub t0, t1, t2
-	sd t0, 8(sp)
-
-	# lv$1 result_$1
-
-	# fetch variables
 
 	# get address of local var:result_$1
-	ld t1, 8(sp)
+	sw t0, 4(sp)
 
 	# store lv$1 result_$1
 
-	# get address of lv$1 points to
-	ld t3, 104(sp)
-	sd t1, 0(t3)
+	# fetch variables
 
-	# br whileCond_159
-	j whileCond_159
-next_403:
+	# get address of local var:result_$1
+	lw t1, 4(sp)
+
+	# get address of lv$1 points to
+	ld t3, 56(sp)
+	sw t1, 0(t3)
+
+	# br whileCond_10
+	j whileCond_10
+next_16:
 
 	# load result$1 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 120(sp)
+	ld t3, 68(sp)
 
 	# get address of local var:result$1
-	ld t0, 0(t3)
-	sd t0, 0(sp)
+	lw t0, 0(t3)
+	sw t0, 0(sp)
 
 	# ret result$1
 
 	# fetch variables
 
 	# get address of local var:result$1
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 144
+	li t4, 84
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -460,7 +448,7 @@ getstr:
 getstrEntry:
 
 	# reserve space
-	li t4, 192
+	li t4, 124
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -471,44 +459,43 @@ getstrEntry:
 	# save the parameters
 
 	# get address of local var:0
-	sd a0, 184(sp)
+	sd a0, 116(sp)
 
 	# allocate lv$2
-	li t0, 168
+	li t0, 104
 	add t0, sp, t0
 
 	# get address of local var:lv$2
-	sd t0, 176(sp)
+	sd t0, 108(sp)
 
 	# allocate lv$1
-	li t0, 152
+	li t0, 92
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	sd t0, 160(sp)
+	sd t0, 96(sp)
 
 	# allocate lv
-	li t0, 136
+	li t0, 76
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 144(sp)
+	sd t0, 84(sp)
 
-	# lv 0
+	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
-	ld t1, 184(sp)
-
-	# store lv 0
+	ld t1, 116(sp)
 
 	# get address of lv points to
-	ld t3, 144(sp)
+	ld t3, 84(sp)
 	sd t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -522,192 +509,186 @@ getstrEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getch
-	sd a0, 128(sp)
+	sw a0, 72(sp)
 
-	# lv$1 getch
+	# store lv$1 getch
 
 	# fetch variables
 
 	# get address of local var:getch
-	ld t1, 128(sp)
-
-	# store lv$1 getch
+	lw t1, 72(sp)
 
 	# get address of lv$1 points to
-	ld t3, 160(sp)
-	sd t1, 0(t3)
+	ld t3, 96(sp)
+	sw t1, 0(t3)
 
-	# lv$2 
+	# store lv$2 
 
 	# fetch variables
 	li t1, 0
 
-	# store lv$2 
-
 	# get address of lv$2 points to
-	ld t3, 176(sp)
-	sd t1, 0(t3)
+	ld t3, 108(sp)
+	sw t1, 0(t3)
 
-	# br whileCond_160
-	j whileCond_160
-whileCond_160:
+	# br whileCond_11
+	j whileCond_11
+whileCond_11:
 
 	# load x lv$1
 
 	# get address of lv$1 points to
-	ld t3, 160(sp)
+	ld t3, 96(sp)
 
 	# get address of local var:x
-	ld t0, 0(t3)
-	sd t0, 120(sp)
+	lw t0, 0(t3)
+	sw t0, 68(sp)
 
-	# cmp x  cond_neq_tmp_
+	# ICMP cond_neq_tmp_ x  
 
 	# fetch variables
 
 	# get address of local var:x
-	ld t1, 120(sp)
+	lw t1, 68(sp)
 	li t2, 13
-
-	# get address of local var:cond_neq_tmp_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 112(sp)
 
-	# zext cond_tmp_ cond_neq_tmp_
+	# get address of local var:cond_neq_tmp_
+	sw t0, 64(sp)
+
+	#  cond_tmp_ cond_neq_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_neq_tmp_
-	ld t1, 112(sp)
-
-	# get address of local var:cond_tmp_
+	lw t1, 64(sp)
 	mv t0, t1
-	sd t0, 104(sp)
 
-	# cmp cond_tmp_  cond_
+	# get address of local var:cond_tmp_
+	sw t0, 60(sp)
+
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
-	ld t1, 104(sp)
+	lw t1, 60(sp)
 	li t2, 0
-
-	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 96(sp)
 
-	# condBr cond_ secondCond_76 next_404
+	# get address of local var:cond_
+	sw t0, 56(sp)
+
+	# condBr cond_ secondCond_2 next_17
 
 	# fetch variables
 
 	# get address of local var:cond_
-	ld t1, 96(sp)
-	beqz t1, next_404
-	j secondCond_76
-whileBody_160:
+	lw t1, 56(sp)
+	beqz t1, next_17
+	j secondCond_2
+whileBody_11:
 
 	# load length lv$2
 
 	# get address of lv$2 points to
-	ld t3, 176(sp)
+	ld t3, 108(sp)
 
 	# get address of local var:length
-	ld t0, 0(t3)
-	sd t0, 88(sp)
+	lw t0, 0(t3)
+	sw t0, 52(sp)
 
 	# load arr_ lv
 
 	# get address of lv points to
-	ld t3, 144(sp)
+	ld t3, 84(sp)
 
 	# get address of local var:arr_
 	ld t0, 0(t3)
-	sd t0, 80(sp)
+	sd t0, 44(sp)
 
 	# gep get length
 
 	# fetch variables
 
 	# get address of local var:length
-	ld t1, 88(sp)
-	li t2, 8
+	lw t1, 52(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:arr_
 
 	# get address of local var:arr_
-	ld t3, 80(sp)
+	ld t3, 44(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:get
-	sd t0, 72(sp)
+	sd t0, 36(sp)
 
 	# load x$2 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 160(sp)
+	ld t3, 96(sp)
 
 	# get address of local var:x$2
-	ld t0, 0(t3)
-	sd t0, 64(sp)
+	lw t0, 0(t3)
+	sw t0, 32(sp)
 
-	# get x$2
+	# store get x$2
 
 	# fetch variables
 
 	# get address of local var:x$2
-	ld t1, 64(sp)
-
-	# store get x$2
+	lw t1, 32(sp)
 
 	# get address of get points to
-	ld t3, 72(sp)
-	sd t1, 0(t3)
+	ld t3, 36(sp)
+	sw t1, 0(t3)
 
 	# load length$1 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 176(sp)
+	ld t3, 108(sp)
 
 	# get address of local var:length$1
-	ld t0, 0(t3)
-	sd t0, 56(sp)
+	lw t0, 0(t3)
+	sw t0, 28(sp)
 
-	# add result_ length$1 
+	# ADD result_ length$1  
 
 	# fetch variables
 
 	# get address of local var:length$1
-	ld t1, 56(sp)
+	lw t1, 28(sp)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_
-	sd t0, 48(sp)
+	sw t0, 24(sp)
 
-	# lv$2 result_
+	# store lv$2 result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	ld t1, 48(sp)
-
-	# store lv$2 result_
+	lw t1, 24(sp)
 
 	# get address of lv$2 points to
-	ld t3, 176(sp)
-	sd t1, 0(t3)
+	ld t3, 108(sp)
+	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -721,115 +702,114 @@ whileBody_160:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getch$1
-	sd a0, 40(sp)
+	sw a0, 20(sp)
 
-	# lv$1 getch$1
+	# store lv$1 getch$1
 
 	# fetch variables
 
 	# get address of local var:getch$1
-	ld t1, 40(sp)
-
-	# store lv$1 getch$1
+	lw t1, 20(sp)
 
 	# get address of lv$1 points to
-	ld t3, 160(sp)
-	sd t1, 0(t3)
+	ld t3, 96(sp)
+	sw t1, 0(t3)
 
-	# br whileCond_160
-	j whileCond_160
-next_404:
+	# br whileCond_11
+	j whileCond_11
+next_17:
 
 	# load length$2 lv$2
 
 	# get address of lv$2 points to
-	ld t3, 176(sp)
+	ld t3, 108(sp)
 
 	# get address of local var:length$2
-	ld t0, 0(t3)
-	sd t0, 32(sp)
+	lw t0, 0(t3)
+	sw t0, 16(sp)
 
 	# ret length$2
 
 	# fetch variables
 
 	# get address of local var:length$2
-	ld t1, 32(sp)
+	lw t1, 16(sp)
 	mv a0, t1
-	li t4, 192
+	li t4, 124
 	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-secondCond_76:
+secondCond_2:
 
 	# load x$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 160(sp)
+	ld t3, 96(sp)
 
 	# get address of local var:x$1
-	ld t0, 0(t3)
-	sd t0, 24(sp)
+	lw t0, 0(t3)
+	sw t0, 12(sp)
 
-	# cmp x$1  cond_neq_tmp_$1
+	# ICMP cond_neq_tmp_$1 x$1  
 
 	# fetch variables
 
 	# get address of local var:x$1
-	ld t1, 24(sp)
+	lw t1, 12(sp)
 	li t2, 10
-
-	# get address of local var:cond_neq_tmp_$1
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 16(sp)
 
-	# zext cond_tmp_$1 cond_neq_tmp_$1
+	# get address of local var:cond_neq_tmp_$1
+	sw t0, 8(sp)
+
+	#  cond_tmp_$1 cond_neq_tmp_$1
 
 	# fetch variables
 
 	# get address of local var:cond_neq_tmp_$1
-	ld t1, 16(sp)
-
-	# get address of local var:cond_tmp_$1
+	lw t1, 8(sp)
 	mv t0, t1
-	sd t0, 8(sp)
 
-	# cmp cond_tmp_$1  cond_$1
+	# get address of local var:cond_tmp_$1
+	sw t0, 4(sp)
+
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$1
-	ld t1, 8(sp)
+	lw t1, 4(sp)
 	li t2, 0
-
-	# get address of local var:cond_$1
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(sp)
 
-	# condBr cond_$1 whileBody_160 next_404
+	# get address of local var:cond_$1
+	sw t0, 0(sp)
+
+	# condBr cond_$1 whileBody_11 next_17
 
 	# fetch variables
 
 	# get address of local var:cond_$1
-	ld t1, 0(sp)
-	beqz t1, next_404
-	j whileBody_160
+	lw t1, 0(sp)
+	beqz t1, next_17
+	j whileBody_11
 .type intpush, @function
 .globl intpush
 intpush:
 intpushEntry:
 
 	# reserve space
-	li t4, 64
+	li t4, 40
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -840,27 +820,25 @@ intpushEntry:
 	# save the parameters
 
 	# get address of local var:0
-	sd a0, 56(sp)
+	sw a0, 36(sp)
 
 	# allocate lv
-	li t0, 40
+	li t0, 24
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 48(sp)
+	sd t0, 28(sp)
 
-	# lv 0
+	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
-	ld t1, 56(sp)
-
-	# store lv 0
+	lw t1, 36(sp)
 
 	# get address of lv points to
-	ld t3, 48(sp)
-	sd t1, 0(t3)
+	ld t3, 28(sp)
+	sw t1, 0(t3)
 
 	# load intt gv1
 
@@ -868,33 +846,31 @@ intpushEntry:
 	la t3, gv1
 
 	# get address of local var:intt
-	ld t0, 0(t3)
-	sd t0, 32(sp)
+	lw t0, 0(t3)
+	sw t0, 20(sp)
 
-	# add result_ intt 
+	# ADD result_ intt  
 
 	# fetch variables
 
 	# get address of local var:intt
-	ld t1, 32(sp)
+	lw t1, 20(sp)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_
-	sd t0, 24(sp)
+	sw t0, 16(sp)
 
-	# gv1 @result_
+	# store gv1 result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	ld t1, 24(sp)
-
-	# store gv1 result_
+	lw t1, 16(sp)
 
 	# get address of gv1 points to
 	la t3, gv1
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# load intt$1 gv1
 
@@ -902,16 +878,16 @@ intpushEntry:
 	la t3, gv1
 
 	# get address of local var:intt$1
-	ld t0, 0(t3)
-	sd t0, 16(sp)
+	lw t0, 0(t3)
+	sw t0, 12(sp)
 
 	# gep ints intt$1
 
 	# fetch variables
 
 	# get address of local var:intt$1
-	ld t1, 16(sp)
-	li t2, 8
+	lw t1, 12(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv
@@ -920,32 +896,30 @@ intpushEntry:
 	add t0, t1, t0
 
 	# get address of local var:ints
-	sd t0, 8(sp)
+	sd t0, 4(sp)
 
 	# load x lv
 
 	# get address of lv points to
-	ld t3, 48(sp)
+	ld t3, 28(sp)
 
 	# get address of local var:x
-	ld t0, 0(t3)
-	sd t0, 0(sp)
+	lw t0, 0(t3)
+	sw t0, 0(sp)
 
-	# ints x
+	# store ints x
 
 	# fetch variables
 
 	# get address of local var:x
-	ld t1, 0(sp)
-
-	# store ints x
+	lw t1, 0(sp)
 
 	# get address of ints points to
-	ld t3, 8(sp)
-	sd t1, 0(t3)
+	ld t3, 4(sp)
+	sw t1, 0(t3)
 
 	# ret void
-	li t4, 64
+	li t4, 40
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -957,7 +931,7 @@ chapush:
 chapushEntry:
 
 	# reserve space
-	li t4, 64
+	li t4, 40
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -968,27 +942,25 @@ chapushEntry:
 	# save the parameters
 
 	# get address of local var:0
-	sd a0, 56(sp)
+	sw a0, 36(sp)
 
 	# allocate lv
-	li t0, 40
+	li t0, 24
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 48(sp)
+	sd t0, 28(sp)
 
-	# lv 0
+	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
-	ld t1, 56(sp)
-
-	# store lv 0
+	lw t1, 36(sp)
 
 	# get address of lv points to
-	ld t3, 48(sp)
-	sd t1, 0(t3)
+	ld t3, 28(sp)
+	sw t1, 0(t3)
 
 	# load chat gv3
 
@@ -996,33 +968,31 @@ chapushEntry:
 	la t3, gv3
 
 	# get address of local var:chat
-	ld t0, 0(t3)
-	sd t0, 32(sp)
+	lw t0, 0(t3)
+	sw t0, 20(sp)
 
-	# add result_ chat 
+	# ADD result_ chat  
 
 	# fetch variables
 
 	# get address of local var:chat
-	ld t1, 32(sp)
+	lw t1, 20(sp)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_
-	sd t0, 24(sp)
+	sw t0, 16(sp)
 
-	# gv3 @result_
+	# store gv3 result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	ld t1, 24(sp)
-
-	# store gv3 result_
+	lw t1, 16(sp)
 
 	# get address of gv3 points to
 	la t3, gv3
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# load chat$1 gv3
 
@@ -1030,16 +1000,16 @@ chapushEntry:
 	la t3, gv3
 
 	# get address of local var:chat$1
-	ld t0, 0(t3)
-	sd t0, 16(sp)
+	lw t0, 0(t3)
+	sw t0, 12(sp)
 
 	# gep chas chat$1
 
 	# fetch variables
 
 	# get address of local var:chat$1
-	ld t1, 16(sp)
-	li t2, 8
+	lw t1, 12(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -1048,32 +1018,30 @@ chapushEntry:
 	add t0, t1, t0
 
 	# get address of local var:chas
-	sd t0, 8(sp)
+	sd t0, 4(sp)
 
 	# load x lv
 
 	# get address of lv points to
-	ld t3, 48(sp)
+	ld t3, 28(sp)
 
 	# get address of local var:x
-	ld t0, 0(t3)
-	sd t0, 0(sp)
+	lw t0, 0(t3)
+	sw t0, 0(sp)
 
-	# chas x
+	# store chas x
 
 	# fetch variables
 
 	# get address of local var:x
-	ld t1, 0(sp)
-
-	# store chas x
+	lw t1, 0(sp)
 
 	# get address of chas points to
-	ld t3, 8(sp)
-	sd t1, 0(t3)
+	ld t3, 4(sp)
+	sw t1, 0(t3)
 
 	# ret void
-	li t4, 64
+	li t4, 40
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -1085,7 +1053,7 @@ intpop:
 intpopEntry:
 
 	# reserve space
-	li t4, 48
+	li t4, 28
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -1101,33 +1069,31 @@ intpopEntry:
 	la t3, gv1
 
 	# get address of local var:intt
-	ld t0, 0(t3)
-	sd t0, 40(sp)
+	lw t0, 0(t3)
+	sw t0, 24(sp)
 
-	# sub result_ intt 
+	# SUB result_ intt  
 
 	# fetch variables
 
 	# get address of local var:intt
-	ld t1, 40(sp)
+	lw t1, 24(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
-	sd t0, 32(sp)
+	sw t0, 20(sp)
 
-	# gv1 @result_
+	# store gv1 result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	ld t1, 32(sp)
-
-	# store gv1 result_
+	lw t1, 20(sp)
 
 	# get address of gv1 points to
 	la t3, gv1
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# load intt$1 gv1
 
@@ -1135,28 +1101,28 @@ intpopEntry:
 	la t3, gv1
 
 	# get address of local var:intt$1
-	ld t0, 0(t3)
-	sd t0, 24(sp)
+	lw t0, 0(t3)
+	sw t0, 16(sp)
 
-	# add result_$1 intt$1 
+	# ADD result_$1 intt$1  
 
 	# fetch variables
 
 	# get address of local var:intt$1
-	ld t1, 24(sp)
+	lw t1, 16(sp)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_$1
-	sd t0, 16(sp)
+	sw t0, 12(sp)
 
 	# gep ints result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
-	ld t1, 16(sp)
-	li t2, 8
+	lw t1, 12(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv
@@ -1165,25 +1131,25 @@ intpopEntry:
 	add t0, t1, t0
 
 	# get address of local var:ints
-	sd t0, 8(sp)
+	sd t0, 4(sp)
 
 	# load ints$1 ints
 
 	# get address of ints points to
-	ld t3, 8(sp)
+	ld t3, 4(sp)
 
 	# get address of local var:ints$1
-	ld t0, 0(t3)
-	sd t0, 0(sp)
+	lw t0, 0(t3)
+	sw t0, 0(sp)
 
 	# ret ints$1
 
 	# fetch variables
 
 	# get address of local var:ints$1
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 48
+	li t4, 28
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -1195,7 +1161,7 @@ chapop:
 chapopEntry:
 
 	# reserve space
-	li t4, 48
+	li t4, 28
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -1211,33 +1177,31 @@ chapopEntry:
 	la t3, gv3
 
 	# get address of local var:chat
-	ld t0, 0(t3)
-	sd t0, 40(sp)
+	lw t0, 0(t3)
+	sw t0, 24(sp)
 
-	# sub result_ chat 
+	# SUB result_ chat  
 
 	# fetch variables
 
 	# get address of local var:chat
-	ld t1, 40(sp)
+	lw t1, 24(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_
-	sub t0, t1, t2
-	sd t0, 32(sp)
+	sw t0, 20(sp)
 
-	# gv3 @result_
+	# store gv3 result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	ld t1, 32(sp)
-
-	# store gv3 result_
+	lw t1, 20(sp)
 
 	# get address of gv3 points to
 	la t3, gv3
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# load chat$1 gv3
 
@@ -1245,28 +1209,28 @@ chapopEntry:
 	la t3, gv3
 
 	# get address of local var:chat$1
-	ld t0, 0(t3)
-	sd t0, 24(sp)
+	lw t0, 0(t3)
+	sw t0, 16(sp)
 
-	# add result_$1 chat$1 
+	# ADD result_$1 chat$1  
 
 	# fetch variables
 
 	# get address of local var:chat$1
-	ld t1, 24(sp)
+	lw t1, 16(sp)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_$1
-	sd t0, 16(sp)
+	sw t0, 12(sp)
 
 	# gep chas result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
-	ld t1, 16(sp)
-	li t2, 8
+	lw t1, 12(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -1275,25 +1239,25 @@ chapopEntry:
 	add t0, t1, t0
 
 	# get address of local var:chas
-	sd t0, 8(sp)
+	sd t0, 4(sp)
 
 	# load chas$1 chas
 
 	# get address of chas points to
-	ld t3, 8(sp)
+	ld t3, 4(sp)
 
 	# get address of local var:chas$1
-	ld t0, 0(t3)
-	sd t0, 0(sp)
+	lw t0, 0(t3)
+	sw t0, 0(sp)
 
 	# ret chas$1
 
 	# fetch variables
 
 	# get address of local var:chas$1
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 48
+	li t4, 28
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -1305,7 +1269,7 @@ intadd:
 intaddEntry:
 
 	# reserve space
-	li t4, 128
+	li t4, 84
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -1316,27 +1280,25 @@ intaddEntry:
 	# save the parameters
 
 	# get address of local var:0
-	sd a0, 120(sp)
+	sw a0, 80(sp)
 
 	# allocate lv
-	li t0, 104
+	li t0, 68
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 112(sp)
+	sd t0, 72(sp)
 
-	# lv 0
+	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
-	ld t1, 120(sp)
-
-	# store lv 0
+	lw t1, 80(sp)
 
 	# get address of lv points to
-	ld t3, 112(sp)
-	sd t1, 0(t3)
+	ld t3, 72(sp)
+	sw t1, 0(t3)
 
 	# load intt gv1
 
@@ -1344,16 +1306,16 @@ intaddEntry:
 	la t3, gv1
 
 	# get address of local var:intt
-	ld t0, 0(t3)
-	sd t0, 96(sp)
+	lw t0, 0(t3)
+	sw t0, 64(sp)
 
 	# gep ints intt
 
 	# fetch variables
 
 	# get address of local var:intt
-	ld t1, 96(sp)
-	li t2, 8
+	lw t1, 64(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv
@@ -1362,7 +1324,7 @@ intaddEntry:
 	add t0, t1, t0
 
 	# get address of local var:ints
-	sd t0, 88(sp)
+	sd t0, 56(sp)
 
 	# load intt$1 gv1
 
@@ -1370,16 +1332,16 @@ intaddEntry:
 	la t3, gv1
 
 	# get address of local var:intt$1
-	ld t0, 0(t3)
-	sd t0, 80(sp)
+	lw t0, 0(t3)
+	sw t0, 52(sp)
 
 	# gep ints$1 intt$1
 
 	# fetch variables
 
 	# get address of local var:intt$1
-	ld t1, 80(sp)
-	li t2, 8
+	lw t1, 52(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv
@@ -1388,41 +1350,39 @@ intaddEntry:
 	add t0, t1, t0
 
 	# get address of local var:ints$1
-	sd t0, 72(sp)
+	sd t0, 44(sp)
 
 	# load ints$2 ints$1
 
 	# get address of ints$1 points to
-	ld t3, 72(sp)
+	ld t3, 44(sp)
 
 	# get address of local var:ints$2
-	ld t0, 0(t3)
-	sd t0, 64(sp)
+	lw t0, 0(t3)
+	sw t0, 40(sp)
 
-	# mul result_ ints$2 
+	# MUL result_ ints$2  
 
 	# fetch variables
 
 	# get address of local var:ints$2
-	ld t1, 64(sp)
+	lw t1, 40(sp)
 	li t2, 10
-
-	# get address of local var:result_
 	mul t0, t1, t2
-	sd t0, 56(sp)
-
-	# ints result_
-
-	# fetch variables
 
 	# get address of local var:result_
-	ld t1, 56(sp)
+	sw t0, 36(sp)
 
 	# store ints result_
 
+	# fetch variables
+
+	# get address of local var:result_
+	lw t1, 36(sp)
+
 	# get address of ints points to
-	ld t3, 88(sp)
-	sd t1, 0(t3)
+	ld t3, 56(sp)
+	sw t1, 0(t3)
 
 	# load intt$2 gv1
 
@@ -1430,16 +1390,16 @@ intaddEntry:
 	la t3, gv1
 
 	# get address of local var:intt$2
-	ld t0, 0(t3)
-	sd t0, 48(sp)
+	lw t0, 0(t3)
+	sw t0, 32(sp)
 
 	# gep ints$3 intt$2
 
 	# fetch variables
 
 	# get address of local var:intt$2
-	ld t1, 48(sp)
-	li t2, 8
+	lw t1, 32(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv
@@ -1448,7 +1408,7 @@ intaddEntry:
 	add t0, t1, t0
 
 	# get address of local var:ints$3
-	sd t0, 40(sp)
+	sd t0, 24(sp)
 
 	# load intt$3 gv1
 
@@ -1456,16 +1416,16 @@ intaddEntry:
 	la t3, gv1
 
 	# get address of local var:intt$3
-	ld t0, 0(t3)
-	sd t0, 32(sp)
+	lw t0, 0(t3)
+	sw t0, 20(sp)
 
 	# gep ints$4 intt$3
 
 	# fetch variables
 
 	# get address of local var:intt$3
-	ld t1, 32(sp)
-	li t2, 8
+	lw t1, 20(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv
@@ -1474,55 +1434,53 @@ intaddEntry:
 	add t0, t1, t0
 
 	# get address of local var:ints$4
-	sd t0, 24(sp)
+	sd t0, 12(sp)
 
 	# load ints$5 ints$4
 
 	# get address of ints$4 points to
-	ld t3, 24(sp)
+	ld t3, 12(sp)
 
 	# get address of local var:ints$5
-	ld t0, 0(t3)
-	sd t0, 16(sp)
+	lw t0, 0(t3)
+	sw t0, 8(sp)
 
 	# load x lv
 
 	# get address of lv points to
-	ld t3, 112(sp)
+	ld t3, 72(sp)
 
 	# get address of local var:x
-	ld t0, 0(t3)
-	sd t0, 8(sp)
+	lw t0, 0(t3)
+	sw t0, 4(sp)
 
-	# add result_$1 ints$5 x
+	# ADD result_$1 ints$5 x 
 
 	# fetch variables
 
 	# get address of local var:ints$5
-	ld t1, 16(sp)
+	lw t1, 8(sp)
 
 	# get address of local var:x
-	ld t2, 8(sp)
+	lw t2, 4(sp)
 	add t0, t1, t2
 
 	# get address of local var:result_$1
-	sd t0, 0(sp)
+	sw t0, 0(sp)
 
-	# ints$3 result_$1
+	# store ints$3 result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
-	ld t1, 0(sp)
-
-	# store ints$3 result_$1
+	lw t1, 0(sp)
 
 	# get address of ints$3 points to
-	ld t3, 40(sp)
-	sd t1, 0(t3)
+	ld t3, 24(sp)
+	sw t1, 0(t3)
 
 	# ret void
-	li t4, 128
+	li t4, 84
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -1534,7 +1492,7 @@ find:
 findEntry:
 
 	# reserve space
-	li t4, 104
+	li t4, 60
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -1545,7 +1503,8 @@ findEntry:
 	# save the parameters
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1559,23 +1518,22 @@ findEntry:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:chapop
-	sd a0, 96(sp)
+	sw a0, 56(sp)
 
-	# gv6 @chapop
+	# store gv6 chapop
 
 	# fetch variables
 
 	# get address of local var:chapop
-	ld t1, 96(sp)
-
-	# store gv6 chapop
+	lw t1, 56(sp)
 
 	# get address of gv6 points to
 	la t3, gv6
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# load ii gv5
 
@@ -1583,16 +1541,16 @@ findEntry:
 	la t3, gv5
 
 	# get address of local var:ii
-	ld t0, 0(t3)
-	sd t0, 88(sp)
+	lw t0, 0(t3)
+	sw t0, 52(sp)
 
 	# gep get2 ii
 
 	# fetch variables
 
 	# get address of local var:ii
-	ld t1, 88(sp)
-	li t2, 8
+	lw t1, 52(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -1601,18 +1559,16 @@ findEntry:
 	add t0, t1, t0
 
 	# get address of local var:get2
-	sd t0, 80(sp)
+	sd t0, 44(sp)
 
-	# get2 
+	# store get2 
 
 	# fetch variables
 	li t1, 32
 
-	# store get2 
-
 	# get address of get2 points to
-	ld t3, 80(sp)
-	sd t1, 0(t3)
+	ld t3, 44(sp)
+	sw t1, 0(t3)
 
 	# load ii$1 gv5
 
@@ -1620,28 +1576,28 @@ findEntry:
 	la t3, gv5
 
 	# get address of local var:ii$1
-	ld t0, 0(t3)
-	sd t0, 72(sp)
+	lw t0, 0(t3)
+	sw t0, 40(sp)
 
-	# add result_ ii$1 
+	# ADD result_ ii$1  
 
 	# fetch variables
 
 	# get address of local var:ii$1
-	ld t1, 72(sp)
+	lw t1, 40(sp)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_
-	sd t0, 64(sp)
+	sw t0, 36(sp)
 
 	# gep get2$1 result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	ld t1, 64(sp)
-	li t2, 8
+	lw t1, 36(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -1650,7 +1606,7 @@ findEntry:
 	add t0, t1, t0
 
 	# get address of local var:get2$1
-	sd t0, 56(sp)
+	sd t0, 28(sp)
 
 	# load c gv6
 
@@ -1658,21 +1614,19 @@ findEntry:
 	la t3, gv6
 
 	# get address of local var:c
-	ld t0, 0(t3)
-	sd t0, 48(sp)
+	lw t0, 0(t3)
+	sw t0, 24(sp)
 
-	# get2$1 c
+	# store get2$1 c
 
 	# fetch variables
 
 	# get address of local var:c
-	ld t1, 48(sp)
-
-	# store get2$1 c
+	lw t1, 24(sp)
 
 	# get address of get2$1 points to
-	ld t3, 56(sp)
-	sd t1, 0(t3)
+	ld t3, 28(sp)
+	sw t1, 0(t3)
 
 	# load ii$2 gv5
 
@@ -1680,33 +1634,31 @@ findEntry:
 	la t3, gv5
 
 	# get address of local var:ii$2
-	ld t0, 0(t3)
-	sd t0, 40(sp)
+	lw t0, 0(t3)
+	sw t0, 20(sp)
 
-	# add result_$1 ii$2 
+	# ADD result_$1 ii$2  
 
 	# fetch variables
 
 	# get address of local var:ii$2
-	ld t1, 40(sp)
+	lw t1, 20(sp)
 	li t2, 2
 	add t0, t1, t2
 
 	# get address of local var:result_$1
-	sd t0, 32(sp)
+	sw t0, 16(sp)
 
-	# gv5 @result_$1
+	# store gv5 result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
-	ld t1, 32(sp)
-
-	# store gv5 result_$1
+	lw t1, 16(sp)
 
 	# get address of gv5 points to
 	la t3, gv5
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# load chat gv3
 
@@ -1714,76 +1666,76 @@ findEntry:
 	la t3, gv3
 
 	# get address of local var:chat
-	ld t0, 0(t3)
-	sd t0, 24(sp)
+	lw t0, 0(t3)
+	sw t0, 12(sp)
 
-	# cmp chat  cond_eq_tmp_
+	# ICMP cond_eq_tmp_ chat  
 
 	# fetch variables
 
 	# get address of local var:chat
-	ld t1, 24(sp)
+	lw t1, 12(sp)
 	li t2, 0
-
-	# get address of local var:cond_eq_tmp_
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 16(sp)
 
-	# zext cond_tmp_ cond_eq_tmp_
+	# get address of local var:cond_eq_tmp_
+	sw t0, 8(sp)
+
+	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_
-	ld t1, 16(sp)
-
-	# get address of local var:cond_tmp_
+	lw t1, 8(sp)
 	mv t0, t1
-	sd t0, 8(sp)
 
-	# cmp cond_tmp_  cond_
+	# get address of local var:cond_tmp_
+	sw t0, 4(sp)
+
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
-	ld t1, 8(sp)
+	lw t1, 4(sp)
 	li t2, 0
-
-	# get address of local var:cond_
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(sp)
 
-	# condBr cond_ ifTrue_244 next_405
+	# get address of local var:cond_
+	sw t0, 0(sp)
+
+	# condBr cond_ ifTrue_6 next_18
 
 	# fetch variables
 
 	# get address of local var:cond_
-	ld t1, 0(sp)
-	beqz t1, next_405
-	j ifTrue_244
-ifTrue_244:
+	lw t1, 0(sp)
+	beqz t1, next_18
+	j ifTrue_6
+ifTrue_6:
 
 	# ret 
 
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	li t4, 104
+	li t4, 60
 	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
-next_405:
+next_18:
 
 	# ret 
 
 	# fetch variables
 	li t1, 1
 	mv a0, t1
-	li t4, 104
+	li t4, 60
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -1792,86 +1744,82 @@ next_405:
 .type main, @function
 .globl main
 main:
-mainEntry36:
+mainEntry4:
 
 	# reserve space
-	li t4, 3288
+	li t4, 1904
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv$4
-	li t0, 3272
+	li t0, 1892
 	add t0, sp, t0
 
 	# get address of local var:lv$4
-	li t4, 3280
+	li t4, 1896
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# allocate lv$3
-	li t0, 3256
+	li t0, 1880
 	add t0, sp, t0
 
 	# get address of local var:lv$3
-	li t4, 3264
+	li t4, 1884
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# allocate lv$2
-	li t0, 3240
+	li t0, 1868
 	add t0, sp, t0
 
 	# get address of local var:lv$2
-	li t4, 3248
+	li t4, 1872
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# allocate lv$1
-	li t0, 3224
+	li t0, 1856
 	add t0, sp, t0
 
 	# get address of local var:lv$1
-	li t4, 3232
+	li t4, 1860
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# allocate lv
-	li t0, 3208
+	li t0, 1844
 	add t0, sp, t0
 
 	# get address of local var:lv
-	li t4, 3216
+	li t4, 1848
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# gv1 @
+	# store gv1 
 
 	# fetch variables
 	li t1, 0
-
-	# store gv1 
 
 	# get address of gv1 points to
 	la t3, gv1
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# gv3 @
+	# store gv3 
 
 	# fetch variables
 	li t1, 0
 
-	# store gv3 
-
 	# get address of gv3 points to
 	la t3, gv3
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# gep get 
 
 	# fetch variables
 	li t1, 0
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv7
@@ -1880,7 +1828,7 @@ mainEntry36:
 	add t0, t1, t0
 
 	# get address of local var:get
-	li t4, 3200
+	li t4, 1836
 	add t4, sp, t4
 	sd t0, 0(t4)
 
@@ -1889,11 +1837,12 @@ mainEntry36:
 	# fetch variables
 
 	# get address of local var:get
-	li t4, 3200
+	li t4, 1836
 	add t4, sp, t4
 	ld t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -1907,33 +1856,32 @@ mainEntry36:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:getstr
-	li t4, 3192
+	li t4, 1832
 	add t4, sp, t4
-	sd a0, 0(t4)
+	sw a0, 0(t4)
 
-	# lv getstr
+	# store lv getstr
 
 	# fetch variables
 
 	# get address of local var:getstr
-	li t4, 3192
+	li t4, 1832
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# store lv getstr
+	lw t1, 0(t4)
 
 	# get address of lv points to
-	li t4, 3216
+	li t4, 1848
 	add t4, sp, t4
 	ld t3, 0(t4)
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br whileCond_161
-	j whileCond_161
-whileCond_161:
+	# br whileCond_12
+	j whileCond_12
+whileCond_12:
 
 	# load i gv4
 
@@ -1941,88 +1889,88 @@ whileCond_161:
 	la t3, gv4
 
 	# get address of local var:i
-	li t4, 3184
+	li t4, 1828
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# load lengets lv
 
 	# get address of lv points to
-	li t4, 3216
+	li t4, 1848
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:lengets
-	li t4, 3176
+	li t4, 1824
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp i lengets cond_lt_tmp_
+	# ICMP cond_lt_tmp_ i lengets 
 
 	# fetch variables
 
 	# get address of local var:i
-	li t4, 3184
+	li t4, 1828
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 
 	# get address of local var:lengets
-	li t4, 3176
+	li t4, 1824
 	add t4, sp, t4
-	ld t2, 0(t4)
-
-	# get address of local var:cond_lt_tmp_
-	li t4, 3168
-	add t4, sp, t4
+	lw t2, 0(t4)
 	slt t0, t1, t2
-	sd t0, 0(t4)
 
-	# zext cond_tmp_ cond_lt_tmp_
+	# get address of local var:cond_lt_tmp_
+	li t4, 1820
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_
-	li t4, 3168
+	li t4, 1820
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	li t4, 3160
+	li t4, 1816
 	add t4, sp, t4
-	mv t0, t1
-	sd t0, 0(t4)
+	sw t0, 0(t4)
 
-	# cmp cond_tmp_  cond_
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
-	li t4, 3160
+	li t4, 1816
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_
-	li t4, 3152
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_ whileBody_161 next_406
+	# get address of local var:cond_
+	li t4, 1812
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_ whileBody_12 next_19
 
 	# fetch variables
 
 	# get address of local var:cond_
-	li t4, 3152
+	li t4, 1812
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_406
-	j whileBody_161
-whileBody_161:
+	lw t1, 0(t4)
+	beqz t1, next_19
+	j whileBody_12
+whileBody_12:
 
 	# load i$1 gv4
 
@@ -2030,20 +1978,20 @@ whileBody_161:
 	la t3, gv4
 
 	# get address of local var:i$1
-	li t4, 3144
+	li t4, 1808
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep get$1 i$1
 
 	# fetch variables
 
 	# get address of local var:i$1
-	li t4, 3144
+	li t4, 1808
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv7
@@ -2052,33 +2000,34 @@ whileBody_161:
 	add t0, t1, t0
 
 	# get address of local var:get$1
-	li t4, 3136
+	li t4, 1800
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load get$2 get$1
 
 	# get address of get$1 points to
-	li t4, 3136
+	li t4, 1800
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:get$2
-	li t4, 3128
+	li t4, 1796
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:get$2
-	li t4, 3128
+	li t4, 1796
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2092,78 +2041,79 @@ whileBody_161:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:isdigit
-	li t4, 3120
+	li t4, 1792
 	add t4, sp, t4
-	sd a0, 0(t4)
+	sw a0, 0(t4)
 
-	# cmp isdigit  cond_eq_tmp_
+	# ICMP cond_eq_tmp_ isdigit  
 
 	# fetch variables
 
 	# get address of local var:isdigit
-	li t4, 3120
+	li t4, 1792
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 1
-
-	# get address of local var:cond_eq_tmp_
-	li t4, 3112
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$1 cond_eq_tmp_
+	# get address of local var:cond_eq_tmp_
+	li t4, 1788
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$1 cond_eq_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_
-	li t4, 3112
+	li t4, 1788
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$1
-	li t4, 3104
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$1  cond_$1
+	# get address of local var:cond_tmp_$1
+	li t4, 1784
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$1
-	li t4, 3104
+	li t4, 1784
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$1
-	li t4, 3096
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$1 ifTrue_245 ifFalse_99
+	# get address of local var:cond_$1
+	li t4, 1780
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$1 ifTrue_7 ifFalse_5
 
 	# fetch variables
 
 	# get address of local var:cond_$1
-	li t4, 3096
+	li t4, 1780
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, ifFalse_99
-	j ifTrue_245
-next_406:
+	lw t1, 0(t4)
+	beqz t1, ifFalse_5
+	j ifTrue_7
+next_19:
 
-	# br whileCond_168
-	j whileCond_168
-ifTrue_245:
+	# br whileCond_19
+	j whileCond_19
+ifTrue_7:
 
 	# load ii gv5
 
@@ -2171,20 +2121,20 @@ ifTrue_245:
 	la t3, gv5
 
 	# get address of local var:ii
-	li t4, 3088
+	li t4, 1776
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep get2 ii
 
 	# fetch variables
 
 	# get address of local var:ii
-	li t4, 3088
+	li t4, 1776
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -2193,7 +2143,7 @@ ifTrue_245:
 	add t0, t1, t0
 
 	# get address of local var:get2
-	li t4, 3080
+	li t4, 1768
 	add t4, sp, t4
 	sd t0, 0(t4)
 
@@ -2203,20 +2153,20 @@ ifTrue_245:
 	la t3, gv4
 
 	# get address of local var:i$2
-	li t4, 3072
+	li t4, 1764
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep get$3 i$2
 
 	# fetch variables
 
 	# get address of local var:i$2
-	li t4, 3072
+	li t4, 1764
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv7
@@ -2225,39 +2175,37 @@ ifTrue_245:
 	add t0, t1, t0
 
 	# get address of local var:get$3
-	li t4, 3064
+	li t4, 1756
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load get$4 get$3
 
 	# get address of get$3 points to
-	li t4, 3064
+	li t4, 1756
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:get$4
-	li t4, 3056
+	li t4, 1752
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# get2 get$4
+	# store get2 get$4
 
 	# fetch variables
 
 	# get address of local var:get$4
-	li t4, 3056
+	li t4, 1752
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# store get2 get$4
+	lw t1, 0(t4)
 
 	# get address of get2 points to
-	li t4, 3080
+	li t4, 1768
 	add t4, sp, t4
 	ld t3, 0(t4)
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# load ii$1 gv5
 
@@ -2265,45 +2213,43 @@ ifTrue_245:
 	la t3, gv5
 
 	# get address of local var:ii$1
-	li t4, 3048
+	li t4, 1748
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# add result_ ii$1 
+	# ADD result_ ii$1  
 
 	# fetch variables
 
 	# get address of local var:ii$1
-	li t4, 3048
+	li t4, 1748
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_
-	li t4, 3040
+	li t4, 1744
 	add t4, sp, t4
-	sd t0, 0(t4)
+	sw t0, 0(t4)
 
-	# gv5 @result_
+	# store gv5 result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	li t4, 3040
+	li t4, 1744
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# store gv5 result_
+	lw t1, 0(t4)
 
 	# get address of gv5 points to
 	la t3, gv5
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br next_407
-	j next_407
-ifFalse_99:
+	# br next_20
+	j next_20
+ifFalse_5:
 
 	# load i$3 gv4
 
@@ -2311,20 +2257,20 @@ ifFalse_99:
 	la t3, gv4
 
 	# get address of local var:i$3
-	li t4, 3032
+	li t4, 1740
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep get$5 i$3
 
 	# fetch variables
 
 	# get address of local var:i$3
-	li t4, 3032
+	li t4, 1740
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv7
@@ -2333,84 +2279,84 @@ ifFalse_99:
 	add t0, t1, t0
 
 	# get address of local var:get$5
-	li t4, 3024
+	li t4, 1732
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load get$6 get$5
 
 	# get address of get$5 points to
-	li t4, 3024
+	li t4, 1732
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:get$6
-	li t4, 3016
+	li t4, 1728
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp get$6  cond_eq_tmp_$1
+	# ICMP cond_eq_tmp_$1 get$6  
 
 	# fetch variables
 
 	# get address of local var:get$6
-	li t4, 3016
+	li t4, 1728
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 40
-
-	# get address of local var:cond_eq_tmp_$1
-	li t4, 3008
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$2 cond_eq_tmp_$1
+	# get address of local var:cond_eq_tmp_$1
+	li t4, 1724
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$2 cond_eq_tmp_$1
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$1
-	li t4, 3008
+	li t4, 1724
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$2
-	li t4, 3000
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$2  cond_$2
+	# get address of local var:cond_tmp_$2
+	li t4, 1720
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$2 cond_tmp_$2  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$2
-	li t4, 3000
+	li t4, 1720
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$2
-	li t4, 2992
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$2 ifTrue_246 next_408
+	# get address of local var:cond_$2
+	li t4, 1716
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$2 ifTrue_8 next_21
 
 	# fetch variables
 
 	# get address of local var:cond_$2
-	li t4, 2992
+	li t4, 1716
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_408
-	j ifTrue_246
-next_407:
+	lw t1, 0(t4)
+	beqz t1, next_21
+	j ifTrue_8
+next_20:
 
 	# load i$11 gv4
 
@@ -2418,52 +2364,51 @@ next_407:
 	la t3, gv4
 
 	# get address of local var:i$11
-	li t4, 2984
+	li t4, 1712
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# add result_$4 i$11 
+	# ADD result_$4 i$11  
 
 	# fetch variables
 
 	# get address of local var:i$11
-	li t4, 2984
+	li t4, 1712
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_$4
-	li t4, 2976
+	li t4, 1708
 	add t4, sp, t4
-	sd t0, 0(t4)
+	sw t0, 0(t4)
 
-	# gv4 @result_$4
+	# store gv4 result_$4
 
 	# fetch variables
 
 	# get address of local var:result_$4
-	li t4, 2976
+	li t4, 1708
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# store gv4 result_$4
+	lw t1, 0(t4)
 
 	# get address of gv4 points to
 	la t3, gv4
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br whileCond_161
-	j whileCond_161
-ifTrue_246:
+	# br whileCond_12
+	j whileCond_12
+ifTrue_8:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 40
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2477,11 +2422,12 @@ ifTrue_246:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
-	# br next_408
-	j next_408
-next_408:
+	# br next_21
+	j next_21
+next_21:
 
 	# load i$4 gv4
 
@@ -2489,20 +2435,20 @@ next_408:
 	la t3, gv4
 
 	# get address of local var:i$4
-	li t4, 2968
+	li t4, 1704
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep get$7 i$4
 
 	# fetch variables
 
 	# get address of local var:i$4
-	li t4, 2968
+	li t4, 1704
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv7
@@ -2511,91 +2457,92 @@ next_408:
 	add t0, t1, t0
 
 	# get address of local var:get$7
-	li t4, 2960
+	li t4, 1696
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load get$8 get$7
 
 	# get address of get$7 points to
-	li t4, 2960
+	li t4, 1696
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:get$8
-	li t4, 2952
+	li t4, 1692
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp get$8  cond_eq_tmp_$2
+	# ICMP cond_eq_tmp_$2 get$8  
 
 	# fetch variables
 
 	# get address of local var:get$8
-	li t4, 2952
+	li t4, 1692
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 94
-
-	# get address of local var:cond_eq_tmp_$2
-	li t4, 2944
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$3 cond_eq_tmp_$2
+	# get address of local var:cond_eq_tmp_$2
+	li t4, 1688
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$3 cond_eq_tmp_$2
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$2
-	li t4, 2944
+	li t4, 1688
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$3
-	li t4, 2936
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$3  cond_$3
+	# get address of local var:cond_tmp_$3
+	li t4, 1684
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$3 cond_tmp_$3  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$3
-	li t4, 2936
+	li t4, 1684
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$3
-	li t4, 2928
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$3 ifTrue_247 next_409
+	# get address of local var:cond_$3
+	li t4, 1680
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$3 ifTrue_9 next_22
 
 	# fetch variables
 
 	# get address of local var:cond_$3
-	li t4, 2928
+	li t4, 1680
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_409
-	j ifTrue_247
-ifTrue_247:
+	lw t1, 0(t4)
+	beqz t1, next_22
+	j ifTrue_9
+ifTrue_9:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 94
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2609,11 +2556,12 @@ ifTrue_247:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
-	# br next_409
-	j next_409
-next_409:
+	# br next_22
+	j next_22
+next_22:
 
 	# load i$5 gv4
 
@@ -2621,20 +2569,20 @@ next_409:
 	la t3, gv4
 
 	# get address of local var:i$5
-	li t4, 2920
+	li t4, 1676
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep get$9 i$5
 
 	# fetch variables
 
 	# get address of local var:i$5
-	li t4, 2920
+	li t4, 1676
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv7
@@ -2643,87 +2591,88 @@ next_409:
 	add t0, t1, t0
 
 	# get address of local var:get$9
-	li t4, 2912
+	li t4, 1668
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load get$10 get$9
 
 	# get address of get$9 points to
-	li t4, 2912
+	li t4, 1668
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:get$10
-	li t4, 2904
+	li t4, 1664
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp get$10  cond_eq_tmp_$3
+	# ICMP cond_eq_tmp_$3 get$10  
 
 	# fetch variables
 
 	# get address of local var:get$10
-	li t4, 2904
+	li t4, 1664
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 41
-
-	# get address of local var:cond_eq_tmp_$3
-	li t4, 2896
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$4 cond_eq_tmp_$3
+	# get address of local var:cond_eq_tmp_$3
+	li t4, 1660
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$4 cond_eq_tmp_$3
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$3
-	li t4, 2896
+	li t4, 1660
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$4
-	li t4, 2888
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$4  cond_$4
+	# get address of local var:cond_tmp_$4
+	li t4, 1656
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$4 cond_tmp_$4  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$4
-	li t4, 2888
+	li t4, 1656
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$4
-	li t4, 2880
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$4 ifTrue_248 next_410
+	# get address of local var:cond_$4
+	li t4, 1652
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$4 ifTrue_10 next_23
 
 	# fetch variables
 
 	# get address of local var:cond_$4
-	li t4, 2880
+	li t4, 1652
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_410
-	j ifTrue_248
-ifTrue_248:
+	lw t1, 0(t4)
+	beqz t1, next_23
+	j ifTrue_10
+ifTrue_10:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2737,31 +2686,30 @@ ifTrue_248:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:chapop
-	li t4, 2872
+	li t4, 1648
 	add t4, sp, t4
-	sd a0, 0(t4)
+	sw a0, 0(t4)
 
-	# gv6 @chapop
+	# store gv6 chapop
 
 	# fetch variables
 
 	# get address of local var:chapop
-	li t4, 2872
+	li t4, 1648
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# store gv6 chapop
+	lw t1, 0(t4)
 
 	# get address of gv6 points to
 	la t3, gv6
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br whileCond_162
-	j whileCond_162
-next_410:
+	# br whileCond_13
+	j whileCond_13
+next_23:
 
 	# load i$6 gv4
 
@@ -2769,20 +2717,20 @@ next_410:
 	la t3, gv4
 
 	# get address of local var:i$6
-	li t4, 2864
+	li t4, 1644
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep get$11 i$6
 
 	# fetch variables
 
 	# get address of local var:i$6
-	li t4, 2864
+	li t4, 1644
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv7
@@ -2791,84 +2739,84 @@ next_410:
 	add t0, t1, t0
 
 	# get address of local var:get$11
-	li t4, 2856
+	li t4, 1636
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load get$12 get$11
 
 	# get address of get$11 points to
-	li t4, 2856
+	li t4, 1636
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:get$12
-	li t4, 2848
+	li t4, 1632
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp get$12  cond_eq_tmp_$4
+	# ICMP cond_eq_tmp_$4 get$12  
 
 	# fetch variables
 
 	# get address of local var:get$12
-	li t4, 2848
+	li t4, 1632
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 43
-
-	# get address of local var:cond_eq_tmp_$4
-	li t4, 2840
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$6 cond_eq_tmp_$4
+	# get address of local var:cond_eq_tmp_$4
+	li t4, 1628
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$6 cond_eq_tmp_$4
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$4
-	li t4, 2840
+	li t4, 1628
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$6
-	li t4, 2832
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$6  cond_$6
+	# get address of local var:cond_tmp_$6
+	li t4, 1624
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$6 cond_tmp_$6  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$6
-	li t4, 2832
+	li t4, 1624
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$6
-	li t4, 2824
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$6 ifTrue_249 next_412
+	# get address of local var:cond_$6
+	li t4, 1620
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$6 ifTrue_11 next_25
 
 	# fetch variables
 
 	# get address of local var:cond_$6
-	li t4, 2824
+	li t4, 1620
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_412
-	j ifTrue_249
-whileCond_162:
+	lw t1, 0(t4)
+	beqz t1, next_25
+	j ifTrue_11
+whileCond_13:
 
 	# load c gv6
 
@@ -2876,73 +2824,73 @@ whileCond_162:
 	la t3, gv6
 
 	# get address of local var:c
-	li t4, 2816
+	li t4, 1616
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp c  cond_neq_tmp_
+	# ICMP cond_neq_tmp_ c  
 
 	# fetch variables
 
 	# get address of local var:c
-	li t4, 2816
+	li t4, 1616
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 40
-
-	# get address of local var:cond_neq_tmp_
-	li t4, 2808
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$5 cond_neq_tmp_
+	# get address of local var:cond_neq_tmp_
+	li t4, 1612
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$5 cond_neq_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_neq_tmp_
-	li t4, 2808
+	li t4, 1612
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$5
-	li t4, 2800
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$5  cond_$5
+	# get address of local var:cond_tmp_$5
+	li t4, 1608
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$5 cond_tmp_$5  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$5
-	li t4, 2800
+	li t4, 1608
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$5
-	li t4, 2792
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$5 whileBody_162 next_411
+	# get address of local var:cond_$5
+	li t4, 1604
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$5 whileBody_13 next_24
 
 	# fetch variables
 
 	# get address of local var:cond_$5
-	li t4, 2792
+	li t4, 1604
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_411
-	j whileBody_162
-whileBody_162:
+	lw t1, 0(t4)
+	beqz t1, next_24
+	j whileBody_13
+whileBody_13:
 
 	# load ii$2 gv5
 
@@ -2950,20 +2898,20 @@ whileBody_162:
 	la t3, gv5
 
 	# get address of local var:ii$2
-	li t4, 2784
+	li t4, 1600
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep get2$1 ii$2
 
 	# fetch variables
 
 	# get address of local var:ii$2
-	li t4, 2784
+	li t4, 1600
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -2972,22 +2920,20 @@ whileBody_162:
 	add t0, t1, t0
 
 	# get address of local var:get2$1
-	li t4, 2776
+	li t4, 1592
 	add t4, sp, t4
 	sd t0, 0(t4)
 
-	# get2$1 
+	# store get2$1 
 
 	# fetch variables
 	li t1, 32
 
-	# store get2$1 
-
 	# get address of get2$1 points to
-	li t4, 2776
+	li t4, 1592
 	add t4, sp, t4
 	ld t3, 0(t4)
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# load ii$3 gv5
 
@@ -2995,36 +2941,36 @@ whileBody_162:
 	la t3, gv5
 
 	# get address of local var:ii$3
-	li t4, 2768
+	li t4, 1588
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# add result_$1 ii$3 
+	# ADD result_$1 ii$3  
 
 	# fetch variables
 
 	# get address of local var:ii$3
-	li t4, 2768
+	li t4, 1588
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_$1
-	li t4, 2760
+	li t4, 1584
 	add t4, sp, t4
-	sd t0, 0(t4)
+	sw t0, 0(t4)
 
 	# gep get2$2 result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
-	li t4, 2760
+	li t4, 1584
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -3033,7 +2979,7 @@ whileBody_162:
 	add t0, t1, t0
 
 	# get address of local var:get2$2
-	li t4, 2752
+	li t4, 1576
 	add t4, sp, t4
 	sd t0, 0(t4)
 
@@ -3043,27 +2989,25 @@ whileBody_162:
 	la t3, gv6
 
 	# get address of local var:c$1
-	li t4, 2744
+	li t4, 1572
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# get2$2 c$1
+	# store get2$2 c$1
 
 	# fetch variables
 
 	# get address of local var:c$1
-	li t4, 2744
+	li t4, 1572
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# store get2$2 c$1
+	lw t1, 0(t4)
 
 	# get address of get2$2 points to
-	li t4, 2752
+	li t4, 1576
 	add t4, sp, t4
 	ld t3, 0(t4)
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# load ii$4 gv5
 
@@ -3071,44 +3015,43 @@ whileBody_162:
 	la t3, gv5
 
 	# get address of local var:ii$4
-	li t4, 2736
+	li t4, 1568
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# add result_$2 ii$4 
+	# ADD result_$2 ii$4  
 
 	# fetch variables
 
 	# get address of local var:ii$4
-	li t4, 2736
+	li t4, 1568
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 2
 	add t0, t1, t2
 
 	# get address of local var:result_$2
-	li t4, 2728
+	li t4, 1564
 	add t4, sp, t4
-	sd t0, 0(t4)
+	sw t0, 0(t4)
 
-	# gv5 @result_$2
+	# store gv5 result_$2
 
 	# fetch variables
 
 	# get address of local var:result_$2
-	li t4, 2728
+	li t4, 1564
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# store gv5 result_$2
+	lw t1, 0(t4)
 
 	# get address of gv5 points to
 	la t3, gv5
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3122,39 +3065,38 @@ whileBody_162:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:chapop$1
-	li t4, 2720
+	li t4, 1560
 	add t4, sp, t4
-	sd a0, 0(t4)
+	sw a0, 0(t4)
 
-	# gv6 @chapop$1
+	# store gv6 chapop$1
 
 	# fetch variables
 
 	# get address of local var:chapop$1
-	li t4, 2720
+	li t4, 1560
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# store gv6 chapop$1
+	lw t1, 0(t4)
 
 	# get address of gv6 points to
 	la t3, gv6
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br whileCond_162
-	j whileCond_162
-next_411:
+	# br whileCond_13
+	j whileCond_13
+next_24:
 
-	# br next_410
-	j next_410
-ifTrue_249:
+	# br next_23
+	j next_23
+ifTrue_11:
 
-	# br whileCond_163
-	j whileCond_163
-next_412:
+	# br whileCond_14
+	j whileCond_14
+next_25:
 
 	# load i$7 gv4
 
@@ -3162,20 +3104,20 @@ next_412:
 	la t3, gv4
 
 	# get address of local var:i$7
-	li t4, 2712
+	li t4, 1556
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep get$13 i$7
 
 	# fetch variables
 
 	# get address of local var:i$7
-	li t4, 2712
+	li t4, 1556
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv7
@@ -3184,84 +3126,84 @@ next_412:
 	add t0, t1, t0
 
 	# get address of local var:get$13
-	li t4, 2704
+	li t4, 1548
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load get$14 get$13
 
 	# get address of get$13 points to
-	li t4, 2704
+	li t4, 1548
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:get$14
-	li t4, 2696
+	li t4, 1544
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp get$14  cond_eq_tmp_$12
+	# ICMP cond_eq_tmp_$12 get$14  
 
 	# fetch variables
 
 	# get address of local var:get$14
-	li t4, 2696
+	li t4, 1544
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 45
-
-	# get address of local var:cond_eq_tmp_$12
-	li t4, 2688
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$14 cond_eq_tmp_$12
+	# get address of local var:cond_eq_tmp_$12
+	li t4, 1540
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$14 cond_eq_tmp_$12
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$12
-	li t4, 2688
+	li t4, 1540
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$14
-	li t4, 2680
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$14  cond_$14
+	# get address of local var:cond_tmp_$14
+	li t4, 1536
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$14 cond_tmp_$14  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$14
-	li t4, 2680
+	li t4, 1536
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$14
-	li t4, 2672
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$14 ifTrue_251 next_415
+	# get address of local var:cond_$14
+	li t4, 1532
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$14 ifTrue_13 next_28
 
 	# fetch variables
 
 	# get address of local var:cond_$14
-	li t4, 2672
+	li t4, 1532
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_415
-	j ifTrue_251
-whileCond_163:
+	lw t1, 0(t4)
+	beqz t1, next_28
+	j ifTrue_13
+whileCond_14:
 
 	# load chat gv3
 
@@ -3269,20 +3211,20 @@ whileCond_163:
 	la t3, gv3
 
 	# get address of local var:chat
-	li t4, 2664
+	li t4, 1528
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas chat
 
 	# fetch variables
 
 	# get address of local var:chat
-	li t4, 2664
+	li t4, 1528
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -3291,87 +3233,88 @@ whileCond_163:
 	add t0, t1, t0
 
 	# get address of local var:chas
-	li t4, 2656
+	li t4, 1520
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$1 chas
 
 	# get address of chas points to
-	li t4, 2656
+	li t4, 1520
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$1
-	li t4, 2648
+	li t4, 1516
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$1  cond_eq_tmp_$5
+	# ICMP cond_eq_tmp_$5 chas$1  
 
 	# fetch variables
 
 	# get address of local var:chas$1
-	li t4, 2648
+	li t4, 1516
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 43
-
-	# get address of local var:cond_eq_tmp_$5
-	li t4, 2640
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$7 cond_eq_tmp_$5
+	# get address of local var:cond_eq_tmp_$5
+	li t4, 1512
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$7 cond_eq_tmp_$5
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$5
-	li t4, 2640
+	li t4, 1512
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$7
-	li t4, 2632
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$7  cond_$7
+	# get address of local var:cond_tmp_$7
+	li t4, 1508
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$7 cond_tmp_$7  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$7
-	li t4, 2632
+	li t4, 1508
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$7
-	li t4, 2624
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$7 whileBody_163 secondCond_81
+	# get address of local var:cond_$7
+	li t4, 1504
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$7 whileBody_14 secondCond_7
 
 	# fetch variables
 
 	# get address of local var:cond_$7
-	li t4, 2624
+	li t4, 1504
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_81
-	j whileBody_163
-whileBody_163:
+	lw t1, 0(t4)
+	beqz t1, secondCond_7
+	j whileBody_14
+whileBody_14:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3385,81 +3328,83 @@ whileBody_163:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:find
-	li t4, 2616
+	li t4, 1500
 	add t4, sp, t4
-	sd a0, 0(t4)
+	sw a0, 0(t4)
 
-	# cmp find  cond_eq_tmp_$11
+	# ICMP cond_eq_tmp_$11 find  
 
 	# fetch variables
 
 	# get address of local var:find
-	li t4, 2616
+	li t4, 1500
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_eq_tmp_$11
-	li t4, 2608
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$13 cond_eq_tmp_$11
+	# get address of local var:cond_eq_tmp_$11
+	li t4, 1496
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$13 cond_eq_tmp_$11
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$11
-	li t4, 2608
+	li t4, 1496
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$13
-	li t4, 2600
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$13  cond_$13
+	# get address of local var:cond_tmp_$13
+	li t4, 1492
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$13 cond_tmp_$13  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$13
-	li t4, 2600
+	li t4, 1492
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$13
-	li t4, 2592
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$13 ifTrue_250 next_414
+	# get address of local var:cond_$13
+	li t4, 1488
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$13 ifTrue_12 next_27
 
 	# fetch variables
 
 	# get address of local var:cond_$13
-	li t4, 2592
+	li t4, 1488
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_414
-	j ifTrue_250
-next_413:
+	lw t1, 0(t4)
+	beqz t1, next_27
+	j ifTrue_12
+next_26:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 43
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3473,11 +3418,12 @@ next_413:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
-	# br next_412
-	j next_412
-secondCond_77:
+	# br next_25
+	j next_25
+secondCond_3:
 
 	# load chat$5 gv3
 
@@ -3485,20 +3431,20 @@ secondCond_77:
 	la t3, gv3
 
 	# get address of local var:chat$5
-	li t4, 2584
+	li t4, 1484
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$10 chat$5
 
 	# fetch variables
 
 	# get address of local var:chat$5
-	li t4, 2584
+	li t4, 1484
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -3507,84 +3453,84 @@ secondCond_77:
 	add t0, t1, t0
 
 	# get address of local var:chas$10
-	li t4, 2576
+	li t4, 1476
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$11 chas$10
 
 	# get address of chas$10 points to
-	li t4, 2576
+	li t4, 1476
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$11
-	li t4, 2568
+	li t4, 1472
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$11  cond_eq_tmp_$10
+	# ICMP cond_eq_tmp_$10 chas$11  
 
 	# fetch variables
 
 	# get address of local var:chas$11
-	li t4, 2568
+	li t4, 1472
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 94
-
-	# get address of local var:cond_eq_tmp_$10
-	li t4, 2560
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$12 cond_eq_tmp_$10
+	# get address of local var:cond_eq_tmp_$10
+	li t4, 1468
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$12 cond_eq_tmp_$10
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$10
-	li t4, 2560
+	li t4, 1468
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$12
-	li t4, 2552
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$12  cond_$12
+	# get address of local var:cond_tmp_$12
+	li t4, 1464
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$12 cond_tmp_$12  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$12
-	li t4, 2552
+	li t4, 1464
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$12
-	li t4, 2544
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$12 whileBody_163 next_413
+	# get address of local var:cond_$12
+	li t4, 1460
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$12 whileBody_14 next_26
 
 	# fetch variables
 
 	# get address of local var:cond_$12
-	li t4, 2544
+	li t4, 1460
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_413
-	j whileBody_163
-secondCond_78:
+	lw t1, 0(t4)
+	beqz t1, next_26
+	j whileBody_14
+secondCond_4:
 
 	# load chat$4 gv3
 
@@ -3592,20 +3538,20 @@ secondCond_78:
 	la t3, gv3
 
 	# get address of local var:chat$4
-	li t4, 2536
+	li t4, 1456
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$8 chat$4
 
 	# fetch variables
 
 	# get address of local var:chat$4
-	li t4, 2536
+	li t4, 1456
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -3614,84 +3560,84 @@ secondCond_78:
 	add t0, t1, t0
 
 	# get address of local var:chas$8
-	li t4, 2528
+	li t4, 1448
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$9 chas$8
 
 	# get address of chas$8 points to
-	li t4, 2528
+	li t4, 1448
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$9
-	li t4, 2520
+	li t4, 1444
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$9  cond_eq_tmp_$9
+	# ICMP cond_eq_tmp_$9 chas$9  
 
 	# fetch variables
 
 	# get address of local var:chas$9
-	li t4, 2520
+	li t4, 1444
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 37
-
-	# get address of local var:cond_eq_tmp_$9
-	li t4, 2512
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$11 cond_eq_tmp_$9
+	# get address of local var:cond_eq_tmp_$9
+	li t4, 1440
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$11 cond_eq_tmp_$9
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$9
-	li t4, 2512
+	li t4, 1440
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$11
-	li t4, 2504
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$11  cond_$11
+	# get address of local var:cond_tmp_$11
+	li t4, 1436
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$11 cond_tmp_$11  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$11
-	li t4, 2504
+	li t4, 1436
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$11
-	li t4, 2496
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$11 whileBody_163 secondCond_77
+	# get address of local var:cond_$11
+	li t4, 1432
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$11 whileBody_14 secondCond_3
 
 	# fetch variables
 
 	# get address of local var:cond_$11
-	li t4, 2496
+	li t4, 1432
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_77
-	j whileBody_163
-secondCond_79:
+	lw t1, 0(t4)
+	beqz t1, secondCond_3
+	j whileBody_14
+secondCond_5:
 
 	# load chat$3 gv3
 
@@ -3699,20 +3645,20 @@ secondCond_79:
 	la t3, gv3
 
 	# get address of local var:chat$3
-	li t4, 2488
+	li t4, 1428
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$6 chat$3
 
 	# fetch variables
 
 	# get address of local var:chat$3
-	li t4, 2488
+	li t4, 1428
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -3721,84 +3667,84 @@ secondCond_79:
 	add t0, t1, t0
 
 	# get address of local var:chas$6
-	li t4, 2480
+	li t4, 1420
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$7 chas$6
 
 	# get address of chas$6 points to
-	li t4, 2480
+	li t4, 1420
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$7
-	li t4, 2472
+	li t4, 1416
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$7  cond_eq_tmp_$8
+	# ICMP cond_eq_tmp_$8 chas$7  
 
 	# fetch variables
 
 	# get address of local var:chas$7
-	li t4, 2472
+	li t4, 1416
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 47
-
-	# get address of local var:cond_eq_tmp_$8
-	li t4, 2464
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$10 cond_eq_tmp_$8
+	# get address of local var:cond_eq_tmp_$8
+	li t4, 1412
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$10 cond_eq_tmp_$8
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$8
-	li t4, 2464
+	li t4, 1412
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$10
-	li t4, 2456
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$10  cond_$10
+	# get address of local var:cond_tmp_$10
+	li t4, 1408
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$10 cond_tmp_$10  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$10
-	li t4, 2456
+	li t4, 1408
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$10
-	li t4, 2448
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$10 whileBody_163 secondCond_78
+	# get address of local var:cond_$10
+	li t4, 1404
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$10 whileBody_14 secondCond_4
 
 	# fetch variables
 
 	# get address of local var:cond_$10
-	li t4, 2448
+	li t4, 1404
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_78
-	j whileBody_163
-secondCond_80:
+	lw t1, 0(t4)
+	beqz t1, secondCond_4
+	j whileBody_14
+secondCond_6:
 
 	# load chat$2 gv3
 
@@ -3806,20 +3752,20 @@ secondCond_80:
 	la t3, gv3
 
 	# get address of local var:chat$2
-	li t4, 2440
+	li t4, 1400
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$4 chat$2
 
 	# fetch variables
 
 	# get address of local var:chat$2
-	li t4, 2440
+	li t4, 1400
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -3828,84 +3774,84 @@ secondCond_80:
 	add t0, t1, t0
 
 	# get address of local var:chas$4
-	li t4, 2432
+	li t4, 1392
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$5 chas$4
 
 	# get address of chas$4 points to
-	li t4, 2432
+	li t4, 1392
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$5
-	li t4, 2424
+	li t4, 1388
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$5  cond_eq_tmp_$7
+	# ICMP cond_eq_tmp_$7 chas$5  
 
 	# fetch variables
 
 	# get address of local var:chas$5
-	li t4, 2424
+	li t4, 1388
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 42
-
-	# get address of local var:cond_eq_tmp_$7
-	li t4, 2416
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$9 cond_eq_tmp_$7
+	# get address of local var:cond_eq_tmp_$7
+	li t4, 1384
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$9 cond_eq_tmp_$7
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$7
-	li t4, 2416
+	li t4, 1384
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$9
-	li t4, 2408
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$9  cond_$9
+	# get address of local var:cond_tmp_$9
+	li t4, 1380
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$9 cond_tmp_$9  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$9
-	li t4, 2408
+	li t4, 1380
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$9
-	li t4, 2400
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$9 whileBody_163 secondCond_79
+	# get address of local var:cond_$9
+	li t4, 1376
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$9 whileBody_14 secondCond_5
 
 	# fetch variables
 
 	# get address of local var:cond_$9
-	li t4, 2400
+	li t4, 1376
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_79
-	j whileBody_163
-secondCond_81:
+	lw t1, 0(t4)
+	beqz t1, secondCond_5
+	j whileBody_14
+secondCond_7:
 
 	# load chat$1 gv3
 
@@ -3913,20 +3859,20 @@ secondCond_81:
 	la t3, gv3
 
 	# get address of local var:chat$1
-	li t4, 2392
+	li t4, 1372
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$2 chat$1
 
 	# fetch variables
 
 	# get address of local var:chat$1
-	li t4, 2392
+	li t4, 1372
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -3935,99 +3881,99 @@ secondCond_81:
 	add t0, t1, t0
 
 	# get address of local var:chas$2
-	li t4, 2384
+	li t4, 1364
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$3 chas$2
 
 	# get address of chas$2 points to
-	li t4, 2384
+	li t4, 1364
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$3
-	li t4, 2376
+	li t4, 1360
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$3  cond_eq_tmp_$6
+	# ICMP cond_eq_tmp_$6 chas$3  
 
 	# fetch variables
 
 	# get address of local var:chas$3
-	li t4, 2376
+	li t4, 1360
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 45
-
-	# get address of local var:cond_eq_tmp_$6
-	li t4, 2368
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$8 cond_eq_tmp_$6
+	# get address of local var:cond_eq_tmp_$6
+	li t4, 1356
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$8 cond_eq_tmp_$6
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$6
-	li t4, 2368
+	li t4, 1356
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$8
-	li t4, 2360
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$8  cond_$8
+	# get address of local var:cond_tmp_$8
+	li t4, 1352
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$8 cond_tmp_$8  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$8
-	li t4, 2360
+	li t4, 1352
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$8
-	li t4, 2352
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$8 whileBody_163 secondCond_80
+	# get address of local var:cond_$8
+	li t4, 1348
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$8 whileBody_14 secondCond_6
 
 	# fetch variables
 
 	# get address of local var:cond_$8
-	li t4, 2352
+	li t4, 1348
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_80
-	j whileBody_163
-ifTrue_250:
+	lw t1, 0(t4)
+	beqz t1, secondCond_6
+	j whileBody_14
+ifTrue_12:
 
-	# br next_413
-	j next_413
+	# br next_26
+	j next_26
 
-	# br next_414
-	j next_414
-next_414:
+	# br next_27
+	j next_27
+next_27:
 
-	# br whileCond_163
-	j whileCond_163
-ifTrue_251:
+	# br whileCond_14
+	j whileCond_14
+ifTrue_13:
 
-	# br whileCond_164
-	j whileCond_164
-next_415:
+	# br whileCond_15
+	j whileCond_15
+next_28:
 
 	# load i$8 gv4
 
@@ -4035,20 +3981,20 @@ next_415:
 	la t3, gv4
 
 	# get address of local var:i$8
-	li t4, 2344
+	li t4, 1344
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep get$15 i$8
 
 	# fetch variables
 
 	# get address of local var:i$8
-	li t4, 2344
+	li t4, 1344
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv7
@@ -4057,84 +4003,84 @@ next_415:
 	add t0, t1, t0
 
 	# get address of local var:get$15
-	li t4, 2336
+	li t4, 1336
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load get$16 get$15
 
 	# get address of get$15 points to
-	li t4, 2336
+	li t4, 1336
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:get$16
-	li t4, 2328
+	li t4, 1332
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp get$16  cond_eq_tmp_$20
+	# ICMP cond_eq_tmp_$20 get$16  
 
 	# fetch variables
 
 	# get address of local var:get$16
-	li t4, 2328
+	li t4, 1332
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 42
-
-	# get address of local var:cond_eq_tmp_$20
-	li t4, 2320
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$22 cond_eq_tmp_$20
+	# get address of local var:cond_eq_tmp_$20
+	li t4, 1328
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$22 cond_eq_tmp_$20
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$20
-	li t4, 2320
+	li t4, 1328
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$22
-	li t4, 2312
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$22  cond_$22
+	# get address of local var:cond_tmp_$22
+	li t4, 1324
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$22 cond_tmp_$22  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$22
-	li t4, 2312
+	li t4, 1324
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$22
-	li t4, 2304
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$22 ifTrue_253 next_418
+	# get address of local var:cond_$22
+	li t4, 1320
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$22 ifTrue_15 next_31
 
 	# fetch variables
 
 	# get address of local var:cond_$22
-	li t4, 2304
+	li t4, 1320
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_418
-	j ifTrue_253
-whileCond_164:
+	lw t1, 0(t4)
+	beqz t1, next_31
+	j ifTrue_15
+whileCond_15:
 
 	# load chat$6 gv3
 
@@ -4142,20 +4088,20 @@ whileCond_164:
 	la t3, gv3
 
 	# get address of local var:chat$6
-	li t4, 2296
+	li t4, 1316
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$12 chat$6
 
 	# fetch variables
 
 	# get address of local var:chat$6
-	li t4, 2296
+	li t4, 1316
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -4164,87 +4110,88 @@ whileCond_164:
 	add t0, t1, t0
 
 	# get address of local var:chas$12
-	li t4, 2288
+	li t4, 1308
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$13 chas$12
 
 	# get address of chas$12 points to
-	li t4, 2288
+	li t4, 1308
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$13
-	li t4, 2280
+	li t4, 1304
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$13  cond_eq_tmp_$13
+	# ICMP cond_eq_tmp_$13 chas$13  
 
 	# fetch variables
 
 	# get address of local var:chas$13
-	li t4, 2280
+	li t4, 1304
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 43
-
-	# get address of local var:cond_eq_tmp_$13
-	li t4, 2272
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$15 cond_eq_tmp_$13
+	# get address of local var:cond_eq_tmp_$13
+	li t4, 1300
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$15 cond_eq_tmp_$13
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$13
-	li t4, 2272
+	li t4, 1300
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$15
-	li t4, 2264
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$15  cond_$15
+	# get address of local var:cond_tmp_$15
+	li t4, 1296
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$15 cond_tmp_$15  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$15
-	li t4, 2264
+	li t4, 1296
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$15
-	li t4, 2256
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$15 whileBody_164 secondCond_86
+	# get address of local var:cond_$15
+	li t4, 1292
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$15 whileBody_15 secondCond_12
 
 	# fetch variables
 
 	# get address of local var:cond_$15
-	li t4, 2256
+	li t4, 1292
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_86
-	j whileBody_164
-whileBody_164:
+	lw t1, 0(t4)
+	beqz t1, secondCond_12
+	j whileBody_15
+whileBody_15:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4258,81 +4205,83 @@ whileBody_164:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:find$1
-	li t4, 2248
+	li t4, 1288
 	add t4, sp, t4
-	sd a0, 0(t4)
+	sw a0, 0(t4)
 
-	# cmp find$1  cond_eq_tmp_$19
+	# ICMP cond_eq_tmp_$19 find$1  
 
 	# fetch variables
 
 	# get address of local var:find$1
-	li t4, 2248
+	li t4, 1288
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_eq_tmp_$19
-	li t4, 2240
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$21 cond_eq_tmp_$19
+	# get address of local var:cond_eq_tmp_$19
+	li t4, 1284
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$21 cond_eq_tmp_$19
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$19
-	li t4, 2240
+	li t4, 1284
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$21
-	li t4, 2232
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$21  cond_$21
+	# get address of local var:cond_tmp_$21
+	li t4, 1280
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$21 cond_tmp_$21  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$21
-	li t4, 2232
+	li t4, 1280
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$21
-	li t4, 2224
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$21 ifTrue_252 next_417
+	# get address of local var:cond_$21
+	li t4, 1276
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$21 ifTrue_14 next_30
 
 	# fetch variables
 
 	# get address of local var:cond_$21
-	li t4, 2224
+	li t4, 1276
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_417
-	j ifTrue_252
-next_416:
+	lw t1, 0(t4)
+	beqz t1, next_30
+	j ifTrue_14
+next_29:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 45
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -4346,11 +4295,12 @@ next_416:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
-	# br next_415
-	j next_415
-secondCond_82:
+	# br next_28
+	j next_28
+secondCond_8:
 
 	# load chat$11 gv3
 
@@ -4358,20 +4308,20 @@ secondCond_82:
 	la t3, gv3
 
 	# get address of local var:chat$11
-	li t4, 2216
+	li t4, 1272
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$22 chat$11
 
 	# fetch variables
 
 	# get address of local var:chat$11
-	li t4, 2216
+	li t4, 1272
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -4380,84 +4330,84 @@ secondCond_82:
 	add t0, t1, t0
 
 	# get address of local var:chas$22
-	li t4, 2208
+	li t4, 1264
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$23 chas$22
 
 	# get address of chas$22 points to
-	li t4, 2208
+	li t4, 1264
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$23
-	li t4, 2200
+	li t4, 1260
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$23  cond_eq_tmp_$18
+	# ICMP cond_eq_tmp_$18 chas$23  
 
 	# fetch variables
 
 	# get address of local var:chas$23
-	li t4, 2200
+	li t4, 1260
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 94
-
-	# get address of local var:cond_eq_tmp_$18
-	li t4, 2192
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$20 cond_eq_tmp_$18
+	# get address of local var:cond_eq_tmp_$18
+	li t4, 1256
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$20 cond_eq_tmp_$18
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$18
-	li t4, 2192
+	li t4, 1256
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$20
-	li t4, 2184
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$20  cond_$20
+	# get address of local var:cond_tmp_$20
+	li t4, 1252
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$20 cond_tmp_$20  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$20
-	li t4, 2184
+	li t4, 1252
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$20
-	li t4, 2176
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$20 whileBody_164 next_416
+	# get address of local var:cond_$20
+	li t4, 1248
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$20 whileBody_15 next_29
 
 	# fetch variables
 
 	# get address of local var:cond_$20
-	li t4, 2176
+	li t4, 1248
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_416
-	j whileBody_164
-secondCond_83:
+	lw t1, 0(t4)
+	beqz t1, next_29
+	j whileBody_15
+secondCond_9:
 
 	# load chat$10 gv3
 
@@ -4465,20 +4415,20 @@ secondCond_83:
 	la t3, gv3
 
 	# get address of local var:chat$10
-	li t4, 2168
+	li t4, 1244
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$20 chat$10
 
 	# fetch variables
 
 	# get address of local var:chat$10
-	li t4, 2168
+	li t4, 1244
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -4487,84 +4437,84 @@ secondCond_83:
 	add t0, t1, t0
 
 	# get address of local var:chas$20
-	li t4, 2160
+	li t4, 1236
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$21 chas$20
 
 	# get address of chas$20 points to
-	li t4, 2160
+	li t4, 1236
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$21
-	li t4, 2152
+	li t4, 1232
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$21  cond_eq_tmp_$17
+	# ICMP cond_eq_tmp_$17 chas$21  
 
 	# fetch variables
 
 	# get address of local var:chas$21
-	li t4, 2152
+	li t4, 1232
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 37
-
-	# get address of local var:cond_eq_tmp_$17
-	li t4, 2144
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$19 cond_eq_tmp_$17
+	# get address of local var:cond_eq_tmp_$17
+	li t4, 1228
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$19 cond_eq_tmp_$17
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$17
-	li t4, 2144
+	li t4, 1228
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$19
-	li t4, 2136
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$19  cond_$19
+	# get address of local var:cond_tmp_$19
+	li t4, 1224
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$19 cond_tmp_$19  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$19
-	li t4, 2136
+	li t4, 1224
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$19
-	li t4, 2128
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$19 whileBody_164 secondCond_82
+	# get address of local var:cond_$19
+	li t4, 1220
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$19 whileBody_15 secondCond_8
 
 	# fetch variables
 
 	# get address of local var:cond_$19
-	li t4, 2128
+	li t4, 1220
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_82
-	j whileBody_164
-secondCond_84:
+	lw t1, 0(t4)
+	beqz t1, secondCond_8
+	j whileBody_15
+secondCond_10:
 
 	# load chat$9 gv3
 
@@ -4572,20 +4522,20 @@ secondCond_84:
 	la t3, gv3
 
 	# get address of local var:chat$9
-	li t4, 2120
+	li t4, 1216
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$18 chat$9
 
 	# fetch variables
 
 	# get address of local var:chat$9
-	li t4, 2120
+	li t4, 1216
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -4594,84 +4544,84 @@ secondCond_84:
 	add t0, t1, t0
 
 	# get address of local var:chas$18
-	li t4, 2112
+	li t4, 1208
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$19 chas$18
 
 	# get address of chas$18 points to
-	li t4, 2112
+	li t4, 1208
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$19
-	li t4, 2104
+	li t4, 1204
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$19  cond_eq_tmp_$16
+	# ICMP cond_eq_tmp_$16 chas$19  
 
 	# fetch variables
 
 	# get address of local var:chas$19
-	li t4, 2104
+	li t4, 1204
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 47
-
-	# get address of local var:cond_eq_tmp_$16
-	li t4, 2096
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$18 cond_eq_tmp_$16
+	# get address of local var:cond_eq_tmp_$16
+	li t4, 1200
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$18 cond_eq_tmp_$16
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$16
-	li t4, 2096
+	li t4, 1200
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$18
-	li t4, 2088
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$18  cond_$18
+	# get address of local var:cond_tmp_$18
+	li t4, 1196
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$18 cond_tmp_$18  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$18
-	li t4, 2088
+	li t4, 1196
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$18
-	li t4, 2080
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$18 whileBody_164 secondCond_83
+	# get address of local var:cond_$18
+	li t4, 1192
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$18 whileBody_15 secondCond_9
 
 	# fetch variables
 
 	# get address of local var:cond_$18
-	li t4, 2080
+	li t4, 1192
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_83
-	j whileBody_164
-secondCond_85:
+	lw t1, 0(t4)
+	beqz t1, secondCond_9
+	j whileBody_15
+secondCond_11:
 
 	# load chat$8 gv3
 
@@ -4679,20 +4629,20 @@ secondCond_85:
 	la t3, gv3
 
 	# get address of local var:chat$8
-	li t4, 2072
+	li t4, 1188
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$16 chat$8
 
 	# fetch variables
 
 	# get address of local var:chat$8
-	li t4, 2072
+	li t4, 1188
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -4701,84 +4651,84 @@ secondCond_85:
 	add t0, t1, t0
 
 	# get address of local var:chas$16
-	li t4, 2064
+	li t4, 1180
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$17 chas$16
 
 	# get address of chas$16 points to
-	li t4, 2064
+	li t4, 1180
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$17
-	li t4, 2056
+	li t4, 1176
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$17  cond_eq_tmp_$15
+	# ICMP cond_eq_tmp_$15 chas$17  
 
 	# fetch variables
 
 	# get address of local var:chas$17
-	li t4, 2056
+	li t4, 1176
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 42
-
-	# get address of local var:cond_eq_tmp_$15
-	li t4, 2048
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$17 cond_eq_tmp_$15
+	# get address of local var:cond_eq_tmp_$15
+	li t4, 1172
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$17 cond_eq_tmp_$15
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$15
-	li t4, 2048
+	li t4, 1172
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$17
-	li t4, 2040
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$17  cond_$17
+	# get address of local var:cond_tmp_$17
+	li t4, 1168
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$17 cond_tmp_$17  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$17
-	li t4, 2040
+	li t4, 1168
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$17
-	li t4, 2032
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$17 whileBody_164 secondCond_84
+	# get address of local var:cond_$17
+	li t4, 1164
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$17 whileBody_15 secondCond_10
 
 	# fetch variables
 
 	# get address of local var:cond_$17
-	li t4, 2032
+	li t4, 1164
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_84
-	j whileBody_164
-secondCond_86:
+	lw t1, 0(t4)
+	beqz t1, secondCond_10
+	j whileBody_15
+secondCond_12:
 
 	# load chat$7 gv3
 
@@ -4786,20 +4736,20 @@ secondCond_86:
 	la t3, gv3
 
 	# get address of local var:chat$7
-	li t4, 2024
+	li t4, 1160
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$14 chat$7
 
 	# fetch variables
 
 	# get address of local var:chat$7
-	li t4, 2024
+	li t4, 1160
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -4808,99 +4758,99 @@ secondCond_86:
 	add t0, t1, t0
 
 	# get address of local var:chas$14
-	li t4, 2016
+	li t4, 1152
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$15 chas$14
 
 	# get address of chas$14 points to
-	li t4, 2016
+	li t4, 1152
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$15
-	li t4, 2008
+	li t4, 1148
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$15  cond_eq_tmp_$14
+	# ICMP cond_eq_tmp_$14 chas$15  
 
 	# fetch variables
 
 	# get address of local var:chas$15
-	li t4, 2008
+	li t4, 1148
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 45
-
-	# get address of local var:cond_eq_tmp_$14
-	li t4, 2000
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$16 cond_eq_tmp_$14
+	# get address of local var:cond_eq_tmp_$14
+	li t4, 1144
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$16 cond_eq_tmp_$14
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$14
-	li t4, 2000
+	li t4, 1144
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$16
-	li t4, 1992
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$16  cond_$16
+	# get address of local var:cond_tmp_$16
+	li t4, 1140
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$16 cond_tmp_$16  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$16
-	li t4, 1992
+	li t4, 1140
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$16
-	li t4, 1984
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$16 whileBody_164 secondCond_85
+	# get address of local var:cond_$16
+	li t4, 1136
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$16 whileBody_15 secondCond_11
 
 	# fetch variables
 
 	# get address of local var:cond_$16
-	li t4, 1984
+	li t4, 1136
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_85
-	j whileBody_164
-ifTrue_252:
+	lw t1, 0(t4)
+	beqz t1, secondCond_11
+	j whileBody_15
+ifTrue_14:
 
-	# br next_416
-	j next_416
+	# br next_29
+	j next_29
 
-	# br next_417
-	j next_417
-next_417:
+	# br next_30
+	j next_30
+next_30:
 
-	# br whileCond_164
-	j whileCond_164
-ifTrue_253:
+	# br whileCond_15
+	j whileCond_15
+ifTrue_15:
 
-	# br whileCond_165
-	j whileCond_165
-next_418:
+	# br whileCond_16
+	j whileCond_16
+next_31:
 
 	# load i$9 gv4
 
@@ -4908,20 +4858,20 @@ next_418:
 	la t3, gv4
 
 	# get address of local var:i$9
-	li t4, 1976
+	li t4, 1132
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep get$17 i$9
 
 	# fetch variables
 
 	# get address of local var:i$9
-	li t4, 1976
+	li t4, 1132
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv7
@@ -4930,84 +4880,84 @@ next_418:
 	add t0, t1, t0
 
 	# get address of local var:get$17
-	li t4, 1968
+	li t4, 1124
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load get$18 get$17
 
 	# get address of get$17 points to
-	li t4, 1968
+	li t4, 1124
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:get$18
-	li t4, 1960
+	li t4, 1120
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp get$18  cond_eq_tmp_$26
+	# ICMP cond_eq_tmp_$26 get$18  
 
 	# fetch variables
 
 	# get address of local var:get$18
-	li t4, 1960
+	li t4, 1120
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 47
-
-	# get address of local var:cond_eq_tmp_$26
-	li t4, 1952
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$28 cond_eq_tmp_$26
+	# get address of local var:cond_eq_tmp_$26
+	li t4, 1116
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$28 cond_eq_tmp_$26
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$26
-	li t4, 1952
+	li t4, 1116
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$28
-	li t4, 1944
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$28  cond_$28
+	# get address of local var:cond_tmp_$28
+	li t4, 1112
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$28 cond_tmp_$28  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$28
-	li t4, 1944
+	li t4, 1112
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$28
-	li t4, 1936
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$28 ifTrue_255 next_421
+	# get address of local var:cond_$28
+	li t4, 1108
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$28 ifTrue_17 next_34
 
 	# fetch variables
 
 	# get address of local var:cond_$28
-	li t4, 1936
+	li t4, 1108
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_421
-	j ifTrue_255
-whileCond_165:
+	lw t1, 0(t4)
+	beqz t1, next_34
+	j ifTrue_17
+whileCond_16:
 
 	# load chat$12 gv3
 
@@ -5015,20 +4965,20 @@ whileCond_165:
 	la t3, gv3
 
 	# get address of local var:chat$12
-	li t4, 1928
+	li t4, 1104
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$24 chat$12
 
 	# fetch variables
 
 	# get address of local var:chat$12
-	li t4, 1928
+	li t4, 1104
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -5037,87 +4987,88 @@ whileCond_165:
 	add t0, t1, t0
 
 	# get address of local var:chas$24
-	li t4, 1920
+	li t4, 1096
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$25 chas$24
 
 	# get address of chas$24 points to
-	li t4, 1920
+	li t4, 1096
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$25
-	li t4, 1912
+	li t4, 1092
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$25  cond_eq_tmp_$21
+	# ICMP cond_eq_tmp_$21 chas$25  
 
 	# fetch variables
 
 	# get address of local var:chas$25
-	li t4, 1912
+	li t4, 1092
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 42
-
-	# get address of local var:cond_eq_tmp_$21
-	li t4, 1904
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$23 cond_eq_tmp_$21
+	# get address of local var:cond_eq_tmp_$21
+	li t4, 1088
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$23 cond_eq_tmp_$21
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$21
-	li t4, 1904
+	li t4, 1088
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$23
-	li t4, 1896
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$23  cond_$23
+	# get address of local var:cond_tmp_$23
+	li t4, 1084
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$23 cond_tmp_$23  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$23
-	li t4, 1896
+	li t4, 1084
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$23
-	li t4, 1888
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$23 whileBody_165 secondCond_89
+	# get address of local var:cond_$23
+	li t4, 1080
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$23 whileBody_16 secondCond_15
 
 	# fetch variables
 
 	# get address of local var:cond_$23
-	li t4, 1888
+	li t4, 1080
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_89
-	j whileBody_165
-whileBody_165:
+	lw t1, 0(t4)
+	beqz t1, secondCond_15
+	j whileBody_16
+whileBody_16:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5131,81 +5082,83 @@ whileBody_165:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:find$2
-	li t4, 1880
+	li t4, 1076
 	add t4, sp, t4
-	sd a0, 0(t4)
+	sw a0, 0(t4)
 
-	# cmp find$2  cond_eq_tmp_$25
+	# ICMP cond_eq_tmp_$25 find$2  
 
 	# fetch variables
 
 	# get address of local var:find$2
-	li t4, 1880
+	li t4, 1076
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_eq_tmp_$25
-	li t4, 1872
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$27 cond_eq_tmp_$25
+	# get address of local var:cond_eq_tmp_$25
+	li t4, 1072
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$27 cond_eq_tmp_$25
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$25
-	li t4, 1872
+	li t4, 1072
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$27
-	li t4, 1864
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$27  cond_$27
+	# get address of local var:cond_tmp_$27
+	li t4, 1068
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$27 cond_tmp_$27  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$27
-	li t4, 1864
+	li t4, 1068
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$27
-	li t4, 1856
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$27 ifTrue_254 next_420
+	# get address of local var:cond_$27
+	li t4, 1064
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$27 ifTrue_16 next_33
 
 	# fetch variables
 
 	# get address of local var:cond_$27
-	li t4, 1856
+	li t4, 1064
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_420
-	j ifTrue_254
-next_419:
+	lw t1, 0(t4)
+	beqz t1, next_33
+	j ifTrue_16
+next_32:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 42
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5219,11 +5172,12 @@ next_419:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
-	# br next_418
-	j next_418
-secondCond_87:
+	# br next_31
+	j next_31
+secondCond_13:
 
 	# load chat$15 gv3
 
@@ -5231,20 +5185,20 @@ secondCond_87:
 	la t3, gv3
 
 	# get address of local var:chat$15
-	li t4, 1848
+	li t4, 1060
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$30 chat$15
 
 	# fetch variables
 
 	# get address of local var:chat$15
-	li t4, 1848
+	li t4, 1060
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -5253,84 +5207,84 @@ secondCond_87:
 	add t0, t1, t0
 
 	# get address of local var:chas$30
-	li t4, 1840
+	li t4, 1052
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$31 chas$30
 
 	# get address of chas$30 points to
-	li t4, 1840
+	li t4, 1052
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$31
-	li t4, 1832
+	li t4, 1048
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
-	# cmp chas$31  cond_eq_tmp_$24
+	# ICMP cond_eq_tmp_$24 chas$31  
 
 	# fetch variables
 
 	# get address of local var:chas$31
-	li t4, 1832
+	li t4, 1048
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 94
-
-	# get address of local var:cond_eq_tmp_$24
-	li t4, 1824
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$26 cond_eq_tmp_$24
+	# get address of local var:cond_eq_tmp_$24
+	li t4, 1044
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	#  cond_tmp_$26 cond_eq_tmp_$24
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$24
-	li t4, 1824
+	li t4, 1044
 	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$26
-	li t4, 1816
-	add t4, sp, t4
+	lw t1, 0(t4)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$26  cond_$26
+	# get address of local var:cond_tmp_$26
+	li t4, 1040
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# ICMP cond_$26 cond_tmp_$26  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$26
-	li t4, 1816
+	li t4, 1040
 	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 0(t4)
 	li t2, 0
-
-	# get address of local var:cond_$26
-	li t4, 1808
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$26 whileBody_165 next_419
+	# get address of local var:cond_$26
+	li t4, 1036
+	add t4, sp, t4
+	sw t0, 0(t4)
+
+	# condBr cond_$26 whileBody_16 next_32
 
 	# fetch variables
 
 	# get address of local var:cond_$26
-	li t4, 1808
+	li t4, 1036
 	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_419
-	j whileBody_165
-secondCond_88:
+	lw t1, 0(t4)
+	beqz t1, next_32
+	j whileBody_16
+secondCond_14:
 
 	# load chat$14 gv3
 
@@ -5338,20 +5292,20 @@ secondCond_88:
 	la t3, gv3
 
 	# get address of local var:chat$14
-	li t4, 1800
+	li t4, 1032
 	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 0(t4)
 
 	# gep chas$28 chat$14
 
 	# fetch variables
 
 	# get address of local var:chat$14
-	li t4, 1800
+	li t4, 1032
 	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 0(t4)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -5360,84 +5314,68 @@ secondCond_88:
 	add t0, t1, t0
 
 	# get address of local var:chas$28
-	li t4, 1792
+	li t4, 1024
 	add t4, sp, t4
 	sd t0, 0(t4)
 
 	# load chas$29 chas$28
 
 	# get address of chas$28 points to
-	li t4, 1792
+	li t4, 1024
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:chas$29
-	li t4, 1784
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 1020(sp)
 
-	# cmp chas$29  cond_eq_tmp_$23
+	# ICMP cond_eq_tmp_$23 chas$29  
 
 	# fetch variables
 
 	# get address of local var:chas$29
-	li t4, 1784
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 1020(sp)
 	li t2, 37
-
-	# get address of local var:cond_eq_tmp_$23
-	li t4, 1776
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$25 cond_eq_tmp_$23
+	# get address of local var:cond_eq_tmp_$23
+	sw t0, 1016(sp)
+
+	#  cond_tmp_$25 cond_eq_tmp_$23
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$23
-	li t4, 1776
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$25
-	li t4, 1768
-	add t4, sp, t4
+	lw t1, 1016(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$25  cond_$25
+	# get address of local var:cond_tmp_$25
+	sw t0, 1012(sp)
+
+	# ICMP cond_$25 cond_tmp_$25  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$25
-	li t4, 1768
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 1012(sp)
 	li t2, 0
-
-	# get address of local var:cond_$25
-	li t4, 1760
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$25 whileBody_165 secondCond_87
+	# get address of local var:cond_$25
+	sw t0, 1008(sp)
+
+	# condBr cond_$25 whileBody_16 secondCond_13
 
 	# fetch variables
 
 	# get address of local var:cond_$25
-	li t4, 1760
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_87
-	j whileBody_165
-secondCond_89:
+	lw t1, 1008(sp)
+	beqz t1, secondCond_13
+	j whileBody_16
+secondCond_15:
 
 	# load chat$13 gv3
 
@@ -5445,20 +5383,16 @@ secondCond_89:
 	la t3, gv3
 
 	# get address of local var:chat$13
-	li t4, 1752
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 1004(sp)
 
 	# gep chas$26 chat$13
 
 	# fetch variables
 
 	# get address of local var:chat$13
-	li t4, 1752
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 1004(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -5467,99 +5401,79 @@ secondCond_89:
 	add t0, t1, t0
 
 	# get address of local var:chas$26
-	li t4, 1744
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 996(sp)
 
 	# load chas$27 chas$26
 
 	# get address of chas$26 points to
-	li t4, 1744
-	add t4, sp, t4
-	ld t3, 0(t4)
+	ld t3, 996(sp)
 
 	# get address of local var:chas$27
-	li t4, 1736
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 992(sp)
 
-	# cmp chas$27  cond_eq_tmp_$22
+	# ICMP cond_eq_tmp_$22 chas$27  
 
 	# fetch variables
 
 	# get address of local var:chas$27
-	li t4, 1736
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 992(sp)
 	li t2, 47
-
-	# get address of local var:cond_eq_tmp_$22
-	li t4, 1728
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$24 cond_eq_tmp_$22
+	# get address of local var:cond_eq_tmp_$22
+	sw t0, 988(sp)
+
+	#  cond_tmp_$24 cond_eq_tmp_$22
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$22
-	li t4, 1728
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$24
-	li t4, 1720
-	add t4, sp, t4
+	lw t1, 988(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$24  cond_$24
+	# get address of local var:cond_tmp_$24
+	sw t0, 984(sp)
+
+	# ICMP cond_$24 cond_tmp_$24  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$24
-	li t4, 1720
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 984(sp)
 	li t2, 0
-
-	# get address of local var:cond_$24
-	li t4, 1712
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$24 whileBody_165 secondCond_88
+	# get address of local var:cond_$24
+	sw t0, 980(sp)
+
+	# condBr cond_$24 whileBody_16 secondCond_14
 
 	# fetch variables
 
 	# get address of local var:cond_$24
-	li t4, 1712
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_88
-	j whileBody_165
-ifTrue_254:
+	lw t1, 980(sp)
+	beqz t1, secondCond_14
+	j whileBody_16
+ifTrue_16:
 
-	# br next_419
-	j next_419
+	# br next_32
+	j next_32
 
-	# br next_420
-	j next_420
-next_420:
+	# br next_33
+	j next_33
+next_33:
 
-	# br whileCond_165
-	j whileCond_165
-ifTrue_255:
+	# br whileCond_16
+	j whileCond_16
+ifTrue_17:
 
-	# br whileCond_166
-	j whileCond_166
-next_421:
+	# br whileCond_17
+	j whileCond_17
+next_34:
 
 	# load i$10 gv4
 
@@ -5567,20 +5481,16 @@ next_421:
 	la t3, gv4
 
 	# get address of local var:i$10
-	li t4, 1704
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 976(sp)
 
 	# gep get$19 i$10
 
 	# fetch variables
 
 	# get address of local var:i$10
-	li t4, 1704
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 976(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv7
@@ -5589,84 +5499,64 @@ next_421:
 	add t0, t1, t0
 
 	# get address of local var:get$19
-	li t4, 1696
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 968(sp)
 
 	# load get$20 get$19
 
 	# get address of get$19 points to
-	li t4, 1696
-	add t4, sp, t4
-	ld t3, 0(t4)
+	ld t3, 968(sp)
 
 	# get address of local var:get$20
-	li t4, 1688
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 964(sp)
 
-	# cmp get$20  cond_eq_tmp_$32
+	# ICMP cond_eq_tmp_$32 get$20  
 
 	# fetch variables
 
 	# get address of local var:get$20
-	li t4, 1688
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 964(sp)
 	li t2, 37
-
-	# get address of local var:cond_eq_tmp_$32
-	li t4, 1680
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$34 cond_eq_tmp_$32
+	# get address of local var:cond_eq_tmp_$32
+	sw t0, 960(sp)
+
+	#  cond_tmp_$34 cond_eq_tmp_$32
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$32
-	li t4, 1680
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$34
-	li t4, 1672
-	add t4, sp, t4
+	lw t1, 960(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$34  cond_$34
+	# get address of local var:cond_tmp_$34
+	sw t0, 956(sp)
+
+	# ICMP cond_$34 cond_tmp_$34  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$34
-	li t4, 1672
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 956(sp)
 	li t2, 0
-
-	# get address of local var:cond_$34
-	li t4, 1664
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$34 ifTrue_257 next_424
+	# get address of local var:cond_$34
+	sw t0, 952(sp)
+
+	# condBr cond_$34 ifTrue_19 next_37
 
 	# fetch variables
 
 	# get address of local var:cond_$34
-	li t4, 1664
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_424
-	j ifTrue_257
-whileCond_166:
+	lw t1, 952(sp)
+	beqz t1, next_37
+	j ifTrue_19
+whileCond_17:
 
 	# load chat$16 gv3
 
@@ -5674,20 +5564,16 @@ whileCond_166:
 	la t3, gv3
 
 	# get address of local var:chat$16
-	li t4, 1656
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 948(sp)
 
 	# gep chas$32 chat$16
 
 	# fetch variables
 
 	# get address of local var:chat$16
-	li t4, 1656
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 948(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -5696,87 +5582,68 @@ whileCond_166:
 	add t0, t1, t0
 
 	# get address of local var:chas$32
-	li t4, 1648
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 940(sp)
 
 	# load chas$33 chas$32
 
 	# get address of chas$32 points to
-	li t4, 1648
-	add t4, sp, t4
-	ld t3, 0(t4)
+	ld t3, 940(sp)
 
 	# get address of local var:chas$33
-	li t4, 1640
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 936(sp)
 
-	# cmp chas$33  cond_eq_tmp_$27
+	# ICMP cond_eq_tmp_$27 chas$33  
 
 	# fetch variables
 
 	# get address of local var:chas$33
-	li t4, 1640
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 936(sp)
 	li t2, 42
-
-	# get address of local var:cond_eq_tmp_$27
-	li t4, 1632
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$29 cond_eq_tmp_$27
+	# get address of local var:cond_eq_tmp_$27
+	sw t0, 932(sp)
+
+	#  cond_tmp_$29 cond_eq_tmp_$27
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$27
-	li t4, 1632
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$29
-	li t4, 1624
-	add t4, sp, t4
+	lw t1, 932(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$29  cond_$29
+	# get address of local var:cond_tmp_$29
+	sw t0, 928(sp)
+
+	# ICMP cond_$29 cond_tmp_$29  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$29
-	li t4, 1624
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 928(sp)
 	li t2, 0
-
-	# get address of local var:cond_$29
-	li t4, 1616
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$29 whileBody_166 secondCond_92
+	# get address of local var:cond_$29
+	sw t0, 924(sp)
+
+	# condBr cond_$29 whileBody_17 secondCond_18
 
 	# fetch variables
 
 	# get address of local var:cond_$29
-	li t4, 1616
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_92
-	j whileBody_166
-whileBody_166:
+	lw t1, 924(sp)
+	beqz t1, secondCond_18
+	j whileBody_17
+whileBody_17:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5790,81 +5657,67 @@ whileBody_166:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:find$3
-	li t4, 1608
-	add t4, sp, t4
-	sd a0, 0(t4)
+	sw a0, 920(sp)
 
-	# cmp find$3  cond_eq_tmp_$31
+	# ICMP cond_eq_tmp_$31 find$3  
 
 	# fetch variables
 
 	# get address of local var:find$3
-	li t4, 1608
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 920(sp)
 	li t2, 0
-
-	# get address of local var:cond_eq_tmp_$31
-	li t4, 1600
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$33 cond_eq_tmp_$31
+	# get address of local var:cond_eq_tmp_$31
+	sw t0, 916(sp)
+
+	#  cond_tmp_$33 cond_eq_tmp_$31
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$31
-	li t4, 1600
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$33
-	li t4, 1592
-	add t4, sp, t4
+	lw t1, 916(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$33  cond_$33
+	# get address of local var:cond_tmp_$33
+	sw t0, 912(sp)
+
+	# ICMP cond_$33 cond_tmp_$33  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$33
-	li t4, 1592
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 912(sp)
 	li t2, 0
-
-	# get address of local var:cond_$33
-	li t4, 1584
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$33 ifTrue_256 next_423
+	# get address of local var:cond_$33
+	sw t0, 908(sp)
+
+	# condBr cond_$33 ifTrue_18 next_36
 
 	# fetch variables
 
 	# get address of local var:cond_$33
-	li t4, 1584
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_423
-	j ifTrue_256
-next_422:
+	lw t1, 908(sp)
+	beqz t1, next_36
+	j ifTrue_18
+next_35:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 47
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5878,11 +5731,12 @@ next_422:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
-	# br next_421
-	j next_421
-secondCond_90:
+	# br next_34
+	j next_34
+secondCond_16:
 
 	# load chat$19 gv3
 
@@ -5890,20 +5744,16 @@ secondCond_90:
 	la t3, gv3
 
 	# get address of local var:chat$19
-	li t4, 1576
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 904(sp)
 
 	# gep chas$38 chat$19
 
 	# fetch variables
 
 	# get address of local var:chat$19
-	li t4, 1576
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 904(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -5912,84 +5762,64 @@ secondCond_90:
 	add t0, t1, t0
 
 	# get address of local var:chas$38
-	li t4, 1568
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 896(sp)
 
 	# load chas$39 chas$38
 
 	# get address of chas$38 points to
-	li t4, 1568
-	add t4, sp, t4
-	ld t3, 0(t4)
+	ld t3, 896(sp)
 
 	# get address of local var:chas$39
-	li t4, 1560
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 892(sp)
 
-	# cmp chas$39  cond_eq_tmp_$30
+	# ICMP cond_eq_tmp_$30 chas$39  
 
 	# fetch variables
 
 	# get address of local var:chas$39
-	li t4, 1560
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 892(sp)
 	li t2, 94
-
-	# get address of local var:cond_eq_tmp_$30
-	li t4, 1552
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$32 cond_eq_tmp_$30
+	# get address of local var:cond_eq_tmp_$30
+	sw t0, 888(sp)
+
+	#  cond_tmp_$32 cond_eq_tmp_$30
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$30
-	li t4, 1552
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$32
-	li t4, 1544
-	add t4, sp, t4
+	lw t1, 888(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$32  cond_$32
+	# get address of local var:cond_tmp_$32
+	sw t0, 884(sp)
+
+	# ICMP cond_$32 cond_tmp_$32  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$32
-	li t4, 1544
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 884(sp)
 	li t2, 0
-
-	# get address of local var:cond_$32
-	li t4, 1536
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$32 whileBody_166 next_422
+	# get address of local var:cond_$32
+	sw t0, 880(sp)
+
+	# condBr cond_$32 whileBody_17 next_35
 
 	# fetch variables
 
 	# get address of local var:cond_$32
-	li t4, 1536
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_422
-	j whileBody_166
-secondCond_91:
+	lw t1, 880(sp)
+	beqz t1, next_35
+	j whileBody_17
+secondCond_17:
 
 	# load chat$18 gv3
 
@@ -5997,20 +5827,16 @@ secondCond_91:
 	la t3, gv3
 
 	# get address of local var:chat$18
-	li t4, 1528
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 876(sp)
 
 	# gep chas$36 chat$18
 
 	# fetch variables
 
 	# get address of local var:chat$18
-	li t4, 1528
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 876(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -6019,84 +5845,64 @@ secondCond_91:
 	add t0, t1, t0
 
 	# get address of local var:chas$36
-	li t4, 1520
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 868(sp)
 
 	# load chas$37 chas$36
 
 	# get address of chas$36 points to
-	li t4, 1520
-	add t4, sp, t4
-	ld t3, 0(t4)
+	ld t3, 868(sp)
 
 	# get address of local var:chas$37
-	li t4, 1512
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 864(sp)
 
-	# cmp chas$37  cond_eq_tmp_$29
+	# ICMP cond_eq_tmp_$29 chas$37  
 
 	# fetch variables
 
 	# get address of local var:chas$37
-	li t4, 1512
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 864(sp)
 	li t2, 37
-
-	# get address of local var:cond_eq_tmp_$29
-	li t4, 1504
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$31 cond_eq_tmp_$29
+	# get address of local var:cond_eq_tmp_$29
+	sw t0, 860(sp)
+
+	#  cond_tmp_$31 cond_eq_tmp_$29
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$29
-	li t4, 1504
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$31
-	li t4, 1496
-	add t4, sp, t4
+	lw t1, 860(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$31  cond_$31
+	# get address of local var:cond_tmp_$31
+	sw t0, 856(sp)
+
+	# ICMP cond_$31 cond_tmp_$31  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$31
-	li t4, 1496
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 856(sp)
 	li t2, 0
-
-	# get address of local var:cond_$31
-	li t4, 1488
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$31 whileBody_166 secondCond_90
+	# get address of local var:cond_$31
+	sw t0, 852(sp)
+
+	# condBr cond_$31 whileBody_17 secondCond_16
 
 	# fetch variables
 
 	# get address of local var:cond_$31
-	li t4, 1488
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_90
-	j whileBody_166
-secondCond_92:
+	lw t1, 852(sp)
+	beqz t1, secondCond_16
+	j whileBody_17
+secondCond_18:
 
 	# load chat$17 gv3
 
@@ -6104,20 +5910,16 @@ secondCond_92:
 	la t3, gv3
 
 	# get address of local var:chat$17
-	li t4, 1480
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 848(sp)
 
 	# gep chas$34 chat$17
 
 	# fetch variables
 
 	# get address of local var:chat$17
-	li t4, 1480
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 848(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -6126,99 +5928,79 @@ secondCond_92:
 	add t0, t1, t0
 
 	# get address of local var:chas$34
-	li t4, 1472
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 840(sp)
 
 	# load chas$35 chas$34
 
 	# get address of chas$34 points to
-	li t4, 1472
-	add t4, sp, t4
-	ld t3, 0(t4)
+	ld t3, 840(sp)
 
 	# get address of local var:chas$35
-	li t4, 1464
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 836(sp)
 
-	# cmp chas$35  cond_eq_tmp_$28
+	# ICMP cond_eq_tmp_$28 chas$35  
 
 	# fetch variables
 
 	# get address of local var:chas$35
-	li t4, 1464
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 836(sp)
 	li t2, 47
-
-	# get address of local var:cond_eq_tmp_$28
-	li t4, 1456
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$30 cond_eq_tmp_$28
+	# get address of local var:cond_eq_tmp_$28
+	sw t0, 832(sp)
+
+	#  cond_tmp_$30 cond_eq_tmp_$28
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$28
-	li t4, 1456
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$30
-	li t4, 1448
-	add t4, sp, t4
+	lw t1, 832(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$30  cond_$30
+	# get address of local var:cond_tmp_$30
+	sw t0, 828(sp)
+
+	# ICMP cond_$30 cond_tmp_$30  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$30
-	li t4, 1448
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 828(sp)
 	li t2, 0
-
-	# get address of local var:cond_$30
-	li t4, 1440
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$30 whileBody_166 secondCond_91
+	# get address of local var:cond_$30
+	sw t0, 824(sp)
+
+	# condBr cond_$30 whileBody_17 secondCond_17
 
 	# fetch variables
 
 	# get address of local var:cond_$30
-	li t4, 1440
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_91
-	j whileBody_166
-ifTrue_256:
+	lw t1, 824(sp)
+	beqz t1, secondCond_17
+	j whileBody_17
+ifTrue_18:
 
-	# br next_422
-	j next_422
+	# br next_35
+	j next_35
 
-	# br next_423
-	j next_423
-next_423:
+	# br next_36
+	j next_36
+next_36:
 
-	# br whileCond_166
-	j whileCond_166
-ifTrue_257:
+	# br whileCond_17
+	j whileCond_17
+ifTrue_19:
 
-	# br whileCond_167
-	j whileCond_167
-next_424:
+	# br whileCond_18
+	j whileCond_18
+next_37:
 
 	# load ii$5 gv5
 
@@ -6226,20 +6008,16 @@ next_424:
 	la t3, gv5
 
 	# get address of local var:ii$5
-	li t4, 1432
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 820(sp)
 
 	# gep get2$3 ii$5
 
 	# fetch variables
 
 	# get address of local var:ii$5
-	li t4, 1432
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 820(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -6248,22 +6026,16 @@ next_424:
 	add t0, t1, t0
 
 	# get address of local var:get2$3
-	li t4, 1424
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 812(sp)
 
-	# get2$3 
+	# store get2$3 
 
 	# fetch variables
 	li t1, 32
 
-	# store get2$3 
-
 	# get address of get2$3 points to
-	li t4, 1424
-	add t4, sp, t4
-	ld t3, 0(t4)
-	sd t1, 0(t3)
+	ld t3, 812(sp)
+	sw t1, 0(t3)
 
 	# load ii$6 gv5
 
@@ -6271,45 +6043,35 @@ next_424:
 	la t3, gv5
 
 	# get address of local var:ii$6
-	li t4, 1416
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 808(sp)
 
-	# add result_$3 ii$6 
+	# ADD result_$3 ii$6  
 
 	# fetch variables
 
 	# get address of local var:ii$6
-	li t4, 1416
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 808(sp)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_$3
-	li t4, 1408
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sw t0, 804(sp)
 
-	# gv5 @result_$3
+	# store gv5 result_$3
 
 	# fetch variables
 
 	# get address of local var:result_$3
-	li t4, 1408
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# store gv5 result_$3
+	lw t1, 804(sp)
 
 	# get address of gv5 points to
 	la t3, gv5
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br next_407
-	j next_407
-whileCond_167:
+	# br next_20
+	j next_20
+whileCond_18:
 
 	# load chat$20 gv3
 
@@ -6317,20 +6079,16 @@ whileCond_167:
 	la t3, gv3
 
 	# get address of local var:chat$20
-	li t4, 1400
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 800(sp)
 
 	# gep chas$40 chat$20
 
 	# fetch variables
 
 	# get address of local var:chat$20
-	li t4, 1400
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 800(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -6339,87 +6097,68 @@ whileCond_167:
 	add t0, t1, t0
 
 	# get address of local var:chas$40
-	li t4, 1392
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 792(sp)
 
 	# load chas$41 chas$40
 
 	# get address of chas$40 points to
-	li t4, 1392
-	add t4, sp, t4
-	ld t3, 0(t4)
+	ld t3, 792(sp)
 
 	# get address of local var:chas$41
-	li t4, 1384
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 788(sp)
 
-	# cmp chas$41  cond_eq_tmp_$33
+	# ICMP cond_eq_tmp_$33 chas$41  
 
 	# fetch variables
 
 	# get address of local var:chas$41
-	li t4, 1384
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 788(sp)
 	li t2, 42
-
-	# get address of local var:cond_eq_tmp_$33
-	li t4, 1376
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$35 cond_eq_tmp_$33
+	# get address of local var:cond_eq_tmp_$33
+	sw t0, 784(sp)
+
+	#  cond_tmp_$35 cond_eq_tmp_$33
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$33
-	li t4, 1376
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$35
-	li t4, 1368
-	add t4, sp, t4
+	lw t1, 784(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$35  cond_$35
+	# get address of local var:cond_tmp_$35
+	sw t0, 780(sp)
+
+	# ICMP cond_$35 cond_tmp_$35  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$35
-	li t4, 1368
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 780(sp)
 	li t2, 0
-
-	# get address of local var:cond_$35
-	li t4, 1360
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$35 whileBody_167 secondCond_95
+	# get address of local var:cond_$35
+	sw t0, 776(sp)
+
+	# condBr cond_$35 whileBody_18 secondCond_21
 
 	# fetch variables
 
 	# get address of local var:cond_$35
-	li t4, 1360
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_95
-	j whileBody_167
-whileBody_167:
+	lw t1, 776(sp)
+	beqz t1, secondCond_21
+	j whileBody_18
+whileBody_18:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -6433,81 +6172,67 @@ whileBody_167:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:find$4
-	li t4, 1352
-	add t4, sp, t4
-	sd a0, 0(t4)
+	sw a0, 772(sp)
 
-	# cmp find$4  cond_eq_tmp_$37
+	# ICMP cond_eq_tmp_$37 find$4  
 
 	# fetch variables
 
 	# get address of local var:find$4
-	li t4, 1352
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 772(sp)
 	li t2, 0
-
-	# get address of local var:cond_eq_tmp_$37
-	li t4, 1344
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$39 cond_eq_tmp_$37
+	# get address of local var:cond_eq_tmp_$37
+	sw t0, 768(sp)
+
+	#  cond_tmp_$39 cond_eq_tmp_$37
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$37
-	li t4, 1344
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$39
-	li t4, 1336
-	add t4, sp, t4
+	lw t1, 768(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$39  cond_$39
+	# get address of local var:cond_tmp_$39
+	sw t0, 764(sp)
+
+	# ICMP cond_$39 cond_tmp_$39  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$39
-	li t4, 1336
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 764(sp)
 	li t2, 0
-
-	# get address of local var:cond_$39
-	li t4, 1328
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$39 ifTrue_258 next_426
+	# get address of local var:cond_$39
+	sw t0, 760(sp)
+
+	# condBr cond_$39 ifTrue_20 next_39
 
 	# fetch variables
 
 	# get address of local var:cond_$39
-	li t4, 1328
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_426
-	j ifTrue_258
-next_425:
+	lw t1, 760(sp)
+	beqz t1, next_39
+	j ifTrue_20
+next_38:
 
 	# prepare params
 
 	# fetch variables
 	li t1, 37
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -6521,11 +6246,12 @@ next_425:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
-	# br next_424
-	j next_424
-secondCond_93:
+	# br next_37
+	j next_37
+secondCond_19:
 
 	# load chat$23 gv3
 
@@ -6533,20 +6259,16 @@ secondCond_93:
 	la t3, gv3
 
 	# get address of local var:chat$23
-	li t4, 1320
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 756(sp)
 
 	# gep chas$46 chat$23
 
 	# fetch variables
 
 	# get address of local var:chat$23
-	li t4, 1320
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 756(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -6555,84 +6277,64 @@ secondCond_93:
 	add t0, t1, t0
 
 	# get address of local var:chas$46
-	li t4, 1312
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 748(sp)
 
 	# load chas$47 chas$46
 
 	# get address of chas$46 points to
-	li t4, 1312
-	add t4, sp, t4
-	ld t3, 0(t4)
+	ld t3, 748(sp)
 
 	# get address of local var:chas$47
-	li t4, 1304
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 744(sp)
 
-	# cmp chas$47  cond_eq_tmp_$36
+	# ICMP cond_eq_tmp_$36 chas$47  
 
 	# fetch variables
 
 	# get address of local var:chas$47
-	li t4, 1304
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 744(sp)
 	li t2, 94
-
-	# get address of local var:cond_eq_tmp_$36
-	li t4, 1296
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$38 cond_eq_tmp_$36
+	# get address of local var:cond_eq_tmp_$36
+	sw t0, 740(sp)
+
+	#  cond_tmp_$38 cond_eq_tmp_$36
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$36
-	li t4, 1296
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$38
-	li t4, 1288
-	add t4, sp, t4
+	lw t1, 740(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$38  cond_$38
+	# get address of local var:cond_tmp_$38
+	sw t0, 736(sp)
+
+	# ICMP cond_$38 cond_tmp_$38  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$38
-	li t4, 1288
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 736(sp)
 	li t2, 0
-
-	# get address of local var:cond_$38
-	li t4, 1280
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$38 whileBody_167 next_425
+	# get address of local var:cond_$38
+	sw t0, 732(sp)
+
+	# condBr cond_$38 whileBody_18 next_38
 
 	# fetch variables
 
 	# get address of local var:cond_$38
-	li t4, 1280
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_425
-	j whileBody_167
-secondCond_94:
+	lw t1, 732(sp)
+	beqz t1, next_38
+	j whileBody_18
+secondCond_20:
 
 	# load chat$22 gv3
 
@@ -6640,20 +6342,16 @@ secondCond_94:
 	la t3, gv3
 
 	# get address of local var:chat$22
-	li t4, 1272
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 728(sp)
 
 	# gep chas$44 chat$22
 
 	# fetch variables
 
 	# get address of local var:chat$22
-	li t4, 1272
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 728(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -6662,84 +6360,64 @@ secondCond_94:
 	add t0, t1, t0
 
 	# get address of local var:chas$44
-	li t4, 1264
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 720(sp)
 
 	# load chas$45 chas$44
 
 	# get address of chas$44 points to
-	li t4, 1264
-	add t4, sp, t4
-	ld t3, 0(t4)
+	ld t3, 720(sp)
 
 	# get address of local var:chas$45
-	li t4, 1256
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 716(sp)
 
-	# cmp chas$45  cond_eq_tmp_$35
+	# ICMP cond_eq_tmp_$35 chas$45  
 
 	# fetch variables
 
 	# get address of local var:chas$45
-	li t4, 1256
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 716(sp)
 	li t2, 37
-
-	# get address of local var:cond_eq_tmp_$35
-	li t4, 1248
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$37 cond_eq_tmp_$35
+	# get address of local var:cond_eq_tmp_$35
+	sw t0, 712(sp)
+
+	#  cond_tmp_$37 cond_eq_tmp_$35
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$35
-	li t4, 1248
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$37
-	li t4, 1240
-	add t4, sp, t4
+	lw t1, 712(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$37  cond_$37
+	# get address of local var:cond_tmp_$37
+	sw t0, 708(sp)
+
+	# ICMP cond_$37 cond_tmp_$37  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$37
-	li t4, 1240
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 708(sp)
 	li t2, 0
-
-	# get address of local var:cond_$37
-	li t4, 1232
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$37 whileBody_167 secondCond_93
+	# get address of local var:cond_$37
+	sw t0, 704(sp)
+
+	# condBr cond_$37 whileBody_18 secondCond_19
 
 	# fetch variables
 
 	# get address of local var:cond_$37
-	li t4, 1232
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_93
-	j whileBody_167
-secondCond_95:
+	lw t1, 704(sp)
+	beqz t1, secondCond_19
+	j whileBody_18
+secondCond_21:
 
 	# load chat$21 gv3
 
@@ -6747,20 +6425,16 @@ secondCond_95:
 	la t3, gv3
 
 	# get address of local var:chat$21
-	li t4, 1224
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 700(sp)
 
 	# gep chas$42 chat$21
 
 	# fetch variables
 
 	# get address of local var:chat$21
-	li t4, 1224
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 700(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv2
@@ -6769,95 +6443,75 @@ secondCond_95:
 	add t0, t1, t0
 
 	# get address of local var:chas$42
-	li t4, 1216
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 692(sp)
 
 	# load chas$43 chas$42
 
 	# get address of chas$42 points to
-	li t4, 1216
-	add t4, sp, t4
-	ld t3, 0(t4)
+	ld t3, 692(sp)
 
 	# get address of local var:chas$43
-	li t4, 1208
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 688(sp)
 
-	# cmp chas$43  cond_eq_tmp_$34
+	# ICMP cond_eq_tmp_$34 chas$43  
 
 	# fetch variables
 
 	# get address of local var:chas$43
-	li t4, 1208
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 688(sp)
 	li t2, 47
-
-	# get address of local var:cond_eq_tmp_$34
-	li t4, 1200
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$36 cond_eq_tmp_$34
+	# get address of local var:cond_eq_tmp_$34
+	sw t0, 684(sp)
+
+	#  cond_tmp_$36 cond_eq_tmp_$34
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$34
-	li t4, 1200
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$36
-	li t4, 1192
-	add t4, sp, t4
+	lw t1, 684(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$36  cond_$36
+	# get address of local var:cond_tmp_$36
+	sw t0, 680(sp)
+
+	# ICMP cond_$36 cond_tmp_$36  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$36
-	li t4, 1192
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 680(sp)
 	li t2, 0
-
-	# get address of local var:cond_$36
-	li t4, 1184
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$36 whileBody_167 secondCond_94
+	# get address of local var:cond_$36
+	sw t0, 676(sp)
+
+	# condBr cond_$36 whileBody_18 secondCond_20
 
 	# fetch variables
 
 	# get address of local var:cond_$36
-	li t4, 1184
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, secondCond_94
-	j whileBody_167
-ifTrue_258:
+	lw t1, 676(sp)
+	beqz t1, secondCond_20
+	j whileBody_18
+ifTrue_20:
 
-	# br next_425
-	j next_425
+	# br next_38
+	j next_38
 
-	# br next_426
-	j next_426
-next_426:
+	# br next_39
+	j next_39
+next_39:
 
-	# br whileCond_167
-	j whileCond_167
-whileCond_168:
+	# br whileCond_18
+	j whileCond_18
+whileCond_19:
 
 	# load chat$24 gv3
 
@@ -6865,75 +6519,60 @@ whileCond_168:
 	la t3, gv3
 
 	# get address of local var:chat$24
-	li t4, 1176
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 672(sp)
 
-	# cmp chat$24  cond_gt_tmp_
+	# ICMP cond_gt_tmp_ chat$24  
 
 	# fetch variables
 
 	# get address of local var:chat$24
-	li t4, 1176
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 672(sp)
 	li t2, 0
-
-	# get address of local var:cond_gt_tmp_
-	li t4, 1168
-	add t4, sp, t4
 	sub t0, t1, t2
 	sgtz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$40 cond_gt_tmp_
+	# get address of local var:cond_gt_tmp_
+	sw t0, 668(sp)
+
+	#  cond_tmp_$40 cond_gt_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_gt_tmp_
-	li t4, 1168
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 668(sp)
+	mv t0, t1
 
 	# get address of local var:cond_tmp_$40
-	li t4, 1160
-	add t4, sp, t4
-	mv t0, t1
-	sd t0, 0(t4)
+	sw t0, 664(sp)
 
-	# cmp cond_tmp_$40  cond_$40
+	# ICMP cond_$40 cond_tmp_$40  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$40
-	li t4, 1160
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 664(sp)
 	li t2, 0
-
-	# get address of local var:cond_$40
-	li t4, 1152
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# condBr cond_$40 whileBody_168 next_427
+	# get address of local var:cond_$40
+	sw t0, 660(sp)
+
+	# condBr cond_$40 whileBody_19 next_40
 
 	# fetch variables
 
 	# get address of local var:cond_$40
-	li t4, 1152
-	add t4, sp, t4
-	ld t1, 0(t4)
-	beqz t1, next_427
-	j whileBody_168
-whileBody_168:
+	lw t1, 660(sp)
+	beqz t1, next_40
+	j whileBody_19
+whileBody_19:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -6947,29 +6586,24 @@ whileBody_168:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:chapop$2
-	li t4, 1144
-	add t4, sp, t4
-	sd a0, 0(t4)
+	sw a0, 656(sp)
 
-	# lv$1 chapop$2
+	# store lv$1 chapop$2
 
 	# fetch variables
 
 	# get address of local var:chapop$2
-	li t4, 1144
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# store lv$1 chapop$2
+	lw t1, 656(sp)
 
 	# get address of lv$1 points to
-	li t4, 3232
+	li t4, 1860
 	add t4, sp, t4
 	ld t3, 0(t4)
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# load ii$7 gv5
 
@@ -6977,20 +6611,16 @@ whileBody_168:
 	la t3, gv5
 
 	# get address of local var:ii$7
-	li t4, 1136
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 652(sp)
 
 	# gep get2$4 ii$7
 
 	# fetch variables
 
 	# get address of local var:ii$7
-	li t4, 1136
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 652(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -6999,22 +6629,16 @@ whileBody_168:
 	add t0, t1, t0
 
 	# get address of local var:get2$4
-	li t4, 1128
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 644(sp)
 
-	# get2$4 
+	# store get2$4 
 
 	# fetch variables
 	li t1, 32
 
-	# store get2$4 
-
 	# get address of get2$4 points to
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
-	sd t1, 0(t3)
+	ld t3, 644(sp)
+	sw t1, 0(t3)
 
 	# load ii$8 gv5
 
@@ -7022,36 +6646,28 @@ whileBody_168:
 	la t3, gv5
 
 	# get address of local var:ii$8
-	li t4, 1120
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 640(sp)
 
-	# add result_$5 ii$8 
+	# ADD result_$5 ii$8  
 
 	# fetch variables
 
 	# get address of local var:ii$8
-	li t4, 1120
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 640(sp)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_$5
-	li t4, 1112
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sw t0, 636(sp)
 
 	# gep get2$5 result_$5
 
 	# fetch variables
 
 	# get address of local var:result_$5
-	li t4, 1112
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 636(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -7060,39 +6676,29 @@ whileBody_168:
 	add t0, t1, t0
 
 	# get address of local var:get2$5
-	li t4, 1104
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 628(sp)
 
 	# load c$2 lv$1
 
 	# get address of lv$1 points to
-	li t4, 3232
+	li t4, 1860
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:c$2
-	li t4, 1096
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 624(sp)
 
-	# get2$5 c$2
+	# store get2$5 c$2
 
 	# fetch variables
 
 	# get address of local var:c$2
-	li t4, 1096
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# store get2$5 c$2
+	lw t1, 624(sp)
 
 	# get address of get2$5 points to
-	li t4, 1104
-	add t4, sp, t4
-	ld t3, 0(t4)
-	sd t1, 0(t3)
+	ld t3, 628(sp)
+	sw t1, 0(t3)
 
 	# load ii$9 gv5
 
@@ -7100,45 +6706,35 @@ whileBody_168:
 	la t3, gv5
 
 	# get address of local var:ii$9
-	li t4, 1088
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 620(sp)
 
-	# add result_$6 ii$9 
+	# ADD result_$6 ii$9  
 
 	# fetch variables
 
 	# get address of local var:ii$9
-	li t4, 1088
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 620(sp)
 	li t2, 2
 	add t0, t1, t2
 
 	# get address of local var:result_$6
-	li t4, 1080
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sw t0, 616(sp)
 
-	# gv5 @result_$6
+	# store gv5 result_$6
 
 	# fetch variables
 
 	# get address of local var:result_$6
-	li t4, 1080
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# store gv5 result_$6
+	lw t1, 616(sp)
 
 	# get address of gv5 points to
 	la t3, gv5
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br whileCond_168
-	j whileCond_168
-next_427:
+	# br whileCond_19
+	j whileCond_19
+next_40:
 
 	# load ii$10 gv5
 
@@ -7146,20 +6742,16 @@ next_427:
 	la t3, gv5
 
 	# get address of local var:ii$10
-	li t4, 1072
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 612(sp)
 
 	# gep get2$6 ii$10
 
 	# fetch variables
 
 	# get address of local var:ii$10
-	li t4, 1072
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 612(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -7168,37 +6760,29 @@ next_427:
 	add t0, t1, t0
 
 	# get address of local var:get2$6
-	li t4, 1064
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 604(sp)
 
-	# get2$6 
+	# store get2$6 
 
 	# fetch variables
 	li t1, 64
 
-	# store get2$6 
-
 	# get address of get2$6 points to
-	li t4, 1064
-	add t4, sp, t4
-	ld t3, 0(t4)
-	sd t1, 0(t3)
+	ld t3, 604(sp)
+	sw t1, 0(t3)
 
-	# gv4 @
+	# store gv4 
 
 	# fetch variables
 	li t1, 1
 
-	# store gv4 
-
 	# get address of gv4 points to
 	la t3, gv4
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br whileCond_169
-	j whileCond_169
-whileCond_169:
+	# br whileCond_20
+	j whileCond_20
+whileCond_20:
 
 	# load i$12 gv4
 
@@ -7206,20 +6790,16 @@ whileCond_169:
 	la t3, gv4
 
 	# get address of local var:i$12
-	li t4, 1056
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 600(sp)
 
 	# gep get2$7 i$12
 
 	# fetch variables
 
 	# get address of local var:i$12
-	li t4, 1056
-	add t4, sp, t4
-	ld t1, 0(t4)
-	li t2, 8
+	lw t1, 600(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -7228,81 +6808,65 @@ whileCond_169:
 	add t0, t1, t0
 
 	# get address of local var:get2$7
-	li t4, 1048
-	add t4, sp, t4
-	sd t0, 0(t4)
+	sd t0, 592(sp)
 
 	# load get2$8 get2$7
 
 	# get address of get2$7 points to
-	li t4, 1048
-	add t4, sp, t4
-	ld t3, 0(t4)
+	ld t3, 592(sp)
 
 	# get address of local var:get2$8
-	li t4, 1040
-	add t4, sp, t4
-	ld t0, 0(t3)
-	sd t0, 0(t4)
+	lw t0, 0(t3)
+	sw t0, 588(sp)
 
-	# cmp get2$8  cond_neq_tmp_$1
+	# ICMP cond_neq_tmp_$1 get2$8  
 
 	# fetch variables
 
 	# get address of local var:get2$8
-	li t4, 1040
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 588(sp)
 	li t2, 64
-
-	# get address of local var:cond_neq_tmp_$1
-	li t4, 1032
-	add t4, sp, t4
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 0(t4)
 
-	# zext cond_tmp_$41 cond_neq_tmp_$1
+	# get address of local var:cond_neq_tmp_$1
+	sw t0, 584(sp)
+
+	#  cond_tmp_$41 cond_neq_tmp_$1
 
 	# fetch variables
 
 	# get address of local var:cond_neq_tmp_$1
-	li t4, 1032
-	add t4, sp, t4
-	ld t1, 0(t4)
-
-	# get address of local var:cond_tmp_$41
-	li t4, 1024
-	add t4, sp, t4
+	lw t1, 584(sp)
 	mv t0, t1
-	sd t0, 0(t4)
 
-	# cmp cond_tmp_$41  cond_$41
+	# get address of local var:cond_tmp_$41
+	sw t0, 580(sp)
+
+	# ICMP cond_$41 cond_tmp_$41  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$41
-	li t4, 1024
-	add t4, sp, t4
-	ld t1, 0(t4)
+	lw t1, 580(sp)
 	li t2, 0
-
-	# get address of local var:cond_$41
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 1016(sp)
 
-	# condBr cond_$41 whileBody_169 next_428
+	# get address of local var:cond_$41
+	sw t0, 576(sp)
+
+	# condBr cond_$41 whileBody_20 next_41
 
 	# fetch variables
 
 	# get address of local var:cond_$41
-	ld t1, 1016(sp)
-	beqz t1, next_428
-	j whileBody_169
-whileBody_169:
+	lw t1, 576(sp)
+	beqz t1, next_41
+	j whileBody_20
+whileBody_20:
 
 	# load i$13 gv4
 
@@ -7310,16 +6874,16 @@ whileBody_169:
 	la t3, gv4
 
 	# get address of local var:i$13
-	ld t0, 0(t3)
-	sd t0, 1008(sp)
+	lw t0, 0(t3)
+	sw t0, 572(sp)
 
 	# gep get2$9 i$13
 
 	# fetch variables
 
 	# get address of local var:i$13
-	ld t1, 1008(sp)
-	li t2, 8
+	lw t1, 572(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -7328,70 +6892,70 @@ whileBody_169:
 	add t0, t1, t0
 
 	# get address of local var:get2$9
-	sd t0, 1000(sp)
+	sd t0, 564(sp)
 
 	# load get2$10 get2$9
 
 	# get address of get2$9 points to
-	ld t3, 1000(sp)
+	ld t3, 564(sp)
 
 	# get address of local var:get2$10
-	ld t0, 0(t3)
-	sd t0, 992(sp)
+	lw t0, 0(t3)
+	sw t0, 560(sp)
 
-	# cmp get2$10  cond_eq_tmp_$38
+	# ICMP cond_eq_tmp_$38 get2$10  
 
 	# fetch variables
 
 	# get address of local var:get2$10
-	ld t1, 992(sp)
+	lw t1, 560(sp)
 	li t2, 43
-
-	# get address of local var:cond_eq_tmp_$38
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 984(sp)
 
-	# zext cond_tmp_$42 cond_eq_tmp_$38
+	# get address of local var:cond_eq_tmp_$38
+	sw t0, 556(sp)
+
+	#  cond_tmp_$42 cond_eq_tmp_$38
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$38
-	ld t1, 984(sp)
-
-	# get address of local var:cond_tmp_$42
+	lw t1, 556(sp)
 	mv t0, t1
-	sd t0, 976(sp)
 
-	# cmp cond_tmp_$42  cond_$42
+	# get address of local var:cond_tmp_$42
+	sw t0, 552(sp)
+
+	# ICMP cond_$42 cond_tmp_$42  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$42
-	ld t1, 976(sp)
+	lw t1, 552(sp)
 	li t2, 0
-
-	# get address of local var:cond_$42
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 968(sp)
 
-	# condBr cond_$42 ifTrue_259 secondCond_100
+	# get address of local var:cond_$42
+	sw t0, 548(sp)
+
+	# condBr cond_$42 ifTrue_21 secondCond_26
 
 	# fetch variables
 
 	# get address of local var:cond_$42
-	ld t1, 968(sp)
-	beqz t1, secondCond_100
-	j ifTrue_259
-next_428:
+	lw t1, 548(sp)
+	beqz t1, secondCond_26
+	j ifTrue_21
+next_41:
 
 	# gep ints 
 
 	# fetch variables
 	li t1, 1
-	li t2, 8
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv
@@ -7400,25 +6964,26 @@ next_428:
 	add t0, t1, t0
 
 	# get address of local var:ints
-	sd t0, 960(sp)
+	sd t0, 540(sp)
 
 	# load ints$1 ints
 
 	# get address of ints points to
-	ld t3, 960(sp)
+	ld t3, 540(sp)
 
 	# get address of local var:ints$1
-	ld t0, 0(t3)
-	sd t0, 952(sp)
+	lw t0, 0(t3)
+	sw t0, 536(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:ints$1
-	ld t1, 952(sp)
+	lw t1, 536(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7432,20 +6997,22 @@ next_428:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# ret 
 
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	li t4, 3288
+	li t4, 1904
 	add sp, sp, t4
 	ret 
-ifTrue_259:
+ifTrue_21:
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7459,28 +7026,28 @@ ifTrue_259:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:intpop
-	sd a0, 944(sp)
-
-	# lv$2 intpop
-
-	# fetch variables
-
-	# get address of local var:intpop
-	ld t1, 944(sp)
+	sw a0, 532(sp)
 
 	# store lv$2 intpop
 
+	# fetch variables
+
+	# get address of local var:intpop
+	lw t1, 532(sp)
+
 	# get address of lv$2 points to
-	li t4, 3248
+	li t4, 1872
 	add t4, sp, t4
 	ld t3, 0(t4)
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -7494,25 +7061,24 @@ ifTrue_259:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:intpop$1
-	sd a0, 936(sp)
+	sw a0, 528(sp)
 
-	# lv$3 intpop$1
+	# store lv$3 intpop$1
 
 	# fetch variables
 
 	# get address of local var:intpop$1
-	ld t1, 936(sp)
-
-	# store lv$3 intpop$1
+	lw t1, 528(sp)
 
 	# get address of lv$3 points to
-	li t4, 3264
+	li t4, 1884
 	add t4, sp, t4
 	ld t3, 0(t4)
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
 	# load i$19 gv4
 
@@ -7520,16 +7086,16 @@ ifTrue_259:
 	la t3, gv4
 
 	# get address of local var:i$19
-	ld t0, 0(t3)
-	sd t0, 928(sp)
+	lw t0, 0(t3)
+	sw t0, 524(sp)
 
 	# gep get2$21 i$19
 
 	# fetch variables
 
 	# get address of local var:i$19
-	ld t1, 928(sp)
-	li t2, 8
+	lw t1, 524(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -7538,64 +7104,64 @@ ifTrue_259:
 	add t0, t1, t0
 
 	# get address of local var:get2$21
-	sd t0, 920(sp)
+	sd t0, 516(sp)
 
 	# load get2$22 get2$21
 
 	# get address of get2$21 points to
-	ld t3, 920(sp)
+	ld t3, 516(sp)
 
 	# get address of local var:get2$22
-	ld t0, 0(t3)
-	sd t0, 912(sp)
+	lw t0, 0(t3)
+	sw t0, 512(sp)
 
-	# cmp get2$22  cond_eq_tmp_$44
+	# ICMP cond_eq_tmp_$44 get2$22  
 
 	# fetch variables
 
 	# get address of local var:get2$22
-	ld t1, 912(sp)
+	lw t1, 512(sp)
 	li t2, 43
-
-	# get address of local var:cond_eq_tmp_$44
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 904(sp)
 
-	# zext cond_tmp_$48 cond_eq_tmp_$44
+	# get address of local var:cond_eq_tmp_$44
+	sw t0, 508(sp)
+
+	#  cond_tmp_$48 cond_eq_tmp_$44
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$44
-	ld t1, 904(sp)
-
-	# get address of local var:cond_tmp_$48
+	lw t1, 508(sp)
 	mv t0, t1
-	sd t0, 896(sp)
 
-	# cmp cond_tmp_$48  cond_$48
+	# get address of local var:cond_tmp_$48
+	sw t0, 504(sp)
+
+	# ICMP cond_$48 cond_tmp_$48  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$48
-	ld t1, 896(sp)
+	lw t1, 504(sp)
 	li t2, 0
-
-	# get address of local var:cond_$48
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 888(sp)
 
-	# condBr cond_$48 ifTrue_260 next_430
+	# get address of local var:cond_$48
+	sw t0, 500(sp)
+
+	# condBr cond_$48 ifTrue_22 next_43
 
 	# fetch variables
 
 	# get address of local var:cond_$48
-	ld t1, 888(sp)
-	beqz t1, next_430
-	j ifTrue_260
-ifFalse_100:
+	lw t1, 500(sp)
+	beqz t1, next_43
+	j ifTrue_22
+ifFalse_6:
 
 	# load i$25 gv4
 
@@ -7603,16 +7169,16 @@ ifFalse_100:
 	la t3, gv4
 
 	# get address of local var:i$25
-	ld t0, 0(t3)
-	sd t0, 880(sp)
+	lw t0, 0(t3)
+	sw t0, 496(sp)
 
 	# gep get2$33 i$25
 
 	# fetch variables
 
 	# get address of local var:i$25
-	ld t1, 880(sp)
-	li t2, 8
+	lw t1, 496(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -7621,65 +7187,65 @@ ifFalse_100:
 	add t0, t1, t0
 
 	# get address of local var:get2$33
-	sd t0, 872(sp)
+	sd t0, 488(sp)
 
 	# load get2$34 get2$33
 
 	# get address of get2$33 points to
-	ld t3, 872(sp)
+	ld t3, 488(sp)
 
 	# get address of local var:get2$34
-	ld t0, 0(t3)
-	sd t0, 864(sp)
+	lw t0, 0(t3)
+	sw t0, 484(sp)
 
-	# cmp get2$34  cond_neq_tmp_$2
+	# ICMP cond_neq_tmp_$2 get2$34  
 
 	# fetch variables
 
 	# get address of local var:get2$34
-	ld t1, 864(sp)
+	lw t1, 484(sp)
 	li t2, 32
-
-	# get address of local var:cond_neq_tmp_$2
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 856(sp)
 
-	# zext cond_tmp_$54 cond_neq_tmp_$2
+	# get address of local var:cond_neq_tmp_$2
+	sw t0, 480(sp)
+
+	#  cond_tmp_$54 cond_neq_tmp_$2
 
 	# fetch variables
 
 	# get address of local var:cond_neq_tmp_$2
-	ld t1, 856(sp)
-
-	# get address of local var:cond_tmp_$54
+	lw t1, 480(sp)
 	mv t0, t1
-	sd t0, 848(sp)
 
-	# cmp cond_tmp_$54  cond_$54
+	# get address of local var:cond_tmp_$54
+	sw t0, 476(sp)
+
+	# ICMP cond_$54 cond_tmp_$54  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$54
-	ld t1, 848(sp)
+	lw t1, 476(sp)
 	li t2, 0
-
-	# get address of local var:cond_$54
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 840(sp)
 
-	# condBr cond_$54 ifTrue_266 next_436
+	# get address of local var:cond_$54
+	sw t0, 472(sp)
+
+	# condBr cond_$54 ifTrue_28 next_49
 
 	# fetch variables
 
 	# get address of local var:cond_$54
-	ld t1, 840(sp)
-	beqz t1, next_436
-	j ifTrue_266
-next_429:
+	lw t1, 472(sp)
+	beqz t1, next_49
+	j ifTrue_28
+next_42:
 
 	# load i$30 gv4
 
@@ -7687,37 +7253,35 @@ next_429:
 	la t3, gv4
 
 	# get address of local var:i$30
-	ld t0, 0(t3)
-	sd t0, 832(sp)
+	lw t0, 0(t3)
+	sw t0, 468(sp)
 
-	# add result_$19 i$30 
+	# ADD result_$19 i$30  
 
 	# fetch variables
 
 	# get address of local var:i$30
-	ld t1, 832(sp)
+	lw t1, 468(sp)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_$19
-	sd t0, 824(sp)
+	sw t0, 464(sp)
 
-	# gv4 @result_$19
+	# store gv4 result_$19
 
 	# fetch variables
 
 	# get address of local var:result_$19
-	ld t1, 824(sp)
-
-	# store gv4 result_$19
+	lw t1, 464(sp)
 
 	# get address of gv4 points to
 	la t3, gv4
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br whileCond_169
-	j whileCond_169
-secondCond_96:
+	# br whileCond_20
+	j whileCond_20
+secondCond_22:
 
 	# load i$18 gv4
 
@@ -7725,16 +7289,16 @@ secondCond_96:
 	la t3, gv4
 
 	# get address of local var:i$18
-	ld t0, 0(t3)
-	sd t0, 816(sp)
+	lw t0, 0(t3)
+	sw t0, 460(sp)
 
 	# gep get2$19 i$18
 
 	# fetch variables
 
 	# get address of local var:i$18
-	ld t1, 816(sp)
-	li t2, 8
+	lw t1, 460(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -7743,64 +7307,64 @@ secondCond_96:
 	add t0, t1, t0
 
 	# get address of local var:get2$19
-	sd t0, 808(sp)
+	sd t0, 452(sp)
 
 	# load get2$20 get2$19
 
 	# get address of get2$19 points to
-	ld t3, 808(sp)
+	ld t3, 452(sp)
 
 	# get address of local var:get2$20
-	ld t0, 0(t3)
-	sd t0, 800(sp)
+	lw t0, 0(t3)
+	sw t0, 448(sp)
 
-	# cmp get2$20  cond_eq_tmp_$43
+	# ICMP cond_eq_tmp_$43 get2$20  
 
 	# fetch variables
 
 	# get address of local var:get2$20
-	ld t1, 800(sp)
+	lw t1, 448(sp)
 	li t2, 94
-
-	# get address of local var:cond_eq_tmp_$43
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 792(sp)
 
-	# zext cond_tmp_$47 cond_eq_tmp_$43
+	# get address of local var:cond_eq_tmp_$43
+	sw t0, 444(sp)
+
+	#  cond_tmp_$47 cond_eq_tmp_$43
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$43
-	ld t1, 792(sp)
-
-	# get address of local var:cond_tmp_$47
+	lw t1, 444(sp)
 	mv t0, t1
-	sd t0, 784(sp)
 
-	# cmp cond_tmp_$47  cond_$47
+	# get address of local var:cond_tmp_$47
+	sw t0, 440(sp)
+
+	# ICMP cond_$47 cond_tmp_$47  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$47
-	ld t1, 784(sp)
+	lw t1, 440(sp)
 	li t2, 0
-
-	# get address of local var:cond_$47
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 776(sp)
 
-	# condBr cond_$47 ifTrue_259 ifFalse_100
+	# get address of local var:cond_$47
+	sw t0, 436(sp)
+
+	# condBr cond_$47 ifTrue_21 ifFalse_6
 
 	# fetch variables
 
 	# get address of local var:cond_$47
-	ld t1, 776(sp)
-	beqz t1, ifFalse_100
-	j ifTrue_259
-secondCond_97:
+	lw t1, 436(sp)
+	beqz t1, ifFalse_6
+	j ifTrue_21
+secondCond_23:
 
 	# load i$17 gv4
 
@@ -7808,16 +7372,16 @@ secondCond_97:
 	la t3, gv4
 
 	# get address of local var:i$17
-	ld t0, 0(t3)
-	sd t0, 768(sp)
+	lw t0, 0(t3)
+	sw t0, 432(sp)
 
 	# gep get2$17 i$17
 
 	# fetch variables
 
 	# get address of local var:i$17
-	ld t1, 768(sp)
-	li t2, 8
+	lw t1, 432(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -7826,64 +7390,64 @@ secondCond_97:
 	add t0, t1, t0
 
 	# get address of local var:get2$17
-	sd t0, 760(sp)
+	sd t0, 424(sp)
 
 	# load get2$18 get2$17
 
 	# get address of get2$17 points to
-	ld t3, 760(sp)
+	ld t3, 424(sp)
 
 	# get address of local var:get2$18
-	ld t0, 0(t3)
-	sd t0, 752(sp)
+	lw t0, 0(t3)
+	sw t0, 420(sp)
 
-	# cmp get2$18  cond_eq_tmp_$42
+	# ICMP cond_eq_tmp_$42 get2$18  
 
 	# fetch variables
 
 	# get address of local var:get2$18
-	ld t1, 752(sp)
+	lw t1, 420(sp)
 	li t2, 37
-
-	# get address of local var:cond_eq_tmp_$42
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 744(sp)
 
-	# zext cond_tmp_$46 cond_eq_tmp_$42
+	# get address of local var:cond_eq_tmp_$42
+	sw t0, 416(sp)
+
+	#  cond_tmp_$46 cond_eq_tmp_$42
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$42
-	ld t1, 744(sp)
-
-	# get address of local var:cond_tmp_$46
+	lw t1, 416(sp)
 	mv t0, t1
-	sd t0, 736(sp)
 
-	# cmp cond_tmp_$46  cond_$46
+	# get address of local var:cond_tmp_$46
+	sw t0, 412(sp)
+
+	# ICMP cond_$46 cond_tmp_$46  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$46
-	ld t1, 736(sp)
+	lw t1, 412(sp)
 	li t2, 0
-
-	# get address of local var:cond_$46
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 728(sp)
 
-	# condBr cond_$46 ifTrue_259 secondCond_96
+	# get address of local var:cond_$46
+	sw t0, 408(sp)
+
+	# condBr cond_$46 ifTrue_21 secondCond_22
 
 	# fetch variables
 
 	# get address of local var:cond_$46
-	ld t1, 728(sp)
-	beqz t1, secondCond_96
-	j ifTrue_259
-secondCond_98:
+	lw t1, 408(sp)
+	beqz t1, secondCond_22
+	j ifTrue_21
+secondCond_24:
 
 	# load i$16 gv4
 
@@ -7891,16 +7455,16 @@ secondCond_98:
 	la t3, gv4
 
 	# get address of local var:i$16
-	ld t0, 0(t3)
-	sd t0, 720(sp)
+	lw t0, 0(t3)
+	sw t0, 404(sp)
 
 	# gep get2$15 i$16
 
 	# fetch variables
 
 	# get address of local var:i$16
-	ld t1, 720(sp)
-	li t2, 8
+	lw t1, 404(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -7909,64 +7473,64 @@ secondCond_98:
 	add t0, t1, t0
 
 	# get address of local var:get2$15
-	sd t0, 712(sp)
+	sd t0, 396(sp)
 
 	# load get2$16 get2$15
 
 	# get address of get2$15 points to
-	ld t3, 712(sp)
+	ld t3, 396(sp)
 
 	# get address of local var:get2$16
-	ld t0, 0(t3)
-	sd t0, 704(sp)
+	lw t0, 0(t3)
+	sw t0, 392(sp)
 
-	# cmp get2$16  cond_eq_tmp_$41
+	# ICMP cond_eq_tmp_$41 get2$16  
 
 	# fetch variables
 
 	# get address of local var:get2$16
-	ld t1, 704(sp)
+	lw t1, 392(sp)
 	li t2, 47
-
-	# get address of local var:cond_eq_tmp_$41
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 696(sp)
 
-	# zext cond_tmp_$45 cond_eq_tmp_$41
+	# get address of local var:cond_eq_tmp_$41
+	sw t0, 388(sp)
+
+	#  cond_tmp_$45 cond_eq_tmp_$41
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$41
-	ld t1, 696(sp)
-
-	# get address of local var:cond_tmp_$45
+	lw t1, 388(sp)
 	mv t0, t1
-	sd t0, 688(sp)
 
-	# cmp cond_tmp_$45  cond_$45
+	# get address of local var:cond_tmp_$45
+	sw t0, 384(sp)
+
+	# ICMP cond_$45 cond_tmp_$45  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$45
-	ld t1, 688(sp)
+	lw t1, 384(sp)
 	li t2, 0
-
-	# get address of local var:cond_$45
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 680(sp)
 
-	# condBr cond_$45 ifTrue_259 secondCond_97
+	# get address of local var:cond_$45
+	sw t0, 380(sp)
+
+	# condBr cond_$45 ifTrue_21 secondCond_23
 
 	# fetch variables
 
 	# get address of local var:cond_$45
-	ld t1, 680(sp)
-	beqz t1, secondCond_97
-	j ifTrue_259
-secondCond_99:
+	lw t1, 380(sp)
+	beqz t1, secondCond_23
+	j ifTrue_21
+secondCond_25:
 
 	# load i$15 gv4
 
@@ -7974,16 +7538,16 @@ secondCond_99:
 	la t3, gv4
 
 	# get address of local var:i$15
-	ld t0, 0(t3)
-	sd t0, 672(sp)
+	lw t0, 0(t3)
+	sw t0, 376(sp)
 
 	# gep get2$13 i$15
 
 	# fetch variables
 
 	# get address of local var:i$15
-	ld t1, 672(sp)
-	li t2, 8
+	lw t1, 376(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -7992,64 +7556,64 @@ secondCond_99:
 	add t0, t1, t0
 
 	# get address of local var:get2$13
-	sd t0, 664(sp)
+	sd t0, 368(sp)
 
 	# load get2$14 get2$13
 
 	# get address of get2$13 points to
-	ld t3, 664(sp)
+	ld t3, 368(sp)
 
 	# get address of local var:get2$14
-	ld t0, 0(t3)
-	sd t0, 656(sp)
+	lw t0, 0(t3)
+	sw t0, 364(sp)
 
-	# cmp get2$14  cond_eq_tmp_$40
+	# ICMP cond_eq_tmp_$40 get2$14  
 
 	# fetch variables
 
 	# get address of local var:get2$14
-	ld t1, 656(sp)
+	lw t1, 364(sp)
 	li t2, 42
-
-	# get address of local var:cond_eq_tmp_$40
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 648(sp)
 
-	# zext cond_tmp_$44 cond_eq_tmp_$40
+	# get address of local var:cond_eq_tmp_$40
+	sw t0, 360(sp)
+
+	#  cond_tmp_$44 cond_eq_tmp_$40
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$40
-	ld t1, 648(sp)
-
-	# get address of local var:cond_tmp_$44
+	lw t1, 360(sp)
 	mv t0, t1
-	sd t0, 640(sp)
 
-	# cmp cond_tmp_$44  cond_$44
+	# get address of local var:cond_tmp_$44
+	sw t0, 356(sp)
+
+	# ICMP cond_$44 cond_tmp_$44  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$44
-	ld t1, 640(sp)
+	lw t1, 356(sp)
 	li t2, 0
-
-	# get address of local var:cond_$44
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 632(sp)
 
-	# condBr cond_$44 ifTrue_259 secondCond_98
+	# get address of local var:cond_$44
+	sw t0, 352(sp)
+
+	# condBr cond_$44 ifTrue_21 secondCond_24
 
 	# fetch variables
 
 	# get address of local var:cond_$44
-	ld t1, 632(sp)
-	beqz t1, secondCond_98
-	j ifTrue_259
-secondCond_100:
+	lw t1, 352(sp)
+	beqz t1, secondCond_24
+	j ifTrue_21
+secondCond_26:
 
 	# load i$14 gv4
 
@@ -8057,16 +7621,16 @@ secondCond_100:
 	la t3, gv4
 
 	# get address of local var:i$14
-	ld t0, 0(t3)
-	sd t0, 624(sp)
+	lw t0, 0(t3)
+	sw t0, 348(sp)
 
 	# gep get2$11 i$14
 
 	# fetch variables
 
 	# get address of local var:i$14
-	ld t1, 624(sp)
-	li t2, 8
+	lw t1, 348(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -8075,119 +7639,117 @@ secondCond_100:
 	add t0, t1, t0
 
 	# get address of local var:get2$11
-	sd t0, 616(sp)
+	sd t0, 340(sp)
 
 	# load get2$12 get2$11
 
 	# get address of get2$11 points to
-	ld t3, 616(sp)
+	ld t3, 340(sp)
 
 	# get address of local var:get2$12
-	ld t0, 0(t3)
-	sd t0, 608(sp)
+	lw t0, 0(t3)
+	sw t0, 336(sp)
 
-	# cmp get2$12  cond_eq_tmp_$39
+	# ICMP cond_eq_tmp_$39 get2$12  
 
 	# fetch variables
 
 	# get address of local var:get2$12
-	ld t1, 608(sp)
+	lw t1, 336(sp)
 	li t2, 45
-
-	# get address of local var:cond_eq_tmp_$39
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 600(sp)
 
-	# zext cond_tmp_$43 cond_eq_tmp_$39
+	# get address of local var:cond_eq_tmp_$39
+	sw t0, 332(sp)
+
+	#  cond_tmp_$43 cond_eq_tmp_$39
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$39
-	ld t1, 600(sp)
-
-	# get address of local var:cond_tmp_$43
+	lw t1, 332(sp)
 	mv t0, t1
-	sd t0, 592(sp)
 
-	# cmp cond_tmp_$43  cond_$43
+	# get address of local var:cond_tmp_$43
+	sw t0, 328(sp)
+
+	# ICMP cond_$43 cond_tmp_$43  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$43
-	ld t1, 592(sp)
+	lw t1, 328(sp)
 	li t2, 0
-
-	# get address of local var:cond_$43
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 584(sp)
 
-	# condBr cond_$43 ifTrue_259 secondCond_99
+	# get address of local var:cond_$43
+	sw t0, 324(sp)
+
+	# condBr cond_$43 ifTrue_21 secondCond_25
 
 	# fetch variables
 
 	# get address of local var:cond_$43
-	ld t1, 584(sp)
-	beqz t1, secondCond_99
-	j ifTrue_259
-ifTrue_260:
+	lw t1, 324(sp)
+	beqz t1, secondCond_25
+	j ifTrue_21
+ifTrue_22:
 
 	# load a lv$2
 
 	# get address of lv$2 points to
-	li t4, 3248
+	li t4, 1872
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:a
-	ld t0, 0(t3)
-	sd t0, 576(sp)
+	lw t0, 0(t3)
+	sw t0, 320(sp)
 
 	# load b lv$3
 
 	# get address of lv$3 points to
-	li t4, 3264
+	li t4, 1884
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:b
-	ld t0, 0(t3)
-	sd t0, 568(sp)
+	lw t0, 0(t3)
+	sw t0, 316(sp)
 
-	# add result_$7 a b
+	# ADD result_$7 a b 
 
 	# fetch variables
 
 	# get address of local var:a
-	ld t1, 576(sp)
+	lw t1, 320(sp)
 
 	# get address of local var:b
-	ld t2, 568(sp)
+	lw t2, 316(sp)
 	add t0, t1, t2
 
 	# get address of local var:result_$7
-	sd t0, 560(sp)
+	sw t0, 312(sp)
 
-	# lv$4 result_$7
+	# store lv$4 result_$7
 
 	# fetch variables
 
 	# get address of local var:result_$7
-	ld t1, 560(sp)
-
-	# store lv$4 result_$7
+	lw t1, 312(sp)
 
 	# get address of lv$4 points to
-	li t4, 3280
+	li t4, 1896
 	add t4, sp, t4
 	ld t3, 0(t4)
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br next_430
-	j next_430
-next_430:
+	# br next_43
+	j next_43
+next_43:
 
 	# load i$20 gv4
 
@@ -8195,16 +7757,16 @@ next_430:
 	la t3, gv4
 
 	# get address of local var:i$20
-	ld t0, 0(t3)
-	sd t0, 552(sp)
+	lw t0, 0(t3)
+	sw t0, 308(sp)
 
 	# gep get2$23 i$20
 
 	# fetch variables
 
 	# get address of local var:i$20
-	ld t1, 552(sp)
-	li t2, 8
+	lw t1, 308(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -8213,119 +7775,117 @@ next_430:
 	add t0, t1, t0
 
 	# get address of local var:get2$23
-	sd t0, 544(sp)
+	sd t0, 300(sp)
 
 	# load get2$24 get2$23
 
 	# get address of get2$23 points to
-	ld t3, 544(sp)
+	ld t3, 300(sp)
 
 	# get address of local var:get2$24
-	ld t0, 0(t3)
-	sd t0, 536(sp)
+	lw t0, 0(t3)
+	sw t0, 296(sp)
 
-	# cmp get2$24  cond_eq_tmp_$45
+	# ICMP cond_eq_tmp_$45 get2$24  
 
 	# fetch variables
 
 	# get address of local var:get2$24
-	ld t1, 536(sp)
+	lw t1, 296(sp)
 	li t2, 45
-
-	# get address of local var:cond_eq_tmp_$45
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 528(sp)
 
-	# zext cond_tmp_$49 cond_eq_tmp_$45
+	# get address of local var:cond_eq_tmp_$45
+	sw t0, 292(sp)
+
+	#  cond_tmp_$49 cond_eq_tmp_$45
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$45
-	ld t1, 528(sp)
-
-	# get address of local var:cond_tmp_$49
+	lw t1, 292(sp)
 	mv t0, t1
-	sd t0, 520(sp)
 
-	# cmp cond_tmp_$49  cond_$49
+	# get address of local var:cond_tmp_$49
+	sw t0, 288(sp)
+
+	# ICMP cond_$49 cond_tmp_$49  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$49
-	ld t1, 520(sp)
+	lw t1, 288(sp)
 	li t2, 0
-
-	# get address of local var:cond_$49
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 512(sp)
 
-	# condBr cond_$49 ifTrue_261 next_431
+	# get address of local var:cond_$49
+	sw t0, 284(sp)
+
+	# condBr cond_$49 ifTrue_23 next_44
 
 	# fetch variables
 
 	# get address of local var:cond_$49
-	ld t1, 512(sp)
-	beqz t1, next_431
-	j ifTrue_261
-ifTrue_261:
+	lw t1, 284(sp)
+	beqz t1, next_44
+	j ifTrue_23
+ifTrue_23:
 
 	# load b$1 lv$3
 
 	# get address of lv$3 points to
-	li t4, 3264
+	li t4, 1884
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:b$1
-	ld t0, 0(t3)
-	sd t0, 504(sp)
+	lw t0, 0(t3)
+	sw t0, 280(sp)
 
 	# load a$1 lv$2
 
 	# get address of lv$2 points to
-	li t4, 3248
+	li t4, 1872
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:a$1
-	ld t0, 0(t3)
-	sd t0, 496(sp)
+	lw t0, 0(t3)
+	sw t0, 276(sp)
 
-	# sub result_$8 b$1 a$1
+	# SUB result_$8 b$1 a$1 
 
 	# fetch variables
 
 	# get address of local var:b$1
-	ld t1, 504(sp)
+	lw t1, 280(sp)
 
 	# get address of local var:a$1
-	ld t2, 496(sp)
+	lw t2, 276(sp)
+	sub t0, t1, t2
 
 	# get address of local var:result_$8
-	sub t0, t1, t2
-	sd t0, 488(sp)
+	sw t0, 272(sp)
 
-	# lv$4 result_$8
+	# store lv$4 result_$8
 
 	# fetch variables
 
 	# get address of local var:result_$8
-	ld t1, 488(sp)
-
-	# store lv$4 result_$8
+	lw t1, 272(sp)
 
 	# get address of lv$4 points to
-	li t4, 3280
+	li t4, 1896
 	add t4, sp, t4
 	ld t3, 0(t4)
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br next_431
-	j next_431
-next_431:
+	# br next_44
+	j next_44
+next_44:
 
 	# load i$21 gv4
 
@@ -8333,16 +7893,16 @@ next_431:
 	la t3, gv4
 
 	# get address of local var:i$21
-	ld t0, 0(t3)
-	sd t0, 480(sp)
+	lw t0, 0(t3)
+	sw t0, 268(sp)
 
 	# gep get2$25 i$21
 
 	# fetch variables
 
 	# get address of local var:i$21
-	ld t1, 480(sp)
-	li t2, 8
+	lw t1, 268(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -8351,119 +7911,117 @@ next_431:
 	add t0, t1, t0
 
 	# get address of local var:get2$25
-	sd t0, 472(sp)
+	sd t0, 260(sp)
 
 	# load get2$26 get2$25
 
 	# get address of get2$25 points to
-	ld t3, 472(sp)
+	ld t3, 260(sp)
 
 	# get address of local var:get2$26
-	ld t0, 0(t3)
-	sd t0, 464(sp)
+	lw t0, 0(t3)
+	sw t0, 256(sp)
 
-	# cmp get2$26  cond_eq_tmp_$46
+	# ICMP cond_eq_tmp_$46 get2$26  
 
 	# fetch variables
 
 	# get address of local var:get2$26
-	ld t1, 464(sp)
+	lw t1, 256(sp)
 	li t2, 42
-
-	# get address of local var:cond_eq_tmp_$46
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 456(sp)
 
-	# zext cond_tmp_$50 cond_eq_tmp_$46
+	# get address of local var:cond_eq_tmp_$46
+	sw t0, 252(sp)
+
+	#  cond_tmp_$50 cond_eq_tmp_$46
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$46
-	ld t1, 456(sp)
-
-	# get address of local var:cond_tmp_$50
+	lw t1, 252(sp)
 	mv t0, t1
-	sd t0, 448(sp)
 
-	# cmp cond_tmp_$50  cond_$50
+	# get address of local var:cond_tmp_$50
+	sw t0, 248(sp)
+
+	# ICMP cond_$50 cond_tmp_$50  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$50
-	ld t1, 448(sp)
+	lw t1, 248(sp)
 	li t2, 0
-
-	# get address of local var:cond_$50
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 440(sp)
 
-	# condBr cond_$50 ifTrue_262 next_432
+	# get address of local var:cond_$50
+	sw t0, 244(sp)
+
+	# condBr cond_$50 ifTrue_24 next_45
 
 	# fetch variables
 
 	# get address of local var:cond_$50
-	ld t1, 440(sp)
-	beqz t1, next_432
-	j ifTrue_262
-ifTrue_262:
+	lw t1, 244(sp)
+	beqz t1, next_45
+	j ifTrue_24
+ifTrue_24:
 
 	# load a$2 lv$2
 
 	# get address of lv$2 points to
-	li t4, 3248
+	li t4, 1872
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:a$2
-	ld t0, 0(t3)
-	sd t0, 432(sp)
+	lw t0, 0(t3)
+	sw t0, 240(sp)
 
 	# load b$2 lv$3
 
 	# get address of lv$3 points to
-	li t4, 3264
+	li t4, 1884
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:b$2
-	ld t0, 0(t3)
-	sd t0, 424(sp)
+	lw t0, 0(t3)
+	sw t0, 236(sp)
 
-	# mul result_$9 a$2 b$2
+	# MUL result_$9 a$2 b$2 
 
 	# fetch variables
 
 	# get address of local var:a$2
-	ld t1, 432(sp)
+	lw t1, 240(sp)
 
 	# get address of local var:b$2
-	ld t2, 424(sp)
+	lw t2, 236(sp)
+	mul t0, t1, t2
 
 	# get address of local var:result_$9
-	mul t0, t1, t2
-	sd t0, 416(sp)
+	sw t0, 232(sp)
 
-	# lv$4 result_$9
+	# store lv$4 result_$9
 
 	# fetch variables
 
 	# get address of local var:result_$9
-	ld t1, 416(sp)
-
-	# store lv$4 result_$9
+	lw t1, 232(sp)
 
 	# get address of lv$4 points to
-	li t4, 3280
+	li t4, 1896
 	add t4, sp, t4
 	ld t3, 0(t4)
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br next_432
-	j next_432
-next_432:
+	# br next_45
+	j next_45
+next_45:
 
 	# load i$22 gv4
 
@@ -8471,16 +8029,16 @@ next_432:
 	la t3, gv4
 
 	# get address of local var:i$22
-	ld t0, 0(t3)
-	sd t0, 408(sp)
+	lw t0, 0(t3)
+	sw t0, 228(sp)
 
 	# gep get2$27 i$22
 
 	# fetch variables
 
 	# get address of local var:i$22
-	ld t1, 408(sp)
-	li t2, 8
+	lw t1, 228(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -8489,119 +8047,117 @@ next_432:
 	add t0, t1, t0
 
 	# get address of local var:get2$27
-	sd t0, 400(sp)
+	sd t0, 220(sp)
 
 	# load get2$28 get2$27
 
 	# get address of get2$27 points to
-	ld t3, 400(sp)
+	ld t3, 220(sp)
 
 	# get address of local var:get2$28
-	ld t0, 0(t3)
-	sd t0, 392(sp)
+	lw t0, 0(t3)
+	sw t0, 216(sp)
 
-	# cmp get2$28  cond_eq_tmp_$47
+	# ICMP cond_eq_tmp_$47 get2$28  
 
 	# fetch variables
 
 	# get address of local var:get2$28
-	ld t1, 392(sp)
+	lw t1, 216(sp)
 	li t2, 47
-
-	# get address of local var:cond_eq_tmp_$47
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 384(sp)
 
-	# zext cond_tmp_$51 cond_eq_tmp_$47
+	# get address of local var:cond_eq_tmp_$47
+	sw t0, 212(sp)
+
+	#  cond_tmp_$51 cond_eq_tmp_$47
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$47
-	ld t1, 384(sp)
-
-	# get address of local var:cond_tmp_$51
+	lw t1, 212(sp)
 	mv t0, t1
-	sd t0, 376(sp)
 
-	# cmp cond_tmp_$51  cond_$51
+	# get address of local var:cond_tmp_$51
+	sw t0, 208(sp)
+
+	# ICMP cond_$51 cond_tmp_$51  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$51
-	ld t1, 376(sp)
+	lw t1, 208(sp)
 	li t2, 0
-
-	# get address of local var:cond_$51
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 368(sp)
 
-	# condBr cond_$51 ifTrue_263 next_433
+	# get address of local var:cond_$51
+	sw t0, 204(sp)
+
+	# condBr cond_$51 ifTrue_25 next_46
 
 	# fetch variables
 
 	# get address of local var:cond_$51
-	ld t1, 368(sp)
-	beqz t1, next_433
-	j ifTrue_263
-ifTrue_263:
+	lw t1, 204(sp)
+	beqz t1, next_46
+	j ifTrue_25
+ifTrue_25:
 
 	# load b$3 lv$3
 
 	# get address of lv$3 points to
-	li t4, 3264
+	li t4, 1884
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:b$3
-	ld t0, 0(t3)
-	sd t0, 360(sp)
+	lw t0, 0(t3)
+	sw t0, 200(sp)
 
 	# load a$3 lv$2
 
 	# get address of lv$2 points to
-	li t4, 3248
+	li t4, 1872
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:a$3
-	ld t0, 0(t3)
-	sd t0, 352(sp)
+	lw t0, 0(t3)
+	sw t0, 196(sp)
 
-	# div result_$10 b$3 a$3
+	# DIV result_$10 b$3 a$3 
 
 	# fetch variables
 
 	# get address of local var:b$3
-	ld t1, 360(sp)
+	lw t1, 200(sp)
 
 	# get address of local var:a$3
-	ld t2, 352(sp)
+	lw t2, 196(sp)
+	div t0, t1, t2
 
 	# get address of local var:result_$10
-	div t0, t1, t2
-	sd t0, 344(sp)
+	sw t0, 192(sp)
 
-	# lv$4 result_$10
+	# store lv$4 result_$10
 
 	# fetch variables
 
 	# get address of local var:result_$10
-	ld t1, 344(sp)
-
-	# store lv$4 result_$10
+	lw t1, 192(sp)
 
 	# get address of lv$4 points to
-	li t4, 3280
+	li t4, 1896
 	add t4, sp, t4
 	ld t3, 0(t4)
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br next_433
-	j next_433
-next_433:
+	# br next_46
+	j next_46
+next_46:
 
 	# load i$23 gv4
 
@@ -8609,16 +8165,16 @@ next_433:
 	la t3, gv4
 
 	# get address of local var:i$23
-	ld t0, 0(t3)
-	sd t0, 336(sp)
+	lw t0, 0(t3)
+	sw t0, 188(sp)
 
 	# gep get2$29 i$23
 
 	# fetch variables
 
 	# get address of local var:i$23
-	ld t1, 336(sp)
-	li t2, 8
+	lw t1, 188(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -8627,119 +8183,117 @@ next_433:
 	add t0, t1, t0
 
 	# get address of local var:get2$29
-	sd t0, 328(sp)
+	sd t0, 180(sp)
 
 	# load get2$30 get2$29
 
 	# get address of get2$29 points to
-	ld t3, 328(sp)
+	ld t3, 180(sp)
 
 	# get address of local var:get2$30
-	ld t0, 0(t3)
-	sd t0, 320(sp)
+	lw t0, 0(t3)
+	sw t0, 176(sp)
 
-	# cmp get2$30  cond_eq_tmp_$48
+	# ICMP cond_eq_tmp_$48 get2$30  
 
 	# fetch variables
 
 	# get address of local var:get2$30
-	ld t1, 320(sp)
+	lw t1, 176(sp)
 	li t2, 37
-
-	# get address of local var:cond_eq_tmp_$48
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 312(sp)
 
-	# zext cond_tmp_$52 cond_eq_tmp_$48
+	# get address of local var:cond_eq_tmp_$48
+	sw t0, 172(sp)
+
+	#  cond_tmp_$52 cond_eq_tmp_$48
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$48
-	ld t1, 312(sp)
-
-	# get address of local var:cond_tmp_$52
+	lw t1, 172(sp)
 	mv t0, t1
-	sd t0, 304(sp)
 
-	# cmp cond_tmp_$52  cond_$52
+	# get address of local var:cond_tmp_$52
+	sw t0, 168(sp)
+
+	# ICMP cond_$52 cond_tmp_$52  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$52
-	ld t1, 304(sp)
+	lw t1, 168(sp)
 	li t2, 0
-
-	# get address of local var:cond_$52
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 296(sp)
 
-	# condBr cond_$52 ifTrue_264 next_434
+	# get address of local var:cond_$52
+	sw t0, 164(sp)
+
+	# condBr cond_$52 ifTrue_26 next_47
 
 	# fetch variables
 
 	# get address of local var:cond_$52
-	ld t1, 296(sp)
-	beqz t1, next_434
-	j ifTrue_264
-ifTrue_264:
+	lw t1, 164(sp)
+	beqz t1, next_47
+	j ifTrue_26
+ifTrue_26:
 
 	# load b$4 lv$3
 
 	# get address of lv$3 points to
-	li t4, 3264
+	li t4, 1884
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:b$4
-	ld t0, 0(t3)
-	sd t0, 288(sp)
+	lw t0, 0(t3)
+	sw t0, 160(sp)
 
 	# load a$4 lv$2
 
 	# get address of lv$2 points to
-	li t4, 3248
+	li t4, 1872
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:a$4
-	ld t0, 0(t3)
-	sd t0, 280(sp)
+	lw t0, 0(t3)
+	sw t0, 156(sp)
 
-	# mod result_$11 b$4 a$4
+	# MOD result_$11 b$4 a$4 
 
 	# fetch variables
 
 	# get address of local var:b$4
-	ld t1, 288(sp)
+	lw t1, 160(sp)
 
 	# get address of local var:a$4
-	ld t2, 280(sp)
+	lw t2, 156(sp)
+	rem t0, t1, t2
 
 	# get address of local var:result_$11
-	rem t0, t1, t2
-	sd t0, 272(sp)
+	sw t0, 152(sp)
 
-	# lv$4 result_$11
+	# store lv$4 result_$11
 
 	# fetch variables
 
 	# get address of local var:result_$11
-	ld t1, 272(sp)
-
-	# store lv$4 result_$11
+	lw t1, 152(sp)
 
 	# get address of lv$4 points to
-	li t4, 3280
+	li t4, 1896
 	add t4, sp, t4
 	ld t3, 0(t4)
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br next_434
-	j next_434
-next_434:
+	# br next_47
+	j next_47
+next_47:
 
 	# load i$24 gv4
 
@@ -8747,16 +8301,16 @@ next_434:
 	la t3, gv4
 
 	# get address of local var:i$24
-	ld t0, 0(t3)
-	sd t0, 264(sp)
+	lw t0, 0(t3)
+	sw t0, 148(sp)
 
 	# gep get2$31 i$24
 
 	# fetch variables
 
 	# get address of local var:i$24
-	ld t1, 264(sp)
-	li t2, 8
+	lw t1, 148(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -8765,101 +8319,102 @@ next_434:
 	add t0, t1, t0
 
 	# get address of local var:get2$31
-	sd t0, 256(sp)
+	sd t0, 140(sp)
 
 	# load get2$32 get2$31
 
 	# get address of get2$31 points to
-	ld t3, 256(sp)
+	ld t3, 140(sp)
 
 	# get address of local var:get2$32
-	ld t0, 0(t3)
-	sd t0, 248(sp)
+	lw t0, 0(t3)
+	sw t0, 136(sp)
 
-	# cmp get2$32  cond_eq_tmp_$49
+	# ICMP cond_eq_tmp_$49 get2$32  
 
 	# fetch variables
 
 	# get address of local var:get2$32
-	ld t1, 248(sp)
+	lw t1, 136(sp)
 	li t2, 94
-
-	# get address of local var:cond_eq_tmp_$49
 	xor t0, t1, t2
 	seqz t0, t0
-	sd t0, 240(sp)
 
-	# zext cond_tmp_$53 cond_eq_tmp_$49
+	# get address of local var:cond_eq_tmp_$49
+	sw t0, 132(sp)
+
+	#  cond_tmp_$53 cond_eq_tmp_$49
 
 	# fetch variables
 
 	# get address of local var:cond_eq_tmp_$49
-	ld t1, 240(sp)
-
-	# get address of local var:cond_tmp_$53
+	lw t1, 132(sp)
 	mv t0, t1
-	sd t0, 232(sp)
 
-	# cmp cond_tmp_$53  cond_$53
+	# get address of local var:cond_tmp_$53
+	sw t0, 128(sp)
+
+	# ICMP cond_$53 cond_tmp_$53  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$53
-	ld t1, 232(sp)
+	lw t1, 128(sp)
 	li t2, 0
-
-	# get address of local var:cond_$53
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 224(sp)
 
-	# condBr cond_$53 ifTrue_265 next_435
+	# get address of local var:cond_$53
+	sw t0, 124(sp)
+
+	# condBr cond_$53 ifTrue_27 next_48
 
 	# fetch variables
 
 	# get address of local var:cond_$53
-	ld t1, 224(sp)
-	beqz t1, next_435
-	j ifTrue_265
-ifTrue_265:
+	lw t1, 124(sp)
+	beqz t1, next_48
+	j ifTrue_27
+ifTrue_27:
 
 	# load b$5 lv$3
 
 	# get address of lv$3 points to
-	li t4, 3264
+	li t4, 1884
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:b$5
-	ld t0, 0(t3)
-	sd t0, 216(sp)
+	lw t0, 0(t3)
+	sw t0, 120(sp)
 
 	# load a$5 lv$2
 
 	# get address of lv$2 points to
-	li t4, 3248
+	li t4, 1872
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:a$5
-	ld t0, 0(t3)
-	sd t0, 208(sp)
+	lw t0, 0(t3)
+	sw t0, 116(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:b$5
-	ld t1, 216(sp)
+	lw t1, 120(sp)
 	mv a0, t1
 
 	# fetch variables
 
 	# get address of local var:a$5
-	ld t1, 208(sp)
+	lw t1, 116(sp)
 	mv a1, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8873,49 +8428,49 @@ ifTrue_265:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:power
-	sd a0, 200(sp)
+	sw a0, 112(sp)
 
-	# lv$4 power
+	# store lv$4 power
 
 	# fetch variables
 
 	# get address of local var:power
-	ld t1, 200(sp)
-
-	# store lv$4 power
+	lw t1, 112(sp)
 
 	# get address of lv$4 points to
-	li t4, 3280
+	li t4, 1896
 	add t4, sp, t4
 	ld t3, 0(t4)
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br next_435
-	j next_435
-next_435:
+	# br next_48
+	j next_48
+next_48:
 
 	# load c$3 lv$4
 
 	# get address of lv$4 points to
-	li t4, 3280
+	li t4, 1896
 	add t4, sp, t4
 	ld t3, 0(t4)
 
 	# get address of local var:c$3
-	ld t0, 0(t3)
-	sd t0, 192(sp)
+	lw t0, 0(t3)
+	sw t0, 108(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:c$3
-	ld t1, 192(sp)
+	lw t1, 108(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8929,11 +8484,12 @@ next_435:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
-	# br next_429
-	j next_429
-ifTrue_266:
+	# br next_42
+	j next_42
+ifTrue_28:
 
 	# load i$26 gv4
 
@@ -8941,16 +8497,16 @@ ifTrue_266:
 	la t3, gv4
 
 	# get address of local var:i$26
-	ld t0, 0(t3)
-	sd t0, 184(sp)
+	lw t0, 0(t3)
+	sw t0, 104(sp)
 
 	# gep get2$35 i$26
 
 	# fetch variables
 
 	# get address of local var:i$26
-	ld t1, 184(sp)
-	li t2, 8
+	lw t1, 104(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -8959,37 +8515,38 @@ ifTrue_266:
 	add t0, t1, t0
 
 	# get address of local var:get2$35
-	sd t0, 176(sp)
+	sd t0, 96(sp)
 
 	# load get2$36 get2$35
 
 	# get address of get2$35 points to
-	ld t3, 176(sp)
+	ld t3, 96(sp)
 
 	# get address of local var:get2$36
-	ld t0, 0(t3)
-	sd t0, 168(sp)
+	lw t0, 0(t3)
+	sw t0, 92(sp)
 
-	# sub result_$12 get2$36 
+	# SUB result_$12 get2$36  
 
 	# fetch variables
 
 	# get address of local var:get2$36
-	ld t1, 168(sp)
+	lw t1, 92(sp)
 	li t2, 48
+	sub t0, t1, t2
 
 	# get address of local var:result_$12
-	sub t0, t1, t2
-	sd t0, 160(sp)
+	sw t0, 88(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:result_$12
-	ld t1, 160(sp)
+	lw t1, 88(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9003,26 +8560,25 @@ ifTrue_266:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
-	# gv5 @
+	# store gv5 
 
 	# fetch variables
 	li t1, 1
 
-	# store gv5 
-
 	# get address of gv5 points to
 	la t3, gv5
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br whileCond_170
-	j whileCond_170
-next_436:
+	# br whileCond_21
+	j whileCond_21
+next_49:
 
-	# br next_429
-	j next_429
-whileCond_170:
+	# br next_42
+	j next_42
+whileCond_21:
 
 	# load i$27 gv4
 
@@ -9030,8 +8586,8 @@ whileCond_170:
 	la t3, gv4
 
 	# get address of local var:i$27
-	ld t0, 0(t3)
-	sd t0, 152(sp)
+	lw t0, 0(t3)
+	sw t0, 84(sp)
 
 	# load ii$11 gv5
 
@@ -9039,30 +8595,30 @@ whileCond_170:
 	la t3, gv5
 
 	# get address of local var:ii$11
-	ld t0, 0(t3)
-	sd t0, 144(sp)
+	lw t0, 0(t3)
+	sw t0, 80(sp)
 
-	# add result_$13 i$27 ii$11
+	# ADD result_$13 i$27 ii$11 
 
 	# fetch variables
 
 	# get address of local var:i$27
-	ld t1, 152(sp)
+	lw t1, 84(sp)
 
 	# get address of local var:ii$11
-	ld t2, 144(sp)
+	lw t2, 80(sp)
 	add t0, t1, t2
 
 	# get address of local var:result_$13
-	sd t0, 136(sp)
+	sw t0, 76(sp)
 
 	# gep get2$37 result_$13
 
 	# fetch variables
 
 	# get address of local var:result_$13
-	ld t1, 136(sp)
-	li t2, 8
+	lw t1, 76(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -9071,65 +8627,65 @@ whileCond_170:
 	add t0, t1, t0
 
 	# get address of local var:get2$37
-	sd t0, 128(sp)
+	sd t0, 68(sp)
 
 	# load get2$38 get2$37
 
 	# get address of get2$37 points to
-	ld t3, 128(sp)
+	ld t3, 68(sp)
 
 	# get address of local var:get2$38
-	ld t0, 0(t3)
-	sd t0, 120(sp)
+	lw t0, 0(t3)
+	sw t0, 64(sp)
 
-	# cmp get2$38  cond_neq_tmp_$3
+	# ICMP cond_neq_tmp_$3 get2$38  
 
 	# fetch variables
 
 	# get address of local var:get2$38
-	ld t1, 120(sp)
+	lw t1, 64(sp)
 	li t2, 32
-
-	# get address of local var:cond_neq_tmp_$3
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 112(sp)
 
-	# zext cond_tmp_$55 cond_neq_tmp_$3
+	# get address of local var:cond_neq_tmp_$3
+	sw t0, 60(sp)
+
+	#  cond_tmp_$55 cond_neq_tmp_$3
 
 	# fetch variables
 
 	# get address of local var:cond_neq_tmp_$3
-	ld t1, 112(sp)
-
-	# get address of local var:cond_tmp_$55
+	lw t1, 60(sp)
 	mv t0, t1
-	sd t0, 104(sp)
 
-	# cmp cond_tmp_$55  cond_$55
+	# get address of local var:cond_tmp_$55
+	sw t0, 56(sp)
+
+	# ICMP cond_$55 cond_tmp_$55  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$55
-	ld t1, 104(sp)
+	lw t1, 56(sp)
 	li t2, 0
-
-	# get address of local var:cond_$55
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	sd t0, 96(sp)
 
-	# condBr cond_$55 whileBody_170 next_437
+	# get address of local var:cond_$55
+	sw t0, 52(sp)
+
+	# condBr cond_$55 whileBody_21 next_50
 
 	# fetch variables
 
 	# get address of local var:cond_$55
-	ld t1, 96(sp)
-	beqz t1, next_437
-	j whileBody_170
-whileBody_170:
+	lw t1, 52(sp)
+	beqz t1, next_50
+	j whileBody_21
+whileBody_21:
 
 	# load i$28 gv4
 
@@ -9137,8 +8693,8 @@ whileBody_170:
 	la t3, gv4
 
 	# get address of local var:i$28
-	ld t0, 0(t3)
-	sd t0, 88(sp)
+	lw t0, 0(t3)
+	sw t0, 48(sp)
 
 	# load ii$12 gv5
 
@@ -9146,30 +8702,30 @@ whileBody_170:
 	la t3, gv5
 
 	# get address of local var:ii$12
-	ld t0, 0(t3)
-	sd t0, 80(sp)
+	lw t0, 0(t3)
+	sw t0, 44(sp)
 
-	# add result_$14 i$28 ii$12
+	# ADD result_$14 i$28 ii$12 
 
 	# fetch variables
 
 	# get address of local var:i$28
-	ld t1, 88(sp)
+	lw t1, 48(sp)
 
 	# get address of local var:ii$12
-	ld t2, 80(sp)
+	lw t2, 44(sp)
 	add t0, t1, t2
 
 	# get address of local var:result_$14
-	sd t0, 72(sp)
+	sw t0, 40(sp)
 
 	# gep get2$39 result_$14
 
 	# fetch variables
 
 	# get address of local var:result_$14
-	ld t1, 72(sp)
-	li t2, 8
+	lw t1, 40(sp)
+	li t2, 4
 	mul t0, t1, t2
 
 	# get value of global var:gv8
@@ -9178,37 +8734,38 @@ whileBody_170:
 	add t0, t1, t0
 
 	# get address of local var:get2$39
-	sd t0, 64(sp)
+	sd t0, 32(sp)
 
 	# load get2$40 get2$39
 
 	# get address of get2$39 points to
-	ld t3, 64(sp)
+	ld t3, 32(sp)
 
 	# get address of local var:get2$40
-	ld t0, 0(t3)
-	sd t0, 56(sp)
+	lw t0, 0(t3)
+	sw t0, 28(sp)
 
-	# sub result_$15 get2$40 
+	# SUB result_$15 get2$40  
 
 	# fetch variables
 
 	# get address of local var:get2$40
-	ld t1, 56(sp)
+	lw t1, 28(sp)
 	li t2, 48
+	sub t0, t1, t2
 
 	# get address of local var:result_$15
-	sub t0, t1, t2
-	sd t0, 48(sp)
+	sw t0, 24(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:result_$15
-	ld t1, 48(sp)
+	lw t1, 24(sp)
 	mv a0, t1
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -9222,7 +8779,8 @@ whileBody_170:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# load ii$13 gv5
 
@@ -9230,37 +8788,35 @@ whileBody_170:
 	la t3, gv5
 
 	# get address of local var:ii$13
-	ld t0, 0(t3)
-	sd t0, 40(sp)
+	lw t0, 0(t3)
+	sw t0, 20(sp)
 
-	# add result_$16 ii$13 
+	# ADD result_$16 ii$13  
 
 	# fetch variables
 
 	# get address of local var:ii$13
-	ld t1, 40(sp)
+	lw t1, 20(sp)
 	li t2, 1
 	add t0, t1, t2
 
 	# get address of local var:result_$16
-	sd t0, 32(sp)
+	sw t0, 16(sp)
 
-	# gv5 @result_$16
+	# store gv5 result_$16
 
 	# fetch variables
 
 	# get address of local var:result_$16
-	ld t1, 32(sp)
-
-	# store gv5 result_$16
+	lw t1, 16(sp)
 
 	# get address of gv5 points to
 	la t3, gv5
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br whileCond_170
-	j whileCond_170
-next_437:
+	# br whileCond_21
+	j whileCond_21
+next_50:
 
 	# load i$29 gv4
 
@@ -9268,8 +8824,8 @@ next_437:
 	la t3, gv4
 
 	# get address of local var:i$29
-	ld t0, 0(t3)
-	sd t0, 24(sp)
+	lw t0, 0(t3)
+	sw t0, 12(sp)
 
 	# load ii$14 gv5
 
@@ -9277,57 +8833,66 @@ next_437:
 	la t3, gv5
 
 	# get address of local var:ii$14
-	ld t0, 0(t3)
-	sd t0, 16(sp)
+	lw t0, 0(t3)
+	sw t0, 8(sp)
 
-	# add result_$17 i$29 ii$14
+	# ADD result_$17 i$29 ii$14 
 
 	# fetch variables
 
 	# get address of local var:i$29
-	ld t1, 24(sp)
+	lw t1, 12(sp)
 
 	# get address of local var:ii$14
-	ld t2, 16(sp)
+	lw t2, 8(sp)
 	add t0, t1, t2
 
 	# get address of local var:result_$17
-	sd t0, 8(sp)
+	sw t0, 4(sp)
 
-	# sub result_$18 result_$17 
+	# SUB result_$18 result_$17  
 
 	# fetch variables
 
 	# get address of local var:result_$17
-	ld t1, 8(sp)
+	lw t1, 4(sp)
 	li t2, 1
+	sub t0, t1, t2
 
 	# get address of local var:result_$18
-	sub t0, t1, t2
-	sd t0, 0(sp)
+	sw t0, 0(sp)
 
-	# gv4 @result_$18
+	# store gv4 result_$18
 
 	# fetch variables
 
 	# get address of local var:result_$18
-	ld t1, 0(sp)
-
-	# store gv4 result_$18
+	lw t1, 0(sp)
 
 	# get address of gv4 points to
 	la t3, gv4
-	sd t1, 0(t3)
+	sw t1, 0(t3)
 
-	# br next_436
-	j next_436
-memset: 
+	# br next_49
+	j next_49
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
+    ret 

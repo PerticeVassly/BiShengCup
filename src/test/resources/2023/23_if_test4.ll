@@ -26,35 +26,35 @@ if_ifElse_Entry:
   %cond_eq_tmp_ = icmp eq i32 %a, 5
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_316, label %next_514
+  br i1 %cond_, label %ifTrue_284, label %next_490
 
-ifTrue_316:                                             ; pred = %if_ifElse_Entry
+ifTrue_284:                                             ; pred = %if_ifElse_Entry
   %b = load i32, i32* %lv$1, align 4
   %cond_eq_tmp_$1 = icmp eq i32 %b, 10
   %cond_tmp_$1 = zext i1 %cond_eq_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_317, label %ifFalse_122
+  br i1 %cond_$1, label %ifTrue_285, label %ifFalse_124
 
-next_514:                                               ; pred = %if_ifElse_Entry, %next_515
+next_490:                                               ; pred = %if_ifElse_Entry, %next_491
   %a$2 = load i32, i32* %lv, align 4
   ret i32 %a$2
 
-ifTrue_317:                                             ; pred = %ifTrue_316
+ifTrue_285:                                             ; pred = %ifTrue_284
   store i32 25, i32* %lv, align 4
-  br label %next_515
+  br label %next_491
 
-ifFalse_122:                                            ; pred = %ifTrue_316
+ifFalse_124:                                            ; pred = %ifTrue_284
   %a$1 = load i32, i32* %lv, align 4
   %result_ = add i32 %a$1, 15
   store i32 %result_, i32* %lv, align 4
-  br label %next_515
+  br label %next_491
 
-next_515:                                               ; pred = %ifTrue_317, %ifFalse_122
-  br label %next_514
+next_491:                                               ; pred = %ifTrue_285, %ifFalse_124
+  br label %next_490
 }
 
 define i32 @main() {
-mainEntry59:
+mainEntry53:
   %if_ifElse_ = call i32 @if_ifElse_()
   ret i32 %if_ifElse_
 }

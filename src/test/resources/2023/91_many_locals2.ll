@@ -19,7 +19,7 @@ declare void @memset(i32*, i32, i32)
 @gv = global i32 0, align 4
 
 define i32 @main() {
-mainEntry35:
+mainEntry65:
   %lv$32 = alloca i32, align 4
   %lv$31 = alloca i32, align 4
   %lv$30 = alloca i32, align 4
@@ -55,22 +55,22 @@ mainEntry35:
   %lv = alloca i32, align 4
   %getint = call i32 @getint()
   store i32 %getint, i32* %lv$30, align 4
-  br label %whileCond_154
+  br label %whileCond_233
 
-whileCond_154:                                        ; pred = %mainEntry35, %whileBody_154
+whileCond_233:                                        ; pred = %mainEntry65, %whileBody_233
   %b = load i32, i32* %lv$30, align 4
   %cond_eq_tmp_ = icmp eq i32 %b, 5
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_154, label %next_395
+  br i1 %cond_, label %whileBody_233, label %next_537
 
-whileBody_154:                                        ; pred = %whileCond_154
+whileBody_233:                                        ; pred = %whileCond_233
   %b$1 = load i32, i32* %lv$30, align 4
   %result_ = add i32 %b$1, 1
   store i32 %result_, i32* %lv$30, align 4
-  br label %whileCond_154
+  br label %whileCond_233
 
-next_395:                                             ; pred = %whileCond_154
+next_537:                                             ; pred = %whileCond_233
   store i32 0, i32* %lv, align 4
   %a0 = load i32, i32* %lv, align 4
   %result_$1 = add i32 %a0, 1

@@ -29,7 +29,7 @@ addEntry:
 }
 
 define i32 @main() {
-mainEntry13:
+mainEntry14:
   %lv$2 = alloca i32, align 4
   %lv$1 = alloca i32, align 4
   %lv = alloca i32, align 4

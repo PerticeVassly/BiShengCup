@@ -19,7 +19,7 @@ declare void @memset(i32*, i32, i32)
 @gv = global [3 x [2 x i32]] [[2 x i32] [i32 1, i32 1], [2 x i32] [i32 1, i32 1], [2 x i32] [i32 4, i32 3]], align 4
 
 define i32 @main() {
-mainEntry14:
+mainEntry6:
   %lv = alloca i32, align 4
   store i32 1, i32* %lv, align 4
   %i = load i32, i32* %lv, align 4

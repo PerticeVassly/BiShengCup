@@ -35,7 +35,7 @@ fEntry2:
 }
 
 define i32 @main() {
-mainEntry15:
+mainEntry13:
   %lv$3 = alloca [2 x [2 x i32]], align 16
   %lv$2 = alloca i32, align 4
   %lv$1 = alloca i32, align 4

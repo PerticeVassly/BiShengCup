@@ -16,23 +16,23 @@ mainEntry12:
 	# allocate lv$2
 	li t0, 112
 	add t0, sp, t0
-	li t1, 120
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$2
+	sd t0, 120(sp)
 
 	# allocate lv$1
 	li t0, 96
 	add t0, sp, t0
-	li t1, 104
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv$1
+	sd t0, 104(sp)
 
 	# allocate lv
 	li t0, 80
 	add t0, sp, t0
-	li t1, 88
-	add t1, sp, t1
-	sd t0, 0(t1)
+
+	# get address of local var:lv
+	sd t0, 88(sp)
 
 	# lv 
 
@@ -42,12 +42,8 @@ mainEntry12:
 	# store lv 
 
 	# get address of lv points to
-	li t4, 88
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 88(sp)
+	sd t1, 0(t3)
 
 	# lv$1 
 
@@ -57,12 +53,8 @@ mainEntry12:
 	# store lv$1 
 
 	# get address of lv$1 points to
-	li t4, 104
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 104(sp)
+	sd t1, 0(t3)
 
 	# lv$2 
 
@@ -72,37 +64,25 @@ mainEntry12:
 	# store lv$2 
 
 	# get address of lv$2 points to
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
-	sd t1, 0(t4)
+	ld t3, 120(sp)
+	sd t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	li t4, 88
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 88(sp)
 
 	# get address of local var:a
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 72(sp)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
-	li t4, 104
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 104(sp)
 
 	# get address of local var:b
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 64(sp)
 
 	# cmp a b cond_lt_tmp_
@@ -144,15 +124,15 @@ mainEntry12:
 	seqz t0, t0
 	sd t0, 40(sp)
 
-	# condBr cond_ secondCond_2 ifFalse_
+	# condBr cond_ secondCond_3 ifFalse_1
 
 	# fetch variables
 
 	# get address of local var:cond_
 	ld t1, 40(sp)
-	beqz t1, ifFalse_
-	j secondCond_2
-ifTrue_7:
+	beqz t1, ifFalse_1
+	j secondCond_3
+ifTrue_6:
 
 	# ret 
 
@@ -162,7 +142,7 @@ ifTrue_7:
 	li t4, 128
 	add sp, sp, t4
 	ret 
-ifFalse_:
+ifFalse_1:
 
 	# ret 
 
@@ -172,32 +152,24 @@ ifFalse_:
 	li t4, 128
 	add sp, sp, t4
 	ret 
-secondCond_2:
+secondCond_3:
 
 	# load b$1 lv$1
 
 	# get address of lv$1 points to
-	li t4, 104
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 104(sp)
 
 	# get address of local var:b$1
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 32(sp)
 
 	# load c lv$2
 
 	# get address of lv$2 points to
-	li t4, 120
-	add t4, sp, t4
-	ld t3, 0(t4)
-	li t4, 0
-	add t4, t3, t4
+	ld t3, 120(sp)
 
 	# get address of local var:c
-	ld t0, 0(t4)
+	ld t0, 0(t3)
 	sd t0, 24(sp)
 
 	# cmp b$1 c cond_lt_tmp_$1
@@ -239,14 +211,14 @@ secondCond_2:
 	seqz t0, t0
 	sd t0, 0(sp)
 
-	# condBr cond_$1 ifTrue_7 ifFalse_
+	# condBr cond_$1 ifTrue_6 ifFalse_1
 
 	# fetch variables
 
 	# get address of local var:cond_$1
 	ld t1, 0(sp)
-	beqz t1, ifFalse_
-	j ifTrue_7
+	beqz t1, ifFalse_1
+	j ifTrue_6
 memset: 
     blez    a2, .LBB0_3 
     slli    a2, a2, 2 
@@ -256,4 +228,4 @@ memset:
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 

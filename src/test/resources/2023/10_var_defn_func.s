@@ -32,23 +32,24 @@ defnEntry:
 .type main, @function
 .globl main
 main:
-mainEntry45:
+mainEntry44:
 
 	# reserve space
-	li t4, 32
+	li t4, 20
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	li t0, 16
+	li t0, 8
 	add t0, sp, t0
 
 	# get address of local var:lv
-	sd t0, 24(sp)
+	sd t0, 12(sp)
 
 	# prepare params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -62,50 +63,60 @@ mainEntry45:
 	addi sp, sp, 8
 
 	# release params
-	addi sp, sp, 0
+	li t4, 0
+	add sp, sp, t4
 
 	# get address of local var:defn
-	sd a0, 8(sp)
+	sw a0, 4(sp)
 
-	# lv defn
+	# store lv defn
 
 	# fetch variables
 
 	# get address of local var:defn
-	ld t1, 8(sp)
-
-	# store lv defn
+	lw t1, 4(sp)
 
 	# get address of lv points to
-	ld t3, 24(sp)
-	sd t1, 0(t3)
+	ld t3, 12(sp)
+	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 24(sp)
+	ld t3, 12(sp)
 
 	# get address of local var:a
-	ld t0, 0(t3)
-	sd t0, 0(sp)
+	lw t0, 0(t3)
+	sw t0, 0(sp)
 
 	# ret a
 
 	# fetch variables
 
 	# get address of local var:a
-	ld t1, 0(sp)
+	lw t1, 0(sp)
 	mv a0, t1
-	li t4, 32
+	li t4, 20
 	add sp, sp, t4
 	ret 
-memset: 
+
+memset32: 
     blez    a2, .LBB0_3 
-    slli    a2, a2, 2 
     add     a2, a2, a0 
 .LBB0_2: 
     sw      a1, 0(a0) 
     addi    a0, a0, 4 
     bltu    a0, a2, .LBB0_2 
 .LBB0_3: 
-    ret
+    ret 
+
+memset64: 
+    blez    a2, .LBB0_5 
+    slli    a2, a2, 1 
+    add     a2, a2, a0 
+.LBB0_4: 
+    sd      a1, 0(a0) 
+    addi    a0, a0, 8 
+    bltu    a0, a2, .LBB0_4 
+.LBB0_5: 
+    ret 

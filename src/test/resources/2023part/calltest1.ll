@@ -52,7 +52,7 @@ f1Entry:
 }
 
 define i32 @main() {
-mainEntry:
+mainEntry15:
   %f1 = call i32 @f1(i32 1, i32 1)
   %g1 = call i32 @g1(i32 1, i32 %f1)
   ret i32 %g1

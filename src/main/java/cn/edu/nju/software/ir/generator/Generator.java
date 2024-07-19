@@ -85,7 +85,7 @@ public class Generator implements IrGenerator {
         if (!value.getType().equals(((Pointer)lVal.getType()).getBase())) {
             if (((Pointer)lVal.getType()).getBase().equals(i32Type)) {
                 if (value instanceof ConstValue) {
-                    value = gen.ConstInt(i32Type,  (int) (float)((ConstValue) value).getValue());
+                    value = gen.ConstInt(i32Type, ((ConstValue) value).castToInt());
                 } else {
                     value = gen.buildFloatToInt(builder, value, "f2i_");
                 }
@@ -401,7 +401,7 @@ public class Generator implements IrGenerator {
     @Override
     public ValueRef buildFloatToInt(BuilderRef builder, ValueRef floatVal, String name) {
         if (floatVal instanceof ConstValue) {
-            return ConstInt(i32Type, (int)(float)((ConstValue) floatVal).getValue());
+            return ConstInt(i32Type, ((ConstValue) floatVal).castToInt());
         }
         LocalVar localVar = builder.createLocalVar(i32Type, name);
         Instruction ir = new FloatToInt(localVar, floatVal);
