@@ -1,16 +1,19 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .zero 52907904
+.align 8
 .globl gv1
 gv1:
 .zero 800
+.align 8
 .globl gv2
 gv2:
 .zero 80
 .text
-
+.align 8
 .type equal, @function
 .globl equal
 equal:

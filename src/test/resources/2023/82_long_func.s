@@ -1,5 +1,6 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .word 1
@@ -19,7 +20,7 @@ gv:
 .word 16384
 .word 32768
 .text
-
+.align 8
 .type long_func, @function
 .globl long_func
 long_func:

@@ -1,10 +1,11 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .word 0
 .text
-
+.align 8
 .type select_sort, @function
 .globl select_sort
 select_sort:

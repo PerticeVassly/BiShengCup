@@ -1,127 +1,167 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .word 0
+.align 8
 .globl gv1
 gv1:
 .word 0
+.align 8
 .globl gv2
 gv2:
 .word 0
+.align 8
 .globl gv3
 gv3:
 .word 0
+.align 8
 .globl gv4
 gv4:
 .word 0
+.align 8
 .globl gv5
 gv5:
 .word 0
+.align 8
 .globl gv6
 gv6:
 .word 0
+.align 8
 .globl gv7
 gv7:
 .word 0
+.align 8
 .globl gv8
 gv8:
 .word 0
+.align 8
 .globl gv9
 gv9:
 .word 0
+.align 8
 .globl gv10
 gv10:
 .word 0
+.align 8
 .globl gv11
 gv11:
 .word 0
+.align 8
 .globl gv12
 gv12:
 .word 0
+.align 8
 .globl gv13
 gv13:
 .word 0
+.align 8
 .globl gv14
 gv14:
 .word 0
+.align 8
 .globl gv15
 gv15:
 .word 0
+.align 8
 .globl gv16
 gv16:
 .word 0
+.align 8
 .globl gv17
 gv17:
 .word 0
+.align 8
 .globl gv18
 gv18:
 .word 0
+.align 8
 .globl gv19
 gv19:
 .word 0
+.align 8
 .globl gv20
 gv20:
 .word 0
+.align 8
 .globl gv21
 gv21:
 .word 0
+.align 8
 .globl gv22
 gv22:
 .word 0
+.align 8
 .globl gv23
 gv23:
 .word 0
+.align 8
 .globl gv24
 gv24:
 .word 0
+.align 8
 .globl gv25
 gv25:
 .word 0
+.align 8
 .globl gv26
 gv26:
 .word 0
+.align 8
 .globl gv27
 gv27:
 .word 0
+.align 8
 .globl gv28
 gv28:
 .word 0
+.align 8
 .globl gv29
 gv29:
 .word 0
+.align 8
 .globl gv30
 gv30:
 .word 0
+.align 8
 .globl gv31
 gv31:
 .word 0
+.align 8
 .globl gv32
 gv32:
 .word 0
+.align 8
 .globl gv33
 gv33:
 .word 0
+.align 8
 .globl gv34
 gv34:
 .word 0
+.align 8
 .globl gv35
 gv35:
 .word 0
+.align 8
 .globl gv36
 gv36:
 .word 0
+.align 8
 .globl gv37
 gv37:
 .word 0
+.align 8
 .globl gv38
 gv38:
 .word 0
+.align 8
 .globl gv39
 gv39:
 .word 0
 .text
-
+.align 8
 .type testParam8, @function
 .globl testParam8
 testParam8:

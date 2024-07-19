@@ -1,13 +1,15 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .word -1
+.align 8
 .globl gv1
 gv1:
 .word 1
 .text
-
+.align 8
 .type inc_a, @function
 .globl inc_a
 inc_a:

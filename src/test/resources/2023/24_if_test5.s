@@ -1,7 +1,7 @@
-.bbs
-
+.bss
+.align 8
 .text
-
+.align 8
 .type if_if_Else, @function
 .globl if_if_Else
 if_if_Else:

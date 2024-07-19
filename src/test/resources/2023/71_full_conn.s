@@ -1,7 +1,7 @@
-.bbs
-
+.bss
+.align 8
 .text
-
+.align 8
 .type relu_reg, @function
 .globl relu_reg
 relu_reg:

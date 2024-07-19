@@ -1,34 +1,43 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .zero 40000
+.align 8
 .globl gv1
 gv1:
 .word 0
+.align 8
 .globl gv2
 gv2:
 .zero 40000
+.align 8
 .globl gv3
 gv3:
 .word 0
+.align 8
 .globl gv4
 gv4:
 .word 0
+.align 8
 .globl gv5
 gv5:
 .word 1
+.align 8
 .globl gv6
 gv6:
 .word 0
+.align 8
 .globl gv7
 gv7:
 .zero 40000
+.align 8
 .globl gv8
 gv8:
 .zero 40000
 .text
-
+.align 8
 .type isdigit, @function
 .globl isdigit
 isdigit:

@@ -1,7 +1,7 @@
-.bbs
-
+.bss
+.align 8
 .text
-
+.align 8
 .type func, @function
 .globl func
 func:

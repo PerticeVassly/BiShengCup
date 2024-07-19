@@ -1,13 +1,15 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .zero 57600
+.align 8
 .globl gv1
 gv1:
 .zero 107520
 .text
-
+.align 8
 .type loop1, @function
 .globl loop1
 loop1:

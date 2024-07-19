@@ -1,10 +1,11 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .word 0
 .text
-
+.align 8
 .type counting_sort, @function
 .globl counting_sort
 counting_sort:

@@ -1,16 +1,19 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .zero 262144
+.align 8
 .globl gv1
 gv1:
 .zero 131072
+.align 8
 .globl gv2
 gv2:
 .word 0
 .text
-
+.align 8
 .type read_program, @function
 .globl read_program
 read_program:

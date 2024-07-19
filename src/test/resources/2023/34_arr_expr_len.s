@@ -1,5 +1,6 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .word 1
@@ -9,7 +10,7 @@ gv:
 .word 5
 .word 6
 .text
-
+.align 8
 .type main, @function
 .globl main
 main:

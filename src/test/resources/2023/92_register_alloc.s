@@ -1,103 +1,135 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .word 1
+.align 8
 .globl gv1
 gv1:
 .word 2
+.align 8
 .globl gv2
 gv2:
 .word 3
+.align 8
 .globl gv3
 gv3:
 .word 4
+.align 8
 .globl gv4
 gv4:
 .word 5
+.align 8
 .globl gv5
 gv5:
 .word 6
+.align 8
 .globl gv6
 gv6:
 .word 7
+.align 8
 .globl gv7
 gv7:
 .word 8
+.align 8
 .globl gv8
 gv8:
 .word 9
+.align 8
 .globl gv9
 gv9:
 .word 10
+.align 8
 .globl gv10
 gv10:
 .word 11
+.align 8
 .globl gv11
 gv11:
 .word 12
+.align 8
 .globl gv12
 gv12:
 .word 13
+.align 8
 .globl gv13
 gv13:
 .word 14
+.align 8
 .globl gv14
 gv14:
 .word 15
+.align 8
 .globl gv15
 gv15:
 .word 16
+.align 8
 .globl gv16
 gv16:
 .word 1
+.align 8
 .globl gv17
 gv17:
 .word 2
+.align 8
 .globl gv18
 gv18:
 .word 3
+.align 8
 .globl gv19
 gv19:
 .word 4
+.align 8
 .globl gv20
 gv20:
 .word 5
+.align 8
 .globl gv21
 gv21:
 .word 6
+.align 8
 .globl gv22
 gv22:
 .word 7
+.align 8
 .globl gv23
 gv23:
 .word 8
+.align 8
 .globl gv24
 gv24:
 .word 9
+.align 8
 .globl gv25
 gv25:
 .word 10
+.align 8
 .globl gv26
 gv26:
 .word 11
+.align 8
 .globl gv27
 gv27:
 .word 12
+.align 8
 .globl gv28
 gv28:
 .word 13
+.align 8
 .globl gv29
 gv29:
 .word 14
+.align 8
 .globl gv30
 gv30:
 .word 15
+.align 8
 .globl gv31
 gv31:
 .word 16
 .text
-
+.align 8
 .type func, @function
 .globl func
 func:

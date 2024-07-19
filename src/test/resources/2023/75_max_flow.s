@@ -1,22 +1,27 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .zero 40
+.align 8
 .globl gv1
 gv1:
 .zero 400
+.align 8
 .globl gv2
 gv2:
 .zero 400
+.align 8
 .globl gv3
 gv3:
 .zero 400
+.align 8
 .globl gv4
 gv4:
 .zero 40
 .text
-
+.align 8
 .type my_memset, @function
 .globl my_memset
 my_memset:

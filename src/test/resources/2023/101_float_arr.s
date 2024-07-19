@@ -1,5 +1,6 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .word 0x3f800000
@@ -7,7 +8,7 @@ gv:
 .word 0x40400000
 .zero 84
 .text
-
+.align 8
 .type main, @function
 .globl main
 main:

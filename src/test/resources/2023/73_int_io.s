@@ -1,7 +1,7 @@
-.bbs
-
+.bss
+.align 8
 .text
-
+.align 8
 .type my_getint, @function
 .globl my_getint
 my_getint:

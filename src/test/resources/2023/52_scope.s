@@ -1,10 +1,11 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .word 7
 .text
-
+.align 8
 .type func, @function
 .globl func
 func:

@@ -1,13 +1,15 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .zero 440
+.align 8
 .globl gv1
 gv1:
 .word 0
 .text
-
+.align 8
 .type init, @function
 .globl init
 init:

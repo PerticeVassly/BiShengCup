@@ -1,10 +1,11 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .zero 800
 .text
-
+.align 8
 .type merge_sort, @function
 .globl merge_sort
 merge_sort:

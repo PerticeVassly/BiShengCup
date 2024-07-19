@@ -1,5 +1,6 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .word 87
@@ -31,6 +32,7 @@ gv:
 .word 33
 .word 10
 .zero 288
+.align 8
 .globl gv1
 gv1:
 .word 83
@@ -101,6 +103,7 @@ gv1:
 .word 109
 .word 105
 .zero 144
+.align 8
 .globl gv2
 gv2:
 .word 32
@@ -119,12 +122,13 @@ gv2:
 .word 111
 .word 32
 .zero 100
+.align 8
 .globl gv3
 gv3:
 .word 10
 .zero 16
 .text
-
+.align 8
 .type putstr, @function
 .globl putstr
 putstr:

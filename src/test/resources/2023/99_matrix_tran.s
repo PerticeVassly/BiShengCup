@@ -1,16 +1,19 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .word 0
+.align 8
 .globl gv1
 gv1:
 .word 0
+.align 8
 .globl gv2
 gv2:
 .word 0
 .text
-
+.align 8
 .type tran, @function
 .globl tran
 tran:

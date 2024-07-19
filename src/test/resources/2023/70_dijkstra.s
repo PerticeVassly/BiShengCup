@@ -1,31 +1,39 @@
-.bbs
-
+.bss
+.align 8
+.align 8
 .globl gv
 gv:
 .zero 1024
+.align 8
 .globl gv1
 gv1:
 .zero 64
+.align 8
 .globl gv2
 gv2:
 .zero 64
+.align 8
 .globl gv3
 gv3:
 .word 0
+.align 8
 .globl gv4
 gv4:
 .word 0
+.align 8
 .globl gv5
 gv5:
 .word 0
+.align 8
 .globl gv6
 gv6:
 .word 0
+.align 8
 .globl gv7
 gv7:
 .word 0
 .text
-
+.align 8
 .type Dijkstra, @function
 .globl Dijkstra
 Dijkstra:
