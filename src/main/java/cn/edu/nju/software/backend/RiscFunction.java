@@ -80,6 +80,9 @@ public class RiscFunction {
     }
 
     private void reserveMemoryForType(ValueRef var, TypeRef type) {
+//        if (type instanceof Pointer) {
+            alignStack8byte();
+//        }
         allocator.allocate(var, allocator.getSizeOfType(type));
     }
 
