@@ -73,16 +73,16 @@ public class Allocator {
 
     private void prepareAGlobal(GlobalVar globalVar,int i){
         if (((Pointer)globalVar.getType()).getBase() instanceof FloatType) {
-            generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
-            generator.addInstruction(new RiscFlw(new Register("ft" + i), new IndirectRegister("t3", 0)));
+            generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
+            generator.addInstruction(new RiscFlw(new Register("ft" + i), new IndirectRegister("t1", 0)));
         } else if (((Pointer) globalVar.getType()).getBase() instanceof IntType){
-            generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
-            generator.addInstruction(new RiscLw(new Register("t" + i), new IndirectRegister("t3", 0)));
+            generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
+            generator.addInstruction(new RiscLw(new Register("t" + i), new IndirectRegister("t1", 0)));
         } else if( ((Pointer) globalVar.getType()).getBase() instanceof ArrayType){
             assert false;
         } else if(((Pointer) globalVar.getType()).getBase() instanceof Pointer){
-            generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
-            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t3", 0)));
+            generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
+            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t1", 0)));
         } else {
             assert false;
         }
@@ -152,25 +152,25 @@ public class Allocator {
     private Operand getValueOfGlobalVar(GlobalVar globalVar){
         // GlobalVar 只可能是指针类型，所以获取value实际上就是指针中的地址（即label）
         generator.insertComment("get value of global var:" + globalVar.getName());
-        generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
-        return new Register("t3");
+        generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
+        return new Register("t1");
     }
 
     //todo() 我也不知道前端用的什么存储的
     private Operand getValueOfConstVar(ConstValue constVar){
         generator.insertComment("get value of const var:" + constVar.getName());
         if(constVar.getType() instanceof FloatType){
-            generator.addInstruction(new RiscLi(new Register("t3"), new ImmediateValue(Float.parseFloat(constVar.getValue().toString()))));
-            generator.addInstruction(new RiscFmvwx(new Register("ft3"), new Register("t3")));
-            return new Register("ft3");
+            generator.addInstruction(new RiscLi(new Register("t1"), new ImmediateValue(Float.parseFloat(constVar.getValue().toString()))));
+            generator.addInstruction(new RiscFmvwx(new Register("ft1"), new Register("t1")));
+            return new Register("ft1");
         }
         else if(constVar.getType() instanceof IntType){
-            generator.addInstruction(new RiscLi(new Register("t3"), new ImmediateValue(Integer.parseInt(constVar.getValue().toString()))));
-            return new Register("t3");
+            generator.addInstruction(new RiscLi(new Register("t1"), new ImmediateValue(Integer.parseInt(constVar.getValue().toString()))));
+            return new Register("t1");
         }
         else if(constVar.getType() instanceof BoolType){
-            generator.addInstruction(new RiscLi(new Register("t3"), new ImmediateValue(Boolean.TRUE.equals(constVar.getValue()) ? 1 : 0)));
-            return new Register("t3");
+            generator.addInstruction(new RiscLi(new Register("t1"), new ImmediateValue(Boolean.TRUE.equals(constVar.getValue()) ? 1 : 0)));
+            return new Register("t1");
         }
         else {
             assert false;
@@ -181,17 +181,17 @@ public class Allocator {
     private Operand getValueOfLocalVar(LocalVar localVar){
         generator.insertComment("get value of local var:" + localVar.getName());
         if(localVar.getType() instanceof FloatType) {
-            generator.addInstruction(new RiscFlw(new Register("ft3"), getAddrOfLocalVar(localVar)));
-            return new Register("ft3");
+            generator.addInstruction(new RiscFlw(new Register("ft1"), getAddrOfLocalVar(localVar)));
+            return new Register("ft1");
         } else if(localVar.getType() instanceof IntType){
-            generator.addInstruction(new RiscLw(new Register("t3"), getAddrOfLocalVar(localVar)));
-            return new Register("t3");
+            generator.addInstruction(new RiscLw(new Register("t1"), getAddrOfLocalVar(localVar)));
+            return new Register("t1");
         } else if(localVar.getType() instanceof BoolType){
-            generator.addInstruction(new RiscLw(new Register("t3"), getAddrOfLocalVar(localVar)));
-            return new Register("t3");
+            generator.addInstruction(new RiscLw(new Register("t1"), getAddrOfLocalVar(localVar)));
+            return new Register("t1");
         } else if(localVar.getType() instanceof Pointer){
-            generator.addInstruction(new RiscLd(new Register("t3"), getAddrOfLocalVar(localVar)));
-            return new Register("t3");
+            generator.addInstruction(new RiscLd(new Register("t1"), getAddrOfLocalVar(localVar)));
+            return new Register("t1");
         } else {
             assert false;
             return null;
@@ -214,11 +214,11 @@ public class Allocator {
             return null;
         }
         if (ptr instanceof GlobalVar) {
-            generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(ptr.getName()))));
-            return getRegWithOffset(offset, "t3", "t4");
+            generator.addInstruction(new RiscLa(new Register("t0"), new RiscLabelAddress(new RiscLabel(ptr.getName()))));
+            return getRegWithOffset(offset, "t0", "t2");
         } else if (ptr instanceof LocalVar) {
-            generator.addInstruction(new RiscLd(new Register("t3"), getRegWithOffset(memoryManager.getOffset(ptr), "sp", "t4")));
-            return getRegWithOffset(offset, "t3", "t4");
+            generator.addInstruction(new RiscLd(new Register("t0"), getRegWithOffset(memoryManager.getOffset(ptr), "sp", "t2")));
+            return getRegWithOffset(offset, "t0", "t2");
         } else {
             assert false;
             return null;

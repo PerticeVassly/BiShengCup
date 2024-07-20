@@ -175,10 +175,10 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
         //得到array中一个element实际的大小，存放在t2中
         int length = ArrayType.getTotalSize(((ArrayType) gep.getArrayTypePtr().getBase()).getElementType());
-        riscInstructions.add(new RiscLi(new Register("t2"), new ImmediateValue(length)));
+        riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(length)));
 
         //得到相对于basePtr的偏移量，存放在t0中
-        riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t0")));
 
         //获取basePtr的值，存在t1中
         riscInstructions.add(new RiscMv(new Register("t1"), allocator.getValueOfVar(basePtr)));
@@ -521,8 +521,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
         int stackSize = allocator.getStackSize();
         if (stackSize > 0) {
-            riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(stackSize)));
-            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
         }
 
         if (!llvmFunctionValue.getName().equals("main")) {
@@ -537,8 +537,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
         insertComment("ret void");
         int stackSize = allocator.getStackSize();
         if (stackSize > 0) {
-            riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(stackSize)));
-            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
         }
 
         if (!llvmFunctionValue.getName().equals("main")) {
@@ -645,8 +645,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
         }
         
         if (order > 0) {
-            riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(-8L * order)));
-            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(-8L * order)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
         }
 
     }
@@ -672,8 +672,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
         int finalToRelase =Math.max(intAndPointerParamNum - RiscSpecifications.getArgRegs().length, 0) + Math.max(floatParamNum - RiscSpecifications.getFArgRegs().length, 0);
         if (finalToRelase > 0) {
-            riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(8L * finalToRelase)));
-            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(8L * finalToRelase)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
         }
     }
 
