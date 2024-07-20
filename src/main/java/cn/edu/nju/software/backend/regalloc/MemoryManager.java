@@ -3,6 +3,7 @@ package cn.edu.nju.software.backend.regalloc;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public class MemoryManager {
@@ -10,6 +11,8 @@ public class MemoryManager {
     private int size = 0;
 
     private final Map<String, Integer> memoryAddr = new HashMap<>();
+
+    private final HashSet<String> hasAllocatedPtr = new HashSet<>();
 
     private static final MemoryManager memoryManager = new MemoryManager();
 
@@ -64,5 +67,13 @@ public class MemoryManager {
 
     public void align16byte() {
         size = (size + 15) / 16 * 16;
+    }
+
+    public void addHasAllocatedPtr(String name) {
+        hasAllocatedPtr.add(name);
+    }
+
+    public boolean checkPtrHasAllocated(String name) {
+        return hasAllocatedPtr.contains(name);
     }
 }

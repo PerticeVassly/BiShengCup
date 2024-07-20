@@ -1,5 +1,6 @@
 .data
-.align 2
+.align 3
+.align 8
 .globl gv
 gv:
 .word 1
@@ -9,24 +10,19 @@ gv:
 .word 4
 .word 3
 .text
-.align 2
+.align 1
 .type main, @function
 .globl main
 main:
 mainEntry14:
 
 	# reserve space
-	li t4, 52
+	li t4, 64
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	li t0, 40
-	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 44(sp)
 
 	# store lv 
 
@@ -34,24 +30,22 @@ mainEntry14:
 	li t1, 1
 
 	# get address of lv points to
-	ld t3, 44(sp)
-	sw t1, 0(t3)
+	sw t1, 60(sp)
 
 	# load i lv
 
 	# get address of lv points to
-	ld t3, 44(sp)
 
 	# get address of local var:i
-	lw t0, 0(t3)
-	sw t0, 36(sp)
+	lw t0, 60(sp)
+	sw t0, 52(sp)
 
 	# gep ptr_ i
 
 	# fetch variables
 
 	# get address of local var:i
-	lw t1, 36(sp)
+	lw t1, 52(sp)
 	li t2, 8
 	mul t0, t1, t2
 
@@ -61,7 +55,7 @@ mainEntry14:
 	add t0, t1, t0
 
 	# get address of local var:ptr_
-	sd t0, 28(sp)
+	sd t0, 40(sp)
 
 	# gep a 
 
@@ -73,12 +67,12 @@ mainEntry14:
 	# get value of local var:ptr_
 
 	# get address of local var:ptr_
-	ld t3, 28(sp)
+	ld t3, 40(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:a
-	sd t0, 20(sp)
+	sd t0, 32(sp)
 
 	# store a 
 
@@ -86,7 +80,7 @@ mainEntry14:
 	li t1, 11
 
 	# get address of a points to
-	ld t3, 20(sp)
+	ld t3, 32(sp)
 	sw t1, 0(t3)
 
 	# gep ptr_$1 
@@ -102,7 +96,7 @@ mainEntry14:
 	add t0, t1, t0
 
 	# get address of local var:ptr_$1
-	sd t0, 12(sp)
+	sd t0, 24(sp)
 
 	# gep a$1 
 
@@ -114,30 +108,30 @@ mainEntry14:
 	# get value of local var:ptr_$1
 
 	# get address of local var:ptr_$1
-	ld t3, 12(sp)
+	ld t3, 24(sp)
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:a$1
-	sd t0, 4(sp)
+	sd t0, 16(sp)
 
 	# load a$2 a$1
 
 	# get address of a$1 points to
-	ld t3, 4(sp)
+	ld t3, 16(sp)
 
 	# get address of local var:a$2
 	lw t0, 0(t3)
-	sw t0, 0(sp)
+	sw t0, 12(sp)
 
 	# ret a$2
 
 	# fetch variables
 
 	# get address of local var:a$2
-	lw t1, 0(sp)
+	lw t1, 12(sp)
 	mv a0, t1
-	li t4, 52
+	li t4, 64
 	add sp, sp, t4
 	ret 
 

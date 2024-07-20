@@ -1,115 +1,41 @@
-.bss
-.align 8
+.data
+.align 3
 .text
-.align 8
+.align 1
 .type main, @function
 .globl main
 main:
 mainEntry73:
 
 	# reserve space
-	li t4, 1560
+	li t4, 1808
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv$11
-	li t0, 1392
-	add t0, sp, t0
-
-	# get address of local var:lv$11
-	li t4, 1552
-	add t4, sp, t4
-	sd t0, 0(t4)
 
 	# allocate lv$10
-	li t0, 1284
-	add t0, sp, t0
-
-	# get address of local var:lv$10
-	li t4, 1384
-	add t4, sp, t4
-	sd t0, 0(t4)
 
 	# allocate lv$9
-	li t0, 1172
-	add t0, sp, t0
-
-	# get address of local var:lv$9
-	li t4, 1272
-	add t4, sp, t4
-	sd t0, 0(t4)
 
 	# allocate lv$8
-	li t0, 1156
-	add t0, sp, t0
-
-	# get address of local var:lv$8
-	li t4, 1160
-	add t4, sp, t4
-	sd t0, 0(t4)
 
 	# allocate lv$7
-	li t0, 1140
-	add t0, sp, t0
-
-	# get address of local var:lv$7
-	li t4, 1144
-	add t4, sp, t4
-	sd t0, 0(t4)
 
 	# allocate lv$6
-	li t0, 1048
-	add t0, sp, t0
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	sd t0, 0(t4)
 
 	# allocate lv$5
-	li t0, 960
-	add t0, sp, t0
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	sd t0, 0(t4)
 
 	# allocate lv$4
-	li t0, 948
-	add t0, sp, t0
-
-	# get address of local var:lv$4
-	sd t0, 952(sp)
 
 	# allocate lv$3
-	li t0, 932
-	add t0, sp, t0
-
-	# get address of local var:lv$3
-	sd t0, 936(sp)
 
 	# allocate lv$2
-	li t0, 916
-	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 920(sp)
 
 	# allocate lv$1
-	li t0, 900
-	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 904(sp)
 
 	# allocate lv
-	li t0, 884
-	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 888(sp)
 
 	# gep inp 
 
@@ -119,16 +45,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp
-	sd t0, 872(sp)
+	sd t0, 1216(sp)
 
 	# store inp 
 
@@ -136,7 +59,7 @@ mainEntry73:
 	li t1, 1
 
 	# get address of inp points to
-	ld t3, 872(sp)
+	ld t3, 1216(sp)
 	sw t1, 0(t3)
 
 	# gep inp$1 
@@ -147,16 +70,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$1
-	sd t0, 864(sp)
+	sd t0, 1208(sp)
 
 	# store inp$1 
 
@@ -164,7 +84,7 @@ mainEntry73:
 	li t1, 2
 
 	# get address of inp$1 points to
-	ld t3, 864(sp)
+	ld t3, 1208(sp)
 	sw t1, 0(t3)
 
 	# gep inp$2 
@@ -175,16 +95,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$2
-	sd t0, 856(sp)
+	sd t0, 1200(sp)
 
 	# store inp$2 
 
@@ -192,7 +109,7 @@ mainEntry73:
 	li t1, 3
 
 	# get address of inp$2 points to
-	ld t3, 856(sp)
+	ld t3, 1200(sp)
 	sw t1, 0(t3)
 
 	# gep inp$3 
@@ -203,16 +120,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$3
-	sd t0, 848(sp)
+	sd t0, 1192(sp)
 
 	# store inp$3 
 
@@ -220,7 +134,7 @@ mainEntry73:
 	li t1, 4
 
 	# get address of inp$3 points to
-	ld t3, 848(sp)
+	ld t3, 1192(sp)
 	sw t1, 0(t3)
 
 	# gep inp$4 
@@ -231,16 +145,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$4
-	sd t0, 840(sp)
+	sd t0, 1184(sp)
 
 	# store inp$4 
 
@@ -248,7 +159,7 @@ mainEntry73:
 	li t1, 5
 
 	# get address of inp$4 points to
-	ld t3, 840(sp)
+	ld t3, 1184(sp)
 	sw t1, 0(t3)
 
 	# gep inp$5 
@@ -259,16 +170,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$5
-	sd t0, 832(sp)
+	sd t0, 1176(sp)
 
 	# store inp$5 
 
@@ -276,7 +184,7 @@ mainEntry73:
 	li t1, 6
 
 	# get address of inp$5 points to
-	ld t3, 832(sp)
+	ld t3, 1176(sp)
 	sw t1, 0(t3)
 
 	# gep inp$6 
@@ -287,16 +195,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$6
-	sd t0, 824(sp)
+	sd t0, 1168(sp)
 
 	# store inp$6 
 
@@ -304,7 +209,7 @@ mainEntry73:
 	li t1, 7
 
 	# get address of inp$6 points to
-	ld t3, 824(sp)
+	ld t3, 1168(sp)
 	sw t1, 0(t3)
 
 	# gep inp$7 
@@ -315,16 +220,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$7
-	sd t0, 816(sp)
+	sd t0, 1160(sp)
 
 	# store inp$7 
 
@@ -332,7 +234,7 @@ mainEntry73:
 	li t1, 8
 
 	# get address of inp$7 points to
-	ld t3, 816(sp)
+	ld t3, 1160(sp)
 	sw t1, 0(t3)
 
 	# gep inp$8 
@@ -343,16 +245,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$8
-	sd t0, 808(sp)
+	sd t0, 1152(sp)
 
 	# store inp$8 
 
@@ -360,7 +259,7 @@ mainEntry73:
 	li t1, 9
 
 	# get address of inp$8 points to
-	ld t3, 808(sp)
+	ld t3, 1152(sp)
 	sw t1, 0(t3)
 
 	# gep inp$9 
@@ -371,16 +270,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$9
-	sd t0, 800(sp)
+	sd t0, 1144(sp)
 
 	# store inp$9 
 
@@ -388,7 +284,7 @@ mainEntry73:
 	li t1, 0
 
 	# get address of inp$9 points to
-	ld t3, 800(sp)
+	ld t3, 1144(sp)
 	sw t1, 0(t3)
 
 	# gep inp$10 
@@ -399,16 +295,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$10
-	sd t0, 792(sp)
+	sd t0, 1136(sp)
 
 	# store inp$10 
 
@@ -416,7 +309,7 @@ mainEntry73:
 	li t1, 1
 
 	# get address of inp$10 points to
-	ld t3, 792(sp)
+	ld t3, 1136(sp)
 	sw t1, 0(t3)
 
 	# gep inp$11 
@@ -427,16 +320,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$11
-	sd t0, 784(sp)
+	sd t0, 1128(sp)
 
 	# store inp$11 
 
@@ -444,7 +334,7 @@ mainEntry73:
 	li t1, 2
 
 	# get address of inp$11 points to
-	ld t3, 784(sp)
+	ld t3, 1128(sp)
 	sw t1, 0(t3)
 
 	# gep inp$12 
@@ -455,16 +345,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$12
-	sd t0, 776(sp)
+	sd t0, 1120(sp)
 
 	# store inp$12 
 
@@ -472,7 +359,7 @@ mainEntry73:
 	li t1, 3
 
 	# get address of inp$12 points to
-	ld t3, 776(sp)
+	ld t3, 1120(sp)
 	sw t1, 0(t3)
 
 	# gep inp$13 
@@ -483,16 +370,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$13
-	sd t0, 768(sp)
+	sd t0, 1112(sp)
 
 	# store inp$13 
 
@@ -500,7 +384,7 @@ mainEntry73:
 	li t1, 4
 
 	# get address of inp$13 points to
-	ld t3, 768(sp)
+	ld t3, 1112(sp)
 	sw t1, 0(t3)
 
 	# gep inp$14 
@@ -511,16 +395,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$14
-	sd t0, 760(sp)
+	sd t0, 1104(sp)
 
 	# store inp$14 
 
@@ -528,7 +409,7 @@ mainEntry73:
 	li t1, 5
 
 	# get address of inp$14 points to
-	ld t3, 760(sp)
+	ld t3, 1104(sp)
 	sw t1, 0(t3)
 
 	# gep inp$15 
@@ -539,16 +420,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$15
-	sd t0, 752(sp)
+	sd t0, 1096(sp)
 
 	# store inp$15 
 
@@ -556,7 +434,7 @@ mainEntry73:
 	li t1, 6
 
 	# get address of inp$15 points to
-	ld t3, 752(sp)
+	ld t3, 1096(sp)
 	sw t1, 0(t3)
 
 	# gep inp$16 
@@ -567,16 +445,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$16
-	sd t0, 744(sp)
+	sd t0, 1088(sp)
 
 	# store inp$16 
 
@@ -584,7 +459,7 @@ mainEntry73:
 	li t1, 7
 
 	# get address of inp$16 points to
-	ld t3, 744(sp)
+	ld t3, 1088(sp)
 	sw t1, 0(t3)
 
 	# gep inp$17 
@@ -595,16 +470,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$17
-	sd t0, 736(sp)
+	sd t0, 1080(sp)
 
 	# store inp$17 
 
@@ -612,7 +484,7 @@ mainEntry73:
 	li t1, 8
 
 	# get address of inp$17 points to
-	ld t3, 736(sp)
+	ld t3, 1080(sp)
 	sw t1, 0(t3)
 
 	# gep inp$18 
@@ -623,16 +495,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$18
-	sd t0, 728(sp)
+	sd t0, 1072(sp)
 
 	# store inp$18 
 
@@ -640,7 +509,7 @@ mainEntry73:
 	li t1, 9
 
 	# get address of inp$18 points to
-	ld t3, 728(sp)
+	ld t3, 1072(sp)
 	sw t1, 0(t3)
 
 	# gep inp$19 
@@ -651,16 +520,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$19
-	sd t0, 720(sp)
+	sd t0, 1064(sp)
 
 	# store inp$19 
 
@@ -668,7 +534,7 @@ mainEntry73:
 	li t1, 0
 
 	# get address of inp$19 points to
-	ld t3, 720(sp)
+	ld t3, 1064(sp)
 	sw t1, 0(t3)
 
 	# gep inp$20 
@@ -679,16 +545,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$20
-	sd t0, 712(sp)
+	sd t0, 1056(sp)
 
 	# store inp$20 
 
@@ -696,7 +559,7 @@ mainEntry73:
 	li t1, 2
 
 	# get address of inp$20 points to
-	ld t3, 712(sp)
+	ld t3, 1056(sp)
 	sw t1, 0(t3)
 
 	# gep inp$21 
@@ -707,16 +570,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$21
-	sd t0, 704(sp)
+	sd t0, 1048(sp)
 
 	# store inp$21 
 
@@ -724,7 +584,7 @@ mainEntry73:
 	li t1, 3
 
 	# get address of inp$21 points to
-	ld t3, 704(sp)
+	ld t3, 1048(sp)
 	sw t1, 0(t3)
 
 	# gep inp$22 
@@ -735,16 +595,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$22
-	sd t0, 696(sp)
+	sd t0, 1040(sp)
 
 	# store inp$22 
 
@@ -752,7 +609,7 @@ mainEntry73:
 	li t1, 4
 
 	# get address of inp$22 points to
-	ld t3, 696(sp)
+	ld t3, 1040(sp)
 	sw t1, 0(t3)
 
 	# gep inp$23 
@@ -763,16 +620,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$23
-	sd t0, 688(sp)
+	sd t0, 1032(sp)
 
 	# store inp$23 
 
@@ -780,7 +634,7 @@ mainEntry73:
 	li t1, 2
 
 	# get address of inp$23 points to
-	ld t3, 688(sp)
+	ld t3, 1032(sp)
 	sw t1, 0(t3)
 
 	# gep inp$24 
@@ -791,16 +645,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$24
-	sd t0, 680(sp)
+	sd t0, 1024(sp)
 
 	# store inp$24 
 
@@ -808,7 +659,7 @@ mainEntry73:
 	li t1, 5
 
 	# get address of inp$24 points to
-	ld t3, 680(sp)
+	ld t3, 1024(sp)
 	sw t1, 0(t3)
 
 	# gep inp$25 
@@ -819,16 +670,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$25
-	sd t0, 672(sp)
+	sd t0, 1016(sp)
 
 	# store inp$25 
 
@@ -836,7 +684,7 @@ mainEntry73:
 	li t1, 7
 
 	# get address of inp$25 points to
-	ld t3, 672(sp)
+	ld t3, 1016(sp)
 	sw t1, 0(t3)
 
 	# gep inp$26 
@@ -847,16 +695,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$26
-	sd t0, 664(sp)
+	sd t0, 1008(sp)
 
 	# store inp$26 
 
@@ -864,7 +709,7 @@ mainEntry73:
 	li t1, 9
 
 	# get address of inp$26 points to
-	ld t3, 664(sp)
+	ld t3, 1008(sp)
 	sw t1, 0(t3)
 
 	# gep inp$27 
@@ -875,16 +720,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$27
-	sd t0, 656(sp)
+	sd t0, 1000(sp)
 
 	# store inp$27 
 
@@ -892,7 +734,7 @@ mainEntry73:
 	li t1, 9
 
 	# get address of inp$27 points to
-	ld t3, 656(sp)
+	ld t3, 1000(sp)
 	sw t1, 0(t3)
 
 	# gep inp$28 
@@ -903,16 +745,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$28
-	sd t0, 648(sp)
+	sd t0, 992(sp)
 
 	# store inp$28 
 
@@ -920,7 +759,7 @@ mainEntry73:
 	li t1, 0
 
 	# get address of inp$28 points to
-	ld t3, 648(sp)
+	ld t3, 992(sp)
 	sw t1, 0(t3)
 
 	# gep inp$29 
@@ -931,16 +770,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$29
-	sd t0, 640(sp)
+	sd t0, 984(sp)
 
 	# store inp$29 
 
@@ -948,7 +784,7 @@ mainEntry73:
 	li t1, 1
 
 	# get address of inp$29 points to
-	ld t3, 640(sp)
+	ld t3, 984(sp)
 	sw t1, 0(t3)
 
 	# gep inp$30 
@@ -959,16 +795,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$30
-	sd t0, 632(sp)
+	sd t0, 976(sp)
 
 	# store inp$30 
 
@@ -976,7 +809,7 @@ mainEntry73:
 	li t1, 9
 
 	# get address of inp$30 points to
-	ld t3, 632(sp)
+	ld t3, 976(sp)
 	sw t1, 0(t3)
 
 	# gep inp$31 
@@ -987,16 +820,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$31
-	sd t0, 624(sp)
+	sd t0, 968(sp)
 
 	# store inp$31 
 
@@ -1004,7 +834,7 @@ mainEntry73:
 	li t1, 8
 
 	# get address of inp$31 points to
-	ld t3, 624(sp)
+	ld t3, 968(sp)
 	sw t1, 0(t3)
 
 	# gep inp$32 
@@ -1015,16 +845,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$32
-	sd t0, 616(sp)
+	sd t0, 960(sp)
 
 	# store inp$32 
 
@@ -1032,7 +859,7 @@ mainEntry73:
 	li t1, 7
 
 	# get address of inp$32 points to
-	ld t3, 616(sp)
+	ld t3, 960(sp)
 	sw t1, 0(t3)
 
 	# gep inp$33 
@@ -1043,16 +870,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$33
-	sd t0, 608(sp)
+	sd t0, 952(sp)
 
 	# store inp$33 
 
@@ -1060,7 +884,7 @@ mainEntry73:
 	li t1, 6
 
 	# get address of inp$33 points to
-	ld t3, 608(sp)
+	ld t3, 952(sp)
 	sw t1, 0(t3)
 
 	# gep inp$34 
@@ -1071,16 +895,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$34
-	sd t0, 600(sp)
+	sd t0, 944(sp)
 
 	# store inp$34 
 
@@ -1088,7 +909,7 @@ mainEntry73:
 	li t1, 4
 
 	# get address of inp$34 points to
-	ld t3, 600(sp)
+	ld t3, 944(sp)
 	sw t1, 0(t3)
 
 	# gep inp$35 
@@ -1099,16 +920,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$35
-	sd t0, 592(sp)
+	sd t0, 936(sp)
 
 	# store inp$35 
 
@@ -1116,7 +934,7 @@ mainEntry73:
 	li t1, 3
 
 	# get address of inp$35 points to
-	ld t3, 592(sp)
+	ld t3, 936(sp)
 	sw t1, 0(t3)
 
 	# gep inp$36 
@@ -1127,16 +945,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$36
-	sd t0, 584(sp)
+	sd t0, 928(sp)
 
 	# store inp$36 
 
@@ -1144,7 +959,7 @@ mainEntry73:
 	li t1, 2
 
 	# get address of inp$36 points to
-	ld t3, 584(sp)
+	ld t3, 928(sp)
 	sw t1, 0(t3)
 
 	# gep inp$37 
@@ -1155,16 +970,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$37
-	sd t0, 576(sp)
+	sd t0, 920(sp)
 
 	# store inp$37 
 
@@ -1172,7 +984,7 @@ mainEntry73:
 	li t1, 1
 
 	# get address of inp$37 points to
-	ld t3, 576(sp)
+	ld t3, 920(sp)
 	sw t1, 0(t3)
 
 	# gep inp$38 
@@ -1183,16 +995,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$38
-	sd t0, 568(sp)
+	sd t0, 912(sp)
 
 	# store inp$38 
 
@@ -1200,7 +1009,7 @@ mainEntry73:
 	li t1, 2
 
 	# get address of inp$38 points to
-	ld t3, 568(sp)
+	ld t3, 912(sp)
 	sw t1, 0(t3)
 
 	# gep inp$39 
@@ -1211,16 +1020,13 @@ mainEntry73:
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:inp$39
-	sd t0, 560(sp)
+	sd t0, 904(sp)
 
 	# store inp$39 
 
@@ -1228,7 +1034,7 @@ mainEntry73:
 	li t1, 2
 
 	# get address of inp$39 points to
-	ld t3, 560(sp)
+	ld t3, 904(sp)
 	sw t1, 0(t3)
 
 	# store lv$7 
@@ -1237,9 +1043,8 @@ mainEntry73:
 	li t1, 20
 
 	# get address of lv$7 points to
-	li t4, 1144
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1428
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# store lv$8 
@@ -1248,30 +1053,26 @@ mainEntry73:
 	li t1, 20
 
 	# get address of lv$8 points to
-	li t4, 1160
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1436
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	#  ptr lv$11
 
 	# fetch variables
-
-	# get address of local var:lv$11
-	li t4, 1552
-	add t4, sp, t4
-	ld t1, 0(t4)
+	li t4, 1648
+	add t1, sp, t4
 	mv t0, t1
 
 	# get address of local var:ptr
-	sd t0, 552(sp)
+	sd t0, 896(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:ptr
-	ld t1, 552(sp)
+	ld t1, 896(sp)
 	mv a0, t1
 
 	# fetch variables
@@ -1305,7 +1106,8 @@ mainEntry73:
 	li t1, 0
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_225
@@ -1315,68 +1117,68 @@ whileCond_225:
 	# load i lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i
 	lw t0, 0(t3)
-	sw t0, 548(sp)
+	sw t0, 892(sp)
 
 	# load len1 lv$7
 
 	# get address of lv$7 points to
-	li t4, 1144
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1428
+	add t3, sp, t3
 
 	# get address of local var:len1
 	lw t0, 0(t3)
-	sw t0, 544(sp)
+	sw t0, 884(sp)
 
 	# ICMP cond_lt_tmp_ i len1 
 
 	# fetch variables
 
 	# get address of local var:i
-	lw t1, 548(sp)
+	lw t1, 892(sp)
 
 	# get address of local var:len1
-	lw t2, 544(sp)
+	lw t2, 884(sp)
 	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_
-	sw t0, 540(sp)
+	sw t0, 876(sp)
 
 	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_
-	lw t1, 540(sp)
+	lw t1, 876(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	sw t0, 536(sp)
+	sw t0, 868(sp)
 
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
-	lw t1, 536(sp)
+	lw t1, 868(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_
-	sw t0, 532(sp)
+	sw t0, 860(sp)
 
 	# condBr cond_ whileBody_225 next_538
 
 	# fetch variables
 
 	# get address of local var:cond_
-	lw t1, 532(sp)
+	lw t1, 860(sp)
 	beqz t1, next_538
 	j whileBody_225
 whileBody_225:
@@ -1384,113 +1186,111 @@ whileBody_225:
 	# load i$1 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$1
 	lw t0, 0(t3)
-	sw t0, 528(sp)
+	sw t0, 852(sp)
 
 	# gep c1 i$1
 
 	# fetch variables
 
 	# get address of local var:i$1
-	lw t1, 528(sp)
+	lw t1, 852(sp)
 	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$9
-
-	# get address of local var:lv$9
-	li t4, 1272
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1444
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:c1
-	sd t0, 520(sp)
+	sd t0, 840(sp)
 
 	# load i$2 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$2
 	lw t0, 0(t3)
-	sw t0, 516(sp)
+	sw t0, 836(sp)
 
 	# gep mult1 i$2
 
 	# fetch variables
 
 	# get address of local var:i$2
-	lw t1, 516(sp)
+	lw t1, 836(sp)
 	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$5
-
-	# get address of local var:lv$5
-	li t4, 1040
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1264
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:mult1
-	sd t0, 504(sp)
+	sd t0, 824(sp)
 
 	# load mult1$1 mult1
 
 	# get address of mult1 points to
-	ld t3, 504(sp)
+	ld t3, 824(sp)
 
 	# get address of local var:mult1$1
 	lw t0, 0(t3)
-	sw t0, 500(sp)
+	sw t0, 820(sp)
 
 	# store c1 mult1$1
 
 	# fetch variables
 
 	# get address of local var:mult1$1
-	lw t1, 500(sp)
+	lw t1, 820(sp)
 
 	# get address of c1 points to
-	ld t3, 520(sp)
+	ld t3, 840(sp)
 	sw t1, 0(t3)
 
 	# load i$3 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$3
 	lw t0, 0(t3)
-	sw t0, 496(sp)
+	sw t0, 812(sp)
 
 	# ADD result_ i$3  
 
 	# fetch variables
 
 	# get address of local var:i$3
-	lw t1, 496(sp)
+	lw t1, 812(sp)
 	li t2, 1
-	add t0, t1, t2
+	addw t0, t1, t2
 
 	# get address of local var:result_
-	sw t0, 492(sp)
+	sw t0, 804(sp)
 
 	# store lv result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	lw t1, 492(sp)
+	lw t1, 804(sp)
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_225
@@ -1503,7 +1303,8 @@ next_538:
 	li t1, 0
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_226
@@ -1513,68 +1314,68 @@ whileCond_226:
 	# load i$4 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$4
 	lw t0, 0(t3)
-	sw t0, 488(sp)
+	sw t0, 796(sp)
 
 	# load len2 lv$8
 
 	# get address of lv$8 points to
-	li t4, 1160
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1436
+	add t3, sp, t3
 
 	# get address of local var:len2
 	lw t0, 0(t3)
-	sw t0, 484(sp)
+	sw t0, 788(sp)
 
 	# ICMP cond_lt_tmp_$1 i$4 len2 
 
 	# fetch variables
 
 	# get address of local var:i$4
-	lw t1, 488(sp)
+	lw t1, 796(sp)
 
 	# get address of local var:len2
-	lw t2, 484(sp)
+	lw t2, 788(sp)
 	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$1
-	sw t0, 480(sp)
+	sw t0, 780(sp)
 
 	#  cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_$1
-	lw t1, 480(sp)
+	lw t1, 780(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$1
-	sw t0, 476(sp)
+	sw t0, 772(sp)
 
 	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$1
-	lw t1, 476(sp)
+	lw t1, 772(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_$1
-	sw t0, 472(sp)
+	sw t0, 764(sp)
 
 	# condBr cond_$1 whileBody_226 next_539
 
 	# fetch variables
 
 	# get address of local var:cond_$1
-	lw t1, 472(sp)
+	lw t1, 764(sp)
 	beqz t1, next_539
 	j whileBody_226
 whileBody_226:
@@ -1582,113 +1383,111 @@ whileBody_226:
 	# load i$5 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$5
 	lw t0, 0(t3)
-	sw t0, 468(sp)
+	sw t0, 756(sp)
 
 	# gep c2 i$5
 
 	# fetch variables
 
 	# get address of local var:i$5
-	lw t1, 468(sp)
+	lw t1, 756(sp)
 	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$10
-
-	# get address of local var:lv$10
-	li t4, 1384
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1548
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:c2
-	sd t0, 456(sp)
+	sd t0, 744(sp)
 
 	# load i$6 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$6
 	lw t0, 0(t3)
-	sw t0, 452(sp)
+	sw t0, 740(sp)
 
 	# gep mult2 i$6
 
 	# fetch variables
 
 	# get address of local var:i$6
-	lw t1, 452(sp)
+	lw t1, 740(sp)
 	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$6
-
-	# get address of local var:lv$6
-	li t4, 1128
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1344
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:mult2
-	sd t0, 440(sp)
+	sd t0, 728(sp)
 
 	# load mult2$1 mult2
 
 	# get address of mult2 points to
-	ld t3, 440(sp)
+	ld t3, 728(sp)
 
 	# get address of local var:mult2$1
 	lw t0, 0(t3)
-	sw t0, 436(sp)
+	sw t0, 724(sp)
 
 	# store c2 mult2$1
 
 	# fetch variables
 
 	# get address of local var:mult2$1
-	lw t1, 436(sp)
+	lw t1, 724(sp)
 
 	# get address of c2 points to
-	ld t3, 456(sp)
+	ld t3, 744(sp)
 	sw t1, 0(t3)
 
 	# load i$7 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$7
 	lw t0, 0(t3)
-	sw t0, 432(sp)
+	sw t0, 716(sp)
 
 	# ADD result_$1 i$7  
 
 	# fetch variables
 
 	# get address of local var:i$7
-	lw t1, 432(sp)
+	lw t1, 716(sp)
 	li t2, 1
-	add t0, t1, t2
+	addw t0, t1, t2
 
 	# get address of local var:result_$1
-	sw t0, 428(sp)
+	sw t0, 708(sp)
 
 	# store lv result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
-	lw t1, 428(sp)
+	lw t1, 708(sp)
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_226
@@ -1698,60 +1497,59 @@ next_539:
 	# load len1$1 lv$7
 
 	# get address of lv$7 points to
-	li t4, 1144
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1428
+	add t3, sp, t3
 
 	# get address of local var:len1$1
 	lw t0, 0(t3)
-	sw t0, 424(sp)
+	sw t0, 700(sp)
 
 	# load len2$1 lv$8
 
 	# get address of lv$8 points to
-	li t4, 1160
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1436
+	add t3, sp, t3
 
 	# get address of local var:len2$1
 	lw t0, 0(t3)
-	sw t0, 420(sp)
+	sw t0, 692(sp)
 
 	# ADD result_$2 len1$1 len2$1 
 
 	# fetch variables
 
 	# get address of local var:len1$1
-	lw t1, 424(sp)
+	lw t1, 700(sp)
 
 	# get address of local var:len2$1
-	lw t2, 420(sp)
-	add t0, t1, t2
+	lw t2, 692(sp)
+	addw t0, t1, t2
 
 	# get address of local var:result_$2
-	sw t0, 416(sp)
+	sw t0, 684(sp)
 
 	# SUB result_$3 result_$2  
 
 	# fetch variables
 
 	# get address of local var:result_$2
-	lw t1, 416(sp)
+	lw t1, 684(sp)
 	li t2, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_$3
-	sw t0, 412(sp)
+	sw t0, 676(sp)
 
 	# store lv$3 result_$3
 
 	# fetch variables
 
 	# get address of local var:result_$3
-	lw t1, 412(sp)
+	lw t1, 676(sp)
 
 	# get address of lv$3 points to
-	ld t3, 936(sp)
+	li t3, 1252
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# store lv 
@@ -1760,7 +1558,8 @@ next_539:
 	li t1, 0
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_227
@@ -1770,68 +1569,70 @@ whileCond_227:
 	# load i$8 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$8
 	lw t0, 0(t3)
-	sw t0, 408(sp)
+	sw t0, 668(sp)
 
 	# load n lv$3
 
 	# get address of lv$3 points to
-	ld t3, 936(sp)
+	li t3, 1252
+	add t3, sp, t3
 
 	# get address of local var:n
 	lw t0, 0(t3)
-	sw t0, 404(sp)
+	sw t0, 660(sp)
 
 	# ICMP cond_le_tmp_ i$8 n 
 
 	# fetch variables
 
 	# get address of local var:i$8
-	lw t1, 408(sp)
+	lw t1, 668(sp)
 
 	# get address of local var:n
-	lw t2, 404(sp)
+	lw t2, 660(sp)
 	sub t0, t1, t2
 	sgtz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_le_tmp_
-	sw t0, 400(sp)
+	sw t0, 652(sp)
 
 	#  cond_tmp_$2 cond_le_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_le_tmp_
-	lw t1, 400(sp)
+	lw t1, 652(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$2
-	sw t0, 396(sp)
+	sw t0, 644(sp)
 
 	# ICMP cond_$2 cond_tmp_$2  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$2
-	lw t1, 396(sp)
+	lw t1, 644(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_$2
-	sw t0, 392(sp)
+	sw t0, 636(sp)
 
 	# condBr cond_$2 whileBody_227 next_540
 
 	# fetch variables
 
 	# get address of local var:cond_$2
-	lw t1, 392(sp)
+	lw t1, 636(sp)
 	beqz t1, next_540
 	j whileBody_227
 whileBody_227:
@@ -1839,32 +1640,30 @@ whileBody_227:
 	# load i$9 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$9
 	lw t0, 0(t3)
-	sw t0, 388(sp)
+	sw t0, 628(sp)
 
 	# gep result i$9
 
 	# fetch variables
 
 	# get address of local var:i$9
-	lw t1, 388(sp)
+	lw t1, 628(sp)
 	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$11
-
-	# get address of local var:lv$11
-	li t4, 1552
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1648
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result
-	sd t0, 376(sp)
+	sd t0, 616(sp)
 
 	# store result 
 
@@ -1872,39 +1671,41 @@ whileBody_227:
 	li t1, 0
 
 	# get address of result points to
-	ld t3, 376(sp)
+	ld t3, 616(sp)
 	sw t1, 0(t3)
 
 	# load i$10 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$10
 	lw t0, 0(t3)
-	sw t0, 372(sp)
+	sw t0, 612(sp)
 
 	# ADD result_$4 i$10  
 
 	# fetch variables
 
 	# get address of local var:i$10
-	lw t1, 372(sp)
+	lw t1, 612(sp)
 	li t2, 1
-	add t0, t1, t2
+	addw t0, t1, t2
 
 	# get address of local var:result_$4
-	sw t0, 368(sp)
+	sw t0, 604(sp)
 
 	# store lv result_$4
 
 	# fetch variables
 
 	# get address of local var:result_$4
-	lw t1, 368(sp)
+	lw t1, 604(sp)
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_227
@@ -1917,41 +1718,42 @@ next_540:
 	li t1, 0
 
 	# get address of lv$4 points to
-	ld t3, 952(sp)
+	li t3, 1260
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load len2$2 lv$8
 
 	# get address of lv$8 points to
-	li t4, 1160
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1436
+	add t3, sp, t3
 
 	# get address of local var:len2$2
 	lw t0, 0(t3)
-	sw t0, 364(sp)
+	sw t0, 596(sp)
 
 	# SUB result_$5 len2$2  
 
 	# fetch variables
 
 	# get address of local var:len2$2
-	lw t1, 364(sp)
+	lw t1, 596(sp)
 	li t2, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_$5
-	sw t0, 360(sp)
+	sw t0, 588(sp)
 
 	# store lv result_$5
 
 	# fetch variables
 
 	# get address of local var:result_$5
-	lw t1, 360(sp)
+	lw t1, 588(sp)
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_228
@@ -1961,56 +1763,57 @@ whileCond_228:
 	# load i$11 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$11
 	lw t0, 0(t3)
-	sw t0, 356(sp)
+	sw t0, 580(sp)
 
 	# ICMP cond_gt_tmp_ i$11  
 
 	# fetch variables
 
 	# get address of local var:i$11
-	lw t1, 356(sp)
+	lw t1, 580(sp)
 	li t2, -1
 	sub t0, t1, t2
 	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_
-	sw t0, 352(sp)
+	sw t0, 572(sp)
 
 	#  cond_tmp_$3 cond_gt_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_gt_tmp_
-	lw t1, 352(sp)
+	lw t1, 572(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$3
-	sw t0, 348(sp)
+	sw t0, 564(sp)
 
 	# ICMP cond_$3 cond_tmp_$3  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$3
-	lw t1, 348(sp)
+	lw t1, 564(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_$3
-	sw t0, 344(sp)
+	sw t0, 556(sp)
 
 	# condBr cond_$3 whileBody_228 next_541
 
 	# fetch variables
 
 	# get address of local var:cond_$3
-	lw t1, 344(sp)
+	lw t1, 556(sp)
 	beqz t1, next_541
 	j whileBody_228
 whileBody_228:
@@ -2018,85 +1821,84 @@ whileBody_228:
 	# load i$12 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$12
 	lw t0, 0(t3)
-	sw t0, 340(sp)
+	sw t0, 548(sp)
 
 	# gep c2$1 i$12
 
 	# fetch variables
 
 	# get address of local var:i$12
-	lw t1, 340(sp)
+	lw t1, 548(sp)
 	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$10
-
-	# get address of local var:lv$10
-	li t4, 1384
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1548
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:c2$1
-	sd t0, 328(sp)
+	sd t0, 536(sp)
 
 	# load c2$2 c2$1
 
 	# get address of c2$1 points to
-	ld t3, 328(sp)
+	ld t3, 536(sp)
 
 	# get address of local var:c2$2
 	lw t0, 0(t3)
-	sw t0, 324(sp)
+	sw t0, 532(sp)
 
 	# store lv$2 c2$2
 
 	# fetch variables
 
 	# get address of local var:c2$2
-	lw t1, 324(sp)
+	lw t1, 532(sp)
 
 	# get address of lv$2 points to
-	ld t3, 920(sp)
+	li t3, 1244
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load len1$2 lv$7
 
 	# get address of lv$7 points to
-	li t4, 1144
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1428
+	add t3, sp, t3
 
 	# get address of local var:len1$2
 	lw t0, 0(t3)
-	sw t0, 320(sp)
+	sw t0, 524(sp)
 
 	# SUB result_$6 len1$2  
 
 	# fetch variables
 
 	# get address of local var:len1$2
-	lw t1, 320(sp)
+	lw t1, 524(sp)
 	li t2, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_$6
-	sw t0, 316(sp)
+	sw t0, 516(sp)
 
 	# store lv$1 result_$6
 
 	# fetch variables
 
 	# get address of local var:result_$6
-	lw t1, 316(sp)
+	lw t1, 516(sp)
 
 	# get address of lv$1 points to
-	ld t3, 904(sp)
+	li t3, 1236
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_229
@@ -2111,71 +1913,68 @@ next_541:
 	mul t0, t1, t2
 
 	# get value of local var:lv$11
-
-	# get address of local var:lv$11
-	li t4, 1552
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1648
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$8
-	sd t0, 304(sp)
+	sd t0, 504(sp)
 
 	# load result$9 result$8
 
 	# get address of result$8 points to
-	ld t3, 304(sp)
+	ld t3, 504(sp)
 
 	# get address of local var:result$9
 	lw t0, 0(t3)
-	sw t0, 300(sp)
+	sw t0, 500(sp)
 
 	# ICMP cond_neq_tmp_ result$9  
 
 	# fetch variables
 
 	# get address of local var:result$9
-	lw t1, 300(sp)
+	lw t1, 500(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_neq_tmp_
-	sw t0, 296(sp)
+	sw t0, 492(sp)
 
 	#  cond_tmp_$6 cond_neq_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_neq_tmp_
-	lw t1, 296(sp)
+	lw t1, 492(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$6
-	sw t0, 292(sp)
+	sw t0, 484(sp)
 
 	# ICMP cond_$6 cond_tmp_$6  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$6
-	lw t1, 292(sp)
+	lw t1, 484(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_$6
-	sw t0, 288(sp)
+	sw t0, 476(sp)
 
 	# condBr cond_$6 ifTrue_314 next_544
 
 	# fetch variables
 
 	# get address of local var:cond_$6
-	lw t1, 288(sp)
+	lw t1, 476(sp)
 	beqz t1, next_544
 	j ifTrue_314
 whileCond_229:
@@ -2183,56 +1982,57 @@ whileCond_229:
 	# load j lv$1
 
 	# get address of lv$1 points to
-	ld t3, 904(sp)
+	li t3, 1236
+	add t3, sp, t3
 
 	# get address of local var:j
 	lw t0, 0(t3)
-	sw t0, 284(sp)
+	sw t0, 468(sp)
 
 	# ICMP cond_gt_tmp_$1 j  
 
 	# fetch variables
 
 	# get address of local var:j
-	lw t1, 284(sp)
+	lw t1, 468(sp)
 	li t2, -1
 	sub t0, t1, t2
 	sgtz t0, t0
 
 	# get address of local var:cond_gt_tmp_$1
-	sw t0, 280(sp)
+	sw t0, 460(sp)
 
 	#  cond_tmp_$4 cond_gt_tmp_$1
 
 	# fetch variables
 
 	# get address of local var:cond_gt_tmp_$1
-	lw t1, 280(sp)
+	lw t1, 460(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$4
-	sw t0, 276(sp)
+	sw t0, 452(sp)
 
 	# ICMP cond_$4 cond_tmp_$4  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$4
-	lw t1, 276(sp)
+	lw t1, 452(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_$4
-	sw t0, 272(sp)
+	sw t0, 444(sp)
 
 	# condBr cond_$4 whileBody_229 next_542
 
 	# fetch variables
 
 	# get address of local var:cond_$4
-	lw t1, 272(sp)
+	lw t1, 444(sp)
 	beqz t1, next_542
 	j whileBody_229
 whileBody_229:
@@ -2240,182 +2040,181 @@ whileBody_229:
 	# load n$1 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 936(sp)
+	li t3, 1252
+	add t3, sp, t3
 
 	# get address of local var:n$1
 	lw t0, 0(t3)
-	sw t0, 268(sp)
+	sw t0, 436(sp)
 
 	# gep result$1 n$1
 
 	# fetch variables
 
 	# get address of local var:n$1
-	lw t1, 268(sp)
+	lw t1, 436(sp)
 	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$11
-
-	# get address of local var:lv$11
-	li t4, 1552
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1648
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$1
-	sd t0, 256(sp)
+	sd t0, 424(sp)
 
 	# load result$2 result$1
 
 	# get address of result$1 points to
-	ld t3, 256(sp)
+	ld t3, 424(sp)
 
 	# get address of local var:result$2
 	lw t0, 0(t3)
-	sw t0, 252(sp)
+	sw t0, 420(sp)
 
 	# load t lv$2
 
 	# get address of lv$2 points to
-	ld t3, 920(sp)
+	li t3, 1244
+	add t3, sp, t3
 
 	# get address of local var:t
 	lw t0, 0(t3)
-	sw t0, 248(sp)
+	sw t0, 412(sp)
 
 	# load j$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 904(sp)
+	li t3, 1236
+	add t3, sp, t3
 
 	# get address of local var:j$1
 	lw t0, 0(t3)
-	sw t0, 244(sp)
+	sw t0, 404(sp)
 
 	# gep c1$1 j$1
 
 	# fetch variables
 
 	# get address of local var:j$1
-	lw t1, 244(sp)
+	lw t1, 404(sp)
 	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$9
-
-	# get address of local var:lv$9
-	li t4, 1272
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1444
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:c1$1
-	sd t0, 232(sp)
+	sd t0, 392(sp)
 
 	# load c1$2 c1$1
 
 	# get address of c1$1 points to
-	ld t3, 232(sp)
+	ld t3, 392(sp)
 
 	# get address of local var:c1$2
 	lw t0, 0(t3)
-	sw t0, 228(sp)
+	sw t0, 388(sp)
 
 	# MUL result_$7 t c1$2 
 
 	# fetch variables
 
 	# get address of local var:t
-	lw t1, 248(sp)
+	lw t1, 412(sp)
 
 	# get address of local var:c1$2
-	lw t2, 228(sp)
+	lw t2, 388(sp)
 	mul t0, t1, t2
 
 	# get address of local var:result_$7
-	sw t0, 224(sp)
+	sw t0, 380(sp)
 
 	# ADD result_$8 result$2 result_$7 
 
 	# fetch variables
 
 	# get address of local var:result$2
-	lw t1, 252(sp)
+	lw t1, 420(sp)
 
 	# get address of local var:result_$7
-	lw t2, 224(sp)
-	add t0, t1, t2
+	lw t2, 380(sp)
+	addw t0, t1, t2
 
 	# get address of local var:result_$8
-	sw t0, 220(sp)
+	sw t0, 372(sp)
 
 	# store lv$4 result_$8
 
 	# fetch variables
 
 	# get address of local var:result_$8
-	lw t1, 220(sp)
+	lw t1, 372(sp)
 
 	# get address of lv$4 points to
-	ld t3, 952(sp)
+	li t3, 1260
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load temp lv$4
 
 	# get address of lv$4 points to
-	ld t3, 952(sp)
+	li t3, 1260
+	add t3, sp, t3
 
 	# get address of local var:temp
 	lw t0, 0(t3)
-	sw t0, 216(sp)
+	sw t0, 364(sp)
 
 	# ICMP cond_ge_tmp_ temp  
 
 	# fetch variables
 
 	# get address of local var:temp
-	lw t1, 216(sp)
+	lw t1, 364(sp)
 	li t2, 10
 	slt t0, t1, t2
 	seqz t0, t0
 
 	# get address of local var:cond_ge_tmp_
-	sw t0, 212(sp)
+	sw t0, 356(sp)
 
 	#  cond_tmp_$5 cond_ge_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_ge_tmp_
-	lw t1, 212(sp)
+	lw t1, 356(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$5
-	sw t0, 208(sp)
+	sw t0, 348(sp)
 
 	# ICMP cond_$5 cond_tmp_$5  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$5
-	lw t1, 208(sp)
+	lw t1, 348(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_$5
-	sw t0, 204(sp)
+	sw t0, 340(sp)
 
 	# condBr cond_$5 ifTrue_313 ifFalse_115
 
 	# fetch variables
 
 	# get address of local var:cond_$5
-	lw t1, 204(sp)
+	lw t1, 340(sp)
 	beqz t1, ifFalse_115
 	j ifTrue_313
 next_542:
@@ -2423,90 +2222,93 @@ next_542:
 	# load n$7 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 936(sp)
+	li t3, 1252
+	add t3, sp, t3
 
 	# get address of local var:n$7
 	lw t0, 0(t3)
-	sw t0, 200(sp)
+	sw t0, 332(sp)
 
 	# load len1$3 lv$7
 
 	# get address of lv$7 points to
-	li t4, 1144
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1428
+	add t3, sp, t3
 
 	# get address of local var:len1$3
 	lw t0, 0(t3)
-	sw t0, 196(sp)
+	sw t0, 324(sp)
 
 	# ADD result_$15 n$7 len1$3 
 
 	# fetch variables
 
 	# get address of local var:n$7
-	lw t1, 200(sp)
+	lw t1, 332(sp)
 
 	# get address of local var:len1$3
-	lw t2, 196(sp)
-	add t0, t1, t2
+	lw t2, 324(sp)
+	addw t0, t1, t2
 
 	# get address of local var:result_$15
-	sw t0, 192(sp)
+	sw t0, 316(sp)
 
 	# SUB result_$16 result_$15  
 
 	# fetch variables
 
 	# get address of local var:result_$15
-	lw t1, 192(sp)
+	lw t1, 316(sp)
 	li t2, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_$16
-	sw t0, 188(sp)
+	sw t0, 308(sp)
 
 	# store lv$3 result_$16
 
 	# fetch variables
 
 	# get address of local var:result_$16
-	lw t1, 188(sp)
+	lw t1, 308(sp)
 
 	# get address of lv$3 points to
-	ld t3, 936(sp)
+	li t3, 1252
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load i$13 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$13
 	lw t0, 0(t3)
-	sw t0, 184(sp)
+	sw t0, 300(sp)
 
 	# SUB result_$17 i$13  
 
 	# fetch variables
 
 	# get address of local var:i$13
-	lw t1, 184(sp)
+	lw t1, 300(sp)
 	li t2, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_$17
-	sw t0, 180(sp)
+	sw t0, 292(sp)
 
 	# store lv result_$17
 
 	# fetch variables
 
 	# get address of local var:result_$17
-	lw t1, 180(sp)
+	lw t1, 292(sp)
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_228
@@ -2516,190 +2318,186 @@ ifTrue_313:
 	# load n$2 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 936(sp)
+	li t3, 1252
+	add t3, sp, t3
 
 	# get address of local var:n$2
 	lw t0, 0(t3)
-	sw t0, 176(sp)
+	sw t0, 284(sp)
 
 	# gep result$3 n$2
 
 	# fetch variables
 
 	# get address of local var:n$2
-	lw t1, 176(sp)
+	lw t1, 284(sp)
 	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$11
-
-	# get address of local var:lv$11
-	li t4, 1552
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1648
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$3
-	sd t0, 168(sp)
+	sd t0, 272(sp)
 
 	# load temp$1 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 952(sp)
+	li t3, 1260
+	add t3, sp, t3
 
 	# get address of local var:temp$1
 	lw t0, 0(t3)
-	sw t0, 164(sp)
+	sw t0, 268(sp)
 
 	# store result$3 temp$1
 
 	# fetch variables
 
 	# get address of local var:temp$1
-	lw t1, 164(sp)
+	lw t1, 268(sp)
 
 	# get address of result$3 points to
-	ld t3, 168(sp)
+	ld t3, 272(sp)
 	sw t1, 0(t3)
 
 	# load n$3 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 936(sp)
+	li t3, 1252
+	add t3, sp, t3
 
 	# get address of local var:n$3
 	lw t0, 0(t3)
-	sw t0, 160(sp)
+	sw t0, 260(sp)
 
 	# SUB result_$9 n$3  
 
 	# fetch variables
 
 	# get address of local var:n$3
-	lw t1, 160(sp)
+	lw t1, 260(sp)
 	li t2, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_$9
-	sw t0, 156(sp)
+	sw t0, 252(sp)
 
 	# gep result$4 result_$9
 
 	# fetch variables
 
 	# get address of local var:result_$9
-	lw t1, 156(sp)
+	lw t1, 252(sp)
 	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$11
-
-	# get address of local var:lv$11
-	li t4, 1552
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1648
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$4
-	sd t0, 144(sp)
+	sd t0, 240(sp)
 
 	# load n$4 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 936(sp)
+	li t3, 1252
+	add t3, sp, t3
 
 	# get address of local var:n$4
 	lw t0, 0(t3)
-	sw t0, 140(sp)
+	sw t0, 236(sp)
 
 	# SUB result_$10 n$4  
 
 	# fetch variables
 
 	# get address of local var:n$4
-	lw t1, 140(sp)
+	lw t1, 236(sp)
 	li t2, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_$10
-	sw t0, 136(sp)
+	sw t0, 228(sp)
 
 	# gep result$5 result_$10
 
 	# fetch variables
 
 	# get address of local var:result_$10
-	lw t1, 136(sp)
+	lw t1, 228(sp)
 	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$11
-
-	# get address of local var:lv$11
-	li t4, 1552
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1648
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$5
-	sd t0, 128(sp)
+	sd t0, 216(sp)
 
 	# load result$6 result$5
 
 	# get address of result$5 points to
-	ld t3, 128(sp)
+	ld t3, 216(sp)
 
 	# get address of local var:result$6
 	lw t0, 0(t3)
-	sw t0, 124(sp)
+	sw t0, 212(sp)
 
 	# load temp$2 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 952(sp)
+	li t3, 1260
+	add t3, sp, t3
 
 	# get address of local var:temp$2
 	lw t0, 0(t3)
-	sw t0, 120(sp)
+	sw t0, 204(sp)
 
 	# DIV result_$11 temp$2  
 
 	# fetch variables
 
 	# get address of local var:temp$2
-	lw t1, 120(sp)
+	lw t1, 204(sp)
 	li t2, 10
 	div t0, t1, t2
 
 	# get address of local var:result_$11
-	sw t0, 116(sp)
+	sw t0, 196(sp)
 
 	# ADD result_$12 result$6 result_$11 
 
 	# fetch variables
 
 	# get address of local var:result$6
-	lw t1, 124(sp)
+	lw t1, 212(sp)
 
 	# get address of local var:result_$11
-	lw t2, 116(sp)
-	add t0, t1, t2
+	lw t2, 196(sp)
+	addw t0, t1, t2
 
 	# get address of local var:result_$12
-	sw t0, 112(sp)
+	sw t0, 188(sp)
 
 	# store result$4 result_$12
 
 	# fetch variables
 
 	# get address of local var:result_$12
-	lw t1, 112(sp)
+	lw t1, 188(sp)
 
 	# get address of result$4 points to
-	ld t3, 144(sp)
+	ld t3, 240(sp)
 	sw t1, 0(t3)
 
 	# br next_543
@@ -2709,51 +2507,50 @@ ifFalse_115:
 	# load n$5 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 936(sp)
+	li t3, 1252
+	add t3, sp, t3
 
 	# get address of local var:n$5
 	lw t0, 0(t3)
-	sw t0, 108(sp)
+	sw t0, 180(sp)
 
 	# gep result$7 n$5
 
 	# fetch variables
 
 	# get address of local var:n$5
-	lw t1, 108(sp)
+	lw t1, 180(sp)
 	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$11
-
-	# get address of local var:lv$11
-	li t4, 1552
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1648
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$7
-	sd t0, 96(sp)
+	sd t0, 168(sp)
 
 	# load temp$3 lv$4
 
 	# get address of lv$4 points to
-	ld t3, 952(sp)
+	li t3, 1260
+	add t3, sp, t3
 
 	# get address of local var:temp$3
 	lw t0, 0(t3)
-	sw t0, 92(sp)
+	sw t0, 164(sp)
 
 	# store result$7 temp$3
 
 	# fetch variables
 
 	# get address of local var:temp$3
-	lw t1, 92(sp)
+	lw t1, 164(sp)
 
 	# get address of result$7 points to
-	ld t3, 96(sp)
+	ld t3, 168(sp)
 	sw t1, 0(t3)
 
 	# br next_543
@@ -2763,65 +2560,69 @@ next_543:
 	# load j$2 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 904(sp)
+	li t3, 1236
+	add t3, sp, t3
 
 	# get address of local var:j$2
 	lw t0, 0(t3)
-	sw t0, 88(sp)
+	sw t0, 156(sp)
 
 	# SUB result_$13 j$2  
 
 	# fetch variables
 
 	# get address of local var:j$2
-	lw t1, 88(sp)
+	lw t1, 156(sp)
 	li t2, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_$13
-	sw t0, 84(sp)
+	sw t0, 148(sp)
 
 	# store lv$1 result_$13
 
 	# fetch variables
 
 	# get address of local var:result_$13
-	lw t1, 84(sp)
+	lw t1, 148(sp)
 
 	# get address of lv$1 points to
-	ld t3, 904(sp)
+	li t3, 1236
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load n$6 lv$3
 
 	# get address of lv$3 points to
-	ld t3, 936(sp)
+	li t3, 1252
+	add t3, sp, t3
 
 	# get address of local var:n$6
 	lw t0, 0(t3)
-	sw t0, 80(sp)
+	sw t0, 140(sp)
 
 	# SUB result_$14 n$6  
 
 	# fetch variables
 
 	# get address of local var:n$6
-	lw t1, 80(sp)
+	lw t1, 140(sp)
 	li t2, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_$14
-	sw t0, 76(sp)
+	sw t0, 132(sp)
 
 	# store lv$3 result_$14
 
 	# fetch variables
 
 	# get address of local var:result_$14
-	lw t1, 76(sp)
+	lw t1, 132(sp)
 
 	# get address of lv$3 points to
-	ld t3, 936(sp)
+	li t3, 1252
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_229
@@ -2836,32 +2637,29 @@ ifTrue_314:
 	mul t0, t1, t2
 
 	# get value of local var:lv$11
-
-	# get address of local var:lv$11
-	li t4, 1552
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1648
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$10
-	sd t0, 64(sp)
+	sd t0, 120(sp)
 
 	# load result$11 result$10
 
 	# get address of result$10 points to
-	ld t3, 64(sp)
+	ld t3, 120(sp)
 
 	# get address of local var:result$11
 	lw t0, 0(t3)
-	sw t0, 60(sp)
+	sw t0, 116(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:result$11
-	lw t1, 60(sp)
+	lw t1, 116(sp)
 	mv a0, t1
 	li t4, 0
 	add sp, sp, t4
@@ -2891,7 +2689,8 @@ next_544:
 	li t1, 1
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_230
@@ -2901,107 +2700,106 @@ whileCond_230:
 	# load i$14 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$14
 	lw t0, 0(t3)
-	sw t0, 56(sp)
+	sw t0, 108(sp)
 
 	# load len1$4 lv$7
 
 	# get address of lv$7 points to
-	li t4, 1144
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1428
+	add t3, sp, t3
 
 	# get address of local var:len1$4
 	lw t0, 0(t3)
-	sw t0, 52(sp)
+	sw t0, 100(sp)
 
 	# load len2$3 lv$8
 
 	# get address of lv$8 points to
-	li t4, 1160
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1436
+	add t3, sp, t3
 
 	# get address of local var:len2$3
 	lw t0, 0(t3)
-	sw t0, 48(sp)
+	sw t0, 92(sp)
 
 	# ADD result_$18 len1$4 len2$3 
 
 	# fetch variables
 
 	# get address of local var:len1$4
-	lw t1, 52(sp)
+	lw t1, 100(sp)
 
 	# get address of local var:len2$3
-	lw t2, 48(sp)
-	add t0, t1, t2
+	lw t2, 92(sp)
+	addw t0, t1, t2
 
 	# get address of local var:result_$18
-	sw t0, 44(sp)
+	sw t0, 84(sp)
 
 	# SUB result_$19 result_$18  
 
 	# fetch variables
 
 	# get address of local var:result_$18
-	lw t1, 44(sp)
+	lw t1, 84(sp)
 	li t2, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_$19
-	sw t0, 40(sp)
+	sw t0, 76(sp)
 
 	# ICMP cond_le_tmp_$1 i$14 result_$19 
 
 	# fetch variables
 
 	# get address of local var:i$14
-	lw t1, 56(sp)
+	lw t1, 108(sp)
 
 	# get address of local var:result_$19
-	lw t2, 40(sp)
+	lw t2, 76(sp)
 	sub t0, t1, t2
 	sgtz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_le_tmp_$1
-	sw t0, 36(sp)
+	sw t0, 68(sp)
 
 	#  cond_tmp_$7 cond_le_tmp_$1
 
 	# fetch variables
 
 	# get address of local var:cond_le_tmp_$1
-	lw t1, 36(sp)
+	lw t1, 68(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$7
-	sw t0, 32(sp)
+	sw t0, 60(sp)
 
 	# ICMP cond_$7 cond_tmp_$7  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$7
-	lw t1, 32(sp)
+	lw t1, 60(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_$7
-	sw t0, 28(sp)
+	sw t0, 52(sp)
 
 	# condBr cond_$7 whileBody_230 next_545
 
 	# fetch variables
 
 	# get address of local var:cond_$7
-	lw t1, 28(sp)
+	lw t1, 52(sp)
 	beqz t1, next_545
 	j whileBody_230
 whileBody_230:
@@ -3009,48 +2807,46 @@ whileBody_230:
 	# load i$15 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$15
 	lw t0, 0(t3)
-	sw t0, 24(sp)
+	sw t0, 44(sp)
 
 	# gep result$12 i$15
 
 	# fetch variables
 
 	# get address of local var:i$15
-	lw t1, 24(sp)
+	lw t1, 44(sp)
 	li t2, 4
 	mul t0, t1, t2
 
 	# get value of local var:lv$11
-
-	# get address of local var:lv$11
-	li t4, 1552
-	add t4, sp, t4
-	ld t3, 0(t4)
+	li t3, 1648
+	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
 
 	# get address of local var:result$12
-	sd t0, 16(sp)
+	sd t0, 32(sp)
 
 	# load result$13 result$12
 
 	# get address of result$12 points to
-	ld t3, 16(sp)
+	ld t3, 32(sp)
 
 	# get address of local var:result$13
 	lw t0, 0(t3)
-	sw t0, 12(sp)
+	sw t0, 28(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:result$13
-	lw t1, 12(sp)
+	lw t1, 28(sp)
 	mv a0, t1
 	li t4, 0
 	add sp, sp, t4
@@ -3073,33 +2869,35 @@ whileBody_230:
 	# load i$16 lv
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 
 	# get address of local var:i$16
 	lw t0, 0(t3)
-	sw t0, 8(sp)
+	sw t0, 20(sp)
 
 	# ADD result_$20 i$16  
 
 	# fetch variables
 
 	# get address of local var:i$16
-	lw t1, 8(sp)
+	lw t1, 20(sp)
 	li t2, 1
-	add t0, t1, t2
+	addw t0, t1, t2
 
 	# get address of local var:result_$20
-	sw t0, 4(sp)
+	sw t0, 12(sp)
 
 	# store lv result_$20
 
 	# fetch variables
 
 	# get address of local var:result_$20
-	lw t1, 4(sp)
+	lw t1, 12(sp)
 
 	# get address of lv points to
-	ld t3, 888(sp)
+	li t3, 1228
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_230
@@ -3111,7 +2909,7 @@ next_545:
 	# fetch variables
 	li t1, 0
 	mv a0, t1
-	li t4, 1560
+	li t4, 1808
 	add sp, sp, t4
 	ret 
 

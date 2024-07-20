@@ -1,31 +1,21 @@
 .data
-.align 2
+.align 3
 .text
-.align 2
+.align 1
 .type main, @function
 .globl main
 main:
 mainEntry9:
 
 	# reserve space
-	li t4, 28
+	li t4, 32
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv$1
-	li t0, 16
-	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 20(sp)
 
 	# allocate lv
-	li t0, 4
-	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 8(sp)
 
 	# store lv 
 
@@ -34,8 +24,7 @@ mainEntry9:
 	fmv.w.x ft1, t1
 
 	# get address of lv points to
-	ld t3, 8(sp)
-	fsw ft1, 0(t3)
+	fsw ft1, 20(sp)
 
 	# store lv$1 
 
@@ -43,26 +32,24 @@ mainEntry9:
 	li t1, 1
 
 	# get address of lv$1 points to
-	ld t3, 20(sp)
-	sw t1, 0(t3)
+	sw t1, 28(sp)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 20(sp)
 
 	# get address of local var:b
-	lw t0, 0(t3)
-	sw t0, 0(sp)
+	lw t0, 28(sp)
+	sw t0, 12(sp)
 
 	# ret b
 
 	# fetch variables
 
 	# get address of local var:b
-	lw t1, 0(sp)
+	lw t1, 12(sp)
 	mv a0, t1
-	li t4, 28
+	li t4, 32
 	add sp, sp, t4
 	ret 
 

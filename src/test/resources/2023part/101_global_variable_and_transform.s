@@ -1,40 +1,33 @@
 .data
-.align 2
+.align 3
+.align 8
 .globl gv
 gv:
 .word 1
+.align 8
 .globl gv1
 gv1:
 .word 1
+.align 8
 .globl gv2
 gv2:
 .word 0x3f800000
 .text
-.align 2
+.align 1
 .type main, @function
 .globl main
 main:
 mainEntry17:
 
 	# reserve space
-	li t4, 36
+	li t4, 48
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv$1
-	li t0, 24
-	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 28(sp)
 
 	# allocate lv
-	li t0, 12
-	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 16(sp)
 
 	# store lv 
 
@@ -43,55 +36,51 @@ mainEntry17:
 	fmv.w.x ft1, t1
 
 	# get address of lv points to
-	ld t3, 16(sp)
-	fsw ft1, 0(t3)
+	fsw ft1, 36(sp)
 
 	# load d lv
 
 	# get address of lv points to
-	ld t3, 16(sp)
 
 	# get address of local var:d
-	flw ft0, 0(t3)
-	fsw ft0, 8(sp)
+	flw ft0, 36(sp)
+	fsw ft0, 28(sp)
 
 	#  f2i_ d
 
 	# fetch variables
 
 	# get address of local var:d
-	flw ft1, 8(sp)
+	flw ft1, 28(sp)
 	fcvt.w.s t0, ft1, rtz
 
 	# get address of local var:f2i_
-	sw t0, 4(sp)
+	sw t0, 20(sp)
 
 	# store lv$1 f2i_
 
 	# fetch variables
 
 	# get address of local var:f2i_
-	lw t1, 4(sp)
+	lw t1, 20(sp)
 
 	# get address of lv$1 points to
-	ld t3, 28(sp)
-	sw t1, 0(t3)
+	sw t1, 44(sp)
 
 	# load e lv$1
 
 	# get address of lv$1 points to
-	ld t3, 28(sp)
 
 	# get address of local var:e
-	lw t0, 0(t3)
-	sw t0, 0(sp)
+	lw t0, 44(sp)
+	sw t0, 12(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:e
-	lw t1, 0(sp)
+	lw t1, 12(sp)
 	mv a0, t1
 	li t4, 0
 	add sp, sp, t4
@@ -116,7 +105,7 @@ mainEntry17:
 	# fetch variables
 	li t1, 1
 	mv a0, t1
-	li t4, 36
+	li t4, 48
 	add sp, sp, t4
 	ret 
 

@@ -1,11 +1,11 @@
-.bss
-.align 8
+.data
+.align 3
 .align 8
 .globl gv
 gv:
 .zero 400
 .text
-.align 8
+.align 1
 .type main, @function
 .globl main
 main:

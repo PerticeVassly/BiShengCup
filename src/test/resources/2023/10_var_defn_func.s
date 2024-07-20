@@ -1,7 +1,7 @@
-.bss
-.align 8
+.data
+.align 3
 .text
-.align 8
+.align 1
 .type defn, @function
 .globl defn
 defn:
@@ -29,23 +29,20 @@ defnEntry:
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
+.text
+.align 1
 .type main, @function
 .globl main
 main:
 mainEntry86:
 
 	# reserve space
-	li t4, 24
+	li t4, 32
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	li t0, 12
-	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 16(sp)
 
 	# prepare params
 	li t4, 0
@@ -67,36 +64,38 @@ mainEntry86:
 	add sp, sp, t4
 
 	# get address of local var:defn
-	sw a0, 8(sp)
+	sw a0, 20(sp)
 
 	# store lv defn
 
 	# fetch variables
 
 	# get address of local var:defn
-	lw t1, 8(sp)
+	lw t1, 20(sp)
 
 	# get address of lv points to
-	ld t3, 16(sp)
+	li t3, 28
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 16(sp)
+	li t3, 28
+	add t3, sp, t3
 
 	# get address of local var:a
 	lw t0, 0(t3)
-	sw t0, 4(sp)
+	sw t0, 12(sp)
 
 	# ret a
 
 	# fetch variables
 
 	# get address of local var:a
-	lw t1, 4(sp)
+	lw t1, 12(sp)
 	mv a0, t1
-	li t4, 24
+	li t4, 32
 	add sp, sp, t4
 	ret 
 

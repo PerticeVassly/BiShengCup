@@ -1,7 +1,7 @@
 .data
-.align 2
+.align 3
 .text
-.align 2
+.align 1
 .type main, @function
 .globl main
 main:
@@ -14,25 +14,10 @@ mainEntry2:
 	# save the parameters
 
 	# allocate lv$2
-	li t0, 36
-	add t0, sp, t0
-
-	# get address of local var:lv$2
-	sd t0, 40(sp)
 
 	# allocate lv$1
-	li t0, 24
-	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 28(sp)
 
 	# allocate lv
-	li t0, 12
-	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 16(sp)
 
 	# store lv 
 
@@ -41,8 +26,7 @@ mainEntry2:
 	fmv.w.x ft1, t1
 
 	# get address of lv points to
-	ld t3, 16(sp)
-	fsw ft1, 0(t3)
+	fsw ft1, 28(sp)
 
 	# store lv$1 
 
@@ -51,51 +35,47 @@ mainEntry2:
 	fmv.w.x ft1, t1
 
 	# get address of lv$1 points to
-	ld t3, 28(sp)
-	fsw ft1, 0(t3)
+	fsw ft1, 36(sp)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 16(sp)
 
 	# get address of local var:a
-	flw ft0, 0(t3)
-	fsw ft0, 8(sp)
+	flw ft0, 28(sp)
+	fsw ft0, 20(sp)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
-	ld t3, 28(sp)
 
 	# get address of local var:b
-	flw ft0, 0(t3)
-	fsw ft0, 4(sp)
+	flw ft0, 36(sp)
+	fsw ft0, 12(sp)
 
 	# FADD result_ a b 
 
 	# fetch variables
 
 	# get address of local var:a
-	flw ft1, 8(sp)
+	flw ft1, 20(sp)
 
 	# get address of local var:b
-	flw ft2, 4(sp)
+	flw ft2, 12(sp)
 	fadd.s ft0, ft1, ft2
 
 	# get address of local var:result_
-	fsw ft0, 0(sp)
+	fsw ft0, 4(sp)
 
 	# store lv$2 result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	flw ft1, 0(sp)
+	flw ft1, 4(sp)
 
 	# get address of lv$2 points to
-	ld t3, 40(sp)
-	fsw ft1, 0(t3)
+	fsw ft1, 44(sp)
 
 	# ret 
 

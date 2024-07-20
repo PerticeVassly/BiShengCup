@@ -1,18 +1,19 @@
 .data
-.align 2
+.align 3
+.align 8
 .globl gv
 gv:
 .word 3
 .word 4
 .text
-.align 2
+.align 1
 .type main, @function
 .globl main
 main:
 mainEntry4:
 
 	# reserve space
-	li t4, 12
+	li t4, 16
 	sub sp, sp, t4
 
 	# save the parameters
@@ -30,25 +31,25 @@ mainEntry4:
 	add t0, t1, t0
 
 	# get address of local var:a
-	sd t0, 4(sp)
+	sd t0, 8(sp)
 
 	# load a$1 a
 
 	# get address of a points to
-	ld t3, 4(sp)
+	ld t3, 8(sp)
 
 	# get address of local var:a$1
 	lw t0, 0(t3)
-	sw t0, 0(sp)
+	sw t0, 4(sp)
 
 	# ret a$1
 
 	# fetch variables
 
 	# get address of local var:a$1
-	lw t1, 0(sp)
+	lw t1, 4(sp)
 	mv a0, t1
-	li t4, 12
+	li t4, 16
 	add sp, sp, t4
 	ret 
 

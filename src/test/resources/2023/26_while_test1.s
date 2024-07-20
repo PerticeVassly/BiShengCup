@@ -1,14 +1,14 @@
-.bss
-.align 8
+.data
+.align 3
 .text
-.align 8
+.align 1
 .type doubleWhile, @function
 .globl doubleWhile
 doubleWhile:
 doubleWhileEntry:
 
 	# reserve space
-	li t4, 88
+	li t4, 144
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -19,18 +19,8 @@ doubleWhileEntry:
 	# save the parameters
 
 	# allocate lv$1
-	li t0, 76
-	add t0, sp, t0
-
-	# get address of local var:lv$1
-	sd t0, 80(sp)
 
 	# allocate lv
-	li t0, 60
-	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 64(sp)
 
 	# store lv 
 
@@ -38,7 +28,8 @@ doubleWhileEntry:
 	li t1, 5
 
 	# get address of lv points to
-	ld t3, 64(sp)
+	li t3, 132
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# store lv$1 
@@ -47,7 +38,8 @@ doubleWhileEntry:
 	li t1, 7
 
 	# get address of lv$1 points to
-	ld t3, 80(sp)
+	li t3, 140
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_68
@@ -57,55 +49,56 @@ whileCond_68:
 	# load i lv
 
 	# get address of lv points to
-	ld t3, 64(sp)
+	li t3, 132
+	add t3, sp, t3
 
 	# get address of local var:i
 	lw t0, 0(t3)
-	sw t0, 56(sp)
+	sw t0, 124(sp)
 
 	# ICMP cond_lt_tmp_ i  
 
 	# fetch variables
 
 	# get address of local var:i
-	lw t1, 56(sp)
+	lw t1, 124(sp)
 	li t2, 100
 	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_
-	sw t0, 52(sp)
+	sw t0, 116(sp)
 
 	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_
-	lw t1, 52(sp)
+	lw t1, 116(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
-	sw t0, 48(sp)
+	sw t0, 108(sp)
 
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_
-	lw t1, 48(sp)
+	lw t1, 108(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_
-	sw t0, 44(sp)
+	sw t0, 100(sp)
 
 	# condBr cond_ whileBody_68 next_132
 
 	# fetch variables
 
 	# get address of local var:cond_
-	lw t1, 44(sp)
+	lw t1, 100(sp)
 	beqz t1, next_132
 	j whileBody_68
 whileBody_68:
@@ -113,33 +106,35 @@ whileBody_68:
 	# load i$1 lv
 
 	# get address of lv points to
-	ld t3, 64(sp)
+	li t3, 132
+	add t3, sp, t3
 
 	# get address of local var:i$1
 	lw t0, 0(t3)
-	sw t0, 40(sp)
+	sw t0, 92(sp)
 
 	# ADD result_ i$1  
 
 	# fetch variables
 
 	# get address of local var:i$1
-	lw t1, 40(sp)
+	lw t1, 92(sp)
 	li t2, 30
-	add t0, t1, t2
+	addw t0, t1, t2
 
 	# get address of local var:result_
-	sw t0, 36(sp)
+	sw t0, 84(sp)
 
 	# store lv result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	lw t1, 36(sp)
+	lw t1, 84(sp)
 
 	# get address of lv points to
-	ld t3, 64(sp)
+	li t3, 132
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_69
@@ -149,20 +144,21 @@ next_132:
 	# load j$3 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 80(sp)
+	li t3, 140
+	add t3, sp, t3
 
 	# get address of local var:j$3
 	lw t0, 0(t3)
-	sw t0, 32(sp)
+	sw t0, 76(sp)
 
 	# ret j$3
 
 	# fetch variables
 
 	# get address of local var:j$3
-	lw t1, 32(sp)
+	lw t1, 76(sp)
 	mv a0, t1
-	li t4, 88
+	li t4, 144
 	add sp, sp, t4
 
 	# restore callee saved regs
@@ -173,55 +169,56 @@ whileCond_69:
 	# load j lv$1
 
 	# get address of lv$1 points to
-	ld t3, 80(sp)
+	li t3, 140
+	add t3, sp, t3
 
 	# get address of local var:j
 	lw t0, 0(t3)
-	sw t0, 28(sp)
+	sw t0, 68(sp)
 
 	# ICMP cond_lt_tmp_$1 j  
 
 	# fetch variables
 
 	# get address of local var:j
-	lw t1, 28(sp)
+	lw t1, 68(sp)
 	li t2, 100
 	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$1
-	sw t0, 24(sp)
+	sw t0, 60(sp)
 
 	#  cond_tmp_$1 cond_lt_tmp_$1
 
 	# fetch variables
 
 	# get address of local var:cond_lt_tmp_$1
-	lw t1, 24(sp)
+	lw t1, 60(sp)
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$1
-	sw t0, 20(sp)
+	sw t0, 52(sp)
 
 	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 
 	# get address of local var:cond_tmp_$1
-	lw t1, 20(sp)
+	lw t1, 52(sp)
 	li t2, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
 
 	# get address of local var:cond_$1
-	sw t0, 16(sp)
+	sw t0, 44(sp)
 
 	# condBr cond_$1 whileBody_69 next_133
 
 	# fetch variables
 
 	# get address of local var:cond_$1
-	lw t1, 16(sp)
+	lw t1, 44(sp)
 	beqz t1, next_133
 	j whileBody_69
 whileBody_69:
@@ -229,33 +226,35 @@ whileBody_69:
 	# load j$1 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 80(sp)
+	li t3, 140
+	add t3, sp, t3
 
 	# get address of local var:j$1
 	lw t0, 0(t3)
-	sw t0, 12(sp)
+	sw t0, 36(sp)
 
 	# ADD result_$1 j$1  
 
 	# fetch variables
 
 	# get address of local var:j$1
-	lw t1, 12(sp)
+	lw t1, 36(sp)
 	li t2, 6
-	add t0, t1, t2
+	addw t0, t1, t2
 
 	# get address of local var:result_$1
-	sw t0, 8(sp)
+	sw t0, 28(sp)
 
 	# store lv$1 result_$1
 
 	# fetch variables
 
 	# get address of local var:result_$1
-	lw t1, 8(sp)
+	lw t1, 28(sp)
 
 	# get address of lv$1 points to
-	ld t3, 80(sp)
+	li t3, 140
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_69
@@ -265,44 +264,48 @@ next_133:
 	# load j$2 lv$1
 
 	# get address of lv$1 points to
-	ld t3, 80(sp)
+	li t3, 140
+	add t3, sp, t3
 
 	# get address of local var:j$2
 	lw t0, 0(t3)
-	sw t0, 4(sp)
+	sw t0, 20(sp)
 
 	# SUB result_$2 j$2  
 
 	# fetch variables
 
 	# get address of local var:j$2
-	lw t1, 4(sp)
+	lw t1, 20(sp)
 	li t2, 100
 	sub t0, t1, t2
 
 	# get address of local var:result_$2
-	sw t0, 0(sp)
+	sw t0, 12(sp)
 
 	# store lv$1 result_$2
 
 	# fetch variables
 
 	# get address of local var:result_$2
-	lw t1, 0(sp)
+	lw t1, 12(sp)
 
 	# get address of lv$1 points to
-	ld t3, 80(sp)
+	li t3, 140
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# br whileCond_68
 	j whileCond_68
+.text
+.align 1
 .type main, @function
 .globl main
 main:
 mainEntry27:
 
 	# reserve space
-	li t4, 8
+	li t4, 16
 	sub sp, sp, t4
 
 	# save the parameters
@@ -327,16 +330,16 @@ mainEntry27:
 	add sp, sp, t4
 
 	# get address of local var:doubleWhile
-	sw a0, 4(sp)
+	sw a0, 12(sp)
 
 	# ret doubleWhile
 
 	# fetch variables
 
 	# get address of local var:doubleWhile
-	lw t1, 4(sp)
+	lw t1, 12(sp)
 	mv a0, t1
-	li t4, 8
+	li t4, 16
 	add sp, sp, t4
 	ret 
 

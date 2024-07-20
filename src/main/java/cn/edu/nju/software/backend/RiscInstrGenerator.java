@@ -213,6 +213,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
             assert false;
         }
 
+        if(allocator.checkPtrHasAllocated(allocate.getLVal().getName())){
+            return;
+        }
         riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(allocator.getOffset(allocate.getLVal()) - typeLen)));
         riscInstructions.add(new RiscAdd(new Register("t0"), new Register("sp"), new Register("t0")));
         afterABinaryInstr(allocate);

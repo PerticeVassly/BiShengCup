@@ -1,7 +1,7 @@
 .data
-.align 2
+.align 3
 .text
-.align 2
+.align 1
 .type main, @function
 .globl main
 main:
@@ -14,11 +14,6 @@ mainEntry7:
 	# save the parameters
 
 	# allocate lv
-	li t0, 4
-	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 8(sp)
 
 	# store lv 
 
@@ -26,24 +21,22 @@ mainEntry7:
 	li t1, 3
 
 	# get address of lv points to
-	ld t3, 8(sp)
-	sw t1, 0(t3)
+	sw t1, 12(sp)
 
 	# load a lv
 
 	# get address of lv points to
-	ld t3, 8(sp)
 
 	# get address of local var:a
-	lw t0, 0(t3)
-	sw t0, 0(sp)
+	lw t0, 12(sp)
+	sw t0, 4(sp)
 
 	# ret a
 
 	# fetch variables
 
 	# get address of local var:a
-	lw t1, 0(sp)
+	lw t1, 4(sp)
 	mv a0, t1
 	li t4, 16
 	add sp, sp, t4

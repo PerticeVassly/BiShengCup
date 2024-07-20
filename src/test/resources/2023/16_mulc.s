@@ -1,7 +1,7 @@
-.bss
-.align 8
+.data
+.align 3
 .text
-.align 8
+.align 1
 .type main, @function
 .globl main
 main:

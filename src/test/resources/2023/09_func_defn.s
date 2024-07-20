@@ -1,18 +1,18 @@
-.bss
-.align 8
+.data
+.align 3
 .align 8
 .globl gv
 gv:
 .word 0
 .text
-.align 8
+.align 1
 .type func, @function
 .globl func
 func:
 funcEntry:
 
 	# reserve space
-	li t4, 32
+	li t4, 48
 	sub sp, sp, t4
 
 	# save CallerSavedRegs
@@ -23,97 +23,93 @@ funcEntry:
 	# save the parameters
 
 	# get address of local var:0
-	sw a0, 28(sp)
+	sw a0, 44(sp)
 
 	# allocate lv
-	li t0, 12
-	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 16(sp)
 
 	# store lv 0
 
 	# fetch variables
 
 	# get address of local var:0
-	lw t1, 28(sp)
+	lw t1, 44(sp)
 
 	# get address of lv points to
-	ld t3, 16(sp)
+	li t3, 36
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load p lv
 
 	# get address of lv points to
-	ld t3, 16(sp)
+	li t3, 36
+	add t3, sp, t3
 
 	# get address of local var:p
 	lw t0, 0(t3)
-	sw t0, 8(sp)
+	sw t0, 28(sp)
 
 	# SUB result_ p  
 
 	# fetch variables
 
 	# get address of local var:p
-	lw t1, 8(sp)
+	lw t1, 28(sp)
 	li t2, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_
-	sw t0, 4(sp)
+	sw t0, 20(sp)
 
 	# store lv result_
 
 	# fetch variables
 
 	# get address of local var:result_
-	lw t1, 4(sp)
+	lw t1, 20(sp)
 
 	# get address of lv points to
-	ld t3, 16(sp)
+	li t3, 36
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load p$1 lv
 
 	# get address of lv points to
-	ld t3, 16(sp)
+	li t3, 36
+	add t3, sp, t3
 
 	# get address of local var:p$1
 	lw t0, 0(t3)
-	sw t0, 0(sp)
+	sw t0, 12(sp)
 
 	# ret p$1
 
 	# fetch variables
 
 	# get address of local var:p$1
-	lw t1, 0(sp)
+	lw t1, 12(sp)
 	mv a0, t1
-	li t4, 32
+	li t4, 48
 	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
 	ret 
+.text
+.align 1
 .type main, @function
 .globl main
 main:
 mainEntry22:
 
 	# reserve space
-	li t4, 24
+	li t4, 32
 	sub sp, sp, t4
 
 	# save the parameters
 
 	# allocate lv
-	li t0, 12
-	add t0, sp, t0
-
-	# get address of local var:lv
-	sd t0, 16(sp)
 
 	# store gv 
 
@@ -131,14 +127,14 @@ mainEntry22:
 
 	# get address of local var:a
 	lw t0, 0(t3)
-	sw t0, 8(sp)
+	sw t0, 20(sp)
 
 	# prepare params
 
 	# fetch variables
 
 	# get address of local var:a
-	lw t1, 8(sp)
+	lw t1, 20(sp)
 	mv a0, t1
 	li t4, 0
 	add sp, sp, t4
@@ -159,36 +155,38 @@ mainEntry22:
 	add sp, sp, t4
 
 	# get address of local var:func
-	sw a0, 4(sp)
+	sw a0, 12(sp)
 
 	# store lv func
 
 	# fetch variables
 
 	# get address of local var:func
-	lw t1, 4(sp)
+	lw t1, 12(sp)
 
 	# get address of lv points to
-	ld t3, 16(sp)
+	li t3, 28
+	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load b lv
 
 	# get address of lv points to
-	ld t3, 16(sp)
+	li t3, 28
+	add t3, sp, t3
 
 	# get address of local var:b
 	lw t0, 0(t3)
-	sw t0, 0(sp)
+	sw t0, 4(sp)
 
 	# ret b
 
 	# fetch variables
 
 	# get address of local var:b
-	lw t1, 0(sp)
+	lw t1, 4(sp)
 	mv a0, t1
-	li t4, 24
+	li t4, 32
 	add sp, sp, t4
 	ret 
 
