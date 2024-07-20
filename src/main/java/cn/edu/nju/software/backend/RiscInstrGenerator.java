@@ -10,10 +10,7 @@ import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Operand;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
-import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscCall;
-import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscLi;
-import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscSeqz;
-import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscSgtz;
+import cn.edu.nju.software.backend.riscinstruction.pseudo.*;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
@@ -248,7 +245,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(Add add) {
         beforeABinaryInstr(add);
-        riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscAddw(new Register("t0"), new Register("t1"), new Register("t2")));
         afterABinaryInstr(add);
     }
 
@@ -326,6 +323,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(Br br) {
         insertComment("br " + br.getTarget().getName());
+
         riscInstructions.add(new RiscJ(br.getTarget().getName()));
     }
 
