@@ -38,4 +38,8 @@ public class ValueRef {
         return type;
     }
 
+    public boolean equals(ValueRef other) {
+        return other == this;
+    }
+
 }
