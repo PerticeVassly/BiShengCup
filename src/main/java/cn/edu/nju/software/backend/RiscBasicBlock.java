@@ -45,8 +45,11 @@ public class RiscBasicBlock {
 
     private void functionInit() {
         generator.insertComment("reserve space");
-        generator.addInstruction(new RiscLi(new Register("t4"), new ImmediateValue(allocator.getStackSize())));
-        generator.addInstruction(new RiscSub(new Register("sp"), new Register("sp"), new Register("t4")));
+        int stackSize = allocator.getStackSize();
+        if (stackSize > 0) {
+            generator.addInstruction(new RiscLi(new Register("t4"), new ImmediateValue(stackSize)));
+            generator.addInstruction(new RiscSub(new Register("sp"), new Register("sp"), new Register("t4")));
+        }
 
         if(!llvmFunctionValue.getName().equals("main")){
             generator.insertComment("save CallerSavedRegs");

@@ -518,8 +518,12 @@ public class RiscInstrGenerator implements InstructionVisitor {
         } else {
             assert false;
         }
-        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(allocator.getStackSize())));
-        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+
+        int stackSize = allocator.getStackSize();
+        if (stackSize > 0) {
+            riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(stackSize)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+        }
 
         if (!llvmFunctionValue.getName().equals("main")) {
             restoreCalleeSavedRegs();
@@ -531,9 +535,11 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(RetVoid retVoid) {
         insertComment("ret void");
-
-        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(allocator.getStackSize())));
-        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+        int stackSize = allocator.getStackSize();
+        if (stackSize > 0) {
+            riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(stackSize)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+        }
 
         if (!llvmFunctionValue.getName().equals("main")) {
             restoreCalleeSavedRegs();
