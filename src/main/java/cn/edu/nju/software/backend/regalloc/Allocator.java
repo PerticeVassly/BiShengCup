@@ -32,10 +32,22 @@ public class Allocator {
 
     private static final Allocator allocator = new Allocator();
 
+    private TempVarLiveTable tempVarLiveTable;
+
+    private LValLiveTable lValLiveTable;
+
     private Allocator() {}
 
     public static Allocator get() {
         return allocator;
+    }
+
+    public void setLValLiveTable(LValLiveTable lValLiveTable) {
+        this.lValLiveTable = lValLiveTable;
+    }
+
+    public void setTempVarLiveTable(TempVarLiveTable tempVarLiveTable) {
+        this.tempVarLiveTable = tempVarLiveTable;
     }
 
     public void setInstrGenerator(RiscInstrGenerator generator) {
@@ -88,26 +100,35 @@ public class Allocator {
 
     private void prepareALocal(LocalVar localVar, int i){
         if (localVar.getType() instanceof FloatType) {
-            if(generator.getLastVarCalculated() != null && generator.getLastVarCalculated().getName().equals(localVar.getName())){
+            if(localVar.isTmpVar()){
+                if(!checkTempVarIsRecorded(localVar)){
+                    assert false;
+                }
+                generator.addInstruction(new RiscFmvwx(new Register("t" + i), new Register(fetchTempVar(localVar))));
+                generator.addInstruction(new RiscFmvxw(new Register("ft" + i), new Register("t" + i)));
+                return;
+            }
+            if(isLastLVal(localVar)){
                 generator.addInstruction(new RiscFmvxw(new Register("t" + i), new Register("ft0")));
                 generator.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
                 return;
             }
             generator.addInstruction(new RiscFlw(new Register("ft" + i), getAddrOfLocalVar(localVar)));
-        } else if (localVar.getType() instanceof IntType) {
-            if(generator.getLastVarCalculated() != null && generator.getLastVarCalculated().getName().equals(localVar.getName())){
-                generator.addInstruction(new RiscMv(new Register("t" + i), new Register("t0")));
+        } else if (localVar.getType() instanceof IntType || localVar.getType() instanceof BoolType) {
+            if(localVar.isTmpVar()){
+                if(!checkTempVarIsRecorded(localVar)){
+                    assert false;
+                }
+                generator.addInstruction(new RiscMv(new Register("t" + i), new Register(fetchTempVar(localVar))));
                 return;
             }
-            generator.addInstruction(new RiscLw(new Register("t" + i), getAddrOfLocalVar(localVar)));
-        } else if (localVar.getType() instanceof BoolType) {
-            if(generator.getLastVarCalculated() != null && generator.getLastVarCalculated().getName().equals(localVar.getName())){
+            if(isLastLVal(localVar)){
                 generator.addInstruction(new RiscMv(new Register("t" + i), new Register("t0")));
                 return;
             }
             generator.addInstruction(new RiscLw(new Register("t" + i), getAddrOfLocalVar(localVar)));
         } else if(localVar.getType() instanceof Pointer){
-            if(generator.getLastVarCalculated() != null && generator.getLastVarCalculated().getName().equals(localVar.getName())){
+            if(isLastLVal(localVar)){
                 generator.addInstruction(new RiscMv(new Register("t" + i), new Register("t0")));
                 return;
             }
@@ -331,4 +352,29 @@ public class Allocator {
             generator.addInstruction(new RiscAddi(new Register(reName), new Register("zero"),new ImmediateValue(immediate)));
         }
     }
+
+    public boolean isLastLVal(ValueRef variable){
+        return lValLiveTable.isLastLVal(variable);
+    }
+
+    public void resetLastLVal(){
+        lValLiveTable.resetLastLVal();
+    }
+
+    public void setLastLVal(ValueRef variable){
+       lValLiveTable.setLastLVal(variable);
+    }
+
+    public String recordTempVar(ValueRef variable){
+        return tempVarLiveTable.record(variable);
+    }
+
+    public String fetchTempVar(ValueRef variable){
+        return tempVarLiveTable.fetch(variable);
+    }
+
+    public boolean checkTempVarIsRecorded(ValueRef variable){
+        return tempVarLiveTable.isRecorded(variable);
+    }
+
 }
