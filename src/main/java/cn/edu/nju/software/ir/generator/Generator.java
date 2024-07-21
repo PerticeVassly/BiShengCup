@@ -266,7 +266,7 @@ public class Generator implements IrGenerator {
     }
 
     @Override
-    public ValueRef buildFAdd(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+    public LocalVar buildFAdd(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
         Instruction ir = new FAdd(lVal, FADD, operand1, operand2);
         builder.put(ir);
@@ -284,7 +284,7 @@ public class Generator implements IrGenerator {
     }
 
     @Override
-    public ValueRef buildFSub(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+    public LocalVar buildFSub(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
         Instruction ir = new FSub(lVal, FSUB, operand1, operand2);
         builder.put(ir);
@@ -302,7 +302,7 @@ public class Generator implements IrGenerator {
     }
 
     @Override
-    public ValueRef buildFMul(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+    public LocalVar buildFMul(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
         Instruction ir = new FMul(lVal, FMUL, operand1, operand2);
         builder.put(ir);
@@ -320,7 +320,7 @@ public class Generator implements IrGenerator {
     }
 
     @Override
-    public ValueRef buildFDiv(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+    public LocalVar buildFDiv(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
         Instruction ir = new FDiv(lVal, FDIV, operand1, operand2);
         builder.put(ir);

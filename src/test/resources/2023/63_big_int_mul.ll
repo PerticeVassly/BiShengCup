@@ -112,86 +112,8 @@ mainEntry26:
   store i32 2, i32* %inp$39, align 4
   store i32 20, i32* %lv$7, align 4
   store i32 20, i32* %lv$8, align 4
-  %inp$40 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 0
-  store i32 0, i32* %inp$40, align 4
-  %inp$41 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 1
-  store i32 0, i32* %inp$41, align 4
-  %inp$42 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 2
-  store i32 0, i32* %inp$42, align 4
-  %inp$43 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 3
-  store i32 0, i32* %inp$43, align 4
-  %inp$44 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 4
-  store i32 0, i32* %inp$44, align 4
-  %inp$45 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 5
-  store i32 0, i32* %inp$45, align 4
-  %inp$46 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 6
-  store i32 0, i32* %inp$46, align 4
-  %inp$47 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 7
-  store i32 0, i32* %inp$47, align 4
-  %inp$48 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 8
-  store i32 0, i32* %inp$48, align 4
-  %inp$49 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 9
-  store i32 0, i32* %inp$49, align 4
-  %inp$50 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 10
-  store i32 0, i32* %inp$50, align 4
-  %inp$51 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 11
-  store i32 0, i32* %inp$51, align 4
-  %inp$52 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 12
-  store i32 0, i32* %inp$52, align 4
-  %inp$53 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 13
-  store i32 0, i32* %inp$53, align 4
-  %inp$54 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 14
-  store i32 0, i32* %inp$54, align 4
-  %inp$55 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 15
-  store i32 0, i32* %inp$55, align 4
-  %inp$56 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 16
-  store i32 0, i32* %inp$56, align 4
-  %inp$57 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 17
-  store i32 0, i32* %inp$57, align 4
-  %inp$58 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 18
-  store i32 0, i32* %inp$58, align 4
-  %inp$59 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 19
-  store i32 0, i32* %inp$59, align 4
-  %inp$60 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 20
-  store i32 0, i32* %inp$60, align 4
-  %inp$61 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 21
-  store i32 0, i32* %inp$61, align 4
-  %inp$62 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 22
-  store i32 0, i32* %inp$62, align 4
-  %inp$63 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 23
-  store i32 0, i32* %inp$63, align 4
-  %inp$64 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 24
-  store i32 0, i32* %inp$64, align 4
-  %inp$65 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 25
-  store i32 0, i32* %inp$65, align 4
-  %inp$66 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 26
-  store i32 0, i32* %inp$66, align 4
-  %inp$67 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 27
-  store i32 0, i32* %inp$67, align 4
-  %inp$68 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 28
-  store i32 0, i32* %inp$68, align 4
-  %inp$69 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 29
-  store i32 0, i32* %inp$69, align 4
-  %inp$70 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 30
-  store i32 0, i32* %inp$70, align 4
-  %inp$71 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 31
-  store i32 0, i32* %inp$71, align 4
-  %inp$72 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 32
-  store i32 0, i32* %inp$72, align 4
-  %inp$73 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 33
-  store i32 0, i32* %inp$73, align 4
-  %inp$74 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 34
-  store i32 0, i32* %inp$74, align 4
-  %inp$75 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 35
-  store i32 0, i32* %inp$75, align 4
-  %inp$76 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 36
-  store i32 0, i32* %inp$76, align 4
-  %inp$77 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 37
-  store i32 0, i32* %inp$77, align 4
-  %inp$78 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 38
-  store i32 0, i32* %inp$78, align 4
-  %inp$79 = getelementptr [40 x i32], [40 x i32]* %lv$11, i32 0, i32 39
-  store i32 0, i32* %inp$79, align 4
+  %ptr = bitcast [40 x i32]* %lv$11 to i32*
+  call void @memset(i32* %ptr, i32 0, i32 160)
   store i32 0, i32* %lv, align 4
   br label %whileCond_136
 

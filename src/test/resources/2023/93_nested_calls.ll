@@ -28,15 +28,15 @@ func1Entry:
   %cond_eq_tmp_ = icmp eq i32 %z, 0
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_273, label %ifFalse_103
+  br i1 %cond_, label %ifTrue_275, label %ifFalse_104
 
-ifTrue_273:                                         ; pred = %func1Entry
+ifTrue_275:                                         ; pred = %func1Entry
   %x = load i32, i32* %lv, align 4
   %y = load i32, i32* %lv$1, align 4
   %result_ = mul i32 %x, %y
   ret i32 %result_
 
-ifFalse_103:                                        ; pred = %func1Entry
+ifFalse_104:                                        ; pred = %func1Entry
   %x$1 = load i32, i32* %lv, align 4
   %y$1 = load i32, i32* %lv$1, align 4
   %z$1 = load i32, i32* %lv$2, align 4
@@ -53,16 +53,16 @@ func2Entry:
   store i32 %1, i32* %lv$1, align 4
   %y = load i32, i32* %lv$1, align 4
   %cond_normalize_ = icmp ne i32 %y, 0
-  br i1 %cond_normalize_, label %ifTrue_274, label %ifFalse_104
+  br i1 %cond_normalize_, label %ifTrue_276, label %ifFalse_105
 
-ifTrue_274:                                         ; pred = %func2Entry
+ifTrue_276:                                         ; pred = %func2Entry
   %x = load i32, i32* %lv, align 4
   %y$1 = load i32, i32* %lv$1, align 4
   %result_ = srem i32 %x, %y$1
   %func2 = call i32 @func2(i32 %result_, i32 0)
   ret i32 %func2
 
-ifFalse_104:                                        ; pred = %func2Entry
+ifFalse_105:                                        ; pred = %func2Entry
   %x$1 = load i32, i32* %lv, align 4
   ret i32 %x$1
 }
@@ -77,14 +77,14 @@ func3Entry:
   %cond_eq_tmp_ = icmp eq i32 %y, 0
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_275, label %ifFalse_105
+  br i1 %cond_, label %ifTrue_277, label %ifFalse_106
 
-ifTrue_275:                                         ; pred = %func3Entry
+ifTrue_277:                                         ; pred = %func3Entry
   %x = load i32, i32* %lv, align 4
   %result_ = add i32 %x, 1
   ret i32 %result_
 
-ifFalse_105:                                        ; pred = %func3Entry
+ifFalse_106:                                        ; pred = %func3Entry
   %x$1 = load i32, i32* %lv, align 4
   %y$1 = load i32, i32* %lv$1, align 4
   %result_$1 = add i32 %x$1, %y$1
@@ -102,13 +102,13 @@ func4Entry:
   store i32 %2, i32* %lv$2, align 4
   %x = load i32, i32* %lv, align 4
   %cond_normalize_ = icmp ne i32 %x, 0
-  br i1 %cond_normalize_, label %ifTrue_276, label %ifFalse_106
+  br i1 %cond_normalize_, label %ifTrue_278, label %ifFalse_107
 
-ifTrue_276:                                         ; pred = %func4Entry
+ifTrue_278:                                         ; pred = %func4Entry
   %y = load i32, i32* %lv$1, align 4
   ret i32 %y
 
-ifFalse_106:                                        ; pred = %func4Entry
+ifFalse_107:                                        ; pred = %func4Entry
   %z = load i32, i32* %lv$2, align 4
   ret i32 %z
 }
@@ -130,18 +130,18 @@ func6Entry:
   store i32 %1, i32* %lv$1, align 4
   %x = load i32, i32* %lv, align 4
   %cond_normalize_ = icmp ne i32 %x, 0
-  br i1 %cond_normalize_, label %secondCond_103, label %ifFalse_107
+  br i1 %cond_normalize_, label %secondCond_103, label %ifFalse_108
 
-ifTrue_277:                                            ; pred = %secondCond_103
+ifTrue_279:                                            ; pred = %secondCond_103
   ret i32 1
 
-ifFalse_107:                                           ; pred = %func6Entry, %secondCond_103
+ifFalse_108:                                           ; pred = %func6Entry, %secondCond_103
   ret i32 0
 
 secondCond_103:                                        ; pred = %func6Entry
   %y = load i32, i32* %lv$1, align 4
   %cond_normalize_$1 = icmp ne i32 %y, 0
-  br i1 %cond_normalize_$1, label %ifTrue_277, label %ifFalse_107
+  br i1 %cond_normalize_$1, label %ifTrue_279, label %ifFalse_108
 }
 
 define i32 @func7(i32 %0) {
@@ -153,12 +153,12 @@ func7Entry:
   %tmp_$1 = xor i1 %tmp_, 1
   %tmp_$2 = zext i1 %tmp_$1 to i32
   %cond_normalize_ = icmp ne i32 %tmp_$2, 0
-  br i1 %cond_normalize_, label %ifTrue_278, label %ifFalse_108
+  br i1 %cond_normalize_, label %ifTrue_280, label %ifFalse_109
 
-ifTrue_278:                                         ; pred = %func7Entry
+ifTrue_280:                                         ; pred = %func7Entry
   ret i32 1
 
-ifFalse_108:                                        ; pred = %func7Entry
+ifFalse_109:                                        ; pred = %func7Entry
   ret i32 0
 }
 
@@ -180,16 +180,16 @@ mainEntry41:
   %getint$3 = call i32 @getint()
   store i32 %getint$3, i32* %lv$3, align 4
   store i32 0, i32* %lv$5, align 4
-  br label %whileCond_168
+  br label %whileCond_172
 
-whileCond_168:                                        ; pred = %mainEntry41, %whileBody_168
+whileCond_172:                                        ; pred = %mainEntry41, %whileBody_172
   %i = load i32, i32* %lv$5, align 4
   %cond_lt_tmp_ = icmp slt i32 %i, 10
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_168, label %next_447
+  br i1 %cond_, label %whileBody_172, label %next_453
 
-whileBody_168:                                        ; pred = %whileCond_168
+whileBody_172:                                        ; pred = %whileCond_172
   %i$1 = load i32, i32* %lv$5, align 4
   %arr = getelementptr [10 x i32], [10 x i32]* %lv$4, i32 0, i32 %i$1
   %getint$4 = call i32 @getint()
@@ -197,9 +197,9 @@ whileBody_168:                                        ; pred = %whileCond_168
   %i$2 = load i32, i32* %lv$5, align 4
   %result_ = add i32 %i$2, 1
   store i32 %result_, i32* %lv$5, align 4
-  br label %whileCond_168
+  br label %whileCond_172
 
-next_447:                                             ; pred = %whileCond_168
+next_453:                                             ; pred = %whileCond_172
   %i1 = load i32, i32* %lv, align 4
   %func7 = call i32 @func7(i32 %i1)
   %i2 = load i32, i32* %lv$1, align 4

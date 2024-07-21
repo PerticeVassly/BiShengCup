@@ -163,6 +163,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         memset = new FunctionValue(ft, "memset");
     }
 
+    private static boolean isZeroInit(String initStr) {
+        return initStr.replaceAll("[{0,}]", "").isEmpty();
+    }
+
     @Override
     public ValueRef visitProgram(SysYParser.ProgramContext ctx) {
         functionDef = false;
@@ -315,6 +319,12 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else if (ctx.unaryOp() != null) {
             // !, - , +
             String op = ctx.unaryOp().getText();
+            if (op.equals("-") && ctx.exp(0).number() != null) {
+                SysYParser.NumberContext numberCtx = ctx.exp(0).number();
+                if (numberCtx.INTEGER_CONST() != null) {
+                    return gen.ConstInt(i32Type, string2Int("-" + numberCtx.INTEGER_CONST().getText()));
+                }
+            }
             ValueRef val = visitExp(ctx.exp(0));
             if (val instanceof ConstValue) {
                 Object value = ((ConstValue) val).getValue();
@@ -375,34 +385,36 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 //            System.err.println(ctx.exp(0).getText());
 //            System.err.println(ctx.exp(1).getText());
             ValueRef val1 = visitExp(ctx.exp(0)), val2 = visitExp(ctx.exp(1));
+            boolean tmpFlag = ctx.parent instanceof SysYParser.ExpContext;
+            LocalVar lv;
             if (val1.getType().equals(i32Type) && val2.getType().equals(i32Type)) {
                 if (ctx.PLUS() != null) {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
                         return gen.ConstInt(i32Type, v1 + v2);
                     } else {
-                        return gen.buildAdd(builder, val1, val2, "result_");
+                        lv = gen.buildAdd(builder, val1, val2, "result_");
                     }
                 } else if (ctx.MINUS() != null) {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
                         return gen.ConstInt(i32Type, v1 - v2);
                     } else {
-                        return gen.buildSub(builder, val1, val2, "result_");
+                        lv = gen.buildSub(builder, val1, val2, "result_");
                     }
                 } else if (ctx.MUL() != null) {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
                         return gen.ConstInt(i32Type, v1 * v2);
                     } else {
-                        return gen.buildMul(builder, val1, val2, "result_");
+                        lv = gen.buildMul(builder, val1, val2, "result_");
                     }
                 } else if (ctx.DIV() != null) {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
                         return gen.ConstInt(i32Type, v1 / v2);
                     } else {
-                        return gen.buildDiv(builder, val1, val2, "result_");
+                        lv = gen.buildDiv(builder, val1, val2, "result_");
                     }
                 } else {
                     // mod
@@ -410,7 +422,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
                         return gen.ConstInt(i32Type, v1 % v2);
                     } else {
-                        return gen.buildMod(builder, val1, val2, "result_");
+                        lv = gen.buildMod(builder, val1, val2, "result_");
                     }
                 }
             } else {
@@ -433,31 +445,33 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         float v1 = (Float) ((ConstValue) val1).getValue(), v2 = (Float) ((ConstValue) val2).getValue();
                         return gen.ConstFloat(floatType, v1 + v2);
                     } else {
-                        return gen.buildFAdd(builder, val1, val2, "result_");
+                        lv = gen.buildFAdd(builder, val1, val2, "result_");
                     }
                 } else if (ctx.MINUS() != null) {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         float v1 = (Float) ((ConstValue) val1).getValue(), v2 = (Float) ((ConstValue) val2).getValue();
                         return gen.ConstFloat(floatType, v1 - v2);
                     } else {
-                        return gen.buildFSub(builder, val1, val2, "result_");
+                        lv = gen.buildFSub(builder, val1, val2, "result_");
                     }
                 } else if (ctx.MUL() != null) {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         float v1 = (Float) ((ConstValue) val1).getValue(), v2 = (Float) ((ConstValue) val2).getValue();
                         return gen.ConstFloat(floatType, v1 * v2);
                     } else {
-                        return gen.buildFMul(builder, val1, val2, "result_");
+                        lv = gen.buildFMul(builder, val1, val2, "result_");
                     }
                 } else {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         float v1 = (Float) ((ConstValue) val1).getValue(), v2 = (Float) ((ConstValue) val2).getValue();
                         return gen.ConstFloat(floatType, v1 / v2);
                     } else {
-                        return gen.buildFDiv(builder, val1, val2, "result_");
+                        lv = gen.buildFDiv(builder, val1, val2, "result_");
                     }
                 }
             }
+            lv.setTmp(tmpFlag);
+            return lv;
         }
     }
     @Override
@@ -489,9 +503,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 if (res != null) return res;
             }
 //            System.err.println(dim);
-//            if (lVal == null) {
-//                System.err.println(ctx.IDENT().getText());
-//            } // for dbg
             if (((Pointer)lVal.getType()).getBase() instanceof Pointer) {
                 lVal = gen.buildLoad(builder, lVal, "arr_");
             }
@@ -821,37 +832,35 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     gen.buildStore(builder, init, localVar);
                 } else if (localVar != null) {
                     // special {}
-                    if (ctx.initVal().getText().equals("{}") || ctx.initVal().getText().equals("{0}")) {
+                    if (isZeroInit(ctx.initVal().getText())) {
                         ValueRef bitCastPtr = gen.buildBitCast(builder, localVar, "ptr");
                         ArrayList<ValueRef> args = new ArrayList<>();
                         args.add(bitCastPtr);
                         args.add(zero);
-                        ConstValue totSz = gen.ConstInt(i32Type, arrSz);
+                        ConstValue totSz = gen.ConstInt(i32Type, arrSz * 4); // need size of Bytes here!
                         args.add(totSz);
                         gen.buildCall(builder, memset, args, 3, "ret",
                                 ctx.IDENT().getSymbol().getLine());
-                        curScope.put(new Symbol<>(ctx.IDENT().getText(), localVar));
-                        return null;
-                    }
-                    // array
-                    arrayInit = new ArrayList<>();
-                    visitInitVal(ctx.initVal());
-                    /* initialize array for local variable
-                     * consider use GEP to get store target %p
-                     * store %init %p
-                     */
-                    int dims = elementDim.size();
-                    ValueRef[] indices = new ValueRef[dims];
-                    for (int i = 0; i < arrayInit.size(); i++) {
-                        ValueRef storeVal = arrayInit.get(i);
-                        int tmp = i;
-                        for (int j = dims - 1; j >= 0; j--) {
-                            indices[j] = gen.ConstInt(i32Type, tmp % elementDim.get(j));
-                            tmp /= elementDim.get(j);
+                    } else {
+                        // array
+                        arrayInit = new ArrayList<>();
+                        visitInitVal(ctx.initVal());
+                        /* initialize array for local variable
+                         * consider use GEP to get store target %p
+                         * store %init %p
+                         */
+                        int dims = elementDim.size();
+                        ValueRef[] indices = new ValueRef[dims];
+                        for (int i = 0; i < arrayInit.size(); i++) {
+                            ValueRef storeVal = arrayInit.get(i);
+                            int tmp = i;
+                            for (int j = dims - 1; j >= 0; j--) {
+                                indices[j] = gen.ConstInt(i32Type, tmp % elementDim.get(j));
+                                tmp /= elementDim.get(j);
+                            }
+                            ValueRef ptr = gen.buildGEP(builder, localVar, indices, dims, "inp");
+                            gen.buildStore(builder, storeVal, ptr);
                         }
-                        ValueRef ptr = gen.buildGEP(builder, localVar, indices, dims, "inp");
-//                        System.err.println(ctx.getText());// for dbg
-                        gen.buildStore(builder, storeVal, ptr);
                     }
                 }
             }

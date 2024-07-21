@@ -32,17 +32,17 @@ mainEntry42:
   %tmp_$8 = zext i1 %tmp_$7 to i32
   %tmp_$9 = sub i32 0, %tmp_$8
   %cond_normalize_ = icmp ne i32 %tmp_$9, 0
-  br i1 %cond_normalize_, label %ifTrue_279, label %ifFalse_109
+  br i1 %cond_normalize_, label %ifTrue_281, label %ifFalse_110
 
-ifTrue_279:                                         ; pred = %mainEntry42
+ifTrue_281:                                         ; pred = %mainEntry42
   store i32 -1, i32* %lv, align 4
-  br label %next_448
+  br label %next_454
 
-ifFalse_109:                                        ; pred = %mainEntry42
+ifFalse_110:                                        ; pred = %mainEntry42
   store i32 0, i32* %lv, align 4
-  br label %next_448
+  br label %next_454
 
-next_448:                                           ; pred = %ifTrue_279, %ifFalse_109
+next_454:                                           ; pred = %ifTrue_281, %ifFalse_110
   %a$1 = load i32, i32* %lv, align 4
   ret i32 %a$1
 }
