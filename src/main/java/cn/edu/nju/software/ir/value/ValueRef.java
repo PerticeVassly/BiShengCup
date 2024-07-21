@@ -38,6 +38,13 @@ public class ValueRef {
         return type;
     }
 
+    /**
+     * get context
+     * */
+    public String getText() {
+        return this.toString();
+    }
+
     public boolean equals(ValueRef other) {
         return other == this;
     }
