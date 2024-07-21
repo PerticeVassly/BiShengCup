@@ -17,10 +17,7 @@ public class MemToReg {
 
     private ModuleRef module;
 
-    private final ArrayList<Allocate> allocTobeReg;
-
     public MemToReg(ModuleRef module) {
-        allocTobeReg = new ArrayList<>();
         cfgBuildPass = CFGBuildPass.getInstance();
         this.module = module;
         cfgBuildPass.runOnModule(module);
@@ -38,6 +35,7 @@ public class MemToReg {
                 }
                 allocatesInFunction.add((Allocate) entry.getIr(j));
             }
+            HashMap<Allocate, ValueRef> mamToRegAlloc = getRegAlloc(allocatesInFunction, fv);
             // TODO
         }
     }
@@ -46,7 +44,11 @@ public class MemToReg {
      * by mem, find its allocate inst index in allocates
      */
     private int getAllocIndexByMem(ArrayList<Allocate> allocates, ValueRef mem) {
-        // TODO
+        for (int i = 0; i < allocates.size(); i++) {
+            if (allocates.get(i).getOperand(0).equals(mem)) {
+                return i;
+            }
+        }
         return -1;
     }
 
@@ -56,7 +58,6 @@ public class MemToReg {
      * return value: allocate inst that could be transformed into register
      * */
     private HashMap<Allocate, ValueRef> getRegAlloc(ArrayList<Allocate> allocates, FunctionValue fv) {
-        // TODO
         ArrayList<Allocate> tmp = new ArrayList<>(allocates);
         ArrayList<ValueRef> regValue = new ArrayList<>();
         for (int i = 0; i < allocates.size(); i++) {
@@ -69,10 +70,26 @@ public class MemToReg {
                 if (inst instanceof Store) {
                     ValueRef val = inst.getOperand(0);
                     ValueRef mem = inst.getOperand(1);
-
+                    int index = getAllocIndexByMem(allocates, mem);
+                    if (index == -1) {
+                        continue;
+                    }
+                    if (regValue.get(index) == null) {
+                        regValue.set(index, val);
+                    } else {
+                        if (tmp.get(index) != null) {
+                            tmp.set(index, null);
+                        }
+                    }
                 }
             }
         }
-        return null;
+        HashMap<Allocate, ValueRef> res = new HashMap<>();
+        for (int i = 0; i < tmp.size(); i++) {
+            if (regValue.get(i) != null && tmp.get(i) != null) {
+                res.put(tmp.get(i), regValue.get(i));
+            }
+        }
+        return res;
     }
 }
