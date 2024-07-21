@@ -82,25 +82,25 @@ public class RiscInstrGenerator implements InstructionVisitor {
      * @param instr
      */
     private void afterABinaryInstr(Instruction instr){
-//        allocator.setLastLVal(instr.getLVal());
-//        //左值只可能是localVar
-//        LocalVar lVal = (LocalVar) instr.getLVal();
-//        if(lVal.isTmpVar()){
-//            String regName = allocator.recordTempVar(lVal);
-//            if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
-//                riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
-//            } else if(lVal.getType() instanceof FloatType){
-//                riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft0")));
-//                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t0")));
-//            } else {
-//                assert false;
-//            }
-//        }
-//        else {
-//            saveLVal(instr.getLVal());
-//        }
+        allocator.setLastLVal(instr.getLVal());
+        //左值只可能是localVar
+        LocalVar lVal = (LocalVar) instr.getLVal();
+        if(lVal.isTmpVar()){
+            String regName = allocator.recordTempVar(lVal);
+            if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
+                riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
+            } else if(lVal.getType() instanceof FloatType){
+                riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft0")));
+                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t0")));
+            } else {
+                assert false;
+            }
+        }
+        else {
+            saveLVal(instr.getLVal());
+        }
         //现在是所有的save
-        saveLVal(instr.getLVal());
+//        saveLVal(instr.getLVal());
     }
     /**
      * [在生成算数llvm指令对应汇编之前的操作]
@@ -125,23 +125,23 @@ public class RiscInstrGenerator implements InstructionVisitor {
      * @param instr
      */
     private void afterAUnaryInstr(Instruction instr){
-//        allocator.setlastlval(instr.getlval());
-//        localvar lval = (localvar) instr.getlval();
-//        if(lval.istmpvar()){
-//            string regname = allocator.recordtempvar(lval);
-//            if(lval.gettype() instanceof inttype || lval.gettype() instanceof booltype){
-//                riscinstructions.add(new riscmv(new register(regname), new register("t0")));
-//            } else if(lval.gettype() instanceof floattype){
-//                riscinstructions.add(new riscfmvxw(new register("t0"), new register("ft0")));
-//                riscinstructions.add(new riscfmvwx(new register(regname), new register("t0")));
-//            } else {
-//                assert false;
-//            }
-//        }
-//        else {
-//            savelval(instr.getlval());
-//        }
-        saveLVal(instr.getLVal());
+        allocator.setLastLVal(instr.getLVal());
+        LocalVar lVal = (LocalVar) instr.getLVal();
+        if(lVal.isTmpVar()){
+            String regName = allocator.recordTempVar(lVal);
+            if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
+                riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
+            } else if(lVal.getType() instanceof FloatType){
+                riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft0")));
+                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t0")));
+            } else {
+                assert false;
+            }
+        }
+        else {
+            saveLVal(instr.getLVal());
+        }
+//        saveLVal(instr.getLVal());
     }
 
     private void saveLVal(ValueRef lVal){

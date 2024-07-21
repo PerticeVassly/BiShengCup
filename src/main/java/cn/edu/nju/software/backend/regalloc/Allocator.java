@@ -100,14 +100,14 @@ public class Allocator {
 
     private void prepareALocal(LocalVar localVar, int i){
         if (localVar.getType() instanceof FloatType) {
-//            if(localVar.isTmpVar()){
-//                if(!checkTempVarIsRecorded(localVar)){
-//                    assert false;
-//                }
-//                generator.addInstruction(new RiscFmvwx(new Register("t" + i), new Register(fetchTempVar(localVar))));
-//                generator.addInstruction(new RiscFmvxw(new Register("ft" + i), new Register("t" + i)));
-//                return;
-//            }
+            if(localVar.isTmpVar()){
+                if(!checkTempVarIsRecorded(localVar)){
+                    assert false;
+                }
+                generator.addInstruction(new RiscFmvxw(new Register("t" + i), new Register(fetchTempVar(localVar))));
+                generator.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
+                return;
+            }
             if(isLastLVal(localVar)){
                 generator.addInstruction(new RiscFmvxw(new Register("t" + i), new Register("ft0")));
                 generator.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
@@ -115,13 +115,13 @@ public class Allocator {
             }
             generator.addInstruction(new RiscFlw(new Register("ft" + i), getAddrOfLocalVar(localVar)));
         } else if (localVar.getType() instanceof IntType || localVar.getType() instanceof BoolType) {
-//            if(localVar.isTmpVar()){
-//                if(!checkTempVarIsRecorded(localVar)){
-//                    assert false;
-//                }
-//                generator.addInstruction(new RiscMv(new Register("t" + i), new Register(fetchTempVar(localVar))));
-//                return;
-//            }
+            if(localVar.isTmpVar()){
+                if(!checkTempVarIsRecorded(localVar)){
+                    assert false;
+                }
+                generator.addInstruction(new RiscMv(new Register("t" + i), new Register(fetchTempVar(localVar))));
+                return;
+            }
             if(isLastLVal(localVar)){
                 generator.addInstruction(new RiscMv(new Register("t" + i), new Register("t0")));
                 return;
