@@ -3,6 +3,7 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
+import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 
@@ -26,21 +27,21 @@ public class IrCloneVisitor implements InstructionVisitor {
 
     @Override
     public void visit(Store store) {
-        ValueRef src = new ValueRef(store.getOperand(0));
-        ValueRef dest = new ValueRef(store.getOperand(1));
+        ValueRef src = new LocalVar(store.getOperand(0).getType(),store.getOperand(0).getName());
+        ValueRef dest = new LocalVar(store.getOperand(1).getType(),store.getOperand(1).getName());
         curInstruction = new Store(src, dest);
     }
 
     @Override
     public void visit(Allocate allocate) {
-        ValueRef lVal = new ValueRef(allocate.getLVal());
+        ValueRef lVal = new LocalVar(allocate.getLVal().getType(),allocate.getLVal().getName());
         curInstruction = new Allocate(lVal);
     }
 
     @Override
     public void visit(Load load) {
-        ValueRef src = load.getOperand(0);
-        ValueRef lVal = load.getLVal();
+        ValueRef src = new LocalVar(load.getOperand(0).getType(),load.getOperand(0).getName());
+        ValueRef lVal = new LocalVar(load.getLVal().getType(),load.getLVal().getName());
         curInstruction = new Load(lVal, src);
     }
 

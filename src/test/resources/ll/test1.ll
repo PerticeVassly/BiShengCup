@@ -16,35 +16,23 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-define i32 @f(i32 %0, i32 %1) {
+define i32 @f(i32 %0) {
 fEntry:
   %lv$1 = alloca i32, align 4
   %lv = alloca i32, align 4
   store i32 %0, i32* %lv, align 4
-  store i32 %1, i32* %lv$1, align 4
   %a = load i32, i32* %lv, align 4
+  store i32 %a, i32* %lv$1, align 4
   %b = load i32, i32* %lv$1, align 4
-  %result_ = add i32 %a, %b
-  ret i32 %result_
-}
-
-define i32 @g(i32 %0, i32 %1) {
-gEntry:
-  %lv$1 = alloca i32, align 4
-  %lv = alloca i32, align 4
-  store i32 %0, i32* %lv, align 4
-  store i32 %1, i32* %lv$1, align 4
-  %a = load i32, i32* %lv, align 4
-  %b = load i32, i32* %lv$1, align 4
-  %result_ = add i32 %a, %b
-  ret i32 %result_
+  ret i32 %b
 }
 
 define i32 @main() {
 mainEntry:
-  %f = call i32 @f(i32 1, i32 2)
-  %g = call i32 @g(i32 1, i32 2)
-  %result_ = add i32 %f, %g
-  ret i32 %result_
+  %lv = alloca i32, align 4
+  %f = call i32 @f(i32 1)
+  store i32 %f, i32* %lv, align 4
+  %a = load i32, i32* %lv, align 4
+  ret i32 %a
 }
 

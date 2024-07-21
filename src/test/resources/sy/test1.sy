@@ -1,7 +1,9 @@
+int  f(int a){
+  int b=a;
+  return b;
+}
 
-int main() {
-  int a;
-  while(1){
-    a=1;
-  }
+int main(){
+   int a=f(1);
+   return a;
 }
