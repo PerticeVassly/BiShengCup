@@ -37,7 +37,7 @@ public class TempVarLiveTable {
         //find an empty reg and record
         if(tempVar.getType() instanceof IntType){
             for (String regName : tempVar2Reg.keySet()) {
-                if (tempVar2Reg.get(regName) == null && regName.startsWith("t")) {
+                if (tempVar2Reg.get(regName) == null && !regName.startsWith("f")) {
                     tempVar2Reg.put(regName, tempVar.getName());
                     return regName;
                 }
