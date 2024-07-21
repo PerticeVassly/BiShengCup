@@ -656,11 +656,11 @@ public class RiscInstrGenerator implements InstructionVisitor {
     private void pushIntoStack(ValueRef realParam, int order){
         insertComment("push " + realParam.getName());
         if(realParam.getType() instanceof IntType){
-            riscInstructions.add(new RiscSw(new Register("t1"),allocator.getRegWithOffset(-order * 8, "sp", "t4")));
+            riscInstructions.add(new RiscSw(new Register("t1"),allocator.getRegWithOffset(-order * 8, "sp", "t2")));
         } else if(realParam.getType() instanceof FloatType){
-            riscInstructions.add(new RiscFsw(new Register("ft1"), allocator.getRegWithOffset(-order * 8, "sp", "t4")));
+            riscInstructions.add(new RiscFsw(new Register("ft1"), allocator.getRegWithOffset(-order * 8, "sp", "t2")));
         } else if(realParam.getType() instanceof Pointer){
-            riscInstructions.add(new RiscSd(new Register("t1"), allocator.getRegWithOffset(-order * 8, "sp", "t4")));
+            riscInstructions.add(new RiscSd(new Register("t1"), allocator.getRegWithOffset(-order * 8, "sp", "t2")));
         } else {
             assert false;
         }

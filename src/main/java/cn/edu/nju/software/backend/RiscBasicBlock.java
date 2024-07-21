@@ -131,14 +131,14 @@ public class RiscBasicBlock {
 
     private void fetchFromStack(TypeRef type, int i, int preLen, int order) {
         if (type instanceof IntType) {
-            generator.addInstruction(new RiscLw(new Register("t0"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
-            generator.addInstruction(new RiscSw(new Register("t0"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4")));
+            generator.addInstruction(new RiscLw(new Register("t0"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t1")));
+            generator.addInstruction(new RiscSw(new Register("t0"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t1")));
         } else if (type instanceof FloatType) {
-            generator.addInstruction(new RiscFlw(new Register("ft0"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
-            generator.addInstruction(new RiscFsw(new Register("ft0"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t4")));
+            generator.addInstruction(new RiscFlw(new Register("ft0"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t1")));
+            generator.addInstruction(new RiscFsw(new Register("ft0"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")), "sp", "t1")));
         } else if(type instanceof Pointer){
-            generator.addInstruction(new RiscLd(new Register("t0"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
-            generator.addInstruction(new RiscSd(new Register("t0"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")),"sp", "t4")));
+            generator.addInstruction(new RiscLd(new Register("t0"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t1")));
+            generator.addInstruction(new RiscSd(new Register("t0"), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(type, i + "")),"sp", "t1")));
         } else {
             assert false;
         }
