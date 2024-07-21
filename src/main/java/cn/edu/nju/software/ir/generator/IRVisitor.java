@@ -319,6 +319,12 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else if (ctx.unaryOp() != null) {
             // !, - , +
             String op = ctx.unaryOp().getText();
+            if (op.equals("-") && ctx.exp(0).number() != null) {
+                SysYParser.NumberContext numberCtx = ctx.exp(0).number();
+                if (numberCtx.INTEGER_CONST() != null) {
+                    return gen.ConstInt(i32Type, string2Int("-" + numberCtx.INTEGER_CONST().getText()));
+                }
+            }
             ValueRef val = visitExp(ctx.exp(0));
             if (val instanceof ConstValue) {
                 Object value = ((ConstValue) val).getValue();

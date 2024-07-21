@@ -1,8 +1,35 @@
 package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.backend.regalloc.Allocator;
-import cn.edu.nju.software.backend.riscinstruction.*;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.*;
+import cn.edu.nju.software.backend.riscinstruction.RiscAdd;
+import cn.edu.nju.software.backend.riscinstruction.RiscAddi;
+import cn.edu.nju.software.backend.riscinstruction.RiscAnd;
+import cn.edu.nju.software.backend.riscinstruction.RiscBeqz;
+import cn.edu.nju.software.backend.riscinstruction.RiscInstruction;
+import cn.edu.nju.software.backend.riscinstruction.RiscJ;
+import cn.edu.nju.software.backend.riscinstruction.RiscLd;
+import cn.edu.nju.software.backend.riscinstruction.RiscLw;
+import cn.edu.nju.software.backend.riscinstruction.RiscMv;
+import cn.edu.nju.software.backend.riscinstruction.RiscOr;
+import cn.edu.nju.software.backend.riscinstruction.RiscRet;
+import cn.edu.nju.software.backend.riscinstruction.RiscSd;
+import cn.edu.nju.software.backend.riscinstruction.RiscSlt;
+import cn.edu.nju.software.backend.riscinstruction.RiscSub;
+import cn.edu.nju.software.backend.riscinstruction.RiscSw;
+import cn.edu.nju.software.backend.riscinstruction.RiscXor;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFadds;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFcvtsw;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFcvtws;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFdivs;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFeqs;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFles;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlts;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlw;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmuls;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvwx;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvxw;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsubs;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsw;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscDiv;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscMul;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscRem;
@@ -14,7 +41,22 @@ import cn.edu.nju.software.backend.riscinstruction.pseudo.*;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
-import cn.edu.nju.software.ir.instruction.*;
+import cn.edu.nju.software.ir.instruction.Allocate;
+import cn.edu.nju.software.ir.instruction.BitCast;
+import cn.edu.nju.software.ir.instruction.Br;
+import cn.edu.nju.software.ir.instruction.Call;
+import cn.edu.nju.software.ir.instruction.Cmp;
+import cn.edu.nju.software.ir.instruction.CondBr;
+import cn.edu.nju.software.ir.instruction.FloatToInt;
+import cn.edu.nju.software.ir.instruction.GEP;
+import cn.edu.nju.software.ir.instruction.Instruction;
+import cn.edu.nju.software.ir.instruction.IntToFloat;
+import cn.edu.nju.software.ir.instruction.Load;
+import cn.edu.nju.software.ir.instruction.OpEnum;
+import cn.edu.nju.software.ir.instruction.RetValue;
+import cn.edu.nju.software.ir.instruction.RetVoid;
+import cn.edu.nju.software.ir.instruction.Store;
+import cn.edu.nju.software.ir.instruction.ZExt;
 import cn.edu.nju.software.ir.instruction.arithmetic.Add;
 import cn.edu.nju.software.ir.instruction.arithmetic.Div;
 import cn.edu.nju.software.ir.instruction.arithmetic.FAdd;
@@ -25,7 +67,12 @@ import cn.edu.nju.software.ir.instruction.arithmetic.Mod;
 import cn.edu.nju.software.ir.instruction.arithmetic.Mul;
 import cn.edu.nju.software.ir.instruction.arithmetic.Sub;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
-import cn.edu.nju.software.ir.type.*;
+import cn.edu.nju.software.ir.type.ArrayType;
+import cn.edu.nju.software.ir.type.BoolType;
+import cn.edu.nju.software.ir.type.FloatType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.ArrayValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
@@ -125,10 +172,10 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
         //得到array中一个element实际的大小，存放在t2中
         int length = ArrayType.getTotalSize(((ArrayType) gep.getArrayTypePtr().getBase()).getElementType());
-        riscInstructions.add(new RiscLi(new Register("t2"), new ImmediateValue(length)));
+        riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(length)));
 
         //得到相对于basePtr的偏移量，存放在t0中
-        riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t0")));
 
         //获取basePtr的值，存在t1中
         riscInstructions.add(new RiscMv(new Register("t1"), allocator.getValueOfVar(basePtr)));
@@ -472,8 +519,12 @@ public class RiscInstrGenerator implements InstructionVisitor {
         } else {
             assert false;
         }
-        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(allocator.getStackSize())));
-        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+
+        int stackSize = allocator.getStackSize();
+        if (stackSize > 0) {
+            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+        }
 
         if (!llvmFunctionValue.getName().equals("main")) {
             restoreCalleeSavedRegs();
@@ -485,9 +536,11 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(RetVoid retVoid) {
         insertComment("ret void");
-
-        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(allocator.getStackSize())));
-        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+        int stackSize = allocator.getStackSize();
+        if (stackSize > 0) {
+            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+        }
 
         if (!llvmFunctionValue.getName().equals("main")) {
             restoreCalleeSavedRegs();
@@ -513,6 +566,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
         if (funcName.equals("memset")) {
             if (RiscSpecifications.is64Bit()) funcName += "64";
             else funcName += "32";
+        } else if (funcName.equals("starttime") || funcName.equals("stoptime")) {
+            funcName = "_sysy_" + funcName;
+            riscInstructions.add(new RiscLi(new Register("a0"), new ImmediateValue(call.getLineNo())));
         }
 
         riscInstructions.add(new RiscComment("call " + funcName));
@@ -588,9 +644,12 @@ public class RiscInstrGenerator implements InstructionVisitor {
                 assert false;
             }
         }
+        
+        if (order > 0) {
+            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(-8L * order)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+        }
 
-        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(-8L * order)));
-        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
     }
 
     private void pushIntoStack(ValueRef realParam, int order){
@@ -613,8 +672,10 @@ public class RiscInstrGenerator implements InstructionVisitor {
         int floatParamNum = call.getRealParams().stream().filter(x -> x.getType() instanceof FloatType).toArray().length;
 
         int finalToRelase =Math.max(intAndPointerParamNum - RiscSpecifications.getArgRegs().length, 0) + Math.max(floatParamNum - RiscSpecifications.getFArgRegs().length, 0);
-        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(8L * finalToRelase)));
-        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+        if (finalToRelase > 0) {
+            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(8L * finalToRelase)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+        }
     }
 
     private void saveCallerSavedRegs() {
