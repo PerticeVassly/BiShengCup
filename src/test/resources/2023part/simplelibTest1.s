@@ -8,8 +8,8 @@ main:
 mainEntry16:
 
 	# reserve space
-	li t4, 16
-	sub sp, sp, t4
+	li t0, 16
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -18,28 +18,28 @@ mainEntry16:
 	# store lv 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 
 	# get address of lv points to
-	sw t1, 12(sp)
+	addi t3, zero, 12
+	add t3, sp, t3
+	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
+	addi t3, zero, 12
+	add t3, sp, t3
 
 	# get address of local var:a
-	lw t0, 12(sp)
+	lw t0, 0(t3)
 	sw t0, 4(sp)
 
 	# prepare params
 
 	# fetch variables
-
-	# get address of local var:a
-	lw t1, 4(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -53,16 +53,12 @@ mainEntry16:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
-	li t1, 2
+	addi t1, zero, 2
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -76,16 +72,14 @@ mainEntry16:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# ret 
 
 	# fetch variables
-	li t1, 11
+	addi t1, zero, 11
 	mv a0, t1
-	li t4, 16
-	add sp, sp, t4
+	li t0, 16
+	add sp, sp, t0
 	ret 
 
 memset32: 

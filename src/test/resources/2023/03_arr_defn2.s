@@ -12,18 +12,14 @@ main:
 mainEntry92:
 
 	# reserve space
-	li t4, 0
-	sub sp, sp, t4
 
 	# save the parameters
 
 	# ret 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 	ret 
 
 memset32: 

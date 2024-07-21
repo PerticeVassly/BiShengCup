@@ -30,7 +30,7 @@ int main() {
 														while (jjjjj < 3) {
 															int kkkkk = 0;
 															while (kkkkk < 6) {																
-																a = (a + 3) % 999;
+																a = (a + 3) % 999;																		
 																kkkkk = kkkkk + 3;
 															}
 															jjjjj = jjjjj + 1;

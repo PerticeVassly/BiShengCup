@@ -8,8 +8,8 @@ main:
 mainEntry9:
 
 	# reserve space
-	li t4, 32
-	sub sp, sp, t4
+	li t0, 32
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -24,33 +24,37 @@ mainEntry9:
 	fmv.w.x ft1, t1
 
 	# get address of lv points to
-	fsw ft1, 20(sp)
+	addi t3, zero, 20
+	add t3, sp, t3
+	fsw ft1, 0(t3)
 
 	# store lv$1 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 
 	# get address of lv$1 points to
-	sw t1, 28(sp)
+	addi t3, zero, 28
+	add t3, sp, t3
+	sw t1, 0(t3)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
+	addi t3, zero, 28
+	add t3, sp, t3
 
 	# get address of local var:b
-	lw t0, 28(sp)
+	lw t0, 0(t3)
 	sw t0, 12(sp)
 
 	# ret b
 
 	# fetch variables
-
-	# get address of local var:b
-	lw t1, 12(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 32
-	add sp, sp, t4
+	li t0, 32
+	add sp, sp, t0
 	ret 
 
 memset32: 

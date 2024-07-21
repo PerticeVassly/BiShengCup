@@ -8,8 +8,8 @@ main:
 mainEntry1:
 
 	# reserve space
-	li t4, 48
-	sub sp, sp, t4
+	li t0, 48
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -18,12 +18,12 @@ mainEntry1:
 	# gep inp 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:lv
-	li t3, 40
+	addi t3, zero, 40
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -34,7 +34,7 @@ mainEntry1:
 	# store inp 
 
 	# fetch variables
-	li t1, 3
+	addi t1, zero, 3
 
 	# get address of inp points to
 	ld t3, 32(sp)
@@ -43,12 +43,12 @@ mainEntry1:
 	# gep inp$1 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:lv
-	li t3, 40
+	addi t3, zero, 40
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -59,7 +59,7 @@ mainEntry1:
 	# store inp$1 
 
 	# fetch variables
-	li t1, 4
+	addi t1, zero, 4
 
 	# get address of inp$1 points to
 	ld t3, 24(sp)
@@ -68,12 +68,12 @@ mainEntry1:
 	# gep a 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:lv
-	li t3, 40
+	addi t3, zero, 40
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -93,12 +93,10 @@ mainEntry1:
 	# ret a$1
 
 	# fetch variables
-
-	# get address of local var:a$1
-	lw t1, 12(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 48
-	add sp, sp, t4
+	li t0, 48
+	add sp, sp, t0
 	ret 
 
 memset32: 

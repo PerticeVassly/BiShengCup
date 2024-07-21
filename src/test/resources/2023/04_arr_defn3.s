@@ -8,8 +8,8 @@ main:
 mainEntry32:
 
 	# reserve space
-	li t4, 848
-	sub sp, sp, t4
+	li t0, 848
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -26,7 +26,7 @@ mainEntry32:
 	#  ptr lv
 
 	# fetch variables
-	li t4, 688
+	addi t4, zero, 688
 	add t1, sp, t4
 	mv t0, t1
 
@@ -42,14 +42,12 @@ mainEntry32:
 	mv a0, t1
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 	mv a1, t1
 
 	# fetch variables
-	li t1, 32
+	addi t1, zero, 32
 	mv a2, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -63,18 +61,16 @@ mainEntry32:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# gep ptr_ 
 
 	# fetch variables
-	li t1, 0
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$1
-	li t3, 720
+	addi t3, zero, 720
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -85,9 +81,9 @@ mainEntry32:
 	# gep inp 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_
 
@@ -102,7 +98,7 @@ mainEntry32:
 	# store inp 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 
 	# get address of inp points to
 	ld t3, 664(sp)
@@ -111,12 +107,12 @@ mainEntry32:
 	# gep ptr_$1 
 
 	# fetch variables
-	li t1, 0
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$1
-	li t3, 720
+	addi t3, zero, 720
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -127,9 +123,9 @@ mainEntry32:
 	# gep inp$1 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$1
 
@@ -144,7 +140,7 @@ mainEntry32:
 	# store inp$1 
 
 	# fetch variables
-	li t1, 2
+	addi t1, zero, 2
 
 	# get address of inp$1 points to
 	ld t3, 648(sp)
@@ -153,12 +149,12 @@ mainEntry32:
 	# gep ptr_$2 
 
 	# fetch variables
-	li t1, 1
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$1
-	li t3, 720
+	addi t3, zero, 720
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -169,9 +165,9 @@ mainEntry32:
 	# gep inp$2 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$2
 
@@ -186,7 +182,7 @@ mainEntry32:
 	# store inp$2 
 
 	# fetch variables
-	li t1, 3
+	addi t1, zero, 3
 
 	# get address of inp$2 points to
 	ld t3, 632(sp)
@@ -195,12 +191,12 @@ mainEntry32:
 	# gep ptr_$3 
 
 	# fetch variables
-	li t1, 1
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$1
-	li t3, 720
+	addi t3, zero, 720
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -211,9 +207,9 @@ mainEntry32:
 	# gep inp$3 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$3
 
@@ -228,7 +224,7 @@ mainEntry32:
 	# store inp$3 
 
 	# fetch variables
-	li t1, 4
+	addi t1, zero, 4
 
 	# get address of inp$3 points to
 	ld t3, 616(sp)
@@ -237,12 +233,12 @@ mainEntry32:
 	# gep ptr_$4 
 
 	# fetch variables
-	li t1, 2
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$1
-	li t3, 720
+	addi t3, zero, 720
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -253,9 +249,9 @@ mainEntry32:
 	# gep inp$4 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$4
 
@@ -270,7 +266,7 @@ mainEntry32:
 	# store inp$4 
 
 	# fetch variables
-	li t1, 5
+	addi t1, zero, 5
 
 	# get address of inp$4 points to
 	ld t3, 600(sp)
@@ -279,12 +275,12 @@ mainEntry32:
 	# gep ptr_$5 
 
 	# fetch variables
-	li t1, 2
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$1
-	li t3, 720
+	addi t3, zero, 720
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -295,9 +291,9 @@ mainEntry32:
 	# gep inp$5 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$5
 
@@ -312,7 +308,7 @@ mainEntry32:
 	# store inp$5 
 
 	# fetch variables
-	li t1, 6
+	addi t1, zero, 6
 
 	# get address of inp$5 points to
 	ld t3, 584(sp)
@@ -321,12 +317,12 @@ mainEntry32:
 	# gep ptr_$6 
 
 	# fetch variables
-	li t1, 3
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$1
-	li t3, 720
+	addi t3, zero, 720
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -337,9 +333,9 @@ mainEntry32:
 	# gep inp$6 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$6
 
@@ -354,7 +350,7 @@ mainEntry32:
 	# store inp$6 
 
 	# fetch variables
-	li t1, 7
+	addi t1, zero, 7
 
 	# get address of inp$6 points to
 	ld t3, 568(sp)
@@ -363,12 +359,12 @@ mainEntry32:
 	# gep ptr_$7 
 
 	# fetch variables
-	li t1, 3
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$1
-	li t3, 720
+	addi t3, zero, 720
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -379,9 +375,9 @@ mainEntry32:
 	# gep inp$7 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$7
 
@@ -396,7 +392,7 @@ mainEntry32:
 	# store inp$7 
 
 	# fetch variables
-	li t1, 8
+	addi t1, zero, 8
 
 	# get address of inp$7 points to
 	ld t3, 552(sp)
@@ -405,12 +401,12 @@ mainEntry32:
 	# gep ptr_$8 
 
 	# fetch variables
-	li t1, 0
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$2
-	li t3, 752
+	addi t3, zero, 752
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -421,9 +417,9 @@ mainEntry32:
 	# gep inp$8 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$8
 
@@ -438,7 +434,7 @@ mainEntry32:
 	# store inp$8 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 
 	# get address of inp$8 points to
 	ld t3, 536(sp)
@@ -447,12 +443,12 @@ mainEntry32:
 	# gep ptr_$9 
 
 	# fetch variables
-	li t1, 0
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$2
-	li t3, 752
+	addi t3, zero, 752
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -463,9 +459,9 @@ mainEntry32:
 	# gep inp$9 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$9
 
@@ -480,7 +476,7 @@ mainEntry32:
 	# store inp$9 
 
 	# fetch variables
-	li t1, 2
+	addi t1, zero, 2
 
 	# get address of inp$9 points to
 	ld t3, 520(sp)
@@ -489,12 +485,12 @@ mainEntry32:
 	# gep ptr_$10 
 
 	# fetch variables
-	li t1, 1
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$2
-	li t3, 752
+	addi t3, zero, 752
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -505,9 +501,9 @@ mainEntry32:
 	# gep inp$10 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$10
 
@@ -522,7 +518,7 @@ mainEntry32:
 	# store inp$10 
 
 	# fetch variables
-	li t1, 3
+	addi t1, zero, 3
 
 	# get address of inp$10 points to
 	ld t3, 504(sp)
@@ -531,12 +527,12 @@ mainEntry32:
 	# gep ptr_$11 
 
 	# fetch variables
-	li t1, 1
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$2
-	li t3, 752
+	addi t3, zero, 752
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -547,9 +543,9 @@ mainEntry32:
 	# gep inp$11 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$11
 
@@ -564,7 +560,7 @@ mainEntry32:
 	# store inp$11 
 
 	# fetch variables
-	li t1, 4
+	addi t1, zero, 4
 
 	# get address of inp$11 points to
 	ld t3, 488(sp)
@@ -573,12 +569,12 @@ mainEntry32:
 	# gep ptr_$12 
 
 	# fetch variables
-	li t1, 2
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$2
-	li t3, 752
+	addi t3, zero, 752
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -589,9 +585,9 @@ mainEntry32:
 	# gep inp$12 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$12
 
@@ -606,7 +602,7 @@ mainEntry32:
 	# store inp$12 
 
 	# fetch variables
-	li t1, 5
+	addi t1, zero, 5
 
 	# get address of inp$12 points to
 	ld t3, 472(sp)
@@ -615,12 +611,12 @@ mainEntry32:
 	# gep ptr_$13 
 
 	# fetch variables
-	li t1, 2
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$2
-	li t3, 752
+	addi t3, zero, 752
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -631,9 +627,9 @@ mainEntry32:
 	# gep inp$13 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$13
 
@@ -648,7 +644,7 @@ mainEntry32:
 	# store inp$13 
 
 	# fetch variables
-	li t1, 6
+	addi t1, zero, 6
 
 	# get address of inp$13 points to
 	ld t3, 456(sp)
@@ -657,12 +653,12 @@ mainEntry32:
 	# gep ptr_$14 
 
 	# fetch variables
-	li t1, 3
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$2
-	li t3, 752
+	addi t3, zero, 752
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -673,9 +669,9 @@ mainEntry32:
 	# gep inp$14 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$14
 
@@ -690,7 +686,7 @@ mainEntry32:
 	# store inp$14 
 
 	# fetch variables
-	li t1, 7
+	addi t1, zero, 7
 
 	# get address of inp$14 points to
 	ld t3, 440(sp)
@@ -699,12 +695,12 @@ mainEntry32:
 	# gep ptr_$15 
 
 	# fetch variables
-	li t1, 3
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$2
-	li t3, 752
+	addi t3, zero, 752
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -715,9 +711,9 @@ mainEntry32:
 	# gep inp$15 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$15
 
@@ -732,7 +728,7 @@ mainEntry32:
 	# store inp$15 
 
 	# fetch variables
-	li t1, 8
+	addi t1, zero, 8
 
 	# get address of inp$15 points to
 	ld t3, 424(sp)
@@ -741,12 +737,12 @@ mainEntry32:
 	# gep ptr_$16 
 
 	# fetch variables
-	li t1, 0
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$3
-	li t3, 784
+	addi t3, zero, 784
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -757,9 +753,9 @@ mainEntry32:
 	# gep inp$16 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$16
 
@@ -774,7 +770,7 @@ mainEntry32:
 	# store inp$16 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 
 	# get address of inp$16 points to
 	ld t3, 408(sp)
@@ -783,12 +779,12 @@ mainEntry32:
 	# gep ptr_$17 
 
 	# fetch variables
-	li t1, 0
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$3
-	li t3, 784
+	addi t3, zero, 784
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -799,9 +795,9 @@ mainEntry32:
 	# gep inp$17 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$17
 
@@ -816,7 +812,7 @@ mainEntry32:
 	# store inp$17 
 
 	# fetch variables
-	li t1, 2
+	addi t1, zero, 2
 
 	# get address of inp$17 points to
 	ld t3, 392(sp)
@@ -825,12 +821,12 @@ mainEntry32:
 	# gep ptr_$18 
 
 	# fetch variables
-	li t1, 1
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$3
-	li t3, 784
+	addi t3, zero, 784
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -841,9 +837,9 @@ mainEntry32:
 	# gep inp$18 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$18
 
@@ -858,7 +854,7 @@ mainEntry32:
 	# store inp$18 
 
 	# fetch variables
-	li t1, 3
+	addi t1, zero, 3
 
 	# get address of inp$18 points to
 	ld t3, 376(sp)
@@ -867,12 +863,12 @@ mainEntry32:
 	# gep ptr_$19 
 
 	# fetch variables
-	li t1, 1
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$3
-	li t3, 784
+	addi t3, zero, 784
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -883,9 +879,9 @@ mainEntry32:
 	# gep inp$19 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$19
 
@@ -900,7 +896,7 @@ mainEntry32:
 	# store inp$19 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 
 	# get address of inp$19 points to
 	ld t3, 360(sp)
@@ -909,12 +905,12 @@ mainEntry32:
 	# gep ptr_$20 
 
 	# fetch variables
-	li t1, 2
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$3
-	li t3, 784
+	addi t3, zero, 784
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -925,9 +921,9 @@ mainEntry32:
 	# gep inp$20 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$20
 
@@ -942,7 +938,7 @@ mainEntry32:
 	# store inp$20 
 
 	# fetch variables
-	li t1, 5
+	addi t1, zero, 5
 
 	# get address of inp$20 points to
 	ld t3, 344(sp)
@@ -951,12 +947,12 @@ mainEntry32:
 	# gep ptr_$21 
 
 	# fetch variables
-	li t1, 2
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$3
-	li t3, 784
+	addi t3, zero, 784
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -967,9 +963,9 @@ mainEntry32:
 	# gep inp$21 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$21
 
@@ -984,7 +980,7 @@ mainEntry32:
 	# store inp$21 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 
 	# get address of inp$21 points to
 	ld t3, 328(sp)
@@ -993,12 +989,12 @@ mainEntry32:
 	# gep ptr_$22 
 
 	# fetch variables
-	li t1, 3
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$3
-	li t3, 784
+	addi t3, zero, 784
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1009,9 +1005,9 @@ mainEntry32:
 	# gep inp$22 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$22
 
@@ -1026,7 +1022,7 @@ mainEntry32:
 	# store inp$22 
 
 	# fetch variables
-	li t1, 7
+	addi t1, zero, 7
 
 	# get address of inp$22 points to
 	ld t3, 312(sp)
@@ -1035,12 +1031,12 @@ mainEntry32:
 	# gep ptr_$23 
 
 	# fetch variables
-	li t1, 3
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$3
-	li t3, 784
+	addi t3, zero, 784
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1051,9 +1047,9 @@ mainEntry32:
 	# gep inp$23 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$23
 
@@ -1068,7 +1064,7 @@ mainEntry32:
 	# store inp$23 
 
 	# fetch variables
-	li t1, 8
+	addi t1, zero, 8
 
 	# get address of inp$23 points to
 	ld t3, 296(sp)
@@ -1077,12 +1073,12 @@ mainEntry32:
 	# gep ptr_$24 
 
 	# fetch variables
-	li t1, 2
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$3
-	li t3, 784
+	addi t3, zero, 784
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1093,9 +1089,9 @@ mainEntry32:
 	# gep d 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$24
 
@@ -1119,12 +1115,12 @@ mainEntry32:
 	# gep ptr_$25 
 
 	# fetch variables
-	li t1, 2
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$2
-	li t3, 752
+	addi t3, zero, 752
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1135,9 +1131,9 @@ mainEntry32:
 	# gep c 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$25
 
@@ -1161,12 +1157,12 @@ mainEntry32:
 	# gep ptr_$26 
 
 	# fetch variables
-	li t1, 0
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$4
-	li t3, 816
+	addi t3, zero, 816
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1177,9 +1173,9 @@ mainEntry32:
 	# gep inp$24 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$26
 
@@ -1205,12 +1201,12 @@ mainEntry32:
 	# gep ptr_$27 
 
 	# fetch variables
-	li t1, 0
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$4
-	li t3, 816
+	addi t3, zero, 816
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1221,9 +1217,9 @@ mainEntry32:
 	# gep inp$25 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$27
 
@@ -1249,12 +1245,12 @@ mainEntry32:
 	# gep ptr_$28 
 
 	# fetch variables
-	li t1, 1
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$4
-	li t3, 816
+	addi t3, zero, 816
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1265,9 +1261,9 @@ mainEntry32:
 	# gep inp$26 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$28
 
@@ -1282,7 +1278,7 @@ mainEntry32:
 	# store inp$26 
 
 	# fetch variables
-	li t1, 3
+	addi t1, zero, 3
 
 	# get address of inp$26 points to
 	ld t3, 200(sp)
@@ -1291,12 +1287,12 @@ mainEntry32:
 	# gep ptr_$29 
 
 	# fetch variables
-	li t1, 1
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$4
-	li t3, 816
+	addi t3, zero, 816
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1307,9 +1303,9 @@ mainEntry32:
 	# gep inp$27 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$29
 
@@ -1324,7 +1320,7 @@ mainEntry32:
 	# store inp$27 
 
 	# fetch variables
-	li t1, 4
+	addi t1, zero, 4
 
 	# get address of inp$27 points to
 	ld t3, 184(sp)
@@ -1333,12 +1329,12 @@ mainEntry32:
 	# gep ptr_$30 
 
 	# fetch variables
-	li t1, 2
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$4
-	li t3, 816
+	addi t3, zero, 816
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1349,9 +1345,9 @@ mainEntry32:
 	# gep inp$28 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$30
 
@@ -1366,7 +1362,7 @@ mainEntry32:
 	# store inp$28 
 
 	# fetch variables
-	li t1, 5
+	addi t1, zero, 5
 
 	# get address of inp$28 points to
 	ld t3, 168(sp)
@@ -1375,12 +1371,12 @@ mainEntry32:
 	# gep ptr_$31 
 
 	# fetch variables
-	li t1, 2
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$4
-	li t3, 816
+	addi t3, zero, 816
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1391,9 +1387,9 @@ mainEntry32:
 	# gep inp$29 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$31
 
@@ -1408,7 +1404,7 @@ mainEntry32:
 	# store inp$29 
 
 	# fetch variables
-	li t1, 6
+	addi t1, zero, 6
 
 	# get address of inp$29 points to
 	ld t3, 152(sp)
@@ -1417,12 +1413,12 @@ mainEntry32:
 	# gep ptr_$32 
 
 	# fetch variables
-	li t1, 3
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$4
-	li t3, 816
+	addi t3, zero, 816
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1433,9 +1429,9 @@ mainEntry32:
 	# gep inp$30 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$32
 
@@ -1450,7 +1446,7 @@ mainEntry32:
 	# store inp$30 
 
 	# fetch variables
-	li t1, 7
+	addi t1, zero, 7
 
 	# get address of inp$30 points to
 	ld t3, 136(sp)
@@ -1459,12 +1455,12 @@ mainEntry32:
 	# gep ptr_$33 
 
 	# fetch variables
-	li t1, 3
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$4
-	li t3, 816
+	addi t3, zero, 816
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1475,9 +1471,9 @@ mainEntry32:
 	# gep inp$31 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$33
 
@@ -1492,7 +1488,7 @@ mainEntry32:
 	# store inp$31 
 
 	# fetch variables
-	li t1, 8
+	addi t1, zero, 8
 
 	# get address of inp$31 points to
 	ld t3, 120(sp)
@@ -1501,12 +1497,12 @@ mainEntry32:
 	# gep ptr_$34 
 
 	# fetch variables
-	li t1, 3
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$4
-	li t3, 816
+	addi t3, zero, 816
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1517,9 +1513,9 @@ mainEntry32:
 	# gep e 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$34
 
@@ -1543,12 +1539,12 @@ mainEntry32:
 	# gep ptr_$35 
 
 	# fetch variables
-	li t1, 0
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$4
-	li t3, 816
+	addi t3, zero, 816
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1559,9 +1555,9 @@ mainEntry32:
 	# gep e$2 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$35
 
@@ -1588,9 +1584,7 @@ mainEntry32:
 
 	# get address of local var:e$1
 	lw t1, 100(sp)
-
-	# get address of local var:e$3
-	lw t2, 76(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_
@@ -1599,12 +1593,12 @@ mainEntry32:
 	# gep ptr_$36 
 
 	# fetch variables
-	li t1, 0
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv$4
-	li t3, 816
+	addi t3, zero, 816
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1615,9 +1609,9 @@ mainEntry32:
 	# gep e$4 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$36
 
@@ -1644,9 +1638,7 @@ mainEntry32:
 
 	# get address of local var:result_
 	lw t1, 68(sp)
-
-	# get address of local var:e$5
-	lw t2, 44(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$1
@@ -1655,12 +1647,12 @@ mainEntry32:
 	# gep ptr_$37 
 
 	# fetch variables
-	li t1, 2
-	li t2, 8
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 8
+	mul t0, t1, t0
 
 	# get value of local var:lv
-	li t3, 688
+	addi t3, zero, 688
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -1671,9 +1663,9 @@ mainEntry32:
 	# gep a 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$37
 
@@ -1700,9 +1692,7 @@ mainEntry32:
 
 	# get address of local var:result_$1
 	lw t1, 36(sp)
-
-	# get address of local var:a$1
-	lw t2, 12(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$2
@@ -1711,12 +1701,10 @@ mainEntry32:
 	# ret result_$2
 
 	# fetch variables
-
-	# get address of local var:result_$2
-	lw t1, 4(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 848
-	add sp, sp, t4
+	li t0, 848
+	add sp, sp, t0
 	ret 
 
 memset32: 

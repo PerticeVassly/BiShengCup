@@ -8,8 +8,8 @@ add:
 addEntry:
 
 	# reserve space
-	li t4, 48
-	sub sp, sp, t4
+	li t0, 48
+	sub sp, sp, t0
 
 	# save CallerSavedRegs
 
@@ -36,7 +36,9 @@ addEntry:
 	lw t1, 44(sp)
 
 	# get address of lv points to
-	sw t1, 28(sp)
+	addi t3, zero, 28
+	add t3, sp, t3
+	sw t1, 0(t3)
 
 	# store lv$1 1
 
@@ -46,22 +48,28 @@ addEntry:
 	lw t1, 40(sp)
 
 	# get address of lv$1 points to
-	sw t1, 36(sp)
+	addi t3, zero, 36
+	add t3, sp, t3
+	sw t1, 0(t3)
 
 	# load i lv
 
 	# get address of lv points to
+	addi t3, zero, 28
+	add t3, sp, t3
 
 	# get address of local var:i
-	lw t0, 28(sp)
+	lw t0, 0(t3)
 	sw t0, 20(sp)
 
 	# load j lv$1
 
 	# get address of lv$1 points to
+	addi t3, zero, 36
+	add t3, sp, t3
 
 	# get address of local var:j
-	lw t0, 36(sp)
+	lw t0, 0(t3)
 	sw t0, 12(sp)
 
 	# ADD result_ i j 
@@ -70,9 +78,7 @@ addEntry:
 
 	# get address of local var:i
 	lw t1, 20(sp)
-
-	# get address of local var:j
-	lw t2, 12(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_
@@ -81,12 +87,10 @@ addEntry:
 	# ret result_
 
 	# fetch variables
-
-	# get address of local var:result_
-	lw t1, 4(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 48
-	add sp, sp, t4
+	li t0, 48
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -99,8 +103,8 @@ main:
 mainEntry13:
 
 	# reserve space
-	li t4, 32
-	sub sp, sp, t4
+	li t0, 32
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -113,38 +117,42 @@ mainEntry13:
 	# store lv 
 
 	# fetch variables
-	li t1, 2
+	addi t1, zero, 2
 
 	# get address of lv points to
-	sw t1, 12(sp)
+	addi t3, zero, 12
+	add t3, sp, t3
+	sw t1, 0(t3)
 
 	# store lv$1 
 
 	# fetch variables
-	li t1, 3
+	addi t1, zero, 3
 
 	# get address of lv$1 points to
-	sw t1, 20(sp)
+	addi t3, zero, 20
+	add t3, sp, t3
+	sw t1, 0(t3)
 
 	# store lv$2 
 
 	# fetch variables
-	li t1, 4
+	addi t1, zero, 4
 
 	# get address of lv$2 points to
-	sw t1, 28(sp)
+	addi t3, zero, 28
+	add t3, sp, t3
+	sw t1, 0(t3)
 
 	# prepare params
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 	mv a0, t1
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 	mv a1, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -158,8 +166,6 @@ mainEntry13:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:add
 	sw a0, 4(sp)
@@ -171,8 +177,8 @@ mainEntry13:
 	# get address of local var:add
 	lw t1, 4(sp)
 	mv a0, t1
-	li t4, 32
-	add sp, sp, t4
+	li t0, 32
+	add sp, sp, t0
 	ret 
 
 memset32: 

@@ -8,8 +8,8 @@ main:
 mainEntry65:
 
 	# reserve space
-	li t4, 64
-	sub sp, sp, t4
+	li t0, 64
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -20,27 +20,27 @@ mainEntry65:
 	# store lv 
 
 	# fetch variables
-	li t1, 10
+	addi t1, zero, 10
 
 	# get address of lv points to
-	li t3, 52
+	addi t3, zero, 52
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# store lv$1 
 
 	# fetch variables
-	li t1, 30
+	addi t1, zero, 30
 
 	# get address of lv$1 points to
-	li t3, 60
+	addi t3, zero, 60
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	li t3, 52
+	addi t3, zero, 52
 	add t3, sp, t3
 
 	# get address of local var:a
@@ -50,10 +50,8 @@ mainEntry65:
 	# SUB result_ a  
 
 	# fetch variables
-
-	# get address of local var:a
-	lw t1, 44(sp)
-	li t2, -5
+	mv t1, t0
+	addi t2, zero, -5
 	sub t0, t1, t2
 
 	# get address of local var:result_
@@ -62,7 +60,7 @@ mainEntry65:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	li t3, 60
+	addi t3, zero, 60
 	add t3, sp, t3
 
 	# get address of local var:b
@@ -75,9 +73,7 @@ mainEntry65:
 
 	# get address of local var:result_
 	lw t1, 36(sp)
-
-	# get address of local var:b
-	lw t2, 28(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$1
@@ -86,10 +82,8 @@ mainEntry65:
 	# ADD result_$2 result_$1  
 
 	# fetch variables
-
-	# get address of local var:result_$1
-	lw t1, 20(sp)
-	li t2, -5
+	mv t1, t0
+	addi t2, zero, -5
 	addw t0, t1, t2
 
 	# get address of local var:result_$2
@@ -98,12 +92,10 @@ mainEntry65:
 	# ret result_$2
 
 	# fetch variables
-
-	# get address of local var:result_$2
-	lw t1, 12(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 64
-	add sp, sp, t4
+	li t0, 64
+	add sp, sp, t0
 	ret 
 
 memset32: 

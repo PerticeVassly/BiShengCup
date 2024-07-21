@@ -8,8 +8,8 @@ relu_reg:
 relu_regEntry:
 
 	# reserve space
-	li t4, 96
-	sub sp, sp, t4
+	li t0, 96
+	sub sp, sp, t0
 
 	# save CallerSavedRegs
 
@@ -31,14 +31,14 @@ relu_regEntry:
 	lw t1, 92(sp)
 
 	# get address of lv points to
-	li t3, 84
+	addi t3, zero, 84
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	li t3, 84
+	addi t3, zero, 84
 	add t3, sp, t3
 
 	# get address of local var:a
@@ -48,10 +48,8 @@ relu_regEntry:
 	# ICMP cond_gt_tmp_ a  
 
 	# fetch variables
-
-	# get address of local var:a
-	lw t1, 76(sp)
-	li t2, 127
+	mv t1, t0
+	addi t2, zero, 127
 	sub t0, t1, t2
 	sgtz t0, t0
 
@@ -61,9 +59,7 @@ relu_regEntry:
 	#  cond_tmp_ cond_gt_tmp_
 
 	# fetch variables
-
-	# get address of local var:cond_gt_tmp_
-	lw t1, 68(sp)
+	mv t1, t0
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
@@ -72,10 +68,8 @@ relu_regEntry:
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
-
-	# get address of local var:cond_tmp_
-	lw t1, 60(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -86,9 +80,7 @@ relu_regEntry:
 	# condBr cond_ ifTrue_335 next_579
 
 	# fetch variables
-
-	# get address of local var:cond_
-	lw t1, 52(sp)
+	mv t1, t0
 	beqz t1, next_579
 	j ifTrue_335
 ifTrue_335:
@@ -96,10 +88,10 @@ ifTrue_335:
 	# ret 
 
 	# fetch variables
-	li t1, 127
+	addi t1, zero, 127
 	mv a0, t1
-	li t4, 96
-	add sp, sp, t4
+	li t0, 96
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -109,7 +101,7 @@ next_579:
 	# load a$1 lv
 
 	# get address of lv points to
-	li t3, 84
+	addi t3, zero, 84
 	add t3, sp, t3
 
 	# get address of local var:a$1
@@ -119,10 +111,8 @@ next_579:
 	# ICMP cond_lt_tmp_ a$1  
 
 	# fetch variables
-
-	# get address of local var:a$1
-	lw t1, 44(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_
@@ -131,9 +121,7 @@ next_579:
 	#  cond_tmp_$1 cond_lt_tmp_
 
 	# fetch variables
-
-	# get address of local var:cond_lt_tmp_
-	lw t1, 36(sp)
+	mv t1, t0
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$1
@@ -142,10 +130,8 @@ next_579:
 	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
-
-	# get address of local var:cond_tmp_$1
-	lw t1, 28(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -156,9 +142,7 @@ next_579:
 	# condBr cond_$1 ifTrue_336 next_580
 
 	# fetch variables
-
-	# get address of local var:cond_$1
-	lw t1, 20(sp)
+	mv t1, t0
 	beqz t1, next_580
 	j ifTrue_336
 ifTrue_336:
@@ -166,10 +150,10 @@ ifTrue_336:
 	# ret 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 	mv a0, t1
-	li t4, 96
-	add sp, sp, t4
+	li t0, 96
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -179,7 +163,7 @@ next_580:
 	# load a$2 lv
 
 	# get address of lv points to
-	li t3, 84
+	addi t3, zero, 84
 	add t3, sp, t3
 
 	# get address of local var:a$2
@@ -189,12 +173,10 @@ next_580:
 	# ret a$2
 
 	# fetch variables
-
-	# get address of local var:a$2
-	lw t1, 12(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 96
-	add sp, sp, t4
+	li t0, 96
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -207,8 +189,8 @@ model:
 modelEntry:
 
 	# reserve space
-	li t4, 12192
-	sub sp, sp, t4
+	li t0, 12192
+	sub sp, sp, t0
 
 	# save CallerSavedRegs
 
@@ -253,9 +235,9 @@ modelEntry:
 	# gep ptr_ 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_
 
@@ -274,9 +256,9 @@ modelEntry:
 	# gep a 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_
 
@@ -308,12 +290,8 @@ modelEntry:
 	# MUL result_ a$1  
 
 	# fetch variables
-
-	# get address of local var:a$1
-	li t4, 12148
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 85
+	mv t1, t0
+	addi t2, zero, 85
 	mul t0, t1, t2
 
 	# get address of local var:result_
@@ -336,9 +314,9 @@ modelEntry:
 	# gep ptr_$1 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$1
 
@@ -357,9 +335,9 @@ modelEntry:
 	# gep a$2 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$1
 
@@ -391,12 +369,8 @@ modelEntry:
 	# MUL result_$1 a$3  
 
 	# fetch variables
-
-	# get address of local var:a$3
-	li t4, 12108
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 23
+	mv t1, t0
+	addi t2, zero, 23
 	mul t0, t1, t2
 
 	# get address of local var:result_$1
@@ -412,11 +386,7 @@ modelEntry:
 	li t4, 12140
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$1
-	li t4, 12100
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$2
@@ -439,9 +409,9 @@ modelEntry:
 	# gep ptr_$2 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$2
 
@@ -460,9 +430,9 @@ modelEntry:
 	# gep a$4 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$2
 
@@ -494,12 +464,8 @@ modelEntry:
 	# MUL result_$3 a$5  
 
 	# fetch variables
-
-	# get address of local var:a$5
-	li t4, 12060
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -82
+	mv t1, t0
+	addi t2, zero, -82
 	mul t0, t1, t2
 
 	# get address of local var:result_$3
@@ -515,11 +481,7 @@ modelEntry:
 	li t4, 12092
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$3
-	li t4, 12052
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$4
@@ -542,9 +504,9 @@ modelEntry:
 	# gep ptr_$3 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$3
 
@@ -563,9 +525,9 @@ modelEntry:
 	# gep a$6 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$3
 
@@ -597,12 +559,8 @@ modelEntry:
 	# MUL result_$5 a$7  
 
 	# fetch variables
-
-	# get address of local var:a$7
-	li t4, 12012
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -103
+	mv t1, t0
+	addi t2, zero, -103
 	mul t0, t1, t2
 
 	# get address of local var:result_$5
@@ -618,11 +576,7 @@ modelEntry:
 	li t4, 12044
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$5
-	li t4, 12004
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$6
@@ -645,9 +599,9 @@ modelEntry:
 	# gep ptr_$4 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$4
 
@@ -666,9 +620,9 @@ modelEntry:
 	# gep a$8 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$4
 
@@ -700,12 +654,8 @@ modelEntry:
 	# MUL result_$7 a$9  
 
 	# fetch variables
-
-	# get address of local var:a$9
-	li t4, 11964
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -123
+	mv t1, t0
+	addi t2, zero, -123
 	mul t0, t1, t2
 
 	# get address of local var:result_$7
@@ -721,11 +671,7 @@ modelEntry:
 	li t4, 11996
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$7
-	li t4, 11956
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$8
@@ -748,9 +694,9 @@ modelEntry:
 	# gep ptr_$5 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$5
 
@@ -769,9 +715,9 @@ modelEntry:
 	# gep a$10 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$5
 
@@ -803,12 +749,8 @@ modelEntry:
 	# MUL result_$9 a$11  
 
 	# fetch variables
-
-	# get address of local var:a$11
-	li t4, 11916
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 64
+	mv t1, t0
+	addi t2, zero, 64
 	mul t0, t1, t2
 
 	# get address of local var:result_$9
@@ -824,11 +766,7 @@ modelEntry:
 	li t4, 11948
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$9
-	li t4, 11908
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$10
@@ -851,9 +789,9 @@ modelEntry:
 	# gep ptr_$6 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$6
 
@@ -872,9 +810,9 @@ modelEntry:
 	# gep a$12 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$6
 
@@ -906,12 +844,8 @@ modelEntry:
 	# MUL result_$11 a$13  
 
 	# fetch variables
-
-	# get address of local var:a$13
-	li t4, 11868
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -120
+	mv t1, t0
+	addi t2, zero, -120
 	mul t0, t1, t2
 
 	# get address of local var:result_$11
@@ -927,11 +861,7 @@ modelEntry:
 	li t4, 11900
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$11
-	li t4, 11860
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$12
@@ -954,9 +884,9 @@ modelEntry:
 	# gep ptr_$7 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$7
 
@@ -975,9 +905,9 @@ modelEntry:
 	# gep a$14 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$7
 
@@ -1009,12 +939,8 @@ modelEntry:
 	# MUL result_$13 a$15  
 
 	# fetch variables
-
-	# get address of local var:a$15
-	li t4, 11820
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 50
+	mv t1, t0
+	addi t2, zero, 50
 	mul t0, t1, t2
 
 	# get address of local var:result_$13
@@ -1030,11 +956,7 @@ modelEntry:
 	li t4, 11852
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$13
-	li t4, 11812
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$14
@@ -1057,9 +979,9 @@ modelEntry:
 	# gep ptr_$8 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$8
 
@@ -1078,9 +1000,9 @@ modelEntry:
 	# gep a$16 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$8
 
@@ -1112,12 +1034,8 @@ modelEntry:
 	# MUL result_$15 a$17  
 
 	# fetch variables
-
-	# get address of local var:a$17
-	li t4, 11772
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -59
+	mv t1, t0
+	addi t2, zero, -59
 	mul t0, t1, t2
 
 	# get address of local var:result_$15
@@ -1133,11 +1051,7 @@ modelEntry:
 	li t4, 11804
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$15
-	li t4, 11764
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$16
@@ -1160,9 +1074,9 @@ modelEntry:
 	# gep ptr_$9 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$9
 
@@ -1181,9 +1095,9 @@ modelEntry:
 	# gep a$18 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$9
 
@@ -1215,12 +1129,8 @@ modelEntry:
 	# MUL result_$17 a$19  
 
 	# fetch variables
-
-	# get address of local var:a$19
-	li t4, 11724
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 47
+	mv t1, t0
+	addi t2, zero, 47
 	mul t0, t1, t2
 
 	# get address of local var:result_$17
@@ -1236,11 +1146,7 @@ modelEntry:
 	li t4, 11756
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$17
-	li t4, 11716
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$18
@@ -1263,9 +1169,9 @@ modelEntry:
 	# gep ptr_$10 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$10
 
@@ -1284,9 +1190,9 @@ modelEntry:
 	# gep a$20 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$10
 
@@ -1318,12 +1224,8 @@ modelEntry:
 	# MUL result_$19 a$21  
 
 	# fetch variables
-
-	# get address of local var:a$21
-	li t4, 11676
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -111
+	mv t1, t0
+	addi t2, zero, -111
 	mul t0, t1, t2
 
 	# get address of local var:result_$19
@@ -1339,11 +1241,7 @@ modelEntry:
 	li t4, 11708
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$19
-	li t4, 11668
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$20
@@ -1366,9 +1264,9 @@ modelEntry:
 	# gep ptr_$11 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$11
 
@@ -1387,9 +1285,9 @@ modelEntry:
 	# gep a$22 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$11
 
@@ -1421,12 +1319,8 @@ modelEntry:
 	# MUL result_$21 a$23  
 
 	# fetch variables
-
-	# get address of local var:a$23
-	li t4, 11628
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -67
+	mv t1, t0
+	addi t2, zero, -67
 	mul t0, t1, t2
 
 	# get address of local var:result_$21
@@ -1442,11 +1336,7 @@ modelEntry:
 	li t4, 11660
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$21
-	li t4, 11620
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$22
@@ -1469,9 +1359,9 @@ modelEntry:
 	# gep ptr_$12 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$12
 
@@ -1490,9 +1380,9 @@ modelEntry:
 	# gep a$24 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$12
 
@@ -1524,12 +1414,8 @@ modelEntry:
 	# MUL result_$23 a$25  
 
 	# fetch variables
-
-	# get address of local var:a$25
-	li t4, 11580
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -106
+	mv t1, t0
+	addi t2, zero, -106
 	mul t0, t1, t2
 
 	# get address of local var:result_$23
@@ -1545,11 +1431,7 @@ modelEntry:
 	li t4, 11612
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$23
-	li t4, 11572
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$24
@@ -1572,9 +1454,9 @@ modelEntry:
 	# gep ptr_$13 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$13
 
@@ -1593,9 +1475,9 @@ modelEntry:
 	# gep a$26 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$13
 
@@ -1627,12 +1509,8 @@ modelEntry:
 	# MUL result_$25 a$27  
 
 	# fetch variables
-
-	# get address of local var:a$27
-	li t4, 11532
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -75
+	mv t1, t0
+	addi t2, zero, -75
 	mul t0, t1, t2
 
 	# get address of local var:result_$25
@@ -1648,11 +1526,7 @@ modelEntry:
 	li t4, 11564
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$25
-	li t4, 11524
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$26
@@ -1675,9 +1549,9 @@ modelEntry:
 	# gep ptr_$14 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$14
 
@@ -1696,9 +1570,9 @@ modelEntry:
 	# gep a$28 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$14
 
@@ -1730,12 +1604,8 @@ modelEntry:
 	# MUL result_$27 a$29  
 
 	# fetch variables
-
-	# get address of local var:a$29
-	li t4, 11484
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -102
+	mv t1, t0
+	addi t2, zero, -102
 	mul t0, t1, t2
 
 	# get address of local var:result_$27
@@ -1751,11 +1621,7 @@ modelEntry:
 	li t4, 11516
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$27
-	li t4, 11476
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$28
@@ -1778,9 +1644,9 @@ modelEntry:
 	# gep ptr_$15 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$15
 
@@ -1799,9 +1665,9 @@ modelEntry:
 	# gep a$30 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$15
 
@@ -1833,12 +1699,8 @@ modelEntry:
 	# MUL result_$29 a$31  
 
 	# fetch variables
-
-	# get address of local var:a$31
-	li t4, 11436
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 34
+	mv t1, t0
+	addi t2, zero, 34
 	mul t0, t1, t2
 
 	# get address of local var:result_$29
@@ -1854,11 +1716,7 @@ modelEntry:
 	li t4, 11468
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$29
-	li t4, 11428
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$30
@@ -1881,9 +1739,9 @@ modelEntry:
 	# gep ptr_$16 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$16
 
@@ -1902,9 +1760,9 @@ modelEntry:
 	# gep a$32 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$16
 
@@ -1936,12 +1794,8 @@ modelEntry:
 	# MUL result_$31 a$33  
 
 	# fetch variables
-
-	# get address of local var:a$33
-	li t4, 11388
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -39
+	mv t1, t0
+	addi t2, zero, -39
 	mul t0, t1, t2
 
 	# get address of local var:result_$31
@@ -1957,11 +1811,7 @@ modelEntry:
 	li t4, 11420
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$31
-	li t4, 11380
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$32
@@ -1984,9 +1834,9 @@ modelEntry:
 	# gep ptr_$17 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$17
 
@@ -2005,9 +1855,9 @@ modelEntry:
 	# gep a$34 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$17
 
@@ -2039,12 +1889,8 @@ modelEntry:
 	# MUL result_$33 a$35  
 
 	# fetch variables
-
-	# get address of local var:a$35
-	li t4, 11340
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 65
+	mv t1, t0
+	addi t2, zero, 65
 	mul t0, t1, t2
 
 	# get address of local var:result_$33
@@ -2060,11 +1906,7 @@ modelEntry:
 	li t4, 11372
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$33
-	li t4, 11332
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$34
@@ -2087,9 +1929,9 @@ modelEntry:
 	# gep ptr_$18 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$18
 
@@ -2108,9 +1950,9 @@ modelEntry:
 	# gep a$36 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$18
 
@@ -2142,12 +1984,8 @@ modelEntry:
 	# MUL result_$35 a$37  
 
 	# fetch variables
-
-	# get address of local var:a$37
-	li t4, 11292
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 47
+	mv t1, t0
+	addi t2, zero, 47
 	mul t0, t1, t2
 
 	# get address of local var:result_$35
@@ -2163,11 +2001,7 @@ modelEntry:
 	li t4, 11324
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$35
-	li t4, 11284
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$36
@@ -2190,9 +2024,9 @@ modelEntry:
 	# gep ptr_$19 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$19
 
@@ -2211,9 +2045,9 @@ modelEntry:
 	# gep a$38 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$19
 
@@ -2245,12 +2079,8 @@ modelEntry:
 	# MUL result_$37 a$39  
 
 	# fetch variables
-
-	# get address of local var:a$39
-	li t4, 11244
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 113
+	mv t1, t0
+	addi t2, zero, 113
 	mul t0, t1, t2
 
 	# get address of local var:result_$37
@@ -2266,11 +2096,7 @@ modelEntry:
 	li t4, 11276
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$37
-	li t4, 11236
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$38
@@ -2293,9 +2119,9 @@ modelEntry:
 	# gep ptr_$20 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$20
 
@@ -2314,9 +2140,9 @@ modelEntry:
 	# gep a$40 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$20
 
@@ -2348,12 +2174,8 @@ modelEntry:
 	# MUL result_$39 a$41  
 
 	# fetch variables
-
-	# get address of local var:a$41
-	li t4, 11196
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 110
+	mv t1, t0
+	addi t2, zero, 110
 	mul t0, t1, t2
 
 	# get address of local var:result_$39
@@ -2369,11 +2191,7 @@ modelEntry:
 	li t4, 11228
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$39
-	li t4, 11188
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$40
@@ -2396,9 +2214,9 @@ modelEntry:
 	# gep ptr_$21 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$21
 
@@ -2417,9 +2235,9 @@ modelEntry:
 	# gep a$42 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$21
 
@@ -2451,12 +2269,8 @@ modelEntry:
 	# MUL result_$41 a$43  
 
 	# fetch variables
-
-	# get address of local var:a$43
-	li t4, 11148
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 47
+	mv t1, t0
+	addi t2, zero, 47
 	mul t0, t1, t2
 
 	# get address of local var:result_$41
@@ -2472,11 +2286,7 @@ modelEntry:
 	li t4, 11180
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$41
-	li t4, 11140
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$42
@@ -2499,9 +2309,9 @@ modelEntry:
 	# gep ptr_$22 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$22
 
@@ -2520,9 +2330,9 @@ modelEntry:
 	# gep a$44 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$22
 
@@ -2554,12 +2364,8 @@ modelEntry:
 	# MUL result_$43 a$45  
 
 	# fetch variables
-
-	# get address of local var:a$45
-	li t4, 11100
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -4
+	mv t1, t0
+	addi t2, zero, -4
 	mul t0, t1, t2
 
 	# get address of local var:result_$43
@@ -2575,11 +2381,7 @@ modelEntry:
 	li t4, 11132
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$43
-	li t4, 11092
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$44
@@ -2602,9 +2404,9 @@ modelEntry:
 	# gep ptr_$23 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$23
 
@@ -2623,9 +2425,9 @@ modelEntry:
 	# gep a$46 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$23
 
@@ -2657,12 +2459,8 @@ modelEntry:
 	# MUL result_$45 a$47  
 
 	# fetch variables
-
-	# get address of local var:a$47
-	li t4, 11052
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 80
+	mv t1, t0
+	addi t2, zero, 80
 	mul t0, t1, t2
 
 	# get address of local var:result_$45
@@ -2678,11 +2476,7 @@ modelEntry:
 	li t4, 11084
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$45
-	li t4, 11044
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$46
@@ -2705,9 +2499,9 @@ modelEntry:
 	# gep ptr_$24 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$24
 
@@ -2726,9 +2520,9 @@ modelEntry:
 	# gep a$48 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$24
 
@@ -2760,12 +2554,8 @@ modelEntry:
 	# MUL result_$47 a$49  
 
 	# fetch variables
-
-	# get address of local var:a$49
-	li t4, 11004
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 46
+	mv t1, t0
+	addi t2, zero, 46
 	mul t0, t1, t2
 
 	# get address of local var:result_$47
@@ -2781,11 +2571,7 @@ modelEntry:
 	li t4, 11036
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$47
-	li t4, 10996
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$48
@@ -2802,8 +2588,6 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2817,8 +2601,6 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:relu_reg
 	li t4, 10980
@@ -2833,7 +2615,7 @@ modelEntry:
 	li t4, 10980
 	add t4, sp, t4
 	lw t1, 0(t4)
-	li t2, 39
+	addi t2, zero, 39
 	mul t0, t1, t2
 
 	# get address of local var:result_$49
@@ -2856,9 +2638,9 @@ modelEntry:
 	# gep ptr_$25 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$25
 
@@ -2877,9 +2659,9 @@ modelEntry:
 	# gep a$50 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$25
 
@@ -2911,12 +2693,8 @@ modelEntry:
 	# MUL result_$50 a$51  
 
 	# fetch variables
-
-	# get address of local var:a$51
-	li t4, 10940
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -106
+	mv t1, t0
+	addi t2, zero, -106
 	mul t0, t1, t2
 
 	# get address of local var:result_$50
@@ -2939,9 +2717,9 @@ modelEntry:
 	# gep ptr_$26 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$26
 
@@ -2960,9 +2738,9 @@ modelEntry:
 	# gep a$52 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$26
 
@@ -2994,12 +2772,8 @@ modelEntry:
 	# MUL result_$51 a$53  
 
 	# fetch variables
-
-	# get address of local var:a$53
-	li t4, 10900
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 126
+	mv t1, t0
+	addi t2, zero, 126
 	mul t0, t1, t2
 
 	# get address of local var:result_$51
@@ -3015,11 +2789,7 @@ modelEntry:
 	li t4, 10932
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$51
-	li t4, 10892
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$52
@@ -3042,9 +2812,9 @@ modelEntry:
 	# gep ptr_$27 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$27
 
@@ -3063,9 +2833,9 @@ modelEntry:
 	# gep a$54 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$27
 
@@ -3097,12 +2867,8 @@ modelEntry:
 	# MUL result_$53 a$55  
 
 	# fetch variables
-
-	# get address of local var:a$55
-	li t4, 10852
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -18
+	mv t1, t0
+	addi t2, zero, -18
 	mul t0, t1, t2
 
 	# get address of local var:result_$53
@@ -3118,11 +2884,7 @@ modelEntry:
 	li t4, 10884
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$53
-	li t4, 10844
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$54
@@ -3145,9 +2907,9 @@ modelEntry:
 	# gep ptr_$28 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$28
 
@@ -3166,9 +2928,9 @@ modelEntry:
 	# gep a$56 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$28
 
@@ -3200,12 +2962,8 @@ modelEntry:
 	# MUL result_$55 a$57  
 
 	# fetch variables
-
-	# get address of local var:a$57
-	li t4, 10804
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -31
+	mv t1, t0
+	addi t2, zero, -31
 	mul t0, t1, t2
 
 	# get address of local var:result_$55
@@ -3221,11 +2979,7 @@ modelEntry:
 	li t4, 10836
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$55
-	li t4, 10796
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$56
@@ -3248,9 +3002,9 @@ modelEntry:
 	# gep ptr_$29 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$29
 
@@ -3269,9 +3023,9 @@ modelEntry:
 	# gep a$58 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$29
 
@@ -3303,12 +3057,8 @@ modelEntry:
 	# MUL result_$57 a$59  
 
 	# fetch variables
-
-	# get address of local var:a$59
-	li t4, 10756
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -8
+	mv t1, t0
+	addi t2, zero, -8
 	mul t0, t1, t2
 
 	# get address of local var:result_$57
@@ -3324,11 +3074,7 @@ modelEntry:
 	li t4, 10788
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$57
-	li t4, 10748
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$58
@@ -3351,9 +3097,9 @@ modelEntry:
 	# gep ptr_$30 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$30
 
@@ -3372,9 +3118,9 @@ modelEntry:
 	# gep a$60 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$30
 
@@ -3406,12 +3152,8 @@ modelEntry:
 	# MUL result_$59 a$61  
 
 	# fetch variables
-
-	# get address of local var:a$61
-	li t4, 10708
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 47
+	mv t1, t0
+	addi t2, zero, 47
 	mul t0, t1, t2
 
 	# get address of local var:result_$59
@@ -3427,11 +3169,7 @@ modelEntry:
 	li t4, 10740
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$59
-	li t4, 10700
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$60
@@ -3454,9 +3192,9 @@ modelEntry:
 	# gep ptr_$31 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$31
 
@@ -3475,9 +3213,9 @@ modelEntry:
 	# gep a$62 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$31
 
@@ -3509,12 +3247,8 @@ modelEntry:
 	# MUL result_$61 a$63  
 
 	# fetch variables
-
-	# get address of local var:a$63
-	li t4, 10660
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -4
+	mv t1, t0
+	addi t2, zero, -4
 	mul t0, t1, t2
 
 	# get address of local var:result_$61
@@ -3530,11 +3264,7 @@ modelEntry:
 	li t4, 10692
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$61
-	li t4, 10652
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$62
@@ -3557,9 +3287,9 @@ modelEntry:
 	# gep ptr_$32 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$32
 
@@ -3578,9 +3308,9 @@ modelEntry:
 	# gep a$64 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$32
 
@@ -3612,12 +3342,8 @@ modelEntry:
 	# MUL result_$63 a$65  
 
 	# fetch variables
-
-	# get address of local var:a$65
-	li t4, 10612
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 67
+	mv t1, t0
+	addi t2, zero, 67
 	mul t0, t1, t2
 
 	# get address of local var:result_$63
@@ -3633,11 +3359,7 @@ modelEntry:
 	li t4, 10644
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$63
-	li t4, 10604
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$64
@@ -3660,9 +3382,9 @@ modelEntry:
 	# gep ptr_$33 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$33
 
@@ -3681,9 +3403,9 @@ modelEntry:
 	# gep a$66 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$33
 
@@ -3715,12 +3437,8 @@ modelEntry:
 	# MUL result_$65 a$67  
 
 	# fetch variables
-
-	# get address of local var:a$67
-	li t4, 10564
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -94
+	mv t1, t0
+	addi t2, zero, -94
 	mul t0, t1, t2
 
 	# get address of local var:result_$65
@@ -3736,11 +3454,7 @@ modelEntry:
 	li t4, 10596
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$65
-	li t4, 10556
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$66
@@ -3763,9 +3477,9 @@ modelEntry:
 	# gep ptr_$34 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$34
 
@@ -3784,9 +3498,9 @@ modelEntry:
 	# gep a$68 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$34
 
@@ -3818,12 +3532,8 @@ modelEntry:
 	# MUL result_$67 a$69  
 
 	# fetch variables
-
-	# get address of local var:a$69
-	li t4, 10516
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -121
+	mv t1, t0
+	addi t2, zero, -121
 	mul t0, t1, t2
 
 	# get address of local var:result_$67
@@ -3839,11 +3549,7 @@ modelEntry:
 	li t4, 10548
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$67
-	li t4, 10508
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$68
@@ -3866,9 +3572,9 @@ modelEntry:
 	# gep ptr_$35 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$35
 
@@ -3887,9 +3593,9 @@ modelEntry:
 	# gep a$70 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$35
 
@@ -3921,12 +3627,8 @@ modelEntry:
 	# MUL result_$69 a$71  
 
 	# fetch variables
-
-	# get address of local var:a$71
-	li t4, 10468
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 7
+	mv t1, t0
+	addi t2, zero, 7
 	mul t0, t1, t2
 
 	# get address of local var:result_$69
@@ -3942,11 +3644,7 @@ modelEntry:
 	li t4, 10500
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$69
-	li t4, 10460
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$70
@@ -3969,9 +3667,9 @@ modelEntry:
 	# gep ptr_$36 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$36
 
@@ -3990,9 +3688,9 @@ modelEntry:
 	# gep a$72 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$36
 
@@ -4024,12 +3722,8 @@ modelEntry:
 	# MUL result_$71 a$73  
 
 	# fetch variables
-
-	# get address of local var:a$73
-	li t4, 10420
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -21
+	mv t1, t0
+	addi t2, zero, -21
 	mul t0, t1, t2
 
 	# get address of local var:result_$71
@@ -4045,11 +3739,7 @@ modelEntry:
 	li t4, 10452
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$71
-	li t4, 10412
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$72
@@ -4072,9 +3762,9 @@ modelEntry:
 	# gep ptr_$37 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$37
 
@@ -4093,9 +3783,9 @@ modelEntry:
 	# gep a$74 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$37
 
@@ -4127,12 +3817,8 @@ modelEntry:
 	# MUL result_$73 a$75  
 
 	# fetch variables
-
-	# get address of local var:a$75
-	li t4, 10372
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -60
+	mv t1, t0
+	addi t2, zero, -60
 	mul t0, t1, t2
 
 	# get address of local var:result_$73
@@ -4148,11 +3834,7 @@ modelEntry:
 	li t4, 10404
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$73
-	li t4, 10364
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$74
@@ -4175,9 +3857,9 @@ modelEntry:
 	# gep ptr_$38 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$38
 
@@ -4196,9 +3878,9 @@ modelEntry:
 	# gep a$76 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$38
 
@@ -4230,12 +3912,8 @@ modelEntry:
 	# MUL result_$75 a$77  
 
 	# fetch variables
-
-	# get address of local var:a$77
-	li t4, 10324
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -43
+	mv t1, t0
+	addi t2, zero, -43
 	mul t0, t1, t2
 
 	# get address of local var:result_$75
@@ -4251,11 +3929,7 @@ modelEntry:
 	li t4, 10356
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$75
-	li t4, 10316
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$76
@@ -4278,9 +3952,9 @@ modelEntry:
 	# gep ptr_$39 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$39
 
@@ -4299,9 +3973,9 @@ modelEntry:
 	# gep a$78 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$39
 
@@ -4333,12 +4007,8 @@ modelEntry:
 	# MUL result_$77 a$79  
 
 	# fetch variables
-
-	# get address of local var:a$79
-	li t4, 10276
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 105
+	mv t1, t0
+	addi t2, zero, 105
 	mul t0, t1, t2
 
 	# get address of local var:result_$77
@@ -4354,11 +4024,7 @@ modelEntry:
 	li t4, 10308
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$77
-	li t4, 10268
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$78
@@ -4381,9 +4047,9 @@ modelEntry:
 	# gep ptr_$40 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$40
 
@@ -4402,9 +4068,9 @@ modelEntry:
 	# gep a$80 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$40
 
@@ -4436,12 +4102,8 @@ modelEntry:
 	# MUL result_$79 a$81  
 
 	# fetch variables
-
-	# get address of local var:a$81
-	li t4, 10228
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -42
+	mv t1, t0
+	addi t2, zero, -42
 	mul t0, t1, t2
 
 	# get address of local var:result_$79
@@ -4457,11 +4119,7 @@ modelEntry:
 	li t4, 10260
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$79
-	li t4, 10220
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$80
@@ -4484,9 +4142,9 @@ modelEntry:
 	# gep ptr_$41 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$41
 
@@ -4505,9 +4163,9 @@ modelEntry:
 	# gep a$82 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$41
 
@@ -4539,12 +4197,8 @@ modelEntry:
 	# MUL result_$81 a$83  
 
 	# fetch variables
-
-	# get address of local var:a$83
-	li t4, 10180
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 87
+	mv t1, t0
+	addi t2, zero, 87
 	mul t0, t1, t2
 
 	# get address of local var:result_$81
@@ -4560,11 +4214,7 @@ modelEntry:
 	li t4, 10212
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$81
-	li t4, 10172
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$82
@@ -4587,9 +4237,9 @@ modelEntry:
 	# gep ptr_$42 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$42
 
@@ -4608,9 +4258,9 @@ modelEntry:
 	# gep a$84 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$42
 
@@ -4642,12 +4292,8 @@ modelEntry:
 	# MUL result_$83 a$85  
 
 	# fetch variables
-
-	# get address of local var:a$85
-	li t4, 10132
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 29
+	mv t1, t0
+	addi t2, zero, 29
 	mul t0, t1, t2
 
 	# get address of local var:result_$83
@@ -4663,11 +4309,7 @@ modelEntry:
 	li t4, 10164
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$83
-	li t4, 10124
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$84
@@ -4690,9 +4332,9 @@ modelEntry:
 	# gep ptr_$43 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$43
 
@@ -4711,9 +4353,9 @@ modelEntry:
 	# gep a$86 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$43
 
@@ -4745,12 +4387,8 @@ modelEntry:
 	# MUL result_$85 a$87  
 
 	# fetch variables
-
-	# get address of local var:a$87
-	li t4, 10084
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -106
+	mv t1, t0
+	addi t2, zero, -106
 	mul t0, t1, t2
 
 	# get address of local var:result_$85
@@ -4766,11 +4404,7 @@ modelEntry:
 	li t4, 10116
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$85
-	li t4, 10076
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$86
@@ -4793,9 +4427,9 @@ modelEntry:
 	# gep ptr_$44 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$44
 
@@ -4814,9 +4448,9 @@ modelEntry:
 	# gep a$88 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$44
 
@@ -4848,12 +4482,8 @@ modelEntry:
 	# MUL result_$87 a$89  
 
 	# fetch variables
-
-	# get address of local var:a$89
-	li t4, 10036
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -31
+	mv t1, t0
+	addi t2, zero, -31
 	mul t0, t1, t2
 
 	# get address of local var:result_$87
@@ -4869,11 +4499,7 @@ modelEntry:
 	li t4, 10068
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$87
-	li t4, 10028
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$88
@@ -4896,9 +4522,9 @@ modelEntry:
 	# gep ptr_$45 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$45
 
@@ -4917,9 +4543,9 @@ modelEntry:
 	# gep a$90 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$45
 
@@ -4951,12 +4577,8 @@ modelEntry:
 	# MUL result_$89 a$91  
 
 	# fetch variables
-
-	# get address of local var:a$91
-	li t4, 9988
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -110
+	mv t1, t0
+	addi t2, zero, -110
 	mul t0, t1, t2
 
 	# get address of local var:result_$89
@@ -4972,11 +4594,7 @@ modelEntry:
 	li t4, 10020
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$89
-	li t4, 9980
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$90
@@ -4999,9 +4617,9 @@ modelEntry:
 	# gep ptr_$46 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$46
 
@@ -5020,9 +4638,9 @@ modelEntry:
 	# gep a$92 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$46
 
@@ -5054,12 +4672,8 @@ modelEntry:
 	# MUL result_$91 a$93  
 
 	# fetch variables
-
-	# get address of local var:a$93
-	li t4, 9940
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -100
+	mv t1, t0
+	addi t2, zero, -100
 	mul t0, t1, t2
 
 	# get address of local var:result_$91
@@ -5075,11 +4689,7 @@ modelEntry:
 	li t4, 9972
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$91
-	li t4, 9932
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$92
@@ -5102,9 +4712,9 @@ modelEntry:
 	# gep ptr_$47 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$47
 
@@ -5123,9 +4733,9 @@ modelEntry:
 	# gep a$94 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$47
 
@@ -5157,12 +4767,8 @@ modelEntry:
 	# MUL result_$93 a$95  
 
 	# fetch variables
-
-	# get address of local var:a$95
-	li t4, 9892
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -22
+	mv t1, t0
+	addi t2, zero, -22
 	mul t0, t1, t2
 
 	# get address of local var:result_$93
@@ -5178,11 +4784,7 @@ modelEntry:
 	li t4, 9924
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$93
-	li t4, 9884
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$94
@@ -5205,9 +4807,9 @@ modelEntry:
 	# gep ptr_$48 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$48
 
@@ -5226,9 +4828,9 @@ modelEntry:
 	# gep a$96 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$48
 
@@ -5260,12 +4862,8 @@ modelEntry:
 	# MUL result_$95 a$97  
 
 	# fetch variables
-
-	# get address of local var:a$97
-	li t4, 9844
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -75
+	mv t1, t0
+	addi t2, zero, -75
 	mul t0, t1, t2
 
 	# get address of local var:result_$95
@@ -5281,11 +4879,7 @@ modelEntry:
 	li t4, 9876
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$95
-	li t4, 9836
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$96
@@ -5308,9 +4902,9 @@ modelEntry:
 	# gep ptr_$49 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$49
 
@@ -5329,9 +4923,9 @@ modelEntry:
 	# gep a$98 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$49
 
@@ -5363,12 +4957,8 @@ modelEntry:
 	# MUL result_$97 a$99  
 
 	# fetch variables
-
-	# get address of local var:a$99
-	li t4, 9796
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -125
+	mv t1, t0
+	addi t2, zero, -125
 	mul t0, t1, t2
 
 	# get address of local var:result_$97
@@ -5384,11 +4974,7 @@ modelEntry:
 	li t4, 9828
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$97
-	li t4, 9788
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$98
@@ -5405,8 +4991,6 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -5420,8 +5004,6 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:relu_reg$1
 	li t4, 9772
@@ -5436,7 +5018,7 @@ modelEntry:
 	li t4, 9772
 	add t4, sp, t4
 	lw t1, 0(t4)
-	li t2, 77
+	addi t2, zero, 77
 	mul t0, t1, t2
 
 	# get address of local var:result_$99
@@ -5452,11 +5034,7 @@ modelEntry:
 	li t4, 10972
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$99
-	li t4, 9764
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$100
@@ -5479,9 +5057,9 @@ modelEntry:
 	# gep ptr_$50 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$50
 
@@ -5500,9 +5078,9 @@ modelEntry:
 	# gep a$100 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$50
 
@@ -5534,12 +5112,8 @@ modelEntry:
 	# MUL result_$101 a$101  
 
 	# fetch variables
-
-	# get address of local var:a$101
-	li t4, 9724
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 26
+	mv t1, t0
+	addi t2, zero, 26
 	mul t0, t1, t2
 
 	# get address of local var:result_$101
@@ -5562,9 +5136,9 @@ modelEntry:
 	# gep ptr_$51 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$51
 
@@ -5583,9 +5157,9 @@ modelEntry:
 	# gep a$102 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$51
 
@@ -5617,12 +5191,8 @@ modelEntry:
 	# MUL result_$102 a$103  
 
 	# fetch variables
-
-	# get address of local var:a$103
-	li t4, 9684
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 76
+	mv t1, t0
+	addi t2, zero, 76
 	mul t0, t1, t2
 
 	# get address of local var:result_$102
@@ -5638,11 +5208,7 @@ modelEntry:
 	li t4, 9716
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$102
-	li t4, 9676
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$103
@@ -5665,9 +5231,9 @@ modelEntry:
 	# gep ptr_$52 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$52
 
@@ -5686,9 +5252,9 @@ modelEntry:
 	# gep a$104 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$52
 
@@ -5720,12 +5286,8 @@ modelEntry:
 	# MUL result_$104 a$105  
 
 	# fetch variables
-
-	# get address of local var:a$105
-	li t4, 9636
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -70
+	mv t1, t0
+	addi t2, zero, -70
 	mul t0, t1, t2
 
 	# get address of local var:result_$104
@@ -5741,11 +5303,7 @@ modelEntry:
 	li t4, 9668
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$104
-	li t4, 9628
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$105
@@ -5768,9 +5326,9 @@ modelEntry:
 	# gep ptr_$53 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$53
 
@@ -5789,9 +5347,9 @@ modelEntry:
 	# gep a$106 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$53
 
@@ -5823,12 +5381,8 @@ modelEntry:
 	# MUL result_$106 a$107  
 
 	# fetch variables
-
-	# get address of local var:a$107
-	li t4, 9588
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 29
+	mv t1, t0
+	addi t2, zero, 29
 	mul t0, t1, t2
 
 	# get address of local var:result_$106
@@ -5844,11 +5398,7 @@ modelEntry:
 	li t4, 9620
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$106
-	li t4, 9580
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$107
@@ -5871,9 +5421,9 @@ modelEntry:
 	# gep ptr_$54 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$54
 
@@ -5892,9 +5442,9 @@ modelEntry:
 	# gep a$108 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$54
 
@@ -5926,12 +5476,8 @@ modelEntry:
 	# MUL result_$108 a$109  
 
 	# fetch variables
-
-	# get address of local var:a$109
-	li t4, 9540
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -95
+	mv t1, t0
+	addi t2, zero, -95
 	mul t0, t1, t2
 
 	# get address of local var:result_$108
@@ -5947,11 +5493,7 @@ modelEntry:
 	li t4, 9572
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$108
-	li t4, 9532
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$109
@@ -5974,9 +5516,9 @@ modelEntry:
 	# gep ptr_$55 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$55
 
@@ -5995,9 +5537,9 @@ modelEntry:
 	# gep a$110 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$55
 
@@ -6029,12 +5571,8 @@ modelEntry:
 	# MUL result_$110 a$111  
 
 	# fetch variables
-
-	# get address of local var:a$111
-	li t4, 9492
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 96
+	mv t1, t0
+	addi t2, zero, 96
 	mul t0, t1, t2
 
 	# get address of local var:result_$110
@@ -6050,11 +5588,7 @@ modelEntry:
 	li t4, 9524
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$110
-	li t4, 9484
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$111
@@ -6077,9 +5611,9 @@ modelEntry:
 	# gep ptr_$56 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$56
 
@@ -6098,9 +5632,9 @@ modelEntry:
 	# gep a$112 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$56
 
@@ -6132,12 +5666,8 @@ modelEntry:
 	# MUL result_$112 a$113  
 
 	# fetch variables
-
-	# get address of local var:a$113
-	li t4, 9444
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 52
+	mv t1, t0
+	addi t2, zero, 52
 	mul t0, t1, t2
 
 	# get address of local var:result_$112
@@ -6153,11 +5683,7 @@ modelEntry:
 	li t4, 9476
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$112
-	li t4, 9436
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$113
@@ -6180,9 +5706,9 @@ modelEntry:
 	# gep ptr_$57 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$57
 
@@ -6201,9 +5727,9 @@ modelEntry:
 	# gep a$114 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$57
 
@@ -6235,12 +5761,8 @@ modelEntry:
 	# MUL result_$114 a$115  
 
 	# fetch variables
-
-	# get address of local var:a$115
-	li t4, 9396
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -68
+	mv t1, t0
+	addi t2, zero, -68
 	mul t0, t1, t2
 
 	# get address of local var:result_$114
@@ -6256,11 +5778,7 @@ modelEntry:
 	li t4, 9428
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$114
-	li t4, 9388
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$115
@@ -6283,9 +5801,9 @@ modelEntry:
 	# gep ptr_$58 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$58
 
@@ -6304,9 +5822,9 @@ modelEntry:
 	# gep a$116 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$58
 
@@ -6338,12 +5856,8 @@ modelEntry:
 	# MUL result_$116 a$117  
 
 	# fetch variables
-
-	# get address of local var:a$117
-	li t4, 9348
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -5
+	mv t1, t0
+	addi t2, zero, -5
 	mul t0, t1, t2
 
 	# get address of local var:result_$116
@@ -6359,11 +5873,7 @@ modelEntry:
 	li t4, 9380
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$116
-	li t4, 9340
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$117
@@ -6386,9 +5896,9 @@ modelEntry:
 	# gep ptr_$59 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$59
 
@@ -6407,9 +5917,9 @@ modelEntry:
 	# gep a$118 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$59
 
@@ -6441,12 +5951,8 @@ modelEntry:
 	# MUL result_$118 a$119  
 
 	# fetch variables
-
-	# get address of local var:a$119
-	li t4, 9300
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 34
+	mv t1, t0
+	addi t2, zero, 34
 	mul t0, t1, t2
 
 	# get address of local var:result_$118
@@ -6462,11 +5968,7 @@ modelEntry:
 	li t4, 9332
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$118
-	li t4, 9292
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$119
@@ -6489,9 +5991,9 @@ modelEntry:
 	# gep ptr_$60 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$60
 
@@ -6510,9 +6012,9 @@ modelEntry:
 	# gep a$120 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$60
 
@@ -6544,12 +6046,8 @@ modelEntry:
 	# MUL result_$120 a$121  
 
 	# fetch variables
-
-	# get address of local var:a$121
-	li t4, 9252
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -34
+	mv t1, t0
+	addi t2, zero, -34
 	mul t0, t1, t2
 
 	# get address of local var:result_$120
@@ -6565,11 +6063,7 @@ modelEntry:
 	li t4, 9284
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$120
-	li t4, 9244
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$121
@@ -6592,9 +6086,9 @@ modelEntry:
 	# gep ptr_$61 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$61
 
@@ -6613,9 +6107,9 @@ modelEntry:
 	# gep a$122 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$61
 
@@ -6647,12 +6141,8 @@ modelEntry:
 	# MUL result_$122 a$123  
 
 	# fetch variables
-
-	# get address of local var:a$123
-	li t4, 9204
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 102
+	mv t1, t0
+	addi t2, zero, 102
 	mul t0, t1, t2
 
 	# get address of local var:result_$122
@@ -6668,11 +6158,7 @@ modelEntry:
 	li t4, 9236
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$122
-	li t4, 9196
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$123
@@ -6695,9 +6181,9 @@ modelEntry:
 	# gep ptr_$62 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$62
 
@@ -6716,9 +6202,9 @@ modelEntry:
 	# gep a$124 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$62
 
@@ -6750,12 +6236,8 @@ modelEntry:
 	# MUL result_$124 a$125  
 
 	# fetch variables
-
-	# get address of local var:a$125
-	li t4, 9156
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 6
+	mv t1, t0
+	addi t2, zero, 6
 	mul t0, t1, t2
 
 	# get address of local var:result_$124
@@ -6771,11 +6253,7 @@ modelEntry:
 	li t4, 9188
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$124
-	li t4, 9148
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$125
@@ -6798,9 +6276,9 @@ modelEntry:
 	# gep ptr_$63 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$63
 
@@ -6819,9 +6297,9 @@ modelEntry:
 	# gep a$126 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$63
 
@@ -6853,12 +6331,8 @@ modelEntry:
 	# MUL result_$126 a$127  
 
 	# fetch variables
-
-	# get address of local var:a$127
-	li t4, 9108
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -38
+	mv t1, t0
+	addi t2, zero, -38
 	mul t0, t1, t2
 
 	# get address of local var:result_$126
@@ -6874,11 +6348,7 @@ modelEntry:
 	li t4, 9140
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$126
-	li t4, 9100
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$127
@@ -6901,9 +6371,9 @@ modelEntry:
 	# gep ptr_$64 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$64
 
@@ -6922,9 +6392,9 @@ modelEntry:
 	# gep a$128 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$64
 
@@ -6956,12 +6426,8 @@ modelEntry:
 	# MUL result_$128 a$129  
 
 	# fetch variables
-
-	# get address of local var:a$129
-	li t4, 9060
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 27
+	mv t1, t0
+	addi t2, zero, 27
 	mul t0, t1, t2
 
 	# get address of local var:result_$128
@@ -6977,11 +6443,7 @@ modelEntry:
 	li t4, 9092
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$128
-	li t4, 9052
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$129
@@ -7004,9 +6466,9 @@ modelEntry:
 	# gep ptr_$65 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$65
 
@@ -7025,9 +6487,9 @@ modelEntry:
 	# gep a$130 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$65
 
@@ -7059,12 +6521,8 @@ modelEntry:
 	# MUL result_$130 a$131  
 
 	# fetch variables
-
-	# get address of local var:a$131
-	li t4, 9012
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 110
+	mv t1, t0
+	addi t2, zero, 110
 	mul t0, t1, t2
 
 	# get address of local var:result_$130
@@ -7080,11 +6538,7 @@ modelEntry:
 	li t4, 9044
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$130
-	li t4, 9004
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$131
@@ -7107,9 +6561,9 @@ modelEntry:
 	# gep ptr_$66 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$66
 
@@ -7128,9 +6582,9 @@ modelEntry:
 	# gep a$132 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$66
 
@@ -7162,12 +6616,8 @@ modelEntry:
 	# MUL result_$132 a$133  
 
 	# fetch variables
-
-	# get address of local var:a$133
-	li t4, 8964
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 116
+	mv t1, t0
+	addi t2, zero, 116
 	mul t0, t1, t2
 
 	# get address of local var:result_$132
@@ -7183,11 +6633,7 @@ modelEntry:
 	li t4, 8996
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$132
-	li t4, 8956
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$133
@@ -7210,9 +6656,9 @@ modelEntry:
 	# gep ptr_$67 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$67
 
@@ -7231,9 +6677,9 @@ modelEntry:
 	# gep a$134 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$67
 
@@ -7265,12 +6711,8 @@ modelEntry:
 	# MUL result_$134 a$135  
 
 	# fetch variables
-
-	# get address of local var:a$135
-	li t4, 8916
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 39
+	mv t1, t0
+	addi t2, zero, 39
 	mul t0, t1, t2
 
 	# get address of local var:result_$134
@@ -7286,11 +6728,7 @@ modelEntry:
 	li t4, 8948
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$134
-	li t4, 8908
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$135
@@ -7313,9 +6751,9 @@ modelEntry:
 	# gep ptr_$68 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$68
 
@@ -7334,9 +6772,9 @@ modelEntry:
 	# gep a$136 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$68
 
@@ -7368,12 +6806,8 @@ modelEntry:
 	# MUL result_$136 a$137  
 
 	# fetch variables
-
-	# get address of local var:a$137
-	li t4, 8868
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -63
+	mv t1, t0
+	addi t2, zero, -63
 	mul t0, t1, t2
 
 	# get address of local var:result_$136
@@ -7389,11 +6823,7 @@ modelEntry:
 	li t4, 8900
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$136
-	li t4, 8860
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$137
@@ -7416,9 +6846,9 @@ modelEntry:
 	# gep ptr_$69 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$69
 
@@ -7437,9 +6867,9 @@ modelEntry:
 	# gep a$138 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$69
 
@@ -7471,12 +6901,8 @@ modelEntry:
 	# MUL result_$138 a$139  
 
 	# fetch variables
-
-	# get address of local var:a$139
-	li t4, 8820
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -99
+	mv t1, t0
+	addi t2, zero, -99
 	mul t0, t1, t2
 
 	# get address of local var:result_$138
@@ -7492,11 +6918,7 @@ modelEntry:
 	li t4, 8852
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$138
-	li t4, 8812
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$139
@@ -7519,9 +6941,9 @@ modelEntry:
 	# gep ptr_$70 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$70
 
@@ -7540,9 +6962,9 @@ modelEntry:
 	# gep a$140 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$70
 
@@ -7574,12 +6996,8 @@ modelEntry:
 	# MUL result_$140 a$141  
 
 	# fetch variables
-
-	# get address of local var:a$141
-	li t4, 8772
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 65
+	mv t1, t0
+	addi t2, zero, 65
 	mul t0, t1, t2
 
 	# get address of local var:result_$140
@@ -7595,11 +7013,7 @@ modelEntry:
 	li t4, 8804
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$140
-	li t4, 8764
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$141
@@ -7622,9 +7036,9 @@ modelEntry:
 	# gep ptr_$71 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$71
 
@@ -7643,9 +7057,9 @@ modelEntry:
 	# gep a$142 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$71
 
@@ -7677,12 +7091,8 @@ modelEntry:
 	# MUL result_$142 a$143  
 
 	# fetch variables
-
-	# get address of local var:a$143
-	li t4, 8724
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 120
+	mv t1, t0
+	addi t2, zero, 120
 	mul t0, t1, t2
 
 	# get address of local var:result_$142
@@ -7698,11 +7108,7 @@ modelEntry:
 	li t4, 8756
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$142
-	li t4, 8716
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$143
@@ -7725,9 +7131,9 @@ modelEntry:
 	# gep ptr_$72 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$72
 
@@ -7746,9 +7152,9 @@ modelEntry:
 	# gep a$144 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$72
 
@@ -7780,12 +7186,8 @@ modelEntry:
 	# MUL result_$144 a$145  
 
 	# fetch variables
-
-	# get address of local var:a$145
-	li t4, 8676
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -39
+	mv t1, t0
+	addi t2, zero, -39
 	mul t0, t1, t2
 
 	# get address of local var:result_$144
@@ -7801,11 +7203,7 @@ modelEntry:
 	li t4, 8708
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$144
-	li t4, 8668
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$145
@@ -7828,9 +7226,9 @@ modelEntry:
 	# gep ptr_$73 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$73
 
@@ -7849,9 +7247,9 @@ modelEntry:
 	# gep a$146 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$73
 
@@ -7883,12 +7281,8 @@ modelEntry:
 	# MUL result_$146 a$147  
 
 	# fetch variables
-
-	# get address of local var:a$147
-	li t4, 8628
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -6
+	mv t1, t0
+	addi t2, zero, -6
 	mul t0, t1, t2
 
 	# get address of local var:result_$146
@@ -7904,11 +7298,7 @@ modelEntry:
 	li t4, 8660
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$146
-	li t4, 8620
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$147
@@ -7931,9 +7321,9 @@ modelEntry:
 	# gep ptr_$74 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$74
 
@@ -7952,9 +7342,9 @@ modelEntry:
 	# gep a$148 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$74
 
@@ -7986,12 +7376,8 @@ modelEntry:
 	# MUL result_$148 a$149  
 
 	# fetch variables
-
-	# get address of local var:a$149
-	li t4, 8580
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 94
+	mv t1, t0
+	addi t2, zero, 94
 	mul t0, t1, t2
 
 	# get address of local var:result_$148
@@ -8007,11 +7393,7 @@ modelEntry:
 	li t4, 8612
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$148
-	li t4, 8572
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$149
@@ -8028,8 +7410,6 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -8043,8 +7423,6 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:relu_reg$2
 	li t4, 8556
@@ -8059,7 +7437,7 @@ modelEntry:
 	li t4, 8556
 	add t4, sp, t4
 	lw t1, 0(t4)
-	li t2, 127
+	addi t2, zero, 127
 	mul t0, t1, t2
 
 	# get address of local var:result_$150
@@ -8075,11 +7453,7 @@ modelEntry:
 	li t4, 9756
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$150
-	li t4, 8548
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$151
@@ -8102,9 +7476,9 @@ modelEntry:
 	# gep ptr_$75 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$75
 
@@ -8123,9 +7497,9 @@ modelEntry:
 	# gep a$150 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$75
 
@@ -8157,12 +7531,8 @@ modelEntry:
 	# MUL result_$152 a$151  
 
 	# fetch variables
-
-	# get address of local var:a$151
-	li t4, 8508
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -23
+	mv t1, t0
+	addi t2, zero, -23
 	mul t0, t1, t2
 
 	# get address of local var:result_$152
@@ -8185,9 +7555,9 @@ modelEntry:
 	# gep ptr_$76 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$76
 
@@ -8206,9 +7576,9 @@ modelEntry:
 	# gep a$152 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$76
 
@@ -8240,12 +7610,8 @@ modelEntry:
 	# MUL result_$153 a$153  
 
 	# fetch variables
-
-	# get address of local var:a$153
-	li t4, 8468
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -63
+	mv t1, t0
+	addi t2, zero, -63
 	mul t0, t1, t2
 
 	# get address of local var:result_$153
@@ -8261,11 +7627,7 @@ modelEntry:
 	li t4, 8500
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$153
-	li t4, 8460
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$154
@@ -8288,9 +7650,9 @@ modelEntry:
 	# gep ptr_$77 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$77
 
@@ -8309,9 +7671,9 @@ modelEntry:
 	# gep a$154 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$77
 
@@ -8343,12 +7705,8 @@ modelEntry:
 	# MUL result_$155 a$155  
 
 	# fetch variables
-
-	# get address of local var:a$155
-	li t4, 8420
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 49
+	mv t1, t0
+	addi t2, zero, 49
 	mul t0, t1, t2
 
 	# get address of local var:result_$155
@@ -8364,11 +7722,7 @@ modelEntry:
 	li t4, 8452
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$155
-	li t4, 8412
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$156
@@ -8391,9 +7745,9 @@ modelEntry:
 	# gep ptr_$78 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$78
 
@@ -8412,9 +7766,9 @@ modelEntry:
 	# gep a$156 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$78
 
@@ -8446,12 +7800,8 @@ modelEntry:
 	# MUL result_$157 a$157  
 
 	# fetch variables
-
-	# get address of local var:a$157
-	li t4, 8372
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 50
+	mv t1, t0
+	addi t2, zero, 50
 	mul t0, t1, t2
 
 	# get address of local var:result_$157
@@ -8467,11 +7817,7 @@ modelEntry:
 	li t4, 8404
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$157
-	li t4, 8364
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$158
@@ -8494,9 +7840,9 @@ modelEntry:
 	# gep ptr_$79 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$79
 
@@ -8515,9 +7861,9 @@ modelEntry:
 	# gep a$158 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$79
 
@@ -8549,12 +7895,8 @@ modelEntry:
 	# MUL result_$159 a$159  
 
 	# fetch variables
-
-	# get address of local var:a$159
-	li t4, 8324
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 72
+	mv t1, t0
+	addi t2, zero, 72
 	mul t0, t1, t2
 
 	# get address of local var:result_$159
@@ -8570,11 +7912,7 @@ modelEntry:
 	li t4, 8356
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$159
-	li t4, 8316
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$160
@@ -8597,9 +7935,9 @@ modelEntry:
 	# gep ptr_$80 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$80
 
@@ -8618,9 +7956,9 @@ modelEntry:
 	# gep a$160 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$80
 
@@ -8652,12 +7990,8 @@ modelEntry:
 	# MUL result_$161 a$161  
 
 	# fetch variables
-
-	# get address of local var:a$161
-	li t4, 8276
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 85
+	mv t1, t0
+	addi t2, zero, 85
 	mul t0, t1, t2
 
 	# get address of local var:result_$161
@@ -8673,11 +8007,7 @@ modelEntry:
 	li t4, 8308
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$161
-	li t4, 8268
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$162
@@ -8700,9 +8030,9 @@ modelEntry:
 	# gep ptr_$81 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$81
 
@@ -8721,9 +8051,9 @@ modelEntry:
 	# gep a$162 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$81
 
@@ -8755,12 +8085,8 @@ modelEntry:
 	# MUL result_$163 a$163  
 
 	# fetch variables
-
-	# get address of local var:a$163
-	li t4, 8228
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -30
+	mv t1, t0
+	addi t2, zero, -30
 	mul t0, t1, t2
 
 	# get address of local var:result_$163
@@ -8776,11 +8102,7 @@ modelEntry:
 	li t4, 8260
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$163
-	li t4, 8220
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$164
@@ -8803,9 +8125,9 @@ modelEntry:
 	# gep ptr_$82 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$82
 
@@ -8824,9 +8146,9 @@ modelEntry:
 	# gep a$164 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$82
 
@@ -8858,12 +8180,8 @@ modelEntry:
 	# MUL result_$165 a$165  
 
 	# fetch variables
-
-	# get address of local var:a$165
-	li t4, 8180
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 12
+	mv t1, t0
+	addi t2, zero, 12
 	mul t0, t1, t2
 
 	# get address of local var:result_$165
@@ -8879,11 +8197,7 @@ modelEntry:
 	li t4, 8212
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$165
-	li t4, 8172
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$166
@@ -8906,9 +8220,9 @@ modelEntry:
 	# gep ptr_$83 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$83
 
@@ -8927,9 +8241,9 @@ modelEntry:
 	# gep a$166 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$83
 
@@ -8961,12 +8275,8 @@ modelEntry:
 	# MUL result_$167 a$167  
 
 	# fetch variables
-
-	# get address of local var:a$167
-	li t4, 8132
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 125
+	mv t1, t0
+	addi t2, zero, 125
 	mul t0, t1, t2
 
 	# get address of local var:result_$167
@@ -8982,11 +8292,7 @@ modelEntry:
 	li t4, 8164
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$167
-	li t4, 8124
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$168
@@ -9009,9 +8315,9 @@ modelEntry:
 	# gep ptr_$84 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$84
 
@@ -9030,9 +8336,9 @@ modelEntry:
 	# gep a$168 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$84
 
@@ -9064,12 +8370,8 @@ modelEntry:
 	# MUL result_$169 a$169  
 
 	# fetch variables
-
-	# get address of local var:a$169
-	li t4, 8084
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -117
+	mv t1, t0
+	addi t2, zero, -117
 	mul t0, t1, t2
 
 	# get address of local var:result_$169
@@ -9085,11 +8387,7 @@ modelEntry:
 	li t4, 8116
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$169
-	li t4, 8076
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$170
@@ -9112,9 +8410,9 @@ modelEntry:
 	# gep ptr_$85 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$85
 
@@ -9133,9 +8431,9 @@ modelEntry:
 	# gep a$170 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$85
 
@@ -9167,12 +8465,8 @@ modelEntry:
 	# MUL result_$171 a$171  
 
 	# fetch variables
-
-	# get address of local var:a$171
-	li t4, 8036
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -65
+	mv t1, t0
+	addi t2, zero, -65
 	mul t0, t1, t2
 
 	# get address of local var:result_$171
@@ -9188,11 +8482,7 @@ modelEntry:
 	li t4, 8068
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$171
-	li t4, 8028
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$172
@@ -9215,9 +8505,9 @@ modelEntry:
 	# gep ptr_$86 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$86
 
@@ -9236,9 +8526,9 @@ modelEntry:
 	# gep a$172 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$86
 
@@ -9270,12 +8560,8 @@ modelEntry:
 	# MUL result_$173 a$173  
 
 	# fetch variables
-
-	# get address of local var:a$173
-	li t4, 7988
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -67
+	mv t1, t0
+	addi t2, zero, -67
 	mul t0, t1, t2
 
 	# get address of local var:result_$173
@@ -9291,11 +8577,7 @@ modelEntry:
 	li t4, 8020
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$173
-	li t4, 7980
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$174
@@ -9318,9 +8600,9 @@ modelEntry:
 	# gep ptr_$87 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$87
 
@@ -9339,9 +8621,9 @@ modelEntry:
 	# gep a$174 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$87
 
@@ -9373,12 +8655,8 @@ modelEntry:
 	# MUL result_$175 a$175  
 
 	# fetch variables
-
-	# get address of local var:a$175
-	li t4, 7940
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 125
+	mv t1, t0
+	addi t2, zero, 125
 	mul t0, t1, t2
 
 	# get address of local var:result_$175
@@ -9394,11 +8672,7 @@ modelEntry:
 	li t4, 7972
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$175
-	li t4, 7932
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$176
@@ -9421,9 +8695,9 @@ modelEntry:
 	# gep ptr_$88 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$88
 
@@ -9442,9 +8716,9 @@ modelEntry:
 	# gep a$176 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$88
 
@@ -9476,12 +8750,8 @@ modelEntry:
 	# MUL result_$177 a$177  
 
 	# fetch variables
-
-	# get address of local var:a$177
-	li t4, 7892
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 110
+	mv t1, t0
+	addi t2, zero, 110
 	mul t0, t1, t2
 
 	# get address of local var:result_$177
@@ -9497,11 +8767,7 @@ modelEntry:
 	li t4, 7924
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$177
-	li t4, 7884
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$178
@@ -9524,9 +8790,9 @@ modelEntry:
 	# gep ptr_$89 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$89
 
@@ -9545,9 +8811,9 @@ modelEntry:
 	# gep a$178 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$89
 
@@ -9579,12 +8845,8 @@ modelEntry:
 	# MUL result_$179 a$179  
 
 	# fetch variables
-
-	# get address of local var:a$179
-	li t4, 7844
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -31
+	mv t1, t0
+	addi t2, zero, -31
 	mul t0, t1, t2
 
 	# get address of local var:result_$179
@@ -9600,11 +8862,7 @@ modelEntry:
 	li t4, 7876
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$179
-	li t4, 7836
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$180
@@ -9627,9 +8885,9 @@ modelEntry:
 	# gep ptr_$90 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$90
 
@@ -9648,9 +8906,9 @@ modelEntry:
 	# gep a$180 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$90
 
@@ -9682,12 +8940,8 @@ modelEntry:
 	# MUL result_$181 a$181  
 
 	# fetch variables
-
-	# get address of local var:a$181
-	li t4, 7796
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -123
+	mv t1, t0
+	addi t2, zero, -123
 	mul t0, t1, t2
 
 	# get address of local var:result_$181
@@ -9703,11 +8957,7 @@ modelEntry:
 	li t4, 7828
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$181
-	li t4, 7788
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$182
@@ -9730,9 +8980,9 @@ modelEntry:
 	# gep ptr_$91 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$91
 
@@ -9751,9 +9001,9 @@ modelEntry:
 	# gep a$182 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$91
 
@@ -9785,12 +9035,8 @@ modelEntry:
 	# MUL result_$183 a$183  
 
 	# fetch variables
-
-	# get address of local var:a$183
-	li t4, 7748
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 83
+	mv t1, t0
+	addi t2, zero, 83
 	mul t0, t1, t2
 
 	# get address of local var:result_$183
@@ -9806,11 +9052,7 @@ modelEntry:
 	li t4, 7780
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$183
-	li t4, 7740
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$184
@@ -9833,9 +9075,9 @@ modelEntry:
 	# gep ptr_$92 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$92
 
@@ -9854,9 +9096,9 @@ modelEntry:
 	# gep a$184 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$92
 
@@ -9888,12 +9130,8 @@ modelEntry:
 	# MUL result_$185 a$185  
 
 	# fetch variables
-
-	# get address of local var:a$185
-	li t4, 7700
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 122
+	mv t1, t0
+	addi t2, zero, 122
 	mul t0, t1, t2
 
 	# get address of local var:result_$185
@@ -9909,11 +9147,7 @@ modelEntry:
 	li t4, 7732
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$185
-	li t4, 7692
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$186
@@ -9936,9 +9170,9 @@ modelEntry:
 	# gep ptr_$93 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$93
 
@@ -9957,9 +9191,9 @@ modelEntry:
 	# gep a$186 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$93
 
@@ -9991,12 +9225,8 @@ modelEntry:
 	# MUL result_$187 a$187  
 
 	# fetch variables
-
-	# get address of local var:a$187
-	li t4, 7652
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 11
+	mv t1, t0
+	addi t2, zero, 11
 	mul t0, t1, t2
 
 	# get address of local var:result_$187
@@ -10012,11 +9242,7 @@ modelEntry:
 	li t4, 7684
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$187
-	li t4, 7644
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$188
@@ -10039,9 +9265,9 @@ modelEntry:
 	# gep ptr_$94 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$94
 
@@ -10060,9 +9286,9 @@ modelEntry:
 	# gep a$188 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$94
 
@@ -10094,12 +9320,8 @@ modelEntry:
 	# MUL result_$189 a$189  
 
 	# fetch variables
-
-	# get address of local var:a$189
-	li t4, 7604
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -23
+	mv t1, t0
+	addi t2, zero, -23
 	mul t0, t1, t2
 
 	# get address of local var:result_$189
@@ -10115,11 +9337,7 @@ modelEntry:
 	li t4, 7636
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$189
-	li t4, 7596
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$190
@@ -10142,9 +9360,9 @@ modelEntry:
 	# gep ptr_$95 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$95
 
@@ -10163,9 +9381,9 @@ modelEntry:
 	# gep a$190 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$95
 
@@ -10197,12 +9415,8 @@ modelEntry:
 	# MUL result_$191 a$191  
 
 	# fetch variables
-
-	# get address of local var:a$191
-	li t4, 7556
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -47
+	mv t1, t0
+	addi t2, zero, -47
 	mul t0, t1, t2
 
 	# get address of local var:result_$191
@@ -10218,11 +9432,7 @@ modelEntry:
 	li t4, 7588
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$191
-	li t4, 7548
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$192
@@ -10245,9 +9455,9 @@ modelEntry:
 	# gep ptr_$96 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$96
 
@@ -10266,9 +9476,9 @@ modelEntry:
 	# gep a$192 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$96
 
@@ -10300,12 +9510,8 @@ modelEntry:
 	# MUL result_$193 a$193  
 
 	# fetch variables
-
-	# get address of local var:a$193
-	li t4, 7508
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -32
+	mv t1, t0
+	addi t2, zero, -32
 	mul t0, t1, t2
 
 	# get address of local var:result_$193
@@ -10321,11 +9527,7 @@ modelEntry:
 	li t4, 7540
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$193
-	li t4, 7500
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$194
@@ -10348,9 +9550,9 @@ modelEntry:
 	# gep ptr_$97 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$97
 
@@ -10369,9 +9571,9 @@ modelEntry:
 	# gep a$194 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$97
 
@@ -10403,12 +9605,8 @@ modelEntry:
 	# MUL result_$195 a$195  
 
 	# fetch variables
-
-	# get address of local var:a$195
-	li t4, 7460
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -117
+	mv t1, t0
+	addi t2, zero, -117
 	mul t0, t1, t2
 
 	# get address of local var:result_$195
@@ -10424,11 +9622,7 @@ modelEntry:
 	li t4, 7492
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$195
-	li t4, 7452
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$196
@@ -10451,9 +9645,9 @@ modelEntry:
 	# gep ptr_$98 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$98
 
@@ -10472,9 +9666,9 @@ modelEntry:
 	# gep a$196 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$98
 
@@ -10506,12 +9700,8 @@ modelEntry:
 	# MUL result_$197 a$197  
 
 	# fetch variables
-
-	# get address of local var:a$197
-	li t4, 7412
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 95
+	mv t1, t0
+	addi t2, zero, 95
 	mul t0, t1, t2
 
 	# get address of local var:result_$197
@@ -10527,11 +9717,7 @@ modelEntry:
 	li t4, 7444
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$197
-	li t4, 7404
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$198
@@ -10554,9 +9740,9 @@ modelEntry:
 	# gep ptr_$99 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$99
 
@@ -10575,9 +9761,9 @@ modelEntry:
 	# gep a$198 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$99
 
@@ -10609,12 +9795,8 @@ modelEntry:
 	# MUL result_$199 a$199  
 
 	# fetch variables
-
-	# get address of local var:a$199
-	li t4, 7364
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 118
+	mv t1, t0
+	addi t2, zero, 118
 	mul t0, t1, t2
 
 	# get address of local var:result_$199
@@ -10630,11 +9812,7 @@ modelEntry:
 	li t4, 7396
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$199
-	li t4, 7356
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$200
@@ -10651,8 +9829,6 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -10666,8 +9842,6 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:relu_reg$3
 	li t4, 7340
@@ -10682,7 +9856,7 @@ modelEntry:
 	li t4, 7340
 	add t4, sp, t4
 	lw t1, 0(t4)
-	li t2, -106
+	addi t2, zero, -106
 	mul t0, t1, t2
 
 	# get address of local var:result_$201
@@ -10698,11 +9872,7 @@ modelEntry:
 	li t4, 8540
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$201
-	li t4, 7332
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$202
@@ -10725,9 +9895,9 @@ modelEntry:
 	# gep ptr_$100 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$100
 
@@ -10746,9 +9916,9 @@ modelEntry:
 	# gep a$200 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$100
 
@@ -10780,12 +9950,8 @@ modelEntry:
 	# MUL result_$203 a$201  
 
 	# fetch variables
-
-	# get address of local var:a$201
-	li t4, 7292
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 8
+	mv t1, t0
+	addi t2, zero, 8
 	mul t0, t1, t2
 
 	# get address of local var:result_$203
@@ -10808,9 +9974,9 @@ modelEntry:
 	# gep ptr_$101 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$101
 
@@ -10829,9 +9995,9 @@ modelEntry:
 	# gep a$202 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$101
 
@@ -10863,12 +10029,8 @@ modelEntry:
 	# MUL result_$204 a$203  
 
 	# fetch variables
-
-	# get address of local var:a$203
-	li t4, 7252
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 82
+	mv t1, t0
+	addi t2, zero, 82
 	mul t0, t1, t2
 
 	# get address of local var:result_$204
@@ -10884,11 +10046,7 @@ modelEntry:
 	li t4, 7284
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$204
-	li t4, 7244
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$205
@@ -10911,9 +10069,9 @@ modelEntry:
 	# gep ptr_$102 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$102
 
@@ -10932,9 +10090,9 @@ modelEntry:
 	# gep a$204 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$102
 
@@ -10966,12 +10124,8 @@ modelEntry:
 	# MUL result_$206 a$205  
 
 	# fetch variables
-
-	# get address of local var:a$205
-	li t4, 7204
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -104
+	mv t1, t0
+	addi t2, zero, -104
 	mul t0, t1, t2
 
 	# get address of local var:result_$206
@@ -10987,11 +10141,7 @@ modelEntry:
 	li t4, 7236
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$206
-	li t4, 7196
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$207
@@ -11014,9 +10164,9 @@ modelEntry:
 	# gep ptr_$103 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$103
 
@@ -11035,9 +10185,9 @@ modelEntry:
 	# gep a$206 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$103
 
@@ -11069,12 +10219,8 @@ modelEntry:
 	# MUL result_$208 a$207  
 
 	# fetch variables
-
-	# get address of local var:a$207
-	li t4, 7156
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 101
+	mv t1, t0
+	addi t2, zero, 101
 	mul t0, t1, t2
 
 	# get address of local var:result_$208
@@ -11090,11 +10236,7 @@ modelEntry:
 	li t4, 7188
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$208
-	li t4, 7148
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$209
@@ -11117,9 +10259,9 @@ modelEntry:
 	# gep ptr_$104 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$104
 
@@ -11138,9 +10280,9 @@ modelEntry:
 	# gep a$208 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$104
 
@@ -11172,12 +10314,8 @@ modelEntry:
 	# MUL result_$210 a$209  
 
 	# fetch variables
-
-	# get address of local var:a$209
-	li t4, 7108
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -116
+	mv t1, t0
+	addi t2, zero, -116
 	mul t0, t1, t2
 
 	# get address of local var:result_$210
@@ -11193,11 +10331,7 @@ modelEntry:
 	li t4, 7140
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$210
-	li t4, 7100
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$211
@@ -11220,9 +10354,9 @@ modelEntry:
 	# gep ptr_$105 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$105
 
@@ -11241,9 +10375,9 @@ modelEntry:
 	# gep a$210 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$105
 
@@ -11275,12 +10409,8 @@ modelEntry:
 	# MUL result_$212 a$211  
 
 	# fetch variables
-
-	# get address of local var:a$211
-	li t4, 7060
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -63
+	mv t1, t0
+	addi t2, zero, -63
 	mul t0, t1, t2
 
 	# get address of local var:result_$212
@@ -11296,11 +10426,7 @@ modelEntry:
 	li t4, 7092
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$212
-	li t4, 7052
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$213
@@ -11323,9 +10449,9 @@ modelEntry:
 	# gep ptr_$106 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$106
 
@@ -11344,9 +10470,9 @@ modelEntry:
 	# gep a$212 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$106
 
@@ -11378,12 +10504,8 @@ modelEntry:
 	# MUL result_$214 a$213  
 
 	# fetch variables
-
-	# get address of local var:a$213
-	li t4, 7012
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -16
+	mv t1, t0
+	addi t2, zero, -16
 	mul t0, t1, t2
 
 	# get address of local var:result_$214
@@ -11399,11 +10521,7 @@ modelEntry:
 	li t4, 7044
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$214
-	li t4, 7004
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$215
@@ -11426,9 +10544,9 @@ modelEntry:
 	# gep ptr_$107 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$107
 
@@ -11447,9 +10565,9 @@ modelEntry:
 	# gep a$214 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$107
 
@@ -11481,12 +10599,8 @@ modelEntry:
 	# MUL result_$216 a$215  
 
 	# fetch variables
-
-	# get address of local var:a$215
-	li t4, 6964
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -70
+	mv t1, t0
+	addi t2, zero, -70
 	mul t0, t1, t2
 
 	# get address of local var:result_$216
@@ -11502,11 +10616,7 @@ modelEntry:
 	li t4, 6996
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$216
-	li t4, 6956
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$217
@@ -11529,9 +10639,9 @@ modelEntry:
 	# gep ptr_$108 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$108
 
@@ -11550,9 +10660,9 @@ modelEntry:
 	# gep a$216 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$108
 
@@ -11584,12 +10694,8 @@ modelEntry:
 	# MUL result_$218 a$217  
 
 	# fetch variables
-
-	# get address of local var:a$217
-	li t4, 6916
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 125
+	mv t1, t0
+	addi t2, zero, 125
 	mul t0, t1, t2
 
 	# get address of local var:result_$218
@@ -11605,11 +10711,7 @@ modelEntry:
 	li t4, 6948
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$218
-	li t4, 6908
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$219
@@ -11632,9 +10734,9 @@ modelEntry:
 	# gep ptr_$109 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$109
 
@@ -11653,9 +10755,9 @@ modelEntry:
 	# gep a$218 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$109
 
@@ -11687,12 +10789,8 @@ modelEntry:
 	# MUL result_$220 a$219  
 
 	# fetch variables
-
-	# get address of local var:a$219
-	li t4, 6868
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 75
+	mv t1, t0
+	addi t2, zero, 75
 	mul t0, t1, t2
 
 	# get address of local var:result_$220
@@ -11708,11 +10806,7 @@ modelEntry:
 	li t4, 6900
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$220
-	li t4, 6860
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$221
@@ -11735,9 +10829,9 @@ modelEntry:
 	# gep ptr_$110 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$110
 
@@ -11756,9 +10850,9 @@ modelEntry:
 	# gep a$220 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$110
 
@@ -11790,12 +10884,8 @@ modelEntry:
 	# MUL result_$222 a$221  
 
 	# fetch variables
-
-	# get address of local var:a$221
-	li t4, 6820
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 66
+	mv t1, t0
+	addi t2, zero, 66
 	mul t0, t1, t2
 
 	# get address of local var:result_$222
@@ -11811,11 +10901,7 @@ modelEntry:
 	li t4, 6852
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$222
-	li t4, 6812
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$223
@@ -11838,9 +10924,9 @@ modelEntry:
 	# gep ptr_$111 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$111
 
@@ -11859,9 +10945,9 @@ modelEntry:
 	# gep a$222 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$111
 
@@ -11893,12 +10979,8 @@ modelEntry:
 	# MUL result_$224 a$223  
 
 	# fetch variables
-
-	# get address of local var:a$223
-	li t4, 6772
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -96
+	mv t1, t0
+	addi t2, zero, -96
 	mul t0, t1, t2
 
 	# get address of local var:result_$224
@@ -11914,11 +10996,7 @@ modelEntry:
 	li t4, 6804
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$224
-	li t4, 6764
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$225
@@ -11941,9 +11019,9 @@ modelEntry:
 	# gep ptr_$112 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$112
 
@@ -11962,9 +11040,9 @@ modelEntry:
 	# gep a$224 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$112
 
@@ -11996,12 +11074,8 @@ modelEntry:
 	# MUL result_$226 a$225  
 
 	# fetch variables
-
-	# get address of local var:a$225
-	li t4, 6724
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -101
+	mv t1, t0
+	addi t2, zero, -101
 	mul t0, t1, t2
 
 	# get address of local var:result_$226
@@ -12017,11 +11091,7 @@ modelEntry:
 	li t4, 6756
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$226
-	li t4, 6716
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$227
@@ -12044,9 +11114,9 @@ modelEntry:
 	# gep ptr_$113 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$113
 
@@ -12065,9 +11135,9 @@ modelEntry:
 	# gep a$226 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$113
 
@@ -12099,12 +11169,8 @@ modelEntry:
 	# MUL result_$228 a$227  
 
 	# fetch variables
-
-	# get address of local var:a$227
-	li t4, 6676
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -114
+	mv t1, t0
+	addi t2, zero, -114
 	mul t0, t1, t2
 
 	# get address of local var:result_$228
@@ -12120,11 +11186,7 @@ modelEntry:
 	li t4, 6708
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$228
-	li t4, 6668
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$229
@@ -12147,9 +11209,9 @@ modelEntry:
 	# gep ptr_$114 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$114
 
@@ -12168,9 +11230,9 @@ modelEntry:
 	# gep a$228 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$114
 
@@ -12202,12 +11264,8 @@ modelEntry:
 	# MUL result_$230 a$229  
 
 	# fetch variables
-
-	# get address of local var:a$229
-	li t4, 6628
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 59
+	mv t1, t0
+	addi t2, zero, 59
 	mul t0, t1, t2
 
 	# get address of local var:result_$230
@@ -12223,11 +11281,7 @@ modelEntry:
 	li t4, 6660
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$230
-	li t4, 6620
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$231
@@ -12250,9 +11304,9 @@ modelEntry:
 	# gep ptr_$115 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$115
 
@@ -12271,9 +11325,9 @@ modelEntry:
 	# gep a$230 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$115
 
@@ -12305,12 +11359,8 @@ modelEntry:
 	# MUL result_$232 a$231  
 
 	# fetch variables
-
-	# get address of local var:a$231
-	li t4, 6580
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 12
+	mv t1, t0
+	addi t2, zero, 12
 	mul t0, t1, t2
 
 	# get address of local var:result_$232
@@ -12326,11 +11376,7 @@ modelEntry:
 	li t4, 6612
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$232
-	li t4, 6572
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$233
@@ -12353,9 +11399,9 @@ modelEntry:
 	# gep ptr_$116 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$116
 
@@ -12374,9 +11420,9 @@ modelEntry:
 	# gep a$232 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$116
 
@@ -12408,12 +11454,8 @@ modelEntry:
 	# MUL result_$234 a$233  
 
 	# fetch variables
-
-	# get address of local var:a$233
-	li t4, 6532
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 5
+	mv t1, t0
+	addi t2, zero, 5
 	mul t0, t1, t2
 
 	# get address of local var:result_$234
@@ -12429,11 +11471,7 @@ modelEntry:
 	li t4, 6564
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$234
-	li t4, 6524
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$235
@@ -12456,9 +11494,9 @@ modelEntry:
 	# gep ptr_$117 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$117
 
@@ -12477,9 +11515,9 @@ modelEntry:
 	# gep a$234 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$117
 
@@ -12511,12 +11549,8 @@ modelEntry:
 	# MUL result_$236 a$235  
 
 	# fetch variables
-
-	# get address of local var:a$235
-	li t4, 6484
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -95
+	mv t1, t0
+	addi t2, zero, -95
 	mul t0, t1, t2
 
 	# get address of local var:result_$236
@@ -12532,11 +11566,7 @@ modelEntry:
 	li t4, 6516
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$236
-	li t4, 6476
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$237
@@ -12559,9 +11589,9 @@ modelEntry:
 	# gep ptr_$118 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$118
 
@@ -12580,9 +11610,9 @@ modelEntry:
 	# gep a$236 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$118
 
@@ -12614,12 +11644,8 @@ modelEntry:
 	# MUL result_$238 a$237  
 
 	# fetch variables
-
-	# get address of local var:a$237
-	li t4, 6436
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 116
+	mv t1, t0
+	addi t2, zero, 116
 	mul t0, t1, t2
 
 	# get address of local var:result_$238
@@ -12635,11 +11661,7 @@ modelEntry:
 	li t4, 6468
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$238
-	li t4, 6428
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$239
@@ -12662,9 +11684,9 @@ modelEntry:
 	# gep ptr_$119 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$119
 
@@ -12683,9 +11705,9 @@ modelEntry:
 	# gep a$238 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$119
 
@@ -12717,12 +11739,8 @@ modelEntry:
 	# MUL result_$240 a$239  
 
 	# fetch variables
-
-	# get address of local var:a$239
-	li t4, 6388
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -93
+	mv t1, t0
+	addi t2, zero, -93
 	mul t0, t1, t2
 
 	# get address of local var:result_$240
@@ -12738,11 +11756,7 @@ modelEntry:
 	li t4, 6420
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$240
-	li t4, 6380
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$241
@@ -12765,9 +11779,9 @@ modelEntry:
 	# gep ptr_$120 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$120
 
@@ -12786,9 +11800,9 @@ modelEntry:
 	# gep a$240 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$120
 
@@ -12820,12 +11834,8 @@ modelEntry:
 	# MUL result_$242 a$241  
 
 	# fetch variables
-
-	# get address of local var:a$241
-	li t4, 6340
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 15
+	mv t1, t0
+	addi t2, zero, 15
 	mul t0, t1, t2
 
 	# get address of local var:result_$242
@@ -12841,11 +11851,7 @@ modelEntry:
 	li t4, 6372
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$242
-	li t4, 6332
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$243
@@ -12868,9 +11874,9 @@ modelEntry:
 	# gep ptr_$121 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$121
 
@@ -12889,9 +11895,9 @@ modelEntry:
 	# gep a$242 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$121
 
@@ -12923,12 +11929,8 @@ modelEntry:
 	# MUL result_$244 a$243  
 
 	# fetch variables
-
-	# get address of local var:a$243
-	li t4, 6292
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 79
+	mv t1, t0
+	addi t2, zero, 79
 	mul t0, t1, t2
 
 	# get address of local var:result_$244
@@ -12944,11 +11946,7 @@ modelEntry:
 	li t4, 6324
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$244
-	li t4, 6284
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$245
@@ -12971,9 +11969,9 @@ modelEntry:
 	# gep ptr_$122 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$122
 
@@ -12992,9 +11990,9 @@ modelEntry:
 	# gep a$244 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$122
 
@@ -13026,12 +12024,8 @@ modelEntry:
 	# MUL result_$246 a$245  
 
 	# fetch variables
-
-	# get address of local var:a$245
-	li t4, 6244
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 3
+	mv t1, t0
+	addi t2, zero, 3
 	mul t0, t1, t2
 
 	# get address of local var:result_$246
@@ -13047,11 +12041,7 @@ modelEntry:
 	li t4, 6276
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$246
-	li t4, 6236
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$247
@@ -13074,9 +12064,9 @@ modelEntry:
 	# gep ptr_$123 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$123
 
@@ -13095,9 +12085,9 @@ modelEntry:
 	# gep a$246 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$123
 
@@ -13129,12 +12119,8 @@ modelEntry:
 	# MUL result_$248 a$247  
 
 	# fetch variables
-
-	# get address of local var:a$247
-	li t4, 6196
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 49
+	mv t1, t0
+	addi t2, zero, 49
 	mul t0, t1, t2
 
 	# get address of local var:result_$248
@@ -13150,11 +12136,7 @@ modelEntry:
 	li t4, 6228
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$248
-	li t4, 6188
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$249
@@ -13177,9 +12159,9 @@ modelEntry:
 	# gep ptr_$124 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$124
 
@@ -13198,9 +12180,9 @@ modelEntry:
 	# gep a$248 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$124
 
@@ -13232,12 +12214,8 @@ modelEntry:
 	# MUL result_$250 a$249  
 
 	# fetch variables
-
-	# get address of local var:a$249
-	li t4, 6148
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -124
+	mv t1, t0
+	addi t2, zero, -124
 	mul t0, t1, t2
 
 	# get address of local var:result_$250
@@ -13253,11 +12231,7 @@ modelEntry:
 	li t4, 6180
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$250
-	li t4, 6140
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$251
@@ -13274,8 +12248,6 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -13289,8 +12261,6 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:relu_reg$4
 	li t4, 6124
@@ -13305,7 +12275,7 @@ modelEntry:
 	li t4, 6124
 	add t4, sp, t4
 	lw t1, 0(t4)
-	li t2, -3
+	addi t2, zero, -3
 	mul t0, t1, t2
 
 	# get address of local var:result_$252
@@ -13321,11 +12291,7 @@ modelEntry:
 	li t4, 7324
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$252
-	li t4, 6116
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$253
@@ -13348,9 +12314,9 @@ modelEntry:
 	# gep ptr_$125 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$125
 
@@ -13369,9 +12335,9 @@ modelEntry:
 	# gep a$250 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$125
 
@@ -13403,12 +12369,8 @@ modelEntry:
 	# MUL result_$254 a$251  
 
 	# fetch variables
-
-	# get address of local var:a$251
-	li t4, 6076
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 81
+	mv t1, t0
+	addi t2, zero, 81
 	mul t0, t1, t2
 
 	# get address of local var:result_$254
@@ -13431,9 +12393,9 @@ modelEntry:
 	# gep ptr_$126 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$126
 
@@ -13452,9 +12414,9 @@ modelEntry:
 	# gep a$252 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$126
 
@@ -13486,12 +12448,8 @@ modelEntry:
 	# MUL result_$255 a$253  
 
 	# fetch variables
-
-	# get address of local var:a$253
-	li t4, 6036
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 68
+	mv t1, t0
+	addi t2, zero, 68
 	mul t0, t1, t2
 
 	# get address of local var:result_$255
@@ -13507,11 +12465,7 @@ modelEntry:
 	li t4, 6068
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$255
-	li t4, 6028
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$256
@@ -13534,9 +12488,9 @@ modelEntry:
 	# gep ptr_$127 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$127
 
@@ -13555,9 +12509,9 @@ modelEntry:
 	# gep a$254 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$127
 
@@ -13589,12 +12543,8 @@ modelEntry:
 	# MUL result_$257 a$255  
 
 	# fetch variables
-
-	# get address of local var:a$255
-	li t4, 5988
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -102
+	mv t1, t0
+	addi t2, zero, -102
 	mul t0, t1, t2
 
 	# get address of local var:result_$257
@@ -13610,11 +12560,7 @@ modelEntry:
 	li t4, 6020
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$257
-	li t4, 5980
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$258
@@ -13637,9 +12583,9 @@ modelEntry:
 	# gep ptr_$128 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$128
 
@@ -13658,9 +12604,9 @@ modelEntry:
 	# gep a$256 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$128
 
@@ -13692,12 +12638,8 @@ modelEntry:
 	# MUL result_$259 a$257  
 
 	# fetch variables
-
-	# get address of local var:a$257
-	li t4, 5940
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -74
+	mv t1, t0
+	addi t2, zero, -74
 	mul t0, t1, t2
 
 	# get address of local var:result_$259
@@ -13713,11 +12655,7 @@ modelEntry:
 	li t4, 5972
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$259
-	li t4, 5932
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$260
@@ -13740,9 +12678,9 @@ modelEntry:
 	# gep ptr_$129 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$129
 
@@ -13761,9 +12699,9 @@ modelEntry:
 	# gep a$258 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$129
 
@@ -13795,12 +12733,8 @@ modelEntry:
 	# MUL result_$261 a$259  
 
 	# fetch variables
-
-	# get address of local var:a$259
-	li t4, 5892
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 121
+	mv t1, t0
+	addi t2, zero, 121
 	mul t0, t1, t2
 
 	# get address of local var:result_$261
@@ -13816,11 +12750,7 @@ modelEntry:
 	li t4, 5924
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$261
-	li t4, 5884
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$262
@@ -13843,9 +12773,9 @@ modelEntry:
 	# gep ptr_$130 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$130
 
@@ -13864,9 +12794,9 @@ modelEntry:
 	# gep a$260 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$130
 
@@ -13898,12 +12828,8 @@ modelEntry:
 	# MUL result_$263 a$261  
 
 	# fetch variables
-
-	# get address of local var:a$261
-	li t4, 5844
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -15
+	mv t1, t0
+	addi t2, zero, -15
 	mul t0, t1, t2
 
 	# get address of local var:result_$263
@@ -13919,11 +12845,7 @@ modelEntry:
 	li t4, 5876
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$263
-	li t4, 5836
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$264
@@ -13946,9 +12868,9 @@ modelEntry:
 	# gep ptr_$131 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$131
 
@@ -13967,9 +12889,9 @@ modelEntry:
 	# gep a$262 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$131
 
@@ -14001,12 +12923,8 @@ modelEntry:
 	# MUL result_$265 a$263  
 
 	# fetch variables
-
-	# get address of local var:a$263
-	li t4, 5796
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 55
+	mv t1, t0
+	addi t2, zero, 55
 	mul t0, t1, t2
 
 	# get address of local var:result_$265
@@ -14022,11 +12940,7 @@ modelEntry:
 	li t4, 5828
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$265
-	li t4, 5788
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$266
@@ -14049,9 +12963,9 @@ modelEntry:
 	# gep ptr_$132 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$132
 
@@ -14070,9 +12984,9 @@ modelEntry:
 	# gep a$264 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$132
 
@@ -14104,12 +13018,8 @@ modelEntry:
 	# MUL result_$267 a$265  
 
 	# fetch variables
-
-	# get address of local var:a$265
-	li t4, 5748
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 101
+	mv t1, t0
+	addi t2, zero, 101
 	mul t0, t1, t2
 
 	# get address of local var:result_$267
@@ -14125,11 +13035,7 @@ modelEntry:
 	li t4, 5780
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$267
-	li t4, 5740
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$268
@@ -14152,9 +13058,9 @@ modelEntry:
 	# gep ptr_$133 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$133
 
@@ -14173,9 +13079,9 @@ modelEntry:
 	# gep a$266 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$133
 
@@ -14207,12 +13113,8 @@ modelEntry:
 	# MUL result_$269 a$267  
 
 	# fetch variables
-
-	# get address of local var:a$267
-	li t4, 5700
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -13
+	mv t1, t0
+	addi t2, zero, -13
 	mul t0, t1, t2
 
 	# get address of local var:result_$269
@@ -14228,11 +13130,7 @@ modelEntry:
 	li t4, 5732
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$269
-	li t4, 5692
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$270
@@ -14255,9 +13153,9 @@ modelEntry:
 	# gep ptr_$134 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$134
 
@@ -14276,9 +13174,9 @@ modelEntry:
 	# gep a$268 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$134
 
@@ -14310,12 +13208,8 @@ modelEntry:
 	# MUL result_$271 a$269  
 
 	# fetch variables
-
-	# get address of local var:a$269
-	li t4, 5652
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -62
+	mv t1, t0
+	addi t2, zero, -62
 	mul t0, t1, t2
 
 	# get address of local var:result_$271
@@ -14331,11 +13225,7 @@ modelEntry:
 	li t4, 5684
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$271
-	li t4, 5644
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$272
@@ -14358,9 +13248,9 @@ modelEntry:
 	# gep ptr_$135 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$135
 
@@ -14379,9 +13269,9 @@ modelEntry:
 	# gep a$270 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$135
 
@@ -14413,12 +13303,8 @@ modelEntry:
 	# MUL result_$273 a$271  
 
 	# fetch variables
-
-	# get address of local var:a$271
-	li t4, 5604
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 64
+	mv t1, t0
+	addi t2, zero, 64
 	mul t0, t1, t2
 
 	# get address of local var:result_$273
@@ -14434,11 +13320,7 @@ modelEntry:
 	li t4, 5636
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$273
-	li t4, 5596
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$274
@@ -14461,9 +13343,9 @@ modelEntry:
 	# gep ptr_$136 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$136
 
@@ -14482,9 +13364,9 @@ modelEntry:
 	# gep a$272 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$136
 
@@ -14516,12 +13398,8 @@ modelEntry:
 	# MUL result_$275 a$273  
 
 	# fetch variables
-
-	# get address of local var:a$273
-	li t4, 5556
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 114
+	mv t1, t0
+	addi t2, zero, 114
 	mul t0, t1, t2
 
 	# get address of local var:result_$275
@@ -14537,11 +13415,7 @@ modelEntry:
 	li t4, 5588
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$275
-	li t4, 5548
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$276
@@ -14564,9 +13438,9 @@ modelEntry:
 	# gep ptr_$137 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$137
 
@@ -14585,9 +13459,9 @@ modelEntry:
 	# gep a$274 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$137
 
@@ -14619,12 +13493,8 @@ modelEntry:
 	# MUL result_$277 a$275  
 
 	# fetch variables
-
-	# get address of local var:a$275
-	li t4, 5508
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 38
+	mv t1, t0
+	addi t2, zero, 38
 	mul t0, t1, t2
 
 	# get address of local var:result_$277
@@ -14640,11 +13510,7 @@ modelEntry:
 	li t4, 5540
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$277
-	li t4, 5500
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$278
@@ -14667,9 +13533,9 @@ modelEntry:
 	# gep ptr_$138 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$138
 
@@ -14688,9 +13554,9 @@ modelEntry:
 	# gep a$276 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$138
 
@@ -14722,12 +13588,8 @@ modelEntry:
 	# MUL result_$279 a$277  
 
 	# fetch variables
-
-	# get address of local var:a$277
-	li t4, 5460
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -21
+	mv t1, t0
+	addi t2, zero, -21
 	mul t0, t1, t2
 
 	# get address of local var:result_$279
@@ -14743,11 +13605,7 @@ modelEntry:
 	li t4, 5492
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$279
-	li t4, 5452
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$280
@@ -14770,9 +13628,9 @@ modelEntry:
 	# gep ptr_$139 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$139
 
@@ -14791,9 +13649,9 @@ modelEntry:
 	# gep a$278 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$139
 
@@ -14825,12 +13683,8 @@ modelEntry:
 	# MUL result_$281 a$279  
 
 	# fetch variables
-
-	# get address of local var:a$279
-	li t4, 5412
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 112
+	mv t1, t0
+	addi t2, zero, 112
 	mul t0, t1, t2
 
 	# get address of local var:result_$281
@@ -14846,11 +13700,7 @@ modelEntry:
 	li t4, 5444
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$281
-	li t4, 5404
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$282
@@ -14873,9 +13723,9 @@ modelEntry:
 	# gep ptr_$140 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$140
 
@@ -14894,9 +13744,9 @@ modelEntry:
 	# gep a$280 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$140
 
@@ -14928,12 +13778,8 @@ modelEntry:
 	# MUL result_$283 a$281  
 
 	# fetch variables
-
-	# get address of local var:a$281
-	li t4, 5364
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 114
+	mv t1, t0
+	addi t2, zero, 114
 	mul t0, t1, t2
 
 	# get address of local var:result_$283
@@ -14949,11 +13795,7 @@ modelEntry:
 	li t4, 5396
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$283
-	li t4, 5356
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$284
@@ -14976,9 +13818,9 @@ modelEntry:
 	# gep ptr_$141 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$141
 
@@ -14997,9 +13839,9 @@ modelEntry:
 	# gep a$282 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$141
 
@@ -15031,12 +13873,8 @@ modelEntry:
 	# MUL result_$285 a$283  
 
 	# fetch variables
-
-	# get address of local var:a$283
-	li t4, 5316
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 112
+	mv t1, t0
+	addi t2, zero, 112
 	mul t0, t1, t2
 
 	# get address of local var:result_$285
@@ -15052,11 +13890,7 @@ modelEntry:
 	li t4, 5348
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$285
-	li t4, 5308
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$286
@@ -15079,9 +13913,9 @@ modelEntry:
 	# gep ptr_$142 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$142
 
@@ -15100,9 +13934,9 @@ modelEntry:
 	# gep a$284 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$142
 
@@ -15134,12 +13968,8 @@ modelEntry:
 	# MUL result_$287 a$285  
 
 	# fetch variables
-
-	# get address of local var:a$285
-	li t4, 5268
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -10
+	mv t1, t0
+	addi t2, zero, -10
 	mul t0, t1, t2
 
 	# get address of local var:result_$287
@@ -15155,11 +13985,7 @@ modelEntry:
 	li t4, 5300
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$287
-	li t4, 5260
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$288
@@ -15182,9 +14008,9 @@ modelEntry:
 	# gep ptr_$143 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$143
 
@@ -15203,9 +14029,9 @@ modelEntry:
 	# gep a$286 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$143
 
@@ -15237,12 +14063,8 @@ modelEntry:
 	# MUL result_$289 a$287  
 
 	# fetch variables
-
-	# get address of local var:a$287
-	li t4, 5220
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -16
+	mv t1, t0
+	addi t2, zero, -16
 	mul t0, t1, t2
 
 	# get address of local var:result_$289
@@ -15258,11 +14080,7 @@ modelEntry:
 	li t4, 5252
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$289
-	li t4, 5212
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$290
@@ -15285,9 +14103,9 @@ modelEntry:
 	# gep ptr_$144 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$144
 
@@ -15306,9 +14124,9 @@ modelEntry:
 	# gep a$288 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$144
 
@@ -15340,12 +14158,8 @@ modelEntry:
 	# MUL result_$291 a$289  
 
 	# fetch variables
-
-	# get address of local var:a$289
-	li t4, 5172
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -50
+	mv t1, t0
+	addi t2, zero, -50
 	mul t0, t1, t2
 
 	# get address of local var:result_$291
@@ -15361,11 +14175,7 @@ modelEntry:
 	li t4, 5204
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$291
-	li t4, 5164
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$292
@@ -15388,9 +14198,9 @@ modelEntry:
 	# gep ptr_$145 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$145
 
@@ -15409,9 +14219,9 @@ modelEntry:
 	# gep a$290 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$145
 
@@ -15443,12 +14253,8 @@ modelEntry:
 	# MUL result_$293 a$291  
 
 	# fetch variables
-
-	# get address of local var:a$291
-	li t4, 5124
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -112
+	mv t1, t0
+	addi t2, zero, -112
 	mul t0, t1, t2
 
 	# get address of local var:result_$293
@@ -15464,11 +14270,7 @@ modelEntry:
 	li t4, 5156
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$293
-	li t4, 5116
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$294
@@ -15491,9 +14293,9 @@ modelEntry:
 	# gep ptr_$146 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$146
 
@@ -15512,9 +14314,9 @@ modelEntry:
 	# gep a$292 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$146
 
@@ -15546,12 +14348,8 @@ modelEntry:
 	# MUL result_$295 a$293  
 
 	# fetch variables
-
-	# get address of local var:a$293
-	li t4, 5076
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -116
+	mv t1, t0
+	addi t2, zero, -116
 	mul t0, t1, t2
 
 	# get address of local var:result_$295
@@ -15567,11 +14365,7 @@ modelEntry:
 	li t4, 5108
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$295
-	li t4, 5068
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$296
@@ -15594,9 +14388,9 @@ modelEntry:
 	# gep ptr_$147 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$147
 
@@ -15615,9 +14409,9 @@ modelEntry:
 	# gep a$294 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$147
 
@@ -15649,12 +14443,8 @@ modelEntry:
 	# MUL result_$297 a$295  
 
 	# fetch variables
-
-	# get address of local var:a$295
-	li t4, 5028
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -54
+	mv t1, t0
+	addi t2, zero, -54
 	mul t0, t1, t2
 
 	# get address of local var:result_$297
@@ -15670,11 +14460,7 @@ modelEntry:
 	li t4, 5060
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$297
-	li t4, 5020
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$298
@@ -15697,9 +14483,9 @@ modelEntry:
 	# gep ptr_$148 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$148
 
@@ -15718,9 +14504,9 @@ modelEntry:
 	# gep a$296 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$148
 
@@ -15752,12 +14538,8 @@ modelEntry:
 	# MUL result_$299 a$297  
 
 	# fetch variables
-
-	# get address of local var:a$297
-	li t4, 4980
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 82
+	mv t1, t0
+	addi t2, zero, 82
 	mul t0, t1, t2
 
 	# get address of local var:result_$299
@@ -15773,11 +14555,7 @@ modelEntry:
 	li t4, 5012
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$299
-	li t4, 4972
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$300
@@ -15800,9 +14578,9 @@ modelEntry:
 	# gep ptr_$149 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$149
 
@@ -15821,9 +14599,9 @@ modelEntry:
 	# gep a$298 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$149
 
@@ -15855,12 +14633,8 @@ modelEntry:
 	# MUL result_$301 a$299  
 
 	# fetch variables
-
-	# get address of local var:a$299
-	li t4, 4932
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -72
+	mv t1, t0
+	addi t2, zero, -72
 	mul t0, t1, t2
 
 	# get address of local var:result_$301
@@ -15876,11 +14650,7 @@ modelEntry:
 	li t4, 4964
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$301
-	li t4, 4924
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$302
@@ -15897,8 +14667,6 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -15912,8 +14680,6 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:relu_reg$5
 	li t4, 4908
@@ -15928,7 +14694,7 @@ modelEntry:
 	li t4, 4908
 	add t4, sp, t4
 	lw t1, 0(t4)
-	li t2, 32
+	addi t2, zero, 32
 	mul t0, t1, t2
 
 	# get address of local var:result_$303
@@ -15944,11 +14710,7 @@ modelEntry:
 	li t4, 6108
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$303
-	li t4, 4900
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$304
@@ -15971,9 +14733,9 @@ modelEntry:
 	# gep ptr_$150 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$150
 
@@ -15992,9 +14754,9 @@ modelEntry:
 	# gep a$300 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$150
 
@@ -16026,12 +14788,8 @@ modelEntry:
 	# MUL result_$305 a$301  
 
 	# fetch variables
-
-	# get address of local var:a$301
-	li t4, 4860
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 15
+	mv t1, t0
+	addi t2, zero, 15
 	mul t0, t1, t2
 
 	# get address of local var:result_$305
@@ -16054,9 +14812,9 @@ modelEntry:
 	# gep ptr_$151 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$151
 
@@ -16075,9 +14833,9 @@ modelEntry:
 	# gep a$302 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$151
 
@@ -16109,12 +14867,8 @@ modelEntry:
 	# MUL result_$306 a$303  
 
 	# fetch variables
-
-	# get address of local var:a$303
-	li t4, 4820
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -77
+	mv t1, t0
+	addi t2, zero, -77
 	mul t0, t1, t2
 
 	# get address of local var:result_$306
@@ -16130,11 +14884,7 @@ modelEntry:
 	li t4, 4852
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$306
-	li t4, 4812
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$307
@@ -16157,9 +14907,9 @@ modelEntry:
 	# gep ptr_$152 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$152
 
@@ -16178,9 +14928,9 @@ modelEntry:
 	# gep a$304 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$152
 
@@ -16212,12 +14962,8 @@ modelEntry:
 	# MUL result_$308 a$305  
 
 	# fetch variables
-
-	# get address of local var:a$305
-	li t4, 4772
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 66
+	mv t1, t0
+	addi t2, zero, 66
 	mul t0, t1, t2
 
 	# get address of local var:result_$308
@@ -16233,11 +14979,7 @@ modelEntry:
 	li t4, 4804
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$308
-	li t4, 4764
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$309
@@ -16260,9 +15002,9 @@ modelEntry:
 	# gep ptr_$153 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$153
 
@@ -16281,9 +15023,9 @@ modelEntry:
 	# gep a$306 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$153
 
@@ -16315,12 +15057,8 @@ modelEntry:
 	# MUL result_$310 a$307  
 
 	# fetch variables
-
-	# get address of local var:a$307
-	li t4, 4724
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -90
+	mv t1, t0
+	addi t2, zero, -90
 	mul t0, t1, t2
 
 	# get address of local var:result_$310
@@ -16336,11 +15074,7 @@ modelEntry:
 	li t4, 4756
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$310
-	li t4, 4716
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$311
@@ -16363,9 +15097,9 @@ modelEntry:
 	# gep ptr_$154 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$154
 
@@ -16384,9 +15118,9 @@ modelEntry:
 	# gep a$308 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$154
 
@@ -16418,12 +15152,8 @@ modelEntry:
 	# MUL result_$312 a$309  
 
 	# fetch variables
-
-	# get address of local var:a$309
-	li t4, 4676
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -6
+	mv t1, t0
+	addi t2, zero, -6
 	mul t0, t1, t2
 
 	# get address of local var:result_$312
@@ -16439,11 +15169,7 @@ modelEntry:
 	li t4, 4708
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$312
-	li t4, 4668
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$313
@@ -16466,9 +15192,9 @@ modelEntry:
 	# gep ptr_$155 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$155
 
@@ -16487,9 +15213,9 @@ modelEntry:
 	# gep a$310 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$155
 
@@ -16521,12 +15247,8 @@ modelEntry:
 	# MUL result_$314 a$311  
 
 	# fetch variables
-
-	# get address of local var:a$311
-	li t4, 4628
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -30
+	mv t1, t0
+	addi t2, zero, -30
 	mul t0, t1, t2
 
 	# get address of local var:result_$314
@@ -16542,11 +15264,7 @@ modelEntry:
 	li t4, 4660
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$314
-	li t4, 4620
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$315
@@ -16569,9 +15287,9 @@ modelEntry:
 	# gep ptr_$156 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$156
 
@@ -16590,9 +15308,9 @@ modelEntry:
 	# gep a$312 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$156
 
@@ -16624,12 +15342,8 @@ modelEntry:
 	# MUL result_$316 a$313  
 
 	# fetch variables
-
-	# get address of local var:a$313
-	li t4, 4580
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -8
+	mv t1, t0
+	addi t2, zero, -8
 	mul t0, t1, t2
 
 	# get address of local var:result_$316
@@ -16645,11 +15359,7 @@ modelEntry:
 	li t4, 4612
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$316
-	li t4, 4572
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$317
@@ -16672,9 +15382,9 @@ modelEntry:
 	# gep ptr_$157 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$157
 
@@ -16693,9 +15403,9 @@ modelEntry:
 	# gep a$314 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$157
 
@@ -16727,12 +15437,8 @@ modelEntry:
 	# MUL result_$318 a$315  
 
 	# fetch variables
-
-	# get address of local var:a$315
-	li t4, 4532
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 81
+	mv t1, t0
+	addi t2, zero, 81
 	mul t0, t1, t2
 
 	# get address of local var:result_$318
@@ -16748,11 +15454,7 @@ modelEntry:
 	li t4, 4564
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$318
-	li t4, 4524
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$319
@@ -16775,9 +15477,9 @@ modelEntry:
 	# gep ptr_$158 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$158
 
@@ -16796,9 +15498,9 @@ modelEntry:
 	# gep a$316 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$158
 
@@ -16830,12 +15532,8 @@ modelEntry:
 	# MUL result_$320 a$317  
 
 	# fetch variables
-
-	# get address of local var:a$317
-	li t4, 4484
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 2
+	mv t1, t0
+	addi t2, zero, 2
 	mul t0, t1, t2
 
 	# get address of local var:result_$320
@@ -16851,11 +15549,7 @@ modelEntry:
 	li t4, 4516
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$320
-	li t4, 4476
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$321
@@ -16878,9 +15572,9 @@ modelEntry:
 	# gep ptr_$159 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$159
 
@@ -16899,9 +15593,9 @@ modelEntry:
 	# gep a$318 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$159
 
@@ -16933,12 +15627,8 @@ modelEntry:
 	# MUL result_$322 a$319  
 
 	# fetch variables
-
-	# get address of local var:a$319
-	li t4, 4436
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -110
+	mv t1, t0
+	addi t2, zero, -110
 	mul t0, t1, t2
 
 	# get address of local var:result_$322
@@ -16954,11 +15644,7 @@ modelEntry:
 	li t4, 4468
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$322
-	li t4, 4428
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$323
@@ -16981,9 +15667,9 @@ modelEntry:
 	# gep ptr_$160 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$160
 
@@ -17002,9 +15688,9 @@ modelEntry:
 	# gep a$320 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$160
 
@@ -17036,12 +15722,8 @@ modelEntry:
 	# MUL result_$324 a$321  
 
 	# fetch variables
-
-	# get address of local var:a$321
-	li t4, 4388
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -95
+	mv t1, t0
+	addi t2, zero, -95
 	mul t0, t1, t2
 
 	# get address of local var:result_$324
@@ -17057,11 +15739,7 @@ modelEntry:
 	li t4, 4420
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$324
-	li t4, 4380
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$325
@@ -17084,9 +15762,9 @@ modelEntry:
 	# gep ptr_$161 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$161
 
@@ -17105,9 +15783,9 @@ modelEntry:
 	# gep a$322 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$161
 
@@ -17139,12 +15817,8 @@ modelEntry:
 	# MUL result_$326 a$323  
 
 	# fetch variables
-
-	# get address of local var:a$323
-	li t4, 4340
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 59
+	mv t1, t0
+	addi t2, zero, 59
 	mul t0, t1, t2
 
 	# get address of local var:result_$326
@@ -17160,11 +15834,7 @@ modelEntry:
 	li t4, 4372
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$326
-	li t4, 4332
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$327
@@ -17187,9 +15857,9 @@ modelEntry:
 	# gep ptr_$162 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$162
 
@@ -17208,9 +15878,9 @@ modelEntry:
 	# gep a$324 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$162
 
@@ -17242,12 +15912,8 @@ modelEntry:
 	# MUL result_$328 a$325  
 
 	# fetch variables
-
-	# get address of local var:a$325
-	li t4, 4292
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 52
+	mv t1, t0
+	addi t2, zero, 52
 	mul t0, t1, t2
 
 	# get address of local var:result_$328
@@ -17263,11 +15929,7 @@ modelEntry:
 	li t4, 4324
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$328
-	li t4, 4284
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$329
@@ -17290,9 +15952,9 @@ modelEntry:
 	# gep ptr_$163 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$163
 
@@ -17311,9 +15973,9 @@ modelEntry:
 	# gep a$326 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$163
 
@@ -17345,12 +16007,8 @@ modelEntry:
 	# MUL result_$330 a$327  
 
 	# fetch variables
-
-	# get address of local var:a$327
-	li t4, 4244
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 15
+	mv t1, t0
+	addi t2, zero, 15
 	mul t0, t1, t2
 
 	# get address of local var:result_$330
@@ -17366,11 +16024,7 @@ modelEntry:
 	li t4, 4276
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$330
-	li t4, 4236
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$331
@@ -17393,9 +16047,9 @@ modelEntry:
 	# gep ptr_$164 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$164
 
@@ -17414,9 +16068,9 @@ modelEntry:
 	# gep a$328 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$164
 
@@ -17448,12 +16102,8 @@ modelEntry:
 	# MUL result_$332 a$329  
 
 	# fetch variables
-
-	# get address of local var:a$329
-	li t4, 4196
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 55
+	mv t1, t0
+	addi t2, zero, 55
 	mul t0, t1, t2
 
 	# get address of local var:result_$332
@@ -17469,11 +16119,7 @@ modelEntry:
 	li t4, 4228
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$332
-	li t4, 4188
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$333
@@ -17496,9 +16142,9 @@ modelEntry:
 	# gep ptr_$165 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$165
 
@@ -17517,9 +16163,9 @@ modelEntry:
 	# gep a$330 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$165
 
@@ -17551,12 +16197,8 @@ modelEntry:
 	# MUL result_$334 a$331  
 
 	# fetch variables
-
-	# get address of local var:a$331
-	li t4, 4148
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -33
+	mv t1, t0
+	addi t2, zero, -33
 	mul t0, t1, t2
 
 	# get address of local var:result_$334
@@ -17572,11 +16214,7 @@ modelEntry:
 	li t4, 4180
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$334
-	li t4, 4140
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$335
@@ -17599,9 +16237,9 @@ modelEntry:
 	# gep ptr_$166 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$166
 
@@ -17620,9 +16258,9 @@ modelEntry:
 	# gep a$332 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$166
 
@@ -17654,12 +16292,8 @@ modelEntry:
 	# MUL result_$336 a$333  
 
 	# fetch variables
-
-	# get address of local var:a$333
-	li t4, 4100
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 14
+	mv t1, t0
+	addi t2, zero, 14
 	mul t0, t1, t2
 
 	# get address of local var:result_$336
@@ -17675,11 +16309,7 @@ modelEntry:
 	li t4, 4132
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$336
-	li t4, 4092
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$337
@@ -17702,9 +16332,9 @@ modelEntry:
 	# gep ptr_$167 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$167
 
@@ -17723,9 +16353,9 @@ modelEntry:
 	# gep a$334 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$167
 
@@ -17757,12 +16387,8 @@ modelEntry:
 	# MUL result_$338 a$335  
 
 	# fetch variables
-
-	# get address of local var:a$335
-	li t4, 4052
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 58
+	mv t1, t0
+	addi t2, zero, 58
 	mul t0, t1, t2
 
 	# get address of local var:result_$338
@@ -17778,11 +16404,7 @@ modelEntry:
 	li t4, 4084
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$338
-	li t4, 4044
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$339
@@ -17805,9 +16427,9 @@ modelEntry:
 	# gep ptr_$168 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$168
 
@@ -17826,9 +16448,9 @@ modelEntry:
 	# gep a$336 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$168
 
@@ -17860,12 +16482,8 @@ modelEntry:
 	# MUL result_$340 a$337  
 
 	# fetch variables
-
-	# get address of local var:a$337
-	li t4, 4004
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 67
+	mv t1, t0
+	addi t2, zero, 67
 	mul t0, t1, t2
 
 	# get address of local var:result_$340
@@ -17881,11 +16499,7 @@ modelEntry:
 	li t4, 4036
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$340
-	li t4, 3996
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$341
@@ -17908,9 +16522,9 @@ modelEntry:
 	# gep ptr_$169 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$169
 
@@ -17929,9 +16543,9 @@ modelEntry:
 	# gep a$338 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$169
 
@@ -17963,12 +16577,8 @@ modelEntry:
 	# MUL result_$342 a$339  
 
 	# fetch variables
-
-	# get address of local var:a$339
-	li t4, 3956
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 86
+	mv t1, t0
+	addi t2, zero, 86
 	mul t0, t1, t2
 
 	# get address of local var:result_$342
@@ -17984,11 +16594,7 @@ modelEntry:
 	li t4, 3988
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$342
-	li t4, 3948
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$343
@@ -18011,9 +16617,9 @@ modelEntry:
 	# gep ptr_$170 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$170
 
@@ -18032,9 +16638,9 @@ modelEntry:
 	# gep a$340 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$170
 
@@ -18066,12 +16672,8 @@ modelEntry:
 	# MUL result_$344 a$341  
 
 	# fetch variables
-
-	# get address of local var:a$341
-	li t4, 3908
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -79
+	mv t1, t0
+	addi t2, zero, -79
 	mul t0, t1, t2
 
 	# get address of local var:result_$344
@@ -18087,11 +16689,7 @@ modelEntry:
 	li t4, 3940
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$344
-	li t4, 3900
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$345
@@ -18114,9 +16712,9 @@ modelEntry:
 	# gep ptr_$171 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$171
 
@@ -18135,9 +16733,9 @@ modelEntry:
 	# gep a$342 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$171
 
@@ -18169,12 +16767,8 @@ modelEntry:
 	# MUL result_$346 a$343  
 
 	# fetch variables
-
-	# get address of local var:a$343
-	li t4, 3860
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 48
+	mv t1, t0
+	addi t2, zero, 48
 	mul t0, t1, t2
 
 	# get address of local var:result_$346
@@ -18190,11 +16784,7 @@ modelEntry:
 	li t4, 3892
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$346
-	li t4, 3852
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$347
@@ -18217,9 +16807,9 @@ modelEntry:
 	# gep ptr_$172 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$172
 
@@ -18238,9 +16828,9 @@ modelEntry:
 	# gep a$344 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$172
 
@@ -18272,12 +16862,8 @@ modelEntry:
 	# MUL result_$348 a$345  
 
 	# fetch variables
-
-	# get address of local var:a$345
-	li t4, 3812
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -13
+	mv t1, t0
+	addi t2, zero, -13
 	mul t0, t1, t2
 
 	# get address of local var:result_$348
@@ -18293,11 +16879,7 @@ modelEntry:
 	li t4, 3844
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$348
-	li t4, 3804
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$349
@@ -18320,9 +16902,9 @@ modelEntry:
 	# gep ptr_$173 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$173
 
@@ -18341,9 +16923,9 @@ modelEntry:
 	# gep a$346 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$173
 
@@ -18375,12 +16957,8 @@ modelEntry:
 	# MUL result_$350 a$347  
 
 	# fetch variables
-
-	# get address of local var:a$347
-	li t4, 3764
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -15
+	mv t1, t0
+	addi t2, zero, -15
 	mul t0, t1, t2
 
 	# get address of local var:result_$350
@@ -18396,11 +16974,7 @@ modelEntry:
 	li t4, 3796
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$350
-	li t4, 3756
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$351
@@ -18423,9 +16997,9 @@ modelEntry:
 	# gep ptr_$174 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$174
 
@@ -18444,9 +17018,9 @@ modelEntry:
 	# gep a$348 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$174
 
@@ -18478,12 +17052,8 @@ modelEntry:
 	# MUL result_$352 a$349  
 
 	# fetch variables
-
-	# get address of local var:a$349
-	li t4, 3716
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 66
+	mv t1, t0
+	addi t2, zero, 66
 	mul t0, t1, t2
 
 	# get address of local var:result_$352
@@ -18499,11 +17069,7 @@ modelEntry:
 	li t4, 3748
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$352
-	li t4, 3708
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$353
@@ -18520,8 +17086,6 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -18535,8 +17099,6 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:relu_reg$6
 	li t4, 3692
@@ -18551,7 +17113,7 @@ modelEntry:
 	li t4, 3692
 	add t4, sp, t4
 	lw t1, 0(t4)
-	li t2, -95
+	addi t2, zero, -95
 	mul t0, t1, t2
 
 	# get address of local var:result_$354
@@ -18567,11 +17129,7 @@ modelEntry:
 	li t4, 4892
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$354
-	li t4, 3684
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$355
@@ -18594,9 +17152,9 @@ modelEntry:
 	# gep ptr_$175 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$175
 
@@ -18615,9 +17173,9 @@ modelEntry:
 	# gep a$350 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$175
 
@@ -18649,12 +17207,8 @@ modelEntry:
 	# MUL result_$356 a$351  
 
 	# fetch variables
-
-	# get address of local var:a$351
-	li t4, 3644
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 33
+	mv t1, t0
+	addi t2, zero, 33
 	mul t0, t1, t2
 
 	# get address of local var:result_$356
@@ -18677,9 +17231,9 @@ modelEntry:
 	# gep ptr_$176 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$176
 
@@ -18698,9 +17252,9 @@ modelEntry:
 	# gep a$352 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$176
 
@@ -18732,12 +17286,8 @@ modelEntry:
 	# MUL result_$357 a$353  
 
 	# fetch variables
-
-	# get address of local var:a$353
-	li t4, 3604
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 82
+	mv t1, t0
+	addi t2, zero, 82
 	mul t0, t1, t2
 
 	# get address of local var:result_$357
@@ -18753,11 +17303,7 @@ modelEntry:
 	li t4, 3636
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$357
-	li t4, 3596
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$358
@@ -18780,9 +17326,9 @@ modelEntry:
 	# gep ptr_$177 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$177
 
@@ -18801,9 +17347,9 @@ modelEntry:
 	# gep a$354 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$177
 
@@ -18835,12 +17381,8 @@ modelEntry:
 	# MUL result_$359 a$355  
 
 	# fetch variables
-
-	# get address of local var:a$355
-	li t4, 3556
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 67
+	mv t1, t0
+	addi t2, zero, 67
 	mul t0, t1, t2
 
 	# get address of local var:result_$359
@@ -18856,11 +17398,7 @@ modelEntry:
 	li t4, 3588
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$359
-	li t4, 3548
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$360
@@ -18883,9 +17421,9 @@ modelEntry:
 	# gep ptr_$178 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$178
 
@@ -18904,9 +17442,9 @@ modelEntry:
 	# gep a$356 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$178
 
@@ -18938,12 +17476,8 @@ modelEntry:
 	# MUL result_$361 a$357  
 
 	# fetch variables
-
-	# get address of local var:a$357
-	li t4, 3508
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 30
+	mv t1, t0
+	addi t2, zero, 30
 	mul t0, t1, t2
 
 	# get address of local var:result_$361
@@ -18959,11 +17493,7 @@ modelEntry:
 	li t4, 3540
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$361
-	li t4, 3500
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$362
@@ -18986,9 +17516,9 @@ modelEntry:
 	# gep ptr_$179 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$179
 
@@ -19007,9 +17537,9 @@ modelEntry:
 	# gep a$358 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$179
 
@@ -19041,12 +17571,8 @@ modelEntry:
 	# MUL result_$363 a$359  
 
 	# fetch variables
-
-	# get address of local var:a$359
-	li t4, 3460
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -2
+	mv t1, t0
+	addi t2, zero, -2
 	mul t0, t1, t2
 
 	# get address of local var:result_$363
@@ -19062,11 +17588,7 @@ modelEntry:
 	li t4, 3492
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$363
-	li t4, 3452
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$364
@@ -19089,9 +17611,9 @@ modelEntry:
 	# gep ptr_$180 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$180
 
@@ -19110,9 +17632,9 @@ modelEntry:
 	# gep a$360 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$180
 
@@ -19144,12 +17666,8 @@ modelEntry:
 	# MUL result_$365 a$361  
 
 	# fetch variables
-
-	# get address of local var:a$361
-	li t4, 3412
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 65
+	mv t1, t0
+	addi t2, zero, 65
 	mul t0, t1, t2
 
 	# get address of local var:result_$365
@@ -19165,11 +17683,7 @@ modelEntry:
 	li t4, 3444
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$365
-	li t4, 3404
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$366
@@ -19192,9 +17706,9 @@ modelEntry:
 	# gep ptr_$181 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$181
 
@@ -19213,9 +17727,9 @@ modelEntry:
 	# gep a$362 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$181
 
@@ -19247,12 +17761,8 @@ modelEntry:
 	# MUL result_$367 a$363  
 
 	# fetch variables
-
-	# get address of local var:a$363
-	li t4, 3364
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 120
+	mv t1, t0
+	addi t2, zero, 120
 	mul t0, t1, t2
 
 	# get address of local var:result_$367
@@ -19268,11 +17778,7 @@ modelEntry:
 	li t4, 3396
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$367
-	li t4, 3356
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$368
@@ -19295,9 +17801,9 @@ modelEntry:
 	# gep ptr_$182 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$182
 
@@ -19316,9 +17822,9 @@ modelEntry:
 	# gep a$364 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$182
 
@@ -19350,12 +17856,8 @@ modelEntry:
 	# MUL result_$369 a$365  
 
 	# fetch variables
-
-	# get address of local var:a$365
-	li t4, 3316
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -13
+	mv t1, t0
+	addi t2, zero, -13
 	mul t0, t1, t2
 
 	# get address of local var:result_$369
@@ -19371,11 +17873,7 @@ modelEntry:
 	li t4, 3348
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$369
-	li t4, 3308
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$370
@@ -19398,9 +17896,9 @@ modelEntry:
 	# gep ptr_$183 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$183
 
@@ -19419,9 +17917,9 @@ modelEntry:
 	# gep a$366 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$183
 
@@ -19453,12 +17951,8 @@ modelEntry:
 	# MUL result_$371 a$367  
 
 	# fetch variables
-
-	# get address of local var:a$367
-	li t4, 3268
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 18
+	mv t1, t0
+	addi t2, zero, 18
 	mul t0, t1, t2
 
 	# get address of local var:result_$371
@@ -19474,11 +17968,7 @@ modelEntry:
 	li t4, 3300
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$371
-	li t4, 3260
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$372
@@ -19501,9 +17991,9 @@ modelEntry:
 	# gep ptr_$184 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$184
 
@@ -19522,9 +18012,9 @@ modelEntry:
 	# gep a$368 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$184
 
@@ -19556,12 +18046,8 @@ modelEntry:
 	# MUL result_$373 a$369  
 
 	# fetch variables
-
-	# get address of local var:a$369
-	li t4, 3220
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 5
+	mv t1, t0
+	addi t2, zero, 5
 	mul t0, t1, t2
 
 	# get address of local var:result_$373
@@ -19577,11 +18063,7 @@ modelEntry:
 	li t4, 3252
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$373
-	li t4, 3212
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$374
@@ -19604,9 +18086,9 @@ modelEntry:
 	# gep ptr_$185 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$185
 
@@ -19625,9 +18107,9 @@ modelEntry:
 	# gep a$370 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$185
 
@@ -19659,12 +18141,8 @@ modelEntry:
 	# MUL result_$375 a$371  
 
 	# fetch variables
-
-	# get address of local var:a$371
-	li t4, 3172
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 104
+	mv t1, t0
+	addi t2, zero, 104
 	mul t0, t1, t2
 
 	# get address of local var:result_$375
@@ -19680,11 +18158,7 @@ modelEntry:
 	li t4, 3204
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$375
-	li t4, 3164
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$376
@@ -19707,9 +18181,9 @@ modelEntry:
 	# gep ptr_$186 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$186
 
@@ -19728,9 +18202,9 @@ modelEntry:
 	# gep a$372 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$186
 
@@ -19762,12 +18236,8 @@ modelEntry:
 	# MUL result_$377 a$373  
 
 	# fetch variables
-
-	# get address of local var:a$373
-	li t4, 3124
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -119
+	mv t1, t0
+	addi t2, zero, -119
 	mul t0, t1, t2
 
 	# get address of local var:result_$377
@@ -19783,11 +18253,7 @@ modelEntry:
 	li t4, 3156
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$377
-	li t4, 3116
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$378
@@ -19810,9 +18276,9 @@ modelEntry:
 	# gep ptr_$187 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$187
 
@@ -19831,9 +18297,9 @@ modelEntry:
 	# gep a$374 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$187
 
@@ -19865,12 +18331,8 @@ modelEntry:
 	# MUL result_$379 a$375  
 
 	# fetch variables
-
-	# get address of local var:a$375
-	li t4, 3076
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -7
+	mv t1, t0
+	addi t2, zero, -7
 	mul t0, t1, t2
 
 	# get address of local var:result_$379
@@ -19886,11 +18348,7 @@ modelEntry:
 	li t4, 3108
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$379
-	li t4, 3068
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$380
@@ -19913,9 +18371,9 @@ modelEntry:
 	# gep ptr_$188 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$188
 
@@ -19934,9 +18392,9 @@ modelEntry:
 	# gep a$376 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$188
 
@@ -19968,12 +18426,8 @@ modelEntry:
 	# MUL result_$381 a$377  
 
 	# fetch variables
-
-	# get address of local var:a$377
-	li t4, 3028
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 71
+	mv t1, t0
+	addi t2, zero, 71
 	mul t0, t1, t2
 
 	# get address of local var:result_$381
@@ -19989,11 +18443,7 @@ modelEntry:
 	li t4, 3060
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$381
-	li t4, 3020
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$382
@@ -20016,9 +18466,9 @@ modelEntry:
 	# gep ptr_$189 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$189
 
@@ -20037,9 +18487,9 @@ modelEntry:
 	# gep a$378 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$189
 
@@ -20071,12 +18521,8 @@ modelEntry:
 	# MUL result_$383 a$379  
 
 	# fetch variables
-
-	# get address of local var:a$379
-	li t4, 2980
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 107
+	mv t1, t0
+	addi t2, zero, 107
 	mul t0, t1, t2
 
 	# get address of local var:result_$383
@@ -20092,11 +18538,7 @@ modelEntry:
 	li t4, 3012
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$383
-	li t4, 2972
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$384
@@ -20119,9 +18561,9 @@ modelEntry:
 	# gep ptr_$190 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$190
 
@@ -20140,9 +18582,9 @@ modelEntry:
 	# gep a$380 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$190
 
@@ -20174,12 +18616,8 @@ modelEntry:
 	# MUL result_$385 a$381  
 
 	# fetch variables
-
-	# get address of local var:a$381
-	li t4, 2932
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 24
+	mv t1, t0
+	addi t2, zero, 24
 	mul t0, t1, t2
 
 	# get address of local var:result_$385
@@ -20195,11 +18633,7 @@ modelEntry:
 	li t4, 2964
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$385
-	li t4, 2924
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$386
@@ -20222,9 +18656,9 @@ modelEntry:
 	# gep ptr_$191 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$191
 
@@ -20243,9 +18677,9 @@ modelEntry:
 	# gep a$382 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$191
 
@@ -20277,12 +18711,8 @@ modelEntry:
 	# MUL result_$387 a$383  
 
 	# fetch variables
-
-	# get address of local var:a$383
-	li t4, 2884
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 82
+	mv t1, t0
+	addi t2, zero, 82
 	mul t0, t1, t2
 
 	# get address of local var:result_$387
@@ -20298,11 +18728,7 @@ modelEntry:
 	li t4, 2916
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$387
-	li t4, 2876
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$388
@@ -20325,9 +18751,9 @@ modelEntry:
 	# gep ptr_$192 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$192
 
@@ -20346,9 +18772,9 @@ modelEntry:
 	# gep a$384 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$192
 
@@ -20380,12 +18806,8 @@ modelEntry:
 	# MUL result_$389 a$385  
 
 	# fetch variables
-
-	# get address of local var:a$385
-	li t4, 2836
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -96
+	mv t1, t0
+	addi t2, zero, -96
 	mul t0, t1, t2
 
 	# get address of local var:result_$389
@@ -20401,11 +18823,7 @@ modelEntry:
 	li t4, 2868
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$389
-	li t4, 2828
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$390
@@ -20428,9 +18846,9 @@ modelEntry:
 	# gep ptr_$193 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$193
 
@@ -20449,9 +18867,9 @@ modelEntry:
 	# gep a$386 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$193
 
@@ -20483,12 +18901,8 @@ modelEntry:
 	# MUL result_$391 a$387  
 
 	# fetch variables
-
-	# get address of local var:a$387
-	li t4, 2788
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -104
+	mv t1, t0
+	addi t2, zero, -104
 	mul t0, t1, t2
 
 	# get address of local var:result_$391
@@ -20504,11 +18918,7 @@ modelEntry:
 	li t4, 2820
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$391
-	li t4, 2780
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$392
@@ -20531,9 +18941,9 @@ modelEntry:
 	# gep ptr_$194 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$194
 
@@ -20552,9 +18962,9 @@ modelEntry:
 	# gep a$388 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$194
 
@@ -20586,12 +18996,8 @@ modelEntry:
 	# MUL result_$393 a$389  
 
 	# fetch variables
-
-	# get address of local var:a$389
-	li t4, 2740
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -121
+	mv t1, t0
+	addi t2, zero, -121
 	mul t0, t1, t2
 
 	# get address of local var:result_$393
@@ -20607,11 +19013,7 @@ modelEntry:
 	li t4, 2772
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$393
-	li t4, 2732
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$394
@@ -20634,9 +19036,9 @@ modelEntry:
 	# gep ptr_$195 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$195
 
@@ -20655,9 +19057,9 @@ modelEntry:
 	# gep a$390 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$195
 
@@ -20689,12 +19091,8 @@ modelEntry:
 	# MUL result_$395 a$391  
 
 	# fetch variables
-
-	# get address of local var:a$391
-	li t4, 2692
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 65
+	mv t1, t0
+	addi t2, zero, 65
 	mul t0, t1, t2
 
 	# get address of local var:result_$395
@@ -20710,11 +19108,7 @@ modelEntry:
 	li t4, 2724
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$395
-	li t4, 2684
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$396
@@ -20737,9 +19131,9 @@ modelEntry:
 	# gep ptr_$196 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$196
 
@@ -20758,9 +19152,9 @@ modelEntry:
 	# gep a$392 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$196
 
@@ -20792,12 +19186,8 @@ modelEntry:
 	# MUL result_$397 a$393  
 
 	# fetch variables
-
-	# get address of local var:a$393
-	li t4, 2644
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 97
+	mv t1, t0
+	addi t2, zero, 97
 	mul t0, t1, t2
 
 	# get address of local var:result_$397
@@ -20813,11 +19203,7 @@ modelEntry:
 	li t4, 2676
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$397
-	li t4, 2636
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$398
@@ -20840,9 +19226,9 @@ modelEntry:
 	# gep ptr_$197 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$197
 
@@ -20861,9 +19247,9 @@ modelEntry:
 	# gep a$394 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$197
 
@@ -20895,12 +19281,8 @@ modelEntry:
 	# MUL result_$399 a$395  
 
 	# fetch variables
-
-	# get address of local var:a$395
-	li t4, 2596
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 83
+	mv t1, t0
+	addi t2, zero, 83
 	mul t0, t1, t2
 
 	# get address of local var:result_$399
@@ -20916,11 +19298,7 @@ modelEntry:
 	li t4, 2628
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$399
-	li t4, 2588
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$400
@@ -20943,9 +19321,9 @@ modelEntry:
 	# gep ptr_$198 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$198
 
@@ -20964,9 +19342,9 @@ modelEntry:
 	# gep a$396 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$198
 
@@ -20998,12 +19376,8 @@ modelEntry:
 	# MUL result_$401 a$397  
 
 	# fetch variables
-
-	# get address of local var:a$397
-	li t4, 2548
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 46
+	mv t1, t0
+	addi t2, zero, 46
 	mul t0, t1, t2
 
 	# get address of local var:result_$401
@@ -21019,11 +19393,7 @@ modelEntry:
 	li t4, 2580
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$401
-	li t4, 2540
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$402
@@ -21046,9 +19416,9 @@ modelEntry:
 	# gep ptr_$199 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$199
 
@@ -21067,9 +19437,9 @@ modelEntry:
 	# gep a$398 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$199
 
@@ -21101,12 +19471,8 @@ modelEntry:
 	# MUL result_$403 a$399  
 
 	# fetch variables
-
-	# get address of local var:a$399
-	li t4, 2500
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -84
+	mv t1, t0
+	addi t2, zero, -84
 	mul t0, t1, t2
 
 	# get address of local var:result_$403
@@ -21122,11 +19488,7 @@ modelEntry:
 	li t4, 2532
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$403
-	li t4, 2492
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$404
@@ -21143,8 +19505,6 @@ modelEntry:
 	add t4, sp, t4
 	lw t1, 0(t4)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -21158,8 +19518,6 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:relu_reg$7
 	li t4, 2476
@@ -21174,7 +19532,7 @@ modelEntry:
 	li t4, 2476
 	add t4, sp, t4
 	lw t1, 0(t4)
-	li t2, -50
+	addi t2, zero, -50
 	mul t0, t1, t2
 
 	# get address of local var:result_$405
@@ -21190,11 +19548,7 @@ modelEntry:
 	li t4, 3676
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$405
-	li t4, 2468
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$406
@@ -21217,9 +19571,9 @@ modelEntry:
 	# gep ptr_$200 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$200
 
@@ -21238,9 +19592,9 @@ modelEntry:
 	# gep a$400 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$200
 
@@ -21272,12 +19626,8 @@ modelEntry:
 	# MUL result_$407 a$401  
 
 	# fetch variables
-
-	# get address of local var:a$401
-	li t4, 2428
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -29
+	mv t1, t0
+	addi t2, zero, -29
 	mul t0, t1, t2
 
 	# get address of local var:result_$407
@@ -21300,9 +19650,9 @@ modelEntry:
 	# gep ptr_$201 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$201
 
@@ -21321,9 +19671,9 @@ modelEntry:
 	# gep a$402 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$201
 
@@ -21355,12 +19705,8 @@ modelEntry:
 	# MUL result_$408 a$403  
 
 	# fetch variables
-
-	# get address of local var:a$403
-	li t4, 2388
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 7
+	mv t1, t0
+	addi t2, zero, 7
 	mul t0, t1, t2
 
 	# get address of local var:result_$408
@@ -21376,11 +19722,7 @@ modelEntry:
 	li t4, 2420
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$408
-	li t4, 2380
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$409
@@ -21403,9 +19745,9 @@ modelEntry:
 	# gep ptr_$202 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$202
 
@@ -21424,9 +19766,9 @@ modelEntry:
 	# gep a$404 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$202
 
@@ -21458,12 +19800,8 @@ modelEntry:
 	# MUL result_$410 a$405  
 
 	# fetch variables
-
-	# get address of local var:a$405
-	li t4, 2340
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -70
+	mv t1, t0
+	addi t2, zero, -70
 	mul t0, t1, t2
 
 	# get address of local var:result_$410
@@ -21479,11 +19817,7 @@ modelEntry:
 	li t4, 2372
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$410
-	li t4, 2332
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$411
@@ -21506,9 +19840,9 @@ modelEntry:
 	# gep ptr_$203 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$203
 
@@ -21527,9 +19861,9 @@ modelEntry:
 	# gep a$406 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$203
 
@@ -21561,12 +19895,8 @@ modelEntry:
 	# MUL result_$412 a$407  
 
 	# fetch variables
-
-	# get address of local var:a$407
-	li t4, 2292
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 38
+	mv t1, t0
+	addi t2, zero, 38
 	mul t0, t1, t2
 
 	# get address of local var:result_$412
@@ -21582,11 +19912,7 @@ modelEntry:
 	li t4, 2324
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$412
-	li t4, 2284
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$413
@@ -21609,9 +19935,9 @@ modelEntry:
 	# gep ptr_$204 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$204
 
@@ -21630,9 +19956,9 @@ modelEntry:
 	# gep a$408 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$204
 
@@ -21664,12 +19990,8 @@ modelEntry:
 	# MUL result_$414 a$409  
 
 	# fetch variables
-
-	# get address of local var:a$409
-	li t4, 2244
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -90
+	mv t1, t0
+	addi t2, zero, -90
 	mul t0, t1, t2
 
 	# get address of local var:result_$414
@@ -21685,11 +20007,7 @@ modelEntry:
 	li t4, 2276
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$414
-	li t4, 2236
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$415
@@ -21712,9 +20030,9 @@ modelEntry:
 	# gep ptr_$205 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$205
 
@@ -21733,9 +20051,9 @@ modelEntry:
 	# gep a$410 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$205
 
@@ -21767,12 +20085,8 @@ modelEntry:
 	# MUL result_$416 a$411  
 
 	# fetch variables
-
-	# get address of local var:a$411
-	li t4, 2196
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -15
+	mv t1, t0
+	addi t2, zero, -15
 	mul t0, t1, t2
 
 	# get address of local var:result_$416
@@ -21788,11 +20102,7 @@ modelEntry:
 	li t4, 2228
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$416
-	li t4, 2188
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$417
@@ -21815,9 +20125,9 @@ modelEntry:
 	# gep ptr_$206 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$206
 
@@ -21836,9 +20146,9 @@ modelEntry:
 	# gep a$412 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$206
 
@@ -21870,12 +20180,8 @@ modelEntry:
 	# MUL result_$418 a$413  
 
 	# fetch variables
-
-	# get address of local var:a$413
-	li t4, 2148
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, -32
+	mv t1, t0
+	addi t2, zero, -32
 	mul t0, t1, t2
 
 	# get address of local var:result_$418
@@ -21891,11 +20197,7 @@ modelEntry:
 	li t4, 2180
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$418
-	li t4, 2140
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$419
@@ -21918,9 +20220,9 @@ modelEntry:
 	# gep ptr_$207 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$207
 
@@ -21939,9 +20241,9 @@ modelEntry:
 	# gep a$414 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$207
 
@@ -21973,12 +20275,8 @@ modelEntry:
 	# MUL result_$420 a$415  
 
 	# fetch variables
-
-	# get address of local var:a$415
-	li t4, 2100
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 37
+	mv t1, t0
+	addi t2, zero, 37
 	mul t0, t1, t2
 
 	# get address of local var:result_$420
@@ -21994,11 +20292,7 @@ modelEntry:
 	li t4, 2132
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$420
-	li t4, 2092
-	add t4, sp, t4
-	lw t2, 0(t4)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$421
@@ -22021,9 +20315,9 @@ modelEntry:
 	# gep ptr_$208 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$208
 
@@ -22042,9 +20336,9 @@ modelEntry:
 	# gep a$416 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$208
 
@@ -22076,12 +20370,8 @@ modelEntry:
 	# MUL result_$422 a$417  
 
 	# fetch variables
-
-	# get address of local var:a$417
-	li t4, 2052
-	add t4, sp, t4
-	lw t1, 0(t4)
-	li t2, 36
+	mv t1, t0
+	addi t2, zero, 36
 	mul t0, t1, t2
 
 	# get address of local var:result_$422
@@ -22095,9 +20385,7 @@ modelEntry:
 	li t4, 2084
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$422
-	lw t2, 2044(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$423
@@ -22116,9 +20404,9 @@ modelEntry:
 	# gep ptr_$209 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$209
 
@@ -22133,9 +20421,9 @@ modelEntry:
 	# gep a$418 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$209
 
@@ -22159,10 +20447,8 @@ modelEntry:
 	# MUL result_$424 a$419  
 
 	# fetch variables
-
-	# get address of local var:a$419
-	lw t1, 2004(sp)
-	li t2, -62
+	mv t1, t0
+	addi t2, zero, -62
 	mul t0, t1, t2
 
 	# get address of local var:result_$424
@@ -22174,9 +20460,7 @@ modelEntry:
 
 	# get address of local var:result_$423
 	lw t1, 2036(sp)
-
-	# get address of local var:result_$424
-	lw t2, 1996(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$425
@@ -22195,9 +20479,9 @@ modelEntry:
 	# gep ptr_$210 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$210
 
@@ -22212,9 +20496,9 @@ modelEntry:
 	# gep a$420 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$210
 
@@ -22238,10 +20522,8 @@ modelEntry:
 	# MUL result_$426 a$421  
 
 	# fetch variables
-
-	# get address of local var:a$421
-	lw t1, 1956(sp)
-	li t2, -125
+	mv t1, t0
+	addi t2, zero, -125
 	mul t0, t1, t2
 
 	# get address of local var:result_$426
@@ -22253,9 +20535,7 @@ modelEntry:
 
 	# get address of local var:result_$425
 	lw t1, 1988(sp)
-
-	# get address of local var:result_$426
-	lw t2, 1948(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$427
@@ -22274,9 +20554,9 @@ modelEntry:
 	# gep ptr_$211 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$211
 
@@ -22291,9 +20571,9 @@ modelEntry:
 	# gep a$422 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$211
 
@@ -22317,10 +20597,8 @@ modelEntry:
 	# MUL result_$428 a$423  
 
 	# fetch variables
-
-	# get address of local var:a$423
-	lw t1, 1908(sp)
-	li t2, -46
+	mv t1, t0
+	addi t2, zero, -46
 	mul t0, t1, t2
 
 	# get address of local var:result_$428
@@ -22332,9 +20610,7 @@ modelEntry:
 
 	# get address of local var:result_$427
 	lw t1, 1940(sp)
-
-	# get address of local var:result_$428
-	lw t2, 1900(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$429
@@ -22353,9 +20629,9 @@ modelEntry:
 	# gep ptr_$212 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$212
 
@@ -22370,9 +20646,9 @@ modelEntry:
 	# gep a$424 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$212
 
@@ -22396,10 +20672,8 @@ modelEntry:
 	# MUL result_$430 a$425  
 
 	# fetch variables
-
-	# get address of local var:a$425
-	lw t1, 1860(sp)
-	li t2, -70
+	mv t1, t0
+	addi t2, zero, -70
 	mul t0, t1, t2
 
 	# get address of local var:result_$430
@@ -22411,9 +20685,7 @@ modelEntry:
 
 	# get address of local var:result_$429
 	lw t1, 1892(sp)
-
-	# get address of local var:result_$430
-	lw t2, 1852(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$431
@@ -22432,9 +20704,9 @@ modelEntry:
 	# gep ptr_$213 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$213
 
@@ -22449,9 +20721,9 @@ modelEntry:
 	# gep a$426 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$213
 
@@ -22475,10 +20747,8 @@ modelEntry:
 	# MUL result_$432 a$427  
 
 	# fetch variables
-
-	# get address of local var:a$427
-	lw t1, 1812(sp)
-	li t2, 37
+	mv t1, t0
+	addi t2, zero, 37
 	mul t0, t1, t2
 
 	# get address of local var:result_$432
@@ -22490,9 +20760,7 @@ modelEntry:
 
 	# get address of local var:result_$431
 	lw t1, 1844(sp)
-
-	# get address of local var:result_$432
-	lw t2, 1804(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$433
@@ -22511,9 +20779,9 @@ modelEntry:
 	# gep ptr_$214 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$214
 
@@ -22528,9 +20796,9 @@ modelEntry:
 	# gep a$428 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$214
 
@@ -22554,10 +20822,8 @@ modelEntry:
 	# MUL result_$434 a$429  
 
 	# fetch variables
-
-	# get address of local var:a$429
-	lw t1, 1764(sp)
-	li t2, -73
+	mv t1, t0
+	addi t2, zero, -73
 	mul t0, t1, t2
 
 	# get address of local var:result_$434
@@ -22569,9 +20835,7 @@ modelEntry:
 
 	# get address of local var:result_$433
 	lw t1, 1796(sp)
-
-	# get address of local var:result_$434
-	lw t2, 1756(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$435
@@ -22590,9 +20854,9 @@ modelEntry:
 	# gep ptr_$215 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$215
 
@@ -22607,9 +20871,9 @@ modelEntry:
 	# gep a$430 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$215
 
@@ -22633,10 +20897,8 @@ modelEntry:
 	# MUL result_$436 a$431  
 
 	# fetch variables
-
-	# get address of local var:a$431
-	lw t1, 1716(sp)
-	li t2, -34
+	mv t1, t0
+	addi t2, zero, -34
 	mul t0, t1, t2
 
 	# get address of local var:result_$436
@@ -22648,9 +20910,7 @@ modelEntry:
 
 	# get address of local var:result_$435
 	lw t1, 1748(sp)
-
-	# get address of local var:result_$436
-	lw t2, 1708(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$437
@@ -22669,9 +20929,9 @@ modelEntry:
 	# gep ptr_$216 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$216
 
@@ -22686,9 +20946,9 @@ modelEntry:
 	# gep a$432 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$216
 
@@ -22712,10 +20972,8 @@ modelEntry:
 	# MUL result_$438 a$433  
 
 	# fetch variables
-
-	# get address of local var:a$433
-	lw t1, 1668(sp)
-	li t2, -87
+	mv t1, t0
+	addi t2, zero, -87
 	mul t0, t1, t2
 
 	# get address of local var:result_$438
@@ -22727,9 +20985,7 @@ modelEntry:
 
 	# get address of local var:result_$437
 	lw t1, 1700(sp)
-
-	# get address of local var:result_$438
-	lw t2, 1660(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$439
@@ -22748,9 +21004,9 @@ modelEntry:
 	# gep ptr_$217 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$217
 
@@ -22765,9 +21021,9 @@ modelEntry:
 	# gep a$434 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$217
 
@@ -22791,10 +21047,8 @@ modelEntry:
 	# MUL result_$440 a$435  
 
 	# fetch variables
-
-	# get address of local var:a$435
-	lw t1, 1620(sp)
-	li t2, -75
+	mv t1, t0
+	addi t2, zero, -75
 	mul t0, t1, t2
 
 	# get address of local var:result_$440
@@ -22806,9 +21060,7 @@ modelEntry:
 
 	# get address of local var:result_$439
 	lw t1, 1652(sp)
-
-	# get address of local var:result_$440
-	lw t2, 1612(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$441
@@ -22827,9 +21079,9 @@ modelEntry:
 	# gep ptr_$218 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$218
 
@@ -22844,9 +21096,9 @@ modelEntry:
 	# gep a$436 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$218
 
@@ -22870,10 +21122,8 @@ modelEntry:
 	# MUL result_$442 a$437  
 
 	# fetch variables
-
-	# get address of local var:a$437
-	lw t1, 1572(sp)
-	li t2, 71
+	mv t1, t0
+	addi t2, zero, 71
 	mul t0, t1, t2
 
 	# get address of local var:result_$442
@@ -22885,9 +21135,7 @@ modelEntry:
 
 	# get address of local var:result_$441
 	lw t1, 1604(sp)
-
-	# get address of local var:result_$442
-	lw t2, 1564(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$443
@@ -22906,9 +21154,9 @@ modelEntry:
 	# gep ptr_$219 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$219
 
@@ -22923,9 +21171,9 @@ modelEntry:
 	# gep a$438 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$219
 
@@ -22949,10 +21197,8 @@ modelEntry:
 	# MUL result_$444 a$439  
 
 	# fetch variables
-
-	# get address of local var:a$439
-	lw t1, 1524(sp)
-	li t2, -77
+	mv t1, t0
+	addi t2, zero, -77
 	mul t0, t1, t2
 
 	# get address of local var:result_$444
@@ -22964,9 +21210,7 @@ modelEntry:
 
 	# get address of local var:result_$443
 	lw t1, 1556(sp)
-
-	# get address of local var:result_$444
-	lw t2, 1516(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$445
@@ -22985,9 +21229,9 @@ modelEntry:
 	# gep ptr_$220 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$220
 
@@ -23002,9 +21246,9 @@ modelEntry:
 	# gep a$440 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$220
 
@@ -23028,10 +21272,8 @@ modelEntry:
 	# MUL result_$446 a$441  
 
 	# fetch variables
-
-	# get address of local var:a$441
-	lw t1, 1476(sp)
-	li t2, 53
+	mv t1, t0
+	addi t2, zero, 53
 	mul t0, t1, t2
 
 	# get address of local var:result_$446
@@ -23043,9 +21285,7 @@ modelEntry:
 
 	# get address of local var:result_$445
 	lw t1, 1508(sp)
-
-	# get address of local var:result_$446
-	lw t2, 1468(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$447
@@ -23064,9 +21304,9 @@ modelEntry:
 	# gep ptr_$221 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$221
 
@@ -23081,9 +21321,9 @@ modelEntry:
 	# gep a$442 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$221
 
@@ -23107,10 +21347,8 @@ modelEntry:
 	# MUL result_$448 a$443  
 
 	# fetch variables
-
-	# get address of local var:a$443
-	lw t1, 1428(sp)
-	li t2, 37
+	mv t1, t0
+	addi t2, zero, 37
 	mul t0, t1, t2
 
 	# get address of local var:result_$448
@@ -23122,9 +21360,7 @@ modelEntry:
 
 	# get address of local var:result_$447
 	lw t1, 1460(sp)
-
-	# get address of local var:result_$448
-	lw t2, 1420(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$449
@@ -23143,9 +21379,9 @@ modelEntry:
 	# gep ptr_$222 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$222
 
@@ -23160,9 +21396,9 @@ modelEntry:
 	# gep a$444 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$222
 
@@ -23186,10 +21422,8 @@ modelEntry:
 	# MUL result_$450 a$445  
 
 	# fetch variables
-
-	# get address of local var:a$445
-	lw t1, 1380(sp)
-	li t2, -103
+	mv t1, t0
+	addi t2, zero, -103
 	mul t0, t1, t2
 
 	# get address of local var:result_$450
@@ -23201,9 +21435,7 @@ modelEntry:
 
 	# get address of local var:result_$449
 	lw t1, 1412(sp)
-
-	# get address of local var:result_$450
-	lw t2, 1372(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$451
@@ -23222,9 +21454,9 @@ modelEntry:
 	# gep ptr_$223 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$223
 
@@ -23239,9 +21471,9 @@ modelEntry:
 	# gep a$446 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$223
 
@@ -23265,10 +21497,8 @@ modelEntry:
 	# MUL result_$452 a$447  
 
 	# fetch variables
-
-	# get address of local var:a$447
-	lw t1, 1332(sp)
-	li t2, -13
+	mv t1, t0
+	addi t2, zero, -13
 	mul t0, t1, t2
 
 	# get address of local var:result_$452
@@ -23280,9 +21510,7 @@ modelEntry:
 
 	# get address of local var:result_$451
 	lw t1, 1364(sp)
-
-	# get address of local var:result_$452
-	lw t2, 1324(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$453
@@ -23301,9 +21529,9 @@ modelEntry:
 	# gep ptr_$224 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$224
 
@@ -23318,9 +21546,9 @@ modelEntry:
 	# gep a$448 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$224
 
@@ -23344,10 +21572,8 @@ modelEntry:
 	# MUL result_$454 a$449  
 
 	# fetch variables
-
-	# get address of local var:a$449
-	lw t1, 1284(sp)
-	li t2, -114
+	mv t1, t0
+	addi t2, zero, -114
 	mul t0, t1, t2
 
 	# get address of local var:result_$454
@@ -23359,9 +21585,7 @@ modelEntry:
 
 	# get address of local var:result_$453
 	lw t1, 1316(sp)
-
-	# get address of local var:result_$454
-	lw t2, 1276(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$455
@@ -23374,8 +21598,6 @@ modelEntry:
 	# get address of local var:result_$455
 	lw t1, 1268(sp)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -23389,8 +21611,6 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:relu_reg$8
 	sw a0, 1260(sp)
@@ -23401,7 +21621,7 @@ modelEntry:
 
 	# get address of local var:relu_reg$8
 	lw t1, 1260(sp)
-	li t2, -23
+	addi t2, zero, -23
 	mul t0, t1, t2
 
 	# get address of local var:result_$456
@@ -23415,9 +21635,7 @@ modelEntry:
 	li t4, 2460
 	add t4, sp, t4
 	lw t1, 0(t4)
-
-	# get address of local var:result_$456
-	lw t2, 1252(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$457
@@ -23436,9 +21654,9 @@ modelEntry:
 	# gep ptr_$225 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$225
 
@@ -23453,9 +21671,9 @@ modelEntry:
 	# gep a$450 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$225
 
@@ -23479,10 +21697,8 @@ modelEntry:
 	# MUL result_$458 a$451  
 
 	# fetch variables
-
-	# get address of local var:a$451
-	lw t1, 1212(sp)
-	li t2, 67
+	mv t1, t0
+	addi t2, zero, 67
 	mul t0, t1, t2
 
 	# get address of local var:result_$458
@@ -23501,9 +21717,9 @@ modelEntry:
 	# gep ptr_$226 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$226
 
@@ -23518,9 +21734,9 @@ modelEntry:
 	# gep a$452 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$226
 
@@ -23544,10 +21760,8 @@ modelEntry:
 	# MUL result_$459 a$453  
 
 	# fetch variables
-
-	# get address of local var:a$453
-	lw t1, 1172(sp)
-	li t2, 42
+	mv t1, t0
+	addi t2, zero, 42
 	mul t0, t1, t2
 
 	# get address of local var:result_$459
@@ -23559,9 +21773,7 @@ modelEntry:
 
 	# get address of local var:result_$458
 	lw t1, 1204(sp)
-
-	# get address of local var:result_$459
-	lw t2, 1164(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$460
@@ -23580,9 +21792,9 @@ modelEntry:
 	# gep ptr_$227 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$227
 
@@ -23597,9 +21809,9 @@ modelEntry:
 	# gep a$454 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$227
 
@@ -23623,10 +21835,8 @@ modelEntry:
 	# MUL result_$461 a$455  
 
 	# fetch variables
-
-	# get address of local var:a$455
-	lw t1, 1124(sp)
-	li t2, 41
+	mv t1, t0
+	addi t2, zero, 41
 	mul t0, t1, t2
 
 	# get address of local var:result_$461
@@ -23638,9 +21848,7 @@ modelEntry:
 
 	# get address of local var:result_$460
 	lw t1, 1156(sp)
-
-	# get address of local var:result_$461
-	lw t2, 1116(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$462
@@ -23659,9 +21867,9 @@ modelEntry:
 	# gep ptr_$228 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$228
 
@@ -23676,9 +21884,9 @@ modelEntry:
 	# gep a$456 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$228
 
@@ -23702,10 +21910,8 @@ modelEntry:
 	# MUL result_$463 a$457  
 
 	# fetch variables
-
-	# get address of local var:a$457
-	lw t1, 1076(sp)
-	li t2, -123
+	mv t1, t0
+	addi t2, zero, -123
 	mul t0, t1, t2
 
 	# get address of local var:result_$463
@@ -23717,9 +21923,7 @@ modelEntry:
 
 	# get address of local var:result_$462
 	lw t1, 1108(sp)
-
-	# get address of local var:result_$463
-	lw t2, 1068(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$464
@@ -23738,9 +21942,9 @@ modelEntry:
 	# gep ptr_$229 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$229
 
@@ -23755,9 +21959,9 @@ modelEntry:
 	# gep a$458 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$229
 
@@ -23781,10 +21985,8 @@ modelEntry:
 	# MUL result_$465 a$459  
 
 	# fetch variables
-
-	# get address of local var:a$459
-	lw t1, 1028(sp)
-	li t2, -92
+	mv t1, t0
+	addi t2, zero, -92
 	mul t0, t1, t2
 
 	# get address of local var:result_$465
@@ -23796,9 +21998,7 @@ modelEntry:
 
 	# get address of local var:result_$464
 	lw t1, 1060(sp)
-
-	# get address of local var:result_$465
-	lw t2, 1020(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$466
@@ -23817,9 +22017,9 @@ modelEntry:
 	# gep ptr_$230 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$230
 
@@ -23834,9 +22034,9 @@ modelEntry:
 	# gep a$460 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$230
 
@@ -23860,10 +22060,8 @@ modelEntry:
 	# MUL result_$467 a$461  
 
 	# fetch variables
-
-	# get address of local var:a$461
-	lw t1, 980(sp)
-	li t2, 10
+	mv t1, t0
+	addi t2, zero, 10
 	mul t0, t1, t2
 
 	# get address of local var:result_$467
@@ -23875,9 +22073,7 @@ modelEntry:
 
 	# get address of local var:result_$466
 	lw t1, 1012(sp)
-
-	# get address of local var:result_$467
-	lw t2, 972(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$468
@@ -23896,9 +22092,9 @@ modelEntry:
 	# gep ptr_$231 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$231
 
@@ -23913,9 +22109,9 @@ modelEntry:
 	# gep a$462 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$231
 
@@ -23939,10 +22135,8 @@ modelEntry:
 	# MUL result_$469 a$463  
 
 	# fetch variables
-
-	# get address of local var:a$463
-	lw t1, 932(sp)
-	li t2, -77
+	mv t1, t0
+	addi t2, zero, -77
 	mul t0, t1, t2
 
 	# get address of local var:result_$469
@@ -23954,9 +22148,7 @@ modelEntry:
 
 	# get address of local var:result_$468
 	lw t1, 964(sp)
-
-	# get address of local var:result_$469
-	lw t2, 924(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$470
@@ -23975,9 +22167,9 @@ modelEntry:
 	# gep ptr_$232 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$232
 
@@ -23992,9 +22184,9 @@ modelEntry:
 	# gep a$464 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$232
 
@@ -24018,10 +22210,8 @@ modelEntry:
 	# MUL result_$471 a$465  
 
 	# fetch variables
-
-	# get address of local var:a$465
-	lw t1, 884(sp)
-	li t2, 75
+	mv t1, t0
+	addi t2, zero, 75
 	mul t0, t1, t2
 
 	# get address of local var:result_$471
@@ -24033,9 +22223,7 @@ modelEntry:
 
 	# get address of local var:result_$470
 	lw t1, 916(sp)
-
-	# get address of local var:result_$471
-	lw t2, 876(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$472
@@ -24054,9 +22242,9 @@ modelEntry:
 	# gep ptr_$233 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$233
 
@@ -24071,9 +22259,9 @@ modelEntry:
 	# gep a$466 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$233
 
@@ -24097,10 +22285,8 @@ modelEntry:
 	# MUL result_$473 a$467  
 
 	# fetch variables
-
-	# get address of local var:a$467
-	lw t1, 836(sp)
-	li t2, 96
+	mv t1, t0
+	addi t2, zero, 96
 	mul t0, t1, t2
 
 	# get address of local var:result_$473
@@ -24112,9 +22298,7 @@ modelEntry:
 
 	# get address of local var:result_$472
 	lw t1, 868(sp)
-
-	# get address of local var:result_$473
-	lw t2, 828(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$474
@@ -24133,9 +22317,9 @@ modelEntry:
 	# gep ptr_$234 
 
 	# fetch variables
-	li t1, 1
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$234
 
@@ -24150,9 +22334,9 @@ modelEntry:
 	# gep a$468 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$234
 
@@ -24176,10 +22360,8 @@ modelEntry:
 	# MUL result_$475 a$469  
 
 	# fetch variables
-
-	# get address of local var:a$469
-	lw t1, 788(sp)
-	li t2, -51
+	mv t1, t0
+	addi t2, zero, -51
 	mul t0, t1, t2
 
 	# get address of local var:result_$475
@@ -24191,9 +22373,7 @@ modelEntry:
 
 	# get address of local var:result_$474
 	lw t1, 820(sp)
-
-	# get address of local var:result_$475
-	lw t2, 780(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$476
@@ -24212,9 +22392,9 @@ modelEntry:
 	# gep ptr_$235 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$235
 
@@ -24229,9 +22409,9 @@ modelEntry:
 	# gep a$470 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$235
 
@@ -24255,10 +22435,8 @@ modelEntry:
 	# MUL result_$477 a$471  
 
 	# fetch variables
-
-	# get address of local var:a$471
-	lw t1, 740(sp)
-	li t2, 109
+	mv t1, t0
+	addi t2, zero, 109
 	mul t0, t1, t2
 
 	# get address of local var:result_$477
@@ -24270,9 +22448,7 @@ modelEntry:
 
 	# get address of local var:result_$476
 	lw t1, 772(sp)
-
-	# get address of local var:result_$477
-	lw t2, 732(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$478
@@ -24291,9 +22467,9 @@ modelEntry:
 	# gep ptr_$236 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$236
 
@@ -24308,9 +22484,9 @@ modelEntry:
 	# gep a$472 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$236
 
@@ -24334,10 +22510,8 @@ modelEntry:
 	# MUL result_$479 a$473  
 
 	# fetch variables
-
-	# get address of local var:a$473
-	lw t1, 692(sp)
-	li t2, -74
+	mv t1, t0
+	addi t2, zero, -74
 	mul t0, t1, t2
 
 	# get address of local var:result_$479
@@ -24349,9 +22523,7 @@ modelEntry:
 
 	# get address of local var:result_$478
 	lw t1, 724(sp)
-
-	# get address of local var:result_$479
-	lw t2, 684(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$480
@@ -24370,9 +22542,9 @@ modelEntry:
 	# gep ptr_$237 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$237
 
@@ -24387,9 +22559,9 @@ modelEntry:
 	# gep a$474 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$237
 
@@ -24413,10 +22585,8 @@ modelEntry:
 	# MUL result_$481 a$475  
 
 	# fetch variables
-
-	# get address of local var:a$475
-	lw t1, 644(sp)
-	li t2, -7
+	mv t1, t0
+	addi t2, zero, -7
 	mul t0, t1, t2
 
 	# get address of local var:result_$481
@@ -24428,9 +22598,7 @@ modelEntry:
 
 	# get address of local var:result_$480
 	lw t1, 676(sp)
-
-	# get address of local var:result_$481
-	lw t2, 636(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$482
@@ -24449,9 +22617,9 @@ modelEntry:
 	# gep ptr_$238 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$238
 
@@ -24466,9 +22634,9 @@ modelEntry:
 	# gep a$476 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$238
 
@@ -24492,10 +22660,8 @@ modelEntry:
 	# MUL result_$483 a$477  
 
 	# fetch variables
-
-	# get address of local var:a$477
-	lw t1, 596(sp)
-	li t2, -122
+	mv t1, t0
+	addi t2, zero, -122
 	mul t0, t1, t2
 
 	# get address of local var:result_$483
@@ -24507,9 +22673,7 @@ modelEntry:
 
 	# get address of local var:result_$482
 	lw t1, 628(sp)
-
-	# get address of local var:result_$483
-	lw t2, 588(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$484
@@ -24528,9 +22692,9 @@ modelEntry:
 	# gep ptr_$239 
 
 	# fetch variables
-	li t1, 2
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$239
 
@@ -24545,9 +22709,9 @@ modelEntry:
 	# gep a$478 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$239
 
@@ -24571,10 +22735,8 @@ modelEntry:
 	# MUL result_$485 a$479  
 
 	# fetch variables
-
-	# get address of local var:a$479
-	lw t1, 548(sp)
-	li t2, 67
+	mv t1, t0
+	addi t2, zero, 67
 	mul t0, t1, t2
 
 	# get address of local var:result_$485
@@ -24586,9 +22748,7 @@ modelEntry:
 
 	# get address of local var:result_$484
 	lw t1, 580(sp)
-
-	# get address of local var:result_$485
-	lw t2, 540(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$486
@@ -24607,9 +22767,9 @@ modelEntry:
 	# gep ptr_$240 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$240
 
@@ -24624,9 +22784,9 @@ modelEntry:
 	# gep a$480 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$240
 
@@ -24650,10 +22810,8 @@ modelEntry:
 	# MUL result_$487 a$481  
 
 	# fetch variables
-
-	# get address of local var:a$481
-	lw t1, 500(sp)
-	li t2, 47
+	mv t1, t0
+	addi t2, zero, 47
 	mul t0, t1, t2
 
 	# get address of local var:result_$487
@@ -24665,9 +22823,7 @@ modelEntry:
 
 	# get address of local var:result_$486
 	lw t1, 532(sp)
-
-	# get address of local var:result_$487
-	lw t2, 492(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$488
@@ -24686,9 +22842,9 @@ modelEntry:
 	# gep ptr_$241 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$241
 
@@ -24703,9 +22859,9 @@ modelEntry:
 	# gep a$482 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$241
 
@@ -24729,10 +22885,8 @@ modelEntry:
 	# MUL result_$489 a$483  
 
 	# fetch variables
-
-	# get address of local var:a$483
-	lw t1, 452(sp)
-	li t2, 22
+	mv t1, t0
+	addi t2, zero, 22
 	mul t0, t1, t2
 
 	# get address of local var:result_$489
@@ -24744,9 +22898,7 @@ modelEntry:
 
 	# get address of local var:result_$488
 	lw t1, 484(sp)
-
-	# get address of local var:result_$489
-	lw t2, 444(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$490
@@ -24765,9 +22917,9 @@ modelEntry:
 	# gep ptr_$242 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$242
 
@@ -24782,9 +22934,9 @@ modelEntry:
 	# gep a$484 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$242
 
@@ -24808,10 +22960,8 @@ modelEntry:
 	# MUL result_$491 a$485  
 
 	# fetch variables
-
-	# get address of local var:a$485
-	lw t1, 404(sp)
-	li t2, -68
+	mv t1, t0
+	addi t2, zero, -68
 	mul t0, t1, t2
 
 	# get address of local var:result_$491
@@ -24823,9 +22973,7 @@ modelEntry:
 
 	# get address of local var:result_$490
 	lw t1, 436(sp)
-
-	# get address of local var:result_$491
-	lw t2, 396(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$492
@@ -24844,9 +22992,9 @@ modelEntry:
 	# gep ptr_$243 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$243
 
@@ -24861,9 +23009,9 @@ modelEntry:
 	# gep a$486 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$243
 
@@ -24887,10 +23035,8 @@ modelEntry:
 	# MUL result_$493 a$487  
 
 	# fetch variables
-
-	# get address of local var:a$487
-	lw t1, 356(sp)
-	li t2, 38
+	mv t1, t0
+	addi t2, zero, 38
 	mul t0, t1, t2
 
 	# get address of local var:result_$493
@@ -24902,9 +23048,7 @@ modelEntry:
 
 	# get address of local var:result_$492
 	lw t1, 388(sp)
-
-	# get address of local var:result_$493
-	lw t2, 348(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$494
@@ -24923,9 +23067,9 @@ modelEntry:
 	# gep ptr_$244 
 
 	# fetch variables
-	li t1, 3
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$244
 
@@ -24940,9 +23084,9 @@ modelEntry:
 	# gep a$488 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$244
 
@@ -24966,10 +23110,8 @@ modelEntry:
 	# MUL result_$495 a$489  
 
 	# fetch variables
-
-	# get address of local var:a$489
-	lw t1, 308(sp)
-	li t2, 29
+	mv t1, t0
+	addi t2, zero, 29
 	mul t0, t1, t2
 
 	# get address of local var:result_$495
@@ -24981,9 +23123,7 @@ modelEntry:
 
 	# get address of local var:result_$494
 	lw t1, 340(sp)
-
-	# get address of local var:result_$495
-	lw t2, 300(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$496
@@ -25002,9 +23142,9 @@ modelEntry:
 	# gep ptr_$245 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$245
 
@@ -25019,9 +23159,9 @@ modelEntry:
 	# gep a$490 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$245
 
@@ -25045,10 +23185,8 @@ modelEntry:
 	# MUL result_$497 a$491  
 
 	# fetch variables
-
-	# get address of local var:a$491
-	lw t1, 260(sp)
-	li t2, 115
+	mv t1, t0
+	addi t2, zero, 115
 	mul t0, t1, t2
 
 	# get address of local var:result_$497
@@ -25060,9 +23198,7 @@ modelEntry:
 
 	# get address of local var:result_$496
 	lw t1, 292(sp)
-
-	# get address of local var:result_$497
-	lw t2, 252(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$498
@@ -25081,9 +23217,9 @@ modelEntry:
 	# gep ptr_$246 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$246
 
@@ -25098,9 +23234,9 @@ modelEntry:
 	# gep a$492 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$246
 
@@ -25124,10 +23260,8 @@ modelEntry:
 	# MUL result_$499 a$493  
 
 	# fetch variables
-
-	# get address of local var:a$493
-	lw t1, 212(sp)
-	li t2, -121
+	mv t1, t0
+	addi t2, zero, -121
 	mul t0, t1, t2
 
 	# get address of local var:result_$499
@@ -25139,9 +23273,7 @@ modelEntry:
 
 	# get address of local var:result_$498
 	lw t1, 244(sp)
-
-	# get address of local var:result_$499
-	lw t2, 204(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$500
@@ -25160,9 +23292,9 @@ modelEntry:
 	# gep ptr_$247 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$247
 
@@ -25177,9 +23309,9 @@ modelEntry:
 	# gep a$494 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$247
 
@@ -25203,10 +23335,8 @@ modelEntry:
 	# MUL result_$501 a$495  
 
 	# fetch variables
-
-	# get address of local var:a$495
-	lw t1, 164(sp)
-	li t2, 36
+	mv t1, t0
+	addi t2, zero, 36
 	mul t0, t1, t2
 
 	# get address of local var:result_$501
@@ -25218,9 +23348,7 @@ modelEntry:
 
 	# get address of local var:result_$500
 	lw t1, 196(sp)
-
-	# get address of local var:result_$501
-	lw t2, 156(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$502
@@ -25239,9 +23367,9 @@ modelEntry:
 	# gep ptr_$248 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$248
 
@@ -25256,9 +23384,9 @@ modelEntry:
 	# gep a$496 
 
 	# fetch variables
-	li t1, 3
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 3
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$248
 
@@ -25282,10 +23410,8 @@ modelEntry:
 	# MUL result_$503 a$497  
 
 	# fetch variables
-
-	# get address of local var:a$497
-	lw t1, 116(sp)
-	li t2, -49
+	mv t1, t0
+	addi t2, zero, -49
 	mul t0, t1, t2
 
 	# get address of local var:result_$503
@@ -25297,9 +23423,7 @@ modelEntry:
 
 	# get address of local var:result_$502
 	lw t1, 148(sp)
-
-	# get address of local var:result_$503
-	lw t2, 108(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$504
@@ -25318,9 +23442,9 @@ modelEntry:
 	# gep ptr_$249 
 
 	# fetch variables
-	li t1, 4
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:arr_$249
 
@@ -25335,9 +23459,9 @@ modelEntry:
 	# gep a$498 
 
 	# fetch variables
-	li t1, 4
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 4
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$249
 
@@ -25361,10 +23485,8 @@ modelEntry:
 	# MUL result_$505 a$499  
 
 	# fetch variables
-
-	# get address of local var:a$499
-	lw t1, 68(sp)
-	li t2, 85
+	mv t1, t0
+	addi t2, zero, 85
 	mul t0, t1, t2
 
 	# get address of local var:result_$505
@@ -25376,9 +23498,7 @@ modelEntry:
 
 	# get address of local var:result_$504
 	lw t1, 100(sp)
-
-	# get address of local var:result_$505
-	lw t2, 60(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$506
@@ -25391,8 +23511,6 @@ modelEntry:
 	# get address of local var:result_$506
 	lw t1, 52(sp)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -25406,8 +23524,6 @@ modelEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:relu_reg$9
 	sw a0, 44(sp)
@@ -25418,7 +23534,7 @@ modelEntry:
 
 	# get address of local var:relu_reg$9
 	lw t1, 44(sp)
-	li t2, 46
+	addi t2, zero, 46
 	mul t0, t1, t2
 
 	# get address of local var:result_$507
@@ -25430,9 +23546,7 @@ modelEntry:
 
 	# get address of local var:result_$457
 	lw t1, 1244(sp)
-
-	# get address of local var:result_$507
-	lw t2, 36(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$508
@@ -25441,10 +23555,8 @@ modelEntry:
 	# ICMP cond_gt_tmp_ result_$508  
 
 	# fetch variables
-
-	# get address of local var:result_$508
-	lw t1, 28(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	sub t0, t1, t2
 	sgtz t0, t0
 
@@ -25454,9 +23566,7 @@ modelEntry:
 	#  cond_tmp_ cond_gt_tmp_
 
 	# fetch variables
-
-	# get address of local var:cond_gt_tmp_
-	lw t1, 20(sp)
+	mv t1, t0
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
@@ -25465,10 +23575,8 @@ modelEntry:
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
-
-	# get address of local var:cond_tmp_
-	lw t1, 12(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -25479,9 +23587,7 @@ modelEntry:
 	# condBr cond_ ifTrue_337 next_581
 
 	# fetch variables
-
-	# get address of local var:cond_
-	lw t1, 4(sp)
+	mv t1, t0
 	beqz t1, next_581
 	j ifTrue_337
 ifTrue_337:
@@ -25489,10 +23595,10 @@ ifTrue_337:
 	# ret 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 	mv a0, t1
-	li t4, 12192
-	add sp, sp, t4
+	li t0, 12192
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -25502,10 +23608,10 @@ next_581:
 	# ret 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 	mv a0, t1
-	li t4, 12192
-	add sp, sp, t4
+	li t0, 12192
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -25518,8 +23624,8 @@ main:
 mainEntry81:
 
 	# reserve space
-	li t4, 352
-	sub sp, sp, t4
+	li t0, 352
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -25532,8 +23638,6 @@ mainEntry81:
 	# allocate lv
 
 	# prepare params
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -25547,8 +23651,6 @@ mainEntry81:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 220(sp)
@@ -25561,7 +23663,7 @@ mainEntry81:
 	lw t1, 220(sp)
 
 	# get address of lv points to
-	li t3, 228
+	addi t3, zero, 228
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -25572,7 +23674,7 @@ whileCond_244:
 	# load N lv
 
 	# get address of lv points to
-	li t3, 228
+	addi t3, zero, 228
 	add t3, sp, t3
 
 	# get address of local var:N
@@ -25582,10 +23684,8 @@ whileCond_244:
 	# ICMP cond_gt_tmp_ N  
 
 	# fetch variables
-
-	# get address of local var:N
-	lw t1, 212(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	sub t0, t1, t2
 	sgtz t0, t0
 
@@ -25595,9 +23695,7 @@ whileCond_244:
 	#  cond_tmp_ cond_gt_tmp_
 
 	# fetch variables
-
-	# get address of local var:cond_gt_tmp_
-	lw t1, 204(sp)
+	mv t1, t0
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
@@ -25606,10 +23704,8 @@ whileCond_244:
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
-
-	# get address of local var:cond_tmp_
-	lw t1, 196(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -25620,9 +23716,7 @@ whileCond_244:
 	# condBr cond_ whileBody_244 next_582
 
 	# fetch variables
-
-	# get address of local var:cond_
-	lw t1, 188(sp)
+	mv t1, t0
 	beqz t1, next_582
 	j whileBody_244
 whileBody_244:
@@ -25630,10 +23724,10 @@ whileBody_244:
 	# store lv$2 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 
 	# get address of lv$2 points to
-	li t3, 340
+	addi t3, zero, 340
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -25644,17 +23738,17 @@ next_582:
 	# ret 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 	mv a0, t1
-	li t4, 352
-	add sp, sp, t4
+	li t0, 352
+	add sp, sp, t0
 	ret 
 whileCond_245:
 
 	# load i lv$2
 
 	# get address of lv$2 points to
-	li t3, 340
+	addi t3, zero, 340
 	add t3, sp, t3
 
 	# get address of local var:i
@@ -25664,10 +23758,8 @@ whileCond_245:
 	# ICMP cond_lt_tmp_ i  
 
 	# fetch variables
-
-	# get address of local var:i
-	lw t1, 180(sp)
-	li t2, 5
+	mv t1, t0
+	addi t2, zero, 5
 	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_
@@ -25676,9 +23768,7 @@ whileCond_245:
 	#  cond_tmp_$1 cond_lt_tmp_
 
 	# fetch variables
-
-	# get address of local var:cond_lt_tmp_
-	lw t1, 172(sp)
+	mv t1, t0
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$1
@@ -25687,10 +23777,8 @@ whileCond_245:
 	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
-
-	# get address of local var:cond_tmp_$1
-	lw t1, 164(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -25701,9 +23789,7 @@ whileCond_245:
 	# condBr cond_$1 whileBody_245 next_583
 
 	# fetch variables
-
-	# get address of local var:cond_$1
-	lw t1, 156(sp)
+	mv t1, t0
 	beqz t1, next_583
 	j whileBody_245
 whileBody_245:
@@ -25711,10 +23797,10 @@ whileBody_245:
 	# store lv$3 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 
 	# get address of lv$3 points to
-	li t3, 348
+	addi t3, zero, 348
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -25725,12 +23811,12 @@ next_583:
 	# gep a$1 
 
 	# fetch variables
-	li t1, 0
-	li t2, 20
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:lv$1
-	li t3, 236
+	addi t3, zero, 236
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -25745,8 +23831,6 @@ next_583:
 	# get address of local var:a$1
 	ld t1, 144(sp)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -25760,8 +23844,6 @@ next_583:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:model
 	sw a0, 140(sp)
@@ -25772,7 +23854,7 @@ next_583:
 
 	# get address of local var:model
 	lw t1, 140(sp)
-	li t2, 0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -25783,9 +23865,7 @@ next_583:
 	# condBr cond_normalize_ ifTrue_338 ifFalse_134
 
 	# fetch variables
-
-	# get address of local var:cond_normalize_
-	lw t1, 132(sp)
+	mv t1, t0
 	beqz t1, ifFalse_134
 	j ifTrue_338
 whileCond_246:
@@ -25793,7 +23873,7 @@ whileCond_246:
 	# load j lv$3
 
 	# get address of lv$3 points to
-	li t3, 348
+	addi t3, zero, 348
 	add t3, sp, t3
 
 	# get address of local var:j
@@ -25803,10 +23883,8 @@ whileCond_246:
 	# ICMP cond_lt_tmp_$1 j  
 
 	# fetch variables
-
-	# get address of local var:j
-	lw t1, 124(sp)
-	li t2, 5
+	mv t1, t0
+	addi t2, zero, 5
 	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$1
@@ -25815,9 +23893,7 @@ whileCond_246:
 	#  cond_tmp_$2 cond_lt_tmp_$1
 
 	# fetch variables
-
-	# get address of local var:cond_lt_tmp_$1
-	lw t1, 116(sp)
+	mv t1, t0
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$2
@@ -25826,10 +23902,8 @@ whileCond_246:
 	# ICMP cond_$2 cond_tmp_$2  
 
 	# fetch variables
-
-	# get address of local var:cond_tmp_$2
-	lw t1, 108(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -25840,9 +23914,7 @@ whileCond_246:
 	# condBr cond_$2 whileBody_246 next_584
 
 	# fetch variables
-
-	# get address of local var:cond_$2
-	lw t1, 100(sp)
+	mv t1, t0
 	beqz t1, next_584
 	j whileBody_246
 whileBody_246:
@@ -25850,7 +23922,7 @@ whileBody_246:
 	# load i$1 lv$2
 
 	# get address of lv$2 points to
-	li t3, 340
+	addi t3, zero, 340
 	add t3, sp, t3
 
 	# get address of local var:i$1
@@ -25860,7 +23932,7 @@ whileBody_246:
 	# load j$1 lv$3
 
 	# get address of lv$3 points to
-	li t3, 348
+	addi t3, zero, 348
 	add t3, sp, t3
 
 	# get address of local var:j$1
@@ -25873,11 +23945,11 @@ whileBody_246:
 
 	# get address of local var:i$1
 	lw t1, 92(sp)
-	li t2, 20
-	mul t0, t1, t2
+	li t0, 20
+	mul t0, t1, t0
 
 	# get value of local var:lv$1
-	li t3, 236
+	addi t3, zero, 236
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -25891,8 +23963,8 @@ whileBody_246:
 
 	# get address of local var:j$1
 	lw t1, 84(sp)
-	li t2, 4
-	mul t0, t1, t2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_
 
@@ -25905,8 +23977,6 @@ whileBody_246:
 	sd t0, 64(sp)
 
 	# prepare params
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -25920,8 +23990,6 @@ whileBody_246:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 60(sp)
@@ -25940,7 +24008,7 @@ whileBody_246:
 	# load j$2 lv$3
 
 	# get address of lv$3 points to
-	li t3, 348
+	addi t3, zero, 348
 	add t3, sp, t3
 
 	# get address of local var:j$2
@@ -25950,10 +24018,8 @@ whileBody_246:
 	# ADD result_ j$2  
 
 	# fetch variables
-
-	# get address of local var:j$2
-	lw t1, 52(sp)
-	li t2, 1
+	mv t1, t0
+	addi t2, zero, 1
 	addw t0, t1, t2
 
 	# get address of local var:result_
@@ -25962,12 +24028,10 @@ whileBody_246:
 	# store lv$3 result_
 
 	# fetch variables
-
-	# get address of local var:result_
-	lw t1, 44(sp)
+	mv t1, t0
 
 	# get address of lv$3 points to
-	li t3, 348
+	addi t3, zero, 348
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -25978,7 +24042,7 @@ next_584:
 	# load i$2 lv$2
 
 	# get address of lv$2 points to
-	li t3, 340
+	addi t3, zero, 340
 	add t3, sp, t3
 
 	# get address of local var:i$2
@@ -25988,10 +24052,8 @@ next_584:
 	# ADD result_$1 i$2  
 
 	# fetch variables
-
-	# get address of local var:i$2
-	lw t1, 36(sp)
-	li t2, 1
+	mv t1, t0
+	addi t2, zero, 1
 	addw t0, t1, t2
 
 	# get address of local var:result_$1
@@ -26000,12 +24062,10 @@ next_584:
 	# store lv$2 result_$1
 
 	# fetch variables
-
-	# get address of local var:result_$1
-	lw t1, 28(sp)
+	mv t1, t0
 
 	# get address of lv$2 points to
-	li t3, 340
+	addi t3, zero, 340
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -26016,10 +24076,8 @@ ifTrue_338:
 	# prepare params
 
 	# fetch variables
-	li t1, 99
+	addi t1, zero, 99
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26033,16 +24091,12 @@ ifTrue_338:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
-	li t1, 97
+	addi t1, zero, 97
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26056,16 +24110,12 @@ ifTrue_338:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
-	li t1, 116
+	addi t1, zero, 116
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26079,16 +24129,12 @@ ifTrue_338:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
-	li t1, 10
+	addi t1, zero, 10
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26102,8 +24148,6 @@ ifTrue_338:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# br next_585
 	j next_585
@@ -26112,10 +24156,8 @@ ifFalse_134:
 	# prepare params
 
 	# fetch variables
-	li t1, 100
+	addi t1, zero, 100
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26129,16 +24171,12 @@ ifFalse_134:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
-	li t1, 111
+	addi t1, zero, 111
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26152,16 +24190,12 @@ ifFalse_134:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
-	li t1, 103
+	addi t1, zero, 103
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26175,16 +24209,12 @@ ifFalse_134:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
-	li t1, 10
+	addi t1, zero, 10
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -26198,8 +24228,6 @@ ifFalse_134:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# br next_585
 	j next_585
@@ -26208,7 +24236,7 @@ next_585:
 	# load N$1 lv
 
 	# get address of lv points to
-	li t3, 228
+	addi t3, zero, 228
 	add t3, sp, t3
 
 	# get address of local var:N$1
@@ -26218,10 +24246,8 @@ next_585:
 	# SUB result_$2 N$1  
 
 	# fetch variables
-
-	# get address of local var:N$1
-	lw t1, 20(sp)
-	li t2, 1
+	mv t1, t0
+	addi t2, zero, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_$2
@@ -26230,12 +24256,10 @@ next_585:
 	# store lv result_$2
 
 	# fetch variables
-
-	# get address of local var:result_$2
-	lw t1, 12(sp)
+	mv t1, t0
 
 	# get address of lv points to
-	li t3, 228
+	addi t3, zero, 228
 	add t3, sp, t3
 	sw t1, 0(t3)
 

@@ -12,8 +12,8 @@ func:
 funcEntry4:
 
 	# reserve space
-	li t4, 80
-	sub sp, sp, t4
+	li t0, 80
+	sub sp, sp, t0
 
 	# save CallerSavedRegs
 
@@ -38,29 +38,27 @@ funcEntry4:
 	# store lv a
 
 	# fetch variables
-
-	# get address of local var:a
-	lw t1, 60(sp)
+	mv t1, t0
 
 	# get address of lv points to
-	li t3, 68
+	addi t3, zero, 68
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# store lv$1 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 
 	# get address of lv$1 points to
-	li t3, 76
+	addi t3, zero, 76
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load a$1 lv$1
 
 	# get address of lv$1 points to
-	li t3, 76
+	addi t3, zero, 76
 	add t3, sp, t3
 
 	# get address of local var:a$1
@@ -70,7 +68,7 @@ funcEntry4:
 	# load b lv
 
 	# get address of lv points to
-	li t3, 68
+	addi t3, zero, 68
 	add t3, sp, t3
 
 	# get address of local var:b
@@ -83,9 +81,7 @@ funcEntry4:
 
 	# get address of local var:a$1
 	lw t1, 52(sp)
-
-	# get address of local var:b
-	lw t2, 44(sp)
+	mv t2, t0
 	xor t0, t1, t2
 	seqz t0, t0
 
@@ -95,9 +91,7 @@ funcEntry4:
 	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
-
-	# get address of local var:cond_eq_tmp_
-	lw t1, 36(sp)
+	mv t1, t0
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
@@ -106,10 +100,8 @@ funcEntry4:
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
-
-	# get address of local var:cond_tmp_
-	lw t1, 28(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -120,9 +112,7 @@ funcEntry4:
 	# condBr cond_ ifTrue_324 ifFalse_125
 
 	# fetch variables
-
-	# get address of local var:cond_
-	lw t1, 20(sp)
+	mv t1, t0
 	beqz t1, ifFalse_125
 	j ifTrue_324
 ifTrue_324:
@@ -130,7 +120,7 @@ ifTrue_324:
 	# load a$2 lv$1
 
 	# get address of lv$1 points to
-	li t3, 76
+	addi t3, zero, 76
 	add t3, sp, t3
 
 	# get address of local var:a$2
@@ -140,10 +130,8 @@ ifTrue_324:
 	# ADD result_ a$2  
 
 	# fetch variables
-
-	# get address of local var:a$2
-	lw t1, 12(sp)
-	li t2, 1
+	mv t1, t0
+	addi t2, zero, 1
 	addw t0, t1, t2
 
 	# get address of local var:result_
@@ -152,22 +140,20 @@ ifTrue_324:
 	# store lv$1 result_
 
 	# fetch variables
-
-	# get address of local var:result_
-	lw t1, 4(sp)
+	mv t1, t0
 
 	# get address of lv$1 points to
-	li t3, 76
+	addi t3, zero, 76
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# ret 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 	mv a0, t1
-	li t4, 80
-	add sp, sp, t4
+	li t0, 80
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -177,10 +163,10 @@ ifFalse_125:
 	# ret 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 	mv a0, t1
-	li t4, 80
-	add sp, sp, t4
+	li t0, 80
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -193,8 +179,8 @@ main:
 mainEntry77:
 
 	# reserve space
-	li t4, 144
-	sub sp, sp, t4
+	li t0, 144
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -205,20 +191,20 @@ mainEntry77:
 	# store lv 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 
 	# get address of lv points to
-	li t3, 132
+	addi t3, zero, 132
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# store lv$1 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 
 	# get address of lv$1 points to
-	li t3, 140
+	addi t3, zero, 140
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -229,7 +215,7 @@ whileCond_232:
 	# load i lv$1
 
 	# get address of lv$1 points to
-	li t3, 140
+	addi t3, zero, 140
 	add t3, sp, t3
 
 	# get address of local var:i
@@ -239,10 +225,8 @@ whileCond_232:
 	# ICMP cond_lt_tmp_ i  
 
 	# fetch variables
-
-	# get address of local var:i
-	lw t1, 124(sp)
-	li t2, 100
+	mv t1, t0
+	addi t2, zero, 100
 	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_
@@ -251,9 +235,7 @@ whileCond_232:
 	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
-
-	# get address of local var:cond_lt_tmp_
-	lw t1, 116(sp)
+	mv t1, t0
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
@@ -262,10 +244,8 @@ whileCond_232:
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
-
-	# get address of local var:cond_tmp_
-	lw t1, 108(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -276,16 +256,12 @@ whileCond_232:
 	# condBr cond_ whileBody_232 next_557
 
 	# fetch variables
-
-	# get address of local var:cond_
-	lw t1, 100(sp)
+	mv t1, t0
 	beqz t1, next_557
 	j whileBody_232
 whileBody_232:
 
 	# prepare params
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -299,8 +275,6 @@ whileBody_232:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:func
 	sw a0, 92(sp)
@@ -311,7 +285,7 @@ whileBody_232:
 
 	# get address of local var:func
 	lw t1, 92(sp)
-	li t2, 1
+	addi t2, zero, 1
 	xor t0, t1, t2
 	seqz t0, t0
 
@@ -321,9 +295,7 @@ whileBody_232:
 	#  cond_tmp_$1 cond_eq_tmp_
 
 	# fetch variables
-
-	# get address of local var:cond_eq_tmp_
-	lw t1, 84(sp)
+	mv t1, t0
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$1
@@ -332,10 +304,8 @@ whileBody_232:
 	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
-
-	# get address of local var:cond_tmp_$1
-	lw t1, 76(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -346,9 +316,7 @@ whileBody_232:
 	# condBr cond_$1 ifTrue_325 next_558
 
 	# fetch variables
-
-	# get address of local var:cond_$1
-	lw t1, 68(sp)
+	mv t1, t0
 	beqz t1, next_558
 	j ifTrue_325
 next_557:
@@ -356,7 +324,7 @@ next_557:
 	# load result$1 lv
 
 	# get address of lv points to
-	li t3, 132
+	addi t3, zero, 132
 	add t3, sp, t3
 
 	# get address of local var:result$1
@@ -366,10 +334,8 @@ next_557:
 	# ICMP cond_lt_tmp_$1 result$1  
 
 	# fetch variables
-
-	# get address of local var:result$1
-	lw t1, 60(sp)
-	li t2, 100
+	mv t1, t0
+	addi t2, zero, 100
 	slt t0, t1, t2
 
 	# get address of local var:cond_lt_tmp_$1
@@ -378,9 +344,7 @@ next_557:
 	#  cond_tmp_$2 cond_lt_tmp_$1
 
 	# fetch variables
-
-	# get address of local var:cond_lt_tmp_$1
-	lw t1, 52(sp)
+	mv t1, t0
 	mv t0, t1
 
 	# get address of local var:cond_tmp_$2
@@ -389,10 +353,8 @@ next_557:
 	# ICMP cond_$2 cond_tmp_$2  
 
 	# fetch variables
-
-	# get address of local var:cond_tmp_$2
-	lw t1, 44(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -403,9 +365,7 @@ next_557:
 	# condBr cond_$2 ifTrue_326 ifFalse_126
 
 	# fetch variables
-
-	# get address of local var:cond_$2
-	lw t1, 36(sp)
+	mv t1, t0
 	beqz t1, ifFalse_126
 	j ifTrue_326
 ifTrue_325:
@@ -413,7 +373,7 @@ ifTrue_325:
 	# load result lv
 
 	# get address of lv points to
-	li t3, 132
+	addi t3, zero, 132
 	add t3, sp, t3
 
 	# get address of local var:result
@@ -423,10 +383,8 @@ ifTrue_325:
 	# ADD result_ result  
 
 	# fetch variables
-
-	# get address of local var:result
-	lw t1, 28(sp)
-	li t2, 1
+	mv t1, t0
+	addi t2, zero, 1
 	addw t0, t1, t2
 
 	# get address of local var:result_
@@ -435,12 +393,10 @@ ifTrue_325:
 	# store lv result_
 
 	# fetch variables
-
-	# get address of local var:result_
-	lw t1, 20(sp)
+	mv t1, t0
 
 	# get address of lv points to
-	li t3, 132
+	addi t3, zero, 132
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -451,7 +407,7 @@ next_558:
 	# load i$1 lv$1
 
 	# get address of lv$1 points to
-	li t3, 140
+	addi t3, zero, 140
 	add t3, sp, t3
 
 	# get address of local var:i$1
@@ -461,10 +417,8 @@ next_558:
 	# ADD result_$1 i$1  
 
 	# fetch variables
-
-	# get address of local var:i$1
-	lw t1, 12(sp)
-	li t2, 1
+	mv t1, t0
+	addi t2, zero, 1
 	addw t0, t1, t2
 
 	# get address of local var:result_$1
@@ -473,12 +427,10 @@ next_558:
 	# store lv$1 result_$1
 
 	# fetch variables
-
-	# get address of local var:result_$1
-	lw t1, 4(sp)
+	mv t1, t0
 
 	# get address of lv$1 points to
-	li t3, 140
+	addi t3, zero, 140
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -489,10 +441,8 @@ ifTrue_326:
 	# prepare params
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -506,8 +456,6 @@ ifTrue_326:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# br next_559
 	j next_559
@@ -516,10 +464,8 @@ ifFalse_126:
 	# prepare params
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -533,8 +479,6 @@ ifFalse_126:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# br next_559
 	j next_559
@@ -543,10 +487,10 @@ next_559:
 	# ret 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 	mv a0, t1
-	li t4, 144
-	add sp, sp, t4
+	li t0, 144
+	add sp, sp, t0
 	ret 
 
 memset32: 

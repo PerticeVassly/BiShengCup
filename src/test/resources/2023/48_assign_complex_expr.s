@@ -8,8 +8,8 @@ main:
 mainEntry37:
 
 	# reserve space
-	li t4, 272
-	sub sp, sp, t4
+	li t0, 272
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -26,47 +26,47 @@ mainEntry37:
 	# store lv 
 
 	# fetch variables
-	li t1, 5
+	addi t1, zero, 5
 
 	# get address of lv points to
-	li t3, 236
+	addi t3, zero, 236
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# store lv$1 
 
 	# fetch variables
-	li t1, 5
+	addi t1, zero, 5
 
 	# get address of lv$1 points to
-	li t3, 244
+	addi t3, zero, 244
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# store lv$2 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 
 	# get address of lv$2 points to
-	li t3, 252
+	addi t3, zero, 252
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# store lv$3 
 
 	# fetch variables
-	li t1, -2
+	addi t1, zero, -2
 
 	# get address of lv$3 points to
-	li t3, 260
+	addi t3, zero, 260
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load d lv$3
 
 	# get address of lv$3 points to
-	li t3, 260
+	addi t3, zero, 260
 	add t3, sp, t3
 
 	# get address of local var:d
@@ -76,10 +76,8 @@ mainEntry37:
 	# MUL result_ d  
 
 	# fetch variables
-
-	# get address of local var:d
-	lw t1, 228(sp)
-	li t2, 1
+	mv t1, t0
+	addi t2, zero, 1
 	mul t0, t1, t2
 
 	# get address of local var:result_
@@ -88,10 +86,8 @@ mainEntry37:
 	# DIV result_$1 result_  
 
 	# fetch variables
-
-	# get address of local var:result_
-	lw t1, 220(sp)
-	li t2, 2
+	mv t1, t0
+	addi t2, zero, 2
 	div t0, t1, t2
 
 	# get address of local var:result_$1
@@ -100,7 +96,7 @@ mainEntry37:
 	# load a lv
 
 	# get address of lv points to
-	li t3, 236
+	addi t3, zero, 236
 	add t3, sp, t3
 
 	# get address of local var:a
@@ -110,7 +106,7 @@ mainEntry37:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	li t3, 244
+	addi t3, zero, 244
 	add t3, sp, t3
 
 	# get address of local var:b
@@ -123,9 +119,7 @@ mainEntry37:
 
 	# get address of local var:a
 	lw t1, 204(sp)
-
-	# get address of local var:b
-	lw t2, 196(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$2
@@ -137,9 +131,7 @@ mainEntry37:
 
 	# get address of local var:result_$1
 	lw t1, 212(sp)
-
-	# get address of local var:result_$2
-	lw t2, 188(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$3
@@ -148,7 +140,7 @@ mainEntry37:
 	# load c lv$2
 
 	# get address of lv$2 points to
-	li t3, 252
+	addi t3, zero, 252
 	add t3, sp, t3
 
 	# get address of local var:c
@@ -158,10 +150,8 @@ mainEntry37:
 	# ADD result_$4 c  
 
 	# fetch variables
-
-	# get address of local var:c
-	lw t1, 172(sp)
-	li t2, 3
+	mv t1, t0
+	addi t2, zero, 3
 	addw t0, t1, t2
 
 	# get address of local var:result_$4
@@ -170,10 +160,8 @@ mainEntry37:
 	# SUB tmp_  result_$4 
 
 	# fetch variables
-	li t1, 0
-
-	# get address of local var:result_$4
-	lw t2, 164(sp)
+	addi t1, zero, 0
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:tmp_
@@ -182,10 +170,8 @@ mainEntry37:
 	# MOD result_$5 tmp_  
 
 	# fetch variables
-
-	# get address of local var:tmp_
-	lw t1, 156(sp)
-	li t2, 2
+	mv t1, t0
+	addi t2, zero, 2
 	rem t0, t1, t2
 
 	# get address of local var:result_$5
@@ -197,9 +183,7 @@ mainEntry37:
 
 	# get address of local var:result_$3
 	lw t1, 180(sp)
-
-	# get address of local var:result_$5
-	lw t2, 148(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$6
@@ -208,19 +192,17 @@ mainEntry37:
 	# store lv$4 result_$6
 
 	# fetch variables
-
-	# get address of local var:result_$6
-	lw t1, 140(sp)
+	mv t1, t0
 
 	# get address of lv$4 points to
-	li t3, 268
+	addi t3, zero, 268
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load result lv$4
 
 	# get address of lv$4 points to
-	li t3, 268
+	addi t3, zero, 268
 	add t3, sp, t3
 
 	# get address of local var:result
@@ -234,8 +216,6 @@ mainEntry37:
 	# get address of local var:result
 	lw t1, 132(sp)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -249,13 +229,11 @@ mainEntry37:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# load d$1 lv$3
 
 	# get address of lv$3 points to
-	li t3, 260
+	addi t3, zero, 260
 	add t3, sp, t3
 
 	# get address of local var:d$1
@@ -265,10 +243,8 @@ mainEntry37:
 	# MOD result_$7 d$1  
 
 	# fetch variables
-
-	# get address of local var:d$1
-	lw t1, 124(sp)
-	li t2, 2
+	mv t1, t0
+	addi t2, zero, 2
 	rem t0, t1, t2
 
 	# get address of local var:result_$7
@@ -277,10 +253,8 @@ mainEntry37:
 	# ADD result_$8 result_$7  
 
 	# fetch variables
-
-	# get address of local var:result_$7
-	lw t1, 116(sp)
-	li t2, 67
+	mv t1, t0
+	addi t2, zero, 67
 	addw t0, t1, t2
 
 	# get address of local var:result_$8
@@ -289,7 +263,7 @@ mainEntry37:
 	# load a$1 lv
 
 	# get address of lv points to
-	li t3, 236
+	addi t3, zero, 236
 	add t3, sp, t3
 
 	# get address of local var:a$1
@@ -299,7 +273,7 @@ mainEntry37:
 	# load b$1 lv$1
 
 	# get address of lv$1 points to
-	li t3, 244
+	addi t3, zero, 244
 	add t3, sp, t3
 
 	# get address of local var:b$1
@@ -312,9 +286,7 @@ mainEntry37:
 
 	# get address of local var:a$1
 	lw t1, 100(sp)
-
-	# get address of local var:b$1
-	lw t2, 92(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$9
@@ -323,10 +295,8 @@ mainEntry37:
 	# SUB tmp_$1  result_$9 
 
 	# fetch variables
-	li t1, 0
-
-	# get address of local var:result_$9
-	lw t2, 84(sp)
+	addi t1, zero, 0
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:tmp_$1
@@ -338,9 +308,7 @@ mainEntry37:
 
 	# get address of local var:result_$8
 	lw t1, 108(sp)
-
-	# get address of local var:tmp_$1
-	lw t2, 76(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$10
@@ -349,7 +317,7 @@ mainEntry37:
 	# load c$1 lv$2
 
 	# get address of lv$2 points to
-	li t3, 252
+	addi t3, zero, 252
 	add t3, sp, t3
 
 	# get address of local var:c$1
@@ -359,10 +327,8 @@ mainEntry37:
 	# ADD result_$11 c$1  
 
 	# fetch variables
-
-	# get address of local var:c$1
-	lw t1, 60(sp)
-	li t2, 2
+	mv t1, t0
+	addi t2, zero, 2
 	addw t0, t1, t2
 
 	# get address of local var:result_$11
@@ -371,10 +337,8 @@ mainEntry37:
 	# MOD result_$12 result_$11  
 
 	# fetch variables
-
-	# get address of local var:result_$11
-	lw t1, 52(sp)
-	li t2, 2
+	mv t1, t0
+	addi t2, zero, 2
 	rem t0, t1, t2
 
 	# get address of local var:result_$12
@@ -383,10 +347,8 @@ mainEntry37:
 	# SUB tmp_$2  result_$12 
 
 	# fetch variables
-	li t1, 0
-
-	# get address of local var:result_$12
-	lw t2, 44(sp)
+	addi t1, zero, 0
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:tmp_$2
@@ -398,9 +360,7 @@ mainEntry37:
 
 	# get address of local var:result_$10
 	lw t1, 68(sp)
-
-	# get address of local var:tmp_$2
-	lw t2, 36(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$13
@@ -409,19 +369,17 @@ mainEntry37:
 	# store lv$4 result_$13
 
 	# fetch variables
-
-	# get address of local var:result_$13
-	lw t1, 28(sp)
+	mv t1, t0
 
 	# get address of lv$4 points to
-	li t3, 268
+	addi t3, zero, 268
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load result$1 lv$4
 
 	# get address of lv$4 points to
-	li t3, 268
+	addi t3, zero, 268
 	add t3, sp, t3
 
 	# get address of local var:result$1
@@ -431,10 +389,8 @@ mainEntry37:
 	# ADD result_$14 result$1  
 
 	# fetch variables
-
-	# get address of local var:result$1
-	lw t1, 20(sp)
-	li t2, 3
+	mv t1, t0
+	addi t2, zero, 3
 	addw t0, t1, t2
 
 	# get address of local var:result_$14
@@ -443,19 +399,17 @@ mainEntry37:
 	# store lv$4 result_$14
 
 	# fetch variables
-
-	# get address of local var:result_$14
-	lw t1, 12(sp)
+	mv t1, t0
 
 	# get address of lv$4 points to
-	li t3, 268
+	addi t3, zero, 268
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load result$2 lv$4
 
 	# get address of lv$4 points to
-	li t3, 268
+	addi t3, zero, 268
 	add t3, sp, t3
 
 	# get address of local var:result$2
@@ -469,8 +423,6 @@ mainEntry37:
 	# get address of local var:result$2
 	lw t1, 4(sp)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -484,16 +436,14 @@ mainEntry37:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# ret 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 	mv a0, t1
-	li t4, 272
-	add sp, sp, t4
+	li t0, 272
+	add sp, sp, t0
 	ret 
 
 memset32: 

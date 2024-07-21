@@ -8,8 +8,8 @@ main:
 mainEntry15:
 
 	# reserve space
-	li t4, 96
-	sub sp, sp, t4
+	li t0, 96
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -24,47 +24,47 @@ mainEntry15:
 	# store lv 
 
 	# fetch variables
-	li t1, 10
+	addi t1, zero, 10
 
 	# get address of lv points to
-	li t3, 68
+	addi t3, zero, 68
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# store lv$1 
 
 	# fetch variables
-	li t1, 4
+	addi t1, zero, 4
 
 	# get address of lv$1 points to
-	li t3, 76
+	addi t3, zero, 76
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# store lv$2 
 
 	# fetch variables
-	li t1, 2
+	addi t1, zero, 2
 
 	# get address of lv$2 points to
-	li t3, 84
+	addi t3, zero, 84
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# store lv$3 
 
 	# fetch variables
-	li t1, 2
+	addi t1, zero, 2
 
 	# get address of lv$3 points to
-	li t3, 92
+	addi t3, zero, 92
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load c lv$2
 
 	# get address of lv$2 points to
-	li t3, 84
+	addi t3, zero, 84
 	add t3, sp, t3
 
 	# get address of local var:c
@@ -74,7 +74,7 @@ mainEntry15:
 	# load a lv
 
 	# get address of lv points to
-	li t3, 68
+	addi t3, zero, 68
 	add t3, sp, t3
 
 	# get address of local var:a
@@ -84,7 +84,7 @@ mainEntry15:
 	# load b lv$1
 
 	# get address of lv$1 points to
-	li t3, 76
+	addi t3, zero, 76
 	add t3, sp, t3
 
 	# get address of local var:b
@@ -97,9 +97,7 @@ mainEntry15:
 
 	# get address of local var:a
 	lw t1, 52(sp)
-
-	# get address of local var:b
-	lw t2, 44(sp)
+	mv t2, t0
 	mul t0, t1, t2
 
 	# get address of local var:result_
@@ -111,9 +109,7 @@ mainEntry15:
 
 	# get address of local var:c
 	lw t1, 60(sp)
-
-	# get address of local var:result_
-	lw t2, 36(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$1
@@ -122,7 +118,7 @@ mainEntry15:
 	# load d lv$3
 
 	# get address of lv$3 points to
-	li t3, 92
+	addi t3, zero, 92
 	add t3, sp, t3
 
 	# get address of local var:d
@@ -135,9 +131,7 @@ mainEntry15:
 
 	# get address of local var:result_$1
 	lw t1, 28(sp)
-
-	# get address of local var:d
-	lw t2, 20(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$2
@@ -146,12 +140,10 @@ mainEntry15:
 	# ret result_$2
 
 	# fetch variables
-
-	# get address of local var:result_$2
-	lw t1, 12(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 96
-	add sp, sp, t4
+	li t0, 96
+	add sp, sp, t0
 	ret 
 
 memset32: 

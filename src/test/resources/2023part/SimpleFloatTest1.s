@@ -8,8 +8,8 @@ main:
 mainEntry2:
 
 	# reserve space
-	li t4, 48
-	sub sp, sp, t4
+	li t0, 48
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -26,7 +26,9 @@ mainEntry2:
 	fmv.w.x ft1, t1
 
 	# get address of lv points to
-	fsw ft1, 28(sp)
+	addi t3, zero, 28
+	add t3, sp, t3
+	fsw ft1, 0(t3)
 
 	# store lv$1 
 
@@ -35,22 +37,28 @@ mainEntry2:
 	fmv.w.x ft1, t1
 
 	# get address of lv$1 points to
-	fsw ft1, 36(sp)
+	addi t3, zero, 36
+	add t3, sp, t3
+	fsw ft1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
+	addi t3, zero, 28
+	add t3, sp, t3
 
 	# get address of local var:a
-	flw ft0, 28(sp)
+	flw ft0, 0(t3)
 	fsw ft0, 20(sp)
 
 	# load b lv$1
 
 	# get address of lv$1 points to
+	addi t3, zero, 36
+	add t3, sp, t3
 
 	# get address of local var:b
-	flw ft0, 36(sp)
+	flw ft0, 0(t3)
 	fsw ft0, 12(sp)
 
 	# FADD result_ a b 
@@ -59,9 +67,8 @@ mainEntry2:
 
 	# get address of local var:a
 	flw ft1, 20(sp)
-
-	# get address of local var:b
-	flw ft2, 12(sp)
+	fmv.x.w t2, ft0
+	fmv.w.x ft2, t2
 	fadd.s ft0, ft1, ft2
 
 	# get address of local var:result_
@@ -70,20 +77,21 @@ mainEntry2:
 	# store lv$2 result_
 
 	# fetch variables
-
-	# get address of local var:result_
-	flw ft1, 4(sp)
+	fmv.x.w t1, ft0
+	fmv.w.x ft1, t1
 
 	# get address of lv$2 points to
-	fsw ft1, 44(sp)
+	addi t3, zero, 44
+	add t3, sp, t3
+	fsw ft1, 0(t3)
 
 	# ret 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 	mv a0, t1
-	li t4, 48
-	add sp, sp, t4
+	li t0, 48
+	add sp, sp, t0
 	ret 
 
 memset32: 

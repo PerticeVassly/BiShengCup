@@ -12,8 +12,8 @@ func:
 funcEntry:
 
 	# reserve space
-	li t4, 48
-	sub sp, sp, t4
+	li t0, 48
+	sub sp, sp, t0
 
 	# save CallerSavedRegs
 
@@ -35,14 +35,14 @@ funcEntry:
 	lw t1, 44(sp)
 
 	# get address of lv points to
-	li t3, 36
+	addi t3, zero, 36
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load p lv
 
 	# get address of lv points to
-	li t3, 36
+	addi t3, zero, 36
 	add t3, sp, t3
 
 	# get address of local var:p
@@ -52,10 +52,8 @@ funcEntry:
 	# SUB result_ p  
 
 	# fetch variables
-
-	# get address of local var:p
-	lw t1, 28(sp)
-	li t2, 1
+	mv t1, t0
+	addi t2, zero, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_
@@ -64,19 +62,17 @@ funcEntry:
 	# store lv result_
 
 	# fetch variables
-
-	# get address of local var:result_
-	lw t1, 20(sp)
+	mv t1, t0
 
 	# get address of lv points to
-	li t3, 36
+	addi t3, zero, 36
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load p$1 lv
 
 	# get address of lv points to
-	li t3, 36
+	addi t3, zero, 36
 	add t3, sp, t3
 
 	# get address of local var:p$1
@@ -86,12 +82,10 @@ funcEntry:
 	# ret p$1
 
 	# fetch variables
-
-	# get address of local var:p$1
-	lw t1, 12(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 48
-	add sp, sp, t4
+	li t0, 48
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -104,8 +98,8 @@ main:
 mainEntry22:
 
 	# reserve space
-	li t4, 32
-	sub sp, sp, t4
+	li t0, 32
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -114,7 +108,7 @@ mainEntry22:
 	# store gv 
 
 	# fetch variables
-	li t1, 10
+	addi t1, zero, 10
 
 	# get address of gv points to
 	la t3, gv
@@ -136,8 +130,6 @@ mainEntry22:
 	# get address of local var:a
 	lw t1, 20(sp)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -151,8 +143,6 @@ mainEntry22:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:func
 	sw a0, 12(sp)
@@ -165,14 +155,14 @@ mainEntry22:
 	lw t1, 12(sp)
 
 	# get address of lv points to
-	li t3, 28
+	addi t3, zero, 28
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load b lv
 
 	# get address of lv points to
-	li t3, 28
+	addi t3, zero, 28
 	add t3, sp, t3
 
 	# get address of local var:b
@@ -182,12 +172,10 @@ mainEntry22:
 	# ret b
 
 	# fetch variables
-
-	# get address of local var:b
-	lw t1, 4(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 32
-	add sp, sp, t4
+	li t0, 32
+	add sp, sp, t0
 	ret 
 
 memset32: 

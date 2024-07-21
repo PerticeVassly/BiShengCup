@@ -8,8 +8,6 @@ defn:
 defnEntry:
 
 	# reserve space
-	li t4, 0
-	sub sp, sp, t4
 
 	# save CallerSavedRegs
 
@@ -21,10 +19,8 @@ defnEntry:
 	# ret 
 
 	# fetch variables
-	li t1, 4
+	addi t1, zero, 4
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -37,16 +33,14 @@ main:
 mainEntry86:
 
 	# reserve space
-	li t4, 32
-	sub sp, sp, t4
+	li t0, 32
+	sub sp, sp, t0
 
 	# save the parameters
 
 	# allocate lv
 
 	# prepare params
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -60,8 +54,6 @@ mainEntry86:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:defn
 	sw a0, 20(sp)
@@ -74,14 +66,14 @@ mainEntry86:
 	lw t1, 20(sp)
 
 	# get address of lv points to
-	li t3, 28
+	addi t3, zero, 28
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
-	li t3, 28
+	addi t3, zero, 28
 	add t3, sp, t3
 
 	# get address of local var:a
@@ -91,12 +83,10 @@ mainEntry86:
 	# ret a
 
 	# fetch variables
-
-	# get address of local var:a
-	lw t1, 12(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 32
-	add sp, sp, t4
+	li t0, 32
+	add sp, sp, t0
 	ret 
 
 memset32: 

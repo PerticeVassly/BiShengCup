@@ -20,8 +20,8 @@ main:
 mainEntry5:
 
 	# reserve space
-	li t4, 48
-	sub sp, sp, t4
+	li t0, 48
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -51,9 +51,7 @@ mainEntry5:
 
 	# get address of local var:a
 	lw t1, 36(sp)
-
-	# get address of local var:b
-	lw t2, 28(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_
@@ -62,9 +60,7 @@ mainEntry5:
 	# store gv2 result_
 
 	# fetch variables
-
-	# get address of local var:result_
-	lw t1, 20(sp)
+	mv t1, t0
 
 	# get address of gv2 points to
 	la t3, gv2
@@ -73,10 +69,12 @@ mainEntry5:
 	# store lv 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 
 	# get address of lv points to
-	sw t1, 44(sp)
+	addi t3, zero, 44
+	add t3, sp, t3
+	sw t1, 0(t3)
 
 	# load c gv2
 
@@ -90,12 +88,12 @@ mainEntry5:
 	# store lv c
 
 	# fetch variables
-
-	# get address of local var:c
-	lw t1, 12(sp)
+	mv t1, t0
 
 	# get address of lv points to
-	sw t1, 44(sp)
+	addi t3, zero, 44
+	add t3, sp, t3
+	sw t1, 0(t3)
 
 	# load c$1 gv2
 
@@ -109,12 +107,10 @@ mainEntry5:
 	# ret c$1
 
 	# fetch variables
-
-	# get address of local var:c$1
-	lw t1, 4(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 48
-	add sp, sp, t4
+	li t0, 48
+	add sp, sp, t0
 	ret 
 
 memset32: 

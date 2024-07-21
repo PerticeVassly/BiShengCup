@@ -15,8 +15,8 @@ main:
 mainEntry36:
 
 	# reserve space
-	li t4, 112
-	sub sp, sp, t4
+	li t0, 112
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -27,12 +27,12 @@ mainEntry36:
 	# gep inp 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:lv
-	li t3, 96
+	addi t3, zero, 96
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -53,12 +53,12 @@ mainEntry36:
 	# gep inp$1 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:lv
-	li t3, 96
+	addi t3, zero, 96
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -79,9 +79,9 @@ mainEntry36:
 	# gep ptr_ 
 
 	# fetch variables
-	li t1, 0
-	li t2, 48
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 48
+	mul t0, t1, t0
 
 	# get value of global var:gv
 	la t3, gv
@@ -94,9 +94,9 @@ mainEntry36:
 	# gep ptr_$1 
 
 	# fetch variables
-	li t1, 0
-	li t2, 16
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 16
+	mul t0, t1, t0
 
 	# get value of local var:ptr_
 
@@ -111,9 +111,9 @@ mainEntry36:
 	# gep f 
 
 	# fetch variables
-	li t1, 2
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 2
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:ptr_$1
 
@@ -137,12 +137,12 @@ mainEntry36:
 	# gep ff 
 
 	# fetch variables
-	li t1, 0
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 0
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of local var:lv
-	li t3, 96
+	addi t3, zero, 96
 	add t3, sp, t3
 	mv t1, t3
 	add t0, t1, t0
@@ -176,9 +176,8 @@ mainEntry36:
 	#  f2i_ result_
 
 	# fetch variables
-
-	# get address of local var:result_
-	flw ft1, 28(sp)
+	fmv.x.w t1, ft0
+	fmv.w.x ft1, t1
 	fcvt.w.s t0, ft1, rtz
 
 	# get address of local var:f2i_
@@ -187,19 +186,17 @@ mainEntry36:
 	# store lv$1 f2i_
 
 	# fetch variables
-
-	# get address of local var:f2i_
-	lw t1, 20(sp)
+	mv t1, t0
 
 	# get address of lv$1 points to
-	li t3, 108
+	addi t3, zero, 108
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load a lv$1
 
 	# get address of lv$1 points to
-	li t3, 108
+	addi t3, zero, 108
 	add t3, sp, t3
 
 	# get address of local var:a
@@ -209,12 +206,10 @@ mainEntry36:
 	# ret a
 
 	# fetch variables
-
-	# get address of local var:a
-	lw t1, 12(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 112
-	add sp, sp, t4
+	li t0, 112
+	add sp, sp, t0
 	ret 
 
 memset32: 

@@ -20,8 +20,8 @@ main:
 mainEntry17:
 
 	# reserve space
-	li t4, 48
-	sub sp, sp, t4
+	li t0, 48
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -36,22 +36,25 @@ mainEntry17:
 	fmv.w.x ft1, t1
 
 	# get address of lv points to
-	fsw ft1, 36(sp)
+	addi t3, zero, 36
+	add t3, sp, t3
+	fsw ft1, 0(t3)
 
 	# load d lv
 
 	# get address of lv points to
+	addi t3, zero, 36
+	add t3, sp, t3
 
 	# get address of local var:d
-	flw ft0, 36(sp)
+	flw ft0, 0(t3)
 	fsw ft0, 28(sp)
 
 	#  f2i_ d
 
 	# fetch variables
-
-	# get address of local var:d
-	flw ft1, 28(sp)
+	fmv.x.w t1, ft0
+	fmv.w.x ft1, t1
 	fcvt.w.s t0, ft1, rtz
 
 	# get address of local var:f2i_
@@ -60,30 +63,28 @@ mainEntry17:
 	# store lv$1 f2i_
 
 	# fetch variables
-
-	# get address of local var:f2i_
-	lw t1, 20(sp)
+	mv t1, t0
 
 	# get address of lv$1 points to
-	sw t1, 44(sp)
+	addi t3, zero, 44
+	add t3, sp, t3
+	sw t1, 0(t3)
 
 	# load e lv$1
 
 	# get address of lv$1 points to
+	addi t3, zero, 44
+	add t3, sp, t3
 
 	# get address of local var:e
-	lw t0, 44(sp)
+	lw t0, 0(t3)
 	sw t0, 12(sp)
 
 	# prepare params
 
 	# fetch variables
-
-	# get address of local var:e
-	lw t1, 12(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -97,16 +98,14 @@ mainEntry17:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# ret 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 	mv a0, t1
-	li t4, 48
-	add sp, sp, t4
+	li t0, 48
+	add sp, sp, t0
 	ret 
 
 memset32: 

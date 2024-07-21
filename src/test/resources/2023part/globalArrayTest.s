@@ -13,17 +13,17 @@ main:
 mainEntry4:
 
 	# reserve space
-	li t4, 16
-	sub sp, sp, t4
+	li t0, 16
+	sub sp, sp, t0
 
 	# save the parameters
 
 	# gep a 
 
 	# fetch variables
-	li t1, 1
-	li t2, 4
-	mul t0, t1, t2
+	addi t1, zero, 1
+	li t0, 4
+	mul t0, t1, t0
 
 	# get value of global var:gv
 	la t3, gv
@@ -45,12 +45,10 @@ mainEntry4:
 	# ret a$1
 
 	# fetch variables
-
-	# get address of local var:a$1
-	lw t1, 4(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 16
-	add sp, sp, t4
+	li t0, 16
+	add sp, sp, t0
 	ret 
 
 memset32: 

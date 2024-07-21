@@ -168,8 +168,8 @@ testParam8:
 testParam8Entry:
 
 	# reserve space
-	li t4, 224
-	sub sp, sp, t4
+	li t0, 224
+	sub sp, sp, t0
 
 	# save CallerSavedRegs
 
@@ -226,7 +226,7 @@ testParam8Entry:
 	lw t1, 220(sp)
 
 	# get address of lv points to
-	li t3, 132
+	addi t3, zero, 132
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -238,7 +238,7 @@ testParam8Entry:
 	lw t1, 216(sp)
 
 	# get address of lv$1 points to
-	li t3, 140
+	addi t3, zero, 140
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -250,7 +250,7 @@ testParam8Entry:
 	lw t1, 212(sp)
 
 	# get address of lv$2 points to
-	li t3, 148
+	addi t3, zero, 148
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -262,7 +262,7 @@ testParam8Entry:
 	lw t1, 208(sp)
 
 	# get address of lv$3 points to
-	li t3, 156
+	addi t3, zero, 156
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -274,7 +274,7 @@ testParam8Entry:
 	lw t1, 204(sp)
 
 	# get address of lv$4 points to
-	li t3, 164
+	addi t3, zero, 164
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -286,7 +286,7 @@ testParam8Entry:
 	lw t1, 200(sp)
 
 	# get address of lv$5 points to
-	li t3, 172
+	addi t3, zero, 172
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -298,7 +298,7 @@ testParam8Entry:
 	lw t1, 196(sp)
 
 	# get address of lv$6 points to
-	li t3, 180
+	addi t3, zero, 180
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -310,14 +310,14 @@ testParam8Entry:
 	lw t1, 192(sp)
 
 	# get address of lv$7 points to
-	li t3, 188
+	addi t3, zero, 188
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load a0 lv
 
 	# get address of lv points to
-	li t3, 132
+	addi t3, zero, 132
 	add t3, sp, t3
 
 	# get address of local var:a0
@@ -327,7 +327,7 @@ testParam8Entry:
 	# load a1 lv$1
 
 	# get address of lv$1 points to
-	li t3, 140
+	addi t3, zero, 140
 	add t3, sp, t3
 
 	# get address of local var:a1
@@ -340,9 +340,7 @@ testParam8Entry:
 
 	# get address of local var:a0
 	lw t1, 124(sp)
-
-	# get address of local var:a1
-	lw t2, 116(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_
@@ -351,7 +349,7 @@ testParam8Entry:
 	# load a2 lv$2
 
 	# get address of lv$2 points to
-	li t3, 148
+	addi t3, zero, 148
 	add t3, sp, t3
 
 	# get address of local var:a2
@@ -364,9 +362,7 @@ testParam8Entry:
 
 	# get address of local var:result_
 	lw t1, 108(sp)
-
-	# get address of local var:a2
-	lw t2, 100(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$1
@@ -375,7 +371,7 @@ testParam8Entry:
 	# load a3 lv$3
 
 	# get address of lv$3 points to
-	li t3, 156
+	addi t3, zero, 156
 	add t3, sp, t3
 
 	# get address of local var:a3
@@ -388,9 +384,7 @@ testParam8Entry:
 
 	# get address of local var:result_$1
 	lw t1, 92(sp)
-
-	# get address of local var:a3
-	lw t2, 84(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$2
@@ -399,7 +393,7 @@ testParam8Entry:
 	# load a4 lv$4
 
 	# get address of lv$4 points to
-	li t3, 164
+	addi t3, zero, 164
 	add t3, sp, t3
 
 	# get address of local var:a4
@@ -412,9 +406,7 @@ testParam8Entry:
 
 	# get address of local var:result_$2
 	lw t1, 76(sp)
-
-	# get address of local var:a4
-	lw t2, 68(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$3
@@ -423,7 +415,7 @@ testParam8Entry:
 	# load a5 lv$5
 
 	# get address of lv$5 points to
-	li t3, 172
+	addi t3, zero, 172
 	add t3, sp, t3
 
 	# get address of local var:a5
@@ -436,9 +428,7 @@ testParam8Entry:
 
 	# get address of local var:result_$3
 	lw t1, 60(sp)
-
-	# get address of local var:a5
-	lw t2, 52(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$4
@@ -447,7 +437,7 @@ testParam8Entry:
 	# load a6 lv$6
 
 	# get address of lv$6 points to
-	li t3, 180
+	addi t3, zero, 180
 	add t3, sp, t3
 
 	# get address of local var:a6
@@ -460,9 +450,7 @@ testParam8Entry:
 
 	# get address of local var:result_$4
 	lw t1, 44(sp)
-
-	# get address of local var:a6
-	lw t2, 36(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$5
@@ -471,7 +459,7 @@ testParam8Entry:
 	# load a7 lv$7
 
 	# get address of lv$7 points to
-	li t3, 188
+	addi t3, zero, 188
 	add t3, sp, t3
 
 	# get address of local var:a7
@@ -484,9 +472,7 @@ testParam8Entry:
 
 	# get address of local var:result_$5
 	lw t1, 28(sp)
-
-	# get address of local var:a7
-	lw t2, 20(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$6
@@ -495,12 +481,10 @@ testParam8Entry:
 	# ret result_$6
 
 	# fetch variables
-
-	# get address of local var:result_$6
-	lw t1, 12(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 224
-	add sp, sp, t4
+	li t0, 224
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -513,8 +497,8 @@ testParam16:
 testParam16Entry:
 
 	# reserve space
-	li t4, 448
-	sub sp, sp, t4
+	li t0, 448
+	sub sp, sp, t0
 
 	# save CallerSavedRegs
 
@@ -546,22 +530,22 @@ testParam16Entry:
 
 	# get address of local var:7
 	sw a7, 416(sp)
-	lw t3, 512(sp)
-	sw t3, 412(sp)
-	lw t3, 504(sp)
-	sw t3, 408(sp)
-	lw t3, 496(sp)
-	sw t3, 404(sp)
-	lw t3, 488(sp)
-	sw t3, 400(sp)
-	lw t3, 480(sp)
-	sw t3, 396(sp)
-	lw t3, 472(sp)
-	sw t3, 392(sp)
-	lw t3, 464(sp)
-	sw t3, 388(sp)
-	lw t3, 456(sp)
-	sw t3, 384(sp)
+	lw t0, 512(sp)
+	sw t0, 412(sp)
+	lw t0, 504(sp)
+	sw t0, 408(sp)
+	lw t0, 496(sp)
+	sw t0, 404(sp)
+	lw t0, 488(sp)
+	sw t0, 400(sp)
+	lw t0, 480(sp)
+	sw t0, 396(sp)
+	lw t0, 472(sp)
+	sw t0, 392(sp)
+	lw t0, 464(sp)
+	sw t0, 388(sp)
+	lw t0, 456(sp)
+	sw t0, 384(sp)
 
 	# allocate lv$15
 
@@ -603,7 +587,7 @@ testParam16Entry:
 	lw t1, 444(sp)
 
 	# get address of lv points to
-	li t3, 260
+	addi t3, zero, 260
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -615,7 +599,7 @@ testParam16Entry:
 	lw t1, 440(sp)
 
 	# get address of lv$1 points to
-	li t3, 268
+	addi t3, zero, 268
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -627,7 +611,7 @@ testParam16Entry:
 	lw t1, 436(sp)
 
 	# get address of lv$2 points to
-	li t3, 276
+	addi t3, zero, 276
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -639,7 +623,7 @@ testParam16Entry:
 	lw t1, 432(sp)
 
 	# get address of lv$3 points to
-	li t3, 284
+	addi t3, zero, 284
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -651,7 +635,7 @@ testParam16Entry:
 	lw t1, 428(sp)
 
 	# get address of lv$4 points to
-	li t3, 292
+	addi t3, zero, 292
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -663,7 +647,7 @@ testParam16Entry:
 	lw t1, 424(sp)
 
 	# get address of lv$5 points to
-	li t3, 300
+	addi t3, zero, 300
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -675,7 +659,7 @@ testParam16Entry:
 	lw t1, 420(sp)
 
 	# get address of lv$6 points to
-	li t3, 308
+	addi t3, zero, 308
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -687,7 +671,7 @@ testParam16Entry:
 	lw t1, 416(sp)
 
 	# get address of lv$7 points to
-	li t3, 316
+	addi t3, zero, 316
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -699,7 +683,7 @@ testParam16Entry:
 	lw t1, 412(sp)
 
 	# get address of lv$8 points to
-	li t3, 324
+	addi t3, zero, 324
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -711,7 +695,7 @@ testParam16Entry:
 	lw t1, 408(sp)
 
 	# get address of lv$9 points to
-	li t3, 332
+	addi t3, zero, 332
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -723,7 +707,7 @@ testParam16Entry:
 	lw t1, 404(sp)
 
 	# get address of lv$10 points to
-	li t3, 340
+	addi t3, zero, 340
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -735,7 +719,7 @@ testParam16Entry:
 	lw t1, 400(sp)
 
 	# get address of lv$11 points to
-	li t3, 348
+	addi t3, zero, 348
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -747,7 +731,7 @@ testParam16Entry:
 	lw t1, 396(sp)
 
 	# get address of lv$12 points to
-	li t3, 356
+	addi t3, zero, 356
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -759,7 +743,7 @@ testParam16Entry:
 	lw t1, 392(sp)
 
 	# get address of lv$13 points to
-	li t3, 364
+	addi t3, zero, 364
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -771,7 +755,7 @@ testParam16Entry:
 	lw t1, 388(sp)
 
 	# get address of lv$14 points to
-	li t3, 372
+	addi t3, zero, 372
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -783,14 +767,14 @@ testParam16Entry:
 	lw t1, 384(sp)
 
 	# get address of lv$15 points to
-	li t3, 380
+	addi t3, zero, 380
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load a0 lv
 
 	# get address of lv points to
-	li t3, 260
+	addi t3, zero, 260
 	add t3, sp, t3
 
 	# get address of local var:a0
@@ -800,7 +784,7 @@ testParam16Entry:
 	# load a1 lv$1
 
 	# get address of lv$1 points to
-	li t3, 268
+	addi t3, zero, 268
 	add t3, sp, t3
 
 	# get address of local var:a1
@@ -813,9 +797,7 @@ testParam16Entry:
 
 	# get address of local var:a0
 	lw t1, 252(sp)
-
-	# get address of local var:a1
-	lw t2, 244(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_
@@ -824,7 +806,7 @@ testParam16Entry:
 	# load a2 lv$2
 
 	# get address of lv$2 points to
-	li t3, 276
+	addi t3, zero, 276
 	add t3, sp, t3
 
 	# get address of local var:a2
@@ -837,9 +819,7 @@ testParam16Entry:
 
 	# get address of local var:result_
 	lw t1, 236(sp)
-
-	# get address of local var:a2
-	lw t2, 228(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$1
@@ -848,7 +828,7 @@ testParam16Entry:
 	# load a3 lv$3
 
 	# get address of lv$3 points to
-	li t3, 284
+	addi t3, zero, 284
 	add t3, sp, t3
 
 	# get address of local var:a3
@@ -861,9 +841,7 @@ testParam16Entry:
 
 	# get address of local var:result_$1
 	lw t1, 220(sp)
-
-	# get address of local var:a3
-	lw t2, 212(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$2
@@ -872,7 +850,7 @@ testParam16Entry:
 	# load a4 lv$4
 
 	# get address of lv$4 points to
-	li t3, 292
+	addi t3, zero, 292
 	add t3, sp, t3
 
 	# get address of local var:a4
@@ -885,9 +863,7 @@ testParam16Entry:
 
 	# get address of local var:result_$2
 	lw t1, 204(sp)
-
-	# get address of local var:a4
-	lw t2, 196(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$3
@@ -896,7 +872,7 @@ testParam16Entry:
 	# load a5 lv$5
 
 	# get address of lv$5 points to
-	li t3, 300
+	addi t3, zero, 300
 	add t3, sp, t3
 
 	# get address of local var:a5
@@ -909,9 +885,7 @@ testParam16Entry:
 
 	# get address of local var:result_$3
 	lw t1, 188(sp)
-
-	# get address of local var:a5
-	lw t2, 180(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$4
@@ -920,7 +894,7 @@ testParam16Entry:
 	# load a6 lv$6
 
 	# get address of lv$6 points to
-	li t3, 308
+	addi t3, zero, 308
 	add t3, sp, t3
 
 	# get address of local var:a6
@@ -933,9 +907,7 @@ testParam16Entry:
 
 	# get address of local var:result_$4
 	lw t1, 172(sp)
-
-	# get address of local var:a6
-	lw t2, 164(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$5
@@ -944,7 +916,7 @@ testParam16Entry:
 	# load a7 lv$7
 
 	# get address of lv$7 points to
-	li t3, 316
+	addi t3, zero, 316
 	add t3, sp, t3
 
 	# get address of local var:a7
@@ -957,9 +929,7 @@ testParam16Entry:
 
 	# get address of local var:result_$5
 	lw t1, 156(sp)
-
-	# get address of local var:a7
-	lw t2, 148(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$6
@@ -968,7 +938,7 @@ testParam16Entry:
 	# load a8 lv$8
 
 	# get address of lv$8 points to
-	li t3, 324
+	addi t3, zero, 324
 	add t3, sp, t3
 
 	# get address of local var:a8
@@ -981,9 +951,7 @@ testParam16Entry:
 
 	# get address of local var:result_$6
 	lw t1, 140(sp)
-
-	# get address of local var:a8
-	lw t2, 132(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$7
@@ -992,7 +960,7 @@ testParam16Entry:
 	# load a9 lv$9
 
 	# get address of lv$9 points to
-	li t3, 332
+	addi t3, zero, 332
 	add t3, sp, t3
 
 	# get address of local var:a9
@@ -1005,9 +973,7 @@ testParam16Entry:
 
 	# get address of local var:result_$7
 	lw t1, 124(sp)
-
-	# get address of local var:a9
-	lw t2, 116(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$8
@@ -1016,7 +982,7 @@ testParam16Entry:
 	# load a10 lv$10
 
 	# get address of lv$10 points to
-	li t3, 340
+	addi t3, zero, 340
 	add t3, sp, t3
 
 	# get address of local var:a10
@@ -1029,9 +995,7 @@ testParam16Entry:
 
 	# get address of local var:result_$8
 	lw t1, 108(sp)
-
-	# get address of local var:a10
-	lw t2, 100(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$9
@@ -1040,7 +1004,7 @@ testParam16Entry:
 	# load a11 lv$11
 
 	# get address of lv$11 points to
-	li t3, 348
+	addi t3, zero, 348
 	add t3, sp, t3
 
 	# get address of local var:a11
@@ -1053,9 +1017,7 @@ testParam16Entry:
 
 	# get address of local var:result_$9
 	lw t1, 92(sp)
-
-	# get address of local var:a11
-	lw t2, 84(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$10
@@ -1064,7 +1026,7 @@ testParam16Entry:
 	# load a12 lv$12
 
 	# get address of lv$12 points to
-	li t3, 356
+	addi t3, zero, 356
 	add t3, sp, t3
 
 	# get address of local var:a12
@@ -1077,9 +1039,7 @@ testParam16Entry:
 
 	# get address of local var:result_$10
 	lw t1, 76(sp)
-
-	# get address of local var:a12
-	lw t2, 68(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$11
@@ -1088,7 +1048,7 @@ testParam16Entry:
 	# load a13 lv$13
 
 	# get address of lv$13 points to
-	li t3, 364
+	addi t3, zero, 364
 	add t3, sp, t3
 
 	# get address of local var:a13
@@ -1101,9 +1061,7 @@ testParam16Entry:
 
 	# get address of local var:result_$11
 	lw t1, 60(sp)
-
-	# get address of local var:a13
-	lw t2, 52(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$12
@@ -1112,7 +1070,7 @@ testParam16Entry:
 	# load a14 lv$14
 
 	# get address of lv$14 points to
-	li t3, 372
+	addi t3, zero, 372
 	add t3, sp, t3
 
 	# get address of local var:a14
@@ -1125,9 +1083,7 @@ testParam16Entry:
 
 	# get address of local var:result_$12
 	lw t1, 44(sp)
-
-	# get address of local var:a14
-	lw t2, 36(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$13
@@ -1136,7 +1092,7 @@ testParam16Entry:
 	# load a15 lv$15
 
 	# get address of lv$15 points to
-	li t3, 380
+	addi t3, zero, 380
 	add t3, sp, t3
 
 	# get address of local var:a15
@@ -1149,9 +1105,7 @@ testParam16Entry:
 
 	# get address of local var:result_$13
 	lw t1, 28(sp)
-
-	# get address of local var:a15
-	lw t2, 20(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$14
@@ -1160,12 +1114,10 @@ testParam16Entry:
 	# ret result_$14
 
 	# fetch variables
-
-	# get address of local var:result_$14
-	lw t1, 12(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 448
-	add sp, sp, t4
+	li t0, 448
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -1178,8 +1130,8 @@ testParam32:
 testParam32Entry:
 
 	# reserve space
-	li t4, 896
-	sub sp, sp, t4
+	li t0, 896
+	sub sp, sp, t0
 
 	# save CallerSavedRegs
 
@@ -1211,54 +1163,54 @@ testParam32Entry:
 
 	# get address of local var:7
 	sw a7, 864(sp)
-	lw t3, 1088(sp)
-	sw t3, 860(sp)
-	lw t3, 1080(sp)
-	sw t3, 856(sp)
-	lw t3, 1072(sp)
-	sw t3, 852(sp)
-	lw t3, 1064(sp)
-	sw t3, 848(sp)
-	lw t3, 1056(sp)
-	sw t3, 844(sp)
-	lw t3, 1048(sp)
-	sw t3, 840(sp)
-	lw t3, 1040(sp)
-	sw t3, 836(sp)
-	lw t3, 1032(sp)
-	sw t3, 832(sp)
-	lw t3, 1024(sp)
-	sw t3, 828(sp)
-	lw t3, 1016(sp)
-	sw t3, 824(sp)
-	lw t3, 1008(sp)
-	sw t3, 820(sp)
-	lw t3, 1000(sp)
-	sw t3, 816(sp)
-	lw t3, 992(sp)
-	sw t3, 812(sp)
-	lw t3, 984(sp)
-	sw t3, 808(sp)
-	lw t3, 976(sp)
-	sw t3, 804(sp)
-	lw t3, 968(sp)
-	sw t3, 800(sp)
-	lw t3, 960(sp)
-	sw t3, 796(sp)
-	lw t3, 952(sp)
-	sw t3, 792(sp)
-	lw t3, 944(sp)
-	sw t3, 788(sp)
-	lw t3, 936(sp)
-	sw t3, 784(sp)
-	lw t3, 928(sp)
-	sw t3, 780(sp)
-	lw t3, 920(sp)
-	sw t3, 776(sp)
-	lw t3, 912(sp)
-	sw t3, 772(sp)
-	lw t3, 904(sp)
-	sw t3, 768(sp)
+	lw t0, 1088(sp)
+	sw t0, 860(sp)
+	lw t0, 1080(sp)
+	sw t0, 856(sp)
+	lw t0, 1072(sp)
+	sw t0, 852(sp)
+	lw t0, 1064(sp)
+	sw t0, 848(sp)
+	lw t0, 1056(sp)
+	sw t0, 844(sp)
+	lw t0, 1048(sp)
+	sw t0, 840(sp)
+	lw t0, 1040(sp)
+	sw t0, 836(sp)
+	lw t0, 1032(sp)
+	sw t0, 832(sp)
+	lw t0, 1024(sp)
+	sw t0, 828(sp)
+	lw t0, 1016(sp)
+	sw t0, 824(sp)
+	lw t0, 1008(sp)
+	sw t0, 820(sp)
+	lw t0, 1000(sp)
+	sw t0, 816(sp)
+	lw t0, 992(sp)
+	sw t0, 812(sp)
+	lw t0, 984(sp)
+	sw t0, 808(sp)
+	lw t0, 976(sp)
+	sw t0, 804(sp)
+	lw t0, 968(sp)
+	sw t0, 800(sp)
+	lw t0, 960(sp)
+	sw t0, 796(sp)
+	lw t0, 952(sp)
+	sw t0, 792(sp)
+	lw t0, 944(sp)
+	sw t0, 788(sp)
+	lw t0, 936(sp)
+	sw t0, 784(sp)
+	lw t0, 928(sp)
+	sw t0, 780(sp)
+	lw t0, 920(sp)
+	sw t0, 776(sp)
+	lw t0, 912(sp)
+	sw t0, 772(sp)
+	lw t0, 904(sp)
+	sw t0, 768(sp)
 
 	# allocate lv$31
 
@@ -1332,7 +1284,7 @@ testParam32Entry:
 	lw t1, 892(sp)
 
 	# get address of lv points to
-	li t3, 516
+	addi t3, zero, 516
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1344,7 +1296,7 @@ testParam32Entry:
 	lw t1, 888(sp)
 
 	# get address of lv$1 points to
-	li t3, 524
+	addi t3, zero, 524
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1356,7 +1308,7 @@ testParam32Entry:
 	lw t1, 884(sp)
 
 	# get address of lv$2 points to
-	li t3, 532
+	addi t3, zero, 532
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1368,7 +1320,7 @@ testParam32Entry:
 	lw t1, 880(sp)
 
 	# get address of lv$3 points to
-	li t3, 540
+	addi t3, zero, 540
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1380,7 +1332,7 @@ testParam32Entry:
 	lw t1, 876(sp)
 
 	# get address of lv$4 points to
-	li t3, 548
+	addi t3, zero, 548
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1392,7 +1344,7 @@ testParam32Entry:
 	lw t1, 872(sp)
 
 	# get address of lv$5 points to
-	li t3, 556
+	addi t3, zero, 556
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1404,7 +1356,7 @@ testParam32Entry:
 	lw t1, 868(sp)
 
 	# get address of lv$6 points to
-	li t3, 564
+	addi t3, zero, 564
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1416,7 +1368,7 @@ testParam32Entry:
 	lw t1, 864(sp)
 
 	# get address of lv$7 points to
-	li t3, 572
+	addi t3, zero, 572
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1428,7 +1380,7 @@ testParam32Entry:
 	lw t1, 860(sp)
 
 	# get address of lv$8 points to
-	li t3, 580
+	addi t3, zero, 580
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1440,7 +1392,7 @@ testParam32Entry:
 	lw t1, 856(sp)
 
 	# get address of lv$9 points to
-	li t3, 588
+	addi t3, zero, 588
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1452,7 +1404,7 @@ testParam32Entry:
 	lw t1, 852(sp)
 
 	# get address of lv$10 points to
-	li t3, 596
+	addi t3, zero, 596
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1464,7 +1416,7 @@ testParam32Entry:
 	lw t1, 848(sp)
 
 	# get address of lv$11 points to
-	li t3, 604
+	addi t3, zero, 604
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1476,7 +1428,7 @@ testParam32Entry:
 	lw t1, 844(sp)
 
 	# get address of lv$12 points to
-	li t3, 612
+	addi t3, zero, 612
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1488,7 +1440,7 @@ testParam32Entry:
 	lw t1, 840(sp)
 
 	# get address of lv$13 points to
-	li t3, 620
+	addi t3, zero, 620
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1500,7 +1452,7 @@ testParam32Entry:
 	lw t1, 836(sp)
 
 	# get address of lv$14 points to
-	li t3, 628
+	addi t3, zero, 628
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1512,7 +1464,7 @@ testParam32Entry:
 	lw t1, 832(sp)
 
 	# get address of lv$15 points to
-	li t3, 636
+	addi t3, zero, 636
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1524,7 +1476,7 @@ testParam32Entry:
 	lw t1, 828(sp)
 
 	# get address of lv$16 points to
-	li t3, 644
+	addi t3, zero, 644
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1536,7 +1488,7 @@ testParam32Entry:
 	lw t1, 824(sp)
 
 	# get address of lv$17 points to
-	li t3, 652
+	addi t3, zero, 652
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1548,7 +1500,7 @@ testParam32Entry:
 	lw t1, 820(sp)
 
 	# get address of lv$18 points to
-	li t3, 660
+	addi t3, zero, 660
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1560,7 +1512,7 @@ testParam32Entry:
 	lw t1, 816(sp)
 
 	# get address of lv$19 points to
-	li t3, 668
+	addi t3, zero, 668
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1572,7 +1524,7 @@ testParam32Entry:
 	lw t1, 812(sp)
 
 	# get address of lv$20 points to
-	li t3, 676
+	addi t3, zero, 676
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1584,7 +1536,7 @@ testParam32Entry:
 	lw t1, 808(sp)
 
 	# get address of lv$21 points to
-	li t3, 684
+	addi t3, zero, 684
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1596,7 +1548,7 @@ testParam32Entry:
 	lw t1, 804(sp)
 
 	# get address of lv$22 points to
-	li t3, 692
+	addi t3, zero, 692
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1608,7 +1560,7 @@ testParam32Entry:
 	lw t1, 800(sp)
 
 	# get address of lv$23 points to
-	li t3, 700
+	addi t3, zero, 700
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1620,7 +1572,7 @@ testParam32Entry:
 	lw t1, 796(sp)
 
 	# get address of lv$24 points to
-	li t3, 708
+	addi t3, zero, 708
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1632,7 +1584,7 @@ testParam32Entry:
 	lw t1, 792(sp)
 
 	# get address of lv$25 points to
-	li t3, 716
+	addi t3, zero, 716
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1644,7 +1596,7 @@ testParam32Entry:
 	lw t1, 788(sp)
 
 	# get address of lv$26 points to
-	li t3, 724
+	addi t3, zero, 724
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1656,7 +1608,7 @@ testParam32Entry:
 	lw t1, 784(sp)
 
 	# get address of lv$27 points to
-	li t3, 732
+	addi t3, zero, 732
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1668,7 +1620,7 @@ testParam32Entry:
 	lw t1, 780(sp)
 
 	# get address of lv$28 points to
-	li t3, 740
+	addi t3, zero, 740
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1680,7 +1632,7 @@ testParam32Entry:
 	lw t1, 776(sp)
 
 	# get address of lv$29 points to
-	li t3, 748
+	addi t3, zero, 748
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1692,7 +1644,7 @@ testParam32Entry:
 	lw t1, 772(sp)
 
 	# get address of lv$30 points to
-	li t3, 756
+	addi t3, zero, 756
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -1704,14 +1656,14 @@ testParam32Entry:
 	lw t1, 768(sp)
 
 	# get address of lv$31 points to
-	li t3, 764
+	addi t3, zero, 764
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load a0 lv
 
 	# get address of lv points to
-	li t3, 516
+	addi t3, zero, 516
 	add t3, sp, t3
 
 	# get address of local var:a0
@@ -1721,7 +1673,7 @@ testParam32Entry:
 	# load a1 lv$1
 
 	# get address of lv$1 points to
-	li t3, 524
+	addi t3, zero, 524
 	add t3, sp, t3
 
 	# get address of local var:a1
@@ -1734,9 +1686,7 @@ testParam32Entry:
 
 	# get address of local var:a0
 	lw t1, 508(sp)
-
-	# get address of local var:a1
-	lw t2, 500(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_
@@ -1745,7 +1695,7 @@ testParam32Entry:
 	# load a2 lv$2
 
 	# get address of lv$2 points to
-	li t3, 532
+	addi t3, zero, 532
 	add t3, sp, t3
 
 	# get address of local var:a2
@@ -1758,9 +1708,7 @@ testParam32Entry:
 
 	# get address of local var:result_
 	lw t1, 492(sp)
-
-	# get address of local var:a2
-	lw t2, 484(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$1
@@ -1769,7 +1717,7 @@ testParam32Entry:
 	# load a3 lv$3
 
 	# get address of lv$3 points to
-	li t3, 540
+	addi t3, zero, 540
 	add t3, sp, t3
 
 	# get address of local var:a3
@@ -1782,9 +1730,7 @@ testParam32Entry:
 
 	# get address of local var:result_$1
 	lw t1, 476(sp)
-
-	# get address of local var:a3
-	lw t2, 468(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$2
@@ -1793,7 +1739,7 @@ testParam32Entry:
 	# load a4 lv$4
 
 	# get address of lv$4 points to
-	li t3, 548
+	addi t3, zero, 548
 	add t3, sp, t3
 
 	# get address of local var:a4
@@ -1806,9 +1752,7 @@ testParam32Entry:
 
 	# get address of local var:result_$2
 	lw t1, 460(sp)
-
-	# get address of local var:a4
-	lw t2, 452(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$3
@@ -1817,7 +1761,7 @@ testParam32Entry:
 	# load a5 lv$5
 
 	# get address of lv$5 points to
-	li t3, 556
+	addi t3, zero, 556
 	add t3, sp, t3
 
 	# get address of local var:a5
@@ -1830,9 +1774,7 @@ testParam32Entry:
 
 	# get address of local var:result_$3
 	lw t1, 444(sp)
-
-	# get address of local var:a5
-	lw t2, 436(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$4
@@ -1841,7 +1783,7 @@ testParam32Entry:
 	# load a6 lv$6
 
 	# get address of lv$6 points to
-	li t3, 564
+	addi t3, zero, 564
 	add t3, sp, t3
 
 	# get address of local var:a6
@@ -1854,9 +1796,7 @@ testParam32Entry:
 
 	# get address of local var:result_$4
 	lw t1, 428(sp)
-
-	# get address of local var:a6
-	lw t2, 420(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$5
@@ -1865,7 +1805,7 @@ testParam32Entry:
 	# load a7 lv$7
 
 	# get address of lv$7 points to
-	li t3, 572
+	addi t3, zero, 572
 	add t3, sp, t3
 
 	# get address of local var:a7
@@ -1878,9 +1818,7 @@ testParam32Entry:
 
 	# get address of local var:result_$5
 	lw t1, 412(sp)
-
-	# get address of local var:a7
-	lw t2, 404(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$6
@@ -1889,7 +1827,7 @@ testParam32Entry:
 	# load a8 lv$8
 
 	# get address of lv$8 points to
-	li t3, 580
+	addi t3, zero, 580
 	add t3, sp, t3
 
 	# get address of local var:a8
@@ -1902,9 +1840,7 @@ testParam32Entry:
 
 	# get address of local var:result_$6
 	lw t1, 396(sp)
-
-	# get address of local var:a8
-	lw t2, 388(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$7
@@ -1913,7 +1849,7 @@ testParam32Entry:
 	# load a9 lv$9
 
 	# get address of lv$9 points to
-	li t3, 588
+	addi t3, zero, 588
 	add t3, sp, t3
 
 	# get address of local var:a9
@@ -1926,9 +1862,7 @@ testParam32Entry:
 
 	# get address of local var:result_$7
 	lw t1, 380(sp)
-
-	# get address of local var:a9
-	lw t2, 372(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$8
@@ -1937,7 +1871,7 @@ testParam32Entry:
 	# load a10 lv$10
 
 	# get address of lv$10 points to
-	li t3, 596
+	addi t3, zero, 596
 	add t3, sp, t3
 
 	# get address of local var:a10
@@ -1950,9 +1884,7 @@ testParam32Entry:
 
 	# get address of local var:result_$8
 	lw t1, 364(sp)
-
-	# get address of local var:a10
-	lw t2, 356(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$9
@@ -1961,7 +1893,7 @@ testParam32Entry:
 	# load a11 lv$11
 
 	# get address of lv$11 points to
-	li t3, 604
+	addi t3, zero, 604
 	add t3, sp, t3
 
 	# get address of local var:a11
@@ -1974,9 +1906,7 @@ testParam32Entry:
 
 	# get address of local var:result_$9
 	lw t1, 348(sp)
-
-	# get address of local var:a11
-	lw t2, 340(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$10
@@ -1985,7 +1915,7 @@ testParam32Entry:
 	# load a12 lv$12
 
 	# get address of lv$12 points to
-	li t3, 612
+	addi t3, zero, 612
 	add t3, sp, t3
 
 	# get address of local var:a12
@@ -1998,9 +1928,7 @@ testParam32Entry:
 
 	# get address of local var:result_$10
 	lw t1, 332(sp)
-
-	# get address of local var:a12
-	lw t2, 324(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$11
@@ -2009,7 +1937,7 @@ testParam32Entry:
 	# load a13 lv$13
 
 	# get address of lv$13 points to
-	li t3, 620
+	addi t3, zero, 620
 	add t3, sp, t3
 
 	# get address of local var:a13
@@ -2022,9 +1950,7 @@ testParam32Entry:
 
 	# get address of local var:result_$11
 	lw t1, 316(sp)
-
-	# get address of local var:a13
-	lw t2, 308(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$12
@@ -2033,7 +1959,7 @@ testParam32Entry:
 	# load a14 lv$14
 
 	# get address of lv$14 points to
-	li t3, 628
+	addi t3, zero, 628
 	add t3, sp, t3
 
 	# get address of local var:a14
@@ -2046,9 +1972,7 @@ testParam32Entry:
 
 	# get address of local var:result_$12
 	lw t1, 300(sp)
-
-	# get address of local var:a14
-	lw t2, 292(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$13
@@ -2057,7 +1981,7 @@ testParam32Entry:
 	# load a15 lv$15
 
 	# get address of lv$15 points to
-	li t3, 636
+	addi t3, zero, 636
 	add t3, sp, t3
 
 	# get address of local var:a15
@@ -2070,9 +1994,7 @@ testParam32Entry:
 
 	# get address of local var:result_$13
 	lw t1, 284(sp)
-
-	# get address of local var:a15
-	lw t2, 276(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$14
@@ -2081,7 +2003,7 @@ testParam32Entry:
 	# load a16 lv$16
 
 	# get address of lv$16 points to
-	li t3, 644
+	addi t3, zero, 644
 	add t3, sp, t3
 
 	# get address of local var:a16
@@ -2094,9 +2016,7 @@ testParam32Entry:
 
 	# get address of local var:result_$14
 	lw t1, 268(sp)
-
-	# get address of local var:a16
-	lw t2, 260(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$15
@@ -2105,7 +2025,7 @@ testParam32Entry:
 	# load a17 lv$17
 
 	# get address of lv$17 points to
-	li t3, 652
+	addi t3, zero, 652
 	add t3, sp, t3
 
 	# get address of local var:a17
@@ -2118,9 +2038,7 @@ testParam32Entry:
 
 	# get address of local var:result_$15
 	lw t1, 252(sp)
-
-	# get address of local var:a17
-	lw t2, 244(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$16
@@ -2129,7 +2047,7 @@ testParam32Entry:
 	# load a18 lv$18
 
 	# get address of lv$18 points to
-	li t3, 660
+	addi t3, zero, 660
 	add t3, sp, t3
 
 	# get address of local var:a18
@@ -2142,9 +2060,7 @@ testParam32Entry:
 
 	# get address of local var:result_$16
 	lw t1, 236(sp)
-
-	# get address of local var:a18
-	lw t2, 228(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$17
@@ -2153,7 +2069,7 @@ testParam32Entry:
 	# load a19 lv$19
 
 	# get address of lv$19 points to
-	li t3, 668
+	addi t3, zero, 668
 	add t3, sp, t3
 
 	# get address of local var:a19
@@ -2166,9 +2082,7 @@ testParam32Entry:
 
 	# get address of local var:result_$17
 	lw t1, 220(sp)
-
-	# get address of local var:a19
-	lw t2, 212(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$18
@@ -2177,7 +2091,7 @@ testParam32Entry:
 	# load a20 lv$20
 
 	# get address of lv$20 points to
-	li t3, 676
+	addi t3, zero, 676
 	add t3, sp, t3
 
 	# get address of local var:a20
@@ -2190,9 +2104,7 @@ testParam32Entry:
 
 	# get address of local var:result_$18
 	lw t1, 204(sp)
-
-	# get address of local var:a20
-	lw t2, 196(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$19
@@ -2201,7 +2113,7 @@ testParam32Entry:
 	# load a21 lv$21
 
 	# get address of lv$21 points to
-	li t3, 684
+	addi t3, zero, 684
 	add t3, sp, t3
 
 	# get address of local var:a21
@@ -2214,9 +2126,7 @@ testParam32Entry:
 
 	# get address of local var:result_$19
 	lw t1, 188(sp)
-
-	# get address of local var:a21
-	lw t2, 180(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$20
@@ -2225,7 +2135,7 @@ testParam32Entry:
 	# load a22 lv$22
 
 	# get address of lv$22 points to
-	li t3, 692
+	addi t3, zero, 692
 	add t3, sp, t3
 
 	# get address of local var:a22
@@ -2238,9 +2148,7 @@ testParam32Entry:
 
 	# get address of local var:result_$20
 	lw t1, 172(sp)
-
-	# get address of local var:a22
-	lw t2, 164(sp)
+	mv t2, t0
 	sub t0, t1, t2
 
 	# get address of local var:result_$21
@@ -2249,7 +2157,7 @@ testParam32Entry:
 	# load a23 lv$23
 
 	# get address of lv$23 points to
-	li t3, 700
+	addi t3, zero, 700
 	add t3, sp, t3
 
 	# get address of local var:a23
@@ -2262,9 +2170,7 @@ testParam32Entry:
 
 	# get address of local var:result_$21
 	lw t1, 156(sp)
-
-	# get address of local var:a23
-	lw t2, 148(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$22
@@ -2273,7 +2179,7 @@ testParam32Entry:
 	# load a24 lv$24
 
 	# get address of lv$24 points to
-	li t3, 708
+	addi t3, zero, 708
 	add t3, sp, t3
 
 	# get address of local var:a24
@@ -2286,9 +2192,7 @@ testParam32Entry:
 
 	# get address of local var:result_$22
 	lw t1, 140(sp)
-
-	# get address of local var:a24
-	lw t2, 132(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$23
@@ -2297,7 +2201,7 @@ testParam32Entry:
 	# load a25 lv$25
 
 	# get address of lv$25 points to
-	li t3, 716
+	addi t3, zero, 716
 	add t3, sp, t3
 
 	# get address of local var:a25
@@ -2310,9 +2214,7 @@ testParam32Entry:
 
 	# get address of local var:result_$23
 	lw t1, 124(sp)
-
-	# get address of local var:a25
-	lw t2, 116(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$24
@@ -2321,7 +2223,7 @@ testParam32Entry:
 	# load a26 lv$26
 
 	# get address of lv$26 points to
-	li t3, 724
+	addi t3, zero, 724
 	add t3, sp, t3
 
 	# get address of local var:a26
@@ -2334,9 +2236,7 @@ testParam32Entry:
 
 	# get address of local var:result_$24
 	lw t1, 108(sp)
-
-	# get address of local var:a26
-	lw t2, 100(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$25
@@ -2345,7 +2245,7 @@ testParam32Entry:
 	# load a27 lv$27
 
 	# get address of lv$27 points to
-	li t3, 732
+	addi t3, zero, 732
 	add t3, sp, t3
 
 	# get address of local var:a27
@@ -2358,9 +2258,7 @@ testParam32Entry:
 
 	# get address of local var:result_$25
 	lw t1, 92(sp)
-
-	# get address of local var:a27
-	lw t2, 84(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$26
@@ -2369,7 +2267,7 @@ testParam32Entry:
 	# load a28 lv$28
 
 	# get address of lv$28 points to
-	li t3, 740
+	addi t3, zero, 740
 	add t3, sp, t3
 
 	# get address of local var:a28
@@ -2382,9 +2280,7 @@ testParam32Entry:
 
 	# get address of local var:result_$26
 	lw t1, 76(sp)
-
-	# get address of local var:a28
-	lw t2, 68(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$27
@@ -2393,7 +2289,7 @@ testParam32Entry:
 	# load a29 lv$29
 
 	# get address of lv$29 points to
-	li t3, 748
+	addi t3, zero, 748
 	add t3, sp, t3
 
 	# get address of local var:a29
@@ -2406,9 +2302,7 @@ testParam32Entry:
 
 	# get address of local var:result_$27
 	lw t1, 60(sp)
-
-	# get address of local var:a29
-	lw t2, 52(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$28
@@ -2417,7 +2311,7 @@ testParam32Entry:
 	# load a30 lv$30
 
 	# get address of lv$30 points to
-	li t3, 756
+	addi t3, zero, 756
 	add t3, sp, t3
 
 	# get address of local var:a30
@@ -2430,9 +2324,7 @@ testParam32Entry:
 
 	# get address of local var:result_$28
 	lw t1, 44(sp)
-
-	# get address of local var:a30
-	lw t2, 36(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$29
@@ -2441,7 +2333,7 @@ testParam32Entry:
 	# load a31 lv$31
 
 	# get address of lv$31 points to
-	li t3, 764
+	addi t3, zero, 764
 	add t3, sp, t3
 
 	# get address of local var:a31
@@ -2454,9 +2346,7 @@ testParam32Entry:
 
 	# get address of local var:result_$29
 	lw t1, 28(sp)
-
-	# get address of local var:a31
-	lw t2, 20(sp)
+	mv t2, t0
 	addw t0, t1, t2
 
 	# get address of local var:result_$30
@@ -2465,12 +2355,10 @@ testParam32Entry:
 	# ret result_$30
 
 	# fetch variables
-
-	# get address of local var:result_$30
-	lw t1, 12(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 896
-	add sp, sp, t4
+	li t0, 896
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -2483,15 +2371,15 @@ main:
 mainEntry100:
 
 	# reserve space
-	li t4, 496
-	sub sp, sp, t4
+	li t0, 496
+	sub sp, sp, t0
 
 	# save the parameters
 
 	# store gv 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 
 	# get address of gv points to
 	la t3, gv
@@ -2500,7 +2388,7 @@ mainEntry100:
 	# store gv1 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 
 	# get address of gv1 points to
 	la t3, gv1
@@ -2509,7 +2397,7 @@ mainEntry100:
 	# store gv2 
 
 	# fetch variables
-	li t1, 2
+	addi t1, zero, 2
 
 	# get address of gv2 points to
 	la t3, gv2
@@ -2518,7 +2406,7 @@ mainEntry100:
 	# store gv3 
 
 	# fetch variables
-	li t1, 3
+	addi t1, zero, 3
 
 	# get address of gv3 points to
 	la t3, gv3
@@ -2527,7 +2415,7 @@ mainEntry100:
 	# store gv4 
 
 	# fetch variables
-	li t1, 4
+	addi t1, zero, 4
 
 	# get address of gv4 points to
 	la t3, gv4
@@ -2536,7 +2424,7 @@ mainEntry100:
 	# store gv5 
 
 	# fetch variables
-	li t1, 5
+	addi t1, zero, 5
 
 	# get address of gv5 points to
 	la t3, gv5
@@ -2545,7 +2433,7 @@ mainEntry100:
 	# store gv6 
 
 	# fetch variables
-	li t1, 6
+	addi t1, zero, 6
 
 	# get address of gv6 points to
 	la t3, gv6
@@ -2554,7 +2442,7 @@ mainEntry100:
 	# store gv7 
 
 	# fetch variables
-	li t1, 7
+	addi t1, zero, 7
 
 	# get address of gv7 points to
 	la t3, gv7
@@ -2563,7 +2451,7 @@ mainEntry100:
 	# store gv8 
 
 	# fetch variables
-	li t1, 8
+	addi t1, zero, 8
 
 	# get address of gv8 points to
 	la t3, gv8
@@ -2572,7 +2460,7 @@ mainEntry100:
 	# store gv9 
 
 	# fetch variables
-	li t1, 9
+	addi t1, zero, 9
 
 	# get address of gv9 points to
 	la t3, gv9
@@ -2581,7 +2469,7 @@ mainEntry100:
 	# store gv10 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 
 	# get address of gv10 points to
 	la t3, gv10
@@ -2590,7 +2478,7 @@ mainEntry100:
 	# store gv11 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 
 	# get address of gv11 points to
 	la t3, gv11
@@ -2599,7 +2487,7 @@ mainEntry100:
 	# store gv12 
 
 	# fetch variables
-	li t1, 2
+	addi t1, zero, 2
 
 	# get address of gv12 points to
 	la t3, gv12
@@ -2608,7 +2496,7 @@ mainEntry100:
 	# store gv13 
 
 	# fetch variables
-	li t1, 3
+	addi t1, zero, 3
 
 	# get address of gv13 points to
 	la t3, gv13
@@ -2617,7 +2505,7 @@ mainEntry100:
 	# store gv14 
 
 	# fetch variables
-	li t1, 4
+	addi t1, zero, 4
 
 	# get address of gv14 points to
 	la t3, gv14
@@ -2626,7 +2514,7 @@ mainEntry100:
 	# store gv15 
 
 	# fetch variables
-	li t1, 5
+	addi t1, zero, 5
 
 	# get address of gv15 points to
 	la t3, gv15
@@ -2635,7 +2523,7 @@ mainEntry100:
 	# store gv16 
 
 	# fetch variables
-	li t1, 6
+	addi t1, zero, 6
 
 	# get address of gv16 points to
 	la t3, gv16
@@ -2644,7 +2532,7 @@ mainEntry100:
 	# store gv17 
 
 	# fetch variables
-	li t1, 7
+	addi t1, zero, 7
 
 	# get address of gv17 points to
 	la t3, gv17
@@ -2653,7 +2541,7 @@ mainEntry100:
 	# store gv18 
 
 	# fetch variables
-	li t1, 8
+	addi t1, zero, 8
 
 	# get address of gv18 points to
 	la t3, gv18
@@ -2662,7 +2550,7 @@ mainEntry100:
 	# store gv19 
 
 	# fetch variables
-	li t1, 9
+	addi t1, zero, 9
 
 	# get address of gv19 points to
 	la t3, gv19
@@ -2671,7 +2559,7 @@ mainEntry100:
 	# store gv20 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 
 	# get address of gv20 points to
 	la t3, gv20
@@ -2680,7 +2568,7 @@ mainEntry100:
 	# store gv21 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 
 	# get address of gv21 points to
 	la t3, gv21
@@ -2689,7 +2577,7 @@ mainEntry100:
 	# store gv22 
 
 	# fetch variables
-	li t1, 2
+	addi t1, zero, 2
 
 	# get address of gv22 points to
 	la t3, gv22
@@ -2698,7 +2586,7 @@ mainEntry100:
 	# store gv23 
 
 	# fetch variables
-	li t1, 3
+	addi t1, zero, 3
 
 	# get address of gv23 points to
 	la t3, gv23
@@ -2707,7 +2595,7 @@ mainEntry100:
 	# store gv24 
 
 	# fetch variables
-	li t1, 4
+	addi t1, zero, 4
 
 	# get address of gv24 points to
 	la t3, gv24
@@ -2716,7 +2604,7 @@ mainEntry100:
 	# store gv25 
 
 	# fetch variables
-	li t1, 5
+	addi t1, zero, 5
 
 	# get address of gv25 points to
 	la t3, gv25
@@ -2725,7 +2613,7 @@ mainEntry100:
 	# store gv26 
 
 	# fetch variables
-	li t1, 6
+	addi t1, zero, 6
 
 	# get address of gv26 points to
 	la t3, gv26
@@ -2734,7 +2622,7 @@ mainEntry100:
 	# store gv27 
 
 	# fetch variables
-	li t1, 7
+	addi t1, zero, 7
 
 	# get address of gv27 points to
 	la t3, gv27
@@ -2743,7 +2631,7 @@ mainEntry100:
 	# store gv28 
 
 	# fetch variables
-	li t1, 8
+	addi t1, zero, 8
 
 	# get address of gv28 points to
 	la t3, gv28
@@ -2752,7 +2640,7 @@ mainEntry100:
 	# store gv29 
 
 	# fetch variables
-	li t1, 9
+	addi t1, zero, 9
 
 	# get address of gv29 points to
 	la t3, gv29
@@ -2761,7 +2649,7 @@ mainEntry100:
 	# store gv30 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 
 	# get address of gv30 points to
 	la t3, gv30
@@ -2770,7 +2658,7 @@ mainEntry100:
 	# store gv31 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 
 	# get address of gv31 points to
 	la t3, gv31
@@ -2779,7 +2667,7 @@ mainEntry100:
 	# store gv32 
 
 	# fetch variables
-	li t1, 4
+	addi t1, zero, 4
 
 	# get address of gv32 points to
 	la t3, gv32
@@ -2788,7 +2676,7 @@ mainEntry100:
 	# store gv33 
 
 	# fetch variables
-	li t1, 5
+	addi t1, zero, 5
 
 	# get address of gv33 points to
 	la t3, gv33
@@ -2797,7 +2685,7 @@ mainEntry100:
 	# store gv34 
 
 	# fetch variables
-	li t1, 6
+	addi t1, zero, 6
 
 	# get address of gv34 points to
 	la t3, gv34
@@ -2806,7 +2694,7 @@ mainEntry100:
 	# store gv35 
 
 	# fetch variables
-	li t1, 7
+	addi t1, zero, 7
 
 	# get address of gv35 points to
 	la t3, gv35
@@ -2815,7 +2703,7 @@ mainEntry100:
 	# store gv36 
 
 	# fetch variables
-	li t1, 8
+	addi t1, zero, 8
 
 	# get address of gv36 points to
 	la t3, gv36
@@ -2824,7 +2712,7 @@ mainEntry100:
 	# store gv37 
 
 	# fetch variables
-	li t1, 9
+	addi t1, zero, 9
 
 	# get address of gv37 points to
 	la t3, gv37
@@ -2833,7 +2721,7 @@ mainEntry100:
 	# store gv38 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 
 	# get address of gv38 points to
 	la t3, gv38
@@ -2842,7 +2730,7 @@ mainEntry100:
 	# store gv39 
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 
 	# get address of gv39 points to
 	la t3, gv39
@@ -2969,8 +2857,6 @@ mainEntry100:
 	# get address of local var:a7
 	lw t1, 436(sp)
 	mv a7, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -2984,8 +2870,6 @@ mainEntry100:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:testParam8
 	sw a0, 428(sp)
@@ -3017,8 +2901,6 @@ mainEntry100:
 	# get address of local var:a0$1
 	lw t1, 420(sp)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3032,8 +2914,6 @@ mainEntry100:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# load a32 gv32
 
@@ -3292,8 +3172,8 @@ mainEntry100:
 
 	# push a15
 	sw t1, -64(sp)
-	li t4, -64
-	add sp, sp, t4
+	li t0, -64
+	add sp, sp, t0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3307,8 +3187,8 @@ mainEntry100:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 64
-	add sp, sp, t4
+	li t0, 64
+	add sp, sp, t0
 
 	# get address of local var:testParam16
 	sw a0, 284(sp)
@@ -3340,8 +3220,6 @@ mainEntry100:
 	# get address of local var:a0$2
 	lw t1, 276(sp)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3355,8 +3233,6 @@ mainEntry100:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# load a0$3 gv
 
@@ -3887,8 +3763,8 @@ mainEntry100:
 
 	# push a31
 	sw t1, -192(sp)
-	li t4, -192
-	add sp, sp, t4
+	li t0, -192
+	add sp, sp, t0
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3902,8 +3778,8 @@ mainEntry100:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 192
-	add sp, sp, t4
+	li t0, 192
+	add sp, sp, t0
 
 	# get address of local var:testParam32
 	sw a0, 12(sp)
@@ -3935,8 +3811,6 @@ mainEntry100:
 	# get address of local var:a0$4
 	lw t1, 4(sp)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -3950,16 +3824,14 @@ mainEntry100:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# ret 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 	mv a0, t1
-	li t4, 496
-	add sp, sp, t4
+	li t0, 496
+	add sp, sp, t0
 	ret 
 
 memset32: 

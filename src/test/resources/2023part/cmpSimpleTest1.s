@@ -8,8 +8,8 @@ main:
 mainEntry11:
 
 	# reserve space
-	li t4, 48
-	sub sp, sp, t4
+	li t0, 48
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -18,38 +18,37 @@ mainEntry11:
 	# store lv 
 
 	# fetch variables
-	li t1, 1
+	li t1, -2147483647
 
 	# get address of lv points to
-	sw t1, 44(sp)
+	addi t3, zero, 44
+	add t3, sp, t3
+	sw t1, 0(t3)
 
 	# load a lv
 
 	# get address of lv points to
+	addi t3, zero, 44
+	add t3, sp, t3
 
 	# get address of local var:a
-	lw t0, 44(sp)
+	lw t0, 0(t3)
 	sw t0, 36(sp)
 
-	# ICMP cond_eq_tmp_ a  
+	# ICMP cond_lt_tmp_ a  
 
 	# fetch variables
+	mv t1, t0
+	addi t2, zero, 0
+	slt t0, t1, t2
 
-	# get address of local var:a
-	lw t1, 36(sp)
-	li t2, 1
-	xor t0, t1, t2
-	seqz t0, t0
-
-	# get address of local var:cond_eq_tmp_
+	# get address of local var:cond_lt_tmp_
 	sw t0, 28(sp)
 
-	#  cond_tmp_ cond_eq_tmp_
+	#  cond_tmp_ cond_lt_tmp_
 
 	# fetch variables
-
-	# get address of local var:cond_eq_tmp_
-	lw t1, 28(sp)
+	mv t1, t0
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
@@ -58,10 +57,8 @@ mainEntry11:
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
-
-	# get address of local var:cond_tmp_
-	lw t1, 20(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -72,9 +69,7 @@ mainEntry11:
 	# condBr cond_ ifTrue_6 next_6
 
 	# fetch variables
-
-	# get address of local var:cond_
-	lw t1, 12(sp)
+	mv t1, t0
 	beqz t1, next_6
 	j ifTrue_6
 ifTrue_6:
@@ -82,10 +77,12 @@ ifTrue_6:
 	# store lv 
 
 	# fetch variables
-	li t1, 2
+	addi t1, zero, 2
 
 	# get address of lv points to
-	sw t1, 44(sp)
+	addi t3, zero, 44
+	add t3, sp, t3
+	sw t1, 0(t3)
 
 	# br next_6
 	j next_6
@@ -94,20 +91,20 @@ next_6:
 	# load a$1 lv
 
 	# get address of lv points to
+	addi t3, zero, 44
+	add t3, sp, t3
 
 	# get address of local var:a$1
-	lw t0, 44(sp)
+	lw t0, 0(t3)
 	sw t0, 4(sp)
 
 	# ret a$1
 
 	# fetch variables
-
-	# get address of local var:a$1
-	lw t1, 4(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 48
-	add sp, sp, t4
+	li t0, 48
+	add sp, sp, t0
 	ret 
 
 memset32: 

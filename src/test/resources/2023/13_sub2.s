@@ -8,8 +8,8 @@ main:
 mainEntry50:
 
 	# reserve space
-	li t4, 32
-	sub sp, sp, t4
+	li t0, 32
+	sub sp, sp, t0
 
 	# save the parameters
 
@@ -18,17 +18,17 @@ mainEntry50:
 	# store lv 
 
 	# fetch variables
-	li t1, 2
+	addi t1, zero, 2
 
 	# get address of lv points to
-	li t3, 28
+	addi t3, zero, 28
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load b lv
 
 	# get address of lv points to
-	li t3, 28
+	addi t3, zero, 28
 	add t3, sp, t3
 
 	# get address of local var:b
@@ -38,10 +38,8 @@ mainEntry50:
 	# SUB result_ b  
 
 	# fetch variables
-
-	# get address of local var:b
-	lw t1, 20(sp)
-	li t2, 10
+	mv t1, t0
+	addi t2, zero, 10
 	sub t0, t1, t2
 
 	# get address of local var:result_
@@ -50,12 +48,10 @@ mainEntry50:
 	# ret result_
 
 	# fetch variables
-
-	# get address of local var:result_
-	lw t1, 12(sp)
+	mv t1, t0
 	mv a0, t1
-	li t4, 32
-	add sp, sp, t4
+	li t0, 32
+	add sp, sp, t0
 	ret 
 
 memset32: 

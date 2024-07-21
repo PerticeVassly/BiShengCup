@@ -8,8 +8,8 @@ move:
 moveEntry:
 
 	# reserve space
-	li t4, 48
-	sub sp, sp, t4
+	li t0, 48
+	sub sp, sp, t0
 
 	# save CallerSavedRegs
 
@@ -36,7 +36,7 @@ moveEntry:
 	lw t1, 44(sp)
 
 	# get address of lv points to
-	li t3, 28
+	addi t3, zero, 28
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -48,14 +48,14 @@ moveEntry:
 	lw t1, 40(sp)
 
 	# get address of lv$1 points to
-	li t3, 36
+	addi t3, zero, 36
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load x lv
 
 	# get address of lv points to
-	li t3, 28
+	addi t3, zero, 28
 	add t3, sp, t3
 
 	# get address of local var:x
@@ -69,8 +69,6 @@ moveEntry:
 	# get address of local var:x
 	lw t1, 20(sp)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -84,16 +82,12 @@ moveEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
-	li t1, 32
+	addi t1, zero, 32
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -107,13 +101,11 @@ moveEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# load y lv$1
 
 	# get address of lv$1 points to
-	li t3, 36
+	addi t3, zero, 36
 	add t3, sp, t3
 
 	# get address of local var:y
@@ -127,8 +119,6 @@ moveEntry:
 	# get address of local var:y
 	lw t1, 12(sp)
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -142,16 +132,12 @@ moveEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
-	li t1, 44
+	addi t1, zero, 44
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -165,16 +151,12 @@ moveEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
-	li t1, 32
+	addi t1, zero, 32
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -188,12 +170,10 @@ moveEntry:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# ret void
-	li t4, 48
-	add sp, sp, t4
+	li t0, 48
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -206,8 +186,8 @@ hanoi:
 hanoiEntry:
 
 	# reserve space
-	li t4, 192
-	sub sp, sp, t4
+	li t0, 192
+	sub sp, sp, t0
 
 	# save CallerSavedRegs
 
@@ -244,7 +224,7 @@ hanoiEntry:
 	lw t1, 188(sp)
 
 	# get address of lv points to
-	li t3, 148
+	addi t3, zero, 148
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -256,7 +236,7 @@ hanoiEntry:
 	lw t1, 184(sp)
 
 	# get address of lv$1 points to
-	li t3, 156
+	addi t3, zero, 156
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -268,7 +248,7 @@ hanoiEntry:
 	lw t1, 180(sp)
 
 	# get address of lv$2 points to
-	li t3, 164
+	addi t3, zero, 164
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -280,14 +260,14 @@ hanoiEntry:
 	lw t1, 176(sp)
 
 	# get address of lv$3 points to
-	li t3, 172
+	addi t3, zero, 172
 	add t3, sp, t3
 	sw t1, 0(t3)
 
 	# load n lv
 
 	# get address of lv points to
-	li t3, 148
+	addi t3, zero, 148
 	add t3, sp, t3
 
 	# get address of local var:n
@@ -297,10 +277,8 @@ hanoiEntry:
 	# ICMP cond_eq_tmp_ n  
 
 	# fetch variables
-
-	# get address of local var:n
-	lw t1, 140(sp)
-	li t2, 1
+	mv t1, t0
+	addi t2, zero, 1
 	xor t0, t1, t2
 	seqz t0, t0
 
@@ -310,9 +288,7 @@ hanoiEntry:
 	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
-
-	# get address of local var:cond_eq_tmp_
-	lw t1, 132(sp)
+	mv t1, t0
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
@@ -321,10 +297,8 @@ hanoiEntry:
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
-
-	# get address of local var:cond_tmp_
-	lw t1, 124(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -335,9 +309,7 @@ hanoiEntry:
 	# condBr cond_ ifTrue_15 ifFalse_2
 
 	# fetch variables
-
-	# get address of local var:cond_
-	lw t1, 116(sp)
+	mv t1, t0
 	beqz t1, ifFalse_2
 	j ifTrue_15
 ifTrue_15:
@@ -345,7 +317,7 @@ ifTrue_15:
 	# load one lv$1
 
 	# get address of lv$1 points to
-	li t3, 156
+	addi t3, zero, 156
 	add t3, sp, t3
 
 	# get address of local var:one
@@ -355,7 +327,7 @@ ifTrue_15:
 	# load three lv$3
 
 	# get address of lv$3 points to
-	li t3, 172
+	addi t3, zero, 172
 	add t3, sp, t3
 
 	# get address of local var:three
@@ -375,8 +347,6 @@ ifTrue_15:
 	# get address of local var:three
 	lw t1, 100(sp)
 	mv a1, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -390,8 +360,6 @@ ifTrue_15:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# br next_32
 	j next_32
@@ -400,7 +368,7 @@ ifFalse_2:
 	# load n$1 lv
 
 	# get address of lv points to
-	li t3, 148
+	addi t3, zero, 148
 	add t3, sp, t3
 
 	# get address of local var:n$1
@@ -410,10 +378,8 @@ ifFalse_2:
 	# SUB result_ n$1  
 
 	# fetch variables
-
-	# get address of local var:n$1
-	lw t1, 92(sp)
-	li t2, 1
+	mv t1, t0
+	addi t2, zero, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_
@@ -422,7 +388,7 @@ ifFalse_2:
 	# load one$1 lv$1
 
 	# get address of lv$1 points to
-	li t3, 156
+	addi t3, zero, 156
 	add t3, sp, t3
 
 	# get address of local var:one$1
@@ -432,7 +398,7 @@ ifFalse_2:
 	# load three$1 lv$3
 
 	# get address of lv$3 points to
-	li t3, 172
+	addi t3, zero, 172
 	add t3, sp, t3
 
 	# get address of local var:three$1
@@ -442,7 +408,7 @@ ifFalse_2:
 	# load two lv$2
 
 	# get address of lv$2 points to
-	li t3, 164
+	addi t3, zero, 164
 	add t3, sp, t3
 
 	# get address of local var:two
@@ -474,8 +440,6 @@ ifFalse_2:
 	# get address of local var:two
 	lw t1, 60(sp)
 	mv a3, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -489,13 +453,11 @@ ifFalse_2:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# load one$2 lv$1
 
 	# get address of lv$1 points to
-	li t3, 156
+	addi t3, zero, 156
 	add t3, sp, t3
 
 	# get address of local var:one$2
@@ -505,7 +467,7 @@ ifFalse_2:
 	# load three$2 lv$3
 
 	# get address of lv$3 points to
-	li t3, 172
+	addi t3, zero, 172
 	add t3, sp, t3
 
 	# get address of local var:three$2
@@ -525,8 +487,6 @@ ifFalse_2:
 	# get address of local var:three$2
 	lw t1, 44(sp)
 	mv a1, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -540,13 +500,11 @@ ifFalse_2:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# load n$2 lv
 
 	# get address of lv points to
-	li t3, 148
+	addi t3, zero, 148
 	add t3, sp, t3
 
 	# get address of local var:n$2
@@ -556,10 +514,8 @@ ifFalse_2:
 	# SUB result_$1 n$2  
 
 	# fetch variables
-
-	# get address of local var:n$2
-	lw t1, 36(sp)
-	li t2, 1
+	mv t1, t0
+	addi t2, zero, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_$1
@@ -568,7 +524,7 @@ ifFalse_2:
 	# load two$1 lv$2
 
 	# get address of lv$2 points to
-	li t3, 164
+	addi t3, zero, 164
 	add t3, sp, t3
 
 	# get address of local var:two$1
@@ -578,7 +534,7 @@ ifFalse_2:
 	# load one$3 lv$1
 
 	# get address of lv$1 points to
-	li t3, 156
+	addi t3, zero, 156
 	add t3, sp, t3
 
 	# get address of local var:one$3
@@ -588,7 +544,7 @@ ifFalse_2:
 	# load three$3 lv$3
 
 	# get address of lv$3 points to
-	li t3, 172
+	addi t3, zero, 172
 	add t3, sp, t3
 
 	# get address of local var:three$3
@@ -620,8 +576,6 @@ ifFalse_2:
 	# get address of local var:three$3
 	lw t1, 4(sp)
 	mv a3, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -635,16 +589,14 @@ ifFalse_2:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# br next_32
 	j next_32
 next_32:
 
 	# ret void
-	li t4, 192
-	add sp, sp, t4
+	li t0, 192
+	add sp, sp, t0
 
 	# restore callee saved regs
 	addi sp, sp, 0
@@ -657,16 +609,14 @@ main:
 mainEntry9:
 
 	# reserve space
-	li t4, 80
-	sub sp, sp, t4
+	li t0, 80
+	sub sp, sp, t0
 
 	# save the parameters
 
 	# allocate lv
 
 	# prepare params
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -680,8 +630,6 @@ mainEntry9:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:getint
 	sw a0, 68(sp)
@@ -694,7 +642,7 @@ mainEntry9:
 	lw t1, 68(sp)
 
 	# get address of lv points to
-	li t3, 76
+	addi t3, zero, 76
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -705,7 +653,7 @@ whileCond_17:
 	# load n lv
 
 	# get address of lv points to
-	li t3, 76
+	addi t3, zero, 76
 	add t3, sp, t3
 
 	# get address of local var:n
@@ -715,10 +663,8 @@ whileCond_17:
 	# ICMP cond_gt_tmp_ n  
 
 	# fetch variables
-
-	# get address of local var:n
-	lw t1, 60(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	sub t0, t1, t2
 	sgtz t0, t0
 
@@ -728,9 +674,7 @@ whileCond_17:
 	#  cond_tmp_ cond_gt_tmp_
 
 	# fetch variables
-
-	# get address of local var:cond_gt_tmp_
-	lw t1, 52(sp)
+	mv t1, t0
 	mv t0, t1
 
 	# get address of local var:cond_tmp_
@@ -739,10 +683,8 @@ whileCond_17:
 	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
-
-	# get address of local var:cond_tmp_
-	lw t1, 44(sp)
-	li t2, 0
+	mv t1, t0
+	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
@@ -753,16 +695,12 @@ whileCond_17:
 	# condBr cond_ whileBody_17 next_33
 
 	# fetch variables
-
-	# get address of local var:cond_
-	lw t1, 36(sp)
+	mv t1, t0
 	beqz t1, next_33
 	j whileBody_17
 whileBody_17:
 
 	# prepare params
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -776,8 +714,6 @@ whileBody_17:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# get address of local var:getint$1
 	sw a0, 28(sp)
@@ -791,18 +727,16 @@ whileBody_17:
 	mv a0, t1
 
 	# fetch variables
-	li t1, 1
+	addi t1, zero, 1
 	mv a1, t1
 
 	# fetch variables
-	li t1, 2
+	addi t1, zero, 2
 	mv a2, t1
 
 	# fetch variables
-	li t1, 3
+	addi t1, zero, 3
 	mv a3, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -816,16 +750,12 @@ whileBody_17:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# prepare params
 
 	# fetch variables
-	li t1, 10
+	addi t1, zero, 10
 	mv a0, t1
-	li t4, 0
-	add sp, sp, t4
 
 	# save caller saved regs
 	addi sp, sp, -8
@@ -839,13 +769,11 @@ whileBody_17:
 	addi sp, sp, 8
 
 	# release params
-	li t4, 0
-	add sp, sp, t4
 
 	# load n$1 lv
 
 	# get address of lv points to
-	li t3, 76
+	addi t3, zero, 76
 	add t3, sp, t3
 
 	# get address of local var:n$1
@@ -855,10 +783,8 @@ whileBody_17:
 	# SUB result_ n$1  
 
 	# fetch variables
-
-	# get address of local var:n$1
-	lw t1, 20(sp)
-	li t2, 1
+	mv t1, t0
+	addi t2, zero, 1
 	sub t0, t1, t2
 
 	# get address of local var:result_
@@ -867,12 +793,10 @@ whileBody_17:
 	# store lv result_
 
 	# fetch variables
-
-	# get address of local var:result_
-	lw t1, 12(sp)
+	mv t1, t0
 
 	# get address of lv points to
-	li t3, 76
+	addi t3, zero, 76
 	add t3, sp, t3
 	sw t1, 0(t3)
 
@@ -883,10 +807,10 @@ next_33:
 	# ret 
 
 	# fetch variables
-	li t1, 0
+	addi t1, zero, 0
 	mv a0, t1
-	li t4, 80
-	add sp, sp, t4
+	li t0, 80
+	add sp, sp, t0
 	ret 
 
 memset32: 
