@@ -27,9 +27,9 @@ public class TestBackEndIO {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("35_math")
+    @StringSource("00_main")
     void testRisc(String name) throws IOException, InterruptedException {
-        testFile(DIR_HIDDEN, name);
+        testFile(DIR, name);
     }
 
     /**

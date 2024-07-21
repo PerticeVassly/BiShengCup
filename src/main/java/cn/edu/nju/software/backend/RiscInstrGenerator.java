@@ -520,8 +520,13 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
         int stackSize = allocator.getStackSize();
         if (stackSize > 0) {
-            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
-            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+            if(stackSize < 2048){
+                riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(stackSize)));
+            }
+            else {
+                riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
+                riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+            }
         }
 
         if (!llvmFunctionValue.getName().equals("main")) {
@@ -531,6 +536,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         riscInstructions.add(new RiscRet());
         lastVarCalculated = null;
     }
+
 
     @Override
     public void visit(RetVoid retVoid) {
@@ -650,7 +656,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
             riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(-8L * order)));
             riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
         }
-
     }
 
     private void pushIntoStack(ValueRef realParam, int order){

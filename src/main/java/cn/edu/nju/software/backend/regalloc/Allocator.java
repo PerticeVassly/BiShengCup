@@ -242,9 +242,7 @@ public class Allocator {
             return null;
         }
         if(checkPtrHasAllocated(ptr.getName())){
-            loadImmediate("t3", memoryManager.getOffset(ptr));
-            generator.addInstruction(new RiscAdd(new Register("t0"), new Register("sp"), new Register("t3")));
-            return getRegWithOffset(offset, "t0", "t2");
+            return getRegWithOffset(memoryManager.getOffset(ptr) + offset, "sp", "t2");
         }
         if (ptr instanceof GlobalVar) {
             generator.addInstruction(new RiscLa(new Register("t0"), new RiscLabelAddress(new RiscLabel(ptr.getName()))));
@@ -271,7 +269,7 @@ public class Allocator {
      */
     public Operand getRegWithOffset(int immediate, String baseReg, String destReg) {
         assert !baseReg.equals(destReg);// not same
-        if(immediate >= 2048 || immediate <= -2048){
+        if(immediate >= 2048 || immediate < -2048){
             generator.addInstruction(new RiscLi(new Register(destReg), new ImmediateValue(immediate)));
             generator.addInstruction(new RiscAdd(new Register(destReg), new Register(baseReg), new Register(destReg)));
             return new IndirectRegister(destReg,0);
@@ -326,7 +324,7 @@ public class Allocator {
     }
 
     public void loadImmediate(String reName, int immediate) {
-        if(immediate >= 2048 || immediate <= -2048) {
+        if(immediate >= 2048 || immediate < -2048) {
             generator.addInstruction(new RiscLi(new Register(reName), new ImmediateValue(immediate)));
         }
         else {
