@@ -105,15 +105,7 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public void dropPred(BasicBlockRef pre){
-        ArrayList<BasicBlockRef> tmp = new ArrayList<>();
-        for (BasicBlockRef bb : pred) {
-            if (!bb.equals(pre)) {
-                tmp.add(bb);
-                continue;
-            }
-            predNum--;
-        }
-        pred = tmp;
+        pred.removeIf(bb->bb.equals(pre));
     }
     @Override
     public String toString() {

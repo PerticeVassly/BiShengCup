@@ -14,6 +14,13 @@ public class Cmp extends Instruction {
         operands = new ValueRef[]{operand1, operand2};
     }
 
+    public Cmp(ValueRef lVal, OpEnum op, String type, ValueRef operand1, ValueRef operand2) {
+        this.lVal = lVal;
+        operator = getOperator(op);
+        this.type = type;
+        operands = new ValueRef[]{operand1, operand2};
+    }
+
     public String getType() {
         return type;
     }
@@ -34,4 +41,6 @@ public class Cmp extends Instruction {
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
     }
+
+
 }

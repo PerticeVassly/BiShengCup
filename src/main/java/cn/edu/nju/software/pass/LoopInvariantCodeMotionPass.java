@@ -4,6 +4,8 @@ import cn.edu.nju.software.frontend.util.CFG;
 import cn.edu.nju.software.frontend.util.Loop;
 import cn.edu.nju.software.frontend.util.LoopSet;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.generator.InstructionVisitor;
+import cn.edu.nju.software.ir.generator.IrCloneVisitor;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
@@ -64,6 +66,7 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
         List<BasicBlockRef> judgeBlocks = findJudgeBlock(loop);
         BasicBlockRef entry = findEntry(loop);
         BasicBlockRef next = findNext(loop);
+        BasicBlockRef firstBody=findFirstBody(loop);
         List<BasicBlockRef> preGuards = createPreGuards(judgeBlocks);
         entry.renewIr(entry.getIrNum()-1,new Br(preGuards.get(0)));
         for (BasicBlockRef preGuard : preGuards) {
@@ -76,11 +79,12 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
         buildRelation(preGuards, entry, next);
         adjustInstr(preGuards,next,motionBlock);
         motionBlock.addPred(preGuards.get(preGuards.size() - 1));
-        motionBlock.put(new Br(root));
+        motionBlock.put(new Br(firstBody));
         functionValue.appendBasicBlock(motionBlock);
         root.addPred(motionBlock);
         for (Loop subloop : loop.getSubLoops()) {
             List<Instruction> subLoopInstructions = identifyInvariants(subloop,entry);
+            //TODO:更新CFG
             doPass(subloop, subLoopInstructions);
         }
         CFGBuildPass.getInstance().update(functionValue);
@@ -186,6 +190,29 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
         return null;
     }
 
+    private BasicBlockRef findFirstBody(Loop loop) {
+        BasicBlockRef root = loop.getRoot();
+        Stack<BasicBlockRef> help = new Stack<>();
+        help.add(root);
+        while (!help.isEmpty()) {
+            BasicBlockRef cur = help.pop();
+            boolean flag = false;
+            for (BasicBlockRef next : cfg.getSuccessors(cur)) {
+                if (loop.contains(next)) {
+                    help.add(next);
+                } else {
+                    flag = true;
+                }
+            }
+            if (!flag) {
+                //重新将这个块入栈（即为第一个body块）
+                help.push(cur);
+                break;
+            }
+        }
+        return help.pop();
+
+    }
     private BasicBlockRef findNext(Loop loop) {
         BasicBlockRef root = loop.getRoot();
         for (BasicBlockRef suc : cfg.getSuccessors(root)) {
@@ -196,18 +223,21 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
         return null;
     }
 
-    private List<BasicBlockRef> createPreGuards(List<BasicBlockRef> judgeBlocks) {
+    private List<BasicBlockRef> createPreGuards(List<BasicBlockRef> judgeBlocks)  {
+        IrCloneVisitor irCloneVisitor =new IrCloneVisitor();
         List<BasicBlockRef> preGuards = new ArrayList<>();
         for (BasicBlockRef basicBlockRef : judgeBlocks) {
             BasicBlockRef newBlock = new BasicBlockRef(functionValue, "preGuard");
             for (Instruction instruction : basicBlockRef.getIrs()) {
-                newBlock.put(instruction);
+                //TODO:指令复制
+                Instruction newInstr=irCloneVisitor.genClonedInstruction(instruction);
+                newBlock.put(newInstr);
             }
             preGuards.add(newBlock);
         }
         return preGuards;
     }
-
+    //TODO:解决语句冲突
     private void adjustInstr(List<BasicBlockRef> preGuards, BasicBlockRef next,BasicBlockRef motion) {
         for (int i = 0; i < preGuards.size(); i++) {
             BasicBlockRef cur=preGuards.get(i);
@@ -225,7 +255,7 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
                 if(lastInstr.getOperand(1).equals(next)){
                     instr=new CondBr(lastInstr.getOperand(0), (BasicBlockRef) lastInstr.getOperand(1),preGuards.get(i+1));
                 }else {
-                    instr=new CondBr(lastInstr.getOperand(0),preGuards.get(i+1), (BasicBlockRef) lastInstr.getOperand(1));
+                    instr=new CondBr(lastInstr.getOperand(0),preGuards.get(i+1), (BasicBlockRef) lastInstr.getOperand(2));
                 }
                 cur.renewIr(cur.getIrNum()-1,instr);
             }
