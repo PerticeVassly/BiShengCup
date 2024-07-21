@@ -2,19 +2,7 @@ package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.backend.riscinstruction.*;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFadds;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFcvtsw;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFcvtws;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFdivs;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFeqs;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFles;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlts;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlw;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmuls;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvwx;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvxw;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsubs;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsw;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.*;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscDiv;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscMul;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscRem;
@@ -94,24 +82,25 @@ public class RiscInstrGenerator implements InstructionVisitor {
      * @param instr
      */
     private void afterABinaryInstr(Instruction instr){
-        allocator.setLastLVal(instr.getLVal());
-        //左值只可能是localVar
-        LocalVar lVal = (LocalVar) instr.getLVal();
-        if(lVal.isTmpVar()){
-            String regName = allocator.recordTempVar(lVal);
-            if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
-                riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
-            } else if(lVal.getType() instanceof FloatType){
-                riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft0")));
-                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t0")));
-            } else {
-                assert false;
-            }
-        }
-        else {
-            saveLVal(instr.getLVal());
-        }
+//        allocator.setLastLVal(instr.getLVal());
+//        //左值只可能是localVar
+//        LocalVar lVal = (LocalVar) instr.getLVal();
+//        if(lVal.isTmpVar()){
+//            String regName = allocator.recordTempVar(lVal);
+//            if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
+//                riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
+//            } else if(lVal.getType() instanceof FloatType){
+//                riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft0")));
+//                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t0")));
+//            } else {
+//                assert false;
+//            }
+//        }
+//        else {
+//            saveLVal(instr.getLVal());
+//        }
         //现在是所有的save
+        saveLVal(instr.getLVal());
     }
     /**
      * [在生成算数llvm指令对应汇编之前的操作]
@@ -136,22 +125,23 @@ public class RiscInstrGenerator implements InstructionVisitor {
      * @param instr
      */
     private void afterAUnaryInstr(Instruction instr){
-        allocator.setLastLVal(instr.getLVal());
-        LocalVar lVal = (LocalVar) instr.getLVal();
-        if(lVal.isTmpVar()){
-            String regName = allocator.recordTempVar(lVal);
-            if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
-                riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
-            } else if(lVal.getType() instanceof FloatType){
-                riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft0")));
-                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t0")));
-            } else {
-                assert false;
-            }
-        }
-        else {
-            saveLVal(instr.getLVal());
-        }
+//        allocator.setlastlval(instr.getlval());
+//        localvar lval = (localvar) instr.getlval();
+//        if(lval.istmpvar()){
+//            string regname = allocator.recordtempvar(lval);
+//            if(lval.gettype() instanceof inttype || lval.gettype() instanceof booltype){
+//                riscinstructions.add(new riscmv(new register(regname), new register("t0")));
+//            } else if(lval.gettype() instanceof floattype){
+//                riscinstructions.add(new riscfmvxw(new register("t0"), new register("ft0")));
+//                riscinstructions.add(new riscfmvwx(new register(regname), new register("t0")));
+//            } else {
+//                assert false;
+//            }
+//        }
+//        else {
+//            savelval(instr.getlval());
+//        }
+        saveLVal(instr.getLVal());
     }
 
     private void saveLVal(ValueRef lVal){
@@ -716,7 +706,12 @@ public class RiscInstrGenerator implements InstructionVisitor {
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L * callerSavedRegs.length)));
 
         for (int i = 0; i < callerSavedRegs.length; i++) {
-            riscInstructions.add(new RiscSd(new Register(callerSavedRegs[i]), new IndirectRegister("sp", i * 8)));
+            if(callerSavedRegs[i].startsWith("f")){
+                riscInstructions.add(new RiscFsd(new Register(callerSavedRegs[i]), new IndirectRegister("sp", i * 8)));
+            }
+            else {
+                riscInstructions.add(new RiscSd(new Register(callerSavedRegs[i]), new IndirectRegister("sp", i * 8)));
+            }
         }
     }
 
@@ -726,8 +721,13 @@ public class RiscInstrGenerator implements InstructionVisitor {
         String[] registers = RiscSpecifications.getCallerSavedRegs();
 
         for (int i = 0; i < registers.length; i++) {
-            RiscInstruction riscLd = new RiscLd(new Register(registers[i]), new IndirectRegister("sp", i * 8));
-            riscInstructions.add(riscLd);
+            if(registers[i].startsWith("f")){
+                riscInstructions.add(new RiscFld(new Register(registers[i]), new IndirectRegister("sp", i * 8)));
+            }
+            else {
+                RiscInstruction riscLd = new RiscLd(new Register(registers[i]), new IndirectRegister("sp", i * 8));
+                riscInstructions.add(riscLd);
+            }
         }
 
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(8L * registers.length)));

@@ -33,7 +33,7 @@ public record RiscSpecifications() {
     }
 
     //todo() 寄存器分配,增加
-    private static final String[] callerSavedRegs = new String[] {"ra","t3","t4","t5","ft3","ft4","ft5"};
+    private static final String[] callerSavedRegs = new String[] {"ra"};
 
     private static final String[] calleeSavedRegs = new String[] {};
 

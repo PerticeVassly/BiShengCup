@@ -24,7 +24,7 @@ public class CmdExecutor {
         Process process = pb.start();
         OutputStream os = process.getOutputStream();
         try (FileInputStream fis = new FileInputStream(inputFile)) {
-            byte[] buffer = new byte[655360000]; //todo() buffer size too small?
+            byte[] buffer = new byte[65536]; //todo() buffer size too small?
             int bytesRead;
             while ((bytesRead = fis.read(buffer)) != -1) {
                 os.write(buffer, 0, bytesRead);
