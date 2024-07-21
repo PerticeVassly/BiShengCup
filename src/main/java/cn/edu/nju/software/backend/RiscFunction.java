@@ -35,6 +35,7 @@ public class RiscFunction {
     private void allocateSpace() {
         reserveSpaceForFParams();
         reserveSpaceForLocalVariables();
+        alignStack16byte();
     }
 
     /**
@@ -64,17 +65,27 @@ public class RiscFunction {
             for(int j = 0; j < bb.getIrs().size(); j++){
                 Instruction ir = bb.getIrs().get(j);
                 if(ir.getLVal() != null){
-                    reserveMemoryForType(ir.getLVal(), ir.getLVal().getType());
-                    if(ir instanceof Allocate){
-                        TypeRef baseType = ((Pointer) ir.getLVal().getType()).getBase();
-                        reserveMemoryForAllocate(baseType);
+                    if(! (ir instanceof Allocate)){
+                        reserveMemoryForType(ir.getLVal(), ir.getLVal().getType());
+                    } else {
+                        reserveMemoryForType(ir.getLVal(), ((Pointer)ir.getLVal().getType()).getBase());
+                        allocator.addHasAllocatedPtr(ir.getLVal().getName());
                     }
                 }
             }
         }
     }
 
+    private void alignStack8byte(){
+        allocator.alignStack8byte();
+    }
+
+    private void alignStack16byte(){
+        allocator.alignStack16byte();
+    }
+
     private void reserveMemoryForType(ValueRef var, TypeRef type) {
+        alignStack8byte();
         allocator.allocate(var, allocator.getSizeOfType(type));
     }
 
@@ -93,6 +104,8 @@ public class RiscFunction {
     //todo 重构成stringbuilder
     public void dumpToConsole() {
 
+        System.out.println(".text");
+        System.out.println(".align 1");
         System.out.println(".type " + functionValue.getName() + ", @function");
         System.out.println(".globl " + functionValue.getName());
         System.out.println(functionValue.getName() + ":");

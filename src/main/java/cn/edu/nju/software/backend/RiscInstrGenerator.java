@@ -2,7 +2,19 @@ package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.backend.riscinstruction.*;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.*;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFadds;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFcvtsw;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFcvtws;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFdivs;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFeqs;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFles;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlts;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlw;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmuls;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvwx;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvxw;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsubs;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsw;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscDiv;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscMul;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscRem;
@@ -10,14 +22,26 @@ import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Operand;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
-import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscCall;
-import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscLi;
-import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscSeqz;
-import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscSgtz;
+import cn.edu.nju.software.backend.riscinstruction.pseudo.*;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
-import cn.edu.nju.software.ir.instruction.*;
+import cn.edu.nju.software.ir.instruction.Allocate;
+import cn.edu.nju.software.ir.instruction.BitCast;
+import cn.edu.nju.software.ir.instruction.Br;
+import cn.edu.nju.software.ir.instruction.Call;
+import cn.edu.nju.software.ir.instruction.Cmp;
+import cn.edu.nju.software.ir.instruction.CondBr;
+import cn.edu.nju.software.ir.instruction.FloatToInt;
+import cn.edu.nju.software.ir.instruction.GEP;
+import cn.edu.nju.software.ir.instruction.Instruction;
+import cn.edu.nju.software.ir.instruction.IntToFloat;
+import cn.edu.nju.software.ir.instruction.Load;
+import cn.edu.nju.software.ir.instruction.OpEnum;
+import cn.edu.nju.software.ir.instruction.RetValue;
+import cn.edu.nju.software.ir.instruction.RetVoid;
+import cn.edu.nju.software.ir.instruction.Store;
+import cn.edu.nju.software.ir.instruction.ZExt;
 import cn.edu.nju.software.ir.instruction.arithmetic.Add;
 import cn.edu.nju.software.ir.instruction.arithmetic.Div;
 import cn.edu.nju.software.ir.instruction.arithmetic.FAdd;
@@ -28,7 +52,12 @@ import cn.edu.nju.software.ir.instruction.arithmetic.Mod;
 import cn.edu.nju.software.ir.instruction.arithmetic.Mul;
 import cn.edu.nju.software.ir.instruction.arithmetic.Sub;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
-import cn.edu.nju.software.ir.type.*;
+import cn.edu.nju.software.ir.type.ArrayType;
+import cn.edu.nju.software.ir.type.BoolType;
+import cn.edu.nju.software.ir.type.FloatType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.ArrayValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
@@ -46,6 +75,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
     private final List<RiscInstruction> riscInstructions = new LinkedList<>();
 
     private final Allocator allocator = Allocator.get();
+
+    private ValueRef lastVarCalculated = null;
 
     RiscInstrGenerator(List<Instruction> instructions, FunctionValue llvmFunctionValue) {
         this.instructions = instructions;
@@ -99,12 +130,16 @@ public class RiscInstrGenerator implements InstructionVisitor {
     private void saveLVal(ValueRef lVal){
         if( lVal.getType() instanceof IntType){
             riscInstructions.add(new RiscSw(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
+            lastVarCalculated = lVal;
         } else if(lVal.getType() instanceof FloatType){
             riscInstructions.add(new RiscFsw(new Register("ft0"), allocator.getAddrOfLocalVar(lVal)));
+            lastVarCalculated = lVal;
         } else if(lVal.getType() instanceof Pointer){
             riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
+            lastVarCalculated = lVal;
         } else if(lVal.getType() instanceof BoolType){
             riscInstructions.add(new RiscSw(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
+            lastVarCalculated = lVal;
         } else {
             assert false;
         }
@@ -128,10 +163,10 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
         //得到array中一个element实际的大小，存放在t2中
         int length = ArrayType.getTotalSize(((ArrayType) gep.getArrayTypePtr().getBase()).getElementType());
-        riscInstructions.add(new RiscLi(new Register("t2"), new ImmediateValue(length)));
+        riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(length)));
 
         //得到相对于basePtr的偏移量，存放在t0中
-        riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t0")));
 
         //获取basePtr的值，存在t1中
         riscInstructions.add(new RiscMv(new Register("t1"), allocator.getValueOfVar(basePtr)));
@@ -160,6 +195,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         } else {
             assert false;
         }
+        lastVarCalculated = null;
     }
 
     private void storeIntoInt(ValueRef dest, ValueRef src) {
@@ -216,6 +252,10 @@ public class RiscInstrGenerator implements InstructionVisitor {
             assert false;
         }
 
+        if(allocator.checkPtrHasAllocated(allocate.getLVal().getName())){
+            lastVarCalculated = null;
+            return;
+        }
         riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(allocator.getOffset(allocate.getLVal()) - typeLen)));
         riscInstructions.add(new RiscAdd(new Register("t0"), new Register("sp"), new Register("t0")));
         afterABinaryInstr(allocate);
@@ -234,12 +274,15 @@ public class RiscInstrGenerator implements InstructionVisitor {
         if (((Pointer) src.getType()).getBase() instanceof IntType) {
             riscInstructions.add(new RiscLw(new Register("t0"), srcOperand));
             riscInstructions.add(new RiscSw(new Register("t0"), destOperand));
+            lastVarCalculated = lVal;
         } else if (((Pointer) src.getType()).getBase() instanceof FloatType) {
             riscInstructions.add(new RiscFlw(new Register("ft0"), srcOperand));
             riscInstructions.add(new RiscFsw(new Register("ft0"), destOperand));
+            lastVarCalculated = null;
         } else if (((Pointer) src.getType()).getBase() instanceof Pointer){
             riscInstructions.add(new RiscLd(new Register("t0"), srcOperand));
             riscInstructions.add(new RiscSd(new Register("t0"), destOperand));
+            lastVarCalculated = null;
         } else {
             assert false;
         }
@@ -248,7 +291,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(Add add) {
         beforeABinaryInstr(add);
-        riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscAddw(new Register("t0"), new Register("t1"), new Register("t2")));
         afterABinaryInstr(add);
     }
 
@@ -326,7 +369,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(Br br) {
         insertComment("br " + br.getTarget().getName());
+
         riscInstructions.add(new RiscJ(br.getTarget().getName()));
+        lastVarCalculated = null;
     }
 
     @Override
@@ -340,6 +385,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
         riscInstructions.add(new RiscBeqz(new Register("t1"), ifFalse.getName()));
         riscInstructions.add(new RiscJ(ifTrue.getName()));
+        lastVarCalculated = null;
     }
 
     @Override
@@ -471,28 +517,36 @@ public class RiscInstrGenerator implements InstructionVisitor {
         } else {
             assert false;
         }
-        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(allocator.getStackSize())));
-        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+
+        int stackSize = allocator.getStackSize();
+        if (stackSize > 0) {
+            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+        }
 
         if (!llvmFunctionValue.getName().equals("main")) {
             restoreCalleeSavedRegs();
         }
 
         riscInstructions.add(new RiscRet());
+        lastVarCalculated = null;
     }
 
     @Override
     public void visit(RetVoid retVoid) {
         insertComment("ret void");
-
-        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(allocator.getStackSize())));
-        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+        int stackSize = allocator.getStackSize();
+        if (stackSize > 0) {
+            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+        }
 
         if (!llvmFunctionValue.getName().equals("main")) {
             restoreCalleeSavedRegs();
         }
 
         riscInstructions.add(new RiscRet());
+        lastVarCalculated = null;
     }
 
     @Override
@@ -504,6 +558,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Call call) {
+        lastVarCalculated = null;
         prepareParams(call);
         saveCallerSavedRegs();
         String funcName = call.getFunction().getName();
@@ -512,6 +567,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
         if (funcName.equals("memset")) {
             if (RiscSpecifications.is64Bit()) funcName += "64";
             else funcName += "32";
+        } else if (funcName.equals("starttime") || funcName.equals("stoptime")) {
+            funcName = "_sysy_" + funcName;
+            riscInstructions.add(new RiscLi(new Register("a0"), new ImmediateValue(call.getLineNo())));
         }
 
         riscInstructions.add(new RiscComment("call " + funcName));
@@ -587,19 +645,22 @@ public class RiscInstrGenerator implements InstructionVisitor {
                 assert false;
             }
         }
+        
+        if (order > 0) {
+            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(-8L * order)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+        }
 
-        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(-8L * order)));
-        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
     }
 
     private void pushIntoStack(ValueRef realParam, int order){
         insertComment("push " + realParam.getName());
         if(realParam.getType() instanceof IntType){
-            riscInstructions.add(new RiscSw(new Register("t1"),allocator.getRegWithOffset(-order * 8, "sp", "t4")));
+            riscInstructions.add(new RiscSw(new Register("t1"),allocator.getRegWithOffset(-order * 8, "sp", "t2")));
         } else if(realParam.getType() instanceof FloatType){
-            riscInstructions.add(new RiscFsw(new Register("ft1"), allocator.getRegWithOffset(-order * 8, "sp", "t4")));
+            riscInstructions.add(new RiscFsw(new Register("ft1"), allocator.getRegWithOffset(-order * 8, "sp", "t2")));
         } else if(realParam.getType() instanceof Pointer){
-            riscInstructions.add(new RiscSd(new Register("t1"), allocator.getRegWithOffset(-order * 8, "sp", "t4")));
+            riscInstructions.add(new RiscSd(new Register("t1"), allocator.getRegWithOffset(-order * 8, "sp", "t2")));
         } else {
             assert false;
         }
@@ -612,8 +673,10 @@ public class RiscInstrGenerator implements InstructionVisitor {
         int floatParamNum = call.getRealParams().stream().filter(x -> x.getType() instanceof FloatType).toArray().length;
 
         int finalToRelase =Math.max(intAndPointerParamNum - RiscSpecifications.getArgRegs().length, 0) + Math.max(floatParamNum - RiscSpecifications.getFArgRegs().length, 0);
-        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(8L * finalToRelase)));
-        riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t4")));
+        if (finalToRelase > 0) {
+            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(8L * finalToRelase)));
+            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+        }
     }
 
     private void saveCallerSavedRegs() {
@@ -659,5 +722,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     public void insertComment(String comment){
         riscInstructions.add(new RiscComment(comment));
+    }
+
+    public ValueRef getLastVarCalculated() {
+        return lastVarCalculated;
     }
 }
