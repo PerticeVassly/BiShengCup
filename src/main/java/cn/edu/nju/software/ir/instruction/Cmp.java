@@ -22,6 +22,11 @@ public class Cmp extends Instruction {
     public boolean isCmp() {
         return true;
     }
+
+    @Override
+    public boolean isBinary() {
+        return true;
+    }
     @Override
     public String toString() {
         String instr = lVal + " = " + operator + " " + type + " " + operands[0].getType() + " ";

@@ -39,15 +39,18 @@ public class MemToReg {
                 allocatesInFunction.add((Allocate) entry.getIr(j));
             }
             HashMap<Allocate, ValueRef> memToRegAlloc = getReplaceableAlloc(allocatesInFunction, fv);
-            // TODO
+
+            // delete redundant alloc and replace load inst
             for (Allocate allocate : memToRegAlloc.keySet()) {
-                if (memToRegAlloc.get(allocate) == null) {
-                    entry.dropIr(allocate); // the allocate inst has never been used, delete it
+                entry.dropIr(allocate); // the allocate inst is redundant, delete it
+                if (memToRegAlloc.get(allocate) == null) { // never be initialized -- no usage
                     continue;
                 }
                 // not null, it can be replaced by reg val
-
+                replaceAllocWithReg(allocate.getLVal(), memToRegAlloc.get(allocate), fv); // by allocate inst lVal(memory), replace all load inst and its usage with its store value
             }
+
+            // TODO
         }
     }
 
@@ -102,5 +105,38 @@ public class MemToReg {
             }
         }
         return res;
+    }
+
+    private void replaceAllocWithReg(ValueRef memory, ValueRef val, FunctionValue fv) {
+        HashMap<ValueRef, ValueRef> loadVal2RegVal = new HashMap<>();
+        for (int i = 0; i < fv.getBlockNum(); i++) {
+            BasicBlockRef bb = fv.getBasicBlockRef(i);
+            for (int j = 0; j < bb.getIrNum(); j++) {
+                Instruction inst = bb.getIr(j);
+                if (inst.isAlloc()) {
+                    continue;
+                }
+                if (inst.isLoad()) {
+                    if (inst.getOperand(0).equals(memory)) { // first op is memory
+                        loadVal2RegVal.put(inst.getLVal(), val);
+                        bb.dropIr(inst);
+                        j--;
+                    }
+                } else if (inst.isStore()) {
+                    if (inst.getOperand(1).equals(memory)) { // second op is memory
+                        bb.dropIr(inst);
+                        j--;
+                    }
+                } else {
+                    int opNum = inst.getNumberOfOperands();
+                    for (int k = 0; k < opNum; k++) {
+                        ValueRef op = inst.getOperand(k);
+                        if (loadVal2RegVal.containsKey(op)) {
+                            inst.replace(k, loadVal2RegVal.get(op));
+                        }
+                    }
+                }
+            }
+        }
     }
 }

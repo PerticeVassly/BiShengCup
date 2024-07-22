@@ -72,7 +72,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
     private final Stack<Boolean> mustHaveReturn = new Stack<>(){{push(true);}}; // figure out whether always returns in `if () else if () else`
     private SymbolTable<ValueRef, String> curScope;
 
-    private SymbolTable<LocalVar, ValueRef> loadRecord = new SymbolTable<>(); // record the variables been loaded
+//    private final SymbolTable<LocalVar, ValueRef> loadRecord = new SymbolTable<>(); // record the variables been loaded
     // LocalVar: load var; ValueRef: alloc var
 
     private boolean global() {
@@ -249,7 +249,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 LocalVar param = function.getParam(i);
                 LocalVar pointer = gen.buildAllocate(builder, param.getType(), "lv");
                 gen.buildStore(builder, param, pointer);
-                loadRecord.setInvalid(pointer); // store renews alloc, set load var invalid
+//                loadRecord.setInvalid(pointer); // store renews alloc, set load var invalid
                 curScope.put(new Symbol<>(fParam, pointer));
             }
         }
@@ -365,11 +365,11 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 System.err.println("variable should be a pointer.");
             }
             if (!(((Pointer)lVal.getType()).getBase() instanceof ArrayType)){
-                if (loadRecord.find(lVal) != null) {
-                    return loadRecord.find(lVal);
-                }
+//                if (loadRecord.find(lVal) != null) {
+//                    return loadRecord.find(lVal);
+//                }
                 LocalVar lv = gen.buildLoad(builder, lVal, ctx.lVal().IDENT().getText());
-                loadRecord.put(new Symbol<>(lVal, lv)); // load a var from alloc, before it's been stored, the load var is valid
+//                loadRecord.put(new Symbol<>(lVal, lv)); // load a var from alloc, before it's been stored, the load var is valid
                 return lv;
             } else {
                 return gen.buildGEP(builder, lVal, new ValueRef[]{gen.ConstInt(i32Type, 0)}, 1,
@@ -536,7 +536,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else if (ctx.ASSIGN() != null) {
             ValueRef lVal = visitLVal(ctx.lVal());
             ValueRef exp = visitExp(ctx.exp());
-            loadRecord.setInvalid(lVal); // store renews alloc var, set load var invalid
+//            loadRecord.setInvalid(lVal); // store renews alloc var, set load var invalid
             return gen.buildStore(builder, exp, lVal); // assign: lVal = exp;
         } else if (ctx.WHILE() != null) {
             // loop

@@ -16,6 +16,11 @@ public class Binary extends Instruction {
     }
 
     @Override
+    public boolean isBinary() {
+        return true;
+    }
+
+    @Override
     public String toString() {
         return lVal + " = " + operator + " " + opType + " " + operands[0] + ", " + operands[1];
     }
