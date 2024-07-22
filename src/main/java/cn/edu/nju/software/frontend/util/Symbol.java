@@ -4,13 +4,13 @@ package cn.edu.nju.software.frontend.util;
  * T: self value
  * T2: key
  * */
-public class Symbol<T, T2> {
-    private final T2 name;
+public class Symbol<T> {
+    private final String name;
     private final T value;
 
     private boolean valid;
 
-    public Symbol(T2 name, T ctx) {
+    public Symbol(String name, T ctx) {
         this.name = name;
         this.value = ctx;
         valid = true;
@@ -20,7 +20,7 @@ public class Symbol<T, T2> {
         return value;
     }
 
-    public T2 getName() {
+    public String getName() {
         return name;
     }
 

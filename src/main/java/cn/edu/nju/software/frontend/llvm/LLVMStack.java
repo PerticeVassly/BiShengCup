@@ -6,24 +6,24 @@ import cn.edu.nju.software.frontend.util.SymbolTable;
 import java.util.ArrayList;
 
 public class LLVMStack {
-    private final ArrayList<SymbolTable<ValueRef, String>> stack = new ArrayList<>();
+    private final ArrayList<SymbolTable<ValueRef>> stack = new ArrayList<>();
     public int size() {
         return stack.size();
     }
-    public void push(SymbolTable<ValueRef, String> scope) {
+    public void push(SymbolTable<ValueRef> scope) {
         stack.add(scope);
     }
-    public SymbolTable<ValueRef, String> peek() {
+    public SymbolTable<ValueRef> peek() {
         return stack.get(size() - 1);
     }
-    public SymbolTable<ValueRef, String> pop() {
-        SymbolTable<ValueRef, String> ret = peek();
+    public SymbolTable<ValueRef> pop() {
+        SymbolTable<ValueRef> ret = peek();
         stack.remove(size() - 1);
         return ret;
     }
     public ValueRef find(String name) {
         for (int i = size() - 1; i >= 0; i--) {
-            SymbolTable<ValueRef, String> cur = stack.get(i);
+            SymbolTable<ValueRef> cur = stack.get(i);
             if (cur.find(name) != null) {
                 return cur.find(name);
             }
