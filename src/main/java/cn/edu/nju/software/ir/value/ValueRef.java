@@ -15,11 +15,6 @@ public class ValueRef {
         type = new TypeRef();
         name = "";
     }
-
-    public ValueRef(ValueRef other) {
-        this.name = other.name;
-        this.type = other.type;
-    }
     public ValueRef(TypeRef type, String name) {
         /**
          * handle long name (todo: replace it with %1 %2 ...)
@@ -49,4 +44,14 @@ public class ValueRef {
         this.name = name;
     }
 
+    /**
+     * get context
+     * */
+    public String getText() {
+        return this.toString();
+    }
+
+    public boolean equals(ValueRef other) {
+        return other == this;
+    }
 }

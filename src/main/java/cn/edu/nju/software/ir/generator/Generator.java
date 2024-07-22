@@ -5,7 +5,6 @@ import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.And;
-import cn.edu.nju.software.ir.instruction.logic.Logic;
 import cn.edu.nju.software.ir.instruction.logic.Or;
 import cn.edu.nju.software.ir.instruction.logic.Xor;
 import cn.edu.nju.software.ir.module.ModuleRef;
@@ -65,6 +64,14 @@ public class Generator implements IrGenerator {
         globalVar.initialize(initValue);
         return globalVar;
     }
+
+    @Override
+    public FunctionValue addFunction(ModuleRef moduleRef, FunctionType ft, String funcName, boolean lib) {
+        FunctionValue fv = addFunction(moduleRef, ft, funcName);
+        fv.setLib(lib);
+        return fv;
+    }
+
     @Override
     public FunctionValue addFunction(ModuleRef module, FunctionType ft, String funcName) {
         FunctionValue fv = new FunctionValue(ft, funcName);
@@ -266,7 +273,7 @@ public class Generator implements IrGenerator {
     }
 
     @Override
-    public ValueRef buildFAdd(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+    public LocalVar buildFAdd(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
         Instruction ir = new FAdd(lVal, FADD, operand1, operand2);
         builder.put(ir);
@@ -284,7 +291,7 @@ public class Generator implements IrGenerator {
     }
 
     @Override
-    public ValueRef buildFSub(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+    public LocalVar buildFSub(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
         Instruction ir = new FSub(lVal, FSUB, operand1, operand2);
         builder.put(ir);
@@ -302,7 +309,7 @@ public class Generator implements IrGenerator {
     }
 
     @Override
-    public ValueRef buildFMul(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+    public LocalVar buildFMul(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
         Instruction ir = new FMul(lVal, FMUL, operand1, operand2);
         builder.put(ir);
@@ -320,7 +327,7 @@ public class Generator implements IrGenerator {
     }
 
     @Override
-    public ValueRef buildFDiv(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+    public LocalVar buildFDiv(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
         LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
         Instruction ir = new FDiv(lVal, FDIV, operand1, operand2);
         builder.put(ir);
