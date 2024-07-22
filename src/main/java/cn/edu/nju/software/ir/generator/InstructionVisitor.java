@@ -46,7 +46,7 @@ public interface InstructionVisitor {
 
     default void visit(Load load) {}
 
-    default void visit(Logic logic) {}
+    default void visit(Logic logic){}
 
     default void visit(RetValue retValue) {}
 

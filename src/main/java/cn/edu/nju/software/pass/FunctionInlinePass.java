@@ -8,6 +8,7 @@ import cn.edu.nju.software.ir.instruction.*;
 
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.FunctionType;
+import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.type.VoidType;
 import cn.edu.nju.software.ir.value.FunctionValue;
@@ -107,7 +108,7 @@ public class FunctionInlinePass implements ModulePass {
         Allocate allocate=null;
         if (!(retType instanceof VoidType)) {
             //TODO:更好的无重复命名方式
-            allocate=new Allocate(new LocalVar(retType,"retVal_of_inline_for"+copyBlocks.get(0).getName()));
+            allocate=new Allocate(new LocalVar(new Pointer(retType),"retVal_of"+copyBlocks.get(0).getName()));
         }
         BasicBlockRef truncated=createTruncatedBlock(allocate,bb,pos,curFunction,endBlocks);
         processEndBlock(allocate,endBlocks,truncated);
@@ -142,10 +143,11 @@ public class FunctionInlinePass implements ModulePass {
     }
     private void processEndBlock(Allocate allocate,Set<BasicBlockRef> endBlocks,BasicBlockRef truncated){
           for (BasicBlockRef basicBlockRef:endBlocks){
-               Instruction lastInstr=basicBlockRef.getIr(basicBlockRef.getIrNum()-1);
+               //获取实际上的最后一条指令
+               Instruction lastInstr=basicBlockRef.getIr(basicBlockRef.getIrNum()-2);
                basicBlockRef.renewIr(basicBlockRef.getIrNum()-1,new Default());
                if (allocate!=null) {
-                   Store store=new Store(lastInstr.getOperand(0),allocate.getLVal());
+                   Store store=new Store(lastInstr.getLVal(),allocate.getLVal());
                    basicBlockRef.put(store);
               }
                basicBlockRef.put(new Br(truncated));
@@ -168,7 +170,7 @@ public class FunctionInlinePass implements ModulePass {
                     for (int i=0;i<newInstr.getNumberOfOperands();i++){
                         ValueRef operand=newInstr.getOperand(i);
                         //判断是否是在处理函数参数，如果不是，则改变变量名
-                        if (!Character.isDigit(operand.getName().charAt(0))){
+                        if (!operand.getName().isEmpty()&&!Character.isDigit(operand.getName().charAt(0))){
                             operand.setName(operand.getName()+"_of_"+newBlock.getName());
                         }
 
@@ -184,6 +186,12 @@ public class FunctionInlinePass implements ModulePass {
                 BasicBlockRef pred=basicBlockRef.getPred(i);
                 newBlock.addPred(copyMap.get(pred));
             }
+            Instruction lastInstr=newBlock.getIr(newBlock.getIrNum()-1);
+            if (lastInstr instanceof CondBr cb) {
+                BasicBlockRef newTrueBlock=copyMap.get(cb.getTrueBlock());
+                BasicBlockRef newFalseBlock=copyMap.get(cb.getFalseBlock());
+                newBlock.renewIr(newBlock.getIrNum()-1,new CondBr(lastInstr.getOperand(0),newTrueBlock,newFalseBlock));
+            }
         }
         return copyBlock;
     }
@@ -193,8 +201,8 @@ public class FunctionInlinePass implements ModulePass {
         Call call=(Call) bb.getIr(pos);
         if(allocate!=null){
             ValueRef lVal=call.getLVal();
-            Load load=new Load(lVal,call.getLVal());
-            bb.put(load);
+            Load load=new Load(lVal,allocate.getLVal());
+            truncated.put(load);
         }
         bb.renewIr(pos,new Default());
         for (int i = pos+1; i < bb.getIrNum(); i++) {

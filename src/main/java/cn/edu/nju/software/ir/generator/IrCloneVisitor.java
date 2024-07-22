@@ -3,8 +3,12 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
+
+import java.lang.reflect.Constructor;
 
 
 public class IrCloneVisitor implements InstructionVisitor {
@@ -17,118 +21,118 @@ public class IrCloneVisitor implements InstructionVisitor {
 
     @Override
     public void visit(GEP gep) {
-        ValueRef lVal = new ValueRef(gep.getLVal());
+        ValueRef lVal = gep.getLVal().copy();
         ValueRef[] operands = new ValueRef[gep.getNumberOfOperands()];
         for (int i = 0; i < operands.length; i++) {
-            operands[i] = new ValueRef(gep.getOperand(i));
+            operands[i] = gep.getOperand(i).copy();
         }
         curInstruction = new GEP(lVal, gep.getArrayTypePtr(), operands);
     }
 
     @Override
     public void visit(Store store) {
-        ValueRef src = new LocalVar(store.getOperand(0).getType(),store.getOperand(0).getName());
-        ValueRef dest = new LocalVar(store.getOperand(1).getType(),store.getOperand(1).getName());
+        ValueRef src = store.getOperand(0).copy();
+        ValueRef dest = store.getOperand(1).copy();
         curInstruction = new Store(src, dest);
     }
 
     @Override
     public void visit(Allocate allocate) {
-        ValueRef lVal = new LocalVar(allocate.getLVal().getType(),allocate.getLVal().getName());
+        ValueRef lVal = allocate.getLVal().copy();
         curInstruction = new Allocate(lVal);
     }
 
     @Override
     public void visit(Load load) {
-        ValueRef src = new LocalVar(load.getOperand(0).getType(),load.getOperand(0).getName());
-        ValueRef lVal = new LocalVar(load.getLVal().getType(),load.getLVal().getName());
+        ValueRef src =load.getOperand(0).copy();
+        ValueRef lVal = load.getLVal().copy();
         curInstruction = new Load(lVal, src);
     }
 
     @Override
     public void visit(Add add) {
-        ValueRef lVal = new ValueRef(add.getLVal());
-        ValueRef operand1 = new ValueRef(add.getOperand(0));
-        ValueRef operand2 = new ValueRef(add.getOperand(1));
+        ValueRef lVal = add.getLVal().copy();
+        ValueRef operand1 = add.getOperand(0).copy();
+        ValueRef operand2 = add.getOperand(1).copy();
         curInstruction = new Add(lVal, add.getOp(), operand1, operand2);
     }
 
     @Override
     public void visit(FAdd fAdd) {
-        ValueRef lVal = new ValueRef(fAdd.getLVal());
-        ValueRef operand1 = new ValueRef(fAdd.getOperand(0));
-        ValueRef operand2 = new ValueRef(fAdd.getOperand(1));
+        ValueRef lVal =fAdd.getLVal().copy();
+        ValueRef operand1 = fAdd.getOperand(0).copy();
+        ValueRef operand2 =fAdd.getOperand(1).copy();
         curInstruction = new FAdd(lVal, fAdd.getOp(), operand1, operand2);
     }
 
 
     @Override
     public void visit(Sub sub) {
-        ValueRef lVal = new ValueRef(sub.getLVal());
-        ValueRef operand1 = new ValueRef(sub.getOperand(0));
-        ValueRef operand2 = new ValueRef(sub.getOperand(1));
+        ValueRef lVal = sub.getLVal().copy();
+        ValueRef operand1 = sub.getOperand(0).copy();
+        ValueRef operand2 = sub.getOperand(1).copy();
         curInstruction = new Sub(lVal, sub.getOp(), operand1, operand2);
     }
 
     @Override
     public void visit(FSub fSub) {
-        ValueRef lVal = new ValueRef(fSub.getLVal());
-        ValueRef operand1 = new ValueRef(fSub.getOperand(0));
-        ValueRef operand2 = new ValueRef(fSub.getOperand(1));
+        ValueRef lVal = fSub.getLVal().copy();
+        ValueRef operand1 = fSub.getOperand(0).copy();
+        ValueRef operand2 = fSub.getOperand(1).copy();
         curInstruction = new FSub(lVal, fSub.getOp(), operand1, operand2);
     }
 
     @Override
     public void visit(Mul mul) {
-        ValueRef lVal = new ValueRef(mul.getLVal());
-        ValueRef operand1 = new ValueRef(mul.getOperand(0));
-        ValueRef operand2 = new ValueRef(mul.getOperand(1));
+        ValueRef lVal =mul.getLVal().copy();
+        ValueRef operand1 = mul.getOperand(0).copy();
+        ValueRef operand2 = mul.getOperand(1).copy();
         curInstruction = new Mul(lVal, mul.getOp(), operand1, operand2);
     }
 
     @Override
     public void visit(FMul fmul) {
-        ValueRef lVal = new ValueRef(fmul.getLVal());
-        ValueRef operand1 = new ValueRef(fmul.getOperand(0));
-        ValueRef operand2 = new ValueRef(fmul.getOperand(1));
+        ValueRef lVal = fmul.getLVal().copy();
+        ValueRef operand1 = fmul.getOperand(0).copy();
+        ValueRef operand2 = fmul.getOperand(1).copy();
         curInstruction = new FMul(lVal, fmul.getOp(), operand1, operand2);
     }
 
     @Override
     public void visit(Mod mod) {
-        ValueRef lVal = new ValueRef(mod.getLVal());
-        ValueRef operand1 = new ValueRef(mod.getOperand(0));
-        ValueRef operand2 = new ValueRef(mod.getOperand(1));
+        ValueRef lVal = mod.getLVal().copy();
+        ValueRef operand1 = mod.getOperand(0).copy();
+        ValueRef operand2 = mod.getOperand(1).copy();
         curInstruction = new Mod(lVal, mod.getOp(), operand1, operand2);
     }
 
     @Override
     public void visit(Div div) {
-        ValueRef lVal = new ValueRef(div.getLVal());
-        ValueRef operand1 = new ValueRef(div.getOperand(0));
-        ValueRef operand2 = new ValueRef(div.getOperand(1));
+        ValueRef lVal =div.getLVal().copy();
+        ValueRef operand1 = div.getOperand(0).copy();
+        ValueRef operand2 = div.getOperand(1).copy();
         curInstruction = new Div(lVal, div.getOp(), operand1, operand2);
     }
 
     @Override
     public void visit(FDiv fdiv) {
-        ValueRef lVal = new ValueRef(fdiv.getLVal());
-        ValueRef operand1 = new ValueRef(fdiv.getOperand(0));
-        ValueRef operand2 = new ValueRef(fdiv.getOperand(1));
+        ValueRef lVal = fdiv.getLVal().copy();
+        ValueRef operand1 = fdiv.getOperand(0).copy();
+        ValueRef operand2 = fdiv.getOperand(1).copy();
         curInstruction = new FDiv(lVal, fdiv.getOp(), operand1, operand2);
     }
 
     @Override
     public void visit(IntToFloat intToFloat) {
-        ValueRef lVal = new ValueRef(intToFloat.getLVal());
-        ValueRef operand1 = new ValueRef(intToFloat.getOperand(0));
+        ValueRef lVal = intToFloat.getLVal().copy();
+        ValueRef operand1 = intToFloat.getOperand(0).copy();
         curInstruction = new IntToFloat(lVal, operand1);
     }
 
     @Override
     public void visit(FloatToInt floatToInt) {
-        ValueRef lVal = new ValueRef(floatToInt.getLVal());
-        ValueRef operand1 = new ValueRef(floatToInt.getOperand(0));
+        ValueRef lVal = floatToInt.getLVal().copy();
+        ValueRef operand1 = floatToInt.getOperand(0).copy();
         curInstruction = new FloatToInt(lVal, operand1);
     }
 
@@ -139,7 +143,7 @@ public class IrCloneVisitor implements InstructionVisitor {
 
     @Override
     public void visit(CondBr condBr) {
-        ValueRef cond = new ValueRef(condBr.getOperand(0));
+        ValueRef cond = condBr.getOperand(0).copy();
         BasicBlockRef ifTrue = condBr.getTrueBlock();
         BasicBlockRef ifFalse = condBr.getFalseBlock();
         curInstruction = new CondBr(cond, ifTrue, ifFalse);
@@ -147,32 +151,31 @@ public class IrCloneVisitor implements InstructionVisitor {
 
     @Override
     public void visit(Cmp cmp) {
-        ValueRef lVal = new ValueRef(cmp.getLVal());
-        ValueRef operand1 = new ValueRef(cmp.getOperand(0));
-        ValueRef operand2 = new ValueRef(cmp.getOperand(1));
+        ValueRef lVal = cmp.getLVal().copy();
+        ValueRef operand1 =cmp.getOperand(0).copy();
+        ValueRef operand2 =cmp.getOperand(1).copy();
         curInstruction = new Cmp(lVal, cmp.getOp(), cmp.getType(), operand1, operand2);
     }
 
     @Override
-    public void visit(Logic logic) {
+    public void visit(Logic logic)  {
         ValueRef lVal = new ValueRef(logic.getLVal());
-        ValueRef operand1 = new ValueRef(logic.getOperand(0));
-        ValueRef operand2 = new ValueRef(logic.getOperand(1));
+        ValueRef operand1 = logic.getOperand(0).copy();
+        ValueRef operand2=logic.getOperand(1).copy();
         curInstruction = new Logic(lVal, logic.getOp(), operand1, operand2);
     }
 
     @Override
     public void visit(ZExt zExt) {
-        //TODO:
-//        ValueRef lVal = new ValueRef(zExt.getLVal());
-//        ValueRef operand = new ValueRef(zExt.getOperand(0));
-//        curInstruction = new ZExt(lVal, operand, );
+        ValueRef lVal = zExt.getLVal().copy();
+        ValueRef operand = zExt.getOperand(0).copy();
+        curInstruction=new ZExt(lVal,operand,zExt.getTarget());
     }
 
 
     @Override
     public void visit(RetValue retValue) {
-        ValueRef retVal = new ValueRef(retValue.getOperand(0));
+        ValueRef retVal = retValue.getOperand(0).copy();
         curInstruction = new RetValue(retVal);
     }
 
@@ -183,13 +186,14 @@ public class IrCloneVisitor implements InstructionVisitor {
 
     @Override
     public void visit(BitCast bitCast) {
-        ValueRef lVal = new ValueRef(bitCast.getLVal());
-        ValueRef operand = new ValueRef(bitCast.getOperand(0));
+        ValueRef lVal = bitCast.getLVal().copy();
+        ValueRef operand = bitCast.getOperand(0).copy();
         curInstruction = new BitCast(lVal, operand);
     }
 
     @Override
     public void visit(Call call) {
-        //TODO
+        //call指令比较特殊，不做复制
+        curInstruction=call;
     }
 }

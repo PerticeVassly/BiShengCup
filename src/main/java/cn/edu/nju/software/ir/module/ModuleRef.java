@@ -203,7 +203,11 @@ public class ModuleRef {
                 System.out.println();
                 for (int j = 0; j < block.getIrNum(); j++) {
                     // output each ir in the basic block
-                    System.out.println(TAB + block.getIr(j));
+                    //空指令不打印换行
+                    if(!block.getIr(j).toString().isEmpty()){
+                        System.out.println(TAB + block.getIr(j));
+                    }
+
                 }
                 // when output a whole block, start a new line
                 if (i < fv.getBlockNum() - 1) {

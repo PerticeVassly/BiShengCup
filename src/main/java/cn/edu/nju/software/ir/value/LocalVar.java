@@ -12,6 +12,11 @@ public class LocalVar extends ValueRef implements Variable {
         super(type, name);
     }
 
+
+    public LocalVar copy() {
+        return new LocalVar(type,name);
+    }
+
     @Override
     public String toString() {
         return "%" + name;

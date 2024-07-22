@@ -21,7 +21,9 @@ public class ZExt extends Instruction {
     public String toString() {
         return lVal + " = zext " + operands[0].getType() + " " + operands[0] + " to " + target;
     }
-
+    public TypeRef getTarget(){
+        return target;
+    }
     @Override
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
