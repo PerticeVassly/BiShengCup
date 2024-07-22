@@ -26,7 +26,7 @@ public class ValueRef {
         this.type = type;
     }
     public ValueRef copy(){
-        return new ValueRef(this);
+        return new ValueRef();
     }
     public void updateType(TypeRef type) {
         this.type = type;

@@ -15,10 +15,8 @@ public class Cmp extends Binary {
     }
 
     public Cmp(ValueRef lVal, OpEnum op, String type, ValueRef operand1, ValueRef operand2) {
-        this.lVal = lVal;
-        operator = getOperator(op);
+        super(lVal, op, operand1, operand2);
         this.type = type;
-        operands = new ValueRef[]{operand1, operand2};
     }
 
     public String getType() {

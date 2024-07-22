@@ -18,7 +18,7 @@ import cn.edu.nju.software.ir.value.ValueRef;
 
 
 import java.util.*;
-import java.util.zip.CheckedOutputStream;
+
 
 public class FunctionInlinePass implements ModulePass {
     //TODO:本pass应该尽可能提前做，否则可能会有潜在问题（如隔多行访问同一临时变量）
@@ -53,26 +53,49 @@ public class FunctionInlinePass implements ModulePass {
 
     }
     private void doPass(ModuleRef module) {
-
+        //提前先把别的函数里可以内联的部分完成
+//        for (FunctionValue functionValue:module.getFunctions()){
+//            if(!functionValue.getName().equals("main")){
+//                processFunction(functionValue);
+//            }
+//        }
+        //再进行main函数内联
         for (FunctionValue functionValue:module.getFunctions()){
             if(functionValue.getName().equals("main")){
-                for (BasicBlockRef basicBlockRef:functionValue.getBasicBlockRefs()){
-                    for (int i = 0; i < basicBlockRef.getIrNum(); i++) {
-                        if(basicBlockRef.getIr(i) instanceof Call call){
-                            if(inlineTable.contains(call.getFunction())){
-                                //进行函数内联，将产生的新块加入缓冲区
-                                inlineFunction(basicBlockRef,i,call.getFunction(),functionValue);
-                            }
+                processFunction(functionValue);
+            }
+        }
+//        for(FunctionValue functionValue:inlineTable){
+//            if(!Objects.equals(functionValue.getName(), "main")){
+//                module.dropFunction(functionValue);
+//            }
+//        }
+    }
+    private void processFunction(FunctionValue function){
+        boolean flag;
+        //TODO:性能较差（虽然好像编译时间不重要？）
+        do {
+            flag=false;
+            for (BasicBlockRef basicBlockRef:function.getBasicBlockRefs()){
+                for (int i = 0; i < basicBlockRef.getIrNum(); i++) {
+                    if(basicBlockRef.getIr(i) instanceof Call call){
+                        if(inlineTable.contains(call.getFunction())){
+                            //进行函数内联，将产生的新块加入缓冲区
+                            inlineFunction(basicBlockRef,i,call.getFunction(),function);
                         }
                     }
                 }
-                //将缓冲区中的所有新加入的块加入当前function
-                for (BasicBlockRef bb:needToBeAdded){
-                    functionValue.appendBasicBlock(bb);
-                }
             }
-            needToBeAdded.clear();
-        }
+            //将缓冲区中的所有新加入的块加入当前function
+            for (BasicBlockRef bb:needToBeAdded){
+                function.appendBasicBlock(bb);
+            }
+            if(!needToBeAdded.isEmpty()){
+                flag=true;
+                needToBeAdded.clear();
+            }
+        }while (flag);
+
     }
     private void buildInlineTable(ModuleRef module) {
            for (FunctionValue functionValue:module.getFunctions()){
@@ -103,10 +126,13 @@ public class FunctionInlinePass implements ModulePass {
         Set<BasicBlockRef> endBlocks=findEndBlocks(copyBlocks);
         processEntryBlock(call,copyBlocks.get(0),bb);
         //更新pos（因为外提allocate导致pos实际上并不指向之前的call指令）
+        //fix:需要判断call指令是否是当前内联的函数
         for (int i = pos; i <bb.getIrNum() ; i++) {
-            if (bb.getIr(i) instanceof Call) {
-                pos=i;
-                break;
+            if (bb.getIr(i) instanceof Call call1) {
+                if(call1.getFunction().equals(function)){
+                    pos=i;
+                    break;
+                }
             }
         }
         TypeRef retType=((FunctionType)function.getType()).getReturnType();

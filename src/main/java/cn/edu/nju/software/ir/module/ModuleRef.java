@@ -57,7 +57,9 @@ public class ModuleRef {
     public List<FunctionValue> getFunctions() {
         return functions;
     }
-
+    public void dropFunction(FunctionValue functionValue) {
+        functions.remove(functionValue);
+    }
     public int getFunctionNum() {
         return functions.size();
     }
