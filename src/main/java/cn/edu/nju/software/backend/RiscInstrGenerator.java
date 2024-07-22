@@ -85,13 +85,16 @@ public class RiscInstrGenerator implements InstructionVisitor {
         allocator.setLastLVal(instr.getLVal());
         //左值只可能是localVar
         LocalVar lVal = (LocalVar) instr.getLVal();
-        if(lVal.isTmpVar()){
-            String regName = allocator.recordTempVar(lVal);
+        if(true){ // todo() 这里改成istemp判断就可以切换前端指定的tempVar复用，目前是所有非指针的localvar
             if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
+                String regName = allocator.recordTempVar(lVal);
                 riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
             } else if(lVal.getType() instanceof FloatType){
+                String regName = allocator.recordTempVar(lVal);
                 riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft0")));
                 riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t0")));
+            } else if(lVal.getType() instanceof Pointer){
+                saveLVal(instr.getLVal());
             } else {
                 assert false;
             }
@@ -127,14 +130,18 @@ public class RiscInstrGenerator implements InstructionVisitor {
     private void afterAUnaryInstr(Instruction instr){
         allocator.setLastLVal(instr.getLVal());
         LocalVar lVal = (LocalVar) instr.getLVal();
-        if(lVal.isTmpVar()){
-            String regName = allocator.recordTempVar(lVal);
+        if(true){ //todo() 这里改成istemp判断就可以切换前端指定的tempVar复用，目前是所有非指针的localvar
             if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
+                String regName = allocator.recordTempVar(lVal);
                 riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
             } else if(lVal.getType() instanceof FloatType){
+                String regName = allocator.recordTempVar(lVal);
                 riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft0")));
                 riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t0")));
-            } else {
+            } else if(lVal.getType() instanceof Pointer){
+                saveLVal(instr.getLVal());
+            }
+            else {
                 assert false;
             }
         }

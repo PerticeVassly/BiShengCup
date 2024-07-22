@@ -40,7 +40,7 @@ public class RiscBasicBlock {
         this.basicBlockRef = basicBlockRef;
         this.llvmFunctionValue = functionValue;
         this.generator = new RiscInstrGenerator(basicBlockRef.getIrs(), llvmFunctionValue);
-        this.tempVarLiveTable = new TempVarLiveTable();
+        this.tempVarLiveTable = new TempVarLiveTable(generator, allocator);
         this.lValLiveTable = new LValLiveTable();
     }
 
