@@ -7,6 +7,7 @@ import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.ir.type.BoolType;
 import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 import com.sun.tools.attach.AgentInitializationException;
@@ -66,15 +67,18 @@ public class TempVarLiveTable {
         else if(tempVar.getType() instanceof BoolType){
             //here means conflicts happened
             for(String regName : tempVar2Reg.keySet()){
-                if(tempVar2Reg.get(regName) == null && regName.startsWith("t")){
+                if(tempVar2Reg.get(regName) == null && !regName.startsWith("f")){
                     tempVar2Reg.put(regName, tempVar.getName());
                     return regName;
                 }
             }
-        }
-        else {
-            assert false;
-            return null;
+        } else if(tempVar.getType() instanceof Pointer){
+            for(String regName : tempVar2Reg.keySet()){
+                if(tempVar2Reg.get(regName) == null && !regName.startsWith("f")){
+                    tempVar2Reg.put(regName, tempVar.getName());
+                    return regName;
+                }
+            }
         }
 //        System.out.println("tempVar to add "+ tempVar.getName() );
 //        for(String regName : tempVar2Reg.keySet()){
@@ -82,25 +86,35 @@ public class TempVarLiveTable {
 //                System.out.println("regName: " + regName + " varName: " + tempVar2Reg.get(regName));
 //            }
 //        }
-        String spillReg = spill();
+        String spillReg = spillFor(tempVar);
         tempVar2Reg.put(spillReg, tempVar.getName());
         return spillReg;
     }
 
 
-    public String spill(){
-        for(String regName : tempVar2Reg.keySet()){
-            if(tempVar2Reg.get(regName) != null){
-                if(regName.startsWith("f")){
-                    generator.addInstruction(new RiscFsw(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new FloatType(), tempVar2Reg.get(regName))), "sp", "t4")));
+    public String spillFor(ValueRef tempVar){
+        if(tempVar.getType() instanceof FloatType){
+            for(String regName : tempVar2Reg.keySet()){
+                if(tempVar2Reg.get(regName) != null){
+                    if(regName.startsWith("f")){
+                        generator.addInstruction(new RiscFsw(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new FloatType(), tempVar2Reg.get(regName))), "sp", "t4")));
+                    }
+                    tempVar2Reg.put(regName, null);
+                    return regName;
                 }
-                else{
-                    generator.addInstruction(new RiscSw(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new IntType(), tempVar2Reg.get(regName))), "sp", "t4")));
+            }
+        } else { //int bool pointer
+            for(String regName : tempVar2Reg.keySet()){
+                if(tempVar2Reg.get(regName) != null){
+                    if(!regName.startsWith("f")){
+                        generator.addInstruction(new RiscSw(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new IntType(), tempVar2Reg.get(regName))), "sp", "t4")));
+                    }
+                    tempVar2Reg.put(regName, null);
+                    return regName;
                 }
-                tempVar2Reg.put(regName, null);
-                return regName;
             }
         }
+
         assert false;
         return null;
     }
