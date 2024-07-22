@@ -91,13 +91,13 @@ public class TempVarLiveTable {
     public String spill(){
         for(String regName : tempVar2Reg.keySet()){
             if(tempVar2Reg.get(regName) != null){
-                tempVar2Reg.put(regName, null);
                 if(regName.startsWith("f")){
                     generator.addInstruction(new RiscFsw(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new FloatType(), tempVar2Reg.get(regName))), "sp", "t4")));
                 }
                 else{
                     generator.addInstruction(new RiscSw(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new IntType(), tempVar2Reg.get(regName))), "sp", "t4")));
                 }
+                tempVar2Reg.put(regName, null);
                 return regName;
             }
         }
