@@ -70,10 +70,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 
     private boolean functionDef;
     private final Stack<Boolean> mustHaveReturn = new Stack<>(){{push(true);}}; // figure out whether always returns in `if () else if () else`
-    private SymbolTable<ValueRef, String> curScope;
-
-//    private final SymbolTable<LocalVar, ValueRef> loadRecord = new SymbolTable<>(); // record the variables been loaded
-    // LocalVar: load var; ValueRef: alloc var
+    private SymbolTable<ValueRef> curScope;
 
     private boolean global() {
         return scope.size() == 1;
@@ -122,36 +119,36 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         // make sure curScope point to the global
         if (global()) {
             FunctionType ft = new FunctionType(i32Type, new ArrayList<>(), 0);
-            curScope.put(new Symbol<>("getint", gen.addFunction(module, ft, "getint", true)));
-            curScope.put(new Symbol<>("getch", gen.addFunction(module, ft, "getch", true)));
+            curScope.put(new Symbol<>("getint", gen.addFunction(module, ft, "getint")));
+            curScope.put(new Symbol<>("getch", gen.addFunction(module, ft, "getch")));
 
             ft = new FunctionType(floatType, new ArrayList<>(), 0);
-            curScope.put(new Symbol<>("getfloat", gen.addFunction(module, ft, "getfloat", true)));
+            curScope.put(new Symbol<>("getfloat", gen.addFunction(module, ft, "getfloat")));
 
 //            ft = new FunctionType(i32Type, new ArrayList<TypeRef>(){{}}, 1); // TODO array type
 
             ft = new FunctionType(voidType, new ArrayList<TypeRef>(){{add(i32Type);}}, 1);
-            curScope.put(new Symbol<>("putint", gen.addFunction(module, ft, "putint", true)));
-            curScope.put(new Symbol<>("putch", gen.addFunction(module, ft, "putch", true)));
+            curScope.put(new Symbol<>("putint", gen.addFunction(module, ft, "putint")));
+            curScope.put(new Symbol<>("putch", gen.addFunction(module, ft, "putch")));
 
             ft = new FunctionType(voidType, new ArrayList<TypeRef>(){{add(floatType);}}, 1);
-            curScope.put(new Symbol<>("putfloat", gen.addFunction(module, ft, "putfloat", true)));
+            curScope.put(new Symbol<>("putfloat", gen.addFunction(module, ft, "putfloat")));
 
             ft = new FunctionType(voidType, new ArrayList<>(), 0);
-            curScope.put(new Symbol<>("starttime", gen.addFunction(module, ft, "starttime", true)));
-            curScope.put(new Symbol<>("stoptime", gen.addFunction(module, ft, "stoptime", true)));
+            curScope.put(new Symbol<>("starttime", gen.addFunction(module, ft, "starttime")));
+            curScope.put(new Symbol<>("stoptime", gen.addFunction(module, ft, "stoptime")));
 
             ft = new FunctionType(i32Type, new ArrayList<>(){{add(new Pointer(i32Type));}}, 1);
-            curScope.put(new Symbol<>("getarray", gen.addFunction(module, ft, "getarray", true)));
+            curScope.put(new Symbol<>("getarray", gen.addFunction(module, ft, "getarray")));
 
             ft = new FunctionType(i32Type, new ArrayList<>(){{add(new Pointer(floatType));}}, 1);
-            curScope.put(new Symbol<>("getfarray", gen.addFunction(module, ft, "getfarray", true)));
+            curScope.put(new Symbol<>("getfarray", gen.addFunction(module, ft, "getfarray")));
 
             ft = new FunctionType(voidType, new ArrayList<>(){{add(i32Type); add(new Pointer(i32Type));}}, 2);
-            curScope.put(new Symbol<>("putarray", gen.addFunction(module, ft, "putarray", true)));
+            curScope.put(new Symbol<>("putarray", gen.addFunction(module, ft, "putarray")));
 
             ft = new FunctionType(voidType, new ArrayList<>(){{add(i32Type); add(new Pointer(floatType));}}, 2);
-            curScope.put(new Symbol<>("putfarray", gen.addFunction(module, ft, "putfarray", true)));
+            curScope.put(new Symbol<>("putfarray", gen.addFunction(module, ft, "putfarray")));
 
             addMemSet();
         }
@@ -164,6 +161,10 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         argsTy.add(i32Type);
         FunctionType ft = new FunctionType(voidType, argsTy, 3);
         memset = new FunctionValue(ft, "memset");
+    }
+
+    private static boolean isZeroInit(String initStr) {
+        return initStr.replaceAll("[{0,}]", "").isEmpty();
     }
 
     @Override
@@ -249,7 +250,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 LocalVar param = function.getParam(i);
                 LocalVar pointer = gen.buildAllocate(builder, param.getType(), "lv");
                 gen.buildStore(builder, param, pointer);
-//                loadRecord.setInvalid(pointer); // store renews alloc, set load var invalid
                 curScope.put(new Symbol<>(fParam, pointer));
             }
         }
@@ -268,7 +268,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 
         /* eliminate dead blocks: */
         function.clearDeadBlocks();
-        function.modifyBlocks();
 
         return ret;
     }
@@ -320,6 +319,12 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else if (ctx.unaryOp() != null) {
             // !, - , +
             String op = ctx.unaryOp().getText();
+            if (op.equals("-") && ctx.exp(0).number() != null) {
+                SysYParser.NumberContext numberCtx = ctx.exp(0).number();
+                if (numberCtx.INTEGER_CONST() != null) {
+                    return gen.ConstInt(i32Type, string2Int("-" + numberCtx.INTEGER_CONST().getText()));
+                }
+            }
             ValueRef val = visitExp(ctx.exp(0));
             if (val instanceof ConstValue) {
                 Object value = ((ConstValue) val).getValue();
@@ -366,12 +371,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 System.err.println("variable should be a pointer.");
             }
             if (!(((Pointer)lVal.getType()).getBase() instanceof ArrayType)){
-//                if (loadRecord.find(lVal) != null) {
-//                    return loadRecord.find(lVal);
-//                }
-                LocalVar lv = gen.buildLoad(builder, lVal, ctx.lVal().IDENT().getText());
-//                loadRecord.put(new Symbol<>(lVal, lv)); // load a var from alloc, before it's been stored, the load var is valid
-                return lv;
+                return gen.buildLoad(builder, lVal, ctx.lVal().IDENT().getText());
             } else {
                 return gen.buildGEP(builder, lVal, new ValueRef[]{gen.ConstInt(i32Type, 0)}, 1,
                         ctx.lVal().IDENT().getText());
@@ -386,8 +386,8 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 //            System.err.println(ctx.exp(1).getText());
             ValueRef val1 = visitExp(ctx.exp(0)), val2 = visitExp(ctx.exp(1));
             boolean tmpFlag = ctx.parent instanceof SysYParser.ExpContext;
+            LocalVar lv;
             if (val1.getType().equals(i32Type) && val2.getType().equals(i32Type)) {
-                LocalVar lv = null;
                 if (ctx.PLUS() != null) {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
@@ -425,10 +425,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         lv = gen.buildMod(builder, val1, val2, "result_");
                     }
                 }
-                lv.setTmp(tmpFlag);
-                return lv;
             } else {
-                LocalVar lv = null;
                 if (val1.getType().equals(i32Type)) {
                     if (val1 instanceof ConstValue) {
                         val1 = gen.ConstFloat(floatType, (float)(int) ((ConstValue) val1).getValue());
@@ -472,9 +469,9 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         lv = gen.buildFDiv(builder, val1, val2, "result_");
                     }
                 }
-                lv.setTmp(tmpFlag);
-                return lv;
             }
+            lv.setTmp(tmpFlag);
+            return lv;
         }
     }
     @Override
@@ -506,9 +503,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                 if (res != null) return res;
             }
 //            System.err.println(dim);
-//            if (lVal == null) {
-//                System.err.println(ctx.IDENT().getText());
-//            } // for dbg
             if (((Pointer)lVal.getType()).getBase() instanceof Pointer) {
                 lVal = gen.buildLoad(builder, lVal, "arr_");
             }
@@ -537,7 +531,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         } else if (ctx.ASSIGN() != null) {
             ValueRef lVal = visitLVal(ctx.lVal());
             ValueRef exp = visitExp(ctx.exp());
-//            loadRecord.setInvalid(lVal); // store renews alloc var, set load var invalid
             return gen.buildStore(builder, exp, lVal); // assign: lVal = exp;
         } else if (ctx.WHILE() != null) {
             // loop
@@ -839,37 +832,35 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     gen.buildStore(builder, init, localVar);
                 } else if (localVar != null) {
                     // special {}
-                    if (ctx.initVal().getText().equals("{}") || ctx.initVal().getText().equals("{0}")) {
+                    if (isZeroInit(ctx.initVal().getText())) {
                         ValueRef bitCastPtr = gen.buildBitCast(builder, localVar, "ptr");
                         ArrayList<ValueRef> args = new ArrayList<>();
                         args.add(bitCastPtr);
                         args.add(zero);
-                        ConstValue totSz = gen.ConstInt(i32Type, arrSz);
+                        ConstValue totSz = gen.ConstInt(i32Type, arrSz * 4); // need size of Bytes here!
                         args.add(totSz);
                         gen.buildCall(builder, memset, args, 3, "ret",
                                 ctx.IDENT().getSymbol().getLine());
-                        curScope.put(new Symbol<>(ctx.IDENT().getText(), localVar));
-                        return null;
-                    }
-                    // array
-                    arrayInit = new ArrayList<>();
-                    visitInitVal(ctx.initVal());
-                    /* initialize array for local variable
-                     * consider use GEP to get store target %p
-                     * store %init %p
-                     */
-                    int dims = elementDim.size();
-                    ValueRef[] indices = new ValueRef[dims];
-                    for (int i = 0; i < arrayInit.size(); i++) {
-                        ValueRef storeVal = arrayInit.get(i);
-                        int tmp = i;
-                        for (int j = dims - 1; j >= 0; j--) {
-                            indices[j] = gen.ConstInt(i32Type, tmp % elementDim.get(j));
-                            tmp /= elementDim.get(j);
+                    } else {
+                        // array
+                        arrayInit = new ArrayList<>();
+                        visitInitVal(ctx.initVal());
+                        /* initialize array for local variable
+                         * consider use GEP to get store target %p
+                         * store %init %p
+                         */
+                        int dims = elementDim.size();
+                        ValueRef[] indices = new ValueRef[dims];
+                        for (int i = 0; i < arrayInit.size(); i++) {
+                            ValueRef storeVal = arrayInit.get(i);
+                            int tmp = i;
+                            for (int j = dims - 1; j >= 0; j--) {
+                                indices[j] = gen.ConstInt(i32Type, tmp % elementDim.get(j));
+                                tmp /= elementDim.get(j);
+                            }
+                            ValueRef ptr = gen.buildGEP(builder, localVar, indices, dims, "inp");
+                            gen.buildStore(builder, storeVal, ptr);
                         }
-                        ValueRef ptr = gen.buildGEP(builder, localVar, indices, dims, "inp");
-//                        System.err.println(ctx.getText());// for dbg
-                        gen.buildStore(builder, storeVal, ptr);
                     }
                 }
             }

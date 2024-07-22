@@ -7,19 +7,19 @@ import java.util.ArrayList;
  * T: self value
  * T2: key
  * */
-public class SymbolTable<T, T2> {
-    private final ArrayList<Symbol<T, T2>> table;
+public class SymbolTable<T> {
+    private final ArrayList<Symbol<T>> table;
 
     public SymbolTable() {
         table = new ArrayList<>();
     }
 
-    public void put(Symbol<T, T2> symbol) {
+    public void put(Symbol<T> symbol) {
         table.add(symbol);
     }
 
-    public T find(T2 name) {
-        for (Symbol<T, T2> symbol : table) {
+    public T find(String name) {
+        for (Symbol<T> symbol : table) {
             if (symbol.isValid() && name.equals(symbol.getName())) {
                 return symbol.getValue();
             }
@@ -27,8 +27,8 @@ public class SymbolTable<T, T2> {
         return null;
     }
 
-    public void setInvalid(T2 name) {
-        for (Symbol<T, T2> symbol : table) {
+    public void setInvalid(String name) {
+        for (Symbol<T> symbol : table) {
             if (name.equals(symbol.getName())) {
                 symbol.setValid(false);
             }

@@ -11,8 +11,8 @@ import java.util.Stack;
 
 public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
     private static final Type DEFAULT_RETTYPE = new NullType();
-    private final Stack<SymbolTable<Type, String>> scope = new Stack<>(); // current scope is always at the top
-    private SymbolTable<Type, String> curScope = new SymbolTable<>(); // copy of current scope
+    private final Stack<SymbolTable<Type>> scope = new Stack<>(); // current scope is always at the top
+    private SymbolTable<Type> curScope = new SymbolTable<>(); // copy of current scope
     private boolean error = false;
     private ArrayList<Type> paramsFTpList;
     private Type retType = DEFAULT_RETTYPE;
@@ -95,7 +95,7 @@ public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
     }
     private Type findIdentByCheckGOT(String ident) {
         Type type = null;
-        Stack<SymbolTable<Type, String>> tmp = new Stack<>();
+        Stack<SymbolTable<Type>> tmp = new Stack<>();
         while (!scope.empty()) {
             curScope = scope.pop();// top scope is cur scope
             tmp.push(curScope);
@@ -112,7 +112,7 @@ public class SysYSemanticVisitor extends SysYParserBaseVisitor<Type> {
     }
     @Override
     public Type visitProgram(SysYParser.ProgramContext ctx) {
-        SymbolTable<Type, String> global = new SymbolTable<>();
+        SymbolTable<Type> global = new SymbolTable<>();
         scope.push(global);
         updateCurScope();
         initGlobal();
