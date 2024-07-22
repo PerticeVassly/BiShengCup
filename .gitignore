@@ -11,6 +11,7 @@ target/
 **/src/test/resources/2023/**
 **/src/test/resources/2023part/**
 **/src/test/resources/2023hidden/**
+**/src/test/**
 
 
 
