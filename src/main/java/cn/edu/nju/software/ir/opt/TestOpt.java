@@ -4,6 +4,7 @@ import cn.edu.nju.software.backend.RiscModule;
 import cn.edu.nju.software.frontend.lexer.SysYLexer;
 import cn.edu.nju.software.frontend.parser.SysYParser;
 import cn.edu.nju.software.ir.generator.IRVisitor;
+import cn.edu.nju.software.pass.MemToReg;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -22,6 +23,8 @@ public class TestOpt {
         IRVisitor visitor = new IRVisitor();
         visitor.visit(tree);
 
+        MemToReg memToReg = new MemToReg(visitor.getModule());
+        memToReg.memToRegProc();
         visitor.dumpModuleToConsole();
 //        RiscModule riscModule = new RiscModule(visitor.getModule());
 //        riscModule.codeGen();

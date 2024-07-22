@@ -26,6 +26,9 @@ public class MemToReg {
     public void memToRegProc() {
         for (int i = 0; i < module.getFunctionNum(); i++) {
             FunctionValue fv = module.getFunction(i);
+            if (fv.isLib()) {
+                continue;
+            }
             CFG cfg = cfgBuildPass.getBasicBlockCFG(fv);
             ArrayList<Allocate> allocatesInFunction = new ArrayList<>(); // all allocates are in first bb -- entry
             BasicBlockRef entry = fv.getEntryBlock();
@@ -35,8 +38,16 @@ public class MemToReg {
                 }
                 allocatesInFunction.add((Allocate) entry.getIr(j));
             }
-            HashMap<Allocate, ValueRef> mamToRegAlloc = getRegAlloc(allocatesInFunction, fv);
+            HashMap<Allocate, ValueRef> memToRegAlloc = getReplaceableAlloc(allocatesInFunction, fv);
             // TODO
+            for (Allocate allocate : memToRegAlloc.keySet()) {
+                if (memToRegAlloc.get(allocate) == null) {
+                    entry.dropIr(allocate); // the allocate inst has never been used, delete it
+                    continue;
+                }
+                // not null, it can be replaced by reg val
+
+            }
         }
     }
 
@@ -45,7 +56,7 @@ public class MemToReg {
      */
     private int getAllocIndexByMem(ArrayList<Allocate> allocates, ValueRef mem) {
         for (int i = 0; i < allocates.size(); i++) {
-            if (allocates.get(i).getOperand(0).equals(mem)) {
+            if (allocates.get(i).getLVal().equals(mem)) { // allocate inst lVal is the memory
                 return i;
             }
         }
@@ -57,7 +68,7 @@ public class MemToReg {
      * param fv: function
      * return value: allocate inst that could be transformed into register
      * */
-    private HashMap<Allocate, ValueRef> getRegAlloc(ArrayList<Allocate> allocates, FunctionValue fv) {
+    private HashMap<Allocate, ValueRef> getReplaceableAlloc(ArrayList<Allocate> allocates, FunctionValue fv) {
         ArrayList<Allocate> tmp = new ArrayList<>(allocates);
         ArrayList<ValueRef> regValue = new ArrayList<>();
         for (int i = 0; i < allocates.size(); i++) {
@@ -86,8 +97,8 @@ public class MemToReg {
         }
         HashMap<Allocate, ValueRef> res = new HashMap<>();
         for (int i = 0; i < tmp.size(); i++) {
-            if (regValue.get(i) != null && tmp.get(i) != null) {
-                res.put(tmp.get(i), regValue.get(i));
+            if (/*regValue.get(i) != null && */tmp.get(i) != null) {
+                res.put(tmp.get(i), regValue.get(i)); // if regVal == null, the alloc can be deleted
             }
         }
         return res;

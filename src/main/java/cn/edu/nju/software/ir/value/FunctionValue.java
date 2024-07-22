@@ -22,6 +22,7 @@ public class FunctionValue extends ValueRef {
     private final ArrayList<Integer> paramsUsedNamesFreq= new ArrayList<Integer>(){{add(0);}};
     private final List<BasicBlockRef> blocks;
     private BasicBlockRef entryBlock;
+    private boolean isLib = false;
 
     private final static ArrayList<String> funcDeclUsedNames = new ArrayList<>();
     private final static ArrayList<Integer> funcDeclUsedNamesFreq = new ArrayList<>();
@@ -46,6 +47,15 @@ public class FunctionValue extends ValueRef {
         }
         fParamNum = paramsNum;
         blocks = new ArrayList<>();
+        isLib = false;
+    }
+
+    public void setLib(boolean lib) {
+        isLib = lib;
+    }
+
+    public boolean isLib() {
+        return isLib;
     }
 
     public void appendBasicBlock(BasicBlockRef basicBlockRef) {

@@ -88,6 +88,11 @@ public class BasicBlockRef extends ValueRef {
         return irs.get(index);
     }
 
+    public void dropIr(Instruction ir) {
+        irs.remove(ir);
+        irNum--;
+    }
+
     public List<Instruction> getIrs() {
         return irs;
     }
