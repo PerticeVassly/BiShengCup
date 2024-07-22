@@ -1,10 +1,16 @@
 package cn.edu.nju.software.backend.regalloc;
 
+import cn.edu.nju.software.backend.RiscInstrGenerator;
 import cn.edu.nju.software.backend.RiscSpecifications;
+import cn.edu.nju.software.backend.riscinstruction.RiscSw;
+import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.ir.type.BoolType;
 import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
+import com.sun.tools.attach.AgentInitializationException;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsw;
 
 import java.util.HashMap;
 import java.util.Spliterator;
@@ -17,11 +23,17 @@ public class TempVarLiveTable {
     /* RegName : VarName */
     private final HashMap<String, String> tempVar2Reg = new HashMap<>();
 
-    public TempVarLiveTable() {
+    private RiscInstrGenerator generator;
+
+    private Allocator allocator;
+
+    public TempVarLiveTable(RiscInstrGenerator generator, Allocator allocator) {
         String[] tempVarRegs = RiscSpecifications.getTempVarRegs();
         for (String regName : tempVarRegs) {
             tempVar2Reg.put(regName, null);
         }
+        this.generator = generator;
+        this.allocator = allocator;
     }
 
     public boolean isRecorded(ValueRef tempVar) {
@@ -70,6 +82,25 @@ public class TempVarLiveTable {
 //                System.out.println("regName: " + regName + " varName: " + tempVar2Reg.get(regName));
 //            }
 //        }
+        String spillReg = spill();
+        tempVar2Reg.put(spillReg, tempVar.getName());
+        return spillReg;
+    }
+
+
+    public String spill(){
+        for(String regName : tempVar2Reg.keySet()){
+            if(tempVar2Reg.get(regName) != null){
+                tempVar2Reg.put(regName, null);
+                if(regName.startsWith("f")){
+                    generator.addInstruction(new RiscFsw(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new FloatType(), tempVar2Reg.get(regName))), "sp", "t4")));
+                }
+                else{
+                    generator.addInstruction(new RiscSw(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new IntType(), tempVar2Reg.get(regName))), "sp", "t4")));
+                }
+                return regName;
+            }
+        }
         assert false;
         return null;
     }
