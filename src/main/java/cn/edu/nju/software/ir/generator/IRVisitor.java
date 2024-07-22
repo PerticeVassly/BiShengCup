@@ -385,34 +385,36 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 //            System.err.println(ctx.exp(0).getText());
 //            System.err.println(ctx.exp(1).getText());
             ValueRef val1 = visitExp(ctx.exp(0)), val2 = visitExp(ctx.exp(1));
+            boolean tmpFlag = ctx.parent instanceof SysYParser.ExpContext;
+            LocalVar lv;
             if (val1.getType().equals(i32Type) && val2.getType().equals(i32Type)) {
                 if (ctx.PLUS() != null) {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
                         return gen.ConstInt(i32Type, v1 + v2);
                     } else {
-                        return gen.buildAdd(builder, val1, val2, "result_");
+                        lv = gen.buildAdd(builder, val1, val2, "result_");
                     }
                 } else if (ctx.MINUS() != null) {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
                         return gen.ConstInt(i32Type, v1 - v2);
                     } else {
-                        return gen.buildSub(builder, val1, val2, "result_");
+                        lv = gen.buildSub(builder, val1, val2, "result_");
                     }
                 } else if (ctx.MUL() != null) {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
                         return gen.ConstInt(i32Type, v1 * v2);
                     } else {
-                        return gen.buildMul(builder, val1, val2, "result_");
+                        lv = gen.buildMul(builder, val1, val2, "result_");
                     }
                 } else if (ctx.DIV() != null) {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
                         return gen.ConstInt(i32Type, v1 / v2);
                     } else {
-                        return gen.buildDiv(builder, val1, val2, "result_");
+                        lv = gen.buildDiv(builder, val1, val2, "result_");
                     }
                 } else {
                     // mod
@@ -420,7 +422,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         int v1 = (Integer) ((ConstValue) val1).getValue(), v2 = (Integer) ((ConstValue) val2).getValue();
                         return gen.ConstInt(i32Type, v1 % v2);
                     } else {
-                        return gen.buildMod(builder, val1, val2, "result_");
+                        lv = gen.buildMod(builder, val1, val2, "result_");
                     }
                 }
             } else {
@@ -443,31 +445,33 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         float v1 = (Float) ((ConstValue) val1).getValue(), v2 = (Float) ((ConstValue) val2).getValue();
                         return gen.ConstFloat(floatType, v1 + v2);
                     } else {
-                        return gen.buildFAdd(builder, val1, val2, "result_");
+                        lv = gen.buildFAdd(builder, val1, val2, "result_");
                     }
                 } else if (ctx.MINUS() != null) {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         float v1 = (Float) ((ConstValue) val1).getValue(), v2 = (Float) ((ConstValue) val2).getValue();
                         return gen.ConstFloat(floatType, v1 - v2);
                     } else {
-                        return gen.buildFSub(builder, val1, val2, "result_");
+                        lv = gen.buildFSub(builder, val1, val2, "result_");
                     }
                 } else if (ctx.MUL() != null) {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         float v1 = (Float) ((ConstValue) val1).getValue(), v2 = (Float) ((ConstValue) val2).getValue();
                         return gen.ConstFloat(floatType, v1 * v2);
                     } else {
-                        return gen.buildFMul(builder, val1, val2, "result_");
+                        lv = gen.buildFMul(builder, val1, val2, "result_");
                     }
                 } else {
                     if (val1 instanceof ConstValue && val2 instanceof ConstValue) {
                         float v1 = (Float) ((ConstValue) val1).getValue(), v2 = (Float) ((ConstValue) val2).getValue();
                         return gen.ConstFloat(floatType, v1 / v2);
                     } else {
-                        return gen.buildFDiv(builder, val1, val2, "result_");
+                        lv = gen.buildFDiv(builder, val1, val2, "result_");
                     }
                 }
             }
+            lv.setTmp(tmpFlag);
+            return lv;
         }
     }
     @Override

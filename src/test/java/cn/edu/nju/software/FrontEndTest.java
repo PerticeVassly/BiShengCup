@@ -37,7 +37,7 @@ public class FrontEndTest {
 //    @StringSource("65_color")
 //    @StringSource("101_float_arr")
 //    @StringSource("38_light2d")
-    @StringSource("35_math")
+    @StringSource("02_ret_in_block")
 //    @StringSource("79_var_name")
 //    @StringSource("90_many_locals")
 //    @StringSource("64_calculator")
@@ -62,7 +62,7 @@ public class FrontEndTest {
     @ParameterizedTest
     @MethodSource("dirHidden")
     void testHidden(String name) throws IOException, InterruptedException {
-        if (Stream.of("23_json", "30_many_dimensions", "36_rotate", "38_light2d").anyMatch(name::equals)) fail();
+        if (Stream.of("30_many_dimensions", "36_rotate", "38_light2d").anyMatch(name::equals)) fail();
         testFile(DIR_HIDDEN, name);
     }
 

@@ -1,5 +1,6 @@
 package cn.edu.nju.software.ir.opt;
 
+import cn.edu.nju.software.backend.RiscModule;
 import cn.edu.nju.software.frontend.lexer.SysYLexer;
 import cn.edu.nju.software.frontend.parser.SysYParser;
 import cn.edu.nju.software.ir.generator.IRVisitor;
@@ -22,5 +23,8 @@ public class TestOpt {
         visitor.visit(tree);
 
         visitor.dumpModuleToConsole();
+//        RiscModule riscModule = new RiscModule(visitor.getModule());
+//        riscModule.codeGen();
+//        riscModule.dumpToConsole();
     }
 }
