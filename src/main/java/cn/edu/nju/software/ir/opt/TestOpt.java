@@ -4,6 +4,7 @@ import cn.edu.nju.software.backend.RiscModule;
 import cn.edu.nju.software.frontend.lexer.SysYLexer;
 import cn.edu.nju.software.frontend.parser.SysYParser;
 import cn.edu.nju.software.ir.generator.IRVisitor;
+import cn.edu.nju.software.pass.EliminateConstExp;
 import cn.edu.nju.software.pass.MemToReg;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -24,7 +25,9 @@ public class TestOpt {
         visitor.visit(tree);
 
         MemToReg memToReg = new MemToReg(visitor.getModule());
+        EliminateConstExp eliminateConstExp = new EliminateConstExp(visitor.getModule());
         memToReg.memToRegProc();
+        eliminateConstExp.doEliminateProc();
         visitor.dumpModuleToConsole();
 //        RiscModule riscModule = new RiscModule(visitor.getModule());
 //        riscModule.codeGen();

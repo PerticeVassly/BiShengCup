@@ -48,5 +48,4 @@ public class ValueRef {
     public boolean equals(ValueRef other) {
         return other == this;
     }
-
 }
