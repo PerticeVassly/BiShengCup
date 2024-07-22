@@ -268,6 +268,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 
         /* eliminate dead blocks: */
         function.clearDeadBlocks();
+        function.modifyBlocks();
 
         return ret;
     }

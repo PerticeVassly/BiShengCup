@@ -151,6 +151,15 @@ public class FunctionValue extends ValueRef {
         blocks.forEach(BasicBlockRef::dropDeadPred);
     }
 
+    /***
+     * modify all blocks in function
+     */
+    public void modifyBlocks() {
+        for (BasicBlockRef bb : blocks) {
+            bb.modify();
+        }
+    }
+
     public void emitAlloc(Allocate inst) {
         entryBlock.put(0, inst);
     }
