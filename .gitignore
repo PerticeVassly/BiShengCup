@@ -6,8 +6,9 @@ target/
 **/src/test/resources/2023/*
 **/src/test/resources/2023part/*
 **/src/test/resources/2023hidden/*
-
-
+!**/src/test/resources/2023/*.sy
+!**/src/test/resources/2023/*.out
+!**/src/test/resources/2023/*.in
 
 
 
