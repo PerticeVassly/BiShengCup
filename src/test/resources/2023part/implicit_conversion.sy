@@ -1,5 +1,0 @@
-int main(){
-   int s=3;
-   putfloat(s*3.25);
-   return 0;
-}

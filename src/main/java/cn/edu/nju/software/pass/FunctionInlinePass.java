@@ -12,6 +12,7 @@ import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.type.VoidType;
 import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
@@ -20,8 +21,9 @@ import java.util.*;
 import java.util.zip.CheckedOutputStream;
 
 public class FunctionInlinePass implements ModulePass {
+    //TODO:本pass应该尽可能提前做，否则可能会有潜在问题（如隔多行访问同一临时变量）
     private boolean dbgFlag = false;
-    private final int sizeLimit = 20;
+    private final int sizeLimit = 20000;
     private final Set<FunctionValue> inlineTable = new HashSet<>();
     private final Set<BasicBlockRef> needToBeAdded = new HashSet<>();
     private CG cg ;
@@ -51,20 +53,23 @@ public class FunctionInlinePass implements ModulePass {
 
     }
     private void doPass(ModuleRef module) {
+
         for (FunctionValue functionValue:module.getFunctions()){
-            for (BasicBlockRef basicBlockRef:functionValue.getBasicBlockRefs()){
-                for (int i = 0; i < basicBlockRef.getIrNum(); i++) {
-                    if(basicBlockRef.getIr(i) instanceof Call call){
-                        if(inlineTable.contains(call.getFunction())){
-                              //进行函数内联，将产生的新块加入缓冲区
-                              inlineFunction(basicBlockRef,i,call.getFunction(),functionValue);
+            if(functionValue.getName().equals("main")){
+                for (BasicBlockRef basicBlockRef:functionValue.getBasicBlockRefs()){
+                    for (int i = 0; i < basicBlockRef.getIrNum(); i++) {
+                        if(basicBlockRef.getIr(i) instanceof Call call){
+                            if(inlineTable.contains(call.getFunction())){
+                                //进行函数内联，将产生的新块加入缓冲区
+                                inlineFunction(basicBlockRef,i,call.getFunction(),functionValue);
+                            }
                         }
                     }
                 }
-            }
-            //将缓冲区中的所有新加入的块加入当前function
-            for (BasicBlockRef bb:needToBeAdded){
-                functionValue.appendBasicBlock(bb);
+                //将缓冲区中的所有新加入的块加入当前function
+                for (BasicBlockRef bb:needToBeAdded){
+                    functionValue.appendBasicBlock(bb);
+                }
             }
             needToBeAdded.clear();
         }
@@ -143,11 +148,21 @@ public class FunctionInlinePass implements ModulePass {
     }
     private void processEndBlock(Allocate allocate,Set<BasicBlockRef> endBlocks,BasicBlockRef truncated){
           for (BasicBlockRef basicBlockRef:endBlocks){
-               //获取实际上的最后一条指令
-               Instruction lastInstr=basicBlockRef.getIr(basicBlockRef.getIrNum()-2);
-               basicBlockRef.renewIr(basicBlockRef.getIrNum()-1,new Default());
+               //获取实际上的最后一条指令(理论上应该是ret)
+              int index=-1;
+               Ret lastInstr=null;
+              for (int i = basicBlockRef.getIrNum()-1; i >=0; i--) {
+                  if(basicBlockRef.getIr(i) instanceof Ret){
+                      lastInstr=(Ret) basicBlockRef.getIr(i);
+                      index=i;
+                      break;
+                  }
+              }
+               assert lastInstr!=null;
+               //删除ret
+               basicBlockRef.renewIr(index,new Default());
                if (allocate!=null) {
-                   Store store=new Store(lastInstr.getLVal(),allocate.getLVal());
+                   Store store=new Store(lastInstr.getOperand(0),allocate.getLVal());
                    basicBlockRef.put(store);
               }
                basicBlockRef.put(new Br(truncated));
@@ -157,21 +172,41 @@ public class FunctionInlinePass implements ModulePass {
         IrCloneVisitor irCloneVisitor =new IrCloneVisitor();
         List<BasicBlockRef> copyBlock = new ArrayList<>();
         Map<BasicBlockRef,BasicBlockRef> copyMap=new HashMap<>();
+        Map<ValueRef,ValueRef> copyValueMap=new HashMap<>();
         for (BasicBlockRef basicBlockRef : function.getBasicBlockRefs()) {
             BasicBlockRef newBlock = new BasicBlockRef(curFunction, "inline");
             copyMap.put(basicBlockRef,newBlock);
             for (Instruction instruction : basicBlockRef.getIrs()) {
                 Instruction newInstr=irCloneVisitor.genClonedInstruction(instruction);
                 ValueRef lVal=newInstr.getLVal();
-                if(lVal!=null){
+                if(lVal!=null&&!(lVal instanceof GlobalVar)){
+                    //注意全局变量不改名
                     lVal.setName(lVal.getName()+"_of_"+newBlock.getName());
+                    copyValueMap.put(instruction.getLVal(),lVal);
                 }
                 if(newInstr.getOperands()!=null){
                     for (int i=0;i<newInstr.getNumberOfOperands();i++){
                         ValueRef operand=newInstr.getOperand(i);
                         //判断是否是在处理函数参数，如果不是，则改变变量名
-                        if (!operand.getName().isEmpty()&&!Character.isDigit(operand.getName().charAt(0))){
-                            operand.setName(operand.getName()+"_of_"+newBlock.getName());
+                        //注意全局变量不改名,跨块访问变量需查表
+                        if (!operand.getName().isEmpty()&&!Character.isDigit(operand.getName().charAt(0))&&!(operand instanceof GlobalVar)){
+                            if(copyValueMap.containsKey(instruction.getOperand(i))){
+                                operand.setName(copyValueMap.get(instruction.getOperand(i)).getName());
+                            }else {
+                                operand.setName(operand.getName()+"_of_"+newBlock.getName());
+                            }
+
+                        }
+
+                    }
+                }
+                //特别处理Call
+                if (newInstr instanceof Call call){
+                    for (ValueRef valueRef :call.getRealParams()){
+                        //判断是否是在处理函数参数，如果不是，则改变变量名
+                        //注意全局变量不改名
+                        if (!valueRef.getName().isEmpty()&&!Character.isDigit(valueRef.getName().charAt(0))&&!(valueRef instanceof GlobalVar)){
+                            valueRef.setName(valueRef.getName()+"_of_"+newBlock.getName());
                         }
 
                     }
@@ -180,6 +215,7 @@ public class FunctionInlinePass implements ModulePass {
             }
             copyBlock.add(newBlock);
         }
+        //对跳转语句的标签进行修改
         for (BasicBlockRef basicBlockRef : copyMap.keySet()) {
             BasicBlockRef newBlock = copyMap.get(basicBlockRef);
             for (int i=0;i<basicBlockRef.getPredNum();i++){
@@ -191,6 +227,10 @@ public class FunctionInlinePass implements ModulePass {
                 BasicBlockRef newTrueBlock=copyMap.get(cb.getTrueBlock());
                 BasicBlockRef newFalseBlock=copyMap.get(cb.getFalseBlock());
                 newBlock.renewIr(newBlock.getIrNum()-1,new CondBr(lastInstr.getOperand(0),newTrueBlock,newFalseBlock));
+            }
+            if (lastInstr instanceof Br br) {
+                BasicBlockRef newTarget=copyMap.get(br.getTarget());
+                newBlock.renewIr(newBlock.getIrNum()-1,new Br(newTarget));
             }
         }
         return copyBlock;
@@ -233,7 +273,7 @@ public class FunctionInlinePass implements ModulePass {
          for (int i=0;i<entry.getIrNum();i++){
              if (entry.getIr(i) instanceof Store store) {
                  ValueRef src=store.getOperand(0);
-                 if (Character.isDigit(src.getName().charAt(0))) {
+                 if (!src.getName().isEmpty()&&Character.isDigit(src.getName().charAt(0))) {
                      int index =Integer.parseInt(src.getName());
                      entry.renewIr(i,new Store(paramTable.get(index),store.getOperand(1)));
 

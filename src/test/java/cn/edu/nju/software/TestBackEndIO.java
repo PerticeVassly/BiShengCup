@@ -26,10 +26,11 @@ public class TestBackEndIO {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("implicit_conversion")
-    @StringSource("95_float")
+    @StringSource("102_cvt_fl")
+//    @StringSource("95_float")
+//    @StringSource("61_sort_test7")
     void testRisc(String name) throws IOException, InterruptedException {
-        testFile(DIR_PART, name);
+        testFile(DIR, name);
     }
 
     /**
@@ -38,7 +39,9 @@ public class TestBackEndIO {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if (Stream.of("23_json", "30_many_dimensions", "36_rotate", "38_light2d").anyMatch(name::equals)) fail();
+        if (false){
+            fail();
+        }
         testFile(DIR, name);
     }
 

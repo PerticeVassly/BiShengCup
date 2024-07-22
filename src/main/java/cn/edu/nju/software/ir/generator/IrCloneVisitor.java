@@ -5,10 +5,13 @@ import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.value.ConstValue;
+import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class IrCloneVisitor implements InstructionVisitor {
@@ -159,7 +162,7 @@ public class IrCloneVisitor implements InstructionVisitor {
 
     @Override
     public void visit(Logic logic)  {
-        ValueRef lVal = new ValueRef(logic.getLVal());
+        ValueRef lVal = logic.getLVal().copy();
         ValueRef operand1 = logic.getOperand(0).copy();
         ValueRef operand2=logic.getOperand(1).copy();
         curInstruction = new Logic(lVal, logic.getOp(), operand1, operand2);
@@ -193,7 +196,25 @@ public class IrCloneVisitor implements InstructionVisitor {
 
     @Override
     public void visit(Call call) {
-        //call指令比较特殊，不做复制
-        curInstruction=call;
+        if(call.getLVal()==null){
+            FunctionValue functionValue=call.getFunction();
+            List<ValueRef> params=new ArrayList<>();
+            for (ValueRef valueRef:call.getRealParams()){
+                params.add(valueRef.copy());
+            }
+            curInstruction=new Call(functionValue,params);
+        }else {
+            ValueRef lVal=call.getLVal().copy();
+            FunctionValue functionValue=call.getFunction();
+            List<ValueRef> params=new ArrayList<>();
+            for (ValueRef valueRef:call.getRealParams()){
+                params.add(valueRef.copy());
+            }
+            curInstruction=new Call(lVal,functionValue,params);
+        }
+    }
+
+    public void visit(Default defaultVal) {
+            curInstruction=new Default();
     }
 }
