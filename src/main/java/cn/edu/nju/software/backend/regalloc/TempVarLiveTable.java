@@ -139,4 +139,14 @@ public class TempVarLiveTable {
         }
     }
 
+    public void release(ValueRef tempVar){
+        String varName = tempVar.getName();
+        for (String regName : tempVar2Reg.keySet()) {
+            if (tempVar2Reg.get(regName) !=null && tempVar2Reg.get(regName).equals(varName)) {
+                tempVar2Reg.put(regName, null);
+                return;
+            }
+        }
+        return;
+    }
 }

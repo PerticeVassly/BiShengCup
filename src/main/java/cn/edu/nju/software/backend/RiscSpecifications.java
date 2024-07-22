@@ -33,7 +33,7 @@ public record RiscSpecifications() {
     }
 
     //todo() 寄存器分配,增加
-    private static final String[] callerSavedRegs = new String[] {"ra","t5","t6","ft5","ft6"};
+    private static final String[] callerSavedRegs = new String[] {"ra","s0","s1","s2","s3","s4","s5","fs0","fs1","fs2"};
 
 
     private static final String[] calleeSavedRegs = new String[] {};
@@ -42,7 +42,7 @@ public record RiscSpecifications() {
 
     private static final String[] fArgRegs = new String[] {"fa0", "fa1", "fa2", "fa3", "fa4", "fa5", "fa6", "fa7"};
 
-    private static final String[] tempVarRegs = new String[] {"t5","t6","ft5","ft6"};
+    private static final String[] tempVarRegs = new String[] {"s0","s1","s2","s3","s4","s5","fs0","fs1","fs2"};
 
     // todo: remove this field when Riscv basic type (int, float) is 32bit !
     private static final boolean is64bit = false;

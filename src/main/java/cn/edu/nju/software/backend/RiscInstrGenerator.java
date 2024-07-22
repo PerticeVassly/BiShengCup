@@ -85,7 +85,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         allocator.setLastLVal(instr.getLVal());
         //左值只可能是localVar
         LocalVar lVal = (LocalVar) instr.getLVal();
-        if(true){ // todo() 这里改成istemp判断就可以切换前端指定的tempVar复用，目前是所有非指针的localvar
+        if(true) { // todo() 这里改成istemp判断就可以切换前端指定的tempVar复用，目前是所有非指针的localvar
             if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
                 String regName = allocator.recordTempVar(lVal);
                 riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
@@ -94,6 +94,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
                 riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft0")));
                 riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t0")));
             } else if(lVal.getType() instanceof Pointer){
+//                String regName = allocator.recordTempVar(lVal);
+//                riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
                 saveLVal(instr.getLVal());
             } else {
                 assert false;
@@ -139,7 +141,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
                 riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft0")));
                 riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t0")));
             } else if(lVal.getType() instanceof Pointer){
-                saveLVal(instr.getLVal());
+                String regName = allocator.recordTempVar(lVal);
+                riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
+//                saveLVal(instr.getLVal());
             }
             else {
                 assert false;
@@ -277,7 +281,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
         } else{
             riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(allocator.getOffset(allocate.getLVal()) - typeLen)));
             riscInstructions.add(new RiscAdd(new Register("t0"), new Register("sp"), new Register("t0")));
-            afterABinaryInstr(allocate);
+            allocator.setLastLVal(allocate.getLVal());
+            saveLVal(allocate.getLVal());
         }
     }
 
