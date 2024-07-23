@@ -23,7 +23,7 @@ import java.util.*;
 public class FunctionInlinePass implements ModulePass {
     //TODO:本pass应该尽可能提前做，否则可能会有潜在问题（如隔多行访问同一临时变量）
     private boolean dbgFlag = false;
-    private final int sizeLimit = 20000;
+    private final int sizeLimit = 100;
     private final Set<FunctionValue> inlineTable = new HashSet<>();
     private final Set<BasicBlockRef> needToBeAdded = new HashSet<>();
     private CG cg ;
