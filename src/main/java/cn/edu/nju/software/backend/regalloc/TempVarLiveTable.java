@@ -110,7 +110,6 @@ public class TempVarLiveTable {
         String regName = getReg(tempVar);
         if(regName != null){
             tempVar2Reg.put(regName, new LocalVar(new IntType(),""));
-            System.out.println("fetch " + tempVar.getName() + " from " + regName);
             return regName;
         }
         return null;
