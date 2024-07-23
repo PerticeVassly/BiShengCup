@@ -69,10 +69,10 @@ public class MemToReg {
     /**
      * param allocates: all allocate inst in function
      * param fv: function
-     * return value: allocate inst that could be transformed into register
+     * return value: key:: allocate inst that could be transformed into register; value:: value in register
      * */
     private HashMap<Allocate, ValueRef> getReplaceableAlloc(ArrayList<Allocate> allocates, FunctionValue fv) {
-        ArrayList<Allocate> tmp = new ArrayList<>(allocates);
+        ArrayList<Allocate> tmp = new ArrayList<>(allocates);  // buffer stores replaceable alloc inst
         ArrayList<ValueRef> regValue = new ArrayList<>();
         for (int i = 0; i < allocates.size(); i++) {
             regValue.add(null);
@@ -88,7 +88,7 @@ public class MemToReg {
                     if (index == -1) {
                         continue;
                     }
-                    if (regValue.get(index) == null) {
+                    if (regValue.get(index) == null) { // no register now
                         regValue.set(index, val);
                     } else {
                         if (tmp.get(index) != null) {
@@ -102,8 +102,10 @@ public class MemToReg {
         for (int i = 0; i < tmp.size(); i++) {
             if (/*regValue.get(i) != null && */tmp.get(i) != null) {
                 res.put(tmp.get(i), regValue.get(i)); // if regVal == null, the alloc can be deleted
+                System.err.println(tmp.get(i) + ": " + regValue.get(i));
             }
         }
+        System.err.println();
         return res;
     }
 

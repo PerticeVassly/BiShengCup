@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import cn.edu.nju.software.backend.RiscModule;
+import cn.edu.nju.software.pass.EliminateConstExp;
+import cn.edu.nju.software.pass.MemToReg;
 import cn.edu.nju.software.pass.PassManager;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -74,9 +76,17 @@ public class Main {
         // generate llvm ir
         IRVisitor irVisitor = new IRVisitor();
         irVisitor.visit(tree);
-//        irVisitor.dumpModuleToConsole();
 
         ModuleRef module = irVisitor.getModule();
+
+        // test pass
+        MemToReg memToReg = new MemToReg(module);
+        memToReg.memToRegProc();
+        EliminateConstExp eliminateConstExp = new EliminateConstExp(module);
+//        eliminateConstExp.doEliminateProc();
+
+        irVisitor.dumpModuleToConsole();
+
         if(module == null){
             assert false;
         }
