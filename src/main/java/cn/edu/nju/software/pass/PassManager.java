@@ -1,4 +1,4 @@
-package cn.edu.nju.software.frontend.pass;
+package cn.edu.nju.software.pass;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.module.ModuleRef;

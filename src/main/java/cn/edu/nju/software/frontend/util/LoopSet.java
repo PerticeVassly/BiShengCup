@@ -1,6 +1,8 @@
 package cn.edu.nju.software.frontend.util;
 
 
+import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,7 +25,14 @@ public class LoopSet {
              loop.createLoopGraph(fileName+"_loop"+loop.getRoot().getName());
         }
     }
-
+//    public boolean contains(BasicBlockRef basicBlockRef){
+//        for(Loop loop : loops){
+//            if(loop.contains(basicBlockRef)){
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
     public boolean isEmpty(){
         return loops.isEmpty();
     }
