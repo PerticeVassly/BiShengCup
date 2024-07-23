@@ -48,7 +48,6 @@ public class TempVarLiveTable {
         String regForRecord = getAnEmptyReg(type);
         if(regForRecord != null){
             tempVar2Reg.put(regForRecord, tempVar);
-            System.out.println("record " + tempVar.getName() + " to " + regForRecord);
             return regForRecord;
         }
         else {
@@ -66,7 +65,6 @@ public class TempVarLiveTable {
      */
     public String spillFor(LocalVar tempVar){
         generator.addInstruction(new RiscComment("spill for " + tempVar.getName()));
-        System.out.println("spill for " + tempVar.getName());
         TypeRef type = tempVar.getType();
         String regToSpill = getAUsedReg(type);
         if(regToSpill != null){
@@ -102,7 +100,6 @@ public class TempVarLiveTable {
         String regName = getReg(tempVar);
         if(regName != null){
             clear(regName);
-            System.out.println("release " + tempVar.getName() + " from " + regName);
         }
     }
 
