@@ -3,7 +3,7 @@ package cn.edu.nju.software.backend.regalloc;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 /**
- *
+ * 计算过程中，有一些变量的值可能
  */
 public class LValLiveTable {
 

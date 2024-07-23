@@ -75,7 +75,7 @@ public class TempVarLiveTable {
             generator.addInstruction(new RiscMv(new Register(regToStage), new Register("t0")));
         } else if(RiscSpecifications.isFloatType(tempVar.getType())){
             generator.addInstruction(new RiscFmvxw(new Register("t1"), new Register("ft0")));
-            generator.addInstruction(new RiscFmvwx(new Register(regToStage), new Register("t1")));
+            generator.addInstruction(new RiscFmvwx(new Register(regToStage), new Register("t1"))); //使用t1// 防止破坏t0
         } else {
             assert false;
         }
