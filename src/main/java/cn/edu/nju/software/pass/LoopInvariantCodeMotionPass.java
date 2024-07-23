@@ -29,7 +29,9 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
         LoopSet loopSet = loopBuildPass.getLoopSet(function);
         boolean flag = false;
         for (Loop loop : loopSet.getLoops()) {
-            List<Instruction> instructions = identifyInvariants(loop,findEntry(loop));
+            List<BasicBlockRef> judgeBlocks=findJudgeBlock(loop);
+            //只对判断条件外提
+            List<Instruction> instructions = identifyInvariants(loop,findEntry(loop),judgeBlocks);
             if(!instructions.isEmpty()){
                 flag = true;
             }
@@ -63,31 +65,11 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
         if (instructions.isEmpty()) {
             return;
         }
-        List<BasicBlockRef> judgeBlocks = findJudgeBlock(loop);
         BasicBlockRef entry = findEntry(loop);
         BasicBlockRef next = findNext(loop);
         BasicBlockRef firstBody=findFirstBody(loop);
-        List<BasicBlockRef> preGuards = createPreGuards(judgeBlocks);
-        entry.renewIr(entry.getIrNum()-1,new Br(preGuards.get(0)));
-        for (BasicBlockRef preGuard : preGuards) {
-            functionValue.appendBasicBlock(preGuard);
-        }
-        BasicBlockRef motionBlock = new BasicBlockRef(functionValue, "motionBlock");
-        BasicBlockRef root = loop.getRoot();
-        root.dropPred(entry);
-        paddingMotionBlock(instructions, motionBlock);
-        buildRelation(preGuards, entry, next);
-        adjustInstr(preGuards,next,motionBlock);
-        motionBlock.addPred(preGuards.get(preGuards.size() - 1));
-        motionBlock.put(new Br(firstBody));
-        functionValue.appendBasicBlock(motionBlock);
-        root.addPred(motionBlock);
-        for (Loop subloop : loop.getSubLoops()) {
-            List<Instruction> subLoopInstructions = identifyInvariants(subloop,entry);
-            //TODO:更新CFG
-            doPass(subloop, subLoopInstructions);
-        }
-        CFGBuildPass.getInstance().update(functionValue);
+
+
     }
 
     private boolean judgeCanDoPassAndBuildTable(FunctionValue function) {
@@ -105,7 +87,7 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
         return true;
     }
 
-    private List<Instruction> identifyInvariants(Loop loop,BasicBlockRef entry) {
+    private List<Instruction> identifyInvariants(Loop loop,BasicBlockRef entry,List<BasicBlockRef> judgeBlocks) {
         //对指针更新的处理
         for (BasicBlockRef basicBlockRef : loop.getAllBasicBlocks()) {
             for (Instruction instruction : basicBlockRef.getIrs()) {
@@ -123,7 +105,7 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
             }
         }
         List<Instruction> result = new ArrayList<>();
-        for (BasicBlockRef basicBlockRef : loop.getAllBasicBlocks()) {
+        for (BasicBlockRef basicBlockRef : judgeBlocks) {
             for (Instruction instruction : basicBlockRef.getIrs()) {
                 if (instruction instanceof Br||instruction instanceof CondBr) {
                     continue;
@@ -223,21 +205,7 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
         return null;
     }
 
-    private List<BasicBlockRef> createPreGuards(List<BasicBlockRef> judgeBlocks)  {
-        IrCloneVisitor irCloneVisitor =new IrCloneVisitor();
-        List<BasicBlockRef> preGuards = new ArrayList<>();
-        for (BasicBlockRef basicBlockRef : judgeBlocks) {
-            BasicBlockRef newBlock = new BasicBlockRef(functionValue, "preGuard");
-            for (Instruction instruction : basicBlockRef.getIrs()) {
-                //TODO:指令复制
-                Instruction newInstr=irCloneVisitor.genClonedInstruction(instruction);
-                newBlock.put(newInstr);
-            }
-            preGuards.add(newBlock);
-        }
-        return preGuards;
-    }
-    //TODO:解决语句冲突
+
     private void adjustInstr(List<BasicBlockRef> preGuards, BasicBlockRef next,BasicBlockRef motion) {
         for (int i = 0; i < preGuards.size(); i++) {
             BasicBlockRef cur=preGuards.get(i);
