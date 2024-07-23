@@ -5,6 +5,7 @@ import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlw;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvwx;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvxw;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsw;
 import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Operand;
@@ -107,12 +108,12 @@ public class Allocator {
                 return;
             }
 
-            if(isLastLVal(localVar)){
-                generator.addInstruction(new RiscFmvxw(new Register("t" + i), new Register("ft0")));
-                generator.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
-                tempVarLiveTable.release(localVar);
-                return;
-            }
+//            if(isLastLVal(localVar)){
+//                generator.addInstruction(new RiscFmvxw(new Register("t" + i), new Register("ft0")));
+//                generator.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
+//                tempVarLiveTable.release(localVar);
+//                return;
+//            }
 
             generator.addInstruction(new RiscFlw(new Register("ft" + i), getAddrOfLocalVar(localVar)));
         } else if (localVar.getType() instanceof IntType || localVar.getType() instanceof BoolType) {
@@ -120,11 +121,11 @@ public class Allocator {
                 generator.addInstruction(new RiscMv(new Register("t" + i), new Register(fetchTempVar(localVar))));
                 return;
             }
-            if(isLastLVal(localVar)){
-                generator.addInstruction(new RiscMv(new Register("t" + i), new Register("t0")));
-                tempVarLiveTable.release(localVar);
-                return;
-            }
+//            if(isLastLVal(localVar)){
+//                generator.addInstruction(new RiscMv(new Register("t" + i), new Register("t0")));
+//                tempVarLiveTable.release(localVar);
+//                return;
+//            }
             generator.addInstruction(new RiscLw(new Register("t" + i), getAddrOfLocalVar(localVar)));
         } else if(localVar.getType() instanceof Pointer){
             if(isLastLVal(localVar)){
@@ -380,4 +381,23 @@ public class Allocator {
         return tempVarLiveTable.isRecorded(variable);
     }
 
+
+    /**
+     * 将局部变量（当前存储在reg中）保存进入内存(需要保存的变量只可能是localVar)
+     * @param variable
+     * @param regName
+     * @return
+     */
+    public void storeLocalVarIntoMemory(ValueRef variable, String regName){
+        TypeRef type = variable.getType();
+        if(type instanceof FloatType){
+            generator.addInstruction(new RiscFsw(new Register(regName), getAddrOfLocalVar(variable)));
+        } else if(type instanceof IntType || type instanceof BoolType){
+            generator.addInstruction(new RiscSw(new Register(regName), getAddrOfLocalVar(variable)));
+        } else if(type instanceof Pointer){
+            generator.addInstruction(new RiscSd(new Register(regName), getAddrOfLocalVar(variable)));
+        } else {
+            assert false;
+        }
+    }
 }

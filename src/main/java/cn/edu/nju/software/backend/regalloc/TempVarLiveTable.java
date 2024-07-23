@@ -2,23 +2,19 @@ package cn.edu.nju.software.backend.regalloc;
 
 import cn.edu.nju.software.backend.RiscInstrGenerator;
 import cn.edu.nju.software.backend.RiscSpecifications;
-import cn.edu.nju.software.backend.riscinstruction.RiscSd;
-import cn.edu.nju.software.backend.riscinstruction.RiscSw;
-import cn.edu.nju.software.backend.riscinstruction.operand.Register;
-import cn.edu.nju.software.ir.type.BoolType;
-import cn.edu.nju.software.ir.type.FloatType;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.type.Pointer;
-import cn.edu.nju.software.ir.value.GlobalVar;
-import cn.edu.nju.software.ir.value.LocalVar;
+import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
+import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.ValueRef;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsw;
 
-import java.util.Formattable;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
- * 用于记录tempVar所在的寄存器，以及分配寄存器给tempVar
+ * 对于所有计算出来的中间结果，可以将其暂存到tempVarReg中，后续使用可以直接使用mv操作获取。
+ * 当中间结果超过所提供的tempVarReg时，需要将其中的一部分spill到内存中,下次使用时从内存中load回来
  */
 public class TempVarLiveTable {
 
@@ -30,12 +26,10 @@ public class TempVarLiveTable {
     private Allocator allocator;
 
     public TempVarLiveTable(RiscInstrGenerator generator, Allocator allocator) {
-        String[] tempVarRegs = RiscSpecifications.getTempVarRegs();
-        for (String regName : tempVarRegs) {
-            tempVar2Reg.put(regName, null);
-        }
         this.generator = generator;
         this.allocator = allocator;
+        tempVar2Reg.putAll(Arrays.stream(RiscSpecifications.getTempVarRegs())
+                                .collect(Collectors.toMap(key -> key, value -> ""))); //初始化状态所有的寄存器对应的变量名为空
     }
 
     public boolean isRecorded(ValueRef tempVar) {
@@ -43,113 +37,82 @@ public class TempVarLiveTable {
         return tempVar2Reg.containsValue(varName);
     }
 
-    public boolean isUsed(String regName) {
-        return tempVar2Reg.get(regName) != null;
-    }
-
+    /**
+     * 依据要暂存的变量的类型，为其分配一个寄存器，如果没有没有这一类型的寄存器空闲，则spill一个寄存器并且返回
+     * @param tempVar
+     * @return 记录该变量的寄存器
+     */
     public String record(ValueRef tempVar) {
-        //find an empty reg and record
-        if(tempVar.getType() instanceof IntType || tempVar.getType() instanceof Pointer || tempVar.getType() instanceof BoolType){
-            for (String regName : tempVar2Reg.keySet()) {
-                if (tempVar2Reg.get(regName) == null && !regName.startsWith("f")) {
-                    tempVar2Reg.put(regName, tempVar.getName());
-                    return regName;
-                }
-            }
-        }
-        else if(tempVar.getType() instanceof FloatType){
-            for (String regName : tempVar2Reg.keySet()) {
-                if (tempVar2Reg.get(regName) == null && regName.startsWith("f")) {
-                    tempVar2Reg.put(regName, tempVar.getName());
-                    return regName;
-                }
-            }
-        } else {
-            assert false;
-        }
-//        System.out.println("tempVar to add "+ tempVar.getName() );
-//        for(String regName : tempVar2Reg.keySet()){
-//            if(tempVar2Reg.get(regName) != null){
-//                System.out.println("regName: " + regName + " varName: " + tempVar2Reg.get(regName));
-//            }
-//        }
-        String spillReg = spillFor(tempVar);
-        tempVar2Reg.put(spillReg, tempVar.getName());
-        return spillReg;
+        TypeRef type = tempVar.getType();
+        Optional<String> regForRecord = tempVar2Reg.entrySet().stream()
+                .filter(entry -> {
+                        if(RiscSpecifications.isGeneralType(type)){
+                            return RiscSpecifications.isGeneralReg(entry.getKey());
+                        } else if(RiscSpecifications.isFloatType(type)) {
+                            return RiscSpecifications.isFloatReg(entry.getKey());
+                        }
+                        assert false;
+                        return false;})
+                .filter(entry -> entry.getValue().isEmpty())
+                .map(Map.Entry::getKey) //获取所有对应此tempVar的空闲寄存器
+                .findFirst();
+        regForRecord.ifPresent(regName -> tempVar2Reg.put(regName, tempVar.getName())); //如果有空闲寄存器，暂存此变量
+        return regForRecord.orElseGet(() -> spillFor(tempVar)); //如果有空闲寄存器，返回寄存器名，否则spill一个寄存器返回
     }
 
 
+    /**
+     * 为tempVar spill一个寄存器
+     * @param tempVar
+     * @return
+     */
     public String spillFor(ValueRef tempVar){
-        if(tempVar.getType() instanceof FloatType){
-            for(String regName : tempVar2Reg.keySet()){
-                if(tempVar2Reg.get(regName) != null){
-                    if(regName.startsWith("f")){
-                        generator.addInstruction(new RiscFsw(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new FloatType(), tempVar2Reg.get(regName))), "sp", "t4")));
+        generator.addInstruction(new RiscComment("spill for " + tempVar.getName()));
+        TypeRef type = tempVar.getType();
+        Optional<String> regToSpill = tempVar2Reg.entrySet().stream()
+                .filter(entry -> {
+                    if(RiscSpecifications.isGeneralType(type)){
+                        return RiscSpecifications.isGeneralReg(entry.getKey());
+                    } else if(RiscSpecifications.isFloatType(type)) {
+                        return RiscSpecifications.isFloatReg(entry.getKey());
                     }
-                    tempVar2Reg.put(regName, null);
-                    System.out.println("spill for " + tempVar.getName() + " in " + regName);
-                    return regName;
-                }
-            }
-            //这里指针要sd
-        } else if(tempVar.getType() instanceof IntType || tempVar.getType() instanceof BoolType) { //int bool pointer
-            for(String regName : tempVar2Reg.keySet()){
-                if(tempVar2Reg.get(regName) != null){
-                    if(!regName.startsWith("f")){
-                        generator.addInstruction(new RiscSw(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new IntType(), tempVar2Reg.get(regName))), "sp", "t4")));
-                    }
-                    tempVar2Reg.put(regName, null);
-                    System.out.println("spill for " + tempVar.getName() + " in " + regName);
-                    return regName;
-                }
-            }
-        } else if(tempVar.getType() instanceof Pointer){
-            for(String regName : tempVar2Reg.keySet()){
-                if(tempVar2Reg.get(regName) != null){
-                    if(!regName.startsWith("f")){
-                        generator.addInstruction(new RiscSd(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new Pointer(new IntType()), tempVar2Reg.get(regName))), "sp", "t4")));
-                    }
-                    tempVar2Reg.put(regName, null);
-                    System.out.println("spill for " + tempVar.getName() + " in " + regName);
-                    return regName;
-                }
-            }
-        } else {
-            assert false;
+                    assert false;
+                    return false;})
+                .filter(entry -> !entry.getValue().isEmpty())
+                .map(Map.Entry::getKey) //获取所有对应此tempVar的非空闲寄存器
+                .findFirst();
+        if(regToSpill.isPresent()){ //需要spill说明一定有非空闲寄存器
+            allocator.storeLocalVarIntoMemory(tempVar, regToSpill.get());//将寄存器中的变量spill到内存中
+            return regToSpill.get(); //如果有空闲寄存器，返回寄存
         }
-
-
         assert false;
         return null;
     }
 
+    /**
+     * 从tempVar2Reg中获取tempVar对应的寄存器
+     * 对于temp变量，只会被定义一次，使用一次，fetch以后此表无需再记录此变量
+     * @param tempVar
+     * @return
+     */
     public String fetch(ValueRef tempVar) {
-        //get the regName that tempVar in, and clear it
-        String varName = tempVar.getName();
-        for (String regName : tempVar2Reg.keySet()) {
-            if (tempVar2Reg.get(regName) !=null && tempVar2Reg.get(regName).equals(varName)) {
-                tempVar2Reg.put(regName, null);
-                return regName;
-            }
+        Optional<String> regForFetch = tempVar2Reg.entrySet().stream()
+                .filter(entry -> entry.getValue().equals(tempVar.getName()))
+                .map(Map.Entry::getKey)
+                .findFirst();
+        if(regForFetch.isPresent()){
+            tempVar2Reg.put(regForFetch.get(), "");
+            return regForFetch.get();
         }
-        //here means conflicts happened
         assert false;
         return null;
     }
 
-    public void clear() {
-        for (String regName : tempVar2Reg.keySet()) {
-            tempVar2Reg.put(regName, null);
-        }
-    }
-
+    /**
+     * 释放tempVar对应的寄存器
+     * @param tempVar
+     */
     public void release(ValueRef tempVar){
-        String varName = tempVar.getName();
-        for (String regName : tempVar2Reg.keySet()) {
-            if (tempVar2Reg.get(regName) !=null && tempVar2Reg.get(regName).equals(varName)) {
-                tempVar2Reg.put(regName, null);
-                return;
-            }
-        }
+        fetch(tempVar);
     }
 }
