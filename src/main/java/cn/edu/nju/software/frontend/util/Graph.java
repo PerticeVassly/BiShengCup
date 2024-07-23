@@ -27,11 +27,21 @@ public class Graph<T>{
     }
 
     public Set<T> getNeighbors(T node) {
-        return nodes.get(node);
+        return nodes.getOrDefault(node, new HashSet<>());
     }
 
     public Set<T> getAllNodes() {
         return nodes.keySet();
+    }
+
+    public Set<Edge<T>> getAllEdges() {
+        Set<Edge<T>> edges = new HashSet<>();
+        for(T from : nodes.keySet()) {
+            for(T to : nodes.get(from)) {
+                edges.add(new Edge<>(from,to));
+            }
+        }
+        return edges;
     }
 
     public boolean isEmpty(){

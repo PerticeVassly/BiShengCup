@@ -6,14 +6,21 @@ import cn.edu.nju.software.ir.value.ValueRef;
 import java.util.List;
 
 public abstract class Instruction {
-    protected ValueRef[] operands;
-    protected int numberOfOperands;
+    protected ValueRef[] operands = new ValueRef[0];
     protected String operator;
     protected ValueRef lVal;
 //    protected final static String DELIMITER = ", ";
 
     public ValueRef getOperand(int index) {
         return operands[index];
+    }
+
+    /***
+     * @param index: replace position
+     * @param valueRef: new operand
+     */
+    public void replace(int index, ValueRef valueRef) {
+        operands[index] = valueRef;
     }
 
     public ValueRef[] getOperands() {
@@ -73,6 +80,10 @@ public abstract class Instruction {
     }
 
     public boolean isBr() {
+        return false;
+    }
+
+    public boolean isBinary() {
         return false;
     }
 

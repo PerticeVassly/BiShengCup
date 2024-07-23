@@ -19,4 +19,5 @@ public class IntToFloat extends Instruction {
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
     }
+
 }

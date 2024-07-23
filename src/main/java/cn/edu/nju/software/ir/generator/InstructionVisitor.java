@@ -46,7 +46,7 @@ public interface InstructionVisitor {
 
     default void visit(Load load) {}
 
-    default void visit(Logic logic) {}
+    default void visit(Logic logic){}
 
     default void visit(RetValue retValue) {}
 
@@ -62,4 +62,8 @@ public interface InstructionVisitor {
 
     default void visit(Add add){}
 
+    // new added TODO(): implement
+    default void visit(Phi phi) {}
+
+    default void visit(Default aDefault){};
 }

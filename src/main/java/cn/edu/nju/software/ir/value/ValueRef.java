@@ -25,7 +25,9 @@ public class ValueRef {
         this.name = name;
         this.type = type;
     }
-
+    public ValueRef copy(){
+        return new ValueRef();
+    }
     public void updateType(TypeRef type) {
         this.type = type;
     }
@@ -38,4 +40,18 @@ public class ValueRef {
         return type;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * get context
+     * */
+    public String getText() {
+        return this.toString();
+    }
+
+    public boolean equals(ValueRef other) {
+        return other == this;
+    }
 }

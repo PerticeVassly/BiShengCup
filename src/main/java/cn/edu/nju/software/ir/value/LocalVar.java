@@ -3,24 +3,28 @@ package cn.edu.nju.software.ir.value;
 import cn.edu.nju.software.ir.type.TypeRef;
 
 public class LocalVar extends ValueRef implements Variable {
+    private boolean isTmp;
+
+    public void setTmp(boolean t) {
+        isTmp = t;
+    }
+
+    public boolean isTmpExp() {
+        return isTmp;
+    }
     /**
      * value is for constant propagation
      */
     private final Value value = Value.getUndef();
-
-    private boolean isTmp;
 
     public LocalVar(TypeRef type, String name) {
         super(type, name);
         isTmp = false;
     }
 
-    public void setTmp(boolean t) {
-        isTmp = t;
-    }
 
-    public boolean isTmpVar() {
-        return isTmp;
+    public LocalVar copy() {
+        return new LocalVar(type,name);
     }
 
     @Override
@@ -55,4 +59,6 @@ public class LocalVar extends ValueRef implements Variable {
     public void mergeValue(Value value) {
         this.value.merge(value);
     }
+
+
 }
