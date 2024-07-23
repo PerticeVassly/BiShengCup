@@ -27,9 +27,9 @@ public class TestBackEndIO {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("00_main")
+    @StringSource("large_loop_array_1")
     void testRisc(String name) throws IOException, InterruptedException {
-        testFile(DIR, name);
+        testFile(DIR_HIDDEN, name);
     }
 
     /**

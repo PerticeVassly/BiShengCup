@@ -89,10 +89,12 @@ public class RiscInstrGenerator implements InstructionVisitor {
             if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
                 String regName = allocator.recordTempVar(lVal);
                 riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
+//                saveLVal(instr.getLVal());
             } else if(lVal.getType() instanceof FloatType){
+                allocator.resetLastLVal();
                 String regName = allocator.recordTempVar(lVal);
-                riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft0")));
-                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t0")));
+                riscInstructions.add(new RiscFmvxw(new Register("t1"), new Register("ft0")));
+                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t1")));
             } else if(lVal.getType() instanceof Pointer){
 //                String regName = allocator.recordTempVar(lVal);
 //                riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
@@ -104,8 +106,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
         else {
             saveLVal(instr.getLVal());
         }
-        //现在是所有的save
-//        saveLVal(instr.getLVal());
     }
     /**
      * [在生成算数llvm指令对应汇编之前的操作]
@@ -136,10 +136,11 @@ public class RiscInstrGenerator implements InstructionVisitor {
             if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
                 String regName = allocator.recordTempVar(lVal);
                 riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
+//                saveLVal(instr.getLVal());
             } else if(lVal.getType() instanceof FloatType){
                 String regName = allocator.recordTempVar(lVal);
-                riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft0")));
-                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t0")));
+                riscInstructions.add(new RiscFmvxw(new Register("t1"), new Register("ft0")));
+                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t1")));
             } else if(lVal.getType() instanceof Pointer){
                 String regName = allocator.recordTempVar(lVal);
                 riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
@@ -152,7 +153,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
         else {
             saveLVal(instr.getLVal());
         }
-//        saveLVal(instr.getLVal());
     }
 
     private void saveLVal(ValueRef lVal){

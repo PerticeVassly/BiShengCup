@@ -2,19 +2,20 @@ package cn.edu.nju.software.backend.regalloc;
 
 import cn.edu.nju.software.backend.RiscInstrGenerator;
 import cn.edu.nju.software.backend.RiscSpecifications;
+import cn.edu.nju.software.backend.riscinstruction.RiscSd;
 import cn.edu.nju.software.backend.riscinstruction.RiscSw;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.ir.type.BoolType;
 import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
-import com.sun.tools.attach.AgentInitializationException;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsw;
 
+import java.util.Formattable;
 import java.util.HashMap;
-import java.util.Spliterator;
 
 /**
  * 用于记录tempVar所在的寄存器，以及分配寄存器给tempVar
@@ -48,7 +49,7 @@ public class TempVarLiveTable {
 
     public String record(ValueRef tempVar) {
         //find an empty reg and record
-        if(tempVar.getType() instanceof IntType){
+        if(tempVar.getType() instanceof IntType || tempVar.getType() instanceof Pointer || tempVar.getType() instanceof BoolType){
             for (String regName : tempVar2Reg.keySet()) {
                 if (tempVar2Reg.get(regName) == null && !regName.startsWith("f")) {
                     tempVar2Reg.put(regName, tempVar.getName());
@@ -63,22 +64,8 @@ public class TempVarLiveTable {
                     return regName;
                 }
             }
-        }
-        else if(tempVar.getType() instanceof BoolType){
-            //here means conflicts happened
-            for(String regName : tempVar2Reg.keySet()){
-                if(tempVar2Reg.get(regName) == null && !regName.startsWith("f")){
-                    tempVar2Reg.put(regName, tempVar.getName());
-                    return regName;
-                }
-            }
-        } else if(tempVar.getType() instanceof Pointer){
-            for(String regName : tempVar2Reg.keySet()){
-                if(tempVar2Reg.get(regName) == null && !regName.startsWith("f")){
-                    tempVar2Reg.put(regName, tempVar.getName());
-                    return regName;
-                }
-            }
+        } else {
+            assert false;
         }
 //        System.out.println("tempVar to add "+ tempVar.getName() );
 //        for(String regName : tempVar2Reg.keySet()){
@@ -100,20 +87,37 @@ public class TempVarLiveTable {
                         generator.addInstruction(new RiscFsw(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new FloatType(), tempVar2Reg.get(regName))), "sp", "t4")));
                     }
                     tempVar2Reg.put(regName, null);
+                    System.out.println("spill for " + tempVar.getName() + " in " + regName);
                     return regName;
                 }
             }
-        } else { //int bool pointer
+            //这里指针要sd
+        } else if(tempVar.getType() instanceof IntType || tempVar.getType() instanceof BoolType) { //int bool pointer
             for(String regName : tempVar2Reg.keySet()){
                 if(tempVar2Reg.get(regName) != null){
                     if(!regName.startsWith("f")){
                         generator.addInstruction(new RiscSw(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new IntType(), tempVar2Reg.get(regName))), "sp", "t4")));
                     }
                     tempVar2Reg.put(regName, null);
+                    System.out.println("spill for " + tempVar.getName() + " in " + regName);
                     return regName;
                 }
             }
+        } else if(tempVar.getType() instanceof Pointer){
+            for(String regName : tempVar2Reg.keySet()){
+                if(tempVar2Reg.get(regName) != null){
+                    if(!regName.startsWith("f")){
+                        generator.addInstruction(new RiscSd(new Register(regName), allocator.getRegWithOffset(allocator.getOffset(new LocalVar(new Pointer(new IntType()), tempVar2Reg.get(regName))), "sp", "t4")));
+                    }
+                    tempVar2Reg.put(regName, null);
+                    System.out.println("spill for " + tempVar.getName() + " in " + regName);
+                    return regName;
+                }
+            }
+        } else {
+            assert false;
         }
+
 
         assert false;
         return null;
@@ -147,6 +151,5 @@ public class TempVarLiveTable {
                 return;
             }
         }
-        return;
     }
 }
