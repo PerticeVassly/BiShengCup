@@ -52,7 +52,9 @@ public class TempVarLiveTable {
             return regForRecord;
         }
         else {
-            return spillFor(tempVar);
+            String regToSpill = spillFor(tempVar);
+            tempVar2Reg.put(regToSpill, tempVar);
+            return regToSpill;
         }
     }
 
