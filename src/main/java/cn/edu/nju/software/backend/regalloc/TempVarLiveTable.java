@@ -4,6 +4,7 @@ import cn.edu.nju.software.backend.RiscInstrGenerator;
 import cn.edu.nju.software.backend.RiscSpecifications;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.ir.type.*;
+import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.Arrays;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 public class TempVarLiveTable {
 
     /* RegName : VarName */
-    private final HashMap<String, String> tempVar2Reg = new HashMap<>();
+    private final HashMap<String, LocalVar> tempVar2Reg = new HashMap<>();
 
     private RiscInstrGenerator generator;
 
@@ -29,12 +30,12 @@ public class TempVarLiveTable {
         this.generator = generator;
         this.allocator = allocator;
         tempVar2Reg.putAll(Arrays.stream(RiscSpecifications.getTempVarRegs())
-                                .collect(Collectors.toMap(key -> key, value -> ""))); //初始化状态所有的寄存器对应的变量名为空
+                                .collect(Collectors.toMap(key -> key, value -> new LocalVar(new IntType(),"")))); //初始化状态所有的寄存器对应的变量名为空
     }
 
     public boolean isRecorded(ValueRef tempVar) {
-        String varName = tempVar.getName();
-        return tempVar2Reg.containsValue(varName);
+        String regName = getReg(tempVar);
+        return regName != null;
     }
 
     /**
@@ -42,22 +43,17 @@ public class TempVarLiveTable {
      * @param tempVar
      * @return 记录该变量的寄存器
      */
-    public String record(ValueRef tempVar) {
+    public String record(LocalVar tempVar) {
         TypeRef type = tempVar.getType();
-        Optional<String> regForRecord = tempVar2Reg.entrySet().stream()
-                .filter(entry -> {
-                        if(RiscSpecifications.isGeneralType(type)){
-                            return RiscSpecifications.isGeneralReg(entry.getKey());
-                        } else if(RiscSpecifications.isFloatType(type)) {
-                            return RiscSpecifications.isFloatReg(entry.getKey());
-                        }
-                        assert false;
-                        return false;})
-                .filter(entry -> entry.getValue().isEmpty())
-                .map(Map.Entry::getKey) //获取所有对应此tempVar的空闲寄存器
-                .findFirst();
-        regForRecord.ifPresent(regName -> tempVar2Reg.put(regName, tempVar.getName())); //如果有空闲寄存器，暂存此变量
-        return regForRecord.orElseGet(() -> spillFor(tempVar)); //如果有空闲寄存器，返回寄存器名，否则spill一个寄存器返回
+        String regForRecord = getAnEmptyReg(type);
+        if(regForRecord != null){
+            tempVar2Reg.put(regForRecord, tempVar);
+            System.out.println("record " + tempVar.getName() + " to " + regForRecord);
+            return regForRecord;
+        }
+        else {
+            return spillFor(tempVar);
+        }
     }
 
 
@@ -66,24 +62,15 @@ public class TempVarLiveTable {
      * @param tempVar
      * @return
      */
-    public String spillFor(ValueRef tempVar){
+    public String spillFor(LocalVar tempVar){
         generator.addInstruction(new RiscComment("spill for " + tempVar.getName()));
+        System.out.println("spill for " + tempVar.getName());
         TypeRef type = tempVar.getType();
-        Optional<String> regToSpill = tempVar2Reg.entrySet().stream()
-                .filter(entry -> {
-                    if(RiscSpecifications.isGeneralType(type)){
-                        return RiscSpecifications.isGeneralReg(entry.getKey());
-                    } else if(RiscSpecifications.isFloatType(type)) {
-                        return RiscSpecifications.isFloatReg(entry.getKey());
-                    }
-                    assert false;
-                    return false;})
-                .filter(entry -> !entry.getValue().isEmpty())
-                .map(Map.Entry::getKey) //获取所有对应此tempVar的非空闲寄存器
-                .findFirst();
-        if(regToSpill.isPresent()){ //需要spill说明一定有非空闲寄存器
-            allocator.storeLocalVarIntoMemory(tempVar, regToSpill.get());//将寄存器中的变量spill到内存中
-            return regToSpill.get(); //如果有空闲寄存器，返回寄存
+        String regToSpill = getAUsedReg(type);
+        if(regToSpill != null){
+            allocator.storeLocalVarIntoMemory(tempVar2Reg.get(regToSpill) , regToSpill);//将寄存器中的变量spill到内存中
+            tempVar2Reg.put(regToSpill, new LocalVar(new IntType(),"")); //更新tempVar2Reg表
+            return regToSpill; //如果有空闲寄存器，返回寄存
         }
         assert false;
         return null;
@@ -96,15 +83,12 @@ public class TempVarLiveTable {
      * @return
      */
     public String fetch(ValueRef tempVar) {
-        Optional<String> regForFetch = tempVar2Reg.entrySet().stream()
-                .filter(entry -> entry.getValue().equals(tempVar.getName()))
-                .map(Map.Entry::getKey)
-                .findFirst();
-        if(regForFetch.isPresent()){
-            tempVar2Reg.put(regForFetch.get(), "");
-            return regForFetch.get();
+        String regName = getReg(tempVar);
+        if(regName != null){
+            tempVar2Reg.put(regName, new LocalVar(new IntType(),""));
+            System.out.println("fetch " + tempVar.getName() + " from " + regName);
+            return regName;
         }
-        assert false;
         return null;
     }
 
@@ -113,6 +97,54 @@ public class TempVarLiveTable {
      * @param tempVar
      */
     public void release(ValueRef tempVar){
-        fetch(tempVar);
+        String regName = getReg(tempVar);
+        if(regName != null){
+            clear(regName);
+            System.out.println("release " + tempVar.getName() + " from " + regName);
+        }
+    }
+
+    private String getReg(ValueRef variable) {
+        Optional<String> regForRecord = tempVar2Reg.entrySet().stream()
+                .filter(entry -> entry.getValue().getName().equals(variable.getName()))
+                .map(Map.Entry::getKey)
+                .findFirst();
+        return regForRecord.orElse(null);
+    }
+
+    private String getAnEmptyReg(TypeRef type) {
+        Optional<String> regName = tempVar2Reg.entrySet().stream()
+                .filter(entry -> {
+                    if(RiscSpecifications.isGeneralType(type)){
+                        return RiscSpecifications.isGeneralReg(entry.getKey());
+                    } else if(RiscSpecifications.isFloatType(type)) {
+                        return RiscSpecifications.isFloatReg(entry.getKey());
+                    }
+                    assert false;
+                    return false;})
+                .filter(entry -> entry.getValue().getName().isEmpty())
+                .map(Map.Entry::getKey) //获取所有对应此tempVar的非空闲寄存器
+                .findFirst();
+        return regName.orElse(null);
+    }
+
+    private String getAUsedReg(TypeRef type) {
+        Optional<String> regName = tempVar2Reg.entrySet().stream()
+            .filter(entry -> {
+                if(RiscSpecifications.isGeneralType(type)){
+                    return RiscSpecifications.isGeneralReg(entry.getKey());
+                } else if(RiscSpecifications.isFloatType(type)) {
+                    return RiscSpecifications.isFloatReg(entry.getKey());
+                }
+                assert false;
+                return false;})
+            .filter(entry -> !entry.getValue().getName().isEmpty())
+            .map(Map.Entry::getKey) //获取所有对应此tempVar的非空闲寄存器
+            .findFirst();
+        return regName.orElse(null);
+    }
+
+    private void clear(String regName){
+        tempVar2Reg.put(regName, new LocalVar(new IntType(),""));
     }
 }

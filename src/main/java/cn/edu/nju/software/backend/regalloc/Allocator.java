@@ -108,12 +108,12 @@ public class Allocator {
                 return;
             }
 
-//            if(isLastLVal(localVar)){
-//                generator.addInstruction(new RiscFmvxw(new Register("t" + i), new Register("ft0")));
-//                generator.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
-//                tempVarLiveTable.release(localVar);
-//                return;
-//            }
+            if(isLastLVal(localVar)){
+                generator.addInstruction(new RiscFmvxw(new Register("t" + i), new Register("ft0")));
+                generator.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
+                tempVarLiveTable.release(localVar);
+                return;
+            }
 
             generator.addInstruction(new RiscFlw(new Register("ft" + i), getAddrOfLocalVar(localVar)));
         } else if (localVar.getType() instanceof IntType || localVar.getType() instanceof BoolType) {
@@ -121,11 +121,12 @@ public class Allocator {
                 generator.addInstruction(new RiscMv(new Register("t" + i), new Register(fetchTempVar(localVar))));
                 return;
             }
-//            if(isLastLVal(localVar)){
-//                generator.addInstruction(new RiscMv(new Register("t" + i), new Register("t0")));
-//                tempVarLiveTable.release(localVar);
-//                return;
-//            }
+
+            if(isLastLVal(localVar)){
+                generator.addInstruction(new RiscMv(new Register("t" + i), new Register("t0")));
+                tempVarLiveTable.release(localVar);
+                return;
+            }
             generator.addInstruction(new RiscLw(new Register("t" + i), getAddrOfLocalVar(localVar)));
         } else if(localVar.getType() instanceof Pointer){
             if(isLastLVal(localVar)){
@@ -369,8 +370,8 @@ public class Allocator {
        lValLiveTable.setLastLVal(variable);
     }
 
-    public String recordTempVar(ValueRef variable){
-        return tempVarLiveTable.record(variable);
+    public String recordTempVar(LocalVar localVar){
+        return tempVarLiveTable.record(localVar);
     }
 
     public String fetchTempVar(ValueRef variable){

@@ -93,8 +93,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
             } else if(lVal.getType() instanceof FloatType){
                 allocator.resetLastLVal();
                 String regName = allocator.recordTempVar(lVal);
-                riscInstructions.add(new RiscFmvxw(new Register("s7"), new Register("ft0")));
-                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("s7")));
+                riscInstructions.add(new RiscFmvxw(new Register("t1"), new Register("ft0")));
+                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t1")));
             } else if(lVal.getType() instanceof Pointer){
 //                String regName = allocator.recordTempVar(lVal);
 //                riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
@@ -139,8 +139,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
 //                saveLVal(instr.getLVal());
             } else if(lVal.getType() instanceof FloatType){
                 String regName = allocator.recordTempVar(lVal);
-                riscInstructions.add(new RiscFmvxw(new Register("s7"), new Register("ft0")));
-                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("s7")));
+                riscInstructions.add(new RiscFmvxw(new Register("t1"), new Register("ft0")));
+                riscInstructions.add(new RiscFmvwx(new Register(regName), new Register("t1")));
             } else if(lVal.getType() instanceof Pointer){
                 String regName = allocator.recordTempVar(lVal);
                 riscInstructions.add(new RiscMv(new Register(regName), new Register("t0")));
@@ -300,15 +300,15 @@ public class RiscInstrGenerator implements InstructionVisitor {
             riscInstructions.add(new RiscLw(new Register("t0"), srcOperand));
             riscInstructions.add(new RiscSw(new Register("t0"), destOperand));
             //todo() why here is not null？
-            afterABinaryInstr(load);
+            allocator.setLastLVal(lVal);
         } else if (((Pointer) src.getType()).getBase() instanceof FloatType) {
             riscInstructions.add(new RiscFlw(new Register("ft0"), srcOperand));
             riscInstructions.add(new RiscFsw(new Register("ft0"), destOperand));
-            afterABinaryInstr(load);
+            allocator.resetLastLVal();
         } else if (((Pointer) src.getType()).getBase() instanceof Pointer){
             riscInstructions.add(new RiscLd(new Register("t0"), srcOperand));
             riscInstructions.add(new RiscSd(new Register("t0"), destOperand));
-            afterABinaryInstr(load);
+            allocator.resetLastLVal();
         } else {
             assert false;
         }
