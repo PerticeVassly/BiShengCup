@@ -286,13 +286,14 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
         if (((Pointer) src.getType()).getBase() instanceof IntType) {
             riscInstructions.add(new RiscLw(new Register("t0"), srcOperand));
-            riscInstructions.add(new RiscSw(new Register("t0"), destOperand));
-            //todo() why here is not null？
-            allocator.setLastLVal(lVal);
+//            riscInstructions.add(new RiscSw(new Register("t0"), destOperand));
+            allocator.resetLastLVal();
+            allocator.recordTempVar((LocalVar) lVal);
         } else if (((Pointer) src.getType()).getBase() instanceof FloatType) {
             riscInstructions.add(new RiscFlw(new Register("ft0"), srcOperand));
-            riscInstructions.add(new RiscFsw(new Register("ft0"), destOperand));
+//            riscInstructions.add(new RiscFsw(new Register("ft0"), destOperand));
             allocator.resetLastLVal();
+            allocator.recordTempVar((LocalVar) lVal);
         } else if (((Pointer) src.getType()).getBase() instanceof Pointer){
             riscInstructions.add(new RiscLd(new Register("t0"), srcOperand));
             riscInstructions.add(new RiscSd(new Register("t0"), destOperand));
