@@ -373,8 +373,8 @@ public class Allocator {
        lValLiveTable.setLastLVal(variable);
     }
 
-    public String recordTempVar(LocalVar localVar){
-        return tempVarLiveTable.record(localVar);
+    public void recordTempVar(LocalVar localVar){
+        tempVarLiveTable.record(localVar);
     }
 
     public String fetchTempVar(ValueRef variable){

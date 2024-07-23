@@ -2,6 +2,10 @@ package cn.edu.nju.software.backend.regalloc;
 
 import cn.edu.nju.software.backend.RiscInstrGenerator;
 import cn.edu.nju.software.backend.RiscSpecifications;
+import cn.edu.nju.software.backend.riscinstruction.RiscMv;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvwx;
+import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvxw;
+import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.LocalVar;
@@ -39,21 +43,41 @@ public class TempVarLiveTable {
     }
 
     /**
-     * 依据要暂存的变量的类型，为其分配一个寄存器，如果没有没有这一类型的寄存器空闲，则spill一个寄存器并且返回
+     * 依据要暂存的变量的类型，为其分配一个寄存器，如果没有没有这一类型的寄存器空闲，则spill一个寄存器并且返回,
+     * 默认变量一开始存储在t0（ft0）中
      * @param tempVar
      * @return 记录该变量的寄存器
      */
-    public String record(LocalVar tempVar) {
+    public void record(LocalVar tempVar) {
+
         TypeRef type = tempVar.getType();
         String regForRecord = getAnEmptyReg(type);
+        String regToStage;
         if(regForRecord != null){
             tempVar2Reg.put(regForRecord, tempVar);
-            return regForRecord;
+            regToStage = regForRecord;
         }
         else {
             String regToSpill = spillFor(tempVar);
             tempVar2Reg.put(regToSpill, tempVar);
-            return regToSpill;
+            regToStage = regToSpill;
+        }
+        stage(tempVar, regToStage);
+    }
+
+    /**
+     * 将tempVar的值（对应reg中）mv到暂存用的寄存器中
+     * @param tempVar
+     * @param regToStage
+     */
+    public void stage(ValueRef tempVar, String regToStage) {
+        if(RiscSpecifications.isGeneralType(tempVar.getType())){
+            generator.addInstruction(new RiscMv(new Register(regToStage), new Register("t0")));
+        } else if(RiscSpecifications.isFloatType(tempVar.getType())){
+            generator.addInstruction(new RiscFmvxw(new Register("t1"), new Register("ft0")));
+            generator.addInstruction(new RiscFmvwx(new Register(regToStage), new Register("t1")));
+        } else {
+            assert false;
         }
     }
 
@@ -63,7 +87,7 @@ public class TempVarLiveTable {
      * @param tempVar
      * @return
      */
-    public String spillFor(LocalVar tempVar){
+    private String spillFor(LocalVar tempVar){
         generator.addInstruction(new RiscComment("spill for " + tempVar.getName()));
         TypeRef type = tempVar.getType();
         String regToSpill = getAUsedReg(type);
