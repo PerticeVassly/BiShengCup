@@ -106,6 +106,11 @@ public class TempVarLiveTable {
         }
     }
 
+    /**
+     * 从tempVar2Reg中获取tempVar对应的寄存器
+     * @param variable
+     * @return
+     */
     private String getReg(ValueRef variable) {
         Optional<String> regForRecord = tempVar2Reg.entrySet().stream()
                 .filter(entry -> entry.getValue().getName().equals(variable.getName()))
@@ -114,6 +119,11 @@ public class TempVarLiveTable {
         return regForRecord.orElse(null);
     }
 
+    /**
+     * 依据类型获取一个空闲的寄存器（分为通用和浮点）
+     * @param type
+     * @return
+     */
     private String getAnEmptyReg(TypeRef type) {
         Optional<String> regName = tempVar2Reg.entrySet().stream()
                 .filter(entry -> {
@@ -130,6 +140,11 @@ public class TempVarLiveTable {
         return regName.orElse(null);
     }
 
+    /**
+     * 依据类型获取一个正在使用的寄存器（分为通用和浮点）
+     * @param type
+     * @return
+     */
     private String getAUsedReg(TypeRef type) {
         Optional<String> regName = tempVar2Reg.entrySet().stream()
             .filter(entry -> {
@@ -146,6 +161,10 @@ public class TempVarLiveTable {
         return regName.orElse(null);
     }
 
+    /**
+     * 清空寄存器,这个寄存器对应的变量不再被记录，可以被任意破坏，相当于被释放了
+     * @param regName
+     */
     private void clear(String regName){
         tempVar2Reg.put(regName, new LocalVar(new IntType(),""));
     }
