@@ -5,7 +5,6 @@ import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.And;
-import cn.edu.nju.software.ir.instruction.logic.Logic;
 import cn.edu.nju.software.ir.instruction.logic.Or;
 import cn.edu.nju.software.ir.instruction.logic.Xor;
 import cn.edu.nju.software.ir.module.ModuleRef;
@@ -65,6 +64,14 @@ public class Generator implements IrGenerator {
         globalVar.initialize(initValue);
         return globalVar;
     }
+
+    @Override
+    public FunctionValue addFunction(ModuleRef moduleRef, FunctionType ft, String funcName, boolean lib) {
+        FunctionValue fv = addFunction(moduleRef, ft, funcName);
+        fv.setLib(lib);
+        return fv;
+    }
+
     @Override
     public FunctionValue addFunction(ModuleRef module, FunctionType ft, String funcName) {
         FunctionValue fv = new FunctionValue(ft, funcName);

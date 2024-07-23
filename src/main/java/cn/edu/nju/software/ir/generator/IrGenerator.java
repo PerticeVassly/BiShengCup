@@ -18,7 +18,9 @@ import java.util.ArrayList;
      ValueRef addGlobal(ModuleRef module, TypeRef type, String name);
      ValueRef setInitValue(GlobalVar globalVar, ValueRef initValue);
 
-    // function declare
+     FunctionValue addFunction(ModuleRef moduleRef, FunctionType ft, String funcName, boolean lib);
+
+     // function declare
      ValueRef addFunction(ModuleRef module, FunctionType ft, String funcName);
 
     // local variable related operations, declare & assign & load its value from memory

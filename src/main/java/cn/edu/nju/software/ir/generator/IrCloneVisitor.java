@@ -215,6 +215,6 @@ public class IrCloneVisitor implements InstructionVisitor {
     }
 
     public void visit(Default defaultVal) {
-        curInstruction=new Default();
+            curInstruction=new Default();
     }
 }

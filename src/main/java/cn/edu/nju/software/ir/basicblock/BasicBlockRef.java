@@ -1,6 +1,8 @@
 package cn.edu.nju.software.ir.basicblock;
 
 import cn.edu.nju.software.ir.instruction.Allocate;
+import cn.edu.nju.software.ir.instruction.Br;
+import cn.edu.nju.software.ir.instruction.CondBr;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
@@ -15,7 +17,7 @@ public class BasicBlockRef extends ValueRef {
     private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
     private final static ArrayList<Integer> usedFreqList = new ArrayList<Integer>(){{add(0);}};
     private final String name;
-    private final ArrayList<Instruction> irs; // TODO String -> Instruction
+    private ArrayList<Instruction> irs;
     private int irNum;
     /**
      * the function it belongs to
@@ -88,6 +90,29 @@ public class BasicBlockRef extends ValueRef {
         return irs.get(index);
     }
 
+    public void dropIr(Instruction ir) {
+        irs.remove(ir);
+        irNum--;
+    }
+
+    /***
+     * delete all inst after br
+     */
+    public void modify() {
+        int end = -1;
+        for (int i = 0; i < irNum; i++) {
+            Instruction ir = irs.get(i);
+            if (ir instanceof Br || ir instanceof CondBr) {
+                end = i;
+                break;
+            }
+        }
+        if (end != -1) {
+            irNum = end + 1;
+            irs = new ArrayList<>(irs.subList(0, irNum));
+        }
+    }
+
     public List<Instruction> getIrs() {
         return irs;
     }
@@ -104,6 +129,9 @@ public class BasicBlockRef extends ValueRef {
         pred.removeIf(bb -> !bb.isReachable());
     }
 
+    public void dropPred(BasicBlockRef pre){
+        pred.removeIf(bb->bb.equals(pre));
+    }
     @Override
     public String toString() {
         return "%" + name;
