@@ -81,7 +81,7 @@ public class Main {
 
         // test pass
         MemToReg memToReg = new MemToReg(module);
-        memToReg.memToRegProc();
+        memToReg.runOnModule();
         EliminateConstExp eliminateConstExp = new EliminateConstExp(module);
         eliminateConstExp.doEliminateProc();
 

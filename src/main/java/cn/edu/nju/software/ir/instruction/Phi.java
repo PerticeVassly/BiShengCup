@@ -4,6 +4,8 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.value.ValueRef;
 
+import java.util.Arrays;
+
 import static cn.edu.nju.software.ir.instruction.OpEnum.PHI;
 import static cn.edu.nju.software.ir.instruction.Operator.*;
 
@@ -17,21 +19,24 @@ public class Phi extends Instruction {
     public Phi(ValueRef lVal, BasicBlockRef[] bbs, ValueRef[] vrs) {
         this.lVal = lVal;
         operator = getOperator(PHI);
-        operands = new ValueRef[]{bbs[0], bbs[1], vrs[0], vrs[1]};
+        operands = new ValueRef[bbs.length + vrs.length];
+        System.arraycopy(bbs, 0, operands, 0, bbs.length);
+        System.arraycopy(vrs, 0, operands, bbs.length, vrs.length);
     }
 
     @Override
     public String toString() {
-        return lVal.getText() +
+        String s =  lVal.getText() +
                 " = phi " +
-                lVal.getType().getText() +
-                " [" +
-                operands[0].getText() + " " + // op[0] is the first bb
-                operands[2].getText() + // op[2] is the first var
-                "], [" +
-                operands[1].getText() + " " + // op[1] is the second bb
-                operands[3].getText() + // op[3] is the second var
-                "]";
+                lVal.getType().getText() + " ";
+        StringBuilder sb = new StringBuilder(s);
+        for (int i = 0; i < operands.length; i += 2) {
+            sb.append("[").append(operands[i]).append(", ").append(operands[i + 1]).append("]");
+            if (i + 2 < operands.length) {
+                sb.append(", ");
+            }
+        }
+        return sb.toString();
     }
 
     @Override

@@ -17,9 +17,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MemToReg {
+    // TODO refactor, refactor!!!
     private final CFGBuildPass cfgBuildPass;
 
-    private ModuleRef module;
+    private final ModuleRef module;
+
+    /***
+     * record each allocate inst in each block's latest definition(if using)
+     */
+    private final HashMap<Allocate, HashMap<BasicBlockRef, ValueRef>> defineInBlock = new HashMap<>();
 
     public MemToReg(ModuleRef module) {
         cfgBuildPass = CFGBuildPass.getInstance();
@@ -27,7 +33,9 @@ public class MemToReg {
         cfgBuildPass.runOnModule(module);
     }
 
-    public void memToRegProc() {
+    // TODO refactor
+
+    private void memToRegProc() {
         for (int i = 0; i < module.getFunctionNum(); i++) {
             FunctionValue fv = module.getFunction(i);
             if (fv.isLib()) {
@@ -53,7 +61,6 @@ public class MemToReg {
                 // not null, it can be replaced by reg val
                 replaceAllocWithReg(allocate.getLVal(), memToRegAlloc.get(allocate), fv); // by allocate inst lVal(memory), replace all load inst and its usage with its store value
             }
-
             // TODO
         }
     }
@@ -161,5 +168,9 @@ public class MemToReg {
                 }
             }
         }
+    }
+
+    public void runOnModule() {
+        memToRegProc();
     }
 }

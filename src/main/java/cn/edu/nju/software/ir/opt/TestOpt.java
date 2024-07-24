@@ -26,7 +26,7 @@ public class TestOpt {
 
         MemToReg memToReg = new MemToReg(visitor.getModule());
         EliminateConstExp eliminateConstExp = new EliminateConstExp(visitor.getModule());
-        memToReg.memToRegProc();
+        memToReg.runOnModule();
         eliminateConstExp.doEliminateProc();
         visitor.dumpModuleToConsole();
 //        RiscModule riscModule = new RiscModule(visitor.getModule());
