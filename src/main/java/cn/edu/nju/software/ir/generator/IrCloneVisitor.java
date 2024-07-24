@@ -184,7 +184,12 @@ public class IrCloneVisitor implements InstructionVisitor {
 
     @Override
     public void visit(RetVoid retVoid) {
-        curInstruction = new Ret();
+        curInstruction = new RetVoid();
+    }
+
+    @Override
+    public void visit(Ret ret) {
+       curInstruction=new Ret();
     }
 
     @Override

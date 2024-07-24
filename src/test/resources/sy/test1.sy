@@ -1,19 +1,16 @@
-int n;
-int swap (int array[], int i, int j){
-    return 0;  
-}
-int heap_ajust(int arr[], int start, int end) {
-    int dad = swap(arr,1,2);
-    return 0;
-}  
-int heap_sort(int arr[], int len) {  
-    swap(arr,1,2);
-    heap_ajust(arr, 1, 3);
-    return 0;
-}  
 
-int main(){
-    int a[10];
-    int i = heap_sort(a, n);
+void move(int x, int y)
+{
+    putint(x); putint(y);
+}
+
+void hanoi(int n, int one, int two, int three)
+{
+        move(one, three);
+}
+
+int main()
+{
+    hanoi(1, 1, 2, 3);
     return 0;
 }

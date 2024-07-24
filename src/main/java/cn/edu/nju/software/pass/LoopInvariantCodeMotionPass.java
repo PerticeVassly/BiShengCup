@@ -9,6 +9,7 @@ import cn.edu.nju.software.ir.generator.IrCloneVisitor;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 import java.util.*;
 
@@ -66,10 +67,16 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
             return;
         }
         BasicBlockRef entry = findEntry(loop);
-        BasicBlockRef next = findNext(loop);
-        BasicBlockRef firstBody=findFirstBody(loop);
-
-
+        for (Instruction instruction : instructions) {
+            entry.put(entry.getIrNum()-1,instruction);
+        }
+        for (Loop subLoop: loop.getSubLoops()) {
+            List<BasicBlockRef> judgeBlocks=findJudgeBlock(subLoop);
+            //只对判断条件外提
+            List<Instruction> subLoopInstructions = identifyInvariants(subLoop,findEntry(subLoop),judgeBlocks);
+            doPass(loop, instructions);
+            deleteRedundantInstructions(instructions,loop);
+        }
     }
 
     private boolean judgeCanDoPassAndBuildTable(FunctionValue function) {
@@ -92,28 +99,27 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
         for (BasicBlockRef basicBlockRef : loop.getAllBasicBlocks()) {
             for (Instruction instruction : basicBlockRef.getIrs()) {
                 if(instruction instanceof Store){
-                    ValueRef src=instruction.getOperand(0);
                     ValueRef dest=instruction.getOperand(1);
-                    if(!(src instanceof ConstValue)){
-                        BasicBlockRef source=valueTable.get(src);
-                        if (loop.contains(source)) {
-                            //仅仅为了表示这个变量在循环中被更新
-                            valueTable.put(dest,loop.getRoot());
-                        }
-                    }
+                    //仅仅为了表示这个变量在循环中被更新
+                    valueTable.put(dest,loop.getRoot());
+
                 }
             }
         }
         List<Instruction> result = new ArrayList<>();
         for (BasicBlockRef basicBlockRef : judgeBlocks) {
             for (Instruction instruction : basicBlockRef.getIrs()) {
-                if (instruction instanceof Br||instruction instanceof CondBr) {
+                if (instruction instanceof Br||instruction instanceof CondBr||instruction instanceof Call) {
                     continue;
                 }
                 int opNum = instruction.getNumberOfOperands();
                 boolean flag = true;
                 for (int i = 0; i < opNum; i++) {
                     ValueRef operand = instruction.getOperand(i);
+                    if(operand instanceof GlobalVar){
+                        flag=false;
+                        break;
+                    }
                     if (operand instanceof ConstValue) {
                         continue;
                     }
@@ -172,81 +178,6 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
         return null;
     }
 
-    private BasicBlockRef findFirstBody(Loop loop) {
-        BasicBlockRef root = loop.getRoot();
-        Stack<BasicBlockRef> help = new Stack<>();
-        help.add(root);
-        while (!help.isEmpty()) {
-            BasicBlockRef cur = help.pop();
-            boolean flag = false;
-            for (BasicBlockRef next : cfg.getSuccessors(cur)) {
-                if (loop.contains(next)) {
-                    help.add(next);
-                } else {
-                    flag = true;
-                }
-            }
-            if (!flag) {
-                //重新将这个块入栈（即为第一个body块）
-                help.push(cur);
-                break;
-            }
-        }
-        return help.pop();
-
-    }
-    private BasicBlockRef findNext(Loop loop) {
-        BasicBlockRef root = loop.getRoot();
-        for (BasicBlockRef suc : cfg.getSuccessors(root)) {
-            if (!loop.contains(suc)) {
-                return suc;
-            }
-        }
-        return null;
-    }
-
-
-    private void adjustInstr(List<BasicBlockRef> preGuards, BasicBlockRef next,BasicBlockRef motion) {
-        for (int i = 0; i < preGuards.size(); i++) {
-            BasicBlockRef cur=preGuards.get(i);
-            Instruction lastInstr=cur.getIr(cur.getIrNum()-1);
-            if(i==preGuards.size()-1){
-                CondBr instr;
-                if(lastInstr.getOperand(1).equals(next)){
-                    instr=new CondBr(lastInstr.getOperand(0), (BasicBlockRef) lastInstr.getOperand(1),motion);
-                }else {
-                    instr=new CondBr(lastInstr.getOperand(0),motion, (BasicBlockRef) lastInstr.getOperand(2));
-                }
-                cur.renewIr(cur.getIrNum()-1,instr);
-            }else {
-                CondBr instr;
-                if(lastInstr.getOperand(1).equals(next)){
-                    instr=new CondBr(lastInstr.getOperand(0), (BasicBlockRef) lastInstr.getOperand(1),preGuards.get(i+1));
-                }else {
-                    instr=new CondBr(lastInstr.getOperand(0),preGuards.get(i+1), (BasicBlockRef) lastInstr.getOperand(2));
-                }
-                cur.renewIr(cur.getIrNum()-1,instr);
-            }
-        }
-    }
-    private void paddingMotionBlock(List<Instruction> instructions, BasicBlockRef motion) {
-        for (Instruction instruction : instructions) {
-            motion.put(instruction);
-        }
-    }
-
-    private void buildRelation(List<BasicBlockRef> preGuards, BasicBlockRef entry, BasicBlockRef next) {
-        preGuards.get(0).addPred(entry);
-        if (next != null) {
-            next.addPred(preGuards.get(0));
-        }
-        for (int i = 1; i < preGuards.size(); i++) {
-            if (next != null) {
-                next.addPred(preGuards.get(i));
-            }
-            preGuards.get(i).addPred(preGuards.get(i - 1));
-        }
-    }
     private void deleteRedundantInstructions(List<Instruction> instructions,Loop loop) {
         for (Instruction instruction : instructions) {
             for (BasicBlockRef basicBlockRef : loop.getAllBasicBlocks()) {

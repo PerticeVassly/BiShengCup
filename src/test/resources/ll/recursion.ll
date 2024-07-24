@@ -24,22 +24,22 @@ fibonacciEntry:
   %cond_eq_tmp_ = icmp eq i32 %n, 0
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_375, label %next_679
+  br i1 %cond_, label %ifTrue_3, label %next_10
 
-ifTrue_375:                                            ; pred = %fibonacciEntry
+ifTrue_3:                                              ; pred = %fibonacciEntry
   ret float 0x0
 
-next_679:                                              ; pred = %fibonacciEntry
+next_10:                                               ; pred = %fibonacciEntry
   %n$1 = load i32, i32* %lv, align 4
   %cond_eq_tmp_$1 = icmp eq i32 %n$1, 1
   %cond_tmp_$1 = zext i1 %cond_eq_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_376, label %next_680
+  br i1 %cond_$1, label %ifTrue_4, label %next_11
 
-ifTrue_376:                                            ; pred = %next_679
+ifTrue_4:                                              ; pred = %next_10
   ret float 0x3ff0000000000000
 
-next_680:                                              ; pred = %next_679
+next_11:                                               ; pred = %next_10
   %n$2 = load i32, i32* %lv, align 4
   %result_ = sub i32 %n$2, 1
   %fibonacci = call float @fibonacci(i32 %result_)
@@ -52,12 +52,8 @@ next_680:                                              ; pred = %next_679
 
 define float @sumRecursive(i32 %0, float %1) {
 sumRecursiveEntry:
-  %retVal_ofinline2249 = alloca float, align 4
-  %lv_of_inline2249 = alloca float, align 4
-  %lv$1_of_inline2249 = alloca i32, align 4
-  %retVal_ofinline2242 = alloca float, align 4
-  %lv_of_inline2242 = alloca float, align 4
-  %lv$1_of_inline2242 = alloca i32, align 4
+  %retVal_ofinline7 = alloca float, align 4
+  %retVal_ofinline = alloca float, align 4
   %lv$1 = alloca float, align 4
   %lv = alloca i32, align 4
   store i32 %0, i32* %lv, align 4
@@ -66,57 +62,36 @@ sumRecursiveEntry:
   %cond_eq_tmp_ = icmp eq i32 %n, 0
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_380, label %next_684
+  br i1 %cond_, label %ifTrue_8, label %next_15
 
-ifTrue_380:                                               ; pred = %sumRecursiveEntry
+ifTrue_8:                                                 ; pred = %sumRecursiveEntry
   %x = load float, float* %lv$1, align 4
-  br label %inline2242
+  br label %inline
 
-next_684:                                                 ; pred = %sumRecursiveEntry
+next_15:                                                  ; pred = %sumRecursiveEntry
   %x$1 = load float, float* %lv$1, align 4
   %n$1 = load i32, i32* %lv, align 4
-  br label %inline2249
+  br label %inline7
 
-inline2244:                                               ; pred = %inline2242
-  %n$1_of_inline2244 = load i32, i32* %lv$1_of_inline2242, align 4
-  %cond_eq_tmp_$1_of_inline2244 = icmp eq i32 %n$1_of_inline2244, 1
-  %cond_tmp_$1_of_inline2244 = zext i1 %cond_eq_tmp_$1_of_inline2244 to i32
-  %cond_$1_of_inline2244 = icmp ne i32 %cond_tmp_$1_of_inline2244, 0
-  br i1 %cond_$1_of_inline2244, label %inline2245, label %inline2246
+inline3:                                                  ; pred = %inline2
+  %result__of_inline3 = fmul float 0x4000000000000000, %x
+  store float %result__of_inline3, float* %retVal_ofinline, align 4
+  br label %truncated
 
-inline2250:                                               ; pred = %inline2249
-  store float 0xbff0000000000000, float* %retVal_ofinline2249, align 4
-  br label %truncated224
+inline11:                                                 ; pred = %inline9
+  %cond_eq_tmp_$2_of_inline11 = icmp eq i32 %n$1, 2
+  %cond_tmp_$2_of_inline11 = zext i1 %cond_eq_tmp_$2_of_inline11 to i32
+  %cond_$2_of_inline11 = icmp ne i32 %cond_tmp_$2_of_inline11, 0
+  br i1 %cond_$2_of_inline11, label %inline12, label %inline13
 
-inline2254:                                               ; pred = %inline2253
-  %x$1_of_inline2254 = load float, float* %lv_of_inline2249, align 4
-  %result_$1_of_inline2254 = fmul float 0xbfe0000000000000, %x$1_of_inline2254
-  %x$2_of_inline2254 = load float, float* %lv_of_inline2249, align 4
-  %result_$2_of_inline2254 = fmul float %result_$1_of_inline2254, %x$2_of_inline2254
-  store float %result_$2_of_inline2254, float* %retVal_ofinline2249, align 4
-  br label %truncated224
+inline2:                                                  ; pred = %inline
+  %cond_eq_tmp_$1_of_inline2 = icmp eq i32 0, 1
+  %cond_tmp_$1_of_inline2 = zext i1 %cond_eq_tmp_$1_of_inline2 to i32
+  %cond_$1_of_inline2 = icmp ne i32 %cond_tmp_$1_of_inline2, 0
+  br i1 %cond_$1_of_inline2, label %inline3, label %inline4
 
-inline2255:                                               ; pred = %inline2253
-  %x$3_of_inline2255 = load float, float* %lv_of_inline2249, align 4
-  %x$4_of_inline2255 = load float, float* %lv_of_inline2249, align 4
-  %result_$3_of_inline2255 = fmul float %x$3_of_inline2255, %x$4_of_inline2255
-  %x$5_of_inline2255 = load float, float* %lv_of_inline2249, align 4
-  %result_$4_of_inline2255 = fmul float %result_$3_of_inline2255, %x$5_of_inline2255
-  store float %result_$4_of_inline2255, float* %retVal_ofinline2249, align 4
-  br label %truncated224
-
-inline2243:                                               ; pred = %inline2242
-  store float 0xbff0000000000000, float* %retVal_ofinline2242, align 4
-  br label %truncated223
-
-inline2252:                                               ; pred = %inline2251
-  %x_of_inline2252 = load float, float* %lv_of_inline2249, align 4
-  %result__of_inline2252 = fmul float 0x4000000000000000, %x_of_inline2252
-  store float %result__of_inline2252, float* %retVal_ofinline2249, align 4
-  br label %truncated224
-
-truncated224:                                             ; pred = %inline2250, %inline2254, %inline2255, %inline2252
-  %poly$1 = load float, float* %retVal_ofinline2249, align 4
+truncated1:                                               ; pred = %inline13, %inline12, %inline8, %inline10
+  %poly$1 = load float, float* %retVal_ofinline7, align 4
   %n$2 = load i32, i32* %lv, align 4
   %result_ = sub i32 %n$2, 1
   %x$2 = load float, float* %lv$1, align 4
@@ -124,75 +99,74 @@ truncated224:                                             ; pred = %inline2250, 
   %result_$1 = fadd float %poly$1, %sumRecursive
   ret float %result_$1
 
-inline2242:                                               ; pred = %ifTrue_380
-  store float %x, float* %lv_of_inline2242, align 4
-  store i32 0, i32* %lv$1_of_inline2242, align 4
-  %n_of_inline2242 = load i32, i32* %lv$1_of_inline2242, align 4
-  %cond_eq_tmp__of_inline2242 = icmp eq i32 %n_of_inline2242, 0
-  %cond_tmp__of_inline2242 = zext i1 %cond_eq_tmp__of_inline2242 to i32
-  %cond__of_inline2242 = icmp ne i32 %cond_tmp__of_inline2242, 0
-  br i1 %cond__of_inline2242, label %inline2243, label %inline2244
+inline1:                                                  ; pred = %inline
+  store float 0xbff0000000000000, float* %retVal_ofinline, align 4
+  br label %truncated
 
-inline2248:                                               ; pred = %inline2246
-  %x$3_of_inline2248 = load float, float* %lv_of_inline2242, align 4
-  %x$4_of_inline2248 = load float, float* %lv_of_inline2242, align 4
-  %result_$3_of_inline2248 = fmul float %x$3_of_inline2248, %x$4_of_inline2248
-  %x$5_of_inline2248 = load float, float* %lv_of_inline2242, align 4
-  %result_$4_of_inline2248 = fmul float %result_$3_of_inline2248, %x$5_of_inline2248
-  store float %result_$4_of_inline2248, float* %retVal_ofinline2242, align 4
-  br label %truncated223
+inline4:                                                  ; pred = %inline2
+  %cond_eq_tmp_$2_of_inline4 = icmp eq i32 0, 2
+  %cond_tmp_$2_of_inline4 = zext i1 %cond_eq_tmp_$2_of_inline4 to i32
+  %cond_$2_of_inline4 = icmp ne i32 %cond_tmp_$2_of_inline4, 0
+  br i1 %cond_$2_of_inline4, label %inline5, label %inline6
 
-inline2246:                                               ; pred = %inline2244
-  %n$2_of_inline2246 = load i32, i32* %lv$1_of_inline2242, align 4
-  %cond_eq_tmp_$2_of_inline2246 = icmp eq i32 %n$2_of_inline2246, 2
-  %cond_tmp_$2_of_inline2246 = zext i1 %cond_eq_tmp_$2_of_inline2246 to i32
-  %cond_$2_of_inline2246 = icmp ne i32 %cond_tmp_$2_of_inline2246, 0
-  br i1 %cond_$2_of_inline2246, label %inline2247, label %inline2248
+inline:                                                   ; pred = %ifTrue_8
+  %cond_eq_tmp__of_inline = icmp eq i32 0, 0
+  %cond_tmp__of_inline = zext i1 %cond_eq_tmp__of_inline to i32
+  %cond__of_inline = icmp ne i32 %cond_tmp__of_inline, 0
+  br i1 %cond__of_inline, label %inline1, label %inline2
 
-inline2245:                                               ; pred = %inline2244
-  %x_of_inline2245 = load float, float* %lv_of_inline2242, align 4
-  %result__of_inline2245 = fmul float 0x4000000000000000, %x_of_inline2245
-  store float %result__of_inline2245, float* %retVal_ofinline2242, align 4
-  br label %truncated223
+inline13:                                                 ; pred = %inline11
+  %result_$3_of_inline13 = fmul float %x$1, %x$1
+  %result_$4_of_inline13 = fmul float %result_$3_of_inline13, %x$1
+  store float %result_$4_of_inline13, float* %retVal_ofinline7, align 4
+  br label %truncated1
 
-inline2249:                                               ; pred = %next_684
-  store float %x$1, float* %lv_of_inline2249, align 4
-  store i32 %n$1, i32* %lv$1_of_inline2249, align 4
-  %n_of_inline2249 = load i32, i32* %lv$1_of_inline2249, align 4
-  %cond_eq_tmp__of_inline2249 = icmp eq i32 %n_of_inline2249, 0
-  %cond_tmp__of_inline2249 = zext i1 %cond_eq_tmp__of_inline2249 to i32
-  %cond__of_inline2249 = icmp ne i32 %cond_tmp__of_inline2249, 0
-  br i1 %cond__of_inline2249, label %inline2250, label %inline2251
+inline12:                                                 ; pred = %inline11
+  %result_$1_of_inline12 = fmul float 0xbfe0000000000000, %x$1
+  %result_$2_of_inline12 = fmul float %result_$1_of_inline12, %x$1
+  store float %result_$2_of_inline12, float* %retVal_ofinline7, align 4
+  br label %truncated1
 
-inline2251:                                               ; pred = %inline2249
-  %n$1_of_inline2251 = load i32, i32* %lv$1_of_inline2249, align 4
-  %cond_eq_tmp_$1_of_inline2251 = icmp eq i32 %n$1_of_inline2251, 1
-  %cond_tmp_$1_of_inline2251 = zext i1 %cond_eq_tmp_$1_of_inline2251 to i32
-  %cond_$1_of_inline2251 = icmp ne i32 %cond_tmp_$1_of_inline2251, 0
-  br i1 %cond_$1_of_inline2251, label %inline2252, label %inline2253
+inline9:                                                  ; pred = %inline7
+  %cond_eq_tmp_$1_of_inline9 = icmp eq i32 %n$1, 1
+  %cond_tmp_$1_of_inline9 = zext i1 %cond_eq_tmp_$1_of_inline9 to i32
+  %cond_$1_of_inline9 = icmp ne i32 %cond_tmp_$1_of_inline9, 0
+  br i1 %cond_$1_of_inline9, label %inline10, label %inline11
 
-inline2247:                                               ; pred = %inline2246
-  %x$1_of_inline2247 = load float, float* %lv_of_inline2242, align 4
-  %result_$1_of_inline2247 = fmul float 0xbfe0000000000000, %x$1_of_inline2247
-  %x$2_of_inline2247 = load float, float* %lv_of_inline2242, align 4
-  %result_$2_of_inline2247 = fmul float %result_$1_of_inline2247, %x$2_of_inline2247
-  store float %result_$2_of_inline2247, float* %retVal_ofinline2242, align 4
-  br label %truncated223
+inline6:                                                  ; pred = %inline4
+  %result_$3_of_inline6 = fmul float %x, %x
+  %result_$4_of_inline6 = fmul float %result_$3_of_inline6, %x
+  store float %result_$4_of_inline6, float* %retVal_ofinline, align 4
+  br label %truncated
 
-truncated223:                                             ; pred = %inline2243, %inline2245, %inline2248, %inline2247
-  %poly = load float, float* %retVal_ofinline2242, align 4
+inline7:                                                  ; pred = %next_15
+  %cond_eq_tmp__of_inline7 = icmp eq i32 %n$1, 0
+  %cond_tmp__of_inline7 = zext i1 %cond_eq_tmp__of_inline7 to i32
+  %cond__of_inline7 = icmp ne i32 %cond_tmp__of_inline7, 0
+  br i1 %cond__of_inline7, label %inline8, label %inline9
+
+inline8:                                                  ; pred = %inline7
+  store float 0xbff0000000000000, float* %retVal_ofinline7, align 4
+  br label %truncated1
+
+truncated:                                                ; pred = %inline3, %inline6, %inline1, %inline5
+  %poly = load float, float* %retVal_ofinline, align 4
   ret float %poly
 
-inline2253:                                               ; pred = %inline2251
-  %n$2_of_inline2253 = load i32, i32* %lv$1_of_inline2249, align 4
-  %cond_eq_tmp_$2_of_inline2253 = icmp eq i32 %n$2_of_inline2253, 2
-  %cond_tmp_$2_of_inline2253 = zext i1 %cond_eq_tmp_$2_of_inline2253 to i32
-  %cond_$2_of_inline2253 = icmp ne i32 %cond_tmp_$2_of_inline2253, 0
-  br i1 %cond_$2_of_inline2253, label %inline2254, label %inline2255
+inline10:                                                 ; pred = %inline9
+  %result__of_inline10 = fmul float 0x4000000000000000, %x$1
+  store float %result__of_inline10, float* %retVal_ofinline7, align 4
+  br label %truncated1
+
+inline5:                                                  ; pred = %inline4
+  %result_$1_of_inline5 = fmul float 0xbfe0000000000000, %x
+  %result_$2_of_inline5 = fmul float %result_$1_of_inline5, %x
+  store float %result_$2_of_inline5, float* %retVal_ofinline, align 4
+  br label %truncated
 }
 
 define i32 @main() {
-mainEntry103:
+mainEntry2:
   %lv$3 = alloca float, align 4
   %lv$2 = alloca float, align 4
   %lv$1 = alloca i32, align 4
