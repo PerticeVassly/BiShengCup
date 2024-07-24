@@ -1,10 +1,7 @@
 package cn.edu.nju.software.pass;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import cn.edu.nju.software.ir.instruction.Binary;
-import cn.edu.nju.software.ir.instruction.Cmp;
-import cn.edu.nju.software.ir.instruction.Instruction;
-import cn.edu.nju.software.ir.instruction.ZExt;
+import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.BoolType;
 import cn.edu.nju.software.ir.type.IntType;
@@ -53,6 +50,16 @@ public class EliminateConstExp {
                     inst.replace(j, value2Const.get(inst.getOperand(j)));
                 }
             }
+
+            // special judge Call because of different op form
+            if (inst instanceof Call) {
+                for (int k = 0; k < ((Call) inst).getParamsNum(); k++) {
+                    if (value2Const.containsKey(((Call) inst).getRealParam(k))) {
+                        ((Call) inst).replaceRealParam(k, value2Const.get(((Call) inst).getRealParam(k)));
+                    }
+                }
+            }
+
             if (inst instanceof Binary) {
                 if (inst.getOperand(0) instanceof ConstValue && inst.getOperand(1) instanceof ConstValue) {
                     ConstValue cv = ((Binary) inst).calculate();

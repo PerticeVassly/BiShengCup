@@ -3,9 +3,13 @@ package cn.edu.nju.software.pass;
 import cn.edu.nju.software.frontend.util.CFG;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.Allocate;
+import cn.edu.nju.software.ir.instruction.Call;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.Store;
 import cn.edu.nju.software.ir.module.ModuleRef;
+import cn.edu.nju.software.ir.type.FloatType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
@@ -100,12 +104,13 @@ public class MemToReg {
         }
         HashMap<Allocate, ValueRef> res = new HashMap<>();
         for (int i = 0; i < tmp.size(); i++) {
-            if (/*regValue.get(i) != null && */tmp.get(i) != null) {
+            if (/*regValue.get(i) != null && */tmp.get(i) != null && (((Pointer)tmp.get(i).getLVal().getType()).getBase() instanceof IntType
+                    || ((Pointer)tmp.get(i).getLVal().getType()).getBase() instanceof FloatType)) { // not alloc for arr
                 res.put(tmp.get(i), regValue.get(i)); // if regVal == null, the alloc can be deleted
-                System.err.println(tmp.get(i) + ": " + regValue.get(i));
+//                System.err.println(tmp.get(i) + ": " + regValue.get(i));
             }
         }
-        System.err.println();
+//        System.err.println();
         return res;
     }
 
@@ -124,18 +129,34 @@ public class MemToReg {
                         bb.dropIr(inst);
                         j--;
                     }
-                } else if (inst.isStore()) {
+                } else if (inst.isStore()) { // at most true once
                     if (inst.getOperand(1).equals(memory)) { // second op is memory
                         bb.dropIr(inst);
                         j--;
                     }
-                } else {
-                    int opNum = inst.getNumberOfOperands();
-                    for (int k = 0; k < opNum; k++) {
-                        ValueRef op = inst.getOperand(k);
-                        if (loadVal2RegVal.containsKey(op)) {
-                            inst.replace(k, loadVal2RegVal.get(op));
+                }
+            }
+        }
+        for (int i = 0; i < fv.getBlockNum(); i++) {
+            BasicBlockRef bb = fv.getBasicBlockRef(i);
+            for (int j = 0; j < bb.getIrNum(); j++) {
+                Instruction inst = bb.getIr(j);
+                int opNum = inst.getNumberOfOperands();
+                for (int k = 0; k < opNum; k++) {
+                    ValueRef op = inst.getOperand(k);
+                    while (loadVal2RegVal.containsKey(op)) {
+                        op = loadVal2RegVal.get(op);
+                    }
+                    inst.replace(k, op);
+                }
+                // considering Call inst special operands, special judge
+                if (inst instanceof Call) {
+                    for (int k = 0; k < ((Call) inst).getParamsNum(); k++) {
+                        ValueRef op = ((Call) inst).getRealParam(k);
+                        while (loadVal2RegVal.containsKey(op)) {
+                            op = loadVal2RegVal.get(op);
                         }
+                        ((Call) inst).replaceRealParam(k, op);
                     }
                 }
             }

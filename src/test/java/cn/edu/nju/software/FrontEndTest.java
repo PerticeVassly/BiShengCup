@@ -38,7 +38,7 @@ public class FrontEndTest {
 //    @StringSource("101_float_arr")
 //    @StringSource("38_light2d")
 //    @StringSource("34_multi_loop")
-    @StringSource("62_percolation")
+    @StringSource("82_long_func")
 //    @StringSource("79_var_name")
 //    @StringSource("90_many_locals")
 //    @StringSource("64_calculator")

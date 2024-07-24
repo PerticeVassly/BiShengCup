@@ -83,7 +83,7 @@ public class Main {
         MemToReg memToReg = new MemToReg(module);
         memToReg.memToRegProc();
         EliminateConstExp eliminateConstExp = new EliminateConstExp(module);
-//        eliminateConstExp.doEliminateProc();
+        eliminateConstExp.doEliminateProc();
 
         irVisitor.dumpModuleToConsole();
 

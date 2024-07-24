@@ -54,6 +54,17 @@ public class Call extends Instruction {
         return function;
     }
 
+    public int getParamsNum() {
+        return realParams.size();
+    }
+
+    public ValueRef getRealParam(int index) {
+        return realParams.get(index);
+    }
+
+    public void replaceRealParam(int index, ValueRef newVal) {
+        realParams.set(index, newVal);
+    }
 
     @Override
     public boolean isCall() {
