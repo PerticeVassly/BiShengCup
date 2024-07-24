@@ -197,6 +197,65 @@ next_162:                                            ; pred = %next_161, %ifTrue
   %dp$6 = load i32, i32* %dp$5, align 4
   ret i32 %dp$6
 
+truncated112:                                        ; pred = %inline803, %inline802
+  %equal$2 = load i32, i32* %retVal_ofinline801, align 4
+  %result_$15 = sub i32 %c$6, %equal$2
+  %a$7 = load i32, i32* %lv, align 4
+  %b$7 = load i32, i32* %lv$1, align 4
+  %result_$16 = add i32 %b$7, 1
+  %c$7 = load i32, i32* %lv$2, align 4
+  %result_$17 = sub i32 %c$7, 1
+  %d$5 = load i32, i32* %lv$3, align 4
+  %e$5 = load i32, i32* %lv$4, align 4
+  %dfs$2 = call i32 @dfs(i32 %a$7, i32 %result_$16, i32 %result_$17, i32 %d$5, i32 %e$5, i32 3)
+  %result_$18 = mul i32 %result_$15, %dfs$2
+  %result_$19 = add i32 %ans$2, %result_$18
+  %result_$20 = srem i32 %result_$19, 1000000007
+  store i32 %result_$20, i32* %lv$6, align 4
+  br label %next_160
+
+inline806:                                           ; pred = %inline804
+  store i32 0, i32* %retVal_ofinline804, align 4
+  br label %truncated113
+
+inline796:                                           ; pred = %inline795
+  store i32 1, i32* %retVal_ofinline795, align 4
+  br label %truncated110
+
+truncated110:                                        ; pred = %inline796, %inline797
+  %equal = load i32, i32* %retVal_ofinline795, align 4
+  %result_$4 = sub i32 %a$4, %equal
+  %a$5 = load i32, i32* %lv, align 4
+  %result_$5 = sub i32 %a$5, 1
+  %b$3 = load i32, i32* %lv$1, align 4
+  %c$3 = load i32, i32* %lv$2, align 4
+  %d$3 = load i32, i32* %lv$3, align 4
+  %e$3 = load i32, i32* %lv$4, align 4
+  %dfs = call i32 @dfs(i32 %result_$5, i32 %b$3, i32 %c$3, i32 %d$3, i32 %e$3, i32 1)
+  %result_$6 = mul i32 %result_$4, %dfs
+  %result_$7 = add i32 %ans, %result_$6
+  %result_$8 = srem i32 %result_$7, 1000000007
+  store i32 %result_$8, i32* %lv$6, align 4
+  br label %next_158
+
+inline803:                                           ; pred = %inline801
+  store i32 0, i32* %retVal_ofinline801, align 4
+  br label %truncated112
+
+inline797:                                           ; pred = %inline795
+  store i32 0, i32* %retVal_ofinline795, align 4
+  br label %truncated110
+
+inline795:                                           ; pred = %ifTrue_76
+  store i32 %last$2, i32* %lv_of_inline795, align 4
+  store i32 2, i32* %lv$1_of_inline795, align 4
+  %a_of_inline795 = load i32, i32* %lv_of_inline795, align 4
+  %b_of_inline795 = load i32, i32* %lv$1_of_inline795, align 4
+  %cond_eq_tmp__of_inline795 = icmp eq i32 %a_of_inline795, %b_of_inline795
+  %cond_tmp__of_inline795 = zext i1 %cond_eq_tmp__of_inline795 to i32
+  %cond__of_inline795 = icmp ne i32 %cond_tmp__of_inline795, 0
+  br i1 %cond__of_inline795, label %inline796, label %inline797
+
 truncated111:                                        ; pred = %inline800, %inline799
   %equal$1 = load i32, i32* %retVal_ofinline798, align 4
   %result_$9 = sub i32 %b$5, %equal$1
@@ -214,46 +273,33 @@ truncated111:                                        ; pred = %inline800, %inlin
   store i32 %result_$14, i32* %lv$6, align 4
   br label %next_159
 
-truncated112:                                        ; pred = %inline802, %inline803
-  %equal$2 = load i32, i32* %retVal_ofinline801, align 4
-  %result_$15 = sub i32 %c$6, %equal$2
-  %a$7 = load i32, i32* %lv, align 4
-  %b$7 = load i32, i32* %lv$1, align 4
-  %result_$16 = add i32 %b$7, 1
-  %c$7 = load i32, i32* %lv$2, align 4
-  %result_$17 = sub i32 %c$7, 1
-  %d$5 = load i32, i32* %lv$3, align 4
-  %e$5 = load i32, i32* %lv$4, align 4
-  %dfs$2 = call i32 @dfs(i32 %a$7, i32 %result_$16, i32 %result_$17, i32 %d$5, i32 %e$5, i32 3)
-  %result_$18 = mul i32 %result_$15, %dfs$2
-  %result_$19 = add i32 %ans$2, %result_$18
-  %result_$20 = srem i32 %result_$19, 1000000007
-  store i32 %result_$20, i32* %lv$6, align 4
-  br label %next_160
-
-inline796:                                           ; pred = %inline795
-  store i32 1, i32* %retVal_ofinline795, align 4
-  br label %truncated110
-
-inline799:                                           ; pred = %inline798
-  store i32 1, i32* %retVal_ofinline798, align 4
+inline800:                                           ; pred = %inline798
+  store i32 0, i32* %retVal_ofinline798, align 4
   br label %truncated111
 
-truncated110:                                        ; pred = %inline797, %inline796
-  %equal = load i32, i32* %retVal_ofinline795, align 4
-  %result_$4 = sub i32 %a$4, %equal
-  %a$5 = load i32, i32* %lv, align 4
-  %result_$5 = sub i32 %a$5, 1
-  %b$3 = load i32, i32* %lv$1, align 4
-  %c$3 = load i32, i32* %lv$2, align 4
-  %d$3 = load i32, i32* %lv$3, align 4
-  %e$3 = load i32, i32* %lv$4, align 4
-  %dfs = call i32 @dfs(i32 %result_$5, i32 %b$3, i32 %c$3, i32 %d$3, i32 %e$3, i32 1)
-  %result_$6 = mul i32 %result_$4, %dfs
-  %result_$7 = add i32 %ans, %result_$6
-  %result_$8 = srem i32 %result_$7, 1000000007
-  store i32 %result_$8, i32* %lv$6, align 4
-  br label %next_158
+inline805:                                           ; pred = %inline804
+  store i32 1, i32* %retVal_ofinline804, align 4
+  br label %truncated113
+
+inline801:                                           ; pred = %ifTrue_78
+  store i32 %last$4, i32* %lv_of_inline801, align 4
+  store i32 4, i32* %lv$1_of_inline801, align 4
+  %a_of_inline801 = load i32, i32* %lv_of_inline801, align 4
+  %b_of_inline801 = load i32, i32* %lv$1_of_inline801, align 4
+  %cond_eq_tmp__of_inline801 = icmp eq i32 %a_of_inline801, %b_of_inline801
+  %cond_tmp__of_inline801 = zext i1 %cond_eq_tmp__of_inline801 to i32
+  %cond__of_inline801 = icmp ne i32 %cond_tmp__of_inline801, 0
+  br i1 %cond__of_inline801, label %inline802, label %inline803
+
+inline804:                                           ; pred = %ifTrue_79
+  store i32 %last$5, i32* %lv_of_inline804, align 4
+  store i32 5, i32* %lv$1_of_inline804, align 4
+  %a_of_inline804 = load i32, i32* %lv_of_inline804, align 4
+  %b_of_inline804 = load i32, i32* %lv$1_of_inline804, align 4
+  %cond_eq_tmp__of_inline804 = icmp eq i32 %a_of_inline804, %b_of_inline804
+  %cond_tmp__of_inline804 = zext i1 %cond_eq_tmp__of_inline804 to i32
+  %cond__of_inline804 = icmp ne i32 %cond_tmp__of_inline804, 0
+  br i1 %cond__of_inline804, label %inline805, label %inline806
 
 inline798:                                           ; pred = %ifTrue_77
   store i32 %last$3, i32* %lv_of_inline798, align 4
@@ -265,29 +311,7 @@ inline798:                                           ; pred = %ifTrue_77
   %cond__of_inline798 = icmp ne i32 %cond_tmp__of_inline798, 0
   br i1 %cond__of_inline798, label %inline799, label %inline800
 
-inline805:                                           ; pred = %inline804
-  store i32 1, i32* %retVal_ofinline804, align 4
-  br label %truncated113
-
-inline795:                                           ; pred = %ifTrue_76
-  store i32 %last$2, i32* %lv_of_inline795, align 4
-  store i32 2, i32* %lv$1_of_inline795, align 4
-  %a_of_inline795 = load i32, i32* %lv_of_inline795, align 4
-  %b_of_inline795 = load i32, i32* %lv$1_of_inline795, align 4
-  %cond_eq_tmp__of_inline795 = icmp eq i32 %a_of_inline795, %b_of_inline795
-  %cond_tmp__of_inline795 = zext i1 %cond_eq_tmp__of_inline795 to i32
-  %cond__of_inline795 = icmp ne i32 %cond_tmp__of_inline795, 0
-  br i1 %cond__of_inline795, label %inline796, label %inline797
-
-inline797:                                           ; pred = %inline795
-  store i32 0, i32* %retVal_ofinline795, align 4
-  br label %truncated110
-
-inline800:                                           ; pred = %inline798
-  store i32 0, i32* %retVal_ofinline798, align 4
-  br label %truncated111
-
-truncated113:                                        ; pred = %inline805, %inline806
+truncated113:                                        ; pred = %inline806, %inline805
   %equal$3 = load i32, i32* %retVal_ofinline804, align 4
   %result_$21 = sub i32 %d$7, %equal$3
   %a$8 = load i32, i32* %lv, align 4
@@ -304,37 +328,13 @@ truncated113:                                        ; pred = %inline805, %inlin
   store i32 %result_$26, i32* %lv$6, align 4
   br label %next_161
 
+inline799:                                           ; pred = %inline798
+  store i32 1, i32* %retVal_ofinline798, align 4
+  br label %truncated111
+
 inline802:                                           ; pred = %inline801
   store i32 1, i32* %retVal_ofinline801, align 4
   br label %truncated112
-
-inline803:                                           ; pred = %inline801
-  store i32 0, i32* %retVal_ofinline801, align 4
-  br label %truncated112
-
-inline804:                                           ; pred = %ifTrue_79
-  store i32 %last$5, i32* %lv_of_inline804, align 4
-  store i32 5, i32* %lv$1_of_inline804, align 4
-  %a_of_inline804 = load i32, i32* %lv_of_inline804, align 4
-  %b_of_inline804 = load i32, i32* %lv$1_of_inline804, align 4
-  %cond_eq_tmp__of_inline804 = icmp eq i32 %a_of_inline804, %b_of_inline804
-  %cond_tmp__of_inline804 = zext i1 %cond_eq_tmp__of_inline804 to i32
-  %cond__of_inline804 = icmp ne i32 %cond_tmp__of_inline804, 0
-  br i1 %cond__of_inline804, label %inline805, label %inline806
-
-inline806:                                           ; pred = %inline804
-  store i32 0, i32* %retVal_ofinline804, align 4
-  br label %truncated113
-
-inline801:                                           ; pred = %ifTrue_78
-  store i32 %last$4, i32* %lv_of_inline801, align 4
-  store i32 4, i32* %lv$1_of_inline801, align 4
-  %a_of_inline801 = load i32, i32* %lv_of_inline801, align 4
-  %b_of_inline801 = load i32, i32* %lv$1_of_inline801, align 4
-  %cond_eq_tmp__of_inline801 = icmp eq i32 %a_of_inline801, %b_of_inline801
-  %cond_tmp__of_inline801 = zext i1 %cond_eq_tmp__of_inline801 to i32
-  %cond__of_inline801 = icmp ne i32 %cond_tmp__of_inline801, 0
-  br i1 %cond__of_inline801, label %inline802, label %inline803
 }
 
 define i32 @main() {

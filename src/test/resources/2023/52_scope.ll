@@ -69,6 +69,13 @@ ifFalse_19:                                          ; pred = %next_124
 next_126:                                            ; pred = %ifTrue_63, %ifFalse_19
   ret i32 0
 
+inline705:                                           ; pred = %inline704
+  %a$2_of_inline705 = load i32, i32* %lv$1_of_inline704, align 4
+  %result__of_inline705 = add i32 %a$2_of_inline705, 1
+  store i32 %result__of_inline705, i32* %lv$1_of_inline704, align 4
+  store i32 1, i32* %retVal_ofinline704, align 4
+  br label %truncated81
+
 inline704:                                           ; pred = %whileBody_62
   %a_of_inline704 = load i32, i32* @gv, align 4
   store i32 %a_of_inline704, i32* %lv_of_inline704, align 4
@@ -84,18 +91,11 @@ inline706:                                           ; pred = %inline704
   store i32 0, i32* %retVal_ofinline704, align 4
   br label %truncated81
 
-truncated81:                                         ; pred = %inline706, %inline705
+truncated81:                                         ; pred = %inline705, %inline706
   %func = load i32, i32* %retVal_ofinline704, align 4
   %cond_eq_tmp_ = icmp eq i32 %func, 1
   %cond_tmp_$1 = zext i1 %cond_eq_tmp_ to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
   br i1 %cond_$1, label %ifTrue_62, label %next_125
-
-inline705:                                           ; pred = %inline704
-  %a$2_of_inline705 = load i32, i32* %lv$1_of_inline704, align 4
-  %result__of_inline705 = add i32 %a$2_of_inline705, 1
-  store i32 %result__of_inline705, i32* %lv$1_of_inline704, align 4
-  store i32 1, i32* %retVal_ofinline704, align 4
-  br label %truncated81
 }
 

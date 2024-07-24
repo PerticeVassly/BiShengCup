@@ -55,18 +55,6 @@ ifFalse_4:                                         ; pred = %hanoiEntry
 next_13:                                           ; pred = %ifTrue_4, %ifFalse_4
   ret void
 
-inline39:                                          ; pred = %ifTrue_4
-  store i32 %one, i32* %lv_of_inline39, align 4
-  store i32 %three, i32* %lv$1_of_inline39, align 4
-  %x_of_inline39 = load i32, i32* %lv_of_inline39, align 4
-  call void @putint(i32 %x_of_inline39)
-  call void @putch(i32 32)
-  %y_of_inline39 = load i32, i32* %lv$1_of_inline39, align 4
-  call void @putint(i32 %y_of_inline39)
-  call void @putch(i32 44)
-  call void @putch(i32 32)
-  br label %truncated2
-
 truncated3:                                        ; pred = %inline40
   %n$2 = load i32, i32* %lv, align 4
   %result_$1 = sub i32 %n$2, 1
@@ -90,6 +78,18 @@ inline40:                                          ; pred = %ifFalse_4
 
 truncated2:                                        ; pred = %inline39
   br label %next_13
+
+inline39:                                          ; pred = %ifTrue_4
+  store i32 %one, i32* %lv_of_inline39, align 4
+  store i32 %three, i32* %lv$1_of_inline39, align 4
+  %x_of_inline39 = load i32, i32* %lv_of_inline39, align 4
+  call void @putint(i32 %x_of_inline39)
+  call void @putch(i32 32)
+  %y_of_inline39 = load i32, i32* %lv$1_of_inline39, align 4
+  call void @putint(i32 %y_of_inline39)
+  call void @putch(i32 44)
+  call void @putch(i32 32)
+  br label %truncated2
 }
 
 define i32 @main() {

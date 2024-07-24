@@ -312,15 +312,18 @@ secondCond_131:                                        ; pred = %secondCond_130
   %cond_$18 = icmp ne i32 %cond_tmp_$21, 0
   br i1 %cond_$18, label %ifTrue_365, label %next_650
 
-truncated216:                                          ; pred = %inline2220
-  %set_b = load i32, i32* %retVal_ofinline2220, align 4
-  %cond_normalize_$1 = icmp ne i32 %set_b, 0
-  br i1 %cond_normalize_$1, label %ifTrue_351, label %next_635
+truncated215:                                          ; pred = %inline2219
+  %set_a$1 = load i32, i32* %retVal_ofinline2219, align 4
+  %cond_normalize_$2 = icmp ne i32 %set_a$1, 0
+  br i1 %cond_normalize_$2, label %secondCond_121, label %next_636
 
-truncated218:                                          ; pred = %inline2222
-  %set_d = load i32, i32* %retVal_ofinline2222, align 4
-  %cond_normalize_$4 = icmp ne i32 %set_d, 0
-  br i1 %cond_normalize_$4, label %ifTrue_353, label %next_637
+inline2222:                                            ; pred = %secondCond_122
+  store i32 3, i32* %lv_of_inline2222, align 4
+  %val_of_inline2222 = load i32, i32* %lv_of_inline2222, align 4
+  store i32 %val_of_inline2222, i32* @gv2, align 4
+  %d_of_inline2222 = load i32, i32* @gv2, align 4
+  store i32 %d_of_inline2222, i32* %retVal_ofinline2222, align 4
+  br label %truncated218
 
 inline2223:                                            ; pred = %secondCond_123
   store i32 4, i32* %lv_of_inline2223, align 4
@@ -330,6 +333,24 @@ inline2223:                                            ; pred = %secondCond_123
   store i32 %d_of_inline2223, i32* %retVal_ofinline2223, align 4
   br label %truncated219
 
+inline2218:                                            ; pred = %mainEntry90
+  store i32 0, i32* %lv_of_inline2218, align 4
+  %val_of_inline2218 = load i32, i32* %lv_of_inline2218, align 4
+  store i32 %val_of_inline2218, i32* @gv, align 4
+  %a_of_inline2218 = load i32, i32* @gv, align 4
+  store i32 %a_of_inline2218, i32* %retVal_ofinline2218, align 4
+  br label %truncated214
+
+truncated218:                                          ; pred = %inline2222
+  %set_d = load i32, i32* %retVal_ofinline2222, align 4
+  %cond_normalize_$4 = icmp ne i32 %set_d, 0
+  br i1 %cond_normalize_$4, label %ifTrue_353, label %next_637
+
+truncated219:                                          ; pred = %inline2223
+  %set_d$1 = load i32, i32* %retVal_ofinline2223, align 4
+  %cond_normalize_$5 = icmp ne i32 %set_d$1, 0
+  br i1 %cond_normalize_$5, label %ifTrue_354, label %next_638
+
 inline2219:                                            ; pred = %next_635
   store i32 0, i32* %lv_of_inline2219, align 4
   %val_of_inline2219 = load i32, i32* %lv_of_inline2219, align 4
@@ -337,6 +358,27 @@ inline2219:                                            ; pred = %next_635
   %a_of_inline2219 = load i32, i32* @gv, align 4
   store i32 %a_of_inline2219, i32* %retVal_ofinline2219, align 4
   br label %truncated215
+
+truncated216:                                          ; pred = %inline2220
+  %set_b = load i32, i32* %retVal_ofinline2220, align 4
+  %cond_normalize_$1 = icmp ne i32 %set_b, 0
+  br i1 %cond_normalize_$1, label %ifTrue_351, label %next_635
+
+inline2220:                                            ; pred = %secondCond_120
+  store i32 1, i32* %lv_of_inline2220, align 4
+  %val_of_inline2220 = load i32, i32* %lv_of_inline2220, align 4
+  store i32 %val_of_inline2220, i32* @gv1, align 4
+  %b_of_inline2220 = load i32, i32* @gv1, align 4
+  store i32 %b_of_inline2220, i32* %retVal_ofinline2220, align 4
+  br label %truncated216
+
+inline2221:                                            ; pred = %secondCond_121
+  store i32 1, i32* %lv_of_inline2221, align 4
+  %val_of_inline2221 = load i32, i32* %lv_of_inline2221, align 4
+  store i32 %val_of_inline2221, i32* @gv1, align 4
+  %b_of_inline2221 = load i32, i32* @gv1, align 4
+  store i32 %b_of_inline2221, i32* %retVal_ofinline2221, align 4
+  br label %truncated217
 
 truncated217:                                          ; pred = %inline2221
   %set_b$1 = load i32, i32* %retVal_ofinline2221, align 4
@@ -347,47 +389,5 @@ truncated214:                                          ; pred = %inline2218
   %set_a = load i32, i32* %retVal_ofinline2218, align 4
   %cond_normalize_ = icmp ne i32 %set_a, 0
   br i1 %cond_normalize_, label %secondCond_120, label %next_635
-
-inline2222:                                            ; pred = %secondCond_122
-  store i32 3, i32* %lv_of_inline2222, align 4
-  %val_of_inline2222 = load i32, i32* %lv_of_inline2222, align 4
-  store i32 %val_of_inline2222, i32* @gv2, align 4
-  %d_of_inline2222 = load i32, i32* @gv2, align 4
-  store i32 %d_of_inline2222, i32* %retVal_ofinline2222, align 4
-  br label %truncated218
-
-inline2220:                                            ; pred = %secondCond_120
-  store i32 1, i32* %lv_of_inline2220, align 4
-  %val_of_inline2220 = load i32, i32* %lv_of_inline2220, align 4
-  store i32 %val_of_inline2220, i32* @gv1, align 4
-  %b_of_inline2220 = load i32, i32* @gv1, align 4
-  store i32 %b_of_inline2220, i32* %retVal_ofinline2220, align 4
-  br label %truncated216
-
-truncated219:                                          ; pred = %inline2223
-  %set_d$1 = load i32, i32* %retVal_ofinline2223, align 4
-  %cond_normalize_$5 = icmp ne i32 %set_d$1, 0
-  br i1 %cond_normalize_$5, label %ifTrue_354, label %next_638
-
-inline2218:                                            ; pred = %mainEntry90
-  store i32 0, i32* %lv_of_inline2218, align 4
-  %val_of_inline2218 = load i32, i32* %lv_of_inline2218, align 4
-  store i32 %val_of_inline2218, i32* @gv, align 4
-  %a_of_inline2218 = load i32, i32* @gv, align 4
-  store i32 %a_of_inline2218, i32* %retVal_ofinline2218, align 4
-  br label %truncated214
-
-truncated215:                                          ; pred = %inline2219
-  %set_a$1 = load i32, i32* %retVal_ofinline2219, align 4
-  %cond_normalize_$2 = icmp ne i32 %set_a$1, 0
-  br i1 %cond_normalize_$2, label %secondCond_121, label %next_636
-
-inline2221:                                            ; pred = %secondCond_121
-  store i32 1, i32* %lv_of_inline2221, align 4
-  %val_of_inline2221 = load i32, i32* %lv_of_inline2221, align 4
-  store i32 %val_of_inline2221, i32* @gv1, align 4
-  %b_of_inline2221 = load i32, i32* @gv1, align 4
-  store i32 %b_of_inline2221, i32* %retVal_ofinline2221, align 4
-  br label %truncated217
 }
 

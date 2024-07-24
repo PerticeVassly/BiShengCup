@@ -189,11 +189,6 @@ next_103:                                            ; pred = %whileCond_55
   call void @putch(i32 %x$5)
   ret i32 0
 
-truncated44:                                         ; pred = %inline238
-  %tran = load i32, i32* %retVal_ofinline238, align 4
-  store i32 %tran, i32* %lv$9, align 4
-  br label %whileCond_53
-
 inline238:                                           ; pred = %next_100
   store float* %a0$1, float** %lv_of_inline238, align 4
   store float* %a1$1, float** %lv$1_of_inline238, align 4
@@ -261,5 +256,10 @@ inline238:                                           ; pred = %next_100
   store float %a0$5_of_inline238, float* %c0$2_of_inline238, align 4
   store i32 0, i32* %retVal_ofinline238, align 4
   br label %truncated44
+
+truncated44:                                         ; pred = %inline238
+  %tran = load i32, i32* %retVal_ofinline238, align 4
+  store i32 %tran, i32* %lv$9, align 4
+  br label %whileCond_53
 }
 

@@ -244,33 +244,6 @@ next_624:                                             ; pred = %whileCond_277
   %V = load i32, i32* %lv, align 4
   br label %inline2185
 
-inline2180:                                           ; pred = %mainEntry85
-  store i32* %size, i32** %lv_of_inline2180, align 4
-  store i32 0, i32* %lv$1_of_inline2180, align 4
-  store i32 10, i32* %lv$2_of_inline2180, align 4
-  store i32 0, i32* %lv$3_of_inline2180, align 4
-  br label %inline2181
-
-inline2186:                                           ; pred = %inline2185, %inline2189
-  %cond_normalize__of_inline2186 = icmp ne i32 1, 0
-  br label %inline2187
-
-inline2193:                                           ; pred = %inline2190
-  br label %inline2191
-
-inline2187:                                           ; pred = %inline2186
-  %used_of_inline2187 = getelementptr [10 x i32], [10 x i32]* @gv4, i32 0, i32 0
-  br label %inline2194
-
-inline2183:                                           ; pred = %inline2181
-  br label %truncated209
-
-inline2185:                                           ; pred = %next_624
-  store i32 1, i32* %lv_of_inline2185, align 4
-  store i32 %V, i32* %lv$1_of_inline2185, align 4
-  store i32 0, i32* %lv$2_of_inline2185, align 4
-  br label %inline2186
-
 inline2181:                                           ; pred = %inline2180, %inline2182
   %i_of_inline2181 = load i32, i32* %lv$3_of_inline2180, align 4
   %n_of_inline2181 = load i32, i32* %lv$2_of_inline2180, align 4
@@ -279,34 +252,51 @@ inline2181:                                           ; pred = %inline2180, %inl
   %cond__of_inline2181 = icmp ne i32 %cond_tmp__of_inline2181, 0
   br i1 %cond__of_inline2181, label %inline2182, label %inline2183
 
-inline2194:                                           ; pred = %inline2187
+truncated211:                                         ; pred = %inline2188
+  %max_flow = load i32, i32* %retVal_ofinline2185, align 4
+  call void @putint(i32 %max_flow)
+  call void @putch(i32 10)
+  ret i32 0
+
+inline2187:                                           ; pred = %inline2186
+  %used_of_inline2187 = getelementptr [10 x i32], [10 x i32]* @gv4, i32 0, i32 0
+  br label %inline2193
+
+truncated210:                                         ; pred = %inline2184
+  %E$1 = load i32, i32* %lv$1, align 4
+  %result_ = sub i32 %E$1, 1
+  store i32 %result_, i32* %lv$1, align 4
+  br label %whileCond_277
+
+inline2182:                                           ; pred = %inline2181
+  %i$1_of_inline2182 = load i32, i32* %lv$3_of_inline2180, align 4
+  %arr__of_inline2182 = load i32*, i32** %lv_of_inline2180, align 4
+  %arr_of_inline2182 = getelementptr i32, i32* %arr__of_inline2182, i32 %i$1_of_inline2182
+  %val_of_inline2182 = load i32, i32* %lv$1_of_inline2180, align 4
+  store i32 %val_of_inline2182, i32* %arr_of_inline2182, align 4
+  %i$2_of_inline2182 = load i32, i32* %lv$3_of_inline2180, align 4
+  %result__of_inline2182 = add i32 %i$2_of_inline2182, 1
+  store i32 %result__of_inline2182, i32* %lv$3_of_inline2180, align 4
+  br label %inline2181
+
+inline2188:                                           ; pred = %inline2187
+  %flow_of_inline2188 = load i32, i32* %lv$2_of_inline2185, align 4
+  store i32 %flow_of_inline2188, i32* %retVal_ofinline2185, align 4
+  br label %truncated211
+
+truncated209:                                         ; pred = %inline2183
+  br label %whileCond_277
+
+inline2193:                                           ; pred = %inline2187
   store i32* %used_of_inline2187, i32** %lv_of_inline2176_of_inline2185, align 4
   store i32 0, i32* %lv$1_of_inline2176_of_inline2185, align 4
   store i32 10, i32* %lv$2_of_inline2176_of_inline2185, align 4
   store i32 0, i32* %lv$3_of_inline2176_of_inline2185, align 4
-  br label %inline2190
+  br label %inline2191
 
-inline2191:                                           ; pred = %inline2193
-  %s_of_inline2191 = load i32, i32* %lv_of_inline2185, align 4
-  %t_of_inline2191 = load i32, i32* %lv$1_of_inline2185, align 4
-  %dfs_of_inline2191 = call i32 @dfs(i32 %s_of_inline2191, i32 %t_of_inline2191, i32 1879048192)
-  store i32 %dfs_of_inline2191, i32* %lv$3_of_inline2185, align 4
-  %f_of_inline2191 = load i32, i32* %lv$3_of_inline2185, align 4
-  %cond_eq_tmp__of_inline2191 = icmp eq i32 %f_of_inline2191, 0
-  %cond_tmp__of_inline2191 = zext i1 %cond_eq_tmp__of_inline2191 to i32
-  %cond__of_inline2191 = icmp ne i32 %cond_tmp__of_inline2191, 0
-  br i1 %cond__of_inline2191, label %inline2188, label %inline2189
-
-inline2190:                                           ; pred = %inline2194, %inline2192
-  %i_of_inline2177_of_inline2190 = load i32, i32* %lv$3_of_inline2176_of_inline2185, align 4
-  %n_of_inline2177_of_inline2190 = load i32, i32* %lv$2_of_inline2176_of_inline2185, align 4
-  %cond_lt_tmp__of_inline2177_of_inline2190 = icmp slt i32 %i_of_inline2177_of_inline2190, %n_of_inline2177_of_inline2190
-  %cond_tmp__of_inline2177_of_inline2190 = zext i1 %cond_lt_tmp__of_inline2177_of_inline2190 to i32
-  %cond__of_inline2177_of_inline2190 = icmp ne i32 %cond_tmp__of_inline2177_of_inline2190, 0
-  br i1 %cond__of_inline2177_of_inline2190, label %inline2192, label %inline2193
-
-truncated209:                                         ; pred = %inline2183
-  br label %whileCond_277
+inline2186:                                           ; pred = %inline2185, %inline2189
+  %cond_normalize__of_inline2186 = icmp ne i32 1, 0
+  br label %inline2187
 
 inline2184:                                           ; pred = %whileBody_277
   store i32 %u, i32* %lv_of_inline2184, align 4
@@ -379,16 +369,12 @@ inline2184:                                           ; pred = %whileBody_277
   store i32 %result_$1_of_inline2184, i32* %size$19_of_inline2184, align 4
   br label %truncated210
 
-truncated210:                                         ; pred = %inline2184
-  %E$1 = load i32, i32* %lv$1, align 4
-  %result_ = sub i32 %E$1, 1
-  store i32 %result_, i32* %lv$1, align 4
-  br label %whileCond_277
-
-inline2188:                                           ; pred = %inline2187
-  %flow_of_inline2188 = load i32, i32* %lv$2_of_inline2185, align 4
-  store i32 %flow_of_inline2188, i32* %retVal_ofinline2185, align 4
-  br label %truncated211
+inline2180:                                           ; pred = %mainEntry85
+  store i32* %size, i32** %lv_of_inline2180, align 4
+  store i32 0, i32* %lv$1_of_inline2180, align 4
+  store i32 10, i32* %lv$2_of_inline2180, align 4
+  store i32 0, i32* %lv$3_of_inline2180, align 4
+  br label %inline2181
 
 inline2189:                                           ; pred = %inline2187
   %flow$1_of_inline2189 = load i32, i32* %lv$2_of_inline2185, align 4
@@ -397,32 +383,46 @@ inline2189:                                           ; pred = %inline2187
   store i32 %result__of_inline2189, i32* %lv$2_of_inline2185, align 4
   br label %inline2186
 
-inline2192:                                           ; pred = %inline2190
-  %i$1_of_inline2178_of_inline2192 = load i32, i32* %lv$3_of_inline2176_of_inline2185, align 4
-  %arr__of_inline2178_of_inline2192 = load i32*, i32** %lv_of_inline2176_of_inline2185, align 4
-  %arr_of_inline2178_of_inline2192 = getelementptr i32, i32* %arr__of_inline2178_of_inline2192, i32 %i$1_of_inline2178_of_inline2192
-  %val_of_inline2178_of_inline2192 = load i32, i32* %lv$1_of_inline2176_of_inline2185, align 4
-  store i32 %val_of_inline2178_of_inline2192, i32* %arr_of_inline2178_of_inline2192, align 4
-  %i$2_of_inline2178_of_inline2192 = load i32, i32* %lv$3_of_inline2176_of_inline2185, align 4
-  %result__of_inline2178_of_inline2192 = add i32 %i$2_of_inline2178_of_inline2192, 1
-  store i32 %result__of_inline2178_of_inline2192, i32* %lv$3_of_inline2176_of_inline2185, align 4
-  br label %inline2190
+inline2190:                                           ; pred = %inline2191
+  %i$1_of_inline2178_of_inline2190 = load i32, i32* %lv$3_of_inline2176_of_inline2185, align 4
+  %arr__of_inline2178_of_inline2190 = load i32*, i32** %lv_of_inline2176_of_inline2185, align 4
+  %arr_of_inline2178_of_inline2190 = getelementptr i32, i32* %arr__of_inline2178_of_inline2190, i32 %i$1_of_inline2178_of_inline2190
+  %val_of_inline2178_of_inline2190 = load i32, i32* %lv$1_of_inline2176_of_inline2185, align 4
+  store i32 %val_of_inline2178_of_inline2190, i32* %arr_of_inline2178_of_inline2190, align 4
+  %i$2_of_inline2178_of_inline2190 = load i32, i32* %lv$3_of_inline2176_of_inline2185, align 4
+  %result__of_inline2178_of_inline2190 = add i32 %i$2_of_inline2178_of_inline2190, 1
+  store i32 %result__of_inline2178_of_inline2190, i32* %lv$3_of_inline2176_of_inline2185, align 4
+  br label %inline2191
 
-truncated211:                                         ; pred = %inline2188
-  %max_flow = load i32, i32* %retVal_ofinline2185, align 4
-  call void @putint(i32 %max_flow)
-  call void @putch(i32 10)
-  ret i32 0
+inline2183:                                           ; pred = %inline2181
+  br label %truncated209
 
-inline2182:                                           ; pred = %inline2181
-  %i$1_of_inline2182 = load i32, i32* %lv$3_of_inline2180, align 4
-  %arr__of_inline2182 = load i32*, i32** %lv_of_inline2180, align 4
-  %arr_of_inline2182 = getelementptr i32, i32* %arr__of_inline2182, i32 %i$1_of_inline2182
-  %val_of_inline2182 = load i32, i32* %lv$1_of_inline2180, align 4
-  store i32 %val_of_inline2182, i32* %arr_of_inline2182, align 4
-  %i$2_of_inline2182 = load i32, i32* %lv$3_of_inline2180, align 4
-  %result__of_inline2182 = add i32 %i$2_of_inline2182, 1
-  store i32 %result__of_inline2182, i32* %lv$3_of_inline2180, align 4
-  br label %inline2181
+inline2185:                                           ; pred = %next_624
+  store i32 1, i32* %lv_of_inline2185, align 4
+  store i32 %V, i32* %lv$1_of_inline2185, align 4
+  store i32 0, i32* %lv$2_of_inline2185, align 4
+  br label %inline2186
+
+inline2194:                                           ; pred = %inline2191
+  br label %inline2192
+
+inline2192:                                           ; pred = %inline2194
+  %s_of_inline2192 = load i32, i32* %lv_of_inline2185, align 4
+  %t_of_inline2192 = load i32, i32* %lv$1_of_inline2185, align 4
+  %dfs_of_inline2192 = call i32 @dfs(i32 %s_of_inline2192, i32 %t_of_inline2192, i32 1879048192)
+  store i32 %dfs_of_inline2192, i32* %lv$3_of_inline2185, align 4
+  %f_of_inline2192 = load i32, i32* %lv$3_of_inline2185, align 4
+  %cond_eq_tmp__of_inline2192 = icmp eq i32 %f_of_inline2192, 0
+  %cond_tmp__of_inline2192 = zext i1 %cond_eq_tmp__of_inline2192 to i32
+  %cond__of_inline2192 = icmp ne i32 %cond_tmp__of_inline2192, 0
+  br i1 %cond__of_inline2192, label %inline2188, label %inline2189
+
+inline2191:                                           ; pred = %inline2193, %inline2190
+  %i_of_inline2177_of_inline2191 = load i32, i32* %lv$3_of_inline2176_of_inline2185, align 4
+  %n_of_inline2177_of_inline2191 = load i32, i32* %lv$2_of_inline2176_of_inline2185, align 4
+  %cond_lt_tmp__of_inline2177_of_inline2191 = icmp slt i32 %i_of_inline2177_of_inline2191, %n_of_inline2177_of_inline2191
+  %cond_tmp__of_inline2177_of_inline2191 = zext i1 %cond_lt_tmp__of_inline2177_of_inline2191 to i32
+  %cond__of_inline2177_of_inline2191 = icmp ne i32 %cond_tmp__of_inline2177_of_inline2191, 0
+  br i1 %cond__of_inline2177_of_inline2191, label %inline2190, label %inline2194
 }
 

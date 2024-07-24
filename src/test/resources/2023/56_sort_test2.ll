@@ -86,6 +86,53 @@ inline32:                                           ; pred = %inline31, %inline3
   %cond__of_inline32 = icmp ne i32 %cond_tmp__of_inline32, 0
   br i1 %cond__of_inline32, label %inline33, label %inline34
 
+inline34:                                           ; pred = %inline32
+  store i32 0, i32* %retVal_ofinline31, align 4
+  br label %truncated1
+
+inline35:                                           ; pred = %inline33, %inline36
+  %j_of_inline35 = load i32, i32* %lv$3_of_inline31, align 4
+  %cond_gt_tmp__of_inline35 = icmp sgt i32 %j_of_inline35, -1
+  %cond_tmp_$1_of_inline35 = zext i1 %cond_gt_tmp__of_inline35 to i32
+  %cond_$1_of_inline35 = icmp ne i32 %cond_tmp_$1_of_inline35, 0
+  br i1 %cond_$1_of_inline35, label %inline38, label %inline37
+
+inline36:                                           ; pred = %inline38
+  %j$2_of_inline36 = load i32, i32* %lv$3_of_inline31, align 4
+  %result_$1_of_inline36 = add i32 %j$2_of_inline36, 1
+  %arr_$2_of_inline36 = load i32*, i32** %lv_of_inline31, align 4
+  %a$4_of_inline36 = getelementptr i32, i32* %arr_$2_of_inline36, i32 %result_$1_of_inline36
+  %j$3_of_inline36 = load i32, i32* %lv$3_of_inline31, align 4
+  %arr_$3_of_inline36 = load i32*, i32** %lv_of_inline31, align 4
+  %a$5_of_inline36 = getelementptr i32, i32* %arr_$3_of_inline36, i32 %j$3_of_inline36
+  %a$6_of_inline36 = load i32, i32* %a$5_of_inline36, align 4
+  store i32 %a$6_of_inline36, i32* %a$4_of_inline36, align 4
+  %j$4_of_inline36 = load i32, i32* %lv$3_of_inline31, align 4
+  %result_$2_of_inline36 = sub i32 %j$4_of_inline36, 1
+  store i32 %result_$2_of_inline36, i32* %lv$3_of_inline31, align 4
+  br label %inline35
+
+inline38:                                           ; pred = %inline35
+  %temp_of_inline38 = load i32, i32* %lv$2_of_inline31, align 4
+  %j$1_of_inline38 = load i32, i32* %lv$3_of_inline31, align 4
+  %arr_$1_of_inline38 = load i32*, i32** %lv_of_inline31, align 4
+  %a$2_of_inline38 = getelementptr i32, i32* %arr_$1_of_inline38, i32 %j$1_of_inline38
+  %a$3_of_inline38 = load i32, i32* %a$2_of_inline38, align 4
+  %cond_lt_tmp_$1_of_inline38 = icmp slt i32 %temp_of_inline38, %a$3_of_inline38
+  %cond_tmp_$2_of_inline38 = zext i1 %cond_lt_tmp_$1_of_inline38 to i32
+  %cond_$2_of_inline38 = icmp ne i32 %cond_tmp_$2_of_inline38, 0
+  br i1 %cond_$2_of_inline38, label %inline36, label %inline37
+
+truncated1:                                         ; pred = %inline34
+  %insertsort = load i32, i32* %retVal_ofinline31, align 4
+  store i32 %insertsort, i32* %lv$1, align 4
+  br label %whileCond_8
+
+inline31:                                           ; pred = %mainEntry2
+  store i32* %a$10, i32** %lv_of_inline31, align 4
+  store i32 1, i32* %lv$1_of_inline31, align 4
+  br label %inline32
+
 inline33:                                           ; pred = %inline32
   %i$1_of_inline33 = load i32, i32* %lv$1_of_inline31, align 4
   %arr__of_inline33 = load i32*, i32** %lv_of_inline31, align 4
@@ -108,52 +155,5 @@ inline37:                                           ; pred = %inline35, %inline3
   %result_$4_of_inline37 = add i32 %i$3_of_inline37, 1
   store i32 %result_$4_of_inline37, i32* %lv$1_of_inline31, align 4
   br label %inline32
-
-inline38:                                           ; pred = %inline35
-  %temp_of_inline38 = load i32, i32* %lv$2_of_inline31, align 4
-  %j$1_of_inline38 = load i32, i32* %lv$3_of_inline31, align 4
-  %arr_$1_of_inline38 = load i32*, i32** %lv_of_inline31, align 4
-  %a$2_of_inline38 = getelementptr i32, i32* %arr_$1_of_inline38, i32 %j$1_of_inline38
-  %a$3_of_inline38 = load i32, i32* %a$2_of_inline38, align 4
-  %cond_lt_tmp_$1_of_inline38 = icmp slt i32 %temp_of_inline38, %a$3_of_inline38
-  %cond_tmp_$2_of_inline38 = zext i1 %cond_lt_tmp_$1_of_inline38 to i32
-  %cond_$2_of_inline38 = icmp ne i32 %cond_tmp_$2_of_inline38, 0
-  br i1 %cond_$2_of_inline38, label %inline36, label %inline37
-
-inline36:                                           ; pred = %inline38
-  %j$2_of_inline36 = load i32, i32* %lv$3_of_inline31, align 4
-  %result_$1_of_inline36 = add i32 %j$2_of_inline36, 1
-  %arr_$2_of_inline36 = load i32*, i32** %lv_of_inline31, align 4
-  %a$4_of_inline36 = getelementptr i32, i32* %arr_$2_of_inline36, i32 %result_$1_of_inline36
-  %j$3_of_inline36 = load i32, i32* %lv$3_of_inline31, align 4
-  %arr_$3_of_inline36 = load i32*, i32** %lv_of_inline31, align 4
-  %a$5_of_inline36 = getelementptr i32, i32* %arr_$3_of_inline36, i32 %j$3_of_inline36
-  %a$6_of_inline36 = load i32, i32* %a$5_of_inline36, align 4
-  store i32 %a$6_of_inline36, i32* %a$4_of_inline36, align 4
-  %j$4_of_inline36 = load i32, i32* %lv$3_of_inline31, align 4
-  %result_$2_of_inline36 = sub i32 %j$4_of_inline36, 1
-  store i32 %result_$2_of_inline36, i32* %lv$3_of_inline31, align 4
-  br label %inline35
-
-inline34:                                           ; pred = %inline32
-  store i32 0, i32* %retVal_ofinline31, align 4
-  br label %truncated1
-
-inline31:                                           ; pred = %mainEntry2
-  store i32* %a$10, i32** %lv_of_inline31, align 4
-  store i32 1, i32* %lv$1_of_inline31, align 4
-  br label %inline32
-
-inline35:                                           ; pred = %inline33, %inline36
-  %j_of_inline35 = load i32, i32* %lv$3_of_inline31, align 4
-  %cond_gt_tmp__of_inline35 = icmp sgt i32 %j_of_inline35, -1
-  %cond_tmp_$1_of_inline35 = zext i1 %cond_gt_tmp__of_inline35 to i32
-  %cond_$1_of_inline35 = icmp ne i32 %cond_tmp_$1_of_inline35, 0
-  br i1 %cond_$1_of_inline35, label %inline38, label %inline37
-
-truncated1:                                         ; pred = %inline34
-  %insertsort = load i32, i32* %retVal_ofinline31, align 4
-  store i32 %insertsort, i32* %lv$1, align 4
-  br label %whileCond_8
 }
 

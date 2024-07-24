@@ -39,10 +39,9 @@ mainEntry35:
   %dst = getelementptr [4096 x i32], [4096 x i32]* %lv, i32 0, i32 0
   br label %inline836
 
-inline836:                                           ; pred = %mainEntry35
-  store i32* %dst, i32** %lv_of_inline836, align 4
-  store i32 0, i32* %lv$1_of_inline836, align 4
-  br label %inline837
+inline837:                                           ; pred = %inline836, %inline841
+  %cond_normalize__of_inline837 = icmp ne i32 1, 0
+  br label %inline838
 
 inline841:                                           ; pred = %inline838, %inline840
   %i$2_of_inline841 = load i32, i32* %lv$1_of_inline836, align 4
@@ -54,6 +53,14 @@ truncated118:                                        ; pred = %inline839
   %read_str = load i32, i32* %retVal_ofinline836, align 4
   %src = getelementptr [4096 x i32], [4096 x i32]* %lv$1, i32 0, i32 0
   br label %inline842
+
+inline836:                                           ; pred = %mainEntry35
+  store i32* %dst, i32** %lv_of_inline836, align 4
+  store i32 0, i32* %lv$1_of_inline836, align 4
+  br label %inline837
+
+inline840:                                           ; pred = %inline838
+  br label %inline839
 
 inline838:                                           ; pred = %inline837
   %i_of_inline838 = load i32, i32* %lv$1_of_inline836, align 4
@@ -70,10 +77,6 @@ inline838:                                           ; pred = %inline837
   %cond__of_inline838 = icmp ne i32 %cond_tmp__of_inline838, 0
   br i1 %cond__of_inline838, label %inline840, label %inline841
 
-inline837:                                           ; pred = %inline836, %inline841
-  %cond_normalize__of_inline837 = icmp ne i32 1, 0
-  br label %inline838
-
 inline839:                                           ; pred = %inline840
   %i$3_of_inline839 = load i32, i32* %lv$1_of_inline836, align 4
   %arr_$2_of_inline839 = load i32*, i32** %lv_of_inline836, align 4
@@ -83,17 +86,14 @@ inline839:                                           ; pred = %inline840
   store i32 %i$4_of_inline839, i32* %retVal_ofinline836, align 4
   br label %truncated118
 
-inline840:                                           ; pred = %inline838
-  br label %inline839
+inline843:                                           ; pred = %inline842, %inline847
+  %cond_normalize__of_inline843 = icmp ne i32 1, 0
+  br label %inline844
 
-inline845:                                           ; pred = %inline846
-  %i$3_of_inline845 = load i32, i32* %lv$1_of_inline842, align 4
-  %arr_$2_of_inline845 = load i32*, i32** %lv_of_inline842, align 4
-  %buf$3_of_inline845 = getelementptr i32, i32* %arr_$2_of_inline845, i32 %i$3_of_inline845
-  store i32 0, i32* %buf$3_of_inline845, align 4
-  %i$4_of_inline845 = load i32, i32* %lv$1_of_inline842, align 4
-  store i32 %i$4_of_inline845, i32* %retVal_ofinline842, align 4
-  br label %truncated119
+inline842:                                           ; pred = %truncated118
+  store i32* %src, i32** %lv_of_inline842, align 4
+  store i32 0, i32* %lv$1_of_inline842, align 4
+  br label %inline843
 
 inline844:                                           ; pred = %inline843
   %i_of_inline844 = load i32, i32* %lv$1_of_inline842, align 4
@@ -110,18 +110,23 @@ inline844:                                           ; pred = %inline843
   %cond__of_inline844 = icmp ne i32 %cond_tmp__of_inline844, 0
   br i1 %cond__of_inline844, label %inline846, label %inline847
 
-inline846:                                           ; pred = %inline844
-  br label %inline845
-
 inline847:                                           ; pred = %inline844, %inline846
   %i$2_of_inline847 = load i32, i32* %lv$1_of_inline842, align 4
   %result__of_inline847 = add i32 %i$2_of_inline847, 1
   store i32 %result__of_inline847, i32* %lv$1_of_inline842, align 4
   br label %inline843
 
-inline843:                                           ; pred = %inline842, %inline847
-  %cond_normalize__of_inline843 = icmp ne i32 1, 0
-  br label %inline844
+inline845:                                           ; pred = %inline846
+  %i$3_of_inline845 = load i32, i32* %lv$1_of_inline842, align 4
+  %arr_$2_of_inline845 = load i32*, i32** %lv_of_inline842, align 4
+  %buf$3_of_inline845 = getelementptr i32, i32* %arr_$2_of_inline845, i32 %i$3_of_inline845
+  store i32 0, i32* %buf$3_of_inline845, align 4
+  %i$4_of_inline845 = load i32, i32* %lv$1_of_inline842, align 4
+  store i32 %i$4_of_inline845, i32* %retVal_ofinline842, align 4
+  br label %truncated119
+
+inline846:                                           ; pred = %inline844
+  br label %inline845
 
 truncated119:                                        ; pred = %inline845
   %read_str$1 = load i32, i32* %retVal_ofinline842, align 4
@@ -129,30 +134,22 @@ truncated119:                                        ; pred = %inline845
   %src$1 = getelementptr [4096 x i32], [4096 x i32]* %lv$1, i32 0, i32 0
   br label %inline848
 
-inline842:                                           ; pred = %truncated118
-  store i32* %src, i32** %lv_of_inline842, align 4
-  store i32 0, i32* %lv$1_of_inline842, align 4
-  br label %inline843
+inline850:                                           ; pred = %inline849
+  %i_of_inline850 = load i32, i32* %lv$3_of_inline848, align 4
+  %arr_$1_of_inline850 = load i32*, i32** %lv_of_inline848, align 4
+  %dst$1_of_inline850 = getelementptr i32, i32* %arr_$1_of_inline850, i32 %i_of_inline850
+  %dst$2_of_inline850 = load i32, i32* %dst$1_of_inline850, align 4
+  %j$1_of_inline850 = load i32, i32* %lv$4_of_inline848, align 4
+  %arr_$2_of_inline850 = load i32*, i32** %lv$1_of_inline848, align 4
+  %src$2_of_inline850 = getelementptr i32, i32* %arr_$2_of_inline850, i32 %j$1_of_inline850
+  %src$3_of_inline850 = load i32, i32* %src$2_of_inline850, align 4
+  %cond_eq_tmp__of_inline850 = icmp eq i32 %dst$2_of_inline850, %src$3_of_inline850
+  %cond_tmp__of_inline850 = zext i1 %cond_eq_tmp__of_inline850 to i32
+  %cond__of_inline850 = icmp ne i32 %cond_tmp__of_inline850, 0
+  br i1 %cond__of_inline850, label %inline852, label %inline853
 
-inline855:                                           ; pred = %inline852
-  %j$3_of_inline855 = load i32, i32* %lv$4_of_inline848, align 4
-  store i32 %j$3_of_inline855, i32* %retVal_ofinline848, align 4
-  br label %truncated120
-
-inline860:                                           ; pred = %inline867, %inline866
-  %i_of_inline829_of_inline860 = load i32, i32* %lv$2_of_inline828_of_inline848, align 4
-  %arr_$1_of_inline829_of_inline860 = load i32*, i32** %lv_of_inline828_of_inline848, align 4
-  %str_of_inline829_of_inline860 = getelementptr i32, i32* %arr_$1_of_inline829_of_inline860, i32 %i_of_inline829_of_inline860
-  %str$1_of_inline829_of_inline860 = load i32, i32* %str_of_inline829_of_inline860, align 4
-  %cond_normalize__of_inline829_of_inline860 = icmp ne i32 %str$1_of_inline829_of_inline860, 0
-  br i1 %cond_normalize__of_inline829_of_inline860, label %inline862, label %inline865
-
-inline854:                                           ; pred = %inline856, %inline858
-  br label %inline849
-
-inline851:                                           ; pred = %inline849
-  store i32 -1, i32* %retVal_ofinline848, align 4
-  br label %truncated120
+inline858:                                           ; pred = %inline853, %inline857
+  br label %inline854
 
 inline857:                                           ; pred = %inline853
   %i$5_of_inline857 = load i32, i32* %lv$3_of_inline848, align 4
@@ -163,43 +160,6 @@ inline857:                                           ; pred = %inline853
   store i32 %result_$3_of_inline857, i32* %lv$4_of_inline848, align 4
   br label %inline858
 
-inline858:                                           ; pred = %inline853, %inline857
-  br label %inline854
-
-inline862:                                           ; pred = %inline860
-  %j_of_inline830_of_inline862 = load i32, i32* %lv$3_of_inline828_of_inline848, align 4
-  %cond_eq_tmp__of_inline830_of_inline862 = icmp eq i32 %j_of_inline830_of_inline862, -1
-  %cond_tmp__of_inline830_of_inline862 = zext i1 %cond_eq_tmp__of_inline830_of_inline862 to i32
-  %cond__of_inline830_of_inline862 = icmp ne i32 %cond_tmp__of_inline830_of_inline862, 0
-  br i1 %cond__of_inline830_of_inline862, label %inline861, label %inline863
-
-inline848:                                           ; pred = %truncated119
-  store i32* %dst$1, i32** %lv_of_inline848, align 4
-  store i32* %src$1, i32** %lv$1_of_inline848, align 4
-  %dst_of_inline848 = load i32*, i32** %lv_of_inline848, align 4
-  %next_of_inline848 = getelementptr [4096 x i32], [4096 x i32]* %lv$2_of_inline848, i32 0, i32 0
-  br label %inline867
-
-inline856:                                           ; pred = %inline852
-  br label %inline854
-
-truncated120:                                        ; pred = %inline855, %inline851
-  %KMP = load i32, i32* %retVal_ofinline848, align 4
-  call void @putint(i32 %KMP)
-  call void @putch(i32 10)
-  ret i32 0
-
-inline864:                                           ; pred = %inline863
-  %j$4_of_inline833_of_inline864 = load i32, i32* %lv$3_of_inline828_of_inline848, align 4
-  %arr_$5_of_inline833_of_inline864 = load i32*, i32** %lv$1_of_inline828_of_inline848, align 4
-  %next$2_of_inline833_of_inline864 = getelementptr i32, i32* %arr_$5_of_inline833_of_inline864, i32 %j$4_of_inline833_of_inline864
-  %next$3_of_inline833_of_inline864 = load i32, i32* %next$2_of_inline833_of_inline864, align 4
-  store i32 %next$3_of_inline833_of_inline864, i32* %lv$3_of_inline828_of_inline848, align 4
-  br label %inline866
-
-inline865:                                           ; pred = %inline860
-  br label %inline859
-
 inline849:                                           ; pred = %inline848, %inline854
   %j_of_inline849 = load i32, i32* %lv$4_of_inline848, align 4
   %arr__of_inline849 = load i32*, i32** %lv$1_of_inline848, align 4
@@ -207,6 +167,37 @@ inline849:                                           ; pred = %inline848, %inlin
   %src$1_of_inline849 = load i32, i32* %src_of_inline849, align 4
   %cond_normalize__of_inline849 = icmp ne i32 %src$1_of_inline849, 0
   br i1 %cond_normalize__of_inline849, label %inline850, label %inline851
+
+inline865:                                           ; pred = %inline867
+  store i32 0, i32* %lv$3_of_inline848, align 4
+  store i32 0, i32* %lv$4_of_inline848, align 4
+  br label %inline849
+
+inline851:                                           ; pred = %inline849
+  store i32 -1, i32* %retVal_ofinline848, align 4
+  br label %truncated120
+
+inline855:                                           ; pred = %inline852
+  %j$3_of_inline855 = load i32, i32* %lv$4_of_inline848, align 4
+  store i32 %j$3_of_inline855, i32* %retVal_ofinline848, align 4
+  br label %truncated120
+
+inline860:                                           ; pred = %inline848
+  store i32* %dst_of_inline848, i32** %lv_of_inline828_of_inline848, align 4
+  store i32* %next_of_inline848, i32** %lv$1_of_inline828_of_inline848, align 4
+  %arr__of_inline828_of_inline860 = load i32*, i32** %lv$1_of_inline828_of_inline848, align 4
+  %next_of_inline828_of_inline860 = getelementptr i32, i32* %arr__of_inline828_of_inline860, i32 0
+  store i32 -1, i32* %next_of_inline828_of_inline860, align 4
+  store i32 0, i32* %lv$2_of_inline828_of_inline848, align 4
+  store i32 -1, i32* %lv$3_of_inline828_of_inline848, align 4
+  br label %inline862
+
+inline848:                                           ; pred = %truncated119
+  store i32* %dst$1, i32** %lv_of_inline848, align 4
+  store i32* %src$1, i32** %lv$1_of_inline848, align 4
+  %dst_of_inline848 = load i32*, i32** %lv_of_inline848, align 4
+  %next_of_inline848 = getelementptr [4096 x i32], [4096 x i32]* %lv$2_of_inline848, i32 0, i32 0
+  br label %inline860
 
 inline852:                                           ; pred = %inline850
   %i$1_of_inline852 = load i32, i32* %lv$3_of_inline848, align 4
@@ -225,27 +216,37 @@ inline852:                                           ; pred = %inline850
   %cond_normalize_$1_of_inline852 = icmp ne i32 %tmp_$2_of_inline852, 0
   br i1 %cond_normalize_$1_of_inline852, label %inline855, label %inline856
 
-inline861:                                           ; pred = %inline862, %inline863
-  %j$2_of_inline832_of_inline861 = load i32, i32* %lv$3_of_inline828_of_inline848, align 4
-  %result__of_inline832_of_inline861 = add i32 %j$2_of_inline832_of_inline861, 1
-  store i32 %result__of_inline832_of_inline861, i32* %lv$3_of_inline828_of_inline848, align 4
-  %i$2_of_inline832_of_inline861 = load i32, i32* %lv$2_of_inline828_of_inline848, align 4
-  %result_$1_of_inline832_of_inline861 = add i32 %i$2_of_inline832_of_inline861, 1
-  store i32 %result_$1_of_inline832_of_inline861, i32* %lv$2_of_inline828_of_inline848, align 4
-  %i$3_of_inline832_of_inline861 = load i32, i32* %lv$2_of_inline828_of_inline848, align 4
-  %arr_$4_of_inline832_of_inline861 = load i32*, i32** %lv$1_of_inline828_of_inline848, align 4
-  %next$1_of_inline832_of_inline861 = getelementptr i32, i32* %arr_$4_of_inline832_of_inline861, i32 %i$3_of_inline832_of_inline861
-  %j$3_of_inline832_of_inline861 = load i32, i32* %lv$3_of_inline828_of_inline848, align 4
-  store i32 %j$3_of_inline832_of_inline861, i32* %next$1_of_inline832_of_inline861, align 4
-  br label %inline866
+inline867:                                           ; pred = %inline862
+  br label %inline865
 
-inline859:                                           ; pred = %inline865
-  store i32 0, i32* %lv$3_of_inline848, align 4
-  store i32 0, i32* %lv$4_of_inline848, align 4
-  br label %inline849
+inline859:                                           ; pred = %inline866, %inline861
+  %j$2_of_inline832_of_inline859 = load i32, i32* %lv$3_of_inline828_of_inline848, align 4
+  %result__of_inline832_of_inline859 = add i32 %j$2_of_inline832_of_inline859, 1
+  store i32 %result__of_inline832_of_inline859, i32* %lv$3_of_inline828_of_inline848, align 4
+  %i$2_of_inline832_of_inline859 = load i32, i32* %lv$2_of_inline828_of_inline848, align 4
+  %result_$1_of_inline832_of_inline859 = add i32 %i$2_of_inline832_of_inline859, 1
+  store i32 %result_$1_of_inline832_of_inline859, i32* %lv$2_of_inline828_of_inline848, align 4
+  %i$3_of_inline832_of_inline859 = load i32, i32* %lv$2_of_inline828_of_inline848, align 4
+  %arr_$4_of_inline832_of_inline859 = load i32*, i32** %lv$1_of_inline828_of_inline848, align 4
+  %next$1_of_inline832_of_inline859 = getelementptr i32, i32* %arr_$4_of_inline832_of_inline859, i32 %i$3_of_inline832_of_inline859
+  %j$3_of_inline832_of_inline859 = load i32, i32* %lv$3_of_inline828_of_inline848, align 4
+  store i32 %j$3_of_inline832_of_inline859, i32* %next$1_of_inline832_of_inline859, align 4
+  br label %inline864
 
-inline866:                                           ; pred = %inline861, %inline864
-  br label %inline860
+inline863:                                           ; pred = %inline861
+  %j$4_of_inline833_of_inline863 = load i32, i32* %lv$3_of_inline828_of_inline848, align 4
+  %arr_$5_of_inline833_of_inline863 = load i32*, i32** %lv$1_of_inline828_of_inline848, align 4
+  %next$2_of_inline833_of_inline863 = getelementptr i32, i32* %arr_$5_of_inline833_of_inline863, i32 %j$4_of_inline833_of_inline863
+  %next$3_of_inline833_of_inline863 = load i32, i32* %next$2_of_inline833_of_inline863, align 4
+  store i32 %next$3_of_inline833_of_inline863, i32* %lv$3_of_inline828_of_inline848, align 4
+  br label %inline864
+
+inline866:                                           ; pred = %inline862
+  %j_of_inline830_of_inline866 = load i32, i32* %lv$3_of_inline828_of_inline848, align 4
+  %cond_eq_tmp__of_inline830_of_inline866 = icmp eq i32 %j_of_inline830_of_inline866, -1
+  %cond_tmp__of_inline830_of_inline866 = zext i1 %cond_eq_tmp__of_inline830_of_inline866 to i32
+  %cond__of_inline830_of_inline866 = icmp ne i32 %cond_tmp__of_inline830_of_inline866, 0
+  br i1 %cond__of_inline830_of_inline866, label %inline859, label %inline861
 
 inline853:                                           ; pred = %inline850
   %i$3_of_inline853 = load i32, i32* %lv$3_of_inline848, align 4
@@ -258,42 +259,41 @@ inline853:                                           ; pred = %inline850
   %cond_$1_of_inline853 = icmp ne i32 %cond_tmp_$1_of_inline853, 0
   br i1 %cond_$1_of_inline853, label %inline857, label %inline858
 
-inline867:                                           ; pred = %inline848
-  store i32* %dst_of_inline848, i32** %lv_of_inline828_of_inline848, align 4
-  store i32* %next_of_inline848, i32** %lv$1_of_inline828_of_inline848, align 4
-  %arr__of_inline828_of_inline867 = load i32*, i32** %lv$1_of_inline828_of_inline848, align 4
-  %next_of_inline828_of_inline867 = getelementptr i32, i32* %arr__of_inline828_of_inline867, i32 0
-  store i32 -1, i32* %next_of_inline828_of_inline867, align 4
-  store i32 0, i32* %lv$2_of_inline828_of_inline848, align 4
-  store i32 -1, i32* %lv$3_of_inline828_of_inline848, align 4
-  br label %inline860
+inline861:                                           ; pred = %inline866
+  %i$1_of_inline835_of_inline861 = load i32, i32* %lv$2_of_inline828_of_inline848, align 4
+  %arr_$2_of_inline835_of_inline861 = load i32*, i32** %lv_of_inline828_of_inline848, align 4
+  %str$2_of_inline835_of_inline861 = getelementptr i32, i32* %arr_$2_of_inline835_of_inline861, i32 %i$1_of_inline835_of_inline861
+  %str$3_of_inline835_of_inline861 = load i32, i32* %str$2_of_inline835_of_inline861, align 4
+  %j$1_of_inline835_of_inline861 = load i32, i32* %lv$3_of_inline828_of_inline848, align 4
+  %arr_$3_of_inline835_of_inline861 = load i32*, i32** %lv_of_inline828_of_inline848, align 4
+  %str$4_of_inline835_of_inline861 = getelementptr i32, i32* %arr_$3_of_inline835_of_inline861, i32 %j$1_of_inline835_of_inline861
+  %str$5_of_inline835_of_inline861 = load i32, i32* %str$4_of_inline835_of_inline861, align 4
+  %cond_eq_tmp_$1_of_inline835_of_inline861 = icmp eq i32 %str$3_of_inline835_of_inline861, %str$5_of_inline835_of_inline861
+  %cond_tmp_$1_of_inline835_of_inline861 = zext i1 %cond_eq_tmp_$1_of_inline835_of_inline861 to i32
+  %cond_$1_of_inline835_of_inline861 = icmp ne i32 %cond_tmp_$1_of_inline835_of_inline861, 0
+  br i1 %cond_$1_of_inline835_of_inline861, label %inline859, label %inline863
 
-inline850:                                           ; pred = %inline849
-  %i_of_inline850 = load i32, i32* %lv$3_of_inline848, align 4
-  %arr_$1_of_inline850 = load i32*, i32** %lv_of_inline848, align 4
-  %dst$1_of_inline850 = getelementptr i32, i32* %arr_$1_of_inline850, i32 %i_of_inline850
-  %dst$2_of_inline850 = load i32, i32* %dst$1_of_inline850, align 4
-  %j$1_of_inline850 = load i32, i32* %lv$4_of_inline848, align 4
-  %arr_$2_of_inline850 = load i32*, i32** %lv$1_of_inline848, align 4
-  %src$2_of_inline850 = getelementptr i32, i32* %arr_$2_of_inline850, i32 %j$1_of_inline850
-  %src$3_of_inline850 = load i32, i32* %src$2_of_inline850, align 4
-  %cond_eq_tmp__of_inline850 = icmp eq i32 %dst$2_of_inline850, %src$3_of_inline850
-  %cond_tmp__of_inline850 = zext i1 %cond_eq_tmp__of_inline850 to i32
-  %cond__of_inline850 = icmp ne i32 %cond_tmp__of_inline850, 0
-  br i1 %cond__of_inline850, label %inline852, label %inline853
+truncated120:                                        ; pred = %inline851, %inline855
+  %KMP = load i32, i32* %retVal_ofinline848, align 4
+  call void @putint(i32 %KMP)
+  call void @putch(i32 10)
+  ret i32 0
 
-inline863:                                           ; pred = %inline862
-  %i$1_of_inline835_of_inline863 = load i32, i32* %lv$2_of_inline828_of_inline848, align 4
-  %arr_$2_of_inline835_of_inline863 = load i32*, i32** %lv_of_inline828_of_inline848, align 4
-  %str$2_of_inline835_of_inline863 = getelementptr i32, i32* %arr_$2_of_inline835_of_inline863, i32 %i$1_of_inline835_of_inline863
-  %str$3_of_inline835_of_inline863 = load i32, i32* %str$2_of_inline835_of_inline863, align 4
-  %j$1_of_inline835_of_inline863 = load i32, i32* %lv$3_of_inline828_of_inline848, align 4
-  %arr_$3_of_inline835_of_inline863 = load i32*, i32** %lv_of_inline828_of_inline848, align 4
-  %str$4_of_inline835_of_inline863 = getelementptr i32, i32* %arr_$3_of_inline835_of_inline863, i32 %j$1_of_inline835_of_inline863
-  %str$5_of_inline835_of_inline863 = load i32, i32* %str$4_of_inline835_of_inline863, align 4
-  %cond_eq_tmp_$1_of_inline835_of_inline863 = icmp eq i32 %str$3_of_inline835_of_inline863, %str$5_of_inline835_of_inline863
-  %cond_tmp_$1_of_inline835_of_inline863 = zext i1 %cond_eq_tmp_$1_of_inline835_of_inline863 to i32
-  %cond_$1_of_inline835_of_inline863 = icmp ne i32 %cond_tmp_$1_of_inline835_of_inline863, 0
-  br i1 %cond_$1_of_inline835_of_inline863, label %inline861, label %inline864
+inline862:                                           ; pred = %inline860, %inline864
+  %i_of_inline829_of_inline862 = load i32, i32* %lv$2_of_inline828_of_inline848, align 4
+  %arr_$1_of_inline829_of_inline862 = load i32*, i32** %lv_of_inline828_of_inline848, align 4
+  %str_of_inline829_of_inline862 = getelementptr i32, i32* %arr_$1_of_inline829_of_inline862, i32 %i_of_inline829_of_inline862
+  %str$1_of_inline829_of_inline862 = load i32, i32* %str_of_inline829_of_inline862, align 4
+  %cond_normalize__of_inline829_of_inline862 = icmp ne i32 %str$1_of_inline829_of_inline862, 0
+  br i1 %cond_normalize__of_inline829_of_inline862, label %inline866, label %inline867
+
+inline854:                                           ; pred = %inline856, %inline858
+  br label %inline849
+
+inline856:                                           ; pred = %inline852
+  br label %inline854
+
+inline864:                                           ; pred = %inline859, %inline863
+  br label %inline862
 }
 

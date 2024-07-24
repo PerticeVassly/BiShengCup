@@ -82,71 +82,6 @@ whileBody_205:                                        ; pred = %whileCond_205
 next_488:                                             ; pred = %whileCond_205
   ret i32 0
 
-inline1795:                                           ; pred = %inline1793
-  %min$1_of_inline1795 = load i32, i32* %lv$4_of_inline1789, align 4
-  %i$3_of_inline1795 = load i32, i32* %lv$2_of_inline1789, align 4
-  %cond_neq_tmp__of_inline1795 = icmp ne i32 %min$1_of_inline1795, %i$3_of_inline1795
-  %cond_tmp_$3_of_inline1795 = zext i1 %cond_neq_tmp__of_inline1795 to i32
-  %cond_$3_of_inline1795 = icmp ne i32 %cond_tmp_$3_of_inline1795, 0
-  br i1 %cond_$3_of_inline1795, label %inline1798, label %inline1799
-
-inline1797:                                           ; pred = %inline1794, %inline1796
-  %j$3_of_inline1797 = load i32, i32* %lv$3_of_inline1789, align 4
-  %result_$2_of_inline1797 = add i32 %j$3_of_inline1797, 1
-  store i32 %result_$2_of_inline1797, i32* %lv$3_of_inline1789, align 4
-  br label %inline1793
-
-inline1792:                                           ; pred = %inline1790
-  store i32 0, i32* %retVal_ofinline1789, align 4
-  br label %truncated152
-
-inline1791:                                           ; pred = %inline1790
-  %i$1_of_inline1791 = load i32, i32* %lv$2_of_inline1789, align 4
-  store i32 %i$1_of_inline1791, i32* %lv$4_of_inline1789, align 4
-  %i$2_of_inline1791 = load i32, i32* %lv$2_of_inline1789, align 4
-  %result_$1_of_inline1791 = add i32 %i$2_of_inline1791, 1
-  store i32 %result_$1_of_inline1791, i32* %lv$3_of_inline1789, align 4
-  br label %inline1793
-
-inline1796:                                           ; pred = %inline1794
-  %j$2_of_inline1796 = load i32, i32* %lv$3_of_inline1789, align 4
-  store i32 %j$2_of_inline1796, i32* %lv$4_of_inline1789, align 4
-  br label %inline1797
-
-inline1789:                                           ; pred = %mainEntry50
-  store i32* %a$10, i32** %lv_of_inline1789, align 4
-  store i32 %n, i32* %lv$1_of_inline1789, align 4
-  store i32 0, i32* %lv$2_of_inline1789, align 4
-  br label %inline1790
-
-inline1790:                                           ; pred = %inline1789, %inline1799
-  %i_of_inline1790 = load i32, i32* %lv$2_of_inline1789, align 4
-  %n_of_inline1790 = load i32, i32* %lv$1_of_inline1789, align 4
-  %result__of_inline1790 = sub i32 %n_of_inline1790, 1
-  %cond_lt_tmp__of_inline1790 = icmp slt i32 %i_of_inline1790, %result__of_inline1790
-  %cond_tmp__of_inline1790 = zext i1 %cond_lt_tmp__of_inline1790 to i32
-  %cond__of_inline1790 = icmp ne i32 %cond_tmp__of_inline1790, 0
-  br i1 %cond__of_inline1790, label %inline1791, label %inline1792
-
-inline1793:                                           ; pred = %inline1791, %inline1797
-  %j_of_inline1793 = load i32, i32* %lv$3_of_inline1789, align 4
-  %n$1_of_inline1793 = load i32, i32* %lv$1_of_inline1789, align 4
-  %cond_lt_tmp_$1_of_inline1793 = icmp slt i32 %j_of_inline1793, %n$1_of_inline1793
-  %cond_tmp_$1_of_inline1793 = zext i1 %cond_lt_tmp_$1_of_inline1793 to i32
-  %cond_$1_of_inline1793 = icmp ne i32 %cond_tmp_$1_of_inline1793, 0
-  br i1 %cond_$1_of_inline1793, label %inline1794, label %inline1795
-
-inline1799:                                           ; pred = %inline1795, %inline1798
-  %i$6_of_inline1799 = load i32, i32* %lv$2_of_inline1789, align 4
-  %result_$3_of_inline1799 = add i32 %i$6_of_inline1799, 1
-  store i32 %result_$3_of_inline1799, i32* %lv$2_of_inline1789, align 4
-  br label %inline1790
-
-truncated152:                                         ; pred = %inline1792
-  %select_sort = load i32, i32* %retVal_ofinline1789, align 4
-  store i32 %select_sort, i32* %lv$1, align 4
-  br label %whileCond_205
-
 inline1798:                                           ; pred = %inline1795
   %min$2_of_inline1798 = load i32, i32* %lv$4_of_inline1789, align 4
   %arr_$2_of_inline1798 = load i32*, i32** %lv_of_inline1789, align 4
@@ -168,6 +103,60 @@ inline1798:                                           ; pred = %inline1795
   store i32 %tmp_of_inline1798, i32* %A$9_of_inline1798, align 4
   br label %inline1799
 
+inline1790:                                           ; pred = %inline1789, %inline1799
+  %i_of_inline1790 = load i32, i32* %lv$2_of_inline1789, align 4
+  %n_of_inline1790 = load i32, i32* %lv$1_of_inline1789, align 4
+  %result__of_inline1790 = sub i32 %n_of_inline1790, 1
+  %cond_lt_tmp__of_inline1790 = icmp slt i32 %i_of_inline1790, %result__of_inline1790
+  %cond_tmp__of_inline1790 = zext i1 %cond_lt_tmp__of_inline1790 to i32
+  %cond__of_inline1790 = icmp ne i32 %cond_tmp__of_inline1790, 0
+  br i1 %cond__of_inline1790, label %inline1791, label %inline1792
+
+inline1789:                                           ; pred = %mainEntry50
+  store i32* %a$10, i32** %lv_of_inline1789, align 4
+  store i32 %n, i32* %lv$1_of_inline1789, align 4
+  store i32 0, i32* %lv$2_of_inline1789, align 4
+  br label %inline1790
+
+inline1791:                                           ; pred = %inline1790
+  %i$1_of_inline1791 = load i32, i32* %lv$2_of_inline1789, align 4
+  store i32 %i$1_of_inline1791, i32* %lv$4_of_inline1789, align 4
+  %i$2_of_inline1791 = load i32, i32* %lv$2_of_inline1789, align 4
+  %result_$1_of_inline1791 = add i32 %i$2_of_inline1791, 1
+  store i32 %result_$1_of_inline1791, i32* %lv$3_of_inline1789, align 4
+  br label %inline1793
+
+inline1792:                                           ; pred = %inline1790
+  store i32 0, i32* %retVal_ofinline1789, align 4
+  br label %truncated152
+
+inline1795:                                           ; pred = %inline1793
+  %min$1_of_inline1795 = load i32, i32* %lv$4_of_inline1789, align 4
+  %i$3_of_inline1795 = load i32, i32* %lv$2_of_inline1789, align 4
+  %cond_neq_tmp__of_inline1795 = icmp ne i32 %min$1_of_inline1795, %i$3_of_inline1795
+  %cond_tmp_$3_of_inline1795 = zext i1 %cond_neq_tmp__of_inline1795 to i32
+  %cond_$3_of_inline1795 = icmp ne i32 %cond_tmp_$3_of_inline1795, 0
+  br i1 %cond_$3_of_inline1795, label %inline1798, label %inline1799
+
+inline1797:                                           ; pred = %inline1794, %inline1796
+  %j$3_of_inline1797 = load i32, i32* %lv$3_of_inline1789, align 4
+  %result_$2_of_inline1797 = add i32 %j$3_of_inline1797, 1
+  store i32 %result_$2_of_inline1797, i32* %lv$3_of_inline1789, align 4
+  br label %inline1793
+
+truncated152:                                         ; pred = %inline1792
+  %select_sort = load i32, i32* %retVal_ofinline1789, align 4
+  store i32 %select_sort, i32* %lv$1, align 4
+  br label %whileCond_205
+
+inline1793:                                           ; pred = %inline1791, %inline1797
+  %j_of_inline1793 = load i32, i32* %lv$3_of_inline1789, align 4
+  %n$1_of_inline1793 = load i32, i32* %lv$1_of_inline1789, align 4
+  %cond_lt_tmp_$1_of_inline1793 = icmp slt i32 %j_of_inline1793, %n$1_of_inline1793
+  %cond_tmp_$1_of_inline1793 = zext i1 %cond_lt_tmp_$1_of_inline1793 to i32
+  %cond_$1_of_inline1793 = icmp ne i32 %cond_tmp_$1_of_inline1793, 0
+  br i1 %cond_$1_of_inline1793, label %inline1794, label %inline1795
+
 inline1794:                                           ; pred = %inline1793
   %min_of_inline1794 = load i32, i32* %lv$4_of_inline1789, align 4
   %arr__of_inline1794 = load i32*, i32** %lv_of_inline1789, align 4
@@ -181,5 +170,16 @@ inline1794:                                           ; pred = %inline1793
   %cond_tmp_$2_of_inline1794 = zext i1 %cond_gt_tmp__of_inline1794 to i32
   %cond_$2_of_inline1794 = icmp ne i32 %cond_tmp_$2_of_inline1794, 0
   br i1 %cond_$2_of_inline1794, label %inline1796, label %inline1797
+
+inline1796:                                           ; pred = %inline1794
+  %j$2_of_inline1796 = load i32, i32* %lv$3_of_inline1789, align 4
+  store i32 %j$2_of_inline1796, i32* %lv$4_of_inline1789, align 4
+  br label %inline1797
+
+inline1799:                                           ; pred = %inline1795, %inline1798
+  %i$6_of_inline1799 = load i32, i32* %lv$2_of_inline1789, align 4
+  %result_$3_of_inline1799 = add i32 %i$6_of_inline1799, 1
+  store i32 %result_$3_of_inline1799, i32* %lv$2_of_inline1789, align 4
+  br label %inline1790
 }
 

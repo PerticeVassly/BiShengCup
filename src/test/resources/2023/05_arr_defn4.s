@@ -5,11 +5,10 @@
 .type main, @function
 .globl main
 main:
-mainEntry42:
+mainEntry:
 
 	# reserve space
-	li t0, 960
-	sub sp, sp, t0
+	addi sp, sp, -960
 
 	# save the parameters
 
@@ -365,16 +364,12 @@ mainEntry42:
 	addi t4, zero, 832
 	add t1, sp, t4
 	mv t0, t1
-
-	# get address of local var:ptr
-	sd t0, 664(sp)
+	mv s3, t0
 
 	# prepare params
 
 	# fetch variables
-
-	# get address of local var:ptr
-	ld t1, 664(sp)
+	mv t1, s3
 	mv a0, t1
 
 	# fetch variables
@@ -386,15 +381,33 @@ mainEntry42:
 	mv a2, t1
 
 	# save caller saved regs
-	addi sp, sp, -8
+	addi sp, sp, -80
 	sd ra, 0(sp)
+	sd s0, 8(sp)
+	sd s1, 16(sp)
+	sd s2, 24(sp)
+	sd s3, 32(sp)
+	sd s4, 40(sp)
+	sd s5, 48(sp)
+	fsd fs0, 56(sp)
+	fsd fs1, 64(sp)
+	fsd fs2, 72(sp)
 
 	# call memset32
 	call memset32
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 8
+	ld s0, 8(sp)
+	ld s1, 16(sp)
+	ld s2, 24(sp)
+	ld s3, 32(sp)
+	ld s4, 40(sp)
+	ld s5, 48(sp)
+	fld fs0, 56(sp)
+	fld fs1, 64(sp)
+	fld fs2, 72(sp)
+	addi sp, sp, 80
 
 	# release params
 
@@ -1800,9 +1813,7 @@ mainEntry42:
 	lw t1, 116(sp)
 	mv t2, t0
 	addw t0, t1, t2
-
-	# get address of local var:result_
-	sw t0, 76(sp)
+	mv s3, t0
 
 	# gep ptr_$47 
 
@@ -1866,14 +1877,10 @@ mainEntry42:
 	# ADD result_$1 result_ e$5 
 
 	# fetch variables
-
-	# get address of local var:result_
-	lw t1, 76(sp)
+	mv t1, s3
 	mv t2, t0
 	addw t0, t1, t2
-
-	# get address of local var:result_$1
-	sw t0, 36(sp)
+	mv s3, t0
 
 	# gep ptr_$49 
 
@@ -1920,22 +1927,17 @@ mainEntry42:
 	# ADD result_$2 result_$1 d$3 
 
 	# fetch variables
-
-	# get address of local var:result_$1
-	lw t1, 36(sp)
+	mv t1, s3
 	mv t2, t0
 	addw t0, t1, t2
-
-	# get address of local var:result_$2
-	sw t0, 4(sp)
+	mv s3, t0
 
 	# ret result_$2
 
 	# fetch variables
 	mv t1, t0
 	mv a0, t1
-	li t0, 960
-	add sp, sp, t0
+	addi sp, sp, 960
 	ret 
 
 memset32: 

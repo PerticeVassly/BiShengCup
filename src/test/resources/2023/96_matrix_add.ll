@@ -189,9 +189,18 @@ next_600:                                             ; pred = %whileCond_270
   call void @putch(i32 %x$5)
   ret i32 0
 
-inline2153:                                           ; pred = %inline2151
-  store i32 0, i32* %retVal_ofinline2150, align 4
-  br label %truncated200
+inline2150:                                           ; pred = %next_597
+  store float* %a0$1, float** %lv_of_inline2150, align 4
+  store float* %a1$1, float** %lv$1_of_inline2150, align 4
+  store float* %a2$1, float** %lv$2_of_inline2150, align 4
+  store float* %b0$1, float** %lv$3_of_inline2150, align 4
+  store float* %b1$1, float** %lv$4_of_inline2150, align 4
+  store float* %b2$1, float** %lv$5_of_inline2150, align 4
+  store float* %c0, float** %lv$6_of_inline2150, align 4
+  store float* %c1, float** %lv$7_of_inline2150, align 4
+  store float* %c2, float** %lv$8_of_inline2150, align 4
+  store i32 0, i32* %lv$9_of_inline2150, align 4
+  br label %inline2151
 
 inline2152:                                           ; pred = %inline2151
   %i$1_of_inline2152 = load i32, i32* %lv$9_of_inline2150, align 4
@@ -238,6 +247,10 @@ inline2152:                                           ; pred = %inline2151
   store i32 %result_$3_of_inline2152, i32* %lv$9_of_inline2150, align 4
   br label %inline2151
 
+inline2153:                                           ; pred = %inline2151
+  store i32 0, i32* %retVal_ofinline2150, align 4
+  br label %truncated200
+
 inline2151:                                           ; pred = %inline2150, %inline2152
   %i_of_inline2151 = load i32, i32* %lv$9_of_inline2150, align 4
   %M_of_inline2151 = load i32, i32* @gv, align 4
@@ -250,18 +263,5 @@ truncated200:                                         ; pred = %inline2153
   %add = load i32, i32* %retVal_ofinline2150, align 4
   store i32 %add, i32* %lv$9, align 4
   br label %whileCond_268
-
-inline2150:                                           ; pred = %next_597
-  store float* %a0$1, float** %lv_of_inline2150, align 4
-  store float* %a1$1, float** %lv$1_of_inline2150, align 4
-  store float* %a2$1, float** %lv$2_of_inline2150, align 4
-  store float* %b0$1, float** %lv$3_of_inline2150, align 4
-  store float* %b1$1, float** %lv$4_of_inline2150, align 4
-  store float* %b2$1, float** %lv$5_of_inline2150, align 4
-  store float* %c0, float** %lv$6_of_inline2150, align 4
-  store float* %c1, float** %lv$7_of_inline2150, align 4
-  store float* %c2, float** %lv$8_of_inline2150, align 4
-  store i32 0, i32* %lv$9_of_inline2150, align 4
-  br label %inline2151
 }
 

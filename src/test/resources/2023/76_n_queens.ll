@@ -134,6 +134,30 @@ next_497:                                              ; pred = %ifTrue_288, %if
   store i32 0, i32* %line2$3, align 4
   br label %next_496
 
+inline1807:                                            ; pred = %inline1806, %inline1812
+  %i_of_inline1807 = load i32, i32* %lv_of_inline1806, align 4
+  %n_of_inline1807 = load i32, i32* @gv2, align 4
+  %cond_le_tmp__of_inline1807 = icmp sle i32 %i_of_inline1807, %n_of_inline1807
+  %cond_tmp__of_inline1807 = zext i1 %cond_le_tmp__of_inline1807 to i32
+  %cond__of_inline1807 = icmp ne i32 %cond_tmp__of_inline1807, 0
+  br i1 %cond__of_inline1807, label %inline1808, label %inline1809
+
+inline1812:                                            ; pred = %inline1811
+  %i$3_of_inline1812 = load i32, i32* %lv_of_inline1806, align 4
+  %result_$1_of_inline1812 = add i32 %i$3_of_inline1812, 1
+  store i32 %result_$1_of_inline1812, i32* %lv_of_inline1806, align 4
+  br label %inline1807
+
+inline1809:                                            ; pred = %inline1807
+  br label %truncated154
+
+inline1806:                                            ; pred = %ifTrue_289
+  %sum_of_inline1806 = load i32, i32* @gv1, align 4
+  %result__of_inline1806 = add i32 %sum_of_inline1806, 1
+  store i32 %result__of_inline1806, i32* @gv1, align 4
+  store i32 1, i32* %lv_of_inline1806, align 4
+  br label %inline1807
+
 inline1808:                                            ; pred = %inline1807
   %i$1_of_inline1808 = load i32, i32* %lv_of_inline1806, align 4
   %ans_of_inline1808 = getelementptr [50 x i32], [50 x i32]* @gv, i32 0, i32 %i$1_of_inline1808
@@ -146,15 +170,6 @@ inline1808:                                            ; pred = %inline1807
   %cond_$1_of_inline1808 = icmp ne i32 %cond_tmp_$1_of_inline1808, 0
   br i1 %cond_$1_of_inline1808, label %inline1810, label %inline1811
 
-inline1812:                                            ; pred = %inline1811
-  %i$3_of_inline1812 = load i32, i32* %lv_of_inline1806, align 4
-  %result_$1_of_inline1812 = add i32 %i$3_of_inline1812, 1
-  store i32 %result_$1_of_inline1812, i32* %lv_of_inline1806, align 4
-  br label %inline1807
-
-inline1809:                                            ; pred = %inline1807
-  br label %truncated154
-
 inline1811:                                            ; pred = %inline1808
   call void @putch(i32 32)
   br label %inline1812
@@ -165,21 +180,6 @@ inline1810:                                            ; pred = %inline1808
 
 truncated154:                                          ; pred = %inline1809, %inline1810
   br label %next_497
-
-inline1806:                                            ; pred = %ifTrue_289
-  %sum_of_inline1806 = load i32, i32* @gv1, align 4
-  %result__of_inline1806 = add i32 %sum_of_inline1806, 1
-  store i32 %result__of_inline1806, i32* @gv1, align 4
-  store i32 1, i32* %lv_of_inline1806, align 4
-  br label %inline1807
-
-inline1807:                                            ; pred = %inline1806, %inline1812
-  %i_of_inline1807 = load i32, i32* %lv_of_inline1806, align 4
-  %n_of_inline1807 = load i32, i32* @gv2, align 4
-  %cond_le_tmp__of_inline1807 = icmp sle i32 %i_of_inline1807, %n_of_inline1807
-  %cond_tmp__of_inline1807 = zext i1 %cond_le_tmp__of_inline1807 to i32
-  %cond__of_inline1807 = icmp ne i32 %cond_tmp__of_inline1807, 0
-  br i1 %cond__of_inline1807, label %inline1808, label %inline1809
 }
 
 define i32 @main() {

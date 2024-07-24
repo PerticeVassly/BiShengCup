@@ -5,11 +5,10 @@
 .type main, @function
 .globl main
 main:
-mainEntry4:
+mainEntry:
 
 	# reserve space
-	li t0, 32
-	sub sp, sp, t0
+	addi sp, sp, -32
 
 	# save the parameters
 
@@ -21,18 +20,14 @@ mainEntry4:
 	addi t1, zero, 10
 
 	# get address of lv points to
-	addi t3, zero, 28
-	add t0, sp, t3
-	sw t1, 0(t0)
+	sw t1, 28(sp)
 
 	# load a lv
 
 	# get address of lv points to
-	addi t3, zero, 28
-	add t0, sp, t3
 
 	# get address of local var:a
-	lw t0, 0(t0)
+	lw t0, 28(sp)
 	sw t0, 20(sp)
 
 	# DIV result_ a  
@@ -41,17 +36,14 @@ mainEntry4:
 	mv t1, t0
 	addi t2, zero, 3
 	div t0, t1, t2
-
-	# get address of local var:result_
-	sw t0, 12(sp)
+	mv s3, t0
 
 	# ret result_
 
 	# fetch variables
 	mv t1, t0
 	mv a0, t1
-	li t0, 32
-	add sp, sp, t0
+	addi sp, sp, 32
 	ret 
 
 memset32: 

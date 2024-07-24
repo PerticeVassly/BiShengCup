@@ -168,29 +168,6 @@ mainEntry82:
   %a7 = load i32, i32* @gv7, align 4
   br label %inline2147
 
-truncated197:                                        ; pred = %inline2147
-  %testParam8 = load i32, i32* %retVal_ofinline2147, align 4
-  store i32 %testParam8, i32* @gv, align 4
-  %a0$1 = load i32, i32* @gv, align 4
-  call void @putint(i32 %a0$1)
-  %a32 = load i32, i32* @gv32, align 4
-  %a33 = load i32, i32* @gv33, align 4
-  %a34 = load i32, i32* @gv34, align 4
-  %a35 = load i32, i32* @gv35, align 4
-  %a36 = load i32, i32* @gv36, align 4
-  %a37 = load i32, i32* @gv37, align 4
-  %a38 = load i32, i32* @gv38, align 4
-  %a39 = load i32, i32* @gv39, align 4
-  %a8 = load i32, i32* @gv8, align 4
-  %a9 = load i32, i32* @gv9, align 4
-  %a10 = load i32, i32* @gv10, align 4
-  %a11 = load i32, i32* @gv11, align 4
-  %a12 = load i32, i32* @gv12, align 4
-  %a13 = load i32, i32* @gv13, align 4
-  %a14 = load i32, i32* @gv14, align 4
-  %a15 = load i32, i32* @gv15, align 4
-  br label %inline2148
-
 inline2147:                                          ; pred = %mainEntry82
   store i32 %a0, i32* %lv_of_inline2147, align 4
   store i32 %a1, i32* %lv$1_of_inline2147, align 4
@@ -218,44 +195,28 @@ inline2147:                                          ; pred = %mainEntry82
   store i32 %result_$6_of_inline2147, i32* %retVal_ofinline2147, align 4
   br label %truncated197
 
-truncated198:                                        ; pred = %inline2148
-  %testParam16 = load i32, i32* %retVal_ofinline2148, align 4
-  store i32 %testParam16, i32* @gv, align 4
-  %a0$2 = load i32, i32* @gv, align 4
-  call void @putint(i32 %a0$2)
-  %a0$3 = load i32, i32* @gv, align 4
-  %a1$1 = load i32, i32* @gv1, align 4
-  %a2$1 = load i32, i32* @gv2, align 4
-  %a3$1 = load i32, i32* @gv3, align 4
-  %a4$1 = load i32, i32* @gv4, align 4
-  %a5$1 = load i32, i32* @gv5, align 4
-  %a6$1 = load i32, i32* @gv6, align 4
-  %a7$1 = load i32, i32* @gv7, align 4
-  %a8$1 = load i32, i32* @gv8, align 4
-  %a9$1 = load i32, i32* @gv9, align 4
-  %a10$1 = load i32, i32* @gv10, align 4
-  %a11$1 = load i32, i32* @gv11, align 4
-  %a12$1 = load i32, i32* @gv12, align 4
-  %a13$1 = load i32, i32* @gv13, align 4
-  %a14$1 = load i32, i32* @gv14, align 4
-  %a15$1 = load i32, i32* @gv15, align 4
-  %a16 = load i32, i32* @gv16, align 4
-  %a17 = load i32, i32* @gv17, align 4
-  %a18 = load i32, i32* @gv18, align 4
-  %a19 = load i32, i32* @gv19, align 4
-  %a20 = load i32, i32* @gv20, align 4
-  %a21 = load i32, i32* @gv21, align 4
-  %a22 = load i32, i32* @gv22, align 4
-  %a23 = load i32, i32* @gv23, align 4
-  %a24 = load i32, i32* @gv24, align 4
-  %a25 = load i32, i32* @gv25, align 4
-  %a26 = load i32, i32* @gv26, align 4
-  %a27 = load i32, i32* @gv27, align 4
-  %a28 = load i32, i32* @gv28, align 4
-  %a29 = load i32, i32* @gv29, align 4
-  %a30 = load i32, i32* @gv30, align 4
-  %a31 = load i32, i32* @gv31, align 4
-  br label %inline2149
+truncated197:                                        ; pred = %inline2147
+  %testParam8 = load i32, i32* %retVal_ofinline2147, align 4
+  store i32 %testParam8, i32* @gv, align 4
+  %a0$1 = load i32, i32* @gv, align 4
+  call void @putint(i32 %a0$1)
+  %a32 = load i32, i32* @gv32, align 4
+  %a33 = load i32, i32* @gv33, align 4
+  %a34 = load i32, i32* @gv34, align 4
+  %a35 = load i32, i32* @gv35, align 4
+  %a36 = load i32, i32* @gv36, align 4
+  %a37 = load i32, i32* @gv37, align 4
+  %a38 = load i32, i32* @gv38, align 4
+  %a39 = load i32, i32* @gv39, align 4
+  %a8 = load i32, i32* @gv8, align 4
+  %a9 = load i32, i32* @gv9, align 4
+  %a10 = load i32, i32* @gv10, align 4
+  %a11 = load i32, i32* @gv11, align 4
+  %a12 = load i32, i32* @gv12, align 4
+  %a13 = load i32, i32* @gv13, align 4
+  %a14 = load i32, i32* @gv14, align 4
+  %a15 = load i32, i32* @gv15, align 4
+  br label %inline2148
 
 inline2148:                                          ; pred = %truncated197
   store i32 %a32, i32* %lv_of_inline2148, align 4
@@ -307,6 +268,45 @@ inline2148:                                          ; pred = %truncated197
   %result_$14_of_inline2148 = add i32 %result_$13_of_inline2148, %a15_of_inline2148
   store i32 %result_$14_of_inline2148, i32* %retVal_ofinline2148, align 4
   br label %truncated198
+
+truncated198:                                        ; pred = %inline2148
+  %testParam16 = load i32, i32* %retVal_ofinline2148, align 4
+  store i32 %testParam16, i32* @gv, align 4
+  %a0$2 = load i32, i32* @gv, align 4
+  call void @putint(i32 %a0$2)
+  %a0$3 = load i32, i32* @gv, align 4
+  %a1$1 = load i32, i32* @gv1, align 4
+  %a2$1 = load i32, i32* @gv2, align 4
+  %a3$1 = load i32, i32* @gv3, align 4
+  %a4$1 = load i32, i32* @gv4, align 4
+  %a5$1 = load i32, i32* @gv5, align 4
+  %a6$1 = load i32, i32* @gv6, align 4
+  %a7$1 = load i32, i32* @gv7, align 4
+  %a8$1 = load i32, i32* @gv8, align 4
+  %a9$1 = load i32, i32* @gv9, align 4
+  %a10$1 = load i32, i32* @gv10, align 4
+  %a11$1 = load i32, i32* @gv11, align 4
+  %a12$1 = load i32, i32* @gv12, align 4
+  %a13$1 = load i32, i32* @gv13, align 4
+  %a14$1 = load i32, i32* @gv14, align 4
+  %a15$1 = load i32, i32* @gv15, align 4
+  %a16 = load i32, i32* @gv16, align 4
+  %a17 = load i32, i32* @gv17, align 4
+  %a18 = load i32, i32* @gv18, align 4
+  %a19 = load i32, i32* @gv19, align 4
+  %a20 = load i32, i32* @gv20, align 4
+  %a21 = load i32, i32* @gv21, align 4
+  %a22 = load i32, i32* @gv22, align 4
+  %a23 = load i32, i32* @gv23, align 4
+  %a24 = load i32, i32* @gv24, align 4
+  %a25 = load i32, i32* @gv25, align 4
+  %a26 = load i32, i32* @gv26, align 4
+  %a27 = load i32, i32* @gv27, align 4
+  %a28 = load i32, i32* @gv28, align 4
+  %a29 = load i32, i32* @gv29, align 4
+  %a30 = load i32, i32* @gv30, align 4
+  %a31 = load i32, i32* @gv31, align 4
+  br label %inline2149
 
 truncated199:                                        ; pred = %inline2149
   %testParam32 = load i32, i32* %retVal_ofinline2149, align 4

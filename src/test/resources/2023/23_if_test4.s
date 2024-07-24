@@ -2,78 +2,66 @@
 .align 3
 .text
 .align 1
-.type main, @function
-.globl main
-main:
-mainEntry48:
+.type if_ifElse_, @function
+.globl if_ifElse_
+if_ifElse_:
+if_ifElse_Entry:
 
 	# reserve space
-	li t0, 128
-	sub sp, sp, t0
+	addi sp, sp, -112
+
+	# save CallerSavedRegs
+
+	# save callee saved regs
+	addi sp, sp, 0
 
 	# save the parameters
 
-	# allocate retVal_ofinline1199
+	# allocate lv$1
 
-	# allocate lv_of_inline1199
+	# allocate lv
 
-	# allocate lv$1_of_inline1199
-
-	# br inline1199
-	j inline1199
-inline1199:
-
-	# store lv_of_inline1199 
+	# store lv 
 
 	# fetch variables
 	addi t1, zero, 5
 
-	# get address of lv_of_inline1199 points to
-	addi t3, zero, 116
-	add t0, sp, t3
-	sw t1, 0(t0)
+	# get address of lv points to
+	sw t1, 100(sp)
 
-	# store lv$1_of_inline1199 
+	# store lv$1 
 
 	# fetch variables
 	addi t1, zero, 10
 
-	# get address of lv$1_of_inline1199 points to
-	addi t3, zero, 108
-	add t0, sp, t3
-	sw t1, 0(t0)
+	# get address of lv$1 points to
+	sw t1, 108(sp)
 
-	# load a_of_inline1199 lv_of_inline1199
+	# load a lv
 
-	# get address of lv_of_inline1199 points to
-	addi t3, zero, 116
-	add t0, sp, t3
+	# get address of lv points to
 
-	# get address of local var:a_of_inline1199
-	lw t0, 0(t0)
-	sw t0, 100(sp)
+	# get address of local var:a
+	lw t0, 100(sp)
+	sw t0, 92(sp)
 
-	# ICMP cond_eq_tmp__of_inline1199 a_of_inline1199  
+	# ICMP cond_eq_tmp_ a  
 
 	# fetch variables
 	mv t1, t0
 	addi t2, zero, 5
 	xor t0, t1, t2
 	seqz t0, t0
+	mv s3, t0
 
-	# get address of local var:cond_eq_tmp__of_inline1199
-	sw t0, 92(sp)
-
-	#  cond_tmp__of_inline1199 cond_eq_tmp__of_inline1199
+	#  cond_tmp_ cond_eq_tmp_
 
 	# fetch variables
 	mv t1, t0
 	mv t0, t1
+	mv s3, t0
 
-	# get address of local var:cond_tmp__of_inline1199
-	sw t0, 84(sp)
-
-	# ICMP cond__of_inline1199 cond_tmp__of_inline1199  
+	# ICMP cond_ cond_tmp_  
 
 	# fetch variables
 	mv t1, t0
@@ -81,145 +69,41 @@ inline1199:
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+	mv s3, t0
 
-	# get address of local var:cond__of_inline1199
-	sw t0, 76(sp)
-
-	# condBr cond__of_inline1199 inline1200 inline1201
+	# condBr cond_ ifTrue_ next_
 
 	# fetch variables
 	mv t1, t0
-	beqz t1, inline1201
-	j inline1200
-inline1203:
+	beqz t1, next_
+	j ifTrue_
+ifTrue_:
 
-	# load a$1_of_inline1203 lv_of_inline1199
+	# load b lv$1
 
-	# get address of lv_of_inline1199 points to
-	addi t3, zero, 116
-	add t0, sp, t3
+	# get address of lv$1 points to
 
-	# get address of local var:a$1_of_inline1203
-	lw t0, 0(t0)
-	sw t0, 68(sp)
-
-	# ADD result__of_inline1203 a$1_of_inline1203  
-
-	# fetch variables
-	mv t1, t0
-	addi t2, zero, 15
-	addw t0, t1, t2
-
-	# get address of local var:result__of_inline1203
+	# get address of local var:b
+	lw t0, 108(sp)
 	sw t0, 60(sp)
 
-	# store lv_of_inline1199 result__of_inline1203
-
-	# fetch variables
-	mv t1, t0
-
-	# get address of lv_of_inline1199 points to
-	addi t3, zero, 116
-	add t0, sp, t3
-	sw t1, 0(t0)
-
-	# br inline1204
-	j inline1204
-inline1201:
-
-	# load a$2_of_inline1201 lv_of_inline1199
-
-	# get address of lv_of_inline1199 points to
-	addi t3, zero, 116
-	add t0, sp, t3
-
-	# get address of local var:a$2_of_inline1201
-	lw t0, 0(t0)
-	sw t0, 52(sp)
-
-	# store retVal_ofinline1199 a$2_of_inline1201
-
-	# fetch variables
-	mv t1, t0
-
-	# get address of retVal_ofinline1199 points to
-	addi t3, zero, 124
-	add t0, sp, t3
-	sw t1, 0(t0)
-
-	# br truncated87
-	j truncated87
-truncated87:
-
-	# load if_ifElse_ retVal_ofinline1199
-
-	# get address of retVal_ofinline1199 points to
-	addi t3, zero, 124
-	add t0, sp, t3
-
-	# get address of local var:if_ifElse_
-	lw t0, 0(t0)
-	sw t0, 44(sp)
-
-	# ret if_ifElse_
-
-	# fetch variables
-	mv t1, t0
-	mv a0, t1
-	li t0, 128
-	add sp, sp, t0
-	ret 
-inline1202:
-
-	# store lv_of_inline1199 
-
-	# fetch variables
-	addi t1, zero, 25
-
-	# get address of lv_of_inline1199 points to
-	addi t3, zero, 116
-	add t0, sp, t3
-	sw t1, 0(t0)
-
-	# br inline1204
-	j inline1204
-inline1204:
-
-	# br inline1201
-	j inline1201
-inline1200:
-
-	# load b_of_inline1200 lv$1_of_inline1199
-
-	# get address of lv$1_of_inline1199 points to
-	addi t3, zero, 108
-	add t0, sp, t3
-
-	# get address of local var:b_of_inline1200
-	lw t0, 0(t0)
-	sw t0, 36(sp)
-
-	# ICMP cond_eq_tmp_$1_of_inline1200 b_of_inline1200  
+	# ICMP cond_eq_tmp_$1 b  
 
 	# fetch variables
 	mv t1, t0
 	addi t2, zero, 10
 	xor t0, t1, t2
 	seqz t0, t0
+	mv s3, t0
 
-	# get address of local var:cond_eq_tmp_$1_of_inline1200
-	sw t0, 28(sp)
-
-	#  cond_tmp_$1_of_inline1200 cond_eq_tmp_$1_of_inline1200
+	#  cond_tmp_$1 cond_eq_tmp_$1
 
 	# fetch variables
 	mv t1, t0
 	mv t0, t1
+	mv s3, t0
 
-	# get address of local var:cond_tmp_$1_of_inline1200
-	sw t0, 20(sp)
-
-	# ICMP cond_$1_of_inline1200 cond_tmp_$1_of_inline1200  
+	# ICMP cond_$1 cond_tmp_$1  
 
 	# fetch variables
 	mv t1, t0
@@ -227,16 +111,135 @@ inline1200:
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
+	mv s3, t0
 
-	# get address of local var:cond_$1_of_inline1200
-	sw t0, 12(sp)
-
-	# condBr cond_$1_of_inline1200 inline1202 inline1203
+	# condBr cond_$1 ifTrue_1 ifFalse_
 
 	# fetch variables
 	mv t1, t0
-	beqz t1, inline1203
-	j inline1202
+	beqz t1, ifFalse_
+	j ifTrue_1
+next_:
+
+	# load a$2 lv
+
+	# get address of lv points to
+
+	# get address of local var:a$2
+	lw t0, 100(sp)
+	sw t0, 28(sp)
+
+	# ret a$2
+
+	# fetch variables
+	mv t1, t0
+	mv a0, t1
+	addi sp, sp, 112
+
+	# restore callee saved regs
+	addi sp, sp, 0
+	ret 
+ifTrue_1:
+
+	# store lv 
+
+	# fetch variables
+	addi t1, zero, 25
+
+	# get address of lv points to
+	sw t1, 100(sp)
+
+	# br next_1
+	j next_1
+ifFalse_:
+
+	# load a$1 lv
+
+	# get address of lv points to
+
+	# get address of local var:a$1
+	lw t0, 100(sp)
+	sw t0, 20(sp)
+
+	# ADD result_ a$1  
+
+	# fetch variables
+	mv t1, t0
+	addi t2, zero, 15
+	addw t0, t1, t2
+	mv s3, t0
+
+	# store lv result_
+
+	# fetch variables
+	mv t1, t0
+
+	# get address of lv points to
+	sw t1, 100(sp)
+
+	# br next_1
+	j next_1
+next_1:
+
+	# br next_
+	j next_
+.text
+.align 1
+.type main, @function
+.globl main
+main:
+mainEntry:
+
+	# reserve space
+	addi sp, sp, -16
+
+	# save the parameters
+
+	# prepare params
+
+	# save caller saved regs
+	addi sp, sp, -80
+	sd ra, 0(sp)
+	sd s0, 8(sp)
+	sd s1, 16(sp)
+	sd s2, 24(sp)
+	sd s3, 32(sp)
+	sd s4, 40(sp)
+	sd s5, 48(sp)
+	fsd fs0, 56(sp)
+	fsd fs1, 64(sp)
+	fsd fs2, 72(sp)
+
+	# call if_ifElse_
+	call if_ifElse_
+
+	# restore caller saved regs
+	ld ra, 0(sp)
+	ld s0, 8(sp)
+	ld s1, 16(sp)
+	ld s2, 24(sp)
+	ld s3, 32(sp)
+	ld s4, 40(sp)
+	ld s5, 48(sp)
+	fld fs0, 56(sp)
+	fld fs1, 64(sp)
+	fld fs2, 72(sp)
+	addi sp, sp, 80
+
+	# release params
+
+	# get address of local var:if_ifElse_
+	sw a0, 12(sp)
+
+	# ret if_ifElse_
+
+	# fetch variables
+
+	# get address of local var:if_ifElse_
+	lw t1, 12(sp)
+	mv a0, t1
+	addi sp, sp, 16
+	ret 
 
 memset32: 
     blez    a2, .LBB0_3 

@@ -5,11 +5,10 @@
 .type main, @function
 .globl main
 main:
-mainEntry45:
+mainEntry:
 
 	# reserve space
-	li t0, 48
-	sub sp, sp, t0
+	addi sp, sp, -48
 
 	# save the parameters
 
@@ -25,9 +24,7 @@ mainEntry45:
 	addi t1, zero, 1
 
 	# get address of lv points to
-	addi t3, zero, 28
-	add t0, sp, t3
-	sw t1, 0(t0)
+	sw t1, 28(sp)
 
 	# store lv$1 
 
@@ -35,9 +32,7 @@ mainEntry45:
 	addi t1, zero, 2
 
 	# get address of lv$1 points to
-	addi t3, zero, 36
-	add t0, sp, t3
-	sw t1, 0(t0)
+	sw t1, 36(sp)
 
 	# store lv$2 
 
@@ -45,28 +40,22 @@ mainEntry45:
 	addi t1, zero, 3
 
 	# get address of lv$2 points to
-	addi t3, zero, 44
-	add t0, sp, t3
-	sw t1, 0(t0)
+	sw t1, 44(sp)
 
 	# load b0 lv$1
 
 	# get address of lv$1 points to
-	addi t3, zero, 36
-	add t0, sp, t3
 
 	# get address of local var:b0
-	lw t0, 0(t0)
+	lw t0, 36(sp)
 	sw t0, 20(sp)
 
 	# load _c lv$2
 
 	# get address of lv$2 points to
-	addi t3, zero, 44
-	add t0, sp, t3
 
 	# get address of local var:_c
-	lw t0, 0(t0)
+	lw t0, 44(sp)
 	sw t0, 12(sp)
 
 	# ADD result_ b0 _c 
@@ -77,17 +66,14 @@ mainEntry45:
 	lw t1, 20(sp)
 	mv t2, t0
 	addw t0, t1, t2
-
-	# get address of local var:result_
-	sw t0, 4(sp)
+	mv s3, t0
 
 	# ret result_
 
 	# fetch variables
 	mv t1, t0
 	mv a0, t1
-	li t0, 48
-	add sp, sp, t0
+	addi sp, sp, 48
 	ret 
 
 memset32: 

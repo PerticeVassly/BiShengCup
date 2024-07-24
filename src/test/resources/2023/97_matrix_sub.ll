@@ -185,11 +185,6 @@ next_591:                                             ; pred = %whileCond_264
   call void @putch(i32 %x$5)
   ret i32 0
 
-truncated194:                                         ; pred = %inline2133
-  %sub = load i32, i32* %retVal_ofinline2130, align 4
-  store i32 %sub, i32* %lv$9, align 4
-  br label %whileCond_262
-
 inline2132:                                           ; pred = %inline2131
   %i$1_of_inline2132 = load i32, i32* %lv$9_of_inline2130, align 4
   %arr__of_inline2132 = load float*, float** %lv$6_of_inline2130, align 4
@@ -235,13 +230,6 @@ inline2132:                                           ; pred = %inline2131
   store i32 %result_$3_of_inline2132, i32* %lv$9_of_inline2130, align 4
   br label %inline2131
 
-inline2131:                                           ; pred = %inline2130, %inline2132
-  %i_of_inline2131 = load i32, i32* %lv$9_of_inline2130, align 4
-  %cond_lt_tmp__of_inline2131 = icmp slt i32 %i_of_inline2131, 3
-  %cond_tmp__of_inline2131 = zext i1 %cond_lt_tmp__of_inline2131 to i32
-  %cond__of_inline2131 = icmp ne i32 %cond_tmp__of_inline2131, 0
-  br i1 %cond__of_inline2131, label %inline2132, label %inline2133
-
 inline2130:                                           ; pred = %next_588
   store float* %a0$1, float** %lv_of_inline2130, align 4
   store float* %a1$1, float** %lv$1_of_inline2130, align 4
@@ -255,8 +243,20 @@ inline2130:                                           ; pred = %next_588
   store i32 0, i32* %lv$9_of_inline2130, align 4
   br label %inline2131
 
+inline2131:                                           ; pred = %inline2130, %inline2132
+  %i_of_inline2131 = load i32, i32* %lv$9_of_inline2130, align 4
+  %cond_lt_tmp__of_inline2131 = icmp slt i32 %i_of_inline2131, 3
+  %cond_tmp__of_inline2131 = zext i1 %cond_lt_tmp__of_inline2131 to i32
+  %cond__of_inline2131 = icmp ne i32 %cond_tmp__of_inline2131, 0
+  br i1 %cond__of_inline2131, label %inline2132, label %inline2133
+
 inline2133:                                           ; pred = %inline2131
   store i32 0, i32* %retVal_ofinline2130, align 4
   br label %truncated194
+
+truncated194:                                         ; pred = %inline2133
+  %sub = load i32, i32* %retVal_ofinline2130, align 4
+  store i32 %sub, i32* %lv$9, align 4
+  br label %whileCond_262
 }
 

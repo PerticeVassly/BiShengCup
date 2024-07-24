@@ -1,6 +1,5 @@
 package cn.edu.nju.software.pass;
 
-import cn.edu.nju.software.frontend.type.Type;
 import cn.edu.nju.software.frontend.util.CG;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.IrCloneVisitor;
