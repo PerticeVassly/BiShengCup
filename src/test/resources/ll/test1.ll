@@ -18,175 +18,76 @@ declare void @memset(i32*, i32, i32)
 
 @gv = global i32 0, align 4
 
-define i32 @swap(i32* %0, i32 %1, i32 %2) {
-swapEntry:
-  %lv$2 = alloca i32, align 4
-  %lv$1 = alloca i32, align 4
-  %lv = alloca i32*, align 4
-  store i32* %0, i32** %lv, align 4
-  store i32 %1, i32* %lv$1, align 4
-  store i32 %2, i32* %lv$2, align 4
-  ret i32 0
-}
-
-define i32 @heap_ajust(i32* %0, i32 %1, i32 %2) {
-heap_ajustEntry:
-  %retVal_ofinline = alloca i32, align 4
-  %lv_of_inline = alloca i32*, align 4
-  %lv$1_of_inline = alloca i32, align 4
-  %lv$2_of_inline = alloca i32, align 4
-  %lv$3 = alloca i32, align 4
-  %lv$2 = alloca i32, align 4
-  %lv$1 = alloca i32, align 4
-  %lv = alloca i32*, align 4
-  store i32* %0, i32** %lv, align 4
-  store i32 %1, i32* %lv$1, align 4
-  store i32 %2, i32* %lv$2, align 4
-  %arr = load i32*, i32** %lv, align 4
-  br label %inline
-
-truncated:                                              ; pred = %inline
-  %swap = load i32, i32* %retVal_ofinline, align 4
-  store i32 %swap, i32* %lv$3, align 4
-  ret i32 0
-
-inline:                                                 ; pred = %heap_ajustEntry
-  store i32* %arr, i32** %lv_of_inline, align 4
-  store i32 1, i32* %lv$1_of_inline, align 4
-  store i32 2, i32* %lv$2_of_inline, align 4
-  store i32 0, i32* %retVal_ofinline, align 4
-  br label %truncated
-}
-
-define i32 @heap_sort(i32* %0, i32 %1) {
-heap_sortEntry:
-  %retVal_ofinline2 = alloca i32, align 4
-  %lv_of_inline2 = alloca i32*, align 4
-  %lv$1_of_inline2 = alloca i32, align 4
-  %lv$2_of_inline2 = alloca i32, align 4
-  %lv$3_of_inline2 = alloca i32, align 4
-  %lv$2_of_inline_of_inline2 = alloca i32, align 4
-  %lv$1_of_inline_of_inline2 = alloca i32, align 4
-  %lv_of_inline_of_inline2 = alloca i32*, align 4
-  %retVal_ofinline_of_inline2 = alloca i32, align 4
-  %retVal_ofinline1 = alloca i32, align 4
-  %lv_of_inline1 = alloca i32*, align 4
-  %lv$1_of_inline1 = alloca i32, align 4
-  %lv$2_of_inline1 = alloca i32, align 4
-  %lv$1 = alloca i32, align 4
-  %lv = alloca i32*, align 4
-  store i32* %0, i32** %lv, align 4
-  store i32 %1, i32* %lv$1, align 4
-  %arr = load i32*, i32** %lv, align 4
-  br label %inline1
-
-inline1:                                               ; pred = %heap_sortEntry
-  store i32* %arr, i32** %lv_of_inline1, align 4
-  store i32 1, i32* %lv$1_of_inline1, align 4
-  store i32 2, i32* %lv$2_of_inline1, align 4
-  store i32 0, i32* %retVal_ofinline1, align 4
-  br label %truncated1
-
-truncated1:                                            ; pred = %inline1
-  %swap = load i32, i32* %retVal_ofinline1, align 4
-  %arr$1 = load i32*, i32** %lv, align 4
-  br label %inline2
-
-truncated2:                                            ; pred = %inline3
-  %heap_ajust = load i32, i32* %retVal_ofinline2, align 4
-  ret i32 0
-
-inline4:                                               ; pred = %inline2
-  store i32* %arr_of_inline2, i32** %lv_of_inline_of_inline2, align 4
-  store i32 1, i32* %lv$1_of_inline_of_inline2, align 4
-  store i32 2, i32* %lv$2_of_inline_of_inline2, align 4
-  store i32 0, i32* %retVal_ofinline_of_inline2, align 4
-  br label %inline3
-
-inline2:                                               ; pred = %truncated1
-  store i32* %arr$1, i32** %lv_of_inline2, align 4
-  store i32 1, i32* %lv$1_of_inline2, align 4
-  store i32 3, i32* %lv$2_of_inline2, align 4
-  %arr_of_inline2 = load i32*, i32** %lv_of_inline2, align 4
-  br label %inline4
-
-inline3:                                               ; pred = %inline4
-  %swap_of_inline3 = load i32, i32* %retVal_ofinline_of_inline2, align 4
-  store i32 %swap_of_inline3, i32* %lv$3_of_inline2, align 4
-  store i32 0, i32* %retVal_ofinline2, align 4
-  br label %truncated2
-}
-
 define i32 @main() {
-mainEntry:
-  %retVal_ofinline5 = alloca i32, align 4
-  %lv_of_inline5 = alloca i32*, align 4
-  %lv$1_of_inline5 = alloca i32, align 4
-  %lv$2_of_inline1_of_inline5 = alloca i32, align 4
-  %lv$1_of_inline1_of_inline5 = alloca i32, align 4
-  %lv_of_inline1_of_inline5 = alloca i32*, align 4
-  %retVal_ofinline1_of_inline5 = alloca i32, align 4
-  %retVal_ofinline_of_inline2_of_inline5 = alloca i32, align 4
-  %lv_of_inline_of_inline2_of_inline5 = alloca i32*, align 4
-  %lv$1_of_inline_of_inline2_of_inline5 = alloca i32, align 4
-  %lv$2_of_inline_of_inline2_of_inline5 = alloca i32, align 4
-  %lv$3_of_inline2_of_inline5 = alloca i32, align 4
-  %lv$2_of_inline2_of_inline5 = alloca i32, align 4
-  %lv$1_of_inline2_of_inline5 = alloca i32, align 4
-  %lv_of_inline2_of_inline5 = alloca i32*, align 4
-  %retVal_ofinline2_of_inline5 = alloca i32, align 4
+mainEntry111:
+  %retVal_ofinline2428 = alloca i32, align 4
+  %lv_of_inline2428 = alloca i32*, align 4
+  %lv$1_of_inline2428 = alloca i32, align 4
+  %lv$2_of_inline2424_of_inline2428 = alloca i32, align 4
+  %lv$1_of_inline2424_of_inline2428 = alloca i32, align 4
+  %lv_of_inline2424_of_inline2428 = alloca i32*, align 4
+  %retVal_ofinline2424_of_inline2428 = alloca i32, align 4
+  %long_name459$tVal_ofinline2423_of_inline2425_of_inline2428 = alloca i32, align 4
+  %lv_of_inline2423_of_inline2425_of_inline2428 = alloca i32*, align 4
+  %long_name457$v$1_of_inline2423_of_inline2425_of_inline2428 = alloca i32, align 4
+  %long_name455$v$2_of_inline2423_of_inline2425_of_inline2428 = alloca i32, align 4
+  %lv$3_of_inline2425_of_inline2428 = alloca i32, align 4
+  %lv$2_of_inline2425_of_inline2428 = alloca i32, align 4
+  %lv$1_of_inline2425_of_inline2428 = alloca i32, align 4
+  %lv_of_inline2425_of_inline2428 = alloca i32*, align 4
+  %retVal_ofinline2425_of_inline2428 = alloca i32, align 4
   %lv$1 = alloca i32, align 4
   %lv = alloca [10 x i32], align 16
   %a = getelementptr [10 x i32], [10 x i32]* %lv, i32 0, i32 0
   %n = load i32, i32* @gv, align 4
-  br label %inline5
+  br label %inline2428
 
-inline11:                                          ; pred = %inline9
-  %swap_of_inline3_of_inline11 = load i32, i32* %retVal_ofinline_of_inline2_of_inline5, align 4
-  store i32 %swap_of_inline3_of_inline11, i32* %lv$3_of_inline2_of_inline5, align 4
-  store i32 0, i32* %retVal_ofinline2_of_inline5, align 4
-  br label %inline8
+inline2431:                                          ; pred = %inline2429
+  store i32* %arr$1_of_inline2429, i32** %lv_of_inline2425_of_inline2428, align 4
+  store i32 1, i32* %lv$1_of_inline2425_of_inline2428, align 4
+  store i32 3, i32* %lv$2_of_inline2425_of_inline2428, align 4
+  %arr_of_inline2425_of_inline2431 = load i32*, i32** %lv_of_inline2425_of_inline2428, align 4
+  br label %inline2432
 
-inline8:                                           ; pred = %inline11
-  %heap_ajust_of_inline8 = load i32, i32* %retVal_ofinline2_of_inline5, align 4
-  store i32 0, i32* %retVal_ofinline5, align 4
-  br label %truncated3
+inline2430:                                          ; pred = %inline2428
+  store i32* %arr_of_inline2428, i32** %lv_of_inline2424_of_inline2428, align 4
+  store i32 1, i32* %lv$1_of_inline2424_of_inline2428, align 4
+  store i32 2, i32* %lv$2_of_inline2424_of_inline2428, align 4
+  store i32 0, i32* %retVal_ofinline2424_of_inline2428, align 4
+  br label %inline2429
 
-inline7:                                           ; pred = %inline6
-  %swap_of_inline7 = load i32, i32* %retVal_ofinline1_of_inline5, align 4
-  %arr$1_of_inline7 = load i32*, i32** %lv_of_inline5, align 4
-  br label %inline10
-
-inline10:                                          ; pred = %inline7
-  store i32* %arr$1_of_inline7, i32** %lv_of_inline2_of_inline5, align 4
-  store i32 1, i32* %lv$1_of_inline2_of_inline5, align 4
-  store i32 3, i32* %lv$2_of_inline2_of_inline5, align 4
-  %arr_of_inline2_of_inline10 = load i32*, i32** %lv_of_inline2_of_inline5, align 4
-  br label %inline9
-
-inline5:                                           ; pred = %mainEntry
-  store i32* %a, i32** %lv_of_inline5, align 4
-  store i32 %n, i32* %lv$1_of_inline5, align 4
-  %arr_of_inline5 = load i32*, i32** %lv_of_inline5, align 4
-  br label %inline6
-
-inline9:                                           ; pred = %inline10
-  store i32* %arr_of_inline2_of_inline10, i32** %lv_of_inline_of_inline2_of_inline5, align 4
-  store i32 1, i32* %lv$1_of_inline_of_inline2_of_inline5, align 4
-  store i32 2, i32* %lv$2_of_inline_of_inline2_of_inline5, align 4
-  store i32 0, i32* %retVal_ofinline_of_inline2_of_inline5, align 4
-  br label %inline11
-
-inline6:                                           ; pred = %inline5
-  store i32* %arr_of_inline5, i32** %lv_of_inline1_of_inline5, align 4
-  store i32 1, i32* %lv$1_of_inline1_of_inline5, align 4
-  store i32 2, i32* %lv$2_of_inline1_of_inline5, align 4
-  store i32 0, i32* %retVal_ofinline1_of_inline5, align 4
-  br label %inline7
-
-truncated3:                                        ; pred = %inline8
-  %heap_sort = load i32, i32* %retVal_ofinline5, align 4
+truncated243:                                        ; pred = %inline2434
+  %heap_sort = load i32, i32* %retVal_ofinline2428, align 4
   store i32 %heap_sort, i32* %lv$1, align 4
   ret i32 0
+
+inline2428:                                          ; pred = %mainEntry111
+  store i32* %a, i32** %lv_of_inline2428, align 4
+  store i32 %n, i32* %lv$1_of_inline2428, align 4
+  %arr_of_inline2428 = load i32*, i32** %lv_of_inline2428, align 4
+  br label %inline2430
+
+inline2433:                                          ; pred = %inline2432
+  %swap_of_inline2427_of_inline2433 = load i32, i32* %long_name459$tVal_ofinline2423_of_inline2425_of_inline2428, align 4
+  store i32 %swap_of_inline2427_of_inline2433, i32* %lv$3_of_inline2425_of_inline2428, align 4
+  store i32 0, i32* %retVal_ofinline2425_of_inline2428, align 4
+  br label %inline2434
+
+inline2429:                                          ; pred = %inline2430
+  %swap_of_inline2429 = load i32, i32* %retVal_ofinline2424_of_inline2428, align 4
+  %arr$1_of_inline2429 = load i32*, i32** %lv_of_inline2428, align 4
+  br label %inline2431
+
+inline2432:                                          ; pred = %inline2431
+  store i32* %arr_of_inline2425_of_inline2431, i32** %lv_of_inline2423_of_inline2425_of_inline2428, align 4
+  store i32 1, i32* %long_name457$v$1_of_inline2423_of_inline2425_of_inline2428, align 4
+  store i32 2, i32* %long_name455$v$2_of_inline2423_of_inline2425_of_inline2428, align 4
+  store i32 0, i32* %long_name459$tVal_ofinline2423_of_inline2425_of_inline2428, align 4
+  br label %inline2433
+
+inline2434:                                          ; pred = %inline2433
+  %heap_ajust_of_inline2434 = load i32, i32* %retVal_ofinline2425_of_inline2428, align 4
+  store i32 0, i32* %retVal_ofinline2428, align 4
+  br label %truncated243
 }
 

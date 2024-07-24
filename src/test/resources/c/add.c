@@ -1,9 +1,9 @@
 int main() {
-    int a = 1;
-    int b, v, d;
-    if (a > 2) {
-        b=2;
-        int g, ll;
+    int a = 2;
+    int b = 3;
+    int c = 4;
+    if( a > 1 && a < 5  ){
+        a = 3;
     }
-    return a;
+    return 0;
 }
