@@ -170,6 +170,12 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
         riscInstructions.add(new RiscComment("gep " + lVal.getName() + " " +  index.getName()));
 
+
+        if(allocator.isLastLVal(basePtr)){
+            riscInstructions.add(new RiscMv(new Register("t5"), new Register("t0")));
+        } else {
+            riscInstructions.add(new RiscMv(new Register("t5"), allocator.getValueOfVar(basePtr)));
+        }
         //获取index的值,存在t1中
         allocator.prepareOperands(index);
 
@@ -181,10 +187,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
         riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t0")));
 
         //获取basePtr的值，存在t1中
-        riscInstructions.add(new RiscMv(new Register("t1"), allocator.getValueOfVar(basePtr)));
 
         //计算最终的地址，存在t0中
-        riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t1"), new Register("t0")));
+        riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t5"), new Register("t0")));
 
         //存放到lVal中
         afterABinaryInstr(gep);

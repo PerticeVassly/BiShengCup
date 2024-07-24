@@ -83,20 +83,21 @@ public class Allocator {
     }
 
     private void prepareAGlobal(GlobalVar globalVar,int i){
-        if (((Pointer)globalVar.getType()).getBase() instanceof FloatType) {
-            generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
-            generator.addInstruction(new RiscFlw(new Register("ft" + i), new IndirectRegister("t1", 0)));
-        } else if (((Pointer) globalVar.getType()).getBase() instanceof IntType){
-            generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
-            generator.addInstruction(new RiscLw(new Register("t" + i), new IndirectRegister("t3", 0)));
-        } else if( ((Pointer) globalVar.getType()).getBase() instanceof ArrayType){
-            assert false;
-        } else if(((Pointer) globalVar.getType()).getBase() instanceof Pointer){
-            generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
-            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t1", 0)));
-        } else {
-            assert false;
-        }
+//        if (((Pointer)globalVar.getType()).getBase() instanceof FloatType) {
+//            generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
+//            generator.addInstruction(new RiscFlw(new Register("ft" + i), new IndirectRegister("t1", 0)));
+//        } else if (((Pointer) globalVar.getType()).getBase() instanceof IntType){
+//            generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
+//            generator.addInstruction(new RiscLw(new Register("t" + i), new IndirectRegister("t3", 0)));
+//        } else if( ((Pointer) globalVar.getType()).getBase() instanceof ArrayType){
+//            assert false;
+//        } else if(((Pointer) globalVar.getType()).getBase() instanceof Pointer){
+//            generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
+//            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t1", 0)));
+//        } else {
+//            assert false;
+//        }
+        generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
     }
 
     private void prepareALocal(LocalVar localVar, int i){
