@@ -10,20 +10,34 @@ import static cn.edu.nju.software.ir.instruction.OpEnum.PHI;
 import static cn.edu.nju.software.ir.instruction.Operator.*;
 
 public class Phi extends Instruction {
-    /**
-     * lVal: left value     %phi = phi i32 [%bb1 %1], [%bb2 %2]
-     * bbs and vrs size: 2
-     * one to one
-     * first bb's vr and second bb's vr
-     * */
-    public Phi(ValueRef lVal, BasicBlockRef[] bbs, ValueRef[] vrs) {
+    private final BasicBlockRef block; // in which lock
+    private final Allocate memory; // merge for which memory
+    /***
+     * phi: first value, second block
+     * @param lVal: create value
+     * @param block: in which block
+     */
+    public Phi(ValueRef lVal, BasicBlockRef block, Allocate memory) {
         this.lVal = lVal;
+        this.block = block;
         operator = getOperator(PHI);
-        operands = new ValueRef[bbs.length + vrs.length];
-        System.arraycopy(bbs, 0, operands, 0, bbs.length);
-        System.arraycopy(vrs, 0, operands, bbs.length, vrs.length);
+        operands = new ValueRef[0];
+        this.memory = memory;
     }
 
+    public BasicBlockRef getBlock() {
+        return block;
+    }
+
+    public void add(ValueRef value, BasicBlockRef block) {
+        operands = Arrays.copyOf(operands, operands.length + 2);
+        operands[operands.length - 2] = value;
+        operands[operands.length - 1] = block;
+    }
+
+    public Allocate getMemory() {
+        return memory;
+    }
     @Override
     public String toString() {
         String s =  lVal.getText() +

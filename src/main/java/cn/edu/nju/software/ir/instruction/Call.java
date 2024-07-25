@@ -22,6 +22,9 @@ public class Call extends Instruction {
         operator = getOperator(CALL);
         this.function = function;
         this.realParams = realParams;
+        for (ValueRef ref : this.realParams) {
+            ref.addUser(this);
+        }
     }
 
     public Call(ValueRef lVal, FunctionValue function, List<ValueRef> realParams) {
@@ -29,6 +32,9 @@ public class Call extends Instruction {
         operator = getOperator(CALL);
         this.function = function;
         this.realParams = realParams;
+        for (ValueRef r : this.realParams) {
+            r.addUser(this);
+        }
     }
 
     public Call(FunctionValue function, List<ValueRef> realParams, int lineNo) {
@@ -36,6 +42,9 @@ public class Call extends Instruction {
         this.function = function;
         this.realParams = realParams;
         this.lineNo = lineNo;
+        for (ValueRef r : this.realParams) {
+            r.addUser(this);
+        }
     }
 
     public Call(ValueRef lVal, FunctionValue function, List<ValueRef> realParams, int lineNo) {
@@ -44,6 +53,9 @@ public class Call extends Instruction {
         this.function = function;
         this.realParams = realParams;
         this.lineNo = lineNo;
+        for (ValueRef r : this.realParams) {
+            r.addUser(this);
+        }
     }
 
     public List<ValueRef> getRealParams() {
@@ -64,6 +76,13 @@ public class Call extends Instruction {
 
     public void replaceRealParam(int index, ValueRef newVal) {
         realParams.set(index, newVal);
+    }
+
+    public void replaceRealParams(ValueRef old, ValueRef newVal) {
+        int index = realParams.indexOf(old);
+        if (index != -1) {
+            realParams.set(index, newVal);
+        }
     }
 
     @Override

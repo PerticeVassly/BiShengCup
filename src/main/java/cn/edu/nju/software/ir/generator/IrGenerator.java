@@ -2,6 +2,8 @@ package cn.edu.nju.software.ir.generator;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
+import cn.edu.nju.software.ir.instruction.Allocate;
+import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.*;
@@ -83,4 +85,6 @@ import java.util.ArrayList;
      ValueRef buildIntToFloat(BuilderRef builder, ValueRef intVal, String name);
 
      ValueRef dropBlock(BuilderRef builder, BasicBlockRef block);
+
+     Instruction buildEmptyPhiAfterInst(BasicBlockRef block, Allocate memory, String name);
  }

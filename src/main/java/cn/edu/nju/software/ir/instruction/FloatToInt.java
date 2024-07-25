@@ -8,6 +8,7 @@ public class FloatToInt extends Instruction {
         this.lVal = lVal;
         operator = "fptosi";
         operands = new ValueRef[]{floatVal};
+        floatVal.addUser(this);
     }
 
     @Override

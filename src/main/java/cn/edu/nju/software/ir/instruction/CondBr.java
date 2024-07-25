@@ -11,6 +11,7 @@ public class CondBr extends Instruction {
     public CondBr(ValueRef cond, BasicBlockRef ifTrue, BasicBlockRef ifFalse) {
         operator = getOperator(BR);
         operands = new ValueRef[]{cond, ifTrue, ifFalse};
+        cond.addUser(this);
     }
 
     public BasicBlockRef getTrueBlock() {

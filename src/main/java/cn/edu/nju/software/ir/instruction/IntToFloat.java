@@ -8,6 +8,7 @@ public class IntToFloat extends Instruction {
         this.lVal = lVal;
         operator = "fptosi";
         operands = new ValueRef[]{intVal};
+        intVal.addUser(this);
     }
 
     @Override

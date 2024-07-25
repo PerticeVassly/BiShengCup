@@ -430,4 +430,12 @@ public class Generator implements IrGenerator {
         builder.dropBlock(block);
         return block;
     }
+
+    @Override
+    public Phi buildEmptyPhiAfterInst(BasicBlockRef block, Allocate memory, String name) {
+        LocalVar localVar = block.createLocalVar(i32Type, name);
+        Phi emptyPhi = new Phi(localVar, block, memory);
+        block.addPhi(emptyPhi);
+        return emptyPhi;
+    }
 }

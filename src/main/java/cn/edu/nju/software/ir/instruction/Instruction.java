@@ -23,6 +23,14 @@ public abstract class Instruction {
         operands[index] = valueRef;
     }
 
+    public void replace(ValueRef old, ValueRef nw) {
+        for (int i = 0; i < operands.length; i++) {
+            if (operands[i].equals(old)) {
+                operands[i] = nw;
+            }
+        }
+    }
+
     public ValueRef[] getOperands() {
         return operands;
     }
