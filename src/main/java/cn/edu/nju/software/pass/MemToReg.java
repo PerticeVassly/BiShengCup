@@ -7,6 +7,7 @@ import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
@@ -17,6 +18,8 @@ public class MemToReg {
     private final CFGBuildPass cfgBuildPass;
 
     private final ModuleRef module;
+
+    private final ValueRef UNDEF = new ValueRef(new TypeRef(), "undef");
 
     Generator gen = Generator.getInstance();
 
@@ -70,17 +73,14 @@ public class MemToReg {
     private void replaceLoadStoreWthPhi(FunctionValue fv) {
         for (int i = 0; i < fv.getBlockNum(); i++) {
             BasicBlockRef bb = fv.getBlock(i);
-//            int irNum = bb.getIrNum();
             for (int j = 0; j < bb.getIrNum(); j++) {
                 Instruction inst = bb.getIr(j);
                 if (inst instanceof Store store) {
-//                    System.err.println(inst);
                     ValueRef storeVal = store.getOperand(0);
                     ValueRef mem = store.getOperand(1);
                     if (mem2Alloc.containsKey(mem)) { // memory is in replaceable alloc inst
                         HashMap<BasicBlockRef, ValueRef> tmp = defineInBlock.get(mem2Alloc.get(mem));
                         tmp.put(bb, storeVal); // renew the memory's value in specific block
-//                        System.err.println("bb: " + bb + ", storeVal: " + storeVal);
                     }
                 }
                 if (inst instanceof Load load) {
@@ -99,10 +99,6 @@ public class MemToReg {
                         }
                     }
                 }
-//                if (irNum != bb.getIrNum()) {
-//                    i += bb.getIrNum() - irNum;
-//                    irNum = bb.getIrNum();
-//                }
             }
         }
     }
@@ -155,9 +151,9 @@ public class MemToReg {
             for (int i = 0; i < phiBlock.getPredNum(); i++) {
                 BasicBlockRef pred = phiBlock.getPred(i);
                 ValueRef val = getLatestDefineForMem(pred, phi.getMemory());
-//                System.err.println(val);
-                if (val != null) {
+                if (val == null) {
                     // undef
+                    val = UNDEF;
                 }
                 phi.add(val, pred);
             }

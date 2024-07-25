@@ -433,7 +433,7 @@ public class Generator implements IrGenerator {
 
     @Override
     public Phi buildEmptyPhiAfterInst(BasicBlockRef block, Allocate memory, String name) {
-        LocalVar localVar = block.createLocalVar(i32Type, name);
+        LocalVar localVar = block.createLocalVar(((Pointer)memory.getLVal().getType()).getBase(), name);
         Phi emptyPhi = new Phi(localVar, block, memory);
         block.addPhi(emptyPhi);
         return emptyPhi;

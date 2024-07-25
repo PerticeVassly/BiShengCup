@@ -28,7 +28,7 @@ public class EliminateConstExp {
         value2Const = new HashMap<>();
     }
 
-    public void doEliminateProc() {
+    private void doEliminateProc() {
         for (int i = 0; i < module.getFunctionNum(); i++) {
             FunctionValue fv = module.getFunction(i);
             if (fv.isLib()) {
@@ -83,5 +83,9 @@ public class EliminateConstExp {
                 }
             } // TODO ?
         }
+    }
+
+    public void runOnModule() {
+        doEliminateProc();
     }
 }

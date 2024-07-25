@@ -61,4 +61,8 @@ public class ValueRef {
     public void addUser(Instruction user) {
         this.user.add(user);
     }
+
+    public String toString() {
+        return name;
+    }
 }
