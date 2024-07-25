@@ -24,5 +24,6 @@ public enum OpEnum {
      FADD,
      FSUB,
      FMUL,
-     FDIV
+     FDIV,
+     ASHR,
 }

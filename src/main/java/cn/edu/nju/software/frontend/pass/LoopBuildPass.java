@@ -6,7 +6,6 @@ import cn.edu.nju.software.frontend.util.LoopSet;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
-
 import java.util.*;
 
 public class LoopBuildPass implements ModulePass {

@@ -13,6 +13,7 @@ public record RiscSpecifications() {
     private static final int FLOAT_SIZE = 4;
     private static final int POINTER_SIZE = 8;
     private static final int BOOL_SIZE = 4;
+    private static long identifier = 0;
 
     public static int getIntSize() {
         return INT_SIZE;
@@ -85,4 +86,7 @@ public record RiscSpecifications() {
         return type instanceof FloatType;
     }
 
+    public static String getIndentifier(){
+        return String.valueOf(identifier++);
+    }
 }

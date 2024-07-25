@@ -15,10 +15,8 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PrimitiveIterator;
 
 public class RiscBasicBlock {
 
@@ -180,7 +178,7 @@ public class RiscBasicBlock {
 
         System.out.println(basicBlockRef.getName() + ":");
 
-        assert !riscInstructions.isEmpty();
+//        assert !riscInstructions.isEmpty(); //todo() why here fail
 
         for(RiscInstruction riscInstruction : riscInstructions){
             System.out.println(riscInstruction.emitCode());

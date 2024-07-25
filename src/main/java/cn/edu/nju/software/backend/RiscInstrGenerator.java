@@ -12,6 +12,7 @@ import cn.edu.nju.software.backend.riscinstruction.operand.Operand;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.*;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
+import cn.edu.nju.software.backend.riscinstruction.util.RiscLabel;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.Allocate;
@@ -322,7 +323,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
         afterABinaryInstr(fAdd);
     }
 
-
     @Override
     public void visit(Sub sub) {
         beforeABinaryInstr(sub);
@@ -340,6 +340,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(Mul mul) {
         beforeABinaryInstr(mul);
+        /* todo() 简单的强度消解
+         */
         riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t2")));
         afterABinaryInstr(mul);
     }
@@ -353,6 +355,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Mod mod) {
+        /* todo()简单的强度消解 */
         beforeABinaryInstr(mod);
         riscInstructions.add(new RiscRem(new Register("t0"), new Register("t1"), new Register("t2")));
         afterABinaryInstr(mod);
@@ -360,9 +363,31 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Div div) {
+        /* todo()简单的强度消解, 但是有冗余的参数装入*/
         beforeABinaryInstr(div);
-        riscInstructions.add(new RiscDiv(new Register("t0"), new Register("t1"), new Register("t2")));
+        if(div.getOperand(1) instanceof ConstValue constValue
+            && constValue.getType() instanceof IntType
+            && isPowerOfTwo((int) constValue.getValue())){
+            int k = Integer.numberOfTrailingZeros((int) constValue.getValue());
+            riscInstructions.add(new RiscSrai(new Register("t0"), new Register("t1"), new ImmediateValue(k)));
+        }
+        else if(div.getOperand(1) instanceof ConstValue constValue
+                && constValue.getType() instanceof IntType
+                && (int)constValue.getValue() == 1) {
+            riscInstructions.add(new RiscMv(new Register("t0"), new Register("t1")));
+        }
+        else if(div.getOperand(1) instanceof ConstValue constValue
+                ){
+
+        }
+        else {
+            riscInstructions.add(new RiscDiv(new Register("t0"), new Register("t1"), new Register("t2")));
+        }
         afterABinaryInstr(div);
+    }
+
+    private boolean isPowerOfTwo(int n) {
+        return n > 0 && (Integer.numberOfTrailingZeros(n) + Integer.numberOfLeadingZeros(n)) == 31;
     }
 
     @Override

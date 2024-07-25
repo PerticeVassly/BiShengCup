@@ -40,6 +40,7 @@ public class ConstValue extends ValueRef {
         this.name = name;
     }
 
+
     public Object getValue() {
         return value;
     }
