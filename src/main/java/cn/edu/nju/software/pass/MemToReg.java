@@ -184,6 +184,7 @@ public class MemToReg {
                         j--;
                     }
                 }
+
                 // rm redundant phi
                 if (inst instanceof Phi phi) {
                     if (phi.isRedundant()) { // only 2 operands: [value, block]
