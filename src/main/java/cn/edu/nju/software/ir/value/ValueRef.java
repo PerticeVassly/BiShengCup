@@ -62,6 +62,10 @@ public class ValueRef {
         this.user.add(user);
     }
 
+    public void dropUser(Instruction user) {
+        this.user.remove(user);
+    }
+
     public String toString() {
         return name;
     }

@@ -74,14 +74,24 @@ public class Call extends Instruction {
         return realParams.get(index);
     }
 
+    /***
+     * special for Call(because different op struct) <br>
+     * replace old with new; after replacing, old will be deleting, so no need to modify old
+     * @param index: position
+     * @param newVal: replace value
+     */
     public void replaceRealParam(int index, ValueRef newVal) {
+//        realParams.get(index).dropUser(this);
         realParams.set(index, newVal);
+        newVal.addUser(this);
     }
 
     public void replaceRealParams(ValueRef old, ValueRef newVal) {
         int index = realParams.indexOf(old);
         if (index != -1) {
+//            old.dropUser(this);
             realParams.set(index, newVal);
+            newVal.addUser(this);
         }
     }
 

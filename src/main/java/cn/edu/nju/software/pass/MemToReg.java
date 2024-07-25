@@ -61,7 +61,7 @@ public class MemToReg {
 
             fillEmptyPhis();
 
-            rmRedundantAllocStoreLoadInFunction(fv);
+            rmRedundantAllocStoreLoadAndPhiInFunction(fv);
             // TODO
         }
     }
@@ -119,7 +119,7 @@ public class MemToReg {
             return tmp.get(block);
         }
         if (block.contains(allocate)) { // declare in this block, but use before defining it, undef
-            return null; // TODO undef
+            return null; // undef
         }
         // need an empty phi inst
         Phi emptyPhi = gen.buildEmptyPhiAfterInst(block, allocate, "phi");
@@ -160,7 +160,7 @@ public class MemToReg {
         }
     }
 
-    private void rmRedundantAllocStoreLoadInFunction(FunctionValue fv) {
+    private void rmRedundantAllocStoreLoadAndPhiInFunction(FunctionValue fv) {
         for (int i = 0; i < fv.getBlockNum(); i++) {
             BasicBlockRef bb = fv.getBlock(i);
             for (int j = 0; j < bb.getIrNum(); j++) {
@@ -180,6 +180,23 @@ public class MemToReg {
                 }
                 if (inst instanceof Allocate allocate) {
                     if (defineInBlock.containsKey(allocate)) {
+                        bb.dropIr(inst);
+                        j--;
+                    }
+                }
+                // rm redundant phi
+                if (inst instanceof Phi phi) {
+                    if (phi.isRedundant()) { // only 2 operands: [value, block]
+                        ValueRef phiVal = phi.getLVal();
+                        ValueRef replace = phi.getOperand(0); // value
+                        // replace old(phiVal) with new value(replace); after replacing. old will be deleting
+                        for (Instruction instruction : phiVal.getUser()) {
+                            if (instruction instanceof Call call) {
+                                call.replaceRealParams(phiVal, replace);
+                            } else {
+                                instruction.replace(phiVal, replace);
+                            }
+                        }
                         bb.dropIr(inst);
                         j--;
                     }

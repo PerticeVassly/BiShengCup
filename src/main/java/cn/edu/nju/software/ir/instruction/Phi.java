@@ -33,11 +33,17 @@ public class Phi extends Instruction {
         operands = Arrays.copyOf(operands, operands.length + 2);
         operands[operands.length - 2] = value;
         operands[operands.length - 1] = block;
+        value.addUser(this);
     }
 
     public Allocate getMemory() {
         return memory;
     }
+
+    public boolean isRedundant() {
+        return operands.length == 2;
+    }
+
     @Override
     public String toString() {
         String s =  lVal.getText() +
