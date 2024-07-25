@@ -21,6 +21,7 @@
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/ir/instruction/BitCast.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/RiscInstrGenerator.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/frontend/util/Symbol.java
+/home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/regalloc/LValLiveTable.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/frontend/lexer/SysYLexer.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/floatextension/RiscFsw.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/floatextension/RiscFmuls.java
@@ -44,12 +45,13 @@
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/floatextension/RiscFmvxw.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/frontend/type/FloatType.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/ir/instruction/Phi.java
+/home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/floatextension/RiscFsd.java
+/home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/floatextension/RiscFld.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/floatextension/RiscFlts.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/ir/instruction/Binary.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/pass/HelloPass.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/frontend/type/NullType.java
 /home/wangchenyang/compilers/src/main/java/Compiler.java
-/home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/ir/opt/TestOpt.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/ir/instruction/Instruction.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/RiscSlli.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/pass/LoopBuildPass.java
@@ -91,6 +93,7 @@
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/operand/Register.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/operand/Operand.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/RiscBeqz.java
+/home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/regalloc/TempVarLiveTable.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/ir/type/IntType.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/RiscAddw.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/ir/generator/Generator.java
@@ -153,6 +156,7 @@
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/RiscLui.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/floatextension/RiscFmvwx.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/RiscXor.java
+/home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/ir/opt/Optimizer.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/ir/generator/InstructionVisitor.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/ir/value/ValueRef.java
 /home/wangchenyang/compilers/src/main/java/cn/edu/nju/software/backend/riscinstruction/floatextension/RiscFdivs.java

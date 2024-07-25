@@ -13,6 +13,7 @@ cn/edu/nju/software/backend/riscinstruction/RiscInstruction.class
 cn/edu/nju/software/ir/type/Pointer.class
 cn/edu/nju/software/pass/MemToReg.class
 cn/edu/nju/software/frontend/parser/SysYParser$VarDeclContext.class
+cn/edu/nju/software/backend/riscinstruction/floatextension/RiscFsd.class
 cn/edu/nju/software/ir/instruction/GEP.class
 cn/edu/nju/software/frontend/util/GraphViz.class
 cn/edu/nju/software/ir/value/FunctionValue$1.class
@@ -52,6 +53,7 @@ cn/edu/nju/software/ir/instruction/Cmp.class
 cn/edu/nju/software/ir/instruction/arithmetic/FAdd.class
 cn/edu/nju/software/frontend/parser/SysYParserListener.class
 cn/edu/nju/software/ir/basicblock/BasicBlockRef$1.class
+cn/edu/nju/software/backend/regalloc/TempVarLiveTable.class
 cn/edu/nju/software/backend/riscinstruction/RiscBeqz.class
 cn/edu/nju/software/backend/riscinstruction/pseudo/RiscSltu.class
 cn/edu/nju/software/backend/regalloc/MemoryManager.class
@@ -105,6 +107,7 @@ cn/edu/nju/software/frontend/util/SymbolTable.class
 cn/edu/nju/software/ir/type/FunctionType.class
 cn/edu/nju/software/backend/riscinstruction/pseudo/RiscSgtz.class
 cn/edu/nju/software/backend/riscinstruction/util/RiscComment.class
+cn/edu/nju/software/backend/regalloc/LValLiveTable.class
 cn/edu/nju/software/backend/riscinstruction/RiscSlt.class
 cn/edu/nju/software/ir/type/VoidType.class
 cn/edu/nju/software/backend/riscinstruction/RiscSub.class
@@ -121,7 +124,9 @@ cn/edu/nju/software/ir/type/IntType.class
 cn/edu/nju/software/frontend/parser/SysYParser$LValContext.class
 cn/edu/nju/software/ir/generator/InstructionVisitor.class
 cn/edu/nju/software/ir/instruction/arithmetic/Add.class
+cn/edu/nju/software/backend/riscinstruction/floatextension/RiscFld.class
 cn/edu/nju/software/pass/Pass.class
+cn/edu/nju/software/ir/opt/Optimizer.class
 cn/edu/nju/software/ir/instruction/logic/And.class
 cn/edu/nju/software/frontend/parser/SysYParser$BlockContext.class
 cn/edu/nju/software/backend/riscinstruction/RiscBlt.class
@@ -186,7 +191,6 @@ cn/edu/nju/software/frontend/parser/SysYParser$BlockItemContext.class
 cn/edu/nju/software/backend/riscinstruction/floatextension/RiscFsubs.class
 cn/edu/nju/software/ir/instruction/Binary.class
 cn/edu/nju/software/ir/builder/BuilderRef.class
-cn/edu/nju/software/ir/opt/TestOpt.class
 cn/edu/nju/software/backend/riscinstruction/RiscLd.class
 cn/edu/nju/software/frontend/util/ErrorType.class
 cn/edu/nju/software/frontend/parser/SysYParser$ParamContext.class
