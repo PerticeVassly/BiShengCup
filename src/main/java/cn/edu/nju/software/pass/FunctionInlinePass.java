@@ -1,5 +1,6 @@
 package cn.edu.nju.software.pass;
 
+import cn.edu.nju.software.frontend.util.CFG;
 import cn.edu.nju.software.frontend.util.CG;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.IrCloneVisitor;
@@ -57,6 +58,7 @@ public class FunctionInlinePass implements ModulePass {
     }
 
     private void doPass(ModuleRef module) {
+
         //提前先把别的函数里可以内联的部分完成
         for (FunctionValue functionValue : module.getFunctions()) {
             if (!functionValue.getName().equals("main")) {
@@ -67,6 +69,8 @@ public class FunctionInlinePass implements ModulePass {
         for (FunctionValue functionValue : module.getFunctions()) {
             if (functionValue.getName().equals("main")) {
                 processFunction(functionValue);
+                //注意！在改变函数内部块后需要及时更新CFG
+                CFGBuildPass.getInstance().update(functionValue);
             }
         }
         for (FunctionValue functionValue : inlineTable) {

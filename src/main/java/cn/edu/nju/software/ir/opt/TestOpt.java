@@ -28,6 +28,6 @@ public class TestOpt {
 //        EliminateConstExp eliminateConstExp = new EliminateConstExp(visitor.getModule());
 //        memToReg.runOnModule();
 //        eliminateConstExp.runOnModule();
-        visitor.dumpModuleToConsole();
+//        visitor.dumpModuleToConsole();
     }
 }

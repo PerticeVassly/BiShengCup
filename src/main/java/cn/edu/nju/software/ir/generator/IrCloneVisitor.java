@@ -2,8 +2,10 @@ package cn.edu.nju.software.ir.generator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
+import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
 
+import cn.edu.nju.software.ir.instruction.logic.Shl;
 import cn.edu.nju.software.ir.value.FunctionValue;
 
 import cn.edu.nju.software.ir.value.ValueRef;
@@ -73,6 +75,8 @@ public class IrCloneVisitor implements InstructionVisitor {
         ValueRef operand1 = sub.getOperand(0).copy();
         ValueRef operand2 = sub.getOperand(1).copy();
         curInstruction = new Sub(lVal, sub.getOp(), operand1, operand2);
+        operand1.addUser(curInstruction);
+        operand2.addUser(curInstruction);
     }
 
     @Override
@@ -89,6 +93,8 @@ public class IrCloneVisitor implements InstructionVisitor {
         ValueRef operand1 = mul.getOperand(0).copy();
         ValueRef operand2 = mul.getOperand(1).copy();
         curInstruction = new Mul(lVal, mul.getOp(), operand1, operand2);
+        operand1.addUser(curInstruction);
+        operand2.addUser(curInstruction);
     }
 
     @Override
@@ -97,6 +103,8 @@ public class IrCloneVisitor implements InstructionVisitor {
         ValueRef operand1 = fmul.getOperand(0).copy();
         ValueRef operand2 = fmul.getOperand(1).copy();
         curInstruction = new FMul(lVal, fmul.getOp(), operand1, operand2);
+        operand1.addUser(curInstruction);
+        operand2.addUser(curInstruction);
     }
 
     @Override
@@ -215,6 +223,21 @@ public class IrCloneVisitor implements InstructionVisitor {
             }
             curInstruction=new Call(lVal,functionValue,params);
         }
+    }
+
+    @Override
+    public void visit(Phi phi) {
+        InstructionVisitor.super.visit(phi);
+    }
+
+    @Override
+    public void visit(Ashr ashr) {
+
+    }
+
+    @Override
+    public void visit(Shl shl) {
+
     }
 
     public void visit(Default defaultVal) {
