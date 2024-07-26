@@ -1,7 +1,5 @@
-package cn.edu.nju.software.frontend.pass;
+package cn.edu.nju.software.pass;
 
-import cn.edu.nju.software.ir.builder.BuilderRef;
-import cn.edu.nju.software.ir.generator.Generator;
 import cn.edu.nju.software.ir.instruction.arithmetic.Add;
 import cn.edu.nju.software.ir.instruction.arithmetic.Sub;
 import cn.edu.nju.software.ir.type.IntType;
@@ -12,8 +10,7 @@ import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.instruction.logic.Shl;
 import cn.edu.nju.software.ir.value.LocalVar;
-
-import javax.management.ValueExp;
+import cn.edu.nju.software.pass.BasicBlockPass;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;

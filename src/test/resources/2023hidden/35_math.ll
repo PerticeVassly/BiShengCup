@@ -18,154 +18,110 @@ declare void @memset(i32*, i32, i32)
 
 define float @my_fabs(float %0) {
 my_fabsEntry:
-  %lv = alloca float, align 4
-  store float %0, float* %lv, align 4
-  %x = load float, float* %lv, align 4
-  %cond_gt_tmp_ = fcmp ogt float %x, 0x0
+  %cond_gt_tmp_ = fcmp ogt float %0, 0x0
   %cond_tmp_ = zext i1 %cond_gt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_28, label %next_72
+  br i1 %cond_, label %ifTrue_4, label %next_11
 
-ifTrue_28:                                           ; pred = %my_fabsEntry
-  %x$1 = load float, float* %lv, align 4
-  ret float %x$1
+ifTrue_4:                                            ; pred = %my_fabsEntry
+  ret float %0
 
-next_72:                                             ; pred = %my_fabsEntry
-  %x$2 = load float, float* %lv, align 4
-  %tmp_ = fsub float 0x0, %x$2
+next_11:                                             ; pred = %my_fabsEntry
+  %tmp_ = fsub float 0x0, %0
   ret float %tmp_
 }
 
 define float @my_pow(float %0, i32 %1) {
 my_powEntry:
-  %lv$2 = alloca float, align 4
-  %lv$1 = alloca i32, align 4
-  %lv = alloca float, align 4
-  store float %0, float* %lv, align 4
-  store i32 %1, i32* %lv$1, align 4
-  %n = load i32, i32* %lv$1, align 4
-  %cond_lt_tmp_ = icmp slt i32 %n, 0
+  %cond_lt_tmp_ = icmp slt i32 %1, 0
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_29, label %next_73
+  br i1 %cond_, label %ifTrue_5, label %next_12
 
-ifTrue_29:                                           ; pred = %my_powEntry
-  %a = load float, float* %lv, align 4
-  %n$1 = load i32, i32* %lv$1, align 4
-  %tmp_ = sub i32 0, %n$1
-  %my_pow = call float @my_pow(float %a, i32 %tmp_)
+ifTrue_5:                                           ; pred = %my_powEntry
+  %tmp_ = sub i32 0, %1
+  %my_pow = call float @my_pow(float %0, i32 %tmp_)
   %result_ = fdiv float 0x3ff0000000000000, %my_pow
   ret float %result_
 
-next_73:                                             ; pred = %my_powEntry
-  store float 0x3ff0000000000000, float* %lv$2, align 4
-  br label %whileCond_44
+next_12:                                            ; pred = %my_powEntry
+  br label %whileCond_7
 
-whileCond_44:                                        ; pred = %next_73, %next_75
-  %n$2 = load i32, i32* %lv$1, align 4
-  %cond_normalize_ = icmp ne i32 %n$2, 0
-  br i1 %cond_normalize_, label %whileBody_44, label %next_74
+whileCond_7:                                        ; pred = %next_12, %next_14
+  %phi$15 = phi float [%0, %next_12], [%result_$3, %next_14]
+  %phi$10 = phi float [0x3ff0000000000000, %next_12], [%phi$14, %next_14]
+  %phi$2 = phi i32 [%1, %next_12], [%result_$4, %next_14]
+  %cond_normalize_ = icmp ne i32 %phi$2, 0
+  br i1 %cond_normalize_, label %whileBody_7, label %next_13
 
-whileBody_44:                                        ; pred = %whileCond_44
-  %n$3 = load i32, i32* %lv$1, align 4
-  %result_$1 = srem i32 %n$3, 2
+whileBody_7:                                        ; pred = %whileCond_7
+  %result_$1 = srem i32 %phi$2, 2
   %cond_normalize_$1 = icmp ne i32 %result_$1, 0
-  br i1 %cond_normalize_$1, label %ifTrue_30, label %next_75
+  br i1 %cond_normalize_$1, label %ifTrue_6, label %next_14
 
-next_74:                                             ; pred = %whileCond_44
-  %res$1 = load float, float* %lv$2, align 4
-  ret float %res$1
+next_13:                                            ; pred = %whileCond_7
+  ret float %phi$10
 
-ifTrue_30:                                           ; pred = %whileBody_44
-  %res = load float, float* %lv$2, align 4
-  %a$1 = load float, float* %lv, align 4
-  %result_$2 = fmul float %res, %a$1
-  store float %result_$2, float* %lv$2, align 4
-  br label %next_75
+ifTrue_6:                                           ; pred = %whileBody_7
+  %result_$2 = fmul float %phi$10, %phi$15
+  br label %next_14
 
-next_75:                                             ; pred = %whileBody_44, %ifTrue_30
-  %a$2 = load float, float* %lv, align 4
-  %a$3 = load float, float* %lv, align 4
-  %result_$3 = fmul float %a$2, %a$3
-  store float %result_$3, float* %lv, align 4
-  %n$4 = load i32, i32* %lv$1, align 4
-  %result_$4 = sdiv i32 %n$4, 2
-  store i32 %result_$4, i32* %lv$1, align 4
-  br label %whileCond_44
+next_14:                                            ; pred = %whileBody_7, %ifTrue_6
+  %phi$14 = phi float [%phi$10, %whileBody_7], [%result_$2, %ifTrue_6]
+  %result_$3 = fmul float %phi$15, %phi$15
+  %result_$4 = ashr i32 %phi$2, 1
+  br label %whileCond_7
 }
 
 define float @my_sqrt(float %0) {
 my_sqrtEntry:
-  %lv$2 = alloca i32, align 4
-  %lv$1 = alloca float, align 4
-  %lv = alloca float, align 4
-  store float %0, float* %lv, align 4
-  %x = load float, float* %lv, align 4
-  %cond_gt_tmp_ = fcmp ogt float %x, 0x4059000000000000
+  %cond_gt_tmp_ = fcmp ogt float %0, 0x4059000000000000
   %cond_tmp_ = zext i1 %cond_gt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_31, label %next_76
+  br i1 %cond_, label %ifTrue_7, label %next_15
 
-ifTrue_31:                                           ; pred = %my_sqrtEntry
-  %x$1 = load float, float* %lv, align 4
-  %result_ = fdiv float %x$1, 0x4059000000000000
+ifTrue_7:                                            ; pred = %my_sqrtEntry
+  %result_ = fdiv float %0, 0x4059000000000000
   %my_sqrt = call float @my_sqrt(float %result_)
   %result_$1 = fmul float 0x4024000000000000, %my_sqrt
   ret float %result_$1
 
-next_76:                                             ; pred = %my_sqrtEntry
-  %x$2 = load float, float* %lv, align 4
-  %result_$2 = fdiv float %x$2, 0x4020000000000000
+next_15:                                             ; pred = %my_sqrtEntry
+  %result_$2 = fdiv float %0, 0x4020000000000000
   %result_$3 = fadd float %result_$2, 0x3fe0000000000000
-  %x$3 = load float, float* %lv, align 4
-  %result_$4 = fmul float 0x4000000000000000, %x$3
-  %x$4 = load float, float* %lv, align 4
-  %result_$5 = fadd float 0x4010000000000000, %x$4
+  %result_$4 = fmul float 0x4000000000000000, %0
+  %result_$5 = fadd float 0x4010000000000000, %0
   %result_$6 = fdiv float %result_$4, %result_$5
   %result_$7 = fadd float %result_$3, %result_$6
-  store float %result_$7, float* %lv$1, align 4
-  store i32 10, i32* %lv$2, align 4
-  br label %whileCond_45
+  br label %whileCond_8
 
-whileCond_45:                                        ; pred = %next_76, %whileBody_45
-  %c = load i32, i32* %lv$2, align 4
-  %cond_normalize_ = icmp ne i32 %c, 0
-  br i1 %cond_normalize_, label %whileBody_45, label %next_77
+whileCond_8:                                         ; pred = %next_15, %whileBody_8
+  %phi$8 = phi float [%0, %next_15], [%phi$8, %whileBody_8]
+  %phi$7 = phi float [%result_$7, %next_15], [%result_$10, %whileBody_8]
+  %phi$2 = phi i32 [10, %next_15], [%result_$11, %whileBody_8]
+  %cond_normalize_ = icmp ne i32 %phi$2, 0
+  br i1 %cond_normalize_, label %whileBody_8, label %next_16
 
-whileBody_45:                                        ; pred = %whileCond_45
-  %t = load float, float* %lv$1, align 4
-  %x$5 = load float, float* %lv, align 4
-  %t$1 = load float, float* %lv$1, align 4
-  %result_$8 = fdiv float %x$5, %t$1
-  %result_$9 = fadd float %t, %result_$8
+whileBody_8:                                         ; pred = %whileCond_8
+  %result_$8 = fdiv float %phi$8, %phi$7
+  %result_$9 = fadd float %phi$7, %result_$8
   %result_$10 = fdiv float %result_$9, 0x4000000000000000
-  store float %result_$10, float* %lv$1, align 4
-  %c$1 = load i32, i32* %lv$2, align 4
-  %result_$11 = sub i32 %c$1, 1
-  store i32 %result_$11, i32* %lv$2, align 4
-  br label %whileCond_45
+  %result_$11 = sub i32 %phi$2, 1
+  br label %whileCond_8
 
-next_77:                                             ; pred = %whileCond_45
-  %t$2 = load float, float* %lv$1, align 4
-  ret float %t$2
+next_16:                                             ; pred = %whileCond_8
+  ret float %phi$7
 }
 
 define float @F1(float %0) {
 F1Entry:
-  %lv = alloca float, align 4
-  store float %0, float* %lv, align 4
-  %x = load float, float* %lv, align 4
-  %result_ = fdiv float 0x3ff0000000000000, %x
+  %result_ = fdiv float 0x3ff0000000000000, %0
   ret float %result_
 }
 
 define float @F2(float %0) {
 F2Entry:
-  %lv = alloca float, align 4
-  store float %0, float* %lv, align 4
-  %x = load float, float* %lv, align 4
-  %x$1 = load float, float* %lv, align 4
-  %result_ = fmul float %x, %x$1
+  %result_ = fmul float %0, %0
   %result_$1 = fsub float 0x3ff0000000000000, %result_
   %my_sqrt = call float @my_sqrt(float %result_$1)
   %result_$2 = fdiv float 0x3ff0000000000000, %my_sqrt
@@ -174,209 +130,113 @@ F2Entry:
 
 define float @simpson(float %0, float %1, i32 %2) {
 simpsonEntry:
-  %lv$3 = alloca float, align 4
-  %lv$2 = alloca i32, align 4
-  %lv$1 = alloca float, align 4
-  %lv = alloca float, align 4
-  store float %0, float* %lv, align 4
-  store float %1, float* %lv$1, align 4
-  store i32 %2, i32* %lv$2, align 4
-  %a = load float, float* %lv, align 4
-  %b = load float, float* %lv$1, align 4
-  %a$1 = load float, float* %lv, align 4
-  %result_ = fsub float %b, %a$1
+  %result_ = fsub float %1, %0
   %result_$1 = fdiv float %result_, 0x4000000000000000
-  %result_$2 = fadd float %a, %result_$1
-  store float %result_$2, float* %lv$3, align 4
-  %flag = load i32, i32* %lv$2, align 4
-  %cond_eq_tmp_ = icmp eq i32 %flag, 1
+  %result_$2 = fadd float %0, %result_$1
+  %cond_eq_tmp_ = icmp eq i32 %2, 1
   %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_32, label %next_78
+  br i1 %cond_, label %ifTrue_8, label %next_17
 
-ifTrue_32:                                           ; pred = %simpsonEntry
-  %a$2 = load float, float* %lv, align 4
-  %F1 = call float @F1(float %a$2)
-  %c = load float, float* %lv$3, align 4
-  %F1$1 = call float @F1(float %c)
+ifTrue_8:                                            ; pred = %simpsonEntry
+  %F1 = call float @F1(float %0)
+  %F1$1 = call float @F1(float %result_$2)
   %result_$3 = fmul float 0x4010000000000000, %F1$1
   %result_$4 = fadd float %F1, %result_$3
-  %b$1 = load float, float* %lv$1, align 4
-  %F1$2 = call float @F1(float %b$1)
+  %F1$2 = call float @F1(float %1)
   %result_$5 = fadd float %result_$4, %F1$2
-  %b$2 = load float, float* %lv$1, align 4
-  %a$3 = load float, float* %lv, align 4
-  %result_$6 = fsub float %b$2, %a$3
+  %result_$6 = fsub float %1, %0
   %result_$7 = fmul float %result_$5, %result_$6
   %result_$8 = fdiv float %result_$7, 0x4018000000000000
   ret float %result_$8
 
-next_78:                                             ; pred = %simpsonEntry
-  %flag$1 = load i32, i32* %lv$2, align 4
-  %cond_eq_tmp_$1 = icmp eq i32 %flag$1, 2
+next_17:                                             ; pred = %simpsonEntry
+  %cond_eq_tmp_$1 = icmp eq i32 %2, 2
   %cond_tmp_$1 = zext i1 %cond_eq_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_33, label %next_79
+  br i1 %cond_$1, label %ifTrue_9, label %next_18
 
-ifTrue_33:                                           ; pred = %next_78
-  %a$4 = load float, float* %lv, align 4
-  %F2 = call float @F2(float %a$4)
-  %c$1 = load float, float* %lv$3, align 4
-  %F2$1 = call float @F2(float %c$1)
+ifTrue_9:                                            ; pred = %next_17
+  %F2 = call float @F2(float %0)
+  %F2$1 = call float @F2(float %result_$2)
   %result_$9 = fmul float 0x4010000000000000, %F2$1
   %result_$10 = fadd float %F2, %result_$9
-  %b$3 = load float, float* %lv$1, align 4
-  %F2$2 = call float @F2(float %b$3)
+  %F2$2 = call float @F2(float %1)
   %result_$11 = fadd float %result_$10, %F2$2
-  %b$4 = load float, float* %lv$1, align 4
-  %a$5 = load float, float* %lv, align 4
-  %result_$12 = fsub float %b$4, %a$5
+  %result_$12 = fsub float %1, %0
   %result_$13 = fmul float %result_$11, %result_$12
   %result_$14 = fdiv float %result_$13, 0x4018000000000000
   ret float %result_$14
 
-next_79:                                             ; pred = %next_78
+next_18:                                             ; pred = %next_17
   ret float 0x0
 }
 
 define float @asr5(float %0, float %1, float %2, float %3, i32 %4) {
 asr5Entry:
-  %lv$7 = alloca float, align 4
-  %lv$6 = alloca float, align 4
-  %lv$5 = alloca float, align 4
-  %lv$4 = alloca i32, align 4
-  %lv$3 = alloca float, align 4
-  %lv$2 = alloca float, align 4
-  %lv$1 = alloca float, align 4
-  %lv = alloca float, align 4
-  store float %0, float* %lv, align 4
-  store float %1, float* %lv$1, align 4
-  store float %2, float* %lv$2, align 4
-  store float %3, float* %lv$3, align 4
-  store i32 %4, i32* %lv$4, align 4
-  %a = load float, float* %lv, align 4
-  %b = load float, float* %lv$1, align 4
-  %a$1 = load float, float* %lv, align 4
-  %result_ = fsub float %b, %a$1
+  %result_ = fsub float %1, %0
   %result_$1 = fdiv float %result_, 0x4000000000000000
-  %result_$2 = fadd float %a, %result_$1
-  store float %result_$2, float* %lv$5, align 4
-  %a$2 = load float, float* %lv, align 4
-  %c = load float, float* %lv$5, align 4
-  %flag = load i32, i32* %lv$4, align 4
-  %simpson = call float @simpson(float %a$2, float %c, i32 %flag)
-  store float %simpson, float* %lv$6, align 4
-  %c$1 = load float, float* %lv$5, align 4
-  %b$1 = load float, float* %lv$1, align 4
-  %flag$1 = load i32, i32* %lv$4, align 4
-  %simpson$1 = call float @simpson(float %c$1, float %b$1, i32 %flag$1)
-  store float %simpson$1, float* %lv$7, align 4
-  %L = load float, float* %lv$6, align 4
-  %R = load float, float* %lv$7, align 4
-  %result_$3 = fadd float %L, %R
-  %A = load float, float* %lv$3, align 4
-  %result_$4 = fsub float %result_$3, %A
+  %result_$2 = fadd float %0, %result_$1
+  %simpson = call float @simpson(float %0, float %result_$2, i32 %4)
+  %simpson$1 = call float @simpson(float %result_$2, float %1, i32 %4)
+  %result_$3 = fadd float %simpson, %simpson$1
+  %result_$4 = fsub float %result_$3, %3
   %my_fabs = call float @my_fabs(float %result_$4)
-  %eps = load float, float* %lv$2, align 4
-  %result_$5 = fmul float 0x402e000000000000, %eps
+  %result_$5 = fmul float 0x402e000000000000, %2
   %cond_le_tmp_ = fcmp ole float %my_fabs, %result_$5
   %cond_tmp_ = zext i1 %cond_le_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_34, label %next_80
+  br i1 %cond_, label %ifTrue_10, label %next_19
 
-ifTrue_34:                                        ; pred = %asr5Entry
-  %L$1 = load float, float* %lv$6, align 4
-  %R$1 = load float, float* %lv$7, align 4
-  %result_$6 = fadd float %L$1, %R$1
-  %L$2 = load float, float* %lv$6, align 4
-  %R$2 = load float, float* %lv$7, align 4
-  %result_$7 = fadd float %L$2, %R$2
-  %A$1 = load float, float* %lv$3, align 4
-  %result_$8 = fsub float %result_$7, %A$1
+ifTrue_10:                                        ; pred = %asr5Entry
+  %result_$6 = fadd float %simpson, %simpson$1
+  %result_$7 = fadd float %simpson, %simpson$1
+  %result_$8 = fsub float %result_$7, %3
   %result_$9 = fdiv float %result_$8, 0x402e000000000000
   %result_$10 = fadd float %result_$6, %result_$9
   ret float %result_$10
 
-next_80:                                          ; pred = %asr5Entry
-  %a$3 = load float, float* %lv, align 4
-  %c$2 = load float, float* %lv$5, align 4
-  %eps$1 = load float, float* %lv$2, align 4
-  %result_$11 = fdiv float %eps$1, 0x4000000000000000
-  %L$3 = load float, float* %lv$6, align 4
-  %flag$2 = load i32, i32* %lv$4, align 4
-  %asr5 = call float @asr5(float %a$3, float %c$2, float %result_$11, float %L$3, i32 %flag$2)
-  %c$3 = load float, float* %lv$5, align 4
-  %b$2 = load float, float* %lv$1, align 4
-  %eps$2 = load float, float* %lv$2, align 4
-  %result_$12 = fdiv float %eps$2, 0x4000000000000000
-  %R$3 = load float, float* %lv$7, align 4
-  %flag$3 = load i32, i32* %lv$4, align 4
-  %asr5$1 = call float @asr5(float %c$3, float %b$2, float %result_$12, float %R$3, i32 %flag$3)
+next_19:                                          ; pred = %asr5Entry
+  %result_$11 = fdiv float %2, 0x4000000000000000
+  %asr5 = call float @asr5(float %0, float %result_$2, float %result_$11, float %simpson, i32 %4)
+  %result_$12 = fdiv float %2, 0x4000000000000000
+  %asr5$1 = call float @asr5(float %result_$2, float %1, float %result_$12, float %simpson$1, i32 %4)
   %result_$13 = fadd float %asr5, %asr5$1
   ret float %result_$13
 }
 
 define float @asr4(float %0, float %1, float %2, i32 %3) {
 asr4Entry:
-  %lv$3 = alloca i32, align 4
-  %lv$2 = alloca float, align 4
-  %lv$1 = alloca float, align 4
-  %lv = alloca float, align 4
-  store float %0, float* %lv, align 4
-  store float %1, float* %lv$1, align 4
-  store float %2, float* %lv$2, align 4
-  store i32 %3, i32* %lv$3, align 4
-  %a = load float, float* %lv, align 4
-  %b = load float, float* %lv$1, align 4
-  %eps = load float, float* %lv$2, align 4
-  %a$1 = load float, float* %lv, align 4
-  %b$1 = load float, float* %lv$1, align 4
-  %flag = load i32, i32* %lv$3, align 4
-  %simpson = call float @simpson(float %a$1, float %b$1, i32 %flag)
-  %flag$1 = load i32, i32* %lv$3, align 4
-  %asr5 = call float @asr5(float %a, float %b, float %eps, float %simpson, i32 %flag$1)
+  %simpson = call float @simpson(float %0, float %1, i32 %3)
+  %asr5 = call float @asr5(float %0, float %1, float %2, float %simpson, i32 %3)
   ret float %asr5
 }
 
 define float @eee(float %0) {
 eeeEntry:
-  %lv$1 = alloca float, align 4
-  %lv = alloca float, align 4
-  store float %0, float* %lv, align 4
-  %x = load float, float* %lv, align 4
-  %cond_gt_tmp_ = fcmp ogt float %x, 0x3f50624de0000000
+  %cond_gt_tmp_ = fcmp ogt float %0, 0x3f50624de0000000
   %cond_tmp_ = zext i1 %cond_gt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_35, label %next_81
+  br i1 %cond_, label %ifTrue_11, label %next_20
 
-ifTrue_35:                                        ; pred = %eeeEntry
-  %x$1 = load float, float* %lv, align 4
-  %result_ = fdiv float %x$1, 0x4000000000000000
+ifTrue_11:                                        ; pred = %eeeEntry
+  %result_ = fdiv float %0, 0x4000000000000000
   %eee = call float @eee(float %result_)
-  store float %eee, float* %lv$1, align 4
-  %ee = load float, float* %lv$1, align 4
-  %ee$1 = load float, float* %lv$1, align 4
-  %result_$1 = fmul float %ee, %ee$1
+  %result_$1 = fmul float %eee, %eee
   ret float %result_$1
 
-next_81:                                          ; pred = %eeeEntry
-  %x$2 = load float, float* %lv, align 4
-  %result_$2 = fadd float 0x3ff0000000000000, %x$2
-  %x$3 = load float, float* %lv, align 4
-  %x$4 = load float, float* %lv, align 4
-  %result_$3 = fmul float %x$3, %x$4
+next_20:                                          ; pred = %eeeEntry
+  %result_$2 = fadd float 0x3ff0000000000000, %0
+  %result_$3 = fmul float %0, %0
   %result_$4 = fdiv float %result_$3, 0x4000000000000000
   %result_$5 = fadd float %result_$2, %result_$4
-  %x$5 = load float, float* %lv, align 4
-  %my_pow = call float @my_pow(float %x$5, i32 3)
+  %my_pow = call float @my_pow(float %0, i32 3)
   %result_$6 = fdiv float %my_pow, 0x4018000000000000
   %result_$7 = fadd float %result_$5, %result_$6
-  %x$6 = load float, float* %lv, align 4
-  %my_pow$1 = call float @my_pow(float %x$6, i32 4)
+  %my_pow$1 = call float @my_pow(float %0, i32 4)
   %result_$8 = fdiv float %my_pow$1, 0x4038000000000000
   %result_$9 = fadd float %result_$7, %result_$8
-  %x$7 = load float, float* %lv, align 4
-  %my_pow$2 = call float @my_pow(float %x$7, i32 5)
+  %my_pow$2 = call float @my_pow(float %0, i32 5)
   %result_$10 = fdiv float %my_pow$2, 0x405e000000000000
   %result_$11 = fadd float %result_$9, %result_$10
   ret float %result_$11
@@ -384,186 +244,138 @@ next_81:                                          ; pred = %eeeEntry
 
 define float @my_exp(float %0) {
 my_expEntry:
-  %lv$3 = alloca float, align 4
-  %lv$2 = alloca float, align 4
-  %lv$1 = alloca i32, align 4
-  %lv = alloca float, align 4
-  store float %0, float* %lv, align 4
-  %x = load float, float* %lv, align 4
-  %cond_lt_tmp_ = fcmp olt float %x, 0x0
+  %cond_lt_tmp_ = fcmp olt float %0, 0x0
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_36, label %next_82
+  br i1 %cond_, label %ifTrue_12, label %next_21
 
-ifTrue_36:                                          ; pred = %my_expEntry
-  %x$1 = load float, float* %lv, align 4
-  %tmp_ = fsub float 0x0, %x$1
+ifTrue_12:                                          ; pred = %my_expEntry
+  %tmp_ = fsub float 0x0, %0
   %my_exp = call float @my_exp(float %tmp_)
   %result_ = fdiv float 0x3ff0000000000000, %my_exp
   ret float %result_
 
-next_82:                                            ; pred = %my_expEntry
-  %x$2 = load float, float* %lv, align 4
-  %f2i_ = fptosi float %x$2 to i32
-  store i32 %f2i_, i32* %lv$1, align 4
-  %x$3 = load float, float* %lv, align 4
-  %n = load i32, i32* %lv$1, align 4
-  %i2f_ = sitofp i32 %n to float
-  %result_$1 = fsub float %x$3, %i2f_
-  store float %result_$1, float* %lv, align 4
-  %n$1 = load i32, i32* %lv$1, align 4
-  %my_pow = call float @my_pow(float 0x4005bf0a80000000, i32 %n$1)
-  store float %my_pow, float* %lv$2, align 4
-  %x$4 = load float, float* %lv, align 4
-  %eee = call float @eee(float %x$4)
-  store float %eee, float* %lv$3, align 4
-  %e1 = load float, float* %lv$2, align 4
-  %e2 = load float, float* %lv$3, align 4
-  %result_$2 = fmul float %e1, %e2
+next_21:                                            ; pred = %my_expEntry
+  %f2i_ = fptosi float %0 to i32
+  %i2f_ = sitofp i32 %f2i_ to float
+  %result_$1 = fsub float %0, %i2f_
+  %my_pow = call float @my_pow(float 0x4005bf0a80000000, i32 %f2i_)
+  %eee = call float @eee(float %result_$1)
+  %result_$2 = fmul float %my_pow, %eee
   ret float %result_$2
 }
 
 define float @my_ln(float %0) {
 my_lnEntry:
-  %lv = alloca float, align 4
-  store float %0, float* %lv, align 4
-  %x = load float, float* %lv, align 4
-  %asr4 = call float @asr4(float 0x3ff0000000000000, float %x, float 0x3e45798ee0000000, i32 1)
+  %asr4 = call float @asr4(float 0x3ff0000000000000, float %0, float 0x3e45798ee0000000, i32 1)
   ret float %asr4
 }
 
 define float @my_log(float %0, float %1) {
 my_logEntry:
-  %lv$1 = alloca float, align 4
-  %lv = alloca float, align 4
-  store float %0, float* %lv, align 4
-  store float %1, float* %lv$1, align 4
-  %N = load float, float* %lv$1, align 4
-  %my_ln = call float @my_ln(float %N)
-  %a = load float, float* %lv, align 4
-  %my_ln$1 = call float @my_ln(float %a)
+  %my_ln = call float @my_ln(float %1)
+  %my_ln$1 = call float @my_ln(float %0)
   %result_ = fdiv float %my_ln, %my_ln$1
   ret float %result_
 }
 
 define float @my_powf(float %0, float %1) {
 my_powfEntry:
-  %lv$1 = alloca float, align 4
-  %lv = alloca float, align 4
-  store float %0, float* %lv, align 4
-  store float %1, float* %lv$1, align 4
-  %x = load float, float* %lv$1, align 4
-  %a = load float, float* %lv, align 4
-  %my_ln = call float @my_ln(float %a)
-  %result_ = fmul float %x, %my_ln
+  %my_ln = call float @my_ln(float %0)
+  %result_ = fmul float %1, %my_ln
   %my_exp = call float @my_exp(float %result_)
   ret float %my_exp
 }
 
 define i32 @main() {
-mainEntry9:
-  %lv$2 = alloca float, align 4
-  %lv$1 = alloca float, align 4
-  %lv = alloca i32, align 4
+mainEntry6:
   %getint = call i32 @getint()
-  store i32 %getint, i32* %lv, align 4
-  br label %whileCond_46
+  br label %whileCond_9
 
-whileCond_46:                                         ; pred = %mainEntry9, %next_86
-  %num = load i32, i32* %lv, align 4
-  %cond_normalize_ = icmp ne i32 %num, 0
-  br i1 %cond_normalize_, label %whileBody_46, label %next_83
+whileCond_9:                                        ; pred = %mainEntry6, %next_25
+  %phi = phi i32 [%getint, %mainEntry6], [%result_, %next_25]
+  %cond_normalize_ = icmp ne i32 %phi, 0
+  br i1 %cond_normalize_, label %whileBody_9, label %next_22
 
-whileBody_46:                                         ; pred = %whileCond_46
+whileBody_9:                                        ; pred = %whileCond_9
   %getfloat = call float @getfloat()
-  store float %getfloat, float* %lv$1, align 4
   %getfloat$1 = call float @getfloat()
-  store float %getfloat$1, float* %lv$2, align 4
-  %x = load float, float* %lv$1, align 4
-  %my_fabs = call float @my_fabs(float %x)
+  %my_fabs = call float @my_fabs(float %getfloat)
   call void @putfloat(float %my_fabs)
   call void @putch(i32 32)
-  %x$1 = load float, float* %lv$1, align 4
-  %my_pow = call float @my_pow(float %x$1, i32 2)
+  %my_pow = call float @my_pow(float %getfloat, i32 2)
   call void @putfloat(float %my_pow)
   call void @putch(i32 32)
-  %x$2 = load float, float* %lv$1, align 4
-  %my_sqrt = call float @my_sqrt(float %x$2)
+  %my_sqrt = call float @my_sqrt(float %getfloat)
   call void @putfloat(float %my_sqrt)
   call void @putch(i32 32)
-  %x$3 = load float, float* %lv$1, align 4
-  %my_exp = call float @my_exp(float %x$3)
+  %my_exp = call float @my_exp(float %getfloat)
   call void @putfloat(float %my_exp)
   call void @putch(i32 32)
-  %x$4 = load float, float* %lv$1, align 4
-  %cond_gt_tmp_ = fcmp ogt float %x$4, 0x0
+  %cond_gt_tmp_ = fcmp ogt float %getfloat, 0x0
   %cond_tmp_ = zext i1 %cond_gt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_37, label %ifFalse_9
+  br i1 %cond_, label %ifTrue_13, label %ifFalse_
 
-next_83:                                              ; pred = %whileCond_46
+next_22:                                            ; pred = %whileCond_9
   ret i32 0
 
-ifTrue_37:                                            ; pred = %whileBody_46
-  %x$5 = load float, float* %lv$1, align 4
-  %my_ln = call float @my_ln(float %x$5)
+ifTrue_13:                                          ; pred = %whileBody_9
+  %my_ln = call float @my_ln(float %getfloat)
   call void @putfloat(float %my_ln)
-  br label %next_84
+  br label %next_23
 
-ifFalse_9:                                            ; pred = %whileBody_46
+ifFalse_:                                           ; pred = %whileBody_9
   call void @putch(i32 45)
-  br label %next_84
+  br label %next_23
 
-next_84:                                              ; pred = %ifTrue_37, %ifFalse_9
+next_23:                                            ; pred = %ifTrue_13, %ifFalse_
   call void @putch(i32 32)
-  %x$6 = load float, float* %lv$1, align 4
-  %cond_gt_tmp_$1 = fcmp ogt float %x$6, 0x0
+  %cond_gt_tmp_$1 = fcmp ogt float %getfloat, 0x0
   %cond_tmp_$1 = zext i1 %cond_gt_tmp_$1 to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %secondCond_10, label %ifFalse_10
+  br i1 %cond_$1, label %secondCond_, label %ifFalse_1
 
-ifTrue_38:                                            ; pred = %secondCond_10
-  %x$7 = load float, float* %lv$1, align 4
-  %y$1 = load float, float* %lv$2, align 4
-  %my_log = call float @my_log(float %x$7, float %y$1)
+ifTrue_14:                                          ; pred = %secondCond_
+  %my_log = call float @my_log(float %getfloat, float %getfloat$1)
   call void @putfloat(float %my_log)
-  br label %next_85
+  br label %next_24
 
-ifFalse_10:                                           ; pred = %next_84, %secondCond_10
+ifFalse_1:                                          ; pred = %next_23, %secondCond_
+  %phi$22 = phi i32 [%phi, %next_23], [%phi, %secondCond_]
+  %phi$19 = phi float [%getfloat$1, %next_23], [%getfloat$1, %secondCond_]
+  %phi$12 = phi float [%getfloat, %next_23], [%getfloat, %secondCond_]
   call void @putch(i32 45)
-  br label %next_85
+  br label %next_24
 
-next_85:                                              ; pred = %ifTrue_38, %ifFalse_10
+next_24:                                            ; pred = %ifTrue_14, %ifFalse_1
+  %phi$20 = phi i32 [%phi, %ifTrue_14], [%phi$22, %ifFalse_1]
+  %phi$14 = phi float [%getfloat$1, %ifTrue_14], [%phi$19, %ifFalse_1]
+  %phi$5 = phi float [%getfloat, %ifTrue_14], [%phi$12, %ifFalse_1]
   call void @putch(i32 32)
-  %x$8 = load float, float* %lv$1, align 4
-  %cond_gt_tmp_$3 = fcmp ogt float %x$8, 0x0
+  %cond_gt_tmp_$3 = fcmp ogt float %phi$5, 0x0
   %cond_tmp_$3 = zext i1 %cond_gt_tmp_$3 to i32
   %cond_$3 = icmp ne i32 %cond_tmp_$3, 0
-  br i1 %cond_$3, label %ifTrue_39, label %ifFalse_11
+  br i1 %cond_$3, label %ifTrue_15, label %ifFalse_2
 
-secondCond_10:                                        ; pred = %next_84
-  %y = load float, float* %lv$2, align 4
-  %cond_gt_tmp_$2 = fcmp ogt float %y, 0x0
+secondCond_:                                        ; pred = %next_23
+  %cond_gt_tmp_$2 = fcmp ogt float %getfloat$1, 0x0
   %cond_tmp_$2 = zext i1 %cond_gt_tmp_$2 to i32
   %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %ifTrue_38, label %ifFalse_10
+  br i1 %cond_$2, label %ifTrue_14, label %ifFalse_1
 
-ifTrue_39:                                            ; pred = %next_85
-  %x$9 = load float, float* %lv$1, align 4
-  %y$2 = load float, float* %lv$2, align 4
-  %my_powf = call float @my_powf(float %x$9, float %y$2)
+ifTrue_15:                                          ; pred = %next_24
+  %my_powf = call float @my_powf(float %phi$5, float %phi$14)
   call void @putfloat(float %my_powf)
-  br label %next_86
+  br label %next_25
 
-ifFalse_11:                                           ; pred = %next_85
+ifFalse_2:                                          ; pred = %next_24
   call void @putch(i32 45)
-  br label %next_86
+  br label %next_25
 
-next_86:                                              ; pred = %ifTrue_39, %ifFalse_11
+next_25:                                            ; pred = %ifTrue_15, %ifFalse_2
   call void @putch(i32 10)
-  %num$1 = load i32, i32* %lv, align 4
-  %result_ = sub i32 %num$1, 1
-  store i32 %result_, i32* %lv, align 4
-  br label %whileCond_46
+  %result_ = sub i32 %phi$20, 1
+  br label %whileCond_9
 }
 

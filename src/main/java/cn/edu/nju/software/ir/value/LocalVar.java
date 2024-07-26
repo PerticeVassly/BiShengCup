@@ -20,7 +20,6 @@ public class LocalVar extends ValueRef implements Variable {
     public LocalVar(TypeRef type, String name) {
         super(type, name);
         isTmp = false;
-        isTmp = false;
     }
 
     public boolean isTmpVar() {
