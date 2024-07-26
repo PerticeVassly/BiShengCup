@@ -3,13 +3,11 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.value.ConstValue;
+
 import cn.edu.nju.software.ir.value.FunctionValue;
-import cn.edu.nju.software.ir.value.LocalVar;
+
 import cn.edu.nju.software.ir.value.ValueRef;
 
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,9 +1,7 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.ir.type.BoolType;
-import cn.edu.nju.software.ir.type.FloatType;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.frontend.type.Type;
+import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 /**
@@ -69,6 +67,22 @@ public record RiscSpecifications() {
 
     public static boolean is64Bit() {
         return is64bit;
+    }
+
+    public static boolean isFloatReg(String regName) {
+        return regName.startsWith("f");
+    }
+
+    public static boolean isGeneralReg(String regName) {
+        return !isFloatReg(regName);
+    }
+
+    public static boolean isGeneralType(TypeRef type) {
+        return type instanceof IntType || type instanceof Pointer || type instanceof BoolType;
+    }
+
+    public static boolean isFloatType(TypeRef type) {
+        return type instanceof FloatType;
     }
 
 }

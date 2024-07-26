@@ -200,7 +200,7 @@ public class FunctionInlinePass implements ModulePass {
         }
     }
 
-    private List<BasicBlockRef> copyFunction(FunctionValue function, FunctionValue curFunction) {
+    private List<BasicBlockRef>  copyFunction(FunctionValue function, FunctionValue curFunction) {
         IrCloneVisitor irCloneVisitor = new IrCloneVisitor();
         List<BasicBlockRef> copyBlock = new ArrayList<>();
         Map<BasicBlockRef, BasicBlockRef> copyMap = new HashMap<>();
@@ -211,14 +211,10 @@ public class FunctionInlinePass implements ModulePass {
             BasicBlockRef newBlock = new BasicBlockRef(curFunction, "inline");
             copyMap.put(basicBlockRef, newBlock);
             for (Instruction instruction : basicBlockRef.getIrs()) {
-                try {
-                    irCloneVisitor.genClonedInstruction(instruction);
-                } catch (NullPointerException e) {
-
-                    System.out.println(function.getName());
-                    System.out.println(instruction.toString());
-                }
                 Instruction newInstr = irCloneVisitor.genClonedInstruction(instruction);
+                if(newInstr instanceof Default){
+                    continue;
+                }
                 ValueRef lVal = newInstr.getLVal();
                 if (lVal != null && !(lVal instanceof GlobalVar)) {
                     //注意全局变量不改名
@@ -324,32 +320,41 @@ public class FunctionInlinePass implements ModulePass {
         IrCloneVisitor irCloneVisitor=new IrCloneVisitor();
         for (BasicBlockRef bb:blocks){
             for (int i = 0; i < bb.getIrNum(); i++) {
-                   ValueRef[] operands = bb.getIr(i).getOperands();
-                   //特判函数调用！好几处问题都是因为函数调用
-                   if(bb.getIr(i) instanceof Call call1){
-                       List<ValueRef> params = call1.getRealParams();
-                       Call newInstr=(Call)(irCloneVisitor.genClonedInstruction(bb.getIr(i)));
-                       for (int j = 0; j < params.size(); j++) {
-                           ValueRef param = params.get(j);
-                           if (!param.getName().isEmpty() && Character.isDigit(param.getName().charAt(0))) {
-                               int index = Integer.parseInt(param.getName());
-                               newInstr.setParam(j,paramTable.get(index));
-                           }
-                       }
-                       bb.renewIr(i,newInstr);
-                   }
-                   //注意多处替换
-                   if(operands!=null){
-                       Instruction newInstr=irCloneVisitor.genClonedInstruction(bb.getIr(i));
-                       for (int j = 0; j < operands.length; j++) {
-                           ValueRef operand = operands[j];
-                           if (!operand.getName().isEmpty() && Character.isDigit(operand.getName().charAt(0))) {
-                               int index = Integer.parseInt(operand.getName());
-                               newInstr.setOperand(j,paramTable.get(index));
-                           }
-                       }
-                       bb.renewIr(i,newInstr);
-                   }
+                ValueRef[] operands = bb.getIr(i).getOperands();
+                //特判函数调用！好几处问题都是因为函数调用
+                //特判是否有修改！
+                if(bb.getIr(i) instanceof Call call1){
+                    boolean changed=false;
+                    List<ValueRef> params = call1.getRealParams();
+                    Call newInstr=(Call)(irCloneVisitor.genClonedInstruction(bb.getIr(i)));
+                    for (int j = 0; j < params.size(); j++) {
+                        ValueRef param = params.get(j);
+                        if (!param.getName().isEmpty() && Character.isDigit(param.getName().charAt(0))) {
+                            int index = Integer.parseInt(param.getName());
+                            newInstr.setParam(j,paramTable.get(index));
+                            changed=true;
+                        }
+                    }
+                    if(changed){
+                        bb.renewIr(i,newInstr);
+                    }
+                }
+                //注意多处替换
+                if(operands!=null){
+                    Instruction newInstr=irCloneVisitor.genClonedInstruction(bb.getIr(i));
+                    boolean changed=false;
+                    for (int j = 0; j < operands.length; j++) {
+                        ValueRef operand = operands[j];
+                        if (!operand.getName().isEmpty() && Character.isDigit(operand.getName().charAt(0))) {
+                            int index = Integer.parseInt(operand.getName());
+                            newInstr.setOperand(j,paramTable.get(index));
+                            changed=true;
+                        }
+                    }
+                    if(changed){
+                        bb.renewIr(i,newInstr);
+                    }
+                }
 
 
             }
@@ -374,36 +379,63 @@ public class FunctionInlinePass implements ModulePass {
     }
 
     private void removeRedundantInstruction(FunctionValue functionValue) {
-        Map<String, String> nameTable = new HashMap<>();
+        Map<ValueRef, ValueRef> valueTable = new HashMap<>();
+        Set<String> changedParams=new HashSet<>();
+        Set<String> unEliminateValue=new HashSet<>();
+        //提前构建changedParams表和unEliminateValue表
         for (BasicBlockRef bb : functionValue.getBasicBlockRefs()) {
             for (Instruction instruction : bb.getIrs()) {
-
                 if (instruction instanceof Store store) {
+                    ValueRef dest=store.getOperand(1);
+                    //首先判断dest是否已在参数表中，是则加入不可消去表
+                    if(changedParams.contains(dest.getName())){
+                        unEliminateValue.add(dest.getName());
+                        continue;
+                    }
                     ValueRef src = store.getOperand(0);
-                    //判断是否是对参数的store,是则加入对照表
+                    //判断是否是对参数的store,是则加入修改表
                     if (!src.getName().isEmpty() && Character.isDigit(src.getName().charAt(0))) {
-                        nameTable.put(store.getOperand(1).getName(), src.getName());
+                       changedParams.add(dest.getName());
+                    }
+                }
+            }
+        }
+        for (BasicBlockRef bb : functionValue.getBasicBlockRefs()) {
+            for (Instruction instruction : bb.getIrs()) {
+                if (instruction instanceof Call call){
+                    List<ValueRef> params=call.getRealParams();
+                    for (int j = 0; j < params.size(); j++) {
+                        if (valueTable.containsKey(params.get(j))) {
+                            call.setParam(j,valueTable.get(params.get(j)));
+                        }
                     }
                 } else if (instruction instanceof Load load) {
                     ValueRef lVal = load.getLVal();
                     ValueRef src = load.getOperand(0);
                     //变量在对照表里则做替换
-                    if (nameTable.containsKey(src.getName())) {
-                        nameTable.put(lVal.getName(), nameTable.get(src.getName()));
+                    if (valueTable.containsKey(src)) {
+                        valueTable.put(lVal, valueTable.get(src));
                     }
-                } else if (instruction instanceof Call call){
-                    List<ValueRef> params=call.getRealParams();
-                    for (int j = 0; j < params.size(); j++) {
-                        if (nameTable.containsKey(params.get(j).getName())) {
-                            params.get(j).setName(nameTable.get(params.get(j).getName()));
+                } else if (instruction instanceof Store store) {
+                    ValueRef src = store.getOperand(0);
+                    ValueRef dest=store.getOperand(1);
+                    //参数的store，可以消去
+                    //注意！全局变量不可消去
+                    if (!unEliminateValue.contains(dest.getName())&&!src.getName().isEmpty()&&Character.isDigit(src.getName().charAt(0))) {
+                        if(!(dest instanceof GlobalVar)){
+                            valueTable.put(dest, src);
                         }
+                    }
+                    //注意：store也可做替换！
+                    if(valueTable.containsKey(src)){
+                        store.setOperand(0,valueTable.get(src));
                     }
                 } else {
                     if (instruction.getOperands() != null) {
                         for (int i = 0; i < instruction.getNumberOfOperands(); i++) {
                             ValueRef operand = instruction.getOperand(i);
-                            if (nameTable.containsKey(operand.getName())) {
-                                operand.setName(nameTable.get(operand.getName()));
+                            if (valueTable.containsKey(operand)) {
+                                instruction.setOperand(i,valueTable.get(operand));
                             }
                         }
                     }
@@ -414,13 +446,13 @@ public class FunctionInlinePass implements ModulePass {
         for (BasicBlockRef bb : functionValue.getBasicBlockRefs()) {
             for (int i=0;i<bb.getIrNum();i++) {
                 ValueRef lVal=bb.getIr(i).getLVal();
-                if (lVal != null&&nameTable.containsKey(lVal.getName())) {
+                if (lVal != null&&valueTable.containsKey(lVal)) {
                     bb.renewIr(i,new Default());
                 }
                 if(bb.getIr(i).getOperands()!=null){
                     for (int j=0;j<bb.getIr(i).getNumberOfOperands();j++){
                         ValueRef operand=bb.getIr(i).getOperand(j);
-                        if (nameTable.containsKey(operand.getName())) {
+                        if (valueTable.containsKey(operand)) {
                             bb.renewIr(i,new Default());
                         }
                     }
