@@ -365,24 +365,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
     public void visit(Div div) {
         /* todo()简单的强度消解, 但是有冗余的参数装入*/
         beforeABinaryInstr(div);
-        if(div.getOperand(1) instanceof ConstValue constValue
-            && constValue.getType() instanceof IntType
-            && isPowerOfTwo((int) constValue.getValue())){
-            int k = Integer.numberOfTrailingZeros((int) constValue.getValue());
-            riscInstructions.add(new RiscSrai(new Register("t0"), new Register("t1"), new ImmediateValue(k)));
-        }
-        else if(div.getOperand(1) instanceof ConstValue constValue
-                && constValue.getType() instanceof IntType
-                && (int)constValue.getValue() == 1) {
-            riscInstructions.add(new RiscMv(new Register("t0"), new Register("t1")));
-        }
-        else if(div.getOperand(1) instanceof ConstValue constValue
-                ){
-
-        }
-        else {
-            riscInstructions.add(new RiscDiv(new Register("t0"), new Register("t1"), new Register("t2")));
-        }
+        riscInstructions.add(new RiscDiv(new Register("t0"), new Register("t1"), new Register("t2")));
         afterABinaryInstr(div);
     }
 

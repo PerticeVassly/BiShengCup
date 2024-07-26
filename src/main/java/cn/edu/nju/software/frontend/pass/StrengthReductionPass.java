@@ -1,5 +1,7 @@
 package cn.edu.nju.software.frontend.pass;
 
+import cn.edu.nju.software.ir.builder.BuilderRef;
+import cn.edu.nju.software.ir.generator.Generator;
 import cn.edu.nju.software.ir.instruction.arithmetic.Add;
 import cn.edu.nju.software.ir.instruction.arithmetic.Sub;
 import cn.edu.nju.software.ir.type.IntType;
@@ -9,7 +11,9 @@ import cn.edu.nju.software.ir.instruction.OpEnum;
 import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.instruction.logic.Shl;
+import cn.edu.nju.software.ir.value.LocalVar;
 
+import javax.management.ValueExp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -83,12 +87,6 @@ public class StrengthReductionPass implements BasicBlockPass {
             return newInstructions;
         }
         for(int i = 0; i < 2; i++){
-            if(ir.getOperand(i) instanceof ConstValue constValue && isPowerOfTwo((int) constValue.getValue())){
-                return reduceForMulPowerOf2(ir, i);
-            }
-            if(ir.getOperand(i) instanceof ConstValue constValue && isPowerOfTwo(-(int) constValue.getValue())){
-                return reduceForMulNegPowerOf2(ir, i);
-            }
             if(ir.getOperand(i) instanceof ConstValue constValue && (int) constValue.getValue() == 1){
                 return reduceForMul1(ir, i);
             }
@@ -98,6 +96,13 @@ public class StrengthReductionPass implements BasicBlockPass {
             if(ir.getOperand(i) instanceof ConstValue constValue && (int) constValue.getValue() == 0){
                 return reduceForMul0(ir,i);
             }
+            if(ir.getOperand(i) instanceof ConstValue constValue && isPowerOfTwo((int) constValue.getValue())){
+                return reduceForMulPowerOf2(ir, i);
+            }
+            if(ir.getOperand(i) instanceof ConstValue constValue && isPowerOfTwo(-(int) constValue.getValue())){
+                return reduceForMulNegPowerOf2(ir, i);
+            }
+
         }
         List<Instruction> newInstructions = new ArrayList<>();
         newInstructions.add(ir);
@@ -116,12 +121,20 @@ public class StrengthReductionPass implements BasicBlockPass {
     }
 
     private List<Instruction> reduceForMulNegPowerOf2(Instruction ir, int index){
-        List<Instruction> newInstructions = reduceForMulPowerOf2(ir, index);
+        List<Instruction> newInstructions = new ArrayList<>();
+        ConstValue constValue = (ConstValue) ir.getOperand(index);
+        Integer bits = Integer.numberOfTrailingZeros(Math.abs((int) constValue.getValue()));
+        LocalVar temp = bb.createLocalVar(new IntType(), "temp");
+        newInstructions.add(new Shl(
+                temp,
+                ir.getOperand(index == 0 ? 1 : 0),
+                new ConstValue(new IntType(), bits)));
+        bb.addIrNum();
         newInstructions.add(new Sub(
                 ir.getLVal(),
                 OpEnum.SUB,
                 new ConstValue(new IntType(), 0),
-                ir.getLVal()));
+                temp));
         return newInstructions;
     }
 
@@ -187,12 +200,20 @@ public class StrengthReductionPass implements BasicBlockPass {
     }
 
     private List<Instruction> reduceForDivNegPowerOf2(Instruction ir){
-        List<Instruction> newInstructions = reduceForDivPowerOf2(ir);
+        List<Instruction> newInstructions = new ArrayList<>();
+        ConstValue constValue = (ConstValue) ir.getOperand(1);
+        Integer bits = Integer.numberOfTrailingZeros(Math.abs((int) constValue.getValue()));
+        LocalVar temp = bb.createLocalVar(new IntType(), "temp");
+        newInstructions.add(new Ashr(
+                temp,
+                ir.getOperand(0),
+                new ConstValue(new IntType(), bits)));
+        bb.addIrNum();
         newInstructions.add(new Sub(
                 ir.getLVal(),
                 OpEnum.SUB,
                 new ConstValue(new IntType(), 0),
-                ir.getOperand(0)));
+                temp));
         return newInstructions;
     }
 

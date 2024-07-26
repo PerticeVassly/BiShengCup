@@ -73,7 +73,7 @@ public class TestBackEndIO {
         String code = dir + name + ".sy";
         String output = dir + name + ".s";
         String standardOut = dir + name + ".out";
-        Main.main(code, "-o", output, "-S", "-O0");
+        Main.main(code, "-o", output, "-S", "-O2");
 
 
         cmdExecutor.exec("riscv64-unknown-elf-gcc", output, "-g", "-o", dir + name, SYLIB_RISC);

@@ -56,6 +56,10 @@ import java.util.ArrayList;
      ValueRef buildFDiv(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
      ValueRef buildMod(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
 
+     ValueRef buildAshr(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
+
+     ValueRef buildShl(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName);
+
     // branch operations
      ValueRef buildBranch(BuilderRef builder, BasicBlockRef targetBlock);
      ValueRef buildCondBranch(BuilderRef builder, ValueRef cond, BasicBlockRef ifTrue, BasicBlockRef ifFalse);

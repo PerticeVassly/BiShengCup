@@ -116,4 +116,9 @@ public class BasicBlockRef extends ValueRef {
     public void setReachable(boolean reachable) {
         this.reachable = reachable;
     }
+
+    //todo() may be unneeded
+    public void addIrNum(){
+        irNum++;
+    }
 }
