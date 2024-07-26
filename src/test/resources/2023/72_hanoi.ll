@@ -51,6 +51,17 @@ ifFalse_4:                                         ; pred = %hanoiEntry
 next_13:                                           ; pred = %ifTrue_4, %ifFalse_4
   ret void
 
+inline40:                                          ; pred = %ifFalse_4
+  call void @putint(i32 %one$2)
+  call void @putch(i32 32)
+  call void @putint(i32 %three$2)
+  call void @putch(i32 44)
+  call void @putch(i32 32)
+  br label %truncated3
+
+truncated2:                                        ; pred = %inline39
+  br label %next_13
+
 truncated3:                                        ; pred = %inline40
   %n$2 = load i32, i32* %lv, align 4
   %result_$1 = sub i32 %n$2, 1
@@ -67,17 +78,6 @@ inline39:                                          ; pred = %ifTrue_4
   call void @putch(i32 44)
   call void @putch(i32 32)
   br label %truncated2
-
-truncated2:                                        ; pred = %inline39
-  br label %next_13
-
-inline40:                                          ; pred = %ifFalse_4
-  call void @putint(i32 %one$2)
-  call void @putch(i32 32)
-  call void @putint(i32 %three$2)
-  call void @putch(i32 44)
-  call void @putch(i32 32)
-  br label %truncated3
 }
 
 define i32 @main() {

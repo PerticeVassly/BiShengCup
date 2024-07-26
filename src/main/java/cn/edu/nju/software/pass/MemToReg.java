@@ -20,7 +20,8 @@ public class MemToReg {
     public MemToReg(ModuleRef module) {
         cfgBuildPass = CFGBuildPass.getInstance();
         this.module = module;
-        cfgBuildPass.runOnModule(module);
+        //TODO:默认分析pass总是最先完成，不必再做一遍
+        //cfgBuildPass.runOnModule(module);
     }
 
     public void memToRegProc() {

@@ -18,110 +18,13 @@ declare void @memset(i32*, i32, i32)
 
 @gv = global i32 0, align 4
 
-define i32 @select_sort(i32* %0, i32 %1) {
-select_sortEntry:
-  %lv$5 = alloca i32, align 4
-  %lv$4 = alloca i32, align 4
-  %lv$3 = alloca i32, align 4
-  %lv$2 = alloca i32, align 4
-  %lv$1 = alloca i32, align 4
-  %lv = alloca i32*, align 4
-  store i32* %0, i32** %lv, align 4
-  store i32 %1, i32* %lv$1, align 4
-  store i32 0, i32* %lv$2, align 4
-  br label %whileCond_203
-
-whileCond_203:                                           ; pred = %select_sortEntry, %next_487
-  %i = load i32, i32* %lv$2, align 4
-  %n = load i32, i32* %lv$1, align 4
-  %result_ = sub i32 %n, 1
-  %cond_lt_tmp_ = icmp slt i32 %i, %result_
-  %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_203, label %next_484
-
-whileBody_203:                                           ; pred = %whileCond_203
-  %i$1 = load i32, i32* %lv$2, align 4
-  store i32 %i$1, i32* %lv$4, align 4
-  %i$2 = load i32, i32* %lv$2, align 4
-  %result_$1 = add i32 %i$2, 1
-  store i32 %result_$1, i32* %lv$3, align 4
-  br label %whileCond_204
-
-next_484:                                                ; pred = %whileCond_203
-  ret i32 0
-
-whileCond_204:                                           ; pred = %whileBody_203, %next_486
-  %j = load i32, i32* %lv$3, align 4
-  %n$1 = load i32, i32* %lv$1, align 4
-  %cond_lt_tmp_$1 = icmp slt i32 %j, %n$1
-  %cond_tmp_$1 = zext i1 %cond_lt_tmp_$1 to i32
-  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %whileBody_204, label %next_485
-
-whileBody_204:                                           ; pred = %whileCond_204
-  %min = load i32, i32* %lv$4, align 4
-  %arr_ = load i32*, i32** %lv, align 4
-  %A = getelementptr i32, i32* %arr_, i32 %min
-  %A$1 = load i32, i32* %A, align 4
-  %j$1 = load i32, i32* %lv$3, align 4
-  %arr_$1 = load i32*, i32** %lv, align 4
-  %A$2 = getelementptr i32, i32* %arr_$1, i32 %j$1
-  %A$3 = load i32, i32* %A$2, align 4
-  %cond_gt_tmp_ = icmp sgt i32 %A$1, %A$3
-  %cond_tmp_$2 = zext i1 %cond_gt_tmp_ to i32
-  %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %ifTrue_281, label %next_486
-
-next_485:                                                ; pred = %whileCond_204
-  %min$1 = load i32, i32* %lv$4, align 4
-  %i$3 = load i32, i32* %lv$2, align 4
-  %cond_neq_tmp_ = icmp ne i32 %min$1, %i$3
-  %cond_tmp_$3 = zext i1 %cond_neq_tmp_ to i32
-  %cond_$3 = icmp ne i32 %cond_tmp_$3, 0
-  br i1 %cond_$3, label %ifTrue_282, label %next_487
-
-ifTrue_281:                                              ; pred = %whileBody_204
-  %j$2 = load i32, i32* %lv$3, align 4
-  store i32 %j$2, i32* %lv$4, align 4
-  br label %next_486
-
-next_486:                                                ; pred = %whileBody_204, %ifTrue_281
-  %j$3 = load i32, i32* %lv$3, align 4
-  %result_$2 = add i32 %j$3, 1
-  store i32 %result_$2, i32* %lv$3, align 4
-  br label %whileCond_204
-
-ifTrue_282:                                              ; pred = %next_485
-  %min$2 = load i32, i32* %lv$4, align 4
-  %arr_$2 = load i32*, i32** %lv, align 4
-  %A$4 = getelementptr i32, i32* %arr_$2, i32 %min$2
-  %A$5 = load i32, i32* %A$4, align 4
-  store i32 %A$5, i32* %lv$5, align 4
-  %min$3 = load i32, i32* %lv$4, align 4
-  %arr_$3 = load i32*, i32** %lv, align 4
-  %A$6 = getelementptr i32, i32* %arr_$3, i32 %min$3
-  %i$4 = load i32, i32* %lv$2, align 4
-  %arr_$4 = load i32*, i32** %lv, align 4
-  %A$7 = getelementptr i32, i32* %arr_$4, i32 %i$4
-  %A$8 = load i32, i32* %A$7, align 4
-  store i32 %A$8, i32* %A$6, align 4
-  %i$5 = load i32, i32* %lv$2, align 4
-  %arr_$5 = load i32*, i32** %lv, align 4
-  %A$9 = getelementptr i32, i32* %arr_$5, i32 %i$5
-  %tmp = load i32, i32* %lv$5, align 4
-  store i32 %tmp, i32* %A$9, align 4
-  br label %next_487
-
-next_487:                                                ; pred = %next_485, %ifTrue_282
-  %i$6 = load i32, i32* %lv$2, align 4
-  %result_$3 = add i32 %i$6, 1
-  store i32 %result_$3, i32* %lv$2, align 4
-  br label %whileCond_203
-}
-
 define i32 @main() {
 mainEntry50:
+  %retVal_ofinline1789 = alloca i32, align 4
+  %lv$2_of_inline1789 = alloca i32, align 4
+  %lv$3_of_inline1789 = alloca i32, align 4
+  %lv$4_of_inline1789 = alloca i32, align 4
+  %lv$5_of_inline1789 = alloca i32, align 4
   %lv$2 = alloca i32, align 4
   %lv$1 = alloca i32, align 4
   %lv = alloca [10 x i32], align 16
@@ -149,9 +52,7 @@ mainEntry50:
   store i32 0, i32* %lv$1, align 4
   %a$10 = getelementptr [10 x i32], [10 x i32]* %lv, i32 0, i32 0
   %n = load i32, i32* @gv, align 4
-  %select_sort = call i32 @select_sort(i32* %a$10, i32 %n)
-  store i32 %select_sort, i32* %lv$1, align 4
-  br label %whileCond_205
+  br label %inline1789
 
 whileCond_205:                                        ; pred = %mainEntry50, %whileBody_205
   %i = load i32, i32* %lv$1, align 4
@@ -178,5 +79,95 @@ whileBody_205:                                        ; pred = %whileCond_205
 
 next_488:                                             ; pred = %whileCond_205
   ret i32 0
+
+inline1793:                                           ; pred = %inline1791, %inline1797
+  %j_of_inline1793 = load i32, i32* %lv$3_of_inline1789, align 4
+  %cond_lt_tmp_$1_of_inline1793 = icmp slt i32 %j_of_inline1793, %n
+  %cond_tmp_$1_of_inline1793 = zext i1 %cond_lt_tmp_$1_of_inline1793 to i32
+  %cond_$1_of_inline1793 = icmp ne i32 %cond_tmp_$1_of_inline1793, 0
+  br i1 %cond_$1_of_inline1793, label %inline1794, label %inline1795
+
+inline1790:                                           ; pred = %inline1789, %inline1799
+  %i_of_inline1790 = load i32, i32* %lv$2_of_inline1789, align 4
+  %result__of_inline1790 = sub i32 %n, 1
+  %cond_lt_tmp__of_inline1790 = icmp slt i32 %i_of_inline1790, %result__of_inline1790
+  %cond_tmp__of_inline1790 = zext i1 %cond_lt_tmp__of_inline1790 to i32
+  %cond__of_inline1790 = icmp ne i32 %cond_tmp__of_inline1790, 0
+  br i1 %cond__of_inline1790, label %inline1791, label %inline1792
+
+inline1789:                                           ; pred = %mainEntry50
+  store i32 0, i32* %lv$2_of_inline1789, align 4
+  br label %inline1790
+
+inline1797:                                           ; pred = %inline1794, %inline1796
+  %j$3_of_inline1797 = load i32, i32* %lv$3_of_inline1789, align 4
+  %result_$2_of_inline1797 = add i32 %j$3_of_inline1797, 1
+  store i32 %result_$2_of_inline1797, i32* %lv$3_of_inline1789, align 4
+  br label %inline1793
+
+inline1796:                                           ; pred = %inline1794
+  %j$2_of_inline1796 = load i32, i32* %lv$3_of_inline1789, align 4
+  store i32 %j$2_of_inline1796, i32* %lv$4_of_inline1789, align 4
+  br label %inline1797
+
+inline1794:                                           ; pred = %inline1793
+  %min_of_inline1794 = load i32, i32* %lv$4_of_inline1789, align 4
+  %A_of_inline1794 = getelementptr i32, i32* %a$10, i32 %min_of_inline1794
+  %A$1_of_inline1794 = load i32, i32* %A_of_inline1794, align 4
+  %j$1_of_inline1794 = load i32, i32* %lv$3_of_inline1789, align 4
+  %A$2_of_inline1794 = getelementptr i32, i32* %a$10, i32 %j$1_of_inline1794
+  %A$3_of_inline1794 = load i32, i32* %A$2_of_inline1794, align 4
+  %cond_gt_tmp__of_inline1794 = icmp sgt i32 %A$1_of_inline1794, %A$3_of_inline1794
+  %cond_tmp_$2_of_inline1794 = zext i1 %cond_gt_tmp__of_inline1794 to i32
+  %cond_$2_of_inline1794 = icmp ne i32 %cond_tmp_$2_of_inline1794, 0
+  br i1 %cond_$2_of_inline1794, label %inline1796, label %inline1797
+
+inline1792:                                           ; pred = %inline1790
+  store i32 0, i32* %retVal_ofinline1789, align 4
+  br label %truncated151
+
+inline1795:                                           ; pred = %inline1793
+  %min$1_of_inline1795 = load i32, i32* %lv$4_of_inline1789, align 4
+  %i$3_of_inline1795 = load i32, i32* %lv$2_of_inline1789, align 4
+  %cond_neq_tmp__of_inline1795 = icmp ne i32 %min$1_of_inline1795, %i$3_of_inline1795
+  %cond_tmp_$3_of_inline1795 = zext i1 %cond_neq_tmp__of_inline1795 to i32
+  %cond_$3_of_inline1795 = icmp ne i32 %cond_tmp_$3_of_inline1795, 0
+  br i1 %cond_$3_of_inline1795, label %inline1798, label %inline1799
+
+truncated151:                                         ; pred = %inline1792
+  %select_sort = load i32, i32* %retVal_ofinline1789, align 4
+  store i32 %select_sort, i32* %lv$1, align 4
+  br label %whileCond_205
+
+inline1798:                                           ; pred = %inline1795
+  %min$2_of_inline1798 = load i32, i32* %lv$4_of_inline1789, align 4
+  %A$4_of_inline1798 = getelementptr i32, i32* %a$10, i32 %min$2_of_inline1798
+  %A$5_of_inline1798 = load i32, i32* %A$4_of_inline1798, align 4
+  store i32 %A$5_of_inline1798, i32* %lv$5_of_inline1789, align 4
+  %min$3_of_inline1798 = load i32, i32* %lv$4_of_inline1789, align 4
+  %A$6_of_inline1798 = getelementptr i32, i32* %a$10, i32 %min$3_of_inline1798
+  %i$4_of_inline1798 = load i32, i32* %lv$2_of_inline1789, align 4
+  %A$7_of_inline1798 = getelementptr i32, i32* %a$10, i32 %i$4_of_inline1798
+  %A$8_of_inline1798 = load i32, i32* %A$7_of_inline1798, align 4
+  store i32 %A$8_of_inline1798, i32* %A$6_of_inline1798, align 4
+  %i$5_of_inline1798 = load i32, i32* %lv$2_of_inline1789, align 4
+  %A$9_of_inline1798 = getelementptr i32, i32* %a$10, i32 %i$5_of_inline1798
+  %tmp_of_inline1798 = load i32, i32* %lv$5_of_inline1789, align 4
+  store i32 %tmp_of_inline1798, i32* %A$9_of_inline1798, align 4
+  br label %inline1799
+
+inline1791:                                           ; pred = %inline1790
+  %i$1_of_inline1791 = load i32, i32* %lv$2_of_inline1789, align 4
+  store i32 %i$1_of_inline1791, i32* %lv$4_of_inline1789, align 4
+  %i$2_of_inline1791 = load i32, i32* %lv$2_of_inline1789, align 4
+  %result_$1_of_inline1791 = add i32 %i$2_of_inline1791, 1
+  store i32 %result_$1_of_inline1791, i32* %lv$3_of_inline1789, align 4
+  br label %inline1793
+
+inline1799:                                           ; pred = %inline1795, %inline1798
+  %i$6_of_inline1799 = load i32, i32* %lv$2_of_inline1789, align 4
+  %result_$3_of_inline1799 = add i32 %i$6_of_inline1799, 1
+  store i32 %result_$3_of_inline1799, i32* %lv$2_of_inline1789, align 4
+  br label %inline1790
 }
 

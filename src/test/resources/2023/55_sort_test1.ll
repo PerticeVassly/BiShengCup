@@ -77,6 +77,49 @@ whileBody_73:                                        ; pred = %whileCond_73
 next_138:                                            ; pred = %whileCond_73
   ret i32 0
 
+inline737:                                           ; pred = %inline736
+  %j$1_of_inline737 = load i32, i32* %lv$2_of_inline732, align 4
+  %arr_of_inline737 = getelementptr i32, i32* %a$10, i32 %j$1_of_inline737
+  %arr$1_of_inline737 = load i32, i32* %arr_of_inline737, align 4
+  %j$2_of_inline737 = load i32, i32* %lv$2_of_inline732, align 4
+  %result_$3_of_inline737 = add i32 %j$2_of_inline737, 1
+  %arr$2_of_inline737 = getelementptr i32, i32* %a$10, i32 %result_$3_of_inline737
+  %arr$3_of_inline737 = load i32, i32* %arr$2_of_inline737, align 4
+  %cond_gt_tmp__of_inline737 = icmp sgt i32 %arr$1_of_inline737, %arr$3_of_inline737
+  %cond_tmp_$2_of_inline737 = zext i1 %cond_gt_tmp__of_inline737 to i32
+  %cond_$2_of_inline737 = icmp ne i32 %cond_tmp_$2_of_inline737, 0
+  br i1 %cond_$2_of_inline737, label %inline739, label %inline740
+
+inline734:                                           ; pred = %inline733
+  store i32 0, i32* %lv$2_of_inline732, align 4
+  br label %inline736
+
+truncated83:                                         ; pred = %inline735
+  %bubblesort = load i32, i32* %retVal_ofinline732, align 4
+  store i32 %bubblesort, i32* %lv$1, align 4
+  br label %whileCond_73
+
+inline736:                                           ; pred = %inline734, %inline740
+  %j_of_inline736 = load i32, i32* %lv$2_of_inline732, align 4
+  %n$1_of_inline736 = load i32, i32* @gv, align 4
+  %i$1_of_inline736 = load i32, i32* %lv$1_of_inline732, align 4
+  %result_$1_of_inline736 = sub i32 %n$1_of_inline736, %i$1_of_inline736
+  %result_$2_of_inline736 = sub i32 %result_$1_of_inline736, 1
+  %cond_lt_tmp_$1_of_inline736 = icmp slt i32 %j_of_inline736, %result_$2_of_inline736
+  %cond_tmp_$1_of_inline736 = zext i1 %cond_lt_tmp_$1_of_inline736 to i32
+  %cond_$1_of_inline736 = icmp ne i32 %cond_tmp_$1_of_inline736, 0
+  br i1 %cond_$1_of_inline736, label %inline737, label %inline738
+
+inline732:                                           ; pred = %mainEntry26
+  store i32 0, i32* %lv$1_of_inline732, align 4
+  br label %inline733
+
+inline738:                                           ; pred = %inline736
+  %i$2_of_inline738 = load i32, i32* %lv$1_of_inline732, align 4
+  %result_$7_of_inline738 = add i32 %i$2_of_inline738, 1
+  store i32 %result_$7_of_inline738, i32* %lv$1_of_inline732, align 4
+  br label %inline733
+
 inline739:                                           ; pred = %inline737
   %j$3_of_inline739 = load i32, i32* %lv$2_of_inline732, align 4
   %result_$4_of_inline739 = add i32 %j$3_of_inline739, 1
@@ -96,12 +139,6 @@ inline739:                                           ; pred = %inline737
   store i32 %tmp_of_inline739, i32* %arr$9_of_inline739, align 4
   br label %inline740
 
-inline738:                                           ; pred = %inline736
-  %i$2_of_inline738 = load i32, i32* %lv$1_of_inline732, align 4
-  %result_$7_of_inline738 = add i32 %i$2_of_inline738, 1
-  store i32 %result_$7_of_inline738, i32* %lv$1_of_inline732, align 4
-  br label %inline733
-
 inline733:                                           ; pred = %inline732, %inline738
   %i_of_inline733 = load i32, i32* %lv$1_of_inline732, align 4
   %n_of_inline733 = load i32, i32* @gv, align 4
@@ -111,51 +148,14 @@ inline733:                                           ; pred = %inline732, %inlin
   %cond__of_inline733 = icmp ne i32 %cond_tmp__of_inline733, 0
   br i1 %cond__of_inline733, label %inline734, label %inline735
 
-inline732:                                           ; pred = %mainEntry26
-  store i32 0, i32* %lv$1_of_inline732, align 4
-  br label %inline733
-
-inline736:                                           ; pred = %inline734, %inline740
-  %j_of_inline736 = load i32, i32* %lv$2_of_inline732, align 4
-  %n$1_of_inline736 = load i32, i32* @gv, align 4
-  %i$1_of_inline736 = load i32, i32* %lv$1_of_inline732, align 4
-  %result_$1_of_inline736 = sub i32 %n$1_of_inline736, %i$1_of_inline736
-  %result_$2_of_inline736 = sub i32 %result_$1_of_inline736, 1
-  %cond_lt_tmp_$1_of_inline736 = icmp slt i32 %j_of_inline736, %result_$2_of_inline736
-  %cond_tmp_$1_of_inline736 = zext i1 %cond_lt_tmp_$1_of_inline736 to i32
-  %cond_$1_of_inline736 = icmp ne i32 %cond_tmp_$1_of_inline736, 0
-  br i1 %cond_$1_of_inline736, label %inline737, label %inline738
-
-truncated82:                                         ; pred = %inline735
-  %bubblesort = load i32, i32* %retVal_ofinline732, align 4
-  store i32 %bubblesort, i32* %lv$1, align 4
-  br label %whileCond_73
-
 inline735:                                           ; pred = %inline733
   store i32 0, i32* %retVal_ofinline732, align 4
-  br label %truncated82
+  br label %truncated83
 
 inline740:                                           ; pred = %inline737, %inline739
   %j$7_of_inline740 = load i32, i32* %lv$2_of_inline732, align 4
   %result_$6_of_inline740 = add i32 %j$7_of_inline740, 1
   store i32 %result_$6_of_inline740, i32* %lv$2_of_inline732, align 4
-  br label %inline736
-
-inline737:                                           ; pred = %inline736
-  %j$1_of_inline737 = load i32, i32* %lv$2_of_inline732, align 4
-  %arr_of_inline737 = getelementptr i32, i32* %a$10, i32 %j$1_of_inline737
-  %arr$1_of_inline737 = load i32, i32* %arr_of_inline737, align 4
-  %j$2_of_inline737 = load i32, i32* %lv$2_of_inline732, align 4
-  %result_$3_of_inline737 = add i32 %j$2_of_inline737, 1
-  %arr$2_of_inline737 = getelementptr i32, i32* %a$10, i32 %result_$3_of_inline737
-  %arr$3_of_inline737 = load i32, i32* %arr$2_of_inline737, align 4
-  %cond_gt_tmp__of_inline737 = icmp sgt i32 %arr$1_of_inline737, %arr$3_of_inline737
-  %cond_tmp_$2_of_inline737 = zext i1 %cond_gt_tmp__of_inline737 to i32
-  %cond_$2_of_inline737 = icmp ne i32 %cond_tmp_$2_of_inline737, 0
-  br i1 %cond_$2_of_inline737, label %inline739, label %inline740
-
-inline734:                                           ; pred = %inline733
-  store i32 0, i32* %lv$2_of_inline732, align 4
   br label %inline736
 }
 

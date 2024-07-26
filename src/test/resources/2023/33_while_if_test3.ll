@@ -16,80 +16,77 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-define i32 @deepWhileBr(i32 %0, i32 %1) {
-deepWhileBrEntry1:
-  %lv$4 = alloca i32, align 4
-  %lv$3 = alloca i32, align 4
-  %lv$2 = alloca i32, align 4
-  %lv$1 = alloca i32, align 4
-  %lv = alloca i32, align 4
-  store i32 %0, i32* %lv, align 4
-  store i32 %1, i32* %lv$1, align 4
-  %a = load i32, i32* %lv, align 4
-  %b = load i32, i32* %lv$1, align 4
-  %result_ = add i32 %a, %b
-  store i32 %result_, i32* %lv$2, align 4
-  br label %whileCond_278
-
-whileCond_278:                                            ; pred = %deepWhileBrEntry1, %next_626
-  %c = load i32, i32* %lv$2, align 4
-  %cond_lt_tmp_ = icmp slt i32 %c, 75
-  %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_278, label %next_625
-
-whileBody_278:                                            ; pred = %whileCond_278
-  store i32 42, i32* %lv$3, align 4
-  %c$1 = load i32, i32* %lv$2, align 4
-  %cond_lt_tmp_$1 = icmp slt i32 %c$1, 100
-  %cond_tmp_$1 = zext i1 %cond_lt_tmp_$1 to i32
-  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_347, label %next_626
-
-next_625:                                                 ; pred = %whileCond_278
-  %c$4 = load i32, i32* %lv$2, align 4
-  ret i32 %c$4
-
-ifTrue_347:                                               ; pred = %whileBody_278
-  %c$2 = load i32, i32* %lv$2, align 4
-  %d = load i32, i32* %lv$3, align 4
-  %result_$1 = add i32 %c$2, %d
-  store i32 %result_$1, i32* %lv$2, align 4
-  %c$3 = load i32, i32* %lv$2, align 4
-  %cond_gt_tmp_ = icmp sgt i32 %c$3, 99
-  %cond_tmp_$2 = zext i1 %cond_gt_tmp_ to i32
-  %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %ifTrue_348, label %next_627
-
-next_626:                                                 ; pred = %whileBody_278, %next_627
-  br label %whileCond_278
-
-ifTrue_348:                                               ; pred = %ifTrue_347
-  %d$1 = load i32, i32* %lv$3, align 4
-  %result_$2 = mul i32 %d$1, 2
-  store i32 %result_$2, i32* %lv$4, align 4
-  br i1 true, label %ifTrue_349, label %next_628
-
-next_627:                                                 ; pred = %ifTrue_347, %next_628
-  br label %next_626
-
-ifTrue_349:                                               ; pred = %ifTrue_348
-  %e = load i32, i32* %lv$4, align 4
-  %result_$3 = mul i32 %e, 2
-  store i32 %result_$3, i32* %lv$2, align 4
-  br label %next_628
-
-next_628:                                                 ; pred = %ifTrue_348, %ifTrue_349
-  br label %next_627
-}
-
 define i32 @main() {
 mainEntry86:
+  %retVal_ofinline2195 = alloca i32, align 4
+  %lv$2_of_inline2195 = alloca i32, align 4
+  %lv$3_of_inline2195 = alloca i32, align 4
+  %lv$4_of_inline2195 = alloca i32, align 4
   %lv = alloca i32, align 4
   store i32 2, i32* %lv, align 4
   %p = load i32, i32* %lv, align 4
   %p$1 = load i32, i32* %lv, align 4
-  %deepWhileBr = call i32 @deepWhileBr(i32 %p, i32 %p$1)
+  br label %inline2195
+
+inline2195:                                          ; pred = %mainEntry86
+  %result__of_inline2195 = add i32 %p, %p$1
+  store i32 %result__of_inline2195, i32* %lv$2_of_inline2195, align 4
+  br label %inline2196
+
+inline2196:                                          ; pred = %inline2195, %inline2200
+  %c_of_inline2196 = load i32, i32* %lv$2_of_inline2195, align 4
+  %cond_lt_tmp__of_inline2196 = icmp slt i32 %c_of_inline2196, 75
+  %cond_tmp__of_inline2196 = zext i1 %cond_lt_tmp__of_inline2196 to i32
+  %cond__of_inline2196 = icmp ne i32 %cond_tmp__of_inline2196, 0
+  br i1 %cond__of_inline2196, label %inline2197, label %inline2198
+
+inline2200:                                          ; pred = %inline2197, %inline2202
+  br label %inline2196
+
+inline2202:                                          ; pred = %inline2199, %inline2204
+  br label %inline2200
+
+inline2204:                                          ; pred = %inline2201, %inline2203
+  br label %inline2202
+
+truncated211:                                        ; pred = %inline2198
+  %deepWhileBr = load i32, i32* %retVal_ofinline2195, align 4
   ret i32 %deepWhileBr
+
+inline2199:                                          ; pred = %inline2197
+  %c$2_of_inline2199 = load i32, i32* %lv$2_of_inline2195, align 4
+  %d_of_inline2199 = load i32, i32* %lv$3_of_inline2195, align 4
+  %result_$1_of_inline2199 = add i32 %c$2_of_inline2199, %d_of_inline2199
+  store i32 %result_$1_of_inline2199, i32* %lv$2_of_inline2195, align 4
+  %c$3_of_inline2199 = load i32, i32* %lv$2_of_inline2195, align 4
+  %cond_gt_tmp__of_inline2199 = icmp sgt i32 %c$3_of_inline2199, 99
+  %cond_tmp_$2_of_inline2199 = zext i1 %cond_gt_tmp__of_inline2199 to i32
+  %cond_$2_of_inline2199 = icmp ne i32 %cond_tmp_$2_of_inline2199, 0
+  br i1 %cond_$2_of_inline2199, label %inline2201, label %inline2202
+
+inline2201:                                          ; pred = %inline2199
+  %d$1_of_inline2201 = load i32, i32* %lv$3_of_inline2195, align 4
+  %result_$2_of_inline2201 = mul i32 %d$1_of_inline2201, 2
+  store i32 %result_$2_of_inline2201, i32* %lv$4_of_inline2195, align 4
+  br i1 true, label %inline2203, label %inline2204
+
+inline2198:                                          ; pred = %inline2196
+  %c$4_of_inline2198 = load i32, i32* %lv$2_of_inline2195, align 4
+  store i32 %c$4_of_inline2198, i32* %retVal_ofinline2195, align 4
+  br label %truncated211
+
+inline2197:                                          ; pred = %inline2196
+  store i32 42, i32* %lv$3_of_inline2195, align 4
+  %c$1_of_inline2197 = load i32, i32* %lv$2_of_inline2195, align 4
+  %cond_lt_tmp_$1_of_inline2197 = icmp slt i32 %c$1_of_inline2197, 100
+  %cond_tmp_$1_of_inline2197 = zext i1 %cond_lt_tmp_$1_of_inline2197 to i32
+  %cond_$1_of_inline2197 = icmp ne i32 %cond_tmp_$1_of_inline2197, 0
+  br i1 %cond_$1_of_inline2197, label %inline2199, label %inline2200
+
+inline2203:                                          ; pred = %inline2201
+  %e_of_inline2203 = load i32, i32* %lv$4_of_inline2195, align 4
+  %result_$3_of_inline2203 = mul i32 %e_of_inline2203, 2
+  store i32 %result_$3_of_inline2203, i32* %lv$2_of_inline2195, align 4
+  br label %inline2204
 }
 

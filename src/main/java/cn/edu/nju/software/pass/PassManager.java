@@ -37,7 +37,7 @@ public class PassManager {
         modulePasses.add(CFGBuildPass.getInstance());
         modulePasses.add(LoopBuildPass.getInstance());
         modulePasses.add(new FunctionInlinePass());
-        functionPasses.add(new LoopInvariantCodeMotionPass());
+        //functionPasses.add(new LoopInvariantCodeMotionPass());
     }
     public void setDbgFlag(){
         for (ModulePass modulePass:modulePasses){

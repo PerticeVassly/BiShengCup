@@ -20,38 +20,14 @@ declare void @memset(i32*, i32, i32)
 @gv1 = global i32 0, align 4
 @gv2 = global i32 0, align 4
 
-define i32 @set_a(i32 %0) {
-set_aEntry:
-  %lv = alloca i32, align 4
-  store i32 %0, i32* %lv, align 4
-  %val = load i32, i32* %lv, align 4
-  store i32 %val, i32* @gv, align 4
-  %a = load i32, i32* @gv, align 4
-  ret i32 %a
-}
-
-define i32 @set_b(i32 %0) {
-set_bEntry:
-  %lv = alloca i32, align 4
-  store i32 %0, i32* %lv, align 4
-  %val = load i32, i32* %lv, align 4
-  store i32 %val, i32* @gv1, align 4
-  %b = load i32, i32* @gv1, align 4
-  ret i32 %b
-}
-
-define i32 @set_d(i32 %0) {
-set_dEntry:
-  %lv = alloca i32, align 4
-  store i32 %0, i32* %lv, align 4
-  %val = load i32, i32* %lv, align 4
-  store i32 %val, i32* @gv2, align 4
-  %d = load i32, i32* @gv2, align 4
-  ret i32 %d
-}
-
 define i32 @main() {
 mainEntry90:
+  %retVal_ofinline2223 = alloca i32, align 4
+  %retVal_ofinline2222 = alloca i32, align 4
+  %retVal_ofinline2221 = alloca i32, align 4
+  %retVal_ofinline2220 = alloca i32, align 4
+  %retVal_ofinline2219 = alloca i32, align 4
+  %retVal_ofinline2218 = alloca i32, align 4
   %lv$4 = alloca i32, align 4
   %lv$3 = alloca i32, align 4
   %lv$2 = alloca i32, align 4
@@ -59,9 +35,7 @@ mainEntry90:
   %lv = alloca i32, align 4
   store i32 2, i32* @gv, align 4
   store i32 3, i32* @gv1, align 4
-  %set_a = call i32 @set_a(i32 0)
-  %cond_normalize_ = icmp ne i32 %set_a, 0
-  br i1 %cond_normalize_, label %secondCond_120, label %next_635
+  br label %inline2218
 
 ifTrue_351:                                            ; pred = %secondCond_120
   br label %next_635
@@ -75,14 +49,10 @@ next_635:                                              ; pred = %mainEntry90, %s
   call void @putch(i32 32)
   store i32 2, i32* @gv, align 4
   store i32 3, i32* @gv1, align 4
-  %set_a$1 = call i32 @set_a(i32 0)
-  %cond_normalize_$2 = icmp ne i32 %set_a$1, 0
-  br i1 %cond_normalize_$2, label %secondCond_121, label %next_636
+  br label %inline2219
 
 secondCond_120:                                        ; pred = %mainEntry90
-  %set_b = call i32 @set_b(i32 1)
-  %cond_normalize_$1 = icmp ne i32 %set_b, 0
-  br i1 %cond_normalize_$1, label %ifTrue_351, label %next_635
+  br label %inline2220
 
 ifTrue_352:                                            ; pred = %secondCond_121
   br label %next_636
@@ -101,9 +71,7 @@ next_636:                                              ; pred = %next_635, %seco
   br i1 %cond_, label %secondCond_122, label %next_637
 
 secondCond_121:                                        ; pred = %next_635
-  %set_b$1 = call i32 @set_b(i32 1)
-  %cond_normalize_$3 = icmp ne i32 %set_b$1, 0
-  br i1 %cond_normalize_$3, label %ifTrue_352, label %next_636
+  br label %inline2221
 
 ifTrue_353:                                            ; pred = %secondCond_122
   br label %next_637
@@ -118,9 +86,7 @@ next_637:                                              ; pred = %next_636, %seco
   br i1 %cond_$1, label %ifTrue_354, label %secondCond_123
 
 secondCond_122:                                        ; pred = %next_636
-  %set_d = call i32 @set_d(i32 3)
-  %cond_normalize_$4 = icmp ne i32 %set_d, 0
-  br i1 %cond_normalize_$4, label %ifTrue_353, label %next_637
+  br label %inline2222
 
 ifTrue_354:                                            ; pred = %next_637, %secondCond_123
   br label %next_638
@@ -135,9 +101,7 @@ next_638:                                              ; pred = %secondCond_123,
   br i1 %cond_$2, label %ifTrue_355, label %next_639
 
 secondCond_123:                                        ; pred = %next_637
-  %set_d$1 = call i32 @set_d(i32 4)
-  %cond_normalize_$5 = icmp ne i32 %set_d$1, 0
-  br i1 %cond_normalize_$5, label %ifTrue_354, label %next_638
+  br label %inline2223
 
 ifTrue_355:                                            ; pred = %next_638
   call void @putch(i32 65)
@@ -341,5 +305,71 @@ secondCond_131:                                        ; pred = %secondCond_130
   %cond_tmp_$21 = zext i1 %cond_ge_tmp_$5 to i32
   %cond_$18 = icmp ne i32 %cond_tmp_$21, 0
   br i1 %cond_$18, label %ifTrue_365, label %next_650
+
+truncated213:                                          ; pred = %inline2218
+  %set_a = load i32, i32* %retVal_ofinline2218, align 4
+  %cond_normalize_ = icmp ne i32 %set_a, 0
+  br i1 %cond_normalize_, label %secondCond_120, label %next_635
+
+inline2218:                                            ; pred = %mainEntry90
+  store i32 0, i32* @gv, align 4
+  %a_of_inline2218 = load i32, i32* @gv, align 4
+  store i32 %a_of_inline2218, i32* %retVal_ofinline2218, align 4
+  br label %truncated213
+
+inline2221:                                            ; pred = %secondCond_121
+  store i32 1, i32* @gv1, align 4
+  %b_of_inline2221 = load i32, i32* @gv1, align 4
+  store i32 %b_of_inline2221, i32* %retVal_ofinline2221, align 4
+  br label %truncated216
+
+truncated218:                                          ; pred = %inline2223
+  %set_d$1 = load i32, i32* %retVal_ofinline2223, align 4
+  %cond_normalize_$5 = icmp ne i32 %set_d$1, 0
+  br i1 %cond_normalize_$5, label %ifTrue_354, label %next_638
+
+truncated215:                                          ; pred = %inline2220
+  %set_b = load i32, i32* %retVal_ofinline2220, align 4
+  %cond_normalize_$1 = icmp ne i32 %set_b, 0
+  br i1 %cond_normalize_$1, label %ifTrue_351, label %next_635
+
+truncated217:                                          ; pred = %inline2222
+  %set_d = load i32, i32* %retVal_ofinline2222, align 4
+  %cond_normalize_$4 = icmp ne i32 %set_d, 0
+  br i1 %cond_normalize_$4, label %ifTrue_353, label %next_637
+
+inline2223:                                            ; pred = %secondCond_123
+  store i32 4, i32* @gv2, align 4
+  %d_of_inline2223 = load i32, i32* @gv2, align 4
+  store i32 %d_of_inline2223, i32* %retVal_ofinline2223, align 4
+  br label %truncated218
+
+inline2219:                                            ; pred = %next_635
+  store i32 0, i32* @gv, align 4
+  %a_of_inline2219 = load i32, i32* @gv, align 4
+  store i32 %a_of_inline2219, i32* %retVal_ofinline2219, align 4
+  br label %truncated214
+
+truncated214:                                          ; pred = %inline2219
+  %set_a$1 = load i32, i32* %retVal_ofinline2219, align 4
+  %cond_normalize_$2 = icmp ne i32 %set_a$1, 0
+  br i1 %cond_normalize_$2, label %secondCond_121, label %next_636
+
+inline2222:                                            ; pred = %secondCond_122
+  store i32 3, i32* @gv2, align 4
+  %d_of_inline2222 = load i32, i32* @gv2, align 4
+  store i32 %d_of_inline2222, i32* %retVal_ofinline2222, align 4
+  br label %truncated217
+
+inline2220:                                            ; pred = %secondCond_120
+  store i32 1, i32* @gv1, align 4
+  %b_of_inline2220 = load i32, i32* @gv1, align 4
+  store i32 %b_of_inline2220, i32* %retVal_ofinline2220, align 4
+  br label %truncated215
+
+truncated216:                                          ; pred = %inline2221
+  %set_b$1 = load i32, i32* %retVal_ofinline2221, align 4
+  %cond_normalize_$3 = icmp ne i32 %set_b$1, 0
+  br i1 %cond_normalize_$3, label %ifTrue_352, label %next_636
 }
 

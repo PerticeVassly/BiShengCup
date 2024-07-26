@@ -137,21 +137,6 @@ mainEntry21:
   %sum1 = load i32, i32* %lv$16, align 4
   br label %inline702
 
-truncated78:                                        ; pred = %inline702
-  %foo = load i32, i32* %retVal_ofinline702, align 4
-  %result_$14 = add i32 %sum1, %foo
-  store i32 %result_$14, i32* %lv$16, align 4
-  store i32 4, i32* %lv$18, align 4
-  store i32 7, i32* %lv$19, align 4
-  store i32 2, i32* %lv$20, align 4
-  store i32 5, i32* %lv$21, align 4
-  store i32 8, i32* %lv$22, align 4
-  store i32 0, i32* %lv$23, align 4
-  store i32 6, i32* %lv$24, align 4
-  store i32 3, i32* %lv$25, align 4
-  %sum2 = load i32, i32* %lv$17, align 4
-  br label %inline703
-
 inline702:                                          ; pred = %mainEntry21
   %inp_of_inline702 = getelementptr [16 x i32], [16 x i32]* %lv_of_inline702, i32 0, i32 0
   store i32 0, i32* %inp_of_inline702, align 4
@@ -241,9 +226,24 @@ inline702:                                          ; pred = %mainEntry21
   %arr$1_of_inline702 = load i32, i32* %arr_of_inline702, align 4
   %result_$15_of_inline702 = add i32 %result_$14_of_inline702, %arr$1_of_inline702
   store i32 %result_$15_of_inline702, i32* %retVal_ofinline702, align 4
-  br label %truncated78
+  br label %truncated79
 
-truncated79:                                        ; pred = %inline703
+truncated79:                                        ; pred = %inline702
+  %foo = load i32, i32* %retVal_ofinline702, align 4
+  %result_$14 = add i32 %sum1, %foo
+  store i32 %result_$14, i32* %lv$16, align 4
+  store i32 4, i32* %lv$18, align 4
+  store i32 7, i32* %lv$19, align 4
+  store i32 2, i32* %lv$20, align 4
+  store i32 5, i32* %lv$21, align 4
+  store i32 8, i32* %lv$22, align 4
+  store i32 0, i32* %lv$23, align 4
+  store i32 6, i32* %lv$24, align 4
+  store i32 3, i32* %lv$25, align 4
+  %sum2 = load i32, i32* %lv$17, align 4
+  br label %inline703
+
+truncated80:                                        ; pred = %inline703
   %foo$1 = load i32, i32* %retVal_ofinline703, align 4
   %result_$15 = add i32 %sum2, %foo$1
   store i32 %result_$15, i32* %lv$17, align 4
@@ -290,7 +290,7 @@ truncated79:                                        ; pred = %inline703
   call void @putch(i32 10)
   ret i32 0
 
-inline703:                                          ; pred = %truncated78
+inline703:                                          ; pred = %truncated79
   %inp_of_inline703 = getelementptr [16 x i32], [16 x i32]* %lv_of_inline703, i32 0, i32 0
   store i32 0, i32* %inp_of_inline703, align 4
   %inp$1_of_inline703 = getelementptr [16 x i32], [16 x i32]* %lv_of_inline703, i32 0, i32 1
@@ -379,6 +379,6 @@ inline703:                                          ; pred = %truncated78
   %arr$1_of_inline703 = load i32, i32* %arr_of_inline703, align 4
   %result_$15_of_inline703 = add i32 %result_$14_of_inline703, %arr$1_of_inline703
   store i32 %result_$15_of_inline703, i32* %retVal_ofinline703, align 4
-  br label %truncated79
+  br label %truncated80
 }
 

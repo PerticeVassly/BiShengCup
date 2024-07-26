@@ -18,33 +18,9 @@ declare void @memset(i32*, i32, i32)
 
 @gv = global [4096 x i32] zeroinitializer, align 4
 
-define i32 @f1(i32* %0) {
-f1Entry:
-  %lv = alloca i32*, align 4
-  store i32* %0, i32** %lv, align 4
-  %a = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 5
-  store i32 4000, i32* %a, align 4
-  %a$1 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 4000
-  store i32 3, i32* %a$1, align 4
-  %a$2 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 4095
-  store i32 7, i32* %a$2, align 4
-  %a$3 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 4095
-  %a$4 = load i32, i32* %a$3, align 4
-  %arr_ = load i32*, i32** %lv, align 4
-  %b = getelementptr i32, i32* %arr_, i32 %a$4
-  %a$5 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 2216
-  %a$6 = load i32, i32* %a$5, align 4
-  %result_ = add i32 %a$6, 9
-  store i32 %result_, i32* %b, align 4
-  %a$7 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 5
-  %a$8 = load i32, i32* %a$7, align 4
-  %a$9 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 %a$8
-  %a$10 = load i32, i32* %a$9, align 4
-  ret i32 %a$10
-}
-
 define i32 @main() {
 mainEntry92:
+  %retVal_ofinline2224 = alloca i32, align 4
   %lv$1 = alloca [1024 x [4 x i32]], align 16
   %lv = alloca [4 x [1024 x i32]], align 16
   %ptr_ = getelementptr [4 x [1024 x i32]], [4 x [1024 x i32]]* %lv, i32 0, i32 0
@@ -24625,12 +24601,36 @@ mainEntry92:
   store i32 0, i32* %inp$8191, align 4
   %c = getelementptr [1024 x [4 x i32]], [1024 x [4 x i32]]* %lv$1, i32 0, i32 0
   %c$1 = getelementptr [4 x i32], [4 x i32]* %c, i32 0, i32 0
-  %f1 = call i32 @f1(i32* %c$1)
+  br label %inline2224
+
+truncated219:                                        ; pred = %inline2224
+  %f1 = load i32, i32* %retVal_ofinline2224, align 4
   call void @putint(i32 %f1)
   call void @putch(i32 10)
   %ptr_$8192 = getelementptr [1024 x [4 x i32]], [1024 x [4 x i32]]* %lv$1, i32 0, i32 2
   %c$2 = getelementptr [4 x i32], [4 x i32]* %ptr_$8192, i32 0, i32 0
   %c$3 = load i32, i32* %c$2, align 4
   ret i32 %c$3
+
+inline2224:                                          ; pred = %mainEntry92
+  %a_of_inline2224 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 5
+  store i32 4000, i32* %a_of_inline2224, align 4
+  %a$1_of_inline2224 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 4000
+  store i32 3, i32* %a$1_of_inline2224, align 4
+  %a$2_of_inline2224 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 4095
+  store i32 7, i32* %a$2_of_inline2224, align 4
+  %a$3_of_inline2224 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 4095
+  %a$4_of_inline2224 = load i32, i32* %a$3_of_inline2224, align 4
+  %b_of_inline2224 = getelementptr i32, i32* %c$1, i32 %a$4_of_inline2224
+  %a$5_of_inline2224 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 2216
+  %a$6_of_inline2224 = load i32, i32* %a$5_of_inline2224, align 4
+  %result__of_inline2224 = add i32 %a$6_of_inline2224, 9
+  store i32 %result__of_inline2224, i32* %b_of_inline2224, align 4
+  %a$7_of_inline2224 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 5
+  %a$8_of_inline2224 = load i32, i32* %a$7_of_inline2224, align 4
+  %a$9_of_inline2224 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 %a$8_of_inline2224
+  %a$10_of_inline2224 = load i32, i32* %a$9_of_inline2224, align 4
+  store i32 %a$10_of_inline2224, i32* %retVal_ofinline2224, align 4
+  br label %truncated219
 }
 

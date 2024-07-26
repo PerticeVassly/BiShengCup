@@ -38,9 +38,9 @@ mainEntry9:
   %lv = alloca i32, align 4
   %__HELLO = getelementptr [100 x i32], [100 x i32]* @gv, i32 0, i32 0
   br label %inline179
-  %cond_normalize_ = icmp ne i32 1, 0
 
 whileCond_32:                                        ; pred = %mainEntry9, %next_68
+  %cond_normalize_ = icmp ne i32 1, 0
   br label %whileBody_32
 
 whileBody_32:                                        ; pred = %whileCond_32
@@ -84,10 +84,17 @@ ifTrue_35:                                           ; pred = %next_67
 next_68:                                             ; pred = %next_67, %ifTrue_35
   br label %whileCond_32
 
-truncated37:                                         ; pred = %inline186
-  %putstr$1 = load i32, i32* %retVal_ofinline183, align 4
-  %saY_HeI10_To = getelementptr [40 x i32], [40 x i32]* @gv2, i32 0, i32 0
-  br label %inline187
+inline184:                                           ; pred = %inline183, %inline185
+  %iNd__1X_of_inline184 = load i32, i32* %lv$1_of_inline183, align 4
+  %str_of_inline184 = getelementptr i32, i32* %N4__mE___$1, i32 %iNd__1X_of_inline184
+  %str$1_of_inline184 = load i32, i32* %str_of_inline184, align 4
+  %cond_normalize__of_inline184 = icmp ne i32 %str$1_of_inline184, 0
+  br i1 %cond_normalize__of_inline184, label %inline185, label %inline186
+
+inline182:                                           ; pred = %inline180
+  %iNd__1X$3_of_inline182 = load i32, i32* %lv$1_of_inline179, align 4
+  store i32 %iNd__1X$3_of_inline182, i32* %retVal_ofinline179, align 4
+  br label %truncated36
 
 inline180:                                           ; pred = %inline179, %inline181
   %iNd__1X_of_inline180 = load i32, i32* %lv$1_of_inline179, align 4
@@ -95,6 +102,11 @@ inline180:                                           ; pred = %inline179, %inlin
   %str$1_of_inline180 = load i32, i32* %str_of_inline180, align 4
   %cond_normalize__of_inline180 = icmp ne i32 %str$1_of_inline180, 0
   br i1 %cond_normalize__of_inline180, label %inline181, label %inline182
+
+truncated36:                                         ; pred = %inline182
+  %putstr = load i32, i32* %retVal_ofinline179, align 4
+  store i32 0, i32* %lv, align 4
+  br label %whileCond_32
 
 inline181:                                           ; pred = %inline180
   %iNd__1X$1_of_inline181 = load i32, i32* %lv$1_of_inline179, align 4
@@ -106,10 +118,6 @@ inline181:                                           ; pred = %inline180
   store i32 %result__of_inline181, i32* %lv$1_of_inline179, align 4
   br label %inline180
 
-inline183:                                           ; pred = %ifTrue_34
-  store i32 0, i32* %lv$1_of_inline183, align 4
-  br label %inline184
-
 inline185:                                           ; pred = %inline184
   %iNd__1X$1_of_inline185 = load i32, i32* %lv$1_of_inline183, align 4
   %str$2_of_inline185 = getelementptr i32, i32* %N4__mE___$1, i32 %iNd__1X$1_of_inline185
@@ -120,31 +128,34 @@ inline185:                                           ; pred = %inline184
   store i32 %result__of_inline185, i32* %lv$1_of_inline183, align 4
   br label %inline184
 
-inline179:                                           ; pred = %mainEntry9
-  store i32 0, i32* %lv$1_of_inline179, align 4
-  br label %inline180
-
 inline186:                                           ; pred = %inline184
   %iNd__1X$3_of_inline186 = load i32, i32* %lv$1_of_inline183, align 4
   store i32 %iNd__1X$3_of_inline186, i32* %retVal_ofinline183, align 4
   br label %truncated37
 
-inline184:                                           ; pred = %inline183, %inline185
-  %iNd__1X_of_inline184 = load i32, i32* %lv$1_of_inline183, align 4
-  %str_of_inline184 = getelementptr i32, i32* %N4__mE___$1, i32 %iNd__1X_of_inline184
-  %str$1_of_inline184 = load i32, i32* %str_of_inline184, align 4
-  %cond_normalize__of_inline184 = icmp ne i32 %str$1_of_inline184, 0
-  br i1 %cond_normalize__of_inline184, label %inline185, label %inline186
+truncated37:                                         ; pred = %inline186
+  %putstr$1 = load i32, i32* %retVal_ofinline183, align 4
+  %saY_HeI10_To = getelementptr [40 x i32], [40 x i32]* @gv2, i32 0, i32 0
+  br label %inline187
 
-truncated36:                                         ; pred = %inline182
-  %putstr = load i32, i32* %retVal_ofinline179, align 4
-  store i32 0, i32* %lv, align 4
-  br label %whileCond_32
+inline183:                                           ; pred = %ifTrue_34
+  store i32 0, i32* %lv$1_of_inline183, align 4
+  br label %inline184
 
-inline182:                                           ; pred = %inline180
-  %iNd__1X$3_of_inline182 = load i32, i32* %lv$1_of_inline179, align 4
-  store i32 %iNd__1X$3_of_inline182, i32* %retVal_ofinline179, align 4
-  br label %truncated36
+inline179:                                           ; pred = %mainEntry9
+  store i32 0, i32* %lv$1_of_inline179, align 4
+  br label %inline180
+
+inline187:                                           ; pred = %truncated37
+  store i32 0, i32* %lv$1_of_inline187, align 4
+  br label %inline188
+
+truncated38:                                         ; pred = %inline190
+  %putstr$2 = load i32, i32* %retVal_ofinline187, align 4
+  %__$1 = load i32, i32* %lv$2, align 4
+  %N4__mE___$2 = getelementptr [6 x [50 x i32]], [6 x [50 x i32]]* @gv1, i32 0, i32 %__$1
+  %N4__mE___$3 = getelementptr [50 x i32], [50 x i32]* %N4__mE___$2, i32 0, i32 0
+  br label %inline191
 
 inline188:                                           ; pred = %inline187, %inline189
   %iNd__1X_of_inline188 = load i32, i32* %lv$1_of_inline187, align 4
@@ -152,11 +163,6 @@ inline188:                                           ; pred = %inline187, %inlin
   %str$1_of_inline188 = load i32, i32* %str_of_inline188, align 4
   %cond_normalize__of_inline188 = icmp ne i32 %str$1_of_inline188, 0
   br i1 %cond_normalize__of_inline188, label %inline189, label %inline190
-
-inline190:                                           ; pred = %inline188
-  %iNd__1X$3_of_inline190 = load i32, i32* %lv$1_of_inline187, align 4
-  store i32 %iNd__1X$3_of_inline190, i32* %retVal_ofinline187, align 4
-  br label %truncated38
 
 inline189:                                           ; pred = %inline188
   %iNd__1X$1_of_inline189 = load i32, i32* %lv$1_of_inline187, align 4
@@ -168,33 +174,19 @@ inline189:                                           ; pred = %inline188
   store i32 %result__of_inline189, i32* %lv$1_of_inline187, align 4
   br label %inline188
 
-truncated38:                                         ; pred = %inline190
-  %putstr$2 = load i32, i32* %retVal_ofinline187, align 4
-  %__$1 = load i32, i32* %lv$2, align 4
-  %N4__mE___$2 = getelementptr [6 x [50 x i32]], [6 x [50 x i32]]* @gv1, i32 0, i32 %__$1
-  %N4__mE___$3 = getelementptr [50 x i32], [50 x i32]* %N4__mE___$2, i32 0, i32 0
-  br label %inline191
-
-inline187:                                           ; pred = %truncated37
-  store i32 0, i32* %lv$1_of_inline187, align 4
-  br label %inline188
-
-truncated39:                                         ; pred = %inline194
-  %putstr$3 = load i32, i32* %retVal_ofinline191, align 4
-  %RET = getelementptr [5 x i32], [5 x i32]* @gv3, i32 0, i32 0
-  br label %inline195
+inline190:                                           ; pred = %inline188
+  %iNd__1X$3_of_inline190 = load i32, i32* %lv$1_of_inline187, align 4
+  store i32 %iNd__1X$3_of_inline190, i32* %retVal_ofinline187, align 4
+  br label %truncated38
 
 inline194:                                           ; pred = %inline192
   %iNd__1X$3_of_inline194 = load i32, i32* %lv$1_of_inline191, align 4
   store i32 %iNd__1X$3_of_inline194, i32* %retVal_ofinline191, align 4
   br label %truncated39
 
-inline192:                                           ; pred = %inline191, %inline193
-  %iNd__1X_of_inline192 = load i32, i32* %lv$1_of_inline191, align 4
-  %str_of_inline192 = getelementptr i32, i32* %N4__mE___$3, i32 %iNd__1X_of_inline192
-  %str$1_of_inline192 = load i32, i32* %str_of_inline192, align 4
-  %cond_normalize__of_inline192 = icmp ne i32 %str$1_of_inline192, 0
-  br i1 %cond_normalize__of_inline192, label %inline193, label %inline194
+inline191:                                           ; pred = %truncated38
+  store i32 0, i32* %lv$1_of_inline191, align 4
+  br label %inline192
 
 inline193:                                           ; pred = %inline192
   %iNd__1X$1_of_inline193 = load i32, i32* %lv$1_of_inline191, align 4
@@ -206,29 +198,22 @@ inline193:                                           ; pred = %inline192
   store i32 %result__of_inline193, i32* %lv$1_of_inline191, align 4
   br label %inline192
 
-inline191:                                           ; pred = %truncated38
-  store i32 0, i32* %lv$1_of_inline191, align 4
-  br label %inline192
+truncated39:                                         ; pred = %inline194
+  %putstr$3 = load i32, i32* %retVal_ofinline191, align 4
+  %RET = getelementptr [5 x i32], [5 x i32]* @gv3, i32 0, i32 0
+  br label %inline195
 
-truncated40:                                         ; pred = %inline198
-  %putstr$4 = load i32, i32* %retVal_ofinline195, align 4
-  br label %next_67
+inline192:                                           ; pred = %inline191, %inline193
+  %iNd__1X_of_inline192 = load i32, i32* %lv$1_of_inline191, align 4
+  %str_of_inline192 = getelementptr i32, i32* %N4__mE___$3, i32 %iNd__1X_of_inline192
+  %str$1_of_inline192 = load i32, i32* %str_of_inline192, align 4
+  %cond_normalize__of_inline192 = icmp ne i32 %str$1_of_inline192, 0
+  br i1 %cond_normalize__of_inline192, label %inline193, label %inline194
 
 inline198:                                           ; pred = %inline196
   %iNd__1X$3_of_inline198 = load i32, i32* %lv$1_of_inline195, align 4
   store i32 %iNd__1X$3_of_inline198, i32* %retVal_ofinline195, align 4
   br label %truncated40
-
-inline196:                                           ; pred = %inline195, %inline197
-  %iNd__1X_of_inline196 = load i32, i32* %lv$1_of_inline195, align 4
-  %str_of_inline196 = getelementptr i32, i32* %RET, i32 %iNd__1X_of_inline196
-  %str$1_of_inline196 = load i32, i32* %str_of_inline196, align 4
-  %cond_normalize__of_inline196 = icmp ne i32 %str$1_of_inline196, 0
-  br i1 %cond_normalize__of_inline196, label %inline197, label %inline198
-
-inline195:                                           ; pred = %truncated39
-  store i32 0, i32* %lv$1_of_inline195, align 4
-  br label %inline196
 
 inline197:                                           ; pred = %inline196
   %iNd__1X$1_of_inline197 = load i32, i32* %lv$1_of_inline195, align 4
@@ -239,5 +224,20 @@ inline197:                                           ; pred = %inline196
   %result__of_inline197 = add i32 %iNd__1X$2_of_inline197, 1
   store i32 %result__of_inline197, i32* %lv$1_of_inline195, align 4
   br label %inline196
+
+inline195:                                           ; pred = %truncated39
+  store i32 0, i32* %lv$1_of_inline195, align 4
+  br label %inline196
+
+truncated40:                                         ; pred = %inline198
+  %putstr$4 = load i32, i32* %retVal_ofinline195, align 4
+  br label %next_67
+
+inline196:                                           ; pred = %inline195, %inline197
+  %iNd__1X_of_inline196 = load i32, i32* %lv$1_of_inline195, align 4
+  %str_of_inline196 = getelementptr i32, i32* %RET, i32 %iNd__1X_of_inline196
+  %str$1_of_inline196 = load i32, i32* %str_of_inline196, align 4
+  %cond_normalize__of_inline196 = icmp ne i32 %str$1_of_inline196, 0
+  br i1 %cond_normalize__of_inline196, label %inline197, label %inline198
 }
 
