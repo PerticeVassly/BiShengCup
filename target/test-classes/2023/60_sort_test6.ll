@@ -82,10 +82,6 @@ whileBody_41:                                        ; pred = %whileCond_41
 next_82:                                             ; pred = %whileCond_41
   ret i32 0
 
-il214:                                               ; pred = %il212
-  store i32 %n, i32* %lv$5_of_il205, align 4
-  br label %il215
-
 il206:                                               ; pred = %il205, %il207
   %k_of_il206 = load i32, i32* %lv$6_of_il205, align 4
   %cond_lt_tmp__of_il206 = icmp slt i32 %k_of_il206, 10
@@ -93,63 +89,9 @@ il206:                                               ; pred = %il205, %il207
   %cond__of_il206 = icmp ne i32 %cond_tmp__of_il206, 0
   br i1 %cond__of_il206, label %il207, label %il208
 
-il208:                                               ; pred = %il206
-  br label %il209
-
-il205:                                               ; pred = %mainEntry13
-  store i32 0, i32* %lv$6_of_il205, align 4
-  store i32 0, i32* %lv$4_of_il205, align 4
-  store i32 0, i32* %lv$5_of_il205, align 4
-  br label %il206
-
-tc42:                                                ; pred = %il217
-  %counting_sort = load i32, i32* %retVal_ofil205, align 4
-  store i32 %counting_sort, i32* %lv$1, align 4
-  br label %whileCond_41
-
 il211:                                               ; pred = %il209
   store i32 1, i32* %lv$6_of_il205, align 4
   br label %il212
-
-il207:                                               ; pred = %il206
-  %k$1_of_il207 = load i32, i32* %lv$6_of_il205, align 4
-  %count_arr_of_il207 = getelementptr [10 x i32], [10 x i32]* %lv$3_of_il205, i32 0, i32 %k$1_of_il207
-  store i32 0, i32* %count_arr_of_il207, align 4
-  %k$2_of_il207 = load i32, i32* %lv$6_of_il205, align 4
-  %result__of_il207 = add i32 %k$2_of_il207, 1
-  store i32 %result__of_il207, i32* %lv$6_of_il205, align 4
-  br label %il206
-
-il215:                                               ; pred = %il214, %il216
-  %j_of_il215 = load i32, i32* %lv$5_of_il205, align 4
-  %cond_gt_tmp__of_il215 = icmp sgt i32 %j_of_il215, 0
-  %cond_tmp_$3_of_il215 = zext i1 %cond_gt_tmp__of_il215 to i32
-  %cond_$3_of_il215 = icmp ne i32 %cond_tmp_$3_of_il215, 0
-  br i1 %cond_$3_of_il215, label %il216, label %il217
-
-il212:                                               ; pred = %il211, %il213
-  %k$3_of_il212 = load i32, i32* %lv$6_of_il205, align 4
-  %cond_lt_tmp_$2_of_il212 = icmp slt i32 %k$3_of_il212, 10
-  %cond_tmp_$2_of_il212 = zext i1 %cond_lt_tmp_$2_of_il212 to i32
-  %cond_$2_of_il212 = icmp ne i32 %cond_tmp_$2_of_il212, 0
-  br i1 %cond_$2_of_il212, label %il213, label %il214
-
-il210:                                               ; pred = %il209
-  %i$1_of_il210 = load i32, i32* %lv$4_of_il205, align 4
-  %ini_arr_of_il210 = getelementptr i32, i32* %a$10, i32 %i$1_of_il210
-  %ini_arr$1_of_il210 = load i32, i32* %ini_arr_of_il210, align 4
-  %count_arr$1_of_il210 = getelementptr [10 x i32], [10 x i32]* %lv$3_of_il205, i32 0, i32 %ini_arr$1_of_il210
-  %i$2_of_il210 = load i32, i32* %lv$4_of_il205, align 4
-  %ini_arr$2_of_il210 = getelementptr i32, i32* %a$10, i32 %i$2_of_il210
-  %ini_arr$3_of_il210 = load i32, i32* %ini_arr$2_of_il210, align 4
-  %count_arr$2_of_il210 = getelementptr [10 x i32], [10 x i32]* %lv$3_of_il205, i32 0, i32 %ini_arr$3_of_il210
-  %count_arr$3_of_il210 = load i32, i32* %count_arr$2_of_il210, align 4
-  %result_$1_of_il210 = add i32 %count_arr$3_of_il210, 1
-  store i32 %result_$1_of_il210, i32* %count_arr$1_of_il210, align 4
-  %i$3_of_il210 = load i32, i32* %lv$4_of_il205, align 4
-  %result_$2_of_il210 = add i32 %i$3_of_il210, 1
-  store i32 %result_$2_of_il210, i32* %lv$4_of_il205, align 4
-  br label %il209
 
 il213:                                               ; pred = %il212
   %k$4_of_il213 = load i32, i32* %lv$6_of_il205, align 4
@@ -168,9 +110,17 @@ il213:                                               ; pred = %il212
   store i32 %result_$5_of_il213, i32* %lv$6_of_il205, align 4
   br label %il212
 
-il217:                                               ; pred = %il215
-  store i32 0, i32* %retVal_ofil205, align 4
-  br label %tc42
+tc42:                                                ; pred = %il217
+  %counting_sort = load i32, i32* %retVal_ofil205, align 4
+  store i32 %counting_sort, i32* %lv$1, align 4
+  br label %whileCond_41
+
+il209:                                               ; pred = %il208, %il210
+  %i_of_il209 = load i32, i32* %lv$4_of_il205, align 4
+  %cond_lt_tmp_$1_of_il209 = icmp slt i32 %i_of_il209, %n
+  %cond_tmp_$1_of_il209 = zext i1 %cond_lt_tmp_$1_of_il209 to i32
+  %cond_$1_of_il209 = icmp ne i32 %cond_tmp_$1_of_il209, 0
+  br i1 %cond_$1_of_il209, label %il210, label %il211
 
 il216:                                               ; pred = %il215
   %j$1_of_il216 = load i32, i32* %lv$5_of_il205, align 4
@@ -203,11 +153,61 @@ il216:                                               ; pred = %il215
   store i32 %result_$11_of_il216, i32* %lv$5_of_il205, align 4
   br label %il215
 
-il209:                                               ; pred = %il208, %il210
-  %i_of_il209 = load i32, i32* %lv$4_of_il205, align 4
-  %cond_lt_tmp_$1_of_il209 = icmp slt i32 %i_of_il209, %n
-  %cond_tmp_$1_of_il209 = zext i1 %cond_lt_tmp_$1_of_il209 to i32
-  %cond_$1_of_il209 = icmp ne i32 %cond_tmp_$1_of_il209, 0
-  br i1 %cond_$1_of_il209, label %il210, label %il211
+il214:                                               ; pred = %il212
+  store i32 %n, i32* %lv$5_of_il205, align 4
+  br label %il215
+
+il217:                                               ; pred = %il215
+  store i32 0, i32* %retVal_ofil205, align 4
+  br label %tc42
+
+il212:                                               ; pred = %il211, %il213
+  %k$3_of_il212 = load i32, i32* %lv$6_of_il205, align 4
+  %cond_lt_tmp_$2_of_il212 = icmp slt i32 %k$3_of_il212, 10
+  %cond_tmp_$2_of_il212 = zext i1 %cond_lt_tmp_$2_of_il212 to i32
+  %cond_$2_of_il212 = icmp ne i32 %cond_tmp_$2_of_il212, 0
+  br i1 %cond_$2_of_il212, label %il213, label %il214
+
+il207:                                               ; pred = %il206
+  %k$1_of_il207 = load i32, i32* %lv$6_of_il205, align 4
+  %count_arr_of_il207 = getelementptr [10 x i32], [10 x i32]* %lv$3_of_il205, i32 0, i32 %k$1_of_il207
+  store i32 0, i32* %count_arr_of_il207, align 4
+  %k$2_of_il207 = load i32, i32* %lv$6_of_il205, align 4
+  %result__of_il207 = add i32 %k$2_of_il207, 1
+  store i32 %result__of_il207, i32* %lv$6_of_il205, align 4
+  br label %il206
+
+il205:                                               ; pred = %mainEntry13
+  store i32 0, i32* %lv$6_of_il205, align 4
+  store i32 0, i32* %lv$4_of_il205, align 4
+  store i32 0, i32* %lv$5_of_il205, align 4
+  br label %il206
+
+il210:                                               ; pred = %il209
+  %i$1_of_il210 = load i32, i32* %lv$4_of_il205, align 4
+  %ini_arr_of_il210 = getelementptr i32, i32* %a$10, i32 %i$1_of_il210
+  %ini_arr$1_of_il210 = load i32, i32* %ini_arr_of_il210, align 4
+  %count_arr$1_of_il210 = getelementptr [10 x i32], [10 x i32]* %lv$3_of_il205, i32 0, i32 %ini_arr$1_of_il210
+  %i$2_of_il210 = load i32, i32* %lv$4_of_il205, align 4
+  %ini_arr$2_of_il210 = getelementptr i32, i32* %a$10, i32 %i$2_of_il210
+  %ini_arr$3_of_il210 = load i32, i32* %ini_arr$2_of_il210, align 4
+  %count_arr$2_of_il210 = getelementptr [10 x i32], [10 x i32]* %lv$3_of_il205, i32 0, i32 %ini_arr$3_of_il210
+  %count_arr$3_of_il210 = load i32, i32* %count_arr$2_of_il210, align 4
+  %result_$1_of_il210 = add i32 %count_arr$3_of_il210, 1
+  store i32 %result_$1_of_il210, i32* %count_arr$1_of_il210, align 4
+  %i$3_of_il210 = load i32, i32* %lv$4_of_il205, align 4
+  %result_$2_of_il210 = add i32 %i$3_of_il210, 1
+  store i32 %result_$2_of_il210, i32* %lv$4_of_il205, align 4
+  br label %il209
+
+il215:                                               ; pred = %il214, %il216
+  %j_of_il215 = load i32, i32* %lv$5_of_il205, align 4
+  %cond_gt_tmp__of_il215 = icmp sgt i32 %j_of_il215, 0
+  %cond_tmp_$3_of_il215 = zext i1 %cond_gt_tmp__of_il215 to i32
+  %cond_$3_of_il215 = icmp ne i32 %cond_tmp_$3_of_il215, 0
+  br i1 %cond_$3_of_il215, label %il216, label %il217
+
+il208:                                               ; pred = %il206
+  br label %il209
 }
 

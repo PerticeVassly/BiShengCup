@@ -28,8 +28,19 @@ il202:                                              ; pred = %il204, %il201
   store i32 %a$2_of_il202, i32* %retVal_ofil199, align 4
   br label %tc41
 
-il204:                                              ; pred = %il200, %il203
+il201:                                              ; pred = %il199
+  %a$1_of_il201 = load i32, i32* %lv_of_il199, align 4
+  %result__of_il201 = add i32 %a$1_of_il201, 15
+  store i32 %result__of_il201, i32* %lv_of_il199, align 4
   br label %il202
+
+il203:                                              ; pred = %il200
+  store i32 25, i32* %lv_of_il199, align 4
+  br label %il204
+
+tc41:                                               ; pred = %il202
+  %if_if_Else = load i32, i32* %retVal_ofil199, align 4
+  ret i32 %if_if_Else
 
 il200:                                              ; pred = %il199
   %b_of_il200 = load i32, i32* %lv$1_of_il199, align 4
@@ -38,14 +49,7 @@ il200:                                              ; pred = %il199
   %cond_$1_of_il200 = icmp ne i32 %cond_tmp_$1_of_il200, 0
   br i1 %cond_$1_of_il200, label %il203, label %il204
 
-tc41:                                               ; pred = %il202
-  %if_if_Else = load i32, i32* %retVal_ofil199, align 4
-  ret i32 %if_if_Else
-
-il201:                                              ; pred = %il199
-  %a$1_of_il201 = load i32, i32* %lv_of_il199, align 4
-  %result__of_il201 = add i32 %a$1_of_il201, 15
-  store i32 %result__of_il201, i32* %lv_of_il199, align 4
+il204:                                              ; pred = %il200, %il203
   br label %il202
 
 il199:                                              ; pred = %mainEntry12
@@ -56,9 +60,5 @@ il199:                                              ; pred = %mainEntry12
   %cond_tmp__of_il199 = zext i1 %cond_eq_tmp__of_il199 to i32
   %cond__of_il199 = icmp ne i32 %cond_tmp__of_il199, 0
   br i1 %cond__of_il199, label %il200, label %il201
-
-il203:                                              ; pred = %il200
-  store i32 25, i32* %lv_of_il199, align 4
-  br label %il204
 }
 

@@ -59,6 +59,9 @@ il40:                                              ; pred = %ifFalse_4
   call void @putch(i32 32)
   br label %tc3
 
+tc2:                                               ; pred = %il39
+  br label %next_13
+
 tc3:                                               ; pred = %il40
   %n$2 = load i32, i32* %lv, align 4
   %result_$1 = sub i32 %n$2, 1
@@ -75,9 +78,6 @@ il39:                                              ; pred = %ifTrue_4
   call void @putch(i32 44)
   call void @putch(i32 32)
   br label %tc2
-
-tc2:                                               ; pred = %il39
-  br label %next_13
 }
 
 define i32 @main() {

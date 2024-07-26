@@ -20,10 +20,267 @@ declare void @memset(i32*, i32, i32)
 @gv1 = global i32 0, align 4
 @gv2 = global i32 0, align 4
 
+define i32 @mul(float* %0, float* %1, float* %2, float* %3, float* %4, float* %5, float* %6, float* %7, float* %8) {
+mulEntry:
+  %lv$9 = alloca i32, align 4
+  %lv$8 = alloca float*, align 4
+  %lv$7 = alloca float*, align 4
+  %lv$6 = alloca float*, align 4
+  %lv$5 = alloca float*, align 4
+  %lv$4 = alloca float*, align 4
+  %lv$3 = alloca float*, align 4
+  %lv$2 = alloca float*, align 4
+  %lv$1 = alloca float*, align 4
+  %lv = alloca float*, align 4
+  store float* %0, float** %lv, align 4
+  store float* %1, float** %lv$1, align 4
+  store float* %2, float** %lv$2, align 4
+  store float* %3, float** %lv$3, align 4
+  store float* %4, float** %lv$4, align 4
+  store float* %5, float** %lv$5, align 4
+  store float* %6, float** %lv$6, align 4
+  store float* %7, float** %lv$7, align 4
+  store float* %8, float** %lv$8, align 4
+  store i32 0, i32* %lv$9, align 4
+  %arr_ = load float*, float** %lv$6, align 4
+  %c0 = getelementptr float, float* %arr_, i32 0
+  %arr_$1 = load float*, float** %lv, align 4
+  %a0 = getelementptr float, float* %arr_$1, i32 0
+  %a0$1 = load float, float* %a0, align 4
+  %arr_$2 = load float*, float** %lv$3, align 4
+  %b0 = getelementptr float, float* %arr_$2, i32 0
+  %b0$1 = load float, float* %b0, align 4
+  %result_ = fmul float %a0$1, %b0$1
+  %arr_$3 = load float*, float** %lv, align 4
+  %a0$2 = getelementptr float, float* %arr_$3, i32 1
+  %a0$3 = load float, float* %a0$2, align 4
+  %arr_$4 = load float*, float** %lv$4, align 4
+  %b1 = getelementptr float, float* %arr_$4, i32 0
+  %b1$1 = load float, float* %b1, align 4
+  %result_$1 = fmul float %a0$3, %b1$1
+  %result_$2 = fadd float %result_, %result_$1
+  %arr_$5 = load float*, float** %lv, align 4
+  %a0$4 = getelementptr float, float* %arr_$5, i32 2
+  %a0$5 = load float, float* %a0$4, align 4
+  %arr_$6 = load float*, float** %lv$5, align 4
+  %b2 = getelementptr float, float* %arr_$6, i32 0
+  %b2$1 = load float, float* %b2, align 4
+  %result_$3 = fmul float %a0$5, %b2$1
+  %result_$4 = fadd float %result_$2, %result_$3
+  store float %result_$4, float* %c0, align 4
+  %arr_$7 = load float*, float** %lv$6, align 4
+  %c0$1 = getelementptr float, float* %arr_$7, i32 1
+  %arr_$8 = load float*, float** %lv, align 4
+  %a0$6 = getelementptr float, float* %arr_$8, i32 0
+  %a0$7 = load float, float* %a0$6, align 4
+  %arr_$9 = load float*, float** %lv$3, align 4
+  %b0$2 = getelementptr float, float* %arr_$9, i32 1
+  %b0$3 = load float, float* %b0$2, align 4
+  %result_$5 = fmul float %a0$7, %b0$3
+  %arr_$10 = load float*, float** %lv, align 4
+  %a0$8 = getelementptr float, float* %arr_$10, i32 1
+  %a0$9 = load float, float* %a0$8, align 4
+  %arr_$11 = load float*, float** %lv$4, align 4
+  %b1$2 = getelementptr float, float* %arr_$11, i32 1
+  %b1$3 = load float, float* %b1$2, align 4
+  %result_$6 = fmul float %a0$9, %b1$3
+  %result_$7 = fadd float %result_$5, %result_$6
+  %arr_$12 = load float*, float** %lv, align 4
+  %a0$10 = getelementptr float, float* %arr_$12, i32 2
+  %a0$11 = load float, float* %a0$10, align 4
+  %arr_$13 = load float*, float** %lv$5, align 4
+  %b2$2 = getelementptr float, float* %arr_$13, i32 1
+  %b2$3 = load float, float* %b2$2, align 4
+  %result_$8 = fmul float %a0$11, %b2$3
+  %result_$9 = fadd float %result_$7, %result_$8
+  store float %result_$9, float* %c0$1, align 4
+  %arr_$14 = load float*, float** %lv$6, align 4
+  %c0$2 = getelementptr float, float* %arr_$14, i32 2
+  %arr_$15 = load float*, float** %lv, align 4
+  %a0$12 = getelementptr float, float* %arr_$15, i32 0
+  %a0$13 = load float, float* %a0$12, align 4
+  %arr_$16 = load float*, float** %lv$3, align 4
+  %b0$4 = getelementptr float, float* %arr_$16, i32 2
+  %b0$5 = load float, float* %b0$4, align 4
+  %result_$10 = fmul float %a0$13, %b0$5
+  %arr_$17 = load float*, float** %lv, align 4
+  %a0$14 = getelementptr float, float* %arr_$17, i32 1
+  %a0$15 = load float, float* %a0$14, align 4
+  %arr_$18 = load float*, float** %lv$4, align 4
+  %b1$4 = getelementptr float, float* %arr_$18, i32 2
+  %b1$5 = load float, float* %b1$4, align 4
+  %result_$11 = fmul float %a0$15, %b1$5
+  %result_$12 = fadd float %result_$10, %result_$11
+  %arr_$19 = load float*, float** %lv, align 4
+  %a0$16 = getelementptr float, float* %arr_$19, i32 2
+  %a0$17 = load float, float* %a0$16, align 4
+  %arr_$20 = load float*, float** %lv$5, align 4
+  %b2$4 = getelementptr float, float* %arr_$20, i32 2
+  %b2$5 = load float, float* %b2$4, align 4
+  %result_$13 = fmul float %a0$17, %b2$5
+  %result_$14 = fadd float %result_$12, %result_$13
+  store float %result_$14, float* %c0$2, align 4
+  %arr_$21 = load float*, float** %lv$7, align 4
+  %c1 = getelementptr float, float* %arr_$21, i32 0
+  %arr_$22 = load float*, float** %lv$1, align 4
+  %a1 = getelementptr float, float* %arr_$22, i32 0
+  %a1$1 = load float, float* %a1, align 4
+  %arr_$23 = load float*, float** %lv$3, align 4
+  %b0$6 = getelementptr float, float* %arr_$23, i32 0
+  %b0$7 = load float, float* %b0$6, align 4
+  %result_$15 = fmul float %a1$1, %b0$7
+  %arr_$24 = load float*, float** %lv$1, align 4
+  %a1$2 = getelementptr float, float* %arr_$24, i32 1
+  %a1$3 = load float, float* %a1$2, align 4
+  %arr_$25 = load float*, float** %lv$4, align 4
+  %b1$6 = getelementptr float, float* %arr_$25, i32 0
+  %b1$7 = load float, float* %b1$6, align 4
+  %result_$16 = fmul float %a1$3, %b1$7
+  %result_$17 = fadd float %result_$15, %result_$16
+  %arr_$26 = load float*, float** %lv$1, align 4
+  %a1$4 = getelementptr float, float* %arr_$26, i32 2
+  %a1$5 = load float, float* %a1$4, align 4
+  %arr_$27 = load float*, float** %lv$5, align 4
+  %b2$6 = getelementptr float, float* %arr_$27, i32 0
+  %b2$7 = load float, float* %b2$6, align 4
+  %result_$18 = fmul float %a1$5, %b2$7
+  %result_$19 = fadd float %result_$17, %result_$18
+  store float %result_$19, float* %c1, align 4
+  %arr_$28 = load float*, float** %lv$7, align 4
+  %c1$1 = getelementptr float, float* %arr_$28, i32 1
+  %arr_$29 = load float*, float** %lv$1, align 4
+  %a1$6 = getelementptr float, float* %arr_$29, i32 0
+  %a1$7 = load float, float* %a1$6, align 4
+  %arr_$30 = load float*, float** %lv$3, align 4
+  %b0$8 = getelementptr float, float* %arr_$30, i32 1
+  %b0$9 = load float, float* %b0$8, align 4
+  %result_$20 = fmul float %a1$7, %b0$9
+  %arr_$31 = load float*, float** %lv$1, align 4
+  %a1$8 = getelementptr float, float* %arr_$31, i32 1
+  %a1$9 = load float, float* %a1$8, align 4
+  %arr_$32 = load float*, float** %lv$4, align 4
+  %b1$8 = getelementptr float, float* %arr_$32, i32 1
+  %b1$9 = load float, float* %b1$8, align 4
+  %result_$21 = fmul float %a1$9, %b1$9
+  %result_$22 = fadd float %result_$20, %result_$21
+  %arr_$33 = load float*, float** %lv$1, align 4
+  %a1$10 = getelementptr float, float* %arr_$33, i32 2
+  %a1$11 = load float, float* %a1$10, align 4
+  %arr_$34 = load float*, float** %lv$5, align 4
+  %b2$8 = getelementptr float, float* %arr_$34, i32 1
+  %b2$9 = load float, float* %b2$8, align 4
+  %result_$23 = fmul float %a1$11, %b2$9
+  %result_$24 = fadd float %result_$22, %result_$23
+  store float %result_$24, float* %c1$1, align 4
+  %arr_$35 = load float*, float** %lv$7, align 4
+  %c1$2 = getelementptr float, float* %arr_$35, i32 2
+  %arr_$36 = load float*, float** %lv$1, align 4
+  %a1$12 = getelementptr float, float* %arr_$36, i32 0
+  %a1$13 = load float, float* %a1$12, align 4
+  %arr_$37 = load float*, float** %lv$3, align 4
+  %b0$10 = getelementptr float, float* %arr_$37, i32 2
+  %b0$11 = load float, float* %b0$10, align 4
+  %result_$25 = fmul float %a1$13, %b0$11
+  %arr_$38 = load float*, float** %lv$1, align 4
+  %a1$14 = getelementptr float, float* %arr_$38, i32 1
+  %a1$15 = load float, float* %a1$14, align 4
+  %arr_$39 = load float*, float** %lv$4, align 4
+  %b1$10 = getelementptr float, float* %arr_$39, i32 2
+  %b1$11 = load float, float* %b1$10, align 4
+  %result_$26 = fmul float %a1$15, %b1$11
+  %result_$27 = fadd float %result_$25, %result_$26
+  %arr_$40 = load float*, float** %lv$1, align 4
+  %a1$16 = getelementptr float, float* %arr_$40, i32 2
+  %a1$17 = load float, float* %a1$16, align 4
+  %arr_$41 = load float*, float** %lv$5, align 4
+  %b2$10 = getelementptr float, float* %arr_$41, i32 2
+  %b2$11 = load float, float* %b2$10, align 4
+  %result_$28 = fmul float %a1$17, %b2$11
+  %result_$29 = fadd float %result_$27, %result_$28
+  store float %result_$29, float* %c1$2, align 4
+  %arr_$42 = load float*, float** %lv$8, align 4
+  %c2 = getelementptr float, float* %arr_$42, i32 0
+  %arr_$43 = load float*, float** %lv$2, align 4
+  %a2 = getelementptr float, float* %arr_$43, i32 0
+  %a2$1 = load float, float* %a2, align 4
+  %arr_$44 = load float*, float** %lv$3, align 4
+  %b0$12 = getelementptr float, float* %arr_$44, i32 0
+  %b0$13 = load float, float* %b0$12, align 4
+  %result_$30 = fmul float %a2$1, %b0$13
+  %arr_$45 = load float*, float** %lv$2, align 4
+  %a2$2 = getelementptr float, float* %arr_$45, i32 1
+  %a2$3 = load float, float* %a2$2, align 4
+  %arr_$46 = load float*, float** %lv$4, align 4
+  %b1$12 = getelementptr float, float* %arr_$46, i32 0
+  %b1$13 = load float, float* %b1$12, align 4
+  %result_$31 = fmul float %a2$3, %b1$13
+  %result_$32 = fadd float %result_$30, %result_$31
+  %arr_$47 = load float*, float** %lv$2, align 4
+  %a2$4 = getelementptr float, float* %arr_$47, i32 2
+  %a2$5 = load float, float* %a2$4, align 4
+  %arr_$48 = load float*, float** %lv$5, align 4
+  %b2$12 = getelementptr float, float* %arr_$48, i32 0
+  %b2$13 = load float, float* %b2$12, align 4
+  %result_$33 = fmul float %a2$5, %b2$13
+  %result_$34 = fadd float %result_$32, %result_$33
+  store float %result_$34, float* %c2, align 4
+  %arr_$49 = load float*, float** %lv$8, align 4
+  %c2$1 = getelementptr float, float* %arr_$49, i32 1
+  %arr_$50 = load float*, float** %lv$2, align 4
+  %a2$6 = getelementptr float, float* %arr_$50, i32 0
+  %a2$7 = load float, float* %a2$6, align 4
+  %arr_$51 = load float*, float** %lv$3, align 4
+  %b0$14 = getelementptr float, float* %arr_$51, i32 1
+  %b0$15 = load float, float* %b0$14, align 4
+  %result_$35 = fmul float %a2$7, %b0$15
+  %arr_$52 = load float*, float** %lv$2, align 4
+  %a2$8 = getelementptr float, float* %arr_$52, i32 1
+  %a2$9 = load float, float* %a2$8, align 4
+  %arr_$53 = load float*, float** %lv$4, align 4
+  %b1$14 = getelementptr float, float* %arr_$53, i32 1
+  %b1$15 = load float, float* %b1$14, align 4
+  %result_$36 = fmul float %a2$9, %b1$15
+  %result_$37 = fadd float %result_$35, %result_$36
+  %arr_$54 = load float*, float** %lv$2, align 4
+  %a2$10 = getelementptr float, float* %arr_$54, i32 2
+  %a2$11 = load float, float* %a2$10, align 4
+  %arr_$55 = load float*, float** %lv$5, align 4
+  %b2$14 = getelementptr float, float* %arr_$55, i32 1
+  %b2$15 = load float, float* %b2$14, align 4
+  %result_$38 = fmul float %a2$11, %b2$15
+  %result_$39 = fadd float %result_$37, %result_$38
+  store float %result_$39, float* %c2$1, align 4
+  %arr_$56 = load float*, float** %lv$8, align 4
+  %c2$2 = getelementptr float, float* %arr_$56, i32 2
+  %arr_$57 = load float*, float** %lv$2, align 4
+  %a2$12 = getelementptr float, float* %arr_$57, i32 0
+  %a2$13 = load float, float* %a2$12, align 4
+  %arr_$58 = load float*, float** %lv$3, align 4
+  %b0$16 = getelementptr float, float* %arr_$58, i32 2
+  %b0$17 = load float, float* %b0$16, align 4
+  %result_$40 = fmul float %a2$13, %b0$17
+  %arr_$59 = load float*, float** %lv$2, align 4
+  %a2$14 = getelementptr float, float* %arr_$59, i32 1
+  %a2$15 = load float, float* %a2$14, align 4
+  %arr_$60 = load float*, float** %lv$4, align 4
+  %b1$16 = getelementptr float, float* %arr_$60, i32 2
+  %b1$17 = load float, float* %b1$16, align 4
+  %result_$41 = fmul float %a2$15, %b1$17
+  %result_$42 = fadd float %result_$40, %result_$41
+  %arr_$61 = load float*, float** %lv$2, align 4
+  %a2$16 = getelementptr float, float* %arr_$61, i32 2
+  %a2$17 = load float, float* %a2$16, align 4
+  %arr_$62 = load float*, float** %lv$5, align 4
+  %b2$16 = getelementptr float, float* %arr_$62, i32 2
+  %b2$17 = load float, float* %b2$16, align 4
+  %result_$43 = fmul float %a2$17, %b2$17
+  %result_$44 = fadd float %result_$42, %result_$43
+  store float %result_$44, float* %c2$2, align 4
+  ret i32 0
+}
+
 define i32 @main() {
 mainEntry31:
-  %retVal_ofil756 = alloca i32, align 4
-  %lv$9_of_il756 = alloca i32, align 4
   %lv$10 = alloca i32, align 4
   %lv$9 = alloca i32, align 4
   %lv$8 = alloca [3 x float], align 16
@@ -95,7 +352,9 @@ next_144:                                            ; pred = %whileCond_77
   %c0 = getelementptr [6 x float], [6 x float]* %lv$6, i32 0, i32 0
   %c1 = getelementptr [3 x float], [3 x float]* %lv$7, i32 0, i32 0
   %c2 = getelementptr [3 x float], [3 x float]* %lv$8, i32 0, i32 0
-  br label %il756
+  %mul = call i32 @mul(float* %a0$1, float* %a1$1, float* %a2$1, float* %b0$1, float* %b1$1, float* %b2$1, float* %c0, float* %c1, float* %c2)
+  store i32 %mul, i32* %lv$9, align 4
+  br label %whileCond_78
 
 whileCond_78:                                        ; pred = %next_144, %whileBody_78
   %i$14 = load i32, i32* %lv$9, align 4
@@ -179,186 +438,5 @@ next_147:                                            ; pred = %whileCond_80
   %x$5 = load i32, i32* %lv$10, align 4
   call void @putch(i32 %x$5)
   ret i32 0
-
-il756:                                               ; pred = %next_144
-  store i32 0, i32* %lv$9_of_il756, align 4
-  %c0_of_il756 = getelementptr float, float* %c0, i32 0
-  %a0_of_il756 = getelementptr float, float* %a0$1, i32 0
-  %a0$1_of_il756 = load float, float* %a0_of_il756, align 4
-  %b0_of_il756 = getelementptr float, float* %b0$1, i32 0
-  %b0$1_of_il756 = load float, float* %b0_of_il756, align 4
-  %result__of_il756 = fmul float %a0$1_of_il756, %b0$1_of_il756
-  %a0$2_of_il756 = getelementptr float, float* %a0$1, i32 1
-  %a0$3_of_il756 = load float, float* %a0$2_of_il756, align 4
-  %b1_of_il756 = getelementptr float, float* %b1$1, i32 0
-  %b1$1_of_il756 = load float, float* %b1_of_il756, align 4
-  %result_$1_of_il756 = fmul float %a0$3_of_il756, %b1$1_of_il756
-  %result_$2_of_il756 = fadd float %result__of_il756, %result_$1_of_il756
-  %a0$4_of_il756 = getelementptr float, float* %a0$1, i32 2
-  %a0$5_of_il756 = load float, float* %a0$4_of_il756, align 4
-  %b2_of_il756 = getelementptr float, float* %b2$1, i32 0
-  %b2$1_of_il756 = load float, float* %b2_of_il756, align 4
-  %result_$3_of_il756 = fmul float %a0$5_of_il756, %b2$1_of_il756
-  %result_$4_of_il756 = fadd float %result_$2_of_il756, %result_$3_of_il756
-  store float %result_$4_of_il756, float* %c0_of_il756, align 4
-  %c0$1_of_il756 = getelementptr float, float* %c0, i32 1
-  %a0$6_of_il756 = getelementptr float, float* %a0$1, i32 0
-  %a0$7_of_il756 = load float, float* %a0$6_of_il756, align 4
-  %b0$2_of_il756 = getelementptr float, float* %b0$1, i32 1
-  %b0$3_of_il756 = load float, float* %b0$2_of_il756, align 4
-  %result_$5_of_il756 = fmul float %a0$7_of_il756, %b0$3_of_il756
-  %a0$8_of_il756 = getelementptr float, float* %a0$1, i32 1
-  %a0$9_of_il756 = load float, float* %a0$8_of_il756, align 4
-  %b1$2_of_il756 = getelementptr float, float* %b1$1, i32 1
-  %b1$3_of_il756 = load float, float* %b1$2_of_il756, align 4
-  %result_$6_of_il756 = fmul float %a0$9_of_il756, %b1$3_of_il756
-  %result_$7_of_il756 = fadd float %result_$5_of_il756, %result_$6_of_il756
-  %a0$10_of_il756 = getelementptr float, float* %a0$1, i32 2
-  %a0$11_of_il756 = load float, float* %a0$10_of_il756, align 4
-  %b2$2_of_il756 = getelementptr float, float* %b2$1, i32 1
-  %b2$3_of_il756 = load float, float* %b2$2_of_il756, align 4
-  %result_$8_of_il756 = fmul float %a0$11_of_il756, %b2$3_of_il756
-  %result_$9_of_il756 = fadd float %result_$7_of_il756, %result_$8_of_il756
-  store float %result_$9_of_il756, float* %c0$1_of_il756, align 4
-  %c0$2_of_il756 = getelementptr float, float* %c0, i32 2
-  %a0$12_of_il756 = getelementptr float, float* %a0$1, i32 0
-  %a0$13_of_il756 = load float, float* %a0$12_of_il756, align 4
-  %b0$4_of_il756 = getelementptr float, float* %b0$1, i32 2
-  %b0$5_of_il756 = load float, float* %b0$4_of_il756, align 4
-  %result_$10_of_il756 = fmul float %a0$13_of_il756, %b0$5_of_il756
-  %a0$14_of_il756 = getelementptr float, float* %a0$1, i32 1
-  %a0$15_of_il756 = load float, float* %a0$14_of_il756, align 4
-  %b1$4_of_il756 = getelementptr float, float* %b1$1, i32 2
-  %b1$5_of_il756 = load float, float* %b1$4_of_il756, align 4
-  %result_$11_of_il756 = fmul float %a0$15_of_il756, %b1$5_of_il756
-  %result_$12_of_il756 = fadd float %result_$10_of_il756, %result_$11_of_il756
-  %a0$16_of_il756 = getelementptr float, float* %a0$1, i32 2
-  %a0$17_of_il756 = load float, float* %a0$16_of_il756, align 4
-  %b2$4_of_il756 = getelementptr float, float* %b2$1, i32 2
-  %b2$5_of_il756 = load float, float* %b2$4_of_il756, align 4
-  %result_$13_of_il756 = fmul float %a0$17_of_il756, %b2$5_of_il756
-  %result_$14_of_il756 = fadd float %result_$12_of_il756, %result_$13_of_il756
-  store float %result_$14_of_il756, float* %c0$2_of_il756, align 4
-  %c1_of_il756 = getelementptr float, float* %c1, i32 0
-  %a1_of_il756 = getelementptr float, float* %a1$1, i32 0
-  %a1$1_of_il756 = load float, float* %a1_of_il756, align 4
-  %b0$6_of_il756 = getelementptr float, float* %b0$1, i32 0
-  %b0$7_of_il756 = load float, float* %b0$6_of_il756, align 4
-  %result_$15_of_il756 = fmul float %a1$1_of_il756, %b0$7_of_il756
-  %a1$2_of_il756 = getelementptr float, float* %a1$1, i32 1
-  %a1$3_of_il756 = load float, float* %a1$2_of_il756, align 4
-  %b1$6_of_il756 = getelementptr float, float* %b1$1, i32 0
-  %b1$7_of_il756 = load float, float* %b1$6_of_il756, align 4
-  %result_$16_of_il756 = fmul float %a1$3_of_il756, %b1$7_of_il756
-  %result_$17_of_il756 = fadd float %result_$15_of_il756, %result_$16_of_il756
-  %a1$4_of_il756 = getelementptr float, float* %a1$1, i32 2
-  %a1$5_of_il756 = load float, float* %a1$4_of_il756, align 4
-  %b2$6_of_il756 = getelementptr float, float* %b2$1, i32 0
-  %b2$7_of_il756 = load float, float* %b2$6_of_il756, align 4
-  %result_$18_of_il756 = fmul float %a1$5_of_il756, %b2$7_of_il756
-  %result_$19_of_il756 = fadd float %result_$17_of_il756, %result_$18_of_il756
-  store float %result_$19_of_il756, float* %c1_of_il756, align 4
-  %c1$1_of_il756 = getelementptr float, float* %c1, i32 1
-  %a1$6_of_il756 = getelementptr float, float* %a1$1, i32 0
-  %a1$7_of_il756 = load float, float* %a1$6_of_il756, align 4
-  %b0$8_of_il756 = getelementptr float, float* %b0$1, i32 1
-  %b0$9_of_il756 = load float, float* %b0$8_of_il756, align 4
-  %result_$20_of_il756 = fmul float %a1$7_of_il756, %b0$9_of_il756
-  %a1$8_of_il756 = getelementptr float, float* %a1$1, i32 1
-  %a1$9_of_il756 = load float, float* %a1$8_of_il756, align 4
-  %b1$8_of_il756 = getelementptr float, float* %b1$1, i32 1
-  %b1$9_of_il756 = load float, float* %b1$8_of_il756, align 4
-  %result_$21_of_il756 = fmul float %a1$9_of_il756, %b1$9_of_il756
-  %result_$22_of_il756 = fadd float %result_$20_of_il756, %result_$21_of_il756
-  %a1$10_of_il756 = getelementptr float, float* %a1$1, i32 2
-  %a1$11_of_il756 = load float, float* %a1$10_of_il756, align 4
-  %b2$8_of_il756 = getelementptr float, float* %b2$1, i32 1
-  %b2$9_of_il756 = load float, float* %b2$8_of_il756, align 4
-  %result_$23_of_il756 = fmul float %a1$11_of_il756, %b2$9_of_il756
-  %result_$24_of_il756 = fadd float %result_$22_of_il756, %result_$23_of_il756
-  store float %result_$24_of_il756, float* %c1$1_of_il756, align 4
-  %c1$2_of_il756 = getelementptr float, float* %c1, i32 2
-  %a1$12_of_il756 = getelementptr float, float* %a1$1, i32 0
-  %a1$13_of_il756 = load float, float* %a1$12_of_il756, align 4
-  %b0$10_of_il756 = getelementptr float, float* %b0$1, i32 2
-  %b0$11_of_il756 = load float, float* %b0$10_of_il756, align 4
-  %result_$25_of_il756 = fmul float %a1$13_of_il756, %b0$11_of_il756
-  %a1$14_of_il756 = getelementptr float, float* %a1$1, i32 1
-  %a1$15_of_il756 = load float, float* %a1$14_of_il756, align 4
-  %b1$10_of_il756 = getelementptr float, float* %b1$1, i32 2
-  %b1$11_of_il756 = load float, float* %b1$10_of_il756, align 4
-  %result_$26_of_il756 = fmul float %a1$15_of_il756, %b1$11_of_il756
-  %result_$27_of_il756 = fadd float %result_$25_of_il756, %result_$26_of_il756
-  %a1$16_of_il756 = getelementptr float, float* %a1$1, i32 2
-  %a1$17_of_il756 = load float, float* %a1$16_of_il756, align 4
-  %b2$10_of_il756 = getelementptr float, float* %b2$1, i32 2
-  %b2$11_of_il756 = load float, float* %b2$10_of_il756, align 4
-  %result_$28_of_il756 = fmul float %a1$17_of_il756, %b2$11_of_il756
-  %result_$29_of_il756 = fadd float %result_$27_of_il756, %result_$28_of_il756
-  store float %result_$29_of_il756, float* %c1$2_of_il756, align 4
-  %c2_of_il756 = getelementptr float, float* %c2, i32 0
-  %a2_of_il756 = getelementptr float, float* %a2$1, i32 0
-  %a2$1_of_il756 = load float, float* %a2_of_il756, align 4
-  %b0$12_of_il756 = getelementptr float, float* %b0$1, i32 0
-  %b0$13_of_il756 = load float, float* %b0$12_of_il756, align 4
-  %result_$30_of_il756 = fmul float %a2$1_of_il756, %b0$13_of_il756
-  %a2$2_of_il756 = getelementptr float, float* %a2$1, i32 1
-  %a2$3_of_il756 = load float, float* %a2$2_of_il756, align 4
-  %b1$12_of_il756 = getelementptr float, float* %b1$1, i32 0
-  %b1$13_of_il756 = load float, float* %b1$12_of_il756, align 4
-  %result_$31_of_il756 = fmul float %a2$3_of_il756, %b1$13_of_il756
-  %result_$32_of_il756 = fadd float %result_$30_of_il756, %result_$31_of_il756
-  %a2$4_of_il756 = getelementptr float, float* %a2$1, i32 2
-  %a2$5_of_il756 = load float, float* %a2$4_of_il756, align 4
-  %b2$12_of_il756 = getelementptr float, float* %b2$1, i32 0
-  %b2$13_of_il756 = load float, float* %b2$12_of_il756, align 4
-  %result_$33_of_il756 = fmul float %a2$5_of_il756, %b2$13_of_il756
-  %result_$34_of_il756 = fadd float %result_$32_of_il756, %result_$33_of_il756
-  store float %result_$34_of_il756, float* %c2_of_il756, align 4
-  %c2$1_of_il756 = getelementptr float, float* %c2, i32 1
-  %a2$6_of_il756 = getelementptr float, float* %a2$1, i32 0
-  %a2$7_of_il756 = load float, float* %a2$6_of_il756, align 4
-  %b0$14_of_il756 = getelementptr float, float* %b0$1, i32 1
-  %b0$15_of_il756 = load float, float* %b0$14_of_il756, align 4
-  %result_$35_of_il756 = fmul float %a2$7_of_il756, %b0$15_of_il756
-  %a2$8_of_il756 = getelementptr float, float* %a2$1, i32 1
-  %a2$9_of_il756 = load float, float* %a2$8_of_il756, align 4
-  %b1$14_of_il756 = getelementptr float, float* %b1$1, i32 1
-  %b1$15_of_il756 = load float, float* %b1$14_of_il756, align 4
-  %result_$36_of_il756 = fmul float %a2$9_of_il756, %b1$15_of_il756
-  %result_$37_of_il756 = fadd float %result_$35_of_il756, %result_$36_of_il756
-  %a2$10_of_il756 = getelementptr float, float* %a2$1, i32 2
-  %a2$11_of_il756 = load float, float* %a2$10_of_il756, align 4
-  %b2$14_of_il756 = getelementptr float, float* %b2$1, i32 1
-  %b2$15_of_il756 = load float, float* %b2$14_of_il756, align 4
-  %result_$38_of_il756 = fmul float %a2$11_of_il756, %b2$15_of_il756
-  %result_$39_of_il756 = fadd float %result_$37_of_il756, %result_$38_of_il756
-  store float %result_$39_of_il756, float* %c2$1_of_il756, align 4
-  %c2$2_of_il756 = getelementptr float, float* %c2, i32 2
-  %a2$12_of_il756 = getelementptr float, float* %a2$1, i32 0
-  %a2$13_of_il756 = load float, float* %a2$12_of_il756, align 4
-  %b0$16_of_il756 = getelementptr float, float* %b0$1, i32 2
-  %b0$17_of_il756 = load float, float* %b0$16_of_il756, align 4
-  %result_$40_of_il756 = fmul float %a2$13_of_il756, %b0$17_of_il756
-  %a2$14_of_il756 = getelementptr float, float* %a2$1, i32 1
-  %a2$15_of_il756 = load float, float* %a2$14_of_il756, align 4
-  %b1$16_of_il756 = getelementptr float, float* %b1$1, i32 2
-  %b1$17_of_il756 = load float, float* %b1$16_of_il756, align 4
-  %result_$41_of_il756 = fmul float %a2$15_of_il756, %b1$17_of_il756
-  %result_$42_of_il756 = fadd float %result_$40_of_il756, %result_$41_of_il756
-  %a2$16_of_il756 = getelementptr float, float* %a2$1, i32 2
-  %a2$17_of_il756 = load float, float* %a2$16_of_il756, align 4
-  %b2$16_of_il756 = getelementptr float, float* %b2$1, i32 2
-  %b2$17_of_il756 = load float, float* %b2$16_of_il756, align 4
-  %result_$43_of_il756 = fmul float %a2$17_of_il756, %b2$17_of_il756
-  %result_$44_of_il756 = fadd float %result_$42_of_il756, %result_$43_of_il756
-  store float %result_$44_of_il756, float* %c2$2_of_il756, align 4
-  store i32 0, i32* %retVal_ofil756, align 4
-  br label %tc93
-
-tc93:                                                ; pred = %il756
-  %mul = load i32, i32* %retVal_ofil756, align 4
-  store i32 %mul, i32* %lv$9, align 4
-  br label %whileCond_78
 }
 

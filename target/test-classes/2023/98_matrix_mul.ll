@@ -180,6 +180,11 @@ next_147:                                            ; pred = %whileCond_80
   call void @putch(i32 %x$5)
   ret i32 0
 
+tc93:                                                ; pred = %il756
+  %mul = load i32, i32* %retVal_ofil756, align 4
+  store i32 %mul, i32* %lv$9, align 4
+  br label %whileCond_78
+
 il756:                                               ; pred = %next_144
   store i32 0, i32* %lv$9_of_il756, align 4
   %c0_of_il756 = getelementptr float, float* %c0, i32 0
@@ -355,10 +360,5 @@ il756:                                               ; pred = %next_144
   store float %result_$44_of_il756, float* %c2$2_of_il756, align 4
   store i32 0, i32* %retVal_ofil756, align 4
   br label %tc93
-
-tc93:                                                ; pred = %il756
-  %mul = load i32, i32* %retVal_ofil756, align 4
-  store i32 %mul, i32* %lv$9, align 4
-  br label %whileCond_78
 }
 

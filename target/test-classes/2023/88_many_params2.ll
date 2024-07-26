@@ -104,19 +104,6 @@ next_660:                                             ; pred = %whileCond_290
   call void @putch(i32 10)
   ret i32 0
 
-il2235:                                               ; pred = %mainEntry99
-  store i32 %b$12, i32* %lv$7_of_il2235, align 4
-  store i32 %b$14, i32* %lv$8_of_il2235, align 4
-  store i32 0, i32* %lv$9_of_il2235, align 4
-  br label %il2236
-
-il2236:                                               ; pred = %il2235, %il2237
-  %index_of_il2236 = load i32, i32* %lv$9_of_il2235, align 4
-  %cond_lt_tmp__of_il2236 = icmp slt i32 %index_of_il2236, 10
-  %cond_tmp__of_il2236 = zext i1 %cond_lt_tmp__of_il2236 to i32
-  %cond__of_il2236 = icmp ne i32 %cond_tmp__of_il2236, 0
-  br i1 %cond__of_il2236, label %il2237, label %il2238
-
 il2237:                                               ; pred = %il2236
   %index$1_of_il2237 = load i32, i32* %lv$9_of_il2235, align 4
   %ptr__of_il2237 = getelementptr [59 x i32], [59 x i32]* %b$4, i32 %a$6
@@ -127,6 +114,13 @@ il2237:                                               ; pred = %il2236
   %result__of_il2237 = add i32 %index$2_of_il2237, 1
   store i32 %result__of_il2237, i32* %lv$9_of_il2235, align 4
   br label %il2236
+
+il2236:                                               ; pred = %il2235, %il2237
+  %index_of_il2236 = load i32, i32* %lv$9_of_il2235, align 4
+  %cond_lt_tmp__of_il2236 = icmp slt i32 %index_of_il2236, 10
+  %cond_tmp__of_il2236 = zext i1 %cond_lt_tmp__of_il2236 to i32
+  %cond__of_il2236 = icmp ne i32 %cond_tmp__of_il2236, 0
+  br i1 %cond__of_il2236, label %il2237, label %il2238
 
 il2240:                                               ; pred = %il2239
   %i$1_of_il2240 = load i32, i32* %lv$8_of_il2235, align 4
@@ -143,14 +137,6 @@ il2240:                                               ; pred = %il2239
   store i32 %result_$4_of_il2240, i32* %lv$7_of_il2235, align 4
   br label %il2239
 
-il2238:                                               ; pred = %il2236
-  call void @putch(i32 10)
-  %d_of_il2238 = getelementptr i32, i32* %a$10, i32 %a$8
-  %d$1_of_il2238 = load i32, i32* %d_of_il2238, align 4
-  call void @putint(i32 %d$1_of_il2238)
-  call void @putch(i32 10)
-  br label %il2239
-
 il2241:                                               ; pred = %il2239
   %result_$5_of_il2241 = add i32 %b$6, %b$8
   store i32 %result_$5_of_il2241, i32* %retVal_ofil2235, align 4
@@ -162,11 +148,25 @@ tc222:                                                ; pred = %il2241
   store i32 %result_, i32* %lv$2, align 4
   br label %whileCond_290
 
+il2235:                                               ; pred = %mainEntry99
+  store i32 %b$12, i32* %lv$7_of_il2235, align 4
+  store i32 %b$14, i32* %lv$8_of_il2235, align 4
+  store i32 0, i32* %lv$9_of_il2235, align 4
+  br label %il2236
+
 il2239:                                               ; pred = %il2238, %il2240
   %i_of_il2239 = load i32, i32* %lv$8_of_il2235, align 4
   %cond_lt_tmp_$1_of_il2239 = icmp slt i32 %i_of_il2239, 10
   %cond_tmp_$1_of_il2239 = zext i1 %cond_lt_tmp_$1_of_il2239 to i32
   %cond_$1_of_il2239 = icmp ne i32 %cond_tmp_$1_of_il2239, 0
   br i1 %cond_$1_of_il2239, label %il2240, label %il2241
+
+il2238:                                               ; pred = %il2236
+  call void @putch(i32 10)
+  %d_of_il2238 = getelementptr i32, i32* %a$10, i32 %a$8
+  %d$1_of_il2238 = load i32, i32* %d_of_il2238, align 4
+  call void @putint(i32 %d$1_of_il2238)
+  call void @putch(i32 10)
+  br label %il2239
 }
 

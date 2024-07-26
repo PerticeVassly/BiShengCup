@@ -19,6 +19,38 @@ declare void @memset(i32*, i32, i32)
 @gv = global [110 x i32] zeroinitializer, align 4
 @gv1 = global i32 0, align 4
 
+define void @init(i32 %0) {
+initEntry:
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  store i32 1, i32* %lv$1, align 4
+  br label %whileCond_271
+
+whileCond_271:                                        ; pred = %initEntry, %whileBody_271
+  %i = load i32, i32* %lv$1, align 4
+  %n = load i32, i32* %lv, align 4
+  %n$1 = load i32, i32* %lv, align 4
+  %result_ = mul i32 %n, %n$1
+  %result_$1 = add i32 %result_, 1
+  %cond_le_tmp_ = icmp sle i32 %i, %result_$1
+  %cond_tmp_ = zext i1 %cond_le_tmp_ to i32
+  %cond_ = icmp ne i32 %cond_tmp_, 0
+  br i1 %cond_, label %whileBody_271, label %next_601
+
+whileBody_271:                                        ; pred = %whileCond_271
+  %i$1 = load i32, i32* %lv$1, align 4
+  %array = getelementptr [110 x i32], [110 x i32]* @gv, i32 0, i32 %i$1
+  store i32 -1, i32* %array, align 4
+  %i$2 = load i32, i32* %lv$1, align 4
+  %result_$2 = add i32 %i$2, 1
+  store i32 %result_$2, i32* %lv$1, align 4
+  br label %whileCond_271
+
+next_601:                                             ; pred = %whileCond_271
+  ret void
+}
+
 define i32 @findfa(i32 %0) {
 findfaEntry:
   %lv = alloca i32, align 4
@@ -50,21 +82,40 @@ ifFalse_144:                                        ; pred = %findfaEntry
   ret i32 %array$6
 }
 
+define void @mmerge(i32 %0, i32 %1) {
+mmergeEntry:
+  %lv$3 = alloca i32, align 4
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  %a = load i32, i32* %lv, align 4
+  %findfa = call i32 @findfa(i32 %a)
+  store i32 %findfa, i32* %lv$2, align 4
+  %b = load i32, i32* %lv$1, align 4
+  %findfa$1 = call i32 @findfa(i32 %b)
+  store i32 %findfa$1, i32* %lv$3, align 4
+  %m = load i32, i32* %lv$2, align 4
+  %n = load i32, i32* %lv$3, align 4
+  %cond_neq_tmp_ = icmp ne i32 %m, %n
+  %cond_tmp_ = zext i1 %cond_neq_tmp_ to i32
+  %cond_ = icmp ne i32 %cond_tmp_, 0
+  br i1 %cond_, label %ifTrue_331, label %next_603
+
+ifTrue_331:                                         ; pred = %mmergeEntry
+  %m$1 = load i32, i32* %lv$2, align 4
+  %array = getelementptr [110 x i32], [110 x i32]* @gv, i32 0, i32 %m$1
+  %n$1 = load i32, i32* %lv$3, align 4
+  store i32 %n$1, i32* %array, align 4
+  br label %next_603
+
+next_603:                                           ; pred = %mmergeEntry, %ifTrue_331
+  ret void
+}
+
 define i32 @main() {
 mainEntry84:
-  %lv$2_of_il2173 = alloca i32, align 4
-  %lv$3_of_il2173 = alloca i32, align 4
-  %lv$2_of_il2170 = alloca i32, align 4
-  %lv$3_of_il2170 = alloca i32, align 4
-  %lv$2_of_il2167 = alloca i32, align 4
-  %lv$3_of_il2167 = alloca i32, align 4
-  %lv$2_of_il2164 = alloca i32, align 4
-  %lv$3_of_il2164 = alloca i32, align 4
-  %lv$2_of_il2161 = alloca i32, align 4
-  %lv$3_of_il2161 = alloca i32, align 4
-  %lv$2_of_il2158 = alloca i32, align 4
-  %lv$3_of_il2158 = alloca i32, align 4
-  %lv$1_of_il2154 = alloca i32, align 4
   %lv$8 = alloca i32, align 4
   %lv$7 = alloca i32, align 4
   %lv$6 = alloca i32, align 4
@@ -91,7 +142,13 @@ whileBody_272:                                         ; pred = %whileCond_272
   store i32 0, i32* %lv$4, align 4
   store i32 0, i32* %lv$5, align 4
   %n = load i32, i32* @gv1, align 4
-  br label %il2154
+  call void @init(i32 %n)
+  %n$1 = load i32, i32* @gv1, align 4
+  %n$2 = load i32, i32* @gv1, align 4
+  %result_$1 = mul i32 %n$1, %n$2
+  %result_$2 = add i32 %result_$1, 1
+  store i32 %result_$2, i32* %lv$6, align 4
+  br label %whileCond_273
 
 next_604:                                              ; pred = %whileCond_272
   ret i32 0
@@ -152,7 +209,8 @@ ifTrue_333:                                            ; pred = %ifTrue_332
   %array$1 = getelementptr [110 x i32], [110 x i32]* @gv, i32 0, i32 0
   store i32 0, i32* %array$1, align 4
   %loc$2 = load i32, i32* %lv$7, align 4
-  br label %il2158
+  call void @mmerge(i32 %loc$2, i32 0)
+  br label %next_607
 
 next_607:                                              ; pred = %ifTrue_332, %ifTrue_333
   %a$2 = load i32, i32* %lv$2, align 4
@@ -169,7 +227,8 @@ ifTrue_334:                                            ; pred = %next_607
   store i32 %k$1, i32* %array$2, align 4
   %loc$3 = load i32, i32* %lv$7, align 4
   %k$2 = load i32, i32* %lv$6, align 4
-  br label %il2161
+  call void @mmerge(i32 %loc$3, i32 %k$2)
+  br label %next_608
 
 next_608:                                              ; pred = %next_607, %ifTrue_334
   %b$1 = load i32, i32* %lv$3, align 4
@@ -183,7 +242,8 @@ ifTrue_335:                                            ; pred = %secondCond_114
   %loc$5 = load i32, i32* %lv$7, align 4
   %loc$6 = load i32, i32* %lv$7, align 4
   %result_$7 = add i32 %loc$6, 1
-  br label %il2164
+  call void @mmerge(i32 %loc$5, i32 %result_$7)
+  br label %next_609
 
 next_609:                                              ; pred = %next_608, %secondCond_114, %ifTrue_335
   %b$2 = load i32, i32* %lv$3, align 4
@@ -206,7 +266,8 @@ ifTrue_336:                                            ; pred = %secondCond_115
   %loc$8 = load i32, i32* %lv$7, align 4
   %loc$9 = load i32, i32* %lv$7, align 4
   %result_$9 = sub i32 %loc$9, 1
-  br label %il2167
+  call void @mmerge(i32 %loc$8, i32 %result_$9)
+  br label %next_610
 
 next_610:                                              ; pred = %next_609, %secondCond_115, %ifTrue_336
   %a$3 = load i32, i32* %lv$2, align 4
@@ -231,7 +292,8 @@ ifTrue_337:                                            ; pred = %secondCond_116
   %loc$12 = load i32, i32* %lv$7, align 4
   %n$8 = load i32, i32* @gv1, align 4
   %result_$11 = add i32 %loc$12, %n$8
-  br label %il2170
+  call void @mmerge(i32 %loc$11, i32 %result_$11)
+  br label %next_611
 
 next_611:                                              ; pred = %next_610, %secondCond_116, %ifTrue_337
   %a$4 = load i32, i32* %lv$2, align 4
@@ -256,7 +318,8 @@ ifTrue_338:                                            ; pred = %secondCond_117
   %loc$15 = load i32, i32* %lv$7, align 4
   %n$10 = load i32, i32* @gv1, align 4
   %result_$13 = sub i32 %loc$15, %n$10
-  br label %il2173
+  call void @mmerge(i32 %loc$14, i32 %result_$13)
+  br label %next_612
 
 next_612:                                              ; pred = %next_611, %secondCond_117, %ifTrue_338
   %array$11 = getelementptr [110 x i32], [110 x i32]* @gv, i32 0, i32 0
@@ -315,188 +378,5 @@ ifTrue_340:                                            ; pred = %next_605
 
 next_614:                                              ; pred = %next_605, %ifTrue_340
   br label %whileCond_272
-
-tc201:                                                 ; pred = %il2157
-  %n$1 = load i32, i32* @gv1, align 4
-  %n$2 = load i32, i32* @gv1, align 4
-  %result_$1 = mul i32 %n$1, %n$2
-  %result_$2 = add i32 %result_$1, 1
-  store i32 %result_$2, i32* %lv$6, align 4
-  br label %whileCond_273
-
-il2162:                                                ; pred = %il2161
-  %m$1_of_il2162 = load i32, i32* %lv$2_of_il2161, align 4
-  %array_of_il2162 = getelementptr [110 x i32], [110 x i32]* @gv, i32 0, i32 %m$1_of_il2162
-  %n$1_of_il2162 = load i32, i32* %lv$3_of_il2161, align 4
-  store i32 %n$1_of_il2162, i32* %array_of_il2162, align 4
-  br label %il2163
-
-il2164:                                                ; pred = %ifTrue_335
-  %findfa_of_il2164 = call i32 @findfa(i32 %loc$5)
-  store i32 %findfa_of_il2164, i32* %lv$2_of_il2164, align 4
-  %findfa$1_of_il2164 = call i32 @findfa(i32 %result_$7)
-  store i32 %findfa$1_of_il2164, i32* %lv$3_of_il2164, align 4
-  %m_of_il2164 = load i32, i32* %lv$2_of_il2164, align 4
-  %n_of_il2164 = load i32, i32* %lv$3_of_il2164, align 4
-  %cond_neq_tmp__of_il2164 = icmp ne i32 %m_of_il2164, %n_of_il2164
-  %cond_tmp__of_il2164 = zext i1 %cond_neq_tmp__of_il2164 to i32
-  %cond__of_il2164 = icmp ne i32 %cond_tmp__of_il2164, 0
-  br i1 %cond__of_il2164, label %il2165, label %il2166
-
-il2174:                                                ; pred = %il2173
-  %m$1_of_il2174 = load i32, i32* %lv$2_of_il2173, align 4
-  %array_of_il2174 = getelementptr [110 x i32], [110 x i32]* @gv, i32 0, i32 %m$1_of_il2174
-  %n$1_of_il2174 = load i32, i32* %lv$3_of_il2173, align 4
-  store i32 %n$1_of_il2174, i32* %array_of_il2174, align 4
-  br label %il2175
-
-il2160:                                                ; pred = %il2158, %il2159
-  br label %tc202
-
-il2171:                                                ; pred = %il2170
-  %m$1_of_il2171 = load i32, i32* %lv$2_of_il2170, align 4
-  %array_of_il2171 = getelementptr [110 x i32], [110 x i32]* @gv, i32 0, i32 %m$1_of_il2171
-  %n$1_of_il2171 = load i32, i32* %lv$3_of_il2170, align 4
-  store i32 %n$1_of_il2171, i32* %array_of_il2171, align 4
-  br label %il2172
-
-il2172:                                                ; pred = %il2170, %il2171
-  br label %tc206
-
-il2165:                                                ; pred = %il2164
-  %m$1_of_il2165 = load i32, i32* %lv$2_of_il2164, align 4
-  %array_of_il2165 = getelementptr [110 x i32], [110 x i32]* @gv, i32 0, i32 %m$1_of_il2165
-  %n$1_of_il2165 = load i32, i32* %lv$3_of_il2164, align 4
-  store i32 %n$1_of_il2165, i32* %array_of_il2165, align 4
-  br label %il2166
-
-il2173:                                                ; pred = %ifTrue_338
-  %findfa_of_il2173 = call i32 @findfa(i32 %loc$14)
-  store i32 %findfa_of_il2173, i32* %lv$2_of_il2173, align 4
-  %findfa$1_of_il2173 = call i32 @findfa(i32 %result_$13)
-  store i32 %findfa$1_of_il2173, i32* %lv$3_of_il2173, align 4
-  %m_of_il2173 = load i32, i32* %lv$2_of_il2173, align 4
-  %n_of_il2173 = load i32, i32* %lv$3_of_il2173, align 4
-  %cond_neq_tmp__of_il2173 = icmp ne i32 %m_of_il2173, %n_of_il2173
-  %cond_tmp__of_il2173 = zext i1 %cond_neq_tmp__of_il2173 to i32
-  %cond__of_il2173 = icmp ne i32 %cond_tmp__of_il2173, 0
-  br i1 %cond__of_il2173, label %il2174, label %il2175
-
-il2157:                                                ; pred = %il2155
-  br label %tc201
-
-il2154:                                                ; pred = %whileBody_272
-  store i32 1, i32* %lv$1_of_il2154, align 4
-  br label %il2155
-
-tc207:                                                 ; pred = %il2175
-  br label %next_612
-
-il2155:                                                ; pred = %il2154, %il2156
-  %i_of_il2155 = load i32, i32* %lv$1_of_il2154, align 4
-  %result__of_il2155 = mul i32 %n, %n
-  %result_$1_of_il2155 = add i32 %result__of_il2155, 1
-  %cond_le_tmp__of_il2155 = icmp sle i32 %i_of_il2155, %result_$1_of_il2155
-  %cond_tmp__of_il2155 = zext i1 %cond_le_tmp__of_il2155 to i32
-  %cond__of_il2155 = icmp ne i32 %cond_tmp__of_il2155, 0
-  br i1 %cond__of_il2155, label %il2156, label %il2157
-
-tc203:                                                 ; pred = %il2163
-  br label %next_608
-
-tc206:                                                 ; pred = %il2172
-  br label %next_611
-
-il2159:                                                ; pred = %il2158
-  %m$1_of_il2159 = load i32, i32* %lv$2_of_il2158, align 4
-  %array_of_il2159 = getelementptr [110 x i32], [110 x i32]* @gv, i32 0, i32 %m$1_of_il2159
-  %n$1_of_il2159 = load i32, i32* %lv$3_of_il2158, align 4
-  store i32 %n$1_of_il2159, i32* %array_of_il2159, align 4
-  br label %il2160
-
-il2168:                                                ; pred = %il2167
-  %m$1_of_il2168 = load i32, i32* %lv$2_of_il2167, align 4
-  %array_of_il2168 = getelementptr [110 x i32], [110 x i32]* @gv, i32 0, i32 %m$1_of_il2168
-  %n$1_of_il2168 = load i32, i32* %lv$3_of_il2167, align 4
-  store i32 %n$1_of_il2168, i32* %array_of_il2168, align 4
-  br label %il2169
-
-tc202:                                                 ; pred = %il2160
-  br label %next_607
-
-il2175:                                                ; pred = %il2173, %il2174
-  br label %tc207
-
-il2158:                                                ; pred = %ifTrue_333
-  %findfa_of_il2158 = call i32 @findfa(i32 %loc$2)
-  store i32 %findfa_of_il2158, i32* %lv$2_of_il2158, align 4
-  %findfa$1_of_il2158 = call i32 @findfa(i32 0)
-  store i32 %findfa$1_of_il2158, i32* %lv$3_of_il2158, align 4
-  %m_of_il2158 = load i32, i32* %lv$2_of_il2158, align 4
-  %n_of_il2158 = load i32, i32* %lv$3_of_il2158, align 4
-  %cond_neq_tmp__of_il2158 = icmp ne i32 %m_of_il2158, %n_of_il2158
-  %cond_tmp__of_il2158 = zext i1 %cond_neq_tmp__of_il2158 to i32
-  %cond__of_il2158 = icmp ne i32 %cond_tmp__of_il2158, 0
-  br i1 %cond__of_il2158, label %il2159, label %il2160
-
-il2161:                                                ; pred = %ifTrue_334
-  %findfa_of_il2161 = call i32 @findfa(i32 %loc$3)
-  store i32 %findfa_of_il2161, i32* %lv$2_of_il2161, align 4
-  %findfa$1_of_il2161 = call i32 @findfa(i32 %k$2)
-  store i32 %findfa$1_of_il2161, i32* %lv$3_of_il2161, align 4
-  %m_of_il2161 = load i32, i32* %lv$2_of_il2161, align 4
-  %n_of_il2161 = load i32, i32* %lv$3_of_il2161, align 4
-  %cond_neq_tmp__of_il2161 = icmp ne i32 %m_of_il2161, %n_of_il2161
-  %cond_tmp__of_il2161 = zext i1 %cond_neq_tmp__of_il2161 to i32
-  %cond__of_il2161 = icmp ne i32 %cond_tmp__of_il2161, 0
-  br i1 %cond__of_il2161, label %il2162, label %il2163
-
-tc205:                                                 ; pred = %il2169
-  br label %next_610
-
-il2169:                                                ; pred = %il2167, %il2168
-  br label %tc205
-
-il2167:                                                ; pred = %ifTrue_336
-  %findfa_of_il2167 = call i32 @findfa(i32 %loc$8)
-  store i32 %findfa_of_il2167, i32* %lv$2_of_il2167, align 4
-  %findfa$1_of_il2167 = call i32 @findfa(i32 %result_$9)
-  store i32 %findfa$1_of_il2167, i32* %lv$3_of_il2167, align 4
-  %m_of_il2167 = load i32, i32* %lv$2_of_il2167, align 4
-  %n_of_il2167 = load i32, i32* %lv$3_of_il2167, align 4
-  %cond_neq_tmp__of_il2167 = icmp ne i32 %m_of_il2167, %n_of_il2167
-  %cond_tmp__of_il2167 = zext i1 %cond_neq_tmp__of_il2167 to i32
-  %cond__of_il2167 = icmp ne i32 %cond_tmp__of_il2167, 0
-  br i1 %cond__of_il2167, label %il2168, label %il2169
-
-il2166:                                                ; pred = %il2164, %il2165
-  br label %tc204
-
-il2156:                                                ; pred = %il2155
-  %i$1_of_il2156 = load i32, i32* %lv$1_of_il2154, align 4
-  %array_of_il2156 = getelementptr [110 x i32], [110 x i32]* @gv, i32 0, i32 %i$1_of_il2156
-  store i32 -1, i32* %array_of_il2156, align 4
-  %i$2_of_il2156 = load i32, i32* %lv$1_of_il2154, align 4
-  %result_$2_of_il2156 = add i32 %i$2_of_il2156, 1
-  store i32 %result_$2_of_il2156, i32* %lv$1_of_il2154, align 4
-  br label %il2155
-
-tc204:                                                 ; pred = %il2166
-  br label %next_609
-
-il2163:                                                ; pred = %il2161, %il2162
-  br label %tc203
-
-il2170:                                                ; pred = %ifTrue_337
-  %findfa_of_il2170 = call i32 @findfa(i32 %loc$11)
-  store i32 %findfa_of_il2170, i32* %lv$2_of_il2170, align 4
-  %findfa$1_of_il2170 = call i32 @findfa(i32 %result_$11)
-  store i32 %findfa$1_of_il2170, i32* %lv$3_of_il2170, align 4
-  %m_of_il2170 = load i32, i32* %lv$2_of_il2170, align 4
-  %n_of_il2170 = load i32, i32* %lv$3_of_il2170, align 4
-  %cond_neq_tmp__of_il2170 = icmp ne i32 %m_of_il2170, %n_of_il2170
-  %cond_tmp__of_il2170 = zext i1 %cond_neq_tmp__of_il2170 to i32
-  %cond__of_il2170 = icmp ne i32 %cond_tmp__of_il2170, 0
-  br i1 %cond__of_il2170, label %il2171, label %il2172
 }
 

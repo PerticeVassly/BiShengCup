@@ -27,6 +27,12 @@ mainEntry63:
   %a = load i32, i32* @gv, align 4
   br label %il1910
 
+tc165:                                              ; pred = %il1910
+  %func = load i32, i32* %retVal_ofil1910, align 4
+  store i32 %func, i32* %lv, align 4
+  %b = load i32, i32* %lv, align 4
+  ret i32 %b
+
 il1910:                                             ; pred = %mainEntry63
   store i32 %a, i32* %lv_of_il1910, align 4
   %p_of_il1910 = load i32, i32* %lv_of_il1910, align 4
@@ -35,11 +41,5 @@ il1910:                                             ; pred = %mainEntry63
   %p$1_of_il1910 = load i32, i32* %lv_of_il1910, align 4
   store i32 %p$1_of_il1910, i32* %retVal_ofil1910, align 4
   br label %tc165
-
-tc165:                                              ; pred = %il1910
-  %func = load i32, i32* %retVal_ofil1910, align 4
-  store i32 %func, i32* %lv, align 4
-  %b = load i32, i32* %lv, align 4
-  ret i32 %b
 }
 

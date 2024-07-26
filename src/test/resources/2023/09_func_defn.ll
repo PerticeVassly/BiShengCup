@@ -18,26 +18,23 @@ declare void @memset(i32*, i32, i32)
 
 @gv = global i32 0, align 4
 
+define i32 @func(i32 %0) {
+funcEntry2:
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  %p = load i32, i32* %lv, align 4
+  %result_ = sub i32 %p, 1
+  store i32 %result_, i32* %lv, align 4
+  %p$1 = load i32, i32* %lv, align 4
+  ret i32 %p$1
+}
+
 define i32 @main() {
 mainEntry63:
-  %retVal_ofil1910 = alloca i32, align 4
-  %lv_of_il1910 = alloca i32, align 4
   %lv = alloca i32, align 4
   store i32 10, i32* @gv, align 4
   %a = load i32, i32* @gv, align 4
-  br label %il1910
-
-il1910:                                             ; pred = %mainEntry63
-  store i32 %a, i32* %lv_of_il1910, align 4
-  %p_of_il1910 = load i32, i32* %lv_of_il1910, align 4
-  %result__of_il1910 = sub i32 %p_of_il1910, 1
-  store i32 %result__of_il1910, i32* %lv_of_il1910, align 4
-  %p$1_of_il1910 = load i32, i32* %lv_of_il1910, align 4
-  store i32 %p$1_of_il1910, i32* %retVal_ofil1910, align 4
-  br label %tc165
-
-tc165:                                              ; pred = %il1910
-  %func = load i32, i32* %retVal_ofil1910, align 4
+  %func = call i32 @func(i32 %a)
   store i32 %func, i32* %lv, align 4
   %b = load i32, i32* %lv, align 4
   ret i32 %b

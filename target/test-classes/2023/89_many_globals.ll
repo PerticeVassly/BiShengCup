@@ -204,13 +204,6 @@ tc198:                                              ; pred = %il2148
   %a31 = load i32, i32* @gv31, align 4
   br label %il2149
 
-tc199:                                              ; pred = %il2149
-  %testParam32 = load i32, i32* %retVal_ofil2149, align 4
-  store i32 %testParam32, i32* @gv, align 4
-  %a0$4 = load i32, i32* @gv, align 4
-  call void @putint(i32 %a0$4)
-  ret i32 0
-
 il2149:                                             ; pred = %tc198
   %result__of_il2149 = add i32 %a0$3, %a1$1
   %result_$1_of_il2149 = add i32 %result__of_il2149, %a2$1
@@ -245,5 +238,12 @@ il2149:                                             ; pred = %tc198
   %result_$30_of_il2149 = add i32 %result_$29_of_il2149, %a31
   store i32 %result_$30_of_il2149, i32* %retVal_ofil2149, align 4
   br label %tc199
+
+tc199:                                              ; pred = %il2149
+  %testParam32 = load i32, i32* %retVal_ofil2149, align 4
+  store i32 %testParam32, i32* @gv, align 4
+  %a0$4 = load i32, i32* @gv, align 4
+  call void @putint(i32 %a0$4)
+  ret i32 0
 }
 

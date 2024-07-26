@@ -16,69 +16,66 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
+define i32 @whileIf() {
+whileIfEntry:
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 0, i32* %lv, align 4
+  store i32 0, i32* %lv$1, align 4
+  br label %whileCond_209
+
+whileCond_209:                                        ; pred = %whileIfEntry, %next_500
+  %a = load i32, i32* %lv, align 4
+  %cond_lt_tmp_ = icmp slt i32 %a, 100
+  %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
+  %cond_ = icmp ne i32 %cond_tmp_, 0
+  br i1 %cond_, label %whileBody_209, label %next_499
+
+whileBody_209:                                        ; pred = %whileCond_209
+  %a$1 = load i32, i32* %lv, align 4
+  %cond_eq_tmp_ = icmp eq i32 %a$1, 5
+  %cond_tmp_$1 = zext i1 %cond_eq_tmp_ to i32
+  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
+  br i1 %cond_$1, label %ifTrue_290, label %ifFalse_127
+
+next_499:                                             ; pred = %whileCond_209
+  %b = load i32, i32* %lv$1, align 4
+  ret i32 %b
+
+ifTrue_290:                                           ; pred = %whileBody_209
+  store i32 25, i32* %lv$1, align 4
+  br label %next_500
+
+ifFalse_127:                                          ; pred = %whileBody_209
+  %a$2 = load i32, i32* %lv, align 4
+  %cond_eq_tmp_$1 = icmp eq i32 %a$2, 10
+  %cond_tmp_$2 = zext i1 %cond_eq_tmp_$1 to i32
+  %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
+  br i1 %cond_$2, label %ifTrue_291, label %ifFalse_128
+
+next_500:                                             ; pred = %ifTrue_290, %next_501
+  %a$4 = load i32, i32* %lv, align 4
+  %result_$1 = add i32 %a$4, 1
+  store i32 %result_$1, i32* %lv, align 4
+  br label %whileCond_209
+
+ifTrue_291:                                           ; pred = %ifFalse_127
+  store i32 42, i32* %lv$1, align 4
+  br label %next_501
+
+ifFalse_128:                                          ; pred = %ifFalse_127
+  %a$3 = load i32, i32* %lv, align 4
+  %result_ = mul i32 %a$3, 2
+  store i32 %result_, i32* %lv$1, align 4
+  br label %next_501
+
+next_501:                                             ; pred = %ifTrue_291, %ifFalse_128
+  br label %next_500
+}
+
 define i32 @main() {
 mainEntry57:
-  %retVal_ofil1813 = alloca i32, align 4
-  %lv_of_il1813 = alloca i32, align 4
-  %lv$1_of_il1813 = alloca i32, align 4
-  br label %il1813
-
-il1820:                                             ; pred = %il1818
-  store i32 42, i32* %lv$1_of_il1813, align 4
-  br label %il1822
-
-tc155:                                              ; pred = %il1816
-  %whileIf = load i32, i32* %retVal_ofil1813, align 4
+  %whileIf = call i32 @whileIf()
   ret i32 %whileIf
-
-il1816:                                             ; pred = %il1814
-  %b_of_il1816 = load i32, i32* %lv$1_of_il1813, align 4
-  store i32 %b_of_il1816, i32* %retVal_ofil1813, align 4
-  br label %tc155
-
-il1822:                                             ; pred = %il1820, %il1821
-  br label %il1819
-
-il1813:                                             ; pred = %mainEntry57
-  store i32 0, i32* %lv_of_il1813, align 4
-  store i32 0, i32* %lv$1_of_il1813, align 4
-  br label %il1814
-
-il1821:                                             ; pred = %il1818
-  %a$3_of_il1821 = load i32, i32* %lv_of_il1813, align 4
-  %result__of_il1821 = mul i32 %a$3_of_il1821, 2
-  store i32 %result__of_il1821, i32* %lv$1_of_il1813, align 4
-  br label %il1822
-
-il1815:                                             ; pred = %il1814
-  %a$1_of_il1815 = load i32, i32* %lv_of_il1813, align 4
-  %cond_eq_tmp__of_il1815 = icmp eq i32 %a$1_of_il1815, 5
-  %cond_tmp_$1_of_il1815 = zext i1 %cond_eq_tmp__of_il1815 to i32
-  %cond_$1_of_il1815 = icmp ne i32 %cond_tmp_$1_of_il1815, 0
-  br i1 %cond_$1_of_il1815, label %il1817, label %il1818
-
-il1818:                                             ; pred = %il1815
-  %a$2_of_il1818 = load i32, i32* %lv_of_il1813, align 4
-  %cond_eq_tmp_$1_of_il1818 = icmp eq i32 %a$2_of_il1818, 10
-  %cond_tmp_$2_of_il1818 = zext i1 %cond_eq_tmp_$1_of_il1818 to i32
-  %cond_$2_of_il1818 = icmp ne i32 %cond_tmp_$2_of_il1818, 0
-  br i1 %cond_$2_of_il1818, label %il1820, label %il1821
-
-il1817:                                             ; pred = %il1815
-  store i32 25, i32* %lv$1_of_il1813, align 4
-  br label %il1819
-
-il1819:                                             ; pred = %il1817, %il1822
-  %a$4_of_il1819 = load i32, i32* %lv_of_il1813, align 4
-  %result_$1_of_il1819 = add i32 %a$4_of_il1819, 1
-  store i32 %result_$1_of_il1819, i32* %lv_of_il1813, align 4
-  br label %il1814
-
-il1814:                                             ; pred = %il1813, %il1819
-  %a_of_il1814 = load i32, i32* %lv_of_il1813, align 4
-  %cond_lt_tmp__of_il1814 = icmp slt i32 %a_of_il1814, 100
-  %cond_tmp__of_il1814 = zext i1 %cond_lt_tmp__of_il1814 to i32
-  %cond__of_il1814 = icmp ne i32 %cond_tmp__of_il1814, 0
-  br i1 %cond__of_il1814, label %il1815, label %il1816
 }
 

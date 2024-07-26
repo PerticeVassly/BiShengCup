@@ -69,6 +69,17 @@ ifFalse_19:                                          ; pred = %next_124
 next_126:                                            ; pred = %ifTrue_63, %ifFalse_19
   ret i32 0
 
+il705:                                               ; pred = %il704
+  %a$2_of_il705 = load i32, i32* %lv$1_of_il704, align 4
+  %result__of_il705 = add i32 %a$2_of_il705, 1
+  store i32 %result__of_il705, i32* %lv$1_of_il704, align 4
+  store i32 1, i32* %retVal_ofil704, align 4
+  br label %tc81
+
+il706:                                               ; pred = %il704
+  store i32 0, i32* %retVal_ofil704, align 4
+  br label %tc81
+
 il704:                                               ; pred = %whileBody_62
   %a_of_il704 = load i32, i32* @gv, align 4
   store i32 %a_of_il704, i32* %lv_of_il704, align 4
@@ -86,16 +97,5 @@ tc81:                                                ; pred = %il705, %il706
   %cond_tmp_$1 = zext i1 %cond_eq_tmp_ to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
   br i1 %cond_$1, label %ifTrue_62, label %next_125
-
-il705:                                               ; pred = %il704
-  %a$2_of_il705 = load i32, i32* %lv$1_of_il704, align 4
-  %result__of_il705 = add i32 %a$2_of_il705, 1
-  store i32 %result__of_il705, i32* %lv$1_of_il704, align 4
-  store i32 1, i32* %retVal_ofil704, align 4
-  br label %tc81
-
-il706:                                               ; pred = %il704
-  store i32 0, i32* %retVal_ofil704, align 4
-  br label %tc81
 }
 

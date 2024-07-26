@@ -77,23 +77,6 @@ whileBody_8:                                        ; pred = %whileCond_8
 next_12:                                            ; pred = %whileCond_8
   ret i32 0
 
-il35:                                               ; pred = %il33, %il36
-  %j_of_il35 = load i32, i32* %lv$3_of_il31, align 4
-  %cond_gt_tmp__of_il35 = icmp sgt i32 %j_of_il35, -1
-  %cond_tmp_$1_of_il35 = zext i1 %cond_gt_tmp__of_il35 to i32
-  %cond_$1_of_il35 = icmp ne i32 %cond_tmp_$1_of_il35, 0
-  br i1 %cond_$1_of_il35, label %il38, label %il37
-
-il38:                                               ; pred = %il35
-  %temp_of_il38 = load i32, i32* %lv$2_of_il31, align 4
-  %j$1_of_il38 = load i32, i32* %lv$3_of_il31, align 4
-  %a$2_of_il38 = getelementptr i32, i32* %a$10, i32 %j$1_of_il38
-  %a$3_of_il38 = load i32, i32* %a$2_of_il38, align 4
-  %cond_lt_tmp_$1_of_il38 = icmp slt i32 %temp_of_il38, %a$3_of_il38
-  %cond_tmp_$2_of_il38 = zext i1 %cond_lt_tmp_$1_of_il38 to i32
-  %cond_$2_of_il38 = icmp ne i32 %cond_tmp_$2_of_il38, 0
-  br i1 %cond_$2_of_il38, label %il36, label %il37
-
 il32:                                               ; pred = %il31, %il37
   %i_of_il32 = load i32, i32* %lv$1_of_il31, align 4
   %n_of_il32 = load i32, i32* @gv, align 4
@@ -101,40 +84,6 @@ il32:                                               ; pred = %il31, %il37
   %cond_tmp__of_il32 = zext i1 %cond_lt_tmp__of_il32 to i32
   %cond__of_il32 = icmp ne i32 %cond_tmp__of_il32, 0
   br i1 %cond__of_il32, label %il33, label %il34
-
-il37:                                               ; pred = %il35, %il38
-  %j$5_of_il37 = load i32, i32* %lv$3_of_il31, align 4
-  %result_$3_of_il37 = add i32 %j$5_of_il37, 1
-  %a$7_of_il37 = getelementptr i32, i32* %a$10, i32 %result_$3_of_il37
-  %temp$1_of_il37 = load i32, i32* %lv$2_of_il31, align 4
-  store i32 %temp$1_of_il37, i32* %a$7_of_il37, align 4
-  %i$3_of_il37 = load i32, i32* %lv$1_of_il31, align 4
-  %result_$4_of_il37 = add i32 %i$3_of_il37, 1
-  store i32 %result_$4_of_il37, i32* %lv$1_of_il31, align 4
-  br label %il32
-
-il33:                                               ; pred = %il32
-  %i$1_of_il33 = load i32, i32* %lv$1_of_il31, align 4
-  %a_of_il33 = getelementptr i32, i32* %a$10, i32 %i$1_of_il33
-  %a$1_of_il33 = load i32, i32* %a_of_il33, align 4
-  store i32 %a$1_of_il33, i32* %lv$2_of_il31, align 4
-  %i$2_of_il33 = load i32, i32* %lv$1_of_il31, align 4
-  %result__of_il33 = sub i32 %i$2_of_il33, 1
-  store i32 %result__of_il33, i32* %lv$3_of_il31, align 4
-  br label %il35
-
-tc1:                                                ; pred = %il34
-  %insertsort = load i32, i32* %retVal_ofil31, align 4
-  store i32 %insertsort, i32* %lv$1, align 4
-  br label %whileCond_8
-
-il31:                                               ; pred = %mainEntry2
-  store i32 1, i32* %lv$1_of_il31, align 4
-  br label %il32
-
-il34:                                               ; pred = %il32
-  store i32 0, i32* %retVal_ofil31, align 4
-  br label %tc1
 
 il36:                                               ; pred = %il38
   %j$2_of_il36 = load i32, i32* %lv$3_of_il31, align 4
@@ -148,5 +97,56 @@ il36:                                               ; pred = %il38
   %result_$2_of_il36 = sub i32 %j$4_of_il36, 1
   store i32 %result_$2_of_il36, i32* %lv$3_of_il31, align 4
   br label %il35
+
+il37:                                               ; pred = %il35, %il38
+  %j$5_of_il37 = load i32, i32* %lv$3_of_il31, align 4
+  %result_$3_of_il37 = add i32 %j$5_of_il37, 1
+  %a$7_of_il37 = getelementptr i32, i32* %a$10, i32 %result_$3_of_il37
+  %temp$1_of_il37 = load i32, i32* %lv$2_of_il31, align 4
+  store i32 %temp$1_of_il37, i32* %a$7_of_il37, align 4
+  %i$3_of_il37 = load i32, i32* %lv$1_of_il31, align 4
+  %result_$4_of_il37 = add i32 %i$3_of_il37, 1
+  store i32 %result_$4_of_il37, i32* %lv$1_of_il31, align 4
+  br label %il32
+
+il38:                                               ; pred = %il35
+  %temp_of_il38 = load i32, i32* %lv$2_of_il31, align 4
+  %j$1_of_il38 = load i32, i32* %lv$3_of_il31, align 4
+  %a$2_of_il38 = getelementptr i32, i32* %a$10, i32 %j$1_of_il38
+  %a$3_of_il38 = load i32, i32* %a$2_of_il38, align 4
+  %cond_lt_tmp_$1_of_il38 = icmp slt i32 %temp_of_il38, %a$3_of_il38
+  %cond_tmp_$2_of_il38 = zext i1 %cond_lt_tmp_$1_of_il38 to i32
+  %cond_$2_of_il38 = icmp ne i32 %cond_tmp_$2_of_il38, 0
+  br i1 %cond_$2_of_il38, label %il36, label %il37
+
+il33:                                               ; pred = %il32
+  %i$1_of_il33 = load i32, i32* %lv$1_of_il31, align 4
+  %a_of_il33 = getelementptr i32, i32* %a$10, i32 %i$1_of_il33
+  %a$1_of_il33 = load i32, i32* %a_of_il33, align 4
+  store i32 %a$1_of_il33, i32* %lv$2_of_il31, align 4
+  %i$2_of_il33 = load i32, i32* %lv$1_of_il31, align 4
+  %result__of_il33 = sub i32 %i$2_of_il33, 1
+  store i32 %result__of_il33, i32* %lv$3_of_il31, align 4
+  br label %il35
+
+il35:                                               ; pred = %il33, %il36
+  %j_of_il35 = load i32, i32* %lv$3_of_il31, align 4
+  %cond_gt_tmp__of_il35 = icmp sgt i32 %j_of_il35, -1
+  %cond_tmp_$1_of_il35 = zext i1 %cond_gt_tmp__of_il35 to i32
+  %cond_$1_of_il35 = icmp ne i32 %cond_tmp_$1_of_il35, 0
+  br i1 %cond_$1_of_il35, label %il38, label %il37
+
+tc1:                                                ; pred = %il34
+  %insertsort = load i32, i32* %retVal_ofil31, align 4
+  store i32 %insertsort, i32* %lv$1, align 4
+  br label %whileCond_8
+
+il31:                                               ; pred = %mainEntry2
+  store i32 1, i32* %lv$1_of_il31, align 4
+  br label %il32
+
+il34:                                               ; pred = %il32
+  store i32 0, i32* %retVal_ofil31, align 4
+  br label %tc1
 }
 

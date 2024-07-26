@@ -77,6 +77,28 @@ whileBody_73:                                        ; pred = %whileCond_73
 next_138:                                            ; pred = %whileCond_73
   ret i32 0
 
+il737:                                               ; pred = %il736
+  %j$1_of_il737 = load i32, i32* %lv$2_of_il732, align 4
+  %arr_of_il737 = getelementptr i32, i32* %a$10, i32 %j$1_of_il737
+  %arr$1_of_il737 = load i32, i32* %arr_of_il737, align 4
+  %j$2_of_il737 = load i32, i32* %lv$2_of_il732, align 4
+  %result_$3_of_il737 = add i32 %j$2_of_il737, 1
+  %arr$2_of_il737 = getelementptr i32, i32* %a$10, i32 %result_$3_of_il737
+  %arr$3_of_il737 = load i32, i32* %arr$2_of_il737, align 4
+  %cond_gt_tmp__of_il737 = icmp sgt i32 %arr$1_of_il737, %arr$3_of_il737
+  %cond_tmp_$2_of_il737 = zext i1 %cond_gt_tmp__of_il737 to i32
+  %cond_$2_of_il737 = icmp ne i32 %cond_tmp_$2_of_il737, 0
+  br i1 %cond_$2_of_il737, label %il739, label %il740
+
+il734:                                               ; pred = %il733
+  store i32 0, i32* %lv$2_of_il732, align 4
+  br label %il736
+
+tc83:                                                ; pred = %il735
+  %bubblesort = load i32, i32* %retVal_ofil732, align 4
+  store i32 %bubblesort, i32* %lv$1, align 4
+  br label %whileCond_73
+
 il736:                                               ; pred = %il734, %il740
   %j_of_il736 = load i32, i32* %lv$2_of_il732, align 4
   %n$1_of_il736 = load i32, i32* @gv, align 4
@@ -87,6 +109,16 @@ il736:                                               ; pred = %il734, %il740
   %cond_tmp_$1_of_il736 = zext i1 %cond_lt_tmp_$1_of_il736 to i32
   %cond_$1_of_il736 = icmp ne i32 %cond_tmp_$1_of_il736, 0
   br i1 %cond_$1_of_il736, label %il737, label %il738
+
+il732:                                               ; pred = %mainEntry26
+  store i32 0, i32* %lv$1_of_il732, align 4
+  br label %il733
+
+il738:                                               ; pred = %il736
+  %i$2_of_il738 = load i32, i32* %lv$1_of_il732, align 4
+  %result_$7_of_il738 = add i32 %i$2_of_il738, 1
+  store i32 %result_$7_of_il738, i32* %lv$1_of_il732, align 4
+  br label %il733
 
 il739:                                               ; pred = %il737
   %j$3_of_il739 = load i32, i32* %lv$2_of_il732, align 4
@@ -107,39 +139,6 @@ il739:                                               ; pred = %il737
   store i32 %tmp_of_il739, i32* %arr$9_of_il739, align 4
   br label %il740
 
-il737:                                               ; pred = %il736
-  %j$1_of_il737 = load i32, i32* %lv$2_of_il732, align 4
-  %arr_of_il737 = getelementptr i32, i32* %a$10, i32 %j$1_of_il737
-  %arr$1_of_il737 = load i32, i32* %arr_of_il737, align 4
-  %j$2_of_il737 = load i32, i32* %lv$2_of_il732, align 4
-  %result_$3_of_il737 = add i32 %j$2_of_il737, 1
-  %arr$2_of_il737 = getelementptr i32, i32* %a$10, i32 %result_$3_of_il737
-  %arr$3_of_il737 = load i32, i32* %arr$2_of_il737, align 4
-  %cond_gt_tmp__of_il737 = icmp sgt i32 %arr$1_of_il737, %arr$3_of_il737
-  %cond_tmp_$2_of_il737 = zext i1 %cond_gt_tmp__of_il737 to i32
-  %cond_$2_of_il737 = icmp ne i32 %cond_tmp_$2_of_il737, 0
-  br i1 %cond_$2_of_il737, label %il739, label %il740
-
-il738:                                               ; pred = %il736
-  %i$2_of_il738 = load i32, i32* %lv$1_of_il732, align 4
-  %result_$7_of_il738 = add i32 %i$2_of_il738, 1
-  store i32 %result_$7_of_il738, i32* %lv$1_of_il732, align 4
-  br label %il733
-
-il732:                                               ; pred = %mainEntry26
-  store i32 0, i32* %lv$1_of_il732, align 4
-  br label %il733
-
-il740:                                               ; pred = %il737, %il739
-  %j$7_of_il740 = load i32, i32* %lv$2_of_il732, align 4
-  %result_$6_of_il740 = add i32 %j$7_of_il740, 1
-  store i32 %result_$6_of_il740, i32* %lv$2_of_il732, align 4
-  br label %il736
-
-il734:                                               ; pred = %il733
-  store i32 0, i32* %lv$2_of_il732, align 4
-  br label %il736
-
 il733:                                               ; pred = %il732, %il738
   %i_of_il733 = load i32, i32* %lv$1_of_il732, align 4
   %n_of_il733 = load i32, i32* @gv, align 4
@@ -153,9 +152,10 @@ il735:                                               ; pred = %il733
   store i32 0, i32* %retVal_ofil732, align 4
   br label %tc83
 
-tc83:                                                ; pred = %il735
-  %bubblesort = load i32, i32* %retVal_ofil732, align 4
-  store i32 %bubblesort, i32* %lv$1, align 4
-  br label %whileCond_73
+il740:                                               ; pred = %il737, %il739
+  %j$7_of_il740 = load i32, i32* %lv$2_of_il732, align 4
+  %result_$6_of_il740 = add i32 %j$7_of_il740, 1
+  store i32 %result_$6_of_il740, i32* %lv$2_of_il732, align 4
+  br label %il736
 }
 

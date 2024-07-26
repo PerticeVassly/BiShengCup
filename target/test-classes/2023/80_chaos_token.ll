@@ -84,10 +84,39 @@ ifTrue_35:                                           ; pred = %next_67
 next_68:                                             ; pred = %next_67, %ifTrue_35
   br label %whileCond_32
 
+il184:                                               ; pred = %il183, %il185
+  %iNd__1X_of_il184 = load i32, i32* %lv$1_of_il183, align 4
+  %str_of_il184 = getelementptr i32, i32* %N4__mE___$1, i32 %iNd__1X_of_il184
+  %str$1_of_il184 = load i32, i32* %str_of_il184, align 4
+  %cond_normalize__of_il184 = icmp ne i32 %str$1_of_il184, 0
+  br i1 %cond_normalize__of_il184, label %il185, label %il186
+
 il182:                                               ; pred = %il180
   %iNd__1X$3_of_il182 = load i32, i32* %lv$1_of_il179, align 4
   store i32 %iNd__1X$3_of_il182, i32* %retVal_ofil179, align 4
   br label %tc36
+
+il180:                                               ; pred = %il179, %il181
+  %iNd__1X_of_il180 = load i32, i32* %lv$1_of_il179, align 4
+  %str_of_il180 = getelementptr i32, i32* %__HELLO, i32 %iNd__1X_of_il180
+  %str$1_of_il180 = load i32, i32* %str_of_il180, align 4
+  %cond_normalize__of_il180 = icmp ne i32 %str$1_of_il180, 0
+  br i1 %cond_normalize__of_il180, label %il181, label %il182
+
+tc36:                                                ; pred = %il182
+  %putstr = load i32, i32* %retVal_ofil179, align 4
+  store i32 0, i32* %lv, align 4
+  br label %whileCond_32
+
+il181:                                               ; pred = %il180
+  %iNd__1X$1_of_il181 = load i32, i32* %lv$1_of_il179, align 4
+  %str$2_of_il181 = getelementptr i32, i32* %__HELLO, i32 %iNd__1X$1_of_il181
+  %str$3_of_il181 = load i32, i32* %str$2_of_il181, align 4
+  call void @putch(i32 %str$3_of_il181)
+  %iNd__1X$2_of_il181 = load i32, i32* %lv$1_of_il179, align 4
+  %result__of_il181 = add i32 %iNd__1X$2_of_il181, 1
+  store i32 %result__of_il181, i32* %lv$1_of_il179, align 4
+  br label %il180
 
 il185:                                               ; pred = %il184
   %iNd__1X$1_of_il185 = load i32, i32* %lv$1_of_il183, align 4
@@ -99,12 +128,10 @@ il185:                                               ; pred = %il184
   store i32 %result__of_il185, i32* %lv$1_of_il183, align 4
   br label %il184
 
-il180:                                               ; pred = %il179, %il181
-  %iNd__1X_of_il180 = load i32, i32* %lv$1_of_il179, align 4
-  %str_of_il180 = getelementptr i32, i32* %__HELLO, i32 %iNd__1X_of_il180
-  %str$1_of_il180 = load i32, i32* %str_of_il180, align 4
-  %cond_normalize__of_il180 = icmp ne i32 %str$1_of_il180, 0
-  br i1 %cond_normalize__of_il180, label %il181, label %il182
+il186:                                               ; pred = %il184
+  %iNd__1X$3_of_il186 = load i32, i32* %lv$1_of_il183, align 4
+  store i32 %iNd__1X$3_of_il186, i32* %retVal_ofil183, align 4
+  br label %tc37
 
 tc37:                                                ; pred = %il186
   %putstr$1 = load i32, i32* %retVal_ofil183, align 4
@@ -119,37 +146,9 @@ il179:                                               ; pred = %mainEntry9
   store i32 0, i32* %lv$1_of_il179, align 4
   br label %il180
 
-tc36:                                                ; pred = %il182
-  %putstr = load i32, i32* %retVal_ofil179, align 4
-  store i32 0, i32* %lv, align 4
-  br label %whileCond_32
-
-il184:                                               ; pred = %il183, %il185
-  %iNd__1X_of_il184 = load i32, i32* %lv$1_of_il183, align 4
-  %str_of_il184 = getelementptr i32, i32* %N4__mE___$1, i32 %iNd__1X_of_il184
-  %str$1_of_il184 = load i32, i32* %str_of_il184, align 4
-  %cond_normalize__of_il184 = icmp ne i32 %str$1_of_il184, 0
-  br i1 %cond_normalize__of_il184, label %il185, label %il186
-
-il181:                                               ; pred = %il180
-  %iNd__1X$1_of_il181 = load i32, i32* %lv$1_of_il179, align 4
-  %str$2_of_il181 = getelementptr i32, i32* %__HELLO, i32 %iNd__1X$1_of_il181
-  %str$3_of_il181 = load i32, i32* %str$2_of_il181, align 4
-  call void @putch(i32 %str$3_of_il181)
-  %iNd__1X$2_of_il181 = load i32, i32* %lv$1_of_il179, align 4
-  %result__of_il181 = add i32 %iNd__1X$2_of_il181, 1
-  store i32 %result__of_il181, i32* %lv$1_of_il179, align 4
-  br label %il180
-
-il186:                                               ; pred = %il184
-  %iNd__1X$3_of_il186 = load i32, i32* %lv$1_of_il183, align 4
-  store i32 %iNd__1X$3_of_il186, i32* %retVal_ofil183, align 4
-  br label %tc37
-
-il190:                                               ; pred = %il188
-  %iNd__1X$3_of_il190 = load i32, i32* %lv$1_of_il187, align 4
-  store i32 %iNd__1X$3_of_il190, i32* %retVal_ofil187, align 4
-  br label %tc38
+il187:                                               ; pred = %tc37
+  store i32 0, i32* %lv$1_of_il187, align 4
+  br label %il188
 
 tc38:                                                ; pred = %il190
   %putstr$2 = load i32, i32* %retVal_ofil187, align 4
@@ -158,9 +157,12 @@ tc38:                                                ; pred = %il190
   %N4__mE___$3 = getelementptr [50 x i32], [50 x i32]* %N4__mE___$2, i32 0, i32 0
   br label %il191
 
-il187:                                               ; pred = %tc37
-  store i32 0, i32* %lv$1_of_il187, align 4
-  br label %il188
+il188:                                               ; pred = %il187, %il189
+  %iNd__1X_of_il188 = load i32, i32* %lv$1_of_il187, align 4
+  %str_of_il188 = getelementptr i32, i32* %saY_HeI10_To, i32 %iNd__1X_of_il188
+  %str$1_of_il188 = load i32, i32* %str_of_il188, align 4
+  %cond_normalize__of_il188 = icmp ne i32 %str$1_of_il188, 0
+  br i1 %cond_normalize__of_il188, label %il189, label %il190
 
 il189:                                               ; pred = %il188
   %iNd__1X$1_of_il189 = load i32, i32* %lv$1_of_il187, align 4
@@ -172,12 +174,19 @@ il189:                                               ; pred = %il188
   store i32 %result__of_il189, i32* %lv$1_of_il187, align 4
   br label %il188
 
-il188:                                               ; pred = %il187, %il189
-  %iNd__1X_of_il188 = load i32, i32* %lv$1_of_il187, align 4
-  %str_of_il188 = getelementptr i32, i32* %saY_HeI10_To, i32 %iNd__1X_of_il188
-  %str$1_of_il188 = load i32, i32* %str_of_il188, align 4
-  %cond_normalize__of_il188 = icmp ne i32 %str$1_of_il188, 0
-  br i1 %cond_normalize__of_il188, label %il189, label %il190
+il190:                                               ; pred = %il188
+  %iNd__1X$3_of_il190 = load i32, i32* %lv$1_of_il187, align 4
+  store i32 %iNd__1X$3_of_il190, i32* %retVal_ofil187, align 4
+  br label %tc38
+
+il194:                                               ; pred = %il192
+  %iNd__1X$3_of_il194 = load i32, i32* %lv$1_of_il191, align 4
+  store i32 %iNd__1X$3_of_il194, i32* %retVal_ofil191, align 4
+  br label %tc39
+
+il191:                                               ; pred = %tc38
+  store i32 0, i32* %lv$1_of_il191, align 4
+  br label %il192
 
 il193:                                               ; pred = %il192
   %iNd__1X$1_of_il193 = load i32, i32* %lv$1_of_il191, align 4
@@ -201,34 +210,10 @@ il192:                                               ; pred = %il191, %il193
   %cond_normalize__of_il192 = icmp ne i32 %str$1_of_il192, 0
   br i1 %cond_normalize__of_il192, label %il193, label %il194
 
-il191:                                               ; pred = %tc38
-  store i32 0, i32* %lv$1_of_il191, align 4
-  br label %il192
-
-il194:                                               ; pred = %il192
-  %iNd__1X$3_of_il194 = load i32, i32* %lv$1_of_il191, align 4
-  store i32 %iNd__1X$3_of_il194, i32* %retVal_ofil191, align 4
-  br label %tc39
-
-il196:                                               ; pred = %il195, %il197
-  %iNd__1X_of_il196 = load i32, i32* %lv$1_of_il195, align 4
-  %str_of_il196 = getelementptr i32, i32* %RET, i32 %iNd__1X_of_il196
-  %str$1_of_il196 = load i32, i32* %str_of_il196, align 4
-  %cond_normalize__of_il196 = icmp ne i32 %str$1_of_il196, 0
-  br i1 %cond_normalize__of_il196, label %il197, label %il198
-
-il195:                                               ; pred = %tc39
-  store i32 0, i32* %lv$1_of_il195, align 4
-  br label %il196
-
 il198:                                               ; pred = %il196
   %iNd__1X$3_of_il198 = load i32, i32* %lv$1_of_il195, align 4
   store i32 %iNd__1X$3_of_il198, i32* %retVal_ofil195, align 4
   br label %tc40
-
-tc40:                                                ; pred = %il198
-  %putstr$4 = load i32, i32* %retVal_ofil195, align 4
-  br label %next_67
 
 il197:                                               ; pred = %il196
   %iNd__1X$1_of_il197 = load i32, i32* %lv$1_of_il195, align 4
@@ -239,5 +224,20 @@ il197:                                               ; pred = %il196
   %result__of_il197 = add i32 %iNd__1X$2_of_il197, 1
   store i32 %result__of_il197, i32* %lv$1_of_il195, align 4
   br label %il196
+
+il195:                                               ; pred = %tc39
+  store i32 0, i32* %lv$1_of_il195, align 4
+  br label %il196
+
+tc40:                                                ; pred = %il198
+  %putstr$4 = load i32, i32* %retVal_ofil195, align 4
+  br label %next_67
+
+il196:                                               ; pred = %il195, %il197
+  %iNd__1X_of_il196 = load i32, i32* %lv$1_of_il195, align 4
+  %str_of_il196 = getelementptr i32, i32* %RET, i32 %iNd__1X_of_il196
+  %str$1_of_il196 = load i32, i32* %str_of_il196, align 4
+  %cond_normalize__of_il196 = icmp ne i32 %str$1_of_il196, 0
+  br i1 %cond_normalize__of_il196, label %il197, label %il198
 }
 

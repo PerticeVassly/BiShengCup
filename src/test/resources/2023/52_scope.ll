@@ -18,11 +18,32 @@ declare void @memset(i32*, i32, i32)
 
 @gv = global i32 7, align 4
 
+define i32 @func() {
+funcEntry:
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  %a = load i32, i32* @gv, align 4
+  store i32 %a, i32* %lv, align 4
+  store i32 1, i32* %lv$1, align 4
+  %a$1 = load i32, i32* %lv$1, align 4
+  %b = load i32, i32* %lv, align 4
+  %cond_eq_tmp_ = icmp eq i32 %a$1, %b
+  %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
+  %cond_ = icmp ne i32 %cond_tmp_, 0
+  br i1 %cond_, label %ifTrue_61, label %ifFalse_18
+
+ifTrue_61:                                         ; pred = %funcEntry
+  %a$2 = load i32, i32* %lv$1, align 4
+  %result_ = add i32 %a$2, 1
+  store i32 %result_, i32* %lv$1, align 4
+  ret i32 1
+
+ifFalse_18:                                        ; pred = %funcEntry
+  ret i32 0
+}
+
 define i32 @main() {
 mainEntry22:
-  %retVal_ofil704 = alloca i32, align 4
-  %lv_of_il704 = alloca i32, align 4
-  %lv$1_of_il704 = alloca i32, align 4
   %lv$1 = alloca i32, align 4
   %lv = alloca i32, align 4
   store i32 0, i32* %lv, align 4
@@ -37,7 +58,11 @@ whileCond_62:                                        ; pred = %mainEntry22, %nex
   br i1 %cond_, label %whileBody_62, label %next_124
 
 whileBody_62:                                        ; pred = %whileCond_62
-  br label %il704
+  %func = call i32 @func()
+  %cond_eq_tmp_ = icmp eq i32 %func, 1
+  %cond_tmp_$1 = zext i1 %cond_eq_tmp_ to i32
+  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
+  br i1 %cond_$1, label %ifTrue_62, label %next_125
 
 next_124:                                            ; pred = %whileCond_62
   %result$1 = load i32, i32* %lv, align 4
@@ -68,34 +93,5 @@ ifFalse_19:                                          ; pred = %next_124
 
 next_126:                                            ; pred = %ifTrue_63, %ifFalse_19
   ret i32 0
-
-il704:                                               ; pred = %whileBody_62
-  %a_of_il704 = load i32, i32* @gv, align 4
-  store i32 %a_of_il704, i32* %lv_of_il704, align 4
-  store i32 1, i32* %lv$1_of_il704, align 4
-  %a$1_of_il704 = load i32, i32* %lv$1_of_il704, align 4
-  %b_of_il704 = load i32, i32* %lv_of_il704, align 4
-  %cond_eq_tmp__of_il704 = icmp eq i32 %a$1_of_il704, %b_of_il704
-  %cond_tmp__of_il704 = zext i1 %cond_eq_tmp__of_il704 to i32
-  %cond__of_il704 = icmp ne i32 %cond_tmp__of_il704, 0
-  br i1 %cond__of_il704, label %il705, label %il706
-
-tc81:                                                ; pred = %il705, %il706
-  %func = load i32, i32* %retVal_ofil704, align 4
-  %cond_eq_tmp_ = icmp eq i32 %func, 1
-  %cond_tmp_$1 = zext i1 %cond_eq_tmp_ to i32
-  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_62, label %next_125
-
-il705:                                               ; pred = %il704
-  %a$2_of_il705 = load i32, i32* %lv$1_of_il704, align 4
-  %result__of_il705 = add i32 %a$2_of_il705, 1
-  store i32 %result__of_il705, i32* %lv$1_of_il704, align 4
-  store i32 1, i32* %retVal_ofil704, align 4
-  br label %tc81
-
-il706:                                               ; pred = %il704
-  store i32 0, i32* %retVal_ofil704, align 4
-  br label %tc81
 }
 

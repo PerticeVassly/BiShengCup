@@ -127,10 +127,35 @@ next_536:                                              ; pred = %ifTrue_303, %if
 secondCond_107:                                        ; pred = %next_535
   br label %il1909
 
-tc164:                                                 ; pred = %il1909
-  %func$5 = load i32, i32* %retVal_ofil1909, align 4
-  %cond_normalize_$5 = icmp ne i32 %func$5, 0
-  br i1 %cond_normalize_$5, label %ifTrue_303, label %ifFalse_133
+il1909:                                                ; pred = %secondCond_107
+  %g_of_il1909 = load i32, i32* @gv, align 4
+  %result__of_il1909 = add i32 %g_of_il1909, 100
+  store i32 %result__of_il1909, i32* @gv, align 4
+  %g$1_of_il1909 = load i32, i32* @gv, align 4
+  call void @putint(i32 %g$1_of_il1909)
+  %g$2_of_il1909 = load i32, i32* @gv, align 4
+  store i32 %g$2_of_il1909, i32* %retVal_ofil1909, align 4
+  br label %tc164
+
+il1907:                                                ; pred = %next_535
+  %g_of_il1907 = load i32, i32* @gv, align 4
+  %result__of_il1907 = add i32 %g_of_il1907, 99
+  store i32 %result__of_il1907, i32* @gv, align 4
+  %g$1_of_il1907 = load i32, i32* @gv, align 4
+  call void @putint(i32 %g$1_of_il1907)
+  %g$2_of_il1907 = load i32, i32* @gv, align 4
+  store i32 %g$2_of_il1907, i32* %retVal_ofil1907, align 4
+  br label %tc162
+
+il1904:                                                ; pred = %secondCond_103
+  %g_of_il1904 = load i32, i32* @gv, align 4
+  %result__of_il1904 = add i32 %g_of_il1904, %i$1
+  store i32 %result__of_il1904, i32* @gv, align 4
+  %g$1_of_il1904 = load i32, i32* @gv, align 4
+  call void @putint(i32 %g$1_of_il1904)
+  %g$2_of_il1904 = load i32, i32* @gv, align 4
+  store i32 %g$2_of_il1904, i32* %retVal_ofil1904, align 4
+  br label %tc159
 
 il1906:                                                ; pred = %secondCond_105
   %g_of_il1906 = load i32, i32* @gv, align 4
@@ -157,6 +182,11 @@ il1908:                                                ; pred = %secondCond_106
   store i32 %g$2_of_il1908, i32* %retVal_ofil1908, align 4
   br label %tc163
 
+tc160:                                                 ; pred = %il1905
+  %func$1 = load i32, i32* %retVal_ofil1905, align 4
+  %cond_normalize_$1 = icmp ne i32 %func$1, 0
+  br i1 %cond_normalize_$1, label %ifTrue_300, label %ifFalse_130
+
 il1905:                                                ; pred = %secondCond_104
   %g_of_il1905 = load i32, i32* @gv, align 4
   %result__of_il1905 = add i32 %g_of_il1905, %i$3
@@ -166,26 +196,6 @@ il1905:                                                ; pred = %secondCond_104
   %g$2_of_il1905 = load i32, i32* @gv, align 4
   store i32 %g$2_of_il1905, i32* %retVal_ofil1905, align 4
   br label %tc160
-
-tc159:                                                 ; pred = %il1904
-  %func = load i32, i32* %retVal_ofil1904, align 4
-  %cond_normalize_ = icmp ne i32 %func, 0
-  br i1 %cond_normalize_, label %ifTrue_299, label %ifFalse_129
-
-il1904:                                                ; pred = %secondCond_103
-  %g_of_il1904 = load i32, i32* @gv, align 4
-  %result__of_il1904 = add i32 %g_of_il1904, %i$1
-  store i32 %result__of_il1904, i32* @gv, align 4
-  %g$1_of_il1904 = load i32, i32* @gv, align 4
-  call void @putint(i32 %g$1_of_il1904)
-  %g$2_of_il1904 = load i32, i32* @gv, align 4
-  store i32 %g$2_of_il1904, i32* %retVal_ofil1904, align 4
-  br label %tc159
-
-tc160:                                                 ; pred = %il1905
-  %func$1 = load i32, i32* %retVal_ofil1905, align 4
-  %cond_normalize_$1 = icmp ne i32 %func$1, 0
-  br i1 %cond_normalize_$1, label %ifTrue_300, label %ifFalse_130
 
 tc162:                                                 ; pred = %il1907
   %func$4 = load i32, i32* %retVal_ofil1907, align 4
@@ -200,24 +210,14 @@ tc163:                                                 ; pred = %il1908
   %cond_normalize_$3 = icmp ne i32 %func$3, 0
   br i1 %cond_normalize_$3, label %ifTrue_302, label %ifFalse_132
 
-il1909:                                                ; pred = %secondCond_107
-  %g_of_il1909 = load i32, i32* @gv, align 4
-  %result__of_il1909 = add i32 %g_of_il1909, 100
-  store i32 %result__of_il1909, i32* @gv, align 4
-  %g$1_of_il1909 = load i32, i32* @gv, align 4
-  call void @putint(i32 %g$1_of_il1909)
-  %g$2_of_il1909 = load i32, i32* @gv, align 4
-  store i32 %g$2_of_il1909, i32* %retVal_ofil1909, align 4
-  br label %tc164
+tc164:                                                 ; pred = %il1909
+  %func$5 = load i32, i32* %retVal_ofil1909, align 4
+  %cond_normalize_$5 = icmp ne i32 %func$5, 0
+  br i1 %cond_normalize_$5, label %ifTrue_303, label %ifFalse_133
 
-il1907:                                                ; pred = %next_535
-  %g_of_il1907 = load i32, i32* @gv, align 4
-  %result__of_il1907 = add i32 %g_of_il1907, 99
-  store i32 %result__of_il1907, i32* @gv, align 4
-  %g$1_of_il1907 = load i32, i32* @gv, align 4
-  call void @putint(i32 %g$1_of_il1907)
-  %g$2_of_il1907 = load i32, i32* @gv, align 4
-  store i32 %g$2_of_il1907, i32* %retVal_ofil1907, align 4
-  br label %tc162
+tc159:                                                 ; pred = %il1904
+  %func = load i32, i32* %retVal_ofil1904, align 4
+  %cond_normalize_ = icmp ne i32 %func, 0
+  br i1 %cond_normalize_, label %ifTrue_299, label %ifFalse_129
 }
 

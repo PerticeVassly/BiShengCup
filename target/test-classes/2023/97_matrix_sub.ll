@@ -176,26 +176,6 @@ next_591:                                             ; pred = %whileCond_264
   call void @putch(i32 %x$5)
   ret i32 0
 
-il2133:                                               ; pred = %il2131
-  store i32 0, i32* %retVal_ofil2130, align 4
-  br label %tc194
-
-tc194:                                                ; pred = %il2133
-  %sub = load i32, i32* %retVal_ofil2130, align 4
-  store i32 %sub, i32* %lv$9, align 4
-  br label %whileCond_262
-
-il2131:                                               ; pred = %il2130, %il2132
-  %i_of_il2131 = load i32, i32* %lv$9_of_il2130, align 4
-  %cond_lt_tmp__of_il2131 = icmp slt i32 %i_of_il2131, 3
-  %cond_tmp__of_il2131 = zext i1 %cond_lt_tmp__of_il2131 to i32
-  %cond__of_il2131 = icmp ne i32 %cond_tmp__of_il2131, 0
-  br i1 %cond__of_il2131, label %il2132, label %il2133
-
-il2130:                                               ; pred = %next_588
-  store i32 0, i32* %lv$9_of_il2130, align 4
-  br label %il2131
-
 il2132:                                               ; pred = %il2131
   %i$1_of_il2132 = load i32, i32* %lv$9_of_il2130, align 4
   %c0_of_il2132 = getelementptr float, float* %c0, i32 %i$1_of_il2132
@@ -230,6 +210,26 @@ il2132:                                               ; pred = %il2131
   %i$10_of_il2132 = load i32, i32* %lv$9_of_il2130, align 4
   %result_$3_of_il2132 = add i32 %i$10_of_il2132, 1
   store i32 %result_$3_of_il2132, i32* %lv$9_of_il2130, align 4
+  br label %il2131
+
+il2133:                                               ; pred = %il2131
+  store i32 0, i32* %retVal_ofil2130, align 4
+  br label %tc194
+
+il2131:                                               ; pred = %il2130, %il2132
+  %i_of_il2131 = load i32, i32* %lv$9_of_il2130, align 4
+  %cond_lt_tmp__of_il2131 = icmp slt i32 %i_of_il2131, 3
+  %cond_tmp__of_il2131 = zext i1 %cond_lt_tmp__of_il2131 to i32
+  %cond__of_il2131 = icmp ne i32 %cond_tmp__of_il2131, 0
+  br i1 %cond__of_il2131, label %il2132, label %il2133
+
+tc194:                                                ; pred = %il2133
+  %sub = load i32, i32* %retVal_ofil2130, align 4
+  store i32 %sub, i32* %lv$9, align 4
+  br label %whileCond_262
+
+il2130:                                               ; pred = %next_588
+  store i32 0, i32* %lv$9_of_il2130, align 4
   br label %il2131
 }
 

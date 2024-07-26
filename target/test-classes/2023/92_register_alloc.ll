@@ -100,6 +100,14 @@ mainEntry73:
   %b = load i32, i32* %lv$1, align 4
   br label %il2116
 
+tc192:                                              ; pred = %il2116
+  %func = load i32, i32* %retVal_ofil2116, align 4
+  store i32 %func, i32* %lv, align 4
+  %a$2 = load i32, i32* %lv, align 4
+  call void @putint(i32 %a$2)
+  %a$3 = load i32, i32* %lv, align 4
+  ret i32 %a$3
+
 il2116:                                             ; pred = %mainEntry73
   %result__of_il2116 = add i32 %a$1, %b
   store i32 %result__of_il2116, i32* %lv$2_of_il2116, align 4
@@ -593,13 +601,5 @@ il2116:                                             ; pred = %mainEntry73
   %result_$206_of_il2116 = sub i32 %result_$205_of_il2116, %a32$2_of_il2116
   store i32 %result_$206_of_il2116, i32* %retVal_ofil2116, align 4
   br label %tc192
-
-tc192:                                              ; pred = %il2116
-  %func = load i32, i32* %retVal_ofil2116, align 4
-  store i32 %func, i32* %lv, align 4
-  %a$2 = load i32, i32* %lv, align 4
-  call void @putint(i32 %a$2)
-  %a$3 = load i32, i32* %lv, align 4
-  ret i32 %a$3
 }
 

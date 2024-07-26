@@ -37,7 +37,7 @@ public class FrontEndTest {
 //    @StringSource("65_color")
 //    @StringSource("101_float_arr")
 //    @StringSource("38_light2d")
-    @StringSource("69_expr_eval")
+    @StringSource("59_sort_test5")
 //    @StringSource("79_var_name")
 //    @StringSource("90_many_locals")
 //    @StringSource("64_calculator")
@@ -80,7 +80,7 @@ public class FrontEndTest {
         String code = dir + name + ".sy";
         String output = dir + name + ".ll";
         String standardOut = dir + name + ".out";
-        Main.main(code, "-o", output, "--emit-llvm", "-O2");
+        Main.main(code, "-o", output, "--emit-llvm");
         cmdExecutor.exec("llvm-link", output, SYLIB, "-o", LINKED);
         if (exist(dir, name + ".in")) {
             cmdExecutor.execRedirectInput(standardIn, "lli", LINKED);

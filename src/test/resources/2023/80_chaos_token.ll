@@ -21,23 +21,47 @@ declare void @memset(i32*, i32, i32)
 @gv2 = global [40 x i32] [i32 32, i32 115, i32 97, i32 121, i32 115, i32 32, i32 104, i32 101, i32 108, i32 108, i32 111, i32 32, i32 116, i32 111, i32 32, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0], align 4
 @gv3 = global [5 x i32] [i32 10, i32 0, i32 0, i32 0, i32 0], align 4
 
+define i32 @putstr(i32* %0) {
+putstrEntry:
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32*, align 4
+  store i32* %0, i32** %lv, align 4
+  store i32 0, i32* %lv$1, align 4
+  br label %whileCond_31
+
+whileCond_31:                                        ; pred = %putstrEntry, %whileBody_31
+  %iNd__1X = load i32, i32* %lv$1, align 4
+  %arr_ = load i32*, i32** %lv, align 4
+  %str = getelementptr i32, i32* %arr_, i32 %iNd__1X
+  %str$1 = load i32, i32* %str, align 4
+  %cond_normalize_ = icmp ne i32 %str$1, 0
+  br i1 %cond_normalize_, label %whileBody_31, label %next_65
+
+whileBody_31:                                        ; pred = %whileCond_31
+  %iNd__1X$1 = load i32, i32* %lv$1, align 4
+  %arr_$1 = load i32*, i32** %lv, align 4
+  %str$2 = getelementptr i32, i32* %arr_$1, i32 %iNd__1X$1
+  %str$3 = load i32, i32* %str$2, align 4
+  call void @putch(i32 %str$3)
+  %iNd__1X$2 = load i32, i32* %lv$1, align 4
+  %result_ = add i32 %iNd__1X$2, 1
+  store i32 %result_, i32* %lv$1, align 4
+  br label %whileCond_31
+
+next_65:                                             ; pred = %whileCond_31
+  %iNd__1X$3 = load i32, i32* %lv$1, align 4
+  ret i32 %iNd__1X$3
+}
+
 define i32 @main() {
 mainEntry9:
-  %retVal_ofil195 = alloca i32, align 4
-  %lv$1_of_il195 = alloca i32, align 4
-  %retVal_ofil191 = alloca i32, align 4
-  %lv$1_of_il191 = alloca i32, align 4
-  %retVal_ofil187 = alloca i32, align 4
-  %lv$1_of_il187 = alloca i32, align 4
-  %retVal_ofil183 = alloca i32, align 4
-  %lv$1_of_il183 = alloca i32, align 4
-  %retVal_ofil179 = alloca i32, align 4
-  %lv$1_of_il179 = alloca i32, align 4
   %lv$2 = alloca i32, align 4
   %lv$1 = alloca i32, align 4
   %lv = alloca i32, align 4
   %__HELLO = getelementptr [100 x i32], [100 x i32]* @gv, i32 0, i32 0
-  br label %il179
+  %putstr = call i32 @putstr(i32* %__HELLO)
+  store i32 0, i32* %lv, align 4
+  br label %whileCond_32
 
 whileCond_32:                                        ; pred = %mainEntry9, %next_68
   %cond_normalize_ = icmp ne i32 1, 0
@@ -64,7 +88,16 @@ ifTrue_34:                                           ; pred = %whileBody_32
   %_$1 = load i32, i32* %lv$1, align 4
   %N4__mE___ = getelementptr [6 x [50 x i32]], [6 x [50 x i32]]* @gv1, i32 0, i32 %_$1
   %N4__mE___$1 = getelementptr [50 x i32], [50 x i32]* %N4__mE___, i32 0, i32 0
-  br label %il183
+  %putstr$1 = call i32 @putstr(i32* %N4__mE___$1)
+  %saY_HeI10_To = getelementptr [40 x i32], [40 x i32]* @gv2, i32 0, i32 0
+  %putstr$2 = call i32 @putstr(i32* %saY_HeI10_To)
+  %__$1 = load i32, i32* %lv$2, align 4
+  %N4__mE___$2 = getelementptr [6 x [50 x i32]], [6 x [50 x i32]]* @gv1, i32 0, i32 %__$1
+  %N4__mE___$3 = getelementptr [50 x i32], [50 x i32]* %N4__mE___$2, i32 0, i32 0
+  %putstr$3 = call i32 @putstr(i32* %N4__mE___$3)
+  %RET = getelementptr [5 x i32], [5 x i32]* @gv3, i32 0, i32 0
+  %putstr$4 = call i32 @putstr(i32* %RET)
+  br label %next_67
 
 next_67:                                             ; pred = %whileBody_32, %ifTrue_34
   %i$2 = load i32, i32* %lv, align 4
@@ -83,161 +116,5 @@ ifTrue_35:                                           ; pred = %next_67
 
 next_68:                                             ; pred = %next_67, %ifTrue_35
   br label %whileCond_32
-
-il182:                                               ; pred = %il180
-  %iNd__1X$3_of_il182 = load i32, i32* %lv$1_of_il179, align 4
-  store i32 %iNd__1X$3_of_il182, i32* %retVal_ofil179, align 4
-  br label %tc36
-
-il185:                                               ; pred = %il184
-  %iNd__1X$1_of_il185 = load i32, i32* %lv$1_of_il183, align 4
-  %str$2_of_il185 = getelementptr i32, i32* %N4__mE___$1, i32 %iNd__1X$1_of_il185
-  %str$3_of_il185 = load i32, i32* %str$2_of_il185, align 4
-  call void @putch(i32 %str$3_of_il185)
-  %iNd__1X$2_of_il185 = load i32, i32* %lv$1_of_il183, align 4
-  %result__of_il185 = add i32 %iNd__1X$2_of_il185, 1
-  store i32 %result__of_il185, i32* %lv$1_of_il183, align 4
-  br label %il184
-
-il180:                                               ; pred = %il179, %il181
-  %iNd__1X_of_il180 = load i32, i32* %lv$1_of_il179, align 4
-  %str_of_il180 = getelementptr i32, i32* %__HELLO, i32 %iNd__1X_of_il180
-  %str$1_of_il180 = load i32, i32* %str_of_il180, align 4
-  %cond_normalize__of_il180 = icmp ne i32 %str$1_of_il180, 0
-  br i1 %cond_normalize__of_il180, label %il181, label %il182
-
-tc37:                                                ; pred = %il186
-  %putstr$1 = load i32, i32* %retVal_ofil183, align 4
-  %saY_HeI10_To = getelementptr [40 x i32], [40 x i32]* @gv2, i32 0, i32 0
-  br label %il187
-
-il183:                                               ; pred = %ifTrue_34
-  store i32 0, i32* %lv$1_of_il183, align 4
-  br label %il184
-
-il179:                                               ; pred = %mainEntry9
-  store i32 0, i32* %lv$1_of_il179, align 4
-  br label %il180
-
-tc36:                                                ; pred = %il182
-  %putstr = load i32, i32* %retVal_ofil179, align 4
-  store i32 0, i32* %lv, align 4
-  br label %whileCond_32
-
-il184:                                               ; pred = %il183, %il185
-  %iNd__1X_of_il184 = load i32, i32* %lv$1_of_il183, align 4
-  %str_of_il184 = getelementptr i32, i32* %N4__mE___$1, i32 %iNd__1X_of_il184
-  %str$1_of_il184 = load i32, i32* %str_of_il184, align 4
-  %cond_normalize__of_il184 = icmp ne i32 %str$1_of_il184, 0
-  br i1 %cond_normalize__of_il184, label %il185, label %il186
-
-il181:                                               ; pred = %il180
-  %iNd__1X$1_of_il181 = load i32, i32* %lv$1_of_il179, align 4
-  %str$2_of_il181 = getelementptr i32, i32* %__HELLO, i32 %iNd__1X$1_of_il181
-  %str$3_of_il181 = load i32, i32* %str$2_of_il181, align 4
-  call void @putch(i32 %str$3_of_il181)
-  %iNd__1X$2_of_il181 = load i32, i32* %lv$1_of_il179, align 4
-  %result__of_il181 = add i32 %iNd__1X$2_of_il181, 1
-  store i32 %result__of_il181, i32* %lv$1_of_il179, align 4
-  br label %il180
-
-il186:                                               ; pred = %il184
-  %iNd__1X$3_of_il186 = load i32, i32* %lv$1_of_il183, align 4
-  store i32 %iNd__1X$3_of_il186, i32* %retVal_ofil183, align 4
-  br label %tc37
-
-il190:                                               ; pred = %il188
-  %iNd__1X$3_of_il190 = load i32, i32* %lv$1_of_il187, align 4
-  store i32 %iNd__1X$3_of_il190, i32* %retVal_ofil187, align 4
-  br label %tc38
-
-tc38:                                                ; pred = %il190
-  %putstr$2 = load i32, i32* %retVal_ofil187, align 4
-  %__$1 = load i32, i32* %lv$2, align 4
-  %N4__mE___$2 = getelementptr [6 x [50 x i32]], [6 x [50 x i32]]* @gv1, i32 0, i32 %__$1
-  %N4__mE___$3 = getelementptr [50 x i32], [50 x i32]* %N4__mE___$2, i32 0, i32 0
-  br label %il191
-
-il187:                                               ; pred = %tc37
-  store i32 0, i32* %lv$1_of_il187, align 4
-  br label %il188
-
-il189:                                               ; pred = %il188
-  %iNd__1X$1_of_il189 = load i32, i32* %lv$1_of_il187, align 4
-  %str$2_of_il189 = getelementptr i32, i32* %saY_HeI10_To, i32 %iNd__1X$1_of_il189
-  %str$3_of_il189 = load i32, i32* %str$2_of_il189, align 4
-  call void @putch(i32 %str$3_of_il189)
-  %iNd__1X$2_of_il189 = load i32, i32* %lv$1_of_il187, align 4
-  %result__of_il189 = add i32 %iNd__1X$2_of_il189, 1
-  store i32 %result__of_il189, i32* %lv$1_of_il187, align 4
-  br label %il188
-
-il188:                                               ; pred = %il187, %il189
-  %iNd__1X_of_il188 = load i32, i32* %lv$1_of_il187, align 4
-  %str_of_il188 = getelementptr i32, i32* %saY_HeI10_To, i32 %iNd__1X_of_il188
-  %str$1_of_il188 = load i32, i32* %str_of_il188, align 4
-  %cond_normalize__of_il188 = icmp ne i32 %str$1_of_il188, 0
-  br i1 %cond_normalize__of_il188, label %il189, label %il190
-
-il193:                                               ; pred = %il192
-  %iNd__1X$1_of_il193 = load i32, i32* %lv$1_of_il191, align 4
-  %str$2_of_il193 = getelementptr i32, i32* %N4__mE___$3, i32 %iNd__1X$1_of_il193
-  %str$3_of_il193 = load i32, i32* %str$2_of_il193, align 4
-  call void @putch(i32 %str$3_of_il193)
-  %iNd__1X$2_of_il193 = load i32, i32* %lv$1_of_il191, align 4
-  %result__of_il193 = add i32 %iNd__1X$2_of_il193, 1
-  store i32 %result__of_il193, i32* %lv$1_of_il191, align 4
-  br label %il192
-
-tc39:                                                ; pred = %il194
-  %putstr$3 = load i32, i32* %retVal_ofil191, align 4
-  %RET = getelementptr [5 x i32], [5 x i32]* @gv3, i32 0, i32 0
-  br label %il195
-
-il192:                                               ; pred = %il191, %il193
-  %iNd__1X_of_il192 = load i32, i32* %lv$1_of_il191, align 4
-  %str_of_il192 = getelementptr i32, i32* %N4__mE___$3, i32 %iNd__1X_of_il192
-  %str$1_of_il192 = load i32, i32* %str_of_il192, align 4
-  %cond_normalize__of_il192 = icmp ne i32 %str$1_of_il192, 0
-  br i1 %cond_normalize__of_il192, label %il193, label %il194
-
-il191:                                               ; pred = %tc38
-  store i32 0, i32* %lv$1_of_il191, align 4
-  br label %il192
-
-il194:                                               ; pred = %il192
-  %iNd__1X$3_of_il194 = load i32, i32* %lv$1_of_il191, align 4
-  store i32 %iNd__1X$3_of_il194, i32* %retVal_ofil191, align 4
-  br label %tc39
-
-il196:                                               ; pred = %il195, %il197
-  %iNd__1X_of_il196 = load i32, i32* %lv$1_of_il195, align 4
-  %str_of_il196 = getelementptr i32, i32* %RET, i32 %iNd__1X_of_il196
-  %str$1_of_il196 = load i32, i32* %str_of_il196, align 4
-  %cond_normalize__of_il196 = icmp ne i32 %str$1_of_il196, 0
-  br i1 %cond_normalize__of_il196, label %il197, label %il198
-
-il195:                                               ; pred = %tc39
-  store i32 0, i32* %lv$1_of_il195, align 4
-  br label %il196
-
-il198:                                               ; pred = %il196
-  %iNd__1X$3_of_il198 = load i32, i32* %lv$1_of_il195, align 4
-  store i32 %iNd__1X$3_of_il198, i32* %retVal_ofil195, align 4
-  br label %tc40
-
-tc40:                                                ; pred = %il198
-  %putstr$4 = load i32, i32* %retVal_ofil195, align 4
-  br label %next_67
-
-il197:                                               ; pred = %il196
-  %iNd__1X$1_of_il197 = load i32, i32* %lv$1_of_il195, align 4
-  %str$2_of_il197 = getelementptr i32, i32* %RET, i32 %iNd__1X$1_of_il197
-  %str$3_of_il197 = load i32, i32* %str$2_of_il197, align 4
-  call void @putch(i32 %str$3_of_il197)
-  %iNd__1X$2_of_il197 = load i32, i32* %lv$1_of_il195, align 4
-  %result__of_il197 = add i32 %iNd__1X$2_of_il197, 1
-  store i32 %result__of_il197, i32* %lv$1_of_il195, align 4
-  br label %il196
 }
 

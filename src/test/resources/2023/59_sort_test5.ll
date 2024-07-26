@@ -18,24 +18,205 @@ declare void @memset(i32*, i32, i32)
 
 @gv = global i32 0, align 4
 
+define i32 @swap(i32* %0, i32 %1, i32 %2) {
+swapEntry:
+  %lv$3 = alloca i32, align 4
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32*, align 4
+  store i32* %0, i32** %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  store i32 %2, i32* %lv$2, align 4
+  %i = load i32, i32* %lv$1, align 4
+  %arr_ = load i32*, i32** %lv, align 4
+  %array = getelementptr i32, i32* %arr_, i32 %i
+  %array$1 = load i32, i32* %array, align 4
+  store i32 %array$1, i32* %lv$3, align 4
+  %i$1 = load i32, i32* %lv$1, align 4
+  %arr_$1 = load i32*, i32** %lv, align 4
+  %array$2 = getelementptr i32, i32* %arr_$1, i32 %i$1
+  %j = load i32, i32* %lv$2, align 4
+  %arr_$2 = load i32*, i32** %lv, align 4
+  %array$3 = getelementptr i32, i32* %arr_$2, i32 %j
+  %array$4 = load i32, i32* %array$3, align 4
+  store i32 %array$4, i32* %array$2, align 4
+  %j$1 = load i32, i32* %lv$2, align 4
+  %arr_$3 = load i32*, i32** %lv, align 4
+  %array$5 = getelementptr i32, i32* %arr_$3, i32 %j$1
+  %temp = load i32, i32* %lv$3, align 4
+  store i32 %temp, i32* %array$5, align 4
+  ret i32 0
+}
+
+define i32 @heap_ajust(i32* %0, i32 %1, i32 %2) {
+heap_ajustEntry:
+  %lv$4 = alloca i32, align 4
+  %lv$3 = alloca i32, align 4
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32*, align 4
+  store i32* %0, i32** %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  store i32 %2, i32* %lv$2, align 4
+  %start = load i32, i32* %lv$1, align 4
+  store i32 %start, i32* %lv$3, align 4
+  %dad = load i32, i32* %lv$3, align 4
+  %result_ = mul i32 %dad, 2
+  %result_$1 = add i32 %result_, 1
+  store i32 %result_$1, i32* %lv$4, align 4
+  br label %whileCond_185
+
+whileCond_185:                                          ; pred = %heap_ajustEntry, %next_445
+  %son = load i32, i32* %lv$4, align 4
+  %end = load i32, i32* %lv$2, align 4
+  %result_$2 = add i32 %end, 1
+  %cond_lt_tmp_ = icmp slt i32 %son, %result_$2
+  %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
+  %cond_ = icmp ne i32 %cond_tmp_, 0
+  br i1 %cond_, label %whileBody_185, label %next_443
+
+whileBody_185:                                          ; pred = %whileCond_185
+  %son$1 = load i32, i32* %lv$4, align 4
+  %end$1 = load i32, i32* %lv$2, align 4
+  %cond_lt_tmp_$1 = icmp slt i32 %son$1, %end$1
+  %cond_tmp_$1 = zext i1 %cond_lt_tmp_$1 to i32
+  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
+  br i1 %cond_$1, label %secondCond_95, label %next_444
+
+next_443:                                               ; pred = %whileCond_185
+  ret i32 0
+
+ifTrue_258:                                             ; pred = %secondCond_95
+  %son$4 = load i32, i32* %lv$4, align 4
+  %result_$4 = add i32 %son$4, 1
+  store i32 %result_$4, i32* %lv$4, align 4
+  br label %next_444
+
+next_444:                                               ; pred = %whileBody_185, %secondCond_95, %ifTrue_258
+  %dad$1 = load i32, i32* %lv$3, align 4
+  %arr_$2 = load i32*, i32** %lv, align 4
+  %arr$4 = getelementptr i32, i32* %arr_$2, i32 %dad$1
+  %arr$5 = load i32, i32* %arr$4, align 4
+  %son$5 = load i32, i32* %lv$4, align 4
+  %arr_$3 = load i32*, i32** %lv, align 4
+  %arr$6 = getelementptr i32, i32* %arr_$3, i32 %son$5
+  %arr$7 = load i32, i32* %arr$6, align 4
+  %cond_gt_tmp_ = icmp sgt i32 %arr$5, %arr$7
+  %cond_tmp_$3 = zext i1 %cond_gt_tmp_ to i32
+  %cond_$3 = icmp ne i32 %cond_tmp_$3, 0
+  br i1 %cond_$3, label %ifTrue_259, label %ifFalse_110
+
+secondCond_95:                                          ; pred = %whileBody_185
+  %son$2 = load i32, i32* %lv$4, align 4
+  %arr_ = load i32*, i32** %lv, align 4
+  %arr = getelementptr i32, i32* %arr_, i32 %son$2
+  %arr$1 = load i32, i32* %arr, align 4
+  %son$3 = load i32, i32* %lv$4, align 4
+  %result_$3 = add i32 %son$3, 1
+  %arr_$1 = load i32*, i32** %lv, align 4
+  %arr$2 = getelementptr i32, i32* %arr_$1, i32 %result_$3
+  %arr$3 = load i32, i32* %arr$2, align 4
+  %cond_lt_tmp_$2 = icmp slt i32 %arr$1, %arr$3
+  %cond_tmp_$2 = zext i1 %cond_lt_tmp_$2 to i32
+  %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
+  br i1 %cond_$2, label %ifTrue_258, label %next_444
+
+ifTrue_259:                                             ; pred = %next_444
+  ret i32 0
+
+ifFalse_110:                                            ; pred = %next_444
+  %arr$8 = load i32*, i32** %lv, align 4
+  %dad$2 = load i32, i32* %lv$3, align 4
+  %son$6 = load i32, i32* %lv$4, align 4
+  %swap = call i32 @swap(i32* %arr$8, i32 %dad$2, i32 %son$6)
+  store i32 %swap, i32* %lv$3, align 4
+  %son$7 = load i32, i32* %lv$4, align 4
+  store i32 %son$7, i32* %lv$3, align 4
+  %dad$3 = load i32, i32* %lv$3, align 4
+  %result_$5 = mul i32 %dad$3, 2
+  %result_$6 = add i32 %result_$5, 1
+  store i32 %result_$6, i32* %lv$4, align 4
+  br label %next_445
+
+next_445:                                               ; pred = %ifFalse_110
+  br label %whileCond_185
+}
+
+define i32 @heap_sort(i32* %0, i32 %1) {
+heap_sortEntry:
+  %lv$4 = alloca i32, align 4
+  %lv$3 = alloca i32, align 4
+  %lv$2 = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32*, align 4
+  store i32* %0, i32** %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  %len = load i32, i32* %lv$1, align 4
+  %result_ = sdiv i32 %len, 2
+  %result_$1 = sub i32 %result_, 1
+  store i32 %result_$1, i32* %lv$2, align 4
+  br label %whileCond_186
+
+whileCond_186:                                         ; pred = %heap_sortEntry, %whileBody_186
+  %i = load i32, i32* %lv$2, align 4
+  %cond_gt_tmp_ = icmp sgt i32 %i, -1
+  %cond_tmp_ = zext i1 %cond_gt_tmp_ to i32
+  %cond_ = icmp ne i32 %cond_tmp_, 0
+  br i1 %cond_, label %whileBody_186, label %next_446
+
+whileBody_186:                                         ; pred = %whileCond_186
+  %len$1 = load i32, i32* %lv$1, align 4
+  %result_$2 = sub i32 %len$1, 1
+  store i32 %result_$2, i32* %lv$3, align 4
+  %arr = load i32*, i32** %lv, align 4
+  %i$1 = load i32, i32* %lv$2, align 4
+  %tmp = load i32, i32* %lv$3, align 4
+  %heap_ajust = call i32 @heap_ajust(i32* %arr, i32 %i$1, i32 %tmp)
+  store i32 %heap_ajust, i32* %lv$3, align 4
+  %i$2 = load i32, i32* %lv$2, align 4
+  %result_$3 = sub i32 %i$2, 1
+  store i32 %result_$3, i32* %lv$2, align 4
+  br label %whileCond_186
+
+next_446:                                              ; pred = %whileCond_186
+  %len$2 = load i32, i32* %lv$1, align 4
+  %result_$4 = sub i32 %len$2, 1
+  store i32 %result_$4, i32* %lv$2, align 4
+  br label %whileCond_187
+
+whileCond_187:                                         ; pred = %next_446, %whileBody_187
+  %i$3 = load i32, i32* %lv$2, align 4
+  %cond_gt_tmp_$1 = icmp sgt i32 %i$3, 0
+  %cond_tmp_$1 = zext i1 %cond_gt_tmp_$1 to i32
+  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
+  br i1 %cond_$1, label %whileBody_187, label %next_447
+
+whileBody_187:                                         ; pred = %whileCond_187
+  store i32 0, i32* %lv$4, align 4
+  %arr$1 = load i32*, i32** %lv, align 4
+  %tmp0 = load i32, i32* %lv$4, align 4
+  %i$4 = load i32, i32* %lv$2, align 4
+  %swap = call i32 @swap(i32* %arr$1, i32 %tmp0, i32 %i$4)
+  store i32 %swap, i32* %lv$3, align 4
+  %i$5 = load i32, i32* %lv$2, align 4
+  %result_$5 = sub i32 %i$5, 1
+  store i32 %result_$5, i32* %lv$3, align 4
+  %arr$2 = load i32*, i32** %lv, align 4
+  %tmp0$1 = load i32, i32* %lv$4, align 4
+  %tmp$1 = load i32, i32* %lv$3, align 4
+  %heap_ajust$1 = call i32 @heap_ajust(i32* %arr$2, i32 %tmp0$1, i32 %tmp$1)
+  store i32 %heap_ajust$1, i32* %lv$3, align 4
+  %i$6 = load i32, i32* %lv$2, align 4
+  %result_$6 = sub i32 %i$6, 1
+  store i32 %result_$6, i32* %lv$2, align 4
+  br label %whileCond_187
+
+next_447:                                              ; pred = %whileCond_187
+  ret i32 0
+}
+
 define i32 @main() {
 mainEntry42:
-  %retVal_ofil1627 = alloca i32, align 4
-  %lv$2_of_il1627 = alloca i32, align 4
-  %lv$3_of_il1627 = alloca i32, align 4
-  %lv$4_of_il1627 = alloca i32, align 4
-  %retVal_ofil1601_of_il1602_of_il1627 = alloca i32, align 4
-  %lv$3_of_il1601_of_il1602_of_il1627 = alloca i32, align 4
-  %lv$4_of_il1602_of_il1627 = alloca i32, align 4
-  %lv$3_of_il1602_of_il1627 = alloca i32, align 4
-  %retVal_ofil1602_of_il1627 = alloca i32, align 4
-  %lv$3_of_il1614_of_il1627 = alloca i32, align 4
-  %retVal_ofil1614_of_il1627 = alloca i32, align 4
-  %retVal_ofil1601_of_il1615_of_il1627 = alloca i32, align 4
-  %lv$3_of_il1601_of_il1615_of_il1627 = alloca i32, align 4
-  %lv$4_of_il1615_of_il1627 = alloca i32, align 4
-  %lv$3_of_il1615_of_il1627 = alloca i32, align 4
-  %retVal_ofil1615_of_il1627 = alloca i32, align 4
   %lv$2 = alloca i32, align 4
   %lv$1 = alloca i32, align 4
   %lv = alloca [10 x i32], align 16
@@ -63,7 +244,9 @@ mainEntry42:
   store i32 0, i32* %lv$1, align 4
   %a$10 = getelementptr [10 x i32], [10 x i32]* %lv, i32 0, i32 0
   %n = load i32, i32* @gv, align 4
-  br label %il1627
+  %heap_sort = call i32 @heap_sort(i32* %a$10, i32 %n)
+  store i32 %heap_sort, i32* %lv$1, align 4
+  br label %whileCond_188
 
 whileCond_188:                                        ; pred = %mainEntry42, %whileBody_188
   %i = load i32, i32* %lv$1, align 4
@@ -90,282 +273,5 @@ whileBody_188:                                        ; pred = %whileCond_188
 
 next_448:                                             ; pred = %whileCond_188
   ret i32 0
-
-il1637:                                               ; pred = %il1629
-  store i32 %i$1_of_il1629, i32* %lv$3_of_il1602_of_il1627, align 4
-  %dad_of_il1602_of_il1637 = load i32, i32* %lv$3_of_il1602_of_il1627, align 4
-  %result__of_il1602_of_il1637 = mul i32 %dad_of_il1602_of_il1637, 2
-  %result_$1_of_il1602_of_il1637 = add i32 %result__of_il1602_of_il1637, 1
-  store i32 %result_$1_of_il1602_of_il1637, i32* %lv$4_of_il1602_of_il1627, align 4
-  br label %il1639
-
-il1661:                                               ; pred = %il1650
-  %long_name411$y_of_il1601_of_il1626_of_il1661 = getelementptr i32, i32* %a$10, i32 %dad$2_of_il1623_of_il1650
-  %array$1_of_il1601_of_il1626_of_il1661 = load i32, i32* %array_of_il1601_of_il1626_of_il1661, align 4
-  store i32 %array$1_of_il1601_of_il1626_of_il1661, i32* %lv$3_of_il1601_of_il1615_of_il1627, align 4
-  %long_name416$2_of_il1601_of_il1626_of_il1661 = getelementptr i32, i32* %a$10, i32 %dad$2_of_il1623_of_il1650
-  %long_name417$3_of_il1601_of_il1626_of_il1661 = getelementptr i32, i32* %a$10, i32 %son$6_of_il1623_of_il1650
-  %array$4_of_il1601_of_il1626_of_il1661 = load i32, i32* %array$3_of_il1601_of_il1626_of_il1661, align 4
-  store i32 %array$4_of_il1601_of_il1626_of_il1661, i32* %array$2_of_il1601_of_il1626_of_il1661, align 4
-  %long_name422$5_of_il1601_of_il1626_of_il1661 = getelementptr i32, i32* %a$10, i32 %son$6_of_il1623_of_il1650
-  %temp_of_il1601_of_il1626_of_il1661 = load i32, i32* %lv$3_of_il1601_of_il1615_of_il1627, align 4
-  store i32 %temp_of_il1601_of_il1626_of_il1661, i32* %array$5_of_il1601_of_il1626_of_il1661, align 4
-  store i32 0, i32* %retVal_ofil1601_of_il1615_of_il1627, align 4
-  br label %il1658
-
-il1629:                                               ; pred = %il1628
-  %result_$2_of_il1629 = sub i32 %n, 1
-  store i32 %result_$2_of_il1629, i32* %lv$3_of_il1627, align 4
-  %i$1_of_il1629 = load i32, i32* %lv$2_of_il1627, align 4
-  %tmp_of_il1629 = load i32, i32* %lv$3_of_il1627, align 4
-  br label %il1637
-
-il1653:                                               ; pred = %il1652
-  %son$4_of_il1619_of_il1653 = load i32, i32* %lv$4_of_il1615_of_il1627, align 4
-  %result_$4_of_il1619_of_il1653 = add i32 %son$4_of_il1619_of_il1653, 1
-  store i32 %result_$4_of_il1619_of_il1653, i32* %lv$4_of_il1615_of_il1627, align 4
-  br label %il1651
-
-il1630:                                               ; pred = %il1628
-  %result_$4_of_il1630 = sub i32 %n, 1
-  store i32 %result_$4_of_il1630, i32* %lv$2_of_il1627, align 4
-  br label %il1631
-
-il1634:                                               ; pred = %il1648
-  %swap_of_il1634 = load i32, i32* %retVal_ofil1614_of_il1627, align 4
-  store i32 %swap_of_il1634, i32* %lv$3_of_il1627, align 4
-  %i$5_of_il1634 = load i32, i32* %lv$2_of_il1627, align 4
-  %result_$5_of_il1634 = sub i32 %i$5_of_il1634, 1
-  store i32 %result_$5_of_il1634, i32* %lv$3_of_il1627, align 4
-  %tmp0$1_of_il1634 = load i32, i32* %lv$4_of_il1627, align 4
-  %tmp$1_of_il1634 = load i32, i32* %lv$3_of_il1627, align 4
-  br label %il1659
-
-il1636:                                               ; pred = %il1640, %il1642, %il1646
-  %dad$1_of_il1607_of_il1636 = load i32, i32* %lv$3_of_il1602_of_il1627, align 4
-  %arr$4_of_il1607_of_il1636 = getelementptr i32, i32* %a$10, i32 %dad$1_of_il1607_of_il1636
-  %arr$5_of_il1607_of_il1636 = load i32, i32* %arr$4_of_il1607_of_il1636, align 4
-  %son$5_of_il1607_of_il1636 = load i32, i32* %lv$4_of_il1602_of_il1627, align 4
-  %arr$6_of_il1607_of_il1636 = getelementptr i32, i32* %a$10, i32 %son$5_of_il1607_of_il1636
-  %arr$7_of_il1607_of_il1636 = load i32, i32* %arr$6_of_il1607_of_il1636, align 4
-  %cond_gt_tmp__of_il1607_of_il1636 = icmp sgt i32 %arr$5_of_il1607_of_il1636, %arr$7_of_il1607_of_il1636
-  %cond_tmp_$3_of_il1607_of_il1636 = zext i1 %cond_gt_tmp__of_il1607_of_il1636 to i32
-  %cond_$3_of_il1607_of_il1636 = icmp ne i32 %cond_tmp_$3_of_il1607_of_il1636, 0
-  br i1 %cond_$3_of_il1607_of_il1636, label %il1647, label %il1643
-
-il1647:                                               ; pred = %il1636
-  store i32 0, i32* %retVal_ofil1602_of_il1627, align 4
-  br label %il1644
-
-il1640:                                               ; pred = %il1639
-  %son$1_of_il1604_of_il1640 = load i32, i32* %lv$4_of_il1602_of_il1627, align 4
-  %cond_lt_tmp_$1_of_il1604_of_il1640 = icmp slt i32 %son$1_of_il1604_of_il1640, %tmp_of_il1629
-  %cond_tmp_$1_of_il1604_of_il1640 = zext i1 %cond_lt_tmp_$1_of_il1604_of_il1640 to i32
-  %cond_$1_of_il1604_of_il1640 = icmp ne i32 %cond_tmp_$1_of_il1604_of_il1640, 0
-  br i1 %cond_$1_of_il1604_of_il1640, label %il1642, label %il1636
-
-il1642:                                               ; pred = %il1640
-  %son$2_of_il1608_of_il1642 = load i32, i32* %lv$4_of_il1602_of_il1627, align 4
-  %arr_of_il1608_of_il1642 = getelementptr i32, i32* %a$10, i32 %son$2_of_il1608_of_il1642
-  %arr$1_of_il1608_of_il1642 = load i32, i32* %arr_of_il1608_of_il1642, align 4
-  %son$3_of_il1608_of_il1642 = load i32, i32* %lv$4_of_il1602_of_il1627, align 4
-  %result_$3_of_il1608_of_il1642 = add i32 %son$3_of_il1608_of_il1642, 1
-  %arr$2_of_il1608_of_il1642 = getelementptr i32, i32* %a$10, i32 %result_$3_of_il1608_of_il1642
-  %arr$3_of_il1608_of_il1642 = load i32, i32* %arr$2_of_il1608_of_il1642, align 4
-  %cond_lt_tmp_$2_of_il1608_of_il1642 = icmp slt i32 %arr$1_of_il1608_of_il1642, %arr$3_of_il1608_of_il1642
-  %cond_tmp_$2_of_il1608_of_il1642 = zext i1 %cond_lt_tmp_$2_of_il1608_of_il1642 to i32
-  %cond_$2_of_il1608_of_il1642 = icmp ne i32 %cond_tmp_$2_of_il1608_of_il1642, 0
-  br i1 %cond_$2_of_il1608_of_il1642, label %il1646, label %il1636
-
-il1657:                                               ; pred = %il1659, %il1660
-  %son_of_il1616_of_il1657 = load i32, i32* %lv$4_of_il1615_of_il1627, align 4
-  %result_$2_of_il1616_of_il1657 = add i32 %tmp$1_of_il1634, 1
-  %cond_lt_tmp__of_il1616_of_il1657 = icmp slt i32 %son_of_il1616_of_il1657, %result_$2_of_il1616_of_il1657
-  %cond_tmp__of_il1616_of_il1657 = zext i1 %cond_lt_tmp__of_il1616_of_il1657 to i32
-  %cond__of_il1616_of_il1657 = icmp ne i32 %cond_tmp__of_il1616_of_il1657, 0
-  br i1 %cond__of_il1616_of_il1657, label %il1649, label %il1654
-
-il1635:                                               ; pred = %il1643
-  br label %il1639
-
-il1659:                                               ; pred = %il1634
-  store i32 %tmp0$1_of_il1634, i32* %lv$3_of_il1615_of_il1627, align 4
-  %dad_of_il1615_of_il1659 = load i32, i32* %lv$3_of_il1615_of_il1627, align 4
-  %result__of_il1615_of_il1659 = mul i32 %dad_of_il1615_of_il1659, 2
-  %result_$1_of_il1615_of_il1659 = add i32 %result__of_il1615_of_il1659, 1
-  store i32 %result_$1_of_il1615_of_il1659, i32* %lv$4_of_il1615_of_il1627, align 4
-  br label %il1657
-
-il1644:                                               ; pred = %il1645, %il1647
-  %heap_ajust_of_il1644 = load i32, i32* %retVal_ofil1602_of_il1627, align 4
-  store i32 %heap_ajust_of_il1644, i32* %lv$3_of_il1627, align 4
-  %i$2_of_il1644 = load i32, i32* %lv$2_of_il1627, align 4
-  %result_$3_of_il1644 = sub i32 %i$2_of_il1644, 1
-  store i32 %result_$3_of_il1644, i32* %lv$2_of_il1627, align 4
-  br label %il1628
-
-il1652:                                               ; pred = %il1649
-  %son$2_of_il1621_of_il1652 = load i32, i32* %lv$4_of_il1615_of_il1627, align 4
-  %arr_of_il1621_of_il1652 = getelementptr i32, i32* %a$10, i32 %son$2_of_il1621_of_il1652
-  %arr$1_of_il1621_of_il1652 = load i32, i32* %arr_of_il1621_of_il1652, align 4
-  %son$3_of_il1621_of_il1652 = load i32, i32* %lv$4_of_il1615_of_il1627, align 4
-  %result_$3_of_il1621_of_il1652 = add i32 %son$3_of_il1621_of_il1652, 1
-  %arr$2_of_il1621_of_il1652 = getelementptr i32, i32* %a$10, i32 %result_$3_of_il1621_of_il1652
-  %arr$3_of_il1621_of_il1652 = load i32, i32* %arr$2_of_il1621_of_il1652, align 4
-  %cond_lt_tmp_$2_of_il1621_of_il1652 = icmp slt i32 %arr$1_of_il1621_of_il1652, %arr$3_of_il1621_of_il1652
-  %cond_tmp_$2_of_il1621_of_il1652 = zext i1 %cond_lt_tmp_$2_of_il1621_of_il1652 to i32
-  %cond_$2_of_il1621_of_il1652 = icmp ne i32 %cond_tmp_$2_of_il1621_of_il1652, 0
-  br i1 %cond_$2_of_il1621_of_il1652, label %il1653, label %il1651
-
-il1648:                                               ; pred = %il1632
-  %array_of_il1614_of_il1648 = getelementptr i32, i32* %a$10, i32 %tmp0_of_il1632
-  %array$1_of_il1614_of_il1648 = load i32, i32* %array_of_il1614_of_il1648, align 4
-  store i32 %array$1_of_il1614_of_il1648, i32* %lv$3_of_il1614_of_il1627, align 4
-  %array$2_of_il1614_of_il1648 = getelementptr i32, i32* %a$10, i32 %tmp0_of_il1632
-  %array$3_of_il1614_of_il1648 = getelementptr i32, i32* %a$10, i32 %i$4_of_il1632
-  %array$4_of_il1614_of_il1648 = load i32, i32* %array$3_of_il1614_of_il1648, align 4
-  store i32 %array$4_of_il1614_of_il1648, i32* %array$2_of_il1614_of_il1648, align 4
-  %array$5_of_il1614_of_il1648 = getelementptr i32, i32* %a$10, i32 %i$4_of_il1632
-  %temp_of_il1614_of_il1648 = load i32, i32* %lv$3_of_il1614_of_il1627, align 4
-  store i32 %temp_of_il1614_of_il1648, i32* %array$5_of_il1614_of_il1648, align 4
-  store i32 0, i32* %retVal_ofil1614_of_il1627, align 4
-  br label %il1634
-
-il1643:                                               ; pred = %il1636
-  %dad$2_of_il1610_of_il1643 = load i32, i32* %lv$3_of_il1602_of_il1627, align 4
-  %son$6_of_il1610_of_il1643 = load i32, i32* %lv$4_of_il1602_of_il1627, align 4
-  br label %il1641
-
-il1631:                                               ; pred = %il1630, %il1632
-  %i$3_of_il1631 = load i32, i32* %lv$2_of_il1627, align 4
-  %cond_gt_tmp_$1_of_il1631 = icmp sgt i32 %i$3_of_il1631, 0
-  %cond_tmp_$1_of_il1631 = zext i1 %cond_gt_tmp_$1_of_il1631 to i32
-  %cond_$1_of_il1631 = icmp ne i32 %cond_tmp_$1_of_il1631, 0
-  br i1 %cond_$1_of_il1631, label %il1632, label %il1633
-
-il1655:                                               ; pred = %il1656, %il1654
-  %heap_ajust$1_of_il1655 = load i32, i32* %retVal_ofil1615_of_il1627, align 4
-  store i32 %heap_ajust$1_of_il1655, i32* %lv$3_of_il1627, align 4
-  %i$6_of_il1655 = load i32, i32* %lv$2_of_il1627, align 4
-  %result_$6_of_il1655 = sub i32 %i$6_of_il1655, 1
-  store i32 %result_$6_of_il1655, i32* %lv$2_of_il1627, align 4
-  br label %il1631
-
-il1639:                                               ; pred = %il1637, %il1635
-  %son_of_il1603_of_il1639 = load i32, i32* %lv$4_of_il1602_of_il1627, align 4
-  %result_$2_of_il1603_of_il1639 = add i32 %tmp_of_il1629, 1
-  %cond_lt_tmp__of_il1603_of_il1639 = icmp slt i32 %son_of_il1603_of_il1639, %result_$2_of_il1603_of_il1639
-  %cond_tmp__of_il1603_of_il1639 = zext i1 %cond_lt_tmp__of_il1603_of_il1639 to i32
-  %cond__of_il1603_of_il1639 = icmp ne i32 %cond_tmp__of_il1603_of_il1639, 0
-  br i1 %cond__of_il1603_of_il1639, label %il1640, label %il1645
-
-il1660:                                               ; pred = %il1650
-  br label %il1657
-
-il1638:                                               ; pred = %il1641
-  %swap_of_il1612_of_il1638 = load i32, i32* %retVal_ofil1601_of_il1602_of_il1627, align 4
-  store i32 %swap_of_il1612_of_il1638, i32* %lv$3_of_il1602_of_il1627, align 4
-  %son$7_of_il1612_of_il1638 = load i32, i32* %lv$4_of_il1602_of_il1627, align 4
-  store i32 %son$7_of_il1612_of_il1638, i32* %lv$3_of_il1602_of_il1627, align 4
-  %dad$3_of_il1612_of_il1638 = load i32, i32* %lv$3_of_il1602_of_il1627, align 4
-  %result_$5_of_il1612_of_il1638 = mul i32 %dad$3_of_il1612_of_il1638, 2
-  %result_$6_of_il1612_of_il1638 = add i32 %result_$5_of_il1612_of_il1638, 1
-  store i32 %result_$6_of_il1612_of_il1638, i32* %lv$4_of_il1602_of_il1627, align 4
-  br label %il1635
-
-il1645:                                               ; pred = %il1639
-  store i32 0, i32* %retVal_ofil1602_of_il1627, align 4
-  br label %il1644
-
-il1641:                                               ; pred = %il1643
-  %long_name383$y_of_il1601_of_il1613_of_il1641 = getelementptr i32, i32* %a$10, i32 %dad$2_of_il1610_of_il1643
-  %array$1_of_il1601_of_il1613_of_il1641 = load i32, i32* %array_of_il1601_of_il1613_of_il1641, align 4
-  store i32 %array$1_of_il1601_of_il1613_of_il1641, i32* %lv$3_of_il1601_of_il1602_of_il1627, align 4
-  %long_name388$2_of_il1601_of_il1613_of_il1641 = getelementptr i32, i32* %a$10, i32 %dad$2_of_il1610_of_il1643
-  %long_name389$3_of_il1601_of_il1613_of_il1641 = getelementptr i32, i32* %a$10, i32 %son$6_of_il1610_of_il1643
-  %array$4_of_il1601_of_il1613_of_il1641 = load i32, i32* %array$3_of_il1601_of_il1613_of_il1641, align 4
-  store i32 %array$4_of_il1601_of_il1613_of_il1641, i32* %array$2_of_il1601_of_il1613_of_il1641, align 4
-  %long_name394$5_of_il1601_of_il1613_of_il1641 = getelementptr i32, i32* %a$10, i32 %son$6_of_il1610_of_il1643
-  %temp_of_il1601_of_il1613_of_il1641 = load i32, i32* %lv$3_of_il1601_of_il1602_of_il1627, align 4
-  store i32 %temp_of_il1601_of_il1613_of_il1641, i32* %array$5_of_il1601_of_il1613_of_il1641, align 4
-  store i32 0, i32* %retVal_ofil1601_of_il1602_of_il1627, align 4
-  br label %il1638
-
-il1654:                                               ; pred = %il1657
-  store i32 0, i32* %retVal_ofil1615_of_il1627, align 4
-  br label %il1655
-
-il1656:                                               ; pred = %il1651
-  store i32 0, i32* %retVal_ofil1615_of_il1627, align 4
-  br label %il1655
-
-il1649:                                               ; pred = %il1657
-  %son$1_of_il1617_of_il1649 = load i32, i32* %lv$4_of_il1615_of_il1627, align 4
-  %cond_lt_tmp_$1_of_il1617_of_il1649 = icmp slt i32 %son$1_of_il1617_of_il1649, %tmp$1_of_il1634
-  %cond_tmp_$1_of_il1617_of_il1649 = zext i1 %cond_lt_tmp_$1_of_il1617_of_il1649 to i32
-  %cond_$1_of_il1617_of_il1649 = icmp ne i32 %cond_tmp_$1_of_il1617_of_il1649, 0
-  br i1 %cond_$1_of_il1617_of_il1649, label %il1652, label %il1651
-
-tc126:                                                ; pred = %il1633
-  %heap_sort = load i32, i32* %retVal_ofil1627, align 4
-  store i32 %heap_sort, i32* %lv$1, align 4
-  br label %whileCond_188
-
-il1632:                                               ; pred = %il1631
-  store i32 0, i32* %lv$4_of_il1627, align 4
-  %tmp0_of_il1632 = load i32, i32* %lv$4_of_il1627, align 4
-  %i$4_of_il1632 = load i32, i32* %lv$2_of_il1627, align 4
-  br label %il1648
-
-il1651:                                               ; pred = %il1649, %il1652, %il1653
-  %dad$1_of_il1620_of_il1651 = load i32, i32* %lv$3_of_il1615_of_il1627, align 4
-  %arr$4_of_il1620_of_il1651 = getelementptr i32, i32* %a$10, i32 %dad$1_of_il1620_of_il1651
-  %arr$5_of_il1620_of_il1651 = load i32, i32* %arr$4_of_il1620_of_il1651, align 4
-  %son$5_of_il1620_of_il1651 = load i32, i32* %lv$4_of_il1615_of_il1627, align 4
-  %arr$6_of_il1620_of_il1651 = getelementptr i32, i32* %a$10, i32 %son$5_of_il1620_of_il1651
-  %arr$7_of_il1620_of_il1651 = load i32, i32* %arr$6_of_il1620_of_il1651, align 4
-  %cond_gt_tmp__of_il1620_of_il1651 = icmp sgt i32 %arr$5_of_il1620_of_il1651, %arr$7_of_il1620_of_il1651
-  %cond_tmp_$3_of_il1620_of_il1651 = zext i1 %cond_gt_tmp__of_il1620_of_il1651 to i32
-  %cond_$3_of_il1620_of_il1651 = icmp ne i32 %cond_tmp_$3_of_il1620_of_il1651, 0
-  br i1 %cond_$3_of_il1620_of_il1651, label %il1656, label %il1650
-
-il1646:                                               ; pred = %il1642
-  %son$4_of_il1606_of_il1646 = load i32, i32* %lv$4_of_il1602_of_il1627, align 4
-  %result_$4_of_il1606_of_il1646 = add i32 %son$4_of_il1606_of_il1646, 1
-  store i32 %result_$4_of_il1606_of_il1646, i32* %lv$4_of_il1602_of_il1627, align 4
-  br label %il1636
-
-il1628:                                               ; pred = %il1627, %il1629
-  %i_of_il1628 = load i32, i32* %lv$2_of_il1627, align 4
-  %cond_gt_tmp__of_il1628 = icmp sgt i32 %i_of_il1628, -1
-  %cond_tmp__of_il1628 = zext i1 %cond_gt_tmp__of_il1628 to i32
-  %cond__of_il1628 = icmp ne i32 %cond_tmp__of_il1628, 0
-  br i1 %cond__of_il1628, label %il1629, label %il1630
-
-il1627:                                               ; pred = %mainEntry42
-  %result__of_il1627 = sdiv i32 %n, 2
-  %result_$1_of_il1627 = sub i32 %result__of_il1627, 1
-  store i32 %result_$1_of_il1627, i32* %lv$2_of_il1627, align 4
-  br label %il1628
-
-il1658:                                               ; pred = %il1661
-  %swap_of_il1625_of_il1658 = load i32, i32* %retVal_ofil1601_of_il1615_of_il1627, align 4
-  store i32 %swap_of_il1625_of_il1658, i32* %lv$3_of_il1615_of_il1627, align 4
-  %son$7_of_il1625_of_il1658 = load i32, i32* %lv$4_of_il1615_of_il1627, align 4
-  store i32 %son$7_of_il1625_of_il1658, i32* %lv$3_of_il1615_of_il1627, align 4
-  %dad$3_of_il1625_of_il1658 = load i32, i32* %lv$3_of_il1615_of_il1627, align 4
-  %result_$5_of_il1625_of_il1658 = mul i32 %dad$3_of_il1625_of_il1658, 2
-  %result_$6_of_il1625_of_il1658 = add i32 %result_$5_of_il1625_of_il1658, 1
-  store i32 %result_$6_of_il1625_of_il1658, i32* %lv$4_of_il1615_of_il1627, align 4
-  br label %il1660
-
-il1633:                                               ; pred = %il1631
-  store i32 0, i32* %retVal_ofil1627, align 4
-  br label %tc126
-
-il1650:                                               ; pred = %il1651
-  %dad$2_of_il1623_of_il1650 = load i32, i32* %lv$3_of_il1615_of_il1627, align 4
-  %son$6_of_il1623_of_il1650 = load i32, i32* %lv$4_of_il1615_of_il1627, align 4
-  br label %il1661
 }
 

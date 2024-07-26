@@ -233,65 +233,6 @@ next_624:                                             ; pred = %whileCond_277
   %V = load i32, i32* %lv, align 4
   br label %il2185
 
-tc209:                                                ; pred = %il2183
-  br label %whileCond_277
-
-il2187:                                               ; pred = %il2186
-  %used_of_il2187 = getelementptr [10 x i32], [10 x i32]* @gv4, i32 0, i32 0
-  br label %il2192
-
-il2183:                                               ; pred = %il2181
-  br label %tc209
-
-il2186:                                               ; pred = %il2185, %il2189
-  %cond_normalize__of_il2186 = icmp ne i32 1, 0
-  br label %il2187
-
-il2188:                                               ; pred = %il2187
-  %flow_of_il2188 = load i32, i32* %lv$2_of_il2185, align 4
-  store i32 %flow_of_il2188, i32* %retVal_ofil2185, align 4
-  br label %tc211
-
-il2189:                                               ; pred = %il2187
-  %flow$1_of_il2189 = load i32, i32* %lv$2_of_il2185, align 4
-  %f$1_of_il2189 = load i32, i32* %lv$3_of_il2185, align 4
-  %result__of_il2189 = add i32 %flow$1_of_il2189, %f$1_of_il2189
-  store i32 %result__of_il2189, i32* %lv$2_of_il2185, align 4
-  br label %il2186
-
-il2191:                                               ; pred = %il2193
-  %dfs_of_il2191 = call i32 @dfs(i32 1, i32 %V, i32 1879048192)
-  store i32 %dfs_of_il2191, i32* %lv$3_of_il2185, align 4
-  %f_of_il2191 = load i32, i32* %lv$3_of_il2185, align 4
-  %cond_eq_tmp__of_il2191 = icmp eq i32 %f_of_il2191, 0
-  %cond_tmp__of_il2191 = zext i1 %cond_eq_tmp__of_il2191 to i32
-  %cond__of_il2191 = icmp ne i32 %cond_tmp__of_il2191, 0
-  br i1 %cond__of_il2191, label %il2188, label %il2189
-
-tc210:                                                ; pred = %il2184
-  %E$1 = load i32, i32* %lv$1, align 4
-  %result_ = sub i32 %E$1, 1
-  store i32 %result_, i32* %lv$1, align 4
-  br label %whileCond_277
-
-il2192:                                               ; pred = %il2187
-  store i32 0, i32* %lv$3_of_il2176_of_il2185, align 4
-  br label %il2194
-
-il2181:                                               ; pred = %il2180, %il2182
-  %i_of_il2181 = load i32, i32* %lv$3_of_il2180, align 4
-  %cond_lt_tmp__of_il2181 = icmp slt i32 %i_of_il2181, 10
-  %cond_tmp__of_il2181 = zext i1 %cond_lt_tmp__of_il2181 to i32
-  %cond__of_il2181 = icmp ne i32 %cond_tmp__of_il2181, 0
-  br i1 %cond__of_il2181, label %il2182, label %il2183
-
-il2180:                                               ; pred = %mainEntry85
-  store i32 0, i32* %lv$3_of_il2180, align 4
-  br label %il2181
-
-il2193:                                               ; pred = %il2194
-  br label %il2191
-
 il2184:                                               ; pred = %whileBody_277
   %size_of_il2184 = getelementptr [10 x i32], [10 x i32]* @gv, i32 0, i32 %u
   %size$1_of_il2184 = load i32, i32* %size_of_il2184, align 4
@@ -339,15 +280,39 @@ il2184:                                               ; pred = %whileBody_277
   store i32 %result_$1_of_il2184, i32* %size$19_of_il2184, align 4
   br label %tc210
 
+il2186:                                               ; pred = %il2185, %il2189
+  %cond_normalize__of_il2186 = icmp ne i32 1, 0
+  br label %il2187
+
+il2181:                                               ; pred = %il2180, %il2182
+  %i_of_il2181 = load i32, i32* %lv$3_of_il2180, align 4
+  %cond_lt_tmp__of_il2181 = icmp slt i32 %i_of_il2181, 10
+  %cond_tmp__of_il2181 = zext i1 %cond_lt_tmp__of_il2181 to i32
+  %cond__of_il2181 = icmp ne i32 %cond_tmp__of_il2181, 0
+  br i1 %cond__of_il2181, label %il2182, label %il2183
+
+tc210:                                                ; pred = %il2184
+  %E$1 = load i32, i32* %lv$1, align 4
+  %result_ = sub i32 %E$1, 1
+  store i32 %result_, i32* %lv$1, align 4
+  br label %whileCond_277
+
 tc211:                                                ; pred = %il2188
   %max_flow = load i32, i32* %retVal_ofil2185, align 4
   call void @putint(i32 %max_flow)
   call void @putch(i32 10)
   ret i32 0
 
-il2185:                                               ; pred = %next_624
-  store i32 0, i32* %lv$2_of_il2185, align 4
-  br label %il2186
+il2183:                                               ; pred = %il2181
+  br label %tc209
+
+il2193:                                               ; pred = %il2187
+  store i32 0, i32* %lv$3_of_il2176_of_il2185, align 4
+  br label %il2190
+
+il2180:                                               ; pred = %mainEntry85
+  store i32 0, i32* %lv$3_of_il2180, align 4
+  br label %il2181
 
 il2182:                                               ; pred = %il2181
   %i$1_of_il2182 = load i32, i32* %lv$3_of_il2180, align 4
@@ -358,20 +323,55 @@ il2182:                                               ; pred = %il2181
   store i32 %result__of_il2182, i32* %lv$3_of_il2180, align 4
   br label %il2181
 
-il2194:                                               ; pred = %il2192, %il2190
-  %i_of_il2177_of_il2194 = load i32, i32* %lv$3_of_il2176_of_il2185, align 4
-  %cond_lt_tmp__of_il2177_of_il2194 = icmp slt i32 %i_of_il2177_of_il2194, 10
-  %cond_tmp__of_il2177_of_il2194 = zext i1 %cond_lt_tmp__of_il2177_of_il2194 to i32
-  %cond__of_il2177_of_il2194 = icmp ne i32 %cond_tmp__of_il2177_of_il2194, 0
-  br i1 %cond__of_il2177_of_il2194, label %il2190, label %il2193
+il2188:                                               ; pred = %il2187
+  %flow_of_il2188 = load i32, i32* %lv$2_of_il2185, align 4
+  store i32 %flow_of_il2188, i32* %retVal_ofil2185, align 4
+  br label %tc211
 
-il2190:                                               ; pred = %il2194
-  %i$1_of_il2178_of_il2190 = load i32, i32* %lv$3_of_il2176_of_il2185, align 4
-  %arr_of_il2178_of_il2190 = getelementptr i32, i32* %used_of_il2187, i32 %i$1_of_il2178_of_il2190
-  store i32 0, i32* %arr_of_il2178_of_il2190, align 4
-  %i$2_of_il2178_of_il2190 = load i32, i32* %lv$3_of_il2176_of_il2185, align 4
-  %result__of_il2178_of_il2190 = add i32 %i$2_of_il2178_of_il2190, 1
-  store i32 %result__of_il2178_of_il2190, i32* %lv$3_of_il2176_of_il2185, align 4
-  br label %il2194
+il2190:                                               ; pred = %il2193, %il2194
+  %i_of_il2177_of_il2190 = load i32, i32* %lv$3_of_il2176_of_il2185, align 4
+  %cond_lt_tmp__of_il2177_of_il2190 = icmp slt i32 %i_of_il2177_of_il2190, 10
+  %cond_tmp__of_il2177_of_il2190 = zext i1 %cond_lt_tmp__of_il2177_of_il2190 to i32
+  %cond__of_il2177_of_il2190 = icmp ne i32 %cond_tmp__of_il2177_of_il2190, 0
+  br i1 %cond__of_il2177_of_il2190, label %il2194, label %il2191
+
+il2194:                                               ; pred = %il2190
+  %i$1_of_il2178_of_il2194 = load i32, i32* %lv$3_of_il2176_of_il2185, align 4
+  %arr_of_il2178_of_il2194 = getelementptr i32, i32* %used_of_il2187, i32 %i$1_of_il2178_of_il2194
+  store i32 0, i32* %arr_of_il2178_of_il2194, align 4
+  %i$2_of_il2178_of_il2194 = load i32, i32* %lv$3_of_il2176_of_il2185, align 4
+  %result__of_il2178_of_il2194 = add i32 %i$2_of_il2178_of_il2194, 1
+  store i32 %result__of_il2178_of_il2194, i32* %lv$3_of_il2176_of_il2185, align 4
+  br label %il2190
+
+tc209:                                                ; pred = %il2183
+  br label %whileCond_277
+
+il2187:                                               ; pred = %il2186
+  %used_of_il2187 = getelementptr [10 x i32], [10 x i32]* @gv4, i32 0, i32 0
+  br label %il2193
+
+il2185:                                               ; pred = %next_624
+  store i32 0, i32* %lv$2_of_il2185, align 4
+  br label %il2186
+
+il2191:                                               ; pred = %il2190
+  br label %il2192
+
+il2192:                                               ; pred = %il2191
+  %dfs_of_il2192 = call i32 @dfs(i32 1, i32 %V, i32 1879048192)
+  store i32 %dfs_of_il2192, i32* %lv$3_of_il2185, align 4
+  %f_of_il2192 = load i32, i32* %lv$3_of_il2185, align 4
+  %cond_eq_tmp__of_il2192 = icmp eq i32 %f_of_il2192, 0
+  %cond_tmp__of_il2192 = zext i1 %cond_eq_tmp__of_il2192 to i32
+  %cond__of_il2192 = icmp ne i32 %cond_tmp__of_il2192, 0
+  br i1 %cond__of_il2192, label %il2188, label %il2189
+
+il2189:                                               ; pred = %il2187
+  %flow$1_of_il2189 = load i32, i32* %lv$2_of_il2185, align 4
+  %f$1_of_il2189 = load i32, i32* %lv$3_of_il2185, align 4
+  %result__of_il2189 = add i32 %flow$1_of_il2189, %f$1_of_il2189
+  store i32 %result__of_il2189, i32* %lv$2_of_il2185, align 4
+  br label %il2186
 }
 

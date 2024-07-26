@@ -216,6 +216,15 @@ il2152:                                               ; pred = %il2151
   store i32 %result_$3_of_il2152, i32* %lv$9_of_il2150, align 4
   br label %il2151
 
+tc200:                                                ; pred = %il2153
+  %add = load i32, i32* %retVal_ofil2150, align 4
+  store i32 %add, i32* %lv$9, align 4
+  br label %whileCond_268
+
+il2150:                                               ; pred = %next_597
+  store i32 0, i32* %lv$9_of_il2150, align 4
+  br label %il2151
+
 il2153:                                               ; pred = %il2151
   store i32 0, i32* %retVal_ofil2150, align 4
   br label %tc200
@@ -227,14 +236,5 @@ il2151:                                               ; pred = %il2150, %il2152
   %cond_tmp__of_il2151 = zext i1 %cond_lt_tmp__of_il2151 to i32
   %cond__of_il2151 = icmp ne i32 %cond_tmp__of_il2151, 0
   br i1 %cond__of_il2151, label %il2152, label %il2153
-
-il2150:                                               ; pred = %next_597
-  store i32 0, i32* %lv$9_of_il2150, align 4
-  br label %il2151
-
-tc200:                                                ; pred = %il2153
-  %add = load i32, i32* %retVal_ofil2150, align 4
-  store i32 %add, i32* %lv$9, align 4
-  br label %whileCond_268
 }
 

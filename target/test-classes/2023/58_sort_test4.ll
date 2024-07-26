@@ -80,10 +80,6 @@ whileBody_205:                                        ; pred = %whileCond_205
 next_488:                                             ; pred = %whileCond_205
   ret i32 0
 
-il1789:                                               ; pred = %mainEntry50
-  store i32 0, i32* %lv$2_of_il1789, align 4
-  br label %il1790
-
 il1794:                                               ; pred = %il1793
   %min_of_il1794 = load i32, i32* %lv$4_of_il1789, align 4
   %A_of_il1794 = getelementptr i32, i32* %a$10, i32 %min_of_il1794
@@ -96,6 +92,55 @@ il1794:                                               ; pred = %il1793
   %cond_$2_of_il1794 = icmp ne i32 %cond_tmp_$2_of_il1794, 0
   br i1 %cond_$2_of_il1794, label %il1796, label %il1797
 
+il1799:                                               ; pred = %il1795, %il1798
+  %i$6_of_il1799 = load i32, i32* %lv$2_of_il1789, align 4
+  %result_$3_of_il1799 = add i32 %i$6_of_il1799, 1
+  store i32 %result_$3_of_il1799, i32* %lv$2_of_il1789, align 4
+  br label %il1790
+
+il1797:                                               ; pred = %il1794, %il1796
+  %j$3_of_il1797 = load i32, i32* %lv$3_of_il1789, align 4
+  %result_$2_of_il1797 = add i32 %j$3_of_il1797, 1
+  store i32 %result_$2_of_il1797, i32* %lv$3_of_il1789, align 4
+  br label %il1793
+
+tc152:                                                ; pred = %il1792
+  %select_sort = load i32, i32* %retVal_ofil1789, align 4
+  store i32 %select_sort, i32* %lv$1, align 4
+  br label %whileCond_205
+
+il1793:                                               ; pred = %il1791, %il1797
+  %j_of_il1793 = load i32, i32* %lv$3_of_il1789, align 4
+  %cond_lt_tmp_$1_of_il1793 = icmp slt i32 %j_of_il1793, %n
+  %cond_tmp_$1_of_il1793 = zext i1 %cond_lt_tmp_$1_of_il1793 to i32
+  %cond_$1_of_il1793 = icmp ne i32 %cond_tmp_$1_of_il1793, 0
+  br i1 %cond_$1_of_il1793, label %il1794, label %il1795
+
+il1789:                                               ; pred = %mainEntry50
+  store i32 0, i32* %lv$2_of_il1789, align 4
+  br label %il1790
+
+il1790:                                               ; pred = %il1789, %il1799
+  %i_of_il1790 = load i32, i32* %lv$2_of_il1789, align 4
+  %result__of_il1790 = sub i32 %n, 1
+  %cond_lt_tmp__of_il1790 = icmp slt i32 %i_of_il1790, %result__of_il1790
+  %cond_tmp__of_il1790 = zext i1 %cond_lt_tmp__of_il1790 to i32
+  %cond__of_il1790 = icmp ne i32 %cond_tmp__of_il1790, 0
+  br i1 %cond__of_il1790, label %il1791, label %il1792
+
+il1796:                                               ; pred = %il1794
+  %j$2_of_il1796 = load i32, i32* %lv$3_of_il1789, align 4
+  store i32 %j$2_of_il1796, i32* %lv$4_of_il1789, align 4
+  br label %il1797
+
+il1795:                                               ; pred = %il1793
+  %min$1_of_il1795 = load i32, i32* %lv$4_of_il1789, align 4
+  %i$3_of_il1795 = load i32, i32* %lv$2_of_il1789, align 4
+  %cond_neq_tmp__of_il1795 = icmp ne i32 %min$1_of_il1795, %i$3_of_il1795
+  %cond_tmp_$3_of_il1795 = zext i1 %cond_neq_tmp__of_il1795 to i32
+  %cond_$3_of_il1795 = icmp ne i32 %cond_tmp_$3_of_il1795, 0
+  br i1 %cond_$3_of_il1795, label %il1798, label %il1799
+
 il1791:                                               ; pred = %il1790
   %i$1_of_il1791 = load i32, i32* %lv$2_of_il1789, align 4
   store i32 %i$1_of_il1791, i32* %lv$4_of_il1789, align 4
@@ -103,6 +148,10 @@ il1791:                                               ; pred = %il1790
   %result_$1_of_il1791 = add i32 %i$2_of_il1791, 1
   store i32 %result_$1_of_il1791, i32* %lv$3_of_il1789, align 4
   br label %il1793
+
+il1792:                                               ; pred = %il1790
+  store i32 0, i32* %retVal_ofil1789, align 4
+  br label %tc152
 
 il1798:                                               ; pred = %il1795
   %min$2_of_il1798 = load i32, i32* %lv$4_of_il1789, align 4
@@ -120,54 +169,5 @@ il1798:                                               ; pred = %il1795
   %tmp_of_il1798 = load i32, i32* %lv$5_of_il1789, align 4
   store i32 %tmp_of_il1798, i32* %A$9_of_il1798, align 4
   br label %il1799
-
-il1790:                                               ; pred = %il1789, %il1799
-  %i_of_il1790 = load i32, i32* %lv$2_of_il1789, align 4
-  %result__of_il1790 = sub i32 %n, 1
-  %cond_lt_tmp__of_il1790 = icmp slt i32 %i_of_il1790, %result__of_il1790
-  %cond_tmp__of_il1790 = zext i1 %cond_lt_tmp__of_il1790 to i32
-  %cond__of_il1790 = icmp ne i32 %cond_tmp__of_il1790, 0
-  br i1 %cond__of_il1790, label %il1791, label %il1792
-
-il1795:                                               ; pred = %il1793
-  %min$1_of_il1795 = load i32, i32* %lv$4_of_il1789, align 4
-  %i$3_of_il1795 = load i32, i32* %lv$2_of_il1789, align 4
-  %cond_neq_tmp__of_il1795 = icmp ne i32 %min$1_of_il1795, %i$3_of_il1795
-  %cond_tmp_$3_of_il1795 = zext i1 %cond_neq_tmp__of_il1795 to i32
-  %cond_$3_of_il1795 = icmp ne i32 %cond_tmp_$3_of_il1795, 0
-  br i1 %cond_$3_of_il1795, label %il1798, label %il1799
-
-il1793:                                               ; pred = %il1791, %il1797
-  %j_of_il1793 = load i32, i32* %lv$3_of_il1789, align 4
-  %cond_lt_tmp_$1_of_il1793 = icmp slt i32 %j_of_il1793, %n
-  %cond_tmp_$1_of_il1793 = zext i1 %cond_lt_tmp_$1_of_il1793 to i32
-  %cond_$1_of_il1793 = icmp ne i32 %cond_tmp_$1_of_il1793, 0
-  br i1 %cond_$1_of_il1793, label %il1794, label %il1795
-
-il1796:                                               ; pred = %il1794
-  %j$2_of_il1796 = load i32, i32* %lv$3_of_il1789, align 4
-  store i32 %j$2_of_il1796, i32* %lv$4_of_il1789, align 4
-  br label %il1797
-
-il1797:                                               ; pred = %il1794, %il1796
-  %j$3_of_il1797 = load i32, i32* %lv$3_of_il1789, align 4
-  %result_$2_of_il1797 = add i32 %j$3_of_il1797, 1
-  store i32 %result_$2_of_il1797, i32* %lv$3_of_il1789, align 4
-  br label %il1793
-
-tc152:                                                ; pred = %il1792
-  %select_sort = load i32, i32* %retVal_ofil1789, align 4
-  store i32 %select_sort, i32* %lv$1, align 4
-  br label %whileCond_205
-
-il1792:                                               ; pred = %il1790
-  store i32 0, i32* %retVal_ofil1789, align 4
-  br label %tc152
-
-il1799:                                               ; pred = %il1795, %il1798
-  %i$6_of_il1799 = load i32, i32* %lv$2_of_il1789, align 4
-  %result_$3_of_il1799 = add i32 %i$6_of_il1799, 1
-  store i32 %result_$3_of_il1799, i32* %lv$2_of_il1789, align 4
-  br label %il1790
 }
 

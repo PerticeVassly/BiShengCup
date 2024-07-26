@@ -16,18 +16,220 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
+define i32 @MAX(i32 %0, i32 %1) {
+MAXEntry:
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32, align 4
+  store i32 %0, i32* %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  %a = load i32, i32* %lv, align 4
+  %b = load i32, i32* %lv$1, align 4
+  %cond_eq_tmp_ = icmp eq i32 %a, %b
+  %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
+  %cond_ = icmp ne i32 %cond_tmp_, 0
+  br i1 %cond_, label %ifTrue_29, label %ifFalse_7
+
+ifTrue_29:                                        ; pred = %MAXEntry
+  %a$1 = load i32, i32* %lv, align 4
+  ret i32 %a$1
+
+ifFalse_7:                                        ; pred = %MAXEntry
+  %a$2 = load i32, i32* %lv, align 4
+  %b$1 = load i32, i32* %lv$1, align 4
+  %cond_gt_tmp_ = icmp sgt i32 %a$2, %b$1
+  %cond_tmp_$1 = zext i1 %cond_gt_tmp_ to i32
+  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
+  br i1 %cond_$1, label %ifTrue_30, label %ifFalse_8
+
+ifTrue_30:                                        ; pred = %ifFalse_7
+  %a$3 = load i32, i32* %lv, align 4
+  ret i32 %a$3
+
+ifFalse_8:                                        ; pred = %ifFalse_7
+  %b$2 = load i32, i32* %lv$1, align 4
+  ret i32 %b$2
+}
+
+define i32 @max_sum_nonadjacent(i32* %0, i32 %1) {
+max_sum_nonadjacentEntry:
+  %lv$3 = alloca i32, align 4
+  %lv$2 = alloca [16 x i32], align 16
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32*, align 4
+  store i32* %0, i32** %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  %ptr = bitcast [16 x i32]* %lv$2 to i32*
+  call void @memset(i32* %ptr, i32 0, i32 64)
+  %temp = getelementptr [16 x i32], [16 x i32]* %lv$2, i32 0, i32 0
+  %arr_ = load i32*, i32** %lv, align 4
+  %arr = getelementptr i32, i32* %arr_, i32 0
+  %arr$1 = load i32, i32* %arr, align 4
+  store i32 %arr$1, i32* %temp, align 4
+  %temp$1 = getelementptr [16 x i32], [16 x i32]* %lv$2, i32 0, i32 1
+  %arr_$1 = load i32*, i32** %lv, align 4
+  %arr$2 = getelementptr i32, i32* %arr_$1, i32 0
+  %arr$3 = load i32, i32* %arr$2, align 4
+  %arr_$2 = load i32*, i32** %lv, align 4
+  %arr$4 = getelementptr i32, i32* %arr_$2, i32 1
+  %arr$5 = load i32, i32* %arr$4, align 4
+  %MAX = call i32 @MAX(i32 %arr$3, i32 %arr$5)
+  store i32 %MAX, i32* %temp$1, align 4
+  store i32 2, i32* %lv$3, align 4
+  br label %whileCond_22
+
+whileCond_22:                                                    ; pred = %max_sum_nonadjacentEntry, %whileBody_22
+  %i = load i32, i32* %lv$3, align 4
+  %n = load i32, i32* %lv$1, align 4
+  %cond_lt_tmp_ = icmp slt i32 %i, %n
+  %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
+  %cond_ = icmp ne i32 %cond_tmp_, 0
+  br i1 %cond_, label %whileBody_22, label %next_53
+
+whileBody_22:                                                    ; pred = %whileCond_22
+  %i$1 = load i32, i32* %lv$3, align 4
+  %temp$2 = getelementptr [16 x i32], [16 x i32]* %lv$2, i32 0, i32 %i$1
+  %i$2 = load i32, i32* %lv$3, align 4
+  %result_ = sub i32 %i$2, 2
+  %temp$3 = getelementptr [16 x i32], [16 x i32]* %lv$2, i32 0, i32 %result_
+  %temp$4 = load i32, i32* %temp$3, align 4
+  %i$3 = load i32, i32* %lv$3, align 4
+  %arr_$3 = load i32*, i32** %lv, align 4
+  %arr$6 = getelementptr i32, i32* %arr_$3, i32 %i$3
+  %arr$7 = load i32, i32* %arr$6, align 4
+  %result_$1 = add i32 %temp$4, %arr$7
+  %i$4 = load i32, i32* %lv$3, align 4
+  %result_$2 = sub i32 %i$4, 1
+  %temp$5 = getelementptr [16 x i32], [16 x i32]* %lv$2, i32 0, i32 %result_$2
+  %temp$6 = load i32, i32* %temp$5, align 4
+  %MAX$1 = call i32 @MAX(i32 %result_$1, i32 %temp$6)
+  store i32 %MAX$1, i32* %temp$2, align 4
+  %i$5 = load i32, i32* %lv$3, align 4
+  %result_$3 = add i32 %i$5, 1
+  store i32 %result_$3, i32* %lv$3, align 4
+  br label %whileCond_22
+
+next_53:                                                         ; pred = %whileCond_22
+  %n$1 = load i32, i32* %lv$1, align 4
+  %result_$4 = sub i32 %n$1, 1
+  %temp$7 = getelementptr [16 x i32], [16 x i32]* %lv$2, i32 0, i32 %result_$4
+  %temp$8 = load i32, i32* %temp$7, align 4
+  ret i32 %temp$8
+}
+
+define i32 @longest_common_subseq(i32* %0, i32 %1, i32* %2, i32 %3) {
+longest_common_subseqEntry:
+  %lv$6 = alloca i32, align 4
+  %lv$5 = alloca i32, align 4
+  %lv$4 = alloca [16 x [16 x i32]], align 16
+  %lv$3 = alloca i32, align 4
+  %lv$2 = alloca i32*, align 4
+  %lv$1 = alloca i32, align 4
+  %lv = alloca i32*, align 4
+  store i32* %0, i32** %lv, align 4
+  store i32 %1, i32* %lv$1, align 4
+  store i32* %2, i32** %lv$2, align 4
+  store i32 %3, i32* %lv$3, align 4
+  %ptr = bitcast [16 x [16 x i32]]* %lv$4 to i32*
+  call void @memset(i32* %ptr, i32 0, i32 1024)
+  store i32 1, i32* %lv$5, align 4
+  br label %whileCond_23
+
+whileCond_23:                                                      ; pred = %longest_common_subseqEntry, %next_55
+  %i = load i32, i32* %lv$5, align 4
+  %len1 = load i32, i32* %lv$1, align 4
+  %cond_le_tmp_ = icmp sle i32 %i, %len1
+  %cond_tmp_ = zext i1 %cond_le_tmp_ to i32
+  %cond_ = icmp ne i32 %cond_tmp_, 0
+  br i1 %cond_, label %whileBody_23, label %next_54
+
+whileBody_23:                                                      ; pred = %whileCond_23
+  store i32 1, i32* %lv$6, align 4
+  br label %whileCond_24
+
+next_54:                                                           ; pred = %whileCond_23
+  %len1$1 = load i32, i32* %lv$1, align 4
+  %len2$1 = load i32, i32* %lv$3, align 4
+  %ptr_$5 = getelementptr [16 x [16 x i32]], [16 x [16 x i32]]* %lv$4, i32 0, i32 %len1$1
+  %p$8 = getelementptr [16 x i32], [16 x i32]* %ptr_$5, i32 0, i32 %len2$1
+  %p$9 = load i32, i32* %p$8, align 4
+  ret i32 %p$9
+
+whileCond_24:                                                      ; pred = %whileBody_23, %next_56
+  %j = load i32, i32* %lv$6, align 4
+  %len2 = load i32, i32* %lv$3, align 4
+  %cond_le_tmp_$1 = icmp sle i32 %j, %len2
+  %cond_tmp_$1 = zext i1 %cond_le_tmp_$1 to i32
+  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
+  br i1 %cond_$1, label %whileBody_24, label %next_55
+
+whileBody_24:                                                      ; pred = %whileCond_24
+  %i$1 = load i32, i32* %lv$5, align 4
+  %result_ = sub i32 %i$1, 1
+  %arr_ = load i32*, i32** %lv, align 4
+  %arr1 = getelementptr i32, i32* %arr_, i32 %result_
+  %arr1$1 = load i32, i32* %arr1, align 4
+  %j$1 = load i32, i32* %lv$6, align 4
+  %result_$1 = sub i32 %j$1, 1
+  %arr_$1 = load i32*, i32** %lv$2, align 4
+  %arr2 = getelementptr i32, i32* %arr_$1, i32 %result_$1
+  %arr2$1 = load i32, i32* %arr2, align 4
+  %cond_eq_tmp_ = icmp eq i32 %arr1$1, %arr2$1
+  %cond_tmp_$2 = zext i1 %cond_eq_tmp_ to i32
+  %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
+  br i1 %cond_$2, label %ifTrue_31, label %ifFalse_9
+
+next_55:                                                           ; pred = %whileCond_24
+  %i$7 = load i32, i32* %lv$5, align 4
+  %result_$8 = add i32 %i$7, 1
+  store i32 %result_$8, i32* %lv$5, align 4
+  br label %whileCond_23
+
+ifTrue_31:                                                         ; pred = %whileBody_24
+  %i$2 = load i32, i32* %lv$5, align 4
+  %j$2 = load i32, i32* %lv$6, align 4
+  %ptr_ = getelementptr [16 x [16 x i32]], [16 x [16 x i32]]* %lv$4, i32 0, i32 %i$2
+  %p = getelementptr [16 x i32], [16 x i32]* %ptr_, i32 0, i32 %j$2
+  %i$3 = load i32, i32* %lv$5, align 4
+  %result_$2 = sub i32 %i$3, 1
+  %j$3 = load i32, i32* %lv$6, align 4
+  %result_$3 = sub i32 %j$3, 1
+  %ptr_$1 = getelementptr [16 x [16 x i32]], [16 x [16 x i32]]* %lv$4, i32 0, i32 %result_$2
+  %p$1 = getelementptr [16 x i32], [16 x i32]* %ptr_$1, i32 0, i32 %result_$3
+  %p$2 = load i32, i32* %p$1, align 4
+  %result_$4 = add i32 %p$2, 1
+  store i32 %result_$4, i32* %p, align 4
+  br label %next_56
+
+ifFalse_9:                                                         ; pred = %whileBody_24
+  %i$4 = load i32, i32* %lv$5, align 4
+  %j$4 = load i32, i32* %lv$6, align 4
+  %ptr_$2 = getelementptr [16 x [16 x i32]], [16 x [16 x i32]]* %lv$4, i32 0, i32 %i$4
+  %p$3 = getelementptr [16 x i32], [16 x i32]* %ptr_$2, i32 0, i32 %j$4
+  %i$5 = load i32, i32* %lv$5, align 4
+  %result_$5 = sub i32 %i$5, 1
+  %j$5 = load i32, i32* %lv$6, align 4
+  %ptr_$3 = getelementptr [16 x [16 x i32]], [16 x [16 x i32]]* %lv$4, i32 0, i32 %result_$5
+  %p$4 = getelementptr [16 x i32], [16 x i32]* %ptr_$3, i32 0, i32 %j$5
+  %p$5 = load i32, i32* %p$4, align 4
+  %i$6 = load i32, i32* %lv$5, align 4
+  %j$6 = load i32, i32* %lv$6, align 4
+  %result_$6 = sub i32 %j$6, 1
+  %ptr_$4 = getelementptr [16 x [16 x i32]], [16 x [16 x i32]]* %lv$4, i32 0, i32 %i$6
+  %p$6 = getelementptr [16 x i32], [16 x i32]* %ptr_$4, i32 0, i32 %result_$6
+  %p$7 = load i32, i32* %p$6, align 4
+  %MAX = call i32 @MAX(i32 %p$5, i32 %p$7)
+  store i32 %MAX, i32* %p$3, align 4
+  br label %next_56
+
+next_56:                                                           ; pred = %ifTrue_31, %ifFalse_9
+  %j$7 = load i32, i32* %lv$6, align 4
+  %result_$7 = add i32 %j$7, 1
+  store i32 %result_$7, i32* %lv$6, align 4
+  br label %whileCond_24
+}
+
 define i32 @main() {
 mainEntry6:
-  %retVal_ofil126 = alloca i32, align 4
-  %lv$4_of_il126 = alloca [16 x [16 x i32]], align 16
-  %lv$5_of_il126 = alloca i32, align 4
-  %lv$6_of_il126 = alloca i32, align 4
-  %retVal_ofil105_of_il126 = alloca i32, align 4
-  %retVal_ofil110 = alloca i32, align 4
-  %lv$2_of_il110 = alloca [16 x i32], align 16
-  %lv$3_of_il110 = alloca i32, align 4
-  %retVal_ofil95_of_il110 = alloca i32, align 4
-  %retVal_ofil100_of_il110 = alloca i32, align 4
   %lv$3 = alloca i32, align 4
   %lv$2 = alloca i32, align 4
   %lv$1 = alloca [13 x i32], align 16
@@ -89,248 +291,14 @@ mainEntry6:
   %inp$27 = getelementptr [13 x i32], [13 x i32]* %lv$1, i32 0, i32 12
   store i32 5, i32* %inp$27, align 4
   %A = getelementptr [15 x i32], [15 x i32]* %lv, i32 0, i32 0
-  br label %il110
-
-il117:                                             ; pred = %il120
-  %cond_gt_tmp__of_il102_of_il117 = icmp sgt i32 %result_$1_of_il112, %temp$6_of_il112
-  %cond_tmp_$1_of_il102_of_il117 = zext i1 %cond_gt_tmp__of_il102_of_il117 to i32
-  %cond_$1_of_il102_of_il117 = icmp ne i32 %cond_tmp_$1_of_il102_of_il117, 0
-  br i1 %cond_$1_of_il102_of_il117, label %il124, label %il115
-
-il112:                                             ; pred = %il111
-  %i$1_of_il112 = load i32, i32* %lv$3_of_il110, align 4
-  %temp$2_of_il112 = getelementptr [16 x i32], [16 x i32]* %lv$2_of_il110, i32 0, i32 %i$1_of_il112
-  %i$2_of_il112 = load i32, i32* %lv$3_of_il110, align 4
-  %result__of_il112 = sub i32 %i$2_of_il112, 2
-  %temp$3_of_il112 = getelementptr [16 x i32], [16 x i32]* %lv$2_of_il110, i32 0, i32 %result__of_il112
-  %temp$4_of_il112 = load i32, i32* %temp$3_of_il112, align 4
-  %i$3_of_il112 = load i32, i32* %lv$3_of_il110, align 4
-  %arr$6_of_il112 = getelementptr i32, i32* %A, i32 %i$3_of_il112
-  %arr$7_of_il112 = load i32, i32* %arr$6_of_il112, align 4
-  %result_$1_of_il112 = add i32 %temp$4_of_il112, %arr$7_of_il112
-  %i$4_of_il112 = load i32, i32* %lv$3_of_il110, align 4
-  %result_$2_of_il112 = sub i32 %i$4_of_il112, 1
-  %temp$5_of_il112 = getelementptr [16 x i32], [16 x i32]* %lv$2_of_il110, i32 0, i32 %result_$2_of_il112
-  %temp$6_of_il112 = load i32, i32* %temp$5_of_il112, align 4
-  br label %il120
-
-il111:                                             ; pred = %il110, %il112
-  %i_of_il111 = load i32, i32* %lv$3_of_il110, align 4
-  %cond_lt_tmp__of_il111 = icmp slt i32 %i_of_il111, 15
-  %cond_tmp__of_il111 = zext i1 %cond_lt_tmp__of_il111 to i32
-  %cond__of_il111 = icmp ne i32 %cond_tmp__of_il111, 0
-  br i1 %cond__of_il111, label %il112, label %il113
-
-il125:                                             ; pred = %il120
-  store i32 %result_$1_of_il112, i32* %retVal_ofil100_of_il110, align 4
-  br label %il122
-
-il124:                                             ; pred = %il117
-  store i32 %result_$1_of_il112, i32* %retVal_ofil100_of_il110, align 4
-  br label %il122
-
-il116:                                             ; pred = %il121
-  store i32 %arr$3_of_il110, i32* %retVal_ofil95_of_il110, align 4
-  br label %il114
-
-il123:                                             ; pred = %il118
-  store i32 %arr$5_of_il110, i32* %retVal_ofil95_of_il110, align 4
-  br label %il114
-
-tc31:                                              ; pred = %il113
-  %max_sum_nonadjacent = load i32, i32* %retVal_ofil110, align 4
+  %max_sum_nonadjacent = call i32 @max_sum_nonadjacent(i32* %A, i32 15)
   call void @putint(i32 %max_sum_nonadjacent)
   call void @putch(i32 10)
   %A$1 = getelementptr [15 x i32], [15 x i32]* %lv, i32 0, i32 0
   %B = getelementptr [13 x i32], [13 x i32]* %lv$1, i32 0, i32 0
-  br label %il126
-
-il119:                                             ; pred = %il118
-  store i32 %arr$3_of_il110, i32* %retVal_ofil95_of_il110, align 4
-  br label %il114
-
-il120:                                             ; pred = %il112
-  %cond_eq_tmp__of_il100_of_il120 = icmp eq i32 %result_$1_of_il112, %temp$6_of_il112
-  %cond_tmp__of_il100_of_il120 = zext i1 %cond_eq_tmp__of_il100_of_il120 to i32
-  %cond__of_il100_of_il120 = icmp ne i32 %cond_tmp__of_il100_of_il120, 0
-  br i1 %cond__of_il100_of_il120, label %il125, label %il117
-
-il113:                                             ; pred = %il111
-  %result_$4_of_il113 = sub i32 15, 1
-  %temp$7_of_il113 = getelementptr [16 x i32], [16 x i32]* %lv$2_of_il110, i32 0, i32 %result_$4_of_il113
-  %temp$8_of_il113 = load i32, i32* %temp$7_of_il113, align 4
-  store i32 %temp$8_of_il113, i32* %retVal_ofil110, align 4
-  br label %tc31
-
-il122:                                             ; pred = %il115, %il124, %il125
-  %MAX$1_of_il122 = load i32, i32* %retVal_ofil100_of_il110, align 4
-  store i32 %MAX$1_of_il122, i32* %temp$2_of_il112, align 4
-  %i$5_of_il122 = load i32, i32* %lv$3_of_il110, align 4
-  %result_$3_of_il122 = add i32 %i$5_of_il122, 1
-  store i32 %result_$3_of_il122, i32* %lv$3_of_il110, align 4
-  br label %il111
-
-il118:                                             ; pred = %il121
-  %cond_gt_tmp__of_il97_of_il118 = icmp sgt i32 %arr$3_of_il110, %arr$5_of_il110
-  %cond_tmp_$1_of_il97_of_il118 = zext i1 %cond_gt_tmp__of_il97_of_il118 to i32
-  %cond_$1_of_il97_of_il118 = icmp ne i32 %cond_tmp_$1_of_il97_of_il118, 0
-  br i1 %cond_$1_of_il97_of_il118, label %il119, label %il123
-
-il115:                                             ; pred = %il117
-  store i32 %temp$6_of_il112, i32* %retVal_ofil100_of_il110, align 4
-  br label %il122
-
-il121:                                             ; pred = %il110
-  %cond_eq_tmp__of_il95_of_il121 = icmp eq i32 %arr$3_of_il110, %arr$5_of_il110
-  %cond_tmp__of_il95_of_il121 = zext i1 %cond_eq_tmp__of_il95_of_il121 to i32
-  %cond__of_il95_of_il121 = icmp ne i32 %cond_tmp__of_il95_of_il121, 0
-  br i1 %cond__of_il95_of_il121, label %il116, label %il118
-
-il110:                                             ; pred = %mainEntry6
-  %ptr_of_il110 = bitcast [16 x i32]* %lv$2_of_il110 to i32*
-  call void @memset(i32* %ptr_of_il110, i32 0, i32 64)
-  %temp_of_il110 = getelementptr [16 x i32], [16 x i32]* %lv$2_of_il110, i32 0, i32 0
-  %arr_of_il110 = getelementptr i32, i32* %A, i32 0
-  %arr$1_of_il110 = load i32, i32* %arr_of_il110, align 4
-  store i32 %arr$1_of_il110, i32* %temp_of_il110, align 4
-  %temp$1_of_il110 = getelementptr [16 x i32], [16 x i32]* %lv$2_of_il110, i32 0, i32 1
-  %arr$2_of_il110 = getelementptr i32, i32* %A, i32 0
-  %arr$3_of_il110 = load i32, i32* %arr$2_of_il110, align 4
-  %arr$4_of_il110 = getelementptr i32, i32* %A, i32 1
-  %arr$5_of_il110 = load i32, i32* %arr$4_of_il110, align 4
-  br label %il121
-
-il114:                                             ; pred = %il116, %il119, %il123
-  %MAX_of_il114 = load i32, i32* %retVal_ofil95_of_il110, align 4
-  store i32 %MAX_of_il114, i32* %temp$1_of_il110, align 4
-  store i32 2, i32* %lv$3_of_il110, align 4
-  br label %il111
-
-tc32:                                              ; pred = %il129
-  %longest_common_subseq = load i32, i32* %retVal_ofil126, align 4
+  %longest_common_subseq = call i32 @longest_common_subseq(i32* %A$1, i32 15, i32* %B, i32 13)
   call void @putint(i32 %longest_common_subseq)
   call void @putch(i32 10)
   ret i32 0
-
-il136:                                             ; pred = %il137
-  %cond_gt_tmp__of_il107_of_il136 = icmp sgt i32 %p$5_of_il134, %p$7_of_il134
-  %cond_tmp_$1_of_il107_of_il136 = zext i1 %cond_gt_tmp__of_il107_of_il136 to i32
-  %cond_$1_of_il107_of_il136 = icmp ne i32 %cond_tmp_$1_of_il107_of_il136, 0
-  br i1 %cond_$1_of_il107_of_il136, label %il139, label %il138
-
-il138:                                             ; pred = %il136
-  store i32 %p$7_of_il134, i32* %retVal_ofil105_of_il126, align 4
-  br label %il141
-
-il131:                                             ; pred = %il130
-  %i$1_of_il131 = load i32, i32* %lv$5_of_il126, align 4
-  %result__of_il131 = sub i32 %i$1_of_il131, 1
-  %arr1_of_il131 = getelementptr i32, i32* %A$1, i32 %result__of_il131
-  %arr1$1_of_il131 = load i32, i32* %arr1_of_il131, align 4
-  %j$1_of_il131 = load i32, i32* %lv$6_of_il126, align 4
-  %result_$1_of_il131 = sub i32 %j$1_of_il131, 1
-  %arr2_of_il131 = getelementptr i32, i32* %B, i32 %result_$1_of_il131
-  %arr2$1_of_il131 = load i32, i32* %arr2_of_il131, align 4
-  %cond_eq_tmp__of_il131 = icmp eq i32 %arr1$1_of_il131, %arr2$1_of_il131
-  %cond_tmp_$2_of_il131 = zext i1 %cond_eq_tmp__of_il131 to i32
-  %cond_$2_of_il131 = icmp ne i32 %cond_tmp_$2_of_il131, 0
-  br i1 %cond_$2_of_il131, label %il133, label %il134
-
-il129:                                             ; pred = %il127
-  %ptr_$5_of_il129 = getelementptr [16 x [16 x i32]], [16 x [16 x i32]]* %lv$4_of_il126, i32 0, i32 15
-  %p$8_of_il129 = getelementptr [16 x i32], [16 x i32]* %ptr_$5_of_il129, i32 0, i32 13
-  %p$9_of_il129 = load i32, i32* %p$8_of_il129, align 4
-  store i32 %p$9_of_il129, i32* %retVal_ofil126, align 4
-  br label %tc32
-
-il135:                                             ; pred = %il133, %il134
-  %j$7_of_il135 = load i32, i32* %lv$6_of_il126, align 4
-  %result_$7_of_il135 = add i32 %j$7_of_il135, 1
-  store i32 %result_$7_of_il135, i32* %lv$6_of_il126, align 4
-  br label %il130
-
-il128:                                             ; pred = %il127
-  store i32 1, i32* %lv$6_of_il126, align 4
-  br label %il130
-
-il134:                                             ; pred = %il131
-  %i$4_of_il134 = load i32, i32* %lv$5_of_il126, align 4
-  %j$4_of_il134 = load i32, i32* %lv$6_of_il126, align 4
-  %ptr_$2_of_il134 = getelementptr [16 x [16 x i32]], [16 x [16 x i32]]* %lv$4_of_il126, i32 0, i32 %i$4_of_il134
-  %p$3_of_il134 = getelementptr [16 x i32], [16 x i32]* %ptr_$2_of_il134, i32 0, i32 %j$4_of_il134
-  %i$5_of_il134 = load i32, i32* %lv$5_of_il126, align 4
-  %result_$5_of_il134 = sub i32 %i$5_of_il134, 1
-  %j$5_of_il134 = load i32, i32* %lv$6_of_il126, align 4
-  %ptr_$3_of_il134 = getelementptr [16 x [16 x i32]], [16 x [16 x i32]]* %lv$4_of_il126, i32 0, i32 %result_$5_of_il134
-  %p$4_of_il134 = getelementptr [16 x i32], [16 x i32]* %ptr_$3_of_il134, i32 0, i32 %j$5_of_il134
-  %p$5_of_il134 = load i32, i32* %p$4_of_il134, align 4
-  %i$6_of_il134 = load i32, i32* %lv$5_of_il126, align 4
-  %j$6_of_il134 = load i32, i32* %lv$6_of_il126, align 4
-  %result_$6_of_il134 = sub i32 %j$6_of_il134, 1
-  %ptr_$4_of_il134 = getelementptr [16 x [16 x i32]], [16 x [16 x i32]]* %lv$4_of_il126, i32 0, i32 %i$6_of_il134
-  %p$6_of_il134 = getelementptr [16 x i32], [16 x i32]* %ptr_$4_of_il134, i32 0, i32 %result_$6_of_il134
-  %p$7_of_il134 = load i32, i32* %p$6_of_il134, align 4
-  br label %il137
-
-il139:                                             ; pred = %il136
-  store i32 %p$5_of_il134, i32* %retVal_ofil105_of_il126, align 4
-  br label %il141
-
-il130:                                             ; pred = %il128, %il135
-  %j_of_il130 = load i32, i32* %lv$6_of_il126, align 4
-  %cond_le_tmp_$1_of_il130 = icmp sle i32 %j_of_il130, 13
-  %cond_tmp_$1_of_il130 = zext i1 %cond_le_tmp_$1_of_il130 to i32
-  %cond_$1_of_il130 = icmp ne i32 %cond_tmp_$1_of_il130, 0
-  br i1 %cond_$1_of_il130, label %il131, label %il132
-
-il127:                                             ; pred = %il126, %il132
-  %i_of_il127 = load i32, i32* %lv$5_of_il126, align 4
-  %cond_le_tmp__of_il127 = icmp sle i32 %i_of_il127, 15
-  %cond_tmp__of_il127 = zext i1 %cond_le_tmp__of_il127 to i32
-  %cond__of_il127 = icmp ne i32 %cond_tmp__of_il127, 0
-  br i1 %cond__of_il127, label %il128, label %il129
-
-il140:                                             ; pred = %il137
-  store i32 %p$5_of_il134, i32* %retVal_ofil105_of_il126, align 4
-  br label %il141
-
-il141:                                             ; pred = %il138, %il139, %il140
-  %MAX_of_il141 = load i32, i32* %retVal_ofil105_of_il126, align 4
-  store i32 %MAX_of_il141, i32* %p$3_of_il134, align 4
-  br label %il135
-
-il126:                                             ; pred = %tc31
-  %ptr_of_il126 = bitcast [16 x [16 x i32]]* %lv$4_of_il126 to i32*
-  call void @memset(i32* %ptr_of_il126, i32 0, i32 1024)
-  store i32 1, i32* %lv$5_of_il126, align 4
-  br label %il127
-
-il132:                                             ; pred = %il130
-  %i$7_of_il132 = load i32, i32* %lv$5_of_il126, align 4
-  %result_$8_of_il132 = add i32 %i$7_of_il132, 1
-  store i32 %result_$8_of_il132, i32* %lv$5_of_il126, align 4
-  br label %il127
-
-il133:                                             ; pred = %il131
-  %i$2_of_il133 = load i32, i32* %lv$5_of_il126, align 4
-  %j$2_of_il133 = load i32, i32* %lv$6_of_il126, align 4
-  %ptr__of_il133 = getelementptr [16 x [16 x i32]], [16 x [16 x i32]]* %lv$4_of_il126, i32 0, i32 %i$2_of_il133
-  %p_of_il133 = getelementptr [16 x i32], [16 x i32]* %ptr__of_il133, i32 0, i32 %j$2_of_il133
-  %i$3_of_il133 = load i32, i32* %lv$5_of_il126, align 4
-  %result_$2_of_il133 = sub i32 %i$3_of_il133, 1
-  %j$3_of_il133 = load i32, i32* %lv$6_of_il126, align 4
-  %result_$3_of_il133 = sub i32 %j$3_of_il133, 1
-  %ptr_$1_of_il133 = getelementptr [16 x [16 x i32]], [16 x [16 x i32]]* %lv$4_of_il126, i32 0, i32 %result_$2_of_il133
-  %p$1_of_il133 = getelementptr [16 x i32], [16 x i32]* %ptr_$1_of_il133, i32 0, i32 %result_$3_of_il133
-  %p$2_of_il133 = load i32, i32* %p$1_of_il133, align 4
-  %result_$4_of_il133 = add i32 %p$2_of_il133, 1
-  store i32 %result_$4_of_il133, i32* %p_of_il133, align 4
-  br label %il135
-
-il137:                                             ; pred = %il134
-  %cond_eq_tmp__of_il105_of_il137 = icmp eq i32 %p$5_of_il134, %p$7_of_il134
-  %cond_tmp__of_il105_of_il137 = zext i1 %cond_eq_tmp__of_il105_of_il137 to i32
-  %cond__of_il105_of_il137 = icmp ne i32 %cond_tmp__of_il105_of_il137, 0
-  br i1 %cond__of_il105_of_il137, label %il140, label %il136
 }
 
