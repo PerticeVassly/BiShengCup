@@ -1,16 +1,16 @@
-//test continue
 int main(){
-    int i;
-    i = 0;
-    int sum;
-    sum = 0;
-    while(i < 100){
-        if(i == 50){
-            i = i + 1;
-            continue;
-        }
-        sum = sum + i;
-        i = i + 1;
+    int a = 2;
+    a = 2;
+    a = 2;
+    int b = 3;
+    int c = a + b + a + b + a + a + b + b - a - a - 1;
+    c = a + b + a + b + a + a + b + b - a - a - 1;
+    c = a + b + a + b + a + a + b + b - a - a - 1;
+    b = 3;
+    b = 3;
+    b = 4;
+    if (a > 2) {
+        b = b - a;
     }
-    return sum;
+    return c + 1 + b - a;
 }

@@ -146,6 +146,13 @@ public class BasicBlockRef extends ValueRef {
         pred.removeIf(bb -> !bb.isReachable());
     }
 
+    public void replaceIr(Instruction old, Instruction newIr) {
+        int index = irs.indexOf(old);
+        if (index != -1) {
+            irs.set(index, newIr);
+        }
+    }
+
     @Override
     public String toString() {
         return "%" + name;

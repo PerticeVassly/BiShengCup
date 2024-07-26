@@ -41,7 +41,16 @@ public class Phi extends Instruction {
     }
 
     public boolean isRedundant() {
-        return operands.length == 2;
+        boolean flag = true;
+        ValueRef vr = operands[0];
+        for (int i = 2; i < operands.length; i += 2) {
+            if (!vr.equals(operands[i])) {
+                flag = false;
+                break;
+            }
+            vr = operands[i];
+        }
+        return operands.length == 2 || flag;
     }
 
     @Override

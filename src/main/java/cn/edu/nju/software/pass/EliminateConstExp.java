@@ -81,7 +81,12 @@ public class EliminateConstExp {
                         i--;
                     }
                 }
-            } // TODO ?
+            } else if (inst instanceof CondBr condBr) {
+                if (condBr.isRedundant()) {
+//                    block.replaceIr();
+                    // TODO
+                }
+            }
         }
     }
 

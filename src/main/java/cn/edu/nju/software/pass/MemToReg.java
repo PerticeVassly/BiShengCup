@@ -62,7 +62,6 @@ public class MemToReg {
             fillEmptyPhis();
 
             rmRedundantAllocStoreLoadAndPhiInFunction(fv);
-            // TODO
         }
     }
 

@@ -29,8 +29,5 @@ public class TestOpt {
         memToReg.runOnModule();
         eliminateConstExp.runOnModule();
         visitor.dumpModuleToConsole();
-//        RiscModule riscModule = new RiscModule(visitor.getModule());
-//        riscModule.codeGen();
-//        riscModule.dumpToConsole();
     }
 }
