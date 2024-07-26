@@ -208,7 +208,8 @@ public class FunctionInlinePass implements ModulePass {
         Map<String, String> copyValueMap = new HashMap<>();
         Set<ValueRef> toBeChanged = new HashSet<>();
         for (BasicBlockRef basicBlockRef : function.getBasicBlockRefs()) {
-            BasicBlockRef newBlock = new BasicBlockRef(curFunction, "inline");
+            //注意！内联块名不能过长，否则会产生命名问题
+            BasicBlockRef newBlock = new BasicBlockRef(curFunction, "il");
             copyMap.put(basicBlockRef, newBlock);
             for (Instruction instruction : basicBlockRef.getIrs()) {
                 Instruction newInstr = irCloneVisitor.genClonedInstruction(instruction);
@@ -218,6 +219,7 @@ public class FunctionInlinePass implements ModulePass {
                 ValueRef lVal = newInstr.getLVal();
                 if (lVal != null && !(lVal instanceof GlobalVar)) {
                     //注意全局变量不改名
+                    //名称过长可能导致问题
                     lVal.setName(lVal.getName() + "_of_" + newBlock.getName());
                     copyValueMap.put(instruction.getLVal().getName(), lVal.getName());
                 }
@@ -284,7 +286,7 @@ public class FunctionInlinePass implements ModulePass {
     }
 
     private BasicBlockRef createTruncatedBlock(Allocate allocate, BasicBlockRef bb, int pos, FunctionValue curFunction, Set<BasicBlockRef> preds) {
-        BasicBlockRef truncated = new BasicBlockRef(curFunction, "truncated");
+        BasicBlockRef truncated = new BasicBlockRef(curFunction, "tc");
         Call call = (Call) bb.getIr(pos);
         if (allocate != null) {
             ValueRef lVal = call.getLVal();
