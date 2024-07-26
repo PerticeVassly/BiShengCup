@@ -14,6 +14,8 @@ public class Binary extends Instruction {
         opType = operand1.getType();
         operator = getOperator(op);
         operands = new ValueRef[]{operand1, operand2};
+        operand1.addUser(this);
+        operand2.addUser(this);
     }
 
     @Override

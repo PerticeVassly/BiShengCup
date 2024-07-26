@@ -4,6 +4,7 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
+import cn.edu.nju.software.ir.instruction.logic.*;
 import cn.edu.nju.software.ir.instruction.logic.And;
 import cn.edu.nju.software.ir.instruction.logic.Or;
 import cn.edu.nju.software.ir.instruction.logic.Xor;
@@ -343,6 +344,24 @@ public class Generator implements IrGenerator {
         return lVal;
 //        return buildArithmeticIr(builder, MOD, operand1, operand2, lValName);
     }
+
+    @Override
+    public LocalVar buildAshr(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
+        Instruction ir = new Ashr(lVal, operand1, operand2);
+        builder.put(ir);
+        return lVal;
+    }
+
+    @Override
+    public LocalVar buildShl(BuilderRef builder, ValueRef operand1, ValueRef operand2, String lValName) {
+        LocalVar lVal = builder.createLocalVar(typeTransfer(operand1.getType(), operand2.getType()), lValName);
+        Instruction ir = new Shl(lVal, operand1, operand2);
+        builder.put(ir);
+        return lVal;
+    }
+
+
     @Override
     public ValueRef buildBranch(BuilderRef builder, BasicBlockRef targetBlock) {
         Instruction ir = new Br(targetBlock);
@@ -429,5 +448,13 @@ public class Generator implements IrGenerator {
     public ValueRef dropBlock(BuilderRef builder, BasicBlockRef block) {
         builder.dropBlock(block);
         return block;
+    }
+
+    @Override
+    public Phi buildEmptyPhiAfterInst(BasicBlockRef block, Allocate memory, String name) {
+        LocalVar localVar = block.createLocalVar(((Pointer)memory.getLVal().getType()).getBase(), name);
+        Phi emptyPhi = new Phi(localVar, block, memory);
+        block.addPhi(emptyPhi);
+        return emptyPhi;
     }
 }

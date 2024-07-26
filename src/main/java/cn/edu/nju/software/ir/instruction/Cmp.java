@@ -70,6 +70,7 @@ public class Cmp extends Binary {
                 case "sge":
                 case "oge":
                     cv = new ConstValue(i1, operands[0].equals(operands[1]) || ((ConstValue) operands[0]).greaterThan((ConstValue) operands[1]));
+                    break;
                 default:
                     break;
             }

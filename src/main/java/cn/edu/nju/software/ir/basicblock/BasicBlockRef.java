@@ -1,9 +1,6 @@
 package cn.edu.nju.software.ir.basicblock;
 
-import cn.edu.nju.software.ir.instruction.Allocate;
-import cn.edu.nju.software.ir.instruction.Br;
-import cn.edu.nju.software.ir.instruction.CondBr;
-import cn.edu.nju.software.ir.instruction.Instruction;
+import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
@@ -58,6 +55,13 @@ public class BasicBlockRef extends ValueRef {
         return pred.get(index);
     }
 
+    public void dropPred(BasicBlockRef p) {
+        int index = pred.indexOf(p);
+        if (index != -1) {
+            pred.remove(index);
+        }
+    }
+
     public void put(Instruction ir) {
         if (ir instanceof Allocate) {
             function.emitAlloc((Allocate) ir);
@@ -108,6 +112,19 @@ public class BasicBlockRef extends ValueRef {
             }
         }
         if (end != -1) {
+            for (int i = end + 1; i < irNum; i++) {
+                Instruction ir = irs.get(i);
+                if (ir instanceof Br) {
+                    BasicBlockRef bb = ((Br) ir).getTarget();
+                    bb.dropPred(this);
+                }
+                if (ir instanceof CondBr) {
+                    BasicBlockRef tar = ((CondBr) ir).getTrueBlock();
+                    tar.dropPred(this);
+                    tar = ((CondBr) ir).getFalseBlock();
+                    tar.dropPred(this);
+                }
+            }
             irNum = end + 1;
             irs = new ArrayList<>(irs.subList(0, irNum));
         }
@@ -129,9 +146,13 @@ public class BasicBlockRef extends ValueRef {
         pred.removeIf(bb -> !bb.isReachable());
     }
 
-    public void dropPred(BasicBlockRef pre){
-        pred.removeIf(bb->bb.equals(pre));
+    public void replaceIr(Instruction old, Instruction newIr) {
+        int index = irs.indexOf(old);
+        if (index != -1) {
+            irs.set(index, newIr);
+        }
     }
+
     @Override
     public String toString() {
         return "%" + name;
@@ -143,5 +164,19 @@ public class BasicBlockRef extends ValueRef {
 
     public void setReachable(boolean reachable) {
         this.reachable = reachable;
+    }
+
+    public void addPhi(Phi phi) {
+        irNum++;
+        irs.add(0, phi);
+    }
+
+    public boolean contains(Instruction instruction) {
+        return irs.contains(instruction);
+    }
+
+    //todo() may be unneeded
+    public void addIrNum(){
+        irNum++;
     }
 }

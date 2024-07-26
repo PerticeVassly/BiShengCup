@@ -7,8 +7,7 @@ public class Operator {
             "add", "sub", "mul", "sdiv", "srem", "and", "or",
             "fptosi", "sitofp", "br", "icmp", "fcmp", "xor", "zext",
             "load", "store", "alloca", "getelementptr",
-            "call", "ret", "fadd", "fsub", "fmul", "fdiv",
-            "phi"
+            "call", "ret", "fadd", "fsub", "fmul", "fdiv","ashr", "shl","phi"
     };
 
     public final static int CmpNE = 0; // !=

@@ -16,11 +16,24 @@ public abstract class Instruction {
     }
 
     /***
+     * replace old with new; after replacing, old will be deleting, so no need to modify old
      * @param index: replace position
      * @param valueRef: new operand
      */
     public void replace(int index, ValueRef valueRef) {
+//        operands[index].dropUser(this); // old drop one user -- no need
         operands[index] = valueRef;
+        valueRef.addUser(this); // new add user
+    }
+
+    public void replace(ValueRef old, ValueRef nw) {
+        for (int i = 0; i < operands.length; i++) {
+            if (operands[i].equals(old)) {
+//                old.dropUser(this);
+                operands[i] = nw;
+                nw.addUser(this);
+            }
+        }
     }
 
     public ValueRef[] getOperands() {

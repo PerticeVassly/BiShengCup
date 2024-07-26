@@ -4,34 +4,68 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.value.ValueRef;
 
+import java.util.Arrays;
+
 import static cn.edu.nju.software.ir.instruction.OpEnum.PHI;
 import static cn.edu.nju.software.ir.instruction.Operator.*;
 
 public class Phi extends Instruction {
-    /**
-     * lVal: left value     %phi = phi i32 [%bb1 %1], [%bb2 %2]
-     * bbs and vrs size: 2
-     * one to one
-     * first bb's vr and second bb's vr
-     * */
-    public Phi(ValueRef lVal, BasicBlockRef[] bbs, ValueRef[] vrs) {
+    private final BasicBlockRef block; // in which lock
+    private final Allocate memory; // merge for which memory
+    /***
+     * phi: first value, second block
+     * @param lVal: create value
+     * @param block: in which block
+     */
+    public Phi(ValueRef lVal, BasicBlockRef block, Allocate memory) {
         this.lVal = lVal;
+        this.block = block;
         operator = getOperator(PHI);
-        operands = new ValueRef[]{bbs[0], bbs[1], vrs[0], vrs[1]};
+        operands = new ValueRef[0];
+        this.memory = memory;
+    }
+
+    public BasicBlockRef getBlock() {
+        return block;
+    }
+
+    public void add(ValueRef value, BasicBlockRef block) {
+        operands = Arrays.copyOf(operands, operands.length + 2);
+        operands[operands.length - 2] = value;
+        operands[operands.length - 1] = block;
+        value.addUser(this);
+    }
+
+    public Allocate getMemory() {
+        return memory;
+    }
+
+    public boolean isRedundant() {
+        boolean flag = true;
+        ValueRef vr = operands[0];
+        for (int i = 2; i < operands.length; i += 2) {
+            if (!vr.equals(operands[i])) {
+                flag = false;
+                break;
+            }
+            vr = operands[i];
+        }
+        return operands.length == 2 || flag;
     }
 
     @Override
     public String toString() {
-        return lVal.getText() +
+        String s =  lVal.getText() +
                 " = phi " +
-                lVal.getType().getText() +
-                " [" +
-                operands[0].getText() + " " + // op[0] is the first bb
-                operands[2].getText() + // op[2] is the first var
-                "], [" +
-                operands[1].getText() + " " + // op[1] is the second bb
-                operands[3].getText() + // op[3] is the second var
-                "]";
+                lVal.getType().getText() + " ";
+        StringBuilder sb = new StringBuilder(s);
+        for (int i = 0; i < operands.length; i += 2) {
+            sb.append("[").append(operands[i]).append(", ").append(operands[i + 1]).append("]");
+            if (i + 2 < operands.length) {
+                sb.append(", ");
+            }
+        }
+        return sb.toString();
     }
 
     @Override

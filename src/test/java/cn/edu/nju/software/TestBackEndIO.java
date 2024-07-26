@@ -13,38 +13,25 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
-/**
- * @author wzh
- * @description
- * test files in DIR with input and output
- * <br>
- * runtime libs (sylib_mac.ll) used
- * @time 2024/6/14 14:04
- */
-public class FrontEndTest {
+public class TestBackEndIO {
     private static final String DIR = "src/test/resources/2023/";
-    private static final String DIR_PART = "src/test/resources/2023part/";
     private static final String DIR_HIDDEN = "src/test/resources/2023hidden/";
+    private static final String DIR_PART = "src/test/resources/2023part/";
     private static final String SYLIB = "src/test/resources/sylib.ll";
     private static final String LINKED = "src/test/resources/linked.ll";
+    private static final String SYLIB_RISC = "src/test/resources/libriscv.o";
+    private static final String PERFORMANCE = "src/test/resources/performance/";
+    private static final String FINAL_PERFORMANCE = "src/test/resources/final_performance/";
 
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-//    @StringSource("87_many_params")
-//    @StringSource("65_color")
-//    @StringSource("101_float_arr")
-//    @StringSource("38_light2d")
-    @StringSource("59_sort_test5")
-//    @StringSource("79_var_name")
-//    @StringSource("90_many_locals")
-//    @StringSource("64_calculator")
-//    @StringSource("08_const_array_defn")
-    void testFrontEndIO(String name) throws IOException, InterruptedException {
-        testFile(DIR, name);
-//        testFile(DIR_HIDDEN, name);
+    @StringSource("integer-divide-optimization-1")
+    void testRisc(String name) throws IOException, InterruptedException {
+        testFile(PERFORMANCE, name);
     }
 
     /**
@@ -52,17 +39,20 @@ public class FrontEndTest {
      */
     @ParameterizedTest
     @MethodSource("dir")
-    void testAll(String name) throws IOException, InterruptedException {
+    void test2023(String name) throws IOException, InterruptedException {
+        if (false){
+            fail();
+        }
         testFile(DIR, name);
     }
 
-    /**
-     * test all the files in DIR_HIDDEN
-     */
+
     @ParameterizedTest
     @MethodSource("dirHidden")
-    void testHidden(String name) throws IOException, InterruptedException {
-        if (Stream.of("30_many_dimensions", "36_rotate", "38_light2d").anyMatch(name::equals)) fail();
+    void test2023Hidden(String name) throws IOException, InterruptedException {
+        if(name.contains("38") || name.contains("36")){
+            fail();
+        }
         testFile(DIR_HIDDEN, name);
     }
 
@@ -72,20 +62,25 @@ public class FrontEndTest {
     @ParameterizedTest
     @MethodSource("dirPart")
     void testPart(String name) throws IOException, InterruptedException {
+        if (false){
+            fail();
+        }
         testFile(DIR_PART, name);
     }
 
     void testFile(String dir, String name) throws IOException, InterruptedException {
         String standardIn = dir + name + ".in";
         String code = dir + name + ".sy";
-        String output = dir + name + ".ll";
+        String output = dir + name + ".s";
         String standardOut = dir + name + ".out";
-        Main.main(code, "-o", output, "--emit-llvm");
-        cmdExecutor.exec("llvm-link", output, SYLIB, "-o", LINKED);
+        Main.main(code, "-o", output, "-S", "-O2");
+
+
+        cmdExecutor.exec("riscv64-unknown-elf-gcc", output, "-g", "-o", dir + name, SYLIB_RISC);
         if (exist(dir, name + ".in")) {
-            cmdExecutor.execRedirectInput(standardIn, "lli", LINKED);
+            cmdExecutor.execRedirectInput(standardIn, "qemu-riscv64", "./" + dir + name);
         } else {
-            cmdExecutor.exec("lli", LINKED);
+            cmdExecutor.exec("qemu-riscv64", "./" + dir + name);
         }
         int retValue = cmdExecutor.getExitCode();
         String capturedOutput = cmdExecutor.getOutputInfo();
@@ -111,6 +106,14 @@ public class FrontEndTest {
 
     private static Stream<String> dirHidden() {
         return parameters(DIR_HIDDEN);
+    }
+
+    private static Stream<String> performance() {
+        return parameters(PERFORMANCE);
+    }
+
+    private static Stream<String> finalPerformance() {
+        return parameters(FINAL_PERFORMANCE);
     }
 
     /**

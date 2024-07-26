@@ -27,6 +27,10 @@ public class LocalVar extends ValueRef implements Variable {
         return new LocalVar(type,name);
     }
 
+    public boolean isTmpVar() {
+        return isTmp;
+    }
+
     @Override
     public String toString() {
         return "%" + name;
@@ -59,6 +63,4 @@ public class LocalVar extends ValueRef implements Variable {
     public void mergeValue(Value value) {
         this.value.merge(value);
     }
-
-
 }

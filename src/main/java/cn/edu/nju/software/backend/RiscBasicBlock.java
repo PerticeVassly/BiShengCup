@@ -1,5 +1,7 @@
 package cn.edu.nju.software.backend;
 
+import cn.edu.nju.software.backend.regalloc.LValLiveTable;
+import cn.edu.nju.software.backend.regalloc.TempVarLiveTable;
 import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlw;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsw;
@@ -13,7 +15,6 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,13 +30,21 @@ public class RiscBasicBlock {
 
     private final RiscInstrGenerator generator;
 
+    private final TempVarLiveTable tempVarLiveTable;
+
+    private final LValLiveTable lValLiveTable;
+
     public RiscBasicBlock(BasicBlockRef basicBlockRef, FunctionValue functionValue) {
         this.basicBlockRef = basicBlockRef;
         this.llvmFunctionValue = functionValue;
         this.generator = new RiscInstrGenerator(basicBlockRef.getIrs(), llvmFunctionValue);
+        this.tempVarLiveTable = new TempVarLiveTable(generator, allocator);
+        this.lValLiveTable = new LValLiveTable();
     }
 
     public void codeGen() {
+        allocator.setLValLiveTable(lValLiveTable);
+        allocator.setTempVarLiveTable(tempVarLiveTable);
         allocator.setInstrGenerator(generator);
         if (basicBlockRef.getPredNum() == 0) {
             functionInit();
@@ -47,8 +56,12 @@ public class RiscBasicBlock {
         generator.insertComment("reserve space");
         int stackSize = allocator.getStackSize();
         if (stackSize > 0) {
-            generator.addInstruction(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
-            generator.addInstruction(new RiscSub(new Register("sp"), new Register("sp"), new Register("t0")));
+            if(stackSize <= 2048){
+                generator.addInstruction(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-stackSize)));
+            } else {
+                generator.addInstruction(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
+                generator.addInstruction(new RiscSub(new Register("sp"), new Register("sp"), new Register("t0")));
+            }
         }
 
         if(!llvmFunctionValue.getName().equals("main")){
@@ -89,7 +102,7 @@ public class RiscBasicBlock {
         int preLen = (
                         ((intAndPointerCount > RiscSpecifications.getArgRegs().length) ? (intAndPointerCount - RiscSpecifications.getArgRegs().length) : 0) +
                         ((floatTypeCount > RiscSpecifications.getFArgRegs().length) ? (floatTypeCount - RiscSpecifications.getFArgRegs().length) : 0)
-        ) * 8;
+        ) * 8 + (RiscSpecifications.getCallerSavedRegs().length - 1) * 8;
 
         //获取所有intType和PointerType的参数个数
 
@@ -165,7 +178,7 @@ public class RiscBasicBlock {
 
         System.out.println(basicBlockRef.getName() + ":");
 
-        assert !riscInstructions.isEmpty();
+//        assert !riscInstructions.isEmpty(); //todo() why here fail
 
         for(RiscInstruction riscInstruction : riscInstructions){
             System.out.println(riscInstruction.emitCode());

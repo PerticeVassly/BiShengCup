@@ -24,13 +24,10 @@ public class TestOpt {
         IRVisitor visitor = new IRVisitor();
         visitor.visit(tree);
 
-        MemToReg memToReg = new MemToReg(visitor.getModule());
-        EliminateConstExp eliminateConstExp = new EliminateConstExp(visitor.getModule());
-        memToReg.memToRegProc();
-        eliminateConstExp.doEliminateProc();
+//        MemToReg memToReg = new MemToReg(visitor.getModule());
+//        EliminateConstExp eliminateConstExp = new EliminateConstExp(visitor.getModule());
+//        memToReg.runOnModule();
+//        eliminateConstExp.runOnModule();
         visitor.dumpModuleToConsole();
-//        RiscModule riscModule = new RiscModule(visitor.getModule());
-//        riscModule.codeGen();
-//        riscModule.dumpToConsole();
     }
 }
