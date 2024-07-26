@@ -17,7 +17,7 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry:
+mainEntry17:
   %f2i_ = fptosi float 0x3ffe666660000000 to i32
   ret i32 %f2i_
 }

@@ -36,6 +36,8 @@ public class PassManager {
     private void register(){
         modulePasses.add(CFGBuildPass.getInstance());
         modulePasses.add(LoopBuildPass.getInstance());
+//        modulePasses.add(MemToReg.getInstance());
+        modulePasses.add(EliminateConstExp.getInstance());
         basicBlockPasses.add(StrengthReductionPass.getInstance());
     }
     public void setDbgFlag(){

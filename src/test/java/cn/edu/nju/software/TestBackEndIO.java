@@ -39,8 +39,8 @@ public class TestBackEndIO {
      */
     @ParameterizedTest
     @MethodSource("dir")
-    void testAll(String name) throws IOException, InterruptedException {
-        if ((name.equals("dead-code-"))){
+    void test2023(String name) throws IOException, InterruptedException {
+        if (false){
             fail();
         }
         testFile(DIR, name);
@@ -49,7 +49,7 @@ public class TestBackEndIO {
 
     @ParameterizedTest
     @MethodSource("dirHidden")
-    void testHidden(String name) throws IOException, InterruptedException {
+    void test2023Hidden(String name) throws IOException, InterruptedException {
         if(name.contains("38") || name.contains("36")){
             fail();
         }
@@ -62,7 +62,7 @@ public class TestBackEndIO {
     @ParameterizedTest
     @MethodSource("dirPart")
     void testPart(String name) throws IOException, InterruptedException {
-        if (name.equals("79_var_name") || name.equals("90_many_locals")) {
+        if (false){
             fail();
         }
         testFile(DIR_PART, name);

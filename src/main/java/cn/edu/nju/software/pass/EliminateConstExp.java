@@ -12,10 +12,10 @@ import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.HashMap;
 
-public class EliminateConstExp {
-    private final ModuleRef module;
+public class EliminateConstExp implements ModulePass{
+    private ModuleRef module;
 
-    private final HashMap<ValueRef, ConstValue> value2Const;
+    private final HashMap<ValueRef, ConstValue> value2Const = new HashMap<>();
 
     private final BoolType i1 = new BoolType();
     private final IntType i32 = new IntType();
@@ -23,9 +23,20 @@ public class EliminateConstExp {
     private final ConstValue one = new ConstValue(i32, 1);
     private final ConstValue zero = new ConstValue(i32, 0);
 
-    public EliminateConstExp(ModuleRef module) {
-        this.module = module;
-        value2Const = new HashMap<>();
+    private boolean dbgFlag = false;
+
+    private static EliminateConstExp eliminateConstExp;
+
+    public EliminateConstExp() {
+//        this.module = module;
+//        value2Const = new HashMap<>();
+    }
+
+    public static EliminateConstExp getInstance() {
+        if (eliminateConstExp == null) {
+            eliminateConstExp = new EliminateConstExp();
+        }
+        return eliminateConstExp;
     }
 
     private void doEliminateProc() {
@@ -90,7 +101,25 @@ public class EliminateConstExp {
         }
     }
 
-    public void runOnModule() {
+    @Override
+    public boolean runOnModule(ModuleRef module) {
+        this.module = module;
         doEliminateProc();
+        return true;
+    }
+
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public void printDbgInfo() {
+
+    }
+
+    @Override
+    public void setDbgFlag() {
+        this.dbgFlag = true;
     }
 }

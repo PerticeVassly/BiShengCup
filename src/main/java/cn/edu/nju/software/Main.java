@@ -79,14 +79,14 @@ public class Main {
 //        irVisitor.dumpModuleToConsole();
 
         ModuleRef module = irVisitor.getModule();
+//
+        //test pass
+//        MemToReg memToReg = new MemToReg(module);
+//        memToReg.runOnModule();
+//        EliminateConstExp eliminateConstExp = new EliminateConstExp(module);
+//        eliminateConstExp.runOnModule();
 
-        // test pass
-        MemToReg memToReg = new MemToReg(module);
-        memToReg.runOnModule();
-        EliminateConstExp eliminateConstExp = new EliminateConstExp(module);
-        eliminateConstExp.runOnModule();
-
-        irVisitor.dumpModuleToConsole();
+//        irVisitor.dumpModuleToConsole();
 
         if(module == null){
             assert false;

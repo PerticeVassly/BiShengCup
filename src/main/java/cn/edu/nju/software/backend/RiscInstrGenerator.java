@@ -12,7 +12,6 @@ import cn.edu.nju.software.backend.riscinstruction.operand.Operand;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.*;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
-import cn.edu.nju.software.backend.riscinstruction.util.RiscLabel;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.Allocate;
@@ -40,7 +39,9 @@ import cn.edu.nju.software.ir.instruction.arithmetic.FSub;
 import cn.edu.nju.software.ir.instruction.arithmetic.Mod;
 import cn.edu.nju.software.ir.instruction.arithmetic.Mul;
 import cn.edu.nju.software.ir.instruction.arithmetic.Sub;
+import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
+import cn.edu.nju.software.ir.instruction.logic.Shl;
 import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.BoolType;
 import cn.edu.nju.software.ir.type.FloatType;
@@ -369,9 +370,20 @@ public class RiscInstrGenerator implements InstructionVisitor {
         afterABinaryInstr(div);
     }
 
-    private boolean isPowerOfTwo(int n) {
-        return n > 0 && (Integer.numberOfTrailingZeros(n) + Integer.numberOfLeadingZeros(n)) == 31;
+    @Override
+    public void visit(Ashr ashr) {
+        beforeABinaryInstr(ashr);
+        riscInstructions.add(new RiscSra(new Register("t0"), new Register("t1"), new Register("t2")));
+        afterABinaryInstr(ashr);
     }
+
+    @Override
+    public void visit(Shl shl){
+        beforeABinaryInstr(shl);
+        riscInstructions.add(new RiscSll(new Register("t0"), new Register("t1"), new Register("t2")));
+        afterABinaryInstr(shl);
+    }
+
 
     @Override
     public void visit(FDiv fdiv) {

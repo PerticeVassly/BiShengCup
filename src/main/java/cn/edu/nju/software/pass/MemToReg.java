@@ -14,14 +14,18 @@ import cn.edu.nju.software.ir.value.ValueRef;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MemToReg {
-    private final CFGBuildPass cfgBuildPass;
+public class MemToReg implements ModulePass {
+    // private final CFGBuildPass cfgBuildPass;
 
-    private final ModuleRef module;
+    private ModuleRef module;
 
     private final ValueRef UNDEF = new ValueRef(new TypeRef(), "undef");
 
     Generator gen = Generator.getInstance();
+
+    private boolean dbgFlag = false;
+
+    private static MemToReg memToReg;
 
     /***
      * record each replaceable allocate inst in each block's latest definition(if using)
@@ -36,10 +40,17 @@ public class MemToReg {
      */
     private ArrayList<Phi> emptyPhis = new ArrayList<>();
 
-    public MemToReg(ModuleRef module) {
-        cfgBuildPass = CFGBuildPass.getInstance();
-        this.module = module;
+    public MemToReg() {
+//        cfgBuildPass = CFGBuildPass.getInstance();
+//        this.module = module;
 //        cfgBuildPass.runOnModule(module);
+    }
+
+    public static MemToReg getInstance() {
+        if (memToReg == null) {
+            memToReg = new MemToReg();
+        }
+        return memToReg;
     }
 
     private void memToRegProc() {
@@ -205,7 +216,25 @@ public class MemToReg {
         }
     }
 
-    public void runOnModule() {
+    @Override
+    public boolean runOnModule(ModuleRef module) {
+        this.module = module;
         memToRegProc();
+        return true;
+    }
+
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public void printDbgInfo() {
+
+    }
+
+    @Override
+    public void setDbgFlag() {
+        this.dbgFlag = true;
     }
 }

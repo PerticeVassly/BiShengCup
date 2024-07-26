@@ -160,7 +160,7 @@ public class StrengthReductionPass implements BasicBlockPass {
         newInstructions.add(new Add(
                 ir.getLVal(),
                 OpEnum.ADD,
-                ir.getOperand(index == 0 ? 1 : 0),
+                new ConstValue(new IntType(), 0),
                 new ConstValue(new IntType(), 0)));
         return newInstructions;
     }
