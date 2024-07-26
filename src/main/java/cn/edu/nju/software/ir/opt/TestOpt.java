@@ -4,6 +4,7 @@ import cn.edu.nju.software.backend.RiscModule;
 import cn.edu.nju.software.frontend.lexer.SysYLexer;
 import cn.edu.nju.software.frontend.parser.SysYParser;
 import cn.edu.nju.software.ir.generator.IRVisitor;
+import cn.edu.nju.software.pass.BranchOptPass;
 import cn.edu.nju.software.pass.EliminateConstExp;
 import cn.edu.nju.software.pass.MemToReg;
 import org.antlr.v4.runtime.CharStream;
@@ -25,9 +26,9 @@ public class TestOpt {
         visitor.visit(tree);
 
         MemToReg memToReg = new MemToReg(visitor.getModule());
-        EliminateConstExp eliminateConstExp = new EliminateConstExp(visitor.getModule());
+        BranchOptPass branchOptPass = new BranchOptPass(visitor.getModule());
         memToReg.runOnModule();
-        eliminateConstExp.runOnModule();
+//        branchOptPass.runOnModule();
         visitor.dumpModuleToConsole();
     }
 }

@@ -84,7 +84,7 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public int getIrNum() {
-        return irNum;
+        return irs.size();
     }
 
     public Instruction getIr(int index) {

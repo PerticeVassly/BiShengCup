@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MemToReg {
-    private final CFGBuildPass cfgBuildPass;
+    private final EliminateConstExp eliminateConstExp;
 
     private final ModuleRef module;
 
@@ -37,9 +37,8 @@ public class MemToReg {
     private ArrayList<Phi> emptyPhis = new ArrayList<>();
 
     public MemToReg(ModuleRef module) {
-        cfgBuildPass = CFGBuildPass.getInstance();
         this.module = module;
-//        cfgBuildPass.runOnModule(module);
+        eliminateConstExp = new EliminateConstExp(module);
     }
 
     private void memToRegProc() {
@@ -187,16 +186,7 @@ public class MemToReg {
                 // rm redundant phi
                 if (inst instanceof Phi phi) {
                     if (phi.isRedundant()) { // only 2 operands: [value, block]
-                        ValueRef phiVal = phi.getLVal();
-                        ValueRef replace = phi.getOperand(0); // value
-                        // replace old(phiVal) with new value(replace); after replacing. old will be deleting
-                        for (Instruction instruction : phiVal.getUser()) {
-                            if (instruction instanceof Call call) {
-                                call.replaceRealParams(phiVal, replace);
-                            } else {
-                                instruction.replace(phiVal, replace);
-                            }
-                        }
+                        phi.modify();
                         bb.dropIr(inst);
                         j--;
                     }
@@ -207,5 +197,6 @@ public class MemToReg {
 
     public void runOnModule() {
         memToRegProc();
+        eliminateConstExp.runOnModule();
     }
 }
