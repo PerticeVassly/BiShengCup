@@ -149,15 +149,6 @@ next_154:                                            ; pred = %whileCond_81
   %i1 = load i32, i32* %lv, align 4
   br label %inline757
 
-inline759:                                           ; pred = %inline757
-  store i32 0, i32* %retVal_ofinline757, align 4
-  br label %truncated94
-
-truncated94:                                         ; pred = %inline759, %inline758
-  %func7 = load i32, i32* %retVal_ofinline757, align 4
-  %i2 = load i32, i32* %lv$1, align 4
-  br label %inline760
-
 inline757:                                           ; pred = %next_154
   %tmp__of_inline757 = icmp ne i32 0, %i1
   %tmp_$1_of_inline757 = xor i1 %tmp__of_inline757, 1
@@ -169,28 +160,37 @@ inline758:                                           ; pred = %inline757
   store i32 1, i32* %retVal_ofinline757, align 4
   br label %truncated94
 
-inline760:                                           ; pred = %truncated94
-  %tmp__of_inline760 = sub i32 0, %i2
-  store i32 %tmp__of_inline760, i32* %retVal_ofinline760, align 4
-  br label %truncated95
+truncated94:                                         ; pred = %inline758, %inline759
+  %func7 = load i32, i32* %retVal_ofinline757, align 4
+  %i2 = load i32, i32* %lv$1, align 4
+  br label %inline760
+
+inline759:                                           ; pred = %inline757
+  store i32 0, i32* %retVal_ofinline757, align 4
+  br label %truncated94
 
 truncated95:                                         ; pred = %inline760
   %func5 = load i32, i32* %retVal_ofinline760, align 4
   br label %inline761
 
+inline760:                                           ; pred = %truncated94
+  %tmp__of_inline760 = sub i32 0, %i2
+  store i32 %tmp__of_inline760, i32* %retVal_ofinline760, align 4
+  br label %truncated95
+
 inline761:                                           ; pred = %truncated95
   %cond_normalize__of_inline761 = icmp ne i32 %func7, 0
   br i1 %cond_normalize__of_inline761, label %inline764, label %inline763
 
-inline763:                                           ; pred = %inline761, %inline764
-  store i32 0, i32* %retVal_ofinline761, align 4
-  br label %truncated96
+inline764:                                           ; pred = %inline761
+  %cond_normalize_$1_of_inline764 = icmp ne i32 %func5, 0
+  br i1 %cond_normalize_$1_of_inline764, label %inline762, label %inline763
 
 inline762:                                           ; pred = %inline764
   store i32 1, i32* %retVal_ofinline761, align 4
   br label %truncated96
 
-truncated96:                                         ; pred = %inline763, %inline762
+truncated96:                                         ; pred = %inline762, %inline763
   %func6 = load i32, i32* %retVal_ofinline761, align 4
   %i3 = load i32, i32* %lv$2, align 4
   %func2 = call i32 @func2(i32 %func6, i32 %i3)
@@ -198,9 +198,9 @@ truncated96:                                         ; pred = %inline763, %inlin
   %func3 = call i32 @func3(i32 %func2, i32 %i4)
   br label %inline765
 
-inline764:                                           ; pred = %inline761
-  %cond_normalize_$1_of_inline764 = icmp ne i32 %func5, 0
-  br i1 %cond_normalize_$1_of_inline764, label %inline762, label %inline763
+inline763:                                           ; pred = %inline761, %inline764
+  store i32 0, i32* %retVal_ofinline761, align 4
+  br label %truncated96
 
 truncated97:                                         ; pred = %inline765
   %func5$1 = load i32, i32* %retVal_ofinline765, align 4
@@ -215,11 +215,6 @@ inline765:                                           ; pred = %truncated96
   store i32 %tmp__of_inline765, i32* %retVal_ofinline765, align 4
   br label %truncated97
 
-inline766:                                           ; pred = %truncated97
-  %tmp__of_inline766 = sub i32 0, %arr$4
-  store i32 %tmp__of_inline766, i32* %retVal_ofinline766, align 4
-  br label %truncated98
-
 truncated98:                                         ; pred = %inline766
   %func5$2 = load i32, i32* %retVal_ofinline766, align 4
   %arr$5 = getelementptr [10 x i32], [10 x i32]* %lv$4, i32 0, i32 2
@@ -228,17 +223,22 @@ truncated98:                                         ; pred = %inline766
   %arr$8 = load i32, i32* %arr$7, align 4
   br label %inline767
 
+inline766:                                           ; pred = %truncated97
+  %tmp__of_inline766 = sub i32 0, %arr$4
+  store i32 %tmp__of_inline766, i32* %retVal_ofinline766, align 4
+  br label %truncated98
+
 inline769:                                           ; pred = %inline767
   store i32 0, i32* %retVal_ofinline767, align 4
-  br label %truncated99
-
-inline768:                                           ; pred = %inline767
-  store i32 1, i32* %retVal_ofinline767, align 4
   br label %truncated99
 
 truncated99:                                         ; pred = %inline769, %inline768
   %func7$1 = load i32, i32* %retVal_ofinline767, align 4
   br label %inline770
+
+inline768:                                           ; pred = %inline767
+  store i32 1, i32* %retVal_ofinline767, align 4
+  br label %truncated99
 
 inline767:                                           ; pred = %truncated98
   %tmp__of_inline767 = icmp ne i32 0, %arr$8
@@ -247,19 +247,15 @@ inline767:                                           ; pred = %truncated98
   %cond_normalize__of_inline767 = icmp ne i32 %tmp_$2_of_inline767, 0
   br i1 %cond_normalize__of_inline767, label %inline768, label %inline769
 
-inline772:                                           ; pred = %inline770, %inline773
-  store i32 0, i32* %retVal_ofinline770, align 4
-  br label %truncated100
+inline770:                                           ; pred = %truncated99
+  %cond_normalize__of_inline770 = icmp ne i32 %arr$6, 0
+  br i1 %cond_normalize__of_inline770, label %inline773, label %inline772
 
 inline771:                                           ; pred = %inline773
   store i32 1, i32* %retVal_ofinline770, align 4
   br label %truncated100
 
-inline773:                                           ; pred = %inline770
-  %cond_normalize_$1_of_inline773 = icmp ne i32 %func7$1, 0
-  br i1 %cond_normalize_$1_of_inline773, label %inline771, label %inline772
-
-truncated100:                                        ; pred = %inline772, %inline771
+truncated100:                                        ; pred = %inline771, %inline772
   %func6$1 = load i32, i32* %retVal_ofinline770, align 4
   %arr$9 = getelementptr [10 x i32], [10 x i32]* %lv$4, i32 0, i32 4
   %arr$10 = load i32, i32* %arr$9, align 4
@@ -267,19 +263,19 @@ truncated100:                                        ; pred = %inline772, %inlin
   %arr$12 = load i32, i32* %arr$11, align 4
   br label %inline774
 
-inline770:                                           ; pred = %truncated99
-  %cond_normalize__of_inline770 = icmp ne i32 %arr$6, 0
-  br i1 %cond_normalize__of_inline770, label %inline773, label %inline772
+inline772:                                           ; pred = %inline770, %inline773
+  store i32 0, i32* %retVal_ofinline770, align 4
+  br label %truncated100
 
-inline775:                                           ; pred = %inline774
-  store i32 1, i32* %retVal_ofinline774, align 4
-  br label %truncated101
+inline773:                                           ; pred = %inline770
+  %cond_normalize_$1_of_inline773 = icmp ne i32 %func7$1, 0
+  br i1 %cond_normalize_$1_of_inline773, label %inline771, label %inline772
 
 inline776:                                           ; pred = %inline774
   store i32 0, i32* %retVal_ofinline774, align 4
   br label %truncated101
 
-truncated101:                                        ; pred = %inline775, %inline776
+truncated101:                                        ; pred = %inline776, %inline775
   %func7$2 = load i32, i32* %retVal_ofinline774, align 4
   %func2$1 = call i32 @func2(i32 %arr$10, i32 %func7$2)
   br label %inline777
@@ -291,7 +287,23 @@ inline774:                                           ; pred = %truncated100
   %cond_normalize__of_inline774 = icmp ne i32 %tmp_$2_of_inline774, 0
   br i1 %cond_normalize__of_inline774, label %inline775, label %inline776
 
-truncated102:                                        ; pred = %inline779, %inline778
+inline775:                                           ; pred = %inline774
+  store i32 1, i32* %retVal_ofinline774, align 4
+  br label %truncated101
+
+inline778:                                           ; pred = %inline777
+  store i32 %func6$1, i32* %retVal_ofinline777, align 4
+  br label %truncated102
+
+inline779:                                           ; pred = %inline777
+  store i32 %func2$1, i32* %retVal_ofinline777, align 4
+  br label %truncated102
+
+inline777:                                           ; pred = %truncated101
+  %cond_normalize__of_inline777 = icmp ne i32 %func5$2, 0
+  br i1 %cond_normalize__of_inline777, label %inline778, label %inline779
+
+truncated102:                                        ; pred = %inline778, %inline779
   %func4 = load i32, i32* %retVal_ofinline777, align 4
   %arr$13 = getelementptr [10 x i32], [10 x i32]* %lv$4, i32 0, i32 6
   %arr$14 = load i32, i32* %arr$13, align 4
@@ -305,28 +317,13 @@ truncated102:                                        ; pred = %inline779, %inlin
   %arr$20 = load i32, i32* %arr$19, align 4
   br label %inline780
 
-inline779:                                           ; pred = %inline777
-  store i32 %func2$1, i32* %retVal_ofinline777, align 4
-  br label %truncated102
-
-inline777:                                           ; pred = %truncated101
-  %cond_normalize__of_inline777 = icmp ne i32 %func5$2, 0
-  br i1 %cond_normalize__of_inline777, label %inline778, label %inline779
-
-inline778:                                           ; pred = %inline777
-  store i32 %func6$1, i32* %retVal_ofinline777, align 4
-  br label %truncated102
-
 inline782:                                           ; pred = %inline780
   store i32 0, i32* %retVal_ofinline780, align 4
   br label %truncated103
 
-inline780:                                           ; pred = %truncated102
-  %tmp__of_inline780 = icmp ne i32 0, %arr$20
-  %tmp_$1_of_inline780 = xor i1 %tmp__of_inline780, 1
-  %tmp_$2_of_inline780 = zext i1 %tmp_$1_of_inline780 to i32
-  %cond_normalize__of_inline780 = icmp ne i32 %tmp_$2_of_inline780, 0
-  br i1 %cond_normalize__of_inline780, label %inline781, label %inline782
+inline781:                                           ; pred = %inline780
+  store i32 1, i32* %retVal_ofinline780, align 4
+  br label %truncated103
 
 truncated103:                                        ; pred = %inline782, %inline781
   %func7$3 = load i32, i32* %retVal_ofinline780, align 4
@@ -335,9 +332,16 @@ truncated103:                                        ; pred = %inline782, %inlin
   %func1 = call i32 @func1(i32 %func2$2, i32 %func3$2, i32 %i1$1)
   br label %inline783
 
-inline781:                                           ; pred = %inline780
-  store i32 1, i32* %retVal_ofinline780, align 4
-  br label %truncated103
+inline780:                                           ; pred = %truncated102
+  %tmp__of_inline780 = icmp ne i32 0, %arr$20
+  %tmp_$1_of_inline780 = xor i1 %tmp__of_inline780, 1
+  %tmp_$2_of_inline780 = zext i1 %tmp_$1_of_inline780 to i32
+  %cond_normalize__of_inline780 = icmp ne i32 %tmp_$2_of_inline780, 0
+  br i1 %cond_normalize__of_inline780, label %inline781, label %inline782
+
+inline784:                                           ; pred = %inline783
+  store i32 %arr$2, i32* %retVal_ofinline783, align 4
+  br label %truncated104
 
 inline783:                                           ; pred = %truncated103
   %cond_normalize__of_inline783 = icmp ne i32 %func5$1, 0
@@ -347,19 +351,22 @@ inline785:                                           ; pred = %inline783
   store i32 %func1, i32* %retVal_ofinline783, align 4
   br label %truncated104
 
-truncated104:                                        ; pred = %inline785, %inline784
+truncated104:                                        ; pred = %inline784, %inline785
   %func4$1 = load i32, i32* %retVal_ofinline783, align 4
   %i2$1 = load i32, i32* %lv$1, align 4
   %i3$1 = load i32, i32* %lv$2, align 4
   br label %inline786
 
-inline784:                                           ; pred = %inline783
-  store i32 %arr$2, i32* %retVal_ofinline783, align 4
-  br label %truncated104
-
 inline787:                                           ; pred = %inline786
   store i32 1, i32* %retVal_ofinline786, align 4
   br label %truncated105
+
+inline786:                                           ; pred = %truncated104
+  %tmp__of_inline786 = icmp ne i32 0, %i3$1
+  %tmp_$1_of_inline786 = xor i1 %tmp__of_inline786, 1
+  %tmp_$2_of_inline786 = zext i1 %tmp_$1_of_inline786 to i32
+  %cond_normalize__of_inline786 = icmp ne i32 %tmp_$2_of_inline786, 0
+  br i1 %cond_normalize__of_inline786, label %inline787, label %inline788
 
 inline788:                                           ; pred = %inline786
   store i32 0, i32* %retVal_ofinline786, align 4
@@ -386,13 +393,6 @@ truncated105:                                        ; pred = %inline787, %inlin
   %arr$31 = getelementptr [10 x i32], [10 x i32]* %lv$4, i32 0, i32 5
   %arr$32 = load i32, i32* %arr$31, align 4
   br label %inline789
-
-inline786:                                           ; pred = %truncated104
-  %tmp__of_inline786 = icmp ne i32 0, %i3$1
-  %tmp_$1_of_inline786 = xor i1 %tmp__of_inline786, 1
-  %tmp_$2_of_inline786 = zext i1 %tmp_$1_of_inline786 to i32
-  %cond_normalize__of_inline786 = icmp ne i32 %tmp_$2_of_inline786, 0
-  br i1 %cond_normalize__of_inline786, label %inline787, label %inline788
 
 inline789:                                           ; pred = %truncated105
   %tmp__of_inline789 = sub i32 0, %arr$32

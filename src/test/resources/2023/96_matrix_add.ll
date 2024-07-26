@@ -216,18 +216,18 @@ inline2152:                                           ; pred = %inline2151
   store i32 %result_$3_of_inline2152, i32* %lv$9_of_inline2150, align 4
   br label %inline2151
 
-truncated199:                                         ; pred = %inline2153
-  %add = load i32, i32* %retVal_ofinline2150, align 4
-  store i32 %add, i32* %lv$9, align 4
-  br label %whileCond_268
+inline2153:                                           ; pred = %inline2151
+  store i32 0, i32* %retVal_ofinline2150, align 4
+  br label %truncated199
 
 inline2150:                                           ; pred = %next_597
   store i32 0, i32* %lv$9_of_inline2150, align 4
   br label %inline2151
 
-inline2153:                                           ; pred = %inline2151
-  store i32 0, i32* %retVal_ofinline2150, align 4
-  br label %truncated199
+truncated199:                                         ; pred = %inline2153
+  %add = load i32, i32* %retVal_ofinline2150, align 4
+  store i32 %add, i32* %lv$9, align 4
+  br label %whileCond_268
 
 inline2151:                                           ; pred = %inline2150, %inline2152
   %i_of_inline2151 = load i32, i32* %lv$9_of_inline2150, align 4

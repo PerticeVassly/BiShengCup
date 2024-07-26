@@ -76,10 +76,6 @@ inline705:                                           ; pred = %inline704
   store i32 1, i32* %retVal_ofinline704, align 4
   br label %truncated81
 
-inline706:                                           ; pred = %inline704
-  store i32 0, i32* %retVal_ofinline704, align 4
-  br label %truncated81
-
 inline704:                                           ; pred = %whileBody_62
   %a_of_inline704 = load i32, i32* @gv, align 4
   store i32 %a_of_inline704, i32* %lv_of_inline704, align 4
@@ -90,6 +86,10 @@ inline704:                                           ; pred = %whileBody_62
   %cond_tmp__of_inline704 = zext i1 %cond_eq_tmp__of_inline704 to i32
   %cond__of_inline704 = icmp ne i32 %cond_tmp__of_inline704, 0
   br i1 %cond__of_inline704, label %inline705, label %inline706
+
+inline706:                                           ; pred = %inline704
+  store i32 0, i32* %retVal_ofinline704, align 4
+  br label %truncated81
 
 truncated81:                                         ; pred = %inline705, %inline706
   %func = load i32, i32* %retVal_ofinline704, align 4

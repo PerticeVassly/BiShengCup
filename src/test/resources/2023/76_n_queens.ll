@@ -134,11 +134,8 @@ next_497:                                              ; pred = %ifTrue_288, %if
   store i32 0, i32* %line2$3, align 4
   br label %next_496
 
-inline1811:                                            ; pred = %inline1808
-  call void @putch(i32 32)
-  br label %inline1812
-
-inline1809:                                            ; pred = %inline1807
+inline1810:                                            ; pred = %inline1808
+  call void @putch(i32 10)
   br label %truncated153
 
 inline1806:                                            ; pred = %ifTrue_289
@@ -148,9 +145,8 @@ inline1806:                                            ; pred = %ifTrue_289
   store i32 1, i32* %lv_of_inline1806, align 4
   br label %inline1807
 
-inline1810:                                            ; pred = %inline1808
-  call void @putch(i32 10)
-  br label %truncated153
+truncated153:                                          ; pred = %inline1810, %inline1809
+  br label %next_497
 
 inline1812:                                            ; pred = %inline1811
   %i$3_of_inline1812 = load i32, i32* %lv_of_inline1806, align 4
@@ -166,9 +162,6 @@ inline1807:                                            ; pred = %inline1806, %in
   %cond__of_inline1807 = icmp ne i32 %cond_tmp__of_inline1807, 0
   br i1 %cond__of_inline1807, label %inline1808, label %inline1809
 
-truncated153:                                          ; pred = %inline1809, %inline1810
-  br label %next_497
-
 inline1808:                                            ; pred = %inline1807
   %i$1_of_inline1808 = load i32, i32* %lv_of_inline1806, align 4
   %ans_of_inline1808 = getelementptr [50 x i32], [50 x i32]* @gv, i32 0, i32 %i$1_of_inline1808
@@ -180,6 +173,13 @@ inline1808:                                            ; pred = %inline1807
   %cond_tmp_$1_of_inline1808 = zext i1 %cond_eq_tmp__of_inline1808 to i32
   %cond_$1_of_inline1808 = icmp ne i32 %cond_tmp_$1_of_inline1808, 0
   br i1 %cond_$1_of_inline1808, label %inline1810, label %inline1811
+
+inline1809:                                            ; pred = %inline1807
+  br label %truncated153
+
+inline1811:                                            ; pred = %inline1808
+  call void @putch(i32 32)
+  br label %inline1812
 }
 
 define i32 @main() {
