@@ -1,10 +1,15 @@
 package cn.edu.nju.software.ir.value;
 
+import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.type.TypeRef;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ValueRef {
     protected String name;
     protected TypeRef type;
+    protected List<Instruction> user = new ArrayList<>(); // inst using this value
 
     /**
      * only for differing long names ()
@@ -38,4 +43,30 @@ public class ValueRef {
         return type;
     }
 
+    /**
+     * get context
+     * */
+    public String getText() {
+        return this.toString();
+    }
+
+    public boolean equals(ValueRef other) {
+        return other == this;
+    }
+
+    public List<Instruction> getUser() {
+        return user;
+    }
+
+    public void addUser(Instruction user) {
+        this.user.add(user);
+    }
+
+    public void dropUser(Instruction user) {
+        this.user.remove(user);
+    }
+
+    public String toString() {
+        return name;
+    }
 }

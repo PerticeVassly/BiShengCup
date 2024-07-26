@@ -119,36 +119,36 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         // make sure curScope point to the global
         if (global()) {
             FunctionType ft = new FunctionType(i32Type, new ArrayList<>(), 0);
-            curScope.put(new Symbol<>("getint", gen.addFunction(module, ft, "getint")));
-            curScope.put(new Symbol<>("getch", gen.addFunction(module, ft, "getch")));
+            curScope.put(new Symbol<>("getint", gen.addFunction(module, ft, "getint", true)));
+            curScope.put(new Symbol<>("getch", gen.addFunction(module, ft, "getch", true)));
 
             ft = new FunctionType(floatType, new ArrayList<>(), 0);
-            curScope.put(new Symbol<>("getfloat", gen.addFunction(module, ft, "getfloat")));
+            curScope.put(new Symbol<>("getfloat", gen.addFunction(module, ft, "getfloat", true)));
 
 //            ft = new FunctionType(i32Type, new ArrayList<TypeRef>(){{}}, 1); // TODO array type
 
             ft = new FunctionType(voidType, new ArrayList<TypeRef>(){{add(i32Type);}}, 1);
-            curScope.put(new Symbol<>("putint", gen.addFunction(module, ft, "putint")));
-            curScope.put(new Symbol<>("putch", gen.addFunction(module, ft, "putch")));
+            curScope.put(new Symbol<>("putint", gen.addFunction(module, ft, "putint", true)));
+            curScope.put(new Symbol<>("putch", gen.addFunction(module, ft, "putch", true)));
 
             ft = new FunctionType(voidType, new ArrayList<TypeRef>(){{add(floatType);}}, 1);
-            curScope.put(new Symbol<>("putfloat", gen.addFunction(module, ft, "putfloat")));
+            curScope.put(new Symbol<>("putfloat", gen.addFunction(module, ft, "putfloat", true)));
 
             ft = new FunctionType(voidType, new ArrayList<>(), 0);
-            curScope.put(new Symbol<>("starttime", gen.addFunction(module, ft, "starttime")));
-            curScope.put(new Symbol<>("stoptime", gen.addFunction(module, ft, "stoptime")));
+            curScope.put(new Symbol<>("starttime", gen.addFunction(module, ft, "starttime", true)));
+            curScope.put(new Symbol<>("stoptime", gen.addFunction(module, ft, "stoptime", true)));
 
             ft = new FunctionType(i32Type, new ArrayList<>(){{add(new Pointer(i32Type));}}, 1);
-            curScope.put(new Symbol<>("getarray", gen.addFunction(module, ft, "getarray")));
+            curScope.put(new Symbol<>("getarray", gen.addFunction(module, ft, "getarray", true)));
 
             ft = new FunctionType(i32Type, new ArrayList<>(){{add(new Pointer(floatType));}}, 1);
-            curScope.put(new Symbol<>("getfarray", gen.addFunction(module, ft, "getfarray")));
+            curScope.put(new Symbol<>("getfarray", gen.addFunction(module, ft, "getfarray", true)));
 
             ft = new FunctionType(voidType, new ArrayList<>(){{add(i32Type); add(new Pointer(i32Type));}}, 2);
-            curScope.put(new Symbol<>("putarray", gen.addFunction(module, ft, "putarray")));
+            curScope.put(new Symbol<>("putarray", gen.addFunction(module, ft, "putarray", true)));
 
             ft = new FunctionType(voidType, new ArrayList<>(){{add(i32Type); add(new Pointer(floatType));}}, 2);
-            curScope.put(new Symbol<>("putfarray", gen.addFunction(module, ft, "putfarray")));
+            curScope.put(new Symbol<>("putfarray", gen.addFunction(module, ft, "putfarray", true)));
 
             addMemSet();
         }
@@ -268,6 +268,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 
         /* eliminate dead blocks: */
         function.clearDeadBlocks();
+        function.modifyBlocks();
 
         return ret;
     }

@@ -14,6 +14,9 @@ public class GEP extends Instruction {
         operator = "getelementptr";
         this.arrayTypePtr = arrayTypePtr;
         this.operands = operands;
+        for (ValueRef operand : operands) {
+            operand.addUser(this);
+        }
     }
 
     public Pointer getArrayTypePtr() {

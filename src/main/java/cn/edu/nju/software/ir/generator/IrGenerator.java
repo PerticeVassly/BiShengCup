@@ -2,6 +2,8 @@ package cn.edu.nju.software.ir.generator;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
+import cn.edu.nju.software.ir.instruction.Allocate;
+import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.*;
@@ -18,7 +20,9 @@ import java.util.ArrayList;
      ValueRef addGlobal(ModuleRef module, TypeRef type, String name);
      ValueRef setInitValue(GlobalVar globalVar, ValueRef initValue);
 
-    // function declare
+     FunctionValue addFunction(ModuleRef moduleRef, FunctionType ft, String funcName, boolean lib);
+
+     // function declare
      ValueRef addFunction(ModuleRef module, FunctionType ft, String funcName);
 
     // local variable related operations, declare & assign & load its value from memory
@@ -85,4 +89,6 @@ import java.util.ArrayList;
      ValueRef buildIntToFloat(BuilderRef builder, ValueRef intVal, String name);
 
      ValueRef dropBlock(BuilderRef builder, BasicBlockRef block);
+
+     Instruction buildEmptyPhiAfterInst(BasicBlockRef block, Allocate memory, String name);
  }

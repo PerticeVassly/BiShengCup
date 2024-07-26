@@ -17,6 +17,9 @@ public class CFG {
        graph.addEdge(from,to);
     }
 
+    public Set<Edge<BasicBlockRef>> getAllEdges(){
+        return graph.getAllEdges();
+    }
     public Set<BasicBlockRef> getSuccessors(BasicBlockRef bb){
         return graph.getNeighbors(bb);
     }
@@ -24,7 +27,7 @@ public class CFG {
     public Set<BasicBlockRef> getAllBasicBlock(){
         return graph.getAllNodes();
     }
-    public void createWholeGraph(String fileName){
+    public void dumpWholeGraph(String fileName){
         GraphViz gv=new GraphViz();
         gv.addln(gv.start_graph());
         for(BasicBlockRef bb:getAllBasicBlock()){

@@ -14,6 +14,7 @@ public class Ret extends Instruction {
     public Ret(ValueRef retVal) {
         operator = getOperator(RETURN);
         operands = new ValueRef[]{retVal};
+        retVal.addUser(this);
     }
 
     @Override

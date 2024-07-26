@@ -6,14 +6,34 @@ import cn.edu.nju.software.ir.value.ValueRef;
 import java.util.List;
 
 public abstract class Instruction {
-    protected ValueRef[] operands;
-    protected int numberOfOperands;
+    protected ValueRef[] operands = new ValueRef[0];
     protected String operator;
     protected ValueRef lVal;
 //    protected final static String DELIMITER = ", ";
 
     public ValueRef getOperand(int index) {
         return operands[index];
+    }
+
+    /***
+     * replace old with new; after replacing, old will be deleting, so no need to modify old
+     * @param index: replace position
+     * @param valueRef: new operand
+     */
+    public void replace(int index, ValueRef valueRef) {
+//        operands[index].dropUser(this); // old drop one user -- no need
+        operands[index] = valueRef;
+        valueRef.addUser(this); // new add user
+    }
+
+    public void replace(ValueRef old, ValueRef nw) {
+        for (int i = 0; i < operands.length; i++) {
+            if (operands[i].equals(old)) {
+//                old.dropUser(this);
+                operands[i] = nw;
+                nw.addUser(this);
+            }
+        }
     }
 
     public ValueRef[] getOperands() {
@@ -73,6 +93,10 @@ public abstract class Instruction {
     }
 
     public boolean isBr() {
+        return false;
+    }
+
+    public boolean isBinary() {
         return false;
     }
 

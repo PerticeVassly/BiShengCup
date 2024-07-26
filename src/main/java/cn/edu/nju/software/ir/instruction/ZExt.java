@@ -11,11 +11,16 @@ public class ZExt extends Instruction {
         operator = "zext";
         operands = new ValueRef[]{operand};
         this.target = target;
+        operand.addUser(this);
     }
 
     @Override
     public boolean isZExt() {
         return true;
+    }
+
+    public TypeRef getTarget() {
+        return target;
     }
     @Override
     public String toString() {

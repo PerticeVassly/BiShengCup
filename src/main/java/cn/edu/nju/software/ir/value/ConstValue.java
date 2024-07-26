@@ -95,4 +95,35 @@ public class ConstValue extends ValueRef {
             throw new RuntimeException("Unexpected type");
         }
     }
+
+    @Override
+    public boolean equals(ValueRef other) {
+        if (other instanceof ConstValue) {
+            if (type.equals(((ConstValue) other).type)) {
+                if (type instanceof IntType) {
+                    int t1 = (int) getValue(), t2 = (int) ((ConstValue) other).getValue();
+                    return t1 == t2;
+                } else if (type instanceof FloatType) {
+                    float t1 = (float) getValue(), t2 = (float) ((ConstValue) other).getValue();
+                    return t1 == t2;
+                } else {
+                    boolean t1 = (boolean) getValue(), t2 = (boolean) ((ConstValue) other).getValue();
+                    return t1 == t2;
+                }
+            }
+            return false;
+        }
+        return false;
+    }
+
+    public boolean greaterThan(ConstValue other) {
+        if (type instanceof IntType) {
+            int t1 = (int) getValue(), t2 = (int) ((ConstValue) other).getValue();
+            return t1 > t2;
+        } else if (type instanceof FloatType) {
+            float t1 = (float) getValue(), t2 = (float) ((ConstValue) other).getValue();
+            return t1 > t2;
+        }
+        return false;
+    }
 }
