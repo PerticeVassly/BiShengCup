@@ -14,7 +14,7 @@ target/
 **/src/test/resources/**
 
 
-
+**/target
 
 
 pom.xml

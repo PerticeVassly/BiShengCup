@@ -14,14 +14,23 @@ import cn.edu.nju.software.ir.value.ValueRef;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MemToReg {
+public class MemToReg implements ModulePass {
     private final EliminateConstExp eliminateConstExp;
 
-    private final ModuleRef module;
+    private static MemToReg memToRegPass = null;
+
+    private ModuleRef module;
 
     public final static ValueRef UNDEF = new ValueRef(new TypeRef(), "undef");
 
     Generator gen = Generator.getInstance();
+
+    public static MemToReg getInstance() {
+        if (memToRegPass == null) {
+            memToRegPass = new MemToReg();
+        }
+        return memToRegPass;
+    }
 
     /***
      * record each replaceable allocate inst in each block's latest definition(if using)
@@ -36,8 +45,7 @@ public class MemToReg {
      */
     private ArrayList<Phi> emptyPhis = new ArrayList<>();
 
-    public MemToReg(ModuleRef module) {
-        this.module = module;
+    private MemToReg() {
         eliminateConstExp = new EliminateConstExp();
     }
 
@@ -194,9 +202,26 @@ public class MemToReg {
             }
         }
     }
-
-    public void runOnModule() {
+    @Override
+    public boolean runOnModule(ModuleRef module) {
+        this.module = module;
         memToRegProc();
         eliminateConstExp.runOnModule(module);
+        return false; // TODO
+    }
+
+    @Override
+    public String getName() {
+        return "MemToRegPass";
+    }
+
+    @Override
+    public void printDbgInfo() {
+
+    }
+
+    @Override
+    public void setDbgFlag() {
+
     }
 }

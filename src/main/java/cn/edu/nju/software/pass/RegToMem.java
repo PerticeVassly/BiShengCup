@@ -16,17 +16,24 @@ import static cn.edu.nju.software.pass.MemToReg.UNDEF;
 /***
  * eliminate phi inst
  */
-public class RegToMem {
-    private final ModuleRef module;
+public class RegToMem implements ModulePass {
+    private ModuleRef module;
 
+    private static RegToMem regToMemPass = null;
     /***
      * record each phi's merging value in each pred block
      */
     private final HashMap<Phi, HashMap<BasicBlockRef, ValueRef>> phi2EachPredBlockValue;
 
-    public RegToMem(ModuleRef module) {
-        this.module = module;
+    private RegToMem() {
         phi2EachPredBlockValue = new HashMap<>();
+    }
+
+    public static RegToMem getInstance() {
+        if (regToMemPass == null) {
+            regToMemPass = new RegToMem();
+        }
+        return regToMemPass;
     }
 
     private void eliminatePhi() {
@@ -183,8 +190,25 @@ public class RegToMem {
             }
         }
     }
-
-    public void runOnModule() {
+    @Override
+    public boolean runOnModule(ModuleRef module) {
+        this.module = module;
         eliminatePhi();
+        return false;
+    }
+
+    @Override
+    public String getName() {
+        return "RegToMemPass";
+    }
+
+    @Override
+    public void printDbgInfo() {
+
+    }
+
+    @Override
+    public void setDbgFlag() {
+
     }
 }

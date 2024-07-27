@@ -26,12 +26,12 @@ public class TestOpt {
         IRVisitor visitor = new IRVisitor();
         visitor.visit(tree);
 
-        MemToReg memToReg = new MemToReg(visitor.getModule());
-        BranchOptPass branchOptPass = new BranchOptPass(visitor.getModule());
-        RegToMem regToMem = new RegToMem(visitor.getModule());
-        memToReg.runOnModule();
+        MemToReg memToReg = MemToReg.getInstance();
+//        BranchOptPass branchOptPass = new BranchOptPass(visitor.getModule());
+        RegToMem regToMem = RegToMem.getInstance();
+        memToReg.runOnModule(visitor.getModule());
 //        branchOptPass.runOnModule();
-        regToMem.runOnModule();
+        regToMem.runOnModule(visitor.getModule());
         visitor.dumpModuleToConsole();
     }
 }
