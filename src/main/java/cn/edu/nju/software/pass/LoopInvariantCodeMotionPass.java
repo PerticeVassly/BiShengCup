@@ -48,6 +48,8 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
         if(flag){
             printDbgInfo();
         }
+        //注意一定要clear！
+        valueTable.clear();
         return flag;
     }
 
@@ -76,8 +78,9 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
         //由于有空指令，最后一条指令的位置需要手动寻找
         BasicBlockRef entry = findEntry(loop);
         int pos=findLastInstr(entry);
-        for (Instruction instruction : instructions) {
-            entry.put(pos,instruction);
+        //逆序加入
+        for (int i = instructions.size()-1; i >=0 ; i--) {
+                entry.put(pos,instructions.get(i));
         }
         deleteRedundantInstructions(instructions,loop);
         //对子循环做同样的操作

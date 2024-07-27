@@ -37,7 +37,7 @@ public class FrontEndTest {
 //    @StringSource("65_color")
 //    @StringSource("101_float_arr")
 //    @StringSource("38_light2d")
-    @StringSource("64_calculator")
+    @StringSource("59_sort_test5")
 //    @StringSource("79_var_name")
 //    @StringSource("90_many_locals")
 //    @StringSource("64_calculator")
@@ -53,9 +53,6 @@ public class FrontEndTest {
     @ParameterizedTest
     @MethodSource("dir")
     void testAll(String name) throws IOException, InterruptedException {
-        if(name.contains("64")){
-            fail();
-        }
         testFile(DIR, name);
     }
 
