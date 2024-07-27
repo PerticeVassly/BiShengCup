@@ -63,14 +63,17 @@ public class FunctionInlinePass implements ModulePass {
         for (FunctionValue functionValue : module.getFunctions()) {
             if (!functionValue.getName().equals("main")) {
                 processFunction(functionValue);
+                CFGBuildPass.getInstance().update(functionValue);
+                LoopBuildPass.getInstance().update(functionValue);
             }
         }
         //再进行main函数内联
         for (FunctionValue functionValue : module.getFunctions()) {
             if (functionValue.getName().equals("main")) {
                 processFunction(functionValue);
-                //注意！在改变函数内部块后需要及时更新CFG
+                //注意！在改变函数内部块后需要及时更新CFG和循环表
                 CFGBuildPass.getInstance().update(functionValue);
+                LoopBuildPass.getInstance().update(functionValue);
             }
         }
         for (FunctionValue functionValue : inlineTable) {
@@ -104,7 +107,8 @@ public class FunctionInlinePass implements ModulePass {
                 needToBeAdded.clear();
             }
         } while (flag);
-
+        //建立正确的前继关系
+        adjustPred(function);
     }
 
     private void buildInlineTable(ModuleRef module) {
@@ -479,6 +483,24 @@ public class FunctionInlinePass implements ModulePass {
                         }
                     }
                 }
+            }
+        }
+    }
+    private void adjustPred(FunctionValue functionValue){
+        for (BasicBlockRef bb: functionValue.getBasicBlockRefs()) {
+            bb.clearPred();
+        }
+        for (BasicBlockRef bb:functionValue.getBasicBlockRefs()){
+            int lastInstr=findLastInstruction(bb);
+            Instruction instruction=bb.getIr(lastInstr);
+            if(instruction instanceof Br br){
+                BasicBlockRef target=br.getTarget();
+                target.addPred(bb);
+            }else if(instruction instanceof CondBr condBr){
+                BasicBlockRef ifTrue=condBr.getTrueBlock();
+                BasicBlockRef ifFalse=condBr.getFalseBlock();
+                ifTrue.addPred(bb);
+                ifFalse.addPred(bb);
             }
         }
     }

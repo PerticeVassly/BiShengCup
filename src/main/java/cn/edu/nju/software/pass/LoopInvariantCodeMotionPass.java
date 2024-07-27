@@ -73,17 +73,20 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
             return;
         }
         //获得入口节点，将可以外提的指令加入入口节点的倒数第二条指令
+        //由于有空指令，最后一条指令的位置需要手动寻找
         BasicBlockRef entry = findEntry(loop);
+        int pos=findLastInstr(entry);
         for (Instruction instruction : instructions) {
-            entry.put(entry.getIrNum()-1,instruction);
+            entry.put(pos,instruction);
         }
+        deleteRedundantInstructions(instructions,loop);
         //对子循环做同样的操作
         for (Loop subLoop: loop.getSubLoops()) {
             List<BasicBlockRef> judgeBlocks=findJudgeBlock(subLoop);
             //只对判断条件外提
             List<Instruction> subLoopInstructions = identifyInvariants(subLoop,findEntry(subLoop),judgeBlocks);
-            doPass(loop, instructions);
-            deleteRedundantInstructions(instructions,loop);
+            doPass(subLoop, subLoopInstructions);
+            deleteRedundantInstructions(subLoopInstructions,subLoop);
         }
     }
 
@@ -118,7 +121,6 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
                     ValueRef dest=instruction.getOperand(1);
                     //仅仅为了表示这个变量在循环中被更新，防止下次load的时候误认为这个变量没有被更新
                     valueTable.put(dest,loop.getRoot());
-
                 }
             }
         }
@@ -220,5 +222,14 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
                 }
             }
         }
+    }
+
+    private int findLastInstr(BasicBlockRef bb){
+        for (int i = bb.getIrNum()-1; i >=0 ; i--) {
+            if(!(bb.getIr(i) instanceof Default)){
+                return i;
+            }
+        }
+        return -1;
     }
 }

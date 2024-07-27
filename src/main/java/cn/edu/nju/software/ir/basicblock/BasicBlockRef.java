@@ -61,7 +61,9 @@ public class BasicBlockRef extends ValueRef {
             pred.remove(index);
         }
     }
-
+    public void clearPred(){
+        pred.clear();
+    }
     public void put(Instruction ir) {
         if (ir instanceof Allocate) {
             function.emitAlloc((Allocate) ir);

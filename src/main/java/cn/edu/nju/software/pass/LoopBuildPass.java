@@ -40,7 +40,12 @@ public class LoopBuildPass implements ModulePass {
             createLoopForestGraph(functionValue);
         }
     }
-
+    public void update(FunctionValue functionValue){
+        LoopSet loopSet =findLoops(functionValue);
+        if(!loopSet.isEmpty()){
+            forestTable.put(functionValue, loopSet);
+        }
+    }
     @Override
     public String getName() {
         return "Loop Build Pass";
