@@ -8,7 +8,7 @@ public class RmDeadBlockPass {
 
     public RmDeadBlockPass(ModuleRef module) {
         this.module = module;
-        eliminateConstExp = new EliminateConstExp(module);
+        eliminateConstExp = new EliminateConstExp();
     }
 
     private void rmDeadBlocks() {
@@ -17,6 +17,6 @@ public class RmDeadBlockPass {
 
     public void runOnModule() {
         rmDeadBlocks();
-        eliminateConstExp.runOnModule();
+        eliminateConstExp.runOnModule(module);
     }
 }

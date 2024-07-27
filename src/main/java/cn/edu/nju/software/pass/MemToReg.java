@@ -38,7 +38,7 @@ public class MemToReg {
 
     public MemToReg(ModuleRef module) {
         this.module = module;
-        eliminateConstExp = new EliminateConstExp(module);
+        eliminateConstExp = new EliminateConstExp();
     }
 
     private void memToRegProc() {
@@ -197,6 +197,6 @@ public class MemToReg {
 
     public void runOnModule() {
         memToRegProc();
-        eliminateConstExp.runOnModule();
+        eliminateConstExp.runOnModule(module);
     }
 }

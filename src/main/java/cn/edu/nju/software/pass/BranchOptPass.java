@@ -24,7 +24,7 @@ public class BranchOptPass {
 
     public BranchOptPass(ModuleRef module) {
         this.module = module;
-        eliminateConstExp = new EliminateConstExp(module);
+        eliminateConstExp = new EliminateConstExp();
     }
 
     private void rmRedundantCondBr() {
@@ -86,6 +86,6 @@ public class BranchOptPass {
 
     public void runOnModule() {
         rmRedundantCondBr();
-        eliminateConstExp.runOnModule();
+        eliminateConstExp.runOnModule(module);
     }
 }

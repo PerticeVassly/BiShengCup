@@ -96,7 +96,10 @@ void write_pgm() {
   putch(80); putch(50); putch(10); // P2
   putint(W); putch(32); putint(H); putch(32); putint(255); putch(10); // W H 255
   int y = 0;
-  while (y < H) {
+  // todo:
+  while (y < 102) {
+
+
     int x = 0;
     while (x < W) {
       float xx = x, yy = y;
@@ -106,8 +109,10 @@ void write_pgm() {
       putch(32);
       x = x + 1;
     }
+
     putch(10);
     y = y + 1;
+
   }
 }
 
