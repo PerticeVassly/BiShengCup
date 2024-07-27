@@ -72,4 +72,7 @@ public interface InstructionVisitor {
     default void visit(Phi phi) {}
 
     default void visit(Default aDefault){};
+    // new TODO(): implement
+    default void visit(Move move) {}
+
 }

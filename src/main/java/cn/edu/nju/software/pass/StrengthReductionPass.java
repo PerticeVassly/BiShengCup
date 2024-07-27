@@ -126,7 +126,6 @@ public class StrengthReductionPass implements BasicBlockPass {
                 temp,
                 ir.getOperand(index == 0 ? 1 : 0),
                 new ConstValue(new IntType(), bits)));
-        bb.addIrNum();
         newInstructions.add(new Sub(
                 ir.getLVal(),
                 OpEnum.SUB,
@@ -205,7 +204,6 @@ public class StrengthReductionPass implements BasicBlockPass {
                 temp,
                 ir.getOperand(0),
                 new ConstValue(new IntType(), bits)));
-        bb.addIrNum();
         newInstructions.add(new Sub(
                 ir.getLVal(),
                 OpEnum.SUB,

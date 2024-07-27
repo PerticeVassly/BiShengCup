@@ -15,17 +15,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MemToReg implements ModulePass {
-    // private final CFGBuildPass cfgBuildPass;
+    private final EliminateConstExp eliminateConstExp;
+
+    private static MemToReg memToRegPass = null;
 
     private ModuleRef module;
 
-    private final ValueRef UNDEF = new ValueRef(new TypeRef(), "undef");
+    public final static ValueRef UNDEF = new ValueRef(new TypeRef(), "undef");
 
     Generator gen = Generator.getInstance();
 
-    private boolean dbgFlag = false;
-
-    private static MemToReg memToReg;
+    public static MemToReg getInstance() {
+        if (memToRegPass == null) {
+            memToRegPass = new MemToReg();
+        }
+        return memToRegPass;
+    }
 
     /***
      * record each replaceable allocate inst in each block's latest definition(if using)
@@ -40,17 +45,8 @@ public class MemToReg implements ModulePass {
      */
     private ArrayList<Phi> emptyPhis = new ArrayList<>();
 
-    public MemToReg() {
-//        cfgBuildPass = CFGBuildPass.getInstance();
-//        this.module = module;
-//        cfgBuildPass.runOnModule(module);
-    }
-
-    public static MemToReg getInstance() {
-        if (memToReg == null) {
-            memToReg = new MemToReg();
-        }
-        return memToReg;
+    private MemToReg() {
+        eliminateConstExp = new EliminateConstExp();
     }
 
     private void memToRegProc() {
@@ -198,16 +194,7 @@ public class MemToReg implements ModulePass {
                 // rm redundant phi
                 if (inst instanceof Phi phi) {
                     if (phi.isRedundant()) { // only 2 operands: [value, block]
-                        ValueRef phiVal = phi.getLVal();
-                        ValueRef replace = phi.getOperand(0); // value
-                        // replace old(phiVal) with new value(replace); after replacing. old will be deleting
-                        for (Instruction instruction : phiVal.getUser()) {
-                            if (instruction instanceof Call call) {
-                                call.replaceRealParams(phiVal, replace);
-                            } else {
-                                instruction.replace(phiVal, replace);
-                            }
-                        }
+                        phi.modify();
                         bb.dropIr(inst);
                         j--;
                     }
@@ -215,17 +202,17 @@ public class MemToReg implements ModulePass {
             }
         }
     }
-
     @Override
     public boolean runOnModule(ModuleRef module) {
         this.module = module;
         memToRegProc();
-        return true;
+        eliminateConstExp.runOnModule(module);
+        return false; // TODO
     }
 
     @Override
     public String getName() {
-        return "";
+        return "MemToRegPass";
     }
 
     @Override
@@ -235,6 +222,6 @@ public class MemToReg implements ModulePass {
 
     @Override
     public void setDbgFlag() {
-        this.dbgFlag = true;
+
     }
 }

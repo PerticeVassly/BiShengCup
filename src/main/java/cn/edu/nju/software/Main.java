@@ -79,14 +79,6 @@ public class Main {
 //        irVisitor.dumpModuleToConsole();
 
         ModuleRef module = irVisitor.getModule();
-//
-        //test pass
-//        MemToReg memToReg = new MemToReg(module);
-//        memToReg.runOnModule();
-//        EliminateConstExp eliminateConstExp = new EliminateConstExp(module);
-//        eliminateConstExp.runOnModule();
-
-//        irVisitor.dumpModuleToConsole();
 
         if(module == null){
             assert false;
@@ -98,6 +90,7 @@ public class Main {
             //passManager.setDbgFlag();
             passManager.runPass();
         }
+        irVisitor.dumpModuleToConsole();
         if (emitLLVM) {
             module.dumpToFile(output);
         }

@@ -45,57 +45,59 @@ public class EliminateConstExp implements ModulePass{
             if (fv.isLib()) {
                 continue;
             }
-            for (int j = 0; j < fv.getBlockNum(); j++) {
-                BasicBlockRef bb = fv.getBlock(j);
-                eliminateOnBlock(bb);
-            }
+            eliminateOnFunction(fv);
         }
     }
 
-    private void eliminateOnBlock(BasicBlockRef block) {
-        for (int i = 0; i < block.getIrNum(); i++) {
-            Instruction inst = block.getIr(i);
-            int opNum = inst.getNumberOfOperands();
-            for (int j = 0; j < opNum; j++) {
-                if (value2Const.containsKey(inst.getOperand(j))) {
-                    inst.replace(j, value2Const.get(inst.getOperand(j)));
-                }
-            }
+    private void eliminateOnFunction(FunctionValue function) {
+        for (int a = 0; a < function.getBlockNum(); a++) {
+            BasicBlockRef block = function.getBlock(a);
+            for (int i = 0; i < block.getIrNum(); i++) {
+                Instruction inst = block.getIr(i);
 
-            // special judge Call because of different op form
-            if (inst instanceof Call) {
-                for (int k = 0; k < ((Call) inst).getParamsNum(); k++) {
-                    if (value2Const.containsKey(((Call) inst).getRealParam(k))) {
-                        ((Call) inst).replaceRealParam(k, value2Const.get(((Call) inst).getRealParam(k)));
-                    }
-                }
-            }
-
-            if (inst instanceof Binary) {
-                if (inst.getOperand(0) instanceof ConstValue && inst.getOperand(1) instanceof ConstValue) {
-                    ConstValue cv = ((Binary) inst).calculate();
-                    value2Const.put(inst.getLVal(), cv);
-                    block.dropIr(inst);
-                    i--;
-                }
-            } else if (inst instanceof ZExt) {
-                if (inst.getOperand(0) instanceof ConstValue) {
-                    TypeRef type = ((ZExt) inst).getTarget();
-                    if (type instanceof IntType) {
-                        ConstValue op = (ConstValue) inst.getOperand(0);
-                        if (op.equals(new ConstValue(new BoolType(), true))) {
-                            value2Const.put(inst.getLVal(), one);
-                        } else {
-                            value2Const.put(inst.getLVal(), zero);
-                        }
+                if (inst instanceof Binary) {
+                    if (inst.getOperand(0) instanceof ConstValue && inst.getOperand(1) instanceof ConstValue) {
+                        ConstValue cv = ((Binary) inst).calculate();
+                        value2Const.put(inst.getLVal(), cv);
                         block.dropIr(inst);
                         i--;
                     }
+                } else if (inst instanceof ZExt) {
+                    if (inst.getOperand(0) instanceof ConstValue) {
+                        TypeRef type = ((ZExt) inst).getTarget();
+                        if (type instanceof IntType) {
+                            ConstValue op = (ConstValue) inst.getOperand(0);
+                            if (op.equals(new ConstValue(new BoolType(), true))) {
+                                value2Const.put(inst.getLVal(), one);
+                            } else {
+                                value2Const.put(inst.getLVal(), zero);
+                            }
+                            block.dropIr(inst);
+                            i--;
+                        }
+                    }
                 }
-            } else if (inst instanceof CondBr condBr) {
-                if (condBr.isRedundant()) {
-//                    block.replaceIr();
-                    // TODO
+                // do condBr's simplification in rm dead blocks
+            }
+        }
+        for (int a = 0; a < function.getBlockNum(); a++) {
+            BasicBlockRef block = function.getBlock(a);
+            for (int i = 0; i < block.getIrNum(); i++) {
+                Instruction inst = block.getIr(i);
+                int opNum = inst.getNumberOfOperands();
+                if (!(inst instanceof Call)){
+                    for (int j = 0; j < opNum; j++) {
+                        if (value2Const.containsKey(inst.getOperand(j))) {
+                            inst.replace(j, value2Const.get(inst.getOperand(j)));
+                        }
+                    }
+                } else {
+                    // special judge Call because of different op form
+                    for (int j = 0; j < ((Call) inst).getParamsNum(); j++) {
+                        if (value2Const.containsKey(((Call) inst).getRealParam(j))) {
+                            ((Call) inst).replaceRealParam(j, value2Const.get(((Call) inst).getRealParam(j)));
+                        }
+                    }
                 }
             }
         }
