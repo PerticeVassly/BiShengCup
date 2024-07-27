@@ -7,6 +7,7 @@ import cn.edu.nju.software.ir.generator.IRVisitor;
 import cn.edu.nju.software.pass.BranchOptPass;
 import cn.edu.nju.software.pass.EliminateConstExp;
 import cn.edu.nju.software.pass.MemToReg;
+import cn.edu.nju.software.pass.RegToMem;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -27,8 +28,10 @@ public class TestOpt {
 
         MemToReg memToReg = new MemToReg(visitor.getModule());
         BranchOptPass branchOptPass = new BranchOptPass(visitor.getModule());
+        RegToMem regToMem = new RegToMem(visitor.getModule());
         memToReg.runOnModule();
 //        branchOptPass.runOnModule();
+        regToMem.runOnModule();
         visitor.dumpModuleToConsole();
     }
 }

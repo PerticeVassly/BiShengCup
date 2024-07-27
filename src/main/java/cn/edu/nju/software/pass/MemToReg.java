@@ -19,7 +19,7 @@ public class MemToReg {
 
     private final ModuleRef module;
 
-    private final ValueRef UNDEF = new ValueRef(new TypeRef(), "undef");
+    public final static ValueRef UNDEF = new ValueRef(new TypeRef(), "undef");
 
     Generator gen = Generator.getInstance();
 

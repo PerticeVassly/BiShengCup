@@ -25,7 +25,7 @@ declare void @memset(i32*, i32, i32)
 @gv6 = global [222 x float] zeroinitializer, align 4
 
 define i32 @main() {
-mainEntry1:
+mainEntry:
   %ptr_ = getelementptr [1200 x [10 x [10 x [2 x [1 x i32]]]]], [1200 x [10 x [10 x [2 x [1 x i32]]]]]* @gv4, i32 0, i32 1000
   %ptr_$1 = getelementptr [10 x [10 x [2 x [1 x i32]]]], [10 x [10 x [2 x [1 x i32]]]]* %ptr_, i32 0, i32 1
   %ptr_$2 = getelementptr [10 x [2 x [1 x i32]]], [10 x [2 x [1 x i32]]]* %ptr_$1, i32 0, i32 0

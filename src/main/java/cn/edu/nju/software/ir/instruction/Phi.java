@@ -36,6 +36,15 @@ public class Phi extends Instruction {
         value.addUser(this);
     }
 
+    public ValueRef getValueByBlock(BasicBlockRef block) {
+        for (int i = 1; i < operands.length; i += 2) {
+            if (operands[i].equals(block)) {
+                return operands[i - 1];
+            }
+        }
+        return null;
+    }
+
     public Allocate getMemory() {
         return memory;
     }

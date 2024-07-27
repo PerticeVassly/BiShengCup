@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import cn.edu.nju.software.backend.RiscModule;
-import cn.edu.nju.software.pass.BranchOptPass;
-import cn.edu.nju.software.pass.EliminateConstExp;
-import cn.edu.nju.software.pass.MemToReg;
-import cn.edu.nju.software.pass.PassManager;
+import cn.edu.nju.software.pass.*;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -85,8 +82,9 @@ public class Main {
         memToReg.runOnModule();
         EliminateConstExp eliminateConstExp = new EliminateConstExp(module);
         eliminateConstExp.runOnModule();
-        BranchOptPass branchOptPass = new BranchOptPass(module);
-        branchOptPass.runOnModule();
+
+        RegToMem regToMem = new RegToMem(module);
+        regToMem.runOnModule();
 
         irVisitor.dumpModuleToConsole();
 
@@ -96,8 +94,7 @@ public class Main {
 
         if(optimized){
             PassManager passManager=new PassManager(module);
-            //TODO:调试完成后删除这句
-            passManager.setDbgFlag();
+//            passManager.setDbgFlag();
             passManager.runPass();
         }
         if (emitLLVM) {

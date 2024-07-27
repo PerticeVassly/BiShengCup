@@ -8,7 +8,6 @@ import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class BasicBlockRef extends ValueRef {
     private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
@@ -60,6 +59,10 @@ public class BasicBlockRef extends ValueRef {
         if (index != -1) {
             pred.remove(index);
         }
+    }
+
+    public FunctionValue getFunction() {
+        return function;
     }
 
     public void put(Instruction ir) {
@@ -173,5 +176,16 @@ public class BasicBlockRef extends ValueRef {
 
     public boolean contains(Instruction instruction) {
         return irs.contains(instruction);
+    }
+
+    public int getDirectSuccessorNum() {
+        Instruction inst = irs.get(irNum - 1);
+        if (inst instanceof CondBr) {
+            return 2;
+        } else if (inst instanceof Br) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
