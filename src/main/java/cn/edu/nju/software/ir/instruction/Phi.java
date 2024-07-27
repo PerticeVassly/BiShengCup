@@ -33,6 +33,7 @@ public class Phi extends Instruction {
         operands = Arrays.copyOf(operands, operands.length + 2);
         operands[operands.length - 2] = value;
         operands[operands.length - 1] = block;
+//        System.err.println(value + ": " + this);
         value.addUser(this);
     }
 
