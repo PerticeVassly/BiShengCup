@@ -92,11 +92,6 @@ public class EliminateConstExp implements ModulePass{
                         i--;
                     }
                 }
-            } else if (inst instanceof CondBr condBr) {
-                if (condBr.isRedundant()) {
-//                    block.replaceIr();
-                    // TODO
-                }
             }
         }
     }

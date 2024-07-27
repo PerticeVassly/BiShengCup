@@ -8,7 +8,6 @@ import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class BasicBlockRef extends ValueRef {
     private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
@@ -62,6 +61,10 @@ public class BasicBlockRef extends ValueRef {
         }
     }
 
+    public FunctionValue getFunction() {
+        return function;
+    }
+
     public void put(Instruction ir) {
         if (ir instanceof Allocate) {
             function.emitAlloc((Allocate) ir);
@@ -84,7 +87,7 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public int getIrNum() {
-        return irNum;
+        return irs.size();
     }
 
     public Instruction getIr(int index) {
@@ -175,8 +178,14 @@ public class BasicBlockRef extends ValueRef {
         return irs.contains(instruction);
     }
 
-    //todo() may be unneeded
-    public void addIrNum(){
-        irNum++;
+    public int getDirectSuccessorNum() {
+        Instruction inst = irs.get(irNum - 1);
+        if (inst instanceof CondBr) {
+            return 2;
+        } else if (inst instanceof Br) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
