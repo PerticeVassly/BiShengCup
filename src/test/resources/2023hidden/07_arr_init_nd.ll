@@ -17,7 +17,7 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry20:
+mainEntry18:
   %lv$8 = alloca [2 x [3 x [4 x i32]]], align 16
   %lv$7 = alloca [3 x i32], align 16
   %lv$6 = alloca [5 x [3 x i32]], align 16
@@ -28,7 +28,7 @@ mainEntry20:
   %lv$1 = alloca [5 x [3 x i32]], align 16
   %lv = alloca [5 x [3 x i32]], align 16
   %ptr = bitcast [5 x [3 x i32]]* %lv$1 to i32*
-  call void @memset(i32* %ptr, i32 0, i32 15)
+  call void @memset(i32* %ptr, i32 0, i32 60)
   %ptr_ = getelementptr [5 x [3 x i32]], [5 x [3 x i32]]* %lv$2, i32 0, i32 0
   %inp = getelementptr [3 x i32], [3 x i32]* %ptr_, i32 0, i32 0
   store i32 1, i32* %inp, align 4

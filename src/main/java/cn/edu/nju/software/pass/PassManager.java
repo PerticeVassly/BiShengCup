@@ -34,12 +34,12 @@ public class PassManager {
 
     //TODO:add pass here
     private void register(){
-        modulePasses.add(CFGBuildPass.getInstance());
-        modulePasses.add(LoopBuildPass.getInstance());
+//        modulePasses.add(CFGBuildPass.getInstance());
+//        modulePasses.add(LoopBuildPass.getInstance());
 //        modulePasses.add(new FunctionInlinePass());
        //functionPasses.add(new LoopInvariantCodeMotionPass());
 //        modulePasses.add(MemToReg.getInstance());
-//        modulePasses.add(EliminateConstExp.getInstance());
+        //modulePasses.add(EliminateConstExp.getInstance());
          //basicBlockPasses.add(StrengthReductionPass.getInstance());
     }
     public void setDbgFlag(){

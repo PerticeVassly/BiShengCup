@@ -97,6 +97,7 @@ public class Main {
 //            passManager.setDbgFlag();
             passManager.runPass();
         }
+        irVisitor.dumpModuleToConsole();
         if (emitLLVM) {
             module.dumpToFile(output);
         }

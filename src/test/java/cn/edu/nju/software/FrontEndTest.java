@@ -33,10 +33,10 @@ public class FrontEndTest {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("65_color")
+    @StringSource("38_light2d")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
-        testFile(DIR, name);
-//        testFile(DIR_HIDDEN, name);
+//        testFile(DIR, name);
+        testFile(DIR_HIDDEN, name);
     }
 
     /**
@@ -55,7 +55,7 @@ public class FrontEndTest {
     @ParameterizedTest
     @MethodSource("dirHidden")
     void testHidden(String name) throws IOException, InterruptedException {
-        if (Stream.of("30_many_dimensions", "36_rotate", "38_light2d").anyMatch(name::equals)) fail();
+        if (Stream.of("38_light2d", "36_rotate").anyMatch(name::equals)) fail();
         testFile(DIR_HIDDEN, name);
     }
 

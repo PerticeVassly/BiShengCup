@@ -34,7 +34,7 @@ declare void @memset(i32*, i32, i32)
 @gv15 = global [2 x [3 x [4 x i32]]] [[3 x [4 x i32]] [[4 x i32] [i32 1, i32 2, i32 3, i32 4], [4 x i32] [i32 5, i32 0, i32 0, i32 0], [4 x i32] [i32 0, i32 0, i32 0, i32 0]], [3 x [4 x i32]] [[4 x i32] [i32 0, i32 0, i32 0, i32 0], [4 x i32] [i32 0, i32 0, i32 0, i32 0], [4 x i32] [i32 0, i32 0, i32 0, i32 0]]], align 4
 
 define i32 @main() {
-mainEntry2:
+mainEntry6:
   ret i32 5
 }
 
