@@ -209,8 +209,10 @@ public class FunctionInlinePass implements ModulePass {
         List<BasicBlockRef> copyBlock = new ArrayList<>();
         Map<BasicBlockRef, BasicBlockRef> copyMap = new HashMap<>();
         //存变量对应的新名称，防止出现引用混乱的问题
-        Map<String, String> copyValueMap = new HashMap<>();
-        Set<ValueRef> toBeChanged = new HashSet<>();
+        //用名称索引引用
+        Map<String, ValueRef> copyValueMap = new HashMap<>();
+
+        Map<Instruction,Integer> toBeChanged = new HashMap<>();
         for (BasicBlockRef basicBlockRef : function.getBasicBlockRefs()) {
             //注意！内联块名不能过长，否则会产生命名问题
             BasicBlockRef newBlock = new BasicBlockRef(curFunction, "il");
@@ -225,7 +227,7 @@ public class FunctionInlinePass implements ModulePass {
                     //注意全局变量不改名
                     //名称过长可能导致问题
                     lVal.setName(lVal.getName() + "_of_" + newBlock.getName());
-                    copyValueMap.put(instruction.getLVal().getName(), lVal.getName());
+                    copyValueMap.put(instruction.getLVal().getName(), lVal);
                 }
                 if (newInstr.getOperands() != null) {
                     for (int i = 0; i < newInstr.getNumberOfOperands(); i++) {
@@ -234,10 +236,14 @@ public class FunctionInlinePass implements ModulePass {
                         //注意全局变量不改名,跨块访问变量需查表
                         if (!operand.getName().isEmpty() && !Character.isDigit(operand.getName().charAt(0)) && !(operand instanceof GlobalVar)) {
                             if (copyValueMap.containsKey(instruction.getOperand(i).getName())) {
-                                operand.setName(copyValueMap.get(instruction.getOperand(i).getName()));
+                                newInstr.setOperand(i,copyValueMap.get(instruction.getOperand(i).getName()));
                             } else {
                                 //将暂时无法替换名称的变量加入待换名表
-                                toBeChanged.add(operand);
+                                //跳转指令的目标块不能加入表中换名
+                             if(operand instanceof BasicBlockRef){
+                                 continue;
+                             }
+                             toBeChanged.put(newInstr,i);
                             }
 
                         }
@@ -246,13 +252,18 @@ public class FunctionInlinePass implements ModulePass {
                 }
                 //特别处理Call
                 if (newInstr instanceof Call call) {
-                    for (ValueRef valueRef : call.getRealParams()) {
+                    for (int i = 0; i < call.getRealParams().size(); i++) {
                         //判断是否是在处理函数参数，如果不是，则改变变量名
                         //注意全局变量不改名
+                        ValueRef valueRef= call.getRealParams().get(i);
                         if (!valueRef.getName().isEmpty() && !Character.isDigit(valueRef.getName().charAt(0)) && !(valueRef instanceof GlobalVar)) {
-                            valueRef.setName(valueRef.getName() + "_of_" + newBlock.getName());
-                        }
+                            if(copyValueMap.containsKey(valueRef.getName())){
+                                call.setParam(i,copyValueMap.get(valueRef.getName()));
+                            }else {
+                               toBeChanged.put(call,i);
+                            }
 
+                        }
                     }
                 }
                 newBlock.put(newInstr);
@@ -260,10 +271,15 @@ public class FunctionInlinePass implements ModulePass {
             copyBlock.add(newBlock);
         }
         //改名
-        for (ValueRef valueRef : toBeChanged) {
+        for (Instruction instruction : toBeChanged.keySet()) {
             //常量不改名
-            if (!valueRef.getName().isEmpty()) {
-                valueRef.setName(copyValueMap.get(valueRef.getName()));
+            //特判call指令
+            if(instruction instanceof Call call){
+                call.setParam(toBeChanged.get(call),copyValueMap.get(call.getRealParam(toBeChanged.get(call)).getName()));
+                continue;
+            }
+            if (!instruction.getOperand(toBeChanged.get(instruction)).getName().isEmpty()) {
+                instruction.setOperand(toBeChanged.get(instruction),copyValueMap.get(instruction.getOperand(toBeChanged.get(instruction)).getName()));
             }
 
         }

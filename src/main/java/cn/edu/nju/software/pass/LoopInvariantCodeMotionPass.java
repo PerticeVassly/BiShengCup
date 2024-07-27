@@ -162,13 +162,20 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
 
     private List<BasicBlockRef> findJudgeBlock(Loop loop) {
         //寻找判断块，基本思路是如果当前块有可能跳出循环，则其是判断块之一
+        //TODO:无限循环
         List<BasicBlockRef> result = new ArrayList<>();
         BasicBlockRef root = loop.getRoot();
         Stack<BasicBlockRef> help = new Stack<>();
         help.add(root);
         result.add(root);
+        //记录访问过的节点
+        HashSet<BasicBlockRef> vis=new HashSet<>();
         while (!help.isEmpty()) {
             BasicBlockRef cur = help.pop();
+            if(vis.contains(cur)){
+                continue;
+            }
+            vis.add(cur);
             boolean flag = false;
             for (BasicBlockRef next : cfg.getSuccessors(cur)) {
                 if (loop.contains(next)) {

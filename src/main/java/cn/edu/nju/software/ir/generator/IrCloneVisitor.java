@@ -1,4 +1,5 @@
 package cn.edu.nju.software.ir.generator;
+import cn.edu.nju.software.Main;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
@@ -16,7 +17,6 @@ import java.util.List;
 
 public class IrCloneVisitor implements InstructionVisitor {
     private Instruction curInstruction;
-
     public Instruction genClonedInstruction(Instruction instruction) {
         instruction.accept(this);
         return curInstruction;
