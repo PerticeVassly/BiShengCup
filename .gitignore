@@ -10,7 +10,6 @@
 **/src/test/resources/libriscv.o
 **/src/test/resources/2023hidden/*.ll
 **/src/test/resources/2023hidden/*.s
-**/src/test/resources/**
 !**/src/test/resources/2023hidden/*.sy
 !**/src/test/resources/2023hidden/*.in
 !**/src/test/resources/2023hidden/*.out
