@@ -87,7 +87,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         allocator.setLastLVal(instr.getLVal());
         //左值只可能是localVar
         LocalVar lVal = (LocalVar) instr.getLVal();
-        if(true) { // todo() 这里改成istemp判断就可以切换前端指定的tempVar复用，目前是所有非指针的localvar
+        if(false) { // todo() 这里改成istemp判断就可以切换前端指定的tempVar复用，目前是所有非指针的localvar
             if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
                 allocator.recordTempVar(lVal);
             } else if(lVal.getType() instanceof FloatType){
@@ -128,7 +128,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
     private void afterAUnaryInstr(Instruction instr){
         allocator.setLastLVal(instr.getLVal());
         LocalVar lVal = (LocalVar) instr.getLVal();
-        if(true){ //todo() 这里改成istemp判断就可以切换前端指定的tempVar复用，目前是所有非指针的localvar
+        if(false){ //todo() 这里改成istemp判断就可以切换前端指定的tempVar复用，目前是所有非指针的localvar
             if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
                 allocator.recordTempVar(lVal);
             } else if(lVal.getType() instanceof FloatType){
