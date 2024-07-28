@@ -4,6 +4,7 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
@@ -138,6 +139,7 @@ public class RegToMem implements ModulePass {
      */
     private void transferMove2AllocStoreLoad(FunctionValue function) {
         HashMap<ValueRef, Allocate> moveTar2Alloc = new HashMap<>(); // move's lVal to alloc memory
+//        ArrayList<ValueRef> initList = new ArrayList<>(); // record memory's init value, do not need a load when using
         for (int i = 0; i < function.getBlockNum(); i++) {
             BasicBlockRef bb = function.getBlock(i);
             for (int j = 0; j < bb.getIrNum(); j++) {
@@ -145,12 +147,18 @@ public class RegToMem implements ModulePass {
                 Instruction inst = bb.getIr(j);
                 if (inst instanceof Move move) {
                     if (!moveTar2Alloc.containsKey(move.getLVal())) {
-                        LocalVar mem = bb.createLocalVar(new Pointer(move.getLVal().getType()), "phi_mem");
+                        LocalVar mem = bb.createLocalVar(new Pointer(move.getLVal()), "phi_mem");
                         Allocate allocate = new Allocate(mem);
+//                        moveTar2Alloc.put(move.getSrc(), allocate);
+//                        initList.add(move.getSrc());
                         moveTar2Alloc.put(move.getLVal(), allocate);
                         bb.put(allocate);
                     }
-                    ValueRef src = move.getOperand(0); // move value to memory
+//                    else {
+//                        moveTar2Alloc.put(move.getLVal(), moveTar2Alloc.get(move.getSrc()));
+                        // wrong version: move inst does not equal to that they have same memory
+//                    }
+                    ValueRef src = move.getSrc(); // move value to memory
                     ValueRef target = move.getLVal();
                     // create store
                     Store store = new Store(src, moveTar2Alloc.get(target).getLVal());
@@ -165,6 +173,9 @@ public class RegToMem implements ModulePass {
                 Instruction inst = bb.getIr(j);
                 if (inst instanceof Call call) {
                     for (ValueRef op : call.getRealParams()) {
+                        if (op instanceof ConstValue) { // constant do not replace
+                            continue;
+                        }
                         if (moveTar2Alloc.containsKey(op)) {
                             LocalVar ldVal = bb.createLocalVar(op.getType(), "ld_phi");
                             Load load = new Load(ldVal, moveTar2Alloc.get(op).getLVal());
@@ -177,6 +188,9 @@ public class RegToMem implements ModulePass {
                 } else {
                     for (int k = 0; k < inst.getNumberOfOperands(); k++) {
                         ValueRef op = inst.getOperand(k);
+                        if (op instanceof ConstValue) {
+                            continue;
+                        }
                         if (moveTar2Alloc.containsKey(op)) {
                             LocalVar ldVal = bb.createLocalVar(op.getType(), "ld_phi");
                             Load load = new Load(ldVal, moveTar2Alloc.get(op).getLVal());
