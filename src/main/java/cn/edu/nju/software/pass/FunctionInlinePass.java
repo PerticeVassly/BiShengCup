@@ -1,6 +1,5 @@
 package cn.edu.nju.software.pass;
 
-import cn.edu.nju.software.frontend.util.CFG;
 import cn.edu.nju.software.frontend.util.CG;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.IrCloneVisitor;
@@ -108,7 +107,7 @@ public class FunctionInlinePass implements ModulePass {
             }
         } while (flag);
         //建立正确的前继关系
-        adjustPred(function);
+        Util.adjustPred(function);
     }
 
     private void buildInlineTable(ModuleRef module) {
@@ -499,23 +498,6 @@ public class FunctionInlinePass implements ModulePass {
             }
         }
     }
-    private void adjustPred(FunctionValue functionValue){
-        for (BasicBlockRef bb: functionValue.getBasicBlockRefs()) {
-            bb.clearPred();
-        }
-        for (BasicBlockRef bb:functionValue.getBasicBlockRefs()){
-            int lastInstr=findLastInstruction(bb);
-            Instruction instruction=bb.getIr(lastInstr);
-            if(instruction instanceof Br br){
-                BasicBlockRef target=br.getTarget();
-                target.addPred(bb);
-            }else if(instruction instanceof CondBr condBr){
-                BasicBlockRef ifTrue=condBr.getTrueBlock();
-                BasicBlockRef ifFalse=condBr.getFalseBlock();
-                ifTrue.addPred(bb);
-                ifFalse.addPred(bb);
-            }
-        }
-    }
+
 }
 
