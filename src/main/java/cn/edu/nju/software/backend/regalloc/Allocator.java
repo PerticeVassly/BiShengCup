@@ -378,6 +378,10 @@ public class Allocator {
         tempVarLiveTable.record(localVar);
     }
 
+    public boolean isUsedReg(String regName){
+        return tempVarLiveTable.isUsed(regName);
+    }
+
     public String fetchTempVar(ValueRef variable){
         return tempVarLiveTable.fetch(variable);
     }

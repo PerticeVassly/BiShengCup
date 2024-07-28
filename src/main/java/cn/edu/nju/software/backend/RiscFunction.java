@@ -89,9 +89,6 @@ public class RiscFunction {
         allocator.allocate(var, allocator.getSizeOfType(type));
     }
 
-    private void reserveMemoryForAllocate(TypeRef type){
-        allocator.allocate(allocator.getSizeOfType(type));
-    }
 
     private void genRiscBasicBlocks() {
         for (BasicBlockRef bb : functionValue.getBasicBlockRefs()) {

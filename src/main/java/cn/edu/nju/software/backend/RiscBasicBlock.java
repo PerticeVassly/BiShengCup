@@ -181,6 +181,9 @@ public class RiscBasicBlock {
 //        assert !riscInstructions.isEmpty(); //todo() why here fail
 
         for(RiscInstruction riscInstruction : riscInstructions){
+            if(riscInstruction instanceof RiscComment){
+                continue;
+            }
             System.out.println(riscInstruction.emitCode());
         }
     }

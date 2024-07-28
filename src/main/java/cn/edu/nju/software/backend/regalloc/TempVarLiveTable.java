@@ -42,6 +42,13 @@ public class TempVarLiveTable {
         return regName != null;
     }
 
+    public boolean isUsed(String regName) {
+        if(!tempVar2Reg.containsKey(regName)){
+            return false;
+        }
+        return !tempVar2Reg.get(regName).getName().isEmpty();
+    }
+
     /**
      * 依据要暂存的变量的类型，为其分配一个寄存器，如果没有没有这一类型的寄存器空闲，则spill一个寄存器并且返回,
      * 默认变量一开始存储在t0（ft0）中
