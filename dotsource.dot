@@ -1,4 +1,0 @@
-digraph G {
-fEntry -> ifFalse_;
-fEntry -> ifTrue_;
-}
