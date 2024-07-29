@@ -37,7 +37,13 @@ public class GlobalVar extends ValueRef implements Variable {
         this.type = type;
 //        this.constant = constant;
     }
-    
+
+
+    public GlobalVar copy() {
+        //全局唯一，无需拷贝
+        return this;
+    }
+
     public boolean isZeroInitializer() {
         return ((Pointer)type).getBase() instanceof ArrayType && !(initVal.getType() instanceof ArrayType); // initVal = zero
     }

@@ -26,4 +26,5 @@ public class Load extends Instruction {
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
     }
+
 }

@@ -22,6 +22,11 @@ public class LocalVar extends ValueRef implements Variable {
         isTmp = false;
     }
 
+
+    public LocalVar copy() {
+        return new LocalVar(type,name);
+    }
+
     public boolean isTmpVar() {
         return isTmp;
     }

@@ -11,7 +11,13 @@ public class ArrayValue extends ValueRef {
         type = arrayType;
         values = val;
     }
-
+    public ArrayValue copy(){
+        List<ValueRef> newVal=new ArrayList<>();
+        for(ValueRef val:values){
+             newVal.add(val.copy());
+        }
+        return new ArrayValue((ArrayType) type,newVal);
+    }
     public ValueRef getValue(int index) {
         return values.get(index);
     }

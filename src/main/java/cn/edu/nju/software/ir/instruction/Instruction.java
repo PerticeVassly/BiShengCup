@@ -54,6 +54,9 @@ public abstract class Instruction {
         return operands;
     }
 
+    public void setOperand(int index,ValueRef operand) {
+        operands[index] = operand;
+    }
     public int getNumberOfOperands() {
         return operands.length;
     }

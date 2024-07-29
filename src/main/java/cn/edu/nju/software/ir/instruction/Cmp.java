@@ -14,6 +14,11 @@ public class Cmp extends Binary {
         this.type = cmpType[type];
     }
 
+    public Cmp(ValueRef lVal, OpEnum op, String type, ValueRef operand1, ValueRef operand2) {
+        super(lVal, op, operand1, operand2);
+        this.type = type;
+    }
+
     public String getType() {
         return type;
     }

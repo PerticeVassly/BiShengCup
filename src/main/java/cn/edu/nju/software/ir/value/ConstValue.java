@@ -41,6 +41,17 @@ public class ConstValue extends ValueRef {
     }
 
 
+
+    public ConstValue copy() {
+        if(type instanceof IntType){
+            return new ConstValue(new IntType(),(Integer) value);
+        }else if(type instanceof FloatType){
+            return new ConstValue(new FloatType(),(Float) value);
+        }else {
+            return new ConstValue(new BoolType(),(Boolean) value);
+        }
+    }
+
     public Object getValue() {
         return value;
     }

@@ -51,6 +51,12 @@ public class CFGBuildPass implements ModulePass{
          }
     }
 
+    public void update(FunctionValue functionValue){
+        basicBlockCFG.put(functionValue, buildBasicBlockCFG(functionValue));
+        if(dbgFlag){
+            printDbgInfo();
+        }
+    }
     @Override
     public String getName() {
         return "CFG Build Pass";

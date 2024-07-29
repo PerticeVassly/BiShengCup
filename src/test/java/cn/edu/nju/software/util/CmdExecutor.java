@@ -1,7 +1,6 @@
 package cn.edu.nju.software.util;
 
 import java.io.*;
-import java.math.BigInteger;
 import java.util.Arrays;
 
 public class CmdExecutor {
@@ -14,8 +13,8 @@ public class CmdExecutor {
         ProcessBuilder pb = new ProcessBuilder(terms);
         Process process = pb.start();
         exitCode = process.waitFor();
-        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + System.lineSeparator());
-        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + System.lineSeparator());
+        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + "\r\n");
+        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + "\r\n");
         hasError = !errorInfo.isEmpty();
     }
 
@@ -24,7 +23,7 @@ public class CmdExecutor {
         Process process = pb.start();
         OutputStream os = process.getOutputStream();
         try (FileInputStream fis = new FileInputStream(inputFile)) {
-            byte[] buffer = new byte[655360000]; //todo() buffer size too small?
+            byte[] buffer = new byte[65536]; //todo() buffer size too small?
             int bytesRead;
             while ((bytesRead = fis.read(buffer)) != -1) {
                 os.write(buffer, 0, bytesRead);
@@ -33,8 +32,8 @@ public class CmdExecutor {
             os.close();
         }
         exitCode = process.waitFor();
-        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + System.lineSeparator());
-        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + System.lineSeparator());
+        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + "\r\n");
+        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + "\r\n");
         hasError = !errorInfo.isEmpty();
     }
 
