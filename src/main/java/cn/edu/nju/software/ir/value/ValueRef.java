@@ -30,7 +30,9 @@ public class ValueRef {
         this.name = name;
         this.type = type;
     }
-
+    public ValueRef copy(){
+        return new ValueRef();
+    }
     public void updateType(TypeRef type) {
         this.type = type;
     }
@@ -41,6 +43,10 @@ public class ValueRef {
 
     public TypeRef getType() {
         return type;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**

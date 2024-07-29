@@ -64,6 +64,9 @@ public class Call extends Instruction {
         return function;
     }
 
+    public void setParam(int index,ValueRef param){
+        realParams.set(index, param);
+    }
     public int getLineNo() {
         return lineNo;
     }

@@ -20,4 +20,6 @@ public class FloatToInt extends Instruction {
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
     }
+
+
 }

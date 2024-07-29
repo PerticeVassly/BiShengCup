@@ -46,4 +46,5 @@ public class CondBr extends Instruction {
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
     }
+
 }

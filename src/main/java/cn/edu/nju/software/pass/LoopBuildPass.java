@@ -40,7 +40,12 @@ public class LoopBuildPass implements ModulePass {
             createLoopForestGraph(functionValue);
         }
     }
-
+    public void update(FunctionValue functionValue){
+        LoopSet loopSet =findLoops(functionValue);
+        if(!loopSet.isEmpty()){
+            forestTable.put(functionValue, loopSet);
+        }
+    }
     @Override
     public String getName() {
         return "Loop Build Pass";
@@ -53,7 +58,7 @@ public class LoopBuildPass implements ModulePass {
         return loopBuildPass;
     }
 
-    public LoopSet getLoopForest(FunctionValue functionValue) {
+    public LoopSet getLoopSet(FunctionValue functionValue) {
         return forestTable.get(functionValue);
     }
 
@@ -189,7 +194,7 @@ public class LoopBuildPass implements ModulePass {
     }
 
     private void createLoopForestGraph(FunctionValue functionValue) {
-        LoopSet loopSet = getLoopForest(functionValue);
+        LoopSet loopSet = getLoopSet(functionValue);
         loopSet.createLoopForestGraph(functionValue.getName() + "loopSet");
     }
 }

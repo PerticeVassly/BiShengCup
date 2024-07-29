@@ -60,6 +60,9 @@ public class BasicBlockRef extends ValueRef {
             pred.remove(index);
         }
     }
+    public void clearPred(){
+        pred.clear();
+    }
 
     public FunctionValue getFunction() {
         return function;
@@ -91,9 +94,10 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public Instruction getIr(int index) {
-        if (index >= irNum || index < 0) {
-            return null;
-        }
+        //TODO:计数不准确
+//        if (index >= irNum || index < 0) {
+//            return null;
+//        }
         return irs.get(index);
     }
 
