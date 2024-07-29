@@ -80,7 +80,7 @@ public class FunctionValue extends ValueRef {
     }
 
     public List<BasicBlockRef> getBasicBlockRefs() {
-        return Collections.unmodifiableList(blocks);
+        return blocks;
     }
 
     public BasicBlockRef getEntryBlock() {

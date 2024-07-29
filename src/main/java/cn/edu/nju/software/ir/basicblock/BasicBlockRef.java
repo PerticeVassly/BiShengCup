@@ -94,9 +94,10 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public Instruction getIr(int index) {
-        if (index >= irNum || index < 0) {
-            return null;
-        }
+        //TODO:计数不准确
+//        if (index >= irNum || index < 0) {
+//            return null;
+//        }
         return irs.get(index);
     }
 
