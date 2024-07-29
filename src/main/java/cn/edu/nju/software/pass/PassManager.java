@@ -38,45 +38,19 @@ public class PassManager {
 
     //TODO:add pass here
     private void register(){
-        allPasses.add(CFGBuildPass.getInstance());
-        allPasses.add(LoopBuildPass.getInstance());
-        allPasses.add(new FunctionInlinePass());
-        allPasses.add(new LoopInvariantCodeMotionPass());
-        allPasses.add(new RedundantBlockEliminationPass());
-        allPasses.add(MemToReg.getInstance());
-        allPasses.add(RegToMem.getInstance());
+//        allPasses.add(CFGBuildPass.getInstance());
+//        allPasses.add(LoopBuildPass.getInstance());
+//        allPasses.add(new FunctionInlinePass());
+//        allPasses.add(new LoopInvariantCodeMotionPass());
+//        allPasses.add(new RedundantBlockEliminationPass());
+//        allPasses.add(MemToReg.getInstance());
+//        allPasses.add(RegToMem.getInstance());
         allPasses.add(StrengthReductionPass.getInstance());
     }
-
     public void setDbgFlag(){
         for(Pass pass:allPasses){
             pass.setDbgFlag();
         }
-        for (BasicBlockPass basicBlockPass:basicBlockPasses){
-            basicBlockPass.setDbgFlag();
-        }
-    }
-    private boolean doModulePasses(ModuleRef moduleRef){
-        boolean changed = false;
-        for (ModulePass modulePass : modulePasses) {
-            changed|=modulePass.runOnModule(moduleRef);
-        }
-        return changed;
     }
 
-    private boolean doFunctionPass(FunctionValue functionValue){
-        boolean changed = false;
-        for (FunctionPass functionPass :functionPasses) {
-            changed|=functionPass.runOnFunction(functionValue);
-        }
-        return changed;
-    }
-
-    private boolean doBasicBlockPass(BasicBlockRef basicBlockRef){
-        boolean changed = false;
-        for (BasicBlockPass basicBlockPass :basicBlockPasses) {
-            changed|=basicBlockPass.runOnBasicBlock(basicBlockRef);
-        }
-        return changed;
-    }
 }

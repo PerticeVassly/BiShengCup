@@ -5,43 +5,9 @@
 .type main, @function
 .globl main
 main:
-mainEntry90:
-
-	# reserve space
-	li t0, 16
-	sub sp, sp, t0
-
-	# save the parameters
-
-	# allocate lv
-
-	# store lv 
-
-	# fetch variables
+mainEntry4:
 	addi t1, zero, 15
-
-	# get address of lv points to
-	addi t3, zero, 12
-	add t0, sp, t3
-	sw t1, 0(t0)
-
-	# load a lv
-
-	# get address of lv points to
-	addi t3, zero, 12
-	add t0, sp, t3
-
-	# get address of local var:a
-	lw t0, 0(t0)
-	sw t0, 4(sp)
-
-	# ret a
-
-	# fetch variables
-	mv t1, t0
 	mv a0, t1
-	li t0, 16
-	add sp, sp, t0
 	ret 
 
 memset32: 

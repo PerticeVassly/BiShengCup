@@ -13,56 +13,18 @@ gv1:
 .type main, @function
 .globl main
 main:
-mainEntry:
-
-	# reserve space
-	addi sp, sp, -32
-
-	# save the parameters
-
-	# allocate lv
-
-	# store lv 
-
-	# fetch variables
-	addi t1, zero, 5
-
-	# get address of lv points to
-	sw t1, 28(sp)
-
-	# load a lv
-
-	# get address of lv points to
-
-	# get address of local var:a
-	lw t0, 28(sp)
-	sw t0, 20(sp)
-
-	# load b gv1
-
-	# get address of gv1 points to
+mainEntry3:
+	addi sp, sp, -16
 	la t0, gv1
-
-	# get address of local var:b
 	lw t0, 0(t0)
 	sw t0, 12(sp)
-
-	# ADD result_ a b 
-
-	# fetch variables
-
-	# get address of local var:a
-	lw t1, 20(sp)
-	mv t2, t0
+	addi t1, zero, 5
+	lw t2, 12(sp)
 	addw t0, t1, t2
-	mv s3, t0
-
-	# ret result_
-
-	# fetch variables
+	sw t0, 4(sp)
 	mv t1, t0
 	mv a0, t1
-	addi sp, sp, 32
+	addi sp, sp, 16
 	ret 
 
 memset32: 
