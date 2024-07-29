@@ -10,11 +10,15 @@ public class CFG {
         graph=new Graph<>();
     }
     public void addPoint(BasicBlockRef bb){
-       graph.addNode(bb);
+        graph.addNode(bb);
     }
 
     public void addEdge(BasicBlockRef from,BasicBlockRef to){
-       graph.addEdge(from,to);
+        graph.addEdge(from,to);
+    }
+
+    public void removeEdge(BasicBlockRef from,BasicBlockRef to) {
+        graph.removeEdge(from, to);
     }
 
     public Set<Edge<BasicBlockRef>> getAllEdges(){
@@ -22,6 +26,14 @@ public class CFG {
     }
     public Set<BasicBlockRef> getSuccessors(BasicBlockRef bb){
         return graph.getNeighbors(bb);
+    }
+
+    public Set<BasicBlockRef> getPreds(BasicBlockRef bb){
+        Set<BasicBlockRef> preds = new HashSet<>();
+        for (BasicBlockRef pred : getAllBasicBlock()) {
+            if (getSuccessors(pred).contains(bb)) preds.add(pred);
+        }
+        return preds;
     }
 
     public Set<BasicBlockRef> getAllBasicBlock(){

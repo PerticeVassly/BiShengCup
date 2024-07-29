@@ -29,9 +29,9 @@ public class TestBackEndIO {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("29_long_line")
+    @StringSource("74_kmp")
     void testRisc(String name) throws IOException, InterruptedException {
-        testFile(DIR_HIDDEN, name);
+        testFile(DIR, name);
     }
 
     /**

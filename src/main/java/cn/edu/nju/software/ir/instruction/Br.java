@@ -15,6 +15,11 @@ public class Br extends Instruction {
     public BasicBlockRef getTarget() {
         return (BasicBlockRef) operands[0];
     }
+
+    public void setTarget(BasicBlockRef bb) {
+        operands[0] = bb;
+    }
+
     @Override
     public boolean isBr() {
         return true;

@@ -26,6 +26,12 @@ public class Graph<T>{
         set.add(to);
     }
 
+    public void removeEdge(T from, T to) {
+        if (nodes.containsKey(from)) {
+            nodes.get(from).remove(to);
+        }
+    }
+
     public Set<T> getNeighbors(T node) {
         return nodes.get(node);
     }
