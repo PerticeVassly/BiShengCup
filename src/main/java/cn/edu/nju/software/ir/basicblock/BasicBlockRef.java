@@ -72,14 +72,29 @@ public class BasicBlockRef extends ValueRef {
             irNum++;
             irs.add(ir);
         }
+        ir.setBlock(this);
     }
     public void put(int index, Instruction ir) {
         irs.add(index, ir);
+        ir.setBlock(this);
         irNum++;
+    }
+
+    public int getAllocSize() {
+        int sz = 0;
+        for (Instruction ir : irs) {
+            if (ir instanceof Allocate) {
+                sz++;
+            } else {
+                break;
+            }
+        }
+        return sz;
     }
 
     public void renewIr(int index, Instruction ir) {
         irs.set(index, ir);
+        ir.setBlock(this);
     }
 
     public String getName() {

@@ -38,8 +38,9 @@ public class PassManager {
 //        modulePasses.add(LoopBuildPass.getInstance());
 //        modulePasses.add(new FunctionInlinePass());
        //functionPasses.add(new LoopInvariantCodeMotionPass());
-        modulePasses.add(MemToReg.getInstance());
-        modulePasses.add(RegToMem.getInstance());
+        modulePasses.add(GlobalToLocalPass.getInstance());
+//        modulePasses.add(MemToReg.getInstance());
+//        modulePasses.add(RegToMem.getInstance());
          //basicBlockPasses.add(StrengthReductionPass.getInstance());
     }
     public void setDbgFlag(){

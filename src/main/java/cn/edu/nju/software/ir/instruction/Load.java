@@ -9,6 +9,7 @@ public class Load extends Instruction {
         this.lVal = lVal;
         operator = "load";
         operands = new ValueRef[]{pointer};
+        pointer.addUser(this);
     }
 
     @Override

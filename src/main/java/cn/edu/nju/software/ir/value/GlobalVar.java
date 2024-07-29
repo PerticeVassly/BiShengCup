@@ -1,8 +1,7 @@
 package cn.edu.nju.software.ir.value;
 
-import cn.edu.nju.software.ir.type.ArrayType;
-import cn.edu.nju.software.ir.type.Pointer;
-import cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.instruction.Instruction;
+import cn.edu.nju.software.ir.type.*;
 
 import java.util.ArrayList;
 import java.util.stream.Stream;
@@ -87,5 +86,30 @@ public class GlobalVar extends ValueRef implements Variable {
     @Override
     public void mergeValue(Value value) {
         this.value.merge(value);
+    }
+
+    public int usedFreqInDifferentFunc() {
+        ArrayList<FunctionValue> usedInFunc = new ArrayList<>();
+        for (Instruction instruction : user) {
+            if (!usedInFunc.contains(instruction.getBlock().getFunction())) {
+                usedInFunc.add(instruction.getBlock().getFunction());
+            }
+        }
+        return usedInFunc.size();
+    }
+
+    public boolean isRedundant() {
+        return usedFreqInDifferentFunc() == 0;
+    }
+
+    public boolean isLocalizable() {
+        return usedFreqInDifferentFunc() == 1 && (((Pointer)type).getBase() instanceof IntType || ((Pointer)type).getBase() instanceof FloatType);
+    }
+
+    /***
+     * called when isLocalizable
+     */
+    public FunctionValue getUsageFunction() {
+        return user.get(0).getBlock().getFunction();
     }
 }

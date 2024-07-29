@@ -71,26 +71,17 @@ public class ModuleRef {
         globalVars.add(globalVar);
     }
 
-    public void initGlobalVar(ValueRef globalVar, ValueRef initVal) {
-        if (!(globalVar instanceof GlobalVar)) {
-            System.err.println("Initial target should be global variable.");
-            return;
-        }
-        if (!(initVal instanceof ConstValue)) {
-            System.err.println("Initial value should be a const number");
-            return;
-        }
-        if (!globalVars.contains(globalVar)) {
-            System.err.println("Global variable has not been declared.");
-            return;
-        }
-        ((GlobalVar) globalVar).initialize(initVal);
+    public int getGlobalVarNum() {
+        return globalVars.size();
     }
 
-    private String implementArrInitIr(ArrayType arrayType, ArrayValue arrayValue) {
-        String ir = "";
-        // todo
-        return ir;
+    public GlobalVar getGlobalVar(int index) {
+        return globalVars.get(index);
+    }
+
+    public void dropGlobalVar(GlobalVar globalVar) {
+        globalVarNum--;
+        globalVars.remove(globalVar);
     }
 
     private String generateGlobalVarIr(GlobalVar gv) {

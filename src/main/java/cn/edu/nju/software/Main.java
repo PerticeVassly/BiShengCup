@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import cn.edu.nju.software.backend.RiscModule;
+import cn.edu.nju.software.pass.BranchOptPass;
 import cn.edu.nju.software.pass.EliminateConstExp;
 import cn.edu.nju.software.pass.MemToReg;
 import cn.edu.nju.software.pass.PassManager;
