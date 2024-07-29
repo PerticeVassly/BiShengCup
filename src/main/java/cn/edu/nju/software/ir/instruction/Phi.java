@@ -103,6 +103,14 @@ public class Phi extends Instruction {
         operands = tmp;
     }
 
+    public int getPredSize() {
+        return operands.length / 2;
+    }
+
+    public BasicBlockRef getPredBlock(int index) {
+        return (BasicBlockRef) operands[index * 2 + 1];
+    }
+
     /***
      * if self is redundant, call this func <br>
      * modify self's influence

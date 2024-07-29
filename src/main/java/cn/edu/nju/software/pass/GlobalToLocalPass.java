@@ -2,13 +2,11 @@ package cn.edu.nju.software.pass;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.Allocate;
+import cn.edu.nju.software.ir.instruction.Call;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.Store;
 import cn.edu.nju.software.ir.module.ModuleRef;
-import cn.edu.nju.software.ir.value.ConstValue;
-import cn.edu.nju.software.ir.value.FunctionValue;
-import cn.edu.nju.software.ir.value.GlobalVar;
-import cn.edu.nju.software.ir.value.LocalVar;
+import cn.edu.nju.software.ir.value.*;
 
 public class GlobalToLocalPass implements ModulePass {
     private static GlobalToLocalPass glob2LocalPass = null;
@@ -60,6 +58,13 @@ public class GlobalToLocalPass implements ModulePass {
                     for (int j = 0; j < opNum; j++) {
                         if (user.getOperand(j).equals(gv)) {
                             user.replace(gv, pointer);
+                        }
+                    }
+                    if (user instanceof Call call) {
+                        for (ValueRef vr : call.getRealParams()) {
+                            if (vr.equals(gv)) {
+                                call.replaceRealParams(gv, pointer);
+                            }
                         }
                     }
                 }
