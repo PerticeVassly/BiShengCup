@@ -15,6 +15,7 @@ public class BasicBlockRef extends ValueRef {
     private final String name;
     private ArrayList<Instruction> irs;
     private int irNum;
+    private boolean isEntryBlock = false;
     /**
      * the function it belongs to
      */
@@ -79,6 +80,14 @@ public class BasicBlockRef extends ValueRef {
     public void put(int index, Instruction ir) {
         irs.add(index, ir);
         irNum++;
+    }
+
+    public void setIsEntryBlock(boolean isEntryBlock) {
+        this.isEntryBlock = isEntryBlock;
+    }
+
+    public boolean isEntryBlock() {
+        return isEntryBlock;
     }
 
     public void renewIr(int index, Instruction ir) {
