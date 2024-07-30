@@ -62,6 +62,9 @@ public class RiscFunction {
 
         for(int i = 0; i < functionValue.getBasicBlockRefs().size(); i++){
             BasicBlockRef bb = functionValue.getBasicBlockRefs().get(i);
+            if(i == 0){
+                bb.setIsEntryBlock(true);
+            }
             for(int j = 0; j < bb.getIrs().size(); j++){
                 Instruction ir = bb.getIrs().get(j);
                 if(ir.getLVal() != null){
@@ -89,9 +92,6 @@ public class RiscFunction {
         allocator.allocate(var, allocator.getSizeOfType(type));
     }
 
-    private void reserveMemoryForAllocate(TypeRef type){
-        allocator.allocate(allocator.getSizeOfType(type));
-    }
 
     private void genRiscBasicBlocks() {
         for (BasicBlockRef bb : functionValue.getBasicBlockRefs()) {

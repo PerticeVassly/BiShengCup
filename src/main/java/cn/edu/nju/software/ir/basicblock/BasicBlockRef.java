@@ -5,7 +5,6 @@ import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
-import cn.edu.nju.software.pass.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +15,7 @@ public class BasicBlockRef extends ValueRef {
     private final String name;
     private ArrayList<Instruction> irs;
     private int irNum;
+    private boolean isEntryBlock = false;
     /**
      * the function it belongs to
      */
@@ -76,29 +76,22 @@ public class BasicBlockRef extends ValueRef {
             irNum++;
             irs.add(ir);
         }
-        ir.setBlock(this);
     }
     public void put(int index, Instruction ir) {
         irs.add(index, ir);
-        ir.setBlock(this);
         irNum++;
     }
 
-    public int getAllocSize() {
-        int sz = 0;
-        for (Instruction ir : irs) {
-            if (ir instanceof Allocate) {
-                sz++;
-            } else {
-                break;
-            }
-        }
-        return sz;
+    public void setIsEntryBlock(boolean isEntryBlock) {
+        this.isEntryBlock = isEntryBlock;
+    }
+
+    public boolean isEntryBlock() {
+        return isEntryBlock;
     }
 
     public void renewIr(int index, Instruction ir) {
         irs.set(index, ir);
-        ir.setBlock(this);
     }
 
     public String getName() {
@@ -199,13 +192,13 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public int getDirectSuccessorNum() {
-        // if this is a pred block, its last inst must be a br/condBr
-        int index = Util.findLastInstruction(this);
-        Instruction inst = irs.get(index);
+        Instruction inst = irs.get(irNum - 1);
         if (inst instanceof CondBr) {
             return 2;
-        } else {
+        } else if (inst instanceof Br) {
             return 1;
+        } else {
+            return 0;
         }
     }
 }

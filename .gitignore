@@ -1,4 +1,4 @@
-
+target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -12,9 +12,7 @@
 **/src/test/resources/2023part/**
 **/src/test/resources/2023hidden/**
 **/src/test/resources/**
-
-
-/target
+**/target
 
 
 pom.xml
@@ -59,3 +57,6 @@ build/
 ### Mac OS ###
 .DS_Store
 
+/src/test/
+/src/test/
+/src/test/resources/2023/

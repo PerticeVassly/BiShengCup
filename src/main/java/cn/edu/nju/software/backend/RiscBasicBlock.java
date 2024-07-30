@@ -46,7 +46,7 @@ public class RiscBasicBlock {
         allocator.setLValLiveTable(lValLiveTable);
         allocator.setTempVarLiveTable(tempVarLiveTable);
         allocator.setInstrGenerator(generator);
-        if (basicBlockRef.getPredNum() == 0) {
+        if (basicBlockRef.isEntryBlock()) {
             functionInit();
         }
         riscInstructions.addAll(generator.genRiscInstructions());
@@ -181,6 +181,9 @@ public class RiscBasicBlock {
 //        assert !riscInstructions.isEmpty(); //todo() why here fail
 
         for(RiscInstruction riscInstruction : riscInstructions){
+            if(riscInstruction instanceof RiscComment){
+                continue;
+            }
             System.out.println(riscInstruction.emitCode());
         }
     }

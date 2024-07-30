@@ -7,10 +7,7 @@ import cn.edu.nju.software.ir.value.GlobalVar;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 
@@ -24,6 +21,8 @@ public class RiscModule {
 
     private static final HashSet<String> libFuncs = new HashSet<>();
 
+    private static long tempBlockCount = 0;
+
     static {
         Stream<String> funcs = Stream.of(
                 "getint", "putint", "getfloat", "putfloat", "getarray", "putarray"
@@ -33,6 +32,7 @@ public class RiscModule {
 
     public RiscModule(ModuleRef llvmModule) {
         this.llvmModule = llvmModule;
+        tempBlockCount = 0;
     }
 
     public void codeGen() {
@@ -48,6 +48,10 @@ public class RiscModule {
                 riscFunction.codeGen();
             }
         }
+    }
+
+    public static String createTempBlock(){
+        return "tempBlock" + tempBlockCount++;
     }
 
     public void dumpToConsole() {

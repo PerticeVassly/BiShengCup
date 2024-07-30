@@ -3,6 +3,7 @@ package cn.edu.nju.software.pass;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.pass.EliminateDeadCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,16 +41,18 @@ public class PassManager {
     private void register(){
         allPasses.add(CFGBuildPass.getInstance());
         allPasses.add(LoopBuildPass.getInstance());
-        allPasses.add(new FunctionInlinePass());
-//        allPasses.add(new LoopInvariantCodeMotionPass());
-//        allPasses.add(new RedundantBlockEliminationPass());
-//        allPasses.add(MemToReg.getInstance());
-//        allPasses.add(StrengthReductionPass.getInstance());
-//        allPasses.add(RegToMem.getInstance());
+//        allPasses.add(new FunctionInlinePass());
+        allPasses.add(new LoopInvariantCodeMotionPass());
+//      allPasses.add(new RedundantBlockEliminationPass());
+        allPasses.add(EliminateDeadCode.getInstance());
+        allPasses.add(MemToReg.getInstance());
+        allPasses.add(RegToMem.getInstance());
+        allPasses.add(StrengthReductionPass.getInstance());
     }
     public void setDbgFlag(){
         for(Pass pass:allPasses){
             pass.setDbgFlag();
         }
     }
+
 }
