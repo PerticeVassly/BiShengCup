@@ -16,6 +16,8 @@ import static cn.edu.nju.software.ir.instruction.OpEnum.*;
 public class Move extends Instruction {
     private cn.edu.nju.software.ir.instruction.arithmetic.Add add = null;
     private cn.edu.nju.software.ir.instruction.arithmetic.FAdd fAdd = null;
+
+    private Allocate memory;
     public Move(ValueRef target, ValueRef src) {
         if (target.getType() instanceof IntType) {
             ConstValue zero = new ConstValue(new IntType(), 0);
@@ -25,6 +27,14 @@ public class Move extends Instruction {
             fAdd = new FAdd(target, ADD, src, fZero);
         }
         src.addUser(this);
+    }
+
+    public void setMemory(Allocate memory) {
+        this.memory = memory;
+    }
+
+    public Allocate getMemory() {
+        return memory;
     }
 
     @Override

@@ -50,6 +50,7 @@ public class MemToReg implements ModulePass {
     }
 
     private void memToRegProc() {
+        PhiModify phiModify = PhiModify.getInstance();
         for (int i = 0; i < module.getFunctionNum(); i++) {
             FunctionValue fv = module.getFunction(i);
             if (fv.isLib()) {
@@ -69,6 +70,8 @@ public class MemToReg implements ModulePass {
             fillEmptyPhis();
 
             rmRedundantAllocStoreLoadAndPhiInFunction(fv);
+
+            phiModify.runOnFunction(fv);
         }
     }
 
@@ -137,15 +140,11 @@ public class MemToReg implements ModulePass {
      * param entry: entry basic block
      * */
     private void getReplaceableAlloc(BasicBlockRef entry) {
-        for (int j = 0; j < entry.getIrNum(); j++) {
-            Instruction inst = entry.getIr(j);
-            if (!(inst instanceof Allocate)) {
-                break;
-            }
-            if (((Pointer)inst.getLVal().getType()).getBase() instanceof IntType ||
-                    ((Pointer)inst.getLVal().getType()).getBase() instanceof FloatType) {
-                defineInBlock.put((Allocate) inst, new HashMap<>());
-                mem2Alloc.put(inst.getLVal(), (Allocate) inst);
+        for (Allocate allocate : entry.getAllocates()) {
+            if (((Pointer)allocate.getLVal().getType()).getBase() instanceof IntType ||
+                    ((Pointer)allocate.getLVal().getType()).getBase() instanceof FloatType) {
+                defineInBlock.put(allocate, new HashMap<>());
+                mem2Alloc.put(allocate.getLVal(), allocate);
             }
         }
     }

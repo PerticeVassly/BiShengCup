@@ -130,6 +130,36 @@ public class Phi extends Instruction {
             }
         }
     }
+
+    /***
+     * e.g. %0 = phi i32 [%1, %10], [%0, %11]
+     */
+    public boolean specialModify() {
+        if (operands.length != 4) {
+            return false;
+        }
+        ValueRef lVal = this.getLVal();
+        ValueRef replace = null;
+        if (operands[0].equals(lVal)) {
+            replace = operands[2];
+        } else if (operands[2].equals(lVal)) {
+            replace = operands[0];
+        }
+        if (replace != null) {
+            for (Instruction instruction : lVal.getUser()) {
+                if (instruction.equals(this)) {
+                    continue;
+                }
+                if (instruction instanceof Call call) {
+                    call.replaceRealParams(lVal, replace);
+                } else {
+                    instruction.replace(lVal, replace);
+                }
+            }
+            return true;
+        }
+        return false;
+    }
     @Override
     public String toString() {
         String s =  lVal.getText() +
