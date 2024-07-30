@@ -5,7 +5,7 @@
 .type main, @function
 .globl main
 main:
-mainEntry:
+mainEntry17:
 
 	# reserve space
 	addi sp, sp, -48
@@ -19,49 +19,49 @@ mainEntry:
 	# store lv 
 
 	# fetch variables
-	addi t1, zero, 10
+	li t1, 0x3ff33333
+	fmv.w.x ft1, t1
 
 	# get address of lv points to
-	sw t1, 36(sp)
+	fsw ft1, 36(sp)
 
-	# store lv$1 
+	# load f lv
+
+	# get address of lv points to
+
+	# get address of local var:f
+	flw ft0, 36(sp)
+	fmv.x.w t1, ft0
+	fmv.w.x fs0, t1
+
+	#  f2i_ f
 
 	# fetch variables
-	addi t1, zero, 5
+	fmv.x.w t1, fs0
+	fmv.w.x ft1, t1
+	fcvt.w.s t0, ft1, rtz
+	mv s3, t0
+
+	# store lv$1 f2i_
+
+	# fetch variables
+	mv t1, t0
 
 	# get address of lv$1 points to
 	sw t1, 44(sp)
 
-	# load a lv
-
-	# get address of lv points to
-
-	# get address of local var:a
-	lw t0, 36(sp)
-	sw t0, 28(sp)
-
-	# load b lv$1
+	# load i lv$1
 
 	# get address of lv$1 points to
 
-	# get address of local var:b
+	# get address of local var:i
 	lw t0, 44(sp)
-	sw t0, 20(sp)
-
-	# DIV result_ a b 
-
-	# fetch variables
-
-	# get address of local var:a
-	lw t1, 28(sp)
-	mv t2, t0
-	div t0, t1, t2
 	mv s3, t0
 
-	# ret result_
+	# ret i
 
 	# fetch variables
-	mv t1, t0
+	mv t1, s3
 	mv a0, t1
 	addi sp, sp, 48
 	ret 

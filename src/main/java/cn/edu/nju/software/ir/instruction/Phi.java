@@ -10,7 +10,7 @@ import static cn.edu.nju.software.ir.instruction.OpEnum.PHI;
 import static cn.edu.nju.software.ir.instruction.Operator.*;
 
 public class Phi extends Instruction {
-    private final BasicBlockRef block; // in which lock
+    // private final BasicBlockRef block; // in which lock
     private final Allocate memory; // merge for which memory
     /***
      * phi: first value, second block
@@ -23,10 +23,6 @@ public class Phi extends Instruction {
         operator = getOperator(PHI);
         operands = new ValueRef[0];
         this.memory = memory;
-    }
-
-    public BasicBlockRef getBlock() {
-        return block;
     }
 
     public void add(ValueRef value, BasicBlockRef block) {
@@ -105,6 +101,14 @@ public class Phi extends Instruction {
             tmp[l++] = operands[i];
         }
         operands = tmp;
+    }
+
+    public int getPredSize() {
+        return operands.length / 2;
+    }
+
+    public BasicBlockRef getPredBlock(int index) {
+        return (BasicBlockRef) operands[index * 2 + 1];
     }
 
     /***

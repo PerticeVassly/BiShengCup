@@ -206,7 +206,7 @@ public class MemToReg implements ModulePass {
     public boolean runOnModule(ModuleRef module) {
         this.module = module;
         memToRegProc();
-        eliminateConstExp.runOnModule(module);
+        eliminateConstExp.runOnModule(this.module);
         return false; // TODO
     }
 

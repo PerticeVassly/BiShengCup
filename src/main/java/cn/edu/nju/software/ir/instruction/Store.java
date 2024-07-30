@@ -10,6 +10,7 @@ public class Store extends Instruction {
         operator = "store";
         operands = new ValueRef[]{value, pointer};
         value.addUser(this);
+        pointer.addUser(this);
     }
 
     @Override

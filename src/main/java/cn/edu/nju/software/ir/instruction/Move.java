@@ -45,6 +45,10 @@ public class Move extends Instruction {
         }
     }
 
+    public ValueRef getSrc() {
+        return getOperand(0);
+    }
+
     @Override
     public void replace(ValueRef oldValue, ValueRef newValue) {
         if (add != null) {
