@@ -285,7 +285,6 @@ public class FunctionInlinePass implements ModulePass {
                 //为变量添加user
                 copyValueMap.get(call.getRealParam(toBeChanged.get(call)).getName()).addUser(call);
                 call.setParam(toBeChanged.get(call),copyValueMap.get(call.getRealParam(toBeChanged.get(call)).getName()));
-
                 continue;
             }
             if (!instruction.getOperand(toBeChanged.get(instruction)).getName().isEmpty()) {
