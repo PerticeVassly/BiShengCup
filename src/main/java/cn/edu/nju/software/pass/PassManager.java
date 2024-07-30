@@ -45,8 +45,8 @@ public class PassManager {
         allPasses.add(new LoopInvariantCodeMotionPass());
 //      allPasses.add(new RedundantBlockEliminationPass());
         allPasses.add(EliminateDeadCode.getInstance());
-//        allPasses.add(MemToReg.getInstance());
-//        allPasses.add(RegToMem.getInstance());
+        allPasses.add(MemToReg.getInstance());
+        allPasses.add(RegToMem.getInstance());
         allPasses.add(StrengthReductionPass.getInstance());
     }
     public void setDbgFlag(){

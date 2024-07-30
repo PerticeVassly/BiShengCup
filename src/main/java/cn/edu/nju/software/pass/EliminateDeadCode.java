@@ -93,6 +93,7 @@ public class EliminateDeadCode implements ModulePass {
                     Instruction ir = bb.getIr(bb.getIrNum() - 1);
                     CFG cfg = CFGBuildPass.getInstance().getBasicBlockCFG(func);
                     cfg.removeEdge(self, target);
+                    target.addPred(bb);
                     cfg.addEdge(bb, target);
                     if (ir instanceof Br br) {
                         br.setTarget(target);
