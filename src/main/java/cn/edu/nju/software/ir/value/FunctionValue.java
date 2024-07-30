@@ -160,6 +160,15 @@ public class FunctionValue extends ValueRef {
         }
     }
 
+    /***
+     * if containing specific block
+     * @param block
+     * @return
+     */
+    public boolean containsBlock(BasicBlockRef block) {
+        return blocks.contains(block);
+    }
+
     public void emitAlloc(Allocate inst) {
         entryBlock.put(0, inst);
     }

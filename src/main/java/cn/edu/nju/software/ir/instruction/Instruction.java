@@ -1,5 +1,6 @@
 package cn.edu.nju.software.ir.instruction;
 
+import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.value.ValueRef;
 
@@ -9,10 +10,23 @@ public abstract class Instruction {
     protected ValueRef[] operands = new ValueRef[0];
     protected String operator;
     protected ValueRef lVal;
+    protected BasicBlockRef block;
 //    protected final static String DELIMITER = ", ";
 
     public ValueRef getOperand(int index) {
         return operands[index];
+    }
+
+    /***
+     * inst block
+     * @param block
+     */
+    public void setBlock(BasicBlockRef block) {
+        this.block = block;
+    }
+
+    public BasicBlockRef getBlock() {
+        return block;
     }
 
     /***

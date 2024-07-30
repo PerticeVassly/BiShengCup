@@ -52,7 +52,7 @@ public class Cmp extends Binary {
                     cv = new ConstValue(i1, !operands[0].equals(operands[1]));
                     break;
                 case "eq":
-                case "neq":
+                case "oeq":
                     cv = new ConstValue(i1, operands[0].equals(operands[1]));
                     break;
                 case "sgt":

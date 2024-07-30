@@ -46,8 +46,8 @@ public class PassManager {
 //      allPasses.add(new RedundantBlockEliminationPass());
         allPasses.add(EliminateDeadCode.getInstance());
         allPasses.add(MemToReg.getInstance());
-        allPasses.add(RegToMem.getInstance());
         allPasses.add(StrengthReductionPass.getInstance());
+        allPasses.add(RegToMem.getInstance());
     }
     public void setDbgFlag(){
         for(Pass pass:allPasses){
