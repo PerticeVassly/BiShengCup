@@ -38,6 +38,7 @@ public class FunctionInlinePass implements ModulePass {
         //对可内联函数预处理，消除冗余的load，store指令
         preProcess();
         doPass(module);
+        removeDefault(module);
         return true;
     }
 
@@ -497,6 +498,12 @@ public class FunctionInlinePass implements ModulePass {
             }
         }
     }
-
+    private void removeDefault(ModuleRef moduleRef){
+        for (FunctionValue functionValue : moduleRef.getFunctions()){
+            for (BasicBlockRef bb : functionValue.getBasicBlockRefs()) {
+                bb.getIrs().removeIf(instruction -> instruction instanceof Default);
+            }
+        }
+    }
 }
 

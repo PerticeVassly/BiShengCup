@@ -41,7 +41,7 @@ public class PassManager {
     private void register(){
         allPasses.add(CFGBuildPass.getInstance());
         allPasses.add(LoopBuildPass.getInstance());
-//        allPasses.add(new FunctionInlinePass());
+        allPasses.add(new FunctionInlinePass());
         allPasses.add(new LoopInvariantCodeMotionPass());
 //      allPasses.add(new RedundantBlockEliminationPass());
         allPasses.add(EliminateDeadCode.getInstance());

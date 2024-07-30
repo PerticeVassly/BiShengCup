@@ -37,7 +37,7 @@ public class FrontEndTest {
 //    @StringSource("65_color")
 //    @StringSource("101_float_arr")
 //    @StringSource("38_light2d")
-    @StringSource("95_float")
+    @StringSource("59_sort_test5")
 //    @StringSource("79_var_name")
 //    @StringSource("90_many_locals")
 //    @StringSource("64_calculator")
