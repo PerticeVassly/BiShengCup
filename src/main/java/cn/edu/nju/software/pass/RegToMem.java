@@ -102,7 +102,8 @@ public class RegToMem implements ModulePass {
         fv.appendBasicBlock(mid);
 
         // modify start, mid and end
-        Instruction inst = start.getIr(start.getIrNum() - 1); // last inst
+        int finalIndex = Util.findLastInstruction(start);
+        Instruction inst = start.getIr(finalIndex); // last inst
         inst.replace(end, mid); // replace start's target, start jumps to mid
         mid.addPred(start);
         Br br = new Br(end); // br %end
@@ -128,7 +129,8 @@ public class RegToMem implements ModulePass {
             ValueRef src = tmp.get(bb);
             ValueRef target = phi.getLVal();
             Move move = new Move(target, src);
-            bb.put(bb.getIrNum() - 1, move); // insert into the one before last
+            int finalIndex = Util.findLastInstruction(bb);
+            bb.put(finalIndex, move); // insert into the one before last
         }
     }
 

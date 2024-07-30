@@ -14,7 +14,7 @@
 **/src/test/resources/**
 
 
-**/target
+/target
 
 
 pom.xml
@@ -59,6 +59,3 @@ build/
 ### Mac OS ###
 .DS_Store
 
-/src/test/
-/src/test/
-/src/test/resources/2023/

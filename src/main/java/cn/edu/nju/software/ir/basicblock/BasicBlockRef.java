@@ -5,6 +5,7 @@ import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
+import cn.edu.nju.software.pass.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -198,13 +199,13 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public int getDirectSuccessorNum() {
-        Instruction inst = irs.get(irNum - 1);
+        // if this is a pred block, its last inst must be a br/condBr
+        int index = Util.findLastInstruction(this);
+        Instruction inst = irs.get(index);
         if (inst instanceof CondBr) {
             return 2;
-        } else if (inst instanceof Br) {
-            return 1;
         } else {
-            return 0;
+            return 1;
         }
     }
 }

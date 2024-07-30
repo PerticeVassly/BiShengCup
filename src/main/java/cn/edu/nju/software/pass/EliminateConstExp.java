@@ -56,7 +56,11 @@ public class EliminateConstExp implements ModulePass{
                     if (inst.getOperand(0) instanceof ConstValue && inst.getOperand(1) instanceof ConstValue) {
                         ConstValue cv = ((Binary) inst).calculate();
                         for (Instruction user : inst.getLVal().getUser()) {
-                            user.replace(inst.getLVal(), cv);
+                            if (user instanceof Call call) {
+                                call.replaceRealParams(inst.getLVal(), cv);
+                            } else {
+                                user.replace(inst.getLVal(), cv);
+                            }
                         }
                         block.dropIr(inst);
                         i--;
@@ -72,7 +76,11 @@ public class EliminateConstExp implements ModulePass{
                                 op = zero;
                             }
                             for (Instruction user : inst.getLVal().getUser()) {
-                                user.replace(inst.getLVal(), op);
+                                if (user instanceof Call) {
+                                    ((Call)user).replaceRealParams(inst.getLVal(), op);
+                                } else {
+                                    user.replace(inst.getLVal(), op);
+                                }
                             }
                             block.dropIr(inst);
                             i--;
