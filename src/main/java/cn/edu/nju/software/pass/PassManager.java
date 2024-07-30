@@ -43,7 +43,7 @@ public class PassManager {
         allPasses.add(LoopBuildPass.getInstance());
 //        allPasses.add(new FunctionInlinePass());
         allPasses.add(new LoopInvariantCodeMotionPass());
-//      allPasses.add(new RedundantBlockEliminationPass());
+        allPasses.add(new RedundantBlockEliminationPass());
         allPasses.add(EliminateDeadCode.getInstance());
         allPasses.add(MemToReg.getInstance());
         allPasses.add(StrengthReductionPass.getInstance());
