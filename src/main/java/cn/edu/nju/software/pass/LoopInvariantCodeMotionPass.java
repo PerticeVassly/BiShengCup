@@ -125,12 +125,18 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
                     //仅仅为了表示这个变量在循环中被更新，防止下次load的时候误认为这个变量没有被更新
                     valueTable.put(dest,loop.getRoot());
                 }
+                //数组变量一律不外提
+                if(instruction instanceof GEP gep){
+                    ValueRef lVal=gep.getLVal();
+                    //仅仅为了表示这个变量在循环中被更新，防止下次load的时候误认为这个变量没有被更新
+                    valueTable.put(lVal,loop.getRoot());
+                }
             }
         }
         List<Instruction> result = new ArrayList<>();
         for (BasicBlockRef basicBlockRef : judgeBlocks) {
             for (Instruction instruction : basicBlockRef.getIrs()) {
-                if (instruction instanceof Br||instruction instanceof CondBr||instruction instanceof Call) {
+                if (instruction instanceof Br||instruction instanceof CondBr||instruction instanceof Call||instruction instanceof GEP) {
                     continue;
                 }
                 //通过判断与当前指令关联的值是否在循环内被更新来判断当前指令的左值是否被更新
