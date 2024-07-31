@@ -69,7 +69,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
     }
 
     private void beforeABinaryInstr(Instruction instr){
-        insertComment(instr.getOp().toString() + " " + instr.getLVal().getName() + " " + instr.getOperand(0).getName() + " " + instr.getOperand(1).getName() + " ");
         allocator.prepareOperands(instr.getOperand(0), instr.getOperand(1));
     }
 
@@ -84,7 +83,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
     }
 
     private void beforeAUnaryInstr(Instruction instr){
-        insertComment( " " + instr.getLVal().getName() + " " + instr.getOperand(0).getName());
         allocator.prepareOperands(instr.getOperand(0));
     }
 
@@ -187,70 +185,31 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(Allocate allocate) {
         riscInstructions.add(new RiscComment("allocate " + allocate.getLVal().getName()));
-        TypeRef base = ((Pointer) allocate.getLVal().getType()).getBase();
-        int typeLen = 8;
-        if(base instanceof ArrayType){
-            typeLen = ArrayType.getTotalSize(base);
-        } else if(base instanceof IntType){
-            typeLen = 4;
-        } else if(base instanceof FloatType){
-            typeLen = 4;
-        } else if(base instanceof Pointer){
-            typeLen = 8;
-        } else {
-            assert false;
-        }
-
-        if(allocator.checkPtrHasAllocated(allocate.getLVal().getName())){
-            allocator.resetLastLVal();
-        } else{
-            assert false;
-            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(allocator.getOffset(allocate.getLVal()) - typeLen)));
-            riscInstructions.add(new RiscAdd(new Register("t0"), new Register("sp"), new Register("t0")));
-            allocator.setLastLVal(allocate.getLVal());
-            saveLVal(allocate.getLVal());
-        }
+        allocator.resetLastLVal();//所有通过allocate分配出来的指针都已经被记录了
     }
 
     @Override
     public void visit(Load load) {
         ValueRef src = load.getOperand(0);
-        ValueRef lVal = load.getLVal();
-
-        insertComment("load " + ((lVal instanceof GlobalVar) ? "@" + lVal.getName() : lVal.getName()) + " " + src.getName());
-
+        LocalVar lVal = (LocalVar) load.getLVal();
+        insertComment("load " + lVal.getName() + " " + src.getName());
         Operand srcOperand = allocator.getAddrOfVarPtrPointsToWithOffset(src, 0);
-        Operand destOperand = allocator.getAddrOfLocalVar(lVal);
-
-        if (((Pointer) src.getType()).getBase() instanceof IntType) {
+        TypeRef type = ((Pointer) src.getType()).getBase();
+        if (type instanceof IntType) {
             riscInstructions.add(new RiscLw(new Register("t0"), srcOperand));
-            allocator.resetLastLVal();
-            if(((LocalVar) lVal).isTmpVar()){//todo tempVar
-                allocator.recordTempVar((LocalVar) lVal);
-            }
-            else {
-                riscInstructions.add(new RiscSw(new Register("t0"), destOperand));
-            }
-        } else if (((Pointer) src.getType()).getBase() instanceof FloatType) {
+        } else if (type instanceof FloatType) {
             riscInstructions.add(new RiscFlw(new Register("ft0"), srcOperand));
-            allocator.resetLastLVal();
-            if(((LocalVar) lVal).isTmpVar()){//todo tempVar
-                allocator.recordTempVar((LocalVar) lVal);
-            }
-            else {
-                riscInstructions.add(new RiscFsw(new Register("ft0"), destOperand));
-            }
-        } else if (((Pointer) src.getType()).getBase() instanceof Pointer){
+        } else if (type instanceof Pointer){
             riscInstructions.add(new RiscLd(new Register("t0"), srcOperand));
-            riscInstructions.add(new RiscSd(new Register("t0"), destOperand));
-            allocator.resetLastLVal();
         } else {
             assert false;
         }
+        afterABinaryInstr(load);
     }
 
     @Override
     public void visit(Add add) {
+        insertComment("add " + add.getLVal().getName() + " " + add.getOperand(0).getName() + " " + add.getOperand(1).getName());
         beforeABinaryInstr(add);
         riscInstructions.add(new RiscAddw(new Register("t0"), new Register("t1"), new Register("t2")));
         afterABinaryInstr(add);
@@ -258,6 +217,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(FAdd fAdd) {
+        insertComment("fadd " + fAdd.getLVal().getName() + " " + fAdd.getOperand(0).getName() + " " + fAdd.getOperand(1).getName());
         beforeABinaryInstr(fAdd);
         riscInstructions.add(new RiscFadds(new Register("ft0"), new Register("ft1"), new Register("ft2")));
         afterABinaryInstr(fAdd);
@@ -265,13 +225,15 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Sub sub) {
+        insertComment("sub " + sub.getLVal().getName() + " " + sub.getOperand(0).getName() + " " + sub.getOperand(1).getName());
         beforeABinaryInstr(sub);
-        riscInstructions.add(new RiscSub(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscSubw(new Register("t0"), new Register("t1"), new Register("t2")));
         afterABinaryInstr(sub);
     }
 
     @Override
     public void visit(FSub fSub) {
+        insertComment("fsub " + fSub.getLVal().getName() + " " + fSub.getOperand(0).getName() + " " + fSub.getOperand(1).getName());
         beforeABinaryInstr(fSub);
         riscInstructions.add(new RiscFsubs(new Register("ft0"), new Register("ft1"), new Register("ft2")));
         afterABinaryInstr(fSub);
@@ -279,13 +241,15 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Mul mul) {
+        insertComment("mul " + mul.getLVal().getName() + " " + mul.getOperand(0).getName() + " " + mul.getOperand(1).getName());
         beforeABinaryInstr(mul);
-        riscInstructions.add(new RiscMul(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscMulw(new Register("t0"), new Register("t1"), new Register("t2")));
         afterABinaryInstr(mul);
     }
 
     @Override
     public void visit(FMul fmul) {
+        insertComment("fmul " + fmul.getLVal().getName() + " " + fmul.getOperand(0).getName() + " " + fmul.getOperand(1).getName());
         beforeABinaryInstr(fmul);
         riscInstructions.add(new RiscFmuls(new Register("ft0"), new Register("ft1"), new Register("ft2")));
         afterABinaryInstr(fmul);
@@ -293,20 +257,23 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Mod mod) {
+        insertComment("mod " + mod.getLVal().getName() + " " + mod.getOperand(0).getName() + " " + mod.getOperand(1).getName());
         beforeABinaryInstr(mod);
-        riscInstructions.add(new RiscRem(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscRemw(new Register("t0"), new Register("t1"), new Register("t2")));
         afterABinaryInstr(mod);
     }
 
     @Override
     public void visit(Div div) {
+        insertComment("div " + div.getLVal().getName() + " " + div.getOperand(0).getName() + " " + div.getOperand(1).getName());
         beforeABinaryInstr(div);
-        riscInstructions.add(new RiscDiv(new Register("t0"), new Register("t1"), new Register("t2")));
+        riscInstructions.add(new RiscDivw(new Register("t0"), new Register("t1"), new Register("t2")));
         afterABinaryInstr(div);
     }
 
     @Override
     public void visit(Ashr ashr) {
+        insertComment("ashr " + ashr.getLVal().getName() + " " + ashr.getOperand(0).getName() + " " + ashr.getOperand(1).getName());
         beforeABinaryInstr(ashr);
         riscInstructions.add(new RiscSra(new Register("t0"), new Register("t1"), new Register("t2")));
         afterABinaryInstr(ashr);
@@ -314,6 +281,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(Shl shl){
+        insertComment("shl " + shl.getLVal().getName() + " " + shl.getOperand(0).getName() + " " + shl.getOperand(1).getName());
         beforeABinaryInstr(shl);
         riscInstructions.add(new RiscSll(new Register("t0"), new Register("t1"), new Register("t2")));
         afterABinaryInstr(shl);
@@ -322,6 +290,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(FDiv fdiv) {
+        insertComment("fdiv " + fdiv.getLVal().getName() + " " + fdiv.getOperand(0).getName() + " " + fdiv.getOperand(1).getName());
         beforeABinaryInstr(fdiv);
         riscInstructions.add(new RiscFdivs(new Register("ft0"), new Register("ft1"), new Register("ft2")));
         afterABinaryInstr(fdiv);
@@ -329,6 +298,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(IntToFloat intToFloat) {
+        insertComment("intToFloat " + intToFloat.getLVal().getName());
         beforeAUnaryInstr(intToFloat);
         riscInstructions.add(new RiscFcvtsw(new Register("ft0"), new Register("t1")));
         afterAUnaryInstr(intToFloat);
@@ -336,6 +306,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     @Override
     public void visit(FloatToInt floatToInt) {
+        insertComment("floatToInt " + floatToInt.getLVal().getName());
         beforeAUnaryInstr(floatToInt);
         riscInstructions.add(new RiscFcvtws(new Register("t0"), new Register("ft1")));
         afterAUnaryInstr(floatToInt);
@@ -344,16 +315,13 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(Br br) {
         insertComment("br " + br.getTarget().getName());
-
         /*
         j label
-
         ->
-
         la t1 label
         jr t1
          */
-
+        //todo() wait to reduce the allocate instr
         riscInstructions.add(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(br.getTarget().getName()))));
         riscInstructions.add(new RiscJr(new Register("t1")));
         allocator.resetLastLVal();
@@ -364,7 +332,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
         ValueRef cond = condBr.getOperand(0);
         BasicBlockRef ifTrue = condBr.getTrueBlock();
         BasicBlockRef ifFalse = condBr.getFalseBlock();
-
         insertComment("condBr " + cond.getName() + " " + ifTrue.getName() + " " + ifFalse.getName());
         allocator.prepareOperands(cond);
         /*
@@ -381,9 +348,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
             la t1 ifTrue
             jr t1;
          */
-
 //        riscInstructions.add(new RiscBeqz(new Register("t1"), ifFalse.getName()));
 //        riscInstructions.add(new RiscJ(ifTrue.getName()));
+        //todo() wait to reduce the allocate instr
         String tempBlock1 = RiscModule.createTempBlock();
         String tempBlock2 = RiscModule.createTempBlock();
         riscInstructions.add(new RiscBeqz(new Register("t1"), tempBlock1));
@@ -394,97 +361,71 @@ public class RiscInstrGenerator implements InstructionVisitor {
         riscInstructions.add(new RiscLabel(tempBlock2));
         riscInstructions.add(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(ifTrue.getName()))));
         riscInstructions.add(new RiscJr(new Register("t1")));
-
         allocator.resetLastLVal();
     }
 
     @Override
     public void visit(Cmp cmp) {
+        insertComment("cmp " + cmp.getLVal().getName() + " " + cmp.getOperand(0).getName() + " " + cmp.getOperand(1).getName());
         beforeABinaryInstr(cmp);
-
-        /*
-        "ne", "eq", "sgt", "slt", "sge", "sle",
-                "one", "oeq", "ogt", "olt", " oge", "ole"
-         */
-        String cmpType = cmp.getType();
+        String cmpType = cmp.getType().trim();
         switch (cmpType) {
-            //not equal
             case "ne":
-                //use XOR to simulate if is zero
-                //if same set 0, else set 1
                 riscInstructions.add(new RiscXor(new Register("t0"), new Register("t1"), new Register("t2")));
                 riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("t0")));
                 riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("t0")));
                 break;
-
             case "eq":
-                //use XOR to simulate if is zero
                 riscInstructions.add(new RiscXor(new Register("t0"), new Register("t1"), new Register("t2")));
                 riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("t0")));
                 break;
-
             case "sgt":
-                // dest = rs1 - rs2 (dest > 0)
                 riscInstructions.add(new RiscSub(new Register("t0"), new Register("t1"), new Register("t2")));
-                // dest > 0 dest = 1
                 riscInstructions.add(new RiscSgtz(new Register("t0"), new Register("t0")));
                 break;
-
             case "slt":
-                //slt
                 riscInstructions.add(new RiscSlt(new Register("t0"), new Register("t1"), new Register("t2")));
                 break;
-
             case "sge":
-                //rs1 < rs2 dest = 0
                 riscInstructions.add(new RiscSlt(new Register("t0"), new Register("t1"), new Register("t2")));
                 riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("t0")));
                 break;
-
             case "sle":
-                //dest = rs1 - rs2 (dest <= 0)
                 riscInstructions.add(new RiscSub(new Register("t0"), new Register("t1"), new Register("t2")));
-                // if dest <= 0 then dest > 0 is false -> dest = 0
                 riscInstructions.add(new RiscSgtz(new Register("t0"), new Register("t0")));
-                // reverse the result
                 riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("t0")));
                 break;
-
             case "one":
-                //dest = rs1 - rs2 (dest != 0)
                 riscInstructions.add(new RiscFeqs(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("t0")));
                 break;
-
             case "oeq":
                 riscInstructions.add(new RiscFeqs(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 break;
-
             case "ogt":
                 riscInstructions.add(new RiscFles(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("t0")));
                 break;
-
             case "olt":
                 riscInstructions.add(new RiscFlts(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 break;
-
             case "oge":
                 riscInstructions.add(new RiscFlts(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 riscInstructions.add(new RiscSeqz(new Register("t0"), new Register("t0")));
                 break;
-
             case "ole":
                 riscInstructions.add(new RiscFles(new Register("t0"), new Register("ft1"), new Register("ft2")));
                 break;
-
+            default:
+                assert false;
+                break;
         }
         afterABinaryInstr(cmp);
     }
 
     @Override
     public void visit(Logic logic) {
-        //and or xor
+        insertComment("logic " + logic.getLVal().getName() + " " + logic.getOperand(0).getName() + " " + logic.getOperand(1).getName());
         beforeABinaryInstr(logic);
         OpEnum op = logic.getOp();
         switch (op) {
@@ -499,12 +440,14 @@ public class RiscInstrGenerator implements InstructionVisitor {
                 break;
             default:
                 assert false;
+                break;
         }
         afterABinaryInstr(logic);
     }
 
     @Override
     public void visit(ZExt zExt) {
+        insertComment("zext " + zExt.getLVal().getName());
         beforeAUnaryInstr(zExt);
         riscInstructions.add(new RiscMv(new Register("t0"), new Register("t1")));
         afterAUnaryInstr(zExt);
@@ -514,35 +457,26 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(RetValue retValue) {
         ValueRef retVal = retValue.getOperand(0);
-
         insertComment("ret " + retVal.getName());
-
         allocator.prepareOperands(retVal);
-
         if(retVal.getType() instanceof IntType){
             riscInstructions.add(new RiscMv(new Register("a0"), new Register("t1")));
         } else if(retVal.getType() instanceof FloatType){
             riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft1")));
             riscInstructions.add(new RiscFmvwx(new Register("fa0"), new Register("t0")));
-        } else {
-            assert false;
-        }
-
+        } else {assert false;}
         int stackSize = allocator.getStackSize();
         if (stackSize > 0) {
             if(stackSize < 2048){
                 riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(stackSize)));
-            }
-            else {
+            } else {
                 riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
                 riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
             }
         }
-
         if (!llvmFunctionValue.getName().equals("main")) {
             restoreCalleeSavedRegs();
         }
-
         riscInstructions.add(new RiscRet());
         allocator.resetLastLVal();
     }
@@ -553,20 +487,23 @@ public class RiscInstrGenerator implements InstructionVisitor {
         insertComment("ret void");
         int stackSize = allocator.getStackSize();
         if (stackSize > 0) {
-            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
-            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+            if(stackSize < 2048){
+                riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(stackSize)));
+            } else {
+                riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
+                riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+            }
         }
-
         if (!llvmFunctionValue.getName().equals("main")) {
             restoreCalleeSavedRegs();
         }
-
         riscInstructions.add(new RiscRet());
         allocator.resetLastLVal();
     }
 
     @Override
     public void visit(BitCast bitCast) {
+        insertComment("bitcast " + bitCast.getLVal().getName() + " " + bitCast.getOperand(0).getName());
         beforeAUnaryInstr(bitCast);
         riscInstructions.add(new RiscMv(new Register("t0"), new Register("t1")));
         afterAUnaryInstr(bitCast);
@@ -578,16 +515,11 @@ public class RiscInstrGenerator implements InstructionVisitor {
         prepareParams(call);
         saveCallerSavedRegs();
         String funcName = call.getFunction().getName();
-
-        //todo() 这是前端函数名和实际调用的库函数名不一致的问题，这里需要修改
         if (funcName.equals("starttime") || funcName.equals("stoptime")) {
             funcName = "_sysy_" + funcName;
-            riscInstructions.add(new RiscLi(new Register("a0"), new ImmediateValue(call.getLineNo())));
         }
-
         riscInstructions.add(new RiscComment("call " + funcName));
         riscInstructions.add(new RiscCall(funcName));
-
         restoreCallerSavedRegs();
         releaseParams(call);
         saveReturnValue(call);
@@ -596,117 +528,102 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     private void saveReturnValue(Call call) {
         if (call.getLVal() != null) {
-            if (call.getLVal().getType() instanceof IntType) {
-                Operand addressToSave = allocator.getAddrOfLocalVar(call.getLVal());
-                riscInstructions.add(new RiscSw(new Register("a0"), addressToSave));
-            } else if (call.getLVal().getType() instanceof FloatType) {
-                Operand addressToSave = allocator.getAddrOfLocalVar(call.getLVal());
-                riscInstructions.add(new RiscFsw(new Register("fa0"), addressToSave));
-            } else {
-                assert false;
-            }
+            TypeRef type = call.getLVal().getType();
+            if (type instanceof IntType) {
+                riscInstructions.add(new RiscSw(new Register("a0"), allocator.getAddrOfLocalVar(call.getLVal())));
+            } else if (type instanceof FloatType) {
+                riscInstructions.add(new RiscFsw(new Register("fa0"), allocator.getAddrOfLocalVar(call.getLVal())));
+            } else {assert false;}
         }
     }
 
     private void prepareParams(Call call) {
-        riscInstructions.add(new RiscComment("prepare params"));
-        //prepare the parameters
+        riscInstructions.add(new RiscComment("prepare params int regs"));
         String[] argRegs = RiscSpecifications.getArgRegs();
         String[] fArgRegs = RiscSpecifications.getFArgRegs();
-
         List<ValueRef> realParams = call.getRealParams();
-
         int ptr = 0;
         int fptr = 0;
         int order = 0;
-        //todo()这里要使用order来记录相对于sp的偏移量，因为翻译中sp是不能变化的，所有变量偏移的值都基于sp为基准，一旦sp变化，memoryManager中的变量位置就错位了。最好要修改成以栈底s0为基准
         for (ValueRef realParam : realParams) {
-
-            if (realParam.getType() instanceof FloatType) {
-                //todo() 暂时这样写因为不确定可不可以直接mv freg
+            TypeRef type = realParam.getType();
+            if (type instanceof FloatType) {
                 if(fptr >= fArgRegs.length){
                     allocator.prepareOperands(realParam);
-                    order++;
-                    pushIntoStack(realParam, order);
-                    continue;
+                    String srcReg = "ft1";
+                    pushIntoStack(srcReg, realParam, ++order);
+                } else {
+                    allocator.prepareOperands(realParam);
+                    String srcReg = "ft1";
+                    riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register(srcReg)));
+                    riscInstructions.add(new RiscFmvwx(new Register(fArgRegs[fptr++]), new Register("t0")));
                 }
-                allocator.prepareOperands(realParam);
-                riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register("ft1")));
-                riscInstructions.add(new RiscFmvwx(new Register(fArgRegs[fptr]), new Register("t0")));
-                fptr++;
-            } else if (realParam.getType() instanceof IntType){
+            } else if (type instanceof IntType || type instanceof Pointer){
                 if(ptr >= argRegs.length){
                     allocator.prepareOperands(realParam);
-                    order++;
-                    pushIntoStack(realParam, order);
-                    continue;
-                }
-                allocator.prepareOperands(realParam);
-                riscInstructions.add(new RiscMv(new Register(argRegs[ptr]), new Register("t1")));
-                ptr++;
-            } else if(realParam.getType() instanceof Pointer){
-                if(ptr >= argRegs.length){
+                    String srcReg = "t1";
+                    pushIntoStack(srcReg ,realParam, ++order);
+                } else {
                     allocator.prepareOperands(realParam);
-                    order++;
-                    pushIntoStack(realParam, order);
-                    continue;
+                    String srcReg = "t1";
+                    riscInstructions.add(new RiscMv(new Register(argRegs[ptr++]), new Register(srcReg)));
                 }
-                allocator.prepareOperands(realParam);
-                riscInstructions.add(new RiscMv(new Register(argRegs[ptr]), new Register("t1")));
-                ptr++;
+            } else {assert false;}
+        }
+        if (order > 0) {
+            if(order * 8 < 2048){
+                riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L * order)));
             } else {
-                assert false;
+                riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(-8L * order)));
+                riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
             }
         }
-        
-        if (order > 0) {
-            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(-8L * order)));
-            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
-        }
     }
 
-    private void pushIntoStack(ValueRef realParam, int order){
+    private void pushIntoStack(String srcReg,ValueRef realParam, int order){
         insertComment("push " + realParam.getName());
         if(realParam.getType() instanceof IntType){
-            riscInstructions.add(new RiscSw(new Register("t1"),allocator.getRegWithOffset(-order * 8, "sp", "t2")));
+            riscInstructions.add(new RiscSw(new Register(srcReg),allocator.getRegWithOffset(-order * 8, "sp", "t4")));
         } else if(realParam.getType() instanceof FloatType){
-            riscInstructions.add(new RiscFsw(new Register("ft1"), allocator.getRegWithOffset(-order * 8, "sp", "t2")));
+            riscInstructions.add(new RiscFsw(new Register(srcReg), allocator.getRegWithOffset(-order * 8, "sp", "t4")));
         } else if(realParam.getType() instanceof Pointer){
-            riscInstructions.add(new RiscSd(new Register("t1"), allocator.getRegWithOffset(-order * 8, "sp", "t2")));
-        } else {
-            assert false;
-        }
+            riscInstructions.add(new RiscSd(new Register(srcReg), allocator.getRegWithOffset(-order * 8, "sp", "t4")));
+        } else {assert false;}
     }
 
+    /**
+     * 调用时候保存在栈里面用于传参的参数，弹栈释放
+     * @param call
+     */
     private void releaseParams(Call call){
         riscInstructions.add(new RiscComment("release params"));
         int intAndPointerParamNum = call.getRealParams().stream().filter(x -> x.getType() instanceof IntType || x.getType() instanceof Pointer).toArray().length;
-
         int floatParamNum = call.getRealParams().stream().filter(x -> x.getType() instanceof FloatType).toArray().length;
-
-        int finalToRelase =Math.max(intAndPointerParamNum - RiscSpecifications.getArgRegs().length, 0) + Math.max(floatParamNum - RiscSpecifications.getFArgRegs().length, 0);
-        if (finalToRelase > 0) {
-            riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(8L * finalToRelase)));
-            riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+        int finalToRelease =Math.max(intAndPointerParamNum - RiscSpecifications.getArgRegs().length, 0) + Math.max(floatParamNum - RiscSpecifications.getFArgRegs().length, 0);
+        if (finalToRelease > 0) {
+            if(finalToRelease * 8 < 2048){
+                riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(8L * finalToRelease)));
+            } else {
+                riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(8L * finalToRelease)));
+                riscInstructions.add(new RiscAdd(new Register("sp"), new Register("sp"), new Register("t0")));
+            }
         }
     }
 
+    /**
+     * 保存caller saved regs,但是只有记录其中保存着tempvar的值的才会被save
+     */
     private void saveCallerSavedRegs() {
         riscInstructions.add(new RiscComment("save caller saved regs"));
-
         String[] callerSavedRegs = RiscSpecifications.getCallerSavedRegs();
-
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L * callerSavedRegs.length)));
-
         for (int i = 0; i < callerSavedRegs.length; i++) {
-            //ra is need to store althougth it is not used in tempVarTable
-            if(!allocator.isUsedReg(callerSavedRegs[i]) && !callerSavedRegs[i].equals("ra")){
+            if(!allocator.isUsedReg(callerSavedRegs[i]) && !callerSavedRegs[i].equals("ra")){ //ra不会被record但是仍然需要保存
                 continue;
             }
-            if(callerSavedRegs[i].startsWith("f")){
+            if(RiscSpecifications.isFloatReg(callerSavedRegs[i])){
                 riscInstructions.add(new RiscFsd(new Register(callerSavedRegs[i]), new IndirectRegister("sp", i * 8)));
-            }
-            else {
+            } else {
                 riscInstructions.add(new RiscSd(new Register(callerSavedRegs[i]), new IndirectRegister("sp", i * 8)));
             }
         }
@@ -714,35 +631,26 @@ public class RiscInstrGenerator implements InstructionVisitor {
 
     private void restoreCallerSavedRegs() {
         riscInstructions.add(new RiscComment("restore caller saved regs"));
-
         String[] registers = RiscSpecifications.getCallerSavedRegs();
-
         for (int i = 0; i < registers.length; i++) {
-            //ra is need to store althougth it is not used in tempVarTable
             if(!allocator.isUsedReg(registers[i]) && !registers[i].equals("ra")){
                 continue;
             }
-            if(registers[i].startsWith("f")){
+            if(RiscSpecifications.isFloatReg(registers[i])){
                 riscInstructions.add(new RiscFld(new Register(registers[i]), new IndirectRegister("sp", i * 8)));
-            }
-            else {
-                RiscInstruction riscLd = new RiscLd(new Register(registers[i]), new IndirectRegister("sp", i * 8));
-                riscInstructions.add(riscLd);
+            } else {
+                riscInstructions.add(new RiscLd(new Register(registers[i]), new IndirectRegister("sp", i * 8)));
             }
         }
-
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(8L * registers.length)));
     }
 
     private void restoreCalleeSavedRegs() {
         riscInstructions.add(new RiscComment("restore callee saved regs"));
-
         String[] calleeSavedRegs = RiscSpecifications.getCalleeSavedRegs();
-
         for (int i = 0; i < calleeSavedRegs.length; i++) {
             riscInstructions.add(new RiscLd(new Register(calleeSavedRegs[i]), new IndirectRegister("sp", i * 8)));
         }
-
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(8L * calleeSavedRegs.length)));
     }
 
@@ -753,5 +661,4 @@ public class RiscInstrGenerator implements InstructionVisitor {
     public void insertComment(String comment){
         riscInstructions.add(new RiscComment(comment));
     }
-
 }
