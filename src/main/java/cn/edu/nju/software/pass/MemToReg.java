@@ -21,6 +21,8 @@ public class MemToReg implements ModulePass {
 
     private ModuleRef module;
 
+    private boolean changed = false;
+
     public final static ValueRef UNDEF = new ValueRef(new TypeRef(), "undef");
 
     Generator gen = Generator.getInstance();
@@ -189,24 +191,50 @@ public class MemToReg implements ModulePass {
                         j--;
                     }
                 }
+            }
+        }
 
-                // rm redundant phi
+    }
+
+    private void modifyPhiOnModule() {
+        for (int i = 0; i < module.getFunctionNum(); i++) {
+            FunctionValue fv = module.getFunction(i);
+            if (fv.isLib()) {
+                continue;
+            }
+            modifyPhi(fv);
+        }
+    }
+
+    private void modifyPhi(FunctionValue fv) {
+        // rm redundant phi
+        for (int i = 0; i < fv.getBlockNum(); i++) {
+            BasicBlockRef block = fv.getBlock(i);
+            for (int j = 0; j < block.getIrNum(); j++) {
+                Instruction inst = block.getIr(j);
                 if (inst instanceof Phi phi) {
                     if (phi.isRedundant()) { // only 2 operands: [value, block]
                         phi.modify();
-                        bb.dropIr(inst);
+                        block.dropIr(inst);
                         j--;
+                        changed = true;
                     }
                 }
             }
         }
     }
+
     @Override
     public boolean runOnModule(ModuleRef module) {
         this.module = module;
         memToRegProc();
-        eliminateConstExp.runOnModule(this.module);
-        return false; // TODO
+        changed = true;
+        while (changed) {
+            changed = false;
+            modifyPhiOnModule();
+            changed |= eliminateConstExp.runOnModule(this.module);
+        }
+        return false;
     }
 
     @Override
