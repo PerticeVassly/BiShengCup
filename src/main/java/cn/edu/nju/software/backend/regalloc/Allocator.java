@@ -393,9 +393,8 @@ public class Allocator {
 
     /**
      * 将局部变量（当前存储在reg中）保存进入内存(需要保存的变量只可能是localVar)
-     * @param variable
-     * @param regName
-     * @return
+     * @param variable 要保存的变量
+     * @param regName 当前对应的值所在的寄存器
      */
     public void storeLocalVarIntoMemory(ValueRef variable, String regName){
         TypeRef type = variable.getType();
@@ -408,5 +407,34 @@ public class Allocator {
         } else {
             assert false;
         }
+    }
+
+    /**
+     * 将内存中的局部变量加载到寄存器中（只可能是localVar）
+     * @param variable 要加载的变量
+     * @param regName 加载到的寄存器
+     */
+    public void loadLocalVarFromMemory(ValueRef variable, String regName){
+        TypeRef type = variable.getType();
+        if(type instanceof FloatType){
+            generator.addInstruction(new RiscFlw(new Register(regName), getAddrOfLocalVar(variable)));
+        } else if(type instanceof IntType || type instanceof BoolType){
+            generator.addInstruction(new RiscLw(new Register(regName), getAddrOfLocalVar(variable)));
+        } else if(type instanceof Pointer){
+            generator.addInstruction(new RiscLd(new Register(regName), getAddrOfLocalVar(variable)));
+        } else {
+            assert false;
+        }
+    }
+
+    /**
+     * 将内存中的localVar中的值拷贝到另一个localVar对应的内存中
+     * @param src
+     * @param dest
+     * @param regName 用于中间存储值的寄存器
+     */
+    public void cpLocalVarBetweenMemory(ValueRef src, ValueRef dest, String regName){
+        loadLocalVarFromMemory(src, regName);
+        storeLocalVarIntoMemory(dest, regName);
     }
 }
