@@ -48,7 +48,6 @@ public class MemoryManager {
         if (checkInMem(variable)) {
             return;
         }
-
         size += width;
         memoryAddr.put(variable.getName(), size);
     }

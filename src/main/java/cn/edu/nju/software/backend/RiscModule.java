@@ -1,15 +1,11 @@
 package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.ir.module.ModuleRef;
-import cn.edu.nju.software.ir.value.FunctionValue;
-import cn.edu.nju.software.ir.value.GlobalVar;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.*;
 import java.util.stream.Stream;
-
 
 public class RiscModule {
 
@@ -21,7 +17,7 @@ public class RiscModule {
 
     private static final HashSet<String> libFuncs = new HashSet<>();
 
-    private static long tempBlockCount = 0;
+    private static long tempBlockCount = 0;/* 用于记录一个Moudle中后端额外生成的临时Block的数量 */
 
     static {
         Stream<String> funcs = Stream.of(
@@ -36,60 +32,46 @@ public class RiscModule {
     }
 
     public void codeGen() {
-        //一定由全局变量Main
-        for(GlobalVar globalVar : llvmModule.getGlobalVars()){
-            riscGlobalVars.add(new RiscGlobalVar(globalVar));
-        }
-
-        for(FunctionValue function : llvmModule.getFunctions()){
-            if(!libFuncs.contains(function.getName())){
-                RiscFunction riscFunction = new RiscFunction(function);
-                riscFunctions.add(riscFunction);
-                riscFunction.codeGen();
-            }
-        }
+        llvmModule.getGlobalVars()
+                .forEach(globalVar -> riscGlobalVars.add(new RiscGlobalVar(globalVar)));
+        llvmModule.getFunctions().stream()
+                .filter(function -> !libFuncs.contains(function.getName()))
+                .toList()
+                .forEach(function -> {
+                    RiscFunction riscFunction = new RiscFunction(function);
+                    riscFunctions.add(riscFunction);
+                    riscFunction.codeGen();
+                });
     }
 
-    public static String createTempBlock(){
+    public static String createTempBlock() {
         return "tempBlock" + tempBlockCount++;
     }
 
     public void dumpToConsole() {
-        //补一个main
         System.out.println(".data" + System.lineSeparator() + ".align 3");
         riscGlobalVars.forEach(RiscGlobalVar::dumpToConsole);
-
         riscFunctions.forEach(RiscFunction::dumpToConsole);
-        //添加memset函数，a0传数组首地址，a1传想要赋的值，a2传需要赋值的空间大小
-        // memset32:
-        System.out.println(System.lineSeparator() + """
-                memset32:\s
-                    blez    a2, .LBB0_3\s
-                    add     a2, a2, a0\s
-                .LBB0_2:\s
-                    sw      a1, 0(a0)\s
-                    addi    a0, a0, 4\s
-                    bltu    a0, a2, .LBB0_2\s
-                .LBB0_3:\s
-                    ret\s""");
+        appendRiscFunctions();
+    }
 
-        // memset64:
+    /**
+     * 在文件末尾添加自定义risc库函数
+     */
+    private void appendRiscFunctions() {
         System.out.println(System.lineSeparator() + """
-                memset64:\s
-                    blez    a2, .LBB0_5\s
-                    slli    a2, a2, 1\s
-                    add     a2, a2, a0\s
-                .LBB0_4:\s
-                    sd      a1, 0(a0)\s
-                    addi    a0, a0, 8\s
-                    bltu    a0, a2, .LBB0_4\s
-                .LBB0_5:\s
-                    ret\s""");
+            memset32:\s
+                blez    a2, .LBB0_3\s
+                add     a2, a2, a0\s
+            .LBB0_2:\s
+                sw      a1, 0(a0)\s
+                addi    a0, a0, 4\s
+                bltu    a0, a2, .LBB0_2\s
+            .LBB0_3:\s
+                ret\s""");
     }
 
     public void dumpToFile(String path) {
-
-        // if file do not exist, create it else clear it's content
         if (!new java.io.File(path).exists()) {
             try {
                 new java.io.File(path).createNewFile();
@@ -97,7 +79,6 @@ public class RiscModule {
                 e.printStackTrace();
             }
         }
-
         PrintStream consoleStream = System.out;
         try (PrintStream ps = new PrintStream(new FileOutputStream(path))) {
             System.setOut(ps);
