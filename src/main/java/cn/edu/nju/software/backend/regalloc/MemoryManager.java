@@ -9,11 +9,8 @@ import java.util.Map;
 public class MemoryManager {
 
     private int size = 0;
-
     private final Map<String, Integer> memoryAddr = new HashMap<>();
-
     private final HashSet<String> hasAllocatedPtr = new HashSet<>();
-
     private static final MemoryManager memoryManager = new MemoryManager();
 
     private MemoryManager() {}
