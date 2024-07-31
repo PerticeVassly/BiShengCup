@@ -286,8 +286,8 @@ public class Allocator {
         }
     }
 
-    //todo() 这里要改成1024的判断
-    /**目前destReg只能是t4，因为allocator其他地方会用到t3
+    /**
+     * 使用t4作为返回的寄存器
      * offset可能很大，无法作为offset(reg)的立即数，
      * 如果offset大于1024, destreg = baseReg + immediate 返回0(reg);
      * 否则直接返回offset(baseReg) t4用于offset过大的时候的返回的寄存器
@@ -298,7 +298,6 @@ public class Allocator {
      * @return
      */
     public Operand getRegWithOffset(int immediate, String baseReg, String destReg) {
-        assert !baseReg.equals(destReg);// not same
         if(immediate >= 2048 || immediate < -2048){
             generator.addInstruction(new RiscLi(new Register(destReg), new ImmediateValue(immediate)));
             generator.addInstruction(new RiscAdd(new Register(destReg), new Register(baseReg), new Register(destReg)));

@@ -41,13 +41,11 @@ import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
 import cn.edu.nju.software.ir.instruction.logic.Shl;
 import cn.edu.nju.software.ir.type.ArrayType;
-import cn.edu.nju.software.ir.type.BoolType;
 import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.*;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -63,9 +61,6 @@ public class RiscInstrGenerator implements InstructionVisitor {
         this.llvmFunctionValue = llvmFunctionValue;
     }
 
-    /**
-     * [将LLVM的基本块转换为RISC的基本块]
-     */
     public List<RiscInstruction> genRiscInstructions() {
         for(Instruction instruction : instructions){
             instruction.accept(this);
@@ -73,85 +68,39 @@ public class RiscInstrGenerator implements InstructionVisitor {
         return riscInstructions;
     }
 
-    /**
-     * [在生成算数llvm指令对应汇编之后的操作]
-     * 保存左值
-     * @param instr
-     */
-    private void afterABinaryInstr(Instruction instr){
-        allocator.setLastLVal(instr.getLVal());
-        //左值只可能是localVar
-        LocalVar lVal = (LocalVar) instr.getLVal();
-        if(lVal.isTmpVar()) { // todo() 这里改成istemp判断就可以切换前端指定的tempVar复用，目前是所有非指针的localvar
-            if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
-                allocator.recordTempVar(lVal);
-            } else if(lVal.getType() instanceof FloatType){
-                allocator.recordTempVar(lVal);
-            } else if(lVal.getType() instanceof Pointer){
-//                allocator.recordTempVar(lVal);
-                saveLVal(instr.getLVal());
-            } else {
-                assert false;
-            }
-        }
-        else {
-            saveLVal(instr.getLVal());
-        }
-    }
-    /**
-     * [在生成算数llvm指令对应汇编之前的操作]
-     * @param instr
-     */
     private void beforeABinaryInstr(Instruction instr){
         insertComment(instr.getOp().toString() + " " + instr.getLVal().getName() + " " + instr.getOperand(0).getName() + " " + instr.getOperand(1).getName() + " ");
         allocator.prepareOperands(instr.getOperand(0), instr.getOperand(1));
     }
 
-    /**
-     * [在生成一元llvm指令对应汇编之前的操作]
-     * @param instr
-     */
+    private void afterABinaryInstr(Instruction instr){
+        allocator.setLastLVal(instr.getLVal());
+        LocalVar lVal = (LocalVar) instr.getLVal();
+        if(lVal.isTmpVar()) {
+            allocator.recordTempVar(lVal);
+        } else {
+            saveLVal(instr.getLVal());
+        }
+    }
+
     private void beforeAUnaryInstr(Instruction instr){
         insertComment( " " + instr.getLVal().getName() + " " + instr.getOperand(0).getName());
         allocator.prepareOperands(instr.getOperand(0));
     }
 
-    /**
-     * [在生成一元llvm指令对应汇编之后的操作]
-     * @param instr
-     */
     private void afterAUnaryInstr(Instruction instr){
         allocator.setLastLVal(instr.getLVal());
         LocalVar lVal = (LocalVar) instr.getLVal();
-        if(lVal.isTmpVar()){ //todo() 这里改成istemp判断就可以切换前端指定的tempVar复用，目前是所有非指针的localvar
-            if(lVal.getType() instanceof IntType || lVal.getType() instanceof BoolType){
-                allocator.recordTempVar(lVal);
-            } else if(lVal.getType() instanceof FloatType){
-                allocator.recordTempVar(lVal);
-            } else if(lVal.getType() instanceof Pointer){
-                allocator.recordTempVar(lVal);
-            }
-            else {
-                assert false;
-            }
-        }
-        else {
+        if(lVal.isTmpVar()){
+            allocator.recordTempVar(lVal);
+        } else {
             saveLVal(instr.getLVal());
         }
     }
 
     private void saveLVal(ValueRef lVal){
-        if( lVal.getType() instanceof IntType){
-            riscInstructions.add(new RiscSw(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
-        } else if(lVal.getType() instanceof FloatType){
-            riscInstructions.add(new RiscFsw(new Register("ft0"), allocator.getAddrOfLocalVar(lVal)));
-        } else if(lVal.getType() instanceof Pointer){
-            riscInstructions.add(new RiscSd(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
-        } else if(lVal.getType() instanceof BoolType){
-            riscInstructions.add(new RiscSw(new Register("t0"), allocator.getAddrOfLocalVar(lVal)));
-        } else {
-            assert false;
-        }
+        String regName = RiscSpecifications.isGeneralType(lVal.getType()) ? "t0" : "ft0";
+        allocator.storeLocalVarIntoMemory(lVal, regName);
     }
 
 
@@ -164,9 +113,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         ValueRef lVal = gep.getLVal();
         ValueRef basePtr = gep.getOperand(0);
         ValueRef index = gep.getNumberOfOperands() == 3 ? gep.getOperand(2) : gep.getOperand(1);
-
         riscInstructions.add(new RiscComment("gep " + lVal.getName() + " " +  index.getName()));
-
 
         if(allocator.isLastLVal(basePtr)){
             riscInstructions.add(new RiscMv(new Register("t5"), new Register("t0")));
@@ -196,56 +143,44 @@ public class RiscInstrGenerator implements InstructionVisitor {
     public void visit(Store store) {
         ValueRef src = store.getOperand(0);
         ValueRef dest = store.getOperand(1);
-
         TypeRef destType = ((Pointer) dest.getType()).getBase();
-        if(destType instanceof IntType){
-            storeIntoInt(dest, src);
-        } else if(destType instanceof FloatType){
-            storeIntoFloat(dest, src);
+        insertComment("store " + dest.getName() + " " + src.getName());
+        if(destType instanceof IntType || destType instanceof FloatType || destType instanceof Pointer){
+            storeIntoNotArray(dest, src);
         } else if(destType instanceof ArrayType){
             storeIntoArray(dest, src);
-        } else if(destType instanceof Pointer) {
-            storeIntoPointer(dest, src);
         } else {
             assert false;
         }
         allocator.resetLastLVal();
     }
 
-    private void storeIntoInt(ValueRef dest, ValueRef src) {
-        insertComment("store " + dest.getName() + " " + src.getName());
+    private void storeIntoNotArray(ValueRef dest, ValueRef src){
+        TypeRef destType = ((Pointer) dest.getType()).getBase();
         allocator.prepareOperands(src);
+        String srcReg = RiscSpecifications.isGeneralType(src.getType()) ? "t1" : "ft1";
         Operand destOperand = allocator.getAddrOfVarPtrPointsToWithOffset(dest,0);
-        riscInstructions.add(new RiscSw(new Register("t1"), destOperand));
-    }
-
-    private void storeIntoPointer(ValueRef dest, ValueRef src) {
-        insertComment("store " + dest.getName() + " " + src.getName());
-        allocator.prepareOperands(src);
-        Operand destOperand = allocator.getAddrOfVarPtrPointsToWithOffset(dest,0);
-        riscInstructions.add(new RiscSd(new Register("t1"), destOperand));
-    }
-
-    private void storeIntoFloat(ValueRef dest, ValueRef src) {
-        insertComment("store " + dest.getName() + " " + src.getName());
-        allocator.prepareOperands(src);
-        Operand destOperand = allocator.getAddrOfVarPtrPointsToWithOffset(dest,0);
-        riscInstructions.add(new RiscFsw(new Register("ft1"), destOperand));
+        if(destType instanceof IntType){
+            riscInstructions.add(new RiscSw(new Register(srcReg), destOperand));
+        } else if(destType instanceof FloatType){
+            riscInstructions.add(new RiscFsw(new Register(srcReg), destOperand));
+        } else if(destType instanceof Pointer){
+            riscInstructions.add(new RiscSd(new Register(srcReg), destOperand));
+        } else {assert false;}
     }
 
     private void storeIntoArray(ValueRef dest, ValueRef src) {
         assert src instanceof ArrayValue;
-        insertComment("store " + dest.getName() + " " + src.getName());
         List<ValueRef> linerList = ((ArrayValue) src).getLinerList();
         for (int i = 0; i < linerList.size(); i++) {
+            TypeRef type = linerList.get(i).getType();
             allocator.prepareOperands(linerList.get(i));
-            if (linerList.get(i).getType() instanceof IntType) {
-                riscInstructions.add(new RiscSw(new Register("t1"), allocator.getAddrOfVarPtrPointsToWithOffset(dest, i * RiscSpecifications.getIntSize() )));
-            } else if (linerList.get(i).getType() instanceof FloatType) {
-                riscInstructions.add(new RiscFsw(new Register("ft1"), allocator.getAddrOfVarPtrPointsToWithOffset(dest, i * RiscSpecifications.getFloatSize())));
-            } else {
-                assert false;
-            }
+            String srcReg = RiscSpecifications.isGeneralType(type) ? "t1" : "ft1";
+            if (type instanceof IntType) {
+                riscInstructions.add(new RiscSw(new Register(srcReg), allocator.getAddrOfVarPtrPointsToWithOffset(dest, i * RiscSpecifications.getIntSize())));
+            } else if (type instanceof FloatType) {
+                riscInstructions.add(new RiscFsw(new Register(srcReg), allocator.getAddrOfVarPtrPointsToWithOffset(dest, i * RiscSpecifications.getFloatSize())));
+            } else {assert false;}
         }
     }
 
@@ -269,6 +204,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         if(allocator.checkPtrHasAllocated(allocate.getLVal().getName())){
             allocator.resetLastLVal();
         } else{
+            assert false;
             riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(allocator.getOffset(allocate.getLVal()) - typeLen)));
             riscInstructions.add(new RiscAdd(new Register("t0"), new Register("sp"), new Register("t0")));
             allocator.setLastLVal(allocate.getLVal());

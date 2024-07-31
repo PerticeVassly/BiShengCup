@@ -17,9 +17,7 @@ import java.util.List;
 public class RiscFunction {
 
     private final FunctionValue functionValue;
-
     private final List<RiscBasicBlock> riscBasicBlocks = new LinkedList<>();
-
     private final Allocator allocator = Allocator.get();
 
     public RiscFunction(FunctionValue functionValue) {
