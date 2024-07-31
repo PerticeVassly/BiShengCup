@@ -27,24 +27,18 @@ public class FrontEndTest {
     private static final String DIR = "src/test/resources/2023/";
     private static final String DIR_PART = "src/test/resources/2023part/";
     private static final String DIR_HIDDEN = "src/test/resources/2023hidden/";
+    private static final String DIR_PERF = "src/test/resources/2023performance/";
     private static final String SYLIB = "src/test/resources/sylib.ll";
     private static final String LINKED = "src/test/resources/linked.ll";
 
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-//    @StringSource("87_many_params")
-//    @StringSource("65_color")
-//    @StringSource("101_float_arr")
-//    @StringSource("38_light2d")
-    @StringSource("34_multi_loop")
-//    @StringSource("79_var_name")
-//    @StringSource("90_many_locals")
-//    @StringSource("64_calculator")
-//    @StringSource("08_const_array_defn")
+    @StringSource("instruction-combining-3")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
 //        testFile(DIR, name);
-        testFile(DIR_HIDDEN, name);
+//        testFile(DIR_HIDDEN, name);
+        testFile(DIR_PERF, name);
     }
 
     /**
@@ -62,7 +56,7 @@ public class FrontEndTest {
     @ParameterizedTest
     @MethodSource("dirHidden")
     void testHidden(String name) throws IOException, InterruptedException {
-        if (Stream.of("30_many_dimensions", "36_rotate", "38_light2d").anyMatch(name::equals)) fail();
+        if (Stream.of("36_rotate", "38_light2d").anyMatch(name::equals)) fail();
         testFile(DIR_HIDDEN, name);
     }
 
