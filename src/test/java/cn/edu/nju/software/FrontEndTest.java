@@ -60,6 +60,12 @@ public class FrontEndTest {
         testFile(DIR_HIDDEN, name);
     }
 
+    @ParameterizedTest
+    @MethodSource("dirPerformance")
+    void testPerformance(String name) throws IOException, InterruptedException {
+        testFile(DIR_PERF, name);
+    }
+
     /**
      * test all the files in DIR_PART
      */
@@ -105,6 +111,9 @@ public class FrontEndTest {
 
     private static Stream<String> dirHidden() {
         return parameters(DIR_HIDDEN);
+    }
+    private static Stream<String> dirPerformance() {
+        return parameters(DIR_PERF);
     }
 
     /**

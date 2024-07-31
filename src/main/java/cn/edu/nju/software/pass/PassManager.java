@@ -45,6 +45,7 @@ public class PassManager {
         allPasses.add(new LoopInvariantCodeMotionPass());
         allPasses.add(new RedundantBlockEliminationPass());
         allPasses.add(MemToReg.getInstance());
+        allPasses.add(MergeRepeatedArithmeticPass.getInstance());
         allPasses.add(StrengthReductionPass.getInstance());
         allPasses.add(RegToMem.getInstance());
     }

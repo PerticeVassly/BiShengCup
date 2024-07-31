@@ -137,4 +137,48 @@ public class ConstValue extends ValueRef {
         }
         return false;
     }
+
+    public ConstValue add(ConstValue other) {
+        if (type instanceof IntType) {
+            int t1 = (int) getValue(), t2 = (int) ((ConstValue) other).getValue();
+            return new ConstValue(new IntType(), t1 + t2);
+        } else if (type instanceof FloatType) {
+            float t1 = (float) getValue(), t2 = (float) ((ConstValue) other).getValue();
+            return new ConstValue(new FloatType(), t1 + t2);
+        }
+        return null;
+    }
+
+    public ConstValue sub(ConstValue other) {
+        if (type instanceof IntType) {
+            int t1 = (int) getValue(), t2 = (int) ((ConstValue) other).getValue();
+            return new ConstValue(new IntType(), t1 - t2);
+        } else if (type instanceof FloatType) {
+            float t1 = (float) getValue(), t2 = (float) ((ConstValue) other).getValue();
+            return new ConstValue(new FloatType(), t1 - t2);
+        }
+        return null;
+    }
+
+    public ConstValue mul(ConstValue other) {
+        if (type instanceof IntType) {
+            int t1 = (int) getValue(), t2 = (int) ((ConstValue) other).getValue();
+            return new ConstValue(new IntType(), t1 * t2);
+        } else if (type instanceof FloatType) {
+            float t1 = (float) getValue(), t2 = (float) ((ConstValue) other).getValue();
+            return new ConstValue(new FloatType(), t1 * t2);
+        }
+        return null;
+    }
+
+    public ConstValue div(ConstValue other) {
+        if (type instanceof IntType) {
+            int t1 = (int) getValue(), t2 = (int) ((ConstValue) other).getValue();
+            return new ConstValue(new IntType(), t1 / t2);
+        } else if (type instanceof FloatType) {
+            float t1 = (float) getValue(), t2 = (float) ((ConstValue) other).getValue();
+            return new ConstValue(new FloatType(), t1 / t2);
+        }
+        return null;
+    }
 }
