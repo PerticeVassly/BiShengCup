@@ -54,11 +54,8 @@ import java.util.List;
 public class RiscInstrGenerator implements InstructionVisitor {
 
     private final FunctionValue llvmFunctionValue;
-
     private final List<Instruction> instructions;
-
     private final List<RiscInstruction> riscInstructions = new LinkedList<>();
-
     private final Allocator allocator = Allocator.get();
 
     RiscInstrGenerator(List<Instruction> instructions, FunctionValue llvmFunctionValue) {
@@ -646,11 +643,8 @@ public class RiscInstrGenerator implements InstructionVisitor {
         saveCallerSavedRegs();
         String funcName = call.getFunction().getName();
 
-        // memset: (32b or 64b)
-        if (funcName.equals("memset")) {
-            if (RiscSpecifications.is64Bit()) funcName += "64";
-            else funcName += "32";
-        } else if (funcName.equals("starttime") || funcName.equals("stoptime")) {
+        //todo() 这是前端函数名和实际调用的库函数名不一致的问题，这里需要修改
+        if (funcName.equals("starttime") || funcName.equals("stoptime")) {
             funcName = "_sysy_" + funcName;
             riscInstructions.add(new RiscLi(new Register("a0"), new ImmediateValue(call.getLineNo())));
         }

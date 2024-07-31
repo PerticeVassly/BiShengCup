@@ -10,13 +10,9 @@ import java.util.stream.Stream;
 public class RiscModule {
 
     private final ModuleRef llvmModule;
-
     private final List<RiscFunction> riscFunctions = new ArrayList<>();
-
     private final List<RiscGlobalVar> riscGlobalVars = new ArrayList<>();
-
     private static final HashSet<String> libFuncs = new HashSet<>();
-
     private static long tempBlockCount = 0;/* 用于记录一个Moudle中后端额外生成的临时Block的数量 */
 
     static {
@@ -49,7 +45,7 @@ public class RiscModule {
     }
 
     public void dumpToConsole() {
-        System.out.println(".data" + System.lineSeparator() + ".align 3");
+        System.out.println(".data" + System.lineSeparator() + ".align 4");
         riscGlobalVars.forEach(RiscGlobalVar::dumpToConsole);
         riscFunctions.forEach(RiscFunction::dumpToConsole);
         appendRiscFunctions();
@@ -60,7 +56,7 @@ public class RiscModule {
      */
     private void appendRiscFunctions() {
         System.out.println(System.lineSeparator() + """
-            memset32:\s
+            memset:\s
                 blez    a2, .LBB0_3\s
                 add     a2, a2, a0\s
             .LBB0_2:\s

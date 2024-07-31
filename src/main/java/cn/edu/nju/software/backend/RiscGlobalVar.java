@@ -1,20 +1,15 @@
 package cn.edu.nju.software.backend;
 
-import cn.edu.nju.software.ir.type.ArrayType;
-import cn.edu.nju.software.ir.type.FloatType;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.ArrayValue;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
-
 import java.util.List;
 
 public class RiscGlobalVar {
 
     private final String name;
-
     private final GlobalVar globalVar;
 
     public RiscGlobalVar(GlobalVar globalVar) {
@@ -25,68 +20,59 @@ public class RiscGlobalVar {
     public void dumpToConsole() {
         System.out.println(".align 8");
         System.out.println(".globl " + name);
+
         if(globalVar.isZeroInitializer()){
-            System.out.println(name + ":");
-            int totalSize= ArrayType.getTotalSize(((Pointer)globalVar.getType()).getBase());
-            System.out.println(".zero "+totalSize);
+            handleAllZeroInitializer();
             return;
         }
-        if( globalVar.getInitVal() instanceof ConstValue){
 
-            if(globalVar.getInitVal().getType() instanceof IntType) {
-                String initValue = ((ConstValue) globalVar.getInitVal()).toRiscvString();
+        ValueRef initVal = globalVar.getInitVal();
+        TypeRef type = initVal.getType();
+        if( initVal instanceof ConstValue constInitVal){
+            if(type instanceof IntType || type instanceof FloatType) {
+                String initValue = constInitVal.toRiscvString();
                 System.out.println(name + ":");
                 System.out.println(".word " + initValue);
-            }
-            else if(globalVar.getInitVal().getType() instanceof FloatType) {
-                String initValue = ((ConstValue) globalVar.getInitVal()).toRiscvString();
-                System.out.println(name + ":");
-                System.out.println(".word " + initValue);
-            }
-            else if(globalVar.getInitVal().getType() instanceof ArrayType) {
-                assert false;
-            }
-        } else if (globalVar.getInitVal() instanceof ArrayValue) {
-            //todo暂时不考虑zeroInitializer
-            if(globalVar.getInitVal() instanceof ArrayValue arrayValue){
-                System.out.println(name + ":");
-                List<ValueRef> initValues = arrayValue.getLinerList();
-                int zeroCount=0;
-                for(ValueRef valueRef : initValues){
-                    if(valueRef instanceof ConstValue){
-                        if(valueRef.getType() instanceof IntType){
-                            if(((ConstValue) valueRef).getValue().equals(0)){
-                                zeroCount++;
-                            }else {
-                                if(zeroCount>0){
-                                    System.out.println(".zero " + zeroCount * 4);
-                                    zeroCount=0;
-                                }
-                                System.out.println(".word " + ((ConstValue) valueRef).toRiscvString());
-                            }
+            } else {assert false;}
+        } else if (initVal instanceof ArrayValue arrayValue) {
+            handlePartZeroInitializer(arrayValue);
+        } else {assert false;}
+    }
 
+    /**
+     * 处理全为0的初始化
+     */
+    public void handleAllZeroInitializer(){
+        System.out.println(name + ":");
+        int totalSize= ArrayType.getTotalSize(((Pointer)globalVar.getType()).getBase());
+        System.out.println(".zero "+totalSize);
+    }
+
+    /**
+     * 处理部分为0的初始化, 对于为0的连续的部分，要使用.zero指令
+     */
+    public void handlePartZeroInitializer(ArrayValue arrayValue){
+        System.out.println(name + ":");
+        List<ValueRef> initValues = arrayValue.getLinerList();
+        int zeroCount=0;
+        for(ValueRef initValue : initValues){
+            if(initValue instanceof ConstValue constInitValue){
+                TypeRef type = initValue.getType();
+                if(type instanceof IntType || type instanceof FloatType){
+                    if(constInitValue.getValue().equals(0)){
+                        zeroCount++;
+                    }else {
+                        if(zeroCount>0){
+                            System.out.println(".zero " + zeroCount * 4);
+                            zeroCount=0;
                         }
-                        else if(valueRef.getType() instanceof FloatType){
-                            if(((ConstValue) valueRef).getValue().equals(0)){
-                                zeroCount++;
-                            }else {
-                                if(zeroCount>0){
-                                    System.out.println(".zero " + zeroCount * 4);
-                                    zeroCount=0;
-                                }
-                                System.out.println(".word " + ((ConstValue) valueRef).toRiscvString());
-                            }
-                        }
+                        System.out.println(".word " + constInitValue.toRiscvString());
                     }
                 }
-                if(zeroCount>0){
-                    System.out.println(".zero " + String.valueOf(zeroCount * 4));
-                }
             }
-        } else {
-
-            assert false;
-
+        }
+        if(zeroCount>0){
+            System.out.println(".zero " + zeroCount * 4);
         }
     }
 }

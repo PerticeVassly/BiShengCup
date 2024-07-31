@@ -21,17 +21,11 @@ import java.util.List;
 public class RiscBasicBlock {
 
     private final BasicBlockRef basicBlockRef;
-
     private final Allocator allocator = Allocator.get();
-
     private final FunctionValue llvmFunctionValue;
-
     private final List<RiscInstruction> riscInstructions = new ArrayList<>() ;
-
     private final RiscInstrGenerator generator;
-
     private final TempVarLiveTable tempVarLiveTable;
-
     private final LValLiveTable lValLiveTable;
 
     public RiscBasicBlock(BasicBlockRef basicBlockRef, FunctionValue functionValue) {
