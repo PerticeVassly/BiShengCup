@@ -104,17 +104,11 @@ public class RiscInstrGenerator implements InstructionVisitor {
         ValueRef basePtr = gep.getOperand(0);
         ValueRef index = gep.getNumberOfOperands() == 3 ? gep.getOperand(2) : gep.getOperand(1);
         riscInstructions.add(new RiscComment("gep " + lVal.getName() + " " +  index.getName()));
-        //todo() here t5 is used to store the value of basePtr, which is not a good idea，need to be optimized after refactor
-        if(allocator.isLastLVal(basePtr)){
-            riscInstructions.add(new RiscMv(new Register("t5"), new Register("t0")));
-        } else {
-            riscInstructions.add(new RiscMv(new Register("t5"), allocator.getValueOfVar(basePtr)));
-        }
-        List<String> regs = allocator.prepareOperands(index);//t0 or t1
+        List<String> regs = allocator.prepareOperands(basePtr, index);
         int length = ArrayType.getTotalSize(((ArrayType) gep.getArrayTypePtr().getBase()).getElementType());
-        riscInstructions.add(new RiscLi(new Register("t2"), new ImmediateValue(length)));
-        riscInstructions.add(new RiscMul(new Register("t0"), new Register(regs.get(0)), new Register("t2")));
-        riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t5"), new Register("t0")));
+        riscInstructions.add(new RiscLi(new Register("t4"), new ImmediateValue(length)));
+        riscInstructions.add(new RiscMul(new Register("t4"), new Register(regs.get(1)), new Register("t4")));
+        riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t4"), new Register(regs.get(0))));
         afterAnInstr(gep);
     }
 
