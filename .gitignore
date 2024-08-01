@@ -13,6 +13,7 @@
 **/src/test/resources/2023hidden/**
 **/src/test/resources/2023performance/*.ll
 !**/src/test/resources/2023/95_float.ll
+!**/src/test/resources/2023/82_long_func.ll
 
 
 /target
