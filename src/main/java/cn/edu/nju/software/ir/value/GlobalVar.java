@@ -109,7 +109,8 @@ public class GlobalVar extends ValueRef implements Variable {
     }
 
     public boolean isLocalizable() {
-        return usedFreqInDifferentFunc() == 1 && (((Pointer)type).getBase() instanceof IntType || ((Pointer)type).getBase() instanceof FloatType);
+        return usedFreqInDifferentFunc() == 1 && (((Pointer)type).getBase() instanceof IntType || ((Pointer)type).getBase() instanceof FloatType)
+                && getUsageFunction().getName().equals("main");
     }
 
     /***

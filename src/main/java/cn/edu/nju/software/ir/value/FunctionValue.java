@@ -24,6 +24,8 @@ public class FunctionValue extends ValueRef {
     private BasicBlockRef entryBlock;
     private boolean isLib = false;
 
+    private final ArrayList<Allocate> allocates = new ArrayList<>();
+
     private final static ArrayList<String> funcDeclUsedNames = new ArrayList<>();
     private final static ArrayList<Integer> funcDeclUsedNamesFreq = new ArrayList<>();
 
@@ -170,7 +172,20 @@ public class FunctionValue extends ValueRef {
     }
 
     public void emitAlloc(Allocate inst) {
+        allocates.add(inst);
+//        entryBlock.put(0, inst);
+    }
+
+    public void emitAllocEntry(Allocate inst) {
         entryBlock.put(0, inst);
+    }
+
+    public void dropAlloc(Allocate allocate) {
+        allocates.remove(allocate);
+    }
+
+    public ArrayList<Allocate> getAllocates() {
+        return allocates;
     }
 
     @Override

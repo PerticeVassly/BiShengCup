@@ -73,6 +73,8 @@ public class BasicBlockRef extends ValueRef {
     public void put(Instruction ir) {
         if (ir instanceof Allocate) {
             function.emitAlloc((Allocate) ir);
+            irNum++;
+            irs.add(0, ir);
         } else {
             irNum++;
             irs.add(ir);
@@ -110,6 +112,14 @@ public class BasicBlockRef extends ValueRef {
         ir.setBlock(this);
     }
 
+    public ArrayList<Allocate> getAllocates() {
+        return function.getAllocates();
+    }
+
+    public void putAllocAtEntry(Allocate allocate) {
+        function.emitAllocEntry(allocate);
+    }
+
     public String getName() {
         return name;
     }
@@ -119,16 +129,24 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public Instruction getIr(int index) {
-        //TODO:计数不准确
-//        if (index >= irNum || index < 0) {
-//            return null;
-//        }
         return irs.get(index);
     }
 
     public void dropIr(Instruction ir) {
         irs.remove(ir);
         irNum--;
+        if (ir instanceof Allocate) {
+            function.dropAlloc((Allocate) ir);
+        }
+        if (ir instanceof Call call) {
+            for (ValueRef vr : call.getRealParams()) {
+                vr.getUser().remove(ir);
+            }
+        } else {
+            for (int i = 0; i < ir.getNumberOfOperands(); i++) {
+                ir.getOperand(i).getUser().remove(ir);
+            }
+        }
     }
 
     /***
