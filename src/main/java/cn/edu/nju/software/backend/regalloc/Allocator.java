@@ -25,6 +25,9 @@ import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Allocator {
 
     private RiscInstrGenerator generator;
@@ -57,84 +60,92 @@ public class Allocator {
     /* 将变量分配到寄存器中 */
     /* 以t1,t2,t3,ft1,ft2,ft3的顺序分配 */
     //todo() 这里最后会变为返回一组寄存器，而不是装入t1,t2,t3....中(这样损失太大)
-    public void prepareOperands(ValueRef... values) {
+    public List<String> prepareOperands(ValueRef... values) {
+        List<String> regNames = new ArrayList<>();
         generator.addInstruction(new RiscComment("fetch variables"));
         int i = 1;
         for (ValueRef value : values) {
             if (value instanceof ConstValue constValue) {
-                prepareAConst(constValue, i);
+                regNames.add(prepareAConst(constValue, i));
             } else if(value instanceof LocalVar localVar){
-                prepareALocal(localVar, i);
+                regNames.add(prepareALocal(localVar, i));
             } else if(value instanceof GlobalVar globalVar){
-                prepareAGlobal(globalVar, i);
+                regNames.add(prepareAGlobal(globalVar, i));
             } else {
                 assert false;
             }
             i++;
         }
+        return regNames;
     }
 
-    private void prepareAGlobal(GlobalVar globalVar, int i){
+    private String prepareAGlobal(GlobalVar globalVar, int i){
         generator.addInstruction(new RiscLa(new Register("t" + i), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
+        return "t" + i;
     }
 
     //todo() 这里要和prepareOperands合并
-    private void prepareALocal(LocalVar localVar, int i){
+    private String prepareALocal(LocalVar localVar, int i){
         if (localVar.getType() instanceof FloatType) {
             if(isLastLVal(localVar)){
                 generator.addInstruction(new RiscFmvxw(new Register("t" + i), new Register("ft0")));
                 generator.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
                 tempVarLiveTable.release(localVar);
-                return;
+                return "ft" + i;
             }
             if(checkTempVarIsRecorded(localVar)){ //here is all localvar is temp
                 generator.addInstruction(new RiscFmvxw(new Register("t" + i), new Register(fetchTempVar(localVar))));
                 generator.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
-                return;
+                return "ft" + i;
             }
             generator.addInstruction(new RiscFlw(new Register("ft" + i), getAddrOfLocalVar(localVar)));
+            return "ft" + i;
         } else if (localVar.getType() instanceof IntType || localVar.getType() instanceof BoolType) {
             if(isLastLVal(localVar)){
                 generator.addInstruction(new RiscMv(new Register("t" + i), new Register("t0")));
                 tempVarLiveTable.release(localVar);
-                return;
+                return "t" + i;
             }
             if(checkTempVarIsRecorded(localVar)){ //here is all localvar is temp
                 generator.addInstruction(new RiscMv(new Register("t" + i), new Register(fetchTempVar(localVar))));
-                return;
+                return "t" + i;
             }
             generator.addInstruction(new RiscLw(new Register("t" + i), getAddrOfLocalVar(localVar)));
+            return "t" + i;
         } else if(localVar.getType() instanceof Pointer){
             if(isLastLVal(localVar)){
                 generator.addInstruction(new RiscMv(new Register("t" + i), new Register("t0")));
-                return;
+                return "t" + i;
             }
             if(checkTempVarIsRecorded(localVar)){ //here is all localvar is temp
                 generator.addInstruction(new RiscMv(new Register("t" + i), new Register(fetchTempVar(localVar))));
-                return;
+                return "t" + i;
             }
             if(checkPtrHasAllocated(localVar.getName())){
                 loadImmediate("t4", memoryManager.getOffset(localVar));
                 generator.addInstruction(new RiscAdd(new Register("t" + i), new Register("sp"), new Register("t4")));
+                return "t" + i;
             } else {
                 generator.addInstruction(new RiscLd(new Register("t" + i), getAddrOfLocalVar(localVar)));
+                return "t" + i;
             }
-        } else {
-            assert false;
-        }
+        } else {assert false;}
+        return null;
     }
 
-    private void prepareAConst(ConstValue constValue, int i){
+    private String prepareAConst(ConstValue constValue, int i){
         if (constValue.getType() instanceof FloatType) {
             generator.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue(Float.parseFloat(constValue.getValue().toString()))));
             generator.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
+            return "ft" + i;
         } else if (constValue.getType() instanceof IntType) {
             loadImmediate("t" + i, Integer.parseInt(constValue.getValue().toString()));
+            return "t" + i;
         } else if (constValue.getType() instanceof BoolType) {
             loadImmediate("t" + i, Boolean.TRUE.equals(constValue.getValue()) ? 1 : 0);
-        } else {
-            assert false;
-        }
+            return "t" + i;
+        } else {assert false;}
+        return null;
     }
 
     /**
