@@ -240,6 +240,7 @@ public class MemToReg implements ModulePass {
             changed |= eliminateConstExp.runOnModule(this.module);
         }
         // reduce phi and drop phi's dead pred
+        //todo() here may cause the problem
         runPhiModifyPass();
         modifyPhiOnModule();
         return false;

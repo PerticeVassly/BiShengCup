@@ -294,10 +294,11 @@ public class RiscInstrGenerator implements InstructionVisitor {
         la t1 label
         jr t1
          */
+        riscInstructions.add(new RiscJ(br.getTarget().getName()));
         //todo() wait to reduce the allocate instr
-        riscInstructions.add(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(br.getTarget().getName()))));
-        riscInstructions.add(new RiscJr(new Register("t1")));
-        allocator.resetLastLVal();
+//        riscInstructions.add(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(br.getTarget().getName()))));
+//        riscInstructions.add(new RiscJr(new Register("t1")));
+//        allocator.resetLastLVal();
     }
 
     @Override
@@ -321,20 +322,20 @@ public class RiscInstrGenerator implements InstructionVisitor {
             la t1 ifTrue
             jr t1;
          */
-//        riscInstructions.add(new RiscBeqz(new Register("t1"), ifFalse.getName()));
-//        riscInstructions.add(new RiscJ(ifTrue.getName()));
+        riscInstructions.add(new RiscBeqz(new Register(regs.get(0)), ifFalse.getName()));
+        riscInstructions.add(new RiscJ(ifTrue.getName()));
         //todo() wait to reduce the allocate instr
-        String tempBlock1 = RiscModule.createTempBlock();
-        String tempBlock2 = RiscModule.createTempBlock();
-        riscInstructions.add(new RiscBeqz(new Register(regs.get(0)), tempBlock1));
-        riscInstructions.add(new RiscJ(tempBlock2));
-        riscInstructions.add(new RiscLabel(tempBlock1));
-        riscInstructions.add(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(ifFalse.getName()))));
-        riscInstructions.add(new RiscJr(new Register("t1")));
-        riscInstructions.add(new RiscLabel(tempBlock2));
-        riscInstructions.add(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(ifTrue.getName()))));
-        riscInstructions.add(new RiscJr(new Register("t1")));
-        allocator.resetLastLVal();
+//        String tempBlock1 = RiscModule.createTempBlock();
+//        String tempBlock2 = RiscModule.createTempBlock();
+//        riscInstructions.add(new RiscBeqz(new Register(regs.get(0)), tempBlock1));
+//        riscInstructions.add(new RiscJ(tempBlock2));
+//        riscInstructions.add(new RiscLabel(tempBlock1));
+//        riscInstructions.add(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(ifFalse.getName()))));
+//        riscInstructions.add(new RiscJr(new Register("t1")));
+//        riscInstructions.add(new RiscLabel(tempBlock2));
+//        riscInstructions.add(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(ifTrue.getName()))));
+//        riscInstructions.add(new RiscJr(new Register("t1")));
+//        allocator.resetLastLVal();
     }
 
     @Override
