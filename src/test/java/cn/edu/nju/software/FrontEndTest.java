@@ -34,11 +34,11 @@ public class FrontEndTest {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("instruction-combining-3")
+    @StringSource("82_long_func")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
-//        testFile(DIR, name);
+        testFile(DIR, name);
 //        testFile(DIR_HIDDEN, name);
-        testFile(DIR_PERF, name);
+//        testFile(DIR_PERF, name);
     }
 
     /**

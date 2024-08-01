@@ -148,12 +148,16 @@ public class RegToMem implements ModulePass {
             BasicBlockRef bb = function.getBlock(i);
             for (int j = 0; j < bb.getIrNum(); j++) {
                 // first block pass replace move
+                int sz = bb.getIrNum();
                 Instruction inst = bb.getIr(j);
                 if (inst instanceof Move move) {
                     Allocate allocate = move.getMemory();
                     if (!allocMemory.contains(allocate)) {
                         allocMemory.add(allocate);
                         bb.putAllocAtEntry(allocate);
+//                        if (sz != bb.getIrNum()) {
+//                            j += bb.getIrNum() - sz;
+//                        }
                     }
                     ValueRef src = move.getSrc(); // move value to memory
                     ValueRef target = move.getLVal();

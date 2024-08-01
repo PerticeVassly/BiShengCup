@@ -17,54 +17,54 @@ declare void @memset(i32*, i32, i32)
 
 
 define i32 @main() {
-mainEntry:
-  %retVal_ofil74 = alloca i32, align 4
-  %retVal_ofil_of_il74 = alloca float, align 4
-  %retVal_ofil_of_il59 = alloca float, align 4
-  %retVal_ofil59 = alloca i32, align 4
-  %retVal_ofil42 = alloca i32, align 4
-  %retVal_ofil27 = alloca i32, align 4
-  %retVal_ofil_of_il27 = alloca float, align 4
-  %retVal_ofil_of_il7 = alloca float, align 4
-  %retVal_ofil7 = alloca i32, align 4
+mainEntry40:
+  %retVal_ofil898 = alloca i32, align 4
+  %retVal_ofil824_of_il898 = alloca float, align 4
+  %retVal_ofil883 = alloca i32, align 4
+  %retVal_ofil824_of_il883 = alloca float, align 4
+  %retVal_ofil866 = alloca i32, align 4
+  %retVal_ofil851 = alloca i32, align 4
+  %retVal_ofil824_of_il851 = alloca float, align 4
+  %retVal_ofil831 = alloca i32, align 4
+  %retVal_ofil824_of_il831 = alloca float, align 4
   %lv = alloca i32, align 4
   %lv$1 = alloca i32, align 4
-  br i1 false, label %il12, label %il11
+  br i1 false, label %il835, label %il836
 
-ifTrue_4:                                            ; pred = %tc21
+ifTrue_85:                                            ; pred = %il906, %il907
   call void @putch(i32 111)
   call void @putch(i32 107)
   call void @putch(i32 10)
-  br label %next_4
+  br label %next_148
 
-next_4:                                              ; pred = %ifTrue_4, %tc21
-  br i1 true, label %ifTrue_5, label %next_5
+next_148:                                             ; pred = %ifTrue_85
+  br i1 true, label %ifTrue_86, label %next_149
 
-ifTrue_5:                                            ; pred = %next_4
+ifTrue_86:                                            ; pred = %next_148
   call void @putch(i32 111)
   call void @putch(i32 107)
   call void @putch(i32 10)
-  br label %next_5
+  br label %next_149
 
-next_5:                                              ; pred = %next_4, %ifTrue_5
-  br i1 false, label %secondCond_, label %next_6
+next_149:                                             ; pred = %next_148, %ifTrue_86
+  br i1 false, label %secondCond_40, label %next_150
 
-ifTrue_6:                                            ; pred = %secondCond_
+ifTrue_87:                                            ; pred = %secondCond_40
   call void @putch(i32 101)
   call void @putch(i32 114)
   call void @putch(i32 114)
   call void @putch(i32 111)
   call void @putch(i32 114)
   call void @putch(i32 10)
-  br label %next_6
+  br label %next_150
 
-next_6:                                              ; pred = %next_5, %ifTrue_6, %secondCond_
-  br i1 false, label %il17, label %secondCond_1
+next_150:                                             ; pred = %next_149, %ifTrue_87, %secondCond_40
+  br i1 false, label %il841, label %secondCond_41
 
-secondCond_:                                         ; pred = %next_5
-  br i1 true, label %ifTrue_6, label %next_6
+secondCond_40:                                        ; pred = %next_149
+  br i1 true, label %ifTrue_87, label %next_150
 
-next_7:                                              ; pred = %secondCond_1, %il17
+next_151:                                             ; pred = %secondCond_41, %il841
   %lv$2 = alloca [10 x float], align 16
   %inp = getelementptr [10 x float], [10 x float]* %lv$2, i32 0, i32 0
   store float 0x3ff0000000000000, float* %inp, align 4
@@ -89,32 +89,32 @@ next_7:                                              ; pred = %secondCond_1, %il
   %getfarray = call i32 @getfarray(float* %inp)
   store i32 0, i32* %lv$1, align 4
   store i32 1, i32* %lv, align 4
-  br label %whileCond_
+  br label %whileCond_63
 
-secondCond_1:                                        ; pred = %next_6
-  br i1 true, label %il17, label %next_7
+secondCond_41:                                        ; pred = %next_150
+  br i1 true, label %il841, label %next_151
 
-whileCond_:                                          ; pred = %next_7, %whileBody_
+whileCond_63:                                         ; pred = %next_151, %whileBody_63
   %ld_phi = load i32, i32* %lv, align 4
   %cond_lt_tmp_ = icmp slt i32 %ld_phi, 1000000000
   %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_, label %next_8
+  br i1 %cond_, label %whileBody_63, label %next_152
 
-whileBody_:                                          ; pred = %whileCond_
+whileBody_63:                                         ; pred = %whileCond_63
   %getfloat = call float @getfloat()
   %result_ = fmul float 0x400921fb60000000, %getfloat
   %result_$1 = fmul float %result_, %getfloat
   %f2i_ = fptosi float %getfloat to i32
-  %i2f__of_il18 = sitofp i32 %f2i_ to float
-  %result__of_il18 = fmul float 0x400921fb60000000, %i2f__of_il18
-  %i2f_$1_of_il18 = sitofp i32 %f2i_ to float
-  %result_$1_of_il18 = fmul float %result__of_il18, %i2f_$1_of_il18
-  %result_$2_of_il18 = mul i32 %f2i_, %f2i_
-  %i2f_$2_of_il18 = sitofp i32 %result_$2_of_il18 to float
-  %result_$3_of_il18 = fmul float %i2f_$2_of_il18, 0x400921fb60000000
-  %result_$4_of_il18 = fadd float %result_$1_of_il18, %result_$3_of_il18
-  %result_$5_of_il18 = fdiv float %result_$4_of_il18, 0x4000000000000000
+  %i2f__of_il842 = sitofp i32 %f2i_ to float
+  %result__of_il842 = fmul float 0x400921fb60000000, %i2f__of_il842
+  %i2f_$1_of_il842 = sitofp i32 %f2i_ to float
+  %result_$1_of_il842 = fmul float %result__of_il842, %i2f_$1_of_il842
+  %result_$2_of_il842 = mul i32 %f2i_, %f2i_
+  %i2f_$2_of_il842 = sitofp i32 %result_$2_of_il842 to float
+  %result_$3_of_il842 = fmul float %i2f_$2_of_il842, 0x400921fb60000000
+  %result_$4_of_il842 = fadd float %result_$1_of_il842, %result_$3_of_il842
+  %result_$5_of_il842 = fdiv float %result_$4_of_il842, 0x4000000000000000
   %ld_phi$1 = load i32, i32* %lv$1, align 4
   %arr$1 = getelementptr [10 x float], [10 x float]* %lv$2, i32 0, i32 %ld_phi$1
   %ld_phi$2 = load i32, i32* %lv$1, align 4
@@ -124,7 +124,7 @@ whileBody_:                                          ; pred = %whileCond_
   store float %result_$2, float* %arr$1, align 4
   call void @putfloat(float %result_$1)
   call void @putch(i32 32)
-  %f2i_$1 = fptosi float %result_$5_of_il18 to i32
+  %f2i_$1 = fptosi float %result_$5_of_il842 to i32
   call void @putint(i32 %f2i_$1)
   call void @putch(i32 10)
   %ld_phi$3 = load i32, i32* %lv, align 4
@@ -135,268 +135,265 @@ whileBody_:                                          ; pred = %whileCond_
   %result_$4 = add i32 %ld_phi$4, 1
   store i32 %result_$4, i32* %lv$1, align 4
   store i32 %f2i_$2, i32* %lv, align 4
-  br label %whileCond_
+  br label %whileCond_63
 
-next_8:                                              ; pred = %whileCond_
+next_152:                                             ; pred = %whileCond_63
   %arr$4 = getelementptr [10 x float], [10 x float]* %lv$2, i32 0, i32 0
   call void @putfarray(i32 %getfarray, float* %arr$4)
   ret i32 0
 
-il8:                                                 ; pred = %il10
-  store i32 1, i32* %retVal_ofil7, align 4
-  br label %tc5
-
-il17:                                                ; pred = %next_6, %secondCond_1
+il841:                                                ; pred = %next_150, %secondCond_41
   call void @putch(i32 111)
   call void @putch(i32 107)
   call void @putch(i32 10)
-  br label %next_7
+  br label %next_151
 
-il12:                                                ; pred = %mainEntry
-  store float 0xc0e01d0280000000, float* %retVal_ofil_of_il7, align 4
-  br label %il10
+il836:                                                ; pred = %mainEntry40
+  store float 0x40e01d0280000000, float* %retVal_ofil824_of_il831, align 4
+  br label %il837
 
-il11:                                                ; pred = %mainEntry
-  store float 0x40e01d0280000000, float* %retVal_ofil_of_il7, align 4
-  br label %il10
+il833:                                                ; pred = %il837
+  store i32 0, i32* %retVal_ofil831, align 4
+  br label %tc108
 
-tc5:                                                 ; pred = %il8, %il9
-  %ld_phi$5 = load i32, i32* %retVal_ofil7, align 4
-  %cond_normalize__of_il19 = icmp ne i32 %ld_phi$5, 0
-  br i1 %cond_normalize__of_il19, label %il20, label %il21
+il837:                                                ; pred = %il836, %il835
+  %ld_phi$5 = load float, float* %retVal_ofil824_of_il831, align 4
+  %cond_lt_tmp__of_il837 = fcmp olt float %ld_phi$5, 0x3eb0c6f7a0000000
+  %cond_tmp__of_il837 = zext i1 %cond_lt_tmp__of_il837 to i32
+  %cond__of_il837 = icmp ne i32 %cond_tmp__of_il837, 0
+  br i1 %cond__of_il837, label %il832, label %il833
 
-il10:                                                ; pred = %il12, %il11
-  %ld_phi$6 = load float, float* %retVal_ofil_of_il7, align 4
-  %cond_lt_tmp__of_il10 = fcmp olt float %ld_phi$6, 0x3eb0c6f7a0000000
-  %cond_tmp__of_il10 = zext i1 %cond_lt_tmp__of_il10 to i32
-  %cond__of_il10 = icmp ne i32 %cond_tmp__of_il10, 0
-  br i1 %cond__of_il10, label %il8, label %il9
+il835:                                                ; pred = %mainEntry40
+  store float 0xc0e01d0280000000, float* %retVal_ofil824_of_il831, align 4
+  br label %il837
 
-il9:                                                 ; pred = %il10
-  store i32 0, i32* %retVal_ofil7, align 4
-  br label %tc5
+il832:                                                ; pred = %il837
+  store i32 1, i32* %retVal_ofil831, align 4
+  br label %tc108
 
-il21:                                                ; pred = %tc5
+tc108:                                                ; pred = %il833, %il832
+  %ld_phi$6 = load i32, i32* %retVal_ofil831, align 4
+  %cond_normalize__of_il843 = icmp ne i32 %ld_phi$6, 0
+  br i1 %cond_normalize__of_il843, label %il844, label %il845
+
+tc114:                                                ; pred = %il845, %il844
+  br i1 false, label %il855, label %il856
+
+il845:                                                ; pred = %tc108
   call void @putch(i32 111)
   call void @putch(i32 107)
   call void @putch(i32 10)
-  br label %tc11
+  br label %tc114
 
-il20:                                                ; pred = %tc5
+il844:                                                ; pred = %tc108
   call void @putch(i32 101)
   call void @putch(i32 114)
   call void @putch(i32 114)
   call void @putch(i32 111)
   call void @putch(i32 114)
   call void @putch(i32 10)
-  br label %tc11
+  br label %tc114
 
-tc11:                                                ; pred = %il21, %il20
-  br i1 false, label %il32, label %il31
+il856:                                                ; pred = %tc114
+  store float 0x404e3ce2a0000000, float* %retVal_ofil824_of_il851, align 4
+  br label %il857
 
-il32:                                                ; pred = %tc11
-  store float 0xc04e3ce2a0000000, float* %retVal_ofil_of_il27, align 4
-  br label %il30
+il852:                                                ; pred = %il857
+  store i32 1, i32* %retVal_ofil851, align 4
+  br label %tc115
 
-il29:                                                ; pred = %il30
-  store i32 0, i32* %retVal_ofil27, align 4
-  br label %tc12
+il855:                                                ; pred = %tc114
+  store float 0xc04e3ce2a0000000, float* %retVal_ofil824_of_il851, align 4
+  br label %il857
 
-il28:                                                ; pred = %il30
-  store i32 1, i32* %retVal_ofil27, align 4
-  br label %tc12
+il853:                                                ; pred = %il857
+  store i32 0, i32* %retVal_ofil851, align 4
+  br label %tc115
 
-il31:                                                ; pred = %tc11
-  store float 0x404e3ce2a0000000, float* %retVal_ofil_of_il27, align 4
-  br label %il30
+il857:                                                ; pred = %il856, %il855
+  %ld_phi$7 = load float, float* %retVal_ofil824_of_il851, align 4
+  %cond_lt_tmp__of_il857 = fcmp olt float %ld_phi$7, 0x3eb0c6f7a0000000
+  %cond_tmp__of_il857 = zext i1 %cond_lt_tmp__of_il857 to i32
+  %cond__of_il857 = icmp ne i32 %cond_tmp__of_il857, 0
+  br i1 %cond__of_il857, label %il852, label %il853
 
-il30:                                                ; pred = %il32, %il31
-  %ld_phi$7 = load float, float* %retVal_ofil_of_il27, align 4
-  %cond_lt_tmp__of_il30 = fcmp olt float %ld_phi$7, 0x3eb0c6f7a0000000
-  %cond_tmp__of_il30 = zext i1 %cond_lt_tmp__of_il30 to i32
-  %cond__of_il30 = icmp ne i32 %cond_tmp__of_il30, 0
-  br i1 %cond__of_il30, label %il28, label %il29
+tc115:                                                ; pred = %il852, %il853
+  %ld_phi$8 = load i32, i32* %retVal_ofil851, align 4
+  %cond_normalize__of_il858 = icmp ne i32 %ld_phi$8, 0
+  br i1 %cond_normalize__of_il858, label %il859, label %il860
 
-tc12:                                                ; pred = %il29, %il28
-  %ld_phi$8 = load i32, i32* %retVal_ofil27, align 4
-  %cond_normalize__of_il34 = icmp ne i32 %ld_phi$8, 0
-  br i1 %cond_normalize__of_il34, label %il35, label %il36
-
-il36:                                                ; pred = %tc12
-  call void @putch(i32 111)
-  call void @putch(i32 107)
-  call void @putch(i32 10)
-  br label %il37
-
-il35:                                                ; pred = %tc12
+il859:                                                ; pred = %tc115
   call void @putch(i32 101)
   call void @putch(i32 114)
   call void @putch(i32 114)
   call void @putch(i32 111)
   call void @putch(i32 114)
   call void @putch(i32 10)
-  br label %il37
+  br label %il861
 
-il37:                                                ; pred = %il36, %il35
-  br i1 false, label %il47, label %il46
+il861:                                                ; pred = %il859, %il860
+  br i1 false, label %il870, label %il871
 
-tc14:                                                ; pred = %il43, %il44
-  %ld_phi$9 = load i32, i32* %retVal_ofil42, align 4
-  %tmp__of_il49 = icmp ne i32 0, %ld_phi$9
-  %tmp_$1_of_il49 = xor i1 %tmp__of_il49, 1
-  %tmp_$2_of_il49 = zext i1 %tmp_$1_of_il49 to i32
-  %cond_normalize__of_il49 = icmp ne i32 %tmp_$2_of_il49, 0
-  br i1 %cond_normalize__of_il49, label %il50, label %il51
-
-il43:                                                ; pred = %il45
-  store i32 1, i32* %retVal_ofil42, align 4
-  br label %tc14
-
-il44:                                                ; pred = %il45
-  store i32 0, i32* %retVal_ofil42, align 4
-  br label %tc14
-
-il45:                                                ; pred = %il46, %il47
-  br i1 true, label %il43, label %il44
-
-il46:                                                ; pred = %il37
-  br label %il45
-
-il47:                                                ; pred = %il37
-  br label %il45
-
-il51:                                                ; pred = %tc14
+il860:                                                ; pred = %tc115
   call void @putch(i32 111)
   call void @putch(i32 107)
   call void @putch(i32 10)
-  br label %tc15
+  br label %il861
 
-tc15:                                                ; pred = %il51, %il50
-  %i2f__of_il57 = sitofp i32 5 to float
-  %result__of_il57 = fmul float 0x400921fb60000000, %i2f__of_il57
-  %i2f_$1_of_il57 = sitofp i32 5 to float
-  %result_$1_of_il57 = fmul float %result__of_il57, %i2f_$1_of_il57
-  %i2f_$2_of_il57 = sitofp i32 25 to float
-  %result_$3_of_il57 = fmul float %i2f_$2_of_il57, 0x400921fb60000000
-  %result_$4_of_il57 = fadd float %result_$1_of_il57, %result_$3_of_il57
-  %result_$5_of_il57 = fdiv float %result_$4_of_il57, 0x4000000000000000
-  %i2f__of_il58 = sitofp i32 5 to float
-  %result__of_il58 = fmul float 0x400921fb60000000, %i2f__of_il58
-  %i2f_$1_of_il58 = sitofp i32 5 to float
-  %result_$1_of_il58 = fmul float %result__of_il58, %i2f_$1_of_il58
-  %i2f_$2_of_il58 = sitofp i32 25 to float
-  %result_$3_of_il58 = fmul float %i2f_$2_of_il58, 0x400921fb60000000
-  %result_$4_of_il58 = fadd float %result_$1_of_il58, %result_$3_of_il58
-  %result_$5_of_il58 = fdiv float %result_$4_of_il58, 0x4000000000000000
-  %result__of_il59 = fsub float %result_$5_of_il57, %result_$5_of_il58
-  %cond_lt_tmp__of_il_of_il65 = fcmp olt float %result__of_il59, 0x0
-  %cond_tmp__of_il_of_il65 = zext i1 %cond_lt_tmp__of_il_of_il65 to i32
-  %cond__of_il_of_il65 = icmp ne i32 %cond_tmp__of_il_of_il65, 0
-  br i1 %cond__of_il_of_il65, label %il64, label %il63
+il868:                                                ; pred = %il872
+  store i32 0, i32* %retVal_ofil866, align 4
+  br label %tc117
 
-il50:                                                ; pred = %tc14
+il872:                                                ; pred = %il871, %il870
+  br i1 true, label %il867, label %il868
+
+il871:                                                ; pred = %il861
+  br label %il872
+
+tc117:                                                ; pred = %il868, %il867
+  %ld_phi$9 = load i32, i32* %retVal_ofil866, align 4
+  %tmp__of_il873 = icmp ne i32 0, %ld_phi$9
+  %tmp_$1_of_il873 = xor i1 %tmp__of_il873, 1
+  %tmp_$2_of_il873 = zext i1 %tmp_$1_of_il873 to i32
+  %cond_normalize__of_il873 = icmp ne i32 %tmp_$2_of_il873, 0
+  br i1 %cond_normalize__of_il873, label %il874, label %il875
+
+il867:                                                ; pred = %il872
+  store i32 1, i32* %retVal_ofil866, align 4
+  br label %tc117
+
+il870:                                                ; pred = %il861
+  br label %il872
+
+il875:                                                ; pred = %tc117
+  call void @putch(i32 111)
+  call void @putch(i32 107)
+  call void @putch(i32 10)
+  br label %tc118
+
+il874:                                                ; pred = %tc117
   call void @putch(i32 101)
   call void @putch(i32 114)
   call void @putch(i32 114)
   call void @putch(i32 111)
   call void @putch(i32 114)
   call void @putch(i32 10)
-  br label %tc15
+  br label %tc118
 
-il60:                                                ; pred = %il62
-  store i32 1, i32* %retVal_ofil59, align 4
-  br label %tc18
+tc118:                                                ; pred = %il875, %il874
+  %i2f__of_il881 = sitofp i32 5 to float
+  %result__of_il881 = fmul float 0x400921fb60000000, %i2f__of_il881
+  %i2f_$1_of_il881 = sitofp i32 5 to float
+  %result_$1_of_il881 = fmul float %result__of_il881, %i2f_$1_of_il881
+  %i2f_$2_of_il881 = sitofp i32 25 to float
+  %result_$3_of_il881 = fmul float %i2f_$2_of_il881, 0x400921fb60000000
+  %result_$4_of_il881 = fadd float %result_$1_of_il881, %result_$3_of_il881
+  %result_$5_of_il881 = fdiv float %result_$4_of_il881, 0x4000000000000000
+  %i2f__of_il882 = sitofp i32 5 to float
+  %result__of_il882 = fmul float 0x400921fb60000000, %i2f__of_il882
+  %i2f_$1_of_il882 = sitofp i32 5 to float
+  %result_$1_of_il882 = fmul float %result__of_il882, %i2f_$1_of_il882
+  %i2f_$2_of_il882 = sitofp i32 25 to float
+  %result_$3_of_il882 = fmul float %i2f_$2_of_il882, 0x400921fb60000000
+  %result_$4_of_il882 = fadd float %result_$1_of_il882, %result_$3_of_il882
+  %result_$5_of_il882 = fdiv float %result_$4_of_il882, 0x4000000000000000
+  %result__of_il883 = fsub float %result_$5_of_il881, %result_$5_of_il882
+  %cond_lt_tmp__of_il824_of_il886 = fcmp olt float %result__of_il883, 0x0
+  %cond_tmp__of_il824_of_il886 = zext i1 %cond_lt_tmp__of_il824_of_il886 to i32
+  %cond__of_il824_of_il886 = icmp ne i32 %cond_tmp__of_il824_of_il886, 0
+  br i1 %cond__of_il824_of_il886, label %il887, label %il888
 
-il62:                                                ; pred = %il64, %il63
-  %ld_phi$10 = load float, float* %retVal_ofil_of_il59, align 4
-  %cond_lt_tmp__of_il62 = fcmp olt float %ld_phi$10, 0x3eb0c6f7a0000000
-  %cond_tmp__of_il62 = zext i1 %cond_lt_tmp__of_il62 to i32
-  %cond__of_il62 = icmp ne i32 %cond_tmp__of_il62, 0
-  br i1 %cond__of_il62, label %il60, label %il61
+il888:                                                ; pred = %tc118
+  store float %result__of_il883, float* %retVal_ofil824_of_il883, align 4
+  br label %il889
 
-tc18:                                                ; pred = %il60, %il61
-  %ld_phi$11 = load i32, i32* %retVal_ofil59, align 4
-  %tmp__of_il66 = icmp ne i32 0, %ld_phi$11
-  %tmp_$1_of_il66 = xor i1 %tmp__of_il66, 1
-  %tmp_$2_of_il66 = zext i1 %tmp_$1_of_il66 to i32
-  %cond_normalize__of_il66 = icmp ne i32 %tmp_$2_of_il66, 0
-  br i1 %cond_normalize__of_il66, label %il67, label %il68
+il884:                                                ; pred = %il889
+  store i32 1, i32* %retVal_ofil883, align 4
+  br label %tc121
 
-il64:                                                ; pred = %tc15
-  %tmp__of_il1_of_il64 = fsub float 0x0, %result__of_il59
-  store float %tmp__of_il1_of_il64, float* %retVal_ofil_of_il59, align 4
-  br label %il62
+il887:                                                ; pred = %tc118
+  %tmp__of_il825_of_il887 = fsub float 0x0, %result__of_il883
+  store float %tmp__of_il825_of_il887, float* %retVal_ofil824_of_il883, align 4
+  br label %il889
 
-il63:                                                ; pred = %tc15
-  store float %result__of_il59, float* %retVal_ofil_of_il59, align 4
-  br label %il62
+il885:                                                ; pred = %il889
+  store i32 0, i32* %retVal_ofil883, align 4
+  br label %tc121
 
-il61:                                                ; pred = %il62
-  store i32 0, i32* %retVal_ofil59, align 4
-  br label %tc18
+il889:                                                ; pred = %il888, %il887
+  %ld_phi$10 = load float, float* %retVal_ofil824_of_il883, align 4
+  %cond_lt_tmp__of_il889 = fcmp olt float %ld_phi$10, 0x3eb0c6f7a0000000
+  %cond_tmp__of_il889 = zext i1 %cond_lt_tmp__of_il889 to i32
+  %cond__of_il889 = icmp ne i32 %cond_tmp__of_il889, 0
+  br i1 %cond__of_il889, label %il884, label %il885
 
-il68:                                                ; pred = %tc18
-  call void @putch(i32 111)
-  call void @putch(i32 107)
-  call void @putch(i32 10)
-  br label %tc19
+tc121:                                                ; pred = %il884, %il885
+  %ld_phi$11 = load i32, i32* %retVal_ofil883, align 4
+  %tmp__of_il890 = icmp ne i32 0, %ld_phi$11
+  %tmp_$1_of_il890 = xor i1 %tmp__of_il890, 1
+  %tmp_$2_of_il890 = zext i1 %tmp_$1_of_il890 to i32
+  %cond_normalize__of_il890 = icmp ne i32 %tmp_$2_of_il890, 0
+  br i1 %cond_normalize__of_il890, label %il891, label %il892
 
-il67:                                                ; pred = %tc18
+il891:                                                ; pred = %tc121
   call void @putch(i32 101)
   call void @putch(i32 114)
   call void @putch(i32 114)
   call void @putch(i32 111)
   call void @putch(i32 114)
   call void @putch(i32 10)
-  br label %tc19
+  br label %il893
 
-tc19:                                                ; pred = %il68, %il67
-  br i1 true, label %il79, label %il78
+il893:                                                ; pred = %il891, %il892
+  br i1 true, label %il902, label %il903
 
-il79:                                                ; pred = %tc19
-  store float 0x40ae2c0000000000, float* %retVal_ofil_of_il74, align 4
-  br label %il77
+il892:                                                ; pred = %tc121
+  call void @putch(i32 111)
+  call void @putch(i32 107)
+  call void @putch(i32 10)
+  br label %il893
 
-il78:                                                ; pred = %tc19
-  store float 0xc0ae2c0000000000, float* %retVal_ofil_of_il74, align 4
-  br label %il77
+il903:                                                ; pred = %il893
+  store float 0xc0ae2c0000000000, float* %retVal_ofil824_of_il898, align 4
+  br label %il904
 
-tc20:                                                ; pred = %il75, %il76
-  %ld_phi$12 = load i32, i32* %retVal_ofil74, align 4
-  %cond_normalize__of_il81 = icmp ne i32 %ld_phi$12, 0
-  br i1 %cond_normalize__of_il81, label %il82, label %il83
+il904:                                                ; pred = %il903, %il902
+  %ld_phi$12 = load float, float* %retVal_ofil824_of_il898, align 4
+  %cond_lt_tmp__of_il904 = fcmp olt float %ld_phi$12, 0x3eb0c6f7a0000000
+  %cond_tmp__of_il904 = zext i1 %cond_lt_tmp__of_il904 to i32
+  %cond__of_il904 = icmp ne i32 %cond_tmp__of_il904, 0
+  br i1 %cond__of_il904, label %il899, label %il900
 
-il75:                                                ; pred = %il77
-  store i32 1, i32* %retVal_ofil74, align 4
-  br label %tc20
+tc123:                                                ; pred = %il900, %il899
+  %ld_phi$13 = load i32, i32* %retVal_ofil898, align 4
+  %cond_normalize__of_il905 = icmp ne i32 %ld_phi$13, 0
+  br i1 %cond_normalize__of_il905, label %il906, label %il907
 
-il77:                                                ; pred = %il79, %il78
-  %ld_phi$13 = load float, float* %retVal_ofil_of_il74, align 4
-  %cond_lt_tmp__of_il77 = fcmp olt float %ld_phi$13, 0x3eb0c6f7a0000000
-  %cond_tmp__of_il77 = zext i1 %cond_lt_tmp__of_il77 to i32
-  %cond__of_il77 = icmp ne i32 %cond_tmp__of_il77, 0
-  br i1 %cond__of_il77, label %il75, label %il76
+il902:                                                ; pred = %il893
+  store float 0x40ae2c0000000000, float* %retVal_ofil824_of_il898, align 4
+  br label %il904
 
-il76:                                                ; pred = %il77
-  store i32 0, i32* %retVal_ofil74, align 4
-  br label %tc20
+il900:                                                ; pred = %il904
+  store i32 0, i32* %retVal_ofil898, align 4
+  br label %tc123
 
-il82:                                                ; pred = %tc20
+il899:                                                ; pred = %il904
+  store i32 1, i32* %retVal_ofil898, align 4
+  br label %tc123
+
+il906:                                                ; pred = %tc123
   call void @putch(i32 101)
   call void @putch(i32 114)
   call void @putch(i32 114)
   call void @putch(i32 111)
   call void @putch(i32 114)
   call void @putch(i32 10)
-  br label %tc21
+  br label %ifTrue_85
 
-tc21:                                                ; pred = %il82, %il83
-  br i1 true, label %ifTrue_4, label %next_4
-
-il83:                                                ; pred = %tc20
+il907:                                                ; pred = %tc123
   call void @putch(i32 111)
   call void @putch(i32 107)
   call void @putch(i32 10)
-  br label %tc21
+  br label %ifTrue_85
 }
 

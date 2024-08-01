@@ -52,7 +52,6 @@ public class MemToReg implements ModulePass {
     }
 
     private void memToRegProc() {
-        PhiModify phiModify = PhiModify.getInstance();
         for (int i = 0; i < module.getFunctionNum(); i++) {
             FunctionValue fv = module.getFunction(i);
             if (fv.isLib()) {
@@ -72,8 +71,6 @@ public class MemToReg implements ModulePass {
             fillEmptyPhis();
 
             rmRedundantAllocStoreLoadAndPhiInFunction(fv);
-
-            phiModify.runOnFunction(fv);
         }
     }
 
@@ -91,14 +88,19 @@ public class MemToReg implements ModulePass {
                     ValueRef mem = store.getOperand(1);
                     if (mem2Alloc.containsKey(mem)) { // memory is in replaceable alloc inst
                         HashMap<BasicBlockRef, ValueRef> tmp = defineInBlock.get(mem2Alloc.get(mem));
+//                        System.err.println(mem + ": " +bb + " -- " + storeVal);
                         tmp.put(bb, storeVal); // renew the memory's value in specific block
                     }
                 }
                 if (inst instanceof Load load) {
-//                    System.err.println("tag: " + inst);
+//                    System.err.println("load: " + inst);
                     ValueRef mem = inst.getOperand(0);
                     if (mem2Alloc.containsKey(mem)) {
+//                        System.err.println("tag::" + mem + " -- " + bb);
                         ValueRef latestVal = getLatestDefineForMem(bb, mem2Alloc.get(mem));
+//                        if (latestVal == null) {
+//                            latestVal = UNDEF;
+//                        }
                         ValueRef old = load.getLVal();
                         for (Instruction user : old.getUser()) { // replace all old load usage with the new value
 //                            System.err.println(user);
@@ -110,6 +112,9 @@ public class MemToReg implements ModulePass {
                         }
                     }
                 }
+//                if (sz != bb.getIrNum()) {
+//                    j += bb.getIrNum() - sz;
+//                }
             }
         }
     }
@@ -234,7 +239,21 @@ public class MemToReg implements ModulePass {
             modifyPhiOnModule();
             changed |= eliminateConstExp.runOnModule(this.module);
         }
+        // reduce phi and drop phi's dead pred
+        runPhiModifyPass();
+        modifyPhiOnModule();
         return false;
+    }
+
+    private void runPhiModifyPass() {
+        PhiModify phiModify = PhiModify.getInstance();
+        for (int i = 0; i < module.getFunctionNum(); i++) {
+            FunctionValue fv = module.getFunction(i);
+            if (fv.isLib()) {
+                continue;
+            }
+            phiModify.runOnFunction(fv);
+        }
     }
 
     @Override
