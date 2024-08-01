@@ -110,10 +110,10 @@ public class RiscInstrGenerator implements InstructionVisitor {
         } else {
             riscInstructions.add(new RiscMv(new Register("t5"), allocator.getValueOfVar(basePtr)));
         }
-        List<String> regs = allocator.prepareOperands(index);
+        List<String> regs = allocator.prepareOperands(index);//t0 or t1
         int length = ArrayType.getTotalSize(((ArrayType) gep.getArrayTypePtr().getBase()).getElementType());
-        riscInstructions.add(new RiscLi(new Register("t0"), new ImmediateValue(length)));
-        riscInstructions.add(new RiscMul(new Register("t0"), new Register(regs.get(0)), new Register("t0")));
+        riscInstructions.add(new RiscLi(new Register("t2"), new ImmediateValue(length)));
+        riscInstructions.add(new RiscMul(new Register("t0"), new Register(regs.get(0)), new Register("t2")));
         riscInstructions.add(new RiscAdd(new Register("t0"), new Register("t5"), new Register("t0")));
         afterAnInstr(gep);
     }
