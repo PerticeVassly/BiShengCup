@@ -49,6 +49,7 @@ public class PassManager {
         allPasses.add(MergeRepeatedArithmeticPass.getInstance());
         allPasses.add(StrengthReductionPass.getInstance());
         allPasses.add(IdentifyTmpPass.getInstance());
+        allPasses.add(EliminateConstExp.getInstance());
         allPasses.add(RegToMem.getInstance());
         allPasses.add(EliminateLoadStorePass.getInstance());
     }
