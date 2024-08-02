@@ -9,6 +9,8 @@ public class Store extends Instruction {
     public Store(ValueRef value, ValueRef pointer) {
         operator = "store";
         operands = new ValueRef[]{value, pointer};
+        value.addUser(this);
+        pointer.addUser(this);
     }
 
     @Override

@@ -4,7 +4,6 @@ import cn.edu.nju.software.frontend.util.CG;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.IrCloneVisitor;
 import cn.edu.nju.software.ir.instruction.*;
-
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.type.Pointer;
@@ -14,10 +13,7 @@ import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
-
-
 import java.util.*;
-
 
 public class FunctionInlinePass implements ModulePass {
     //TODO:本pass应该尽可能提前做，否则可能会有潜在问题（如隔多行访问同一临时变量）
@@ -57,18 +53,25 @@ public class FunctionInlinePass implements ModulePass {
     }
 
     private void doPass(ModuleRef module) {
+
         //提前先把别的函数里可以内联的部分完成
         for (FunctionValue functionValue : module.getFunctions()) {
             if (!functionValue.getName().equals("main")) {
-                processFunction(functionValue);
-            }
+                    processFunction(functionValue);
+                    CFGBuildPass.getInstance().update(functionValue);
+                    LoopBuildPass.getInstance().update(functionValue);
+                }
         }
+
         //再进行main函数内联
         for (FunctionValue functionValue : module.getFunctions()) {
             if (functionValue.getName().equals("main")) {
                 processFunction(functionValue);
+                //注意！在改变函数内部块后需要及时更新CFG和循环表
+                CFGBuildPass.getInstance().update(functionValue);
+                LoopBuildPass.getInstance().update(functionValue);
             }
-        }
+       }
         for (FunctionValue functionValue : inlineTable) {
             if (!Objects.equals(functionValue.getName(), "main")) {
                 module.dropFunction(functionValue);
@@ -100,7 +103,8 @@ public class FunctionInlinePass implements ModulePass {
                 needToBeAdded.clear();
             }
         } while (flag);
-
+        //建立正确的前继关系
+        Util.adjustPred(function);
     }
 
     private void buildInlineTable(ModuleRef module) {
@@ -205,11 +209,13 @@ public class FunctionInlinePass implements ModulePass {
         List<BasicBlockRef> copyBlock = new ArrayList<>();
         Map<BasicBlockRef, BasicBlockRef> copyMap = new HashMap<>();
         //存变量对应的新名称，防止出现引用混乱的问题
-        Map<String, String> copyValueMap = new HashMap<>();
-        Set<ValueRef> toBeChanged = new HashSet<>();
+        //用名称索引引用
+        Map<String, ValueRef> copyValueMap = new HashMap<>();
+        //一个指令可能会有多处修改！
+        Map<Instruction,Set<Integer>> toBeChanged = new HashMap<>();
         for (BasicBlockRef basicBlockRef : function.getBasicBlockRefs()) {
             //注意！内联块名不能过长，否则会产生命名问题
-            BasicBlockRef newBlock = new BasicBlockRef(curFunction, "il");
+            BasicBlockRef newBlock = new BasicBlockRef(curFunction, "i");
             copyMap.put(basicBlockRef, newBlock);
             for (Instruction instruction : basicBlockRef.getIrs()) {
                 Instruction newInstr = irCloneVisitor.genClonedInstruction(instruction);
@@ -220,8 +226,8 @@ public class FunctionInlinePass implements ModulePass {
                 if (lVal != null && !(lVal instanceof GlobalVar)) {
                     //注意全局变量不改名
                     //名称过长可能导致问题
-                    lVal.setName(lVal.getName() + "_of_" + newBlock.getName());
-                    copyValueMap.put(instruction.getLVal().getName(), lVal.getName());
+                    lVal.setName(lVal.getName()  + newBlock.getName());
+                    copyValueMap.put(instruction.getLVal().getName(), lVal);
                 }
                 if (newInstr.getOperands() != null) {
                     for (int i = 0; i < newInstr.getNumberOfOperands(); i++) {
@@ -230,10 +236,23 @@ public class FunctionInlinePass implements ModulePass {
                         //注意全局变量不改名,跨块访问变量需查表
                         if (!operand.getName().isEmpty() && !Character.isDigit(operand.getName().charAt(0)) && !(operand instanceof GlobalVar)) {
                             if (copyValueMap.containsKey(instruction.getOperand(i).getName())) {
-                                operand.setName(copyValueMap.get(instruction.getOperand(i).getName()));
+                                newInstr.setOperand(i,copyValueMap.get(instruction.getOperand(i).getName()));
+                                //为指令添加user
+                                copyValueMap.get(instruction.getOperand(i).getName()).addUser(newInstr);
                             } else {
                                 //将暂时无法替换名称的变量加入待换名表
-                                toBeChanged.add(operand);
+                                //跳转指令的目标块不能加入表中换名
+                             if(operand instanceof BasicBlockRef){
+                                 continue;
+                             }
+                             if(toBeChanged.containsKey(newInstr)){
+                                 toBeChanged.get(newInstr).add(i);
+                             }else {
+                                 Set<Integer> set = new HashSet<>();
+                                 set.add(i);
+                                 toBeChanged.put(newInstr,set);
+                             }
+
                             }
 
                         }
@@ -242,13 +261,28 @@ public class FunctionInlinePass implements ModulePass {
                 }
                 //特别处理Call
                 if (newInstr instanceof Call call) {
-                    for (ValueRef valueRef : call.getRealParams()) {
+                    for (int i = 0; i < call.getRealParams().size(); i++) {
                         //判断是否是在处理函数参数，如果不是，则改变变量名
                         //注意全局变量不改名
+                        ValueRef valueRef= call.getRealParams().get(i);
                         if (!valueRef.getName().isEmpty() && !Character.isDigit(valueRef.getName().charAt(0)) && !(valueRef instanceof GlobalVar)) {
-                            valueRef.setName(valueRef.getName() + "_of_" + newBlock.getName());
-                        }
+                            if(copyValueMap.containsKey(valueRef.getName())){
+                                call.setParam(i,copyValueMap.get(valueRef.getName()));
+                                //为变量添加user
+                                copyValueMap.get(valueRef.getName()).addUser(call);
+                            }else {
+                                //同一条指令可以有多个操作数会要修改！！！
+                                if(toBeChanged.containsKey(call)){
+                                    toBeChanged.get(call).add(i);
+                                }else {
+                                    Set<Integer> set = new HashSet<>();
+                                    set.add(i);
+                                    toBeChanged.put(call,set);
+                                }
 
+                            }
+
+                        }
                     }
                 }
                 newBlock.put(newInstr);
@@ -256,12 +290,24 @@ public class FunctionInlinePass implements ModulePass {
             copyBlock.add(newBlock);
         }
         //改名
-        for (ValueRef valueRef : toBeChanged) {
+        for (Instruction instruction : toBeChanged.keySet()) {
             //常量不改名
-            if (!valueRef.getName().isEmpty()) {
-                valueRef.setName(copyValueMap.get(valueRef.getName()));
-            }
+            //特判call指令
 
+            if (instruction instanceof Call call) {
+                //为变量添加user
+                for (int index : toBeChanged.get(instruction)) {
+                    copyValueMap.get(call.getRealParam(index).getName()).addUser(call);
+                    call.setParam(index, copyValueMap.get(call.getRealParam(index).getName()));
+                }
+
+                continue;
+            }
+            for (int index : toBeChanged.get(instruction)) {
+                copyValueMap.get(instruction.getOperand(index).getName()).addUser(instruction);
+                instruction.setOperand(index, copyValueMap.get(instruction.getOperand(index).getName()));
+
+            }
         }
         //对跳转语句的标签进行修改
         for (BasicBlockRef basicBlockRef : copyMap.keySet()) {
@@ -319,7 +365,6 @@ public class FunctionInlinePass implements ModulePass {
 
     private void processBlocks(Call call,List<BasicBlockRef> blocks, BasicBlockRef pred) {
         List<ValueRef> paramTable = call.getRealParams();
-        IrCloneVisitor irCloneVisitor=new IrCloneVisitor();
         for (BasicBlockRef bb:blocks){
             for (int i = 0; i < bb.getIrNum(); i++) {
                 ValueRef[] operands = bb.getIr(i).getOperands();
@@ -328,28 +373,32 @@ public class FunctionInlinePass implements ModulePass {
                 if(bb.getIr(i) instanceof Call call1){
                     boolean changed=false;
                     List<ValueRef> params = call1.getRealParams();
-                    Call newInstr=(Call)(irCloneVisitor.genClonedInstruction(bb.getIr(i)));
                     for (int j = 0; j < params.size(); j++) {
                         ValueRef param = params.get(j);
                         if (!param.getName().isEmpty() && Character.isDigit(param.getName().charAt(0))) {
                             int index = Integer.parseInt(param.getName());
-                            newInstr.setParam(j,paramTable.get(index));
+                            call1.setParam(j,paramTable.get(index));
+                            //为变量添加user
+                            paramTable.get(index).addUser(call1);
                             changed=true;
                         }
                     }
                     if(changed){
-                        bb.renewIr(i,newInstr);
+                        bb.renewIr(i, call1);
                     }
                 }
                 //注意多处替换
+                //注意不能复制，直接在现有的指令上更改
                 if(operands!=null){
-                    Instruction newInstr=irCloneVisitor.genClonedInstruction(bb.getIr(i));
+                    Instruction newInstr=bb.getIr(i);
                     boolean changed=false;
                     for (int j = 0; j < operands.length; j++) {
                         ValueRef operand = operands[j];
                         if (!operand.getName().isEmpty() && Character.isDigit(operand.getName().charAt(0))) {
                             int index = Integer.parseInt(operand.getName());
                             newInstr.setOperand(j,paramTable.get(index));
+                            //为变量添加user
+                            paramTable.get(index).addUser(newInstr);
                             changed=true;
                         }
                     }
@@ -366,12 +415,7 @@ public class FunctionInlinePass implements ModulePass {
     }
 
     private int findLastInstruction(BasicBlockRef bb) {
-        for (int i = bb.getIrNum() - 1; i >= 0; i--) {
-            if (!(bb.getIr(i) instanceof Default)) {
-                return i;
-            }
-        }
-        return -1;
+        return Util.findLastInstruction(bb);
     }
 
     private void preProcess() {
@@ -462,5 +506,6 @@ public class FunctionInlinePass implements ModulePass {
             }
         }
     }
+
 }
 

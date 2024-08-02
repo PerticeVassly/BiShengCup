@@ -20,6 +20,9 @@ public class Call extends Instruction {
         operator = getOperator(CALL);
         this.function = function;
         this.realParams = realParams;
+        for (ValueRef ref : this.realParams) {
+            ref.addUser(this);
+        }
     }
 
     public Call(ValueRef lVal, FunctionValue function, List<ValueRef> realParams) {
@@ -27,6 +30,9 @@ public class Call extends Instruction {
         operator = getOperator(CALL);
         this.function = function;
         this.realParams = realParams;
+        for (ValueRef r : this.realParams) {
+            r.addUser(this);
+        }
     }
 
     public Call(FunctionValue function, List<ValueRef> realParams, int lineNo) {
@@ -34,6 +40,9 @@ public class Call extends Instruction {
         this.function = function;
         this.realParams = realParams;
         this.lineNo = lineNo;
+        for (ValueRef r : this.realParams) {
+            r.addUser(this);
+        }
     }
 
     public Call(ValueRef lVal, FunctionValue function, List<ValueRef> realParams, int lineNo) {
@@ -42,6 +51,9 @@ public class Call extends Instruction {
         this.function = function;
         this.realParams = realParams;
         this.lineNo = lineNo;
+        for (ValueRef r : this.realParams) {
+            r.addUser(this);
+        }
     }
 
     public List<ValueRef> getRealParams() {
@@ -57,6 +69,34 @@ public class Call extends Instruction {
     }
     public int getLineNo() {
         return lineNo;
+    }
+    public int getParamsNum() {
+        return realParams.size();
+    }
+
+    public ValueRef getRealParam(int index) {
+        return realParams.get(index);
+    }
+
+    /***
+     * special for Call(because different op struct) <br>
+     * replace old with new; after replacing, old will be deleting, so no need to modify old
+     * @param index: position
+     * @param newVal: replace value
+     */
+    public void replaceRealParam(int index, ValueRef newVal) {
+//        realParams.get(index).dropUser(this);
+        realParams.set(index, newVal);
+        newVal.addUser(this);
+    }
+
+    public void replaceRealParams(ValueRef old, ValueRef newVal) {
+        int index = realParams.indexOf(old);
+        if (index != -1) {
+//            old.dropUser(this);
+            realParams.set(index, newVal);
+            newVal.addUser(this);
+        }
     }
 
     @Override

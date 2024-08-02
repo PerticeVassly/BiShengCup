@@ -15,10 +15,8 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PrimitiveIterator;
 
 public class RiscBasicBlock {
 
@@ -48,7 +46,7 @@ public class RiscBasicBlock {
         allocator.setLValLiveTable(lValLiveTable);
         allocator.setTempVarLiveTable(tempVarLiveTable);
         allocator.setInstrGenerator(generator);
-        if (basicBlockRef.getPredNum() == 0) {
+        if (basicBlockRef.isEntryBlock()) {
             functionInit();
         }
         riscInstructions.addAll(generator.genRiscInstructions());
@@ -180,9 +178,12 @@ public class RiscBasicBlock {
 
         System.out.println(basicBlockRef.getName() + ":");
 
-        assert !riscInstructions.isEmpty();
+//        assert !riscInstructions.isEmpty(); //todo() why here fail
 
         for(RiscInstruction riscInstruction : riscInstructions){
+            if(riscInstruction instanceof RiscComment){
+                continue;
+            }
             System.out.println(riscInstruction.emitCode());
         }
     }

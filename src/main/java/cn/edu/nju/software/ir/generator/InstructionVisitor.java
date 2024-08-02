@@ -2,7 +2,9 @@ package cn.edu.nju.software.ir.generator;
 
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
+import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
+import cn.edu.nju.software.ir.instruction.logic.Shl;
 
 public interface InstructionVisitor {
 
@@ -23,6 +25,10 @@ public interface InstructionVisitor {
     default void visit(Mod mod) {}
 
     default void visit(Div div) {}
+
+    void visit(Ashr ashr);
+
+    void visit(Shl shl);
 
     default void visit(FDiv fdiv) {}
 
@@ -66,4 +72,7 @@ public interface InstructionVisitor {
     default void visit(Phi phi) {}
 
     default void visit(Default aDefault){};
+    // new TODO(): implement
+    default void visit(Move move) {}
+
 }

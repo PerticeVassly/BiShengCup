@@ -6,7 +6,6 @@ import cn.edu.nju.software.frontend.util.LoopSet;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
-
 import java.util.*;
 
 public class LoopBuildPass implements ModulePass {
@@ -41,7 +40,12 @@ public class LoopBuildPass implements ModulePass {
             createLoopForestGraph(functionValue);
         }
     }
-
+    public void update(FunctionValue functionValue){
+        LoopSet loopSet =findLoops(functionValue);
+        if(!loopSet.isEmpty()){
+            forestTable.put(functionValue, loopSet);
+        }
+    }
     @Override
     public String getName() {
         return "Loop Build Pass";

@@ -52,7 +52,7 @@ public class Cmp extends Binary {
                     cv = new ConstValue(i1, !operands[0].equals(operands[1]));
                     break;
                 case "eq":
-                case "neq":
+                case "oeq":
                     cv = new ConstValue(i1, operands[0].equals(operands[1]));
                     break;
                 case "sgt":
@@ -61,15 +61,16 @@ public class Cmp extends Binary {
                     break;
                 case "slt":
                 case "olt":
-                    cv = new ConstValue(i1, !((ConstValue) operands[0]).greaterThan((ConstValue) operands[1]));
+                    cv = new ConstValue(i1, !((ConstValue) operands[0]).greaterThan((ConstValue) operands[1]) && !operands[0].equals(operands[1]));
                     break;
                 case "sle":
                 case "ole":
-                    cv = new ConstValue(i1, operands[0].equals(operands[1]) || !((ConstValue) operands[0]).greaterThan((ConstValue) operands[1]));
+                    cv = new ConstValue(i1,  !((ConstValue) operands[0]).greaterThan((ConstValue) operands[1]));
                     break;
                 case "sge":
                 case "oge":
                     cv = new ConstValue(i1, operands[0].equals(operands[1]) || ((ConstValue) operands[0]).greaterThan((ConstValue) operands[1]));
+                    break;
                 default:
                     break;
             }

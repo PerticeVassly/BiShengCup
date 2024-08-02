@@ -11,6 +11,7 @@ public class ZExt extends Instruction {
         operator = "zext";
         operands = new ValueRef[]{operand};
         this.target = target;
+        operand.addUser(this);
     }
 
     @Override

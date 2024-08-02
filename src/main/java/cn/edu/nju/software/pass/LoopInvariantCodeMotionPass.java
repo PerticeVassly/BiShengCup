@@ -4,8 +4,6 @@ import cn.edu.nju.software.frontend.util.CFG;
 import cn.edu.nju.software.frontend.util.Loop;
 import cn.edu.nju.software.frontend.util.LoopSet;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import cn.edu.nju.software.ir.generator.InstructionVisitor;
-import cn.edu.nju.software.ir.generator.IrCloneVisitor;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
@@ -48,6 +46,8 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
         if(flag){
             printDbgInfo();
         }
+        //注意一定要clear！
+        valueTable.clear();
         return flag;
     }
 
@@ -73,17 +73,21 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
             return;
         }
         //获得入口节点，将可以外提的指令加入入口节点的倒数第二条指令
+        //由于有空指令，最后一条指令的位置需要手动寻找
         BasicBlockRef entry = findEntry(loop);
-        for (Instruction instruction : instructions) {
-            entry.put(entry.getIrNum()-1,instruction);
+        int pos=findLastInstr(entry);
+        //逆序加入
+        for (int i = instructions.size()-1; i >=0 ; i--) {
+                entry.put(pos,instructions.get(i));
         }
+        deleteRedundantInstructions(instructions,loop);
         //对子循环做同样的操作
         for (Loop subLoop: loop.getSubLoops()) {
             List<BasicBlockRef> judgeBlocks=findJudgeBlock(subLoop);
             //只对判断条件外提
             List<Instruction> subLoopInstructions = identifyInvariants(subLoop,findEntry(subLoop),judgeBlocks);
-            doPass(loop, instructions);
-            deleteRedundantInstructions(instructions,loop);
+            doPass(subLoop, subLoopInstructions);
+            deleteRedundantInstructions(subLoopInstructions,subLoop);
         }
     }
 
@@ -118,14 +122,19 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
                     ValueRef dest=instruction.getOperand(1);
                     //仅仅为了表示这个变量在循环中被更新，防止下次load的时候误认为这个变量没有被更新
                     valueTable.put(dest,loop.getRoot());
-
+                }
+                //数组变量一律不外提
+                if(instruction instanceof GEP gep){
+                    ValueRef lVal=gep.getLVal();
+                    //仅仅为了表示这个变量在循环中被更新，防止下次load的时候误认为这个变量没有被更新
+                    valueTable.put(lVal,loop.getRoot());
                 }
             }
         }
         List<Instruction> result = new ArrayList<>();
         for (BasicBlockRef basicBlockRef : judgeBlocks) {
             for (Instruction instruction : basicBlockRef.getIrs()) {
-                if (instruction instanceof Br||instruction instanceof CondBr||instruction instanceof Call) {
+                if (instruction instanceof Br||instruction instanceof CondBr||instruction instanceof Call||instruction instanceof GEP) {
                     continue;
                 }
                 //通过判断与当前指令关联的值是否在循环内被更新来判断当前指令的左值是否被更新
@@ -162,13 +171,20 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
 
     private List<BasicBlockRef> findJudgeBlock(Loop loop) {
         //寻找判断块，基本思路是如果当前块有可能跳出循环，则其是判断块之一
+        //TODO:无限循环
         List<BasicBlockRef> result = new ArrayList<>();
         BasicBlockRef root = loop.getRoot();
         Stack<BasicBlockRef> help = new Stack<>();
         help.add(root);
         result.add(root);
+        //记录访问过的节点
+        HashSet<BasicBlockRef> vis=new HashSet<>();
         while (!help.isEmpty()) {
             BasicBlockRef cur = help.pop();
+            if(vis.contains(cur)){
+                continue;
+            }
+            vis.add(cur);
             boolean flag = false;
             for (BasicBlockRef next : cfg.getSuccessors(cur)) {
                 if (loop.contains(next)) {
@@ -213,5 +229,9 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
                 }
             }
         }
+    }
+
+    private int findLastInstr(BasicBlockRef bb){
+        return Util.findLastInstruction(bb);
     }
 }

@@ -1,9 +1,6 @@
 package cn.edu.nju.software.ir.basicblock;
 
-import cn.edu.nju.software.ir.instruction.Allocate;
-import cn.edu.nju.software.ir.instruction.Br;
-import cn.edu.nju.software.ir.instruction.CondBr;
-import cn.edu.nju.software.ir.instruction.Instruction;
+import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
@@ -11,7 +8,6 @@ import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class BasicBlockRef extends ValueRef {
     private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
@@ -19,6 +15,7 @@ public class BasicBlockRef extends ValueRef {
     private final String name;
     private ArrayList<Instruction> irs;
     private int irNum;
+    private boolean isEntryBlock = false;
     /**
      * the function it belongs to
      */
@@ -58,6 +55,32 @@ public class BasicBlockRef extends ValueRef {
         return pred.get(index);
     }
 
+    public void dropPred(BasicBlockRef p) {
+        int index = pred.indexOf(p);
+        if (index != -1) {
+            pred.remove(index);
+        }
+    }
+    public void clearPred(){
+        pred.clear();
+    }
+
+    public int getAllocSize() {
+        int sz = 0;
+        for (Instruction ir : irs) {
+            if (ir instanceof Allocate) {
+                sz++;
+            } else {
+                break;
+            }
+        }
+        return sz;
+    }
+
+    public FunctionValue getFunction() {
+        return function;
+    }
+
     public void put(Instruction ir) {
         if (ir instanceof Allocate) {
             function.emitAlloc((Allocate) ir);
@@ -71,6 +94,14 @@ public class BasicBlockRef extends ValueRef {
         irNum++;
     }
 
+    public void setIsEntryBlock(boolean isEntryBlock) {
+        this.isEntryBlock = isEntryBlock;
+    }
+
+    public boolean isEntryBlock() {
+        return isEntryBlock;
+    }
+
     public void renewIr(int index, Instruction ir) {
         irs.set(index, ir);
     }
@@ -80,13 +111,14 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public int getIrNum() {
-        return irNum;
+        return irs.size();
     }
 
     public Instruction getIr(int index) {
-        if (index >= irNum || index < 0) {
-            return null;
-        }
+        //TODO:计数不准确
+//        if (index >= irNum || index < 0) {
+//            return null;
+//        }
         return irs.get(index);
     }
 
@@ -108,6 +140,19 @@ public class BasicBlockRef extends ValueRef {
             }
         }
         if (end != -1) {
+            for (int i = end + 1; i < irNum; i++) {
+                Instruction ir = irs.get(i);
+                if (ir instanceof Br) {
+                    BasicBlockRef bb = ((Br) ir).getTarget();
+                    bb.dropPred(this);
+                }
+                if (ir instanceof CondBr) {
+                    BasicBlockRef tar = ((CondBr) ir).getTrueBlock();
+                    tar.dropPred(this);
+                    tar = ((CondBr) ir).getFalseBlock();
+                    tar.dropPred(this);
+                }
+            }
             irNum = end + 1;
             irs = new ArrayList<>(irs.subList(0, irNum));
         }
@@ -129,9 +174,13 @@ public class BasicBlockRef extends ValueRef {
         pred.removeIf(bb -> !bb.isReachable());
     }
 
-    public void dropPred(BasicBlockRef pre){
-        pred.removeIf(bb->bb.equals(pre));
+    public void replaceIr(Instruction old, Instruction newIr) {
+        int index = irs.indexOf(old);
+        if (index != -1) {
+            irs.set(index, newIr);
+        }
     }
+
     @Override
     public String toString() {
         return "%" + name;
@@ -143,5 +192,25 @@ public class BasicBlockRef extends ValueRef {
 
     public void setReachable(boolean reachable) {
         this.reachable = reachable;
+    }
+
+    public void addPhi(Phi phi) {
+        irNum++;
+        irs.add(0, phi);
+    }
+
+    public boolean contains(Instruction instruction) {
+        return irs.contains(instruction);
+    }
+
+    public int getDirectSuccessorNum() {
+        Instruction inst = irs.get(irNum - 1);
+        if (inst instanceof CondBr) {
+            return 2;
+        } else if (inst instanceof Br) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

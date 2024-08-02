@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import cn.edu.nju.software.backend.RiscModule;
+import cn.edu.nju.software.pass.BranchOptPass;
+import cn.edu.nju.software.pass.EliminateConstExp;
+import cn.edu.nju.software.pass.MemToReg;
 import cn.edu.nju.software.pass.PassManager;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -77,6 +80,7 @@ public class Main {
 //        irVisitor.dumpModuleToConsole();
 
         ModuleRef module = irVisitor.getModule();
+
         if(module == null){
             assert false;
         }
@@ -87,6 +91,7 @@ public class Main {
             //passManager.setDbgFlag();
             passManager.runPass();
         }
+        irVisitor.dumpModuleToConsole();
         if (emitLLVM) {
             module.dumpToFile(output);
         }

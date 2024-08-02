@@ -1,5 +1,6 @@
 package cn.edu.nju.software.ir.instruction;
 
+import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.value.ValueRef;
 
@@ -9,6 +10,7 @@ public abstract class Instruction {
     protected ValueRef[] operands = new ValueRef[0];
     protected String operator;
     protected ValueRef lVal;
+    protected BasicBlockRef block;
 //    protected final static String DELIMITER = ", ";
 
     public ValueRef getOperand(int index) {
@@ -16,11 +18,36 @@ public abstract class Instruction {
     }
 
     /***
+     * inst block
+     * @param block
+     */
+    public void setBlock(BasicBlockRef block) {
+        this.block = block;
+    }
+
+    public BasicBlockRef getBlock() {
+        return block;
+    }
+
+    /***
+     * replace old with new; after replacing, old will be deleting, so no need to modify old
      * @param index: replace position
      * @param valueRef: new operand
      */
     public void replace(int index, ValueRef valueRef) {
+//        operands[index].dropUser(this); // old drop one user -- no need
         operands[index] = valueRef;
+        valueRef.addUser(this); // new add user
+    }
+
+    public void replace(ValueRef old, ValueRef nw) {
+        for (int i = 0; i < operands.length; i++) {
+            if (operands[i].equals(old)) {
+//                old.dropUser(this);
+                operands[i] = nw;
+                nw.addUser(this);
+            }
+        }
     }
 
     public ValueRef[] getOperands() {

@@ -2,8 +2,10 @@ package cn.edu.nju.software.ir.generator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
+import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
 
+import cn.edu.nju.software.ir.instruction.logic.Shl;
 import cn.edu.nju.software.ir.value.FunctionValue;
 
 import cn.edu.nju.software.ir.value.ValueRef;
@@ -14,7 +16,6 @@ import java.util.List;
 
 public class IrCloneVisitor implements InstructionVisitor {
     private Instruction curInstruction;
-
     public Instruction genClonedInstruction(Instruction instruction) {
         instruction.accept(this);
         return curInstruction;
@@ -215,6 +216,21 @@ public class IrCloneVisitor implements InstructionVisitor {
             }
             curInstruction=new Call(lVal,functionValue,params);
         }
+    }
+
+    @Override
+    public void visit(Phi phi) {
+        InstructionVisitor.super.visit(phi);
+    }
+
+    @Override
+    public void visit(Ashr ashr) {
+
+    }
+
+    @Override
+    public void visit(Shl shl) {
+
     }
 
     public void visit(Default defaultVal) {
