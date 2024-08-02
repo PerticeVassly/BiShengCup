@@ -10,6 +10,15 @@ public class ValueRef {
     protected String name;
     protected TypeRef type;
     protected List<Instruction> user = new ArrayList<>(); // inst using this value
+    protected boolean tmpFlag = false;
+
+    public void setTmp(boolean tmpFlag) {
+        this.tmpFlag = tmpFlag;
+    }
+
+    public boolean isTmpVar() {
+        return tmpFlag;
+    }
 
     /**
      * only for differing long names ()

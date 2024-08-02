@@ -48,6 +48,7 @@ public class PassManager {
         allPasses.add(MemToReg.getInstance());
         allPasses.add(MergeRepeatedArithmeticPass.getInstance());
         allPasses.add(StrengthReductionPass.getInstance());
+        allPasses.add(IdentifyTmpPass.getInstance());
         allPasses.add(RegToMem.getInstance());
     }
     public void setDbgFlag(){
