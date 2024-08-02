@@ -4,7 +4,6 @@ import cn.edu.nju.software.frontend.util.CG;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.IrCloneVisitor;
 import cn.edu.nju.software.ir.instruction.*;
-
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.type.Pointer;
@@ -14,10 +13,7 @@ import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
-
-
 import java.util.*;
-
 
 public class FunctionInlinePass implements ModulePass {
     //TODO:本pass应该尽可能提前做，否则可能会有潜在问题（如隔多行访问同一临时变量）
@@ -61,11 +57,12 @@ public class FunctionInlinePass implements ModulePass {
         //提前先把别的函数里可以内联的部分完成
         for (FunctionValue functionValue : module.getFunctions()) {
             if (!functionValue.getName().equals("main")) {
-                processFunction(functionValue);
-                CFGBuildPass.getInstance().update(functionValue);
-                LoopBuildPass.getInstance().update(functionValue);
-            }
+                    processFunction(functionValue);
+                    CFGBuildPass.getInstance().update(functionValue);
+                    LoopBuildPass.getInstance().update(functionValue);
+                }
         }
+
         //再进行main函数内联
         for (FunctionValue functionValue : module.getFunctions()) {
             if (functionValue.getName().equals("main")) {
@@ -214,11 +211,11 @@ public class FunctionInlinePass implements ModulePass {
         //存变量对应的新名称，防止出现引用混乱的问题
         //用名称索引引用
         Map<String, ValueRef> copyValueMap = new HashMap<>();
-
-        Map<Instruction,Integer> toBeChanged = new HashMap<>();
+        //一个指令可能会有多处修改！
+        Map<Instruction,Set<Integer>> toBeChanged = new HashMap<>();
         for (BasicBlockRef basicBlockRef : function.getBasicBlockRefs()) {
             //注意！内联块名不能过长，否则会产生命名问题
-            BasicBlockRef newBlock = new BasicBlockRef(curFunction, "il");
+            BasicBlockRef newBlock = new BasicBlockRef(curFunction, "i");
             copyMap.put(basicBlockRef, newBlock);
             for (Instruction instruction : basicBlockRef.getIrs()) {
                 Instruction newInstr = irCloneVisitor.genClonedInstruction(instruction);
@@ -229,7 +226,7 @@ public class FunctionInlinePass implements ModulePass {
                 if (lVal != null && !(lVal instanceof GlobalVar)) {
                     //注意全局变量不改名
                     //名称过长可能导致问题
-                    lVal.setName(lVal.getName() + "_of_" + newBlock.getName());
+                    lVal.setName(lVal.getName()  + newBlock.getName());
                     copyValueMap.put(instruction.getLVal().getName(), lVal);
                 }
                 if (newInstr.getOperands() != null) {
@@ -248,7 +245,14 @@ public class FunctionInlinePass implements ModulePass {
                              if(operand instanceof BasicBlockRef){
                                  continue;
                              }
-                             toBeChanged.put(newInstr,i);
+                             if(toBeChanged.containsKey(newInstr)){
+                                 toBeChanged.get(newInstr).add(i);
+                             }else {
+                                 Set<Integer> set = new HashSet<>();
+                                 set.add(i);
+                                 toBeChanged.put(newInstr,set);
+                             }
+
                             }
 
                         }
@@ -267,7 +271,15 @@ public class FunctionInlinePass implements ModulePass {
                                 //为变量添加user
                                 copyValueMap.get(valueRef.getName()).addUser(call);
                             }else {
-                               toBeChanged.put(call,i);
+                                //同一条指令可以有多个操作数会要修改！！！
+                                if(toBeChanged.containsKey(call)){
+                                    toBeChanged.get(call).add(i);
+                                }else {
+                                    Set<Integer> set = new HashSet<>();
+                                    set.add(i);
+                                    toBeChanged.put(call,set);
+                                }
+
                             }
 
                         }
@@ -281,20 +293,21 @@ public class FunctionInlinePass implements ModulePass {
         for (Instruction instruction : toBeChanged.keySet()) {
             //常量不改名
             //特判call指令
-            if(instruction instanceof Call call){
+
+            if (instruction instanceof Call call) {
                 //为变量添加user
-                copyValueMap.get(call.getRealParam(toBeChanged.get(call)).getName()).addUser(call);
-                call.setParam(toBeChanged.get(call),copyValueMap.get(call.getRealParam(toBeChanged.get(call)).getName()));
+                for (int index : toBeChanged.get(instruction)) {
+                    copyValueMap.get(call.getRealParam(index).getName()).addUser(call);
+                    call.setParam(index, copyValueMap.get(call.getRealParam(index).getName()));
+                }
 
                 continue;
             }
-            if (!instruction.getOperand(toBeChanged.get(instruction)).getName().isEmpty()) {
-                //为变量添加user
-                copyValueMap.get(instruction.getOperand(toBeChanged.get(instruction)).getName()).addUser(instruction);
-                instruction.setOperand(toBeChanged.get(instruction),copyValueMap.get(instruction.getOperand(toBeChanged.get(instruction)).getName()));
+            for (int index : toBeChanged.get(instruction)) {
+                copyValueMap.get(instruction.getOperand(index).getName()).addUser(instruction);
+                instruction.setOperand(index, copyValueMap.get(instruction.getOperand(index).getName()));
 
             }
-
         }
         //对跳转语句的标签进行修改
         for (BasicBlockRef basicBlockRef : copyMap.keySet()) {
@@ -402,12 +415,7 @@ public class FunctionInlinePass implements ModulePass {
     }
 
     private int findLastInstruction(BasicBlockRef bb) {
-        for (int i = bb.getIrNum() - 1; i >= 0; i--) {
-            if (!(bb.getIr(i) instanceof Default)) {
-                return i;
-            }
-        }
-        return -1;
+        return Util.findLastInstruction(bb);
     }
 
     private void preProcess() {
