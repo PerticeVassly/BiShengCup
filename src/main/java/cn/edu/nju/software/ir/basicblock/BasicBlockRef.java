@@ -200,6 +200,7 @@ public class BasicBlockRef extends ValueRef {
         int index = irs.indexOf(old);
         if (index != -1) {
             irs.set(index, newIr);
+            newIr.setBlock(this);
         }
     }
 
@@ -219,6 +220,7 @@ public class BasicBlockRef extends ValueRef {
     public void addPhi(Phi phi) {
         irNum++;
         irs.add(0, phi);
+        phi.setBlock(this);
     }
 
     public boolean contains(Instruction instruction) {

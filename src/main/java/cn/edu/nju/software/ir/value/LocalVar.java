@@ -3,15 +3,7 @@ package cn.edu.nju.software.ir.value;
 import cn.edu.nju.software.ir.type.TypeRef;
 
 public class LocalVar extends ValueRef implements Variable {
-    private boolean isTmp;
-
-    public void setTmp(boolean t) {
-        isTmp = t;
-    }
-
-    public boolean isTmpExp() {
-        return isTmp;
-    }
+//    private boolean isTmp;
     /**
      * value is for constant propagation
      */
@@ -19,16 +11,12 @@ public class LocalVar extends ValueRef implements Variable {
 
     public LocalVar(TypeRef type, String name) {
         super(type, name);
-        isTmp = false;
+        tmpFlag = false;
     }
 
 
     public LocalVar copy() {
         return new LocalVar(type,name);
-    }
-
-    public boolean isTmpVar() {
-        return isTmp;
     }
 
     @Override
