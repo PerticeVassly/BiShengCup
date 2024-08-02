@@ -65,6 +65,18 @@ public class BasicBlockRef extends ValueRef {
         pred.clear();
     }
 
+    public int getAllocSize() {
+        int sz = 0;
+        for (Instruction ir : irs) {
+            if (ir instanceof Allocate) {
+                sz++;
+            } else {
+                break;
+            }
+        }
+        return sz;
+    }
+
     public FunctionValue getFunction() {
         return function;
     }
