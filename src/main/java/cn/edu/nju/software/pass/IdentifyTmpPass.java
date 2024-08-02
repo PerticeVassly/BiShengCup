@@ -37,7 +37,7 @@ public class IdentifyTmpPass implements ModulePass {
                         if (lVal.getUser().size() > 1) {
                             continue;
                         }
-                        if (lVal.getUser().isEmpty()) {
+                        if (lVal.getUser().isEmpty()) { // no use variable
                             if (instruction instanceof Call) {
                                 continue; // call may bring side effect, do not delete
                             }
@@ -55,9 +55,9 @@ public class IdentifyTmpPass implements ModulePass {
                 }
             }
         }
-        System.err.println("no use: " + noUse);
-        System.err.println("tmp: " + tmp);
-        System.err.flush();
+//        System.err.println("no use: " + noUse);
+//        System.err.println("tmp: " + tmp);
+//        System.err.flush();
         return false;
     }
 
