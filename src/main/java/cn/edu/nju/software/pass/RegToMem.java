@@ -129,6 +129,7 @@ public class RegToMem implements ModulePass {
             ValueRef src = tmp.get(bb);
             ValueRef target = phi.getLVal();
             Move move = new Move(target, src);
+            move.setMemory(phi.getMemory());
             int finalIndex = Util.findLastInstruction(bb);
             bb.put(finalIndex, move); // insert into the one before last
         }
@@ -140,30 +141,29 @@ public class RegToMem implements ModulePass {
      * @param function: pass on function
      */
     private void transferMove2AllocStoreLoad(FunctionValue function) {
-        HashMap<ValueRef, Allocate> moveTar2Alloc = new HashMap<>(); // move's lVal to alloc memory
+        ArrayList<Allocate> allocMemory = new ArrayList<>(); // move's lVal to alloc memory
+        HashMap<ValueRef, ValueRef> movTar2Memory = new HashMap<>(); // record move lVal to memory
 //        ArrayList<ValueRef> initList = new ArrayList<>(); // record memory's init value, do not need a load when using
         for (int i = 0; i < function.getBlockNum(); i++) {
             BasicBlockRef bb = function.getBlock(i);
             for (int j = 0; j < bb.getIrNum(); j++) {
                 // first block pass replace move
+                int sz = bb.getIrNum();
                 Instruction inst = bb.getIr(j);
                 if (inst instanceof Move move) {
-                    if (!moveTar2Alloc.containsKey(move.getLVal())) {
-                        LocalVar mem = bb.createLocalVar(new Pointer(move.getLVal()), "phi_mem");
-                        Allocate allocate = new Allocate(mem);
-//                        moveTar2Alloc.put(move.getSrc(), allocate);
-//                        initList.add(move.getSrc());
-                        moveTar2Alloc.put(move.getLVal(), allocate);
-                        bb.put(allocate);
+                    Allocate allocate = move.getMemory();
+                    if (!allocMemory.contains(allocate)) {
+                        allocMemory.add(allocate);
+                        bb.putAllocAtEntry(allocate);
+//                        if (sz != bb.getIrNum()) {
+//                            j += bb.getIrNum() - sz;
+//                        }
                     }
-//                    else {
-//                        moveTar2Alloc.put(move.getLVal(), moveTar2Alloc.get(move.getSrc()));
-                        // wrong version: move inst does not equal to that they have same memory
-//                    }
                     ValueRef src = move.getSrc(); // move value to memory
                     ValueRef target = move.getLVal();
+                    movTar2Memory.put(target, allocate.getLVal());
                     // create store
-                    Store store = new Store(src, moveTar2Alloc.get(target).getLVal());
+                    Store store = new Store(src, allocate.getLVal());
                     bb.replaceIr(inst, store);
                 }
             }
@@ -178,9 +178,9 @@ public class RegToMem implements ModulePass {
                         if (op instanceof ConstValue) { // constant do not replace
                             continue;
                         }
-                        if (moveTar2Alloc.containsKey(op)) {
+                        if (movTar2Memory.containsKey(op)) {
                             LocalVar ldVal = bb.createLocalVar(op.getType(), "ld_phi");
-                            Load load = new Load(ldVal, moveTar2Alloc.get(op).getLVal());
+                            Load load = new Load(ldVal, movTar2Memory.get(op));
                             call.replaceRealParams(op, ldVal);
                             // insert load
                             bb.put(j, load);
@@ -193,9 +193,9 @@ public class RegToMem implements ModulePass {
                         if (op instanceof ConstValue) {
                             continue;
                         }
-                        if (moveTar2Alloc.containsKey(op)) {
+                        if (movTar2Memory.containsKey(op)) {
                             LocalVar ldVal = bb.createLocalVar(op.getType(), "ld_phi");
-                            Load load = new Load(ldVal, moveTar2Alloc.get(op).getLVal());
+                            Load load = new Load(ldVal, movTar2Memory.get(op));
                             inst.replace(op, ldVal);
                             // insert load
                             bb.put(j, load);

@@ -6,6 +6,7 @@ import cn.edu.nju.software.ir.instruction.CondBr;
 import cn.edu.nju.software.ir.instruction.Default;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.ir.value.ValueRef;
 
 public class Util {
     public static int findLastInstruction(BasicBlockRef bb) {
@@ -43,5 +44,20 @@ public class Util {
             }
         }
         return res;
+    }
+    public static class GEPPair {
+        private final ValueRef pointer;
+        private final ValueRef start;
+        private final ValueRef end;
+
+        public GEPPair(ValueRef pointer, ValueRef start, ValueRef end) {
+            this.pointer = pointer;
+            this.start = start;
+            this.end = end;
+        }
+
+        public boolean equals(GEPPair other) {
+            return pointer.equals(other.pointer) && start.equals(other.start) && end.equals(other.end);
+        }
     }
 }

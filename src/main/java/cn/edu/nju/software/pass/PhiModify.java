@@ -1,6 +1,7 @@
 package cn.edu.nju.software.pass;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
+import cn.edu.nju.software.ir.instruction.Default;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.Phi;
 import cn.edu.nju.software.ir.value.FunctionValue;
@@ -14,6 +15,7 @@ public class PhiModify implements FunctionPass {
     private PhiModify(){}
 
     private FunctionValue function;
+    private boolean changed = false;
 
     public static PhiModify getInstance(){
         if (instance == null) {
@@ -26,7 +28,36 @@ public class PhiModify implements FunctionPass {
     public boolean runOnFunction(FunctionValue function) {
         this.function = function;
         procOnFunction();
+        reducePhiNumber();
+        while (changed) {
+            changed = false;
+            reducePhiNumber();
+        }
         return false;
+    }
+
+    /***
+     * for %0 = phi [%0, %10], [%1, %11]
+     */
+    private void reducePhiNumber() {
+        for (int i = 0; i < function.getBlockNum(); i++) {
+            BasicBlockRef bb = function.getBlock(i);
+            for (int j = 0; j < bb.getIrNum(); j++) {
+                Instruction inst = bb.getIr(j);
+                if (inst instanceof Default) {
+                    continue;
+                }
+                if (inst instanceof Phi phi) {
+                    if (phi.specialModify()) {
+                        changed = true;
+                        bb.dropIr(inst);
+                        j--;
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
     }
 
     private void procOnFunction() {

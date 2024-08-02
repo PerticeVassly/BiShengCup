@@ -23,6 +23,8 @@ public class EliminateConstExp implements ModulePass{
 
     private boolean dbgFlag = false;
 
+    private boolean changed = false;
+
     private static EliminateConstExp eliminateConstExp;
 
     public EliminateConstExp() {
@@ -64,6 +66,7 @@ public class EliminateConstExp implements ModulePass{
                         }
                         block.dropIr(inst);
                         i--;
+                        changed = true;
                     }
                 } else if (inst instanceof ZExt) {
                     if (inst.getOperand(0) instanceof ConstValue) {
@@ -95,8 +98,9 @@ public class EliminateConstExp implements ModulePass{
     @Override
     public boolean runOnModule(ModuleRef module) {
         this.module = module;
+        changed = false;
         doEliminateProc();
-        return true;
+        return changed;
     }
 
     @Override

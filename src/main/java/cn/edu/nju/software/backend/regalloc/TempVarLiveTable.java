@@ -26,9 +26,9 @@ public class TempVarLiveTable {
     /* RegName : VarName */
     private final HashMap<String, LocalVar> tempVar2Reg = new HashMap<>();
 
-    private RiscInstrGenerator generator;
+    private final RiscInstrGenerator generator;
 
-    private Allocator allocator;
+    private final Allocator allocator;
 
     public TempVarLiveTable(RiscInstrGenerator generator, Allocator allocator) {
         this.generator = generator;

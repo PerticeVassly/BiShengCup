@@ -4,6 +4,7 @@ import cn.edu.nju.software.backend.RiscModule;
 import cn.edu.nju.software.frontend.lexer.SysYLexer;
 import cn.edu.nju.software.frontend.parser.SysYParser;
 import cn.edu.nju.software.ir.generator.IRVisitor;
+import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.pass.*;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -23,14 +24,17 @@ public class TestOpt {
         IRVisitor visitor = new IRVisitor();
         visitor.visit(tree);
 
+        LoopBuildPass loopBuildPass = LoopBuildPass.getInstance();
+        FunctionInlinePass functionInlinePass = new FunctionInlinePass();
+        LoopInvariantCodeMotionPass loopInvariantCodeMotionPass = new LoopInvariantCodeMotionPass();
+        RedundantBlockEliminationPass redundantBlockEliminationPass = new RedundantBlockEliminationPass();
         MemToReg memToReg = MemToReg.getInstance();
-        GlobalToLocalPass globalToLocalPass = GlobalToLocalPass.getInstance();
-//        BranchOptPass branchOptPass = new BranchOptPass(visitor.getModule());
-        RegToMem regToMem = RegToMem.getInstance();
-        globalToLocalPass.runOnModule(visitor.getModule());
-        memToReg.runOnModule(visitor.getModule());
-//        branchOptPass.runOnModule();
-//        regToMem.runOnModule(visitor.getModule());
+        StrengthReductionPass strengthReductionPass = StrengthReductionPass.getInstance();
+        ModuleRef moduleRef = visitor.getModule();
+//        loopBuildPass.runOnModule(moduleRef);
+//        functionInlinePass.runOnModule(moduleRef);
+        redundantBlockEliminationPass.runOnModule(moduleRef);
+        memToReg.runOnModule(moduleRef);
         visitor.dumpModuleToConsole();
     }
 }

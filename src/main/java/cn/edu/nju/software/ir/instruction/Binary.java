@@ -31,9 +31,30 @@ public class Binary extends Instruction {
         return lVal + " = " + operator + " " + opType + " " + operands[0] + ", " + operands[1];
     }
 
+    public boolean typeEquals(Instruction instruction) {
+        return false;
+    }
+
     @Override
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
+    }
+
+    /***
+     * if 2 const or 0, return -1
+     * @return index of the only const
+     */
+    public int getOnlyConst() {
+        if (operands[0] instanceof ConstValue && operands[1] instanceof ConstValue) {
+            return -1;
+        }
+        if (!(operands[0] instanceof ConstValue) && !(operands[1] instanceof ConstValue)) {
+            return -1;
+        }
+        if (operands[0] instanceof ConstValue) {
+            return 0;
+        }
+        return 1;
     }
 
     /***

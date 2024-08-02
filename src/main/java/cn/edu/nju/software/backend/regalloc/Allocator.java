@@ -24,19 +24,16 @@ import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Allocator {
 
     private RiscInstrGenerator generator;
-
     private final MemoryManager memoryManager = MemoryManager.get();
-
     private static final Allocator allocator = new Allocator();
-
     private TempVarLiveTable tempVarLiveTable;
-
     private LValLiveTable lValLiveTable;
-
     private Allocator() {}
 
     public static Allocator get() {
@@ -59,110 +56,90 @@ public class Allocator {
         memoryManager.clear(); // reset for memory allocation in current func
     }
 
-    //todo(）应该迁移到generator中
     /* 将变量分配到寄存器中 */
     /* 以t1,t2,t3,ft1,ft2,ft3的顺序分配 */
-    public void prepareOperands(ValueRef... values) {
-
+    //todo() 这里最后会变为返回一组寄存器，而不是装入t1,t2,t3....中(这样损失太大)
+    public List<String> prepareOperands(ValueRef... values) {
+        List<String> regNames = new ArrayList<>();
         generator.addInstruction(new RiscComment("fetch variables"));
-
         int i = 1;
         for (ValueRef value : values) {
             if (value instanceof ConstValue constValue) {
-                prepareAConst(constValue, i);
+                regNames.add(prepareAConst(constValue, i));
             } else if(value instanceof LocalVar localVar){
-                prepareALocal(localVar, i);
+                regNames.add(prepareALocal(localVar, i));
             } else if(value instanceof GlobalVar globalVar){
-                prepareAGlobal(globalVar, i);
+                regNames.add(prepareAGlobal(globalVar, i));
             } else {
                 assert false;
             }
             i++;
         }
-
+        return regNames;
     }
 
-    private void prepareAGlobal(GlobalVar globalVar,int i){
-//        if (((Pointer)globalVar.getType()).getBase() instanceof FloatType) {
-//            generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
-//            generator.addInstruction(new RiscFlw(new Register("ft" + i), new IndirectRegister("t1", 0)));
-//        } else if (((Pointer) globalVar.getType()).getBase() instanceof IntType){
-//            generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
-//            generator.addInstruction(new RiscLw(new Register("t" + i), new IndirectRegister("t3", 0)));
-//        } else if( ((Pointer) globalVar.getType()).getBase() instanceof ArrayType){
-//            assert false;
-//        } else if(((Pointer) globalVar.getType()).getBase() instanceof Pointer){
-//            generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
-//            generator.addInstruction(new RiscLd(new Register("t" + i), new IndirectRegister("t1", 0)));
-//        } else {
-//            assert false;
-//        }
-        generator.addInstruction(new RiscLa(new Register("t1"), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
+    private String prepareAGlobal(GlobalVar globalVar, int i){
+        generator.addInstruction(new RiscLa(new Register("t" + i), new RiscLabelAddress(new RiscLabel(globalVar.getName()))));
+        return "t" + i;
     }
 
-    private void prepareALocal(LocalVar localVar, int i){
+    private String prepareALocal(LocalVar localVar, int i){
         if (localVar.getType() instanceof FloatType) {
-
             if(isLastLVal(localVar)){
-                generator.addInstruction(new RiscFmvxw(new Register("t" + i), new Register("ft0")));
-                generator.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
                 tempVarLiveTable.release(localVar);
-                return;
+                return "ft0";
             }
-
             if(checkTempVarIsRecorded(localVar)){ //here is all localvar is temp
-                generator.addInstruction(new RiscFmvxw(new Register("t" + i), new Register(fetchTempVar(localVar))));
-                generator.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
-                return;
+                return fetchTempVar(localVar);
             }
-
-
             generator.addInstruction(new RiscFlw(new Register("ft" + i), getAddrOfLocalVar(localVar)));
+            return "ft" + i;
         } else if (localVar.getType() instanceof IntType || localVar.getType() instanceof BoolType) {
-
             if(isLastLVal(localVar)){
-                generator.addInstruction(new RiscMv(new Register("t" + i), new Register("t0")));
                 tempVarLiveTable.release(localVar);
-                return;
+                return "t0";
             }
-
             if(checkTempVarIsRecorded(localVar)){ //here is all localvar is temp
-                generator.addInstruction(new RiscMv(new Register("t" + i), new Register(fetchTempVar(localVar))));
-                return;
+                return fetchTempVar(localVar);
             }
-
             generator.addInstruction(new RiscLw(new Register("t" + i), getAddrOfLocalVar(localVar)));
+            return "t" + i;
         } else if(localVar.getType() instanceof Pointer){
             if(isLastLVal(localVar)){
-                generator.addInstruction(new RiscMv(new Register("t" + i), new Register("t0")));
-                return;
+                tempVarLiveTable.release(localVar);
+                return "t0";
             }
             if(checkTempVarIsRecorded(localVar)){ //here is all localvar is temp
-                generator.addInstruction(new RiscMv(new Register("t" + i), new Register(fetchTempVar(localVar))));
-                return;
+                return fetchTempVar(localVar);
             }
             if(checkPtrHasAllocated(localVar.getName())){
-                loadImmediate("t4", memoryManager.getOffset(localVar));
-                generator.addInstruction(new RiscAdd(new Register("t" + i), new Register("sp"), new Register("t4")));
-            } else {
-                generator.addInstruction(new RiscLd(new Register("t" + i), getAddrOfLocalVar(localVar)));
+                if(memoryManager.getOffset(localVar) >= 2048 || memoryManager.getOffset(localVar) <= -2048){
+                    loadImmediate("t4", memoryManager.getOffset(localVar));
+                    generator.addInstruction(new RiscAdd(new Register("t" + i), new Register("sp"), new Register("t4")));
+                } else {
+                    generator.addInstruction(new RiscAddi(new Register("t" + i), new Register("sp"), new ImmediateValue(memoryManager.getOffset(localVar))));
+                }
+                return "t" + i;
             }
-        } else {
-            assert false;
-        }
+            generator.addInstruction(new RiscLd(new Register("t" + i), getAddrOfLocalVar(localVar)));
+            return "t" + i;
+        } else {assert false;}
+        return null;
     }
 
-    private void prepareAConst(ConstValue constValue, int i){
+    private String prepareAConst(ConstValue constValue, int i){
         if (constValue.getType() instanceof FloatType) {
             generator.addInstruction(new RiscLi(new Register("t" + i), new ImmediateValue(Float.parseFloat(constValue.getValue().toString()))));
             generator.addInstruction(new RiscFmvwx(new Register("ft" + i), new Register("t" + i)));
+            return "ft" + i;
         } else if (constValue.getType() instanceof IntType) {
             loadImmediate("t" + i, Integer.parseInt(constValue.getValue().toString()));
+            return "t" + i;
         } else if (constValue.getType() instanceof BoolType) {
             loadImmediate("t" + i, Boolean.TRUE.equals(constValue.getValue()) ? 1 : 0);
-        } else {
-            assert false;
-        }
+            return "t" + i;
+        } else {assert false;}
+        return null;
     }
 
     /**
@@ -209,7 +186,6 @@ public class Allocator {
         return new Register("t3");
     }
 
-    //todo() 我也不知道前端用的什么存储的
     private Operand getValueOfConstVar(ConstValue constVar){
         generator.insertComment("get value of const var:" + constVar.getName());
         if(constVar.getType() instanceof FloatType){
@@ -231,15 +207,17 @@ public class Allocator {
         }
     }
 
+    /**
+     * 获取局部变量的值，返回一个寄存器储存其值
+     * @param localVar
+     * @return
+     */
     private Operand getValueOfLocalVar(LocalVar localVar){
         generator.insertComment("get value of local var:" + localVar.getName());
         if(localVar.getType() instanceof FloatType) {
             generator.addInstruction(new RiscFlw(new Register("ft1"), getAddrOfLocalVar(localVar)));
             return new Register("ft1");
-        } else if(localVar.getType() instanceof IntType){
-            generator.addInstruction(new RiscLw(new Register("t1"), getAddrOfLocalVar(localVar)));
-            return new Register("t1");
-        } else if(localVar.getType() instanceof BoolType){
+        } else if(localVar.getType() instanceof IntType || localVar.getType() instanceof BoolType){
             generator.addInstruction(new RiscLw(new Register("t1"), getAddrOfLocalVar(localVar)));
             return new Register("t1");
         } else if(localVar.getType() instanceof Pointer){
@@ -275,19 +253,19 @@ public class Allocator {
             return getRegWithOffset(memoryManager.getOffset(ptr) + offset, "sp", "t2");
         }
         if (ptr instanceof GlobalVar) {
-            generator.addInstruction(new RiscLa(new Register("t0"), new RiscLabelAddress(new RiscLabel(ptr.getName()))));
-            return getRegWithOffset(offset, "t0", "t2");
+            generator.addInstruction(new RiscLa(new Register("t3"), new RiscLabelAddress(new RiscLabel(ptr.getName()))));
+            return getRegWithOffset(offset, "t3", "t4");
         } else if (ptr instanceof LocalVar) {
-            generator.addInstruction(new RiscLd(new Register("t0"), getRegWithOffset(memoryManager.getOffset(ptr), "sp", "t2")));
-            return getRegWithOffset(offset, "t0", "t2");
+            generator.addInstruction(new RiscLd(new Register("t3"), getRegWithOffset(memoryManager.getOffset(ptr), "sp", "t4")));
+            return getRegWithOffset(offset, "t3", "t4");
         } else {
             assert false;
             return null;
         }
     }
 
-    //todo() 这里要改成1024的判断
-    /**目前destReg只能是t4，因为allocator其他地方会用到t3
+    /**
+     * 使用t4作为返回的寄存器
      * offset可能很大，无法作为offset(reg)的立即数，
      * 如果offset大于1024, destreg = baseReg + immediate 返回0(reg);
      * 否则直接返回offset(baseReg) t4用于offset过大的时候的返回的寄存器
@@ -298,7 +276,6 @@ public class Allocator {
      * @return
      */
     public Operand getRegWithOffset(int immediate, String baseReg, String destReg) {
-        assert !baseReg.equals(destReg);// not same
         if(immediate >= 2048 || immediate < -2048){
             generator.addInstruction(new RiscLi(new Register(destReg), new ImmediateValue(immediate)));
             generator.addInstruction(new RiscAdd(new Register(destReg), new Register(baseReg), new Register(destReg)));
@@ -393,9 +370,8 @@ public class Allocator {
 
     /**
      * 将局部变量（当前存储在reg中）保存进入内存(需要保存的变量只可能是localVar)
-     * @param variable
-     * @param regName
-     * @return
+     * @param variable 要保存的变量
+     * @param regName 当前对应的值所在的寄存器
      */
     public void storeLocalVarIntoMemory(ValueRef variable, String regName){
         TypeRef type = variable.getType();
@@ -408,5 +384,34 @@ public class Allocator {
         } else {
             assert false;
         }
+    }
+
+    /**
+     * 将内存中的局部变量加载到寄存器中（只可能是localVar）
+     * @param variable 要加载的变量
+     * @param regName 加载到的寄存器
+     */
+    public void loadLocalVarFromMemory(ValueRef variable, String regName){
+        TypeRef type = variable.getType();
+        if(type instanceof FloatType){
+            generator.addInstruction(new RiscFlw(new Register(regName), getAddrOfLocalVar(variable)));
+        } else if(type instanceof IntType || type instanceof BoolType){
+            generator.addInstruction(new RiscLw(new Register(regName), getAddrOfLocalVar(variable)));
+        } else if(type instanceof Pointer){
+            generator.addInstruction(new RiscLd(new Register(regName), getAddrOfLocalVar(variable)));
+        } else {
+            assert false;
+        }
+    }
+
+    /**
+     * 将内存中的localVar中的值拷贝到另一个localVar对应的内存中
+     * @param src
+     * @param dest
+     * @param regName 用于中间存储值的寄存器
+     */
+    public void cpLocalVarBetweenMemory(ValueRef src, ValueRef dest, String regName){
+        loadLocalVarFromMemory(src, regName);
+        storeLocalVarIntoMemory(dest, regName);
     }
 }

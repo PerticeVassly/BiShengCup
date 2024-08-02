@@ -21,6 +21,8 @@ public class MemToReg implements ModulePass {
 
     private ModuleRef module;
 
+    private boolean changed = false;
+
     public final static ValueRef UNDEF = new ValueRef(new TypeRef(), "undef");
 
     Generator gen = Generator.getInstance();
@@ -86,14 +88,19 @@ public class MemToReg implements ModulePass {
                     ValueRef mem = store.getOperand(1);
                     if (mem2Alloc.containsKey(mem)) { // memory is in replaceable alloc inst
                         HashMap<BasicBlockRef, ValueRef> tmp = defineInBlock.get(mem2Alloc.get(mem));
+//                        System.err.println(mem + ": " +bb + " -- " + storeVal);
                         tmp.put(bb, storeVal); // renew the memory's value in specific block
                     }
                 }
                 if (inst instanceof Load load) {
-//                    System.err.println("tag: " + inst);
+//                    System.err.println("load: " + inst);
                     ValueRef mem = inst.getOperand(0);
                     if (mem2Alloc.containsKey(mem)) {
+//                        System.err.println("tag::" + mem + " -- " + bb);
                         ValueRef latestVal = getLatestDefineForMem(bb, mem2Alloc.get(mem));
+//                        if (latestVal == null) {
+//                            latestVal = UNDEF;
+//                        }
                         ValueRef old = load.getLVal();
                         for (Instruction user : old.getUser()) { // replace all old load usage with the new value
 //                            System.err.println(user);
@@ -105,6 +112,9 @@ public class MemToReg implements ModulePass {
                         }
                     }
                 }
+//                if (sz != bb.getIrNum()) {
+//                    j += bb.getIrNum() - sz;
+//                }
             }
         }
     }
@@ -137,15 +147,11 @@ public class MemToReg implements ModulePass {
      * param entry: entry basic block
      * */
     private void getReplaceableAlloc(BasicBlockRef entry) {
-        for (int j = 0; j < entry.getIrNum(); j++) {
-            Instruction inst = entry.getIr(j);
-            if (!(inst instanceof Allocate)) {
-                break;
-            }
-            if (((Pointer)inst.getLVal().getType()).getBase() instanceof IntType ||
-                    ((Pointer)inst.getLVal().getType()).getBase() instanceof FloatType) {
-                defineInBlock.put((Allocate) inst, new HashMap<>());
-                mem2Alloc.put(inst.getLVal(), (Allocate) inst);
+        for (Allocate allocate : entry.getAllocates()) {
+            if (((Pointer)allocate.getLVal().getType()).getBase() instanceof IntType ||
+                    ((Pointer)allocate.getLVal().getType()).getBase() instanceof FloatType) {
+                defineInBlock.put(allocate, new HashMap<>());
+                mem2Alloc.put(allocate.getLVal(), allocate);
             }
         }
     }
@@ -190,24 +196,65 @@ public class MemToReg implements ModulePass {
                         j--;
                     }
                 }
+            }
+        }
 
-                // rm redundant phi
+    }
+
+    private void modifyPhiOnModule() {
+        for (int i = 0; i < module.getFunctionNum(); i++) {
+            FunctionValue fv = module.getFunction(i);
+            if (fv.isLib()) {
+                continue;
+            }
+            modifyPhi(fv);
+        }
+    }
+
+    private void modifyPhi(FunctionValue fv) {
+        // rm redundant phi
+        for (int i = 0; i < fv.getBlockNum(); i++) {
+            BasicBlockRef block = fv.getBlock(i);
+            for (int j = 0; j < block.getIrNum(); j++) {
+                Instruction inst = block.getIr(j);
                 if (inst instanceof Phi phi) {
                     if (phi.isRedundant()) { // only 2 operands: [value, block]
                         phi.modify();
-                        bb.dropIr(inst);
+                        block.dropIr(inst);
                         j--;
+                        changed = true;
                     }
                 }
             }
         }
     }
+
     @Override
     public boolean runOnModule(ModuleRef module) {
         this.module = module;
         memToRegProc();
-        eliminateConstExp.runOnModule(this.module);
-        return false; // TODO
+        changed = true;
+        while (changed) {
+            changed = false;
+            modifyPhiOnModule();
+            changed |= eliminateConstExp.runOnModule(this.module);
+        }
+        // reduce phi and drop phi's dead pred
+        //todo() here may cause the problem
+        runPhiModifyPass();
+        modifyPhiOnModule();
+        return false;
+    }
+
+    private void runPhiModifyPass() {
+        PhiModify phiModify = PhiModify.getInstance();
+        for (int i = 0; i < module.getFunctionNum(); i++) {
+            FunctionValue fv = module.getFunction(i);
+            if (fv.isLib()) {
+                continue;
+            }
+            phiModify.runOnFunction(fv);
+        }
     }
 
     @Override

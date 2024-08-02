@@ -40,7 +40,6 @@ public class GlobalToLocalPass implements ModulePass {
                 module.dropGlobalVar(gv);
                 i--;
             } else if (gv.isLocalizable()) { // only base type localize now
-                System.err.println(gv);
                 FunctionValue fv = gv.getUsageFunction();
                 BasicBlockRef entry = fv.getEntryBlock();
                 LocalVar pointer = entry.createLocalVar(gv.getType(), "gv_to_lv");

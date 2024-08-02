@@ -1,7 +1,9 @@
 package cn.edu.nju.software.ir.instruction.arithmetic;
 
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
+import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.OpEnum;
+import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.ValueRef;
@@ -26,4 +28,8 @@ public class FAdd extends Arithmetic {
         return null;
     }
 
+    @Override
+    public boolean typeEquals(Instruction inst) {
+        return inst instanceof FAdd;
+    }
 }
