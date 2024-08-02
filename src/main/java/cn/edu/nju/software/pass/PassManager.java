@@ -42,12 +42,13 @@ public class PassManager {
         allPasses.add(CFGBuildPass.getInstance());
         allPasses.add(LoopBuildPass.getInstance());
         allPasses.add(new FunctionInlinePass());
-        //allPasses.add(new LoopInvariantCodeMotionPass());
+        allPasses.add(new LoopInvariantCodeMotionPass());
         allPasses.add(new RedundantBlockEliminationPass());
         //allPasses.add(EliminateDeadCode.getInstance());
-        //allPasses.add(MemToReg.getInstance());
-        //allPasses.add(RegToMem.getInstance());
+        allPasses.add(MemToReg.getInstance());
         allPasses.add(StrengthReductionPass.getInstance());
+        allPasses.add(RegToMem.getInstance());
+
     }
     public void setDbgFlag(){
         for(Pass pass:allPasses){
