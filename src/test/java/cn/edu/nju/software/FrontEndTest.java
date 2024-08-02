@@ -34,12 +34,13 @@ public class FrontEndTest {
     private static final CmdExecutor cmdExecutor = new CmdExecutor();
 
     @ParameterizedTest
-    @StringSource("82_long_func")
-    @StringSource("95_float")
+//    @StringSource("82_long_func")
+//    @StringSource("95_float")
+    @StringSource("fft2")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
-        testFile(DIR, name);
+//        testFile(DIR, name);
 //        testFile(DIR_HIDDEN, name);
-//        testFile(DIR_PERF, name);
+        testFile(DIR_PERF, name);
     }
 
     /**

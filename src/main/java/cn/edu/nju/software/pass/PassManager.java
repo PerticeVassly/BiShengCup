@@ -50,6 +50,7 @@ public class PassManager {
         allPasses.add(StrengthReductionPass.getInstance());
         allPasses.add(IdentifyTmpPass.getInstance());
         allPasses.add(RegToMem.getInstance());
+        allPasses.add(EliminateLoadStorePass.getInstance());
     }
     public void setDbgFlag(){
         for(Pass pass:allPasses){
