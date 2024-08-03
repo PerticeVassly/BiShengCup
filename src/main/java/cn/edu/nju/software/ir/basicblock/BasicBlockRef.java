@@ -10,8 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BasicBlockRef extends ValueRef {
-    private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
-    private final static ArrayList<Integer> usedFreqList = new ArrayList<Integer>(){{add(0);}};
+    private final static ArrayList<String> usedNameList = new ArrayList<>() {{
+        add("");
+    }};
+    private final static ArrayList<Integer> usedFreqList = new ArrayList<>() {{
+        add(0);
+    }};
     private final String name;
     private ArrayList<Instruction> irs;
     private int irNum;
@@ -65,17 +69,7 @@ public class BasicBlockRef extends ValueRef {
         pred.clear();
     }
 
-    public int getAllocSize() {
-        int sz = 0;
-        for (Instruction ir : irs) {
-            if (ir instanceof Allocate) {
-                sz++;
-            } else {
-                break;
-            }
-        }
-        return sz;
-    }
+
 
     public FunctionValue getFunction() {
         return function;
@@ -114,13 +108,8 @@ public class BasicBlockRef extends ValueRef {
             }
         }
         return sz;
-    public void setIsEntryBlock(boolean isEntryBlock) {
-        this.isEntryBlock = isEntryBlock;
     }
 
-    public boolean isEntryBlock() {
-        return isEntryBlock;
-    }
 
     public void renewIr(int index, Instruction ir) {
         irs.set(index, ir);
