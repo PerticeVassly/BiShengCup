@@ -5,17 +5,14 @@ import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
+import cn.edu.nju.software.pass.Util;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BasicBlockRef extends ValueRef {
-    private final static ArrayList<String> usedNameList = new ArrayList<>() {{
-        add("");
-    }};
-    private final static ArrayList<Integer> usedFreqList = new ArrayList<>() {{
-        add(0);
-    }};
+    private final static ArrayList<String> usedNameList = new ArrayList<String>(){{add("");}};
+    private final static ArrayList<Integer> usedFreqList = new ArrayList<Integer>(){{add(0);}};
     private final String name;
     private ArrayList<Instruction> irs;
     private int irNum;
@@ -26,6 +23,14 @@ public class BasicBlockRef extends ValueRef {
     private final FunctionValue function;
     private final ArrayList<BasicBlockRef> pred;
     private boolean reachable = true;
+
+    public boolean isEntryBlock() {
+        return isEntryBlock;
+    }
+
+    public void setIsEntryBlock(boolean isEntryBlock) {
+        this.isEntryBlock = isEntryBlock;
+    }
 
     public BasicBlockRef(FunctionValue fv, String name) {
         this.function = fv;
@@ -69,8 +74,6 @@ public class BasicBlockRef extends ValueRef {
         pred.clear();
     }
 
-
-
     public FunctionValue getFunction() {
         return function;
     }
@@ -84,18 +87,12 @@ public class BasicBlockRef extends ValueRef {
             irNum++;
             irs.add(ir);
         }
+        ir.setBlock(this);
     }
     public void put(int index, Instruction ir) {
         irs.add(index, ir);
+        ir.setBlock(this);
         irNum++;
-    }
-
-    public void setIsEntryBlock(boolean isEntryBlock) {
-        this.isEntryBlock = isEntryBlock;
-    }
-
-    public boolean isEntryBlock() {
-        return isEntryBlock;
     }
 
     public int getAllocSize() {
@@ -110,9 +107,9 @@ public class BasicBlockRef extends ValueRef {
         return sz;
     }
 
-
     public void renewIr(int index, Instruction ir) {
         irs.set(index, ir);
+        ir.setBlock(this);
     }
 
     public ArrayList<Allocate> getAllocates() {
@@ -231,13 +228,13 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public int getDirectSuccessorNum() {
-        Instruction inst = irs.get(irNum - 1);
+        // if this is a pred block, its last inst must be a br/condBr
+        int index = Util.findLastInstruction(this);
+        Instruction inst = irs.get(index);
         if (inst instanceof CondBr) {
             return 2;
-        } else if (inst instanceof Br) {
-            return 1;
         } else {
-            return 0;
+            return 1;
         }
     }
 }

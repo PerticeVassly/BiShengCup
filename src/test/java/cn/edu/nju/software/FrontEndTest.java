@@ -57,7 +57,9 @@ public class FrontEndTest {
     @ParameterizedTest
     @MethodSource("dirHidden")
     void testHidden(String name) throws IOException, InterruptedException {
-        if (Stream.of("36_rotate", "38_light2d").anyMatch(name::equals)) fail();
+        if(name.contains("36")){
+            fail();
+        }
         testFile(DIR_HIDDEN, name);
     }
 
