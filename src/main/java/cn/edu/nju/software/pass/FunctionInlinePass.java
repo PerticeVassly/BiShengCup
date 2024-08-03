@@ -71,7 +71,7 @@ public class FunctionInlinePass implements ModulePass {
                 CFGBuildPass.getInstance().update(functionValue);
                 LoopBuildPass.getInstance().update(functionValue);
             }
-       }
+        }
         for (FunctionValue functionValue : inlineTable) {
             if (!Objects.equals(functionValue.getName(), "main")) {
                 module.dropFunction(functionValue);
@@ -242,16 +242,16 @@ public class FunctionInlinePass implements ModulePass {
                             } else {
                                 //将暂时无法替换名称的变量加入待换名表
                                 //跳转指令的目标块不能加入表中换名
-                             if(operand instanceof BasicBlockRef){
-                                 continue;
-                             }
-                             if(toBeChanged.containsKey(newInstr)){
-                                 toBeChanged.get(newInstr).add(i);
-                             }else {
-                                 Set<Integer> set = new HashSet<>();
-                                 set.add(i);
-                                 toBeChanged.put(newInstr,set);
-                             }
+                                if(operand instanceof BasicBlockRef){
+                                    continue;
+                                }
+                                if(toBeChanged.containsKey(newInstr)){
+                                    toBeChanged.get(newInstr).add(i);
+                                }else {
+                                    Set<Integer> set = new HashSet<>();
+                                    set.add(i);
+                                    toBeChanged.put(newInstr,set);
+                                }
 
                             }
 
@@ -308,6 +308,7 @@ public class FunctionInlinePass implements ModulePass {
                 instruction.setOperand(index, copyValueMap.get(instruction.getOperand(index).getName()));
 
             }
+
         }
         //对跳转语句的标签进行修改
         for (BasicBlockRef basicBlockRef : copyMap.keySet()) {
@@ -441,7 +442,7 @@ public class FunctionInlinePass implements ModulePass {
                     ValueRef src = store.getOperand(0);
                     //判断是否是对参数的store,是则加入修改表
                     if (!src.getName().isEmpty() && Character.isDigit(src.getName().charAt(0))) {
-                       changedParams.add(dest.getName());
+                        changedParams.add(dest.getName());
                     }
                 }
             }

@@ -1,5 +1,7 @@
 package cn.edu.nju.software.ir.instruction.arithmetic;
+import cn.edu.nju.software.ir.instruction.Instruction;
 import  cn.edu.nju.software.ir.instruction.OpEnum;
+import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import  cn.edu.nju.software.ir.value.ValueRef;
@@ -23,5 +25,10 @@ public class FDiv extends Arithmetic {
             return new ConstValue(new FloatType(), op1 / op2);
         }
         return null;
+    }
+
+    @Override
+    public boolean typeEquals(Instruction inst) {
+        return inst instanceof FDiv;
     }
 }

@@ -41,14 +41,18 @@ public class PassManager {
     private void register(){
         allPasses.add(CFGBuildPass.getInstance());
         allPasses.add(LoopBuildPass.getInstance());
+        allPasses.add(GlobalToLocalPass.getInstance());
+        allPasses.add(GEPReductionPass.getInstance());
         allPasses.add(new FunctionInlinePass());
         allPasses.add(new LoopInvariantCodeMotionPass());
         allPasses.add(new RedundantBlockEliminationPass());
-        //allPasses.add(EliminateDeadCode.getInstance());
         allPasses.add(MemToReg.getInstance());
+        allPasses.add(MergeRepeatedArithmeticPass.getInstance());
         allPasses.add(StrengthReductionPass.getInstance());
+        allPasses.add(IdentifyTmpPass.getInstance());
+        allPasses.add(EliminateConstExp.getInstance());
         allPasses.add(RegToMem.getInstance());
-
+        allPasses.add(EliminateLoadStorePass.getInstance());
     }
     public void setDbgFlag(){
         for(Pass pass:allPasses){

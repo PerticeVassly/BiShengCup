@@ -5,6 +5,7 @@ import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
+import cn.edu.nju.software.pass.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,14 @@ public class BasicBlockRef extends ValueRef {
     private final FunctionValue function;
     private final ArrayList<BasicBlockRef> pred;
     private boolean reachable = true;
+
+    public boolean isEntryBlock() {
+        return isEntryBlock;
+    }
+
+    public void setIsEntryBlock(boolean isEntryBlock) {
+        this.isEntryBlock = isEntryBlock;
+    }
 
     public BasicBlockRef(FunctionValue fv, String name) {
         this.function = fv;
@@ -65,6 +74,27 @@ public class BasicBlockRef extends ValueRef {
         pred.clear();
     }
 
+    public FunctionValue getFunction() {
+        return function;
+    }
+
+    public void put(Instruction ir) {
+        if (ir instanceof Allocate) {
+            function.emitAlloc((Allocate) ir);
+            irNum++;
+            irs.add(0, ir);
+        } else {
+            irNum++;
+            irs.add(ir);
+        }
+        ir.setBlock(this);
+    }
+    public void put(int index, Instruction ir) {
+        irs.add(index, ir);
+        ir.setBlock(this);
+        irNum++;
+    }
+
     public int getAllocSize() {
         int sz = 0;
         for (Instruction ir : irs) {
@@ -77,33 +107,17 @@ public class BasicBlockRef extends ValueRef {
         return sz;
     }
 
-    public FunctionValue getFunction() {
-        return function;
-    }
-
-    public void put(Instruction ir) {
-        if (ir instanceof Allocate) {
-            function.emitAlloc((Allocate) ir);
-        } else {
-            irNum++;
-            irs.add(ir);
-        }
-    }
-    public void put(int index, Instruction ir) {
-        irs.add(index, ir);
-        irNum++;
-    }
-
-    public void setIsEntryBlock(boolean isEntryBlock) {
-        this.isEntryBlock = isEntryBlock;
-    }
-
-    public boolean isEntryBlock() {
-        return isEntryBlock;
-    }
-
     public void renewIr(int index, Instruction ir) {
         irs.set(index, ir);
+        ir.setBlock(this);
+    }
+
+    public ArrayList<Allocate> getAllocates() {
+        return function.getAllocates();
+    }
+
+    public void putAllocAtEntry(Allocate allocate) {
+        function.emitAllocEntry(allocate);
     }
 
     public String getName() {
@@ -115,16 +129,24 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public Instruction getIr(int index) {
-        //TODO:计数不准确
-//        if (index >= irNum || index < 0) {
-//            return null;
-//        }
         return irs.get(index);
     }
 
     public void dropIr(Instruction ir) {
         irs.remove(ir);
         irNum--;
+        if (ir instanceof Allocate) {
+            function.dropAlloc((Allocate) ir);
+        }
+        if (ir instanceof Call call) {
+            for (ValueRef vr : call.getRealParams()) {
+                vr.getUser().remove(ir);
+            }
+        } else {
+            for (int i = 0; i < ir.getNumberOfOperands(); i++) {
+                ir.getOperand(i).getUser().remove(ir);
+            }
+        }
     }
 
     /***
@@ -178,6 +200,7 @@ public class BasicBlockRef extends ValueRef {
         int index = irs.indexOf(old);
         if (index != -1) {
             irs.set(index, newIr);
+            newIr.setBlock(this);
         }
     }
 
@@ -197,6 +220,7 @@ public class BasicBlockRef extends ValueRef {
     public void addPhi(Phi phi) {
         irNum++;
         irs.add(0, phi);
+        phi.setBlock(this);
     }
 
     public boolean contains(Instruction instruction) {
@@ -204,13 +228,13 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public int getDirectSuccessorNum() {
-        Instruction inst = irs.get(irNum - 1);
+        // if this is a pred block, its last inst must be a br/condBr
+        int index = Util.findLastInstruction(this);
+        Instruction inst = irs.get(index);
         if (inst instanceof CondBr) {
             return 2;
-        } else if (inst instanceof Br) {
-            return 1;
         } else {
-            return 0;
+            return 1;
         }
     }
 }

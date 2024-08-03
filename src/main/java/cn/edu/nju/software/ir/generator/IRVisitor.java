@@ -832,8 +832,12 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     ValueRef init = visitInitVal(ctx.initVal());
                     gen.buildStore(builder, init, localVar);
                 } else if (localVar != null) {
+                    // array
+                    arrayInit = new ArrayList<>();
+                    visitInitVal(ctx.initVal());
+                    boolean f = ifNeedMemSet();
                     // special {}
-                    if (isZeroInit(ctx.initVal().getText())) {
+                    if (isZeroInit(ctx.initVal().getText()) || f) {
                         ValueRef bitCastPtr = gen.buildBitCast(builder, localVar, "ptr");
                         ArrayList<ValueRef> args = new ArrayList<>();
                         args.add(bitCastPtr);
@@ -842,10 +846,9 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         args.add(totSz);
                         gen.buildCall(builder, memset, args, 3, "ret",
                                 ctx.IDENT().getSymbol().getLine());
-                    } else {
-                        // array
-                        arrayInit = new ArrayList<>();
-                        visitInitVal(ctx.initVal());
+                    }
+                    if (!isZeroInit(ctx.initVal().getText())) {
+
                         /* initialize array for local variable
                          * consider use GEP to get store target %p
                          * store %init %p
@@ -854,6 +857,9 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         ValueRef[] indices = new ValueRef[dims];
                         for (int i = 0; i < arrayInit.size(); i++) {
                             ValueRef storeVal = arrayInit.get(i);
+                            if (f && storeVal.equals(zero)) {
+                                continue;
+                            }
                             int tmp = i;
                             for (int j = dims - 1; j >= 0; j--) {
                                 indices[j] = gen.ConstInt(i32Type, tmp % elementDim.get(j));
@@ -877,6 +883,20 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
         }
         return null;
     }
+
+    private boolean ifNeedMemSet() {
+        int sz = arrayInit.size();
+        int notZeroSz = 0;
+        for (ValueRef vr : arrayInit) {
+            if (vr.equals(zero)) {
+                continue;
+            }
+            notZeroSz++;
+        }
+        double take = (double) notZeroSz / sz;
+        return take < 0.2;
+    }
+
     private int ptr = 0;
     private ArrayValue getArrayValue(ArrayType arrayType, TypeRef baseType) {
         int size = arrayType.getElementSize();
