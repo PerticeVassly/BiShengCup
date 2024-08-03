@@ -2,7 +2,6 @@ package cn.edu.nju.software.pass;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.Call;
-import cn.edu.nju.software.ir.instruction.Default;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.value.FunctionValue;

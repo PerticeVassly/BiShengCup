@@ -471,7 +471,8 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                     }
                 }
             }
-            lv.setTmp(tmpFlag);
+            //todo() 这里后端强度消解会破坏这个temp和父节点的关系，所以这里不设置tmpFlag,已经有一个pass专门处理这个问题
+            lv.setTmp(false);
             return lv;
         }
     }

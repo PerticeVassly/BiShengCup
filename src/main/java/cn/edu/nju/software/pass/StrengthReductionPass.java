@@ -216,6 +216,7 @@ public class StrengthReductionPass implements BasicBlockPass {
                 ir.getLVal(),
                 temp3,
                 new ConstValue(new IntType(), bits)));
+        ir.getLVal().setTmp(false);
         return newInstructions;
     }
 
@@ -249,6 +250,7 @@ public class StrengthReductionPass implements BasicBlockPass {
                 OpEnum.SUB,
                 new ConstValue(new IntType(), 0),
                 temp4));
+        ir.getLVal().setTmp(false);
         return newInstructions;
     }
 
