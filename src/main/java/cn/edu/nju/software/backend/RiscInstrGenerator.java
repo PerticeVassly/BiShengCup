@@ -45,8 +45,6 @@ import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.*;
-import com.ibm.icu.impl.Normalizer2Impl;
-import org.w3c.dom.ls.LSInput;
 
 import java.util.LinkedList;
 import java.util.List;
