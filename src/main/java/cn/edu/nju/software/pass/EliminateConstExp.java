@@ -98,9 +98,11 @@ public class EliminateConstExp implements ModulePass{
     @Override
     public boolean runOnModule(ModuleRef module) {
         this.module = module;
-        changed = false;
-        doEliminateProc();
-        return changed;
+        do {
+            changed = false;
+            doEliminateProc();
+        } while (changed);
+        return false;
     }
 
     @Override
