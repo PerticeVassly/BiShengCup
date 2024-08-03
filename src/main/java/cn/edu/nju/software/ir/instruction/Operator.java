@@ -19,7 +19,7 @@ public class Operator {
 
     public final static String[] cmpType = new String[]{
             "ne", "eq", "sgt", "slt", "sge", "sle",
-            "one", "oeq", "ogt", "olt", " oge", "ole"
+            "one", "oeq", "ogt", "olt", "oge", "ole"
     };
 
     protected static String getOperator(OpEnum index) {

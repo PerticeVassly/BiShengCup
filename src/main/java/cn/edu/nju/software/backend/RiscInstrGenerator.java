@@ -342,7 +342,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
     public void visit(Cmp cmp) {
         insertComment("cmp " + cmp.getLVal().getName() + " " + cmp.getOperand(0).getName() + " " + cmp.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(cmp);
-        String cmpType = cmp.getType().trim();
+        String cmpType = cmp.getType();
         switch (cmpType) {
             case "ne":
                 riscInstructions.add(new RiscXor(new Register("t0"), new Register(regs.get(0)), new Register(regs.get(1))));

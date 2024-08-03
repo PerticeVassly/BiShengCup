@@ -32,12 +32,14 @@ public class StrengthReductionPass implements BasicBlockPass {
                 iterator.remove();
                 for (Instruction newIr : newInstructions) {
                     iterator.add(newIr);
+                    newIr.setBlock(bb);
                 }
             } else if (isDivInstruction(ir)) {
                 List<Instruction> newInstructions = replaceDiv(ir);
                 iterator.remove();
                 for (Instruction newIr : newInstructions) {
                     iterator.add(newIr);
+                    newIr.setBlock(bb);
                 }
             }
         }
@@ -81,6 +83,7 @@ public class StrengthReductionPass implements BasicBlockPass {
         if(!(ir.getOperand(0) instanceof ConstValue) && !(ir.getOperand(1) instanceof ConstValue)){
             List<Instruction> newInstructions = new ArrayList<>();
             newInstructions.add(ir);
+            ir.setBlock(bb);
             return newInstructions;
         }
         for(int i = 0; i < 2; i++){
@@ -103,6 +106,7 @@ public class StrengthReductionPass implements BasicBlockPass {
         }
         List<Instruction> newInstructions = new ArrayList<>();
         newInstructions.add(ir);
+        ir.setBlock(bb);
         return newInstructions;
     }
 
@@ -168,6 +172,7 @@ public class StrengthReductionPass implements BasicBlockPass {
         List<Instruction> newInstructions = new ArrayList<>();
         if(!(ir.getOperand(1) instanceof ConstValue constValue)){
             newInstructions.add(ir);
+            ir.setBlock(bb);
             return newInstructions;
         }
         int value = (int) constValue.getValue();
@@ -181,6 +186,7 @@ public class StrengthReductionPass implements BasicBlockPass {
             return reduceForDivNeg1(ir);
         }
         newInstructions.add(ir);
+        ir.setBlock(bb);
         return newInstructions;
     }
 
