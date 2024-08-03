@@ -26,9 +26,9 @@ public class TempVarLiveTable {
     /* RegName : VarName */
     private final HashMap<String, LocalVar> tempVar2Reg = new HashMap<>();
 
-    private RiscInstrGenerator generator;
+    private final RiscInstrGenerator generator;
 
-    private Allocator allocator;
+    private final Allocator allocator;
 
     public TempVarLiveTable(RiscInstrGenerator generator, Allocator allocator) {
         this.generator = generator;
@@ -40,6 +40,13 @@ public class TempVarLiveTable {
     public boolean isRecorded(ValueRef tempVar) {
         String regName = getReg(tempVar);
         return regName != null;
+    }
+
+    public boolean isUsed(String regName) {
+        if(!tempVar2Reg.containsKey(regName)){
+            return false;
+        }
+        return !tempVar2Reg.get(regName).getName().isEmpty();
     }
 
     /**

@@ -16,6 +16,15 @@ public class BasicBlockRef extends ValueRef {
     private final String name;
     private ArrayList<Instruction> irs;
     private int irNum;
+    private boolean isEntryBlock;
+
+    public void setIsEntryBlock(boolean isEntryBlock) {
+        this.isEntryBlock = isEntryBlock;
+    }
+
+    public boolean isEntryBlock() {
+        return isEntryBlock;
+    }
     /**
      * the function it belongs to
      */

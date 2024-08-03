@@ -16,7 +16,7 @@
 !**/src/test/resources/2023/82_long_func.ll
 
 
-/target
+**/target
 
 
 pom.xml

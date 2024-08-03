@@ -10,16 +10,13 @@ import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
-
 import java.util.LinkedList;
 import java.util.List;
 
 public class RiscFunction {
 
     private final FunctionValue functionValue;
-
     private final List<RiscBasicBlock> riscBasicBlocks = new LinkedList<>();
-
     private final Allocator allocator = Allocator.get();
 
     public RiscFunction(FunctionValue functionValue) {
@@ -59,9 +56,11 @@ public class RiscFunction {
      */
 
     private void reserveSpaceForLocalVariables() {
-
         for(int i = 0; i < functionValue.getBasicBlockRefs().size(); i++){
             BasicBlockRef bb = functionValue.getBasicBlockRefs().get(i);
+            if(i == 0){
+                bb.setIsEntryBlock(true);
+            }
             for(int j = 0; j < bb.getIrs().size(); j++){
                 Instruction ir = bb.getIrs().get(j);
                 if(ir.getLVal() != null){
@@ -84,13 +83,9 @@ public class RiscFunction {
         allocator.alignStack16byte();
     }
 
-    private void reserveMemoryForType(ValueRef var, TypeRef type) {
+    private void reserveMemoryForType(ValueRef variable, TypeRef type) {
         alignStack8byte();
-        allocator.allocate(var, allocator.getSizeOfType(type));
-    }
-
-    private void reserveMemoryForAllocate(TypeRef type){
-        allocator.allocate(allocator.getSizeOfType(type));
+        allocator.allocate(variable, allocator.getSizeOfType(type));
     }
 
     private void genRiscBasicBlocks() {
@@ -101,15 +96,12 @@ public class RiscFunction {
         }
     }
 
-    //todo 重构成stringbuilder
     public void dumpToConsole() {
-
         System.out.println(".text");
         System.out.println(".align 1");
         System.out.println(".type " + functionValue.getName() + ", @function");
         System.out.println(".globl " + functionValue.getName());
         System.out.println(functionValue.getName() + ":");
-
         riscBasicBlocks.forEach(RiscBasicBlock::dumpToConsole);
     }
 }
