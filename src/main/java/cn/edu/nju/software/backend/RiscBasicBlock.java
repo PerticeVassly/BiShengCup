@@ -40,7 +40,6 @@ public class RiscBasicBlock {
         allocator.setTempVarLiveTable(tempVarLiveTable);
         allocator.setInstrGenerator(generator);
         if (basicBlockRef.getPredNum() == 0) {
-            System.err.println("entry block: " + basicBlockRef.getName());
             functionInit();
         }
         riscInstructions.addAll(generator.genRiscInstructions());
