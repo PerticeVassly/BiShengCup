@@ -2,6 +2,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+**/src/test.bk/
 **/src/test/resources/2023/*.ll
 **/src/test/resources/2023/*.s
 **/src/test/resources/2023part/*.ll

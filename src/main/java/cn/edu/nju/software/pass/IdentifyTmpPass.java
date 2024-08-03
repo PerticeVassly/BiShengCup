@@ -49,7 +49,6 @@ public class IdentifyTmpPass implements ModulePass {
                         Instruction user = lVal.getUser().get(0);
                         if (user.getBlock().equals(bb)) { // use once and only in current block
                             lVal.setTmp(true);
-//                            System.err.println("tmp: " + lVal.getName());
                             tmp++;
                         }
                     }
