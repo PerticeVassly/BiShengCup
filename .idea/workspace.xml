@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="开始公共子表达式消除">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" afterDir="false" />
-    </list>
+    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="重新合并，测试所有Pass" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="wangchenyang-submit" />
+        <entry key="$PROJECT_DIR$" value="wangchenyang-dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,6 +64,7 @@
     "JUnit.FrontEndTest.testHidden.executor": "Run",
     "JUnit.TestBackEndIO.test2023.executor": "Run",
     "JUnit.TestParseTree.test.executor": "Run",
+    "Maven.compiler [package].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "git-widget-placeholder": "main",
@@ -179,7 +177,7 @@
       <updated>1716999766838</updated>
       <workItem from="1716999768267" duration="12001000" />
       <workItem from="1722760337494" duration="4836000" />
-      <workItem from="1722768700333" duration="5943000" />
+      <workItem from="1722768700333" duration="6307000" />
     </task>
     <task id="LOCAL-00001" summary="Framework">
       <option name="closed" value="true" />
@@ -221,7 +219,31 @@
       <option name="project" value="LOCAL" />
       <updated>1722772836039</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="添加测试">
+      <option name="closed" value="true" />
+      <created>1722774707654</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1722774707654</updated>
+    </task>
+    <task id="LOCAL-00007" summary="添加测试2">
+      <option name="closed" value="true" />
+      <created>1722774728420</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1722774728420</updated>
+    </task>
+    <task id="LOCAL-00008" summary="重新合并，测试所有Pass">
+      <option name="closed" value="true" />
+      <created>1722775002992</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1722775002992</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,6 +278,9 @@
     <MESSAGE value="修改函数内联，删除冗余的空指令" />
     <MESSAGE value="暂存" />
     <MESSAGE value="开始公共子表达式消除" />
-    <option name="LAST_COMMIT_MESSAGE" value="开始公共子表达式消除" />
+    <MESSAGE value="添加测试" />
+    <MESSAGE value="添加测试2" />
+    <MESSAGE value="重新合并，测试所有Pass" />
+    <option name="LAST_COMMIT_MESSAGE" value="重新合并，测试所有Pass" />
   </component>
 </project>
