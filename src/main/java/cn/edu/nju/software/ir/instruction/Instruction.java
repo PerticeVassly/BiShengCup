@@ -73,6 +73,7 @@ public abstract class Instruction {
         return Operator.getOp(operator);
     }
 
+    public boolean equivalent(Instruction rhs){return false;};
     public ValueRef getLVal() {
         return lVal;
     }

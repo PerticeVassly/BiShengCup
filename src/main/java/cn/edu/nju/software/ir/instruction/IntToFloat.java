@@ -21,4 +21,17 @@ public class IntToFloat extends Instruction {
         visitor.visit(this);
     }
 
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if (!(rhs instanceof IntToFloat other)) {
+            return false;
+        }
+        ValueRef[] operands=other.getOperands();
+        for (int i = 0; i < operands.length; i++) {
+            if(operands[i].equals(this.operands[i])){
+                return false;
+            }
+        }
+        return true;
+    }
 }

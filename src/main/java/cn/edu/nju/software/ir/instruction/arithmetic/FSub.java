@@ -31,4 +31,18 @@ public class FSub extends Arithmetic {
     public boolean typeEquals(Instruction inst) {
         return inst instanceof FSub;
     }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if (!(rhs instanceof FSub fsub)) {
+            return false;
+        }
+        ValueRef[] operands=fsub.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
+    }
 }

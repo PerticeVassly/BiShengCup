@@ -1,6 +1,7 @@
 package cn.edu.nju.software.ir.instruction;
 
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
+import cn.edu.nju.software.ir.instruction.arithmetic.FAdd;
 import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.value.ValueRef;
 
@@ -35,5 +36,23 @@ public class GEP extends Instruction {
     @Override
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if(!(rhs instanceof GEP gep)) {
+            return false;
+        }
+        if(!gep.getArrayTypePtr().equals(arrayTypePtr)){
+            return false;
+        }
+        ValueRef[] operands=gep.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
+
     }
 }

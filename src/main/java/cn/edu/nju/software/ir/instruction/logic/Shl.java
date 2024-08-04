@@ -32,4 +32,18 @@ public class Shl extends Binary {
         }
         return null;
     }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if (!(rhs instanceof Shl shl)) {
+            return false;
+        }
+        ValueRef[] operands=shl.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
+    }
 }

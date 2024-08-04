@@ -4,6 +4,7 @@ import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.Binary;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.OpEnum;
+import cn.edu.nju.software.ir.instruction.arithmetic.Sub;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.ValueRef;
@@ -32,5 +33,19 @@ public class Ashr extends Binary {
             return new ConstValue(new IntType(), src >> bit);
         }
         return null;
+    }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if (!(rhs instanceof Ashr ashr)) {
+            return false;
+        }
+        ValueRef[] operands=ashr.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
     }
 }

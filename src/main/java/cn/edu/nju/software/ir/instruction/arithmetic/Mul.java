@@ -8,6 +8,10 @@ import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Mul extends Arithmetic {
 
     public Mul(ValueRef lVal, OpEnum op, ValueRef operand1, ValueRef operand2) {
@@ -32,5 +36,16 @@ public class Mul extends Arithmetic {
     public boolean typeEquals(Instruction inst) {
         return inst instanceof Mul;
     }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if (!(rhs instanceof Mul mul)) {
+            return false;
+        }
+        Set<ValueRef> self=new HashSet<>(List.of(operands));
+        Set<ValueRef> other=new HashSet<>(List.of(mul.operands));
+        return self.equals(other);
+    }
 }
+
 

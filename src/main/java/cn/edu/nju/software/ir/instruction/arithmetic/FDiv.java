@@ -31,4 +31,18 @@ public class FDiv extends Arithmetic {
     public boolean typeEquals(Instruction inst) {
         return inst instanceof FDiv;
     }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if (!(rhs instanceof FDiv fDiv)) {
+            return false;
+        }
+        ValueRef[] operands=fDiv.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
+    }
 }

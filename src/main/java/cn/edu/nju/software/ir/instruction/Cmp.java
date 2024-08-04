@@ -5,6 +5,8 @@ import cn.edu.nju.software.ir.type.BoolType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
+import java.util.Objects;
+
 import static cn.edu.nju.software.ir.instruction.Operator.*;
 
 public class Cmp extends Binary {
@@ -77,5 +79,22 @@ public class Cmp extends Binary {
             return cv;
         }
         return null;
+    }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if(!(rhs instanceof Cmp cmp)){
+            return false;
+        }
+        if(!Objects.equals(cmp.getType(), this.getType())){
+            return false;
+        }
+        ValueRef[] operands=cmp.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -33,4 +33,18 @@ public class Lshr extends Binary {
         }
         return null;
     }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if (!(rhs instanceof Lshr lshr)) {
+            return false;
+        }
+        ValueRef[] operands=lshr.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
+    }
 }

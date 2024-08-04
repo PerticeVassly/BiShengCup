@@ -1,10 +1,16 @@
 package cn.edu.nju.software.ir.instruction;
 
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
+import cn.edu.nju.software.ir.instruction.logic.And;
+import cn.edu.nju.software.ir.instruction.logic.Shl;
 import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.value.ArrayValue;
 import cn.edu.nju.software.ir.value.ValueRef;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class BitCast extends Instruction {
     /**
@@ -26,5 +32,19 @@ public class BitCast extends Instruction {
     @Override
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if (!(rhs instanceof BitCast bitCast)) {
+            return false;
+        }
+        ValueRef[] operands=bitCast.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -32,4 +32,18 @@ public class Div extends Arithmetic {
     public boolean typeEquals(Instruction inst) {
         return inst instanceof Div;
     }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if (!(rhs instanceof Div div)) {
+            return false;
+        }
+        ValueRef[] operands=div.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
+    }
 }

@@ -8,6 +8,10 @@ import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Sub extends Arithmetic {
     public Sub(ValueRef lVal, OpEnum op, ValueRef operand1, ValueRef operand2) {
         super(lVal, OpEnum.SUB, operand1, operand2);
@@ -30,5 +34,19 @@ public class Sub extends Arithmetic {
     @Override
     public boolean typeEquals(Instruction inst) {
         return inst instanceof Sub;
+    }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if (!(rhs instanceof Sub sub)) {
+            return false;
+        }
+        ValueRef[] operands=sub.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
     }
 }

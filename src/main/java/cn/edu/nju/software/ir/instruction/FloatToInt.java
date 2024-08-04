@@ -21,5 +21,17 @@ public class FloatToInt extends Instruction {
         visitor.visit(this);
     }
 
-
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if(!(rhs instanceof FloatToInt floatToInt)){
+            return false;
+        }
+        ValueRef[] operands=floatToInt.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
+    }
 }
