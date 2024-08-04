@@ -36,7 +36,7 @@ public class FrontEndTest {
     @ParameterizedTest
 //    @StringSource("82_long_func")
 //    @StringSource("95_float")
-    @StringSource("fft2")
+    @StringSource("00_bitset3")
     void testFrontEndIO(String name) throws IOException, InterruptedException {
 //        testFile(DIR, name);
 //        testFile(DIR_HIDDEN, name);

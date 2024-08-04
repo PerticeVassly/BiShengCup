@@ -8,13 +8,14 @@ public class CmdExecutor {
     private String output;
     private String errorInfo;
     private Boolean hasError = false;
+    String crlf = System.lineSeparator();
 
     public void exec(String... terms) throws IOException, InterruptedException {
         ProcessBuilder pb = new ProcessBuilder(terms);
         Process process = pb.start();
         exitCode = process.waitFor();
-        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + "\n");
-        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + "\n");
+        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + crlf);
+        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + crlf);
         hasError = !errorInfo.isEmpty();
     }
 
@@ -32,8 +33,8 @@ public class CmdExecutor {
             os.close();
         }
         exitCode = process.waitFor();
-        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + "\n");
-        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + "\n");
+        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + crlf);
+        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + crlf);
         hasError = !errorInfo.isEmpty();
     }
 
