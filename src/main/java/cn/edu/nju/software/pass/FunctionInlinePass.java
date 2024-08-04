@@ -53,7 +53,6 @@ public class FunctionInlinePass implements ModulePass {
     }
 
     private void doPass(ModuleRef module) {
-
         //提前先把别的函数里可以内联的部分完成
         for (FunctionValue functionValue : module.getFunctions()) {
             if (!functionValue.getName().equals("main")) {
@@ -75,6 +74,16 @@ public class FunctionInlinePass implements ModulePass {
         for (FunctionValue functionValue : inlineTable) {
             if (!Objects.equals(functionValue.getName(), "main")) {
                 module.dropFunction(functionValue);
+            }
+        }
+        for (FunctionValue functionValue : module.getFunctions()) {
+            for (BasicBlockRef basicBlockRef:functionValue.getBasicBlockRefs()){
+                for (int i=0;i<basicBlockRef.getIrNum();i++) {
+                    Instruction ir = basicBlockRef.getIr(i);
+                    if (ir instanceof Default) {
+                        basicBlockRef.dropIr(ir);
+                    }
+                }
             }
         }
     }
