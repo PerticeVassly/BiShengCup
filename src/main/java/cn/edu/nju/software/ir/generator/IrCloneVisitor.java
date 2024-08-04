@@ -6,6 +6,7 @@ import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
 
+import cn.edu.nju.software.ir.instruction.logic.Lshr;
 import cn.edu.nju.software.ir.instruction.logic.Shl;
 import cn.edu.nju.software.ir.value.FunctionValue;
 
@@ -238,6 +239,10 @@ public class IrCloneVisitor implements InstructionVisitor {
     @Override
     public void visit(Shl shl) {
 
+    }
+
+    @Override
+    public void visit(Lshr Lshr) {
     }
 
     public void visit(Default defaultVal) {

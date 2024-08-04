@@ -237,7 +237,7 @@ public class MemToReg implements ModulePass {
         while (changed) {
             changed = false;
             modifyPhiOnModule();
-            eliminateConstExp.runOnModule(this.module);
+            changed |= eliminateConstExp.runOnModule(this.module);
         }
         // reduce phi and drop phi's dead pred
         runPhiModifyPass();
