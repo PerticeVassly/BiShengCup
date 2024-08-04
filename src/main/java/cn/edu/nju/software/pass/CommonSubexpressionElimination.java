@@ -5,10 +5,7 @@ import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.OpEnum;
 import cn.edu.nju.software.ir.value.FunctionValue;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class CommonSubexpressionElimination implements FunctionPass{
     @Override
@@ -37,7 +34,11 @@ public class CommonSubexpressionElimination implements FunctionPass{
 
     private void doPass(FunctionValue function) {
         Set<Set<Instruction>> commonSubexpression=findCommonSubexpression(function);
+        for (Set<Instruction> subexpression : commonSubexpression){
+            Iterator<Instruction> iterator = subexpression.iterator();
+            Instruction temp=iterator.next();
 
+        }
     }
 
     private Set<Set<Instruction>> findCommonSubexpression(FunctionValue function) {
