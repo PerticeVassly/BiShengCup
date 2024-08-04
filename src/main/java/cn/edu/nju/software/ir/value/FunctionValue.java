@@ -183,7 +183,7 @@ public class FunctionValue extends ValueRef {
                         Br replace = new Br(tar);
                         pred.replaceIr(br, replace);
                     } else {
-                        System.err.println("error.");
+//                        System.err.println("error.");
                     }
                 }
             }
