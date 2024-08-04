@@ -1,16 +1,15 @@
 
-void move(int x, int y)
-{
-    putint(x); putint(y);
+int f(int a) {
+    int arr[10] = {};
+    int k = a;
+    return k;
 }
 
-void hanoi(int n, int one, int two, int three)
-{
-        move(one, three);
-}
-
-int main()
-{
-    hanoi(1, 1, 2, 3);
-    return 0;
+int main() {
+    int i = 3, sum = 0;
+    while (i) {
+        sum = sum + f(1);
+        i = i - 1;
+    }
+    return sum;
 }

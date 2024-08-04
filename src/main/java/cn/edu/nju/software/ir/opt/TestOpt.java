@@ -25,6 +25,7 @@ public class TestOpt {
         visitor.visit(tree);
 
         LoopBuildPass loopBuildPass = LoopBuildPass.getInstance();
+        CFGBuildPass cfgBuildPass = CFGBuildPass.getInstance();
         FunctionInlinePass functionInlinePass = new FunctionInlinePass();
         LoopInvariantCodeMotionPass loopInvariantCodeMotionPass = new LoopInvariantCodeMotionPass();
         RedundantBlockEliminationPass redundantBlockEliminationPass = new RedundantBlockEliminationPass();
@@ -32,9 +33,11 @@ public class TestOpt {
         StrengthReductionPass strengthReductionPass = StrengthReductionPass.getInstance();
         ModuleRef moduleRef = visitor.getModule();
 //        loopBuildPass.runOnModule(moduleRef);
-//        functionInlinePass.runOnModule(moduleRef);
+        cfgBuildPass.runOnModule(moduleRef);
+        loopBuildPass.runOnModule(moduleRef);
+        functionInlinePass.runOnModule(moduleRef);
         redundantBlockEliminationPass.runOnModule(moduleRef);
-        memToReg.runOnModule(moduleRef);
+//        memToReg.runOnModule(moduleRef);
         visitor.dumpModuleToConsole();
     }
 }

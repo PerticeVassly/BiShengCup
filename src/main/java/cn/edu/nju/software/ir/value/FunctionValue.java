@@ -2,11 +2,14 @@ package cn.edu.nju.software.ir.value;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.Allocate;
+import cn.edu.nju.software.ir.instruction.Br;
+import cn.edu.nju.software.ir.instruction.CondBr;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.pass.Util;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -159,6 +162,31 @@ public class FunctionValue extends ValueRef {
     public void modifyBlocks() {
         for (BasicBlockRef bb : blocks) {
             bb.modify();
+        }
+        ArrayList<BasicBlockRef> tmp = new ArrayList<>(blocks);
+        for (BasicBlockRef bb : tmp) {
+            if (bb.getIrNum() == 0) {
+                blocks.remove(bb);
+                for (int i = 0; i < bb.getPredNum(); i++) {
+                    BasicBlockRef pred = bb.getPred(i);
+                    int lastIdx = Util.findLastInstruction(pred);
+                    Instruction br = pred.getIr(lastIdx);
+                    if (br instanceof CondBr condBr) {
+                        ValueRef cond = condBr.getOperand(0);
+                        cond.getUser().remove(br);
+                        BasicBlockRef tar = null;
+                        if (condBr.getTrueBlock().equals(bb)) {
+                            tar = condBr.getFalseBlock();
+                        } else {
+                            tar = condBr.getTrueBlock();
+                        }
+                        Br replace = new Br(tar);
+                        pred.replaceIr(br, replace);
+                    } else {
+                        System.err.println("error.");
+                    }
+                }
+            }
         }
     }
 
