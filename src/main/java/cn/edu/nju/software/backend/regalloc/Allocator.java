@@ -249,6 +249,9 @@ public class Allocator {
             assert false;
             return null;
         }
+        if(checkTempVarIsRecorded(ptr)){
+            return getRegWithOffset(offset, fetchTempVar(ptr), "t3");
+        }
         if(checkPtrHasAllocated(ptr.getName())){
             return getRegWithOffset(memoryManager.getOffset(ptr) + offset, "sp", "t2");
         }

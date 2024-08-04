@@ -7,7 +7,7 @@ public class Operator {
             "add", "sub", "mul", "sdiv", "srem", "and", "or",
             "fptosi", "sitofp", "br", "icmp", "fcmp", "xor", "zext",
             "load", "store", "alloca", "getelementptr",
-            "call", "ret", "fadd", "fsub", "fmul", "fdiv","ashr", "shl","phi"
+            "call", "ret", "fadd", "fsub", "fmul", "fdiv","ashr", "shl", "lshr", "phi"
     };
 
     public final static int CmpNE = 0; // !=
@@ -19,7 +19,7 @@ public class Operator {
 
     public final static String[] cmpType = new String[]{
             "ne", "eq", "sgt", "slt", "sge", "sle",
-            "one", "oeq", "ogt", "olt", " oge", "ole"
+            "one", "oeq", "ogt", "olt", "oge", "ole"
     };
 
     protected static String getOperator(OpEnum index) {

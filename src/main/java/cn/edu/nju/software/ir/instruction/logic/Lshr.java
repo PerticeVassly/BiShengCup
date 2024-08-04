@@ -8,10 +8,10 @@ import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
-public class Ashr extends Binary {
+public class Lshr extends Binary {
 
-    public Ashr(ValueRef lVal, ValueRef operand1, ValueRef operand2) {
-        super(lVal, OpEnum.ASHR, operand1, operand2);
+    public Lshr(ValueRef lVal, ValueRef operand1, ValueRef operand2) {
+        super(lVal, OpEnum.LSHR, operand1, operand2);
     }
 
     @Override
@@ -21,7 +21,7 @@ public class Ashr extends Binary {
 
     @Override
     public boolean typeEquals(Instruction inst) {
-        return inst instanceof Ashr;
+        return inst instanceof Lshr;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class Ashr extends Binary {
         if (operands[0] instanceof ConstValue && operands[1] instanceof ConstValue) {
             int bit = (int) ((ConstValue) operands[1]).getValue();
             int src = (int) ((ConstValue) operands[0]).getValue();
-            return new ConstValue(new IntType(), src >> bit);
+            return new ConstValue(new IntType(), src >>> bit);
         }
         return null;
     }

@@ -2,6 +2,7 @@ package cn.edu.nju.software.pass;
 
 import cn.edu.nju.software.ir.instruction.arithmetic.Add;
 import cn.edu.nju.software.ir.instruction.arithmetic.Sub;
+import cn.edu.nju.software.ir.instruction.logic.Lshr;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.Instruction;
@@ -10,7 +11,8 @@ import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.instruction.logic.Shl;
 import cn.edu.nju.software.ir.value.LocalVar;
-import cn.edu.nju.software.pass.BasicBlockPass;
+import cn.edu.nju.software.ir.value.ValueRef;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -32,12 +34,14 @@ public class StrengthReductionPass implements BasicBlockPass {
                 iterator.remove();
                 for (Instruction newIr : newInstructions) {
                     iterator.add(newIr);
+                    newIr.setBlock(bb);
                 }
             } else if (isDivInstruction(ir)) {
                 List<Instruction> newInstructions = replaceDiv(ir);
                 iterator.remove();
                 for (Instruction newIr : newInstructions) {
                     iterator.add(newIr);
+                    newIr.setBlock(bb);
                 }
             }
         }
@@ -81,6 +85,7 @@ public class StrengthReductionPass implements BasicBlockPass {
         if(!(ir.getOperand(0) instanceof ConstValue) && !(ir.getOperand(1) instanceof ConstValue)){
             List<Instruction> newInstructions = new ArrayList<>();
             newInstructions.add(ir);
+            ir.setBlock(bb);
             return newInstructions;
         }
         for(int i = 0; i < 2; i++){
@@ -103,6 +108,7 @@ public class StrengthReductionPass implements BasicBlockPass {
         }
         List<Instruction> newInstructions = new ArrayList<>();
         newInstructions.add(ir);
+        ir.setBlock(bb);
         return newInstructions;
     }
 
@@ -168,19 +174,21 @@ public class StrengthReductionPass implements BasicBlockPass {
         List<Instruction> newInstructions = new ArrayList<>();
         if(!(ir.getOperand(1) instanceof ConstValue constValue)){
             newInstructions.add(ir);
+            ir.setBlock(bb);
             return newInstructions;
         }
         int value = (int) constValue.getValue();
-        if (isPowerOfTwo(value)){
-            return reduceForDivPowerOf2(ir);
-        } else if (isPowerOfTwo(-value)) {
-            return reduceForDivNegPowerOf2(ir);
-        } else if (value == 1) {
+        if (value == 1) {
             return reduceForDiv1(ir);
         } else if (value == -1) {
             return reduceForDivNeg1(ir);
+        } else if (isPowerOfTwo(value)){
+            return reduceForDivPowerOf2(ir);
+        } else if (isPowerOfTwo(-value)) {
+            return reduceForDivNegPowerOf2(ir);
         }
         newInstructions.add(ir);
+        ir.setBlock(bb);
         return newInstructions;
     }
 
@@ -188,10 +196,27 @@ public class StrengthReductionPass implements BasicBlockPass {
         List<Instruction> newInstructions = new ArrayList<>();
         ConstValue constValue = (ConstValue) ir.getOperand(1);
         Integer bits = Integer.numberOfTrailingZeros(Math.abs((int) constValue.getValue()));
+        LocalVar temp1 = bb.createLocalVar(new IntType(), "temp");
+        newInstructions.add(new Ashr(
+                temp1,
+                ir.getOperand(0),
+                new ConstValue(new IntType(), bits - 1)));
+        LocalVar temp2 = bb.createLocalVar(new IntType(), "temp");
+        newInstructions.add(new Lshr(
+                temp2,
+                temp1,
+                new ConstValue(new IntType(), 32 - bits)));
+        LocalVar temp3 = bb.createLocalVar(new IntType(), "temp");
+        newInstructions.add(new Add(
+                temp3,
+                OpEnum.ADD,
+                ir.getOperand(0),
+                temp2));
         newInstructions.add(new Ashr(
                 ir.getLVal(),
-                ir.getOperand(0),
+                temp3,
                 new ConstValue(new IntType(), bits)));
+        ir.getLVal().setTmp(false);
         return newInstructions;
     }
 
@@ -199,16 +224,33 @@ public class StrengthReductionPass implements BasicBlockPass {
         List<Instruction> newInstructions = new ArrayList<>();
         ConstValue constValue = (ConstValue) ir.getOperand(1);
         Integer bits = Integer.numberOfTrailingZeros(Math.abs((int) constValue.getValue()));
-        LocalVar temp = bb.createLocalVar(new IntType(), "temp");
+        LocalVar temp1 = bb.createLocalVar(new IntType(), "temp");
         newInstructions.add(new Ashr(
-                temp,
+                temp1,
                 ir.getOperand(0),
+                new ConstValue(new IntType(), bits - 1)));
+        LocalVar temp2 = bb.createLocalVar(new IntType(), "temp");
+        newInstructions.add(new Lshr(
+                temp2,
+                temp1,
+                new ConstValue(new IntType(), 32 - bits)));
+        LocalVar temp3 = bb.createLocalVar(new IntType(), "temp");
+        newInstructions.add(new Add(
+                temp3,
+                OpEnum.ADD,
+                ir.getOperand(0),
+                temp2));
+        LocalVar temp4 = bb.createLocalVar(new IntType(), "temp");
+        newInstructions.add(new Ashr(
+                temp4,
+                temp3,
                 new ConstValue(new IntType(), bits)));
         newInstructions.add(new Sub(
                 ir.getLVal(),
                 OpEnum.SUB,
                 new ConstValue(new IntType(), 0),
-                temp));
+                temp4));
+        ir.getLVal().setTmp(false);
         return newInstructions;
     }
 

@@ -11,12 +11,20 @@ public abstract class Instruction {
     protected String operator;
     protected ValueRef lVal;
     protected BasicBlockRef block;
+    protected boolean dbg = false;
 //    protected final static String DELIMITER = ", ";
 
     public ValueRef getOperand(int index) {
         return operands[index];
     }
 
+    public void setDbg(boolean dbg) {
+        this.dbg = dbg;
+    }
+
+    public boolean isDbg() {
+        return dbg;
+    }
     /***
      * inst block
      * @param block

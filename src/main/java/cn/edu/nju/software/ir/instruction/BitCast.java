@@ -14,6 +14,7 @@ public class BitCast extends Instruction {
         this.lVal = lVal;
         operator = "bitcast";
         operands = new ValueRef[]{srcArr};
+        srcArr.addUser(this);
     }
 
     @Override

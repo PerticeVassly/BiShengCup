@@ -71,7 +71,7 @@ public class FunctionInlinePass implements ModulePass {
                 CFGBuildPass.getInstance().update(functionValue);
                 LoopBuildPass.getInstance().update(functionValue);
             }
-       }
+        }
         for (FunctionValue functionValue : inlineTable) {
             if (!Objects.equals(functionValue.getName(), "main")) {
                 module.dropFunction(functionValue);
@@ -508,4 +508,3 @@ public class FunctionInlinePass implements ModulePass {
     }
 
 }
-

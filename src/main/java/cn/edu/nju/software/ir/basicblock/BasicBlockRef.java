@@ -19,7 +19,15 @@ public class BasicBlockRef extends ValueRef {
     private final String name;
     private ArrayList<Instruction> irs;
     private int irNum;
-    private boolean isEntryBlock = false;
+    private boolean isEntryBlock;
+
+    public void setIsEntryBlock(boolean isEntryBlock) {
+        this.isEntryBlock = isEntryBlock;
+    }
+
+    public boolean isEntryBlock() {
+        return isEntryBlock;
+    }
     /**
      * the function it belongs to
      */
@@ -88,14 +96,6 @@ public class BasicBlockRef extends ValueRef {
     public void put(int index, Instruction ir) {
         irs.add(index, ir);
         irNum++;
-    }
-
-    public void setIsEntryBlock(boolean isEntryBlock) {
-        this.isEntryBlock = isEntryBlock;
-    }
-
-    public boolean isEntryBlock() {
-        return isEntryBlock;
     }
 
     public int getAllocSize() {
@@ -203,6 +203,7 @@ public class BasicBlockRef extends ValueRef {
         int index = irs.indexOf(old);
         if (index != -1) {
             irs.set(index, newIr);
+            newIr.setBlock(this);
         }
     }
 
@@ -222,6 +223,7 @@ public class BasicBlockRef extends ValueRef {
     public void addPhi(Phi phi) {
         irNum++;
         irs.add(0, phi);
+        phi.setBlock(this);
     }
 
     public boolean contains(Instruction instruction) {
