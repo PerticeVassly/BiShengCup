@@ -85,7 +85,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.TestBackEndIO.test2023">
+  <component name="RunManager" selected="JUnit.FrontEndTest.testAll">
     <configuration name="FrontEndTest.testAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="compiler" />
       <extension name="coverage">
@@ -161,10 +161,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestBackEndIO.test2023" />
-        <item itemvalue="JUnit.FrontEndTest.testAll" />
         <item itemvalue="JUnit.TestParseTree.test" />
         <item itemvalue="JUnit.FrontEndTest.testHidden" />
+        <item itemvalue="JUnit.FrontEndTest.testAll" />
+        <item itemvalue="JUnit.TestBackEndIO.test2023" />
         <item itemvalue="JUnit.FrontEndTest.testAll" />
       </list>
     </recent_temporary>
