@@ -84,7 +84,7 @@ public class IdentifyTmpPass implements ModulePass {
                 }
             }
         }
-        System.err.println("no use: " + noUse);
+//        System.err.println("no use: " + noUse);
 //        System.err.println("tmp: " + tmp);
 //        System.err.flush();
         return false;

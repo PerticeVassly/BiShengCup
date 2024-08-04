@@ -48,7 +48,7 @@ public class EliminateLoadStorePass implements ModulePass {
                 }
             }
         }
-        System.err.println("redundancy: " + pairs);
+//        System.err.println("redundancy: " + pairs);
         return false;
     }
 
