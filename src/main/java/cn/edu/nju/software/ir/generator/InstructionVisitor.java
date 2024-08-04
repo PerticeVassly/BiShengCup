@@ -4,6 +4,7 @@ import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
+import cn.edu.nju.software.ir.instruction.logic.Lshr;
 import cn.edu.nju.software.ir.instruction.logic.Shl;
 
 public interface InstructionVisitor {
@@ -29,6 +30,8 @@ public interface InstructionVisitor {
     void visit(Ashr ashr);
 
     void visit(Shl shl);
+
+    void visit(Lshr lshr);
 
     default void visit(FDiv fdiv) {}
 

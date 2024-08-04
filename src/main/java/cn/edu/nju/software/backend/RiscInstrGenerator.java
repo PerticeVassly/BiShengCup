@@ -7,8 +7,6 @@ import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscMul;
 import cn.edu.nju.software.backend.riscinstruction.operand.*;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.*;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
-import cn.edu.nju.software.backend.riscinstruction.util.RiscLabel;
-import cn.edu.nju.software.frontend.llvm.LLVMStack;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.Allocate;
@@ -38,6 +36,7 @@ import cn.edu.nju.software.ir.instruction.arithmetic.Mul;
 import cn.edu.nju.software.ir.instruction.arithmetic.Sub;
 import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
+import cn.edu.nju.software.ir.instruction.logic.Lshr;
 import cn.edu.nju.software.ir.instruction.logic.Shl;
 import cn.edu.nju.software.ir.type.ArrayType;
 import cn.edu.nju.software.ir.type.FloatType;
@@ -45,8 +44,6 @@ import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.*;
-import com.ibm.icu.impl.Normalizer2Impl;
-import org.w3c.dom.ls.LSInput;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -258,6 +255,14 @@ public class RiscInstrGenerator implements InstructionVisitor {
         List<String> regs = beforeABinaryInstr(shl);
         riscInstructions.add(new RiscSll(new Register("t0"), new Register(regs.get(0)), new Register(regs.get(1))));
         afterAnInstr(shl);
+    }
+
+    @Override
+    public void visit(Lshr lshr) {
+        insertComment("lshr " + lshr.getLVal().getName() + " " + lshr.getOperand(0).getName() + " " + lshr.getOperand(1).getName());
+        List<String> regs = beforeABinaryInstr(lshr);
+        riscInstructions.add(new RiscSrl(new Register("t0"), new Register(regs.get(0)), new Register(regs.get(1))));
+        afterAnInstr(lshr);
     }
 
 
