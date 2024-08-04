@@ -16,30 +16,13 @@ public class BasicBlockRef extends ValueRef {
     private final String name;
     private ArrayList<Instruction> irs;
     private int irNum;
-    private boolean isEntryBlock;
-
-    public void setIsEntryBlock(boolean isEntryBlock) {
-        this.isEntryBlock = isEntryBlock;
-    }
-
-    public boolean isEntryBlock() {
-        return isEntryBlock;
-    }
     /**
      * the function it belongs to
      */
     private final FunctionValue function;
     private final ArrayList<BasicBlockRef> pred;
     private boolean reachable = true;
-
-    public boolean isEntryBlock() {
-        return isEntryBlock;
-    }
-
-    public void setIsEntryBlock(boolean isEntryBlock) {
-        this.isEntryBlock = isEntryBlock;
-    }
-
+    private boolean isEntryBlock = false;
     public BasicBlockRef(FunctionValue fv, String name) {
         this.function = fv;
         if (usedNameList.contains(name)) {
@@ -56,6 +39,10 @@ public class BasicBlockRef extends ValueRef {
         pred = new ArrayList<>();
     }
 
+    public void setIsEntryBlock(boolean isEntryBlock) {
+        this.isEntryBlock = isEntryBlock;
+    }
+
     public void addPred(BasicBlockRef block) {
         pred.add(block);
     }
@@ -66,6 +53,10 @@ public class BasicBlockRef extends ValueRef {
 
     public int getPredNum() {
         return pred.size();
+    }
+
+    public boolean isEntryBlock() {
+        return isEntryBlock;
     }
 
     public BasicBlockRef getPred(int index) {

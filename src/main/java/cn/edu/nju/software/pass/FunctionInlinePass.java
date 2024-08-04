@@ -19,7 +19,7 @@ public class FunctionInlinePass implements ModulePass {
     //TODO:本pass应该尽可能提前做，否则可能会有潜在问题（如隔多行访问同一临时变量）
     //TODO:math.sy
     private boolean dbgFlag = false;
-    private final int sizeLimit = 100;
+    private final int sizeLimit = 20000;
     private final Set<FunctionValue> inlineTable = new HashSet<>();
     private final Set<BasicBlockRef> needToBeAdded = new HashSet<>();
     private CG cg;
@@ -53,7 +53,6 @@ public class FunctionInlinePass implements ModulePass {
     }
 
     private void doPass(ModuleRef module) {
-
         //提前先把别的函数里可以内联的部分完成
         for (FunctionValue functionValue : module.getFunctions()) {
             if (!functionValue.getName().equals("main")) {
@@ -75,6 +74,16 @@ public class FunctionInlinePass implements ModulePass {
         for (FunctionValue functionValue : inlineTable) {
             if (!Objects.equals(functionValue.getName(), "main")) {
                 module.dropFunction(functionValue);
+            }
+        }
+        for (FunctionValue functionValue : module.getFunctions()) {
+            for (BasicBlockRef basicBlockRef:functionValue.getBasicBlockRefs()){
+                for (int i=0;i<basicBlockRef.getIrNum();i++) {
+                    Instruction ir = basicBlockRef.getIr(i);
+                    if (ir instanceof Default) {
+                        basicBlockRef.dropIr(ir);
+                    }
+                }
             }
         }
     }
@@ -242,16 +251,16 @@ public class FunctionInlinePass implements ModulePass {
                             } else {
                                 //将暂时无法替换名称的变量加入待换名表
                                 //跳转指令的目标块不能加入表中换名
-                                if(operand instanceof BasicBlockRef){
-                                    continue;
-                                }
-                                if(toBeChanged.containsKey(newInstr)){
-                                    toBeChanged.get(newInstr).add(i);
-                                }else {
-                                    Set<Integer> set = new HashSet<>();
-                                    set.add(i);
-                                    toBeChanged.put(newInstr,set);
-                                }
+                             if(operand instanceof BasicBlockRef){
+                                 continue;
+                             }
+                             if(toBeChanged.containsKey(newInstr)){
+                                 toBeChanged.get(newInstr).add(i);
+                             }else {
+                                 Set<Integer> set = new HashSet<>();
+                                 set.add(i);
+                                 toBeChanged.put(newInstr,set);
+                             }
 
                             }
 
@@ -308,7 +317,6 @@ public class FunctionInlinePass implements ModulePass {
                 instruction.setOperand(index, copyValueMap.get(instruction.getOperand(index).getName()));
 
             }
-
         }
         //对跳转语句的标签进行修改
         for (BasicBlockRef basicBlockRef : copyMap.keySet()) {
@@ -442,7 +450,7 @@ public class FunctionInlinePass implements ModulePass {
                     ValueRef src = store.getOperand(0);
                     //判断是否是对参数的store,是则加入修改表
                     if (!src.getName().isEmpty() && Character.isDigit(src.getName().charAt(0))) {
-                        changedParams.add(dest.getName());
+                       changedParams.add(dest.getName());
                     }
                 }
             }
@@ -509,4 +517,3 @@ public class FunctionInlinePass implements ModulePass {
     }
 
 }
-
