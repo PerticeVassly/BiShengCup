@@ -167,7 +167,7 @@ import java.util.Properties;
                 {
                     img_stream = get_img_stream(dot, type);
                     if (!dot.delete())
-                        System.err.println("Warning: " + dot.getAbsolutePath() + " could not be deleted!");
+//                        System.err.println("Warning: " + dot.getAbsolutePath() + " could not be deleted!");
                     return img_stream;
                 }
                 return null;
@@ -230,17 +230,17 @@ import java.util.Properties;
                 // Close it if we need to
                 in.close();
 
-                if (!img.delete())
-                    System.err.println("Warning: " + img.getAbsolutePath() + " could not be deleted!");
+                if (!img.delete());
+//                    System.err.println("Warning: " + img.getAbsolutePath() + " could not be deleted!");
             }
             catch (java.io.IOException ioe) {
-                System.err.println("Error:    in I/O processing of tempfile in dir " + GraphViz.TEMP_DIR+"\n");
-                System.err.println("       or in calling external command");
-                ioe.printStackTrace();
+//                System.err.println("Error:    in I/O processing of tempfile in dir " + GraphViz.TEMP_DIR+"\n");
+//                System.err.println("       or in calling external command");
+//                ioe.printStackTrace();
             }
             catch (java.lang.InterruptedException ie) {
-                System.err.println("Error: the execution of the external program was interrupted");
-                ie.printStackTrace();
+//                System.err.println("Error: the execution of the external program was interrupted");
+//                ie.printStackTrace();
             }
 
             return img_stream;
@@ -266,7 +266,7 @@ import java.util.Properties;
                 fout.close();
             }
             catch (Exception e) {
-                System.err.println("Error: I/O error while writing the dot source to temp file!");
+//                System.err.println("Error: I/O error while writing the dot source to temp file!");
                 return null;
             }
             return temp;
@@ -327,7 +327,7 @@ import java.util.Properties;
                 dis.close();
             }
             catch (Exception e) {
-                System.err.println("Error: " + e.getMessage());
+//                System.err.println("Error: " + e.getMessage());
             }
 
             this.graph = sb;

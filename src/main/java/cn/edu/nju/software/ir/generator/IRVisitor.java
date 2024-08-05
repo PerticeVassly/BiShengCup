@@ -378,8 +378,6 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
                         ctx.lVal().IDENT().getText());
             }
         } else if (ctx.funcUse() != null) {
-            // lab4 not exist
-            // lab 5 new codes
             return visitFuncUse(ctx.funcUse());
         } else {
             // +-*/%
