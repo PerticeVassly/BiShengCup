@@ -83,7 +83,7 @@ public class BasicBlockRef extends ValueRef {
 
     public void put(Instruction ir) {
         if (ir instanceof Allocate allocate) {
-//            function.emitAlloc((Allocate) ir);
+            function.emitAlloc((Allocate) ir);
             Pointer ptrType = (Pointer) allocate.getLVal().getType();
             if (!(ptrType.getBase() instanceof FloatType) && !(ptrType.getBase() instanceof IntType)) {
                 function.emitAllocEntry(allocate);
