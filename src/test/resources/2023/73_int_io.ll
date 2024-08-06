@@ -16,170 +16,147 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-define i32 @my_getint() {
-my_getintEntry:
-  %lv$1 = alloca i32, align 4
-  %lv = alloca i32, align 4
-  store i32 0, i32* %lv, align 4
-  br label %whileCond_25
-
-whileCond_25:                                          ; pred = %my_getintEntry, %ifTrue_32, %next_58
-  %cond_normalize_ = icmp ne i32 1, 0
-  br label %whileBody_25
-
-whileBody_25:                                          ; pred = %whileCond_25
-  %getch = call i32 @getch()
-  %result_ = sub i32 %getch, 48
-  store i32 %result_, i32* %lv$1, align 4
-  %c = load i32, i32* %lv$1, align 4
-  %cond_lt_tmp_ = icmp slt i32 %c, 0
-  %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_32, label %secondCond_27
-
-next_57:                                               ; pred = %ifFalse_10
-  %c$2 = load i32, i32* %lv$1, align 4
-  store i32 %c$2, i32* %lv, align 4
-  br label %whileCond_26
-
-ifTrue_32:                                             ; pred = %whileBody_25, %secondCond_27
-  br label %whileCond_25
-
-ifFalse_10:                                            ; pred = %secondCond_27
-  br label %next_57
-
-next_58:
-  br label %whileCond_25
-
-secondCond_27:                                         ; pred = %whileBody_25
-  %c$1 = load i32, i32* %lv$1, align 4
-  %cond_gt_tmp_ = icmp sgt i32 %c$1, 9
-  %cond_tmp_$1 = zext i1 %cond_gt_tmp_ to i32
-  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_32, label %ifFalse_10
-
-whileCond_26:                                          ; pred = %next_57, %next_60
-  %cond_normalize_$1 = icmp ne i32 1, 0
-  br label %whileBody_26
-
-whileBody_26:                                          ; pred = %whileCond_26
-  %getch$1 = call i32 @getch()
-  %result_$1 = sub i32 %getch$1, 48
-  store i32 %result_$1, i32* %lv$1, align 4
-  %c$3 = load i32, i32* %lv$1, align 4
-  %cond_ge_tmp_ = icmp sge i32 %c$3, 0
-  %cond_tmp_$2 = zext i1 %cond_ge_tmp_ to i32
-  %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %secondCond_28, label %ifFalse_11
-
-next_59:                                               ; pred = %ifFalse_11
-  %sum$1 = load i32, i32* %lv, align 4
-  ret i32 %sum$1
-
-ifTrue_33:                                             ; pred = %secondCond_28
-  %sum = load i32, i32* %lv, align 4
-  %result_$2 = mul i32 %sum, 10
-  %c$5 = load i32, i32* %lv$1, align 4
-  %result_$3 = add i32 %result_$2, %c$5
-  store i32 %result_$3, i32* %lv, align 4
-  br label %next_60
-
-ifFalse_11:                                            ; pred = %whileBody_26, %secondCond_28
-  br label %next_59
-
-next_60:                                               ; pred = %ifTrue_33
-  br label %whileCond_26
-
-secondCond_28:                                         ; pred = %whileBody_26
-  %c$4 = load i32, i32* %lv$1, align 4
-  %cond_le_tmp_ = icmp sle i32 %c$4, 9
-  %cond_tmp_$3 = zext i1 %cond_le_tmp_ to i32
-  %cond_$3 = icmp ne i32 %cond_tmp_$3, 0
-  br i1 %cond_$3, label %ifTrue_33, label %ifFalse_11
-}
-
-define void @my_putint(i32 %0) {
-my_putintEntry:
-  %lv$2 = alloca i32, align 4
-  %lv$1 = alloca [16 x i32], align 16
-  %lv = alloca i32, align 4
-  store i32 %0, i32* %lv, align 4
-  store i32 0, i32* %lv$2, align 4
-  br label %whileCond_27
-
-whileCond_27:                                          ; pred = %my_putintEntry, %whileBody_27
-  %a = load i32, i32* %lv, align 4
-  %cond_gt_tmp_ = icmp sgt i32 %a, 0
-  %cond_tmp_ = zext i1 %cond_gt_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_27, label %next_61
-
-whileBody_27:                                          ; pred = %whileCond_27
-  %i = load i32, i32* %lv$2, align 4
-  %b = getelementptr [16 x i32], [16 x i32]* %lv$1, i32 0, i32 %i
-  %a$1 = load i32, i32* %lv, align 4
-  %result_ = srem i32 %a$1, 10
-  %result_$1 = add i32 %result_, 48
-  store i32 %result_$1, i32* %b, align 4
-  %a$2 = load i32, i32* %lv, align 4
-  %result_$2 = sdiv i32 %a$2, 10
-  store i32 %result_$2, i32* %lv, align 4
-  %i$1 = load i32, i32* %lv$2, align 4
-  %result_$3 = add i32 %i$1, 1
-  store i32 %result_$3, i32* %lv$2, align 4
-  br label %whileCond_27
-
-next_61:                                               ; pred = %whileCond_27
-  br label %whileCond_28
-
-whileCond_28:                                          ; pred = %next_61, %whileBody_28
-  %i$2 = load i32, i32* %lv$2, align 4
-  %cond_gt_tmp_$1 = icmp sgt i32 %i$2, 0
-  %cond_tmp_$1 = zext i1 %cond_gt_tmp_$1 to i32
-  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %whileBody_28, label %next_62
-
-whileBody_28:                                          ; pred = %whileCond_28
-  %i$3 = load i32, i32* %lv$2, align 4
-  %result_$4 = sub i32 %i$3, 1
-  store i32 %result_$4, i32* %lv$2, align 4
-  %i$4 = load i32, i32* %lv$2, align 4
-  %b$1 = getelementptr [16 x i32], [16 x i32]* %lv$1, i32 0, i32 %i$4
-  %b$2 = load i32, i32* %b$1, align 4
-  call void @putch(i32 %b$2)
-  br label %whileCond_28
-
-next_62:                                               ; pred = %whileCond_28
-  ret void
-}
-
 define i32 @main() {
 mainEntry7:
-  %lv = alloca i32, align 4
-  %my_getint = call i32 @my_getint()
-  store i32 %my_getint, i32* %lv, align 4
-  br label %whileCond_29
+  br label %i143
 
-whileCond_29:                                        ; pred = %mainEntry7, %whileBody_29
-  %n = load i32, i32* %lv, align 4
-  %cond_gt_tmp_ = icmp sgt i32 %n, 0
+whileCond_29:                                        ; pred = %i154, %i178
+  %phi = phi i32 [%phi$22, %i154], [%result_, %i178]
+  %cond_gt_tmp_ = icmp sgt i32 %phi, 0
   %cond_tmp_ = zext i1 %cond_gt_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
   br i1 %cond_, label %whileBody_29, label %next_63
 
 whileBody_29:                                        ; pred = %whileCond_29
-  %lv$1 = alloca i32, align 4
-  %my_getint$1 = call i32 @my_getint()
-  store i32 %my_getint$1, i32* %lv$1, align 4
-  %m = load i32, i32* %lv$1, align 4
-  call void @my_putint(i32 %m)
-  call void @putch(i32 10)
-  %n$1 = load i32, i32* %lv, align 4
-  %result_ = sub i32 %n$1, 1
-  store i32 %result_, i32* %lv, align 4
-  br label %whileCond_29
+  br label %i159
 
 next_63:                                             ; pred = %whileCond_29
   ret i32 0
+
+i164:                                                ; pred = %i159
+  %cond_gt_tmp_i164 = icmp sgt i32 %result_i159, 9
+  %cond_tmp_$1i164 = zext i1 %cond_gt_tmp_i164 to i32
+  %cond_$1i164 = icmp ne i32 %cond_tmp_$1i164, 0
+  br i1 %cond_$1i164, label %i161, label %i162
+
+i147:                                                ; pred = %i149
+  br label %i150
+
+i165:                                                ; pred = %i162, %i168
+  %phi$20 = phi i32 [%result_i159, %i162], [%result_$3i168, %i168]
+  %getch$1i166 = call i32 @getch()
+  %result_$1i166 = sub i32 %getch$1i166, 48
+  %cond_ge_tmp_i166 = icmp sge i32 %result_$1i166, 0
+  %cond_tmp_$2i166 = zext i1 %cond_ge_tmp_i166 to i32
+  %cond_$2i166 = icmp ne i32 %cond_tmp_$2i166, 0
+  br i1 %cond_$2i166, label %i171, label %i169
+
+i171:                                                ; pred = %i165
+  %cond_le_tmp_i171 = icmp sle i32 %result_$1i166, 9
+  %cond_tmp_$3i171 = zext i1 %cond_le_tmp_i171 to i32
+  %cond_$3i171 = icmp ne i32 %cond_tmp_$3i171, 0
+  br i1 %cond_$3i171, label %i168, label %i169
+
+i149:                                                ; pred = %i144
+  %cond_gt_tmp_i149 = icmp sgt i32 %result_i144, 9
+  %cond_tmp_$1i149 = zext i1 %cond_gt_tmp_i149 to i32
+  %cond_$1i149 = icmp ne i32 %cond_tmp_$1i149, 0
+  br i1 %cond_$1i149, label %i143, label %i147
+
+i156:                                                ; pred = %i150
+  %cond_le_tmp_i156 = icmp sle i32 %result_$1i151, 9
+  %cond_tmp_$3i156 = zext i1 %cond_le_tmp_i156 to i32
+  %cond_$3i156 = icmp ne i32 %cond_tmp_$3i156, 0
+  br i1 %cond_$3i156, label %i153, label %i154
+
+i153:                                                ; pred = %i156
+  %result_$2i153 = mul i32 %phi$22, 10
+  %result_$3i153 = add i32 %result_$2i153, %result_$1i151
+  br label %i150
+
+i162:                                                ; pred = %i164
+  br label %i165
+
+i169:                                                ; pred = %i165, %i171
+  %lv$1i172 = alloca [16 x i32], align 16
+  br label %i173
+
+i143:                                                ; pred = %mainEntry7, %i149, %i144
+  br label %i144
+
+i161:                                                ; pred = %i164, %i159
+  br label %i159
+
+i154:                                                ; pred = %i156, %i150
+  br label %whileCond_29
+
+i168:                                                ; pred = %i171
+  %result_$2i168 = mul i32 %phi$20, 10
+  %result_$3i168 = add i32 %result_$2i168, %result_$1i166
+  br label %i165
+
+i144:                                                ; pred = %i143
+  %getchi144 = call i32 @getch()
+  %result_i144 = sub i32 %getchi144, 48
+  %cond_lt_tmp_i144 = icmp slt i32 %result_i144, 0
+  %cond_tmp_i144 = zext i1 %cond_lt_tmp_i144 to i32
+  %cond_i144 = icmp ne i32 %cond_tmp_i144, 0
+  br i1 %cond_i144, label %i143, label %i149
+
+i150:                                                ; pred = %i147, %i153
+  %phi$22 = phi i32 [%result_i144, %i147], [%result_$3i153, %i153]
+  %getch$1i151 = call i32 @getch()
+  %result_$1i151 = sub i32 %getch$1i151, 48
+  %cond_ge_tmp_i151 = icmp sge i32 %result_$1i151, 0
+  %cond_tmp_$2i151 = zext i1 %cond_ge_tmp_i151 to i32
+  %cond_$2i151 = icmp ne i32 %cond_tmp_$2i151, 0
+  br i1 %cond_$2i151, label %i156, label %i154
+
+i159:                                                ; pred = %whileBody_29, %i161
+  %getchi159 = call i32 @getch()
+  %result_i159 = sub i32 %getchi159, 48
+  %cond_lt_tmp_i159 = icmp slt i32 %result_i159, 0
+  %cond_tmp_i159 = zext i1 %cond_lt_tmp_i159 to i32
+  %cond_i159 = icmp ne i32 %cond_tmp_i159, 0
+  br i1 %cond_i159, label %i161, label %i164
+
+i177:                                                ; pred = %i176
+  %result_$4i177 = sub i32 %phi$16, 1
+  %b$1i177 = getelementptr [16 x i32], [16 x i32]* %lv$1i172, i32 0, i32 %result_$4i177
+  %b$2i177 = load i32, i32* %b$1i177, align 4
+  call void @putch(i32 %b$2i177)
+  br label %i176
+
+i173:                                                ; pred = %i169, %i174
+  %phi$25 = phi i32 [0, %i169], [%result_$3i174, %i174]
+  %phi$14 = phi i32 [%phi$20, %i169], [%result_$2i174, %i174]
+  %cond_gt_tmp_i173 = icmp sgt i32 %phi$14, 0
+  %cond_tmp_i173 = zext i1 %cond_gt_tmp_i173 to i32
+  %cond_i173 = icmp ne i32 %cond_tmp_i173, 0
+  br i1 %cond_i173, label %i174, label %i175
+
+i175:                                                ; pred = %i173
+  br label %i176
+
+i178:                                                ; pred = %i176
+  call void @putch(i32 10)
+  %result_ = sub i32 %phi, 1
+  br label %whileCond_29
+
+i176:                                                ; pred = %i177, %i175
+  %phi$16 = phi i32 [%result_$4i177, %i177], [%phi$25, %i175]
+  %cond_gt_tmp_$1i176 = icmp sgt i32 %phi$16, 0
+  %cond_tmp_$1i176 = zext i1 %cond_gt_tmp_$1i176 to i32
+  %cond_$1i176 = icmp ne i32 %cond_tmp_$1i176, 0
+  br i1 %cond_$1i176, label %i177, label %i178
+
+i174:                                                ; pred = %i173
+  %bi174 = getelementptr [16 x i32], [16 x i32]* %lv$1i172, i32 0, i32 %phi$25
+  %result_i174 = srem i32 %phi$14, 10
+  %result_$1i174 = add i32 %result_i174, 48
+  store i32 %result_$1i174, i32* %bi174, align 4
+  %result_$2i174 = sdiv i32 %phi$14, 10
+  %result_$3i174 = add i32 %phi$25, 1
+  br label %i173
 }
 

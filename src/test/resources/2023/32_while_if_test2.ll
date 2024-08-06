@@ -16,70 +16,49 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-define i32 @ifWhile() {
-ifWhileEntry:
-  %lv$1 = alloca i32, align 4
-  %lv = alloca i32, align 4
-  store i32 0, i32* %lv, align 4
-  store i32 3, i32* %lv$1, align 4
-  %a = load i32, i32* %lv, align 4
-  %cond_eq_tmp_ = icmp eq i32 %a, 5
-  %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_369, label %ifFalse_147
-
-ifTrue_369:                                           ; pred = %ifWhileEntry
-  br label %whileCond_286
-
-ifFalse_147:                                          ; pred = %ifWhileEntry
-  br label %whileCond_287
-
-next_655:                                             ; pred = %next_656, %next_657
-  %b$4 = load i32, i32* %lv$1, align 4
-  ret i32 %b$4
-
-whileCond_286:                                        ; pred = %ifTrue_369, %whileBody_286
-  %b = load i32, i32* %lv$1, align 4
-  %cond_eq_tmp_$1 = icmp eq i32 %b, 2
-  %cond_tmp_$1 = zext i1 %cond_eq_tmp_$1 to i32
-  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %whileBody_286, label %next_656
-
-whileBody_286:                                        ; pred = %whileCond_286
-  %b$1 = load i32, i32* %lv$1, align 4
-  %result_ = add i32 %b$1, 2
-  store i32 %result_, i32* %lv$1, align 4
-  br label %whileCond_286
-
-next_656:                                             ; pred = %whileCond_286
-  %b$2 = load i32, i32* %lv$1, align 4
-  %result_$1 = add i32 %b$2, 25
-  store i32 %result_$1, i32* %lv$1, align 4
-  br label %next_655
-
-whileCond_287:                                        ; pred = %ifFalse_147, %whileBody_287
-  %a$1 = load i32, i32* %lv, align 4
-  %cond_lt_tmp_ = icmp slt i32 %a$1, 5
-  %cond_tmp_$2 = zext i1 %cond_lt_tmp_ to i32
-  %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %whileBody_287, label %next_657
-
-whileBody_287:                                        ; pred = %whileCond_287
-  %b$3 = load i32, i32* %lv$1, align 4
-  %result_$2 = mul i32 %b$3, 2
-  store i32 %result_$2, i32* %lv$1, align 4
-  %a$2 = load i32, i32* %lv, align 4
-  %result_$3 = add i32 %a$2, 1
-  store i32 %result_$3, i32* %lv, align 4
-  br label %whileCond_287
-
-next_657:                                             ; pred = %whileCond_287
-  br label %next_655
-}
-
 define i32 @main() {
 mainEntry96:
-  %ifWhile = call i32 @ifWhile()
-  ret i32 %ifWhile
+  br i1 false, label %i2226, label %i2227
+
+i2231:                                              ; pred = %i2229
+  %result_$1i2231 = add i32 %phi$4, 25
+  br label %i2228
+
+i2227:                                              ; pred = %mainEntry96
+  br label %i2232
+
+i2232:                                              ; pred = %i2227, %i2233
+  %phi$8 = phi i32 [3, %i2227], [%result_$2i2233, %i2233]
+  %phi$1 = phi i32 [0, %i2227], [%result_$3i2233, %i2233]
+  %cond_lt_tmp_i2232 = icmp slt i32 %phi$1, 5
+  %cond_tmp_$2i2232 = zext i1 %cond_lt_tmp_i2232 to i32
+  %cond_$2i2232 = icmp ne i32 %cond_tmp_$2i2232, 0
+  br i1 %cond_$2i2232, label %i2233, label %i2234
+
+i2233:                                              ; pred = %i2232
+  %result_$2i2233 = shl i32 %phi$8, 1
+  %result_$3i2233 = add i32 %phi$1, 1
+  br label %i2232
+
+i2229:                                              ; pred = %i2230, %i2226
+  %phi$4 = phi i32 [%result_i2230, %i2230], [3, %i2226]
+  %cond_eq_tmp_$1i2229 = icmp eq i32 %phi$4, 2
+  %cond_tmp_$1i2229 = zext i1 %cond_eq_tmp_$1i2229 to i32
+  %cond_$1i2229 = icmp ne i32 %cond_tmp_$1i2229, 0
+  br i1 %cond_$1i2229, label %i2230, label %i2231
+
+i2230:                                              ; pred = %i2229
+  %result_i2230 = add i32 %phi$4, 2
+  br label %i2229
+
+i2226:                                              ; pred = %mainEntry96
+  br label %i2229
+
+i2234:                                              ; pred = %i2232
+  br label %i2228
+
+i2228:                                              ; pred = %i2231, %i2234
+  %phi$6 = phi i32 [%result_$1i2231, %i2231], [%phi$8, %i2234]
+  ret i32 %phi$6
 }
 

@@ -16,8 +16,6 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-@gv = global [10 x [10 x i32]] zeroinitializer, align 4
-
 define i32 @main() {
 mainEntry37:
   ret i32 0

@@ -18,9 +18,6 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry25:
-  %lv = alloca i32, align 4
-  store i32 5, i32* %lv, align 4
-  %a = load i32, i32* %lv, align 4
-  ret i32 %a
+  ret i32 5
 }
 

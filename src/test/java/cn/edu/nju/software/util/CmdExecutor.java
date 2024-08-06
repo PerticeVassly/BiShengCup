@@ -14,8 +14,8 @@ public class CmdExecutor {
         ProcessBuilder pb = new ProcessBuilder(terms);
         Process process = pb.start();
         exitCode = process.waitFor();
-        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + System.lineSeparator());
-        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + System.lineSeparator());
+        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b +"\r\n");
+        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + "\r\n");
         hasError = !errorInfo.isEmpty();
     }
 
@@ -33,8 +33,8 @@ public class CmdExecutor {
             os.close();
         }
         exitCode = process.waitFor();
-        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + System.lineSeparator());
-        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + System.lineSeparator());
+        output = new BufferedReader(new InputStreamReader(process.getInputStream())).lines().reduce("", (a, b) -> a + b + "\r\n");
+        errorInfo = new BufferedReader(new InputStreamReader(process.getErrorStream())).lines().reduce("", (a, b) -> a + b + "\r\n");
         hasError = !errorInfo.isEmpty();
     }
 

@@ -16,66 +16,46 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-define i32 @whileIf() {
-whileIfEntry:
-  %lv$1 = alloca i32, align 4
-  %lv = alloca i32, align 4
-  store i32 0, i32* %lv, align 4
-  store i32 0, i32* %lv$1, align 4
-  br label %whileCond_209
-
-whileCond_209:                                        ; pred = %whileIfEntry, %next_500
-  %a = load i32, i32* %lv, align 4
-  %cond_lt_tmp_ = icmp slt i32 %a, 100
-  %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_209, label %next_499
-
-whileBody_209:                                        ; pred = %whileCond_209
-  %a$1 = load i32, i32* %lv, align 4
-  %cond_eq_tmp_ = icmp eq i32 %a$1, 5
-  %cond_tmp_$1 = zext i1 %cond_eq_tmp_ to i32
-  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_290, label %ifFalse_127
-
-next_499:                                             ; pred = %whileCond_209
-  %b = load i32, i32* %lv$1, align 4
-  ret i32 %b
-
-ifTrue_290:                                           ; pred = %whileBody_209
-  store i32 25, i32* %lv$1, align 4
-  br label %next_500
-
-ifFalse_127:                                          ; pred = %whileBody_209
-  %a$2 = load i32, i32* %lv, align 4
-  %cond_eq_tmp_$1 = icmp eq i32 %a$2, 10
-  %cond_tmp_$2 = zext i1 %cond_eq_tmp_$1 to i32
-  %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %ifTrue_291, label %ifFalse_128
-
-next_500:                                             ; pred = %ifTrue_290, %next_501
-  %a$4 = load i32, i32* %lv, align 4
-  %result_$1 = add i32 %a$4, 1
-  store i32 %result_$1, i32* %lv, align 4
-  br label %whileCond_209
-
-ifTrue_291:                                           ; pred = %ifFalse_127
-  store i32 42, i32* %lv$1, align 4
-  br label %next_501
-
-ifFalse_128:                                          ; pred = %ifFalse_127
-  %a$3 = load i32, i32* %lv, align 4
-  %result_ = mul i32 %a$3, 2
-  store i32 %result_, i32* %lv$1, align 4
-  br label %next_501
-
-next_501:                                             ; pred = %ifTrue_291, %ifFalse_128
-  br label %next_500
-}
-
 define i32 @main() {
 mainEntry57:
-  %whileIf = call i32 @whileIf()
-  ret i32 %whileIf
+  br label %i1814
+
+i1817:                                              ; pred = %i1815
+  br label %i1819
+
+i1821:                                              ; pred = %i1818
+  %result_i1821 = shl i32 %phi$2, 1
+  br label %i1819
+
+i1816:                                              ; pred = %i1814
+  ret i32 %phi$6
+
+i1814:                                              ; pred = %mainEntry57, %i1819
+  %phi$6 = phi i32 [0, %mainEntry57], [%phi$9, %i1819]
+  %phi$2 = phi i32 [0, %mainEntry57], [%result_$1i1819, %i1819]
+  %cond_lt_tmp_i1814 = icmp slt i32 %phi$2, 100
+  %cond_tmp_i1814 = zext i1 %cond_lt_tmp_i1814 to i32
+  %cond_i1814 = icmp ne i32 %cond_tmp_i1814, 0
+  br i1 %cond_i1814, label %i1815, label %i1816
+
+i1819:                                              ; pred = %i1817, %i1821, %i1820
+  %phi$9 = phi i32 [25, %i1817], [%result_i1821, %i1821], [42, %i1820]
+  %result_$1i1819 = add i32 %phi$2, 1
+  br label %i1814
+
+i1820:                                              ; pred = %i1818
+  br label %i1819
+
+i1815:                                              ; pred = %i1814
+  %cond_eq_tmp_i1815 = icmp eq i32 %phi$2, 5
+  %cond_tmp_$1i1815 = zext i1 %cond_eq_tmp_i1815 to i32
+  %cond_$1i1815 = icmp ne i32 %cond_tmp_$1i1815, 0
+  br i1 %cond_$1i1815, label %i1817, label %i1818
+
+i1818:                                              ; pred = %i1815
+  %cond_eq_tmp_$1i1818 = icmp eq i32 %phi$2, 10
+  %cond_tmp_$2i1818 = zext i1 %cond_eq_tmp_$1i1818 to i32
+  %cond_$2i1818 = icmp ne i32 %cond_tmp_$2i1818, 0
+  br i1 %cond_$2i1818, label %i1820, label %i1821
 }
 

@@ -16,73 +16,42 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-@gv = global i32 0, align 4
-@gv1 = global i32 0, align 4
-@gv2 = global i32 0, align 4
-@gv3 = global i32 0, align 4
-@gv4 = global i32 0, align 4
-
 define i32 @main() {
 mainEntry40:
-  %lv = alloca i32, align 4
   %getint = call i32 @getint()
-  store i32 %getint, i32* @gv, align 4
   %getint$1 = call i32 @getint()
-  store i32 %getint$1, i32* @gv1, align 4
   %getint$2 = call i32 @getint()
-  store i32 %getint$2, i32* @gv2, align 4
   %getint$3 = call i32 @getint()
-  store i32 %getint$3, i32* @gv3, align 4
   %getint$4 = call i32 @getint()
-  store i32 %getint$4, i32* @gv4, align 4
-  store i32 0, i32* %lv, align 4
-  %a = load i32, i32* @gv, align 4
-  %b = load i32, i32* @gv1, align 4
-  %c = load i32, i32* @gv2, align 4
-  %result_ = mul i32 %b, %c
-  %result_$1 = sub i32 %a, %result_
-  %d = load i32, i32* @gv3, align 4
-  %a$1 = load i32, i32* @gv, align 4
-  %c$1 = load i32, i32* @gv2, align 4
-  %result_$2 = sdiv i32 %a$1, %c$1
-  %result_$3 = sub i32 %d, %result_$2
+  %m107 = add i32 %getint$4, %getint$3
+  %result_ = mul i32 %getint$1, %getint$2
+  %result_$1 = sub i32 %getint, %result_
+  %result_$2 = sdiv i32 %getint, %getint$2
+  %result_$3 = sub i32 %getint$3, %result_$2
   %cond_neq_tmp_ = icmp ne i32 %result_$1, %result_$3
   %cond_tmp_ = zext i1 %cond_neq_tmp_ to i32
   %cond_ = icmp ne i32 %cond_tmp_, 0
   br i1 %cond_, label %ifTrue_257, label %secondCond_94
 
-ifTrue_257:                                           ; pred = %mainEntry40, %secondCond_94, %secondCond_93
-  store i32 1, i32* %lv, align 4
+ifTrue_257:                                           ; pred = %mainEntry40, %secondCond_93, %secondCond_94
   br label %next_442
 
-next_442:                                             ; pred = %secondCond_93, %ifTrue_257
-  %flag = load i32, i32* %lv, align 4
-  ret i32 %flag
+next_442:                                             ; pred = %ifTrue_257, %secondCond_93
+  %phi = phi i32 [1, %ifTrue_257], [0, %secondCond_93]
+  ret i32 %phi
 
 secondCond_93:                                        ; pred = %secondCond_94
-  %a$3 = load i32, i32* @gv, align 4
-  %b$2 = load i32, i32* @gv1, align 4
-  %result_$7 = add i32 %a$3, %b$2
-  %c$3 = load i32, i32* @gv2, align 4
-  %result_$8 = add i32 %result_$7, %c$3
-  %d$2 = load i32, i32* @gv3, align 4
-  %e$1 = load i32, i32* @gv4, align 4
-  %result_$9 = add i32 %d$2, %e$1
-  %cond_eq_tmp_$1 = icmp eq i32 %result_$8, %result_$9
+  %result_$7 = add i32 %getint, %getint$1
+  %result_$8 = add i32 %result_$7, %getint$2
+  %cond_eq_tmp_$1 = icmp eq i32 %result_$8, %m107
   %cond_tmp_$2 = zext i1 %cond_eq_tmp_$1 to i32
   %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
   br i1 %cond_$2, label %ifTrue_257, label %next_442
 
 secondCond_94:                                        ; pred = %mainEntry40
-  %a$2 = load i32, i32* @gv, align 4
-  %b$1 = load i32, i32* @gv1, align 4
-  %result_$4 = mul i32 %a$2, %b$1
-  %c$2 = load i32, i32* @gv2, align 4
-  %result_$5 = sdiv i32 %result_$4, %c$2
-  %e = load i32, i32* @gv4, align 4
-  %d$1 = load i32, i32* @gv3, align 4
-  %result_$6 = add i32 %e, %d$1
-  %cond_eq_tmp_ = icmp eq i32 %result_$5, %result_$6
+  %result_$4 = mul i32 %getint, %getint$1
+  %result_$5 = sdiv i32 %result_$4, %getint$2
+  %cond_eq_tmp_ = icmp eq i32 %result_$5, %m107
   %cond_tmp_$1 = zext i1 %cond_eq_tmp_ to i32
   %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
   br i1 %cond_$1, label %ifTrue_257, label %secondCond_93

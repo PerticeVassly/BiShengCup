@@ -16,54 +16,38 @@ declare void @_sysy_stoptime(i32)
 declare void @memset(i32*, i32, i32)
 
 
-define i32 @doubleWhile() {
-doubleWhileEntry:
-  %lv$1 = alloca i32, align 4
-  %lv = alloca i32, align 4
-  store i32 5, i32* %lv, align 4
-  store i32 7, i32* %lv$1, align 4
-  br label %whileCond_75
-
-whileCond_75:                                            ; pred = %doubleWhileEntry, %next_143
-  %i = load i32, i32* %lv, align 4
-  %cond_lt_tmp_ = icmp slt i32 %i, 100
-  %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_75, label %next_142
-
-whileBody_75:                                            ; pred = %whileCond_75
-  %i$1 = load i32, i32* %lv, align 4
-  %result_ = add i32 %i$1, 30
-  store i32 %result_, i32* %lv, align 4
-  br label %whileCond_76
-
-next_142:                                                ; pred = %whileCond_75
-  %j$3 = load i32, i32* %lv$1, align 4
-  ret i32 %j$3
-
-whileCond_76:                                            ; pred = %whileBody_75, %whileBody_76
-  %j = load i32, i32* %lv$1, align 4
-  %cond_lt_tmp_$1 = icmp slt i32 %j, 100
-  %cond_tmp_$1 = zext i1 %cond_lt_tmp_$1 to i32
-  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %whileBody_76, label %next_143
-
-whileBody_76:                                            ; pred = %whileCond_76
-  %j$1 = load i32, i32* %lv$1, align 4
-  %result_$1 = add i32 %j$1, 6
-  store i32 %result_$1, i32* %lv$1, align 4
-  br label %whileCond_76
-
-next_143:                                                ; pred = %whileCond_76
-  %j$2 = load i32, i32* %lv$1, align 4
-  %result_$2 = sub i32 %j$2, 100
-  store i32 %result_$2, i32* %lv$1, align 4
-  br label %whileCond_75
-}
-
 define i32 @main() {
 mainEntry30:
-  %doubleWhile = call i32 @doubleWhile()
-  ret i32 %doubleWhile
+  br label %i750
+
+i751:                                               ; pred = %i750
+  %result_i751 = add i32 %phi$4, 30
+  br label %i753
+
+i752:                                               ; pred = %i750
+  ret i32 %phi$6
+
+i753:                                               ; pred = %i751, %i754
+  %phi$2 = phi i32 [%phi$6, %i751], [%result_$1i754, %i754]
+  %cond_lt_tmp_$1i753 = icmp slt i32 %phi$2, 100
+  %cond_tmp_$1i753 = zext i1 %cond_lt_tmp_$1i753 to i32
+  %cond_$1i753 = icmp ne i32 %cond_tmp_$1i753, 0
+  br i1 %cond_$1i753, label %i754, label %i755
+
+i754:                                               ; pred = %i753
+  %result_$1i754 = add i32 %phi$2, 6
+  br label %i753
+
+i750:                                               ; pred = %mainEntry30, %i755
+  %phi$6 = phi i32 [7, %mainEntry30], [%result_$2i755, %i755]
+  %phi$4 = phi i32 [5, %mainEntry30], [%result_i751, %i755]
+  %cond_lt_tmp_i750 = icmp slt i32 %phi$4, 100
+  %cond_tmp_i750 = zext i1 %cond_lt_tmp_i750 to i32
+  %cond_i750 = icmp ne i32 %cond_tmp_i750, 0
+  br i1 %cond_i750, label %i751, label %i752
+
+i755:                                               ; pred = %i753
+  %result_$2i755 = sub i32 %phi$2, 100
+  br label %i750
 }
 
