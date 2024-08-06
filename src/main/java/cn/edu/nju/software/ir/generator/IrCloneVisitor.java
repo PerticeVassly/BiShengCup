@@ -226,7 +226,10 @@ public class IrCloneVisitor implements InstructionVisitor {
 
     @Override
     public void visit(Ashr ashr) {
-
+        ValueRef lVal = ashr.getLVal().copy();
+        ValueRef operand1 =ashr.getOperand(0).copy();
+        ValueRef operand2 =ashr.getOperand(1).copy();
+        curInstruction = new Ashr(lVal, operand1, operand2);
     }
 
     @Override

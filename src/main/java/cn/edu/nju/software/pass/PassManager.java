@@ -53,7 +53,7 @@ public class PassManager {
         allPasses.add(EliminateConstExp.getInstance());
         allPasses.add(DomTreeBuildPass.getInstance());
         allPasses.add(new CommonSubexpressionElimination());
-        //allPasses.add(RegToMem.getInstance());
+        allPasses.add(RegToMem.getInstance());
         allPasses.add(EliminateLoadStorePass.getInstance());
     }
     public void setDbgFlag(){
