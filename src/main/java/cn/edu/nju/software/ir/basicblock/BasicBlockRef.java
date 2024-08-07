@@ -1,6 +1,9 @@
 package cn.edu.nju.software.ir.basicblock;
 
 import cn.edu.nju.software.ir.instruction.*;
+import cn.edu.nju.software.ir.type.FloatType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
@@ -78,10 +81,15 @@ public class BasicBlockRef extends ValueRef {
     }
 
     public void put(Instruction ir) {
-        if (ir instanceof Allocate) {
+        if (ir instanceof Allocate allocate) {
             function.emitAlloc((Allocate) ir);
-            irNum++;
-            irs.add(0, ir);
+            Pointer ptrType = (Pointer) allocate.getLVal().getType();
+            if (!(ptrType.getBase() instanceof FloatType) && !(ptrType.getBase() instanceof IntType)) {
+                function.emitAllocEntry(allocate);
+            } else { // base type no need entry
+                irs.add(0, ir);
+                irNum++;
+            }
         } else {
             irNum++;
             irs.add(ir);
@@ -153,7 +161,7 @@ public class BasicBlockRef extends ValueRef {
      */
     public void modify() {
         int end = -1;
-        for (int i = 0; i < irNum; i++) {
+        for (int i = 0; i < irs.size(); i++) {
             Instruction ir = irs.get(i);
             if (ir instanceof Br || ir instanceof CondBr) {
                 end = i;
