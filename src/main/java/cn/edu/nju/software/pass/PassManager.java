@@ -43,6 +43,7 @@ public class PassManager {
         allPasses.add(LoopBuildPass.getInstance());
         allPasses.add(GlobalToLocalPass.getInstance());
         allPasses.add(GEPReductionPass.getInstance());
+        allPasses.add(new FunctionInlinePass());
         allPasses.add(new FunctionInlinePass ());
         allPasses.add(new LoopInvariantCodeMotionPass());
         allPasses.add(new RedundantBlockEliminationPass());
@@ -51,6 +52,8 @@ public class PassManager {
         allPasses.add(StrengthReductionPass.getInstance());
         allPasses.add(IdentifyTmpPass.getInstance());
         allPasses.add(EliminateConstExp.getInstance());
+        allPasses.add(DomTreeBuildPass.getInstance());
+        allPasses.add(new CommonSubexpressionElimination());
         allPasses.add(RegToMem.getInstance());
         allPasses.add(EliminateLoadStorePass.getInstance());
     }

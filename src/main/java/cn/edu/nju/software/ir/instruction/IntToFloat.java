@@ -28,7 +28,7 @@ public class IntToFloat extends Instruction {
         }
         ValueRef[] operands=other.getOperands();
         for (int i = 0; i < operands.length; i++) {
-            if(operands[i].equals(this.operands[i])){
+            if(!operands[i].equals(this.operands[i])){
                 return false;
             }
         }

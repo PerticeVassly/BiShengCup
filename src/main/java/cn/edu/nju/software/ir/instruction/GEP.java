@@ -47,6 +47,9 @@ public class GEP extends Instruction {
             return false;
         }
         ValueRef[] operands=gep.getOperands();
+        if(operands.length!= this.operands.length){
+            return false;
+        }
         for (int i=0;i<this.operands.length;i++){
             if(!this.operands[i].equals(operands[i])){
                 return false;

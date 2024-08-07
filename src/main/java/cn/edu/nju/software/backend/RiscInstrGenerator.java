@@ -496,6 +496,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         String funcName = call.getFunction().getName();
         if (funcName.equals("starttime") || funcName.equals("stoptime")) {
             funcName = "_sysy_" + funcName;
+            riscInstructions.add(new RiscLi(new Register("a0"), new ImmediateValue(call.getLineNo())));
         }
         riscInstructions.add(new RiscComment("call " + funcName));
         riscInstructions.add(new RiscCall(funcName));
