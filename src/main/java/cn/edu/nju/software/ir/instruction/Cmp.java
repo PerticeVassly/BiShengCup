@@ -7,7 +7,7 @@ import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.Objects;
 
-import static cn.edu.nju.software.ir.instruction.Operator.*;
+import static cn.edu.nju.software.ir.instruction.Operator.cmpType;
 
 public class Cmp extends Binary {
     private final String type;

@@ -3,7 +3,6 @@ package cn.edu.nju.software.ir.instruction.logic;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.OpEnum;
-import cn.edu.nju.software.ir.instruction.arithmetic.Add;
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.HashSet;

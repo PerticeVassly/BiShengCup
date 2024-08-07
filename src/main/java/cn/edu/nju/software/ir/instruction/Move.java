@@ -8,7 +8,7 @@ import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
-import static cn.edu.nju.software.ir.instruction.OpEnum.*;
+import static cn.edu.nju.software.ir.instruction.OpEnum.ADD;
 
 /***
  * move inst, in fact is Add/FAdd 0 inst

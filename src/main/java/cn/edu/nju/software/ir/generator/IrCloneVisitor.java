@@ -1,14 +1,13 @@
 package cn.edu.nju.software.ir.generator;
+
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
-
 import cn.edu.nju.software.ir.instruction.logic.Lshr;
 import cn.edu.nju.software.ir.instruction.logic.Shl;
 import cn.edu.nju.software.ir.value.FunctionValue;
-
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;

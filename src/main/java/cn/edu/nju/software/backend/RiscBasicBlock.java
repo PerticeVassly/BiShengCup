@@ -1,5 +1,6 @@
 package cn.edu.nju.software.backend;
 
+import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.backend.regalloc.LValLiveTable;
 import cn.edu.nju.software.backend.regalloc.TempVarLiveTable;
 import cn.edu.nju.software.backend.riscinstruction.*;
@@ -9,11 +10,11 @@ import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscLi;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
-import cn.edu.nju.software.backend.regalloc.Allocator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
+
 import java.util.ArrayList;
 import java.util.List;
 

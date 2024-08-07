@@ -1,9 +1,7 @@
 package cn.edu.nju.software.ir.instruction.arithmetic;
 
-import cn.edu.nju.software.ir.instruction.Instruction;
-import cn.edu.nju.software.ir.instruction.logic.Ashr;
-import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
+import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.OpEnum;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.value.ConstValue;

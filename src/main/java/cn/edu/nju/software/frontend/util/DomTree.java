@@ -2,7 +2,10 @@ package cn.edu.nju.software.frontend.util;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class DomTree {
     private final Map<BasicBlockRef, Set<BasicBlockRef>> dominateNodes=new HashMap<>();

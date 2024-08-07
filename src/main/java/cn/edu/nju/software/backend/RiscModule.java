@@ -1,10 +1,13 @@
 package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.ir.module.ModuleRef;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class RiscModule {

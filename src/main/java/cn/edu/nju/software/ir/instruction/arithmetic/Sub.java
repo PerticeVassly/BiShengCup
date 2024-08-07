@@ -3,14 +3,9 @@ package cn.edu.nju.software.ir.instruction.arithmetic;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.OpEnum;
-import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.ValueRef;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class Sub extends Arithmetic {
     public Sub(ValueRef lVal, OpEnum op, ValueRef operand1, ValueRef operand2) {

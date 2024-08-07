@@ -5,24 +5,16 @@ import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlw;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvwx;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsw;
-import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
-import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
-import cn.edu.nju.software.backend.riscinstruction.operand.Operand;
-import cn.edu.nju.software.backend.riscinstruction.operand.Register;
-import cn.edu.nju.software.backend.riscinstruction.operand.RiscLabelAddress;
+import cn.edu.nju.software.backend.riscinstruction.operand.*;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscLi;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscLabel;
-import cn.edu.nju.software.ir.type.ArrayType;
-import cn.edu.nju.software.ir.type.BoolType;
-import cn.edu.nju.software.ir.type.FloatType;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.type.Pointer;
-import cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
+
 import java.util.ArrayList;
 import java.util.List;
 

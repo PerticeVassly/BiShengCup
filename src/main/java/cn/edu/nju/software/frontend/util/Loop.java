@@ -1,9 +1,8 @@
 package cn.edu.nju.software.frontend.util;
 
-import cn.edu.nju.software.pass.CFGBuildPass;
-
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
+import cn.edu.nju.software.pass.CFGBuildPass;
 
 import java.util.HashSet;
 import java.util.Set;

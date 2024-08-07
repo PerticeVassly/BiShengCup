@@ -8,28 +8,14 @@ import cn.edu.nju.software.frontend.util.SymbolTable;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.builder.BuilderRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
-import cn.edu.nju.software.ir.type.ArrayType;
-import cn.edu.nju.software.ir.type.BoolType;
-import cn.edu.nju.software.ir.type.FloatType;
-import cn.edu.nju.software.ir.type.FunctionType;
-import cn.edu.nju.software.ir.type.IntType;
-import cn.edu.nju.software.ir.type.Pointer;
-import cn.edu.nju.software.ir.type.TypeRef;
-import cn.edu.nju.software.ir.type.VoidType;
-import cn.edu.nju.software.ir.value.ArrayValue;
-import cn.edu.nju.software.ir.value.ConstValue;
-import cn.edu.nju.software.ir.value.FunctionValue;
-import cn.edu.nju.software.ir.value.GlobalVar;
-import cn.edu.nju.software.ir.value.LocalVar;
-import cn.edu.nju.software.ir.value.ValueRef;
-
-import static cn.edu.nju.software.ir.instruction.Operator.*;
+import cn.edu.nju.software.ir.type.*;
+import cn.edu.nju.software.ir.value.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Stack;
+
+import static cn.edu.nju.software.ir.instruction.Operator.*;
 
 public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
 
