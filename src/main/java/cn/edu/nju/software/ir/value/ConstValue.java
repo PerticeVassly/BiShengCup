@@ -87,6 +87,11 @@ public class ConstValue extends ValueRef {
         }
     }
 
+    public String toArmString(){
+        //same format with riscv
+        return toRiscvString();
+    }
+
 
     public String toString() {
         if (type instanceof IntType){
