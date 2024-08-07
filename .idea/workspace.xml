@@ -4,20 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="重新合并，测试所有Pass">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backend/regalloc/Allocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backend/regalloc/Allocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/BranchOptPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/BranchOptPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/CommonSubexpressionElimination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/CommonSubexpressionElimination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/DomTreeBuildPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/DomTreeBuildPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/EliminateConstExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/EliminateConstExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/FunctionInlinePass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/FunctionInlinePass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/LoopBuildPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/LoopBuildPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/LoopInvariantCodeMotionPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/LoopInvariantCodeMotionPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/RegToMem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/RegToMem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/StrengthReductionPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/StrengthReductionPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testPerformance.sh" beforeDir="false" />
+    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="优化import">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParser.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParser.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParserBaseListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParserBaseVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParserListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParserVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +254,23 @@
       <option name="project" value="LOCAL" />
       <updated>1722775002992</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="提交所有pass（包括公共子表达式消除）">
+      <option name="closed" value="true" />
+      <created>1723002885652</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1723002885652</updated>
+    </task>
+    <task id="LOCAL-00010" summary="优化import">
+      <option name="closed" value="true" />
+      <created>1723003061995</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1723003061995</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,6 +308,8 @@
     <MESSAGE value="添加测试" />
     <MESSAGE value="添加测试2" />
     <MESSAGE value="重新合并，测试所有Pass" />
-    <option name="LAST_COMMIT_MESSAGE" value="重新合并，测试所有Pass" />
+    <MESSAGE value="提交所有pass（包括公共子表达式消除）" />
+    <MESSAGE value="优化import" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化import" />
   </component>
 </project>
