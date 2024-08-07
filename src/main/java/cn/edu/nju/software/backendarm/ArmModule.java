@@ -1,8 +1,9 @@
 package cn.edu.nju.software.backendarm;
 
-
 import cn.edu.nju.software.ir.module.ModuleRef;
-
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -41,26 +42,51 @@ public class ArmModule {
                 });
     }
 
-    /**
-     * 在文件末尾添加自定义arm库函数
-     */
-    private void appendArmFunctions() {
-        //todo() this is a riscv function, need to be changed
-        System.out.println(System.lineSeparator() + """
-            memset:\s
-                blez    a2, .LBB0_3\s
-                add     a2, a2, a0\s
-            .LBB0_2:\s
-                sw      a1, 0(a0)\s
-                addi    a0, a0, 4\s
-                bltu    a0, a2, .LBB0_2\s
-            .LBB0_3:\s
-                ret\s""");
-    }
-
     public static String createTempBlock() {
         return "tempBlock" + tempBlockCount++;
     }
 
+    public void dumpToConsole() {
+        System.out.println(".data" + System.lineSeparator() + ".align 4");
+        armGlobalVars.forEach(ArmGlobalVar::dumpToConsole);
+        armFunctions.forEach(ArmFunction::dumpToConsole);
+        appendArmFunctions();
+    }
 
+    /**
+     * 在文件末尾添加自定义arm库函数
+     */
+    private void appendArmFunctions() {
+        System.out.println(System.lineSeparator() + """
+             memset:\s
+                 cmp     r2, #0\s
+                 ble     .LBB0_3\s
+                 add     r2, r2, r0\s
+             .LBB0_2:\s
+                 str     r1, [r0]\s
+                 add     r0, r0, #4\s
+                 cmp     r0, r2\s
+                 blt     .LBB0_2\s
+             .LBB0_3:\s
+                 bx      lr\s""");
+    }
+
+    public void dumpToFile(String path) {
+        if (!new java.io.File(path).exists()) {
+            try {
+                new java.io.File(path).createNewFile();
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
+            }
+        }
+        PrintStream consoleStream = System.out;
+        try (PrintStream ps = new PrintStream(new FileOutputStream(path))) {
+            System.setOut(ps);
+            dumpToConsole();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            System.setOut(consoleStream);
+        }
+    }
 }
