@@ -4,274 +4,309 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="初步完成公共子表达式消除">
+    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="完成公共子表达式消除">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/generator/IrCloneVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/generator/IrCloneVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/instruction/IntToFloat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/instruction/IntToFloat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/instruction/GEP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/instruction/GEP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/CommonSubexpressionElimination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/CommonSubexpressionElimination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/cn/edu/nju/software/FrontEndTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cn/edu/nju/software/FrontEndTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/cn/edu/nju/software/TestBackEndIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cn/edu/nju/software/TestBackEndIO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/00_main" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/00_main" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/00_main.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/00_main.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/00_main.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/00_main.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/01_var_defn2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/01_var_defn2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/01_var_defn2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/01_var_defn2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/01_var_defn2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/01_var_defn2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/02_var_defn3" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/02_var_defn3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/02_var_defn3.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/02_var_defn3.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/02_var_defn3.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/02_var_defn3.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/03_arr_defn2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/03_arr_defn2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/03_arr_defn2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/03_arr_defn2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/03_arr_defn2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/03_arr_defn2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/04_arr_defn3" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/04_arr_defn3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/04_arr_defn3.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/04_arr_defn3.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/04_arr_defn3.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/04_arr_defn3.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/05_arr_defn4" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/05_arr_defn4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/05_arr_defn4.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/05_arr_defn4.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/05_arr_defn4.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/05_arr_defn4.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/06_const_var_defn2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/06_const_var_defn2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/06_const_var_defn2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/06_const_var_defn2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/06_const_var_defn2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/06_const_var_defn2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/07_const_var_defn3" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/07_const_var_defn3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/07_const_var_defn3.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/07_const_var_defn3.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/07_const_var_defn3.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/07_const_var_defn3.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/08_const_array_defn" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/08_const_array_defn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/08_const_array_defn.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/08_const_array_defn.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/08_const_array_defn.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/08_const_array_defn.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/09_func_defn" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/09_func_defn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/09_func_defn.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/09_func_defn.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/09_func_defn.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/09_func_defn.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/10_var_defn_func" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/10_var_defn_func" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/10_var_defn_func.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/10_var_defn_func.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/10_var_defn_func.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/10_var_defn_func.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/11_add2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/11_add2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/11_add2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/11_add2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/11_add2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/11_add2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/12_addc" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/12_addc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/12_addc.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/12_addc.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/12_addc.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/12_addc.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/13_sub2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/13_sub2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/13_sub2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/13_sub2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/13_sub2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/13_sub2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/14_subc" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/14_subc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/14_subc.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/14_subc.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/14_subc.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/14_subc.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/15_mul" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/15_mul" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/15_mul.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/15_mul.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/15_mul.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/15_mul.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/16_mulc" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/16_mulc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/16_mulc.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/16_mulc.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/16_mulc.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/16_mulc.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/17_div" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/17_div" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/17_div.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/17_div.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/17_div.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/17_div.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/18_divc" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/18_divc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/18_divc.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/18_divc.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/18_divc.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/18_divc.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/19_mod" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/19_mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/19_mod.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/19_mod.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/19_mod.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/19_mod.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/20_rem" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/20_rem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/20_rem.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/20_rem.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/20_rem.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/20_rem.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/21_if_test2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/21_if_test2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/21_if_test2.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/21_if_test2.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/21_if_test2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/21_if_test2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/21_if_test2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/21_if_test2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/22_if_test3" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/22_if_test3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/22_if_test3.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/22_if_test3.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/22_if_test3.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/22_if_test3.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/22_if_test3.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/22_if_test3.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/23_if_test4" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/23_if_test4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/23_if_test4.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/23_if_test4.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/23_if_test4.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/23_if_test4.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/23_if_test4.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/23_if_test4.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/24_if_test5" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/24_if_test5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/24_if_test5.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/24_if_test5.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/24_if_test5.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/24_if_test5.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/24_if_test5.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/24_if_test5.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/25_while_if" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/25_while_if" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/25_while_if.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/25_while_if.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/25_while_if.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/25_while_if.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/25_while_if.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/25_while_if.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/26_while_test1" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/26_while_test1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/26_while_test1.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/26_while_test1.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/26_while_test1.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/26_while_test1.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/26_while_test1.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/26_while_test1.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/27_while_test2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/27_while_test2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/27_while_test2.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/27_while_test2.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/27_while_test2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/27_while_test2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/27_while_test2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/27_while_test2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/28_while_test3" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/28_while_test3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/28_while_test3.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/28_while_test3.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/28_while_test3.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/28_while_test3.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/28_while_test3.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/28_while_test3.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/29_break" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/29_break" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/29_break.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/29_break.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/29_break.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/29_break.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/29_break.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/29_break.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/30_continue" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/30_continue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/30_continue.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/30_continue.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/30_continue.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/30_continue.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/30_continue.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/30_continue.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/31_while_if_test1" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/31_while_if_test1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/31_while_if_test1.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/31_while_if_test1.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/31_while_if_test1.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/31_while_if_test1.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/31_while_if_test1.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/31_while_if_test1.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/32_while_if_test2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/32_while_if_test2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/32_while_if_test2.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/32_while_if_test2.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/32_while_if_test2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/32_while_if_test2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/32_while_if_test2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/32_while_if_test2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/33_while_if_test3" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/33_while_if_test3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/33_while_if_test3.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/33_while_if_test3.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/33_while_if_test3.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/33_while_if_test3.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/33_while_if_test3.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/33_while_if_test3.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/34_arr_expr_len" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/34_arr_expr_len" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/34_arr_expr_len.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/34_arr_expr_len.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/34_arr_expr_len.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/34_arr_expr_len.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/34_arr_expr_len.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/34_arr_expr_len.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/35_op_priority1" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/35_op_priority1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/35_op_priority1.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/35_op_priority1.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/35_op_priority1.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/35_op_priority1.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/36_op_priority2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/36_op_priority2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/36_op_priority2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/36_op_priority2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/36_op_priority2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/36_op_priority2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/37_op_priority3" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/37_op_priority3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/37_op_priority3.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/37_op_priority3.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/37_op_priority3.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/37_op_priority3.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/38_op_priority4" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/38_op_priority4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/38_op_priority4.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/38_op_priority4.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/38_op_priority4.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/38_op_priority4.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/38_op_priority4.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/38_op_priority4.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/39_op_priority5" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/39_op_priority5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/39_op_priority5.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/39_op_priority5.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/39_op_priority5.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/39_op_priority5.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/39_op_priority5.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/39_op_priority5.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/40_unary_op" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/40_unary_op" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/40_unary_op.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/40_unary_op.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/40_unary_op.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/40_unary_op.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/40_unary_op.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/40_unary_op.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/41_unary_op2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/41_unary_op2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/41_unary_op2.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/41_unary_op2.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/41_unary_op2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/41_unary_op2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/41_unary_op2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/41_unary_op2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/42_empty_stmt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/42_empty_stmt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/42_empty_stmt.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/42_empty_stmt.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/42_empty_stmt.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/42_empty_stmt.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/43_logi_assign" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/43_logi_assign" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/43_logi_assign.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/43_logi_assign.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/43_logi_assign.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/43_logi_assign.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/43_logi_assign.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/43_logi_assign.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/44_stmt_expr" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/44_stmt_expr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/44_stmt_expr.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/44_stmt_expr.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/44_stmt_expr.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/44_stmt_expr.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/44_stmt_expr.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/44_stmt_expr.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/45_comment1" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/45_comment1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/45_comment1.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/45_comment1.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/45_comment1.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/45_comment1.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/46_hex_defn" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/46_hex_defn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/46_hex_defn.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/46_hex_defn.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/46_hex_defn.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/46_hex_defn.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/47_hex_oct_add" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/47_hex_oct_add" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/47_hex_oct_add.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/47_hex_oct_add.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/47_hex_oct_add.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/47_hex_oct_add.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/48_assign_complex_expr" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/48_assign_complex_expr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/48_assign_complex_expr.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/48_assign_complex_expr.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/48_assign_complex_expr.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/48_assign_complex_expr.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/49_if_complex_expr" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/49_if_complex_expr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/49_if_complex_expr.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/49_if_complex_expr.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/49_if_complex_expr.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/49_if_complex_expr.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/50_short_circuit" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/50_short_circuit" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/50_short_circuit.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/50_short_circuit.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/50_short_circuit.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/50_short_circuit.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/51_short_circuit3" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/51_short_circuit3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/51_short_circuit3.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/51_short_circuit3.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/51_short_circuit3.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/51_short_circuit3.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/52_scope" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/52_scope" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/52_scope.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/52_scope.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/52_scope.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/52_scope.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/52_scope.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/52_scope.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/53_scope2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/53_scope2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/53_scope2.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/53_scope2.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/53_scope2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/53_scope2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/53_scope2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/53_scope2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/54_hidden_var" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/54_hidden_var" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/54_hidden_var.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/54_hidden_var.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/54_hidden_var.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/54_hidden_var.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/54_hidden_var.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/54_hidden_var.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/55_sort_test1" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/55_sort_test1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/55_sort_test1.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/55_sort_test1.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/55_sort_test1.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/55_sort_test1.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/55_sort_test1.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/55_sort_test1.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/56_sort_test2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/56_sort_test2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/56_sort_test2.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/56_sort_test2.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/56_sort_test2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/56_sort_test2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/56_sort_test2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/56_sort_test2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/57_sort_test3" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/57_sort_test3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/57_sort_test3.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/57_sort_test3.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/57_sort_test3.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/57_sort_test3.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/57_sort_test3.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/57_sort_test3.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/58_sort_test4" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/58_sort_test4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/58_sort_test4.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/58_sort_test4.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/58_sort_test4.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/58_sort_test4.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/58_sort_test4.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/58_sort_test4.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/59_sort_test5" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/59_sort_test5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/59_sort_test5.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/59_sort_test5.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/59_sort_test5.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/59_sort_test5.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/59_sort_test5.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/59_sort_test5.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/60_sort_test6" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/60_sort_test6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/60_sort_test6.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/60_sort_test6.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/60_sort_test6.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/60_sort_test6.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/60_sort_test6.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/60_sort_test6.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/61_sort_test7" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/61_sort_test7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/61_sort_test7.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/61_sort_test7.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/61_sort_test7.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/61_sort_test7.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/61_sort_test7.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/61_sort_test7.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/62_percolation" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/62_percolation" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/62_percolation.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/62_percolation.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/62_percolation.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/62_percolation.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/62_percolation.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/62_percolation.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/63_big_int_mul" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/63_big_int_mul" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/63_big_int_mul.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/63_big_int_mul.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/63_big_int_mul.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/63_big_int_mul.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/63_big_int_mul.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/63_big_int_mul.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/64_calculator" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/64_calculator" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/64_calculator.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/64_calculator.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/64_calculator.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/64_calculator.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/64_calculator.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/64_calculator.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/65_color" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/65_color" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/65_color.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/65_color.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/65_color.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/65_color.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/65_color.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/65_color.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/66_exgcd" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/66_exgcd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/66_exgcd.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/66_exgcd.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/66_exgcd.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/66_exgcd.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/67_reverse_output" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/67_reverse_output" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/67_reverse_output.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/67_reverse_output.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/67_reverse_output.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/67_reverse_output.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/68_brainfk" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/68_brainfk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/68_brainfk.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/68_brainfk.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/68_brainfk.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/68_brainfk.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/68_brainfk.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/68_brainfk.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/69_expr_eval" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/69_expr_eval" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/69_expr_eval.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/69_expr_eval.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/69_expr_eval.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/69_expr_eval.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/69_expr_eval.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/69_expr_eval.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/70_dijkstra" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/70_dijkstra" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/70_dijkstra.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/70_dijkstra.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/70_dijkstra.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/70_dijkstra.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/70_dijkstra.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/70_dijkstra.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/71_full_conn" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/71_full_conn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/71_full_conn.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/71_full_conn.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/71_full_conn.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/71_full_conn.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/71_full_conn.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/71_full_conn.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/72_hanoi" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/72_hanoi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/72_hanoi.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/72_hanoi.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/72_hanoi.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/72_hanoi.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/72_hanoi.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/72_hanoi.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/73_int_io" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/73_int_io" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/73_int_io.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/73_int_io.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/73_int_io.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/73_int_io.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/73_int_io.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/73_int_io.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/74_kmp" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/74_kmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/74_kmp.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/74_kmp.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/74_kmp.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/74_kmp.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/74_kmp.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/74_kmp.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/75_max_flow" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/75_max_flow" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/75_max_flow.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/75_max_flow.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/75_max_flow.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/75_max_flow.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/75_max_flow.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/75_max_flow.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/76_n_queens" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/76_n_queens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/76_n_queens.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/76_n_queens.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/76_n_queens.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/76_n_queens.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/76_n_queens.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/76_n_queens.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/77_substr" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/77_substr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/77_substr.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/77_substr.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/77_substr.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/77_substr.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/77_substr.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/77_substr.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/78_side_effect" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/78_side_effect" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/78_side_effect.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/78_side_effect.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/78_side_effect.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/78_side_effect.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/78_side_effect.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/78_side_effect.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/79_var_name" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/79_var_name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/79_var_name.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/79_var_name.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/79_var_name.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/79_var_name.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/79_var_name.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/79_var_name.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/80_chaos_token" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/80_chaos_token" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/80_chaos_token.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/80_chaos_token.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/80_chaos_token.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/80_chaos_token.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/80_chaos_token.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/80_chaos_token.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/81_skip_spaces" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/81_skip_spaces" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/81_skip_spaces.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/81_skip_spaces.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/81_skip_spaces.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/81_skip_spaces.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/81_skip_spaces.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/81_skip_spaces.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/82_long_func" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/82_long_func" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/82_long_func.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/82_long_func.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/82_long_func.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/82_long_func.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/82_long_func.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/82_long_func.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/83_long_array" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/83_long_array" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/83_long_array.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/83_long_array.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/83_long_array.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/83_long_array.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/83_long_array.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/83_long_array.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/84_long_array2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/84_long_array2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/84_long_array2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/84_long_array2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/84_long_array2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/84_long_array2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/85_long_code" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/85_long_code" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/85_long_code.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/85_long_code.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/85_long_code.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/85_long_code.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/85_long_code.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/85_long_code.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/87_many_params" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/87_many_params" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/87_many_params.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/87_many_params.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/87_many_params.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/87_many_params.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/87_many_params.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/87_many_params.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/88_many_params2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/88_many_params2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/88_many_params2.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/88_many_params2.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/88_many_params2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/88_many_params2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/88_many_params2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/88_many_params2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/89_many_globals" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/89_many_globals" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/89_many_globals.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/89_many_globals.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/89_many_globals.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/89_many_globals.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/90_many_locals" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/90_many_locals" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/90_many_locals.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/90_many_locals.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/90_many_locals.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/90_many_locals.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/90_many_locals.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/90_many_locals.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/91_many_locals2" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/91_many_locals2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/91_many_locals2.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/91_many_locals2.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/91_many_locals2.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/91_many_locals2.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/91_many_locals2.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/91_many_locals2.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/92_register_alloc" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/92_register_alloc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/92_register_alloc.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/92_register_alloc.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/92_register_alloc.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/92_register_alloc.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/93_nested_calls" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/93_nested_calls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/93_nested_calls.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/93_nested_calls.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/93_nested_calls.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/93_nested_calls.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/93_nested_calls.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/93_nested_calls.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/94_nested_loops" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/94_nested_loops" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/94_nested_loops.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/94_nested_loops.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/94_nested_loops.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/94_nested_loops.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/94_nested_loops.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/94_nested_loops.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/95_float" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/95_float" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/95_float.ll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/95_float.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/95_float.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/95_float.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/96_matrix_add" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/96_matrix_add" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/96_matrix_add.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/96_matrix_add.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/96_matrix_add.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/96_matrix_add.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/96_matrix_add.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/96_matrix_add.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/97_matrix_sub" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/97_matrix_sub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/97_matrix_sub.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/97_matrix_sub.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/97_matrix_sub.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/97_matrix_sub.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/97_matrix_sub.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/97_matrix_sub.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/98_matrix_mul" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/98_matrix_mul" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/98_matrix_mul.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/98_matrix_mul.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/98_matrix_mul.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/98_matrix_mul.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/98_matrix_mul.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/98_matrix_mul.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/2023/99_matrix_tran" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/99_matrix_tran" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/99_matrix_tran.ll" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/99_matrix_tran.ll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/99_matrix_tran.s" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/2023/99_matrix_tran.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/99_matrix_tran.ll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/2023/99_matrix_tran.s" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Compiler.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/cn/edu/nju/software/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/cn/edu/nju/software/backend/RiscBasicBlock.class" beforeDir="false" />
@@ -1200,9 +1235,9 @@
       <list>
         <item itemvalue="JUnit.TestBackEndIO.test2023Hidden" />
         <item itemvalue="JUnit.TestBackEndIO.test2023" />
+        <item itemvalue="JUnit.FrontEndTest.testHidden" />
         <item itemvalue="应用程序.Compiler" />
         <item itemvalue="JUnit.FrontEndTest.testAll" />
-        <item itemvalue="JUnit.FrontEndTest.testHidden" />
       </list>
     </recent_temporary>
   </component>
@@ -1225,7 +1260,9 @@
       <workItem from="1722925638722" duration="797000" />
       <workItem from="1722926457104" duration="458000" />
       <workItem from="1722926930939" duration="7660000" />
-      <workItem from="1722944243648" duration="3275000" />
+      <workItem from="1722944243648" duration="3546000" />
+      <workItem from="1722957173517" duration="201000" />
+      <workItem from="1722998514237" duration="2981000" />
     </task>
     <task id="LOCAL-00001" summary="Framework">
       <option name="closed" value="true" />
@@ -1283,7 +1320,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722924987276</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="完成公共子表达式消除">
+      <option name="closed" value="true" />
+      <created>1722952460345</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1722952460345</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1300,7 +1345,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/dev-ymhui-submit" />
+                        <option value="origin/syq-dev-new" />
                       </list>
                     </value>
                   </entry>
@@ -1319,20 +1364,26 @@
     <MESSAGE value="开始公共子表达式消除" />
     <MESSAGE value="暂存" />
     <MESSAGE value="初步完成公共子表达式消除" />
-    <option name="LAST_COMMIT_MESSAGE" value="初步完成公共子表达式消除" />
+    <MESSAGE value="完成公共子表达式消除" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成公共子表达式消除" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/CommonSubexpressionElimination.java</url>
-          <line>51</line>
+          <line>50</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/DomTreeBuildPass.java</url>
           <line>60</line>
           <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/CommonSubexpressionElimination.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
