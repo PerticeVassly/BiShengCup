@@ -4,7 +4,6 @@ import cn.edu.nju.software.backend.RiscInstrGenerator;
 import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlw;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvwx;
-import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvxw;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsw;
 import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;

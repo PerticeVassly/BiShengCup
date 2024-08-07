@@ -5,7 +5,10 @@ import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class DomTreeBuildPass implements ModulePass{
     private static DomTreeBuildPass domTreeBuildPass;

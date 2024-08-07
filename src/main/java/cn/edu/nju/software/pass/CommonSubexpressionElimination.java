@@ -1,6 +1,5 @@
 package cn.edu.nju.software.pass;
 
-import cn.edu.nju.software.frontend.util.CFG;
 import cn.edu.nju.software.frontend.util.DomTree;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.IrCloneVisitor;
@@ -8,7 +7,6 @@ import cn.edu.nju.software.ir.instruction.Call;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.OpEnum;
 import cn.edu.nju.software.ir.instruction.Phi;
-import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
