@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="优化import">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParser.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParser.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParserBaseListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParserBaseVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParserListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/cn/edu/nju/software/frontend/parser/SysYParserVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
