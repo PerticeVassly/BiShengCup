@@ -111,7 +111,12 @@ public class RiscInstrGenerator implements InstructionVisitor {
         TypeRef destType = ((Pointer) dest.getType()).getBase();
         String srcReg = allocator.prepareOperands(src).get(0);
         if(registerManager.contains(dest)){
-            riscInstructions.add(new RiscMv(new Register(registerManager.get(dest)),new Register(srcReg)));
+            if(srcReg.startsWith("f")){
+                riscInstructions.add(new RiscFmvxw(new Register("t0"), new Register(srcReg)));
+                riscInstructions.add(new RiscFmvwx(new Register(registerManager.get(dest)), new Register("t0")));
+            }else {
+                riscInstructions.add(new RiscMv(new Register(registerManager.get(dest)),new Register(srcReg)));
+            }
             return;
         }
         Operand destOperand = allocator.getAddrOfVarPtrPointsToWithOffset(dest,0);
