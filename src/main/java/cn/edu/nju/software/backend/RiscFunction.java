@@ -82,7 +82,9 @@ public class RiscFunction {
     //TODO:尝试将变量放入寄存器
     private void reserveSpaceForLocalVariables() {
         List<ValueRef> sortedValues= ValueAnalyzePass.getInstance().getSortedValue(functionValue);
-        preProcessValue(sortedValues);
+        if(sortedValues!=null){
+            preProcessValue(sortedValues);
+        }
         for(int i = 0; i < functionValue.getBasicBlockRefs().size(); i++){
             BasicBlockRef bb = functionValue.getBasicBlockRefs().get(i);
             if(i == 0){
