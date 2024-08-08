@@ -34,7 +34,7 @@ public class RegisterManager {
         return registerMap.containsKey(ref);
     }
 
-    public Set<ValueRef> getAllValues(){
-        return new HashSet<>(registerMap.keySet());
+    public boolean isUsed(String reg){
+        return registerMap.containsValue(reg);
     }
 }

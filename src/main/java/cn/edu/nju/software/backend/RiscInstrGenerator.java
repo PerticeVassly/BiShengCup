@@ -604,7 +604,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         String[] callerSavedRegs = RiscSpecifications.getCallerSavedRegs();
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L * callerSavedRegs.length)));
         for (int i = 0; i < callerSavedRegs.length; i++) {
-            if(!allocator.isUsedReg(callerSavedRegs[i]) && !callerSavedRegs[i].equals("ra")){ //ra不会被record但是仍然需要保存
+            if(!allocator.isUsedReg(callerSavedRegs[i]) && !callerSavedRegs[i].equals("ra")&&!registerManager.isUsed(callerSavedRegs[i])){ //ra不会被record但是仍然需要保存
                 continue;
             }
             if(RiscSpecifications.isFloatReg(callerSavedRegs[i])){
@@ -619,7 +619,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         riscInstructions.add(new RiscComment("restore caller saved regs"));
         String[] registers = RiscSpecifications.getCallerSavedRegs();
         for (int i = 0; i < registers.length; i++) {
-            if(!allocator.isUsedReg(registers[i]) && !registers[i].equals("ra")){
+            if(!allocator.isUsedReg(registers[i]) && !registers[i].equals("ra")&&!registerManager.isUsed(registers[i])){
                 continue;
             }
             if(RiscSpecifications.isFloatReg(registers[i])){

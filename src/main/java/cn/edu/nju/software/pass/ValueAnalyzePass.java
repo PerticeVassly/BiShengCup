@@ -7,8 +7,6 @@ import cn.edu.nju.software.ir.instruction.Allocate;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.Load;
 import cn.edu.nju.software.ir.instruction.Store;
-import cn.edu.nju.software.ir.type.FloatType;
-import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.ValueRef;
@@ -43,7 +41,8 @@ public class ValueAnalyzePass implements FunctionPass{
         }
         return valueAnalyzePass;
     }
-    private final List<ValueRef> sortedValue=new ArrayList<>();
+    private final Map<FunctionValue,List<ValueRef>> sortTable=new HashMap<>();
+    private  List<ValueRef> sortedValue=new ArrayList<>();
     @Override
     public boolean runOnFunction(FunctionValue function) {
         if(function.isLib()){
@@ -51,6 +50,9 @@ public class ValueAnalyzePass implements FunctionPass{
         }
         buildTable(function);
         sortValues();
+        sortTable.put(function,sortedValue);
+        sortedValue=new ArrayList<>();
+        nodeTable.clear();
         return false;
     }
 
@@ -137,7 +139,7 @@ public class ValueAnalyzePass implements FunctionPass{
         }
     }
 
-    public List<ValueRef> getSortedValue(){
-        return sortedValue;
+    public List<ValueRef> getSortedValue(FunctionValue function){
+        return sortTable.get(function);
     }
 }
