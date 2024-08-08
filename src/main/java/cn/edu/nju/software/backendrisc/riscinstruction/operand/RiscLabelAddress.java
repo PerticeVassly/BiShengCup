@@ -2,7 +2,7 @@ package cn.edu.nju.software.backendrisc.riscinstruction.operand;
 
 import cn.edu.nju.software.backendrisc.riscinstruction.util.RiscLabel;
 
-public class RiscLabelAddress implements Operand {
+public class RiscLabelAddress implements RiscOperand {
 
     RiscLabel label;
 

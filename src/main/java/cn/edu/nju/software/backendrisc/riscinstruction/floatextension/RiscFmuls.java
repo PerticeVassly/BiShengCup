@@ -1,11 +1,11 @@
 package cn.edu.nju.software.backendrisc.riscinstruction.floatextension;
-import cn.edu.nju.software.backendrisc.riscinstruction.DefaultInstruction;
-import cn.edu.nju.software.backendrisc.riscinstruction.operand.Operand;
+import cn.edu.nju.software.backendrisc.riscinstruction.RiscDefaultInstruction;
+import cn.edu.nju.software.backendrisc.riscinstruction.operand.RiscOperand;
 import cn.edu.nju.software.backendrisc.riscinstruction.util.RiscOpcode;
 
-public class RiscFmuls extends DefaultInstruction {
+public class RiscFmuls extends RiscDefaultInstruction {
 
-    public RiscFmuls(Operand rd, Operand rs1, Operand rs2) {
+    public RiscFmuls(RiscOperand rd, RiscOperand rs1, RiscOperand rs2) {
         super(RiscOpcode.FMUL_S, rd, rs1, rs2);
     }
 }

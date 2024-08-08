@@ -1,6 +1,6 @@
 package cn.edu.nju.software.backendrisc;
 
-import cn.edu.nju.software.backendrisc.regalloc.Allocator;
+import cn.edu.nju.software.backendrisc.regalloc.RiscAllocator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.Allocate;
 import cn.edu.nju.software.ir.instruction.Instruction;
@@ -17,7 +17,7 @@ public class RiscFunction {
 
     private final FunctionValue functionValue;
     private final List<RiscBasicBlock> riscBasicBlocks = new LinkedList<>();
-    private final Allocator allocator = Allocator.get();
+    private final RiscAllocator allocator = RiscAllocator.get();
 
     public RiscFunction(FunctionValue functionValue) {
         this.functionValue = functionValue;

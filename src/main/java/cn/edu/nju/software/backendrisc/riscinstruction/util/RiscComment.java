@@ -1,8 +1,8 @@
 package cn.edu.nju.software.backendrisc.riscinstruction.util;
 
-import cn.edu.nju.software.backendrisc.riscinstruction.DefaultInstruction;
+import cn.edu.nju.software.backendrisc.riscinstruction.RiscDefaultInstruction;
 
-public class RiscComment extends DefaultInstruction {
+public class RiscComment extends RiscDefaultInstruction {
     private String comment;
 
     public RiscComment(String comment) {

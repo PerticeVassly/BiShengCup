@@ -13,6 +13,11 @@ public class ArmSpecifications {
             "r9", "r10", "r11", // general temp var
             "s9", "s10", "s11" // float temp var
     };
+    //todo() arm's general register is less than risc-v
+    private static final String[] calculateRegs = new String[] {
+            "r4", "r5", "r6", "r7", "r8",
+            "s4", "s5", "s6", "s7", "s8"
+    };
     private static final String[] calleeSavedRegs = new String[] {};
     private static final String[] argRegs = new String[] {"r0", "r1", "r2", "r3"};
     private static final String[] fArgRegs = new String[] {"s0", "s1", "s2", "s3"};

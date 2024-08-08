@@ -1,15 +1,15 @@
 package cn.edu.nju.software.backendrisc;
 
-import cn.edu.nju.software.backendrisc.regalloc.LValLiveTable;
-import cn.edu.nju.software.backendrisc.regalloc.TempVarLiveTable;
+import cn.edu.nju.software.backendrisc.regalloc.RiscLValLiveTable;
+import cn.edu.nju.software.backendrisc.regalloc.RiscTempVarLiveTable;
 import cn.edu.nju.software.backendrisc.riscinstruction.*;
 import cn.edu.nju.software.backendrisc.riscinstruction.floatextension.RiscFlw;
-import cn.edu.nju.software.backendrisc.riscinstruction.operand.ImmediateValue;
-import cn.edu.nju.software.backendrisc.riscinstruction.operand.IndirectRegister;
-import cn.edu.nju.software.backendrisc.riscinstruction.operand.Register;
+import cn.edu.nju.software.backendrisc.riscinstruction.operand.RiscImmediateValue;
+import cn.edu.nju.software.backendrisc.riscinstruction.operand.RiscIndirectRegister;
+import cn.edu.nju.software.backendrisc.riscinstruction.operand.RiscRegister;
 import cn.edu.nju.software.backendrisc.riscinstruction.pseudo.RiscLi;
 import cn.edu.nju.software.backendrisc.riscinstruction.util.RiscComment;
-import cn.edu.nju.software.backendrisc.regalloc.Allocator;
+import cn.edu.nju.software.backendrisc.regalloc.RiscAllocator;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.type.*;
 import cn.edu.nju.software.ir.value.FunctionValue;
@@ -20,24 +20,24 @@ import java.util.List;
 public class RiscBasicBlock {
 
     private final BasicBlockRef basicBlockRef;
-    private final Allocator allocator = Allocator.get();
+    private final RiscAllocator allocator = RiscAllocator.get();
     private final FunctionValue llvmFunctionValue;
     private final List<RiscInstruction> riscInstructions = new ArrayList<>() ;
     private final RiscInstrGenerator generator;
-    private final TempVarLiveTable tempVarLiveTable;
-    private final LValLiveTable lValLiveTable;
+    private final RiscTempVarLiveTable riscTempVarLiveTable;
+    private final RiscLValLiveTable riscLValLiveTable;
 
     public RiscBasicBlock(BasicBlockRef basicBlockRef, FunctionValue functionValue) {
         this.basicBlockRef = basicBlockRef;
         this.llvmFunctionValue = functionValue;
         this.generator = new RiscInstrGenerator(basicBlockRef.getIrs(), llvmFunctionValue);
-        this.tempVarLiveTable = new TempVarLiveTable(generator, allocator);
-        this.lValLiveTable = new LValLiveTable();
+        this.riscTempVarLiveTable = new RiscTempVarLiveTable(generator, allocator);
+        this.riscLValLiveTable = new RiscLValLiveTable();
     }
 
     public void codeGen() {
-        allocator.setLValLiveTable(lValLiveTable);
-        allocator.setTempVarLiveTable(tempVarLiveTable);
+        allocator.setLValLiveTable(riscLValLiveTable);
+        allocator.setTempVarLiveTable(riscTempVarLiveTable);
         allocator.setInstrGenerator(generator);
         if (basicBlockRef.isEntryBlock()) {
             functionInit();
@@ -50,10 +50,10 @@ public class RiscBasicBlock {
         int stackSize = allocator.getStackSize();
         if (stackSize > 0) {
             if(stackSize <= 2048){
-                generator.addInstruction(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-stackSize)));
+                generator.addInstruction(new RiscAddi(new RiscRegister("sp"), new RiscRegister("sp"), new RiscImmediateValue(-stackSize)));
             } else {
-                generator.addInstruction(new RiscLi(new Register("t0"), new ImmediateValue(stackSize)));
-                generator.addInstruction(new RiscSub(new Register("sp"), new Register("sp"), new Register("t0")));
+                generator.addInstruction(new RiscLi(new RiscRegister("t0"), new RiscImmediateValue(stackSize)));
+                generator.addInstruction(new RiscSub(new RiscRegister("sp"), new RiscRegister("sp"), new RiscRegister("t0")));
             }
         }
         if(!llvmFunctionValue.getName().equals("main")){ //main没有调用函数，也没有参数
@@ -126,13 +126,13 @@ public class RiscBasicBlock {
     private void fetchFromStack(TypeRef type, int i, int preLen, int order) {
         String destReg = "t0";
         if (type instanceof IntType) {
-            generator.addInstruction(new RiscLw(new Register("t0"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
+            generator.addInstruction(new RiscLw(new RiscRegister("t0"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
             destReg = "t0";
         } else if (type instanceof FloatType) {
-            generator.addInstruction(new RiscFlw(new Register("ft0"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
+            generator.addInstruction(new RiscFlw(new RiscRegister("ft0"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
             destReg = "ft0";
         } else if(type instanceof Pointer){
-            generator.addInstruction(new RiscLd(new Register("t0"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
+            generator.addInstruction(new RiscLd(new RiscRegister("t0"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "t4")));
             destReg = "t0";
         } else {assert false;}
         allocator.storeLocalVarIntoMemory(new LocalVar(type, i + ""), destReg);
@@ -141,9 +141,9 @@ public class RiscBasicBlock {
     private void saveCalleeSavedRegs() {
         generator.insertComment("save CallerSavedRegs");
         String[] calleeSavedRegs = RiscSpecifications.getCalleeSavedRegs();
-        generator.addInstruction(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L * calleeSavedRegs.length)));
+        generator.addInstruction(new RiscAddi(new RiscRegister("sp"), new RiscRegister("sp"), new RiscImmediateValue(-8L * calleeSavedRegs.length)));
         for (int i = 0; i < calleeSavedRegs.length; i++) {
-            generator.addInstruction(new RiscSd(new Register(calleeSavedRegs[i]), new IndirectRegister("sp", i * 8)));
+            generator.addInstruction(new RiscSd(new RiscRegister(calleeSavedRegs[i]), new RiscIndirectRegister("sp", i * 8)));
         }
     }
 

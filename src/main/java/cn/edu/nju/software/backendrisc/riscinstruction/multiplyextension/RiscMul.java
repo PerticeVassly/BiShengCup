@@ -1,12 +1,12 @@
 package cn.edu.nju.software.backendrisc.riscinstruction.multiplyextension;
 
-import cn.edu.nju.software.backendrisc.riscinstruction.DefaultInstruction;
-import cn.edu.nju.software.backendrisc.riscinstruction.operand.Operand;
+import cn.edu.nju.software.backendrisc.riscinstruction.RiscDefaultInstruction;
+import cn.edu.nju.software.backendrisc.riscinstruction.operand.RiscOperand;
 import cn.edu.nju.software.backendrisc.riscinstruction.util.RiscOpcode;
 
-public class RiscMul extends DefaultInstruction {
+public class RiscMul extends RiscDefaultInstruction {
 
-    public RiscMul(Operand rd, Operand rs1, Operand rs2) {
+    public RiscMul(RiscOperand rd, RiscOperand rs1, RiscOperand rs2) {
         super(RiscOpcode.MUL, rd, rs1, rs2);
     }
 }

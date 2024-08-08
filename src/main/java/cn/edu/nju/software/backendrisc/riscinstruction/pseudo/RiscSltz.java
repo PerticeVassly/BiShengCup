@@ -1,11 +1,11 @@
 package cn.edu.nju.software.backendrisc.riscinstruction.pseudo;
-import cn.edu.nju.software.backendrisc.riscinstruction.DefaultInstruction;
-import cn.edu.nju.software.backendrisc.riscinstruction.operand.Operand;
+import cn.edu.nju.software.backendrisc.riscinstruction.RiscDefaultInstruction;
+import cn.edu.nju.software.backendrisc.riscinstruction.operand.RiscOperand;
 import cn.edu.nju.software.backendrisc.riscinstruction.util.RiscOpcode;
 
-public class RiscSltz extends DefaultInstruction {
+public class RiscSltz extends RiscDefaultInstruction {
 
-        public RiscSltz(Operand rd, Operand rs1) {
+        public RiscSltz(RiscOperand rd, RiscOperand rs1) {
             super(RiscOpcode.SLTZ, rd, rs1);
         }
 }
