@@ -20,7 +20,7 @@ import java.util.List;
 public class RiscBasicBlock {
 
     private final BasicBlockRef basicBlockRef;
-    private final Allocator allocator = Allocator.get();
+    private final Allocator allocator ;
     private final FunctionValue llvmFunctionValue;
     private final List<RiscInstruction> riscInstructions = new ArrayList<>() ;
     private final RiscInstrGenerator generator;
@@ -31,6 +31,7 @@ public class RiscBasicBlock {
         this.basicBlockRef = basicBlockRef;
         this.llvmFunctionValue = functionValue;
         this.generator = new RiscInstrGenerator(basicBlockRef.getIrs(), llvmFunctionValue);
+        this.allocator=Allocator.get(llvmFunctionValue);
         this.tempVarLiveTable = new TempVarLiveTable(generator, allocator);
         this.lValLiveTable = new LValLiveTable();
     }

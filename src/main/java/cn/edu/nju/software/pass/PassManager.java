@@ -44,7 +44,6 @@ public class PassManager {
         allPasses.add(GlobalToLocalPass.getInstance());
         allPasses.add(GEPReductionPass.getInstance());
         allPasses.add(new FunctionInlinePass());
-        allPasses.add(new FunctionInlinePass ());
         allPasses.add(new LoopInvariantCodeMotionPass());
         allPasses.add(new RedundantBlockEliminationPass());
         allPasses.add(MemToReg.getInstance());
@@ -56,6 +55,7 @@ public class PassManager {
         allPasses.add(new CommonSubexpressionElimination());
         allPasses.add(RegToMem.getInstance());
         allPasses.add(EliminateLoadStorePass.getInstance());
+        allPasses.add(ValueAnalyzePass.getInstance());
     }
     public void setDbgFlag(){
         for(Pass pass:allPasses){

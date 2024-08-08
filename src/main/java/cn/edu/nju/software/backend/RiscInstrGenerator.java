@@ -1,6 +1,7 @@
 package cn.edu.nju.software.backend;
 
 import cn.edu.nju.software.backend.regalloc.Allocator;
+import cn.edu.nju.software.backend.regalloc.RegisterManager;
 import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.*;
 import cn.edu.nju.software.backend.riscinstruction.multiplyextension.RiscMul;
@@ -53,11 +54,13 @@ public class RiscInstrGenerator implements InstructionVisitor {
     private final FunctionValue llvmFunctionValue;
     private final List<Instruction> instructions;
     private final List<RiscInstruction> riscInstructions = new LinkedList<>();
-    private final Allocator allocator = Allocator.get();
-
+    private final Allocator allocator ;
+    private final RegisterManager registerManager;
     RiscInstrGenerator(List<Instruction> instructions, FunctionValue llvmFunctionValue) {
         this.instructions = instructions;
         this.llvmFunctionValue = llvmFunctionValue;
+        this.allocator=Allocator.get(llvmFunctionValue);
+        this.registerManager=RegisterManager.get(llvmFunctionValue);
     }
 
     public List<RiscInstruction> genRiscInstructions() {
@@ -128,6 +131,10 @@ public class RiscInstrGenerator implements InstructionVisitor {
     private void storeIntoNotArray(ValueRef dest, ValueRef src){
         TypeRef destType = ((Pointer) dest.getType()).getBase();
         String srcReg = allocator.prepareOperands(src).get(0);
+        if(registerManager.contains(dest)){
+            riscInstructions.add(new RiscMv(new Register(registerManager.get(dest)),new Register(srcReg)));
+            return;
+        }
         Operand destOperand = allocator.getAddrOfVarPtrPointsToWithOffset(dest,0);
         if(destType instanceof IntType){
             riscInstructions.add(new RiscSw(new Register(srcReg), destOperand));
@@ -161,6 +168,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(Load load) {
         ValueRef src = load.getOperand(0);
+        if(registerManager.contains(src)){
+            return;
+        }
         LocalVar lVal = (LocalVar) load.getLVal();
         insertComment("load " + lVal.getName() + " " + src.getName());
         Operand srcOperand = allocator.getAddrOfVarPtrPointsToWithOffset(src, 0);
