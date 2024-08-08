@@ -17,7 +17,7 @@ public class ArmLdr extends ArmDefaultInstruction {
     public String emitCode() {
         if(getOperands().get(1) instanceof ArmImmediateValue){
             String imm = getOperands().get(1).toString();
-            String ltorg = "\t.ltorg";
+            String ltorg = ".ltorg";
             if(imm.startsWith("#")){
                 String ans = "\tldr" + " " + getOperands().get(0) + ", =" + imm.substring(1);
                 return ans;

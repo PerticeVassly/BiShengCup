@@ -140,7 +140,6 @@ public class ArmBasicBlock {
     private void saveCalleeSavedRegs() {
         generator.insertComment("save CallerSavedRegs");
         String[] calleeSavedRegs = ArmSpecifications.getCalleeSavedRegs();
-
         generator.addInstruction(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-8L * calleeSavedRegs.length)));
         for (int i = 0; i < calleeSavedRegs.length; i++) {
             generator.addInstruction(new ArmStr(new ArmRegister(calleeSavedRegs[i]), new ArmIndirectRegister("sp", i * 8)));

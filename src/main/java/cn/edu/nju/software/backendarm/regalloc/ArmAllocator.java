@@ -113,7 +113,8 @@ public class ArmAllocator {
     private String prepareAConst(ConstValue constValue, int i){
         if (constValue.getType() instanceof FloatType) {
             //todo() here assume can directly load into si
-            generator.addInstruction(new ArmVldr(new ArmRegister("s" + i), new ArmImmediateValue(Float.parseFloat(constValue.getValue().toString()))));
+            generator.addInstruction(new ArmLdr(new ArmRegister("r" + i), new ArmImmediateValue(Float.parseFloat(constValue.getValue().toString()))));
+            generator.addInstruction(new ArmVmov(new ArmRegister("s" + i), new ArmRegister("r" + i)));
             return "s" + i;
         } else if (constValue.getType() instanceof IntType) {
             loadImmediate("r" + i, Integer.parseInt(constValue.getValue().toString()));
@@ -155,7 +156,8 @@ public class ArmAllocator {
         generator.insertComment("get value of const var:" + constVar.getName());
         if(constVar.getType() instanceof FloatType){
             //todo() here assume can directly load into si
-            generator.addInstruction(new ArmVldr(new ArmRegister("s5"), new ArmImmediateValue(Float.parseFloat(constVar.getValue().toString()))));
+            generator.addInstruction(new ArmLdr(new ArmRegister("r5"), new ArmImmediateValue(Float.parseFloat(constVar.getValue().toString()))));
+            generator.addInstruction(new ArmVmov(new ArmRegister("s5"), new ArmRegister("r5")));
             return new ArmRegister("s5");
         }
         else if(constVar.getType() instanceof IntType){

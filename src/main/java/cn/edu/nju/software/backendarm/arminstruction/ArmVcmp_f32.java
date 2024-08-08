@@ -3,9 +3,9 @@ package cn.edu.nju.software.backendarm.arminstruction;
 import cn.edu.nju.software.backendarm.arminstruction.operand.ArmOperand;
 import cn.edu.nju.software.backendarm.arminstruction.util.ArmOpcode;
 
-public class ArmVmul extends ArmDefaultInstruction {
+public class ArmVcmp_f32 extends ArmDefaultInstruction {
 
-    public ArmVmul(ArmOperand... armOperands) {
-        super(ArmOpcode.VMUL, armOperands);
-    }
+        public ArmVcmp_f32(ArmOperand... armOperands) {
+            super(ArmOpcode.VCMP_F32, armOperands);
+        }
 }

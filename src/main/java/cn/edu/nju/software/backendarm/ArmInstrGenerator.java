@@ -195,7 +195,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(FMul fmul) {
         insertComment("fmul " + fmul.getLVal().getName() + " " + fmul.getOperand(0).getName() + " " + fmul.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(fmul);
-        armInstructions.add(new ArmVmul(new ArmRegister("s4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmVmul_f32(new ArmRegister("s4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         afterAnInstr(fmul);
     }
 
@@ -255,8 +255,8 @@ public class ArmInstrGenerator implements InstructionVisitor {
         //todo() arm do not have intToFloat instruction like a / b
         insertComment("intToFloat " + intToFloat.getLVal().getName());
         List<String> regs = beforeAUnaryInstr(intToFloat);
-        armInstructions.add(new ArmVcvt_f32_s32(new ArmRegister("r5"), new ArmRegister(regs.get(0))));
-        armInstructions.add(new ArmVmov(new ArmRegister("s4"), new ArmRegister("r5")));
+        armInstructions.add(new ArmVmov(new ArmRegister("s6"), new ArmRegister(regs.get(0))));
+        armInstructions.add(new ArmVcvt_f32_s32(new ArmRegister("s4"), new ArmRegister("s6")));
         afterAnInstr(intToFloat);
     }
 
@@ -264,7 +264,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(FloatToInt floatToInt) {
         insertComment("floatToInt " + floatToInt.getLVal().getName());
         List<String> regs = beforeAUnaryInstr(floatToInt);
-        armInstructions.add(new ArmVcvt_s32_f_32(new ArmRegister("s5"), new ArmRegister(regs.get(0))));
+        armInstructions.add(new ArmVcvt_s32_f32(new ArmRegister("s5"), new ArmRegister(regs.get(0))));
         armInstructions.add(new ArmVmov(new ArmRegister("r4"), new ArmRegister("s5")));
         afterAnInstr(floatToInt);
     }
@@ -360,37 +360,37 @@ public class ArmInstrGenerator implements InstructionVisitor {
                 armInstructions.add(new ArmMovgt(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "one":
-                armInstructions.add(new ArmVcmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+                armInstructions.add(new ArmVcmp_f32(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 armInstructions.add(new ArmVmrs());
                 armInstructions.add(new ArmMovne(new ArmRegister("r4"), new ArmImmediateValue(1)));
                 armInstructions.add(new ArmMoveq(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "oeq":
-                armInstructions.add(new ArmVcmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+                armInstructions.add(new ArmVcmp_f32(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 armInstructions.add(new ArmVmrs());
                 armInstructions.add(new ArmMoveq(new ArmRegister("r4"), new ArmImmediateValue(1)));
                 armInstructions.add(new ArmMovne(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "ogt":
-                armInstructions.add(new ArmVcmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+                armInstructions.add(new ArmVcmp_f32(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 armInstructions.add(new ArmVmrs());
                 armInstructions.add(new ArmMovgt(new ArmRegister("r4"), new ArmImmediateValue(1)));
                 armInstructions.add(new ArmMovle(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "olt":
-                armInstructions.add(new ArmVcmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+                armInstructions.add(new ArmVcmp_f32(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 armInstructions.add(new ArmVmrs());
                 armInstructions.add(new ArmMovlt(new ArmRegister("r4"), new ArmImmediateValue(1)));
                 armInstructions.add(new ArmMovge(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "oge":
-                armInstructions.add(new ArmVcmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+                armInstructions.add(new ArmVcmp_f32(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 armInstructions.add(new ArmVmrs());
                 armInstructions.add(new ArmMovge(new ArmRegister("r4"), new ArmImmediateValue(1)));
                 armInstructions.add(new ArmMovlt(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "ole":
-                armInstructions.add(new ArmVcmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+                armInstructions.add(new ArmVcmp_f32(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 armInstructions.add(new ArmVmrs());
                 armInstructions.add(new ArmMovle(new ArmRegister("r4"), new ArmImmediateValue(1)));
                 armInstructions.add(new ArmMovgt(new ArmRegister("r4"), new ArmImmediateValue(0)));
