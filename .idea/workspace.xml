@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="优化import" />
+    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="暂存">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -259,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723003061995</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="暂存">
+      <option name="closed" value="true" />
+      <created>1723109814537</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1723109814537</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,13 +302,13 @@
     <MESSAGE value="Framework" />
     <MESSAGE value="Framework Perf" />
     <MESSAGE value="修改函数内联，删除冗余的空指令" />
-    <MESSAGE value="暂存" />
     <MESSAGE value="开始公共子表达式消除" />
     <MESSAGE value="添加测试" />
     <MESSAGE value="添加测试2" />
     <MESSAGE value="重新合并，测试所有Pass" />
     <MESSAGE value="提交所有pass（包括公共子表达式消除）" />
     <MESSAGE value="优化import" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化import" />
+    <MESSAGE value="暂存" />
+    <option name="LAST_COMMIT_MESSAGE" value="暂存" />
   </component>
 </project>
