@@ -256,17 +256,17 @@ public class ArmInstrGenerator implements InstructionVisitor {
         assert false;
         insertComment("intToFloat " + intToFloat.getLVal().getName());
         List<String> regs = beforeAUnaryInstr(intToFloat);
-        armInstructions.add(new ArmVcvt(new ArmRegister("s4"), new ArmRegister(regs.get(0))));
+        armInstructions.add(new ArmVcvt_f32_s32(new ArmRegister("r5"), new ArmRegister(regs.get(0))));
+        armInstructions.add(new ArmVmov(new ArmRegister("s4"), new ArmRegister("r5")));
         afterAnInstr(intToFloat);
     }
 
     @Override
     public void visit(FloatToInt floatToInt) {
-        //todo() arm do not have floatToInt instruction like a / b
-        assert false;
         insertComment("floatToInt " + floatToInt.getLVal().getName());
         List<String> regs = beforeAUnaryInstr(floatToInt);
-        armInstructions.add(new ArmVcvt(new ArmRegister("r4"), new ArmRegister(regs.get(0))));
+        armInstructions.add(new ArmVcvt_s32_f_32(new ArmRegister("s5"), new ArmRegister(regs.get(0))));
+        armInstructions.add(new ArmVmov(new ArmRegister("r4"), new ArmRegister("s5")));
         afterAnInstr(floatToInt);
     }
 

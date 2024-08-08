@@ -6,6 +6,6 @@ import cn.edu.nju.software.backendarm.arminstruction.util.ArmOpcode;
 public class ArmVsub extends ArmDefaultInstruction {
 
     public ArmVsub(ArmOperand... armOperands) {
-        super(ArmOpcode.VSUB, armOperands);
+        super(ArmOpcode.VSUB_F32, armOperands);
     }
 }

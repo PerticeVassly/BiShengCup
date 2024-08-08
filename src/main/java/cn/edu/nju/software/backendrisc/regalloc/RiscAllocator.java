@@ -157,24 +157,6 @@ public class RiscAllocator {
         }
     }
 
-    /**
-     * 目前只gep中会用到，使用t3,ft3作为结果值存储的寄存器
-     * @param variable
-     * @return
-     */
-    public RiscOperand getValueOfVar(ValueRef variable) {
-        if (variable instanceof GlobalVar globalVar) {
-            return getValueOfGlobalVar(globalVar);
-        } else if (variable instanceof LocalVar localVar) {
-            return getValueOfLocalVar(localVar);
-        } else if(variable instanceof ConstValue constVar){
-            return getValueOfConstVar(constVar);
-        } else {
-            assert false;
-            return null;
-        }
-    }
-
     private RiscOperand getValueOfGlobalVar(GlobalVar globalVar){
         // GlobalVar 只可能是指针类型，所以获取value实际上就是指针中的地址（即label）
         generator.insertComment("get value of global var:" + globalVar.getName());

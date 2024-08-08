@@ -6,6 +6,6 @@ import cn.edu.nju.software.backendarm.arminstruction.util.ArmOpcode;
 public class ArmVadd extends ArmDefaultInstruction {
 
     public ArmVadd(ArmOperand... armOperands) {
-        super(ArmOpcode.VADD, armOperands);
+        super(ArmOpcode.VADD_F32, armOperands);
     }
 }
