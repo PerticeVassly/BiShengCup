@@ -1,13 +1,5 @@
 .data
 .align 4
-.align 8
-.globl gv
-gv:
-.zero 4
-.word 1
-.word 2
-.word 3
-.word 4
 .text
 .align 1
 .type main, @function

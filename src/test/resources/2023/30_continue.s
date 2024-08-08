@@ -8,56 +8,40 @@ main:
 mainEntry88:
 
 	# reserve space for all local variables in function
-	addi sp, sp, -144
-
-	# allocate lv$1
+	addi sp, sp, -80
 
 	# allocate lv
 
-	# store lv 
-
-	# fetch variables
-	addi t1, zero, 0
-
-	# get address of lv points to
-	sw t1, 132(sp)
+	# allocate lv$1
 
 	# store lv$1 
 
 	# fetch variables
 	addi t1, zero, 0
+	mv s3, t1
 
-	# get address of lv$1 points to
-	sw t1, 140(sp)
+	# store lv 
+
+	# fetch variables
+	addi t1, zero, 0
+	mv s2, t1
 
 	# br whileCond_279
 	j whileCond_279
 whileCond_279:
 
-	# load i lv
-
-	# get address of lv points to
-	lw t0, 132(sp)
-
-	# get address of local var:i
-	sw t0, 124(sp)
-
-	# cmp cond_lt_tmp_ i 
+	# cmp cond_lt_tmp_ ld_phi 
 
 	# fetch variables
-	addi t2, zero, 100
-	slt t0, t0, t2
-
-	# get address of local var:cond_lt_tmp_
-	sw t0, 116(sp)
+	addi t1, zero, 100
+	slt t0, s2, t1
+	mv s0, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-
-	# get address of local var:cond_tmp_
-	sw t0, 108(sp)
+	mv s0, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -66,9 +50,7 @@ whileCond_279:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-
-	# get address of local var:cond_
-	sw t0, 100(sp)
+	mv s0, t0
 
 	# condBr cond_ whileBody_279 next_629
 
@@ -77,31 +59,19 @@ whileCond_279:
 	j whileBody_279
 whileBody_279:
 
-	# load i$1 lv
-
-	# get address of lv points to
-	lw t0, 132(sp)
-
-	# get address of local var:i$1
-	sw t0, 92(sp)
-
-	# cmp cond_eq_tmp_ i$1 
+	# cmp cond_eq_tmp_ ld_phi$1 
 
 	# fetch variables
-	addi t2, zero, 50
-	xor t0, t0, t2
+	addi t1, zero, 50
+	xor t0, s2, t1
 	seqz t0, t0
-
-	# get address of local var:cond_eq_tmp_
-	sw t0, 84(sp)
+	mv s0, t0
 
 	# zext cond_tmp_$1
 
 	# fetch variables
 	mv t0, t0
-
-	# get address of local var:cond_tmp_$1
-	sw t0, 76(sp)
+	mv s0, t0
 
 	# cmp cond_$1 cond_tmp_$1 
 
@@ -110,9 +80,7 @@ whileBody_279:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-
-	# get address of local var:cond_$1
-	sw t0, 68(sp)
+	mv s0, t0
 
 	# condBr cond_$1 ifTrue_350 next_630
 
@@ -121,107 +89,64 @@ whileBody_279:
 	j ifTrue_350
 next_629:
 
-	# load sum$1 lv$1
-
-	# get address of lv$1 points to
-	lw t0, 140(sp)
-
-	# get address of local var:sum$1
-	sw t0, 60(sp)
-
-	# ret sum$1
+	# ret ld_phi$2
 
 	# fetch variables
-	mv a0, t0
-	addi sp, sp, 144
+	mv a0, s3
+	addi sp, sp, 80
 	ret 
 ifTrue_350:
 
-	# load i$2 lv
-
-	# get address of lv points to
-	lw t0, 132(sp)
-
-	# get address of local var:i$2
-	sw t0, 52(sp)
-
-	# add result_ i$2 
+	# add result_ ld_phi$3 
 
 	# fetch variables
-	addi t2, zero, 1
-	addw t0, t0, t2
+	addi t1, zero, 1
+	addw t0, s2, t1
 
 	# get address of local var:result_
-	sw t0, 44(sp)
+	sw t0, 28(sp)
 
 	# store lv result_
 
 	# fetch variables
-
-	# get address of lv points to
-	sw t0, 132(sp)
+	mv s2, t0
 
 	# br whileCond_279
 	j whileCond_279
 next_630:
 
-	# load sum lv$1
-
-	# get address of lv$1 points to
-	lw t0, 140(sp)
-
-	# get address of local var:sum
-	sw t0, 36(sp)
-
-	# load i$3 lv
-
-	# get address of lv points to
-	lw t0, 132(sp)
-
-	# get address of local var:i$3
-	sw t0, 28(sp)
-
-	# add result_$1 sum i$3
+	# add result_$1 ld_phi$5 ld_phi$6
 
 	# fetch variables
-
-	# get address of local var:sum
-	lw t1, 36(sp)
-	addw t0, t1, t0
+	addw t0, s3, s2
 
 	# get address of local var:result_$1
 	sw t0, 20(sp)
+
+	# add result_$2 ld_phi$7 
+
+	# fetch variables
+	addi t1, zero, 1
+	addw t0, s2, t1
+
+	# get address of local var:result_$2
+	sw t0, 12(sp)
 
 	# store lv$1 result_$1
 
 	# fetch variables
 
-	# get address of lv$1 points to
-	sw t0, 140(sp)
-
-	# load i$4 lv
-
-	# get address of lv points to
-	lw t0, 132(sp)
-
-	# get address of local var:i$4
-	sw t0, 12(sp)
-
-	# add result_$2 i$4 
-
-	# fetch variables
-	addi t2, zero, 1
-	addw t0, t0, t2
-
-	# get address of local var:result_$2
-	sw t0, 4(sp)
+	# get address of local var:result_$1
+	lw t1, 20(sp)
+	mv s3, t1
 
 	# store lv result_$2
 
 	# fetch variables
 
-	# get address of lv points to
-	sw t0, 132(sp)
+	# get address of local var:result_$2
+	lw t1, 12(sp)
+	mv s2, t1
 
 	# br whileCond_279
 	j whileCond_279

@@ -1,9 +1,5 @@
 .data
 .align 4
-.align 8
-.globl gv
-gv:
-.zero 400
 .text
 .align 1
 .type main, @function
