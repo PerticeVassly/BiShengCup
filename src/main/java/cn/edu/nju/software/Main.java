@@ -26,12 +26,12 @@ public class Main {
     private static boolean emitAssembly = false;
 
     public static void main(String... args) {
-        Thread t = new Thread(() -> execute(args));
-        t.start();
-        try {
-            t.join();
-        } catch (Exception ignored) {}
-
+//        Thread t = new Thread(() -> execute(args));
+//        t.start();
+//        try {
+//            t.join();
+//        } catch (Exception ignored) {}
+       execute(args);
     }
 
     private static void execute(String... args) {

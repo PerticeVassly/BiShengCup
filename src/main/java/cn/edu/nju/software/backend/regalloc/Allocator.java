@@ -5,30 +5,43 @@ import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlw;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFmvwx;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFsw;
-import cn.edu.nju.software.backend.riscinstruction.operand.*;
+import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
+import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
+import cn.edu.nju.software.backend.riscinstruction.operand.Operand;
+import cn.edu.nju.software.backend.riscinstruction.operand.Register;
+import cn.edu.nju.software.backend.riscinstruction.operand.RiscLabelAddress;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscLi;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscLabel;
-import cn.edu.nju.software.ir.type.*;
-import cn.edu.nju.software.ir.value.ConstValue;
-import cn.edu.nju.software.ir.value.GlobalVar;
-import cn.edu.nju.software.ir.value.LocalVar;
-import cn.edu.nju.software.ir.value.ValueRef;
+import cn.edu.nju.software.ir.type.ArrayType;
+import cn.edu.nju.software.ir.type.BoolType;
+import cn.edu.nju.software.ir.type.FloatType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
+import cn.edu.nju.software.ir.type.TypeRef;
+import cn.edu.nju.software.ir.value.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Allocator {
 
+    private FunctionValue function;
     private RiscInstrGenerator generator;
     private final MemoryManager memoryManager = MemoryManager.get();
-    private static final Allocator allocator = new Allocator();
     private TempVarLiveTable tempVarLiveTable;
     private LValLiveTable lValLiveTable;
-    private Allocator() {}
-
-    public static Allocator get() {
-        return allocator;
+    private Allocator(FunctionValue function) {
+        this.function = function;
+    }
+    private static Map<FunctionValue,Allocator> allocators = new HashMap<>();
+    public static Allocator get(FunctionValue function) {
+        if (!allocators.containsKey(function)) {
+            allocators.put(function, new Allocator(function));
+        }
+        return allocators.get(function);
     }
 
     public void setLValLiveTable(LValLiveTable lValLiveTable) {
@@ -51,6 +64,7 @@ public class Allocator {
     /* 以t1,t2,t3,ft1,ft2,ft3的顺序分配 */
     //todo() 这里最后会变为返回一组寄存器，而不是装入t1,t2,t3....中(这样损失太大)
     public List<String> prepareOperands(ValueRef... values) {
+        RegisterManager registerManager=RegisterManager.get(function);
         List<String> regNames = new ArrayList<>();
         generator.addInstruction(new RiscComment("fetch variables"));
         int i = 1;
@@ -58,6 +72,10 @@ public class Allocator {
             if (value instanceof ConstValue constValue) {
                 regNames.add(prepareAConst(constValue, i));
             } else if(value instanceof LocalVar localVar){
+                if(registerManager.contains(localVar)){
+                    regNames.add(registerManager.get(localVar));
+                    continue;
+                }
                 regNames.add(prepareALocal(localVar, i));
             } else if(value instanceof GlobalVar globalVar){
                 regNames.add(prepareAGlobal(globalVar, i));
