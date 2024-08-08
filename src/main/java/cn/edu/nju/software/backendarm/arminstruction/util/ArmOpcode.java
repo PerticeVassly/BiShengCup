@@ -36,5 +36,7 @@ public enum ArmOpcode {
     MOVLE,
     VCVT,
     VMOV,
-    COMMENT, BIC
+    COMMENT, BIC,
+    MOVEQ,
+    MOVNE,
 }

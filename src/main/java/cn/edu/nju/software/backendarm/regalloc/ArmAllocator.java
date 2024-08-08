@@ -85,7 +85,7 @@ public class ArmAllocator {
             if(checkTempVarIsRecorded(localVar)){ //here is all localvar is temp
                 return fetchTempVar(localVar);
             }
-            generator.addInstruction(new ArmLw(new ArmRegister("t" + i), getAddrOfLocalVar(localVar)));
+            generator.addInstruction(new ArmLdr(new ArmRegister("t" + i), getAddrOfLocalVar(localVar)));
             return "r" + i;
         } else if(localVar.getType() instanceof Pointer){
             if(isLastLVal(localVar)){
@@ -174,6 +174,7 @@ public class ArmAllocator {
         if(constVar.getType() instanceof FloatType){
             //todo() here assume can directly load into si
             generator.addInstruction(new ArmVldr(new ArmRegister("s4"), new ArmImmediateValue(Float.parseFloat(constVar.getValue().toString()))));
+            return new ArmRegister("s4");
         }
         else if(constVar.getType() instanceof IntType){
             loadImmediate("r4", Integer.parseInt(constVar.getValue().toString()));
@@ -208,7 +209,7 @@ public class ArmAllocator {
                 generator.addInstruction(new ArmAdd(new ArmRegister("r4"), new ArmRegister("sp"), new ArmRegister("r4")));
                 return new ArmRegister("r4");
             }
-            generator.addInstruction(new armLd(new ArmRegister("r4"), getAddrOfLocalVar(localVar)));
+            generator.addInstruction(new ArmLdr(new ArmRegister("r4"), getAddrOfLocalVar(localVar)));
             return new ArmRegister("r4");
         } else {
             assert false;
