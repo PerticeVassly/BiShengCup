@@ -73,9 +73,9 @@ public class ArmTempVarLiveTable {
      */
     public void stage(ValueRef tempVar, String regToStage) {
         if(ArmSpecifications.isGeneralType(tempVar.getType())){
-            generator.addInstruction(new ArmMov(new ArmRegister(regToStage), new ArmRegister("r3")));
+            generator.addInstruction(new ArmMov(new ArmRegister(regToStage), new ArmRegister("r4")));
         } else if(ArmSpecifications.isFloatType(tempVar.getType())){
-            generator.addInstruction(new ArmVmov(new ArmRegister(regToStage), new ArmRegister("s3"))); //使用t1// 防止破坏t0
+            generator.addInstruction(new ArmVmov(new ArmRegister(regToStage), new ArmRegister("s4"))); //使用t1// 防止破坏t0
         } else {
             assert false;
         }

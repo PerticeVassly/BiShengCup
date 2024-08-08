@@ -125,13 +125,13 @@ public class ArmBasicBlock {
     private void fetchFromStack(TypeRef type, int i, int preLen, int order) {
         String destReg = "r4";
         if (type instanceof IntType) {
-            generator.addInstruction(new ArmLdr(new ArmRegister("r4"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r7")));
+            generator.addInstruction(new ArmLdr(new ArmRegister("r4"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r8")));
             destReg = "r4";
         } else if (type instanceof FloatType) {
-            generator.addInstruction(new ArmVldr(new ArmRegister("s4"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r7")));
+            generator.addInstruction(new ArmVldr(new ArmRegister("s4"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r8")));
             destReg = "s4";
         } else if(type instanceof Pointer){
-            generator.addInstruction(new ArmLdr(new ArmRegister("r4"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r7")));
+            generator.addInstruction(new ArmLdr(new ArmRegister("r4"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r8")));
             destReg = "r4";
         } else {assert false;}
         allocator.storeLocalVarIntoMemory(new LocalVar(type, i + ""), destReg);
