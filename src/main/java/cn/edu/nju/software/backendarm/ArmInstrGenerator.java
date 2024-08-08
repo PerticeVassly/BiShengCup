@@ -205,7 +205,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
         List<String> regs = beforeABinaryInstr(mod);
         armInstructions.add(new ArmUdiv(new ArmRegister("r7"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         armInstructions.add(new ArmMul(new ArmRegister("r7"), new ArmRegister("r7"), new ArmRegister(regs.get(1))));
-        armInstructions.add(new ArmSub(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister("r6")));
+        armInstructions.add(new ArmSub(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister("r7")));
         afterAnInstr(mod);
     }
 
@@ -253,7 +253,6 @@ public class ArmInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(IntToFloat intToFloat) {
         //todo() arm do not have intToFloat instruction like a / b
-        assert false;
         insertComment("intToFloat " + intToFloat.getLVal().getName());
         List<String> regs = beforeAUnaryInstr(intToFloat);
         armInstructions.add(new ArmVcvt_f32_s32(new ArmRegister("r5"), new ArmRegister(regs.get(0))));
