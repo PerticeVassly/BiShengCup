@@ -60,7 +60,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     }
 
     private void saveLVal(ValueRef lVal){
-        String regName = ArmSpecifications.isGeneralType(lVal.getType()) ? "t0" : "ft0";
+        String regName = ArmSpecifications.isGeneralType(lVal.getType()) ? "r4" : "s4";
         armAllocator.storeLocalVarIntoMemory(lVal, regName);
     }
 
@@ -77,9 +77,9 @@ public class ArmInstrGenerator implements InstructionVisitor {
         armInstructions.add(new ArmComment("gep " + lVal.getName() + " " +  index.getName()));
         List<String> regs = armAllocator.prepareOperands(basePtr, index);
         int length = ArrayType.getTotalSize(((ArrayType) gep.getArrayTypePtr().getBase()).getElementType());
-        armInstructions.add(new ArmLdr(new ArmRegister("r7"), new ArmImmediateValue(length)));
-        armInstructions.add(new ArmMul(new ArmRegister("r7"), new ArmRegister(regs.get(1)), new ArmRegister("r7")));
-        armInstructions.add(new ArmAdd(new ArmRegister("r3"), new ArmRegister("r7"), new ArmRegister(regs.get(0))));
+        armInstructions.add(new ArmLdr(new ArmRegister("r8"), new ArmImmediateValue(length)));
+        armInstructions.add(new ArmMul(new ArmRegister("r8"), new ArmRegister(regs.get(1)), new ArmRegister("r8")));
+        armInstructions.add(new ArmAdd(new ArmRegister("r4"), new ArmRegister("r7"), new ArmRegister(regs.get(0))));
         afterAnInstr(gep);
     }
 
@@ -140,11 +140,11 @@ public class ArmInstrGenerator implements InstructionVisitor {
         ArmOperand srcArmOperand = armAllocator.getAddrOfVarPtrPointsToWithOffset(src, 0);
         TypeRef type = ((Pointer) src.getType()).getBase();
         if (type instanceof IntType) {
-            armInstructions.add(new ArmLdr(new ArmRegister("r3"), srcArmOperand));
+            armInstructions.add(new ArmLdr(new ArmRegister("r4"), srcArmOperand));
         } else if (type instanceof FloatType) {
-            armInstructions.add(new ArmVldr(new ArmRegister("s3"), srcArmOperand));
+            armInstructions.add(new ArmVldr(new ArmRegister("s4"), srcArmOperand));
         } else if (type instanceof Pointer){
-            armInstructions.add(new ArmLdr(new ArmRegister("r3"), srcArmOperand));
+            armInstructions.add(new ArmLdr(new ArmRegister("r4"), srcArmOperand));
         } else {
             assert false;
         }
@@ -155,7 +155,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(Add add) {
         insertComment("add " + add.getLVal().getName() + " " + add.getOperand(0).getName() + " " + add.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(add);
-        armInstructions.add(new ArmAdd(new ArmRegister("r3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmAdd(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         afterAnInstr(add);
     }
 
@@ -163,7 +163,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(FAdd fAdd) {
         insertComment("fadd " + fAdd.getLVal().getName() + " " + fAdd.getOperand(0).getName() + " " + fAdd.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(fAdd);
-        armInstructions.add(new ArmFadd(new ArmRegister("s3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmVadd(new ArmRegister("s4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         afterAnInstr(fAdd);
     }
 
@@ -171,7 +171,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(Sub sub) {
         insertComment("sub " + sub.getLVal().getName() + " " + sub.getOperand(0).getName() + " " + sub.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(sub);
-        armInstructions.add(new ArmSub(new ArmRegister("r3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmSub(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         afterAnInstr(sub);
     }
 
@@ -179,7 +179,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(FSub fSub) {
         insertComment("fsub " + fSub.getLVal().getName() + " " + fSub.getOperand(0).getName() + " " + fSub.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(fSub);
-        armInstructions.add(new ArmFsub(new ArmRegister("s3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmVsub(new ArmRegister("s4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         afterAnInstr(fSub);
     }
 
@@ -187,7 +187,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(Mul mul) {
         insertComment("mul " + mul.getLVal().getName() + " " + mul.getOperand(0).getName() + " " + mul.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(mul);
-        armInstructions.add(new ArmMul(new ArmRegister("r3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmMul(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         afterAnInstr(mul);
     }
 
@@ -195,16 +195,17 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(FMul fmul) {
         insertComment("fmul " + fmul.getLVal().getName() + " " + fmul.getOperand(0).getName() + " " + fmul.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(fmul);
-        armInstructions.add(new ArmFmul(new ArmRegister("s3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmVmul(new ArmRegister("s4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         afterAnInstr(fmul);
     }
 
     @Override
     public void visit(Mod mod) {
-        //todo() arm do not have mod instruction
         insertComment("mod " + mod.getLVal().getName() + " " + mod.getOperand(0).getName() + " " + mod.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(mod);
-        assert false;
+        armInstructions.add(new ArmUdiv(new ArmRegister("r6"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmMul(new ArmRegister("r6"), new ArmRegister("r6"), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmSub(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister("r6")));
         afterAnInstr(mod);
     }
 
@@ -212,7 +213,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(Div div) {
         insertComment("div " + div.getLVal().getName() + " " + div.getOperand(0).getName() + " " + div.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(div);
-        armInstructions.add(new ArmSdiv(new ArmRegister("r3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmSdiv(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         afterAnInstr(div);
     }
 
@@ -220,7 +221,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(Ashr ashr) {
         insertComment("ashr " + ashr.getLVal().getName() + " " + ashr.getOperand(0).getName() + " " + ashr.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(ashr);
-        armInstructions.add(new ArmSra(new ArmRegister("r3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmAsr(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         afterAnInstr(ashr);
     }
 
@@ -228,7 +229,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(Shl shl){
         insertComment("shl " + shl.getLVal().getName() + " " + shl.getOperand(0).getName() + " " + shl.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(shl);
-        armInstructions.add(new ArmSll(new ArmRegister("r3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmLsl(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         afterAnInstr(shl);
     }
 
@@ -236,7 +237,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(Lshr lshr) {
         insertComment("lshr " + lshr.getLVal().getName() + " " + lshr.getOperand(0).getName() + " " + lshr.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(lshr);
-        armInstructions.add(new ArmSrl(new ArmRegister("r3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmLsr(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         afterAnInstr(lshr);
     }
 
@@ -245,7 +246,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(FDiv fdiv) {
         insertComment("fdiv " + fdiv.getLVal().getName() + " " + fdiv.getOperand(0).getName() + " " + fdiv.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(fdiv);
-        armInstructions.add(new ArmFdiv(new ArmRegister("s3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmVdiv(new ArmRegister("s4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         afterAnInstr(fdiv);
     }
 
@@ -255,7 +256,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
         assert false;
         insertComment("intToFloat " + intToFloat.getLVal().getName());
         List<String> regs = beforeAUnaryInstr(intToFloat);
-        armInstructions.add(new ArmVcvt(new ArmRegister("ft0"), new ArmRegister(regs.get(0))));
+        armInstructions.add(new ArmVcvt(new ArmRegister("s4"), new ArmRegister(regs.get(0))));
         afterAnInstr(intToFloat);
     }
 
@@ -265,7 +266,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
         assert false;
         insertComment("floatToInt " + floatToInt.getLVal().getName());
         List<String> regs = beforeAUnaryInstr(floatToInt);
-        armInstructions.add(new ArmVcvt(new ArmRegister("t0"), new ArmRegister(regs.get(0))));
+        armInstructions.add(new ArmVcvt(new ArmRegister("r4"), new ArmRegister(regs.get(0))));
         afterAnInstr(floatToInt);
     }
 
@@ -278,7 +279,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
         la t1 label
         jr t1
          */
-        armInstructions.add(new ArmB(new ArmLabelAddress( new ArmLabel( br.getTarget().getName()))));
+        armInstructions.add(new ArmB(new ArmLabelAddress( new ArmLabel(br.getTarget().getName()))));
         //todo() wait to reduce the allocate instr
 //        ArmInstructions.add(new ArmLa(new Register("t1"), new ArmLabelAddress(new ArmLabel(br.getTarget().getName()))));
 //        ArmInstructions.add(new ArmJr(new Register("t1")));
@@ -331,69 +332,69 @@ public class ArmInstrGenerator implements InstructionVisitor {
         switch (cmpType) {
             case "ne":
                 armInstructions.add(new ArmCmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
-                armInstructions.add(new ArmMovne(new ArmRegister("r3"), new ArmImmediateValue(1)));
-                armInstructions.add(new ArmMoveq(new ArmRegister("r3"), new ArmImmediateValue(0)));
+                armInstructions.add(new ArmMovne(new ArmRegister("r4"), new ArmImmediateValue(1)));
+                armInstructions.add(new ArmMoveq(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "eq":
                 armInstructions.add(new ArmCmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
-                armInstructions.add(new ArmMoveq(new ArmRegister("r3"), new ArmImmediateValue(1)));
-                armInstructions.add(new ArmMovne(new ArmRegister("r3"), new ArmImmediateValue(0)));
+                armInstructions.add(new ArmMoveq(new ArmRegister("r4"), new ArmImmediateValue(1)));
+                armInstructions.add(new ArmMovne(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "sgt":
                 armInstructions.add(new ArmCmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
-                armInstructions.add(new ArmMovgt(new ArmRegister("r3"), new ArmImmediateValue(1)));
-                armInstructions.add(new ArmMovle(new ArmRegister("r3"), new ArmImmediateValue(0)));
+                armInstructions.add(new ArmMovgt(new ArmRegister("r4"), new ArmImmediateValue(1)));
+                armInstructions.add(new ArmMovle(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "slt":
                 armInstructions.add(new ArmCmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
-                armInstructions.add(new ArmMovlt(new ArmRegister("r3"), new ArmImmediateValue(1)));
-                armInstructions.add(new ArmMovge(new ArmRegister("r3"), new ArmImmediateValue(0)));
+                armInstructions.add(new ArmMovlt(new ArmRegister("r4"), new ArmImmediateValue(1)));
+                armInstructions.add(new ArmMovge(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "sge":
                 armInstructions.add(new ArmCmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
-                armInstructions.add(new ArmMovge(new ArmRegister("r3"), new ArmImmediateValue(1)));
-                armInstructions.add(new ArmMovlt(new ArmRegister("r3"), new ArmImmediateValue(0)));
+                armInstructions.add(new ArmMovge(new ArmRegister("r4"), new ArmImmediateValue(1)));
+                armInstructions.add(new ArmMovlt(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "sle":
                 armInstructions.add(new ArmCmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
-                armInstructions.add(new ArmMovle(new ArmRegister("r3"), new ArmImmediateValue(1)));
-                armInstructions.add(new ArmMovgt(new ArmRegister("r3"), new ArmImmediateValue(0)));
+                armInstructions.add(new ArmMovle(new ArmRegister("r4"), new ArmImmediateValue(1)));
+                armInstructions.add(new ArmMovgt(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "one":
                 armInstructions.add(new ArmVcmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 armInstructions.add(new ArmVmrs());
-                armInstructions.add(new ArmMovne(new ArmRegister("r3"), new ArmImmediateValue(1)));
-                armInstructions.add(new ArmMoveq(new ArmRegister("r3"), new ArmImmediateValue(0)));
+                armInstructions.add(new ArmMovne(new ArmRegister("r4"), new ArmImmediateValue(1)));
+                armInstructions.add(new ArmMoveq(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "oeq":
                 armInstructions.add(new ArmVcmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 armInstructions.add(new ArmVmrs());
-                armInstructions.add(new ArmMoveq(new ArmRegister("r3"), new ArmImmediateValue(1)));
-                armInstructions.add(new ArmMovne(new ArmRegister("r3"), new ArmImmediateValue(0)));
+                armInstructions.add(new ArmMoveq(new ArmRegister("r4"), new ArmImmediateValue(1)));
+                armInstructions.add(new ArmMovne(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "ogt":
                 armInstructions.add(new ArmVcmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 armInstructions.add(new ArmVmrs());
-                armInstructions.add(new ArmMovgt(new ArmRegister("r3"), new ArmImmediateValue(1)));
-                armInstructions.add(new ArmMovle(new ArmRegister("r3"), new ArmImmediateValue(0)));
+                armInstructions.add(new ArmMovgt(new ArmRegister("r4"), new ArmImmediateValue(1)));
+                armInstructions.add(new ArmMovle(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "olt":
                 armInstructions.add(new ArmVcmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 armInstructions.add(new ArmVmrs());
-                armInstructions.add(new ArmMovlt(new ArmRegister("r3"), new ArmImmediateValue(1)));
-                armInstructions.add(new ArmMovge(new ArmRegister("r3"), new ArmImmediateValue(0)));
+                armInstructions.add(new ArmMovlt(new ArmRegister("r4"), new ArmImmediateValue(1)));
+                armInstructions.add(new ArmMovge(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "oge":
                 armInstructions.add(new ArmVcmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 armInstructions.add(new ArmVmrs());
-                armInstructions.add(new ArmMovge(new ArmRegister("r3"), new ArmImmediateValue(1)));
-                armInstructions.add(new ArmMovlt(new ArmRegister("r3"), new ArmImmediateValue(0)));
+                armInstructions.add(new ArmMovge(new ArmRegister("r4"), new ArmImmediateValue(1)));
+                armInstructions.add(new ArmMovlt(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             case "ole":
                 armInstructions.add(new ArmVcmp(new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 armInstructions.add(new ArmVmrs());
-                armInstructions.add(new ArmMovle(new ArmRegister("r3"), new ArmImmediateValue(1)));
-                armInstructions.add(new ArmMovgt(new ArmRegister("r3"), new ArmImmediateValue(0)));
+                armInstructions.add(new ArmMovle(new ArmRegister("r4"), new ArmImmediateValue(1)));
+                armInstructions.add(new ArmMovgt(new ArmRegister("r4"), new ArmImmediateValue(0)));
                 break;
             default:
                 assert false;
@@ -409,13 +410,13 @@ public class ArmInstrGenerator implements InstructionVisitor {
         OpEnum op = logic.getOp();
         switch (op) {
             case AND:
-                armInstructions.add(new ArmAnd(new ArmRegister("r3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+                armInstructions.add(new ArmAnd(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 break;
             case OR:
-                armInstructions.add(new ArmOr(new ArmRegister("r3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+                armInstructions.add(new ArmOr(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 break;
             case XOR:
-                armInstructions.add(new ArmXor(new ArmRegister("r3"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+                armInstructions.add(new ArmEor(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
                 break;
             default:
                 assert false;
@@ -428,7 +429,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(ZExt zExt) {
         insertComment("zext " + zExt.getLVal().getName());
         List<String> regs =beforeAUnaryInstr(zExt);
-        armInstructions.add(new ArmMov(new ArmRegister("r3"), new ArmRegister(regs.get(0))));
+        armInstructions.add(new ArmMov(new ArmRegister("r4"), new ArmRegister(regs.get(0))));
         afterAnInstr(zExt);
     }
 
@@ -441,21 +442,21 @@ public class ArmInstrGenerator implements InstructionVisitor {
         if(retVal.getType() instanceof IntType){
             armInstructions.add(new ArmMov(new ArmRegister("r0"), new ArmRegister(regs.get(0))));
         } else if(retVal.getType() instanceof FloatType){
-            armInstructions.add(new ArmVmov(new ArmRegister("s0"), new ArmRegister("r3")));
+            armInstructions.add(new ArmVmov(new ArmRegister("s0"), new ArmRegister(regs.get(0))));
         } else {assert false;}
         int stackSize = armAllocator.getStackSize();
         if (stackSize > 0) {
-            if(stackSize < 2048){
+            if(stackSize < 256){
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(stackSize)));
             } else {
-                armInstructions.add(new ArmLdr(new ArmRegister("r3"), new ArmImmediateValue(stackSize)));
-                armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r3")));
+                armInstructions.add(new ArmLdr(new ArmRegister("r4"), new ArmImmediateValue(stackSize)));
+                armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }
         if (!llvmFunctionValue.getName().equals("main")) {
             restoreCalleeSavedRegs();
         }
-        armInstructions.add(new ArmBx());
+        armInstructions.add(new ArmBx(new ArmRegister("lr")));
         armAllocator.resetLastLVal();
     }
 
@@ -465,17 +466,17 @@ public class ArmInstrGenerator implements InstructionVisitor {
         insertComment("ret void");
         int stackSize = armAllocator.getStackSize();
         if (stackSize > 0) {
-            if(stackSize < 2048){
+            if(stackSize < 256){
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(stackSize)));
             } else {
-                armInstructions.add(new ArmLdr(new ArmRegister("r3"), new ArmImmediateValue(stackSize)));
-                armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r3")));
+                armInstructions.add(new ArmLdr(new ArmRegister("r4"), new ArmImmediateValue(stackSize)));
+                armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }
         if (!llvmFunctionValue.getName().equals("main")) {
             restoreCalleeSavedRegs();
         }
-        armInstructions.add(new ArmBx());
+        armInstructions.add(new ArmBx(new ArmRegister("lr")));
         armAllocator.resetLastLVal();
     }
 
@@ -483,7 +484,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(BitCast bitCast) {
         insertComment("bitcast " + bitCast.getLVal().getName() + " " + bitCast.getOperand(0).getName());
         beforeAUnaryInstr(bitCast);
-        armInstructions.add(new ArmMov(new ArmRegister("r3"), new ArmRegister("r4")));
+        armInstructions.add(new ArmMov(new ArmRegister("r4"), new ArmRegister("r5")));
         afterAnInstr(bitCast);
     }
 
@@ -545,11 +546,11 @@ public class ArmInstrGenerator implements InstructionVisitor {
             } else {assert false;}
         }
         if (order > 0) {
-            if(order * 8 < 2048){
+            if(order * 8 < 256){
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-8L * order)));
             } else {
-                armInstructions.add(new ArmLdr(new ArmRegister("r3"), new ArmImmediateValue(-8L * order)));
-                armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r3")));
+                armInstructions.add(new ArmLdr(new ArmRegister("r4"), new ArmImmediateValue(-8L * order)));
+                armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }
     }
@@ -557,11 +558,11 @@ public class ArmInstrGenerator implements InstructionVisitor {
     private void pushIntoStack(String srcReg,ValueRef realParam, int order){
         insertComment("push " + realParam.getName());
         if(realParam.getType() instanceof IntType){
-            armInstructions.add(new ArmStr(new ArmRegister(srcReg), armAllocator.getRegWithOffset(-order * 8, "sp", "r7")));
+            armInstructions.add(new ArmStr(new ArmRegister(srcReg), armAllocator.getRegWithOffset(-order * 8, "sp", "r8")));
         } else if(realParam.getType() instanceof FloatType){
-            armInstructions.add(new ArmVstr(new ArmRegister(srcReg), armAllocator.getRegWithOffset(-order * 8, "sp", "r7")));
+            armInstructions.add(new ArmVstr(new ArmRegister(srcReg), armAllocator.getRegWithOffset(-order * 8, "sp", "r8")));
         } else if(realParam.getType() instanceof Pointer){
-            armInstructions.add(new ArmStr(new ArmRegister(srcReg), armAllocator.getRegWithOffset(-order * 8, "sp", "r7")));
+            armInstructions.add(new ArmStr(new ArmRegister(srcReg), armAllocator.getRegWithOffset(-order * 8, "sp", "r8")));
         } else {assert false;}
     }
 
@@ -575,11 +576,11 @@ public class ArmInstrGenerator implements InstructionVisitor {
         int floatParamNum = call.getRealParams().stream().filter(x -> x.getType() instanceof FloatType).toArray().length;
         int finalToRelease =Math.max(intAndPointerParamNum - ArmSpecifications.getArgRegs().length, 0) + Math.max(floatParamNum - ArmSpecifications.getFArgRegs().length, 0);
         if (finalToRelease > 0) {
-            if(finalToRelease * 8 < 2048){
+            if(finalToRelease * 8 < 256){
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(8L * finalToRelease)));
             } else {
-                armInstructions.add(new ArmLdr(new ArmRegister("r3"), new ArmImmediateValue(8L * finalToRelease)));
-                armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r3")));
+                armInstructions.add(new ArmLdr(new ArmRegister("r4"), new ArmImmediateValue(8L * finalToRelease)));
+                armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }
     }
@@ -592,7 +593,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
         String[] callerSavedRegs = ArmSpecifications.getCallerSavedRegs();
         armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-8L * callerSavedRegs.length)));
         for (int i = 0; i < callerSavedRegs.length; i++) {
-            if(!armAllocator.isUsedReg(callerSavedRegs[i]) && !callerSavedRegs[i].equals("ra")){ //ra不会被record但是仍然需要保存
+            if(!armAllocator.isUsedReg(callerSavedRegs[i]) && !callerSavedRegs[i].equals("lr")){ //ra不会被record但是仍然需要保存
                 continue;
             }
             if(ArmSpecifications.isFloatReg(callerSavedRegs[i])){
@@ -607,7 +608,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
         armInstructions.add(new ArmComment("restore caller saved regs"));
         String[] registers = ArmSpecifications.getCallerSavedRegs();
         for (int i = 0; i < registers.length; i++) {
-            if(!armAllocator.isUsedReg(registers[i]) && !registers[i].equals("ra")){
+            if(!armAllocator.isUsedReg(registers[i]) && !registers[i].equals("lr")){
                 continue;
             }
             if(ArmSpecifications.isFloatReg(registers[i])){

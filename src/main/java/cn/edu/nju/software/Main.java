@@ -3,6 +3,7 @@ package cn.edu.nju.software;
 import java.io.IOException;
 import java.util.Arrays;
 
+import cn.edu.nju.software.backendarm.ArmModule;
 import cn.edu.nju.software.backendrisc.RiscModule;
 import cn.edu.nju.software.pass.PassManager;
 import org.antlr.v4.runtime.CharStream;
@@ -20,10 +21,10 @@ import cn.edu.nju.software.ir.module.ModuleRef;
 public class Main {
     private static String input;
     private static String output;
-
     private static boolean optimized = false;
     private static boolean emitLLVM = false;
     private static boolean emitAssembly = false;
+    private static boolean isArm = true;
 
     public static void main(String... args) {
         Thread t = new Thread(() -> execute(args));
@@ -93,9 +94,15 @@ public class Main {
             module.dumpToFile(output);
         }
         if(emitAssembly){
-            RiscModule riscModule = new RiscModule(module);
-            riscModule.codeGen();
-            riscModule.dumpToFile(output);
+            if(isArm){
+                ArmModule armModule = new ArmModule(module);
+                armModule.codeGen();
+                armModule.dumpToFile(output);
+            } else {
+                RiscModule riscModule = new RiscModule(module);
+                riscModule.codeGen();
+                riscModule.dumpToFile(output);
+            }
         }
     }
 

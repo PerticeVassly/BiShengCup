@@ -48,11 +48,11 @@ public class ArmBasicBlock {
         generator.insertComment("reserve space for all local variables in function");
         int stackSize = allocator.getStackSize();
         if (stackSize > 0) {
-            if(stackSize <= 2048){
+            if(stackSize <= 256){
                 generator.addInstruction(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-stackSize)));
             } else {
-                generator.addInstruction(new ArmLdr(new ArmRegister("r3"), new ArmImmediateValue(stackSize)));
-                generator.addInstruction(new ArmSub(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r3")));
+                generator.addInstruction(new ArmLdr(new ArmRegister("r4"), new ArmImmediateValue(stackSize)));
+                generator.addInstruction(new ArmSub(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }
         if(!llvmFunctionValue.getName().equals("main")){ //main没有调用函数，也没有参数
@@ -123,16 +123,16 @@ public class ArmBasicBlock {
     }
 
     private void fetchFromStack(TypeRef type, int i, int preLen, int order) {
-        String destReg = "t0";
+        String destReg = "r4";
         if (type instanceof IntType) {
-            generator.addInstruction(new ArmLdr(new ArmRegister("r3"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r7")));
-            destReg = "r3";
+            generator.addInstruction(new ArmLdr(new ArmRegister("r4"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r7")));
+            destReg = "r4";
         } else if (type instanceof FloatType) {
-            generator.addInstruction(new ArmVldr(new ArmRegister("s3"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r7")));
-            destReg = "s3";
+            generator.addInstruction(new ArmVldr(new ArmRegister("s4"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r7")));
+            destReg = "s4";
         } else if(type instanceof Pointer){
-            generator.addInstruction(new ArmLdr(new ArmRegister("r3"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r7")));
-            destReg = "r3";
+            generator.addInstruction(new ArmLdr(new ArmRegister("r4"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r7")));
+            destReg = "r4";
         } else {assert false;}
         allocator.storeLocalVarIntoMemory(new LocalVar(type, i + ""), destReg);
     }
@@ -140,6 +140,7 @@ public class ArmBasicBlock {
     private void saveCalleeSavedRegs() {
         generator.insertComment("save CallerSavedRegs");
         String[] calleeSavedRegs = ArmSpecifications.getCalleeSavedRegs();
+
         generator.addInstruction(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-8L * calleeSavedRegs.length)));
         for (int i = 0; i < calleeSavedRegs.length; i++) {
             generator.addInstruction(new ArmStr(new ArmRegister(calleeSavedRegs[i]), new ArmIndirectRegister("sp", i * 8)));

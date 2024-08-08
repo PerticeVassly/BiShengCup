@@ -12,7 +12,6 @@ public class ArmComment extends ArmDefaultInstruction {
     }
 
     @Override
-    public String toString() {
-        return System.lineSeparator() + "\t; " + comment;
+    public String emitCode() {return System.lineSeparator() + "# " + comment;
     }
 }

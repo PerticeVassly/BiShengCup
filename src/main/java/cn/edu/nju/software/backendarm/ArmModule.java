@@ -47,6 +47,12 @@ public class ArmModule {
     }
 
     public void dumpToConsole() {
+        /*
+        .arch armv7ve
+        .fpu vfpv3-d16
+         */
+        System.out.println(".arch armv7ve");
+        System.out.println(".fpu vfpv3-d16");
         System.out.println(".data" + System.lineSeparator() + ".align 4");
         armGlobalVars.forEach(ArmGlobalVar::dumpToConsole);
         armFunctions.forEach(ArmFunction::dumpToConsole);

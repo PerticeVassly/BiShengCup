@@ -5,6 +5,6 @@ import cn.edu.nju.software.backendarm.arminstruction.util.ArmOpcode;
 
 public class ArmMoveq extends ArmDefaultInstruction {
     public ArmMoveq(ArmOperand... ins) {
-        super(ArmOpcode.MOVEQ);
+        super(ArmOpcode.MOVEQ, ins);
     }
 }

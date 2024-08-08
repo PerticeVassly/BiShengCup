@@ -5,6 +5,6 @@ import cn.edu.nju.software.backendarm.arminstruction.util.ArmOpcode;
 
 public class ArmMovne extends ArmDefaultInstruction {
     public ArmMovne(ArmOperand... ins) {
-        super(ArmOpcode.MOVNE);
+        super(ArmOpcode.MOVNE, ins);
     }
 }
