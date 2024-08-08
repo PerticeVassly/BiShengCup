@@ -96,11 +96,11 @@ public class ArmAllocator {
                 return fetchTempVar(localVar);
             }
             if(checkPtrHasAllocated(localVar.getName())){
-                if(armMemoryManager.getOffset(localVar) >= 2048 || ArmMemoryManager.getOffset(localVar) <= -2048){
+                if(armMemoryManager.getOffset(localVar) >= 2048 || armMemoryManager.getOffset(localVar) <= -2048){
                     loadImmediate("r7", armMemoryManager.getOffset(localVar));
                     generator.addInstruction(new ArmAdd(new ArmRegister("r" + i), new ArmRegister("sp"), new ArmRegister("r7")));
                 } else {
-                    generator.addInstruction(new ArmAdd(new ArmRegister("r" + i), new ArmRegister("sp"), new ArmImmediateValue(ArmMemoryManager.getOffset(localVar))));
+                    generator.addInstruction(new ArmAdd(new ArmRegister("r" + i), new ArmRegister("sp"), new ArmImmediateValue(armMemoryManager.getOffset(localVar))));
                 }
                 return "r" + i;
             }

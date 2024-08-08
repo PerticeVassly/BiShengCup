@@ -11,12 +11,12 @@ public class RiscMemoryManager {
     private int size = 0;
     private final Map<String, Integer> memoryAddr = new HashMap<>();
     private final HashSet<String> hasAllocatedPtr = new HashSet<>();
-    private static final RiscMemoryManager RISC_MEMORY_MANAGER = new RiscMemoryManager();
+    private static final RiscMemoryManager riscMemoryManager = new RiscMemoryManager();
 
     private RiscMemoryManager() {}
 
     public static RiscMemoryManager get() {
-        return RISC_MEMORY_MANAGER;
+        return riscMemoryManager;
     }
 
     public void clear() {
