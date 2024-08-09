@@ -18,27 +18,26 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry16:
+  %lv = alloca i32, align 4
   %getint = call i32 @getint()
   %getint$1 = call i32 @getint()
   %cond_eq_tmp_ = icmp eq i32 %getint, %getint$1
-  %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %secondCond_31, label %ifFalse_13
+  br i1 %cond_eq_tmp_, label %secondCond_31, label %ifFalse_13
 
 ifTrue_41:                                            ; pred = %secondCond_31
+  store i32 1, i32* %lv, align 4
   br label %next_85
 
 ifFalse_13:                                           ; pred = %mainEntry16, %secondCond_31
+  store i32 0, i32* %lv, align 4
   br label %next_85
 
 next_85:                                              ; pred = %ifTrue_41, %ifFalse_13
-  %phi = phi i32 [1, %ifTrue_41], [0, %ifFalse_13]
-  ret i32 %phi
+  %ld_phi = load i32, i32* %lv, align 4
+  ret i32 %ld_phi
 
 secondCond_31:                                        ; pred = %mainEntry16
   %cond_neq_tmp_ = icmp ne i32 %getint, 3
-  %cond_tmp_$1 = zext i1 %cond_neq_tmp_ to i32
-  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %ifTrue_41, label %ifFalse_13
+  br i1 %cond_neq_tmp_, label %ifTrue_41, label %ifFalse_13
 }
 

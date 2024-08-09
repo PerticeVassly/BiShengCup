@@ -18,19 +18,26 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry65:
-  br i1 true, label %i1912, label %i1913
+  %lvi1178 = alloca i32, align 4
+  br i1 true, label %i1179, label %mid_170
 
-i1914:                                              ; pred = %i1912
-  br label %i1913
+i1182:                                              ; pred = %i1179
+  store i32 20, i32* %lvi1178, align 4
+  br label %i1180
 
-i1913:                                              ; pred = %mainEntry65, %i1914, %i1915
-  %phi = phi i32 [5, %mainEntry65], [25, %i1914], [20, %i1915]
-  ret i32 %phi
+i1180:                                              ; pred = %i1182, %i1181, %mid_170
+  %ld_phi = load i32, i32* %lvi1178, align 4
+  ret i32 %ld_phi
 
-i1915:                                              ; pred = %i1912
-  br label %i1913
+i1181:                                              ; pred = %i1179
+  store i32 25, i32* %lvi1178, align 4
+  br label %i1180
 
-i1912:                                              ; pred = %mainEntry65
-  br i1 true, label %i1914, label %i1915
+i1179:                                              ; pred = %mainEntry65
+  br i1 true, label %i1181, label %i1182
+
+mid_170:                                            ; pred = %mainEntry65
+  store i32 5, i32* %lvi1178, align 4
+  br label %i1180
 }
 

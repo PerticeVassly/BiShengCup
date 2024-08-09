@@ -51,22 +51,22 @@ mainEntry92:
   store i32 3, i32* %inp$8, align 4
   %inp$9 = getelementptr [4 x i32], [4 x i32]* %ptr_$8, i32 0, i32 1
   store i32 4, i32* %inp$9, align 4
-  %ai2224 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 5
-  store i32 4000, i32* %ai2224, align 4
-  %a$1i2224 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 4000
-  store i32 3, i32* %a$1i2224, align 4
-  %a$2i2224 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 4095
-  store i32 7, i32* %a$2i2224, align 4
-  %a$4i2224 = load i32, i32* %a$2i2224, align 4
-  %bi2224 = getelementptr i32, i32* %inp$6, i32 %a$4i2224
-  %a$5i2224 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 2216
-  %a$6i2224 = load i32, i32* %a$5i2224, align 4
-  %result_i2224 = add i32 %a$6i2224, 9
-  store i32 %result_i2224, i32* %bi2224, align 4
-  %a$8i2224 = load i32, i32* %ai2224, align 4
-  %a$9i2224 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 %a$8i2224
-  %a$10i2224 = load i32, i32* %a$9i2224, align 4
-  call void @putint(i32 %a$10i2224)
+  %ai1428 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 5
+  store i32 4000, i32* %ai1428, align 4
+  %a$1i1428 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 4000
+  store i32 3, i32* %a$1i1428, align 4
+  %a$2i1428 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 4095
+  store i32 7, i32* %a$2i1428, align 4
+  %a$4i1428 = load i32, i32* %a$2i1428, align 4
+  %bi1428 = getelementptr i32, i32* %inp$6, i32 %a$4i1428
+  %a$5i1428 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 2216
+  %a$6i1428 = load i32, i32* %a$5i1428, align 4
+  %result_i1428 = add i32 %a$6i1428, 9
+  store i32 %result_i1428, i32* %bi1428, align 4
+  %a$8i1428 = load i32, i32* %ai1428, align 4
+  %a$9i1428 = getelementptr [4096 x i32], [4096 x i32]* @gv, i32 0, i32 %a$8i1428
+  %a$10i1428 = load i32, i32* %a$9i1428, align 4
+  call void @putint(i32 %a$10i1428)
   call void @putch(i32 10)
   %ptr_$10 = getelementptr [1024 x [4 x i32]], [1024 x [4 x i32]]* %lv$1, i32 0, i32 2
   %c$2 = getelementptr [4 x i32], [4 x i32]* %ptr_$10, i32 0, i32 0

@@ -18,18 +18,20 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry64:
+  %lv$30 = alloca i32, align 4
   %getint = call i32 @getint()
+  store i32 %getint, i32* %lv$30, align 4
   br label %whileCond_233
 
 whileCond_233:                                        ; pred = %mainEntry64, %whileBody_233
-  %phi = phi i32 [%getint, %mainEntry64], [%result_, %whileBody_233]
-  %cond_eq_tmp_ = icmp eq i32 %phi, 5
-  %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_233, label %next_537
+  %ld_phi = load i32, i32* %lv$30, align 4
+  %cond_eq_tmp_ = icmp eq i32 %ld_phi, 5
+  br i1 %cond_eq_tmp_, label %whileBody_233, label %next_537
 
 whileBody_233:                                        ; pred = %whileCond_233
-  %result_ = add i32 %phi, 1
+  %ld_phi$1 = load i32, i32* %lv$30, align 4
+  %result_ = add i32 %ld_phi$1, 1
+  store i32 %result_, i32* %lv$30, align 4
   br label %whileCond_233
 
 next_537:                                             ; pred = %whileCond_233
@@ -64,7 +66,8 @@ next_537:                                             ; pred = %whileCond_233
   call void @putint(i32 28)
   call void @putint(i32 29)
   call void @putch(i32 10)
-  call void @putint(i32 %phi)
+  %ld_phi$2 = load i32, i32* %lv$30, align 4
+  call void @putint(i32 %ld_phi$2)
   call void @putch(i32 10)
   ret i32 25
 }

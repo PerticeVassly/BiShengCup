@@ -18,6 +18,12 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry42:
+  %lv$4i869i902 = alloca i32, align 4
+  %lv$3i869i902 = alloca i32, align 4
+  %lv$4i882i919 = alloca i32, align 4
+  %lv$3i882i919 = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
+  %lv$2i894 = alloca i32, align 4
   %lv = alloca [10 x i32], align 16
   %a = getelementptr [10 x i32], [10 x i32]* %lv, i32 0, i32 0
   %m113 = getelementptr i32, i32* %a, i32 0
@@ -40,176 +46,201 @@ mainEntry42:
   store i32 7, i32* %a$8, align 4
   %a$9 = getelementptr [10 x i32], [10 x i32]* %lv, i32 0, i32 9
   store i32 8, i32* %a$9, align 4
-  br label %i1628
+  store i32 4, i32* %lv$2i894, align 4
+  br label %i895
 
-whileCond_188:                                        ; pred = %whileBody_188, %i1633
-  %phi = phi i32 [%result_, %whileBody_188], [0, %i1633]
-  %cond_lt_tmp_ = icmp slt i32 %phi, 10
-  %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_188, label %next_448
+whileCond_188:                                        ; pred = %whileBody_188, %i900
+  %ld_phi = load i32, i32* %lv$1, align 4
+  %cond_lt_tmp_ = icmp slt i32 %ld_phi, 10
+  br i1 %cond_lt_tmp_, label %whileBody_188, label %next_448
 
 whileBody_188:                                        ; pred = %whileCond_188
-  %a$11 = getelementptr [10 x i32], [10 x i32]* %lv, i32 0, i32 %phi
+  %ld_phi$1 = load i32, i32* %lv$1, align 4
+  %a$11 = getelementptr [10 x i32], [10 x i32]* %lv, i32 0, i32 %ld_phi$1
   %a$12 = load i32, i32* %a$11, align 4
   call void @putint(i32 %a$12)
   call void @putch(i32 10)
-  %result_ = add i32 %phi, 1
+  %ld_phi$2 = load i32, i32* %lv$1, align 4
+  %result_ = add i32 %ld_phi$2, 1
+  store i32 %result_, i32* %lv$1, align 4
   br label %whileCond_188
 
 next_448:                                             ; pred = %whileCond_188
   ret i32 0
 
-i1658:                                                ; pred = %i1654, %i1653
-  br label %i1631
+i923:                                                 ; pred = %i927
+  %array$1i868i893i928 = load i32, i32* %m111, align 4
+  %array$4i868i893i928 = load i32, i32* %m115, align 4
+  store i32 %array$4i868i893i928, i32* %m111, align 4
+  store i32 %array$1i868i893i928, i32* %m115, align 4
+  %ld_phi$3 = load i32, i32* %lv$4i882i919, align 4
+  %result_$5i892i924 = shl i32 %ld_phi$3, 1
+  %result_$6i892i924 = add i32 %result_$5i892i924, 1
+  %ld_phi$4 = load i32, i32* %lv$4i882i919, align 4
+  store i32 %ld_phi$4, i32* %lv$3i882i919, align 4
+  store i32 %result_$6i892i924, i32* %lv$4i882i919, align 4
+  br label %i921
 
-i1639:                                                ; pred = %i1636, %i1646
-  %result_$3i1639 = sub i32 %phi$16, 1
-  br label %i1628
+i925:                                                 ; pred = %i926
+  %ld_phi$5 = load i32, i32* %lv$4i882i919, align 4
+  %result_$4i886i925 = add i32 %ld_phi$5, 1
+  store i32 %result_$4i886i925, i32* %lv$4i882i919, align 4
+  br label %i927
 
-i1650:                                                ; pred = %i1651, %i1632
-  %phi$45 = phi i32 [%phi$15, %i1651], [0, %i1632]
-  %phi$6 = phi i32 [%result_$6i1626i1661, %i1651], [1, %i1632]
-  %result_$2i1616i1650 = add i32 %m111, 1
-  %m108 = getelementptr i32, i32* %a, i32 %phi$45
-  %cond_lt_tmp_i1616i1650 = icmp slt i32 %phi$6, %result_$2i1616i1650
-  %cond_tmp_i1616i1650 = zext i1 %cond_lt_tmp_i1616i1650 to i32
-  %cond_i1616i1650 = icmp ne i32 %cond_tmp_i1616i1650, 0
-  br i1 %cond_i1616i1650, label %i1655, label %i1654
+i896:                                                 ; pred = %i895
+  %ld_phi$6 = load i32, i32* %lv$2i894, align 4
+  %result_i869i902 = shl i32 %ld_phi$6, 1
+  %result_$1i869i902 = add i32 %result_i869i902, 1
+  %ld_phi$7 = load i32, i32* %lv$2i894, align 4
+  store i32 %ld_phi$7, i32* %lv$3i869i902, align 4
+  store i32 %result_$1i869i902, i32* %lv$4i869i902, align 4
+  br label %i912
 
-i1636:                                                ; pred = %i1641
-  br label %i1639
-
-i1646:                                                ; pred = %i1638
-  br label %i1639
-
-i1660:                                                ; pred = %i1659
-  %result_$4i1619i1660 = add i32 %phi$6, 1
-  br label %i1656
-
-i1638:                                                ; pred = %i1648, %i1634, %i1640
-  %phi$9 = phi i32 [%phi$22, %i1648], [%phi$22, %i1634], [%result_$4i1606i1640, %i1640]
-  %m109 = getelementptr i32, i32* %a, i32 %phi$42
-  %m112 = getelementptr i32, i32* %a, i32 %phi$9
-  %arr$5i1607i1638 = load i32, i32* %m109, align 4
-  %arr$7i1607i1638 = load i32, i32* %m112, align 4
-  %cond_gt_tmp_i1607i1638 = icmp sgt i32 %arr$5i1607i1638, %arr$7i1607i1638
-  %cond_tmp_$3i1607i1638 = zext i1 %cond_gt_tmp_i1607i1638 to i32
-  %cond_$3i1607i1638 = icmp ne i32 %cond_tmp_$3i1607i1638, 0
-  br i1 %cond_$3i1607i1638, label %i1646, label %i1644
-
-i1648:                                                ; pred = %i1634
-  %arri1608i1648 = getelementptr i32, i32* %a, i32 %phi$22
-  %arr$1i1608i1648 = load i32, i32* %arri1608i1648, align 4
-  %result_$3i1608i1648 = add i32 %phi$22, 1
-  %arr$2i1608i1648 = getelementptr i32, i32* %a, i32 %result_$3i1608i1648
-  %arr$3i1608i1648 = load i32, i32* %arr$2i1608i1648, align 4
-  %cond_lt_tmp_$2i1608i1648 = icmp slt i32 %arr$1i1608i1648, %arr$3i1608i1648
-  %cond_tmp_$2i1608i1648 = zext i1 %cond_lt_tmp_$2i1608i1648 to i32
-  %cond_$2i1608i1648 = icmp ne i32 %cond_tmp_$2i1608i1648, 0
-  br i1 %cond_$2i1608i1648, label %i1640, label %i1638
-
-i1633:                                                ; pred = %i1631
+i900:                                                 ; pred = %i898
+  store i32 0, i32* %lv$1, align 4
   br label %whileCond_188
 
-i1655:                                                ; pred = %i1650
-  %cond_lt_tmp_$1i1617i1655 = icmp slt i32 %phi$6, %m111
-  %cond_tmp_$1i1617i1655 = zext i1 %cond_lt_tmp_$1i1617i1655 to i32
-  %cond_$1i1617i1655 = icmp ne i32 %cond_tmp_$1i1617i1655, 0
-  br i1 %cond_$1i1617i1655, label %i1659, label %i1656
+i916:                                                 ; pred = %i927
+  br label %i917
 
-i1634:                                                ; pred = %i1641
-  %cond_lt_tmp_$1i1604i1634 = icmp slt i32 %phi$22, 9
-  %cond_tmp_$1i1604i1634 = zext i1 %cond_lt_tmp_$1i1604i1634 to i32
-  %cond_$1i1604i1634 = icmp ne i32 %cond_tmp_$1i1604i1634, 0
-  br i1 %cond_$1i1604i1634, label %i1648, label %i1638
+i908:                                                 ; pred = %i910
+  %array$1i868i880i904 = load i32, i32* %m112, align 4
+  %array$4i868i880i904 = load i32, i32* %m114, align 4
+  store i32 %array$4i868i880i904, i32* %m112, align 4
+  store i32 %array$1i868i880i904, i32* %m114, align 4
+  %ld_phi$8 = load i32, i32* %lv$4i869i902, align 4
+  %result_$5i879i903 = shl i32 %ld_phi$8, 1
+  %result_$6i879i903 = add i32 %result_$5i879i903, 1
+  %ld_phi$9 = load i32, i32* %lv$4i869i902, align 4
+  store i32 %ld_phi$9, i32* %lv$3i869i902, align 4
+  store i32 %result_$6i879i903, i32* %lv$4i869i902, align 4
+  br label %i912
 
-i1656:                                                ; pred = %i1660, %i1655, %i1659
-  %phi$15 = phi i32 [%result_$4i1619i1660, %i1660], [%phi$6, %i1655], [%phi$6, %i1659]
-  %arr$5i1620i1656 = load i32, i32* %m108, align 4
-  %m110 = getelementptr i32, i32* %a, i32 %phi$15
-  %arr$7i1620i1656 = load i32, i32* %m110, align 4
-  %cond_gt_tmp_i1620i1656 = icmp sgt i32 %arr$5i1620i1656, %arr$7i1620i1656
-  %cond_tmp_$3i1620i1656 = zext i1 %cond_gt_tmp_i1620i1656 to i32
-  %cond_$3i1620i1656 = icmp ne i32 %cond_tmp_$3i1620i1656, 0
-  br i1 %cond_$3i1620i1656, label %i1653, label %i1651
+i918:                                                 ; pred = %i921
+  %ld_phi$10 = load i32, i32* %lv$3i882i919, align 4
+  %m111 = getelementptr i32, i32* %a, i32 %ld_phi$10
+  %ld_phi$11 = load i32, i32* %lv$4i882i919, align 4
+  %cond_lt_tmp_$1i884i918 = icmp slt i32 %ld_phi$11, %m116
+  br i1 %cond_lt_tmp_$1i884i918, label %i926, label %mid_153
 
-i1628:                                                ; pred = %mainEntry42, %i1639
-  %phi$16 = phi i32 [4, %mainEntry42], [%result_$3i1639, %i1639]
-  %cond_gt_tmp_i1628 = icmp sgt i32 %phi$16, -1
-  %cond_tmp_i1628 = zext i1 %cond_gt_tmp_i1628 to i32
-  %cond_i1628 = icmp ne i32 %cond_tmp_i1628, 0
-  br i1 %cond_i1628, label %i1629, label %i1630
+i906:                                                 ; pred = %i912
+  %ld_phi$12 = load i32, i32* %lv$3i869i902, align 4
+  %m112 = getelementptr i32, i32* %a, i32 %ld_phi$12
+  %ld_phi$13 = load i32, i32* %lv$4i869i902, align 4
+  %cond_lt_tmp_$1i871i906 = icmp slt i32 %ld_phi$13, 9
+  br i1 %cond_lt_tmp_$1i871i906, label %i907, label %mid_151
 
-i1654:                                                ; pred = %i1650
-  br label %i1658
+i905:                                                 ; pred = %i909, %i913
+  %ld_phi$14 = load i32, i32* %lv$2i894, align 4
+  %result_$3i905 = sub i32 %ld_phi$14, 1
+  store i32 %result_$3i905, i32* %lv$2i894, align 4
+  br label %i895
 
-i1631:                                                ; pred = %i1658, %i1630
-  %phi$17 = phi i32 [%m111, %i1658], [9, %i1630]
-  %cond_gt_tmp_$1i1631 = icmp sgt i32 %phi$17, 0
-  %m114 = getelementptr i32, i32* %a, i32 %phi$17
-  %m111 = sub i32 %phi$17, 1
-  %cond_tmp_$1i1631 = zext i1 %cond_gt_tmp_$1i1631 to i32
-  %cond_$1i1631 = icmp ne i32 %cond_tmp_$1i1631, 0
-  br i1 %cond_$1i1631, label %i1632, label %i1633
+i909:                                                 ; pred = %i912
+  br label %i905
 
-i1653:                                                ; pred = %i1656
-  br label %i1658
+i895:                                                 ; pred = %mainEntry42, %i905
+  %ld_phi$15 = load i32, i32* %lv$2i894, align 4
+  %cond_gt_tmp_i895 = icmp sgt i32 %ld_phi$15, -1
+  br i1 %cond_gt_tmp_i895, label %i896, label %i897
 
-i1640:                                                ; pred = %i1648
-  %result_$4i1606i1640 = add i32 %phi$22, 1
-  br label %i1638
+i910:                                                 ; pred = %i901, %mid_151, %mid_152
+  %ld_phi$16 = load i32, i32* %lv$4i869i902, align 4
+  %m114 = getelementptr i32, i32* %a, i32 %ld_phi$16
+  %arr$5i874i910 = load i32, i32* %m112, align 4
+  %arr$7i874i910 = load i32, i32* %m114, align 4
+  %cond_gt_tmp_i874i910 = icmp sgt i32 %arr$5i874i910, %arr$7i874i910
+  br i1 %cond_gt_tmp_i874i910, label %i913, label %i908
 
-i1651:                                                ; pred = %i1656
-  %array$1i1601i1625i1652 = load i32, i32* %m108, align 4
-  %array$4i1601i1625i1652 = load i32, i32* %m110, align 4
-  store i32 %array$4i1601i1625i1652, i32* %m108, align 4
-  store i32 %array$1i1601i1625i1652, i32* %m110, align 4
-  %result_$5i1626i1661 = shl i32 %phi$15, 1
-  %result_$6i1626i1661 = add i32 %result_$5i1626i1661, 1
-  br label %i1650
+i921:                                                 ; pred = %i923, %i899
+  %result_$2i883i921 = add i32 %m116, 1
+  %ld_phi$17 = load i32, i32* %lv$4i882i919, align 4
+  %cond_lt_tmp_i883i921 = icmp slt i32 %ld_phi$17, %result_$2i883i921
+  br i1 %cond_lt_tmp_i883i921, label %i918, label %i920
 
-i1659:                                                ; pred = %i1655
-  %arri1621i1659 = getelementptr i32, i32* %a, i32 %phi$6
-  %arr$1i1621i1659 = load i32, i32* %arri1621i1659, align 4
-  %result_$3i1621i1659 = add i32 %phi$6, 1
-  %arr$2i1621i1659 = getelementptr i32, i32* %a, i32 %result_$3i1621i1659
-  %arr$3i1621i1659 = load i32, i32* %arr$2i1621i1659, align 4
-  %cond_lt_tmp_$2i1621i1659 = icmp slt i32 %arr$1i1621i1659, %arr$3i1621i1659
-  %cond_tmp_$2i1621i1659 = zext i1 %cond_lt_tmp_$2i1621i1659 to i32
-  %cond_$2i1621i1659 = icmp ne i32 %cond_tmp_$2i1621i1659, 0
-  br i1 %cond_$2i1621i1659, label %i1660, label %i1656
+i920:                                                 ; pred = %i921
+  br label %i917
 
-i1641:                                                ; pred = %i1644, %i1629
-  %phi$42 = phi i32 [%phi$9, %i1644], [%phi$16, %i1629]
-  %phi$22 = phi i32 [%result_$6i1613i1643, %i1644], [%result_$1i1602i1642, %i1629]
-  %cond_lt_tmp_i1603i1641 = icmp slt i32 %phi$22, 10
-  %cond_tmp_i1603i1641 = zext i1 %cond_lt_tmp_i1603i1641 to i32
-  %cond_i1603i1641 = icmp ne i32 %cond_tmp_i1603i1641, 0
-  br i1 %cond_i1603i1641, label %i1634, label %i1636
+i901:                                                 ; pred = %i907
+  %ld_phi$18 = load i32, i32* %lv$4i869i902, align 4
+  %result_$4i873i901 = add i32 %ld_phi$18, 1
+  store i32 %result_$4i873i901, i32* %lv$4i869i902, align 4
+  br label %i910
 
-i1644:                                                ; pred = %i1638
-  %array$1i1601i1612i1647 = load i32, i32* %m109, align 4
-  %array$4i1601i1612i1647 = load i32, i32* %m112, align 4
-  store i32 %array$4i1601i1612i1647, i32* %m109, align 4
-  store i32 %array$1i1601i1612i1647, i32* %m112, align 4
-  %result_$5i1613i1643 = shl i32 %phi$9, 1
-  %result_$6i1613i1643 = add i32 %result_$5i1613i1643, 1
-  br label %i1641
+i898:                                                 ; pred = %i897, %i917
+  %ld_phi$19 = load i32, i32* %lv$2i894, align 4
+  %m116 = sub i32 %ld_phi$19, 1
+  %ld_phi$20 = load i32, i32* %lv$2i894, align 4
+  %m110 = getelementptr i32, i32* %a, i32 %ld_phi$20
+  %ld_phi$21 = load i32, i32* %lv$2i894, align 4
+  %cond_gt_tmp_$1i898 = icmp sgt i32 %ld_phi$21, 0
+  br i1 %cond_gt_tmp_$1i898, label %i899, label %i900
 
-i1629:                                                ; pred = %i1628
-  %result_i1602i1642 = shl i32 %phi$16, 1
-  %result_$1i1602i1642 = add i32 %result_i1602i1642, 1
-  br label %i1641
+i907:                                                 ; pred = %i906
+  %ld_phi$22 = load i32, i32* %lv$4i869i902, align 4
+  %arri875i907 = getelementptr i32, i32* %a, i32 %ld_phi$22
+  %arr$1i875i907 = load i32, i32* %arri875i907, align 4
+  %ld_phi$23 = load i32, i32* %lv$4i869i902, align 4
+  %result_$3i875i907 = add i32 %ld_phi$23, 1
+  %arr$2i875i907 = getelementptr i32, i32* %a, i32 %result_$3i875i907
+  %arr$3i875i907 = load i32, i32* %arr$2i875i907, align 4
+  %cond_lt_tmp_$2i875i907 = icmp slt i32 %arr$1i875i907, %arr$3i875i907
+  br i1 %cond_lt_tmp_$2i875i907, label %i901, label %mid_152
 
-i1632:                                                ; pred = %i1631
-  %array$1i1614i1645 = load i32, i32* %m113, align 4
-  %array$4i1614i1645 = load i32, i32* %m114, align 4
-  store i32 %array$4i1614i1645, i32* %m113, align 4
-  store i32 %array$1i1614i1645, i32* %m114, align 4
-  br label %i1650
+i897:                                                 ; pred = %i895
+  store i32 9, i32* %lv$2i894, align 4
+  br label %i898
 
-i1630:                                                ; pred = %i1628
-  br label %i1631
+i926:                                                 ; pred = %i918
+  %ld_phi$24 = load i32, i32* %lv$4i882i919, align 4
+  %arri888i926 = getelementptr i32, i32* %a, i32 %ld_phi$24
+  %arr$1i888i926 = load i32, i32* %arri888i926, align 4
+  %ld_phi$25 = load i32, i32* %lv$4i882i919, align 4
+  %result_$3i888i926 = add i32 %ld_phi$25, 1
+  %arr$2i888i926 = getelementptr i32, i32* %a, i32 %result_$3i888i926
+  %arr$3i888i926 = load i32, i32* %arr$2i888i926, align 4
+  %cond_lt_tmp_$2i888i926 = icmp slt i32 %arr$1i888i926, %arr$3i888i926
+  br i1 %cond_lt_tmp_$2i888i926, label %i925, label %mid_154
+
+i927:                                                 ; pred = %i925, %mid_153, %mid_154
+  %ld_phi$26 = load i32, i32* %lv$4i882i919, align 4
+  %m115 = getelementptr i32, i32* %a, i32 %ld_phi$26
+  %arr$5i887i927 = load i32, i32* %m111, align 4
+  %arr$7i887i927 = load i32, i32* %m115, align 4
+  %cond_gt_tmp_i887i927 = icmp sgt i32 %arr$5i887i927, %arr$7i887i927
+  br i1 %cond_gt_tmp_i887i927, label %i916, label %i923
+
+i913:                                                 ; pred = %i910
+  br label %i905
+
+i912:                                                 ; pred = %i896, %i908
+  %ld_phi$27 = load i32, i32* %lv$4i869i902, align 4
+  %cond_lt_tmp_i870i912 = icmp slt i32 %ld_phi$27, 10
+  br i1 %cond_lt_tmp_i870i912, label %i906, label %i909
+
+i899:                                                 ; pred = %i898
+  %array$1i881i915 = load i32, i32* %m113, align 4
+  %array$4i881i915 = load i32, i32* %m110, align 4
+  store i32 %array$4i881i915, i32* %m113, align 4
+  store i32 %array$1i881i915, i32* %m110, align 4
+  store i32 0, i32* %lv$3i882i919, align 4
+  store i32 1, i32* %lv$4i882i919, align 4
+  br label %i921
+
+i917:                                                 ; pred = %i916, %i920
+  store i32 %m116, i32* %lv$2i894, align 4
+  br label %i898
+
+mid_151:                                              ; pred = %i906
+  br label %i910
+
+mid_152:                                              ; pred = %i907
+  br label %i910
+
+mid_153:                                              ; pred = %i918
+  br label %i927
+
+mid_154:                                              ; pred = %i926
+  br label %i927
 }
 

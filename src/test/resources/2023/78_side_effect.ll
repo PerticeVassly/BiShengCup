@@ -20,15 +20,16 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry28:
+  %lv = alloca i32, align 4
+  %gv_to_lv = alloca i32, align 4
+  store i32 1, i32* %gv_to_lv, align 4
+  store i32 5, i32* %lv, align 4
   br label %whileCond_74
 
 whileCond_74:                                         ; pred = %mainEntry28, %next_141
-  %phi$5 = phi i32 [1, %mainEntry28], [%phi$11, %next_141]
-  %phi = phi i32 [5, %mainEntry28], [%result_$3, %next_141]
-  %cond_ge_tmp_ = icmp sge i32 %phi, 0
-  %cond_tmp_ = zext i1 %cond_ge_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_74, label %next_139
+  %ld_phi = load i32, i32* %lv, align 4
+  %cond_ge_tmp_ = icmp sge i32 %ld_phi, 0
+  br i1 %cond_ge_tmp_, label %whileBody_74, label %next_139
 
 whileBody_74:                                         ; pred = %whileCond_74
   %ai741 = load i32, i32* @gv, align 4
@@ -42,7 +43,8 @@ next_139:                                             ; pred = %whileCond_74
   %a$2 = load i32, i32* @gv, align 4
   call void @putint(i32 %a$2)
   call void @putch(i32 32)
-  call void @putint(i32 %phi$5)
+  %ld_phi$1 = load i32, i32* %gv_to_lv, align 4
+  call void @putint(i32 %ld_phi$1)
   call void @putch(i32 10)
   %a$3 = load i32, i32* @gv, align 4
   ret i32 %a$3
@@ -51,7 +53,8 @@ ifTrue_65:                                            ; pred = %secondCond_43
   %a = load i32, i32* @gv, align 4
   call void @putint(i32 %a)
   call void @putch(i32 32)
-  call void @putint(i32 %phi$5)
+  %ld_phi$2 = load i32, i32* %gv_to_lv, align 4
+  call void @putint(i32 %ld_phi$2)
   call void @putch(i32 10)
   br label %next_140
 
@@ -85,7 +88,9 @@ ifTrue_66:                                            ; pred = %next_140, %secon
   %a$1 = load i32, i32* @gv, align 4
   call void @putint(i32 %a$1)
   call void @putch(i32 10)
-  %result_$2 = shl i32 %phi$5, 1
+  %ld_phi$3 = load i32, i32* %gv_to_lv, align 4
+  %result_$2 = shl i32 %ld_phi$3, 1
+  store i32 %result_$2, i32* %gv_to_lv, align 4
   br label %next_141
 
 ifFalse_20:                                           ; pred = %secondCond_45, %secondCond_46
@@ -96,8 +101,9 @@ ifFalse_20:                                           ; pred = %secondCond_45, %
   br label %next_141
 
 next_141:                                             ; pred = %ifTrue_66, %ifFalse_20
-  %phi$11 = phi i32 [%result_$2, %ifTrue_66], [%phi$5, %ifFalse_20]
-  %result_$3 = sub i32 %phi, 1
+  %ld_phi$5 = load i32, i32* %lv, align 4
+  %result_$3 = sub i32 %ld_phi$5, 1
+  store i32 %result_$3, i32* %lv, align 4
   br label %whileCond_74
 
 secondCond_45:                                        ; pred = %next_140

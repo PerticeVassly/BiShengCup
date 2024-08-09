@@ -18,74 +18,86 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry89:
-  br label %i2206
+  %lvi1409 = alloca i32, align 4
+  %lv$1i1409 = alloca i32, align 4
+  %lv$3i1409 = alloca i32, align 4
+  %lv$2i1409 = alloca i32, align 4
+  store i32 7, i32* %lv$2i1409, align 4
+  store i32 10, i32* %lv$3i1409, align 4
+  store i32 6, i32* %lv$1i1409, align 4
+  store i32 5, i32* %lvi1409, align 4
+  br label %i1410
 
-i2213:                                              ; pred = %i2212
-  %result_$2i2213 = sub i32 %phi$4, 1
-  br label %i2215
+i1414:                                              ; pred = %i1413
+  %ld_phi = load i32, i32* %lv$1i1409, align 4
+  %result_$1i1414 = add i32 %ld_phi, 1
+  br label %i1416
 
-i2215:                                              ; pred = %i2213, %i2216
-  %phi$1 = phi i32 [%phi$24, %i2213], [%result_$3i2216, %i2216]
-  %cond_lt_tmp_$2i2215 = icmp slt i32 %phi$1, 20
-  %cond_tmp_$3i2215 = zext i1 %cond_lt_tmp_$2i2215 to i32
-  %cond_$3i2215 = icmp ne i32 %cond_tmp_$3i2215, 0
-  br i1 %cond_$3i2215, label %i2216, label %i2217
+i1412:                                              ; pred = %i1410
+  %ld_phi$3 = load i32, i32* %lv$1i1409, align 4
+  %ld_phi$4 = load i32, i32* %lv$3i1409, align 4
+  %result_$7i1412 = add i32 %ld_phi$3, %ld_phi$4
+  %ld_phi$5 = load i32, i32* %lvi1409, align 4
+  %result_$8i1412 = add i32 %ld_phi$5, %result_$7i1412
+  %ld_phi$6 = load i32, i32* %lv$2i1409, align 4
+  %result_$9i1412 = add i32 %result_$8i1412, %ld_phi$6
+  ret i32 %result_$9i1412
 
-i2206:                                              ; pred = %mainEntry89, %i2211
-  %phi$23 = phi i32 [7, %mainEntry89], [%phi$26, %i2211]
-  %phi$22 = phi i32 [10, %mainEntry89], [%phi$36, %i2211]
-  %phi$21 = phi i32 [6, %mainEntry89], [%result_$6i2211, %i2211]
-  %phi$2 = phi i32 [5, %mainEntry89], [%result_i2207, %i2211]
-  %cond_lt_tmp_i2206 = icmp slt i32 %phi$2, 20
-  %cond_tmp_i2206 = zext i1 %cond_lt_tmp_i2206 to i32
-  %cond_i2206 = icmp ne i32 %cond_tmp_i2206, 0
-  br i1 %cond_i2206, label %i2207, label %i2208
+i1416:                                              ; pred = %i1414, %i1421
+  %ld_phi$7 = load i32, i32* %lv$2i1409, align 4
+  %cond_eq_tmp_i1416 = icmp eq i32 %ld_phi$7, 7
+  br i1 %cond_eq_tmp_i1416, label %i1417, label %i1418
 
-i2216:                                              ; pred = %i2215
-  %result_$3i2216 = add i32 %phi$1, 3
-  br label %i2215
+i1417:                                              ; pred = %i1416
+  %ld_phi$8 = load i32, i32* %lv$2i1409, align 4
+  %result_$2i1417 = sub i32 %ld_phi$8, 1
+  br label %i1419
 
-i2212:                                              ; pred = %i2210, %i2217
-  %phi$24 = phi i32 [%phi$36, %i2210], [%result_$4i2217, %i2217]
-  %phi$4 = phi i32 [%phi$26, %i2210], [%result_$2i2213, %i2217]
-  %cond_eq_tmp_i2212 = icmp eq i32 %phi$4, 7
-  %cond_tmp_$2i2212 = zext i1 %cond_eq_tmp_i2212 to i32
-  %cond_$2i2212 = icmp ne i32 %cond_tmp_$2i2212, 0
-  br i1 %cond_$2i2212, label %i2213, label %i2214
+i1418:                                              ; pred = %i1416
+  %ld_phi$10 = load i32, i32* %lv$2i1409, align 4
+  %result_$5i1418 = add i32 %ld_phi$10, 1
+  store i32 %result_$5i1418, i32* %lv$2i1409, align 4
+  store i32 %result_$1i1414, i32* %lv$1i1409, align 4
+  br label %i1413
 
-i2210:                                              ; pred = %i2209
-  %result_$1i2210 = add i32 %phi$7, 1
-  br label %i2212
+i1415:                                              ; pred = %i1413
+  %ld_phi$12 = load i32, i32* %lv$1i1409, align 4
+  %result_$6i1415 = sub i32 %ld_phi$12, 2
+  store i32 %result_$6i1415, i32* %lv$1i1409, align 4
+  store i32 %result_i1411, i32* %lvi1409, align 4
+  br label %i1410
 
-i2207:                                              ; pred = %i2206
-  %result_i2207 = add i32 %phi$2, 3
-  br label %i2209
+i1410:                                              ; pred = %mainEntry89, %i1415
+  %ld_phi$15 = load i32, i32* %lvi1409, align 4
+  %cond_lt_tmp_i1410 = icmp slt i32 %ld_phi$15, 20
+  br i1 %cond_lt_tmp_i1410, label %i1411, label %i1412
 
-i2209:                                              ; pred = %i2207, %i2214
-  %phi$36 = phi i32 [%phi$22, %i2207], [%phi$24, %i2214]
-  %phi$26 = phi i32 [%phi$23, %i2207], [%result_$5i2214, %i2214]
-  %phi$7 = phi i32 [%phi$21, %i2207], [%result_$1i2210, %i2214]
-  %cond_lt_tmp_$1i2209 = icmp slt i32 %phi$7, 10
-  %cond_tmp_$1i2209 = zext i1 %cond_lt_tmp_$1i2209 to i32
-  %cond_$1i2209 = icmp ne i32 %cond_tmp_$1i2209, 0
-  br i1 %cond_$1i2209, label %i2210, label %i2211
+i1421:                                              ; pred = %i1419
+  %ld_phi$16 = load i32, i32* %lv$3i1409, align 4
+  %result_$4i1421 = sub i32 %ld_phi$16, 1
+  store i32 %result_$4i1421, i32* %lv$3i1409, align 4
+  store i32 %result_$2i1417, i32* %lv$2i1409, align 4
+  br label %i1416
 
-i2211:                                              ; pred = %i2209
-  %result_$6i2211 = sub i32 %phi$7, 2
-  br label %i2206
+i1411:                                              ; pred = %i1410
+  %ld_phi$17 = load i32, i32* %lvi1409, align 4
+  %result_i1411 = add i32 %ld_phi$17, 3
+  br label %i1413
 
-i2208:                                              ; pred = %i2206
-  %result_$7i2208 = add i32 %phi$21, %phi$22
-  %result_$8i2208 = add i32 %phi$2, %result_$7i2208
-  %result_$9i2208 = add i32 %result_$8i2208, %phi$23
-  ret i32 %result_$9i2208
+i1419:                                              ; pred = %i1417, %i1420
+  %ld_phi$21 = load i32, i32* %lv$3i1409, align 4
+  %cond_lt_tmp_$2i1419 = icmp slt i32 %ld_phi$21, 20
+  br i1 %cond_lt_tmp_$2i1419, label %i1420, label %i1421
 
-i2214:                                              ; pred = %i2212
-  %result_$5i2214 = add i32 %phi$4, 1
-  br label %i2209
+i1413:                                              ; pred = %i1418, %i1411
+  %ld_phi$22 = load i32, i32* %lv$1i1409, align 4
+  %cond_lt_tmp_$1i1413 = icmp slt i32 %ld_phi$22, 10
+  br i1 %cond_lt_tmp_$1i1413, label %i1414, label %i1415
 
-i2217:                                              ; pred = %i2215
-  %result_$4i2217 = sub i32 %phi$1, 1
-  br label %i2212
+i1420:                                              ; pred = %i1419
+  %ld_phi$23 = load i32, i32* %lv$3i1409, align 4
+  %result_$3i1420 = add i32 %ld_phi$23, 3
+  store i32 %result_$3i1420, i32* %lv$3i1409, align 4
+  br label %i1419
 }
 

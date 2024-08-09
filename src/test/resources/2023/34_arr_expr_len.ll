@@ -20,24 +20,31 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry60:
+  %lv = alloca i32, align 4
+  %lv$1 = alloca i32, align 4
+  store i32 0, i32* %lv$1, align 4
+  store i32 0, i32* %lv, align 4
   br label %whileCond_232
 
 whileCond_232:                                        ; pred = %mainEntry60, %whileBody_232
-  %phi$4 = phi i32 [0, %mainEntry60], [%result_, %whileBody_232]
-  %phi = phi i32 [0, %mainEntry60], [%result_$1, %whileBody_232]
-  %cond_lt_tmp_ = icmp slt i32 %phi, 6
-  %cond_tmp_ = zext i1 %cond_lt_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_232, label %next_531
+  %ld_phi = load i32, i32* %lv, align 4
+  %cond_lt_tmp_ = icmp slt i32 %ld_phi, 6
+  br i1 %cond_lt_tmp_, label %whileBody_232, label %next_531
 
 whileBody_232:                                        ; pred = %whileCond_232
-  %arr = getelementptr [6 x i32], [6 x i32]* @gv, i32 0, i32 %phi
+  %ld_phi$1 = load i32, i32* %lv, align 4
+  %arr = getelementptr [6 x i32], [6 x i32]* @gv, i32 0, i32 %ld_phi$1
   %arr$1 = load i32, i32* %arr, align 4
-  %result_ = add i32 %phi$4, %arr$1
-  %result_$1 = add i32 %phi, 1
+  %ld_phi$2 = load i32, i32* %lv$1, align 4
+  %result_ = add i32 %ld_phi$2, %arr$1
+  %ld_phi$3 = load i32, i32* %lv, align 4
+  %result_$1 = add i32 %ld_phi$3, 1
+  store i32 %result_, i32* %lv$1, align 4
+  store i32 %result_$1, i32* %lv, align 4
   br label %whileCond_232
 
 next_531:                                             ; pred = %whileCond_232
-  ret i32 %phi$4
+  %ld_phi$4 = load i32, i32* %lv$1, align 4
+  ret i32 %ld_phi$4
 }
 

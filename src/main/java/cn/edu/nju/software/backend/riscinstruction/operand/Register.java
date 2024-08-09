@@ -20,4 +20,9 @@ public class Register implements Operand {
     public String toString() {
         return regName;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj.toString().equals(regName);
+    }
 }

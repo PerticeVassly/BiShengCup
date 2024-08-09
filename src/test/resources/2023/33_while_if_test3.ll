@@ -18,35 +18,46 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry86:
-  br label %i2196
+  %lv$2i1399 = alloca i32, align 4
+  store i32 4, i32* %lv$2i1399, align 4
+  br label %i1400
 
-i2198:                                              ; pred = %i2196
-  ret i32 %phi$1
+i1400:                                              ; pred = %mainEntry86, %i1407, %mid_184, %mid_185, %mid_186
+  %ld_phi = load i32, i32* %lv$2i1399, align 4
+  %cond_lt_tmp_i1400 = icmp slt i32 %ld_phi, 75
+  br i1 %cond_lt_tmp_i1400, label %i1401, label %i1402
 
-i2196:                                              ; pred = %mainEntry86, %i2203, %i2197, %i2199, %i2201
-  %phi$1 = phi i32 [4, %mainEntry86], [168, %i2203], [%phi$1, %i2197], [%result_$1i2199, %i2199], [%result_$1i2199, %i2201]
-  %cond_lt_tmp_i2196 = icmp slt i32 %phi$1, 75
-  %cond_tmp_i2196 = zext i1 %cond_lt_tmp_i2196 to i32
-  %cond_i2196 = icmp ne i32 %cond_tmp_i2196, 0
-  br i1 %cond_i2196, label %i2197, label %i2198
+i1402:                                              ; pred = %i1400
+  %ld_phi$1 = load i32, i32* %lv$2i1399, align 4
+  ret i32 %ld_phi$1
 
-i2203:                                              ; pred = %i2201
-  br label %i2196
+i1405:                                              ; pred = %i1403
+  br i1 true, label %i1407, label %mid_184
 
-i2197:                                              ; pred = %i2196
-  %cond_lt_tmp_$1i2197 = icmp slt i32 %phi$1, 100
-  %cond_tmp_$1i2197 = zext i1 %cond_lt_tmp_$1i2197 to i32
-  %cond_$1i2197 = icmp ne i32 %cond_tmp_$1i2197, 0
-  br i1 %cond_$1i2197, label %i2199, label %i2196
+i1403:                                              ; pred = %i1401
+  %ld_phi$2 = load i32, i32* %lv$2i1399, align 4
+  %result_$1i1403 = add i32 %ld_phi$2, 42
+  %cond_gt_tmp_i1403 = icmp sgt i32 %result_$1i1403, 99
+  br i1 %cond_gt_tmp_i1403, label %i1405, label %mid_185
 
-i2199:                                              ; pred = %i2197
-  %result_$1i2199 = add i32 %phi$1, 42
-  %cond_gt_tmp_i2199 = icmp sgt i32 %result_$1i2199, 99
-  %cond_tmp_$2i2199 = zext i1 %cond_gt_tmp_i2199 to i32
-  %cond_$2i2199 = icmp ne i32 %cond_tmp_$2i2199, 0
-  br i1 %cond_$2i2199, label %i2201, label %i2196
+i1401:                                              ; pred = %i1400
+  %ld_phi$3 = load i32, i32* %lv$2i1399, align 4
+  %cond_lt_tmp_$1i1401 = icmp slt i32 %ld_phi$3, 100
+  br i1 %cond_lt_tmp_$1i1401, label %i1403, label %mid_186
 
-i2201:                                              ; pred = %i2199
-  br i1 true, label %i2203, label %i2196
+i1407:                                              ; pred = %i1405
+  store i32 168, i32* %lv$2i1399, align 4
+  br label %i1400
+
+mid_184:                                            ; pred = %i1405
+  store i32 %result_$1i1403, i32* %lv$2i1399, align 4
+  br label %i1400
+
+mid_185:                                            ; pred = %i1403
+  store i32 %result_$1i1403, i32* %lv$2i1399, align 4
+  br label %i1400
+
+mid_186:                                            ; pred = %i1401
+  br label %i1400
 }
 

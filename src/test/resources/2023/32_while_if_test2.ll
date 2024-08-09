@@ -18,47 +18,55 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry96:
-  br i1 false, label %i2226, label %i2227
+  %lvi1429 = alloca i32, align 4
+  %lv$1i1429 = alloca i32, align 4
+  br i1 false, label %i1430, label %i1431
 
-i2231:                                              ; pred = %i2229
-  %result_$1i2231 = add i32 %phi$4, 25
-  br label %i2228
+i1430:                                              ; pred = %mainEntry96
+  store i32 3, i32* %lv$1i1429, align 4
+  br label %i1433
 
-i2227:                                              ; pred = %mainEntry96
-  br label %i2232
+i1436:                                              ; pred = %i1437, %i1431
+  %ld_phi = load i32, i32* %lvi1429, align 4
+  %cond_lt_tmp_i1436 = icmp slt i32 %ld_phi, 5
+  br i1 %cond_lt_tmp_i1436, label %i1437, label %i1438
 
-i2232:                                              ; pred = %i2227, %i2233
-  %phi$8 = phi i32 [3, %i2227], [%result_$2i2233, %i2233]
-  %phi$1 = phi i32 [0, %i2227], [%result_$3i2233, %i2233]
-  %cond_lt_tmp_i2232 = icmp slt i32 %phi$1, 5
-  %cond_tmp_$2i2232 = zext i1 %cond_lt_tmp_i2232 to i32
-  %cond_$2i2232 = icmp ne i32 %cond_tmp_$2i2232, 0
-  br i1 %cond_$2i2232, label %i2233, label %i2234
+i1437:                                              ; pred = %i1436
+  %ld_phi$1 = load i32, i32* %lv$1i1429, align 4
+  %result_$2i1437 = shl i32 %ld_phi$1, 1
+  %ld_phi$2 = load i32, i32* %lvi1429, align 4
+  %result_$3i1437 = add i32 %ld_phi$2, 1
+  store i32 %result_$2i1437, i32* %lv$1i1429, align 4
+  store i32 %result_$3i1437, i32* %lvi1429, align 4
+  br label %i1436
 
-i2233:                                              ; pred = %i2232
-  %result_$2i2233 = shl i32 %phi$8, 1
-  %result_$3i2233 = add i32 %phi$1, 1
-  br label %i2232
+i1438:                                              ; pred = %i1436
+  br label %i1432
 
-i2229:                                              ; pred = %i2230, %i2226
-  %phi$4 = phi i32 [%result_i2230, %i2230], [3, %i2226]
-  %cond_eq_tmp_$1i2229 = icmp eq i32 %phi$4, 2
-  %cond_tmp_$1i2229 = zext i1 %cond_eq_tmp_$1i2229 to i32
-  %cond_$1i2229 = icmp ne i32 %cond_tmp_$1i2229, 0
-  br i1 %cond_$1i2229, label %i2230, label %i2231
+i1433:                                              ; pred = %i1430, %i1434
+  %ld_phi$4 = load i32, i32* %lv$1i1429, align 4
+  %cond_eq_tmp_$1i1433 = icmp eq i32 %ld_phi$4, 2
+  br i1 %cond_eq_tmp_$1i1433, label %i1434, label %i1435
 
-i2230:                                              ; pred = %i2229
-  %result_i2230 = add i32 %phi$4, 2
-  br label %i2229
+i1434:                                              ; pred = %i1433
+  %ld_phi$5 = load i32, i32* %lv$1i1429, align 4
+  %result_i1434 = add i32 %ld_phi$5, 2
+  store i32 %result_i1434, i32* %lv$1i1429, align 4
+  br label %i1433
 
-i2226:                                              ; pred = %mainEntry96
-  br label %i2229
+i1432:                                              ; pred = %i1438, %i1435
+  %ld_phi$6 = load i32, i32* %lv$1i1429, align 4
+  ret i32 %ld_phi$6
 
-i2234:                                              ; pred = %i2232
-  br label %i2228
+i1431:                                              ; pred = %mainEntry96
+  store i32 3, i32* %lv$1i1429, align 4
+  store i32 0, i32* %lvi1429, align 4
+  br label %i1436
 
-i2228:                                              ; pred = %i2231, %i2234
-  %phi$6 = phi i32 [%result_$1i2231, %i2231], [%phi$8, %i2234]
-  ret i32 %phi$6
+i1435:                                              ; pred = %i1433
+  %ld_phi$7 = load i32, i32* %lv$1i1429, align 4
+  %result_$1i1435 = add i32 %ld_phi$7, 25
+  store i32 %result_$1i1435, i32* %lv$1i1429, align 4
+  br label %i1432
 }
 

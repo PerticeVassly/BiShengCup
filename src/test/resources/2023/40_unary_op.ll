@@ -18,16 +18,19 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry94:
+  %lv = alloca i32, align 4
   br i1 false, label %ifTrue_368, label %ifFalse_146
 
 ifTrue_368:                                         ; pred = %mainEntry94
+  store i32 -1, i32* %lv, align 4
   br label %next_654
 
 ifFalse_146:                                        ; pred = %mainEntry94
+  store i32 0, i32* %lv, align 4
   br label %next_654
 
 next_654:                                           ; pred = %ifTrue_368, %ifFalse_146
-  %phi = phi i32 [-1, %ifTrue_368], [0, %ifFalse_146]
-  ret i32 %phi
+  %ld_phi = load i32, i32* %lv, align 4
+  ret i32 %ld_phi
 }
 

@@ -18,17 +18,20 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry51:
+  %lv = alloca i32, align 4
   br i1 false, label %ifTrue_283, label %ifFalse_123
 
 ifTrue_283:                                         ; pred = %mainEntry51
+  store i32 -1, i32* %lv, align 4
   br label %next_489
 
 ifFalse_123:                                        ; pred = %mainEntry51
+  store i32 4, i32* %lv, align 4
   br label %next_489
 
 next_489:                                           ; pred = %ifTrue_283, %ifFalse_123
-  %phi$1 = phi i32 [-1, %ifTrue_283], [4, %ifFalse_123]
-  call void @putint(i32 %phi$1)
+  %ld_phi = load i32, i32* %lv, align 4
+  call void @putint(i32 %ld_phi)
   ret i32 0
 }
 

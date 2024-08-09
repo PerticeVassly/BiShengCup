@@ -23,9 +23,7 @@ exgcdEntry:
   store i32* %2, i32** %lv$2, align 4
   store i32* %3, i32** %lv$3, align 4
   %cond_eq_tmp_ = icmp eq i32 %1, 0
-  %cond_tmp_ = zext i1 %cond_eq_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_319, label %ifFalse_140
+  br i1 %cond_eq_tmp_, label %ifTrue_319, label %ifFalse_140
 
 ifTrue_319:                                         ; pred = %exgcdEntry
   %arr_ = load i32*, i32** %lv$2, align 4

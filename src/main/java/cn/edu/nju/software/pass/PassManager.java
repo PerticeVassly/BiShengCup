@@ -55,6 +55,7 @@ public class PassManager {
         allPasses.add(new CommonSubexpressionElimination());
         allPasses.add(RegToMem.getInstance());
         allPasses.add(EliminateLoadStorePass.getInstance());
+        allPasses.add(new OptOptimize());
         allPasses.add(ValueAnalyzePass.getInstance());
     }
     public void setDbgFlag(){

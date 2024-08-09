@@ -18,23 +18,30 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry58:
+  %lv = alloca i32, align 4
+  %gv_to_lv = alloca i32, align 4
+  store i32 1, i32* %gv_to_lv, align 4
+  store i32 0, i32* %lv, align 4
   br label %whileCond_210
 
 whileCond_210:                                        ; pred = %mainEntry58, %whileBody_210
-  %phi$4 = phi i32 [1, %mainEntry58], [%result_$2, %whileBody_210]
-  %phi = phi i32 [0, %mainEntry58], [%result_, %whileBody_210]
-  %cond_le_tmp_ = icmp sle i32 %phi, 9
-  %cond_tmp_ = zext i1 %cond_le_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_210, label %next_502
+  %ld_phi = load i32, i32* %lv, align 4
+  %cond_le_tmp_ = icmp sle i32 %ld_phi, 9
+  br i1 %cond_le_tmp_, label %whileBody_210, label %next_502
 
 whileBody_210:                                        ; pred = %whileCond_210
-  %result_ = add i32 %phi, 1
-  %result_$2 = add i32 %phi$4, %phi$4
+  %ld_phi$1 = load i32, i32* %lv, align 4
+  %result_ = add i32 %ld_phi$1, 1
+  %ld_phi$2 = load i32, i32* %gv_to_lv, align 4
+  %result_$2 = add i32 %ld_phi$2, %ld_phi$2
+  store i32 %result_$2, i32* %gv_to_lv, align 4
+  store i32 %result_, i32* %lv, align 4
   br label %whileCond_210
 
 next_502:                                             ; pred = %whileCond_210
-  call void @putint(i32 %phi$4)
-  ret i32 %phi$4
+  %ld_phi$3 = load i32, i32* %gv_to_lv, align 4
+  call void @putint(i32 %ld_phi$3)
+  %ld_phi$4 = load i32, i32* %gv_to_lv, align 4
+  ret i32 %ld_phi$4
 }
 

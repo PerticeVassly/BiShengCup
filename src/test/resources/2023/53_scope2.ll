@@ -18,37 +18,47 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry76:
-  br i1 true, label %ifTrue_325, label %next_584
+  %lv = alloca i32, align 4
+  %gv_to_lv = alloca i32, align 4
+  br i1 true, label %ifTrue_325, label %mid_174
 
 ifTrue_325:                                           ; pred = %mainEntry76
+  store i32 3390, i32* %gv_to_lv, align 4
+  store i32 112, i32* %lv, align 4
   br label %whileCond_259
 
-next_584:                                             ; pred = %mainEntry76, %next_585
-  %phi$1 = phi i32 [3389, %mainEntry76], [%phi$7, %next_585]
-  ret i32 %phi$1
+next_584:                                             ; pred = %next_585, %mid_174
+  %ld_phi = load i32, i32* %gv_to_lv, align 4
+  ret i32 %ld_phi
 
-whileCond_259:                                        ; pred = %ifTrue_325, %whileBody_259, %ifTrue_326
-  %phi$7 = phi i32 [3390, %ifTrue_325], [%phi$7, %whileBody_259], [%phi$7, %ifTrue_326]
-  %phi$2 = phi i32 [112, %ifTrue_325], [%result_$1, %whileBody_259], [%result_$4, %ifTrue_326]
-  %cond_gt_tmp_ = icmp sgt i32 %phi$2, 10
-  %cond_tmp_$1 = zext i1 %cond_gt_tmp_ to i32
-  %cond_$1 = icmp ne i32 %cond_tmp_$1, 0
-  br i1 %cond_$1, label %whileBody_259, label %next_585
+whileCond_259:                                        ; pred = %ifTrue_325, %ifTrue_326, %mid_175
+  %ld_phi$1 = load i32, i32* %lv, align 4
+  %cond_gt_tmp_ = icmp sgt i32 %ld_phi$1, 10
+  br i1 %cond_gt_tmp_, label %whileBody_259, label %next_585
 
 whileBody_259:                                        ; pred = %whileCond_259
-  %result_$1 = sub i32 %phi$2, 88
+  %ld_phi$2 = load i32, i32* %lv, align 4
+  %result_$1 = sub i32 %ld_phi$2, 88
   %cond_lt_tmp_$1 = icmp slt i32 %result_$1, 1000
-  %cond_tmp_$2 = zext i1 %cond_lt_tmp_$1 to i32
-  %cond_$2 = icmp ne i32 %cond_tmp_$2, 0
-  br i1 %cond_$2, label %ifTrue_326, label %whileCond_259
+  br i1 %cond_lt_tmp_$1, label %ifTrue_326, label %mid_175
 
 next_585:                                             ; pred = %whileCond_259
-  call void @putint(i32 %phi$2)
+  %ld_phi$3 = load i32, i32* %lv, align 4
+  call void @putint(i32 %ld_phi$3)
   br label %next_584
 
 ifTrue_326:                                           ; pred = %whileBody_259
   %result_$2 = sub i32 %result_$1, 10
   %result_$4 = add i32 %result_$2, 22
+  store i32 %result_$4, i32* %lv, align 4
+  br label %whileCond_259
+
+mid_174:                                              ; pred = %mainEntry76
+  store i32 3389, i32* %gv_to_lv, align 4
+  br label %next_584
+
+mid_175:                                              ; pred = %whileBody_259
+  store i32 %result_$1, i32* %lv, align 4
   br label %whileCond_259
 }
 

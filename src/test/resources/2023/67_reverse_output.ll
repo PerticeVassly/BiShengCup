@@ -19,9 +19,7 @@ declare void @memset(i32*, i32, i32)
 define void @reverse(i32 %0) {
 reverseEntry:
   %cond_le_tmp_ = icmp sle i32 %0, 1
-  %cond_tmp_ = zext i1 %cond_le_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %ifTrue_286, label %ifFalse_125
+  br i1 %cond_le_tmp_, label %ifTrue_286, label %ifFalse_125
 
 ifTrue_286:                                          ; pred = %reverseEntry
   %getint = call i32 @getint()

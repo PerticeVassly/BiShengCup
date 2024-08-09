@@ -170,12 +170,17 @@ public class RiscBasicBlock {
         ListIterator<RiscInstruction> iterator = riscInstructions.listIterator();
         while(iterator.hasNext()){
             RiscInstruction riscInstruction = iterator.next();
+            if(riscInstruction instanceof RiscComment){
+                continue;
+            }
             if(riscInstruction instanceof RiscMv riscMv){
                 ArrayList<Operand> operands = riscMv.getOperands();
                if(operands.get(0).equals(operands.get(1))){
                    iterator.remove();
                } else if (riscInstruction.equals(pre)) {
                    iterator.remove();
+               }else {
+                   pre=riscInstruction;
                }
             }else {
                 pre=riscInstruction;

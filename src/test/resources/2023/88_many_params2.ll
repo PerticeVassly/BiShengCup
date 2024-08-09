@@ -18,8 +18,12 @@ declare void @memset(i32*, i32, i32)
 
 define i32 @main() {
 mainEntry99:
+  %lv$8i1439 = alloca i32, align 4
+  %lv$7i1439 = alloca i32, align 4
+  %lv$2 = alloca i32, align 4
+  %lv$9i1439 = alloca i32, align 4
   %lv$1 = alloca [53 x [59 x i32]], align 16
-  %m162 = getelementptr [53 x [59 x i32]], [53 x [59 x i32]]* %lv$1, i32 0, i32 6
+  %m158 = getelementptr [53 x [59 x i32]], [53 x [59 x i32]]* %lv$1, i32 0, i32 6
   %lv = alloca [61 x [67 x i32]], align 16
   %ptr = bitcast [61 x [67 x i32]]* %lv to i32*
   call void @memset(i32* %ptr, i32 0, i32 16348)
@@ -36,20 +40,20 @@ mainEntry99:
   store i32 9, i32* %a$3, align 4
   %a$4 = getelementptr [67 x i32], [67 x i32]* %ptr_, i32 0, i32 11
   store i32 11, i32* %a$4, align 4
-  %b = getelementptr [59 x i32], [59 x i32]* %m162, i32 0, i32 1
+  %b = getelementptr [59 x i32], [59 x i32]* %m158, i32 0, i32 1
   store i32 1, i32* %b, align 4
-  %b$1 = getelementptr [59 x i32], [59 x i32]* %m162, i32 0, i32 2
+  %b$1 = getelementptr [59 x i32], [59 x i32]* %m158, i32 0, i32 2
   store i32 2, i32* %b$1, align 4
-  %b$2 = getelementptr [59 x i32], [59 x i32]* %m162, i32 0, i32 3
+  %b$2 = getelementptr [59 x i32], [59 x i32]* %m158, i32 0, i32 3
   store i32 3, i32* %b$2, align 4
-  %b$3 = getelementptr [59 x i32], [59 x i32]* %m162, i32 0, i32 9
+  %b$3 = getelementptr [59 x i32], [59 x i32]* %m158, i32 0, i32 9
   store i32 9, i32* %b$3, align 4
   %a$6 = load i32, i32* %a, align 4
   %b$4 = getelementptr [53 x [59 x i32]], [53 x [59 x i32]]* %lv$1, i32 0, i32 0
   %a$8 = load i32, i32* %a$1, align 4
   %a$10 = getelementptr [67 x i32], [67 x i32]* %ptr_, i32 0, i32 0
   %b$6 = load i32, i32* %b$2, align 4
-  %b$7 = getelementptr [59 x i32], [59 x i32]* %m162, i32 0, i32 0
+  %b$7 = getelementptr [59 x i32], [59 x i32]* %m158, i32 0, i32 0
   %b$8 = load i32, i32* %b$7, align 4
   %ptr_$13 = getelementptr [53 x [59 x i32]], [53 x [59 x i32]]* %lv$1, i32 0, i32 34
   %b$11 = getelementptr [59 x i32], [59 x i32]* %ptr_$13, i32 0, i32 4
@@ -57,70 +61,79 @@ mainEntry99:
   %ptr_$14 = getelementptr [53 x [59 x i32]], [53 x [59 x i32]]* %lv$1, i32 0, i32 51
   %b$13 = getelementptr [59 x i32], [59 x i32]* %ptr_$14, i32 0, i32 18
   %b$14 = load i32, i32* %b$13, align 4
-  br label %i2236
+  store i32 0, i32* %lv$9i1439, align 4
+  br label %i1440
 
-whileCond_290:                                        ; pred = %whileBody_290, %i2241
-  %phi = phi i32 [%result_$1, %whileBody_290], [%result_, %i2241]
-  %cond_ge_tmp_ = icmp sge i32 %phi, 0
-  %cond_tmp_ = zext i1 %cond_ge_tmp_ to i32
-  %cond_ = icmp ne i32 %cond_tmp_, 0
-  br i1 %cond_, label %whileBody_290, label %next_660
+whileCond_290:                                        ; pred = %whileBody_290, %i1445
+  %ld_phi = load i32, i32* %lv$2, align 4
+  %cond_ge_tmp_ = icmp sge i32 %ld_phi, 0
+  br i1 %cond_ge_tmp_, label %whileBody_290, label %next_660
 
 whileBody_290:                                        ; pred = %whileCond_290
-  %b$15 = getelementptr [59 x i32], [59 x i32]* %m162, i32 0, i32 %phi
+  %ld_phi$1 = load i32, i32* %lv$2, align 4
+  %b$15 = getelementptr [59 x i32], [59 x i32]* %m158, i32 0, i32 %ld_phi$1
   %b$16 = load i32, i32* %b$15, align 4
   call void @putint(i32 %b$16)
   call void @putch(i32 32)
-  %result_$1 = sub i32 %phi, 1
+  %ld_phi$2 = load i32, i32* %lv$2, align 4
+  %result_$1 = sub i32 %ld_phi$2, 1
+  store i32 %result_$1, i32* %lv$2, align 4
   br label %whileCond_290
 
 next_660:                                             ; pred = %whileCond_290
   call void @putch(i32 10)
   ret i32 0
 
-i2240:                                                ; pred = %i2239
-  %gi2240 = getelementptr i32, i32* %b$7, i32 %phi$5
-  %result_$1i2240 = mul i32 %phi$7, 128875
-  %result_$2i2240 = srem i32 %result_$1i2240, 3724
-  store i32 %result_$2i2240, i32* %gi2240, align 4
-  %result_$3i2240 = add i32 %phi$5, 1
-  %result_$4i2240 = add i32 %phi$7, 7
-  br label %i2239
+i1444:                                                ; pred = %i1443
+  %ld_phi$3 = load i32, i32* %lv$8i1439, align 4
+  %gi1444 = getelementptr i32, i32* %b$7, i32 %ld_phi$3
+  %ld_phi$4 = load i32, i32* %lv$7i1439, align 4
+  %result_$1i1444 = mul i32 %ld_phi$4, 128875
+  %result_$2i1444 = srem i32 %result_$1i1444, 3724
+  store i32 %result_$2i1444, i32* %gi1444, align 4
+  %ld_phi$5 = load i32, i32* %lv$8i1439, align 4
+  %result_$3i1444 = add i32 %ld_phi$5, 1
+  %ld_phi$6 = load i32, i32* %lv$7i1439, align 4
+  %result_$4i1444 = add i32 %ld_phi$6, 7
+  store i32 %result_$4i1444, i32* %lv$7i1439, align 4
+  store i32 %result_$3i1444, i32* %lv$8i1439, align 4
+  br label %i1443
 
-i2237:                                                ; pred = %i2236
-  %ptr_i2237 = getelementptr [59 x i32], [59 x i32]* %b$4, i32 %a$6
-  %bi2237 = getelementptr [59 x i32], [59 x i32]* %ptr_i2237, i32 0, i32 %phi$6
-  %b$1i2237 = load i32, i32* %bi2237, align 4
-  call void @putint(i32 %b$1i2237)
-  %result_i2237 = add i32 %phi$6, 1
-  br label %i2236
+i1441:                                                ; pred = %i1440
+  %ptr_i1441 = getelementptr [59 x i32], [59 x i32]* %b$4, i32 %a$6
+  %ld_phi$7 = load i32, i32* %lv$9i1439, align 4
+  %bi1441 = getelementptr [59 x i32], [59 x i32]* %ptr_i1441, i32 0, i32 %ld_phi$7
+  %b$1i1441 = load i32, i32* %bi1441, align 4
+  call void @putint(i32 %b$1i1441)
+  %ld_phi$8 = load i32, i32* %lv$9i1439, align 4
+  %result_i1441 = add i32 %ld_phi$8, 1
+  store i32 %result_i1441, i32* %lv$9i1439, align 4
+  br label %i1440
 
-i2241:                                                ; pred = %i2239
-  %result_$5i2241 = add i32 %b$6, %b$8
-  %result_ = mul i32 %result_$5i2241, 3
+i1443:                                                ; pred = %i1444, %i1442
+  %ld_phi$9 = load i32, i32* %lv$8i1439, align 4
+  %cond_lt_tmp_$1i1443 = icmp slt i32 %ld_phi$9, 10
+  br i1 %cond_lt_tmp_$1i1443, label %i1444, label %i1445
+
+i1445:                                                ; pred = %i1443
+  %result_$5i1445 = add i32 %b$6, %b$8
+  %result_ = mul i32 %result_$5i1445, 3
+  store i32 %result_, i32* %lv$2, align 4
   br label %whileCond_290
 
-i2238:                                                ; pred = %i2236
+i1442:                                                ; pred = %i1440
   call void @putch(i32 10)
-  %di2238 = getelementptr i32, i32* %a$10, i32 %a$8
-  %d$1i2238 = load i32, i32* %di2238, align 4
-  call void @putint(i32 %d$1i2238)
+  %di1442 = getelementptr i32, i32* %a$10, i32 %a$8
+  %d$1i1442 = load i32, i32* %di1442, align 4
+  call void @putint(i32 %d$1i1442)
   call void @putch(i32 10)
-  br label %i2239
+  store i32 %b$12, i32* %lv$7i1439, align 4
+  store i32 %b$14, i32* %lv$8i1439, align 4
+  br label %i1443
 
-i2239:                                                ; pred = %i2240, %i2238
-  %phi$7 = phi i32 [%result_$4i2240, %i2240], [%b$12, %i2238]
-  %phi$5 = phi i32 [%result_$3i2240, %i2240], [%b$14, %i2238]
-  %cond_lt_tmp_$1i2239 = icmp slt i32 %phi$5, 10
-  %cond_tmp_$1i2239 = zext i1 %cond_lt_tmp_$1i2239 to i32
-  %cond_$1i2239 = icmp ne i32 %cond_tmp_$1i2239, 0
-  br i1 %cond_$1i2239, label %i2240, label %i2241
-
-i2236:                                                ; pred = %mainEntry99, %i2237
-  %phi$6 = phi i32 [0, %mainEntry99], [%result_i2237, %i2237]
-  %cond_lt_tmp_i2236 = icmp slt i32 %phi$6, 10
-  %cond_tmp_i2236 = zext i1 %cond_lt_tmp_i2236 to i32
-  %cond_i2236 = icmp ne i32 %cond_tmp_i2236, 0
-  br i1 %cond_i2236, label %i2237, label %i2238
+i1440:                                                ; pred = %mainEntry99, %i1441
+  %ld_phi$10 = load i32, i32* %lv$9i1439, align 4
+  %cond_lt_tmp_i1440 = icmp slt i32 %ld_phi$10, 10
+  br i1 %cond_lt_tmp_i1440, label %i1441, label %i1442
 }
 
