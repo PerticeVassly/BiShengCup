@@ -128,7 +128,7 @@ public class ArmBasicBlock {
             generator.addInstruction(new ArmLdr(new ArmRegister("r4"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r8")));
             destReg = "r4";
         } else if (type instanceof FloatType) {
-            generator.addInstruction(new ArmVldr(new ArmRegister("s4"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r8")));
+            generator.addInstruction(new ArmVldr_f32(new ArmRegister("s4"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r8")));
             destReg = "s4";
         } else if(type instanceof Pointer){
             generator.addInstruction(new ArmLdr(new ArmRegister("r4"), allocator.getRegWithOffset(allocator.getStackSize() + preLen - order * 8, "sp", "r8")));

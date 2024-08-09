@@ -75,7 +75,7 @@ public class ArmAllocator {
             if(checkTempVarIsRecorded(localVar)){ //here is all localvar is temp
                 return fetchTempVar(localVar);
             }
-            generator.addInstruction(new ArmVldr(new ArmRegister("s" + i), getAddrOfLocalVar(localVar)));
+            generator.addInstruction(new ArmVldr_f32(new ArmRegister("s" + i), getAddrOfLocalVar(localVar)));
             return "s" + i;
         } else if (localVar.getType() instanceof IntType || localVar.getType() instanceof BoolType) {
             if(isLastLVal(localVar)){
@@ -310,7 +310,7 @@ public class ArmAllocator {
     public void loadLocalVarFromMemory(ValueRef variable, String regName){
         TypeRef type = variable.getType();
         if(type instanceof FloatType){
-            generator.addInstruction(new ArmVldr(new ArmRegister(regName), getAddrOfLocalVar(variable)));
+            generator.addInstruction(new ArmVldr_f32(new ArmRegister(regName), getAddrOfLocalVar(variable)));
         } else if(type instanceof IntType || type instanceof BoolType){
             generator.addInstruction(new ArmLdr(new ArmRegister(regName), getAddrOfLocalVar(variable)));
         } else if(type instanceof Pointer){

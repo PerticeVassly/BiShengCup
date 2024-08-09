@@ -141,7 +141,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
         if (type instanceof IntType) {
             armInstructions.add(new ArmLdr(new ArmRegister("r4"), srcArmOperand));
         } else if (type instanceof FloatType) {
-            armInstructions.add(new ArmVldr(new ArmRegister("s4"), srcArmOperand));
+            armInstructions.add(new ArmVldr_f32(new ArmRegister("s4"), srcArmOperand));
         } else if (type instanceof Pointer){
             armInstructions.add(new ArmLdr(new ArmRegister("r4"), srcArmOperand));
         } else {
@@ -245,7 +245,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(FDiv fdiv) {
         insertComment("fdiv " + fdiv.getLVal().getName() + " " + fdiv.getOperand(0).getName() + " " + fdiv.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(fdiv);
-        armInstructions.add(new ArmVdiv(new ArmRegister("s4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmVdiv_f32(new ArmRegister("s4"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         afterAnInstr(fdiv);
     }
 
@@ -610,7 +610,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
                 continue;
             }
             if(ArmSpecifications.isFloatReg(registers[i])){
-                armInstructions.add(new ArmVldr(new ArmRegister(registers[i]), new ArmIndirectRegister("sp", i * 8)));
+                armInstructions.add(new ArmVldr_f32(new ArmRegister(registers[i]), new ArmIndirectRegister("sp", i * 8)));
             } else {
                 armInstructions.add(new ArmLdr(new ArmRegister(registers[i]), new ArmIndirectRegister("sp", i * 8)));
             }

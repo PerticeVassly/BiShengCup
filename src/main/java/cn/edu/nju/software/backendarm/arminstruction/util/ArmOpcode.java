@@ -27,7 +27,7 @@ public enum ArmOpcode {
     VSUB_F32,
     VMUL_F32,
     VDIV_F32,
-    VLDR,
+    VLDR_F32,
     VSTR,
     MLS,
     VCMP_F32,
