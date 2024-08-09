@@ -27,6 +27,18 @@ hanoiEntry:
 	# get address of local var:3
 	sw a3, 32(sp)
 
+	# sub m4 0 
+
+	# fetch variables
+
+	# get address of local var:0
+	lw t1, 44(sp)
+	addi t2, zero, 1
+	subw t0, t1, t2
+
+	# get address of local var:m4
+	sw t0, 28(sp)
+
 	# cmp cond_eq_tmp_ 0 
 
 	# fetch variables
@@ -36,13 +48,13 @@ hanoiEntry:
 	addi t2, zero, 1
 	xor t0, t1, t2
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -51,7 +63,7 @@ hanoiEntry:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ ifTrue_4 ifFalse_4
 
@@ -67,17 +79,13 @@ ifTrue_4:
 	# get address of local var:1
 	lw t1, 40(sp)
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -86,17 +94,13 @@ ifTrue_4:
 	# fetch variables
 	addi t1, zero, 32
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -107,17 +111,13 @@ ifTrue_4:
 	# get address of local var:3
 	lw t1, 32(sp)
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -126,17 +126,13 @@ ifTrue_4:
 	# fetch variables
 	addi t1, zero, 44
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -145,17 +141,13 @@ ifTrue_4:
 	# fetch variables
 	addi t1, zero, 32
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -163,24 +155,12 @@ ifTrue_4:
 	j next_13
 ifFalse_4:
 
-	# sub m4 0 
-
-	# fetch variables
-
-	# get address of local var:0
-	lw t1, 44(sp)
-	addi t2, zero, 1
-	subw t0, t1, t2
-
-	# get address of local var:m4
-	sw t0, 4(sp)
-
 	# prepare params int regs
 
 	# fetch variables
 
 	# get address of local var:m4
-	lw t1, 4(sp)
+	lw t1, 28(sp)
 	mv a0, t1
 
 	# fetch variables
@@ -221,17 +201,13 @@ ifFalse_4:
 	# get address of local var:1
 	lw t1, 40(sp)
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -240,17 +216,13 @@ ifFalse_4:
 	# fetch variables
 	addi t1, zero, 32
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -261,17 +233,13 @@ ifFalse_4:
 	# get address of local var:3
 	lw t1, 32(sp)
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -280,17 +248,13 @@ ifFalse_4:
 	# fetch variables
 	addi t1, zero, 44
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -299,17 +263,13 @@ ifFalse_4:
 	# fetch variables
 	addi t1, zero, 32
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -318,7 +278,7 @@ ifFalse_4:
 	# fetch variables
 
 	# get address of local var:m4
-	lw t1, 4(sp)
+	lw t1, 28(sp)
 	mv a0, t1
 
 	# fetch variables
@@ -375,19 +335,13 @@ mainEntry3:
 	# allocate lv
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -400,7 +354,7 @@ mainEntry3:
 
 	# get address of local var:getint
 	lw t1, 44(sp)
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_9
 	j whileCond_9
@@ -410,15 +364,15 @@ whileCond_9:
 
 	# fetch variables
 	addi t1, zero, 0
-	sub t0, s2, t1
+	sub t0, s4, t1
 	sgtz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -427,7 +381,7 @@ whileCond_9:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ whileBody_9 next_14
 
@@ -437,19 +391,13 @@ whileCond_9:
 whileBody_9:
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -479,14 +427,14 @@ whileBody_9:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
+	sd s4, 40(sp)
 
 	# call hanoi
 	call hanoi
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
+	ld s4, 40(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -496,19 +444,13 @@ whileBody_9:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -516,7 +458,7 @@ whileBody_9:
 
 	# fetch variables
 	addi t1, zero, 1
-	subw t0, s2, t1
+	subw t0, s4, t1
 
 	# get address of local var:result_
 	sw t0, 4(sp)
@@ -524,7 +466,7 @@ whileBody_9:
 	# store lv result_
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br whileCond_9
 	j whileCond_9

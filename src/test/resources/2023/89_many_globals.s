@@ -14,17 +14,13 @@ mainEntry82:
 	# fetch variables
 	addi t1, zero, 28
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -33,17 +29,13 @@ mainEntry82:
 	# fetch variables
 	addi t1, zero, 22
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -52,17 +44,13 @@ mainEntry82:
 	# fetch variables
 	addi t1, zero, 118
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 

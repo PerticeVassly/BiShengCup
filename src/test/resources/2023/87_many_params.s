@@ -144,13 +144,13 @@ param32_recEntry:
 	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -159,7 +159,7 @@ param32_recEntry:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ ifTrue_82 ifFalse_27
 
@@ -190,7 +190,7 @@ ifFalse_27:
 	lw t1, 188(sp)
 	addi t2, zero, 1
 	subw t0, t1, t2
-	mv s0, t0
+	mv s3, t0
 
 	# add result_$1 1 2
 
@@ -202,22 +202,22 @@ ifFalse_27:
 	# get address of local var:2
 	lw t2, 180(sp)
 	addw t0, t1, t2
-	mv s1, t0
+	mv s0, t0
 
 	# mod result_$2 result_$1 
 
 	# fetch variables
 	li t2, 998244353
 	remw t0, t0, t2
-	mv s1, t0
+	mv s0, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
+	mv a0, s3
 
 	# fetch variables
-	mv a1, s1
+	mv a1, s0
 
 	# fetch variables
 
@@ -512,23 +512,13 @@ mainEntry34:
 	sd t0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -538,23 +528,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -564,23 +544,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -590,23 +560,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -616,23 +576,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -642,23 +592,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -668,23 +608,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -694,23 +624,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -720,23 +640,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -746,23 +656,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -772,23 +672,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -798,23 +688,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -824,23 +704,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -850,23 +720,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -876,23 +736,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -902,23 +752,13 @@ mainEntry34:
 	sw a0, 0(t4)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -1411,7 +1251,7 @@ mainEntry34:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s4, t1
+	mv s7, t1
 
 	# br i820
 	j i820
@@ -1421,7 +1261,7 @@ whileCond_91:
 
 	# fetch variables
 	addi t1, zero, 1
-	subw t0, s3, t1
+	subw t0, s5, t1
 
 	# get address of local var:m68
 	li t4, 2468
@@ -1432,14 +1272,14 @@ whileCond_91:
 
 	# fetch variables
 	addi t1, zero, 32
-	slt t0, s3, t1
-	mv s0, t0
+	slt t0, s5, t1
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -1448,7 +1288,7 @@ whileCond_91:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ whileBody_91 next_174
 
@@ -1463,7 +1303,7 @@ whileBody_91:
 	li t4, 2736
 	add t1, sp, t4
 	li t4, 8
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
 
 	# get address of local var:m69
@@ -1478,7 +1318,7 @@ whileBody_91:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# gep ptr_$3 m68
 
@@ -1493,7 +1333,7 @@ whileBody_91:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# gep arr$1 
 
@@ -1502,27 +1342,27 @@ whileBody_91:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s1, t0
+	mv s0, t0
 
 	# load arr$2 arr$1
 
 	# get address of arr$1 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# sub result_$1 arr$2 
 
 	# fetch variables
 	addi t2, zero, 1
 	subw t0, t0, t2
-	mv s1, t0
+	mv s0, t0
 
 	# store arr result_$1
 
 	# fetch variables
 
 	# get address of arr points to
-	sw t0, 0(s0)
+	sw t0, 0(s3)
 
 	# gep arr$3 
 
@@ -1536,7 +1376,7 @@ whileBody_91:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep ptr_$5 m68
 
@@ -1551,7 +1391,7 @@ whileBody_91:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# gep arr$4 
 
@@ -1560,33 +1400,33 @@ whileBody_91:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s1, t0
+	mv s0, t0
 
 	# load arr$5 arr$4
 
 	# get address of arr$4 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# sub result_$3 arr$5 
 
 	# fetch variables
 	addi t2, zero, 2
 	subw t0, t0, t2
-	mv s1, t0
+	mv s0, t0
 
 	# store arr$3 result_$3
 
 	# fetch variables
 
 	# get address of arr$3 points to
-	sw t0, 0(s0)
+	sw t0, 0(s3)
 
 	# add result_$4 ld_phi$3 
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s3, t1
+	addw t0, s5, t1
 
 	# get address of local var:result_$4
 	li t4, 2348
@@ -1596,7 +1436,7 @@ whileBody_91:
 	# store lv$1 result_$4
 
 	# fetch variables
-	mv s3, t0
+	mv s5, t0
 
 	# br whileCond_91
 	j whileCond_91
@@ -1629,7 +1469,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$9 
 
@@ -1653,7 +1493,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$11 
 
@@ -1677,7 +1517,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$13 
 
@@ -1701,7 +1541,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$15 
 
@@ -1725,7 +1565,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$17 
 
@@ -1749,7 +1589,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$19 
 
@@ -1773,7 +1613,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$21 
 
@@ -1797,7 +1637,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$23 
 
@@ -1821,7 +1661,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$25 
 
@@ -1845,7 +1685,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$27 
 
@@ -1869,7 +1709,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$29 
 
@@ -1893,7 +1733,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$31 
 
@@ -1917,7 +1757,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$33 
 
@@ -1941,7 +1781,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$35 
 
@@ -1965,7 +1805,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$37 
 
@@ -1989,7 +1829,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$39 
 
@@ -2013,7 +1853,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$41 
 
@@ -2037,7 +1877,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$43 
 
@@ -2061,7 +1901,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$45 
 
@@ -2083,7 +1923,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$47 
 
@@ -2105,7 +1945,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$49 
 
@@ -2127,7 +1967,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$51 
 
@@ -2149,7 +1989,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$53 
 
@@ -2171,7 +2011,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$55 
 
@@ -2193,7 +2033,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$57 
 
@@ -2215,7 +2055,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$59 
 
@@ -2237,7 +2077,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$61 
 
@@ -2259,7 +2099,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$63 
 
@@ -2281,7 +2121,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$65 
 
@@ -2303,7 +2143,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$67 
 
@@ -2325,7 +2165,7 @@ next_174:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep arr$69 
 
@@ -2350,13 +2190,13 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load a1$1i827 a1i827
 
 	# get address of a1i827 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# gep a1$2i827 
 
@@ -2370,19 +2210,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a1$3i827 a1$2i827
 
 	# get address of a1$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_i827 a1$1i827 a1$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a2i827 
 
@@ -2396,19 +2236,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a2$1i827 a2i827
 
 	# get address of a2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$1i827 result_i827 a2$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a2$2i827 
 
@@ -2422,19 +2262,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a2$3i827 a2$2i827
 
 	# get address of a2$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$2i827 result_$1i827 a2$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a3i827 
 
@@ -2448,19 +2288,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a3$1i827 a3i827
 
 	# get address of a3i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$3i827 result_$2i827 a3$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a3$2i827 
 
@@ -2474,19 +2314,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a3$3i827 a3$2i827
 
 	# get address of a3$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$4i827 result_$3i827 a3$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a4i827 
 
@@ -2500,19 +2340,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a4$1i827 a4i827
 
 	# get address of a4i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$5i827 result_$4i827 a4$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a4$2i827 
 
@@ -2526,19 +2366,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a4$3i827 a4$2i827
 
 	# get address of a4$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$6i827 result_$5i827 a4$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a5i827 
 
@@ -2552,19 +2392,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a5$1i827 a5i827
 
 	# get address of a5i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$7i827 result_$6i827 a5$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a5$2i827 
 
@@ -2578,19 +2418,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a5$3i827 a5$2i827
 
 	# get address of a5$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$8i827 result_$7i827 a5$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a6i827 
 
@@ -2604,19 +2444,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a6$1i827 a6i827
 
 	# get address of a6i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$9i827 result_$8i827 a6$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a6$2i827 
 
@@ -2630,19 +2470,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a6$3i827 a6$2i827
 
 	# get address of a6$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$10i827 result_$9i827 a6$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a7i827 
 
@@ -2656,19 +2496,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a7$1i827 a7i827
 
 	# get address of a7i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$11i827 result_$10i827 a7$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a7$2i827 
 
@@ -2682,19 +2522,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a7$3i827 a7$2i827
 
 	# get address of a7$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$12i827 result_$11i827 a7$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a8i827 
 
@@ -2708,19 +2548,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a8$1i827 a8i827
 
 	# get address of a8i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$13i827 result_$12i827 a8$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a8$2i827 
 
@@ -2734,19 +2574,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a8$3i827 a8$2i827
 
 	# get address of a8$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$14i827 result_$13i827 a8$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a9i827 
 
@@ -2760,19 +2600,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a9$1i827 a9i827
 
 	# get address of a9i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$15i827 result_$14i827 a9$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a9$2i827 
 
@@ -2786,19 +2626,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a9$3i827 a9$2i827
 
 	# get address of a9$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$16i827 result_$15i827 a9$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a10i827 
 
@@ -2812,19 +2652,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a10$1i827 a10i827
 
 	# get address of a10i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$17i827 result_$16i827 a10$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a10$2i827 
 
@@ -2838,19 +2678,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a10$3i827 a10$2i827
 
 	# get address of a10$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$18i827 result_$17i827 a10$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a11i827 
 
@@ -2864,19 +2704,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a11$1i827 a11i827
 
 	# get address of a11i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$19i827 result_$18i827 a11$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a11$2i827 
 
@@ -2890,19 +2730,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a11$3i827 a11$2i827
 
 	# get address of a11$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$20i827 result_$19i827 a11$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a12i827 
 
@@ -2916,19 +2756,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a12$1i827 a12i827
 
 	# get address of a12i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$21i827 result_$20i827 a12$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a12$2i827 
 
@@ -2942,19 +2782,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a12$3i827 a12$2i827
 
 	# get address of a12$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$22i827 result_$21i827 a12$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a13i827 
 
@@ -2968,19 +2808,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a13$1i827 a13i827
 
 	# get address of a13i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$23i827 result_$22i827 a13$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a13$2i827 
 
@@ -2994,19 +2834,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a13$3i827 a13$2i827
 
 	# get address of a13$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$24i827 result_$23i827 a13$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a14i827 
 
@@ -3020,19 +2860,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a14$1i827 a14i827
 
 	# get address of a14i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$25i827 result_$24i827 a14$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a14$2i827 
 
@@ -3046,19 +2886,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a14$3i827 a14$2i827
 
 	# get address of a14$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$26i827 result_$25i827 a14$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a15i827 
 
@@ -3072,19 +2912,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a15$1i827 a15i827
 
 	# get address of a15i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$27i827 result_$26i827 a15$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a15$2i827 
 
@@ -3098,19 +2938,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a15$3i827 a15$2i827
 
 	# get address of a15$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$28i827 result_$27i827 a15$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a16i827 
 
@@ -3124,19 +2964,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a16$1i827 a16i827
 
 	# get address of a16i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$29i827 result_$28i827 a16$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a16$2i827 
 
@@ -3150,19 +2990,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a16$3i827 a16$2i827
 
 	# get address of a16$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$30i827 result_$29i827 a16$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a17i827 
 
@@ -3176,19 +3016,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a17$1i827 a17i827
 
 	# get address of a17i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$31i827 result_$30i827 a17$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a17$2i827 
 
@@ -3202,19 +3042,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a17$3i827 a17$2i827
 
 	# get address of a17$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$32i827 result_$31i827 a17$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a18i827 
 
@@ -3228,19 +3068,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a18$1i827 a18i827
 
 	# get address of a18i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$33i827 result_$32i827 a18$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a18$2i827 
 
@@ -3254,19 +3094,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a18$3i827 a18$2i827
 
 	# get address of a18$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$34i827 result_$33i827 a18$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a19i827 
 
@@ -3280,19 +3120,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a19$1i827 a19i827
 
 	# get address of a19i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$35i827 result_$34i827 a19$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a19$2i827 
 
@@ -3306,19 +3146,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a19$3i827 a19$2i827
 
 	# get address of a19$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$36i827 result_$35i827 a19$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a20i827 
 
@@ -3330,19 +3170,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a20$1i827 a20i827
 
 	# get address of a20i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$37i827 result_$36i827 a20$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a20$2i827 
 
@@ -3354,19 +3194,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a20$3i827 a20$2i827
 
 	# get address of a20$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$38i827 result_$37i827 a20$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a21i827 
 
@@ -3378,19 +3218,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a21$1i827 a21i827
 
 	# get address of a21i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$39i827 result_$38i827 a21$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a21$2i827 
 
@@ -3402,19 +3242,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a21$3i827 a21$2i827
 
 	# get address of a21$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$40i827 result_$39i827 a21$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a22i827 
 
@@ -3426,19 +3266,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a22$1i827 a22i827
 
 	# get address of a22i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$41i827 result_$40i827 a22$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a22$2i827 
 
@@ -3450,19 +3290,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a22$3i827 a22$2i827
 
 	# get address of a22$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$42i827 result_$41i827 a22$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a23i827 
 
@@ -3474,19 +3314,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a23$1i827 a23i827
 
 	# get address of a23i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$43i827 result_$42i827 a23$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a23$2i827 
 
@@ -3498,19 +3338,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a23$3i827 a23$2i827
 
 	# get address of a23$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$44i827 result_$43i827 a23$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a24i827 
 
@@ -3522,19 +3362,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a24$1i827 a24i827
 
 	# get address of a24i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$45i827 result_$44i827 a24$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a24$2i827 
 
@@ -3546,19 +3386,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a24$3i827 a24$2i827
 
 	# get address of a24$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$46i827 result_$45i827 a24$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a25i827 
 
@@ -3570,19 +3410,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a25$1i827 a25i827
 
 	# get address of a25i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$47i827 result_$46i827 a25$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a25$2i827 
 
@@ -3594,19 +3434,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a25$3i827 a25$2i827
 
 	# get address of a25$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$48i827 result_$47i827 a25$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a26i827 
 
@@ -3618,19 +3458,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a26$1i827 a26i827
 
 	# get address of a26i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$49i827 result_$48i827 a26$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a26$2i827 
 
@@ -3642,19 +3482,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a26$3i827 a26$2i827
 
 	# get address of a26$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$50i827 result_$49i827 a26$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a27i827 
 
@@ -3666,19 +3506,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a27$1i827 a27i827
 
 	# get address of a27i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$51i827 result_$50i827 a27$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a27$2i827 
 
@@ -3690,19 +3530,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a27$3i827 a27$2i827
 
 	# get address of a27$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$52i827 result_$51i827 a27$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a28i827 
 
@@ -3714,19 +3554,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a28$1i827 a28i827
 
 	# get address of a28i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$53i827 result_$52i827 a28$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a28$2i827 
 
@@ -3738,19 +3578,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a28$3i827 a28$2i827
 
 	# get address of a28$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$54i827 result_$53i827 a28$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a29i827 
 
@@ -3762,19 +3602,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a29$1i827 a29i827
 
 	# get address of a29i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$55i827 result_$54i827 a29$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a29$2i827 
 
@@ -3786,19 +3626,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a29$3i827 a29$2i827
 
 	# get address of a29$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$56i827 result_$55i827 a29$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a30i827 
 
@@ -3810,19 +3650,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a30$1i827 a30i827
 
 	# get address of a30i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$57i827 result_$56i827 a30$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a30$2i827 
 
@@ -3834,19 +3674,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a30$3i827 a30$2i827
 
 	# get address of a30$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$58i827 result_$57i827 a30$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a31i827 
 
@@ -3858,19 +3698,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a31$1i827 a31i827
 
 	# get address of a31i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$59i827 result_$58i827 a31$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a31$2i827 
 
@@ -3882,19 +3722,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a31$3i827 a31$2i827
 
 	# get address of a31$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$60i827 result_$59i827 a31$3i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a32i827 
 
@@ -3906,19 +3746,19 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a32$1i827 a32i827
 
 	# get address of a32i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$61i827 result_$60i827 a32$1i827
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep a32$2i827 
 
@@ -3930,18 +3770,18 @@ next_174:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a32$3i827 a32$2i827
 
 	# get address of a32$2i827 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$62i827 result_$61i827 a32$3i827
 
 	# fetch variables
-	addw t0, s0, t0
+	addw t0, s3, t0
 
 	# get address of local var:result_$62i827
 	sw t0, 316(sp)
@@ -3953,23 +3793,13 @@ next_174:
 	# get address of local var:result_$62i827
 	lw t1, 316(sp)
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -3978,23 +3808,13 @@ next_174:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -4012,7 +3832,7 @@ i818:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_$2i815i818
 	sw t0, 308(sp)
@@ -4020,7 +3840,7 @@ i818:
 	# store lv$3i809i822 result_$2i815i818
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br i826
 	j i826
@@ -4035,7 +3855,7 @@ i822:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t4, 4
-	mul t4, s4, t4
+	mul t4, s7, t4
 	add t0, t4, t1
 
 	# get address of local var:m66
@@ -4045,7 +3865,7 @@ i822:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s4, t1
+	addw t0, s7, t1
 
 	# get address of local var:result_$1i809i822
 	sw t0, 292(sp)
@@ -4053,7 +3873,7 @@ i822:
 	# store lv$3i809i822 result_$1i809i822
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br i826
 	j i826
@@ -4068,7 +3888,7 @@ i826:
 	add t4, sp, t4
 	ld t1, 0(t4)
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
 
 	# get address of local var:m70
@@ -4078,14 +3898,14 @@ i826:
 
 	# fetch variables
 	addi t1, zero, 16
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_$1i811i826
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1i811i826 cond_tmp_$1i811i826 
 
@@ -4112,7 +3932,7 @@ i823:
 	add t4, sp, t4
 	ld t3, 0(t4)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# load arr$4i817 inp$1i816
 
@@ -4121,7 +3941,7 @@ i823:
 	add t4, sp, t4
 	ld t3, 0(t4)
 	lw t0, 0(t3)
-	mv s1, t0
+	mv s0, t0
 
 	# load arr$6i817 inp$2i816
 
@@ -4130,12 +3950,7 @@ i823:
 	add t4, sp, t4
 	ld t3, 0(t4)
 	lw t0, 0(t3)
-
-	# spill for arr$6i817
-
-	# get address of local var:arr$2i817
-	sw s0, 252(sp)
-	mv s0, t0
+	mv s1, t0
 
 	# load arr$8i817 inp$3i816
 
@@ -4144,12 +3959,7 @@ i823:
 	add t4, sp, t4
 	ld t3, 0(t4)
 	lw t0, 0(t3)
-
-	# spill for arr$8i817
-
-	# get address of local var:arr$6i817
-	sw s0, 236(sp)
-	mv s0, t0
+	mv s2, t0
 
 	# load arr$10i817 inp$4i816
 
@@ -4161,9 +3971,9 @@ i823:
 
 	# spill for arr$10i817
 
-	# get address of local var:arr$8i817
-	sw s0, 228(sp)
-	mv s0, t0
+	# get address of local var:arr$2i817
+	sw s3, 252(sp)
+	mv s3, t0
 
 	# load arr$12i817 inp$5i816
 
@@ -4176,8 +3986,8 @@ i823:
 	# spill for arr$12i817
 
 	# get address of local var:arr$10i817
-	sw s0, 220(sp)
-	mv s0, t0
+	sw s3, 220(sp)
+	mv s3, t0
 
 	# load arr$14i817 inp$6i816
 
@@ -4190,8 +4000,8 @@ i823:
 	# spill for arr$14i817
 
 	# get address of local var:arr$12i817
-	sw s0, 212(sp)
-	mv s0, t0
+	sw s3, 212(sp)
+	mv s3, t0
 
 	# load arr$16i817 inp$7i816
 
@@ -4204,8 +4014,8 @@ i823:
 	# spill for arr$16i817
 
 	# get address of local var:arr$14i817
-	sw s0, 204(sp)
-	mv s0, t0
+	sw s3, 204(sp)
+	mv s3, t0
 
 	# load arr$18i817 inp$8i816
 
@@ -4218,8 +4028,8 @@ i823:
 	# spill for arr$18i817
 
 	# get address of local var:arr$16i817
-	sw s0, 196(sp)
-	mv s0, t0
+	sw s3, 196(sp)
+	mv s3, t0
 
 	# load arr$20i817 inp$9i816
 
@@ -4232,8 +4042,8 @@ i823:
 	# spill for arr$20i817
 
 	# get address of local var:arr$18i817
-	sw s0, 188(sp)
-	mv s0, t0
+	sw s3, 188(sp)
+	mv s3, t0
 
 	# load arr$22i817 inp$10i816
 
@@ -4246,8 +4056,8 @@ i823:
 	# spill for arr$22i817
 
 	# get address of local var:arr$20i817
-	sw s0, 180(sp)
-	mv s0, t0
+	sw s3, 180(sp)
+	mv s3, t0
 
 	# load arr$24i817 inp$11i816
 
@@ -4260,8 +4070,8 @@ i823:
 	# spill for arr$24i817
 
 	# get address of local var:arr$22i817
-	sw s0, 172(sp)
-	mv s0, t0
+	sw s3, 172(sp)
+	mv s3, t0
 
 	# load arr$26i817 inp$12i816
 
@@ -4274,8 +4084,8 @@ i823:
 	# spill for arr$26i817
 
 	# get address of local var:arr$24i817
-	sw s0, 164(sp)
-	mv s0, t0
+	sw s3, 164(sp)
+	mv s3, t0
 
 	# load arr$28i817 inp$13i816
 
@@ -4288,8 +4098,8 @@ i823:
 	# spill for arr$28i817
 
 	# get address of local var:arr$26i817
-	sw s0, 156(sp)
-	mv s0, t0
+	sw s3, 156(sp)
+	mv s3, t0
 
 	# load arr$30i817 inp$14i816
 
@@ -4302,8 +4112,8 @@ i823:
 	# spill for arr$30i817
 
 	# get address of local var:arr$28i817
-	sw s0, 148(sp)
-	mv s0, t0
+	sw s3, 148(sp)
+	mv s3, t0
 
 	# load arr$32i817 inp$15i816
 
@@ -4316,8 +4126,8 @@ i823:
 	# spill for arr$32i817
 
 	# get address of local var:arr$30i817
-	sw s0, 140(sp)
-	mv s0, t0
+	sw s3, 140(sp)
+	mv s3, t0
 
 	# prepare params int regs
 
@@ -4328,19 +4138,13 @@ i823:
 	mv a0, t1
 
 	# fetch variables
-	mv a1, s1
+	mv a1, s0
 
 	# fetch variables
-
-	# get address of local var:arr$6i817
-	lw t1, 236(sp)
-	mv a2, t1
+	mv a2, s1
 
 	# fetch variables
-
-	# get address of local var:arr$8i817
-	lw t1, 228(sp)
-	mv a3, t1
+	mv a3, s2
 
 	# fetch variables
 
@@ -4425,7 +4229,7 @@ i823:
 	# fetch variables
 
 	# push arr$32i817
-	sw s0, -64(sp)
+	sw s3, -64(sp)
 
 	# fetch variables
 
@@ -4591,18 +4395,18 @@ i823:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
+	sd s5, 48(sp)
+	sd s7, 56(sp)
 
 	# call param32_rec
 	call param32_rec
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
+	ld s5, 48(sp)
+	ld s7, 56(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -4617,12 +4421,12 @@ i823:
 	li t4, 2736
 	add t1, sp, t4
 	mv t0, t1
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
+	mv a0, s3
 
 	# fetch variables
 	addi t1, zero, 0
@@ -4635,18 +4439,18 @@ i823:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
+	sd s5, 48(sp)
+	sd s7, 56(sp)
 
 	# call memset
 	call memset
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
+	ld s5, 48(sp)
+	ld s7, 56(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -4663,7 +4467,7 @@ i823:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp param32_reci817
 
@@ -4673,7 +4477,7 @@ i823:
 	lw t1, 124(sp)
 
 	# get address of inp points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$1 
 
@@ -4687,7 +4491,7 @@ i823:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$1 
 
@@ -4695,13 +4499,13 @@ i823:
 	li t1, 8848
 
 	# get address of inp$1 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# store lv$1 
 
 	# fetch variables
 	addi t1, zero, 1
-	mv s3, t1
+	mv s5, t1
 
 	# br whileCond_91
 	j whileCond_91
@@ -4711,7 +4515,7 @@ i824:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s4, t1
+	addw t0, s7, t1
 
 	# get address of local var:result_$3i813i824
 	sw t0, 92(sp)
@@ -4719,7 +4523,7 @@ i824:
 	# store lv$2i807i819 result_$3i813i824
 
 	# fetch variables
-	mv s4, t0
+	mv s7, t0
 
 	# br i820
 	j i820
@@ -4730,26 +4534,26 @@ i821:
 	# get address of m66 points to
 	ld t3, 296(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# load arr$3i812i821 m70
 
 	# get address of m70 points to
 	ld t3, 280(sp)
 	lw t0, 0(t3)
-	mv s1, t0
+	mv s0, t0
 
 	# cmp cond_lt_tmp_$2i812i821 arr$1i812i821 arr$3i812i821
 
 	# fetch variables
-	slt t0, s0, t0
-	mv s0, t0
+	slt t0, s3, t0
+	mv s3, t0
 
 	# zext cond_tmp_$2i812i821
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$2i812i821 cond_tmp_$2i812i821 
 
@@ -4774,14 +4578,14 @@ i825:
 	# get address of m66 points to
 	ld t3, 296(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# load arr$8i814i825 m70
 
 	# get address of m70 points to
 	ld t3, 280(sp)
 	lw t0, 0(t3)
-	mv s1, t0
+	mv s0, t0
 
 	# store m66 arr$8i814i825
 
@@ -4797,7 +4601,7 @@ i825:
 
 	# get address of m70 points to
 	ld t3, 280(sp)
-	sw s0, 0(t3)
+	sw s3, 0(t3)
 
 	# br i818
 	j i818
@@ -4807,14 +4611,14 @@ i820:
 
 	# fetch variables
 	addi t1, zero, 15
-	slt t0, s4, t1
-	mv s0, t0
+	slt t0, s7, t1
+	mv s3, t0
 
 	# zext cond_tmp_i808i820
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_i808i820 cond_tmp_i808i820 
 

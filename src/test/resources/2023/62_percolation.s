@@ -41,7 +41,7 @@ findfaEntry:
 	# get address of m151 points to
 	ld t3, 64(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_eq_tmp_ array$1 0
 
@@ -51,13 +51,13 @@ findfaEntry:
 	lw t2, 76(sp)
 	xor t0, t0, t2
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -66,7 +66,7 @@ findfaEntry:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ ifTrue_330 ifFalse_144
 
@@ -94,12 +94,12 @@ ifFalse_144:
 	# get address of m151 points to
 	ld t3, 64(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
+	mv a0, s3
 
 	# save caller saved regs
 	addi sp, sp, -192
@@ -133,7 +133,7 @@ ifFalse_144:
 	# get address of m151 points to
 	ld t3, 64(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# ret array$6
 
@@ -166,7 +166,7 @@ mainEntry84:
 
 	# fetch variables
 	addi t1, zero, 1
-	mv s5, t1
+	mv s8, t1
 
 	# br whileCond_272
 	j whileCond_272
@@ -176,10 +176,10 @@ whileCond_272:
 
 	# fetch variables
 	addi t1, zero, 0
-	xor t0, s5, t1
+	xor t0, s8, t1
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_ whileBody_272 next_604
 
@@ -192,7 +192,7 @@ whileBody_272:
 
 	# fetch variables
 	addi t1, zero, 1
-	subw t0, s5, t1
+	subw t0, s8, t1
 
 	# get address of local var:result_
 	sw t0, 948(sp)
@@ -201,7 +201,7 @@ whileBody_272:
 
 	# fetch variables
 	addi t1, zero, 1
-	mv s3, t1
+	mv s5, t1
 
 	# br i1359
 	j i1359
@@ -220,7 +220,7 @@ whileCond_273:
 
 	# fetch variables
 	addi t1, zero, 0
-	xor t0, t1, s4
+	xor t0, t1, s7
 	seqz t0, t0
 	seqz t0, t0
 
@@ -231,14 +231,14 @@ whileCond_273:
 
 	# fetch variables
 	addi t1, zero, 10
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -247,7 +247,7 @@ whileCond_273:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ whileBody_273 next_605
 
@@ -257,25 +257,13 @@ whileCond_273:
 whileBody_273:
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
-	sd s5, 48(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	ld s5, 48(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -283,25 +271,13 @@ whileBody_273:
 	sw a0, 908(sp)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
-	sd s5, 48(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	ld s5, 48(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -316,13 +292,13 @@ whileBody_273:
 	lw t1, 940(sp)
 	addi t2, zero, 1
 	xor t0, t1, t2
-	mv s0, t0
+	mv s3, t0
 
 	# zext tmp_$2
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_normalize_$1 tmp_$2 
 
@@ -331,7 +307,7 @@ whileBody_273:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$1 ifTrue_332 mid_180
 
@@ -348,13 +324,13 @@ next_605:
 	lw t1, 940(sp)
 	addi t2, zero, 1
 	xor t0, t1, t2
-	mv s0, t0
+	mv s3, t0
 
 	# zext tmp_$5
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_normalize_$2 tmp_$5 
 
@@ -363,7 +339,7 @@ next_605:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$2 ifTrue_340 mid_179
 
@@ -389,7 +365,7 @@ ifTrue_332:
 	# fetch variables
 	addi t2, zero, 2
 	sll t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# add result_$5 result_$4 getint$1
 
@@ -405,7 +381,7 @@ ifTrue_332:
 	# sub m157 result_$5 
 
 	# fetch variables
-	addi t2, zero, 4
+	addi t2, zero, 1
 	subw t0, t0, t2
 
 	# get address of local var:m157
@@ -429,7 +405,7 @@ ifTrue_332:
 
 	# get address of local var:result_$5
 	lw t1, 828(sp)
-	addi t2, zero, 1
+	addi t2, zero, 4
 	subw t0, t1, t2
 
 	# get address of local var:m152
@@ -445,7 +421,7 @@ ifTrue_332:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store array result_$5
 
@@ -455,7 +431,7 @@ ifTrue_332:
 	lw t1, 828(sp)
 
 	# get address of array points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# cmp cond_eq_tmp_ getint 
 
@@ -466,13 +442,13 @@ ifTrue_332:
 	addi t2, zero, 1
 	xor t0, t1, t2
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$1
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1 cond_tmp_$1 
 
@@ -481,7 +457,7 @@ ifTrue_332:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$1 ifTrue_333 next_607
 
@@ -494,7 +470,7 @@ next_606:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_$15
 	sw t0, 764(sp)
@@ -502,7 +478,7 @@ next_606:
 	# store lv$4 result_$15
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br whileCond_273
 	j whileCond_273
@@ -528,20 +504,20 @@ ifTrue_333:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -558,20 +534,20 @@ ifTrue_333:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -591,13 +567,13 @@ ifTrue_333:
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_i1362
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_i1362 cond_tmp_i1362 
 
@@ -626,13 +602,13 @@ next_607:
 	addi t2, zero, 4
 	xor t0, t1, t2
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$2
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$2 cond_tmp_$2 
 
@@ -641,7 +617,7 @@ next_607:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$2 ifTrue_334 next_608
 
@@ -670,20 +646,20 @@ ifTrue_334:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -700,20 +676,20 @@ ifTrue_334:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -733,13 +709,13 @@ ifTrue_334:
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_i1365
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_i1365 cond_tmp_i1365 
 
@@ -767,13 +743,13 @@ next_608:
 	lw t1, 900(sp)
 	addi t2, zero, 4
 	slt t0, t1, t2
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$3
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$3 cond_tmp_$3 
 
@@ -782,7 +758,7 @@ next_608:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$3 secondCond_114 next_609
 
@@ -814,20 +790,20 @@ ifTrue_335:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -846,20 +822,20 @@ ifTrue_335:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -879,13 +855,13 @@ ifTrue_335:
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_i1368
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_i1368 cond_tmp_i1368 
 
@@ -914,13 +890,13 @@ next_609:
 	addi t2, zero, 1
 	sub t0, t1, t2
 	sgtz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$5
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$5 cond_tmp_$5 
 
@@ -929,7 +905,7 @@ next_609:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$5 secondCond_115 next_610
 
@@ -946,7 +922,7 @@ secondCond_114:
 	lw t1, 828(sp)
 	addi t2, zero, 1
 	addw t0, t1, t2
-	mv s0, t0
+	mv s3, t0
 
 	# gep array$3 result_$6
 
@@ -955,13 +931,13 @@ secondCond_114:
 	li t4, 4
 	mul t4, t0, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load array$4 array$3
 
 	# get address of array$3 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# cmp cond_neq_tmp_ array$4 
 
@@ -970,13 +946,13 @@ secondCond_114:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$4
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$4 cond_tmp_$4 
 
@@ -985,7 +961,7 @@ secondCond_114:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$4 ifTrue_335 next_609
 
@@ -1005,20 +981,20 @@ ifTrue_336:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -1030,27 +1006,27 @@ ifTrue_336:
 
 	# fetch variables
 
-	# get address of local var:m152
-	lw t1, 804(sp)
+	# get address of local var:m157
+	lw t1, 820(sp)
 	mv a0, t1
 
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -1070,13 +1046,13 @@ ifTrue_336:
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_i1371
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_i1371 cond_tmp_i1371 
 
@@ -1104,13 +1080,13 @@ next_610:
 	lw t1, 908(sp)
 	addi t2, zero, 4
 	slt t0, t1, t2
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$7
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$7 cond_tmp_$7 
 
@@ -1119,7 +1095,7 @@ next_610:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$7 secondCond_116 next_611
 
@@ -1128,23 +1104,23 @@ next_610:
 	j secondCond_116
 secondCond_115:
 
-	# gep array$5 m152
+	# gep array$5 m157
 
 	# fetch variables
 	la t1, gv
 
-	# get address of local var:m152
-	lw t2, 804(sp)
+	# get address of local var:m157
+	lw t2, 820(sp)
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load array$6 array$5
 
 	# get address of array$5 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# cmp cond_neq_tmp_$1 array$6 
 
@@ -1153,13 +1129,13 @@ secondCond_115:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$6
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$6 cond_tmp_$6 
 
@@ -1168,7 +1144,7 @@ secondCond_115:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$6 ifTrue_336 next_610
 
@@ -1188,20 +1164,20 @@ ifTrue_337:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -1220,20 +1196,20 @@ ifTrue_337:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -1253,13 +1229,13 @@ ifTrue_337:
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_i1374
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_i1374 cond_tmp_i1374 
 
@@ -1288,13 +1264,13 @@ next_611:
 	addi t2, zero, 1
 	sub t0, t1, t2
 	sgtz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$9
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$9 cond_tmp_$9 
 
@@ -1303,7 +1279,7 @@ next_611:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$9 secondCond_117 next_612
 
@@ -1322,13 +1298,13 @@ secondCond_116:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load array$8 array$7
 
 	# get address of array$7 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# cmp cond_neq_tmp_$2 array$8 
 
@@ -1337,13 +1313,13 @@ secondCond_116:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$8
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$8 cond_tmp_$8 
 
@@ -1352,7 +1328,7 @@ secondCond_116:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$8 ifTrue_337 next_611
 
@@ -1372,20 +1348,20 @@ ifTrue_338:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -1397,27 +1373,27 @@ ifTrue_338:
 
 	# fetch variables
 
-	# get address of local var:m157
-	lw t1, 820(sp)
+	# get address of local var:m152
+	lw t1, 804(sp)
 	mv a0, t1
 
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -1437,13 +1413,13 @@ ifTrue_338:
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_i1377
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_i1377 cond_tmp_i1377 
 
@@ -1468,7 +1444,7 @@ next_612:
 	# get address of m156 points to
 	ld t3, 64(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_neq_tmp_$4 array$12 
 
@@ -1477,13 +1453,13 @@ next_612:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$11
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$11 cond_tmp_$11 
 
@@ -1492,7 +1468,7 @@ next_612:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$11 secondCond_119 mid_181
 
@@ -1501,23 +1477,23 @@ next_612:
 	j secondCond_119
 secondCond_117:
 
-	# gep array$9 m157
+	# gep array$9 m152
 
 	# fetch variables
 	la t1, gv
 
-	# get address of local var:m157
-	lw t2, 820(sp)
+	# get address of local var:m152
+	lw t2, 804(sp)
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load array$10 array$9
 
 	# get address of array$9 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# cmp cond_neq_tmp_$3 array$10 
 
@@ -1526,13 +1502,13 @@ secondCond_117:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$10
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$10 cond_tmp_$10 
 
@@ -1541,7 +1517,7 @@ secondCond_117:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$10 ifTrue_338 next_612
 
@@ -1554,32 +1530,20 @@ ifTrue_339:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
-	mv s0, t0
+	addw t0, s4, t1
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
-	sd s5, 48(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	ld s5, 48(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -1588,25 +1552,13 @@ ifTrue_339:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
-	sd s5, 48(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	ld s5, 48(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -1614,7 +1566,7 @@ ifTrue_339:
 
 	# fetch variables
 	addi t1, zero, 1
-	mv s4, t1
+	mv s7, t1
 
 	# br next_606
 	j next_606
@@ -1629,20 +1581,20 @@ secondCond_118:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -1659,20 +1611,20 @@ secondCond_118:
 	# save caller saved regs
 	addi sp, sp, -192
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 	sd s4, 40(sp)
 	sd s5, 48(sp)
+	sd s7, 56(sp)
+	sd s8, 64(sp)
 
 	# call findfa
 	call findfa
 
 	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
 	ld s4, 40(sp)
 	ld s5, 48(sp)
+	ld s7, 56(sp)
+	ld s8, 64(sp)
 	addi sp, sp, 192
 
 	# release params
@@ -1691,13 +1643,13 @@ secondCond_118:
 	lw t2, 172(sp)
 	xor t0, t1, t2
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$13
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$13 cond_tmp_$13 
 
@@ -1706,7 +1658,7 @@ secondCond_118:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$13 ifTrue_339 mid_182
 
@@ -1720,7 +1672,7 @@ secondCond_119:
 	# get address of m154 points to
 	ld t3, 56(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_neq_tmp_$5 array$14 
 
@@ -1729,13 +1681,13 @@ secondCond_119:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$12
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$12 cond_tmp_$12 
 
@@ -1744,7 +1696,7 @@ secondCond_119:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$12 secondCond_118 mid_183
 
@@ -1758,25 +1710,13 @@ ifTrue_340:
 	# fetch variables
 	addi t1, zero, -1
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
-	sd s5, 48(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	ld s5, 48(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -1785,25 +1725,13 @@ ifTrue_340:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
-	sd s5, 48(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	ld s5, 48(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -1813,97 +1741,10 @@ ifTrue_340:
 
 	# get address of local var:result_
 	lw t1, 948(sp)
-	mv s5, t1
+	mv s8, t1
 
 	# br whileCond_272
 	j whileCond_272
-i1366:
-
-	# gep arrayi1366 findfai1365
-
-	# fetch variables
-	la t1, gv
-
-	# get address of local var:findfai1365
-	lw t2, 692(sp)
-	li t4, 4
-	mul t4, t2, t4
-	add t0, t4, t1
-	mv s0, t0
-
-	# store arrayi1366 findfa$1i1365
-
-	# fetch variables
-
-	# get address of local var:findfa$1i1365
-	lw t1, 684(sp)
-
-	# get address of arrayi1366 points to
-	sw t1, 0(s0)
-
-	# br next_608
-	j next_608
-i1375:
-
-	# gep arrayi1375 findfai1374
-
-	# fetch variables
-	la t1, gv
-
-	# get address of local var:findfai1374
-	lw t2, 404(sp)
-	li t4, 4
-	mul t4, t2, t4
-	add t0, t4, t1
-	mv s0, t0
-
-	# store arrayi1375 findfa$1i1374
-
-	# fetch variables
-
-	# get address of local var:findfa$1i1374
-	lw t1, 396(sp)
-
-	# get address of arrayi1375 points to
-	sw t1, 0(s0)
-
-	# br next_611
-	j next_611
-i1360:
-
-	# gep arrayi1360 ld_phi$7
-
-	# fetch variables
-	la t1, gv
-	li t4, 4
-	mul t4, s3, t4
-	add t0, t4, t1
-	mv s0, t0
-
-	# store arrayi1360 
-
-	# fetch variables
-	addi t1, zero, -1
-
-	# get address of arrayi1360 points to
-	sw t1, 0(s0)
-
-	# add result_$2i1360 ld_phi$8 
-
-	# fetch variables
-	addi t1, zero, 1
-	addw t0, s3, t1
-
-	# get address of local var:result_$2i1360
-	sw t0, 84(sp)
-
-	# store lv$1i1358 result_$2i1360
-
-	# fetch variables
-	mv s3, t0
-
-	# br i1359
-	j i1359
 i1363:
 
 	# gep arrayi1363 findfai1362
@@ -1916,7 +1757,7 @@ i1363:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store arrayi1363 findfa$1i1362
 
@@ -1926,10 +1767,69 @@ i1363:
 	lw t1, 748(sp)
 
 	# get address of arrayi1363 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# br next_607
 	j next_607
+i1369:
+
+	# gep arrayi1369 findfai1368
+
+	# fetch variables
+	la t1, gv
+
+	# get address of local var:findfai1368
+	lw t2, 620(sp)
+	li t4, 4
+	mul t4, t2, t4
+	add t0, t4, t1
+	mv s3, t0
+
+	# store arrayi1369 findfa$1i1368
+
+	# fetch variables
+
+	# get address of local var:findfa$1i1368
+	lw t1, 612(sp)
+
+	# get address of arrayi1369 points to
+	sw t1, 0(s3)
+
+	# br next_609
+	j next_609
+i1359:
+
+	# cmp cond_le_tmp_i1359 ld_phi$7 
+
+	# fetch variables
+	addi t1, zero, 17
+	sub t0, s5, t1
+	sgtz t0, t0
+	seqz t0, t0
+	mv s3, t0
+
+	# zext cond_tmp_i1359
+
+	# fetch variables
+	mv t0, t0
+	mv s3, t0
+
+	# cmp cond_i1359 cond_tmp_i1359 
+
+	# fetch variables
+	addi t2, zero, 0
+	xor t0, t0, t2
+	seqz t0, t0
+	seqz t0, t0
+
+	# get address of local var:cond_i1359
+	sw t0, 76(sp)
+
+	# condBr cond_i1359 i1360 i1361
+
+	# fetch variables
+	beqz t0, i1361
+	j i1360
 i1361:
 
 	# gep m156 
@@ -1960,101 +1860,51 @@ i1361:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s4, t1
+	mv s7, t1
 
 	# store lv$4 
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_273
 	j whileCond_273
-i1372:
+i1360:
 
-	# gep arrayi1372 findfai1371
-
-	# fetch variables
-	la t1, gv
-
-	# get address of local var:findfai1371
-	lw t2, 508(sp)
-	li t4, 4
-	mul t4, t2, t4
-	add t0, t4, t1
-	mv s0, t0
-
-	# store arrayi1372 findfa$1i1371
-
-	# fetch variables
-
-	# get address of local var:findfa$1i1371
-	lw t1, 500(sp)
-
-	# get address of arrayi1372 points to
-	sw t1, 0(s0)
-
-	# br next_610
-	j next_610
-i1359:
-
-	# cmp cond_le_tmp_i1359 ld_phi$9 
-
-	# fetch variables
-	addi t1, zero, 17
-	sub t0, s3, t1
-	sgtz t0, t0
-	seqz t0, t0
-	mv s0, t0
-
-	# zext cond_tmp_i1359
-
-	# fetch variables
-	mv t0, t0
-	mv s0, t0
-
-	# cmp cond_i1359 cond_tmp_i1359 
-
-	# fetch variables
-	addi t2, zero, 0
-	xor t0, t0, t2
-	seqz t0, t0
-	seqz t0, t0
-
-	# get address of local var:cond_i1359
-	sw t0, 28(sp)
-
-	# condBr cond_i1359 i1360 i1361
-
-	# fetch variables
-	beqz t0, i1361
-	j i1360
-i1369:
-
-	# gep arrayi1369 findfai1368
+	# gep arrayi1360 ld_phi$8
 
 	# fetch variables
 	la t1, gv
-
-	# get address of local var:findfai1368
-	lw t2, 620(sp)
 	li t4, 4
-	mul t4, t2, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
-	# store arrayi1369 findfa$1i1368
+	# store arrayi1360 
 
 	# fetch variables
+	addi t1, zero, -1
 
-	# get address of local var:findfa$1i1368
-	lw t1, 612(sp)
+	# get address of arrayi1360 points to
+	sw t1, 0(s3)
 
-	# get address of arrayi1369 points to
-	sw t1, 0(s0)
+	# add result_$2i1360 ld_phi$9 
 
-	# br next_609
-	j next_609
+	# fetch variables
+	addi t1, zero, 1
+	addw t0, s5, t1
+
+	# get address of local var:result_$2i1360
+	sw t0, 44(sp)
+
+	# store lv$1i1358 result_$2i1360
+
+	# fetch variables
+	mv s5, t0
+
+	# br i1359
+	j i1359
 i1378:
 
 	# gep arrayi1378 findfai1377
@@ -2067,7 +1917,7 @@ i1378:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store arrayi1378 findfa$1i1377
 
@@ -2077,10 +1927,88 @@ i1378:
 	lw t1, 292(sp)
 
 	# get address of arrayi1378 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# br next_612
 	j next_612
+i1375:
+
+	# gep arrayi1375 findfai1374
+
+	# fetch variables
+	la t1, gv
+
+	# get address of local var:findfai1374
+	lw t2, 404(sp)
+	li t4, 4
+	mul t4, t2, t4
+	add t0, t4, t1
+	mv s3, t0
+
+	# store arrayi1375 findfa$1i1374
+
+	# fetch variables
+
+	# get address of local var:findfa$1i1374
+	lw t1, 396(sp)
+
+	# get address of arrayi1375 points to
+	sw t1, 0(s3)
+
+	# br next_611
+	j next_611
+i1366:
+
+	# gep arrayi1366 findfai1365
+
+	# fetch variables
+	la t1, gv
+
+	# get address of local var:findfai1365
+	lw t2, 692(sp)
+	li t4, 4
+	mul t4, t2, t4
+	add t0, t4, t1
+	mv s3, t0
+
+	# store arrayi1366 findfa$1i1365
+
+	# fetch variables
+
+	# get address of local var:findfa$1i1365
+	lw t1, 684(sp)
+
+	# get address of arrayi1366 points to
+	sw t1, 0(s3)
+
+	# br next_608
+	j next_608
+i1372:
+
+	# gep arrayi1372 findfai1371
+
+	# fetch variables
+	la t1, gv
+
+	# get address of local var:findfai1371
+	lw t2, 508(sp)
+	li t4, 4
+	mul t4, t2, t4
+	add t0, t4, t1
+	mv s3, t0
+
+	# store arrayi1372 findfa$1i1371
+
+	# fetch variables
+
+	# get address of local var:findfa$1i1371
+	lw t1, 500(sp)
+
+	# get address of arrayi1372 points to
+	sw t1, 0(s3)
+
+	# br next_610
+	j next_610
 mid_179:
 
 	# store lv result_
@@ -2089,7 +2017,7 @@ mid_179:
 
 	# get address of local var:result_
 	lw t1, 948(sp)
-	mv s5, t1
+	mv s8, t1
 
 	# br whileCond_272
 	j whileCond_272

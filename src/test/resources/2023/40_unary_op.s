@@ -23,7 +23,7 @@ ifTrue_368:
 
 	# fetch variables
 	addi t1, zero, -1
-	mv s2, t1
+	mv s4, t1
 
 	# br next_654
 	j next_654
@@ -33,7 +33,7 @@ ifFalse_146:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br next_654
 	j next_654
@@ -42,7 +42,7 @@ next_654:
 	# ret ld_phi
 
 	# fetch variables
-	mv a0, s2
+	mv a0, s4
 	ret 
 
 memset: 

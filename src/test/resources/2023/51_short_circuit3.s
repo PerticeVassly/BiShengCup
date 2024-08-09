@@ -65,7 +65,7 @@ mainEntry90:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_ secondCond_120 next_635
 
@@ -83,23 +83,19 @@ next_635:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -108,17 +104,13 @@ next_635:
 	# fetch variables
 	addi t1, zero, 32
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -127,23 +119,19 @@ next_635:
 	# get address of gv1 points to
 	la t3, gv1
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -152,17 +140,13 @@ next_635:
 	# fetch variables
 	addi t1, zero, 32
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -209,7 +193,7 @@ next_635:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$2 secondCond_121 next_636
 
@@ -243,7 +227,7 @@ secondCond_120:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$1 ifTrue_351 next_635
 
@@ -261,23 +245,19 @@ next_636:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -286,17 +266,13 @@ next_636:
 	# fetch variables
 	addi t1, zero, 32
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -305,23 +281,19 @@ next_636:
 	# get address of gv1 points to
 	la t3, gv1
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -330,17 +302,13 @@ next_636:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -386,7 +354,7 @@ secondCond_121:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$3 ifTrue_352 next_636
 
@@ -404,23 +372,19 @@ next_637:
 	# get address of gv2 points to
 	la t3, gv2
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -429,17 +393,13 @@ next_637:
 	# fetch variables
 	addi t1, zero, 32
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -476,7 +436,7 @@ secondCond_122:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$4 ifTrue_353 next_637
 
@@ -490,23 +450,19 @@ next_638:
 	# get address of gv2 points to
 	la t3, gv2
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -515,17 +471,13 @@ next_638:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -562,7 +514,7 @@ secondCond_123:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$5 next_638 next_638
 
@@ -576,17 +528,13 @@ ifTrue_355:
 	# fetch variables
 	addi t1, zero, 65
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -607,17 +555,13 @@ ifTrue_356:
 	# fetch variables
 	addi t1, zero, 66
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -638,17 +582,13 @@ ifTrue_357:
 	# fetch variables
 	addi t1, zero, 67
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -669,17 +609,13 @@ ifTrue_358:
 	# fetch variables
 	addi t1, zero, 68
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -700,17 +636,13 @@ ifTrue_359:
 	# fetch variables
 	addi t1, zero, 69
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -731,17 +663,13 @@ ifTrue_360:
 	# fetch variables
 	addi t1, zero, 70
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -754,17 +682,13 @@ next_644:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -785,17 +709,13 @@ whileBody_284:
 	# fetch variables
 	addi t1, zero, 32
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -824,17 +744,13 @@ ifTrue_361:
 	# fetch variables
 	addi t1, zero, 67
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -863,17 +779,13 @@ ifTrue_362:
 	# fetch variables
 	addi t1, zero, 72
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -902,17 +814,13 @@ ifTrue_363:
 	# fetch variables
 	addi t1, zero, 73
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -941,17 +849,13 @@ ifTrue_364:
 	# fetch variables
 	addi t1, zero, 74
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -988,17 +892,13 @@ ifTrue_365:
 	# fetch variables
 	addi t1, zero, 75
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -1011,17 +911,13 @@ next_650:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 

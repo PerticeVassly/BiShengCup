@@ -18,13 +18,13 @@ mainEntry88:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s3, t1
+	mv s5, t1
 
 	# store lv 
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_279
 	j whileCond_279
@@ -34,14 +34,14 @@ whileCond_279:
 
 	# fetch variables
 	addi t1, zero, 100
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -50,7 +50,7 @@ whileCond_279:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ whileBody_279 next_629
 
@@ -63,15 +63,15 @@ whileBody_279:
 
 	# fetch variables
 	addi t1, zero, 50
-	xor t0, s2, t1
+	xor t0, s4, t1
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$1
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1 cond_tmp_$1 
 
@@ -80,7 +80,7 @@ whileBody_279:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$1 ifTrue_350 next_630
 
@@ -92,7 +92,7 @@ next_629:
 	# ret ld_phi$2
 
 	# fetch variables
-	mv a0, s3
+	mv a0, s5
 	addi sp, sp, 80
 	ret 
 ifTrue_350:
@@ -101,7 +101,7 @@ ifTrue_350:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_
 	sw t0, 28(sp)
@@ -109,7 +109,7 @@ ifTrue_350:
 	# store lv result_
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br whileCond_279
 	j whileCond_279
@@ -118,7 +118,7 @@ next_630:
 	# add result_$1 ld_phi$5 ld_phi$6
 
 	# fetch variables
-	addw t0, s3, s2
+	addw t0, s5, s4
 
 	# get address of local var:result_$1
 	sw t0, 20(sp)
@@ -127,7 +127,7 @@ next_630:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_$2
 	sw t0, 12(sp)
@@ -138,7 +138,7 @@ next_630:
 
 	# get address of local var:result_$1
 	lw t1, 20(sp)
-	mv s3, t1
+	mv s5, t1
 
 	# store lv result_$2
 
@@ -146,7 +146,7 @@ next_630:
 
 	# get address of local var:result_$2
 	lw t1, 12(sp)
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_279
 	j whileCond_279

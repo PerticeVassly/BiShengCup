@@ -28,13 +28,13 @@ reverseEntry:
 	sub t0, t1, t2
 	sgtz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -43,7 +43,7 @@ reverseEntry:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ ifTrue_286 ifFalse_125
 
@@ -53,17 +53,13 @@ reverseEntry:
 ifTrue_286:
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -77,17 +73,13 @@ ifTrue_286:
 	# get address of local var:getint
 	lw t1, 28(sp)
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -96,17 +88,13 @@ ifTrue_286:
 ifFalse_125:
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -121,12 +109,12 @@ ifFalse_125:
 	lw t1, 60(sp)
 	addi t2, zero, 1
 	subw t0, t1, t2
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
+	mv a0, s3
 
 	# save caller saved regs
 	addi sp, sp, -192
@@ -148,17 +136,13 @@ ifFalse_125:
 	# get address of local var:getint$1
 	lw t1, 20(sp)
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 

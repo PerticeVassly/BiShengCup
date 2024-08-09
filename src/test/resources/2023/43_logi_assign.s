@@ -13,19 +13,13 @@ mainEntry16:
 	# allocate lv
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -33,19 +27,13 @@ mainEntry16:
 	sw a0, 60(sp)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -63,13 +51,13 @@ mainEntry16:
 	lw t2, 52(sp)
 	xor t0, t1, t2
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -78,7 +66,7 @@ mainEntry16:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ secondCond_31 ifFalse_13
 
@@ -91,7 +79,7 @@ ifTrue_41:
 
 	# fetch variables
 	addi t1, zero, 1
-	mv s2, t1
+	mv s4, t1
 
 	# br next_85
 	j next_85
@@ -101,7 +89,7 @@ ifFalse_13:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br next_85
 	j next_85
@@ -110,7 +98,7 @@ next_85:
 	# ret ld_phi
 
 	# fetch variables
-	mv a0, s2
+	mv a0, s4
 	addi sp, sp, 64
 	ret 
 secondCond_31:
@@ -125,13 +113,13 @@ secondCond_31:
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$1
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1 cond_tmp_$1 
 
@@ -140,7 +128,7 @@ secondCond_31:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$1 ifTrue_41 ifFalse_13
 

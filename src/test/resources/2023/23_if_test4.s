@@ -17,23 +17,23 @@ mainEntry52:
 	addi t1, zero, 1
 	beqz t1, mid_159
 	j i1068
-i1071:
-
-	# store lvi1067 
-
-	# fetch variables
-	addi t1, zero, 20
-	mv s2, t1
-
-	# br i1069
-	j i1069
 i1070:
 
 	# store lvi1067 
 
 	# fetch variables
 	addi t1, zero, 25
-	mv s2, t1
+	mv s4, t1
+
+	# br i1069
+	j i1069
+i1071:
+
+	# store lvi1067 
+
+	# fetch variables
+	addi t1, zero, 20
+	mv s4, t1
 
 	# br i1069
 	j i1069
@@ -50,7 +50,7 @@ i1069:
 	# ret ld_phi
 
 	# fetch variables
-	mv a0, s2
+	mv a0, s4
 	ret 
 mid_159:
 
@@ -58,7 +58,7 @@ mid_159:
 
 	# fetch variables
 	addi t1, zero, 5
-	mv s2, t1
+	mv s4, t1
 
 	# br i1069
 	j i1069

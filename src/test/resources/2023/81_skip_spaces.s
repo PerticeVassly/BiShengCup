@@ -20,28 +20,20 @@ mainEntry15:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_42
 	j whileCond_42
 whileCond_42:
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -58,7 +50,7 @@ whileCond_42:
 	xor t0, t1, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_ whileBody_42 next_83
 
@@ -72,28 +64,18 @@ whileBody_42:
 	# fetch variables
 	addi t1, sp, 96
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s0, 8(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s0, 8(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -108,13 +90,13 @@ whileBody_42:
 	lw t1, 68(sp)
 
 	# get address of arr points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# add result_ ld_phi$1 
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_
 	sw t0, 60(sp)
@@ -122,7 +104,7 @@ whileBody_42:
 	# store lv$1 result_
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br whileCond_42
 	j whileCond_42
@@ -132,7 +114,7 @@ next_83:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s3, t1
+	mv s5, t1
 
 	# br whileCond_43
 	j whileCond_43
@@ -142,10 +124,10 @@ whileCond_43:
 
 	# fetch variables
 	addi t1, zero, 0
-	xor t0, s2, t1
+	xor t0, s4, t1
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$1 whileBody_43 next_84
 
@@ -158,7 +140,7 @@ whileBody_43:
 
 	# fetch variables
 	addi t1, zero, 1
-	subw t0, s2, t1
+	subw t0, s4, t1
 
 	# get address of local var:result_$1
 	sw t0, 44(sp)
@@ -170,18 +152,18 @@ whileBody_43:
 	li t4, 4
 	mul t4, t0, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load arr$2 arr$1
 
 	# get address of arr$1 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# add result_$2 ld_phi$5 arr$2
 
 	# fetch variables
-	addw t0, s3, t0
+	addw t0, s5, t0
 
 	# get address of local var:result_$2
 	sw t0, 20(sp)
@@ -189,7 +171,7 @@ whileBody_43:
 	# store lv$2 result_$2
 
 	# fetch variables
-	mv s3, t0
+	mv s5, t0
 
 	# store lv$1 result_$1
 
@@ -197,7 +179,7 @@ whileBody_43:
 
 	# get address of local var:result_$1
 	lw t1, 44(sp)
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_43
 	j whileCond_43
@@ -207,8 +189,8 @@ next_84:
 
 	# fetch variables
 	addi t1, zero, 79
-	remw t0, s3, t1
-	mv s0, t0
+	remw t0, s5, t1
+	mv s3, t0
 
 	# ret result_$3
 

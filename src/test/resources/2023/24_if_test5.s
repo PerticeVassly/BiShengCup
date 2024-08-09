@@ -17,6 +17,23 @@ mainEntry12:
 	addi t1, zero, 1
 	beqz t1, i201
 	j i200
+i202:
+
+	# ret ld_phi
+
+	# fetch variables
+	mv a0, s4
+	ret 
+i201:
+
+	# store lvi199 
+
+	# fetch variables
+	addi t1, zero, 20
+	mv s4, t1
+
+	# br i202
+	j i202
 i200:
 
 	# condBr  i203 mid_8
@@ -25,30 +42,13 @@ i200:
 	addi t1, zero, 1
 	beqz t1, mid_8
 	j i203
-i201:
-
-	# store lvi199 
-
-	# fetch variables
-	addi t1, zero, 20
-	mv s2, t1
-
-	# br i202
-	j i202
-i202:
-
-	# ret ld_phi
-
-	# fetch variables
-	mv a0, s2
-	ret 
 i203:
 
 	# store lvi199 
 
 	# fetch variables
 	addi t1, zero, 25
-	mv s2, t1
+	mv s4, t1
 
 	# br i202
 	j i202
@@ -58,7 +58,7 @@ mid_8:
 
 	# fetch variables
 	addi t1, zero, 5
-	mv s2, t1
+	mv s4, t1
 
 	# br i202
 	j i202

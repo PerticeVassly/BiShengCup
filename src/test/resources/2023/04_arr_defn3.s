@@ -25,12 +25,12 @@ mainEntry95:
 	# fetch variables
 	addi t1, sp, 480
 	mv t0, t1
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
+	mv a0, s3
 
 	# fetch variables
 	addi t1, zero, 0
@@ -72,7 +72,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp 
 
@@ -80,7 +80,7 @@ mainEntry95:
 	addi t1, zero, 1
 
 	# get address of inp points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$1 
 
@@ -92,7 +92,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$1 
 
@@ -100,7 +100,7 @@ mainEntry95:
 	addi t1, zero, 2
 
 	# get address of inp$1 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$2 
 
@@ -121,7 +121,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$2 
 
@@ -129,7 +129,7 @@ mainEntry95:
 	addi t1, zero, 3
 
 	# get address of inp$2 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$3 
 
@@ -141,7 +141,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$3 
 
@@ -149,7 +149,7 @@ mainEntry95:
 	addi t1, zero, 4
 
 	# get address of inp$3 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$4 
 
@@ -170,7 +170,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$4 
 
@@ -178,7 +178,7 @@ mainEntry95:
 	addi t1, zero, 5
 
 	# get address of inp$4 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$5 
 
@@ -190,7 +190,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$5 
 
@@ -198,7 +198,7 @@ mainEntry95:
 	addi t1, zero, 6
 
 	# get address of inp$5 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$6 
 
@@ -219,7 +219,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$6 
 
@@ -227,7 +227,7 @@ mainEntry95:
 	addi t1, zero, 7
 
 	# get address of inp$6 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$7 
 
@@ -239,7 +239,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$7 
 
@@ -247,7 +247,7 @@ mainEntry95:
 	addi t1, zero, 8
 
 	# get address of inp$7 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$8 
 
@@ -268,7 +268,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$8 
 
@@ -276,7 +276,7 @@ mainEntry95:
 	addi t1, zero, 1
 
 	# get address of inp$8 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$9 
 
@@ -288,7 +288,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$9 
 
@@ -296,7 +296,7 @@ mainEntry95:
 	addi t1, zero, 2
 
 	# get address of inp$9 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$10 
 
@@ -317,7 +317,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$10 
 
@@ -325,7 +325,7 @@ mainEntry95:
 	addi t1, zero, 3
 
 	# get address of inp$10 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$11 
 
@@ -337,7 +337,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$11 
 
@@ -345,7 +345,7 @@ mainEntry95:
 	addi t1, zero, 4
 
 	# get address of inp$11 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$12 
 
@@ -366,7 +366,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$12 
 
@@ -374,7 +374,7 @@ mainEntry95:
 	addi t1, zero, 5
 
 	# get address of inp$12 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$13 
 
@@ -418,7 +418,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$14 
 
@@ -426,7 +426,7 @@ mainEntry95:
 	addi t1, zero, 7
 
 	# get address of inp$14 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$15 
 
@@ -438,7 +438,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$15 
 
@@ -446,7 +446,7 @@ mainEntry95:
 	addi t1, zero, 8
 
 	# get address of inp$15 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$16 
 
@@ -467,7 +467,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$16 
 
@@ -475,7 +475,7 @@ mainEntry95:
 	addi t1, zero, 1
 
 	# get address of inp$16 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$17 
 
@@ -487,7 +487,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$17 
 
@@ -495,7 +495,7 @@ mainEntry95:
 	addi t1, zero, 2
 
 	# get address of inp$17 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$18 
 
@@ -516,7 +516,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$18 
 
@@ -524,7 +524,7 @@ mainEntry95:
 	addi t1, zero, 3
 
 	# get address of inp$18 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$19 
 
@@ -536,7 +536,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$19 
 
@@ -544,7 +544,7 @@ mainEntry95:
 	addi t1, zero, 0
 
 	# get address of inp$19 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$20 
 
@@ -565,7 +565,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$20 
 
@@ -573,7 +573,7 @@ mainEntry95:
 	addi t1, zero, 5
 
 	# get address of inp$20 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$21 
 
@@ -617,7 +617,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$22 
 
@@ -625,7 +625,7 @@ mainEntry95:
 	addi t1, zero, 7
 
 	# get address of inp$22 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$23 
 
@@ -637,7 +637,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$23 
 
@@ -645,21 +645,21 @@ mainEntry95:
 	addi t1, zero, 8
 
 	# get address of inp$23 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# load d$1 inp$21
 
 	# get address of inp$21 points to
 	ld t3, 208(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# load c$1 inp$13
 
 	# get address of inp$13 points to
 	ld t3, 304(sp)
 	lw t0, 0(t3)
-	mv s1, t0
+	mv s0, t0
 
 	# gep ptr_$26 
 
@@ -690,7 +690,7 @@ mainEntry95:
 
 	# get address of inp$24 points to
 	ld t3, 152(sp)
-	sw s0, 0(t3)
+	sw s3, 0(t3)
 
 	# gep inp$25 
 
@@ -712,7 +712,7 @@ mainEntry95:
 
 	# get address of inp$25 points to
 	ld t3, 144(sp)
-	sw s1, 0(t3)
+	sw s0, 0(t3)
 
 	# gep ptr_$28 
 
@@ -733,7 +733,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$26 
 
@@ -741,7 +741,7 @@ mainEntry95:
 	addi t1, zero, 3
 
 	# get address of inp$26 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$27 
 
@@ -753,7 +753,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$27 
 
@@ -761,7 +761,7 @@ mainEntry95:
 	addi t1, zero, 4
 
 	# get address of inp$27 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$30 
 
@@ -782,7 +782,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$28 
 
@@ -790,7 +790,7 @@ mainEntry95:
 	addi t1, zero, 5
 
 	# get address of inp$28 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$29 
 
@@ -802,7 +802,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$29 
 
@@ -810,7 +810,7 @@ mainEntry95:
 	addi t1, zero, 6
 
 	# get address of inp$29 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$32 
 
@@ -831,7 +831,7 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$30 
 
@@ -839,7 +839,7 @@ mainEntry95:
 	addi t1, zero, 7
 
 	# get address of inp$30 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$31 
 
@@ -869,33 +869,33 @@ mainEntry95:
 	# get address of inp$31 points to
 	ld t3, 72(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# load e$3 inp$24
 
 	# get address of inp$24 points to
 	ld t3, 152(sp)
 	lw t0, 0(t3)
-	mv s1, t0
+	mv s0, t0
 
 	# add result_ e$1 e$3
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# load e$5 inp$25
 
 	# get address of inp$25 points to
 	ld t3, 144(sp)
 	lw t0, 0(t3)
-	mv s1, t0
+	mv s0, t0
 
 	# add result_$1 result_ e$5
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# gep ptr_$37 
 
@@ -905,7 +905,7 @@ mainEntry95:
 	li t4, 8
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# gep a 
 
@@ -914,19 +914,19 @@ mainEntry95:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s1, t0
+	mv s0, t0
 
 	# load a$1 a
 
 	# get address of a points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$2 result_$1 a$1
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# ret result_$2
 

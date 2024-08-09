@@ -8,7 +8,7 @@ main:
 mainEntry35:
 
 	# reserve space for all local variables in function
-	li t0, 49632
+	li t0, 49648
 	sub sp, sp, t0
 
 	# allocate lv$4i848
@@ -34,20 +34,20 @@ mainEntry35:
 	# gep dst 
 
 	# fetch variables
-	addi t1, sp, 480
+	addi t1, sp, 488
 	addi t2, zero, 0
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
 
 	# get address of local var:dst
-	sd t0, 472(sp)
+	sd t0, 480(sp)
 
 	# store lv$1i836 
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s8, t1
+	mv s10, t1
 
 	# br i838
 	j i838
@@ -57,15 +57,15 @@ i841:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s8, t1
+	addw t0, s10, t1
 
 	# get address of local var:result_i841
-	sw t0, 468(sp)
+	sw t0, 476(sp)
 
 	# store lv$1i836 result_i841
 
 	# fetch variables
-	mv s8, t0
+	mv s10, t0
 
 	# br i838
 	j i838
@@ -77,13 +77,13 @@ i840:
 	addi t1, zero, 0
 
 	# get address of m71 points to
-	ld t3, 448(sp)
+	ld t3, 456(sp)
 	sw t1, 0(t3)
 
 	# gep src 
 
 	# fetch variables
-	li t4, 16864
+	li t4, 16872
 	add t1, sp, t4
 	addi t2, zero, 0
 	li t4, 4
@@ -91,13 +91,13 @@ i840:
 	add t0, t4, t1
 
 	# get address of local var:src
-	sd t0, 456(sp)
+	sd t0, 464(sp)
 
 	# store lv$1i842 
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s7, t1
+	mv s9, t1
 
 	# br i843
 	j i843
@@ -108,63 +108,45 @@ i838:
 	# fetch variables
 
 	# get address of local var:dst
-	ld t1, 472(sp)
+	ld t1, 480(sp)
 	li t4, 4
-	mul t4, s8, t4
+	mul t4, s10, t4
 	add t0, t4, t1
 
 	# get address of local var:m71
-	sd t0, 448(sp)
+	sd t0, 456(sp)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
-	sd s5, 48(sp)
-	sd s7, 56(sp)
-	sd s8, 64(sp)
-	sd s9, 72(sp)
 
 	# call getch
 	call getch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	ld s5, 48(sp)
-	ld s7, 56(sp)
-	ld s8, 64(sp)
-	ld s9, 72(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
 	# get address of local var:getchi838
-	sw a0, 444(sp)
+	sw a0, 452(sp)
 
 	# store m71 getchi838
 
 	# fetch variables
 
 	# get address of local var:getchi838
-	lw t1, 444(sp)
+	lw t1, 452(sp)
 
 	# get address of m71 points to
-	ld t3, 448(sp)
+	ld t3, 456(sp)
 	sw t1, 0(t3)
 
 	# load buf$2i838 m71
 
 	# get address of m71 points to
-	ld t3, 448(sp)
+	ld t3, 456(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_eq_tmp_i838 buf$2i838 
 
@@ -172,13 +154,13 @@ i838:
 	addi t2, zero, 10
 	xor t0, t0, t2
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_i838
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_i838 cond_tmp_i838 
 
@@ -189,7 +171,7 @@ i838:
 	seqz t0, t0
 
 	# get address of local var:cond_i838
-	sw t0, 412(sp)
+	sw t0, 420(sp)
 
 	# condBr cond_i838 i840 i841
 
@@ -204,13 +186,13 @@ i846:
 	addi t1, zero, 0
 
 	# get address of m72 points to
-	ld t3, 384(sp)
+	ld t3, 392(sp)
 	sw t1, 0(t3)
 
 	# gep nexti848 
 
 	# fetch variables
-	li t4, 33248
+	li t4, 33256
 	add t1, sp, t4
 	addi t2, zero, 0
 	li t4, 4
@@ -218,7 +200,7 @@ i846:
 	add t0, t4, t1
 
 	# get address of local var:nexti848
-	sd t0, 400(sp)
+	sd t0, 408(sp)
 
 	# gep nexti828i864 
 
@@ -227,7 +209,7 @@ i846:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store nexti828i864 
 
@@ -235,19 +217,19 @@ i846:
 	addi t1, zero, -1
 
 	# get address of nexti828i864 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# store lv$3i828i864 
 
 	# fetch variables
 	addi t1, zero, -1
-	mv s2, t1
+	mv s4, t1
 
 	# store lv$2i828i864 
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s5, t1
+	mv s8, t1
 
 	# br i860
 	j i860
@@ -258,63 +240,45 @@ i843:
 	# fetch variables
 
 	# get address of local var:src
-	ld t1, 456(sp)
+	ld t1, 464(sp)
 	li t4, 4
-	mul t4, s7, t4
+	mul t4, s9, t4
 	add t0, t4, t1
 
 	# get address of local var:m72
-	sd t0, 384(sp)
+	sd t0, 392(sp)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
-	sd s5, 48(sp)
-	sd s7, 56(sp)
-	sd s8, 64(sp)
-	sd s9, 72(sp)
 
 	# call getch
 	call getch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	ld s5, 48(sp)
-	ld s7, 56(sp)
-	ld s8, 64(sp)
-	ld s9, 72(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
 	# get address of local var:getchi844
-	sw a0, 380(sp)
+	sw a0, 388(sp)
 
 	# store m72 getchi844
 
 	# fetch variables
 
 	# get address of local var:getchi844
-	lw t1, 380(sp)
+	lw t1, 388(sp)
 
 	# get address of m72 points to
-	ld t3, 384(sp)
+	ld t3, 392(sp)
 	sw t1, 0(t3)
 
 	# load buf$2i844 m72
 
 	# get address of m72 points to
-	ld t3, 384(sp)
+	ld t3, 392(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_eq_tmp_i844 buf$2i844 
 
@@ -322,13 +286,13 @@ i843:
 	addi t2, zero, 10
 	xor t0, t0, t2
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_i844
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_i844 cond_tmp_i844 
 
@@ -339,7 +303,7 @@ i843:
 	seqz t0, t0
 
 	# get address of local var:cond_i844
-	sw t0, 348(sp)
+	sw t0, 356(sp)
 
 	# condBr cond_i844 i846 i847
 
@@ -352,15 +316,15 @@ i847:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s7, t1
+	addw t0, s9, t1
 
 	# get address of local var:result_i847
-	sw t0, 340(sp)
+	sw t0, 348(sp)
 
 	# store lv$1i842 result_i847
 
 	# fetch variables
-	mv s7, t0
+	mv s9, t0
 
 	# br i843
 	j i843
@@ -370,15 +334,15 @@ i863:
 
 	# fetch variables
 	addi t1, zero, -1
-	xor t0, s2, t1
+	xor t0, s4, t1
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_i830i863
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_i830i863 cond_tmp_i830i863 
 
@@ -389,7 +353,7 @@ i863:
 	seqz t0, t0
 
 	# get address of local var:cond_i830i863
-	sw t0, 316(sp)
+	sw t0, 324(sp)
 
 	# condBr cond_i830i863 i862 i866
 
@@ -402,39 +366,39 @@ i852:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s3, t1
+	addw t0, s5, t1
 
 	# get address of local var:result_i852
-	sw t0, 308(sp)
+	sw t0, 316(sp)
 
 	# add result_$1i852 ld_phi$6 
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s4, t1
+	addw t0, s7, t1
 
 	# get address of local var:result_$1i852
-	sw t0, 300(sp)
+	sw t0, 308(sp)
 
 	# gep dst$3i852 result_i852
 
 	# fetch variables
 
 	# get address of local var:dst
-	ld t1, 472(sp)
+	ld t1, 480(sp)
 
 	# get address of local var:result_i852
-	lw t2, 308(sp)
+	lw t2, 316(sp)
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load dst$4i852 dst$3i852
 
 	# get address of dst$3i852 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# cmp tmp_i852  dst$4i852
 
@@ -443,20 +407,20 @@ i852:
 	xor t0, t1, t0
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# logic tmp_$1i852 tmp_i852 
 
 	# fetch variables
 	addi t2, zero, 1
 	xor t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# zext tmp_$2i852
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_normalize_$1i852 tmp_$2i852 
 
@@ -467,7 +431,7 @@ i852:
 	seqz t0, t0
 
 	# get address of local var:cond_normalize_$1i852
-	sw t0, 252(sp)
+	sw t0, 260(sp)
 
 	# condBr cond_normalize_$1i852 i855 i856
 
@@ -481,20 +445,20 @@ i849:
 	# fetch variables
 
 	# get address of local var:src
-	ld t1, 456(sp)
+	ld t1, 464(sp)
 	li t4, 4
-	mul t4, s4, t4
+	mul t4, s7, t4
 	add t0, t4, t1
 
 	# get address of local var:m73
-	sd t0, 240(sp)
+	sd t0, 248(sp)
 
 	# load src$1i849 m73
 
 	# get address of m73 points to
-	ld t3, 240(sp)
+	ld t3, 248(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_normalize_i849 src$1i849 
 
@@ -505,7 +469,7 @@ i849:
 	seqz t0, t0
 
 	# get address of local var:cond_normalize_i849
-	sw t0, 228(sp)
+	sw t0, 236(sp)
 
 	# condBr cond_normalize_i849 i850 i851
 
@@ -518,56 +482,56 @@ i862:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_i832i862
-	sw t0, 220(sp)
+	sw t0, 228(sp)
 
 	# add result_$1i832i862 ld_phi$9 
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s5, t1
+	addw t0, s8, t1
 
 	# get address of local var:result_$1i832i862
-	sw t0, 212(sp)
+	sw t0, 220(sp)
 
 	# gep next$1i832i862 result_$1i832i862
 
 	# fetch variables
 
 	# get address of local var:nexti848
-	ld t1, 400(sp)
+	ld t1, 408(sp)
 	li t4, 4
 	mul t4, t0, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store next$1i832i862 result_i832i862
 
 	# fetch variables
 
 	# get address of local var:result_i832i862
-	lw t1, 220(sp)
+	lw t1, 228(sp)
 
 	# get address of next$1i832i862 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# store lv$3i828i864 result_i832i862
 
 	# fetch variables
 
 	# get address of local var:result_i832i862
-	lw t1, 220(sp)
-	mv s2, t1
+	lw t1, 228(sp)
+	mv s4, t1
 
 	# store lv$2i828i864 result_$1i832i862
 
 	# fetch variables
 
 	# get address of local var:result_$1i832i862
-	lw t1, 212(sp)
-	mv s5, t1
+	lw t1, 220(sp)
+	mv s8, t1
 
 	# br i860
 	j i860
@@ -578,24 +542,24 @@ i865:
 	# fetch variables
 
 	# get address of local var:nexti848
-	ld t1, 400(sp)
+	ld t1, 408(sp)
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load next$3i833i865 next$2i833i865
 
 	# get address of next$2i833i865 points to
-	lw t0, 0(s0)
+	lw t0, 0(s3)
 
 	# get address of local var:next$3i833i865
-	sw t0, 188(sp)
+	sw t0, 196(sp)
 
 	# store lv$3i828i864 next$3i833i865
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br i860
 	j i860
@@ -606,8 +570,12 @@ i855:
 	# fetch variables
 
 	# get address of local var:result_$1i852
-	lw t1, 300(sp)
-	mv s9, t1
+	lw t1, 308(sp)
+
+	# get address of retVal_ofi848 points to
+	li t2, 49644
+	add t2, sp, t2
+	sw t1, 0(t2)
 
 	# br tc120
 	j tc120
@@ -618,20 +586,20 @@ i860:
 	# fetch variables
 
 	# get address of local var:dst
-	ld t1, 472(sp)
+	ld t1, 480(sp)
 	li t4, 4
-	mul t4, s5, t4
+	mul t4, s8, t4
 	add t0, t4, t1
 
 	# get address of local var:m74
-	sd t0, 176(sp)
+	sd t0, 184(sp)
 
 	# load str$1i829i860 m74
 
 	# get address of m74 points to
-	ld t3, 176(sp)
+	ld t3, 184(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_normalize_i829i860 str$1i829i860 
 
@@ -642,7 +610,7 @@ i860:
 	seqz t0, t0
 
 	# get address of local var:cond_normalize_i829i860
-	sw t0, 164(sp)
+	sw t0, 172(sp)
 
 	# condBr cond_normalize_i829i860 i863 i861
 
@@ -651,35 +619,30 @@ i860:
 	j i863
 tc120:
 
+	# load ld_phi$13 retVal_ofi848
+
+	# get address of retVal_ofi848 points to
+	li t2, 49644
+	add t2, sp, t2
+	lw t0, 0(t2)
+
+	# get address of local var:ld_phi$13
+	sw t0, 164(sp)
+
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s9
 
-	# save caller saved regs
-	addi sp, sp, -192
+	# get address of local var:ld_phi$13
+	lw t1, 164(sp)
+	mv a0, t1
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
-	sd s5, 48(sp)
-	sd s7, 56(sp)
-	sd s8, 64(sp)
-	sd s9, 72(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	ld s5, 48(sp)
-	ld s7, 56(sp)
-	ld s8, 64(sp)
-	ld s9, 72(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -688,31 +651,13 @@ tc120:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
-	sd s5, 48(sp)
-	sd s7, 56(sp)
-	sd s8, 64(sp)
-	sd s9, 72(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	ld s5, 48(sp)
-	ld s7, 56(sp)
-	ld s8, 64(sp)
-	ld s9, 72(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -721,7 +666,7 @@ tc120:
 	# fetch variables
 	addi t1, zero, 0
 	mv a0, t1
-	li t0, 49632
+	li t0, 49648
 	add sp, sp, t0
 	ret 
 i850:
@@ -731,37 +676,37 @@ i850:
 	# fetch variables
 
 	# get address of local var:dst
-	ld t1, 472(sp)
+	ld t1, 480(sp)
 	li t4, 4
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load dst$2i850 dst$1i850
 
 	# get address of dst$1i850 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# load src$3i850 m73
 
 	# get address of m73 points to
-	ld t3, 240(sp)
+	ld t3, 248(sp)
 	lw t0, 0(t3)
-	mv s1, t0
+	mv s0, t0
 
 	# cmp cond_eq_tmp_i850 dst$2i850 src$3i850
 
 	# fetch variables
-	xor t0, s0, t0
+	xor t0, s3, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_i850
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_i850 cond_tmp_i850 
 
@@ -797,7 +742,7 @@ i857:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s4, t1
+	addw t0, s7, t1
 
 	# get address of local var:result_$3i857
 	sw t0, 100(sp)
@@ -808,7 +753,7 @@ i857:
 
 	# get address of local var:result_$2i857
 	lw t1, 108(sp)
-	mv s3, t1
+	mv s5, t1
 
 	# store lv$4i848 result_$3i857
 
@@ -816,7 +761,7 @@ i857:
 
 	# get address of local var:result_$3i857
 	lw t1, 100(sp)
-	mv s4, t1
+	mv s7, t1
 
 	# br i849
 	j i849
@@ -825,17 +770,17 @@ i853:
 	# gep next$1i853 ld_phi$16
 
 	# fetch variables
-	li t4, 33248
+	li t4, 33256
 	add t1, sp, t4
 	li t4, 4
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load next$2i853 next$1i853
 
 	# get address of next$1i853 points to
-	lw t0, 0(s0)
+	lw t0, 0(s3)
 
 	# get address of local var:next$2i853
 	sw t0, 84(sp)
@@ -846,13 +791,13 @@ i853:
 	addi t2, zero, -1
 	xor t0, t0, t2
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$1i853
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1i853 cond_tmp_$1i853 
 
@@ -877,16 +822,16 @@ i856:
 	# fetch variables
 
 	# get address of local var:result_i852
-	lw t1, 308(sp)
-	mv s3, t1
+	lw t1, 316(sp)
+	mv s5, t1
 
 	# store lv$4i848 result_$1i852
 
 	# fetch variables
 
 	# get address of local var:result_$1i852
-	lw t1, 300(sp)
-	mv s4, t1
+	lw t1, 308(sp)
+	mv s7, t1
 
 	# br i849
 	j i849
@@ -896,13 +841,13 @@ i861:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s3, t1
+	mv s5, t1
 
 	# store lv$4i848 
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s4, t1
+	mv s7, t1
 
 	# br i849
 	j i849
@@ -911,39 +856,39 @@ i866:
 	# load str$3i835i866 m74
 
 	# get address of m74 points to
-	ld t3, 176(sp)
+	ld t3, 184(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# gep str$4i835i866 ld_phi$17
 
 	# fetch variables
 
 	# get address of local var:dst
-	ld t1, 472(sp)
+	ld t1, 480(sp)
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load str$5i835i866 str$4i835i866
 
 	# get address of str$4i835i866 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# cmp cond_eq_tmp_$1i835i866 str$3i835i866 str$5i835i866
 
 	# fetch variables
-	xor t0, s0, t0
+	xor t0, s3, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$1i835i866
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1i835i866 cond_tmp_$1i835i866 
 
@@ -967,7 +912,11 @@ i851:
 
 	# fetch variables
 	addi t1, zero, -1
-	mv s9, t1
+
+	# get address of retVal_ofi848 points to
+	li t2, 49644
+	add t2, sp, t2
+	sw t1, 0(t2)
 
 	# br tc120
 	j tc120
@@ -979,7 +928,7 @@ mid_17:
 
 	# get address of local var:next$2i853
 	lw t1, 84(sp)
-	mv s3, t1
+	mv s5, t1
 
 	# br i849
 	j i849

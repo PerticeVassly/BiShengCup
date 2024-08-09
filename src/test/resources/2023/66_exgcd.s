@@ -60,13 +60,13 @@ exgcdEntry:
 	addi t2, zero, 0
 	xor t0, t1, t2
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -75,7 +75,7 @@ exgcdEntry:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ ifTrue_319 ifFalse_140
 
@@ -88,7 +88,7 @@ ifTrue_319:
 
 	# get address of lv$2 points to
 	ld t0, 216(sp)
-	mv s0, t0
+	mv s3, t0
 
 	# gep x 
 
@@ -97,7 +97,7 @@ ifTrue_319:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store x 
 
@@ -105,13 +105,13 @@ ifTrue_319:
 	addi t1, zero, 1
 
 	# get address of x points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# load arr_$1 lv$3
 
 	# get address of lv$3 points to
 	ld t0, 224(sp)
-	mv s0, t0
+	mv s3, t0
 
 	# gep y 
 
@@ -120,7 +120,7 @@ ifTrue_319:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store y 
 
@@ -128,7 +128,7 @@ ifTrue_319:
 	addi t1, zero, 0
 
 	# get address of y points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# ret 0
 
@@ -154,24 +154,19 @@ ifFalse_140:
 	# get address of local var:1
 	lw t2, 248(sp)
 	remw t0, t1, t2
-	mv s0, t0
+	mv s3, t0
 
 	# load x$1 lv$2
 
 	# get address of lv$2 points to
 	ld t0, 216(sp)
-	mv s1, t0
+	mv s0, t0
 
 	# load y$1 lv$3
 
 	# get address of lv$3 points to
 	ld t0, 224(sp)
-
-	# spill for y$1
-
-	# get address of local var:result_
-	sw s0, 156(sp)
-	mv s0, t0
+	mv s1, t0
 
 	# prepare params int regs
 
@@ -182,16 +177,13 @@ ifFalse_140:
 	mv a0, t1
 
 	# fetch variables
-
-	# get address of local var:result_
-	lw t1, 156(sp)
-	mv a1, t1
+	mv a1, s3
 
 	# fetch variables
-	mv a2, s1
+	mv a2, s0
 
 	# fetch variables
-	mv a3, s0
+	mv a3, s1
 
 	# save caller saved regs
 	addi sp, sp, -192
@@ -213,7 +205,7 @@ ifFalse_140:
 
 	# get address of lv$2 points to
 	ld t0, 216(sp)
-	mv s0, t0
+	mv s3, t0
 
 	# gep x$2 
 
@@ -222,19 +214,19 @@ ifFalse_140:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# load x$3 x$2
 
 	# get address of x$2 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# load arr_$3 lv$2
 
 	# get address of lv$2 points to
 	ld t0, 216(sp)
-	mv s1, t0
+	mv s0, t0
 
 	# gep x$4 
 
@@ -243,18 +235,13 @@ ifFalse_140:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s1, t0
+	mv s0, t0
 
 	# load arr_$4 lv$3
 
 	# get address of lv$3 points to
 	ld t0, 224(sp)
-
-	# spill for arr_$4
-
-	# get address of local var:x$3
-	sw s0, 108(sp)
-	mv s0, t0
+	mv s1, t0
 
 	# gep y$2 
 
@@ -263,20 +250,20 @@ ifFalse_140:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s1, t0
 
 	# load y$3 y$2
 
 	# get address of y$2 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s1)
+	mv s1, t0
 
 	# store x$4 y$3
 
 	# fetch variables
 
 	# get address of x$4 points to
-	sw t0, 0(s1)
+	sw t0, 0(s0)
 
 	# load arr_$5 lv$3
 
@@ -309,12 +296,7 @@ ifFalse_140:
 
 	# get address of lv$3 points to
 	ld t0, 224(sp)
-
-	# spill for arr_$6
-
-	# get address of local var:y$4
-	sd s0, 48(sp)
-	mv s0, t0
+	mv s2, t0
 
 	# gep y$5 
 
@@ -323,36 +305,32 @@ ifFalse_140:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s2, t0
 
 	# load y$6 y$5
 
 	# get address of y$5 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s2)
+	mv s2, t0
 
 	# mul result_$2 result_$1 y$6
 
 	# fetch variables
 	mulw t0, s1, t0
-	mv s0, t0
+	mv s1, t0
 
 	# sub result_$3 x$3 result_$2
 
 	# fetch variables
-
-	# get address of local var:x$3
-	lw t1, 108(sp)
-	subw t0, t1, t0
-	mv s0, t0
+	subw t0, s3, t0
+	mv s3, t0
 
 	# store y$4 result_$3
 
 	# fetch variables
 
 	# get address of y$4 points to
-	ld t3, 48(sp)
-	sw t0, 0(t3)
+	sw t0, 0(s0)
 
 	# ret exgcd
 
@@ -465,28 +443,28 @@ mainEntry68:
 	# get address of inp points to
 	ld t3, 56(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# mod result_ x$3 
 
 	# fetch variables
 	addi t2, zero, 15
 	remw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# add result_$1 result_ 
 
 	# fetch variables
 	addi t2, zero, 15
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# mod result_$2 result_$1 
 
 	# fetch variables
 	addi t2, zero, 15
 	remw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store inp result_$2
 
@@ -501,23 +479,19 @@ mainEntry68:
 	# get address of inp points to
 	ld t3, 56(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 

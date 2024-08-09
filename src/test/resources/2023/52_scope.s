@@ -24,13 +24,13 @@ mainEntry22:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s4, t1
+	mv s7, t1
 
 	# store lv$1 
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_62
 	j whileCond_62
@@ -40,14 +40,14 @@ whileCond_62:
 
 	# fetch variables
 	addi t1, zero, 100
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -56,7 +56,7 @@ whileCond_62:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ whileBody_62 next_124
 
@@ -70,7 +70,7 @@ whileBody_62:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_eq_tmp_i704  ai704
 
@@ -78,13 +78,13 @@ whileBody_62:
 	addi t1, zero, 1
 	xor t0, t1, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_i704
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_i704 cond_tmp_i704 
 
@@ -108,14 +108,14 @@ next_124:
 
 	# fetch variables
 	addi t1, zero, 100
-	slt t0, s4, t1
-	mv s0, t0
+	slt t0, s7, t1
+	mv s3, t0
 
 	# zext cond_tmp_$2
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$2 cond_tmp_$2 
 
@@ -124,7 +124,7 @@ next_124:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$2 ifTrue_63 ifFalse_19
 
@@ -137,7 +137,7 @@ ifTrue_62:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s4, t1
+	addw t0, s7, t1
 
 	# get address of local var:result_
 	sw t0, 44(sp)
@@ -145,7 +145,7 @@ ifTrue_62:
 	# store lv result_
 
 	# fetch variables
-	mv s4, t0
+	mv s7, t0
 
 	# br next_125
 	j next_125
@@ -155,7 +155,7 @@ next_125:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_$1
 	sw t0, 36(sp)
@@ -163,7 +163,7 @@ next_125:
 	# store lv$1 result_$1
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br whileCond_62
 	j whileCond_62
@@ -174,23 +174,13 @@ ifTrue_63:
 	# fetch variables
 	addi t1, zero, 1
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -203,23 +193,13 @@ ifFalse_19:
 	# fetch variables
 	addi t1, zero, 0
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -240,7 +220,7 @@ i705:
 
 	# fetch variables
 	addi t1, zero, 1
-	mv s3, t1
+	mv s5, t1
 
 	# br tc81
 	j tc81
@@ -250,15 +230,15 @@ tc81:
 
 	# fetch variables
 	addi t1, zero, 1
-	xor t0, s3, t1
+	xor t0, s5, t1
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$1
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1 cond_tmp_$1 
 
@@ -267,7 +247,7 @@ tc81:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$1 ifTrue_62 mid_11
 
@@ -280,7 +260,7 @@ i706:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s3, t1
+	mv s5, t1
 
 	# br tc81
 	j tc81

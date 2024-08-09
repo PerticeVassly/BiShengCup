@@ -38,17 +38,13 @@ mainEntry70:
 	# fetch variables
 	addi t1, zero, 3
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -57,17 +53,13 @@ mainEntry70:
 	# fetch variables
 	addi t1, zero, 3
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -76,17 +68,13 @@ mainEntry70:
 	# fetch variables
 	addi t1, zero, 1
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -95,23 +83,31 @@ mainEntry70:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
 	# br whileCond_258
 	j whileCond_258
 whileCond_258:
+
+	# gep m148 
+
+	# fetch variables
+	la t1, gv1
+	addi t2, zero, 2
+	li t4, 4
+	mul t4, t2, t4
+	add t0, t4, t1
+
+	# get address of local var:m148
+	sd t0, 240(sp)
 
 	# condBr  whileBody_258 next_578
 
@@ -129,34 +125,18 @@ whileBody_258:
 	j ifTrue_320
 next_578:
 
-	# gep m148 
-
-	# fetch variables
-	la t1, gv1
-	addi t2, zero, 2
-	li t4, 4
-	mul t4, t2, t4
-	add t0, t4, t1
-
-	# get address of local var:m148
-	sd t0, 240(sp)
-
 	# prepare params int regs
 
 	# fetch variables
 	addi t1, zero, 1
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -165,17 +145,13 @@ next_578:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -193,12 +169,12 @@ next_578:
 	# fetch variables
 	addi t1, sp, 248
 	mv t0, t1
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
+	mv a0, s3
 
 	# fetch variables
 	addi t1, zero, 0
@@ -229,7 +205,7 @@ next_578:
 	li t4, 32
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep inp 
 
@@ -238,7 +214,7 @@ next_578:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp 
 
@@ -246,7 +222,7 @@ next_578:
 	addi t1, zero, 9
 
 	# get address of inp points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$1 
 
@@ -267,7 +243,7 @@ next_578:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$1 
 
@@ -275,7 +251,7 @@ next_578:
 	addi t1, zero, 8
 
 	# get address of inp$1 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$2 
 
@@ -287,7 +263,7 @@ next_578:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$2 
 
@@ -295,14 +271,14 @@ next_578:
 	addi t1, zero, 3
 
 	# get address of inp$2 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# load c$2 m148
 
 	# get address of m148 points to
 	ld t3, 240(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_normalize_$1 c$2 
 
@@ -311,7 +287,7 @@ next_578:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$1 ifTrue_321 next_580
 
@@ -333,12 +309,12 @@ ifTrue_321:
 	# fetch variables
 	addi t1, sp, 324
 	mv t0, t1
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
+	mv a0, s3
 
 	# fetch variables
 	addi t1, zero, 0
@@ -382,7 +358,7 @@ ifTrue_321:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$3 
 
@@ -390,7 +366,7 @@ ifTrue_321:
 	addi t1, zero, 2
 
 	# get address of inp$3 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$4 
 
@@ -402,7 +378,7 @@ ifTrue_321:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$4 
 
@@ -410,7 +386,7 @@ ifTrue_321:
 	addi t1, zero, 1
 
 	# get address of inp$4 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$5 
 
@@ -422,7 +398,7 @@ ifTrue_321:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$5 
 
@@ -430,7 +406,7 @@ ifTrue_321:
 	addi t1, zero, 8
 
 	# get address of inp$5 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$10 
 
@@ -442,7 +418,7 @@ ifTrue_321:
 	li t4, 20
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep c$3 
 
@@ -451,29 +427,25 @@ ifTrue_321:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# load c$4 c$3
 
 	# get address of c$3 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -487,7 +459,7 @@ ifTrue_321:
 	li t4, 20
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep c$5 
 
@@ -496,29 +468,25 @@ ifTrue_321:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# load c$6 c$5
 
 	# get address of c$5 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -532,7 +500,7 @@ ifTrue_321:
 	li t4, 20
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep c$7 
 
@@ -541,29 +509,25 @@ ifTrue_321:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# load c$8 c$7
 
 	# get address of c$7 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -576,17 +540,13 @@ next_580:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -595,17 +555,13 @@ next_580:
 	# fetch variables
 	addi t1, zero, 5
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -614,17 +570,13 @@ next_580:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -636,29 +588,25 @@ next_580:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load c$10 c$9
 
 	# get address of c$9 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -670,29 +618,25 @@ next_580:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load c$12 c$11
 
 	# get address of c$11 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -701,23 +645,19 @@ next_580:
 	# get address of m148 points to
 	ld t3, 240(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -729,29 +669,25 @@ next_580:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load c$16 c$15
 
 	# get address of c$15 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -760,17 +696,13 @@ next_580:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 

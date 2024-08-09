@@ -29,7 +29,7 @@ mainEntry:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br i1
 	j i1
@@ -41,21 +41,21 @@ i28:
 	li t4, 40656
 	add t1, sp, t4
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load a2$6i28 a2$5i28
 
 	# get address of a2$5i28 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# add result_$15i28 ld_phi$1 a2$6i28
 
 	# fetch variables
-	addw t0, s4, t0
-	mv s0, t0
+	addw t0, s7, t0
+	mv s3, t0
 
 	# gep a1$9i28 ld_phi$2
 
@@ -63,20 +63,20 @@ i28:
 	li t4, 80656
 	add t1, sp, t4
 	li t4, 4
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a1$10i28 a1$9i28
 
 	# get address of a1$9i28 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# sub result_$16i28 result_$15i28 a1$10i28
 
 	# fetch variables
-	subw t0, s0, t0
+	subw t0, s3, t0
 
 	# get address of local var:result_$16i28
 	sw t0, 612(sp)
@@ -85,7 +85,7 @@ i28:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s3, t1
+	addw t0, s5, t1
 
 	# get address of local var:result_$17i28
 	sw t0, 604(sp)
@@ -96,7 +96,7 @@ i28:
 
 	# get address of local var:result_$16i28
 	lw t1, 612(sp)
-	mv s4, t1
+	mv s7, t1
 
 	# store lv$7i22 result_$17i28
 
@@ -104,7 +104,7 @@ i28:
 
 	# get address of local var:result_$17i28
 	lw t1, 604(sp)
-	mv s3, t1
+	mv s5, t1
 
 	# br i25
 	j i25
@@ -116,7 +116,7 @@ i7:
 	li t4, 40656
 	add t1, sp, t4
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
 
 	# get address of local var:m1
@@ -126,14 +126,14 @@ i7:
 
 	# fetch variables
 	li t1, 10000
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_$2i7
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$2i7 cond_tmp_$2i7 
 
@@ -157,14 +157,14 @@ i19:
 
 	# fetch variables
 	li t1, 10000
-	slt t0, s5, t1
-	mv s0, t0
+	slt t0, s8, t1
+	mv s3, t0
 
 	# zext cond_tmp_$6i19
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$6i19 cond_tmp_$6i19 
 
@@ -188,7 +188,7 @@ i6:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br i7
 	j i7
@@ -197,26 +197,14 @@ i21:
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s4
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s7
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
-	sd s5, 48(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	ld s5, 48(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -230,7 +218,7 @@ i4:
 	li t4, 80656
 	add t1, sp, t4
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
 
 	# get address of local var:m0
@@ -240,14 +228,14 @@ i4:
 
 	# fetch variables
 	li t1, 10000
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_$1i4
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1i4 cond_tmp_$1i4 
 
@@ -271,14 +259,14 @@ i14:
 
 	# fetch variables
 	addi t1, zero, 20
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_$5i14
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$5i14 cond_tmp_$5i14 
 
@@ -303,13 +291,13 @@ i13:
 	# get address of m2 points to
 	ld t3, 328(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_$10i13 ld_phi$14 a3$2i13
 
 	# fetch variables
-	addw t0, s4, t0
-	mv s0, t0
+	addw t0, s7, t0
+	mv s3, t0
 
 	# mod result_$11i13 result_$10i13 
 
@@ -327,25 +315,13 @@ i13:
 	# get address of local var:result_$11i13
 	lw t1, 468(sp)
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
-	sd s5, 48(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	ld s5, 48(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -355,7 +331,7 @@ i13:
 
 	# get address of local var:result_$11i13
 	lw t1, 468(sp)
-	mv s4, t1
+	mv s7, t1
 
 	# br i15
 	j i15
@@ -365,15 +341,15 @@ i26:
 
 	# fetch variables
 	li t1, 2233
-	sub t0, s3, t1
+	sub t0, s5, t1
 	sgtz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$9i26
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$9i26 cond_tmp_$9i26 
 
@@ -399,33 +375,28 @@ i5:
 	li t4, 40656
 	add t1, sp, t4
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load a1$2i5 m0
 
 	# get address of m0 points to
 	ld t3, 536(sp)
 	lw t0, 0(t3)
-	mv s1, t0
+	mv s0, t0
 
 	# load a1$4i5 m0
 
 	# get address of m0 points to
 	ld t3, 536(sp)
 	lw t0, 0(t3)
-
-	# spill for a1$4i5
-
-	# get address of local var:a2i5
-	sd s0, 432(sp)
-	mv s0, t0
+	mv s1, t0
 
 	# mul result_$3i5 a1$2i5 a1$4i5
 
 	# fetch variables
-	mulw t0, s1, t0
+	mulw t0, s0, t0
 	mv s0, t0
 
 	# mod result_$4i5 result_$3i5 
@@ -440,14 +411,13 @@ i5:
 	# fetch variables
 
 	# get address of a2i5 points to
-	ld t3, 432(sp)
-	sw t0, 0(t3)
+	sw t0, 0(s3)
 
 	# add result_$5i5 ld_phi$18 
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_$5i5
 	sw t0, 396(sp)
@@ -455,7 +425,7 @@ i5:
 	# store lv$4i result_$5i5
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br i4
 	j i4
@@ -466,20 +436,20 @@ i23:
 	# get address of m2 points to
 	ld t3, 328(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# mul result_$22i23 a3$8i23 
 
 	# fetch variables
 	addi t2, zero, 9
 	mulw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# add result_$23i23 ld_phi$19 result_$22i23
 
 	# fetch variables
-	addw t0, s4, t0
-	mv s0, t0
+	addw t0, s7, t0
+	mv s3, t0
 
 	# mod result_$24i23 result_$23i23 
 
@@ -493,7 +463,7 @@ i23:
 	# store lv$5i9 result_$24i23
 
 	# fetch variables
-	mv s4, t0
+	mv s7, t0
 
 	# br i15
 	j i15
@@ -503,7 +473,7 @@ i3:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br i4
 	j i4
@@ -513,14 +483,14 @@ i17:
 
 	# fetch variables
 	addi t1, zero, 30
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_$7i17
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$7i17 cond_tmp_$7i17 
 
@@ -544,7 +514,7 @@ i22:
 
 	# fetch variables
 	li t1, 5000
-	mv s3, t1
+	mv s5, t1
 
 	# br i25
 	j i25
@@ -553,26 +523,14 @@ i27:
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s4
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s7
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
-	sd s4, 40(sp)
-	sd s5, 48(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	ld s4, 40(sp)
-	ld s5, 48(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -584,13 +542,13 @@ i9:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s4, t1
+	mv s7, t1
 
 	# store lv$4i 
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br i10
 	j i10
@@ -601,7 +559,7 @@ i11:
 	# fetch variables
 	addi t1, sp, 656
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
 
 	# get address of local var:m2
@@ -611,14 +569,14 @@ i11:
 
 	# fetch variables
 	addi t1, zero, 10
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_$4i11
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$4i11 cond_tmp_$4i11 
 
@@ -642,7 +600,7 @@ i15:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_$25i15
 	sw t0, 300(sp)
@@ -650,7 +608,7 @@ i15:
 	# store lv$4i result_$25i15
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br i10
 	j i10
@@ -662,42 +620,42 @@ i29:
 	li t4, 80656
 	add t1, sp, t4
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load a1$12i29 a1$11i29
 
 	# get address of a1$11i29 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# add result_$18i29 ld_phi$32 a1$12i29
 
 	# fetch variables
-	addw t0, s4, t0
-	mv s0, t0
+	addw t0, s7, t0
+	mv s3, t0
 
 	# gep a3$5i29 ld_phi$33
 
 	# fetch variables
 	addi t1, sp, 656
 	li t4, 4
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a3$6i29 a3$5i29
 
 	# get address of a3$5i29 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_$19i29 result_$18i29 a3$6i29
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# mod result_$20i29 result_$19i29 
 
@@ -712,7 +670,7 @@ i29:
 
 	# fetch variables
 	addi t1, zero, 2
-	addw t0, s3, t1
+	addw t0, s5, t1
 
 	# get address of local var:result_$21i29
 	sw t0, 236(sp)
@@ -723,7 +681,7 @@ i29:
 
 	# get address of local var:result_$20i29
 	lw t1, 244(sp)
-	mv s4, t1
+	mv s7, t1
 
 	# store lv$7i22 result_$21i29
 
@@ -731,7 +689,7 @@ i29:
 
 	# get address of local var:result_$21i29
 	lw t1, 236(sp)
-	mv s3, t1
+	mv s5, t1
 
 	# br i25
 	j i25
@@ -741,14 +699,14 @@ i1:
 
 	# fetch variables
 	li t1, 10000
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_i1
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_i1 cond_tmp_i1 
 
@@ -772,7 +730,7 @@ i16:
 
 	# fetch variables
 	li t1, 5000
-	mv s5, t1
+	mv s8, t1
 
 	# br i19
 	j i19
@@ -784,35 +742,35 @@ i2:
 	li t4, 80656
 	add t1, sp, t4
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# mul result_i2 ld_phi$39 ld_phi$39
 
 	# fetch variables
-	mulw t0, s2, s2
-	mv s1, t0
+	mulw t0, s4, s4
+	mv s0, t0
 
 	# mod result_$1i2 result_i2 
 
 	# fetch variables
 	addi t2, zero, 10
 	remw t0, t0, t2
-	mv s1, t0
+	mv s0, t0
 
 	# store a1i2 result_$1i2
 
 	# fetch variables
 
 	# get address of a1i2 points to
-	sw t0, 0(s0)
+	sw t0, 0(s3)
 
 	# add result_$2i2 ld_phi$40 
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_$2i2
 	sw t0, 180(sp)
@@ -820,7 +778,7 @@ i2:
 	# store lv$4i result_$2i2
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br i1
 	j i1
@@ -829,7 +787,7 @@ i12:
 	# ret ld_phi$41
 
 	# fetch variables
-	mv a0, s4
+	mv a0, s7
 	li t0, 120656
 	add sp, sp, t0
 	ret 
@@ -839,14 +797,14 @@ i25:
 
 	# fetch variables
 	li t1, 10000
-	slt t0, s3, t1
-	mv s0, t0
+	slt t0, s5, t1
+	mv s3, t0
 
 	# zext cond_tmp_$8i25
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$8i25 cond_tmp_$8i25 
 
@@ -871,13 +829,13 @@ i20:
 	# get address of m2 points to
 	ld t3, 328(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_$12i20 ld_phi$43 a3$4i20
 
 	# fetch variables
-	addw t0, s4, t0
-	mv s0, t0
+	addw t0, s7, t0
+	mv s3, t0
 
 	# gep a1$7i20 ld_phi$44
 
@@ -885,20 +843,20 @@ i20:
 	li t4, 80656
 	add t1, sp, t4
 	li t4, 4
-	mul t4, s5, t4
+	mul t4, s8, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a1$8i20 a1$7i20
 
 	# get address of a1$7i20 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# sub result_$13i20 result_$12i20 a1$8i20
 
 	# fetch variables
-	subw t0, s0, t0
+	subw t0, s3, t0
 
 	# get address of local var:result_$13i20
 	sw t0, 116(sp)
@@ -907,7 +865,7 @@ i20:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s5, t1
+	addw t0, s8, t1
 
 	# get address of local var:result_$14i20
 	sw t0, 108(sp)
@@ -918,7 +876,7 @@ i20:
 
 	# get address of local var:result_$13i20
 	lw t1, 116(sp)
-	mv s4, t1
+	mv s7, t1
 
 	# store lv$6i16 result_$14i20
 
@@ -926,7 +884,7 @@ i20:
 
 	# get address of local var:result_$14i20
 	lw t1, 108(sp)
-	mv s5, t1
+	mv s8, t1
 
 	# br i19
 	j i19
@@ -936,14 +894,14 @@ i10:
 
 	# fetch variables
 	li t1, 10000
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_$3i10
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$3i10 cond_tmp_$3i10 
 
@@ -968,33 +926,28 @@ i8:
 	# fetch variables
 	addi t1, sp, 656
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load a2$2i8 m1
 
 	# get address of m1 points to
 	ld t3, 592(sp)
 	lw t0, 0(t3)
-	mv s1, t0
+	mv s0, t0
 
 	# load a2$4i8 m1
 
 	# get address of m1 points to
 	ld t3, 592(sp)
 	lw t0, 0(t3)
-
-	# spill for a2$4i8
-
-	# get address of local var:a3i8
-	sd s0, 72(sp)
-	mv s0, t0
+	mv s1, t0
 
 	# mul result_$6i8 a2$2i8 a2$4i8
 
 	# fetch variables
-	mulw t0, s1, t0
+	mulw t0, s0, t0
 	mv s0, t0
 
 	# mod result_$7i8 result_$6i8 
@@ -1010,7 +963,7 @@ i8:
 	li t4, 80656
 	add t1, sp, t4
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
 	mv s1, t0
 
@@ -1031,14 +984,13 @@ i8:
 	# fetch variables
 
 	# get address of a3i8 points to
-	ld t3, 72(sp)
-	sw t0, 0(t3)
+	sw t0, 0(s3)
 
 	# add result_$9i8 ld_phi$49 
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_$9i8
 	sw t0, 12(sp)
@@ -1046,7 +998,7 @@ i8:
 	# store lv$4i result_$9i8
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br i7
 	j i7

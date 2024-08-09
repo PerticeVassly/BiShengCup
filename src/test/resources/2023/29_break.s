@@ -18,13 +18,13 @@ mainEntry91:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s3, t1
+	mv s5, t1
 
 	# store lv 
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_285
 	j whileCond_285
@@ -34,14 +34,14 @@ whileCond_285:
 
 	# fetch variables
 	addi t1, zero, 100
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -50,7 +50,7 @@ whileCond_285:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ whileBody_285 next_651
 
@@ -63,15 +63,15 @@ whileBody_285:
 
 	# fetch variables
 	addi t1, zero, 50
-	xor t0, s2, t1
+	xor t0, s4, t1
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$1
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1 cond_tmp_$1 
 
@@ -80,7 +80,7 @@ whileBody_285:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$1 ifTrue_366 next_652
 
@@ -92,7 +92,7 @@ next_651:
 	# ret ld_phi$2
 
 	# fetch variables
-	mv a0, s3
+	mv a0, s5
 	addi sp, sp, 64
 	ret 
 ifTrue_366:
@@ -104,7 +104,7 @@ next_652:
 	# add result_ ld_phi$3 ld_phi$4
 
 	# fetch variables
-	addw t0, s3, s2
+	addw t0, s5, s4
 
 	# get address of local var:result_
 	sw t0, 12(sp)
@@ -113,7 +113,7 @@ next_652:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_$1
 	sw t0, 4(sp)
@@ -124,7 +124,7 @@ next_652:
 
 	# get address of local var:result_
 	lw t1, 12(sp)
-	mv s3, t1
+	mv s5, t1
 
 	# store lv result_$1
 
@@ -132,7 +132,7 @@ next_652:
 
 	# get address of local var:result_$1
 	lw t1, 4(sp)
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_285
 	j whileCond_285

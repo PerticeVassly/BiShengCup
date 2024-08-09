@@ -15,17 +15,13 @@ mainEntry61:
 	addi sp, sp, -400
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -41,13 +37,13 @@ mainEntry61:
 	addi t2, zero, 10
 	sub t0, t1, t2
 	sgtz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -56,7 +52,7 @@ mainEntry61:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ secondCond_103 ifFalse_129
 
@@ -74,17 +70,13 @@ ifFalse_129:
 next_532:
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -100,13 +92,13 @@ next_532:
 	addi t2, zero, 11
 	sub t0, t1, t2
 	sgtz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$1
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1 cond_tmp_$1 
 
@@ -115,7 +107,7 @@ next_532:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$1 secondCond_104 ifFalse_130
 
@@ -129,7 +121,7 @@ secondCond_103:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i1171 gi1171 getint
 
@@ -138,7 +130,7 @@ secondCond_103:
 	# get address of local var:getint
 	lw t2, 396(sp)
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i1171
 
@@ -153,23 +145,19 @@ secondCond_103:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -189,7 +177,7 @@ secondCond_103:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_ ifTrue_299 ifFalse_129
 
@@ -207,17 +195,13 @@ ifFalse_130:
 next_533:
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -234,13 +218,13 @@ next_533:
 	sub t0, t1, t2
 	sgtz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$2
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$2 cond_tmp_$2 
 
@@ -249,7 +233,7 @@ next_533:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$2 ifTrue_301 secondCond_105
 
@@ -263,7 +247,7 @@ secondCond_104:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i1172 gi1172 getint$1
 
@@ -272,7 +256,7 @@ secondCond_104:
 	# get address of local var:getint$1
 	lw t2, 364(sp)
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i1172
 
@@ -287,23 +271,19 @@ secondCond_104:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -323,7 +303,7 @@ secondCond_104:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$1 ifTrue_300 ifFalse_130
 
@@ -341,17 +321,13 @@ ifFalse_131:
 next_534:
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -368,13 +344,13 @@ next_534:
 	sub t0, t1, t2
 	sgtz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$3
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$3 cond_tmp_$3 
 
@@ -383,7 +359,7 @@ next_534:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$3 ifTrue_302 secondCond_106
 
@@ -397,7 +373,7 @@ secondCond_105:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i1173 gi1173 getint$2
 
@@ -406,7 +382,7 @@ secondCond_105:
 	# get address of local var:getint$2
 	lw t2, 292(sp)
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i1173
 
@@ -421,23 +397,19 @@ secondCond_105:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -457,7 +429,7 @@ secondCond_105:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$2 ifTrue_301 ifFalse_131
 
@@ -479,14 +451,14 @@ next_535:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i1174 gi1174 
 
 	# fetch variables
 	addi t2, zero, 99
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i1174
 
@@ -501,23 +473,19 @@ next_535:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -537,20 +505,20 @@ next_535:
 	xor t0, t1, t0
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# logic tmp_$1 tmp_ 
 
 	# fetch variables
 	addi t2, zero, 1
 	xor t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# zext tmp_$2
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_normalize_$4 tmp_$2 
 
@@ -559,7 +527,7 @@ next_535:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$4 secondCond_107 ifFalse_133
 
@@ -573,7 +541,7 @@ secondCond_106:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i1175 gi1175 getint$3
 
@@ -582,7 +550,7 @@ secondCond_106:
 	# get address of local var:getint$3
 	lw t2, 220(sp)
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i1175
 
@@ -597,23 +565,19 @@ secondCond_106:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -633,7 +597,7 @@ secondCond_106:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$3 ifTrue_302 ifFalse_132
 
@@ -664,14 +628,14 @@ secondCond_107:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i1176 gi1176 
 
 	# fetch variables
 	addi t2, zero, 100
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i1176
 
@@ -686,23 +650,19 @@ secondCond_107:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -722,7 +682,7 @@ secondCond_107:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$5 ifTrue_303 ifFalse_133
 

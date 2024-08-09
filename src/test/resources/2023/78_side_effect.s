@@ -22,13 +22,13 @@ mainEntry28:
 
 	# fetch variables
 	addi t1, zero, 1
-	mv s2, t1
+	mv s4, t1
 
 	# store lv 
 
 	# fetch variables
 	addi t1, zero, 5
-	mv s3, t1
+	mv s5, t1
 
 	# br whileCond_74
 	j whileCond_74
@@ -38,15 +38,15 @@ whileCond_74:
 
 	# fetch variables
 	addi t1, zero, 0
-	slt t0, s3, t1
+	slt t0, s5, t1
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -55,7 +55,7 @@ whileCond_74:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ whileBody_74 next_139
 
@@ -69,14 +69,14 @@ whileBody_74:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i741 ai741 
 
 	# fetch variables
 	addi t2, zero, 1
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i741
 
@@ -102,7 +102,7 @@ whileBody_74:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_ secondCond_44 next_140
 
@@ -116,27 +116,19 @@ next_139:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -145,43 +137,27 @@ next_139:
 	# fetch variables
 	addi t1, zero, 32
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s2
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s4
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -190,21 +166,13 @@ next_139:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -213,7 +181,7 @@ next_139:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# ret a$3
 
@@ -228,27 +196,19 @@ ifTrue_65:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -257,43 +217,27 @@ ifTrue_65:
 	# fetch variables
 	addi t1, zero, 32
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s2
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s4
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -302,21 +246,13 @@ ifTrue_65:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -329,14 +265,14 @@ next_140:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i742 ai742 
 
 	# fetch variables
 	addi t2, zero, 1
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i742
 
@@ -360,13 +296,13 @@ next_140:
 	# fetch variables
 	addi t2, zero, 14
 	slt t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$1
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1 cond_tmp_$1 
 
@@ -375,7 +311,7 @@ next_140:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$1 ifTrue_66 secondCond_45
 
@@ -389,14 +325,14 @@ secondCond_43:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i743 ai743 
 
 	# fetch variables
 	addi t2, zero, 1
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i743
 
@@ -422,7 +358,7 @@ secondCond_43:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$2 ifTrue_65 next_140
 
@@ -436,14 +372,14 @@ secondCond_44:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i744 ai744 
 
 	# fetch variables
 	addi t2, zero, 1
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i744
 
@@ -469,7 +405,7 @@ secondCond_44:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$1 secondCond_43 next_140
 
@@ -483,27 +419,19 @@ ifTrue_66:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -512,21 +440,13 @@ ifTrue_66:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -534,7 +454,7 @@ ifTrue_66:
 
 	# fetch variables
 	addi t1, zero, 1
-	sll t0, s2, t1
+	sll t0, s4, t1
 
 	# get address of local var:result_$2
 	sw t0, 148(sp)
@@ -542,7 +462,7 @@ ifTrue_66:
 	# store gv_to_lv result_$2
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br next_141
 	j next_141
@@ -553,14 +473,14 @@ ifFalse_20:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i745 ai745 
 
 	# fetch variables
 	addi t2, zero, 1
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i745
 
@@ -587,7 +507,7 @@ next_141:
 
 	# fetch variables
 	addi t1, zero, 1
-	subw t0, s3, t1
+	subw t0, s5, t1
 
 	# get address of local var:result_$3
 	sw t0, 116(sp)
@@ -595,7 +515,7 @@ next_141:
 	# store lv result_$3
 
 	# fetch variables
-	mv s3, t0
+	mv s5, t0
 
 	# br whileCond_74
 	j whileCond_74
@@ -606,14 +526,14 @@ secondCond_45:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i746 ai746 
 
 	# fetch variables
 	addi t2, zero, 1
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i746
 
@@ -639,7 +559,7 @@ secondCond_45:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$3 secondCond_46 ifFalse_20
 
@@ -653,14 +573,14 @@ secondCond_46:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i747 ai747 
 
 	# fetch variables
 	addi t2, zero, 1
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i747
 
@@ -684,14 +604,14 @@ secondCond_46:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_i748 ai748 
 
 	# fetch variables
 	addi t2, zero, 1
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# store gv result_i748
 
@@ -717,14 +637,14 @@ secondCond_46:
 	# get address of local var:a$1i747
 	lw t1, 60(sp)
 	subw t0, t1, t0
-	mv s0, t0
+	mv s3, t0
 
 	# add result_$1 result_ 
 
 	# fetch variables
 	addi t2, zero, 1
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_normalize_$4 result_$1 
 
@@ -733,7 +653,7 @@ secondCond_46:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_normalize_$4 ifTrue_66 ifFalse_20
 

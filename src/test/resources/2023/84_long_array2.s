@@ -24,12 +24,12 @@ mainEntry92:
 	# fetch variables
 	addi t1, sp, 256
 	mv t0, t1
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
+	mv a0, s3
 
 	# fetch variables
 	addi t1, zero, 0
@@ -60,7 +60,7 @@ mainEntry92:
 	li t4, 4096
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep inp 
 
@@ -69,7 +69,7 @@ mainEntry92:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp 
 
@@ -77,7 +77,7 @@ mainEntry92:
 	addi t1, zero, 1
 
 	# get address of inp points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$1 
 
@@ -98,7 +98,7 @@ mainEntry92:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$1 
 
@@ -106,7 +106,7 @@ mainEntry92:
 	addi t1, zero, 2
 
 	# get address of inp$1 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$2 
 
@@ -118,7 +118,7 @@ mainEntry92:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$2 
 
@@ -126,7 +126,7 @@ mainEntry92:
 	addi t1, zero, 3
 
 	# get address of inp$2 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$3 
 
@@ -147,7 +147,7 @@ mainEntry92:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$3 
 
@@ -155,7 +155,7 @@ mainEntry92:
 	addi t1, zero, 4
 
 	# get address of inp$3 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$4 
 
@@ -167,7 +167,7 @@ mainEntry92:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$4 
 
@@ -175,7 +175,7 @@ mainEntry92:
 	addi t1, zero, 5
 
 	# get address of inp$4 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$5 
 
@@ -187,7 +187,7 @@ mainEntry92:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$5 
 
@@ -195,7 +195,7 @@ mainEntry92:
 	addi t1, zero, 6
 
 	# get address of inp$5 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# bitcast ptr$1 lv$1
 
@@ -203,12 +203,12 @@ mainEntry92:
 	li t4, 16640
 	add t1, sp, t4
 	mv t0, t1
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
+	mv a0, s3
 
 	# fetch variables
 	addi t1, zero, 0
@@ -274,7 +274,7 @@ mainEntry92:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$7 
 
@@ -282,7 +282,7 @@ mainEntry92:
 	addi t1, zero, 2
 
 	# get address of inp$7 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ptr_$8 
 
@@ -304,7 +304,7 @@ mainEntry92:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$8 
 
@@ -312,7 +312,7 @@ mainEntry92:
 	addi t1, zero, 3
 
 	# get address of inp$8 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$9 
 
@@ -324,7 +324,7 @@ mainEntry92:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$9 
 
@@ -332,7 +332,7 @@ mainEntry92:
 	addi t1, zero, 4
 
 	# get address of inp$9 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep ai1428 
 
@@ -363,7 +363,7 @@ mainEntry92:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store a$1i1428 
 
@@ -371,7 +371,7 @@ mainEntry92:
 	addi t1, zero, 3
 
 	# get address of a$1i1428 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep a$2i1428 
 
@@ -399,7 +399,7 @@ mainEntry92:
 	# get address of a$2i1428 points to
 	ld t3, 96(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# gep bi1428 a$4i1428
 
@@ -410,7 +410,7 @@ mainEntry92:
 	li t4, 4
 	mul t4, t0, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep a$5i1428 
 
@@ -420,34 +420,34 @@ mainEntry92:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a$6i1428 a$5i1428
 
 	# get address of a$5i1428 points to
-	lw t0, 0(s1)
-	mv s1, t0
+	lw t0, 0(s0)
+	mv s0, t0
 
 	# add result_i1428 a$6i1428 
 
 	# fetch variables
 	addi t2, zero, 9
 	addw t0, t0, t2
-	mv s1, t0
+	mv s0, t0
 
 	# store bi1428 result_i1428
 
 	# fetch variables
 
 	# get address of bi1428 points to
-	sw t0, 0(s0)
+	sw t0, 0(s3)
 
 	# load a$8i1428 ai1428
 
 	# get address of ai1428 points to
 	ld t3, 112(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# gep a$9i1428 a$8i1428
 
@@ -456,12 +456,12 @@ mainEntry92:
 	li t4, 4
 	mul t4, t0, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load a$10i1428 a$9i1428
 
 	# get address of a$9i1428 points to
-	lw t0, 0(s0)
+	lw t0, 0(s3)
 
 	# get address of local var:a$10i1428
 	sw t0, 36(sp)
@@ -473,17 +473,13 @@ mainEntry92:
 	# get address of local var:a$10i1428
 	lw t1, 36(sp)
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -492,17 +488,13 @@ mainEntry92:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -515,7 +507,7 @@ mainEntry92:
 	li t4, 16
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# gep c$2 
 
@@ -524,13 +516,13 @@ mainEntry92:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t0
-	mv s0, t0
+	mv s3, t0
 
 	# load c$3 c$2
 
 	# get address of c$2 points to
-	lw t0, 0(s0)
-	mv s0, t0
+	lw t0, 0(s3)
+	mv s3, t0
 
 	# ret c$3
 

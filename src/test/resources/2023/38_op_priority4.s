@@ -13,19 +13,13 @@ mainEntry40:
 	# allocate lv
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -33,19 +27,13 @@ mainEntry40:
 	sw a0, 188(sp)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -53,19 +41,13 @@ mainEntry40:
 	sw a0, 180(sp)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -73,19 +55,13 @@ mainEntry40:
 	sw a0, 172(sp)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -93,19 +69,13 @@ mainEntry40:
 	sw a0, 164(sp)
 
 	# prepare params int regs
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
 
 	# call getint
 	call getint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -136,7 +106,7 @@ mainEntry40:
 	# get address of local var:getint$2
 	lw t2, 172(sp)
 	mulw t0, t1, t2
-	mv s0, t0
+	mv s3, t0
 
 	# sub result_$1 getint result_
 
@@ -145,7 +115,7 @@ mainEntry40:
 	# get address of local var:getint
 	lw t1, 188(sp)
 	subw t0, t1, t0
-	mv s0, t0
+	mv s3, t0
 
 	# div result_$2 getint getint$2
 
@@ -157,7 +127,7 @@ mainEntry40:
 	# get address of local var:getint$2
 	lw t2, 172(sp)
 	divw t0, t1, t2
-	mv s1, t0
+	mv s0, t0
 
 	# sub result_$3 getint$3 result_$2
 
@@ -166,21 +136,21 @@ mainEntry40:
 	# get address of local var:getint$3
 	lw t1, 164(sp)
 	subw t0, t1, t0
-	mv s1, t0
+	mv s0, t0
 
 	# cmp cond_neq_tmp_ result_$1 result_$3
 
 	# fetch variables
-	xor t0, s0, t0
+	xor t0, s3, t0
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -189,7 +159,7 @@ mainEntry40:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ ifTrue_257 secondCond_94
 
@@ -202,7 +172,7 @@ ifTrue_257:
 
 	# fetch variables
 	addi t1, zero, 1
-	mv s2, t1
+	mv s4, t1
 
 	# br next_442
 	j next_442
@@ -211,7 +181,7 @@ next_442:
 	# ret ld_phi
 
 	# fetch variables
-	mv a0, s2
+	mv a0, s4
 	addi sp, sp, 192
 	ret 
 secondCond_93:
@@ -226,7 +196,7 @@ secondCond_93:
 	# get address of local var:getint$1
 	lw t2, 180(sp)
 	addw t0, t1, t2
-	mv s0, t0
+	mv s3, t0
 
 	# add result_$8 result_$7 getint$2
 
@@ -235,7 +205,7 @@ secondCond_93:
 	# get address of local var:getint$2
 	lw t2, 172(sp)
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_eq_tmp_$1 result_$8 m109
 
@@ -245,13 +215,13 @@ secondCond_93:
 	lw t2, 148(sp)
 	xor t0, t0, t2
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$2
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$2 cond_tmp_$2 
 
@@ -260,7 +230,7 @@ secondCond_93:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$2 ifTrue_257 mid_150
 
@@ -279,7 +249,7 @@ secondCond_94:
 	# get address of local var:getint$1
 	lw t2, 180(sp)
 	mulw t0, t1, t2
-	mv s0, t0
+	mv s3, t0
 
 	# div result_$5 result_$4 getint$2
 
@@ -288,7 +258,7 @@ secondCond_94:
 	# get address of local var:getint$2
 	lw t2, 172(sp)
 	divw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_eq_tmp_ result_$5 m109
 
@@ -298,13 +268,13 @@ secondCond_94:
 	lw t2, 148(sp)
 	xor t0, t0, t2
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$1
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1 cond_tmp_$1 
 
@@ -313,7 +283,7 @@ secondCond_94:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$1 ifTrue_257 secondCond_93
 
@@ -326,7 +296,7 @@ mid_150:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br next_442
 	j next_442

@@ -26,13 +26,13 @@ ifTrue_325:
 
 	# fetch variables
 	li t1, 3390
-	mv s3, t1
+	mv s5, t1
 
 	# store lv 
 
 	# fetch variables
 	addi t1, zero, 112
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_259
 	j whileCond_259
@@ -41,7 +41,7 @@ next_584:
 	# ret ld_phi
 
 	# fetch variables
-	mv a0, s3
+	mv a0, s5
 	addi sp, sp, 80
 	ret 
 whileCond_259:
@@ -50,15 +50,15 @@ whileCond_259:
 
 	# fetch variables
 	addi t1, zero, 10
-	sub t0, s2, t1
+	sub t0, s4, t1
 	sgtz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$1
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1 cond_tmp_$1 
 
@@ -67,7 +67,7 @@ whileCond_259:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$1 whileBody_259 next_585
 
@@ -80,7 +80,7 @@ whileBody_259:
 
 	# fetch variables
 	addi t1, zero, 88
-	subw t0, s2, t1
+	subw t0, s4, t1
 
 	# get address of local var:result_$1
 	sw t0, 52(sp)
@@ -90,13 +90,13 @@ whileBody_259:
 	# fetch variables
 	addi t2, zero, 1000
 	slt t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# zext cond_tmp_$2
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$2 cond_tmp_$2 
 
@@ -105,7 +105,7 @@ whileBody_259:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$2 ifTrue_326 mid_175
 
@@ -117,22 +117,14 @@ next_585:
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s2
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s4
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -148,7 +140,7 @@ ifTrue_326:
 	lw t1, 52(sp)
 	addi t2, zero, 10
 	subw t0, t1, t2
-	mv s0, t0
+	mv s3, t0
 
 	# add result_$4 result_$2 
 
@@ -162,7 +154,7 @@ ifTrue_326:
 	# store lv result_$4
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br whileCond_259
 	j whileCond_259
@@ -172,7 +164,7 @@ mid_174:
 
 	# fetch variables
 	li t1, 3389
-	mv s3, t1
+	mv s5, t1
 
 	# br next_584
 	j next_584
@@ -184,7 +176,7 @@ mid_175:
 
 	# get address of local var:result_$1
 	lw t1, 52(sp)
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_259
 	j whileCond_259

@@ -23,7 +23,7 @@ ifTrue_367:
 
 	# fetch variables
 	addi t1, zero, 1
-	mv s2, t1
+	mv s4, t1
 
 	# br next_653
 	j next_653
@@ -32,27 +32,21 @@ next_653:
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s2
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s4
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
 	# ret ld_phi$1
 
 	# fetch variables
-	mv a0, s2
+	mv a0, s4
 	ret 
 secondCond_132:
 
@@ -76,7 +70,7 @@ mid_187:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br next_653
 	j next_653

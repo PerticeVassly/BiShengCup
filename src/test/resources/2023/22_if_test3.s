@@ -17,16 +17,6 @@ mainEntry65:
 	addi t1, zero, 1
 	beqz t1, mid_170
 	j i1179
-i1182:
-
-	# store lvi1178 
-
-	# fetch variables
-	addi t1, zero, 20
-	mv s2, t1
-
-	# br i1180
-	j i1180
 i1179:
 
 	# condBr  i1181 i1182
@@ -35,13 +25,13 @@ i1179:
 	addi t1, zero, 1
 	beqz t1, i1182
 	j i1181
-i1181:
+i1182:
 
 	# store lvi1178 
 
 	# fetch variables
-	addi t1, zero, 25
-	mv s2, t1
+	addi t1, zero, 20
+	mv s4, t1
 
 	# br i1180
 	j i1180
@@ -50,15 +40,25 @@ i1180:
 	# ret ld_phi
 
 	# fetch variables
-	mv a0, s2
+	mv a0, s4
 	ret 
+i1181:
+
+	# store lvi1178 
+
+	# fetch variables
+	addi t1, zero, 25
+	mv s4, t1
+
+	# br i1180
+	j i1180
 mid_170:
 
 	# store lvi1178 
 
 	# fetch variables
 	addi t1, zero, 5
-	mv s2, t1
+	mv s4, t1
 
 	# br i1180
 	j i1180

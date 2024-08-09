@@ -507,7 +507,11 @@ public class RiscInstrGenerator implements InstructionVisitor {
     public void visit(Call call) {
         allocator.resetLastLVal();
         prepareParams(call);
-        saveCallerSavedRegs();
+        if(call.getFunction().isLib()){
+            saveLibCallerSavedRegs();
+        } else {
+            saveCallerSavedRegs();
+        }
         String funcName = call.getFunction().getName();
         if (funcName.equals("starttime") || funcName.equals("stoptime")) {
             funcName = "_sysy_" + funcName;
@@ -515,7 +519,12 @@ public class RiscInstrGenerator implements InstructionVisitor {
         }
         riscInstructions.add(new RiscComment("call " + funcName));
         riscInstructions.add(new RiscCall(funcName));
-        restoreCallerSavedRegs();
+        if(call.getFunction().isLib()){
+            restoreLibCallerSavedRegs();
+        }else {
+            restoreCallerSavedRegs();
+        }
+
         releaseParams(call);
         saveReturnValue(call);
     }
@@ -619,7 +628,20 @@ public class RiscInstrGenerator implements InstructionVisitor {
             }
         }
     }
-
+    private void saveLibCallerSavedRegs(){
+        String[] libCallerSavedRegs = RiscSpecifications.getLibCallerSavedRegs();
+        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(-8L * libCallerSavedRegs.length)));
+        for (int i = 0; i < libCallerSavedRegs.length; i++) {
+            if(!allocator.isUsedReg(libCallerSavedRegs[i]) && !libCallerSavedRegs[i].equals("ra")&&!registerManager.isUsed(libCallerSavedRegs[i])){ //ra不会被record但是仍然需要保存
+                continue;
+            }
+            if(RiscSpecifications.isFloatReg(libCallerSavedRegs[i])){
+                riscInstructions.add(new RiscFsd(new Register(libCallerSavedRegs[i]), new IndirectRegister("sp", i * 8)));
+            } else {
+                riscInstructions.add(new RiscSd(new Register(libCallerSavedRegs[i]), new IndirectRegister("sp", i * 8)));
+            }
+        }
+    }
     private void restoreCallerSavedRegs() {
         riscInstructions.add(new RiscComment("restore caller saved regs"));
         String[] registers = RiscSpecifications.getCallerSavedRegs();
@@ -636,6 +658,20 @@ public class RiscInstrGenerator implements InstructionVisitor {
         riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(8L * registers.length)));
     }
 
+    private void restoreLibCallerSavedRegs(){
+        String[] registers = RiscSpecifications.getLibCallerSavedRegs();
+        for (int i = 0; i < registers.length; i++) {
+            if(!allocator.isUsedReg(registers[i]) && !registers[i].equals("ra")&&!registerManager.isUsed(registers[i])){
+                continue;
+            }
+            if(RiscSpecifications.isFloatReg(registers[i])){
+                riscInstructions.add(new RiscFld(new Register(registers[i]), new IndirectRegister("sp", i * 8)));
+            } else {
+                riscInstructions.add(new RiscLd(new Register(registers[i]), new IndirectRegister("sp", i * 8)));
+            }
+        }
+        riscInstructions.add(new RiscAddi(new Register("sp"), new Register("sp"), new ImmediateValue(8L * registers.length)));
+    }
     private void restoreCalleeSavedRegs() {
         riscInstructions.add(new RiscComment("restore callee saved regs"));
         String[] calleeSavedRegs = RiscSpecifications.getCalleeSavedRegs();

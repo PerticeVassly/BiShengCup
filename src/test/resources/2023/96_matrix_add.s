@@ -49,7 +49,7 @@ mainEntry83:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_267
 	j whileCond_267
@@ -58,7 +58,7 @@ whileCond_267:
 	# intToFloat m150
 
 	# fetch variables
-	fcvt.s.w ft0, s2
+	fcvt.s.w ft0, s4
 
 	# get address of local var:m150
 	fsw ft0, 516(sp)
@@ -68,19 +68,19 @@ whileCond_267:
 	# get address of gv points to
 	la t3, gv
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_lt_tmp_ ld_phi$1 M
 
 	# fetch variables
-	slt t0, s2, t0
-	mv s0, t0
+	slt t0, s4, t0
+	mv s3, t0
 
 	# zext cond_tmp_
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_ cond_tmp_ 
 
@@ -89,7 +89,7 @@ whileCond_267:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_ whileBody_267 next_597
 
@@ -103,9 +103,9 @@ whileBody_267:
 	# fetch variables
 	addi t1, sp, 524
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store a0 m150
 
@@ -115,16 +115,16 @@ whileBody_267:
 	flw ft1, 516(sp)
 
 	# get address of a0 points to
-	fsw ft1, 0(s0)
+	fsw ft1, 0(s3)
 
 	# gep a1 ld_phi$3
 
 	# fetch variables
 	addi t1, sp, 540
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store a1 m150
 
@@ -134,16 +134,16 @@ whileBody_267:
 	flw ft1, 516(sp)
 
 	# get address of a1 points to
-	fsw ft1, 0(s0)
+	fsw ft1, 0(s3)
 
 	# gep a2 ld_phi$4
 
 	# fetch variables
 	addi t1, sp, 556
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store a2 m150
 
@@ -153,16 +153,16 @@ whileBody_267:
 	flw ft1, 516(sp)
 
 	# get address of a2 points to
-	fsw ft1, 0(s0)
+	fsw ft1, 0(s3)
 
 	# gep b0 ld_phi$5
 
 	# fetch variables
 	addi t1, sp, 572
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store b0 m150
 
@@ -172,16 +172,16 @@ whileBody_267:
 	flw ft1, 516(sp)
 
 	# get address of b0 points to
-	fsw ft1, 0(s0)
+	fsw ft1, 0(s3)
 
 	# gep b1 ld_phi$6
 
 	# fetch variables
 	addi t1, sp, 588
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store b1 m150
 
@@ -191,16 +191,16 @@ whileBody_267:
 	flw ft1, 516(sp)
 
 	# get address of b1 points to
-	fsw ft1, 0(s0)
+	fsw ft1, 0(s3)
 
 	# gep b2 ld_phi$7
 
 	# fetch variables
 	addi t1, sp, 604
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store b2 m150
 
@@ -210,13 +210,13 @@ whileBody_267:
 	flw ft1, 516(sp)
 
 	# get address of b2 points to
-	fsw ft1, 0(s0)
+	fsw ft1, 0(s3)
 
 	# add result_ ld_phi$8 
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_
 	sw t0, 428(sp)
@@ -224,7 +224,7 @@ whileBody_267:
 	# store lv$9 result_
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br whileCond_267
 	j whileCond_267
@@ -342,7 +342,7 @@ next_597:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s3, t1
+	mv s5, t1
 
 	# br i1355
 	j i1355
@@ -352,14 +352,14 @@ whileCond_268:
 
 	# fetch variables
 	addi t1, zero, 3
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_$1
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$1 cond_tmp_$1 
 
@@ -368,7 +368,7 @@ whileCond_268:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$1 whileBody_268 next_598
 
@@ -382,14 +382,14 @@ whileBody_268:
 	# fetch variables
 	addi t1, sp, 616
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load c0$2 c0$1
 
 	# get address of c0$1 points to
-	flw ft0, 0(s0)
+	flw ft0, 0(s3)
 	fmv.x.w t1, ft0
 	fmv.w.x fs0, t1
 
@@ -397,27 +397,19 @@ whileBody_268:
 
 	# fetch variables
 	fcvt.w.s t0, ft0, rtz
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -425,7 +417,7 @@ whileBody_268:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_$1
 	sw t0, 300(sp)
@@ -433,7 +425,7 @@ whileBody_268:
 	# store lv$9 result_$1
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br whileCond_268
 	j whileCond_268
@@ -444,21 +436,13 @@ next_598:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -466,7 +450,7 @@ next_598:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_269
 	j whileCond_269
@@ -476,14 +460,14 @@ whileCond_269:
 
 	# fetch variables
 	addi t1, zero, 3
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_$2
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$2 cond_tmp_$2 
 
@@ -492,7 +476,7 @@ whileCond_269:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$2 whileBody_269 next_599
 
@@ -506,14 +490,14 @@ whileBody_269:
 	# fetch variables
 	addi t1, sp, 644
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load c1$2 c1$1
 
 	# get address of c1$1 points to
-	flw ft0, 0(s0)
+	flw ft0, 0(s3)
 	fmv.x.w t1, ft0
 	fmv.w.x fs0, t1
 
@@ -521,27 +505,19 @@ whileBody_269:
 
 	# fetch variables
 	fcvt.w.s t0, ft0, rtz
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -549,7 +525,7 @@ whileBody_269:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_$2
 	sw t0, 244(sp)
@@ -557,7 +533,7 @@ whileBody_269:
 	# store lv$9 result_$2
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br whileCond_269
 	j whileCond_269
@@ -568,21 +544,13 @@ next_599:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -590,7 +558,7 @@ next_599:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_270
 	j whileCond_270
@@ -600,14 +568,14 @@ whileCond_270:
 
 	# fetch variables
 	addi t1, zero, 3
-	slt t0, s2, t1
-	mv s0, t0
+	slt t0, s4, t1
+	mv s3, t0
 
 	# zext cond_tmp_$3
 
 	# fetch variables
 	mv t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# cmp cond_$3 cond_tmp_$3 
 
@@ -616,7 +584,7 @@ whileCond_270:
 	xor t0, t0, t2
 	seqz t0, t0
 	seqz t0, t0
-	mv s0, t0
+	mv s3, t0
 
 	# condBr cond_$3 whileBody_270 next_600
 
@@ -630,14 +598,14 @@ whileBody_270:
 	# fetch variables
 	addi t1, sp, 660
 	li t4, 4
-	mul t4, s2, t4
+	mul t4, s4, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# load c2$2 c2$1
 
 	# get address of c2$1 points to
-	flw ft0, 0(s0)
+	flw ft0, 0(s3)
 	fmv.x.w t1, ft0
 	fmv.w.x fs0, t1
 
@@ -645,27 +613,19 @@ whileBody_270:
 
 	# fetch variables
 	fcvt.w.s t0, ft0, rtz
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -673,7 +633,7 @@ whileBody_270:
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s2, t1
+	addw t0, s4, t1
 
 	# get address of local var:result_$3
 	sw t0, 188(sp)
@@ -681,7 +641,7 @@ whileBody_270:
 	# store lv$9 result_$3
 
 	# fetch variables
-	mv s2, t0
+	mv s4, t0
 
 	# br whileCond_270
 	j whileCond_270
@@ -692,21 +652,13 @@ next_600:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
-	sd s2, 24(sp)
-	sd s3, 32(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	ld s2, 24(sp)
-	ld s3, 32(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -717,91 +669,54 @@ next_600:
 	mv a0, t1
 	addi sp, sp, 672
 	ret 
-i1355:
-
-	# load Mi1355 gv
-
-	# get address of gv points to
-	la t3, gv
-	lw t0, 0(t3)
-	mv s0, t0
-
-	# cmp cond_lt_tmp_i1355 ld_phi$18 Mi1355
-
-	# fetch variables
-	slt t0, s3, t0
-	mv s0, t0
-
-	# zext cond_tmp_i1355
-
-	# fetch variables
-	mv t0, t0
-	mv s0, t0
-
-	# cmp cond_i1355 cond_tmp_i1355 
-
-	# fetch variables
-	addi t2, zero, 0
-	xor t0, t0, t2
-	seqz t0, t0
-	seqz t0, t0
-
-	# get address of local var:cond_i1355
-	sw t0, 156(sp)
-
-	# condBr cond_i1355 i1356 i1357
-
-	# fetch variables
-	beqz t0, i1357
-	j i1356
 i1356:
 
-	# gep c0i1356 ld_phi$19
+	# gep c0i1356 ld_phi$18
 
 	# fetch variables
 
 	# get address of local var:c0
 	ld t1, 368(sp)
 	li t4, 4
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
-	# gep a0i1356 ld_phi$20
+	# gep a0i1356 ld_phi$19
 
 	# fetch variables
 
 	# get address of local var:a0$1
 	ld t1, 416(sp)
 	li t4, 4
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a0$1i1356 a0i1356
 
 	# get address of a0i1356 points to
-	flw ft0, 0(s1)
+	flw ft0, 0(s0)
 	fmv.x.w t1, ft0
 	fmv.w.x fs0, t1
 
-	# gep b0i1356 ld_phi$21
+	# gep b0i1356 ld_phi$20
 
 	# fetch variables
 
 	# get address of local var:b0$1
 	ld t1, 392(sp)
 	li t4, 4
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load b0$1i1356 b0i1356
 
 	# get address of b0i1356 points to
-	flw ft0, 0(s1)
+	flw ft0, 0(s0)
 	fmv.x.w t1, ft0
-	fmv.w.x fs1, t1
+	fmv.w.x fs2, t1
 
 	# fadd result_i1356 a0$1i1356 b0$1i1356
 
@@ -815,54 +730,54 @@ i1356:
 	# fetch variables
 
 	# get address of c0i1356 points to
-	fsw ft0, 0(s0)
+	fsw ft0, 0(s3)
 
-	# gep c1i1356 ld_phi$22
+	# gep c1i1356 ld_phi$21
 
 	# fetch variables
 
 	# get address of local var:c1
 	ld t1, 360(sp)
 	li t4, 4
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
-	# gep a1i1356 ld_phi$23
+	# gep a1i1356 ld_phi$22
 
 	# fetch variables
 
 	# get address of local var:a1$1
 	ld t1, 408(sp)
 	li t4, 4
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a1$1i1356 a1i1356
 
 	# get address of a1i1356 points to
-	flw ft0, 0(s1)
+	flw ft0, 0(s0)
 	fmv.x.w t1, ft0
 	fmv.w.x fs0, t1
 
-	# gep b1i1356 ld_phi$24
+	# gep b1i1356 ld_phi$23
 
 	# fetch variables
 
 	# get address of local var:b1$1
 	ld t1, 384(sp)
 	li t4, 4
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load b1$1i1356 b1i1356
 
 	# get address of b1i1356 points to
-	flw ft0, 0(s1)
+	flw ft0, 0(s0)
 	fmv.x.w t1, ft0
-	fmv.w.x fs1, t1
+	fmv.w.x fs2, t1
 
 	# fadd result_$1i1356 a1$1i1356 b1$1i1356
 
@@ -876,54 +791,54 @@ i1356:
 	# fetch variables
 
 	# get address of c1i1356 points to
-	fsw ft0, 0(s0)
+	fsw ft0, 0(s3)
 
-	# gep c2i1356 ld_phi$25
+	# gep c2i1356 ld_phi$24
 
 	# fetch variables
 
 	# get address of local var:c2
 	ld t1, 352(sp)
 	li t4, 4
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
-	# gep a2i1356 ld_phi$26
+	# gep a2i1356 ld_phi$25
 
 	# fetch variables
 
 	# get address of local var:a2$1
 	ld t1, 400(sp)
 	li t4, 4
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load a2$1i1356 a2i1356
 
 	# get address of a2i1356 points to
-	flw ft0, 0(s1)
+	flw ft0, 0(s0)
 	fmv.x.w t1, ft0
 	fmv.w.x fs0, t1
 
-	# gep b2i1356 ld_phi$27
+	# gep b2i1356 ld_phi$26
 
 	# fetch variables
 
 	# get address of local var:b2$1
 	ld t1, 376(sp)
 	li t4, 4
-	mul t4, s3, t4
+	mul t4, s5, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# load b2$1i1356 b2i1356
 
 	# get address of b2i1356 points to
-	flw ft0, 0(s1)
+	flw ft0, 0(s0)
 	fmv.x.w t1, ft0
-	fmv.w.x fs1, t1
+	fmv.w.x fs2, t1
 
 	# fadd result_$2i1356 a2$1i1356 b2$1i1356
 
@@ -937,21 +852,21 @@ i1356:
 	# fetch variables
 
 	# get address of c2i1356 points to
-	fsw ft0, 0(s0)
+	fsw ft0, 0(s3)
 
-	# add result_$3i1356 ld_phi$28 
+	# add result_$3i1356 ld_phi$27 
 
 	# fetch variables
 	addi t1, zero, 1
-	addw t0, s3, t1
+	addw t0, s5, t1
 
 	# get address of local var:result_$3i1356
-	sw t0, 4(sp)
+	sw t0, 36(sp)
 
 	# store lv$9i1354 result_$3i1356
 
 	# fetch variables
-	mv s3, t0
+	mv s5, t0
 
 	# br i1355
 	j i1355
@@ -961,10 +876,47 @@ i1357:
 
 	# fetch variables
 	addi t1, zero, 0
-	mv s2, t1
+	mv s4, t1
 
 	# br whileCond_268
 	j whileCond_268
+i1355:
+
+	# load Mi1355 gv
+
+	# get address of gv points to
+	la t3, gv
+	lw t0, 0(t3)
+	mv s3, t0
+
+	# cmp cond_lt_tmp_i1355 ld_phi$28 Mi1355
+
+	# fetch variables
+	slt t0, s5, t0
+	mv s3, t0
+
+	# zext cond_tmp_i1355
+
+	# fetch variables
+	mv t0, t0
+	mv s3, t0
+
+	# cmp cond_i1355 cond_tmp_i1355 
+
+	# fetch variables
+	addi t2, zero, 0
+	xor t0, t0, t2
+	seqz t0, t0
+	seqz t0, t0
+
+	# get address of local var:cond_i1355
+	sw t0, 4(sp)
+
+	# condBr cond_i1355 i1356 i1357
+
+	# fetch variables
+	beqz t0, i1357
+	j i1356
 
 memset: 
     blez    a2, .LBB0_3 

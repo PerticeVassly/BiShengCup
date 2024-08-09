@@ -46,7 +46,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inpi702 
 
@@ -54,7 +54,7 @@ mainEntry21:
 	addi t1, zero, 0
 
 	# get address of inpi702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$1i702 
 
@@ -64,7 +64,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$1i702 
 
@@ -72,7 +72,7 @@ mainEntry21:
 	addi t1, zero, 1
 
 	# get address of inp$1i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$2i702 
 
@@ -82,7 +82,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$2i702 
 
@@ -90,7 +90,7 @@ mainEntry21:
 	addi t1, zero, 2
 
 	# get address of inp$2i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# store m42 
 
@@ -109,7 +109,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$4i702 
 
@@ -117,7 +117,7 @@ mainEntry21:
 	addi t1, zero, 0
 
 	# get address of inp$4i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$5i702 
 
@@ -127,7 +127,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$5i702 
 
@@ -135,7 +135,7 @@ mainEntry21:
 	addi t1, zero, 1
 
 	# get address of inp$5i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$6i702 
 
@@ -145,7 +145,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$6i702 
 
@@ -153,7 +153,7 @@ mainEntry21:
 	addi t1, zero, 2
 
 	# get address of inp$6i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$7i702 
 
@@ -163,7 +163,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$7i702 
 
@@ -171,7 +171,7 @@ mainEntry21:
 	addi t1, zero, 3
 
 	# get address of inp$7i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$8i702 
 
@@ -181,7 +181,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$8i702 
 
@@ -189,7 +189,7 @@ mainEntry21:
 	addi t1, zero, 0
 
 	# get address of inp$8i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$9i702 
 
@@ -199,7 +199,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$9i702 
 
@@ -207,7 +207,7 @@ mainEntry21:
 	addi t1, zero, 1
 
 	# get address of inp$9i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$10i702 
 
@@ -217,7 +217,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$10i702 
 
@@ -225,7 +225,7 @@ mainEntry21:
 	addi t1, zero, 2
 
 	# get address of inp$10i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$11i702 
 
@@ -235,7 +235,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$11i702 
 
@@ -243,7 +243,7 @@ mainEntry21:
 	addi t1, zero, 3
 
 	# get address of inp$11i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$12i702 
 
@@ -253,7 +253,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$12i702 
 
@@ -261,7 +261,7 @@ mainEntry21:
 	addi t1, zero, 0
 
 	# get address of inp$12i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$13i702 
 
@@ -271,7 +271,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$13i702 
 
@@ -279,7 +279,7 @@ mainEntry21:
 	addi t1, zero, 1
 
 	# get address of inp$13i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$14i702 
 
@@ -289,7 +289,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$14i702 
 
@@ -297,7 +297,7 @@ mainEntry21:
 	addi t1, zero, 2
 
 	# get address of inp$14i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# gep inp$15i702 
 
@@ -307,7 +307,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s0, t0
+	mv s3, t0
 
 	# store inp$15i702 
 
@@ -315,14 +315,14 @@ mainEntry21:
 	addi t1, zero, 3
 
 	# get address of inp$15i702 points to
-	sw t1, 0(s0)
+	sw t1, 0(s3)
 
 	# load arr$1i702 m42
 
 	# get address of m42 points to
 	ld t3, 304(sp)
 	lw t0, 0(t3)
-	mv s0, t0
+	mv s3, t0
 
 	# add result_$15i702  arr$1i702
 
@@ -338,7 +338,7 @@ mainEntry21:
 	# fetch variables
 	addi t1, zero, 30
 	addw t0, t1, t0
-	mv s0, t0
+	mv s3, t0
 
 	# gep inpi703 
 
@@ -348,7 +348,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inpi703 
 
@@ -356,7 +356,7 @@ mainEntry21:
 	addi t1, zero, 0
 
 	# get address of inpi703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# gep inp$1i703 
 
@@ -366,7 +366,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$1i703 
 
@@ -374,7 +374,7 @@ mainEntry21:
 	addi t1, zero, 1
 
 	# get address of inp$1i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# gep inp$2i703 
 
@@ -384,7 +384,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$2i703 
 
@@ -392,7 +392,7 @@ mainEntry21:
 	addi t1, zero, 2
 
 	# get address of inp$2i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# store m43 
 
@@ -411,7 +411,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$4i703 
 
@@ -419,7 +419,7 @@ mainEntry21:
 	addi t1, zero, 0
 
 	# get address of inp$4i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# gep inp$5i703 
 
@@ -429,7 +429,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$5i703 
 
@@ -437,7 +437,7 @@ mainEntry21:
 	addi t1, zero, 1
 
 	# get address of inp$5i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# gep inp$6i703 
 
@@ -447,7 +447,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$6i703 
 
@@ -455,7 +455,7 @@ mainEntry21:
 	addi t1, zero, 2
 
 	# get address of inp$6i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# gep inp$7i703 
 
@@ -465,7 +465,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$7i703 
 
@@ -473,7 +473,7 @@ mainEntry21:
 	addi t1, zero, 3
 
 	# get address of inp$7i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# gep inp$8i703 
 
@@ -483,7 +483,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$8i703 
 
@@ -491,7 +491,7 @@ mainEntry21:
 	addi t1, zero, 0
 
 	# get address of inp$8i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# gep inp$9i703 
 
@@ -501,7 +501,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$9i703 
 
@@ -509,7 +509,7 @@ mainEntry21:
 	addi t1, zero, 1
 
 	# get address of inp$9i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# gep inp$10i703 
 
@@ -519,7 +519,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$10i703 
 
@@ -527,7 +527,7 @@ mainEntry21:
 	addi t1, zero, 2
 
 	# get address of inp$10i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# gep inp$11i703 
 
@@ -537,7 +537,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$11i703 
 
@@ -545,7 +545,7 @@ mainEntry21:
 	addi t1, zero, 3
 
 	# get address of inp$11i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# gep inp$12i703 
 
@@ -555,7 +555,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$12i703 
 
@@ -563,7 +563,7 @@ mainEntry21:
 	addi t1, zero, 0
 
 	# get address of inp$12i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# gep inp$13i703 
 
@@ -573,7 +573,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$13i703 
 
@@ -581,7 +581,7 @@ mainEntry21:
 	addi t1, zero, 1
 
 	# get address of inp$13i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# gep inp$14i703 
 
@@ -591,7 +591,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$14i703 
 
@@ -599,7 +599,7 @@ mainEntry21:
 	addi t1, zero, 2
 
 	# get address of inp$14i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# gep inp$15i703 
 
@@ -609,7 +609,7 @@ mainEntry21:
 	li t4, 4
 	mul t4, t2, t4
 	add t0, t4, t1
-	mv s1, t0
+	mv s0, t0
 
 	# store inp$15i703 
 
@@ -617,14 +617,14 @@ mainEntry21:
 	addi t1, zero, 3
 
 	# get address of inp$15i703 points to
-	sw t1, 0(s1)
+	sw t1, 0(s0)
 
 	# load arr$1i703 m43
 
 	# get address of m43 points to
 	ld t3, 376(sp)
 	lw t0, 0(t3)
-	mv s1, t0
+	mv s0, t0
 
 	# add result_$15i703  arr$1i703
 
@@ -640,36 +640,32 @@ mainEntry21:
 	# fetch variables
 	addi t1, zero, 41
 	addw t0, t1, t0
-	mv s1, t0
+	mv s0, t0
 
 	# add result_$23 result_$14 result_$15
 
 	# fetch variables
-	addw t0, s0, t0
-	mv s0, t0
+	addw t0, s3, t0
+	mv s3, t0
 
 	# add result_$24 result_$23 
 
 	# fetch variables
 	addi t2, zero, 35
 	addw t0, t0, t2
-	mv s0, t0
+	mv s3, t0
 
 	# prepare params int regs
 
 	# fetch variables
-	mv a0, s0
-
-	# save caller saved regs
-	addi sp, sp, -192
+	mv a0, s3
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putint
 	call putint
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
@@ -678,17 +674,13 @@ mainEntry21:
 	# fetch variables
 	addi t1, zero, 10
 	mv a0, t1
-
-	# save caller saved regs
-	addi sp, sp, -192
+	addi sp, sp, -24
 	sd ra, 0(sp)
 
 	# call putch
 	call putch
-
-	# restore caller saved regs
 	ld ra, 0(sp)
-	addi sp, sp, 192
+	addi sp, sp, 24
 
 	# release params
 
