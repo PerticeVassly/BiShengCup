@@ -202,7 +202,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(Mod mod) {
         insertComment("mod " + mod.getLVal().getName() + " " + mod.getOperand(0).getName() + " " + mod.getOperand(1).getName());
         List<String> regs = beforeABinaryInstr(mod);
-        armInstructions.add(new ArmUdiv(new ArmRegister("r7"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
+        armInstructions.add(new ArmSdiv(new ArmRegister("r7"), new ArmRegister(regs.get(0)), new ArmRegister(regs.get(1))));
         armInstructions.add(new ArmMul(new ArmRegister("r7"), new ArmRegister("r7"), new ArmRegister(regs.get(1))));
         armInstructions.add(new ArmSub(new ArmRegister("r4"), new ArmRegister(regs.get(0)), new ArmRegister("r7")));
         afterAnInstr(mod);
