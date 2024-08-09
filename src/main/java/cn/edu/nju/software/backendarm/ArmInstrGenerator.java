@@ -495,9 +495,10 @@ public class ArmInstrGenerator implements InstructionVisitor {
         if (funcName.equals("starttime") || funcName.equals("stoptime")) {
             funcName = "_sysy_" + funcName;
             armAllocator.loadIntImmediate("r0", call.getLineNo());
-        } else if (funcName.equals("putfloat") ) {
-           armInstructions.add(new ArmVmov_s32_f32(new ArmRegister("r0"), new ArmRegister("s0")));
         }
+//        else if (funcName.equals("putfloat") ) {
+//           armInstructions.add(new ArmVmov_s32_f32(new ArmRegister("r0"), new ArmRegister("s0")));
+//        }
         armInstructions.add(new ArmComment("call " + funcName));
         armInstructions.add(new ArmBl(new ArmLabelAddress(new ArmLabel(funcName))));
         restoreCallerSavedRegs();
@@ -508,7 +509,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     private void saveReturnValue(Call call) {
         if (call.getLVal() != null) {
             TypeRef type = call.getLVal().getType();
-            if (type instanceof IntType || call.getFunction().getName().equals("getfloat")) {
+            if (type instanceof IntType) {
                 armInstructions.add(new ArmStr(new ArmRegister("r0"), armAllocator.getAddrOfLocalVar(call.getLVal())));
             } else if (type instanceof FloatType) {
                 armInstructions.add(new ArmVstr_f32(new ArmRegister("s0"), armAllocator.getAddrOfLocalVar(call.getLVal())));
