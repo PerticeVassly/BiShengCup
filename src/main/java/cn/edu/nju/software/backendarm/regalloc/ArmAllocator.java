@@ -112,8 +112,7 @@ public class ArmAllocator {
 
     private String prepareAConst(ConstValue constValue, int i){
         if (constValue.getType() instanceof FloatType) {
-            //todo() here assume can directly load into si
-            generator.addInstruction(new ArmLdr(new ArmRegister("r" + i), new ArmImmediateValue(Float.parseFloat(constValue.getValue().toString()))));
+            loadImmediate("r" + i, Float.floatToRawIntBits(Float.parseFloat(constValue.getValue().toString())));
             generator.addInstruction(new ArmVmov(new ArmRegister("s" + i), new ArmRegister("r" + i)));
             return "s" + i;
         } else if (constValue.getType() instanceof IntType) {
@@ -187,7 +186,7 @@ public class ArmAllocator {
      * @return
      */
     public ArmOperand getRegWithOffset(int immediate, String baseReg, String destReg) {
-        if(immediate >= 2048 || immediate < -2048){
+        if(immediate >= 256 || immediate < -256){
             loadImmediate(destReg, immediate);
             generator.addInstruction(new ArmAdd(new ArmRegister(destReg), new ArmRegister(baseReg), new ArmRegister(destReg)));
             return new ArmIndirectRegister(destReg,0);
