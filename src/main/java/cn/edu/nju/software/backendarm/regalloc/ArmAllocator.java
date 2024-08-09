@@ -113,7 +113,7 @@ public class ArmAllocator {
     private String prepareAConst(ConstValue constValue, int i){
         if (constValue.getType() instanceof FloatType) {
             loadImmediate("r" + i, Float.floatToRawIntBits(Float.parseFloat(constValue.getValue().toString())));
-            generator.addInstruction(new ArmVmov(new ArmRegister("s" + i), new ArmRegister("r" + i)));
+            generator.addInstruction(new ArmVmov_f32_s32(new ArmRegister("s" + i), new ArmRegister("r" + i)));
             return "s" + i;
         } else if (constValue.getType() instanceof IntType) {
             loadImmediate("r" + i, Integer.parseInt(constValue.getValue().toString()));
@@ -292,7 +292,7 @@ public class ArmAllocator {
     public void storeLocalVarIntoMemory(ValueRef variable, String regName){
         TypeRef type = variable.getType();
         if(type instanceof FloatType){
-            generator.addInstruction(new ArmVstr(new ArmRegister(regName), getAddrOfLocalVar(variable)));
+            generator.addInstruction(new ArmVstr_f32(new ArmRegister(regName), getAddrOfLocalVar(variable)));
         } else if(type instanceof IntType || type instanceof BoolType){
             generator.addInstruction(new ArmStr(new ArmRegister(regName), getAddrOfLocalVar(variable)));
         } else if(type instanceof Pointer){

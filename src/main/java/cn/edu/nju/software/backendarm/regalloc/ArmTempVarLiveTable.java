@@ -3,7 +3,7 @@ package cn.edu.nju.software.backendarm.regalloc;
 import cn.edu.nju.software.backendarm.ArmInstrGenerator;
 import cn.edu.nju.software.backendarm.ArmSpecifications;
 import cn.edu.nju.software.backendarm.arminstruction.ArmMov;
-import cn.edu.nju.software.backendarm.arminstruction.ArmVmov;
+import cn.edu.nju.software.backendarm.arminstruction.ArmVmov_f32;
 import cn.edu.nju.software.backendarm.arminstruction.operand.ArmRegister;
 import cn.edu.nju.software.backendarm.arminstruction.util.ArmComment;
 import cn.edu.nju.software.ir.type.IntType;
@@ -75,7 +75,7 @@ public class ArmTempVarLiveTable {
         if(ArmSpecifications.isGeneralType(tempVar.getType())){
             generator.addInstruction(new ArmMov(new ArmRegister(regToStage), new ArmRegister("r4")));
         } else if(ArmSpecifications.isFloatType(tempVar.getType())){
-            generator.addInstruction(new ArmVmov(new ArmRegister(regToStage), new ArmRegister("s4"))); //使用t1// 防止破坏t0
+            generator.addInstruction(new ArmVmov_f32(new ArmRegister(regToStage), new ArmRegister("s4"))); //使用t1// 防止破坏t0
         } else {
             assert false;
         }

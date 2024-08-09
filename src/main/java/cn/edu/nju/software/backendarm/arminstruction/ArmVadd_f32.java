@@ -3,9 +3,9 @@ package cn.edu.nju.software.backendarm.arminstruction;
 import cn.edu.nju.software.backendarm.arminstruction.operand.ArmOperand;
 import cn.edu.nju.software.backendarm.arminstruction.util.ArmOpcode;
 
-public class ArmVmov extends ArmDefaultInstruction {
+public class ArmVadd_f32 extends ArmDefaultInstruction {
 
-    public ArmVmov(ArmOperand... armOperands) {
-        super(ArmOpcode.VMOV, armOperands);
+    public ArmVadd_f32(ArmOperand... armOperands) {
+        super(ArmOpcode.VADD_F32, armOperands);
     }
 }

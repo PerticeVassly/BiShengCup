@@ -13,22 +13,4 @@ public class ArmLdr extends ArmDefaultInstruction {
 
     //ldr needs =
     //LDR R0, =label
-    @Override
-    public String emitCode() {
-        if(getOperands().get(1) instanceof ArmImmediateValue){
-            String imm = getOperands().get(1).toString();
-            String ltorg = ".ltorg";
-            if(imm.startsWith("#")){
-                String ans = "\tldr" + " " + getOperands().get(0) + ", =" + imm;
-                return ans;
-            } else{
-                String ans = "\tldr" + " " + getOperands().get(0) + ", =" + getOperands().get(1).toString();
-                return ans;
-            }
-        } else if(getOperands().get(1) instanceof ArmLabelAddress){
-            return "\tldr" + " " + getOperands().get(0) + ", =" + getOperands().get(1);
-        } else{
-            return "\tldr" + " " + getOperands().get(0) + ", " + getOperands().get(1);
-        }
-    }
 }
