@@ -76,7 +76,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
         armInstructions.add(new ArmComment("gep " + lVal.getName() + " " +  index.getName()));
         List<String> regs = armAllocator.prepareOperands(basePtr, index);
         int length = ArrayType.getTotalSize(((ArrayType) gep.getArrayTypePtr().getBase()).getElementType());
-        armAllocator.loadImmediate("r8", length);
+        armAllocator.loadIntImmediate("r8", length);
         armInstructions.add(new ArmMul(new ArmRegister("r8"), new ArmRegister(regs.get(1)), new ArmRegister("r8")));
         armInstructions.add(new ArmAdd(new ArmRegister("r4"), new ArmRegister("r8"), new ArmRegister(regs.get(0))));
         afterAnInstr(gep);
@@ -447,7 +447,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
             if(stackSize < 256){
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(stackSize)));
             } else {
-                armAllocator.loadImmediate("r4",stackSize);
+                armAllocator.loadIntImmediate("r4",stackSize);
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }
@@ -467,7 +467,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
             if(stackSize < 256){
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(stackSize)));
             } else {
-                armAllocator.loadImmediate("r4",stackSize);
+                armAllocator.loadIntImmediate("r4",stackSize);
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }
@@ -494,11 +494,10 @@ public class ArmInstrGenerator implements InstructionVisitor {
         String funcName = call.getFunction().getName();
         if (funcName.equals("starttime") || funcName.equals("stoptime")) {
             funcName = "_sysy_" + funcName;
-            armAllocator.loadImmediate("r0", call.getLineNo());
+            armAllocator.loadIntImmediate("r0", call.getLineNo());
+        } else if (funcName.equals("putfloat") ) {
+           armInstructions.add(new ArmVmov_s32_f32(new ArmRegister("r0"), new ArmRegister("s0")));
         }
-//        else if (funcName.equals("putfloat") ) {
-//           armInstructions.add(new ArmVmov_s32_f32(new ArmRegister("r0"), new ArmRegister("s0")));
-//        }
         armInstructions.add(new ArmComment("call " + funcName));
         armInstructions.add(new ArmBl(new ArmLabelAddress(new ArmLabel(funcName))));
         restoreCallerSavedRegs();
@@ -506,11 +505,10 @@ public class ArmInstrGenerator implements InstructionVisitor {
         saveReturnValue(call);
     }
 
-
     private void saveReturnValue(Call call) {
         if (call.getLVal() != null) {
             TypeRef type = call.getLVal().getType();
-            if (type instanceof IntType) {
+            if (type instanceof IntType || call.getFunction().getName().equals("getfloat")) {
                 armInstructions.add(new ArmStr(new ArmRegister("r0"), armAllocator.getAddrOfLocalVar(call.getLVal())));
             } else if (type instanceof FloatType) {
                 armInstructions.add(new ArmVstr_f32(new ArmRegister("s0"), armAllocator.getAddrOfLocalVar(call.getLVal())));
@@ -548,10 +546,11 @@ public class ArmInstrGenerator implements InstructionVisitor {
         }
         if (order > 0) {
             if(order * 8 < 256){
-                armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-8L * order)));
+                armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-8 * order)));
             } else {
-                armAllocator.loadImmediate("r4", -8L * order);
-                armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
+                armAllocator.loadIntImmediate("r4", 8 * order);
+                System.out.println("r4 = " + -8 * order);
+                armInstructions.add(new ArmSub(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }
     }
@@ -578,9 +577,9 @@ public class ArmInstrGenerator implements InstructionVisitor {
         int finalToRelease =Math.max(intAndPointerParamNum - ArmSpecifications.getArgRegs().length, 0) + Math.max(floatParamNum - ArmSpecifications.getFArgRegs().length, 0);
         if (finalToRelease > 0) {
             if(finalToRelease * 8 < 256){
-                armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(8L * finalToRelease)));
+                armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(8 * finalToRelease)));
             } else {
-                armAllocator.loadImmediate("r4", 8L * finalToRelease);
+                armAllocator.loadIntImmediate("r4", 8 * finalToRelease);
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }
@@ -592,7 +591,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     private void saveCallerSavedRegs() {
         armInstructions.add(new ArmComment("save caller saved regs"));
         String[] callerSavedRegs = ArmSpecifications.getCallerSavedRegs();
-        armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-8L * callerSavedRegs.length)));
+        armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-8 * callerSavedRegs.length)));
         for (int i = 0; i < callerSavedRegs.length; i++) {
             if(!armAllocator.isUsedReg(callerSavedRegs[i]) && !callerSavedRegs[i].equals("lr")){ //ra不会被record但是仍然需要保存
                 continue;
@@ -618,7 +617,8 @@ public class ArmInstrGenerator implements InstructionVisitor {
                 armInstructions.add(new ArmLdr(new ArmRegister(registers[i]), new ArmIndirectRegister("sp", i * 8)));
             }
         }
-        armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(8L * registers.length)));
+
+        armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(8 * registers.length)));
     }
 
     private void restoreCalleeSavedRegs() {
@@ -627,7 +627,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
         for (int i = 0; i < calleeSavedRegs.length; i++) {
             armInstructions.add(new ArmLdr(new ArmRegister(calleeSavedRegs[i]), new ArmIndirectRegister("sp", i * 8)));
         }
-        armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(8L * calleeSavedRegs.length)));
+        armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(8 * calleeSavedRegs.length)));
     }
 
     public void addInstruction(ArmInstruction instruction) {

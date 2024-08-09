@@ -2,11 +2,11 @@ package cn.edu.nju.software.backendarm.arminstruction.operand;
 
 public class ArmImmediateValue implements ArmOperand {
 
-    long value;
+    int value;
     float fvalue;
     boolean isdouble = false;
 
-    public ArmImmediateValue(long value) {
+    public ArmImmediateValue(int value) {
         this.value = value;
     }
 
