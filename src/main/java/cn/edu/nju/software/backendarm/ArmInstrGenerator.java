@@ -18,7 +18,6 @@ import cn.edu.nju.software.ir.value.ArrayValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -77,7 +76,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
         armInstructions.add(new ArmComment("gep " + lVal.getName() + " " +  index.getName()));
         List<String> regs = armAllocator.prepareOperands(basePtr, index);
         int length = ArrayType.getTotalSize(((ArrayType) gep.getArrayTypePtr().getBase()).getElementType());
-        armInstructions.add(new ArmLdr(new ArmRegister("r8"), new ArmImmediateValue(length)));
+        armAllocator.loadImmediate("r8", length);
         armInstructions.add(new ArmMul(new ArmRegister("r8"), new ArmRegister(regs.get(1)), new ArmRegister("r8")));
         armInstructions.add(new ArmAdd(new ArmRegister("r4"), new ArmRegister("r8"), new ArmRegister(regs.get(0))));
         afterAnInstr(gep);
@@ -448,7 +447,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
             if(stackSize < 256){
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(stackSize)));
             } else {
-                armInstructions.add(new ArmLdr(new ArmRegister("r4"), new ArmImmediateValue(stackSize)));
+                armAllocator.loadImmediate("r4",stackSize);
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }
@@ -468,7 +467,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
             if(stackSize < 256){
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(stackSize)));
             } else {
-                armInstructions.add(new ArmLdr(new ArmRegister("r4"), new ArmImmediateValue(stackSize)));
+                armAllocator.loadImmediate("r4",stackSize);
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }
@@ -495,7 +494,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
         String funcName = call.getFunction().getName();
         if (funcName.equals("starttime") || funcName.equals("stoptime")) {
             funcName = "_sysy_" + funcName;
-            armInstructions.add(new ArmLdr(new ArmRegister("r0"), new ArmImmediateValue(call.getLineNo())));
+            armAllocator.loadImmediate("r0", 0);
         }
         armInstructions.add(new ArmComment("call " + funcName));
         armInstructions.add(new ArmBl(new ArmLabelAddress(new ArmLabel(funcName))));
@@ -548,7 +547,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
             if(order * 8 < 256){
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-8L * order)));
             } else {
-                armInstructions.add(new ArmLdr(new ArmRegister("r4"), new ArmImmediateValue(-8L * order)));
+                armAllocator.loadImmediate("r4", -8L * order);
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }
@@ -578,7 +577,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
             if(finalToRelease * 8 < 256){
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(8L * finalToRelease)));
             } else {
-                armInstructions.add(new ArmLdr(new ArmRegister("r4"), new ArmImmediateValue(8L * finalToRelease)));
+                armAllocator.loadImmediate("r4", 8L * finalToRelease);
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }

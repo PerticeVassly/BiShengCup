@@ -62,7 +62,7 @@ public class ArmAllocator {
     }
 
     private String prepareAGlobal(GlobalVar globalVar, int i){
-        generator.addInstruction(new ArmLdr(new ArmRegister("r" + i), new ArmLabelAddress(new ArmLabel(globalVar.getName()))));
+        loadLabel("r" + i, globalVar.getName());
         return "r" + i;
     }
 
@@ -96,7 +96,7 @@ public class ArmAllocator {
                 return fetchTempVar(localVar);
             }
             if(checkPtrHasAllocated(localVar.getName())){
-                if(armMemoryManager.getOffset(localVar) >= 2048 || armMemoryManager.getOffset(localVar) <= -2048){
+                if(armMemoryManager.getOffset(localVar) >= 256 || armMemoryManager.getOffset(localVar) <= -256){
                     loadImmediate("r8", armMemoryManager.getOffset(localVar));
                     generator.addInstruction(new ArmAdd(new ArmRegister("r" + i), new ArmRegister("sp"), new ArmRegister("r8")));
                 } else {
@@ -145,62 +145,6 @@ public class ArmAllocator {
         }
     }
 
-    private ArmOperand getValueOfGlobalVar(GlobalVar globalVar){
-        // GlobalVar 只可能是指针类型，所以获取value实际上就是指针中的地址（即label）
-        generator.insertComment("get value of global var:" + globalVar.getName());
-        generator.addInstruction(new ArmLdr(new ArmRegister("r7"), new ArmLabelAddress(new ArmLabel((globalVar.getName())))));
-        return new ArmRegister("r7");
-    }
-
-    private ArmOperand getValueOfConstVar(ConstValue constVar){
-        generator.insertComment("get value of const var:" + constVar.getName());
-        if(constVar.getType() instanceof FloatType){
-            //todo() here assume can directly load into si
-            generator.addInstruction(new ArmLdr(new ArmRegister("r5"), new ArmImmediateValue(Float.parseFloat(constVar.getValue().toString()))));
-            generator.addInstruction(new ArmVmov(new ArmRegister("s5"), new ArmRegister("r5")));
-            return new ArmRegister("s5");
-        }
-        else if(constVar.getType() instanceof IntType){
-            loadImmediate("r5", Integer.parseInt(constVar.getValue().toString()));
-            return new ArmRegister("r5");
-        }
-        else if(constVar.getType() instanceof BoolType){
-            loadImmediate("r5", Boolean.TRUE.equals(constVar.getValue()) ? 1 : 0);
-            return new ArmRegister("r5");
-        }
-        else {
-            assert false;
-            return null;
-        }
-    }
-
-    /**
-     * 获取局部变量的值，返回一个寄存器储存其值
-     * @param localVar
-     * @return
-     */
-    private ArmOperand getValueOfLocalVar(LocalVar localVar){
-        generator.insertComment("get value of local var:" + localVar.getName());
-        if(localVar.getType() instanceof FloatType) {
-            generator.addInstruction(new ArmVldr(new ArmRegister("s5"), getAddrOfLocalVar(localVar)));
-            return new ArmRegister("s5");
-        } else if(localVar.getType() instanceof IntType || localVar.getType() instanceof BoolType){
-            generator.addInstruction(new ArmLdr(new ArmRegister("r5"), getAddrOfLocalVar(localVar)));
-            return new ArmRegister("r5");
-        } else if(localVar.getType() instanceof Pointer){
-            if(checkPtrHasAllocated(localVar.getName())){
-                loadImmediate("r5", armMemoryManager.getOffset(localVar));
-                generator.addInstruction(new ArmAdd(new ArmRegister("r5"), new ArmRegister("sp"), new ArmRegister("r5")));
-                return new ArmRegister("r5");
-            }
-            generator.addInstruction(new ArmLdr(new ArmRegister("r5"), getAddrOfLocalVar(localVar)));
-            return new ArmRegister("r5");
-        } else {
-            assert false;
-            return null;
-        }
-    }
-
     /**
      * 获取指针指向的变量的地址 + offset
      * 使用0（t3）,作为返回的地址
@@ -223,7 +167,7 @@ public class ArmAllocator {
             return getRegWithOffset(armMemoryManager.getOffset(ptr) + offset, "sp", "r6");
         }
         if (ptr instanceof GlobalVar) {
-            generator.addInstruction(new ArmLdr(new ArmRegister("r7"), new ArmLabelAddress(new ArmLabel(ptr.getName()))));
+            loadLabel("r7", ptr.getName());
             return getRegWithOffset(offset, "r7", "r8");
         } else if (ptr instanceof LocalVar) {
             generator.addInstruction(new ArmLdr(new ArmRegister("r7"), getRegWithOffset(armMemoryManager.getOffset(ptr), "sp", "r8")));
@@ -244,7 +188,7 @@ public class ArmAllocator {
      */
     public ArmOperand getRegWithOffset(int immediate, String baseReg, String destReg) {
         if(immediate >= 2048 || immediate < -2048){
-            generator.addInstruction(new ArmLdr(new ArmRegister(destReg), new ArmImmediateValue(immediate)));
+            loadImmediate(destReg, immediate);
             generator.addInstruction(new ArmAdd(new ArmRegister(destReg), new ArmRegister(baseReg), new ArmRegister(destReg)));
             return new ArmIndirectRegister(destReg,0);
         }else {
@@ -298,7 +242,18 @@ public class ArmAllocator {
     }
 
     public void loadImmediate(String reName, int immediate) {
-        generator.addInstruction(new ArmLdr(new ArmRegister(reName), new ArmImmediateValue(immediate)));
+        generator.addInstruction(new ArmMovw(new ArmRegister(reName), new ArmImmediateValue(immediate & 0x0000FFFF))); // 加载低 16 位
+        generator.addInstruction(new ArmMovt(new ArmRegister(reName), new ArmImmediateValue((immediate & 0xFFFF0000 ) >>> 16)));
+    }
+
+    public void loadImmediate(String reName, float immediate) {
+        generator.addInstruction(new ArmMovw(new ArmRegister(reName), new ArmImmediateValue(Float.floatToRawIntBits(immediate) & 0x0000FFFF))); // 加载低 16 位
+        generator.addInstruction(new ArmMovt(new ArmRegister(reName), new ArmImmediateValue((Float.floatToRawIntBits(immediate) & 0xFFFF0000) >>> 16)));
+    }
+
+    public void loadLabel(String reName, String label) {
+        generator.addInstruction(new ArmMovw(new ArmRegister(reName), new ArmLabelAddress(new ArmLabel(":lower16:" + label))));
+        generator.addInstruction(new ArmMovt(new ArmRegister(reName), new ArmLabelAddress(new ArmLabel(":upper16:" + label))));
     }
 
     public boolean isLastLVal(ValueRef variable){

@@ -19,7 +19,7 @@ public class ArmLdr extends ArmDefaultInstruction {
             String imm = getOperands().get(1).toString();
             String ltorg = ".ltorg";
             if(imm.startsWith("#")){
-                String ans = "\tldr" + " " + getOperands().get(0) + ", =" + imm.substring(1);
+                String ans = "\tldr" + " " + getOperands().get(0) + ", =" + imm;
                 return ans;
             } else{
                 String ans = "\tldr" + " " + getOperands().get(0) + ", =" + getOperands().get(1).toString();

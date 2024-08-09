@@ -51,7 +51,7 @@ public class ArmBasicBlock {
             if(stackSize <= 256){
                 generator.addInstruction(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-stackSize)));
             } else {
-                generator.addInstruction(new ArmLdr(new ArmRegister("r4"), new ArmImmediateValue(stackSize)));
+                allocator.loadImmediate("r4", stackSize);
                 generator.addInstruction(new ArmSub(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }

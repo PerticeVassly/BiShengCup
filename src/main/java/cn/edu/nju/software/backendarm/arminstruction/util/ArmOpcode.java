@@ -5,6 +5,8 @@ public enum ArmOpcode {
     LDR,
     STR,
     MOV,
+    MOVW,
+    MOVT,
     ADD,
     SUB,
     MUL,
