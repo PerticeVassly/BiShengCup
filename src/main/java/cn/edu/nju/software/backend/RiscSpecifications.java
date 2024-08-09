@@ -11,6 +11,7 @@ public record RiscSpecifications() {
     private static final int FLOAT_SIZE = 4;
     private static final int POINTER_SIZE = 8;
     private static final int BOOL_SIZE = 4;
+    private static final String[] libCallerSavedRegs= new String[] {"ra", "s0", "fs0"};
     private static final String[] callerSavedRegs = new String[] {"ra",
             "s0","s1","s2","s3","s4","s5","s7","s8","s9","s10","s11",
             "fs0","fs1","fs2","fs3", "fs4", "fs5", "fs6", "fs7", "fs8", "fs9", "fs10", "fs11"};
@@ -29,6 +30,10 @@ public record RiscSpecifications() {
 
     public static String[] getCallerSavedRegs() {
         return callerSavedRegs;
+    }
+
+    public static String[] getLibCallerSavedRegs() {
+        return libCallerSavedRegs;
     }
 
     public static String[] getCalleeSavedRegs() {
