@@ -26,7 +26,7 @@ public record RiscSpecifications() {
     private static final String[] floatLocalVarRegs = new String[] {
             "fs4", "fs5", "fs6", "fs7", "fs8", "fs9", "fs10", "fs11"
     };
-    private static final boolean isDebug = true;
+    private static final boolean isDebug = false;
 
     public static String[] getCallerSavedRegs() {
         return callerSavedRegs;

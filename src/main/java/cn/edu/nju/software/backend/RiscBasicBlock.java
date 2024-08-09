@@ -7,6 +7,7 @@ import cn.edu.nju.software.backend.riscinstruction.*;
 import cn.edu.nju.software.backend.riscinstruction.floatextension.RiscFlw;
 import cn.edu.nju.software.backend.riscinstruction.operand.ImmediateValue;
 import cn.edu.nju.software.backend.riscinstruction.operand.IndirectRegister;
+import cn.edu.nju.software.backend.riscinstruction.operand.Operand;
 import cn.edu.nju.software.backend.riscinstruction.operand.Register;
 import cn.edu.nju.software.backend.riscinstruction.pseudo.RiscLi;
 import cn.edu.nju.software.backend.riscinstruction.util.RiscComment;
@@ -17,6 +18,7 @@ import cn.edu.nju.software.ir.value.LocalVar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class RiscBasicBlock {
 
@@ -150,6 +152,7 @@ public class RiscBasicBlock {
     }
 
     public void dumpToConsole() {
+        optimize();
         System.out.println(basicBlockRef.getName() + ":");
         for(RiscInstruction riscInstruction : riscInstructions){
             if(riscInstruction instanceof RiscComment){
@@ -163,4 +166,26 @@ public class RiscBasicBlock {
         }
     }
 
+    private void optimize(){
+        RiscInstruction pre=null;
+        ListIterator<RiscInstruction> iterator = riscInstructions.listIterator();
+        while(iterator.hasNext()){
+            RiscInstruction riscInstruction = iterator.next();
+            if(riscInstruction instanceof RiscComment){
+                continue;
+            }
+            if(riscInstruction instanceof RiscMv riscMv){
+                ArrayList<Operand> operands = riscMv.getOperands();
+               if(operands.get(0).equals(operands.get(1))){
+                   iterator.remove();
+               } else if (riscInstruction.equals(pre)) {
+                   iterator.remove();
+               }else {
+                   pre=riscInstruction;
+               }
+            }else {
+                pre=riscInstruction;
+            }
+        }
+    }
 }

@@ -486,9 +486,9 @@ public class RiscInstrGenerator implements InstructionVisitor {
     public void visit(Call call) {
         allocator.resetLastLVal();
         prepareParams(call);
-        if(call.getFunction().isLib()){
+        if(call.getFunction().isLib()||call.getFunction().getName().equals("memset")){
             saveLibCallerSavedRegs();
-        } else {
+        }else {
             saveCallerSavedRegs();
         }
         String funcName = call.getFunction().getName();
@@ -498,7 +498,7 @@ public class RiscInstrGenerator implements InstructionVisitor {
         }
         riscInstructions.add(new RiscComment("call " + funcName));
         riscInstructions.add(new RiscCall(funcName));
-        if(call.getFunction().isLib()){
+        if(call.getFunction().isLib()||call.getFunction().getName().equals("memset")){
             restoreLibCallerSavedRegs();
         }else {
             restoreCallerSavedRegs();
