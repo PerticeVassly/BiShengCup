@@ -1,7 +1,10 @@
 package cn.edu.nju.software.frontend.util;
 import java.io.*;
 import java.util.Properties;
-//TODO:代码复制自开源项目，需在报告中注明
+/**
+ * 以下代码复制自开源网站，仅供测试
+ * 参考链接：https://stackoverflow.com/questions/26481910/how-to-call-graphviz-from-java
+ */
     /**
      * <dl>
      * <dt>Purpose: GraphViz Java API
