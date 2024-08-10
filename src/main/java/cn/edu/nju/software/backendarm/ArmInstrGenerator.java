@@ -496,9 +496,9 @@ public class ArmInstrGenerator implements InstructionVisitor {
             funcName = "_sysy_" + funcName;
             armAllocator.loadIntImmediate("r0", call.getLineNo());
         }
-//        else if (funcName.equals("putfloat") ) {
-//           armInstructions.add(new ArmVmov_s32_f32(new ArmRegister("r0"), new ArmRegister("s0")));
-//        }
+        else if (funcName.equals("putfloat") ) {
+           armInstructions.add(new ArmVmov_s32_f32(new ArmRegister("r0"), new ArmRegister("s0")));
+        }
         armInstructions.add(new ArmComment("call " + funcName));
         armInstructions.add(new ArmBl(new ArmLabelAddress(new ArmLabel(funcName))));
         restoreCallerSavedRegs();
@@ -509,7 +509,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     private void saveReturnValue(Call call) {
         if (call.getLVal() != null) {
             TypeRef type = call.getLVal().getType();
-            if (type instanceof IntType) {
+            if (type instanceof IntType || call.getFunction().getName().equals("getfloat")) {
                 armInstructions.add(new ArmStr(new ArmRegister("r0"), armAllocator.getAddrOfLocalVar(call.getLVal())));
             } else if (type instanceof FloatType) {
                 armInstructions.add(new ArmVstr_f32(new ArmRegister("s0"), armAllocator.getAddrOfLocalVar(call.getLVal())));
@@ -550,7 +550,6 @@ public class ArmInstrGenerator implements InstructionVisitor {
                 armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-8 * order)));
             } else {
                 armAllocator.loadIntImmediate("r4", 8 * order);
-                System.out.println("r4 = " + -8 * order);
                 armInstructions.add(new ArmSub(new ArmRegister("sp"), new ArmRegister("sp"), new ArmRegister("r4")));
             }
         }
