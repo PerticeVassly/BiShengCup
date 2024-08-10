@@ -29,17 +29,7 @@ public class CG {
         return graph.getAllNodes();
     }
     public void dumpWholeGraph(String fileName){
-        GraphViz gv=new GraphViz();
-        gv.addln(gv.start_graph());
-        for(FunctionValue bb:getAllFunction()){
-            for(FunctionValue succ:getSuccessors(bb)){
-                gv.addln(bb.getName()+" -> "+succ.getName()+";");
-            }
-        }
-        gv.addln(gv.end_graph());
-        // png为输出格式，还可改为pdf，gif，jpg等
-        String type = "png";
-        gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), fileName+"."+ type );
+        //todo:
     }
 
     public boolean isEmpty() {

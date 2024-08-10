@@ -8,8 +8,6 @@ Antlr 4.12.0 is used in this project.
 
 LLVM IR is used as the ir of this project.
 
-Codes in cn.edu.nju.software.frontend.util.GraphViz are copied from https://stackoverflow.com/questions/26481910/how-to-call-graphviz-from-java
-,just for test.
 
 other references:
 
