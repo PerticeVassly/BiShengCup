@@ -85,8 +85,6 @@ public class Main {
 
         if(optimized){
             PassManager passManager=new PassManager(module);
-            //TODO:调试完成后删除这句
-            //passManager.setDbgFlag();
             passManager.runPass();
         }
 //        irVisitor.dumpModuleToConsole();
