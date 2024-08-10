@@ -43,7 +43,7 @@ public class PassManager {
         allPasses.add(GlobalToLocalPass.getInstance());
         allPasses.add(GEPReductionPass.getInstance());
         allPasses.add(new FunctionInlinePass());
-        allPasses.add(new LoopInvariantCodeMotionPass());
+        // allPasses.add(new LoopInvariantCodeMotionPass());
         allPasses.add(new RedundantBlockEliminationPass());
         allPasses.add(MemToReg.getInstance());
         allPasses.add(MergeRepeatedArithmeticPass.getInstance());
