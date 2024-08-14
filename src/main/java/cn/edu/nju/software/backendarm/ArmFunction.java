@@ -99,6 +99,7 @@ public class ArmFunction {
 
     public void dumpToConsole() {
         System.out.println(".text");
+        System.out.println(".align 1");
         System.out.println(".type " + functionValue.getName() + ", %function");
         System.out.println(".globl " + functionValue.getName());
         System.out.println(functionValue.getName() + ":");

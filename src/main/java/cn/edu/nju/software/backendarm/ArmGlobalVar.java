@@ -25,6 +25,7 @@ public class ArmGlobalVar {
     }
 
     public void dumpToConsole() {
+        System.out.println(".align 8");
         System.out.println(".globl " + name);
 
         if (isUninitialized){
@@ -35,6 +36,12 @@ public class ArmGlobalVar {
         ValueRef initVal = globalVar.getInitVal();
         TypeRef type = initVal.getType();
         if( initVal instanceof ConstValue constInitVal){
+            if (((Pointer) globalVar.getType()).getBase() instanceof ArrayType) {
+                int totalSize = ArrayType.getTotalSize(((Pointer) globalVar.getType()).getBase());
+                System.out.println(name + ":");
+                System.out.println(".skip " + totalSize + ", 0");
+                return;
+            }
             if(type instanceof IntType || type instanceof FloatType) {
                 String initValue = constInitVal.toArmString();
                 System.out.println(name + ":");
