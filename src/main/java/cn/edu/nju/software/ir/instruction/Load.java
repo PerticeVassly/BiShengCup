@@ -29,6 +29,9 @@ public class Load extends Instruction {
 
     @Override
     public boolean equivalent(Instruction rhs) {
-        return super.equivalent(rhs);
+        if(!(rhs instanceof Load)){
+            return false;
+        }
+        return rhs.getOperand(0).equals(this.operands[0]);
     }
 }
