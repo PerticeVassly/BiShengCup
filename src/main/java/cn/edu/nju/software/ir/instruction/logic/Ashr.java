@@ -33,4 +33,18 @@ public class Ashr extends Binary {
         }
         return null;
     }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if (!(rhs instanceof Ashr ashr)) {
+            return false;
+        }
+        ValueRef[] operands=ashr.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
+    }
 }

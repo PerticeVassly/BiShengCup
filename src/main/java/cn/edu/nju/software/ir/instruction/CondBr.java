@@ -2,7 +2,6 @@ package cn.edu.nju.software.ir.instruction;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
-import cn.edu.nju.software.ir.type.BoolType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
@@ -47,4 +46,8 @@ public class CondBr extends Instruction {
         visitor.visit(this);
     }
 
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        return super.equivalent(rhs);
+    }
 }

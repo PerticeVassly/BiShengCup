@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="回退">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/frontend/util/GraphViz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/frontend/util/GraphViz.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="wangchenyang-dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLabMergeRequestFiltersHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPENED&quot;,
+    &quot;assignee&quot;: {
+      &quot;type&quot;: &quot;org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue&quot;,
+      &quot;username&quot;: &quot;T202410284203580&quot;,
+      &quot;fullname&quot;: &quot;BanGDream!It&amp;#39;sMySYSY&quot;
+    }
+  }
+}</component>
+  <component name="GitLabMergeRequestsSettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;first&quot;: &quot;https://gitlab.eduxiji.net/T202410284203580/compilers.git&quot;,
+    &quot;second&quot;: &quot;3a6f9efa-2c2a-4c9a-ae3c-57450bd56874&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="17 (WSL)" />
+        <option name="workspaceImportForciblyTurnedOn" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2h9IFoqxhOzvgLoMFwAj8y6twlQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.FrontEndTest.testAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FrontEndTest.testHidden.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestBackEndIO.test2023.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestParseTree.test.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.compiler [package].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/codes/SECI-codes/compilers&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDK&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="JUnit.FrontEndTest.testAll">
+    <configuration name="FrontEndTest.testAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.nju.software.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.FrontEndTest" />
+      <option name="METHOD_NAME" value="testAll(java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FrontEndTest.testHidden" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.nju.software.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.FrontEndTest" />
+      <option name="METHOD_NAME" value="testHidden(java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestBackEndIO.test2023" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.nju.software.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.TestBackEndIO" />
+      <option name="METHOD_NAME" value="test2023(java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <envs>
+        <env name="PATH" value="/opt/riscv/bin:$PATH" />
+      </envs>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestParseTree.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.nju.software.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.TestParseTree" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.FrontEndTest.testAll" />
+      <item itemvalue="JUnit.FrontEndTest.testHidden" />
+      <item itemvalue="JUnit.TestBackEndIO.test2023" />
+      <item itemvalue="JUnit.TestParseTree.test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestParseTree.test" />
+        <item itemvalue="JUnit.TestBackEndIO.test2023" />
+        <item itemvalue="JUnit.FrontEndTest.testHidden" />
+        <item itemvalue="JUnit.FrontEndTest.testAll" />
+        <item itemvalue="JUnit.TestParseTree.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="" />
+      <created>1716999766838</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716999766838</updated>
+      <workItem from="1716999768267" duration="12001000" />
+      <workItem from="1722760337494" duration="4836000" />
+      <workItem from="1722768700333" duration="6307000" />
+      <workItem from="1723277994788" duration="215000" />
+    </task>
+    <task id="LOCAL-00001" summary="Framework">
+      <option name="closed" value="true" />
+      <created>1717002671068</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717002671068</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Framework Perf">
+      <option name="closed" value="true" />
+      <created>1717063204467</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717063204467</updated>
+    </task>
+    <task id="LOCAL-00003" summary="修改函数内联，删除冗余的空指令">
+      <option name="closed" value="true" />
+      <created>1722766024139</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1722766024139</updated>
+    </task>
+    <task id="LOCAL-00004" summary="暂存">
+      <option name="closed" value="true" />
+      <created>1722766221624</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1722766221624</updated>
+    </task>
+    <task id="LOCAL-00005" summary="开始公共子表达式消除">
+      <option name="closed" value="true" />
+      <created>1722772836039</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1722772836039</updated>
+    </task>
+    <task id="LOCAL-00006" summary="添加测试">
+      <option name="closed" value="true" />
+      <created>1722774707654</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1722774707654</updated>
+    </task>
+    <task id="LOCAL-00007" summary="添加测试2">
+      <option name="closed" value="true" />
+      <created>1722774728420</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1722774728420</updated>
+    </task>
+    <task id="LOCAL-00008" summary="重新合并，测试所有Pass">
+      <option name="closed" value="true" />
+      <created>1722775002992</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1722775002992</updated>
+    </task>
+    <task id="LOCAL-00009" summary="提交所有pass（包括公共子表达式消除）">
+      <option name="closed" value="true" />
+      <created>1723002885652</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1723002885652</updated>
+    </task>
+    <task id="LOCAL-00010" summary="优化import">
+      <option name="closed" value="true" />
+      <created>1723003061995</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1723003061995</updated>
+    </task>
+    <task id="LOCAL-00011" summary="暂存">
+      <option name="closed" value="true" />
+      <created>1723109814537</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1723109814537</updated>
+    </task>
+    <task id="LOCAL-00012" summary="修复memtoreg bug">
+      <option name="closed" value="true" />
+      <created>1723254505639</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1723254505639</updated>
+    </task>
+    <task id="LOCAL-00013" summary="回退">
+      <option name="closed" value="true" />
+      <created>1723259540441</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1723259540441</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="wangchenyang-submit" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Framework" />
+    <MESSAGE value="Framework Perf" />
+    <MESSAGE value="修改函数内联，删除冗余的空指令" />
+    <MESSAGE value="开始公共子表达式消除" />
+    <MESSAGE value="添加测试" />
+    <MESSAGE value="添加测试2" />
+    <MESSAGE value="重新合并，测试所有Pass" />
+    <MESSAGE value="提交所有pass（包括公共子表达式消除）" />
+    <MESSAGE value="优化import" />
+    <MESSAGE value="暂存" />
+    <MESSAGE value="修复memtoreg bug" />
+    <MESSAGE value="回退" />
+    <option name="LAST_COMMIT_MESSAGE" value="回退" />
+  </component>
+</project>

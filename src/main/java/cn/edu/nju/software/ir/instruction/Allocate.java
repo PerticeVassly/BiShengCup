@@ -28,4 +28,9 @@ public class Allocate extends Instruction {
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
     }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        return super.equivalent(rhs);
+    }
 }

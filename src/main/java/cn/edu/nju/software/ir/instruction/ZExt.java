@@ -30,4 +30,21 @@ public class ZExt extends Instruction {
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
     }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if(!(rhs instanceof ZExt zExt)){
+            return false;
+        }
+        if(!zExt.getTarget().equals(this.target)){
+            return false;
+        }
+        ValueRef[] operands=zExt.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
+    }
 }

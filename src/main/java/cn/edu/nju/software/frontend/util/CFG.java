@@ -2,7 +2,8 @@ package cn.edu.nju.software.frontend.util;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 public class CFG {
     private final Graph<BasicBlockRef> graph;
 

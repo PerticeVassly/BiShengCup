@@ -7,7 +7,7 @@ import cn.edu.nju.software.ir.value.ValueRef;
 import java.util.Arrays;
 
 import static cn.edu.nju.software.ir.instruction.OpEnum.PHI;
-import static cn.edu.nju.software.ir.instruction.Operator.*;
+import static cn.edu.nju.software.ir.instruction.Operator.getOperator;
 
 public class Phi extends Instruction {
     // private final BasicBlockRef block; // in which lock
@@ -178,5 +178,10 @@ public class Phi extends Instruction {
     @Override
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        return super.equivalent(rhs);
     }
 }

@@ -1,12 +1,14 @@
 package cn.edu.nju.software.pass;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import cn.edu.nju.software.ir.instruction.*;
+import cn.edu.nju.software.ir.instruction.Br;
+import cn.edu.nju.software.ir.instruction.CondBr;
+import cn.edu.nju.software.ir.instruction.Instruction;
+import cn.edu.nju.software.ir.instruction.Phi;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.BoolType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
-import cn.edu.nju.software.ir.value.ValueRef;
 
 /***
  * modify condBr -> Br <br>

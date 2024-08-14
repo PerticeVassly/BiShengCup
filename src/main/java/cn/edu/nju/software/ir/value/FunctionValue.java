@@ -5,16 +5,12 @@ import cn.edu.nju.software.ir.instruction.Allocate;
 import cn.edu.nju.software.ir.instruction.Br;
 import cn.edu.nju.software.ir.instruction.CondBr;
 import cn.edu.nju.software.ir.instruction.Instruction;
-import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.type.FunctionType;
-import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.pass.Util;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FunctionValue extends ValueRef {

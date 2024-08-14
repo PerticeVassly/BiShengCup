@@ -1,8 +1,6 @@
 package cn.edu.nju.software.ir.instruction;
 
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
-import static cn.edu.nju.software.ir.instruction.OpEnum.CALL;
-import static cn.edu.nju.software.ir.instruction.Operator.getOperator;
 import cn.edu.nju.software.ir.type.FunctionType;
 import cn.edu.nju.software.ir.type.VoidType;
 import cn.edu.nju.software.ir.value.FunctionValue;
@@ -10,6 +8,9 @@ import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.Collections;
 import java.util.List;
+
+import static cn.edu.nju.software.ir.instruction.OpEnum.CALL;
+import static cn.edu.nju.software.ir.instruction.Operator.getOperator;
 
 public class Call extends Instruction {
     private final List<ValueRef> realParams;
@@ -141,5 +142,10 @@ public class Call extends Instruction {
     @Override
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        return super.equivalent(rhs);
     }
 }
