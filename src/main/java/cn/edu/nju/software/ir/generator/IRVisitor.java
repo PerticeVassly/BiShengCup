@@ -872,6 +872,7 @@ public class IRVisitor extends SysYParserBaseVisitor<ValueRef> {
             }
         } else {
             if (global() && globalVar != null){
+                globalVar.setUninitialized(true);
                 gen.setInitValue(globalVar, zero);
             }
         }

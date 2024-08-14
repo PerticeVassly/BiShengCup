@@ -53,10 +53,22 @@ public class ArmModule {
          */
         System.out.println(".arch armv7ve");
         System.out.println(".fpu vfpv3-d16");
-        System.out.println(".data" + System.lineSeparator() + ".align 4");
-        armGlobalVars.forEach(ArmGlobalVar::dumpToConsole);
+        dumpGlobal(); // global variables (var, array)
         armFunctions.forEach(ArmFunction::dumpToConsole);
         appendArmFunctions();
+    }
+
+    private void dumpGlobal() {
+        List<ArmGlobalVar> initializedVars = armGlobalVars.stream().filter(var -> !var.isUninitialized()).toList();
+        List<ArmGlobalVar> uninitializedVars = armGlobalVars.stream().filter(ArmGlobalVar::isUninitialized).toList();
+        System.out.println(".data" + System.lineSeparator() + ".align 4");
+        if (!initializedVars.isEmpty()) {
+            initializedVars.forEach(ArmGlobalVar::dumpToConsole);
+        }
+        System.out.println(".bss" + System.lineSeparator() + ".align 4");
+        if (!uninitializedVars.isEmpty()) {
+            uninitializedVars.forEach(ArmGlobalVar::dumpToConsole);
+        }
     }
 
     /**
