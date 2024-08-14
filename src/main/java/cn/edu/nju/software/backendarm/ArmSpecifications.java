@@ -24,7 +24,7 @@ public class ArmSpecifications {
     private static final String[] tempVarRegs = new String[] {
             "r9", "r10", "r11",
             "s9", "s10", "s11"};
-    private static final boolean isDebug = true;
+    private static final boolean isDebug = false;
 
     public static String[] getCallerSavedRegs() {
         return callerSavedRegs;
