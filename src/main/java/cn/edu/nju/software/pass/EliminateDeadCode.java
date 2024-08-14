@@ -2,10 +2,10 @@ package cn.edu.nju.software.pass;
 
 import cn.edu.nju.software.frontend.util.CFG;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import cn.edu.nju.software.ir.instruction.Br;
-import cn.edu.nju.software.ir.instruction.CondBr;
-import cn.edu.nju.software.ir.instruction.Instruction;
+import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.module.ModuleRef;
+import cn.edu.nju.software.ir.type.BoolType;
+import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 import cn.edu.nju.software.ir.value.Variable;
@@ -21,6 +21,11 @@ public class EliminateDeadCode implements ModulePass {
 
     private EliminateDeadCode() {}
 
+    private boolean change = false;
+
+    private final ConstValue trueValue = new ConstValue(new BoolType(), true);
+    private final ConstValue falseValue = new ConstValue(new BoolType(), false);
+
     public static EliminateDeadCode getInstance() {
         return eliminateDeadCode;
     }
@@ -28,81 +33,147 @@ public class EliminateDeadCode implements ModulePass {
     @Override
     public boolean runOnModule(ModuleRef module) {
         this.module = module;
-//        removeDeadControlFlow();
-        removeDeadTags();
+        eliminateOnModule();
+        while (change) {
+            change = false;
+            eliminateOnModule();
+        }
         return false;
     }
 
-    private void removeDeadControlFlow() {
-        for (FunctionValue function : module.getFunctions()) {
-            List<BasicBlockRef> bbs = new LinkedList<>(function.getBasicBlockRefs());
+    private void eliminateOnModule() {
+        EliminateRedundantPhi eliminateRedundantPhi = EliminateRedundantPhi.getInstance();
+        for (int i = 0; i < module.getFunctionNum(); i++) {
+            FunctionValue fv = module.getFunction(i);
+            if (fv.isLib()) {
+                continue;
+            }
+            eliminateOnFunction(fv);
+            eliminateUnreachableBlock(fv);
+//            eliminateRedundantBlock(fv); // difficult bug to solve: different incoming value from same pred of phi
+            eliminatePhiDeadBlock(fv);
+        }
+        eliminateRedundantPhi.runOnModule(module);
+    }
 
-            while (!bbs.isEmpty()) {
-                BasicBlockRef bb = bbs.remove(0);
-                if (!bb.isReachable()) continue;
+    public void eliminateOnFunction(FunctionValue fv) {
+        // e.g. br i1 true,label %1, label %2
+        for (int i = 0; i < fv.getBlockNum(); i++) {
+            BasicBlockRef bb = fv.getBlock(i);
+            int lastIndex = Util.findLastInstruction(bb);
+            Instruction inst = bb.getIr(lastIndex);
+            if (inst instanceof CondBr br) {
+                ValueRef cond = br.getOperand(0);
+                if (cond instanceof ConstValue) {
+                    BasicBlockRef tar, drop;
+                    if (cond.equals(trueValue)) {
+                        tar = br.getTrueBlock();
+                        drop = br.getFalseBlock();
+                    } else {
+                        tar = br.getFalseBlock();
+                        drop = br.getTrueBlock();
+                    }
+                    change = true;
+                    Br replace = new Br(tar);
+                    drop.dropPred(bb);
+                    // modify drop's phi
+                    for (int j = 0; j < drop.getIrNum(); j++) {
+                        Instruction instruction = drop.getIr(j);
+                        if (instruction instanceof Phi phi) {
+                            phi.dropBlock(bb);
+                        }
+                    }
+                    bb.replaceIr(br, replace);
+                }
+            }
+        }
+    }
 
-                if (bb.getIr(bb.getIrNum() - 1) instanceof CondBr condBr) {
-                    ValueRef cond = condBr.getOperand(0);
-                    if (cond instanceof Variable variable && variable.isConstant()) {
-                        BasicBlockRef target;
-                        if (variable.getValue() == 0) {
-                            target = condBr.getFalseBlock();
-                            condBr.getTrueBlock().setReachable(false);
+    public void eliminateUnreachableBlock(FunctionValue function) {
+        for (int i = 0; i < function.getBlockNum(); i++) {
+            BasicBlockRef bb = function.getBlock(i);
+            if (bb.getPredNum() == 0 && !bb.getName().contains("Entry")) {
+                change = true;
+                // useless block, delete it
+                Instruction last = bb.getIr(Util.findLastInstruction(bb));
+                if (last instanceof CondBr condBr) {
+                    BasicBlockRef t = condBr.getTrueBlock(), f = condBr.getFalseBlock();
+                    t.dropPred(bb);
+                    f.dropPred(bb);
+                } else if (last instanceof Br br) {
+                    BasicBlockRef tar = br.getTarget();
+                    tar.dropPred(bb);
+                }
+                function.dropBlock(bb);
+                i--;
+            }
+        }
+    }
+
+    public void eliminateRedundantBlock(FunctionValue function) {
+        for (int i = 0; i < function.getBlockNum(); i++) {
+            BasicBlockRef bb = function.getBlock(i);
+            if (bb.getName().contains("Entry")) {
+                continue;
+            }
+            int d = 0;
+            Instruction first = bb.getIr(d);
+            d++;
+            while (first instanceof Default) {
+                first = bb.getIr(d);
+                d++;
+            }
+            if (first instanceof Br br) {// bb is redundant
+                change = true;
+                BasicBlockRef tar = br.getTarget();
+                tar.dropPred(bb);
+                // modify for bb pres
+                for (int j = 0; j < bb.getPredNum(); j++) {
+                    BasicBlockRef pred = bb.getPred(j);
+                    Instruction last = pred.getIr(Util.findLastInstruction(pred));
+                    if (last instanceof CondBr || last instanceof Br) {
+                        last.replace(bb, tar); // renew target
+                        tar.addPred(pred);
+                    }
+                    // modify for tar's phi
+                    for (int k = 0; k < tar.getIrNum(); k++) {
+                        Instruction inst = tar.getIr(k);
+                        if (inst instanceof Phi phi) {
+                            phi.replace(bb, pred); // replace pred block
                         } else {
-                            target = condBr.getTrueBlock();
-                            condBr.getFalseBlock().setReachable(false);
+                            break;
                         }
-                        for (int i = 0; i < 3; i++) {
-                            bb.getIrs().remove(bb.getIrNum() - 1);
-                        }
-                        bb.getIrs().add(new Br(target));
                     }
                 }
+                function.dropBlock(bb);
+//                System.err.println(bb);
+                i--;
             }
-            function.clearDeadBlocks();
         }
     }
 
-    private void removeDeadTags() {
-        for (FunctionValue function : module.getFunctions()) {
-            List<BasicBlockRef> bbs = new LinkedList<>(function.getBasicBlockRefs());
-
-            while (!bbs.isEmpty()) {
-                BasicBlockRef bb = bbs.remove(0);
-                if (!bb.isReachable()) continue;
-
-                if (bb.getPredNum() == 0) { // id entry
-                    continue;
-                }
-                if (bb.getIrNum() == 1) {
-                    if (bb.getIr(0) instanceof Br br) {
-                        BasicBlockRef target = br.getTarget();
-                        // substitute : bb -> target
-                        substitute(bb, target, function);
-                        bb.setReachable(false);
+    private void eliminatePhiDeadBlock(FunctionValue function) {
+        for (int i = 0; i < function.getBlockNum(); i++) {
+            BasicBlockRef bb = function.getBlock(i);
+            for (int j = 0; j < bb.getIrNum(); j++) {
+                Instruction inst = bb.getIr(j);
+                if (inst instanceof Phi phi) {
+                    for (int k = 0; k < phi.getPredSize(); k++) { // check pred block if existing
+                        BasicBlockRef pred = phi.getPredBlock(k);
+                        if (!function.containsBlock(pred) || !phi.containsBlock(pred)) {
+                            change = true;
+                            phi.dropBlock(pred);
+                        }
                     }
+                    // the phi inst may be redundant
+                } else {
+                    break;
                 }
             }
-            function.clearDeadBlocks();
         }
     }
 
-    private void substitute(BasicBlockRef self, BasicBlockRef target, FunctionValue func) {
-        CFGBuildPass.getInstance().getBasicBlockCFG(func).getPreds(self).forEach(
-                bb -> {
-                    Instruction ir = bb.getIr(bb.getIrNum() - 1);
-                    CFG cfg = CFGBuildPass.getInstance().getBasicBlockCFG(func);
-                    cfg.removeEdge(self, target);
-                    target.addPred(bb);
-                    cfg.addEdge(bb, target);
-                    if (ir instanceof Br br) {
-                        br.setTarget(target);
-                    } else if (ir instanceof CondBr condBr) {
-                        condBr.substTarget(self, target);
-                    }
-                }
-        );
-    }
+
 
     @Override
     public String getName() {
