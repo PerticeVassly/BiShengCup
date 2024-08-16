@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/AddToMul.java" afterDir="false" />
+    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="完成公共子表达式消除，并将重复加法转为乘法">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/instruction/Load.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/instruction/Load.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/CommonSubexpressionElimination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/CommonSubexpressionElimination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmBasicBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmBasicBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmSpecifications.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmSpecifications.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/arminstruction/operand/ArmRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/arminstruction/operand/ArmRegister.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,10 +71,12 @@
   "keyToString": {
     "JUnit.FrontEndTest.testAll (1).executor": "Run",
     "JUnit.FrontEndTest.testAll.executor": "Run",
+    "JUnit.FrontEndTest.testFrontEndIO.executor": "Run",
     "JUnit.FrontEndTest.testHidden.executor": "Run",
     "JUnit.TestBackEndIO.test2023 (1).executor": "Run",
     "JUnit.TestBackEndIO.test2023.executor": "Run",
     "JUnit.TestBackEndIO.test2023Hidden.executor": "Run",
+    "JUnit.TestBackEndIO.testRisc.executor": "Run",
     "JUnit.TestParseTree.test.executor": "Run",
     "Maven.compiler [package].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -79,7 +84,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/codes/SECI-codes/compilers",
+    "last_opened_file_path": "C:/Users/15461/Desktop/compiler2024-nel",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -93,16 +98,16 @@
     "应用程序.Compiler.executor": "Debug"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.FrontEndTest.testHidden">
+  <component name="RunManager" selected="JUnit.TestBackEndIO.test2023 (1)">
     <configuration name="Compiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Compiler" />
       <module name="compilers" />
-      <option name="PROGRAM_PARAMETERS" value="--emit-llvm ./src/test/resources/sy/test.sy -o ./src/test/resources/ll/test.ll -O2" />
+      <option name="PROGRAM_PARAMETERS" value="-S -O2 ./src/test/resources/sy/test.sy -o ./src/test/resources/ll/test.s" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FrontEndTest.testAll (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FrontEndTest.testFrontEndIO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="compilers" />
       <extension name="coverage">
         <pattern>
@@ -112,23 +117,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
       <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.FrontEndTest" />
-      <option name="METHOD_NAME" value="testAll(java.lang.String)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FrontEndTest.testHidden" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="compilers" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.edu.nju.software.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
-      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.FrontEndTest" />
-      <option name="METHOD_NAME" value="testHidden(java.lang.String)" />
+      <option name="METHOD_NAME" value="testFrontEndIO(java.lang.String)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -166,20 +155,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestBackEndIO.testRisc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compilers" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.nju.software.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.TestBackEndIO" />
+      <option name="METHOD_NAME" value="testRisc(java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
+      <item itemvalue="JUnit.FrontEndTest.testFrontEndIO" />
+      <item itemvalue="JUnit.TestBackEndIO.testRisc" />
       <item itemvalue="JUnit.TestBackEndIO.test2023 (1)" />
       <item itemvalue="JUnit.TestBackEndIO.test2023Hidden" />
-      <item itemvalue="JUnit.FrontEndTest.testAll (1)" />
-      <item itemvalue="JUnit.FrontEndTest.testHidden" />
       <item itemvalue="应用程序.Compiler" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FrontEndTest.testHidden" />
-        <item itemvalue="JUnit.TestBackEndIO.test2023Hidden" />
         <item itemvalue="JUnit.TestBackEndIO.test2023 (1)" />
-        <item itemvalue="JUnit.FrontEndTest.testAll (1)" />
         <item itemvalue="应用程序.Compiler" />
+        <item itemvalue="JUnit.FrontEndTest.testFrontEndIO" />
+        <item itemvalue="JUnit.TestBackEndIO.testRisc" />
+        <item itemvalue="JUnit.TestBackEndIO.test2023Hidden" />
       </list>
     </recent_temporary>
   </component>
@@ -195,6 +200,11 @@
       <workItem from="1722760337494" duration="4836000" />
       <workItem from="1722768700333" duration="6307000" />
       <workItem from="1723277994788" duration="215000" />
+      <workItem from="1723646867676" duration="725000" />
+      <workItem from="1723647943829" duration="403000" />
+      <workItem from="1723687377738" duration="7661000" />
+      <workItem from="1723720735801" duration="411000" />
+      <workItem from="1723721162714" duration="4927000" />
     </task>
     <task id="LOCAL-00001" summary="Framework">
       <option name="closed" value="true" />
@@ -300,7 +310,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723259540441</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="完成公共子表达式消除，并将重复加法转为乘法">
+      <option name="closed" value="true" />
+      <created>1723645527961</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1723645527961</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,7 +335,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="wangchenyang-submit" />
+                        <option value="origin/dev-ymhui-pass-backup810" />
                       </list>
                     </value>
                   </entry>
@@ -343,15 +361,21 @@
     <MESSAGE value="修复memtoreg bug" />
     <MESSAGE value="回退" />
     <MESSAGE value="Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes" />
+    <MESSAGE value="完成公共子表达式消除，并将重复加法转为乘法" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成公共子表达式消除，并将重复加法转为乘法" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/CommonSubexpressionElimination.java</url>
-          <line>114</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java</url>
+          <line>131</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

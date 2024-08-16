@@ -159,4 +159,8 @@ public class ArmBasicBlock {
             }
         }
     }
+
+    public List<ArmInstruction> getArmInstructions() {
+        return armInstructions;
+    }
 }

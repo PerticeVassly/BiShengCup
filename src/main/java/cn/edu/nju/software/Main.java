@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import cn.edu.nju.software.backendarm.ArmModule;
+import cn.edu.nju.software.backendarm.ArmOptimizer;
 import cn.edu.nju.software.backendrisc.RiscModule;
 import cn.edu.nju.software.pass.PassManager;
 import org.antlr.v4.runtime.CharStream;
@@ -95,6 +96,8 @@ public class Main {
             if(isArm){
                 ArmModule armModule = new ArmModule(module);
                 armModule.codeGen();
+                ArmOptimizer armOptimizer=new ArmOptimizer(armModule);
+                armOptimizer.optimize();
                 armModule.dumpToFile(output);
             } else {
                 RiscModule riscModule = new RiscModule(module);
