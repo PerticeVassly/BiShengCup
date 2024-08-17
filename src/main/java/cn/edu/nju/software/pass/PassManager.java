@@ -48,14 +48,12 @@ public class PassManager {
         allPasses.add(StrengthReductionPass.getInstance());
         allPasses.add(IdentifyTmpPass.getInstance());
         allPasses.add(EliminateConstExp.getInstance());
-        allPasses.add(DomTreeBuildPass.getInstance());
         allPasses.add(RegToMem.getInstance());
         allPasses.add(new CommonSubexpressionElimination());
         allPasses.add(MergeRepeatedArithmeticPass.getInstance());
         allPasses.add(new AddToMul());
         allPasses.add(new OptOptimize());
         allPasses.add(EliminateLoadStorePass.getInstance());
-        allPasses.add(ValueAnalyzePass.getInstance());
     }
     public void setDbgFlag(){
         for(Pass pass:allPasses){

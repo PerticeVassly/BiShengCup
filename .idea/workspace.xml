@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="完成公共子表达式消除，并将重复加法转为乘法">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java" afterDir="false" />
+    <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="完成部分窥孔优化">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/arminstruction/ArmMla.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmBasicBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmBasicBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmSpecifications.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmSpecifications.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/arminstruction/operand/ArmRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/arminstruction/operand/ArmRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/arminstruction/operand/ArmIndirectRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/arminstruction/operand/ArmIndirectRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/arminstruction/util/ArmOpcode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/arminstruction/util/ArmOpcode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/frontend/util/DomTree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/DomTreeBuildPass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/FunctionInlinePass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/FunctionInlinePass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +99,7 @@
     "应用程序.Compiler.executor": "Debug"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.TestBackEndIO.test2023 (1)">
+  <component name="RunManager" selected="JUnit.TestBackEndIO.test2023Hidden">
     <configuration name="Compiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Compiler" />
       <module name="compilers" />
@@ -180,11 +181,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestBackEndIO.test2023Hidden" />
         <item itemvalue="JUnit.TestBackEndIO.test2023 (1)" />
         <item itemvalue="应用程序.Compiler" />
         <item itemvalue="JUnit.FrontEndTest.testFrontEndIO" />
         <item itemvalue="JUnit.TestBackEndIO.testRisc" />
-        <item itemvalue="JUnit.TestBackEndIO.test2023Hidden" />
       </list>
     </recent_temporary>
   </component>
@@ -205,6 +206,8 @@
       <workItem from="1723687377738" duration="7661000" />
       <workItem from="1723720735801" duration="411000" />
       <workItem from="1723721162714" duration="4927000" />
+      <workItem from="1723773743959" duration="12205000" />
+      <workItem from="1723859442014" duration="8262000" />
     </task>
     <task id="LOCAL-00001" summary="Framework">
       <option name="closed" value="true" />
@@ -318,7 +321,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723645527961</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="完成部分窥孔优化">
+      <option name="closed" value="true" />
+      <created>1723773787241</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1723773787241</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,20 +373,22 @@
     <MESSAGE value="回退" />
     <MESSAGE value="Changes" />
     <MESSAGE value="完成公共子表达式消除，并将重复加法转为乘法" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成公共子表达式消除，并将重复加法转为乘法" />
+    <MESSAGE value="完成部分窥孔优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成部分窥孔优化" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java</url>
-          <line>131</line>
-          <option name="timeStamp" value="6" />
+          <condition expression="armInstruction instanceof ArmStr" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmBasicBlock.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="7" />
+          <line>292</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
