@@ -38,6 +38,9 @@ public class EliminateDeadCode implements ModulePass {
             change = false;
             eliminateOnModule();
         }
+        for (FunctionValue functionValue: module.getFunctions()) {
+            CFGBuildPass.getInstance().update(functionValue);
+        }
         return false;
     }
 

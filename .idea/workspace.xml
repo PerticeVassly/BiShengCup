@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="暂存">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmBasicBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmBasicBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmInstrGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmInstrGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/arminstruction/operand/ArmImmediateValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/arminstruction/operand/ArmImmediateValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/regalloc/ArmAllocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/regalloc/ArmAllocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/EliminateDeadCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/EliminateDeadCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/FunctionInlinePass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/FunctionInlinePass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,46 +65,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.FrontEndTest.testAll (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FrontEndTest.testAll.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FrontEndTest.testFrontEndIO.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FrontEndTest.testHidden.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestBackEndIO.test2023 (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestBackEndIO.test2023.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestBackEndIO.test2023Hidden.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestBackEndIO.testRisc.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestParseTree.test.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.compiler [package].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/15461/Desktop/compiler2024-nel&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDK&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.Compiler.executor&quot;: &quot;Debug&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.FrontEndTest.testAll (1).executor": "Run",
+    "JUnit.FrontEndTest.testAll.executor": "Run",
+    "JUnit.FrontEndTest.testFrontEndIO.executor": "Run",
+    "JUnit.FrontEndTest.testHidden.executor": "Run",
+    "JUnit.TestBackEndIO.test.executor": "Run",
+    "JUnit.TestBackEndIO.test2023 (1).executor": "Run",
+    "JUnit.TestBackEndIO.test2023.executor": "Run",
+    "JUnit.TestBackEndIO.test2023Hidden.executor": "Run",
+    "JUnit.TestBackEndIO.testRisc.executor": "Run",
+    "JUnit.TestParseTree.test.executor": "Run",
+    "Maven.compiler [package].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "syq-backend-final",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/15461/Desktop/compiler2024-nel",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDK",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.Compiler.executor": "Debug"
   }
-}</component>
-  <component name="RunManager" selected="JUnit.TestBackEndIO.test2023Hidden">
-    <configuration name="Compiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Compiler" />
-      <module name="compilers" />
-      <option name="PROGRAM_PARAMETERS" value="-S -O2 ./src/test/resources/sy/test.sy -o ./src/test/resources/ll/test.s" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+}]]></component>
+  <component name="RunManager" selected="JUnit.TestBackEndIO.test">
     <configuration name="FrontEndTest.testFrontEndIO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="compilers" />
       <extension name="coverage">
@@ -116,6 +109,22 @@
       <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
       <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.FrontEndTest" />
       <option name="METHOD_NAME" value="testFrontEndIO(java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestBackEndIO.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.nju.software.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.TestBackEndIO" />
+      <option name="METHOD_NAME" value="test(java.lang.String)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -137,8 +146,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestBackEndIO.test2023" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.nju.software.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.TestBackEndIO" />
+      <option name="METHOD_NAME" value="test2023(java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestBackEndIO.test2023Hidden" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="compilers" />
+      <module name="compiler" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.edu.nju.software.*" />
@@ -153,36 +178,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestBackEndIO.testRisc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="compilers" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.edu.nju.software.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
-      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.TestBackEndIO" />
-      <option name="METHOD_NAME" value="testRisc(java.lang.String)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
+      <item itemvalue="JUnit.TestBackEndIO.test" />
+      <item itemvalue="JUnit.TestBackEndIO.test2023" />
       <item itemvalue="JUnit.FrontEndTest.testFrontEndIO" />
-      <item itemvalue="JUnit.TestBackEndIO.testRisc" />
       <item itemvalue="JUnit.TestBackEndIO.test2023 (1)" />
       <item itemvalue="JUnit.TestBackEndIO.test2023Hidden" />
-      <item itemvalue="应用程序.Compiler" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestBackEndIO.test" />
         <item itemvalue="JUnit.TestBackEndIO.test2023Hidden" />
+        <item itemvalue="JUnit.TestBackEndIO.test2023" />
         <item itemvalue="JUnit.TestBackEndIO.test2023 (1)" />
-        <item itemvalue="应用程序.Compiler" />
         <item itemvalue="JUnit.FrontEndTest.testFrontEndIO" />
-        <item itemvalue="JUnit.TestBackEndIO.testRisc" />
       </list>
     </recent_temporary>
   </component>
@@ -361,7 +370,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/submit-syq" />
+                        <option value="origin/wcy-temp" />
                       </list>
                     </value>
                   </entry>

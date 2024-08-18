@@ -141,7 +141,8 @@ public class ArmOptimizer {
             if (firstOperands.get(1) instanceof ArmImmediateValue immediateValue) {
                 if (secondOperands.get(2).equals(firstOperands.get(0))) {
                     long val = immediateValue.getValue();
-                    if (val >= 0 && val <= 4095 && (secondOperands.get(0).equals(firstOperands.get(0))
+                    //todo arm immediate value range
+                    if (val >= 0 && val <=255 && (secondOperands.get(0).equals(firstOperands.get(0))
                             || secondOperands.get(0).equals(new ArmRegister("sp")))) {
                         secondOperands.remove(2);
                         secondOperands.add(immediateValue);
