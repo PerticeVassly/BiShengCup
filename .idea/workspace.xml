@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="暂存">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmBasicBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmBasicBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmInstrGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmInstrGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/arminstruction/operand/ArmImmediateValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/arminstruction/operand/ArmImmediateValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/regalloc/ArmAllocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/regalloc/ArmAllocator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +30,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitLabMergeRequestFiltersHistory">{
   &quot;lastFilter&quot;: {

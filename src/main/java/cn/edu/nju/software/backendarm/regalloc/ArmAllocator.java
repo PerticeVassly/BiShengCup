@@ -97,7 +97,7 @@ public class ArmAllocator {
             }
             if(checkPtrHasAllocated(localVar.getName())){
                 if(armMemoryManager.getOffset(localVar) >= 256 || armMemoryManager.getOffset(localVar) <= -256){
-                    loadIntImmediate("r8", armMemoryManager.getOffset(localVar));
+                    loadImmediate("r8", armMemoryManager.getOffset(localVar));
                     generator.addInstruction(new ArmAdd(new ArmRegister("r" + i), new ArmRegister("sp"), new ArmRegister("r8")));
                 } else {
                     generator.addInstruction(new ArmAdd(new ArmRegister("r" + i), new ArmRegister("sp"), new ArmImmediateValue(armMemoryManager.getOffset(localVar))));
@@ -112,14 +112,14 @@ public class ArmAllocator {
 
     private String prepareAConst(ConstValue constValue, int i){
         if (constValue.getType() instanceof FloatType) {
-            loadFloatImmediate("r" + i, Float.parseFloat(constValue.getValue().toString()));
+            loadImmediate("r" + i, Float.floatToRawIntBits(Float.parseFloat(constValue.getValue().toString())));
             generator.addInstruction(new ArmVmov_f32_s32(new ArmRegister("s" + i), new ArmRegister("r" + i)));
             return "s" + i;
         } else if (constValue.getType() instanceof IntType) {
-            loadIntImmediate("r" + i, Integer.parseInt(constValue.getValue().toString()));
+            loadImmediate("r" + i, Integer.parseInt(constValue.getValue().toString()));
             return "r" + i;
         } else if (constValue.getType() instanceof BoolType) {
-            loadIntImmediate("r" + i, Boolean.TRUE.equals(constValue.getValue()) ? 1 : 0);
+            loadImmediate("r" + i, Boolean.TRUE.equals(constValue.getValue()) ? 1 : 0);
             return "r" + i;
         } else {assert false;}
         return null;
@@ -187,7 +187,7 @@ public class ArmAllocator {
      */
     public ArmOperand getRegWithOffset(int immediate, String baseReg, String destReg) {
         if(immediate >= 256 || immediate < -256){
-            loadIntImmediate(destReg, immediate);
+            loadImmediate(destReg, immediate);
             generator.addInstruction(new ArmAdd(new ArmRegister(destReg), new ArmRegister(baseReg), new ArmRegister(destReg)));
             return new ArmIndirectRegister(destReg,0);
         }else {
@@ -240,12 +240,12 @@ public class ArmAllocator {
         return armMemoryManager.checkPtrHasAllocated(name);
     }
 
-    public void loadIntImmediate(String reName, int immediate) {
+    public void loadImmediate(String reName, int immediate) {
         generator.addInstruction(new ArmMovw(new ArmRegister(reName), new ArmImmediateValue(immediate & 0x0000FFFF))); // 加载低 16 位
         generator.addInstruction(new ArmMovt(new ArmRegister(reName), new ArmImmediateValue((immediate & 0xFFFF0000 ) >>> 16)));
     }
 
-    public void loadFloatImmediate(String reName, float immediate) {
+    public void loadImmediate(String reName, float immediate) {
         generator.addInstruction(new ArmMovw(new ArmRegister(reName), new ArmImmediateValue(Float.floatToRawIntBits(immediate) & 0x0000FFFF))); // 加载低 16 位
         generator.addInstruction(new ArmMovt(new ArmRegister(reName), new ArmImmediateValue((Float.floatToRawIntBits(immediate) & 0xFFFF0000) >>> 16)));
     }
