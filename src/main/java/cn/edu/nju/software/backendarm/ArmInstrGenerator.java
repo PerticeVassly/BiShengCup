@@ -518,6 +518,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
         }
     }
 
+
     private void prepareParams(Call call) {
         armInstructions.add(new ArmComment("prepare params int regs"));
         String[] argRegs = ArmSpecifications.getArgRegs();
