@@ -42,17 +42,16 @@ public class PassManager {
         allPasses.add(LoopBuildPass.getInstance());
         allPasses.add(GlobalToLocalPass.getInstance());
         allPasses.add(GEPReductionPass.getInstance());
-        allPasses.add(new FunctionInlinePass());
+//        allPasses.add(new FunctionInlinePass());
+//        allPasses.add(new LoopInvariantCodeMotionPass());
         allPasses.add(new RedundantBlockEliminationPass());
         allPasses.add(MemToReg.getInstance());
+        allPasses.add(EliminateDeadCode.getInstance());
+        allPasses.add(MergeRepeatedArithmeticPass.getInstance());
         allPasses.add(StrengthReductionPass.getInstance());
         allPasses.add(IdentifyTmpPass.getInstance());
         allPasses.add(EliminateConstExp.getInstance());
         allPasses.add(RegToMem.getInstance());
-        allPasses.add(new CommonSubexpressionElimination());
-        allPasses.add(MergeRepeatedArithmeticPass.getInstance());
-        allPasses.add(new AddToMul());
-        allPasses.add(new OptOptimize());
         allPasses.add(EliminateLoadStorePass.getInstance());
     }
     public void setDbgFlag(){

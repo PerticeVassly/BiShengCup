@@ -12,24 +12,36 @@ public class ArmGlobalVar {
 
     private final String name;
     private final GlobalVar globalVar;
+    private final boolean isUninitialized;
 
     public ArmGlobalVar(GlobalVar globalVar) {
         this.name = globalVar.getName();
         this.globalVar = globalVar;
+        this.isUninitialized = globalVar.isUninitialized();
+    }
+
+    public boolean isUninitialized() {
+        return isUninitialized;
     }
 
     public void dumpToConsole() {
         System.out.println(".align 8");
         System.out.println(".globl " + name);
 
-        if(globalVar.isZeroInitializer()){
-            handleAllZeroInitializer();
+        if (isUninitialized){
+            handleUninitialized();
             return;
         }
 
         ValueRef initVal = globalVar.getInitVal();
         TypeRef type = initVal.getType();
         if( initVal instanceof ConstValue constInitVal){
+            if (((Pointer) globalVar.getType()).getBase() instanceof ArrayType) {
+                int totalSize = ArrayType.getTotalSize(((Pointer) globalVar.getType()).getBase());
+                System.out.println(name + ":");
+                System.out.println(".skip " + totalSize + ", 0");
+                return;
+            }
             if(type instanceof IntType || type instanceof FloatType) {
                 String initValue = constInitVal.toArmString();
                 System.out.println(name + ":");
@@ -43,10 +55,15 @@ public class ArmGlobalVar {
     /*
      * 处理全为0的初始化
      */
-    public void handleAllZeroInitializer() {
+    public void handleUninitialized() {
         System.out.println(name + ":");
-        int totalSize = ArrayType.getTotalSize(((Pointer) globalVar.getType()).getBase());
-        System.out.println(".skip " + totalSize + ", 0");
+        int totalSize;
+        if (((Pointer)globalVar.getType()).getBase() instanceof ArrayType) {
+            totalSize = ArrayType.getTotalSize(((Pointer) globalVar.getType()).getBase());
+        } else {
+            totalSize = 4;
+        }
+        System.out.println(".space " + totalSize);
     }
 
     /*

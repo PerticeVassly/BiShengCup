@@ -202,32 +202,10 @@ public class MemToReg implements ModulePass {
     }
 
     private void modifyPhiOnModule() {
-        for (int i = 0; i < module.getFunctionNum(); i++) {
-            FunctionValue fv = module.getFunction(i);
-            if (fv.isLib()) {
-                continue;
-            }
-            modifyPhi(fv);
-        }
+        EliminateRedundantPhi eliminateRedundantPhi = EliminateRedundantPhi.getInstance();
+        eliminateRedundantPhi.runOnModule(module);
     }
 
-    private void modifyPhi(FunctionValue fv) {
-        // rm redundant phi
-        for (int i = 0; i < fv.getBlockNum(); i++) {
-            BasicBlockRef block = fv.getBlock(i);
-            for (int j = 0; j < block.getIrNum(); j++) {
-                Instruction inst = block.getIr(j);
-                if (inst instanceof Phi phi) {
-                    if (phi.isRedundant()) { // only 2 operands: [value, block]
-                        phi.modify();
-                        block.dropIr(inst);
-                        j--;
-                        changed = true;
-                    }
-                }
-            }
-        }
-    }
 
     @Override
     public boolean runOnModule(ModuleRef module) {
@@ -242,6 +220,7 @@ public class MemToReg implements ModulePass {
         // reduce phi and drop phi's dead pred
         // runPhiModifyPass();
         modifyPhiOnModule();
+        eliminateConstExp.runOnModule(this.module);
         return false;
     }
 

@@ -27,7 +27,7 @@ public class PhiModify implements FunctionPass {
     @Override
     public boolean runOnFunction(FunctionValue function) {
         this.function = function;
-        procOnFunction();
+//        procOnFunction();
         reducePhiNumber();
         while (changed) {
             changed = false;
@@ -60,25 +60,25 @@ public class PhiModify implements FunctionPass {
         }
     }
 
-    private void procOnFunction() {
-        for (int i = 0; i < function.getBlockNum(); i++) {
-            BasicBlockRef bb = function.getBlock(i);
-            for (int j = 0; j < bb.getIrNum(); j++) {
-                Instruction inst = bb.getIr(j);
-                if (inst instanceof Phi phi) {
-                    for (int k = 0; k < phi.getPredSize(); k++) { // check pred block if existing
-                        BasicBlockRef pred = phi.getPredBlock(k);
-                        if (!function.containsBlock(pred)) {
-                            phi.dropBlock(pred);
-                        }
-                    }
-                    // TODO: the phi inst may be redundant
-                } else {
-                    break;
-                }
-            }
-        }
-    }
+//    private void procOnFunction() {
+//        for (int i = 0; i < function.getBlockNum(); i++) {
+//            BasicBlockRef bb = function.getBlock(i);
+//            for (int j = 0; j < bb.getIrNum(); j++) {
+//                Instruction inst = bb.getIr(j);
+//                if (inst instanceof Phi phi) {
+//                    for (int k = 0; k < phi.getPredSize(); k++) { // check pred block if existing
+//                        BasicBlockRef pred = phi.getPredBlock(k);
+//                        if (!function.containsBlock(pred)) {
+//                            phi.dropBlock(pred);
+//                        }
+//                    }
+//                    // TODO: the phi inst may be redundant
+//                } else {
+//                    break;
+//                }
+//            }
+//        }
+//    }
 
     @Override
     public String getName() {

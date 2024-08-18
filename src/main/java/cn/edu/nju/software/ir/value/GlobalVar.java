@@ -11,6 +11,7 @@ public class GlobalVar extends ValueRef implements Variable {
     private final static ArrayList<Integer> usedFreqList = new ArrayList<Integer>(){{add(0);}};
     private ValueRef initVal;
     private boolean constant;
+    private boolean isUninitialized = false;
     /**
      * constant: if the variable is defined by const
      * */
@@ -42,6 +43,14 @@ public class GlobalVar extends ValueRef implements Variable {
     public GlobalVar copy() {
         //全局唯一，无需拷贝
         return this;
+    }
+
+    public boolean isUninitialized() {
+        return isUninitialized;
+    }
+
+    public void setUninitialized(boolean uninitialized) {
+        isUninitialized = uninitialized;
     }
 
     public boolean isZeroInitializer() {
