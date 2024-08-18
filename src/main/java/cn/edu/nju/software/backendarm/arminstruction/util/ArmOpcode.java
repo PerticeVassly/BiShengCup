@@ -10,6 +10,7 @@ public enum ArmOpcode {
     ADD,
     SUB,
     MUL,
+    MLA,
     SDIV,
     UDIV,
     OR,

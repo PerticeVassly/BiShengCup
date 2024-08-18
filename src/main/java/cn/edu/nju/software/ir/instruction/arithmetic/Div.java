@@ -3,8 +3,6 @@ package cn.edu.nju.software.ir.instruction.arithmetic;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.OpEnum;
-import cn.edu.nju.software.ir.instruction.logic.Ashr;
-import cn.edu.nju.software.ir.type.FloatType;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.ValueRef;
@@ -31,5 +29,19 @@ public class Div extends Arithmetic {
     @Override
     public boolean typeEquals(Instruction inst) {
         return inst instanceof Div;
+    }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if (!(rhs instanceof Div div)) {
+            return false;
+        }
+        ValueRef[] operands=div.getOperands();
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
     }
 }

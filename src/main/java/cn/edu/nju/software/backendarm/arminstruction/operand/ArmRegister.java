@@ -15,4 +15,9 @@ public class ArmRegister implements ArmOperand {
     public String toString() {
         return regName;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof ArmRegister && regName.equals(((ArmRegister) obj).regName);
+    }
 }

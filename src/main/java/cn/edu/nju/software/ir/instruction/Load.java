@@ -27,4 +27,11 @@ public class Load extends Instruction {
         visitor.visit(this);
     }
 
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if(!(rhs instanceof Load)){
+            return false;
+        }
+        return rhs.getOperand(0).equals(this.operands[0]);
+    }
 }

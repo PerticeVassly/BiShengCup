@@ -1,16 +1,16 @@
 package cn.edu.nju.software.pass;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import cn.edu.nju.software.ir.instruction.*;
+import cn.edu.nju.software.ir.instruction.Binary;
+import cn.edu.nju.software.ir.instruction.Call;
+import cn.edu.nju.software.ir.instruction.Instruction;
+import cn.edu.nju.software.ir.instruction.ZExt;
 import cn.edu.nju.software.ir.module.ModuleRef;
 import cn.edu.nju.software.ir.type.BoolType;
 import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
-import cn.edu.nju.software.ir.value.ValueRef;
-
-import java.util.HashMap;
 
 public class EliminateConstExp implements ModulePass{
     private ModuleRef module;

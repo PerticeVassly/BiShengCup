@@ -58,6 +58,14 @@ public class ArmSpecifications {
         return type instanceof IntType || type instanceof Pointer || type instanceof BoolType;
     }
 
+    public static boolean isCalculatedReg(String regName) {
+       for (String reg : calculateRegs) {
+           if (regName.equals(reg)) {
+               return true;
+           }
+       }
+       return false;
+    }
     public static boolean isFloatType(TypeRef type) {
         return type instanceof FloatType;
     }

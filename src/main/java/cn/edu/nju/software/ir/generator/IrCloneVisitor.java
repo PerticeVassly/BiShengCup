@@ -1,15 +1,13 @@
 package cn.edu.nju.software.ir.generator;
-import cn.edu.nju.software.Main;
+
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.instruction.arithmetic.*;
 import cn.edu.nju.software.ir.instruction.logic.Ashr;
 import cn.edu.nju.software.ir.instruction.logic.Logic;
-
 import cn.edu.nju.software.ir.instruction.logic.Lshr;
 import cn.edu.nju.software.ir.instruction.logic.Shl;
 import cn.edu.nju.software.ir.value.FunctionValue;
-
 import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
@@ -76,8 +74,6 @@ public class IrCloneVisitor implements InstructionVisitor {
         ValueRef operand1 = sub.getOperand(0).copy();
         ValueRef operand2 = sub.getOperand(1).copy();
         curInstruction = new Sub(lVal, sub.getOp(), operand1, operand2);
-        operand1.addUser(curInstruction);
-        operand2.addUser(curInstruction);
     }
 
     @Override
@@ -94,8 +90,6 @@ public class IrCloneVisitor implements InstructionVisitor {
         ValueRef operand1 = mul.getOperand(0).copy();
         ValueRef operand2 = mul.getOperand(1).copy();
         curInstruction = new Mul(lVal, mul.getOp(), operand1, operand2);
-        operand1.addUser(curInstruction);
-        operand2.addUser(curInstruction);
     }
 
     @Override
@@ -104,8 +98,6 @@ public class IrCloneVisitor implements InstructionVisitor {
         ValueRef operand1 = fmul.getOperand(0).copy();
         ValueRef operand2 = fmul.getOperand(1).copy();
         curInstruction = new FMul(lVal, fmul.getOp(), operand1, operand2);
-        operand1.addUser(curInstruction);
-        operand2.addUser(curInstruction);
     }
 
     @Override
@@ -233,7 +225,10 @@ public class IrCloneVisitor implements InstructionVisitor {
 
     @Override
     public void visit(Ashr ashr) {
-
+        ValueRef lVal = ashr.getLVal().copy();
+        ValueRef operand1 =ashr.getOperand(0).copy();
+        ValueRef operand2 =ashr.getOperand(1).copy();
+        curInstruction = new Ashr(lVal, operand1, operand2);
     }
 
     @Override

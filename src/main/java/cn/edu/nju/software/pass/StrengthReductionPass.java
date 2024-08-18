@@ -1,17 +1,16 @@
 package cn.edu.nju.software.pass;
 
-import cn.edu.nju.software.ir.instruction.arithmetic.Add;
-import cn.edu.nju.software.ir.instruction.arithmetic.Sub;
-import cn.edu.nju.software.ir.instruction.logic.Lshr;
-import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.OpEnum;
+import cn.edu.nju.software.ir.instruction.arithmetic.Add;
+import cn.edu.nju.software.ir.instruction.arithmetic.Sub;
 import cn.edu.nju.software.ir.instruction.logic.Ashr;
-import cn.edu.nju.software.ir.value.ConstValue;
+import cn.edu.nju.software.ir.instruction.logic.Lshr;
 import cn.edu.nju.software.ir.instruction.logic.Shl;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.LocalVar;
-import cn.edu.nju.software.ir.value.ValueRef;
 
 import java.util.ArrayList;
 import java.util.List;

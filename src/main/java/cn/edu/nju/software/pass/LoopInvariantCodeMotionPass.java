@@ -4,13 +4,12 @@ import cn.edu.nju.software.frontend.util.CFG;
 import cn.edu.nju.software.frontend.util.Loop;
 import cn.edu.nju.software.frontend.util.LoopSet;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
-import cn.edu.nju.software.ir.generator.InstructionVisitor;
-import cn.edu.nju.software.ir.generator.IrCloneVisitor;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.GlobalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
+
 import java.util.*;
 
 public class LoopInvariantCodeMotionPass implements FunctionPass {
@@ -234,11 +233,6 @@ public class LoopInvariantCodeMotionPass implements FunctionPass {
     }
 
     private int findLastInstr(BasicBlockRef bb){
-        for (int i = bb.getIrNum()-1; i >=0 ; i--) {
-            if(!(bb.getIr(i) instanceof Default)){
-                return i;
-            }
-        }
-        return -1;
+        return Util.findLastInstruction(bb);
     }
 }

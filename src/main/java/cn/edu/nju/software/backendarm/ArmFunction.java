@@ -106,4 +106,7 @@ public class ArmFunction {
         armBasicBlocks.forEach(ArmBasicBlock::dumpToConsole);
     }
 
+    public List<ArmBasicBlock> getArmBasicBlocks() {
+        return armBasicBlocks;
+    }
 }

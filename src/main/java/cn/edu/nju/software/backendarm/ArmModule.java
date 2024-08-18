@@ -107,4 +107,8 @@ public class ArmModule {
             System.setOut(consoleStream);
         }
     }
+
+    public List<ArmFunction> getArmFunctions() {
+        return armFunctions;
+    }
 }

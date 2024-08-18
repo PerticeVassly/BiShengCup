@@ -1,7 +1,5 @@
 package cn.edu.nju.software.ir.type;
 
-import cn.edu.nju.software.ir.value.ArrayValue;
-
 public class ArrayType extends TypeRef {
     private final TypeRef elementType;
     private final int elementSize;

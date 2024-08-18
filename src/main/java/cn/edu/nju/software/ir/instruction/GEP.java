@@ -36,4 +36,25 @@ public class GEP extends Instruction {
     public void accept(InstructionVisitor visitor) {
         visitor.visit(this);
     }
+
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if(!(rhs instanceof GEP gep)) {
+            return false;
+        }
+        if(!gep.getArrayTypePtr().equals(arrayTypePtr)){
+            return false;
+        }
+        ValueRef[] operands=gep.getOperands();
+        if(operands.length!= this.operands.length){
+            return false;
+        }
+        for (int i=0;i<this.operands.length;i++){
+            if(!this.operands[i].equals(operands[i])){
+                return false;
+            }
+        }
+        return true;
+
+    }
 }

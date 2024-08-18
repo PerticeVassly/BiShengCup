@@ -2,7 +2,8 @@ package cn.edu.nju.software.frontend.util;
 
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 public class CFG {
     private final Graph<BasicBlockRef> graph;
 
@@ -40,17 +41,7 @@ public class CFG {
         return graph.getAllNodes();
     }
     public void dumpWholeGraph(String fileName){
-        GraphViz gv=new GraphViz();
-        gv.addln(gv.start_graph());
-        for(BasicBlockRef bb:getAllBasicBlock()){
-            for(BasicBlockRef succ:getSuccessors(bb)){
-                gv.addln(bb.getName()+" -> "+succ.getName()+";");
-            }
-        }
-        gv.addln(gv.end_graph());
-        // png为输出格式，还可改为pdf，gif，jpg等
-        String type = "png";
-        gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), type ), fileName+"."+ type );
+       //todo:
     }
 
     public boolean isEmpty() {

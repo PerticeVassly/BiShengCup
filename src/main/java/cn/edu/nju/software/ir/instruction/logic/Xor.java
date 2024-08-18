@@ -7,6 +7,10 @@ import cn.edu.nju.software.ir.type.BoolType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.ValueRef;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Xor extends Logic {
 
     public Xor(ValueRef lVal, OpEnum op, ValueRef operand1, ValueRef operand2) {
@@ -37,6 +41,15 @@ public class Xor extends Logic {
     @Override
     public boolean typeEquals(Instruction inst) {
         return inst instanceof Xor;
+    }
+    @Override
+    public boolean equivalent(Instruction rhs) {
+        if (!(rhs instanceof Xor xor)) {
+            return false;
+        }
+        Set<ValueRef> self=new HashSet<>(List.of(operands));
+        Set<ValueRef> other=new HashSet<>(List.of(xor.operands));
+        return self.equals(other);
     }
 }
 
