@@ -54,8 +54,8 @@ public class PassManager {
         allPasses.add(MergeRepeatedArithmeticPass.getInstance());
         allPasses.add(new AddToMul());
         allPasses.add(new OptOptimize());
-        allPasses.add(EliminateDeadCode.getInstance());
         allPasses.add(EliminateLoadStorePass.getInstance());
+        allPasses.add(EliminateDeadCode.getInstance());
     }
 
     public void setDbgFlag(){
