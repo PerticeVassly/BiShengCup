@@ -506,7 +506,6 @@ public class ArmInstrGenerator implements InstructionVisitor {
         saveReturnValue(call);
     }
 
-
     private void saveReturnValue(Call call) {
         if (call.getLVal() != null) {
             TypeRef type = call.getLVal().getType();
@@ -517,7 +516,6 @@ public class ArmInstrGenerator implements InstructionVisitor {
             } else {assert false;}
         }
     }
-
 
     private void prepareParams(Call call) {
         armInstructions.add(new ArmComment("prepare params int regs"));

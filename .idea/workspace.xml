@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="暂存">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/EliminateDeadCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/EliminateDeadCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmInstrGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmInstrGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/FunctionInlinePass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/FunctionInlinePass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,39 +63,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.FrontEndTest.testAll (1).executor": "Run",
-    "JUnit.FrontEndTest.testAll.executor": "Run",
-    "JUnit.FrontEndTest.testFrontEndIO.executor": "Run",
-    "JUnit.FrontEndTest.testHidden.executor": "Run",
-    "JUnit.TestBackEndIO.test.executor": "Run",
-    "JUnit.TestBackEndIO.test2023 (1).executor": "Run",
-    "JUnit.TestBackEndIO.test2023.executor": "Run",
-    "JUnit.TestBackEndIO.test2023Hidden.executor": "Run",
-    "JUnit.TestBackEndIO.testRisc.executor": "Run",
-    "JUnit.TestParseTree.test.executor": "Run",
-    "Maven.compiler [package].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "syq-backend-final",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/15461/Desktop/compiler2024-nel",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDK",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
-    "vue.rearranger.settings.migration": "true",
-    "应用程序.Compiler.executor": "Debug"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.FrontEndTest.testAll (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FrontEndTest.testAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FrontEndTest.testFrontEndIO.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FrontEndTest.testHidden.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestBackEndIO.test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestBackEndIO.test2023 (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestBackEndIO.test2023.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestBackEndIO.test2023Hidden.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestBackEndIO.testRisc.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestParseTree.test.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.compiler [package].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;syq-backend-final&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/15461/Desktop/compiler2024-nel&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDK&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;应用程序.Compiler.executor&quot;: &quot;Debug&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.TestBackEndIO.test">
+}</component>
+  <component name="RunManager" selected="JUnit.TestBackEndIO.test2023Hidden">
     <configuration name="FrontEndTest.testFrontEndIO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="compilers" />
       <extension name="coverage">
@@ -187,13 +185,21 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestBackEndIO.test" />
         <item itemvalue="JUnit.TestBackEndIO.test2023Hidden" />
         <item itemvalue="JUnit.TestBackEndIO.test2023" />
+        <item itemvalue="JUnit.TestBackEndIO.test" />
         <item itemvalue="JUnit.TestBackEndIO.test2023 (1)" />
         <item itemvalue="JUnit.FrontEndTest.testFrontEndIO" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -216,6 +222,7 @@
       <workItem from="1723859442014" duration="8262000" />
       <workItem from="1723892871156" duration="32000" />
       <workItem from="1723983480886" duration="1288000" />
+      <workItem from="1724025087589" duration="1042000" />
     </task>
     <task id="LOCAL-00001" summary="Framework">
       <option name="closed" value="true" />
@@ -412,7 +419,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java</url>
-          <line>292</line>
+          <line>293</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
