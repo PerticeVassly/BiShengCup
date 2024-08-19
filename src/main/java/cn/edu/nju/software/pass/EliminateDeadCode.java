@@ -53,7 +53,7 @@ public class EliminateDeadCode implements ModulePass {
             }
             eliminateOnFunction(fv);
             eliminateUnreachableBlock(fv);
-//            eliminateRedundantBlock(fv); // difficult bug to solve: different incoming value from same pred of phi
+            eliminateRedundantBlock(fv); // difficult bug to solve: different incoming value from same pred of phi
             eliminatePhiDeadBlock(fv);
         }
         eliminateRedundantPhi.runOnModule(module);

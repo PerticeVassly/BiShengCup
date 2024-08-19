@@ -23,6 +23,7 @@ public class CondBr extends Instruction {
         return (BasicBlockRef) operands[2];
     }
 
+
     public void substTarget(BasicBlockRef from, BasicBlockRef to) {
         if (from.equals(operands[1])) {
             operands[1] = to;

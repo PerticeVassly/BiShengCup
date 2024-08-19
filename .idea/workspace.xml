@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1d5216a3-2be0-42ef-bb34-e952e8fd9128" name="Changes" comment="暂存">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/instruction/CondBr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/ir/instruction/CondBr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/EliminateDeadCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/EliminateDeadCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/FunctionInlinePass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/FunctionInlinePass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/MemToReg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/MemToReg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/PassManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/RedundantBlockEliminationPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/RedundantBlockEliminationPass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,12 +96,36 @@
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
     "vue.rearranger.settings.migration": "true",
-    "应用程序.Compiler.executor": "Debug"
+    "应用程序.Compiler.executor": "Run"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.TestBackEndIO.test">
+  <component name="RunManager" selected="JUnit.FrontEndTest.testFrontEndIO">
+    <configuration name="Compiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Compiler" />
+      <module name="compiler" />
+      <option name="PROGRAM_PARAMETERS" value="-S ./src/test/resources/sy/test.sy -o ./src/test/resources/ll/test.s -O2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FrontEndTest.testAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="compiler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.nju.software.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.FrontEndTest" />
+      <option name="METHOD_NAME" value="testAll(java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FrontEndTest.testFrontEndIO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="compilers" />
+      <module name="compiler" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.edu.nju.software.*" />
@@ -109,38 +135,6 @@
       <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
       <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.FrontEndTest" />
       <option name="METHOD_NAME" value="testFrontEndIO(java.lang.String)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestBackEndIO.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="compiler" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.edu.nju.software.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
-      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.TestBackEndIO" />
-      <option name="METHOD_NAME" value="test(java.lang.String)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestBackEndIO.test2023 (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="compilers" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.edu.nju.software.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
-      <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.TestBackEndIO" />
-      <option name="METHOD_NAME" value="test2023(java.lang.String)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -162,7 +156,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestBackEndIO.test2023Hidden" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestBackEndIO.testRisc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="compiler" />
       <extension name="coverage">
         <pattern>
@@ -172,26 +166,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="cn.edu.nju.software" />
       <option name="MAIN_CLASS_NAME" value="cn.edu.nju.software.TestBackEndIO" />
-      <option name="METHOD_NAME" value="test2023Hidden(java.lang.String)" />
+      <option name="METHOD_NAME" value="testRisc(java.lang.String)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="compiler" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="compiler" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="JUnit.TestBackEndIO.test" />
-      <item itemvalue="JUnit.TestBackEndIO.test2023" />
       <item itemvalue="JUnit.FrontEndTest.testFrontEndIO" />
-      <item itemvalue="JUnit.TestBackEndIO.test2023 (1)" />
-      <item itemvalue="JUnit.TestBackEndIO.test2023Hidden" />
+      <item itemvalue="JUnit.TestBackEndIO.testRisc" />
+      <item itemvalue="JUnit.FrontEndTest.testAll" />
+      <item itemvalue="JUnit.TestBackEndIO.test2023" />
+      <item itemvalue="应用程序.Compiler" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestBackEndIO.test" />
-        <item itemvalue="JUnit.TestBackEndIO.test2023Hidden" />
-        <item itemvalue="JUnit.TestBackEndIO.test2023" />
-        <item itemvalue="JUnit.TestBackEndIO.test2023 (1)" />
         <item itemvalue="JUnit.FrontEndTest.testFrontEndIO" />
+        <item itemvalue="JUnit.TestBackEndIO.testRisc" />
+        <item itemvalue="JUnit.FrontEndTest.testAll" />
+        <item itemvalue="应用程序.Compiler" />
+        <item itemvalue="JUnit.TestBackEndIO.test2023" />
       </list>
     </recent_temporary>
   </component>
@@ -414,6 +421,20 @@
           <url>file://$PROJECT_DIR$/src/main/java/cn/edu/nju/software/backendarm/ArmOptimizer.java</url>
           <line>292</line>
           <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/edu/nju/software/pass/EliminateDeadCode.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/cn/edu/nju/software/FrontEndTest.java</url>
+          <line>50</line>
+          <properties class="cn.edu.nju.software.FrontEndTest" method="testAll">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
