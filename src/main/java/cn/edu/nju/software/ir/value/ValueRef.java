@@ -20,6 +20,7 @@ public class ValueRef {
         return tmpFlag;
     }
 
+    public boolean isArrPtr = false;
     /**
      * only for differing long names ()
      */

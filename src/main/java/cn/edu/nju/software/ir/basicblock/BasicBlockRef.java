@@ -72,6 +72,11 @@ public class BasicBlockRef extends ValueRef {
             pred.remove(index);
         }
     }
+    public void mergeWith(BasicBlockRef block) {
+        for (int i = 0; i < block.getIrNum(); i++) {
+            irs.add(block.getIr(i));
+        }
+    }
     public void clearPred(){
         pred.clear();
     }

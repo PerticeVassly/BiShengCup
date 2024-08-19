@@ -18,6 +18,15 @@ public class Util {
         return -1;
     }
 
+    public static int findFirstInstruction(BasicBlockRef bb) {
+        for (int i = 0; i < bb.getIrNum(); i++) {
+            if (!(bb.getIr(i) instanceof Default)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public static void adjustPred(FunctionValue functionValue){
         for (BasicBlockRef bb: functionValue.getBasicBlockRefs()) {
             bb.clearPred();

@@ -139,6 +139,7 @@ public class Generator implements IrGenerator {
             } else {
                 tmpLocal = builder.createLocalVar(new Pointer(arrayTy.getElementType()), name);
             }
+            tmpLocal.isArrPtr = true;
             ValueRef[] operands;
             if (arrayTy.getElementSize() != UNKNOWN) {
                 operands = new ValueRef[]{array, zero, index};
