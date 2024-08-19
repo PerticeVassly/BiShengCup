@@ -6,25 +6,25 @@ import cn.edu.nju.software.backendarm.arminstruction.operand.*;
 import cn.edu.nju.software.backendarm.arminstruction.util.ArmComment;
 import cn.edu.nju.software.backendarm.arminstruction.util.ArmLabel;
 import cn.edu.nju.software.ir.type.*;
-import cn.edu.nju.software.ir.value.ConstValue;
-import cn.edu.nju.software.ir.value.GlobalVar;
-import cn.edu.nju.software.ir.value.LocalVar;
-import cn.edu.nju.software.ir.value.ValueRef;
+import cn.edu.nju.software.ir.value.*;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ArmAllocator {
 
+    private final FunctionValue function;
     private ArmInstrGenerator generator;
     private final ArmMemoryManager armMemoryManager = ArmMemoryManager.get();
-    private static final ArmAllocator armAllocator = new ArmAllocator();
     private ArmTempVarLiveTable armTempVarLiveTable;
     private ArmLValLiveTable armLValLiveTable;
-    private ArmAllocator() {}
-
-    public static ArmAllocator get() {
-        return armAllocator;
+    private static final Map<FunctionValue,ArmAllocator> allocators = new HashMap<>();
+    private ArmAllocator(FunctionValue function) {
+        this.function = function;
     }
+
 
     public void setLValLiveTable(ArmLValLiveTable armLValLiveTable) {
         this.armLValLiveTable = armLValLiveTable;
@@ -42,14 +42,26 @@ public class ArmAllocator {
         armMemoryManager.clear(); // reset for memory allocation in current func
     }
 
+    public static ArmAllocator get(FunctionValue function) {
+        if (!allocators.containsKey(function)) {
+            allocators.put(function, new ArmAllocator(function));
+        }
+        return allocators.get(function);
+    }
+
     public List<String> prepareOperands(ValueRef... values) {
         List<String> regNames = new ArrayList<>();
+        ArmRegisterManager registerManager=ArmRegisterManager.get(function);
         generator.addInstruction(new ArmComment("fetch variables"));
         int i = 5;
         for (ValueRef value : values) {
             if (value instanceof ConstValue constValue) {
                 regNames.add(prepareAConst(constValue, i));
             } else if(value instanceof LocalVar localVar){
+                if(registerManager.contains(localVar)){
+                    regNames.add(registerManager.get(localVar));
+                    continue;
+                }
                 regNames.add(prepareALocal(localVar, i));
             } else if(value instanceof GlobalVar globalVar){
                 regNames.add(prepareAGlobal(globalVar, i));

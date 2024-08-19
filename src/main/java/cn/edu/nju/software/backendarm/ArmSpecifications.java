@@ -11,7 +11,8 @@ public class ArmSpecifications {
     private static final String[] callerSavedRegs = new String[] {
             "lr", // return address
             "r9", "r10", "r11", // general temp var
-            "s9", "s10", "s11" // float temp var
+            "s9", "s10", "s11" ,// float temp var
+            "s12","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28","s29","s30","s31","s32"
     };
     //todo() arm's general register is less than risc-v
     private static final String[] calculateRegs = new String[] {
@@ -25,6 +26,10 @@ public class ArmSpecifications {
             "r9", "r10", "r11",
             "s9", "s10", "s11"};
     private static final boolean isDebug = false;
+
+    private static final String[] localVarRegs = new String[] {
+            "s12","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28","s29","s30","s31","s32"
+    };
 
     public static String[] getCallerSavedRegs() {
         return callerSavedRegs;
@@ -46,6 +51,9 @@ public class ArmSpecifications {
         return tempVarRegs;
     }
 
+    public static String[] getLocalVarRegs() {
+        return localVarRegs;
+    }
     public static boolean isFloatReg(String regName) {
         return regName.startsWith("s") && !regName.equals("sp");
     }

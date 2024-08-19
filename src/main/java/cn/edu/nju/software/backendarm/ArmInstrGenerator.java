@@ -5,6 +5,7 @@ import cn.edu.nju.software.backendarm.arminstruction.operand.*;
 import cn.edu.nju.software.backendarm.arminstruction.util.ArmComment;
 import cn.edu.nju.software.backendarm.arminstruction.util.ArmLabel;
 import cn.edu.nju.software.backendarm.regalloc.ArmAllocator;
+import cn.edu.nju.software.backendarm.regalloc.ArmRegisterManager;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.generator.InstructionVisitor;
 import cn.edu.nju.software.ir.instruction.*;
@@ -26,11 +27,14 @@ public class ArmInstrGenerator implements InstructionVisitor {
     private final FunctionValue llvmFunctionValue;
     private final List<Instruction> instructions;
     private final List<ArmInstruction> armInstructions = new LinkedList<>();
-    private final ArmAllocator armAllocator = ArmAllocator.get();
-
+    private final ArmAllocator armAllocator;
+    private final ArmRegisterManager registerManager;
     ArmInstrGenerator(List<Instruction> instructions, FunctionValue llvmFunctionValue) {
         this.instructions = instructions;
         this.llvmFunctionValue = llvmFunctionValue;
+        this.armAllocator=ArmAllocator.get(llvmFunctionValue);
+        this.registerManager=ArmRegisterManager.get(llvmFunctionValue);
+
     }
 
     public List<ArmInstruction> genArmInstructions() {
@@ -101,6 +105,14 @@ public class ArmInstrGenerator implements InstructionVisitor {
     private void storeIntoNotArray(ValueRef dest, ValueRef src){
         TypeRef destType = ((Pointer) dest.getType()).getBase();
         String srcReg = armAllocator.prepareOperands(src).get(0);
+        if(registerManager.contains(dest)){
+            if(srcReg.startsWith("s")){
+                armInstructions.add(new ArmVmov_f32(new ArmRegister(registerManager.get(dest)),new ArmRegister(srcReg)));
+            }else {
+               armInstructions.add(new ArmVmov_f32_s32(new ArmRegister(registerManager.get(dest)),new ArmRegister(srcReg)));
+            }
+            return;
+        }
         ArmOperand destArmOperand = armAllocator.getAddrOfVarPtrPointsToWithOffset(dest,0);
         if(destType instanceof IntType){
             armInstructions.add(new ArmStr(new ArmRegister(srcReg), destArmOperand));
@@ -134,6 +146,9 @@ public class ArmInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(Load load) {
         ValueRef src = load.getOperand(0);
+        if(registerManager.contains(src)){
+            return;
+        }
         LocalVar lVal = (LocalVar) load.getLVal();
         insertComment("load " + lVal.getName() + " " + src.getName());
         ArmOperand srcArmOperand = armAllocator.getAddrOfVarPtrPointsToWithOffset(src, 0);

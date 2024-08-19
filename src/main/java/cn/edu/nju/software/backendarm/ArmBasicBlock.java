@@ -19,7 +19,7 @@ import java.util.List;
 public class ArmBasicBlock {
 
     private final BasicBlockRef basicBlockRef;
-    private final ArmAllocator allocator = ArmAllocator.get();
+    private final ArmAllocator allocator ;
     private final FunctionValue llvmFunctionValue;
     private final List<ArmInstruction> armInstructions = new ArrayList<>() ;
     private final ArmInstrGenerator generator;
@@ -30,6 +30,7 @@ public class ArmBasicBlock {
         this.basicBlockRef = basicBlockRef;
         this.llvmFunctionValue = functionValue;
         this.generator = new ArmInstrGenerator(basicBlockRef.getIrs(), llvmFunctionValue);
+        this.allocator=ArmAllocator.get(llvmFunctionValue);
         this.armTempVarLiveTable = new ArmTempVarLiveTable(generator, allocator);
         this.armLValLiveTable = new ArmLValLiveTable();
     }

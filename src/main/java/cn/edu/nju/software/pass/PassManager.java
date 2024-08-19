@@ -45,7 +45,6 @@ public class PassManager {
         allPasses.add(new FunctionInlinePass());
         allPasses.add(new RedundantBlockEliminationPass());
         allPasses.add(MemToReg.getInstance());
-        allPasses.add(EliminateDeadCode.getInstance());
         allPasses.add(MergeBlockPass.getInstance());
         allPasses.add(MergeRepeatedArithmeticPass.getInstance());
         allPasses.add(StrengthReductionPass.getInstance());
@@ -58,6 +57,7 @@ public class PassManager {
         allPasses.add(new OptOptimize());
         allPasses.add(EliminateLoadStorePass.getInstance());
         allPasses.add(EliminateDeadCode.getInstance());
+        allPasses.add(ValueAnalyzePass.getInstance());
     }
 
     public void setDbgFlag(){
