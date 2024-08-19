@@ -45,6 +45,8 @@ public class PassManager {
         allPasses.add(new FunctionInlinePass());
         allPasses.add(new RedundantBlockEliminationPass());
         allPasses.add(MemToReg.getInstance());
+        allPasses.add(EliminateDeadCode.getInstance());
+        allPasses.add(MergeBlockPass.getInstance());
         allPasses.add(MergeRepeatedArithmeticPass.getInstance());
         allPasses.add(StrengthReductionPass.getInstance());
         allPasses.add(IdentifyTmpPass.getInstance());
