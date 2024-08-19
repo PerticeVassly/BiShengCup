@@ -2,7 +2,6 @@ package cn.edu.nju.software.backendrisc.riscinstruction.floatextension;
 
 import cn.edu.nju.software.backendrisc.riscinstruction.RiscDefaultInstruction;
 import cn.edu.nju.software.backendrisc.riscinstruction.operand.RiscOperand;
-
 import cn.edu.nju.software.backendrisc.riscinstruction.util.RiscOpcode;
 
 //todo() 所有浮点数暂时用32bt

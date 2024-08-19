@@ -7,7 +7,8 @@ import cn.edu.nju.software.backendrisc.riscinstruction.floatextension.RiscFmvwx;
 import cn.edu.nju.software.backendrisc.riscinstruction.floatextension.RiscFmvxw;
 import cn.edu.nju.software.backendrisc.riscinstruction.operand.RiscRegister;
 import cn.edu.nju.software.backendrisc.riscinstruction.util.RiscComment;
-import cn.edu.nju.software.ir.type.*;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.LocalVar;
 import cn.edu.nju.software.ir.value.ValueRef;
 

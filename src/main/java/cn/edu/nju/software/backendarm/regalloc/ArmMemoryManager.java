@@ -1,9 +1,7 @@
 package cn.edu.nju.software.backendarm.regalloc;
 
-import cn.edu.nju.software.backendrisc.regalloc.RiscMemoryManager;
 import cn.edu.nju.software.ir.value.ValueRef;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;

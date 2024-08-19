@@ -8,7 +8,6 @@ import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.Load;
 import cn.edu.nju.software.ir.instruction.Store;
 import cn.edu.nju.software.ir.type.ArrayType;
-import cn.edu.nju.software.ir.type.IntType;
 import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;

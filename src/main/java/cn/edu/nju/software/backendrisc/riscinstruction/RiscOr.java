@@ -1,7 +1,7 @@
 package cn.edu.nju.software.backendrisc.riscinstruction;
 
-import cn.edu.nju.software.backendrisc.riscinstruction.util.RiscOpcode;
 import cn.edu.nju.software.backendrisc.riscinstruction.operand.RiscOperand;
+import cn.edu.nju.software.backendrisc.riscinstruction.util.RiscOpcode;
 
 public class RiscOr extends RiscDefaultInstruction {
 

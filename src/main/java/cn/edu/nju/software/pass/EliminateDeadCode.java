@@ -1,6 +1,5 @@
 package cn.edu.nju.software.pass;
 
-import cn.edu.nju.software.frontend.util.CFG;
 import cn.edu.nju.software.ir.basicblock.BasicBlockRef;
 import cn.edu.nju.software.ir.instruction.*;
 import cn.edu.nju.software.ir.module.ModuleRef;
@@ -8,10 +7,6 @@ import cn.edu.nju.software.ir.type.BoolType;
 import cn.edu.nju.software.ir.value.ConstValue;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.ValueRef;
-import cn.edu.nju.software.ir.value.Variable;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class EliminateDeadCode implements ModulePass {
 
