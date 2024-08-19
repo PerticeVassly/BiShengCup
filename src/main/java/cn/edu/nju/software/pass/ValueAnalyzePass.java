@@ -7,6 +7,9 @@ import cn.edu.nju.software.ir.instruction.Allocate;
 import cn.edu.nju.software.ir.instruction.Instruction;
 import cn.edu.nju.software.ir.instruction.Load;
 import cn.edu.nju.software.ir.instruction.Store;
+import cn.edu.nju.software.ir.type.ArrayType;
+import cn.edu.nju.software.ir.type.IntType;
+import cn.edu.nju.software.ir.type.Pointer;
 import cn.edu.nju.software.ir.type.TypeRef;
 import cn.edu.nju.software.ir.value.FunctionValue;
 import cn.edu.nju.software.ir.value.ValueRef;
@@ -79,7 +82,7 @@ public class ValueAnalyzePass implements FunctionPass{
                 if(ir instanceof Allocate allocate){
                     ValueRef lVal=allocate.getLVal();
                     TypeRef type=lVal.getType();
-                    if(type.getWidth()==4){
+                    if(!(((Pointer) type).getBase() instanceof ArrayType)) {
                         nodeTable.put(lVal, new Node(lVal));
                     }
                 }else if(ir instanceof Store store){

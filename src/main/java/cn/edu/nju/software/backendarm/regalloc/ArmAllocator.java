@@ -51,17 +51,12 @@ public class ArmAllocator {
 
     public List<String> prepareOperands(ValueRef... values) {
         List<String> regNames = new ArrayList<>();
-        ArmRegisterManager registerManager=ArmRegisterManager.get(function);
         generator.addInstruction(new ArmComment("fetch variables"));
         int i = 5;
         for (ValueRef value : values) {
             if (value instanceof ConstValue constValue) {
                 regNames.add(prepareAConst(constValue, i));
             } else if(value instanceof LocalVar localVar){
-                if(registerManager.contains(localVar)){
-                    regNames.add(registerManager.get(localVar));
-                    continue;
-                }
                 regNames.add(prepareALocal(localVar, i));
             } else if(value instanceof GlobalVar globalVar){
                 regNames.add(prepareAGlobal(globalVar, i));
@@ -79,6 +74,15 @@ public class ArmAllocator {
     }
 
     private String prepareALocal(LocalVar localVar, int i){
+        ArmRegisterManager registerManager=ArmRegisterManager.get(function);
+        if(registerManager.contains(localVar)){
+            if(localVar.getType() instanceof FloatType){
+                return registerManager.get(localVar);
+            }else {
+                generator.addInstruction(new ArmVmov_s32_f32(new ArmRegister("r"+i),new ArmRegister(registerManager.get(localVar))));
+                return "r"+i;
+            }
+        }
         if (localVar.getType() instanceof FloatType) {
             if(isLastLVal(localVar)){
                 armTempVarLiveTable.release(localVar);

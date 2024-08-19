@@ -12,7 +12,7 @@ public class ArmSpecifications {
             "lr", // return address
             "r9", "r10", "r11", // general temp var
             "s9", "s10", "s11" ,// float temp var
-            "s12","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28","s29","s30","s31","s32"
+            "s12","s13","s14","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28","s29","s30","s31"
     };
     //todo() arm's general register is less than risc-v
     private static final String[] calculateRegs = new String[] {
@@ -28,7 +28,7 @@ public class ArmSpecifications {
     private static final boolean isDebug = false;
 
     private static final String[] localVarRegs = new String[] {
-            "s12","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28","s29","s30","s31","s32"
+            "s12","s13","s14","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28","s29","s30","s31"
     };
 
     public static String[] getCallerSavedRegs() {
@@ -73,6 +73,15 @@ public class ArmSpecifications {
            }
        }
        return false;
+    }
+
+    public static boolean isLocalReg(String regName){
+        for (String reg : localVarRegs) {
+            if (regName.equals(reg)) {
+                return true;
+            }
+        }
+        return false;
     }
     public static boolean isFloatType(TypeRef type) {
         return type instanceof FloatType;

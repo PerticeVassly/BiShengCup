@@ -146,13 +146,13 @@ public class ArmInstrGenerator implements InstructionVisitor {
     @Override
     public void visit(Load load) {
         ValueRef src = load.getOperand(0);
+        TypeRef type = ((Pointer) src.getType()).getBase();
         if(registerManager.contains(src)){
             return;
         }
         LocalVar lVal = (LocalVar) load.getLVal();
         insertComment("load " + lVal.getName() + " " + src.getName());
         ArmOperand srcArmOperand = armAllocator.getAddrOfVarPtrPointsToWithOffset(src, 0);
-        TypeRef type = ((Pointer) src.getType()).getBase();
         if (type instanceof IntType) {
             armInstructions.add(new ArmLdr(new ArmRegister("r4"), srcArmOperand));
         } else if (type instanceof FloatType) {
@@ -505,18 +505,27 @@ public class ArmInstrGenerator implements InstructionVisitor {
     public void visit(Call call) {
         armAllocator.resetLastLVal();
         prepareParams(call);
-        saveCallerSavedRegs();
+        if(call.getFunction().isLib()||call.getFunction().getName().equals("memset")){
+            saveLibRegs();
+        }else {
+            saveCallerSavedRegs();
+        }
         String funcName = call.getFunction().getName();
         if (funcName.equals("starttime") || funcName.equals("stoptime")) {
             funcName = "_sysy_" + funcName;
             armAllocator.loadImmediate("r0", call.getLineNo());
         }
-        else if (funcName.equals("putfloat") ) {
-           armInstructions.add(new ArmVmov_s32_f32(new ArmRegister("r0"), new ArmRegister("s0")));
-        }
+//        else if (funcName.equals("putfloat") ) {
+//           armInstructions.add(new ArmVmov_s32_f32(new ArmRegister("r0"), new ArmRegister("s0")));
+//        }
         armInstructions.add(new ArmComment("call " + funcName));
         armInstructions.add(new ArmBl(new ArmLabelAddress(new ArmLabel(funcName))));
-        restoreCallerSavedRegs();
+        if(call.getFunction().isLib()||call.getFunction().getName().equals("memset")){
+            restoreLibRegs();
+        }else {
+            restoreCallerSavedRegs();
+        }
+
         releaseParams(call);
         saveReturnValue(call);
     }
@@ -524,7 +533,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
     private void saveReturnValue(Call call) {
         if (call.getLVal() != null) {
             TypeRef type = call.getLVal().getType();
-            if (type instanceof IntType || call.getFunction().getName().equals("getfloat")) {
+            if (type instanceof IntType) {
                 armInstructions.add(new ArmStr(new ArmRegister("r0"), armAllocator.getAddrOfLocalVar(call.getLVal())));
             } else if (type instanceof FloatType) {
                 armInstructions.add(new ArmVstr_f32(new ArmRegister("s0"), armAllocator.getAddrOfLocalVar(call.getLVal())));
@@ -608,7 +617,9 @@ public class ArmInstrGenerator implements InstructionVisitor {
         String[] callerSavedRegs = ArmSpecifications.getCallerSavedRegs();
         armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-8 * callerSavedRegs.length)));
         for (int i = 0; i < callerSavedRegs.length; i++) {
-            if(!armAllocator.isUsedReg(callerSavedRegs[i]) && !callerSavedRegs[i].equals("lr")){ //ra不会被record但是仍然需要保存
+            if(!armAllocator.isUsedReg(callerSavedRegs[i]) &&
+                    !callerSavedRegs[i].equals("lr")&&
+                    !ArmSpecifications.isLocalReg(callerSavedRegs[i])){ //ra不会被record但是仍然需要保存
                 continue;
             }
             if(ArmSpecifications.isFloatReg(callerSavedRegs[i])){
@@ -623,7 +634,7 @@ public class ArmInstrGenerator implements InstructionVisitor {
         armInstructions.add(new ArmComment("restore caller saved regs"));
         String[] registers = ArmSpecifications.getCallerSavedRegs();
         for (int i = 0; i < registers.length; i++) {
-            if(!armAllocator.isUsedReg(registers[i]) && !registers[i].equals("lr")){
+            if(!armAllocator.isUsedReg(registers[i]) && !registers[i].equals("lr")&&!ArmSpecifications.isLocalReg(registers[i])){
                 continue;
             }
             if(ArmSpecifications.isFloatReg(registers[i])){
@@ -639,6 +650,9 @@ public class ArmInstrGenerator implements InstructionVisitor {
         armInstructions.add(new ArmComment("restore callee saved regs"));
         String[] calleeSavedRegs = ArmSpecifications.getCalleeSavedRegs();
         for (int i = 0; i < calleeSavedRegs.length; i++) {
+            if(!armAllocator.isUsedReg(calleeSavedRegs[i]) && !calleeSavedRegs[i].equals("lr")&&!ArmSpecifications.isLocalReg(calleeSavedRegs[i])){
+                continue;
+            }
             armInstructions.add(new ArmLdr(new ArmRegister(calleeSavedRegs[i]), new ArmIndirectRegister("sp", i * 8)));
         }
         armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(8L * calleeSavedRegs.length)));
@@ -650,5 +664,35 @@ public class ArmInstrGenerator implements InstructionVisitor {
 
     public void insertComment(String comment){
         armInstructions.add(new ArmComment(comment));
+    }
+    private void saveLibRegs(){
+        String[] callerSavedRegs = ArmSpecifications.getCallerSavedRegs();
+        armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(-8 * callerSavedRegs.length)));
+        for (int i = 0; i < callerSavedRegs.length; i++) {
+            if(!armAllocator.isUsedReg(callerSavedRegs[i]) &&
+                    !callerSavedRegs[i].equals("lr")){ //ra不会被record但是仍然需要保存
+                continue;
+            }
+            if(ArmSpecifications.isFloatReg(callerSavedRegs[i])){
+                armInstructions.add(new ArmVstr_f32(new ArmRegister(callerSavedRegs[i]), new ArmIndirectRegister("sp", i * 8)));
+            } else {
+                armInstructions.add(new ArmStr(new ArmRegister(callerSavedRegs[i]), new ArmIndirectRegister("sp", i * 8)));
+            }
+        }
+    }
+
+    private void  restoreLibRegs(){
+        String[] registers = ArmSpecifications.getCallerSavedRegs();
+        for (int i = 0; i < registers.length; i++) {
+            if(!armAllocator.isUsedReg(registers[i]) && !registers[i].equals("lr")){
+                continue;
+            }
+            if(ArmSpecifications.isFloatReg(registers[i])){
+                armInstructions.add(new ArmVldr_f32(new ArmRegister(registers[i]), new ArmIndirectRegister("sp", i * 8)));
+            } else {
+                armInstructions.add(new ArmLdr(new ArmRegister(registers[i]), new ArmIndirectRegister("sp", i * 8)));
+            }
+        }
+        armInstructions.add(new ArmAdd(new ArmRegister("sp"), new ArmRegister("sp"), new ArmImmediateValue(8L * registers.length)));
     }
 }
