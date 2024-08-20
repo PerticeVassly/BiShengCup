@@ -57,6 +57,8 @@ public class PassManager {
         allPasses.add(new OptOptimize());
         allPasses.add(EliminateLoadStorePass.getInstance());
         allPasses.add(EliminateDeadCode.getInstance());
+        allPasses.add(EliminateConstExp.getInstance());
+        allPasses.add(EliminateDeadCode.getInstance());
         allPasses.add(ValueAnalyzePass.getInstance());
     }
 
