@@ -28,6 +28,7 @@ public enum ArmOpcode {
     BGE,
     BNE,
     BLE,
+    BGT,
     VADD_F32,
     VSUB_F32,
     VMUL_F32,

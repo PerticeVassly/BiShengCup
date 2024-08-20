@@ -141,7 +141,7 @@ public class ArmOptimizer {
                 if (secondOperands.get(2).equals(firstOperands.get(0))) {
                     long val = immediateValue.getValue();
                     //todo arm immediate value range
-                    if (val >= 0 && val <= 255 && (secondOperands.get(0).equals(firstOperands.get(0))
+                    if (canBeInmmediateValue((int)val) && (secondOperands.get(0).equals(firstOperands.get(0))
                             || secondOperands.get(0).equals(new ArmRegister("sp")))) {
                         secondOperands.remove(2);
                         secondOperands.add(immediateValue);
@@ -152,6 +152,19 @@ public class ArmOptimizer {
             }
         }
         iterator.previous();
+        return false;
+    }
+
+    private boolean canBeInmmediateValue(int val) {
+        if(val < 0) {
+            return false;
+        }
+        for(int i = 0; i < 16; i++) {
+            if((val & ~0xFF) == 0) {
+                return true;
+            }
+            val = (val << 2) | ( val >>> 30 );
+        }
         return false;
     }
 
@@ -359,7 +372,7 @@ public class ArmOptimizer {
             }
             return false;
         }
-        if (pre instanceof ArmCmp && (cur.get(0) instanceof ArmMovlt || cur.get(0) instanceof ArmMovge|| cur.get(0) instanceof ArmMoveq || cur.get(0) instanceof ArmMovgt)  &&
+        if (pre instanceof ArmCmp && (cur.get(0) instanceof ArmMovlt || cur.get(0) instanceof ArmMovge|| cur.get(0) instanceof ArmMoveq || cur.get(0) instanceof ArmMovgt||cur.get(0) instanceof ArmMovne||cur.get(0) instanceof ArmMovle)  &&
                 cur.get(2) instanceof ArmMov && cur.get(3) instanceof ArmCmp ) {
             removeElement(0, iterator);
             iterator.previous();
@@ -377,6 +390,10 @@ public class ArmOptimizer {
                 newInstr = new ArmBne(b.getOperands().get(0));
             } else if (cur.get(0) instanceof ArmMovgt) {
                 newInstr = new ArmBle(b.getOperands().get(0));
+            } else if (cur.get(0) instanceof ArmMovne) {
+                newInstr = new ArmBeq(b.getOperands().get(0));
+            } else if (cur.get(0) instanceof ArmMovle) {
+                newInstr = new ArmBgt(b.getOperands().get(0));
             } else {
                 newInstr = new ArmBlt(b.getOperands().get(0));
             }

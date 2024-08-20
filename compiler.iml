@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$" dumb="true">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/.vscode" />
+      <excludeFolder url="file://$MODULE_DIR$/src/test/resources/2023" />
+      <excludeFolder url="file://$MODULE_DIR$/src/test/resources/2023hidden" />
+      <excludeFolder url="file://$MODULE_DIR$/src/test/resources/2023part" />
+      <excludeFolder url="file://$MODULE_DIR$/src/test/resources/hard" />
+      <excludeFolder url="file://$MODULE_DIR$/src/test" />
+      <excludeFolder url="file://$MODULE_DIR$/src/test/java/cn/edu/nju/software/naivetest" />
+      <excludeFolder url="file://$MODULE_DIR$/src/test/resources/2023performance" />
+      <excludeFolder url="file://$MODULE_DIR$/src/test/resources/2023final_performance" />
+    </content>
+  </component>
+</module>
