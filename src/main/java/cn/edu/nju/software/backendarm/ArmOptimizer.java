@@ -51,6 +51,7 @@ public class ArmOptimizer {
             changed |= matchMla(pre, iterator);
             changed |= matchIndirectStoreAndLoad(pre, iterator);
             changed |= matchDisplacementAddressing(pre, iterator);
+            changed |= matchBranch(pre, iterator);
         }
         return changed;
     }
@@ -140,7 +141,7 @@ public class ArmOptimizer {
                 if (secondOperands.get(2).equals(firstOperands.get(0))) {
                     long val = immediateValue.getValue();
                     //todo arm immediate value range
-                    if (val >= 0 && val <=255 && (secondOperands.get(0).equals(firstOperands.get(0))
+                    if (val >= 0 && val <= 255 && (secondOperands.get(0).equals(firstOperands.get(0))
                             || secondOperands.get(0).equals(new ArmRegister("sp")))) {
                         secondOperands.remove(2);
                         secondOperands.add(immediateValue);
@@ -239,9 +240,9 @@ public class ArmOptimizer {
             ArrayList<ArmOperand> secondOperands = cur.getOperands();
             if (ArmSpecifications.isCalculatedReg(firstOperands.get(0).toString()) && firstOperands.get(1).equals(new ArmRegister("sp")) && firstOperands.get(2) instanceof ArmImmediateValue immediateValue) {
                 ArmIndirectRegister indirectRegister = (ArmIndirectRegister) secondOperands.get(1);
-                if(indirectRegister.getOpsh()!=null){
-                     iterator.previous();
-                     return false;
+                if (indirectRegister.getOpsh() != null) {
+                    iterator.previous();
+                    return false;
                 }
                 String reg = indirectRegister.getRegName();
                 int offset = indirectRegister.getOffset();
@@ -313,7 +314,7 @@ public class ArmOptimizer {
                 }
                 return false;
             }
-            removeElement(2,iterator);
+            removeElement(2, iterator);
             iterator.previous();
             iterator.remove();
             iterator.previous();
@@ -321,6 +322,65 @@ public class ArmOptimizer {
             ArmIndirectRegister newRegister = new ArmIndirectRegister(mlaOperands.get(3).toString(), "lsl", 2, mlaOperands.get(1).toString());
             ldrOperands.remove(1);
             ldrOperands.add(newRegister);
+            return true;
+        }
+        for (int i = 0; i < cur.size(); i++) {
+            iterator.previous();
+        }
+        return false;
+    }
+
+    /**
+     * change instructions like
+     * cmp r5, r6
+     * movlt r4, #1
+     * movge r4, #0
+     * mov r10, r4
+     * cmp r4, #0
+     * beq ifFalse_1
+     * b ifTrue_1
+     * to
+     * cmp r5, r6
+     * movlt r4, #1
+     * movge r4, #0
+     * mov r10, r4
+     * cmp r4, #0
+     * beq ifFalse_1
+     * b ifTrue_1
+     */
+    private boolean matchBranch(ArmInstruction pre, ListIterator<ArmInstruction> iterator) {
+        List<ArmInstruction> cur = new ArrayList<>();
+        while (iterator.hasNext() && cur.size() < 4) {
+            cur.add(iterator.next());
+        }
+        if (cur.size() < 4) {
+            for (int i = 0; i < cur.size(); i++) {
+                iterator.previous();
+            }
+            return false;
+        }
+        if (pre instanceof ArmCmp && (cur.get(0) instanceof ArmMovlt || cur.get(0) instanceof ArmMovge|| cur.get(0) instanceof ArmMoveq || cur.get(0) instanceof ArmMovgt)  &&
+                cur.get(2) instanceof ArmMov && cur.get(3) instanceof ArmCmp ) {
+            removeElement(0, iterator);
+            iterator.previous();
+            iterator.remove();
+            iterator.previous();
+            iterator.remove();
+            iterator.previous();
+            iterator.remove();
+            ArmInstruction b = iterator.next();
+            iterator.previous();
+            ArmInstruction newInstr;
+            if (cur.get(0) instanceof ArmMovlt) {
+                newInstr = new ArmBge(b.getOperands().get(0));
+            }else if(cur.get(0) instanceof ArmMoveq){
+                newInstr = new ArmBne(b.getOperands().get(0));
+            } else if (cur.get(0) instanceof ArmMovgt) {
+                newInstr = new ArmBle(b.getOperands().get(0));
+            } else {
+                newInstr = new ArmBlt(b.getOperands().get(0));
+            }
+            iterator.set(newInstr);
             return true;
         }
         for (int i = 0; i < cur.size(); i++) {
