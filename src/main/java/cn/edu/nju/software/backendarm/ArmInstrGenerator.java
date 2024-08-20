@@ -623,6 +623,9 @@ public class ArmInstrGenerator implements InstructionVisitor {
                     !ArmSpecifications.isLocalReg(callerSavedRegs[i])){ //ra不会被record但是仍然需要保存
                 continue;
             }
+            if(ArmSpecifications.isLocalReg(callerSavedRegs[i])&&!registerManager.isUsed(callerSavedRegs[i])){
+                 continue;
+            }
             if(ArmSpecifications.isFloatReg(callerSavedRegs[i])){
                 armInstructions.add(new ArmVstr_f32(new ArmRegister(callerSavedRegs[i]), new ArmIndirectRegister("sp", i * 8)));
             } else {
@@ -636,6 +639,9 @@ public class ArmInstrGenerator implements InstructionVisitor {
         String[] registers = ArmSpecifications.getCallerSavedRegs();
         for (int i = 0; i < registers.length; i++) {
             if(!armAllocator.isUsedReg(registers[i]) && !registers[i].equals("lr")&&!ArmSpecifications.isLocalReg(registers[i])){
+                continue;
+            }
+            if(ArmSpecifications.isLocalReg(registers[i])&&!registerManager.isUsed(registers[i])){
                 continue;
             }
             if(ArmSpecifications.isFloatReg(registers[i])){
