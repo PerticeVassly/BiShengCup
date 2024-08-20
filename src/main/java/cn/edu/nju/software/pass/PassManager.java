@@ -59,6 +59,7 @@ public class PassManager {
         allPasses.add(EliminateDeadCode.getInstance());
         allPasses.add(EliminateConstExp.getInstance());
         allPasses.add(EliminateDeadCode.getInstance());
+        allPasses.add(MergeBlockPass.getInstance());
         allPasses.add(ValueAnalyzePass.getInstance());
     }
 
